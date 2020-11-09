@@ -6,18 +6,24 @@ namespace BungieNetCoreAPI
 {
     public struct DefinitionHashPointer<T> where T: DestinyDefinition
     {
-        public uint Hash { get; }
+        public uint? Hash { get; }
         private string _definitionName { get; }
-        public DefinitionHashPointer(uint hash, string definitionName)
+        public bool HasValue => Hash.HasValue;
+        public DefinitionHashPointer(uint? hash, string definitionName)
         {
             Hash = hash;
             _definitionName = definitionName;
         }
         public async Task<T> GetDefinition()
         {
-            if (DefinitionsCacheRepository.TryGetDestinyDefinition(_definitionName, Hash, out var definition))
+            if (HasValue)
             {
-                return (T)definition;
+                if (DefinitionsCacheRepository.TryGetDestinyDefinition(_definitionName, Hash.Value, out var definition))
+                {
+                    return (T)definition;
+                }
+                else
+                    throw new Exception();
             }
             else
                 throw new Exception();

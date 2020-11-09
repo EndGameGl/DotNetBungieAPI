@@ -3,18 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
+namespace BungieNetCoreAPI.Destiny.Definitions.Records
 {
-    public class DestinyInventoryItemDefinition : DestinyDefinition
+    public class DestinyRecordDefinition : DestinyDefinition
     {
-        public uint acquireRewardSiteHash { get; }
-        public uint acquireUnlockHash { get; }
-        public DestinyInventoryItemAction action { get; }
-
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
 
         [JsonConstructor]
-        private DestinyInventoryItemDefinition(DestinyDefinitionDisplayProperties displayProperties, bool blacklisted, uint hash, int index, bool redacted)
+        private DestinyRecordDefinition(DestinyDefinitionDisplayProperties displayProperties, bool blacklisted, uint hash, int index, bool redacted)
             : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
