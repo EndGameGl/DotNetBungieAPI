@@ -1,4 +1,5 @@
 ﻿using BungieNetCoreAPI.Destiny.Definitions.Genders;
+using BungieNetCoreAPI.Destiny.Definitions.Races;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 

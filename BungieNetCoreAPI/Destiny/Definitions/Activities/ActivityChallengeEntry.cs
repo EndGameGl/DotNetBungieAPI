@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Destiny.Definitions.Objectives;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Activities

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Destiny.Definitions.Locations;
+using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Activities
 {

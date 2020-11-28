@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -42,12 +43,16 @@ namespace BungieNetCoreAPI.Destiny
         /// <returns></returns>
         public async Task DownloadAndSaveToLocalFiles(string path)
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             Uri _cdnUri = new Uri("https://www.bungie.net/");
+            Console.WriteLine($"Loading data from: {_cdnUri.AbsoluteUri}");
             HttpResponseMessage message;
 
             // Downloading MobileAssetContent (zip SQLite)
             if (!Directory.Exists($"{path}/MobileAssetContent"))
                 Directory.CreateDirectory($"{path}/MobileAssetContent");
+            Console.Write($"Getting data from: {_cdnUri + MobileAssetContentPath}");
             message = await HttpClientInstance.Get(_cdnUri + MobileAssetContentPath);
             using (var stream = await message.Content.ReadAsStreamAsync())
             {
@@ -57,6 +62,7 @@ namespace BungieNetCoreAPI.Destiny
                     await stream.CopyToAsync(fileStream);
                 }
             }
+            Console.WriteLine("...Done!");
 
             // Downloading MobileGearAssetDataBases (zip SQLite)
             if (!Directory.Exists($"{path}/MobileGearAssetDataBases"))
@@ -65,7 +71,7 @@ namespace BungieNetCoreAPI.Destiny
             {
                 if (!Directory.Exists($"{path}/MobileGearAssetDataBases/{entry.Version}"))
                     Directory.CreateDirectory($"{path}/MobileGearAssetDataBases/{entry.Version}");
-
+                Console.Write($"Getting data from: {_cdnUri + entry.Path}");
                 message = await HttpClientInstance.Get(_cdnUri + entry.Path);
                 using (var stream = await message.Content.ReadAsStreamAsync())
                 {
@@ -75,7 +81,8 @@ namespace BungieNetCoreAPI.Destiny
                         await stream.CopyToAsync(fileStream);
                     }
                 }
-            }
+                Console.WriteLine("...Done!");
+            }           
 
             // Downloading MobileWorldContent (zip SQLite)
             if (!Directory.Exists($"{path}/MobileWorldContent"))
@@ -84,7 +91,7 @@ namespace BungieNetCoreAPI.Destiny
             {
                 if (!Directory.Exists($"{path}/MobileWorldContent/{key}"))
                     Directory.CreateDirectory($"{path}/MobileWorldContent/{key}");
-
+                Console.Write($"Getting data from: {_cdnUri + MobileWorldContentPaths[key]}");
                 message = await HttpClientInstance.Get(_cdnUri + MobileWorldContentPaths[key]);
                 using (var stream = await message.Content.ReadAsStreamAsync())
                 {
@@ -94,6 +101,7 @@ namespace BungieNetCoreAPI.Destiny
                         await stream.CopyToAsync(fileStream);
                     }
                 }
+                Console.WriteLine("...Done!");
             }
 
             // Downloading JsonWorldContent (json text file)
@@ -103,7 +111,7 @@ namespace BungieNetCoreAPI.Destiny
             {
                 if (!Directory.Exists($"{path}/JsonWorldContent/{key}"))
                     Directory.CreateDirectory($"{path}/JsonWorldContent/{key}");
-
+                Console.Write($"Getting data from: {_cdnUri + JsonWorldContentPaths[key]}");
                 message = await HttpClientInstance.Get(_cdnUri + JsonWorldContentPaths[key]);
                 using (var stream = await message.Content.ReadAsStreamAsync())
                 {
@@ -113,6 +121,7 @@ namespace BungieNetCoreAPI.Destiny
                         await stream.CopyToAsync(fileStream);
                     }
                 }
+                Console.WriteLine("...Done!");
             }
 
             // Downloading JsonWorldComponentContent (json text files)
@@ -126,7 +135,7 @@ namespace BungieNetCoreAPI.Destiny
                 {
                     if (!Directory.Exists($"{path}/JsonWorldComponentContent/{key}/{innerKey}"))
                         Directory.CreateDirectory($"{path}/JsonWorldComponentContent/{key}/{innerKey}");
-
+                    Console.Write($"Getting data from: {_cdnUri + JsonWorldComponentContentPaths[key][innerKey]}");
                     message = await HttpClientInstance.Get(_cdnUri + JsonWorldComponentContentPaths[key][innerKey]);
                     using (var stream = await message.Content.ReadAsStreamAsync())
                     {
@@ -136,13 +145,14 @@ namespace BungieNetCoreAPI.Destiny
                             await stream.CopyToAsync(fileStream);
                         }
                     }
+                    Console.WriteLine("...Done!");
                 }
             }
 
             // Downloading MobileClanBannerDatabase (zip SQLite)
             if (!Directory.Exists($"{path}/MobileClanBannerDatabase"))
                 Directory.CreateDirectory($"{path}/MobileClanBannerDatabase");
-
+            Console.Write($"Getting data from: {_cdnUri + MobileClanBannerDatabasePath}");
             message = await HttpClientInstance.Get(_cdnUri + MobileClanBannerDatabasePath);
             using (var stream = await message.Content.ReadAsStreamAsync())
             {
@@ -152,6 +162,9 @@ namespace BungieNetCoreAPI.Destiny
                     await stream.CopyToAsync(fileStream);
                 }
             }
+            Console.WriteLine("...Done!");
+            stopwatch.Stop();
+            Console.WriteLine($"Finished getting data! {stopwatch.ElapsedMilliseconds} ms.");
         }
     }
 }

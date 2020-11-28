@@ -1,4 +1,5 @@
 ﻿using BungieNetCoreAPI.Destiny.Definitions.Destinations;
+using BungieNetCoreAPI.Destiny.Definitions.Vendors;
 using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Factions

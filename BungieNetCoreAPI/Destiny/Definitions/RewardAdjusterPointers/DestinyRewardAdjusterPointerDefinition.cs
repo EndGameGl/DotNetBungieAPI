@@ -1,10 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.RewardAdjusterPointers
 {
     public class DestinyRewardAdjusterPointerDefinition : DestinyDefinition
     {
+        public int AdjusterType { get; }
+        [JsonConstructor]
+        private DestinyRewardAdjusterPointerDefinition(int adjusterType, bool blacklisted, uint hash, int index, bool redacted)
+            : base(blacklisted, hash, index, redacted)
+        {
+            AdjusterType = adjusterType;
+        }
+
+        public override string ToString()
+        {
+            return $"{Hash}";
+        }
     }
 }

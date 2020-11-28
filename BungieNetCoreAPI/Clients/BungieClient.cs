@@ -6,8 +6,8 @@ namespace BungieNetCoreAPI.Clients
 {
     public class BungieClient
     {
-        private BungieCDNClient CDNClient;
-        private BungiePlatfromClient PlatfromClient;
+        public BungieCDNClient CDNClient;
+        public BungiePlatfromClient PlatfromClient;
 
         public BungieClient(string apiKey)
         {

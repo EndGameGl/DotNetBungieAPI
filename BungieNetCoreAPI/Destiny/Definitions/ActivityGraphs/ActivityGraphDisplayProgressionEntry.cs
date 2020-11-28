@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Destiny.Definitions.Progressions;
+using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs
 {

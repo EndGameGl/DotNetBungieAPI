@@ -41,6 +41,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityModes
                 ParentModes = new List<DefinitionHashPointer<DestinyActivityModeDefinition>>();
             else
             {
+                ParentModes = new List<DefinitionHashPointer<DestinyActivityModeDefinition>>();
                 foreach (var parentHash in parentHashes)
                 {
                     ParentModes.Add(new DefinitionHashPointer<DestinyActivityModeDefinition>(parentHash, "DestinyActivityModeDefinition"));

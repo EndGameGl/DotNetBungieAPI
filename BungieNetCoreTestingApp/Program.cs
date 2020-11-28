@@ -1,4 +1,5 @@
 ﻿using BungieNetCoreAPI;
+using BungieNetCoreAPI.Bungie;
 using BungieNetCoreAPI.Clients;
 using BungieNetCoreAPI.Destiny.Definitions.Achievements;
 using BungieNetCoreAPI.Destiny.Definitions.Activities;
@@ -37,27 +38,13 @@ namespace BungieNetCoreTestingApp
         private static BungiePlatfromClient client;
         static void Main(string[] args)
         {
-            client = new BungiePlatfromClient("");
+            
             MainAsync().GetAwaiter().GetResult();
         }
 
         private static async Task MainAsync()
         {
-            var manifest = await client.GetDestinyManifest();
-            await DefinitionsCacheRepository.LoadAllDataFromDisk("", "en", manifest);
-
-            var destinations = DefinitionsCacheRepository.GetAllDefinitions("DestinyDestinationDefinition").Cast<DestinyDestinationDefinition>();
-
-            foreach (var dest in destinations)
-            {
-                if (dest.DefaultFreeroamActivity.Hash != 0)
-                {
-                    var defaultActivity = await dest.DefaultFreeroamActivity.GetDefinition();
-                    Console.WriteLine($"{dest}");
-                    Console.WriteLine($"    Default activity: {defaultActivity}");
-                }
-            }
-
+            var data = await client.GetMembershipFromHardLinkedCredential(76561198083556532);
             await Task.Delay(Timeout.Infinite);
         }
     }
