@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.PowerCaps
 {
+    [DestinyDefinition("DestinyPowerCapDefinition")]
     public class DestinyPowerCapDefinition : DestinyDefinition
     {
         public int PowerCap { get; }

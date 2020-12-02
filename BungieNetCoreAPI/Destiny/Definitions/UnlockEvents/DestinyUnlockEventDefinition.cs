@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.UnlockEvents
 {
+    [DestinyDefinition("DestinyUnlockEventDefinition")]
     public class DestinyUnlockEventDefinition : DestinyDefinition
     {
         [JsonConstructor]

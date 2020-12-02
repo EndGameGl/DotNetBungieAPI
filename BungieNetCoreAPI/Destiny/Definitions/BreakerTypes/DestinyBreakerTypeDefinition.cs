@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.BreakerTypes
 {
+    [DestinyDefinition("DestinyBreakerTypeDefinition")]
     public class DestinyBreakerTypeDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

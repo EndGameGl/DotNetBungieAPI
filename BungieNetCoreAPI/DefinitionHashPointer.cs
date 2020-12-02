@@ -18,15 +18,15 @@ namespace BungieNetCoreAPI
         {
             if (HasValue)
             {
-                if (DefinitionsCacheRepository.TryGetDestinyDefinition(_definitionName, Hash.Value, out var definition))
+                if (GlobalDefinitionsCacheRepository.TryGetDestinyDefinition(_definitionName, Hash.Value, out var definition))
                 {
                     return (T)definition;
                 }
                 else
-                    throw new Exception();
+                    throw new Exception("No definition was found.");
             }
             else
-                throw new Exception();
+                throw new Exception("No hash value has been detected.");
         }
     }
 }

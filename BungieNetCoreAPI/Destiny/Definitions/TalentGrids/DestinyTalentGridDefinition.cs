@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.TalentGrids
 {
+    [DestinyDefinition("DestinyTalentGridDefinition")]
     public class DestinyTalentGridDefinition : DestinyDefinition
     {
         [JsonConstructor]

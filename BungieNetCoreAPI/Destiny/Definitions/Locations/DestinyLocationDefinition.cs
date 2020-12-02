@@ -1,4 +1,5 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Vendors;
+﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.Vendors;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Locations
 {
+    [DestinyDefinition("DestinyLocationDefinition")]
     public class DestinyLocationDefinition : DestinyDefinition
     {
         public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; }

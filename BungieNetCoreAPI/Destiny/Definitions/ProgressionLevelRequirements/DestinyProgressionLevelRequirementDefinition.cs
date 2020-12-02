@@ -1,9 +1,11 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Progressions;
+﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.Progressions;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ProgressionLevelRequirements
 {
+    [DestinyDefinition("DestinyProgressionLevelRequirementDefinition")]
     public class DestinyProgressionLevelRequirementDefinition : DestinyDefinition
     {
         public DefinitionHashPointer<DestinyProgressionDefinition> Progression { get; }

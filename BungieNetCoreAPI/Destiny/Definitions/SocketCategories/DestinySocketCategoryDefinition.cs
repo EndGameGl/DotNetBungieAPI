@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.SocketCategories
 {
+    [DestinyDefinition("DestinySocketCategoryDefinition")]
     public class DestinySocketCategoryDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

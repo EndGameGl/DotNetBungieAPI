@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
 {
+    [DestinyDefinition("DestinyVendorDefinition")]
     public class DestinyVendorDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

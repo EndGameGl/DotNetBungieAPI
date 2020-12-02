@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ActivityModifiers
 {
+    [DestinyDefinition("DestinyActivityModifierDefinition")]
     public class DestinyActivityModifierDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

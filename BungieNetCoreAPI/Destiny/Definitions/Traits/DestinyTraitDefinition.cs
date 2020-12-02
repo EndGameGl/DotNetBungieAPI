@@ -1,8 +1,10 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.TraitCategories;
+﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.TraitCategories;
 using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Traits
 {
+    [DestinyDefinition("DestinyTraitDefinition")]
     public class DestinyTraitDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

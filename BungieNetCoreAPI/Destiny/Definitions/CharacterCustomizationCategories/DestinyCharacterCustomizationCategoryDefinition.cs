@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationCategories
 {
+    [DestinyDefinition("DestinyCharacterCustomizationCategoryDefinition")]
     public class DestinyCharacterCustomizationCategoryDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

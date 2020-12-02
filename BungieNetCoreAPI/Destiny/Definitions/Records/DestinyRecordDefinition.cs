@@ -1,4 +1,5 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Objectives;
+﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.Objectives;
 using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
 using BungieNetCoreAPI.Destiny.Definitions.Traits;
 using Newtonsoft.Json;
@@ -8,6 +9,7 @@ using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Records
 {
+    [DestinyDefinition("DestinyRecordDefinition")]
     public class DestinyRecordDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

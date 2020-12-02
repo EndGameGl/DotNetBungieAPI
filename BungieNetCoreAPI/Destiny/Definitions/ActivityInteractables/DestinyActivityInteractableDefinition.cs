@@ -1,8 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ActivityInteractables
 {
+    [DestinyDefinition("DestinyActivityInteractableDefinition")]
     public class DestinyActivityInteractableDefinition : DestinyDefinition
     {
         public List<ActivityInteractableEntry> Entries { get; }

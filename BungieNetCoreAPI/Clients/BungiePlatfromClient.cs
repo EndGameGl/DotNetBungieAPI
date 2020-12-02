@@ -1,5 +1,8 @@
 ﻿using BungieNetCoreAPI.Bungie;
+using BungieNetCoreAPI.Bungie.Applications;
 using BungieNetCoreAPI.Destiny;
+using BungieNetCoreAPI.Destiny.Definitions;
+using BungieNetCoreAPI.Destiny.Profile;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -34,16 +37,19 @@ namespace BungieNetCoreAPI.Clients
 
         public BungiePlatfromClient(string apiKey)
         {
-            DefinitionsCacheRepository.RegisterDefinitionsTables();
             _apiKey = apiKey;
             HttpClientInstance.AddAcceptHeader("application/json");
             HttpClientInstance.AddHeader("X-API-Key", apiKey);
         }
 
-        public async Task<DestinyManifest> GetDestinyManifest()
+        
+
+        #region App methods
+        public async Task<BungieApplication[]> GetBungieApplications()
         {
-            return await GetData<DestinyManifest>("Destiny2/Manifest");
+            return await GetData<BungieApplication[]>($"App/FirstParty/");
         }
+        #endregion
 
         #region User methods
         public async Task<BungieNetUser> GetBungieNetUserById(long id)
@@ -79,6 +85,28 @@ namespace BungieNetCoreAPI.Clients
         }
         #endregion
 
+        #region Destiny 2 methods
+        public async Task<DestinyManifest> GetDestinyManifest()
+        {
+            return await GetData<DestinyManifest>("Destiny2/Manifest");
+        }
+        public async Task<T> GetDestinyEntityDefinition<T>(string entityType, uint hash) where T : DestinyDefinition
+        {
+            return await GetData<T>($"Destiny2/Manifest/{entityType}/{hash}");
+        }
+        public async Task<BungieNetUserInfo[]> SearchDestinyPlayer(BungieMembershipType membershipType, string displayName, bool returnOriginalProfile = false)
+        {
+            return await GetData<BungieNetUserInfo[]>($"Destiny2/SearchDestinyPlayer/{membershipType}/{displayName}/?returnOriginalProfile={returnOriginalProfile}");
+        }
+        public async Task<BungieNetUserMembershipWithLinkedDestinyProfiles> GetLinkedProfiles(BungieMembershipType membershipType, long membershipId, bool getAllMemberships = false)
+        {
+            return await GetData<BungieNetUserMembershipWithLinkedDestinyProfiles>($"Destiny2/{membershipType}/Profile/{membershipId}/LinkedProfiles/?getAllMemberships={getAllMemberships}");
+        }
+        public async Task<DestinyComponentProfileResponse> GetProfile(BungieMembershipType membershipType, long destinyMembershipId, DestinyComponentType[] componentTypes)
+        {
+            return await GetData<DestinyComponentProfileResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/?components={string.Join(",", componentTypes)}");
+        }
+        #endregion
         private async Task<T> GetData<T>(string query)
         {
             var response = await HttpClientInstance.Get(_platfromUri + query);

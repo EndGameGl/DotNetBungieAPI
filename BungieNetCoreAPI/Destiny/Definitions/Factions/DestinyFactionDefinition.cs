@@ -1,4 +1,5 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
 using BungieNetCoreAPI.Destiny.Definitions.Progressions;
 using BungieNetCoreAPI.Destiny.Definitions.Vendors;
 using Newtonsoft.Json;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Factions
 {
+    [DestinyDefinition("DestinyFactionDefinition")]
     public class DestinyFactionDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

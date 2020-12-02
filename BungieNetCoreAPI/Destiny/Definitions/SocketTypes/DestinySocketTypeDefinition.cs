@@ -1,9 +1,11 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.SocketCategories;
+﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.SocketCategories;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.SocketTypes
 {
+    [DestinyDefinition("DestinySocketTypeDefinition")]
     public class DestinySocketTypeDefinition : DestinyDefinition
     {
         public bool AlwaysRandomizeSockets { get; }

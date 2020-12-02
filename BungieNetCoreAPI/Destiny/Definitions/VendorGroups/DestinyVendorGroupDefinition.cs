@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.VendorGroups
 {
+    [DestinyDefinition("DestinyVendorGroupDefinition")]
     public class DestinyVendorGroupDefinition : DestinyDefinition
     {
         public string CategoryName { get; }

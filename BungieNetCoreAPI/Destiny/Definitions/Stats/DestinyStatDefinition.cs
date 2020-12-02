@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Stats
 {
+    [DestinyDefinition("DestinyStatDefinition")]
     public class DestinyStatDefinition : DestinyDefinition
     {
         public int AggregationType { get; }

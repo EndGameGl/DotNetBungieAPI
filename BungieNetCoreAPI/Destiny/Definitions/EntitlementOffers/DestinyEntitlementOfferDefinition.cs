@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.EntitlementOffers
 {
+    [DestinyDefinition("DestinyEntitlementOfferDefinition")]
     public class DestinyEntitlementOfferDefinition : DestinyDefinition
     {
         public uint OfferKey { get; }

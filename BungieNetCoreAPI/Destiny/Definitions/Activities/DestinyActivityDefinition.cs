@@ -1,4 +1,5 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.ActivityModes;
+﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.ActivityModes;
 using BungieNetCoreAPI.Destiny.Definitions.ActivityTypes;
 using BungieNetCoreAPI.Destiny.Definitions.Destinations;
 using Newtonsoft.Json;
@@ -8,6 +9,7 @@ using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Activities
 {
+    [DestinyDefinition("DestinyActivityDefinition")]
     public class DestinyActivityDefinition : DestinyDefinition
     {
         public List<ActivityGraphListEntry> ActivityGraphList { get; }

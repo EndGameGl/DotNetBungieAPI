@@ -1,8 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ActivityModes
 {
+    [DestinyDefinition("DestinyActivityModeDefinition")]
     public class DestinyActivityModeDefinition : DestinyDefinition
     {
         public int ActivityModeCategory { get; }

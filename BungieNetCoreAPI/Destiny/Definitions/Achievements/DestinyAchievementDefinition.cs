@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Achievements
 {
+    [DestinyDefinition("DestinyAchievementDefinition")]
     public class DestinyAchievementDefinition : DestinyDefinition
     {
         public int AcccumulatorThreshold { get; }        

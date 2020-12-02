@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.RewardSheets
 {
+    [DestinyDefinition("DestinyRewardSheetDefinition")]
     public class DestinyRewardSheetDefinition : DestinyDefinition
     {
         public uint SheetHash { get; }

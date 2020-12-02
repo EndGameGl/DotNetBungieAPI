@@ -1,4 +1,5 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
+﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
 using BungieNetCoreAPI.Destiny.Definitions.Progressions;
 using BungieNetCoreAPI.Destiny.Definitions.SeasonPasses;
 using BungieNetCoreAPI.Destiny.Definitions.Unlocks;
@@ -7,6 +8,7 @@ using System;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Seasons
 {
+    [DestinyDefinition("DestinySeasonDefinition")]
     public class DestinySeasonDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

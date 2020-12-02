@@ -1,9 +1,11 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Genders;
+﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.Genders;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Classes
 {
+    [DestinyDefinition("DestinyClassDefinition")]
     public class DestinyClassDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

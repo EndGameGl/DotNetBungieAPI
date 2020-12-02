@@ -1,9 +1,11 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Genders;
+﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.Genders;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Races
 {
+    [DestinyDefinition("DestinyRaceDefinition")]
     public class DestinyRaceDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

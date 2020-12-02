@@ -1,8 +1,10 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Progressions;
+﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.Progressions;
 using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.SeasonPasses
 {
+    [DestinyDefinition("DestinySeasonPassDefinition")]
     public class DestinySeasonPassDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

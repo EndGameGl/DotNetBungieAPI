@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.RewardSources
 {
+    [DestinyDefinition("DestinyRewardSourceDefinition")]
     public class DestinyRewardSourceDefinition : DestinyDefinition
     {
         [JsonConstructor]

@@ -1,6 +1,8 @@
 ﻿using BungieNetCoreAPI;
+using BungieNetCoreAPI.Attributes;
 using BungieNetCoreAPI.Bungie;
 using BungieNetCoreAPI.Clients;
+using BungieNetCoreAPI.Destiny;
 using BungieNetCoreAPI.Destiny.Definitions.Achievements;
 using BungieNetCoreAPI.Destiny.Definitions.Activities;
 using BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs;
@@ -23,11 +25,14 @@ using BungieNetCoreAPI.Destiny.Definitions.Destinations;
 using BungieNetCoreAPI.Destiny.Definitions.EnemyRaces;
 using BungieNetCoreAPI.Destiny.Definitions.EnergyTypes;
 using BungieNetCoreAPI.Destiny.Definitions.EntitlementOffers;
+using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+using BungieNetCoreAPI.Destiny.Profile.Components.Contracts;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -36,15 +41,18 @@ namespace BungieNetCoreTestingApp
     class Program
     {
         private static BungiePlatfromClient client;
+        private static DefinitionCacheRepository definitionCacheRepository = new DefinitionCacheRepository("en");
         static void Main(string[] args)
         {
             
+            client = new BungiePlatfromClient("");   
             MainAsync().GetAwaiter().GetResult();
         }
 
         private static async Task MainAsync()
         {
-            var data = await client.GetMembershipFromHardLinkedCredential(76561198083556532);
+            var manifest = await client.GetDestinyManifest();
+            definitionCacheRepository.LoadDataFromDisk(@"H:\BungieNetCoreAPIRepository\Database", manifest);
             await Task.Delay(Timeout.Infinite);
         }
     }

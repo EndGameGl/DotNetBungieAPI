@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ArtDyeReferences
 {
+    [DestinyDefinition("DestinyArtDyeReferenceDefinition")]
     public class DestinyArtDyeReferenceDefinition : DestinyDefinition
     {
         public uint ArtDyeHash { get; }

@@ -1,9 +1,11 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Activities;
+﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.Activities;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Destinations
 {
+    [DestinyDefinition("DestinyDestinationDefinition")]
     public class DestinyDestinationDefinition : DestinyDefinition
     {
         public List<DestinationActivityGraphEntry> ActivityGraphEntries { get; }

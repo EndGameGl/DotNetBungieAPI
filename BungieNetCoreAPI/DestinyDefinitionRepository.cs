@@ -5,22 +5,26 @@ using System.Linq;
 
 namespace BungieNetCoreAPI
 {
-    public class DestinyDefinitionRepository
+    /// <summary>
+    /// Repository for any <see cref="DestinyDefinition"/>
+    /// </summary>
+    /// <typeparam name="T">More specific type of <see cref="DestinyDefinition"/></typeparam>
+    public class DestinyDefinitionRepository<T> : IDestinyCacheRepository where T : DestinyDefinition
     {
-        private Dictionary<uint, DestinyDefinition> _definitions;
-        public Type Type { get; }
-        public DestinyDefinitionRepository(Type type)
+        private Dictionary<uint, T> _definitions;
+        public Type DefinitionType { get; }
+        public DestinyDefinitionRepository()
         {
-            _definitions = new Dictionary<uint, DestinyDefinition>();
-            Type = type;
+            DefinitionType = typeof(T);
+            _definitions = new Dictionary<uint, T>();
         }
-        public bool Add (DestinyDefinition item)
+        public bool Add(DestinyDefinition definition)
         {
-            if (Type.IsInstanceOfType(item))
+            if (DefinitionType.IsInstanceOfType(definition))
             {
-                if (!_definitions.ContainsKey(item.Hash))
+                if (!_definitions.ContainsKey(definition.Hash))
                 {
-                    _definitions.Add(item.Hash, item);
+                    _definitions.Add(definition.Hash, (T)definition);
                     return true;
                 }
                 else
@@ -29,21 +33,23 @@ namespace BungieNetCoreAPI
             else
                 return false;
         }
-        public bool TryGetDefinition(uint key, out DestinyDefinition definition)
+        public IEnumerable<DestinyDefinition> Where(Func<DestinyDefinition, bool> predicate)
         {
-            definition = null;
-            if (_definitions.TryGetValue(key, out definition))
-                return true;
-            else
-                return false;
+            return _definitions.Values.Where(predicate);
         }
-        public List<DestinyDefinition> GetAllAsList()
+        public IEnumerable<DestinyDefinition> GetAll()
         {
-            return _definitions.Values.ToList();
+            return _definitions.Values;
         }
-        public bool RemoveByHash(uint key)
+        public bool Remove(uint hash)
         {
-            return _definitions.Remove(key);
+            return _definitions.Remove(hash);
+        }
+        public bool TryGetDefinition(uint hash, out DestinyDefinition definition)
+        {
+            _definitions.TryGetValue(hash, out var item);
+            definition = item;
+            return definition != null;
         }
     }
 }

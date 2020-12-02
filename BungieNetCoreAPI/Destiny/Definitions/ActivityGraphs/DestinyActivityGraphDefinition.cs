@@ -1,8 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Attributes;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs
 {
+    [DestinyDefinition("DestinyActivityGraphDefinition")]
     public class DestinyActivityGraphDefinition : DestinyDefinition
     {
         public List<ActivityGraphArtElementEntry> ArtElements { get; }

@@ -1,9 +1,11 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.InventoryBuckets;
+﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.InventoryBuckets;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.EquipmentSlots
 {
+    [DestinyDefinition("DestinyEquipmentSlotDefinition")]
     public class DestinyEquipmentSlotDefinition : DestinyDefinition
     {
         public bool ApplyCustomArtDyes { get; }

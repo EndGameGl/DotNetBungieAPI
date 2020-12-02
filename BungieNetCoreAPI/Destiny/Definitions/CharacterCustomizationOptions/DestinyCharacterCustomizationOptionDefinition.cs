@@ -1,10 +1,12 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Genders;
+﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.Genders;
 using BungieNetCoreAPI.Destiny.Definitions.Races;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
 {
+    [DestinyDefinition("DestinyCharacterCustomizationOptionDefinition")]
     public class DestinyCharacterCustomizationOptionDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

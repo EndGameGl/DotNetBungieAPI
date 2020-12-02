@@ -1,4 +1,5 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
 using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
 using BungieNetCoreAPI.Destiny.Definitions.Traits;
 using Newtonsoft.Json;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Collectibles
 {
+    [DestinyDefinition("DestinyCollectibleDefinition")]
     public class DestinyCollectibleDefinition : DestinyDefinition
     {
         public CollectibleAcquisitionInfo AcquisitionInfo { get; }
