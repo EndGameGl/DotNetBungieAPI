@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
 {
-    public class DestinyInventoryItemAction
+    public class InventoryItemAction
     {
         public string ActionTypeLabel { get; }
         public bool ConsumeEntireStack { get; }
@@ -24,7 +24,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         public string VerbName { get; }
 
         [JsonConstructor]
-        private DestinyInventoryItemAction(string actionTypeLabel, bool consumeEntireStack, bool deleteOnAction, bool isPositive, List<object> progressionRewards,
+        private InventoryItemAction(string actionTypeLabel, bool consumeEntireStack, bool deleteOnAction, bool isPositive, List<object> progressionRewards,
             uint requiredCooldownHash, int requiredCooldownSeconds, List<object> requiredItems, uint rewardItemHash, uint rewardSheetHash, uint rewardSiteHash,
             bool useOnAcquire, string verbDescription, string verbName)
         {

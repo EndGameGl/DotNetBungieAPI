@@ -41,18 +41,18 @@ namespace BungieNetCoreTestingApp
     class Program
     {
         private static BungiePlatfromClient client;
-        private static DefinitionCacheRepository definitionCacheRepository = new DefinitionCacheRepository("en");
         static void Main(string[] args)
         {
             
-            client = new BungiePlatfromClient("");   
+            client = new BungiePlatfromClient("75187ab684d94a338c1b5a6996c217f8");   
             MainAsync().GetAwaiter().GetResult();
         }
 
         private static async Task MainAsync()
         {
             var manifest = await client.GetDestinyManifest();
-            definitionCacheRepository.LoadDataFromDisk(@"H:\BungieNetCoreAPIRepository\Database", manifest);
+            GlobalDefinitionsCacheRepository.LoadAllDataFromDisk(@"H:\BungieNetCoreAPIRepository\Database", manifest);
+            GlobalDefinitionsCacheRepository.TryGetDestinyDefinition("", 1 , out var def);
             await Task.Delay(Timeout.Infinite);
         }
     }
