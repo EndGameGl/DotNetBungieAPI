@@ -8,7 +8,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
 {
     public class InventoryItemEquippingBlock
     {
-        public int AmmoType { get; }
+        public DestinyAmmoType AmmoType { get; }
         public EquippingBlockAttributes Attributes { get; }
         public List<string> DisplayStrings { get; }
         public DefinitionHashPointer<DestinyEquipmentSlotDefinition> EquipmentSlotType { get; }
@@ -17,7 +17,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         public uint UniqueLabelHash { get; }
 
         [JsonConstructor]
-        private InventoryItemEquippingBlock(int ammoType, EquippingBlockAttributes attributes, List<string> displayStrings, uint equipmentSlotTypeHash,
+        private InventoryItemEquippingBlock(DestinyAmmoType ammoType, EquippingBlockAttributes attributes, List<string> displayStrings, uint equipmentSlotTypeHash,
             uint equippingSoundHash, uint hornSoundHash, uint uniqueLabelHash)
         {
             AmmoType = ammoType;

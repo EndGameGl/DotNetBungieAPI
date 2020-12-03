@@ -8,7 +8,7 @@ namespace BungieNetCoreAPI
     {
         public uint? Hash { get; }
         private string _definitionName { get; }
-        public bool HasValue => Hash.HasValue;
+        public bool HasValue => Hash.HasValue && Hash.Value > 0;
         public T Value
         {
             get

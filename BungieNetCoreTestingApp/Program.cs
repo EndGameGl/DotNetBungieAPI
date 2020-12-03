@@ -52,7 +52,8 @@ namespace BungieNetCoreTestingApp
         {
             var manifest = await client.GetDestinyManifest();
             GlobalDefinitionsCacheRepository.LoadAllDataFromDisk(@"H:\BungieNetCoreAPIRepository\Database", manifest);
-            GlobalDefinitionsCacheRepository.TryGetDestinyDefinition("", 1 , out var def);
+            var weapons = GlobalDefinitionsCacheRepository.GetItemsWithTrait("item_type.light_subclass").ToList();
+
             await Task.Delay(Timeout.Infinite);
         }
     }

@@ -1,12 +1,11 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using BungieNetCoreAPI.Destiny.Definitions.BreakerTypes;
 using BungieNetCoreAPI.Destiny.Definitions.Classes;
+using BungieNetCoreAPI.Destiny.Definitions.Collectibles;
 using BungieNetCoreAPI.Destiny.Definitions.DamageTypes;
 using BungieNetCoreAPI.Destiny.Definitions.ItemCategories;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
 {
@@ -20,6 +19,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         public DestinyColor BackgroundColor { get; }
         public DestinyBreakerTypes BreakerType { get; }
         public DestinyClassType ClassType { get; }
+        public DefinitionHashPointer<DestinyCollectibleDefinition> Collectible { get; }
         public DestinyDamageTypes DefaultDamageType { get; }
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public string DisplaySource { get; }
@@ -37,12 +37,35 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         public string ItemTypeAndTierDisplayName { get; }
         public string ItemTypeDisplayName { get; }
         public bool NonTransferrable { get; }
+        public InventoryItemObjectivesBlock Objectives { get; }
+        public List<InventoryItemPerk> Perks { get; }
+        public string SecondaryIcon { get; }
+        public InventoryItemSetDataBlock SetData { get; }
+        public InventoryItemPlugBlock Plug { get; }
+        public InventoryItemPreviewBlock Preview { get; }
+        public InventoryItemQualityBlock Quality { get; }
+        public string Screenshot { get; }
+        public InventoryItemSocketsBlock Sockets { get; }
+        public int SpecialItemType { get; }
+        public InventoryItemStatsBlock Stats { get; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> SummaryItem { get; }
+        public InventoryItemTalentGrid TalentGrid { get; }
+        public List<InventoryItemTooltipNotification> TooltipNotifications { get; }
+        public List<string> TraitIds { get; }
+        public InventoryItemTranslationBlock TranslationBlock { get; }
+        public string UiItemDisplayStyle { get; }
+        public InventoryItemValueBlock Value { get; }
+
         [JsonConstructor]
         private DestinyInventoryItemDefinition(uint acquireRewardSiteHash, uint acquireUnlockHash, bool allowActions, DestinyColor backgroundColor, InventoryItemAction action,
             DestinyBreakerTypes breakerType, DestinyClassType classType, DestinyDefinitionDisplayProperties displayProperties, DestinyDamageTypes defaultDamageType, string displaySource,
             bool doesPostmasterPullHaveSideEffects, bool equippable, InventoryItemEquippingBlock equippingBlock, string iconWatermark, string iconWatermarkShelved,
             InventoryItemInventoryBlock inventory, List<InventoryItemInvestmentStat> investmentStats, bool isWrapper, List<uint> itemCategoryHashes, int itemSubType,
-            int itemType, string itemTypeAndTierDisplayName, string itemTypeDisplayName, bool nonTransferrable,
+            int itemType, string itemTypeAndTierDisplayName, string itemTypeDisplayName, bool nonTransferrable, List<InventoryItemPerk> perks, InventoryItemPreviewBlock preview,
+            InventoryItemQualityBlock quality, string screenshot, InventoryItemSocketsBlock sockets, int specialItemType, InventoryItemStatsBlock stats, uint summaryItemHash,
+            InventoryItemTalentGrid talentGrid, List<InventoryItemTooltipNotification> tooltipNotifications, List<string> traitIds, InventoryItemTranslationBlock translationBlock,
+            string uiItemDisplayStyle, uint collectibleHash, InventoryItemPlugBlock plug, InventoryItemObjectivesBlock objectives, string secondaryIcon, InventoryItemValueBlock value,
+            InventoryItemSetDataBlock setData,
             bool blacklisted, uint hash, int index, bool redacted)
             : base(blacklisted, hash, index, redacted)
         {
@@ -54,6 +77,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             DisplayProperties = displayProperties;
             BreakerType = breakerType;
             ClassType = classType;
+            Collectible = new DefinitionHashPointer<DestinyCollectibleDefinition>(collectibleHash, "DestinyCollectibleDefinition");
             DefaultDamageType = defaultDamageType;
             DisplaySource = displaySource;
             DoesPostmasterPullHaveSideEffects = doesPostmasterPullHaveSideEffects;
@@ -77,6 +101,24 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             ItemTypeAndTierDisplayName = itemTypeAndTierDisplayName;
             ItemTypeDisplayName = itemTypeDisplayName;
             NonTransferrable = nonTransferrable;
+            Objectives = objectives;
+            Perks = perks;
+            Plug = plug;
+            Preview = preview;
+            Quality = quality;
+            Screenshot = screenshot;
+            Sockets = sockets;
+            SpecialItemType = specialItemType;
+            Stats = stats;
+            SummaryItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(summaryItemHash, "DestinyInventoryItemDefinition");
+            TalentGrid = talentGrid;
+            TooltipNotifications = tooltipNotifications;
+            TraitIds = traitIds;
+            TranslationBlock = translationBlock;
+            UiItemDisplayStyle = uiItemDisplayStyle;
+            SecondaryIcon = secondaryIcon;
+            Value = value;
+            SetData = setData;
         }
 
         public override string ToString()
