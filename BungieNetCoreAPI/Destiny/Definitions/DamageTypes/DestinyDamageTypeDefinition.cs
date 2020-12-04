@@ -7,12 +7,12 @@ namespace BungieNetCoreAPI.Destiny.Definitions.DamageTypes
     public class DestinyDamageTypeDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
-        public DestinyDamageTypes EnumValue { get; }
+        public DamageType EnumValue { get; }
         public bool ShowIcon { get; }
         public string TransparentIconPath { get; }
 
         [JsonConstructor]
-        private DestinyDamageTypeDefinition(DestinyDefinitionDisplayProperties displayProperties, DestinyDamageTypes enumValue, bool showIcon, string transparentIconPath,
+        private DestinyDamageTypeDefinition(DestinyDefinitionDisplayProperties displayProperties, DamageType enumValue, bool showIcon, string transparentIconPath,
             bool blacklisted, uint hash, int index, bool redacted)
             : base(blacklisted, hash, index, redacted)
         {

@@ -11,7 +11,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
         public DestinyDefinitionDisplayProperties HeaderDisplayProperties { get; }
         public string Instructions { get; }
         public int InteractionIndex { get; }
-        public int InteractionType { get; }
+        public VendorInteractionType InteractionType { get; }
         public DefinitionHashPointer<DestinyInventoryItemDefinition> QuestlineItem { get; }
         public List<VendorInteractionReply> Replies { get; }
         public string RewardBlockLabel { get; }
@@ -22,8 +22,8 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
 
         [JsonConstructor]
         private VendorInteraction(string flavorLineOne, string flavorLineTwo, DestinyDefinitionDisplayProperties headerDisplayProperties, string instructions,
-            int interactionIndex, int interactionType, uint questlineItemHash, List<VendorInteractionReply> replies, string rewardBlockLabel, int rewardVendorCategoryIndex,
-            List<VendorInteractionSack> sackInteractionList, uint uiInteractionType, int vendorCategoryIndex)
+            int interactionIndex, VendorInteractionType interactionType, uint questlineItemHash, List<VendorInteractionReply> replies, string rewardBlockLabel, 
+            int rewardVendorCategoryIndex, List<VendorInteractionSack> sackInteractionList, uint uiInteractionType, int vendorCategoryIndex)
         {
             FlavorLineOne = flavorLineOne;
             FlavorLineTwo = flavorLineTwo;

@@ -6,14 +6,14 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Stats
     [DestinyDefinition("DestinyStatDefinition")]
     public class DestinyStatDefinition : DestinyDefinition
     {
-        public int AggregationType { get; }
+        public StatAggregationType AggregationType { get; }
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public bool HasComputedBlock { get; }
         public bool Interpolate { get; }
-        public int StatCategory { get; }
+        public StatCategory StatCategory { get; }
 
         [JsonConstructor]
-        private DestinyStatDefinition(int aggregationType, bool hasComputedBlock, bool interpolate, int statCategory,
+        private DestinyStatDefinition(StatAggregationType aggregationType, bool hasComputedBlock, bool interpolate, StatCategory statCategory,
             DestinyDefinitionDisplayProperties displayProperties, bool blacklisted, uint hash, int index, bool redacted)
             : base(blacklisted, hash, index, redacted)
         {

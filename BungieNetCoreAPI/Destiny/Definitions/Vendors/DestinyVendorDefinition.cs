@@ -36,7 +36,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
         /// <summary>
         /// Display properties of this vendor
         /// </summary>
-        public DestinyDefinitionDisplayProperties DisplayProperties { get; }
+        public VendorDisplayProperties DisplayProperties { get; }
         /// <summary>
         /// Whether this vendor is currently enabled
         /// </summary>
@@ -120,7 +120,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
 
         [JsonConstructor]
         private DestinyVendorDefinition(bool consolidateCategories, uint displayItemHash, uint factionHash, List<string> failureStrings,bool inhibitBuying, bool inhibitSelling, 
-            int resetIntervalMinutes, int resetOffsetMinutes, bool returnWithVendorRequest, uint unlockValueHash,bool visible, DestinyDefinitionDisplayProperties displayProperties,
+            int resetIntervalMinutes, int resetOffsetMinutes, bool returnWithVendorRequest, uint unlockValueHash,bool visible, VendorDisplayProperties displayProperties,
             List<VendorCategory> categories, List<VendorDisplayCategory> displayCategories, List<VendorCategory> originalCategories, List<VendorItem> itemList,
             List<VendorAcceptedItem> acceptedItems, List<VendorAction> actions, List<uint> ignoreSaleItemHashes, List<VendorInteraction> interactions, 
             List<VendorInventoryFlyout> inventoryFlyouts, List<VendorService> services, List<VendorUnlockRange> unlockRanges, string vendorIdentifier, 

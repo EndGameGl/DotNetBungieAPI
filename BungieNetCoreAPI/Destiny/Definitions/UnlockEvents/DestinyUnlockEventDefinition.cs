@@ -1,18 +1,30 @@
 ﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.UnlockValues;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.UnlockEvents
 {
+    /// <summary>
+    /// Nothing usable atm
+    /// </summary>
     [DestinyDefinition("DestinyUnlockEventDefinition")]
     public class DestinyUnlockEventDefinition : DestinyDefinition
     {
+        public DefinitionHashPointer<DestinyUnlockValueDefinition> SequenceLastUpdatedUnlockValue { get; }
+        public DefinitionHashPointer<DestinyUnlockValueDefinition> SequenceUnlockValue { get; }
+        public uint NewSequenceRewardSiteHash { get; }
+        public List<UnlockEventUnlockEntry> UnlockEntries { get; }
+
         [JsonConstructor]
-        private DestinyUnlockEventDefinition(bool blacklisted, uint hash, int index, bool redacted)
+        private DestinyUnlockEventDefinition(uint sequenceLastUpdatedUnlockValueHash, uint sequenceUnlockValueHash, uint newSequenceRewardSiteHash,
+            List<UnlockEventUnlockEntry> unlockEntries, bool blacklisted, uint hash, int index, bool redacted)
             : base(blacklisted, hash, index, redacted)
         {
+            SequenceLastUpdatedUnlockValue = new DefinitionHashPointer<DestinyUnlockValueDefinition>(sequenceLastUpdatedUnlockValueHash, "DestinyUnlockValueDefinition");
+            SequenceUnlockValue = new DefinitionHashPointer<DestinyUnlockValueDefinition>(sequenceUnlockValueHash, "DestinyUnlockValueDefinition");
+            NewSequenceRewardSiteHash = newSequenceRewardSiteHash;
+            UnlockEntries = unlockEntries;
         }
 
         public override string ToString()

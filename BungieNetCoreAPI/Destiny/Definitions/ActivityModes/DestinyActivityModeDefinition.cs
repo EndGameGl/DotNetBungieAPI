@@ -16,7 +16,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityModes
         public bool IsTeamBased { get; }
         public DestinyActivityModeType ModeType { get; }
         public int Order { get; }
-        public List<DefinitionHashPointer<DestinyActivityModeDefinition>> ParentModes { get; }
+        public List<DefinitionHashPointer<DestinyActivityModeDefinition>> ParentHashes { get; }
         public string PgcrImage { get; }
         public bool SupportsFeedFiltering { get; }
         public int Tier { get; }
@@ -40,13 +40,13 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityModes
             ModeType = modeType;
             Order = order;
             if (parentHashes == null)
-                ParentModes = new List<DefinitionHashPointer<DestinyActivityModeDefinition>>();
+                ParentHashes = new List<DefinitionHashPointer<DestinyActivityModeDefinition>>();
             else
             {
-                ParentModes = new List<DefinitionHashPointer<DestinyActivityModeDefinition>>();
+                ParentHashes = new List<DefinitionHashPointer<DestinyActivityModeDefinition>>();
                 foreach (var parentHash in parentHashes)
                 {
-                    ParentModes.Add(new DefinitionHashPointer<DestinyActivityModeDefinition>(parentHash, "DestinyActivityModeDefinition"));
+                    ParentHashes.Add(new DefinitionHashPointer<DestinyActivityModeDefinition>(parentHash, "DestinyActivityModeDefinition"));
                 }
             }
             PgcrImage = pgcrImage;

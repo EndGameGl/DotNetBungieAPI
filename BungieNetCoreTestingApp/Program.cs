@@ -26,6 +26,8 @@ using BungieNetCoreAPI.Destiny.Definitions.EnemyRaces;
 using BungieNetCoreAPI.Destiny.Definitions.EnergyTypes;
 using BungieNetCoreAPI.Destiny.Definitions.EntitlementOffers;
 using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+using BungieNetCoreAPI.Destiny.Definitions.Unlocks;
+using BungieNetCoreAPI.Destiny.Definitions.UnlockValues;
 using BungieNetCoreAPI.Destiny.Definitions.Vendors;
 using BungieNetCoreAPI.Destiny.Profile.Components.Contracts;
 using Newtonsoft.Json;
@@ -54,7 +56,11 @@ namespace BungieNetCoreTestingApp
             var manifest = await client.GetDestinyManifest();
             GlobalDefinitionsCacheRepository.LoadAllDataFromDisk(@"H:\BungieNetCoreAPIRepository\Database", manifest);
             var searchResult = GlobalDefinitionsCacheRepository
-                .Search<DestinyVendorDefinition>(x => (x as DestinyVendorDefinition).UnlockRanges != null && (x as DestinyVendorDefinition).UnlockRanges.Count > 0)
+                .Search<DestinyUnlockValueDefinition>(
+                x => 
+                (x as DestinyUnlockValueDefinition).Scope != 0 || 
+                (x as DestinyUnlockValueDefinition).AggregationType != 0 || 
+                (x as DestinyUnlockValueDefinition).MappingIndex != 0)
                 .ToList();
 
             await Task.Delay(Timeout.Infinite);

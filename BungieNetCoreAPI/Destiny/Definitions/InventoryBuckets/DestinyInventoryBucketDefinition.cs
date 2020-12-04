@@ -8,17 +8,17 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryBuckets
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public int BucketOrder { get; }
-        public int Category { get; }
+        public BucketCategory Category { get; }
         public bool Enabled { get; }
         public bool FirstInFirstOut { get; }
         public bool HasTransferDestination { get; }
         public int ItemCount { get; }
-        public int Location { get; }
-        public int Scope { get; }
+        public BucketItemLocation Location { get; }
+        public BucketScope Scope { get; }
 
         [JsonConstructor]
-        private DestinyInventoryBucketDefinition(DestinyDefinitionDisplayProperties displayProperties, int bucketOrder, int category, bool enabled, bool fifo, bool hasTransferDestination,
-            int itemCount, int location, int scope, bool blacklisted, uint hash, int index, bool redacted)
+        private DestinyInventoryBucketDefinition(DestinyDefinitionDisplayProperties displayProperties, int bucketOrder, BucketCategory category, bool enabled, bool fifo, 
+            bool hasTransferDestination, int itemCount, BucketItemLocation location, BucketScope scope, bool blacklisted, uint hash, int index, bool redacted)
             : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;

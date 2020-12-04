@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.SackRewardItemLists
 {
+    /// <summary>
+    /// Empty definition
+    /// </summary>
     [DestinyDefinition("DestinySackRewardItemListDefinition")]
     public class DestinySackRewardItemListDefinition : DestinyDefinition
     {

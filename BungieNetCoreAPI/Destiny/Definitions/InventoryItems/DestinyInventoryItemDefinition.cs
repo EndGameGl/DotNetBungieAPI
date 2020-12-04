@@ -20,7 +20,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         public DestinyBreakerTypes BreakerType { get; }
         public DestinyClassType ClassType { get; }
         public DefinitionHashPointer<DestinyCollectibleDefinition> Collectible { get; }
-        public DestinyDamageTypes DefaultDamageType { get; }
+        public DamageTypes.DamageType DefaultDamageType { get; }
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public string DisplaySource { get; }
         public bool DoesPostmasterPullHaveSideEffects { get; }
@@ -58,7 +58,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
 
         [JsonConstructor]
         private DestinyInventoryItemDefinition(uint acquireRewardSiteHash, uint acquireUnlockHash, bool allowActions, DestinyColor backgroundColor, InventoryItemAction action,
-            DestinyBreakerTypes breakerType, DestinyClassType classType, DestinyDefinitionDisplayProperties displayProperties, DestinyDamageTypes defaultDamageType, string displaySource,
+            DestinyBreakerTypes breakerType, DestinyClassType classType, DestinyDefinitionDisplayProperties displayProperties, DamageTypes.DamageType defaultDamageType, string displaySource,
             bool doesPostmasterPullHaveSideEffects, bool equippable, InventoryItemEquippingBlock equippingBlock, string iconWatermark, string iconWatermarkShelved,
             InventoryItemInventoryBlock inventory, List<InventoryItemInvestmentStat> investmentStats, bool isWrapper, List<uint> itemCategoryHashes, int itemSubType,
             int itemType, string itemTypeAndTierDisplayName, string itemTypeDisplayName, bool nonTransferrable, List<InventoryItemPerk> perks, InventoryItemPreviewBlock preview,

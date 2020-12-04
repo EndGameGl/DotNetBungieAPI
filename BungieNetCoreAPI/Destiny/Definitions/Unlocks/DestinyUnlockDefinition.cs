@@ -7,7 +7,13 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Unlocks
     public class DestinyUnlockDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
+        /// <summary>
+        /// Always 0 for now, useless
+        /// </summary>
         public int Scope { get; }
+        /// <summary>
+        /// Always 0 for now, useless
+        /// </summary>
         public int UnlockType { get; }
 
         [JsonConstructor]

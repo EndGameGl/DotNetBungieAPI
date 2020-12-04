@@ -4,14 +4,14 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Factions
 {
-    public class FactionVendorEntry
+    public class FactionVendor
     {
         public string BackgroundImagePath { get; }
         public DefinitionHashPointer<DestinyDestinationDefinition> Destination { get; }
         public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; }
 
         [JsonConstructor]
-        private FactionVendorEntry(string backgroundImagePath, uint destinationHash, uint vendorHash)
+        private FactionVendor(string backgroundImagePath, uint destinationHash, uint vendorHash)
         {
             BackgroundImagePath = backgroundImagePath;
             Destination = new DefinitionHashPointer<DestinyDestinationDefinition>(destinationHash, "DestinyDestinationDefinition");

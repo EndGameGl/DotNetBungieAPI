@@ -6,6 +6,9 @@ namespace BungieNetCoreAPI.Destiny.Definitions.VendorGroups
     [DestinyDefinition("DestinyVendorGroupDefinition")]
     public class DestinyVendorGroupDefinition : DestinyDefinition
     {
+        /// <summary>
+        /// Vendor group name
+        /// </summary>
         public string CategoryName { get; }
         public int Order { get; }
 

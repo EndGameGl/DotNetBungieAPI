@@ -1,4 +1,5 @@
 ﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.DamageTypes;
 using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.SandboxPerks
@@ -7,16 +8,18 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SandboxPerks
     public class DestinySandboxPerkDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
-        public int DamageType { get; }
+        public DamageType DamageTypeEnumValue { get; }
+        public DefinitionHashPointer<DestinyDamageTypeDefinition> DamageType { get; }
         public bool IsDisplayable { get; }
 
         [JsonConstructor]
-        private DestinySandboxPerkDefinition(DestinyDefinitionDisplayProperties displayProperties, int damageType, bool isDisplayable,
+        private DestinySandboxPerkDefinition(DestinyDefinitionDisplayProperties displayProperties, DamageType damageType, bool isDisplayable, uint damageTypeHash,
             bool blacklisted, uint hash, int index, bool redacted)
             : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
-            DamageType = damageType;
+            DamageTypeEnumValue = damageType;
+            DamageType = new DefinitionHashPointer<DestinyDamageTypeDefinition>(damageTypeHash, "DestinyDamageTypeDefinition");
             IsDisplayable = isDisplayable;
         }
 

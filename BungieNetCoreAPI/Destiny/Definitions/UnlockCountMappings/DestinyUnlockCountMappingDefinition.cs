@@ -1,12 +1,12 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using BungieNetCoreAPI.Destiny.Definitions.Unlocks;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.UnlockCountMappings
 {
+    /// <summary>
+    /// Empty definition
+    /// </summary>
     [DestinyDefinition("DestinyUnlockCountMappingDefinition")]
     public class DestinyUnlockCountMappingDefinition : DestinyDefinition
     {

@@ -6,11 +6,11 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
     public class VendorInventoryFlyoutBucket
     {
         public bool Collapsible { get; }
-        public int SortItemsBy { get; }
+        public ItemSortType SortItemsBy { get; }
         public DefinitionHashPointer<DestinyInventoryBucketDefinition> InventoryBucket { get; }
 
         [JsonConstructor]
-        private VendorInventoryFlyoutBucket(bool collapsible, int sortItemsBy, uint inventoryBucketHash)
+        private VendorInventoryFlyoutBucket(bool collapsible, ItemSortType sortItemsBy, uint inventoryBucketHash)
         {
             Collapsible = collapsible;
             SortItemsBy = sortItemsBy;

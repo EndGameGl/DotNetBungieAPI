@@ -8,8 +8,17 @@ namespace BungieNetCoreAPI.Destiny.Definitions.TraitCategories
     [DestinyDefinition("DestinyTraitCategoryDefinition")]
     public class DestinyTraitCategoryDefinition : DestinyDefinition
     {
+        /// <summary>
+        /// String for this trait category
+        /// </summary>
         public string TraitCategoryId { get; }
+        /// <summary>
+        /// Traits that are in this category
+        /// </summary>
         public List<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; }
+        /// <summary>
+        /// Possible trait strings for searching in this category
+        /// </summary>
         public List<string> TraitIds { get; }
 
 

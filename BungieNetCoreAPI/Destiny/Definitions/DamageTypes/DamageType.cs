@@ -1,6 +1,6 @@
 ﻿namespace BungieNetCoreAPI.Destiny.Definitions.DamageTypes
 {
-    public enum DestinyDamageTypes
+    public enum DamageType
     {
         None = 0,
         Kinetic = 1,

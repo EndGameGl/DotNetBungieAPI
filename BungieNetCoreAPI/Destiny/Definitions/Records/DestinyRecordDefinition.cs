@@ -1,11 +1,10 @@
 ﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Destiny.Definitions.Lores;
 using BungieNetCoreAPI.Destiny.Definitions.Objectives;
 using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
 using BungieNetCoreAPI.Destiny.Definitions.Traits;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Records
 {
@@ -20,28 +19,30 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Records
         public RecordTitleInfo TitleInfo { get; }
         public List<DefinitionHashPointer<DestinyObjectiveDefinition>> Objectives { get; }
         public List<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentNodes { get; }
-        public int PresentationNodeType { get; }
-        public int RecordValueStyle { get; }
+        public PresentationNodeType PresentationNodeTypeEnumValue { get; }
+        public RecordValueStyle RecordValueStyleEnumValue { get; }
         public RecordRequirements Requirements { get; }
-        public int Scope { get; }
+        public List<RecordRewardItem> RewardItems { get; }
+        public Scope ScopeEnumValue { get; }
         public List<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; }
         public List<string> TraitIds { get; }
+        public DefinitionHashPointer<DestinyLoreDefinition> Lore { get; }
 
         [JsonConstructor]
         private DestinyRecordDefinition(DestinyDefinitionDisplayProperties displayProperties, RecordCompletionInfo completionInfo, RecordExpirationInfo expirationInfo,
-            RecordIntervalInfo intervalInfo, List<uint> objectiveHashes, List<uint> parentNodeHashes, int presentationNodeType, int recordValueStyle, RecordRequirements requirements,
-            int scope, RecordStateInfo stateInfo, RecordTitleInfo titleInfo, List<uint> traitHashes, List<string> traitIds,
-            bool blacklisted, uint hash, int index, bool redacted)
+            RecordIntervalInfo intervalInfo, List<uint> objectiveHashes, List<uint> parentNodeHashes, PresentationNodeType presentationNodeType, 
+            RecordValueStyle recordValueStyle, RecordRequirements requirements, Scope scope, RecordStateInfo stateInfo, RecordTitleInfo titleInfo, 
+            List<uint> traitHashes, List<string> traitIds, List<RecordRewardItem> rewardItems, uint loreHash, bool blacklisted, uint hash, int index, bool redacted)
             : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
             CompletionInfo = completionInfo;
             ExpirationInfo = expirationInfo;
             IntervalInfo = intervalInfo;
-            PresentationNodeType = presentationNodeType;
-            RecordValueStyle = recordValueStyle;
+            PresentationNodeTypeEnumValue = presentationNodeType;
+            RecordValueStyleEnumValue = recordValueStyle;
             Requirements = requirements;
-            Scope = scope;
+            ScopeEnumValue = scope;
             StateInfo = stateInfo;
             TitleInfo = titleInfo;
             TraitIds = traitIds;
@@ -69,6 +70,8 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Records
                     Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, "DestinyTraitDefinition"));
                 }
             }
+            RewardItems = rewardItems;
+            Lore = new DefinitionHashPointer<DestinyLoreDefinition>(loreHash, "DestinyLoreDefinition");
         }
 
         public override string ToString()

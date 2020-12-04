@@ -14,7 +14,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SocketTypes
         public bool IsPreviewEnabled { get; }
         public bool OverridesUiAppearance { get; }
         public DefinitionHashPointer<DestinySocketCategoryDefinition> SocketCategory { get; }
-        public int Visibility { get; }
+        public SocketVisibility Visibility { get; }
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public SocketTypeInsertAction InsertAction { get; }
         public List<SocketTypeCurrencyScalarEntry> CurrencyScalars { get; }
@@ -22,7 +22,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SocketTypes
 
         [JsonConstructor]
         private DestinySocketTypeDefinition(bool alwaysRandomizeSockets, bool avoidDuplicatesOnInitialization, bool hideDuplicateReusablePlugs, bool isPreviewEnabled,
-            bool overridesUiAppearance, uint socketCategoryHash, int visibility, SocketTypeInsertAction insertAction, List<SocketTypeCurrencyScalarEntry> currencyScalars,
+            bool overridesUiAppearance, uint socketCategoryHash, SocketVisibility visibility, SocketTypeInsertAction insertAction, List<SocketTypeCurrencyScalarEntry> currencyScalars,
             List<SocketTypePlugWhitelistEntry> plugWhitelist, DestinyDefinitionDisplayProperties displayProperties, bool blacklisted, uint hash, int index, bool redacted)
             : base(blacklisted, hash, index, redacted)
         {

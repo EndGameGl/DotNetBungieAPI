@@ -2,10 +2,9 @@
 using BungieNetCoreAPI.Destiny.Definitions.ActivityModes;
 using BungieNetCoreAPI.Destiny.Definitions.ActivityTypes;
 using BungieNetCoreAPI.Destiny.Definitions.Destinations;
+using BungieNetCoreAPI.Destiny.Definitions.Places;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Activities
 {
@@ -35,7 +34,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
         public List<ActivityUnlockString> OptionalUnlockStrings { get; }
         public DestinyDefinitionDisplayProperties OriginalDisplayProperties { get; }
         public string PgcrImage { get; }
-        public uint PlaceHash { get; }
+        public DefinitionHashPointer<DestinyPlaceDefinition> Place { get; }
         public List<ActivityPlaylistItemEntry> PlaylistItems { get; }
         public string ReleaseIcon { get; }
         public int ReleaseTime { get; }
@@ -106,7 +105,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
                 OptionalUnlockStrings = optionalUnlockStrings;
             OriginalDisplayProperties = originalDisplayProperties;
             PgcrImage = pgcrImage;
-            PlaceHash = placeHash;
+            Place = new DefinitionHashPointer<DestinyPlaceDefinition>(placeHash, "DestinyPlaceDefinition");
             if (playlistItems == null)
                 PlaylistItems = new List<ActivityPlaylistItemEntry>();
             else

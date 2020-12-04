@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.RewardAdjusterPointers
 {
+    /// <summary>
+    /// Empty atm
+    /// </summary>
     [DestinyDefinition("DestinyRewardAdjusterPointerDefinition")]
     public class DestinyRewardAdjusterPointerDefinition : DestinyDefinition
     {

@@ -9,11 +9,11 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public string Identifier { get; }
         public int Index { get; }
-        public int SortOrder { get; }
+        public VendorDisplayCategorySortOrder SortOrder { get; }
 
         [JsonConstructor]
         private VendorDisplayCategory(uint displayCategoryHash, bool displayInBanner, DestinyDefinitionDisplayProperties displayProperties, string identifier,
-            int index, int sortOrder)
+            int index, VendorDisplayCategorySortOrder sortOrder)
         {
             DisplayCategoryHash = displayCategoryHash;
             DisplayInBanner = displayInBanner;

@@ -6,11 +6,11 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SocketTypes
     {
         public int ActionExecuteSeconds { get; }
         public int ActionSoundHash { get; }
-        public int ActionType { get; }
+        public SocketActionType ActionType { get; }
         public bool IsPositiveAction { get; }
 
         [JsonConstructor]
-        private SocketTypeInsertAction(int actionExecuteSeconds, int actionSoundHash, int actionType, bool isPositiveAction)
+        private SocketTypeInsertAction(int actionExecuteSeconds, int actionSoundHash, SocketActionType actionType, bool isPositiveAction)
         {
             ActionExecuteSeconds = actionExecuteSeconds;
             ActionSoundHash = actionSoundHash;

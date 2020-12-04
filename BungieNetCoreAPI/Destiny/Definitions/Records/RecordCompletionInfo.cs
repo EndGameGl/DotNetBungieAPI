@@ -7,10 +7,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Records
         public int ScoreValue { get; }
         public int PartialCompletionObjectiveCountThreshold { get; }
         public bool ShouldFireToast { get; }
-        public int ToastStyle { get; }
+        public RecordToastStyle ToastStyle { get; }
 
         [JsonConstructor]
-        private RecordCompletionInfo(int ScoreValue, int partialCompletionObjectiveCountThreshold, bool shouldFireToast, int toastStyle)
+        private RecordCompletionInfo(int ScoreValue, int partialCompletionObjectiveCountThreshold, bool shouldFireToast, RecordToastStyle toastStyle)
         {
             this.ScoreValue = ScoreValue;
             PartialCompletionObjectiveCountThreshold = partialCompletionObjectiveCountThreshold;

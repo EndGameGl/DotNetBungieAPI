@@ -14,11 +14,12 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Factions
         public DefinitionHashPointer<DestinyProgressionDefinition> Progression { get; }
         public DefinitionHashPointer<DestinyInventoryItemDefinition> RewardItem { get; }
         public DefinitionHashPointer<DestinyVendorDefinition> RewardVendor { get; }
-        public Dictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, uint> TokenValues { get; }
+        public Dictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, int> TokenValues { get; }
+        public List<FactionVendor> Vendors { get; }
 
         [JsonConstructor]
         private DestinyFactionDefinition(uint progressionHash, uint rewardItemHash, uint rewardVendorHash, DestinyDefinitionDisplayProperties displayProperties,
-            Dictionary<uint, uint> tokenValues,
+            Dictionary<uint, int> tokenValues, List<FactionVendor> vendors,
             bool blacklisted, uint hash, int index, bool redacted)
             : base(blacklisted, hash, index, redacted)
         {
@@ -27,15 +28,16 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Factions
             RewardItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(rewardItemHash, "DestinyInventoryItemDefinition");
             RewardVendor = new DefinitionHashPointer<DestinyVendorDefinition>(rewardVendorHash, "DestinyVendorDefinition");
             if (tokenValues == null)
-                TokenValues = new Dictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, uint>();
+                TokenValues = new Dictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, int>();
             else
             {
-                TokenValues = new Dictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, uint>();
+                TokenValues = new Dictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, int>();
                 foreach (var value in tokenValues)
                 {
                     TokenValues.Add(new DefinitionHashPointer<DestinyInventoryItemDefinition>(value.Key, "DestinyInventoryItemDefinition"), value.Value);
                 }
             }
+            Vendors = vendors;
         }
 
         public override string ToString()

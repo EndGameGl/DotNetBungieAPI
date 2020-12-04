@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.RewardItemLists
 {
+    /// <summary>
+    /// Empty atm
+    /// </summary>
     [DestinyDefinition("DestinyRewardItemListDefinition")]
     public class DestinyRewardItemListDefinition : DestinyDefinition
     {
