@@ -26,6 +26,7 @@ using BungieNetCoreAPI.Destiny.Definitions.EnemyRaces;
 using BungieNetCoreAPI.Destiny.Definitions.EnergyTypes;
 using BungieNetCoreAPI.Destiny.Definitions.EntitlementOffers;
 using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+using BungieNetCoreAPI.Destiny.Definitions.Vendors;
 using BungieNetCoreAPI.Destiny.Profile.Components.Contracts;
 using Newtonsoft.Json;
 using System;
@@ -44,7 +45,7 @@ namespace BungieNetCoreTestingApp
         static void Main(string[] args)
         {
             
-            client = new BungiePlatfromClient("75187ab684d94a338c1b5a6996c217f8");   
+            client = new BungiePlatfromClient("");   
             MainAsync().GetAwaiter().GetResult();
         }
 
@@ -52,7 +53,9 @@ namespace BungieNetCoreTestingApp
         {
             var manifest = await client.GetDestinyManifest();
             GlobalDefinitionsCacheRepository.LoadAllDataFromDisk(@"H:\BungieNetCoreAPIRepository\Database", manifest);
-            var weapons = GlobalDefinitionsCacheRepository.GetItemsWithTrait("item_type.light_subclass").ToList();
+            var searchResult = GlobalDefinitionsCacheRepository
+                .Search<DestinyVendorDefinition>(x => (x as DestinyVendorDefinition).UnlockRanges != null && (x as DestinyVendorDefinition).UnlockRanges.Count > 0)
+                .ToList();
 
             await Task.Delay(Timeout.Infinite);
         }

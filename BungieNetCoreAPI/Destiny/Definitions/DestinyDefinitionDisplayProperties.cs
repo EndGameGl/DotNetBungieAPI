@@ -5,9 +5,18 @@ namespace BungieNetCoreAPI.Destiny.Definitions
 {
     public class DestinyDefinitionDisplayProperties
     {
+        /// <summary>
+        /// Definition description
+        /// </summary>
         public string Description { get; }
+        /// <summary>
+        /// Whether this definition has icon
+        /// </summary>
         public bool HasIcon { get; }
         public string Icon { get; }
+        /// <summary>
+        /// Definition name
+        /// </summary>
         public string Name { get; }
         public string HighResolutionIcon { get; }
         public List<DestinyDefinitionDisplayPropertiesIconSequenceEntry> IconSequences { get; }
