@@ -8,22 +8,35 @@ namespace BungieNetCoreAPI
 {
     public static class GlobalDefinitionsCacheRepository
     {
-        private static DefinitionCacheRepository cache = new DefinitionCacheRepository("en");
+        internal static string CurrentLocaleLoadContext;
+
+        private static Dictionary<string, DefinitionCacheRepository> _localisedRepositories;
+        public static void Initialize(string[] locales)
+        {
+            _localisedRepositories = new Dictionary<string, DefinitionCacheRepository>();
+            foreach (var locale in locales)
+            {
+                _localisedRepositories.Add(locale, new DefinitionCacheRepository(locale));
+            }
+        }
         public static void LoadAllDataFromDisk(string localManifestPath, DestinyManifest manifest)
         {
-            cache.LoadDataFromDisk(localManifestPath, manifest);
+            foreach (var repo in _localisedRepositories)
+            {
+                repo.Value.LoadDataFromDisk(localManifestPath, manifest);
+            }
         }
-        public static void AddDefinitionToCache(string definitionName, DestinyDefinition defValue)
+        public static void AddDefinitionToCache(string definitionName, DestinyDefinition defValue, string locale)
         {
-            cache.Add(definitionName, defValue);
+            _localisedRepositories[locale].Add(definitionName, defValue);
         }
-        public static bool TryGetDestinyDefinition(string definitionName, uint key, out DestinyDefinition definition)
+        public static bool TryGetDestinyDefinition(string definitionName, uint key, string locale, out DestinyDefinition definition)
         {
-            return cache.TryGetDefinition(definitionName, key, out definition);
+            return _localisedRepositories[locale].TryGetDefinition(definitionName, key, out definition);
         }
-        public static IEnumerable<T> Search<T>(Func<DestinyDefinition, bool> predicate) where T : DestinyDefinition
+        public static IEnumerable<T> Search<T>(string locale, Func<DestinyDefinition, bool> predicate) where T : DestinyDefinition
         {
-            return cache.Search<T>(predicate);
+            return _localisedRepositories[locale].Search<T>(predicate);
         }
 
         /// <summary>
@@ -42,9 +55,9 @@ namespace BungieNetCoreAPI
         /// </summary>
         /// <param name="trait">Item trait to search for</param>
         /// <returns></returns>
-        public static IEnumerable<DestinyInventoryItemDefinition> GetItemsWithTrait(string trait)
+        public static IEnumerable<DestinyInventoryItemDefinition> GetItemsWithTrait(string locale, string trait)
         {
-            return cache.Search<DestinyInventoryItemDefinition>(x =>
+            return _localisedRepositories[locale].Search<DestinyInventoryItemDefinition>(x =>
             {
                 var traits = (x as DestinyInventoryItemDefinition).TraitIds;
                 if (traits == null)

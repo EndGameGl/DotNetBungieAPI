@@ -12,7 +12,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs
         private ActivityGraphDisplayProgressionEntry(uint id, uint progressionHash)
         {
             Id = id;
-            Progression = new DefinitionHashPointer<DestinyProgressionDefinition>(progressionHash, "DestinyProgressionDefinition");
+            Progression = new DefinitionHashPointer<DestinyProgressionDefinition>(progressionHash, "DestinyProgressionDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
         }
     }
 }

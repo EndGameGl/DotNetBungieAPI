@@ -15,7 +15,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Traits
             : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
-            TraitCategory = new DefinitionHashPointer<DestinyTraitCategoryDefinition>(traitCategoryHash, "DestinyTraitCategoryDefinition");
+            TraitCategory = new DefinitionHashPointer<DestinyTraitCategoryDefinition>(traitCategoryHash, "DestinyTraitCategoryDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
         }
 
         public override string ToString()

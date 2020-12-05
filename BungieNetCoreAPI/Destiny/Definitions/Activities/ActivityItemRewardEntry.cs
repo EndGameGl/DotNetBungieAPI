@@ -11,7 +11,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
         [JsonConstructor]
         private ActivityItemRewardEntry(uint itemHash, int quantity)
         {
-            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition");
+            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
             Quantity = quantity;
         }
     }

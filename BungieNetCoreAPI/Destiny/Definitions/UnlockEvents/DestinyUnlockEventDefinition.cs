@@ -21,8 +21,8 @@ namespace BungieNetCoreAPI.Destiny.Definitions.UnlockEvents
             List<UnlockEventUnlockEntry> unlockEntries, bool blacklisted, uint hash, int index, bool redacted)
             : base(blacklisted, hash, index, redacted)
         {
-            SequenceLastUpdatedUnlockValue = new DefinitionHashPointer<DestinyUnlockValueDefinition>(sequenceLastUpdatedUnlockValueHash, "DestinyUnlockValueDefinition");
-            SequenceUnlockValue = new DefinitionHashPointer<DestinyUnlockValueDefinition>(sequenceUnlockValueHash, "DestinyUnlockValueDefinition");
+            SequenceLastUpdatedUnlockValue = new DefinitionHashPointer<DestinyUnlockValueDefinition>(sequenceLastUpdatedUnlockValueHash, "DestinyUnlockValueDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            SequenceUnlockValue = new DefinitionHashPointer<DestinyUnlockValueDefinition>(sequenceUnlockValueHash, "DestinyUnlockValueDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
             NewSequenceRewardSiteHash = newSequenceRewardSiteHash;
             UnlockEntries = unlockEntries;
         }

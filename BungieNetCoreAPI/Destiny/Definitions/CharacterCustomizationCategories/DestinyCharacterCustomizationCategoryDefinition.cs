@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationCategories
 {
-    [DestinyDefinition("DestinyCharacterCustomizationCategoryDefinition")]
+    [DestinyDefinition("DestinyCharacterCustomizationCategoryDefinition", ignoreLoad: true)]
     public class DestinyCharacterCustomizationCategoryDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

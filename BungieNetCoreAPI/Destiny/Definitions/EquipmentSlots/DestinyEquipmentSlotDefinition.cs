@@ -26,7 +26,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.EquipmentSlots
                 ArtDyeChannels = new List<EquipmentSlotArtDyeChannelEntry>();
             else
                 ArtDyeChannels = artDyeChannels;
-            BucketType = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(bucketTypeHash, "DestinyInventoryBucketDefinition");
+            BucketType = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(bucketTypeHash, "DestinyInventoryBucketDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
             EquipmentCategoryHash = equipmentCategoryHash;
         }
 

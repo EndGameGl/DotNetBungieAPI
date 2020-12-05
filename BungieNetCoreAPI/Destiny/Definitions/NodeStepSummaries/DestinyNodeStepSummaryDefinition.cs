@@ -27,7 +27,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.NodeStepSummaries
             {
                 foreach (var perkHash in perkHashes)
                 {
-                    Perks.Add(new DefinitionHashPointer<DestinySandboxPerkDefinition>(perkHash, "DestinySandboxPerkDefinition"));
+                    Perks.Add(new DefinitionHashPointer<DestinySandboxPerkDefinition>(perkHash, "DestinySandboxPerkDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
                 }
             }
             Stats = new List<DefinitionHashPointer<DestinyStatDefinition>>();
@@ -35,7 +35,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.NodeStepSummaries
             {
                 foreach (var statHash in statHashes)
                 {
-                    Stats.Add(new DefinitionHashPointer<DestinyStatDefinition>(statHash, "DestinyStatDefinition"));
+                    Stats.Add(new DefinitionHashPointer<DestinyStatDefinition>(statHash, "DestinyStatDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
                 }
             }
             AffectsQuality = affectsQuality;

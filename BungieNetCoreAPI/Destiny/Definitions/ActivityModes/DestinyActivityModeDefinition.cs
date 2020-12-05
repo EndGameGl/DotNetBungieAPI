@@ -46,7 +46,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityModes
                 ParentHashes = new List<DefinitionHashPointer<DestinyActivityModeDefinition>>();
                 foreach (var parentHash in parentHashes)
                 {
-                    ParentHashes.Add(new DefinitionHashPointer<DestinyActivityModeDefinition>(parentHash, "DestinyActivityModeDefinition"));
+                    ParentHashes.Add(new DefinitionHashPointer<DestinyActivityModeDefinition>(parentHash, "DestinyActivityModeDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
                 }
             }
             PgcrImage = pgcrImage;

@@ -55,8 +55,8 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
             Exclusivity = exclusivity;
             ExpirationTooltip = expirationTooltip;
             FailureIndexes = failureIndexes;
-            InventoryBucket = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(inventoryBucketHash, "DestinyInventoryBucketDefinition");
-            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition");
+            InventoryBucket = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(inventoryBucketHash, "DestinyInventoryBucketDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
             LicenseUnlockHash = licenseUnlockHash;
             MaximumLevel = maximumLevel;
             MinimumLevel = minimumLevel;
@@ -67,7 +67,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
             RedirectToSaleIndexes = redirectToSaleIndexes;
             RefundPolicy = refundPolicy;
             RefundTimeLimit = refundTimeLimit;
-            RewardAdjustorPointer = new DefinitionHashPointer<DestinyRewardAdjusterPointerDefinition>(rewardAdjustorPointerHash, "DestinyRewardAdjusterPointerDefinition");
+            RewardAdjustorPointer = new DefinitionHashPointer<DestinyRewardAdjusterPointerDefinition>(rewardAdjustorPointerHash, "DestinyRewardAdjusterPointerDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
             SeedOverride = seedOverride;
             SocketOverrides = socketOverrides;
             SortValue = sortValue;

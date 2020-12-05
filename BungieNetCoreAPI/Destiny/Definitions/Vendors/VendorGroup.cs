@@ -10,7 +10,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
         [JsonConstructor]
         private VendorGroup(uint vendorGroupHash)
         {
-            Group = new DefinitionHashPointer<DestinyVendorGroupDefinition>(vendorGroupHash, "DestinyVendorGroupDefinition");
+            Group = new DefinitionHashPointer<DestinyVendorGroupDefinition>(vendorGroupHash, "DestinyVendorGroupDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
         }
     }
 }

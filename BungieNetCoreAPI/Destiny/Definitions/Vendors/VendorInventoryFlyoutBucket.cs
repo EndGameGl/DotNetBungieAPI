@@ -14,7 +14,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
         {
             Collapsible = collapsible;
             SortItemsBy = sortItemsBy;
-            InventoryBucket = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(inventoryBucketHash, "DestinyInventoryBucketDefinition");
+            InventoryBucket = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(inventoryBucketHash, "DestinyInventoryBucketDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
         }
     }
 }

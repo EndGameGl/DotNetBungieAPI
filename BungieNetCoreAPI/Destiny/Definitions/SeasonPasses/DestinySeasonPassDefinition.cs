@@ -17,8 +17,8 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SeasonPasses
             : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
-            RewardProgression = new DefinitionHashPointer<DestinyProgressionDefinition>(rewardProgressionHash, "DestinyProgressionDefinition");
-            PrestigeProgression = new DefinitionHashPointer<DestinyProgressionDefinition>(prestigeProgressionHash, "DestinyProgressionDefinition");
+            RewardProgression = new DefinitionHashPointer<DestinyProgressionDefinition>(rewardProgressionHash, "DestinyProgressionDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            PrestigeProgression = new DefinitionHashPointer<DestinyProgressionDefinition>(prestigeProgressionHash, "DestinyProgressionDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
         }
 
         public override string ToString()

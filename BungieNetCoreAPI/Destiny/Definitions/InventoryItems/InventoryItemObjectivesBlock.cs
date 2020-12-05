@@ -36,7 +36,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             {
                 foreach (var displayActivityHash in displayActivityHashes)
                 {
-                    DisplayActivities.Add(new DefinitionHashPointer<DestinyActivityDefinition>(displayActivityHash, "DestinyActivityDefinition"));
+                    DisplayActivities.Add(new DefinitionHashPointer<DestinyActivityDefinition>(displayActivityHash, "DestinyActivityDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
                 } 
             }
             DisplayAsStatTracker = displayAsStatTracker;
@@ -49,14 +49,14 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             {
                 foreach (var objectiveHash in objectiveHashes)
                 {
-                    Objectives.Add(new DefinitionHashPointer<DestinyObjectiveDefinition>(objectiveHash, "DestinyObjectiveDefinition"));
+                    Objectives.Add(new DefinitionHashPointer<DestinyObjectiveDefinition>(objectiveHash, "DestinyObjectiveDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
                 }
             }
             ObjectiveVerbName = objectiveVerbName;
             PerObjectiveDisplayProperties = perObjectiveDisplayProperties;
             QuestTypeHash = questTypeHash;
             QuestTypeIdentifier = questTypeIdentifier;
-            QuestlineItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(questlineItemHash, "DestinyInventoryItemDefinition");
+            QuestlineItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(questlineItemHash, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
             RequireFullObjectiveCompletion = requireFullObjectiveCompletion;
             TimestampUnlockValueHash = timestampUnlockValueHash;
             UseOnObjectiveCompletion = useOnObjectiveCompletion;

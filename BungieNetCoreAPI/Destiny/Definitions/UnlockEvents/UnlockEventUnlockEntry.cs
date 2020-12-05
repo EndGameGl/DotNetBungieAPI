@@ -14,10 +14,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.UnlockEvents
         [JsonConstructor]
         private UnlockEventUnlockEntry(uint unlockHash, int selectedValue, int clearedValue, uint unlockValueHash)
         {
-            Unlock = new DefinitionHashPointer<DestinyUnlockDefinition>(unlockHash, "DestinyUnlockDefinition");
+            Unlock = new DefinitionHashPointer<DestinyUnlockDefinition>(unlockHash, "DestinyUnlockDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
             SelectedValue = selectedValue;
             ClearedValue = clearedValue;
-            UnlockValue = new DefinitionHashPointer<DestinyUnlockValueDefinition>(unlockValueHash, "DestinyUnlockValueDefinition");
+            UnlockValue = new DefinitionHashPointer<DestinyUnlockValueDefinition>(unlockValueHash, "DestinyUnlockValueDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
         }
     }
 }

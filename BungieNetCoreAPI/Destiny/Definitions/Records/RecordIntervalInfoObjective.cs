@@ -11,7 +11,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Records
         [JsonConstructor]
         private RecordIntervalInfoObjective(uint intervalObjectiveHash, int intervalScoreValue)
         {
-            IntervalObjective = new DefinitionHashPointer<DestinyObjectiveDefinition>(intervalObjectiveHash, "DestinyObjectiveDefinition");
+            IntervalObjective = new DefinitionHashPointer<DestinyObjectiveDefinition>(intervalObjectiveHash, "DestinyObjectiveDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
             IntervalScoreValue = intervalScoreValue;
         }
     }

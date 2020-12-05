@@ -23,7 +23,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             AmmoType = ammoType;
             Attributes = attributes;
             DisplayStrings = displayStrings;
-            EquipmentSlotType = new DefinitionHashPointer<DestinyEquipmentSlotDefinition>(equipmentSlotTypeHash, "DestinyEquipmentSlotDefinition");
+            EquipmentSlotType = new DefinitionHashPointer<DestinyEquipmentSlotDefinition>(equipmentSlotTypeHash, "DestinyEquipmentSlotDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
             EquippingSoundHash = equippingSoundHash;
             HornSoundHash = hornSoundHash;
             UniqueLabelHash = uniqueLabelHash;

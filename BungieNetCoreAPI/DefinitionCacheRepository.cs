@@ -35,10 +35,12 @@ namespace BungieNetCoreAPI
                 .Where(x =>
                 {
                     var attrs = x.GetCustomAttributes(typeof(DestinyDefinitionAttribute), true);
-                    return attrs != null && attrs.Length > 0;
+                    return attrs != null && attrs.Length > 0 && (attrs.First() as DestinyDefinitionAttribute).IgnoreLoad == false;
                 })
-                .ToDictionary(x => (
-                x.GetCustomAttribute(typeof(DestinyDefinitionAttribute), true) as DestinyDefinitionAttribute).DefinitionName,
+                .ToDictionary(
+                x => (x.GetCustomAttribute(
+                    attributeType: typeof(DestinyDefinitionAttribute),
+                    inherit: true) as DestinyDefinitionAttribute).DefinitionName,
                 x => x);
 
             foreach (var mapping in definitionNameToTypeMapping)
@@ -187,12 +189,16 @@ namespace BungieNetCoreAPI
         /// <param name="manifest"><see cref="DestinyManifest"/> with data</param>
         public void LoadDataFromDisk(string localManifestPath, DestinyManifest manifest)
         {
+            GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext = Locale;
+            Console.WriteLine($"Started loading data for localization: {Locale}");
+            Stopwatch fullLoadStopwatch = new Stopwatch();
+            fullLoadStopwatch.Start();
             var Manifest = manifest.JsonWorldComponentContentPaths[Locale];
-            Stopwatch sw = new Stopwatch();
+            Stopwatch localLoadStopwatch = new Stopwatch();
             foreach (var definitionName in _definitions.Keys)
             {
                 Console.Write($"Reading: {definitionName}... ");
-                sw.Start();
+                localLoadStopwatch.Start();
                 var definitionJson = File.ReadAllText($"{localManifestPath}/JsonWorldComponentContent/{Locale}/{definitionName}/{Path.GetFileName(Manifest[definitionName])}");
                 var definitionJObjectDictionary = JObject.Parse(definitionJson);
                 foreach (var entry in definitionJObjectDictionary)
@@ -201,10 +207,13 @@ namespace BungieNetCoreAPI
                     var deserializedDestinyDefinition = (DestinyDefinition)entry.Value.ToObject(definitionType);
                     Add(definitionName, deserializedDestinyDefinition);
                 }
-                sw.Stop();
-                Console.WriteLine($"Done! [{sw.ElapsedMilliseconds} ms]");
-                sw.Reset();
+                localLoadStopwatch.Stop();
+                Console.WriteLine($"Done! [{localLoadStopwatch.ElapsedMilliseconds} ms]");
+                localLoadStopwatch.Reset();
             }
+            fullLoadStopwatch.Stop();
+            Console.WriteLine($"Finished loading data for {Locale}: {fullLoadStopwatch.ElapsedMilliseconds} ms");
+            GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext = string.Empty;
         }
     }
 }

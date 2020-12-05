@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
 {
-    [DestinyDefinition("DestinyCharacterCustomizationOptionDefinition")]
+    [DestinyDefinition("DestinyCharacterCustomizationOptionDefinition", ignoreLoad: true)]
     public class DestinyCharacterCustomizationOptionDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
@@ -39,8 +39,8 @@ namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
             : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
-            Gender = new DefinitionHashPointer<DestinyGenderDefinition>(genderHash, "DestinyGenderDefinition");
-            Race = new DefinitionHashPointer<DestinyRaceDefinition>(raceHash, "DestinyRaceDefinition");
+            Gender = new DefinitionHashPointer<DestinyGenderDefinition>(genderHash, "DestinyGenderDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Race = new DefinitionHashPointer<DestinyRaceDefinition>(raceHash, "DestinyRaceDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
             DecalColorOptions = decalColorOptions;
             DecalOptions = decalOptions;
             EyeColorOptions = eyeColorOptions;

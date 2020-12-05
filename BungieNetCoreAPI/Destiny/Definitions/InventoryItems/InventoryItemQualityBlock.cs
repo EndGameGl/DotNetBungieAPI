@@ -28,7 +28,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             InfusionCategoryHashes = infusionCategoryHashes;
             InfusionCategoryName = infusionCategoryName;
             ItemLevels = itemLevels;
-            ProgressionLevelRequirement = new DefinitionHashPointer<DestinyProgressionLevelRequirementDefinition>(progressionLevelRequirementHash, "DestinyProgressionLevelRequirementDefinition");
+            ProgressionLevelRequirement = new DefinitionHashPointer<DestinyProgressionLevelRequirementDefinition>(progressionLevelRequirementHash, "DestinyProgressionLevelRequirementDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
             QualityLevel = qualityLevel;
             Versions = versions;
         }

@@ -47,19 +47,35 @@ namespace BungieNetCoreTestingApp
         static void Main(string[] args)
         {
             
-            client = new BungiePlatfromClient("");   
+            client = new BungiePlatfromClient("75187ab684d94a338c1b5a6996c217f8");   
             MainAsync().GetAwaiter().GetResult();
         }
 
         private static async Task MainAsync()
         {
             var manifest = await client.GetDestinyManifest();
+            GlobalDefinitionsCacheRepository.Initialize(new string[] 
+            { 
+                "en", 
+                "ru"
+                //"de",
+                //"es",
+                //"es-mx",
+                //"fr",
+                //"it",
+                //"ja",
+                //"ko",
+                //"pl",
+                //"pt-br",
+                //"zh-chs",
+                //"zh-cht"
+            });
             GlobalDefinitionsCacheRepository.LoadAllDataFromDisk(@"H:\BungieNetCoreAPIRepository\Database", manifest);
             var searchResult = GlobalDefinitionsCacheRepository
-                .Search<DestinyUnlockValueDefinition>(
-                x => 
-                (x as DestinyUnlockValueDefinition).Scope != 0 || 
-                (x as DestinyUnlockValueDefinition).AggregationType != 0 || 
+                .Search<DestinyUnlockValueDefinition>("ru",
+                x =>
+                (x as DestinyUnlockValueDefinition).Scope != 0 ||
+                (x as DestinyUnlockValueDefinition).AggregationType != 0 ||
                 (x as DestinyUnlockValueDefinition).MappingIndex != 0)
                 .ToList();
 

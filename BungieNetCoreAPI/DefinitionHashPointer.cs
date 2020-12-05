@@ -7,7 +7,8 @@ namespace BungieNetCoreAPI
     public struct DefinitionHashPointer<T> where T: DestinyDefinition
     {
         public uint? Hash { get; }
-        private string _definitionName { get; }
+        public string DefinitionName { get; }
+        public string Locale { get; }
         public bool HasValue => Hash.HasValue && Hash.Value > 0;
         public T Value
         {
@@ -15,7 +16,7 @@ namespace BungieNetCoreAPI
             {
                 if (HasValue)
                 {
-                    if (GlobalDefinitionsCacheRepository.TryGetDestinyDefinition(_definitionName, Hash.Value, out var definition))
+                    if (GlobalDefinitionsCacheRepository.TryGetDestinyDefinition(DefinitionName, Hash.Value, Locale, out var definition))
                     {
                         return (T)definition;
                     }
@@ -26,16 +27,17 @@ namespace BungieNetCoreAPI
                     throw new Exception("No hash value has been detected.");
             }
         }
-        public DefinitionHashPointer(uint? hash, string definitionName)
+        public DefinitionHashPointer(uint? hash, string definitionName, string locale)
         {
             Hash = hash;
-            _definitionName = definitionName;
+            DefinitionName = definitionName;
+            Locale = locale;
         }
         public async Task<T> GetDefinition()
         {
             if (HasValue)
             {
-                if (GlobalDefinitionsCacheRepository.TryGetDestinyDefinition(_definitionName, Hash.Value, out var definition))
+                if (GlobalDefinitionsCacheRepository.TryGetDestinyDefinition(DefinitionName, Hash.Value, Locale, out var definition))
                 {
                     return (T)definition;
                 }

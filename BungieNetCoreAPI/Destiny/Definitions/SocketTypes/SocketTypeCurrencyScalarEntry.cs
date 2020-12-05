@@ -11,7 +11,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SocketTypes
         [JsonConstructor]
         private SocketTypeCurrencyScalarEntry(uint currencyItemHash, int scalarValue)
         {
-            CurrencyItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(currencyItemHash, "DestinyInventoryItemDefinition");
+            CurrencyItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(currencyItemHash, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
             ScalarValue = scalarValue;
         }
     }

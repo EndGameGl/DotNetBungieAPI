@@ -19,7 +19,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SandboxPerks
         {
             DisplayProperties = displayProperties;
             DamageTypeEnumValue = damageType;
-            DamageType = new DefinitionHashPointer<DestinyDamageTypeDefinition>(damageTypeHash, "DestinyDamageTypeDefinition");
+            DamageType = new DefinitionHashPointer<DestinyDamageTypeDefinition>(damageTypeHash, "DestinyDamageTypeDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
             IsDisplayable = isDisplayable;
         }
 

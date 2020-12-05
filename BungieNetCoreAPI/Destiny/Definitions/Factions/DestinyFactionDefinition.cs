@@ -24,9 +24,9 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Factions
             : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
-            Progression = new DefinitionHashPointer<DestinyProgressionDefinition>(progressionHash, "DestinyProgressionDefinition");
-            RewardItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(rewardItemHash, "DestinyInventoryItemDefinition");
-            RewardVendor = new DefinitionHashPointer<DestinyVendorDefinition>(rewardVendorHash, "DestinyVendorDefinition");
+            Progression = new DefinitionHashPointer<DestinyProgressionDefinition>(progressionHash, "DestinyProgressionDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            RewardItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(rewardItemHash, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            RewardVendor = new DefinitionHashPointer<DestinyVendorDefinition>(rewardVendorHash, "DestinyVendorDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
             if (tokenValues == null)
                 TokenValues = new Dictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, int>();
             else
@@ -34,7 +34,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Factions
                 TokenValues = new Dictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, int>();
                 foreach (var value in tokenValues)
                 {
-                    TokenValues.Add(new DefinitionHashPointer<DestinyInventoryItemDefinition>(value.Key, "DestinyInventoryItemDefinition"), value.Value);
+                    TokenValues.Add(new DefinitionHashPointer<DestinyInventoryItemDefinition>(value.Key, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext), value.Value);
                 }
             }
             Vendors = vendors;

@@ -15,7 +15,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PlatformBucketMappings
             : base(blacklisted, hash, index, redacted)
         {
             MembershipType = membershipType;
-            Bucket = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(bucketHash, "DestinyInventoryBucketDefinition");
+            Bucket = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(bucketHash, "DestinyInventoryBucketDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
         }
 
         public override string ToString()
