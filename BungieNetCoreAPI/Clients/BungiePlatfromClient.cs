@@ -40,6 +40,7 @@ namespace BungieNetCoreAPI.Clients
             _apiKey = apiKey;
             HttpClientInstance.AddAcceptHeader("application/json");
             HttpClientInstance.AddHeader("X-API-Key", apiKey);
+            
         }
 
         

@@ -54,10 +54,11 @@ namespace BungieNetCoreTestingApp
         private static async Task MainAsync()
         {
             var manifest = await client.GetDestinyManifest();
+            //await manifest.DownloadAndSaveToLocalFiles("manifestLocalFiles");
             GlobalDefinitionsCacheRepository.Initialize(new string[] 
             { 
-                "en", 
-                "ru"
+                "en"
+                //"ru"
                 //"de",
                 //"es",
                 //"es-mx",
@@ -71,8 +72,9 @@ namespace BungieNetCoreTestingApp
                 //"zh-cht"
             });
             GlobalDefinitionsCacheRepository.LoadAllDataFromDisk(@"H:\BungieNetCoreAPIRepository\Database", manifest);
+
             var searchResult = GlobalDefinitionsCacheRepository
-                .Search<DestinyUnlockValueDefinition>("ru",
+                .Search<DestinyUnlockValueDefinition>("en",
                 x =>
                 (x as DestinyUnlockValueDefinition).Scope != 0 ||
                 (x as DestinyUnlockValueDefinition).AggregationType != 0 ||
