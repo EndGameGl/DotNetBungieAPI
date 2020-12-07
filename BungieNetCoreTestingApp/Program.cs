@@ -3,6 +3,7 @@ using BungieNetCoreAPI.Attributes;
 using BungieNetCoreAPI.Bungie;
 using BungieNetCoreAPI.Clients;
 using BungieNetCoreAPI.Destiny;
+using BungieNetCoreAPI.Destiny.Definitions;
 using BungieNetCoreAPI.Destiny.Definitions.Achievements;
 using BungieNetCoreAPI.Destiny.Definitions.Activities;
 using BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs;
@@ -75,8 +76,8 @@ namespace BungieNetCoreTestingApp
             GlobalDefinitionsCacheRepository.LoadAllDataFromDisk(@"H:\BungieNetCoreAPIRepository\Database", manifest);
 
             var searchResult = GlobalDefinitionsCacheRepository
-                .Search<DestinyObjectiveDefinition>("en",
-                x => (x as DestinyObjectiveDefinition).Stats?.Stat != null)
+                .Search<DestinyInventoryItemDefinition>("en",
+                x => (x as DestinyInventoryItemDefinition).Gearset != null)
                 .ToList();
 
             await Task.Delay(Timeout.Infinite);

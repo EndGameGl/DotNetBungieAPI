@@ -12,60 +12,62 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
     [DestinyDefinition("DestinyInventoryItemDefinition")]
     public class DestinyInventoryItemDefinition : DestinyDefinition
     {
+        public DefinitionHashPointer<DestinyCollectibleDefinition> Collectible { get; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> SummaryItem { get; }
+        public List<DefinitionHashPointer<DestinyItemCategoryDefinition>> ItemCategories { get; }
         public uint AcquireRewardSiteHash { get; }
         public uint AcquireUnlockHash { get; }
-        public InventoryItemAction Action { get; }
         public bool AllowActions { get; }
         public DestinyColor BackgroundColor { get; }
         public DestinyBreakerTypes BreakerType { get; }
-        public DestinyClassType ClassType { get; }
-        public DefinitionHashPointer<DestinyCollectibleDefinition> Collectible { get; }
-        public DamageTypes.DamageType DefaultDamageType { get; }
+        public DestinyClassType ClassType { get; }     
+        public DamageType DefaultDamageType { get; }
+        public ItemSubType ItemSubType { get; }
+        public ItemType ItemType { get; }
+        public SpecialItemType SpecialItemType { get; }       
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public string DisplaySource { get; }
         public bool DoesPostmasterPullHaveSideEffects { get; }
-        public bool Equippable { get; }
-        public InventoryItemEquippingBlock EquippingBlock { get; }
+        public bool Equippable { get; }       
         public string IconWatermark { get; }
-        public string IconWatermarkShelved { get; }
-        public InventoryItemInventoryBlock Inventory { get; }
-        public List<InventoryItemInvestmentStat> InvestmentStats { get; }
-        public bool IsWrapper { get; }
-        public List<DefinitionHashPointer<DestinyItemCategoryDefinition>> ItemCategories { get; }
-        public int ItemSubType { get; }
-        public int ItemType { get; }
+        public string IconWatermarkShelved { get; }       
+        public bool IsWrapper { get; }      
         public string ItemTypeAndTierDisplayName { get; }
         public string ItemTypeDisplayName { get; }
-        public bool NonTransferrable { get; }
-        public InventoryItemObjectivesBlock Objectives { get; }
-        public List<InventoryItemPerk> Perks { get; }
-        public string SecondaryIcon { get; }
+        public string UiItemDisplayStyle { get; }   
+        public bool NonTransferrable { get; }             
+        public string SecondaryIcon { get; }      
+        public string Screenshot { get; }        
+        public List<string> TraitIds { get; }
+        public InventoryItemStatsBlock Stats { get; }
+        public InventoryItemTalentGrid TalentGrid { get; }
+        public InventoryItemTranslationBlock TranslationBlock { get; }
+        public InventoryItemValueBlock Value { get; }
         public InventoryItemSetDataBlock SetData { get; }
         public InventoryItemPlugBlock Plug { get; }
         public InventoryItemPreviewBlock Preview { get; }
         public InventoryItemQualityBlock Quality { get; }
-        public string Screenshot { get; }
+        public InventoryItemObjectivesBlock Objectives { get; }
+        public InventoryItemInventoryBlock Inventory { get; }
+        public InventoryItemAction Action { get; }
+        public InventoryItemEquippingBlock EquippingBlock { get; }
         public InventoryItemSocketsBlock Sockets { get; }
-        public int SpecialItemType { get; }
-        public InventoryItemStatsBlock Stats { get; }
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> SummaryItem { get; }
-        public InventoryItemTalentGrid TalentGrid { get; }
+        public List<InventoryItemInvestmentStat> InvestmentStats { get; }
+        public List<InventoryItemPerk> Perks { get; }
         public List<InventoryItemTooltipNotification> TooltipNotifications { get; }
-        public List<string> TraitIds { get; }
-        public InventoryItemTranslationBlock TranslationBlock { get; }
-        public string UiItemDisplayStyle { get; }
-        public InventoryItemValueBlock Value { get; }
+        public InventoryItemSackBlock Sack { get; }
+        public InventoryItemGearsetBlock Gearset { get; }
 
         [JsonConstructor]
         private DestinyInventoryItemDefinition(uint acquireRewardSiteHash, uint acquireUnlockHash, bool allowActions, DestinyColor backgroundColor, InventoryItemAction action,
-            DestinyBreakerTypes breakerType, DestinyClassType classType, DestinyDefinitionDisplayProperties displayProperties, DamageTypes.DamageType defaultDamageType, string displaySource,
+            DestinyBreakerTypes breakerType, DestinyClassType classType, DestinyDefinitionDisplayProperties displayProperties, DamageType defaultDamageType, string displaySource,
             bool doesPostmasterPullHaveSideEffects, bool equippable, InventoryItemEquippingBlock equippingBlock, string iconWatermark, string iconWatermarkShelved,
-            InventoryItemInventoryBlock inventory, List<InventoryItemInvestmentStat> investmentStats, bool isWrapper, List<uint> itemCategoryHashes, int itemSubType,
-            int itemType, string itemTypeAndTierDisplayName, string itemTypeDisplayName, bool nonTransferrable, List<InventoryItemPerk> perks, InventoryItemPreviewBlock preview,
-            InventoryItemQualityBlock quality, string screenshot, InventoryItemSocketsBlock sockets, int specialItemType, InventoryItemStatsBlock stats, uint summaryItemHash,
+            InventoryItemInventoryBlock inventory, List<InventoryItemInvestmentStat> investmentStats, bool isWrapper, List<uint> itemCategoryHashes, ItemSubType itemSubType,
+            ItemType itemType, string itemTypeAndTierDisplayName, string itemTypeDisplayName, bool nonTransferrable, List<InventoryItemPerk> perks, InventoryItemPreviewBlock preview,
+            InventoryItemQualityBlock quality, string screenshot, InventoryItemSocketsBlock sockets, SpecialItemType specialItemType, InventoryItemStatsBlock stats, uint summaryItemHash,
             InventoryItemTalentGrid talentGrid, List<InventoryItemTooltipNotification> tooltipNotifications, List<string> traitIds, InventoryItemTranslationBlock translationBlock,
             string uiItemDisplayStyle, uint collectibleHash, InventoryItemPlugBlock plug, InventoryItemObjectivesBlock objectives, string secondaryIcon, InventoryItemValueBlock value,
-            InventoryItemSetDataBlock setData,
+            InventoryItemSetDataBlock setData, InventoryItemSackBlock sack, InventoryItemGearsetBlock gearset,
             bool blacklisted, uint hash, int index, bool redacted)
             : base(blacklisted, hash, index, redacted)
         {
@@ -119,6 +121,8 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             SecondaryIcon = secondaryIcon;
             Value = value;
             SetData = setData;
+            Sack = sack;
+            Gearset = gearset;
         }
 
         public override string ToString()
