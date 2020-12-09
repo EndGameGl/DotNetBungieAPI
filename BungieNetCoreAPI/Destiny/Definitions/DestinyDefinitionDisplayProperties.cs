@@ -35,5 +35,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions
             else
                 IconSequences = iconSequences;
         }
+
+        public override string ToString()
+        {
+            return $"{Name}: {Description}";
+        }
     }
 }

@@ -1,13 +1,16 @@
 ﻿using BungieNetCoreAPI.Destiny;
 using BungieNetCoreAPI.Destiny.Definitions;
+using BungieNetCoreAPI.Destiny.Definitions.Activities;
 using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BungieNetCoreAPI
 {
     public static class GlobalDefinitionsCacheRepository
     {
+
         internal static string CurrentLocaleLoadContext;
 
         private static Dictionary<string, DefinitionCacheRepository> _localisedRepositories;
@@ -55,7 +58,7 @@ namespace BungieNetCoreAPI
         /// </summary>
         /// <param name="trait">Item trait to search for</param>
         /// <returns></returns>
-        public static IEnumerable<DestinyInventoryItemDefinition> GetItemsWithTrait(string locale, string trait)
+        public static List<DestinyInventoryItemDefinition> GetItemsWithTrait(string locale, string trait)
         {
             return _localisedRepositories[locale].Search<DestinyInventoryItemDefinition>(x =>
             {
@@ -66,7 +69,19 @@ namespace BungieNetCoreAPI
                 {
                     return traits.Contains(trait);
                 }
-            });
+            }).ToList();
+        }
+        public static List<DestinyInventoryItemDefinition> GetSacks(string locale)
+        {
+            return _localisedRepositories[locale]
+                .Search<DestinyInventoryItemDefinition>(x => (x as DestinyInventoryItemDefinition).Sack != null)
+                .ToList();
+        }
+        public static List<DestinyActivityDefinition> SearchActivitiesByName(string locale, string name)
+        {
+            return _localisedRepositories[locale]
+                .Search<DestinyActivityDefinition>(x => (x as DestinyActivityDefinition).DisplayProperties.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
+                .ToList();
         }
     }
 }

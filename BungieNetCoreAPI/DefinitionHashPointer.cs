@@ -1,6 +1,5 @@
 ﻿using BungieNetCoreAPI.Destiny.Definitions;
 using System;
-using System.Threading.Tasks;
 
 namespace BungieNetCoreAPI
 {
@@ -9,22 +8,22 @@ namespace BungieNetCoreAPI
         public uint? Hash { get; }
         public string DefinitionName { get; }
         public string Locale { get; }
-        public bool HasValue => Hash.HasValue && Hash.Value > 0;
+        public bool HasValidHash => Hash.HasValue && Hash.Value > 0;
         public T Value
         {
             get
             {
-                if (HasValue)
+                if (HasValidHash)
                 {
                     if (GlobalDefinitionsCacheRepository.TryGetDestinyDefinition(DefinitionName, Hash.Value, Locale, out var definition))
                     {
                         return (T)definition;
                     }
                     else
-                        throw new Exception("No definition was found.");
+                        throw new Exception($"No {DefinitionName} was found with {Hash} hash.");
                 }
                 else
-                    throw new Exception("No hash value has been detected.");
+                    throw new Exception("Invalid hash value.");
             }
         }
         public DefinitionHashPointer(uint? hash, string definitionName, string locale)
@@ -33,19 +32,21 @@ namespace BungieNetCoreAPI
             DefinitionName = definitionName;
             Locale = locale;
         }
-        public async Task<T> GetDefinition()
+        public bool TryGetDefinition(out T definition)
         {
-            if (HasValue)
+            definition = default;
+            if (HasValidHash)
             {
-                if (GlobalDefinitionsCacheRepository.TryGetDestinyDefinition(DefinitionName, Hash.Value, Locale, out var definition))
+                if (GlobalDefinitionsCacheRepository.TryGetDestinyDefinition(DefinitionName, Hash.Value, Locale, out var foundDefinition))
                 {
-                    return (T)definition;
+                    definition = (T)foundDefinition;
+                    return true;
                 }
                 else
-                    throw new Exception("No definition was found.");
+                    return false;
             }
             else
-                throw new Exception("No hash value has been detected.");
+                return false;
         }
     }
 }

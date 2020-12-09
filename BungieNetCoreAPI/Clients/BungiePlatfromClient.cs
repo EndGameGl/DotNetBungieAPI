@@ -3,6 +3,7 @@ using BungieNetCoreAPI.Bungie.Applications;
 using BungieNetCoreAPI.Destiny;
 using BungieNetCoreAPI.Destiny.Definitions;
 using BungieNetCoreAPI.Destiny.Profile;
+using BungieNetCoreAPI.Destiny.Responses;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -39,8 +40,7 @@ namespace BungieNetCoreAPI.Clients
         {
             _apiKey = apiKey;
             HttpClientInstance.AddAcceptHeader("application/json");
-            HttpClientInstance.AddHeader("X-API-Key", apiKey);
-            
+            HttpClientInstance.AddHeader("X-API-Key", apiKey);          
         }
 
         
@@ -106,6 +106,10 @@ namespace BungieNetCoreAPI.Clients
         public async Task<DestinyComponentProfileResponse> GetProfile(BungieMembershipType membershipType, long destinyMembershipId, DestinyComponentType[] componentTypes)
         {
             return await GetData<DestinyComponentProfileResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/?components={string.Join(",", componentTypes)}");
+        }
+        public async Task<Dictionary<uint, GetPublicMilestonesResponse>> GetPublicMilestones()
+        {
+            return await GetData<Dictionary<uint, GetPublicMilestonesResponse>>($"Destiny2/Milestones");
         }
         #endregion
         private async Task<T> GetData<T>(string query)

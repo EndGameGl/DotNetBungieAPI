@@ -56,9 +56,9 @@ namespace BungieNetCoreTestingApp
         private static async Task MainAsync()
         {
             var manifest = await client.GetDestinyManifest();
-            //await manifest.DownloadAndSaveToLocalFiles("manifestLocalFiles");
-            GlobalDefinitionsCacheRepository.Initialize(new string[] 
-            { 
+            //await manifest.DownloadAndSaveToLocalFiles(@"H:\BungieNetCoreAPIRepository\ManifestDB_08.12.2020");
+            GlobalDefinitionsCacheRepository.Initialize(new string[]
+            {
                 "en"
                 //"ru"
                 //"de",
@@ -73,12 +73,11 @@ namespace BungieNetCoreTestingApp
                 //"zh-chs",
                 //"zh-cht"
             });
-            GlobalDefinitionsCacheRepository.LoadAllDataFromDisk(@"H:\BungieNetCoreAPIRepository\Database", manifest);
+            GlobalDefinitionsCacheRepository.LoadAllDataFromDisk(@"H:\BungieNetCoreAPIRepository\ManifestDB_08.12.2020", manifest);
 
-            var searchResult = GlobalDefinitionsCacheRepository
-                .Search<DestinyInventoryItemDefinition>("en",
-                x => (x as DestinyInventoryItemDefinition).Gearset != null)
-                .ToList();
+            //var searchResult = GlobalDefinitionsCacheRepository.SearchActivitiesByName("en", "garden of salvation");
+
+            //var milestones = await client.GetPublicMilestones();
 
             await Task.Delay(Timeout.Infinite);
         }
