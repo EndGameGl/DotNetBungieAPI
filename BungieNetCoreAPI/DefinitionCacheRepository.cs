@@ -182,6 +182,16 @@ namespace BungieNetCoreAPI
             else
                 return null;
         }
+
+        public IEnumerable<T> GetAll<T>()
+        {
+            if (_definitions.TryGetValue(typeof(T).Name, out var repository))
+            {
+                return repository.GetAll().Cast<T>();
+            }
+            else
+                return null;
+        }
         /// <summary>
         /// Loads all definitions from local files
         /// </summary>
@@ -215,5 +225,6 @@ namespace BungieNetCoreAPI
             Console.WriteLine($"Finished loading data for {Locale}: {fullLoadStopwatch.ElapsedMilliseconds} ms");
             GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext = string.Empty;
         }
+
     }
 }

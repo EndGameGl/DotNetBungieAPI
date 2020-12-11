@@ -41,7 +41,10 @@ namespace BungieNetCoreAPI
         {
             return _localisedRepositories[locale].Search<T>(predicate);
         }
-
+        public static IEnumerable<T> GetAll<T>(string locale)
+        {
+            return _localisedRepositories[locale].GetAll<T>();
+        } 
         /// <summary>
         /// Gets all items with given trait
         /// <para>Possible traits:</para>
@@ -82,6 +85,6 @@ namespace BungieNetCoreAPI
             return _localisedRepositories[locale]
                 .Search<DestinyActivityDefinition>(x => (x as DestinyActivityDefinition).DisplayProperties.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
                 .ToList();
-        }
+        }       
     }
 }
