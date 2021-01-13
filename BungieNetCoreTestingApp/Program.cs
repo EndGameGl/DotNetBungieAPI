@@ -54,13 +54,15 @@ namespace BungieNetCoreTestingApp
                 locales: new DestinyLocales[]
                 {
                     DestinyLocales.EN
-                }); 
+                });
+            _bungieClient.LogListener.OnNewMessage += (mes) => Console.WriteLine(mes);
             MainAsync().GetAwaiter().GetResult();
         }
 
         private static async Task MainAsync()
         {
-            await _bungieClient.SaveImageFromCDNLocallyAsync("/common/destiny2_content/icons/da3c111dab29d8ac084fb40618d1217e.jpg", "", "posterity", ImageFormat.Png);
+            await _bungieClient.Start();
+            var headArmor = GlobalDefinitionsCacheRepository.GetItemsWithTrait("en", "armor_type.head");
             await Task.Delay(Timeout.Infinite);
         }
     }

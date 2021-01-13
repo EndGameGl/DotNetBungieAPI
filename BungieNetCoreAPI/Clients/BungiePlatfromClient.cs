@@ -4,6 +4,7 @@ using BungieNetCoreAPI.Destiny;
 using BungieNetCoreAPI.Destiny.Definitions;
 using BungieNetCoreAPI.Destiny.Profile;
 using BungieNetCoreAPI.Destiny.Responses;
+using BungieNetCoreAPI.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -89,8 +90,10 @@ namespace BungieNetCoreAPI.Clients
         #region Destiny 2 methods
         public async Task<DestinyManifest> GetDestinyManifest()
         {
+            Logger.Log("Loading destiny manifest...", LogType.Info);
             var manifest = await GetData<DestinyManifest>("Destiny2/Manifest");
             InternalData.LoadedManifest = manifest;
+            Logger.Log($"Loaded destiny manifest: Version {manifest.Version}", LogType.Info);
             return manifest;
         }
         public async Task<T> GetDestinyEntityDefinition<T>(string entityType, uint hash) where T : DestinyDefinition

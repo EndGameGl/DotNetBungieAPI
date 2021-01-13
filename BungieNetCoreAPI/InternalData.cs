@@ -1,5 +1,6 @@
 ﻿using BungieNetCoreAPI.Clients;
 using BungieNetCoreAPI.Destiny;
+using BungieNetCoreAPI.Logging;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -15,20 +16,22 @@ namespace BungieNetCoreAPI
         internal static bool UseCache;
         internal static bool UsePreloadedCache;
         internal static string LocalCacheBPath;
-
+        internal static bool LoggingEnabled;
         internal static DestinyManifest LoadedManifest;
         internal static DestinyLocales[] CurrentLoadedLocales;
 
-        static InternalData()
-        {
+        internal static void Initialize()
+        {           
             var configuration =
                 new ConfigurationBuilder()
                 .AddJsonFile("configs.json")
                 .Build();
+            LoggingEnabled = Convert.ToBoolean(configuration.GetSection("EnableLogging").Value); 
+
             ShouldTryDownloadMissingDefinitions = Convert.ToBoolean(configuration.GetSection("ShouldTryDownloadMissingDefinitions").Value);
             UseCache = Convert.ToBoolean(configuration.GetSection("UseCache").Value);
             UsePreloadedCache = Convert.ToBoolean(configuration.GetSection("UsePreloadedCache").Value);
-            LocalCacheBPath = configuration.GetSection("LocalCacheBPath").Value;
+            LocalCacheBPath = configuration.GetSection("LocalCacheBPath").Value;           
         }
     }
 }

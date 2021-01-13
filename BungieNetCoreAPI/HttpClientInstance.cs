@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BungieNetCoreAPI.Logging;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -11,7 +12,7 @@ namespace BungieNetCoreAPI
     {
         private static HttpClient _httpClient;
 
-        static HttpClientInstance()
+        internal static void Initialize()
         {
             _httpClient = new HttpClient()
             { 
@@ -33,6 +34,7 @@ namespace BungieNetCoreAPI
         }
         public static async Task<HttpResponseMessage> Get(string query)
         {
+            Logger.Log($"Getting data from {query}", LogType.Debug);
             return await _httpClient.GetAsync(query);
         }
     }

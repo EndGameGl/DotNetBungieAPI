@@ -2,6 +2,7 @@
 using BungieNetCoreAPI.Destiny.Definitions;
 using BungieNetCoreAPI.Destiny.Definitions.Activities;
 using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+using BungieNetCoreAPI.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,11 @@ namespace BungieNetCoreAPI
     {
 
         internal static string CurrentLocaleLoadContext;
-        internal static bool ShouldTryDownloadMissingDefinitions;
 
         private static Dictionary<string, DefinitionCacheRepository> _localisedRepositories;
         public static void Initialize(DestinyLocales[] locales)
         {
+            Logger.Log("Initializing Global Definitions Cache Repository", LogType.Info);
             _localisedRepositories = new Dictionary<string, DefinitionCacheRepository>();
             foreach (var locale in locales)
             {
