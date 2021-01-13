@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,9 +56,13 @@ namespace BungieNetCoreAPI.Clients
         {
             return await _cdnClient.DownloadJSONDataAsync(url);
         }
-        public async Task<Bitmap> GetImageFromCDNAsync(string url)
+        public async Task<Image> GetImageFromCDNAsync(string url)
         {
             return await _cdnClient.DownloadImageAsync(url);
+        }
+        public async Task SaveImageFromCDNLocallyAsync(string url, string folderPath, string filename, ImageFormat format)
+        {
+            await _cdnClient.DownloadImageAndSaveAsync(url, folderPath, filename, format);
         }
     }
 }

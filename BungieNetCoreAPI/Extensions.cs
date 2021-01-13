@@ -29,25 +29,5 @@ namespace BungieNetCoreAPI
                 _ => throw new Exception("Wrong locale."),
             };
         }
-        public static void SaveToDisk(this Bitmap bitmap, string folderPath, string filename, ImageFormat format)
-        {
-            var targetDirectory = $"{(string.IsNullOrWhiteSpace(folderPath) ? Environment.CurrentDirectory : folderPath)}\\";
-            var targetFileName = $"{(string.IsNullOrWhiteSpace(folderPath) ? Environment.CurrentDirectory : folderPath)}\\{filename}.{format.ToString().ToLower()}";
-            if (Directory.Exists(targetDirectory))
-            {
-                if (!File.Exists(targetFileName))
-                {
-                    using (MemoryStream memory = new MemoryStream())
-                    {
-                        using (FileStream fs = new FileStream(targetFileName, FileMode.Create, FileAccess.ReadWrite))
-                        {
-                            bitmap.Save(memory, ImageFormat.Png);
-                            byte[] bytes = memory.ToArray();
-                            fs.Write(bytes, 0, bytes.Length);
-                        }
-                    }
-                }
-            }
-        }
     }
 }

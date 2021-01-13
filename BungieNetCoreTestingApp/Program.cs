@@ -60,8 +60,7 @@ namespace BungieNetCoreTestingApp
 
         private static async Task MainAsync()
         {
-            var image = await _bungieClient.GetImageFromCDNAsync("common/destiny2_content/screenshots/3281285075.jpg");
-            image.SaveToDisk("", "posterity", ImageFormat.Png);
+            await _bungieClient.SaveImageFromCDNLocallyAsync("/common/destiny2_content/icons/da3c111dab29d8ac084fb40618d1217e.jpg", "", "posterity", ImageFormat.Png);
             await Task.Delay(Timeout.Infinite);
         }
     }
