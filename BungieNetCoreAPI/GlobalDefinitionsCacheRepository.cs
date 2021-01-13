@@ -12,14 +12,16 @@ namespace BungieNetCoreAPI
     {
 
         internal static string CurrentLocaleLoadContext;
+        internal static bool ShouldTryDownloadMissingDefinitions;
 
         private static Dictionary<string, DefinitionCacheRepository> _localisedRepositories;
-        public static void Initialize(string[] locales)
+        public static void Initialize(DestinyLocales[] locales)
         {
             _localisedRepositories = new Dictionary<string, DefinitionCacheRepository>();
             foreach (var locale in locales)
             {
-                _localisedRepositories.Add(locale, new DefinitionCacheRepository(locale));
+                var localeAsString = locale.LocaleToString();
+                _localisedRepositories.Add(localeAsString, new DefinitionCacheRepository(localeAsString));
             }
         }
         public static void LoadAllDataFromDisk(string localManifestPath, DestinyManifest manifest)

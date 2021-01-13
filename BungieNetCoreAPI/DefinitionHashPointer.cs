@@ -42,6 +42,10 @@ namespace BungieNetCoreAPI
                     definition = (T)foundDefinition;
                     return true;
                 }
+                //else if (GlobalDefinitionsCacheRepository.ShouldTryDownloadMissingDefinitions)
+                //{
+
+                //}
                 else
                     return false;
             }

@@ -89,7 +89,9 @@ namespace BungieNetCoreAPI.Clients
         #region Destiny 2 methods
         public async Task<DestinyManifest> GetDestinyManifest()
         {
-            return await GetData<DestinyManifest>("Destiny2/Manifest");
+            var manifest = await GetData<DestinyManifest>("Destiny2/Manifest");
+            InternalData.LoadedManifest = manifest;
+            return manifest;
         }
         public async Task<T> GetDestinyEntityDefinition<T>(string entityType, uint hash) where T : DestinyDefinition
         {

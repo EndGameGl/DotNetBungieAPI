@@ -9,7 +9,15 @@ namespace BungieNetCoreAPI
 {
     internal static class HttpClientInstance
     {
-        private static readonly HttpClient _httpClient = new HttpClient() { Timeout = TimeSpan.FromSeconds(6000)};
+        private static HttpClient _httpClient;
+
+        static HttpClientInstance()
+        {
+            _httpClient = new HttpClient()
+            { 
+                Timeout = TimeSpan.FromSeconds(6000)
+            };
+        }
 
         public static void AddAcceptHeader(string headerValue)
         {
@@ -19,7 +27,10 @@ namespace BungieNetCoreAPI
         {
             _httpClient.DefaultRequestHeaders.Add(header, headerValue);
         }
-
+        public static void RemoveHeader(string header)
+        {
+            _httpClient.DefaultRequestHeaders.Remove(header);
+        }
         public static async Task<HttpResponseMessage> Get(string query)
         {
             return await _httpClient.GetAsync(query);

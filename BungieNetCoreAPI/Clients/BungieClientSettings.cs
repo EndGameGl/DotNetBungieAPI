@@ -6,8 +6,15 @@ namespace BungieNetCoreAPI.Clients
 {
     public class BungieClientSettings
     {
-        public bool UseGlobalCache { get; set; }
-        public string[] Locales { get; set; }
+        /// <summary>
+        /// Whether client will save definitions or always download them again from API
+        /// </summary>
+        public bool UseCache { get; set; }
+        /// <summary>
+        /// Whether client will try to download missing definitions
+        /// </summary>
+        public bool TryDownloadMissingDefinitions { get; set; }
+        public DestinyLocales[] Locales { get; set; }
         public string PathToLocalDb { get; set; }
     }
 }

@@ -35,6 +35,7 @@ using BungieNetCoreAPI.Destiny.Profile.Components.Contracts;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -45,40 +46,22 @@ namespace BungieNetCoreTestingApp
 {
     class Program
     {
-        private static BungiePlatfromClient client;
+        private static BungieClient _bungieClient;
         static void Main(string[] args)
         {
-            
-            client = new BungiePlatfromClient("75187ab684d94a338c1b5a6996c217f8");   
+            _bungieClient = new BungieClient(
+                apiKey: "75187ab684d94a338c1b5a6996c217f8",
+                locales: new DestinyLocales[]
+                {
+                    DestinyLocales.EN
+                }); 
             MainAsync().GetAwaiter().GetResult();
         }
 
         private static async Task MainAsync()
         {
-            var manifest = await client.GetDestinyManifest();
-            //await manifest.DownloadAndSaveToLocalFiles(@"H:\BungieNetCoreAPIRepository\ManifestDB_08.12.2020");
-            GlobalDefinitionsCacheRepository.Initialize(new string[]
-            {
-                "en"
-                //"ru"
-                //"de",
-                //"es",
-                //"es-mx",
-                //"fr",
-                //"it",
-                //"ja",
-                //"ko",
-                //"pl",
-                //"pt-br",
-                //"zh-chs",
-                //"zh-cht"
-            });
-            GlobalDefinitionsCacheRepository.LoadAllDataFromDisk(@"H:\BungieNetCoreAPIRepository\ManifestDB_08.12.2020", manifest);
-
-            //var searchResult = GlobalDefinitionsCacheRepository.SearchActivitiesByName("en", "garden of salvation");
-
-            //var milestones = await client.GetPublicMilestones();
-
+            var image = await _bungieClient.GetImageFromCDNAsync("common/destiny2_content/screenshots/3281285075.jpg");
+            image.SaveToDisk("", "posterity", ImageFormat.Png);
             await Task.Delay(Timeout.Infinite);
         }
     }

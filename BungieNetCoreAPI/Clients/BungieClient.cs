@@ -1,24 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BungieNetCoreAPI.Clients
 {
     public class BungieClient
     {
-        public BungieCDNClient CDNClient;
+        private BungieCDNClient _cdnClient;
         public BungiePlatfromClient PlatfromClient;
 
         public BungieClient(string apiKey, BungieClientSettings settings)
         {
-            CDNClient = new BungieCDNClient();
+            _cdnClient = new BungieCDNClient();
             PlatfromClient = new BungiePlatfromClient(apiKey);
-            if (settings.UseGlobalCache)
+            if (settings.UseCache)
             {
+                GlobalDefinitionsCacheRepository.ShouldTryDownloadMissingDefinitions = settings.TryDownloadMissingDefinitions;
+
                 GlobalDefinitionsCacheRepository.Initialize(settings.Locales);
+
                 var manifest = PlatfromClient.GetDestinyManifest().GetAwaiter().GetResult();
-                GlobalDefinitionsCacheRepository.LoadAllDataFromDisk(settings.PathToLocalDb, manifest);
+
+                if (InternalData.UsePreloadedCache)
+                {
+                    GlobalDefinitionsCacheRepository.LoadAllDataFromDisk(settings.PathToLocalDb, manifest);
+                }
             }
+            InternalData.CurrentClient = this;
+        }
+
+        public BungieClient(string apiKey, DestinyLocales[] locales)
+        {
+            _cdnClient = new BungieCDNClient();
+            PlatfromClient = new BungiePlatfromClient(apiKey);
+            if (InternalData.UseCache)
+            {
+                GlobalDefinitionsCacheRepository.ShouldTryDownloadMissingDefinitions = InternalData.ShouldTryDownloadMissingDefinitions;
+
+                GlobalDefinitionsCacheRepository.Initialize(locales);
+
+                var manifest = PlatfromClient.GetDestinyManifest().GetAwaiter().GetResult();
+
+                if (InternalData.UsePreloadedCache)
+                {
+                    GlobalDefinitionsCacheRepository.LoadAllDataFromDisk(InternalData.LocalCacheBPath, manifest);
+                }
+            }
+            InternalData.CurrentClient = this;
+        }
+
+        public async Task<string> GetJsonFromCDNAsync(string url)
+        {
+            return await _cdnClient.DownloadJSONDataAsync(url);
+        }
+        public async Task<Bitmap> GetImageFromCDNAsync(string url)
+        {
+            return await _cdnClient.DownloadImageAsync(url);
         }
     }
 }
