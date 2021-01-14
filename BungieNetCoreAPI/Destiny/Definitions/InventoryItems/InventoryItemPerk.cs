@@ -12,7 +12,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         [JsonConstructor]
         private InventoryItemPerk(uint perkHash, int perkVisibility, string requirementDisplayString)
         {
-            Perk = new DefinitionHashPointer<DestinySandboxPerkDefinition>(perkHash, "DestinySandboxPerkDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Perk = new DefinitionHashPointer<DestinySandboxPerkDefinition>(perkHash, "DestinySandboxPerkDefinition");
             PerkVisibility = perkVisibility;
             RequirementDisplayString = requirementDisplayString;
         }

@@ -11,7 +11,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
         [JsonConstructor]
         private MilestoneItem(uint itemHash, int quantity)
         {
-            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition");
             Quantity = quantity;
         }
     }

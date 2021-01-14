@@ -1,5 +1,8 @@
 ﻿using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+using BungieNetCoreAPI.Repositories;
+using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
+using Unity;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Activities
 {
@@ -11,7 +14,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
         [JsonConstructor]
         private ActivityItemRewardEntry(uint itemHash, int quantity)
         {
-            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition");
             Quantity = quantity;
         }
     }

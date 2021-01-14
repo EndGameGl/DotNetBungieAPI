@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace BungieNetCoreAPI
+namespace BungieNetCoreAPI.Repositories
 {
     /// <summary>
     /// An inteface for accessing <see cref="DestinyDefinitionRepository{T}"/>

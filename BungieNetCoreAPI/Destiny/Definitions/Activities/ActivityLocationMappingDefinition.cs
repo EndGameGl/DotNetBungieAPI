@@ -13,8 +13,8 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
         private ActivityLocationMappingDefinition(string activationSource, uint activityHash, uint locationHash)
         {
             ActivationSource = activationSource;
-            Activity = new DefinitionHashPointer<DestinyActivityDefinition>(activityHash, "DestinyActivityDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
-            Location = new DefinitionHashPointer<DestinyLocationDefinition>(locationHash, "DestinyLocationDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Activity = new DefinitionHashPointer<DestinyActivityDefinition>(activityHash, "DestinyActivityDefinition");
+            Location = new DefinitionHashPointer<DestinyLocationDefinition>(locationHash, "DestinyLocationDefinition");
         }
     }
 }

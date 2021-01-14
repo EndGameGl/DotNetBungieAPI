@@ -37,13 +37,13 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
             DisplayStyle = displayStyle;
             MaxCategoryRecordScore = maxCategoryRecordScore;
             NodeType = nodeType;
-            Objective = new DefinitionHashPointer<DestinyObjectiveDefinition>(objectiveHash, "DestinyObjectiveDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Objective = new DefinitionHashPointer<DestinyObjectiveDefinition>(objectiveHash, "DestinyObjectiveDefinition");
             ParentNodes = new List<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
             if (parentNodeHashes != null)
             {
                 foreach (var parentNodeHash in parentNodeHashes)
                 {
-                    ParentNodes.Add(new DefinitionHashPointer<DestinyPresentationNodeDefinition>(parentNodeHash, "DestinyObjectiveDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    ParentNodes.Add(new DefinitionHashPointer<DestinyPresentationNodeDefinition>(parentNodeHash, "DestinyObjectiveDefinition"));
                 }
             }
             PresentationNodeType = presentationNodeType;
@@ -55,7 +55,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
             {
                 foreach (var traitHash in traitHashes)
                 {
-                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, "DestinyTraitDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, "DestinyTraitDefinition"));
                 }
             }
             TraitIds = traitIds;

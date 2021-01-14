@@ -32,7 +32,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SocketTypes
             HideDuplicateReusablePlugs = hideDuplicateReusablePlugs;
             IsPreviewEnabled = isPreviewEnabled;
             OverridesUiAppearance = overridesUiAppearance;
-            SocketCategory = new DefinitionHashPointer<DestinySocketCategoryDefinition>(socketCategoryHash, "DestinySocketCategoryDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            SocketCategory = new DefinitionHashPointer<DestinySocketCategoryDefinition>(socketCategoryHash, "DestinySocketCategoryDefinition");
             Visibility = visibility;
             InsertAction = insertAction;
             CurrencyScalars = currencyScalars;

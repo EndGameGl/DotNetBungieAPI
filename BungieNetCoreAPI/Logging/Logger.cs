@@ -1,21 +1,30 @@
-﻿using System;
+﻿using BungieNetCoreAPI.Clients;
+using BungieNetCoreAPI.Services;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using Unity;
 
 namespace BungieNetCoreAPI.Logging
 {
-    internal static class Logger
+    internal class Logger : ILogger
     {
-        public static List<LogListener> Listeners = new List<LogListener>();
-        public static void Log(string message, LogType type)
+        private readonly IConfigurationService _configuration;
+        private List<LogListener> _listeners = new List<LogListener>();
+
+        public Logger()
         {
-            if (InternalData.LoggingEnabled)
-                Listeners.ForEach(x => x.Invoke(new LogMessage(DateTime.Now, message, type)));
+            _configuration = UnityContainerFactory.Container.Resolve<IConfigurationService>();
+        }
+        public void Log(string message, LogType type)
+        {
+            if (_configuration.Settings.EnableLogging)
+                _listeners.ForEach(x => x.Invoke(new LogMessage(DateTime.Now, message, type)));
         }
 
-        public static void Register(LogListener newListener)
+        public void Register(LogListener newListener)
         {
-            Listeners.Add(newListener);
+            _listeners.Add(newListener);
         }
     }
 }

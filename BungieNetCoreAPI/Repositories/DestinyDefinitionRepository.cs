@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BungieNetCoreAPI
+namespace BungieNetCoreAPI.Repositories
 {
     /// <summary>
     /// Repository for any <see cref="DestinyDefinition"/>

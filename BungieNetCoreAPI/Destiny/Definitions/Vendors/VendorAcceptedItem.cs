@@ -1,5 +1,8 @@
 ﻿using BungieNetCoreAPI.Destiny.Definitions.InventoryBuckets;
+using BungieNetCoreAPI.Repositories;
+using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
+using Unity;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
 {
@@ -11,8 +14,8 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
         [JsonConstructor]
         private VendorAcceptedItem(uint acceptedInventoryBucketHash, uint destinationInventoryBucketHash)
         {
-            AcceptedInventoryBucket = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(acceptedInventoryBucketHash, "DestinyInventoryBucketDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
-            DestinationInventoryBucket = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(destinationInventoryBucketHash, "DestinyInventoryBucketDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            AcceptedInventoryBucket = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(acceptedInventoryBucketHash, "DestinyInventoryBucketDefinition");
+            DestinationInventoryBucket = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(destinationInventoryBucketHash, "DestinyInventoryBucketDefinition");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PlugSets
         {
             Weight = weight;
             AlternateWeight = alternateWeight;
-            PlugItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(plugItemHash, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            PlugItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(plugItemHash, "DestinyInventoryItemDefinition");
         }
     }
 }

@@ -28,7 +28,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Races
                 GenderedRaceNamesByGender = new Dictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>();
                 foreach (var item in genderedRaceNamesByGenderHash)
                 {
-                    GenderedRaceNamesByGender.Add(new DefinitionHashPointer<DestinyGenderDefinition>(item.Key, "DestinyGenderDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext), item.Value);
+                    GenderedRaceNamesByGender.Add(new DefinitionHashPointer<DestinyGenderDefinition>(item.Key, "DestinyGenderDefinition"), item.Value);
                 }
             }
         }

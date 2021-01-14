@@ -11,7 +11,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         [JsonConstructor]
         private InventoryItemTranslationBlockDye(uint channelHash, uint dyeHash)
         {
-            Channel = new DefinitionHashPointer<DestinyArtDyeChannelDefinition>(channelHash, "DestinyArtDyeChannelDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Channel = new DefinitionHashPointer<DestinyArtDyeChannelDefinition>(channelHash, "DestinyArtDyeChannelDefinition");
             DyeHash = dyeHash;
         }
     }

@@ -1,83 +1,83 @@
 ﻿using BungieNetCoreAPI.Logging;
+using BungieNetCoreAPI.Repositories;
+using BungieNetCoreAPI.Services;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Text;
 using System.Threading.Tasks;
+using Unity;
 
 namespace BungieNetCoreAPI.Clients
 {
     public class BungieClient
     {
-        private BungieCDNClient _cdnClient;
-        public BungiePlatfromClient PlatfromClient;
+        internal static Uri BungieCDNUri = new Uri("https://www.bungie.net");
+        internal static Uri BungiePlatformUri = new Uri("https://www.bungie.net/Platform/");
+        internal static IConfigurationService Configuration;
+
+        private readonly ILogger _logger;
+        public static BungieCDNClient CDN;
+        public static BungiePlatfromClient Platform;
+
+
+        public ILocalisedDefinitionsCacheRepository Repository;
         public LogListener LogListener;
 
-        private DestinyLocales[] _locales;
         public BungieClient(string apiKey, BungieClientSettings settings)
         {
-            _cdnClient = new BungieCDNClient();
-            PlatfromClient = new BungiePlatfromClient(apiKey);
-            if (settings.UseCache)
-            {
+            if (string.IsNullOrWhiteSpace(apiKey))
+                throw new Exception("API key is empty.");
 
-                GlobalDefinitionsCacheRepository.Initialize(settings.Locales);
+            SetUpUnityDependencies();
 
-                var manifest = PlatfromClient.GetDestinyManifest().GetAwaiter().GetResult();
+            Configuration = UnityContainerFactory.Container.Resolve<IConfigurationService>();
+            Configuration.ApplySettings(settings);
+            _logger = UnityContainerFactory.Container.Resolve<ILogger>();
 
-                if (InternalData.UsePreloadedCache)
-                {
-                    GlobalDefinitionsCacheRepository.LoadAllDataFromDisk(settings.PathToLocalDb, manifest);
-                }
-            }
-            InternalData.CurrentClient = this;
-        }
-
-        public BungieClient(string apiKey, DestinyLocales[] locales)
-        {
-            InternalData.Initialize();
-            if (InternalData.LoggingEnabled)
+            if (Configuration.Settings.EnableLogging)
             {
                 LogListener = new LogListener();
-                Logger.Register(LogListener);
+                _logger.Register(LogListener);
             }
 
-            HttpClientInstance.Initialize();
-            _cdnClient = new BungieCDNClient();
-            PlatfromClient = new BungiePlatfromClient(apiKey);
-            _locales = locales; 
-            InternalData.CurrentClient = this;
+            CDN = new BungieCDNClient();
+            Platform = new BungiePlatfromClient(apiKey);     
         }
-
-        public async Task Start()
+        public async Task Run()
         {
-            Logger.Log("Starting client...", LogType.Info);
-            if (InternalData.UseCache)
-            { 
-                GlobalDefinitionsCacheRepository.Initialize(_locales);
+            _logger.Log("Starting client...", LogType.Info);
+            if (Configuration.Settings.CacheDefinitionsInMemory)
+            {
+                Repository = UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>();
+                Repository.Initialize(Configuration.Settings.Locales);
 
-                var manifest = await PlatfromClient.GetDestinyManifest();
+                var manifest = Platform.GetDestinyManifest().GetAwaiter().GetResult();
 
-                if (InternalData.UsePreloadedCache)
+                if (Configuration.Settings.UsePreloadedCache)
                 {
-                    Logger.Log($"Using preloaded cache for set locales: {string.Join(", ", _locales)}", LogType.Info);
-                    GlobalDefinitionsCacheRepository.LoadAllDataFromDisk(InternalData.LocalCacheBPath, manifest);
+                    _logger.Log($"Using preloaded cache for set locales: {string.Join(", ", Configuration.Settings.Locales)}", LogType.Info);
+                    Repository.LoadAllDataFromDisk(Configuration.Settings.PathToLocalDb, manifest);
                 }
             }
-            
         }
         public async Task<string> GetJsonFromCDNAsync(string url)
         {
-            return await _cdnClient.DownloadJSONDataAsync(url);
+            return await CDN.DownloadJSONDataAsync(url);
         }
         public async Task<Image> GetImageFromCDNAsync(string url)
         {
-            return await _cdnClient.DownloadImageAsync(url);
+            return await CDN.DownloadImageAsync(url);
         }
         public async Task SaveImageFromCDNLocallyAsync(string url, string folderPath, string filename, ImageFormat format)
         {
-            await _cdnClient.DownloadImageAndSaveAsync(url, folderPath, filename, format);
+            await CDN.DownloadImageAndSaveAsync(url, folderPath, filename, format);
+        }
+        private void SetUpUnityDependencies()
+        {
+            UnityContainerFactory.Container.RegisterType<ILogger, Logger>(TypeLifetime.Singleton);
+            UnityContainerFactory.Container.RegisterType<IConfigurationService, ConfigurationService>(TypeLifetime.Singleton);
+            UnityContainerFactory.Container.RegisterType<IHttpClientInstance, HttpClientInstance>(TypeLifetime.Singleton);
+            UnityContainerFactory.Container.RegisterType<ILocalisedDefinitionsCacheRepository, LocalisedDefinitionsCacheRepository>(TypeLifetime.Singleton);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Collectibles
         {
             AcquisitionInfo = acquisitionInfo;
             DisplayProperties = displayProperties;
-            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition");
             if (parentNodeHashes == null)
                 ParentNodes = new List<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
             else
@@ -38,7 +38,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Collectibles
                 ParentNodes = new List<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
                 foreach (var parentNodeHash in parentNodeHashes)
                 {
-                    ParentNodes.Add(new DefinitionHashPointer<DestinyPresentationNodeDefinition>(parentNodeHash, "DestinyPresentationNodeDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    ParentNodes.Add(new DefinitionHashPointer<DestinyPresentationNodeDefinition>(parentNodeHash, "DestinyPresentationNodeDefinition"));
                 }
             }
             PresentationNodeType = presentationNodeType;
@@ -53,7 +53,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Collectibles
                 Traits = new List<DefinitionHashPointer<DestinyTraitDefinition>>();
                 foreach (var traitHash in traitHashes)
                 {
-                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, "DestinyTraitDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, "DestinyTraitDefinition"));
                 }
             }
             if (traitIds == null)

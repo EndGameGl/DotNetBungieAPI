@@ -1,18 +1,24 @@
-﻿using System;
+﻿using BungieNetCoreAPI.Services;
+using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using Unity;
 
 namespace BungieNetCoreAPI.Clients
 {
     /// <summary>
     /// Bungie client for interacting with CDN
     /// </summary>
-    internal class BungieCDNClient
+    public class BungieCDNClient
     {
-        internal static Uri BungieCDNUri = new Uri("https://www.bungie.net");
+        private readonly IHttpClientInstance _httpClient;
+        internal BungieCDNClient()
+        {
+            _httpClient = UnityContainerFactory.Container.Resolve<IHttpClientInstance>();
+        }
         /// <summary>
         /// Downloads json data from CDN
         /// </summary>
@@ -20,7 +26,7 @@ namespace BungieNetCoreAPI.Clients
         /// <returns></returns>
         public async Task<string> DownloadJSONDataAsync(string url)
         {
-            var response = await HttpClientInstance.Get(BungieCDNUri + url);
+            var response = await _httpClient.Get(BungieClient.BungieCDNUri + url);
             if (response.IsSuccessStatusCode)
                 return await response.Content.ReadAsStringAsync();
             else
@@ -34,7 +40,7 @@ namespace BungieNetCoreAPI.Clients
         public async Task<Image> DownloadImageAsync(string url)
         {
             Image image = null;
-            var response = await HttpClientInstance.Get(BungieCDNUri + url);
+            var response = await _httpClient.Get(BungieClient.BungieCDNUri + url);
             if (response.IsSuccessStatusCode)
             {
                 using (var stream = await response.Content.ReadAsStreamAsync())
@@ -61,7 +67,7 @@ namespace BungieNetCoreAPI.Clients
         public async Task<Image> DownloadImageAndSaveAsync(string url, string folderPath, string filename, ImageFormat format)
         {
             Image image = null;
-            var response = await HttpClientInstance.Get(BungieCDNUri + url);
+            var response = await _httpClient.Get(BungieClient.BungieCDNUri + url);
             if (response.IsSuccessStatusCode)
             {
                 using (var stream = await response.Content.ReadAsStreamAsync())

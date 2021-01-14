@@ -70,20 +70,20 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
             {
                 ActivityModes = new List<DefinitionHashPointer<DestinyActivityModeDefinition>>();
                 foreach (var activityModeHash in activityModeHashes)
-                    ActivityModes.Add(new DefinitionHashPointer<DestinyActivityModeDefinition>(activityModeHash, "DestinyActivityModeDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    ActivityModes.Add(new DefinitionHashPointer<DestinyActivityModeDefinition>(activityModeHash, "DestinyActivityModeDefinition"));
             }
             if (activityModeTypes == null)
                 ActivityModeTypes = new List<DestinyActivityModeType>();
             else
                 ActivityModeTypes = activityModeTypes;
-            ActivityType = new DefinitionHashPointer<DestinyActivityTypeDefinition>(activityTypeHash, "DestinyActivityTypeDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            ActivityType = new DefinitionHashPointer<DestinyActivityTypeDefinition>(activityTypeHash, "DestinyActivityTypeDefinition");
             if (challenges == null)
                 Challenges = new List<ActivityChallengeEntry>();
             else
                 Challenges = challenges;
             CompletionUnlockHash = completionUnlockHash;
-            Destination = new DefinitionHashPointer<DestinyDestinationDefinition>(destinationHash, "DestinyDestinationDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
-            DirectActivityMode = new DefinitionHashPointer<DestinyActivityModeDefinition>(directActivityModeHash, "DestinyActivityModeDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Destination = new DefinitionHashPointer<DestinyDestinationDefinition>(destinationHash, "DestinyDestinationDefinition");
+            DirectActivityMode = new DefinitionHashPointer<DestinyActivityModeDefinition>(directActivityModeHash, "DestinyActivityModeDefinition");
             DirectActivityModeType = directActivityModeType;
             DisplayProperties = displayProperties;
             GuidedGame = guidedGame;
@@ -105,7 +105,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
                 OptionalUnlockStrings = optionalUnlockStrings;
             OriginalDisplayProperties = originalDisplayProperties;
             PgcrImage = pgcrImage;
-            Place = new DefinitionHashPointer<DestinyPlaceDefinition>(placeHash, "DestinyPlaceDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Place = new DefinitionHashPointer<DestinyPlaceDefinition>(placeHash, "DestinyPlaceDefinition");
             if (playlistItems == null)
                 PlaylistItems = new List<ActivityPlaylistItemEntry>();
             else

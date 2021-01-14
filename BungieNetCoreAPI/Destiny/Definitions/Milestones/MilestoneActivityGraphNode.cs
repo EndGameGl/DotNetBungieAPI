@@ -11,7 +11,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
         [JsonConstructor]
         private MilestoneActivityGraphNode(uint activityGraphHash, uint activityGraphNodeHash)
         {
-            ActivityGraph = new DefinitionHashPointer<DestinyActivityGraphDefinition>(activityGraphHash, "DestinyActivityGraphDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            ActivityGraph = new DefinitionHashPointer<DestinyActivityGraphDefinition>(activityGraphHash, "DestinyActivityGraphDefinition");
             ActivityGraphNodeHash = activityGraphNodeHash;
         }
     }

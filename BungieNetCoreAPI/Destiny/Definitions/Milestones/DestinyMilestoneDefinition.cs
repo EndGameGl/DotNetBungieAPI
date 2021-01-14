@@ -44,7 +44,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
             {
                 foreach (var quest in quests)
                 {
-                    Quests.Add(new DefinitionHashPointer<DestinyInventoryItemDefinition>(quest.Key, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext), quest.Value);
+                    Quests.Add(new DefinitionHashPointer<DestinyInventoryItemDefinition>(quest.Key, "DestinyInventoryItemDefinition"), quest.Value);
                 }
             }
             Recruitable = recruitable;

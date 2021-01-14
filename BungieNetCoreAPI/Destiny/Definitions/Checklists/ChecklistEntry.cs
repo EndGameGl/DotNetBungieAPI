@@ -15,7 +15,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Checklists
         private ChecklistEntry(uint bubbleHash, uint destinationHash, DestinyDefinitionDisplayProperties displayProperties, uint hash, int scope)
         {
             BubbleHash = bubbleHash;
-            Destination = new DefinitionHashPointer<DestinyDestinationDefinition>(destinationHash, "DestinyDestinationDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Destination = new DefinitionHashPointer<DestinyDestinationDefinition>(destinationHash, "DestinyDestinationDefinition");
             DisplayProperties = displayProperties;
             Hash = hash;
             Scope = scope;

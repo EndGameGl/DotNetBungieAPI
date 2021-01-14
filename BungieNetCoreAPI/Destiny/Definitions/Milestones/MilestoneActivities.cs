@@ -16,7 +16,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
             List<MilestoneActivityPhase> phases)
         {
             ActivityGraphNodes = activityGraphNodes;
-            Activity = new DefinitionHashPointer<DestinyActivityDefinition>(activityHash, "DestinyActivityDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Activity = new DefinitionHashPointer<DestinyActivityDefinition>(activityHash, "DestinyActivityDefinition");
             Challenges = challenges;
             Phases = phases;
         }

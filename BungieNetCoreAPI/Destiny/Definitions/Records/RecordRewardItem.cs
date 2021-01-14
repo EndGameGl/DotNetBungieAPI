@@ -11,7 +11,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Records
         [JsonConstructor]
         private RecordRewardItem(uint itemHash, int quantity)
         {
-            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition");
             Quantity = quantity;
         }
     }

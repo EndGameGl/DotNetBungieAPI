@@ -12,8 +12,8 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Records
         [JsonConstructor]
         private RecordStateInfo(uint claimedUnlockHash, uint completeUnlockHash, uint featuredPriority)
         {
-            ClaimedUnlock = new DefinitionHashPointer<DestinyUnlockDefinition>(claimedUnlockHash, "DestinyUnlockDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
-            CompleteUnlock = new DefinitionHashPointer<DestinyUnlockDefinition>(completeUnlockHash, "DestinyUnlockDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            ClaimedUnlock = new DefinitionHashPointer<DestinyUnlockDefinition>(claimedUnlockHash, "DestinyUnlockDefinition");
+            CompleteUnlock = new DefinitionHashPointer<DestinyUnlockDefinition>(completeUnlockHash, "DestinyUnlockDefinition");
             FeaturedPriority = featuredPriority;
         }
     }

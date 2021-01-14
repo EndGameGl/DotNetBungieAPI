@@ -31,7 +31,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
             Instructions = instructions;
             InteractionIndex = interactionIndex;
             InteractionType = interactionType;
-            QuestlineItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(questlineItemHash, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            QuestlineItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(questlineItemHash, "DestinyInventoryItemDefinition");
             Replies = replies;
             RewardBlockLabel = rewardBlockLabel;
             RewardVendorCategoryIndex = rewardVendorCategoryIndex;

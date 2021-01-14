@@ -9,7 +9,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
         [JsonConstructor]
         private PresentationChildNodePresentationNode(uint presentationNodeHash)
         {
-            PresentationNode = new DefinitionHashPointer<DestinyPresentationNodeDefinition>(presentationNodeHash, "DestinyPresentationNodeDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            PresentationNode = new DefinitionHashPointer<DestinyPresentationNodeDefinition>(presentationNodeHash, "DestinyPresentationNodeDefinition");
         }
     }
 }

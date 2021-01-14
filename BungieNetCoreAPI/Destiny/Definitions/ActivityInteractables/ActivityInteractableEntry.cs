@@ -10,7 +10,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityInteractables
         [JsonConstructor]
         private ActivityInteractableEntry(uint activityHash)
         {
-            Activity = new DefinitionHashPointer<DestinyActivityDefinition>(activityHash, "DestinyActivityDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Activity = new DefinitionHashPointer<DestinyActivityDefinition>(activityHash, "DestinyActivityDefinition");
         }
     }
 }

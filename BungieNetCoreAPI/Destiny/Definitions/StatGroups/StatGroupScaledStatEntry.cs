@@ -17,7 +17,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.StatGroups
             DisplayAsNumeric = displayAsNumeric;
             DisplayInterpolation = displayInterpolation;
             MaximumValue = maximumValue;
-            Stat = new DefinitionHashPointer<DestinyStatDefinition>(statHash, "DestinyStatDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Stat = new DefinitionHashPointer<DestinyStatDefinition>(statHash, "DestinyStatDefinition");
         }
     }
 }

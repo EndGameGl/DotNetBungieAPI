@@ -51,9 +51,14 @@ namespace BungieNetCoreTestingApp
         {
             _bungieClient = new BungieClient(
                 apiKey: "75187ab684d94a338c1b5a6996c217f8",
-                locales: new DestinyLocales[]
+                settings: new BungieClientSettings()
                 {
-                    DestinyLocales.EN
+                    CacheDefinitionsInMemory = true,
+                    EnableLogging = true,
+                    Locales = new DestinyLocales[] { DestinyLocales.EN, DestinyLocales.RU },
+                    UsePreloadedCache = false,
+                    PathToLocalDb = "H:\\BungieNetCoreAPIRepository\\ManifestDB_12.01.2021",
+                    TryDownloadMissingDefinitions = true
                 });
             _bungieClient.LogListener.OnNewMessage += (mes) => Console.WriteLine(mes);
             MainAsync().GetAwaiter().GetResult();
@@ -61,8 +66,10 @@ namespace BungieNetCoreTestingApp
 
         private static async Task MainAsync()
         {
-            await _bungieClient.Start();
-            var headArmor = GlobalDefinitionsCacheRepository.GetItemsWithTrait("en", "armor_type.head");
+            await _bungieClient.Run();
+            var posterityPointer = new DefinitionHashPointer<DestinyInventoryItemDefinition>(3281285075, "DestinyInventoryItemDefinition");
+            var item = posterityPointer.Value;
+
             await Task.Delay(Timeout.Infinite);
         }
     }

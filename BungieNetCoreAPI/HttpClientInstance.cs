@@ -8,33 +8,33 @@ using System.Threading.Tasks;
 
 namespace BungieNetCoreAPI
 {
-    internal static class HttpClientInstance
+    internal class HttpClientInstance : IHttpClientInstance
     {
         private static HttpClient _httpClient;
 
-        internal static void Initialize()
+        internal HttpClientInstance()
         {
             _httpClient = new HttpClient()
-            { 
+            {
                 Timeout = TimeSpan.FromSeconds(6000)
             };
         }
 
-        public static void AddAcceptHeader(string headerValue)
+        public void AddAcceptHeader(string headerValue)
         {
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(headerValue));
         }
-        public static void AddHeader(string header, string headerValue)
+        public void AddHeader(string header, string headerValue)
         {
             _httpClient.DefaultRequestHeaders.Add(header, headerValue);
         }
-        public static void RemoveHeader(string header)
+        public void RemoveHeader(string header)
         {
             _httpClient.DefaultRequestHeaders.Remove(header);
         }
-        public static async Task<HttpResponseMessage> Get(string query)
+        public async Task<HttpResponseMessage> Get(string query)
         {
-            Logger.Log($"Getting data from {query}", LogType.Debug);
+            //Logger.Log($"Getting data from {query}", LogType.Debug);
             return await _httpClient.GetAsync(query);
         }
     }

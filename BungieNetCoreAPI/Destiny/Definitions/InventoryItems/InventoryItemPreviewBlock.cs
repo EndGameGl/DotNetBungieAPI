@@ -16,7 +16,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         private InventoryItemPreviewBlock(string previewActionString, uint previewVendorHash, string screenStyle)
         {
             PreviewActionString = previewActionString;
-            PreviewVendor = new DefinitionHashPointer<DestinyVendorDefinition>(previewVendorHash, "DestinyVendorDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            PreviewVendor = new DefinitionHashPointer<DestinyVendorDefinition>(previewVendorHash, "DestinyVendorDefinition");
             ScreenStyle = screenStyle;
         }
     }

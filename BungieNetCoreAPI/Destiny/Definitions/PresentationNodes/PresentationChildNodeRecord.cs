@@ -10,7 +10,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
         [JsonConstructor]
         private PresentationChildNodeRecord(uint recordHash)
         {
-            Record = new DefinitionHashPointer<DestinyRecordDefinition>(recordHash, "DestinyRecordDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Record = new DefinitionHashPointer<DestinyRecordDefinition>(recordHash, "DestinyRecordDefinition");
         }
     }
 }

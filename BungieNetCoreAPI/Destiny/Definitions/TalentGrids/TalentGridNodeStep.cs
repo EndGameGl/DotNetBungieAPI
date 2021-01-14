@@ -45,7 +45,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.TalentGrids
             {
                 foreach (var perkHash in perkHashes)
                 {
-                    Perks.Add(new DefinitionHashPointer<DestinySandboxPerkDefinition>(perkHash, "DestinySandboxPerkDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    Perks.Add(new DefinitionHashPointer<DestinySandboxPerkDefinition>(perkHash, "DestinySandboxPerkDefinition"));
                 }
             }
             StartProgressionBarAtProgress = startProgressionBarAtProgress;
@@ -54,7 +54,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.TalentGrids
             {
                 foreach (var statHash in statHashes)
                 {
-                    Stats.Add(new DefinitionHashPointer<DestinyStatDefinition>(statHash, "DestinyStatDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    Stats.Add(new DefinitionHashPointer<DestinyStatDefinition>(statHash, "DestinyStatDefinition"));
                 }
             }
             StepIndex = stepIndex;

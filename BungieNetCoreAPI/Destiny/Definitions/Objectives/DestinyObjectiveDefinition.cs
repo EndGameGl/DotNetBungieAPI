@@ -44,7 +44,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Objectives
             InProgressValueStyle = inProgressValueStyle;
             IsCountingDownward = isCountingDownward;
             IsDisplayOnlyObjective = isDisplayOnlyObjective;
-            Location = new DefinitionHashPointer<DestinyLocationDefinition>(locationHash, "DestinyLocationDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Location = new DefinitionHashPointer<DestinyLocationDefinition>(locationHash, "DestinyLocationDefinition");
             MinimumVisibilityThreshold = minimumVisibilityThreshold;
             Perks = perks;
             ProgressDescription = progressDescription;

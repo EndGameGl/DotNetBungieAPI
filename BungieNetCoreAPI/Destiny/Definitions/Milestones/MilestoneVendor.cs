@@ -10,7 +10,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
         [JsonConstructor]
         private MilestoneVendor(uint vendorHash)
         {
-            Vendor = new DefinitionHashPointer<DestinyVendorDefinition>(vendorHash, "DestinyVendorDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Vendor = new DefinitionHashPointer<DestinyVendorDefinition>(vendorHash, "DestinyVendorDefinition");
         }
     }
 }

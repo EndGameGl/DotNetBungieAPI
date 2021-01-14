@@ -1,7 +1,9 @@
 ﻿using BungieNetCoreAPI.Attributes;
+using BungieNetCoreAPI.Clients;
 using BungieNetCoreAPI.Destiny;
 using BungieNetCoreAPI.Destiny.Definitions;
 using BungieNetCoreAPI.Logging;
+using BungieNetCoreAPI.Services;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -10,14 +12,16 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Unity;
 
-namespace BungieNetCoreAPI
+namespace BungieNetCoreAPI.Repositories
 {
     /// <summary>
     /// Repository class for storing and accessing all classes with <see cref="Attributes.DestinyDefinitionAttribute"/> attribute
     /// </summary>
     public class DefinitionCacheRepository
     {
+        private readonly ILogger _logger;
         private Dictionary<string, IDestinyCacheRepository> _definitions;
         /// <summary>
         /// Locale of this repository
@@ -29,6 +33,7 @@ namespace BungieNetCoreAPI
         /// <param name="locale">Locale for this repository</param>
         public DefinitionCacheRepository(string locale)
         {
+            _logger = UnityContainerFactory.Container.Resolve<ILogger>();
             _definitions = new Dictionary<string, IDestinyCacheRepository>();
             Locale = locale;
             var definitionNameToTypeMapping = Assembly
@@ -201,15 +206,15 @@ namespace BungieNetCoreAPI
         /// <param name="manifest"><see cref="DestinyManifest"/> with data</param>
         public void LoadDataFromDisk(string localManifestPath, DestinyManifest manifest)
         {
-            GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext = Locale;
-            Logger.Log($"Started loading data for localization: {Locale}", LogType.Info);
+            UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>().SetLocaleContext(Locale);
+            _logger.Log($"Started loading data for localization: {Locale}", LogType.Info);
             Stopwatch fullLoadStopwatch = new Stopwatch();
             fullLoadStopwatch.Start();
             var jsonWolrdComponentContentLocalePath = manifest.JsonWorldComponentContentPaths[Locale];
 
             var result = Parallel.ForEach(_definitions.Keys, (definitionName) => 
             {
-                Logger.Log($"Reading: {definitionName}... ", LogType.Info);
+                _logger.Log($"Reading: {definitionName}... ", LogType.Info);
                 var definitionJson =
                     File.ReadAllText($"{localManifestPath}/JsonWorldComponentContent/{Locale}/{definitionName}/{Path.GetFileName(jsonWolrdComponentContentLocalePath[definitionName])}");
                 var definitionJObjectDictionary = JObject.Parse(definitionJson);
@@ -222,8 +227,8 @@ namespace BungieNetCoreAPI
             });
 
             fullLoadStopwatch.Stop();
-            Logger.Log($"Finished loading data for {Locale}: {fullLoadStopwatch.ElapsedMilliseconds} ms", LogType.Info);
-            GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext = string.Empty;
+            _logger.Log($"Finished loading data for {Locale}: {fullLoadStopwatch.ElapsedMilliseconds} ms", LogType.Info);
+            UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>().ResetLocaleContext();
         }
     }
 }

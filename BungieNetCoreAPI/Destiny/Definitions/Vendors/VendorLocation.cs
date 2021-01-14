@@ -1,5 +1,9 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Destinations;
+﻿using BungieNetCoreAPI.Clients;
+using BungieNetCoreAPI.Destiny.Definitions.Destinations;
+using BungieNetCoreAPI.Repositories;
+using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
+using Unity;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
 {
@@ -12,7 +16,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
         private VendorLocation(string backgroundImagePath, uint destinationHash)
         {
             BackgroundImagePath = backgroundImagePath;
-            Destination = new DefinitionHashPointer<DestinyDestinationDefinition>(destinationHash, "DestinyDestinationDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Destination = new DefinitionHashPointer<DestinyDestinationDefinition>(destinationHash, "DestinyDestinationDefinition");
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using BungieNetCoreAPI.Clients;
+using BungieNetCoreAPI.Repositories;
+using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -6,6 +8,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Unity;
 
 namespace BungieNetCoreAPI.Destiny
 {
@@ -41,10 +44,12 @@ namespace BungieNetCoreAPI.Destiny
             if (string.IsNullOrWhiteSpace(path))
                 throw new Exception("Specify files path in configs.json or use DownloadAndSaveToLocalFiles(string) method");
 
+            var _httpClient = UnityContainerFactory.Container.Resolve<IHttpClientInstance>();
+
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            Uri _cdnUri = BungieCDNClient.BungieCDNUri;
+            Uri _cdnUri = BungieClient.BungieCDNUri;
             Console.WriteLine($"Loading data from: {_cdnUri.AbsoluteUri}");
 
             HttpResponseMessage message;
@@ -53,7 +58,7 @@ namespace BungieNetCoreAPI.Destiny
             if (!Directory.Exists($"{path}/MobileAssetContent"))
                 Directory.CreateDirectory($"{path}/MobileAssetContent");
             Console.Write($"Getting data from: {_cdnUri + MobileAssetContentPath}");
-            message = await HttpClientInstance.Get(_cdnUri + MobileAssetContentPath);
+            message = await _httpClient.Get(_cdnUri + MobileAssetContentPath);
             using (var stream = await message.Content.ReadAsStreamAsync())
             {
                 var fileInfo = new FileInfo($"{path}/MobileAssetContent/{Path.GetFileName(MobileAssetContentPath)}");
@@ -72,7 +77,7 @@ namespace BungieNetCoreAPI.Destiny
                 if (!Directory.Exists($"{path}/MobileGearAssetDataBases/{entry.Version}"))
                     Directory.CreateDirectory($"{path}/MobileGearAssetDataBases/{entry.Version}");
                 Console.Write($"Getting data from: {_cdnUri + entry.Path}");
-                message = await HttpClientInstance.Get(_cdnUri + entry.Path);
+                message = await _httpClient.Get(_cdnUri + entry.Path);
                 using (var stream = await message.Content.ReadAsStreamAsync())
                 {
                     var fileInfo = new FileInfo($"{path}/MobileGearAssetDataBases/{entry.Version}/{Path.GetFileName(entry.Path)}");
@@ -92,7 +97,7 @@ namespace BungieNetCoreAPI.Destiny
                 if (!Directory.Exists($"{path}/MobileWorldContent/{key}"))
                     Directory.CreateDirectory($"{path}/MobileWorldContent/{key}");
                 Console.Write($"Getting data from: {_cdnUri + MobileWorldContentPaths[key]}");
-                message = await HttpClientInstance.Get(_cdnUri + MobileWorldContentPaths[key]);
+                message = await _httpClient.Get(_cdnUri + MobileWorldContentPaths[key]);
                 using (var stream = await message.Content.ReadAsStreamAsync())
                 {
                     var fileInfo = new FileInfo($"{path}/MobileWorldContent/{key}/{Path.GetFileName(MobileWorldContentPaths[key])}");
@@ -112,7 +117,7 @@ namespace BungieNetCoreAPI.Destiny
                 if (!Directory.Exists($"{path}/JsonWorldContent/{key}"))
                     Directory.CreateDirectory($"{path}/JsonWorldContent/{key}");
                 Console.Write($"Getting data from: {_cdnUri + JsonWorldContentPaths[key]}");
-                message = await HttpClientInstance.Get(_cdnUri + JsonWorldContentPaths[key]);
+                message = await _httpClient.Get(_cdnUri + JsonWorldContentPaths[key]);
                 using (var stream = await message.Content.ReadAsStreamAsync())
                 {
                     var fileInfo = new FileInfo($"{path}/JsonWorldContent/{key}/{Path.GetFileName(JsonWorldContentPaths[key])}");
@@ -136,7 +141,7 @@ namespace BungieNetCoreAPI.Destiny
                     if (!Directory.Exists($"{path}/JsonWorldComponentContent/{key}/{innerKey}"))
                         Directory.CreateDirectory($"{path}/JsonWorldComponentContent/{key}/{innerKey}");
                     Console.Write($"Getting data from: {_cdnUri + JsonWorldComponentContentPaths[key][innerKey]}");
-                    message = await HttpClientInstance.Get(_cdnUri + JsonWorldComponentContentPaths[key][innerKey]);
+                    message = await _httpClient.Get(_cdnUri + JsonWorldComponentContentPaths[key][innerKey]);
                     using (var stream = await message.Content.ReadAsStreamAsync())
                     {
                         var fileInfo = new FileInfo($"{path}/JsonWorldComponentContent/{key}/{innerKey}/{Path.GetFileName(JsonWorldComponentContentPaths[key][innerKey])}");
@@ -153,7 +158,7 @@ namespace BungieNetCoreAPI.Destiny
             if (!Directory.Exists($"{path}/MobileClanBannerDatabase"))
                 Directory.CreateDirectory($"{path}/MobileClanBannerDatabase");
             Console.Write($"Getting data from: {_cdnUri + MobileClanBannerDatabasePath}");
-            message = await HttpClientInstance.Get(_cdnUri + MobileClanBannerDatabasePath);
+            message = await _httpClient.Get(_cdnUri + MobileClanBannerDatabasePath);
             using (var stream = await message.Content.ReadAsStreamAsync())
             {
                 var fileInfo = new FileInfo($"{path}/MobileClanBannerDatabase/{Path.GetFileName(MobileClanBannerDatabasePath)}");
@@ -174,9 +179,10 @@ namespace BungieNetCoreAPI.Destiny
         /// <returns></returns>
         public async Task DownloadAndSaveToLocalFiles(string path)
         {
+            var _httpClient = UnityContainerFactory.Container.Resolve<IHttpClientInstance>();
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            Uri _cdnUri = new Uri("https://www.bungie.net");
+            Uri _cdnUri = BungieClient.BungieCDNUri;
             Console.WriteLine($"Loading data from: {_cdnUri.AbsoluteUri}");
             HttpResponseMessage message;
 
@@ -184,7 +190,7 @@ namespace BungieNetCoreAPI.Destiny
             if (!Directory.Exists($"{path}/MobileAssetContent"))
                 Directory.CreateDirectory($"{path}/MobileAssetContent");
             Console.Write($"Getting data from: {_cdnUri + MobileAssetContentPath}");
-            message = await HttpClientInstance.Get(_cdnUri + MobileAssetContentPath);
+            message = await _httpClient.Get(_cdnUri + MobileAssetContentPath);
             using (var stream = await message.Content.ReadAsStreamAsync())
             {
                 var fileInfo = new FileInfo($"{path}/MobileAssetContent/{Path.GetFileName(MobileAssetContentPath)}");
@@ -203,7 +209,7 @@ namespace BungieNetCoreAPI.Destiny
                 if (!Directory.Exists($"{path}/MobileGearAssetDataBases/{entry.Version}"))
                     Directory.CreateDirectory($"{path}/MobileGearAssetDataBases/{entry.Version}");
                 Console.Write($"Getting data from: {_cdnUri + entry.Path}");
-                message = await HttpClientInstance.Get(_cdnUri + entry.Path);
+                message = await _httpClient.Get(_cdnUri + entry.Path);
                 using (var stream = await message.Content.ReadAsStreamAsync())
                 {
                     var fileInfo = new FileInfo($"{path}/MobileGearAssetDataBases/{entry.Version}/{Path.GetFileName(entry.Path)}");
@@ -223,7 +229,7 @@ namespace BungieNetCoreAPI.Destiny
                 if (!Directory.Exists($"{path}/MobileWorldContent/{key}"))
                     Directory.CreateDirectory($"{path}/MobileWorldContent/{key}");
                 Console.Write($"Getting data from: {_cdnUri + MobileWorldContentPaths[key]}");
-                message = await HttpClientInstance.Get(_cdnUri + MobileWorldContentPaths[key]);
+                message = await _httpClient.Get(_cdnUri + MobileWorldContentPaths[key]);
                 using (var stream = await message.Content.ReadAsStreamAsync())
                 {
                     var fileInfo = new FileInfo($"{path}/MobileWorldContent/{key}/{Path.GetFileName(MobileWorldContentPaths[key])}");
@@ -243,7 +249,7 @@ namespace BungieNetCoreAPI.Destiny
                 if (!Directory.Exists($"{path}/JsonWorldContent/{key}"))
                     Directory.CreateDirectory($"{path}/JsonWorldContent/{key}");
                 Console.Write($"Getting data from: {_cdnUri + JsonWorldContentPaths[key]}");
-                message = await HttpClientInstance.Get(_cdnUri + JsonWorldContentPaths[key]);
+                message = await _httpClient.Get(_cdnUri + JsonWorldContentPaths[key]);
                 using (var stream = await message.Content.ReadAsStreamAsync())
                 {
                     var fileInfo = new FileInfo($"{path}/JsonWorldContent/{key}/{Path.GetFileName(JsonWorldContentPaths[key])}");
@@ -267,7 +273,7 @@ namespace BungieNetCoreAPI.Destiny
                     if (!Directory.Exists($"{path}/JsonWorldComponentContent/{key}/{innerKey}"))
                         Directory.CreateDirectory($"{path}/JsonWorldComponentContent/{key}/{innerKey}");
                     Console.Write($"Getting data from: {_cdnUri + JsonWorldComponentContentPaths[key][innerKey]}");
-                    message = await HttpClientInstance.Get(_cdnUri + JsonWorldComponentContentPaths[key][innerKey]);
+                    message = await _httpClient.Get(_cdnUri + JsonWorldComponentContentPaths[key][innerKey]);
                     using (var stream = await message.Content.ReadAsStreamAsync())
                     {
                         var fileInfo = new FileInfo($"{path}/JsonWorldComponentContent/{key}/{innerKey}/{Path.GetFileName(JsonWorldComponentContentPaths[key][innerKey])}");
@@ -284,7 +290,7 @@ namespace BungieNetCoreAPI.Destiny
             if (!Directory.Exists($"{path}/MobileClanBannerDatabase"))
                 Directory.CreateDirectory($"{path}/MobileClanBannerDatabase");
             Console.Write($"Getting data from: {_cdnUri + MobileClanBannerDatabasePath}");
-            message = await HttpClientInstance.Get(_cdnUri + MobileClanBannerDatabasePath);
+            message = await _httpClient.Get(_cdnUri + MobileClanBannerDatabasePath);
             using (var stream = await message.Content.ReadAsStreamAsync())
             {
                 var fileInfo = new FileInfo($"{path}/MobileClanBannerDatabase/{Path.GetFileName(MobileClanBannerDatabasePath)}");
@@ -299,11 +305,11 @@ namespace BungieNetCoreAPI.Destiny
         }
         public void LoadCacheFromDisk()
         {
-            GlobalDefinitionsCacheRepository.LoadAllDataFromDisk(InternalData.LocalCacheBPath, this);
+            UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>().LoadAllDataFromDisk(InternalData.LocalCacheBPath, this);
         }
         public void LoadCacheFromDisk(string path)
         {
-            GlobalDefinitionsCacheRepository.LoadAllDataFromDisk(path, this);
+            UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>().LoadAllDataFromDisk(path, this);
         }
     }
 }

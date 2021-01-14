@@ -28,7 +28,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Classes
                 GenderedClassNamesByGender = new Dictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>();
                 foreach (var item in genderedClassNamesByGenderHash)
                 {
-                    GenderedClassNamesByGender.Add(new DefinitionHashPointer<DestinyGenderDefinition>(item.Key, "DestinyGenderDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext), item.Value);
+                    GenderedClassNamesByGender.Add(new DefinitionHashPointer<DestinyGenderDefinition>(item.Key, "DestinyGenderDefinition"), item.Value);
                 }
             }
         }

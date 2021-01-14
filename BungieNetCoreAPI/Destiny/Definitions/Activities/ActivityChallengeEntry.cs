@@ -19,7 +19,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
             else
                 DummyRewards = dummyRewards;
             InhibitRewardsUnlockHash = inhibitRewardsUnlockHash;
-            Objective = new DefinitionHashPointer<DestinyObjectiveDefinition>(objectiveHash, "DestinyObjectiveDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Objective = new DefinitionHashPointer<DestinyObjectiveDefinition>(objectiveHash, "DestinyObjectiveDefinition");
             RewardSiteHash = rewardSiteHash;
         }
     }

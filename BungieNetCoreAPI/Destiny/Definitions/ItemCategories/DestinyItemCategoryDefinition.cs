@@ -42,7 +42,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ItemCategories
             {
                 foreach (var groupedCategoryHash in groupedCategoryHashes)
                 {
-                    GroupedCategories.Add(new DefinitionHashPointer<DestinyItemCategoryDefinition>(groupedCategoryHash, "DestinyItemCategoryDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    GroupedCategories.Add(new DefinitionHashPointer<DestinyItemCategoryDefinition>(groupedCategoryHash, "DestinyItemCategoryDefinition"));
                 }
             }
             IsPlug = isPlug;
@@ -52,7 +52,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ItemCategories
             {
                 foreach (var parentCategoryHash in parentCategoryHashes)
                 {
-                    ParentCategories.Add(new DefinitionHashPointer<DestinyItemCategoryDefinition>(parentCategoryHash, "DestinyItemCategoryDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    ParentCategories.Add(new DefinitionHashPointer<DestinyItemCategoryDefinition>(parentCategoryHash, "DestinyItemCategoryDefinition"));
                 }
             }
             ShortTitle = shortTitle;

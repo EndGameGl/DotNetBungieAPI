@@ -15,7 +15,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.UnlockCountMappings
         private DestinyUnlockCountMappingDefinition(uint unlockValueHash, bool blacklisted, uint hash, int index, bool redacted)
             : base(blacklisted, hash, index, redacted)
         {
-            UnlockValue = new DefinitionHashPointer<DestinyUnlockDefinition>(unlockValueHash, "DestinyUnlockDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            UnlockValue = new DefinitionHashPointer<DestinyUnlockDefinition>(unlockValueHash, "DestinyUnlockDefinition");
         }
 
         public override string ToString()

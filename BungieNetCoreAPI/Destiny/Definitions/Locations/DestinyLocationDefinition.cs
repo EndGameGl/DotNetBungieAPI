@@ -16,7 +16,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Locations
             : base(blacklisted, hash, index, redacted)
         {
             LocationReleases = locationReleases;
-            Vendor = new DefinitionHashPointer<DestinyVendorDefinition>(vendorHash, "DestinyVendorDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Vendor = new DefinitionHashPointer<DestinyVendorDefinition>(vendorHash, "DestinyVendorDefinition");
         }
 
         public override string ToString()

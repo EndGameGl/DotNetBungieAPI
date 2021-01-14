@@ -18,7 +18,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.MaterialRequirementSets
         {
             Count = count;
             DeleteOnAction = deleteOnAction;
-            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition");
             OmitFromRequirements = omitFromRequirements;
         }
     }

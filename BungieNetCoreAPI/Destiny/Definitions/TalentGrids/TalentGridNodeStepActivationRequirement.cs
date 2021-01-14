@@ -20,7 +20,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.TalentGrids
             {
                 foreach (var materialRequirementHash in materialRequirementHashes)
                 {
-                    MaterialRequirements.Add(new DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>(materialRequirementHash, "DestinyMaterialRequirementSetDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    MaterialRequirements.Add(new DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>(materialRequirementHash, "DestinyMaterialRequirementSetDefinition"));
                 }
             }
         }

@@ -15,7 +15,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ProgressionLevelRequirements
             bool blacklisted, uint hash, int index, bool redacted)
             : base(blacklisted, hash, index, redacted)
         {
-            Progression = new DefinitionHashPointer<DestinyProgressionDefinition>(progressionHash, "DestinyProgressionDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Progression = new DefinitionHashPointer<DestinyProgressionDefinition>(progressionHash, "DestinyProgressionDefinition");
             RequirementCurve = requirementCurve;
         }
 

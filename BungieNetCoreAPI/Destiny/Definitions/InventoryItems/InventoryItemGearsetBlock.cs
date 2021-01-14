@@ -17,7 +17,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             {
                 foreach (var item in itemList)
                 {
-                    Items.Add(new DefinitionHashPointer<DestinyInventoryItemDefinition>(item, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    Items.Add(new DefinitionHashPointer<DestinyInventoryItemDefinition>(item, "DestinyInventoryItemDefinition"));
                 }
             }
         }

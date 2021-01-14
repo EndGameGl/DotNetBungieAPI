@@ -5,18 +5,21 @@ using BungieNetCoreAPI.Destiny.Definitions;
 using BungieNetCoreAPI.Destiny.Profile;
 using BungieNetCoreAPI.Destiny.Responses;
 using BungieNetCoreAPI.Logging;
+using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Unity;
 
 namespace BungieNetCoreAPI.Clients
 {
     public class BungiePlatfromClient
     {
-        private Uri _platfromUri = new Uri("https://www.bungie.net/Platform/");
+        private readonly IHttpClientInstance _httpClient;
+        private readonly ILogger _logger;
 
         private string _apiKey;
 
@@ -37,11 +40,13 @@ namespace BungieNetCoreAPI.Clients
             set { }
         }
 
-        public BungiePlatfromClient(string apiKey)
+        internal BungiePlatfromClient(string apiKey)
         {
             _apiKey = apiKey;
-            HttpClientInstance.AddAcceptHeader("application/json");
-            HttpClientInstance.AddHeader("X-API-Key", apiKey);          
+            _httpClient = UnityContainerFactory.Container.Resolve<IHttpClientInstance>();
+            _logger = UnityContainerFactory.Container.Resolve<ILogger>();
+            _httpClient.AddAcceptHeader("application/json");
+            _httpClient.AddHeader("X-API-Key", apiKey);          
         }
 
         
@@ -90,10 +95,10 @@ namespace BungieNetCoreAPI.Clients
         #region Destiny 2 methods
         public async Task<DestinyManifest> GetDestinyManifest()
         {
-            Logger.Log("Loading destiny manifest...", LogType.Info);
+            _logger.Log("Loading destiny manifest...", LogType.Info);
             var manifest = await GetData<DestinyManifest>("Destiny2/Manifest");
             InternalData.LoadedManifest = manifest;
-            Logger.Log($"Loaded destiny manifest: Version {manifest.Version}", LogType.Info);
+            _logger.Log($"Loaded destiny manifest: Version {manifest.Version}", LogType.Info);
             return manifest;
         }
         public async Task<T> GetDestinyEntityDefinition<T>(string entityType, uint hash) where T : DestinyDefinition
@@ -119,7 +124,7 @@ namespace BungieNetCoreAPI.Clients
         #endregion
         private async Task<T> GetData<T>(string query)
         {
-            var response = await HttpClientInstance.Get(_platfromUri + query);
+            var response = await _httpClient.Get(BungieClient.BungiePlatformUri + query);
             //if (response.IsSuccessStatusCode)
             //{
             var bungieResponse = JsonConvert.DeserializeObject<BungieResponse<T>>(await response.Content.ReadAsStringAsync());

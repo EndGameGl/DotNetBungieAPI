@@ -31,17 +31,17 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Metrics
             {
                 foreach (var parentNodeHash in parentNodeHashes)
                 {
-                    ParentNodes.Add(new DefinitionHashPointer<DestinyPresentationNodeDefinition>(parentNodeHash, "DestinyPresentationNodeDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    ParentNodes.Add(new DefinitionHashPointer<DestinyPresentationNodeDefinition>(parentNodeHash, "DestinyPresentationNodeDefinition"));
                 }
             }
             PresentationNodeType = presentationNodeType;
-            TrackingObjective = new DefinitionHashPointer<DestinyObjectiveDefinition>(trackingObjectiveHash, "DestinyObjectiveDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            TrackingObjective = new DefinitionHashPointer<DestinyObjectiveDefinition>(trackingObjectiveHash, "DestinyObjectiveDefinition");
             Traits = new List<DefinitionHashPointer<DestinyTraitDefinition>>();
             if (traitHashes != null)
             {
                 foreach (var traitHash in traitHashes)
                 {
-                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, "DestinyTraitDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, "DestinyTraitDefinition"));
                 }
             }
             TraitIds = traitIds;

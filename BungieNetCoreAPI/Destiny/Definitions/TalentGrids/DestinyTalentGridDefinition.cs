@@ -39,7 +39,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.TalentGrids
             MaximumRandomMaterialRequirements = maximumRandomMaterialRequirements;
             NodeCategories = nodeCategories;
             Nodes = nodes;
-            Progression = new DefinitionHashPointer<DestinyProgressionDefinition>(progressionHash, "DestinyProgressionDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Progression = new DefinitionHashPointer<DestinyProgressionDefinition>(progressionHash, "DestinyProgressionDefinition");
         }
 
         public override string ToString()

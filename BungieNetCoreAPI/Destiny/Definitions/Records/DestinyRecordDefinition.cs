@@ -51,7 +51,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Records
                 Objectives = new List<DefinitionHashPointer<DestinyObjectiveDefinition>>();
                 foreach (var objectiveHash in objectiveHashes)
                 {
-                    Objectives.Add(new DefinitionHashPointer<DestinyObjectiveDefinition>(objectiveHash, "DestinyObjectiveDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    Objectives.Add(new DefinitionHashPointer<DestinyObjectiveDefinition>(objectiveHash, "DestinyObjectiveDefinition"));
                 }
             }
             if (parentNodeHashes != null)
@@ -59,7 +59,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Records
                 ParentNodes = new List<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
                 foreach (var parentNodeHash in parentNodeHashes)
                 {
-                    ParentNodes.Add(new DefinitionHashPointer<DestinyPresentationNodeDefinition>(parentNodeHash, "DestinyPresentationNodeDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    ParentNodes.Add(new DefinitionHashPointer<DestinyPresentationNodeDefinition>(parentNodeHash, "DestinyPresentationNodeDefinition"));
                 }
             }
             if (traitHashes != null)
@@ -67,11 +67,11 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Records
                 Traits = new List<DefinitionHashPointer<DestinyTraitDefinition>>();
                 foreach (var traitHash in traitHashes)
                 {
-                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, "DestinyTraitDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, "DestinyTraitDefinition"));
                 }
             }
             RewardItems = rewardItems;
-            Lore = new DefinitionHashPointer<DestinyLoreDefinition>(loreHash, "DestinyLoreDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Lore = new DefinitionHashPointer<DestinyLoreDefinition>(loreHash, "DestinyLoreDefinition");
         }
 
         public override string ToString()

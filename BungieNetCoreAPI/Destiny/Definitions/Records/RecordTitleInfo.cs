@@ -20,7 +20,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Records
                 TitlesByGenderHash = new Dictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>();
                 foreach (var titleByGenderHash in titlesByGenderHash)
                 {
-                    TitlesByGenderHash.Add(new DefinitionHashPointer<DestinyGenderDefinition>(titleByGenderHash.Key, "DestinyGenderDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext), titleByGenderHash.Value);
+                    TitlesByGenderHash.Add(new DefinitionHashPointer<DestinyGenderDefinition>(titleByGenderHash.Key, "DestinyGenderDefinition"), titleByGenderHash.Value);
                 }
             }
         }

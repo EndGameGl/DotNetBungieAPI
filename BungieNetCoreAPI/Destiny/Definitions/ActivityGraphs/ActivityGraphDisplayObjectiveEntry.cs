@@ -12,7 +12,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs
         private ActivityGraphDisplayObjectiveEntry(uint id, uint objectiveHash)
         {
             Id = id;
-            Objective = new DefinitionHashPointer<DestinyObjectiveDefinition>(objectiveHash, "DestinyObjectiveDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Objective = new DefinitionHashPointer<DestinyObjectiveDefinition>(objectiveHash, "DestinyObjectiveDefinition");
         }
     }
 }

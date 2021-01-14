@@ -16,7 +16,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.TalentGrids
         private TalentGridGroup(uint groupHash, uint loreHash, List<uint> nodeHashes, List<uint> opposingGroupHashes, List<uint> opposingNodeHashes)
         {
             GroupHash = groupHash;
-            Lore = new DefinitionHashPointer<DestinyLoreDefinition>(loreHash, "DestinyLoreDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Lore = new DefinitionHashPointer<DestinyLoreDefinition>(loreHash, "DestinyLoreDefinition");
             NodeHashes = nodeHashes;
             OpposingGroupHashes = opposingGroupHashes;
             OpposingNodeHashes = opposingNodeHashes;

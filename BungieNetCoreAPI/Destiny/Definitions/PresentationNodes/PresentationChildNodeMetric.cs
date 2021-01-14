@@ -10,7 +10,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
         [JsonConstructor]
         private PresentationChildNodeMetric(uint metricHash)
         {
-            Metric = new DefinitionHashPointer<DestinyMetricDefinition>(metricHash, "DestinyCollectibleDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Metric = new DefinitionHashPointer<DestinyMetricDefinition>(metricHash, "DestinyCollectibleDefinition");
         }
     }
 }

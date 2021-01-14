@@ -1,8 +1,11 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using BungieNetCoreAPI.Destiny.Definitions.Factions;
 using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+using BungieNetCoreAPI.Repositories;
+using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using Unity;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
 {
@@ -128,8 +131,8 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
             : base(blacklisted, hash, index, redacted)
         {
             ConsolidateCategories = consolidateCategories;
-            DisplayItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(displayItemHash, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
-            Faction = new DefinitionHashPointer<DestinyFactionDefinition>(factionHash, "DestinyFactionDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            DisplayItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(displayItemHash, "DestinyInventoryItemDefinition");
+            Faction = new DefinitionHashPointer<DestinyFactionDefinition>(factionHash, "DestinyFactionDefinition");
             FailureStrings = failureStrings;
             InhibitBuying = inhibitBuying;
             InhibitSelling = inhibitSelling;
@@ -150,7 +153,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
             {
                 foreach (var ignoreSaleItemHash in ignoreSaleItemHashes)
                 {
-                    IgnoreSaleItems.Add(new DefinitionHashPointer<DestinyInventoryItemDefinition>(ignoreSaleItemHash, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    IgnoreSaleItems.Add(new DefinitionHashPointer<DestinyInventoryItemDefinition>(ignoreSaleItemHash, "DestinyInventoryItemDefinition"));
                 }
             }
             Interactions = interactions;

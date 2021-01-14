@@ -29,17 +29,17 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             int maxStackSize, bool nonTransferrableOriginal, uint recoveryBucketTypeHash, bool suppressExpirationWhenObjectivesComplete, ItemTierType tierType, uint tierTypeHash,
             string tierTypeName)
         {
-            BucketType = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(bucketTypeHash, "DestinyInventoryBucketDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            BucketType = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(bucketTypeHash, "DestinyInventoryBucketDefinition");
             ExpirationTooltip = expirationTooltip;
             ExpiredInActivityMessage = expiredInActivityMessage;
             ExpiredInOrbitMessage = expiredInOrbitMessage;
             IsInstanceItem = isInstanceItem;
             MaxStackSize = maxStackSize;
             NonTransferrableOriginal = nonTransferrableOriginal;
-            RecoveryBucketType = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(recoveryBucketTypeHash, "DestinyInventoryBucketDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            RecoveryBucketType = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(recoveryBucketTypeHash, "DestinyInventoryBucketDefinition");
             SuppressExpirationWhenObjectivesComplete = suppressExpirationWhenObjectivesComplete;
             TierTypeEnumValue = tierType;
-            TierType = new DefinitionHashPointer<DestinyItemTierTypeDefinition>(tierTypeHash, "DestinyItemTierTypeDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            TierType = new DefinitionHashPointer<DestinyItemTierTypeDefinition>(tierTypeHash, "DestinyItemTierTypeDefinition");
             TierTypeName = tierTypeName;
         }
     }

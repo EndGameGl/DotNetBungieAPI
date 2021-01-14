@@ -31,15 +31,15 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Seasons
         {
             DisplayProperties = displayProperties;
             SeasonNumber = seasonNumber;
-            SeasonPassProgression = new DefinitionHashPointer<DestinyProgressionDefinition>(seasonPassProgressionHash, "DestinyProgressionDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
-            SeasonPassUnlock = new DefinitionHashPointer<DestinyUnlockDefinition>(seasonPassUnlockHash, "DestinyUnlockDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            SeasonPassProgression = new DefinitionHashPointer<DestinyProgressionDefinition>(seasonPassProgressionHash, "DestinyProgressionDefinition");
+            SeasonPassUnlock = new DefinitionHashPointer<DestinyUnlockDefinition>(seasonPassUnlockHash, "DestinyUnlockDefinition");
             StartTimeInSeconds = startTimeInSeconds;
-            SealPresentationNode = new DefinitionHashPointer<DestinyPresentationNodeDefinition>(sealPresentationNodeHash, "DestinyPresentationNodeDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
-            SeasonPass = new DefinitionHashPointer<DestinySeasonPassDefinition>(seasonPassHash, "DestinySeasonPassDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            SealPresentationNode = new DefinitionHashPointer<DestinyPresentationNodeDefinition>(sealPresentationNodeHash, "DestinyPresentationNodeDefinition");
+            SeasonPass = new DefinitionHashPointer<DestinySeasonPassDefinition>(seasonPassHash, "DestinySeasonPassDefinition");
             StartDate = startDate;
             EndDate = endDate;
             BackgroundImagePath = backgroundImagePath;
-            ArtifactItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(artifactItemHash, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            ArtifactItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(artifactItemHash, "DestinyInventoryItemDefinition");
         }
 
         public override string ToString()

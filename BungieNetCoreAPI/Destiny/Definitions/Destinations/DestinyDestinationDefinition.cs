@@ -25,7 +25,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Destinations
                 ActivityGraphEntries = new List<DestinationActivityGraphEntry>();
             else
                 ActivityGraphEntries = activityGraphEntries;
-            DefaultFreeroamActivity = new DefinitionHashPointer<DestinyActivityDefinition>(defaultFreeroamActivityHash, "DestinyActivityDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            DefaultFreeroamActivity = new DefinitionHashPointer<DestinyActivityDefinition>(defaultFreeroamActivityHash, "DestinyActivityDefinition");
             if (bubbles == null)
                 Bubbles = new List<DestinationBubbleEntry>();
             else

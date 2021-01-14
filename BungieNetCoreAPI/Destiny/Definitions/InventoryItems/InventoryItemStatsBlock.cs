@@ -21,14 +21,14 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         {
             DisablePrimaryStatDisplay = disablePrimaryStatDisplay;
             HasDisplayableStats = hasDisplayableStats;
-            PrimaryBaseStat = new DefinitionHashPointer<DestinyStatDefinition>(primaryBaseStatHash, "DestinyStatDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
-            StatGroup = new DefinitionHashPointer<DestinyStatGroupDefinition>(statGroupHash, "DestinyStatGroupDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            PrimaryBaseStat = new DefinitionHashPointer<DestinyStatDefinition>(primaryBaseStatHash, "DestinyStatDefinition");
+            StatGroup = new DefinitionHashPointer<DestinyStatGroupDefinition>(statGroupHash, "DestinyStatGroupDefinition");
             Stats = new Dictionary<DefinitionHashPointer<DestinyStatDefinition>, InventoryItemStatsBlockStat>();
             if (stats != null)
             {
                 foreach (var statPair in stats)
                 {
-                    Stats.Add(new DefinitionHashPointer<DestinyStatDefinition>(statPair.Key, "DestinyStatDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext), statPair.Value);
+                    Stats.Add(new DefinitionHashPointer<DestinyStatDefinition>(statPair.Key, "DestinyStatDefinition"), statPair.Value);
                 }
             }
         }

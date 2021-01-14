@@ -39,8 +39,8 @@ namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
             : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
-            Gender = new DefinitionHashPointer<DestinyGenderDefinition>(genderHash, "DestinyGenderDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
-            Race = new DefinitionHashPointer<DestinyRaceDefinition>(raceHash, "DestinyRaceDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Gender = new DefinitionHashPointer<DestinyGenderDefinition>(genderHash, "DestinyGenderDefinition");
+            Race = new DefinitionHashPointer<DestinyRaceDefinition>(raceHash, "DestinyRaceDefinition");
             DecalColorOptions = decalColorOptions;
             DecalOptions = decalOptions;
             EyeColorOptions = eyeColorOptions;

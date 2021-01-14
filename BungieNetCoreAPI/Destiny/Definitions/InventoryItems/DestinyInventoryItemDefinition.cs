@@ -79,7 +79,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             DisplayProperties = displayProperties;
             BreakerType = breakerType;
             ClassType = classType;
-            Collectible = new DefinitionHashPointer<DestinyCollectibleDefinition>(collectibleHash, "DestinyCollectibleDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Collectible = new DefinitionHashPointer<DestinyCollectibleDefinition>(collectibleHash, "DestinyCollectibleDefinition");
             DefaultDamageType = defaultDamageType;
             DisplaySource = displaySource;
             DoesPostmasterPullHaveSideEffects = doesPostmasterPullHaveSideEffects;
@@ -95,7 +95,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             {
                 foreach (var itemCategoryHash in itemCategoryHashes)
                 {
-                    ItemCategories.Add(new DefinitionHashPointer<DestinyItemCategoryDefinition>(itemCategoryHash, "DestinyItemCategoryDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext));
+                    ItemCategories.Add(new DefinitionHashPointer<DestinyItemCategoryDefinition>(itemCategoryHash, "DestinyItemCategoryDefinition"));
                 }
             }
             ItemSubType = itemSubType;
@@ -112,7 +112,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             Sockets = sockets;
             SpecialItemType = specialItemType;
             Stats = stats;
-            SummaryItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(summaryItemHash, "DestinyInventoryItemDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            SummaryItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(summaryItemHash, "DestinyInventoryItemDefinition");
             TalentGrid = talentGrid;
             TooltipNotifications = tooltipNotifications;
             TraitIds = traitIds;

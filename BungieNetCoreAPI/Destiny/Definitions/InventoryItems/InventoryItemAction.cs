@@ -35,7 +35,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             RequiredCooldownHash = requiredCooldownHash;
             RequiredCooldownSeconds = requiredCooldownSeconds;
             RewardItemHash = rewardItemHash;
-            RewardSheet = new DefinitionHashPointer<DestinyRewardSheetDefinition>(rewardSheetHash, "DestinyRewardSheetDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            RewardSheet = new DefinitionHashPointer<DestinyRewardSheetDefinition>(rewardSheetHash, "DestinyRewardSheetDefinition");
             RewardSiteHash = rewardSiteHash;
             UseOnAcquire = useOnAcquire;
             VerbDescription = verbDescription;

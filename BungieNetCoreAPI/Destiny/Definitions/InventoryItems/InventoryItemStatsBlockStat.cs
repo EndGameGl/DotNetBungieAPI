@@ -17,7 +17,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             DisplayMaximum = displayMaximum;
             Maximum = maximum;
             Minimum = minimum;
-            Stat = new DefinitionHashPointer<DestinyStatDefinition>(statHash, "DestinyStatDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            Stat = new DefinitionHashPointer<DestinyStatDefinition>(statHash, "DestinyStatDefinition");
             Value = value;
         }
     }

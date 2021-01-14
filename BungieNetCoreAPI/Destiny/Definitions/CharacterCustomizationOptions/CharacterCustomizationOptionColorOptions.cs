@@ -13,7 +13,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
         [JsonConstructor]
         private CharacterCustomizationOptionColorOptions(uint customizationCategoryHash, string displayName, List<CharacterCustomizationOptionColorOptionsEntry> options)
         {
-            CustomizationCategory = new DefinitionHashPointer<DestinyCharacterCustomizationCategoryDefinition>(customizationCategoryHash, "DestinyCharacterCustomizationCategoryDefinition", GlobalDefinitionsCacheRepository.CurrentLocaleLoadContext);
+            CustomizationCategory = new DefinitionHashPointer<DestinyCharacterCustomizationCategoryDefinition>(customizationCategoryHash, "DestinyCharacterCustomizationCategoryDefinition");
             DisplayName = displayName;
             if (options == null)
                 Options = new List<CharacterCustomizationOptionColorOptionsEntry>();
