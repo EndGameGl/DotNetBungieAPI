@@ -1,5 +1,4 @@
 ﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Clients;
 using BungieNetCoreAPI.Destiny;
 using BungieNetCoreAPI.Destiny.Definitions;
 using BungieNetCoreAPI.Logging;
@@ -10,9 +9,9 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using Unity;
 
@@ -37,9 +36,9 @@ namespace BungieNetCoreAPI.Repositories
         {
             _logger = UnityContainerFactory.Container.Resolve<ILogger>();
             _definitions = new Dictionary<string, IDestinyCacheRepository>();
-            var configs = 
+            var configs =
             Locale = locale;
-            var definitionNameToTypeMapping = 
+            var definitionNameToTypeMapping =
                 Assembly
                 .GetAssembly(typeof(DefinitionCacheRepository))
                 .GetTypes()
@@ -62,7 +61,7 @@ namespace BungieNetCoreAPI.Repositories
             if (loadOverrides != null && loadOverrides.Count > 0)
             {
                 definitionNameToTypeMapping = definitionNameToTypeMapping
-                    .Where(x => 
+                    .Where(x =>
                     {
                         if (loadOverrides.TryGetValue(x.Key, out var value))
                         {
@@ -236,11 +235,12 @@ namespace BungieNetCoreAPI.Repositories
             fullLoadStopwatch.Start();
             var jsonWolrdComponentContentLocalePath = manifest.JsonWorldComponentContentPaths[Locale];
 
-            var result = Parallel.ForEach(_definitions.Keys, (definitionName) => 
+            var result = Parallel.ForEach(_definitions.Keys, (definitionName) =>
             {
                 _logger.Log($"Reading: {definitionName}... ", LogType.Info);
-                var definitionJson =
-                    File.ReadAllText($"{localManifestPath}/JsonWorldComponentContent/{Locale}/{definitionName}/{Path.GetFileName(jsonWolrdComponentContentLocalePath[definitionName])}");
+                using var fs = File.OpenRead($"{localManifestPath}/JsonWorldComponentContent/{Locale}/{definitionName}/{Path.GetFileName(jsonWolrdComponentContentLocalePath[definitionName])}");
+                using var sr = new StreamReader(fs, Encoding.UTF8);
+                var definitionJson = sr.ReadToEnd();
                 var definitionJObjectDictionary = JObject.Parse(definitionJson);
                 foreach (var entry in definitionJObjectDictionary)
                 {
@@ -291,13 +291,16 @@ namespace BungieNetCoreAPI.Repositories
                     {
                         _logger.Log(e.Message, LogType.Error);
                     }
+                    _definitions[key].SortByIndex();
                 }
                 connection.Close();
+
+                
             }
 
             fullLoadStopwatch.Stop();
             _logger.Log($"Finished loading data for {Locale}: {fullLoadStopwatch.ElapsedMilliseconds} ms", LogType.Info);
-            UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>().ResetLocaleContext();
+            UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>().ResetLocaleContext();            
         }
         public void LoadDataFromFiles(LoadSourceMode loadMode, string localManifestPath, DestinyManifest manifest)
         {

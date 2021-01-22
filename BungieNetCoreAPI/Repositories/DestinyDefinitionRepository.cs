@@ -51,5 +51,9 @@ namespace BungieNetCoreAPI.Repositories
             definition = item;
             return definition != null;
         }
+        public void SortByIndex()
+        {
+            _definitions = _definitions.OrderBy(x => x.Value.Index).ToDictionary(x => x.Key, y =>y.Value);
+        }
     }
 }

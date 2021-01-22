@@ -43,5 +43,7 @@ namespace BungieNetCoreAPI.Repositories
         /// <param name="predicate">Search condition</param>
         /// <returns><see cref="IEnumerable{}"/></returns>
         IEnumerable<DestinyDefinition> Where(Func<DestinyDefinition, bool> predicate);
+
+        void SortByIndex();
     }
 }

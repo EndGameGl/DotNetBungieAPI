@@ -62,7 +62,21 @@ namespace BungieNetCoreTestingApp
                     Locales = new DestinyLocales[] { DestinyLocales.EN },
                     KeepOldVerisons = true,
                     LoadMode = BungieNetCoreAPI.Repositories.LoadSourceMode.SQLite,
-                    DefinitionLoadRules = new Dictionary<string, bool>() { }
+                    DefinitionLoadRules = new Dictionary<string, bool>() 
+                    {
+                        //{ "DestinyActivityInteractableDefinition", false },
+                        //{ "DestinyArtDyeChannelDefinition", false },
+                        //{ "DestinyArtDyeReferenceDefinition", false },
+                        //{ "DestinyCharacterCustomizationCategoryDefinition", false },
+                        //{ "DestinyCharacterCustomizationOptionDefinition", false },
+                        //{ "DestinyEntitlementOfferDefinition", false },
+                        //{ "DestinyNodeStepSummaryDefinition", false },
+                        //{ "DestinyPlatformBucketMappingDefinition", false },
+                        //{ "DestinyPresentationNodeBaseDefinition", false },
+                        //{ "DestinyRewardAdjusterPointerDefinition", false },
+                        //{ "DestinyRewardAdjusterProgressionMapDefinition", false },
+                        //{ "DestinyRewardItemListDefinition", false },
+                    }
                 });
             _bungieClient.LogListener.OnNewMessage += (mes) => Console.WriteLine(mes);
             MainAsync().GetAwaiter().GetResult();
@@ -71,6 +85,8 @@ namespace BungieNetCoreTestingApp
         private static async Task MainAsync()
         {
             await _bungieClient.Run();
+
+            var result = _bungieClient.Repository.GetAll<DestinyActivityDefinition>("en").WithName("harbinger").ToList();
 
             await Task.Delay(Timeout.Infinite);
         }

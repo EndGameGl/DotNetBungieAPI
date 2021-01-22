@@ -1,12 +1,10 @@
 ﻿using BungieNetCoreAPI.Clients;
 using BungieNetCoreAPI.Logging;
-using BungieNetCoreAPI.Repositories;
 using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Net.Http;
