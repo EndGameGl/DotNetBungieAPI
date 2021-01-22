@@ -5,6 +5,8 @@ namespace BungieNetCoreAPI.Clients
 {
     public class BungieClientSettings
     {
+        public string ApiKey { get; set; }
+
         public bool CacheDefinitionsInMemory { get; set; }
         public bool TryDownloadMissingDefinitions { get; set; }
         public DestinyLocales[] Locales { get; set; }     

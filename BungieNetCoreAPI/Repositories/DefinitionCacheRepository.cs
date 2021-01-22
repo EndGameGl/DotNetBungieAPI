@@ -269,7 +269,9 @@ namespace BungieNetCoreAPI.Repositories
                 foreach (var key in _definitions.Keys)
                 {
                     var definitionType = _definitions[key].DefinitionType;
+                    _logger.Log($"Loading definitions from {key} ({Locale})", LogType.Info);
                     string query = $"SELECT * FROM {key}";
+                    //_logger.Log($"Executing query: {query}", LogType.Debug);
                     SQLiteCommand command = new SQLiteCommand
                     {
                         Connection = connection,
@@ -281,7 +283,7 @@ namespace BungieNetCoreAPI.Repositories
                         while (reader.Read())
                         {
                             var byteArray = (byte[])reader["json"];
-                            var jsonString = System.Text.Encoding.UTF8.GetString(byteArray, 0, byteArray.Length);
+                            var jsonString = Encoding.UTF8.GetString(byteArray, 0, byteArray.Length);
                             var definition = JObject.Parse(jsonString);
                             var deserializedDestinyDefinition = (DestinyDefinition)definition.ToObject(definitionType);
                             Add(key, deserializedDestinyDefinition);
@@ -293,9 +295,7 @@ namespace BungieNetCoreAPI.Repositories
                     }
                     _definitions[key].SortByIndex();
                 }
-                connection.Close();
-
-                
+                connection.Close();               
             }
 
             fullLoadStopwatch.Stop();

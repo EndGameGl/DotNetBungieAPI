@@ -24,22 +24,19 @@ namespace BungieNetCoreAPI.Clients
         public ILocalisedDefinitionsCacheRepository Repository;
         public LogListener LogListener;
 
-        public BungieClient(string apiKey, BungieClientSettings settings)
-        {
-            if (string.IsNullOrWhiteSpace(apiKey))
-                throw new Exception("API key is empty.");
-
+        public BungieClient(BungieClientSettings settings)
+        {         
             SetUpUnityDependencies();
 
             Configuration = UnityContainerFactory.Container.Resolve<IConfigurationService>();
 
             if (settings.UseExistingConfig) 
-            {
                 Configuration.ApplySettingsFromConfig(settings.ExistingConfigPath);
-                Configuration.Settings.Locales = settings.Locales;
-            }
             else
                 Configuration.ApplySettings(settings);
+
+            if (string.IsNullOrWhiteSpace(Configuration.Settings.ApiKey))
+                throw new Exception("API key is empty.");
 
             _logger = UnityContainerFactory.Container.Resolve<ILogger>();
 
@@ -50,7 +47,7 @@ namespace BungieNetCoreAPI.Clients
             }
 
             CDN = new BungieCDNClient();
-            Platform = new BungiePlatfromClient(apiKey);
+            Platform = new BungiePlatfromClient(Configuration.Settings.ApiKey);
 
             _versionControl = UnityContainerFactory.Container.Resolve<IManifestUpdateHandler>();
             

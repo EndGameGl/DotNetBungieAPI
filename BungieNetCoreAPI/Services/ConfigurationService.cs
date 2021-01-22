@@ -1,7 +1,9 @@
 ﻿using BungieNetCoreAPI.Clients;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace BungieNetCoreAPI.Services
@@ -21,17 +23,7 @@ namespace BungieNetCoreAPI.Services
 
         public void ApplySettingsFromConfig(string filePath)
         {
-            var configuration =
-                new ConfigurationBuilder()
-                .AddJsonFile(filePath)
-                .Build();
-
-            Settings = new BungieClientSettings();
-            Settings.CacheDefinitionsInMemory = Convert.ToBoolean(configuration.GetSection("CacheDefinitionsInMemory").Value);
-            Settings.TryDownloadMissingDefinitions = Convert.ToBoolean(configuration.GetSection("TryDownloadMissingDefinitions").Value);
-            Settings.VersionsRepositoryPath = configuration.GetSection("PathToLocalDb").Value;
-            Settings.EnableLogging = Convert.ToBoolean(configuration.GetSection("EnableLogging").Value);
-            Settings.UsePreloadedCache = Convert.ToBoolean(configuration.GetSection("UsePreloadedCache").Value);
+            Settings = JsonConvert.DeserializeObject<BungieClientSettings>(File.ReadAllText(filePath));
         }
     }
 }

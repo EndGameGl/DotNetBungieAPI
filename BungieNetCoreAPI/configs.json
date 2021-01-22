@@ -1,7 +1,15 @@
 {
   "CacheDefinitionsInMemory": true,
-  "TryDownloadMissingDefinitions": true,
-  "PathToLocalDb": "H:\\BungieNetCoreAPIRepository\\ManifestDB_12.01.2021",
-  "EnableLogging": true,
-  "UsePreloadedCache": true
+  "TryDownloadMissingDefinitions": false,
+  "Locales": [ 0 ],
+  "EnableLogging": false,
+  "UsePreloadedCache": true,
+  "KeepOldVerisons": true,
+  "CheckUpdates": true,
+  "VersionsRepositoryPath": "",
+  "DefinitionLoadRules": {
+    "DefinitionName": true
+  },
+  "LoadMode": 1,
+  "ApiKey": ""
 }

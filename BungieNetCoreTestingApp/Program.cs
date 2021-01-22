@@ -50,33 +50,10 @@ namespace BungieNetCoreTestingApp
         static void Main(string[] args)
         {
             _bungieClient = new BungieClient(
-                apiKey: "75187ab684d94a338c1b5a6996c217f8",
                 settings: new BungieClientSettings()
                 {
-                    CacheDefinitionsInMemory = true,
-                    EnableLogging = true,
-                    VersionsRepositoryPath = "H:\\BungieNetCoreAPIRepository\\Manifests",
-                    TryDownloadMissingDefinitions = false,
-                    UsePreloadedCache = true,
-                    CheckUpdates = true,
-                    Locales = new DestinyLocales[] { DestinyLocales.EN },
-                    KeepOldVerisons = true,
-                    LoadMode = BungieNetCoreAPI.Repositories.LoadSourceMode.SQLite,
-                    DefinitionLoadRules = new Dictionary<string, bool>() 
-                    {
-                        //{ "DestinyActivityInteractableDefinition", false },
-                        //{ "DestinyArtDyeChannelDefinition", false },
-                        //{ "DestinyArtDyeReferenceDefinition", false },
-                        //{ "DestinyCharacterCustomizationCategoryDefinition", false },
-                        //{ "DestinyCharacterCustomizationOptionDefinition", false },
-                        //{ "DestinyEntitlementOfferDefinition", false },
-                        //{ "DestinyNodeStepSummaryDefinition", false },
-                        //{ "DestinyPlatformBucketMappingDefinition", false },
-                        //{ "DestinyPresentationNodeBaseDefinition", false },
-                        //{ "DestinyRewardAdjusterPointerDefinition", false },
-                        //{ "DestinyRewardAdjusterProgressionMapDefinition", false },
-                        //{ "DestinyRewardItemListDefinition", false },
-                    }
+                    UseExistingConfig = true,
+                    ExistingConfigPath = "configs.json"
                 });
             _bungieClient.LogListener.OnNewMessage += (mes) => Console.WriteLine(mes);
             MainAsync().GetAwaiter().GetResult();
@@ -86,7 +63,8 @@ namespace BungieNetCoreTestingApp
         {
             await _bungieClient.Run();
 
-            var result = _bungieClient.Repository.GetAll<DestinyActivityDefinition>("en").WithName("harbinger").ToList();
+            
+            //var result = _bungieClient.Repository.GetAll<DestinyActivityDefinition>("en").WithName("harbinger").ToList();
 
             await Task.Delay(Timeout.Infinite);
         }
