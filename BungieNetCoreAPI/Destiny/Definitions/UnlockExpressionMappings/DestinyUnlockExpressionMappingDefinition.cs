@@ -6,7 +6,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.UnlockExpressionMappings
     /// <summary>
     /// Empty definition at the moment
     /// </summary>
-    [DestinyDefinition("DestinyUnlockExpressionMappingDefinition")]
+    [DestinyDefinition(name: "DestinyUnlockExpressionMappingDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
     public class DestinyUnlockExpressionMappingDefinition : DestinyDefinition
     {
         [JsonConstructor]

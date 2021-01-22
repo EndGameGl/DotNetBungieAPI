@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Bonds
 {
-    [DestinyDefinition("DestinyBondDefinition")]
+    [DestinyDefinition(name: "DestinyBondDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
     public class DestinyBondDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

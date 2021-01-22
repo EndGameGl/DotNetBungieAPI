@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Artifacts
 {
-    [DestinyDefinition("DestinyArtifactDefinition")]
+    [DestinyDefinition(name: "DestinyArtifactDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyArtifactDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

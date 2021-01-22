@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ItemCategories
 {
-    [DestinyDefinition("DestinyItemCategoryDefinition")]
+    [DestinyDefinition(name: "DestinyItemCategoryDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyItemCategoryDefinition : DestinyDefinition
     {
         public bool Deprecated { get; }

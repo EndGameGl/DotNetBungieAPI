@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Lores
 {
-    [DestinyDefinition("DestinyLoreDefinition")]
+    [DestinyDefinition(name: "DestinyLoreDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyLoreDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

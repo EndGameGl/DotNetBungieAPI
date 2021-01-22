@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Locations
 {
-    [DestinyDefinition("DestinyLocationDefinition")]
+    [DestinyDefinition(name: "DestinyLocationDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyLocationDefinition : DestinyDefinition
     {
         public List<LocationRelease> LocationReleases { get; }

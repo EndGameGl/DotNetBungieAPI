@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Progressions
 {
-    [DestinyDefinition("DestinyProgressionDefinition")]
+    [DestinyDefinition(name: "DestinyProgressionDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyProgressionDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

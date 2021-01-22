@@ -1,27 +1,55 @@
 ﻿using BungieNetCoreAPI.Clients;
+using BungieNetCoreAPI.Logging;
 using BungieNetCoreAPI.Repositories;
 using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Unity;
 
 namespace BungieNetCoreAPI.Destiny
 {
+    /// <summary>
+    /// DestinyManifest is the external-facing contract for just the properties needed by those calling the Destiny Platform.
+    /// </summary>
     public class DestinyManifest
     {
+        private DateTime _versionDate;
         public string Version { get; }
         public string MobileAssetContentPath { get; }
-        public List<MobileGearAssetDataBaseEntry> MobileGearAssetDataBases { get; }
+        public List<MobileGearAssetDataBaseEntry> MobileGearAssetDataBases { get; }     
         public Dictionary<string, string> MobileWorldContentPaths { get; }
+        /// <summary>
+        /// This points to the generated JSON that contains all the Definitions. Each key is a locale. The value is a path to the aggregated world definitions (warning: large file!)
+        /// </summary>
         public Dictionary<string, string> JsonWorldContentPaths { get; }
+        /// <summary>
+        /// This points to the generated JSON that contains all the Definitions. Each key is a locale. The value is a dictionary, where the key is a definition type by name, and the value is the path to the file for that definition. 
+        /// <para />
+        /// WARNING: This is unsafe and subject to change - do not depend on data in these files staying around long-term.
+        /// </summary>
         public Dictionary<string, Dictionary<string, string>> JsonWorldComponentContentPaths { get; }
         public string MobileClanBannerDatabasePath { get; }
         public Dictionary<string, string> MobileGearCDN { get; }
+        [JsonIgnore]
+        public DateTime VersionDate
+        {
+            get
+            {
+                return _versionDate;
+            }
+            private set
+            {
+                _versionDate = value;
+            }
+        }
 
         [JsonConstructor]
         private DestinyManifest(string version, string mobileAssetContentPath, List<MobileGearAssetDataBaseEntry> mobileGearAssetDataBases, Dictionary<string, string> mobileWorldContentPaths,
@@ -36,100 +64,168 @@ namespace BungieNetCoreAPI.Destiny
             JsonWorldComponentContentPaths = jsonWorldComponentContentPaths;
             MobileClanBannerDatabasePath = mobileClanBannerDatabasePath;
             MobileGearCDN = mobileGearCDN;
+            if (TryFetchDate(this, out var date))
+            {
+                VersionDate = date;
+            }
         }
 
-        public async Task DownloadAndSaveToLocalFiles()
+        public async Task DownloadAndSaveToLocalFiles(bool unpackSqlite)
         {
-            string path = InternalData.LocalCacheBPath;
+            var logger = UnityContainerFactory.Container.Resolve<ILogger>();
+            string path = UnityContainerFactory.Container.Resolve<IConfigurationService>().Settings.VersionsRepositoryPath;
             if (string.IsNullOrWhiteSpace(path))
                 throw new Exception("Specify files path in configs.json or use DownloadAndSaveToLocalFiles(string) method");
+            path = $"{path}\\{Version}";
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
 
             var _httpClient = UnityContainerFactory.Container.Resolve<IHttpClientInstance>();
-
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
             Uri _cdnUri = BungieClient.BungieCDNUri;
-            Console.WriteLine($"Loading data from: {_cdnUri.AbsoluteUri}");
+            logger.Log($"Loading data from: {_cdnUri.AbsoluteUri}", LogType.Info);
 
             HttpResponseMessage message;
 
-            // Downloading MobileAssetContent (zip SQLite)
+            #region Downloading MobileAssetContent (zip SQLite)
             if (!Directory.Exists($"{path}/MobileAssetContent"))
                 Directory.CreateDirectory($"{path}/MobileAssetContent");
-            Console.Write($"Getting data from: {_cdnUri + MobileAssetContentPath}");
-            message = await _httpClient.Get(_cdnUri + MobileAssetContentPath);
-            using (var stream = await message.Content.ReadAsStreamAsync())
+
+            logger.Log($"Getting data from: {_cdnUri + MobileAssetContentPath}", LogType.Info);
+            if (!File.Exists($"{path}/MobileAssetContent/{Path.GetFileName(MobileAssetContentPath)}"))
             {
-                var fileInfo = new FileInfo($"{path}/MobileAssetContent/{Path.GetFileName(MobileAssetContentPath)}");
-                using (var fileStream = fileInfo.OpenWrite())
+                message = await _httpClient.Get(_cdnUri + MobileAssetContentPath);
+                using (var stream = await message.Content.ReadAsStreamAsync())
                 {
-                    await stream.CopyToAsync(fileStream);
+                    var fileInfo = new FileInfo($"{path}/MobileAssetContent/{Path.GetFileName(MobileAssetContentPath)}");
+                    using (var fileStream = fileInfo.OpenWrite())
+                    {
+                        await stream.CopyToAsync(fileStream);
+                    }
                 }
             }
-            Console.WriteLine("...Done!");
+            else
+                logger.Log("File already exists, skipping.", LogType.Info);
+            if (unpackSqlite)
+            {
+                logger.Log("Unpacking zip...", LogType.Info);
+                var packedFileName = $"{path}/MobileAssetContent/{Path.GetFileName(MobileAssetContentPath)}.zip";
+                if (IsZIP($"{path}/MobileAssetContent/{Path.GetFileName(MobileAssetContentPath)}"))
+                {
+                    File.Move($"{path}/MobileAssetContent/{Path.GetFileName(MobileAssetContentPath)}", packedFileName);
+                    ZipFile.ExtractToDirectory(packedFileName, $"{path}/MobileAssetContent/");
+                    logger.Log("Clearing leftovers.", LogType.Info);
+                    File.Delete(packedFileName);
+                }
+                else
+                    logger.Log("File is already unpacked", LogType.Info);
+            }
+            #endregion
 
-            // Downloading MobileGearAssetDataBases (zip SQLite)
+            #region Downloading MobileGearAssetDataBases (zip SQLite)
             if (!Directory.Exists($"{path}/MobileGearAssetDataBases"))
                 Directory.CreateDirectory($"{path}/MobileGearAssetDataBases");
             foreach (var entry in MobileGearAssetDataBases)
             {
                 if (!Directory.Exists($"{path}/MobileGearAssetDataBases/{entry.Version}"))
                     Directory.CreateDirectory($"{path}/MobileGearAssetDataBases/{entry.Version}");
-                Console.Write($"Getting data from: {_cdnUri + entry.Path}");
-                message = await _httpClient.Get(_cdnUri + entry.Path);
-                using (var stream = await message.Content.ReadAsStreamAsync())
+                logger.Log($"Getting data from: {_cdnUri + entry.Path}", LogType.Info);
+                if (!File.Exists($"{path}/MobileGearAssetDataBases/{entry.Version}/{Path.GetFileName(entry.Path)}"))
                 {
-                    var fileInfo = new FileInfo($"{path}/MobileGearAssetDataBases/{entry.Version}/{Path.GetFileName(entry.Path)}");
-                    using (var fileStream = fileInfo.OpenWrite())
+                    message = await _httpClient.Get(_cdnUri + entry.Path);
+                    using (var stream = await message.Content.ReadAsStreamAsync())
                     {
-                        await stream.CopyToAsync(fileStream);
+                        var fileInfo = new FileInfo($"{path}/MobileGearAssetDataBases/{entry.Version}/{Path.GetFileName(entry.Path)}");
+                        using (var fileStream = fileInfo.OpenWrite())
+                        {
+                            await stream.CopyToAsync(fileStream);
+                        }
                     }
                 }
-                Console.WriteLine("...Done!");
+                else
+                    logger.Log("File already exists, skipping.", LogType.Info);
+                if (unpackSqlite)
+                {
+                    logger.Log("Unpacking zip...", LogType.Info);
+                    var packedFileName = $"{path}/MobileGearAssetDataBases/{entry.Version}/{Path.GetFileName(entry.Path)}.zip";
+                    if (IsZIP($"{path}/MobileGearAssetDataBases/{entry.Version}/{Path.GetFileName(entry.Path)}"))
+                    {
+                        File.Move($"{path}/MobileGearAssetDataBases/{entry.Version}/{Path.GetFileName(entry.Path)}", packedFileName);
+                        ZipFile.ExtractToDirectory(packedFileName, $"{path}/MobileGearAssetDataBases/{entry.Version}");
+                        logger.Log("Clearing leftovers.", LogType.Info);
+                        File.Delete(packedFileName);
+                    }
+                    else
+                        logger.Log("File is already unpacked", LogType.Info);
+                }
             }
+            #endregion
 
-            // Downloading MobileWorldContent (zip SQLite)
+            #region Downloading MobileWorldContent (zip SQLite)
             if (!Directory.Exists($"{path}/MobileWorldContent"))
                 Directory.CreateDirectory($"{path}/MobileWorldContent");
             foreach (var key in MobileWorldContentPaths.Keys)
             {
                 if (!Directory.Exists($"{path}/MobileWorldContent/{key}"))
                     Directory.CreateDirectory($"{path}/MobileWorldContent/{key}");
-                Console.Write($"Getting data from: {_cdnUri + MobileWorldContentPaths[key]}");
-                message = await _httpClient.Get(_cdnUri + MobileWorldContentPaths[key]);
-                using (var stream = await message.Content.ReadAsStreamAsync())
+                logger.Log($"Getting data from: {_cdnUri + MobileWorldContentPaths[key]}", LogType.Info);
+                if (!File.Exists($"{path}/MobileWorldContent/{key}/{Path.GetFileName(MobileWorldContentPaths[key])}"))
                 {
-                    var fileInfo = new FileInfo($"{path}/MobileWorldContent/{key}/{Path.GetFileName(MobileWorldContentPaths[key])}");
-                    using (var fileStream = fileInfo.OpenWrite())
+                    message = await _httpClient.Get(_cdnUri + MobileWorldContentPaths[key]);
+                    using (var stream = await message.Content.ReadAsStreamAsync())
                     {
-                        await stream.CopyToAsync(fileStream);
+                        var fileInfo = new FileInfo($"{path}/MobileWorldContent/{key}/{Path.GetFileName(MobileWorldContentPaths[key])}");
+                        using (var fileStream = fileInfo.OpenWrite())
+                        {
+                            await stream.CopyToAsync(fileStream);
+                        }
                     }
                 }
-                Console.WriteLine("...Done!");
+                else
+                    logger.Log("File already exists, skipping.", LogType.Info);
+                if (unpackSqlite)
+                {
+                    logger.Log("Unpacking zip...", LogType.Info);
+                    var packedFileName = $"{path}/MobileWorldContent/{key}/{Path.GetFileName(MobileWorldContentPaths[key])}.zip";
+                    if (IsZIP($"{path}/MobileWorldContent/{key}/{Path.GetFileName(MobileWorldContentPaths[key])}"))
+                    {
+                        File.Move($"{path}/MobileWorldContent/{key}/{Path.GetFileName(MobileWorldContentPaths[key])}", packedFileName);
+                        ZipFile.ExtractToDirectory(packedFileName, $"{path}/MobileWorldContent/{key}/");
+                        logger.Log("Clearing leftovers.", LogType.Info);
+                        File.Delete(packedFileName);
+                    }
+                    else
+                        logger.Log("File is already unpacked", LogType.Info);
+                }
             }
+            #endregion
 
-            // Downloading JsonWorldContent (json text file)
+            #region Downloading JsonWorldContent (json text file)
             if (!Directory.Exists($"{path}/JsonWorldContent"))
                 Directory.CreateDirectory($"{path}/JsonWorldContent");
             foreach (var key in JsonWorldContentPaths.Keys)
             {
                 if (!Directory.Exists($"{path}/JsonWorldContent/{key}"))
                     Directory.CreateDirectory($"{path}/JsonWorldContent/{key}");
-                Console.Write($"Getting data from: {_cdnUri + JsonWorldContentPaths[key]}");
-                message = await _httpClient.Get(_cdnUri + JsonWorldContentPaths[key]);
-                using (var stream = await message.Content.ReadAsStreamAsync())
+                logger.Log($"Getting data from: {_cdnUri + JsonWorldContentPaths[key]}", LogType.Info);
+                if (!File.Exists($"{path}/JsonWorldContent/{key}/{Path.GetFileName(JsonWorldContentPaths[key])}"))
                 {
-                    var fileInfo = new FileInfo($"{path}/JsonWorldContent/{key}/{Path.GetFileName(JsonWorldContentPaths[key])}");
-                    using (var fileStream = fileInfo.OpenWrite())
+                    message = await _httpClient.Get(_cdnUri + JsonWorldContentPaths[key]);
+                    using (var stream = await message.Content.ReadAsStreamAsync())
                     {
-                        await stream.CopyToAsync(fileStream);
+                        var fileInfo = new FileInfo($"{path}/JsonWorldContent/{key}/{Path.GetFileName(JsonWorldContentPaths[key])}");
+                        using (var fileStream = fileInfo.OpenWrite())
+                        {
+                            await stream.CopyToAsync(fileStream);
+                        }
                     }
                 }
-                Console.WriteLine("...Done!");
             }
+            #endregion
 
-            // Downloading JsonWorldComponentContent (json text files)
+            #region Downloading JsonWorldComponentContent (json text files)
             if (!Directory.Exists($"{path}/JsonWorldComponentContent"))
                 Directory.CreateDirectory($"{path}/JsonWorldComponentContent");
             foreach (var key in JsonWorldComponentContentPaths.Keys)
@@ -140,176 +236,109 @@ namespace BungieNetCoreAPI.Destiny
                 {
                     if (!Directory.Exists($"{path}/JsonWorldComponentContent/{key}/{innerKey}"))
                         Directory.CreateDirectory($"{path}/JsonWorldComponentContent/{key}/{innerKey}");
-                    Console.Write($"Getting data from: {_cdnUri + JsonWorldComponentContentPaths[key][innerKey]}");
-                    message = await _httpClient.Get(_cdnUri + JsonWorldComponentContentPaths[key][innerKey]);
-                    using (var stream = await message.Content.ReadAsStreamAsync())
+                    logger.Log($"Getting data from: {_cdnUri + JsonWorldComponentContentPaths[key][innerKey]}", LogType.Info);
+                    if (!File.Exists($"{path}/JsonWorldComponentContent/{key}/{innerKey}/{Path.GetFileName(JsonWorldComponentContentPaths[key][innerKey])}"))
                     {
-                        var fileInfo = new FileInfo($"{path}/JsonWorldComponentContent/{key}/{innerKey}/{Path.GetFileName(JsonWorldComponentContentPaths[key][innerKey])}");
-                        using (var fileStream = fileInfo.OpenWrite())
+                        message = await _httpClient.Get(_cdnUri + JsonWorldComponentContentPaths[key][innerKey]);
+                        using (var stream = await message.Content.ReadAsStreamAsync())
                         {
-                            await stream.CopyToAsync(fileStream);
+                            var fileInfo = new FileInfo($"{path}/JsonWorldComponentContent/{key}/{innerKey}/{Path.GetFileName(JsonWorldComponentContentPaths[key][innerKey])}");
+                            using (var fileStream = fileInfo.OpenWrite())
+                            {
+                                await stream.CopyToAsync(fileStream);
+                            }
                         }
                     }
-                    Console.WriteLine("...Done!");
                 }
             }
+            #endregion
 
-            // Downloading MobileClanBannerDatabase (zip SQLite)
+            #region Downloading MobileClanBannerDatabase (zip SQLite)
             if (!Directory.Exists($"{path}/MobileClanBannerDatabase"))
                 Directory.CreateDirectory($"{path}/MobileClanBannerDatabase");
-            Console.Write($"Getting data from: {_cdnUri + MobileClanBannerDatabasePath}");
-            message = await _httpClient.Get(_cdnUri + MobileClanBannerDatabasePath);
-            using (var stream = await message.Content.ReadAsStreamAsync())
+            logger.Log($"Getting data from: {_cdnUri + MobileClanBannerDatabasePath}", LogType.Info);
+            if (!File.Exists($"{path}/MobileClanBannerDatabase/{Path.GetFileName(MobileClanBannerDatabasePath)}"))
             {
-                var fileInfo = new FileInfo($"{path}/MobileClanBannerDatabase/{Path.GetFileName(MobileClanBannerDatabasePath)}");
-                using (var fileStream = fileInfo.OpenWrite())
+                message = await _httpClient.Get(_cdnUri + MobileClanBannerDatabasePath);
+                using (var stream = await message.Content.ReadAsStreamAsync())
                 {
-                    await stream.CopyToAsync(fileStream);
+                    var fileInfo = new FileInfo($"{path}/MobileClanBannerDatabase/{Path.GetFileName(MobileClanBannerDatabasePath)}");
+                    using (var fileStream = fileInfo.OpenWrite())
+                    {
+                        await stream.CopyToAsync(fileStream);
+                    }
                 }
             }
-            Console.WriteLine("...Done!");
+            else
+                logger.Log("File already exists, skipping.", LogType.Info);
+            if (unpackSqlite)
+            {
+                logger.Log("Unpacking zip...", LogType.Info);
+                var packedFileName = $"{path}/MobileClanBannerDatabase/{Path.GetFileName(MobileClanBannerDatabasePath)}.zip";
+                if (IsZIP($"{path}/MobileClanBannerDatabase/{Path.GetFileName(MobileClanBannerDatabasePath)}"))
+                {
+                    File.Move($"{path}/MobileClanBannerDatabase/{Path.GetFileName(MobileClanBannerDatabasePath)}", packedFileName);
+                    ZipFile.ExtractToDirectory(packedFileName, $"{path}/MobileClanBannerDatabase/");
+                    logger.Log("Clearing leftovers.", LogType.Info);
+                    File.Delete(packedFileName);
+                }
+                else
+                    logger.Log("File is already unpacked", LogType.Info);
+            }
+            #endregion
+
+            if (!File.Exists($"{path}/Manifest.json"))
+            {
+                var manifestJson = JsonConvert.SerializeObject(this, Formatting.Indented);
+                File.WriteAllText($"{path}/Manifest.json", manifestJson);
+            }
+
             stopwatch.Stop();
-            Console.WriteLine($"Finished getting data! {stopwatch.ElapsedMilliseconds} ms.");
+            logger.Log($"Finished getting data! {stopwatch.ElapsedMilliseconds} ms.", LogType.Info);
         }
-
-        /// <summary>
-        /// Downloads and saves all data from manifest paths to specified path. Warning: this operation is really long. I mean like REALLY LONG.
-        /// </summary>
-        /// <param name="path">Path to save data</param>
-        /// <returns></returns>
-        public async Task DownloadAndSaveToLocalFiles(string path)
+        private bool IsZIP(string filepath)
         {
-            var _httpClient = UnityContainerFactory.Container.Resolve<IHttpClientInstance>();
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            Uri _cdnUri = BungieClient.BungieCDNUri;
-            Console.WriteLine($"Loading data from: {_cdnUri.AbsoluteUri}");
-            HttpResponseMessage message;
-
-            // Downloading MobileAssetContent (zip SQLite)
-            if (!Directory.Exists($"{path}/MobileAssetContent"))
-                Directory.CreateDirectory($"{path}/MobileAssetContent");
-            Console.Write($"Getting data from: {_cdnUri + MobileAssetContentPath}");
-            message = await _httpClient.Get(_cdnUri + MobileAssetContentPath);
-            using (var stream = await message.Content.ReadAsStreamAsync())
+            if (File.Exists(filepath))
             {
-                var fileInfo = new FileInfo($"{path}/MobileAssetContent/{Path.GetFileName(MobileAssetContentPath)}");
-                using (var fileStream = fileInfo.OpenWrite())
+                try
                 {
-                    await stream.CopyToAsync(fileStream);
-                }
-            }
-            Console.WriteLine("...Done!");
-
-            // Downloading MobileGearAssetDataBases (zip SQLite)
-            if (!Directory.Exists($"{path}/MobileGearAssetDataBases"))
-                Directory.CreateDirectory($"{path}/MobileGearAssetDataBases");
-            foreach (var entry in MobileGearAssetDataBases)
-            {
-                if (!Directory.Exists($"{path}/MobileGearAssetDataBases/{entry.Version}"))
-                    Directory.CreateDirectory($"{path}/MobileGearAssetDataBases/{entry.Version}");
-                Console.Write($"Getting data from: {_cdnUri + entry.Path}");
-                message = await _httpClient.Get(_cdnUri + entry.Path);
-                using (var stream = await message.Content.ReadAsStreamAsync())
-                {
-                    var fileInfo = new FileInfo($"{path}/MobileGearAssetDataBases/{entry.Version}/{Path.GetFileName(entry.Path)}");
-                    using (var fileStream = fileInfo.OpenWrite())
+                    using (var zipFile = ZipFile.OpenRead(filepath))
                     {
-                        await stream.CopyToAsync(fileStream);
+                        var entries = zipFile.Entries;
+                        return true;
                     }
                 }
-                Console.WriteLine("...Done!");
-            }           
-
-            // Downloading MobileWorldContent (zip SQLite)
-            if (!Directory.Exists($"{path}/MobileWorldContent"))
-                Directory.CreateDirectory($"{path}/MobileWorldContent");
-            foreach (var key in MobileWorldContentPaths.Keys)
-            {
-                if (!Directory.Exists($"{path}/MobileWorldContent/{key}"))
-                    Directory.CreateDirectory($"{path}/MobileWorldContent/{key}");
-                Console.Write($"Getting data from: {_cdnUri + MobileWorldContentPaths[key]}");
-                message = await _httpClient.Get(_cdnUri + MobileWorldContentPaths[key]);
-                using (var stream = await message.Content.ReadAsStreamAsync())
+                catch (InvalidDataException)
                 {
-                    var fileInfo = new FileInfo($"{path}/MobileWorldContent/{key}/{Path.GetFileName(MobileWorldContentPaths[key])}");
-                    using (var fileStream = fileInfo.OpenWrite())
-                    {
-                        await stream.CopyToAsync(fileStream);
-                    }
-                }
-                Console.WriteLine("...Done!");
-            }
-
-            // Downloading JsonWorldContent (json text file)
-            if (!Directory.Exists($"{path}/JsonWorldContent"))
-                Directory.CreateDirectory($"{path}/JsonWorldContent");
-            foreach (var key in JsonWorldContentPaths.Keys)
-            {
-                if (!Directory.Exists($"{path}/JsonWorldContent/{key}"))
-                    Directory.CreateDirectory($"{path}/JsonWorldContent/{key}");
-                Console.Write($"Getting data from: {_cdnUri + JsonWorldContentPaths[key]}");
-                message = await _httpClient.Get(_cdnUri + JsonWorldContentPaths[key]);
-                using (var stream = await message.Content.ReadAsStreamAsync())
-                {
-                    var fileInfo = new FileInfo($"{path}/JsonWorldContent/{key}/{Path.GetFileName(JsonWorldContentPaths[key])}");
-                    using (var fileStream = fileInfo.OpenWrite())
-                    {
-                        await stream.CopyToAsync(fileStream);
-                    }
-                }
-                Console.WriteLine("...Done!");
-            }
-
-            // Downloading JsonWorldComponentContent (json text files)
-            if (!Directory.Exists($"{path}/JsonWorldComponentContent"))
-                Directory.CreateDirectory($"{path}/JsonWorldComponentContent");
-            foreach (var key in JsonWorldComponentContentPaths.Keys)
-            {
-                if (!Directory.Exists($"{path}/JsonWorldComponentContent/{key}"))
-                    Directory.CreateDirectory($"{path}/JsonWorldComponentContent/{key}");
-                foreach (var innerKey in JsonWorldComponentContentPaths[key].Keys)
-                {
-                    if (!Directory.Exists($"{path}/JsonWorldComponentContent/{key}/{innerKey}"))
-                        Directory.CreateDirectory($"{path}/JsonWorldComponentContent/{key}/{innerKey}");
-                    Console.Write($"Getting data from: {_cdnUri + JsonWorldComponentContentPaths[key][innerKey]}");
-                    message = await _httpClient.Get(_cdnUri + JsonWorldComponentContentPaths[key][innerKey]);
-                    using (var stream = await message.Content.ReadAsStreamAsync())
-                    {
-                        var fileInfo = new FileInfo($"{path}/JsonWorldComponentContent/{key}/{innerKey}/{Path.GetFileName(JsonWorldComponentContentPaths[key][innerKey])}");
-                        using (var fileStream = fileInfo.OpenWrite())
-                        {
-                            await stream.CopyToAsync(fileStream);
-                        }
-                    }
-                    Console.WriteLine("...Done!");
+                    return false;
                 }
             }
-
-            // Downloading MobileClanBannerDatabase (zip SQLite)
-            if (!Directory.Exists($"{path}/MobileClanBannerDatabase"))
-                Directory.CreateDirectory($"{path}/MobileClanBannerDatabase");
-            Console.Write($"Getting data from: {_cdnUri + MobileClanBannerDatabasePath}");
-            message = await _httpClient.Get(_cdnUri + MobileClanBannerDatabasePath);
-            using (var stream = await message.Content.ReadAsStreamAsync())
-            {
-                var fileInfo = new FileInfo($"{path}/MobileClanBannerDatabase/{Path.GetFileName(MobileClanBannerDatabasePath)}");
-                using (var fileStream = fileInfo.OpenWrite())
-                {
-                    await stream.CopyToAsync(fileStream);
-                }
-            }
-            Console.WriteLine("...Done!");
-            stopwatch.Stop();
-            Console.WriteLine($"Finished getting data! {stopwatch.ElapsedMilliseconds} ms.");
+            else
+                return false;
         }
-        public void LoadCacheFromDisk()
+        public static bool TryFetchDate(DestinyManifest manifest, out DateTime date) 
         {
-            UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>().LoadAllDataFromDisk(InternalData.LocalCacheBPath, this);
-        }
-        public void LoadCacheFromDisk(string path)
-        {
-            UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>().LoadAllDataFromDisk(path, this);
-        }
+            date = DateTime.MinValue;
+            if (string.IsNullOrWhiteSpace(manifest.Version))
+                return false;
+            Regex rgx = new Regex(@"\.\d{2}\.\d{2}\.\d{2}\.");
+            Match match = rgx.Match(manifest.Version);
+            if (match.Success)
+            {
+                var valuesArray = match.ToString().Split('.', StringSplitOptions.RemoveEmptyEntries);
+                if (valuesArray.Length == 3)
+                {
+                    int year = 2000 + int.Parse(valuesArray[0]);
+                    int month = int.Parse(valuesArray[1]);
+                    int day = int.Parse(valuesArray[2]);
+                    date = new DateTime(year, month, day);
+                    return true;
+                }
+                else
+                    return false;
+            }
+            else
+                return false;
+        }      
     }
 }

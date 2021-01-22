@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.SocketTypes
 {
-    [DestinyDefinition("DestinySocketTypeDefinition")]
+    [DestinyDefinition(name: "DestinySocketTypeDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinySocketTypeDefinition : DestinyDefinition
     {
         public bool AlwaysRandomizeSockets { get; }

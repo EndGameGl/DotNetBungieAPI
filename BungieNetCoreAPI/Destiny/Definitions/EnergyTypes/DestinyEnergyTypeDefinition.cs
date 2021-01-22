@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.EnergyTypes
 {
-    [DestinyDefinition("DestinyEnergyTypeDefinition")]
+    [DestinyDefinition(name: "DestinyEnergyTypeDefinition", presentInSQLiteDB: true, shouldBeLoaded: false)]
     public class DestinyEnergyTypeDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

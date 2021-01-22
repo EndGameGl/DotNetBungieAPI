@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ActivityInteractables
 {
-    [DestinyDefinition("DestinyActivityInteractableDefinition")]
+    [DestinyDefinition(name: "DestinyActivityInteractableDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
     public class DestinyActivityInteractableDefinition : DestinyDefinition
     {
         public List<ActivityInteractableEntry> Entries { get; }

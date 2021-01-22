@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Traits
 {
-    [DestinyDefinition("DestinyTraitDefinition")]
+    [DestinyDefinition(name: "DestinyTraitDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyTraitDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

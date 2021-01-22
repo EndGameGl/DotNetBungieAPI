@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.InventoryBuckets
 {
-    [DestinyDefinition("DestinyInventoryBucketDefinition")]
+    [DestinyDefinition(name: "DestinyInventoryBucketDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyInventoryBucketDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

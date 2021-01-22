@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
 {
-    [DestinyDefinition("DestinyMilestoneDefinition")]
+    [DestinyDefinition(name: "DestinyMilestoneDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyMilestoneDefinition : DestinyDefinition
     {
         public List<MilestoneActivities> Activities { get; }

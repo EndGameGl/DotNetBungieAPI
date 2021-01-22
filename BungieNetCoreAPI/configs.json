@@ -1,7 +1,7 @@
 {
-  "UseCache": true,
-  "UsePreloadedCache": true,
-  "LocalCacheBPath": "H:\\BungieNetCoreAPIRepository\\ManifestDB_12.01.2021",
-  "ShouldTryDownloadMissingDefinitions": false,
-  "EnableLogging": true
+  "CacheDefinitionsInMemory": true,
+  "TryDownloadMissingDefinitions": true,
+  "PathToLocalDb": "H:\\BungieNetCoreAPIRepository\\ManifestDB_12.01.2021",
+  "EnableLogging": true,
+  "UsePreloadedCache": true
 }

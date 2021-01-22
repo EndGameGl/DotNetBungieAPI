@@ -1,11 +1,12 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using BungieNetCoreAPI.Destiny.Definitions.Activities;
+using BungieNetCoreAPI.Destiny.Definitions.Places;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Destinations
 {
-    [DestinyDefinition("DestinyDestinationDefinition")]
+    [DestinyDefinition(name: "DestinyDestinationDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyDestinationDefinition : DestinyDefinition
     {
         public List<DestinationActivityGraphEntry> ActivityGraphEntries { get; }
@@ -13,10 +14,11 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Destinations
         public DefinitionHashPointer<DestinyActivityDefinition> DefaultFreeroamActivity { get; }
         public List<DestinationBubbleEntry> Bubbles { get; }
         public List<DestinationBubbleSettingsEntry> BubbleSettings { get; }
+        public DefinitionHashPointer<DestinyPlaceDefinition> Place { get; }
 
         [JsonConstructor]
         private DestinyDestinationDefinition(DestinyDefinitionDisplayProperties displayProperties, List<DestinationActivityGraphEntry> activityGraphEntries, uint defaultFreeroamActivityHash,
-            List<DestinationBubbleEntry> bubbles, List<DestinationBubbleSettingsEntry> bubbleSettings, 
+            List<DestinationBubbleEntry> bubbles, List<DestinationBubbleSettingsEntry> bubbleSettings, uint? placeHash,
             bool blacklisted, uint hash, int index, bool redacted)
             : base(blacklisted, hash, index, redacted)
         {
@@ -34,6 +36,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Destinations
                 BubbleSettings = new List<DestinationBubbleSettingsEntry>();
             else
                 BubbleSettings = bubbleSettings;
+            Place = new DefinitionHashPointer<DestinyPlaceDefinition>(placeHash, "DestinyPlaceDefinition");
         }
 
         public override string ToString()

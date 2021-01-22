@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Achievements
 {
-    [DestinyDefinition("DestinyAchievementDefinition")]
+    [DestinyDefinition(name: "DestinyAchievementDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyAchievementDefinition : DestinyDefinition
     {
         public int AcccumulatorThreshold { get; }        

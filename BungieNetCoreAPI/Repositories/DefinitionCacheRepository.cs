@@ -7,8 +7,10 @@ using BungieNetCoreAPI.Services;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -31,24 +33,46 @@ namespace BungieNetCoreAPI.Repositories
         /// Class .ctor
         /// </summary>
         /// <param name="locale">Locale for this repository</param>
-        public DefinitionCacheRepository(string locale)
+        internal DefinitionCacheRepository(string locale, LoadSourceMode loadMode, Dictionary<string, bool> loadOverrides)
         {
             _logger = UnityContainerFactory.Container.Resolve<ILogger>();
             _definitions = new Dictionary<string, IDestinyCacheRepository>();
+            var configs = 
             Locale = locale;
-            var definitionNameToTypeMapping = Assembly
+            var definitionNameToTypeMapping = 
+                Assembly
                 .GetAssembly(typeof(DefinitionCacheRepository))
                 .GetTypes()
                 .Where(x =>
                 {
                     var attrs = x.GetCustomAttributes(typeof(DestinyDefinitionAttribute), true);
-                    return attrs != null && attrs.Length > 0 && (attrs.First() as DestinyDefinitionAttribute).IgnoreLoad == false;
+                    return loadMode switch
+                    {
+                        LoadSourceMode.JSON => attrs != null && attrs.Length > 0,
+                        LoadSourceMode.SQLite => attrs != null && attrs.Length > 0 && (attrs.First() as DestinyDefinitionAttribute).PresentInSQLiteDB == true,
+                        _ => throw new Exception(),
+                    };
                 })
                 .ToDictionary(
                 x => (x.GetCustomAttribute(
                     attributeType: typeof(DestinyDefinitionAttribute),
                     inherit: true) as DestinyDefinitionAttribute).DefinitionName,
                 x => x);
+
+            if (loadOverrides != null && loadOverrides.Count > 0)
+            {
+                definitionNameToTypeMapping = definitionNameToTypeMapping
+                    .Where(x => 
+                    {
+                        if (loadOverrides.TryGetValue(x.Key, out var value))
+                        {
+                            return value;
+                        }
+                        else
+                            return true;
+                    })
+                    .ToDictionary(x => x.Key, y => y.Value);
+            }
 
             foreach (var mapping in definitionNameToTypeMapping)
             {
@@ -150,7 +174,7 @@ namespace BungieNetCoreAPI.Repositories
                     return false;
             }
             else
-             return false;
+                return false;
         }
         /// <summary>
         /// Gets definition from repository, if possible
@@ -204,7 +228,7 @@ namespace BungieNetCoreAPI.Repositories
         /// </summary>
         /// <param name="localManifestPath">Path to downloaded files</param>
         /// <param name="manifest"><see cref="DestinyManifest"/> with data</param>
-        public void LoadDataFromDisk(string localManifestPath, DestinyManifest manifest)
+        private void LoadDataFromJSON(string localManifestPath, DestinyManifest manifest)
         {
             UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>().SetLocaleContext(Locale);
             _logger.Log($"Started loading data for localization: {Locale}", LogType.Info);
@@ -229,6 +253,63 @@ namespace BungieNetCoreAPI.Repositories
             fullLoadStopwatch.Stop();
             _logger.Log($"Finished loading data for {Locale}: {fullLoadStopwatch.ElapsedMilliseconds} ms", LogType.Info);
             UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>().ResetLocaleContext();
+            GC.Collect();
+        }
+        private void LoadDataFromSQLiteDB(string localManifestPath, DestinyManifest manifest)
+        {
+            UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>().SetLocaleContext(Locale);
+            _logger.Log($"Started loading data for localization: {Locale}", LogType.Info);
+            Stopwatch fullLoadStopwatch = new Stopwatch();
+            fullLoadStopwatch.Start();
+            var mobileWorldContentPathsLocalePath = Path.GetFileName(manifest.MobileWorldContentPaths[Locale]);
+
+            using (SQLiteConnection connection = new SQLiteConnection(@$"Data Source={localManifestPath}\\MobileWorldContent\\{Locale}\\{mobileWorldContentPathsLocalePath}; Version=3;"))
+            {
+                connection.Open();
+                foreach (var key in _definitions.Keys)
+                {
+                    var definitionType = _definitions[key].DefinitionType;
+                    string query = $"SELECT * FROM {key}";
+                    SQLiteCommand command = new SQLiteCommand
+                    {
+                        Connection = connection,
+                        CommandText = query
+                    };
+                    try
+                    {
+                        var reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            var byteArray = (byte[])reader["json"];
+                            var jsonString = System.Text.Encoding.UTF8.GetString(byteArray, 0, byteArray.Length);
+                            var definition = JObject.Parse(jsonString);
+                            var deserializedDestinyDefinition = (DestinyDefinition)definition.ToObject(definitionType);
+                            Add(key, deserializedDestinyDefinition);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        _logger.Log(e.Message, LogType.Error);
+                    }
+                }
+                connection.Close();
+            }
+
+            fullLoadStopwatch.Stop();
+            _logger.Log($"Finished loading data for {Locale}: {fullLoadStopwatch.ElapsedMilliseconds} ms", LogType.Info);
+            UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>().ResetLocaleContext();
+        }
+        public void LoadDataFromFiles(LoadSourceMode loadMode, string localManifestPath, DestinyManifest manifest)
+        {
+            switch (loadMode)
+            {
+                case LoadSourceMode.JSON:
+                    LoadDataFromJSON(localManifestPath, manifest);
+                    break;
+                case LoadSourceMode.SQLite:
+                    LoadDataFromSQLiteDB(localManifestPath, manifest);
+                    break;
+            }
         }
     }
 }

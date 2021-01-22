@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.MedalTiers
 {
-    [DestinyDefinition("DestinyMedalTierDefinition")]
+    [DestinyDefinition(name: "DestinyMedalTierDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyMedalTierDefinition : DestinyDefinition
     {
         public int Order { get; }

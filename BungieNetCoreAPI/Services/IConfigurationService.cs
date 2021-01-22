@@ -6,5 +6,6 @@ namespace BungieNetCoreAPI.Services
     {
         BungieClientSettings Settings { get; }
         void ApplySettings(BungieClientSettings settings);
+        void ApplySettingsFromConfig(string filePath);
     }
 }

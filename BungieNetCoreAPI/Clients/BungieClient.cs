@@ -15,6 +15,7 @@ namespace BungieNetCoreAPI.Clients
         internal static Uri BungiePlatformUri = new Uri("https://www.bungie.net/Platform/");
         internal static IConfigurationService Configuration;
 
+        private readonly IManifestUpdateHandler _versionControl;
         private readonly ILogger _logger;
         public static BungieCDNClient CDN;
         public static BungiePlatfromClient Platform;
@@ -31,7 +32,15 @@ namespace BungieNetCoreAPI.Clients
             SetUpUnityDependencies();
 
             Configuration = UnityContainerFactory.Container.Resolve<IConfigurationService>();
-            Configuration.ApplySettings(settings);
+
+            if (settings.UseExistingConfig) 
+            {
+                Configuration.ApplySettingsFromConfig(settings.ExistingConfigPath);
+                Configuration.Settings.Locales = settings.Locales;
+            }
+            else
+                Configuration.ApplySettings(settings);
+
             _logger = UnityContainerFactory.Container.Resolve<ILogger>();
 
             if (Configuration.Settings.EnableLogging)
@@ -41,22 +50,29 @@ namespace BungieNetCoreAPI.Clients
             }
 
             CDN = new BungieCDNClient();
-            Platform = new BungiePlatfromClient(apiKey);     
+            Platform = new BungiePlatfromClient(apiKey);
+
+            _versionControl = UnityContainerFactory.Container.Resolve<IManifestUpdateHandler>();
+            
         }
         public async Task Run()
         {
             _logger.Log("Starting client...", LogType.Info);
+
+            await _versionControl.InitiateManifestHandler();
+
+            if (Configuration.Settings.CheckUpdates)
+                await _versionControl.UpdateManifestData();           
+
             if (Configuration.Settings.CacheDefinitionsInMemory)
-            {
+            {       
                 Repository = UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>();
                 Repository.Initialize(Configuration.Settings.Locales);
-
-                var manifest = Platform.GetDestinyManifest().GetAwaiter().GetResult();
-
+             
                 if (Configuration.Settings.UsePreloadedCache)
                 {
                     _logger.Log($"Using preloaded cache for set locales: {string.Join(", ", Configuration.Settings.Locales)}", LogType.Info);
-                    Repository.LoadAllDataFromDisk(Configuration.Settings.PathToLocalDb, manifest);
+                    await _versionControl.LoadData();
                 }
             }
         }
@@ -78,6 +94,7 @@ namespace BungieNetCoreAPI.Clients
             UnityContainerFactory.Container.RegisterType<IConfigurationService, ConfigurationService>(TypeLifetime.Singleton);
             UnityContainerFactory.Container.RegisterType<IHttpClientInstance, HttpClientInstance>(TypeLifetime.Singleton);
             UnityContainerFactory.Container.RegisterType<ILocalisedDefinitionsCacheRepository, LocalisedDefinitionsCacheRepository>(TypeLifetime.Singleton);
+            UnityContainerFactory.Container.RegisterType<IManifestUpdateHandler, ManifestUpdateHandler>(TypeLifetime.Singleton);
         }
     }
 }

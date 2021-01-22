@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
 {
-    [DestinyDefinition("DestinyCharacterCustomizationOptionDefinition", ignoreLoad: true)]
+    [DestinyDefinition(name: "DestinyCharacterCustomizationOptionDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
     public class DestinyCharacterCustomizationOptionDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

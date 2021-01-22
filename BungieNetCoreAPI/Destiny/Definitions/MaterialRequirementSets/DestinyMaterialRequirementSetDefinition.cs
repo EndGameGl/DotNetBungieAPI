@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.MaterialRequirementSets
 {
-    [DestinyDefinition("DestinyMaterialRequirementSetDefinition")]
+    [DestinyDefinition(name: "DestinyMaterialRequirementSetDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyMaterialRequirementSetDefinition : DestinyDefinition
     {
         public List<MaterialRequirementSetEntry> Materials { get; }

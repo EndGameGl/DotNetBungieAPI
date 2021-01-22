@@ -15,6 +15,7 @@ namespace BungieNetCoreAPI.Repositories
     {
         private string _currentLocaleLoadContext;
         private readonly ILogger _logger;
+        private readonly IConfigurationService _configs;
         public string CurrentLocaleLoadContext => string.IsNullOrWhiteSpace(_currentLocaleLoadContext) ? "en" : _currentLocaleLoadContext;
 
         private Dictionary<string, DefinitionCacheRepository> _localisedRepositories;
@@ -22,6 +23,7 @@ namespace BungieNetCoreAPI.Repositories
         public LocalisedDefinitionsCacheRepository()
         {
             _logger = UnityContainerFactory.Container.Resolve<ILogger>();
+            _configs = UnityContainerFactory.Container.Resolve<IConfigurationService>();
         }
 
         public void Initialize(DestinyLocales[] locales)
@@ -31,14 +33,14 @@ namespace BungieNetCoreAPI.Repositories
             foreach (var locale in locales)
             {
                 var localeAsString = locale.LocaleToString();
-                _localisedRepositories.Add(localeAsString, new DefinitionCacheRepository(localeAsString));
+                _localisedRepositories.Add(localeAsString, new DefinitionCacheRepository(localeAsString, _configs.Settings.LoadMode, _configs.Settings.DefinitionLoadRules));
             }
         }
         public void LoadAllDataFromDisk(string localManifestPath, DestinyManifest manifest)
         {
-            foreach (var repo in _localisedRepositories)
+            foreach (var repo in _localisedRepositories.Values)
             {
-                repo.Value.LoadDataFromDisk(localManifestPath, manifest);
+                repo.LoadDataFromFiles(_configs.Settings.LoadMode, localManifestPath, manifest);
             }
         }
         public void AddDefinitionToCache(string definitionName, DestinyDefinition defValue, string locale)

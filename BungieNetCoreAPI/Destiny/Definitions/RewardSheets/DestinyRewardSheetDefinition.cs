@@ -6,7 +6,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.RewardSheets
     /// <summary>
     /// Empty atm
     /// </summary>
-    [DestinyDefinition("DestinyRewardSheetDefinition")]
+    [DestinyDefinition(name: "DestinyRewardSheetDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
     public class DestinyRewardSheetDefinition : DestinyDefinition
     {
         public uint SheetHash { get; }

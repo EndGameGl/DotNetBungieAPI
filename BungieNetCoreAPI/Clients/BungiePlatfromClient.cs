@@ -97,7 +97,6 @@ namespace BungieNetCoreAPI.Clients
         {
             _logger.Log("Loading destiny manifest...", LogType.Info);
             var manifest = await GetData<DestinyManifest>("Destiny2/Manifest");
-            InternalData.LoadedManifest = manifest;
             _logger.Log($"Loaded destiny manifest: Version {manifest.Version}", LogType.Info);
             return manifest;
         }

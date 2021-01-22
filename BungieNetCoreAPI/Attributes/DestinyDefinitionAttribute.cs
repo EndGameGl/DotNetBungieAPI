@@ -7,11 +7,13 @@ namespace BungieNetCoreAPI.Attributes
     public class DestinyDefinitionAttribute : Attribute
     {
         public string DefinitionName { get; }
-        public bool IgnoreLoad { get; }
-        public DestinyDefinitionAttribute(string name, bool ignoreLoad = false)
+        public bool PresentInSQLiteDB { get; }
+        public bool ShouldBeLoaded { get; }
+        public DestinyDefinitionAttribute(string name, bool presentInSQLiteDB = true, bool shouldBeLoaded = true)
         {
             DefinitionName = name;
-            IgnoreLoad = ignoreLoad;
+            PresentInSQLiteDB = presentInSQLiteDB;
+            ShouldBeLoaded = shouldBeLoaded;
         }
     }
 }

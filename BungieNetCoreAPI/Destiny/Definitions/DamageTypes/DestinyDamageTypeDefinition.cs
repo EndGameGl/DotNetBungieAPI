@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.DamageTypes
 {
-    [DestinyDefinition("DestinyDamageTypeDefinition")]
+    [DestinyDefinition(name: "DestinyDamageTypeDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyDamageTypeDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

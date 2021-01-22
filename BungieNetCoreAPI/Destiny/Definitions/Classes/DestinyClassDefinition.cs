@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Classes
 {
-    [DestinyDefinition("DestinyClassDefinition")]
+    [DestinyDefinition(name: "DestinyClassDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyClassDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

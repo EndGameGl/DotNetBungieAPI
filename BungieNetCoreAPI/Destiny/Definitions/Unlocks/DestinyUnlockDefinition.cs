@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Unlocks
 {
-    [DestinyDefinition("DestinyUnlockDefinition")]
+    [DestinyDefinition(name: "DestinyUnlockDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyUnlockDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

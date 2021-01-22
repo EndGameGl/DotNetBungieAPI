@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Factions
 {
-    [DestinyDefinition("DestinyFactionDefinition")]
+    [DestinyDefinition(name: "DestinyFactionDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyFactionDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

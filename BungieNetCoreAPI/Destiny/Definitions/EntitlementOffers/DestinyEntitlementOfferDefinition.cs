@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.EntitlementOffers
 {
-    [DestinyDefinition("DestinyEntitlementOfferDefinition")]
+    [DestinyDefinition(name: "DestinyEntitlementOfferDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
     public class DestinyEntitlementOfferDefinition : DestinyDefinition
     {
         public uint OfferKey { get; }

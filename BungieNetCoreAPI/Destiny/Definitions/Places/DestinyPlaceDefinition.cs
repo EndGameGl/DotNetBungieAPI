@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Places
 {
-    [DestinyDefinition("DestinyPlaceDefinition")]
+    [DestinyDefinition(name: "DestinyPlaceDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyPlaceDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

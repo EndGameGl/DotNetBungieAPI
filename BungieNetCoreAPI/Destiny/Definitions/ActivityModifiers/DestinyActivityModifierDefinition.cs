@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ActivityModifiers
 {
-    [DestinyDefinition("DestinyActivityModifierDefinition")]
+    [DestinyDefinition(name: "DestinyActivityModifierDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyActivityModifierDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

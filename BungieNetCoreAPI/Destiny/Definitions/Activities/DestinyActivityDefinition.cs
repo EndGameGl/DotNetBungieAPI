@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Activities
 {
-    [DestinyDefinition("DestinyActivityDefinition")]
+    [DestinyDefinition(name: "DestinyActivityDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyActivityDefinition : DestinyDefinition
     {
         public List<ActivityGraphListEntry> ActivityGraphList { get; }

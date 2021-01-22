@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs
 {
-    [DestinyDefinition("DestinyActivityGraphDefinition")]
+    [DestinyDefinition(name: "DestinyActivityGraphDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyActivityGraphDefinition : DestinyDefinition
     {
         public List<ActivityGraphArtElementEntry> ArtElements { get; }

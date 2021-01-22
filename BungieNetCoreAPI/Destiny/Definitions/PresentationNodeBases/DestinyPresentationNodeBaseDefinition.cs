@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodeBases
 {
-    [DestinyDefinition("DestinyPresentationNodeBaseDefinition", true)]
+    [DestinyDefinition(name: "DestinyPresentationNodeBaseDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
     public class DestinyPresentationNodeBaseDefinition : DestinyDefinition
     {
 

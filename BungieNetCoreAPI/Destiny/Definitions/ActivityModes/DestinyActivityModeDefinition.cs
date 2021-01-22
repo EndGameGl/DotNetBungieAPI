@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ActivityModes
 {
-    [DestinyDefinition("DestinyActivityModeDefinition")]
+    [DestinyDefinition(name: "DestinyActivityModeDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyActivityModeDefinition : DestinyDefinition
     {
         public int ActivityModeCategory { get; }

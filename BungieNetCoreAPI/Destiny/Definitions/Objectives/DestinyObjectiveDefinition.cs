@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Objectives
 {
-    [DestinyDefinition("DestinyObjectiveDefinition")]
+    [DestinyDefinition(name: "DestinyObjectiveDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyObjectiveDefinition : DestinyDefinition
     {
         public bool AllowNegativeValue { get; }

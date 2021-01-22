@@ -6,7 +6,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.RewardSources
     /// <summary>
     /// Empty atm
     /// </summary>
-    [DestinyDefinition("DestinyRewardSourceDefinition")]
+    [DestinyDefinition(name: "DestinyRewardSourceDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyRewardSourceDefinition : DestinyDefinition
     {
         [JsonConstructor]

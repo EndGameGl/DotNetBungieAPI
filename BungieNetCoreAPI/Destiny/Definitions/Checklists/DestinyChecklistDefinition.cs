@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Checklists
 {
-    [DestinyDefinition("DestinyChecklistDefinition")]
+    [DestinyDefinition(name: "DestinyChecklistDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyChecklistDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

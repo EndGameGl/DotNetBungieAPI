@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.StatGroups
 {
-    [DestinyDefinition("DestinyStatGroupDefinition")]
+    [DestinyDefinition(name: "DestinyStatGroupDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyStatGroupDefinition : DestinyDefinition
     {
         public int MaximumValue { get; }

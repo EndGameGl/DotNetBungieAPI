@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ItemTierTypes
 {
-    [DestinyDefinition("DestinyItemTierTypeDefinition")]
+    [DestinyDefinition(name: "DestinyItemTierTypeDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyItemTierTypeDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

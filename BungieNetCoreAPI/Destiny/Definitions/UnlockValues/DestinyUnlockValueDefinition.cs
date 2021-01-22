@@ -6,7 +6,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.UnlockValues
     /// <summary>
     /// Doesn't have any meaning at this moment
     /// </summary>
-    [DestinyDefinition("DestinyUnlockValueDefinition")]
+    [DestinyDefinition(name: "DestinyUnlockValueDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
     public class DestinyUnlockValueDefinition : DestinyDefinition
     {
         /// <summary>

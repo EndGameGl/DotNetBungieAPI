@@ -1,4 +1,6 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Locations;
+﻿using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+using BungieNetCoreAPI.Destiny.Definitions.Locations;
+using BungieNetCoreAPI.Destiny.Definitions.Objectives;
 using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Activities
@@ -8,13 +10,17 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
         public string ActivationSource { get; }
         public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; }
         public DefinitionHashPointer<DestinyLocationDefinition> Location { get; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; }
+        public DefinitionHashPointer<DestinyObjectiveDefinition> Objective { get; }
 
         [JsonConstructor]
-        private ActivityLocationMappingDefinition(string activationSource, uint activityHash, uint locationHash)
+        private ActivityLocationMappingDefinition(string activationSource, uint? activityHash, uint? locationHash, uint? itemHash, uint? objectiveHash)
         {
             ActivationSource = activationSource;
             Activity = new DefinitionHashPointer<DestinyActivityDefinition>(activityHash, "DestinyActivityDefinition");
             Location = new DefinitionHashPointer<DestinyLocationDefinition>(locationHash, "DestinyLocationDefinition");
+            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition");
+            Objective = new DefinitionHashPointer<DestinyObjectiveDefinition>(objectiveHash, "DestinyObjectiveDefinition");
         }
     }
 }

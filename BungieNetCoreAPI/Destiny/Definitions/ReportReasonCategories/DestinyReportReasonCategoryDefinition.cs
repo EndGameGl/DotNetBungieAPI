@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ReportReasonCategories
 {
-    [DestinyDefinition("DestinyReportReasonCategoryDefinition")]
+    [DestinyDefinition(name: "DestinyReportReasonCategoryDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyReportReasonCategoryDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

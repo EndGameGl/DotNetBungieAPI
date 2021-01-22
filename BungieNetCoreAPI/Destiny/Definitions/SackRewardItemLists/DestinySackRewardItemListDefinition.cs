@@ -6,7 +6,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SackRewardItemLists
     /// <summary>
     /// Empty definition
     /// </summary>
-    [DestinyDefinition("DestinySackRewardItemListDefinition")]
+    [DestinyDefinition(name: "DestinySackRewardItemListDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinySackRewardItemListDefinition : DestinyDefinition
     {
         [JsonConstructor]

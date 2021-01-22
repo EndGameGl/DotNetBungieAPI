@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.EnemyRaces
 {
-    [DestinyDefinition("DestinyEnemyRaceDefinition")]
+    [DestinyDefinition(name: "DestinyEnemyRaceDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyEnemyRaceDefinition : DestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

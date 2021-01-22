@@ -55,10 +55,14 @@ namespace BungieNetCoreTestingApp
                 {
                     CacheDefinitionsInMemory = true,
                     EnableLogging = true,
-                    Locales = new DestinyLocales[] { DestinyLocales.EN, DestinyLocales.RU },
-                    UsePreloadedCache = false,
-                    PathToLocalDb = "H:\\BungieNetCoreAPIRepository\\ManifestDB_12.01.2021",
-                    TryDownloadMissingDefinitions = true
+                    VersionsRepositoryPath = "H:\\BungieNetCoreAPIRepository\\Manifests",
+                    TryDownloadMissingDefinitions = false,
+                    UsePreloadedCache = true,
+                    CheckUpdates = true,
+                    Locales = new DestinyLocales[] { DestinyLocales.EN },
+                    KeepOldVerisons = true,
+                    LoadMode = BungieNetCoreAPI.Repositories.LoadSourceMode.SQLite,
+                    DefinitionLoadRules = new Dictionary<string, bool>() { }
                 });
             _bungieClient.LogListener.OnNewMessage += (mes) => Console.WriteLine(mes);
             MainAsync().GetAwaiter().GetResult();
@@ -67,8 +71,6 @@ namespace BungieNetCoreTestingApp
         private static async Task MainAsync()
         {
             await _bungieClient.Run();
-            var posterityPointer = new DefinitionHashPointer<DestinyInventoryItemDefinition>(3281285075, "DestinyInventoryItemDefinition");
-            var item = posterityPointer.Value;
 
             await Task.Delay(Timeout.Infinite);
         }
