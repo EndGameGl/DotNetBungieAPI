@@ -16,9 +16,9 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
         [JsonConstructor]
         private VendorItemSocketOverride(uint singleItemHash, int randomizedOptionsCount, uint socketTypeHash)
         {
-            SingleItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(singleItemHash, "DestinyInventoryItemDefinition");
+            SingleItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(singleItemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
             RandomizedOptionsCount = randomizedOptionsCount;
-            SocketType = new DefinitionHashPointer<DestinySocketTypeDefinition>(socketTypeHash, "DestinySocketTypeDefinition");
+            SocketType = new DefinitionHashPointer<DestinySocketTypeDefinition>(socketTypeHash, DefinitionsEnum.DestinySocketTypeDefinition);
         }
     }
 }

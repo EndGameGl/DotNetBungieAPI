@@ -15,7 +15,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         private InventoryItemTranslationBlockArrangement(uint artArrangementHash, uint classHash)
         {
             ArtArrangementHash = artArrangementHash;
-            Class = new DefinitionHashPointer<DestinyClassDefinition>(classHash, "DestinyClassDefinition");           
+            Class = new DefinitionHashPointer<DestinyClassDefinition>(classHash, DefinitionsEnum.DestinyClassDefinition);           
         }
     }
 }

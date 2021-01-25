@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace BungieNetCoreAPI.Destiny.Definitions.Metrics
 {
     [DestinyDefinition(name: "DestinyMetricDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyMetricDefinition : DestinyDefinition
+    public class DestinyMetricDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public bool LowerValueIsBetter { get; }
@@ -17,12 +17,15 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Metrics
         public DefinitionHashPointer<DestinyObjectiveDefinition> TrackingObjective { get; }
         public List<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; }
         public List<string> TraitIds { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyMetricDefinition(DestinyDefinitionDisplayProperties displayProperties, bool lowerValueIsBetter, List<uint> parentNodeHashes,
             PresentationNodeType presentationNodeType, uint trackingObjectiveHash, List<uint> traitHashes, List<string> traitIds,
             bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
             LowerValueIsBetter = lowerValueIsBetter;
@@ -31,20 +34,24 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Metrics
             {
                 foreach (var parentNodeHash in parentNodeHashes)
                 {
-                    ParentNodes.Add(new DefinitionHashPointer<DestinyPresentationNodeDefinition>(parentNodeHash, "DestinyPresentationNodeDefinition"));
+                    ParentNodes.Add(new DefinitionHashPointer<DestinyPresentationNodeDefinition>(parentNodeHash, DefinitionsEnum.DestinyPresentationNodeDefinition));
                 }
             }
             PresentationNodeType = presentationNodeType;
-            TrackingObjective = new DefinitionHashPointer<DestinyObjectiveDefinition>(trackingObjectiveHash, "DestinyObjectiveDefinition");
+            TrackingObjective = new DefinitionHashPointer<DestinyObjectiveDefinition>(trackingObjectiveHash, DefinitionsEnum.DestinyObjectiveDefinition);
             Traits = new List<DefinitionHashPointer<DestinyTraitDefinition>>();
             if (traitHashes != null)
             {
                 foreach (var traitHash in traitHashes)
                 {
-                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, "DestinyTraitDefinition"));
+                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, DefinitionsEnum.DestinyTraitDefinition));
                 }
             }
             TraitIds = traitIds;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

@@ -10,7 +10,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
         [JsonConstructor]
         private PresentationChildNodeCollectible(uint collectibleHash)
         {
-            Collectible = new DefinitionHashPointer<DestinyCollectibleDefinition>(collectibleHash, "DestinyCollectibleDefinition");
+            Collectible = new DefinitionHashPointer<DestinyCollectibleDefinition>(collectibleHash, DefinitionsEnum.DestinyCollectibleDefinition);
         }
     }
 }

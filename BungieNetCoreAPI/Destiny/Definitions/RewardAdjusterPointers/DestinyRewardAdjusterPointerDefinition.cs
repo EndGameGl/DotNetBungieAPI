@@ -7,14 +7,21 @@ namespace BungieNetCoreAPI.Destiny.Definitions.RewardAdjusterPointers
     /// Empty atm
     /// </summary>
     [DestinyDefinition(name: "DestinyRewardAdjusterPointerDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
-    public class DestinyRewardAdjusterPointerDefinition : DestinyDefinition
+    public class DestinyRewardAdjusterPointerDefinition : IDestinyDefinition
     {
         public int AdjusterType { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
         [JsonConstructor]
         private DestinyRewardAdjusterPointerDefinition(int adjusterType, bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             AdjusterType = adjusterType;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

@@ -4,15 +4,22 @@ using Newtonsoft.Json;
 namespace BungieNetCoreAPI.Destiny.Definitions.EnemyRaces
 {
     [DestinyDefinition(name: "DestinyEnemyRaceDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyEnemyRaceDefinition : DestinyDefinition
+    public class DestinyEnemyRaceDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyEnemyRaceDefinition(DestinyDefinitionDisplayProperties displayProperties, bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

@@ -47,7 +47,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.TalentGrids
             IsRealStepSelectionRandom = isRealStepSelectionRandom;
             LastStepRepeats = lastStepRepeats;
             LayoutIdentifier = layoutIdentifier;
-            Lore = new DefinitionHashPointer<DestinyLoreDefinition>(loreHash, "DestinyLoreDefinition");
+            Lore = new DefinitionHashPointer<DestinyLoreDefinition>(loreHash, DefinitionsEnum.DestinyLoreDefinition);
             NodeHash = nodeHash;
             NodeIndex = nodeIndex;
             NodeStyleIdentifier = nodeStyleIdentifier;

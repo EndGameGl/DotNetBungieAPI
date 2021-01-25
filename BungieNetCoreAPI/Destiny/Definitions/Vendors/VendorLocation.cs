@@ -16,7 +16,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
         private VendorLocation(string backgroundImagePath, uint destinationHash)
         {
             BackgroundImagePath = backgroundImagePath;
-            Destination = new DefinitionHashPointer<DestinyDestinationDefinition>(destinationHash, "DestinyDestinationDefinition");
+            Destination = new DefinitionHashPointer<DestinyDestinationDefinition>(destinationHash, DefinitionsEnum.DestinyDestinationDefinition);
         }
     }
 }

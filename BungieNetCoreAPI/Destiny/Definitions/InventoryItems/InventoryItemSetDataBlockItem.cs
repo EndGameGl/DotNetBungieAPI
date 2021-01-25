@@ -10,7 +10,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         [JsonConstructor]
         private InventoryItemSetDataBlockItem(uint itemHash, int trackingValue)
         {
-            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition");
+            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
             TrackingValue = trackingValue;
         }
     }

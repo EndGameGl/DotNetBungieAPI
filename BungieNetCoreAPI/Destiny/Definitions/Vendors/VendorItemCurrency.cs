@@ -13,7 +13,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
         private VendorItemCurrency(int scalarDenominator, uint itemHash, int quantity)
         {
             ScalarDenominator = scalarDenominator;
-            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition");
+            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
             Quantity = quantity;
         }
     }

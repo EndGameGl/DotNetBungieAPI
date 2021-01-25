@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace BungieNetCoreAPI.Destiny.Definitions.Collectibles
 {
     [DestinyDefinition(name: "DestinyCollectibleDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyCollectibleDefinition : DestinyDefinition
+    public class DestinyCollectibleDefinition : IDestinyDefinition
     {
         public CollectibleAcquisitionInfo AcquisitionInfo { get; }
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
@@ -21,16 +21,19 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Collectibles
         public CollectibleStateInfo StateInfo { get; }
         public List<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; }
         public List<string> TraitIds { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyCollectibleDefinition(CollectibleAcquisitionInfo acquisitionInfo, DestinyDefinitionDisplayProperties displayProperties, uint itemHash, List<uint> parentNodeHashes,
             int presentationNodeType, int scope, uint sourceHash, string sourceString, CollectibleStateInfo stateInfo, List<uint> traitHashes, List<string> traitIds,
             bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             AcquisitionInfo = acquisitionInfo;
             DisplayProperties = displayProperties;
-            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition");
+            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
             if (parentNodeHashes == null)
                 ParentNodes = new List<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
             else
@@ -38,7 +41,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Collectibles
                 ParentNodes = new List<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
                 foreach (var parentNodeHash in parentNodeHashes)
                 {
-                    ParentNodes.Add(new DefinitionHashPointer<DestinyPresentationNodeDefinition>(parentNodeHash, "DestinyPresentationNodeDefinition"));
+                    ParentNodes.Add(new DefinitionHashPointer<DestinyPresentationNodeDefinition>(parentNodeHash, DefinitionsEnum.DestinyPresentationNodeDefinition));
                 }
             }
             PresentationNodeType = presentationNodeType;
@@ -53,13 +56,17 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Collectibles
                 Traits = new List<DefinitionHashPointer<DestinyTraitDefinition>>();
                 foreach (var traitHash in traitHashes)
                 {
-                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, "DestinyTraitDefinition"));
+                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, DefinitionsEnum.DestinyTraitDefinition));
                 }
             }
             if (traitIds == null)
                 TraitIds = new List<string>();
             else
                 TraitIds = traitIds;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

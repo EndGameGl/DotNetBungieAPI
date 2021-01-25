@@ -1,4 +1,5 @@
 ﻿using BungieNetCoreAPI.Clients;
+using BungieNetCoreAPI.Destiny;
 using BungieNetCoreAPI.Destiny.Definitions;
 using BungieNetCoreAPI.Repositories;
 using BungieNetCoreAPI.Services;
@@ -7,12 +8,12 @@ using Unity;
 
 namespace BungieNetCoreAPI
 {
-    public struct DefinitionHashPointer<T> where T: DestinyDefinition
+    public struct DefinitionHashPointer<T> where T: IDestinyDefinition
     {
-        private readonly ILocalisedDefinitionsCacheRepository _repository;
+        private readonly ILocalisedManifestDefinitionRepositories _repository;
         public uint? Hash { get; }
-        public string DefinitionName { get; }
-        public string Locale { get; }
+        public DefinitionsEnum DefinitionEnumType { get; }
+        public DestinyLocales Locale { get; }
         public bool HasValidHash => Hash.HasValue && Hash.Value > 0;
         public T Value
         {
@@ -20,28 +21,28 @@ namespace BungieNetCoreAPI
             {
                 if (HasValidHash)
                 {
-                    if (_repository.TryGetDestinyDefinition(DefinitionName, Hash.Value, Locale, out var definition))
+                    if (_repository.TryGetDestinyDefinition<T>(DefinitionEnumType, Hash.Value, Locale, out var definition))
                     {
-                        return (T)definition;
+                        return definition;
                     }
                     else if (BungieClient.Configuration.Settings.TryDownloadMissingDefinitions)
                     {
-                        definition = BungieClient.Platform.GetDestinyEntityDefinition<T>(DefinitionName, Hash.Value).GetAwaiter().GetResult();
-                        _repository.AddDefinitionToCache(DefinitionName, definition, Locale);
-                        return (T)definition;
+                        definition = BungieClient.Platform.GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value).GetAwaiter().GetResult();
+                        _repository.AddDefinitionToCache(DefinitionEnumType, definition, Locale);
+                        return definition;
                     }
                     else
-                        throw new Exception($"No {DefinitionName} was found with {Hash} hash.");
+                        throw new Exception($"No {DefinitionEnumType} was found with {Hash} hash.");
                 }
                 else
                     throw new Exception("Invalid hash value.");
             }
         }
-        public DefinitionHashPointer(uint? hash, string definitionName)
+        public DefinitionHashPointer(uint? hash, DefinitionsEnum type)
         {
             Hash = hash;
-            DefinitionName = definitionName;
-            _repository = UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>();
+            DefinitionEnumType = type;
+            _repository = UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>();
             Locale = _repository.CurrentLocaleLoadContext;
         }
         public bool TryGetDefinition(out T definition)
@@ -49,15 +50,15 @@ namespace BungieNetCoreAPI
             definition = default;
             if (HasValidHash)
             {
-                if (_repository.TryGetDestinyDefinition(DefinitionName, Hash.Value, Locale, out var foundDefinition))
+                if (_repository.TryGetDestinyDefinition<T>(DefinitionEnumType, Hash.Value, Locale, out var foundDefinition))
                 {
-                    definition = (T)foundDefinition;
+                    definition = foundDefinition;
                     return true;
                 }
                 else if (BungieClient.Configuration.Settings.TryDownloadMissingDefinitions)
                 {
-                    definition = BungieClient.Platform.GetDestinyEntityDefinition<T>(DefinitionName, Hash.Value).GetAwaiter().GetResult();
-                    _repository.AddDefinitionToCache(DefinitionName, definition, Locale);
+                    definition = BungieClient.Platform.GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value).GetAwaiter().GetResult();
+                    _repository.AddDefinitionToCache(DefinitionEnumType, definition, Locale);
                     return true;
                 }
                 else
@@ -68,7 +69,7 @@ namespace BungieNetCoreAPI
         }
         public override string ToString()
         {
-            return $"{{{DefinitionName} - {Hash} - {Locale}}}";
+            return $"{{{DefinitionEnumType} - {Hash} - {Locale}}}";
         }
     }
 }

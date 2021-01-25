@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace BungieNetCoreAPI.Destiny.Definitions.ActivityModes
 {
     [DestinyDefinition(name: "DestinyActivityModeDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyActivityModeDefinition : DestinyDefinition
+    public class DestinyActivityModeDefinition : IDestinyDefinition
     {
         public int ActivityModeCategory { get; }
         public Dictionary<uint, DestinyActivityModeType> ActivityModeMappings { get; }
@@ -20,12 +20,15 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityModes
         public string PgcrImage { get; }
         public bool SupportsFeedFiltering { get; }
         public int Tier { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyActivityModeDefinition(int activityModeCategory, Dictionary<uint, DestinyActivityModeType> activityModeMappings, bool display, 
             DestinyDefinitionDisplayProperties displayProperties, string friendlyName, bool isAggregateMode, bool isTeamBased, DestinyActivityModeType modeType, int order, 
             List<uint> parentHashes, string pgcrImage, bool supportsFeedFiltering, int tier, bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             ActivityModeCategory = activityModeCategory;
             if (activityModeMappings == null)
@@ -46,12 +49,16 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityModes
                 ParentHashes = new List<DefinitionHashPointer<DestinyActivityModeDefinition>>();
                 foreach (var parentHash in parentHashes)
                 {
-                    ParentHashes.Add(new DefinitionHashPointer<DestinyActivityModeDefinition>(parentHash, "DestinyActivityModeDefinition"));
+                    ParentHashes.Add(new DefinitionHashPointer<DestinyActivityModeDefinition>(parentHash, DefinitionsEnum.DestinyActivityModeDefinition));
                 }
             }
             PgcrImage = pgcrImage;
             SupportsFeedFiltering = supportsFeedFiltering;
             Tier = tier;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

@@ -5,17 +5,24 @@ using Newtonsoft.Json;
 namespace BungieNetCoreAPI.Destiny.Definitions.PlatformBucketMappings
 {
     [DestinyDefinition(name: "DestinyPlatformBucketMappingDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
-    public class DestinyPlatformBucketMappingDefinition : DestinyDefinition
+    public class DestinyPlatformBucketMappingDefinition : IDestinyDefinition
     {
         public int MembershipType { get; }
         public DefinitionHashPointer<DestinyInventoryBucketDefinition> Bucket { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyPlatformBucketMappingDefinition(int membershipType, uint bucketHash, bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             MembershipType = membershipType;
-            Bucket = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(bucketHash, "DestinyInventoryBucketDefinition");
+            Bucket = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(bucketHash, DefinitionsEnum.DestinyInventoryBucketDefinition);
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

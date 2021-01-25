@@ -26,12 +26,12 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Locations
             List<int> worldPosition)
         {
             ActivityBubbleName = activityBubbleName;
-            ActivityGraph = new DefinitionHashPointer<DestinyActivityGraphDefinition>(activityGraphHash, "DestinyActivityGraphDefinition");
+            ActivityGraph = new DefinitionHashPointer<DestinyActivityGraphDefinition>(activityGraphHash, DefinitionsEnum.DestinyActivityGraphDefinition);
             ActivityGraphNodeHash = activityGraphNodeHash;
-            Activity = new DefinitionHashPointer<DestinyActivityDefinition>(activityHash, "DestinyActivityDefinition");
+            Activity = new DefinitionHashPointer<DestinyActivityDefinition>(activityHash, DefinitionsEnum.DestinyActivityDefinition);
             ActivityPathBundle = activityPathBundle;
             ActivityPathDestination = activityPathDestination;
-            Destination = new DefinitionHashPointer<DestinyDestinationDefinition>(destinationHash, "DestinyDestinationDefinition");
+            Destination = new DefinitionHashPointer<DestinyDestinationDefinition>(destinationHash, DefinitionsEnum.DestinyDestinationDefinition);
             DisplayProperties = displayProperties;
             NavPointType = navPointType;
             SpawnPoint = spawnPoint;

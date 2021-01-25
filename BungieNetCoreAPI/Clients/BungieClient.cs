@@ -21,7 +21,7 @@ namespace BungieNetCoreAPI.Clients
         public static BungiePlatfromClient Platform;
 
 
-        public ILocalisedDefinitionsCacheRepository Repository;
+        public ILocalisedManifestDefinitionRepositories Repository;
         public LogListener LogListener;
 
         public BungieClient(BungieClientSettings settings)
@@ -63,7 +63,7 @@ namespace BungieNetCoreAPI.Clients
 
             if (Configuration.Settings.CacheDefinitionsInMemory)
             {       
-                Repository = UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>();
+                Repository = UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>();
                 Repository.Initialize(Configuration.Settings.Locales);
              
                 if (Configuration.Settings.UsePreloadedCache)
@@ -87,11 +87,7 @@ namespace BungieNetCoreAPI.Clients
         }
         private void SetUpUnityDependencies()
         {
-            UnityContainerFactory.Container.RegisterType<ILogger, Logger>(TypeLifetime.Singleton);
-            UnityContainerFactory.Container.RegisterType<IConfigurationService, ConfigurationService>(TypeLifetime.Singleton);
-            UnityContainerFactory.Container.RegisterType<IHttpClientInstance, HttpClientInstance>(TypeLifetime.Singleton);
-            UnityContainerFactory.Container.RegisterType<ILocalisedDefinitionsCacheRepository, LocalisedDefinitionsCacheRepository>(TypeLifetime.Singleton);
-            UnityContainerFactory.Container.RegisterType<IManifestUpdateHandler, ManifestUpdateHandler>(TypeLifetime.Singleton);
+            
         }
     }
 }

@@ -18,7 +18,7 @@ namespace BungieNetCoreAPI.Destiny.Responses
         private GetPublicMilestonesResponse(uint milestoneHash, List<PublicMilestoneAvailableQuest> availableQuests, int order, DateTime? startDate, DateTime? endDate,
             List<PublicMilestoneActivity> activities)
         {
-            Milestone = new DefinitionHashPointer<DestinyMilestoneDefinition>(milestoneHash, "DestinyMilestoneDefinition");
+            Milestone = new DefinitionHashPointer<DestinyMilestoneDefinition>(milestoneHash, DefinitionsEnum.DestinyMilestoneDefinition);
             AvailableQuests = availableQuests;
             Order = order;
             StartDate = startDate;

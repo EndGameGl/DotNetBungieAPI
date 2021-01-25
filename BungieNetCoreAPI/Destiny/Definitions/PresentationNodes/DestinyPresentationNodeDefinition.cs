@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
 {
     [DestinyDefinition(name: "DestinyPresentationNodeDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyPresentationNodeDefinition : DestinyDefinition
+    public class DestinyPresentationNodeDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public PresentationChildNode Children { get; }
@@ -23,13 +23,16 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
         public int ScreenStyle { get; }
         public List<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; }
         public List<string> TraitIds { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyPresentationNodeDefinition(DestinyDefinitionDisplayProperties displayProperties, PresentationChildNode children, bool disableChildSubscreenNavigation,
             int displayStyle, int maxCategoryRecordScore, int nodeType, uint objectiveHash, List<uint> parentNodeHashes, PresentationNodeType presentationNodeType, 
             PresentationNodeRequirement requirements, Scope scope, int screenStyle, List<uint> traitHashes, List<string> traitIds,
             bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
             Children = children;
@@ -37,13 +40,13 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
             DisplayStyle = displayStyle;
             MaxCategoryRecordScore = maxCategoryRecordScore;
             NodeType = nodeType;
-            Objective = new DefinitionHashPointer<DestinyObjectiveDefinition>(objectiveHash, "DestinyObjectiveDefinition");
+            Objective = new DefinitionHashPointer<DestinyObjectiveDefinition>(objectiveHash, DefinitionsEnum.DestinyObjectiveDefinition);
             ParentNodes = new List<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
             if (parentNodeHashes != null)
             {
                 foreach (var parentNodeHash in parentNodeHashes)
                 {
-                    ParentNodes.Add(new DefinitionHashPointer<DestinyPresentationNodeDefinition>(parentNodeHash, "DestinyObjectiveDefinition"));
+                    ParentNodes.Add(new DefinitionHashPointer<DestinyPresentationNodeDefinition>(parentNodeHash, DefinitionsEnum.DestinyObjectiveDefinition));
                 }
             }
             PresentationNodeType = presentationNodeType;
@@ -55,10 +58,14 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
             {
                 foreach (var traitHash in traitHashes)
                 {
-                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, "DestinyTraitDefinition"));
+                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, DefinitionsEnum.DestinyTraitDefinition));
                 }
             }
             TraitIds = traitIds;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

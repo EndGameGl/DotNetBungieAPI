@@ -10,7 +10,7 @@ using Unity;
 namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
 {
     [DestinyDefinition(name: "DestinyVendorDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyVendorDefinition : DestinyDefinition
+    public class DestinyVendorDefinition : IDestinyDefinition
     {
         /// <summary>
         /// If vendor can transer items, this field points out transfer destinations
@@ -120,6 +120,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
         /// Whether this vendor is visible in UI
         /// </summary>
         public bool Visible { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyVendorDefinition(bool consolidateCategories, uint displayItemHash, uint factionHash, List<string> failureStrings,bool inhibitBuying, bool inhibitSelling, 
@@ -128,11 +132,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
             List<VendorAcceptedItem> acceptedItems, List<VendorAction> actions, List<uint> ignoreSaleItemHashes, List<VendorInteraction> interactions, 
             List<VendorInventoryFlyout> inventoryFlyouts, List<VendorService> services, List<VendorUnlockRange> unlockRanges, string vendorIdentifier, 
             List<VendorLocation> locations, List<VendorGroup> groups, bool enabled, bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             ConsolidateCategories = consolidateCategories;
-            DisplayItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(displayItemHash, "DestinyInventoryItemDefinition");
-            Faction = new DefinitionHashPointer<DestinyFactionDefinition>(factionHash, "DestinyFactionDefinition");
+            DisplayItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(displayItemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
+            Faction = new DefinitionHashPointer<DestinyFactionDefinition>(factionHash, DefinitionsEnum.DestinyFactionDefinition);
             FailureStrings = failureStrings;
             InhibitBuying = inhibitBuying;
             InhibitSelling = inhibitSelling;
@@ -153,7 +156,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
             {
                 foreach (var ignoreSaleItemHash in ignoreSaleItemHashes)
                 {
-                    IgnoreSaleItems.Add(new DefinitionHashPointer<DestinyInventoryItemDefinition>(ignoreSaleItemHash, "DestinyInventoryItemDefinition"));
+                    IgnoreSaleItems.Add(new DefinitionHashPointer<DestinyInventoryItemDefinition>(ignoreSaleItemHash, DefinitionsEnum.DestinyInventoryItemDefinition));
                 }
             }
             Interactions = interactions;
@@ -164,6 +167,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
             Locations = locations;
             Groups = groups;
             Enabled = enabled;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

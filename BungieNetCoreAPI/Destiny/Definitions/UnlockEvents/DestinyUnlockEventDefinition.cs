@@ -9,22 +9,29 @@ namespace BungieNetCoreAPI.Destiny.Definitions.UnlockEvents
     /// Nothing usable atm
     /// </summary>
     [DestinyDefinition(name: "DestinyUnlockEventDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
-    public class DestinyUnlockEventDefinition : DestinyDefinition
+    public class DestinyUnlockEventDefinition : IDestinyDefinition
     {
         public DefinitionHashPointer<DestinyUnlockValueDefinition> SequenceLastUpdatedUnlockValue { get; }
         public DefinitionHashPointer<DestinyUnlockValueDefinition> SequenceUnlockValue { get; }
         public uint NewSequenceRewardSiteHash { get; }
         public List<UnlockEventUnlockEntry> UnlockEntries { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyUnlockEventDefinition(uint sequenceLastUpdatedUnlockValueHash, uint sequenceUnlockValueHash, uint newSequenceRewardSiteHash,
             List<UnlockEventUnlockEntry> unlockEntries, bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
-            SequenceLastUpdatedUnlockValue = new DefinitionHashPointer<DestinyUnlockValueDefinition>(sequenceLastUpdatedUnlockValueHash, "DestinyUnlockValueDefinition");
-            SequenceUnlockValue = new DefinitionHashPointer<DestinyUnlockValueDefinition>(sequenceUnlockValueHash, "DestinyUnlockValueDefinition");
+            SequenceLastUpdatedUnlockValue = new DefinitionHashPointer<DestinyUnlockValueDefinition>(sequenceLastUpdatedUnlockValueHash, DefinitionsEnum.DestinyUnlockValueDefinition);
+            SequenceUnlockValue = new DefinitionHashPointer<DestinyUnlockValueDefinition>(sequenceUnlockValueHash, DefinitionsEnum.DestinyUnlockValueDefinition);
             NewSequenceRewardSiteHash = newSequenceRewardSiteHash;
             UnlockEntries = unlockEntries;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

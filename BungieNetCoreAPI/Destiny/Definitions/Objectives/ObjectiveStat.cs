@@ -10,7 +10,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Objectives
 
         private ObjectiveStat(uint statTypeHash, int value, bool isConditionallyActive)
         {
-            StatType = new DefinitionHashPointer<DestinyStatDefinition>(statTypeHash, "DestinyStatDefinition");
+            StatType = new DefinitionHashPointer<DestinyStatDefinition>(statTypeHash, DefinitionsEnum.DestinyStatDefinition);
             Value = value;
             IsConditionallyActive = isConditionallyActive;
         }

@@ -5,7 +5,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions
     /// <summary>
     /// Base parameters for any destiny definition.
     /// </summary>
-    public class DestinyDefinition
+    public interface IDestinyDefinition
     {
         /// <summary>
         /// Whether this definition is blacklisted
@@ -17,14 +17,5 @@ namespace BungieNetCoreAPI.Destiny.Definitions
         public uint Hash { get; }
         public int Index { get; }
         public bool Redacted { get; }
-
-        [JsonConstructor]
-        protected DestinyDefinition(bool blacklisted, uint hash, int index, bool redacted)
-        {
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
     }
 }

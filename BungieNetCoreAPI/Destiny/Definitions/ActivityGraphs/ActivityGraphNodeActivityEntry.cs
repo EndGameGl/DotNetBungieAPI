@@ -11,7 +11,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs
         [JsonConstructor]
         private ActivityGraphNodeActivityEntry(uint activityHash, uint nodeActivityId)
         {
-            Activity =new DefinitionHashPointer<DestinyActivityDefinition>(activityHash, "DestinyActivityDefinition");
+            Activity =new DefinitionHashPointer<DestinyActivityDefinition>(activityHash, DefinitionsEnum.DestinyActivityDefinition);
             NodeActivityId = nodeActivityId;
         }
     }

@@ -13,7 +13,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
         private MilestoneQuest(DestinyDefinitionDisplayProperties displayProperties, uint questItemHash, MilestoneQuestRewardItems questRewards)
         {
             DisplayProperties = displayProperties;
-            QuestItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(questItemHash, "DestinyInventoryItemDefinition");
+            QuestItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(questItemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
             QuestRewards = questRewards;
         }
     }

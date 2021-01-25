@@ -11,7 +11,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Objectives
         [JsonConstructor]
         private ObjectivePerks(uint perkHash, int style)
         {
-            Perk = new DefinitionHashPointer<DestinySandboxPerkDefinition>(perkHash, "DestinySandboxPerkDefinition");
+            Perk = new DefinitionHashPointer<DestinySandboxPerkDefinition>(perkHash, DefinitionsEnum.DestinySandboxPerkDefinition);
             Style = style;
         }
     }

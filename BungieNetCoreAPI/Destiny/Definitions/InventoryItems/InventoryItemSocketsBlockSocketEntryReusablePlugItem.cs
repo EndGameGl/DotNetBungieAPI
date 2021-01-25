@@ -12,7 +12,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         [JsonConstructor]
         private InventoryItemSocketsBlockSocketEntryReusablePlugItem(uint plugItemHash)
         {
-            PlugItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(plugItemHash, "DestinyInventoryItemDefinition");
+            PlugItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(plugItemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
         }
     }
 }

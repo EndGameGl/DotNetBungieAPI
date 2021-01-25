@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
 {
     [DestinyDefinition(name: "DestinyMilestoneDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyMilestoneDefinition : DestinyDefinition
+    public class DestinyMilestoneDefinition : IDestinyDefinition
     {
         public List<MilestoneActivities> Activities { get; }
         public int DefaultOrder { get; }
@@ -24,6 +24,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
         public bool ShowInMilestones { get; }
         public List<MilestoneVendor> Vendors { get; }
         public string VendorsDisplayTitle { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyMilestoneDefinition(int defaultOrder, DestinyDefinitionDisplayProperties displayProperties, bool explorePrioritizesActivityImage,
@@ -31,7 +35,6 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
             bool showInExplorer, bool showInMilestones, string friendlyName, string image, List<MilestoneActivities> activities, Dictionary<uint, MilestoneReward> rewards,
             List<MilestoneVendor> vendors, string vendorsDisplayTitle,
             bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             DefaultOrder = defaultOrder;
             DisplayProperties = displayProperties;
@@ -44,7 +47,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
             {
                 foreach (var quest in quests)
                 {
-                    Quests.Add(new DefinitionHashPointer<DestinyInventoryItemDefinition>(quest.Key, "DestinyInventoryItemDefinition"), quest.Value);
+                    Quests.Add(new DefinitionHashPointer<DestinyInventoryItemDefinition>(quest.Key, DefinitionsEnum.DestinyInventoryItemDefinition), quest.Value);
                 }
             }
             Recruitable = recruitable;
@@ -56,6 +59,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
             Rewards = rewards;
             Vendors = vendors;
             VendorsDisplayTitle = vendorsDisplayTitle;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

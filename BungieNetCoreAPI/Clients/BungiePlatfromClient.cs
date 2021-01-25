@@ -100,9 +100,9 @@ namespace BungieNetCoreAPI.Clients
             _logger.Log($"Loaded destiny manifest: Version {manifest.Version}", LogType.Info);
             return manifest;
         }
-        public async Task<T> GetDestinyEntityDefinition<T>(string entityType, uint hash) where T : DestinyDefinition
+        public async Task<T> GetDestinyEntityDefinition<T>(DefinitionsEnum entityType, uint hash) where T : IDestinyDefinition
         {
-            return await GetData<T>($"Destiny2/Manifest/{entityType}/{hash}");
+            return await GetData<T>($"Destiny2/Manifest/{entityType.ToString()}/{hash}");
         }
         public async Task<BungieNetUserInfo[]> SearchDestinyPlayer(BungieMembershipType membershipType, string displayName, bool returnOriginalProfile = false)
         {

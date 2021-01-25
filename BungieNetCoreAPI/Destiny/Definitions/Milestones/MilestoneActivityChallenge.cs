@@ -10,7 +10,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
         [JsonConstructor]
         private MilestoneActivityChallenge(uint challengeObjectiveHash)
         {
-            ChallengeObjective = new DefinitionHashPointer<DestinyObjectiveDefinition>(challengeObjectiveHash, "DestinyObjectiveDefinition");
+            ChallengeObjective = new DefinitionHashPointer<DestinyObjectiveDefinition>(challengeObjectiveHash, DefinitionsEnum.DestinyObjectiveDefinition);
         }
     }
 }

@@ -28,9 +28,9 @@ namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
             if (seasonHashes != null)
             {
                 foreach (var seasonHash in seasonHashes)
-                    Seasons.Add(new DefinitionHashPointer<DestinySeasonDefinition>(seasonHash, "DestinySeasonDefinition"));
+                    Seasons.Add(new DefinitionHashPointer<DestinySeasonDefinition>(seasonHash, DefinitionsEnum.DestinySeasonDefinition));
             }
-            CurrentSeason = new DefinitionHashPointer<DestinySeasonDefinition>(currentSeasonHash, "DestinySeasonDefinition");
+            CurrentSeason = new DefinitionHashPointer<DestinySeasonDefinition>(currentSeasonHash, DefinitionsEnum.DestinySeasonDefinition);
             CurrentSeasonRewardPowerCap = currentSeasonRewardPowerCap;
         }
     }

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
 {
     [DestinyDefinition(name: "DestinyCharacterCustomizationOptionDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
-    public class DestinyCharacterCustomizationOptionDefinition : DestinyDefinition
+    public class DestinyCharacterCustomizationOptionDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public DefinitionHashPointer<DestinyGenderDefinition> Gender { get; }
@@ -25,6 +25,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
         public CharacterCustomizationOptionColorOptions LipColorOptions { get; }
         public CharacterCustomizationOptionColorOptions PersonalityOptions { get; }
         public CharacterCustomizationOptionColorOptions SkinColorOptions { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyCharacterCustomizationOptionDefinition(DestinyDefinitionDisplayProperties displayProperties, uint genderHash, uint raceHash,
@@ -36,11 +40,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
             CharacterCustomizationOptionColorOptions helmetPreferences, CharacterCustomizationOptionColorOptions lipColorOptions,
             CharacterCustomizationOptionColorOptions personalityOptions, CharacterCustomizationOptionColorOptions skinColorOptions,
             bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
-            Gender = new DefinitionHashPointer<DestinyGenderDefinition>(genderHash, "DestinyGenderDefinition");
-            Race = new DefinitionHashPointer<DestinyRaceDefinition>(raceHash, "DestinyRaceDefinition");
+            Gender = new DefinitionHashPointer<DestinyGenderDefinition>(genderHash, DefinitionsEnum.DestinyGenderDefinition);
+            Race = new DefinitionHashPointer<DestinyRaceDefinition>(raceHash, DefinitionsEnum.DestinyRaceDefinition);
             DecalColorOptions = decalColorOptions;
             DecalOptions = decalOptions;
             EyeColorOptions = eyeColorOptions;
@@ -57,6 +60,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
             LipColorOptions = lipColorOptions;
             PersonalityOptions = personalityOptions;
             SkinColorOptions = skinColorOptions;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

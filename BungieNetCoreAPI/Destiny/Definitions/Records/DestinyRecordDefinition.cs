@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace BungieNetCoreAPI.Destiny.Definitions.Records
 {
     [DestinyDefinition(name: "DestinyRecordDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyRecordDefinition : DestinyDefinition
+    public class DestinyRecordDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public RecordCompletionInfo CompletionInfo { get; }
@@ -27,13 +27,16 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Records
         public List<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; }
         public List<string> TraitIds { get; }
         public DefinitionHashPointer<DestinyLoreDefinition> Lore { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyRecordDefinition(DestinyDefinitionDisplayProperties displayProperties, RecordCompletionInfo completionInfo, RecordExpirationInfo expirationInfo,
             RecordIntervalInfo intervalInfo, List<uint> objectiveHashes, List<uint> parentNodeHashes, PresentationNodeType presentationNodeType, 
             RecordValueStyle recordValueStyle, RecordRequirements requirements, Scope scope, RecordStateInfo stateInfo, RecordTitleInfo titleInfo, 
             List<uint> traitHashes, List<string> traitIds, List<RecordRewardItem> rewardItems, uint loreHash, bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
             CompletionInfo = completionInfo;
@@ -51,7 +54,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Records
                 Objectives = new List<DefinitionHashPointer<DestinyObjectiveDefinition>>();
                 foreach (var objectiveHash in objectiveHashes)
                 {
-                    Objectives.Add(new DefinitionHashPointer<DestinyObjectiveDefinition>(objectiveHash, "DestinyObjectiveDefinition"));
+                    Objectives.Add(new DefinitionHashPointer<DestinyObjectiveDefinition>(objectiveHash, DefinitionsEnum.DestinyObjectiveDefinition));
                 }
             }
             if (parentNodeHashes != null)
@@ -59,7 +62,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Records
                 ParentNodes = new List<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
                 foreach (var parentNodeHash in parentNodeHashes)
                 {
-                    ParentNodes.Add(new DefinitionHashPointer<DestinyPresentationNodeDefinition>(parentNodeHash, "DestinyPresentationNodeDefinition"));
+                    ParentNodes.Add(new DefinitionHashPointer<DestinyPresentationNodeDefinition>(parentNodeHash, DefinitionsEnum.DestinyPresentationNodeDefinition));
                 }
             }
             if (traitHashes != null)
@@ -67,11 +70,15 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Records
                 Traits = new List<DefinitionHashPointer<DestinyTraitDefinition>>();
                 foreach (var traitHash in traitHashes)
                 {
-                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, "DestinyTraitDefinition"));
+                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, DefinitionsEnum.DestinyTraitDefinition));
                 }
             }
             RewardItems = rewardItems;
-            Lore = new DefinitionHashPointer<DestinyLoreDefinition>(loreHash, "DestinyLoreDefinition");
+            Lore = new DefinitionHashPointer<DestinyLoreDefinition>(loreHash, DefinitionsEnum.DestinyLoreDefinition);
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

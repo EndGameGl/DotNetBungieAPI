@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
 {
     [DestinyDefinition(name: "DestinyInventoryItemDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyInventoryItemDefinition : DestinyDefinition
+    public class DestinyInventoryItemDefinition : IDestinyDefinition
     {
         public DefinitionHashPointer<DestinyCollectibleDefinition> Collectible { get; }
         public DefinitionHashPointer<DestinyInventoryItemDefinition> SummaryItem { get; }
@@ -57,6 +57,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         public List<InventoryItemTooltipNotification> TooltipNotifications { get; }
         public InventoryItemSackBlock Sack { get; }
         public InventoryItemGearsetBlock Gearset { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyInventoryItemDefinition(uint acquireRewardSiteHash, uint acquireUnlockHash, bool allowActions, DestinyColor backgroundColor, InventoryItemAction action,
@@ -69,7 +73,6 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             string uiItemDisplayStyle, uint collectibleHash, InventoryItemPlugBlock plug, InventoryItemObjectivesBlock objectives, string secondaryIcon, InventoryItemValueBlock value,
             InventoryItemSetDataBlock setData, InventoryItemSackBlock sack, InventoryItemGearsetBlock gearset,
             bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             AcquireRewardSiteHash = acquireRewardSiteHash;
             AcquireUnlockHash = acquireUnlockHash;
@@ -79,7 +82,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             DisplayProperties = displayProperties;
             BreakerType = breakerType;
             ClassType = classType;
-            Collectible = new DefinitionHashPointer<DestinyCollectibleDefinition>(collectibleHash, "DestinyCollectibleDefinition");
+            Collectible = new DefinitionHashPointer<DestinyCollectibleDefinition>(collectibleHash, DefinitionsEnum.DestinyCollectibleDefinition);
             DefaultDamageType = defaultDamageType;
             DisplaySource = displaySource;
             DoesPostmasterPullHaveSideEffects = doesPostmasterPullHaveSideEffects;
@@ -95,7 +98,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             {
                 foreach (var itemCategoryHash in itemCategoryHashes)
                 {
-                    ItemCategories.Add(new DefinitionHashPointer<DestinyItemCategoryDefinition>(itemCategoryHash, "DestinyItemCategoryDefinition"));
+                    ItemCategories.Add(new DefinitionHashPointer<DestinyItemCategoryDefinition>(itemCategoryHash, DefinitionsEnum.DestinyItemCategoryDefinition));
                 }
             }
             ItemSubType = itemSubType;
@@ -112,7 +115,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             Sockets = sockets;
             SpecialItemType = specialItemType;
             Stats = stats;
-            SummaryItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(summaryItemHash, "DestinyInventoryItemDefinition");
+            SummaryItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(summaryItemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
             TalentGrid = talentGrid;
             TooltipNotifications = tooltipNotifications;
             TraitIds = traitIds;
@@ -123,6 +126,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             SetData = setData;
             Sack = sack;
             Gearset = gearset;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

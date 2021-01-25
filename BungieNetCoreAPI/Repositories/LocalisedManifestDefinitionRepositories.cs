@@ -11,29 +11,35 @@ using Unity;
 
 namespace BungieNetCoreAPI.Repositories
 {
-    public class LocalisedDefinitionsCacheRepository : ILocalisedDefinitionsCacheRepository
+    public class LocalisedManifestDefinitionRepositories : ILocalisedManifestDefinitionRepositories
     {
-        private string _currentLocaleLoadContext;
+        private DestinyLocales? _currentLocaleLoadContext;
         private readonly ILogger _logger;
         private readonly IConfigurationService _configs;
-        public string CurrentLocaleLoadContext => string.IsNullOrWhiteSpace(_currentLocaleLoadContext) ? "en" : _currentLocaleLoadContext;
+        //private readonly IDefinitionAssemblyData _assemblyData;
+        public DestinyLocales CurrentLocaleLoadContext => _currentLocaleLoadContext == null ? DestinyLocales.EN : _currentLocaleLoadContext.Value;
 
-        private Dictionary<string, DefinitionCacheRepository> _localisedRepositories;
+        private Dictionary<DestinyLocales, ManifestDefinitionsRepository> _localisedRepositories;
 
-        public LocalisedDefinitionsCacheRepository()
+        public LocalisedManifestDefinitionRepositories()
         {
             _logger = UnityContainerFactory.Container.Resolve<ILogger>();
             _configs = UnityContainerFactory.Container.Resolve<IConfigurationService>();
+            //_assemblyData = UnityContainerFactory.Container.Resolve<IDefinitionAssemblyData>();
         }
 
         public void Initialize(DestinyLocales[] locales)
         {
             _logger.Log("Initializing Global Definitions Cache Repository", LogType.Info);
-            _localisedRepositories = new Dictionary<string, DefinitionCacheRepository>();
+            _localisedRepositories = new Dictionary<DestinyLocales, ManifestDefinitionsRepository>();
             foreach (var locale in locales)
             {
-                var localeAsString = locale.LocaleToString();
-                _localisedRepositories.Add(localeAsString, new DefinitionCacheRepository(localeAsString, _configs.Settings.LoadMode, _configs.Settings.DefinitionLoadRules));
+                _localisedRepositories.Add(
+                    key: locale,
+                    value: new ManifestDefinitionsRepository(
+                        locale: locale,
+                        loadMode: _configs.Settings.LoadMode,
+                        loadOverrides: _configs.Settings.DefinitionLoadRules));
             }
         }
         public void LoadAllDataFromDisk(string localManifestPath, DestinyManifest manifest)
@@ -43,21 +49,25 @@ namespace BungieNetCoreAPI.Repositories
                 repo.LoadDataFromFiles(_configs.Settings.LoadMode, localManifestPath, manifest);
             }
         }
-        public void AddDefinitionToCache(string definitionName, DestinyDefinition defValue, string locale)
+        public void AddDefinitionToCache(DefinitionsEnum definitionType, IDestinyDefinition defValue, DestinyLocales locale)
         {
-            _localisedRepositories[locale].Add(definitionName, defValue);
+            _localisedRepositories[locale].Add(definitionType, defValue);
         }
-        public bool TryGetDestinyDefinition(string definitionName, uint key, string locale, out DestinyDefinition definition)
+        public bool TryGetDestinyDefinition(DefinitionsEnum definitionType, uint key, DestinyLocales locale, out IDestinyDefinition definition)
         {
-            return _localisedRepositories[locale].TryGetDefinition(definitionName, key, out definition);
+            return _localisedRepositories[locale].TryGetDefinition(definitionType, key, out definition);
         }
-        public IEnumerable<T> Search<T>(string locale, Func<DestinyDefinition, bool> predicate) where T : DestinyDefinition
+        public bool TryGetDestinyDefinition<T>(DefinitionsEnum definitionType, uint key, DestinyLocales locale, out T definition) where T : IDestinyDefinition
         {
-            return _localisedRepositories[locale].Search<T>(predicate);
+            return _localisedRepositories[locale].TryGetDefinition(definitionType, key, out definition);
         }
-        public IEnumerable<T> GetAll<T>(string locale)
+        public IEnumerable<T> Search<T>(DefinitionsEnum definitionType, DestinyLocales locale, Func<IDestinyDefinition, bool> predicate) where T : IDestinyDefinition
         {
-            return _localisedRepositories[locale].GetAll<T>();
+            return _localisedRepositories[locale].Search<T>(definitionType, predicate);
+        }
+        public IEnumerable<T> GetAll<T>(DefinitionsEnum definitionType, DestinyLocales locale) where T : IDestinyDefinition
+        {
+            return _localisedRepositories[locale].GetAll<T>(definitionType);
         } 
         /// <summary>
         /// Gets all items with given trait
@@ -75,9 +85,9 @@ namespace BungieNetCoreAPI.Repositories
         /// </summary>
         /// <param name="trait">Item trait to search for</param>
         /// <returns></returns>
-        public List<DestinyInventoryItemDefinition> GetItemsWithTrait(string locale, string trait)
+        public List<DestinyInventoryItemDefinition> GetItemsWithTrait(DestinyLocales locale, string trait)
         {
-            return _localisedRepositories[locale].Search<DestinyInventoryItemDefinition>(x =>
+            return _localisedRepositories[locale].Search<DestinyInventoryItemDefinition>(DefinitionsEnum.DestinyInventoryItemDefinition, x =>
             {
                 var traits = (x as DestinyInventoryItemDefinition).TraitIds;
                 if (traits == null)
@@ -88,25 +98,25 @@ namespace BungieNetCoreAPI.Repositories
                 }
             }).ToList();
         }
-        public List<DestinyInventoryItemDefinition> GetSacks(string locale)
+        public List<DestinyInventoryItemDefinition> GetSacks(DestinyLocales locale)
         {
             return _localisedRepositories[locale]
-                .Search<DestinyInventoryItemDefinition>(x => (x as DestinyInventoryItemDefinition).Sack != null)
+                .Search<DestinyInventoryItemDefinition>(DefinitionsEnum.DestinyInventoryItemDefinition, x => (x as DestinyInventoryItemDefinition).Sack != null)
                 .ToList();
         }
-        public List<DestinyActivityDefinition> SearchActivitiesByName(string locale, string name)
+        public List<DestinyActivityDefinition> SearchActivitiesByName(DestinyLocales locale, string name)
         {
             return _localisedRepositories[locale]
-                .Search<DestinyActivityDefinition>(x => (x as DestinyActivityDefinition).DisplayProperties.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
+                .Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, x => (x as DestinyActivityDefinition).DisplayProperties.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
                 .ToList();
         }
-        public void SetLocaleContext(string locale)
+        public void SetLocaleContext(DestinyLocales locale)
         {
             _currentLocaleLoadContext = locale;
         }
         public void ResetLocaleContext()
         {
-            _currentLocaleLoadContext = string.Empty;
+            _currentLocaleLoadContext = null;
         }
     }
 }

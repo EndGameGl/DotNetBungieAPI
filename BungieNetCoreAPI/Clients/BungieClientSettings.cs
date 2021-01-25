@@ -1,4 +1,5 @@
-﻿using BungieNetCoreAPI.Repositories;
+﻿using BungieNetCoreAPI.Destiny;
+using BungieNetCoreAPI.Repositories;
 using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Clients
@@ -22,7 +23,7 @@ namespace BungieNetCoreAPI.Clients
         public bool CheckUpdates { get; set; }
         public string VersionsRepositoryPath { get; set; }
 
-        public Dictionary<string, bool> DefinitionLoadRules { get; set; }
+        public Dictionary<DefinitionsEnum, bool> DefinitionLoadRules { get; set; }
         public LoadSourceMode LoadMode { get; set; }
     }
 }

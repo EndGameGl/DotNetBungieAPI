@@ -32,9 +32,9 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             PreventInitializationOnVendorPurchase = preventInitializationOnVendorPurchase;
             PreventInitializationWhenVersioning = preventInitializationWhenVersioning;
             ReusablePlugItems = reusablePlugItems;
-            ReusablePlugSet = new DefinitionHashPointer<DestinyPlugSetDefinition>(reusablePlugSetHash, "DestinyPlugSetDefinition");
-            SingleInitialItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(singleInitialItemHash, "DestinyInventoryItemDefinition");
-            SocketType = new DefinitionHashPointer<DestinySocketTypeDefinition>(socketTypeHash, "DestinySocketTypeDefinition");
+            ReusablePlugSet = new DefinitionHashPointer<DestinyPlugSetDefinition>(reusablePlugSetHash, DefinitionsEnum.DestinyPlugSetDefinition);
+            SingleInitialItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(singleInitialItemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
+            SocketType = new DefinitionHashPointer<DestinySocketTypeDefinition>(socketTypeHash, DefinitionsEnum.DestinySocketTypeDefinition);
         }
     }
 }

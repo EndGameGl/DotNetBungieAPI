@@ -13,7 +13,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         [JsonConstructor]
         private InventoryItemQualityBlockVersion(uint powerCapHash)
         {
-            PowerCap = new DefinitionHashPointer<DestinyPowerCapDefinition>(powerCapHash, "DestinyPowerCapDefinition");
+            PowerCap = new DefinitionHashPointer<DestinyPowerCapDefinition>(powerCapHash, DefinitionsEnum.DestinyPowerCapDefinition);
         }
     }
 }

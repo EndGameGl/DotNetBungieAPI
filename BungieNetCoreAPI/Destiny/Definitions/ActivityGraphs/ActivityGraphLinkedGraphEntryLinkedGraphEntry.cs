@@ -9,7 +9,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs
         [JsonConstructor]
         private ActivityGraphLinkedGraphEntryLinkedGraphEntry(uint activityGraphHash)
         {
-            ActivityGraph = new DefinitionHashPointer<DestinyActivityGraphDefinition>(activityGraphHash, "DestinyActivityGraphDefinition");
+            ActivityGraph = new DefinitionHashPointer<DestinyActivityGraphDefinition>(activityGraphHash, DefinitionsEnum.DestinyActivityGraphDefinition);
         }
     }
 }

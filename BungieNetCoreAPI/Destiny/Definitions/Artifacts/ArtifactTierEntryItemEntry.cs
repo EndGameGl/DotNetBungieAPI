@@ -12,7 +12,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Artifacts
         private ArtifactTierEntryItemEntry(uint activeUnlockHash, uint itemHash)
         {
             ActiveUnlockHash = activeUnlockHash;
-            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition");
+            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
         }
     }
 }

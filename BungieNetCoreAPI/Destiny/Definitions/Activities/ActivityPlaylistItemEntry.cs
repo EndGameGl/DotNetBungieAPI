@@ -17,7 +17,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
         private ActivityPlaylistItemEntry(uint activityHash, List<uint> activityModeHashes, List<DestinyActivityModeType> activityModeTypes, uint directActivityModeHash,
             DestinyActivityModeType directActivityModeType, int weight)
         {
-            Activity = new DefinitionHashPointer<DestinyActivityDefinition>(activityHash, "DestinyActivityDefinition");
+            Activity = new DefinitionHashPointer<DestinyActivityDefinition>(activityHash, DefinitionsEnum.DestinyActivityDefinition);
             if (activityModeHashes == null)
                 ActivityModes = new List<DefinitionHashPointer<DestinyActivityModeDefinition>>();
             else
@@ -25,14 +25,14 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
                 ActivityModes = new List<DefinitionHashPointer<DestinyActivityModeDefinition>>();
                 foreach (var activityModeHash in activityModeHashes)
                 {
-                    ActivityModes.Add(new DefinitionHashPointer<DestinyActivityModeDefinition>(activityModeHash, "DestinyActivityModeDefinition"));
+                    ActivityModes.Add(new DefinitionHashPointer<DestinyActivityModeDefinition>(activityModeHash, DefinitionsEnum.DestinyActivityModeDefinition));
                 }
             }
             if (activityModeTypes == null)
                 ActivityModeTypes = new List<DestinyActivityModeType>();
             else
                 ActivityModeTypes = activityModeTypes;
-            DirectActivityMode = new DefinitionHashPointer<DestinyActivityDefinition>(directActivityModeHash, "DestinyActivityDefinition");
+            DirectActivityMode = new DefinitionHashPointer<DestinyActivityDefinition>(directActivityModeHash, DefinitionsEnum.DestinyActivityDefinition);
             DirectActivityModeType = directActivityModeType;
             Weight = weight;
         }

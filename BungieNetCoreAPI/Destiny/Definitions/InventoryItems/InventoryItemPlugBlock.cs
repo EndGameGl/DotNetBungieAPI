@@ -38,17 +38,17 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             AlternatePlugStyle = alternatePlugStyle;
             AlternateUiPlugLabel = alternateUiPlugLabel;
             ApplyStatsToSocketOwnerItem = applyStatsToSocketOwnerItem;
-            EnabledMaterialRequirement = new DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>(enabledMaterialRequirementHash, "DestinyMaterialRequirementSetDefinition");
+            EnabledMaterialRequirement = new DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>(enabledMaterialRequirementHash, DefinitionsEnum.DestinyMaterialRequirementSetDefinition);
             EnabledRules = enabledRules;
-            InsertionMaterialRequirement = new DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>(insertionMaterialRequirementHash, "DestinyMaterialRequirementSetDefinition");
+            InsertionMaterialRequirement = new DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>(insertionMaterialRequirementHash, DefinitionsEnum.DestinyMaterialRequirementSetDefinition);
             InsertionRules = insertionRules;
             IsDummyPlug = isDummyPlug;
             OnActionRecreateSelf = onActionRecreateSelf;
             PlugAvailability = plugAvailability;
-            PlugCategory = new DefinitionHashPointer<DestinyItemCategoryDefinition>(plugCategoryHash, "DestinyItemCategoryDefinition");
+            PlugCategory = new DefinitionHashPointer<DestinyItemCategoryDefinition>(plugCategoryHash, DefinitionsEnum.DestinyItemCategoryDefinition);
             PlugCategoryIdentifier = plugCategoryIdentifier;
             PlugStyle = plugStyle;
-            PreviewItemOverride = new DefinitionHashPointer<DestinyInventoryItemDefinition>(previewItemOverrideHash, "DestinyInventoryItemDefinition");
+            PreviewItemOverride = new DefinitionHashPointer<DestinyInventoryItemDefinition>(previewItemOverrideHash, DefinitionsEnum.DestinyInventoryItemDefinition);
             UiPlugLabel = uiPlugLabel;
         }
     }

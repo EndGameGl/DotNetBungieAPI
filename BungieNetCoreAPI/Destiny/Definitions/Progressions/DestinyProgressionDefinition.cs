@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace BungieNetCoreAPI.Destiny.Definitions.Progressions
 {
     [DestinyDefinition(name: "DestinyProgressionDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyProgressionDefinition : DestinyDefinition
+    public class DestinyProgressionDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public DestinyColor Color { get; }
@@ -17,12 +17,15 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Progressions
         public int StorageMappingIndex { get; }
         public bool Visible { get; }
         public List<ProgressionStep> Steps { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyProgressionDefinition(DestinyDefinitionDisplayProperties displayProperties, DestinyColor color, int progressToNextStepScaling, string rankIcon,
             bool repeatLastStep, List<ProgressionReward> rewardItems, Scope scope, int storageMappingIndex, bool visible, List<ProgressionStep> steps,
             bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
             Color = color;
@@ -34,6 +37,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Progressions
             StorageMappingIndex = storageMappingIndex;
             Visible = visible;
             Steps = steps;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

@@ -20,47 +20,47 @@ namespace BungieNetCoreAPI.Repositories
     /// <summary>
     /// Repository class for storing and accessing all classes with <see cref="Attributes.DestinyDefinitionAttribute"/> attribute
     /// </summary>
-    public class DefinitionCacheRepository
+    public class ManifestDefinitionsRepository
     {
         private readonly ILogger _logger;
-        private Dictionary<string, IDestinyCacheRepository> _definitions;
+        private readonly IDefinitionAssemblyData _assemblyData;
+
+        private Dictionary<DefinitionsEnum, DestinyDefinitionRepository> _definitions;
         /// <summary>
         /// Locale of this repository
         /// </summary>
-        public string Locale { get; }
+        public DestinyLocales Locale { get; }
         /// <summary>
         /// Class .ctor
         /// </summary>
         /// <param name="locale">Locale for this repository</param>
-        internal DefinitionCacheRepository(string locale, LoadSourceMode loadMode, Dictionary<string, bool> loadOverrides)
+        internal ManifestDefinitionsRepository(DestinyLocales locale, LoadSourceMode loadMode, Dictionary<DefinitionsEnum, bool> loadOverrides)
         {
             _logger = UnityContainerFactory.Container.Resolve<ILogger>();
-            _definitions = new Dictionary<string, IDestinyCacheRepository>();
-            var configs =
+            _definitions = new Dictionary<DefinitionsEnum, DestinyDefinitionRepository>();
             Locale = locale;
-            var definitionNameToTypeMapping =
-                Assembly
-                .GetAssembly(typeof(DefinitionCacheRepository))
-                .GetTypes()
-                .Where(x =>
+            _assemblyData = UnityContainerFactory.Container.Resolve<IDefinitionAssemblyData>();
+
+            foreach (var mapping in _assemblyData.DefinitionsToTypeMapping)
+            {
+                if (mapping.Value.IsEnabled)
                 {
-                    var attrs = x.GetCustomAttributes(typeof(DestinyDefinitionAttribute), true);
-                    return loadMode switch
+                    switch (loadMode)
                     {
-                        LoadSourceMode.JSON => attrs != null && attrs.Length > 0,
-                        LoadSourceMode.SQLite => attrs != null && attrs.Length > 0 && (attrs.First() as DestinyDefinitionAttribute).PresentInSQLiteDB == true,
-                        _ => throw new Exception(),
-                    };
-                })
-                .ToDictionary(
-                x => (x.GetCustomAttribute(
-                    attributeType: typeof(DestinyDefinitionAttribute),
-                    inherit: true) as DestinyDefinitionAttribute).DefinitionName,
-                x => x);
+                        case LoadSourceMode.SQLite:
+                            if (mapping.Value.PresentInSQLiteDB == true)
+                                _definitions.Add(mapping.Key, new DestinyDefinitionRepository(mapping.Value.DefinitionType));
+                            break;
+                        case LoadSourceMode.JSON:
+                            _definitions.Add(mapping.Key, new DestinyDefinitionRepository(mapping.Value.DefinitionType));
+                            break;
+                    }
+                }
+            }
 
             if (loadOverrides != null && loadOverrides.Count > 0)
             {
-                definitionNameToTypeMapping = definitionNameToTypeMapping
+                _definitions = _definitions
                     .Where(x =>
                     {
                         if (loadOverrides.TryGetValue(x.Key, out var value))
@@ -72,38 +72,17 @@ namespace BungieNetCoreAPI.Repositories
                     })
                     .ToDictionary(x => x.Key, y => y.Value);
             }
-
-            foreach (var mapping in definitionNameToTypeMapping)
-            {
-                var type = typeof(DestinyDefinitionRepository<>).MakeGenericType(mapping.Value);
-                var repository = (IDestinyCacheRepository)Activator.CreateInstance(type);
-                _definitions.Add(mapping.Key, repository);
-            }
         }
 
         /// <summary>
         /// Adds definition from repository, if possible
         /// </summary>
-        /// <param name="definitionName"></param>
+        /// <param name="definitionType"></param>
         /// <param name="definition"></param>
         /// <returns></returns>
-        public bool Add(string definitionName, DestinyDefinition definition)
+        public bool Add(DefinitionsEnum definitionType, IDestinyDefinition definition)
         {
-            if (_definitions.TryGetValue(definitionName, out var repository))
-            {
-                return repository.Add(definition);
-            }
-            else
-                return false;
-        }
-        /// <summary>
-        /// Adds definition from repository, if possible
-        /// </summary>
-        /// <param name="definition"></param>
-        /// <returns></returns>
-        public bool Add(DestinyDefinition definition)
-        {
-            if (_definitions.TryGetValue(definition.GetType().Name, out var repository))
+            if (_definitions.TryGetValue(definitionType, out var repository))
             {
                 return repository.Add(definition);
             }
@@ -113,40 +92,12 @@ namespace BungieNetCoreAPI.Repositories
         /// <summary>
         /// Removes definition from repository, if possible
         /// </summary>
-        /// <param name="definitionName"></param>
+        /// <param name="definitionType"></param>
         /// <param name="hash"></param>
         /// <returns></returns>
-        public bool Remove(string definitionName, uint hash)
+        public bool Remove(DefinitionsEnum definitionType, uint hash)
         {
-            if (_definitions.TryGetValue(definitionName, out var repository))
-            {
-                return repository.Remove(hash);
-            }
-            return false;
-        }
-        /// <summary>
-        /// Removes definition from repository, if possible
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="hash"></param>
-        /// <returns></returns>
-        public bool Remove(Type type, uint hash)
-        {
-            if (_definitions.TryGetValue(type.Name, out var repository))
-            {
-                return repository.Remove(hash);
-            }
-            return false;
-        }
-        /// <summary>
-        /// Removes definition from repository, if possible
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="hash"></param>
-        /// <returns></returns>
-        public bool Remove<T>(uint hash) where T : DestinyDefinition
-        {
-            if (_definitions.TryGetValue(typeof(T).Name, out var repository))
+            if (_definitions.TryGetValue(definitionType, out var repository))
             {
                 return repository.Remove(hash);
             }
@@ -159,14 +110,14 @@ namespace BungieNetCoreAPI.Repositories
         /// <param name="hash"></param>
         /// <param name="definition"></param>
         /// <returns></returns>
-        public bool TryGetDefinition<T>(uint hash, out T definition) where T : DestinyDefinition
+        public bool TryGetDefinition<T>(DefinitionsEnum enumValue, uint hash, out T definition) where T : IDestinyDefinition
         {
             definition = default;
-            if (_definitions.TryGetValue(typeof(T).Name, out var repository))
+            if (_definitions.TryGetValue(enumValue, out var repository))
             {
-                if (repository.TryGetDefinition(hash, out var value))
+                if (repository.TryGetDefinition<T>(hash, out var value))
                 {
-                    definition = (T)value;
+                    definition = value;
                     return definition != null;
                 }
                 else
@@ -178,14 +129,14 @@ namespace BungieNetCoreAPI.Repositories
         /// <summary>
         /// Gets definition from repository, if possible
         /// </summary>
-        /// <param name="definitionName"></param>
+        /// <param name="definitionType"></param>
         /// <param name="hash"></param>
         /// <param name="definition"></param>
         /// <returns></returns>
-        public bool TryGetDefinition(string definitionName, uint hash, out DestinyDefinition definition)
+        public bool TryGetDefinition(DefinitionsEnum definitionType, uint hash, out IDestinyDefinition definition)
         {
             definition = default;
-            if (_definitions.TryGetValue(definitionName, out var repository))
+            if (_definitions.TryGetValue(definitionType, out var repository))
             {
                 if (repository.TryGetDefinition(hash, out definition))
                 {
@@ -203,25 +154,26 @@ namespace BungieNetCoreAPI.Repositories
         /// <typeparam name="T"></typeparam>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public IEnumerable<T> Search<T>(Func<DestinyDefinition, bool> predicate) where T : DestinyDefinition
+        public IEnumerable<T> Search<T>(DefinitionsEnum definitionType, Func<IDestinyDefinition, bool> predicate) where T : IDestinyDefinition
         {
-            if (_definitions.TryGetValue(typeof(T).Name, out var repository))
+            if (_definitions.TryGetValue(definitionType, out var repository))
             {
                 return repository.Where(predicate).Cast<T>();
             }
             else
                 return null;
         }
-
-        public IEnumerable<T> GetAll<T>()
+        public IEnumerable<T> GetAll<T>(DefinitionsEnum definitionType)
         {
-            if (_definitions.TryGetValue(typeof(T).Name, out var repository))
+            if (_definitions.TryGetValue(definitionType, out var repository))
             {
-                return repository.GetAll().Cast<T>();
+                return repository.Enumerate().Cast<T>();
             }
             else
                 return null;
         }
+
+        #region Load methods
         /// <summary>
         /// Loads all definitions from local files
         /// </summary>
@@ -229,46 +181,46 @@ namespace BungieNetCoreAPI.Repositories
         /// <param name="manifest"><see cref="DestinyManifest"/> with data</param>
         private void LoadDataFromJSON(string localManifestPath, DestinyManifest manifest)
         {
-            UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>().SetLocaleContext(Locale);
+            UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>().SetLocaleContext(Locale);
             _logger.Log($"Started loading data for localization: {Locale}", LogType.Info);
             Stopwatch fullLoadStopwatch = new Stopwatch();
             fullLoadStopwatch.Start();
-            var jsonWolrdComponentContentLocalePath = manifest.JsonWorldComponentContentPaths[Locale];
+            var jsonWolrdComponentContentLocalePath = manifest.JsonWorldComponentContentPaths[Locale.LocaleToString()];
 
             var result = Parallel.ForEach(_definitions.Keys, (definitionName) =>
             {
                 _logger.Log($"Reading: {definitionName}... ", LogType.Info);
-                using var fs = File.OpenRead($"{localManifestPath}/JsonWorldComponentContent/{Locale}/{definitionName}/{Path.GetFileName(jsonWolrdComponentContentLocalePath[definitionName])}");
+                using var fs = File.OpenRead($"{localManifestPath}/JsonWorldComponentContent/{Locale}/{definitionName}/{Path.GetFileName(jsonWolrdComponentContentLocalePath[_assemblyData.EnumToNameMapping[definitionName]])}");
                 using var sr = new StreamReader(fs, Encoding.UTF8);
                 var definitionJson = sr.ReadToEnd();
                 var definitionJObjectDictionary = JObject.Parse(definitionJson);
                 foreach (var entry in definitionJObjectDictionary)
                 {
-                    var definitionType = _definitions[definitionName].DefinitionType;
-                    var deserializedDestinyDefinition = (DestinyDefinition)entry.Value.ToObject(definitionType);
+                    var definitionType = _definitions[definitionName].Type;
+                    var deserializedDestinyDefinition = (IDestinyDefinition)entry.Value.ToObject(definitionType);
                     Add(definitionName, deserializedDestinyDefinition);
                 }
             });
 
             fullLoadStopwatch.Stop();
             _logger.Log($"Finished loading data for {Locale}: {fullLoadStopwatch.ElapsedMilliseconds} ms", LogType.Info);
-            UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>().ResetLocaleContext();
+            UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>().ResetLocaleContext();
             GC.Collect();
         }
         private void LoadDataFromSQLiteDB(string localManifestPath, DestinyManifest manifest)
         {
-            UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>().SetLocaleContext(Locale);
+            UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>().SetLocaleContext(Locale);
             _logger.Log($"Started loading data for localization: {Locale}", LogType.Info);
             Stopwatch fullLoadStopwatch = new Stopwatch();
             fullLoadStopwatch.Start();
-            var mobileWorldContentPathsLocalePath = Path.GetFileName(manifest.MobileWorldContentPaths[Locale]);
+            var mobileWorldContentPathsLocalePath = Path.GetFileName(manifest.MobileWorldContentPaths[Locale.LocaleToString()]);
 
             using (SQLiteConnection connection = new SQLiteConnection(@$"Data Source={localManifestPath}\\MobileWorldContent\\{Locale}\\{mobileWorldContentPathsLocalePath}; Version=3;"))
             {
                 connection.Open();
                 foreach (var key in _definitions.Keys)
                 {
-                    var definitionType = _definitions[key].DefinitionType;
+                    var definitionType = _definitions[key].Type;
                     _logger.Log($"Loading definitions from {key} ({Locale})", LogType.Info);
                     string query = $"SELECT * FROM {key}";
                     //_logger.Log($"Executing query: {query}", LogType.Debug);
@@ -285,7 +237,7 @@ namespace BungieNetCoreAPI.Repositories
                             var byteArray = (byte[])reader["json"];
                             var jsonString = Encoding.UTF8.GetString(byteArray, 0, byteArray.Length);
                             var definition = JObject.Parse(jsonString);
-                            var deserializedDestinyDefinition = (DestinyDefinition)definition.ToObject(definitionType);
+                            var deserializedDestinyDefinition = (IDestinyDefinition)definition.ToObject(definitionType);
                             Add(key, deserializedDestinyDefinition);
                         }
                     }
@@ -295,12 +247,12 @@ namespace BungieNetCoreAPI.Repositories
                     }
                     _definitions[key].SortByIndex();
                 }
-                connection.Close();               
+                connection.Close();
             }
 
             fullLoadStopwatch.Stop();
             _logger.Log($"Finished loading data for {Locale}: {fullLoadStopwatch.ElapsedMilliseconds} ms", LogType.Info);
-            UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>().ResetLocaleContext();            
+            UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>().ResetLocaleContext();
         }
         public void LoadDataFromFiles(LoadSourceMode loadMode, string localManifestPath, DestinyManifest manifest)
         {
@@ -314,5 +266,6 @@ namespace BungieNetCoreAPI.Repositories
                     break;
             }
         }
+        #endregion
     }
 }

@@ -10,7 +10,7 @@ using System;
 namespace BungieNetCoreAPI.Destiny.Definitions.Seasons
 {
     [DestinyDefinition(name: "DestinySeasonDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinySeasonDefinition : DestinyDefinition
+    public class DestinySeasonDefinition : IDestinyDefinition
     {
         public DefinitionHashPointer<DestinyInventoryItemDefinition> ArtifactItem { get; }
         public string BackgroundImagePath { get; }
@@ -23,23 +23,31 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Seasons
         public string StartTimeInSeconds { get; }
         public DateTime? StartDate { get; }
         public DateTime? EndDate { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinySeasonDefinition(DestinyDefinitionDisplayProperties displayProperties, int seasonNumber, uint seasonPassProgressionHash, uint seasonPassUnlockHash,
             string startTimeInSeconds, uint? sealPresentationNodeHash, uint? seasonPassHash, DateTime? startDate, DateTime? endDate, string backgroundImagePath,
-            uint artifactItemHash, bool blacklisted, uint hash, int index, bool redacted) : base(blacklisted, hash, index, redacted)
+            uint artifactItemHash, bool blacklisted, uint hash, int index, bool redacted)
         {
             DisplayProperties = displayProperties;
             SeasonNumber = seasonNumber;
-            SeasonPassProgression = new DefinitionHashPointer<DestinyProgressionDefinition>(seasonPassProgressionHash, "DestinyProgressionDefinition");
-            SeasonPassUnlock = new DefinitionHashPointer<DestinyUnlockDefinition>(seasonPassUnlockHash, "DestinyUnlockDefinition");
+            SeasonPassProgression = new DefinitionHashPointer<DestinyProgressionDefinition>(seasonPassProgressionHash, DefinitionsEnum.DestinyProgressionDefinition);
+            SeasonPassUnlock = new DefinitionHashPointer<DestinyUnlockDefinition>(seasonPassUnlockHash, DefinitionsEnum.DestinyUnlockDefinition);
             StartTimeInSeconds = startTimeInSeconds;
-            SealPresentationNode = new DefinitionHashPointer<DestinyPresentationNodeDefinition>(sealPresentationNodeHash, "DestinyPresentationNodeDefinition");
-            SeasonPass = new DefinitionHashPointer<DestinySeasonPassDefinition>(seasonPassHash, "DestinySeasonPassDefinition");
+            SealPresentationNode = new DefinitionHashPointer<DestinyPresentationNodeDefinition>(sealPresentationNodeHash, DefinitionsEnum.DestinyPresentationNodeDefinition);
+            SeasonPass = new DefinitionHashPointer<DestinySeasonPassDefinition>(seasonPassHash, DefinitionsEnum.DestinySeasonPassDefinition);
             StartDate = startDate;
             EndDate = endDate;
             BackgroundImagePath = backgroundImagePath;
-            ArtifactItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(artifactItemHash, "DestinyInventoryItemDefinition");
+            ArtifactItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(artifactItemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

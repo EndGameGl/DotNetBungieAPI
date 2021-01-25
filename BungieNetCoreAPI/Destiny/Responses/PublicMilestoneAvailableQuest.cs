@@ -10,7 +10,7 @@ namespace BungieNetCoreAPI.Destiny.Responses
         [JsonConstructor]
         private PublicMilestoneAvailableQuest(uint questItemHash)
         {
-            QuestItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(questItemHash, "DestinyInventoryItemDefinition");
+            QuestItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(questItemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
         [JsonConstructor]
         private ActivityGraphListEntry(uint activityGraphHash)
         {
-            ActivityGraph = new DefinitionHashPointer<DestinyActivityGraphDefinition>(activityGraphHash, "DestinyActivityGraphDefinition");
+            ActivityGraph = new DefinitionHashPointer<DestinyActivityGraphDefinition>(activityGraphHash, DefinitionsEnum.DestinyActivityGraphDefinition);
         }
     }
 }

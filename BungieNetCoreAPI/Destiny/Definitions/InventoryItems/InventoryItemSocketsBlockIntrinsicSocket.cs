@@ -13,8 +13,8 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         private InventoryItemSocketsBlockIntrinsicSocket(bool defaultVisible, uint plugItemHash, uint socketTypeHash)
         {
             DefaultVisible = defaultVisible;
-            PlugItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(plugItemHash, "DestinyInventoryItemDefinition");
-            SocketType = new DefinitionHashPointer<DestinySocketTypeDefinition>(socketTypeHash, "DestinySocketTypeDefinition");
+            PlugItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(plugItemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
+            SocketType = new DefinitionHashPointer<DestinySocketTypeDefinition>(socketTypeHash, DefinitionsEnum.DestinySocketTypeDefinition);
         }
     }
 }

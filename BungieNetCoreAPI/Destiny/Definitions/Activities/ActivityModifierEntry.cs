@@ -10,7 +10,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
         [JsonConstructor]
         private ActivityModifierEntry(uint activityModifierHash)
         {
-            ActivityModifier = new DefinitionHashPointer<DestinyActivityModifierDefinition>(activityModifierHash, "DestinyActivityModifierDefinition");
+            ActivityModifier = new DefinitionHashPointer<DestinyActivityModifierDefinition>(activityModifierHash, DefinitionsEnum.DestinyActivityModifierDefinition);
         }
     }
 }

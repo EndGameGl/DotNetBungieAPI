@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace BungieNetCoreAPI.Destiny.Definitions.Activities
 {
     [DestinyDefinition(name: "DestinyActivityDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyActivityDefinition : DestinyDefinition
+    public class DestinyActivityDefinition : IDestinyDefinition
     {
         public List<ActivityGraphListEntry> ActivityGraphList { get; }
         public int ActivityLevel { get; }
@@ -42,6 +42,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
         public DestinyDefinitionDisplayProperties SelectionScreenDisplayProperties { get; }
         public bool SuppressOtherRewards { get; }
         public int Tier { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyActivityDefinition(List<ActivityGraphListEntry> activityGraphList, int activityLevel, int activityLightLevel,
@@ -51,7 +55,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
             bool isPlaylist, bool isPvP, ActivityMatchmaking matchmaking, List<ActivityModifierEntry> modifiers, List<ActivityUnlockString> optionalUnlockStrings,
             DestinyDefinitionDisplayProperties originalDisplayProperties, string pgcrImage, uint placeHash, List<ActivityPlaylistItemEntry> playlistItems, string releaseIcon, int releaseTime,
             List<ActivityRewardEntry> rewards, DestinyDefinitionDisplayProperties selectionScreenDisplayProperties, bool suppressOtherRewards, int tier,
-            bool blacklisted, uint hash, int index, bool redacted) : base(blacklisted, hash, index, redacted)
+            bool blacklisted, uint hash, int index, bool redacted)
         {
             if (activityGraphList == null)
                 ActivityGraphList = new List<ActivityGraphListEntry>();
@@ -70,20 +74,20 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
             {
                 ActivityModes = new List<DefinitionHashPointer<DestinyActivityModeDefinition>>();
                 foreach (var activityModeHash in activityModeHashes)
-                    ActivityModes.Add(new DefinitionHashPointer<DestinyActivityModeDefinition>(activityModeHash, "DestinyActivityModeDefinition"));
+                    ActivityModes.Add(new DefinitionHashPointer<DestinyActivityModeDefinition>(activityModeHash, DefinitionsEnum.DestinyActivityModeDefinition));
             }
             if (activityModeTypes == null)
                 ActivityModeTypes = new List<DestinyActivityModeType>();
             else
                 ActivityModeTypes = activityModeTypes;
-            ActivityType = new DefinitionHashPointer<DestinyActivityTypeDefinition>(activityTypeHash, "DestinyActivityTypeDefinition");
+            ActivityType = new DefinitionHashPointer<DestinyActivityTypeDefinition>(activityTypeHash, DefinitionsEnum.DestinyActivityTypeDefinition);
             if (challenges == null)
                 Challenges = new List<ActivityChallengeEntry>();
             else
                 Challenges = challenges;
             CompletionUnlockHash = completionUnlockHash;
-            Destination = new DefinitionHashPointer<DestinyDestinationDefinition>(destinationHash, "DestinyDestinationDefinition");
-            DirectActivityMode = new DefinitionHashPointer<DestinyActivityModeDefinition>(directActivityModeHash, "DestinyActivityModeDefinition");
+            Destination = new DefinitionHashPointer<DestinyDestinationDefinition>(destinationHash, DefinitionsEnum.DestinyDestinationDefinition);
+            DirectActivityMode = new DefinitionHashPointer<DestinyActivityModeDefinition>(directActivityModeHash, DefinitionsEnum.DestinyActivityModeDefinition);
             DirectActivityModeType = directActivityModeType;
             DisplayProperties = displayProperties;
             GuidedGame = guidedGame;
@@ -105,7 +109,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
                 OptionalUnlockStrings = optionalUnlockStrings;
             OriginalDisplayProperties = originalDisplayProperties;
             PgcrImage = pgcrImage;
-            Place = new DefinitionHashPointer<DestinyPlaceDefinition>(placeHash, "DestinyPlaceDefinition");
+            Place = new DefinitionHashPointer<DestinyPlaceDefinition>(placeHash, DefinitionsEnum.DestinyPlaceDefinition);
             if (playlistItems == null)
                 PlaylistItems = new List<ActivityPlaylistItemEntry>();
             else
@@ -119,6 +123,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
             SelectionScreenDisplayProperties = selectionScreenDisplayProperties;
             SuppressOtherRewards = suppressOtherRewards;
             Tier = tier;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

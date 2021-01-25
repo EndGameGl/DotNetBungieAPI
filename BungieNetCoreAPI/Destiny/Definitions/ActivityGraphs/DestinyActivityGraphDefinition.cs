@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs
 {
     [DestinyDefinition(name: "DestinyActivityGraphDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyActivityGraphDefinition : DestinyDefinition
+    public class DestinyActivityGraphDefinition : IDestinyDefinition
     {
         public List<ActivityGraphArtElementEntry> ArtElements { get; }
         public List<ActivityGraphConnectionEntry> Connections { get; }
@@ -15,12 +15,15 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs
         public List<ActivityGraphLinkedGraphEntry> LinkedGraphs { get; }
         public List<ActivityGraphNode> Nodes { get; }
         public int UIScreen { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyActivityGraphDefinition(List<ActivityGraphArtElementEntry> artElements, List<ActivityGraphConnectionEntry> connections, List<ActivityGraphDisplayObjectiveEntry> displayObjectives, 
             List<ActivityGraphDisplayProgressionEntry> displayProgressions, bool ignoreForMilestones, List<ActivityGraphLinkedGraphEntry> linkedGraphs, List<ActivityGraphNode> nodes, int uiScreen, 
-            bool blacklisted, uint hash, int index, bool redacted) 
-            : base(blacklisted, hash, index, redacted)
+            bool blacklisted, uint hash, int index, bool redacted)
         {
             if (artElements == null)
                 ArtElements = new List<ActivityGraphArtElementEntry>();
@@ -48,6 +51,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs
             else
                 Nodes = nodes;
             UIScreen = uiScreen;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
     }
 }

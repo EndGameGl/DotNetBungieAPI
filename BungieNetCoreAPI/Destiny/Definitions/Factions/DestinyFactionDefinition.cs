@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace BungieNetCoreAPI.Destiny.Definitions.Factions
 {
     [DestinyDefinition(name: "DestinyFactionDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyFactionDefinition : DestinyDefinition
+    public class DestinyFactionDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public DefinitionHashPointer<DestinyProgressionDefinition> Progression { get; }
@@ -16,17 +16,20 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Factions
         public DefinitionHashPointer<DestinyVendorDefinition> RewardVendor { get; }
         public Dictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, int> TokenValues { get; }
         public List<FactionVendor> Vendors { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyFactionDefinition(uint progressionHash, uint rewardItemHash, uint rewardVendorHash, DestinyDefinitionDisplayProperties displayProperties,
             Dictionary<uint, int> tokenValues, List<FactionVendor> vendors,
             bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
-            Progression = new DefinitionHashPointer<DestinyProgressionDefinition>(progressionHash, "DestinyProgressionDefinition");
-            RewardItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(rewardItemHash, "DestinyInventoryItemDefinition");
-            RewardVendor = new DefinitionHashPointer<DestinyVendorDefinition>(rewardVendorHash, "DestinyVendorDefinition");
+            Progression = new DefinitionHashPointer<DestinyProgressionDefinition>(progressionHash, DefinitionsEnum.DestinyProgressionDefinition);
+            RewardItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(rewardItemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
+            RewardVendor = new DefinitionHashPointer<DestinyVendorDefinition>(rewardVendorHash, DefinitionsEnum.DestinyVendorDefinition);
             if (tokenValues == null)
                 TokenValues = new Dictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, int>();
             else
@@ -34,10 +37,14 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Factions
                 TokenValues = new Dictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, int>();
                 foreach (var value in tokenValues)
                 {
-                    TokenValues.Add(new DefinitionHashPointer<DestinyInventoryItemDefinition>(value.Key, "DestinyInventoryItemDefinition"), value.Value);
+                    TokenValues.Add(new DefinitionHashPointer<DestinyInventoryItemDefinition>(value.Key, DefinitionsEnum.DestinyInventoryItemDefinition), value.Value);
                 }
             }
             Vendors = vendors;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

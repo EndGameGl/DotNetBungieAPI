@@ -12,7 +12,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         [JsonConstructor]
         private InventoryItemSocketsBlockSocketCategory(uint socketCategoryHash, List<int> socketIndexes)
         {
-            SocketCategory = new DefinitionHashPointer<DestinySocketCategoryDefinition>(socketCategoryHash, "DestinySocketCategoryDefinition");
+            SocketCategory = new DefinitionHashPointer<DestinySocketCategoryDefinition>(socketCategoryHash, DefinitionsEnum.DestinySocketCategoryDefinition);
             SocketIndexes = socketIndexes;
         }
     }

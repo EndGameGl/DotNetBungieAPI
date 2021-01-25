@@ -17,7 +17,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SandboxPatterns
             ArrangementIndexByStatValue = arrangementIndexByStatValue;
             ArtArrangementRegionHash = artArrangementRegionHash;
             ArtArrangementRegionIndex = artArrangementRegionIndex;
-            Stat = new DefinitionHashPointer<DestinyStatDefinition>(statHash, "DestinyStatDefinition");
+            Stat = new DefinitionHashPointer<DestinyStatDefinition>(statHash, DefinitionsEnum.DestinyStatDefinition);
         }
     }
 }

@@ -29,17 +29,17 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             int maxStackSize, bool nonTransferrableOriginal, uint recoveryBucketTypeHash, bool suppressExpirationWhenObjectivesComplete, ItemTierType tierType, uint tierTypeHash,
             string tierTypeName)
         {
-            BucketType = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(bucketTypeHash, "DestinyInventoryBucketDefinition");
+            BucketType = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(bucketTypeHash, DefinitionsEnum.DestinyInventoryBucketDefinition);
             ExpirationTooltip = expirationTooltip;
             ExpiredInActivityMessage = expiredInActivityMessage;
             ExpiredInOrbitMessage = expiredInOrbitMessage;
             IsInstanceItem = isInstanceItem;
             MaxStackSize = maxStackSize;
             NonTransferrableOriginal = nonTransferrableOriginal;
-            RecoveryBucketType = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(recoveryBucketTypeHash, "DestinyInventoryBucketDefinition");
+            RecoveryBucketType = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(recoveryBucketTypeHash, DefinitionsEnum.DestinyInventoryBucketDefinition);
             SuppressExpirationWhenObjectivesComplete = suppressExpirationWhenObjectivesComplete;
             TierTypeEnumValue = tierType;
-            TierType = new DefinitionHashPointer<DestinyItemTierTypeDefinition>(tierTypeHash, "DestinyItemTierTypeDefinition");
+            TierType = new DefinitionHashPointer<DestinyItemTierTypeDefinition>(tierTypeHash, DefinitionsEnum.DestinyItemTierTypeDefinition);
             TierTypeName = tierTypeName;
         }
     }

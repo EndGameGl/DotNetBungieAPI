@@ -20,13 +20,13 @@ namespace BungieNetCoreAPI.Destiny.Responses
         private PublicMilestoneActivity(uint activityHash, List<uint> challengeObjectiveHashes, List<uint> phaseHashes, Dictionary<uint, bool> booleanActivityOptions,
             List<uint> modifierHashes)
         {
-            Activity = new DefinitionHashPointer<DestinyActivityDefinition>(activityHash, "DestinyActivityDefinition");
+            Activity = new DefinitionHashPointer<DestinyActivityDefinition>(activityHash, DefinitionsEnum.DestinyActivityDefinition);
             ChallengeObjectives = new List<DefinitionHashPointer<DestinyObjectiveDefinition>>();
             if (challengeObjectiveHashes != null)
             {
                 foreach (var challengeObjectiveHash in challengeObjectiveHashes)
                 {
-                    ChallengeObjectives.Add(new DefinitionHashPointer<DestinyObjectiveDefinition>(challengeObjectiveHash, "DestinyObjectiveDefinition"));
+                    ChallengeObjectives.Add(new DefinitionHashPointer<DestinyObjectiveDefinition>(challengeObjectiveHash, DefinitionsEnum.DestinyObjectiveDefinition));
                 }
             }
             PhaseHashes = phaseHashes;
@@ -46,7 +46,7 @@ namespace BungieNetCoreAPI.Destiny.Responses
             {
                 foreach (var modifierHash in modifierHashes)
                 {
-                    Modifiers.Add(new DefinitionHashPointer<DestinyActivityModifierDefinition>(modifierHash, "DestinyActivityModifierDefinition"));
+                    Modifiers.Add(new DefinitionHashPointer<DestinyActivityModifierDefinition>(modifierHash, DefinitionsEnum.DestinyActivityModifierDefinition));
                 }
             }
         }

@@ -13,7 +13,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         private InventoryItemInvestmentStat(bool isConditionallyActive, uint statTypeHash, int value)
         {
             IsConditionallyActive = isConditionallyActive;
-            StatType = new DefinitionHashPointer<DestinyStatDefinition>(statTypeHash, "DestinyStatDefinition");
+            StatType = new DefinitionHashPointer<DestinyStatDefinition>(statTypeHash, DefinitionsEnum.DestinyStatDefinition);
             Value = value;
         }
     }

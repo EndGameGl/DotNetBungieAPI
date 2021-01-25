@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace BungieNetCoreAPI.Destiny.Definitions.ItemCategories
 {
     [DestinyDefinition(name: "DestinyItemCategoryDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyItemCategoryDefinition : DestinyDefinition
+    public class DestinyItemCategoryDefinition : IDestinyDefinition
     {
         public bool Deprecated { get; }
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
@@ -22,13 +22,16 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ItemCategories
         public List<DefinitionHashPointer<DestinyItemCategoryDefinition>> ParentCategories { get; }
         public string ShortTitle { get; }
         public bool Visible { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyItemCategoryDefinition(bool deprecated, DestinyDefinitionDisplayProperties displayProperties, DestinyBreakerTypes grantDestinyBreakerType,
             DestinyClassType grantDestinyClass, ItemType grantDestinyItemType, ItemSubType grantDestinySubType, bool groupCategoryOnly, List<uint> groupedCategoryHashes,
             bool isPlug, string itemTypeRegex, List<uint> parentCategoryHashes, string shortTitle, bool visible,
             bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             Deprecated = deprecated;
             DisplayProperties = displayProperties;
@@ -42,7 +45,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ItemCategories
             {
                 foreach (var groupedCategoryHash in groupedCategoryHashes)
                 {
-                    GroupedCategories.Add(new DefinitionHashPointer<DestinyItemCategoryDefinition>(groupedCategoryHash, "DestinyItemCategoryDefinition"));
+                    GroupedCategories.Add(new DefinitionHashPointer<DestinyItemCategoryDefinition>(groupedCategoryHash, DefinitionsEnum.DestinyItemCategoryDefinition));
                 }
             }
             IsPlug = isPlug;
@@ -52,11 +55,15 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ItemCategories
             {
                 foreach (var parentCategoryHash in parentCategoryHashes)
                 {
-                    ParentCategories.Add(new DefinitionHashPointer<DestinyItemCategoryDefinition>(parentCategoryHash, "DestinyItemCategoryDefinition"));
+                    ParentCategories.Add(new DefinitionHashPointer<DestinyItemCategoryDefinition>(parentCategoryHash, DefinitionsEnum.DestinyItemCategoryDefinition));
                 }
             }
             ShortTitle = shortTitle;
             Visible = visible;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

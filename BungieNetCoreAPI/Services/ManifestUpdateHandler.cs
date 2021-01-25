@@ -71,7 +71,7 @@ namespace BungieNetCoreAPI.Services
         {
             _logger.Log("Downloading/verifying manifest data.", LogType.Info);
             await _currentUsedManifest.DownloadAndSaveToLocalFiles(true);
-            var repo = UnityContainerFactory.Container.Resolve<ILocalisedDefinitionsCacheRepository>();
+            var repo = UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>();
             repo.LoadAllDataFromDisk($"{_versionControlPath}\\{_currentUsedManifest.Version}", _currentUsedManifest);
             _logger.Log("Manifest load finished.", LogType.Info);
         }

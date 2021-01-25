@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace BungieNetCoreAPI.Destiny.Definitions.SocketTypes
 {
     [DestinyDefinition(name: "DestinySocketTypeDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinySocketTypeDefinition : DestinyDefinition
+    public class DestinySocketTypeDefinition : IDestinyDefinition
     {
         public bool AlwaysRandomizeSockets { get; }
         public bool AvoidDuplicatesOnInitialization { get; }
@@ -19,12 +19,15 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SocketTypes
         public SocketTypeInsertAction InsertAction { get; }
         public List<SocketTypeCurrencyScalarEntry> CurrencyScalars { get; }
         public List<SocketTypePlugWhitelistEntry> PlugWhitelist { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinySocketTypeDefinition(bool alwaysRandomizeSockets, bool avoidDuplicatesOnInitialization, bool hideDuplicateReusablePlugs, bool isPreviewEnabled,
             bool overridesUiAppearance, uint socketCategoryHash, SocketVisibility visibility, SocketTypeInsertAction insertAction, List<SocketTypeCurrencyScalarEntry> currencyScalars,
             List<SocketTypePlugWhitelistEntry> plugWhitelist, DestinyDefinitionDisplayProperties displayProperties, bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
             AlwaysRandomizeSockets = alwaysRandomizeSockets;
@@ -32,11 +35,15 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SocketTypes
             HideDuplicateReusablePlugs = hideDuplicateReusablePlugs;
             IsPreviewEnabled = isPreviewEnabled;
             OverridesUiAppearance = overridesUiAppearance;
-            SocketCategory = new DefinitionHashPointer<DestinySocketCategoryDefinition>(socketCategoryHash, "DestinySocketCategoryDefinition");
+            SocketCategory = new DefinitionHashPointer<DestinySocketCategoryDefinition>(socketCategoryHash, DefinitionsEnum.DestinySocketCategoryDefinition);
             Visibility = visibility;
             InsertAction = insertAction;
             CurrencyScalars = currencyScalars;
             PlugWhitelist = plugWhitelist;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

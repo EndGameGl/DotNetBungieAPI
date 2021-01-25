@@ -17,7 +17,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Progressions
         {
             AcquisitionBehavior = acquisitionBehavior;
             ClaimUnlockDisplayStrings = claimUnlockDisplayStrings;
-            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, "DestinyInventoryItemDefinition");
+            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
             Quantity = quantity;
             RewardedAtProgressionLevel = rewardedAtProgressionLevel;
             UiDisplayStyle = uiDisplayStyle;

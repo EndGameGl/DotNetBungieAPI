@@ -8,7 +8,7 @@ using System.Text;
 namespace BungieNetCoreAPI.Destiny.Definitions.Objectives
 {
     [DestinyDefinition(name: "DestinyObjectiveDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyObjectiveDefinition : DestinyDefinition
+    public class DestinyObjectiveDefinition : IDestinyDefinition
     {
         public bool AllowNegativeValue { get; }
         public bool AllowOvercompletion { get; }
@@ -27,13 +27,16 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Objectives
         public ObjectiveStats Stats { get; }
         public ObjectiveUnlockValueUIStyle ValueStyle { get; }
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyObjectiveDefinition(DestinyDefinitionDisplayProperties displayProperties, bool allowNegativeValue, bool allowOvercompletion, bool allowValueChangeWhenCompleted,
             ObjectiveUnlockValueUIStyle completedValueStyle, int completionValue, ObjectiveUnlockValueUIStyle inProgressValueStyle, bool isCountingDownward, bool isDisplayOnlyObjective, uint locationHash,
             int minimumVisibilityThreshold, ObjectivePerks perks, string progressDescription, Scope scope, bool showValueOnComplete, ObjectiveStats stats, ObjectiveUnlockValueUIStyle valueStyle,
             bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
             AllowNegativeValue = allowNegativeValue;
@@ -44,7 +47,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Objectives
             InProgressValueStyle = inProgressValueStyle;
             IsCountingDownward = isCountingDownward;
             IsDisplayOnlyObjective = isDisplayOnlyObjective;
-            Location = new DefinitionHashPointer<DestinyLocationDefinition>(locationHash, "DestinyLocationDefinition");
+            Location = new DefinitionHashPointer<DestinyLocationDefinition>(locationHash, DefinitionsEnum.DestinyLocationDefinition);
             MinimumVisibilityThreshold = minimumVisibilityThreshold;
             Perks = perks;
             ProgressDescription = progressDescription;
@@ -52,6 +55,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Objectives
             ShowValueOnComplete = showValueOnComplete;
             Stats = stats;
             ValueStyle = valueStyle;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

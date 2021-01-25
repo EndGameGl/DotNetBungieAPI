@@ -7,11 +7,14 @@ namespace BungieNetCoreAPI.Destiny.Definitions.UnlockExpressionMappings
     /// Empty definition at the moment
     /// </summary>
     [DestinyDefinition(name: "DestinyUnlockExpressionMappingDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
-    public class DestinyUnlockExpressionMappingDefinition : DestinyDefinition
+    public class DestinyUnlockExpressionMappingDefinition : IDestinyDefinition
     {
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
         [JsonConstructor]
-        private DestinyUnlockExpressionMappingDefinition(bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted) { }
+        private DestinyUnlockExpressionMappingDefinition(bool blacklisted, uint hash, int index, bool redacted) { }
 
         public override string ToString()
         {

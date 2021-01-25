@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace BungieNetCoreAPI.Destiny.Definitions.Unlocks
 {
     [DestinyDefinition(name: "DestinyUnlockDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyUnlockDefinition : DestinyDefinition
+    public class DestinyUnlockDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         /// <summary>
@@ -15,14 +15,21 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Unlocks
         /// Always 0 for now, useless
         /// </summary>
         public int UnlockType { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyUnlockDefinition(DestinyDefinitionDisplayProperties displayProperties, int scope, int unlockType, bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             DisplayProperties = displayProperties;
             Scope = scope;
             UnlockType = unlockType;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

@@ -7,17 +7,25 @@ namespace BungieNetCoreAPI.Destiny.Definitions.RewardSheets
     /// Empty atm
     /// </summary>
     [DestinyDefinition(name: "DestinyRewardSheetDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
-    public class DestinyRewardSheetDefinition : DestinyDefinition
+    public class DestinyRewardSheetDefinition : IDestinyDefinition
     {
         public uint SheetHash { get; }
         public int SheetIndex { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyRewardSheetDefinition(uint sheetHash, int sheetIndex,
-            bool blacklisted, uint hash, int index, bool redacted) : base(blacklisted, hash, index, redacted)
+            bool blacklisted, uint hash, int index, bool redacted)
         {
             SheetHash = sheetHash;
             SheetIndex = sheetIndex;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()

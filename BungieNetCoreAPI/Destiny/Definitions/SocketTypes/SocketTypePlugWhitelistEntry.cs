@@ -20,7 +20,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SocketTypes
                 ReinitializationPossiblePlugs = new List<DefinitionHashPointer<DestinyInventoryItemDefinition>>();
                 foreach (var reinitializationPossiblePlugHash in reinitializationPossiblePlugHashes)
                 {
-                    ReinitializationPossiblePlugs.Add(new DefinitionHashPointer<DestinyInventoryItemDefinition>(reinitializationPossiblePlugHash, "DestinyInventoryItemDefinition"));
+                    ReinitializationPossiblePlugs.Add(new DefinitionHashPointer<DestinyInventoryItemDefinition>(reinitializationPossiblePlugHash, DefinitionsEnum.DestinyInventoryItemDefinition));
                 }
             }
         }

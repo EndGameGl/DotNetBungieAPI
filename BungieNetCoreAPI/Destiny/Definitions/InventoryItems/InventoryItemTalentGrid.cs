@@ -13,7 +13,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         {
             HudDamageType = hudDamageType;
             ItemDetailString = itemDetailString;
-            TalentGrid = new DefinitionHashPointer<DestinyTalentGridDefinition>(talentGridHash, "DestinyTalentGridDefinition");
+            TalentGrid = new DefinitionHashPointer<DestinyTalentGridDefinition>(talentGridHash, DefinitionsEnum.DestinyTalentGridDefinition);
         }
     }
 }

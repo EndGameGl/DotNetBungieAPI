@@ -7,7 +7,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.UnlockValues
     /// Doesn't have any meaning at this moment
     /// </summary>
     [DestinyDefinition(name: "DestinyUnlockValueDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
-    public class DestinyUnlockValueDefinition : DestinyDefinition
+    public class DestinyUnlockValueDefinition : IDestinyDefinition
     {
         /// <summary>
         /// Always 0 atm
@@ -21,14 +21,21 @@ namespace BungieNetCoreAPI.Destiny.Definitions.UnlockValues
         /// Always 0 atm
         /// </summary>
         public int MappingIndex { get; }
+        public bool Blacklisted { get; }
+        public uint Hash { get; }
+        public int Index { get; }
+        public bool Redacted { get; }
 
         [JsonConstructor]
         private DestinyUnlockValueDefinition(int aggregationType, int scope, int mappingIndex, bool blacklisted, uint hash, int index, bool redacted)
-            : base(blacklisted, hash, index, redacted)
         {
             AggregationType = aggregationType;
             Scope = scope;
             MappingIndex = mappingIndex;
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
         }
 
         public override string ToString()
