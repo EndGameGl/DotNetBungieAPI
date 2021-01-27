@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Stats
 {
-    [DestinyDefinition(name: "DestinyStatDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinyStatDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyStatDefinition : IDestinyDefinition
     {
         public StatAggregationType AggregationType { get; }

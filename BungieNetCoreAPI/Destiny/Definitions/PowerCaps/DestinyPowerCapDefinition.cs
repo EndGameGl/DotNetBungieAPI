@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.PowerCaps
 {
-    [DestinyDefinition(name: "DestinyPowerCapDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinyPowerCapDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyPowerCapDefinition : IDestinyDefinition
     {
         public int PowerCap { get; }

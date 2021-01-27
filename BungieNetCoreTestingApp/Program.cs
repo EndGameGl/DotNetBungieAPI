@@ -4,7 +4,9 @@ using BungieNetCoreAPI.Bungie;
 using BungieNetCoreAPI.Clients;
 using BungieNetCoreAPI.Destiny;
 using BungieNetCoreAPI.Destiny.Definitions;
+using BungieNetCoreAPI.Destiny.Definitions.Achievements;
 using BungieNetCoreAPI.Destiny.Definitions.Activities;
+using BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -38,9 +40,9 @@ namespace BungieNetCoreTestingApp
         {
             await _bungieClient.Run();
 
-            var activities = _bungieClient.Repository.GetAll<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, DestinyLocales.EN).ToList();
+            var coll = _bungieClient.Repository.GetAll<DestinyActivityGraphDefinition>(DefinitionsEnum.DestinyActivityGraphDefinition, DestinyLocales.EN).ToList();
 
-            RunEqualityCheck(activities);
+            RunEqualityCheck(coll);
 
             await Task.Delay(Timeout.Infinite);
         }
@@ -64,7 +66,7 @@ namespace BungieNetCoreTestingApp
                     uniqueItems++;
             }
             sw.Stop();
-            Console.WriteLine($"{sw.ElapsedMilliseconds} ms elapse. Unique items: {uniqueItems}");
+            Console.WriteLine($"{sw.ElapsedMilliseconds} ms elapsed. Unique items: {uniqueItems}");
         }
     }
 }

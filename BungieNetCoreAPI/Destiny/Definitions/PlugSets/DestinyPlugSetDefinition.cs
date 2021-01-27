@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.PlugSets
 {
-    [DestinyDefinition(name: "DestinyPlugSetDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinyPlugSetDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyPlugSetDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

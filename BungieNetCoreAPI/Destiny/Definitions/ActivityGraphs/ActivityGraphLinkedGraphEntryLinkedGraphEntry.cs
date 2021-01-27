@@ -2,14 +2,19 @@
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs
 {
-    public class ActivityGraphLinkedGraphEntryLinkedGraphEntry
+    public class ActivityGraphLinkedGraphEntryLinkedGraphEntry : IDeepEquatable<ActivityGraphLinkedGraphEntryLinkedGraphEntry>
     {
         public DefinitionHashPointer<DestinyActivityGraphDefinition> ActivityGraph { get; }
 
         [JsonConstructor]
-        private ActivityGraphLinkedGraphEntryLinkedGraphEntry(uint activityGraphHash)
+        internal ActivityGraphLinkedGraphEntryLinkedGraphEntry(uint activityGraphHash)
         {
             ActivityGraph = new DefinitionHashPointer<DestinyActivityGraphDefinition>(activityGraphHash, DefinitionsEnum.DestinyActivityGraphDefinition);
+        }
+
+        public bool DeepEquals(ActivityGraphLinkedGraphEntryLinkedGraphEntry other)
+        {
+            return other != null && ActivityGraph.DeepEquals(other.ActivityGraph);
         }
     }
 }

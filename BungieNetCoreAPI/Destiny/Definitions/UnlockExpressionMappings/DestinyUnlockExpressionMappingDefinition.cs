@@ -6,7 +6,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.UnlockExpressionMappings
     /// <summary>
     /// Empty definition at the moment
     /// </summary>
-    [DestinyDefinition(name: "DestinyUnlockExpressionMappingDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinyUnlockExpressionMappingDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
     public class DestinyUnlockExpressionMappingDefinition : IDestinyDefinition
     {
         public bool Blacklisted { get; }

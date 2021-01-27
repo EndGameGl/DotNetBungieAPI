@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.EquipmentSlots
 {
-    [DestinyDefinition(name: "DestinyEquipmentSlotDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinyEquipmentSlotDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyEquipmentSlotDefinition : IDestinyDefinition
     {
         public bool ApplyCustomArtDyes { get; }

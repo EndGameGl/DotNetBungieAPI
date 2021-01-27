@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
 {
-    [DestinyDefinition(name: "DestinyInventoryItemDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinyInventoryItemDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyInventoryItemDefinition : IDestinyDefinition
     {
         public DefinitionHashPointer<DestinyCollectibleDefinition> Collectible { get; }

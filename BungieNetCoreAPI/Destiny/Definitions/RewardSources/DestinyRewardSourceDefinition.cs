@@ -6,7 +6,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.RewardSources
     /// <summary>
     /// Empty atm
     /// </summary>
-    [DestinyDefinition(name: "DestinyRewardSourceDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinyRewardSourceDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyRewardSourceDefinition : IDestinyDefinition
     {
         public bool Blacklisted { get; }

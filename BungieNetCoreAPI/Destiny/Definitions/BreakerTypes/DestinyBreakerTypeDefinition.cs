@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.BreakerTypes
 {
-    [DestinyDefinition(name: "DestinyBreakerTypeDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinyBreakerTypeDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyBreakerTypeDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

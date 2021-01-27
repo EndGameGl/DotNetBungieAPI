@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
 {
-    [DestinyDefinition(name: "DestinyPresentationNodeDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinyPresentationNodeDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyPresentationNodeDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

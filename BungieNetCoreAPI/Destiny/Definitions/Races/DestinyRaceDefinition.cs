@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Races
 {
-    [DestinyDefinition(name: "DestinyRaceDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinyRaceDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyRaceDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

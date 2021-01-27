@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Destinations
 {
-    [DestinyDefinition(name: "DestinyDestinationDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinyDestinationDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyDestinationDefinition : IDestinyDefinition
     {
         public List<DestinationActivityGraphEntry> ActivityGraphEntries { get; }

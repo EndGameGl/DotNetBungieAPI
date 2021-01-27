@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Genders
 {
-    [DestinyDefinition(name: "DestinyGenderDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinyGenderDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyGenderDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

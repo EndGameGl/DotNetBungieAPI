@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodeBases
 {
-    [DestinyDefinition(name: "DestinyPresentationNodeBaseDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinyPresentationNodeBaseDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
     public class DestinyPresentationNodeBaseDefinition : IDestinyDefinition
     {
         public bool Blacklisted { get; }

@@ -35,10 +35,10 @@ namespace BungieNetCoreAPI.Services
                         attributeType: typeof(DestinyDefinitionAttribute),
                         inherit: true)
                     as DestinyDefinitionAttribute;
-                var enumValue = (DefinitionsEnum)Enum.Parse(typeof(DefinitionsEnum), definitionAttribute.DefinitionName);
+                var enumValue = definitionAttribute.DefinitionEnumType;
                 var useRule = new DefinitionUseRule()
                 {
-                    DefinitionName = definitionAttribute.DefinitionName,
+                    DefinitionName = enumValue.ToString(),
                     DefinitionType = type,
                     IsEnabled = definitionAttribute.ShouldBeLoaded,
                     PresentInSQLiteDB = definitionAttribute.PresentInSQLiteDB,

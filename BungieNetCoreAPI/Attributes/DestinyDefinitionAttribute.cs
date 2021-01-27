@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BungieNetCoreAPI.Destiny;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,12 +7,12 @@ namespace BungieNetCoreAPI.Attributes
 {
     public class DestinyDefinitionAttribute : Attribute
     {
-        public string DefinitionName { get; }
+        public DefinitionsEnum DefinitionEnumType { get; }
         public bool PresentInSQLiteDB { get; }
         public bool ShouldBeLoaded { get; }
-        public DestinyDefinitionAttribute(string name, bool presentInSQLiteDB = true, bool shouldBeLoaded = true)
+        public DestinyDefinitionAttribute(DefinitionsEnum type, bool presentInSQLiteDB = true, bool shouldBeLoaded = true)
         {
-            DefinitionName = name;
+            DefinitionEnumType = type;
             PresentInSQLiteDB = presentInSQLiteDB;
             ShouldBeLoaded = shouldBeLoaded;
         }

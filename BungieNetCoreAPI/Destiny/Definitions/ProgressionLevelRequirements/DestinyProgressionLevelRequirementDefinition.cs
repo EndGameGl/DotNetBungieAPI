@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ProgressionLevelRequirements
 {
-    [DestinyDefinition(name: "DestinyProgressionLevelRequirementDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinyProgressionLevelRequirementDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyProgressionLevelRequirementDefinition : IDestinyDefinition
     {
         public DefinitionHashPointer<DestinyProgressionDefinition> Progression { get; }

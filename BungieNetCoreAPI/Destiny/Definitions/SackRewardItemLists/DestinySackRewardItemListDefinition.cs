@@ -6,7 +6,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SackRewardItemLists
     /// <summary>
     /// Empty definition
     /// </summary>
-    [DestinyDefinition(name: "DestinySackRewardItemListDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinySackRewardItemListDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinySackRewardItemListDefinition : IDestinyDefinition
     {
         public bool Blacklisted { get; }

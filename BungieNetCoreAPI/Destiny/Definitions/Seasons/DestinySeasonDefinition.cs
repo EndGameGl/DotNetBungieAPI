@@ -9,7 +9,7 @@ using System;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Seasons
 {
-    [DestinyDefinition(name: "DestinySeasonDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinySeasonDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinySeasonDefinition : IDestinyDefinition
     {
         public DefinitionHashPointer<DestinyInventoryItemDefinition> ArtifactItem { get; }

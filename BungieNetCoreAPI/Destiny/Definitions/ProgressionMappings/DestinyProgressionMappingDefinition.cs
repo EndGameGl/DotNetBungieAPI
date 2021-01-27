@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ProgressionMappings
 {
-    [DestinyDefinition(name: "DestinyProgressionMappingDefinition", presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinyProgressionMappingDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
     public class DestinyProgressionMappingDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

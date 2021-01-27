@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Metrics
 {
-    [DestinyDefinition(name: "DestinyMetricDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(type: DefinitionsEnum.DestinyMetricDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyMetricDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
