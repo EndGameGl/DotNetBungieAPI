@@ -3,8 +3,11 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Achievements
 {
+    /// <summary>
+    /// Represents account achievements, such as Steam ones
+    /// </summary>
     [DestinyDefinition(name: "DestinyAchievementDefinition", presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyAchievementDefinition : IDestinyDefinition
+    public class DestinyAchievementDefinition : IDestinyDefinition, IDeepEquatable<DestinyAchievementDefinition>
     {
         public int AcccumulatorThreshold { get; }        
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }       
@@ -15,8 +18,8 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Achievements
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyAchievementDefinition(int acccumulatorThreshold, DestinyDefinitionDisplayProperties displayProperties, 
-            int platformIndex, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyAchievementDefinition(int acccumulatorThreshold, DestinyDefinitionDisplayProperties displayProperties,  int platformIndex, 
+            bool blacklisted, uint hash, int index, bool redacted)
         {
             AcccumulatorThreshold = acccumulatorThreshold;
             DisplayProperties = displayProperties;
@@ -30,6 +33,21 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Achievements
         public override string ToString()
         {
             return $"{Hash} {(DisplayProperties.Name)}";
+        }
+        public void MapValues()
+        {
+            return;
+        }
+        public bool DeepEquals(DestinyAchievementDefinition other)
+        {
+            return other != null &&
+                   AcccumulatorThreshold == other.AcccumulatorThreshold &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   PlatformIndex == other.PlatformIndex &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
         }
     }
 }

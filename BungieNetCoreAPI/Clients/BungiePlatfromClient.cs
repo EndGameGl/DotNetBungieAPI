@@ -121,6 +121,42 @@ namespace BungieNetCoreAPI.Clients
             return await GetData<Dictionary<uint, GetPublicMilestonesResponse>>($"Destiny2/Milestones");
         }
         #endregion
+
+        #region Misc methods
+        /// <summary>
+        /// List of available localization cultures
+        /// </summary>
+        /// <returns></returns>
+        public async Task<Dictionary<string, string>> GetAvailableLocales()
+        {
+            return await GetData<Dictionary<string, string>>("GetAvailableLocales");
+        }
+        /// <summary>
+        /// Get the common settings used by the Bungie.Net environment.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<BungieNetSettings> GetCommonSettings()
+        {
+            return await GetData<BungieNetSettings>("Settings");
+        }
+        /// <summary>
+        /// Get the user-specific system overrides that should be respected alongside common systems.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<Dictionary<string, BungieSystemSetting>> GetUserSystemOverrides()
+        {
+            return await GetData<Dictionary<string, BungieSystemSetting>>("UserSystemOverrides");
+        }
+        /// <summary>
+        /// Gets any active global alert for display in the forum banners, help pages, etc. Usually used for DOC alerts.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<GlobalAlert[]> GetGlobalAlerts()
+        {
+            return await GetData<GlobalAlert[]>("GlobalAlerts");
+        }
+        #endregion
+
         private async Task<T> GetData<T>(string query)
         {
             var response = await _httpClient.Get(BungieClient.BungiePlatformUri + query);

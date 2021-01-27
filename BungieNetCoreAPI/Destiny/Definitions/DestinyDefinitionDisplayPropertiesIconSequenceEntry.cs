@@ -1,16 +1,21 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions
 {
-    public class DestinyDefinitionDisplayPropertiesIconSequenceEntry
+    public class DestinyDefinitionDisplayPropertiesIconSequenceEntry : IDeepEquatable<DestinyDefinitionDisplayPropertiesIconSequenceEntry>
     {
-        public List<string> Frames { get; }
+        public ReadOnlyCollection<string> Frames { get; }
 
         [JsonConstructor]
-        private DestinyDefinitionDisplayPropertiesIconSequenceEntry(List<string> frames)
+        private DestinyDefinitionDisplayPropertiesIconSequenceEntry(string[] frames)
         {
-            Frames = frames;
+            Frames = frames.AsReadOnlyOrEmpty();
+        }
+
+        public bool DeepEquals(DestinyDefinitionDisplayPropertiesIconSequenceEntry other)
+        {
+            return Frames.DeepEqualsReadOnlySimpleCollection(other.Frames);
         }
     }
 }

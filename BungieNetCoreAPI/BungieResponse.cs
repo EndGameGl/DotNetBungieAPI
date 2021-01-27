@@ -14,7 +14,7 @@ namespace BungieNetCoreAPI
         public string DetailedErrorTrace { get; }
 
         [JsonConstructor]
-        private BungieResponse(T Response, PlatformErrorCodes ErrorCode, int ThrottleSeconds, string ErrorStatus, string Message, Dictionary<string, string> MessageData, string DetailedErrorTrace)
+        internal BungieResponse(T Response, PlatformErrorCodes ErrorCode, int ThrottleSeconds, string ErrorStatus, string Message, Dictionary<string, string> MessageData, string DetailedErrorTrace)
         {
             this.Response = Response;
             this.ErrorCode = ErrorCode;

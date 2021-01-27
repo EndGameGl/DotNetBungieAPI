@@ -10,12 +10,16 @@ namespace BungieNetCoreAPI.Destiny.Definitions
         /// <summary>
         /// Whether this definition is blacklisted
         /// </summary>
-        public bool Blacklisted { get; }
+        bool Blacklisted { get; }
         /// <summary>
         /// Unique definition ID
         /// </summary>
-        public uint Hash { get; }
-        public int Index { get; }
-        public bool Redacted { get; }
+        uint Hash { get; }
+        int Index { get; }
+        bool Redacted { get; }
+        /// <summary>
+        /// Tries to map values so it wouldn't need to look up repository every time
+        /// </summary>
+        //void MapValues();
     }
 }

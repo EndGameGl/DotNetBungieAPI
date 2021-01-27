@@ -1,40 +1,42 @@
 ﻿using BungieNetCoreAPI.Destiny.Definitions.ActivityModes;
 using Newtonsoft.Json;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Activities
 {
-    public class ActivityPlaylistItemEntry
+    /// <summary>
+    /// If the activity is a playlist, this is the definition for a specific entry in the playlist: a single possible combination of Activity and Activity Mode that can be chosen.
+    /// </summary>
+    public class ActivityPlaylistItemEntry : IDeepEquatable<ActivityPlaylistItemEntry>
     {
         public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; }
-        public List<DefinitionHashPointer<DestinyActivityModeDefinition>> ActivityModes { get; }
-        public List<DestinyActivityModeType> ActivityModeTypes { get; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>> ActivityModes { get; }
+        public ReadOnlyCollection<DestinyActivityModeType> ActivityModeTypes { get; }
         public DefinitionHashPointer<DestinyActivityDefinition> DirectActivityMode { get; }
         public DestinyActivityModeType DirectActivityModeType { get; }
         public int Weight { get; }
 
         [JsonConstructor]
-        private ActivityPlaylistItemEntry(uint activityHash, List<uint> activityModeHashes, List<DestinyActivityModeType> activityModeTypes, uint directActivityModeHash,
+        internal ActivityPlaylistItemEntry(uint activityHash, uint[] activityModeHashes, DestinyActivityModeType[] activityModeTypes, uint directActivityModeHash,
             DestinyActivityModeType directActivityModeType, int weight)
         {
             Activity = new DefinitionHashPointer<DestinyActivityDefinition>(activityHash, DefinitionsEnum.DestinyActivityDefinition);
-            if (activityModeHashes == null)
-                ActivityModes = new List<DefinitionHashPointer<DestinyActivityModeDefinition>>();
-            else
-            {
-                ActivityModes = new List<DefinitionHashPointer<DestinyActivityModeDefinition>>();
-                foreach (var activityModeHash in activityModeHashes)
-                {
-                    ActivityModes.Add(new DefinitionHashPointer<DestinyActivityModeDefinition>(activityModeHash, DefinitionsEnum.DestinyActivityModeDefinition));
-                }
-            }
-            if (activityModeTypes == null)
-                ActivityModeTypes = new List<DestinyActivityModeType>();
-            else
-                ActivityModeTypes = activityModeTypes;
+            ActivityModes = activityModeHashes.DefinitionsAsReadOnlyOrEmpty<DestinyActivityModeDefinition>(DefinitionsEnum.DestinyActivityModeDefinition);
+            ActivityModeTypes = activityModeTypes.AsReadOnlyOrEmpty();
             DirectActivityMode = new DefinitionHashPointer<DestinyActivityDefinition>(directActivityModeHash, DefinitionsEnum.DestinyActivityDefinition);
             DirectActivityModeType = directActivityModeType;
             Weight = weight;
+        }
+
+        public bool DeepEquals(ActivityPlaylistItemEntry other)
+        {
+            return other != null &&
+                   Activity.DeepEquals(other.Activity) &&
+                   ActivityModes.DeepEqualsReadOnlyCollections(other.ActivityModes) &&
+                   ActivityModeTypes.DeepEqualsReadOnlySimpleCollection(other.ActivityModeTypes) &&
+                   DirectActivityMode.DeepEquals(other.DirectActivityMode) &&
+                   DirectActivityModeType == other.DirectActivityModeType &&
+                   Weight == other.Weight;
         }
     }
 }

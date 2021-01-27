@@ -1,9 +1,12 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions
 {
-    public class DestinyDefinitionDisplayProperties
+    /// <summary>
+    /// Represents common properties for displaying <see cref="IDestinyDefinition"/>
+    /// </summary>
+    public class DestinyDefinitionDisplayProperties : IDeepEquatable<DestinyDefinitionDisplayProperties>
     {
         /// <summary>
         /// Definition description
@@ -19,26 +22,34 @@ namespace BungieNetCoreAPI.Destiny.Definitions
         /// </summary>
         public string Name { get; }
         public string HighResolutionIcon { get; }
-        public List<DestinyDefinitionDisplayPropertiesIconSequenceEntry> IconSequences { get; }
+        public ReadOnlyCollection<DestinyDefinitionDisplayPropertiesIconSequenceEntry> IconSequences { get; }
 
         [JsonConstructor]
-        protected DestinyDefinitionDisplayProperties(string description, bool hasIcon, string icon, string name, string highResIcon, 
-            List<DestinyDefinitionDisplayPropertiesIconSequenceEntry> iconSequences)
+        protected DestinyDefinitionDisplayProperties(string description, bool hasIcon, string icon, string name, string highResIcon,
+            DestinyDefinitionDisplayPropertiesIconSequenceEntry[] iconSequences)
         {
             Description = description;
             HasIcon = hasIcon;
             Icon = icon;
             Name = name;
             HighResolutionIcon = highResIcon;
-            if (iconSequences == null)
-                IconSequences = new List<DestinyDefinitionDisplayPropertiesIconSequenceEntry>();
-            else
-                IconSequences = iconSequences;
+            IconSequences = iconSequences.AsReadOnlyOrEmpty();
         }
 
         public override string ToString()
         {
             return $"{Name}: {Description}";
+        }
+
+        public bool DeepEquals(DestinyDefinitionDisplayProperties other)
+        {
+            return other != null &&
+                   Description == other.Description &&
+                   HasIcon == other.HasIcon &&
+                   Icon == other.Icon &&
+                   Name == other.Name &&
+                   HighResolutionIcon == other.HighResolutionIcon &&
+                   IconSequences.DeepEqualsReadOnlyCollections(other.IconSequences);
         }
     }
 }

@@ -1,15 +1,62 @@
 ﻿using BungieNetCoreAPI.Destiny;
+using BungieNetCoreAPI.Destiny.Definitions;
 using BungieNetCoreAPI.Destiny.Definitions.Activities;
 using BungieNetCoreAPI.Destiny.Definitions.ActivityModes;
 using BungieNetCoreAPI.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace BungieNetCoreAPI
 {
     public static class Extensions
     {
+        internal static bool DeepEqualsReadOnlySimpleCollection<T>(this ReadOnlyCollection<T> compared, ReadOnlyCollection<T> comparedWith)
+        {
+            if (compared.Count != comparedWith.Count)
+                return false;
+            for (int i = 0; i < compared.Count; i++)
+            {
+                if (!compared[i].Equals(comparedWith[i]))
+                    return false;
+            }
+
+            return true;
+        }
+        internal static bool DeepEqualsReadOnlyCollections<T>(this ReadOnlyCollection<T> compared, ReadOnlyCollection<T> comparedWith) where T : IDeepEquatable<T>
+        {
+            if (compared.Count != comparedWith.Count)
+                return false;
+
+            for (int i = 0; i < compared.Count; i++)
+            {
+                if (!compared[i].DeepEquals(comparedWith[i]))
+                    return false;
+            }
+
+            return true;
+        }
+        internal static ReadOnlyCollection<T> AsReadOnlyOrEmpty<T>(this T[] source)
+        {
+            ReadOnlyCollection<T> readOnlyCollection;
+            if (source != null)
+                readOnlyCollection = new ReadOnlyCollection<T>(source);
+            else
+                readOnlyCollection = new ReadOnlyCollection<T>(new T[0]);
+            return readOnlyCollection;
+        }
+
+        internal static ReadOnlyCollection<DefinitionHashPointer<T>> DefinitionsAsReadOnlyOrEmpty<T>(this uint[] source, DefinitionsEnum enumValue) where T : IDestinyDefinition
+        {
+            ReadOnlyCollection<DefinitionHashPointer<T>> readOnlyCollection;
+            if (source != null)
+                readOnlyCollection = new ReadOnlyCollection<DefinitionHashPointer<T>>(source.Select(x => new DefinitionHashPointer<T>(x, enumValue)).ToArray());
+            else
+                readOnlyCollection = new ReadOnlyCollection<DefinitionHashPointer<T>>(new DefinitionHashPointer<T>[0]);
+            return readOnlyCollection;
+        }
+
         public static string LocaleToString(this DestinyLocales locale)
         {
             return locale switch

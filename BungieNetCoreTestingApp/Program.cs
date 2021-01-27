@@ -3,10 +3,12 @@ using BungieNetCoreAPI.Attributes;
 using BungieNetCoreAPI.Bungie;
 using BungieNetCoreAPI.Clients;
 using BungieNetCoreAPI.Destiny;
+using BungieNetCoreAPI.Destiny.Definitions;
 using BungieNetCoreAPI.Destiny.Definitions.Activities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
@@ -36,10 +38,33 @@ namespace BungieNetCoreTestingApp
         {
             await _bungieClient.Run();
 
-            
-            var result = _bungieClient.Repository.GetAll<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, DestinyLocales.EN).WithName("harbinger").ToList();
+            var activities = _bungieClient.Repository.GetAll<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, DestinyLocales.EN).ToList();
+
+            RunEqualityCheck(activities);
 
             await Task.Delay(Timeout.Infinite);
+        }
+
+        private static void RunEqualityCheck<T>(List<T> collection) where T : IDeepEquatable<T>
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            int uniqueItems = 0;
+            foreach (var item in collection)
+            {
+                int equalCount = 0;
+                foreach (var itemNested in collection)
+                {
+                    if (item.DeepEquals(itemNested))
+                    {
+                        equalCount++;
+                    }
+                }
+                if (equalCount == 1)
+                    uniqueItems++;
+            }
+            sw.Stop();
+            Console.WriteLine($"{sw.ElapsedMilliseconds} ms elapse. Unique items: {uniqueItems}");
         }
     }
 }

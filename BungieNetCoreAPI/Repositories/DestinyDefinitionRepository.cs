@@ -50,5 +50,10 @@ namespace BungieNetCoreAPI.Repositories
         {
             _definitions = _definitions.OrderBy(x => x.Value.Index).ToDictionary(x => x.Key, y => y.Value);
         }
+
+        public override string ToString()
+        {
+            return $"{Type.Name}: {_definitions.Count} entities.";
+        }
     }
 }
