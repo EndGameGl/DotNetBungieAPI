@@ -7,6 +7,7 @@ using BungieNetCoreAPI.Destiny.Definitions;
 using BungieNetCoreAPI.Destiny.Definitions.Achievements;
 using BungieNetCoreAPI.Destiny.Definitions.Activities;
 using BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs;
+using BungieNetCoreAPI.Destiny.Definitions.ActivityModes;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -40,14 +41,14 @@ namespace BungieNetCoreTestingApp
         {
             await _bungieClient.Run();
 
-            var coll = _bungieClient.Repository.GetAll<DestinyActivityGraphDefinition>(DefinitionsEnum.DestinyActivityGraphDefinition, DestinyLocales.EN).ToList();
+            var coll = _bungieClient.Repository.GetAll<DestinyActivityModeDefinition>(DefinitionsEnum.DestinyActivityModeDefinition, DestinyLocales.EN).ToList();
 
-            RunEqualityCheck(coll);
+            RunDeepEqualityCheck(coll);
 
             await Task.Delay(Timeout.Infinite);
         }
 
-        private static void RunEqualityCheck<T>(List<T> collection) where T : IDeepEquatable<T>
+        private static void RunDeepEqualityCheck<T>(List<T> collection) where T : IDeepEquatable<T>
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();

@@ -260,7 +260,6 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
                 }
             }
         }
-
         public bool DeepEquals(DestinyActivityDefinition other)
         {
             return other != null &&

@@ -37,6 +37,20 @@ namespace BungieNetCoreAPI
 
             return true;
         }
+        internal static bool DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue<T, P>(this ReadOnlyDictionary<T, P> compared, ReadOnlyDictionary<T, P> comparedWith) where T : IDeepEquatable<T>
+        {
+            if (compared.Count != comparedWith.Count)
+                return false;
+
+            for (int i = 0; i < compared.Count; i++)
+            {
+                if (!compared.ElementAt(i).Key.DeepEquals(comparedWith.ElementAt(i).Key) || !compared.ElementAt(i).Value.Equals(comparedWith.ElementAt(i).Value))
+                    return false;
+
+            }
+
+            return true;
+        }
         internal static ReadOnlyCollection<T> AsReadOnlyOrEmpty<T>(this T[] source)
         {
             ReadOnlyCollection<T> readOnlyCollection;
@@ -46,7 +60,6 @@ namespace BungieNetCoreAPI
                 readOnlyCollection = new ReadOnlyCollection<T>(new T[0]);
             return readOnlyCollection;
         }
-
         internal static ReadOnlyCollection<DefinitionHashPointer<T>> DefinitionsAsReadOnlyOrEmpty<T>(this uint[] source, DefinitionsEnum enumValue) where T : IDestinyDefinition
         {
             ReadOnlyCollection<DefinitionHashPointer<T>> readOnlyCollection;
@@ -55,6 +68,13 @@ namespace BungieNetCoreAPI
             else
                 readOnlyCollection = new ReadOnlyCollection<DefinitionHashPointer<T>>(new DefinitionHashPointer<T>[0]);
             return readOnlyCollection;
+        }
+        internal static ReadOnlyDictionary<DefinitionHashPointer<T>, P> AsReadOnlyDictionaryWithDefinitionKeyOrEmpty<T, P>(this Dictionary<uint, P> dictionary, DefinitionsEnum enumValue) where T : IDestinyDefinition
+        {
+            if (dictionary == null)
+                return new ReadOnlyDictionary<DefinitionHashPointer<T>, P>(new Dictionary<DefinitionHashPointer<T>, P>(0));
+            var convertedDict = dictionary.ToDictionary(x => new DefinitionHashPointer<T>(x.Key, enumValue), y => y.Value);
+            return new ReadOnlyDictionary<DefinitionHashPointer<T>, P>(convertedDict);
         }
 
         public static string LocaleToString(this DestinyLocales locale)

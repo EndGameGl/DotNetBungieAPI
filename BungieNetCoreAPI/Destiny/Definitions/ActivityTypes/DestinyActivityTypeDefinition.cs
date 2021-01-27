@@ -3,8 +3,19 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ActivityTypes
 {
+    /// <summary>
+    /// The definition for an Activity Type.
+    /// <para/>
+    /// In Destiny 2, an Activity Type represents a conceptual categorization of Activities.
+    /// <para/>
+    /// These are most commonly used in the game for the subtitle under Activities, but BNet uses them extensively to identify and group activities by their common properties.
+    /// <para/>
+    /// Unfortunately, there has been a movement away from providing the richer data in Destiny 2 that we used to get in Destiny 1 for Activity Types.For instance, Nightfalls are grouped under the same Activity Type as regular Strikes.
+    /// <para />
+    /// For this reason, BNet will eventually migrate toward Activity Modes as a better indicator of activity category. But for the time being, it is still referred to in many places across our codebase.
+    /// </summary>
     [DestinyDefinition(type: DefinitionsEnum.DestinyActivityTypeDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyActivityTypeDefinition : IDestinyDefinition
+    public class DestinyActivityTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyActivityTypeDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public bool Blacklisted { get; }
@@ -13,7 +24,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityTypes
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyActivityTypeDefinition(DestinyDefinitionDisplayProperties displayProperties, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyActivityTypeDefinition(DestinyDefinitionDisplayProperties displayProperties, bool blacklisted, uint hash, int index, bool redacted)
         {
             DisplayProperties = displayProperties;
             Blacklisted = blacklisted;
@@ -21,10 +32,22 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityTypes
             Index = index;
             Redacted = redacted;
         }
-
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
+        }
+        public bool DeepEquals(DestinyActivityTypeDefinition other)
+        {
+            return other != null &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+        public void MapValues()
+        {
+            return;
         }
     }
 }

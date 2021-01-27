@@ -23,6 +23,14 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityInteractables
             Redacted = redacted;
         }
 
+        public void MapValues()
+        {
+            foreach (var entry in Entries)
+            {
+                entry.Activity.TryMapValue();
+            }
+        }
+
         public bool DeepEquals(DestinyActivityInteractableDefinition other)
         {
             return other != null &&
@@ -31,6 +39,6 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityInteractables
                    Hash == other.Hash &&
                    Index == other.Index &&
                    Redacted == other.Redacted;
-        }
+        }        
     }
 }

@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <None Remove="Destiny\Definitions\Activities\DestinyActivityDefinition.cs~RF156dec8b.TMP" />
+    <None Remove="Destiny\Definitions\ActivityModes\DestinyActivityModeType.cs~RF15e4813c.TMP" />
   </ItemGroup>
 
   <ItemGroup>
