@@ -1,15 +1,24 @@
-﻿using Newtonsoft.Json;
+﻿using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Collectibles
 {
-    public class CollectibleStateInfo
+    public class CollectibleStateInfo : IDeepEquatable<CollectibleStateInfo>
     {
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> ObscuredOverrideItem { get; }
         public CollectibleStateInfoRequirements Requirements { get; }
 
         [JsonConstructor]
-        private CollectibleStateInfo(CollectibleStateInfoRequirements requirements)
+        internal CollectibleStateInfo(uint? obscuredOverrideItemHash, CollectibleStateInfoRequirements requirements)
         {
+            ObscuredOverrideItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(obscuredOverrideItemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
             Requirements = requirements;
+        }
+
+        public bool DeepEquals(CollectibleStateInfo other)
+        {
+            return other != null &&
+                Requirements.DeepEquals(other.Requirements);
         }
     }
 }

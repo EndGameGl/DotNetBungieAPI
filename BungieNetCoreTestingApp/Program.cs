@@ -12,6 +12,7 @@ using BungieNetCoreAPI.Destiny.Definitions.Artifacts;
 using BungieNetCoreAPI.Destiny.Definitions.BreakerTypes;
 using BungieNetCoreAPI.Destiny.Definitions.Checklists;
 using BungieNetCoreAPI.Destiny.Definitions.Classes;
+using BungieNetCoreAPI.Destiny.Definitions.Collectibles;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +46,7 @@ namespace BungieNetCoreTestingApp
         {
             await _bungieClient.Run();
 
-            var coll = _bungieClient.Repository.GetAll<DestinyClassDefinition>(DefinitionsEnum.DestinyClassDefinition, DestinyLocales.EN).ToList();
+            var coll = _bungieClient.Repository.GetAll<DestinyCollectibleDefinition>(DefinitionsEnum.DestinyCollectibleDefinition, DestinyLocales.EN).ToList();
 
             RunDeepEqualityCheck(coll);
             //MeasureOperation(() => activityPointersCollection = coll.Select(x => x.GetPointer()).ToList());
