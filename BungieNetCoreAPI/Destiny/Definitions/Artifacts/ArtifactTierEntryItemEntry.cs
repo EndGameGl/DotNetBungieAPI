@@ -3,16 +3,26 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Artifacts
 {
-    public class ArtifactTierEntryItemEntry
+    public class ArtifactTierEntryItemEntry : IDeepEquatable<ArtifactTierEntryItemEntry>
     {
         public uint ActiveUnlockHash { get; }
+        /// <summary>
+        /// Plug Item unlocked by activating this item in the Artifact.
+        /// </summary>
         public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; }
 
         [JsonConstructor]
-        private ArtifactTierEntryItemEntry(uint activeUnlockHash, uint itemHash)
+        internal ArtifactTierEntryItemEntry(uint activeUnlockHash, uint itemHash)
         {
             ActiveUnlockHash = activeUnlockHash;
             Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
+        }
+
+        public bool DeepEquals(ArtifactTierEntryItemEntry other)
+        {
+            return other != null &&
+                ActiveUnlockHash == other.ActiveUnlockHash &&
+                Item.DeepEquals(other.Item);
         }
     }
 }

@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace BungieNetCoreAPI.Destiny.Definitions.Bonds
 {
     [DestinyDefinition(type: DefinitionsEnum.DestinyBondDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
-    public class DestinyBondDefinition : IDestinyDefinition
+    public class DestinyBondDefinition : IDestinyDefinition, IDeepEquatable<DestinyBondDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public uint ProvidedUnlockHash { get; }
@@ -15,7 +15,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Bonds
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyBondDefinition(DestinyDefinitionDisplayProperties displayProperties, uint providedUnlockHash, uint providedUnlockValueHash,
+        internal DestinyBondDefinition(DestinyDefinitionDisplayProperties displayProperties, uint providedUnlockHash, uint providedUnlockValueHash,
             bool blacklisted, uint hash, int index, bool redacted)
         {
             DisplayProperties = displayProperties;
@@ -26,5 +26,18 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Bonds
             Index = index;
             Redacted = redacted;
         }
+
+        public bool DeepEquals(DestinyBondDefinition other)
+        {
+            return other != null &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   ProvidedUnlockHash == other.ProvidedUnlockHash &&
+                   ProvidedUnlockValueHash == other.ProvidedUnlockValueHash &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+        public void MapValues() { return; }
     }
 }

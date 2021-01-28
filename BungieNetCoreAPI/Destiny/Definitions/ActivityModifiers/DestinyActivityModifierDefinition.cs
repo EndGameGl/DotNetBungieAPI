@@ -30,7 +30,6 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityModifiers
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
-
         public bool DeepEquals(DestinyActivityModifierDefinition other)
         {
             return other != null &&
@@ -39,6 +38,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityModifiers
                    Hash == other.Hash &&
                    Index == other.Index &&
                    Redacted == other.Redacted;
+        }
+        public void MapValues()
+        {
+            return;
         }
     }
 }

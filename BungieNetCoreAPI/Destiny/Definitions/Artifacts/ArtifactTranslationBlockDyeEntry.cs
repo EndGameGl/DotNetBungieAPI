@@ -2,16 +2,23 @@
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Artifacts
 {
-    public class ArtifactTranslationBlockDyeEntry
+    public class ArtifactTranslationBlockDyeEntry : IDeepEquatable<ArtifactTranslationBlockDyeEntry>
     {
         public uint ChannelHash { get; }
         public uint DyeHash { get; }
 
         [JsonConstructor]
-        private ArtifactTranslationBlockDyeEntry(uint channelHash, uint dyeHash)
+        internal ArtifactTranslationBlockDyeEntry(uint channelHash, uint dyeHash)
         {
             ChannelHash = channelHash;
             DyeHash = dyeHash;
+        }
+
+        public bool DeepEquals(ArtifactTranslationBlockDyeEntry other)
+        {
+            return other != null &&
+                ChannelHash == other.ChannelHash &&
+                DyeHash == other.DyeHash;
         }
     }
 }

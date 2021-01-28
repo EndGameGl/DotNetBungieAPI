@@ -1,24 +1,29 @@
 ﻿using BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationCategories;
 using Newtonsoft.Json;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
 {
-    public class CharacterCustomizationOptionColorOptions
+    public class CharacterCustomizationOptionColorOptions : IDeepEquatable<CharacterCustomizationOptionColorOptions>
     {
         public DefinitionHashPointer<DestinyCharacterCustomizationCategoryDefinition> CustomizationCategory { get; }
         public string DisplayName { get; }
-        public List<CharacterCustomizationOptionColorOptionsEntry> Options { get; }
+        public ReadOnlyCollection<CharacterCustomizationOptionColorOptionsEntry> Options { get; }
 
         [JsonConstructor]
-        private CharacterCustomizationOptionColorOptions(uint customizationCategoryHash, string displayName, List<CharacterCustomizationOptionColorOptionsEntry> options)
+        internal CharacterCustomizationOptionColorOptions(uint customizationCategoryHash, string displayName, CharacterCustomizationOptionColorOptionsEntry[] options)
         {
             CustomizationCategory = new DefinitionHashPointer<DestinyCharacterCustomizationCategoryDefinition>(customizationCategoryHash, DefinitionsEnum.DestinyCharacterCustomizationCategoryDefinition);
             DisplayName = displayName;
-            if (options == null)
-                Options = new List<CharacterCustomizationOptionColorOptionsEntry>();
-            else
-                Options = options;
+            Options = options.AsReadOnlyOrEmpty();
+        }
+
+        public bool DeepEquals(CharacterCustomizationOptionColorOptions other)
+        {
+            return other != null &&
+                   CustomizationCategory.DeepEquals(other.CustomizationCategory) &&
+                   DisplayName == other.DisplayName &&
+                   Options.DeepEqualsReadOnlyCollections(other.Options);
         }
     }
 }

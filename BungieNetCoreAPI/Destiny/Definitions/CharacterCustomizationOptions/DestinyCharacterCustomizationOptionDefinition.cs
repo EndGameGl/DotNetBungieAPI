@@ -2,12 +2,12 @@
 using BungieNetCoreAPI.Destiny.Definitions.Genders;
 using BungieNetCoreAPI.Destiny.Definitions.Races;
 using Newtonsoft.Json;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
 {
     [DestinyDefinition(type: DefinitionsEnum.DestinyCharacterCustomizationOptionDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
-    public class DestinyCharacterCustomizationOptionDefinition : IDestinyDefinition
+    public class DestinyCharacterCustomizationOptionDefinition : IDestinyDefinition, IDeepEquatable<DestinyCharacterCustomizationOptionDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public DefinitionHashPointer<DestinyGenderDefinition> Gender { get; }
@@ -15,7 +15,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
         public CharacterCustomizationOptionColorOptions DecalColorOptions { get; }
         public CharacterCustomizationOptionColorOptions DecalOptions { get; }
         public CharacterCustomizationOptionColorOptions EyeColorOptions { get; }
-        public List<uint> FaceOptionCinematicHostPatternIds { get; }
+        public ReadOnlyCollection<uint> FaceOptionCinematicHostPatternIds { get; }
         public CharacterCustomizationOptionColorOptions FaceOptions { get; }
         public CharacterCustomizationOptionColorOptionsWithMultipleValues FeatureColorOptions { get; }
         public CharacterCustomizationOptionColorOptions FeatureOptions { get; }
@@ -31,10 +31,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyCharacterCustomizationOptionDefinition(DestinyDefinitionDisplayProperties displayProperties, uint genderHash, uint raceHash,
+        internal DestinyCharacterCustomizationOptionDefinition(DestinyDefinitionDisplayProperties displayProperties, uint genderHash, uint raceHash,
             CharacterCustomizationOptionColorOptions decalColorOptions,
             CharacterCustomizationOptionColorOptions decalOptions, CharacterCustomizationOptionColorOptions eyeColorOptions,
-            List<uint> faceOptionCinematicHostPatternIds, CharacterCustomizationOptionColorOptions faceOptions,
+            uint[] faceOptionCinematicHostPatternIds, CharacterCustomizationOptionColorOptions faceOptions,
             CharacterCustomizationOptionColorOptionsWithMultipleValues featureColorOptions, CharacterCustomizationOptionColorOptions featureOptions,
             CharacterCustomizationOptionColorOptionsWithMultipleValues hairColorOptions, CharacterCustomizationOptionColorOptions hairOptions,
             CharacterCustomizationOptionColorOptions helmetPreferences, CharacterCustomizationOptionColorOptions lipColorOptions,
@@ -47,10 +47,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
             DecalColorOptions = decalColorOptions;
             DecalOptions = decalOptions;
             EyeColorOptions = eyeColorOptions;
-            if (faceOptionCinematicHostPatternIds == null)
-                FaceOptionCinematicHostPatternIds = new List<uint>();
-            else
-                FaceOptionCinematicHostPatternIds = faceOptionCinematicHostPatternIds;
+            FaceOptionCinematicHostPatternIds = faceOptionCinematicHostPatternIds.AsReadOnlyOrEmpty();
             FaceOptions = faceOptions;
             FeatureColorOptions = featureColorOptions;
             FeatureOptions = featureOptions;
@@ -69,6 +66,31 @@ namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
+        }
+
+        public bool DeepEquals(DestinyCharacterCustomizationOptionDefinition other)
+        {
+            return other != null &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   Gender.DeepEquals(other.Gender) &&
+                   Race.DeepEquals(other.Race) &&
+                   DecalColorOptions.DeepEquals(other.DecalColorOptions) &&
+                   DecalOptions.DeepEquals(other.DecalOptions) &&
+                   EyeColorOptions.DeepEquals(other.EyeColorOptions) &&
+                   FaceOptionCinematicHostPatternIds.DeepEqualsReadOnlySimpleCollection(other.FaceOptionCinematicHostPatternIds) &&
+                   FaceOptions.DeepEquals(other.FaceOptions) &&
+                   FeatureColorOptions.DeepEquals(other.FeatureColorOptions) &&
+                   FeatureOptions.DeepEquals(other.FeatureOptions) &&
+                   HairColorOptions.DeepEquals(other.HairColorOptions) &&
+                   HairOptions.DeepEquals(other.HairOptions) &&
+                   HelmetPreferences.DeepEquals(other.HelmetPreferences) &&
+                   LipColorOptions.DeepEquals(other.LipColorOptions) &&
+                   PersonalityOptions.DeepEquals(other.PersonalityOptions) &&
+                   SkinColorOptions.DeepEquals(other.SkinColorOptions) &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
         }
     }
 }

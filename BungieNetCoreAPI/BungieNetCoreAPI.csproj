@@ -7,6 +7,11 @@
   <ItemGroup>
     <None Remove="Destiny\Definitions\Activities\DestinyActivityDefinition.cs~RF156dec8b.TMP" />
     <None Remove="Destiny\Definitions\ActivityModes\DestinyActivityModeType.cs~RF15e4813c.TMP" />
+    <None Remove="Destiny\Definitions\ArtDyeChannels\DestinyArtDyeChannelDefinition.cs~RF192b2b89.TMP" />
+    <None Remove="Destiny\Definitions\Artifacts\ArtifactTierEntryItemEntry.cs~RF19345443.TMP" />
+    <None Remove="Destiny\Definitions\CharacterCustomizationCategories\DestinyCharacterCustomizationCategoryDefinition.cs~RF195bdc13.TMP" />
+    <None Remove="Destiny\Definitions\CharacterCustomizationOptions\CharacterCustomizationOptionColorOptions.cs~RF195fb965.TMP" />
+    <None Remove="Destiny\Definitions\CharacterCustomizationOptions\DestinyCharacterCustomizationOptionDefinition.cs~RF19678f31.TMP" />
   </ItemGroup>
 
   <ItemGroup>

@@ -8,6 +8,8 @@ using BungieNetCoreAPI.Destiny.Definitions.Achievements;
 using BungieNetCoreAPI.Destiny.Definitions.Activities;
 using BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs;
 using BungieNetCoreAPI.Destiny.Definitions.ActivityModes;
+using BungieNetCoreAPI.Destiny.Definitions.Artifacts;
+using BungieNetCoreAPI.Destiny.Definitions.BreakerTypes;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -41,9 +43,10 @@ namespace BungieNetCoreTestingApp
         {
             await _bungieClient.Run();
 
-            var coll = _bungieClient.Repository.GetAll<DestinyActivityModeDefinition>(DefinitionsEnum.DestinyActivityModeDefinition, DestinyLocales.EN).ToList();
+            var coll = _bungieClient.Repository.GetAll<DestinyBreakerTypeDefinition>(DefinitionsEnum.DestinyBreakerTypeDefinition, DestinyLocales.EN).ToList();
 
             RunDeepEqualityCheck(coll);
+            //MeasureOperation(() => activityPointersCollection = coll.Select(x => x.GetPointer()).ToList());
 
             await Task.Delay(Timeout.Infinite);
         }
@@ -68,6 +71,15 @@ namespace BungieNetCoreTestingApp
             }
             sw.Stop();
             Console.WriteLine($"{sw.ElapsedMilliseconds} ms elapsed. Unique items: {uniqueItems}");
+        }
+
+        private static void MeasureOperation(Action action)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            action.Invoke();
+            sw.Stop();
+            Console.WriteLine($"{sw.ElapsedMilliseconds} ms elapsed.");
         }
     }
 }

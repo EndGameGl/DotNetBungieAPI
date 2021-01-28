@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace BungieNetCoreAPI.Destiny.Definitions.BreakerTypes
 {
     [DestinyDefinition(type: DefinitionsEnum.DestinyBreakerTypeDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyBreakerTypeDefinition : IDestinyDefinition
+    public class DestinyBreakerTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyBreakerTypeDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public uint UnlockHash { get; }
@@ -15,7 +15,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.BreakerTypes
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyBreakerTypeDefinition(DestinyDefinitionDisplayProperties displayProperties, uint unlockHash, DestinyBreakerTypes enumValue,
+        internal DestinyBreakerTypeDefinition(DestinyDefinitionDisplayProperties displayProperties, uint unlockHash, DestinyBreakerTypes enumValue,
             bool blacklisted, uint hash, int index, bool redacted)
         {
             DisplayProperties = displayProperties;
@@ -31,5 +31,18 @@ namespace BungieNetCoreAPI.Destiny.Definitions.BreakerTypes
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
+
+        public bool DeepEquals(DestinyBreakerTypeDefinition other)
+        {
+            return other != null &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   UnlockHash == other.UnlockHash &&
+                   EnumValue == other.EnumValue &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+        public void MapValues() { return; }
     }
 }

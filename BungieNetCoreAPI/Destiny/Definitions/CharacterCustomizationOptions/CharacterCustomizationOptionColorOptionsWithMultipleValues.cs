@@ -1,24 +1,29 @@
 ﻿using BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationCategories;
 using Newtonsoft.Json;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
 {
-    public class CharacterCustomizationOptionColorOptionsWithMultipleValues
+    public class CharacterCustomizationOptionColorOptionsWithMultipleValues : IDeepEquatable<CharacterCustomizationOptionColorOptionsWithMultipleValues>
     {
         public DefinitionHashPointer<DestinyCharacterCustomizationCategoryDefinition> CustomizationCategory { get; }
         public string DisplayName { get; }
-        public List<CharacterCustomizationOptionColorOptionsEntryWithMultipleValues> Options { get; }
+        public ReadOnlyCollection<CharacterCustomizationOptionColorOptionsEntryWithMultipleValues> Options { get; }
 
         [JsonConstructor]
-        private CharacterCustomizationOptionColorOptionsWithMultipleValues(uint customizationCategoryHash, string displayName, List<CharacterCustomizationOptionColorOptionsEntryWithMultipleValues> options)
+        internal CharacterCustomizationOptionColorOptionsWithMultipleValues(uint customizationCategoryHash, string displayName, CharacterCustomizationOptionColorOptionsEntryWithMultipleValues[] options)
         {
             CustomizationCategory = new DefinitionHashPointer<DestinyCharacterCustomizationCategoryDefinition>(customizationCategoryHash, DefinitionsEnum.DestinyCharacterCustomizationCategoryDefinition);
             DisplayName = displayName;
-            if (options == null)
-                Options = new List<CharacterCustomizationOptionColorOptionsEntryWithMultipleValues>();
-            else
-                Options = options;
+            Options = options.AsReadOnlyOrEmpty();
+        }
+
+        public bool DeepEquals(CharacterCustomizationOptionColorOptionsWithMultipleValues other)
+        {
+            return other != null &&
+                CustomizationCategory.DeepEquals(other.CustomizationCategory) &&
+                DisplayName == other.DisplayName &&
+                Options.DeepEqualsReadOnlyCollections(other.Options);
         }
     }
 }

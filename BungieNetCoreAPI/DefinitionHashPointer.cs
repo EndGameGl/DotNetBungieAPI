@@ -83,6 +83,22 @@ namespace BungieNetCoreAPI
             Locale = _repository.CurrentLocaleLoadContext;
         }
 
+        internal DefinitionHashPointer(uint? hash, DefinitionsEnum type, DestinyLocales locale, T def = default, ILocalisedManifestDefinitionRepositories repo = null)
+        {
+            if (def != null)
+            {
+                m_value = def;
+                Exists = true;
+            }
+            Hash = hash;
+            DefinitionEnumType = type;
+            if (repo != null)
+                _repository = repo;
+            else
+                _repository = UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>();
+            Locale = locale;
+        }
+
         /// <summary>
         /// Tries to get definition from local cache/API
         /// </summary>

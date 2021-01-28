@@ -1,40 +1,44 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Artifacts
 {
-    public class ArtifactTranslationBlock
+    /// <summary>
+    /// This Block defines the rendering data associated with the item, if any.
+    /// </summary>
+    public class ArtifactTranslationBlock : IDeepEquatable<ArtifactTranslationBlock>
     {
-        public List<ArtifactTranslationBlockArrangementEntry> Arrangements { get; }
-        public List<ArtifactTranslationBlockDyeEntry> CustomDyes { get; }
-        public List<ArtifactTranslationBlockDyeEntry> DefaultDyes { get; }
-        public List<ArtifactTranslationBlockDyeEntry> LockedDyes { get; }
+        public ReadOnlyCollection<ArtifactTranslationBlockArrangementEntry> Arrangements { get; }
+        public ReadOnlyCollection<ArtifactTranslationBlockDyeEntry> CustomDyes { get; }
+        public ReadOnlyCollection<ArtifactTranslationBlockDyeEntry> DefaultDyes { get; }
+        public ReadOnlyCollection<ArtifactTranslationBlockDyeEntry> LockedDyes { get; }
         public bool HasGeometry { get; }
         public uint WeaponPatternHash { get; }
+        public string WeaponPatternIdentifier { get; }
 
         [JsonConstructor]
-        private ArtifactTranslationBlock(List<ArtifactTranslationBlockArrangementEntry> arrangements, List<ArtifactTranslationBlockDyeEntry> customDyes,
-            List<ArtifactTranslationBlockDyeEntry> defaultDyes, List<ArtifactTranslationBlockDyeEntry> lockedDyes, bool hasGeometry, uint weaponPatternHash)
+        internal ArtifactTranslationBlock(ArtifactTranslationBlockArrangementEntry[] arrangements, ArtifactTranslationBlockDyeEntry[] customDyes, string weaponPatternIdentifier,
+            ArtifactTranslationBlockDyeEntry[] defaultDyes, ArtifactTranslationBlockDyeEntry[] lockedDyes, bool hasGeometry, uint weaponPatternHash)
         {
-            if (arrangements == null)
-                Arrangements = new List<ArtifactTranslationBlockArrangementEntry>();
-            else
-                Arrangements = arrangements;
-            if (customDyes == null)
-                CustomDyes = new List<ArtifactTranslationBlockDyeEntry>();
-            else
-                CustomDyes = customDyes; 
-            if (defaultDyes == null)
-                DefaultDyes = new List<ArtifactTranslationBlockDyeEntry>();
-            else
-                DefaultDyes = defaultDyes;
-            if (lockedDyes == null)
-                LockedDyes = new List<ArtifactTranslationBlockDyeEntry>();
-            else
-                LockedDyes = lockedDyes;
+            Arrangements = arrangements.AsReadOnlyOrEmpty();
+            CustomDyes = customDyes.AsReadOnlyOrEmpty();
+            DefaultDyes = defaultDyes.AsReadOnlyOrEmpty();
+            LockedDyes = lockedDyes.AsReadOnlyOrEmpty();
             HasGeometry = hasGeometry;
             WeaponPatternHash = weaponPatternHash;
+            WeaponPatternIdentifier = weaponPatternIdentifier;
+        }
 
+        public bool DeepEquals(ArtifactTranslationBlock other)
+        {
+            return other != null &&
+                   Arrangements.DeepEqualsReadOnlyCollections(other.Arrangements) &&
+                   CustomDyes.DeepEqualsReadOnlyCollections(other.CustomDyes) &&
+                   DefaultDyes.DeepEqualsReadOnlyCollections(other.DefaultDyes) &&
+                   LockedDyes.DeepEqualsReadOnlyCollections(other.LockedDyes) &&
+                   HasGeometry == other.HasGeometry &&
+                   WeaponPatternHash == other.WeaponPatternHash &&
+                   WeaponPatternIdentifier == other.WeaponPatternIdentifier;
         }
     }
 }

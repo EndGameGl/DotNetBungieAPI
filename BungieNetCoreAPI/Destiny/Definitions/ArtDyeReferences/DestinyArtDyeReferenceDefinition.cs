@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace BungieNetCoreAPI.Destiny.Definitions.ArtDyeReferences
 {
     [DestinyDefinition(type: DefinitionsEnum.DestinyArtDyeReferenceDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
-    public class DestinyArtDyeReferenceDefinition : IDestinyDefinition
+    public class DestinyArtDyeReferenceDefinition : IDestinyDefinition, IDeepEquatable<DestinyArtDyeReferenceDefinition>
     {
         public uint ArtDyeHash { get; }
         public uint DyeManifestHash { get; }
@@ -14,7 +14,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ArtDyeReferences
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyArtDyeReferenceDefinition(uint artDyeHash, uint dyeManifestHash, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyArtDyeReferenceDefinition(uint artDyeHash, uint dyeManifestHash, bool blacklisted, uint hash, int index, bool redacted)
         {
             ArtDyeHash = artDyeHash;
             DyeManifestHash = dyeManifestHash;
@@ -23,5 +23,17 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ArtDyeReferences
             Index = index;
             Redacted = redacted;
         }
+
+        public bool DeepEquals(DestinyArtDyeReferenceDefinition other)
+        {
+            return other != null &&
+                   ArtDyeHash == other.ArtDyeHash &&
+                   DyeManifestHash == other.DyeManifestHash &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+        public void MapValues() { return; }
     }
 }

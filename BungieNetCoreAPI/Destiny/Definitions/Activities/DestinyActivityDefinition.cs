@@ -3,8 +3,11 @@ using BungieNetCoreAPI.Destiny.Definitions.ActivityModes;
 using BungieNetCoreAPI.Destiny.Definitions.ActivityTypes;
 using BungieNetCoreAPI.Destiny.Definitions.Destinations;
 using BungieNetCoreAPI.Destiny.Definitions.Places;
+using BungieNetCoreAPI.Repositories;
+using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
+using Unity;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Activities
 {
@@ -299,6 +302,20 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
                    Hash == other.Hash &&
                    Index == other.Index &&
                    Redacted == other.Redacted;
+        }
+        public DefinitionHashPointer<DestinyActivityDefinition> GetPointer()
+        {
+            var repo = UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>();
+            var settings = UnityContainerFactory.Container.Resolve<IConfigurationService>().Settings;
+            foreach (var locale in settings.Locales)
+            {
+                if (repo.TryGetDestinyDefinition<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, Hash, locale, out var definition))
+                {
+                    if (Equals(definition))
+                        return new DefinitionHashPointer<DestinyActivityDefinition>(Hash, DefinitionsEnum.DestinyActivityDefinition, locale, definition, repo);
+                }
+            }
+            return null;
         }
     }
 }

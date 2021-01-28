@@ -1,18 +1,25 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
 {
-    public class CharacterCustomizationOptionColorOptionsEntryWithMultipleValues
+    public class CharacterCustomizationOptionColorOptionsEntryWithMultipleValues : IDeepEquatable<CharacterCustomizationOptionColorOptionsEntryWithMultipleValues>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
-        public List<uint> Value { get; }
+        public ReadOnlyCollection<uint> Value { get; }
 
         [JsonConstructor]
-        private CharacterCustomizationOptionColorOptionsEntryWithMultipleValues(DestinyDefinitionDisplayProperties displayProperties, List<uint> value)
+        internal CharacterCustomizationOptionColorOptionsEntryWithMultipleValues(DestinyDefinitionDisplayProperties displayProperties, uint[] value)
         {
             DisplayProperties = displayProperties;
-            Value = value;
+            Value = value.AsReadOnlyOrEmpty();
+        }
+
+        public bool DeepEquals(CharacterCustomizationOptionColorOptionsEntryWithMultipleValues other)
+        {
+            return other != null &&
+                DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                Value == other.Value;
         }
     }
 }

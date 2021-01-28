@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace BungieNetCoreAPI.Destiny.Definitions.ArtDyeChannels
 {
     [DestinyDefinition(type: DefinitionsEnum.DestinyArtDyeChannelDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
-    public class DestinyArtDyeChannelDefinition : IDestinyDefinition
+    public class DestinyArtDyeChannelDefinition : IDestinyDefinition, IDeepEquatable<DestinyArtDyeChannelDefinition>
     {
         public uint ChannelHash { get; }
         public bool Blacklisted { get; }
@@ -13,7 +13,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ArtDyeChannels
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyArtDyeChannelDefinition(uint channelHash, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyArtDyeChannelDefinition(uint channelHash, bool blacklisted, uint hash, int index, bool redacted)
         {
             ChannelHash = channelHash;
             Blacklisted = blacklisted;
@@ -21,5 +21,16 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ArtDyeChannels
             Index = index;
             Redacted = redacted;
         }
+
+        public bool DeepEquals(DestinyArtDyeChannelDefinition other)
+        {
+            return other != null &&
+                   ChannelHash == other.ChannelHash &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+        public void MapValues() { return; }
     }
 }
