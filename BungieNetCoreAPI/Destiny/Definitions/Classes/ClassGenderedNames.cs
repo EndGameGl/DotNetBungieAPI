@@ -2,16 +2,23 @@
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Classes
 {
-    public class ClassGenderedNames
+    public class ClassGenderedNames : IDeepEquatable<ClassGenderedNames>
     {
         public string Female { get; }
         public string Male { get; }
 
         [JsonConstructor]
-        private ClassGenderedNames(string Female, string Male)
+        internal ClassGenderedNames(string Female, string Male)
         {
             this.Female = Female;
             this.Male = Male;
+        }
+
+        public bool DeepEquals(ClassGenderedNames other)
+        {
+            return other != null &&
+                Female == other.Female &&
+                Male == other.Male;
         }
     }
 }
