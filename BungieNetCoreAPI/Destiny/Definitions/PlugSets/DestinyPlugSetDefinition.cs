@@ -30,7 +30,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PlugSets
 
         public override string ToString()
         {
-            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
+            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties?.Description}";
         }
     }
 }

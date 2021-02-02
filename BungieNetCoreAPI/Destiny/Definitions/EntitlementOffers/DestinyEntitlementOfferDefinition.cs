@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace BungieNetCoreAPI.Destiny.Definitions.EntitlementOffers
 {
     [DestinyDefinition(type: DefinitionsEnum.DestinyEntitlementOfferDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
-    public class DestinyEntitlementOfferDefinition : IDestinyDefinition
+    public class DestinyEntitlementOfferDefinition : IDestinyDefinition, IDeepEquatable<DestinyEntitlementOfferDefinition>
     {
         public uint OfferKey { get; }
         public bool Blacklisted { get; }
@@ -13,13 +13,27 @@ namespace BungieNetCoreAPI.Destiny.Definitions.EntitlementOffers
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyEntitlementOfferDefinition(uint offerKey, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyEntitlementOfferDefinition(uint offerKey, bool blacklisted, uint hash, int index, bool redacted)
         {
             OfferKey = offerKey; 
             Blacklisted = blacklisted;
             Hash = hash;
             Index = index;
             Redacted = redacted;
+        }
+
+        public bool DeepEquals(DestinyEntitlementOfferDefinition other)
+        {
+            return other != null &&
+                   OfferKey == other.OfferKey &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+        public void MapValues()
+        {
+            return;
         }
     }
 }

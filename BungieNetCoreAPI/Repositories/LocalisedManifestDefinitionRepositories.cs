@@ -16,7 +16,7 @@ namespace BungieNetCoreAPI.Repositories
         private DestinyLocales? _currentLocaleLoadContext;
         private readonly ILogger _logger;
         private readonly IConfigurationService _configs;
-        //private readonly IDefinitionAssemblyData _assemblyData;
+        private readonly IDefinitionAssemblyData _assemblyData;
         public DestinyLocales CurrentLocaleLoadContext => _currentLocaleLoadContext == null ? DestinyLocales.EN : _currentLocaleLoadContext.Value;
 
         private Dictionary<DestinyLocales, ManifestDefinitionsRepository> _localisedRepositories;
@@ -25,7 +25,7 @@ namespace BungieNetCoreAPI.Repositories
         {
             _logger = UnityContainerFactory.Container.Resolve<ILogger>();
             _configs = UnityContainerFactory.Container.Resolve<IConfigurationService>();
-            //_assemblyData = UnityContainerFactory.Container.Resolve<IDefinitionAssemblyData>();
+            _assemblyData = UnityContainerFactory.Container.Resolve<IDefinitionAssemblyData>();
         }
 
         public void Initialize(DestinyLocales[] locales)
@@ -68,7 +68,12 @@ namespace BungieNetCoreAPI.Repositories
         public IEnumerable<T> GetAll<T>(DefinitionsEnum definitionType, DestinyLocales locale) where T : IDestinyDefinition
         {
             return _localisedRepositories[locale].GetAll<T>(definitionType);
-        } 
+        }
+        public IEnumerable<T> GetAll<T>(DestinyLocales locale = DestinyLocales.EN) where T : IDestinyDefinition
+        {
+            return _localisedRepositories[locale].GetAll<T>(_assemblyData.TypeToEnumMapping[typeof(T)]);
+        }
+
         /// <summary>
         /// Gets all items with given trait
         /// <para>Possible traits:</para>

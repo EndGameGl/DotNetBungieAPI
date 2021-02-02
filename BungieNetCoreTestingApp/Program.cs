@@ -13,6 +13,12 @@ using BungieNetCoreAPI.Destiny.Definitions.BreakerTypes;
 using BungieNetCoreAPI.Destiny.Definitions.Checklists;
 using BungieNetCoreAPI.Destiny.Definitions.Classes;
 using BungieNetCoreAPI.Destiny.Definitions.Collectibles;
+using BungieNetCoreAPI.Destiny.Definitions.DamageTypes;
+using BungieNetCoreAPI.Destiny.Definitions.Destinations;
+using BungieNetCoreAPI.Destiny.Definitions.EnemyRaces;
+using BungieNetCoreAPI.Destiny.Definitions.EnergyTypes;
+using BungieNetCoreAPI.Destiny.Definitions.EquipmentSlots;
+using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -23,6 +29,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using Unity;
 
 namespace BungieNetCoreTestingApp
 {
@@ -46,9 +53,13 @@ namespace BungieNetCoreTestingApp
         {
             await _bungieClient.Run();
 
-            var coll = _bungieClient.Repository.GetAll<DestinyCollectibleDefinition>(DefinitionsEnum.DestinyCollectibleDefinition, DestinyLocales.EN).ToList();
+            var collection = _bungieClient.Repository.GetAll<DestinyEquipmentSlotDefinition>().ToList();
 
-            RunDeepEqualityCheck(coll);
+            //MeasureOperationMultiple(
+            //    action: () => { _bungieClient.Repository.GetAll<DestinyCollectibleDefinition>(); },
+            //    amount: 100);
+
+            RunDeepEqualityCheck(collection);
             //MeasureOperation(() => activityPointersCollection = coll.Select(x => x.GetPointer()).ToList());
 
             await Task.Delay(Timeout.Infinite);
@@ -75,14 +86,25 @@ namespace BungieNetCoreTestingApp
             sw.Stop();
             Console.WriteLine($"{sw.ElapsedMilliseconds} ms elapsed. Unique items: {uniqueItems}");
         }
-
-        private static void MeasureOperation(Action action)
+        private static long MeasureOperation(Action action, bool writeResult = true)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
             action.Invoke();
             sw.Stop();
-            Console.WriteLine($"{sw.ElapsedMilliseconds} ms elapsed.");
+            if (writeResult)
+                Console.WriteLine($"{sw.ElapsedMilliseconds} ms elapsed.");
+            return sw.ElapsedMilliseconds;
+        }
+        private static void MeasureOperationMultiple(Action action, int amount)
+        {
+            double totalTime = 0.0;
+            for (int i = 0; i < amount; i++)
+            {
+                totalTime += MeasureOperation(action, false);
+            }
+
+            Console.WriteLine($"Ran op {amount} times in {totalTime} ms ({amount / totalTime} op/ms)");
         }
     }
 }

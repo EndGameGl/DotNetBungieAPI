@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace BungieNetCoreAPI.Destiny.Definitions.EnemyRaces
 {
     [DestinyDefinition(type: DefinitionsEnum.DestinyEnemyRaceDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyEnemyRaceDefinition : IDestinyDefinition
+    public class DestinyEnemyRaceDefinition : IDestinyDefinition, IDeepEquatable<DestinyEnemyRaceDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public bool Blacklisted { get; }
@@ -13,7 +13,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.EnemyRaces
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyEnemyRaceDefinition(DestinyDefinitionDisplayProperties displayProperties, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyEnemyRaceDefinition(DestinyDefinitionDisplayProperties displayProperties, bool blacklisted, uint hash, int index, bool redacted)
         {
             DisplayProperties = displayProperties;
             Blacklisted = blacklisted;
@@ -25,6 +25,20 @@ namespace BungieNetCoreAPI.Destiny.Definitions.EnemyRaces
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
+        }
+
+        public bool DeepEquals(DestinyEnemyRaceDefinition other)
+        {
+            return other != null &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+        public void MapValues()
+        {
+            return;
         }
     }
 }

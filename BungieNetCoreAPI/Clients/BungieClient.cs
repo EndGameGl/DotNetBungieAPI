@@ -1,9 +1,11 @@
-﻿using BungieNetCoreAPI.Logging;
+﻿using BungieNetCoreAPI.Destiny;
+using BungieNetCoreAPI.Logging;
 using BungieNetCoreAPI.Repositories;
 using BungieNetCoreAPI.Services;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Linq;
 using System.Threading.Tasks;
 using Unity;
 
@@ -24,13 +26,15 @@ namespace BungieNetCoreAPI.Clients
         public ILocalisedManifestDefinitionRepositories Repository;
         public LogListener LogListener;
 
+        public DefinitionsEnum[] LoadedTypes =>
+            UnityContainerFactory.Container.Resolve<IDefinitionAssemblyData>().DefinitionsToTypeMapping.Values.Where(x => x.PresentInSQLiteDB).Select(x => x.Type).ToArray();
         public BungieClient(BungieClientSettings settings)
-        {         
+        {
             SetUpUnityDependencies();
 
             Configuration = UnityContainerFactory.Container.Resolve<IConfigurationService>();
 
-            if (settings.UseExistingConfig) 
+            if (settings.UseExistingConfig)
                 Configuration.ApplySettingsFromConfig(settings.ExistingConfigPath);
             else
                 Configuration.ApplySettings(settings);
@@ -50,7 +54,7 @@ namespace BungieNetCoreAPI.Clients
             Platform = new BungiePlatfromClient(Configuration.Settings.ApiKey);
 
             _versionControl = UnityContainerFactory.Container.Resolve<IManifestUpdateHandler>();
-            
+
         }
         public async Task Run()
         {
@@ -59,13 +63,13 @@ namespace BungieNetCoreAPI.Clients
             await _versionControl.InitiateManifestHandler();
 
             if (Configuration.Settings.CheckUpdates)
-                await _versionControl.UpdateManifestData();           
+                await _versionControl.UpdateManifestData();
 
             if (Configuration.Settings.CacheDefinitionsInMemory)
-            {       
+            {
                 Repository = UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>();
                 Repository.Initialize(Configuration.Settings.Locales);
-             
+
                 if (Configuration.Settings.UsePreloadedCache)
                 {
                     _logger.Log($"Using preloaded cache for set locales: {string.Join(", ", Configuration.Settings.Locales)}", LogType.Info);
@@ -87,7 +91,7 @@ namespace BungieNetCoreAPI.Clients
         }
         private void SetUpUnityDependencies()
         {
-            
+
         }
     }
 }

@@ -6,6 +6,7 @@ using BungieNetCoreAPI.Services;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.IO;
@@ -266,6 +267,7 @@ namespace BungieNetCoreAPI.Repositories
                     break;
             }
         }
+
         #endregion
     }
 }

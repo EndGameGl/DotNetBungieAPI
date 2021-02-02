@@ -2,13 +2,16 @@
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Destinations
 {
-    public class DestinationBubbleEntry
+    /// <summary>
+    /// Basic identifying data about the bubble.
+    /// </summary>
+    public class DestinationBubbleEntry : IDeepEquatable<DestinationBubbleEntry>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public uint Hash { get; }
 
         [JsonConstructor]
-        private DestinationBubbleEntry(DestinyDefinitionDisplayProperties displayProperties, uint hash)
+        internal DestinationBubbleEntry(DestinyDefinitionDisplayProperties displayProperties, uint hash)
         {
             DisplayProperties = displayProperties;
             Hash = hash;
@@ -16,6 +19,13 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Destinations
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}";
+        }
+
+        public bool DeepEquals(DestinationBubbleEntry other)
+        {
+            return other != null &&
+                DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                Hash == other.Hash;
         }
     }
 }

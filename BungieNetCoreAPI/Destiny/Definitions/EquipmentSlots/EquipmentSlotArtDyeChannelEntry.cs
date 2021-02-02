@@ -2,14 +2,19 @@
 
 namespace BungieNetCoreAPI.Destiny.Definitions.EquipmentSlots
 {
-    public class EquipmentSlotArtDyeChannelEntry
+    public class EquipmentSlotArtDyeChannelEntry : IDeepEquatable<EquipmentSlotArtDyeChannelEntry>
     {
         public uint ArtDyeChannelHash { get; }
 
         [JsonConstructor]
-        private EquipmentSlotArtDyeChannelEntry(uint artDyeChannelHash)
+        internal EquipmentSlotArtDyeChannelEntry(uint artDyeChannelHash)
         {
             ArtDyeChannelHash = artDyeChannelHash;
+        }
+
+        public bool DeepEquals(EquipmentSlotArtDyeChannelEntry other)
+        {
+            return other != null && ArtDyeChannelHash == other.ArtDyeChannelHash;
         }
     }
 }

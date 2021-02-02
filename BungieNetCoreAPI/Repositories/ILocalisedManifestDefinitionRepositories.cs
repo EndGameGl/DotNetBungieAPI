@@ -20,6 +20,7 @@ namespace BungieNetCoreAPI.Repositories
         bool TryGetDestinyDefinition<T>(DefinitionsEnum definitionType, uint key, DestinyLocales locale, out T definition) where T : IDestinyDefinition;
         IEnumerable<T> Search<T>(DefinitionsEnum definitionType, DestinyLocales locale, Func<IDestinyDefinition, bool> predicate) where T : IDestinyDefinition;
         IEnumerable<T> GetAll<T>(DefinitionsEnum definitionType, DestinyLocales locale) where T : IDestinyDefinition;
+        public IEnumerable<T> GetAll<T>(DestinyLocales locale = DestinyLocales.EN) where T : IDestinyDefinition;
         List<DestinyInventoryItemDefinition> GetItemsWithTrait(DestinyLocales locale, string trait);
         List<DestinyInventoryItemDefinition> GetSacks(DestinyLocales locale);
         List<DestinyActivityDefinition> SearchActivitiesByName(DestinyLocales locale, string name);
