@@ -4,20 +4,33 @@ using BungieNetCoreAPI.Destiny.Definitions.Classes;
 using BungieNetCoreAPI.Destiny.Definitions.Collectibles;
 using BungieNetCoreAPI.Destiny.Definitions.DamageTypes;
 using BungieNetCoreAPI.Destiny.Definitions.ItemCategories;
+using BungieNetCoreAPI.Destiny.Definitions.Objectives;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
 {
+    /// <summary>
+    /// So much of what you see in Destiny is actually an Item used in a new and creative way. This is the definition for Items in Destiny, which started off as just entities that could exist in your Inventory but ended up being the backing data for so much more: quests, reward previews, slots, and subclasses.
+    /// <para/>
+    /// In practice, you will want to associate this data with "live" item data from a Bungie.Net Platform call: these definitions describe the item in generic, non-instanced terms: but an actual instance of an item can vary widely from these generic definitions.
+    /// </summary>
     [DestinyDefinition(type: DefinitionsEnum.DestinyInventoryItemDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyInventoryItemDefinition : IDestinyDefinition
     {
+        /// <summary>
+        /// If this item has a collectible related to it, this is that collectible entry.
+        /// </summary>
         public DefinitionHashPointer<DestinyCollectibleDefinition> Collectible { get; }
         public DefinitionHashPointer<DestinyInventoryItemDefinition> SummaryItem { get; }
-        public List<DefinitionHashPointer<DestinyItemCategoryDefinition>> ItemCategories { get; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>> ItemCategories { get; }
         public uint AcquireRewardSiteHash { get; }
         public uint AcquireUnlockHash { get; }
         public bool AllowActions { get; }
+        /// <summary>
+        /// Sometimes, an item will have a background color. Most notably this occurs with Emblems, who use the Background Color for small character nameplates such as the "friends" view you see in-game. There are almost certainly other items that have background color as well, though I have not bothered to investigate what items have it nor what purposes they serve: use it as you will.
+        /// </summary>
         public DestinyColor BackgroundColor { get; }
         public DestinyBreakerTypes BreakerType { get; }
         public DestinyClassType ClassType { get; }     
@@ -26,52 +39,120 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         public ItemType ItemType { get; }
         public SpecialItemType SpecialItemType { get; }       
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
+        /// <summary>
+        /// In theory, it is a localized string telling you about how you can find the item. I really wish this was more consistent. Many times, it has nothing. Sometimes, it's instead a more narrative-forward description of the item. Which is cool, and I wish all properties had that data, but it should really be its own property.
+        /// </summary>
         public string DisplaySource { get; }
         public bool DoesPostmasterPullHaveSideEffects { get; }
-        public bool Equippable { get; }       
+        public bool Equippable { get; }
+        /// <summary>
+        /// If available, this is the original 'active' release watermark overlay for the icon. If the item has different versions, this can be overridden by the 'display version watermark icon' from the 'quality' block. Alternatively, if there is no watermark for the version, and the item version has a power cap below the current season power cap, this can be overridden by the iconWatermarkShelved property.
+        /// </summary>
         public string IconWatermark { get; }
+        /// <summary>
+        /// If available, this is the 'shelved' release watermark overlay for the icon. If the item version has a power cap below the current season power cap, it can be treated as 'shelved', and should be shown with this 'shelved' watermark overlay.
+        /// </summary>
         public string IconWatermarkShelved { get; }       
-        public bool IsWrapper { get; }      
+        public bool IsWrapper { get; }
+        /// <summary>
+        /// It became a common enough pattern in our UI to show Item Type and Tier combined into a single localized string that I'm just going to go ahead and start pre-creating these for items.
+        /// </summary>
         public string ItemTypeAndTierDisplayName { get; }
+        /// <summary>
+        /// The localized title/name of the item's type. This can be whatever the designers want, and has no guarantee of consistency between items.
+        /// </summary>
         public string ItemTypeDisplayName { get; }
+        /// <summary>
+        /// A string identifier that the game's UI uses to determine how the item should be rendered in inventory screens and the like. This could really be anything - at the moment, we don't have the time to really breakdown and maintain all the possible strings this could be, partly because new ones could be added ad hoc. But if you want to use it to dictate your own UI, or look for items with a certain display style, go for it!
+        /// </summary>
         public string UiItemDisplayStyle { get; }   
-        public bool NonTransferrable { get; }             
-        public string SecondaryIcon { get; }      
-        public string Screenshot { get; }        
-        public List<string> TraitIds { get; }
+        public bool NonTransferrable { get; }
+        /// <summary>
+        /// A secondary icon associated with the item. Currently this is used in very context specific applications, such as Emblem Nameplates.
+        /// </summary>
+        public string SecondaryIcon { get; }
+        /// <summary>
+        /// Pulled from the secondary icon, this is the "secondary background" of the secondary icon. Confusing? Sure, that's why I call it "overlay" here: because as far as it's been used thus far, it has been for an optional overlay image. We'll see if that holds up, but at least for now it explains what this image is a bit better.
+        /// </summary>
+        public string SecondaryOverlay { get; }
+        /// <summary>
+        /// Pulled from the Secondary Icon, this is the "special" background for the item. For Emblems, this is the background image used on the Details view: but it need not be limited to that for other types of items.
+        /// </summary>
+        public string SecondarySpecial { get; }
+        /// <summary>
+        /// If we were able to acquire an in-game screenshot for the item, the path to that screenshot will be returned here. Note that not all items have screenshots: particularly not any non-equippable items.
+        /// </summary>
+        public string Screenshot { get; }
+        /// <summary>
+        /// An identifier that the game UI uses to determine what type of tooltip to show for the item. These have no corresponding definitions that BNet can link to: so it'll be up to you to interpret and display your UI differently according to these styles (or ignore it).
+        /// </summary>
+        public string TooltipStyle { get; }
+        public ReadOnlyCollection<string> TraitIds { get; }
+        /// <summary>
+        /// If this item can have stats (such as a weapon, armor, or vehicle), this block will be non-null and populated with the stats found on the item.
+        /// </summary>
         public InventoryItemStatsBlock Stats { get; }
         public InventoryItemTalentGrid TalentGrid { get; }
+        /// <summary>
+        /// If this item can be rendered, this block will be non-null and will be populated with rendering information.
+        /// </summary>
         public InventoryItemTranslationBlock TranslationBlock { get; }
         public InventoryItemValueBlock Value { get; }
+        /// <summary>
+        /// If this item is a quest, this block will be non-null. In practice, I wish I had called this the Quest block, but at the time it wasn't clear to me whether it would end up being used for purposes other than quests. It will contain data about the steps in the quest, and mechanics we can use for displaying and tracking the quest.
+        /// </summary>
         public InventoryItemSetDataBlock SetData { get; }
         public InventoryItemPlugBlock Plug { get; }
+        /// <summary>
+        /// If this item can be Used or Acquired to gain other items (for instance, how Eververse Boxes can be consumed to get items from the box), this block will be non-null and will give summary information for the items that can be acquired.
+        /// </summary>
         public InventoryItemPreviewBlock Preview { get; }
+        /// <summary>
+        /// If this item can have a level or stats, this block will be non-null and will be populated with default quality (item level, "quality", and infusion) data. See the block for more details, there's often less upfront information in D2 so you'll want to be aware of how you use quality and item level on the definition level now.
+        /// </summary>
         public InventoryItemQualityBlock Quality { get; }
         public InventoryItemObjectivesBlock Objectives { get; }
+        /// <summary>
+        /// If this item can exist in an inventory, this block will be non-null. In practice, every item that currently exists has one of these blocks. But note that it is not necessarily guaranteed.
+        /// </summary>
         public InventoryItemInventoryBlock Inventory { get; }
+        /// <summary>
+        /// If the item can be "used", this block will be non-null, and will have data related to the action performed when using the item. (Guess what? 99% of the time, this action is "dismantle". Shocker)
+        /// </summary>
         public InventoryItemAction Action { get; }
+        /// <summary>
+        /// If this item can be equipped, this block will be non-null and will be populated with the conditions under which it can be equipped.
+        /// </summary>
         public InventoryItemEquippingBlock EquippingBlock { get; }
         public InventoryItemSocketsBlock Sockets { get; }
-        public List<InventoryItemInvestmentStat> InvestmentStats { get; }
-        public List<InventoryItemPerk> Perks { get; }
-        public List<InventoryItemTooltipNotification> TooltipNotifications { get; }
+        public ReadOnlyCollection<InventoryItemInvestmentStat> InvestmentStats { get; }
+        public ReadOnlyCollection<InventoryItemPerk> Perks { get; }
+        /// <summary>
+        /// Tooltips that only come up conditionally for the item. Check the live data DestinyItemComponent.tooltipNotificationIndexes property for which of these should be shown at runtime.
+        /// </summary>
+        public ReadOnlyCollection<InventoryItemTooltipNotification> TooltipNotifications { get; }
         public InventoryItemSackBlock Sack { get; }
         public InventoryItemGearsetBlock Gearset { get; }
+        /// <summary>
+        /// If the item is an emblem that has a special Objective attached to it - for instance, if the emblem tracks PVP Kills, or what-have-you. This is a bit different from, for example, the Vanguard Kill Tracker mod, which pipes data into the "art channel". When I get some time, I would like to standardize these so you can get at the values they expose without having to care about what they're being used for and how they are wired up, but for now here's the raw data.
+        /// </summary>
+        public DefinitionHashPointer<DestinyObjectiveDefinition> EmblemObjective { get; }
         public bool Blacklisted { get; }
         public uint Hash { get; }
         public int Index { get; }
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyInventoryItemDefinition(uint acquireRewardSiteHash, uint acquireUnlockHash, bool allowActions, DestinyColor backgroundColor, InventoryItemAction action,
+        internal DestinyInventoryItemDefinition(uint acquireRewardSiteHash, uint acquireUnlockHash, bool allowActions, DestinyColor backgroundColor, InventoryItemAction action,
             DestinyBreakerTypes breakerType, DestinyClassType classType, DestinyDefinitionDisplayProperties displayProperties, DamageType defaultDamageType, string displaySource,
             bool doesPostmasterPullHaveSideEffects, bool equippable, InventoryItemEquippingBlock equippingBlock, string iconWatermark, string iconWatermarkShelved,
-            InventoryItemInventoryBlock inventory, List<InventoryItemInvestmentStat> investmentStats, bool isWrapper, List<uint> itemCategoryHashes, ItemSubType itemSubType,
-            ItemType itemType, string itemTypeAndTierDisplayName, string itemTypeDisplayName, bool nonTransferrable, List<InventoryItemPerk> perks, InventoryItemPreviewBlock preview,
+            InventoryItemInventoryBlock inventory, InventoryItemInvestmentStat[] investmentStats, bool isWrapper, uint[] itemCategoryHashes, ItemSubType itemSubType,
+            ItemType itemType, string itemTypeAndTierDisplayName, string itemTypeDisplayName, bool nonTransferrable, InventoryItemPerk[] perks, InventoryItemPreviewBlock preview,
             InventoryItemQualityBlock quality, string screenshot, InventoryItemSocketsBlock sockets, SpecialItemType specialItemType, InventoryItemStatsBlock stats, uint summaryItemHash,
-            InventoryItemTalentGrid talentGrid, List<InventoryItemTooltipNotification> tooltipNotifications, List<string> traitIds, InventoryItemTranslationBlock translationBlock,
+            InventoryItemTalentGrid talentGrid, InventoryItemTooltipNotification[] tooltipNotifications, string[] traitIds, InventoryItemTranslationBlock translationBlock,
             string uiItemDisplayStyle, uint collectibleHash, InventoryItemPlugBlock plug, InventoryItemObjectivesBlock objectives, string secondaryIcon, InventoryItemValueBlock value,
-            InventoryItemSetDataBlock setData, InventoryItemSackBlock sack, InventoryItemGearsetBlock gearset,
+            InventoryItemSetDataBlock setData, InventoryItemSackBlock sack, InventoryItemGearsetBlock gearset, string secondaryOverlay, string secondarySpecial,
+            string tooltipStyle, uint? emblemObjectiveHash,
             bool blacklisted, uint hash, int index, bool redacted)
         {
             AcquireRewardSiteHash = acquireRewardSiteHash;
@@ -91,23 +172,16 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             IconWatermark = iconWatermark;
             IconWatermarkShelved = iconWatermarkShelved;
             Inventory = inventory;
-            InvestmentStats = investmentStats;
+            InvestmentStats = investmentStats.AsReadOnlyOrEmpty();
             IsWrapper = isWrapper;
-            ItemCategories = new List<DefinitionHashPointer<DestinyItemCategoryDefinition>>();
-            if (itemCategoryHashes != null)
-            {
-                foreach (var itemCategoryHash in itemCategoryHashes)
-                {
-                    ItemCategories.Add(new DefinitionHashPointer<DestinyItemCategoryDefinition>(itemCategoryHash, DefinitionsEnum.DestinyItemCategoryDefinition));
-                }
-            }
+            ItemCategories = itemCategoryHashes.DefinitionsAsReadOnlyOrEmpty<DestinyItemCategoryDefinition>(DefinitionsEnum.DestinyItemCategoryDefinition);
             ItemSubType = itemSubType;
             ItemType = itemType;
             ItemTypeAndTierDisplayName = itemTypeAndTierDisplayName;
             ItemTypeDisplayName = itemTypeDisplayName;
             NonTransferrable = nonTransferrable;
             Objectives = objectives;
-            Perks = perks;
+            Perks = perks.AsReadOnlyOrEmpty();
             Plug = plug;
             Preview = preview;
             Quality = quality;
@@ -117,8 +191,8 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             Stats = stats;
             SummaryItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(summaryItemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
             TalentGrid = talentGrid;
-            TooltipNotifications = tooltipNotifications;
-            TraitIds = traitIds;
+            TooltipNotifications = tooltipNotifications.AsReadOnlyOrEmpty();
+            TraitIds = traitIds.AsReadOnlyOrEmpty();
             TranslationBlock = translationBlock;
             UiItemDisplayStyle = uiItemDisplayStyle;
             SecondaryIcon = secondaryIcon;
@@ -130,6 +204,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             Hash = hash;
             Index = index;
             Redacted = redacted;
+            SecondaryOverlay = secondaryOverlay;
+            SecondarySpecial = secondarySpecial;
+            TooltipStyle = tooltipStyle;
+            EmblemObjective = new DefinitionHashPointer<DestinyObjectiveDefinition>(emblemObjectiveHash, DefinitionsEnum.DestinyObjectiveDefinition);
         }
 
         public override string ToString()

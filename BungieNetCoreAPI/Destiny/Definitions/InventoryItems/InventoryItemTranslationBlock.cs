@@ -1,29 +1,45 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
 {
-    public class InventoryItemTranslationBlock
+    /// <summary>
+    /// This Block defines the rendering data associated with the item, if any.
+    /// </summary>
+    public class InventoryItemTranslationBlock : IDeepEquatable<InventoryItemTranslationBlock>
     {
-        public List<InventoryItemTranslationBlockArrangement> Arrangements { get; }
-        public List<InventoryItemTranslationBlockDye> CustomDyes { get; }
-        public List<InventoryItemTranslationBlockDye> DefaultDyes { get; }
+        public ReadOnlyCollection<InventoryItemTranslationBlockArrangement> Arrangements { get; }
+        public ReadOnlyCollection<InventoryItemTranslationBlockDye> CustomDyes { get; }
+        public ReadOnlyCollection<InventoryItemTranslationBlockDye> DefaultDyes { get; }
         public bool HasGeometry { get; }
-        public List<InventoryItemTranslationBlockDye> LockedDyes { get; }
+        public ReadOnlyCollection<InventoryItemTranslationBlockDye> LockedDyes { get; }
         public uint WeaponPatternHash { get; }
+        public string WeaponPatternIdentifier { get; }
 
         [JsonConstructor]
-        private InventoryItemTranslationBlock(List<InventoryItemTranslationBlockArrangement> arrangements, List<InventoryItemTranslationBlockDye> customDyes, 
-            List<InventoryItemTranslationBlockDye> defaultDyes, bool hasGeometry, List<InventoryItemTranslationBlockDye> lockedDyes, uint weaponPatternHash)
+        internal InventoryItemTranslationBlock(InventoryItemTranslationBlockArrangement[] arrangements, InventoryItemTranslationBlockDye[] customDyes, 
+            InventoryItemTranslationBlockDye[] defaultDyes, bool hasGeometry, InventoryItemTranslationBlockDye[] lockedDyes, uint weaponPatternHash,
+            string weaponPatternIdentifier)
         {
-            Arrangements = arrangements;
-            CustomDyes = customDyes;
-            DefaultDyes = defaultDyes;
+            Arrangements = arrangements.AsReadOnlyOrEmpty();
+            CustomDyes = customDyes.AsReadOnlyOrEmpty();
+            DefaultDyes = defaultDyes.AsReadOnlyOrEmpty();
             HasGeometry = hasGeometry;
-            LockedDyes = lockedDyes;
+            LockedDyes = lockedDyes.AsReadOnlyOrEmpty();
             WeaponPatternHash = weaponPatternHash;
+            WeaponPatternIdentifier = weaponPatternIdentifier;
+        }
+
+        public bool DeepEquals(InventoryItemTranslationBlock other)
+        {
+            return other != null &&
+                   Arrangements.DeepEqualsReadOnlyCollections(other.Arrangements) &&
+                   CustomDyes.DeepEqualsReadOnlyCollections(other.CustomDyes) &&
+                   DefaultDyes.DeepEqualsReadOnlyCollections(other.DefaultDyes) &&
+                   HasGeometry == other.HasGeometry &&
+                   LockedDyes.DeepEqualsReadOnlyCollections(other.LockedDyes) &&
+                   WeaponPatternHash == other.WeaponPatternHash &&
+                   WeaponPatternIdentifier == other.WeaponPatternIdentifier;
         }
     }
 }

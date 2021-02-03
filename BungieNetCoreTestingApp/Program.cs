@@ -18,6 +18,10 @@ using BungieNetCoreAPI.Destiny.Definitions.Destinations;
 using BungieNetCoreAPI.Destiny.Definitions.EnemyRaces;
 using BungieNetCoreAPI.Destiny.Definitions.EnergyTypes;
 using BungieNetCoreAPI.Destiny.Definitions.EquipmentSlots;
+using BungieNetCoreAPI.Destiny.Definitions.Factions;
+using BungieNetCoreAPI.Destiny.Definitions.Genders;
+using BungieNetCoreAPI.Destiny.Definitions.InventoryBuckets;
+using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
 using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
 using System;
@@ -53,15 +57,18 @@ namespace BungieNetCoreTestingApp
         {
             await _bungieClient.Run();
 
-            var collection = _bungieClient.Repository.GetAll<DestinyEquipmentSlotDefinition>().ToList();
+            var collection = _bungieClient.Repository.GetAll<DestinyInventoryItemDefinition>().Where(x => x.Preview != null).ToList();
+            //collection.ForEach(x => x.MapValues());
 
             //MeasureOperationMultiple(
             //    action: () => { _bungieClient.Repository.GetAll<DestinyCollectibleDefinition>(); },
             //    amount: 100);
 
-            RunDeepEqualityCheck(collection);
+            //RunDeepEqualityCheck(collection);
             //MeasureOperation(() => activityPointersCollection = coll.Select(x => x.GetPointer()).ToList());
 
+            
+            
             await Task.Delay(Timeout.Infinite);
         }
 

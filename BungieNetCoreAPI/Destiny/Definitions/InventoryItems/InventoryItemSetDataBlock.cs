@@ -1,28 +1,50 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
 {
-    public class InventoryItemSetDataBlock
-    {
-        public uint AbandonmentUnlockHash { get; }
-        public List<InventoryItemSetDataBlockItem> ItemList { get; }
+    /// <summary>
+    /// Primarily for Quests, this is the definition of properties related to the item if it is a quest and its various quest steps.
+    /// </summary>
+    public class InventoryItemSetDataBlock : IDeepEquatable<InventoryItemSetDataBlock>
+    {     
+        /// <summary>
+        /// A collection of set items, for items such as Quest Metadata items that possess this data.
+        /// </summary>
+        public ReadOnlyCollection<InventoryItemSetDataBlockItem> ItemList { get; }
+        /// <summary>
+        /// The description of the quest line that this quest step is a part of.
+        /// </summary>
         public string QuestLineDescription { get; }
+        /// <summary>
+        /// The name of the quest line that this quest step is a part of.
+        /// </summary>
         public string QuestLineName { get; }
+        /// <summary>
+        /// An additional summary of this step in the quest line.
+        /// </summary>
         public string QuestStepSummary { get; }
+        /// <summary>
+        /// If true, items in the set can only be added in increasing order, and adding an item will remove any previous item. For Quests, this is by necessity true. Only one quest step is present at a time, and previous steps are removed as you advance in the quest.
+        /// </summary>
         public bool RequireOrderedSetItemAdd { get; }
+        /// <summary>
+        /// If true, the UI should treat this quest as "featured"
+        /// </summary>
         public bool SetIsFeatured { get; }
+        /// <summary>
+        /// A string identifier we can use to attempt to identify the category of the Quest.
+        /// </summary>
         public string SetType { get; }
         public uint TrackingUnlockValueHash { get; }
+        public uint AbandonmentUnlockHash { get; }
 
         [JsonConstructor]
-        private InventoryItemSetDataBlock(uint abandonmentUnlockHash, List<InventoryItemSetDataBlockItem> itemList, string questLineDescription,
+        internal InventoryItemSetDataBlock(uint abandonmentUnlockHash, InventoryItemSetDataBlockItem[] itemList, string questLineDescription,
             string questLineName, string questStepSummary, bool requireOrderedSetItemAdd, bool setIsFeatured, string setType, uint trackingUnlockValueHash)
         {
             AbandonmentUnlockHash = abandonmentUnlockHash;
-            ItemList = itemList;
+            ItemList = itemList.AsReadOnlyOrEmpty();
             QuestLineDescription = questLineDescription;
             QuestLineName = questLineName;
             QuestStepSummary = questStepSummary;
@@ -30,6 +52,20 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             SetIsFeatured = setIsFeatured;
             SetType = setType;
             TrackingUnlockValueHash = trackingUnlockValueHash;
+        }
+
+        public bool DeepEquals(InventoryItemSetDataBlock other)
+        {
+            return other != null &&
+                   ItemList.DeepEqualsReadOnlyCollections(other.ItemList) &&
+                   QuestLineDescription == other.QuestLineDescription &&
+                   QuestLineName == other.QuestLineName &&
+                   QuestStepSummary == other.QuestStepSummary &&
+                   RequireOrderedSetItemAdd == other.RequireOrderedSetItemAdd &&
+                   SetIsFeatured == other.SetIsFeatured &&
+                   SetType == other.SetType &&
+                   TrackingUnlockValueHash == other.TrackingUnlockValueHash &&
+                   AbandonmentUnlockHash == other.AbandonmentUnlockHash;
         }
     }
 }

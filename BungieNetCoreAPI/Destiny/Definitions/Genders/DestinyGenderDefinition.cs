@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace BungieNetCoreAPI.Destiny.Definitions.Genders
 {
     [DestinyDefinition(type: DefinitionsEnum.DestinyGenderDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyGenderDefinition : IDestinyDefinition
+    public class DestinyGenderDefinition : IDestinyDefinition, IDeepEquatable<DestinyGenderDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public DestinyGenderTypes GenderType { get; }
@@ -14,7 +14,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Genders
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyGenderDefinition(DestinyDefinitionDisplayProperties displayProperties, DestinyGenderTypes genderType, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyGenderDefinition(DestinyDefinitionDisplayProperties displayProperties, DestinyGenderTypes genderType, bool blacklisted, uint hash, int index, bool redacted)
         {
             DisplayProperties = displayProperties;
             GenderType = genderType;
@@ -27,6 +27,22 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Genders
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
+        }
+
+        public bool DeepEquals(DestinyGenderDefinition other)
+        {
+            return other != null &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   GenderType == other.GenderType &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+
+        public void MapValues()
+        {
+            return;
         }
     }
 }
