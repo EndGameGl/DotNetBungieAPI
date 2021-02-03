@@ -1,19 +1,28 @@
 ﻿using BungieNetCoreAPI.Destiny.Definitions.PowerCaps;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
 {
-    public class InventoryItemQualityBlockVersion
+    /// <summary>
+    /// The version definition currently just holds a reference to the power cap.
+    /// </summary>
+    public class InventoryItemQualityBlockVersion : IDeepEquatable<InventoryItemQualityBlockVersion>
     {
+        /// <summary>
+        /// A reference to the power cap for this item version.
+        /// </summary>
         public DefinitionHashPointer<DestinyPowerCapDefinition> PowerCap { get; }
 
         [JsonConstructor]
-        private InventoryItemQualityBlockVersion(uint powerCapHash)
+        internal InventoryItemQualityBlockVersion(uint powerCapHash)
         {
             PowerCap = new DefinitionHashPointer<DestinyPowerCapDefinition>(powerCapHash, DefinitionsEnum.DestinyPowerCapDefinition);
+        }
+
+        public bool DeepEquals(InventoryItemQualityBlockVersion other)
+        {
+            return other != null &&
+                PowerCap.DeepEquals(other.PowerCap);
         }
     }
 }

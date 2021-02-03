@@ -97,11 +97,17 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         /// If this item can be rendered, this block will be non-null and will be populated with rendering information.
         /// </summary>
         public InventoryItemTranslationBlock TranslationBlock { get; }
+        /// <summary>
+        /// The conceptual "Value" of an item, if any was defined.
+        /// </summary>
         public InventoryItemValueBlock Value { get; }
         /// <summary>
         /// If this item is a quest, this block will be non-null. In practice, I wish I had called this the Quest block, but at the time it wasn't clear to me whether it would end up being used for purposes other than quests. It will contain data about the steps in the quest, and mechanics we can use for displaying and tracking the quest.
         /// </summary>
         public InventoryItemSetDataBlock SetData { get; }
+        /// <summary>
+        /// If this item *is* a Plug, this will be non-null and the info defined herein.
+        /// </summary>
         public InventoryItemPlugBlock Plug { get; }
         /// <summary>
         /// If this item can be Used or Acquired to gain other items (for instance, how Eververse Boxes can be consumed to get items from the box), this block will be non-null and will give summary information for the items that can be acquired.
@@ -111,6 +117,9 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         /// If this item can have a level or stats, this block will be non-null and will be populated with default quality (item level, "quality", and infusion) data. See the block for more details, there's often less upfront information in D2 so you'll want to be aware of how you use quality and item level on the definition level now.
         /// </summary>
         public InventoryItemQualityBlock Quality { get; }
+        /// <summary>
+        /// If this item has Objectives (extra tasks that can be accomplished related to the item... most frequently when the item is a Quest Step and the Objectives need to be completed to move on to the next Quest Step), this block will be non-null and the objectives defined herein.
+        /// </summary>
         public InventoryItemObjectivesBlock Objectives { get; }
         /// <summary>
         /// If this item can exist in an inventory, this block will be non-null. In practice, every item that currently exists has one of these blocks. But note that it is not necessarily guaranteed.
@@ -137,6 +146,14 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         /// If the item is an emblem that has a special Objective attached to it - for instance, if the emblem tracks PVP Kills, or what-have-you. This is a bit different from, for example, the Vanguard Kill Tracker mod, which pipes data into the "art channel". When I get some time, I would like to standardize these so you can get at the values they expose without having to care about what they're being used for and how they are wired up, but for now here's the raw data.
         /// </summary>
         public DefinitionHashPointer<DestinyObjectiveDefinition> EmblemObjective { get; }
+        /// <summary>
+        /// If this item has a known source, this block will be non-null and populated with source information. Unfortunately, at this time we are not generating sources: that is some aggressively manual work which we didn't have time for, and I'm hoping to get back to at some point in the future.
+        /// </summary>
+        public InventoryItemSourceBlock SourceData { get; }
+        /// <summary>
+        /// If this item has available metrics to be shown, this block will be non-null have the appropriate hashes defined.
+        /// </summary>
+        public InventoryItemMetricBlock Metrics { get; }
         public bool Blacklisted { get; }
         public uint Hash { get; }
         public int Index { get; }
@@ -152,7 +169,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             InventoryItemTalentGrid talentGrid, InventoryItemTooltipNotification[] tooltipNotifications, string[] traitIds, InventoryItemTranslationBlock translationBlock,
             string uiItemDisplayStyle, uint collectibleHash, InventoryItemPlugBlock plug, InventoryItemObjectivesBlock objectives, string secondaryIcon, InventoryItemValueBlock value,
             InventoryItemSetDataBlock setData, InventoryItemSackBlock sack, InventoryItemGearsetBlock gearset, string secondaryOverlay, string secondarySpecial,
-            string tooltipStyle, uint? emblemObjectiveHash,
+            string tooltipStyle, uint? emblemObjectiveHash, InventoryItemSourceBlock sourceData, InventoryItemMetricBlock metrics,
             bool blacklisted, uint hash, int index, bool redacted)
         {
             AcquireRewardSiteHash = acquireRewardSiteHash;
@@ -208,6 +225,8 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             SecondarySpecial = secondarySpecial;
             TooltipStyle = tooltipStyle;
             EmblemObjective = new DefinitionHashPointer<DestinyObjectiveDefinition>(emblemObjectiveHash, DefinitionsEnum.DestinyObjectiveDefinition);
+            SourceData = sourceData;
+            Metrics = metrics;
         }
 
         public override string ToString()

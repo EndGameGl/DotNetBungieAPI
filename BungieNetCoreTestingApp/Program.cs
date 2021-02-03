@@ -57,7 +57,7 @@ namespace BungieNetCoreTestingApp
         {
             await _bungieClient.Run();
 
-            var collection = _bungieClient.Repository.GetAll<DestinyInventoryItemDefinition>().Where(x => x.Preview != null).ToList();
+            var collection = _bungieClient.Repository.GetAll<DestinyInventoryItemDefinition>().Where(x => x.SourceData != null).ToList();
             //collection.ForEach(x => x.MapValues());
 
             //MeasureOperationMultiple(
