@@ -18,7 +18,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.EnergyTypes
         /// If this Energy Type can be used as a cost to pay for socketing Armor 2.0 items, this is the hash for the DestinyInvestmentStatDefinition that stores the plug's raw cost.
         /// </summary>
         public uint CostStatHash { get; }
-        public DestinyEnergyTypes EnumValue { get; }
+        public DestinyEnergyType EnumValue { get; }
         public bool ShowIcon { get; }
         public string TransparentIconPath { get; }
         public bool Blacklisted { get; }
@@ -27,7 +27,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.EnergyTypes
         public bool Redacted { get; }
 
         [JsonConstructor]
-        internal DestinyEnergyTypeDefinition(DestinyDefinitionDisplayProperties displayProperties, uint? capacityStatHash, uint costStatHash, DestinyEnergyTypes enumValue,
+        internal DestinyEnergyTypeDefinition(DestinyDefinitionDisplayProperties displayProperties, uint? capacityStatHash, uint costStatHash, DestinyEnergyType enumValue,
             bool showIcon, string transparentIconPath, bool blacklisted, uint hash, int index, bool redacted)
         {
             DisplayProperties = displayProperties;

@@ -1,18 +1,23 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
 {
-    public class InventoryItemSocketsBlockSocketEntryReusablePlugItem
+    /// <summary>
+    /// The definition of a known, reusable plug that can be applied to a socket.
+    /// </summary>
+    public class InventoryItemSocketsBlockSocketEntryReusablePlugItem : IDeepEquatable<InventoryItemSocketsBlockSocketEntryReusablePlugItem>
     {
         public DefinitionHashPointer<DestinyInventoryItemDefinition> PlugItem { get; }
 
         [JsonConstructor]
-        private InventoryItemSocketsBlockSocketEntryReusablePlugItem(uint plugItemHash)
+        internal InventoryItemSocketsBlockSocketEntryReusablePlugItem(uint plugItemHash)
         {
             PlugItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(plugItemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
+        }
+
+        public bool DeepEquals(InventoryItemSocketsBlockSocketEntryReusablePlugItem other)
+        {
+            return other != null && PlugItem.DeepEquals(other.PlugItem);
         }
     }
 }

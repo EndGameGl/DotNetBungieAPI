@@ -1,7 +1,6 @@
 ﻿using BungieNetCoreAPI.Destiny.Definitions.ItemCategories;
 using BungieNetCoreAPI.Destiny.Definitions.MaterialRequirementSets;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
@@ -11,7 +10,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
     /// <para/>
     /// This gives information about when it can be inserted, what the plug's category is (and thus whether it is compatible with a socket... see DestinySocketTypeDefinition for information about Plug Categories and socket compatibility), whether it is enabled and other Plug info.
     /// </summary>
-    public class InventoryItemPlugBlock
+    public class InventoryItemPlugBlock : IDeepEquatable<InventoryItemPlugBlock>
     {
         public uint ActionRewardItemOverrideHash { get; }
         public uint ActionRewardSiteHash { get; }
@@ -70,12 +69,25 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         /// Plugs can have arbitrary, UI-defined identifiers that the UI designers use to determine the style applied to plugs. Unfortunately, we have neither a definitive list of these labels nor advance warning of when new labels might be applied or how that relates to how they get rendered. If you want to, you can refer to known labels to change your own styles: but know that new ones can be created arbitrarily, and we have no way of associating the labels with any specific UI style guidance... you'll have to piece that together on your end. Or do what we do, and just show plugs more generically, without specialized styles.
         /// </summary>
         public string UiPlugLabel { get; }
+        /// <summary>
+        /// If this is populated, it will have the override data to be applied when this plug is applied to an item.
+        /// </summary>
+        public InventoryItemPlugBlockParentItemOverride ParentItemOverride { get; }
+        /// <summary>
+        /// IF not null, this plug provides Energy capacity to the item in which it is socketed. In Armor 2.0 for example, is implemented in a similar way to Masterworks, where visually it's a single area of the UI being clicked on to "Upgrade" to higher energy levels, but it's actually socketing new plugs.
+        /// </summary>
+        public InventoryItemPlugBlockEnergyCapacity EnergyCapacity { get; }
+        /// <summary>
+        /// IF not null, this plug has an energy cost. This contains the details of that cost.
+        /// </summary>
+        public InventoryItemPlugBlockEnergyCost EnergyCost { get; }
 
         [JsonConstructor]
         internal InventoryItemPlugBlock(uint actionRewardItemOverrideHash, uint actionRewardSiteHash, PlugUiStyles alternatePlugStyle, string alternateUiPlugLabel,
             bool applyStatsToSocketOwnerItem, uint enabledMaterialRequirementHash, InventoryItemPlugBlockRule[] enabledRules, uint insertionMaterialRequirementHash,
             InventoryItemPlugBlockRule[] insertionRules, bool isDummyPlug, bool onActionRecreateSelf, PlugAvailabilityMode plugAvailability, uint plugCategoryHash, 
-            string plugCategoryIdentifier, PlugUiStyles plugStyle, uint previewItemOverrideHash, string uiPlugLabel)
+            string plugCategoryIdentifier, PlugUiStyles plugStyle, uint previewItemOverrideHash, string uiPlugLabel, InventoryItemPlugBlockParentItemOverride parentItemOverride,
+            InventoryItemPlugBlockEnergyCapacity energyCapacity, InventoryItemPlugBlockEnergyCost energyCost)
         {
             ActionRewardItemOverrideHash = actionRewardItemOverrideHash;
             ActionRewardItemOverrideHash = actionRewardSiteHash;
@@ -94,6 +106,34 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             PlugStyle = plugStyle;
             PreviewItemOverride = new DefinitionHashPointer<DestinyInventoryItemDefinition>(previewItemOverrideHash, DefinitionsEnum.DestinyInventoryItemDefinition);
             UiPlugLabel = uiPlugLabel;
+            ParentItemOverride = parentItemOverride;
+            EnergyCapacity = energyCapacity;
+            EnergyCost = energyCost;
+        }
+
+        public bool DeepEquals(InventoryItemPlugBlock other)
+        {
+            return other != null &&
+                   ActionRewardItemOverrideHash == other.ActionRewardItemOverrideHash &&
+                   ActionRewardSiteHash == other.ActionRewardSiteHash &&
+                   AlternatePlugStyle == other.AlternatePlugStyle &&
+                   AlternateUiPlugLabel == other.AlternateUiPlugLabel &&
+                   ApplyStatsToSocketOwnerItem == other.ApplyStatsToSocketOwnerItem &&
+                   EnabledMaterialRequirement.DeepEquals(other.EnabledMaterialRequirement) &&
+                   EnabledRules.DeepEqualsReadOnlyCollections(other.EnabledRules) &&
+                   InsertionMaterialRequirement.DeepEquals(other.InsertionMaterialRequirement) &&
+                   InsertionRules.DeepEqualsReadOnlyCollections(other.InsertionRules) &&
+                   IsDummyPlug == other.IsDummyPlug &&
+                   OnActionRecreateSelf == other.OnActionRecreateSelf &&
+                   PlugAvailability == other.PlugAvailability &&
+                   PlugCategory.DeepEquals(other.PlugCategory) &&
+                   PlugCategoryIdentifier == other.PlugCategoryIdentifier &&
+                   PlugStyle == other.PlugStyle &&
+                   PreviewItemOverride.DeepEquals(other.PreviewItemOverride) &&
+                   UiPlugLabel == other.UiPlugLabel &&
+                   ParentItemOverride.DeepEquals(other.ParentItemOverride) &&
+                   EnergyCapacity.DeepEquals(other.EnergyCapacity) &&
+                   EnergyCost.DeepEquals(other.EnergyCost);
         }
     }
 }

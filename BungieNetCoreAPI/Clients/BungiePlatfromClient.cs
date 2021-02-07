@@ -21,7 +21,7 @@ namespace BungieNetCoreAPI.Clients
         private readonly IHttpClientInstance _httpClient;
         private readonly ILogger _logger;
 
-        private string _apiKey;
+        private readonly string _apiKey;
 
         private int? _oAuthClientID;
         private string _oAuthClientSecret;
@@ -37,7 +37,6 @@ namespace BungieNetCoreAPI.Clients
                 else
                     throw new Exception();
             }
-            set { }
         }
 
         internal BungiePlatfromClient(string apiKey)
@@ -120,6 +119,11 @@ namespace BungieNetCoreAPI.Clients
         {
             return await GetData<Dictionary<uint, GetPublicMilestonesResponse>>($"Destiny2/Milestones");
         }
+        public async Task<DestinyMilestoneContent> GetPublicMilestoneContent(uint milestoneHash)
+        {
+            return await GetData<DestinyMilestoneContent>($"/Destiny2/Milestones/{milestoneHash}/Content/");
+        }
+
         #endregion
 
         #region Misc methods
@@ -168,7 +172,8 @@ namespace BungieNetCoreAPI.Clients
                 return bungieResponse.Response;
             }
             else
-                throw new Exception(bungieResponse.ErrorStatus);
+                return default;
+                //throw new Exception(bungieResponse.ErrorStatus);
             //}
             //else
             //    throw new Exception(response.ReasonPhrase);

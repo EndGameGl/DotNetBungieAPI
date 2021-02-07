@@ -22,6 +22,7 @@ using BungieNetCoreAPI.Destiny.Definitions.Factions;
 using BungieNetCoreAPI.Destiny.Definitions.Genders;
 using BungieNetCoreAPI.Destiny.Definitions.InventoryBuckets;
 using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+using BungieNetCoreAPI.Destiny.Responses;
 using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
 using System;
@@ -57,7 +58,18 @@ namespace BungieNetCoreTestingApp
         {
             await _bungieClient.Run();
 
-            var collection = _bungieClient.Repository.GetAll<DestinyInventoryItemDefinition>().Where(x => x.SourceData != null).ToList();
+            //var milestones = await BungieClient.Platform.GetPublicMilestones();
+            //var milestoneContents = new List<DestinyMilestoneContent>();
+
+            //foreach (var milestone in milestones)
+            //{
+            //    try
+            //    {
+            //        milestoneContents.Add(await BungieClient.Platform.GetPublicMilestoneContent(milestone.Key));
+            //    }
+            //    catch { }
+            //}
+            var collection = _bungieClient.Repository.GetAll<DestinyInventoryItemDefinition>().ToList();
             //collection.ForEach(x => x.MapValues());
 
             //MeasureOperationMultiple(

@@ -1,25 +1,38 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
 {
+    /// <summary>
+    /// If defined, the item has at least one socket.
+    /// </summary>
     public class InventoryItemSocketsBlock
     {
+        /// <summary>
+        /// This was supposed to be a string that would give per-item details about sockets. In practice, it turns out that all this ever has is the localized word "details".
+        /// </summary>
         public string Detail { get; }
-        public List<InventoryItemSocketsBlockIntrinsicSocket> IntrinsicSockets { get; }
-        public List<InventoryItemSocketsBlockSocketCategory> SocketCategories { get; }
-        public List<InventoryItemSocketsBlockSocketEntry> SocketEntries { get; }
+        /// <summary>
+        /// Each intrinsic (or immutable/permanent) socket on an item is defined here, along with the plug that is permanently affixed to the socket.
+        /// </summary>
+        public ReadOnlyCollection<InventoryItemSocketsBlockIntrinsicSocket> IntrinsicSockets { get; }
+        /// <summary>
+        /// A convenience property, that refers to the sockets in the "sockets" property, pre-grouped by category and ordered in the manner that they should be grouped in the UI.
+        /// </summary>
+        public ReadOnlyCollection<InventoryItemSocketsBlockSocketCategory> SocketCategories { get; }
+        /// <summary>
+        /// Each non-intrinsic (or mutable) socket on an item is defined here.
+        /// </summary>
+        public ReadOnlyCollection<InventoryItemSocketsBlockSocketEntry> SocketEntries { get; }
 
         [JsonConstructor]
-        private InventoryItemSocketsBlock(string detail, List<InventoryItemSocketsBlockIntrinsicSocket> intrinsicSockets, List<InventoryItemSocketsBlockSocketCategory> socketCategories,
-            List<InventoryItemSocketsBlockSocketEntry> socketEntries)
+        internal InventoryItemSocketsBlock(string detail, InventoryItemSocketsBlockIntrinsicSocket[] intrinsicSockets, InventoryItemSocketsBlockSocketCategory[] socketCategories,
+            InventoryItemSocketsBlockSocketEntry[] socketEntries)
         {
             Detail = detail;
-            IntrinsicSockets = intrinsicSockets;
-            SocketCategories = socketCategories;
-            SocketEntries = socketEntries;
+            IntrinsicSockets = intrinsicSockets.AsReadOnlyOrEmpty();
+            SocketCategories = socketCategories.AsReadOnlyOrEmpty();
+            SocketEntries = socketEntries.AsReadOnlyOrEmpty();
         }
     }
 }

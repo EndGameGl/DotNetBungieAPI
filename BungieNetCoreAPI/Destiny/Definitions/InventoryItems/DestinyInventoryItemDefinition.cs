@@ -133,6 +133,9 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         /// If this item can be equipped, this block will be non-null and will be populated with the conditions under which it can be equipped.
         /// </summary>
         public InventoryItemEquippingBlock EquippingBlock { get; }
+        /// <summary>
+        /// If this item has any Sockets, this will be non-null and the individual sockets on the item will be defined herein.
+        /// </summary>
         public InventoryItemSocketsBlock Sockets { get; }
         public ReadOnlyCollection<InventoryItemInvestmentStat> InvestmentStats { get; }
         public ReadOnlyCollection<InventoryItemPerk> Perks { get; }
@@ -140,7 +143,13 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         /// Tooltips that only come up conditionally for the item. Check the live data DestinyItemComponent.tooltipNotificationIndexes property for which of these should be shown at runtime.
         /// </summary>
         public ReadOnlyCollection<InventoryItemTooltipNotification> TooltipNotifications { get; }
+        /// <summary>
+        /// If this item is a "reward sack" that can be opened to provide other items, this will be non-null and the properties of the sack contained herein.
+        /// </summary>
         public InventoryItemSackBlock Sack { get; }
+        /// <summary>
+        /// If this item has related items in a "Gear Set", this will be non-null and the relationships defined herein.
+        /// </summary>
         public InventoryItemGearsetBlock Gearset { get; }
         /// <summary>
         /// If the item is an emblem that has a special Objective attached to it - for instance, if the emblem tracks PVP Kills, or what-have-you. This is a bit different from, for example, the Vanguard Kill Tracker mod, which pipes data into the "art channel". When I get some time, I would like to standardize these so you can get at the values they expose without having to care about what they're being used for and how they are wired up, but for now here's the raw data.
