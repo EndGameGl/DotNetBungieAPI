@@ -1,19 +1,26 @@
 ﻿using BungieNetCoreAPI.Destiny.Definitions.SocketCategories;
 using Newtonsoft.Json;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
 {
-    public class InventoryItemSocketsBlockSocketCategory
+    public class InventoryItemSocketsBlockSocketCategory : IDeepEquatable<InventoryItemSocketsBlockSocketCategory>
     {
         public DefinitionHashPointer<DestinySocketCategoryDefinition> SocketCategory { get; }
-        public List<int> SocketIndexes { get; }
+        public ReadOnlyCollection<int> SocketIndexes { get; }
 
         [JsonConstructor]
-        private InventoryItemSocketsBlockSocketCategory(uint socketCategoryHash, List<int> socketIndexes)
+        internal InventoryItemSocketsBlockSocketCategory(uint socketCategoryHash, int[] socketIndexes)
         {
             SocketCategory = new DefinitionHashPointer<DestinySocketCategoryDefinition>(socketCategoryHash, DefinitionsEnum.DestinySocketCategoryDefinition);
-            SocketIndexes = socketIndexes;
+            SocketIndexes = socketIndexes.AsReadOnlyOrEmpty();
+        }
+
+        public bool DeepEquals(InventoryItemSocketsBlockSocketCategory other)
+        {
+            return other != null &&
+                   SocketCategory.DeepEquals(other.SocketCategory) &&
+                   SocketIndexes.DeepEqualsReadOnlySimpleCollection(other.SocketIndexes);
         }
     }
 }

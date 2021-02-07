@@ -6,7 +6,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
     /// <summary>
     /// If defined, the item has at least one socket.
     /// </summary>
-    public class InventoryItemSocketsBlock
+    public class InventoryItemSocketsBlock : IDeepEquatable<InventoryItemSocketsBlock>
     {
         /// <summary>
         /// This was supposed to be a string that would give per-item details about sockets. In practice, it turns out that all this ever has is the localized word "details".
@@ -33,6 +33,15 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             IntrinsicSockets = intrinsicSockets.AsReadOnlyOrEmpty();
             SocketCategories = socketCategories.AsReadOnlyOrEmpty();
             SocketEntries = socketEntries.AsReadOnlyOrEmpty();
+        }
+
+        public bool DeepEquals(InventoryItemSocketsBlock other)
+        {
+            return other != null &&
+                   Detail == other.Detail &&
+                   IntrinsicSockets.DeepEqualsReadOnlyCollections(other.IntrinsicSockets) &&
+                   SocketCategories.DeepEqualsReadOnlyCollections(other.SocketCategories) &&
+                   SocketEntries.DeepEqualsReadOnlyCollections(other.SocketEntries);
         }
     }
 }

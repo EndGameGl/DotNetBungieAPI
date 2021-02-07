@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
 {
-    public class InventoryItemSocketsBlockIntrinsicSocket
+    public class InventoryItemSocketsBlockIntrinsicSocket : IDeepEquatable<InventoryItemSocketsBlockIntrinsicSocket>
     {
         public bool DefaultVisible { get; }
         public DefinitionHashPointer<DestinyInventoryItemDefinition> PlugItem { get; }
@@ -15,6 +15,14 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             DefaultVisible = defaultVisible;
             PlugItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(plugItemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
             SocketType = new DefinitionHashPointer<DestinySocketTypeDefinition>(socketTypeHash, DefinitionsEnum.DestinySocketTypeDefinition);
+        }
+
+        public bool DeepEquals(InventoryItemSocketsBlockIntrinsicSocket other)
+        {
+            return other != null &&
+                   DefaultVisible == other.DefaultVisible &&
+                   PlugItem.DeepEquals(other.PlugItem) &&
+                   SocketType.DeepEquals(other.SocketType);
         }
     }
 }
