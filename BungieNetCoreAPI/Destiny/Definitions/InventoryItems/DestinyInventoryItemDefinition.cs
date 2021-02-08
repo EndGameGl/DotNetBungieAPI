@@ -276,7 +276,6 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
-
         public bool DeepEquals(DestinyInventoryItemDefinition other)
         {
             return other != null &&
@@ -344,6 +343,173 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
                    Hash == other.Hash &&
                    Index == other.Index &&
                    Redacted == other.Redacted;
+        }
+        public void MapValues() 
+        {
+            Collectible.TryMapValue();
+            SummaryItem.TryMapValue();
+            foreach (var itemCategory in ItemCategories)
+            {
+                itemCategory.TryMapValue();
+            }
+            BreakerType.TryMapValue();
+            DefaultDamageType.TryMapValue();
+            if (Stats != null)
+            {
+                Stats.StatGroup.TryMapValue();
+                Stats.PrimaryBaseStat.TryMapValue();
+                foreach (var stat in Stats.Stats)
+                {
+                    stat.Key.TryMapValue();
+                    stat.Value.Stat.TryMapValue();
+                }
+            }
+            TalentGrid?.TalentGrid.TryMapValue();
+            if (Value != null)
+            {
+                foreach (var value in Value.ItemValue)
+                {
+                    value.Item.TryMapValue();
+                }
+            }
+            if (SetData != null)
+            {
+                foreach (var setDataItem in SetData.ItemList)
+                {
+                    setDataItem.Item.TryMapValue();
+                }
+            }
+            if (Plug != null)
+            {
+                Plug.EnabledMaterialRequirement.TryMapValue();
+                Plug.EnergyCapacity?.EnergyType.TryMapValue();
+                Plug.EnergyCost?.EnergyType.TryMapValue();
+                Plug.InsertionMaterialRequirement.TryMapValue();
+                Plug.PlugCategory.TryMapValue();
+                Plug.PreviewItemOverride.TryMapValue();
+            }
+            if (Preview != null)
+            {
+                Preview.Artifact.TryMapValue();
+                Preview.PreviewVendor.TryMapValue();
+                foreach (var category in Preview.DerivedItemCategories)
+                {
+                    foreach (var item in category.Items)
+                    {
+                        item.Item.TryMapValue();
+                    }
+                }
+            }
+            if (Quality != null)
+            {
+                Quality.ProgressionLevelRequirement.TryMapValue();
+                foreach (var version in Quality.Versions)
+                {
+                    version.PowerCap.TryMapValue();
+                }
+            }
+            if (Objectives != null)
+            {
+                foreach (var activity in Objectives.DisplayActivities)
+                {
+                    activity.TryMapValue();
+                }
+                foreach (var objective in Objectives.Objectives)
+                {
+                    objective.TryMapValue();
+                }
+                Objectives.QuestlineItem.TryMapValue();
+                foreach (var property in Objectives.PerObjectiveDisplayProperties)
+                {
+                    property.Activity.TryMapValue();
+                }
+            }
+            Inventory.BucketType.TryMapValue();
+            Inventory.TierType.TryMapValue();
+            Inventory.RecoveryBucketType.TryMapValue();
+            if (Action != null)
+            {
+                foreach (var reward in Action.ProgressionRewards)
+                {
+                    reward.ProgressionMapping.TryMapValue();
+                }
+                foreach (var item in Action.RequiredItems)
+                {
+                    item.Item.TryMapValue();
+                }
+                Action.RewardSheet.TryMapValue();
+            }
+            if (EquippingBlock != null)
+            {
+                EquippingBlock.EquipmentSlotType.TryMapValue();
+                EquippingBlock.GearsetItem.TryMapValue();
+            }
+            if (Sockets != null)
+            {
+                foreach (var intrinsicSocket in Sockets.IntrinsicSockets)
+                {
+                    intrinsicSocket.PlugItem.TryMapValue();
+                    intrinsicSocket.SocketType.TryMapValue();
+                }
+                foreach (var socketCategory in Sockets.SocketCategories)
+                {
+                    socketCategory.SocketCategory.TryMapValue();
+                }
+                foreach (var socket in Sockets.SocketEntries)
+                {
+                    socket.RandomizedPlugSet.TryMapValue();
+                    socket.ReusablePlugSet.TryMapValue();
+                    socket.SingleInitialItem.TryMapValue();
+                    socket.SocketType.TryMapValue();
+                }
+            }
+            foreach (var stat in InvestmentStats)
+            {
+                stat.StatType.TryMapValue();
+            }
+            foreach (var perk in Perks)
+            {
+                perk.Perk.TryMapValue();
+            }
+            if (Gearset != null)
+            {
+                foreach (var item in Gearset.Items)
+                {
+                    item.TryMapValue();
+                }               
+            }
+            EmblemObjective.TryMapValue();
+            if (SourceData != null)
+            {
+                foreach (var rewardSource in SourceData.RewardSources)
+                {
+                    rewardSource.TryMapValue();
+                }
+                foreach (var source in SourceData.Sources)
+                {
+                    foreach (var sourceSource in source.Sources)
+                    {
+                        sourceSource.TryMapValue();
+                    }
+                }
+                foreach (var vendorSource in SourceData.VendorSources)
+                {
+                    vendorSource.Vendor.TryMapValue();
+                }              
+            }
+            if (Metrics != null)
+            {
+                foreach (var node in Metrics.AvailableMetricCategoryNodes)
+                {
+                    node.TryMapValue();
+                }
+            }
+            Lore.TryMapValue();
+            foreach (var type in DamageTypes)
+            {
+                type.TryMapValue();
+            }
+            Season.TryMapValue();
         }
     }
 }

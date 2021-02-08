@@ -58,29 +58,12 @@ namespace BungieNetCoreTestingApp
         {
             await _bungieClient.Run();
 
-            //var milestones = await BungieClient.Platform.GetPublicMilestones();
-            //var milestoneContents = new List<DestinyMilestoneContent>();
-
-            //foreach (var milestone in milestones)
-            //{
-            //    try
-            //    {
-            //        milestoneContents.Add(await BungieClient.Platform.GetPublicMilestoneContent(milestone.Key));
-            //    }
-            //    catch { }
-            //}
             var collection = _bungieClient.Repository.GetAll<DestinyInventoryItemDefinition>().ToList();
-            //collection.ForEach(x => x.MapValues());
-
-            //MeasureOperationMultiple(
-            //    action: () => { _bungieClient.Repository.GetAll<DestinyCollectibleDefinition>(); },
-            //    amount: 100);
-
-            RunDeepEqualityCheck(collection);
-            //MeasureOperation(() => activityPointersCollection = coll.Select(x => x.GetPointer()).ToList());
-
             
-            
+            //RunDeepEqualityCheck(collection);
+
+            MeasureOperation(() => collection.ForEach(x => x.MapValues()));
+                     
             await Task.Delay(Timeout.Infinite);
         }
 

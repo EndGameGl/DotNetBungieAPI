@@ -14,6 +14,7 @@
     <None Remove="Destiny\Definitions\CharacterCustomizationOptions\DestinyCharacterCustomizationOptionDefinition.cs~RF19678f31.TMP" />
     <None Remove="Destiny\Definitions\Collectibles\DestinyCollectibleDefinition.cs~RF1a1ce0cb.TMP" />
     <None Remove="Destiny\Definitions\DamageTypes\DestinyDamageTypeDefinition.cs~RF105fcd51.TMP" />
+    <None Remove="Destiny\Definitions\InventoryItems\DestinyInventoryItemDefinition.cs~RF2fb50534.TMP" />
   </ItemGroup>
 
   <ItemGroup>
