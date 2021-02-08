@@ -76,7 +76,7 @@ namespace BungieNetCoreTestingApp
             //    action: () => { _bungieClient.Repository.GetAll<DestinyCollectibleDefinition>(); },
             //    amount: 100);
 
-            //RunDeepEqualityCheck(collection);
+            RunDeepEqualityCheck(collection);
             //MeasureOperation(() => activityPointersCollection = coll.Select(x => x.GetPointer()).ToList());
 
             

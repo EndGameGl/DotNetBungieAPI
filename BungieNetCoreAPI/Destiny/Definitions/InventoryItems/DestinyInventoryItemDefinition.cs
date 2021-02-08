@@ -4,7 +4,9 @@ using BungieNetCoreAPI.Destiny.Definitions.Classes;
 using BungieNetCoreAPI.Destiny.Definitions.Collectibles;
 using BungieNetCoreAPI.Destiny.Definitions.DamageTypes;
 using BungieNetCoreAPI.Destiny.Definitions.ItemCategories;
+using BungieNetCoreAPI.Destiny.Definitions.Lores;
 using BungieNetCoreAPI.Destiny.Definitions.Objectives;
+using BungieNetCoreAPI.Destiny.Definitions.Seasons;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,12 +19,15 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
     /// In practice, you will want to associate this data with "live" item data from a Bungie.Net Platform call: these definitions describe the item in generic, non-instanced terms: but an actual instance of an item can vary widely from these generic definitions.
     /// </summary>
     [DestinyDefinition(type: DefinitionsEnum.DestinyInventoryItemDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyInventoryItemDefinition : IDestinyDefinition
+    public class DestinyInventoryItemDefinition : IDestinyDefinition, IDeepEquatable<DestinyInventoryItemDefinition>
     {
         /// <summary>
         /// If this item has a collectible related to it, this is that collectible entry.
         /// </summary>
         public DefinitionHashPointer<DestinyCollectibleDefinition> Collectible { get; }
+        /// <summary>
+        /// There are times when the game will show you a "summary/vague" version of an item - such as a description of its type represented as a DestinyInventoryItemDefinition - rather than display the item itself.
+        /// </summary>
         public DefinitionHashPointer<DestinyInventoryItemDefinition> SummaryItem { get; }
         public ReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>> ItemCategories { get; }
         public uint AcquireRewardSiteHash { get; }
@@ -32,12 +37,14 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         /// Sometimes, an item will have a background color. Most notably this occurs with Emblems, who use the Background Color for small character nameplates such as the "friends" view you see in-game. There are almost certainly other items that have background color as well, though I have not bothered to investigate what items have it nor what purposes they serve: use it as you will.
         /// </summary>
         public DestinyColor BackgroundColor { get; }
-        public DestinyBreakerTypes BreakerType { get; }
-        public DestinyClassType ClassType { get; }     
-        public DamageType DefaultDamageType { get; }
+        public DestinyBreakerTypes BreakerTypeEnumValue { get; }
+        public DefinitionHashPointer<DestinyBreakerTypeDefinition> BreakerType { get; }
+        public DestinyClassType ClassType { get; }
+        public DamageType DefaultDamageTypeEnumValue { get; }
+        public DefinitionHashPointer<DestinyDamageTypeDefinition> DefaultDamageType { get; }
         public ItemSubType ItemSubType { get; }
         public ItemType ItemType { get; }
-        public SpecialItemType SpecialItemType { get; }       
+        public SpecialItemType SpecialItemType { get; }
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         /// <summary>
         /// In theory, it is a localized string telling you about how you can find the item. I really wish this was more consistent. Many times, it has nothing. Sometimes, it's instead a more narrative-forward description of the item. Which is cool, and I wish all properties had that data, but it should really be its own property.
@@ -52,7 +59,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         /// <summary>
         /// If available, this is the 'shelved' release watermark overlay for the icon. If the item version has a power cap below the current season power cap, it can be treated as 'shelved', and should be shown with this 'shelved' watermark overlay.
         /// </summary>
-        public string IconWatermarkShelved { get; }       
+        public string IconWatermarkShelved { get; }
         public bool IsWrapper { get; }
         /// <summary>
         /// It became a common enough pattern in our UI to show Item Type and Tier combined into a single localized string that I'm just going to go ahead and start pre-creating these for items.
@@ -65,7 +72,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         /// <summary>
         /// A string identifier that the game's UI uses to determine how the item should be rendered in inventory screens and the like. This could really be anything - at the moment, we don't have the time to really breakdown and maintain all the possible strings this could be, partly because new ones could be added ad hoc. But if you want to use it to dictate your own UI, or look for items with a certain display style, go for it!
         /// </summary>
-        public string UiItemDisplayStyle { get; }   
+        public string UiItemDisplayStyle { get; }
         public bool NonTransferrable { get; }
         /// <summary>
         /// A secondary icon associated with the item. Currently this is used in very context specific applications, such as Emblem Nameplates.
@@ -92,6 +99,9 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         /// If this item can have stats (such as a weapon, armor, or vehicle), this block will be non-null and populated with the stats found on the item.
         /// </summary>
         public InventoryItemStatsBlock Stats { get; }
+        /// <summary>
+        /// If the item has a Talent Grid, this will be non-null and the properties of the grid defined herein. Note that, while many items still have talent grids, the only ones with meaningful Nodes still on them will be Subclass/"Build" items.
+        /// </summary>
         public InventoryItemTalentGrid TalentGrid { get; }
         /// <summary>
         /// If this item can be rendered, this block will be non-null and will be populated with rendering information.
@@ -137,7 +147,13 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         /// If this item has any Sockets, this will be non-null and the individual sockets on the item will be defined herein.
         /// </summary>
         public InventoryItemSocketsBlock Sockets { get; }
+        /// <summary>
+        /// If the item has stats, this block will be defined. It has the "raw" investment stats for the item. These investment stats don't take into account the ways that the items can spawn, nor do they take into account any Stat Group transformations. I have retained them for debugging purposes, but I do not know how useful people will find them.
+        /// </summary>
         public ReadOnlyCollection<InventoryItemInvestmentStat> InvestmentStats { get; }
+        /// <summary>
+        /// If the item has any *intrinsic* Perks (Perks that it will provide regardless of Sockets, Talent Grid, and other transitory state), they will be defined here.
+        /// </summary>
         public ReadOnlyCollection<InventoryItemPerk> Perks { get; }
         /// <summary>
         /// Tooltips that only come up conditionally for the item. Check the live data DestinyItemComponent.tooltipNotificationIndexes property for which of these should be shown at runtime.
@@ -163,6 +179,13 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
         /// If this item has available metrics to be shown, this block will be non-null have the appropriate hashes defined.
         /// </summary>
         public InventoryItemMetricBlock Metrics { get; }
+        public InventoryItemSummaryBlock Summary { get; }
+        public DefinitionHashPointer<DestinyLoreDefinition> Lore { get; }
+        public ReadOnlyCollection<InventoryItemAnimationReference> Animations { get; }
+        public ReadOnlyCollection<HyperlinkReference> Links { get; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyDamageTypeDefinition>> DamageTypes { get; }
+        public ReadOnlyCollection<DamageType> DamageTypeEnumValues { get; }
+        public DefinitionHashPointer<DestinySeasonDefinition> Season { get; }
         public bool Blacklisted { get; }
         public uint Hash { get; }
         public int Index { get; }
@@ -178,7 +201,9 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             InventoryItemTalentGrid talentGrid, InventoryItemTooltipNotification[] tooltipNotifications, string[] traitIds, InventoryItemTranslationBlock translationBlock,
             string uiItemDisplayStyle, uint collectibleHash, InventoryItemPlugBlock plug, InventoryItemObjectivesBlock objectives, string secondaryIcon, InventoryItemValueBlock value,
             InventoryItemSetDataBlock setData, InventoryItemSackBlock sack, InventoryItemGearsetBlock gearset, string secondaryOverlay, string secondarySpecial,
-            string tooltipStyle, uint? emblemObjectiveHash, InventoryItemSourceBlock sourceData, InventoryItemMetricBlock metrics,
+            string tooltipStyle, uint? emblemObjectiveHash, InventoryItemSourceBlock sourceData, InventoryItemMetricBlock metrics, InventoryItemSummaryBlock summary,
+            uint? loreHash, InventoryItemAnimationReference[] animations, HyperlinkReference[] links, uint? breakerTypeHash, uint[] damageTypeHashes, DamageType[] damageTypes,
+            uint? defaultDamageTypeHash, uint? seasonHash,
             bool blacklisted, uint hash, int index, bool redacted)
         {
             AcquireRewardSiteHash = acquireRewardSiteHash;
@@ -187,10 +212,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             BackgroundColor = backgroundColor;
             Action = action;
             DisplayProperties = displayProperties;
-            BreakerType = breakerType;
+            BreakerTypeEnumValue = breakerType;
             ClassType = classType;
             Collectible = new DefinitionHashPointer<DestinyCollectibleDefinition>(collectibleHash, DefinitionsEnum.DestinyCollectibleDefinition);
-            DefaultDamageType = defaultDamageType;
+            DefaultDamageTypeEnumValue = defaultDamageType;
             DisplaySource = displaySource;
             DoesPostmasterPullHaveSideEffects = doesPostmasterPullHaveSideEffects;
             Equippable = equippable;
@@ -236,11 +261,89 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             EmblemObjective = new DefinitionHashPointer<DestinyObjectiveDefinition>(emblemObjectiveHash, DefinitionsEnum.DestinyObjectiveDefinition);
             SourceData = sourceData;
             Metrics = metrics;
+            Summary = summary;
+            Lore = new DefinitionHashPointer<DestinyLoreDefinition>(loreHash, DefinitionsEnum.DestinyLoreDefinition);
+            Animations = animations.AsReadOnlyOrEmpty();
+            Links = links.AsReadOnlyOrEmpty();
+            BreakerType = new DefinitionHashPointer<DestinyBreakerTypeDefinition>(breakerTypeHash, DefinitionsEnum.DestinyBreakerTypeDefinition);
+            DamageTypes = damageTypeHashes.DefinitionsAsReadOnlyOrEmpty<DestinyDamageTypeDefinition>(DefinitionsEnum.DestinyDamageTypeDefinition);
+            DamageTypeEnumValues = damageTypes.AsReadOnlyOrEmpty();
+            DefaultDamageType = new DefinitionHashPointer<DestinyDamageTypeDefinition>(defaultDamageTypeHash, DefinitionsEnum.DestinyDamageTypeDefinition);
+            Season = new DefinitionHashPointer<DestinySeasonDefinition>(seasonHash, DefinitionsEnum.DestinySeasonDefinition);
         }
 
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
+        }
+
+        public bool DeepEquals(DestinyInventoryItemDefinition other)
+        {
+            return other != null &&
+                   Collectible.DeepEquals(other.Collectible) &&
+                   SummaryItem.DeepEquals(other.SummaryItem) &&
+                   ItemCategories.DeepEqualsReadOnlyCollections(other.ItemCategories) &&
+                   AcquireRewardSiteHash == other.AcquireRewardSiteHash &&
+                   AcquireUnlockHash == other.AcquireUnlockHash &&
+                   AllowActions == other.AllowActions &&
+                   (BackgroundColor != null ? BackgroundColor.DeepEquals(other.BackgroundColor) : other.BackgroundColor == null) &&
+                   BreakerTypeEnumValue == other.BreakerTypeEnumValue &&
+                   BreakerType.DeepEquals(other.BreakerType) &&
+                   ClassType == other.ClassType &&
+                   DefaultDamageTypeEnumValue == other.DefaultDamageTypeEnumValue &&
+                   DefaultDamageType.DeepEquals(other.DefaultDamageType) &&
+                   ItemSubType == other.ItemSubType &&
+                   ItemType == other.ItemType &&
+                   SpecialItemType == other.SpecialItemType &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   DisplaySource == other.DisplaySource &&
+                   DoesPostmasterPullHaveSideEffects == other.DoesPostmasterPullHaveSideEffects &&
+                   Equippable == other.Equippable &&
+                   IconWatermark == other.IconWatermark &&
+                   IconWatermarkShelved == other.IconWatermarkShelved &&
+                   IsWrapper == other.IsWrapper &&
+                   ItemTypeAndTierDisplayName == other.ItemTypeAndTierDisplayName &&
+                   ItemTypeDisplayName == other.ItemTypeDisplayName &&
+                   UiItemDisplayStyle == other.UiItemDisplayStyle &&
+                   NonTransferrable == other.NonTransferrable &&
+                   SecondaryIcon == other.SecondaryIcon &&
+                   SecondaryOverlay == other.SecondaryOverlay &&
+                   SecondarySpecial == other.SecondarySpecial &&
+                   Screenshot == other.Screenshot &&
+                   TooltipStyle == other.TooltipStyle &&
+                   TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds) &&
+                   (Stats != null ? Stats.DeepEquals(other.Stats) : other.Stats == null) &&
+                   (TalentGrid != null ? TalentGrid.DeepEquals(other.TalentGrid) : other.TalentGrid == null) &&
+                   (TranslationBlock != null ? TranslationBlock.DeepEquals(other.TranslationBlock) : other.TranslationBlock == null) &&
+                   (Value != null ? Value.DeepEquals(other.Value) : other.Value == null) &&
+                   (SetData != null ? SetData.DeepEquals(other.SetData) : other.SetData == null) &&
+                   (Plug != null ? Plug.DeepEquals(other.Plug) : other.Plug == null) &&
+                   (Preview != null ? Preview.DeepEquals(other.Preview) : other.Preview == null) &&
+                   (Quality != null ? Quality.DeepEquals(other.Quality) : other.Quality == null) &&
+                   (Objectives != null ? Objectives.DeepEquals(other.Objectives) : other.Objectives == null) &&
+                   Inventory.DeepEquals(other.Inventory) &&
+                   (Action != null ? Action.DeepEquals(other.Action) : other.Action == null) &&
+                   (EquippingBlock != null ? EquippingBlock.DeepEquals(other.EquippingBlock) : other.EquippingBlock == null) &&
+                   (Sockets != null ? Sockets.DeepEquals(other.Sockets) : other.Sockets == null) &&
+                   InvestmentStats.DeepEqualsReadOnlyCollections(other.InvestmentStats) &&
+                   Perks.DeepEqualsReadOnlyCollections(other.Perks) &&
+                   TooltipNotifications.DeepEqualsReadOnlyCollections(other.TooltipNotifications) &&
+                   (Sack != null ? Sack.DeepEquals(other.Sack) : other.Sack == null) &&
+                   (Gearset != null ? Gearset.DeepEquals(other.Gearset) : other.Gearset == null) &&
+                   EmblemObjective.DeepEquals(other.EmblemObjective) &&
+                   (SourceData != null ? SourceData.DeepEquals(other.SourceData) : other.SourceData == null) &&
+                   (Metrics != null ? Metrics.DeepEquals(other.Metrics) : other.Metrics == null) &&
+                   (Summary != null ? Summary.DeepEquals(other.Summary) : other.Summary == null) &&
+                   Lore.DeepEquals(other.Lore) &&
+                   Animations.DeepEqualsReadOnlyCollections(other.Animations) &&
+                   Links.DeepEqualsReadOnlyCollections(other.Links) &&
+                   DamageTypes.DeepEqualsReadOnlyCollections(other.DamageTypes) &&
+                   DamageTypeEnumValues.DeepEqualsReadOnlySimpleCollection(other.DamageTypeEnumValues) &&
+                   Season.DeepEquals(other.Season) &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
         }
     }
 }

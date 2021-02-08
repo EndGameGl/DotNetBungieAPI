@@ -131,9 +131,9 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
                    PlugStyle == other.PlugStyle &&
                    PreviewItemOverride.DeepEquals(other.PreviewItemOverride) &&
                    UiPlugLabel == other.UiPlugLabel &&
-                   ParentItemOverride.DeepEquals(other.ParentItemOverride) &&
-                   EnergyCapacity.DeepEquals(other.EnergyCapacity) &&
-                   EnergyCost.DeepEquals(other.EnergyCost);
+                   (ParentItemOverride != null ? ParentItemOverride.DeepEquals(other.ParentItemOverride) : other.ParentItemOverride == null) &&
+                   (EnergyCapacity != null ? EnergyCapacity.DeepEquals(other.EnergyCapacity) : other.EnergyCapacity == null) &&
+                   (EnergyCost != null ? EnergyCost.DeepEquals(other.EnergyCost) : other.EnergyCost == null);
         }
     }
 }
