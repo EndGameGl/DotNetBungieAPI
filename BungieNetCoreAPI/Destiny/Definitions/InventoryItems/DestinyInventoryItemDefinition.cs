@@ -203,8 +203,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             InventoryItemSetDataBlock setData, InventoryItemSackBlock sack, InventoryItemGearsetBlock gearset, string secondaryOverlay, string secondarySpecial,
             string tooltipStyle, uint? emblemObjectiveHash, InventoryItemSourceBlock sourceData, InventoryItemMetricBlock metrics, InventoryItemSummaryBlock summary,
             uint? loreHash, InventoryItemAnimationReference[] animations, HyperlinkReference[] links, uint? breakerTypeHash, uint[] damageTypeHashes, DamageType[] damageTypes,
-            uint? defaultDamageTypeHash, uint? seasonHash,
-            bool blacklisted, uint hash, int index, bool redacted)
+            uint? defaultDamageTypeHash, uint? seasonHash, bool blacklisted, uint hash, int index, bool redacted)
         {
             AcquireRewardSiteHash = acquireRewardSiteHash;
             AcquireUnlockHash = acquireUnlockHash;

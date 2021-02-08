@@ -22,6 +22,7 @@ using BungieNetCoreAPI.Destiny.Definitions.Factions;
 using BungieNetCoreAPI.Destiny.Definitions.Genders;
 using BungieNetCoreAPI.Destiny.Definitions.InventoryBuckets;
 using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+using BungieNetCoreAPI.Destiny.Definitions.ItemCategories;
 using BungieNetCoreAPI.Destiny.Responses;
 using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
@@ -35,6 +36,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Unity;
+using BungieNetCoreAPI.Repositories;
 
 namespace BungieNetCoreTestingApp
 {
@@ -58,12 +60,16 @@ namespace BungieNetCoreTestingApp
         {
             await _bungieClient.Run();
 
-            var collection = _bungieClient.Repository.GetAll<DestinyInventoryItemDefinition>().ToList();
-            
+            var categories = _bungieClient.Repository.GetAll<DestinyItemCategoryDefinition>().ToList();
+            var items = _bungieClient.Repository.GetAll<DestinyInventoryItemDefinition>().ToList();
+            items.ForEach(x => x.MapValues());    
+
             //RunDeepEqualityCheck(collection);
 
-            MeasureOperation(() => collection.ForEach(x => x.MapValues()));
-                     
+            //MeasureOperation(() => collection.ForEach(x => x.MapValues()));
+
+            var categorizedItems = _bungieClient.Repository.GetItemsCategorized(DestinyLocales.EN);
+
             await Task.Delay(Timeout.Infinite);
         }
 
