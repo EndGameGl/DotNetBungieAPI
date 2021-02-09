@@ -3,10 +3,14 @@ using BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs;
 using BungieNetCoreAPI.Destiny.Definitions.Destinations;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Locations
 {
-    public class LocationRelease
+    /// <summary>
+    /// A specific "spot" referred to by a location. Only one of these can be active at a time for a given Location.
+    /// </summary>
+    public class LocationRelease : IDeepEquatable<LocationRelease>
     {
         public uint ActivityBubbleName { get; }
         public DefinitionHashPointer<DestinyActivityGraphDefinition> ActivityGraph { get; }
@@ -18,12 +22,12 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Locations
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public ActivityNavPointType NavPointType { get; }
         public uint SpawnPoint { get; }
-        public List<int> WorldPosition { get; }
+        public ReadOnlyCollection<int> WorldPosition { get; }
 
         [JsonConstructor]
-        private LocationRelease(uint activityBubbleName, uint activityGraphHash, uint activityGraphNodeHash, uint activityHash, uint activityPathBundle,
+        internal LocationRelease(uint activityBubbleName, uint activityGraphHash, uint activityGraphNodeHash, uint activityHash, uint activityPathBundle,
             uint activityPathDestination, uint destinationHash, DestinyDefinitionDisplayProperties displayProperties, ActivityNavPointType navPointType, uint spawnPoint,
-            List<int> worldPosition)
+            int[] worldPosition)
         {
             ActivityBubbleName = activityBubbleName;
             ActivityGraph = new DefinitionHashPointer<DestinyActivityGraphDefinition>(activityGraphHash, DefinitionsEnum.DestinyActivityGraphDefinition);
@@ -35,7 +39,22 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Locations
             DisplayProperties = displayProperties;
             NavPointType = navPointType;
             SpawnPoint = spawnPoint;
-            WorldPosition = worldPosition;
+            WorldPosition = worldPosition.AsReadOnlyOrEmpty();
+        }
+        public bool DeepEquals(LocationRelease other)
+        {
+            return other != null &&
+                   ActivityBubbleName == other.ActivityBubbleName &&
+                   ActivityGraph.DeepEquals(other.ActivityGraph) &&
+                   ActivityGraphNodeHash == other.ActivityGraphNodeHash &&
+                   Activity.DeepEquals(other.Activity) &&
+                   ActivityPathBundle == other.ActivityPathBundle &&
+                   ActivityPathDestination == other.ActivityPathDestination &&
+                   Destination.DeepEquals(other.Destination) &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   NavPointType == other.NavPointType &&
+                   SpawnPoint == other.SpawnPoint &&
+                   WorldPosition.DeepEqualsReadOnlySimpleCollection(other.WorldPosition);
         }
     }
 }

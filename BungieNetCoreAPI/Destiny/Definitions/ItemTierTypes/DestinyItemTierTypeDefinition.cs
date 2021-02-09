@@ -3,8 +3,13 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ItemTierTypes
 {
+    /// <summary>
+    /// Defines the tier type of an item. Mostly this provides human readable properties for types like Common, Rare, etc...
+    /// <para/>
+    /// It also provides some base data for infusion that could be useful.
+    /// </summary>
     [DestinyDefinition(type: DefinitionsEnum.DestinyItemTierTypeDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyItemTierTypeDefinition : IDestinyDefinition
+    public class DestinyItemTierTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyItemTierTypeDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public ItemTierTypeInfusionProcess InfusionProcess { get; }
@@ -14,7 +19,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ItemTierTypes
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyItemTierTypeDefinition(DestinyDefinitionDisplayProperties displayProperties, ItemTierTypeInfusionProcess infusionProcess,
+        internal DestinyItemTierTypeDefinition(DestinyDefinitionDisplayProperties displayProperties, ItemTierTypeInfusionProcess infusionProcess,
             bool blacklisted, uint hash, int index, bool redacted)
         {
             DisplayProperties = displayProperties;
@@ -29,5 +34,17 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ItemTierTypes
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
+
+        public bool DeepEquals(DestinyItemTierTypeDefinition other)
+        {
+            return other != null &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   InfusionProcess.DeepEquals(other.InfusionProcess) &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+        public void MapValues() { return; }
     }
 }

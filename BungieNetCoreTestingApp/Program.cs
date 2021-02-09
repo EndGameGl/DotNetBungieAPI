@@ -37,6 +37,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Unity;
 using BungieNetCoreAPI.Repositories;
+using BungieNetCoreAPI.Destiny.Definitions.ItemTierTypes;
+using BungieNetCoreAPI.Destiny.Definitions.Locations;
 
 namespace BungieNetCoreTestingApp
 {
@@ -60,15 +62,11 @@ namespace BungieNetCoreTestingApp
         {
             await _bungieClient.Run();
 
-            var categories = _bungieClient.Repository.GetAll<DestinyItemCategoryDefinition>().ToList();
-            var items = _bungieClient.Repository.GetAll<DestinyInventoryItemDefinition>().ToList();
-            items.ForEach(x => x.MapValues());    
+            var coll = _bungieClient.Repository.GetAll<DestinyLocationDefinition>().ToList(); 
 
             //RunDeepEqualityCheck(collection);
 
             //MeasureOperation(() => collection.ForEach(x => x.MapValues()));
-
-            var categorizedItems = _bungieClient.Repository.GetItemsCategorized(DestinyLocales.EN);
 
             await Task.Delay(Timeout.Infinite);
         }
