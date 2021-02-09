@@ -1,24 +1,30 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.MaterialRequirementSets
 {
+    /// <summary>
+    /// Represent a set of material requirements: Items that either need to be owned or need to be consumed in order to perform an action.
+    /// <para/>
+    /// A variety of other entities refer to these as gatekeepers and payments for actions that can be performed in game.
+    /// </summary>
     [DestinyDefinition(type: DefinitionsEnum.DestinyMaterialRequirementSetDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyMaterialRequirementSetDefinition : IDestinyDefinition
+    public class DestinyMaterialRequirementSetDefinition : IDestinyDefinition, IDeepEquatable<DestinyMaterialRequirementSetDefinition>
     {
-        public List<MaterialRequirementSetEntry> Materials { get; }
+        /// <summary>
+        /// The list of all materials that are required.
+        /// </summary>
+        public ReadOnlyCollection<MaterialRequirementSetEntry> Materials { get; }
         public bool Blacklisted { get; }
         public uint Hash { get; }
         public int Index { get; }
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyMaterialRequirementSetDefinition(List<MaterialRequirementSetEntry> materials, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyMaterialRequirementSetDefinition(MaterialRequirementSetEntry[] materials, bool blacklisted, uint hash, int index, bool redacted)
         {
-            Materials = materials;
+            Materials = materials.AsReadOnlyOrEmpty();
             Blacklisted = blacklisted;
             Hash = hash;
             Index = index;
@@ -28,6 +34,24 @@ namespace BungieNetCoreAPI.Destiny.Definitions.MaterialRequirementSets
         public override string ToString()
         {
             return $"{Hash}";
+        }
+
+        public bool DeepEquals(DestinyMaterialRequirementSetDefinition other)
+        {
+            return other != null &&
+                   Materials.DeepEqualsReadOnlyCollections(other.Materials) &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+
+        public void MapValues()
+        {
+            foreach (var material in Materials)
+            {
+                material.Item.TryMapValue();
+            }
         }
     }
 }

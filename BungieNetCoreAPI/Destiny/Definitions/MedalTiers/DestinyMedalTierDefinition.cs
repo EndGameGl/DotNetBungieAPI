@@ -1,13 +1,10 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.MedalTiers
 {
     [DestinyDefinition(type: DefinitionsEnum.DestinyMedalTierDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyMedalTierDefinition : IDestinyDefinition
+    public class DestinyMedalTierDefinition : IDestinyDefinition, IDeepEquatable<DestinyMedalTierDefinition>
     {
         public int Order { get; }
         public string TierName { get; }
@@ -15,8 +12,9 @@ namespace BungieNetCoreAPI.Destiny.Definitions.MedalTiers
         public uint Hash { get; }
         public int Index { get; }
         public bool Redacted { get; }
+
         [JsonConstructor]
-        private DestinyMedalTierDefinition(int order, string tierName, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyMedalTierDefinition(int order, string tierName, bool blacklisted, uint hash, int index, bool redacted)
         {
             Order = order;
             TierName = tierName;
@@ -30,5 +28,17 @@ namespace BungieNetCoreAPI.Destiny.Definitions.MedalTiers
         {
             return $"{Hash}";
         }
+
+        public bool DeepEquals(DestinyMedalTierDefinition other)
+        {
+            return other != null &&
+                   Order == other.Order &&
+                   TierName == other.TierName &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+        public void MapValues() { return; }
     }
 }

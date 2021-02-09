@@ -46,9 +46,19 @@ namespace BungieNetCoreAPI
             {
                 if (!compared.ElementAt(i).Key.DeepEquals(comparedWith.ElementAt(i).Key) || !compared.ElementAt(i).Value.Equals(comparedWith.ElementAt(i).Value))
                     return false;
-
             }
+            return true;
+        }
+        internal static bool DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue<T, P>(this ReadOnlyDictionary<T, P> compared, ReadOnlyDictionary<T, P> comparedWith) where P: IDeepEquatable<P>
+        {
+            if (compared.Count != comparedWith.Count)
+                return false;
 
+            for (int i = 0; i < compared.Count; i++)
+            {
+                if (!compared.ElementAt(i).Value.DeepEquals(comparedWith.ElementAt(i).Value) || !compared.ElementAt(i).Key.Equals(comparedWith.ElementAt(i).Key))
+                    return false;
+            }
             return true;
         }
         internal static ReadOnlyCollection<T> AsReadOnlyOrEmpty<T>(this T[] source)
@@ -75,6 +85,14 @@ namespace BungieNetCoreAPI
                 return new ReadOnlyDictionary<DefinitionHashPointer<T>, P>(new Dictionary<DefinitionHashPointer<T>, P>(0));
             var convertedDict = dictionary.ToDictionary(x => new DefinitionHashPointer<T>(x.Key, enumValue), y => y.Value);
             return new ReadOnlyDictionary<DefinitionHashPointer<T>, P>(convertedDict);
+        }
+        internal static ReadOnlyDictionary<T, P> AsReadOnlyDictionaryOrEmpty<T, P>(this Dictionary<T,P> dictionary)
+        {
+            if (dictionary == null)
+                return new ReadOnlyDictionary<T, P>(new Dictionary<T, P>(0));
+            else
+                return new ReadOnlyDictionary<T, P>(dictionary);
+
         }
 
         public static string LocaleToString(this DestinyLocales locale)

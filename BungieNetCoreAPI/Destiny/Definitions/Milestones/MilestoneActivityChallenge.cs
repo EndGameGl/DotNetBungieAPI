@@ -3,14 +3,19 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
 {
-    public class MilestoneActivityChallenge
+    public class MilestoneActivityChallenge : IDeepEquatable<MilestoneActivityChallenge>
     {
         public DefinitionHashPointer<DestinyObjectiveDefinition> ChallengeObjective { get; }
 
         [JsonConstructor]
-        private MilestoneActivityChallenge(uint challengeObjectiveHash)
+        internal MilestoneActivityChallenge(uint challengeObjectiveHash)
         {
             ChallengeObjective = new DefinitionHashPointer<DestinyObjectiveDefinition>(challengeObjectiveHash, DefinitionsEnum.DestinyObjectiveDefinition);
+        }
+
+        public bool DeepEquals(MilestoneActivityChallenge other)
+        {
+            return other != null && ChallengeObjective.DeepEquals(other.ChallengeObjective);
         }
     }
 }

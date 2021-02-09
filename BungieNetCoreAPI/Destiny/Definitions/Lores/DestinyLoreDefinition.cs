@@ -1,13 +1,13 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Lores
 {
+    /// <summary>
+    /// These are definitions for in-game "Lore," meant to be narrative enhancements of the game experience.
+    /// </summary>
     [DestinyDefinition(type: DefinitionsEnum.DestinyLoreDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyLoreDefinition : IDestinyDefinition
+    public class DestinyLoreDefinition : IDestinyDefinition, IDeepEquatable<DestinyLoreDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public string Subtitle { get; }
@@ -17,7 +17,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Lores
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyLoreDefinition(DestinyDefinitionDisplayProperties displayProperties, string subtitle, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyLoreDefinition(DestinyDefinitionDisplayProperties displayProperties, string subtitle, bool blacklisted, uint hash, int index, bool redacted)
         {
             DisplayProperties = displayProperties;
             Subtitle = subtitle;
@@ -29,7 +29,20 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Lores
 
         public override string ToString()
         {
-            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
+            return $"{Hash} {DisplayProperties.Name}";
         }
+
+        public bool DeepEquals(DestinyLoreDefinition other)
+        {
+            return other != null &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   Subtitle == other.Subtitle &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+
+        public void MapValues() { return; }
     }
 }

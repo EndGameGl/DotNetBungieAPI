@@ -3,14 +3,19 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
 {
-    public class MilestoneVendor
+    public class MilestoneVendor : IDeepEquatable<MilestoneVendor>
     {
         public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; }
 
         [JsonConstructor]
-        private MilestoneVendor(uint vendorHash)
+        internal MilestoneVendor(uint vendorHash)
         {
             Vendor = new DefinitionHashPointer<DestinyVendorDefinition>(vendorHash, DefinitionsEnum.DestinyVendorDefinition);
+        }
+
+        public bool DeepEquals(MilestoneVendor other)
+        {
+            return other != null && Vendor.DeepEquals(other.Vendor);
         }
     }
 }

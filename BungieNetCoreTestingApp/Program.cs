@@ -39,6 +39,11 @@ using Unity;
 using BungieNetCoreAPI.Repositories;
 using BungieNetCoreAPI.Destiny.Definitions.ItemTierTypes;
 using BungieNetCoreAPI.Destiny.Definitions.Locations;
+using BungieNetCoreAPI.Destiny.Definitions.Lores;
+using BungieNetCoreAPI.Destiny.Definitions.MaterialRequirementSets;
+using BungieNetCoreAPI.Destiny.Definitions.MedalTiers;
+using BungieNetCoreAPI.Destiny.Definitions.Metrics;
+using BungieNetCoreAPI.Destiny.Definitions.Milestones;
 
 namespace BungieNetCoreTestingApp
 {
@@ -62,11 +67,11 @@ namespace BungieNetCoreTestingApp
         {
             await _bungieClient.Run();
 
-            var coll = _bungieClient.Repository.GetAll<DestinyLocationDefinition>().ToList(); 
+            var coll = _bungieClient.Repository.GetAll<DestinyMilestoneDefinition>().ToList();
 
-            //RunDeepEqualityCheck(collection);
+            //coll.ForEach(x => x.MapValues());
 
-            //MeasureOperation(() => collection.ForEach(x => x.MapValues()));
+            //RunDeepEqualityCheck(coll);
 
             await Task.Delay(Timeout.Infinite);
         }

@@ -1,24 +1,33 @@
 ﻿using BungieNetCoreAPI.Destiny.Definitions.Activities;
 using Newtonsoft.Json;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
 {
-    public class MilestoneActivities
+    public class MilestoneActivities : IDeepEquatable<MilestoneActivities>
     {
-        public List<MilestoneActivityGraphNode> ActivityGraphNodes { get; }
+        public ReadOnlyCollection<MilestoneActivityGraphNode> ActivityGraphNodes { get; }
         public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; }
-        public List<MilestoneActivityChallenge> Challenges { get; }
-        public List<MilestoneActivityPhase> Phases { get; }
+        public ReadOnlyCollection<MilestoneActivityChallenge> Challenges { get; }
+        public ReadOnlyCollection<MilestoneActivityPhase> Phases { get; }
 
         [JsonConstructor]
-        private MilestoneActivities(List<MilestoneActivityGraphNode> activityGraphNodes, uint activityHash, List<MilestoneActivityChallenge> challenges,
-            List<MilestoneActivityPhase> phases)
+        internal MilestoneActivities(MilestoneActivityGraphNode[] activityGraphNodes, uint activityHash, MilestoneActivityChallenge[] challenges,
+            MilestoneActivityPhase[] phases)
         {
-            ActivityGraphNodes = activityGraphNodes;
+            ActivityGraphNodes = activityGraphNodes.AsReadOnlyOrEmpty();
             Activity = new DefinitionHashPointer<DestinyActivityDefinition>(activityHash, DefinitionsEnum.DestinyActivityDefinition);
-            Challenges = challenges;
-            Phases = phases;
+            Challenges = challenges.AsReadOnlyOrEmpty();
+            Phases = phases.AsReadOnlyOrEmpty();
+        }
+
+        public bool DeepEquals(MilestoneActivities other)
+        {
+            return other != null &&
+                   ActivityGraphNodes.DeepEqualsReadOnlyCollections(other.ActivityGraphNodes) &&
+                   Activity.DeepEquals(other.Activity) &&
+                   Challenges.DeepEqualsReadOnlyCollections(other.Challenges) &&
+                   Phases.DeepEqualsReadOnlyCollections(other.Phases);
         }
     }
 }

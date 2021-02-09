@@ -3,51 +3,37 @@ using BungieNetCoreAPI.Destiny.Definitions.Objectives;
 using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
 using BungieNetCoreAPI.Destiny.Definitions.Traits;
 using Newtonsoft.Json;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Metrics
 {
     [DestinyDefinition(type: DefinitionsEnum.DestinyMetricDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyMetricDefinition : IDestinyDefinition
+    public class DestinyMetricDefinition : IDestinyDefinition, IDeepEquatable<DestinyMetricDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public bool LowerValueIsBetter { get; }
-        public List<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentNodes { get; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentNodes { get; }
         public PresentationNodeType PresentationNodeType { get; }
         public DefinitionHashPointer<DestinyObjectiveDefinition> TrackingObjective { get; }
-        public List<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; }
-        public List<string> TraitIds { get; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; }
+        public ReadOnlyCollection<string> TraitIds { get; }
         public bool Blacklisted { get; }
         public uint Hash { get; }
         public int Index { get; }
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyMetricDefinition(DestinyDefinitionDisplayProperties displayProperties, bool lowerValueIsBetter, List<uint> parentNodeHashes,
-            PresentationNodeType presentationNodeType, uint trackingObjectiveHash, List<uint> traitHashes, List<string> traitIds,
+        internal DestinyMetricDefinition(DestinyDefinitionDisplayProperties displayProperties, bool lowerValueIsBetter, uint[] parentNodeHashes,
+            PresentationNodeType presentationNodeType, uint trackingObjectiveHash, uint[] traitHashes, string[] traitIds,
             bool blacklisted, uint hash, int index, bool redacted)
         {
             DisplayProperties = displayProperties;
             LowerValueIsBetter = lowerValueIsBetter;
-            ParentNodes = new List<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
-            if (parentNodeHashes != null)
-            {
-                foreach (var parentNodeHash in parentNodeHashes)
-                {
-                    ParentNodes.Add(new DefinitionHashPointer<DestinyPresentationNodeDefinition>(parentNodeHash, DefinitionsEnum.DestinyPresentationNodeDefinition));
-                }
-            }
+            ParentNodes = parentNodeHashes.DefinitionsAsReadOnlyOrEmpty<DestinyPresentationNodeDefinition>(DefinitionsEnum.DestinyPresentationNodeDefinition);
             PresentationNodeType = presentationNodeType;
             TrackingObjective = new DefinitionHashPointer<DestinyObjectiveDefinition>(trackingObjectiveHash, DefinitionsEnum.DestinyObjectiveDefinition);
-            Traits = new List<DefinitionHashPointer<DestinyTraitDefinition>>();
-            if (traitHashes != null)
-            {
-                foreach (var traitHash in traitHashes)
-                {
-                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, DefinitionsEnum.DestinyTraitDefinition));
-                }
-            }
-            TraitIds = traitIds;
+            Traits = traitHashes.DefinitionsAsReadOnlyOrEmpty<DestinyTraitDefinition>(DefinitionsEnum.DestinyTraitDefinition);
+            TraitIds = traitIds.AsReadOnlyOrEmpty();
             Blacklisted = blacklisted;
             Hash = hash;
             Index = index;
@@ -57,6 +43,34 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Metrics
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
+        }
+
+        public bool DeepEquals(DestinyMetricDefinition other)
+        {
+            return other != null &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   LowerValueIsBetter == other.LowerValueIsBetter &&
+                   ParentNodes.DeepEqualsReadOnlyCollections(other.ParentNodes) &&
+                   PresentationNodeType == other.PresentationNodeType &&
+                   TrackingObjective.DeepEquals(other.TrackingObjective) &&
+                   Traits.DeepEqualsReadOnlyCollections(other.Traits) &&
+                   TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds) &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+        public void MapValues()
+        {
+            foreach (var node in ParentNodes)
+            {
+                node.TryMapValue();
+            }
+            TrackingObjective.TryMapValue();
+            foreach (var trait in Traits)
+            {
+                trait.TryMapValue();
+            }
         }
     }
 }
