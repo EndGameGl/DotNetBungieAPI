@@ -65,9 +65,15 @@ namespace BungieNetCoreTestingApp
 
         private static async Task MainAsync()
         {
+            
             await _bungieClient.Run();
 
-            var coll = _bungieClient.Repository.GetAll<DestinyMilestoneDefinition>().ToList();
+            //var milestones = await BungieClient.Platform.GetPublicMilestones();
+
+            var coll = _bungieClient.Repository.GetItemsCategorized(DestinyLocales.EN);
+
+            var weapons = coll.Where(x => x.Key.Hash == 1).SingleOrDefault().Value;
+          
 
             //coll.ForEach(x => x.MapValues());
 
@@ -116,6 +122,64 @@ namespace BungieNetCoreTestingApp
             }
 
             Console.WriteLine($"Ran op {amount} times in {totalTime} ms ({amount / totalTime} op/ms)");
+        }
+
+        private void PrintWeapons(List<DestinyInventoryItemDefinition> weapons)
+        {
+            string indent = new string(' ', 4);
+            Random rnd = new Random();
+
+            var key = Console.ReadKey();
+
+            while (key.Key != ConsoleKey.Escape)
+            {
+                var randomWeapon = weapons.ElementAt(rnd.Next(0, weapons.Count));
+
+                var weaponSockets = randomWeapon.Sockets;
+
+                if (randomWeapon.ItemCategories.Any(x => x.Hash == 3109687656))
+                    return;
+
+                Console.WriteLine($"Weapon: {randomWeapon.DisplayProperties.Name} ({randomWeapon.ItemTypeAndTierDisplayName}), {weaponSockets.SocketEntries.Count} sockets.");
+
+                foreach (var category in weaponSockets.SocketCategories)
+                {
+                    if (category.SocketCategory.TryGetDefinition(out var categoryDef))
+                    {
+                        Console.WriteLine($"Category: {categoryDef.DisplayProperties.Name}");
+
+                        foreach (var index in category.SocketIndexes)
+                        {
+                            var socketData = weaponSockets.SocketEntries[index];
+
+                            string message = $"{indent}{socketData.SingleInitialItem.Value.DisplayProperties.Name}";
+
+                            if (socketData.ReusablePlugSet.TryGetDefinition(out var plugSet))
+                            {
+                                List<DestinyInventoryItemDefinition> plugs = new List<DestinyInventoryItemDefinition>();
+                                foreach (var plugSetItem in plugSet.ReusablePlugItems)
+                                {
+                                    if (plugSetItem.PlugItem.TryGetDefinition(out var item))
+                                    {
+                                        plugs.Add(item);
+                                    }
+                                }
+                                if (plugs.Count > 0)
+                                {
+                                    var plugNames = plugs.Select(x => x.DisplayProperties.Name);
+                                    message += $" ({string.Join(", ", plugNames)})";
+                                }
+                            }
+
+                            Console.WriteLine(message);
+                        }
+                    }
+                }
+
+                Console.WriteLine(new string('-', 20));
+
+                key = Console.ReadKey();
+            }
         }
     }
 }

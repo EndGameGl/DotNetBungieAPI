@@ -55,5 +55,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
                    SocketType.DeepEquals(other.SocketType) &&
                    RandomizedPlugSet.DeepEquals(other.RandomizedPlugSet);
         }
+
+        public override string ToString()
+        {
+            return $"{PlugSources}";
+        }
     }
 }

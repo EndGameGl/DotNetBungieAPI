@@ -34,7 +34,6 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
             SocketCategories = socketCategories.AsReadOnlyOrEmpty();
             SocketEntries = socketEntries.AsReadOnlyOrEmpty();
         }
-
         public bool DeepEquals(InventoryItemSocketsBlock other)
         {
             return other != null &&
@@ -42,6 +41,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
                    IntrinsicSockets.DeepEqualsReadOnlyCollections(other.IntrinsicSockets) &&
                    SocketCategories.DeepEqualsReadOnlyCollections(other.SocketCategories) &&
                    SocketEntries.DeepEqualsReadOnlyCollections(other.SocketEntries);
+        }
+        public override string ToString()
+        {
+            return $"{SocketEntries.Count} sockets available.";
         }
     }
 }
