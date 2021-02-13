@@ -115,6 +115,7 @@ namespace BungieNetCoreAPI
                 _ => throw new Exception("Wrong locale."),
             };
         }
+        public static int ToInt32(this uint hash) => unchecked((int)hash);
 
         #region Activity search
         public static List<DestinyActivityDefinition> GetActivitiesWithMode(this ILocalisedManifestDefinitionRepositories repository, DestinyLocales locale, uint activityModeHash)

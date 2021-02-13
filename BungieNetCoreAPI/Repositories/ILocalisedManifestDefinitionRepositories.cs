@@ -24,5 +24,6 @@ namespace BungieNetCoreAPI.Repositories
         List<DestinyInventoryItemDefinition> GetItemsWithTrait(DestinyLocales locale, string trait);
         List<DestinyInventoryItemDefinition> GetSacks(DestinyLocales locale);
         List<DestinyActivityDefinition> SearchActivitiesByName(DestinyLocales locale, string name);
+        string FetchJSONFromDB(DestinyLocales locale, DefinitionsEnum definitionType, uint hash);
     }
 }

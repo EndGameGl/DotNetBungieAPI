@@ -6,7 +6,10 @@ using BungieNetCoreAPI.Logging;
 using BungieNetCoreAPI.Services;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
+using System.IO;
 using System.Linq;
+using System.Text;
 using Unity;
 
 namespace BungieNetCoreAPI.Repositories
@@ -17,6 +20,7 @@ namespace BungieNetCoreAPI.Repositories
         private readonly ILogger _logger;
         private readonly IConfigurationService _configs;
         private readonly IDefinitionAssemblyData _assemblyData;
+
         public DestinyLocales CurrentLocaleLoadContext => _currentLocaleLoadContext == null ? DestinyLocales.EN : _currentLocaleLoadContext.Value;
 
         private Dictionary<DestinyLocales, ManifestDefinitionsRepository> _localisedRepositories;
@@ -122,6 +126,42 @@ namespace BungieNetCoreAPI.Repositories
         public void ResetLocaleContext()
         {
             _currentLocaleLoadContext = null;
+        }
+
+        public string FetchJSONFromDB(DestinyLocales locale, DefinitionsEnum definitionType, uint hash)
+        {
+            if (!_assemblyData.DefinitionsToTypeMapping[definitionType].PresentInSQLiteDB)
+                throw new Exception("This definition type isn't present in SQLite database.");
+
+            var manifest = UnityContainerFactory.Container.Resolve<IManifestUpdateHandler>().CurrentManifest;
+            var mobileWorldContentPathsLocalePath = Path.GetFileName(manifest.MobileWorldContentPaths[locale.LocaleToString()]);
+            var connectionString = @$"Data Source={_configs.Settings.VersionsRepositoryPath}\\{manifest.Version}\\MobileWorldContent\\{locale.LocaleToString()}\\{mobileWorldContentPathsLocalePath}; Version=3;";
+            string result = string.Empty;
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                string query = $"SELECT * FROM {definitionType.ToString()} WHERE id={hash.ToInt32()}";
+                SQLiteCommand command = new SQLiteCommand
+                {
+                    Connection = connection,
+                    CommandText = query
+                };
+                try
+                {
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var byteArray = (byte[])reader["json"];
+                        result = Encoding.UTF8.GetString(byteArray, 0, byteArray.Length);
+                    }
+                }
+                catch (Exception e)
+                {
+                    _logger.Log(e.Message, LogType.Error);
+                }
+                connection.Close();
+            }
+            return result;
         }
     }
 }

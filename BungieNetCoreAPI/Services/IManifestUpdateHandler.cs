@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using BungieNetCoreAPI.Destiny;
+using System.Threading.Tasks;
 
 namespace BungieNetCoreAPI.Services
 {
@@ -7,6 +8,7 @@ namespace BungieNetCoreAPI.Services
     /// </summary>
     public interface IManifestUpdateHandler
     {
+        DestinyManifest CurrentManifest { get; }
         /// <summary>
         /// Reads existing manifest data, if any
         /// </summary>

@@ -69,16 +69,18 @@ namespace BungieNetCoreTestingApp
 
         private static async Task MainAsync()
         {
-            
+
             await _bungieClient.Run();
 
             //var milestones = await BungieClient.Platform.GetPublicMilestones();
 
-            var coll = _bungieClient.Repository.GetAll<DestinyPowerCapDefinition>().ToList();
-          
-            coll.ForEach(x => x.MapValues());
+            //var coll = _bungieClient.Repository.GetAll<DestinyPowerCapDefinition>().ToList();
 
-            RunDeepEqualityCheck(coll);
+            //coll.ForEach(x => x.MapValues());
+
+            //RunDeepEqualityCheck(coll);
+
+            var theMessengerJson = _bungieClient.Repository.FetchJSONFromDB(DestinyLocales.EN, DefinitionsEnum.DestinyInventoryItemDefinition, 3658188704);
 
             await Task.Delay(Timeout.Infinite);
         }

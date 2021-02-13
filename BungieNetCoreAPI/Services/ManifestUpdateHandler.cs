@@ -20,6 +20,8 @@ namespace BungieNetCoreAPI.Services
         private string _versionControlPath;
         private DestinyManifest _currentUsedManifest;
 
+        public DestinyManifest CurrentManifest => _currentUsedManifest;
+
         public ManifestUpdateHandler(ILogger logger, IConfigurationService configuration)
         {
             _logger = logger;
