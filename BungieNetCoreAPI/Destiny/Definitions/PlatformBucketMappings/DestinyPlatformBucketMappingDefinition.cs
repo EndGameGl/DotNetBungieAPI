@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace BungieNetCoreAPI.Destiny.Definitions.PlatformBucketMappings
 {
     [DestinyDefinition(type: DefinitionsEnum.DestinyPlatformBucketMappingDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
-    public class DestinyPlatformBucketMappingDefinition : IDestinyDefinition
+    public class DestinyPlatformBucketMappingDefinition : IDestinyDefinition, IDeepEquatable<DestinyPlatformBucketMappingDefinition>
     {
         public int MembershipType { get; }
         public DefinitionHashPointer<DestinyInventoryBucketDefinition> Bucket { get; }
@@ -15,7 +15,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PlatformBucketMappings
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyPlatformBucketMappingDefinition(int membershipType, uint bucketHash, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyPlatformBucketMappingDefinition(int membershipType, uint bucketHash, bool blacklisted, uint hash, int index, bool redacted)
         {
             MembershipType = membershipType;
             Bucket = new DefinitionHashPointer<DestinyInventoryBucketDefinition>(bucketHash, DefinitionsEnum.DestinyInventoryBucketDefinition);
@@ -29,5 +29,17 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PlatformBucketMappings
         {
             return $"{Hash}";
         }
+
+        public bool DeepEquals(DestinyPlatformBucketMappingDefinition other)
+        {
+            return other != null &&
+                   MembershipType == other.MembershipType &&
+                   Bucket.DeepEquals(other.Bucket) &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+        public void MapValues() { return; }
     }
 }
