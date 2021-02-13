@@ -45,6 +45,7 @@ using BungieNetCoreAPI.Destiny.Definitions.MedalTiers;
 using BungieNetCoreAPI.Destiny.Definitions.Metrics;
 using BungieNetCoreAPI.Destiny.Definitions.Milestones;
 using BungieNetCoreAPI.Destiny.Definitions.Objectives;
+using BungieNetCoreAPI.Destiny.Definitions.Places;
 
 namespace BungieNetCoreTestingApp
 {
@@ -71,8 +72,7 @@ namespace BungieNetCoreTestingApp
 
             //var milestones = await BungieClient.Platform.GetPublicMilestones();
 
-            var coll = _bungieClient.Repository.GetAll<DestinyObjectiveDefinition>().ToList();
-
+            var coll = _bungieClient.Repository.GetAll<DestinyPlaceDefinition>().ToList();
           
             coll.ForEach(x => x.MapValues());
 

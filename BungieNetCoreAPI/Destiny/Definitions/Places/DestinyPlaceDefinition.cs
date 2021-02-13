@@ -1,13 +1,13 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Places
 {
+    /// <summary>
+    /// Activities (DestinyActivityDefinition) take place in Destinations (DestinyDestinationDefinition). Destinations are part of larger locations known as Places
+    /// </summary>
     [DestinyDefinition(type: DefinitionsEnum.DestinyPlaceDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyPlaceDefinition : IDestinyDefinition
+    public class DestinyPlaceDefinition : IDestinyDefinition, IDeepEquatable<DestinyPlaceDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public bool Blacklisted { get; }
@@ -16,7 +16,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Places
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyPlaceDefinition(DestinyDefinitionDisplayProperties displayProperties, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyPlaceDefinition(DestinyDefinitionDisplayProperties displayProperties, bool blacklisted, uint hash, int index, bool redacted)
         {
             DisplayProperties = displayProperties;
             Blacklisted = blacklisted;
@@ -29,5 +29,17 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Places
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
+
+        public bool DeepEquals(DestinyPlaceDefinition other)
+        {
+            return other != null &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+
+        public void MapValues() { return; }
     }
 }
