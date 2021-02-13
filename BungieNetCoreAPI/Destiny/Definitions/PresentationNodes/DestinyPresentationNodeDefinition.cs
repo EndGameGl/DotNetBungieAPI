@@ -6,6 +6,13 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
 {
+    /// <summary>
+    /// A PresentationNode is an entity that represents a logical grouping of other entities visually/organizationally.
+    /// <para/>
+    /// For now, Presentation Nodes may contain the following...but it may be used for more in the future:
+    /// <para/>
+    /// - Collectibles - Records(Or, as the public will call them, "Triumphs." Don't ask me why we're overloading the term "Triumph", it still hurts me to think about it) - Metrics(aka Stat Trackers) - Other Presentation Nodes, allowing a tree of Presentation Nodes to be created
+    /// </summary>
     [DestinyDefinition(type: DefinitionsEnum.DestinyPresentationNodeDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
     public class DestinyPresentationNodeDefinition : IDestinyDefinition
     {
@@ -30,7 +37,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
 
         [JsonConstructor]
         private DestinyPresentationNodeDefinition(DestinyDefinitionDisplayProperties displayProperties, PresentationChildNode children, bool disableChildSubscreenNavigation,
-            int displayStyle, int maxCategoryRecordScore, int nodeType, uint objectiveHash, List<uint> parentNodeHashes, PresentationNodeType presentationNodeType, 
+            int displayStyle, int maxCategoryRecordScore, int nodeType, uint objectiveHash, List<uint> parentNodeHashes, PresentationNodeType presentationNodeType,
             PresentationNodeRequirement requirements, Scope scope, int screenStyle, List<uint> traitHashes, List<string> traitIds,
             bool blacklisted, uint hash, int index, bool redacted)
         {

@@ -1,13 +1,10 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodeBases
 {
     [DestinyDefinition(type: DefinitionsEnum.DestinyPresentationNodeBaseDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
-    public class DestinyPresentationNodeBaseDefinition : IDestinyDefinition
+    public class DestinyPresentationNodeBaseDefinition : IDestinyDefinition, IDeepEquatable<DestinyPresentationNodeBaseDefinition>
     {
         public bool Blacklisted { get; }
         public uint Hash { get; }
@@ -15,7 +12,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodeBases
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyPresentationNodeBaseDefinition(bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyPresentationNodeBaseDefinition(bool blacklisted, uint hash, int index, bool redacted)
         {
             Blacklisted = blacklisted;
             Hash = hash;
@@ -27,5 +24,15 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodeBases
         {
             return $"{Hash}";
         }
+
+        public bool DeepEquals(DestinyPresentationNodeBaseDefinition other)
+        {
+            return other != null &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+        public void MapValues() { return; }
     }
 }

@@ -47,6 +47,7 @@ using BungieNetCoreAPI.Destiny.Definitions.Milestones;
 using BungieNetCoreAPI.Destiny.Definitions.Objectives;
 using BungieNetCoreAPI.Destiny.Definitions.Places;
 using BungieNetCoreAPI.Destiny.Definitions.PlugSets;
+using BungieNetCoreAPI.Destiny.Definitions.PowerCaps;
 
 namespace BungieNetCoreTestingApp
 {
@@ -73,7 +74,7 @@ namespace BungieNetCoreTestingApp
 
             //var milestones = await BungieClient.Platform.GetPublicMilestones();
 
-            var coll = _bungieClient.Repository.GetAll<DestinyPlugSetDefinition>().ToList();
+            var coll = _bungieClient.Repository.GetAll<DestinyPowerCapDefinition>().ToList();
           
             coll.ForEach(x => x.MapValues());
 

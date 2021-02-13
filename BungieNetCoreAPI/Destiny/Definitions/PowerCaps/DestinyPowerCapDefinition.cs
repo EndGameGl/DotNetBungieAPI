@@ -3,8 +3,11 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.PowerCaps
 {
+    /// <summary>
+    /// Defines a 'power cap' (limit) for gear items, based on the rarity tier and season of release.
+    /// </summary>
     [DestinyDefinition(type: DefinitionsEnum.DestinyPowerCapDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
-    public class DestinyPowerCapDefinition : IDestinyDefinition
+    public class DestinyPowerCapDefinition : IDestinyDefinition, IDeepEquatable<DestinyPowerCapDefinition>
     {
         public int PowerCap { get; }
         public bool Blacklisted { get; }
@@ -13,7 +16,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PowerCaps
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyPowerCapDefinition(int powerCap, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyPowerCapDefinition(int powerCap, bool blacklisted, uint hash, int index, bool redacted)
         {
             PowerCap = powerCap;
             Blacklisted = blacklisted;
@@ -26,5 +29,16 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PowerCaps
         {
             return $"{Hash}";
         }
+
+        public bool DeepEquals(DestinyPowerCapDefinition other)
+        {
+            return other != null &&
+                   PowerCap == other.PowerCap &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+        public void MapValues() { return; }
     }
 }
