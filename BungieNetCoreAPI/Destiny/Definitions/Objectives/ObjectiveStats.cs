@@ -2,16 +2,23 @@
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Objectives
 {
-    public class ObjectiveStats
+    public class ObjectiveStats : IDeepEquatable<ObjectiveStats>
     {
         public ObjectiveStat Stat { get; }
-        public int Style { get; }
+        public ObjectivePerksStyle Style { get; }
 
         [JsonConstructor]
-        private ObjectiveStats(ObjectiveStat stat, int style)
+        internal ObjectiveStats(ObjectiveStat stat, ObjectivePerksStyle style)
         {
             Stat = stat;
             Style = style;
+        }
+
+        public bool DeepEquals(ObjectiveStats other)
+        {
+            return other != null &&
+                   (Stat != null ? Stat.DeepEquals(other.Stat) : other.Stat == null) &&
+                   Style == other.Style;
         }
     }
 }

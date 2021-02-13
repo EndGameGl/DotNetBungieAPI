@@ -44,6 +44,7 @@ using BungieNetCoreAPI.Destiny.Definitions.MaterialRequirementSets;
 using BungieNetCoreAPI.Destiny.Definitions.MedalTiers;
 using BungieNetCoreAPI.Destiny.Definitions.Metrics;
 using BungieNetCoreAPI.Destiny.Definitions.Milestones;
+using BungieNetCoreAPI.Destiny.Definitions.Objectives;
 
 namespace BungieNetCoreTestingApp
 {
@@ -70,14 +71,12 @@ namespace BungieNetCoreTestingApp
 
             //var milestones = await BungieClient.Platform.GetPublicMilestones();
 
-            var coll = _bungieClient.Repository.GetItemsCategorized(DestinyLocales.EN);
+            var coll = _bungieClient.Repository.GetAll<DestinyObjectiveDefinition>().ToList();
 
-            var weapons = coll.Where(x => x.Key.Hash == 1).SingleOrDefault().Value;
           
+            coll.ForEach(x => x.MapValues());
 
-            //coll.ForEach(x => x.MapValues());
-
-            //RunDeepEqualityCheck(coll);
+            RunDeepEqualityCheck(coll);
 
             await Task.Delay(Timeout.Infinite);
         }
