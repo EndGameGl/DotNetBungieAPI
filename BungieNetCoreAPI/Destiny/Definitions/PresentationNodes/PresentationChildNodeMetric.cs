@@ -3,14 +3,19 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
 {
-    public class PresentationChildNodeMetric
+    public class PresentationChildNodeMetric : IDeepEquatable<PresentationChildNodeMetric>
     {
         public DefinitionHashPointer<DestinyMetricDefinition> Metric { get; }
 
         [JsonConstructor]
-        private PresentationChildNodeMetric(uint metricHash)
+        internal PresentationChildNodeMetric(uint metricHash)
         {
             Metric = new DefinitionHashPointer<DestinyMetricDefinition>(metricHash, DefinitionsEnum.DestinyCollectibleDefinition);
+        }
+
+        public bool DeepEquals(PresentationChildNodeMetric other)
+        {
+            return other != null && Metric.DeepEquals(other.Metric);
         }
     }
 }

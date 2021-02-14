@@ -2,14 +2,19 @@
 
 namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
 {
-    public class PresentationNodeRequirement
+    public class PresentationNodeRequirement : IDeepEquatable<PresentationNodeRequirement>
     {
         public string EntitlementUnavailableMessage { get; }
 
         [JsonConstructor]
-        private PresentationNodeRequirement(string entitlementUnavailableMessage) 
+        internal PresentationNodeRequirement(string entitlementUnavailableMessage) 
         {
             EntitlementUnavailableMessage = entitlementUnavailableMessage;
+        }
+
+        public bool DeepEquals(PresentationNodeRequirement other)
+        {
+            return other != null && EntitlementUnavailableMessage == other.EntitlementUnavailableMessage;
         }
     }
 }

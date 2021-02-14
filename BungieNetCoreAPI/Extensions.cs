@@ -116,6 +116,7 @@ namespace BungieNetCoreAPI
             };
         }
         public static int ToInt32(this uint hash) => unchecked((int)hash);
+        public static uint ToUInt32(this int hash) => unchecked((uint)hash);
 
         #region Activity search
         public static List<DestinyActivityDefinition> GetActivitiesWithMode(this ILocalisedManifestDefinitionRepositories repository, DestinyLocales locale, uint activityModeHash)

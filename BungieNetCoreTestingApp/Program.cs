@@ -48,6 +48,7 @@ using BungieNetCoreAPI.Destiny.Definitions.Objectives;
 using BungieNetCoreAPI.Destiny.Definitions.Places;
 using BungieNetCoreAPI.Destiny.Definitions.PlugSets;
 using BungieNetCoreAPI.Destiny.Definitions.PowerCaps;
+using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
 
 namespace BungieNetCoreTestingApp
 {
@@ -74,13 +75,11 @@ namespace BungieNetCoreTestingApp
 
             //var milestones = await BungieClient.Platform.GetPublicMilestones();
 
-            //var coll = _bungieClient.Repository.GetAll<DestinyPowerCapDefinition>().ToList();
+            var coll = _bungieClient.Repository.GetAll<DestinyPresentationNodeDefinition>().ToList();
 
-            //coll.ForEach(x => x.MapValues());
+            coll.ForEach(x => x.MapValues());
 
-            //RunDeepEqualityCheck(coll);
-
-            var theMessengerJson = _bungieClient.Repository.FetchJSONFromDB(DestinyLocales.EN, DefinitionsEnum.DestinyInventoryItemDefinition, 3658188704);
+            RunDeepEqualityCheck(coll);
 
             await Task.Delay(Timeout.Infinite);
         }

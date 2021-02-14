@@ -127,7 +127,6 @@ namespace BungieNetCoreAPI.Repositories
         {
             _currentLocaleLoadContext = null;
         }
-
         public string FetchJSONFromDB(DestinyLocales locale, DefinitionsEnum definitionType, uint hash)
         {
             if (!_assemblyData.DefinitionsToTypeMapping[definitionType].PresentInSQLiteDB)
