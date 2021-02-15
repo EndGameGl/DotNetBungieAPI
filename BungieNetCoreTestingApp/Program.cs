@@ -50,6 +50,7 @@ using BungieNetCoreAPI.Destiny.Definitions.PlugSets;
 using BungieNetCoreAPI.Destiny.Definitions.PowerCaps;
 using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
 using BungieNetCoreAPI.Destiny.Definitions.ProgressionLevelRequirements;
+using BungieNetCoreAPI.Destiny.Definitions.Progressions;
 
 namespace BungieNetCoreTestingApp
 {
@@ -76,7 +77,7 @@ namespace BungieNetCoreTestingApp
 
             //var milestones = await BungieClient.Platform.GetPublicMilestones();
 
-            var coll = _bungieClient.Repository.GetAll<DestinyProgressionLevelRequirementDefinition>().ToList();
+            var coll = _bungieClient.Repository.GetAll<DestinyProgressionDefinition>().ToList();
 
             coll.ForEach(x => x.MapValues());
 
