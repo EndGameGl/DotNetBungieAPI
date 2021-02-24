@@ -111,7 +111,14 @@ namespace BungieNetCoreAPI.Clients
         {
             return await GetData<BungieNetUserMembershipWithLinkedDestinyProfiles>($"Destiny2/{membershipType}/Profile/{membershipId}/LinkedProfiles/?getAllMemberships={getAllMemberships}");
         }
-        public async Task<DestinyComponentProfileResponse> GetProfile(BungieMembershipType membershipType, long destinyMembershipId, DestinyComponentType[] componentTypes)
+        /// <summary>
+        /// Returns Destiny Profile information for the supplied membership.
+        /// </summary>
+        /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+        /// <param name="destinyMembershipId">Destiny membership ID.</param>
+        /// <param name="componentTypes">List of components to return. You must request at least one component to receive results.</param>
+        /// <returns></returns>
+        public async Task<DestinyComponentProfileResponse> GetProfile(BungieMembershipType membershipType, long destinyMembershipId, params DestinyComponentType[] componentTypes)
         {
             return await GetData<DestinyComponentProfileResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/?components={string.Join(",", componentTypes)}");
         }

@@ -1,17 +1,16 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
 {
     public class ComponentVendorReceiptsData
     {
-        public List<object> Receipts { get; }
+        public ReadOnlyCollection<DestinyVendorReceipt> Receipts { get; }
+
         [JsonConstructor]
-        private ComponentVendorReceiptsData(List<object> receipts)
+        internal ComponentVendorReceiptsData(DestinyVendorReceipt[] receipts)
         {
-            Receipts = receipts;
+            Receipts = receipts.AsReadOnlyOrEmpty();
         }
     }
 }

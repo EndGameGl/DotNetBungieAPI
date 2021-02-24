@@ -73,15 +73,27 @@ namespace BungieNetCoreTestingApp
         private static async Task MainAsync()
         {
 
-            await _bungieClient.Run();
+            //await _bungieClient.Run();
+
+            var data = await BungieClient.Platform.GetMembershipDataById(20027802, BungieMembershipType.TigerSteam);
+
+            var membershipId = long.Parse(data.DestinyMemberships.First().MembershipId);
+
+            var profileData = await BungieClient.Platform.GetProfile(
+                membershipType: BungieMembershipType.TigerSteam,
+                destinyMembershipId: membershipId,
+                DestinyComponentType.Profiles,
+                DestinyComponentType.VendorReceipts,
+                DestinyComponentType.ProfileInventories,
+                DestinyComponentType.ProfileCurrencies);
 
             //var milestones = await BungieClient.Platform.GetPublicMilestones();
 
-            var coll = _bungieClient.Repository.GetAll<DestinyProgressionDefinition>().ToList();
+            //var coll = _bungieClient.Repository.GetAll<DestinyProgressionDefinition>().ToList();
 
-            coll.ForEach(x => x.MapValues());
+            //coll.ForEach(x => x.MapValues());
 
-            RunDeepEqualityCheck(coll);
+            //RunDeepEqualityCheck(coll);
 
             await Task.Delay(Timeout.Infinite);
         }

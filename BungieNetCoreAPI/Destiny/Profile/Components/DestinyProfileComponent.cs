@@ -1,8 +1,5 @@
 ﻿using BungieNetCoreAPI.Destiny.Profile.Components;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Profile
 {
@@ -10,12 +7,17 @@ namespace BungieNetCoreAPI.Destiny.Profile
     {
         public T Data { get; }
         public ComponentPrivacy Privacy { get; }
+        /// <summary>
+        /// If true, this component is disabled.
+        /// </summary>
+        public bool? IsDisabled { get; }
 
         [JsonConstructor]
-        private DestinyProfileComponent(T data, ComponentPrivacy privacy)
+        internal DestinyProfileComponent(T data, ComponentPrivacy privacy, bool? disabled)
         {
             Data = data;
             Privacy = privacy;
+            IsDisabled = disabled;
         }
     }
 }

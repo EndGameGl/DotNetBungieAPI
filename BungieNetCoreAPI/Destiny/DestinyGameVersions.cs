@@ -11,6 +11,7 @@ namespace BungieNetCoreAPI.Destiny
         Warmind = 4,
         Forsaken = 8,
         YearTwoAnnualPass = 16,
-        Shadowkeep = 32
+        Shadowkeep = 32,
+        BeyondLight = 64
     }
 }
