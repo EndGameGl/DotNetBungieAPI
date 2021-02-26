@@ -21,7 +21,10 @@ namespace BungieNetCoreAPI.Destiny.Profile
             DestinyProfileComponent<ComponentDestinyInventory> profileCurrencies,
             DestinyProfileComponent<ComponentDestinyProfileProgression> profileProgression,
             DestinyProfileComponent<ComponentDestinyPlatformSilver> platformSilver,
-            DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacter>> characters)
+            DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacter>> characters,
+            DestinyProfileComponent<Dictionary<long, ComponentDestinyInventory>> characterInventories,
+            DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacterProgression>> characterProgressions,
+            DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacterRender>> characterRenderData)
         {
             var components = new Dictionary<DestinyComponentType, IProfileComponent>();
 
@@ -39,6 +42,12 @@ namespace BungieNetCoreAPI.Destiny.Profile
                 components.Add(DestinyComponentType.PlatformSilver, platformSilver);
             if (characters != null)
                 components.Add(DestinyComponentType.Characters, characters);
+            if (characterInventories != null)
+                components.Add(DestinyComponentType.CharacterInventories, characterInventories);
+            if (characterProgressions != null)
+                components.Add(DestinyComponentType.CharacterProgressions, characterProgressions);
+            if (characterRenderData != null)
+                components.Add(DestinyComponentType.CharacterRenderData, characterRenderData);
 
             Components = new ReadOnlyDictionary<DestinyComponentType, IProfileComponent>(components);
         }

@@ -82,13 +82,18 @@ namespace BungieNetCoreTestingApp
             var profileData = await BungieClient.Platform.GetProfile(
                 membershipType: BungieMembershipType.TigerSteam,
                 destinyMembershipId: membershipId,
+
                 DestinyComponentType.Profiles,
                 DestinyComponentType.VendorReceipts,
                 DestinyComponentType.ProfileInventories,
                 DestinyComponentType.ProfileCurrencies,
                 DestinyComponentType.ProfileProgression,
                 DestinyComponentType.PlatformSilver,
-                DestinyComponentType.Characters);
+
+                DestinyComponentType.Characters,
+                DestinyComponentType.CharacterInventories,
+                DestinyComponentType.CharacterProgressions,
+                DestinyComponentType.CharacterRenderData);
 
             //var milestones = await BungieClient.Platform.GetPublicMilestones();
 
