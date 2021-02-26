@@ -19,7 +19,9 @@ namespace BungieNetCoreAPI.Destiny.Profile
             DestinyProfileComponent<ComponentVendorReceiptsData> vendorReceipts,
             DestinyProfileComponent<ComponentDestinyInventory> profileInventory,
             DestinyProfileComponent<ComponentDestinyInventory> profileCurrencies,
-            DestinyProfileComponent<ComponentDestinyProfileProgression> profileProgression)
+            DestinyProfileComponent<ComponentDestinyProfileProgression> profileProgression,
+            DestinyProfileComponent<ComponentDestinyPlatformSilver> platformSilver,
+            DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacter>> characters)
         {
             var components = new Dictionary<DestinyComponentType, IProfileComponent>();
 
@@ -33,6 +35,10 @@ namespace BungieNetCoreAPI.Destiny.Profile
                 components.Add(DestinyComponentType.ProfileCurrencies, profileCurrencies);
             if (profileProgression != null)
                 components.Add(DestinyComponentType.ProfileProgression, profileProgression);
+            if (platformSilver != null)
+                components.Add(DestinyComponentType.PlatformSilver, platformSilver);
+            if (characters != null)
+                components.Add(DestinyComponentType.Characters, characters);
 
             Components = new ReadOnlyDictionary<DestinyComponentType, IProfileComponent>(components);
         }
@@ -48,7 +54,6 @@ namespace BungieNetCoreAPI.Destiny.Profile
             else
                 return false;
         }
-
         public bool TryGetComponent<T>(out T component)
         {
             var componentData = (DestinyProfileComponent<T>)Components.Values.FirstOrDefault(x => x is DestinyProfileComponent<T>);

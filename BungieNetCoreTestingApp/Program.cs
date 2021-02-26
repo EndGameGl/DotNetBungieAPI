@@ -86,7 +86,9 @@ namespace BungieNetCoreTestingApp
                 DestinyComponentType.VendorReceipts,
                 DestinyComponentType.ProfileInventories,
                 DestinyComponentType.ProfileCurrencies,
-                DestinyComponentType.ProfileProgression);
+                DestinyComponentType.ProfileProgression,
+                DestinyComponentType.PlatformSilver,
+                DestinyComponentType.Characters);
 
             //var milestones = await BungieClient.Platform.GetPublicMilestones();
 
