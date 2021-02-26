@@ -79,7 +79,7 @@ namespace BungieNetCoreAPI
             Exists = false;
             Hash = hash;
             DefinitionEnumType = type;
-            _repository = UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>();
+            _repository = StaticUnityContainer.GetDestinyDefinitionRepositories();
             Locale = _repository.CurrentLocaleLoadContext;
         }
 
@@ -95,7 +95,7 @@ namespace BungieNetCoreAPI
             if (repo != null)
                 _repository = repo;
             else
-                _repository = UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>();
+                _repository = StaticUnityContainer.GetDestinyDefinitionRepositories();
             Locale = locale;
         }
 

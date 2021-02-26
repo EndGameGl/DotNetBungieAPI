@@ -25,11 +25,11 @@ namespace BungieNetCoreAPI.Repositories
 
         private Dictionary<DestinyLocales, ManifestDefinitionsRepository> _localisedRepositories;
 
-        public LocalisedManifestDefinitionRepositories()
+        public LocalisedManifestDefinitionRepositories(ILogger logger, IConfigurationService config, IDefinitionAssemblyData assemblyData)
         {
-            _logger = UnityContainerFactory.Container.Resolve<ILogger>();
-            _configs = UnityContainerFactory.Container.Resolve<IConfigurationService>();
-            _assemblyData = UnityContainerFactory.Container.Resolve<IDefinitionAssemblyData>();
+            _logger = logger;
+            _configs = config;
+            _assemblyData = assemblyData;
         }
 
         public void Initialize(DestinyLocales[] locales)
@@ -132,7 +132,7 @@ namespace BungieNetCoreAPI.Repositories
             if (!_assemblyData.DefinitionsToTypeMapping[definitionType].PresentInSQLiteDB)
                 throw new Exception("This definition type isn't present in SQLite database.");
 
-            var manifest = UnityContainerFactory.Container.Resolve<IManifestUpdateHandler>().CurrentManifest;
+            var manifest = StaticUnityContainer.GetManifestUpdateHandler().CurrentManifest;
             var mobileWorldContentPathsLocalePath = Path.GetFileName(manifest.MobileWorldContentPaths[locale.LocaleToString()]);
             var connectionString = @$"Data Source={_configs.Settings.VersionsRepositoryPath}\\{manifest.Version}\\MobileWorldContent\\{locale.LocaleToString()}\\{mobileWorldContentPathsLocalePath}; Version=3;";
             string result = string.Empty;

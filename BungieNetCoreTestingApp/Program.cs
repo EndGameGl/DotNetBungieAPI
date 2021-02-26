@@ -73,7 +73,7 @@ namespace BungieNetCoreTestingApp
         private static async Task MainAsync()
         {
 
-            //await _bungieClient.Run();
+            await _bungieClient.Run();
 
             var data = await BungieClient.Platform.GetMembershipDataById(20027802, BungieMembershipType.TigerSteam);
 
@@ -85,7 +85,8 @@ namespace BungieNetCoreTestingApp
                 DestinyComponentType.Profiles,
                 DestinyComponentType.VendorReceipts,
                 DestinyComponentType.ProfileInventories,
-                DestinyComponentType.ProfileCurrencies);
+                DestinyComponentType.ProfileCurrencies,
+                DestinyComponentType.ProfileProgression);
 
             //var milestones = await BungieClient.Platform.GetPublicMilestones();
 

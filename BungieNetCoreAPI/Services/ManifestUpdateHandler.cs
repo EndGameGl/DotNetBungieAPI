@@ -1,14 +1,11 @@
 ﻿using BungieNetCoreAPI.Clients;
 using BungieNetCoreAPI.Destiny;
 using BungieNetCoreAPI.Logging;
-using BungieNetCoreAPI.Repositories;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Unity;
 
 namespace BungieNetCoreAPI.Services
 {
@@ -74,7 +71,7 @@ namespace BungieNetCoreAPI.Services
         {
             _logger.Log("Downloading/verifying manifest data.", LogType.Info);
             await _currentUsedManifest.DownloadAndSaveToLocalFiles(true);
-            var repo = UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>();
+            var repo = StaticUnityContainer.GetDestinyDefinitionRepositories();
             repo.LoadAllDataFromDisk(
                 localManifestPath: $"{_versionControlPath}\\{_currentUsedManifest.Version}",
                 manifest: _currentUsedManifest);

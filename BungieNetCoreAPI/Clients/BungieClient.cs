@@ -27,12 +27,10 @@ namespace BungieNetCoreAPI.Clients
         public LogListener LogListener;
 
         public DefinitionsEnum[] LoadedTypes =>
-            UnityContainerFactory.Container.Resolve<IDefinitionAssemblyData>().DefinitionsToTypeMapping.Values.Where(x => x.PresentInSQLiteDB).Select(x => x.Type).ToArray();
+            StaticUnityContainer.GetAssemblyData().DefinitionsToTypeMapping.Values.Where(x => x.PresentInSQLiteDB).Select(x => x.Type).ToArray();
         public BungieClient(BungieClientSettings settings)
         {
-            SetUpUnityDependencies();
-
-            Configuration = UnityContainerFactory.Container.Resolve<IConfigurationService>();
+            Configuration = StaticUnityContainer.GetConfiguration();
 
             if (settings.UseExistingConfig)
                 Configuration.ApplySettingsFromConfig(settings.ExistingConfigPath);
@@ -42,7 +40,7 @@ namespace BungieNetCoreAPI.Clients
             if (string.IsNullOrWhiteSpace(Configuration.Settings.ApiKey))
                 throw new Exception("API key is empty.");
 
-            _logger = UnityContainerFactory.Container.Resolve<ILogger>();
+            _logger = StaticUnityContainer.GetLogger();
 
             if (Configuration.Settings.EnableLogging)
             {
@@ -53,7 +51,7 @@ namespace BungieNetCoreAPI.Clients
             CDN = new BungieCDNClient();
             Platform = new BungiePlatfromClient(Configuration.Settings.ApiKey);
 
-            _versionControl = UnityContainerFactory.Container.Resolve<IManifestUpdateHandler>();
+            _versionControl = StaticUnityContainer.GetManifestUpdateHandler();
 
         }
         public async Task Run()
@@ -67,7 +65,7 @@ namespace BungieNetCoreAPI.Clients
 
             if (Configuration.Settings.CacheDefinitionsInMemory)
             {
-                Repository = UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>();
+                Repository = StaticUnityContainer.GetDestinyDefinitionRepositories();
                 Repository.Initialize(Configuration.Settings.Locales);
 
                 if (Configuration.Settings.UsePreloadedCache)
@@ -88,10 +86,6 @@ namespace BungieNetCoreAPI.Clients
         public async Task SaveImageFromCDNLocallyAsync(string url, string folderPath, string filename, ImageFormat format)
         {
             await CDN.DownloadImageAndSaveAsync(url, folderPath, filename, format);
-        }
-        private void SetUpUnityDependencies()
-        {
-
         }
     }
 }

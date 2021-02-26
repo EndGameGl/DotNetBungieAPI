@@ -42,8 +42,8 @@ namespace BungieNetCoreAPI.Clients
         internal BungiePlatfromClient(string apiKey)
         {
             _apiKey = apiKey;
-            _httpClient = UnityContainerFactory.Container.Resolve<IHttpClientInstance>();
-            _logger = UnityContainerFactory.Container.Resolve<ILogger>();
+            _httpClient = StaticUnityContainer.GetService<IHttpClientInstance>();
+            _logger = StaticUnityContainer.GetService<ILogger>();
             _httpClient.AddAcceptHeader("application/json");
             _httpClient.AddHeader("X-API-Key", apiKey);          
         }
@@ -170,6 +170,7 @@ namespace BungieNetCoreAPI.Clients
 
         private async Task<T> GetData<T>(string query)
         {
+            _logger.Log($"Getting data from: {query}", LogType.Debug);
             var response = await _httpClient.Get(BungieClient.BungiePlatformUri + query);
             //if (response.IsSuccessStatusCode)
             //{

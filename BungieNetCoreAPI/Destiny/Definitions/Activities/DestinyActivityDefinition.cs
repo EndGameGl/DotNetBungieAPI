@@ -305,8 +305,8 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
         }
         public DefinitionHashPointer<DestinyActivityDefinition> GetPointer()
         {
-            var repo = UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>();
-            var settings = UnityContainerFactory.Container.Resolve<IConfigurationService>().Settings;
+            var repo = StaticUnityContainer.GetDestinyDefinitionRepositories();
+            var settings = StaticUnityContainer.GetConfiguration().Settings;
             foreach (var locale in settings.Locales)
             {
                 if (repo.TryGetDestinyDefinition<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, Hash, locale, out var definition))

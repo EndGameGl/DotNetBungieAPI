@@ -7,10 +7,10 @@ using Unity;
 
 namespace BungieNetCoreAPI.Services
 {
-    internal static class UnityContainerFactory
+    internal static class StaticUnityContainer
     {
-        internal static IUnityContainer Container;
-        static UnityContainerFactory()
+        private static IUnityContainer Container;
+        static StaticUnityContainer()
         {
             Container = new UnityContainer();
             Container.RegisterType<ILogger, Logger>(TypeLifetime.Singleton);
@@ -20,5 +20,12 @@ namespace BungieNetCoreAPI.Services
             Container.RegisterType<IManifestUpdateHandler, ManifestUpdateHandler>(TypeLifetime.Singleton);
             Container.RegisterType<IDefinitionAssemblyData, DefinitionAssemblyData>(TypeLifetime.Singleton);
         }
+        internal static T GetService<T>() => Container.Resolve<T>();
+        internal static ILogger GetLogger() => Container.Resolve<ILogger>();
+        internal static IConfigurationService GetConfiguration() => Container.Resolve<IConfigurationService>();
+        internal static IHttpClientInstance GetHTTPClient() => Container.Resolve<IHttpClientInstance>();
+        internal static ILocalisedManifestDefinitionRepositories GetDestinyDefinitionRepositories() => Container.Resolve<ILocalisedManifestDefinitionRepositories>();
+        internal static IManifestUpdateHandler GetManifestUpdateHandler() => Container.Resolve<IManifestUpdateHandler>();
+        internal static IDefinitionAssemblyData GetAssemblyData() => Container.Resolve<IDefinitionAssemblyData>();
     }
 }

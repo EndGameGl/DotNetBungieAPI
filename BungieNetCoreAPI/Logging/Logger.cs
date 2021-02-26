@@ -12,9 +12,9 @@ namespace BungieNetCoreAPI.Logging
         private readonly IConfigurationService _configuration;
         private List<LogListener> _listeners = new List<LogListener>();
 
-        public Logger()
+        public Logger(IConfigurationService config)
         {
-            _configuration = UnityContainerFactory.Container.Resolve<IConfigurationService>();
+            _configuration = config;
         }
         public void Log(string message, LogType type)
         {

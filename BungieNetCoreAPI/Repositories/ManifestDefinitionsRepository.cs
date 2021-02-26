@@ -37,10 +37,10 @@ namespace BungieNetCoreAPI.Repositories
         /// <param name="locale">Locale for this repository</param>
         internal ManifestDefinitionsRepository(DestinyLocales locale, LoadSourceMode loadMode, Dictionary<DefinitionsEnum, bool> loadOverrides)
         {
-            _logger = UnityContainerFactory.Container.Resolve<ILogger>();
+            _logger = StaticUnityContainer.GetLogger();
             _definitions = new Dictionary<DefinitionsEnum, DestinyDefinitionRepository>();
             Locale = locale;
-            _assemblyData = UnityContainerFactory.Container.Resolve<IDefinitionAssemblyData>();
+            _assemblyData = StaticUnityContainer.GetAssemblyData();
 
             foreach (var mapping in _assemblyData.DefinitionsToTypeMapping)
             {
@@ -182,7 +182,7 @@ namespace BungieNetCoreAPI.Repositories
         /// <param name="manifest"><see cref="DestinyManifest"/> with data</param>
         private void LoadDataFromJSON(string localManifestPath, DestinyManifest manifest)
         {
-            UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>().SetLocaleContext(Locale);
+            StaticUnityContainer.GetDestinyDefinitionRepositories().SetLocaleContext(Locale);
             _logger.Log($"Started loading data for localization: {Locale}", LogType.Info);
             Stopwatch fullLoadStopwatch = new Stopwatch();
             fullLoadStopwatch.Start();
@@ -205,12 +205,12 @@ namespace BungieNetCoreAPI.Repositories
 
             fullLoadStopwatch.Stop();
             _logger.Log($"Finished loading data for {Locale}: {fullLoadStopwatch.ElapsedMilliseconds} ms", LogType.Info);
-            UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>().ResetLocaleContext();
+            StaticUnityContainer.GetDestinyDefinitionRepositories().ResetLocaleContext();
             GC.Collect();
         }
         private void LoadDataFromSQLiteDB(string localManifestPath, DestinyManifest manifest)
         {
-            UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>().SetLocaleContext(Locale);
+            StaticUnityContainer.GetDestinyDefinitionRepositories().SetLocaleContext(Locale);
             _logger.Log($"Started loading data for localization: {Locale}", LogType.Info);
             Stopwatch fullLoadStopwatch = new Stopwatch();
             fullLoadStopwatch.Start();
@@ -253,7 +253,7 @@ namespace BungieNetCoreAPI.Repositories
 
             fullLoadStopwatch.Stop();
             _logger.Log($"Finished loading data for {Locale}: {fullLoadStopwatch.ElapsedMilliseconds} ms", LogType.Info);
-            UnityContainerFactory.Container.Resolve<ILocalisedManifestDefinitionRepositories>().ResetLocaleContext();
+            StaticUnityContainer.GetDestinyDefinitionRepositories().ResetLocaleContext();
         }
         public void LoadDataFromFiles(LoadSourceMode loadMode, string localManifestPath, DestinyManifest manifest)
         {

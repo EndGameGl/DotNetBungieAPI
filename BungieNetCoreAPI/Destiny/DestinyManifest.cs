@@ -4,13 +4,14 @@ using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Unity;
 
 namespace BungieNetCoreAPI.Destiny
 {
@@ -22,20 +23,21 @@ namespace BungieNetCoreAPI.Destiny
         private DateTime _versionDate;
         public string Version { get; }
         public string MobileAssetContentPath { get; }
-        public List<MobileGearAssetDataBaseEntry> MobileGearAssetDataBases { get; }     
-        public Dictionary<string, string> MobileWorldContentPaths { get; }
+        public ReadOnlyCollection<MobileGearAssetDataBaseEntry> MobileGearAssetDataBases { get; }     
+        public ReadOnlyDictionary<string, string> MobileWorldContentPaths { get; }
         /// <summary>
         /// This points to the generated JSON that contains all the Definitions. Each key is a locale. The value is a path to the aggregated world definitions (warning: large file!)
         /// </summary>
-        public Dictionary<string, string> JsonWorldContentPaths { get; }
+        public ReadOnlyDictionary<string, string> JsonWorldContentPaths { get; }
         /// <summary>
         /// This points to the generated JSON that contains all the Definitions. Each key is a locale. The value is a dictionary, where the key is a definition type by name, and the value is the path to the file for that definition. 
         /// <para />
         /// WARNING: This is unsafe and subject to change - do not depend on data in these files staying around long-term.
         /// </summary>
-        public Dictionary<string, Dictionary<string, string>> JsonWorldComponentContentPaths { get; }
+        public ReadOnlyDictionary<string, ReadOnlyDictionary<string, string>> JsonWorldComponentContentPaths { get; }
         public string MobileClanBannerDatabasePath { get; }
-        public Dictionary<string, string> MobileGearCDN { get; }
+        public ReadOnlyDictionary<string, string> MobileGearCDN { get; }
+
         [JsonIgnore]
         public DateTime VersionDate
         {
@@ -50,18 +52,21 @@ namespace BungieNetCoreAPI.Destiny
         }
 
         [JsonConstructor]
-        private DestinyManifest(string version, string mobileAssetContentPath, List<MobileGearAssetDataBaseEntry> mobileGearAssetDataBases, Dictionary<string, string> mobileWorldContentPaths,
-            Dictionary<string, string> jsonWorldContentPaths, Dictionary<string, Dictionary<string, string>> jsonWorldComponentContentPaths, string mobileClanBannerDatabasePath,
+        internal DestinyManifest(string version, string mobileAssetContentPath, MobileGearAssetDataBaseEntry[] mobileGearAssetDataBases, 
+            Dictionary<string, string> mobileWorldContentPaths, Dictionary<string, string> jsonWorldContentPaths, 
+            Dictionary<string, Dictionary<string, string>> jsonWorldComponentContentPaths, string mobileClanBannerDatabasePath,
             Dictionary<string, string> mobileGearCDN)
         {
             Version = version;
             MobileAssetContentPath = mobileAssetContentPath;
-            MobileGearAssetDataBases = mobileGearAssetDataBases;
-            MobileWorldContentPaths = mobileWorldContentPaths;
-            JsonWorldContentPaths = jsonWorldContentPaths;
-            JsonWorldComponentContentPaths = jsonWorldComponentContentPaths;
+            MobileGearAssetDataBases = mobileGearAssetDataBases.AsReadOnlyOrEmpty();
+            MobileWorldContentPaths = mobileWorldContentPaths.AsReadOnlyDictionaryOrEmpty();
+            JsonWorldContentPaths = jsonWorldContentPaths.AsReadOnlyDictionaryOrEmpty();
+            JsonWorldComponentContentPaths = jsonWorldComponentContentPaths
+                .ToDictionary(x => x.Key, x => x.Value.AsReadOnlyDictionaryOrEmpty())
+                .AsReadOnlyDictionaryOrEmpty();
             MobileClanBannerDatabasePath = mobileClanBannerDatabasePath;
-            MobileGearCDN = mobileGearCDN;
+            MobileGearCDN = mobileGearCDN.AsReadOnlyDictionaryOrEmpty();
             if (TryFetchDate(this, out var date))
             {
                 VersionDate = date;
@@ -70,15 +75,15 @@ namespace BungieNetCoreAPI.Destiny
 
         public async Task DownloadAndSaveToLocalFiles(bool unpackSqlite)
         {
-            var logger = UnityContainerFactory.Container.Resolve<ILogger>();
-            string path = UnityContainerFactory.Container.Resolve<IConfigurationService>().Settings.VersionsRepositoryPath;
+            var logger = StaticUnityContainer.GetLogger();
+            string path = StaticUnityContainer.GetConfiguration().Settings.VersionsRepositoryPath;
             if (string.IsNullOrWhiteSpace(path))
                 throw new Exception("Specify files path in configs.json or use DownloadAndSaveToLocalFiles(string) method");
             path = $"{path}\\{Version}";
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
 
-            var _httpClient = UnityContainerFactory.Container.Resolve<IHttpClientInstance>();
+            var _httpClient = StaticUnityContainer.GetHTTPClient();
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 

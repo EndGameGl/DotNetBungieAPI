@@ -17,7 +17,7 @@ namespace BungieNetCoreAPI.Clients
         private readonly IHttpClientInstance _httpClient;
         internal BungieCDNClient()
         {
-            _httpClient = UnityContainerFactory.Container.Resolve<IHttpClientInstance>();
+            _httpClient = StaticUnityContainer.GetHTTPClient();
         }
         /// <summary>
         /// Downloads json data from CDN
