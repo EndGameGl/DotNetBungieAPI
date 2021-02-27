@@ -97,7 +97,10 @@ namespace BungieNetCoreTestingApp
                 DestinyComponentType.CharacterActivities,
                 DestinyComponentType.CharacterEquipment,
 
-                DestinyComponentType.ItemInstances);
+                DestinyComponentType.ItemInstances,
+                DestinyComponentType.ItemObjectives,
+                DestinyComponentType.ItemPerks,
+                DestinyComponentType.ItemRenderData);
 
             //var milestones = await BungieClient.Platform.GetPublicMilestones();
 
