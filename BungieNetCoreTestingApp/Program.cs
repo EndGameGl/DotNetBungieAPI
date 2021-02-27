@@ -93,7 +93,11 @@ namespace BungieNetCoreTestingApp
                 DestinyComponentType.Characters,
                 DestinyComponentType.CharacterInventories,
                 DestinyComponentType.CharacterProgressions,
-                DestinyComponentType.CharacterRenderData);
+                DestinyComponentType.CharacterRenderData,
+                DestinyComponentType.CharacterActivities,
+                DestinyComponentType.CharacterEquipment,
+
+                DestinyComponentType.ItemInstances);
 
             //var milestones = await BungieClient.Platform.GetPublicMilestones();
 

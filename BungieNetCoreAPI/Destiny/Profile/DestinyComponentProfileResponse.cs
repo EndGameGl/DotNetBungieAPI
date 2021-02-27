@@ -12,7 +12,7 @@ namespace BungieNetCoreAPI.Destiny.Profile
     public class DestinyComponentProfileResponse
     {
         public ReadOnlyDictionary<DestinyComponentType, IProfileComponent> Components { get; }
-
+        //public ComponentDestinyItemSet ItemComponents { get; }
         [JsonConstructor]
         internal DestinyComponentProfileResponse(
             DestinyProfileComponent<ComponentProfileData> profile,
@@ -24,7 +24,10 @@ namespace BungieNetCoreAPI.Destiny.Profile
             DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacter>> characters,
             DestinyProfileComponent<Dictionary<long, ComponentDestinyInventory>> characterInventories,
             DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacterProgression>> characterProgressions,
-            DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacterRender>> characterRenderData)
+            DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacterRender>> characterRenderData,
+            DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacterActivities>> characterActivities,
+            DestinyProfileComponent<Dictionary<long, ComponentDestinyInventory>> characterEquipment,
+            ComponentDestinyItemSet itemComponents)
         {
             var components = new Dictionary<DestinyComponentType, IProfileComponent>();
 
@@ -48,6 +51,14 @@ namespace BungieNetCoreAPI.Destiny.Profile
                 components.Add(DestinyComponentType.CharacterProgressions, characterProgressions);
             if (characterRenderData != null)
                 components.Add(DestinyComponentType.CharacterRenderData, characterRenderData);
+            if (characterActivities != null)
+                components.Add(DestinyComponentType.CharacterActivities, characterActivities);
+            if (characterEquipment != null)
+                components.Add(DestinyComponentType.CharacterEquipment, characterEquipment);
+            if (itemComponents != null)
+                foreach (var itemComponent in itemComponents.Components)
+                    components.Add(itemComponent.Key, itemComponent.Value);
+
 
             Components = new ReadOnlyDictionary<DestinyComponentType, IProfileComponent>(components);
         }

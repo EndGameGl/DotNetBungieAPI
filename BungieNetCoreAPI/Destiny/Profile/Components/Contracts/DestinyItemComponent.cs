@@ -1,6 +1,7 @@
 ﻿using BungieNetCoreAPI.Destiny.Definitions.InventoryBuckets;
 using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
 using BungieNetCoreAPI.Destiny.Definitions.Metrics;
+using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
 
@@ -24,6 +25,8 @@ namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
         public DefinitionHashPointer<DestinyMetricDefinition> Metric { get; }
         public DestinyObjectiveProgress MetricObjective { get; }
         public int? VersionNumber { get; }
+
+        [JsonConstructor]
         internal DestinyItemComponent(uint itemHash, long? itemInstanceId, int quantity, ItemBindStatus bindStatus, BucketItemLocation location, uint bucketHash,
             TransferStatuses transferStatus, bool lockable, ItemState state, uint? overrideStyleItemHash, DateTime? expirationDate, bool isWrapper,
             int[] tooltipNotificationIndexes, uint? metricHash, DestinyObjectiveProgress metricObjective, int? versionNumber)
