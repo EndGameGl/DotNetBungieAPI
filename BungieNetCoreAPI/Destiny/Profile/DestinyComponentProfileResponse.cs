@@ -12,7 +12,8 @@ namespace BungieNetCoreAPI.Destiny.Profile
     public class DestinyComponentProfileResponse
     {
         public ReadOnlyDictionary<DestinyComponentType, IProfileComponent> Components { get; }
-        //public ComponentDestinyItemSet ItemComponents { get; }
+        private ReadOnlyDictionary<long, ComponentСharacterUninstancedItems> CharacterUninstancedItemComponents { get; }
+
         [JsonConstructor]
         internal DestinyComponentProfileResponse(
             DestinyProfileComponent<ComponentProfileData> profile,
@@ -27,7 +28,8 @@ namespace BungieNetCoreAPI.Destiny.Profile
             DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacterRender>> characterRenderData,
             DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacterActivities>> characterActivities,
             DestinyProfileComponent<Dictionary<long, ComponentDestinyInventory>> characterEquipment,
-            ComponentDestinyItemSet itemComponents)
+            ComponentDestinyItemSet itemComponents,
+            Dictionary<long, ComponentСharacterUninstancedItems> characterUninstancedItemComponents)
         {
             var components = new Dictionary<DestinyComponentType, IProfileComponent>();
 
@@ -58,12 +60,13 @@ namespace BungieNetCoreAPI.Destiny.Profile
             if (itemComponents != null)
                 foreach (var itemComponent in itemComponents.Components)
                     components.Add(itemComponent.Key, itemComponent.Value);
-
+            if (characterUninstancedItemComponents != null)
+                CharacterUninstancedItemComponents = characterUninstancedItemComponents.AsReadOnlyDictionaryOrEmpty();
 
             Components = new ReadOnlyDictionary<DestinyComponentType, IProfileComponent>(components);
         }
 
-        public bool TryGetComponent<T>(DestinyComponentType type, out T component)
+        private bool TryGetComponent<T>(DestinyComponentType type, out T component)
         {
             component = default;
             if (Components.TryGetValue(type, out var foundComponent))
@@ -74,11 +77,54 @@ namespace BungieNetCoreAPI.Destiny.Profile
             else
                 return false;
         }
-        public bool TryGetComponent<T>(out T component)
+        public bool TryGetProfileData(out DestinyProfileComponent<ComponentProfileData> data)
+            => TryGetComponent(DestinyComponentType.Profiles, out data);
+        public bool TryGetVendorReceipts(out DestinyProfileComponent<ComponentVendorReceiptsData> data)
+            => TryGetComponent(DestinyComponentType.VendorReceipts, out data);
+        public bool TryGetProfileInventory(out DestinyProfileComponent<ComponentDestinyInventory> data)
+            => TryGetComponent(DestinyComponentType.ProfileInventories, out data);
+        public bool TryGetProfileCurrencies(out DestinyProfileComponent<ComponentDestinyInventory> data)
+            => TryGetComponent(DestinyComponentType.ProfileCurrencies, out data);
+        public bool TryGetProfileProgressions(out DestinyProfileComponent<ComponentDestinyProfileProgression> data)
+            => TryGetComponent(DestinyComponentType.ProfileProgression, out data);
+        public bool TryGetPlatformSilver(out DestinyProfileComponent<ComponentDestinyPlatformSilver> data)
+            => TryGetComponent(DestinyComponentType.PlatformSilver, out data);
+        public bool TryGetCharacters(out DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacter>> data)
+            => TryGetComponent(DestinyComponentType.Characters, out data);
+        public bool TryGetCharacterInventories(out DestinyProfileComponent<Dictionary<long, ComponentDestinyInventory>> data)
+            => TryGetComponent(DestinyComponentType.CharacterInventories, out data);
+        public bool TryGetCharacterProgressions(out DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacterProgression>> data)
+            => TryGetComponent(DestinyComponentType.CharacterProgressions, out data);
+        public bool TryGetCharacterRenderData(out DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacterRender>> data)
+            => TryGetComponent(DestinyComponentType.CharacterRenderData, out data);
+        public bool TryGetCharacterActivities(out DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacterActivities>> data)
+            => TryGetComponent(DestinyComponentType.CharacterActivities, out data);
+        public bool TryGetCharacterEquipment(out DestinyProfileComponent<Dictionary<long, ComponentDestinyInventory>> data)
+            => TryGetComponent(DestinyComponentType.CharacterEquipment, out data);
+        public bool TryGetItemInstances(out DestinyProfileComponent<Dictionary<long, ComponentDestinyItemInstance>> data)
+            => TryGetComponent(DestinyComponentType.ItemInstances, out data);
+        public bool TryGetItemObjectives(out DestinyProfileComponent<Dictionary<long, ComponentDestinyItemObjectives>> data)
+            => TryGetComponent(DestinyComponentType.ItemObjectives, out data);
+        public bool TryGetItemPerks(out DestinyProfileComponent<Dictionary<long, ComponentDestinyItemPerks>> data)
+            => TryGetComponent(DestinyComponentType.ItemPerks, out data);
+        public bool TryGetItemRenderData(out DestinyProfileComponent<Dictionary<long, ComponentDestinyItemRender>> data)
+            => TryGetComponent(DestinyComponentType.ItemRenderData, out data);
+        public bool TryGetItemStats(out DestinyProfileComponent<Dictionary<long, ComponentDestinyItemStats>> data)
+            => TryGetComponent(DestinyComponentType.ItemStats, out data);
+        public bool TryGetItemSockets(out DestinyProfileComponent<Dictionary<long, ComponentDestinyItemSockets>> data)
+            => TryGetComponent(DestinyComponentType.ItemSockets, out data);
+        public bool TryGetItemTalentGrids(out DestinyProfileComponent<Dictionary<long, ComponentDestinyItemTalentGrid>> data)
+         => TryGetComponent(DestinyComponentType.ItemTalentGrids, out data);
+        public bool TryGetItemCommonData(out ReadOnlyDictionary<long, ComponentСharacterUninstancedItems> data)
         {
-            var componentData = (DestinyProfileComponent<T>)Components.Values.FirstOrDefault(x => x is DestinyProfileComponent<T>);
-            component = componentData.Data;
-            return component != null;
+            data = CharacterUninstancedItemComponents;
+            return data != null;
         }
+        public bool TryGetItemPlugStates(out DestinyProfileComponent<Dictionary<uint, ComponentDestinyItemPlug>> data)
+         => TryGetComponent(DestinyComponentType.ItemTalentGrids, out data);
+        public bool TryGetItemPlugObjectives(out DestinyProfileComponent<Dictionary<long, ComponentDestinyItemPlugObjectives>> data)
+         => TryGetComponent(DestinyComponentType.ItemPlugObjectives, out data);
+        public bool TryGetItemReusablePlugs(out DestinyProfileComponent<Dictionary<long, ComponentDestinyItemReusablePlugs>> data)
+         => TryGetComponent(DestinyComponentType.ItemReusablePlugs, out data);
     }
 }

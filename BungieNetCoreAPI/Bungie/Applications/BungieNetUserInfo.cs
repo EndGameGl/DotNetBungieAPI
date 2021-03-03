@@ -9,12 +9,12 @@ namespace BungieNetCoreAPI.Bungie.Applications
         public BungieMembershipType CrossSaveOverride { get; }
         public bool IsPublic { get; }
         public BungieMembershipType MembershipType { get; }
-        public string MembershipId { get; }
+        public long MembershipId { get; }
         public string DisplayName { get; }
 
         [JsonConstructor]
-        private BungieNetUserInfo(string supplementalDisplayName, string iconPath, BungieMembershipType crossSaveOverride, bool isPublic, BungieMembershipType membershipType,
-            string membershipId, string displayName)
+        internal BungieNetUserInfo(string supplementalDisplayName, string iconPath, BungieMembershipType crossSaveOverride, bool isPublic, 
+            BungieMembershipType membershipType, long membershipId, string displayName)
         {
             SupplementalDisplayName = supplementalDisplayName;
             IconPath = iconPath;

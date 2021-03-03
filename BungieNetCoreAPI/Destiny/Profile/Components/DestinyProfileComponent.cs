@@ -5,7 +5,7 @@ namespace BungieNetCoreAPI.Destiny.Profile
 {
     public class DestinyProfileComponent<T> : IProfileComponent
     {
-        public T Data { get; }
+        public T Data { get; internal set; }
         public ComponentPrivacy Privacy { get; }
         /// <summary>
         /// If true, this component is disabled.
@@ -19,5 +19,6 @@ namespace BungieNetCoreAPI.Destiny.Profile
             Privacy = privacy;
             IsDisabled = disabled;
         }
+        internal DestinyProfileComponent() { }
     }
 }

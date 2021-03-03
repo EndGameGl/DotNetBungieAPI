@@ -9,6 +9,7 @@ using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -120,7 +121,7 @@ namespace BungieNetCoreAPI.Clients
         /// <returns></returns>
         public async Task<DestinyComponentProfileResponse> GetProfile(BungieMembershipType membershipType, long destinyMembershipId, params DestinyComponentType[] componentTypes)
         {
-            return await GetData<DestinyComponentProfileResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/?components={string.Join(",", componentTypes)}");
+            return await GetData<DestinyComponentProfileResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/?components={string.Join(",", componentTypes.Select(x => (int)x))}");
         }
         public async Task<Dictionary<uint, GetPublicMilestonesResponse>> GetPublicMilestones()
         {
@@ -174,6 +175,7 @@ namespace BungieNetCoreAPI.Clients
             var response = await _httpClient.Get(BungieClient.BungiePlatformUri + query);
             //if (response.IsSuccessStatusCode)
             //{
+            //var stringResponse = await response.Content.ReadAsStringAsync();
             var bungieResponse = JsonConvert.DeserializeObject<BungieResponse<T>>(await response.Content.ReadAsStringAsync());
             if (bungieResponse.ErrorCode == PlatformErrorCodes.Success && bungieResponse.Response != null)
             {

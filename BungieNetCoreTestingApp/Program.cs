@@ -73,15 +73,11 @@ namespace BungieNetCoreTestingApp
         private static async Task MainAsync()
         {
 
-            await _bungieClient.Run();
-
-            var data = await BungieClient.Platform.GetMembershipDataById(20027802, BungieMembershipType.TigerSteam);
-
-            var membershipId = long.Parse(data.DestinyMemberships.First().MembershipId);
+            //await _bungieClient.Run();
 
             var profileData = await BungieClient.Platform.GetProfile(
                 membershipType: BungieMembershipType.TigerSteam,
-                destinyMembershipId: membershipId,
+                destinyMembershipId: 4611686018483306402,
 
                 DestinyComponentType.Profiles,
                 DestinyComponentType.VendorReceipts,
@@ -100,7 +96,20 @@ namespace BungieNetCoreTestingApp
                 DestinyComponentType.ItemInstances,
                 DestinyComponentType.ItemObjectives,
                 DestinyComponentType.ItemPerks,
-                DestinyComponentType.ItemRenderData);
+                DestinyComponentType.ItemRenderData,
+                DestinyComponentType.ItemStats,
+                DestinyComponentType.ItemSockets,
+                DestinyComponentType.ItemTalentGrids,
+                DestinyComponentType.ItemCommonData,
+                DestinyComponentType.ItemPlugStates,
+                DestinyComponentType.ItemPlugObjectives,
+                DestinyComponentType.ItemReusablePlugs,
+
+                DestinyComponentType.Vendors,
+                DestinyComponentType.VendorCategories,
+                DestinyComponentType.VendorSales);
+
+            
 
             //var milestones = await BungieClient.Platform.GetPublicMilestones();
 
