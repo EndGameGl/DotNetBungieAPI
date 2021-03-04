@@ -107,7 +107,11 @@ namespace BungieNetCoreTestingApp
 
                 DestinyComponentType.Vendors,
                 DestinyComponentType.VendorCategories,
-                DestinyComponentType.VendorSales);
+                DestinyComponentType.VendorSales,
+
+                DestinyComponentType.Kiosks,
+                DestinyComponentType.CurrencyLookups,
+                DestinyComponentType.PresentationNodes);
 
             
 

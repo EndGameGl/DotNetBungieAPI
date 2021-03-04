@@ -11,9 +11,10 @@ namespace BungieNetCoreAPI.Destiny.Profile
 {
     public class DestinyComponentProfileResponse
     {
-        public ReadOnlyDictionary<DestinyComponentType, IProfileComponent> Components { get; }
+        private ReadOnlyDictionary<DestinyComponentType, IProfileComponent> Components { get; }
         private ReadOnlyDictionary<long, ComponentСharacterUninstancedItems> CharacterUninstancedItemComponents { get; }
-
+        private DestinyProfileComponent<Dictionary<long, ComponentDestinyKiosks>> CharacterKiosks { get; }
+        private DestinyProfileComponent<ComponentDestinyKiosks> ProfileKiosks { get; }
         [JsonConstructor]
         internal DestinyComponentProfileResponse(
             DestinyProfileComponent<ComponentProfileData> profile,
@@ -29,7 +30,11 @@ namespace BungieNetCoreAPI.Destiny.Profile
             DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacterActivities>> characterActivities,
             DestinyProfileComponent<Dictionary<long, ComponentDestinyInventory>> characterEquipment,
             ComponentDestinyItemSet itemComponents,
-            Dictionary<long, ComponentСharacterUninstancedItems> characterUninstancedItemComponents)
+            Dictionary<long, ComponentСharacterUninstancedItems> characterUninstancedItemComponents,
+            DestinyProfileComponent<Dictionary<long, ComponentDestinyKiosks>> characterKiosks,
+            DestinyProfileComponent<ComponentDestinyKiosks> profileKiosks,
+            DestinyProfileComponent<Dictionary<long, ComponentDestinyCurrencies>> characterCurrencyLookups,
+            DestinyProfileComponent<Dictionary<long, ComponentDestinyPresentationNodes>> characterPresentationNodes)
         {
             var components = new Dictionary<DestinyComponentType, IProfileComponent>();
 
@@ -62,6 +67,12 @@ namespace BungieNetCoreAPI.Destiny.Profile
                     components.Add(itemComponent.Key, itemComponent.Value);
             if (characterUninstancedItemComponents != null)
                 CharacterUninstancedItemComponents = characterUninstancedItemComponents.AsReadOnlyDictionaryOrEmpty();
+            CharacterKiosks = characterKiosks;
+            ProfileKiosks = profileKiosks;
+            if (characterCurrencyLookups != null)
+                components.Add(DestinyComponentType.CurrencyLookups, characterCurrencyLookups);
+            if (characterPresentationNodes != null)
+                components.Add(DestinyComponentType.PresentationNodes, characterPresentationNodes);
 
             Components = new ReadOnlyDictionary<DestinyComponentType, IProfileComponent>(components);
         }
@@ -126,5 +137,19 @@ namespace BungieNetCoreAPI.Destiny.Profile
          => TryGetComponent(DestinyComponentType.ItemPlugObjectives, out data);
         public bool TryGetItemReusablePlugs(out DestinyProfileComponent<Dictionary<long, ComponentDestinyItemReusablePlugs>> data)
          => TryGetComponent(DestinyComponentType.ItemReusablePlugs, out data);
+        public bool TryGetCharacterKiosks(out DestinyProfileComponent<Dictionary<long, ComponentDestinyKiosks>> data)
+        {
+            data = CharacterKiosks;
+            return data != null;
+        }
+        public bool TryGetProfileiosks(out DestinyProfileComponent<ComponentDestinyKiosks> data)
+        {
+            data = ProfileKiosks;
+            return data != null;
+        }
+        public bool TryGetCharacterCurrencyLookups(out DestinyProfileComponent<Dictionary<long, ComponentDestinyCurrencies>> data)
+         => TryGetComponent(DestinyComponentType.CurrencyLookups, out data);
+        public bool TryGetCharacterPresentationNodes(out DestinyProfileComponent<Dictionary<long, ComponentDestinyPresentationNodes>> data)
+         => TryGetComponent(DestinyComponentType.PresentationNodes, out data);
     }
 }
