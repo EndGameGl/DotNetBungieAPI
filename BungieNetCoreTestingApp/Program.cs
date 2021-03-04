@@ -111,7 +111,8 @@ namespace BungieNetCoreTestingApp
 
                 DestinyComponentType.Kiosks,
                 DestinyComponentType.CurrencyLookups,
-                DestinyComponentType.PresentationNodes);
+                DestinyComponentType.PresentationNodes,
+                DestinyComponentType.Collectibles);
 
             
 

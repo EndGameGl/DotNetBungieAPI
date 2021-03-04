@@ -15,6 +15,8 @@ namespace BungieNetCoreAPI.Destiny.Profile
         private ReadOnlyDictionary<long, ComponentСharacterUninstancedItems> CharacterUninstancedItemComponents { get; }
         private DestinyProfileComponent<Dictionary<long, ComponentDestinyKiosks>> CharacterKiosks { get; }
         private DestinyProfileComponent<ComponentDestinyKiosks> ProfileKiosks { get; }
+        private DestinyProfileComponent<Dictionary<long, ComponentDestinyCollectibles>> CharacterCollectibles { get; }
+        private DestinyProfileComponent<ComponentDestinyProfileCollectibles> ProfileCollectibles { get; }
         [JsonConstructor]
         internal DestinyComponentProfileResponse(
             DestinyProfileComponent<ComponentProfileData> profile,
@@ -34,7 +36,9 @@ namespace BungieNetCoreAPI.Destiny.Profile
             DestinyProfileComponent<Dictionary<long, ComponentDestinyKiosks>> characterKiosks,
             DestinyProfileComponent<ComponentDestinyKiosks> profileKiosks,
             DestinyProfileComponent<Dictionary<long, ComponentDestinyCurrencies>> characterCurrencyLookups,
-            DestinyProfileComponent<Dictionary<long, ComponentDestinyPresentationNodes>> characterPresentationNodes)
+            DestinyProfileComponent<Dictionary<long, ComponentDestinyPresentationNodes>> characterPresentationNodes,
+            DestinyProfileComponent<Dictionary<long, ComponentDestinyCollectibles>> characterCollectibles,
+            DestinyProfileComponent<ComponentDestinyProfileCollectibles> profileCollectibles)
         {
             var components = new Dictionary<DestinyComponentType, IProfileComponent>();
 
@@ -73,6 +77,8 @@ namespace BungieNetCoreAPI.Destiny.Profile
                 components.Add(DestinyComponentType.CurrencyLookups, characterCurrencyLookups);
             if (characterPresentationNodes != null)
                 components.Add(DestinyComponentType.PresentationNodes, characterPresentationNodes);
+            CharacterCollectibles = characterCollectibles;
+            ProfileCollectibles = profileCollectibles;
 
             Components = new ReadOnlyDictionary<DestinyComponentType, IProfileComponent>(components);
         }
@@ -151,5 +157,15 @@ namespace BungieNetCoreAPI.Destiny.Profile
          => TryGetComponent(DestinyComponentType.CurrencyLookups, out data);
         public bool TryGetCharacterPresentationNodes(out DestinyProfileComponent<Dictionary<long, ComponentDestinyPresentationNodes>> data)
          => TryGetComponent(DestinyComponentType.PresentationNodes, out data);
+        public bool TryGetCharacterCollectibles(out DestinyProfileComponent<Dictionary<long, ComponentDestinyCollectibles>> data)
+        {
+            data = CharacterCollectibles;
+            return data != null;
+        }
+        public bool TryGetProfileCollectibles(out DestinyProfileComponent<ComponentDestinyProfileCollectibles> data)
+        {
+            data = ProfileCollectibles;
+            return data != null;
+        }
     }
 }
