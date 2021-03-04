@@ -123,6 +123,10 @@ namespace BungieNetCoreAPI.Clients
         {
             return await GetData<DestinyComponentProfileResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/?components={string.Join(",", componentTypes.Select(x => (int)x))}");
         }
+        public async Task<DestinyComponentCharacterResponse> GetCharacter(BungieMembershipType membershipType, long destinyMembershipId, long characterId, params DestinyComponentType[] componentTypes)
+        {
+            return await GetData<DestinyComponentCharacterResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/?components={string.Join(",", componentTypes.Select(x => (int)x))}");
+        }
         public async Task<Dictionary<uint, GetPublicMilestonesResponse>> GetPublicMilestones()
         {
             return await GetData<Dictionary<uint, GetPublicMilestonesResponse>>($"Destiny2/Milestones");
