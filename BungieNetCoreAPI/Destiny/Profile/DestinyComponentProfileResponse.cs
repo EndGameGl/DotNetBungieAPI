@@ -1,11 +1,8 @@
 ﻿using BungieNetCoreAPI.Destiny.Profile.Components;
 using BungieNetCoreAPI.Destiny.Profile.Components.Contracts;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Profile
 {
@@ -17,6 +14,8 @@ namespace BungieNetCoreAPI.Destiny.Profile
         private DestinyProfileComponent<ComponentDestinyKiosks> ProfileKiosks { get; }
         private DestinyProfileComponent<Dictionary<long, ComponentDestinyCollectibles>> CharacterCollectibles { get; }
         private DestinyProfileComponent<ComponentDestinyProfileCollectibles> ProfileCollectibles { get; }
+        private DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacterRecords>> CharacterRecords { get; }
+        private DestinyProfileComponent<ComponentDestinyProfileRecords> ProfileRecords { get; }
         [JsonConstructor]
         internal DestinyComponentProfileResponse(
             DestinyProfileComponent<ComponentProfileData> profile,
@@ -38,7 +37,11 @@ namespace BungieNetCoreAPI.Destiny.Profile
             DestinyProfileComponent<Dictionary<long, ComponentDestinyCurrencies>> characterCurrencyLookups,
             DestinyProfileComponent<Dictionary<long, ComponentDestinyPresentationNodes>> characterPresentationNodes,
             DestinyProfileComponent<Dictionary<long, ComponentDestinyCollectibles>> characterCollectibles,
-            DestinyProfileComponent<ComponentDestinyProfileCollectibles> profileCollectibles)
+            DestinyProfileComponent<ComponentDestinyProfileCollectibles> profileCollectibles,
+            DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacterRecords>> characterRecords,
+            DestinyProfileComponent<ComponentDestinyProfileRecords> profileRecords,
+            DestinyProfileComponent<ComponentDestinyProfileTransitory> profileTransitoryData,
+            DestinyProfileComponent<ComponentDestinyMetrics> metrics)
         {
             var components = new Dictionary<DestinyComponentType, IProfileComponent>();
 
@@ -79,6 +82,12 @@ namespace BungieNetCoreAPI.Destiny.Profile
                 components.Add(DestinyComponentType.PresentationNodes, characterPresentationNodes);
             CharacterCollectibles = characterCollectibles;
             ProfileCollectibles = profileCollectibles;
+            CharacterRecords = characterRecords;
+            ProfileRecords = profileRecords;
+            if (profileTransitoryData != null)
+                components.Add(DestinyComponentType.Transitory, profileTransitoryData);
+            if (metrics != null)
+                components.Add(DestinyComponentType.Metrics, metrics);
 
             Components = new ReadOnlyDictionary<DestinyComponentType, IProfileComponent>(components);
         }
@@ -167,5 +176,19 @@ namespace BungieNetCoreAPI.Destiny.Profile
             data = ProfileCollectibles;
             return data != null;
         }
+        public bool TryGetCharacterRecords(out DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacterRecords>> data)
+        {
+            data = CharacterRecords;
+            return data != null;
+        }
+        public bool TryGetProfileRecords(out DestinyProfileComponent<ComponentDestinyProfileRecords> data)
+        {
+            data = ProfileRecords;
+            return data != null;
+        }
+        public bool TryGetProfileTransitoryData(out DestinyProfileComponent<ComponentDestinyProfileTransitory> data)
+         => TryGetComponent(DestinyComponentType.Transitory, out data);
+        public bool TryGetMetrics(out DestinyProfileComponent<ComponentDestinyMetrics> data)
+         => TryGetComponent(DestinyComponentType.Metrics, out data);
     }
 }
