@@ -18,7 +18,8 @@ namespace BungieNetCoreAPI.Destiny.Profile
             DestinyProfileComponent<ComponentDestinyCharacterActivities> activities,
             DestinyProfileComponent<ComponentDestinyInventory> equipment,
             DestinyProfileComponent<ComponentDestinyKiosks> kiosks,
-            DestinyProfileComponent<ComponentDestinyPlugSets> plugSets)
+            DestinyProfileComponent<ComponentDestinyPlugSets> plugSets,
+            DestinyProfileComponent<ComponentDestinyPresentationNodes> presentationNodes)
         {
 
         }

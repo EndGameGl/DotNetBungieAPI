@@ -16,6 +16,8 @@ namespace BungieNetCoreAPI.Destiny.Profile
         private DestinyProfileComponent<ComponentDestinyProfileCollectibles> ProfileCollectibles { get; }
         private DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacterRecords>> CharacterRecords { get; }
         private DestinyProfileComponent<ComponentDestinyProfileRecords> ProfileRecords { get; }
+        private DestinyProfileComponent<Dictionary<long, ComponentDestinyPlugSets>> CharacterPlugSets { get; }
+        private DestinyProfileComponent<ComponentDestinyPlugSets> ProfilePlugSets { get; }
         [JsonConstructor]
         internal DestinyComponentProfileResponse(
             DestinyProfileComponent<ComponentProfileData> profile,
@@ -41,7 +43,9 @@ namespace BungieNetCoreAPI.Destiny.Profile
             DestinyProfileComponent<Dictionary<long, ComponentDestinyCharacterRecords>> characterRecords,
             DestinyProfileComponent<ComponentDestinyProfileRecords> profileRecords,
             DestinyProfileComponent<ComponentDestinyProfileTransitory> profileTransitoryData,
-            DestinyProfileComponent<ComponentDestinyMetrics> metrics)
+            DestinyProfileComponent<ComponentDestinyMetrics> metrics,
+            DestinyProfileComponent<Dictionary<long, ComponentDestinyPlugSets>> characterPlugSets,
+            DestinyProfileComponent<ComponentDestinyPlugSets> profilePlugSets)
         {
             var components = new Dictionary<DestinyComponentType, IProfileComponent>();
 
@@ -88,6 +92,8 @@ namespace BungieNetCoreAPI.Destiny.Profile
                 components.Add(DestinyComponentType.Transitory, profileTransitoryData);
             if (metrics != null)
                 components.Add(DestinyComponentType.Metrics, metrics);
+            CharacterPlugSets = characterPlugSets;
+            ProfilePlugSets = profilePlugSets;
 
             Components = new ReadOnlyDictionary<DestinyComponentType, IProfileComponent>(components);
         }
@@ -190,5 +196,15 @@ namespace BungieNetCoreAPI.Destiny.Profile
          => TryGetComponent(DestinyComponentType.Transitory, out data);
         public bool TryGetMetrics(out DestinyProfileComponent<ComponentDestinyMetrics> data)
          => TryGetComponent(DestinyComponentType.Metrics, out data);
+        public bool TryGetCharactherPlugSets(out DestinyProfileComponent<Dictionary<long, ComponentDestinyPlugSets>> data)
+        {
+            data = CharacterPlugSets;
+            return data != null;
+        }
+        public bool TryGetProfilePlugSets(out DestinyProfileComponent<ComponentDestinyPlugSets> data)
+        {
+            data = ProfilePlugSets;
+            return data != null;
+        }
     }
 }
