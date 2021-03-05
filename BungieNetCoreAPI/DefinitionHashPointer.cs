@@ -68,32 +68,6 @@ namespace BungieNetCoreAPI
             }
         }
 
-        public Task<T> ValueTask
-        {
-            get
-            {
-                if (m_value != null && Exists)
-                    return new Task<T>(() => m_value);
-                if (HasValidHash)
-                {
-                    if (_repository.TryGetDestinyDefinition<T>(DefinitionEnumType, Hash.Value, Locale, out var definition))
-                    {
-                        return definition;
-                    }
-                    else if (BungieClient.Configuration.Settings.TryDownloadMissingDefinitions)
-                    {
-                        definition = BungieClient.Platform.GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value).Result;
-                        _repository.AddDefinitionToCache(DefinitionEnumType, definition, Locale);
-                        return definition;
-                    }
-                    else
-                        throw new Exception($"No {DefinitionEnumType} was found with {Hash} hash.");
-                }
-                else
-                    throw new Exception("Invalid hash value.");
-            }
-        }
-
         /// <summary>
         /// Struct .ctor
         /// </summary>

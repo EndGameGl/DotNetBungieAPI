@@ -1,6 +1,7 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using BungieNetCoreAPI.Destiny;
 using BungieNetCoreAPI.Destiny.Definitions;
+using BungieNetCoreAPI.Destiny.Definitions.HistoricalStats;
 using BungieNetCoreAPI.Logging;
 using BungieNetCoreAPI.Services;
 using Newtonsoft.Json.Linq;
@@ -27,6 +28,7 @@ namespace BungieNetCoreAPI.Repositories
         private readonly IDefinitionAssemblyData _assemblyData;
 
         private Dictionary<DefinitionsEnum, DestinyDefinitionRepository> _definitions;
+        private Dictionary<string, DestinyHistoricalStatsDefinition> _historicalStatsDefinitions;
         /// <summary>
         /// Locale of this repository
         /// </summary>
@@ -39,21 +41,27 @@ namespace BungieNetCoreAPI.Repositories
         {
             _logger = StaticUnityContainer.GetLogger();
             _definitions = new Dictionary<DefinitionsEnum, DestinyDefinitionRepository>();
+            _historicalStatsDefinitions = new Dictionary<string, DestinyHistoricalStatsDefinition>();
             Locale = locale;
             _assemblyData = StaticUnityContainer.GetAssemblyData();
 
             foreach (var mapping in _assemblyData.DefinitionsToTypeMapping)
             {
-                if (mapping.Value.IsEnabled)
+                if (!mapping.Value.AttributeData.IsManuallyDisabled && mapping.Value.AttributeData.KeyType == DefinitionKeyType.UInt)
                 {
                     switch (loadMode)
                     {
-                        case LoadSourceMode.SQLite:
-                            if (mapping.Value.PresentInSQLiteDB == true)
-                                _definitions.Add(mapping.Key, new DestinyDefinitionRepository(mapping.Value.DefinitionType));
-                            break;
                         case LoadSourceMode.JSON:
-                            _definitions.Add(mapping.Key, new DestinyDefinitionRepository(mapping.Value.DefinitionType));
+                            if (mapping.Value.AttributeData.Sources.HasFlag(DefinitionSources.JSON))
+                            {
+                                _definitions.Add(mapping.Key, new DestinyDefinitionRepository(mapping.Value.DefinitionType));
+                            }
+                            break;
+                        case LoadSourceMode.SQLite:
+                            if (mapping.Value.AttributeData.Sources.HasFlag(DefinitionSources.SQLite))
+                            {
+                                _definitions.Add(mapping.Key, new DestinyDefinitionRepository(mapping.Value.DefinitionType));
+                            }
                             break;
                     }
                 }
@@ -248,9 +256,34 @@ namespace BungieNetCoreAPI.Repositories
                     }
                     _definitions[key].SortByIndex();
                 }
+
+                _logger.Log($"Loading definitions from DestinyHistoricalStatsDefinition ({Locale})", LogType.Info);
+                var historicalStatsQuery = $"SELECT * FROM DestinyHistoricalStatsDefinition";
+                SQLiteCommand histCommand = new SQLiteCommand
+                {
+                    Connection = connection,
+                    CommandText = historicalStatsQuery
+                };
+                var histType = typeof(DestinyHistoricalStatsDefinition);
+                try
+                {
+                    var reader = histCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var byteArray = (byte[])reader["json"];
+                        var jsonString = Encoding.UTF8.GetString(byteArray, 0, byteArray.Length);
+                        var definition = JObject.Parse(jsonString);
+                        var deserializedDestinyDefinition = (DestinyHistoricalStatsDefinition)definition.ToObject(histType);
+                        _historicalStatsDefinitions.Add(reader["key"].ToString(), deserializedDestinyDefinition);
+                    }
+                }
+                catch (Exception e)
+                {
+                    _logger.Log(e.Message, LogType.Error);
+                }
+
                 connection.Close();
             }
-
             fullLoadStopwatch.Stop();
             _logger.Log($"Finished loading data for {Locale}: {fullLoadStopwatch.ElapsedMilliseconds} ms", LogType.Info);
             StaticUnityContainer.GetDestinyDefinitionRepositories().ResetLocaleContext();

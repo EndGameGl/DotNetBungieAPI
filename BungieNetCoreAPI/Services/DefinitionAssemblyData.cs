@@ -28,6 +28,7 @@ namespace BungieNetCoreAPI.Services
                      var attrs = x.GetCustomAttributes(typeof(DestinyDefinitionAttribute), true);
                      return attrs != null && attrs.Length > 0;
                  });
+
             foreach (var type in mappedTypes)
             {
                 var definitionAttribute =
@@ -38,11 +39,10 @@ namespace BungieNetCoreAPI.Services
                 var enumValue = definitionAttribute.DefinitionEnumType;
                 var useRule = new DefinitionUseRule()
                 {
-                    DefinitionName = enumValue.ToString(),
+                    DefinitionStringName = enumValue.ToString(),
                     DefinitionType = type,
-                    IsEnabled = definitionAttribute.ShouldBeLoaded,
-                    PresentInSQLiteDB = definitionAttribute.PresentInSQLiteDB,
-                    Type = enumValue
+                    AttributeData = definitionAttribute,
+                    UserOverrideLoadValue = null
                 };
                 DefinitionsToTypeMapping.Add(enumValue, useRule);
                 TypeToEnumMapping.Add(useRule.DefinitionType, enumValue);

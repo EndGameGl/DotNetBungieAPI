@@ -129,7 +129,7 @@ namespace BungieNetCoreAPI.Repositories
         }
         public string FetchJSONFromDB(DestinyLocales locale, DefinitionsEnum definitionType, uint hash)
         {
-            if (!_assemblyData.DefinitionsToTypeMapping[definitionType].PresentInSQLiteDB)
+            if (!_assemblyData.DefinitionsToTypeMapping[definitionType].AttributeData.Sources.HasFlag(Attributes.DefinitionSources.SQLite))
                 throw new Exception("This definition type isn't present in SQLite database.");
 
             var manifest = StaticUnityContainer.GetManifestUpdateHandler().CurrentManifest;

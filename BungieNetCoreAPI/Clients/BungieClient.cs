@@ -26,8 +26,6 @@ namespace BungieNetCoreAPI.Clients
         public ILocalisedManifestDefinitionRepositories Repository;
         public LogListener LogListener;
 
-        public DefinitionsEnum[] LoadedTypes =>
-            StaticUnityContainer.GetAssemblyData().DefinitionsToTypeMapping.Values.Where(x => x.PresentInSQLiteDB).Select(x => x.Type).ToArray();
         public BungieClient(BungieClientSettings settings)
         {
             Configuration = StaticUnityContainer.GetConfiguration();
