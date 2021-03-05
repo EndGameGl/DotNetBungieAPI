@@ -231,7 +231,15 @@ namespace BungieNetCoreAPI.Clients
             return await GetData<DestinyCollectibleNodeDetailResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Collectibles/{collectiblePresentationNodeHash}/?components={componentTypes.ComponentsToIntString()}");
         }
 
-
+        /// <summary>
+        /// Gets the available post game carnage report for the activity ID.
+        /// </summary>
+        /// <param name="activityId"></param>
+        /// <returns></returns>
+        public async Task<DestinyPostGameCarnageReportData> GetPostGameCarnageReport(long activityId)
+        {
+            return await GetData<DestinyPostGameCarnageReportData>($"Destiny2/Stats/PostGameCarnageReport/{activityId}/");
+        }
 
         /// <summary>
         /// Gets public information about currently available Milestones.
