@@ -3,6 +3,7 @@ using BungieNetCoreAPI.Bungie.Applications;
 using BungieNetCoreAPI.Destiny;
 using BungieNetCoreAPI.Destiny.Definitions;
 using BungieNetCoreAPI.Destiny.Profile;
+using BungieNetCoreAPI.Destiny.Profile.Components.Contracts;
 using BungieNetCoreAPI.Destiny.Responses;
 using BungieNetCoreAPI.Logging;
 using BungieNetCoreAPI.Services;
@@ -93,6 +94,10 @@ namespace BungieNetCoreAPI.Clients
         #endregion
 
         #region Destiny 2 methods
+        /// <summary>
+        /// Returns the current version of the manifest.
+        /// </summary>
+        /// <returns></returns>
         public async Task<DestinyManifest> GetDestinyManifest()
         {
             _logger.Log("Loading destiny manifest...", LogType.Info);
@@ -100,14 +105,35 @@ namespace BungieNetCoreAPI.Clients
             _logger.Log($"Loaded destiny manifest: Version {manifest.Version}", LogType.Info);
             return manifest;
         }
+        /// <summary>
+        /// Returns the static definition of an entity of the given Type and hash identifier.
+        /// </summary>
+        /// <typeparam name="T">Type of entity.</typeparam>
+        /// <param name="entityType">The type of entity for whom you would like results.</param>
+        /// <param name="hash">The hash identifier for the specific Entity you want returned.</param>
+        /// <returns></returns>
         public async Task<T> GetDestinyEntityDefinition<T>(DefinitionsEnum entityType, uint hash) where T : IDestinyDefinition
         {
-            return await GetData<T>($"Destiny2/Manifest/{entityType.ToString()}/{hash}");
+            return await GetData<T>($"Destiny2/Manifest/{entityType}/{hash}");
         }
+        /// <summary>
+        /// Returns a list of Destiny memberships given a full Gamertag or PSN ID. Unless you pass returnOriginalProfile=true, this will return membership information for the users' Primary Cross Save Profile if they are engaged in cross save rather than any original Destiny profile that is now being overridden.
+        /// </summary>
+        /// <param name="membershipType">A valid non-BungieNet membership type, or All.</param>
+        /// <param name="displayName">The full gamertag or PSN id of the player. Spaces and case are ignored.</param>
+        /// <param name="returnOriginalProfile">If passed in and set to true, we will return the original Destiny Profile(s) linked to that gamertag, and not their currently active Destiny Profile.</param>
+        /// <returns></returns>
         public async Task<BungieNetUserInfo[]> SearchDestinyPlayer(BungieMembershipType membershipType, string displayName, bool returnOriginalProfile = false)
         {
             return await GetData<BungieNetUserInfo[]>($"Destiny2/SearchDestinyPlayer/{membershipType}/{displayName}/?returnOriginalProfile={returnOriginalProfile}");
         }
+        /// <summary>
+        /// Returns a summary information about all profiles linked to the requesting membership type/membership ID that have valid Destiny information.
+        /// </summary>
+        /// <param name="membershipType">The type for the membership whose linked Destiny accounts you want returned.</param>
+        /// <param name="membershipId">The ID of the membership whose linked Destiny accounts you want returned. Make sure your membership ID matches its Membership Type: don't pass us a PSN membership ID and the XBox membership type, it's not going to work!</param>
+        /// <param name="getAllMemberships">if set to 'true', all memberships regardless of whether they're obscured by overrides will be returned. Normal privacy restrictions on account linking will still apply no matter what.</param>
+        /// <returns></returns>
         public async Task<BungieNetUserMembershipWithLinkedDestinyProfiles> GetLinkedProfiles(BungieMembershipType membershipType, long membershipId, bool getAllMemberships = false)
         {
             return await GetData<BungieNetUserMembershipWithLinkedDestinyProfiles>($"Destiny2/{membershipType}/Profile/{membershipId}/LinkedProfiles/?getAllMemberships={getAllMemberships}");
@@ -123,14 +149,65 @@ namespace BungieNetCoreAPI.Clients
         {
             return await GetData<DestinyComponentProfileResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/?components={string.Join(",", componentTypes.Select(x => (int)x))}");
         }
+        /// <summary>
+        /// Returns character information for the supplied character.
+        /// </summary>
+        /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+        /// <param name="destinyMembershipId">Destiny membership ID.</param>
+        /// <param name="characterId">ID of the character.</param>
+        /// <param name="componentTypes">List of components to return</param>
+        /// <returns>Character information for the supplied character.</returns>
         public async Task<DestinyComponentCharacterResponse> GetCharacter(BungieMembershipType membershipType, long destinyMembershipId, long characterId, params DestinyComponentType[] componentTypes)
         {
             return await GetData<DestinyComponentCharacterResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/?components={string.Join(",", componentTypes.Select(x => (int)x))}");
         }
+        /// <summary>
+        /// Returns information on the weekly clan rewards and if the clan has earned them or not. Note that this will always report rewards as not redeemed.
+        /// </summary>
+        /// <param name="groupId">A valid group id of clan.</param>
+        /// <returns></returns>
+        public async Task<DestinyMilestone> GetClanWeeklyRewardState(long groupId)
+        {
+            return await GetData<DestinyMilestone>($"Destiny2/Clan/{groupId}/WeeklyRewardState/");
+        }
+        /// <summary>
+        /// Retrieve the details of an instanced Destiny Item. An instanced Destiny item is one with an ItemInstanceId. Non-instanced items, such as materials, have no useful instance-specific details and thus are not queryable here.
+        /// </summary>
+        /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+        /// <param name="destinyMembershipId">The membership ID of the destiny profile.</param>
+        /// <param name="itemInstanceId">The Instance ID of the destiny item.</param>
+        /// <param name="componentTypes">List of components to return</param>
+        /// <returns></returns>
+        public async Task<DestinyComponentItemResponse> GetItem(BungieMembershipType membershipType, long destinyMembershipId, long itemInstanceId, params DestinyComponentType[] componentTypes)
+        {
+            return await GetData<DestinyComponentItemResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Item/{itemInstanceId}/?components={string.Join(",", componentTypes.Select(x => (int)x))}");
+        }
+        /// <summary>
+        /// Get currently available vendors from the list of vendors that can possibly have rotating inventory. Note that this does not include things like preview vendors and vendors-as-kiosks, neither of whom have rotating/dynamic inventories. Use their definitions as-is for those.
+        /// </summary>
+        /// <param name="membershipType"></param>
+        /// <param name="destinyMembershipId"></param>
+        /// <param name="characterId"></param>
+        /// <param name="componentTypes"></param>
+        /// <returns></returns>
+        public async Task<DestinyVendorsResponse> GetVendors(BungieMembershipType membershipType, long destinyMembershipId, long characterId, params DestinyComponentType[] componentTypes)
+        {
+            return await GetData<DestinyVendorsResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/?components={string.Join(",", componentTypes.Select(x => (int)x))}");
+        }
+
+        /// <summary>
+        /// Gets public information about currently available Milestones.
+        /// </summary>
+        /// <returns></returns>
         public async Task<Dictionary<uint, GetPublicMilestonesResponse>> GetPublicMilestones()
         {
             return await GetData<Dictionary<uint, GetPublicMilestonesResponse>>($"Destiny2/Milestones");
         }
+        /// <summary>
+        /// Gets custom localized content for the milestone of the given hash, if it exists.
+        /// </summary>
+        /// <param name="milestoneHash">The identifier for the milestone to be returned.</param>
+        /// <returns></returns>
         public async Task<DestinyMilestoneContent> GetPublicMilestoneContent(uint milestoneHash)
         {
             return await GetData<DestinyMilestoneContent>($"/Destiny2/Milestones/{milestoneHash}/Content/");

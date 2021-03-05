@@ -56,30 +56,9 @@ namespace BungieNetCoreTestingApp
 {
     class Program
     {
-        private static BungieClient _bungieClient;
-        static void Main(string[] args)
+        private static DestinyComponentType[] ALL_COMPONENTS_ARRAY = new DestinyComponentType[]
         {
-
-            _bungieClient = new BungieClient(
-                settings: new BungieClientSettings()
-                {
-                    UseExistingConfig = true,
-                    ExistingConfigPath = "configs.json"
-                });
-            _bungieClient.LogListener.OnNewMessage += (mes) => Console.WriteLine(mes);
-            MainAsync().GetAwaiter().GetResult();
-        }
-
-        private static async Task MainAsync()
-        {
-
-            //await _bungieClient.Run();
-
-            var profileData = await BungieClient.Platform.GetProfile(
-                membershipType: BungieMembershipType.TigerSteam,
-                destinyMembershipId: 4611686018483306402,
-
-                DestinyComponentType.Profiles,
+            DestinyComponentType.Profiles,
                 DestinyComponentType.VendorReceipts,
                 DestinyComponentType.ProfileInventories,
                 DestinyComponentType.ProfileCurrencies,
@@ -115,9 +94,35 @@ namespace BungieNetCoreTestingApp
                 DestinyComponentType.Collectibles,
                 DestinyComponentType.Records,
                 DestinyComponentType.Transitory,
-                DestinyComponentType.Metrics);
+                DestinyComponentType.Metrics
+        };
+        private static BungieClient _bungieClient;
+        static void Main(string[] args)
+        {
 
-            
+            _bungieClient = new BungieClient(
+                settings: new BungieClientSettings()
+                {
+                    UseExistingConfig = true,
+                    ExistingConfigPath = "configs.json"
+                });
+            _bungieClient.LogListener.OnNewMessage += (mes) => Console.WriteLine(mes);
+            MainAsync().GetAwaiter().GetResult();
+        }
+
+        private static async Task MainAsync()
+        {
+
+            //await _bungieClient.Run();
+
+            //var profileData = await BungieClient.Platform.GetItem(
+            //    membershipType: BungieMembershipType.TigerSteam,
+            //    destinyMembershipId: 4611686018483306402,
+            //    itemInstanceId: 6917529269734026699,
+
+            //    ALL_COMPONENTS_ARRAY);
+
+            //var clanData = await BungieClient.Platform.GetClanWeeklyRewardState(4394229);
 
             //var milestones = await BungieClient.Platform.GetPublicMilestones();
 
@@ -171,7 +176,6 @@ namespace BungieNetCoreTestingApp
 
             Console.WriteLine($"Ran op {amount} times in {totalTime} ms ({amount / totalTime} op/ms)");
         }
-
         private void PrintWeapons(List<DestinyInventoryItemDefinition> weapons)
         {
             string indent = new string(' ', 4);
