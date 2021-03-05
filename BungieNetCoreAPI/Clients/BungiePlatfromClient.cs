@@ -194,6 +194,28 @@ namespace BungieNetCoreAPI.Clients
         {
             return await GetData<DestinyVendorsResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/?components={string.Join(",", componentTypes.Select(x => (int)x))}");
         }
+        /// <summary>
+        /// Get the details of a specific Vendor.
+        /// </summary>
+        /// <param name="membershipType"></param>
+        /// <param name="destinyMembershipId"></param>
+        /// <param name="characterId"></param>
+        /// <param name="vendorHash"></param>
+        /// <param name="componentTypes"></param>
+        /// <returns></returns>
+        public async Task<DestinyVendorResponse> GetVendor(BungieMembershipType membershipType, long destinyMembershipId, long characterId, uint vendorHash, params DestinyComponentType[] componentTypes)
+        {
+            return await GetData<DestinyVendorResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/{vendorHash}/?components={string.Join(",", componentTypes.Select(x => (int)x))}");
+        }
+        /// <summary>
+        /// Get items available from vendors where the vendors have items for sale that are common for everyone.
+        /// </summary>
+        /// <param name="componentTypes"></param>
+        /// <returns></returns>
+        public async Task<DestinyPublicVendorsResponse> GetPublicVendors(params DestinyComponentType[] componentTypes)
+        {
+            return await GetData<DestinyPublicVendorsResponse>($"Destiny2/Vendors/?components={string.Join(",", componentTypes.Select(x => (int)x))}");
+        }
 
         /// <summary>
         /// Gets public information about currently available Milestones.

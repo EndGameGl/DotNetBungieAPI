@@ -113,14 +113,15 @@ namespace BungieNetCoreTestingApp
         private static async Task MainAsync()
         {
 
-            //await _bungieClient.Run();
+            await _bungieClient.Run();
 
-            //var profileData = await BungieClient.Platform.GetItem(
+            //var profileData = await BungieClient.Platform.GetProfile(
             //    membershipType: BungieMembershipType.TigerSteam,
             //    destinyMembershipId: 4611686018483306402,
-            //    itemInstanceId: 6917529269734026699,
 
             //    ALL_COMPONENTS_ARRAY);
+
+            var vendorData = await BungieClient.Platform.GetPublicVendors(ALL_COMPONENTS_ARRAY);
 
             //var clanData = await BungieClient.Platform.GetClanWeeklyRewardState(4394229);
 
