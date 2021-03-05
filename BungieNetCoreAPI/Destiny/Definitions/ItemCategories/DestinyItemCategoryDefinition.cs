@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ItemCategories
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyItemCategoryDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyItemCategoryDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyItemCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinyItemCategoryDefinition>
     {
         /// <summary>

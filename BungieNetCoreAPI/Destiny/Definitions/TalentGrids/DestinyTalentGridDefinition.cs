@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.TalentGrids
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyTalentGridDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyTalentGridDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyTalentGridDefinition : IDestinyDefinition
     {
         //public List<object> ExclusiveSets { get; }

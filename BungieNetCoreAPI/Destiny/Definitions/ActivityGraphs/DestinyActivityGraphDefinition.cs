@@ -15,7 +15,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs
     /// <para/>
     /// If we end up having time, we may end up trying to manually populate those here: but the last time we tried that, before the lead-up to D1, it proved to be unmaintainable as the game's content changed. So don't bet the farm on us providing that content in this definition.
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyActivityGraphDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyActivityGraphDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyActivityGraphDefinition : IDestinyDefinition, IDeepEquatable<DestinyActivityGraphDefinition>
     {
         /// <summary>

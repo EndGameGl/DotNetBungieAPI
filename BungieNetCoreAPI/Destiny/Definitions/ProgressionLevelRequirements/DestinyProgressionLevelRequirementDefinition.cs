@@ -10,7 +10,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ProgressionLevelRequirements
     /// <para/>
     /// For instance, say a character receives a new Auto Rifle, and that Auto Rifle's DestinyInventoryItemDefinition.quality.progressionLevelRequirementHash property is pointing at one of these DestinyProgressionLevelRequirementDefinitions. Let's pretend also that the progressionHash it is pointing at is the Character Level progression.In that situation, the character's level will be used to interpolate a value in the requirementCurve property. The value picked up from that interpolation will be the required level for the item.
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyProgressionLevelRequirementDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyProgressionLevelRequirementDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyProgressionLevelRequirementDefinition : IDestinyDefinition, IDeepEquatable<DestinyProgressionLevelRequirementDefinition>
     {
         public DefinitionHashPointer<DestinyProgressionDefinition> Progression { get; }

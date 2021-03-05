@@ -3,7 +3,6 @@ using BungieNetCoreAPI.Destiny.Definitions.Objectives;
 using BungieNetCoreAPI.Destiny.Definitions.Records;
 using BungieNetCoreAPI.Destiny.Definitions.Traits;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
@@ -15,7 +14,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
     /// <para/>
     /// - Collectibles - Records(Or, as the public will call them, "Triumphs." Don't ask me why we're overloading the term "Triumph", it still hurts me to think about it) - Metrics(aka Stat Trackers) - Other Presentation Nodes, allowing a tree of Presentation Nodes to be created
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyPresentationNodeDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyPresentationNodeDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyPresentationNodeDefinition : IDestinyDefinition, IDeepEquatable<DestinyPresentationNodeDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

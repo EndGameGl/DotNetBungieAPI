@@ -8,7 +8,6 @@ using BungieNetCoreAPI.Destiny.Definitions.Lores;
 using BungieNetCoreAPI.Destiny.Definitions.Objectives;
 using BungieNetCoreAPI.Destiny.Definitions.Seasons;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
@@ -18,7 +17,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
     /// <para/>
     /// In practice, you will want to associate this data with "live" item data from a Bungie.Net Platform call: these definitions describe the item in generic, non-instanced terms: but an actual instance of an item can vary widely from these generic definitions.
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyInventoryItemDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyInventoryItemDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyInventoryItemDefinition : IDestinyDefinition, IDeepEquatable<DestinyInventoryItemDefinition>
     {
         /// <summary>

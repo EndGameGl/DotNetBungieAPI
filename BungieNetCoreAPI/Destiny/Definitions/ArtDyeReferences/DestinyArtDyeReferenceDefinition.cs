@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ArtDyeReferences
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyArtDyeReferenceDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyArtDyeReferenceDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyArtDyeReferenceDefinition : IDestinyDefinition, IDeepEquatable<DestinyArtDyeReferenceDefinition>
     {
         public uint ArtDyeHash { get; }

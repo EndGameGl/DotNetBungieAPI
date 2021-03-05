@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.SandboxPatterns
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinySandboxPatternDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinySandboxPatternDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinySandboxPatternDefinition : IDestinyDefinition
     {
         public uint PatternGlobalTagIdHash { get; }

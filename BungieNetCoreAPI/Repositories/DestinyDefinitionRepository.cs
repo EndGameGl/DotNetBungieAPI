@@ -11,8 +11,8 @@ namespace BungieNetCoreAPI.Repositories
     /// <typeparam name="T">More specific type of <see cref="IDestinyDefinition"/></typeparam>
     public class DestinyDefinitionRepository
     {
-        public Type Type { get; }
         private Dictionary<uint, IDestinyDefinition> _definitions;
+        public Type Type { get; }
         public DestinyDefinitionRepository(Type storedType)
         {
             Type = storedType;

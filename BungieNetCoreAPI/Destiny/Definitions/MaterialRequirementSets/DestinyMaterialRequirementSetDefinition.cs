@@ -9,7 +9,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.MaterialRequirementSets
     /// <para/>
     /// A variety of other entities refer to these as gatekeepers and payments for actions that can be performed in game.
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyMaterialRequirementSetDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyMaterialRequirementSetDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyMaterialRequirementSetDefinition : IDestinyDefinition, IDeepEquatable<DestinyMaterialRequirementSetDefinition>
     {
         /// <summary>

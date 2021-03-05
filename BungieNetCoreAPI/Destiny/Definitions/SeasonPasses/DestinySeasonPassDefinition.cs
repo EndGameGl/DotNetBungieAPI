@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.SeasonPasses
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinySeasonPassDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinySeasonPassDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinySeasonPassDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

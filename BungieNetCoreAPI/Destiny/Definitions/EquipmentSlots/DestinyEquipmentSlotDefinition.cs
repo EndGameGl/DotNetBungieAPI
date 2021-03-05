@@ -12,7 +12,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.EquipmentSlots
     /// <para/>
     /// An Equipment Slot must have a related Inventory Bucket, but not all inventory buckets must have Equipment Slots.
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyEquipmentSlotDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyEquipmentSlotDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyEquipmentSlotDefinition : IDestinyDefinition, IDeepEquatable<DestinyEquipmentSlotDefinition>
     {
         /// <summary>

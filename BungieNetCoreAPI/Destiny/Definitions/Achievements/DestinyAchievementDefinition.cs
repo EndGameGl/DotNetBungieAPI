@@ -6,7 +6,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Achievements
     /// <summary>
     /// Represents account achievements, such as Steam ones
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyAchievementDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyAchievementDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyAchievementDefinition : IDestinyDefinition, IDeepEquatable<DestinyAchievementDefinition>
     {
         public int AcccumulatorThreshold { get; }        

@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.PlatformBucketMappings
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyPlatformBucketMappingDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyPlatformBucketMappingDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyPlatformBucketMappingDefinition : IDestinyDefinition, IDeepEquatable<DestinyPlatformBucketMappingDefinition>
     {
         public int MembershipType { get; }

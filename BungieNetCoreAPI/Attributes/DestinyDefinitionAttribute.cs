@@ -1,20 +1,20 @@
 ﻿using BungieNetCoreAPI.Destiny;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BungieNetCoreAPI.Attributes
 {
     public class DestinyDefinitionAttribute : Attribute
     {
         public DefinitionsEnum DefinitionEnumType { get; }
-        public bool PresentInSQLiteDB { get; }
-        public bool ShouldBeLoaded { get; }
-        public DestinyDefinitionAttribute(DefinitionsEnum type, bool presentInSQLiteDB = true, bool shouldBeLoaded = true)
+        public DefinitionSources Sources { get; }
+        public DefinitionKeyType KeyType { get; }
+        public bool IsManuallyDisabled { get; }
+        public DestinyDefinitionAttribute(DefinitionsEnum type, DefinitionSources sources, DefinitionKeyType keyType, bool isManuallyDisabled = false)
         {
             DefinitionEnumType = type;
-            PresentInSQLiteDB = presentInSQLiteDB;
-            ShouldBeLoaded = shouldBeLoaded;
+            Sources = sources;
+            KeyType = keyType;
+            IsManuallyDisabled = isManuallyDisabled;
         }
     }
 }

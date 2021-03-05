@@ -3,7 +3,6 @@ using BungieNetCoreAPI.Destiny.Definitions.ActivityModes;
 using BungieNetCoreAPI.Destiny.Definitions.ActivityTypes;
 using BungieNetCoreAPI.Destiny.Definitions.Destinations;
 using BungieNetCoreAPI.Destiny.Definitions.Places;
-using BungieNetCoreAPI.Repositories;
 using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
@@ -23,7 +22,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Activities
     /// <para/>
     /// Activities also have Activity Types, but unfortunately in Destiny 2 these are even less reliable of a source of information than they were in Destiny 1. I will be looking into ways to provide more reliable sources for type information as time goes on, but for now we're going to have to deal with the limitations. See DestinyActivityTypeDefinition for more information.
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyActivityDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyActivityDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyActivityDefinition : IDestinyDefinition, IDeepEquatable<DestinyActivityDefinition>
     {
         /// <summary>

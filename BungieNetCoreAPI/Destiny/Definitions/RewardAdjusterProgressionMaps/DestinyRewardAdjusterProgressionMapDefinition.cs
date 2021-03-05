@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.RewardAdjusterProgressionMaps
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyRewardAdjusterProgressionMapDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyRewardAdjusterProgressionMapDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyRewardAdjusterProgressionMapDefinition : IDestinyDefinition
     {
         public bool IsAdditive { get; }

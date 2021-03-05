@@ -27,6 +27,7 @@
         DestinyEquipmentSlotDefinition,
         DestinyFactionDefinition,
         DestinyGenderDefinition,
+        DestinyHistoricalStatsDefinition,
         DestinyInventoryBucketDefinition,
         DestinyInventoryItemDefinition,
         DestinyInventoryItemLiteDefinition,

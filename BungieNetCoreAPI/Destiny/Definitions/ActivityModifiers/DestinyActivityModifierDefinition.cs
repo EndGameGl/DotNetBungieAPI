@@ -1,13 +1,12 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ActivityModifiers
 {
     /// <summary>
     /// Modifiers - in Destiny 1, these were referred to as "Skulls" - are changes that can be applied to an Activity.
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyActivityModifierDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyActivityModifierDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyActivityModifierDefinition : IDestinyDefinition, IDeepEquatable<DestinyActivityModifierDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

@@ -3,7 +3,6 @@ using BungieNetCoreAPI.Destiny.Definitions.Activities;
 using BungieNetCoreAPI.Destiny.Definitions.Places;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Destinations
@@ -13,7 +12,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Destinations
     /// <para />
     /// A "Destination" is a specific region/city/area of a larger "Place". For instance, a Place might be Earth where a Destination might be Bellevue, Washington. (Please, pick a more interesting destination if you come to visit Earth).
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyDestinationDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyDestinationDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyDestinationDefinition : IDestinyDefinition, IDeepEquatable<DestinyDestinationDefinition>
     {
         /// <summary>

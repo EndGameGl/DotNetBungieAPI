@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyCharacterCustomizationOptionDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyCharacterCustomizationOptionDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyCharacterCustomizationOptionDefinition : IDestinyDefinition, IDeepEquatable<DestinyCharacterCustomizationOptionDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

@@ -8,7 +8,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ItemTierTypes
     /// <para/>
     /// It also provides some base data for infusion that could be useful.
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyItemTierTypeDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyItemTierTypeDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyItemTierTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyItemTierTypeDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

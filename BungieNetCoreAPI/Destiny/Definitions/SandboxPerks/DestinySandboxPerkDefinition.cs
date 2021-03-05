@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.SandboxPerks
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinySandboxPerkDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinySandboxPerkDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinySandboxPerkDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

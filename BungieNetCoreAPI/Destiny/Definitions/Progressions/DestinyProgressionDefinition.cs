@@ -16,7 +16,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Progressions
     /// <para/>
     /// Earned experience is calculated in a variety of ways, determined by the Progression's scope. These go from looking up a stored value to performing exceedingly obtuse calculations. This is why we provide live data in DestinyCharacterProgressionComponent.progressions, so you don't have to worry about those.
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyProgressionDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyProgressionDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyProgressionDefinition : IDestinyDefinition, IDeepEquatable<DestinyProgressionDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

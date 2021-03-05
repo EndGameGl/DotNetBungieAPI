@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodeBases
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyPresentationNodeBaseDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyPresentationNodeBaseDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyPresentationNodeBaseDefinition : IDestinyDefinition, IDeepEquatable<DestinyPresentationNodeBaseDefinition>
     {
         public bool Blacklisted { get; }

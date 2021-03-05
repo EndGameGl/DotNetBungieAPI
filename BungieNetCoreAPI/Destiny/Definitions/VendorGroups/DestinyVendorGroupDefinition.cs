@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.VendorGroups
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyVendorGroupDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyVendorGroupDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyVendorGroupDefinition : IDestinyDefinition
     {
         /// <summary>

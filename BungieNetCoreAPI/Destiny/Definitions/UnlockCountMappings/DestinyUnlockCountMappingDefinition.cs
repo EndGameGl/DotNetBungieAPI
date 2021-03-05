@@ -7,7 +7,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.UnlockCountMappings
     /// <summary>
     /// Empty definition
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyUnlockCountMappingDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyUnlockCountMappingDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyUnlockCountMappingDefinition : IDestinyDefinition
     {
         public DefinitionHashPointer<DestinyUnlockDefinition> UnlockValue { get; }

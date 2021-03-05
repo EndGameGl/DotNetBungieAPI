@@ -8,7 +8,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.UnlockEvents
     /// <summary>
     /// Nothing usable atm
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyUnlockEventDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyUnlockEventDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyUnlockEventDefinition : IDestinyDefinition
     {
         public DefinitionHashPointer<DestinyUnlockValueDefinition> SequenceLastUpdatedUnlockValue { get; }

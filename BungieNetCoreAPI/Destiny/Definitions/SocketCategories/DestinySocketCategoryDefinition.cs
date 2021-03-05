@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.SocketCategories
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinySocketCategoryDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinySocketCategoryDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinySocketCategoryDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

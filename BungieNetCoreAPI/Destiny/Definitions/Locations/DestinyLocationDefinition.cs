@@ -9,7 +9,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Locations
     /// <summary>
     /// A "Location" is a sort of shortcut for referring to a specific combination of Activity, Destination, Place, and even Bubble or NavPoint within a space.
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyLocationDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyLocationDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyLocationDefinition : IDestinyDefinition, IDeepEquatable<DestinyLocationDefinition>
     {
         /// <summary>

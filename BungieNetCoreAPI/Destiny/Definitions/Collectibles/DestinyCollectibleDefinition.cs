@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Collectibles
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyCollectibleDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyCollectibleDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyCollectibleDefinition : IDestinyDefinition, IDeepEquatable<DestinyCollectibleDefinition>
     {
         public CollectibleAcquisitionInfo AcquisitionInfo { get; }

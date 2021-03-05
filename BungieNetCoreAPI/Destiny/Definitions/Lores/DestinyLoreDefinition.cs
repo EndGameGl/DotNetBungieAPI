@@ -6,7 +6,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Lores
     /// <summary>
     /// These are definitions for in-game "Lore," meant to be narrative enhancements of the game experience.
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyLoreDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyLoreDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyLoreDefinition : IDestinyDefinition, IDeepEquatable<DestinyLoreDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

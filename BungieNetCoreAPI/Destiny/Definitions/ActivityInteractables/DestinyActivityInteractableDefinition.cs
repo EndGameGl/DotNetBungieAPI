@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ActivityInteractables
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyActivityInteractableDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyActivityInteractableDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyActivityInteractableDefinition : IDestinyDefinition, IDeepEquatable<DestinyActivityInteractableDefinition>
     {
         public ReadOnlyCollection<ActivityInteractableEntry> Entries { get; }
@@ -39,6 +39,6 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityInteractables
                    Hash == other.Hash &&
                    Index == other.Index &&
                    Redacted == other.Redacted;
-        }        
+        }
     }
 }

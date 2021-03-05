@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ArtDyeChannels
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyArtDyeChannelDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyArtDyeChannelDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyArtDyeChannelDefinition : IDestinyDefinition, IDeepEquatable<DestinyArtDyeChannelDefinition>
     {
         public uint ChannelHash { get; }

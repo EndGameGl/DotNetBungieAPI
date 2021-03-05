@@ -7,7 +7,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.RewardMappings
     /// Empty atm
     /// </summary>
 
-    [DestinyDefinition(type: DefinitionsEnum.DestinyRewardMappingDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyRewardMappingDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyRewardMappingDefinition : IDestinyDefinition
     {
         public uint MappingHash { get; }

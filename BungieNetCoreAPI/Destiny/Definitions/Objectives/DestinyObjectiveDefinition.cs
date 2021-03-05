@@ -19,7 +19,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Objectives
     /// <para/>
     /// Objectives have progress, a notion of having been Completed, human readable data describing the task to be accomplished, and a lot of optional tack-on data that can enhance the information provided about the task.
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyObjectiveDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyObjectiveDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyObjectiveDefinition : IDestinyDefinition, IDeepEquatable<DestinyObjectiveDefinition>
     {
         /// <summary>

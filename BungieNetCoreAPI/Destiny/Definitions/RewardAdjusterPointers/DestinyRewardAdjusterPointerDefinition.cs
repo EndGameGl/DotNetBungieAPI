@@ -6,7 +6,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.RewardAdjusterPointers
     /// <summary>
     /// Empty atm
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyRewardAdjusterPointerDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyRewardAdjusterPointerDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyRewardAdjusterPointerDefinition : IDestinyDefinition
     {
         public int AdjusterType { get; }

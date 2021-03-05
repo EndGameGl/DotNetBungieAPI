@@ -9,7 +9,7 @@ using Unity;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyVendorDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyVendorDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyVendorDefinition : IDestinyDefinition
     {
         /// <summary>

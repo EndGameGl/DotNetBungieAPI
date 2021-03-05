@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Records
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyRecordDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyRecordDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyRecordDefinition : IDestinyDefinition
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

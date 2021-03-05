@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Classes
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyClassDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyClassDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyClassDefinition : IDestinyDefinition, IDeepEquatable<DestinyClassDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

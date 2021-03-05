@@ -1,10 +1,9 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationCategories
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyCharacterCustomizationCategoryDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyCharacterCustomizationCategoryDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyCharacterCustomizationCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinyCharacterCustomizationCategoryDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

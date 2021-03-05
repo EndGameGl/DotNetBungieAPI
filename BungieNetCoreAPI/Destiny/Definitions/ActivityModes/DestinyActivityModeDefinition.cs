@@ -11,7 +11,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ActivityModes
     /// <para/>
     /// Activity modes are nested under each other in a hierarchy, so that if you ask for - for example - "AllPvP", you will get any PVP activities that the user has played, regardless of what specific PVP mode was being played.
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyActivityModeDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyActivityModeDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyActivityModeDefinition : IDestinyDefinition, IDeepEquatable<DestinyActivityModeDefinition>
     {
         /// <summary>

@@ -8,7 +8,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ProgressionMappings
     /// <para/>
     /// These are used to apply rewards to multiple progressions at once.They can sometimes have human readable data as well, but only extremely sporadically.
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyProgressionMappingDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyProgressionMappingDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyProgressionMappingDefinition : IDestinyDefinition, IDeepEquatable<DestinyProgressionMappingDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

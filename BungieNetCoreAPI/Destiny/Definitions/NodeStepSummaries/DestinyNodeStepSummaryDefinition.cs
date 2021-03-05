@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.NodeStepSummaries
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyNodeStepSummaryDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyNodeStepSummaryDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyNodeStepSummaryDefinition : IDestinyDefinition, IDeepEquatable<DestinyNodeStepSummaryDefinition>
     {
         public uint NodeStepHash { get; }

@@ -36,7 +36,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
     /// <para/>
     /// This approach will let you avoid, whenever possible, the even less useful (and sometimes nonexistant) milestone-level names and descriptions.
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyMilestoneDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyMilestoneDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyMilestoneDefinition : IDestinyDefinition, IDeepEquatable<DestinyMilestoneDefinition>
     {
         /// <summary>

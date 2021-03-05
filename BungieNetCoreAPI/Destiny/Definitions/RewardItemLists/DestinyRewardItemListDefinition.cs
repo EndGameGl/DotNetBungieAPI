@@ -6,7 +6,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.RewardItemLists
     /// <summary>
     /// Empty atm
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyRewardItemListDefinition, presentInSQLiteDB: false, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyRewardItemListDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyRewardItemListDefinition : IDestinyDefinition
     {
         public bool Blacklisted { get; }

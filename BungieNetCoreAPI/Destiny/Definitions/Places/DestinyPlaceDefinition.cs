@@ -6,7 +6,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Places
     /// <summary>
     /// Activities (DestinyActivityDefinition) take place in Destinations (DestinyDestinationDefinition). Destinations are part of larger locations known as Places
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyPlaceDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyPlaceDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyPlaceDefinition : IDestinyDefinition, IDeepEquatable<DestinyPlaceDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

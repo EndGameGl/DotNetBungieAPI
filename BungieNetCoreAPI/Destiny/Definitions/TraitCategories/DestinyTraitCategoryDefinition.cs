@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.TraitCategories
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyTraitCategoryDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyTraitCategoryDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyTraitCategoryDefinition : IDestinyDefinition
     {
         /// <summary>

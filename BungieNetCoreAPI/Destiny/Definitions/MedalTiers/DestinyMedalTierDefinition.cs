@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.MedalTiers
 {
-    [DestinyDefinition(type: DefinitionsEnum.DestinyMedalTierDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyMedalTierDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyMedalTierDefinition : IDestinyDefinition, IDeepEquatable<DestinyMedalTierDefinition>
     {
         public int Order { get; }

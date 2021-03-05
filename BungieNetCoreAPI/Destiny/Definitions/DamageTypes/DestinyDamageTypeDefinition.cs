@@ -6,7 +6,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.DamageTypes
     /// <summary>
     /// All damage types that are possible in the game are defined here, along with localized info and icons as needed.
     /// </summary>
-    [DestinyDefinition(type: DefinitionsEnum.DestinyDamageTypeDefinition, presentInSQLiteDB: true, shouldBeLoaded: true)]
+    [DestinyDefinition(DefinitionsEnum.DestinyDamageTypeDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyDamageTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyDamageTypeDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }

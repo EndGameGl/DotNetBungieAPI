@@ -267,7 +267,6 @@ namespace BungieNetCoreAPI.Repositories
                     break;
             }
         }
-
         #endregion
     }
 }
