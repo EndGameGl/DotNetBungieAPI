@@ -94,7 +94,10 @@ namespace BungieNetCoreAPI
                 return new ReadOnlyDictionary<T, P>(dictionary);
 
         }
-
+        internal static string ComponentsToWordString(this DestinyComponentType[] componentTypes)
+            => string.Join(',', componentTypes);
+        internal static string ComponentsToIntString(this DestinyComponentType[] componentTypes)
+            => string.Join(',', componentTypes.Select(x => (int)x));
         public static string LocaleToString(this DestinyLocales locale)
         {
             return locale switch

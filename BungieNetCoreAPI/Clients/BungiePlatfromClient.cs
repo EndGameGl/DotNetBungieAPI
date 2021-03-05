@@ -147,7 +147,7 @@ namespace BungieNetCoreAPI.Clients
         /// <returns></returns>
         public async Task<DestinyComponentProfileResponse> GetProfile(BungieMembershipType membershipType, long destinyMembershipId, params DestinyComponentType[] componentTypes)
         {
-            return await GetData<DestinyComponentProfileResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/?components={string.Join(",", componentTypes.Select(x => (int)x))}");
+            return await GetData<DestinyComponentProfileResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/?components={componentTypes.ComponentsToIntString()}");
         }
         /// <summary>
         /// Returns character information for the supplied character.
@@ -159,7 +159,7 @@ namespace BungieNetCoreAPI.Clients
         /// <returns>Character information for the supplied character.</returns>
         public async Task<DestinyComponentCharacterResponse> GetCharacter(BungieMembershipType membershipType, long destinyMembershipId, long characterId, params DestinyComponentType[] componentTypes)
         {
-            return await GetData<DestinyComponentCharacterResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/?components={string.Join(",", componentTypes.Select(x => (int)x))}");
+            return await GetData<DestinyComponentCharacterResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/?components={componentTypes.ComponentsToIntString()}");
         }
         /// <summary>
         /// Returns information on the weekly clan rewards and if the clan has earned them or not. Note that this will always report rewards as not redeemed.
@@ -180,7 +180,7 @@ namespace BungieNetCoreAPI.Clients
         /// <returns></returns>
         public async Task<DestinyComponentItemResponse> GetItem(BungieMembershipType membershipType, long destinyMembershipId, long itemInstanceId, params DestinyComponentType[] componentTypes)
         {
-            return await GetData<DestinyComponentItemResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Item/{itemInstanceId}/?components={string.Join(",", componentTypes.Select(x => (int)x))}");
+            return await GetData<DestinyComponentItemResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Item/{itemInstanceId}/?components={componentTypes.ComponentsToIntString()}");
         }
         /// <summary>
         /// Get currently available vendors from the list of vendors that can possibly have rotating inventory. Note that this does not include things like preview vendors and vendors-as-kiosks, neither of whom have rotating/dynamic inventories. Use their definitions as-is for those.
@@ -192,7 +192,7 @@ namespace BungieNetCoreAPI.Clients
         /// <returns></returns>
         public async Task<DestinyVendorsResponse> GetVendors(BungieMembershipType membershipType, long destinyMembershipId, long characterId, params DestinyComponentType[] componentTypes)
         {
-            return await GetData<DestinyVendorsResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/?components={string.Join(",", componentTypes.Select(x => (int)x))}");
+            return await GetData<DestinyVendorsResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/?components={componentTypes.ComponentsToIntString()}");
         }
         /// <summary>
         /// Get the details of a specific Vendor.
@@ -205,7 +205,7 @@ namespace BungieNetCoreAPI.Clients
         /// <returns></returns>
         public async Task<DestinyVendorResponse> GetVendor(BungieMembershipType membershipType, long destinyMembershipId, long characterId, uint vendorHash, params DestinyComponentType[] componentTypes)
         {
-            return await GetData<DestinyVendorResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/{vendorHash}/?components={string.Join(",", componentTypes.Select(x => (int)x))}");
+            return await GetData<DestinyVendorResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/{vendorHash}/?components={componentTypes.ComponentsToIntString()}");
         }
         /// <summary>
         /// Get items available from vendors where the vendors have items for sale that are common for everyone.
@@ -214,8 +214,24 @@ namespace BungieNetCoreAPI.Clients
         /// <returns></returns>
         public async Task<DestinyPublicVendorsResponse> GetPublicVendors(params DestinyComponentType[] componentTypes)
         {
-            return await GetData<DestinyPublicVendorsResponse>($"Destiny2/Vendors/?components={string.Join(",", componentTypes.Select(x => (int)x))}");
+            return await GetData<DestinyPublicVendorsResponse>($"Destiny2/Vendors/?components={componentTypes.ComponentsToIntString()}");
         }
+        /// <summary>
+        /// Given a Presentation Node that has Collectibles as direct descendants, this will return item details about those descendants in the context of the requesting character.
+        /// </summary>
+        /// <param name="membershipType"></param>
+        /// <param name="destinyMembershipId"></param>
+        /// <param name="characterId"></param>
+        /// <param name="collectiblePresentationNodeHash"></param>
+        /// <param name="componentTypes"></param>
+        /// <returns></returns>
+        public async Task<DestinyCollectibleNodeDetailResponse> GetCollectibleNodeDetails(BungieMembershipType membershipType, long destinyMembershipId, 
+            long characterId, uint collectiblePresentationNodeHash, params DestinyComponentType[] componentTypes)
+        {
+            return await GetData<DestinyCollectibleNodeDetailResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Collectibles/{collectiblePresentationNodeHash}/?components={componentTypes.ComponentsToIntString()}");
+        }
+
+
 
         /// <summary>
         /// Gets public information about currently available Milestones.
