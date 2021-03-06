@@ -42,7 +42,7 @@ namespace BungieNetCoreAPI.Repositories
                     key: locale,
                     value: new ManifestDefinitionsRepository(
                         locale: locale,
-                        loadMode: _configs.Settings.LoadMode,
+                        loadMode: _configs.Settings.PreferredLoadSource,
                         loadOverrides: _configs.Settings.DefinitionLoadRules));
             }
         }
@@ -50,7 +50,7 @@ namespace BungieNetCoreAPI.Repositories
         {
             foreach (var repo in _localisedRepositories.Values)
             {
-                repo.LoadDataFromFiles(_configs.Settings.LoadMode, localManifestPath, manifest);
+                repo.LoadDataFromFiles(_configs.Settings.PreferredLoadSource, localManifestPath, manifest);
             }
         }
         public void AddDefinitionToCache(DefinitionsEnum definitionType, IDestinyDefinition defValue, DestinyLocales locale)

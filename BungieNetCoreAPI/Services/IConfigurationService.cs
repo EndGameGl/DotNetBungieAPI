@@ -1,4 +1,5 @@
 ﻿using BungieNetCoreAPI.Clients;
+using BungieNetCoreAPI.Clients.Settings;
 
 namespace BungieNetCoreAPI.Services
 {

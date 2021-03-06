@@ -18,7 +18,7 @@ namespace BungieNetCoreAPI.Logging
         }
         public void Log(string message, LogType type)
         {
-            if (_configuration.Settings.EnableLogging)
+            if (_configuration.Settings.IsLoggingEnabled)
                 _listeners.ForEach(x => x.Invoke(new LogMessage(DateTime.Now, message, type)));
         }
 

@@ -99,13 +99,11 @@ namespace BungieNetCoreTestingApp
         private static BungieClient _bungieClient;
         static void Main(string[] args)
         {
+            _bungieClient = new BungieClient((settings) => 
+            {
+                settings.UseExistingSettingsJson("configs.json");
+            });
 
-            _bungieClient = new BungieClient(
-                settings: new BungieClientSettings()
-                {
-                    UseExistingConfig = true,
-                    ExistingConfigPath = "configs.json"
-                });
             _bungieClient.LogListener.OnNewMessage += (mes) => Console.WriteLine(mes);
             MainAsync().GetAwaiter().GetResult();
         }

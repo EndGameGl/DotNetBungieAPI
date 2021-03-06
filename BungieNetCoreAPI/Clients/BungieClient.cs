@@ -1,4 +1,5 @@
-﻿using BungieNetCoreAPI.Destiny;
+﻿using BungieNetCoreAPI.Clients.Settings;
+using BungieNetCoreAPI.Destiny;
 using BungieNetCoreAPI.Logging;
 using BungieNetCoreAPI.Repositories;
 using BungieNetCoreAPI.Services;
@@ -26,8 +27,11 @@ namespace BungieNetCoreAPI.Clients
         public ILocalisedManifestDefinitionRepositories Repository;
         public LogListener LogListener;
 
-        public BungieClient(BungieClientSettings settings)
+        public BungieClient(Action<BungieClientSettings> configure)
         {
+            BungieClientSettings settings = new BungieClientSettings();
+            configure(settings);
+
             Configuration = StaticUnityContainer.GetConfiguration();
 
             if (settings.UseExistingConfig)
@@ -40,7 +44,7 @@ namespace BungieNetCoreAPI.Clients
 
             _logger = StaticUnityContainer.GetLogger();
 
-            if (Configuration.Settings.EnableLogging)
+            if (Configuration.Settings.IsLoggingEnabled)
             {
                 LogListener = new LogListener();
                 _logger.Register(LogListener);
@@ -66,7 +70,7 @@ namespace BungieNetCoreAPI.Clients
                 Repository = StaticUnityContainer.GetDestinyDefinitionRepositories();
                 Repository.Initialize(Configuration.Settings.Locales);
 
-                if (Configuration.Settings.UsePreloadedCache)
+                if (Configuration.Settings.IsUsingPreloadedData)
                 {
                     _logger.Log($"Using preloaded cache for set locales: {string.Join(", ", Configuration.Settings.Locales)}", LogType.Info);
                     await _versionControl.LoadData();

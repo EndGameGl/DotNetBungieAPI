@@ -1,4 +1,5 @@
 ﻿using BungieNetCoreAPI.Clients;
+using BungieNetCoreAPI.Clients.Settings;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
