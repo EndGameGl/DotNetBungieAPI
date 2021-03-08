@@ -92,7 +92,6 @@ namespace BungieNetCoreAPI.Clients
                         }
                         else
                             throw new Exception("Directory doesn't exist.");
-
                     }
                 }
             }

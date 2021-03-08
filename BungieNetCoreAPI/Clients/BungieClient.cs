@@ -39,9 +39,6 @@ namespace BungieNetCoreAPI.Clients
             else
                 Configuration.ApplySettings(settings);
 
-            if (string.IsNullOrWhiteSpace(Configuration.Settings.ApiKey))
-                throw new Exception("API key is empty.");
-
             _logger = StaticUnityContainer.GetLogger();
 
             if (Configuration.Settings.IsLoggingEnabled)

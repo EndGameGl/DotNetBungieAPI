@@ -23,7 +23,7 @@ namespace BungieNetCoreAPI.Repositories
 
         public DestinyLocales CurrentLocaleLoadContext => _currentLocaleLoadContext == null ? DestinyLocales.EN : _currentLocaleLoadContext.Value;
 
-        private Dictionary<DestinyLocales, ManifestDefinitionsRepository> _localisedRepositories;
+        private Dictionary<DestinyLocales, DestinyDefinitionsRepository> _localisedRepositories;
 
         public LocalisedManifestDefinitionRepositories(ILogger logger, IConfigurationService config, IDefinitionAssemblyData assemblyData)
         {
@@ -35,27 +35,30 @@ namespace BungieNetCoreAPI.Repositories
         public void Initialize(DestinyLocales[] locales)
         {
             _logger.Log("Initializing Global Definitions Cache Repository", LogType.Info);
-            _localisedRepositories = new Dictionary<DestinyLocales, ManifestDefinitionsRepository>();
+            _localisedRepositories = new Dictionary<DestinyLocales, DestinyDefinitionsRepository>();
             foreach (var locale in locales)
             {
                 _localisedRepositories.Add(
                     key: locale,
-                    value: new ManifestDefinitionsRepository(
+                    value: new DestinyDefinitionsRepository(
                         locale: locale,
-                        loadMode: _configs.Settings.PreferredLoadSource,
-                        loadOverrides: _configs.Settings.DefinitionLoadRules));
+                        assemblyData: _assemblyData,
+                        configuration: _configs,
+                        logger: _logger));
             }
         }
         public void LoadAllDataFromDisk(string localManifestPath, DestinyManifest manifest)
         {
             foreach (var repo in _localisedRepositories.Values)
             {
-                repo.LoadDataFromFiles(_configs.Settings.PreferredLoadSource, localManifestPath, manifest);
+                SetLocaleContext(repo.Locale);
+                repo.LoadDataFromFiles(localManifestPath, manifest);
+                ResetLocaleContext();
             }
         }
         public void AddDefinitionToCache(DefinitionsEnum definitionType, IDestinyDefinition defValue, DestinyLocales locale)
         {
-            _localisedRepositories[locale].Add(definitionType, defValue);
+            _localisedRepositories[locale].AddDefinition(definitionType, defValue);
         }
         public bool TryGetDestinyDefinition(DefinitionsEnum definitionType, uint key, DestinyLocales locale, out IDestinyDefinition definition)
         {

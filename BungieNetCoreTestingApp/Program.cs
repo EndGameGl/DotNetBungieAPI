@@ -101,7 +101,22 @@ namespace BungieNetCoreTestingApp
         {
             _bungieClient = new BungieClient((settings) => 
             {
-                settings.UseExistingSettingsJson("configs.json");
+                settings.IncludeApiKey(args[0]);
+
+                settings.SetDefinitionsLoadingBehaviour(
+                    saveToAppMemory: true,
+                    tryDownloadMissingDefinitions: true,
+                    preferredSource: DefinitionSources.SQLite,
+                    DestinyLocales.EN);
+
+                settings.UsePreloadedData("H:\\BungieNetCoreAPIRepository\\Manifests");
+
+                settings.UseVersionControl(
+                    keepOldVersions: true, 
+                    checkUpdates: true, 
+                    repositoryPath: string.Empty);
+
+                settings.EnableLogging();
             });
 
             _bungieClient.LogListener.OnNewMessage += (mes) => Console.WriteLine(mes);
