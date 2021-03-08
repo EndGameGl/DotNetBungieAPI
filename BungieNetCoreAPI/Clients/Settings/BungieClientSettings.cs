@@ -115,7 +115,7 @@ namespace BungieNetCoreAPI.Clients.Settings
         /// <param name="config"></param>
         public void SpecifyLoadSources(Dictionary<DefinitionsEnum, DefinitionSources> config)
         {
-            if (config.Values.Any(x => x.HasFlag(DefinitionSources.None) || x.HasFlag(DefinitionSources.BungieNet) || x.HasFlag(DefinitionSources.All)))
+            if (config.Values.Any(x => x.HasFlag(DefinitionSources.BungieNet) || x.HasFlag(DefinitionSources.All)))
                 throw new Exception("While specifying load sources. Choose between JSON and SQLite.");
             SpecifiedLoadSources = config;
         }

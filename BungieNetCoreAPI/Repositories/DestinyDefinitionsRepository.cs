@@ -50,11 +50,24 @@ namespace BungieNetCoreAPI.Repositories
             _logger = logger;
             Locale = locale;
 
-            _loadRules = 
+            _loadRules =
                 _assemblyData.DefinitionsToTypeMapping
                 .Where(x => !_config.Settings.ExcludedDefinitions.Contains(x.Key))
                 .Where(x => x.Value.AttributeData.Sources.HasFlag(_config.Settings.PreferredLoadSource))
                 .ToDictionary(x => x.Key, x => _config.Settings.PreferredLoadSource);
+
+            if (_config.Settings.SpecifiedLoadSources.Count > 0)
+            {
+                foreach (var source in _config.Settings.SpecifiedLoadSources)
+                {
+                    var definitionAssemblyRules = _assemblyData.DefinitionsToTypeMapping[source.Key];
+                    if (definitionAssemblyRules.AttributeData.Sources.HasFlag(source.Value))
+                    {
+                        if (!_loadRules.TryAdd(source.Key, source.Value))
+                            _loadRules[source.Key] = source.Value;
+                    }
+                }
+            }
 
             int definitionsLoaded = _loadRules.Count;
             int concurrencyLevel = _config.Settings.AppConcurrencyLevel;
@@ -173,6 +186,7 @@ namespace BungieNetCoreAPI.Repositories
                 .Where(x => x.Value == DefinitionSources.SQLite)
                 .Select(x => x.Key)
                 .ToArray();
+
             var jsonLoadedRepos = _loadRules.Where(x => x.Value == DefinitionSources.JSON).Select(x => x.Key).ToArray();
 
             if (sqliteLoadedRepos.Length > 0)
@@ -215,10 +229,11 @@ namespace BungieNetCoreAPI.Repositories
                     _historicalStatsDefinitions = new ConcurrentDictionary<string, DestinyHistoricalStatsDefinition>(_config.Settings.AppConcurrencyLevel, 31);
                     var definitionType = _assemblyData.DefinitionsToTypeMapping[DefinitionsEnum.DestinyHistoricalStatsDefinition].DefinitionType;
                     _logger.Log($"Loading definitions from DestinyHistoricalStatsDefinition ({Locale})", LogType.Info);
-                    SQLiteCommand command = new SQLiteCommand() 
-                    { 
-                        Connection = connection, 
-                        CommandText = GetSQLSelectQuery(DefinitionsEnum.DestinyHistoricalStatsDefinition.ToString()) };
+                    SQLiteCommand command = new SQLiteCommand()
+                    {
+                        Connection = connection,
+                        CommandText = GetSQLSelectQuery(DefinitionsEnum.DestinyHistoricalStatsDefinition.ToString())
+                    };
                     try
                     {
                         var reader = command.ExecuteReader();
@@ -236,7 +251,7 @@ namespace BungieNetCoreAPI.Repositories
                 connection.Close();
             }
         }
-        private void LoadDefinitionFromJSON(DefinitionsEnum[] definitions, string localManifestPath, DestinyManifest manifest) 
+        private void LoadDefinitionFromJSON(DefinitionsEnum[] definitions, string localManifestPath, DestinyManifest manifest)
         {
             _logger.Log($"Started loading data for localization: {Locale}", LogType.Info);
             Stopwatch fullLoadStopwatch = new Stopwatch();
@@ -252,7 +267,8 @@ namespace BungieNetCoreAPI.Repositories
                 var definitionJObjectDictionary = JObject.Parse(definitionJson);
                 foreach (var entry in definitionJObjectDictionary)
                 {
-                    var definitionType = _definitionRepositories[definitionName].Type;
+                    var definitionType = _assemblyData.DefinitionsToTypeMapping[definitionName].DefinitionType;
+                    _definitionRepositories.TryAdd(definitionName, new DestinyDefinitionTypeRepository(definitionType, _config.Settings.AppConcurrencyLevel));
                     var deserializedDestinyDefinition = (IDestinyDefinition)entry.Value.ToObject(definitionType);
                     AddDefinition(definitionName, deserializedDestinyDefinition);
                 }
