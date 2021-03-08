@@ -8,15 +8,12 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Unity;
 
 namespace BungieNetCoreAPI.Repositories
 {
@@ -182,6 +179,8 @@ namespace BungieNetCoreAPI.Repositories
         #region Load methods
         public void LoadDataFromFiles(string localManifestPath, DestinyManifest manifest)
         {
+            Stopwatch sw = new Stopwatch();
+            _logger.Log($"Started loading data for localization: {Locale}", LogType.Info);
             var sqliteLoadedRepos = _loadRules
                 .Where(x => x.Value == DefinitionSources.SQLite)
                 .Select(x => x.Key)
@@ -190,12 +189,22 @@ namespace BungieNetCoreAPI.Repositories
             var jsonLoadedRepos = _loadRules.Where(x => x.Value == DefinitionSources.JSON).Select(x => x.Key).ToArray();
 
             if (sqliteLoadedRepos.Length > 0)
+            {
+                _logger.Log($"Loading {sqliteLoadedRepos.Length} definitions from SQLite source.", LogType.Info);
+                sw.Start();
                 LoadDefinitionsFromSQLite(sqliteLoadedRepos, localManifestPath, manifest, sqliteLoadedRepos.Contains(DefinitionsEnum.DestinyHistoricalStatsDefinition));
+                sw.Stop();
+                _logger.Log($"Loaded definitions from SQLite: {sw.ElapsedMilliseconds} ms.", LogType.Info);
+            }
 
             if (jsonLoadedRepos.Length > 0)
-                LoadDefinitionFromJSON(jsonLoadedRepos, localManifestPath, manifest);
+            {
+                _logger.Log($"Loading {jsonLoadedRepos.Length} definitions from JSON source.", LogType.Info);
+                sw.Restart();
+                LoadDefinitionFromJSON(jsonLoadedRepos, localManifestPath, manifest); sw.Stop();
+                _logger.Log($"Loaded definitions from JSON files: {sw.ElapsedMilliseconds} ms.", LogType.Info);
+            }
         }
-
         private void LoadDefinitionsFromSQLite(DefinitionsEnum[] definitions, string localManifestPath, DestinyManifest manifest, bool loadHistoricalDefinitions)
         {
             var mobileWorldContentPathsLocalePath = Path.GetFileName(manifest.MobileWorldContentPaths[Locale.LocaleToString()]);
@@ -252,15 +261,12 @@ namespace BungieNetCoreAPI.Repositories
             }
         }
         private void LoadDefinitionFromJSON(DefinitionsEnum[] definitions, string localManifestPath, DestinyManifest manifest)
-        {
-            _logger.Log($"Started loading data for localization: {Locale}", LogType.Info);
-            Stopwatch fullLoadStopwatch = new Stopwatch();
-            fullLoadStopwatch.Start();
+        {        
             var jsonWolrdComponentContentLocalePath = manifest.JsonWorldComponentContentPaths[Locale.LocaleToString()];
 
             var result = Parallel.ForEach(definitions, (definitionName) =>
             {
-                _logger.Log($"Reading: {definitionName}... ", LogType.Info);
+                _logger.Log($"Loading definitions from {definitionName} ({Locale})", LogType.Info);
                 using var fs = File.OpenRead($"{localManifestPath}/JsonWorldComponentContent/{Locale}/{definitionName}/{Path.GetFileName(jsonWolrdComponentContentLocalePath[_assemblyData.EnumToNameMapping[definitionName]])}");
                 using var sr = new StreamReader(fs, Encoding.UTF8);
                 var definitionJson = sr.ReadToEnd();
@@ -273,12 +279,8 @@ namespace BungieNetCoreAPI.Repositories
                     AddDefinition(definitionName, deserializedDestinyDefinition);
                 }
             });
-
-            fullLoadStopwatch.Stop();
-            _logger.Log($"Finished loading data for {Locale}: {fullLoadStopwatch.ElapsedMilliseconds} ms", LogType.Info);
             GC.Collect();
         }
-
         private T ParseJsonFromSQLiteDataReader<T>(SQLiteDataReader reader, Type parseTo)
         {
             var byteArray = (byte[])reader["json"];

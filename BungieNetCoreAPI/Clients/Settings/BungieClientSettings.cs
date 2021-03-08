@@ -27,9 +27,9 @@ namespace BungieNetCoreAPI.Clients.Settings
 
         internal bool UseExistingConfig = false;
         internal string ExistingConfigPath;
-   
-        internal Dictionary<DefinitionsEnum, DefinitionSources> SpecifiedLoadSources;
-        internal DefinitionSources PreferredLoadSource;
+
+        internal Dictionary<DefinitionsEnum, DefinitionSources> SpecifiedLoadSources = new Dictionary<DefinitionsEnum, DefinitionSources>(0);
+        internal DefinitionSources PreferredLoadSource = DefinitionSources.SQLite;
         internal DefinitionsEnum[] ExcludedDefinitions = Array.Empty<DefinitionsEnum>();
 
         /// <summary>

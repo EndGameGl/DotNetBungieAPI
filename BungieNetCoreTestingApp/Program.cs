@@ -117,11 +117,6 @@ namespace BungieNetCoreTestingApp
                     repositoryPath: string.Empty);
 
                 settings.EnableLogging();
-
-                settings.SpecifyLoadSources(new Dictionary<DefinitionsEnum, DefinitionSources>() 
-                {
-                    { DefinitionsEnum.DestinyActivityDefinition, DefinitionSources.JSON }
-                });
             });
 
             _bungieClient.LogListener.OnNewMessage += (mes) => Console.WriteLine(mes);
@@ -151,6 +146,7 @@ namespace BungieNetCoreTestingApp
 
             //RunDeepEqualityCheck(coll);
 
+            
             await Task.Delay(Timeout.Infinite);
         }
 
