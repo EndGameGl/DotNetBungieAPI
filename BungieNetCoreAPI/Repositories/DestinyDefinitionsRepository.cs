@@ -106,6 +106,7 @@ namespace BungieNetCoreAPI.Repositories
             }
             return false;
         }
+        public bool TryGetHistoricalStatsDefinition(string name, out DestinyHistoricalStatsDefinition val) => _historicalStatsDefinitions.TryGetValue(name, out val);
         /// <summary>
         /// Gets definition from repository, if possible
         /// </summary>
@@ -177,6 +178,11 @@ namespace BungieNetCoreAPI.Repositories
         }
 
         #region Load methods
+        /// <summary>
+        /// Loads all data from local repositories.
+        /// </summary>
+        /// <param name="localManifestPath">Local repository path.</param>
+        /// <param name="manifest">Manifest object</param>
         public void LoadDataFromFiles(string localManifestPath, DestinyManifest manifest)
         {
             Stopwatch sw = new Stopwatch();

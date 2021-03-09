@@ -16,7 +16,7 @@ namespace BungieNetCoreAPI.Services
             Container.RegisterType<ILogger, Logger>(TypeLifetime.Singleton);
             Container.RegisterType<IConfigurationService, ConfigurationService>(TypeLifetime.Singleton);
             Container.RegisterType<IHttpClientInstance, HttpClientInstance>(TypeLifetime.Singleton);
-            Container.RegisterType<ILocalisedManifestDefinitionRepositories, LocalisedManifestDefinitionRepositories>(TypeLifetime.Singleton);
+            Container.RegisterType<ILocalisedManifestDefinitionRepositories, LocalisedDestinyDefinitionRepositories>(TypeLifetime.Singleton);
             Container.RegisterType<IManifestUpdateHandler, ManifestUpdateHandler>(TypeLifetime.Singleton);
             Container.RegisterType<IDefinitionAssemblyData, DefinitionAssemblyData>(TypeLifetime.Singleton);
         }

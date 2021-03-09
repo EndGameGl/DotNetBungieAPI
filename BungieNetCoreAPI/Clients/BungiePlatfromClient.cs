@@ -2,14 +2,18 @@
 using BungieNetCoreAPI.Bungie.Applications;
 using BungieNetCoreAPI.Destiny;
 using BungieNetCoreAPI.Destiny.Definitions;
+using BungieNetCoreAPI.Destiny.Definitions.ActivityModes;
+using BungieNetCoreAPI.Destiny.Definitions.HistoricalStats;
 using BungieNetCoreAPI.Destiny.Profile;
 using BungieNetCoreAPI.Destiny.Profile.Components.Contracts;
 using BungieNetCoreAPI.Destiny.Responses;
 using BungieNetCoreAPI.Logging;
+using BungieNetCoreAPI.Responses;
 using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -240,6 +244,73 @@ namespace BungieNetCoreAPI.Clients
         {
             return await GetData<DestinyPostGameCarnageReportData>($"Destiny2/Stats/PostGameCarnageReport/{activityId}/");
         }
+        /// <summary>
+        /// Gets historical stats definitions.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>> GetHistoricalStatsDefinition()
+        {
+            return (await GetData<Dictionary<string, DestinyHistoricalStatsDefinition>>($"Destiny2/Stats/Definition/")).AsReadOnlyDictionaryOrEmpty();
+        }
+        /// <summary>
+        /// Gets a page list of Destiny items.
+        /// </summary>
+        /// <param name="type">The type of entity for whom you would like results.</param>
+        /// <param name="searchTerm">The string to use when searching for Destiny entities.</param>
+        /// <param name="page">Page number to return</param>
+        /// <returns></returns>
+        public async Task<DestinyEntitySearchResult> SearchDestinyEntities(DefinitionsEnum type, string searchTerm, int page = 0)
+        {
+            return await GetData<DestinyEntitySearchResult>($"Destiny2/Armory/Search/{type}/{searchTerm}/?page={page}");
+        }
+        /// <summary>
+        /// Gets historical stats for indicated character.
+        /// </summary>
+        /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+        /// <param name="destinyMembershipId">The Destiny membershipId of the user to retrieve.</param>
+        /// <param name="characterId">The id of the character to retrieve. You can omit this character ID or set it to 0 to get aggregate stats across all characters.</param>
+        /// <param name="daystart">First day to return when daily stats are requested.</param>
+        /// <param name="dayend">Last day to return when daily stats are requested.</param>
+        /// <param name="groups">Group of stats to include, otherwise only general stats are returned. Values: General, Weapons, Medals</param>
+        /// <param name="modes">Game modes to return.</param>
+        /// <param name="periodType">Indicates a specific period type to return. Optional. May be: Daily, AllTime, or Activity</param>
+        /// <returns></returns>
+        public async Task<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>> GetHistoricalStats(BungieMembershipType membershipType, long destinyMembershipId, long characterId, 
+            DateTime? daystart = null, DateTime? dayend = null, DestinyStatsGroupType[] groups = null, DestinyActivityModeType[] modes = null, PeriodType periodType = PeriodType.None)
+        {
+            bool hasParams = false;
+            if (daystart != null || dayend != null || groups != null || modes != null || periodType != PeriodType.None)
+                hasParams = true;
+            var query = $"Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/";
+            if (hasParams)
+            {
+                List<string> parameters = new List<string>();
+                if (daystart.HasValue)
+                    parameters.Add($"daystart={daystart.Value.ToString("yyyy-MM-dd")}");
+                if (dayend.HasValue)
+                    parameters.Add($"dayend={dayend.Value.ToString("yyyy-MM-dd")}");
+                if (groups != null && groups.Length > 0)
+                    parameters.Add($"groups={string.Join(',', groups.Select(x => (int)x))}");
+                if (modes != null && modes.Length > 0)
+                    parameters.Add($"modes={string.Join(',', modes.Select(x => (int)x))}");
+                if (periodType != PeriodType.None)
+                    parameters.Add($"periodType={(int)periodType}");
+                query = $"{query}?{string.Join('&', parameters)}";
+            }
+            return (await GetData<Dictionary<string, DestinyHistoricalStatsByPeriod>>(query)).AsReadOnlyDictionaryOrEmpty();
+        }
+        /// <summary>
+        /// Gets aggregate historical stats organized around each character for a given account.
+        /// </summary>
+        /// <param name="membershipType"></param>
+        /// <param name="destinyMembershipId"></param>
+        /// <param name="groups"></param>
+        /// <returns></returns>
+        public async Task<DestinyHistoricalStatsAccountResult> GetHistoricalStatsForAccount(BungieMembershipType membershipType, long destinyMembershipId, DestinyStatsGroupType[] groups = null)
+        {
+            return await GetData<DestinyHistoricalStatsAccountResult>($"Destiny2/{membershipType}/Account/{destinyMembershipId}/Stats/{(groups!= null && groups.Length > 0 ? $"?groups={string.Join(',', groups.Select(x => (int)x))}" : string.Empty)}");
+        }
+
 
         /// <summary>
         /// Gets public information about currently available Milestones.

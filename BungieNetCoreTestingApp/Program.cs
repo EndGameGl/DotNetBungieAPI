@@ -51,6 +51,7 @@ using BungieNetCoreAPI.Destiny.Definitions.PowerCaps;
 using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
 using BungieNetCoreAPI.Destiny.Definitions.ProgressionLevelRequirements;
 using BungieNetCoreAPI.Destiny.Definitions.Progressions;
+using BungieNetCoreAPI.Destiny.Definitions.HistoricalStats;
 
 namespace BungieNetCoreTestingApp
 {
@@ -126,13 +127,20 @@ namespace BungieNetCoreTestingApp
         private static async Task MainAsync()
         {
 
-            await _bungieClient.Run();
+            //await _bungieClient.Run();
 
-            var profileData = await BungieClient.Platform.GetProfile(
-                membershipType: BungieMembershipType.TigerSteam,
-                destinyMembershipId: 4611686018483306402,
+            //var stats = await BungieClient.Platform.GetHistoricalStats(
+            //    membershipType: BungieMembershipType.TigerSteam,
+            //    destinyMembershipId: 4611686018483306402,
+            //    characterId: 0);
 
-                ALL_COMPONENTS_ARRAY);
+            var accountStats = await BungieClient.Platform.GetHistoricalStatsForAccount(BungieMembershipType.TigerSteam, 4611686018483306402);
+
+            //var profileData = await BungieClient.Platform.GetProfile(
+            //    membershipType: BungieMembershipType.TigerSteam,
+            //    destinyMembershipId: 4611686018483306402,
+
+            //    ALL_COMPONENTS_ARRAY);
 
 
 
@@ -146,7 +154,7 @@ namespace BungieNetCoreTestingApp
 
             //RunDeepEqualityCheck(coll);
 
-            
+
             await Task.Delay(Timeout.Infinite);
         }
 

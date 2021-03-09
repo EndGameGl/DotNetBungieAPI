@@ -5,6 +5,7 @@ using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
 using BungieNetCoreAPI.Logging;
 using BungieNetCoreAPI.Services;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
@@ -14,7 +15,7 @@ using Unity;
 
 namespace BungieNetCoreAPI.Repositories
 {
-    public class LocalisedManifestDefinitionRepositories : ILocalisedManifestDefinitionRepositories
+    public class LocalisedDestinyDefinitionRepositories : ILocalisedManifestDefinitionRepositories
     {
         private DestinyLocales? _currentLocaleLoadContext;
         private readonly ILogger _logger;
@@ -23,9 +24,9 @@ namespace BungieNetCoreAPI.Repositories
 
         public DestinyLocales CurrentLocaleLoadContext => _currentLocaleLoadContext == null ? DestinyLocales.EN : _currentLocaleLoadContext.Value;
 
-        private Dictionary<DestinyLocales, DestinyDefinitionsRepository> _localisedRepositories;
+        private ConcurrentDictionary<DestinyLocales, DestinyDefinitionsRepository> _localisedRepositories;
 
-        public LocalisedManifestDefinitionRepositories(ILogger logger, IConfigurationService config, IDefinitionAssemblyData assemblyData)
+        public LocalisedDestinyDefinitionRepositories(ILogger logger, IConfigurationService config, IDefinitionAssemblyData assemblyData)
         {
             _logger = logger;
             _configs = config;
@@ -35,10 +36,10 @@ namespace BungieNetCoreAPI.Repositories
         public void Initialize(DestinyLocales[] locales)
         {
             _logger.Log("Initializing Global Definitions Cache Repository", LogType.Info);
-            _localisedRepositories = new Dictionary<DestinyLocales, DestinyDefinitionsRepository>();
+            _localisedRepositories = new ConcurrentDictionary<DestinyLocales, DestinyDefinitionsRepository>(_configs.Settings.AppConcurrencyLevel, locales.Length);
             foreach (var locale in locales)
             {
-                _localisedRepositories.Add(
+                _localisedRepositories.TryAdd(
                     key: locale,
                     value: new DestinyDefinitionsRepository(
                         locale: locale,
