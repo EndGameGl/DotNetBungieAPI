@@ -57,41 +57,41 @@ namespace BungieNetCoreAPI.Clients
         
 
         #region App methods
-        public async Task<BungieApplication[]> GetBungieApplications()
+        public async Task<BungieResponse<BungieApplication[]>> GetBungieApplications()
         {
             return await GetData<BungieApplication[]>($"App/FirstParty/");
         }
         #endregion
 
         #region User methods
-        public async Task<BungieNetUser> GetBungieNetUserById(long id)
+        public async Task<BungieResponse<BungieNetUser>> GetBungieNetUserById(long id)
         {
             return await GetData<BungieNetUser>($"User/GetBungieNetUserById/{id}");
         }
-        public async Task<BungieNetUser[]> SearchUsers(string query)
+        public async Task<BungieResponse<BungieNetUser[]>> SearchUsers(string query)
         {
             if (!string.IsNullOrWhiteSpace(query))
                 return await GetData<BungieNetUser[]>($"User/SearchUsers/?q={query}");
             else
                 throw new Exception("Query must contain something.");
         }
-        public async Task<BungieNetUserAccountCredentialType[]> GetCredentialTypesForTargetAccount(long id)
+        public async Task<BungieResponse<BungieNetUserAccountCredentialType[]>> GetCredentialTypesForTargetAccount(long id)
         {
             return await GetData<BungieNetUserAccountCredentialType[]>($"User/GetCredentialTypesForTargetAccount/{id}");
         }
-        public async Task<BungieUserTheme[]> GetAvailableThemes()
+        public async Task<BungieResponse<BungieUserTheme[]>> GetAvailableThemes()
         {
             return await GetData<BungieUserTheme[]>($"User/GetAvailableThemes");
         }
-        public async Task<BungieNetUserWithMemberships> GetMembershipDataById(long id, BungieMembershipType membershipType)
+        public async Task<BungieResponse<BungieNetUserWithMemberships>> GetMembershipDataById(long id, BungieMembershipType membershipType)
         {
             return await GetData<BungieNetUserWithMemberships>($"User/GetMembershipsById/{id}/{membershipType}");
         }
-        public async Task<BungieNetUserWithMemberships> GetMembershipDataForCurrentUser()
+        public async Task<BungieResponse<BungieNetUserWithMemberships>> GetMembershipDataForCurrentUser()
         {
             return await GetData<BungieNetUserWithMemberships>($"User/GetMembershipsForCurrentUser");
         }
-        public async Task<DestinyHardLinkedUserMembership> GetMembershipFromHardLinkedCredential(long credential, BungieCredentialType credentialType = BungieCredentialType.SteamId)
+        public async Task<BungieResponse<DestinyHardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(long credential, BungieCredentialType credentialType = BungieCredentialType.SteamId)
         {
             return await GetData<DestinyHardLinkedUserMembership>($"User/GetMembershipFromHardLinkedCredential/{credentialType}/{credential}");
         }
@@ -102,11 +102,11 @@ namespace BungieNetCoreAPI.Clients
         /// Returns the current version of the manifest.
         /// </summary>
         /// <returns></returns>
-        public async Task<DestinyManifest> GetDestinyManifest()
+        public async Task<BungieResponse<DestinyManifest>> GetDestinyManifest()
         {
             _logger.Log("Loading destiny manifest...", LogType.Info);
             var manifest = await GetData<DestinyManifest>("Destiny2/Manifest");
-            _logger.Log($"Loaded destiny manifest: Version {manifest.Version}", LogType.Info);
+            _logger.Log($"Loaded destiny manifest: Version {manifest.Response.Version}", LogType.Info);
             return manifest;
         }
         /// <summary>
@@ -116,7 +116,7 @@ namespace BungieNetCoreAPI.Clients
         /// <param name="entityType">The type of entity for whom you would like results.</param>
         /// <param name="hash">The hash identifier for the specific Entity you want returned.</param>
         /// <returns></returns>
-        public async Task<T> GetDestinyEntityDefinition<T>(DefinitionsEnum entityType, uint hash) where T : IDestinyDefinition
+        public async Task<BungieResponse<T>> GetDestinyEntityDefinition<T>(DefinitionsEnum entityType, uint hash) where T : IDestinyDefinition
         {
             return await GetData<T>($"Destiny2/Manifest/{entityType}/{hash}");
         }
@@ -127,7 +127,7 @@ namespace BungieNetCoreAPI.Clients
         /// <param name="displayName">The full gamertag or PSN id of the player. Spaces and case are ignored.</param>
         /// <param name="returnOriginalProfile">If passed in and set to true, we will return the original Destiny Profile(s) linked to that gamertag, and not their currently active Destiny Profile.</param>
         /// <returns></returns>
-        public async Task<BungieNetUserInfo[]> SearchDestinyPlayer(BungieMembershipType membershipType, string displayName, bool returnOriginalProfile = false)
+        public async Task<BungieResponse<BungieNetUserInfo[]>> SearchDestinyPlayer(BungieMembershipType membershipType, string displayName, bool returnOriginalProfile = false)
         {
             return await GetData<BungieNetUserInfo[]>($"Destiny2/SearchDestinyPlayer/{membershipType}/{displayName}/?returnOriginalProfile={returnOriginalProfile}");
         }
@@ -138,7 +138,7 @@ namespace BungieNetCoreAPI.Clients
         /// <param name="membershipId">The ID of the membership whose linked Destiny accounts you want returned. Make sure your membership ID matches its Membership Type: don't pass us a PSN membership ID and the XBox membership type, it's not going to work!</param>
         /// <param name="getAllMemberships">if set to 'true', all memberships regardless of whether they're obscured by overrides will be returned. Normal privacy restrictions on account linking will still apply no matter what.</param>
         /// <returns></returns>
-        public async Task<BungieNetUserMembershipWithLinkedDestinyProfiles> GetLinkedProfiles(BungieMembershipType membershipType, long membershipId, bool getAllMemberships = false)
+        public async Task<BungieResponse<BungieNetUserMembershipWithLinkedDestinyProfiles>> GetLinkedProfiles(BungieMembershipType membershipType, long membershipId, bool getAllMemberships = false)
         {
             return await GetData<BungieNetUserMembershipWithLinkedDestinyProfiles>($"Destiny2/{membershipType}/Profile/{membershipId}/LinkedProfiles/?getAllMemberships={getAllMemberships}");
         }
@@ -149,7 +149,7 @@ namespace BungieNetCoreAPI.Clients
         /// <param name="destinyMembershipId">Destiny membership ID.</param>
         /// <param name="componentTypes">List of components to return. You must request at least one component to receive results.</param>
         /// <returns></returns>
-        public async Task<DestinyComponentProfileResponse> GetProfile(BungieMembershipType membershipType, long destinyMembershipId, params DestinyComponentType[] componentTypes)
+        public async Task<BungieResponse<DestinyComponentProfileResponse>> GetProfile(BungieMembershipType membershipType, long destinyMembershipId, params DestinyComponentType[] componentTypes)
         {
             return await GetData<DestinyComponentProfileResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/?components={componentTypes.ComponentsToIntString()}");
         }
@@ -161,7 +161,7 @@ namespace BungieNetCoreAPI.Clients
         /// <param name="characterId">ID of the character.</param>
         /// <param name="componentTypes">List of components to return</param>
         /// <returns>Character information for the supplied character.</returns>
-        public async Task<DestinyComponentCharacterResponse> GetCharacter(BungieMembershipType membershipType, long destinyMembershipId, long characterId, params DestinyComponentType[] componentTypes)
+        public async Task<BungieResponse<DestinyComponentCharacterResponse>> GetCharacter(BungieMembershipType membershipType, long destinyMembershipId, long characterId, params DestinyComponentType[] componentTypes)
         {
             return await GetData<DestinyComponentCharacterResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/?components={componentTypes.ComponentsToIntString()}");
         }
@@ -170,7 +170,7 @@ namespace BungieNetCoreAPI.Clients
         /// </summary>
         /// <param name="groupId">A valid group id of clan.</param>
         /// <returns></returns>
-        public async Task<DestinyMilestone> GetClanWeeklyRewardState(long groupId)
+        public async Task<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(long groupId)
         {
             return await GetData<DestinyMilestone>($"Destiny2/Clan/{groupId}/WeeklyRewardState/");
         }
@@ -182,7 +182,7 @@ namespace BungieNetCoreAPI.Clients
         /// <param name="itemInstanceId">The Instance ID of the destiny item.</param>
         /// <param name="componentTypes">List of components to return</param>
         /// <returns></returns>
-        public async Task<DestinyComponentItemResponse> GetItem(BungieMembershipType membershipType, long destinyMembershipId, long itemInstanceId, params DestinyComponentType[] componentTypes)
+        public async Task<BungieResponse<DestinyComponentItemResponse>> GetItem(BungieMembershipType membershipType, long destinyMembershipId, long itemInstanceId, params DestinyComponentType[] componentTypes)
         {
             return await GetData<DestinyComponentItemResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Item/{itemInstanceId}/?components={componentTypes.ComponentsToIntString()}");
         }
@@ -194,7 +194,7 @@ namespace BungieNetCoreAPI.Clients
         /// <param name="characterId"></param>
         /// <param name="componentTypes"></param>
         /// <returns></returns>
-        public async Task<DestinyVendorsResponse> GetVendors(BungieMembershipType membershipType, long destinyMembershipId, long characterId, params DestinyComponentType[] componentTypes)
+        public async Task<BungieResponse<DestinyVendorsResponse>> GetVendors(BungieMembershipType membershipType, long destinyMembershipId, long characterId, params DestinyComponentType[] componentTypes)
         {
             return await GetData<DestinyVendorsResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/?components={componentTypes.ComponentsToIntString()}");
         }
@@ -207,7 +207,7 @@ namespace BungieNetCoreAPI.Clients
         /// <param name="vendorHash"></param>
         /// <param name="componentTypes"></param>
         /// <returns></returns>
-        public async Task<DestinyVendorResponse> GetVendor(BungieMembershipType membershipType, long destinyMembershipId, long characterId, uint vendorHash, params DestinyComponentType[] componentTypes)
+        public async Task<BungieResponse<DestinyVendorResponse>> GetVendor(BungieMembershipType membershipType, long destinyMembershipId, long characterId, uint vendorHash, params DestinyComponentType[] componentTypes)
         {
             return await GetData<DestinyVendorResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/{vendorHash}/?components={componentTypes.ComponentsToIntString()}");
         }
@@ -216,7 +216,7 @@ namespace BungieNetCoreAPI.Clients
         /// </summary>
         /// <param name="componentTypes"></param>
         /// <returns></returns>
-        public async Task<DestinyPublicVendorsResponse> GetPublicVendors(params DestinyComponentType[] componentTypes)
+        public async Task<BungieResponse<DestinyPublicVendorsResponse>> GetPublicVendors(params DestinyComponentType[] componentTypes)
         {
             return await GetData<DestinyPublicVendorsResponse>($"Destiny2/Vendors/?components={componentTypes.ComponentsToIntString()}");
         }
@@ -229,7 +229,7 @@ namespace BungieNetCoreAPI.Clients
         /// <param name="collectiblePresentationNodeHash"></param>
         /// <param name="componentTypes"></param>
         /// <returns></returns>
-        public async Task<DestinyCollectibleNodeDetailResponse> GetCollectibleNodeDetails(BungieMembershipType membershipType, long destinyMembershipId, 
+        public async Task<BungieResponse<DestinyCollectibleNodeDetailResponse>> GetCollectibleNodeDetails(BungieMembershipType membershipType, long destinyMembershipId, 
             long characterId, uint collectiblePresentationNodeHash, params DestinyComponentType[] componentTypes)
         {
             return await GetData<DestinyCollectibleNodeDetailResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Collectibles/{collectiblePresentationNodeHash}/?components={componentTypes.ComponentsToIntString()}");
@@ -240,17 +240,17 @@ namespace BungieNetCoreAPI.Clients
         /// </summary>
         /// <param name="activityId"></param>
         /// <returns></returns>
-        public async Task<DestinyPostGameCarnageReportData> GetPostGameCarnageReport(long activityId)
+        public async Task<BungieResponse<DestinyPostGameCarnageReportData>> GetPostGameCarnageReport(long activityId)
         {
-            return await GetData<DestinyPostGameCarnageReportData>($"Destiny2/Stats/PostGameCarnageReport/{activityId}/");
+            return await GetData<DestinyPostGameCarnageReportData>($"Destiny2/Stats/PostGameCarnageReport/{activityId}/", "https://stats.bungie.net/Platform");
         }
         /// <summary>
         /// Gets historical stats definitions.
         /// </summary>
         /// <returns></returns>
-        public async Task<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>> GetHistoricalStatsDefinition()
+        public async Task<BungieResponse<Dictionary<string, DestinyHistoricalStatsDefinition>>> GetHistoricalStatsDefinition()
         {
-            return (await GetData<Dictionary<string, DestinyHistoricalStatsDefinition>>($"Destiny2/Stats/Definition/")).AsReadOnlyDictionaryOrEmpty();
+            return (await GetData<Dictionary<string, DestinyHistoricalStatsDefinition>>($"Destiny2/Stats/Definition/"));
         }
         /// <summary>
         /// Gets a page list of Destiny items.
@@ -259,7 +259,7 @@ namespace BungieNetCoreAPI.Clients
         /// <param name="searchTerm">The string to use when searching for Destiny entities.</param>
         /// <param name="page">Page number to return</param>
         /// <returns></returns>
-        public async Task<DestinyEntitySearchResult> SearchDestinyEntities(DefinitionsEnum type, string searchTerm, int page = 0)
+        public async Task<BungieResponse<DestinyEntitySearchResult>> SearchDestinyEntities(DefinitionsEnum type, string searchTerm, int page = 0)
         {
             return await GetData<DestinyEntitySearchResult>($"Destiny2/Armory/Search/{type}/{searchTerm}/?page={page}");
         }
@@ -275,7 +275,7 @@ namespace BungieNetCoreAPI.Clients
         /// <param name="modes">Game modes to return.</param>
         /// <param name="periodType">Indicates a specific period type to return. Optional. May be: Daily, AllTime, or Activity</param>
         /// <returns></returns>
-        public async Task<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>> GetHistoricalStats(BungieMembershipType membershipType, long destinyMembershipId, long characterId, 
+        public async Task<BungieResponse<Dictionary<string, DestinyHistoricalStatsByPeriod>>> GetHistoricalStats(BungieMembershipType membershipType, long destinyMembershipId, long characterId, 
             DateTime? daystart = null, DateTime? dayend = null, DestinyStatsGroupType[] groups = null, DestinyActivityModeType[] modes = null, PeriodType periodType = PeriodType.None)
         {
             bool hasParams = false;
@@ -297,7 +297,7 @@ namespace BungieNetCoreAPI.Clients
                     parameters.Add($"periodType={(int)periodType}");
                 query = $"{query}?{string.Join('&', parameters)}";
             }
-            return (await GetData<Dictionary<string, DestinyHistoricalStatsByPeriod>>(query)).AsReadOnlyDictionaryOrEmpty();
+            return await GetData<Dictionary<string, DestinyHistoricalStatsByPeriod>>(query);
         }
         /// <summary>
         /// Gets aggregate historical stats organized around each character for a given account.
@@ -306,17 +306,44 @@ namespace BungieNetCoreAPI.Clients
         /// <param name="destinyMembershipId"></param>
         /// <param name="groups"></param>
         /// <returns></returns>
-        public async Task<DestinyHistoricalStatsAccountResult> GetHistoricalStatsForAccount(BungieMembershipType membershipType, long destinyMembershipId, DestinyStatsGroupType[] groups = null)
+        public async Task<BungieResponse<DestinyHistoricalStatsAccountResult>> GetHistoricalStatsForAccount(BungieMembershipType membershipType, long destinyMembershipId, DestinyStatsGroupType[] groups = null)
         {
             return await GetData<DestinyHistoricalStatsAccountResult>($"Destiny2/{membershipType}/Account/{destinyMembershipId}/Stats/{(groups!= null && groups.Length > 0 ? $"?groups={string.Join(',', groups.Select(x => (int)x))}" : string.Empty)}");
         }
+        /// <summary>
+        /// Gets activity history stats for indicated character.
+        /// </summary>
+        /// <param name="membershipType"></param>
+        /// <param name="destinyMembershipId"></param>
+        /// <param name="characterId"></param>
+        /// <param name="count"></param>
+        /// <param name="mode"></param>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        public async Task<BungieResponse<DestinyActivityHistoryResults>> GetActivityHistory(BungieMembershipType membershipType, long destinyMembershipId, long characterId, int count = 25,
+            DestinyActivityModeType mode = DestinyActivityModeType.None, int page = 0)
+        {
+            return await GetData<DestinyActivityHistoryResults>($"Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/Activities/?count={count}&mode={mode}&page={page}");
+        }
+        /// <summary>
+        /// Gets details about unique weapon usage, including all exotic weapons.
+        /// </summary>
+        /// <param name="membershipType"></param>
+        /// <param name="destinyMembershipId"></param>
+        /// <param name="characterId"></param>
+        /// <returns></returns>
+        public async Task<BungieResponse<DestinyHistoricalWeaponStatsData>> GetUniqueWeaponHistory(BungieMembershipType membershipType, long destinyMembershipId, long characterId)
+        {
+            return await GetData<DestinyHistoricalWeaponStatsData>($"Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/UniqueWeapons/");
+        }
+
 
 
         /// <summary>
         /// Gets public information about currently available Milestones.
         /// </summary>
         /// <returns></returns>
-        public async Task<Dictionary<uint, GetPublicMilestonesResponse>> GetPublicMilestones()
+        public async Task<BungieResponse<Dictionary<uint, GetPublicMilestonesResponse>>> GetPublicMilestones()
         {
             return await GetData<Dictionary<uint, GetPublicMilestonesResponse>>($"Destiny2/Milestones");
         }
@@ -325,7 +352,7 @@ namespace BungieNetCoreAPI.Clients
         /// </summary>
         /// <param name="milestoneHash">The identifier for the milestone to be returned.</param>
         /// <returns></returns>
-        public async Task<DestinyMilestoneContent> GetPublicMilestoneContent(uint milestoneHash)
+        public async Task<BungieResponse<DestinyMilestoneContent>> GetPublicMilestoneContent(uint milestoneHash)
         {
             return await GetData<DestinyMilestoneContent>($"/Destiny2/Milestones/{milestoneHash}/Content/");
         }
@@ -337,7 +364,7 @@ namespace BungieNetCoreAPI.Clients
         /// List of available localization cultures
         /// </summary>
         /// <returns></returns>
-        public async Task<Dictionary<string, string>> GetAvailableLocales()
+        public async Task<BungieResponse<Dictionary<string, string>>> GetAvailableLocales()
         {
             return await GetData<Dictionary<string, string>>("GetAvailableLocales");
         }
@@ -345,7 +372,7 @@ namespace BungieNetCoreAPI.Clients
         /// Get the common settings used by the Bungie.Net environment.
         /// </summary>
         /// <returns></returns>
-        public async Task<BungieNetSettings> GetCommonSettings()
+        public async Task<BungieResponse<BungieNetSettings>> GetCommonSettings()
         {
             return await GetData<BungieNetSettings>("Settings");
         }
@@ -353,7 +380,7 @@ namespace BungieNetCoreAPI.Clients
         /// Get the user-specific system overrides that should be respected alongside common systems.
         /// </summary>
         /// <returns></returns>
-        public async Task<Dictionary<string, BungieSystemSetting>> GetUserSystemOverrides()
+        public async Task<BungieResponse<Dictionary<string, BungieSystemSetting>>> GetUserSystemOverrides()
         {
             return await GetData<Dictionary<string, BungieSystemSetting>>("UserSystemOverrides");
         }
@@ -361,30 +388,28 @@ namespace BungieNetCoreAPI.Clients
         /// Gets any active global alert for display in the forum banners, help pages, etc. Usually used for DOC alerts.
         /// </summary>
         /// <returns></returns>
-        public async Task<GlobalAlert[]> GetGlobalAlerts()
+        public async Task<BungieResponse<GlobalAlert[]>> GetGlobalAlerts()
         {
             return await GetData<GlobalAlert[]>("GlobalAlerts");
         }
         #endregion
 
-        private async Task<T> GetData<T>(string query)
+        private async Task<BungieResponse<T>> GetData<T>(string query, string defaultWebsite = null)
         {
             _logger.Log($"Getting data from: {query}", LogType.Debug);
-            var response = await _httpClient.Get(BungieClient.BungiePlatformUri + query);
-            //if (response.IsSuccessStatusCode)
-            //{
-            //var stringResponse = await response.Content.ReadAsStringAsync();
+            var finalQuery = string.Empty;
+            if (defaultWebsite != null)
+                finalQuery = $"{defaultWebsite}/{query}";
+            else
+                finalQuery = BungieClient.BungiePlatformUri + query;
+            var response = await _httpClient.Get(finalQuery);
             var bungieResponse = JsonConvert.DeserializeObject<BungieResponse<T>>(await response.Content.ReadAsStringAsync());
-            if (bungieResponse.ErrorCode == PlatformErrorCodes.Success && bungieResponse.Response != null)
+            if (bungieResponse != null)
             {
-                return bungieResponse.Response;
+                return bungieResponse;
             }
             else
-                return default;
-                //throw new Exception(bungieResponse.ErrorStatus);
-            //}
-            //else
-            //    throw new Exception(response.ReasonPhrase);
+                throw new Exception("No response from bungie.net");
         }
     }
 }

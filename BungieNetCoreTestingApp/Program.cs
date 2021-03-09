@@ -114,7 +114,7 @@ namespace BungieNetCoreTestingApp
 
                 settings.UseVersionControl(
                     keepOldVersions: true, 
-                    checkUpdates: true, 
+                    checkUpdates: false, 
                     repositoryPath: string.Empty);
 
                 settings.EnableLogging();
@@ -127,14 +127,17 @@ namespace BungieNetCoreTestingApp
         private static async Task MainAsync()
         {
 
-            //await _bungieClient.Run();
+            await _bungieClient.Run();
 
-            //var stats = await BungieClient.Platform.GetHistoricalStats(
-            //    membershipType: BungieMembershipType.TigerSteam,
-            //    destinyMembershipId: 4611686018483306402,
-            //    characterId: 0);
+            var activityHistory = await BungieClient.Platform.GetUniqueWeaponHistory(
+                membershipType: BungieMembershipType.TigerSteam,
+                destinyMembershipId: 4611686018483306402,
+                characterId: 2305843009404108262);
 
-            var accountStats = await BungieClient.Platform.GetHistoricalStatsForAccount(BungieMembershipType.TigerSteam, 4611686018483306402);
+
+            //var pgcr = await BungieClient.Platform.GetPostGameCarnageReport(activityHistory.Response.Activities.First().ActivityDetails.InstanceId);
+
+            //var accountStats = await BungieClient.Platform.GetHistoricalStatsForAccount(BungieMembershipType.TigerSteam, 4611686018483306402);
 
             //var profileData = await BungieClient.Platform.GetProfile(
             //    membershipType: BungieMembershipType.TigerSteam,

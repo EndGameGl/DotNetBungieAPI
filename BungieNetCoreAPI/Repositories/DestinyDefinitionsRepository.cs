@@ -218,6 +218,7 @@ namespace BungieNetCoreAPI.Repositories
                 @$"Data Source={localManifestPath}\\MobileWorldContent\\{Locale}\\{mobileWorldContentPathsLocalePath}; Version=3;"))
             {
                 connection.Open();
+
                 foreach (var key in definitions)
                 {
                     if (key == DefinitionsEnum.DestinyHistoricalStatsDefinition)
@@ -263,6 +264,7 @@ namespace BungieNetCoreAPI.Repositories
                         _logger.Log(e.Message, LogType.Error);
                     }
                 }
+
                 connection.Close();
             }
         }

@@ -52,7 +52,7 @@ namespace BungieNetCoreAPI
                     }
                     else if (BungieClient.Configuration.Settings.TryDownloadMissingDefinitions)
                     {
-                        definition = BungieClient.Platform.GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value).Result;
+                        definition = BungieClient.Platform.GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value).Result.Response;
                         _repository.AddDefinitionToCache(DefinitionEnumType, definition, Locale);
                         return definition;
                     }
@@ -121,7 +121,7 @@ namespace BungieNetCoreAPI
                 }
                 else if (BungieClient.Configuration.Settings.TryDownloadMissingDefinitions)
                 {
-                    definition = BungieClient.Platform.GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value).GetAwaiter().GetResult();
+                    definition = BungieClient.Platform.GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value).GetAwaiter().GetResult().Response;
                     _repository.AddDefinitionToCache(DefinitionEnumType, definition, Locale);
                     return true;
                 }

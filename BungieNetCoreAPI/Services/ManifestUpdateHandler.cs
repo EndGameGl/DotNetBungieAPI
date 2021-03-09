@@ -32,7 +32,7 @@ namespace BungieNetCoreAPI.Services
             _logger.Log("Checking manifest version...", LogType.Info);
             _logger.Log("Downloading latest manifest...", LogType.Info);
             var latestManifest = await BungieClient.Platform.GetDestinyManifest();
-            var latestFoundEqual = _manifests.Keys.FirstOrDefault(x => x.Version.Equals(latestManifest.Version));
+            var latestFoundEqual = _manifests.Keys.FirstOrDefault(x => x.Version.Equals(latestManifest.Response.Version));
             if (latestFoundEqual != null)
             {
                 _logger.Log("Manifest is already up to date.", LogType.Info);
@@ -41,7 +41,7 @@ namespace BungieNetCoreAPI.Services
             else
             {
                 _logger.Log("Manifest requires update.", LogType.Info);
-                _currentUsedManifest = latestManifest;
+                _currentUsedManifest = latestManifest.Response;
             }
         }
 
@@ -69,6 +69,8 @@ namespace BungieNetCoreAPI.Services
 
         public async Task LoadData()
         {
+            if (_currentUsedManifest == null)
+                _currentUsedManifest = _manifests.Keys.Last();
             _logger.Log("Downloading/verifying manifest data.", LogType.Info);
             await _currentUsedManifest.DownloadAndSaveToLocalFiles(true);
             var repo = StaticUnityContainer.GetDestinyDefinitionRepositories();
