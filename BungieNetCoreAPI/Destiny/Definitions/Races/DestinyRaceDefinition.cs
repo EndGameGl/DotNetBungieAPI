@@ -36,7 +36,6 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Races
         {
             return $"{Hash}: {DisplayProperties.Name}";
         }
-
         public bool DeepEquals(DestinyRaceDefinition other)
         {
             return other != null&&

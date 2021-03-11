@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny
 {
-    public class DestinyItemQuantity
+    public class DestinyItemQuantity : IDeepEquatable<DestinyItemQuantity>
     {
         public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; }
         public long? ItemInstanceId { get; }
@@ -15,6 +15,14 @@ namespace BungieNetCoreAPI.Destiny
             Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
             ItemInstanceId = itemInstanceId;
             Quantity = quantity;
+        }
+
+        public bool DeepEquals(DestinyItemQuantity other)
+        {
+            return other != null &&
+                   Item.DeepEquals(other.Item) &&
+                   ItemInstanceId == other.ItemInstanceId &&
+                   Quantity == other.Quantity;
         }
     }
 }

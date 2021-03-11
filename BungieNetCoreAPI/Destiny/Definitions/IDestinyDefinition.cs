@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace BungieNetCoreAPI.Destiny.Definitions
+﻿namespace BungieNetCoreAPI.Destiny.Definitions
 {
     /// <summary>
     /// Base parameters for any destiny definition.
@@ -20,6 +18,6 @@ namespace BungieNetCoreAPI.Destiny.Definitions
         /// <summary>
         /// Tries to map values so it wouldn't need to look up repository every time
         /// </summary>
-        //void MapValues();
+        void MapValues();
     }
 }

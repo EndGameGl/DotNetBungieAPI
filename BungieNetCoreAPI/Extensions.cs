@@ -61,6 +61,18 @@ namespace BungieNetCoreAPI
             }
             return true;
         }
+        internal static bool DeepEqualsReadOnlyDictionaryWithSimpleKeyAndSimpleValue<T, P>(this ReadOnlyDictionary<T, P> compared, ReadOnlyDictionary<T, P> comparedWith)
+        {
+            if (compared.Count != comparedWith.Count)
+                return false;
+
+            for (int i = 0; i < compared.Count; i++)
+            {
+                if (!compared.ElementAt(i).Value.Equals(comparedWith.ElementAt(i).Value) || !compared.ElementAt(i).Key.Equals(comparedWith.ElementAt(i).Key))
+                    return false;
+            }
+            return true;
+        }
         internal static ReadOnlyCollection<T> AsReadOnlyOrEmpty<T>(this T[] source)
         {
             ReadOnlyCollection<T> readOnlyCollection;

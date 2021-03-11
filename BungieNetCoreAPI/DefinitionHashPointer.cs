@@ -51,12 +51,6 @@ namespace BungieNetCoreAPI
                     {
                         return definition;
                     }
-                    else if (BungieClient.Configuration.Settings.TryDownloadMissingDefinitions)
-                    {
-                        definition = BungieClient.Platform.GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value).Result.Response;
-                        _repository.AddDefinitionToCache(DefinitionEnumType, definition, Locale);
-                        return definition;
-                    }
                     else
                         throw new Exception($"No {DefinitionEnumType} was found with {Hash} hash.");
                 }
@@ -83,7 +77,6 @@ namespace BungieNetCoreAPI
             _repository = StaticUnityContainer.GetDestinyDefinitionRepositories();
             Locale = _repository.CurrentLocaleLoadContext;
         }
-
         internal DefinitionHashPointer(uint? hash, DefinitionsEnum type, DestinyLocales locale, T def = default, ILocalisedManifestDefinitionRepositories repo = null)
         {
             if (def != null)

@@ -2,7 +2,7 @@
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Records
 {
-    public class RecordCompletionInfo
+    public class RecordCompletionInfo : IDeepEquatable<RecordCompletionInfo>
     {
         public int ScoreValue { get; }
         public int PartialCompletionObjectiveCountThreshold { get; }
@@ -10,12 +10,21 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Records
         public RecordToastStyle ToastStyle { get; }
 
         [JsonConstructor]
-        private RecordCompletionInfo(int ScoreValue, int partialCompletionObjectiveCountThreshold, bool shouldFireToast, RecordToastStyle toastStyle)
+        internal RecordCompletionInfo(int ScoreValue, int partialCompletionObjectiveCountThreshold, bool shouldFireToast, RecordToastStyle toastStyle)
         {
             this.ScoreValue = ScoreValue;
             PartialCompletionObjectiveCountThreshold = partialCompletionObjectiveCountThreshold;
             ShouldFireToast = shouldFireToast;
             ToastStyle = toastStyle;
+        }
+
+        public bool DeepEquals(RecordCompletionInfo other)
+        {
+            return other != null &&
+                   ScoreValue == other.ScoreValue &&
+                   PartialCompletionObjectiveCountThreshold == other.PartialCompletionObjectiveCountThreshold &&
+                   ShouldFireToast == other.ShouldFireToast &&
+                   ToastStyle == other.ToastStyle;
         }
     }
 }
