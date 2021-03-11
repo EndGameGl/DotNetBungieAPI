@@ -4,6 +4,7 @@ using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
 using BungieNetCoreAPI.Destiny.Definitions.Progressions;
 using BungieNetCoreAPI.Destiny.Definitions.Seasons;
 using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Bungie
 {
@@ -21,15 +22,16 @@ namespace BungieNetCoreAPI.Bungie
         public DefinitionHashPointer<DestinyPresentationNodeDefinition> MedalsRootNode { get; }
         public DefinitionHashPointer<DestinyPresentationNodeDefinition> ExoticCatalystsRootNode { get; }
         public DefinitionHashPointer<DestinyPresentationNodeDefinition> LoreRootNode { get; }
-        public DefinitionHashPointer<DestinyProgressionDefinition>[] CurrentRankProgressions { get; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyProgressionDefinition>> CurrentRankProgressions { get; }
         public string UndiscoveredCollectibleImage { get; }
         public string AmmoTypeHeavyIcon { get; }
         public string AmmoTypeSpecialIcon { get; }
         public string AmmoTypePrimaryIcon { get; }
         public DefinitionHashPointer<DestinyArtifactDefinition> CurrentSeasonalArtifact { get; }
         public DefinitionHashPointer<DestinySeasonDefinition> СurrentSeason { get; }
-        public DefinitionHashPointer<DestinySeasonDefinition>[] FutureSeasons { get; }
-        public DefinitionHashPointer<DestinySeasonDefinition>[] PastSeasons { get; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinySeasonDefinition>> FutureSeasons { get; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinySeasonDefinition>> PastSeasons { get; }
+
         [JsonConstructor]
         internal BungieNetDestiny2CoreSettings(uint collectionRootNode, uint badgesRootNode, uint recordsRootNode, uint medalsRootNode, uint metricsRootNode,
             uint activeTriumphsRootNodeHash, uint activeSealsRootNodeHash, uint legacyTriumphsRootNodeHash, uint legacySealsRootNodeHash, uint medalsRootNodeHash,
@@ -48,36 +50,15 @@ namespace BungieNetCoreAPI.Bungie
             MedalsRootNode = new DefinitionHashPointer<DestinyPresentationNodeDefinition>(medalsRootNodeHash, DefinitionsEnum.DestinyPresentationNodeDefinition);
             ExoticCatalystsRootNode = new DefinitionHashPointer<DestinyPresentationNodeDefinition>(exoticCatalystsRootNodeHash, DefinitionsEnum.DestinyPresentationNodeDefinition);
             LoreRootNode = new DefinitionHashPointer<DestinyPresentationNodeDefinition>(loreRootNodeHash, DefinitionsEnum.DestinyPresentationNodeDefinition);
-            if (currentRankProgressionHashes != null)
-            {
-                CurrentRankProgressions = new DefinitionHashPointer<DestinyProgressionDefinition>[currentRankProgressionHashes.Length];
-                for (int i = 0; i < currentRankProgressionHashes.Length; i++)
-                {
-                    CurrentRankProgressions[i] = new DefinitionHashPointer<DestinyProgressionDefinition>(currentRankProgressionHashes[i], DefinitionsEnum.DestinyProgressionDefinition);
-                }
-            }
+            CurrentRankProgressions = currentRankProgressionHashes.DefinitionsAsReadOnlyOrEmpty<DestinyProgressionDefinition>(DefinitionsEnum.DestinyProgressionDefinition);
             UndiscoveredCollectibleImage = undiscoveredCollectibleImage;
             AmmoTypeHeavyIcon = ammoTypeHeavyIcon;
             AmmoTypeSpecialIcon = ammoTypeSpecialIcon;
             AmmoTypePrimaryIcon = ammoTypePrimaryIcon;
             CurrentSeasonalArtifact = new DefinitionHashPointer<DestinyArtifactDefinition>(currentSeasonalArtifactHash, DefinitionsEnum.DestinyArtifactDefinition);
             СurrentSeason = new DefinitionHashPointer<DestinySeasonDefinition>(currentSeasonHash, DefinitionsEnum.DestinySeasonDefinition);
-            if (futureSeasonHashes != null)
-            {
-                FutureSeasons = new DefinitionHashPointer<DestinySeasonDefinition>[futureSeasonHashes.Length];
-                for (int i = 0; i < futureSeasonHashes.Length; i++)
-                {
-                    FutureSeasons[i] = new DefinitionHashPointer<DestinySeasonDefinition>(futureSeasonHashes[i], DefinitionsEnum.DestinySeasonDefinition);
-                }
-            }
-            if (pastSeasonHashes != null)
-            {
-                PastSeasons = new DefinitionHashPointer<DestinySeasonDefinition>[pastSeasonHashes.Length];
-                for (int i = 0; i < pastSeasonHashes.Length; i++)
-                {
-                    PastSeasons[i] = new DefinitionHashPointer<DestinySeasonDefinition>(pastSeasonHashes[i], DefinitionsEnum.DestinySeasonDefinition);
-                }
-            }
+            FutureSeasons = futureSeasonHashes.DefinitionsAsReadOnlyOrEmpty<DestinySeasonDefinition>(DefinitionsEnum.DestinySeasonDefinition);
+            PastSeasons = pastSeasonHashes.DefinitionsAsReadOnlyOrEmpty<DestinySeasonDefinition>(DefinitionsEnum.DestinySeasonDefinition);
         }
     }
 }

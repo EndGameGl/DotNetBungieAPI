@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Bungie.Applications
 {
@@ -16,11 +16,11 @@ namespace BungieNetCoreAPI.Bungie.Applications
         public DateTime CreationDate { get; }
         public DateTime StatusChanged { get; }
         public DateTime FirstPublished { get; }
-        public List<BungieApplicationDeveloper> Team { get; }
+        public ReadOnlyCollection<BungieApplicationDeveloper> Team { get; }
 
         [JsonConstructor]
-        private BungieApplication(int applicationId, string name, string redirectUrl, string link, string scope, string origin, int status, DateTime creationDate,
-            DateTime statusChanged, DateTime firstPublished, List<BungieApplicationDeveloper> team)
+        internal BungieApplication(int applicationId, string name, string redirectUrl, string link, string scope, string origin, int status, DateTime creationDate,
+            DateTime statusChanged, DateTime firstPublished, BungieApplicationDeveloper[] team)
         {
             ApplicationId = applicationId;
             Name = name;
@@ -32,7 +32,7 @@ namespace BungieNetCoreAPI.Bungie.Applications
             CreationDate = creationDate;
             StatusChanged = statusChanged;
             FirstPublished = firstPublished;
-            Team = team;
+            Team = team.AsReadOnlyOrEmpty();
         }
     }
 }

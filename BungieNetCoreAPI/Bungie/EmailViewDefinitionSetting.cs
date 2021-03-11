@@ -1,25 +1,26 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Bungie
 {
     public class EmailViewDefinitionSetting
     {
         public string Name { get; }
-        public Dictionary<string, EmailSettingLocalization> Localization { get; }
+        public ReadOnlyDictionary<string, EmailSettingLocalization> Localization { get; }
         public bool IsSetByDefault { get; }
         public long OptInAggregateValue { get; }
-        public EmailSubscriptionDefinition[] Subscriptions { get; }
+        public ReadOnlyCollection<EmailSubscriptionDefinition> Subscriptions { get; }
 
         [JsonConstructor]
         internal EmailViewDefinitionSetting(string name, Dictionary<string, EmailSettingLocalization> localization, bool setByDefault, long optInAggregateValue,
              EmailSubscriptionDefinition[] subscriptions)
         {
             Name = name;
-            Localization = localization;
+            Localization = localization.AsReadOnlyDictionaryOrEmpty();
             IsSetByDefault = setByDefault;
             OptInAggregateValue = optInAggregateValue;
-            Subscriptions = subscriptions;
+            Subscriptions = subscriptions.AsReadOnlyOrEmpty();
         }
     }
 }

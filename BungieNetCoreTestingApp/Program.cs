@@ -52,6 +52,7 @@ using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
 using BungieNetCoreAPI.Destiny.Definitions.ProgressionLevelRequirements;
 using BungieNetCoreAPI.Destiny.Definitions.Progressions;
 using BungieNetCoreAPI.Destiny.Definitions.HistoricalStats;
+using System.Text;
 
 namespace BungieNetCoreTestingApp
 {
@@ -108,6 +109,7 @@ namespace BungieNetCoreTestingApp
                     saveToAppMemory: true,
                     tryDownloadMissingDefinitions: true,
                     preferredSource: DefinitionSources.SQLite,
+                    retryDownloading: false,
                     DestinyLocales.EN);
 
                 settings.UsePreloadedData("H:\\BungieNetCoreAPIRepository\\Manifests");
@@ -129,10 +131,10 @@ namespace BungieNetCoreTestingApp
 
             await _bungieClient.Run();
 
-            var activityHistory = await BungieClient.Platform.GetDestinyAggregateActivityStats(
-                membershipType: BungieMembershipType.TigerSteam,
-                destinyMembershipId: 4611686018483306402,
-                characterId: 2305843009404108262);
+            //var aggregateActivityStats = await BungieClient.Platform.GetDestinyAggregateActivityStats(
+            //    membershipType: BungieMembershipType.TigerSteam,
+            //    destinyMembershipId: 4611686018483306402,
+            //    characterId: 2305843009404108262);
 
 
             //var pgcr = await BungieClient.Platform.GetPostGameCarnageReport(activityHistory.Response.Activities.First().ActivityDetails.InstanceId);
@@ -145,18 +147,31 @@ namespace BungieNetCoreTestingApp
 
             //    ALL_COMPONENTS_ARRAY);
 
+            var coll = _bungieClient.Repository.GetAll<DestinyProgressionDefinition>().ToList();
 
-
-            //var clanData = await BungieClient.Platform.GetClanWeeklyRewardState(4394229);
-
-            //var milestones = await BungieClient.Platform.GetPublicMilestones();
-
-            //var coll = _bungieClient.Repository.GetAll<DestinyProgressionDefinition>().ToList();
-
-            //coll.ForEach(x => x.MapValues());
+            coll.ForEach(x => x.MapValues());
 
             //RunDeepEqualityCheck(coll);
 
+            //if (aggregateActivityStats.ErrorCode == PlatformErrorCodes.Success && aggregateActivityStats.Response != null)
+            //{
+            //    StringBuilder sb = new StringBuilder();
+                
+            //    foreach (var activityStat in aggregateActivityStats.Response.Activities)
+            //    {
+            //        if (activityStat.Activity.TryGetDefinition(out var actDef))
+            //        {
+            //            sb.AppendLine($"{{{actDef.DisplayProperties?.Name}}}");
+            //        }
+            //        else
+            //            sb.AppendLine("{Unknown activity.}");
+            //        foreach (var item in activityStat.Values)
+            //        {
+            //            sb.AppendLine($"    {item.Key}: {item.Value.BasicValue.DisplayValue}");
+            //        }
+            //    }
+            //    Console.WriteLine(sb.ToString());
+            //}
 
             await Task.Delay(Timeout.Infinite);
         }

@@ -9,7 +9,7 @@ namespace BungieNetCoreAPI.Bungie
         public string UserThemeDescription { get; }
 
         [JsonConstructor]
-        private BungieUserTheme(int userThemeId, string userThemeName, string userThemeDescription)
+        internal BungieUserTheme(int userThemeId, string userThemeName, string userThemeDescription)
         {
             UserThemeId = userThemeId;
             UserThemeName = userThemeName;

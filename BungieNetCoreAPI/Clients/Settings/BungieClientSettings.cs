@@ -16,6 +16,8 @@ namespace BungieNetCoreAPI.Clients.Settings
         internal bool CacheDefinitionsInMemory = false;
         internal bool TryDownloadMissingDefinitions = false;
         internal DestinyLocales[] Locales = Array.Empty<DestinyLocales>();
+        internal bool ShouldRetryDownloading = false;
+        internal bool PremapDefinitionPointers = false;
 
         internal bool IsUsingPreloadedData = false;
 
@@ -64,13 +66,14 @@ namespace BungieNetCoreAPI.Clients.Settings
         /// <param name="tryDownloadMissingDefinitions"></param>
         /// <param name="preferredSource"></param>
         /// <param name="localesToLoad"></param>
-        public void SetDefinitionsLoadingBehaviour(bool saveToAppMemory, bool tryDownloadMissingDefinitions, DefinitionSources preferredSource,
+        public void SetDefinitionsLoadingBehaviour(bool saveToAppMemory, bool tryDownloadMissingDefinitions, DefinitionSources preferredSource, bool retryDownloading,
             params DestinyLocales[] localesToLoad)
         {
             CacheDefinitionsInMemory = saveToAppMemory;
             TryDownloadMissingDefinitions = tryDownloadMissingDefinitions;
             Locales = localesToLoad;
             PreferredLoadSource = preferredSource;
+            ShouldRetryDownloading = retryDownloading;
         }    
         /// <summary>
         /// Makes app use already downloaded manifest databases. (Make sure to download them first))

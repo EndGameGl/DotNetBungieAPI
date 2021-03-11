@@ -8,7 +8,7 @@ namespace BungieNetCoreAPI.Bungie
         public int IgnoreFlags { get; }
 
         [JsonConstructor]
-        private BungieNetUserContextIgnoreStatus(bool isIgnored, int ignoreFlags)
+        internal BungieNetUserContextIgnoreStatus(bool isIgnored, int ignoreFlags)
         {
             IsIgnored = isIgnored;
             IgnoreFlags = ignoreFlags;

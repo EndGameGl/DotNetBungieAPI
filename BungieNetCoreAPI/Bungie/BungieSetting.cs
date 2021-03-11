@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Bungie
 {
@@ -9,7 +10,7 @@ namespace BungieNetCoreAPI.Bungie
         public string DisplayName { get; }
         public string Summary { get; }
         public string ImagePath { get; }
-        public BungieSetting[] ChildSettings { get; }
+        public ReadOnlyCollection<BungieSetting> ChildSettings { get; }
 
         [JsonConstructor]
         internal BungieSetting(string identifier, bool isDefault, string displayName, string summary, string imagePath, BungieSetting[] childSettings)
@@ -19,7 +20,7 @@ namespace BungieNetCoreAPI.Bungie
             DisplayName = displayName;
             Summary = summary;
             ImagePath = imagePath;
-            ChildSettings = childSettings;
+            ChildSettings = childSettings.AsReadOnlyOrEmpty();
         }
 
         public override string ToString()

@@ -15,6 +15,7 @@ namespace BungieNetCoreAPI
     /// <typeparam name="T">Destiny definition type</typeparam>
     public class DefinitionHashPointer<T> : IDeepEquatable<DefinitionHashPointer<T>> where T : IDestinyDefinition
     {
+        private bool? _alreadyTriedLoading = false;
         internal bool Exists;
         internal T m_value;
         private readonly ILocalisedManifestDefinitionRepositories _repository;
@@ -121,21 +122,29 @@ namespace BungieNetCoreAPI
                 }
                 else if (BungieClient.Configuration.Settings.TryDownloadMissingDefinitions)
                 {
-                    definition = BungieClient.Platform.GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value).GetAwaiter().GetResult().Response;
-                    _repository.AddDefinitionToCache(DefinitionEnumType, definition, Locale);
-                    return true;
-                }
-                else
+                    if (_alreadyTriedLoading == false || BungieClient.Configuration.Settings.ShouldRetryDownloading)
+                    {
+                        _alreadyTriedLoading = true;
+                        var task = Task.Run(async () => await BungieClient.Platform.GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value));
+                        var response = task.Result;
+                        if (response.ErrorCode == PlatformErrorCodes.Success && response.Response != null)
+                        {
+                            definition = task.Result.Response;
+                            _repository.AddDefinitionToCache(DefinitionEnumType, definition, Locale);
+                            return true;
+                        }
+                        return false;
+                    }
                     return false;
-            }
-            else
+                }
                 return false;
+            }
+            return false;
         }
         public override string ToString()
         {
-            return $"{{{DefinitionEnumType} - {Hash} - {Locale}}}";
+            return $"{(Exists ? m_value.ToString() : $"{DefinitionEnumType} - {Hash} - {Locale}")}";
         }
-
         internal void TryMapValue()
         {
             if (m_value != null && Exists)

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Bungie
 {
@@ -7,7 +8,7 @@ namespace BungieNetCoreAPI.Bungie
         public string Name { get; }
         public long Value { get; }
         public bool IsSetByDefault { get; }
-        public EmailSubscriptionDefinition[] DependentSubscriptions { get; }
+        public ReadOnlyCollection<EmailSubscriptionDefinition> DependentSubscriptions { get; }
 
         [JsonConstructor]
         internal EmailOptInDefinition(string name, long value, bool setByDefault, EmailSubscriptionDefinition[] dependentSubscriptions)
@@ -15,7 +16,7 @@ namespace BungieNetCoreAPI.Bungie
             Name = name;
             Value = value;
             IsSetByDefault = IsSetByDefault;
-            DependentSubscriptions = dependentSubscriptions;
+            DependentSubscriptions = dependentSubscriptions.AsReadOnlyOrEmpty();
         }
     }
 }

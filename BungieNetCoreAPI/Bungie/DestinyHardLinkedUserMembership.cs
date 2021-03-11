@@ -9,7 +9,7 @@ namespace BungieNetCoreAPI.Bungie
         public BungieMembershipType CrossSaveOverriddenType { get; }
 
         [JsonConstructor]
-        private DestinyHardLinkedUserMembership(BungieMembershipType membershipType, string membershipId, BungieMembershipType CrossSaveOverriddenType)
+        internal DestinyHardLinkedUserMembership(BungieMembershipType membershipType, string membershipId, BungieMembershipType CrossSaveOverriddenType)
         {
             MembershipType = membershipType;
             MembershipId = membershipId;

@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Bungie
 {
@@ -9,25 +8,25 @@ namespace BungieNetCoreAPI.Bungie
     {
         public string Environment { get; }
         public Dictionary<string, BungieSystemSetting> Systems { get; }
-        public BungieSetting[] IgnoreReasons { get; }
-        public BungieSetting[] ForumCategories { get; }
-        public BungieSetting[] GroupAvatars { get; }
-        public BungieSetting[] DestinyMembershipTypes { get; }
-        public BungieSetting[] RecruitmentPlatformTags { get; }
-        public BungieSetting[] RecruitmentMiscTags { get; }
-        public BungieSetting[] RecruitmentActivities { get; }
-        public BungieSetting[] UserContentLocales { get; }
-        public BungieSetting[] SystemContentLocales { get; }
-        public BungieSetting[] ClanBannerDecals { get; }
-        public BungieSetting[] ClanBannerDecalColors { get; }
-        public BungieSetting[] ClanBannerGonfalons { get; }
-        public BungieSetting[] ClanBannerGonfalonColors { get; }
-        public BungieSetting[] ClanBannerGonfalonDetails { get; }
-        public BungieSetting[] ClanBannerGonfalonDetailColors { get; }
-        public BungieSetting[] ClanBannerStandards { get; }
+        public ReadOnlyCollection<BungieSetting> IgnoreReasons { get; }
+        public ReadOnlyCollection<BungieSetting> ForumCategories { get; }
+        public ReadOnlyCollection<BungieSetting> GroupAvatars { get; }
+        public ReadOnlyCollection<BungieSetting> DestinyMembershipTypes { get; }
+        public ReadOnlyCollection<BungieSetting> RecruitmentPlatformTags { get; }
+        public ReadOnlyCollection<BungieSetting> RecruitmentMiscTags { get; }
+        public ReadOnlyCollection<BungieSetting> RecruitmentActivities { get; }
+        public ReadOnlyCollection<BungieSetting> UserContentLocales { get; }
+        public ReadOnlyCollection<BungieSetting> SystemContentLocales { get; }
+        public ReadOnlyCollection<BungieSetting> ClanBannerDecals { get; }
+        public ReadOnlyCollection<BungieSetting> ClanBannerDecalColors { get; }
+        public ReadOnlyCollection<BungieSetting> ClanBannerGonfalons { get; }
+        public ReadOnlyCollection<BungieSetting> ClanBannerGonfalonColors { get; }
+        public ReadOnlyCollection<BungieSetting> ClanBannerGonfalonDetails { get; }
+        public ReadOnlyCollection<BungieSetting> ClanBannerGonfalonDetailColors { get; }
+        public ReadOnlyCollection<BungieSetting> ClanBannerStandards { get; }
         public BungieNetDestiny2CoreSettings Destiny2CoreSettings { get; }
         public BungieNetEmailSettings EmailSettings { get; }
-        public BungieSetting[] FireteamActivities { get; }
+        public ReadOnlyCollection<BungieSetting> FireteamActivities { get; }
 
         [JsonConstructor]
         internal BungieNetSettings(string environment, Dictionary<string, BungieSystemSetting> systems, BungieSetting[] ignoreReasons, BungieSetting[] forumCategories,
@@ -39,25 +38,25 @@ namespace BungieNetCoreAPI.Bungie
         {
             Environment = environment;
             Systems = systems;
-            IgnoreReasons = ignoreReasons;
-            ForumCategories = forumCategories;
-            GroupAvatars = groupAvatars;
-            DestinyMembershipTypes = destinyMembershipTypes;
-            RecruitmentPlatformTags = recruitmentPlatformTags;
-            RecruitmentMiscTags = recruitmentMiscTags;
-            RecruitmentActivities = recruitmentActivities;
-            UserContentLocales = userContentLocales;
-            SystemContentLocales = systemContentLocales;
-            ClanBannerDecals = clanBannerDecals;
-            ClanBannerDecalColors = clanBannerDecalColors;
-            ClanBannerGonfalons = clanBannerGonfalons;
-            ClanBannerGonfalonColors = clanBannerGonfalonColors;
-            ClanBannerGonfalonDetails = clanBannerGonfalonDetails;
-            ClanBannerGonfalonDetailColors = clanBannerGonfalonDetailColors;
-            ClanBannerStandards = clanBannerStandards;
+            IgnoreReasons = ignoreReasons.AsReadOnlyOrEmpty();
+            ForumCategories = forumCategories.AsReadOnlyOrEmpty();
+            GroupAvatars = groupAvatars.AsReadOnlyOrEmpty();
+            DestinyMembershipTypes = destinyMembershipTypes.AsReadOnlyOrEmpty();
+            RecruitmentPlatformTags = recruitmentPlatformTags.AsReadOnlyOrEmpty();
+            RecruitmentMiscTags = recruitmentMiscTags.AsReadOnlyOrEmpty();
+            RecruitmentActivities = recruitmentActivities.AsReadOnlyOrEmpty();
+            UserContentLocales = userContentLocales.AsReadOnlyOrEmpty();
+            SystemContentLocales = systemContentLocales.AsReadOnlyOrEmpty();
+            ClanBannerDecals = clanBannerDecals.AsReadOnlyOrEmpty();
+            ClanBannerDecalColors = clanBannerDecalColors.AsReadOnlyOrEmpty();
+            ClanBannerGonfalons = clanBannerGonfalons.AsReadOnlyOrEmpty();
+            ClanBannerGonfalonColors = clanBannerGonfalonColors.AsReadOnlyOrEmpty();
+            ClanBannerGonfalonDetails = clanBannerGonfalonDetails.AsReadOnlyOrEmpty();
+            ClanBannerGonfalonDetailColors = clanBannerGonfalonDetailColors.AsReadOnlyOrEmpty();
+            ClanBannerStandards = clanBannerStandards.AsReadOnlyOrEmpty();
             Destiny2CoreSettings = destiny2CoreSettings;
             EmailSettings = emailSettings;
-            FireteamActivities = fireteamActivities;
+            FireteamActivities = fireteamActivities.AsReadOnlyOrEmpty();
         }
     }
 }

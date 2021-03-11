@@ -10,7 +10,7 @@ namespace BungieNetCoreAPI.Bungie
         public string CredentialAsString { get; }
 
         [JsonConstructor]
-        private BungieNetUserAccountCredentialType(BungieCredentialType credentialType, string credentialDisplayName, bool isPublic, string credentialAsString)
+        internal BungieNetUserAccountCredentialType(BungieCredentialType credentialType, string credentialDisplayName, bool isPublic, string credentialAsString)
         {
             CredentialType = credentialType;
             CredentialDisplayName = credentialDisplayName;

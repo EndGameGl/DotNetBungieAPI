@@ -8,7 +8,7 @@ namespace BungieNetCoreAPI.Bungie
         public BungieNetUserContextIgnoreStatus IgnoreStatus { get; }
 
         [JsonConstructor]
-        private BungieNetUserContext(bool isFollowing, BungieNetUserContextIgnoreStatus ignoreStatus)
+        internal BungieNetUserContext(bool isFollowing, BungieNetUserContextIgnoreStatus ignoreStatus)
         {
             IsFollowing = isFollowing;
             IgnoreStatus = ignoreStatus;

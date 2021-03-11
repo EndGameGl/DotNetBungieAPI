@@ -9,7 +9,7 @@ namespace BungieNetCoreAPI.Bungie.Applications
         public BungieNetUserInfo User { get; }
 
         [JsonConstructor]
-        private BungieApplicationDeveloper(int role, int apiEulaVersion, BungieNetUserInfo user)
+        internal BungieApplicationDeveloper(int role, int apiEulaVersion, BungieNetUserInfo user)
         {
             Role = role;
             ApiEulaVersion = apiEulaVersion;
