@@ -234,7 +234,6 @@ namespace BungieNetCoreAPI.Clients
         {
             return await GetData<DestinyCollectibleNodeDetailResponse>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Collectibles/{collectiblePresentationNodeHash}/?components={componentTypes.ComponentsToIntString()}");
         }
-
         /// <summary>
         /// Gets the available post game carnage report for the activity ID.
         /// </summary>
@@ -336,8 +335,17 @@ namespace BungieNetCoreAPI.Clients
         {
             return await GetData<DestinyHistoricalWeaponStatsData>($"Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/UniqueWeapons/");
         }
-
-
+        /// <summary>
+        /// Gets all activities the character has participated in together with aggregate statistics for those activities.
+        /// </summary>
+        /// <param name="membershipType"></param>
+        /// <param name="destinyMembershipId"></param>
+        /// <param name="characterId"></param>
+        /// <returns></returns>
+        public async Task<BungieResponse<DestinyAggregateActivityResults>> GetDestinyAggregateActivityStats(BungieMembershipType membershipType, long destinyMembershipId, long characterId)
+        {
+            return await GetData<DestinyAggregateActivityResults>($"Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/AggregateActivityStats/");
+        }
 
         /// <summary>
         /// Gets public information about currently available Milestones.

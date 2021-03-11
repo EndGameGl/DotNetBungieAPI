@@ -129,7 +129,7 @@ namespace BungieNetCoreTestingApp
 
             await _bungieClient.Run();
 
-            var activityHistory = await BungieClient.Platform.GetUniqueWeaponHistory(
+            var activityHistory = await BungieClient.Platform.GetDestinyAggregateActivityStats(
                 membershipType: BungieMembershipType.TigerSteam,
                 destinyMembershipId: 4611686018483306402,
                 characterId: 2305843009404108262);
