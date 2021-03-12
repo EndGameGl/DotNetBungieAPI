@@ -3,19 +3,17 @@ using Newtonsoft.Json;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.RewardAdjusterPointers
 {
-    /// <summary>
-    /// Empty atm
-    /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyRewardAdjusterPointerDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
-    public class DestinyRewardAdjusterPointerDefinition : IDestinyDefinition
+    public class DestinyRewardAdjusterPointerDefinition : IDestinyDefinition, IDeepEquatable<DestinyRewardAdjusterPointerDefinition>
     {
         public int AdjusterType { get; }
         public bool Blacklisted { get; }
         public uint Hash { get; }
         public int Index { get; }
         public bool Redacted { get; }
+
         [JsonConstructor]
-        private DestinyRewardAdjusterPointerDefinition(int adjusterType, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyRewardAdjusterPointerDefinition(int adjusterType, bool blacklisted, uint hash, int index, bool redacted)
         {
             AdjusterType = adjusterType;
             Blacklisted = blacklisted;
@@ -27,6 +25,21 @@ namespace BungieNetCoreAPI.Destiny.Definitions.RewardAdjusterPointers
         public override string ToString()
         {
             return $"{Hash}";
+        }
+
+        public bool DeepEquals(DestinyRewardAdjusterPointerDefinition other)
+        {
+            return other != null &&
+                   AdjusterType == other.AdjusterType &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+
+        public void MapValues()
+        {
+            return;
         }
     }
 }
