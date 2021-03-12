@@ -1,10 +1,11 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Stats
 {
     [DestinyDefinition(DefinitionsEnum.DestinyStatDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyStatDefinition : IDestinyDefinition
+    public class DestinyStatDefinition : IDestinyDefinition, IDeepEquatable<DestinyStatDefinition>
     {
         public StatAggregationType AggregationType { get; }
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
@@ -34,6 +35,24 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Stats
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
+        }
+
+        public void MapValues()
+        {
+            return;
+        }
+        public bool DeepEquals(DestinyStatDefinition other)
+        {
+            return other != null &&
+                   AggregationType == other.AggregationType &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   HasComputedBlock == other.HasComputedBlock &&
+                   Interpolate == other.Interpolate &&
+                   StatCategory == other.StatCategory &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
         }
     }
 }

@@ -1,25 +1,24 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using BungieNetCoreAPI.Destiny.Definitions.Progressions;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.TalentGrids
 {
     [DestinyDefinition(DefinitionsEnum.DestinyTalentGridDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyTalentGridDefinition : IDestinyDefinition
+    public class DestinyTalentGridDefinition : IDestinyDefinition, IDeepEquatable<DestinyTalentGridDefinition>
     {
-        //public List<object> ExclusiveSets { get; }
+        public ReadOnlyCollection<TalentNodeExclusiveSet> ExclusiveSets { get; }
         public int CalcMaxGridLevel { get; }
         public int CalcProgressToMaxLevel { get; }
         public int GridLevelPerColumn { get; }
-        public Dictionary<uint, TalentGridGroup> Groups { get; }
-        public List<int> IndependentNodeIndexes { get; }
+        public ReadOnlyDictionary<uint, TalentGridGroup> Groups { get; }
+        public ReadOnlyCollection<int> IndependentNodeIndexes { get; }
         public int MaxGridLevel { get; }
         public int MaximumRandomMaterialRequirements { get; }
-        public List<TalentGridNodeCategory> NodeCategories { get; }
-        public List<TalentGridNode> Nodes { get; }
+        public ReadOnlyCollection<TalentGridNodeCategory> NodeCategories { get; }
+        public ReadOnlyCollection<TalentGridNode> Nodes { get; }
         public DefinitionHashPointer<DestinyProgressionDefinition> Progression { get; }
         public bool Blacklisted { get; }
         public uint Hash { get; }
@@ -27,21 +26,21 @@ namespace BungieNetCoreAPI.Destiny.Definitions.TalentGrids
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyTalentGridDefinition(int calcMaxGridLevel, int calcProgressToMaxLevel, int gridLevelPerColumn,
-            Dictionary<uint, TalentGridGroup> groups, List<int> independentNodeIndexes, int maxGridLevel, int maximumRandomMaterialRequirements, 
-            List<TalentGridNodeCategory> nodeCategories, List<TalentGridNode> nodes, uint progressionHash, //, List<object> exclusiveSets
+        internal DestinyTalentGridDefinition(int calcMaxGridLevel, int calcProgressToMaxLevel, int gridLevelPerColumn,
+            Dictionary<uint, TalentGridGroup> groups, int[] independentNodeIndexes, int maxGridLevel, int maximumRandomMaterialRequirements, 
+            TalentGridNodeCategory[] nodeCategories, TalentGridNode[] nodes, uint progressionHash, TalentNodeExclusiveSet[] exclusiveSets,
             bool blacklisted, uint hash, int index, bool redacted)
         {
             CalcMaxGridLevel = calcMaxGridLevel;
             CalcProgressToMaxLevel = calcProgressToMaxLevel;
-            //ExclusiveSets = exclusiveSets;
+            ExclusiveSets = exclusiveSets.AsReadOnlyOrEmpty();
             GridLevelPerColumn = gridLevelPerColumn;
-            Groups = groups;
-            IndependentNodeIndexes = independentNodeIndexes;
+            Groups = groups.AsReadOnlyDictionaryOrEmpty();
+            IndependentNodeIndexes = independentNodeIndexes.AsReadOnlyOrEmpty();
             MaxGridLevel = maxGridLevel;
             MaximumRandomMaterialRequirements = maximumRandomMaterialRequirements;
-            NodeCategories = nodeCategories;
-            Nodes = nodes;
+            NodeCategories = nodeCategories.AsReadOnlyOrEmpty();
+            Nodes = nodes.AsReadOnlyOrEmpty();
             Progression = new DefinitionHashPointer<DestinyProgressionDefinition>(progressionHash, DefinitionsEnum.DestinyProgressionDefinition);
             Blacklisted = blacklisted;
             Hash = hash;
@@ -52,6 +51,64 @@ namespace BungieNetCoreAPI.Destiny.Definitions.TalentGrids
         public override string ToString()
         {
             return $"{Hash}";
+        }
+
+        public void MapValues()
+        {
+            foreach (var groupValue in Groups.Values)
+            {
+                groupValue.Lore.TryMapValue();
+            }
+            Progression.TryMapValue();
+            foreach (var node in Nodes)
+            {
+                node.Lore.TryMapValue();
+                foreach (var req in node.RandomActivationRequirement?.MaterialRequirements)
+                {
+                    req.TryMapValue();
+                }
+                foreach (var nodeStep in node.Steps)
+                {
+                    nodeStep.DamageType.TryMapValue();
+                    foreach (var req in nodeStep.ActivationRequirement?.MaterialRequirements)
+                    {
+                        req.TryMapValue();
+                    }
+                    foreach (var perk in nodeStep.Perks)
+                    {
+                        perk.TryMapValue();
+                    }
+                    foreach (var stat in nodeStep.Stats)
+                    {
+                        stat.TryMapValue();
+                    }
+                    foreach (var replacement in nodeStep.SocketReplacements)
+                    {
+                        replacement.PlugItem.TryMapValue();
+                        replacement.SocketType.TryMapValue();
+                    }
+                }
+            }
+        }
+
+        public bool DeepEquals(DestinyTalentGridDefinition other)
+        {
+            return other != null &&
+                   ExclusiveSets.DeepEqualsReadOnlyCollections(other.ExclusiveSets) &&
+                   CalcMaxGridLevel == other.CalcMaxGridLevel &&
+                   CalcProgressToMaxLevel == other.CalcProgressToMaxLevel &&
+                   GridLevelPerColumn == other.GridLevelPerColumn &&
+                   Groups.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue(other.Groups) &&
+                   IndependentNodeIndexes.DeepEqualsReadOnlySimpleCollection(other.IndependentNodeIndexes) &&
+                   MaxGridLevel == other.MaxGridLevel &&
+                   MaximumRandomMaterialRequirements == other.MaximumRandomMaterialRequirements &&
+                   NodeCategories.DeepEqualsReadOnlyCollections(other.NodeCategories) &&
+                   Nodes.DeepEqualsReadOnlyCollections(other.Nodes) &&
+                   Progression.DeepEquals(other.Progression) &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
         }
     }
 }
