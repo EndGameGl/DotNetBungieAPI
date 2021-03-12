@@ -22,7 +22,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions
         /// </summary>
         public string Name { get; }
         public string HighResolutionIcon { get; }
-        public ReadOnlyCollection<DestinyDefinitionDisplayPropertiesIconSequenceEntry> IconSequences { get; }
+        public ReadOnlyCollection<DestinyDefinitionDisplayPropertiesIconSequenceEntry> IconSequences { get; internal set; }
 
         [JsonConstructor]
         protected DestinyDefinitionDisplayProperties(string description, bool hasIcon, string icon, string name, string highResIcon,

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
 {
-    public class VendorInteraction
+    public class VendorInteraction 
     {
         public string FlavorLineOne { get; }
         public string FlavorLineTwo { get; }

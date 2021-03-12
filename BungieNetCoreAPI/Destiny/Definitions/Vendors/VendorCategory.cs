@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
 {
-    public class VendorCategory
+    public class VendorCategory : IDeepEquatable<VendorCategory>
     {
         public string BuyStringOverride { get; }
         public uint CategoryHash { get; }
@@ -18,12 +18,14 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
         public int ResetOffsetMinutesOverride { get; }
         public bool ShowUnavailableItems { get; }
         public int SortValue { get; }
-        public List<int> VendorItemIndexes { get; }
+        public ReadOnlyCollection<int> VendorItemIndexes { get; }
+        public string DisplayTitle { get; }
+        public VendorCategoryOverlay Overlay { get; }
 
         [JsonConstructor]
-        private VendorCategory(string buyStringOverride, uint categoryHash, int categoryIndex, string disabledDescription, bool hideFromRegularPurchase,
+        internal VendorCategory(string buyStringOverride, uint categoryHash, int categoryIndex, string disabledDescription, bool hideFromRegularPurchase,
             bool hideIfNoCurrency, bool isDisplayOnly, bool isPreview, int quantityAvailable, int resetIntervalMinutesOverride, int resetOffsetMinutesOverride,
-            bool showUnavailableItems, int sortValue, List<int> vendorItemIndexes)
+            bool showUnavailableItems, int sortValue, int[] vendorItemIndexes, string displayTitle, VendorCategoryOverlay overlay)
         {
             BuyStringOverride = buyStringOverride;
             CategoryHash = categoryHash;
@@ -38,7 +40,30 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
             ResetOffsetMinutesOverride = resetIntervalMinutesOverride;
             ShowUnavailableItems = showUnavailableItems;
             SortValue = sortValue;
-            VendorItemIndexes = vendorItemIndexes;
+            VendorItemIndexes = vendorItemIndexes.AsReadOnlyOrEmpty();
+            DisplayTitle = displayTitle;
+            Overlay = overlay;
+        }
+
+        public bool DeepEquals(VendorCategory other)
+        {
+            return other != null &&
+                   BuyStringOverride == other.BuyStringOverride &&
+                   CategoryHash == other.CategoryHash &&
+                   CategoryIndex == other.CategoryIndex &&
+                   DisabledDescription == other.DisabledDescription &&
+                   HideFromRegularPurchase == other.HideFromRegularPurchase &&
+                   HideIfNoCurrency == other.HideIfNoCurrency &&
+                   IsDisplayOnly == other.IsDisplayOnly &&
+                   IsPreview == other.IsPreview &&
+                   QuantityAvailable == other.QuantityAvailable &&
+                   ResetIntervalMinutesOverride == other.ResetIntervalMinutesOverride &&
+                   ResetOffsetMinutesOverride == other.ResetOffsetMinutesOverride &&
+                   ShowUnavailableItems == other.ShowUnavailableItems &&
+                   SortValue == other.SortValue &&
+                   VendorItemIndexes.DeepEqualsReadOnlySimpleCollection(other.VendorItemIndexes) &&
+                   DisplayTitle == other.DisplayTitle &&
+                   Overlay.DeepEquals(other.Overlay);
         }
     }
 }

@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace BungieNetCoreAPI.Destiny.Definitions.VendorGroups
 {
     [DestinyDefinition(DefinitionsEnum.DestinyVendorGroupDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyVendorGroupDefinition : IDestinyDefinition
+    public class DestinyVendorGroupDefinition : IDestinyDefinition, IDeepEquatable<DestinyVendorGroupDefinition>
     {
         /// <summary>
         /// Vendor group name
@@ -17,7 +17,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.VendorGroups
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyVendorGroupDefinition(string categoryName, int order, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyVendorGroupDefinition(string categoryName, int order, bool blacklisted, uint hash, int index, bool redacted)
         {
             CategoryName = categoryName;
             Order = order;
@@ -30,6 +30,22 @@ namespace BungieNetCoreAPI.Destiny.Definitions.VendorGroups
         public override string ToString()
         {
             return $"{Hash} {CategoryName}";
+        }
+
+        public void MapValues()
+        {
+            return;
+        }
+
+        public bool DeepEquals(DestinyVendorGroupDefinition other)
+        {
+            return other != null &&
+                   CategoryName == other.CategoryName &&
+                   Order == other.Order &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
         }
     }
 }
