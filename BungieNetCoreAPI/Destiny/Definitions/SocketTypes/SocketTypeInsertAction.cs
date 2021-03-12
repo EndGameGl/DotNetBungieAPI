@@ -2,7 +2,7 @@
 
 namespace BungieNetCoreAPI.Destiny.Definitions.SocketTypes
 {
-    public class SocketTypeInsertAction
+    public class SocketTypeInsertAction : IDeepEquatable<SocketTypeInsertAction>
     {
         public int ActionExecuteSeconds { get; }
         public int ActionSoundHash { get; }
@@ -10,12 +10,21 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SocketTypes
         public bool IsPositiveAction { get; }
 
         [JsonConstructor]
-        private SocketTypeInsertAction(int actionExecuteSeconds, int actionSoundHash, SocketActionType actionType, bool isPositiveAction)
+        internal SocketTypeInsertAction(int actionExecuteSeconds, int actionSoundHash, SocketActionType actionType, bool isPositiveAction)
         {
             ActionExecuteSeconds = actionExecuteSeconds;
             ActionSoundHash = actionSoundHash;
             ActionType = actionType;
             IsPositiveAction = isPositiveAction;
+        }
+
+        public bool DeepEquals(SocketTypeInsertAction other)
+        {
+            return other != null &&
+                   ActionExecuteSeconds == other.ActionExecuteSeconds &&
+                   ActionSoundHash == other.ActionSoundHash &&
+                   ActionType == other.ActionType &&
+                   IsPositiveAction == other.IsPositiveAction;
         }
     }
 }

@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace BungieNetCoreAPI.Destiny.Definitions.SocketCategories
 {
     [DestinyDefinition(DefinitionsEnum.DestinySocketCategoryDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinySocketCategoryDefinition : IDestinyDefinition
+    public class DestinySocketCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinySocketCategoryDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public SocketCategoryStyle CategoryStyle { get; }
@@ -30,6 +30,22 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SocketCategories
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
+        }
+        public void MapValues()
+        {
+            return;
+        }
+
+        public bool DeepEquals(DestinySocketCategoryDefinition other)
+        {
+            return other != null &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   CategoryStyle == other.CategoryStyle &&
+                   UiCategoryStyle == other.UiCategoryStyle &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
         }
     }
 }
