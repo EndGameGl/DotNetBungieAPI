@@ -7,7 +7,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.UnlockValues
     /// Doesn't have any meaning at this moment
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyUnlockValueDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
-    public class DestinyUnlockValueDefinition : IDestinyDefinition
+    public class DestinyUnlockValueDefinition : IDestinyDefinition, IDeepEquatable<DestinyUnlockValueDefinition>
     {
         /// <summary>
         /// Always 0 atm
@@ -27,7 +27,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.UnlockValues
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyUnlockValueDefinition(int aggregationType, int scope, int mappingIndex, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyUnlockValueDefinition(int aggregationType, int scope, int mappingIndex, bool blacklisted, uint hash, int index, bool redacted)
         {
             AggregationType = aggregationType;
             Scope = scope;
@@ -41,6 +41,23 @@ namespace BungieNetCoreAPI.Destiny.Definitions.UnlockValues
         public override string ToString()
         {
             return $"{Hash}";
+        }
+
+        public void MapValues()
+        {
+            return;
+        }
+
+        public bool DeepEquals(DestinyUnlockValueDefinition other)
+        {
+            return other != null &&
+                   AggregationType == other.AggregationType &&
+                   Scope == other.Scope &&
+                   MappingIndex == other.MappingIndex &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
         }
     }
 }

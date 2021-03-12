@@ -1,10 +1,11 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Unlocks
 {
     [DestinyDefinition(DefinitionsEnum.DestinyUnlockDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyUnlockDefinition : IDestinyDefinition
+    public class DestinyUnlockDefinition : IDestinyDefinition, IDeepEquatable<DestinyUnlockDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         /// <summary>
@@ -21,7 +22,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Unlocks
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyUnlockDefinition(DestinyDefinitionDisplayProperties displayProperties, int scope, int unlockType, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyUnlockDefinition(DestinyDefinitionDisplayProperties displayProperties, int scope, int unlockType, bool blacklisted, uint hash, int index, bool redacted)
         {
             DisplayProperties = displayProperties;
             Scope = scope;
@@ -35,6 +36,21 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Unlocks
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
+        }
+        public void MapValues()
+        {
+            return;
+        }
+        public bool DeepEquals(DestinyUnlockDefinition other)
+        {
+            return other != null &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   Scope == other.Scope &&
+                   UnlockType == other.UnlockType &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
         }
     }
 }
