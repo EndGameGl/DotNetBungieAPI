@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace BungieNetCoreAPI.Destiny.Definitions.SeasonPasses
 {
     [DestinyDefinition(DefinitionsEnum.DestinySeasonPassDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinySeasonPassDefinition : IDestinyDefinition
+    public class DestinySeasonPassDefinition : IDestinyDefinition, IDeepEquatable<DestinySeasonPassDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
         public DefinitionHashPointer<DestinyProgressionDefinition> RewardProgression { get; }
@@ -16,7 +16,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SeasonPasses
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinySeasonPassDefinition(uint rewardProgressionHash, uint prestigeProgressionHash, DestinyDefinitionDisplayProperties displayProperties,
+        internal DestinySeasonPassDefinition(uint rewardProgressionHash, uint prestigeProgressionHash, DestinyDefinitionDisplayProperties displayProperties,
             bool blacklisted, uint hash, int index, bool redacted)
         {
             DisplayProperties = displayProperties;
@@ -31,6 +31,23 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SeasonPasses
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
+        }
+
+        public void MapValues()
+        {
+            RewardProgression.TryMapValue();
+            PrestigeProgression.TryMapValue();
+        }
+        public bool DeepEquals(DestinySeasonPassDefinition other)
+        {
+            return other != null &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   RewardProgression.DeepEquals(other.RewardProgression) &&
+                   PrestigeProgression.DeepEquals(other.PrestigeProgression) &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
         }
     }
 }

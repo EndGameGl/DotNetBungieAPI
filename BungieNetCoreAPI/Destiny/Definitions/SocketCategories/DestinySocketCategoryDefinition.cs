@@ -15,7 +15,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.SocketCategories
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinySocketCategoryDefinition(DestinyDefinitionDisplayProperties displayProperties, SocketCategoryStyle categoryStyle, uint uiCategoryStyle,
+        internal DestinySocketCategoryDefinition(DestinyDefinitionDisplayProperties displayProperties, SocketCategoryStyle categoryStyle, uint uiCategoryStyle,
             bool blacklisted, uint hash, int index, bool redacted)
         {
             DisplayProperties = displayProperties;
