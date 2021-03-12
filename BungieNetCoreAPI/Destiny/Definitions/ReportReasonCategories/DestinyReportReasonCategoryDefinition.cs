@@ -1,24 +1,25 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.ReportReasonCategories
 {
     [DestinyDefinition(DefinitionsEnum.DestinyReportReasonCategoryDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyReportReasonCategoryDefinition : IDestinyDefinition
+    public class DestinyReportReasonCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinyReportReasonCategoryDefinition>
     {
         public DestinyDefinitionDisplayProperties DisplayProperties { get; }
-        public Dictionary<uint, ReportReasonEntry> Reasons { get; }
+        public ReadOnlyDictionary<uint, ReportReason> Reasons { get; }
         public bool Blacklisted { get; }
         public uint Hash { get; }
         public int Index { get; }
         public bool Redacted { get; }
         [JsonConstructor]
-        private DestinyReportReasonCategoryDefinition(DestinyDefinitionDisplayProperties displayProperties, Dictionary<uint, ReportReasonEntry> reasons,
+        internal DestinyReportReasonCategoryDefinition(DestinyDefinitionDisplayProperties displayProperties, Dictionary<uint, ReportReason> reasons,
             bool blacklisted, uint hash, int index, bool redacted)  
         {
             DisplayProperties = displayProperties;
-            Reasons = reasons;
+            Reasons = reasons.AsReadOnlyDictionaryOrEmpty();
             Blacklisted = blacklisted;
             Hash = hash;
             Index = index;
@@ -27,6 +28,21 @@ namespace BungieNetCoreAPI.Destiny.Definitions.ReportReasonCategories
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
+        }
+
+        public bool DeepEquals(DestinyReportReasonCategoryDefinition other)
+        {
+            return other != null &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   Reasons.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue(other.Reasons) &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+        public void MapValues()
+        {
+            return;
         }
     }
 }
