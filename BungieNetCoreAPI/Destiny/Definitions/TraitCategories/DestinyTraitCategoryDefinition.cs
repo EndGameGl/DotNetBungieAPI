@@ -1,12 +1,12 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using BungieNetCoreAPI.Destiny.Definitions.Traits;
 using Newtonsoft.Json;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.TraitCategories
 {
     [DestinyDefinition(DefinitionsEnum.DestinyTraitCategoryDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyTraitCategoryDefinition : IDestinyDefinition
+    public class DestinyTraitCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinyTraitCategoryDefinition>
     {
         /// <summary>
         /// String for this trait category
@@ -15,11 +15,11 @@ namespace BungieNetCoreAPI.Destiny.Definitions.TraitCategories
         /// <summary>
         /// Traits that are in this category
         /// </summary>
-        public List<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; }
         /// <summary>
         /// Possible trait strings for searching in this category
         /// </summary>
-        public List<string> TraitIds { get; }
+        public ReadOnlyCollection<string> TraitIds { get; }
         public bool Blacklisted { get; }
         public uint Hash { get; }
         public int Index { get; }
@@ -27,18 +27,11 @@ namespace BungieNetCoreAPI.Destiny.Definitions.TraitCategories
 
 
         [JsonConstructor]
-        private DestinyTraitCategoryDefinition(string traitCategoryId, List<uint> traitHashes, List<string> traitIds, bool blacklisted, uint hash, int index, bool redacted)
+        internal DestinyTraitCategoryDefinition(string traitCategoryId, uint[] traitHashes, string[] traitIds, bool blacklisted, uint hash, int index, bool redacted)
         {
             TraitCategoryId = traitCategoryId;
-            Traits = new List<DefinitionHashPointer<DestinyTraitDefinition>>();
-            if (traitHashes != null)
-            {
-                foreach (var traitHash in traitHashes)
-                {
-                    Traits.Add(new DefinitionHashPointer<DestinyTraitDefinition>(traitHash, DefinitionsEnum.DestinyTraitDefinition));
-                }
-            }
-            TraitIds = traitIds;
+            Traits = traitHashes.DefinitionsAsReadOnlyOrEmpty<DestinyTraitDefinition>(DefinitionsEnum.DestinyTraitDefinition);
+            TraitIds = traitIds.AsReadOnlyOrEmpty();
             Blacklisted = blacklisted;
             Hash = hash;
             Index = index;
@@ -48,6 +41,26 @@ namespace BungieNetCoreAPI.Destiny.Definitions.TraitCategories
         public override string ToString()
         {
             return $"{Hash} {TraitCategoryId}";
+        }
+
+        public void MapValues()
+        {
+            foreach (var trait in Traits)
+            {
+                trait.TryMapValue();
+            }
+        }
+
+        public bool DeepEquals(DestinyTraitCategoryDefinition other)
+        {
+            return other != null &&
+                   TraitCategoryId == other.TraitCategoryId &&
+                   Traits.DeepEqualsReadOnlyCollections(other.Traits) &&
+                   TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds) &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
         }
     }
 }
