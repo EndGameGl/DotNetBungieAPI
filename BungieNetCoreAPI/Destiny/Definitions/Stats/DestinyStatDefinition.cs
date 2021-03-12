@@ -17,7 +17,7 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Stats
         public bool Redacted { get; }
 
         [JsonConstructor]
-        private DestinyStatDefinition(StatAggregationType aggregationType, bool hasComputedBlock, bool interpolate, StatCategory statCategory,
+        internal DestinyStatDefinition(StatAggregationType aggregationType, bool hasComputedBlock, bool interpolate, StatCategory statCategory,
             DestinyDefinitionDisplayProperties displayProperties, bool blacklisted, uint hash, int index, bool redacted)
         {
             DisplayProperties = displayProperties;
