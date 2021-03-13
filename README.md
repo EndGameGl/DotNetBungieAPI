@@ -1,9 +1,10 @@
 # BungieNetCoreAPI
 
 This library was made to interact with Bungie.net API.
+<br />
 It's heavily WIP, but can already be used for analyzing data and stuff.
 
-### **Things to do:**
+### Things to do:
  - [x] Load any definition from API
  - [x] Fluent API client settings.
  - [x] Ability to download manifest and files to disk
@@ -18,3 +19,17 @@ It's heavily WIP, but can already be used for analyzing data and stuff.
  - [x] IDeepEquatable<T> interface is implemented on all definitions, so they can be compared.
  - [ ] Still missing many API methods.
  - [ ] Diff support to check what has changed in latest manifest versions.
+
+### Usage example:
+Create API client: <br />
+`BungieClient _bungieClient = new BungieClient(Action<BungieClientSettings> configure);` <br />
+Configure client inside of an action, at least add an API key.<br />
+```
+(settings) =>
+{
+    settings.IncludeApiKey("<your_key_goes_here>");    
+}
+```
+Most settings are self-explanatory. <br />
+After that you're supposed to run the client in async context, if any loading is neede (such as file reading, downloading, etc.) <br />
+`await _bungieClient.Run();`
