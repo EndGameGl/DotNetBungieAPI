@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.EnemyRaces
+namespace NetBungieApi.Destiny.Definitions.EnemyRaces
 {
     [DestinyDefinition(DefinitionsEnum.DestinyEnemyRaceDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyEnemyRaceDefinition : IDestinyDefinition, IDeepEquatable<DestinyEnemyRaceDefinition>

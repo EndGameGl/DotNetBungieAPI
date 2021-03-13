@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.PowerCaps;
+﻿using NetBungieApi.Destiny.Definitions.PowerCaps;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
+namespace NetBungieApi.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     /// The version definition currently just holds a reference to the power cap.

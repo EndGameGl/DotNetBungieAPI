@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Activities
+namespace NetBungieApi.Destiny.Definitions.Activities
 {
     /// <summary>
     /// A point of entry into an activity, gated by an unlock flag and with some more-or-less useless (for our purposes) phase information..

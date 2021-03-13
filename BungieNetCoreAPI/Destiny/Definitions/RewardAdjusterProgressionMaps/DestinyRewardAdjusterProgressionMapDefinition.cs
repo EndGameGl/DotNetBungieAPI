@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.RewardAdjusterProgressionMaps
+namespace NetBungieApi.Destiny.Definitions.RewardAdjusterProgressionMaps
 {
     [DestinyDefinition(DefinitionsEnum.DestinyRewardAdjusterProgressionMapDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyRewardAdjusterProgressionMapDefinition : IDestinyDefinition, IDeepEquatable<DestinyRewardAdjusterProgressionMapDefinition>

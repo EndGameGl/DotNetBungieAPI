@@ -1,9 +1,9 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Artifacts;
-using BungieNetCoreAPI.Destiny.Definitions.Vendors;
+﻿using NetBungieApi.Destiny.Definitions.Artifacts;
+using NetBungieApi.Destiny.Definitions.Vendors;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
+namespace NetBungieApi.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     /// Items like Sacks or Boxes can have items that it shows in-game when you view details that represent the items you can obtain if you use or acquire the item.

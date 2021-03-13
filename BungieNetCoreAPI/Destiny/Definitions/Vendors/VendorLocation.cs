@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Destinations;
+﻿using NetBungieApi.Destiny.Definitions.Destinations;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
+namespace NetBungieApi.Destiny.Definitions.Vendors
 {
     public class VendorLocation : IDeepEquatable<VendorLocation>
     {

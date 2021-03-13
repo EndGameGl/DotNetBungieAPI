@@ -1,9 +1,9 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Activities;
-using BungieNetCoreAPI.Destiny.Definitions.Objectives;
+﻿using NetBungieApi.Destiny.Definitions.Activities;
+using NetBungieApi.Destiny.Definitions.Objectives;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
+namespace NetBungieApi.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     /// An item can have objectives on it. In practice, these are the exclusive purview of "Quest Step" items: DestinyInventoryItemDefinitions that represent a specific step in a Quest.

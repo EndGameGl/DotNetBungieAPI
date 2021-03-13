@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.BreakerTypes
+namespace NetBungieApi.Destiny.Definitions.BreakerTypes
 {
     [DestinyDefinition(DefinitionsEnum.DestinyBreakerTypeDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyBreakerTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyBreakerTypeDefinition>

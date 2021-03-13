@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Activities
+namespace NetBungieApi.Destiny.Definitions.Activities
 {
     /// <summary>
     /// Guided Game information for activity.

@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Unlocks;
+﻿using NetBungieApi.Destiny.Definitions.Unlocks;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {
     public class DestinyUnlockStatus
     {

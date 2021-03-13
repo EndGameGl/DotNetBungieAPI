@@ -1,10 +1,10 @@
-﻿using BungieNetCoreAPI.Bungie;
-using BungieNetCoreAPI.Destiny.Definitions.Activities;
-using BungieNetCoreAPI.Destiny.Definitions.ActivityModes;
+﻿using NetBungieApi.Bungie;
+using NetBungieApi.Destiny.Definitions.Activities;
+using NetBungieApi.Destiny.Definitions.ActivityModes;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {
     public class DestinyHistoricalStatsActivity
     {

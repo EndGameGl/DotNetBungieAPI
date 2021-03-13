@@ -1,11 +1,11 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Activities;
-using BungieNetCoreAPI.Destiny.Definitions.Destinations;
-using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+﻿using NetBungieApi.Destiny.Definitions.Activities;
+using NetBungieApi.Destiny.Definitions.Destinations;
+using NetBungieApi.Destiny.Definitions.InventoryItems;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
+namespace NetBungieApi.Destiny.Definitions.Milestones
 {
     public class MilestoneQuest : IDeepEquatable<MilestoneQuest>
     {

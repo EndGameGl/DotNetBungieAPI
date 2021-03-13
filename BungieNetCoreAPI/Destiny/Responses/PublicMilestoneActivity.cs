@@ -1,12 +1,12 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Activities;
-using BungieNetCoreAPI.Destiny.Definitions.ActivityModifiers;
-using BungieNetCoreAPI.Destiny.Definitions.Objectives;
+﻿using NetBungieApi.Destiny.Definitions.Activities;
+using NetBungieApi.Destiny.Definitions.ActivityModifiers;
+using NetBungieApi.Destiny.Definitions.Objectives;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BungieNetCoreAPI.Destiny.Responses
+namespace NetBungieApi.Destiny.Responses
 {
     public class PublicMilestoneActivity
     {

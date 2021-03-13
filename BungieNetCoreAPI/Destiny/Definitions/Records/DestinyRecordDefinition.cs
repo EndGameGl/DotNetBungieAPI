@@ -1,12 +1,12 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.Lores;
-using BungieNetCoreAPI.Destiny.Definitions.Objectives;
-using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
-using BungieNetCoreAPI.Destiny.Definitions.Traits;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.Lores;
+using NetBungieApi.Destiny.Definitions.Objectives;
+using NetBungieApi.Destiny.Definitions.PresentationNodes;
+using NetBungieApi.Destiny.Definitions.Traits;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Records
+namespace NetBungieApi.Destiny.Definitions.Records
 {
     [DestinyDefinition(DefinitionsEnum.DestinyRecordDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyRecordDefinition : IDestinyDefinition, IDeepEquatable<DestinyRecordDefinition>

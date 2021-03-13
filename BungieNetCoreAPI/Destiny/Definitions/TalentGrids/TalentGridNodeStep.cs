@@ -1,10 +1,10 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.DamageTypes;
-using BungieNetCoreAPI.Destiny.Definitions.SandboxPerks;
-using BungieNetCoreAPI.Destiny.Definitions.Stats;
+﻿using NetBungieApi.Destiny.Definitions.DamageTypes;
+using NetBungieApi.Destiny.Definitions.SandboxPerks;
+using NetBungieApi.Destiny.Definitions.Stats;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.TalentGrids
+namespace NetBungieApi.Destiny.Definitions.TalentGrids
 {
     public class TalentGridNodeStep : IDeepEquatable<TalentGridNodeStep>
     {

@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Objectives;
+﻿using NetBungieApi.Destiny.Definitions.Objectives;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Records
+namespace NetBungieApi.Destiny.Definitions.Records
 {
     public class RecordIntervalInfoObjective : IDeepEquatable<RecordIntervalInfoObjective>
     {

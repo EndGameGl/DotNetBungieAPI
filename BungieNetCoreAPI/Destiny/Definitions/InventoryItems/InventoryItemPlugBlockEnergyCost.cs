@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.EnergyTypes;
+﻿using NetBungieApi.Destiny.Definitions.EnergyTypes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
+namespace NetBungieApi.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     /// Some plugs cost Energy, which is a stat on the item that can be increased by other plugs (that, at least in Armor 2.0, have a "masterworks-like" mechanic for upgrading). If a plug has costs, the details of that cost are defined here.

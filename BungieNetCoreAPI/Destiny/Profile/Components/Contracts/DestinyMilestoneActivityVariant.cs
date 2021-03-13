@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Activities;
-using BungieNetCoreAPI.Destiny.Definitions.ActivityModes;
+﻿using NetBungieApi.Destiny.Definitions.Activities;
+using NetBungieApi.Destiny.Definitions.ActivityModes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {
     public class DestinyMilestoneActivityVariant
     {

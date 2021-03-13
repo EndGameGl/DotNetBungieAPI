@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.DamageTypes;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.DamageTypes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.SandboxPerks
+namespace NetBungieApi.Destiny.Definitions.SandboxPerks
 {
     [DestinyDefinition(DefinitionsEnum.DestinySandboxPerkDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinySandboxPerkDefinition : IDestinyDefinition, IDeepEquatable<DestinySandboxPerkDefinition>

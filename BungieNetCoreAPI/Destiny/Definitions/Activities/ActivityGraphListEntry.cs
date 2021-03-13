@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs;
+﻿using NetBungieApi.Destiny.Definitions.ActivityGraphs;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Activities
+namespace NetBungieApi.Destiny.Definitions.Activities
 {
     /// <summary>
     /// Destinations and Activities may have default Activity Graphs that should be shown when you bring up the Director and are playing in either.

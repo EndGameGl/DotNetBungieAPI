@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.VendorGroups;
+﻿using NetBungieApi.Destiny.Definitions.VendorGroups;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
+namespace NetBungieApi.Destiny.Definitions.Vendors
 {
     public class VendorGroup : IDeepEquatable<VendorGroup>
     {

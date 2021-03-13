@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace BungieNetCoreAPI
+namespace NetBungieApi
 {
     public class BungieResponse<T>
     {

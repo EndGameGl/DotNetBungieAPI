@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.SocketTypes;
+﻿using NetBungieApi.Destiny.Definitions.SocketTypes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
+namespace NetBungieApi.Destiny.Definitions.InventoryItems
 {
     public class InventoryItemSocketsBlockIntrinsicSocket : IDeepEquatable<InventoryItemSocketsBlockIntrinsicSocket>
     {

@@ -1,9 +1,9 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.UnlockValues;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.UnlockValues;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.UnlockEvents
+namespace NetBungieApi.Destiny.Definitions.UnlockEvents
 {
     /// <summary>
     /// Nothing usable atm

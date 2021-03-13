@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Objectives;
+﻿using NetBungieApi.Destiny.Definitions.Objectives;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {
     public class UninstancedItemObjective
     {

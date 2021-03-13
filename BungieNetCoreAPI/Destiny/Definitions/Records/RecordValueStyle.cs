@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny.Definitions.Records
+﻿namespace NetBungieApi.Destiny.Definitions.Records
 {
     public enum RecordValueStyle
     {

@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
+﻿namespace NetBungieApi.Destiny.Definitions.Vendors
 {
     public enum VendorProgressionType
     {

@@ -1,13 +1,13 @@
-﻿using BungieNetCoreAPI.Clients;
-using BungieNetCoreAPI.Destiny;
-using BungieNetCoreAPI.Destiny.Definitions;
-using BungieNetCoreAPI.Repositories;
-using BungieNetCoreAPI.Services;
+﻿using NetBungieApi.Clients;
+using NetBungieApi.Destiny;
+using NetBungieApi.Destiny.Definitions;
+using NetBungieApi.Repositories;
+using NetBungieApi.Services;
 using System;
 using System.Threading.Tasks;
 using Unity;
 
-namespace BungieNetCoreAPI
+namespace NetBungieApi
 {
     /// <summary>
     /// Class that points to a certain definition in database

@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Attributes
+﻿namespace NetBungieApi.Attributes
 {
     public enum DefinitionKeyType
     {

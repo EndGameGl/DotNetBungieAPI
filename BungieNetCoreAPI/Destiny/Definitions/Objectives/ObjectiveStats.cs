@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Objectives
+namespace NetBungieApi.Destiny.Definitions.Objectives
 {
     public class ObjectiveStats : IDeepEquatable<ObjectiveStats>
     {

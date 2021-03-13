@@ -1,9 +1,9 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.ItemCategories;
-using BungieNetCoreAPI.Destiny.Definitions.MaterialRequirementSets;
+﻿using NetBungieApi.Destiny.Definitions.ItemCategories;
+using NetBungieApi.Destiny.Definitions.MaterialRequirementSets;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
+namespace NetBungieApi.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     /// If an item is a Plug, its DestinyInventoryItemDefinition.plug property will be populated with an instance of one of these bad boys.

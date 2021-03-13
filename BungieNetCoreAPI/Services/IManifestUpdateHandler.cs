@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny;
+﻿using NetBungieApi.Destiny;
 using System.Threading.Tasks;
 
-namespace BungieNetCoreAPI.Services
+namespace NetBungieApi.Services
 {
     /// <summary>
     /// Interface for handling versions of the manifest

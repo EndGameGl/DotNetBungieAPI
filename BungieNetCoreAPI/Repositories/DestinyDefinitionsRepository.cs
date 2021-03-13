@@ -1,9 +1,9 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny;
-using BungieNetCoreAPI.Destiny.Definitions;
-using BungieNetCoreAPI.Destiny.Definitions.HistoricalStats;
-using BungieNetCoreAPI.Logging;
-using BungieNetCoreAPI.Services;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny;
+using NetBungieApi.Destiny.Definitions;
+using NetBungieApi.Destiny.Definitions.HistoricalStats;
+using NetBungieApi.Logging;
+using NetBungieApi.Services;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Concurrent;
@@ -15,7 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BungieNetCoreAPI.Repositories
+namespace NetBungieApi.Repositories
 {
     /// <summary>
     /// Repository class for storing and accessing all classes with <see cref="Attributes.DestinyDefinitionAttribute"/> attribute

@@ -1,9 +1,9 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Milestones;
+﻿using NetBungieApi.Destiny.Definitions.Milestones;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace BungieNetCoreAPI.Destiny.Responses
+namespace NetBungieApi.Destiny.Responses
 {
     public class GetPublicMilestonesResponse
     {

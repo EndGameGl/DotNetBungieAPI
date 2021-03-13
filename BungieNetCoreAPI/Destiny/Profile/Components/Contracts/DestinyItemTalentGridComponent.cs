@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.TalentGrids;
+﻿using NetBungieApi.Destiny.Definitions.TalentGrids;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {
     public class DestinyItemTalentGridComponent
     {

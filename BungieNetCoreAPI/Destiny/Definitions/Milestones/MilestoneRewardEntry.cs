@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Vendors;
+﻿using NetBungieApi.Destiny.Definitions.Vendors;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
+namespace NetBungieApi.Destiny.Definitions.Milestones
 {
     public class MilestoneRewardEntry : IDeepEquatable<MilestoneRewardEntry>
     {

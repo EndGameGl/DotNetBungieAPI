@@ -1,9 +1,9 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
-using BungieNetCoreAPI.Destiny.Definitions.Vendors;
+﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
+using NetBungieApi.Destiny.Definitions.Vendors;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {
     public class DestinyQuestStatus
     {

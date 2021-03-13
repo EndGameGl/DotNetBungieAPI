@@ -1,16 +1,16 @@
-﻿using BungieNetCoreAPI.Bungie;
-using BungieNetCoreAPI.Destiny.Definitions.Classes;
-using BungieNetCoreAPI.Destiny.Definitions.Genders;
-using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
-using BungieNetCoreAPI.Destiny.Definitions.Races;
-using BungieNetCoreAPI.Destiny.Definitions.Records;
-using BungieNetCoreAPI.Destiny.Definitions.Stats;
+﻿using NetBungieApi.Bungie;
+using NetBungieApi.Destiny.Definitions.Classes;
+using NetBungieApi.Destiny.Definitions.Genders;
+using NetBungieApi.Destiny.Definitions.InventoryItems;
+using NetBungieApi.Destiny.Definitions.Races;
+using NetBungieApi.Destiny.Definitions.Records;
+using NetBungieApi.Destiny.Definitions.Stats;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {
     public class DestinyCharacterComponent
     {

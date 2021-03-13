@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny.Profile.Components
+﻿namespace NetBungieApi.Destiny.Profile.Components
 {
     public interface IProfileComponent
     {

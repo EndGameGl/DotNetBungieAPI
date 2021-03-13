@@ -1,10 +1,10 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.Genders;
-using BungieNetCoreAPI.Destiny.Definitions.Races;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.Genders;
+using NetBungieApi.Destiny.Definitions.Races;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
+namespace NetBungieApi.Destiny.Definitions.CharacterCustomizationOptions
 {
     [DestinyDefinition(DefinitionsEnum.DestinyCharacterCustomizationOptionDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyCharacterCustomizationOptionDefinition : IDestinyDefinition, IDeepEquatable<DestinyCharacterCustomizationOptionDefinition>

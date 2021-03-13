@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BungieNetCoreAPI.Logging
+namespace NetBungieApi.Logging
 {
     public interface ILogger
     {

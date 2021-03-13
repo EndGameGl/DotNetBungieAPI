@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.UnlockValues
+namespace NetBungieApi.Destiny.Definitions.UnlockValues
 {
     /// <summary>
     /// Doesn't have any meaning at this moment

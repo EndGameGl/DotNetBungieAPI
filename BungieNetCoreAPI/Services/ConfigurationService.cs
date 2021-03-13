@@ -1,5 +1,5 @@
-﻿using BungieNetCoreAPI.Clients;
-using BungieNetCoreAPI.Clients.Settings;
+﻿using NetBungieApi.Clients;
+using NetBungieApi.Clients.Settings;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace BungieNetCoreAPI.Services
+namespace NetBungieApi.Services
 {
     public class ConfigurationService : IConfigurationService
     {

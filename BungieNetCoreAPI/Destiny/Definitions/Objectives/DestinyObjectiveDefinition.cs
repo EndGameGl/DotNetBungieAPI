@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.Locations;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.Locations;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Objectives
+namespace NetBungieApi.Destiny.Definitions.Objectives
 {
     /// <summary>
     /// Defines an "Objective".

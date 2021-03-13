@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Artifacts
+namespace NetBungieApi.Destiny.Definitions.Artifacts
 {
     public class ArtifactTranslationBlockDyeEntry : IDeepEquatable<ArtifactTranslationBlockDyeEntry>
     {

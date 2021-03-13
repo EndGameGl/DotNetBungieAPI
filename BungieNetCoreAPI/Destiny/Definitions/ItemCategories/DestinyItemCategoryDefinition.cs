@@ -1,10 +1,10 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.BreakerTypes;
-using BungieNetCoreAPI.Destiny.Definitions.Classes;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.BreakerTypes;
+using NetBungieApi.Destiny.Definitions.Classes;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.ItemCategories
+namespace NetBungieApi.Destiny.Definitions.ItemCategories
 {
     [DestinyDefinition(DefinitionsEnum.DestinyItemCategoryDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyItemCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinyItemCategoryDefinition>

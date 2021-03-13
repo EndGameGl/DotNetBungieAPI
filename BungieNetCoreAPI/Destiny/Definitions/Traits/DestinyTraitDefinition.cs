@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.TraitCategories;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.TraitCategories;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Traits
+namespace NetBungieApi.Destiny.Definitions.Traits
 {
     [DestinyDefinition(DefinitionsEnum.DestinyTraitDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyTraitDefinition : IDestinyDefinition, IDeepEquatable<DestinyTraitDefinition>

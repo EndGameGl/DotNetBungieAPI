@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.InventoryBuckets;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.InventoryBuckets;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.PlatformBucketMappings
+namespace NetBungieApi.Destiny.Definitions.PlatformBucketMappings
 {
     [DestinyDefinition(DefinitionsEnum.DestinyPlatformBucketMappingDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyPlatformBucketMappingDefinition : IDestinyDefinition, IDeepEquatable<DestinyPlatformBucketMappingDefinition>

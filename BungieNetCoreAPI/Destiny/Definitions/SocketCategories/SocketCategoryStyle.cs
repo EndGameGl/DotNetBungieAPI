@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny.Definitions.SocketCategories
+﻿namespace NetBungieApi.Destiny.Definitions.SocketCategories
 {
     public enum SocketCategoryStyle
     {

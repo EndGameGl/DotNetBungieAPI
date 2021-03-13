@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Records
+namespace NetBungieApi.Destiny.Definitions.Records
 {
     public class RecordIntervalRewards : IDeepEquatable<RecordIntervalRewards>
     {

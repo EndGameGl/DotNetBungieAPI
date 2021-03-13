@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny.Definitions.Locations
+﻿namespace NetBungieApi.Destiny.Definitions.Locations
 {
     public enum ActivityNavPointType
     {

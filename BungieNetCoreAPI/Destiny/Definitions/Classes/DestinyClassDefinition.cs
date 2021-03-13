@@ -1,10 +1,10 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.Genders;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.Genders;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Classes
+namespace NetBungieApi.Destiny.Definitions.Classes
 {
     [DestinyDefinition(DefinitionsEnum.DestinyClassDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyClassDefinition : IDestinyDefinition, IDeepEquatable<DestinyClassDefinition>

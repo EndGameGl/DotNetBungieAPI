@@ -1,10 +1,10 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.SandboxPerks;
-using BungieNetCoreAPI.Destiny.Definitions.Stats;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.SandboxPerks;
+using NetBungieApi.Destiny.Definitions.Stats;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.NodeStepSummaries
+namespace NetBungieApi.Destiny.Definitions.NodeStepSummaries
 {
     [DestinyDefinition(DefinitionsEnum.DestinyNodeStepSummaryDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyNodeStepSummaryDefinition : IDestinyDefinition, IDeepEquatable<DestinyNodeStepSummaryDefinition>

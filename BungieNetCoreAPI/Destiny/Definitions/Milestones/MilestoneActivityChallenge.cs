@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Objectives;
+﻿using NetBungieApi.Destiny.Definitions.Objectives;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
+namespace NetBungieApi.Destiny.Definitions.Milestones
 {
     public class MilestoneActivityChallenge : IDeepEquatable<MilestoneActivityChallenge>
     {

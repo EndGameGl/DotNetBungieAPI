@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Records
+namespace NetBungieApi.Destiny.Definitions.Records
 {
     public class RecordExpirationInfo : IDeepEquatable<RecordExpirationInfo>
     {

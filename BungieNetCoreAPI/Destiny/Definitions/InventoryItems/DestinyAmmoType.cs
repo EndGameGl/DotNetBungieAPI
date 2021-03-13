@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
+﻿namespace NetBungieApi.Destiny.Definitions.InventoryItems
 {
     public enum DestinyAmmoType
     {

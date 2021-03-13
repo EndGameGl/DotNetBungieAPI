@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.EnergyTypes
+namespace NetBungieApi.Destiny.Definitions.EnergyTypes
 {
     /// <summary>
     /// Represents types of Energy that can be used for costs and payments related to Armor 2.0 mods.

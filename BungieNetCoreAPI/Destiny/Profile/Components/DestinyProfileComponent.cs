@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Profile.Components;
+﻿using NetBungieApi.Destiny.Profile.Components;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Profile
+namespace NetBungieApi.Destiny.Profile
 {
     public class DestinyProfileComponent<T> : IProfileComponent
     {

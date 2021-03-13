@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.DamageTypes;
-using BungieNetCoreAPI.Destiny.Definitions.TalentGrids;
+﻿using NetBungieApi.Destiny.Definitions.DamageTypes;
+using NetBungieApi.Destiny.Definitions.TalentGrids;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
+namespace NetBungieApi.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     /// This defines information that can only come from a talent grid on an item. Items mostly have negligible talent grid data these days, but instanced items still retain grids as a source for some of this common information.

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Destinations
+namespace NetBungieApi.Destiny.Definitions.Destinations
 {
     /// <summary>
     /// Basic identifying data about the bubble.

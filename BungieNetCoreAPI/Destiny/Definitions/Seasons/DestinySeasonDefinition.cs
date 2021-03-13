@@ -1,13 +1,13 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
-using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
-using BungieNetCoreAPI.Destiny.Definitions.Progressions;
-using BungieNetCoreAPI.Destiny.Definitions.SeasonPasses;
-using BungieNetCoreAPI.Destiny.Definitions.Unlocks;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.InventoryItems;
+using NetBungieApi.Destiny.Definitions.PresentationNodes;
+using NetBungieApi.Destiny.Definitions.Progressions;
+using NetBungieApi.Destiny.Definitions.SeasonPasses;
+using NetBungieApi.Destiny.Definitions.Unlocks;
 using Newtonsoft.Json;
 using System;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Seasons
+namespace NetBungieApi.Destiny.Definitions.Seasons
 {
     [DestinyDefinition(DefinitionsEnum.DestinySeasonDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinySeasonDefinition : IDestinyDefinition, IDeepEquatable<DestinySeasonDefinition>

@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Clients;
-using BungieNetCoreAPI.Clients.Settings;
+﻿using NetBungieApi.Clients;
+using NetBungieApi.Clients.Settings;
 
-namespace BungieNetCoreAPI.Services
+namespace NetBungieApi.Services
 {
     public interface IConfigurationService
     {

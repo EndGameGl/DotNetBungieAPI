@@ -1,14 +1,14 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Checklists;
-using BungieNetCoreAPI.Destiny.Definitions.Factions;
-using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
-using BungieNetCoreAPI.Destiny.Definitions.Milestones;
-using BungieNetCoreAPI.Destiny.Definitions.Progressions;
+﻿using NetBungieApi.Destiny.Definitions.Checklists;
+using NetBungieApi.Destiny.Definitions.Factions;
+using NetBungieApi.Destiny.Definitions.InventoryItems;
+using NetBungieApi.Destiny.Definitions.Milestones;
+using NetBungieApi.Destiny.Definitions.Progressions;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {
     public class DestinyCharacterProgressionComponent
     {

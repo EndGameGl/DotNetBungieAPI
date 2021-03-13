@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
+﻿namespace NetBungieApi.Destiny.Definitions.Milestones
 {
     public enum MilestoneType
     {

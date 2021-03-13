@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Genders
+namespace NetBungieApi.Destiny.Definitions.Genders
 {
     [DestinyDefinition(DefinitionsEnum.DestinyGenderDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyGenderDefinition : IDestinyDefinition, IDeepEquatable<DestinyGenderDefinition>

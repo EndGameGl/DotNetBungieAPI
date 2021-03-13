@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
+﻿using NetBungieApi.Destiny.Definitions.PresentationNodes;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
+namespace NetBungieApi.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     /// The metrics available for display and selection on an item.

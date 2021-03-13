@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Bungie
+namespace NetBungieApi.Bungie
 {
     public class EmailViewDefinitionSetting
     {

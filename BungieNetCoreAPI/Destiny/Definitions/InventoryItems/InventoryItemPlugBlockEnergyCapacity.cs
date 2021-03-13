@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.EnergyTypes;
+﻿using NetBungieApi.Destiny.Definitions.EnergyTypes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
+namespace NetBungieApi.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     /// Items can have Energy Capacity, and plugs can provide that capacity such as on a piece of Armor in Armor 2.0. This is how much "Energy" can be spent on activating plugs for this item.

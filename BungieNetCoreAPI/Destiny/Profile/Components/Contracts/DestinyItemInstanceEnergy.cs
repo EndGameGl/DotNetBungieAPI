@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions;
-using BungieNetCoreAPI.Destiny.Definitions.EnergyTypes;
+﻿using NetBungieApi.Destiny.Definitions;
+using NetBungieApi.Destiny.Definitions.EnergyTypes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {
     public class DestinyItemInstanceEnergy
     {

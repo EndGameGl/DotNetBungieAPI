@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Bungie
+﻿namespace NetBungieApi.Bungie
 {
     public enum GlobalAlertType
     {

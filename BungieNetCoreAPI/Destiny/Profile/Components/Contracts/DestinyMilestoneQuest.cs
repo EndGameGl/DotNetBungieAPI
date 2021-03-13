@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {
     /// <summary>
     /// If a Milestone has one or more Quests, this will contain the live information for the character's status with one of those quests.

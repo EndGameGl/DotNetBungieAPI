@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BungieNetCoreAPI.Destiny
+namespace NetBungieApi.Destiny
 {
     [Flags]
     public enum DestinyGameVersions

@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.ActivityModifiers;
+﻿using NetBungieApi.Destiny.Definitions.ActivityModifiers;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Activities
+namespace NetBungieApi.Destiny.Definitions.Activities
 {
     /// <summary>
     /// A reference to an Activity Modifier from another entity, such as an Activity (for now, just Activities)

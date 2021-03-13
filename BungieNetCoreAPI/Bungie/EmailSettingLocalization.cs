@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Bungie
+namespace NetBungieApi.Bungie
 {
     public class EmailSettingLocalization
     {

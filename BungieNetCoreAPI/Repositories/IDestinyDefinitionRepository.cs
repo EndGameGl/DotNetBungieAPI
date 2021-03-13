@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions;
+﻿using NetBungieApi.Destiny.Definitions;
 using System;
 using System.Collections.Generic;
 
-namespace BungieNetCoreAPI.Repositories
+namespace NetBungieApi.Repositories
 {
     /// <summary>
     /// An inteface for accessing <see cref="DestinyDefinitionRepository{T}"/>

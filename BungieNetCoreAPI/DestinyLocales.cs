@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI
+﻿namespace NetBungieApi
 {
     public enum DestinyLocales
     {

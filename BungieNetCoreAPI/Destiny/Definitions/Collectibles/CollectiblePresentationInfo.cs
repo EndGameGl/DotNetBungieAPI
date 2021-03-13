@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
+﻿using NetBungieApi.Destiny.Definitions.PresentationNodes;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Collectibles
+namespace NetBungieApi.Destiny.Definitions.Collectibles
 {
     public class CollectiblePresentationInfo : IDeepEquatable<CollectiblePresentationInfo>
     {

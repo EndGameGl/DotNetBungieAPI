@@ -1,12 +1,12 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny;
-using BungieNetCoreAPI.Repositories;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny;
+using NetBungieApi.Repositories;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace BungieNetCoreAPI.Clients.Settings
+namespace NetBungieApi.Clients.Settings
 {
     public class BungieClientSettings
     {

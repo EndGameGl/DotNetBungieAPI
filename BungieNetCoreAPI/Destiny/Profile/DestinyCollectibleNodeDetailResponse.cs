@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Profile.Components.Contracts;
+﻿using NetBungieApi.Destiny.Profile.Components.Contracts;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Profile
+namespace NetBungieApi.Destiny.Profile
 {
     public class DestinyCollectibleNodeDetailResponse
     {

@@ -1,9 +1,9 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.InventoryBuckets;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.InventoryBuckets;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.EquipmentSlots
+namespace NetBungieApi.Destiny.Definitions.EquipmentSlots
 {
     /// <summary>
     /// Characters can not only have Inventory buckets (containers of items that are generally matched by their type or functionality), they can also have Equipment Slots.

@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Stats;
+﻿using NetBungieApi.Destiny.Definitions.Stats;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.StatGroups
+namespace NetBungieApi.Destiny.Definitions.StatGroups
 {
     public class StatGroupScaledStat : IDeepEquatable<StatGroupScaledStat>
     {

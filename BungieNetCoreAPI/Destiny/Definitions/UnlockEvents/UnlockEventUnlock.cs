@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Unlocks;
-using BungieNetCoreAPI.Destiny.Definitions.UnlockValues;
+﻿using NetBungieApi.Destiny.Definitions.Unlocks;
+using NetBungieApi.Destiny.Definitions.UnlockValues;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.UnlockEvents
+namespace NetBungieApi.Destiny.Definitions.UnlockEvents
 {
     public class UnlockEventUnlock : IDeepEquatable<UnlockEventUnlock>
     {

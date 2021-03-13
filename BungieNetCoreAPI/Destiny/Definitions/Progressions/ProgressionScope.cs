@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny.Definitions.Progressions
+﻿namespace NetBungieApi.Destiny.Definitions.Progressions
 {
     public enum ProgressionScope
     {

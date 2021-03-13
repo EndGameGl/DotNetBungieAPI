@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.ArtDyeReferences
+namespace NetBungieApi.Destiny.Definitions.ArtDyeReferences
 {
     [DestinyDefinition(DefinitionsEnum.DestinyArtDyeReferenceDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyArtDyeReferenceDefinition : IDestinyDefinition, IDeepEquatable<DestinyArtDyeReferenceDefinition>

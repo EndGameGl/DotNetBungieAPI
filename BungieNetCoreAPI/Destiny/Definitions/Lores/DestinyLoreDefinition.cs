@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Lores
+namespace NetBungieApi.Destiny.Definitions.Lores
 {
     /// <summary>
     /// These are definitions for in-game "Lore," meant to be narrative enhancements of the game experience.

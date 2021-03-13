@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
+namespace NetBungieApi.Destiny.Definitions.Vendors
 {
     public class VendorDisplayPropertiesRequirement : IDeepEquatable<VendorDisplayPropertiesRequirement>
     {

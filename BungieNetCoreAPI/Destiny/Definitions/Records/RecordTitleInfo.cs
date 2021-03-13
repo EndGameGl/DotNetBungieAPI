@@ -1,9 +1,9 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Genders;
+﻿using NetBungieApi.Destiny.Definitions.Genders;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Records
+namespace NetBungieApi.Destiny.Definitions.Records
 {
     public class RecordTitleInfo : IDeepEquatable<RecordTitleInfo>
     {

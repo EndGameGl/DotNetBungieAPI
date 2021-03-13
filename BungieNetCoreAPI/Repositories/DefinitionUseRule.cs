@@ -1,10 +1,10 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BungieNetCoreAPI.Repositories
+namespace NetBungieApi.Repositories
 {
     public class DefinitionUseRule
     {

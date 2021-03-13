@@ -1,10 +1,10 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Checklists;
+﻿using NetBungieApi.Destiny.Definitions.Checklists;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {
     public class DestinyProfileProgressionComponent
     {

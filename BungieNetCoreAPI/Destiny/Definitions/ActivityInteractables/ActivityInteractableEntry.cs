@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Activities;
+﻿using NetBungieApi.Destiny.Definitions.Activities;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.ActivityInteractables
+namespace NetBungieApi.Destiny.Definitions.ActivityInteractables
 {
     public class ActivityInteractableEntry : IDeepEquatable<ActivityInteractableEntry>
     {

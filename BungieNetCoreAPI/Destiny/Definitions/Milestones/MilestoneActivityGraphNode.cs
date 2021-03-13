@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs;
+﻿using NetBungieApi.Destiny.Definitions.ActivityGraphs;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Milestones
+namespace NetBungieApi.Destiny.Definitions.Milestones
 {
     public class MilestoneActivityGraphNode : IDeepEquatable<MilestoneActivityGraphNode>
     {

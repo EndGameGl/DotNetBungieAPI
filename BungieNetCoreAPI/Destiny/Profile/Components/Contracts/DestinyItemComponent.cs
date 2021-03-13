@@ -1,11 +1,11 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.InventoryBuckets;
-using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
-using BungieNetCoreAPI.Destiny.Definitions.Metrics;
+﻿using NetBungieApi.Destiny.Definitions.InventoryBuckets;
+using NetBungieApi.Destiny.Definitions.InventoryItems;
+using NetBungieApi.Destiny.Definitions.Metrics;
 using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {
     public class DestinyItemComponent
     {

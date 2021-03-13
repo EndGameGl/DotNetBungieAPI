@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny;
+﻿using NetBungieApi.Destiny;
 using System;
 
-namespace BungieNetCoreAPI.Attributes
+namespace NetBungieApi.Attributes
 {
     public class DestinyDefinitionAttribute : Attribute
     {

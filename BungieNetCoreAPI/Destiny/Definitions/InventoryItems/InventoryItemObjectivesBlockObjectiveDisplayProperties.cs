@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Activities;
+﻿using NetBungieApi.Destiny.Definitions.Activities;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
+namespace NetBungieApi.Destiny.Definitions.InventoryItems
 {
     public class InventoryItemObjectivesBlockObjectiveDisplayProperties : IDeepEquatable<InventoryItemObjectivesBlockObjectiveDisplayProperties>
     {

@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Artifacts
+namespace NetBungieApi.Destiny.Definitions.Artifacts
 {
     public class ArtifactTierEntryItemEntry : IDeepEquatable<ArtifactTierEntryItemEntry>
     {

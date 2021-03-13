@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.ProgressionMappings
+namespace NetBungieApi.Destiny.Definitions.ProgressionMappings
 {
     /// <summary>
     /// Aggregations of multiple progressions.

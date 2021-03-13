@@ -1,11 +1,11 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.Objectives;
-using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
-using BungieNetCoreAPI.Destiny.Definitions.Traits;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.Objectives;
+using NetBungieApi.Destiny.Definitions.PresentationNodes;
+using NetBungieApi.Destiny.Definitions.Traits;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Metrics
+namespace NetBungieApi.Destiny.Definitions.Metrics
 {
     [DestinyDefinition(DefinitionsEnum.DestinyMetricDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyMetricDefinition : IDestinyDefinition, IDeepEquatable<DestinyMetricDefinition>

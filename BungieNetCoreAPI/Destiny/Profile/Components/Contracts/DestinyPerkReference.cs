@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.SandboxPerks;
+﻿using NetBungieApi.Destiny.Definitions.SandboxPerks;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {
     public class DestinyPerkReference
     {

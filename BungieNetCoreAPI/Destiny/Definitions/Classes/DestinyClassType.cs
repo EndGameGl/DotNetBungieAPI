@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny.Definitions.Classes
+﻿namespace NetBungieApi.Destiny.Definitions.Classes
 {
     public enum DestinyClassType
     {

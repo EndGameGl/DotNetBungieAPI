@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny.Definitions.InventoryBuckets
+﻿namespace NetBungieApi.Destiny.Definitions.InventoryBuckets
 {
     public enum BucketItemLocation
     {

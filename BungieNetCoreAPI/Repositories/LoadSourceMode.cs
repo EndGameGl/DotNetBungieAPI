@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Repositories
+﻿namespace NetBungieApi.Repositories
 {
     /// <summary>
     /// Loading mode for definition files

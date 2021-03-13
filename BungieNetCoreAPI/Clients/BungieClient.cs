@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Clients.Settings;
-using BungieNetCoreAPI.Destiny;
-using BungieNetCoreAPI.Logging;
-using BungieNetCoreAPI.Repositories;
-using BungieNetCoreAPI.Services;
+﻿using NetBungieApi.Clients.Settings;
+using NetBungieApi.Destiny;
+using NetBungieApi.Logging;
+using NetBungieApi.Repositories;
+using NetBungieApi.Services;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Unity;
 
-namespace BungieNetCoreAPI.Clients
+namespace NetBungieApi.Clients
 {
     public class BungieClient
     {

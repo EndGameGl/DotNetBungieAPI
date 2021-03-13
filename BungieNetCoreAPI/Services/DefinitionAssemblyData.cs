@@ -1,13 +1,13 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny;
-using BungieNetCoreAPI.Repositories;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny;
+using NetBungieApi.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace BungieNetCoreAPI.Services
+namespace NetBungieApi.Services
 {
     public class DefinitionAssemblyData : IDefinitionAssemblyData
     {

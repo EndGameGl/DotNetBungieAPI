@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.ItemTierTypes
+namespace NetBungieApi.Destiny.Definitions.ItemTierTypes
 {
     public class ItemTierTypeInfusionProcess : IDeepEquatable<ItemTierTypeInfusionProcess>
     {

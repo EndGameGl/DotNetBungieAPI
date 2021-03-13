@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Bungie.Applications;
+﻿using NetBungieApi.Bungie.Applications;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Bungie
+namespace NetBungieApi.Bungie
 {
     public class BungieNetUserMembershipWithLinkedDestinyProfiles
     {

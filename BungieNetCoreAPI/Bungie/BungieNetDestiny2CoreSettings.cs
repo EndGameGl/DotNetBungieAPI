@@ -1,12 +1,12 @@
-﻿using BungieNetCoreAPI.Destiny;
-using BungieNetCoreAPI.Destiny.Definitions.Artifacts;
-using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
-using BungieNetCoreAPI.Destiny.Definitions.Progressions;
-using BungieNetCoreAPI.Destiny.Definitions.Seasons;
+﻿using NetBungieApi.Destiny;
+using NetBungieApi.Destiny.Definitions.Artifacts;
+using NetBungieApi.Destiny.Definitions.PresentationNodes;
+using NetBungieApi.Destiny.Definitions.Progressions;
+using NetBungieApi.Destiny.Definitions.Seasons;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Bungie
+namespace NetBungieApi.Bungie
 {
     public class BungieNetDestiny2CoreSettings
     {

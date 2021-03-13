@@ -1,14 +1,14 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.ActivityModes;
-using BungieNetCoreAPI.Destiny.Definitions.ActivityTypes;
-using BungieNetCoreAPI.Destiny.Definitions.Destinations;
-using BungieNetCoreAPI.Destiny.Definitions.Places;
-using BungieNetCoreAPI.Services;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.ActivityModes;
+using NetBungieApi.Destiny.Definitions.ActivityTypes;
+using NetBungieApi.Destiny.Definitions.Destinations;
+using NetBungieApi.Destiny.Definitions.Places;
+using NetBungieApi.Services;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using Unity;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Activities
+namespace NetBungieApi.Destiny.Definitions.Activities
 {
     /// <summary>
     /// The static data about Activities in Destiny 2.

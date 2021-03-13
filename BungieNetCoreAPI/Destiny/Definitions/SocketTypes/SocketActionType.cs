@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny.Definitions.SocketTypes
+﻿namespace NetBungieApi.Destiny.Definitions.SocketTypes
 {
     public enum SocketActionType
     {

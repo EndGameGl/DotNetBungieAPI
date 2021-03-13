@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
+namespace NetBungieApi.Destiny.Definitions.Vendors
 {
     public class VendorUnlockRange : IDeepEquatable<VendorUnlockRange>
     {

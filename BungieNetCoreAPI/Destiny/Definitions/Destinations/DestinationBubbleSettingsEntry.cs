@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Destinations
+namespace NetBungieApi.Destiny.Definitions.Destinations
 {
     public class DestinationBubbleSettingsEntry
     {

@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
+namespace NetBungieApi.Destiny.Definitions.Vendors
 {
     public class VendorInteraction : IDeepEquatable<VendorInteraction>
     {

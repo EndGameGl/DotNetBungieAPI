@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI
+namespace NetBungieApi
 {
     public class HyperlinkReference : IDeepEquatable<HyperlinkReference>
     {

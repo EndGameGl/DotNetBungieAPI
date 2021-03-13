@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BungieNetCoreAPI.Bungie
+namespace NetBungieApi.Bungie
 {
     public class GlobalAlert
     {

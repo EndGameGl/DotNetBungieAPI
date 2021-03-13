@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Bungie.Applications
+namespace NetBungieApi.Bungie.Applications
 {
     public class BungieApplicationDeveloper
     {

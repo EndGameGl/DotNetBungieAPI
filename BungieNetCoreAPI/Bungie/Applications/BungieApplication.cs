@@ -2,7 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Bungie.Applications
+namespace NetBungieApi.Bungie.Applications
 {
     public class BungieApplication
     {

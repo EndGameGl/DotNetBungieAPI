@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.SandboxPerks;
+﻿using NetBungieApi.Destiny.Definitions.SandboxPerks;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Objectives
+namespace NetBungieApi.Destiny.Definitions.Objectives
 {
     /// <summary>
     /// Defines the conditions under which an intrinsic perk is applied while participating in an Objective.

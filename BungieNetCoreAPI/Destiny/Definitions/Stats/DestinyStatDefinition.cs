@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Stats
+namespace NetBungieApi.Destiny.Definitions.Stats
 {
     [DestinyDefinition(DefinitionsEnum.DestinyStatDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyStatDefinition : IDestinyDefinition, IDeepEquatable<DestinyStatDefinition>

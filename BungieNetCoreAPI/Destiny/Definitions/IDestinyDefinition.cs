@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny.Definitions
+﻿namespace NetBungieApi.Destiny.Definitions
 {
     /// <summary>
     /// Base parameters for any destiny definition.

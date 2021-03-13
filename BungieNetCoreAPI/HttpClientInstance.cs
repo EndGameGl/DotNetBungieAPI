@@ -1,4 +1,4 @@
-﻿using BungieNetCoreAPI.Logging;
+﻿using NetBungieApi.Logging;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -6,7 +6,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BungieNetCoreAPI
+namespace NetBungieApi
 {
     internal class HttpClientInstance : IHttpClientInstance
     {

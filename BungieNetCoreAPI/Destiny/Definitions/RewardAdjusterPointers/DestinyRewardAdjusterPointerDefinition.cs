@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.RewardAdjusterPointers
+namespace NetBungieApi.Destiny.Definitions.RewardAdjusterPointers
 {
     [DestinyDefinition(DefinitionsEnum.DestinyRewardAdjusterPointerDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyRewardAdjusterPointerDefinition : IDestinyDefinition, IDeepEquatable<DestinyRewardAdjusterPointerDefinition>

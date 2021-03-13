@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny.Profile
+﻿namespace NetBungieApi.Destiny.Profile
 {
     public enum ComponentPrivacy
     {

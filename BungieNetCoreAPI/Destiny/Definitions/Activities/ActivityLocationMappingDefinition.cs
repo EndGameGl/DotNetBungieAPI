@@ -1,9 +1,9 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
-using BungieNetCoreAPI.Destiny.Definitions.Locations;
-using BungieNetCoreAPI.Destiny.Definitions.Objectives;
+﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
+using NetBungieApi.Destiny.Definitions.Locations;
+using NetBungieApi.Destiny.Definitions.Objectives;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Activities
+namespace NetBungieApi.Destiny.Definitions.Activities
 {
     public class ActivityLocationMappingDefinition : IDeepEquatable<ActivityLocationMappingDefinition>
     {

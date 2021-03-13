@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {
     [Flags]
     public enum DestinyJoinClosedReasons

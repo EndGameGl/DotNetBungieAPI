@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.TalentGrids
+namespace NetBungieApi.Destiny.Definitions.TalentGrids
 {
     public class TalentNodeExclusiveSet : IDeepEquatable<TalentNodeExclusiveSet>
     {

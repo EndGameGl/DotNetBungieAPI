@@ -1,9 +1,9 @@
-﻿using BungieNetCoreAPI.Destiny;
-using BungieNetCoreAPI.Destiny.Definitions;
-using BungieNetCoreAPI.Destiny.Definitions.Activities;
-using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
-using BungieNetCoreAPI.Logging;
-using BungieNetCoreAPI.Services;
+﻿using NetBungieApi.Destiny;
+using NetBungieApi.Destiny.Definitions;
+using NetBungieApi.Destiny.Definitions.Activities;
+using NetBungieApi.Destiny.Definitions.InventoryItems;
+using NetBungieApi.Logging;
+using NetBungieApi.Services;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using Unity;
 
-namespace BungieNetCoreAPI.Repositories
+namespace NetBungieApi.Repositories
 {
     public class LocalisedDestinyDefinitionRepositories : ILocalisedDestinyDefinitionRepositories
     {

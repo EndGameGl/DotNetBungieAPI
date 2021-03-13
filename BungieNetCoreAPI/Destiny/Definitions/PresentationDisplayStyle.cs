@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny.Definitions
+﻿namespace NetBungieApi.Destiny.Definitions
 {
     /// <summary>
     /// A hint for how the presentation node should be displayed when shown in a list. How you use this is your UI is up to you.

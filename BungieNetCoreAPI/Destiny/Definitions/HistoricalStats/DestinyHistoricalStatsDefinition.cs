@@ -1,10 +1,10 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.ActivityModes;
-using BungieNetCoreAPI.Destiny.Definitions.MedalTiers;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.ActivityModes;
+using NetBungieApi.Destiny.Definitions.MedalTiers;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.HistoricalStats
+namespace NetBungieApi.Destiny.Definitions.HistoricalStats
 {
     [DestinyDefinition(DefinitionsEnum.DestinyHistoricalStatsDefinition, DefinitionSources.BungieNet | DefinitionSources.SQLite, DefinitionKeyType.String)]
     public class DestinyHistoricalStatsDefinition

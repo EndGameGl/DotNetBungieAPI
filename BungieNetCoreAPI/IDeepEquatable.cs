@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI
+﻿namespace NetBungieApi
 {
     /// <summary>
     /// Provides interface for deep object equation.

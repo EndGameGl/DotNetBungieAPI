@@ -1,10 +1,10 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.RewardSources;
-using BungieNetCoreAPI.Destiny.Definitions.Stats;
+﻿using NetBungieApi.Destiny.Definitions.RewardSources;
+using NetBungieApi.Destiny.Definitions.Stats;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
+namespace NetBungieApi.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     /// Properties of a DestinyInventoryItemDefinition that store all of the information we were able to discern about how the item spawns, and where you can find the item.

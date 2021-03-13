@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.ActivityTypes
+namespace NetBungieApi.Destiny.Definitions.ActivityTypes
 {
     /// <summary>
     /// The definition for an Activity Type.

@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Activities
+namespace NetBungieApi.Destiny.Definitions.Activities
 {
     public class ActivityLoadoutEntry : IDeepEquatable<ActivityLoadoutEntry>
     {

@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
-using BungieNetCoreAPI.Destiny.Definitions.SocketTypes;
+﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
+using NetBungieApi.Destiny.Definitions.SocketTypes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.TalentGrids
+namespace NetBungieApi.Destiny.Definitions.TalentGrids
 {
     public class NodeSocketReplaceResponse : IDeepEquatable<NodeSocketReplaceResponse>
     {

@@ -1,13 +1,13 @@
-﻿using BungieNetCoreAPI.Clients;
-using BungieNetCoreAPI.Destiny;
-using BungieNetCoreAPI.Logging;
+﻿using NetBungieApi.Clients;
+using NetBungieApi.Destiny;
+using NetBungieApi.Logging;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BungieNetCoreAPI.Services
+namespace NetBungieApi.Services
 {
     public class ManifestUpdateHandler : IManifestUpdateHandler
     {

@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny
+﻿namespace NetBungieApi.Destiny
 {
     public enum DefinitionsEnum
     {

@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.EquipmentSlots;
-using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+﻿using NetBungieApi.Destiny.Definitions.EquipmentSlots;
+using NetBungieApi.Destiny.Definitions.InventoryItems;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Activities
+namespace NetBungieApi.Destiny.Definitions.Activities
 {
     public class ActivityLoadoutRequirement : IDeepEquatable<ActivityLoadoutRequirement>
     {

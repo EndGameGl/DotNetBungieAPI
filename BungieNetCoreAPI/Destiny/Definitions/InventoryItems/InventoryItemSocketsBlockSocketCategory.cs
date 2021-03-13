@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.SocketCategories;
+﻿using NetBungieApi.Destiny.Definitions.SocketCategories;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
+namespace NetBungieApi.Destiny.Definitions.InventoryItems
 {
     public class InventoryItemSocketsBlockSocketCategory : IDeepEquatable<InventoryItemSocketsBlockSocketCategory>
     {

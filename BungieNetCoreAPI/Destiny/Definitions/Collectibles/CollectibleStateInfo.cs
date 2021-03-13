@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
+﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Collectibles
+namespace NetBungieApi.Destiny.Definitions.Collectibles
 {
     public class CollectibleStateInfo : IDeepEquatable<CollectibleStateInfo>
     {

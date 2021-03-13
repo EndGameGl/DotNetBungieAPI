@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions
+namespace NetBungieApi.Destiny.Definitions
 {
     /// <summary>
     /// Represents common properties for displaying <see cref="IDestinyDefinition"/>

@@ -1,14 +1,14 @@
-﻿using BungieNetCoreAPI.Destiny;
-using BungieNetCoreAPI.Destiny.Definitions;
-using BungieNetCoreAPI.Destiny.Definitions.Activities;
-using BungieNetCoreAPI.Destiny.Definitions.ActivityModes;
-using BungieNetCoreAPI.Repositories;
+﻿using NetBungieApi.Destiny;
+using NetBungieApi.Destiny.Definitions;
+using NetBungieApi.Destiny.Definitions.Activities;
+using NetBungieApi.Destiny.Definitions.ActivityModes;
+using NetBungieApi.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace BungieNetCoreAPI
+namespace NetBungieApi
 {
     public static class Extensions
     {

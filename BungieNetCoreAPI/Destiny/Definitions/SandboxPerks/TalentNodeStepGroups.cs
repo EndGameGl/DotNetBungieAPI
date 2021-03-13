@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.SandboxPerks
+namespace NetBungieApi.Destiny.Definitions.SandboxPerks
 {
     public class TalentNodeStepGroups : IDeepEquatable<TalentNodeStepGroups>
     {

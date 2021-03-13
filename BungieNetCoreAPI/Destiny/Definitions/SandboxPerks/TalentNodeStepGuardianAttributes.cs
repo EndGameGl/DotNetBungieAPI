@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.SandboxPerks
+namespace NetBungieApi.Destiny.Definitions.SandboxPerks
 {
     [Flags]
     public enum TalentNodeStepGuardianAttributes

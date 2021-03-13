@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Responses
+namespace NetBungieApi.Responses
 {
     public class PagedQuery
     {

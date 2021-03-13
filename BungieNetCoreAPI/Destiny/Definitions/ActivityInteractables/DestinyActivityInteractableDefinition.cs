@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.ActivityInteractables
+namespace NetBungieApi.Destiny.Definitions.ActivityInteractables
 {
     [DestinyDefinition(DefinitionsEnum.DestinyActivityInteractableDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyActivityInteractableDefinition : IDestinyDefinition, IDeepEquatable<DestinyActivityInteractableDefinition>

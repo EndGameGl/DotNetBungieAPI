@@ -1,10 +1,10 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.BreakerTypes;
-using BungieNetCoreAPI.Destiny.Definitions.DamageTypes;
-using BungieNetCoreAPI.Destiny.Definitions.Unlocks;
+﻿using NetBungieApi.Destiny.Definitions.BreakerTypes;
+using NetBungieApi.Destiny.Definitions.DamageTypes;
+using NetBungieApi.Destiny.Definitions.Unlocks;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {  
     public class DestinyItemInstanceComponent
     {

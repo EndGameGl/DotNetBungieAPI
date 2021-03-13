@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.MaterialRequirementSets;
+﻿using NetBungieApi.Destiny.Definitions.MaterialRequirementSets;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.TalentGrids
+namespace NetBungieApi.Destiny.Definitions.TalentGrids
 {
     public class NodeActivationRequirement : IDeepEquatable<NodeActivationRequirement>
     {

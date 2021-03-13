@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
+﻿using NetBungieApi.Destiny.Definitions.PresentationNodes;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Records
+namespace NetBungieApi.Destiny.Definitions.Records
 {
     public class RecordPresentationInfo : IDeepEquatable<RecordPresentationInfo>
     {

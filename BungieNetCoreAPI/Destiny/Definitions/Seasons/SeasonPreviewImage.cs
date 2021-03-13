@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Seasons
+namespace NetBungieApi.Destiny.Definitions.Seasons
 {
     public class SeasonPreviewImage : IDeepEquatable<SeasonPreviewImage>
     {

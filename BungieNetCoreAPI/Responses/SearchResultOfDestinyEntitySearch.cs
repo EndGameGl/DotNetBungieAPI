@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Responses
+namespace NetBungieApi.Responses
 {
     public class SearchResultOfDestinyEntitySearch
     {

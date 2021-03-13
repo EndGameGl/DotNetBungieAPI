@@ -1,11 +1,11 @@
-﻿using BungieNetCoreAPI.Bungie.Applications;
-using BungieNetCoreAPI.Destiny.Definitions.Classes;
-using BungieNetCoreAPI.Destiny.Definitions.Genders;
-using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
-using BungieNetCoreAPI.Destiny.Definitions.Races;
+﻿using NetBungieApi.Bungie.Applications;
+using NetBungieApi.Destiny.Definitions.Classes;
+using NetBungieApi.Destiny.Definitions.Genders;
+using NetBungieApi.Destiny.Definitions.InventoryItems;
+using NetBungieApi.Destiny.Definitions.Races;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {
     public class DestinyPlayer
     {

@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
+namespace NetBungieApi.Destiny.Definitions.CharacterCustomizationOptions
 {
     public class CharacterCustomizationOptionColorOptionsEntry : IDeepEquatable<CharacterCustomizationOptionColorOptionsEntry>
     {

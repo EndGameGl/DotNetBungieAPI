@@ -1,6 +1,6 @@
-﻿using BungieNetCoreAPI.Clients;
-using BungieNetCoreAPI.Logging;
-using BungieNetCoreAPI.Services;
+﻿using NetBungieApi.Clients;
+using NetBungieApi.Logging;
+using NetBungieApi.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace BungieNetCoreAPI.Destiny
+namespace NetBungieApi.Destiny
 {
     /// <summary>
     /// DestinyManifest is the external-facing contract for just the properties needed by those calling the Destiny Platform.

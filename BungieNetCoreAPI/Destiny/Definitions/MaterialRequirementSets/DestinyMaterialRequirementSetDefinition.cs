@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.MaterialRequirementSets
+namespace NetBungieApi.Destiny.Definitions.MaterialRequirementSets
 {
     /// <summary>
     /// Represent a set of material requirements: Items that either need to be owned or need to be consumed in order to perform an action.

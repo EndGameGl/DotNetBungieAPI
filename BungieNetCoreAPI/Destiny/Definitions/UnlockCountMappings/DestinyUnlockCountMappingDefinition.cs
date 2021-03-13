@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.Unlocks;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.Unlocks;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.UnlockCountMappings
+namespace NetBungieApi.Destiny.Definitions.UnlockCountMappings
 {
     /// <summary>
     /// Empty definition

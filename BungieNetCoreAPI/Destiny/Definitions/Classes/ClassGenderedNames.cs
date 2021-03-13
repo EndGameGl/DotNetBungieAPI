@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Classes
+namespace NetBungieApi.Destiny.Definitions.Classes
 {
     public class ClassGenderedNames : IDeepEquatable<ClassGenderedNames>
     {

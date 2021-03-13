@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodeBases
+namespace NetBungieApi.Destiny.Definitions.PresentationNodeBases
 {
     [DestinyDefinition(DefinitionsEnum.DestinyPresentationNodeBaseDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyPresentationNodeBaseDefinition : IDestinyDefinition, IDeepEquatable<DestinyPresentationNodeBaseDefinition>

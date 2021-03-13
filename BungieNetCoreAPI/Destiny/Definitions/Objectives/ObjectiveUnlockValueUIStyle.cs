@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny.Definitions.Objectives
+﻿namespace NetBungieApi.Destiny.Definitions.Objectives
 {
     public enum ObjectiveUnlockValueUIStyle
     {

@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationCategories;
+﻿using NetBungieApi.Destiny.Definitions.CharacterCustomizationCategories;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
+namespace NetBungieApi.Destiny.Definitions.CharacterCustomizationOptions
 {
     public class CharacterCustomizationOptionColorOptionsWithMultipleValues : IDeepEquatable<CharacterCustomizationOptionColorOptionsWithMultipleValues>
     {

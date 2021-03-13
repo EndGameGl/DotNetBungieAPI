@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.ItemTierTypes
+namespace NetBungieApi.Destiny.Definitions.ItemTierTypes
 {
     /// <summary>
     /// Defines the tier type of an item. Mostly this provides human readable properties for types like Common, Rare, etc...

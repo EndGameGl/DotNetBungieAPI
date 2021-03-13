@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BungieNetCoreAPI.Attributes
+namespace NetBungieApi.Attributes
 {
     [Flags]
     public enum DefinitionSources : byte

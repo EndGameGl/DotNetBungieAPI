@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny.Definitions.HistoricalStats
+﻿namespace NetBungieApi.Destiny.Definitions.HistoricalStats
 {
     public enum DestinyStatsGroupType
     {

@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.Progressions;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.Progressions;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.SeasonPasses
+namespace NetBungieApi.Destiny.Definitions.SeasonPasses
 {
     [DestinyDefinition(DefinitionsEnum.DestinySeasonPassDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinySeasonPassDefinition : IDestinyDefinition, IDeepEquatable<DestinySeasonPassDefinition>

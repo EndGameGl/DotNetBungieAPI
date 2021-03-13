@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.InventoryBuckets;
-using BungieNetCoreAPI.Destiny.Definitions.ItemTierTypes;
+﻿using NetBungieApi.Destiny.Definitions.InventoryBuckets;
+using NetBungieApi.Destiny.Definitions.ItemTierTypes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
+namespace NetBungieApi.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     /// If the item can exist in an inventory - the overwhelming majority of them can and do - then this is the basic properties regarding the item's relationship with the inventory.

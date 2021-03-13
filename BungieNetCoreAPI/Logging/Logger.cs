@@ -1,11 +1,11 @@
-﻿using BungieNetCoreAPI.Clients;
-using BungieNetCoreAPI.Services;
+﻿using NetBungieApi.Clients;
+using NetBungieApi.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Unity;
 
-namespace BungieNetCoreAPI.Logging
+namespace NetBungieApi.Logging
 {
     internal class Logger : ILogger
     {

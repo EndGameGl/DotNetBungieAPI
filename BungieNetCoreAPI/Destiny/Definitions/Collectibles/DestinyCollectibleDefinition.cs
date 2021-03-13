@@ -1,11 +1,11 @@
-﻿using BungieNetCoreAPI.Attributes;
-using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
-using BungieNetCoreAPI.Destiny.Definitions.PresentationNodes;
-using BungieNetCoreAPI.Destiny.Definitions.Traits;
+﻿using NetBungieApi.Attributes;
+using NetBungieApi.Destiny.Definitions.InventoryItems;
+using NetBungieApi.Destiny.Definitions.PresentationNodes;
+using NetBungieApi.Destiny.Definitions.Traits;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Collectibles
+namespace NetBungieApi.Destiny.Definitions.Collectibles
 {
     [DestinyDefinition(DefinitionsEnum.DestinyCollectibleDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyCollectibleDefinition : IDestinyDefinition, IDeepEquatable<DestinyCollectibleDefinition>

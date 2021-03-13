@@ -1,11 +1,11 @@
-﻿using BungieNetCoreAPI.Logging;
-using BungieNetCoreAPI.Repositories;
+﻿using NetBungieApi.Logging;
+using NetBungieApi.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Unity;
 
-namespace BungieNetCoreAPI.Services
+namespace NetBungieApi.Services
 {
     internal static class StaticUnityContainer
     {

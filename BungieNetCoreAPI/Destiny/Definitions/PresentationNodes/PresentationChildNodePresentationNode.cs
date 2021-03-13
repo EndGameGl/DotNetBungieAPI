@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.PresentationNodes
+namespace NetBungieApi.Destiny.Definitions.PresentationNodes
 {
     public class PresentationChildNodePresentationNode : IDeepEquatable<PresentationChildNodePresentationNode>
     {

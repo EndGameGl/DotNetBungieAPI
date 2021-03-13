@@ -1,15 +1,15 @@
-﻿using BungieNetCoreAPI.Bungie;
-using BungieNetCoreAPI.Bungie.Applications;
-using BungieNetCoreAPI.Destiny;
-using BungieNetCoreAPI.Destiny.Definitions;
-using BungieNetCoreAPI.Destiny.Definitions.ActivityModes;
-using BungieNetCoreAPI.Destiny.Definitions.HistoricalStats;
-using BungieNetCoreAPI.Destiny.Profile;
-using BungieNetCoreAPI.Destiny.Profile.Components.Contracts;
-using BungieNetCoreAPI.Destiny.Responses;
-using BungieNetCoreAPI.Logging;
-using BungieNetCoreAPI.Responses;
-using BungieNetCoreAPI.Services;
+﻿using NetBungieApi.Bungie;
+using NetBungieApi.Bungie.Applications;
+using NetBungieApi.Destiny;
+using NetBungieApi.Destiny.Definitions;
+using NetBungieApi.Destiny.Definitions.ActivityModes;
+using NetBungieApi.Destiny.Definitions.HistoricalStats;
+using NetBungieApi.Destiny.Profile;
+using NetBungieApi.Destiny.Profile.Components.Contracts;
+using NetBungieApi.Destiny.Responses;
+using NetBungieApi.Logging;
+using NetBungieApi.Responses;
+using NetBungieApi.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -20,7 +20,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Unity;
 
-namespace BungieNetCoreAPI.Clients
+namespace NetBungieApi.Clients
 {
     public class BungiePlatfromClient
     {

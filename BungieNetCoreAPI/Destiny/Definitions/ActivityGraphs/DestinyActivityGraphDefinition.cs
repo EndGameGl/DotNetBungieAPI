@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs
+namespace NetBungieApi.Destiny.Definitions.ActivityGraphs
 {
     /// <summary>
     /// Represents a Map View in the director: be them overview views, destination views, or other.

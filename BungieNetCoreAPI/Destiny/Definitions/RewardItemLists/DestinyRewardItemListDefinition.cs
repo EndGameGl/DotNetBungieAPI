@@ -1,7 +1,7 @@
-﻿using BungieNetCoreAPI.Attributes;
+﻿using NetBungieApi.Attributes;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.RewardItemLists
+namespace NetBungieApi.Destiny.Definitions.RewardItemLists
 {
     /// <summary>
     /// Empty atm

@@ -1,9 +1,9 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Factions;
-using BungieNetCoreAPI.Destiny.Definitions.Progressions;
+﻿using NetBungieApi.Destiny.Definitions.Factions;
+using NetBungieApi.Destiny.Definitions.Progressions;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {
     public class DestinyFactionProgression
     {

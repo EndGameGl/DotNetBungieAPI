@@ -1,4 +1,4 @@
-﻿using BungieNetCoreAPI.Services;
+﻿using NetBungieApi.Services;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -7,7 +7,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Unity;
 
-namespace BungieNetCoreAPI.Clients
+namespace NetBungieApi.Clients
 {
     /// <summary>
     /// Bungie client for interacting with CDN

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.ActivityGraphs
+namespace NetBungieApi.Destiny.Definitions.ActivityGraphs
 {
     public class ActivityGraphLinkedGraphEntryLinkedGraphEntry : IDeepEquatable<ActivityGraphLinkedGraphEntryLinkedGraphEntry>
     {

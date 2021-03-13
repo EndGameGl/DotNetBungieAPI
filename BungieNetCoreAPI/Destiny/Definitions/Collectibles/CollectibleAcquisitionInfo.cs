@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.MaterialRequirementSets;
-using BungieNetCoreAPI.Destiny.Definitions.UnlockValues;
+﻿using NetBungieApi.Destiny.Definitions.MaterialRequirementSets;
+using NetBungieApi.Destiny.Definitions.UnlockValues;
 using Newtonsoft.Json;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.Collectibles
+namespace NetBungieApi.Destiny.Definitions.Collectibles
 {
     public class CollectibleAcquisitionInfo : IDeepEquatable<CollectibleAcquisitionInfo>
     {

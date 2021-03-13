@@ -1,11 +1,11 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.Milestones;
-using BungieNetCoreAPI.Destiny.Definitions.Vendors;
+﻿using NetBungieApi.Destiny.Definitions.Milestones;
+using NetBungieApi.Destiny.Definitions.Vendors;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Profile.Components.Contracts
+namespace NetBungieApi.Destiny.Profile.Components.Contracts
 {
     public class DestinyMilestone
     {

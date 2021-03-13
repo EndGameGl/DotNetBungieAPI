@@ -1,4 +1,4 @@
-﻿namespace BungieNetCoreAPI.Destiny.Definitions.Races
+﻿namespace NetBungieApi.Destiny.Definitions.Races
 {
     public enum DestinyRaceType
     {

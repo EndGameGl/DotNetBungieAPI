@@ -1,8 +1,8 @@
-﻿using BungieNetCoreAPI.Destiny.Definitions.RewardSheets;
+﻿using NetBungieApi.Destiny.Definitions.RewardSheets;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace BungieNetCoreAPI.Destiny.Definitions.InventoryItems
+namespace NetBungieApi.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     /// If an item can have an action performed on it (like "Dismantle"), it will be defined here if you care.
