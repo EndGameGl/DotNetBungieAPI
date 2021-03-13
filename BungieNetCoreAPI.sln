@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BungieNetCoreAPI", "BungieNetCoreAPI\BungieNetCoreAPI.csproj", "{0D1416BF-3145-49DF-9DCA-10C0022C9CC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".NetBungieAPI", "BungieNetCoreAPI\.NetBungieAPI.csproj", "{0D1416BF-3145-49DF-9DCA-10C0022C9CC6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BungieNetCoreTestingApp", "BungieNetCoreTestingApp\BungieNetCoreTestingApp.csproj", "{097079C1-4969-4DE2-87BE-C04F3332DB6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".NetBungieAPI.TestProject", "BungieNetCoreTestingApp\.NetBungieAPI.TestProject.csproj", "{097079C1-4969-4DE2-87BE-C04F3332DB6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
