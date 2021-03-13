@@ -1,22 +1,25 @@
-﻿using BungieNetCoreAPI.Clients;
-using BungieNetCoreAPI.Destiny.Definitions.Destinations;
-using BungieNetCoreAPI.Repositories;
-using BungieNetCoreAPI.Services;
+﻿using BungieNetCoreAPI.Destiny.Definitions.Destinations;
 using Newtonsoft.Json;
-using Unity;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
 {
-    public class VendorLocation
+    public class VendorLocation : IDeepEquatable<VendorLocation>
     {
         public string BackgroundImagePath { get; }
         public DefinitionHashPointer<DestinyDestinationDefinition> Destination { get; }
 
         [JsonConstructor]
-        private VendorLocation(string backgroundImagePath, uint destinationHash)
+        internal VendorLocation(string backgroundImagePath, uint destinationHash)
         {
             BackgroundImagePath = backgroundImagePath;
             Destination = new DefinitionHashPointer<DestinyDestinationDefinition>(destinationHash, DefinitionsEnum.DestinyDestinationDefinition);
+        }
+
+        public bool DeepEquals(VendorLocation other)
+        {
+            return other != null &&
+                   BackgroundImagePath == other.BackgroundImagePath &&
+                   Destination.DeepEquals(other.Destination);
         }
     }
 }

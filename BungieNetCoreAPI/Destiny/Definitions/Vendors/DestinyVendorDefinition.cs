@@ -1,12 +1,8 @@
 ﻿using BungieNetCoreAPI.Attributes;
 using BungieNetCoreAPI.Destiny.Definitions.Factions;
 using BungieNetCoreAPI.Destiny.Definitions.InventoryItems;
-using BungieNetCoreAPI.Repositories;
-using BungieNetCoreAPI.Services;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Unity;
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
 {
@@ -92,18 +88,6 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
         /// </summary>
         public ReadOnlyCollection<VendorInteraction> Interactions { get; }
         /// <summary>
-        /// If vendor can transer items, this field points out transfer destinations
-        /// </summary>
-        public ReadOnlyCollection<VendorAcceptedItem> AcceptedItems { get; }
-        /// <summary>
-        /// Group that this vendor belongs to
-        /// </summary>
-        public ReadOnlyCollection<VendorGroup> Groups { get; }
-        /// <summary>
-        /// Items that should be ignored when selling something
-        /// </summary>
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> IgnoreSaleItems { get; }
-        /// <summary>
         /// Information for displaying your own items to you from this vendor
         /// </summary>
         public ReadOnlyCollection<VendorInventoryFlyout> InventoryFlyouts { get; }
@@ -112,17 +96,29 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
         /// </summary>
         public ReadOnlyCollection<VendorItem> ItemList { get; }
         /// <summary>
-        /// Possible locations for this vendor to be
+        /// Additional info about what services this vendor does
         /// </summary>
-        public ReadOnlyCollection<VendorLocation> Locations { get; }
+        public ReadOnlyCollection<VendorService> Services { get; }
+        /// <summary>
+        /// If vendor can transer items, this field points out transfer destinations
+        /// </summary>
+        public ReadOnlyCollection<VendorAcceptedItem> AcceptedItems { get; }
         /// <summary>
         /// Whether this vendor is returned on vendor request
         /// </summary>
         public bool ReturnWithVendorRequest { get; }
         /// <summary>
-        /// Additional info about what services this vendor does
+        /// Possible locations for this vendor to be
         /// </summary>
-        public ReadOnlyCollection<VendorService> Services { get; }
+        public ReadOnlyCollection<VendorLocation> Locations { get; }
+        /// <summary>
+        /// Group that this vendor belongs to
+        /// </summary>
+        public ReadOnlyCollection<VendorGroup> Groups { get; }
+        /// <summary>
+        /// Items that should be ignored when selling something
+        /// </summary>
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> IgnoreSaleItems { get; }
         /// <summary>
         /// 
         /// </summary>
@@ -189,11 +185,103 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
         {
             DisplayItem.TryMapValue();
             Faction.TryMapValue();
+            foreach (var category in Categories)
+            {
+                category.Overlay?.CurrencyItem.TryMapValue();
+            }
+            foreach (var category in OriginalCategories)
+            {
+                category.Overlay?.CurrencyItem.TryMapValue();
+            }
+            foreach (var category in DisplayCategories)
+            {
+                category.Progression.TryMapValue();
+            }
+            foreach (var interaction in Interactions)
+            {
+                interaction.QuestlineItem.TryMapValue();
+            }
+            foreach (var flyout in InventoryFlyouts)
+            {
+                flyout.EquipmentSlot.TryMapValue();
+                foreach (var bucket in flyout.Buckets)
+                {
+                    bucket.InventoryBucket.TryMapValue();
+                }
+            }
+            foreach (var item in ItemList)
+            {
+                item.Item.TryMapValue();
+                foreach (var currency in item.Currencies)
+                {
+                    currency.Item.TryMapValue();
+                }
+                item.InventoryBucket.TryMapValue();
+                foreach (var socketOverride in item.SocketOverrides)
+                {
+                    socketOverride.SingleItem.TryMapValue();
+                    socketOverride.SocketType.TryMapValue();
+                }
+            }
+            foreach (var item in AcceptedItems)
+            {
+                item.AcceptedInventoryBucket.TryMapValue();
+                item.DestinationInventoryBucket.TryMapValue();
+            }
+            foreach (var location in Locations)
+            {
+                location.Destination.TryMapValue();
+            }
+            foreach (var group in Groups)
+            {
+                group.Group.TryMapValue();
+            }
+            foreach (var item in IgnoreSaleItems)
+            {
+                item.TryMapValue();
+            }
         }
 
         public bool DeepEquals(DestinyVendorDefinition other)
         {
-            throw new System.NotImplementedException();
+            return other != null &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   VendorProgressionType == other.VendorProgressionType &&
+                   BuyString == other.BuyString &&
+                   SellString == other.SellString &&
+                   DisplayItem.DeepEquals(other.DisplayItem) &&
+                   InhibitBuying == other.InhibitBuying &&
+                   InhibitSelling == other.InhibitSelling &&
+                   Faction.DeepEquals(other.Faction) &&
+                   ResetIntervalMinutes == other.ResetIntervalMinutes &&
+                   ResetOffsetMinutes == other.ResetOffsetMinutes &&
+                   FailureStrings.DeepEqualsReadOnlySimpleCollection(other.FailureStrings) &&
+                   UnlockRanges.DeepEqualsReadOnlyCollections(other.UnlockRanges) &&
+                   VendorIdentifier == other.VendorIdentifier &&
+                   VendorPortrait == other.VendorPortrait &&
+                   VendorBanner == other.VendorBanner &&
+                   Enabled == other.Enabled &&
+                   Visible == other.Visible &&
+                   VendorSubcategoryIdentifier == other.VendorSubcategoryIdentifier &&
+                   ConsolidateCategories == other.ConsolidateCategories &&
+                   Actions.DeepEqualsReadOnlyCollections(other.Actions) &&
+                   Categories.DeepEqualsReadOnlyCollections(other.Categories) &&
+                   OriginalCategories.DeepEqualsReadOnlyCollections(other.OriginalCategories) &&
+                   DisplayCategories.DeepEqualsReadOnlyCollections(other.DisplayCategories) &&
+                   Interactions.DeepEqualsReadOnlyCollections(other.Interactions) &&
+                   InventoryFlyouts.DeepEqualsReadOnlyCollections(other.InventoryFlyouts) &&
+                   ItemList.DeepEqualsReadOnlyCollections(other.ItemList) &&
+                   Services.DeepEqualsReadOnlyCollections(other.Services) &&
+                   AcceptedItems.DeepEqualsReadOnlyCollections(other.AcceptedItems) &&
+                   ReturnWithVendorRequest == other.ReturnWithVendorRequest &&
+                   Locations.DeepEqualsReadOnlyCollections(other.Locations) &&
+                   Groups.DeepEqualsReadOnlyCollections(other.Groups) &&
+                   IgnoreSaleItems.DeepEqualsReadOnlyCollections(other.IgnoreSaleItems) &&
+                   UnlockValueHash == other.UnlockValueHash &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
         }
     }
 }

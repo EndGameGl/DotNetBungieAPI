@@ -2,16 +2,23 @@
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
 {
-    public class VendorItemAction
+    public class VendorItemAction : IDeepEquatable<VendorItemAction>
     {
         public double ExecuteSeconds { get; }
         public bool IsPositive { get; }
 
         [JsonConstructor]
-        private VendorItemAction(double executeSeconds, bool isPositive)
+        internal VendorItemAction(double executeSeconds, bool isPositive)
         {
             ExecuteSeconds = executeSeconds;
             IsPositive = isPositive;
+        }
+
+        public bool DeepEquals(VendorItemAction other)
+        {
+            return other != null &&
+                   ExecuteSeconds == other.ExecuteSeconds &&
+                   IsPositive == other.IsPositive;
         }
     }
 }

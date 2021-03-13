@@ -2,7 +2,7 @@
 
 namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
 {
-    public class VendorInteractionReply
+    public class VendorInteractionReply : IDeepEquatable<VendorInteractionReply>
     {
         public VendorInteractionRewardSelection ItemRewardsSelection { get; }
         public string Reply { get; }
@@ -10,12 +10,21 @@ namespace BungieNetCoreAPI.Destiny.Definitions.Vendors
         public uint RewardSiteHash { get; }
 
         [JsonConstructor]
-        private VendorInteractionReply(VendorInteractionRewardSelection itemRewardsSelection, string reply, VendorReplyType replyType, uint rewardSiteHash)
+        internal VendorInteractionReply(VendorInteractionRewardSelection itemRewardsSelection, string reply, VendorReplyType replyType, uint rewardSiteHash)
         {
             ItemRewardsSelection = itemRewardsSelection;
             Reply = reply;
             ReplyType = replyType;
             RewardSiteHash = rewardSiteHash;
+        }
+
+        public bool DeepEquals(VendorInteractionReply other)
+        {
+            return other != null &&
+                   ItemRewardsSelection == other.ItemRewardsSelection &&
+                   Reply == other.Reply &&
+                   ReplyType == other.ReplyType &&
+                   RewardSiteHash == other.RewardSiteHash;
         }
     }
 }
