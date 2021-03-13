@@ -1,4 +1,4 @@
-# BungieNetCoreAPI
+# .NetBungieAPI
 
 This library was made to interact with Bungie.net API.
 <br />
