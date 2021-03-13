@@ -18,7 +18,7 @@ namespace BungieNetCoreAPI
         private bool? _alreadyTriedLoading = false;
         internal bool Exists;
         internal T m_value;
-        private readonly ILocalisedManifestDefinitionRepositories _repository;
+        private readonly ILocalisedDestinyDefinitionRepositories _repository;
 
         /// <summary>
         /// Definition hash, guaranteed to be unique across it's type.
@@ -77,7 +77,7 @@ namespace BungieNetCoreAPI
             _repository = StaticUnityContainer.GetDestinyDefinitionRepositories();
             Locale = _repository.CurrentLocaleLoadContext;
         }
-        internal DefinitionHashPointer(uint? hash, DefinitionsEnum type, DestinyLocales locale, T def = default, ILocalisedManifestDefinitionRepositories repo = null)
+        internal DefinitionHashPointer(uint? hash, DefinitionsEnum type, DestinyLocales locale, T def = default, ILocalisedDestinyDefinitionRepositories repo = null)
         {
             if (def != null)
             {

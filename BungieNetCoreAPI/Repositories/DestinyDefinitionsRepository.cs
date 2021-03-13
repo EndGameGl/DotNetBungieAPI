@@ -297,6 +297,13 @@ namespace BungieNetCoreAPI.Repositories
             return (T)definition.ToObject(parseTo);
         }
         private string GetSQLSelectQuery(string tableName) => string.Format(SELECT_QUERY, tableName);
+        internal void PremapPointers()
+        {
+            foreach (var repository in _definitionRepositories.Select(x => x.Value))
+            {
+                repository.MapValues();
+            }
+        }
         #endregion
     }
 }

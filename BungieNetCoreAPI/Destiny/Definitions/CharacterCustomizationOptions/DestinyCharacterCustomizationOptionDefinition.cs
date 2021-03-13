@@ -92,5 +92,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.CharacterCustomizationOptions
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
+
+        public void MapValues()
+        {
+            return;
+        }
     }
 }

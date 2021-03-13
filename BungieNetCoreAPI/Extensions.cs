@@ -134,27 +134,27 @@ namespace BungieNetCoreAPI
         public static uint ToUInt32(this int hash) => unchecked((uint)hash);
 
         #region Activity search
-        public static List<DestinyActivityDefinition> GetActivitiesWithMode(this ILocalisedManifestDefinitionRepositories repository, DestinyLocales locale, uint activityModeHash)
+        public static List<DestinyActivityDefinition> GetActivitiesWithMode(this ILocalisedDestinyDefinitionRepositories repository, DestinyLocales locale, uint activityModeHash)
         {
             return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale, x => (x as DestinyActivityDefinition).ActivityModes.Where(q => q.Hash.Equals(activityModeHash)).Count() > 0).ToList();
         }
-        public static List<DestinyActivityDefinition> GetActivitiesWithMode(this ILocalisedManifestDefinitionRepositories repository, DestinyLocales locale, DestinyActivityModeType activityMode)
+        public static List<DestinyActivityDefinition> GetActivitiesWithMode(this ILocalisedDestinyDefinitionRepositories repository, DestinyLocales locale, DestinyActivityModeType activityMode)
         {
             return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale, x => (x as DestinyActivityDefinition).ActivityModeTypes.Contains(activityMode)).ToList();
         }
-        public static List<DestinyActivityDefinition> GetActivitiesWithDirectMode(this ILocalisedManifestDefinitionRepositories repository, DestinyLocales locale, uint activityModeHash)
+        public static List<DestinyActivityDefinition> GetActivitiesWithDirectMode(this ILocalisedDestinyDefinitionRepositories repository, DestinyLocales locale, uint activityModeHash)
         {
             return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale, x => (x as DestinyActivityDefinition).DirectActivityMode.Hash.Equals(activityModeHash)).ToList();
         }
-        public static List<DestinyActivityDefinition> GetActivitiesWithDirectMode(this ILocalisedManifestDefinitionRepositories repository, DestinyLocales locale, DestinyActivityModeType activityMode)
+        public static List<DestinyActivityDefinition> GetActivitiesWithDirectMode(this ILocalisedDestinyDefinitionRepositories repository, DestinyLocales locale, DestinyActivityModeType activityMode)
         {
             return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale, x => (x as DestinyActivityDefinition).DirectActivityModeType.Equals(activityMode)).ToList();
         }
-        public static List<DestinyActivityDefinition> GetActivitiesWithPlace(this ILocalisedManifestDefinitionRepositories repository, DestinyLocales locale, uint placeHash)
+        public static List<DestinyActivityDefinition> GetActivitiesWithPlace(this ILocalisedDestinyDefinitionRepositories repository, DestinyLocales locale, uint placeHash)
         {
             return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale, x => (x as DestinyActivityDefinition).Place.Hash.Equals(placeHash)).ToList();
         }
-        public static List<DestinyActivityDefinition> GetActivitiesWithDestination(this ILocalisedManifestDefinitionRepositories repository, DestinyLocales locale, uint destinationHash)
+        public static List<DestinyActivityDefinition> GetActivitiesWithDestination(this ILocalisedDestinyDefinitionRepositories repository, DestinyLocales locale, uint destinationHash)
         {
             return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale, x => (x as DestinyActivityDefinition).Destination.Hash.Equals(destinationHash)).ToList();
         }

@@ -52,5 +52,10 @@ namespace BungieNetCoreAPI.Destiny.Definitions.NodeStepSummaries
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
+
+        public void MapValues()
+        {
+            return;
+        }
     }
 }

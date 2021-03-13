@@ -8,7 +8,7 @@ using System.Text;
 
 namespace BungieNetCoreAPI.Repositories
 {
-    public interface ILocalisedManifestDefinitionRepositories
+    public interface ILocalisedDestinyDefinitionRepositories
     {
         DestinyLocales CurrentLocaleLoadContext { get; }
         void SetLocaleContext(DestinyLocales locale);

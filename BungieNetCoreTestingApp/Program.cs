@@ -120,6 +120,8 @@ namespace BungieNetCoreTestingApp
                     repositoryPath: string.Empty);
 
                 settings.EnableLogging();
+
+                settings.PremapPointers();
             });
 
             _bungieClient.LogListener.OnNewMessage += (mes) => Console.WriteLine(mes);
@@ -146,12 +148,6 @@ namespace BungieNetCoreTestingApp
             //    destinyMembershipId: 4611686018483306402,
 
             //    ALL_COMPONENTS_ARRAY);
-
-            var coll = _bungieClient.Repository.GetAll<DestinyProgressionDefinition>().ToList();
-
-            coll.ForEach(x => x.MapValues());
-
-            //RunDeepEqualityCheck(coll);
 
             //if (aggregateActivityStats.ErrorCode == PlatformErrorCodes.Success && aggregateActivityStats.Response != null)
             //{

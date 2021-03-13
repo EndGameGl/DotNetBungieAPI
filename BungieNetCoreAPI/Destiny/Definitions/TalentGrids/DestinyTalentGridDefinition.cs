@@ -63,9 +63,12 @@ namespace BungieNetCoreAPI.Destiny.Definitions.TalentGrids
             foreach (var node in Nodes)
             {
                 node.Lore.TryMapValue();
-                foreach (var req in node.RandomActivationRequirement?.MaterialRequirements)
+                if (node.RandomActivationRequirement != null)
                 {
-                    req.TryMapValue();
+                    foreach (var req in node.RandomActivationRequirement.MaterialRequirements)
+                    {
+                        req.TryMapValue();
+                    }
                 }
                 foreach (var nodeStep in node.Steps)
                 {

@@ -6,7 +6,7 @@ namespace BungieNetCoreAPI.Repositories
 {
     public static class QueryExtensions
     {
-        public static Dictionary<DestinyItemCategoryDefinition, List<DestinyInventoryItemDefinition>> GetItemsCategorized(this ILocalisedManifestDefinitionRepositories repo, DestinyLocales locale)
+        public static Dictionary<DestinyItemCategoryDefinition, List<DestinyInventoryItemDefinition>> GetItemsCategorized(this ILocalisedDestinyDefinitionRepositories repo, DestinyLocales locale)
         {
             var result = new Dictionary<DestinyItemCategoryDefinition, List<DestinyInventoryItemDefinition>>();
             foreach (var category in repo.GetAll<DestinyItemCategoryDefinition>(locale))

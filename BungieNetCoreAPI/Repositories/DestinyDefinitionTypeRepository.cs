@@ -39,5 +39,12 @@ namespace BungieNetCoreAPI.Repositories
         {
             return $"{Type.Name}: {_definitions.Count} entities.";
         }
+        public void MapValues()
+        {
+            foreach (var definition in EnumerateValues())
+            {
+                definition.MapValues();
+            }
+        }
     }
 }

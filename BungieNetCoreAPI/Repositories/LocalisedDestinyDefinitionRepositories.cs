@@ -15,7 +15,7 @@ using Unity;
 
 namespace BungieNetCoreAPI.Repositories
 {
-    public class LocalisedDestinyDefinitionRepositories : ILocalisedManifestDefinitionRepositories
+    public class LocalisedDestinyDefinitionRepositories : ILocalisedDestinyDefinitionRepositories
     {
         private DestinyLocales? _currentLocaleLoadContext;
         private readonly ILogger _logger;
@@ -55,6 +55,15 @@ namespace BungieNetCoreAPI.Repositories
                 SetLocaleContext(repo.Locale);
                 repo.LoadDataFromFiles(localManifestPath, manifest);
                 ResetLocaleContext();
+            }
+            if (_configs.Settings.PremapDefinitionPointers)
+            {
+                _logger.Log("Premapping pointers...", LogType.Info);
+                foreach (var repo in _localisedRepositories.Select(x => x.Value))
+                {
+                    repo.PremapPointers();
+                }
+                _logger.Log("Finished premapping pointers!", LogType.Info);
             }
         }
         public void AddDefinitionToCache(DefinitionsEnum definitionType, IDestinyDefinition defValue, DestinyLocales locale)

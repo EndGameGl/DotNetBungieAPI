@@ -133,5 +133,9 @@ namespace BungieNetCoreAPI.Clients.Settings
         {
             IsLoggingEnabled = true;
         }
+        public void PremapPointers()
+        {
+            PremapDefinitionPointers = true;
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace BungieNetCoreAPI.Clients
         public static BungiePlatfromClient Platform;
 
 
-        public ILocalisedManifestDefinitionRepositories Repository;
+        public ILocalisedDestinyDefinitionRepositories Repository;
         public LogListener LogListener;
 
         public BungieClient(Action<BungieClientSettings> configure)
