@@ -36,6 +36,9 @@ namespace NetBungieApi.Clients.Settings
         internal DefinitionSources PreferredLoadSource = DefinitionSources.SQLite;
         internal DefinitionsEnum[] ExcludedDefinitions = Array.Empty<DefinitionsEnum>();
 
+        internal int TokenCheckRefreshRate;
+        internal bool RenewTokens;
+
         /// <summary>
         /// Adds API key to use for this app.
         /// </summary>
@@ -143,6 +146,11 @@ namespace NetBungieApi.Clients.Settings
         {
             ClientID = clientId;
             ClientSecret = clientSecret;
+        }
+        public void EnableTokenRenewal(int refreshRate = 180000)
+        {
+            RenewTokens = true;
+            TokenCheckRefreshRate = refreshRate;
         }
     }
 }
