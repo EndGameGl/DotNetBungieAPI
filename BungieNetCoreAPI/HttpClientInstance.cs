@@ -37,5 +37,20 @@ namespace NetBungieApi
             //Logger.Log($"Getting data from {query}", LogType.Debug);
             return await _httpClient.GetAsync(query);
         }
+
+        public async Task<HttpResponseMessage> Send(HttpMethod method, Uri requestUri, Dictionary<string, string> headers)
+        {
+            var request = new HttpRequestMessage() { Method = method, RequestUri = requestUri };
+            foreach (var header in headers)
+            {
+                request.Headers.Add(header.Key, header.Value);
+            }
+            return await _httpClient.SendAsync(request);
+        }
+
+        public async Task<HttpResponseMessage> Send(HttpRequestMessage request)
+        {
+            return await _httpClient.SendAsync(request);
+        }
     }
 }

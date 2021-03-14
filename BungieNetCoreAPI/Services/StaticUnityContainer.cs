@@ -1,5 +1,6 @@
 ﻿using NetBungieApi.Logging;
 using NetBungieApi.Repositories;
+using NetBungieAPI.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,6 +20,7 @@ namespace NetBungieApi.Services
             Container.RegisterType<ILocalisedDestinyDefinitionRepositories, LocalisedDestinyDefinitionRepositories>(TypeLifetime.Singleton);
             Container.RegisterType<IManifestUpdateHandler, ManifestUpdateHandler>(TypeLifetime.Singleton);
             Container.RegisterType<IDefinitionAssemblyData, DefinitionAssemblyData>(TypeLifetime.Singleton);
+            Container.RegisterType<IAuthorizationStateHandler, AuthorizationStateHandler>(TypeLifetime.Singleton);
         }
         internal static T GetService<T>() => Container.Resolve<T>();
         internal static ILogger GetLogger() => Container.Resolve<ILogger>();
@@ -27,5 +29,6 @@ namespace NetBungieApi.Services
         internal static ILocalisedDestinyDefinitionRepositories GetDestinyDefinitionRepositories() => Container.Resolve<ILocalisedDestinyDefinitionRepositories>();
         internal static IManifestUpdateHandler GetManifestUpdateHandler() => Container.Resolve<IManifestUpdateHandler>();
         internal static IDefinitionAssemblyData GetAssemblyData() => Container.Resolve<IDefinitionAssemblyData>();
+        internal static IAuthorizationStateHandler GetAuthHandler() => Container.Resolve<IAuthorizationStateHandler>();
     }
 }

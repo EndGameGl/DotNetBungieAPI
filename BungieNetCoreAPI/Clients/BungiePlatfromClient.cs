@@ -11,11 +11,15 @@ using NetBungieApi.Logging;
 using NetBungieApi.Responses;
 using NetBungieApi.Services;
 using NetBungieAPI;
+using NetBungieAPI.Authrorization;
+using NetBungieAPI.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,21 +30,21 @@ namespace NetBungieApi.Clients
     public class BungiePlatfromClient
     {
         private readonly Uri _authorizationEndpoint = new Uri("https://www.bungie.net/en/oauth/authorize");
+        private readonly Uri _authorizationTokenEndpoint = new Uri("https://www.bungie.net/platform/app/oauth/token/");
         private readonly IHttpClientInstance _httpClient;
         private readonly ILogger _logger;
         private readonly IConfigurationService _config;
-        private readonly string _apiKey;
+        private readonly IAuthorizationStateHandler _authHandler;
 
-        private int? _oAuthClientID;
-        private string _oAuthClientSecret;
+        private readonly string _apiKey;
 
         private string _authorizationValue
         {
             get
             {
-                if (_oAuthClientID.HasValue && !string.IsNullOrEmpty(_oAuthClientSecret))
+                if (_config.Settings.ClientID.HasValue && !string.IsNullOrEmpty(_config.Settings.ClientSecret))
                 {
-                    return Convert.ToBase64String(Encoding.UTF8.GetBytes($"{_oAuthClientID}:{_oAuthClientSecret}"));
+                    return Convert.ToBase64String(Encoding.UTF8.GetBytes($"{_config.Settings.ClientID}:{_config.Settings.ClientSecret}"));
                 }
                 else
                     throw new Exception();
@@ -50,8 +54,9 @@ namespace NetBungieApi.Clients
         internal BungiePlatfromClient(string apiKey, IConfigurationService configuration)
         {
             _apiKey = apiKey;
-            _httpClient = StaticUnityContainer.GetService<IHttpClientInstance>();
-            _logger = StaticUnityContainer.GetService<ILogger>();
+            _httpClient = StaticUnityContainer.GetHTTPClient();
+            _logger = StaticUnityContainer.GetLogger();
+            _authHandler = StaticUnityContainer.GetAuthHandler();
             _httpClient.AddAcceptHeader("application/json");
             _httpClient.AddHeader("X-API-Key", apiKey);
             _config = configuration;
@@ -59,7 +64,32 @@ namespace NetBungieApi.Clients
 
         public string GetAuthorizationLink()
         {
-            return $"{_authorizationEndpoint}?client_id={_config.Settings.ClientID}&response_type=code&state={RandomInstance.GetRandomString(20)}";
+            var awaiter = _authHandler.CreateNewAuthAwaiter();
+            return $"{_authorizationEndpoint}?client_id={_config.Settings.ClientID}&response_type=code&state={awaiter.State}";
+        }
+        public void ReceiveCode(string state, string code)
+        {
+            _authHandler.InputCode(state, code);
+        }
+        public async Task<AuthorizationTokenData> GetAuthorizationToken(string code)
+        {
+            var requestMessage = new HttpRequestMessage()
+            {
+                Method = HttpMethod.Post,
+                RequestUri = _authorizationTokenEndpoint,
+                Content = new StringContent($"grant_type=authorization_code&code={code}")
+            };
+            requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Basic", _authorizationValue);
+            requestMessage.Content.Headers.ContentType.MediaType = "application/x-www-form-urlencoded";
+            requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var response = await _httpClient.Send(requestMessage);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<AuthorizationTokenData>(await response.Content.ReadAsStringAsync());
+            }
+
+            throw new Exception("Failed to fetch token.");
         }
 
         #region App methods

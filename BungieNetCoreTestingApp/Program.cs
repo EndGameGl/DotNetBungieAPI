@@ -111,8 +111,21 @@ namespace BungieNetCoreTestingApp
                 settings.PremapPointers();
 
                 settings.IncludeClientIdAndSecret(clientId: int.Parse(args[1]), clientSecret: args[2]);
+
             });
+
             var link = BungieClient.Platform.GetAuthorizationLink();
+            Console.WriteLine(link);
+            Console.Write("State: ");
+            var state = Console.ReadLine();
+            Console.WriteLine();
+            Console.Write("Code: ");
+            var code = Console.ReadLine();
+            Console.WriteLine();
+
+            BungieClient.Platform.ReceiveCode(state, code);
+            BungieClient.Platform.GetAuthorizationToken(code).GetAwaiter().GetResult();
+
             _bungieClient.LogListener.OnNewMessage += (mes) => Console.WriteLine(mes);
             MainAsync().GetAwaiter().GetResult();
         }
