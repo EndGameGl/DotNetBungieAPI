@@ -82,7 +82,9 @@ namespace BungieNetCoreTestingApp
                 DestinyComponentType.Transitory,
                 DestinyComponentType.Metrics
         };
+
         private static BungieClient _bungieClient;
+
         static void Main(string[] args)
         {
             _bungieClient = new BungieClient((settings) => 
