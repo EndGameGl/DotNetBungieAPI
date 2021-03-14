@@ -11,6 +11,8 @@ namespace NetBungieApi.Clients.Settings
     public class BungieClientSettings
     {
         internal string ApiKey;
+        internal int? ClientID = null;
+        internal string ClientSecret = null;
 
         internal int AppConcurrencyLevel = Environment.ProcessorCount * 2;
         internal bool CacheDefinitionsInMemory = false;
@@ -136,6 +138,11 @@ namespace NetBungieApi.Clients.Settings
         public void PremapPointers()
         {
             PremapDefinitionPointers = true;
+        }
+        public void IncludeClientIdAndSecret(int clientId, string clientSecret)
+        {
+            ClientID = clientId;
+            ClientSecret = clientSecret;
         }
     }
 }

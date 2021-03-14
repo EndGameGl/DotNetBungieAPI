@@ -37,6 +37,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Unity;
 using System.Text;
+using NetBungieAPI;
 
 namespace BungieNetCoreTestingApp
 {
@@ -108,8 +109,10 @@ namespace BungieNetCoreTestingApp
                 settings.EnableLogging();
 
                 settings.PremapPointers();
-            });
 
+                settings.IncludeClientIdAndSecret(clientId: int.Parse(args[1]), clientSecret: args[2]);
+            });
+            var link = BungieClient.Platform.GetAuthorizationLink();
             _bungieClient.LogListener.OnNewMessage += (mes) => Console.WriteLine(mes);
             MainAsync().GetAwaiter().GetResult();
         }

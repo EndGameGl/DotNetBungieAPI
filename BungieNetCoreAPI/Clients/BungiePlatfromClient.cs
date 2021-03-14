@@ -10,6 +10,7 @@ using NetBungieApi.Destiny.Responses;
 using NetBungieApi.Logging;
 using NetBungieApi.Responses;
 using NetBungieApi.Services;
+using NetBungieAPI;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -24,9 +25,10 @@ namespace NetBungieApi.Clients
 {
     public class BungiePlatfromClient
     {
+        private readonly Uri _authorizationEndpoint = new Uri("https://www.bungie.net/en/oauth/authorize");
         private readonly IHttpClientInstance _httpClient;
         private readonly ILogger _logger;
-
+        private readonly IConfigurationService _config;
         private readonly string _apiKey;
 
         private int? _oAuthClientID;
@@ -45,16 +47,20 @@ namespace NetBungieApi.Clients
             }
         }
 
-        internal BungiePlatfromClient(string apiKey)
+        internal BungiePlatfromClient(string apiKey, IConfigurationService configuration)
         {
             _apiKey = apiKey;
             _httpClient = StaticUnityContainer.GetService<IHttpClientInstance>();
             _logger = StaticUnityContainer.GetService<ILogger>();
             _httpClient.AddAcceptHeader("application/json");
-            _httpClient.AddHeader("X-API-Key", apiKey);          
+            _httpClient.AddHeader("X-API-Key", apiKey);
+            _config = configuration;
         }
 
-        
+        public string GetAuthorizationLink()
+        {
+            return $"{_authorizationEndpoint}?client_id={_config.Settings.ClientID}&response_type=code&state={RandomInstance.GetRandomString(20)}";
+        }
 
         #region App methods
         public async Task<BungieResponse<BungieApplication[]>> GetBungieApplications()

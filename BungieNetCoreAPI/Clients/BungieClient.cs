@@ -48,7 +48,7 @@ namespace NetBungieApi.Clients
             }
 
             CDN = new BungieCDNClient();
-            Platform = new BungiePlatfromClient(Configuration.Settings.ApiKey);
+            Platform = new BungiePlatfromClient(Configuration.Settings.ApiKey, Configuration);
 
             _versionControl = StaticUnityContainer.GetManifestUpdateHandler();
 
