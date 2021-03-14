@@ -86,12 +86,13 @@ namespace NetBungieApi.Clients
 
             if (response.IsSuccessStatusCode)
             {
-                return JsonConvert.DeserializeObject<AuthorizationTokenData>(await response.Content.ReadAsStringAsync());
+                var token = JsonConvert.DeserializeObject<AuthorizationTokenData>(await response.Content.ReadAsStringAsync());
+                _authHandler.AddAuthToken(token);
+                return token;
             }
 
             throw new Exception("Failed to fetch token.");
         }
-
         public async Task<AuthorizationTokenData> RenewAuthorizationToken(AuthorizationTokenData oldToken)
         {
             var requestMessage = new HttpRequestMessage()
@@ -100,9 +101,10 @@ namespace NetBungieApi.Clients
                 RequestUri = _authorizationTokenEndpoint,
                 Content = new StringContent($"grant_type=refresh_token&code={oldToken.RefreshToken}")
             };
-            requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Basic", _authorizationValue);
+            requestMessage.Headers.Authorization = new AuthenticationHeaderValue(oldToken.TokenType, oldToken.AccessToken);
             requestMessage.Content.Headers.ContentType.MediaType = "application/x-www-form-urlencoded";
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
             var response = await _httpClient.Send(requestMessage);
 
             if (response.IsSuccessStatusCode)

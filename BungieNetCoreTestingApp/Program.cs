@@ -112,6 +112,8 @@ namespace BungieNetCoreTestingApp
 
                 settings.IncludeClientIdAndSecret(clientId: int.Parse(args[1]), clientSecret: args[2]);
 
+                settings.EnableTokenRenewal(refreshRate: 30000);
+
             });
 
             var link = BungieClient.Platform.GetAuthorizationLink();
@@ -133,7 +135,7 @@ namespace BungieNetCoreTestingApp
         private static async Task MainAsync()
         {
 
-            await _bungieClient.Run();
+            //await _bungieClient.Run();
 
             //var aggregateActivityStats = await BungieClient.Platform.GetDestinyAggregateActivityStats(
             //    membershipType: BungieMembershipType.TigerSteam,

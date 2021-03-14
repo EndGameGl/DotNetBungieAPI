@@ -46,11 +46,16 @@ namespace NetBungieAPI.Services
                 awaiter.ReceiveCode(code);
             }
         }
+        public void AddAuthToken(AuthorizationTokenData token)
+        {
+            _logger.Log($"Added new token for membership: {token.MembershipId}", LogType.Info);
+            AuthorizationTokens.TryAdd(token.MembershipId, token);
+        }
         private void CheckTokenRenewal(object state)
         {
             foreach (var token in AuthorizationTokens.Select(x => x.Value))
             {
-                if ((DateTime.Now - token.ReceiveTime).Seconds <= 60)
+                if (true)//(DateTime.Now - token.ReceiveTime).Seconds <= 60)
                 {
                     Task.Run(async () => await HandleTokenExpiration(token));
                 }
@@ -60,6 +65,7 @@ namespace NetBungieAPI.Services
         {
             var newToken = await BungieClient.Platform.RenewAuthorizationToken(token);
             AuthorizationTokens[newToken.MembershipId] = newToken;
+            _logger.Log($"Renewed token for membership: {token.MembershipId}", LogType.Info);
         }
     }
 }

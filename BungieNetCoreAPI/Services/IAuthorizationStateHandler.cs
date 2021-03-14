@@ -11,5 +11,6 @@ namespace NetBungieAPI.Services
         ConcurrentDictionary<string, AuthorizationState> AuthorizationStates { get; }
         AuthorizationState CreateNewAuthAwaiter();
         void InputCode(string state, string code);
+        void AddAuthToken(AuthorizationTokenData token);
     }
 }
