@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.Stats;
+﻿using NetBungieAPI.Destiny.Definitions.Stats;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.StatGroups
+namespace NetBungieAPI.Destiny.Definitions.StatGroups
 {
     public class StatOverride : IDeepEquatable<StatOverride>
     {

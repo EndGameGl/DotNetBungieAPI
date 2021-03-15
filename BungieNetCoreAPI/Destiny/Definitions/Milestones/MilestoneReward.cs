@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Milestones
+namespace NetBungieAPI.Destiny.Definitions.Milestones
 {
     /// <summary>
     /// The definition of a category of rewards, that contains many individual rewards.

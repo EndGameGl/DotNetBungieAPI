@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions;
+﻿using NetBungieAPI.Destiny.Definitions;
 using System;
 using System.Collections.Generic;
 
-namespace NetBungieApi.Repositories
+namespace NetBungieAPI.Repositories
 {
     /// <summary>
     /// An inteface for accessing <see cref="DestinyDefinitionRepository{T}"/>

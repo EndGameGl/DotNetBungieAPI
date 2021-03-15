@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Destiny.Profile
+﻿namespace NetBungieAPI.Destiny.Profile
 {
     public enum ComponentPrivacy
     {

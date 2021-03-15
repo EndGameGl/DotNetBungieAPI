@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace NetBungieApi.Destiny.Profile.Components.Contracts
+namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyItemSetComponent
     {

@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.VendorGroups
+namespace NetBungieAPI.Destiny.Definitions.VendorGroups
 {
     [DestinyDefinition(DefinitionsEnum.DestinyVendorGroupDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyVendorGroupDefinition : IDestinyDefinition, IDeepEquatable<DestinyVendorGroupDefinition>

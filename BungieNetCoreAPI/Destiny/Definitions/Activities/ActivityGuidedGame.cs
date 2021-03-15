@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Activities
+namespace NetBungieAPI.Destiny.Definitions.Activities
 {
     /// <summary>
     /// Guided Game information for activity.

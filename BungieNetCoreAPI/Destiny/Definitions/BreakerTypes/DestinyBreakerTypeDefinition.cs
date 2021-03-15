@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.BreakerTypes
+namespace NetBungieAPI.Destiny.Definitions.BreakerTypes
 {
     [DestinyDefinition(DefinitionsEnum.DestinyBreakerTypeDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyBreakerTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyBreakerTypeDefinition>

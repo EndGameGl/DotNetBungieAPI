@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
+﻿using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.SocketTypes
+namespace NetBungieAPI.Destiny.Definitions.SocketTypes
 {
     public class SocketTypeCurrencyScalar : IDeepEquatable<SocketTypeCurrencyScalar>
     {

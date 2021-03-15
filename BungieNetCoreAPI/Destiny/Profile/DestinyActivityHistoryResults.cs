@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Profile.Components.Contracts;
+﻿using NetBungieAPI.Destiny.Profile.Components.Contracts;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Profile
+namespace NetBungieAPI.Destiny.Profile
 {
     public class DestinyActivityHistoryResults
     {

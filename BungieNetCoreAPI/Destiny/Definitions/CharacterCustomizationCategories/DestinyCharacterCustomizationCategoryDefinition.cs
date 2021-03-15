@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.CharacterCustomizationCategories
+namespace NetBungieAPI.Destiny.Definitions.CharacterCustomizationCategories
 {
     [DestinyDefinition(DefinitionsEnum.DestinyCharacterCustomizationCategoryDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyCharacterCustomizationCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinyCharacterCustomizationCategoryDefinition>

@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Destiny.Definitions.SocketTypes
+﻿namespace NetBungieAPI.Destiny.Definitions.SocketTypes
 {
     public enum SocketActionType
     {

@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Destiny.Definitions.Activities;
-using NetBungieApi.Destiny.Definitions.Destinations;
-using NetBungieApi.Destiny.Definitions.Objectives;
+﻿using NetBungieAPI.Destiny.Definitions.Activities;
+using NetBungieAPI.Destiny.Definitions.Destinations;
+using NetBungieAPI.Destiny.Definitions.Objectives;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Profile.Components.Contracts
+namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     /// <summary>
     /// Returns data about a character's status with a given Objective. Combine with DestinyObjectiveDefinition static data for display purposes.

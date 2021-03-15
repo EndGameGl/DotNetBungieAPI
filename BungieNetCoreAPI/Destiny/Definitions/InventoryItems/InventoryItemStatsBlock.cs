@@ -1,10 +1,10 @@
-﻿using NetBungieApi.Destiny.Definitions.StatGroups;
-using NetBungieApi.Destiny.Definitions.Stats;
+﻿using NetBungieAPI.Destiny.Definitions.StatGroups;
+using NetBungieAPI.Destiny.Definitions.Stats;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.InventoryItems
+namespace NetBungieAPI.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     /// Information about the item's calculated stats, with as much data as we can find for the stats without having an actual instance of the item.

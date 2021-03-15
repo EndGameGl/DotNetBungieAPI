@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions;
+﻿using NetBungieAPI.Destiny.Definitions;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Responses
+namespace NetBungieAPI.Responses
 {
     public class DestinyEntitySearchResultItem
     {

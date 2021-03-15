@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Checklists
+namespace NetBungieAPI.Destiny.Definitions.Checklists
 {
     /// <summary>
     /// By public demand, Checklists are loose sets of "things to do/things you have done" in Destiny that we were actually able to track. They include easter eggs you find in the world, unique chests you unlock, and other such data where the first time you do it is significant enough to be tracked, and you have the potential to "get them all".

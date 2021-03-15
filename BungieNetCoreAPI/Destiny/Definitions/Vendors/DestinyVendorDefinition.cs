@@ -1,10 +1,10 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.Factions;
-using NetBungieApi.Destiny.Definitions.InventoryItems;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.Factions;
+using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Vendors
+namespace NetBungieAPI.Destiny.Definitions.Vendors
 {
     [DestinyDefinition(DefinitionsEnum.DestinyVendorDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyVendorDefinition : IDestinyDefinition, IDeepEquatable<DestinyVendorDefinition>

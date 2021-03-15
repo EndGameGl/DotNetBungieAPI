@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Profile.Components.Contracts;
+﻿using NetBungieAPI.Destiny.Profile.Components.Contracts;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Profile
+namespace NetBungieAPI.Destiny.Profile
 {
     public class DestinyComponentItemResponse
     {

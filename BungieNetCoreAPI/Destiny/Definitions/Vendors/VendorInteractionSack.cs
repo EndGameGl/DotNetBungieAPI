@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Vendors
+namespace NetBungieAPI.Destiny.Definitions.Vendors
 {
     public class VendorInteractionSack : IDeepEquatable<VendorInteractionSack>
     {

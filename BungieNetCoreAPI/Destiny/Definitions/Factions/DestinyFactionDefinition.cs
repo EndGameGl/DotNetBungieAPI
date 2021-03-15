@@ -1,12 +1,12 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.InventoryItems;
-using NetBungieApi.Destiny.Definitions.Progressions;
-using NetBungieApi.Destiny.Definitions.Vendors;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.InventoryItems;
+using NetBungieAPI.Destiny.Definitions.Progressions;
+using NetBungieAPI.Destiny.Definitions.Vendors;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Factions
+namespace NetBungieAPI.Destiny.Definitions.Factions
 {
     /// <summary>
     /// These definitions represent Factions in the game. Factions have ended up unilaterally being related to Vendors that represent them, but that need not necessarily be the case.

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetBungieApi.Logging
+namespace NetBungieAPI.Logging
 {
     public interface ILogger
     {

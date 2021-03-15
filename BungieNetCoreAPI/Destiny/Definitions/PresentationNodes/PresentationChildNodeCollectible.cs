@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.Collectibles;
+﻿using NetBungieAPI.Destiny.Definitions.Collectibles;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.PresentationNodes
+namespace NetBungieAPI.Destiny.Definitions.PresentationNodes
 {
     public class PresentationChildNodeCollectible : IDeepEquatable<PresentationChildNodeCollectible>
     {

@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.EquipmentSlots;
+﻿using NetBungieAPI.Destiny.Definitions.EquipmentSlots;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.InventoryItems
+namespace NetBungieAPI.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     /// Items that can be equipped define this block. It contains information we need to understand how and when the item can be equipped.

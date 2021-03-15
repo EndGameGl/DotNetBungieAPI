@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny;
+﻿using NetBungieAPI.Destiny;
 using System.Threading.Tasks;
 
-namespace NetBungieApi.Services
+namespace NetBungieAPI.Services
 {
     /// <summary>
     /// Interface for handling versions of the manifest

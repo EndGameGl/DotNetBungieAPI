@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-namespace NetBungieApi.Destiny.Definitions.Races
+namespace NetBungieAPI.Destiny.Definitions.Races
 {
     public class RaceGenderedNames : IDeepEquatable<RaceGenderedNames>
     {

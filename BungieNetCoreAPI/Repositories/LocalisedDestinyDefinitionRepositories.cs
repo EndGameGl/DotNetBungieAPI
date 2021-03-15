@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Destiny;
-using NetBungieApi.Destiny.Definitions;
-using NetBungieApi.Destiny.Definitions.Activities;
-using NetBungieApi.Destiny.Definitions.InventoryItems;
-using NetBungieApi.Logging;
-using NetBungieApi.Services;
+﻿using NetBungieAPI.Destiny;
+using NetBungieAPI.Destiny.Definitions;
+using NetBungieAPI.Destiny.Definitions.Activities;
+using NetBungieAPI.Destiny.Definitions.InventoryItems;
+using NetBungieAPI.Logging;
+using NetBungieAPI.Services;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using Unity;
 
-namespace NetBungieApi.Repositories
+namespace NetBungieAPI.Repositories
 {
     public class LocalisedDestinyDefinitionRepositories : ILocalisedDestinyDefinitionRepositories
     {

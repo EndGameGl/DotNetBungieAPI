@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Destiny.Definitions.Objectives
+﻿namespace NetBungieAPI.Destiny.Definitions.Objectives
 {
     /// <summary>
     /// Some Objectives provide perks, generally as part of providing some kind of interesting modifier for a Challenge or Quest. This indicates when the Perk is granted.

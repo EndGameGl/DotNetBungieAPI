@@ -1,12 +1,12 @@
-﻿using NetBungieApi.Logging;
-using NetBungieApi.Repositories;
+﻿using NetBungieAPI.Logging;
+using NetBungieAPI.Repositories;
 using NetBungieAPI.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Unity;
 
-namespace NetBungieApi.Services
+namespace NetBungieAPI.Services
 {
     internal static class StaticUnityContainer
     {

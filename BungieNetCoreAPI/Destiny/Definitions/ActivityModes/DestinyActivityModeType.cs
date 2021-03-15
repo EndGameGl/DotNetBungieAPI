@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Destiny.Definitions.ActivityModes
+﻿namespace NetBungieAPI.Destiny.Definitions.ActivityModes
 {
     /// <summary>
     /// For historical reasons, this list will have both D1 and D2-relevant Activity Modes in it. 

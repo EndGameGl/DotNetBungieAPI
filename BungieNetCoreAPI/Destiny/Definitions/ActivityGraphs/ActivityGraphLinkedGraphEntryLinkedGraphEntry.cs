@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.ActivityGraphs
+namespace NetBungieAPI.Destiny.Definitions.ActivityGraphs
 {
     public class ActivityGraphLinkedGraphEntryLinkedGraphEntry : IDeepEquatable<ActivityGraphLinkedGraphEntryLinkedGraphEntry>
     {

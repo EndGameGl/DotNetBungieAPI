@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.Activities;
+﻿using NetBungieAPI.Destiny.Definitions.Activities;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Milestones
+namespace NetBungieAPI.Destiny.Definitions.Milestones
 {
     public class MilestoneActivities : IDeepEquatable<MilestoneActivities>
     {

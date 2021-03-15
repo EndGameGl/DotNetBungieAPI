@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.EntitlementOffers
+namespace NetBungieAPI.Destiny.Definitions.EntitlementOffers
 {
     [DestinyDefinition(DefinitionsEnum.DestinyEntitlementOfferDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyEntitlementOfferDefinition : IDestinyDefinition, IDeepEquatable<DestinyEntitlementOfferDefinition>

@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.Records;
+﻿using NetBungieAPI.Destiny.Definitions.Records;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.PresentationNodes
+namespace NetBungieAPI.Destiny.Definitions.PresentationNodes
 {
     public class PresentationChildNodeRecord : IDeepEquatable<PresentationChildNodeRecord>
     {

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.PresentationNodes
+namespace NetBungieAPI.Destiny.Definitions.PresentationNodes
 {
     public class PresentationNodeRequirement : IDeepEquatable<PresentationNodeRequirement>
     {

@@ -1,11 +1,11 @@
-﻿using NetBungieApi.Destiny.Definitions.Activities;
-using NetBungieApi.Destiny.Definitions.ActivityGraphs;
-using NetBungieApi.Destiny.Definitions.Destinations;
+﻿using NetBungieAPI.Destiny.Definitions.Activities;
+using NetBungieAPI.Destiny.Definitions.ActivityGraphs;
+using NetBungieAPI.Destiny.Definitions.Destinations;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Locations
+namespace NetBungieAPI.Destiny.Definitions.Locations
 {
     /// <summary>
     /// A specific "spot" referred to by a location. Only one of these can be active at a time for a given Location.

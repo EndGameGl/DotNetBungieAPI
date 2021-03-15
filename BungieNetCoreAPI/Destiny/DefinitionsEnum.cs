@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Destiny
+﻿namespace NetBungieAPI.Destiny
 {
     public enum DefinitionsEnum
     {

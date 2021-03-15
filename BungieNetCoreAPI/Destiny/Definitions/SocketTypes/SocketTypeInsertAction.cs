@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.SocketTypes
+namespace NetBungieAPI.Destiny.Definitions.SocketTypes
 {
     public class SocketTypeInsertAction : IDeepEquatable<SocketTypeInsertAction>
     {

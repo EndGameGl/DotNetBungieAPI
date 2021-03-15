@@ -1,10 +1,10 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.InventoryItems;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Milestones
+namespace NetBungieAPI.Destiny.Definitions.Milestones
 {
     /// <summary>
     /// Milestones are an in-game concept where they're attempting to tell you what you can do next in-game.

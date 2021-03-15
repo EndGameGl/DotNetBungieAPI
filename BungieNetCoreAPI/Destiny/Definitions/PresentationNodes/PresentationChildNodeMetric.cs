@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.Metrics;
+﻿using NetBungieAPI.Destiny.Definitions.Metrics;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.PresentationNodes
+namespace NetBungieAPI.Destiny.Definitions.PresentationNodes
 {
     public class PresentationChildNodeMetric : IDeepEquatable<PresentationChildNodeMetric>
     {

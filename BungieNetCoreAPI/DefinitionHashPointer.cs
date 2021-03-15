@@ -1,13 +1,14 @@
-﻿using NetBungieApi.Clients;
-using NetBungieApi.Destiny;
-using NetBungieApi.Destiny.Definitions;
-using NetBungieApi.Repositories;
-using NetBungieApi.Services;
+﻿using NetBungieAPI.Clients;
+using NetBungieAPI.Destiny;
+using NetBungieAPI.Destiny.Definitions;
+using NetBungieAPI.Repositories;
+using NetBungieAPI.Services;
+using NetBungieAPI.Clients;
 using System;
 using System.Threading.Tasks;
 using Unity;
 
-namespace NetBungieApi
+namespace NetBungieAPI
 {
     /// <summary>
     /// Class that points to a certain definition in database
@@ -118,7 +119,7 @@ namespace NetBungieApi
                     if (_alreadyTriedLoading == false || BungieClient.Configuration.Settings.ShouldRetryDownloading)
                     {
                         _alreadyTriedLoading = true;
-                        var task = Task.Run(async () => await BungieClient.Platform.GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value));
+                        var task = Task.Run(async () => await Destiny2Methods.GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value));
                         var response = task.Result;
                         if (response.ErrorCode == PlatformErrorCodes.Success && response.Response != null)
                         {

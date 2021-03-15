@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.TalentGrids
+namespace NetBungieAPI.Destiny.Definitions.TalentGrids
 {
     public class TalentGridNodeCategory : IDeepEquatable<TalentGridNodeCategory>
     {

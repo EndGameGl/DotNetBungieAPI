@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Genders
+namespace NetBungieAPI.Destiny.Definitions.Genders
 {
     [DestinyDefinition(DefinitionsEnum.DestinyGenderDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyGenderDefinition : IDestinyDefinition, IDeepEquatable<DestinyGenderDefinition>

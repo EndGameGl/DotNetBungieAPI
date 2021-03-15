@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Destiny.Definitions.Progressions
+﻿namespace NetBungieAPI.Destiny.Definitions.Progressions
 {
     public enum ProgressionScope
     {

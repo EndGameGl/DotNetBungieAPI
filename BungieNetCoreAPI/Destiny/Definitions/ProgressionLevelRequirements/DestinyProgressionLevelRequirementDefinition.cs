@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.Progressions;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.Progressions;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.ProgressionLevelRequirements
+namespace NetBungieAPI.Destiny.Definitions.ProgressionLevelRequirements
 {
     /// <summary>
     /// These are pre-constructed collections of data that can be used to determine the Level Requirement for an item given a Progression to be tested (such as the Character's level).

@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.EquipmentSlots;
+﻿using NetBungieAPI.Destiny.Definitions.EquipmentSlots;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Vendors
+namespace NetBungieAPI.Destiny.Definitions.Vendors
 {
     public class VendorInventoryFlyout : IDeepEquatable<VendorInventoryFlyout>
     {

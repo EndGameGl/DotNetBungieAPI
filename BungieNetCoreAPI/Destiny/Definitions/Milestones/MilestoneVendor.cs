@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.Vendors;
+﻿using NetBungieAPI.Destiny.Definitions.Vendors;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Milestones
+namespace NetBungieAPI.Destiny.Definitions.Milestones
 {
     public class MilestoneVendor : IDeepEquatable<MilestoneVendor>
     {

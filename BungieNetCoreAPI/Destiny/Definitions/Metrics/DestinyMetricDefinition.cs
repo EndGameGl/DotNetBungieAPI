@@ -1,11 +1,11 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.Objectives;
-using NetBungieApi.Destiny.Definitions.PresentationNodes;
-using NetBungieApi.Destiny.Definitions.Traits;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.Objectives;
+using NetBungieAPI.Destiny.Definitions.PresentationNodes;
+using NetBungieAPI.Destiny.Definitions.Traits;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Metrics
+namespace NetBungieAPI.Destiny.Definitions.Metrics
 {
     [DestinyDefinition(DefinitionsEnum.DestinyMetricDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyMetricDefinition : IDestinyDefinition, IDeepEquatable<DestinyMetricDefinition>

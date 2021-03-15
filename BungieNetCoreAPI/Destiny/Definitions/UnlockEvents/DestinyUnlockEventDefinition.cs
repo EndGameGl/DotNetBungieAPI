@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.UnlockValues;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.UnlockValues;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.UnlockEvents
+namespace NetBungieAPI.Destiny.Definitions.UnlockEvents
 {
     /// <summary>
     /// Nothing usable atm

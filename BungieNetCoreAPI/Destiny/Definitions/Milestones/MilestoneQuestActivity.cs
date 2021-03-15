@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Destiny.Definitions.Activities;
+﻿using NetBungieAPI.Destiny.Definitions.Activities;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Milestones
+namespace NetBungieAPI.Destiny.Definitions.Milestones
 {
     /// <summary>
     /// Milestones can have associated activities which provide additional information about the context, challenges, modifiers, state etc... related to this Milestone.

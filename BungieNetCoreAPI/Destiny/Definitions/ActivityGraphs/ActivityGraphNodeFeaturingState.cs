@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.ActivityGraphs
+namespace NetBungieAPI.Destiny.Definitions.ActivityGraphs
 {
     /// <summary>
     /// Nodes can have different visual states. This object represents a single visual state ("highlight type") that a node can be in, and the unlock expression condition to determine whether it should be set.

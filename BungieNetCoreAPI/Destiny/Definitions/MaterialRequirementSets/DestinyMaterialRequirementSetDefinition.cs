@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.MaterialRequirementSets
+namespace NetBungieAPI.Destiny.Definitions.MaterialRequirementSets
 {
     /// <summary>
     /// Represent a set of material requirements: Items that either need to be owned or need to be consumed in order to perform an action.

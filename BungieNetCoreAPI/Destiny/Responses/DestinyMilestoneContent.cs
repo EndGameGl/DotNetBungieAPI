@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 
-namespace NetBungieApi.Destiny.Responses
+namespace NetBungieAPI.Destiny.Responses
 {
     public class DestinyMilestoneContent
     {

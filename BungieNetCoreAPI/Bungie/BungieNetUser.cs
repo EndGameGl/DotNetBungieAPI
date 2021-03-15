@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace NetBungieApi.Bungie
+namespace NetBungieAPI.Bungie
 {
     public class BungieNetUser
     {

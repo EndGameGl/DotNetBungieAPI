@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.Stats;
+﻿using NetBungieAPI.Destiny.Definitions.Stats;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Profile.Components.Contracts
+namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyStat
     {

@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Destiny.Definitions.VendorGroups;
-using NetBungieApi.Destiny.Definitions.Vendors;
+﻿using NetBungieAPI.Destiny.Definitions.VendorGroups;
+using NetBungieAPI.Destiny.Definitions.Vendors;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Profile.Components.Contracts
+namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyVendorGroup
     {

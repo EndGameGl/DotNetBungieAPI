@@ -1,10 +1,10 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.BreakerTypes;
-using NetBungieApi.Destiny.Definitions.Classes;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.BreakerTypes;
+using NetBungieAPI.Destiny.Definitions.Classes;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.ItemCategories
+namespace NetBungieAPI.Destiny.Definitions.ItemCategories
 {
     [DestinyDefinition(DefinitionsEnum.DestinyItemCategoryDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyItemCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinyItemCategoryDefinition>

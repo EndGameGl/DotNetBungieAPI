@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.ArtDyeChannels;
+﻿using NetBungieAPI.Destiny.Definitions.ArtDyeChannels;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.InventoryItems
+namespace NetBungieAPI.Destiny.Definitions.InventoryItems
 {
     public class InventoryItemTranslationBlockDye : IDeepEquatable<InventoryItemTranslationBlockDye>
     {

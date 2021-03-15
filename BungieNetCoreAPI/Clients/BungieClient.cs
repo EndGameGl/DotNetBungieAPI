@@ -1,31 +1,29 @@
-﻿using NetBungieApi.Clients.Settings;
-using NetBungieApi.Destiny;
-using NetBungieApi.Logging;
-using NetBungieApi.Repositories;
-using NetBungieApi.Services;
+﻿using NetBungieAPI.Clients.Settings;
+using NetBungieAPI.Destiny;
+using NetBungieAPI.Logging;
+using NetBungieAPI.Repositories;
+using NetBungieAPI.Services;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Threading.Tasks;
 using Unity;
+using static NetBungieAPI.Logging.LogListener;
 
-namespace NetBungieApi.Clients
+namespace NetBungieAPI.Clients
 {
-    public class BungieClient
+    public class BungieClient : IBungieClient
     {
-        internal static Uri BungieCDNUri = new Uri("https://www.bungie.net");
-        internal static Uri BungiePlatformUri = new Uri("https://www.bungie.net/Platform/");
         internal static IConfigurationService Configuration;
 
         private readonly IManifestUpdateHandler _versionControl;
         private readonly ILogger _logger;
-        public static BungieCDNClient CDN;
         public static BungiePlatfromClient Platform;
+        private LogListener _logListener;
 
 
-        public ILocalisedDestinyDefinitionRepositories Repository;
-        public LogListener LogListener;
+        public ILocalisedDestinyDefinitionRepositories Repository { get; private set; }
 
         public BungieClient(Action<BungieClientSettings> configure)
         {
@@ -43,11 +41,9 @@ namespace NetBungieApi.Clients
 
             if (Configuration.Settings.IsLoggingEnabled)
             {
-                LogListener = new LogListener();
-                _logger.Register(LogListener);
+                _logListener = new LogListener();
+                _logger.Register(_logListener);
             }
-
-            CDN = new BungieCDNClient();
             Platform = new BungiePlatfromClient(Configuration.Settings.ApiKey, Configuration);
 
             _versionControl = StaticUnityContainer.GetManifestUpdateHandler();
@@ -74,17 +70,10 @@ namespace NetBungieApi.Clients
                 }
             }
         }
-        public async Task<string> GetJsonFromCDNAsync(string url)
+        public void AddListener(NewMessageEvent eventHandler)
         {
-            return await CDN.DownloadJSONDataAsync(url);
-        }
-        public async Task<Image> GetImageFromCDNAsync(string url)
-        {
-            return await CDN.DownloadImageAsync(url);
-        }
-        public async Task SaveImageFromCDNLocallyAsync(string url, string folderPath, string filename, ImageFormat format)
-        {
-            await CDN.DownloadImageAndSaveAsync(url, folderPath, filename, format);
+            if (_logListener != null)
+                _logListener.OnNewMessage += eventHandler; ;
         }
     }
 }

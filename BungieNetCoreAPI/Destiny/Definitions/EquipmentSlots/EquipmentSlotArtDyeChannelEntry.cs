@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.EquipmentSlots
+namespace NetBungieAPI.Destiny.Definitions.EquipmentSlots
 {
     public class EquipmentSlotArtDyeChannelEntry : IDeepEquatable<EquipmentSlotArtDyeChannelEntry>
     {

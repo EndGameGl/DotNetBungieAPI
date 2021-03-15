@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Destiny.Definitions.Genders
+﻿namespace NetBungieAPI.Destiny.Definitions.Genders
 {
     public enum DestinyGenderTypes
     {

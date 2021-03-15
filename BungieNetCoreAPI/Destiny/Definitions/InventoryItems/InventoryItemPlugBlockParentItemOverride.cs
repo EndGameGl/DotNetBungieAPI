@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.InventoryItems
+namespace NetBungieAPI.Destiny.Definitions.InventoryItems
 {
     public class InventoryItemPlugBlockParentItemOverride : IDeepEquatable<InventoryItemPlugBlockParentItemOverride>
     {

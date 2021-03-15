@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.Artifacts;
+﻿using NetBungieAPI.Destiny.Definitions.Artifacts;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Profile.Components.Contracts
+namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyArtifactCharacterScoped
     {

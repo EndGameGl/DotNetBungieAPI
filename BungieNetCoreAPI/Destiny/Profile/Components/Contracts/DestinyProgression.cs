@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.Progressions;
+﻿using NetBungieAPI.Destiny.Definitions.Progressions;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Profile.Components.Contracts
+namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyProgression
     {

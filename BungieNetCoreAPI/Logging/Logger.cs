@@ -1,11 +1,11 @@
-﻿using NetBungieApi.Clients;
-using NetBungieApi.Services;
+﻿using NetBungieAPI.Clients;
+using NetBungieAPI.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Unity;
 
-namespace NetBungieApi.Logging
+namespace NetBungieAPI.Logging
 {
     internal class Logger : ILogger
     {

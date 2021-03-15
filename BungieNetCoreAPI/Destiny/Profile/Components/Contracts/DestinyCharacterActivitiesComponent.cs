@@ -1,10 +1,10 @@
-﻿using NetBungieApi.Destiny.Definitions.Activities;
-using NetBungieApi.Destiny.Definitions.ActivityModes;
+﻿using NetBungieAPI.Destiny.Definitions.Activities;
+using NetBungieAPI.Destiny.Definitions.ActivityModes;
 using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Profile.Components.Contracts
+namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyCharacterActivitiesComponent
     {

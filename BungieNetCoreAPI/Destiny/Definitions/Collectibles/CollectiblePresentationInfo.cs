@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.PresentationNodes;
+﻿using NetBungieAPI.Destiny.Definitions.PresentationNodes;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Collectibles
+namespace NetBungieAPI.Destiny.Definitions.Collectibles
 {
     public class CollectiblePresentationInfo : IDeepEquatable<CollectiblePresentationInfo>
     {

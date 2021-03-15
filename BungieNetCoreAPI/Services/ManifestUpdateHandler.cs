@@ -1,13 +1,14 @@
-﻿using NetBungieApi.Clients;
-using NetBungieApi.Destiny;
-using NetBungieApi.Logging;
+﻿using NetBungieAPI.Clients;
+using NetBungieAPI.Destiny;
+using NetBungieAPI.Logging;
+using NetBungieAPI.Clients;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NetBungieApi.Services
+namespace NetBungieAPI.Services
 {
     public class ManifestUpdateHandler : IManifestUpdateHandler
     {
@@ -31,7 +32,7 @@ namespace NetBungieApi.Services
         {
             _logger.Log("Checking manifest version...", LogType.Info);
             _logger.Log("Downloading latest manifest...", LogType.Info);
-            var latestManifest = await BungieClient.Platform.GetDestinyManifest();
+            var latestManifest = await Destiny2Methods.GetDestinyManifest();
             var latestFoundEqual = _manifests.Keys.FirstOrDefault(x => x.Version.Equals(latestManifest.Response.Version));
             if (latestFoundEqual != null)
             {

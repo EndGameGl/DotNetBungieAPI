@@ -1,10 +1,10 @@
-﻿using NetBungieApi.Bungie.Applications;
-using NetBungieApi.Destiny.Definitions.Seasons;
+﻿using NetBungieAPI.Bungie.Applications;
+using NetBungieAPI.Destiny.Definitions.Seasons;
 using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Profile.Components.Contracts
+namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class ProfileDataComponent
     {

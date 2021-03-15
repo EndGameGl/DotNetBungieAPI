@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.ActivityGraphs;
+﻿using NetBungieAPI.Destiny.Definitions.ActivityGraphs;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Destinations
+namespace NetBungieAPI.Destiny.Definitions.Destinations
 {
     /// <summary>
     /// Destinations and Activities may have default Activity Graphs that should be shown when you bring up the Director and are playing in either.

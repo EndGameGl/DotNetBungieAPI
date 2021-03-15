@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.ReportReasonCategories
+namespace NetBungieAPI.Destiny.Definitions.ReportReasonCategories
 {
     [DestinyDefinition(DefinitionsEnum.DestinyReportReasonCategoryDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyReportReasonCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinyReportReasonCategoryDefinition>

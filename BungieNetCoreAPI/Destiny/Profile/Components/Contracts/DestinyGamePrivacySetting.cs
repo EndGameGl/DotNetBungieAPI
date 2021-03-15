@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Destiny.Profile.Components.Contracts
+﻿namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public enum DestinyGamePrivacySetting
     {

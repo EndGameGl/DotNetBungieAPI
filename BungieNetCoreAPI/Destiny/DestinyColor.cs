@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny
+namespace NetBungieAPI.Destiny
 {
     /// <summary>
     /// Represents a color whose RGBA values are all represented as values between 0 and 255.

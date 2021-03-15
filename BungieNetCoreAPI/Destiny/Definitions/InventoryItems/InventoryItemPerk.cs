@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.SandboxPerks;
+﻿using NetBungieAPI.Destiny.Definitions.SandboxPerks;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.InventoryItems
+namespace NetBungieAPI.Destiny.Definitions.InventoryItems
 {
     public class InventoryItemPerk : IDeepEquatable<InventoryItemPerk>
     {

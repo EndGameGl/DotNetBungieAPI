@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny;
+﻿using NetBungieAPI.Destiny;
 using System;
 
-namespace NetBungieApi.Attributes
+namespace NetBungieAPI.Attributes
 {
     public class DestinyDefinitionAttribute : Attribute
     {

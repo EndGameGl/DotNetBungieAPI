@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.Unlocks;
+﻿using NetBungieAPI.Destiny.Definitions.Unlocks;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Profile.Components.Contracts
+namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyUnlockStatus
     {

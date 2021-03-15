@@ -1,6 +1,6 @@
-﻿using NetBungieApi.Clients;
-using NetBungieApi.Logging;
-using NetBungieApi.Services;
+﻿using NetBungieAPI.Clients;
+using NetBungieAPI.Logging;
+using NetBungieAPI.Services;
 using NetBungieAPI.Authrorization;
 using System;
 using System.Collections.Concurrent;

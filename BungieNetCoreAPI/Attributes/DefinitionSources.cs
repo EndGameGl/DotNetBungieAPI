@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NetBungieApi.Attributes
+namespace NetBungieAPI.Attributes
 {
     [Flags]
     public enum DefinitionSources : byte

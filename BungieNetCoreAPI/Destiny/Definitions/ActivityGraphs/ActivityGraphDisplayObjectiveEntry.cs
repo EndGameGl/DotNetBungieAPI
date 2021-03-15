@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.Objectives;
+﻿using NetBungieAPI.Destiny.Definitions.Objectives;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.ActivityGraphs
+namespace NetBungieAPI.Destiny.Definitions.ActivityGraphs
 {
     /// <summary>
     /// When a Graph needs to show active Objectives, this defines those objectives as well as an identifier.

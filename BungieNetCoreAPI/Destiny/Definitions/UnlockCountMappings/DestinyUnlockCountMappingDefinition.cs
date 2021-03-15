@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.Unlocks;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.Unlocks;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.UnlockCountMappings
+namespace NetBungieAPI.Destiny.Definitions.UnlockCountMappings
 {
     /// <summary>
     /// Empty definition

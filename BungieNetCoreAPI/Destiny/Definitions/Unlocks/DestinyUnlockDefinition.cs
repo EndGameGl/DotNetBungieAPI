@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace NetBungieApi.Destiny.Definitions.Unlocks
+namespace NetBungieAPI.Destiny.Definitions.Unlocks
 {
     [DestinyDefinition(DefinitionsEnum.DestinyUnlockDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyUnlockDefinition : IDestinyDefinition, IDeepEquatable<DestinyUnlockDefinition>

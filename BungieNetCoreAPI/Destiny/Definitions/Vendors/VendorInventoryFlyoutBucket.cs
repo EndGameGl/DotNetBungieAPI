@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.InventoryBuckets;
+﻿using NetBungieAPI.Destiny.Definitions.InventoryBuckets;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Vendors
+namespace NetBungieAPI.Destiny.Definitions.Vendors
 {
     public class VendorInventoryFlyoutBucket : IDeepEquatable<VendorInventoryFlyoutBucket>
     {

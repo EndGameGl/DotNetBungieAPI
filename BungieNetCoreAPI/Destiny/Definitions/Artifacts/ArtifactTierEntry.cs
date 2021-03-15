@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Artifacts
+namespace NetBungieAPI.Destiny.Definitions.Artifacts
 {
     public class ArtifactTierEntry : IDeepEquatable<ArtifactTierEntry>
     {

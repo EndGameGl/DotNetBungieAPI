@@ -1,10 +1,10 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.Vendors;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.Vendors;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace NetBungieApi.Destiny.Definitions.Locations
+namespace NetBungieAPI.Destiny.Definitions.Locations
 {
     /// <summary>
     /// A "Location" is a sort of shortcut for referring to a specific combination of Activity, Destination, Place, and even Bubble or NavPoint within a space.

@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
-using NetBungieApi.Destiny.Definitions.Locations;
-using NetBungieApi.Destiny.Definitions.Objectives;
+﻿using NetBungieAPI.Destiny.Definitions.InventoryItems;
+using NetBungieAPI.Destiny.Definitions.Locations;
+using NetBungieAPI.Destiny.Definitions.Objectives;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Activities
+namespace NetBungieAPI.Destiny.Definitions.Activities
 {
     public class ActivityLocationMappingDefinition : IDeepEquatable<ActivityLocationMappingDefinition>
     {

@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
+﻿using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Progressions
+namespace NetBungieAPI.Destiny.Definitions.Progressions
 {
     public class ProgressionStepReward : IDeepEquatable<ProgressionStepReward>
     {

@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.ActivityModes;
+﻿using NetBungieAPI.Destiny.Definitions.ActivityModes;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Activities
+namespace NetBungieAPI.Destiny.Definitions.Activities
 {
     /// <summary>
     /// If the activity is a playlist, this is the definition for a specific entry in the playlist: a single possible combination of Activity and Activity Mode that can be chosen.

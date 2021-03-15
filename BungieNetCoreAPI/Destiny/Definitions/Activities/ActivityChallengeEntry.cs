@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.Objectives;
+﻿using NetBungieAPI.Destiny.Definitions.Objectives;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Activities
+namespace NetBungieAPI.Destiny.Definitions.Activities
 {
     /// <summary>
     /// Represents a reference to a Challenge, which for now is just an Objective.

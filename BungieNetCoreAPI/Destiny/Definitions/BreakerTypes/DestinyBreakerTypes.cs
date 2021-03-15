@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Destiny.Definitions.BreakerTypes
+﻿namespace NetBungieAPI.Destiny.Definitions.BreakerTypes
 {
     public enum DestinyBreakerTypes
     {

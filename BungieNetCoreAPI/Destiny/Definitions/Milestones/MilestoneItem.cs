@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
-using NetBungieApi.Destiny.Definitions.Vendors;
+﻿using NetBungieAPI.Destiny.Definitions.InventoryItems;
+using NetBungieAPI.Destiny.Definitions.Vendors;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Milestones
+namespace NetBungieAPI.Destiny.Definitions.Milestones
 {
     /// <summary>
     /// A subclass of DestinyItemQuantity, that provides not just the item and its quantity but also information that BNet can - at some point - use internally to provide more robust runtime information about the item's qualities.

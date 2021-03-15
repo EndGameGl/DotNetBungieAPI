@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi
+﻿namespace NetBungieAPI
 {
     public enum PlatformErrorCodes
     {

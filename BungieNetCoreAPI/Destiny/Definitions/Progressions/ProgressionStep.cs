@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Progressions
+namespace NetBungieAPI.Destiny.Definitions.Progressions
 {
     /// <summary>
     /// This defines a single Step in a progression

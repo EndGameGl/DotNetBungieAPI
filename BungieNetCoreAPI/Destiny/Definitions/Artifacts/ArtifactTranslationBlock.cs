@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Artifacts
+namespace NetBungieAPI.Destiny.Definitions.Artifacts
 {
     /// <summary>
     /// This Block defines the rendering data associated with the item, if any.

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions
+namespace NetBungieAPI.Destiny.Definitions
 {
     public class DestinyPosition : IDeepEquatable<DestinyPosition>
     {

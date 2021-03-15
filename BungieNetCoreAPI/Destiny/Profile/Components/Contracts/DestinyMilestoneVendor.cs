@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
-using NetBungieApi.Destiny.Definitions.Vendors;
+﻿using NetBungieAPI.Destiny.Definitions.InventoryItems;
+using NetBungieAPI.Destiny.Definitions.Vendors;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Profile.Components.Contracts
+namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyMilestoneVendor
     {

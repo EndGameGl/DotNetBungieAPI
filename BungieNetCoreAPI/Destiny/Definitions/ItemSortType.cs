@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Destiny.Definitions
+﻿namespace NetBungieAPI.Destiny.Definitions
 {
     public enum ItemSortType
     {

@@ -1,10 +1,10 @@
-﻿using NetBungieApi.Destiny.Definitions.Collectibles;
-using NetBungieApi.Destiny.Definitions.PresentationNodes;
+﻿using NetBungieAPI.Destiny.Definitions.Collectibles;
+using NetBungieAPI.Destiny.Definitions.PresentationNodes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Profile.Components.Contracts
+namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyProfileCollectiblesComponent
     {

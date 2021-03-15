@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Destiny.Definitions.Milestones;
+﻿using NetBungieAPI.Destiny.Definitions.Milestones;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace NetBungieApi.Destiny.Responses
+namespace NetBungieAPI.Destiny.Responses
 {
     public class GetPublicMilestonesResponse
     {

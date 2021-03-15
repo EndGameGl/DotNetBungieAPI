@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Attributes
+﻿namespace NetBungieAPI.Attributes
 {
     public enum DefinitionKeyType
     {

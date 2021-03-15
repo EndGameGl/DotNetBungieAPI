@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
+﻿using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Vendors
+namespace NetBungieAPI.Destiny.Definitions.Vendors
 {
     public class VendorCategoryOverlay : IDeepEquatable<VendorCategoryOverlay>
     {

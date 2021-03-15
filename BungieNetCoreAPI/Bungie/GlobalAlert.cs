@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NetBungieApi.Bungie
+namespace NetBungieAPI.Bungie
 {
     public class GlobalAlert
     {

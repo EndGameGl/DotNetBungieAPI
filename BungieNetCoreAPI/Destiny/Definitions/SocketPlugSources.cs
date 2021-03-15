@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NetBungieApi.Destiny.Definitions
+namespace NetBungieAPI.Destiny.Definitions
 {
     /// <summary>
     /// Indicates how a socket is populated, and where you should look for valid plug data.

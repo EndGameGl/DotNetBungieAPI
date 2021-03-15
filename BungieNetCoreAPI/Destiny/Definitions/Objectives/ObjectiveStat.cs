@@ -1,6 +1,6 @@
-﻿using NetBungieApi.Destiny.Definitions.Stats;
+﻿using NetBungieAPI.Destiny.Definitions.Stats;
 
-namespace NetBungieApi.Destiny.Definitions.Objectives
+namespace NetBungieAPI.Destiny.Definitions.Objectives
 {
     /// <summary>
     /// Represents a "raw" investment stat, before calculated stats are calculated and before any DestinyStatGroupDefinition is applied to transform the stat into something closer to what you see in-game.

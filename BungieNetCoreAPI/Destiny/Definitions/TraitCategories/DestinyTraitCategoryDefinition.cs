@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.Traits;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.Traits;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.TraitCategories
+namespace NetBungieAPI.Destiny.Definitions.TraitCategories
 {
     [DestinyDefinition(DefinitionsEnum.DestinyTraitCategoryDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyTraitCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinyTraitCategoryDefinition>

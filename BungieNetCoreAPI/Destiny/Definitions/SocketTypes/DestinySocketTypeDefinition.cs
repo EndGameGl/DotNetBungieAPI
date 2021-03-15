@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.SocketCategories;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.SocketCategories;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.SocketTypes
+namespace NetBungieAPI.Destiny.Definitions.SocketTypes
 {
     [DestinyDefinition(DefinitionsEnum.DestinySocketTypeDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinySocketTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinySocketTypeDefinition>

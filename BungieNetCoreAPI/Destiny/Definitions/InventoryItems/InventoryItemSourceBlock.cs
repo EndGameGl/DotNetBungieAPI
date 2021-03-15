@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Bungie;
-using NetBungieApi.Destiny.Definitions.RewardSources;
+﻿using NetBungieAPI.Bungie;
+using NetBungieAPI.Destiny.Definitions.RewardSources;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.InventoryItems
+namespace NetBungieAPI.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     /// Data about an item's "sources": ways that the item can be obtained.

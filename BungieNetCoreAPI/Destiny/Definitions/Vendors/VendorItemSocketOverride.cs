@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
-using NetBungieApi.Destiny.Definitions.SocketTypes;
+﻿using NetBungieAPI.Destiny.Definitions.InventoryItems;
+using NetBungieAPI.Destiny.Definitions.SocketTypes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Vendors
+namespace NetBungieAPI.Destiny.Definitions.Vendors
 {
     public class VendorItemSocketOverride : IDeepEquatable<VendorItemSocketOverride>
     {

@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.Stats;
+﻿using NetBungieAPI.Destiny.Definitions.Stats;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.StatGroups
+namespace NetBungieAPI.Destiny.Definitions.StatGroups
 {
     public class StatGroupScaledStat : IDeepEquatable<StatGroupScaledStat>
     {

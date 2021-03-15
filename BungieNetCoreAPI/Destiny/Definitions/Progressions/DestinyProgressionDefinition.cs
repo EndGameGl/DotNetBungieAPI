@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.Factions;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.Factions;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Progressions
+namespace NetBungieAPI.Destiny.Definitions.Progressions
 {
     /// <summary>
     /// A "Progression" in Destiny is best explained by an example.

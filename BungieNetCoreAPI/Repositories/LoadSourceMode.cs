@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Repositories
+﻿namespace NetBungieAPI.Repositories
 {
     /// <summary>
     /// Loading mode for definition files

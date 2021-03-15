@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.Vendors;
+﻿using NetBungieAPI.Destiny.Definitions.Vendors;
 using Newtonsoft.Json;
 using System;
 
-namespace NetBungieApi.Destiny.Profile.Components.Contracts
+namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyPublicVendorComponent
     {

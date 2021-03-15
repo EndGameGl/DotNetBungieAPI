@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.SandboxPatterns
+namespace NetBungieAPI.Destiny.Definitions.SandboxPatterns
 {
     [DestinyDefinition(DefinitionsEnum.DestinySandboxPatternDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinySandboxPatternDefinition : IDestinyDefinition, IDeepEquatable<DestinySandboxPatternDefinition>

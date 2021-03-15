@@ -1,11 +1,11 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.Activities;
-using NetBungieApi.Destiny.Definitions.Places;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.Activities;
+using NetBungieAPI.Destiny.Definitions.Places;
 using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Destinations
+namespace NetBungieAPI.Destiny.Definitions.Destinations
 {
     /// <summary>
     /// On to one of the more confusing subjects of the API. What is a Destination, and what is the relationship between it, Activities, Locations, and Places?

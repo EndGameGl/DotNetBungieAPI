@@ -1,5 +1,5 @@
-﻿using NetBungieApi.Clients;
-using NetBungieApi.Clients.Settings;
+﻿using NetBungieAPI.Clients;
+using NetBungieAPI.Clients.Settings;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace NetBungieApi.Services
+namespace NetBungieAPI.Services
 {
     public class ConfigurationService : IConfigurationService
     {

@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.MedalTiers
+namespace NetBungieAPI.Destiny.Definitions.MedalTiers
 {
     [DestinyDefinition(DefinitionsEnum.DestinyMedalTierDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyMedalTierDefinition : IDestinyDefinition, IDeepEquatable<DestinyMedalTierDefinition>

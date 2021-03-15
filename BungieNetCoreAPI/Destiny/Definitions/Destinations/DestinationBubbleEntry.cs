@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Destinations
+namespace NetBungieAPI.Destiny.Definitions.Destinations
 {
     /// <summary>
     /// Basic identifying data about the bubble.

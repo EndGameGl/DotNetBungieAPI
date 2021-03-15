@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace NetBungieApi.Destiny.Definitions.Stats
+namespace NetBungieAPI.Destiny.Definitions.Stats
 {
     [DestinyDefinition(DefinitionsEnum.DestinyStatDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyStatDefinition : IDestinyDefinition, IDeepEquatable<DestinyStatDefinition>

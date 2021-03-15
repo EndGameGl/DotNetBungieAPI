@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Seasons
+namespace NetBungieAPI.Destiny.Definitions.Seasons
 {
     public class SeasonPreview : IDeepEquatable<SeasonPreview>
     {

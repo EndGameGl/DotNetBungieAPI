@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NetBungieApi.Destiny.Definitions.SandboxPerks
+namespace NetBungieAPI.Destiny.Definitions.SandboxPerks
 {
     [Flags]
     public enum TalentNodeStepImpactEffects

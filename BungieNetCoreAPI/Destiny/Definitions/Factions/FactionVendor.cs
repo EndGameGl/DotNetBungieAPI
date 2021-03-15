@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.Destinations;
-using NetBungieApi.Destiny.Definitions.Vendors;
+﻿using NetBungieAPI.Destiny.Definitions.Destinations;
+using NetBungieAPI.Destiny.Definitions.Vendors;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Factions
+namespace NetBungieAPI.Destiny.Definitions.Factions
 {
     /// <summary>
     /// These definitions represent faction vendors at different points in the game.

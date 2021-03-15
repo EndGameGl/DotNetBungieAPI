@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.SackRewardItemLists
+namespace NetBungieAPI.Destiny.Definitions.SackRewardItemLists
 {
     /// <summary>
     /// Empty definition

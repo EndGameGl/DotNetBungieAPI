@@ -1,10 +1,10 @@
-﻿using NetBungieApi.Destiny;
-using NetBungieApi.Repositories;
+﻿using NetBungieAPI.Destiny;
+using NetBungieAPI.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetBungieApi.Services
+namespace NetBungieAPI.Services
 {
     public interface IDefinitionAssemblyData
     {

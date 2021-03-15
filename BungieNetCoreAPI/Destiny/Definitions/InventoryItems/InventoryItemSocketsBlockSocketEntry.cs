@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Destiny.Definitions.PlugSets;
-using NetBungieApi.Destiny.Definitions.SocketTypes;
+﻿using NetBungieAPI.Destiny.Definitions.PlugSets;
+using NetBungieAPI.Destiny.Definitions.SocketTypes;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.InventoryItems
+namespace NetBungieAPI.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     /// The definition information for a specific socket on an item. This will determine how the socket behaves in-game.

@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.Objectives;
+﻿using NetBungieAPI.Destiny.Definitions.Objectives;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Records
+namespace NetBungieAPI.Destiny.Definitions.Records
 {
     public class RecordIntervalInfoObjective : IDeepEquatable<RecordIntervalInfoObjective>
     {

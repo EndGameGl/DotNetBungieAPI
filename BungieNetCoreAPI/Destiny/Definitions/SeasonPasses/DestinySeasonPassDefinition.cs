@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.Progressions;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.Progressions;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.SeasonPasses
+namespace NetBungieAPI.Destiny.Definitions.SeasonPasses
 {
     [DestinyDefinition(DefinitionsEnum.DestinySeasonPassDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinySeasonPassDefinition : IDestinyDefinition, IDeepEquatable<DestinySeasonPassDefinition>

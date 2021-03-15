@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetBungieApi.Destiny
+namespace NetBungieAPI.Destiny
 {
     public enum DestinyComponentType
     {

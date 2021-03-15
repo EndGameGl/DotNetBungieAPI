@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Destiny.Profile.Components
+﻿namespace NetBungieAPI.Destiny.Profile.Components
 {
     public interface IProfileComponent
     {

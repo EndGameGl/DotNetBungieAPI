@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Artifacts
+namespace NetBungieAPI.Destiny.Definitions.Artifacts
 {
     public class ArtifactTranslationBlockArrangementEntry : IDeepEquatable<ArtifactTranslationBlockArrangementEntry>
     {

@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.UnlockExpressionMappings
+namespace NetBungieAPI.Destiny.Definitions.UnlockExpressionMappings
 {
     /// <summary>
     /// Empty definition at the moment

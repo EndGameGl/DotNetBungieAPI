@@ -1,43 +1,37 @@
-﻿using NetBungieApi;
-using NetBungieApi.Attributes;
-using NetBungieApi.Bungie;
-using NetBungieApi.Clients;
-using NetBungieApi.Destiny;
-using NetBungieApi.Destiny.Definitions;
-using NetBungieApi.Destiny.Definitions.Achievements;
-using NetBungieApi.Destiny.Definitions.Activities;
-using NetBungieApi.Destiny.Definitions.ActivityGraphs;
-using NetBungieApi.Destiny.Definitions.ActivityModes;
-using NetBungieApi.Destiny.Definitions.Artifacts;
-using NetBungieApi.Destiny.Definitions.BreakerTypes;
-using NetBungieApi.Destiny.Definitions.Checklists;
-using NetBungieApi.Destiny.Definitions.Classes;
-using NetBungieApi.Destiny.Definitions.Collectibles;
-using NetBungieApi.Destiny.Definitions.DamageTypes;
-using NetBungieApi.Destiny.Definitions.Destinations;
-using NetBungieApi.Destiny.Definitions.EnemyRaces;
-using NetBungieApi.Destiny.Definitions.EnergyTypes;
-using NetBungieApi.Destiny.Definitions.EquipmentSlots;
-using NetBungieApi.Destiny.Definitions.Factions;
-using NetBungieApi.Destiny.Definitions.Genders;
-using NetBungieApi.Destiny.Definitions.InventoryBuckets;
-using NetBungieApi.Destiny.Definitions.InventoryItems;
-using NetBungieApi.Destiny.Definitions.ItemCategories;
-using NetBungieApi.Destiny.Responses;
-using NetBungieApi.Services;
+﻿using NetBungieAPI;
+using NetBungieAPI.Attributes;
+using NetBungieAPI.Bungie;
+using NetBungieAPI.Clients;
+using NetBungieAPI.Destiny;
+using NetBungieAPI.Destiny.Definitions;
+using NetBungieAPI.Destiny.Definitions.Achievements;
+using NetBungieAPI.Destiny.Definitions.Activities;
+using NetBungieAPI.Destiny.Definitions.ActivityGraphs;
+using NetBungieAPI.Destiny.Definitions.ActivityModes;
+using NetBungieAPI.Destiny.Definitions.Artifacts;
+using NetBungieAPI.Destiny.Definitions.BreakerTypes;
+using NetBungieAPI.Destiny.Definitions.Checklists;
+using NetBungieAPI.Destiny.Definitions.Classes;
+using NetBungieAPI.Destiny.Definitions.Collectibles;
+using NetBungieAPI.Destiny.Definitions.DamageTypes;
+using NetBungieAPI.Destiny.Definitions.Destinations;
+using NetBungieAPI.Destiny.Definitions.EnemyRaces;
+using NetBungieAPI.Destiny.Definitions.EnergyTypes;
+using NetBungieAPI.Destiny.Definitions.EquipmentSlots;
+using NetBungieAPI.Destiny.Definitions.Factions;
+using NetBungieAPI.Destiny.Definitions.Genders;
+using NetBungieAPI.Destiny.Definitions.InventoryBuckets;
+using NetBungieAPI.Destiny.Definitions.InventoryItems;
+using NetBungieAPI.Destiny.Definitions.ItemCategories;
+using NetBungieAPI.Destiny.Responses;
+using NetBungieAPI.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing.Imaging;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Unity;
-using System.Text;
-using NetBungieAPI;
 
 namespace BungieNetCoreTestingApp
 {
@@ -112,29 +106,30 @@ namespace BungieNetCoreTestingApp
 
                 settings.IncludeClientIdAndSecret(clientId: int.Parse(args[1]), clientSecret: args[2]);
 
-                settings.EnableTokenRenewal(refreshRate: 30000);
+                //settings.EnableTokenRenewal(refreshRate: 30000);
 
             });
 
-            var link = BungieClient.Platform.GetAuthorizationLink();
-            Console.WriteLine(link);
-            Console.Write("State: ");
-            var state = Console.ReadLine();
-            Console.WriteLine();
-            Console.Write("Code: ");
-            var code = Console.ReadLine();
-            Console.WriteLine();
+            //var link = BungieClient.Platform.GetAuthorizationLink();
+            //Console.WriteLine(link);
+            //Console.Write("State: ");
+            //var state = Console.ReadLine();
+            //Console.WriteLine();
+            //Console.Write("Code: ");
+            //var code = Console.ReadLine();
+            //Console.WriteLine();
 
-            BungieClient.Platform.ReceiveCode(state, code);
-            BungieClient.Platform.GetAuthorizationToken(code).GetAwaiter().GetResult();
+            //BungieClient.Platform.ReceiveCode(state, code);
+            //BungieClient.Platform.GetAuthorizationToken(code).GetAwaiter().GetResult();
 
-            _bungieClient.LogListener.OnNewMessage += (mes) => Console.WriteLine(mes);
+            _bungieClient.AddListener((mes) => Console.WriteLine(mes));
             MainAsync().GetAwaiter().GetResult();
         }
 
         private static async Task MainAsync()
         {
-
+            var data = await AppMethods.GetBungieApplications();
+            var moreData = await AppMethods.GetApplicationApiUsage(data.Response.First().ApplicationId);
             //await _bungieClient.Run();
 
             //var aggregateActivityStats = await BungieClient.Platform.GetDestinyAggregateActivityStats(
@@ -156,7 +151,7 @@ namespace BungieNetCoreTestingApp
             //if (aggregateActivityStats.ErrorCode == PlatformErrorCodes.Success && aggregateActivityStats.Response != null)
             //{
             //    StringBuilder sb = new StringBuilder();
-                
+
             //    foreach (var activityStat in aggregateActivityStats.Response.Activities)
             //    {
             //        if (activityStat.Activity.TryGetDefinition(out var actDef))

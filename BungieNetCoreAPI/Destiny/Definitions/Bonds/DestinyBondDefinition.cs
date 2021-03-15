@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Bonds
+namespace NetBungieAPI.Destiny.Definitions.Bonds
 {
     [DestinyDefinition(DefinitionsEnum.DestinyBondDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyBondDefinition : IDestinyDefinition, IDeepEquatable<DestinyBondDefinition>

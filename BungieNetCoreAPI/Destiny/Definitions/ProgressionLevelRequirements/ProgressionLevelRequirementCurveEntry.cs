@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.ProgressionLevelRequirements
+namespace NetBungieAPI.Destiny.Definitions.ProgressionLevelRequirements
 {
     public class ProgressionLevelRequirementCurveEntry : IDeepEquatable<ProgressionLevelRequirementCurveEntry>
     {

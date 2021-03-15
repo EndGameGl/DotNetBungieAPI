@@ -1,12 +1,12 @@
-﻿using NetBungieApi.Destiny;
-using NetBungieApi.Destiny.Definitions;
-using NetBungieApi.Destiny.Definitions.Activities;
-using NetBungieApi.Destiny.Definitions.InventoryItems;
+﻿using NetBungieAPI.Destiny;
+using NetBungieAPI.Destiny.Definitions;
+using NetBungieAPI.Destiny.Definitions.Activities;
+using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetBungieApi.Repositories
+namespace NetBungieAPI.Repositories
 {
     public interface ILocalisedDestinyDefinitionRepositories
     {

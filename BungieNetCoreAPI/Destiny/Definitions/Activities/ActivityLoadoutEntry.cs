@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Activities
+namespace NetBungieAPI.Destiny.Definitions.Activities
 {
     public class ActivityLoadoutEntry : IDeepEquatable<ActivityLoadoutEntry>
     {

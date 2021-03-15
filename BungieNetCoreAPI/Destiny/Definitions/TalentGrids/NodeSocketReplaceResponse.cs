@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
-using NetBungieApi.Destiny.Definitions.SocketTypes;
+﻿using NetBungieAPI.Destiny.Definitions.InventoryItems;
+using NetBungieAPI.Destiny.Definitions.SocketTypes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.TalentGrids
+namespace NetBungieAPI.Destiny.Definitions.TalentGrids
 {
     public class NodeSocketReplaceResponse : IDeepEquatable<NodeSocketReplaceResponse>
     {

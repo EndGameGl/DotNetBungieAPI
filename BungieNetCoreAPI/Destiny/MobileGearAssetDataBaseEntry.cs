@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny
+namespace NetBungieAPI.Destiny
 {
     public class MobileGearAssetDataBaseEntry
     {

@@ -1,10 +1,10 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetBungieApi.Repositories
+namespace NetBungieAPI.Repositories
 {
     public class DefinitionUseRule
     {

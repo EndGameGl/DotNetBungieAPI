@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.Lores;
+﻿using NetBungieAPI.Destiny.Definitions.Lores;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.TalentGrids
+namespace NetBungieAPI.Destiny.Definitions.TalentGrids
 {
     public class TalentGridGroup : IDeepEquatable<TalentGridGroup>
     {

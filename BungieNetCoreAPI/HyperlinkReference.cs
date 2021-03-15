@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetBungieApi
+namespace NetBungieAPI
 {
     public class HyperlinkReference : IDeepEquatable<HyperlinkReference>
     {

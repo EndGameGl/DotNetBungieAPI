@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi
+﻿namespace NetBungieAPI
 {
     /// <summary>
     /// Provides interface for deep object equation.

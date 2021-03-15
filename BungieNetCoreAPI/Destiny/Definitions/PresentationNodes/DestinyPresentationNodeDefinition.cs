@@ -1,11 +1,11 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.Objectives;
-using NetBungieApi.Destiny.Definitions.Records;
-using NetBungieApi.Destiny.Definitions.Traits;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.Objectives;
+using NetBungieAPI.Destiny.Definitions.Records;
+using NetBungieAPI.Destiny.Definitions.Traits;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.PresentationNodes
+namespace NetBungieAPI.Destiny.Definitions.PresentationNodes
 {
     /// <summary>
     /// A PresentationNode is an entity that represents a logical grouping of other entities visually/organizationally.

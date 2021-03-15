@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.ActivityModifiers
+namespace NetBungieAPI.Destiny.Definitions.ActivityModifiers
 {
     /// <summary>
     /// Modifiers - in Destiny 1, these were referred to as "Skulls" - are changes that can be applied to an Activity.

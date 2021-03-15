@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Achievements
+namespace NetBungieAPI.Destiny.Definitions.Achievements
 {
     /// <summary>
     /// Represents account achievements, such as Steam ones

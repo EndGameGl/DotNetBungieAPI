@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Bungie
+﻿namespace NetBungieAPI.Bungie
 {
     public enum GlobalAlertType
     {

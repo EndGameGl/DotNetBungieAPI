@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.UnlockValues
+namespace NetBungieAPI.Destiny.Definitions.UnlockValues
 {
     /// <summary>
     /// Doesn't have any meaning at this moment

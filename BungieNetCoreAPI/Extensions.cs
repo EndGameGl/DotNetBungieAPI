@@ -1,17 +1,24 @@
-﻿using NetBungieApi.Destiny;
-using NetBungieApi.Destiny.Definitions;
-using NetBungieApi.Destiny.Definitions.Activities;
-using NetBungieApi.Destiny.Definitions.ActivityModes;
-using NetBungieApi.Repositories;
+﻿using NetBungieAPI.Destiny;
+using NetBungieAPI.Destiny.Definitions;
+using NetBungieAPI.Destiny.Definitions.Activities;
+using NetBungieAPI.Destiny.Definitions.ActivityModes;
+using NetBungieAPI.Repositories;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 
-namespace NetBungieApi
+namespace NetBungieAPI
 {
     public static class Extensions
     {
+        internal static async Task<T> ReadObjectFromHttpResponseMessage<T>(this HttpResponseMessage response)
+        {
+            return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
+        }
         internal static bool DeepEqualsReadOnlySimpleCollection<T>(this ReadOnlyCollection<T> compared, ReadOnlyCollection<T> comparedWith)
         {
             if (compared.Count != comparedWith.Count)

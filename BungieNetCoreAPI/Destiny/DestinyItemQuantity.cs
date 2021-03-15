@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
+﻿using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny
+namespace NetBungieAPI.Destiny
 {
     public class DestinyItemQuantity : IDeepEquatable<DestinyItemQuantity>
     {

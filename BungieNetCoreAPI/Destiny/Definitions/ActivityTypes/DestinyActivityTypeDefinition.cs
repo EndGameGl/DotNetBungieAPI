@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.ActivityTypes
+namespace NetBungieAPI.Destiny.Definitions.ActivityTypes
 {
     /// <summary>
     /// The definition for an Activity Type.

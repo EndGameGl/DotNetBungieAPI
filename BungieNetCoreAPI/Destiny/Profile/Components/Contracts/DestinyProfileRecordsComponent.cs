@@ -1,10 +1,10 @@
-﻿using NetBungieApi.Destiny.Definitions.PresentationNodes;
-using NetBungieApi.Destiny.Definitions.Records;
+﻿using NetBungieAPI.Destiny.Definitions.PresentationNodes;
+using NetBungieAPI.Destiny.Definitions.Records;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Profile.Components.Contracts
+namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyProfileRecordsComponent
     {

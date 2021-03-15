@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.DamageTypes
+namespace NetBungieAPI.Destiny.Definitions.DamageTypes
 {
     /// <summary>
     /// All damage types that are possible in the game are defined here, along with localized info and icons as needed.

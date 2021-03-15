@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.ProgressionMappings
+namespace NetBungieAPI.Destiny.Definitions.ProgressionMappings
 {
     /// <summary>
     /// Aggregations of multiple progressions.

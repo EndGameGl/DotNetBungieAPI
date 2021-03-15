@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Destiny.Definitions.Activities;
+﻿using NetBungieAPI.Destiny.Definitions.Activities;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Profile.Components.Contracts
+namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyAggregateActivityStats
     {

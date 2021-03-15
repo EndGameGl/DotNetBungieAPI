@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.Progressions;
+﻿using NetBungieAPI.Destiny.Definitions.Progressions;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.ActivityGraphs
+namespace NetBungieAPI.Destiny.Definitions.ActivityGraphs
 {
     /// <summary>
     /// When a Graph needs to show active Progressions, this defines those objectives as well as an identifier.

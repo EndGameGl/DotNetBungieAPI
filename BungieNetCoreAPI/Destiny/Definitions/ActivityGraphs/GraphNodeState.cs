@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Destiny.Definitions.ActivityGraphs
+﻿namespace NetBungieAPI.Destiny.Definitions.ActivityGraphs
 {
     /// <summary>
     /// Represents a potential state of an Activity Graph node.

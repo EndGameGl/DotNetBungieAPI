@@ -1,12 +1,12 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.Lores;
-using NetBungieApi.Destiny.Definitions.Objectives;
-using NetBungieApi.Destiny.Definitions.PresentationNodes;
-using NetBungieApi.Destiny.Definitions.Traits;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.Lores;
+using NetBungieAPI.Destiny.Definitions.Objectives;
+using NetBungieAPI.Destiny.Definitions.PresentationNodes;
+using NetBungieAPI.Destiny.Definitions.Traits;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Records
+namespace NetBungieAPI.Destiny.Definitions.Records
 {
     [DestinyDefinition(DefinitionsEnum.DestinyRecordDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public class DestinyRecordDefinition : IDestinyDefinition, IDeepEquatable<DestinyRecordDefinition>

@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Destiny
+﻿namespace NetBungieAPI.Destiny
 {
     /// <summary>
     /// This enumeration represents the most restrictive type of gating that is being performed by an entity. This is useful as a shortcut to avoid a lot of lookups when determining whether the gating on an Entity applies to everyone equally, or to their specific Profile or Character states.

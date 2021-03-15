@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny;
-using NetBungieApi.Destiny.Definitions;
-using NetBungieApi.Destiny.Definitions.HistoricalStats;
-using NetBungieApi.Logging;
-using NetBungieApi.Services;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny;
+using NetBungieAPI.Destiny.Definitions;
+using NetBungieAPI.Destiny.Definitions.HistoricalStats;
+using NetBungieAPI.Logging;
+using NetBungieAPI.Services;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Concurrent;
@@ -15,7 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetBungieApi.Repositories
+namespace NetBungieAPI.Repositories
 {
     /// <summary>
     /// Repository class for storing and accessing all classes with <see cref="Attributes.DestinyDefinitionAttribute"/> attribute

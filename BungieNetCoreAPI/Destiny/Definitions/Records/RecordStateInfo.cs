@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.Unlocks;
+﻿using NetBungieAPI.Destiny.Definitions.Unlocks;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Records
+namespace NetBungieAPI.Destiny.Definitions.Records
 {
     public class RecordStateInfo : IDeepEquatable<RecordStateInfo>
     {

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.StatGroups
+namespace NetBungieAPI.Destiny.Definitions.StatGroups
 {
     public class StatGroupInterpolation : IDeepEquatable<StatGroupInterpolation>
     {

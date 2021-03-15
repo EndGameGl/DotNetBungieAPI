@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.Progressions;
+﻿using NetBungieAPI.Destiny.Definitions.Progressions;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Vendors
+namespace NetBungieAPI.Destiny.Definitions.Vendors
 {
     public class VendorDisplayCategory : IDeepEquatable<VendorDisplayCategory>
     {

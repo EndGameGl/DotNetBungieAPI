@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.ReportReasonCategories
+namespace NetBungieAPI.Destiny.Definitions.ReportReasonCategories
 {
     public class ReportReason : IDeepEquatable<ReportReason>
     {

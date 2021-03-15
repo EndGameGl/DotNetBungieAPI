@@ -1,11 +1,11 @@
-﻿using NetBungieApi.Destiny.Definitions.Milestones;
-using NetBungieApi.Destiny.Definitions.Vendors;
+﻿using NetBungieAPI.Destiny.Definitions.Milestones;
+using NetBungieAPI.Destiny.Definitions.Vendors;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Profile.Components.Contracts
+namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyMilestone
     {

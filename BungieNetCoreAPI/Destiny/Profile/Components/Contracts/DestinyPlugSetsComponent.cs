@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Destiny.Definitions.PlugSets;
+﻿using NetBungieAPI.Destiny.Definitions.PlugSets;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Profile.Components.Contracts
+namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyPlugSetsComponent
     {

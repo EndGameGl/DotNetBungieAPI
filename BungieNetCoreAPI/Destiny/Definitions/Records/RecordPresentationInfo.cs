@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.PresentationNodes;
+﻿using NetBungieAPI.Destiny.Definitions.PresentationNodes;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Records
+namespace NetBungieAPI.Destiny.Definitions.Records
 {
     public class RecordPresentationInfo : IDeepEquatable<RecordPresentationInfo>
     {

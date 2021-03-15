@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Artifacts
+namespace NetBungieAPI.Destiny.Definitions.Artifacts
 {
     /// <summary>
     /// Represents known info about a Destiny Artifact.

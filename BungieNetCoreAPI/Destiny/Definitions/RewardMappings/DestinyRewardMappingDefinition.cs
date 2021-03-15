@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.RewardMappings
+namespace NetBungieAPI.Destiny.Definitions.RewardMappings
 {
     /// <summary>
     /// Empty atm

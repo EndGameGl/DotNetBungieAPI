@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Clients;
-using NetBungieApi.Clients.Settings;
+﻿using NetBungieAPI.Clients;
+using NetBungieAPI.Clients.Settings;
 
-namespace NetBungieApi.Services
+namespace NetBungieAPI.Services
 {
     public interface IConfigurationService
     {

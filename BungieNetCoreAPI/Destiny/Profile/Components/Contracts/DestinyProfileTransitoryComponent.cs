@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.Destinations;
+﻿using NetBungieAPI.Destiny.Definitions.Destinations;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Profile.Components.Contracts
+namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyProfileTransitoryComponent
     {

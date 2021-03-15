@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
+﻿using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.PlugSets
+namespace NetBungieAPI.Destiny.Definitions.PlugSets
 {
     public class PlugSetReusablePlugItem : IDeepEquatable<PlugSetReusablePlugItem>
     {

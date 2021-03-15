@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Destiny.Definitions.Stats
+﻿namespace NetBungieAPI.Destiny.Definitions.Stats
 {
     public enum StatAggregationType
     {

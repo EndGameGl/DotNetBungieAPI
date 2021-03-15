@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Destiny.Definitions.HistoricalStats
+﻿namespace NetBungieAPI.Destiny.Definitions.HistoricalStats
 {
     public enum PeriodType
     {

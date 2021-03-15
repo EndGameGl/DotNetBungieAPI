@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Destiny.Definitions.ProgressionLevelRequirements;
+﻿using NetBungieAPI.Destiny.Definitions.ProgressionLevelRequirements;
 using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.InventoryItems
+namespace NetBungieAPI.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     /// An item's "Quality" determines its calculated stats. The Level at which the item spawns is combined with its "qualityLevel" along with some additional calculations to determine the value of those stats.

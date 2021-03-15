@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Destiny.Definitions.DamageTypes
+﻿namespace NetBungieAPI.Destiny.Definitions.DamageTypes
 {
     public enum DamageType
     {

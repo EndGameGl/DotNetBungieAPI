@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.InventoryItems;
-using NetBungieApi.Destiny.Definitions.ItemCategories;
+﻿using NetBungieAPI.Destiny.Definitions.InventoryItems;
+using NetBungieAPI.Destiny.Definitions.ItemCategories;
 using System.Collections.Generic;
 
-namespace NetBungieApi.Repositories
+namespace NetBungieAPI.Repositories
 {
     public static class QueryExtensions
     {

@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.RewardAdjusterPointers
+namespace NetBungieAPI.Destiny.Definitions.RewardAdjusterPointers
 {
     [DestinyDefinition(DefinitionsEnum.DestinyRewardAdjusterPointerDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyRewardAdjusterPointerDefinition : IDestinyDefinition, IDeepEquatable<DestinyRewardAdjusterPointerDefinition>

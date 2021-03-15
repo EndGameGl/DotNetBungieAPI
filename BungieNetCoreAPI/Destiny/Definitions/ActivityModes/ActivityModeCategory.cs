@@ -1,4 +1,4 @@
-﻿namespace NetBungieApi.Destiny.Definitions.ActivityModes
+﻿namespace NetBungieAPI.Destiny.Definitions.ActivityModes
 {
     /// <summary>
     /// Activity Modes are grouped into a few possible broad categories.

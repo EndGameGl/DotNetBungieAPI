@@ -1,13 +1,13 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny;
-using NetBungieApi.Repositories;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny;
+using NetBungieAPI.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace NetBungieApi.Services
+namespace NetBungieAPI.Services
 {
     public class DefinitionAssemblyData : IDefinitionAssemblyData
     {

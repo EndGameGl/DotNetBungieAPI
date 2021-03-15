@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.ArtDyeChannels
+namespace NetBungieAPI.Destiny.Definitions.ArtDyeChannels
 {
     [DestinyDefinition(DefinitionsEnum.DestinyArtDyeChannelDefinition, DefinitionSources.BungieNet | DefinitionSources.JSON, DefinitionKeyType.UInt)]
     public class DestinyArtDyeChannelDefinition : IDestinyDefinition, IDeepEquatable<DestinyArtDyeChannelDefinition>

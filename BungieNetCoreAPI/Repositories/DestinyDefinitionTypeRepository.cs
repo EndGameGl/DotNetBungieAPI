@@ -1,10 +1,10 @@
-﻿using NetBungieApi.Destiny.Definitions;
+﻿using NetBungieAPI.Destiny.Definitions;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NetBungieApi.Repositories
+namespace NetBungieAPI.Repositories
 {
     /// <summary>
     /// Repository for any <see cref="IDestinyDefinition"/>

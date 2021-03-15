@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Destiny.Definitions.CharacterCustomizationCategories;
+﻿using NetBungieAPI.Destiny.Definitions.CharacterCustomizationCategories;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.CharacterCustomizationOptions
+namespace NetBungieAPI.Destiny.Definitions.CharacterCustomizationOptions
 {
     public class CharacterCustomizationOptionColorOptions : IDeepEquatable<CharacterCustomizationOptionColorOptions>
     {

@@ -1,8 +1,8 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.Locations;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.Locations;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.Objectives
+namespace NetBungieAPI.Destiny.Definitions.Objectives
 {
     /// <summary>
     /// Defines an "Objective".

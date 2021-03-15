@@ -1,16 +1,16 @@
-﻿using NetBungieApi.Attributes;
-using NetBungieApi.Destiny.Definitions.BreakerTypes;
-using NetBungieApi.Destiny.Definitions.Classes;
-using NetBungieApi.Destiny.Definitions.Collectibles;
-using NetBungieApi.Destiny.Definitions.DamageTypes;
-using NetBungieApi.Destiny.Definitions.ItemCategories;
-using NetBungieApi.Destiny.Definitions.Lores;
-using NetBungieApi.Destiny.Definitions.Objectives;
-using NetBungieApi.Destiny.Definitions.Seasons;
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.BreakerTypes;
+using NetBungieAPI.Destiny.Definitions.Classes;
+using NetBungieAPI.Destiny.Definitions.Collectibles;
+using NetBungieAPI.Destiny.Definitions.DamageTypes;
+using NetBungieAPI.Destiny.Definitions.ItemCategories;
+using NetBungieAPI.Destiny.Definitions.Lores;
+using NetBungieAPI.Destiny.Definitions.Objectives;
+using NetBungieAPI.Destiny.Definitions.Seasons;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.InventoryItems
+namespace NetBungieAPI.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     /// So much of what you see in Destiny is actually an Item used in a new and creative way. This is the definition for Items in Destiny, which started off as just entities that could exist in your Inventory but ended up being the backing data for so much more: quests, reward previews, slots, and subclasses.

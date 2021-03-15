@@ -1,7 +1,7 @@
-﻿using NetBungieApi.Attributes;
+﻿using NetBungieAPI.Attributes;
 using Newtonsoft.Json;
 
-namespace NetBungieApi.Destiny.Definitions.PowerCaps
+namespace NetBungieAPI.Destiny.Definitions.PowerCaps
 {
     /// <summary>
     /// Defines a 'power cap' (limit) for gear items, based on the rarity tier and season of release.

@@ -1,6 +1,6 @@
-﻿using NetBungieApi.Clients;
-using NetBungieApi.Logging;
-using NetBungieApi.Services;
+﻿using NetBungieAPI.Clients;
+using NetBungieAPI.Logging;
+using NetBungieAPI.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace NetBungieApi.Destiny
+namespace NetBungieAPI.Destiny
 {
     /// <summary>
     /// DestinyManifest is the external-facing contract for just the properties needed by those calling the Destiny Platform.
@@ -87,7 +87,7 @@ namespace NetBungieApi.Destiny
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            Uri _cdnUri = BungieClient.BungieCDNUri;
+            Uri _cdnUri = new Uri("https://www.bungie.net");
             logger.Log($"Loading data from: {_cdnUri.AbsoluteUri}", LogType.Info);
 
             HttpResponseMessage message;

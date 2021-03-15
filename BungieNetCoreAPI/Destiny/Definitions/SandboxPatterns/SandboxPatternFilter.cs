@@ -1,9 +1,9 @@
-﻿using NetBungieApi.Destiny.Definitions.Stats;
+﻿using NetBungieAPI.Destiny.Definitions.Stats;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.SandboxPatterns
+namespace NetBungieAPI.Destiny.Definitions.SandboxPatterns
 {
     public class SandboxPatternFilter : IDeepEquatable<SandboxPatternFilter>
     {

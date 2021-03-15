@@ -1,10 +1,10 @@
-﻿using NetBungieApi.Destiny.Definitions.InventoryBuckets;
-using NetBungieApi.Destiny.Definitions.InventoryItems;
-using NetBungieApi.Destiny.Definitions.RewardAdjusterPointers;
+﻿using NetBungieAPI.Destiny.Definitions.InventoryBuckets;
+using NetBungieAPI.Destiny.Definitions.InventoryItems;
+using NetBungieAPI.Destiny.Definitions.RewardAdjusterPointers;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
-namespace NetBungieApi.Destiny.Definitions.Vendors
+namespace NetBungieAPI.Destiny.Definitions.Vendors
 {
     public class VendorItem : IDeepEquatable<VendorItem>
     {
