@@ -78,40 +78,6 @@ namespace NetBungieAPI.Clients
             return await _httpClient.RenewAuthorizationToken(oldToken);
         }
 
-        #region User methods
-        public async Task<BungieResponse<BungieNetUser>> GetBungieNetUserById(long id)
-        {
-            return await GetData<BungieNetUser>($"User/GetBungieNetUserById/{id}");
-        }
-        public async Task<BungieResponse<BungieNetUser[]>> SearchUsers(string query)
-        {
-            if (!string.IsNullOrWhiteSpace(query))
-                return await GetData<BungieNetUser[]>($"User/SearchUsers/?q={query}");
-            else
-                throw new Exception("Query must contain something.");
-        }
-        public async Task<BungieResponse<BungieNetUserAccountCredentialType[]>> GetCredentialTypesForTargetAccount(long id)
-        {
-            return await GetData<BungieNetUserAccountCredentialType[]>($"User/GetCredentialTypesForTargetAccount/{id}");
-        }
-        public async Task<BungieResponse<BungieUserTheme[]>> GetAvailableThemes()
-        {
-            return await GetData<BungieUserTheme[]>($"User/GetAvailableThemes");
-        }
-        public async Task<BungieResponse<BungieNetUserWithMemberships>> GetMembershipDataById(long id, BungieMembershipType membershipType)
-        {
-            return await GetData<BungieNetUserWithMemberships>($"User/GetMembershipsById/{id}/{membershipType}");
-        }
-        public async Task<BungieResponse<BungieNetUserWithMemberships>> GetMembershipDataForCurrentUser()
-        {
-            return await GetData<BungieNetUserWithMemberships>($"User/GetMembershipsForCurrentUser");
-        }
-        public async Task<BungieResponse<DestinyHardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(long credential, BungieCredentialType credentialType = BungieCredentialType.SteamId)
-        {
-            return await GetData<DestinyHardLinkedUserMembership>($"User/GetMembershipFromHardLinkedCredential/{credentialType}/{credential}");
-        }
-        #endregion
-
         #region Misc methods
         /// <summary>
         /// List of available localization cultures
