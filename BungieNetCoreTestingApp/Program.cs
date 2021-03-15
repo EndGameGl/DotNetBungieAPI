@@ -82,7 +82,7 @@ namespace BungieNetCoreTestingApp
 
         static void Main(string[] args)
         {
-            _bungieClient = new BungieClient((settings) => 
+            _bungieClient = new BungieClient((settings) =>
             {
                 settings.IncludeApiKey(args[0]);
 
@@ -96,8 +96,8 @@ namespace BungieNetCoreTestingApp
                 settings.UsePreloadedData("H:\\BungieNetCoreAPIRepository\\Manifests");
 
                 settings.UseVersionControl(
-                    keepOldVersions: true, 
-                    checkUpdates: false, 
+                    keepOldVersions: true,
+                    checkUpdates: false,
                     repositoryPath: string.Empty);
 
                 settings.EnableLogging();
@@ -128,7 +128,7 @@ namespace BungieNetCoreTestingApp
 
         private static async Task MainAsync()
         {
-            var content = await ContentMethods.GetContentType("Title");
+            var content = await ContentMethods.GetContentById(50176, "en");
             //await _bungieClient.Run();
 
             //var aggregateActivityStats = await BungieClient.Platform.GetDestinyAggregateActivityStats(

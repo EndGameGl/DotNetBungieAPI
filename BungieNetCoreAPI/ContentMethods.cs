@@ -15,5 +15,13 @@ namespace NetBungieAPI
         {
             return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<ContentTypeDescription>>($"/Content/GetContentType/{type}/");
         }
+        public static async Task<BungieResponse<ContentItemPublicContract>> GetContentById(long id, string locale, bool head = false)
+        {
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<ContentItemPublicContract>>($"/Content/GetContentById/{id}/{locale}/?head={head}");
+        }
+        public static async Task<BungieResponse<ContentItemPublicContract>> GetContentByTagAndType(string tag, string type, string locale)
+        {
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<ContentItemPublicContract>>($"/Content/GetContentByTagAndType/{tag}/{type}/{locale}/");
+        }
     }
 }

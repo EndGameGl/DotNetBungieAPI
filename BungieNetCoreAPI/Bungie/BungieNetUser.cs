@@ -11,7 +11,7 @@ namespace NetBungieAPI.Bungie
         public int ProfilePicture { get; }
         public int ProfileTheme { get; }
         public int UserTitle { get; }
-        public string SuccessMessageFlags { get; }
+        public long SuccessMessageFlags { get; }
         public bool IsDeleted { get; }
         public string About { get; }
         public DateTime FirstAccess { get; }
@@ -30,7 +30,7 @@ namespace NetBungieAPI.Bungie
         public string SteamDisplayName { get; }
 
         [JsonConstructor]
-        internal BungieNetUser(long membershipId, string uniqueName, string displayName, int profilePicture, int profileTheme, int userTitle, string successMessageFlags,
+        internal BungieNetUser(long membershipId, string uniqueName, string displayName, int profilePicture, int profileTheme, int userTitle, long successMessageFlags,
             bool isDeleted, string about, DateTime firstAccess, DateTime lastUpdate, BungieNetUserContext context,  bool showActivity, string locale, bool localeInheritDefault, 
             bool showGroupMessaging, string profilePicturePath, string profileThemeName, string userTitleDisplay, string statusText, DateTime statusDate, 
             string blizzardDisplayName, string steamDisplayName)
