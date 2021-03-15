@@ -128,8 +128,7 @@ namespace BungieNetCoreTestingApp
 
         private static async Task MainAsync()
         {
-            var data = await AppMethods.GetBungieApplications();
-            var moreData = await AppMethods.GetApplicationApiUsage(data.Response.First().ApplicationId);
+            var content = await ContentMethods.GetContentType("Title");
             //await _bungieClient.Run();
 
             //var aggregateActivityStats = await BungieClient.Platform.GetDestinyAggregateActivityStats(
