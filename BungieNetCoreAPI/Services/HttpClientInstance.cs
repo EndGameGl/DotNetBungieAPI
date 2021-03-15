@@ -15,6 +15,8 @@ namespace NetBungieAPI.Services
 {
     internal class HttpClientInstance : IHttpClientInstance
     {
+        private readonly ILogger _logger;
+
         private readonly Uri _authorizationEndpoint = new Uri("https://www.bungie.net/en/oauth/authorize");
         private readonly Uri _authorizationTokenEndpoint = new Uri("https://www.bungie.net/platform/app/oauth/token/");
         private readonly Uri _platformEndpoint = new Uri("https://www.bungie.net/Platform");
@@ -23,8 +25,9 @@ namespace NetBungieAPI.Services
 
         private readonly HttpClient _httpClient;
 
-        internal HttpClientInstance()
+        internal HttpClientInstance(ILogger logger)
         {
+            _logger = logger;
             _httpClient = new HttpClient()
             {
                 Timeout = TimeSpan.FromSeconds(6000)              
@@ -57,7 +60,9 @@ namespace NetBungieAPI.Services
         }
         public async Task<HttpResponseMessage> GetFromPlatform(string query)
         {
-            return await _httpClient.GetAsync($"{_platformEndpoint}{query}");
+            var url = $"{_platformEndpoint}{query}";
+            _logger.Log($"Calling platform API: {url}", LogType.Debug);
+            return await _httpClient.GetAsync(url);
         }
         public async Task<HttpResponseMessage> GetFromStatsPlatform(string query)
         {

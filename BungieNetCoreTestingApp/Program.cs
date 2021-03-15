@@ -128,7 +128,9 @@ namespace BungieNetCoreTestingApp
 
         private static async Task MainAsync()
         {
-            var content = await ContentMethods.GetContentById(50176, "en");
+            //var post = await ContentMethods.GetContentById(50176, "en");
+
+            var content = await ContentMethods.SearchContentByTagAndType("en", "news-destiny", "News");
             //await _bungieClient.Run();
 
             //var aggregateActivityStats = await BungieClient.Platform.GetDestinyAggregateActivityStats(
