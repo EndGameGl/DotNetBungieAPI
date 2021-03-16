@@ -1,12 +1,9 @@
 ﻿using NetBungieAPI.Clients.Settings;
-using NetBungieAPI.Destiny;
 using NetBungieAPI.Logging;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services;
+using NetBungieAPI.Services.ApiAccess;
 using System;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
 using System.Threading.Tasks;
 using Unity;
 using static NetBungieAPI.Logging.LogListener;
@@ -22,10 +19,20 @@ namespace NetBungieAPI.Clients
         public static BungiePlatfromClient Platform;
         private LogListener _logListener;
 
+        internal BungieClient(IConfigurationService config, IManifestUpdateHandler manifestUpdateHandler, ILogger logger,
+            IBungieApiAccess apiAccess)
+        {
+            Configuration = config;
+            _logger = logger;
+            _versionControl = manifestUpdateHandler;
+            ApiAccess = apiAccess;
+        }
 
         public ILocalisedDestinyDefinitionRepositories Repository { get; private set; }
 
-        public BungieClient(Action<BungieClientSettings> configure)
+        public IBungieApiAccess ApiAccess { get; }
+
+        public void Configure(Action<BungieClientSettings> configure)
         {
             BungieClientSettings settings = new BungieClientSettings();
             configure(settings);
@@ -37,17 +44,12 @@ namespace NetBungieAPI.Clients
             else
                 Configuration.ApplySettings(settings);
 
-            _logger = StaticUnityContainer.GetLogger();
-
             if (Configuration.Settings.IsLoggingEnabled)
             {
                 _logListener = new LogListener();
                 _logger.Register(_logListener);
             }
             Platform = new BungiePlatfromClient(Configuration.Settings.ApiKey, Configuration);
-
-            _versionControl = StaticUnityContainer.GetManifestUpdateHandler();
-
         }
         public async Task Run()
         {

@@ -78,59 +78,58 @@ namespace BungieNetCoreTestingApp
                 DestinyComponentType.Metrics
         };
 
-        private static BungieClient _bungieClient;
-
+        private static IBungieClient _bungieClient;
+        private static IBungieApiAccess _apiAccess;
         static void Main(string[] args)
         {
-            _bungieClient = new BungieClient((settings) =>
-            {
-                settings.IncludeApiKey(args[0]);
+            //_bungieClient = BungieApiBuilder.GetApiClient((settings) =>
+            //{
+            //    settings.IncludeApiKey(args[0]);
 
-                settings.SetDefinitionsLoadingBehaviour(
-                    saveToAppMemory: true,
-                    tryDownloadMissingDefinitions: true,
-                    preferredSource: DefinitionSources.SQLite,
-                    retryDownloading: false,
-                    DestinyLocales.EN);
+            //    settings.SetDefinitionsLoadingBehaviour(
+            //        saveToAppMemory: true,
+            //        tryDownloadMissingDefinitions: true,
+            //        preferredSource: DefinitionSources.SQLite,
+            //        retryDownloading: false,
+            //        DestinyLocales.EN);
 
-                settings.UsePreloadedData("H:\\BungieNetCoreAPIRepository\\Manifests");
+            //    settings.UsePreloadedData("H:\\BungieNetCoreAPIRepository\\Manifests");
 
-                settings.UseVersionControl(
-                    keepOldVersions: true,
-                    checkUpdates: false,
-                    repositoryPath: string.Empty);
+            //    settings.UseVersionControl(
+            //        keepOldVersions: true,
+            //        checkUpdates: false,
+            //        repositoryPath: string.Empty);
 
-                settings.EnableLogging();
+            //    settings.EnableLogging();
 
-                settings.PremapPointers();
+            //    settings.PremapPointers();
 
-                settings.IncludeClientIdAndSecret(clientId: int.Parse(args[1]), clientSecret: args[2]);
+            //    settings.IncludeClientIdAndSecret(clientId: int.Parse(args[1]), clientSecret: args[2]);
 
-                //settings.EnableTokenRenewal(refreshRate: 30000);
+            //    //settings.EnableTokenRenewal(refreshRate: 30000);
 
-            });
+            //});
 
-            //var link = BungieClient.Platform.GetAuthorizationLink();
-            //Console.WriteLine(link);
-            //Console.Write("State: ");
-            //var state = Console.ReadLine();
-            //Console.WriteLine();
-            //Console.Write("Code: ");
-            //var code = Console.ReadLine();
-            //Console.WriteLine();
+            ////var link = BungieClient.Platform.GetAuthorizationLink();
+            ////Console.WriteLine(link);
+            ////Console.Write("State: ");
+            ////var state = Console.ReadLine();
+            ////Console.WriteLine();
+            ////Console.Write("Code: ");
+            ////var code = Console.ReadLine();
+            ////Console.WriteLine();
 
-            //BungieClient.Platform.ReceiveCode(state, code);
-            //BungieClient.Platform.GetAuthorizationToken(code).GetAwaiter().GetResult();
+            ////BungieClient.Platform.ReceiveCode(state, code);
+            ////BungieClient.Platform.GetAuthorizationToken(code).GetAwaiter().GetResult();
 
-            _bungieClient.AddListener((mes) => Console.WriteLine(mes));
+            //_bungieClient.AddListener((mes) => Console.WriteLine(mes));
             MainAsync().GetAwaiter().GetResult();
         }
 
         private static async Task MainAsync()
         {
-            //var post = await ContentMethods.GetContentById(50176, "en");
-
-            var content = await ContentMethods.SearchContentByTagAndType("en", "news-destiny", "News");
+            _apiAccess = BungieApiAccess.Create();
+            var manifest = await _apiAccess.Destiny2.GetDestinyManifest();
             //await _bungieClient.Run();
 
             //var aggregateActivityStats = await BungieClient.Platform.GetDestinyAggregateActivityStats(

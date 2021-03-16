@@ -1,27 +1,9 @@
-﻿using NetBungieAPI.Bungie;
-using NetBungieAPI.Bungie.Applications;
-using NetBungieAPI.Destiny;
-using NetBungieAPI.Destiny.Definitions;
-using NetBungieAPI.Destiny.Definitions.ActivityModes;
-using NetBungieAPI.Destiny.Definitions.HistoricalStats;
-using NetBungieAPI.Destiny.Profile;
-using NetBungieAPI.Destiny.Profile.Components.Contracts;
-using NetBungieAPI.Destiny.Responses;
-using NetBungieAPI.Logging;
-using NetBungieAPI.Responses;
+﻿using NetBungieAPI.Logging;
 using NetBungieAPI.Services;
 using NetBungieAPI.Authrorization;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using Unity;
 
 namespace NetBungieAPI.Clients
 {

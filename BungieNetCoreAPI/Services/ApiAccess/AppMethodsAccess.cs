@@ -1,22 +1,23 @@
 ﻿using NetBungieAPI.Bungie.Applications;
 using NetBungieAPI.Services;
+using NetBungieAPI.Services.ApiAccess.Interfaces;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI
 {
-    public static class AppMethods
+    public class AppMethodsAccess : IAppMethodsAccess
     {
-        private static IHttpClientInstance _httpClient;
-        static AppMethods()
+        private IHttpClientInstance _httpClient;
+        internal AppMethodsAccess(IHttpClientInstance httpClient)
         {
-            _httpClient = StaticUnityContainer.GetHTTPClient();
+            _httpClient = httpClient;
         }
-        
-        public static async Task<BungieResponse<BungieApplication[]>> GetBungieApplications()
+
+        public async Task<BungieResponse<BungieApplication[]>> GetBungieApplications()
         {
             return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<BungieApplication[]>>("/App/FirstParty/");
         }
-        public static async Task<BungieResponse<ApiUsage>> GetApplicationApiUsage(int applicationId)
+        public async Task<BungieResponse<ApiUsage>> GetApplicationApiUsage(int applicationId)
         {
             return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<ApiUsage>>($"/App/ApiUsage/{applicationId}/");
         }

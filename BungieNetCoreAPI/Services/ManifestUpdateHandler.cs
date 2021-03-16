@@ -1,7 +1,7 @@
 ﻿using NetBungieAPI.Clients;
 using NetBungieAPI.Destiny;
 using NetBungieAPI.Logging;
-using NetBungieAPI.Clients;
+using NetBungieAPI.Services.ApiAccess.Interfaces;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
@@ -12,6 +12,7 @@ namespace NetBungieAPI.Services
 {
     public class ManifestUpdateHandler : IManifestUpdateHandler
     {
+        private readonly IDestiny2MethodsAccess _d2Api;
         private readonly ILogger _logger;
         private readonly IConfigurationService _configuration;
         private Dictionary<DestinyManifest, string> _manifests;
@@ -20,8 +21,9 @@ namespace NetBungieAPI.Services
 
         public DestinyManifest CurrentManifest => _currentUsedManifest;
 
-        public ManifestUpdateHandler(ILogger logger, IConfigurationService configuration)
+        public ManifestUpdateHandler(ILogger logger, IConfigurationService configuration, IDestiny2MethodsAccess d2Api)
         {
+            _d2Api = d2Api;
             _logger = logger;
             _configuration = configuration;
             _manifests = new Dictionary<DestinyManifest, string>();
@@ -32,7 +34,7 @@ namespace NetBungieAPI.Services
         {
             _logger.Log("Checking manifest version...", LogType.Info);
             _logger.Log("Downloading latest manifest...", LogType.Info);
-            var latestManifest = await Destiny2Methods.GetDestinyManifest();
+            var latestManifest = await _d2Api.GetDestinyManifest();
             var latestFoundEqual = _manifests.Keys.FirstOrDefault(x => x.Version.Equals(latestManifest.Response.Version));
             if (latestFoundEqual != null)
             {

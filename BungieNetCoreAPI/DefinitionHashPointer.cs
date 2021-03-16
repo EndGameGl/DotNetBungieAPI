@@ -7,6 +7,7 @@ using NetBungieAPI.Clients;
 using System;
 using System.Threading.Tasks;
 using Unity;
+using NetBungieAPI.Services.ApiAccess.Interfaces;
 
 namespace NetBungieAPI
 {
@@ -16,11 +17,12 @@ namespace NetBungieAPI
     /// <typeparam name="T">Destiny definition type</typeparam>
     public class DefinitionHashPointer<T> : IDeepEquatable<DefinitionHashPointer<T>> where T : IDestinyDefinition
     {
+
         private bool? _alreadyTriedLoading = false;
         internal bool Exists;
         internal T m_value;
         private readonly ILocalisedDestinyDefinitionRepositories _repository;
-
+        private readonly IDestiny2MethodsAccess _destiny2Methods = null;
         /// <summary>
         /// Definition hash, guaranteed to be unique across it's type.
         /// </summary>
@@ -119,7 +121,7 @@ namespace NetBungieAPI
                     if (_alreadyTriedLoading == false || BungieClient.Configuration.Settings.ShouldRetryDownloading)
                     {
                         _alreadyTriedLoading = true;
-                        var task = Task.Run(async () => await Destiny2Methods.GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value));
+                        var task = Task.Run(async () => await _destiny2Methods.GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value));
                         var response = task.Result;
                         if (response.ErrorCode == PlatformErrorCodes.Success && response.Response != null)
                         {
