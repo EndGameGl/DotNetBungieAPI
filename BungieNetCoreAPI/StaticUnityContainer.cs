@@ -4,12 +4,13 @@ using NetBungieAPI.Repositories;
 using NetBungieAPI.Services;
 using NetBungieAPI.Services.ApiAccess;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
+using NetBungieAPI.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Unity;
 
-namespace NetBungieAPI.Services
+namespace NetBungieAPI
 {
     internal static class StaticUnityContainer
     {
@@ -22,7 +23,7 @@ namespace NetBungieAPI.Services
             Container.RegisterType<IConfigurationService, ConfigurationService>(TypeLifetime.Singleton);
             Container.RegisterType<IHttpClientInstance, HttpClientInstance>(TypeLifetime.Singleton);
             Container.RegisterType<ILocalisedDestinyDefinitionRepositories, LocalisedDestinyDefinitionRepositories>(TypeLifetime.Singleton);
-            Container.RegisterType<IManifestUpdateHandler, ManifestUpdateHandler>(TypeLifetime.Singleton);
+            Container.RegisterType<IManifestVersionHandler, ManifestVersionHandler>(TypeLifetime.Singleton);
             Container.RegisterType<IDefinitionAssemblyData, DefinitionAssemblyData>(TypeLifetime.Singleton);
             Container.RegisterType<IAuthorizationStateHandler, AuthorizationStateHandler>(TypeLifetime.Singleton);
 
@@ -50,7 +51,7 @@ namespace NetBungieAPI.Services
         internal static IConfigurationService GetConfiguration() => Container.Resolve<IConfigurationService>();
         internal static IHttpClientInstance GetHTTPClient() => Container.Resolve<IHttpClientInstance>();
         internal static ILocalisedDestinyDefinitionRepositories GetDestinyDefinitionRepositories() => Container.Resolve<ILocalisedDestinyDefinitionRepositories>();
-        internal static IManifestUpdateHandler GetManifestUpdateHandler() => Container.Resolve<IManifestUpdateHandler>();
+        internal static IManifestVersionHandler GetManifestUpdateHandler() => Container.Resolve<IManifestVersionHandler>();
         internal static IDefinitionAssemblyData GetAssemblyData() => Container.Resolve<IDefinitionAssemblyData>();
         internal static IAuthorizationStateHandler GetAuthHandler() => Container.Resolve<IAuthorizationStateHandler>();
     }

@@ -9,23 +9,26 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Services
 {
     public class AuthorizationStateHandler : IAuthorizationStateHandler
     {
+        private readonly IHttpClientInstance _client;
         private readonly ILogger _logger;
         private readonly IConfigurationService _config;
         private Timer _tokenTimer;
         public ConcurrentDictionary<string, AuthorizationState> AuthorizationStates { get; }
         public ConcurrentDictionary<int, AuthorizationTokenData> AuthorizationTokens { get; }
 
-        public AuthorizationStateHandler(ILogger logger, IConfigurationService configuration)
+        public AuthorizationStateHandler(ILogger logger, IConfigurationService configuration, IHttpClientInstance httpClient)
         {
             _logger = logger;
             _config = configuration;
             AuthorizationStates = new ConcurrentDictionary<string, AuthorizationState>();
             AuthorizationTokens = new ConcurrentDictionary<int, AuthorizationTokenData>();
+            _client = httpClient;
             _tokenTimer = new Timer(CheckTokenRenewal, null, Timeout.Infinite, Timeout.Infinite);
             if (_config.Settings.RenewTokens)
             {
@@ -63,7 +66,7 @@ namespace NetBungieAPI.Services
         }
         private async Task HandleTokenExpiration(AuthorizationTokenData token)
         {
-            var newToken = await BungieClient.Platform.RenewAuthorizationToken(token);
+            var newToken = await _client.RenewAuthorizationToken(token);
             AuthorizationTokens[newToken.MembershipId] = newToken;
             _logger.Log($"Renewed token for membership: {token.MembershipId}", LogType.Info);
         }

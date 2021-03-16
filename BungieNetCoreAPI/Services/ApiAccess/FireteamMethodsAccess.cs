@@ -1,4 +1,5 @@
 ﻿using NetBungieAPI.Services.ApiAccess.Interfaces;
+using NetBungieAPI.Services.Interfaces;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess

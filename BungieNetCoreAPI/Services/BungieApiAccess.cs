@@ -1,4 +1,5 @@
 ﻿using NetBungieAPI.Services.ApiAccess.Interfaces;
+using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Services
 {

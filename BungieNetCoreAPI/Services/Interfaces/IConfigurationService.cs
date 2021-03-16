@@ -1,12 +1,12 @@
 ﻿using NetBungieAPI.Clients;
 using NetBungieAPI.Clients.Settings;
+using System;
 
-namespace NetBungieAPI.Services
+namespace NetBungieAPI.Services.Interfaces
 {
     public interface IConfigurationService
     {
         BungieClientSettings Settings { get; }
-        void ApplySettings(BungieClientSettings settings);
-        void ApplySettingsFromConfig(string filePath);
+        void Configure(Action<BungieClientSettings> configure);
     }
 }

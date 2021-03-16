@@ -23,6 +23,8 @@ namespace NetBungieAPI.Clients.Settings
 
         internal bool IsUsingPreloadedData = false;
 
+        internal bool ShouldLoadSpecifiedManifest;
+        internal string PreferredLoadedManifest;
         internal string VersionsRepositoryPath;
         internal bool KeepOldVerisons;
         internal bool CheckUpdates;
@@ -151,6 +153,11 @@ namespace NetBungieAPI.Clients.Settings
         {
             RenewTokens = true;
             TokenCheckRefreshRate = refreshRate;
+        }
+        public void LoadSpecifiedManifest(string manifestVersion)
+        {
+            ShouldLoadSpecifiedManifest = true;
+            PreferredLoadedManifest = manifestVersion;
         }
     }
 }

@@ -4,6 +4,7 @@ using NetBungieAPI.Destiny.Definitions.Activities;
 using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Logging;
 using NetBungieAPI.Services;
+using NetBungieAPI.Services.Interfaces;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;

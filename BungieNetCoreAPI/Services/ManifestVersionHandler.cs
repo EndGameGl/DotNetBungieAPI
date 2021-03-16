@@ -2,6 +2,7 @@
 using NetBungieAPI.Destiny;
 using NetBungieAPI.Logging;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
+using NetBungieAPI.Services.Interfaces;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
@@ -10,24 +11,22 @@ using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services
 {
-    public class ManifestUpdateHandler : IManifestUpdateHandler
+    public class ManifestVersionHandler : IManifestVersionHandler
     {
         private readonly IDestiny2MethodsAccess _d2Api;
         private readonly ILogger _logger;
         private readonly IConfigurationService _configuration;
-        private Dictionary<DestinyManifest, string> _manifests;
+        private Dictionary<DestinyManifest, string> _manifests = new Dictionary<DestinyManifest, string>();
         private string _versionControlPath;
         private DestinyManifest _currentUsedManifest;
 
         public DestinyManifest CurrentManifest => _currentUsedManifest;
 
-        public ManifestUpdateHandler(ILogger logger, IConfigurationService configuration, IDestiny2MethodsAccess d2Api)
+        public ManifestVersionHandler(ILogger logger, IConfigurationService configuration, IDestiny2MethodsAccess d2Api)
         {
             _d2Api = d2Api;
             _logger = logger;
             _configuration = configuration;
-            _manifests = new Dictionary<DestinyManifest, string>();
-            _versionControlPath = _configuration.Settings.VersionsRepositoryPath;
         }
 
         public async Task UpdateManifestData()
@@ -50,6 +49,7 @@ namespace NetBungieAPI.Services
 
         public async Task InitiateManifestHandler()
         {
+            _versionControlPath = _configuration.Settings.VersionsRepositoryPath;
             _logger.Log("initializing manifest handler...", LogType.Info);
             if (!Directory.Exists(_versionControlPath))
                 Directory.CreateDirectory(_versionControlPath);

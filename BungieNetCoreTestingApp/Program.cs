@@ -25,6 +25,7 @@ using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Destiny.Definitions.ItemCategories;
 using NetBungieAPI.Destiny.Responses;
 using NetBungieAPI.Services;
+using NetBungieAPI.Services.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -79,36 +80,35 @@ namespace BungieNetCoreTestingApp
         };
 
         private static IBungieClient _bungieClient;
-        private static IBungieApiAccess _apiAccess;
         static void Main(string[] args)
         {
-            //_bungieClient = BungieApiBuilder.GetApiClient((settings) =>
-            //{
-            //    settings.IncludeApiKey(args[0]);
+            _bungieClient = BungieApiBuilder.GetApiClient((settings) =>
+            {
+                settings.IncludeApiKey(args[0]);
 
-            //    settings.SetDefinitionsLoadingBehaviour(
-            //        saveToAppMemory: true,
-            //        tryDownloadMissingDefinitions: true,
-            //        preferredSource: DefinitionSources.SQLite,
-            //        retryDownloading: false,
-            //        DestinyLocales.EN);
+                settings.SetDefinitionsLoadingBehaviour(
+                    saveToAppMemory: true,
+                    tryDownloadMissingDefinitions: true,
+                    preferredSource: DefinitionSources.SQLite,
+                    retryDownloading: false,
+                    DestinyLocales.EN);
 
-            //    settings.UsePreloadedData("H:\\BungieNetCoreAPIRepository\\Manifests");
+                settings.UsePreloadedData("H:\\BungieNetCoreAPIRepository\\Manifests");
 
-            //    settings.UseVersionControl(
-            //        keepOldVersions: true,
-            //        checkUpdates: false,
-            //        repositoryPath: string.Empty);
+                settings.UseVersionControl(
+                    keepOldVersions: true,
+                    checkUpdates: false,
+                    repositoryPath: string.Empty);
 
-            //    settings.EnableLogging();
+                settings.EnableLogging();
 
-            //    settings.PremapPointers();
+                settings.PremapPointers();
 
-            //    settings.IncludeClientIdAndSecret(clientId: int.Parse(args[1]), clientSecret: args[2]);
+                settings.IncludeClientIdAndSecret(clientId: int.Parse(args[1]), clientSecret: args[2]);
 
-            //    //settings.EnableTokenRenewal(refreshRate: 30000);
+                //settings.EnableTokenRenewal(refreshRate: 30000);
 
-            //});
+            });
 
             ////var link = BungieClient.Platform.GetAuthorizationLink();
             ////Console.WriteLine(link);
@@ -122,15 +122,13 @@ namespace BungieNetCoreTestingApp
             ////BungieClient.Platform.ReceiveCode(state, code);
             ////BungieClient.Platform.GetAuthorizationToken(code).GetAwaiter().GetResult();
 
-            //_bungieClient.AddListener((mes) => Console.WriteLine(mes));
+            _bungieClient.AddListener((mes) => Console.WriteLine(mes));
             MainAsync().GetAwaiter().GetResult();
         }
 
         private static async Task MainAsync()
         {
-            _apiAccess = BungieApiAccess.Create();
-            var manifest = await _apiAccess.Destiny2.GetDestinyManifest();
-            //await _bungieClient.Run();
+            await _bungieClient.Run();
 
             //var aggregateActivityStats = await BungieClient.Platform.GetDestinyAggregateActivityStats(
             //    membershipType: BungieMembershipType.TigerSteam,

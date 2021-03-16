@@ -1,6 +1,6 @@
 ﻿using NetBungieAPI.Services.ApiAccess.Interfaces;
 
-namespace NetBungieAPI.Services
+namespace NetBungieAPI.Services.Interfaces
 {
     public interface IBungieApiAccess
     {

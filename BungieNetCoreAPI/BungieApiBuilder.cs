@@ -10,7 +10,9 @@ namespace NetBungieAPI
         public static IBungieClient GetApiClient(Action<BungieClientSettings> configure)
         {
             var client = StaticUnityContainer.GetService<IBungieClient>();
-            client.Configure(configure);
+            var settings = StaticUnityContainer.GetConfiguration();
+            settings.Configure(configure);
+            client.Configure();
             return client;
         }
     }

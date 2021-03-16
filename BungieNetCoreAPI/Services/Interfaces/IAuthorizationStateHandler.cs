@@ -4,7 +4,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetBungieAPI.Services
+namespace NetBungieAPI.Services.Interfaces
 {
     public interface IAuthorizationStateHandler
     {

@@ -1,6 +1,7 @@
 ﻿using NetBungieAPI.Bungie.Applications;
 using NetBungieAPI.Services;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
+using NetBungieAPI.Services.Interfaces;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI

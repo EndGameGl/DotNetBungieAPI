@@ -1,5 +1,6 @@
 ﻿using NetBungieAPI.Content;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
+using NetBungieAPI.Services.Interfaces;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess
@@ -7,9 +8,9 @@ namespace NetBungieAPI.Services.ApiAccess
     public class ContentMethodsAccess : IContentMethodsAccess
     {
         private IHttpClientInstance _httpClient;
-        internal ContentMethodsAccess()
+        internal ContentMethodsAccess(IHttpClientInstance httpClient)
         {
-            _httpClient = StaticUnityContainer.GetHTTPClient();
+            _httpClient = httpClient;
         }
         public async Task<BungieResponse<ContentTypeDescription>> GetContentType(string type)
         {

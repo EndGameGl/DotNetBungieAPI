@@ -1,9 +1,12 @@
-﻿using NetBungieAPI.Clients.Settings;
+﻿using NetBungieAPI.Authrorization;
+using NetBungieAPI.Clients.Settings;
 using NetBungieAPI.Logging;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services;
 using NetBungieAPI.Services.ApiAccess;
+using NetBungieAPI.Services.Interfaces;
 using System;
+using System.Text;
 using System.Threading.Tasks;
 using Unity;
 using static NetBungieAPI.Logging.LogListener;
@@ -14,42 +17,34 @@ namespace NetBungieAPI.Clients
     {
         internal static IConfigurationService Configuration;
 
-        private readonly IManifestUpdateHandler _versionControl;
+        private readonly IAuthorizationStateHandler _authHandler;
+        private readonly IHttpClientInstance _httpClient;
+        private readonly IManifestVersionHandler _versionControl;
         private readonly ILogger _logger;
-        public static BungiePlatfromClient Platform;
+        private readonly string _apiKey;
+
         private LogListener _logListener;
 
-        internal BungieClient(IConfigurationService config, IManifestUpdateHandler manifestUpdateHandler, ILogger logger,
-            IBungieApiAccess apiAccess)
-        {
-            Configuration = config;
-            _logger = logger;
-            _versionControl = manifestUpdateHandler;
-            ApiAccess = apiAccess;
-        }
-
         public ILocalisedDestinyDefinitionRepositories Repository { get; private set; }
-
         public IBungieApiAccess ApiAccess { get; }
 
-        public void Configure(Action<BungieClientSettings> configure)
+        internal BungieClient(IConfigurationService config, IManifestVersionHandler manifestUpdateHandler, ILogger logger, IBungieApiAccess apiAccess,
+            IHttpClientInstance httpClient, IAuthorizationStateHandler authorizationHandler)
         {
-            BungieClientSettings settings = new BungieClientSettings();
-            configure(settings);
-
-            Configuration = StaticUnityContainer.GetConfiguration();
-
-            if (settings.UseExistingConfig)
-                Configuration.ApplySettingsFromConfig(settings.ExistingConfigPath);
-            else
-                Configuration.ApplySettings(settings);
-
-            if (Configuration.Settings.IsLoggingEnabled)
-            {
-                _logListener = new LogListener();
-                _logger.Register(_logListener);
-            }
-            Platform = new BungiePlatfromClient(Configuration.Settings.ApiKey, Configuration);
+            Configuration = config;
+            _httpClient = httpClient;
+            _logger = logger;
+            _versionControl = manifestUpdateHandler;
+            _authHandler = authorizationHandler;
+            ApiAccess = apiAccess; 
+            _logListener = new LogListener();
+            _logger.Register(_logListener);
+        }
+      
+        public void Configure()
+        {
+            _httpClient.AddAcceptHeader("application/json");
+            _httpClient.AddHeader("X-API-Key", _apiKey);
         }
         public async Task Run()
         {
@@ -76,6 +71,40 @@ namespace NetBungieAPI.Clients
         {
             if (_logListener != null)
                 _logListener.OnNewMessage += eventHandler; ;
+        }
+        private bool TryGetAuthorizationValue(out string value)
+        {
+            value = default;
+            if (Configuration.Settings.ClientID.HasValue && !string.IsNullOrEmpty(Configuration.Settings.ClientSecret))
+            {
+                value = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{Configuration.Settings.ClientID}:{Configuration.Settings.ClientSecret}"));
+                return true;
+            }
+            return false;
+        }
+        public string GetAuthorizationLink()
+        {
+            var awaiter = _authHandler.CreateNewAuthAwaiter();
+            return _httpClient.GetAuthLink(Configuration.Settings.ClientID.Value, awaiter.State);
+        }
+        public void ReceiveCode(string state, string code)
+        {
+            _authHandler.InputCode(state, code);
+        }
+        public async Task<AuthorizationTokenData> GetAuthorizationToken(string code)
+        {
+            if (TryGetAuthorizationValue(out var value))
+            {
+                var token = await _httpClient.GetAuthorizationToken(code, value);
+                _authHandler.AddAuthToken(token);
+                return token;
+            }
+            else
+                throw new Exception("Couldn't form authorization value.");
+        }
+        public async Task<AuthorizationTokenData> RenewAuthorizationToken(AuthorizationTokenData oldToken)
+        {
+            return await _httpClient.RenewAuthorizationToken(oldToken);
         }
     }
 }

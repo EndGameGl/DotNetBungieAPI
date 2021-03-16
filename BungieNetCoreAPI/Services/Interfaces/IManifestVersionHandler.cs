@@ -1,12 +1,12 @@
 ﻿using NetBungieAPI.Destiny;
 using System.Threading.Tasks;
 
-namespace NetBungieAPI.Services
+namespace NetBungieAPI.Services.Interfaces
 {
     /// <summary>
     /// Interface for handling versions of the manifest
     /// </summary>
-    public interface IManifestUpdateHandler
+    public interface IManifestVersionHandler
     {
         DestinyManifest CurrentManifest { get; }
         /// <summary>

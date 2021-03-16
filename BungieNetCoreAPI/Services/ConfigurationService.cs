@@ -6,25 +6,21 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Services
 {
     public class ConfigurationService : IConfigurationService
     {
-        public BungieClientSettings Settings { get; private set; }
+        public BungieClientSettings Settings { get; private set; } = new BungieClientSettings();
         public ConfigurationService()
         {
 
         }
 
-        public void ApplySettings(BungieClientSettings settings)
+        public void Configure(Action<BungieClientSettings> configure)
         {
-            Settings = settings;
-        }
-
-        public void ApplySettingsFromConfig(string filePath)
-        {
-            Settings = JsonConvert.DeserializeObject<BungieClientSettings>(File.ReadAllText(filePath));
+            configure(Settings);
         }
     }
 }

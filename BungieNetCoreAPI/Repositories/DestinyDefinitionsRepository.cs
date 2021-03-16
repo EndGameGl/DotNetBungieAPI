@@ -4,6 +4,7 @@ using NetBungieAPI.Destiny.Definitions;
 using NetBungieAPI.Destiny.Definitions.HistoricalStats;
 using NetBungieAPI.Logging;
 using NetBungieAPI.Services;
+using NetBungieAPI.Services.Interfaces;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Concurrent;

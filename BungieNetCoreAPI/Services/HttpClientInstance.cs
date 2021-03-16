@@ -2,14 +2,13 @@
 using NetBungieAPI.Authrorization;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
+using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Services
 {
