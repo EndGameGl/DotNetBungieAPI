@@ -1,6 +1,7 @@
 ﻿using NetBungieAPI.Clients;
 using NetBungieAPI.Destiny;
 using NetBungieAPI.Logging;
+using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
 using Newtonsoft.Json;
@@ -16,47 +17,68 @@ namespace NetBungieAPI.Services
         private readonly IDestiny2MethodsAccess _d2Api;
         private readonly ILogger _logger;
         private readonly IConfigurationService _configuration;
+        private readonly ILocalisedDestinyDefinitionRepositories _repository;
 
-        private Dictionary<DestinyManifest, string> _manifests = new Dictionary<DestinyManifest, string>();
-        private string _versionControlPath;
         private DestinyManifest _currentUsedManifest;
 
         public DestinyManifest CurrentManifest => _currentUsedManifest;
 
-        public ManifestVersionHandler(ILogger logger, IConfigurationService configuration, IDestiny2MethodsAccess d2Api)
+        public ManifestVersionHandler(ILogger logger, IConfigurationService configuration, IDestiny2MethodsAccess d2Api,
+            ILocalisedDestinyDefinitionRepositories repository)
         {
             _d2Api = d2Api;
             _logger = logger;
             _configuration = configuration;
-        }
-
-        public async Task UpdateManifestData()
-        {
-            _logger.Log("Checking manifest version...", LogType.Info);
-            _logger.Log("Downloading latest manifest...", LogType.Info);
-            var latestManifest = await _d2Api.GetDestinyManifest();
-            var latestFoundEqual = _manifests.Keys.FirstOrDefault(x => x.Version.Equals(latestManifest.Response.Version));
-            if (latestFoundEqual != null)
-            {
-                _logger.Log("Manifest is already up to date.", LogType.Info);
-                _currentUsedManifest = latestFoundEqual;
-            }
-            else
-            {
-                _logger.Log("Manifest requires update.", LogType.Info);
-                _currentUsedManifest = latestManifest.Response;
-            }
+            _repository = repository;
         }
 
         public async Task InitiateManifestHandler()
         {
-            _versionControlPath = _configuration.Settings.VersionsRepositoryPath;
-            _logger.Log("initializing manifest handler...", LogType.Info);
-            if (!Directory.Exists(_versionControlPath))
-                Directory.CreateDirectory(_versionControlPath);
+            if (_configuration.Settings.IsUsingPreloadedData)
+            {
+                var manifests = await CollectManifestData();
+                if (_configuration.Settings.ShouldLoadSpecifiedManifest)
+                {
+                    var manifest = manifests.FirstOrDefault(x => x.Version == _configuration.Settings.PreferredLoadedManifest);
+                    if (manifest != null)
+                    {
+                        _currentUsedManifest = manifest;
+                        await LoadData(manifest);
+                    }
+                }
+                else if (_configuration.Settings.CheckUpdates)
+                {
+                    var latestManifest = await CheckManifestUpdates(manifests);
+                    _currentUsedManifest = latestManifest;
+                    await LoadData(latestManifest);
+                }
+                else
+                {
+                    var latestDate = manifests.Max(x => x.VersionDate);
+                    var latestManifest = manifests.Single(x => x.VersionDate == latestDate);
+                    _currentUsedManifest = latestManifest;
+                    await LoadData(latestManifest);
+                }
+            }
+        }
+        private async Task LoadData(DestinyManifest manifest)
+        {
+            await manifest.DownloadAndSaveToLocalFiles(unpackSqlite: true);
 
-            var versions = Directory.GetDirectories(_versionControlPath);
+            _repository.LoadAllDataFromDisk(
+                localManifestPath: $"{_configuration.Settings.VersionsRepositoryPath}\\{_currentUsedManifest.Version}",
+                manifest: manifest);
+            _logger.Log("Manifest load finished.", LogType.Info);
+        }
+        private async Task<List<DestinyManifest>> CollectManifestData()
+        {
+            if (!Directory.Exists(_configuration.Settings.VersionsRepositoryPath))
+                Directory.CreateDirectory(_configuration.Settings.VersionsRepositoryPath);
+
+            List<DestinyManifest> manifests = new List<DestinyManifest>();
+            var versions = Directory.GetDirectories(_configuration.Settings.VersionsRepositoryPath);
             _logger.Log($"{versions.Length} folders found in versions directory. Attempting to find manifests...", LogType.Info);
+
             foreach (var version in versions)
             {
                 var files = Directory.GetFiles(version);
@@ -65,23 +87,24 @@ namespace NetBungieAPI.Services
                 {
                     _logger.Log($"Found manifest at: {manifest}", LogType.Info);
                     var folderManifest = JsonConvert.DeserializeObject<DestinyManifest>(await File.ReadAllTextAsync(manifest));
-                    _logger.Log($"Manifest version: {folderManifest.Version} - Date: {folderManifest.VersionDate}", LogType.Info);
-                    _manifests.Add(folderManifest, version);
+                    _logger.Log($"Manifest version: {folderManifest.Version} - Date: {folderManifest.VersionDate.ToShortDateString()}", LogType.Info);
+                    manifests.Add(folderManifest);
                 }
             }
-        }
 
-        public async Task LoadData()
+            return manifests;
+        }
+        private async Task<DestinyManifest> CheckManifestUpdates(IEnumerable<DestinyManifest> destinyManifests)
         {
-            if (_currentUsedManifest == null)
-                _currentUsedManifest = _manifests.Keys.Last();
-            _logger.Log("Downloading/verifying manifest data.", LogType.Info);
-            await _currentUsedManifest.DownloadAndSaveToLocalFiles(true);
-            var repo = StaticUnityContainer.GetDestinyDefinitionRepositories();
-            repo.LoadAllDataFromDisk(
-                localManifestPath: $"{_versionControlPath}\\{_currentUsedManifest.Version}",
-                manifest: _currentUsedManifest);
-            _logger.Log("Manifest load finished.", LogType.Info);
+            var latestManifest = (await _d2Api.GetDestinyManifest()).Response;
+
+            if (destinyManifests.Count() == 0)
+                return latestManifest;
+
+            if (destinyManifests.Any(x => x.Version.Equals(latestManifest.Version)))
+                return latestManifest;
+
+            return latestManifest;
         }
     }
 }

@@ -39,22 +39,13 @@ namespace NetBungieAPI.Clients
         {
             _logger.Log("Starting client...", LogType.Info);
 
-            await _versionControl.InitiateManifestHandler();
-
-            if (Configuration.Settings.CheckUpdates)
-                await _versionControl.UpdateManifestData();
-
             if (Configuration.Settings.CacheDefinitionsInMemory)
             {
                 Repository = StaticUnityContainer.GetDestinyDefinitionRepositories();
                 Repository.Initialize(Configuration.Settings.Locales);
-
-                if (Configuration.Settings.IsUsingPreloadedData)
-                {
-                    _logger.Log($"Using preloaded cache for set locales: {string.Join(", ", Configuration.Settings.Locales)}", LogType.Info);
-                    await _versionControl.LoadData();
-                }
             }
+
+            await _versionControl.InitiateManifestHandler();
         }
         public void AddListener(NewMessageEvent eventHandler)
         {

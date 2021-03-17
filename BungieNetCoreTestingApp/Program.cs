@@ -87,7 +87,6 @@ namespace BungieNetCoreTestingApp
                 settings.IncludeApiKey(args[0])
                 .SetDefinitionsLoadingBehaviour(
                     saveToAppMemory: true,
-                    tryDownloadMissingDefinitions: true,
                     preferredSource: DefinitionSources.SQLite,
                     retryDownloading: false,
                     DestinyLocales.EN)

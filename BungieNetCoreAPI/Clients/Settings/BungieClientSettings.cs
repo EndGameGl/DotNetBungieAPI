@@ -1,6 +1,5 @@
 ﻿using NetBungieAPI.Attributes;
 using NetBungieAPI.Destiny;
-using NetBungieAPI.Repositories;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,7 +16,6 @@ namespace NetBungieAPI.Clients.Settings
 
         internal int AppConcurrencyLevel = Environment.ProcessorCount * 2;
         internal bool CacheDefinitionsInMemory = false;
-        internal bool TryDownloadMissingDefinitions = false;
         internal DestinyLocales[] Locales = Array.Empty<DestinyLocales>();
         internal bool ShouldRetryDownloading = false;
         internal bool PremapDefinitionPointers = false;
@@ -76,11 +74,10 @@ namespace NetBungieAPI.Clients.Settings
         /// <param name="tryDownloadMissingDefinitions"></param>
         /// <param name="preferredSource"></param>
         /// <param name="localesToLoad"></param>
-        public BungieClientSettings SetDefinitionsLoadingBehaviour(bool saveToAppMemory, bool tryDownloadMissingDefinitions, DefinitionSources preferredSource, bool retryDownloading,
+        public BungieClientSettings SetDefinitionsLoadingBehaviour(bool saveToAppMemory, DefinitionSources preferredSource, bool retryDownloading,
             params DestinyLocales[] localesToLoad)
         {
             CacheDefinitionsInMemory = saveToAppMemory;
-            TryDownloadMissingDefinitions = tryDownloadMissingDefinitions;
             Locales = localesToLoad;
             PreferredLoadSource = preferredSource;
             ShouldRetryDownloading = retryDownloading;
@@ -137,6 +134,11 @@ namespace NetBungieAPI.Clients.Settings
             SpecifiedLoadSources = config;
             return this;
         }
+        /// <summary>
+        /// Specifies which concurrency level will be predefined when creating all <see cref="ConcurrentDictionary{T, P}"/>
+        /// </summary>
+        /// <param name="level"></param>
+        /// <returns></returns>
         public BungieClientSettings ChangeAppConcurrencyLevel(int level)
         {
             if (level > 0)
@@ -145,34 +147,63 @@ namespace NetBungieAPI.Clients.Settings
                 throw new Exception("Concurrency level can't be lower than zero.");
             return this;
         }
+        /// <summary>
+        /// Enables logging.
+        /// </summary>
+        /// <returns></returns>
         public BungieClientSettings EnableLogging()
         {
             IsLoggingEnabled = true;
             return this;
         }
+        /// <summary>
+        /// Premaps every <see cref="DefinitionHashPointer{T}"/> present in repository.
+        /// </summary>
+        /// <returns></returns>
         public BungieClientSettings PremapPointers()
         {
             PremapDefinitionPointers = true;
             return this;
         }
+        /// <summary>
+        /// Loads in client ID and secret for OAuth2.
+        /// </summary>
+        /// <param name="clientId"></param>
+        /// <param name="clientSecret"></param>
+        /// <returns></returns>
         public BungieClientSettings IncludeClientIdAndSecret(int clientId, string clientSecret)
         {
             ClientID = clientId;
             ClientSecret = clientSecret;
             return this;
         }
+        /// <summary>
+        /// Enables OAuth2 token renewal at specified intervals.
+        /// </summary>
+        /// <param name="refreshRate"></param>
+        /// <returns></returns>
         public BungieClientSettings EnableTokenRenewal(int refreshRate = 180000)
         {
             RenewTokens = true;
             TokenCheckRefreshRate = refreshRate;
             return this;
         }
+        /// <summary>
+        /// If you have multiple databases downloaded, this will force app to load which one to load.
+        /// </summary>
+        /// <param name="manifestVersion"></param>
+        /// <returns></returns>
         public BungieClientSettings LoadSpecifiedManifest(string manifestVersion)
         {
             ShouldLoadSpecifiedManifest = true;
             PreferredLoadedManifest = manifestVersion;
             return this;
         }
+        /// <summary>
+        /// Specifies app client scopes so methods that shouldn't fire won't
+        /// </summary>
+        /// <param name="scopes"></param>
+        /// <returns></returns>
         public BungieClientSettings SpecifyClientScopes(ClientScopes scopes)
         {
             ClientScopes = scopes;
