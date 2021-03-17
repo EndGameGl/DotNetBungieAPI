@@ -16,6 +16,7 @@ namespace NetBungieAPI.Services
         private readonly IDestiny2MethodsAccess _d2Api;
         private readonly ILogger _logger;
         private readonly IConfigurationService _configuration;
+
         private Dictionary<DestinyManifest, string> _manifests = new Dictionary<DestinyManifest, string>();
         private string _versionControlPath;
         private DestinyManifest _currentUsedManifest;

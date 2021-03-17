@@ -13,6 +13,7 @@ namespace NetBungieAPI.Clients.Settings
         internal string ApiKey;
         internal int? ClientID = null;
         internal string ClientSecret = null;
+        internal ClientScopes ClientScopes;
 
         internal int AppConcurrencyLevel = Environment.ProcessorCount * 2;
         internal bool CacheDefinitionsInMemory = false;
@@ -170,6 +171,11 @@ namespace NetBungieAPI.Clients.Settings
         {
             ShouldLoadSpecifiedManifest = true;
             PreferredLoadedManifest = manifestVersion;
+            return this;
+        }
+        public BungieClientSettings SpecifyClientScopes(ClientScopes scopes)
+        {
+            ClientScopes = scopes;
             return this;
         }
     }
