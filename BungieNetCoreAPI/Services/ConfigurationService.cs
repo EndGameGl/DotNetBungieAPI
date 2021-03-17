@@ -1,11 +1,5 @@
-﻿using NetBungieAPI.Clients;
-using NetBungieAPI.Clients.Settings;
-using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
+﻿using NetBungieAPI.Clients.Settings;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Services
@@ -21,6 +15,9 @@ namespace NetBungieAPI.Services
         public void Configure(Action<BungieClientSettings> configure)
         {
             configure(Settings);
+            var httpClient = StaticUnityContainer.GetHTTPClient();
+            httpClient.AddAcceptHeader("application/json");
+            httpClient.AddHeader("X-API-Key", Settings.ApiKey);
         }
     }
 }

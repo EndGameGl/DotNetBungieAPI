@@ -8,6 +8,7 @@ using System;
 using System.Threading.Tasks;
 using Unity;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
+using Newtonsoft.Json;
 
 namespace NetBungieAPI
 {
@@ -17,12 +18,11 @@ namespace NetBungieAPI
     /// <typeparam name="T">Destiny definition type</typeparam>
     public class DefinitionHashPointer<T> : IDeepEquatable<DefinitionHashPointer<T>> where T : IDestinyDefinition
     {
-
-        private bool? _alreadyTriedLoading = false;
-        internal bool Exists;
-        internal T m_value;
         private readonly ILocalisedDestinyDefinitionRepositories _repository;
-        private readonly IDestiny2MethodsAccess _destiny2Methods = null;
+
+        private bool _isMapped;
+        private T _value;
+
         /// <summary>
         /// Definition hash, guaranteed to be unique across it's type.
         /// </summary>
@@ -35,67 +35,27 @@ namespace NetBungieAPI
         /// Definition locale
         /// </summary>
         public DestinyLocales Locale { get; }
+
         /// <summary>
         /// Whether this hash isn't empty.
         /// </summary>
+        [JsonIgnore]
         public bool HasValidHash => Hash.HasValue && Hash.Value > 0;
-        /// <summary>
-        /// Fetches value from this pointer
-        /// </summary>
-        public T Value
-        {
-            get
-            {
-                if (m_value != null && Exists)
-                    return m_value;
-                if (HasValidHash)
-                {
-                    if (_repository.TryGetDestinyDefinition<T>(DefinitionEnumType, Hash.Value, Locale, out var definition))
-                    {
-                        return definition;
-                    }
-                    else
-                        throw new Exception($"No {DefinitionEnumType} was found with {Hash} hash.");
-                }
-                else
-                    throw new Exception("Invalid hash value.");
-            }
-            internal set
-            {
-                m_value = value;
-            }
-        }
 
         /// <summary>
-        /// Struct .ctor
+        /// Class .ctor
         /// </summary>
         /// <param name="hash">Definition hash</param>
         /// <param name="type">Definition type</param>
         public DefinitionHashPointer(uint? hash, DefinitionsEnum type)
         {
-            m_value = default;
-            Exists = false;
+            _value = default;
+            _isMapped = false;
             Hash = hash;
             DefinitionEnumType = type;
             _repository = StaticUnityContainer.GetDestinyDefinitionRepositories();
             Locale = _repository.CurrentLocaleLoadContext;
         }
-        internal DefinitionHashPointer(uint? hash, DefinitionsEnum type, DestinyLocales locale, T def = default, ILocalisedDestinyDefinitionRepositories repo = null)
-        {
-            if (def != null)
-            {
-                m_value = def;
-                Exists = true;
-            }
-            Hash = hash;
-            DefinitionEnumType = type;
-            if (repo != null)
-                _repository = repo;
-            else
-                _repository = StaticUnityContainer.GetDestinyDefinitionRepositories();
-            Locale = locale;
-        }
-
         /// <summary>
         /// Tries to get definition from local cache/API
         /// </summary>
@@ -104,9 +64,9 @@ namespace NetBungieAPI
         public bool TryGetDefinition(out T definition)
         {
             definition = default;
-            if (m_value != null)
+            if (_isMapped)
             {
-                definition = m_value;
+                definition = _value;
                 return true;
             }
             if (HasValidHash)
@@ -115,42 +75,35 @@ namespace NetBungieAPI
                 {
                     definition = foundDefinition;
                     return true;
-                }
-                else if (BungieClient.Configuration.Settings.TryDownloadMissingDefinitions)
-                {
-                    if (_alreadyTriedLoading == false || BungieClient.Configuration.Settings.ShouldRetryDownloading)
-                    {
-                        _alreadyTriedLoading = true;
-                        var task = Task.Run(async () => await _destiny2Methods.GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value));
-                        var response = task.Result;
-                        if (response.ErrorCode == PlatformErrorCodes.Success && response.Response != null)
-                        {
-                            definition = task.Result.Response;
-                            _repository.AddDefinitionToCache(DefinitionEnumType, definition, Locale);
-                            return true;
-                        }
-                        return false;
-                    }
-                    return false;
-                }
-                return false;
+                }             
             }
             return false;
         }
+        public async Task<DefinitionHashPointerDownloadResult<T>> TryDownloadDefinition()
+        {
+            if (HasValidHash)
+            {
+                var response = await StaticUnityContainer.GetService<IDestiny2MethodsAccess>().GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value);
+                if (response.ErrorCode == PlatformErrorCodes.Success && response.Response != null)
+                    return new DefinitionHashPointerDownloadResult<T>(response.Response, true);
+                return new DefinitionHashPointerDownloadResult<T>(default, false, response.Message);
+            }
+            return new DefinitionHashPointerDownloadResult<T>(default, false, "Missing valid hash.");
+        }
         public override string ToString()
         {
-            return $"{(Exists ? m_value.ToString() : $"{DefinitionEnumType} - {Hash} - {Locale}")}";
+            return $"{(_isMapped ? _value.ToString() : $"{DefinitionEnumType} - {Hash} - {Locale}")}";
         }
         internal void TryMapValue()
         {
-            if (m_value != null && Exists)
+            if (_value != null && _isMapped)
                 return;
             if (HasValidHash)
             {
                 if (_repository.TryGetDestinyDefinition<T>(DefinitionEnumType, Hash.Value, Locale, out var definition))
                 {
-                    m_value = definition;
-                    Exists = true;
+                    _value = definition;
+                    _isMapped = true;
                 }
             }
         }

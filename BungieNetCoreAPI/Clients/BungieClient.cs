@@ -1,14 +1,10 @@
 ﻿using NetBungieAPI.Authrorization;
-using NetBungieAPI.Clients.Settings;
 using NetBungieAPI.Logging;
 using NetBungieAPI.Repositories;
-using NetBungieAPI.Services;
-using NetBungieAPI.Services.ApiAccess;
 using NetBungieAPI.Services.Interfaces;
 using System;
 using System.Text;
 using System.Threading.Tasks;
-using Unity;
 using static NetBungieAPI.Logging.LogListener;
 
 namespace NetBungieAPI.Clients
@@ -21,7 +17,6 @@ namespace NetBungieAPI.Clients
         private readonly IHttpClientInstance _httpClient;
         private readonly IManifestVersionHandler _versionControl;
         private readonly ILogger _logger;
-        private readonly string _apiKey;
 
         private LogListener _logListener;
 
@@ -39,12 +34,6 @@ namespace NetBungieAPI.Clients
             ApiAccess = apiAccess; 
             _logListener = new LogListener();
             _logger.Register(_logListener);
-        }
-      
-        public void Configure()
-        {
-            _httpClient.AddAcceptHeader("application/json");
-            _httpClient.AddHeader("X-API-Key", _apiKey);
         }
         public async Task Run()
         {

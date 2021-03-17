@@ -18,7 +18,10 @@ namespace NetBungieAPI.Repositories
             {
                 foreach (var category in item.ItemCategories)
                 {
-                    result[category.Value].Add(item);
+                    if (category.TryGetDefinition(out var value))
+                    {
+                        result[value].Add(item);
+                    }
                 }
             }
             return result;

@@ -302,19 +302,5 @@ namespace NetBungieAPI.Destiny.Definitions.Activities
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
-        public DefinitionHashPointer<DestinyActivityDefinition> GetPointer()
-        {
-            var repo = StaticUnityContainer.GetDestinyDefinitionRepositories();
-            var settings = StaticUnityContainer.GetConfiguration().Settings;
-            foreach (var locale in settings.Locales)
-            {
-                if (repo.TryGetDestinyDefinition<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, Hash, locale, out var definition))
-                {
-                    if (Equals(definition))
-                        return new DefinitionHashPointer<DestinyActivityDefinition>(Hash, DefinitionsEnum.DestinyActivityDefinition, locale, definition, repo);
-                }
-            }
-            return null;
-        }
     }
 }

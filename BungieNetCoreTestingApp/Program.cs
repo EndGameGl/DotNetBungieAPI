@@ -84,27 +84,21 @@ namespace BungieNetCoreTestingApp
         {
             _bungieClient = BungieApiBuilder.GetApiClient((settings) =>
             {
-                settings.IncludeApiKey(args[0]);
-
-                settings.SetDefinitionsLoadingBehaviour(
+                settings.IncludeApiKey(args[0])
+                .SetDefinitionsLoadingBehaviour(
                     saveToAppMemory: true,
                     tryDownloadMissingDefinitions: true,
                     preferredSource: DefinitionSources.SQLite,
                     retryDownloading: false,
-                    DestinyLocales.EN);
-
-                settings.UsePreloadedData("H:\\BungieNetCoreAPIRepository\\Manifests");
-
-                settings.UseVersionControl(
+                    DestinyLocales.EN)
+                .UsePreloadedData("H:\\BungieNetCoreAPIRepository\\Manifests")
+                .UseVersionControl(
                     keepOldVersions: true,
-                    checkUpdates: false,
-                    repositoryPath: string.Empty);
-
-                settings.EnableLogging();
-
-                settings.PremapPointers();
-
-                settings.IncludeClientIdAndSecret(clientId: int.Parse(args[1]), clientSecret: args[2]);
+                    checkUpdates: true,
+                    repositoryPath: string.Empty)
+                .EnableLogging()
+                .PremapPointers()
+                .IncludeClientIdAndSecret(clientId: int.Parse(args[1]), clientSecret: args[2]);
 
                 //settings.EnableTokenRenewal(refreshRate: 30000);
 
@@ -129,6 +123,11 @@ namespace BungieNetCoreTestingApp
         private static async Task MainAsync()
         {
             await _bungieClient.Run();
+            if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyInventoryItemDefinition>(DefinitionsEnum.DestinyInventoryItemDefinition, 432476743, DestinyLocales.EN, out var palindrome))
+            {
+                var action = palindrome.Action;
+            }
+
 
             //var aggregateActivityStats = await BungieClient.Platform.GetDestinyAggregateActivityStats(
             //    membershipType: BungieMembershipType.TigerSteam,
@@ -209,63 +208,6 @@ namespace BungieNetCoreTestingApp
             }
 
             Console.WriteLine($"Ran op {amount} times in {totalTime} ms ({amount / totalTime} op/ms)");
-        }
-        private void PrintWeapons(List<DestinyInventoryItemDefinition> weapons)
-        {
-            string indent = new string(' ', 4);
-            Random rnd = new Random();
-
-            var key = Console.ReadKey();
-
-            while (key.Key != ConsoleKey.Escape)
-            {
-                var randomWeapon = weapons.ElementAt(rnd.Next(0, weapons.Count));
-
-                var weaponSockets = randomWeapon.Sockets;
-
-                if (randomWeapon.ItemCategories.Any(x => x.Hash == 3109687656))
-                    return;
-
-                Console.WriteLine($"Weapon: {randomWeapon.DisplayProperties.Name} ({randomWeapon.ItemTypeAndTierDisplayName}), {weaponSockets.SocketEntries.Count} sockets.");
-
-                foreach (var category in weaponSockets.SocketCategories)
-                {
-                    if (category.SocketCategory.TryGetDefinition(out var categoryDef))
-                    {
-                        Console.WriteLine($"Category: {categoryDef.DisplayProperties.Name}");
-
-                        foreach (var index in category.SocketIndexes)
-                        {
-                            var socketData = weaponSockets.SocketEntries[index];
-
-                            string message = $"{indent}{socketData.SingleInitialItem.Value.DisplayProperties.Name}";
-
-                            if (socketData.ReusablePlugSet.TryGetDefinition(out var plugSet))
-                            {
-                                List<DestinyInventoryItemDefinition> plugs = new List<DestinyInventoryItemDefinition>();
-                                foreach (var plugSetItem in plugSet.ReusablePlugItems)
-                                {
-                                    if (plugSetItem.PlugItem.TryGetDefinition(out var item))
-                                    {
-                                        plugs.Add(item);
-                                    }
-                                }
-                                if (plugs.Count > 0)
-                                {
-                                    var plugNames = plugs.Select(x => x.DisplayProperties.Name);
-                                    message += $" ({string.Join(", ", plugNames)})";
-                                }
-                            }
-
-                            Console.WriteLine(message);
-                        }
-                    }
-                }
-
-                Console.WriteLine(new string('-', 20));
-
-                key = Console.ReadKey();
-            }
         }
     }
 }

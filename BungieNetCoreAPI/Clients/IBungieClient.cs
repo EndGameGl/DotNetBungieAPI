@@ -1,12 +1,6 @@
 ﻿using NetBungieAPI.Authrorization;
-using NetBungieAPI.Clients.Settings;
 using NetBungieAPI.Repositories;
-using NetBungieAPI.Services;
-using NetBungieAPI.Services.ApiAccess;
 using NetBungieAPI.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using static NetBungieAPI.Logging.LogListener;
 
@@ -16,7 +10,6 @@ namespace NetBungieAPI.Clients
     {
         void AddListener(NewMessageEvent eventHandler);
         Task Run();
-        void Configure();
         IBungieApiAccess ApiAccess { get; }
         ILocalisedDestinyDefinitionRepositories Repository { get; }
         string GetAuthorizationLink();
