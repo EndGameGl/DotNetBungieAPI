@@ -133,13 +133,7 @@ namespace BungieNetCoreTestingApp
             comparer.Init(firstManifest, secondManifest);
             comparer.Compare(@"H:\BungieNetCoreAPIRepository\Manifests", localesToCompare, definitionsToCompare);
 
-            var newItems = comparer.GetNewAs<DestinyInventoryItemDefinition>(DestinyLocales.EN, DefinitionsEnum.DestinyInventoryItemDefinition);
-            newItems.ForEach(x => x.TryMapValue());
-
-            var updated = comparer.GetUpdated(DestinyLocales.EN, DefinitionsEnum.DestinyInventoryItemDefinition);
-
-            var updatedItems = comparer.GetUpdatedAs<DestinyInventoryItemDefinition>(DestinyLocales.EN, DefinitionsEnum.DestinyInventoryItemDefinition);
-            updatedItems.ForEach(x => x.TryMapValue());
+            List<DestinyInventoryItemDefinition> items = comparer.GetNew(DestinyLocales.EN, DefinitionsEnum.DestinyInventoryItemDefinition).Select(x => x.ParseNewAs<DestinyInventoryItemDefinition>()).ToList();
 
             await Task.Delay(Timeout.Infinite);
         }

@@ -2,7 +2,6 @@
 using NetBungieAPI.Destiny;
 using NetBungieAPI.Destiny.Definitions;
 using NetBungieAPI.Pipes;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
