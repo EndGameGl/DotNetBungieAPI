@@ -1,6 +1,7 @@
 ﻿using NetBungieAPI.Bungie;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
+using NetBungieAPI.User;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess
@@ -12,13 +13,13 @@ namespace NetBungieAPI.Services.ApiAccess
         {
             _httpClient = httpClient;
         }
-        public async Task<BungieResponse<BungieNetUser>> GetBungieNetUserById(long id)
+        public async Task<BungieResponse<GeneralUser>> GetBungieNetUserById(long id)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<BungieNetUser>>($"/User/GetBungieNetUserById/{id}");
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<GeneralUser>>($"/User/GetBungieNetUserById/{id}");
         }
-        public async Task<BungieResponse<BungieNetUser[]>> SearchUsers(string query)
+        public async Task<BungieResponse<GeneralUser[]>> SearchUsers(string query)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<BungieNetUser[]>>($"/User/SearchUsers/{query}");
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<GeneralUser[]>>($"/User/SearchUsers/{query}");
         }
         public async Task<BungieResponse<BungieNetUserAccountCredentialType[]>> GetCredentialTypesForTargetAccount(long id)
         {
