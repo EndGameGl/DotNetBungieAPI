@@ -25,6 +25,7 @@ using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Destiny.Definitions.ItemCategories;
 using NetBungieAPI.Destiny.Responses;
 using NetBungieAPI.Fireteam;
+using NetBungieAPI.Forum;
 using NetBungieAPI.Services;
 using NetBungieAPI.Services.Interfaces;
 using Newtonsoft.Json;
@@ -123,8 +124,7 @@ namespace BungieNetCoreTestingApp
 
         private static async Task MainAsync()
         {
-            var user = await _bungieClient.ApiAccess.User.GetBungieNetUserById(20027802);
-            var credentials = await _bungieClient.ApiAccess.User.GetCredentialTypesForTargetAccount(user.Response.MembershipId);
+            var user = await _bungieClient.ApiAccess.Forum.GetTopicsPaged(ForumPostCategoryEnums.None, ForumTopicsQuickDateEnum.All, ForumTopicsSortEnum.Default, 0);
 
             await Task.Delay(Timeout.Infinite);
         }
