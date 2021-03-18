@@ -1,4 +1,5 @@
 ﻿using NetBungieAPI.Bungie;
+using NetBungieAPI.User;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace NetBungieAPI.Content
         public bool HasAgeGate { get; }
         public int MinimumAge { get; }
         public string RatingImagePath { get; }
-        public BungieNetUser Author { get; }
+        public GeneralUser Author { get; }
         public bool AutoEnglishPropertyFallback { get; }
         public ReadOnlyDictionary<string, object> Properties { get; }
         public ReadOnlyCollection<ContentRepresentation> Representations { get; }
@@ -26,7 +27,7 @@ namespace NetBungieAPI.Content
 
         [JsonConstructor]
         internal ContentItemPublicContract(long contentId, string cType, string cmsPath, DateTime creationDate, DateTime modifyDate, bool allowComments,
-            bool hasAgeGate, int minimumAge, string ratingImagePath, BungieNetUser author, bool autoEnglishPropertyFallback, Dictionary<string, object> properties,
+            bool hasAgeGate, int minimumAge, string ratingImagePath, GeneralUser author, bool autoEnglishPropertyFallback, Dictionary<string, object> properties,
             ContentRepresentation[] representations, string[] tags, CommentSummary commentSummary)
         {
             ContentId = contentId;

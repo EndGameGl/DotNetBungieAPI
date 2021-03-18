@@ -59,9 +59,9 @@ namespace NetBungieAPI
         /// <param name="membershipId">The ID of the membership whose linked Destiny accounts you want returned. Make sure your membership ID matches its Membership Type: don't pass us a PSN membership ID and the XBox membership type, it's not going to work!</param>
         /// <param name="getAllMemberships">if set to 'true', all memberships regardless of whether they're obscured by overrides will be returned. Normal privacy restrictions on account linking will still apply no matter what.</param>
         /// <returns></returns>
-        public async Task<BungieResponse<BungieNetUserMembershipWithLinkedDestinyProfiles>> GetLinkedProfiles(BungieMembershipType membershipType, long membershipId, bool getAllMemberships = false)
+        public async Task<BungieResponse<DestinyLinkedProfilesResponse>> GetLinkedProfiles(BungieMembershipType membershipType, long membershipId, bool getAllMemberships = false)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<BungieNetUserMembershipWithLinkedDestinyProfiles>>($"/Destiny2/{membershipType}/Profile/{membershipId}/LinkedProfiles/?getAllMemberships={getAllMemberships}");
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyLinkedProfilesResponse>>($"/Destiny2/{membershipType}/Profile/{membershipId}/LinkedProfiles/?getAllMemberships={getAllMemberships}");
         }
         /// <summary>
         /// Returns Destiny Profile information for the supplied membership.

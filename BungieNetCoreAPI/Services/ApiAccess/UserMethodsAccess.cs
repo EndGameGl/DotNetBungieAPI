@@ -1,5 +1,4 @@
-﻿using NetBungieAPI.Bungie;
-using NetBungieAPI.Services.ApiAccess.Interfaces;
+﻿using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
 using NetBungieAPI.User;
 using System.Threading.Tasks;
@@ -29,17 +28,17 @@ namespace NetBungieAPI.Services.ApiAccess
         {
             return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<UserTheme[]>>($"/User/GetAvailableThemes");
         }
-        public async Task<BungieResponse<BungieNetUserWithMemberships>> GetMembershipDataById(long id, BungieMembershipType membershipType)
+        public async Task<BungieResponse<UserMembershipData>> GetMembershipDataById(long id, BungieMembershipType membershipType)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<BungieNetUserWithMemberships>>($"/User/GetMembershipsById/{id}/{membershipType}");
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<UserMembershipData>>($"/User/GetMembershipsById/{id}/{membershipType}");
         }
-        public async Task<BungieResponse<BungieNetUserWithMemberships>> GetMembershipDataForCurrentUser()
+        public async Task<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser()
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<BungieNetUserWithMemberships>>($"User/GetMembershipsForCurrentUser");
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<UserMembershipData>>($"User/GetMembershipsForCurrentUser");
         }
-        public async Task<BungieResponse<DestinyHardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(long credential, BungieCredentialType credentialType = BungieCredentialType.SteamId)
+        public async Task<BungieResponse<HardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(long credential, BungieCredentialType credentialType = BungieCredentialType.SteamId)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyHardLinkedUserMembership>>($"/User/GetMembershipFromHardLinkedCredential/{credentialType}/{credential}");
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<HardLinkedUserMembership>>($"/User/GetMembershipFromHardLinkedCredential/{credentialType}/{credential}");
         }
     }
 }

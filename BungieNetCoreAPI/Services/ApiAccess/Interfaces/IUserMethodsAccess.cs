@@ -1,5 +1,4 @@
-﻿using NetBungieAPI.Bungie;
-using NetBungieAPI.User;
+﻿using NetBungieAPI.User;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess.Interfaces
@@ -10,8 +9,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         Task<BungieResponse<GeneralUser[]>> SearchUsers(string query);
         Task<BungieResponse<CredentialTypeForAccount[]>> GetCredentialTypesForTargetAccount(long id);
         Task<BungieResponse<UserTheme[]>> GetAvailableThemes();
-        Task<BungieResponse<BungieNetUserWithMemberships>> GetMembershipDataById(long id, BungieMembershipType membershipType);
-        Task<BungieResponse<BungieNetUserWithMemberships>> GetMembershipDataForCurrentUser();
-        Task<BungieResponse<DestinyHardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(long credential, BungieCredentialType credentialType = BungieCredentialType.SteamId);
+        Task<BungieResponse<UserMembershipData>> GetMembershipDataById(long id, BungieMembershipType membershipType);
+        Task<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser();
+        Task<BungieResponse<HardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(long credential, BungieCredentialType credentialType = BungieCredentialType.SteamId);
     }
 }

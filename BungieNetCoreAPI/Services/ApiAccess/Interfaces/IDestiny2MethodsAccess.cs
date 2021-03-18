@@ -20,7 +20,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         Task<BungieResponse<DestinyManifest>> GetDestinyManifest();
         Task<BungieResponse<T>> GetDestinyEntityDefinition<T>(DefinitionsEnum entityType, uint hash) where T : IDestinyDefinition;
         Task<BungieResponse<BungieNetUserInfo[]>> SearchDestinyPlayer(BungieMembershipType membershipType, string displayName, bool returnOriginalProfile = false);
-        Task<BungieResponse<BungieNetUserMembershipWithLinkedDestinyProfiles>> GetLinkedProfiles(BungieMembershipType membershipType, long membershipId, bool getAllMemberships = false);
+        Task<BungieResponse<DestinyLinkedProfilesResponse>> GetLinkedProfiles(BungieMembershipType membershipType, long membershipId, bool getAllMemberships = false);
         Task<BungieResponse<DestinyComponentProfileResponse>> GetProfile(BungieMembershipType membershipType, long destinyMembershipId, DestinyComponentType[] componentTypes);
         Task<BungieResponse<DestinyComponentCharacterResponse>> GetCharacter(BungieMembershipType membershipType, long destinyMembershipId, long characterId, DestinyComponentType[] componentTypes);
         Task<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(long groupId);
