@@ -124,6 +124,8 @@ namespace BungieNetCoreTestingApp
         private static async Task MainAsync()
         {
             var user = await _bungieClient.ApiAccess.User.GetBungieNetUserById(20027802);
+            var credentials = await _bungieClient.ApiAccess.User.GetCredentialTypesForTargetAccount(user.Response.MembershipId);
+
             await Task.Delay(Timeout.Infinite);
         }
 

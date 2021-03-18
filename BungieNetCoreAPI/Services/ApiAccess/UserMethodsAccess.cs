@@ -21,13 +21,13 @@ namespace NetBungieAPI.Services.ApiAccess
         {
             return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<GeneralUser[]>>($"/User/SearchUsers/{query}");
         }
-        public async Task<BungieResponse<BungieNetUserAccountCredentialType[]>> GetCredentialTypesForTargetAccount(long id)
+        public async Task<BungieResponse<CredentialTypeForAccount[]>> GetCredentialTypesForTargetAccount(long id)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<BungieNetUserAccountCredentialType[]>>($"User/GetCredentialTypesForTargetAccount/{id}");
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<CredentialTypeForAccount[]>>($"/User/GetCredentialTypesForTargetAccount/{id}");
         }
-        public async Task<BungieResponse<BungieUserTheme[]>> GetAvailableThemes()
+        public async Task<BungieResponse<UserTheme[]>> GetAvailableThemes()
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<BungieUserTheme[]>>($"/User/GetAvailableThemes");
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<UserTheme[]>>($"/User/GetAvailableThemes");
         }
         public async Task<BungieResponse<BungieNetUserWithMemberships>> GetMembershipDataById(long id, BungieMembershipType membershipType)
         {

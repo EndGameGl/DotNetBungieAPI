@@ -8,8 +8,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
     {
         Task<BungieResponse<GeneralUser>> GetBungieNetUserById(long id);
         Task<BungieResponse<GeneralUser[]>> SearchUsers(string query);
-        Task<BungieResponse<BungieNetUserAccountCredentialType[]>> GetCredentialTypesForTargetAccount(long id);
-        Task<BungieResponse<BungieUserTheme[]>> GetAvailableThemes();
+        Task<BungieResponse<CredentialTypeForAccount[]>> GetCredentialTypesForTargetAccount(long id);
+        Task<BungieResponse<UserTheme[]>> GetAvailableThemes();
         Task<BungieResponse<BungieNetUserWithMemberships>> GetMembershipDataById(long id, BungieMembershipType membershipType);
         Task<BungieResponse<BungieNetUserWithMemberships>> GetMembershipDataForCurrentUser();
         Task<BungieResponse<DestinyHardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(long credential, BungieCredentialType credentialType = BungieCredentialType.SteamId);
