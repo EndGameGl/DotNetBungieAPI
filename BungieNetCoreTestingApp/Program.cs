@@ -24,6 +24,7 @@ using NetBungieAPI.Destiny.Definitions.InventoryBuckets;
 using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Destiny.Definitions.ItemCategories;
 using NetBungieAPI.Destiny.Responses;
+using NetBungieAPI.Fireteam;
 using NetBungieAPI.Services;
 using NetBungieAPI.Services.Interfaces;
 using Newtonsoft.Json;
@@ -122,18 +123,6 @@ namespace BungieNetCoreTestingApp
 
         private static async Task MainAsync()
         {
-            await _bungieClient.Run();
-            var firstManifest = JsonConvert.DeserializeObject<DestinyManifest>(File.ReadAllText(@"H:\BungieNetCoreAPIRepository\Manifests\91788.21.02.24.1457-2-bnet.36002\Manifest.json"));
-            var secondManifest = JsonConvert.DeserializeObject<DestinyManifest>(File.ReadAllText(@"H:\BungieNetCoreAPIRepository\Manifests\91966.21.03.02.2023-2-bnet.36361\Manifest.json"));
-            
-            var localesToCompare = new DestinyLocales[] { DestinyLocales.EN };
-            var definitionsToCompare = Enum.GetValues(typeof(DefinitionsEnum)).Cast<DefinitionsEnum>().ToList();
-
-            DatabaseComparer comparer = new DatabaseComparer();
-            comparer.Init(firstManifest, secondManifest);
-            comparer.Compare(@"H:\BungieNetCoreAPIRepository\Manifests", localesToCompare, definitionsToCompare);
-
-            List<DestinyInventoryItemDefinition> items = comparer.GetNew(DestinyLocales.EN, DefinitionsEnum.DestinyInventoryItemDefinition).Select(x => x.ParseNewAs<DestinyInventoryItemDefinition>()).ToList();
 
             await Task.Delay(Timeout.Infinite);
         }
