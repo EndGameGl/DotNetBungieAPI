@@ -30,6 +30,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -122,47 +123,23 @@ namespace BungieNetCoreTestingApp
         private static async Task MainAsync()
         {
             await _bungieClient.Run();
-            if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyInventoryItemDefinition>(DefinitionsEnum.DestinyInventoryItemDefinition, 432476743, DestinyLocales.EN, out var palindrome))
-            {
-                var action = palindrome.Action;
-            }
+            var firstManifest = JsonConvert.DeserializeObject<DestinyManifest>(File.ReadAllText(@"H:\BungieNetCoreAPIRepository\Manifests\91788.21.02.24.1457-2-bnet.36002\Manifest.json"));
+            var secondManifest = JsonConvert.DeserializeObject<DestinyManifest>(File.ReadAllText(@"H:\BungieNetCoreAPIRepository\Manifests\91966.21.03.02.2023-2-bnet.36361\Manifest.json"));
+            
+            var localesToCompare = new DestinyLocales[] { DestinyLocales.EN };
+            var definitionsToCompare = Enum.GetValues(typeof(DefinitionsEnum)).Cast<DefinitionsEnum>().ToList();
 
+            DatabaseComparer comparer = new DatabaseComparer();
+            comparer.Init(firstManifest, secondManifest);
+            comparer.Compare(@"H:\BungieNetCoreAPIRepository\Manifests", localesToCompare, definitionsToCompare);
 
-            //var aggregateActivityStats = await BungieClient.Platform.GetDestinyAggregateActivityStats(
-            //    membershipType: BungieMembershipType.TigerSteam,
-            //    destinyMembershipId: 4611686018483306402,
-            //    characterId: 2305843009404108262);
+            var newItems = comparer.GetNewAs<DestinyInventoryItemDefinition>(DestinyLocales.EN, DefinitionsEnum.DestinyInventoryItemDefinition);
+            newItems.ForEach(x => x.TryMapValue());
 
+            var updated = comparer.GetUpdated(DestinyLocales.EN, DefinitionsEnum.DestinyInventoryItemDefinition);
 
-            //var pgcr = await BungieClient.Platform.GetPostGameCarnageReport(activityHistory.Response.Activities.First().ActivityDetails.InstanceId);
-
-            //var accountStats = await BungieClient.Platform.GetHistoricalStatsForAccount(BungieMembershipType.TigerSteam, 4611686018483306402);
-
-            //var profileData = await BungieClient.Platform.GetProfile(
-            //    membershipType: BungieMembershipType.TigerSteam,
-            //    destinyMembershipId: 4611686018483306402,
-
-            //    ALL_COMPONENTS_ARRAY);
-
-            //if (aggregateActivityStats.ErrorCode == PlatformErrorCodes.Success && aggregateActivityStats.Response != null)
-            //{
-            //    StringBuilder sb = new StringBuilder();
-
-            //    foreach (var activityStat in aggregateActivityStats.Response.Activities)
-            //    {
-            //        if (activityStat.Activity.TryGetDefinition(out var actDef))
-            //        {
-            //            sb.AppendLine($"{{{actDef.DisplayProperties?.Name}}}");
-            //        }
-            //        else
-            //            sb.AppendLine("{Unknown activity.}");
-            //        foreach (var item in activityStat.Values)
-            //        {
-            //            sb.AppendLine($"    {item.Key}: {item.Value.BasicValue.DisplayValue}");
-            //        }
-            //    }
-            //    Console.WriteLine(sb.ToString());
-            //}
+            var updatedItems = comparer.GetUpdatedAs<DestinyInventoryItemDefinition>(DestinyLocales.EN, DefinitionsEnum.DestinyInventoryItemDefinition);
+            updatedItems.ForEach(x => x.TryMapValue());
 
             await Task.Delay(Timeout.Infinite);
         }

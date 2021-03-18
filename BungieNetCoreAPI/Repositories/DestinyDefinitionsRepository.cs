@@ -3,6 +3,7 @@ using NetBungieAPI.Destiny;
 using NetBungieAPI.Destiny.Definitions;
 using NetBungieAPI.Destiny.Definitions.HistoricalStats;
 using NetBungieAPI.Logging;
+using NetBungieAPI.Pipes;
 using NetBungieAPI.Services;
 using NetBungieAPI.Services.Interfaces;
 using Newtonsoft.Json.Linq;
@@ -215,11 +216,8 @@ namespace NetBungieAPI.Repositories
         private void LoadDefinitionsFromSQLite(DefinitionsEnum[] definitions, string localManifestPath, DestinyManifest manifest, bool loadHistoricalDefinitions)
         {
             var mobileWorldContentPathsLocalePath = Path.GetFileName(manifest.MobileWorldContentPaths[Locale.LocaleToString()]);
-            using (SQLiteConnection connection = new SQLiteConnection(
-                @$"Data Source={localManifestPath}\\MobileWorldContent\\{Locale}\\{mobileWorldContentPathsLocalePath}; Version=3;"))
+            using (SQLiteDataPipe pipe = SQLiteDataPipe.CreatePipe($"{localManifestPath}\\MobileWorldContent\\{Locale}\\{mobileWorldContentPathsLocalePath}"))
             {
-                connection.Open();
-
                 foreach (var key in definitions)
                 {
                     if (key == DefinitionsEnum.DestinyHistoricalStatsDefinition)
@@ -227,10 +225,9 @@ namespace NetBungieAPI.Repositories
                     var definitionType = _assemblyData.DefinitionsToTypeMapping[key].DefinitionType;
                     _definitionRepositories.TryAdd(key, new DestinyDefinitionTypeRepository(definitionType, _config.Settings.AppConcurrencyLevel));
                     _logger.Log($"Loading definitions from {key} ({Locale})", LogType.Info);
-                    SQLiteCommand command = new SQLiteCommand() { Connection = connection, CommandText = GetSQLSelectQuery(key.ToString()) };
                     try
                     {
-                        var reader = command.ExecuteReader();
+                        var reader = pipe.GetReader(GetSQLSelectQuery(key.ToString()));
                         while (reader.Read())
                         {
                             AddDefinition(key, ParseJsonFromSQLiteDataReader<IDestinyDefinition>(reader, definitionType));
@@ -246,14 +243,9 @@ namespace NetBungieAPI.Repositories
                     _historicalStatsDefinitions = new ConcurrentDictionary<string, DestinyHistoricalStatsDefinition>(_config.Settings.AppConcurrencyLevel, 31);
                     var definitionType = _assemblyData.DefinitionsToTypeMapping[DefinitionsEnum.DestinyHistoricalStatsDefinition].DefinitionType;
                     _logger.Log($"Loading definitions from DestinyHistoricalStatsDefinition ({Locale})", LogType.Info);
-                    SQLiteCommand command = new SQLiteCommand()
-                    {
-                        Connection = connection,
-                        CommandText = GetSQLSelectQuery(DefinitionsEnum.DestinyHistoricalStatsDefinition.ToString())
-                    };
                     try
                     {
-                        var reader = command.ExecuteReader();
+                        var reader = pipe.GetReader(GetSQLSelectQuery(DefinitionsEnum.DestinyHistoricalStatsDefinition.ToString()));
                         while (reader.Read())
                         {
                             var definition = ParseJsonFromSQLiteDataReader<DestinyHistoricalStatsDefinition>(reader, definitionType);
@@ -265,8 +257,6 @@ namespace NetBungieAPI.Repositories
                         _logger.Log(e.Message, LogType.Error);
                     }
                 }
-
-                connection.Close();
             }
         }
         private void LoadDefinitionFromJSON(DefinitionsEnum[] definitions, string localManifestPath, DestinyManifest manifest)

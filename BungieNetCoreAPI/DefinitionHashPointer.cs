@@ -94,7 +94,7 @@ namespace NetBungieAPI
         {
             return $"{(_isMapped ? _value.ToString() : $"{DefinitionEnumType} - {Hash} - {Locale}")}";
         }
-        internal void TryMapValue()
+        public void TryMapValue()
         {
             if (_value != null && _isMapped)
                 return;
