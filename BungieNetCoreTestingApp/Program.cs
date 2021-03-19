@@ -28,6 +28,7 @@ using NetBungieAPI.Fireteam;
 using NetBungieAPI.Forum;
 using NetBungieAPI.Services;
 using NetBungieAPI.Services.Interfaces;
+using NetBungieAPI.Trending;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -124,7 +125,23 @@ namespace BungieNetCoreTestingApp
 
         private static async Task MainAsync()
         {
-            var response = await _bungieClient.ApiAccess.Community.GetCommunityContent(ForumTopicsSortEnum.Default, ForumMediaType.None);
+            await _bungieClient.Run();
+
+            //var activity = await _bungieClient.ApiAccess.Destiny2.GetPublicMilestones();
+
+            //foreach (var milestone in activity.Response)
+            //{
+            //    milestone.Value.Milestone.TryMapValue();
+            //    milestone.Value.Activities?.ForEach(x => 
+            //    { 
+            //        x?.Activity.TryMapValue(); 
+            //        x?.Modifiers.ForEach(x => x.TryMapValue());
+            //        x?.ChallengeObjectives.ForEach(x => x.TryMapValue()); 
+            //        });
+            //}
+            
+
+            var response = await _bungieClient.ApiAccess.Trending.GetTrendingEntryDetail(TrendingEntryType.DestinyActivity, "1661734046");
 
             await Task.Delay(Timeout.Infinite);
         }

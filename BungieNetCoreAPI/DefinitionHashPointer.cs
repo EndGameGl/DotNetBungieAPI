@@ -2,8 +2,6 @@
 using NetBungieAPI.Destiny;
 using NetBungieAPI.Destiny.Definitions;
 using NetBungieAPI.Repositories;
-using NetBungieAPI.Services;
-using NetBungieAPI.Clients;
 using System;
 using System.Threading.Tasks;
 using Unity;
@@ -18,6 +16,17 @@ namespace NetBungieAPI
     /// <typeparam name="T">Destiny definition type</typeparam>
     public class DefinitionHashPointer<T> : IDeepEquatable<DefinitionHashPointer<T>> where T : IDestinyDefinition
     {
+        private T debug_value_getter
+        {
+            get
+            {
+                if (_repository.TryGetDestinyDefinition<T>(DefinitionEnumType, Hash.Value, Locale, out var def))
+                    return def;
+                else
+                    throw new Exception("Definition is missing from repo.");
+            }
+        }
+
         private readonly ILocalisedDestinyDefinitionRepositories _repository;
 
         private bool _isMapped;

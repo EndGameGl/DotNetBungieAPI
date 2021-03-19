@@ -34,7 +34,7 @@ namespace NetBungieAPI.Services.ApiAccess
         }
         public async Task<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser()
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<UserMembershipData>>($"User/GetMembershipsForCurrentUser");
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<UserMembershipData>>($"/User/GetMembershipsForCurrentUser");
         }
         public async Task<BungieResponse<HardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(long credential, BungieCredentialType credentialType = BungieCredentialType.SteamId)
         {
