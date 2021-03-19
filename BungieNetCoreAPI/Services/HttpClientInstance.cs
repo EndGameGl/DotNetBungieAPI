@@ -57,6 +57,13 @@ namespace NetBungieAPI.Services
         {
             return await _httpClient.SendAsync(request);
         }
+
+        public async Task<HttpResponseMessage> PostToPlatform(string query, string content)
+        {
+            var url = $"{_platformEndpoint}{query}";
+            _logger.Log($"Calling platform API: {url}", LogType.Debug);
+            return await _httpClient.PostAsync(url, new StringContent(content));
+        }
         public async Task<HttpResponseMessage> GetFromPlatform(string query)
         {
             var url = $"{_platformEndpoint}{query}";
@@ -200,6 +207,12 @@ namespace NetBungieAPI.Services
         public async Task<T> GetFromStatsPlatfromAndDeserialize<T>(string query)
         {
             var response = await GetFromStatsPlatform(query);
+            return await response.ReadObjectFromHttpResponseMessage<T>();
+        }
+
+        public async Task<T> PostToPlatformAndDeserialize<T>(string query, string data)
+        {
+            var response = await PostToPlatform(query, data);
             return await response.ReadObjectFromHttpResponseMessage<T>();
         }
     }

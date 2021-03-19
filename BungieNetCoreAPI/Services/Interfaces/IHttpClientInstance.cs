@@ -26,6 +26,7 @@ namespace NetBungieAPI.Services.Interfaces
         Task<Image> DownloadImageFromCDNAndSaveAsync(string url, string folderPath, string filename, ImageFormat format);
         Task<T> GetFromPlatfromAndDeserialize<T>(string query);
         Task<T> GetFromStatsPlatfromAndDeserialize<T>(string query);
+        Task<T> PostToPlatformAndDeserialize<T>(string query, string data);
 
     }
 }
