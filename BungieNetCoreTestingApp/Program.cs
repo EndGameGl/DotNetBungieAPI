@@ -124,7 +124,7 @@ namespace BungieNetCoreTestingApp
 
         private static async Task MainAsync()
         {
-            var response = await _bungieClient.ApiAccess.Forum.GetRecruitmentThreadSummaries(new long[] { 258537049 });
+            var response = await _bungieClient.ApiAccess.Community.GetCommunityContent(ForumTopicsSortEnum.Default, ForumMediaType.None);
 
             await Task.Delay(Timeout.Infinite);
         }
