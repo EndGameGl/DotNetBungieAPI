@@ -75,7 +75,7 @@ GetForumTagSuggestions | Done
 GetPoll | Done
 GetRecruitmentThreadSummaries | Done
 
-### GroupV2 methods
+### GroupV2 methods (0/33)
 
 Name | Status
 -----|-------
@@ -113,3 +113,86 @@ RecoverGroupForFounder | Not done
 GetPotentialGroupsForMember | Not done
 IndividualGroupInvite | Not done
 IndividualGroupInviteCancel | Not done
+
+### Tokens methods (0/3)
+
+Name | Status
+-----|-------
+ClaimPartnerOffer | Not done
+ApplyMissingPartnerOffersWithoutClaim | Not done
+GetPartnerOfferSkuHistory | Not done
+
+### Destiny2 methods (22/36)
+
+Name | Status
+-----|-------
+GetDestinyManifest | Done
+GetDestinyEntityDefinition | Done
+SearchDestinyPlayer | Done
+GetLinkedProfiles | Done
+GetProfile | Done
+GetCharacter | Done
+GetClanWeeklyRewardState | Done
+GetItem | Done
+GetVendors | Done
+GetVendor | Done
+GetPublicVendors (Preview) | Done
+GetCollectibleNodeDetails | Done
+TransferItem | Not done
+PullFromPostmaster | Not done
+EquipItem | Not done
+EquipItems | Not done
+SetItemLockState | Not done
+SetQuestTrackedState | Not done
+InsertSocketPlug (Preview) | Not done
+GetPostGameCarnageReport | Done
+ReportOffensivePostGameCarnageReportPlayer | Not done
+GetHistoricalStatsDefinition | Done
+GetClanLeaderboards (Preview) | Not done
+GetClanAggregateStats (Preview) | Not done
+GetLeaderboards (Preview) | Not done
+GetLeaderboardsForCharacter (Preview) | Not done
+SearchDestinyEntities | Done
+GetHistoricalStats | Done
+GetHistoricalStatsForAccount | Done
+GetActivityHistory | Done
+GetUniqueWeaponHistory | Done
+GetDestinyAggregateActivityStats | Done
+GetPublicMilestoneContent | Done
+GetPublicMilestones | Done
+AwaInitializeRequest | Not done
+AwaProvideAuthorizationResult | Not done
+AwaGetActionToken | Not done
+
+### CommunityContent methods (0/1)
+
+Name | Status
+-----|-------
+GetCommunityContent | Not done
+
+### Trending methods (0/3)
+
+Name | Status
+-----|-------
+GetTrendingCategories | Not done
+GetTrendingCategory | Not done
+GetTrendingEntryDetail | Not done
+
+### Fireteam methods (5/5)
+
+Name | Status
+-----|-------
+GetActivePrivateClanFireteamCount | Done
+GetAvailableClanFireteams | Done
+SearchPublicAvailableClanFireteams | Done
+GetMyClanFireteams | Done
+GetClanFireteam | Done
+
+### Misc methods (4/4)
+
+Name | Status
+-----|-------
+GetAvailableLocales | Done
+GetCommonSettings | Done
+GetUserSystemOverrides | Done
+GetGlobalAlerts | Done
