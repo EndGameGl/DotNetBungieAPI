@@ -27,5 +27,89 @@ Fetch client as stated below: <br/>
 ```var client = BungieApiBuilder.GetApiClient(Action<BungieClientSettings> configure)``` <br/>
 Then jump is async context and: <br/>
 ```await client.Run() ``` <br/>
-### To access definitions repo: client.Repository
-### To access api methods: client.ApiAccess
+
+## Methods done status
+
+### App methods (2/2)
+
+Name | Status
+-----|-------
+GetApplicationApiUsage | Done 
+GetBungieApplications | Done 
+
+### User methods (7/7)
+
+Name | Status
+-----|-------
+GetBungieNetUserById | Done 
+SearchUsers | Done 
+GetCredentialTypesForTargetAccount | Done
+GetAvailableThemes | Done
+GetMembershipDataById | Done
+GetMembershipDataForCurrentUser | Done
+GetMembershipFromHardLinkedCredential | Done
+
+### Content methods (6/6)
+
+Name | Status
+-----|-------
+GetContentType | Done
+GetContentById | Done
+GetContentByTagAndType | Done
+SearchContentWithText | Done
+SearchContentByTagAndType | Done
+SearchHelpArticles | Done
+
+### Forum methods (10/10)
+
+Name | Status
+-----|-------
+GetTopicsPaged | Done
+GetCoreTopicsPaged | Done
+GetPostsThreadedPaged | Done
+GetPostsThreadedPagedFromChild | Done
+GetPostAndParent | Done
+GetPostAndParentAwaitingApproval | Done
+GetTopicForContent | Done
+GetForumTagSuggestions | Done
+GetPoll | Done
+GetRecruitmentThreadSummaries | Done
+
+### GroupV2 methods
+
+Name | Status
+-----|-------
+GetAvailableAvatars | Not done
+GetAvailableThemes | Not done
+GetUserClanInviteSetting | Not done
+GetRecommendedGroups | Not done
+GroupSearch | Not done
+GetGroup | Not done
+GetGroupByName | Not done
+GetGroupByNameV2 | Not done
+GetGroupOptionalConversations | Not done
+EditGroup | Not done
+EditClanBanner | Not done
+EditFounderOptions | Not done
+AddOptionalConversation | Not done
+EditOptionalConversation | Not done
+GetMembersOfGroup | Not done
+GetAdminsAndFounderOfGroup | Not done
+EditGroupMembership | Not done
+KickMember | Not done
+BanMember | Not done
+UnbanMember | Not done
+GetBannedMembersOfGroup | Not done
+AbdicateFoundership | Not done
+GetPendingMemberships | Not done
+GetInvitedIndividuals | Not done
+ApproveAllPending | Not done
+DenyAllPending | Not done
+ApprovePendingForList | Not done
+ApprovePending | Not done
+DenyPendingForList | Not done
+GetGroupsForMember | Not done
+RecoverGroupForFounder | Not done
+GetPotentialGroupsForMember | Not done
+IndividualGroupInvite | Not done
+IndividualGroupInviteCancel | Not done
