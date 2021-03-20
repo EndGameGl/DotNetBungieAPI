@@ -125,7 +125,9 @@ namespace BungieNetCoreTestingApp
 
         private static async Task MainAsync()
         {
-            await _bungieClient.Run();
+            var response = await _bungieClient.ApiAccess.GroupV2.GetUserClanInviteSetting(BungieMembershipType.TigerSteam);
+
+            //await _bungieClient.Run();
 
             //var activity = await _bungieClient.ApiAccess.Destiny2.GetPublicMilestones();
 
@@ -139,9 +141,6 @@ namespace BungieNetCoreTestingApp
             //        x?.ChallengeObjectives.ForEach(x => x.TryMapValue()); 
             //        });
             //}
-            
-
-            var response = await _bungieClient.ApiAccess.Trending.GetTrendingEntryDetail(TrendingEntryType.DestinyActivity, "1661734046");
 
             await Task.Delay(Timeout.Infinite);
         }
