@@ -126,5 +126,35 @@ namespace NetBungieAPI.Services
 
             return items;
         }
+        public Dictionary<DefinitionsEnum, List<CompareResult>> GetAllNewDefinitions(DestinyLocales locale)
+        {
+            Dictionary<DefinitionsEnum, List<CompareResult>> results = new Dictionary<DefinitionsEnum, List<CompareResult>>();
+            foreach (var coll in Results[locale])
+            {
+                var newCollection = new List<CompareResult>();
+                results.Add(coll.Key, newCollection);
+                foreach (var item in coll.Value)
+                {
+                    if (item.Value.IsNew)
+                        newCollection.Add(item.Value);
+                }
+            }
+            return results;
+        }
+        public Dictionary<DefinitionsEnum, List<CompareResult>> GetAllUpdatedDefinitions(DestinyLocales locale)
+        {
+            Dictionary<DefinitionsEnum, List<CompareResult>> results = new Dictionary<DefinitionsEnum, List<CompareResult>>();
+            foreach (var coll in Results[locale])
+            {
+                var newCollection = new List<CompareResult>();
+                results.Add(coll.Key, newCollection);
+                foreach (var item in coll.Value)
+                {
+                    if (item.Value.WasUpdated)
+                        newCollection.Add(item.Value);
+                }
+            }
+            return results;
+        }
     }
 }

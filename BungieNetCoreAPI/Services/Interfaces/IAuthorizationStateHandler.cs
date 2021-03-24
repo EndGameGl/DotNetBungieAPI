@@ -12,5 +12,6 @@ namespace NetBungieAPI.Services.Interfaces
         AuthorizationState CreateNewAuthAwaiter();
         void InputCode(string state, string code);
         void AddAuthToken(AuthorizationTokenData token);
+        bool TryGetAccessToken(long membershipId, out string accessToken);
     }
 }

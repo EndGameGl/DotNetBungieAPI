@@ -3,25 +3,16 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework> 
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Destiny\Definitions\Activities\DestinyActivityDefinition.cs~RF156dec8b.TMP" />
-    <None Remove="Destiny\Definitions\ActivityModes\DestinyActivityModeType.cs~RF15e4813c.TMP" />
-    <None Remove="Destiny\Definitions\ArtDyeChannels\DestinyArtDyeChannelDefinition.cs~RF192b2b89.TMP" />
-    <None Remove="Destiny\Definitions\Artifacts\ArtifactTierEntryItemEntry.cs~RF19345443.TMP" />
-    <None Remove="Destiny\Definitions\CharacterCustomizationCategories\DestinyCharacterCustomizationCategoryDefinition.cs~RF195bdc13.TMP" />
-    <None Remove="Destiny\Definitions\CharacterCustomizationOptions\CharacterCustomizationOptionColorOptions.cs~RF195fb965.TMP" />
-    <None Remove="Destiny\Definitions\CharacterCustomizationOptions\DestinyCharacterCustomizationOptionDefinition.cs~RF19678f31.TMP" />
-    <None Remove="Destiny\Definitions\Collectibles\DestinyCollectibleDefinition.cs~RF1a1ce0cb.TMP" />
-    <None Remove="Destiny\Definitions\DamageTypes\DestinyDamageTypeDefinition.cs~RF105fcd51.TMP" />
-    <None Remove="Destiny\Definitions\InventoryItems\DestinyInventoryItemDefinition.cs~RF2fb50534.TMP" />
-  </ItemGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="JsonDiffPatch.Net" Version="2.3.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.113.7" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
     <PackageReference Include="System.ObjectModel" Version="4.3.0" />

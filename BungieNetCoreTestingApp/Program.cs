@@ -107,25 +107,24 @@ namespace BungieNetCoreTestingApp
 
             });
 
-            ////var link = BungieClient.Platform.GetAuthorizationLink();
-            ////Console.WriteLine(link);
-            ////Console.Write("State: ");
-            ////var state = Console.ReadLine();
-            ////Console.WriteLine();
-            ////Console.Write("Code: ");
-            ////var code = Console.ReadLine();
-            ////Console.WriteLine();
-
-            ////BungieClient.Platform.ReceiveCode(state, code);
-            ////BungieClient.Platform.GetAuthorizationToken(code).GetAwaiter().GetResult();
-
             _bungieClient.AddListener((mes) => Console.WriteLine(mes));
             MainAsync().GetAwaiter().GetResult();
         }
 
         private static async Task MainAsync()
         {
-            var response = await _bungieClient.ApiAccess.GroupV2.GetUserClanInviteSetting(BungieMembershipType.TigerSteam);
+            var firstManifest = JsonConvert.DeserializeObject<DestinyManifest>(File.ReadAllText(@"H:\BungieNetCoreAPIRepository\Manifests\91966.21.03.02.2023-2-bnet.36361\Manifest.json"));
+            var secondManifest = JsonConvert.DeserializeObject<DestinyManifest>(File.ReadAllText(@"H:\BungieNetCoreAPIRepository\Manifests\92539.21.03.17.1630-3-bnet.36521\Manifest.json"));
+            var defs = Enum.GetValues(typeof(DefinitionsEnum)).Cast<DefinitionsEnum>().ToList();
+            defs.Remove(DefinitionsEnum.DestinyHistoricalStatsDefinition);
+
+            DatabaseComparer comparer = new DatabaseComparer();
+            comparer.Init(firstManifest, secondManifest);
+            comparer.Compare(@"H:\BungieNetCoreAPIRepository\Manifests\", new DestinyLocales[] { DestinyLocales.EN }, defs);
+
+            var newDefs = comparer.GetAllNewDefinitions(DestinyLocales.EN);
+            var updatedDefs = comparer.GetAllUpdatedDefinitions(DestinyLocales.EN);
+            //var response = await _bungieClient.ApiAccess.User.GetMembershipDataForCurrentUser(20027802);
 
             //await _bungieClient.Run();
 
@@ -164,7 +163,7 @@ namespace BungieNetCoreTestingApp
                     uniqueItems++;
             }
             sw.Stop();
-            Console.WriteLine($"{sw.ElapsedMilliseconds} ms elapsed. Unique items: {uniqueItems}");
+            Console.WriteLine($"{ sw.ElapsedMilliseconds} ms elapsed. Unique items: {uniqueItems}");
         }
         private static long MeasureOperation(Action action, bool writeResult = true)
         {

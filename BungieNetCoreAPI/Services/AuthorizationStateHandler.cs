@@ -20,14 +20,14 @@ namespace NetBungieAPI.Services
         private readonly IConfigurationService _config;
         private Timer _tokenTimer;
         public ConcurrentDictionary<string, AuthorizationState> AuthorizationStates { get; }
-        public ConcurrentDictionary<int, AuthorizationTokenData> AuthorizationTokens { get; }
+        public ConcurrentDictionary<long, AuthorizationTokenData> AuthorizationTokens { get; }
 
         public AuthorizationStateHandler(ILogger logger, IConfigurationService configuration, IHttpClientInstance httpClient)
         {
             _logger = logger;
             _config = configuration;
             AuthorizationStates = new ConcurrentDictionary<string, AuthorizationState>();
-            AuthorizationTokens = new ConcurrentDictionary<int, AuthorizationTokenData>();
+            AuthorizationTokens = new ConcurrentDictionary<long, AuthorizationTokenData>();
             _client = httpClient;
             _tokenTimer = new Timer(CheckTokenRenewal, null, Timeout.Infinite, Timeout.Infinite);
             if (_config.Settings.RenewTokens)
@@ -69,6 +69,16 @@ namespace NetBungieAPI.Services
             var newToken = await _client.RenewAuthorizationToken(token);
             AuthorizationTokens[newToken.MembershipId] = newToken;
             _logger.Log($"Renewed token for membership: {token.MembershipId}", LogType.Info);
+        }
+        public bool TryGetAccessToken(long membershipId, out string accessToken)
+        {
+            accessToken = default;
+            if (AuthorizationTokens.TryGetValue(membershipId, out var token))
+            {
+                accessToken = token.AccessToken;
+                return true;
+            }
+            return false;
         }
     }
 }

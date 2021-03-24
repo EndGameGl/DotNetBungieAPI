@@ -29,5 +29,9 @@ namespace NetBungieAPI.Services.ApiAccess
         {
             return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<bool>>($"/GroupV2/GetUserClanInviteSetting/{mType}/");
         }
+        public async Task<BungieResponse<GroupV2Card[]>> GetRecommendedGroups(GroupType groupType, GroupDateRange createDateRange)
+        {         
+            return await _httpClient.PostToPlatformAndDeserialize<BungieResponse<GroupV2Card[]>>($"/GroupV2/Recommended/{(int)groupType}/{(int)createDateRange}/", string.Empty);
+        }
     }
 }

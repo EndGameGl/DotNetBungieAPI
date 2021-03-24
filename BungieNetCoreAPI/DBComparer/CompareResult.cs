@@ -18,6 +18,20 @@ namespace NetBungieAPI.DBComparer
         public bool WasUpdated { get; set; } = false;
         public bool IsNew { get; set; } = false;
 
+        private string debug_diff
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(Older) || string.IsNullOrWhiteSpace(Newer))
+                    throw new Exception("Can't compare if one value is empty.");
+
+                var older = JToken.Parse(Older);
+                var newer = JToken.Parse(Newer);
+
+                return _diff.Diff(older, newer).ToString();
+            }
+        }
+
         public JToken Diff()
         {
             if (string.IsNullOrWhiteSpace(Older) || string.IsNullOrWhiteSpace(Newer))

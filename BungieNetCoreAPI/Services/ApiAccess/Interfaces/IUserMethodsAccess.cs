@@ -10,7 +10,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         Task<BungieResponse<CredentialTypeForAccount[]>> GetCredentialTypesForTargetAccount(long id);
         Task<BungieResponse<UserTheme[]>> GetAvailableThemes();
         Task<BungieResponse<UserMembershipData>> GetMembershipDataById(long id, BungieMembershipType membershipType);
-        Task<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser();
+        Task<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser(long id);
         Task<BungieResponse<HardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(long credential, BungieCredentialType credentialType = BungieCredentialType.SteamId);
     }
 }

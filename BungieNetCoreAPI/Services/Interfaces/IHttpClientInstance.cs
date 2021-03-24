@@ -15,7 +15,6 @@ namespace NetBungieAPI.Services.Interfaces
         void AddHeader(string header, string headerValue);
         void RemoveHeader(string header);
         Task<HttpResponseMessage> Get(string query);
-        Task<HttpResponseMessage> Send(HttpRequestMessage request);
         Task<AuthorizationTokenData> GetAuthorizationToken(string code, string authValue);
         Task<AuthorizationTokenData> RenewAuthorizationToken(AuthorizationTokenData oldToken);
         Task<HttpResponseMessage> GetFromPlatform(string query);
@@ -24,9 +23,10 @@ namespace NetBungieAPI.Services.Interfaces
         Task<string> DownloadJSONDataFromCDNAsync(string url);
         Task<Image> DownloadImageFromCDNAsync(string url);
         Task<Image> DownloadImageFromCDNAndSaveAsync(string url, string folderPath, string filename, ImageFormat format);
-        Task<T> GetFromPlatfromAndDeserialize<T>(string query);
+        Task<T> GetFromPlatfromAndDeserialize<T>(string query, string token = null);
         Task<T> GetFromStatsPlatfromAndDeserialize<T>(string query);
         Task<T> PostToPlatformAndDeserialize<T>(string query, string data);
-
+        Task<BungieResponse<T>> GetResponseFromBungieNetPlatform<T>(string query, string authToken = null);
+        Task<BungieResponse<T>> PostAndGetResponseFromBungieNetPlatform<T>(string query, string content = null, string authToken = null);
     }
 }

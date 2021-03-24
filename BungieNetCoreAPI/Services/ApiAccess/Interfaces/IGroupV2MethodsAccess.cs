@@ -11,5 +11,6 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         Task<BungieResponse<Dictionary<int, string>>> GetAvailableAvatars();
         Task<BungieResponse<GroupTheme[]>> GetAvailableThemes();
         Task<BungieResponse<bool>> GetUserClanInviteSetting(BungieMembershipType mType);
+        Task<BungieResponse<GroupV2Card[]>> GetRecommendedGroups(GroupType groupType, GroupDateRange createDateRange);
     }
 }
