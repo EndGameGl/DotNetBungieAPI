@@ -56,7 +56,7 @@ namespace NetBungieAPI
             }
             return true;
         }
-        internal static bool DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue<T, P>(this ReadOnlyDictionary<T, P> compared, ReadOnlyDictionary<T, P> comparedWith) where P: IDeepEquatable<P>
+        internal static bool DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue<T, P>(this ReadOnlyDictionary<T, P> compared, ReadOnlyDictionary<T, P> comparedWith) where P : IDeepEquatable<P>
         {
             if (compared.Count != comparedWith.Count)
                 return false;
@@ -82,32 +82,31 @@ namespace NetBungieAPI
         }
         internal static ReadOnlyCollection<T> AsReadOnlyOrEmpty<T>(this T[] source)
         {
-            ReadOnlyCollection<T> readOnlyCollection;
-            if (source != null)
-                readOnlyCollection = new ReadOnlyCollection<T>(source);
-            else
-                readOnlyCollection = new ReadOnlyCollection<T>(new T[0]);
-            return readOnlyCollection;
+            if (source is null)
+                return new ReadOnlyCollection<T>(new T[0]);
+            return new ReadOnlyCollection<T>(source);
         }
         internal static ReadOnlyCollection<DefinitionHashPointer<T>> DefinitionsAsReadOnlyOrEmpty<T>(this uint[] source, DefinitionsEnum enumValue) where T : IDestinyDefinition
         {
-            ReadOnlyCollection<DefinitionHashPointer<T>> readOnlyCollection;
-            if (source != null)
-                readOnlyCollection = new ReadOnlyCollection<DefinitionHashPointer<T>>(source.Select(x => new DefinitionHashPointer<T>(x, enumValue)).ToArray());
-            else
-                readOnlyCollection = new ReadOnlyCollection<DefinitionHashPointer<T>>(new DefinitionHashPointer<T>[0]);
-            return readOnlyCollection;
+            if (source is null)
+                return new ReadOnlyCollection<DefinitionHashPointer<T>>(new DefinitionHashPointer<T>[0]);
+            IList<DefinitionHashPointer<T>> convertedList = new List<DefinitionHashPointer<T>>(source.Length);
+            for (int i = 0; i < source.Length; i++)
+            {
+                convertedList.Add(new DefinitionHashPointer<T>(source[i], enumValue));
+            }
+            return new ReadOnlyCollection<DefinitionHashPointer<T>>(convertedList);
         }
         internal static ReadOnlyDictionary<DefinitionHashPointer<T>, P> AsReadOnlyDictionaryWithDefinitionKeyOrEmpty<T, P>(this Dictionary<uint, P> dictionary, DefinitionsEnum enumValue) where T : IDestinyDefinition
         {
-            if (dictionary == null)
+            if (dictionary is null)
                 return new ReadOnlyDictionary<DefinitionHashPointer<T>, P>(new Dictionary<DefinitionHashPointer<T>, P>(0));
             var convertedDict = dictionary.ToDictionary(x => new DefinitionHashPointer<T>(x.Key, enumValue), y => y.Value);
             return new ReadOnlyDictionary<DefinitionHashPointer<T>, P>(convertedDict);
         }
-        internal static ReadOnlyDictionary<T, P> AsReadOnlyDictionaryOrEmpty<T, P>(this Dictionary<T,P> dictionary)
+        internal static ReadOnlyDictionary<T, P> AsReadOnlyDictionaryOrEmpty<T, P>(this Dictionary<T, P> dictionary)
         {
-            if (dictionary == null)
+            if (dictionary is null)
                 return new ReadOnlyDictionary<T, P>(new Dictionary<T, P>(0));
             else
                 return new ReadOnlyDictionary<T, P>(dictionary);

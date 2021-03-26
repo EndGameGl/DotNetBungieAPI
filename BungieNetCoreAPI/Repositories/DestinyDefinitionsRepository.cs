@@ -6,6 +6,7 @@ using NetBungieAPI.Logging;
 using NetBungieAPI.Pipes;
 using NetBungieAPI.Services;
 using NetBungieAPI.Services.Interfaces;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Concurrent;
@@ -24,6 +25,7 @@ namespace NetBungieAPI.Repositories
     /// </summary>
     public class DestinyDefinitionsRepository
     {
+        private readonly JsonSerializer _jsonSerializer = new JsonSerializer();
         private readonly string SELECT_QUERY = "SELECT * FROM {0}";
 
         private readonly ILogger _logger;
@@ -194,7 +196,10 @@ namespace NetBungieAPI.Repositories
                 .Select(x => x.Key)
                 .ToArray();
 
-            var jsonLoadedRepos = _loadRules.Where(x => x.Value == DefinitionSources.JSON).Select(x => x.Key).ToArray();
+            var jsonLoadedRepos = _loadRules
+                .Where(x => x.Value == DefinitionSources.JSON)
+                .Select(x => x.Key)
+                .ToArray();
 
             if (sqliteLoadedRepos.Length > 0)
             {
@@ -230,7 +235,7 @@ namespace NetBungieAPI.Repositories
                         var reader = pipe.GetReader(GetSQLSelectQuery(key.ToString()));
                         while (reader.Read())
                         {
-                            AddDefinition(key, ParseJsonFromSQLiteDataReader<IDestinyDefinition>(reader, definitionType));
+                            AddDefinition(key, (IDestinyDefinition)ParseJsonFromSQLiteDataReader(reader, definitionType));
                         }
                     }
                     catch (Exception e)
@@ -248,7 +253,7 @@ namespace NetBungieAPI.Repositories
                         var reader = pipe.GetReader(GetSQLSelectQuery(DefinitionsEnum.DestinyHistoricalStatsDefinition.ToString()));
                         while (reader.Read())
                         {
-                            var definition = ParseJsonFromSQLiteDataReader<DestinyHistoricalStatsDefinition>(reader, definitionType);
+                            var definition = (DestinyHistoricalStatsDefinition)ParseJsonFromSQLiteDataReader(reader, definitionType);
                             _historicalStatsDefinitions.TryAdd(definition.StatId, definition);
                         }
                     }
@@ -260,32 +265,34 @@ namespace NetBungieAPI.Repositories
             }
         }
         private void LoadDefinitionFromJSON(DefinitionsEnum[] definitions, string localManifestPath, DestinyManifest manifest)
-        {        
+        {
             var jsonWolrdComponentContentLocalePath = manifest.JsonWorldComponentContentPaths[Locale.LocaleToString()];
 
             var result = Parallel.ForEach(definitions, (definitionName) =>
             {
                 _logger.Log($"Loading definitions from {definitionName} ({Locale})", LogType.Info);
                 using var fs = File.OpenRead($"{localManifestPath}/JsonWorldComponentContent/{Locale}/{definitionName}/{Path.GetFileName(jsonWolrdComponentContentLocalePath[_assemblyData.EnumToNameMapping[definitionName]])}");
-                using var sr = new StreamReader(fs, Encoding.UTF8);
-                var definitionJson = sr.ReadToEnd();
-                var definitionJObjectDictionary = JObject.Parse(definitionJson);
-                foreach (var entry in definitionJObjectDictionary)
+                using TextReader sr = new StreamReader(fs, Encoding.UTF8);
+                using JsonReader jsonReader = new JsonTextReader(sr);
+                var definitionJObjectDictionary = JObject.Load(jsonReader);
+
+                var inResult = Parallel.ForEach(definitionJObjectDictionary, (KeyValuePair<string, JToken> entry) =>
                 {
                     var definitionType = _assemblyData.DefinitionsToTypeMapping[definitionName].DefinitionType;
                     _definitionRepositories.TryAdd(definitionName, new DestinyDefinitionTypeRepository(definitionType, _config.Settings.AppConcurrencyLevel));
-                    var deserializedDestinyDefinition = (IDestinyDefinition)entry.Value.ToObject(definitionType);
+                    var deserializedDestinyDefinition = (IDestinyDefinition)(entry.Value.ToObject(definitionType));
                     AddDefinition(definitionName, deserializedDestinyDefinition);
-                }
+                });
             });
             GC.Collect();
         }
-        private T ParseJsonFromSQLiteDataReader<T>(SQLiteDataReader reader, Type parseTo)
+        private object ParseJsonFromSQLiteDataReader(SQLiteDataReader reader, Type parseTo)
         {
-            var byteArray = (byte[])reader["json"];
-            var jsonString = Encoding.UTF8.GetString(byteArray, 0, byteArray.Length);
-            var definition = JObject.Parse(jsonString);
-            return (T)definition.ToObject(parseTo);
+            using Stream readStream = new MemoryStream((byte[])reader["json"]);
+            using TextReader sr = new StreamReader(readStream);
+            using JsonReader jsonReader = new JsonTextReader(sr);
+
+            return _jsonSerializer.Deserialize(jsonReader, parseTo);
         }
         private string GetSQLSelectQuery(string tableName) => string.Format(SELECT_QUERY, tableName);
         internal void PremapPointers()

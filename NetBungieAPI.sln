@@ -6,7 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetBungieAPI", "BungieNetCoreAPI\NetBungieAPI.csproj", "{0D1416BF-3145-49DF-9DCA-10C0022C9CC6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetBungieAPI.TestProject", "BungieNetCoreTestingApp\NetBungieAPI.TestProject.csproj", "{097079C1-4969-4DE2-87BE-C04F3332DB6C}"
-EndProject
+EndProjec
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +21,14 @@ Global
 		{097079C1-4969-4DE2-87BE-C04F3332DB6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{097079C1-4969-4DE2-87BE-C04F3332DB6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{097079C1-4969-4DE2-87BE-C04F3332DB6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{139E5717-89CA-4897-B8F6-CDD7FA171838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{139E5717-89CA-4897-B8F6-CDD7FA171838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{139E5717-89CA-4897-B8F6-CDD7FA171838}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{139E5717-89CA-4897-B8F6-CDD7FA171838}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B5420C0-FDCE-42CF-88FE-185C4929F9A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B5420C0-FDCE-42CF-88FE-185C4929F9A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B5420C0-FDCE-42CF-88FE-185C4929F9A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B5420C0-FDCE-42CF-88FE-185C4929F9A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

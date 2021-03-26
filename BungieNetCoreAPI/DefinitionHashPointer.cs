@@ -1,10 +1,8 @@
-﻿using NetBungieAPI.Clients;
-using NetBungieAPI.Destiny;
+﻿using NetBungieAPI.Destiny;
 using NetBungieAPI.Destiny.Definitions;
 using NetBungieAPI.Repositories;
 using System;
 using System.Threading.Tasks;
-using Unity;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using Newtonsoft.Json;
 
@@ -27,7 +25,7 @@ namespace NetBungieAPI
             }
         }
 
-        private readonly ILocalisedDestinyDefinitionRepositories _repository;
+        private static readonly ILocalisedDestinyDefinitionRepositories _repository = StaticUnityContainer.GetDestinyDefinitionRepositories();
 
         private bool _isMapped;
         private T _value;
@@ -62,7 +60,6 @@ namespace NetBungieAPI
             _isMapped = false;
             Hash = hash;
             DefinitionEnumType = type;
-            _repository = StaticUnityContainer.GetDestinyDefinitionRepositories();
             Locale = _repository.CurrentLocaleLoadContext;
         }
         /// <summary>

@@ -28,6 +28,7 @@ using NetBungieAPI.Fireteam;
 using NetBungieAPI.Forum;
 using NetBungieAPI.Services;
 using NetBungieAPI.Services.Interfaces;
+using NetBungieAPI.TestProject;
 using NetBungieAPI.Trending;
 using Newtonsoft.Json;
 using System;
@@ -35,10 +36,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BungieNetCoreTestingApp
+namespace NetBungieAPI.TestProject
 {
     class Program
     {
@@ -97,7 +99,7 @@ namespace BungieNetCoreTestingApp
                 .UsePreloadedData("H:\\BungieNetCoreAPIRepository\\Manifests")
                 .UseVersionControl(
                     keepOldVersions: true,
-                    checkUpdates: true,
+                    checkUpdates: false,
                     repositoryPath: string.Empty)
                 .EnableLogging()
                 .PremapPointers()
@@ -113,33 +115,23 @@ namespace BungieNetCoreTestingApp
 
         private static async Task MainAsync()
         {
-            var firstManifest = JsonConvert.DeserializeObject<DestinyManifest>(File.ReadAllText(@"H:\BungieNetCoreAPIRepository\Manifests\91966.21.03.02.2023-2-bnet.36361\Manifest.json"));
-            var secondManifest = JsonConvert.DeserializeObject<DestinyManifest>(File.ReadAllText(@"H:\BungieNetCoreAPIRepository\Manifests\92539.21.03.17.1630-3-bnet.36521\Manifest.json"));
-            var defs = Enum.GetValues(typeof(DefinitionsEnum)).Cast<DefinitionsEnum>().ToList();
-            defs.Remove(DefinitionsEnum.DestinyHistoricalStatsDefinition);
+            //var firstManifest = JsonConvert.DeserializeObject<DestinyManifest>(File.ReadAllText(@"H:\BungieNetCoreAPIRepository\Manifests\91966.21.03.02.2023-2-bnet.36361\Manifest.json"));
+            //var secondManifest = JsonConvert.DeserializeObject<DestinyManifest>(File.ReadAllText(@"H:\BungieNetCoreAPIRepository\Manifests\92539.21.03.17.1630-3-bnet.36521\Manifest.json"));
+            //var defs = Enum.GetValues(typeof(DefinitionsEnum)).Cast<DefinitionsEnum>().ToList();
+            //defs.Remove(DefinitionsEnum.DestinyHistoricalStatsDefinition);
 
-            DatabaseComparer comparer = new DatabaseComparer();
-            comparer.Init(firstManifest, secondManifest);
-            comparer.Compare(@"H:\BungieNetCoreAPIRepository\Manifests\", new DestinyLocales[] { DestinyLocales.EN }, defs);
+            //DatabaseComparer comparer = new DatabaseComparer();
+            //comparer.Init(firstManifest, secondManifest);
+            //comparer.Compare(@"H:\BungieNetCoreAPIRepository\Manifests\", new DestinyLocales[] { DestinyLocales.EN }, defs);
 
-            var newDefs = comparer.GetAllNewDefinitions(DestinyLocales.EN);
-            var updatedDefs = comparer.GetAllUpdatedDefinitions(DestinyLocales.EN);
+            //var newDefs = comparer.GetAllNewDefinitions(DestinyLocales.EN);
+            //var updatedDefs = comparer.GetAllUpdatedDefinitions(DestinyLocales.EN);
+
+            //var newItem = newDefs.First(x => x.Value.Count > 0).Value.First();
+
             //var response = await _bungieClient.ApiAccess.User.GetMembershipDataForCurrentUser(20027802);
 
-            //await _bungieClient.Run();
-
-            //var activity = await _bungieClient.ApiAccess.Destiny2.GetPublicMilestones();
-
-            //foreach (var milestone in activity.Response)
-            //{
-            //    milestone.Value.Milestone.TryMapValue();
-            //    milestone.Value.Activities?.ForEach(x => 
-            //    { 
-            //        x?.Activity.TryMapValue(); 
-            //        x?.Modifiers.ForEach(x => x.TryMapValue());
-            //        x?.ChallengeObjectives.ForEach(x => x.TryMapValue()); 
-            //        });
-            //}
+            await _bungieClient.Run();
 
             await Task.Delay(Timeout.Infinite);
         }
