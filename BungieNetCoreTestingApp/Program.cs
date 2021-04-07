@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using NetBungieAPI.Models.Trending;
 
 namespace NetBungieAPI.TestProject
 {
@@ -84,9 +85,7 @@ namespace NetBungieAPI.TestProject
         }
 
         private static async Task MainAsync()
-        {
-            await UserApiTest();
-
+        {         
             //var shouldUpdate = await _bungieClient.CheckUpdates();
             //if (shouldUpdate)
             //    await _bungieClient.DownloadLatestManifestLocally();
@@ -160,6 +159,12 @@ namespace NetBungieAPI.TestProject
             var getContentByTagAndTypeResponse =  await _bungieClient.ApiAccess.Content.GetContentByTagAndType("News", "destiny-news", "en");
             var searchContentWithTextResponse = await _bungieClient.ApiAccess.Content.SearchContentWithText("en", new string[] { "News" }, "twab", null, "destiny-news");
             var searchContentByTagAndTypeResponse =  await _bungieClient.ApiAccess.Content.SearchContentByTagAndType("en", "destiny-news", "News");
+        }
+        private static async Task TrendingApiTest()
+        {
+            var getTrendingCategoriesResponse = await _bungieClient.ApiAccess.Trending.GetTrendingCategories();
+            var getTrendingCategoryResponse = await _bungieClient.ApiAccess.Trending.GetTrendingCategory("News");
+            var getTrendingEntryDetailResponse = await _bungieClient.ApiAccess.Trending.GetTrendingEntryDetail(TrendingEntryType.News, getTrendingCategoryResponse.Response.Results[0].Identifier);
         }
     }
 }

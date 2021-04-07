@@ -1,15 +1,14 @@
-﻿using NetBungieAPI.Models.Trending;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using NetBungieAPI.Models.Queries;
+using NetBungieAPI.Models.Trending;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess.Interfaces
 {
     public interface ITrendingMethodsAccess
     {
-        Task<BungieResponse<TrendingCategories>> GetTrendingCategories();
-        Task<BungieResponse<SearchResult<TrendingEntry>>> GetTrendingCategory(string categoryId, int pageNumber = 0);
-        Task<BungieResponse<TrendingDetail>> GetTrendingEntryDetail(TrendingEntryType trendingEntryType, string identifier);
+        ValueTask<BungieResponse<TrendingCategories>> GetTrendingCategories(CancellationToken token = default);
+        ValueTask<BungieResponse<SearchResultOfTrendingEntry>> GetTrendingCategory(string categoryId, int pageNumber = 0, CancellationToken token = default);
+        ValueTask<BungieResponse<TrendingDetail>> GetTrendingEntryDetail(TrendingEntryType trendingEntryType, string identifier, CancellationToken token = default);
     }
 }

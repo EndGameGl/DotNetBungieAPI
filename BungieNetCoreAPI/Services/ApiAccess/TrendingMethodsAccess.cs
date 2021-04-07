@@ -1,6 +1,8 @@
-﻿using NetBungieAPI.Models.Trending;
+﻿using NetBungieAPI.Models.Queries;
+using NetBungieAPI.Models.Trending;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess
@@ -12,17 +14,25 @@ namespace NetBungieAPI.Services.ApiAccess
         {
             _httpClient = httpClient;
         }
-        public async Task<BungieResponse<TrendingCategories>> GetTrendingCategories()
+
+        /// <summary>
+        /// Returns trending items for Bungie.net, collapsed into the first page of items per category. For pagination within a category, call GetTrendingCategory.
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public async ValueTask<BungieResponse<TrendingCategories>> GetTrendingCategories(CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<TrendingCategories>>($"/Trending/Categories/");
+            return await _httpClient.GetFromBungieNetPlatform<TrendingCategories>("/Trending/Categories/", token);
         }
-        public async Task<BungieResponse<SearchResult<TrendingEntry>>> GetTrendingCategory(string categoryId, int pageNumber = 0)
+        public async ValueTask<BungieResponse<SearchResultOfTrendingEntry>> GetTrendingCategory(string categoryId, int pageNumber = 0, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<SearchResult<TrendingEntry>>>($"/Trending/Categories/{categoryId}/{pageNumber}/");
+            var url = StringBuilderPool.GetBuilder().Append("/Trending/Categories/").Append(categoryId).Append('/').Append(pageNumber).ToString();
+            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfTrendingEntry>(url, token);
         }
-        public async Task<BungieResponse<TrendingDetail>> GetTrendingEntryDetail(TrendingEntryType trendingEntryType, string identifier)
+        public async ValueTask<BungieResponse<TrendingDetail>> GetTrendingEntryDetail(TrendingEntryType trendingEntryType, string identifier, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<TrendingDetail>>($"/Trending/Details/{trendingEntryType}/{identifier}/");
+            var url = StringBuilderPool.GetBuilder().Append("/Trending/Details/").Append((int)trendingEntryType).Append('/').Append(identifier).ToString();
+            return await _httpClient.GetFromBungieNetPlatform<TrendingDetail>(url, token);
         }
 
     }
