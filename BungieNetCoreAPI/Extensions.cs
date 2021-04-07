@@ -4,6 +4,7 @@ using NetBungieAPI.Destiny;
 using NetBungieAPI.Destiny.Definitions;
 using NetBungieAPI.Destiny.Definitions.Activities;
 using NetBungieAPI.Destiny.Definitions.ActivityModes;
+using NetBungieAPI.Models;
 using NetBungieAPI.Repositories;
 using Newtonsoft.Json;
 using System;
@@ -123,23 +124,23 @@ namespace NetBungieAPI
             => string.Join(',', componentTypes);
         internal static string ComponentsToIntString(this DestinyComponentType[] componentTypes)
             => string.Join(',', componentTypes.Select(x => (int)x));
-        public static string LocaleToString(this DestinyLocales locale)
+        public static string LocaleToString(this BungieLocales locale)
         {
             return locale switch
             {
-                DestinyLocales.EN => "en",
-                DestinyLocales.RU => "ru",
-                DestinyLocales.DE => "de",
-                DestinyLocales.ES => "es",
-                DestinyLocales.ES_MX => "es-mx",
-                DestinyLocales.FR => "fr",
-                DestinyLocales.IT => "it",
-                DestinyLocales.JA => "ja",
-                DestinyLocales.KO => "ko",
-                DestinyLocales.PL => "pl",
-                DestinyLocales.PT_BR => "pt-br",
-                DestinyLocales.ZH_CHS => "zh-chs",
-                DestinyLocales.ZH_CHT => "zh-cht",
+                BungieLocales.EN => "en",
+                BungieLocales.RU => "ru",
+                BungieLocales.DE => "de",
+                BungieLocales.ES => "es",
+                BungieLocales.ES_MX => "es-mx",
+                BungieLocales.FR => "fr",
+                BungieLocales.IT => "it",
+                BungieLocales.JA => "ja",
+                BungieLocales.KO => "ko",
+                BungieLocales.PL => "pl",
+                BungieLocales.PT_BR => "pt-br",
+                BungieLocales.ZH_CHS => "zh-chs",
+                BungieLocales.ZH_CHT => "zh-cht",
                 _ => throw new Exception("Wrong locale."),
             };
         }
@@ -147,27 +148,27 @@ namespace NetBungieAPI
         public static uint ToUInt32(this int hash) => unchecked((uint)hash);
 
         #region Activity search
-        public static List<DestinyActivityDefinition> GetActivitiesWithMode(this ILocalisedDestinyDefinitionRepositories repository, DestinyLocales locale, uint activityModeHash)
+        public static List<DestinyActivityDefinition> GetActivitiesWithMode(this ILocalisedDestinyDefinitionRepositories repository, BungieLocales locale, uint activityModeHash)
         {
             return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale, x => (x as DestinyActivityDefinition).ActivityModes.Where(q => q.Hash.Equals(activityModeHash)).Count() > 0).ToList();
         }
-        public static List<DestinyActivityDefinition> GetActivitiesWithMode(this ILocalisedDestinyDefinitionRepositories repository, DestinyLocales locale, DestinyActivityModeType activityMode)
+        public static List<DestinyActivityDefinition> GetActivitiesWithMode(this ILocalisedDestinyDefinitionRepositories repository, BungieLocales locale, DestinyActivityModeType activityMode)
         {
             return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale, x => (x as DestinyActivityDefinition).ActivityModeTypes.Contains(activityMode)).ToList();
         }
-        public static List<DestinyActivityDefinition> GetActivitiesWithDirectMode(this ILocalisedDestinyDefinitionRepositories repository, DestinyLocales locale, uint activityModeHash)
+        public static List<DestinyActivityDefinition> GetActivitiesWithDirectMode(this ILocalisedDestinyDefinitionRepositories repository, BungieLocales locale, uint activityModeHash)
         {
             return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale, x => (x as DestinyActivityDefinition).DirectActivityMode.Hash.Equals(activityModeHash)).ToList();
         }
-        public static List<DestinyActivityDefinition> GetActivitiesWithDirectMode(this ILocalisedDestinyDefinitionRepositories repository, DestinyLocales locale, DestinyActivityModeType activityMode)
+        public static List<DestinyActivityDefinition> GetActivitiesWithDirectMode(this ILocalisedDestinyDefinitionRepositories repository, BungieLocales locale, DestinyActivityModeType activityMode)
         {
             return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale, x => (x as DestinyActivityDefinition).DirectActivityModeType.Equals(activityMode)).ToList();
         }
-        public static List<DestinyActivityDefinition> GetActivitiesWithPlace(this ILocalisedDestinyDefinitionRepositories repository, DestinyLocales locale, uint placeHash)
+        public static List<DestinyActivityDefinition> GetActivitiesWithPlace(this ILocalisedDestinyDefinitionRepositories repository, BungieLocales locale, uint placeHash)
         {
             return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale, x => (x as DestinyActivityDefinition).Place.Hash.Equals(placeHash)).ToList();
         }
-        public static List<DestinyActivityDefinition> GetActivitiesWithDestination(this ILocalisedDestinyDefinitionRepositories repository, DestinyLocales locale, uint destinationHash)
+        public static List<DestinyActivityDefinition> GetActivitiesWithDestination(this ILocalisedDestinyDefinitionRepositories repository, BungieLocales locale, uint destinationHash)
         {
             return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale, x => (x as DestinyActivityDefinition).Destination.Hash.Equals(destinationHash)).ToList();
         }

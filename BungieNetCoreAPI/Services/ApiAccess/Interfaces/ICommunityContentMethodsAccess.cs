@@ -1,4 +1,5 @@
-﻿using NetBungieAPI.Models.Forum;
+﻿using NetBungieAPI.Models;
+using NetBungieAPI.Models.Forum;
 using NetBungieAPI.Models.Queries;
 using System.Threading.Tasks;
 

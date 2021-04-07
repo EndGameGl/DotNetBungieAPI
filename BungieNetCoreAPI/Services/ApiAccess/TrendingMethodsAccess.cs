@@ -1,4 +1,5 @@
-﻿using NetBungieAPI.Models.Queries;
+﻿using NetBungieAPI.Models;
+using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Models.Trending;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;

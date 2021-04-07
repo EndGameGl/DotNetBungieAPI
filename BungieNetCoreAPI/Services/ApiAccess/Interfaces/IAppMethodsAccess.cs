@@ -1,4 +1,5 @@
-﻿using NetBungieAPI.Models.Applications;
+﻿using NetBungieAPI.Models;
+using NetBungieAPI.Models.Applications;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

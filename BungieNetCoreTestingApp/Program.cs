@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Models.Trending;
+using NetBungieAPI.Models;
 
 namespace NetBungieAPI.TestProject
 {
@@ -64,7 +65,7 @@ namespace NetBungieAPI.TestProject
                     saveToAppMemory: true,
                     preferredSource: DefinitionSources.SQLite,
                     retryDownloading: false,
-                    DestinyLocales.EN)
+                    BungieLocales.EN)
                 .UsePreloadedData("H:\\BungieNetCoreAPIRepository\\Manifests")
                 .UseVersionControl(
                     keepOldVersions: true,

@@ -5,6 +5,7 @@ using System;
 using System.Threading.Tasks;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using Newtonsoft.Json;
+using NetBungieAPI.Models;
 
 namespace NetBungieAPI
 {
@@ -46,7 +47,7 @@ namespace NetBungieAPI
         /// <summary>
         /// Definition locale
         /// </summary>
-        public DestinyLocales Locale { get; }
+        public BungieLocales Locale { get; }
 
         /// <summary>
         /// Whether this hash isn't empty.

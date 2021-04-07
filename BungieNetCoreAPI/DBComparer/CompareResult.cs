@@ -1,6 +1,7 @@
 ﻿using JsonDiffPatchDotNet;
 using NetBungieAPI.Destiny;
 using NetBungieAPI.Destiny.Definitions;
+using NetBungieAPI.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -10,7 +11,7 @@ namespace NetBungieAPI.DBComparer
     public class CompareResult
     {
         private static JsonDiffPatch _diff = new JsonDiffPatch();
-        public DestinyLocales Locale { get; set; }
+        public BungieLocales Locale { get; set; }
         public DefinitionsEnum Definition { get; set; }
         public uint Hash { get; set; }
         public string Older { get; set; }

@@ -1,12 +1,13 @@
 ﻿using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Destiny.Definitions.ItemCategories;
+using NetBungieAPI.Models;
 using System.Collections.Generic;
 
 namespace NetBungieAPI.Repositories
 {
     public static class QueryExtensions
     {
-        public static Dictionary<DestinyItemCategoryDefinition, List<DestinyInventoryItemDefinition>> GetItemsCategorized(this ILocalisedDestinyDefinitionRepositories repo, DestinyLocales locale)
+        public static Dictionary<DestinyItemCategoryDefinition, List<DestinyInventoryItemDefinition>> GetItemsCategorized(this ILocalisedDestinyDefinitionRepositories repo, BungieLocales locale)
         {
             var result = new Dictionary<DestinyItemCategoryDefinition, List<DestinyInventoryItemDefinition>>();
             foreach (var category in repo.GetAll<DestinyItemCategoryDefinition>(locale))

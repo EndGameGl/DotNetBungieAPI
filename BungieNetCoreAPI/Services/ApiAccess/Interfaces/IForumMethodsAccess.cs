@@ -1,4 +1,5 @@
-﻿using NetBungieAPI.Models.Forum;
+﻿using NetBungieAPI.Models;
+using NetBungieAPI.Models.Forum;
 using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Models.Tags;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="tagstring"></param>
         /// <param name="locales"></param>
         /// <returns></returns>
-        Task<BungieResponse<PostSearchResponse>> GetTopicsPaged(ForumPostCategoryEnums categoryFilter, ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort, long group, int pageSize = 0, int page = 0, string tagstring = null, DestinyLocales[] locales = null);
+        Task<BungieResponse<PostSearchResponse>> GetTopicsPaged(ForumPostCategoryEnums categoryFilter, ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort, long group, int pageSize = 0, int page = 0, string tagstring = null, BungieLocales[] locales = null);
         /// <summary>
         /// Gets a listing of all topics marked as part of the core group.
         /// </summary>
@@ -29,7 +30,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="page"></param>
         /// <param name="locales"></param>
         /// <returns></returns>
-        Task<BungieResponse<PostSearchResponse>> GetCoreTopicsPaged(ForumPostCategoryEnums categoryFilter, ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort, int page = 0, DestinyLocales[] locales = null);
+        Task<BungieResponse<PostSearchResponse>> GetCoreTopicsPaged(ForumPostCategoryEnums categoryFilter, ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort, int page = 0, BungieLocales[] locales = null);
         /// <summary>
         /// Returns a thread of posts at the given parent, optionally returning replies to those posts as well as the original parent.
         /// </summary>

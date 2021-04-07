@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace NetBungieAPI
+namespace NetBungieAPI.Models
 {
     public sealed record BungieResponse<T>
     {

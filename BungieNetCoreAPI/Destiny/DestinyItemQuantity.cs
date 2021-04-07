@@ -12,7 +12,7 @@ namespace NetBungieAPI.Destiny
         [JsonConstructor]
         internal DestinyItemQuantity(uint itemHash, long? itemInstanceId, int quantity)
         {
-            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
+            Item = new DefinitionHashPointer<DestinyInventoryItemDefinition>(itemHash);
             ItemInstanceId = itemInstanceId;
             Quantity = quantity;
         }

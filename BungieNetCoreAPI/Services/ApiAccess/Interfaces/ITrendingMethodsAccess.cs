@@ -1,4 +1,5 @@
-﻿using NetBungieAPI.Models.Queries;
+﻿using NetBungieAPI.Models;
+using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Models.Trending;
 using System.Threading;
 using System.Threading.Tasks;

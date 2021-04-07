@@ -1,5 +1,4 @@
-﻿using NetBungieAPI.Bungie;
-using NetBungieAPI.Destiny.Definitions.Classes;
+﻿using NetBungieAPI.Destiny.Definitions.Classes;
 using NetBungieAPI.Destiny.Definitions.Genders;
 using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Destiny.Definitions.Races;

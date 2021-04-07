@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using NetBungieAPI.Services.Interfaces;
 using System.Threading;
 using NetBungieAPI.Serialization;
+using NetBungieAPI.Models;
 
 namespace NetBungieAPI.Services
 {

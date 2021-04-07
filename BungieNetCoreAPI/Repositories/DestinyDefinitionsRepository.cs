@@ -3,6 +3,7 @@ using NetBungieAPI.Destiny;
 using NetBungieAPI.Destiny.Definitions;
 using NetBungieAPI.Destiny.Definitions.HistoricalStats;
 using NetBungieAPI.Logging;
+using NetBungieAPI.Models;
 using NetBungieAPI.Pipes;
 using NetBungieAPI.Services;
 using NetBungieAPI.Services.Interfaces;
@@ -40,12 +41,12 @@ namespace NetBungieAPI.Repositories
         /// <summary>
         /// Locale of this repository
         /// </summary>
-        public DestinyLocales Locale { get; }
+        public BungieLocales Locale { get; }
         /// <summary>
         /// Class .ctor
         /// </summary>
         /// <param name="locale">Locale for this repository</param>
-        internal DestinyDefinitionsRepository(DestinyLocales locale, IDefinitionAssemblyData assemblyData, IConfigurationService configuration, 
+        internal DestinyDefinitionsRepository(BungieLocales locale, IDefinitionAssemblyData assemblyData, IConfigurationService configuration, 
             ILogger logger)
         {
             _assemblyData = assemblyData;

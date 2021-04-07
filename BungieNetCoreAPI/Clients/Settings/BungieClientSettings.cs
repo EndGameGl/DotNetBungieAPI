@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using NetBungieAPI.Models;
 
 namespace NetBungieAPI.Clients.Settings
 {
@@ -18,7 +19,7 @@ namespace NetBungieAPI.Clients.Settings
 
         internal int AppConcurrencyLevel = Environment.ProcessorCount * 2;
         internal bool CacheDefinitionsInMemory = false;
-        internal DestinyLocales[] Locales = Array.Empty<DestinyLocales>();
+        internal BungieLocales[] Locales = Array.Empty<BungieLocales>();
         internal bool ShouldRetryDownloading = false;
         internal bool PremapDefinitionPointers = false;
 
@@ -78,7 +79,7 @@ namespace NetBungieAPI.Clients.Settings
         /// <param name="preferredSource"></param>
         /// <param name="localesToLoad"></param>
         public BungieClientSettings SetDefinitionsLoadingBehaviour(bool saveToAppMemory, DefinitionSources preferredSource, bool retryDownloading,
-            params DestinyLocales[] localesToLoad)
+            params BungieLocales[] localesToLoad)
         {
             CacheDefinitionsInMemory = saveToAppMemory;
             Locales = localesToLoad;

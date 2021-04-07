@@ -1,6 +1,7 @@
 ﻿using NetBungieAPI.DBComparer;
 using NetBungieAPI.Destiny;
 using NetBungieAPI.Destiny.Definitions;
+using NetBungieAPI.Models;
 using NetBungieAPI.Pipes;
 using System.Collections.Generic;
 using System.IO;
@@ -14,14 +15,14 @@ namespace NetBungieAPI.Services
         private DestinyManifest _older;
         private DestinyManifest _newer;
 
-        public Dictionary<DestinyLocales, Dictionary<DefinitionsEnum, Dictionary<uint, CompareResult>>> Results = new Dictionary<DestinyLocales, Dictionary<DefinitionsEnum, Dictionary<uint, CompareResult>>>();
+        public Dictionary<BungieLocales, Dictionary<DefinitionsEnum, Dictionary<uint, CompareResult>>> Results = new Dictionary<BungieLocales, Dictionary<DefinitionsEnum, Dictionary<uint, CompareResult>>>();
         public void Init(DestinyManifest older, DestinyManifest newer)
         {
             _older = older;
             _newer = newer;
         }
 
-        public void Compare(string repoPath, DestinyLocales[] locales, List<DefinitionsEnum> definitions)
+        public void Compare(string repoPath, BungieLocales[] locales, List<DefinitionsEnum> definitions)
         {
             definitions.Remove(DefinitionsEnum.DestinyHistoricalStatsDefinition);
 
@@ -96,11 +97,11 @@ namespace NetBungieAPI.Services
                 }
             }
         }
-        public List<CompareResult> GetNew(DestinyLocales locale, DefinitionsEnum definition)
+        public List<CompareResult> GetNew(BungieLocales locale, DefinitionsEnum definition)
         {
             return Results[locale][definition].Where(x => x.Value.IsNew).Select(x => x.Value).ToList();
         }
-        public List<DefinitionHashPointer<T>> GetNewAs<T>(DestinyLocales locale, DefinitionsEnum definition) where T : IDestinyDefinition
+        public List<DefinitionHashPointer<T>> GetNewAs<T>(BungieLocales locale, DefinitionsEnum definition) where T : IDestinyDefinition
         {
             var newItems = GetNew(locale, definition);
             List<DefinitionHashPointer<T>> items = new List<DefinitionHashPointer<T>>();
@@ -111,11 +112,11 @@ namespace NetBungieAPI.Services
 
             return items;
         }
-        public List<CompareResult> GetUpdated(DestinyLocales locale, DefinitionsEnum definition)
+        public List<CompareResult> GetUpdated(BungieLocales locale, DefinitionsEnum definition)
         {
             return Results[locale][definition].Where(x => x.Value.WasUpdated).Select(x => x.Value).ToList();
         }
-        public List<DefinitionHashPointer<T>> GetUpdatedAs<T>(DestinyLocales locale, DefinitionsEnum definition) where T : IDestinyDefinition
+        public List<DefinitionHashPointer<T>> GetUpdatedAs<T>(BungieLocales locale, DefinitionsEnum definition) where T : IDestinyDefinition
         {
             var newItems = GetUpdated(locale, definition);
             List<DefinitionHashPointer<T>> items = new List<DefinitionHashPointer<T>>();
@@ -126,7 +127,7 @@ namespace NetBungieAPI.Services
 
             return items;
         }
-        public Dictionary<DefinitionsEnum, List<CompareResult>> GetAllNewDefinitions(DestinyLocales locale)
+        public Dictionary<DefinitionsEnum, List<CompareResult>> GetAllNewDefinitions(BungieLocales locale)
         {
             Dictionary<DefinitionsEnum, List<CompareResult>> results = new Dictionary<DefinitionsEnum, List<CompareResult>>();
             foreach (var coll in Results[locale])
@@ -141,7 +142,7 @@ namespace NetBungieAPI.Services
             }
             return results;
         }
-        public Dictionary<DefinitionsEnum, List<CompareResult>> GetAllUpdatedDefinitions(DestinyLocales locale)
+        public Dictionary<DefinitionsEnum, List<CompareResult>> GetAllUpdatedDefinitions(BungieLocales locale)
         {
             Dictionary<DefinitionsEnum, List<CompareResult>> results = new Dictionary<DefinitionsEnum, List<CompareResult>>();
             foreach (var coll in Results[locale])

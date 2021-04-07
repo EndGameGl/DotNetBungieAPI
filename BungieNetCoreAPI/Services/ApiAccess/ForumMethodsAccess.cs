@@ -1,4 +1,5 @@
-﻿using NetBungieAPI.Models.Forum;
+﻿using NetBungieAPI.Models;
+using NetBungieAPI.Models.Forum;
 using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Models.Tags;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
@@ -18,22 +19,22 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async Task<BungieResponse<PostSearchResponse>> GetTopicsPaged(ForumPostCategoryEnums categoryFilter, ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort, long group, 
-            int pageSize = 0, int page = 0, string tagstring = null, DestinyLocales[] locales = null)
+            int pageSize = 0, int page = 0, string tagstring = null, BungieLocales[] locales = null)
         {
             RequestQueryBuilder builder = new RequestQueryBuilder();
             if (!string.IsNullOrWhiteSpace(tagstring))
                 builder.Add("tagstring", tagstring);
             if (locales == null)
-                locales = new DestinyLocales[] { DestinyLocales.EN };
+                locales = new BungieLocales[] { BungieLocales.EN };
             builder.Add("locales", string.Join(",", locales.Select(x => x.LocaleToString())));
 
             return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<PostSearchResponse>>($"/Forum/GetTopicsPaged/{page}/{pageSize}/{group}/{sort}/{quickDate}/{categoryFilter}/{builder.Build()}");
         }
-        public async Task<BungieResponse<PostSearchResponse>> GetCoreTopicsPaged(ForumPostCategoryEnums categoryFilter, ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort, int page = 0, DestinyLocales[] locales = null)
+        public async Task<BungieResponse<PostSearchResponse>> GetCoreTopicsPaged(ForumPostCategoryEnums categoryFilter, ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort, int page = 0, BungieLocales[] locales = null)
         {
             RequestQueryBuilder builder = new RequestQueryBuilder();
             if (locales == null)
-                locales = new DestinyLocales[] { DestinyLocales.EN };
+                locales = new BungieLocales[] { BungieLocales.EN };
             builder.Add("locales", string.Join(",", locales.Select(x => x.LocaleToString())));
 
             return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<PostSearchResponse>>($"/Forum/GetCoreTopicsPaged/{page}/{sort}/{quickDate}/{categoryFilter}/{builder.Build()}");

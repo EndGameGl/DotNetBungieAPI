@@ -1,6 +1,7 @@
 ﻿using NetBungieAPI.Clients;
 using NetBungieAPI.Destiny;
 using NetBungieAPI.Logging;
+using NetBungieAPI.Models;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;

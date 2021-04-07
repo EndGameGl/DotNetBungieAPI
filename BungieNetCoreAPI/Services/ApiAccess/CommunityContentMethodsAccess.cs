@@ -1,4 +1,5 @@
-﻿using NetBungieAPI.Models.Forum;
+﻿using NetBungieAPI.Models;
+using NetBungieAPI.Models.Forum;
 using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;

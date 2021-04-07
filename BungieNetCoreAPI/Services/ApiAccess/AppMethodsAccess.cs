@@ -1,4 +1,5 @@
-﻿using NetBungieAPI.Models.Applications;
+﻿using NetBungieAPI.Models;
+using NetBungieAPI.Models.Applications;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
 using System;

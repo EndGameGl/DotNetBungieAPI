@@ -1,5 +1,4 @@
-﻿using NetBungieAPI.Bungie;
-using NetBungieAPI.Destiny;
+﻿using NetBungieAPI.Destiny;
 using NetBungieAPI.Destiny.Definitions;
 using NetBungieAPI.Destiny.Definitions.ActivityModes;
 using NetBungieAPI.Destiny.Definitions.HistoricalStats;
@@ -7,6 +6,7 @@ using NetBungieAPI.Destiny.Profile;
 using NetBungieAPI.Destiny.Profile.Components.Contracts;
 using NetBungieAPI.Destiny.Responses;
 using NetBungieAPI.Models;
+using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Models.User;
 using NetBungieAPI.Responses;
 using System;

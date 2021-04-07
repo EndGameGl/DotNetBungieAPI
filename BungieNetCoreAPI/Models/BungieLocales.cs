@@ -1,6 +1,6 @@
-﻿namespace NetBungieAPI
+﻿namespace NetBungieAPI.Models
 {
-    public enum DestinyLocales
+    public enum BungieLocales
     {
         EN,
         RU,

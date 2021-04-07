@@ -1,4 +1,5 @@
 ﻿using NetBungieAPI.Authrorization;
+using NetBungieAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
