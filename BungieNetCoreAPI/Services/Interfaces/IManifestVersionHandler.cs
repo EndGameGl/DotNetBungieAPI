@@ -1,4 +1,5 @@
 ﻿using NetBungieAPI.Destiny;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.Interfaces
@@ -8,10 +9,11 @@ namespace NetBungieAPI.Services.Interfaces
     /// </summary>
     public interface IManifestVersionHandler
     {
-        DestinyManifest CurrentManifest { get; }
-        /// <summary>
-        /// Reads existing manifest data, if any
-        /// </summary>
-        Task InitiateManifestHandler();
+        DestinyManifest CurrentUsedManifest { get; }
+
+        ValueTask<bool> HasUpdates();
+        IList<DestinyManifest> FindManifestsAt(string path);
+        Task DownloadLastVersion();
+        Task DownloadManifestFilesLocally(DestinyManifest manifest, string path, bool unpackSQLite, ManifestContentDownloadFilter filters);
     }
 }

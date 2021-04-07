@@ -1,42 +1,10 @@
-﻿using NetBungieAPI;
+﻿using NetBungieAPI.Models.Applications;
 using NetBungieAPI.Attributes;
-using NetBungieAPI.Bungie;
 using NetBungieAPI.Clients;
 using NetBungieAPI.Destiny;
-using NetBungieAPI.Destiny.Definitions;
-using NetBungieAPI.Destiny.Definitions.Achievements;
-using NetBungieAPI.Destiny.Definitions.Activities;
-using NetBungieAPI.Destiny.Definitions.ActivityGraphs;
-using NetBungieAPI.Destiny.Definitions.ActivityModes;
-using NetBungieAPI.Destiny.Definitions.Artifacts;
-using NetBungieAPI.Destiny.Definitions.BreakerTypes;
-using NetBungieAPI.Destiny.Definitions.Checklists;
-using NetBungieAPI.Destiny.Definitions.Classes;
-using NetBungieAPI.Destiny.Definitions.Collectibles;
-using NetBungieAPI.Destiny.Definitions.DamageTypes;
-using NetBungieAPI.Destiny.Definitions.Destinations;
-using NetBungieAPI.Destiny.Definitions.EnemyRaces;
-using NetBungieAPI.Destiny.Definitions.EnergyTypes;
-using NetBungieAPI.Destiny.Definitions.EquipmentSlots;
-using NetBungieAPI.Destiny.Definitions.Factions;
-using NetBungieAPI.Destiny.Definitions.Genders;
-using NetBungieAPI.Destiny.Definitions.InventoryBuckets;
-using NetBungieAPI.Destiny.Definitions.InventoryItems;
-using NetBungieAPI.Destiny.Definitions.ItemCategories;
-using NetBungieAPI.Destiny.Responses;
-using NetBungieAPI.Fireteam;
-using NetBungieAPI.Forum;
-using NetBungieAPI.Services;
-using NetBungieAPI.Services.Interfaces;
-using NetBungieAPI.TestProject;
-using NetBungieAPI.Trending;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -99,11 +67,13 @@ namespace NetBungieAPI.TestProject
                 .UsePreloadedData("H:\\BungieNetCoreAPIRepository\\Manifests")
                 .UseVersionControl(
                     keepOldVersions: true,
-                    checkUpdates: false,
-                    repositoryPath: string.Empty)
+                    checkUpdates: true,
+                    repositoryPath: string.Empty,
+                    afterLoad: null)
                 .EnableLogging()
                 .PremapPointers()
-                .IncludeClientIdAndSecret(clientId: int.Parse(args[1]), clientSecret: args[2]);
+                .IncludeClientIdAndSecret(clientId: int.Parse(args[1]), clientSecret: args[2])
+                .SpecifyApplicationScopes(ApplicationScopes.ReadUserData);
 
                 //settings.EnableTokenRenewal(refreshRate: 30000);
 
@@ -115,23 +85,13 @@ namespace NetBungieAPI.TestProject
 
         private static async Task MainAsync()
         {
-            //var firstManifest = JsonConvert.DeserializeObject<DestinyManifest>(File.ReadAllText(@"H:\BungieNetCoreAPIRepository\Manifests\91966.21.03.02.2023-2-bnet.36361\Manifest.json"));
-            //var secondManifest = JsonConvert.DeserializeObject<DestinyManifest>(File.ReadAllText(@"H:\BungieNetCoreAPIRepository\Manifests\92539.21.03.17.1630-3-bnet.36521\Manifest.json"));
-            //var defs = Enum.GetValues(typeof(DefinitionsEnum)).Cast<DefinitionsEnum>().ToList();
-            //defs.Remove(DefinitionsEnum.DestinyHistoricalStatsDefinition);
+            await UserApiTest();
 
-            //DatabaseComparer comparer = new DatabaseComparer();
-            //comparer.Init(firstManifest, secondManifest);
-            //comparer.Compare(@"H:\BungieNetCoreAPIRepository\Manifests\", new DestinyLocales[] { DestinyLocales.EN }, defs);
+            //var shouldUpdate = await _bungieClient.CheckUpdates();
+            //if (shouldUpdate)
+            //    await _bungieClient.DownloadLatestManifestLocally();
 
-            //var newDefs = comparer.GetAllNewDefinitions(DestinyLocales.EN);
-            //var updatedDefs = comparer.GetAllUpdatedDefinitions(DestinyLocales.EN);
-
-            //var newItem = newDefs.First(x => x.Value.Count > 0).Value.First();
-
-            //var response = await _bungieClient.ApiAccess.User.GetMembershipDataForCurrentUser(20027802);
-
-            await _bungieClient.Run();
+            //_bungieClient.LoadDefinitions();
 
             await Task.Delay(Timeout.Infinite);
         }
@@ -175,7 +135,31 @@ namespace NetBungieAPI.TestProject
                 totalTime += MeasureOperation(action, false);
             }
 
-            Console.WriteLine($"Ran op {amount} times in {totalTime} ms ({amount / totalTime} op/ms)");
+            Console.WriteLine($"Ran op {amount} times in {totalTime} ms ({totalTime / amount} per op.)");
+        }
+
+        private static async Task UserApiTest()
+        {
+            var getBungieNetUserByIdResponse = await _bungieClient.ApiAccess.User.GetBungieNetUserById(20027802);
+            var searchUsersResponse = await _bungieClient.ApiAccess.User.SearchUsers("megl");
+            var getCredentialTypesForTargetAccountResponse = await _bungieClient.ApiAccess.User.GetCredentialTypesForTargetAccount(getBungieNetUserByIdResponse.Response.MembershipId);
+            var getAvailableThemesResponse = await _bungieClient.ApiAccess.User.GetAvailableThemes();
+            var getMembershipDataByIdResponse = await _bungieClient.ApiAccess.User.GetMembershipDataById(getBungieNetUserByIdResponse.Response.MembershipId, Models.BungieMembershipType.TigerSteam);
+            //var getMembershipDataForCurrentUserResponse = await _bungieClient.ApiAccess.User.GetMembershipDataForCurrentUser();
+            var getMembershipFromHardLinkedCredentialResponse = await _bungieClient.ApiAccess.User.GetMembershipFromHardLinkedCredential(76561198083556532);
+        }
+        private static async Task AppApiTest()
+        {
+            var getBungieApplicationsResponse = await _bungieClient.ApiAccess.App.GetBungieApplications();
+            var getApplicationApiUsageResponse = await _bungieClient.ApiAccess.App.GetApplicationApiUsage(getBungieApplicationsResponse.Response[0].ApplicationId);
+        }
+        private static async Task ContentApiTest()
+        {
+            var getContentTypeResponse = await _bungieClient.ApiAccess.Content.GetContentType("News");
+            var getContentByIdResponse = await _bungieClient.ApiAccess.Content.GetContentById(50223, "en");
+            var getContentByTagAndTypeResponse =  await _bungieClient.ApiAccess.Content.GetContentByTagAndType("News", "destiny-news", "en");
+            var searchContentWithTextResponse = await _bungieClient.ApiAccess.Content.SearchContentWithText("en", new string[] { "News" }, "twab", null, "destiny-news");
+            var searchContentByTagAndTypeResponse =  await _bungieClient.ApiAccess.Content.SearchContentByTagAndType("en", "destiny-news", "News");
         }
     }
 }

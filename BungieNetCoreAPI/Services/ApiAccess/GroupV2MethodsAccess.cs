@@ -1,4 +1,6 @@
-﻿using NetBungieAPI.GroupsV2;
+﻿using NetBungieAPI.Models;
+using NetBungieAPI.Models.Config;
+using NetBungieAPI.Models.GroupsV2;
 using NetBungieAPI.Services;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;

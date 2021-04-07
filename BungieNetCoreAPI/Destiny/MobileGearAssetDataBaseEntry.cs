@@ -1,17 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Destiny
 {
     public class MobileGearAssetDataBaseEntry
     {
-        public int Version { get; }
-        public string Path { get; }
+        [JsonPropertyName("version")]
+        public int Version { get; init; }
 
-        [JsonConstructor]
-        private MobileGearAssetDataBaseEntry(int version, string path)
-        {
-            Version = version;
-            Path = path;
-        }
+        [JsonPropertyName("path")]
+        public string Path { get; init; }
     }
 }

@@ -1,10 +1,7 @@
-﻿using NetBungieAPI.Forum;
-using NetBungieAPI.Services;
+﻿using NetBungieAPI.Models.Forum;
+using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI

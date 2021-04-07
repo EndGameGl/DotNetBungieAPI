@@ -1,5 +1,6 @@
 ﻿using NetBungieAPI.Bungie;
 using NetBungieAPI.Destiny.Definitions.RewardSources;
+using NetBungieAPI.Models;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 

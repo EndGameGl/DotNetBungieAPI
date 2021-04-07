@@ -1,27 +1,28 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Authrorization
 {
-    public class AuthorizationTokenData
+    public record AuthorizationTokenData
     {
-        public string AccessToken { get; }
-        public string TokenType { get; }
-        public int ExpiresIn { get; }
-        public string RefreshToken { get; }
-        public int RefreshExpiresIn { get; }
-        public long MembershipId { get; }
-        public DateTime ReceiveTime { get; } = DateTime.Now;
+        [JsonPropertyName("access_token")]
+        public string AccessToken { get; init; }
 
-        [JsonConstructor]
-        internal AuthorizationTokenData(string access_token, string token_type, int expires_in, string refresh_token, int refresh_expires_in, long membership_id)
-        {
-            AccessToken = access_token;
-            TokenType = token_type;
-            ExpiresIn = expires_in;
-            RefreshToken = refresh_token;
-            RefreshExpiresIn = refresh_expires_in;
-            MembershipId = membership_id;
-        }
+        [JsonPropertyName("token_type")]
+        public string TokenType { get; init; }
+
+        [JsonPropertyName("expires_in")]
+        public int ExpiresIn { get; init; }
+
+        [JsonPropertyName("refresh_token")]
+        public string RefreshToken { get; init; }
+
+        [JsonPropertyName("refresh_expires_in")]
+        public int RefreshExpiresIn { get; init; }
+
+        [JsonPropertyName("membership_id")]
+        public long MembershipId { get; init; }
+
+        public DateTime ReceiveTime { get; } = DateTime.Now;
     }
 }

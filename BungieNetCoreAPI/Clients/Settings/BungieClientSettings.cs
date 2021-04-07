@@ -1,5 +1,7 @@
-﻿using NetBungieAPI.Attributes;
+﻿using NetBungieAPI.Models.Applications;
+using NetBungieAPI.Attributes;
 using NetBungieAPI.Destiny;
+using NetBungieAPI.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +14,7 @@ namespace NetBungieAPI.Clients.Settings
         internal string ApiKey;
         internal int? ClientID = null;
         internal string ClientSecret = null;
-        internal ClientScopes ClientScopes;
+        internal ApplicationScopes ApplicationScopes = ApplicationScopes.ReadBasicUserProfile;
 
         internal int AppConcurrencyLevel = Environment.ProcessorCount * 2;
         internal bool CacheDefinitionsInMemory = false;
@@ -27,6 +29,7 @@ namespace NetBungieAPI.Clients.Settings
         internal string VersionsRepositoryPath;
         internal bool KeepOldVerisons;
         internal bool CheckUpdates;
+        internal Action<IManifestVersionHandler> OnManifestInitiation;
 
         internal bool IsLoggingEnabled = false;
 
@@ -106,12 +109,14 @@ namespace NetBungieAPI.Clients.Settings
         /// <param name="keepOldVersions"></param>
         /// <param name="checkUpdates"></param>
         /// <param name="repositoryPath"></param>
-        public BungieClientSettings UseVersionControl(bool keepOldVersions, bool checkUpdates, string repositoryPath)
+        public BungieClientSettings UseVersionControl(bool keepOldVersions, bool checkUpdates, string repositoryPath, 
+            Action<IManifestVersionHandler> afterLoad = null)
         {
             KeepOldVerisons = keepOldVersions;
             CheckUpdates = checkUpdates;
             if (string.IsNullOrWhiteSpace(VersionsRepositoryPath) && !string.IsNullOrWhiteSpace(repositoryPath))
                 VersionsRepositoryPath = repositoryPath;
+            OnManifestInitiation = afterLoad;
             return this;
         }
         /// <summary>
@@ -204,9 +209,9 @@ namespace NetBungieAPI.Clients.Settings
         /// </summary>
         /// <param name="scopes"></param>
         /// <returns></returns>
-        public BungieClientSettings SpecifyClientScopes(ClientScopes scopes)
+        public BungieClientSettings SpecifyApplicationScopes(ApplicationScopes scopes)
         {
-            ClientScopes = scopes;
+            ApplicationScopes = scopes;
             return this;
         }
     }

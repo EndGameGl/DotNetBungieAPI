@@ -1,5 +1,6 @@
 ﻿using NetBungieAPI.Destiny.Definitions.ActivityModes;
-using NetBungieAPI.Fireteam;
+using NetBungieAPI.Models.Fireteam;
+using NetBungieAPI.Models.Queries;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess.Interfaces

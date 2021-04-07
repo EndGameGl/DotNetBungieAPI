@@ -22,7 +22,6 @@ namespace NetBungieAPI.Repositories
         private readonly ILogger _logger;
         private readonly IConfigurationService _configs;
         private readonly IDefinitionAssemblyData _assemblyData;
-
         public DestinyLocales CurrentLocaleLoadContext => _currentLocaleLoadContext == null ? DestinyLocales.EN : _currentLocaleLoadContext.Value;
 
         private ConcurrentDictionary<DestinyLocales, DestinyDefinitionsRepository> _localisedRepositories;
@@ -146,7 +145,7 @@ namespace NetBungieAPI.Repositories
             if (!_assemblyData.DefinitionsToTypeMapping[definitionType].AttributeData.Sources.HasFlag(Attributes.DefinitionSources.SQLite))
                 throw new Exception("This definition type isn't present in SQLite database.");
 
-            var manifest = StaticUnityContainer.GetManifestUpdateHandler().CurrentManifest;
+            var manifest = StaticUnityContainer.GetManifestUpdateHandler().CurrentUsedManifest;
             var mobileWorldContentPathsLocalePath = Path.GetFileName(manifest.MobileWorldContentPaths[locale.LocaleToString()]);
             var connectionString = @$"Data Source={_configs.Settings.VersionsRepositoryPath}\\{manifest.Version}\\MobileWorldContent\\{locale.LocaleToString()}\\{mobileWorldContentPathsLocalePath}; Version=3;";
             string result = string.Empty;

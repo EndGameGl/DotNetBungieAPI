@@ -1,6 +1,6 @@
-﻿using NetBungieAPI.Services.ApiAccess.Interfaces;
+﻿using NetBungieAPI.Models.Trending;
+using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
-using NetBungieAPI.Trending;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess

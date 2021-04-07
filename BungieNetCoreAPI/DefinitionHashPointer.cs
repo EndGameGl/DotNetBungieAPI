@@ -12,8 +12,9 @@ namespace NetBungieAPI
     /// Class that points to a certain definition in database
     /// </summary>
     /// <typeparam name="T">Destiny definition type</typeparam>
-    public class DefinitionHashPointer<T> : IDeepEquatable<DefinitionHashPointer<T>> where T : IDestinyDefinition
+    public sealed record DefinitionHashPointer<T> : IDeepEquatable<DefinitionHashPointer<T>> where T : IDestinyDefinition
     {
+#if DEBUG
         private T debug_value_getter
         {
             get
@@ -24,8 +25,12 @@ namespace NetBungieAPI
                     throw new Exception("Definition is missing from repo.");
             }
         }
+#endif
 
         private static readonly ILocalisedDestinyDefinitionRepositories _repository = StaticUnityContainer.GetDestinyDefinitionRepositories();
+
+        public static DefinitionsEnum EnumValue { get; } = Enum.Parse<DefinitionsEnum>(typeof(T).Name);
+        public static DefinitionHashPointer<T> Empty { get; } = new DefinitionHashPointer<T>(null, EnumValue);
 
         private bool _isMapped;
         private T _value;
@@ -37,7 +42,7 @@ namespace NetBungieAPI
         /// <summary>
         /// Definition type enum value
         /// </summary>
-        public DefinitionsEnum DefinitionEnumType { get; }
+        public DefinitionsEnum DefinitionEnumType => EnumValue;
         /// <summary>
         /// Definition locale
         /// </summary>
@@ -59,7 +64,13 @@ namespace NetBungieAPI
             _value = default;
             _isMapped = false;
             Hash = hash;
-            DefinitionEnumType = type;
+            Locale = _repository.CurrentLocaleLoadContext;
+        }
+        public DefinitionHashPointer(uint? hash)
+        {
+            _value = default;
+            _isMapped = false;
+            Hash = hash;
             Locale = _repository.CurrentLocaleLoadContext;
         }
         /// <summary>
@@ -77,11 +88,11 @@ namespace NetBungieAPI
             }
             if (HasValidHash)
             {
-                if (_repository.TryGetDestinyDefinition<T>(DefinitionEnumType, Hash.Value, Locale, out var foundDefinition))
+                if (_repository.TryGetDestinyDefinition<T>(EnumValue, Hash.Value, Locale, out var foundDefinition))
                 {
                     definition = foundDefinition;
                     return true;
-                }             
+                }
             }
             return false;
         }

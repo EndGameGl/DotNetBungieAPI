@@ -1,4 +1,6 @@
-﻿using NetBungieAPI.Destiny;
+﻿using Microsoft.Extensions.DependencyInjection;
+using NetBungieAPI.Clients.Settings;
+using NetBungieAPI.Destiny;
 using NetBungieAPI.Destiny.Definitions;
 using NetBungieAPI.Destiny.Definitions.Activities;
 using NetBungieAPI.Destiny.Definitions.ActivityModes;
@@ -14,7 +16,12 @@ using System.Threading.Tasks;
 namespace NetBungieAPI
 {
     public static class Extensions
-    {
+    {     
+        public static IServiceCollection UseBungieApiClient(this IServiceCollection services, Action<BungieClientSettings> configure)
+        {
+            var client = BungieApiBuilder.GetApiClient(configure);
+            return services.AddSingleton(client);
+        }
         internal static async Task<T> ReadObjectFromHttpResponseMessage<T>(this HttpResponseMessage response)
         {
             return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());

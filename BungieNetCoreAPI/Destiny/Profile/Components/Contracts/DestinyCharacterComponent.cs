@@ -5,6 +5,7 @@ using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Destiny.Definitions.Races;
 using NetBungieAPI.Destiny.Definitions.Records;
 using NetBungieAPI.Destiny.Definitions.Stats;
+using NetBungieAPI.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

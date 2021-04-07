@@ -1,5 +1,4 @@
 ﻿using NetBungieAPI.Bungie;
-using NetBungieAPI.Bungie.Applications;
 using NetBungieAPI.Destiny;
 using NetBungieAPI.Destiny.Definitions;
 using NetBungieAPI.Destiny.Definitions.ActivityModes;
@@ -7,6 +6,8 @@ using NetBungieAPI.Destiny.Definitions.HistoricalStats;
 using NetBungieAPI.Destiny.Profile;
 using NetBungieAPI.Destiny.Profile.Components.Contracts;
 using NetBungieAPI.Destiny.Responses;
+using NetBungieAPI.Models;
+using NetBungieAPI.Models.User;
 using NetBungieAPI.Responses;
 using NetBungieAPI.Services;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
@@ -14,6 +15,7 @@ using NetBungieAPI.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI
@@ -26,9 +28,9 @@ namespace NetBungieAPI
             _httpClient = httpClient;
         }
 
-        public async Task<BungieResponse<DestinyManifest>> GetDestinyManifest()
+        public async ValueTask<BungieResponse<DestinyManifest>> GetDestinyManifest(CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyManifest>>("/Destiny2/Manifest");
+            return await _httpClient.GetFromBungieNetPlatform<DestinyManifest>("/Destiny2/Manifest", token);
         }
         /// <summary>
         /// Returns the  definition of an entity of the given Type and hash identifier.
@@ -48,9 +50,9 @@ namespace NetBungieAPI
         /// <param name="displayName">The full gamertag or PSN id of the player. Spaces and case are ignored.</param>
         /// <param name="returnOriginalProfile">If passed in and set to true, we will return the original Destiny Profile(s) linked to that gamertag, and not their currently active Destiny Profile.</param>
         /// <returns></returns>
-        public async Task<BungieResponse<BungieNetUserInfo[]>> SearchDestinyPlayer(BungieMembershipType membershipType, string displayName, bool returnOriginalProfile = false)
+        public async Task<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(BungieMembershipType membershipType, string displayName, bool returnOriginalProfile = false)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<BungieNetUserInfo[]>>($"/Destiny2/SearchDestinyPlayer/{membershipType}/{displayName}/?returnOriginalProfile={returnOriginalProfile}");
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<UserInfoCard[]>>($"/Destiny2/SearchDestinyPlayer/{membershipType}/{displayName}/?returnOriginalProfile={returnOriginalProfile}");
         }
         /// <summary>
         /// Returns a summary information about all profiles linked to the requesting membership type/membership ID that have valid Destiny information.

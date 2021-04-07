@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NetBungieAPI.Logging
 {
@@ -19,7 +17,7 @@ namespace NetBungieAPI.Logging
 
         public override string ToString()
         {
-            return $"[{Type}]: [{Time}]: {Message}";
+            return StringBuilderPool.GetBuilder().Append("[").Append(Type.ToString()).Append("]: [").Append(Time.ToString()).Append("]: ").Append(Message).ToString();
         }
     }
 }

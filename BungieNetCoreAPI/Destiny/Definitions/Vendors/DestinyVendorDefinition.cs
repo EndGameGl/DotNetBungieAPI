@@ -2,6 +2,7 @@
 using NetBungieAPI.Destiny.Definitions.Factions;
 using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using Newtonsoft.Json;
+using System;
 using System.Collections.ObjectModel;
 
 namespace NetBungieAPI.Destiny.Definitions.Vendors

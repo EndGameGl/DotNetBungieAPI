@@ -25,7 +25,8 @@ namespace NetBungieAPI.Repositories
     /// </summary>
     public class DestinyDefinitionsRepository
     {
-        private readonly JsonSerializer _jsonSerializer = new JsonSerializer();
+        private readonly JsonSerializer jsonSerializer = new JsonSerializer();
+
         private readonly string SELECT_QUERY = "SELECT * FROM {0}";
 
         private readonly ILogger _logger;
@@ -44,7 +45,8 @@ namespace NetBungieAPI.Repositories
         /// Class .ctor
         /// </summary>
         /// <param name="locale">Locale for this repository</param>
-        internal DestinyDefinitionsRepository(DestinyLocales locale, IDefinitionAssemblyData assemblyData, IConfigurationService configuration, ILogger logger)
+        internal DestinyDefinitionsRepository(DestinyLocales locale, IDefinitionAssemblyData assemblyData, IConfigurationService configuration, 
+            ILogger logger)
         {
             _assemblyData = assemblyData;
             _config = configuration;
@@ -221,46 +223,49 @@ namespace NetBungieAPI.Repositories
         private void LoadDefinitionsFromSQLite(DefinitionsEnum[] definitions, string localManifestPath, DestinyManifest manifest, bool loadHistoricalDefinitions)
         {
             var mobileWorldContentPathsLocalePath = Path.GetFileName(manifest.MobileWorldContentPaths[Locale.LocaleToString()]);
-            using (SQLiteDataPipe pipe = SQLiteDataPipe.CreatePipe($"{localManifestPath}\\MobileWorldContent\\{Locale}\\{mobileWorldContentPathsLocalePath}"))
+            using SQLiteDataPipe pipe = SQLiteDataPipe.CreatePipe($"{localManifestPath}\\{manifest.Version}\\MobileWorldContent\\{Locale.LocaleToString()}\\{mobileWorldContentPathsLocalePath}");
+            Stopwatch stopwatch = new Stopwatch();
+            foreach (var key in definitions)
             {
-                foreach (var key in definitions)
+                stopwatch.Start();
+                if (key == DefinitionsEnum.DestinyHistoricalStatsDefinition)
+                    continue;
+                var definitionType = _assemblyData.DefinitionsToTypeMapping[key].DefinitionType;
+                _definitionRepositories.TryAdd(key, new DestinyDefinitionTypeRepository(definitionType, _config.Settings.AppConcurrencyLevel));
+                _logger.Log($"Loading definitions from {key} ({Locale})", LogType.Info);
+                try
                 {
-                    if (key == DefinitionsEnum.DestinyHistoricalStatsDefinition)
-                        continue;
-                    var definitionType = _assemblyData.DefinitionsToTypeMapping[key].DefinitionType;
-                    _definitionRepositories.TryAdd(key, new DestinyDefinitionTypeRepository(definitionType, _config.Settings.AppConcurrencyLevel));
-                    _logger.Log($"Loading definitions from {key} ({Locale})", LogType.Info);
-                    try
+                    var reader = pipe.GetReader(GetSQLSelectQuery(key.ToString()));
+                    while (reader.Read())
                     {
-                        var reader = pipe.GetReader(GetSQLSelectQuery(key.ToString()));
-                        while (reader.Read())
-                        {
-                            AddDefinition(key, (IDestinyDefinition)ParseJsonFromSQLiteDataReader(reader, definitionType));
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        _logger.Log(e.Message, LogType.Error);
+                        AddDefinition(key, (IDestinyDefinition)ParseJsonFromSQLiteDataReader(reader, definitionType));
                     }
                 }
-                if (loadHistoricalDefinitions)
+                catch (Exception e)
                 {
-                    _historicalStatsDefinitions = new ConcurrentDictionary<string, DestinyHistoricalStatsDefinition>(_config.Settings.AppConcurrencyLevel, 31);
-                    var definitionType = _assemblyData.DefinitionsToTypeMapping[DefinitionsEnum.DestinyHistoricalStatsDefinition].DefinitionType;
-                    _logger.Log($"Loading definitions from DestinyHistoricalStatsDefinition ({Locale})", LogType.Info);
-                    try
+                    _logger.Log(e.Message, LogType.Error);
+                }
+                stopwatch.Stop();
+                _logger.Log($"Loaded definitions in: {stopwatch.ElapsedMilliseconds} ms", LogType.Info);
+                stopwatch.Reset();
+            }
+            if (loadHistoricalDefinitions)
+            {
+                _historicalStatsDefinitions = new ConcurrentDictionary<string, DestinyHistoricalStatsDefinition>(_config.Settings.AppConcurrencyLevel, 31);
+                var definitionType = _assemblyData.DefinitionsToTypeMapping[DefinitionsEnum.DestinyHistoricalStatsDefinition].DefinitionType;
+                _logger.Log($"Loading definitions from DestinyHistoricalStatsDefinition ({Locale})", LogType.Info);
+                try
+                {
+                    var reader = pipe.GetReader(GetSQLSelectQuery(DefinitionsEnum.DestinyHistoricalStatsDefinition.ToString()));
+                    while (reader.Read())
                     {
-                        var reader = pipe.GetReader(GetSQLSelectQuery(DefinitionsEnum.DestinyHistoricalStatsDefinition.ToString()));
-                        while (reader.Read())
-                        {
-                            var definition = (DestinyHistoricalStatsDefinition)ParseJsonFromSQLiteDataReader(reader, definitionType);
-                            _historicalStatsDefinitions.TryAdd(definition.StatId, definition);
-                        }
+                        var definition = (DestinyHistoricalStatsDefinition)ParseJsonFromSQLiteDataReader(reader, definitionType);
+                        _historicalStatsDefinitions.TryAdd(definition.StatId, definition);
                     }
-                    catch (Exception e)
-                    {
-                        _logger.Log(e.Message, LogType.Error);
-                    }
+                }
+                catch (Exception e)
+                {
+                    _logger.Log(e.Message, LogType.Error);
                 }
             }
         }
@@ -292,7 +297,7 @@ namespace NetBungieAPI.Repositories
             using TextReader sr = new StreamReader(readStream);
             using JsonReader jsonReader = new JsonTextReader(sr);
 
-            return _jsonSerializer.Deserialize(jsonReader, parseTo);
+            return jsonSerializer.Deserialize(jsonReader, parseTo);
         }
         private string GetSQLSelectQuery(string tableName) => string.Format(SELECT_QUERY, tableName);
         internal void PremapPointers()

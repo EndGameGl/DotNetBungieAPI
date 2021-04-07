@@ -1,6 +1,7 @@
 ﻿using NetBungieAPI.Bungie;
 using NetBungieAPI.Destiny.Definitions.Activities;
 using NetBungieAPI.Destiny.Definitions.ActivityModes;
+using NetBungieAPI.Models;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 

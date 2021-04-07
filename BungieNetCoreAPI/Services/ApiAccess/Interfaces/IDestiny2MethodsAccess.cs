@@ -1,5 +1,4 @@
 ﻿using NetBungieAPI.Bungie;
-using NetBungieAPI.Bungie.Applications;
 using NetBungieAPI.Destiny;
 using NetBungieAPI.Destiny.Definitions;
 using NetBungieAPI.Destiny.Definitions.ActivityModes;
@@ -7,19 +6,22 @@ using NetBungieAPI.Destiny.Definitions.HistoricalStats;
 using NetBungieAPI.Destiny.Profile;
 using NetBungieAPI.Destiny.Profile.Components.Contracts;
 using NetBungieAPI.Destiny.Responses;
+using NetBungieAPI.Models;
+using NetBungieAPI.Models.User;
 using NetBungieAPI.Responses;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess.Interfaces
 {
     public interface IDestiny2MethodsAccess
     {
-        Task<BungieResponse<DestinyManifest>> GetDestinyManifest();
+        ValueTask<BungieResponse<DestinyManifest>> GetDestinyManifest(CancellationToken token = default);
         Task<BungieResponse<T>> GetDestinyEntityDefinition<T>(DefinitionsEnum entityType, uint hash) where T : IDestinyDefinition;
-        Task<BungieResponse<BungieNetUserInfo[]>> SearchDestinyPlayer(BungieMembershipType membershipType, string displayName, bool returnOriginalProfile = false);
+        Task<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(BungieMembershipType membershipType, string displayName, bool returnOriginalProfile = false);
         Task<BungieResponse<DestinyLinkedProfilesResponse>> GetLinkedProfiles(BungieMembershipType membershipType, long membershipId, bool getAllMemberships = false);
         Task<BungieResponse<DestinyComponentProfileResponse>> GetProfile(BungieMembershipType membershipType, long destinyMembershipId, DestinyComponentType[] componentTypes);
         Task<BungieResponse<DestinyComponentCharacterResponse>> GetCharacter(BungieMembershipType membershipType, long destinyMembershipId, long characterId, DestinyComponentType[] componentTypes);

@@ -1,10 +1,6 @@
-﻿using NetBungieAPI.Clients;
-using NetBungieAPI.Services;
-using NetBungieAPI.Services.Interfaces;
+﻿using NetBungieAPI.Services.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Unity;
 
 namespace NetBungieAPI.Logging
 {
@@ -20,7 +16,11 @@ namespace NetBungieAPI.Logging
         public void Log(string message, LogType type)
         {
             if (_configuration.Settings.IsLoggingEnabled)
-                _listeners.ForEach(x => x.Invoke(new LogMessage(DateTime.Now, message, type)));
+            {
+                var messageObject = new LogMessage(DateTime.Now, message, type);
+                foreach (var listener in _listeners)
+                    listener.Invoke(messageObject);
+            }
         }
 
         public void Register(LogListener newListener)

@@ -1,4 +1,5 @@
-﻿using NetBungieAPI.Responses;
+﻿using NetBungieAPI.Models.Queries;
+using NetBungieAPI.Responses;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 

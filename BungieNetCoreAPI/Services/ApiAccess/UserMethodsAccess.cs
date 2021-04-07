@@ -1,6 +1,9 @@
-﻿using NetBungieAPI.Services.ApiAccess.Interfaces;
+﻿using NetBungieAPI.Models;
+using NetBungieAPI.Models.Config;
+using NetBungieAPI.Models.User;
+using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
-using NetBungieAPI.User;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess
@@ -14,37 +17,42 @@ namespace NetBungieAPI.Services.ApiAccess
             _httpClient = httpClient;
             _authHandler = authHandler;
         }
-        public async Task<BungieResponse<GeneralUser>> GetBungieNetUserById(long id)
+        public async ValueTask<BungieResponse<GeneralUser>> GetBungieNetUserById(long id, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<GeneralUser>>($"/User/GetBungieNetUserById/{id}");
+            var url = StringBuilderPool.GetBuilder().Append("/User/GetBungieNetUserById/").Append(id).ToString();
+            return await _httpClient.GetFromBungieNetPlatform<GeneralUser>(url, token);
         }
-        public async Task<BungieResponse<GeneralUser[]>> SearchUsers(string query)
+        public async ValueTask<BungieResponse<GeneralUser[]>> SearchUsers(string query, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<GeneralUser[]>>($"/User/SearchUsers/{query}");
+            var url = StringBuilderPool.GetBuilder().Append("/User/SearchUsers/?q=").Append(query).ToString();
+            return await _httpClient.GetFromBungieNetPlatform<GeneralUser[]>(url, token);
         }
-        public async Task<BungieResponse<CredentialTypeForAccount[]>> GetCredentialTypesForTargetAccount(long id)
+        public async ValueTask<BungieResponse<CredentialTypeForAccount[]>> GetCredentialTypesForTargetAccount(long id, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<CredentialTypeForAccount[]>>($"/User/GetCredentialTypesForTargetAccount/{id}");
+            var url = StringBuilderPool.GetBuilder().Append("/User/GetCredentialTypesForTargetAccount/").Append(id).ToString();
+            return await _httpClient.GetFromBungieNetPlatform<CredentialTypeForAccount[]>(url, token);
         }
-        public async Task<BungieResponse<UserTheme[]>> GetAvailableThemes()
+        public async ValueTask<BungieResponse<UserTheme[]>> GetAvailableThemes(CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<UserTheme[]>>($"/User/GetAvailableThemes");
+            return await _httpClient.GetFromBungieNetPlatform<UserTheme[]>("/User/GetAvailableThemes", token);
         }
-        public async Task<BungieResponse<UserMembershipData>> GetMembershipDataById(long id, BungieMembershipType membershipType)
+        public async ValueTask<BungieResponse<UserMembershipData>> GetMembershipDataById(long id, BungieMembershipType membershipType, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<UserMembershipData>>($"/User/GetMembershipsById/{id}/{membershipType}");
+            var url = StringBuilderPool.GetBuilder().Append("/User/GetMembershipsById/").Append(id).Append('/').Append((int)membershipType).ToString();
+            return await _httpClient.GetFromBungieNetPlatform<UserMembershipData>(url, token);
         }
-        public async Task<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser(long id)
+        public async ValueTask<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser(long id, CancellationToken token = default)
         {
-            if (_authHandler.TryGetAccessToken(id, out var token))
+            if (_authHandler.TryGetAccessToken(id, out var accessToken))
             {
-                return await _httpClient.GetResponseFromBungieNetPlatform<UserMembershipData>($"/User/GetMembershipsForCurrentUser", token);
+                return await _httpClient.GetFromBungieNetPlatform<UserMembershipData>("/User/GetMembershipsForCurrentUser", token, accessToken);
             }
             throw new System.Exception("Missing token to make a call.");
         }
-        public async Task<BungieResponse<HardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(long credential, BungieCredentialType credentialType = BungieCredentialType.SteamId)
+        public async ValueTask<BungieResponse<HardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(long credential, BungieCredentialType credentialType = BungieCredentialType.SteamId, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<HardLinkedUserMembership>>($"/User/GetMembershipFromHardLinkedCredential/{(byte)credentialType}/{credential}");
+            var url = StringBuilderPool.GetBuilder().Append("/User/GetMembershipFromHardLinkedCredential/").Append((byte)credentialType).Append('/').Append(credential).ToString();
+            return await _httpClient.GetFromBungieNetPlatform<HardLinkedUserMembership>(url, token);
         }
     }
 }

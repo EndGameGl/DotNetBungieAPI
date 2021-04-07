@@ -9,11 +9,22 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using NetBungieAPI.Services.Interfaces;
+using System.Threading;
+using NetBungieAPI.Serialization;
 
 namespace NetBungieAPI.Services
 {
     internal class HttpClientInstance : IHttpClientInstance
     {
+        private readonly System.Text.Json.JsonSerializerOptions _jsonSerializerOptions = new System.Text.Json.JsonSerializerOptions()
+        {
+            Converters = 
+            { 
+                new ReadOnlyCollectionConverterFactory(),
+                new DefinitionHashPointerConverterFactory(),
+                new ReadOnlyDictionaryConverterFactory()
+            }
+        };
         private readonly ILogger _logger;
         private readonly IConfigurationService _config;
 
@@ -24,7 +35,6 @@ namespace NetBungieAPI.Services
         private readonly Uri _statsEndpoint = new Uri("https://www.stats.bungie.net");
 
         private readonly HttpClient _httpClient;
-        private readonly JsonSerializerSettings _serializerSettings;
         internal HttpClientInstance(ILogger logger, IConfigurationService configuration)
         {
             _logger = logger;
@@ -32,10 +42,6 @@ namespace NetBungieAPI.Services
             _httpClient = new HttpClient()
             {
                 Timeout = TimeSpan.FromSeconds(6000)              
-            };
-            _serializerSettings = new JsonSerializerSettings()
-            {
-                Error = OnDeserializeError
             };
         }
 
@@ -197,14 +203,12 @@ namespace NetBungieAPI.Services
                 }
             }
             return image;
-        }
-        
+        }     
         public async Task<T> GetFromStatsPlatfromAndDeserialize<T>(string query)
         {
             var response = await GetFromStatsPlatform(query);
             return await response.ReadObjectFromHttpResponseMessage<T>();
         }
-
         public async Task<T> PostToPlatformAndDeserialize<T>(string query, string data)
         {
             var response = await PostToPlatform(query, data);
@@ -217,18 +221,20 @@ namespace NetBungieAPI.Services
             var response = await GetFromPlatform(query);
             return await response.ReadObjectFromHttpResponseMessage<T>();
         }
+
+
         private HttpRequestMessage CreateGetMessage(string uri, string authToken = null)
         {
             HttpRequestMessage requestMessage = new HttpRequestMessage()
             {
                 RequestUri = new Uri(uri),
-                Method = HttpMethod.Get
+                Method = HttpMethod.Get               
             };
 
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             requestMessage.Headers.TryAddWithoutValidation("X-API-Key", _config.Settings.ApiKey);
             requestMessage.Headers.TryAddWithoutValidation("cache-control", "no-cache");
-            requestMessage.Headers.UserAgent.ParseAdd("PostmanRuntime/7.26.10");
+            //requestMessage.Headers.UserAgent.ParseAdd("PostmanRuntime/7.26.10");
             if (!string.IsNullOrEmpty(authToken))
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
 
@@ -251,34 +257,32 @@ namespace NetBungieAPI.Services
                 requestMessage.Content = new StringContent(content);
             return requestMessage;
         }
-        private async Task<HttpResponseMessage> SendAndValidateMessageAsync(HttpRequestMessage message)
+        public async Task DownloadFileStreamFromCDNAsync(string query, string savePath)
         {
-            var response = await _httpClient.SendAsync(message);
-            if (response.Content.Headers.ContentLength.HasValue && response.Content.Headers.ContentLength.Value == 0)
-                throw new Exception("Response didn't have any content.");
-            return response;
+            using var response = await _httpClient.GetAsync(_cdnEndpoint + query, HttpCompletionOption.ResponseHeadersRead);
+            using var stream = await response.Content.ReadAsStreamAsync();
+            using Stream streamToWriteTo = File.Open(savePath, FileMode.Create);
+            await stream.CopyToAsync(streamToWriteTo);
         }
-        private async Task<BungieResponse<T>> ParseResponseToBungieResponseAsync<T>(HttpResponseMessage response)
+        public async ValueTask<BungieResponse<T>> GetFromBungieNetPlatform<T>(string query, CancellationToken token, string authToken = null)
         {
-            var responseString = await response.Content.ReadAsStringAsync();
-            var bungieResponse = JsonConvert.DeserializeObject<BungieResponse<T>>(responseString, _serializerSettings);
+            var finalQuery = _platformEndpoint + query;
+            _logger.Log($"Calling api: {finalQuery}", LogType.Debug);
+            var request = CreateGetMessage(finalQuery, authToken);
+            var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
+            using var stream = await response.Content.ReadAsStreamAsync();
+            var bungieResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream, _jsonSerializerOptions, token);
             return bungieResponse;
         }
-        private void OnDeserializeError(object sender, Newtonsoft.Json.Serialization.ErrorEventArgs args)
+        public async ValueTask<BungieResponse<T>> PostToBungieNetPlatform<T>(string query, CancellationToken token, string authToken = null)
         {
-            throw new Exception("Failed to parse response as BungieResponse<T>");
-        }
-        public async Task<BungieResponse<T>> GetResponseFromBungieNetPlatform<T>(string query, string authToken = null)
-        {
-            var request = CreateGetMessage(_platformEndpoint + query, authToken);
-            var response = await SendAndValidateMessageAsync(request);
-            return await ParseResponseToBungieResponseAsync<T>(response);
-        }
-        public async Task<BungieResponse<T>> PostAndGetResponseFromBungieNetPlatform<T>(string query, string content = null, string authToken = null)
-        {
-            var request = CreatePostMessage(_platformEndpoint + query, authToken, content);
-            var response = await SendAndValidateMessageAsync(request);
-            return await ParseResponseToBungieResponseAsync<T>(response);
+            var finalQuery = StringBuilderPool.GetBuilder().Append(_platformEndpoint.ToString()).Append(query).ToString();
+            _logger.Log($"Calling api: {finalQuery}", LogType.Debug);
+            var request = CreatePostMessage(finalQuery, authToken);
+            var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
+            using var stream = await response.Content.ReadAsStreamAsync();
+            var bungieResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream, _jsonSerializerOptions, token);
+            return bungieResponse;
         }
     }
 }

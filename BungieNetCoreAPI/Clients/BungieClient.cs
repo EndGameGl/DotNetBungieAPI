@@ -24,29 +24,33 @@ namespace NetBungieAPI.Clients
         public IBungieApiAccess ApiAccess { get; }
 
         internal BungieClient(IConfigurationService config, IManifestVersionHandler manifestUpdateHandler, ILogger logger, IBungieApiAccess apiAccess,
-            IHttpClientInstance httpClient, IAuthorizationStateHandler authorizationHandler)
+            IHttpClientInstance httpClient, IAuthorizationStateHandler authorizationHandler, ILocalisedDestinyDefinitionRepositories repository)
         {
             Configuration = config;
             _httpClient = httpClient;
             _logger = logger;
             _versionControl = manifestUpdateHandler;
             _authHandler = authorizationHandler;
+            Repository = repository;
             ApiAccess = apiAccess; 
             _logListener = new LogListener();
             _logger.Register(_logListener);
         }
-        public async Task Run()
+
+        public async ValueTask<bool> CheckUpdates()
         {
-            _logger.Log("Starting client...", LogType.Info);
-
-            if (Configuration.Settings.CacheDefinitionsInMemory)
-            {
-                Repository = StaticUnityContainer.GetDestinyDefinitionRepositories();
-                Repository.Initialize(Configuration.Settings.Locales);
-            }
-
-            await _versionControl.InitiateManifestHandler();
+            return await _versionControl.HasUpdates();
         }
+        public async Task DownloadLatestManifestLocally()
+        {
+            await _versionControl.DownloadLastVersion();
+        }
+        public void LoadDefinitions()
+        {
+            Repository.Initialize(Configuration.Settings.Locales);
+            Repository.LoadAllDataFromDisk(Configuration.Settings.VersionsRepositoryPath, _versionControl.CurrentUsedManifest);
+        }
+
         public void AddListener(NewMessageEvent eventHandler)
         {
             if (_logListener != null)

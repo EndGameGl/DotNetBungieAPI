@@ -1,17 +1,38 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework> 
+    <TargetFramework>net5.0</TargetFramework> 
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>5</WarningLevel>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Remove="Models\Common\Destiny2CoreSettings.cs~RF113d3acd.TMP" />
+    <None Remove="Models\Forum\CommunityContentSortMode.cs~RF1a7bb587.TMP" />
+    <None Remove="Models\Forum\ForumFlagsEnum.cs~RF1a7093eb.TMP" />
+    <None Remove="Models\Forum\ForumPostCategoryEnums.cs~RF1ac823ef.TMP" />
+    <None Remove="Models\GroupsV2\GroupMember.cs~RF1af03245.TMP" />
+    <None Remove="Models\GroupsV2\GroupMemberCountFilter.cs~RF1b002bee.TMP" />
+    <None Remove="Models\GroupsV2\GroupV2ClanInfo.cs~RF1ae9a7b5.TMP" />
+    <None Remove="Models\Queries\GroupBanRequest.cs~RF1b16f2cd.TMP" />
+    <None Remove="Models\Queries\GroupNameSearchRequest.cs~RF1b03582f.TMP" />
+    <None Remove="Models\Queries\GroupOptionalConversationEditRequest.cs~RF1b12b819.TMP" />
+    <None Remove="Models\Queries\SearchResultOfContentItemPublicContract.cs~RF129a7bfb.TMP" />
+    <None Remove="Models\Queries\SearchResultOfFireteamSummary.cs~RF1b42def1.TMP" />
+    <None Remove="Models\Queries\SearchResultOfGroupMembership.cs~RF1b25d1fd.TMP" />
+    <None Remove="Models\Queries\SearchResultOfTrendingEntry.cs~RF1b51832c.TMP" />
+    <None Remove="Models\Trending\TrendingEntryDestinyActivity.cs~RF1b592d35.TMP" />
+    <None Remove="Models\User\UserInfoCard.cs~RF1111c408.TMP" />
+    <None Remove="Services\HttpClientInstance.cs~RF1a3ae984.TMP" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="JsonDiffPatch.Net" Version="2.3.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.113.7" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
@@ -20,9 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="configExample.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <Folder Include="Models\Destiny2\" />
   </ItemGroup>
 
 </Project>

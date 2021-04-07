@@ -1,29 +1,29 @@
-﻿using NetBungieAPI.Bungie.Applications;
-using NetBungieAPI.Destiny.Definitions.Classes;
+﻿using NetBungieAPI.Destiny.Definitions.Classes;
 using NetBungieAPI.Destiny.Definitions.Genders;
 using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Destiny.Definitions.Races;
+using NetBungieAPI.Models.User;
 using Newtonsoft.Json;
 
 namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyPlayer
     {
-        public BungieNetUserInfo DestinyUserInfo { get; }
+        public UserInfoCard DestinyUserInfo { get; }
         public string CharacterClass { get; }
         public DefinitionHashPointer<DestinyClassDefinition> Class { get; }
         public DefinitionHashPointer<DestinyRaceDefinition> Race { get; }
         public DefinitionHashPointer<DestinyGenderDefinition> Gender { get; }
         public int CharacterLevel { get; }
         public int LightLevel { get; }
-        public BungieNetUserInfo BungieNetUserInfo { get; }
+        public UserInfoCard BungieNetUserInfo { get; }
         public string ClanName { get; }
         public string ClanTag { get; }
         public DefinitionHashPointer<DestinyInventoryItemDefinition> Emblem { get; }
 
         [JsonConstructor]
-        internal DestinyPlayer(BungieNetUserInfo destinyUserInfo, string characterClass, uint classHash, uint raceHash, uint genderHash, int characterLevel,
-            int lightLevel, BungieNetUserInfo bungieNetUserInfo, string clanName, string clanTag, uint emblemHash)
+        internal DestinyPlayer(UserInfoCard destinyUserInfo, string characterClass, uint classHash, uint raceHash, uint genderHash, int characterLevel,
+            int lightLevel, UserInfoCard bungieNetUserInfo, string clanName, string clanTag, uint emblemHash)
         {
             DestinyUserInfo = destinyUserInfo;
             CharacterClass = characterClass;

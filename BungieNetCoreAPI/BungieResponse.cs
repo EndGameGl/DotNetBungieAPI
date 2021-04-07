@@ -1,28 +1,32 @@
-﻿using Newtonsoft.Json;
+﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI
 {
-    public class BungieResponse<T>
+    public sealed record BungieResponse<T>
     {
-        public T Response { get; }
-        public PlatformErrorCodes ErrorCode { get; }
-        public int ThrottleSeconds { get; }
-        public string ErrorStatus { get; }
-        public string Message { get; }
-        public Dictionary<string, string> MessageData { get; }
-        public string DetailedErrorTrace { get; }
+        [JsonPropertyName("Response")]
+        public T Response { get; init; }
 
-        [JsonConstructor]
-        internal BungieResponse(T Response, PlatformErrorCodes ErrorCode, int ThrottleSeconds, string ErrorStatus, string Message, Dictionary<string, string> MessageData, string DetailedErrorTrace)
-        {
-            this.Response = Response;
-            this.ErrorCode = ErrorCode;
-            this.ThrottleSeconds = ThrottleSeconds;
-            this.ErrorStatus = ErrorStatus;
-            this.Message = Message;
-            this.MessageData = MessageData;
-            this.DetailedErrorTrace = DetailedErrorTrace;
-        }
+        [JsonPropertyName("ErrorCode")]
+        public PlatformErrorCodes ErrorCode { get; init; }
+
+        [JsonPropertyName("ThrottleSeconds")]
+        public int ThrottleSeconds { get; init; }
+
+        [JsonPropertyName("ErrorStatus")]
+        public string ErrorStatus { get; init; }
+
+        [JsonPropertyName("Message")]
+        public string Message { get; init; }
+
+        [JsonPropertyName("MessageData")]
+        public Dictionary<string, string> MessageData { get; init; }
+
+        [JsonPropertyName("DetailedErrorTrace")]
+        public string DetailedErrorTrace { get; init; }
+
+        internal DateTime ResponseDate { get; init; } = DateTime.Now;
     }
 }

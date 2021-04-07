@@ -5,8 +5,11 @@ using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,97 +17,348 @@ namespace NetBungieAPI.Services
 {
     public class ManifestVersionHandler : IManifestVersionHandler
     {
+        internal const ManifestContentDownloadFilter AllFilters =
+            ManifestContentDownloadFilter.JsonWorldComponentContent |
+            ManifestContentDownloadFilter.JsonWorldContent |
+            ManifestContentDownloadFilter.MobileAssetContent |
+            ManifestContentDownloadFilter.MobileClanBannerDatabase |
+            ManifestContentDownloadFilter.MobileGearAssetDataBases |
+            ManifestContentDownloadFilter.MobileWorldContent;
+
+        private Stopwatch _stopwatch = new Stopwatch();
         private readonly IDestiny2MethodsAccess _d2Api;
         private readonly ILogger _logger;
         private readonly IConfigurationService _configuration;
         private readonly ILocalisedDestinyDefinitionRepositories _repository;
+        private readonly IHttpClientInstance _httpClientInstance;
 
-        private DestinyManifest _currentUsedManifest;
-
-        public DestinyManifest CurrentManifest => _currentUsedManifest;
+        private IList<DestinyManifest> _manifestsCache;
+        private BungieResponse<DestinyManifest> _latestVersionApiResponse;
+        public DestinyManifest CurrentUsedManifest => _latestVersionApiResponse.Response;
 
         public ManifestVersionHandler(ILogger logger, IConfigurationService configuration, IDestiny2MethodsAccess d2Api,
-            ILocalisedDestinyDefinitionRepositories repository)
+            ILocalisedDestinyDefinitionRepositories repository, IHttpClientInstance httpClientInstance)
         {
             _d2Api = d2Api;
             _logger = logger;
             _configuration = configuration;
             _repository = repository;
+            _httpClientInstance = httpClientInstance;
         }
 
-        public async Task InitiateManifestHandler()
+        public async ValueTask<bool> HasUpdates()
         {
-            if (_configuration.Settings.IsUsingPreloadedData)
+            if (_configuration.Settings.CheckUpdates)
             {
-                var manifests = await CollectManifestData();
-                if (_configuration.Settings.ShouldLoadSpecifiedManifest)
-                {
-                    var manifest = manifests.FirstOrDefault(x => x.Version == _configuration.Settings.PreferredLoadedManifest);
-                    if (manifest != null)
-                    {
-                        _currentUsedManifest = manifest;
-                        await LoadData(manifest);
-                    }
-                }
-                else if (_configuration.Settings.CheckUpdates)
-                {
-                    var latestManifest = await CheckManifestUpdates(manifests);
-                    _currentUsedManifest = latestManifest;
-                    await LoadData(latestManifest);
-                }
-                else
-                {
-                    var latestDate = manifests.Max(x => x.VersionDate);
-                    var latestManifest = manifests.Single(x => x.VersionDate == latestDate);
-                    _currentUsedManifest = latestManifest;
-                    await LoadData(latestManifest);
-                }
-            }
-        }
-        private async Task LoadData(DestinyManifest manifest)
-        {
-            await manifest.DownloadAndSaveToLocalFiles(unpackSqlite: true);
+                var manifests = FindManifestsAt(_configuration.Settings.VersionsRepositoryPath);
 
-            _repository.LoadAllDataFromDisk(
-                localManifestPath: $"{_configuration.Settings.VersionsRepositoryPath}\\{_currentUsedManifest.Version}",
-                manifest: manifest);
-            _logger.Log("Manifest load finished.", LogType.Info);
+                _latestVersionApiResponse = await _d2Api.GetDestinyManifest();
+                if (_latestVersionApiResponse?.Response == null)
+                    throw new Exception("Failed to load newest manifest.");
+
+                var latestManifest = _latestVersionApiResponse.Response;
+                if (manifests.Count == 0)
+                    return true;
+
+                if (manifests.Any(x => x.Version.Equals(latestManifest.Version)))
+                    return false;
+
+                return true;
+            }
+            throw new Exception("Update checking is turned off. Apply proper settings to enable update checking.");
         }
-        private async Task<List<DestinyManifest>> CollectManifestData()
+        public IList<DestinyManifest> FindManifestsAt(string path)
         {
-            if (!Directory.Exists(_configuration.Settings.VersionsRepositoryPath))
-                Directory.CreateDirectory(_configuration.Settings.VersionsRepositoryPath);
+            if (!Directory.Exists(path))
+                throw new Exception($"No manifest folder found at: {path}");
 
             List<DestinyManifest> manifests = new List<DestinyManifest>();
-            var versions = Directory.GetDirectories(_configuration.Settings.VersionsRepositoryPath);
-            _logger.Log($"{versions.Length} folders found in versions directory. Attempting to find manifests...", LogType.Info);
-
-            foreach (var version in versions)
+            var versions = Directory.EnumerateDirectories(path);
+            JsonSerializer serializer = new JsonSerializer();
+            Parallel.ForEach(versions, (version) =>
             {
-                var files = Directory.GetFiles(version);
-                var manifest = files.FirstOrDefault(x => Path.GetFileName(x) == "Manifest.json");
-                if (!string.IsNullOrWhiteSpace(manifest))
+                var files = Directory.EnumerateFiles(version, "Manifest.json", SearchOption.TopDirectoryOnly);
+                var manifestPath = files.FirstOrDefault();
+                if (manifestPath != null)
                 {
-                    _logger.Log($"Found manifest at: {manifest}", LogType.Info);
-                    var folderManifest = JsonConvert.DeserializeObject<DestinyManifest>(await File.ReadAllTextAsync(manifest));
-                    _logger.Log($"Manifest version: {folderManifest.Version} - Date: {folderManifest.VersionDate.ToShortDateString()}", LogType.Info);
+                    _logger.Log($"Found manifest at: {manifestPath}", LogType.Info);
+                    using FileStream fs = File.OpenRead(manifestPath);
+                    using TextReader tr = new StreamReader(fs);
+                    using JsonReader reader = new JsonTextReader(tr);
+                    var folderManifest = serializer.Deserialize<DestinyManifest>(reader);
+                    //_logger.Log($"Manifest version: {folderManifest.Version} - Date: {folderManifest.VersionDate.ToShortDateString()}", LogType.Info);
                     manifests.Add(folderManifest);
                 }
-            }
-
+            });
             return manifests;
         }
-        private async Task<DestinyManifest> CheckManifestUpdates(IEnumerable<DestinyManifest> destinyManifests)
+        public async Task DownloadLastVersion()
         {
-            var latestManifest = (await _d2Api.GetDestinyManifest()).Response;
+            if (_latestVersionApiResponse == null)
+                _latestVersionApiResponse = await _d2Api.GetDestinyManifest();
+            await DownloadManifestFilesLocally(_latestVersionApiResponse.Response, _configuration.Settings.VersionsRepositoryPath, true);
+        }
 
-            if (destinyManifests.Count() == 0)
-                return latestManifest;
+        public async Task DownloadManifestFilesLocally(DestinyManifest manifest, string path, bool unpackSQLite = true, ManifestContentDownloadFilter filters = AllFilters)
+        {
+            path = $"{path}\\{manifest.Version}";
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
 
-            if (destinyManifests.Any(x => x.Version.Equals(latestManifest.Version)))
-                return latestManifest;
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
 
-            return latestManifest;
+            if (filters.HasFlag(ManifestContentDownloadFilter.MobileAssetContent))
+                await DownloadMobileAssetContent(manifest, path, unpackSQLite);
+            if (filters.HasFlag(ManifestContentDownloadFilter.MobileGearAssetDataBases))
+                await DownloadMobileGearAssetDataBases(manifest, path, unpackSQLite);
+            if (filters.HasFlag(ManifestContentDownloadFilter.MobileWorldContent))
+                await DownloadMobileWorldContent(manifest, path, unpackSQLite);
+            if (filters.HasFlag(ManifestContentDownloadFilter.JsonWorldContent))
+                await DownloadJsonWorldContent(manifest, path);
+            if (filters.HasFlag(ManifestContentDownloadFilter.JsonWorldComponentContent))
+                await DownloadJsonWorldComponentContent(manifest, path);
+            if (filters.HasFlag(ManifestContentDownloadFilter.MobileClanBannerDatabase))
+                await DownloadMobileClanBannerDatabase(manifest, path, unpackSQLite);
+
+            if (!File.Exists($"{path}/Manifest.json"))
+            {
+                var manifestJson = JsonConvert.SerializeObject(this.CurrentUsedManifest, Formatting.Indented);
+                File.WriteAllText($"{path}/Manifest.json", manifestJson);
+            }
+
+            stopwatch.Stop();
+            _logger.Log($"Finished getting data! {stopwatch.ElapsedMilliseconds} ms.", LogType.Info);
+        }
+        private bool IsZIP(string filepath)
+        {
+            if (File.Exists(filepath))
+            {
+                try
+                {
+                    using (var zipFile = ZipFile.OpenRead(filepath))
+                    {
+                        var entries = zipFile.Entries;
+                        return true;
+                    }
+                }
+                catch (InvalidDataException)
+                {
+                    return false;
+                }
+            }
+            else
+                return false;
+        }
+        private async Task DownloadMobileAssetContent(DestinyManifest manifest, string path, bool shouldUnpack)
+        {
+            _stopwatch.Start();
+            _logger.Log("Started loading MobileAssetContent", LogType.Info);
+            var filePath = $"{path}/MobileAssetContentPath/{Path.GetFileName(manifest.MobileAssetContentPath)}";
+            var directoryPath = $"{path}/MobileAssetContentPath";
+
+            if (!Directory.Exists(directoryPath))
+                Directory.CreateDirectory(directoryPath);
+
+            _logger.Log($"Getting data from: {manifest.MobileAssetContentPath}", LogType.Info);
+            if (!File.Exists(filePath))
+            {
+                await _httpClientInstance.DownloadFileStreamFromCDNAsync(manifest.MobileAssetContentPath, filePath);
+            }
+            else
+                _logger.Log("File already exists, skipping.", LogType.Info);
+            if (shouldUnpack)
+            {
+                _logger.Log("Unpacking zip...", LogType.Info);
+                var packedFileName = $"{filePath}.zip";
+                if (IsZIP(filePath))
+                {
+                    File.Move(filePath, packedFileName);
+                    ZipFile.ExtractToDirectory(packedFileName, directoryPath);
+                    _logger.Log("Clearing leftovers.", LogType.Info);
+                    File.Delete(packedFileName);
+                }
+                else
+                    _logger.Log("File is already unpacked", LogType.Info);
+            }
+            _stopwatch.Stop();
+            _logger.Log($"Finished loading MobileAssetContent: {_stopwatch.ElapsedMilliseconds} ms", LogType.Info);
+            _stopwatch.Reset();
+        }
+        private async Task DownloadMobileGearAssetDataBases(DestinyManifest manifest, string path, bool shouldUnpack)
+        {
+            _stopwatch.Start();
+            _logger.Log("Started loading MobileGearAssetDataBases", LogType.Info);
+            var rootDirectoryPath = $"{path}/MobileGearAssetDataBases";
+            if (!Directory.Exists(rootDirectoryPath))
+                Directory.CreateDirectory(rootDirectoryPath);
+
+            foreach (var entry in manifest.MobileGearAssetDataBases)
+            {
+                var entryPath = $"{path}/MobileGearAssetDataBases/{entry.Version}";
+                var filePath = $"{path}/MobileGearAssetDataBases/{entry.Version}/{Path.GetFileName(entry.Path)}";
+                if (!Directory.Exists(entryPath))
+                    Directory.CreateDirectory(entryPath);
+
+                if (!File.Exists(filePath))
+                {
+                    await _httpClientInstance.DownloadFileStreamFromCDNAsync(entry.Path, filePath);
+                }
+                else
+                    _logger.Log("File already exists, skipping.", LogType.Info);
+                if (shouldUnpack)
+                {
+                    _logger.Log("Unpacking zip...", LogType.Info);
+                    var packedFileName = $"{filePath}.zip";
+                    if (IsZIP($"{filePath}"))
+                    {
+                        File.Move($"{filePath}", packedFileName);
+                        ZipFile.ExtractToDirectory(packedFileName, $"{entryPath}");
+                        _logger.Log("Clearing leftovers.", LogType.Info);
+                        File.Delete(packedFileName);
+                    }
+                    else
+                        _logger.Log("File is already unpacked", LogType.Info);
+                }
+            }
+            _stopwatch.Stop();
+            _logger.Log($"Finished loading MobileGearAssetDataBases: {_stopwatch.ElapsedMilliseconds} ms", LogType.Info);
+            _stopwatch.Reset();
+        }
+        private async Task DownloadMobileWorldContent(DestinyManifest manifest, string path, bool shouldUnpack)
+        {
+            _stopwatch.Start();
+            _logger.Log("Started loading MobileWorldContent", LogType.Info);
+            var rootDirectoryPath = $"{path}/MobileWorldContent";
+            if (!Directory.Exists(rootDirectoryPath))
+                Directory.CreateDirectory(rootDirectoryPath);
+
+            foreach (var entry in manifest.MobileWorldContentPaths)
+            {
+                var entryPath = $"{path}/MobileWorldContent/{entry.Key}";
+                var filePath = $"{path}/MobileWorldContent/{entry.Key}/{Path.GetFileName(entry.Value)}";
+                if (!Directory.Exists(entryPath))
+                    Directory.CreateDirectory(entryPath);
+
+                if (!File.Exists(filePath))
+                {
+                    await _httpClientInstance.DownloadFileStreamFromCDNAsync(entry.Value, filePath);
+                }
+                else
+                    _logger.Log("File already exists, skipping.", LogType.Info);
+                if (shouldUnpack)
+                {
+                    _logger.Log("Unpacking zip...", LogType.Info);
+                    var packedFileName = $"{filePath}.zip";
+                    if (IsZIP($"{filePath}"))
+                    {
+                        File.Move($"{filePath}", packedFileName);
+                        ZipFile.ExtractToDirectory(packedFileName, $"{entryPath}");
+                        _logger.Log("Clearing leftovers.", LogType.Info);
+                        File.Delete(packedFileName);
+                    }
+                    else
+                        _logger.Log("File is already unpacked", LogType.Info);
+                }
+            }
+            _stopwatch.Stop();
+            _logger.Log($"Finished loading MobileWorldContent: {_stopwatch.ElapsedMilliseconds} ms", LogType.Info);
+            _stopwatch.Reset();
+        }
+        private async Task DownloadJsonWorldContent(DestinyManifest manifest, string path)
+        {
+            _stopwatch.Start();
+            _logger.Log("Started loading JsonWorldContent", LogType.Info);
+            var rootDirectoryPath = $"{path}/JsonWorldContent";
+            if (!Directory.Exists(rootDirectoryPath))
+                Directory.CreateDirectory(rootDirectoryPath);
+
+            foreach (var entry in manifest.JsonWorldContentPaths)
+            {
+                var entryPath = $"{path}/JsonWorldContent/{entry.Key}";
+                var filePath = $"{path}/JsonWorldContent/{entry.Key}/{Path.GetFileName(entry.Value)}";
+                if (!Directory.Exists(entryPath))
+                    Directory.CreateDirectory(entryPath);
+
+                if (!File.Exists(filePath))
+                {
+                    await _httpClientInstance.DownloadFileStreamFromCDNAsync(entry.Value, filePath);
+                }
+                else
+                    _logger.Log("File already exists, skipping.", LogType.Info);
+            }
+            _stopwatch.Stop();
+            _logger.Log($"Finished loading JsonWorldContent: {_stopwatch.ElapsedMilliseconds} ms", LogType.Info);
+            _stopwatch.Reset();
+        }
+        private async Task DownloadJsonWorldComponentContent(DestinyManifest manifest, string path)
+        {
+            _stopwatch.Start();
+            _logger.Log("Started loading JsonWorldComponentContent", LogType.Info);
+            var rootDirectoryPath = $"{path}/JsonWorldComponentContent";
+            if (!Directory.Exists(rootDirectoryPath))
+                Directory.CreateDirectory(rootDirectoryPath);
+
+            foreach (var localeEntry in manifest.JsonWorldComponentContentPaths)
+            {
+                var localePath = $"{path}/JsonWorldComponentContent/{localeEntry.Key}";
+
+                if (!Directory.Exists(localePath))
+                    Directory.CreateDirectory(localePath);
+
+                foreach (var definitionEntry in localeEntry.Value)
+                {
+                    var definitionPath = $"{path}/JsonWorldComponentContent/{localeEntry.Key}/{definitionEntry.Key}";
+                    if (!Directory.Exists(definitionPath))
+                        Directory.CreateDirectory(definitionPath);
+                    var filePath = $"{path}/JsonWorldComponentContent/{localeEntry.Key}/{definitionEntry.Key}/{Path.GetFileName(definitionEntry.Value)}";
+
+                    if (!File.Exists(filePath))
+                    {
+                        await _httpClientInstance.DownloadFileStreamFromCDNAsync(definitionEntry.Value, filePath);
+                    }
+                    else
+                        _logger.Log("File already exists, skipping.", LogType.Info);
+                }
+            }
+            _stopwatch.Stop();
+            _logger.Log($"Finished loading JsonWorldComponentContent: {_stopwatch.ElapsedMilliseconds} ms", LogType.Info);
+            _stopwatch.Reset();
+        }
+        private async Task DownloadMobileClanBannerDatabase(DestinyManifest manifest, string path, bool shouldUnpack)
+        {
+            _stopwatch.Start();
+            _logger.Log("Started loading MobileClanBannerDatabase", LogType.Info);
+            var filePath = $"{path}/MobileClanBannerDatabase/{Path.GetFileName(manifest.MobileClanBannerDatabasePath)}";
+            var directoryPath = $"{path}/MobileClanBannerDatabase";
+
+            if (!Directory.Exists(directoryPath))
+                Directory.CreateDirectory(directoryPath);
+
+            _logger.Log($"Getting data from: {manifest.MobileClanBannerDatabasePath}", LogType.Info);
+            if (!File.Exists(filePath))
+            {
+                await _httpClientInstance.DownloadFileStreamFromCDNAsync(manifest.MobileClanBannerDatabasePath, filePath);
+            }
+            else
+                _logger.Log("File already exists, skipping.", LogType.Info);
+            if (shouldUnpack)
+            {
+                _logger.Log("Unpacking zip...", LogType.Info);
+                var packedFileName = $"{filePath}.zip";
+                if (IsZIP(filePath))
+                {
+                    File.Move(filePath, packedFileName);
+                    ZipFile.ExtractToDirectory(packedFileName, directoryPath);
+                    _logger.Log("Clearing leftovers.", LogType.Info);
+                    File.Delete(packedFileName);
+                }
+                else
+                    _logger.Log("File is already unpacked", LogType.Info);
+            }
+            _stopwatch.Stop();
+            _logger.Log($"Finished loading MobileClanBannerDatabase: {_stopwatch.ElapsedMilliseconds} ms", LogType.Info);
+            _stopwatch.Reset();
         }
     }
 }

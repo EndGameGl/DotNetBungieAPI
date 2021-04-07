@@ -7,6 +7,7 @@ using NetBungieAPI.Destiny.Definitions.ItemCategories;
 using NetBungieAPI.Destiny.Definitions.Lores;
 using NetBungieAPI.Destiny.Definitions.Objectives;
 using NetBungieAPI.Destiny.Definitions.Seasons;
+using NetBungieAPI.Models.Links;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 

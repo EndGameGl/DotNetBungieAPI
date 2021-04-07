@@ -1,7 +1,7 @@
-﻿using NetBungieAPI.GroupsV2;
-using System;
+﻿using NetBungieAPI.Models;
+using NetBungieAPI.Models.Config;
+using NetBungieAPI.Models.GroupsV2;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess.Interfaces

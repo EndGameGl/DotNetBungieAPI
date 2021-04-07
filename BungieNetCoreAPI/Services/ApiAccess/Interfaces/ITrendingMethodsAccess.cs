@@ -1,4 +1,4 @@
-﻿using NetBungieAPI.Trending;
+﻿using NetBungieAPI.Models.Trending;
 using System;
 using System.Collections.Generic;
 using System.Text;

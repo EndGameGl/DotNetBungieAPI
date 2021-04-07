@@ -1,6 +1,8 @@
-﻿using NetBungieAPI.Content;
+﻿using NetBungieAPI.Models.Content;
+using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess
@@ -12,27 +14,27 @@ namespace NetBungieAPI.Services.ApiAccess
         {
             _httpClient = httpClient;
         }
-        public async Task<BungieResponse<ContentTypeDescription>> GetContentType(string type)
+        public async ValueTask<BungieResponse<ContentTypeDescription>> GetContentType(string type, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<ContentTypeDescription>>($"/Content/GetContentType/{type}/");
+            return await _httpClient.GetFromBungieNetPlatform<ContentTypeDescription>($"/Content/GetContentType/{type}/", token);
         }
-        public async Task<BungieResponse<ContentItemPublicContract>> GetContentById(long id, string locale, bool head = false)
+        public async ValueTask<BungieResponse<ContentItemPublicContract>> GetContentById(long id, string locale, bool head = false, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<ContentItemPublicContract>>($"/Content/GetContentById/{id}/{locale}/?head={head}");
+            return await _httpClient.GetFromBungieNetPlatform<ContentItemPublicContract>($"/Content/GetContentById/{id}/{locale}/?head={head}", token);
         }
-        public async Task<BungieResponse<ContentItemPublicContract>> GetContentByTagAndType(string tag, string type, string locale)
+        public async ValueTask<BungieResponse<ContentItemPublicContract>> GetContentByTagAndType(string tag, string type, string locale, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<ContentItemPublicContract>>($"/Content/GetContentByTagAndType/{tag}/{type}/{locale}/");
+            return await _httpClient.GetFromBungieNetPlatform<ContentItemPublicContract>($"/Content/GetContentByTagAndType/{tag}/{type}/{locale}/", token);
         }
-        public async Task<BungieResponse<SearchResult<ContentItemPublicContract>>> SearchContentWithText(string locale, string[] types,
-            string searchtext, string source, string tag, int currentpage = 1)
+        public async ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentWithText(string locale, string[] types,
+            string searchtext, string source, string tag, int currentpage = 1, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<SearchResult<ContentItemPublicContract>>>(
-                $"/Content/Search/{locale}/?types={string.Join(" ", types)}&searchtext={searchtext}{(!string.IsNullOrWhiteSpace(source) ? $"&source={source}" : "")}&tag={tag}&currentpage={currentpage}");
+            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(
+                $"/Content/Search/{locale}/?types={string.Join(" ", types)}&searchtext={searchtext}{(!string.IsNullOrWhiteSpace(source) ? $"&source={source}" : "")}&tag={tag}&currentpage={currentpage}", token);
         }
-        public async Task<BungieResponse<SearchResult<ContentItemPublicContract>>> SearchContentByTagAndType(string locale, string tag, string type)
+        public async ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentByTagAndType(string locale, string tag, string type, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<SearchResult<ContentItemPublicContract>>>($"/Content/SearchContentByTagAndType/{tag}/{type}/{locale}/");
+            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>($"/Content/SearchContentByTagAndType/{tag}/{type}/{locale}/", token);
         }
     }
 }

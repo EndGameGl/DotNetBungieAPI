@@ -5,9 +5,6 @@ using NetBungieAPI.Services;
 using NetBungieAPI.Services.ApiAccess;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Unity;
 
 namespace NetBungieAPI

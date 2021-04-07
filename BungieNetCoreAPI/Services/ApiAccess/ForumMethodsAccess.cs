@@ -1,12 +1,10 @@
-﻿using NetBungieAPI.Forum;
-using NetBungieAPI.Services;
+﻿using NetBungieAPI.Models.Forum;
+using NetBungieAPI.Models.Queries;
+using NetBungieAPI.Models.Tags;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess
