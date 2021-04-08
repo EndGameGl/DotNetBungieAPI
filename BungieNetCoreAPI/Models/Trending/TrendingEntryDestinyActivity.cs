@@ -1,5 +1,5 @@
-﻿using NetBungieAPI.Destiny.Definitions.Activities;
-using NetBungieAPI.Destiny.Responses;
+﻿using NetBungieAPI.Destiny.Responses;
+using NetBungieAPI.Models.Destiny.Definitions.Activities;
 using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Trending

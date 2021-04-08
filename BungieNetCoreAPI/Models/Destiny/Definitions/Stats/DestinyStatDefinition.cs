@@ -1,36 +1,30 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
-using System.Collections.Generic;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Stats
 {
     [DestinyDefinition(DefinitionsEnum.DestinyStatDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyStatDefinition : IDestinyDefinition, IDeepEquatable<DestinyStatDefinition>
+    public sealed record DestinyStatDefinition : IDestinyDefinition, IDeepEquatable<DestinyStatDefinition>
     {
-        public StatAggregationType AggregationType { get; init; }
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+        [JsonPropertyName("aggregationType")]
+        public DestinyStatAggregationType AggregationType { get; init; }
+        [JsonPropertyName("hasComputedBlock")]
         public bool HasComputedBlock { get; init; }
+        [JsonPropertyName("statCategory")]
+        public DestinyStatCategory StatCategory { get; init; }
+        [JsonPropertyName("interpolate")]
         public bool Interpolate { get; init; }
-        public StatCategory StatCategory { get; init; }
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyStatDefinition(StatAggregationType aggregationType, bool hasComputedBlock, bool interpolate, StatCategory statCategory,
-            DestinyDisplayPropertiesDefinition displayProperties, bool blacklisted, uint hash, int index, bool redacted)
-        {
-            DisplayProperties = displayProperties;
-            AggregationType = aggregationType;
-            HasComputedBlock = hasComputedBlock;
-            Interpolate = interpolate;
-            StatCategory = statCategory;
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

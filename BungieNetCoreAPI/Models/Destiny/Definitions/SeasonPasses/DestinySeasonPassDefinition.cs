@@ -1,32 +1,27 @@
 ﻿using NetBungieAPI.Attributes;
-using NetBungieAPI.Destiny.Definitions.Progressions;
-using Newtonsoft.Json;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
+using NetBungieAPI.Models.Destiny.Definitions.Progressions;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.SeasonPasses
 {
     [DestinyDefinition(DefinitionsEnum.DestinySeasonPassDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinySeasonPassDefinition : IDestinyDefinition, IDeepEquatable<DestinySeasonPassDefinition>
+    public sealed record DestinySeasonPassDefinition : IDestinyDefinition, IDeepEquatable<DestinySeasonPassDefinition>
     {
+        [JsonPropertyName("blacklisted")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
-        public DefinitionHashPointer<DestinyProgressionDefinition> RewardProgression { get; init; }
-        public DefinitionHashPointer<DestinyProgressionDefinition> PrestigeProgression { get; init; }
+        [JsonPropertyName("blacklisted")]
+        public DefinitionHashPointer<DestinyProgressionDefinition> RewardProgression { get; init; } = DefinitionHashPointer<DestinyProgressionDefinition>.Empty;
+        [JsonPropertyName("blacklisted")]
+        public DefinitionHashPointer<DestinyProgressionDefinition> PrestigeProgression { get; init; } = DefinitionHashPointer<DestinyProgressionDefinition>.Empty;
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinySeasonPassDefinition(uint rewardProgressionHash, uint prestigeProgressionHash, DestinyDisplayPropertiesDefinition displayProperties,
-            bool blacklisted, uint hash, int index, bool redacted)
-        {
-            DisplayProperties = displayProperties;
-            RewardProgression = new DefinitionHashPointer<DestinyProgressionDefinition>(rewardProgressionHash, DefinitionsEnum.DestinyProgressionDefinition);
-            PrestigeProgression = new DefinitionHashPointer<DestinyProgressionDefinition>(prestigeProgressionHash, DefinitionsEnum.DestinyProgressionDefinition);
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

@@ -1,31 +1,26 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.SocketCategories
 {
     [DestinyDefinition(DefinitionsEnum.DestinySocketCategoryDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinySocketCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinySocketCategoryDefinition>
+    public sealed record DestinySocketCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinySocketCategoryDefinition>
     {
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
-        public SocketCategoryStyle CategoryStyle { get; init; }
+        [JsonPropertyName("categoryStyle")]
+        public DestinySocketCategoryStyle CategoryStyle { get; init; }
+        [JsonPropertyName("uiCategoryStyle")]
         public uint UiCategoryStyle { get; init; }
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinySocketCategoryDefinition(DestinyDisplayPropertiesDefinition displayProperties, SocketCategoryStyle categoryStyle, uint uiCategoryStyle,
-            bool blacklisted, uint hash, int index, bool redacted)
-        {
-            DisplayProperties = displayProperties;
-            CategoryStyle = categoryStyle;
-            UiCategoryStyle = uiCategoryStyle;
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

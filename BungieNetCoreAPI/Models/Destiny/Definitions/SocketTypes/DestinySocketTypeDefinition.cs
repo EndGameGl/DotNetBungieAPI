@@ -1,50 +1,44 @@
 ﻿using NetBungieAPI.Attributes;
-using NetBungieAPI.Destiny.Definitions.SocketCategories;
-using Newtonsoft.Json;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
+using NetBungieAPI.Models.Destiny.Definitions.SocketCategories;
 using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.SocketTypes
 {
     [DestinyDefinition(DefinitionsEnum.DestinySocketTypeDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinySocketTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinySocketTypeDefinition>
+    public sealed record DestinySocketTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinySocketTypeDefinition>
     {
-        public bool AlwaysRandomizeSockets { get; init; }
-        public bool AvoidDuplicatesOnInitialization { get; init; }
-        public bool HideDuplicateReusablePlugs { get; init; }
-        public bool IsPreviewEnabled { get; init; }
-        public bool OverridesUiAppearance { get; init; }
-        public DefinitionHashPointer<DestinySocketCategoryDefinition> SocketCategory { get; init; }
-        public SocketVisibility Visibility { get; init; }
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
-        public SocketTypeInsertAction InsertAction { get; init; }
-        public ReadOnlyCollection<SocketTypeCurrencyScalar> CurrencyScalars { get; init; }
-        public ReadOnlyCollection<SocketTypePlugWhitelist> PlugWhitelist { get; init; }
+        [JsonPropertyName("insertAction")]
+        public DestinyInsertPlugActionDefinition InsertAction { get; init; }
+        [JsonPropertyName("plugWhitelist")]
+        public ReadOnlyCollection<DestinyPlugWhitelistEntryDefinition> PlugWhitelist { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyPlugWhitelistEntryDefinition>();
+        [JsonPropertyName("socketCategoryHash")]
+        public DefinitionHashPointer<DestinySocketCategoryDefinition> SocketCategory { get; init; } = DefinitionHashPointer<DestinySocketCategoryDefinition>.Empty;
+        [JsonPropertyName("visibility")]
+        public DestinySocketVisibility Visibility { get; init; }
+        [JsonPropertyName("alwaysRandomizeSockets")]
+        public bool AlwaysRandomizeSockets { get; init; }
+        [JsonPropertyName("isPreviewEnabled")]
+        public bool IsPreviewEnabled { get; init; }
+        [JsonPropertyName("hideDuplicateReusablePlugs")]
+        public bool HideDuplicateReusablePlugs { get; init; }
+        [JsonPropertyName("overridesUiAppearance")]
+        public bool OverridesUiAppearance { get; init; }
+        [JsonPropertyName("avoidDuplicatesOnInitialization")]
+        public bool AvoidDuplicatesOnInitialization { get; init; }
+        [JsonPropertyName("currencyScalars")]
+        public ReadOnlyCollection<DestinySocketTypeScalarMaterialRequirementEntry> CurrencyScalars { get; init; } = Defaults.EmptyReadOnlyCollection<DestinySocketTypeScalarMaterialRequirementEntry>();
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinySocketTypeDefinition(bool alwaysRandomizeSockets, bool avoidDuplicatesOnInitialization, bool hideDuplicateReusablePlugs, bool isPreviewEnabled,
-            bool overridesUiAppearance, uint socketCategoryHash, SocketVisibility visibility, SocketTypeInsertAction insertAction, SocketTypeCurrencyScalar[] currencyScalars,
-            SocketTypePlugWhitelist[] plugWhitelist, DestinyDisplayPropertiesDefinition displayProperties, bool blacklisted, uint hash, int index, bool redacted)
-        {
-            DisplayProperties = displayProperties;
-            AlwaysRandomizeSockets = alwaysRandomizeSockets;
-            AvoidDuplicatesOnInitialization = avoidDuplicatesOnInitialization;
-            HideDuplicateReusablePlugs = hideDuplicateReusablePlugs;
-            IsPreviewEnabled = isPreviewEnabled;
-            OverridesUiAppearance = overridesUiAppearance;
-            SocketCategory = new DefinitionHashPointer<DestinySocketCategoryDefinition>(socketCategoryHash, DefinitionsEnum.DestinySocketCategoryDefinition);
-            Visibility = visibility;
-            InsertAction = insertAction;
-            CurrencyScalars = currencyScalars.AsReadOnlyOrEmpty();
-            PlugWhitelist = plugWhitelist.AsReadOnlyOrEmpty();
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

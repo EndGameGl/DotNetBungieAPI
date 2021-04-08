@@ -1,12 +1,10 @@
 ﻿using NetBungieAPI.Attributes;
 using NetBungieAPI.Destiny;
-using NetBungieAPI.Destiny.Definitions;
-using NetBungieAPI.Destiny.Definitions.HistoricalStats;
 using NetBungieAPI.Logging;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
+using NetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using NetBungieAPI.Pipes;
-using NetBungieAPI.Services;
 using NetBungieAPI.Services.Interfaces;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

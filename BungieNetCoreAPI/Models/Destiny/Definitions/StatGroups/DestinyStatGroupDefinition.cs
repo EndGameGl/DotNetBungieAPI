@@ -1,35 +1,28 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.StatGroups
 {
     [DestinyDefinition(DefinitionsEnum.DestinyStatGroupDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyStatGroupDefinition : IDestinyDefinition, IDeepEquatable<DestinyStatGroupDefinition>
+    public sealed record DestinyStatGroupDefinition : IDestinyDefinition, IDeepEquatable<DestinyStatGroupDefinition>
     {
+        [JsonPropertyName("maximumValue")]
         public int MaximumValue { get; init; }
+        [JsonPropertyName("uiPosition")]
         public int UiPosition { get; init; }
-        public ReadOnlyCollection<StatGroupScaledStat> ScaledStats { get; init; }
-        public ReadOnlyDictionary<uint, StatOverride> Overrides { get; init; }
+        [JsonPropertyName("scaledStats")]
+        public ReadOnlyCollection<DestinyStatDisplayDefinition> ScaledStats { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyStatDisplayDefinition>();
+        [JsonPropertyName("overrides")]
+        public ReadOnlyDictionary<uint, DestinyStatOverrideDefinition> Overrides { get; init; } = Defaults.EmptyReadOnlyDictionary<uint, DestinyStatOverrideDefinition>();
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyStatGroupDefinition(int maximumValue, int uiPosition, StatGroupScaledStat[] scaledStats, Dictionary<uint, StatOverride> overrides,
-            bool blacklisted, uint hash, int index, bool redacted)
-        {
-            MaximumValue = maximumValue;
-            UiPosition = uiPosition;
-            ScaledStats = scaledStats.AsReadOnlyOrEmpty();
-            Overrides = overrides.AsReadOnlyDictionaryOrEmpty();
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

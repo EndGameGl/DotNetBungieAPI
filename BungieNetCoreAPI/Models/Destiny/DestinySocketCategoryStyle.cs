@@ -1,6 +1,6 @@
-﻿namespace NetBungieAPI.Destiny.Definitions.SocketCategories
+﻿namespace NetBungieAPI.Models.Destiny
 {
-    public enum SocketCategoryStyle
+    public enum DestinySocketCategoryStyle
     {
         Unknown = 0,
         Reusable = 1,

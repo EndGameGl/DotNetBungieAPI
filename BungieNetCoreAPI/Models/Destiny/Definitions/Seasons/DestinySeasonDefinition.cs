@@ -1,54 +1,52 @@
 ﻿using NetBungieAPI.Attributes;
-using NetBungieAPI.Destiny.Definitions.Unlocks;
-using Newtonsoft.Json;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
+using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
+using NetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
+using NetBungieAPI.Models.Destiny.Definitions.Progressions;
+using NetBungieAPI.Models.Destiny.Definitions.SeasonPasses;
+using NetBungieAPI.Models.Destiny.Definitions.Unlocks;
 using System;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Seasons
 {
     [DestinyDefinition(DefinitionsEnum.DestinySeasonDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinySeasonDefinition : IDestinyDefinition, IDeepEquatable<DestinySeasonDefinition>
+    public sealed record DestinySeasonDefinition : IDestinyDefinition, IDeepEquatable<DestinySeasonDefinition>
     {
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> ArtifactItem { get; init; }
-        public string BackgroundImagePath { get; init; }
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+        [JsonPropertyName("backgroundImagePath")]
+        public string BackgroundImagePath { get; init; }
+        [JsonPropertyName("seasonNumber")]
         public int SeasonNumber { get; init; }
-        public DefinitionHashPointer<DestinyPresentationNodeDefinition> SealPresentationNode { get; init; }
-        public DefinitionHashPointer<DestinyPresentationNodeDefinition> SeasonalChallengesPresentationNode { get; init; }
-        public DefinitionHashPointer<DestinySeasonPassDefinition> SeasonPass { get; init; }     
-        public DefinitionHashPointer<DestinyProgressionDefinition> SeasonPassProgression { get; init; }
-        public DefinitionHashPointer<DestinyUnlockDefinition> SeasonPassUnlock { get; init; }
-        public string StartTimeInSeconds { get; init; }
+        [JsonPropertyName("startDate")]
         public DateTime? StartDate { get; init; }
+        [JsonPropertyName("endDate")]
         public DateTime? EndDate { get; init; }
-        public SeasonPreview Preview { get; init; }
+        [JsonPropertyName("seasonPassHash")]
+        public DefinitionHashPointer<DestinySeasonPassDefinition> SeasonPass { get; init; } = DefinitionHashPointer<DestinySeasonPassDefinition>.Empty;
+        [JsonPropertyName("seasonPassProgressionHash")]
+        public DefinitionHashPointer<DestinyProgressionDefinition> SeasonPassProgression { get; init; } = DefinitionHashPointer<DestinyProgressionDefinition>.Empty;
+        [JsonPropertyName("artifactItemHash")]
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> ArtifactItem { get; init; } = DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
+        [JsonPropertyName("sealPresentationNodeHash")]
+        public DefinitionHashPointer<DestinyPresentationNodeDefinition> SealPresentationNode { get; init; } = DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
+        [JsonPropertyName("seasonalChallengesPresentationNodeHash")]
+        public DefinitionHashPointer<DestinyPresentationNodeDefinition> SeasonalChallengesPresentationNode { get; init; } = DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
+        [JsonPropertyName("seasonPassUnlockHash")]
+        public DefinitionHashPointer<DestinyUnlockDefinition> SeasonPassUnlock { get; init; } = DefinitionHashPointer<DestinyUnlockDefinition>.Empty;
+        [JsonPropertyName("startTimeInSeconds")]
+        public string StartTimeInSeconds { get; init; }
+        [JsonPropertyName("preview")]
+        public DestinySeasonPreviewDefinition Preview { get; init; }
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinySeasonDefinition(DestinyDisplayPropertiesDefinition displayProperties, int seasonNumber, uint seasonPassProgressionHash, uint seasonPassUnlockHash,
-            string startTimeInSeconds, uint? sealPresentationNodeHash, uint? seasonPassHash, DateTime? startDate, DateTime? endDate, string backgroundImagePath,
-            uint artifactItemHash, uint? seasonalChallengesPresentationNodeHash, SeasonPreview preview, bool blacklisted, uint hash, int index, bool redacted)
-        {
-            DisplayProperties = displayProperties;
-            SeasonNumber = seasonNumber;
-            SeasonPassProgression = new DefinitionHashPointer<DestinyProgressionDefinition>(seasonPassProgressionHash, DefinitionsEnum.DestinyProgressionDefinition);
-            SeasonPassUnlock = new DefinitionHashPointer<DestinyUnlockDefinition>(seasonPassUnlockHash, DefinitionsEnum.DestinyUnlockDefinition);
-            StartTimeInSeconds = startTimeInSeconds;
-            SealPresentationNode = new DefinitionHashPointer<DestinyPresentationNodeDefinition>(sealPresentationNodeHash, DefinitionsEnum.DestinyPresentationNodeDefinition);
-            SeasonPass = new DefinitionHashPointer<DestinySeasonPassDefinition>(seasonPassHash, DefinitionsEnum.DestinySeasonPassDefinition);
-            SeasonalChallengesPresentationNode = new DefinitionHashPointer<DestinyPresentationNodeDefinition>(seasonalChallengesPresentationNodeHash, DefinitionsEnum.DestinyPresentationNodeDefinition);
-            StartDate = startDate;
-            EndDate = endDate;
-            BackgroundImagePath = backgroundImagePath;
-            ArtifactItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(artifactItemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
-            Preview = preview;
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

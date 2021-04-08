@@ -1,6 +1,6 @@
-﻿namespace NetBungieAPI.Destiny.Definitions.Stats
+﻿namespace NetBungieAPI.Models.Destiny
 {
-    public enum StatCategory
+    public enum DestinyStatCategory
     {
         Gameplay = 0,
         Weapon = 1,

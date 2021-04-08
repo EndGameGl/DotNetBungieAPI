@@ -1,6 +1,6 @@
-﻿namespace NetBungieAPI.Destiny.Definitions.SocketTypes
+﻿namespace NetBungieAPI.Models.Destiny
 {
-    public enum SocketVisibility
+    public enum DestinySocketVisibility
     {
         Visible = 0,
         Hidden = 1,

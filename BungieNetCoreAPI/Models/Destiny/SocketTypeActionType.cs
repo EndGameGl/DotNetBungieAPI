@@ -1,6 +1,6 @@
-﻿namespace NetBungieAPI.Destiny.Definitions.SocketTypes
+﻿namespace NetBungieAPI.Models.Destiny
 {
-    public enum SocketActionType
+    public enum SocketTypeActionType
     {
         InsertPlug = 0,
         InfuseItem = 1,
