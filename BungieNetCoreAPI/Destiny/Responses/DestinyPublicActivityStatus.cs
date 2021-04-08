@@ -7,9 +7,9 @@ namespace NetBungieAPI.Destiny.Responses
 {
     public class DestinyPublicActivityStatus
     {
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>> ChallengeObjectives { get; }
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>> Modifiers { get; }
-        public ReadOnlyCollection<DestinyItemQuantity> RewardTooltipItems { get; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>> ChallengeObjectives { get; init; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>> Modifiers { get; init; }
+        public ReadOnlyCollection<DestinyItemQuantity> RewardTooltipItems { get; init; }
 
         [JsonConstructor]
         internal DestinyPublicActivityStatus(uint[] challengeObjectiveHashes, uint[] modifierHashes, DestinyItemQuantity[] rewardTooltipItems)

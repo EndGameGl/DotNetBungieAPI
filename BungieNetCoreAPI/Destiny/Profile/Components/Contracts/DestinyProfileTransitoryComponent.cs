@@ -6,11 +6,11 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyProfileTransitoryComponent
     {
-        public ReadOnlyCollection<DestinyProfileTransitoryPartyMember> PartyMembers { get; }
-        public DestinyProfileTransitoryCurrentActivity CurrentActivity { get; }
-        public DestinyProfileTransitoryJoinability JoinAbility { get; }
-        public ReadOnlyCollection<DestinyProfileTransitoryTrackingEntry> TrackedEntities { get; }
-        public DefinitionHashPointer<DestinyDestinationDefinition> LastOrbitedDestination { get; }
+        public ReadOnlyCollection<DestinyProfileTransitoryPartyMember> PartyMembers { get; init; }
+        public DestinyProfileTransitoryCurrentActivity CurrentActivity { get; init; }
+        public DestinyProfileTransitoryJoinability JoinAbility { get; init; }
+        public ReadOnlyCollection<DestinyProfileTransitoryTrackingEntry> TrackedEntities { get; init; }
+        public DefinitionHashPointer<DestinyDestinationDefinition> LastOrbitedDestination { get; init; }
 
         [JsonConstructor]
         internal DestinyProfileTransitoryComponent(DestinyProfileTransitoryPartyMember[] partyMembers, DestinyProfileTransitoryCurrentActivity currentActivity,

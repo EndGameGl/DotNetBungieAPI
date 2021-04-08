@@ -8,11 +8,11 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyPublicMilestoneActivity
     {
-        public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; }
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>> Modifiers { get; }
-        public ReadOnlyCollection<DestinyPublicMilestoneActivityVariant> Variants { get; }
-        public DefinitionHashPointer<DestinyActivityModeDefinition> ActivityMode { get; }
-        public DestinyActivityModeType? ActivityModeType { get; }
+        public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; init; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>> Modifiers { get; init; }
+        public ReadOnlyCollection<DestinyPublicMilestoneActivityVariant> Variants { get; init; }
+        public DefinitionHashPointer<DestinyActivityModeDefinition> ActivityMode { get; init; }
+        public DestinyActivityModeType? ActivityModeType { get; init; }
 
         [JsonConstructor]
         internal DestinyPublicMilestoneActivity(uint activityHash, uint[] modifierHashes, DestinyPublicMilestoneActivityVariant[] variants,

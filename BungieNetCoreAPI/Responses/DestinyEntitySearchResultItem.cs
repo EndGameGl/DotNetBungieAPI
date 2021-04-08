@@ -5,13 +5,13 @@ namespace NetBungieAPI.Responses
 {
     public class DestinyEntitySearchResultItem
     {
-        public uint Hash { get; }
-        public string EntityType { get; }
-        public DestinyDefinitionDisplayProperties DisplayProperties { get; }
-        public double Weight { get; }
+        public uint Hash { get; init; }
+        public string EntityType { get; init; }
+        public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+        public double Weight { get; init; }
 
         [JsonConstructor]
-        internal DestinyEntitySearchResultItem(uint hash, string entityType, DestinyDefinitionDisplayProperties displayProperties, double weight)
+        internal DestinyEntitySearchResultItem(uint hash, string entityType, DestinyDisplayPropertiesDefinition displayProperties, double weight)
         {
             Hash = hash;
             EntityType = entityType;

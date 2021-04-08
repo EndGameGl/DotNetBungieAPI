@@ -12,7 +12,7 @@ namespace NetBungieAPI.Repositories
         /// <summary>
         /// Type of items stored inside of repository
         /// </summary>
-        Type DefinitionType { get; }
+        Type DefinitionType { get; init; }
         /// <summary>
         /// Adds new item into the repository
         /// </summary>

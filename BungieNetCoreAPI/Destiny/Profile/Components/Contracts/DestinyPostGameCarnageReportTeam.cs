@@ -4,10 +4,10 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyPostGameCarnageReportTeam
     {
-        public int TeamId { get; }
-        public DestinyHistoricalStatsValue Standing { get; }
-        public DestinyHistoricalStatsValue Score { get; }
-        public string TeamName { get; }
+        public int TeamId { get; init; }
+        public DestinyHistoricalStatsValue Standing { get; init; }
+        public DestinyHistoricalStatsValue Score { get; init; }
+        public string TeamName { get; init; }
 
         [JsonConstructor]
         internal DestinyPostGameCarnageReportTeam(int teamId, DestinyHistoricalStatsValue standing, DestinyHistoricalStatsValue score, string teamName) 

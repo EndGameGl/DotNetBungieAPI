@@ -6,8 +6,8 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyPublicMilestoneChallenge
     {
-        public DefinitionHashPointer<DestinyObjectiveDefinition> Objective { get; }
-        public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; }
+        public DefinitionHashPointer<DestinyObjectiveDefinition> Objective { get; init; }
+        public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; init; }
 
         [JsonConstructor]
         internal DestinyPublicMilestoneChallenge(uint objectiveHash, uint? activityHash)

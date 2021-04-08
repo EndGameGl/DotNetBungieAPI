@@ -6,10 +6,10 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyMilestoneActivityVariant
     {
-        public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; }
-        public DestinyMilestoneActivityCompletionStatus CompletionStatus { get; }
-        public DefinitionHashPointer<DestinyActivityModeDefinition> ActivityMode { get; }
-        public DestinyActivityModeType? ActivityModeType { get; }
+        public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; init; }
+        public DestinyMilestoneActivityCompletionStatus CompletionStatus { get; init; }
+        public DefinitionHashPointer<DestinyActivityModeDefinition> ActivityMode { get; init; }
+        public DestinyActivityModeType? ActivityModeType { get; init; }
 
         [JsonConstructor]
         internal DestinyMilestoneActivityVariant(uint activityHash, DestinyMilestoneActivityCompletionStatus completionStatus, uint? activityModeHash,

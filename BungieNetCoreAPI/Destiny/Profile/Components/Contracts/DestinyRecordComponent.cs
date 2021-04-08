@@ -5,10 +5,10 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyRecordComponent
     {
-        public DestinyRecordState State { get; }
-        public ReadOnlyCollection<DestinyObjectiveProgress> Objectives { get; }
-        public ReadOnlyCollection<DestinyObjectiveProgress> IntervalObjectives { get; }
-        public int IntervalsRedeemedCount { get; }
+        public DestinyRecordState State { get; init; }
+        public ReadOnlyCollection<DestinyObjectiveProgress> Objectives { get; init; }
+        public ReadOnlyCollection<DestinyObjectiveProgress> IntervalObjectives { get; init; }
+        public int IntervalsRedeemedCount { get; init; }
 
         [JsonConstructor]
         internal DestinyRecordComponent(DestinyRecordState state, DestinyObjectiveProgress[] objectives, DestinyObjectiveProgress[] intervalObjectives, 

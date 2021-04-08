@@ -7,11 +7,11 @@ namespace NetBungieAPI.Destiny.Profile
 {
     public class DestinyPostGameCarnageReportData
     {
-        public DateTime Period { get; }
-        public int? StartingPhaseIndex { get; }
-        public DestinyHistoricalStatsActivity ActivityDetails { get; }
-        public ReadOnlyCollection<DestinyPostGameCarnageReport> Entries { get; }
-        public ReadOnlyCollection<DestinyPostGameCarnageReportTeam> Teams { get; }
+        public DateTime Period { get; init; }
+        public int? StartingPhaseIndex { get; init; }
+        public DestinyHistoricalStatsActivity ActivityDetails { get; init; }
+        public ReadOnlyCollection<DestinyPostGameCarnageReport> Entries { get; init; }
+        public ReadOnlyCollection<DestinyPostGameCarnageReportTeam> Teams { get; init; }
 
         [JsonConstructor]
         internal DestinyPostGameCarnageReportData(DateTime period, int? startingPhaseIndex, DestinyHistoricalStatsActivity activityDetails,

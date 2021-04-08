@@ -5,8 +5,8 @@ namespace NetBungieAPI.Responses
 {
     public class DestinyEntitySearchResult
     {
-        public ReadOnlyCollection<string> SuggestedWords { get; }
-        public SearchResultOfDestinyEntitySearch Results { get; }
+        public ReadOnlyCollection<string> SuggestedWords { get; init; }
+        public SearchResultOfDestinyEntitySearch Results { get; init; }
 
         [JsonConstructor]
         internal DestinyEntitySearchResult(string[] suggestedWords, SearchResultOfDestinyEntitySearch results)

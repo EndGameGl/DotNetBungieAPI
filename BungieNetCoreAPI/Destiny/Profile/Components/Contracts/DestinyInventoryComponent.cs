@@ -5,7 +5,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyInventoryComponent
     {
-        public ReadOnlyCollection<DestinyItemComponent> Items { get; }
+        public ReadOnlyCollection<DestinyItemComponent> Items { get; init; }
 
         [JsonConstructor]
         internal DestinyInventoryComponent(DestinyItemComponent[] items)

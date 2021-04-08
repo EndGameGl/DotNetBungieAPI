@@ -9,16 +9,16 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyMilestone
     {
-        public DefinitionHashPointer<DestinyMilestoneDefinition> Milestone { get; }
-        public ReadOnlyCollection<DestinyMilestoneQuest> AvailableQuests { get; }
-        public ReadOnlyCollection<DestinyMilestoneChallengeActivity> Activities { get; }
-        public ReadOnlyDictionary<string, double> Values { get; }
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyVendorDefinition>> Vendors { get; }
-        public ReadOnlyCollection<DestinyMilestoneVendor> VendorsData { get; }
-        public ReadOnlyCollection<DestinyMilestoneRewardCategory> Rewards { get; }
-        public DateTime? StartDate { get; }
-        public DateTime? EndDate { get; }
-        public int Order { get; }
+        public DefinitionHashPointer<DestinyMilestoneDefinition> Milestone { get; init; }
+        public ReadOnlyCollection<DestinyMilestoneQuest> AvailableQuests { get; init; }
+        public ReadOnlyCollection<DestinyMilestoneChallengeActivity> Activities { get; init; }
+        public ReadOnlyDictionary<string, double> Values { get; init; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyVendorDefinition>> Vendors { get; init; }
+        public ReadOnlyCollection<DestinyMilestoneVendor> VendorsData { get; init; }
+        public ReadOnlyCollection<DestinyMilestoneRewardCategory> Rewards { get; init; }
+        public DateTime? StartDate { get; init; }
+        public DateTime? EndDate { get; init; }
+        public int Order { get; init; }
 
         [JsonConstructor]
         internal DestinyMilestone(uint milestoneHash, DestinyMilestoneQuest[] availableQuests, DestinyMilestoneChallengeActivity[] activities,

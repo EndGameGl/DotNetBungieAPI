@@ -7,11 +7,11 @@ namespace NetBungieAPI.Destiny
     /// </summary>
     public class DestinyColor : IDeepEquatable<DestinyColor>
     {
-        public uint ColorHash { get; }
-        public int Alpha { get; }
-        public int Blue { get; }
-        public int Green { get; }
-        public int Red { get; }
+        public uint ColorHash { get; init; }
+        public int Alpha { get; init; }
+        public int Blue { get; init; }
+        public int Green { get; init; }
+        public int Red { get; init; }
 
         [JsonConstructor]
         internal DestinyColor(int alpha, int blue, uint colorHash, int green, int red)

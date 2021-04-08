@@ -8,18 +8,18 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyVendorSaleItemComponent
     {
-        public VendorItemStatus SaleStatus { get; }
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyUnlockDefinition>> RequiredUnlocks { get; }
-        public ReadOnlyCollection<DestinyUnlockStatus> UnlockStatuses { get; }
-        public ReadOnlyCollection<int> FailureIndexes { get; }
-        public DestinyVendorItemState Augments { get; }
-        public int VendorItemIndex { get; }
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; }
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> OverrideStyleItem { get; }
-        public int Quantity { get; }
-        public ReadOnlyCollection<DestinyItemQuantity> Costs { get; }
-        public DateTime? OverrideNextRefreshDate { get; }
-        public bool? ApiPurchasable { get; }
+        public VendorItemStatus SaleStatus { get; init; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyUnlockDefinition>> RequiredUnlocks { get; init; }
+        public ReadOnlyCollection<DestinyUnlockStatus> UnlockStatuses { get; init; }
+        public ReadOnlyCollection<int> FailureIndexes { get; init; }
+        public DestinyVendorItemState Augments { get; init; }
+        public int VendorItemIndex { get; init; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; init; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> OverrideStyleItem { get; init; }
+        public int Quantity { get; init; }
+        public ReadOnlyCollection<DestinyItemQuantity> Costs { get; init; }
+        public DateTime? OverrideNextRefreshDate { get; init; }
+        public bool? ApiPurchasable { get; init; }
 
         [JsonConstructor]
         internal DestinyVendorSaleItemComponent(VendorItemStatus saleStatus, uint[] requiredUnlocks, DestinyUnlockStatus[] unlockStatuses,

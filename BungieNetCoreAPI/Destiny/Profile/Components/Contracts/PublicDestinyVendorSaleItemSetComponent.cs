@@ -6,7 +6,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class PublicDestinyVendorSaleItemSetComponent
     {
-        public ReadOnlyDictionary<uint, DestinyPublicVendorSaleItemComponent> SaleItems { get; }
+        public ReadOnlyDictionary<uint, DestinyPublicVendorSaleItemComponent> SaleItems { get; init; }
 
         [JsonConstructor]
         internal PublicDestinyVendorSaleItemSetComponent(Dictionary<uint, DestinyPublicVendorSaleItemComponent> saleItems)

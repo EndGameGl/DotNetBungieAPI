@@ -6,10 +6,10 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyItemSocketState
     {
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> Plug { get; }
-        public bool IsEnabled { get; }
-        public bool IsVisible { get; }
-        public ReadOnlyCollection<int> EnableFailIndexes { get; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> Plug { get; init; }
+        public bool IsEnabled { get; init; }
+        public bool IsVisible { get; init; }
+        public ReadOnlyCollection<int> EnableFailIndexes { get; init; }
 
         [JsonConstructor]
         internal DestinyItemSocketState(uint? plugHash, bool isEnabled, bool isVisible, int[] enableFailIndexes)

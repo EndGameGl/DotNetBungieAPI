@@ -10,11 +10,11 @@ namespace NetBungieAPI.Destiny.Responses
 {
     public class PublicMilestoneActivity
     {
-        public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; }
-        public List<DefinitionHashPointer<DestinyObjectiveDefinition>> ChallengeObjectives { get; }
-        public List<uint> PhaseHashes { get; }
-        public Dictionary<uint, bool> BooleanActivityOptions { get; }
-        public List<DefinitionHashPointer<DestinyActivityModifierDefinition>> Modifiers { get; } 
+        public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; init; }
+        public List<DefinitionHashPointer<DestinyObjectiveDefinition>> ChallengeObjectives { get; init; }
+        public List<uint> PhaseHashes { get; init; }
+        public Dictionary<uint, bool> BooleanActivityOptions { get; init; }
+        public List<DefinitionHashPointer<DestinyActivityModifierDefinition>> Modifiers { get; init; } 
 
         [JsonConstructor]
         private PublicMilestoneActivity(uint activityHash, List<uint> challengeObjectiveHashes, List<uint> phaseHashes, Dictionary<uint, bool> booleanActivityOptions,

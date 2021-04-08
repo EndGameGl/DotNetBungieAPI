@@ -7,7 +7,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyPresentationNodesComponent
     {
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyPresentationNodeDefinition>, DestinyPresentationNodeComponent> Nodes { get; }
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyPresentationNodeDefinition>, DestinyPresentationNodeComponent> Nodes { get; init; }
 
         [JsonConstructor]
         internal DestinyPresentationNodesComponent(Dictionary<uint, DestinyPresentationNodeComponent> nodes)

@@ -1,7 +1,6 @@
 ﻿using JsonDiffPatchDotNet;
-using NetBungieAPI.Destiny;
-using NetBungieAPI.Destiny.Definitions;
 using NetBungieAPI.Models;
+using NetBungieAPI.Models.Destiny;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;

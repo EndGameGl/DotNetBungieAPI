@@ -7,8 +7,8 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyMetricsComponent
     {
-        public ReadOnlyDictionary<uint, DestinyMetricComponent> Metrics { get; }
-        public DefinitionHashPointer<DestinyPresentationNodeDefinition> MetricRootNode { get; }
+        public ReadOnlyDictionary<uint, DestinyMetricComponent> Metrics { get; init; }
+        public DefinitionHashPointer<DestinyPresentationNodeDefinition> MetricRootNode { get; init; }
 
         [JsonConstructor]
         internal DestinyMetricsComponent(Dictionary<uint, DestinyMetricComponent> metrics, uint metricsRootNodeHash)

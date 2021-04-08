@@ -6,7 +6,7 @@ namespace NetBungieAPI.Destiny.Profile
 {
     public class DestinyActivityHistoryResults
     {
-        public ReadOnlyCollection<DestinyHistoricalStatsPeriodGroup> Activities { get; }
+        public ReadOnlyCollection<DestinyHistoricalStatsPeriodGroup> Activities { get; init; }
 
         [JsonConstructor]
         internal DestinyActivityHistoryResults(DestinyHistoricalStatsPeriodGroup[] activities)

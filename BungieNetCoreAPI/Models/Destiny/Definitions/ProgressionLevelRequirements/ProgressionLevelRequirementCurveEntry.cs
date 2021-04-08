@@ -1,0 +1,24 @@
+﻿using Newtonsoft.Json;
+
+namespace NetBungieAPI.Destiny.Definitions.ProgressionLevelRequirements
+{
+    public class ProgressionLevelRequirementCurveEntry : IDeepEquatable<ProgressionLevelRequirementCurveEntry>
+    {
+        public double Value { get; init; }
+        public double Weight { get; init; }
+
+        [JsonConstructor]
+        internal ProgressionLevelRequirementCurveEntry(double value, double weight)
+        {
+            Value = value;
+            Weight = weight;
+        }
+
+        public bool DeepEquals(ProgressionLevelRequirementCurveEntry other)
+        {
+            return other != null &&
+                   Value == other.Value &&
+                   Weight == other.Weight;
+        }
+    }
+}

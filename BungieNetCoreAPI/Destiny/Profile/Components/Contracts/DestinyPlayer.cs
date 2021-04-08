@@ -9,17 +9,17 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyPlayer
     {
-        public UserInfoCard DestinyUserInfo { get; }
-        public string CharacterClass { get; }
-        public DefinitionHashPointer<DestinyClassDefinition> Class { get; }
-        public DefinitionHashPointer<DestinyRaceDefinition> Race { get; }
-        public DefinitionHashPointer<DestinyGenderDefinition> Gender { get; }
-        public int CharacterLevel { get; }
-        public int LightLevel { get; }
-        public UserInfoCard BungieNetUserInfo { get; }
-        public string ClanName { get; }
-        public string ClanTag { get; }
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> Emblem { get; }
+        public UserInfoCard DestinyUserInfo { get; init; }
+        public string CharacterClass { get; init; }
+        public DefinitionHashPointer<DestinyClassDefinition> Class { get; init; }
+        public DefinitionHashPointer<DestinyRaceDefinition> Race { get; init; }
+        public DefinitionHashPointer<DestinyGenderDefinition> Gender { get; init; }
+        public int CharacterLevel { get; init; }
+        public int LightLevel { get; init; }
+        public UserInfoCard BungieNetUserInfo { get; init; }
+        public string ClanName { get; init; }
+        public string ClanTag { get; init; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> Emblem { get; init; }
 
         [JsonConstructor]
         internal DestinyPlayer(UserInfoCard destinyUserInfo, string characterClass, uint classHash, uint raceHash, uint genderHash, int characterLevel,

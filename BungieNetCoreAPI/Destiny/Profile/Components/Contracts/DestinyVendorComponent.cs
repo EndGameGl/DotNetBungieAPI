@@ -6,13 +6,13 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyVendorComponent
     {
-        public bool CanPurchase { get; }
-        public DestinyProgression Progression { get; }
-        public int VendorLocationIndex { get; }
-        public int? SeasonalRank { get; }
-        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; }
-        public DateTime NextRefreshDate { get; }
-        public bool IsEnabled { get; }
+        public bool CanPurchase { get; init; }
+        public DestinyProgression Progression { get; init; }
+        public int VendorLocationIndex { get; init; }
+        public int? SeasonalRank { get; init; }
+        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; init; }
+        public DateTime NextRefreshDate { get; init; }
+        public bool IsEnabled { get; init; }
 
         [JsonConstructor]
         internal DestinyVendorComponent(bool canPurchase, DestinyProgression progression, int vendorLocationIndex, int? seasonalRank, uint vendorHash,

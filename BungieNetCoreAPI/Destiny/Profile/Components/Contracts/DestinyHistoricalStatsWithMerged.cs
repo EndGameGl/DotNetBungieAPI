@@ -6,8 +6,8 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyHistoricalStatsWithMerged
     {
-        public ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod> Results { get; }
-        public DestinyHistoricalStatsByPeriod Merged { get; }
+        public ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod> Results { get; init; }
+        public DestinyHistoricalStatsByPeriod Merged { get; init; }
 
         [JsonConstructor]
         internal DestinyHistoricalStatsWithMerged(Dictionary<string, DestinyHistoricalStatsByPeriod> results, DestinyHistoricalStatsByPeriod merged)

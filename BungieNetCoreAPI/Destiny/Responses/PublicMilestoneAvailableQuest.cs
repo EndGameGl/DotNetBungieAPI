@@ -5,7 +5,7 @@ namespace NetBungieAPI.Destiny.Responses
 {
     public class PublicMilestoneAvailableQuest
     {
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> QuestItem { get; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> QuestItem { get; init; }
 
         [JsonConstructor]
         private PublicMilestoneAvailableQuest(uint questItemHash)

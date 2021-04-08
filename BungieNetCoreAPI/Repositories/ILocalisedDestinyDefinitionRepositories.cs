@@ -11,7 +11,7 @@ namespace NetBungieAPI.Repositories
 {
     public interface ILocalisedDestinyDefinitionRepositories
     {
-        BungieLocales CurrentLocaleLoadContext { get; }
+        BungieLocales CurrentLocaleLoadContext { get; init; }
         void SetLocaleContext(BungieLocales locale);
         void ResetLocaleContext();
         void Initialize(BungieLocales[] locales);

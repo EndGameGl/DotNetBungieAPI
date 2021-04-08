@@ -5,10 +5,10 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyArtifactTier
     {
-        public uint TierHash { get; }
-        public bool IsUnlocked { get; }
-        public int PointsToUnlock { get; }
-        public ReadOnlyCollection<DestinyArtifactTierItem> Items { get; }
+        public uint TierHash { get; init; }
+        public bool IsUnlocked { get; init; }
+        public int PointsToUnlock { get; init; }
+        public ReadOnlyCollection<DestinyArtifactTierItem> Items { get; init; }
 
         [JsonConstructor]
         internal DestinyArtifactTier(uint tierHash, bool isUnlocked, int pointsToUnlock, DestinyArtifactTierItem[] items)

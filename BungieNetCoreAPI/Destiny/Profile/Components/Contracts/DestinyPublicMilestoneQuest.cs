@@ -6,9 +6,9 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyPublicMilestoneQuest
     {
-        public DefinitionHashPointer<DestinyMilestoneDefinition> QuestItem { get; }
-        public DestinyPublicMilestoneActivity Activity { get; }
-        public ReadOnlyCollection<DestinyPublicMilestoneChallenge> Challenges { get; }
+        public DefinitionHashPointer<DestinyMilestoneDefinition> QuestItem { get; init; }
+        public DestinyPublicMilestoneActivity Activity { get; init; }
+        public ReadOnlyCollection<DestinyPublicMilestoneChallenge> Challenges { get; init; }
 
         [JsonConstructor]
         internal DestinyPublicMilestoneQuest(uint questItemHash, DestinyPublicMilestoneActivity activity, DestinyPublicMilestoneChallenge[] challenges)

@@ -9,7 +9,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyKiosksComponent
     {
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyVendorDefinition>, object[]> KioskItems { get; }
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyVendorDefinition>, object[]> KioskItems { get; init; }
         [JsonConstructor]
         internal DestinyKiosksComponent(Dictionary<uint, object[]> kioskItems)
         {

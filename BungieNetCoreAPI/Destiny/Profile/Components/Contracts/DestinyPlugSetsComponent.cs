@@ -7,7 +7,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyPlugSetsComponent
     {
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyPlugSetDefinition>, object[]> Plugs { get; }
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyPlugSetDefinition>, object[]> Plugs { get; init; }
 
         [JsonConstructor]
         internal DestinyPlugSetsComponent(Dictionary<uint, object[]> plugs)

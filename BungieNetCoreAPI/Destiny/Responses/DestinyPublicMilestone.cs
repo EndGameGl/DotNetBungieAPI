@@ -9,14 +9,14 @@ namespace NetBungieAPI.Destiny.Responses
 {
     public class DestinyPublicMilestone
     {
-        public DefinitionHashPointer<DestinyMilestoneDefinition> Milestone { get; }
-        public ReadOnlyCollection<DestinyPublicMilestoneQuest> AvailableQuests { get; }
-        public ReadOnlyCollection<DestinyPublicMilestoneChallengeActivity> Activities { get; }
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyVendorDefinition>> VendorPointers { get; }
-        public ReadOnlyCollection<DestinyPublicMilestoneVendor> Vendors { get; }
-        public DateTime? StartDate { get; }
-        public DateTime? EndDate { get; }
-        public int Order { get; }
+        public DefinitionHashPointer<DestinyMilestoneDefinition> Milestone { get; init; }
+        public ReadOnlyCollection<DestinyPublicMilestoneQuest> AvailableQuests { get; init; }
+        public ReadOnlyCollection<DestinyPublicMilestoneChallengeActivity> Activities { get; init; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyVendorDefinition>> VendorPointers { get; init; }
+        public ReadOnlyCollection<DestinyPublicMilestoneVendor> Vendors { get; init; }
+        public DateTime? StartDate { get; init; }
+        public DateTime? EndDate { get; init; }
+        public int Order { get; init; }
 
         [JsonConstructor]
         internal DestinyPublicMilestone(uint milestoneHash, DestinyPublicMilestoneQuest[] availableQuests, DestinyPublicMilestoneChallengeActivity[] activities,

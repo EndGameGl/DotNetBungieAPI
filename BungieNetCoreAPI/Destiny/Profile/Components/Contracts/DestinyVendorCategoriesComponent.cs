@@ -5,7 +5,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyVendorCategoriesComponent
     {
-        public ReadOnlyCollection<DestinyVendorCategory> Categories { get; }
+        public ReadOnlyCollection<DestinyVendorCategory> Categories { get; init; }
 
         [JsonConstructor]
         internal DestinyVendorCategoriesComponent(DestinyVendorCategory[] categories)

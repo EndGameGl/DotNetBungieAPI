@@ -6,14 +6,14 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyVendorReceipt
     {
-        public ReadOnlyCollection<DestinyItemQuantity> CurrencyPaid { get; }
-        public ReadOnlyCollection<DestinyItemQuantity> ItemReceived { get; }
-        public uint LicenseUnlockHash { get; }
-        public long PurchasedByCharacterId { get; }
-        public DestinyVendorItemRefundPolicy RefundPolicy { get; }
-        public int SequenceNumber { get; }
-        public long TimeToExpiration { get; }
-        public DateTime ExpiresOn { get; }
+        public ReadOnlyCollection<DestinyItemQuantity> CurrencyPaid { get; init; }
+        public ReadOnlyCollection<DestinyItemQuantity> ItemReceived { get; init; }
+        public uint LicenseUnlockHash { get; init; }
+        public long PurchasedByCharacterId { get; init; }
+        public DestinyVendorItemRefundPolicy RefundPolicy { get; init; }
+        public int SequenceNumber { get; init; }
+        public long TimeToExpiration { get; init; }
+        public DateTime ExpiresOn { get; init; }
 
         [JsonConstructor]
         internal DestinyVendorReceipt(DestinyItemQuantity[] currencyPaid, DestinyItemQuantity[] itemReceived, uint licenseUnlockHash, long purchasedByCharacterId,

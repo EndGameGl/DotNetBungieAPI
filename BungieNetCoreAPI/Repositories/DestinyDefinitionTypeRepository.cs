@@ -13,7 +13,7 @@ namespace NetBungieAPI.Repositories
     public class DestinyDefinitionTypeRepository
     {
         private ConcurrentDictionary<uint, IDestinyDefinition> _definitions;
-        public Type Type { get; }
+        public Type Type { get; init; }
         public DestinyDefinitionTypeRepository(Type storedType, int concurrencyLevel, int capacity = 31)
         {
             Type = storedType;

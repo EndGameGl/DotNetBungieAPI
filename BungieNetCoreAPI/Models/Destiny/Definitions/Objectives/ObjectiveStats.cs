@@ -1,0 +1,24 @@
+﻿using Newtonsoft.Json;
+
+namespace NetBungieAPI.Destiny.Definitions.Objectives
+{
+    public class ObjectiveStats : IDeepEquatable<ObjectiveStats>
+    {
+        public ObjectiveStat Stat { get; init; }
+        public ObjectivePerksStyle Style { get; init; }
+
+        [JsonConstructor]
+        internal ObjectiveStats(ObjectiveStat stat, ObjectivePerksStyle style)
+        {
+            Stat = stat;
+            Style = style;
+        }
+
+        public bool DeepEquals(ObjectiveStats other)
+        {
+            return other != null &&
+                   (Stat != null ? Stat.DeepEquals(other.Stat) : other.Stat == null) &&
+                   Style == other.Style;
+        }
+    }
+}

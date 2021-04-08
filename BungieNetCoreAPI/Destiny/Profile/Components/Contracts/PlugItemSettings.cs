@@ -5,9 +5,9 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class PlugItemSettings
     {
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> PlugItem { get; }
-        public bool CanInsert { get; }
-        public bool IsEnabled { get; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> PlugItem { get; init; }
+        public bool CanInsert { get; init; }
+        public bool IsEnabled { get; init; }
 
         [JsonConstructor]
         internal PlugItemSettings(uint plugItemHash, bool canInsert, bool enabled)

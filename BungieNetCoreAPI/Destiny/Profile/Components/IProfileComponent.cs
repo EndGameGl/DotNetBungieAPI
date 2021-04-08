@@ -2,7 +2,7 @@
 {
     public interface IProfileComponent
     {
-        ComponentPrivacy Privacy { get; }
-        bool? IsDisabled { get; }
+        ComponentPrivacy Privacy { get; init; }
+        bool? IsDisabled { get; init; }
     }
 }

@@ -19,8 +19,8 @@ namespace NetBungieAPI.Services
         private readonly ILogger _logger;
         private readonly IConfigurationService _config;
         private Timer _tokenTimer;
-        public ConcurrentDictionary<string, AuthorizationState> AuthorizationStates { get; }
-        public ConcurrentDictionary<long, AuthorizationTokenData> AuthorizationTokens { get; }
+        public ConcurrentDictionary<string, AuthorizationState> AuthorizationStates { get; init; }
+        public ConcurrentDictionary<long, AuthorizationTokenData> AuthorizationTokens { get; init; }
 
         public AuthorizationStateHandler(ILogger logger, IConfigurationService configuration, IHttpClientInstance httpClient)
         {

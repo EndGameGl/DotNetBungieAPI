@@ -6,10 +6,10 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyHistoricalStatsPerCharacter
     {
-        public long CharacterId { get; }
-        public bool IsDeleted { get; }
-        public ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod> Results { get; }
-        public DestinyHistoricalStatsByPeriod Merged { get; }
+        public long CharacterId { get; init; }
+        public bool IsDeleted { get; init; }
+        public ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod> Results { get; init; }
+        public DestinyHistoricalStatsByPeriod Merged { get; init; }
         [JsonConstructor]
         internal DestinyHistoricalStatsPerCharacter(long characterId, bool deleted, Dictionary<string, DestinyHistoricalStatsByPeriod> results,
             DestinyHistoricalStatsByPeriod merged)

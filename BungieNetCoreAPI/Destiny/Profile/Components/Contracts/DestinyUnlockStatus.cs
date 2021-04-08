@@ -5,8 +5,8 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyUnlockStatus
     {
-        public DefinitionHashPointer<DestinyUnlockDefinition> Unlock { get; }
-        public bool IsSet { get; }
+        public DefinitionHashPointer<DestinyUnlockDefinition> Unlock { get; init; }
+        public bool IsSet { get; init; }
 
         [JsonConstructor]
         internal DestinyUnlockStatus(uint unlockHash, bool isSet)

@@ -8,12 +8,12 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyMilestoneChallengeActivity
     {
-        public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; }
-        public ReadOnlyCollection<DestinyChallengeStatus> Challenges { get; }
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>> Modifiers { get; }
-        public ReadOnlyDictionary<uint, bool> BooleanActivityOptions { get; }
-        public int? LoadoutRequirementIndex { get; }
-        public ReadOnlyCollection<DestinyMilestoneActivityPhase> Phases { get; }
+        public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; init; }
+        public ReadOnlyCollection<DestinyChallengeStatus> Challenges { get; init; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>> Modifiers { get; init; }
+        public ReadOnlyDictionary<uint, bool> BooleanActivityOptions { get; init; }
+        public int? LoadoutRequirementIndex { get; init; }
+        public ReadOnlyCollection<DestinyMilestoneActivityPhase> Phases { get; init; }
 
         [JsonConstructor]
         internal DestinyMilestoneChallengeActivity(uint activityHash, DestinyChallengeStatus[] challenges, uint[] modifierHashes, 

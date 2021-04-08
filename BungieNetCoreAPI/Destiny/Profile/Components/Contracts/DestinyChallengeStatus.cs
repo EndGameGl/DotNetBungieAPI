@@ -12,7 +12,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
         /// <summary>
         /// The progress - including completion status - of the active challenge.
         /// </summary>
-        public DestinyObjectiveProgress Objective { get; }
+        public DestinyObjectiveProgress Objective { get; init; }
 
         [JsonConstructor]
         internal DestinyChallengeStatus(DestinyObjectiveProgress objective)

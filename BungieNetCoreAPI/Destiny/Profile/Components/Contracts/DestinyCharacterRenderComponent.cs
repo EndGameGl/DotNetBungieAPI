@@ -5,9 +5,9 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyCharacterRenderComponent
     {
-        public ReadOnlyCollection<DyeReference> CustomDyes { get; }
-        public DestinyCharacterCustomization Customization { get; }
-        public DestinyCharacterPeerView PeerView { get; }
+        public ReadOnlyCollection<DyeReference> CustomDyes { get; init; }
+        public DestinyCharacterCustomization Customization { get; init; }
+        public DestinyCharacterPeerView PeerView { get; init; }
 
         [JsonConstructor]
         internal DestinyCharacterRenderComponent(DyeReference[] customDyes, DestinyCharacterCustomization customization, DestinyCharacterPeerView peerView)

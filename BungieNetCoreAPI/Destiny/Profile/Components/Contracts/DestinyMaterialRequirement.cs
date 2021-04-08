@@ -5,10 +5,10 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyMaterialRequirement
     {
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; }
-        public bool DeleteOnAction { get; }
-        public int Count { get; }
-        public bool OmitFromRequirements { get; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; init; }
+        public bool DeleteOnAction { get; init; }
+        public int Count { get; init; }
+        public bool OmitFromRequirements { get; init; }
 
         [JsonConstructor]
         internal DestinyMaterialRequirement(uint itemHash, bool deleteOnAction, int count, bool omitFromRequirements)

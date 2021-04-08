@@ -6,8 +6,8 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyItemRenderComponent
     {
-        public bool UseCustomDyes { get; }
-        public ReadOnlyDictionary<int, int> ArtRegions { get; }
+        public bool UseCustomDyes { get; init; }
+        public ReadOnlyDictionary<int, int> ArtRegions { get; init; }
 
         [JsonConstructor]
         internal DestinyItemRenderComponent(bool useCustomDyes, Dictionary<int, int> artRegions)

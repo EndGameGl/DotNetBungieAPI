@@ -4,11 +4,11 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyHistoricalStatsValue
     {
-        public string StatId { get; }
-        public DestinyHistoricalStatsValuePair BasicValue { get; }
-        public DestinyHistoricalStatsValuePair PerGameAverage { get; }
-        public DestinyHistoricalStatsValuePair WeightedValue { get; }
-        public long? ActivityId { get; }
+        public string StatId { get; init; }
+        public DestinyHistoricalStatsValuePair BasicValue { get; init; }
+        public DestinyHistoricalStatsValuePair PerGameAverage { get; init; }
+        public DestinyHistoricalStatsValuePair WeightedValue { get; init; }
+        public long? ActivityId { get; init; }
 
         [JsonConstructor]
         internal DestinyHistoricalStatsValue(string statId, DestinyHistoricalStatsValuePair basic, DestinyHistoricalStatsValuePair pga,

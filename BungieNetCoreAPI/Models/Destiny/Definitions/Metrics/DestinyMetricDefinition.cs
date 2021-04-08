@@ -1,0 +1,76 @@
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Destiny.Definitions.Objectives;
+using NetBungieAPI.Destiny.Definitions.PresentationNodes;
+using NetBungieAPI.Destiny.Definitions.Traits;
+using Newtonsoft.Json;
+using System.Collections.ObjectModel;
+
+namespace NetBungieAPI.Models.Destiny.Definitions.Metrics
+{
+    [DestinyDefinition(DefinitionsEnum.DestinyMetricDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    public class DestinyMetricDefinition : IDestinyDefinition, IDeepEquatable<DestinyMetricDefinition>
+    {
+        public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+        public bool LowerValueIsBetter { get; init; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentNodes { get; init; }
+        public DestinyPresentationNodeType PresentationNodeType { get; init; }
+        public DefinitionHashPointer<DestinyObjectiveDefinition> TrackingObjective { get; init; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; }
+        public ReadOnlyCollection<string> TraitIds { get; init; }
+        public bool Blacklisted { get; init; }
+        public uint Hash { get; init; }
+        public int Index { get; init; }
+        public bool Redacted { get; init; }
+
+        [JsonConstructor]
+        internal DestinyMetricDefinition(DestinyDisplayPropertiesDefinition displayProperties, bool lowerValueIsBetter, uint[] parentNodeHashes,
+            DestinyPresentationNodeType presentationNodeType, uint trackingObjectiveHash, uint[] traitHashes, string[] traitIds,
+            bool blacklisted, uint hash, int index, bool redacted)
+        {
+            DisplayProperties = displayProperties;
+            LowerValueIsBetter = lowerValueIsBetter;
+            ParentNodes = parentNodeHashes.DefinitionsAsReadOnlyOrEmpty<DestinyPresentationNodeDefinition>(DefinitionsEnum.DestinyPresentationNodeDefinition);
+            PresentationNodeType = presentationNodeType;
+            TrackingObjective = new DefinitionHashPointer<DestinyObjectiveDefinition>(trackingObjectiveHash, DefinitionsEnum.DestinyObjectiveDefinition);
+            Traits = traitHashes.DefinitionsAsReadOnlyOrEmpty<DestinyTraitDefinition>(DefinitionsEnum.DestinyTraitDefinition);
+            TraitIds = traitIds.AsReadOnlyOrEmpty();
+            Blacklisted = blacklisted;
+            Hash = hash;
+            Index = index;
+            Redacted = redacted;
+        }
+
+        public override string ToString()
+        {
+            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
+        }
+
+        public bool DeepEquals(DestinyMetricDefinition other)
+        {
+            return other != null &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   LowerValueIsBetter == other.LowerValueIsBetter &&
+                   ParentNodes.DeepEqualsReadOnlyCollections(other.ParentNodes) &&
+                   PresentationNodeType == other.PresentationNodeType &&
+                   TrackingObjective.DeepEquals(other.TrackingObjective) &&
+                   Traits.DeepEqualsReadOnlyCollections(other.Traits) &&
+                   TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds) &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+        public void MapValues()
+        {
+            foreach (var node in ParentNodes)
+            {
+                node.TryMapValue();
+            }
+            TrackingObjective.TryMapValue();
+            foreach (var trait in Traits)
+            {
+                trait.TryMapValue();
+            }
+        }
+    }
+}

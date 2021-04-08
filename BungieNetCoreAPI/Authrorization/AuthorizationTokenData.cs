@@ -23,6 +23,6 @@ namespace NetBungieAPI.Authrorization
         [JsonPropertyName("membership_id")]
         public long MembershipId { get; init; }
 
-        public DateTime ReceiveTime { get; } = DateTime.Now;
+        public DateTime ReceiveTime { get; init; } = DateTime.Now;
     }
 }

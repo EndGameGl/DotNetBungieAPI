@@ -7,7 +7,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyPlatformSilverComponent
     {
-        public ReadOnlyDictionary<BungieMembershipType, DestinyItemComponent> PlatformSilver { get; }
+        public ReadOnlyDictionary<BungieMembershipType, DestinyItemComponent> PlatformSilver { get; init; }
 
         [JsonConstructor]
         internal DestinyPlatformSilverComponent(Dictionary<BungieMembershipType, DestinyItemComponent> platformSilver)

@@ -5,7 +5,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class СharacterUninstancedItemsComponent
     {
-        public DestinyProfileComponent<Dictionary<uint, DestinyItemObjectivesComponent>> Objectives { get; }
+        public DestinyProfileComponent<Dictionary<uint, DestinyItemObjectivesComponent>> Objectives { get; init; }
 
         [JsonConstructor]
         internal СharacterUninstancedItemsComponent(DestinyProfileComponent<Dictionary<uint, DestinyItemObjectivesComponent>> objectives)

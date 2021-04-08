@@ -8,8 +8,8 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyProfileProgressionComponent
     {
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyChecklistDefinition>, ReadOnlyDictionary<uint, bool>> Checklists { get; }
-        public DestinyArtifactProfileScoped SeasonalArtifact { get; }
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyChecklistDefinition>, ReadOnlyDictionary<uint, bool>> Checklists { get; init; }
+        public DestinyArtifactProfileScoped SeasonalArtifact { get; init; }
 
         [JsonConstructor]
         internal DestinyProfileProgressionComponent(Dictionary<uint, Dictionary<uint, bool>> checklists, DestinyArtifactProfileScoped seasonalArtifact)

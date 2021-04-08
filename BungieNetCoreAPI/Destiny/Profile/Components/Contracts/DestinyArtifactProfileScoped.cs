@@ -1,15 +1,15 @@
-﻿using NetBungieAPI.Destiny.Definitions.Artifacts;
+﻿using NetBungieAPI.Models.Destiny.Definitions.Artifacts;
 using Newtonsoft.Json;
 
 namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyArtifactProfileScoped
     {
-        public DefinitionHashPointer<DestinyArtifactDefinition> Artifact { get; }
-        public DestinyProgression PointProgression { get; }
-        public int PointsAcquired { get; }
-        public DestinyProgression PowerBonusProgression { get; }
-        public int PowerBonus { get; }
+        public DefinitionHashPointer<DestinyArtifactDefinition> Artifact { get; init; }
+        public DestinyProgression PointProgression { get; init; }
+        public int PointsAcquired { get; init; }
+        public DestinyProgression PowerBonusProgression { get; init; }
+        public int PowerBonus { get; init; }
 
         [JsonConstructor]
         internal DestinyArtifactProfileScoped(uint artifactHash, DestinyProgression pointProgression, int pointsAcquired,

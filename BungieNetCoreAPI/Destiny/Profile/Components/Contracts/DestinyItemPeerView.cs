@@ -6,8 +6,8 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyItemPeerView
     {
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; }
-        public ReadOnlyCollection<DyeReference> Dyes { get; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; init; }
+        public ReadOnlyCollection<DyeReference> Dyes { get; init; }
 
         [JsonConstructor]
         internal DestinyItemPeerView(uint itemHash, DyeReference[] dyes)

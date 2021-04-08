@@ -5,17 +5,17 @@ namespace NetBungieAPI.Services
 {
     public class BungieApiAccess : IBungieApiAccess
     {
-        public IAppMethodsAccess App { get; }
-        public IUserMethodsAccess User { get; }
-        public IContentMethodsAccess Content { get; }
-        public IForumMethodsAccess Forum { get; }
-        public IGroupV2MethodsAccess GroupV2 { get; }
-        public ITokenMethodsAccess Tokens { get; }
-        public IDestiny2MethodsAccess Destiny2 { get; }
-        public ICommunityContentMethodsAccess Community { get; }
-        public ITrendingMethodsAccess Trending { get; }
-        public IFireteamMethodsAccess Fireteam { get; }
-        public IMiscMethodsAccess Misc { get; }
+        public IAppMethodsAccess App { get; init; }
+        public IUserMethodsAccess User { get; init; }
+        public IContentMethodsAccess Content { get; init; }
+        public IForumMethodsAccess Forum { get; init; }
+        public IGroupV2MethodsAccess GroupV2 { get; init; }
+        public ITokenMethodsAccess Tokens { get; init; }
+        public IDestiny2MethodsAccess Destiny2 { get; init; }
+        public ICommunityContentMethodsAccess Community { get; init; }
+        public ITrendingMethodsAccess Trending { get; init; }
+        public IFireteamMethodsAccess Fireteam { get; init; }
+        public IMiscMethodsAccess Misc { get; init; }
 
         internal BungieApiAccess(IFireteamMethodsAccess fireteamMethodsAccess, IContentMethodsAccess contentMethodsAccess,
             IAppMethodsAccess appMethodsAccess, IForumMethodsAccess forumMethodsAccess, IUserMethodsAccess userMethodsAccess,

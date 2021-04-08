@@ -5,8 +5,8 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyMilestoneActivityCompletionStatus
     {
-        public bool IsCompleted { get; }
-        public ReadOnlyCollection<DestinyMilestoneActivityPhase> Phases { get; }
+        public bool IsCompleted { get; init; }
+        public ReadOnlyCollection<DestinyMilestoneActivityPhase> Phases { get; init; }
 
         [JsonConstructor]
         internal DestinyMilestoneActivityCompletionStatus(bool completed, DestinyMilestoneActivityPhase[] phases)

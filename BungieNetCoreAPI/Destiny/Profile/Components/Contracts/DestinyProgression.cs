@@ -6,20 +6,20 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyProgression
     {
-        public DefinitionHashPointer<DestinyProgressionDefinition> Progression { get; }
-        public int DailyProgress { get; }
-        public int DailyLimit { get; }
-        public int WeeklyProgress { get; }
-        public int WeeklyLimit { get; }
-        public int CurrentProgress { get; }
-        public int Level { get; }
-        public int LevelCap { get; }
-        public int StepIndex { get; }
-        public int ProgressToNextLevel { get; }
-        public int NextLevelAt { get; }
-        public int? CurrentResetCount { get; }
-        public ReadOnlyCollection<DestinyProgressionReset> SeasonResets { get; }
-        public ReadOnlyCollection<DestinyProgressionRewardItemState> RewardItemStates { get; }
+        public DefinitionHashPointer<DestinyProgressionDefinition> Progression { get; init; }
+        public int DailyProgress { get; init; }
+        public int DailyLimit { get; init; }
+        public int WeeklyProgress { get; init; }
+        public int WeeklyLimit { get; init; }
+        public int CurrentProgress { get; init; }
+        public int Level { get; init; }
+        public int LevelCap { get; init; }
+        public int StepIndex { get; init; }
+        public int ProgressToNextLevel { get; init; }
+        public int NextLevelAt { get; init; }
+        public int? CurrentResetCount { get; init; }
+        public ReadOnlyCollection<DestinyProgressionReset> SeasonResets { get; init; }
+        public ReadOnlyCollection<DestinyProgressionRewardItemState> RewardItemStates { get; init; }
 
         [JsonConstructor]
         internal DestinyProgression(uint progressionHash, int dailyProgress, int dailyLimit, int weeklyProgress, int weeklyLimit,

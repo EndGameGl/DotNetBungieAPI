@@ -6,8 +6,8 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyMilestoneVendor
     {
-        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; }
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> PreviewItem { get; }
+        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; init; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> PreviewItem { get; init; }
 
         [JsonConstructor]
         internal DestinyMilestoneVendor(uint vendorHash, uint? previewItemHash)

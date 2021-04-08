@@ -1,0 +1,44 @@
+﻿using NetBungieAPI.Attributes;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
+using System.Text.Json.Serialization;
+
+namespace NetBungieAPI.Models.Destiny.Definitions.Bonds
+{
+    [DestinyDefinition(DefinitionsEnum.DestinyBondDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    public sealed record DestinyBondDefinition : IDestinyDefinition, IDeepEquatable<DestinyBondDefinition>
+    {
+        [JsonPropertyName("displayProperties")]
+        public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+
+        [JsonPropertyName("providedUnlockHash")]
+        public uint ProvidedUnlockHash { get; init; }
+
+        [JsonPropertyName("providedUnlockValueHash")]
+        public uint ProvidedUnlockValueHash { get; init; }
+
+        [JsonPropertyName("blacklisted")]
+        public bool Blacklisted { get; init; }
+
+        [JsonPropertyName("hash")]
+        public uint Hash { get; init; }
+
+        [JsonPropertyName("index")]
+        public int Index { get; init; }
+
+        [JsonPropertyName("redacted")]
+        public bool Redacted { get; init; }
+
+        public bool DeepEquals(DestinyBondDefinition other)
+        {
+            return other != null &&
+                   DisplayProperties.DeepEquals(other.DisplayProperties) &&
+                   ProvidedUnlockHash == other.ProvidedUnlockHash &&
+                   ProvidedUnlockValueHash == other.ProvidedUnlockValueHash &&
+                   Blacklisted == other.Blacklisted &&
+                   Hash == other.Hash &&
+                   Index == other.Index &&
+                   Redacted == other.Redacted;
+        }
+        public void MapValues() { return; }
+    }
+}

@@ -7,9 +7,9 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyHistoricalStatsPeriodGroup
     {
-        public DateTime Period { get; }
-        public DestinyHistoricalStatsActivity ActivityDetails { get; }
-        public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> Values { get; }
+        public DateTime Period { get; init; }
+        public DestinyHistoricalStatsActivity ActivityDetails { get; init; }
+        public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> Values { get; init; }
 
         [JsonConstructor]
         internal DestinyHistoricalStatsPeriodGroup(DateTime period, DestinyHistoricalStatsActivity activityDetails, 

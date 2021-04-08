@@ -10,16 +10,16 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
     /// </summary>
     public class DestinyObjectiveProgress
     {
-        public DefinitionHashPointer<DestinyObjectiveDefinition> Objective { get; }
-        public DefinitionHashPointer<DestinyDestinationDefinition> Destination { get; }
-        public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; }
+        public DefinitionHashPointer<DestinyObjectiveDefinition> Objective { get; init; }
+        public DefinitionHashPointer<DestinyDestinationDefinition> Destination { get; init; }
+        public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; init; }
         /// <summary>
         /// If progress has been made, and the progress can be measured numerically, this will be the value of that progress. You can compare it to the DestinyObjectiveDefinition.completionValue property for current vs. upper bounds, and use DestinyObjectiveDefinition.valueStyle to determine how this should be rendered. Note that progress, in Destiny 2, need not be a literal numeric progression. It could be one of a number of possible values, even a Timestamp. Always examine DestinyObjectiveDefinition.valueStyle before rendering progress.
         /// </summary>
-        public int? Progress { get; }
-        public int CompletionValue { get; }
-        public bool IsComplete { get; }
-        public bool IsVisible { get; }
+        public int? Progress { get; init; }
+        public int CompletionValue { get; init; }
+        public bool IsComplete { get; init; }
+        public bool IsVisible { get; init; }
 
         [JsonConstructor]
         internal DestinyObjectiveProgress(uint objectiveHash, uint? destinationHash, uint? activityHash, int? progress, int completionValue,

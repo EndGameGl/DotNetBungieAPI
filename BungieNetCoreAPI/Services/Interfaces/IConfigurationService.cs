@@ -6,7 +6,7 @@ namespace NetBungieAPI.Services.Interfaces
 {
     public interface IConfigurationService
     {
-        BungieClientSettings Settings { get; }
+        BungieClientSettings Settings { get; init; }
         void Configure(Action<BungieClientSettings> configure);
     }
 }

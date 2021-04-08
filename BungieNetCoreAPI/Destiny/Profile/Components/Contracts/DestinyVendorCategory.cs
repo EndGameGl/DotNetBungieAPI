@@ -5,8 +5,8 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyVendorCategory
     {
-        public int DisplayCategoryIndex { get; }
-        public ReadOnlyCollection<int> ItemIndexes { get; }
+        public int DisplayCategoryIndex { get; init; }
+        public ReadOnlyCollection<int> ItemIndexes { get; init; }
 
         [JsonConstructor]
         internal DestinyVendorCategory(int displayCategoryIndex, int[] itemIndexes)

@@ -7,12 +7,12 @@ namespace NetBungieAPI.Destiny.Responses
 {
     public class GetPublicMilestonesResponse
     {
-        public DefinitionHashPointer<DestinyMilestoneDefinition> Milestone { get; }
-        public List<PublicMilestoneAvailableQuest> AvailableQuests { get; }
-        public List<PublicMilestoneActivity> Activities { get; }
-        public int Order { get; }
-        public DateTime? StartDate { get; }
-        public DateTime? EndDate { get; }
+        public DefinitionHashPointer<DestinyMilestoneDefinition> Milestone { get; init; }
+        public List<PublicMilestoneAvailableQuest> AvailableQuests { get; init; }
+        public List<PublicMilestoneActivity> Activities { get; init; }
+        public int Order { get; init; }
+        public DateTime? StartDate { get; init; }
+        public DateTime? EndDate { get; init; }
 
         [JsonConstructor]
         private GetPublicMilestonesResponse(uint milestoneHash, List<PublicMilestoneAvailableQuest> availableQuests, int order, DateTime? startDate, DateTime? endDate,

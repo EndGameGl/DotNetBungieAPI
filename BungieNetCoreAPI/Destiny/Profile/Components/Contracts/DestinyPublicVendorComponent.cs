@@ -6,9 +6,9 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyPublicVendorComponent
     {
-        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; }
-        public DateTime NextRefreshDate { get; }
-        public bool IsEnabled { get; }
+        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; init; }
+        public DateTime NextRefreshDate { get; init; }
+        public bool IsEnabled { get; init; }
 
         [JsonConstructor]
         internal DestinyPublicVendorComponent(uint vendorHash, DateTime nextRefreshDate, bool enabled)

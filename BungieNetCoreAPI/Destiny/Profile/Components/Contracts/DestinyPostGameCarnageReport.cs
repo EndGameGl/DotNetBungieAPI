@@ -6,12 +6,12 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyPostGameCarnageReport
     {
-        public int Standing { get; }
-        public DestinyHistoricalStatsValue Score { get; }
-        public DestinyPlayer Player { get; }
-        public long CharacterId { get; }
-        public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> Values { get; }
-        public DestinyPostGameCarnageReportExtendedData ExtendedData { get; }
+        public int Standing { get; init; }
+        public DestinyHistoricalStatsValue Score { get; init; }
+        public DestinyPlayer Player { get; init; }
+        public long CharacterId { get; init; }
+        public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> Values { get; init; }
+        public DestinyPostGameCarnageReportExtendedData ExtendedData { get; init; }
 
         [JsonConstructor]
         internal DestinyPostGameCarnageReport(int standing, DestinyHistoricalStatsValue score, DestinyPlayer player, long characterId,

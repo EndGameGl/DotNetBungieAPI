@@ -5,7 +5,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyVendorGroupComponent
     {
-        public ReadOnlyCollection<DestinyVendorGroup> Groups { get; }
+        public ReadOnlyCollection<DestinyVendorGroup> Groups { get; init; }
         [JsonConstructor]
         internal DestinyVendorGroupComponent(DestinyVendorGroup[] groups)
         {

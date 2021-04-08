@@ -6,12 +6,12 @@ namespace NetBungieAPI.Responses
 {
     public class SearchResultOfDestinyEntitySearch
     {
-        public ReadOnlyCollection<DestinyEntitySearchResultItem> Results { get; }
-        public int TotalResults { get; }
-        public bool HasMore { get; }
-        public PagedQuery Query { get; }
-        public string ReplacementContinuationToken { get; }
-        public bool UseTotalResults { get; }
+        public ReadOnlyCollection<DestinyEntitySearchResultItem> Results { get; init; }
+        public int TotalResults { get; init; }
+        public bool HasMore { get; init; }
+        public PagedQuery Query { get; init; }
+        public string ReplacementContinuationToken { get; init; }
+        public bool UseTotalResults { get; init; }
 
         [JsonConstructor]
         internal SearchResultOfDestinyEntitySearch(DestinyEntitySearchResultItem[] results, int totalResults, bool hasMore, PagedQuery query, 

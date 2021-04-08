@@ -5,8 +5,8 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyStat
     {
-        public DefinitionHashPointer<DestinyStatDefinition> Stat { get; }
-        public int Value { get; }
+        public DefinitionHashPointer<DestinyStatDefinition> Stat { get; init; }
+        public int Value { get; init; }
 
         [JsonConstructor]
         internal DestinyStat(uint statHash, int value)

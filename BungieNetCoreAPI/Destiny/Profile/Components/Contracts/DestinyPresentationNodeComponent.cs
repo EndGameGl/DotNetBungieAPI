@@ -4,11 +4,11 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyPresentationNodeComponent
     {
-        public DestinyPresentationNodeState State { get; }
-        public DestinyObjectiveProgress Objective { get; }
-        public int ProgressValue { get; }
-        public int CompletionValue { get; }
-        public int? RecordCategoryScore { get; }
+        public DestinyPresentationNodeState State { get; init; }
+        public DestinyObjectiveProgress Objective { get; init; }
+        public int ProgressValue { get; init; }
+        public int CompletionValue { get; init; }
+        public int? RecordCategoryScore { get; init; }
 
         [JsonConstructor]
         internal DestinyPresentationNodeComponent(DestinyPresentationNodeState state, DestinyObjectiveProgress objective, int progressValue, int completionValue,

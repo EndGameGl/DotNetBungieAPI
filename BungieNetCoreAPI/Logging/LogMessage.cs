@@ -4,9 +4,9 @@ namespace NetBungieAPI.Logging
 {
     public class LogMessage
     {
-        public DateTime Time { get; }
-        public string Message { get; }
-        public LogType Type { get; }
+        public DateTime Time { get; init; }
+        public string Message { get; init; }
+        public LogType Type { get; init; }
 
         internal LogMessage(DateTime time, string message, LogType type)
         {

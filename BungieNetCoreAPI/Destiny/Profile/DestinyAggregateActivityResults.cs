@@ -6,7 +6,7 @@ namespace NetBungieAPI.Destiny.Profile
 {
     public class DestinyAggregateActivityResults
     {
-        public ReadOnlyCollection<DestinyAggregateActivityStats> Activities { get; }
+        public ReadOnlyCollection<DestinyAggregateActivityStats> Activities { get; init; }
         [JsonConstructor]
         internal DestinyAggregateActivityResults(DestinyAggregateActivityStats[] activities)
         {

@@ -7,8 +7,8 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyVendorGroup
     {
-        public DefinitionHashPointer<DestinyVendorGroupDefinition> VendorGroup { get; }
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyVendorDefinition>> Vendors { get; }
+        public DefinitionHashPointer<DestinyVendorGroupDefinition> VendorGroup { get; init; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyVendorDefinition>> Vendors { get; init; }
         [JsonConstructor]
         internal DestinyVendorGroup(uint vendorGroupHash, uint[] vendorHashes)
         {

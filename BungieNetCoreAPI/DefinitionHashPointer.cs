@@ -1,11 +1,10 @@
-﻿using NetBungieAPI.Destiny;
-using NetBungieAPI.Destiny.Definitions;
-using NetBungieAPI.Repositories;
+﻿using NetBungieAPI.Repositories;
 using System;
 using System.Threading.Tasks;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
-using Newtonsoft.Json;
 using NetBungieAPI.Models;
+using NetBungieAPI.Models.Destiny;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI
 {
@@ -31,7 +30,7 @@ namespace NetBungieAPI
         private static readonly ILocalisedDestinyDefinitionRepositories _repository = StaticUnityContainer.GetDestinyDefinitionRepositories();
 
         public static DefinitionsEnum EnumValue { get; } = Enum.Parse<DefinitionsEnum>(typeof(T).Name);
-        public static DefinitionHashPointer<T> Empty { get; } = new DefinitionHashPointer<T>(null, EnumValue);
+        public static DefinitionHashPointer<T> Empty { get; } = new DefinitionHashPointer<T>(null);
 
         private bool _isMapped;
         private T _value;
@@ -55,18 +54,6 @@ namespace NetBungieAPI
         [JsonIgnore]
         public bool HasValidHash => Hash.HasValue && Hash.Value > 0;
 
-        /// <summary>
-        /// Class .ctor
-        /// </summary>
-        /// <param name="hash">Definition hash</param>
-        /// <param name="type">Definition type</param>
-        public DefinitionHashPointer(uint? hash, DefinitionsEnum type)
-        {
-            _value = default;
-            _isMapped = false;
-            Hash = hash;
-            Locale = _repository.CurrentLocaleLoadContext;
-        }
         public DefinitionHashPointer(uint? hash)
         {
             _value = default;

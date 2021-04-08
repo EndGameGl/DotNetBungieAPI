@@ -7,8 +7,8 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyHistoricalWeaponStats
     {
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> ItemReference { get; }
-        public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> Values { get; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> ItemReference { get; init; }
+        public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> Values { get; init; }
 
         [JsonConstructor]
         internal DestinyHistoricalWeaponStats(uint referenceId, Dictionary<string, DestinyHistoricalStatsValue> values)

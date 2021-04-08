@@ -41,7 +41,7 @@ namespace NetBungieAPI.Repositories
         /// <summary>
         /// Locale of this repository
         /// </summary>
-        public BungieLocales Locale { get; }
+        public BungieLocales Locale { get; init; }
         /// <summary>
         /// Class .ctor
         /// </summary>

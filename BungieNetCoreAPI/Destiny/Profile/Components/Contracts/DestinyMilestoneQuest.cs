@@ -9,10 +9,10 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
     /// </summary>
     public class DestinyMilestoneQuest
     {
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> QuestItem { get; }
-        public DestinyQuestStatus Status { get; }
-        public DestinyMilestoneActivity Activity { get; }
-        public ReadOnlyCollection<DestinyChallengeStatus> Challenges { get; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> QuestItem { get; init; }
+        public DestinyQuestStatus Status { get; init; }
+        public DestinyMilestoneActivity Activity { get; init; }
+        public ReadOnlyCollection<DestinyChallengeStatus> Challenges { get; init; }
 
         [JsonConstructor]
         internal DestinyMilestoneQuest(uint questItemHash, DestinyQuestStatus status, DestinyMilestoneActivity activity, 

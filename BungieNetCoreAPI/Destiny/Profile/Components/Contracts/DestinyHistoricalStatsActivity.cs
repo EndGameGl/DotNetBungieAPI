@@ -1,6 +1,6 @@
-﻿using NetBungieAPI.Destiny.Definitions.Activities;
-using NetBungieAPI.Destiny.Definitions.ActivityModes;
-using NetBungieAPI.Models;
+﻿using NetBungieAPI.Models;
+using NetBungieAPI.Models.Destiny.Definitions.Activities;
+using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
@@ -8,13 +8,13 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyHistoricalStatsActivity
     {
-        public DefinitionHashPointer<DestinyActivityDefinition> ActivityReference { get; }
-        public DefinitionHashPointer<DestinyActivityDefinition> DirectorActivity { get; }
-        public long InstanceId { get; }
-        public DestinyActivityModeType Mode { get; }
-        public ReadOnlyCollection<DestinyActivityModeType> Modes { get; }
-        public bool IsPrivate { get; }
-        public BungieMembershipType MembershipType { get; }
+        public DefinitionHashPointer<DestinyActivityDefinition> ActivityReference { get; init; }
+        public DefinitionHashPointer<DestinyActivityDefinition> DirectorActivity { get; init; }
+        public long InstanceId { get; init; }
+        public DestinyActivityModeType Mode { get; init; }
+        public ReadOnlyCollection<DestinyActivityModeType> Modes { get; init; }
+        public bool IsPrivate { get; init; }
+        public BungieMembershipType MembershipType { get; init; }
 
         [JsonConstructor]
         internal DestinyHistoricalStatsActivity(uint referenceId, uint directorActivityHash, long instanceId, DestinyActivityModeType mode,

@@ -4,9 +4,9 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyProfileTransitoryJoinability
     {
-        public int OpenSlots { get; }
-        public DestinyGamePrivacySetting PrivacySetting { get; }
-        public DestinyJoinClosedReasons ClosedReasons { get; }
+        public int OpenSlots { get; init; }
+        public DestinyGamePrivacySetting PrivacySetting { get; init; }
+        public DestinyJoinClosedReasons ClosedReasons { get; init; }
 
         [JsonConstructor]
         internal DestinyProfileTransitoryJoinability(int openSlots, DestinyGamePrivacySetting privacySetting, DestinyJoinClosedReasons closedReasons)

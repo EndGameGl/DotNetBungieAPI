@@ -9,12 +9,12 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyProfileTransitoryTrackingEntry
     {
-        public DefinitionHashPointer<DestinyLocationDefinition> Location { get; }
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; }
-        public DefinitionHashPointer<DestinyObjectiveDefinition> Objective { get; }
-        public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; }
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> QuestlineItem { get; }
-        public DateTime? TrackedDate { get; }
+        public DefinitionHashPointer<DestinyLocationDefinition> Location { get; init; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; init; }
+        public DefinitionHashPointer<DestinyObjectiveDefinition> Objective { get; init; }
+        public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; init; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> QuestlineItem { get; init; }
+        public DateTime? TrackedDate { get; init; }
 
         [JsonConstructor]
         internal DestinyProfileTransitoryTrackingEntry(uint? locationHash, uint? itemHash, uint? objectiveHash, uint? activityHash, uint? questlineItemHash,

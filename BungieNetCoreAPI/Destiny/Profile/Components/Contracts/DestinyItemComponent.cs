@@ -9,22 +9,22 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyItemComponent
     {
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; }
-        public long? ItemInstanceId { get; }
-        public int Quantity { get; }
-        public ItemBindStatus BindStatus { get; }
-        public BucketItemLocation Location { get; }
-        public DefinitionHashPointer<DestinyInventoryBucketDefinition> Bucket { get; }
-        public TransferStatuses TransferStatus { get; }
-        public bool IsLockable { get; }
-        public ItemState State { get; }
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> OverrideStyleItem { get; }
-        public DateTime? ExpirationDate { get; }
-        public bool IsWrapper { get; }
-        public ReadOnlyCollection<int> TooltipNotificationIndexes { get; }
-        public DefinitionHashPointer<DestinyMetricDefinition> Metric { get; }
-        public DestinyObjectiveProgress MetricObjective { get; }
-        public int? VersionNumber { get; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; init; }
+        public long? ItemInstanceId { get; init; }
+        public int Quantity { get; init; }
+        public ItemBindStatus BindStatus { get; init; }
+        public BucketItemLocation Location { get; init; }
+        public DefinitionHashPointer<DestinyInventoryBucketDefinition> Bucket { get; init; }
+        public TransferStatuses TransferStatus { get; init; }
+        public bool IsLockable { get; init; }
+        public ItemState State { get; init; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> OverrideStyleItem { get; init; }
+        public DateTime? ExpirationDate { get; init; }
+        public bool IsWrapper { get; init; }
+        public ReadOnlyCollection<int> TooltipNotificationIndexes { get; init; }
+        public DefinitionHashPointer<DestinyMetricDefinition> Metric { get; init; }
+        public DestinyObjectiveProgress MetricObjective { get; init; }
+        public int? VersionNumber { get; init; }
 
         [JsonConstructor]
         internal DestinyItemComponent(uint itemHash, long? itemInstanceId, int quantity, ItemBindStatus bindStatus, BucketItemLocation location, uint bucketHash,

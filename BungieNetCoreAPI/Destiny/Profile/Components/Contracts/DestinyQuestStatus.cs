@@ -7,15 +7,15 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyQuestStatus
     {
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> Quest { get; }
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> Step { get; }
-        public ReadOnlyCollection<DestinyObjectiveProgress> StepObjectives { get; }
-        public bool IsTracked { get; }
-        public long ItemInstanceId { get; }
-        public bool IsCompleted { get; }
-        public bool IsRedeemed { get; }
-        public bool Started { get; }
-        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> Quest { get; init; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> Step { get; init; }
+        public ReadOnlyCollection<DestinyObjectiveProgress> StepObjectives { get; init; }
+        public bool IsTracked { get; init; }
+        public long ItemInstanceId { get; init; }
+        public bool IsCompleted { get; init; }
+        public bool IsRedeemed { get; init; }
+        public bool Started { get; init; }
+        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; init; }
 
         [JsonConstructor]
         internal DestinyQuestStatus(uint questHash, uint stepHash, DestinyObjectiveProgress[] stepObjectives, bool tracked, long itemInstanceId,

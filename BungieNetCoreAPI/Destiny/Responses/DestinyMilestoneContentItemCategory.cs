@@ -6,8 +6,8 @@ namespace NetBungieAPI.Destiny.Responses
 {
     public class DestinyMilestoneContentItemCategory
     {
-        public string Title { get; }
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> Items { get; }
+        public string Title { get; init; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> Items { get; init; }
 
         [JsonConstructor]
         internal DestinyMilestoneContentItemCategory(string title, uint[] itemHashes)

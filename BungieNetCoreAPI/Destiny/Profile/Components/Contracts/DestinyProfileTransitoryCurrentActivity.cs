@@ -5,12 +5,12 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyProfileTransitoryCurrentActivity
     {
-        public DateTime? StartTime { get; }
-        public DateTime? EndTime { get; }
-        public float Score { get; }
-        public float HighestOpposingFactionScore { get; }
-        public int NumberOfOpponents { get; }
-        public int NumberOfPlayers { get; }
+        public DateTime? StartTime { get; init; }
+        public DateTime? EndTime { get; init; }
+        public float Score { get; init; }
+        public float HighestOpposingFactionScore { get; init; }
+        public int NumberOfOpponents { get; init; }
+        public int NumberOfPlayers { get; init; }
 
         [JsonConstructor]
         internal DestinyProfileTransitoryCurrentActivity(DateTime? startTime, DateTime? endTime, float score, float highestOpposingFactionScore, 

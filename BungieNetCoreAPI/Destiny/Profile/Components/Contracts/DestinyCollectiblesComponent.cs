@@ -1,5 +1,5 @@
-﻿using NetBungieAPI.Destiny.Definitions.Collectibles;
-using NetBungieAPI.Destiny.Definitions.PresentationNodes;
+﻿using NetBungieAPI.Models.Destiny.Definitions.Collectibles;
+using NetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,9 +8,9 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyCollectiblesComponent
     {
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyCollectibleDefinition>, DestinyCollectibleComponent> Collectibles { get; }
-        public DefinitionHashPointer<DestinyPresentationNodeDefinition> CollectionCategoriesRootNode { get; }
-        public DefinitionHashPointer<DestinyPresentationNodeDefinition> CollectionBadgesRootNode { get; }
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyCollectibleDefinition>, DestinyCollectibleComponent> Collectibles { get; init; }
+        public DefinitionHashPointer<DestinyPresentationNodeDefinition> CollectionCategoriesRootNode { get; init; }
+        public DefinitionHashPointer<DestinyPresentationNodeDefinition> CollectionBadgesRootNode { get; init; }
 
         [JsonConstructor]
         internal DestinyCollectiblesComponent(Dictionary<uint, DestinyCollectibleComponent> collectibles, uint collectionCategoriesRootNodeHash,

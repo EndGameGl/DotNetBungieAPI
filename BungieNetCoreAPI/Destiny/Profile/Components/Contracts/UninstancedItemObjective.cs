@@ -5,11 +5,11 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class UninstancedItemObjective
     {
-        public DefinitionHashPointer<DestinyObjectiveDefinition> Objective { get; }
-        public double Progress { get; }
-        public double CompletionValue { get; }
-        public bool IsComplete { get; }
-        public bool IsVisible { get; }
+        public DefinitionHashPointer<DestinyObjectiveDefinition> Objective { get; init; }
+        public double Progress { get; init; }
+        public double CompletionValue { get; init; }
+        public bool IsComplete { get; init; }
+        public bool IsVisible { get; init; }
 
         [JsonConstructor]
         internal UninstancedItemObjective(uint objectiveHash, double progress, double completionValue, bool complete, bool visible)

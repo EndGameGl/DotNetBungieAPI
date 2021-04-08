@@ -7,7 +7,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyItemStatsComponent
     {
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, DestinyStat> Stats { get; }
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, DestinyStat> Stats { get; init; }
         [JsonConstructor]
         internal DestinyItemStatsComponent(Dictionary<uint, DestinyStat> stats)
         {

@@ -15,7 +15,7 @@ namespace NetBungieAPI.Destiny.Profile
         private DestinyItemSocketsComponent _sockets;
         private DestinyItemReusablePlugsComponent _reusablePlugs;
         private DestinyItemPlugObjectivesComponent _plugObjectives;
-        public long? CharacterId { get; }
+        public long? CharacterId { get; init; }
 
         [JsonConstructor]
         internal DestinyComponentItemResponse(

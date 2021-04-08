@@ -12,10 +12,10 @@ namespace NetBungieAPI.Services
 {
     public class DefinitionAssemblyData : IDefinitionAssemblyData
     {
-        public Dictionary<DefinitionsEnum, DefinitionUseRule> DefinitionsToTypeMapping { get; }
-        public Dictionary<Type, DefinitionsEnum> TypeToEnumMapping { get; }
-        public Dictionary<string, DefinitionsEnum> NameToEnumMapping { get; }
-        public Dictionary<DefinitionsEnum, string> EnumToNameMapping { get; }
+        public Dictionary<DefinitionsEnum, DefinitionUseRule> DefinitionsToTypeMapping { get; init; }
+        public Dictionary<Type, DefinitionsEnum> TypeToEnumMapping { get; init; }
+        public Dictionary<string, DefinitionsEnum> NameToEnumMapping { get; init; }
+        public Dictionary<DefinitionsEnum, string> EnumToNameMapping { get; init; }
         public DefinitionAssemblyData()
         {
             DefinitionsToTypeMapping = new Dictionary<DefinitionsEnum, DefinitionUseRule>();

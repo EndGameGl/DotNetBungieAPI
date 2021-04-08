@@ -1,12 +1,12 @@
 ﻿using NetBungieAPI.Models.Applications;
 using NetBungieAPI.Attributes;
-using NetBungieAPI.Destiny;
 using NetBungieAPI.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using NetBungieAPI.Models;
+using NetBungieAPI.Models.Destiny;
 
 namespace NetBungieAPI.Clients.Settings
 {

@@ -5,10 +5,10 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyPerkReference
     {
-        public DefinitionHashPointer<DestinySandboxPerkDefinition> Perk { get; }
-        public string IconPath { get; }
-        public bool IsActive { get; }
-        public bool IsVisible { get; }
+        public DefinitionHashPointer<DestinySandboxPerkDefinition> Perk { get; init; }
+        public string IconPath { get; init; }
+        public bool IsActive { get; init; }
+        public bool IsVisible { get; init; }
 
         [JsonConstructor]
         internal DestinyPerkReference(uint perkHash, string iconPath, bool isActive, bool visible)

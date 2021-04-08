@@ -4,8 +4,8 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyHistoricalStatsValuePair
     {
-        public double Value { get; }
-        public string DisplayValue { get; }
+        public double Value { get; init; }
+        public string DisplayValue { get; init; }
 
         [JsonConstructor]
         internal DestinyHistoricalStatsValuePair(double value, string displayValue)

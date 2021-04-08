@@ -5,7 +5,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyItemSocketsComponent
     {
-        public ReadOnlyCollection<DestinyItemSocketState> Sockets { get; }
+        public ReadOnlyCollection<DestinyItemSocketState> Sockets { get; init; }
 
         [JsonConstructor]
         internal DestinyItemSocketsComponent(DestinyItemSocketState[] sockets)

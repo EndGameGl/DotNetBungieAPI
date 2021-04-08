@@ -5,10 +5,10 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyProfileTransitoryPartyMember
     {
-        public long MembershipId { get; }
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> Emblem { get; }
-        public string DisplayName { get; }
-        public DestinyPartyMemberStates Status { get; }
+        public long MembershipId { get; init; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> Emblem { get; init; }
+        public string DisplayName { get; init; }
+        public DestinyPartyMemberStates Status { get; init; }
 
         [JsonConstructor]
         internal DestinyProfileTransitoryPartyMember(long membershipId, uint emblemHash, string displayName, DestinyPartyMemberStates status)

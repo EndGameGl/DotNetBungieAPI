@@ -1,5 +1,5 @@
-﻿using NetBungieAPI.Destiny.Definitions.PresentationNodes;
-using NetBungieAPI.Destiny.Definitions.Records;
+﻿using NetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
+using NetBungieAPI.Models.Destiny.Definitions.Records;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,10 +8,10 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyCharacterRecordsComponent
     {
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyRecordDefinition>> FeaturedRecords { get; }
-        public ReadOnlyDictionary<uint, DestinyRecordComponent> Records { get; }
-        public DefinitionHashPointer<DestinyPresentationNodeDefinition> RecordCategoriesRootNode { get; }
-        public DefinitionHashPointer<DestinyPresentationNodeDefinition> RecordSealsRootNode { get; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyRecordDefinition>> FeaturedRecords { get; init; }
+        public ReadOnlyDictionary<uint, DestinyRecordComponent> Records { get; init; }
+        public DefinitionHashPointer<DestinyPresentationNodeDefinition> RecordCategoriesRootNode { get; init; }
+        public DefinitionHashPointer<DestinyPresentationNodeDefinition> RecordSealsRootNode { get; init; }
 
         [JsonConstructor]
         internal DestinyCharacterRecordsComponent(uint[] featuredRecordHashes, Dictionary<uint, DestinyRecordComponent> records, uint recordCategoriesRootNodeHash,

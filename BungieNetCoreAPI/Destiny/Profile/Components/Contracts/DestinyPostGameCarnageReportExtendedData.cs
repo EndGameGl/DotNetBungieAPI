@@ -6,8 +6,8 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyPostGameCarnageReportExtendedData
     {
-        public ReadOnlyCollection<DestinyHistoricalWeaponStats> Weapons { get; }
-        public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> Values { get; }
+        public ReadOnlyCollection<DestinyHistoricalWeaponStats> Weapons { get; init; }
+        public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> Values { get; init; }
 
         [JsonConstructor]
         internal DestinyPostGameCarnageReportExtendedData(DestinyHistoricalWeaponStats[] weapons, Dictionary<string, DestinyHistoricalStatsValue> values)

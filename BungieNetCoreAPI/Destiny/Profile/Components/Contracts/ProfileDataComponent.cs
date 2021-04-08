@@ -8,13 +8,13 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class ProfileDataComponent
     {
-        public UserInfoCard UserInfo { get; }
-        public DateTime DateLastPlayed { get; }
-        public DestinyGameVersions VersionsOwned { get; }
-        public ReadOnlyCollection<long> CharacterIds { get; }
-        public ReadOnlyCollection<DefinitionHashPointer<DestinySeasonDefinition>> Seasons { get; }
-        public DefinitionHashPointer<DestinySeasonDefinition> CurrentSeason { get; }
-        public int CurrentSeasonRewardPowerCap { get; }
+        public UserInfoCard UserInfo { get; init; }
+        public DateTime DateLastPlayed { get; init; }
+        public DestinyGameVersions VersionsOwned { get; init; }
+        public ReadOnlyCollection<long> CharacterIds { get; init; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinySeasonDefinition>> Seasons { get; init; }
+        public DefinitionHashPointer<DestinySeasonDefinition> CurrentSeason { get; init; }
+        public int CurrentSeasonRewardPowerCap { get; init; }
 
         [JsonConstructor]
         internal ProfileDataComponent(UserInfoCard userInfo, DateTime dateLastPlayed, DestinyGameVersions versionsOwned, long[] characterIds,

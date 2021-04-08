@@ -8,7 +8,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyItemPlugObjectivesComponent
     {
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, ReadOnlyCollection<DestinyObjectiveProgress>> ObjectivesPerPlug { get; }
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, ReadOnlyCollection<DestinyObjectiveProgress>> ObjectivesPerPlug { get; init; }
 
         [JsonConstructor]
         internal DestinyItemPlugObjectivesComponent(Dictionary<uint, DestinyObjectiveProgress[]> objectivesPerPlug)

@@ -1,8 +1,8 @@
-﻿using NetBungieAPI.Destiny.Definitions.Checklists;
-using NetBungieAPI.Destiny.Definitions.Factions;
-using NetBungieAPI.Destiny.Definitions.InventoryItems;
-using NetBungieAPI.Destiny.Definitions.Milestones;
-using NetBungieAPI.Destiny.Definitions.Progressions;
+﻿using NetBungieAPI.Models.Destiny.Definitions.Checklists;
+using NetBungieAPI.Models.Destiny.Definitions.Factions;
+using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
+using NetBungieAPI.Models.Destiny.Definitions.Milestones;
+using NetBungieAPI.Models.Destiny.Definitions.Progressions;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,13 +12,13 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyCharacterProgressionComponent
     {
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyProgressionDefinition>, DestinyProgression> Progressions { get; }
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyFactionDefinition>, DestinyFactionProgression> Factions { get; }
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyMilestoneDefinition>, DestinyMilestone> Milestones { get; }
-        public ReadOnlyCollection<DestinyQuestStatus> Quests { get; }
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, ReadOnlyCollection<UninstancedItemObjective>> UninstancedItemObjectives { get; }
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyChecklistDefinition>, ReadOnlyDictionary<uint, bool>> Checklists { get; }
-        public DestinyArtifactCharacterScoped SeasonalArtifact { get; }
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyProgressionDefinition>, DestinyProgression> Progressions { get; init; }
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyFactionDefinition>, DestinyFactionProgression> Factions { get; init; }
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyMilestoneDefinition>, DestinyMilestone> Milestones { get; init; }
+        public ReadOnlyCollection<DestinyQuestStatus> Quests { get; init; }
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, ReadOnlyCollection<UninstancedItemObjective>> UninstancedItemObjectives { get; init; }
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyChecklistDefinition>, ReadOnlyDictionary<uint, bool>> Checklists { get; init; }
+        public DestinyArtifactCharacterScoped SeasonalArtifact { get; init; }
 
         [JsonConstructor]
         internal DestinyCharacterProgressionComponent(Dictionary<uint, DestinyProgression> progressions, Dictionary<uint, DestinyFactionProgression> factions,

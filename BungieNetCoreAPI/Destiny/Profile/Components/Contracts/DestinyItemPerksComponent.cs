@@ -5,7 +5,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyItemPerksComponent
     {
-        public ReadOnlyCollection<DestinyPerkReference> Perks { get; }
+        public ReadOnlyCollection<DestinyPerkReference> Perks { get; init; }
 
         [JsonConstructor]
         internal DestinyItemPerksComponent(DestinyPerkReference[] perks)

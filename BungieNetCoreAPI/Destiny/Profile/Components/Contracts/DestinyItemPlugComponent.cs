@@ -6,12 +6,12 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyItemPlugComponent
     {
-        public ReadOnlyCollection<DestinyObjectiveProgress> PlugObjectives { get; }
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> PlugItem { get; }
-        public bool CanInsert { get; }
-        public bool IsEnabled { get; }
-        public ReadOnlyCollection<int> InsertFailIndexes { get; }
-        public ReadOnlyCollection<int> EnableFailIndexes { get; }
+        public ReadOnlyCollection<DestinyObjectiveProgress> PlugObjectives { get; init; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> PlugItem { get; init; }
+        public bool CanInsert { get; init; }
+        public bool IsEnabled { get; init; }
+        public ReadOnlyCollection<int> InsertFailIndexes { get; init; }
+        public ReadOnlyCollection<int> EnableFailIndexes { get; init; }
 
         [JsonConstructor]
         internal DestinyItemPlugComponent(DestinyObjectiveProgress[] plugObjectives, uint plugItemHash, bool canInsert, bool enabled, int[] insertFailIndexes,

@@ -6,7 +6,7 @@ namespace NetBungieAPI.Destiny.Profile
 {
     public class DestinyHistoricalWeaponStatsData
     {
-        public ReadOnlyCollection<DestinyHistoricalWeaponStats> Weapons { get; }
+        public ReadOnlyCollection<DestinyHistoricalWeaponStats> Weapons { get; init; }
 
         [JsonConstructor]
         internal DestinyHistoricalWeaponStatsData(DestinyHistoricalWeaponStats[] weapons)

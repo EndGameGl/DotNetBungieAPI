@@ -1,5 +1,5 @@
-﻿using NetBungieAPI.Destiny.Definitions.Activities;
-using NetBungieAPI.Destiny.Definitions.ActivityModes;
+﻿using NetBungieAPI.Models.Destiny.Definitions.Activities;
+using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
@@ -8,15 +8,15 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyCharacterActivitiesComponent
     {
-        public DateTime DateActivityStarted { get; }
-        public ReadOnlyCollection<DestinyActivity> AvailableActivities { get; }
-        public DefinitionHashPointer<DestinyActivityDefinition> CurrentActivity { get; }
-        public DefinitionHashPointer<DestinyActivityModeDefinition> CurrentActivityMode { get; }
-        public DestinyActivityModeType? CurrentActivityModeType { get; }
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>> CurrentActivityModes { get; }
-        public ReadOnlyCollection<DestinyActivityModeType> CurrentActivityModeTypes { get; }
-        public DefinitionHashPointer<DestinyActivityDefinition> CurrentPlaylistActivity { get; }
-        public DefinitionHashPointer<DestinyActivityDefinition> LastCompletedStory { get; }
+        public DateTime DateActivityStarted { get; init; }
+        public ReadOnlyCollection<DestinyActivity> AvailableActivities { get; init; }
+        public DefinitionHashPointer<DestinyActivityDefinition> CurrentActivity { get; init; }
+        public DefinitionHashPointer<DestinyActivityModeDefinition> CurrentActivityMode { get; init; }
+        public DestinyActivityModeType? CurrentActivityModeType { get; init; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>> CurrentActivityModes { get; init; }
+        public ReadOnlyCollection<DestinyActivityModeType> CurrentActivityModeTypes { get; init; }
+        public DefinitionHashPointer<DestinyActivityDefinition> CurrentPlaylistActivity { get; init; }
+        public DefinitionHashPointer<DestinyActivityDefinition> LastCompletedStory { get; init; }
 
         [JsonConstructor]
         internal DestinyCharacterActivitiesComponent(DateTime dateActivityStarted, DestinyActivity[] availableActivities, uint currentActivityHash,

@@ -8,14 +8,14 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyProfileRecordsComponent
     {
-        public int Score { get; }
-        public int ActiveScore { get; }
-        public int LegacyScore { get; }
-        public int LifetimeScore { get; }
-        public DefinitionHashPointer<DestinyRecordDefinition> TrackedRecord { get; }
-        public ReadOnlyDictionary<uint, DestinyRecordComponent> Records { get; }
-        public DefinitionHashPointer<DestinyPresentationNodeDefinition> RecordCategoriesRootNode { get; }
-        public DefinitionHashPointer<DestinyPresentationNodeDefinition> RecordSealsRootNode { get; }
+        public int Score { get; init; }
+        public int ActiveScore { get; init; }
+        public int LegacyScore { get; init; }
+        public int LifetimeScore { get; init; }
+        public DefinitionHashPointer<DestinyRecordDefinition> TrackedRecord { get; init; }
+        public ReadOnlyDictionary<uint, DestinyRecordComponent> Records { get; init; }
+        public DefinitionHashPointer<DestinyPresentationNodeDefinition> RecordCategoriesRootNode { get; init; }
+        public DefinitionHashPointer<DestinyPresentationNodeDefinition> RecordSealsRootNode { get; init; }
 
         [JsonConstructor]
         internal DestinyProfileRecordsComponent(int score, int activeScore, int legacyScore, int lifetimeScore, uint? trackedRecordHash,

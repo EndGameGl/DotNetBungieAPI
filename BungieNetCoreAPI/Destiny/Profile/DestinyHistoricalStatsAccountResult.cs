@@ -6,9 +6,9 @@ namespace NetBungieAPI.Destiny.Profile
 {
     public class DestinyHistoricalStatsAccountResult
     {
-        public DestinyHistoricalStatsWithMerged MergedDeletedCharacters { get; }
-        public DestinyHistoricalStatsWithMerged MergedAllCharacters { get; }
-        public ReadOnlyCollection<DestinyHistoricalStatsPerCharacter> Characters { get; }
+        public DestinyHistoricalStatsWithMerged MergedDeletedCharacters { get; init; }
+        public DestinyHistoricalStatsWithMerged MergedAllCharacters { get; init; }
+        public ReadOnlyCollection<DestinyHistoricalStatsPerCharacter> Characters { get; init; }
 
         [JsonConstructor]
         internal DestinyHistoricalStatsAccountResult(

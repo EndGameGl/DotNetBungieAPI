@@ -5,18 +5,18 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyCharacterCustomization
     {
-        public uint Personality { get; }
-        public uint Face { get; }
-        public uint SkinColor { get; }
-        public uint LipColor { get; }
-        public uint EyeColor { get; }
-        public ReadOnlyCollection<uint> HairColors { get; }
-        public ReadOnlyCollection<uint> FeatureColors { get; }
-        public uint DecalColor { get; }
-        public bool WearHelmet { get; }
-        public int HairIndex { get; }
-        public int FeatureIndex { get; }
-        public int DecalIndex { get; }
+        public uint Personality { get; init; }
+        public uint Face { get; init; }
+        public uint SkinColor { get; init; }
+        public uint LipColor { get; init; }
+        public uint EyeColor { get; init; }
+        public ReadOnlyCollection<uint> HairColors { get; init; }
+        public ReadOnlyCollection<uint> FeatureColors { get; init; }
+        public uint DecalColor { get; init; }
+        public bool WearHelmet { get; init; }
+        public int HairIndex { get; init; }
+        public int FeatureIndex { get; init; }
+        public int DecalIndex { get; init; }
 
         [JsonConstructor]
         internal DestinyCharacterCustomization(uint personality, uint face, uint skinColor, uint lipColor, uint eyeColor, uint[] hairColors,

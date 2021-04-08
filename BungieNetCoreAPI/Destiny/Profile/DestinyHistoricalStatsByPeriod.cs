@@ -7,12 +7,12 @@ namespace NetBungieAPI.Destiny.Profile
 {
     public class DestinyHistoricalStatsByPeriod
     {
-        public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> AllTime { get; }
-        public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> AllTimeTier1 { get; }
-        public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> AllTimeTier2 { get; }
-        public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> AllTimeTier3 { get; }
-        public ReadOnlyCollection<DestinyHistoricalStatsPeriodGroup> Daily { get; }
-        public ReadOnlyCollection<DestinyHistoricalStatsPeriodGroup> Monthly { get; }
+        public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> AllTime { get; init; }
+        public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> AllTimeTier1 { get; init; }
+        public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> AllTimeTier2 { get; init; }
+        public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> AllTimeTier3 { get; init; }
+        public ReadOnlyCollection<DestinyHistoricalStatsPeriodGroup> Daily { get; init; }
+        public ReadOnlyCollection<DestinyHistoricalStatsPeriodGroup> Monthly { get; init; }
 
         [JsonConstructor]
         internal DestinyHistoricalStatsByPeriod(

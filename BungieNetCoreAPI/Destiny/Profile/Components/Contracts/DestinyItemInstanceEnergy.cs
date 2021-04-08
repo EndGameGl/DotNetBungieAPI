@@ -6,11 +6,11 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyItemInstanceEnergy
     {
-        public DefinitionHashPointer<DestinyEnergyTypeDefinition> EnergyType { get; }
-        public DestinyEnergyType EnergyTypeEnumValue { get; }
-        public int EnergyCapacity { get; }
-        public int EnergyUsed { get; }
-        public int EnergyUnused { get; }
+        public DefinitionHashPointer<DestinyEnergyTypeDefinition> EnergyType { get; init; }
+        public DestinyEnergyType EnergyTypeEnumValue { get; init; }
+        public int EnergyCapacity { get; init; }
+        public int EnergyUsed { get; init; }
+        public int EnergyUnused { get; init; }
 
         [JsonConstructor]
         internal DestinyItemInstanceEnergy(uint energyTypeHash, DestinyEnergyType energyType, int energyCapacity, int energyUsed, int energyUnused)
