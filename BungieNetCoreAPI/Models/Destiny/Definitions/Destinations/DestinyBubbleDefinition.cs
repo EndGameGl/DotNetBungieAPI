@@ -1,27 +1,24 @@
-﻿using Newtonsoft.Json;
+﻿using NetBungieAPI.Models.Destiny.Definitions.Common;
+using System.Text.Json.Serialization;
 
-namespace NetBungieAPI.Destiny.Definitions.Destinations
+namespace NetBungieAPI.Models.Destiny.Definitions.Destinations
 {
     /// <summary>
     /// Basic identifying data about the bubble.
     /// </summary>
-    public class DestinationBubbleEntry : IDeepEquatable<DestinationBubbleEntry>
+    public sealed record DestinyBubbleDefinition : IDeepEquatable<DestinyBubbleDefinition>
     {
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
 
-        [JsonConstructor]
-        internal DestinationBubbleEntry(DestinyDisplayPropertiesDefinition displayProperties, uint hash)
-        {
-            DisplayProperties = displayProperties;
-            Hash = hash;
-        }
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}";
         }
 
-        public bool DeepEquals(DestinationBubbleEntry other)
+        public bool DeepEquals(DestinyBubbleDefinition other)
         {
             return other != null &&
                 DisplayProperties.DeepEquals(other.DisplayProperties) &&

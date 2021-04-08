@@ -1,7 +1,9 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
-using System;
+using NetBungieAPI.Models.Destiny.Definitions.Activities;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
+using NetBungieAPI.Models.Destiny.Definitions.Places;
 using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Destinations
 {
@@ -13,46 +15,36 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Destinations
     [DestinyDefinition(DefinitionsEnum.DestinyDestinationDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public sealed record DestinyDestinationDefinition : IDestinyDefinition, IDeepEquatable<DestinyDestinationDefinition>
     {
-        /// <summary>
-        /// If the Destination has default Activity Graphs (i.e. "Map") that should be shown in the director, this is the list of those Graphs. At most, only one should be active at any given time for a Destination: these would represent, for example, different variants on a Map if the Destination is changing on a macro level based on game state.
-        /// </summary>
-        public ReadOnlyCollection<DestinationActivityGraphEntry> ActivityGraphEntries { get; init; }
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
-        /// <summary>
-        /// If this Destination has a default Free-Roam activity, this is the Activity. 
-        /// </summary>
-        public DefinitionHashPointer<DestinyActivityDefinition> DefaultFreeroamActivity { get; init; }
-        /// <summary>
-        /// This provides the unique identifiers for every bubble in the destination (only guaranteed unique within the destination), and any intrinsic properties of the bubble.
-        /// </summary>
-        public ReadOnlyCollection<DestinationBubbleEntry> Bubbles { get; init; }
-        [Obsolete("DEPRECATED - Just use bubbles, it now has this data.")]
-        public ReadOnlyCollection<DestinationBubbleSettingsEntry> BubbleSettings { get; init; }
         /// <summary>
         /// The place that "owns" this Destination.
         /// </summary>
-        public DefinitionHashPointer<DestinyPlaceDefinition> Place { get; init; }
+        [JsonPropertyName("placeHash")]
+        public DefinitionHashPointer<DestinyPlaceDefinition> Place { get; init; } = DefinitionHashPointer<DestinyPlaceDefinition>.Empty;
+        /// <summary>
+        /// If this Destination has a default Free-Roam activity, this is the Activity. 
+        /// </summary>
+        [JsonPropertyName("defaultFreeroamActivityHash")]
+        public DefinitionHashPointer<DestinyActivityDefinition> DefaultFreeroamActivity { get; init; } = DefinitionHashPointer<DestinyActivityDefinition>.Empty;
+        /// <summary>
+        /// If the Destination has default Activity Graphs (i.e. "Map") that should be shown in the director, this is the list of those Graphs. At most, only one should be active at any given time for a Destination: these would represent, for example, different variants on a Map if the Destination is changing on a macro level based on game state.
+        /// </summary>
+        [JsonPropertyName("activityGraphEntries")]
+        public ReadOnlyCollection<DestinyActivityGraphListEntryDefinition> ActivityGraphEntries { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyActivityGraphListEntryDefinition>();
+        /// <summary>
+        /// This provides the unique identifiers for every bubble in the destination (only guaranteed unique within the destination), and any intrinsic properties of the bubble.
+        /// </summary>
+        [JsonPropertyName("bubbles")]
+        public ReadOnlyCollection<DestinyBubbleDefinition> Bubbles { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyBubbleDefinition>();
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyDestinationDefinition(DestinyDisplayPropertiesDefinition displayProperties, DestinationActivityGraphEntry[] activityGraphEntries, uint defaultFreeroamActivityHash,
-            DestinationBubbleEntry[] bubbles, DestinationBubbleSettingsEntry[] bubbleSettings, uint? placeHash,
-            bool blacklisted, uint hash, int index, bool redacted)
-        {
-            DisplayProperties = displayProperties;
-            ActivityGraphEntries = activityGraphEntries.AsReadOnlyOrEmpty();
-            DefaultFreeroamActivity = new DefinitionHashPointer<DestinyActivityDefinition>(defaultFreeroamActivityHash, DefinitionsEnum.DestinyActivityDefinition);
-            Bubbles = bubbles.AsReadOnlyOrEmpty();
-            BubbleSettings = bubbleSettings.AsReadOnlyOrEmpty();
-            Place = new DefinitionHashPointer<DestinyPlaceDefinition>(placeHash, DefinitionsEnum.DestinyPlaceDefinition);
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

@@ -10,6 +10,7 @@
   
   <ItemGroup>
     <None Remove="Models\Common\Destiny2CoreSettings.cs~RF113d3acd.TMP" />
+    <None Remove="Models\Destiny\Definitions\EnergyTypes\DestinyEnergyTypeDefinition.cs~RF1ff514cf.TMP" />
     <None Remove="Models\Forum\CommunityContentSortMode.cs~RF1a7bb587.TMP" />
     <None Remove="Models\Forum\ForumFlagsEnum.cs~RF1a7093eb.TMP" />
     <None Remove="Models\Forum\ForumPostCategoryEnums.cs~RF1ac823ef.TMP" />

@@ -1,26 +1,26 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.EnemyRaces
 {
     [DestinyDefinition(DefinitionsEnum.DestinyEnemyRaceDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyEnemyRaceDefinition : IDestinyDefinition, IDeepEquatable<DestinyEnemyRaceDefinition>
+    public sealed record DestinyEnemyRaceDefinition : IDestinyDefinition, IDeepEquatable<DestinyEnemyRaceDefinition>
     {
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
-        public bool Blacklisted { get; init; }
-        public uint Hash { get; init; }
-        public int Index { get; init; }
-        public bool Redacted { get; init; }
 
-        [JsonConstructor]
-        internal DestinyEnemyRaceDefinition(DestinyDisplayPropertiesDefinition displayProperties, bool blacklisted, uint hash, int index, bool redacted)
-        {
-            DisplayProperties = displayProperties;
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
+        [JsonPropertyName("blacklisted")]
+        public bool Blacklisted { get; init; }
+
+        [JsonPropertyName("hash")]
+        public uint Hash { get; init; }
+
+        [JsonPropertyName("index")]
+        public int Index { get; init; }
+
+        [JsonPropertyName("redacted")]
+        public bool Redacted { get; init; }
 
         public override string ToString()
         {

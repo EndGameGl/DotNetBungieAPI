@@ -1,10 +1,10 @@
 ﻿using NetBungieAPI.Attributes;
-using NetBungieAPI.Destiny.Definitions.InventoryItems;
-using NetBungieAPI.Destiny.Definitions.Progressions;
-using NetBungieAPI.Destiny.Definitions.Vendors;
-using Newtonsoft.Json;
-using System.Collections.Generic;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
+using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
+using NetBungieAPI.Models.Destiny.Definitions.Progressions;
+using NetBungieAPI.Models.Destiny.Definitions.Vendors;
 using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Factions
 {
@@ -14,50 +14,43 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Factions
     /// A Faction is really just an entity that has a related progression for which a character can gain experience.In Destiny 1, Dead Orbit was an example of a Faction: there happens to be a Vendor that represents Dead Orbit (and indeed, DestinyVendorDefinition.factionHash defines to this relationship), but Dead Orbit could theoretically exist without the Vendor that provides rewards.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyFactionDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyFactionDefinition : IDestinyDefinition, IDeepEquatable<DestinyFactionDefinition>
+    public sealed record DestinyFactionDefinition : IDestinyDefinition, IDeepEquatable<DestinyFactionDefinition>
     {
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
         /// <summary>
         /// DestinyProgressionDefinition that indicates the character's relationship with this faction in terms of experience and levels.
         /// </summary>
-        public DefinitionHashPointer<DestinyProgressionDefinition> Progression { get; init; }
-        /// <summary>
-        /// The faction reward item hash, usually an engram.
-        /// </summary>
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> RewardItem { get; init; }
-        /// <summary>
-        /// The faction reward vendor, used for faction engram previews.
-        /// </summary>
-        public DefinitionHashPointer<DestinyVendorDefinition> RewardVendor { get; init; }
+        [JsonPropertyName("progressionHash")]
+        public DefinitionHashPointer<DestinyProgressionDefinition> Progression { get; init; } = DefinitionHashPointer<DestinyProgressionDefinition>.Empty;
         /// <summary>
         /// The faction token items, and their respective progression values.
         /// </summary>
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, int> TokenValues { get; init; }
+        [JsonPropertyName("tokenValues")]
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, DefinitionHashPointer<DestinyProgressionDefinition>> TokenValues { get; init; } = Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, DefinitionHashPointer<DestinyProgressionDefinition>>();
+        /// <summary>
+        /// The faction reward item hash, usually an engram.
+        /// </summary>
+        [JsonPropertyName("rewardItemHash")]
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> RewardItem { get; init; } = DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
+        /// <summary>
+        /// The faction reward vendor, used for faction engram previews.
+        /// </summary>
+        [JsonPropertyName("rewardVendorHash")]
+        public DefinitionHashPointer<DestinyVendorDefinition> RewardVendor { get; init; } = DefinitionHashPointer<DestinyVendorDefinition>.Empty;
         /// <summary>
         /// List of vendors that are associated with this faction. The last vendor that passes the unlock flag checks is the one that should be shown.
         /// </summary>
-        public ReadOnlyCollection<FactionVendor> Vendors { get; init; }
+        [JsonPropertyName("vendors")]
+        public ReadOnlyCollection<DestinyFactionVendorDefinition> Vendors { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyFactionVendorDefinition>();
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyFactionDefinition(uint progressionHash, uint rewardItemHash, uint rewardVendorHash, DestinyDisplayPropertiesDefinition displayProperties,
-            Dictionary<uint, int> tokenValues, FactionVendor[] vendors,
-            bool blacklisted, uint hash, int index, bool redacted)
-        {
-            DisplayProperties = displayProperties;
-            Progression = new DefinitionHashPointer<DestinyProgressionDefinition>(progressionHash, DefinitionsEnum.DestinyProgressionDefinition);
-            RewardItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(rewardItemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
-            RewardVendor = new DefinitionHashPointer<DestinyVendorDefinition>(rewardVendorHash, DefinitionsEnum.DestinyVendorDefinition);
-            TokenValues = tokenValues.AsReadOnlyDictionaryWithDefinitionKeyOrEmpty<DestinyInventoryItemDefinition, int>(DefinitionsEnum.DestinyInventoryItemDefinition);
-            Vendors = vendors.AsReadOnlyOrEmpty();
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {
