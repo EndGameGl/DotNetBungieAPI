@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
-namespace NetBungieAPI.Destiny.Definitions.SandboxPerks
+namespace NetBungieAPI.Models.Destiny.Definitions
 {
-    [Flags]
-    public enum TalentNodeStepLightAbilities
+    [Flags, JsonConverter(typeof(JsonStringEnumConverter))]
+    public enum DestinyTalentNodeStepLightAbilities
     {
         None = 0,
         Grenades = 1,

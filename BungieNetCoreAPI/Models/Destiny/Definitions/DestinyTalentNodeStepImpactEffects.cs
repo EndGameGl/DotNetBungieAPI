@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
-namespace NetBungieAPI.Destiny.Definitions.SandboxPerks
+namespace NetBungieAPI.Models.Destiny.Definitions
 {
-    [Flags]
-    public enum TalentNodeStepImpactEffects
+    [Flags, JsonConverter(typeof(JsonStringEnumConverter))]
+    public enum DestinyTalentNodeStepImpactEffects
     {
         None = 0,
         ArmorPiercing = 1,

@@ -1,23 +1,19 @@
-﻿using Newtonsoft.Json;
+﻿using NetBungieAPI.Models.Destiny.Definitions.Common;
 using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
-namespace NetBungieAPI.Destiny.Definitions.TalentGrids
+namespace NetBungieAPI.Models.Destiny.Definitions.TalentGrids
 {
-    public class TalentGridNodeCategory : IDeepEquatable<TalentGridNodeCategory>
+    public sealed record TalentGridNodeCategory : IDeepEquatable<TalentGridNodeCategory>
     {
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+        [JsonPropertyName("identifier")]
         public string Identifier { get; init; }
+        [JsonPropertyName("isLoreDriven")]
         public bool IsLoreDriven { get; init; }
-        public ReadOnlyCollection<uint> NodeHashes { get; init; }
-
-        [JsonConstructor]
-        internal TalentGridNodeCategory(DestinyDisplayPropertiesDefinition displayProperties, string identifier, bool isLoreDriven, uint[] nodeHashes)
-        {
-            DisplayProperties = displayProperties;
-            Identifier = identifier;
-            IsLoreDriven = isLoreDriven;
-            NodeHashes = nodeHashes.AsReadOnlyOrEmpty();
-        }
+        [JsonPropertyName("nodeHashes")]
+        public ReadOnlyCollection<uint> NodeHashes { get; init; } = Defaults.EmptyReadOnlyCollection<uint>();
 
         public bool DeepEquals(TalentGridNodeCategory other)
         {
