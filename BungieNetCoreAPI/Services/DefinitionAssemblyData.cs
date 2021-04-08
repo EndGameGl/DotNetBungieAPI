@@ -1,12 +1,11 @@
 ﻿using NetBungieAPI.Attributes;
-using NetBungieAPI.Destiny;
+using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace NetBungieAPI.Services
 {

@@ -1,10 +1,9 @@
 ﻿using NetBungieAPI.Destiny;
-using NetBungieAPI.Destiny.Definitions;
-using NetBungieAPI.Destiny.Definitions.Activities;
-using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Logging;
 using NetBungieAPI.Models;
-using NetBungieAPI.Services;
+using NetBungieAPI.Models.Destiny;
+using NetBungieAPI.Models.Destiny.Definitions.Activities;
+using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Services.Interfaces;
 using System;
 using System.Collections.Concurrent;
@@ -13,7 +12,6 @@ using System.Data.SQLite;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Unity;
 
 namespace NetBungieAPI.Repositories
 {

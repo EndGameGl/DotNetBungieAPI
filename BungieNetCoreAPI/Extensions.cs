@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using NetBungieAPI.Clients.Settings;
 using NetBungieAPI.Destiny;
-using NetBungieAPI.Destiny.Definitions;
-using NetBungieAPI.Destiny.Definitions.Activities;
-using NetBungieAPI.Destiny.Definitions.ActivityModes;
 using NetBungieAPI.Models;
+using NetBungieAPI.Models.Destiny;
+using NetBungieAPI.Models.Destiny.Definitions.Activities;
+using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using NetBungieAPI.Repositories;
 using Newtonsoft.Json;
 using System;
@@ -101,7 +101,7 @@ namespace NetBungieAPI
             IList<DefinitionHashPointer<T>> convertedList = new List<DefinitionHashPointer<T>>(source.Length);
             for (int i = 0; i < source.Length; i++)
             {
-                convertedList.Add(new DefinitionHashPointer<T>(source[i], enumValue));
+                convertedList.Add(new DefinitionHashPointer<T>(source[i]));
             }
             return new ReadOnlyCollection<DefinitionHashPointer<T>>(convertedList);
         }
@@ -109,7 +109,7 @@ namespace NetBungieAPI
         {
             if (dictionary is null)
                 return new ReadOnlyDictionary<DefinitionHashPointer<T>, P>(new Dictionary<DefinitionHashPointer<T>, P>(0));
-            var convertedDict = dictionary.ToDictionary(x => new DefinitionHashPointer<T>(x.Key, enumValue), y => y.Value);
+            var convertedDict = dictionary.ToDictionary(x => new DefinitionHashPointer<T>(x.Key), y => y.Value);
             return new ReadOnlyDictionary<DefinitionHashPointer<T>, P>(convertedDict);
         }
         internal static ReadOnlyDictionary<T, P> AsReadOnlyDictionaryOrEmpty<T, P>(this Dictionary<T, P> dictionary)

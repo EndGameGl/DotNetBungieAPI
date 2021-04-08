@@ -9,7 +9,7 @@ namespace NetBungieAPI.Services.Interfaces
     /// </summary>
     public interface IManifestVersionHandler
     {
-        DestinyManifest CurrentUsedManifest { get; init; }
+        DestinyManifest CurrentUsedManifest { get; }
 
         ValueTask<bool> HasUpdates();
         IList<DestinyManifest> FindManifestsAt(string path);

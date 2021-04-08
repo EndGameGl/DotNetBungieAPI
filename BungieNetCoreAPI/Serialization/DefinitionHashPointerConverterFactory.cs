@@ -1,4 +1,4 @@
-﻿using NetBungieAPI.Destiny.Definitions;
+﻿using NetBungieAPI.Models.Destiny;
 using System;
 using System.Reflection;
 using System.Text.Json;

@@ -1,4 +1,4 @@
-﻿using NetBungieAPI.Destiny.Definitions;
+﻿using NetBungieAPI.Models.Destiny.Definitions.Common;
 using Newtonsoft.Json;
 
 namespace NetBungieAPI.Responses

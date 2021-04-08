@@ -1,7 +1,4 @@
-﻿using NetBungieAPI.Destiny.Definitions.BreakerTypes;
-using NetBungieAPI.Destiny.Definitions.DamageTypes;
-using NetBungieAPI.Destiny.Definitions.Unlocks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 
 namespace NetBungieAPI.Destiny.Profile.Components.Contracts

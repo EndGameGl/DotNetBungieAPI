@@ -1,4 +1,4 @@
-﻿using NetBungieAPI.Destiny.Definitions.ActivityModes;
+﻿using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using System;
 using System.Text.Json.Serialization;
 

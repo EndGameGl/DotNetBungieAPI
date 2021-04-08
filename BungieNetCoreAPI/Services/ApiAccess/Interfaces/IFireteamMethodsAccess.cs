@@ -1,5 +1,5 @@
-﻿using NetBungieAPI.Destiny.Definitions.ActivityModes;
-using NetBungieAPI.Models;
+﻿using NetBungieAPI.Models;
+using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using NetBungieAPI.Models.Fireteam;
 using NetBungieAPI.Models.Queries;
 using System.Threading.Tasks;

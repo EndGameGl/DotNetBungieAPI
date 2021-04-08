@@ -12,7 +12,7 @@ namespace NetBungieAPI
     /// Class that points to a certain definition in database
     /// </summary>
     /// <typeparam name="T">Destiny definition type</typeparam>
-    public sealed record DefinitionHashPointer<T> : IDeepEquatable<DefinitionHashPointer<T>> where T : IDestinyDefinition
+    public sealed class DefinitionHashPointer<T> : IDeepEquatable<DefinitionHashPointer<T>> where T : IDestinyDefinition
     {
 #if DEBUG
         private T debug_value_getter

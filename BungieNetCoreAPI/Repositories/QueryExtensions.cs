@@ -1,6 +1,6 @@
-﻿using NetBungieAPI.Destiny.Definitions.InventoryItems;
-using NetBungieAPI.Destiny.Definitions.ItemCategories;
-using NetBungieAPI.Models;
+﻿using NetBungieAPI.Models;
+using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
+using NetBungieAPI.Models.Destiny.Definitions.ItemCategories;
 using System.Collections.Generic;
 
 namespace NetBungieAPI.Repositories

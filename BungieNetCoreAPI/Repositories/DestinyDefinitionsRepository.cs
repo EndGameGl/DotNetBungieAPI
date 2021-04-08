@@ -4,6 +4,7 @@ using NetBungieAPI.Destiny.Definitions;
 using NetBungieAPI.Destiny.Definitions.HistoricalStats;
 using NetBungieAPI.Logging;
 using NetBungieAPI.Models;
+using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Pipes;
 using NetBungieAPI.Services;
 using NetBungieAPI.Services.Interfaces;

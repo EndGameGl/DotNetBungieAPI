@@ -2,6 +2,7 @@
 using NetBungieAPI.Destiny;
 using NetBungieAPI.Destiny.Definitions;
 using NetBungieAPI.Models;
+using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Pipes;
 using System.Collections.Generic;
 using System.IO;
@@ -107,7 +108,7 @@ namespace NetBungieAPI.Services
             List<DefinitionHashPointer<T>> items = new List<DefinitionHashPointer<T>>();
             foreach (var item in newItems)
             {
-                items.Add(new DefinitionHashPointer<T>(item.Hash, definition));
+                items.Add(new DefinitionHashPointer<T>(item.Hash));
             }
 
             return items;
@@ -122,7 +123,7 @@ namespace NetBungieAPI.Services
             List<DefinitionHashPointer<T>> items = new List<DefinitionHashPointer<T>>();
             foreach (var item in newItems)
             {
-                items.Add(new DefinitionHashPointer<T>(item.Hash, definition));
+                items.Add(new DefinitionHashPointer<T>(item.Hash));
             }
 
             return items;

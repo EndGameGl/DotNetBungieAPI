@@ -1,8 +1,8 @@
 ﻿using NetBungieAPI.Destiny;
-using NetBungieAPI.Destiny.Definitions;
-using NetBungieAPI.Destiny.Definitions.Activities;
-using NetBungieAPI.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Models;
+using NetBungieAPI.Models.Destiny;
+using NetBungieAPI.Models.Destiny.Definitions.Activities;
+using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +11,7 @@ namespace NetBungieAPI.Repositories
 {
     public interface ILocalisedDestinyDefinitionRepositories
     {
-        BungieLocales CurrentLocaleLoadContext { get; init; }
+        BungieLocales CurrentLocaleLoadContext { get; }
         void SetLocaleContext(BungieLocales locale);
         void ResetLocaleContext();
         void Initialize(BungieLocales[] locales);

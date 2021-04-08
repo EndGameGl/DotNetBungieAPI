@@ -1,6 +1,6 @@
-﻿namespace NetBungieAPI.Destiny.Definitions.Milestones
+﻿namespace NetBungieAPI.Models.Destiny.Definitions.Milestones
 {
-    public enum MilestoneType
+    public enum DestinyMilestoneType
     {
         Unknown = 0,
         Tutorial = 1,
