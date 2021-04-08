@@ -1,5 +1,6 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.ItemTierTypes
 {
@@ -9,26 +10,20 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ItemTierTypes
     /// It also provides some base data for infusion that could be useful.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyItemTierTypeDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyItemTierTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyItemTierTypeDefinition>
+    public sealed record DestinyItemTierTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyItemTierTypeDefinition>
     {
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
-        public ItemTierTypeInfusionProcess InfusionProcess { get; init; }
+        [JsonPropertyName("infusionProcess")]
+        public DestinyItemTierTypeInfusionBlock InfusionProcess { get; init; }
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyItemTierTypeDefinition(DestinyDisplayPropertiesDefinition displayProperties, ItemTierTypeInfusionProcess infusionProcess,
-            bool blacklisted, uint hash, int index, bool redacted)
-        {
-            DisplayProperties = displayProperties;
-            InfusionProcess = infusionProcess;
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

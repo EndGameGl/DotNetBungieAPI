@@ -1,4 +1,4 @@
-﻿namespace NetBungieAPI.Destiny.Definitions.HistoricalStats
+﻿namespace NetBungieAPI.Models.Destiny.Definitions.HistoricalStats
 {
     public enum DestinyStatsCategoryType
     {

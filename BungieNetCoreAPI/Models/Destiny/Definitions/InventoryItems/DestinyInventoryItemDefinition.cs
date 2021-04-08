@@ -43,7 +43,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         public DamageType DefaultDamageTypeEnumValue { get; init; }
         public DefinitionHashPointer<DestinyDamageTypeDefinition> DefaultDamageType { get; init; }
         public DestinyItemSubType ItemSubType { get; init; }
-        public ItemType ItemType { get; init; }
+        public DestinyItemType ItemType { get; init; }
         public SpecialItemType SpecialItemType { get; init; }
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
         /// <summary>
@@ -196,7 +196,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
             DestinyBreakerType breakerType, DestinyClass classType, DestinyDisplayPropertiesDefinition displayProperties, DamageType defaultDamageType, string displaySource,
             bool doesPostmasterPullHaveSideEffects, bool equippable, InventoryItemEquippingBlock equippingBlock, string iconWatermark, string iconWatermarkShelved,
             InventoryItemInventoryBlock inventory, InventoryItemInvestmentStat[] investmentStats, bool isWrapper, uint[] itemCategoryHashes, DestinyItemSubType itemSubType,
-            ItemType itemType, string itemTypeAndTierDisplayName, string itemTypeDisplayName, bool nonTransferrable, InventoryItemPerk[] perks, InventoryItemPreviewBlock preview,
+            DestinyItemType itemType, string itemTypeAndTierDisplayName, string itemTypeDisplayName, bool nonTransferrable, InventoryItemPerk[] perks, InventoryItemPreviewBlock preview,
             InventoryItemQualityBlock quality, string screenshot, InventoryItemSocketsBlock sockets, SpecialItemType specialItemType, InventoryItemStatsBlock stats, uint summaryItemHash,
             InventoryItemTalentGrid talentGrid, InventoryItemTooltipNotification[] tooltipNotifications, string[] traitIds, InventoryItemTranslationBlock translationBlock,
             string uiItemDisplayStyle, uint collectibleHash, InventoryItemPlugBlock plug, InventoryItemObjectivesBlock objectives, string secondaryIcon, InventoryItemValueBlock value,

@@ -1,6 +1,6 @@
-﻿namespace NetBungieAPI.Destiny.Definitions
+﻿namespace NetBungieAPI.Models.Destiny
 {
-    public enum ItemType
+    public enum DestinyItemType
     {
         None = 0,
         Currency = 1,

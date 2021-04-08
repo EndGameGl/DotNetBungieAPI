@@ -1,5 +1,4 @@
 ﻿using NetBungieAPI.Attributes;
-using NetBungieAPI.Destiny.Definitions.InventoryBuckets;
 using NetBungieAPI.Models.Destiny.Definitions.Common;
 using NetBungieAPI.Models.Destiny.Definitions.InventoryBuckets;
 using System.Collections.ObjectModel;

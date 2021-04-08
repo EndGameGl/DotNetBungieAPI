@@ -1,5 +1,6 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Lores
 {
@@ -7,25 +8,20 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Lores
     /// These are definitions for in-game "Lore," meant to be narrative enhancements of the game experience.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyLoreDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyLoreDefinition : IDestinyDefinition, IDeepEquatable<DestinyLoreDefinition>
+    public sealed record DestinyLoreDefinition : IDestinyDefinition, IDeepEquatable<DestinyLoreDefinition>
     {
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+        [JsonPropertyName("subtitle")]
         public string Subtitle { get; init; }
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyLoreDefinition(DestinyDisplayPropertiesDefinition displayProperties, string subtitle, bool blacklisted, uint hash, int index, bool redacted)
-        {
-            DisplayProperties = displayProperties;
-            Subtitle = subtitle;
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

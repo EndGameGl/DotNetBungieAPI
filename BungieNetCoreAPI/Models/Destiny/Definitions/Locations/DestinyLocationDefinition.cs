@@ -1,8 +1,8 @@
 ﻿using NetBungieAPI.Attributes;
-using NetBungieAPI.Destiny.Definitions.Vendors;
-using Newtonsoft.Json;
+using NetBungieAPI.Models.Destiny.Definitions.Vendors;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Locations
 {
@@ -10,31 +10,26 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Locations
     /// A "Location" is a sort of shortcut for referring to a specific combination of Activity, Destination, Place, and even Bubble or NavPoint within a space.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyLocationDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyLocationDefinition : IDestinyDefinition, IDeepEquatable<DestinyLocationDefinition>
+    public sealed record DestinyLocationDefinition : IDestinyDefinition, IDeepEquatable<DestinyLocationDefinition>
     {
-        /// <summary>
-        /// A Location may refer to different specific spots in the world based on the world's current state. This is a list of those potential spots, and the data we can use at runtime to determine which one of the spots is the currently valid one.
-        /// </summary>
-        public ReadOnlyCollection<LocationRelease> LocationReleases { get; init; }
         /// <summary>
         /// If the location has a Vendor on it, this is the Vendor.
         /// </summary>
-        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; init; }
+        [JsonPropertyName("vendorHash")]
+        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; init; } = DefinitionHashPointer<DestinyVendorDefinition>.Empty;
+        /// <summary>
+        /// A Location may refer to different specific spots in the world based on the world's current state. This is a list of those potential spots, and the data we can use at runtime to determine which one of the spots is the currently valid one.
+        /// </summary>
+        [JsonPropertyName("locationReleases")]
+        public ReadOnlyCollection<DestinyLocationReleaseDefinition> LocationReleases { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyLocationReleaseDefinition>();
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyLocationDefinition(LocationRelease[] locationReleases, uint vendorHash, bool blacklisted, uint hash, int index, bool redacted)
-        {
-            LocationReleases = locationReleases.AsReadOnlyOrEmpty();
-            Vendor = new DefinitionHashPointer<DestinyVendorDefinition>(vendorHash, DefinitionsEnum.DestinyVendorDefinition);
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

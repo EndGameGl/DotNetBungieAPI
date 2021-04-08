@@ -1,4 +1,4 @@
-﻿namespace NetBungieAPI.Destiny.Definitions
+﻿namespace NetBungieAPI.Models.Destiny
 {
     public enum SpecialItemType
     {

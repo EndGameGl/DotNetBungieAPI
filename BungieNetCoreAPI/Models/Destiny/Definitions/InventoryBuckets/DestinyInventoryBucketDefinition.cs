@@ -1,5 +1,6 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.InventoryBuckets
 {
@@ -11,66 +12,60 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryBuckets
     /// You cannot transfer an item to a bucket that is not its Default without going through a Vendor's "accepted items" (DestinyVendorDefinition.acceptedItems). This is how transfer functionality like the Vault is implemented, as a feature of a Vendor. See the vendor's acceptedItems property for more details.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyInventoryBucketDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyInventoryBucketDefinition : IDestinyDefinition, IDeepEquatable<DestinyInventoryBucketDefinition>
+    public sealed record DestinyInventoryBucketDefinition : IDestinyDefinition, IDeepEquatable<DestinyInventoryBucketDefinition>
     {
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
         /// <summary>
-        /// Use this property to provide a quick-and-dirty recommended ordering for buckets in the UI. Most UIs will likely want to forsake this for something more custom and manual.
+        /// Where the bucket is found.
         /// </summary>
-        public int BucketOrder { get; init; }
+        [JsonPropertyName("scope")]
+        public DestinyScope Scope { get; init; }
         /// <summary>
         /// An enum value for what items can be found in the bucket.
         /// </summary>
+        [JsonPropertyName("category")]
         public BucketCategory Category { get; init; }
         /// <summary>
-        /// If True, this bucket is enabled. Disabled buckets may include buckets that were included for test purposes, or that were going to be used but then were abandoned but never removed from content *cough*.
+        /// Use this property to provide a quick-and-dirty recommended ordering for buckets in the UI. Most UIs will likely want to forsake this for something more custom and manual.
         /// </summary>
-        public bool Enabled { get; init; }
-        /// <summary>
-        /// if a FIFO bucket fills up, it will delete the oldest item from said bucket when a new item tries to be added to it. If this is FALSE, the bucket will not allow new items to be placed in it until room is made by the user manually deleting items from it. You can see an example of this with the Postmaster's bucket.
-        /// </summary>
-        public bool FirstInFirstOut { get; init; }
-        /// <summary>
-        /// If TRUE, there is at least one Vendor that can transfer items to/from this bucket. See the DestinyVendorDefinition's acceptedItems property for more information on how transferring works.
-        /// </summary>
-        public bool HasTransferDestination { get; init; }
+        [JsonPropertyName("bucketOrder")]
+        public int BucketOrder { get; init; }
         /// <summary>
         /// The maximum # of item "slots" in a bucket. A slot is a given combination of item + quantity.
         /// <para/>
         /// For instance, a Weapon will always take up a single slot, and always have a quantity of 1. But a material could take up only a single slot with hundreds of quantity.
         /// </summary>
+        [JsonPropertyName("itemCount")]
         public int ItemCount { get; init; }
         /// <summary>
         /// Sometimes, inventory buckets represent conceptual "locations" in the game that might not be expected. This value indicates the conceptual location of the bucket, regardless of where it is actually contained on the character/account.
         /// </summary>
-        public BucketItemLocation Location { get; init; }
+        [JsonPropertyName("location")]
+        public ItemLocation Location { get; init; }
         /// <summary>
-        /// Where the bucket is found.
+        /// If TRUE, there is at least one Vendor that can transfer items to/from this bucket. See the DestinyVendorDefinition's acceptedItems property for more information on how transferring works.
         /// </summary>
-        public Scope Scope { get; init; }
+        [JsonPropertyName("hasTransferDestination")]
+        public bool HasTransferDestination { get; init; }
+        /// <summary>
+        /// If True, this bucket is enabled. Disabled buckets may include buckets that were included for test purposes, or that were going to be used but then were abandoned but never removed from content *cough*.
+        /// </summary>
+        [JsonPropertyName("enabled")]
+        public bool Enabled { get; init; }
+        /// <summary>
+        /// if a FIFO bucket fills up, it will delete the oldest item from said bucket when a new item tries to be added to it. If this is FALSE, the bucket will not allow new items to be placed in it until room is made by the user manually deleting items from it. You can see an example of this with the Postmaster's bucket.
+        /// </summary>
+        [JsonPropertyName("fifo")]
+        public bool FirstInFirstOut { get; init; }
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyInventoryBucketDefinition(DestinyDisplayPropertiesDefinition displayProperties, int bucketOrder, BucketCategory category, bool enabled, bool fifo, 
-            bool hasTransferDestination, int itemCount, BucketItemLocation location, Scope scope, bool blacklisted, uint hash, int index, bool redacted)
-        {
-            DisplayProperties = displayProperties;
-            BucketOrder = bucketOrder;
-            Category = category;
-            Enabled = enabled;
-            FirstInFirstOut = fifo;
-            HasTransferDestination = hasTransferDestination;
-            ItemCount = itemCount;
-            Location = location;
-            Scope = scope;
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

@@ -1,6 +1,6 @@
-﻿namespace NetBungieAPI.Destiny.Definitions.Locations
+﻿namespace NetBungieAPI.Models.Destiny
 {
-    public enum ActivityNavPointType
+    public enum DestinyActivityNavPointType
     {
         Inactive = 0,
         PrimaryObjective = 1,

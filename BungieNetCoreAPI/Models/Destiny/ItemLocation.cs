@@ -1,6 +1,6 @@
-﻿namespace NetBungieAPI.Destiny.Definitions.InventoryBuckets
+﻿namespace NetBungieAPI.Models.Destiny
 {
-    public enum BucketItemLocation
+    public enum ItemLocation
     {
         Unknown = 0,
         Inventory = 1,

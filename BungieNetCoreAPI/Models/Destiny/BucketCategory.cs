@@ -1,4 +1,4 @@
-﻿namespace NetBungieAPI.Destiny.Definitions.InventoryBuckets
+﻿namespace NetBungieAPI.Models.Destiny
 {
     public enum BucketCategory
     {

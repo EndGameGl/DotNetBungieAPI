@@ -1,6 +1,6 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
 using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets
 {
@@ -10,26 +10,21 @@ namespace NetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets
     /// A variety of other entities refer to these as gatekeepers and payments for actions that can be performed in game.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyMaterialRequirementSetDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyMaterialRequirementSetDefinition : IDestinyDefinition, IDeepEquatable<DestinyMaterialRequirementSetDefinition>
+    public sealed record DestinyMaterialRequirementSetDefinition : IDestinyDefinition, IDeepEquatable<DestinyMaterialRequirementSetDefinition>
     {
         /// <summary>
         /// The list of all materials that are required.
         /// </summary>
-        public ReadOnlyCollection<MaterialRequirementSetEntry> Materials { get; init; }
+        [JsonPropertyName("materials")]
+        public ReadOnlyCollection<DestinyMaterialRequirement> Materials { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyMaterialRequirement>();
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyMaterialRequirementSetDefinition(MaterialRequirementSetEntry[] materials, bool blacklisted, uint hash, int index, bool redacted)
-        {
-            Materials = materials.AsReadOnlyOrEmpty();
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

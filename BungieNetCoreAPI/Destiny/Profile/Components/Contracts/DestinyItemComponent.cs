@@ -13,7 +13,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
         public long? ItemInstanceId { get; init; }
         public int Quantity { get; init; }
         public ItemBindStatus BindStatus { get; init; }
-        public BucketItemLocation Location { get; init; }
+        public ItemLocation Location { get; init; }
         public DefinitionHashPointer<DestinyInventoryBucketDefinition> Bucket { get; init; }
         public TransferStatuses TransferStatus { get; init; }
         public bool IsLockable { get; init; }
@@ -27,7 +27,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
         public int? VersionNumber { get; init; }
 
         [JsonConstructor]
-        internal DestinyItemComponent(uint itemHash, long? itemInstanceId, int quantity, ItemBindStatus bindStatus, BucketItemLocation location, uint bucketHash,
+        internal DestinyItemComponent(uint itemHash, long? itemInstanceId, int quantity, ItemBindStatus bindStatus, ItemLocation location, uint bucketHash,
             TransferStatuses transferStatus, bool lockable, ItemState state, uint? overrideStyleItemHash, DateTime? expirationDate, bool isWrapper,
             int[] tooltipNotificationIndexes, uint? metricHash, DestinyObjectiveProgress metricObjective, int? versionNumber)
         {
