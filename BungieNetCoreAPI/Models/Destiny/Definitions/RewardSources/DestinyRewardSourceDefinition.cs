@@ -1,27 +1,19 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.RewardSources
 {
-    /// <summary>
-    /// Empty atm
-    /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyRewardSourceDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyRewardSourceDefinition : IDestinyDefinition, IDeepEquatable<DestinyRewardSourceDefinition>
+    public sealed record DestinyRewardSourceDefinition : IDestinyDefinition, IDeepEquatable<DestinyRewardSourceDefinition>
     {
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyRewardSourceDefinition(bool blacklisted, uint hash, int index, bool redacted)
-        {
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

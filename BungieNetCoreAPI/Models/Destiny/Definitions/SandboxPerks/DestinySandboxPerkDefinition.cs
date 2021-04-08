@@ -1,38 +1,32 @@
 ﻿using NetBungieAPI.Attributes;
-using NetBungieAPI.Destiny.Definitions.DamageTypes;
-using Newtonsoft.Json;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
+using NetBungieAPI.Models.Destiny.Definitions.DamageTypes;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.SandboxPerks
 {
     [DestinyDefinition(DefinitionsEnum.DestinySandboxPerkDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinySandboxPerkDefinition : IDestinyDefinition, IDeepEquatable<DestinySandboxPerkDefinition>
+    public sealed record DestinySandboxPerkDefinition : IDestinyDefinition, IDeepEquatable<DestinySandboxPerkDefinition>
     {
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
-        public DamageType DamageTypeEnumValue { get; init; }
-        public DefinitionHashPointer<DestinyDamageTypeDefinition> DamageType { get; init; }
-        public bool IsDisplayable { get; init; }
+        [JsonPropertyName("perkIdentifier")]
         public string PerkIdentifier { get; init; }
+        [JsonPropertyName("isDisplayable")]
+        public bool IsDisplayable { get; init; }
+        [JsonPropertyName("damageType")]
+        public DamageType DamageTypeEnumValue { get; init; }
+        [JsonPropertyName("damageTypeHash")]
+        public DefinitionHashPointer<DestinyDamageTypeDefinition> DamageType { get; init; }
         public TalentNodeStepGroups PerkGroups { get; init; }
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinySandboxPerkDefinition(DestinyDisplayPropertiesDefinition displayProperties, DamageType damageType, bool isDisplayable, uint damageTypeHash,
-            string perkIdentifier, TalentNodeStepGroups perkGroups, bool blacklisted, uint hash, int index, bool redacted)
-        {
-            DisplayProperties = displayProperties;
-            DamageTypeEnumValue = damageType;
-            DamageType = new DefinitionHashPointer<DestinyDamageTypeDefinition>(damageTypeHash, DefinitionsEnum.DestinyDamageTypeDefinition);
-            IsDisplayable = isDisplayable;
-            PerkIdentifier = perkIdentifier;
-            PerkGroups = perkGroups;
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

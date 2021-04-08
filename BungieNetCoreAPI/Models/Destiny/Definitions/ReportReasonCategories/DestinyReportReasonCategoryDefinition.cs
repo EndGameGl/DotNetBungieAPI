@@ -1,30 +1,27 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
-using System.Collections.Generic;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
 using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.ReportReasonCategories
 {
     [DestinyDefinition(DefinitionsEnum.DestinyReportReasonCategoryDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyReportReasonCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinyReportReasonCategoryDefinition>
+    public sealed record DestinyReportReasonCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinyReportReasonCategoryDefinition>
     {
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
-        public ReadOnlyDictionary<uint, ReportReason> Reasons { get; init; }
+        [JsonPropertyName("reasons")]
+        public ReadOnlyDictionary<uint, DestinyReportReasonDefinition> Reasons { get; init; } = Defaults.EmptyReadOnlyDictionary<uint, DestinyReportReasonDefinition>();
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-        [JsonConstructor]
-        internal DestinyReportReasonCategoryDefinition(DestinyDisplayPropertiesDefinition displayProperties, Dictionary<uint, ReportReason> reasons,
-            bool blacklisted, uint hash, int index, bool redacted)  
-        {
-            DisplayProperties = displayProperties;
-            Reasons = reasons.AsReadOnlyDictionaryOrEmpty();
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
+
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";

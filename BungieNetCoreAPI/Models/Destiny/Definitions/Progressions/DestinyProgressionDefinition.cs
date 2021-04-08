@@ -1,7 +1,8 @@
 ﻿using NetBungieAPI.Attributes;
-using NetBungieAPI.Destiny.Definitions.Factions;
-using Newtonsoft.Json;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
+using NetBungieAPI.Models.Destiny.Definitions.Factions;
 using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Progressions
 {
@@ -17,64 +18,57 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Progressions
     /// Earned experience is calculated in a variety of ways, determined by the Progression's scope. These go from looking up a stored value to performing exceedingly obtuse calculations. This is why we provide live data in DestinyCharacterProgressionComponent.progressions, so you don't have to worry about those.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyProgressionDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyProgressionDefinition : IDestinyDefinition, IDeepEquatable<DestinyProgressionDefinition>
+    public sealed record DestinyProgressionDefinition : IDestinyDefinition, IDeepEquatable<DestinyProgressionDefinition>
     {
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
-        public DestinyColor Color { get; init; }
-        public int ProgressToNextStepScaling { get; init; }
-        public string RankIcon { get; init; }
-        /// <summary>
-        /// If this is True, then the progression doesn't have a maximum level.
-        /// </summary>
-        public bool RepeatLastStep { get; init; }
-        public ReadOnlyCollection<ProgressionReward> RewardItems { get; init; }
         /// <summary>
         /// The "Scope" of the progression indicates the source of the progression's live data.
         /// </summary>
-        public ProgressionScope Scope { get; init; }
-        public int StorageMappingIndex { get; init; }
+        [JsonPropertyName("scope")]
+        public DestinyProgressionScope Scope { get; init; }
+        /// <summary>
+        /// If this is True, then the progression doesn't have a maximum level.
+        /// </summary>
+        [JsonPropertyName("repeatLastStep")]
+        public bool RepeatLastStep { get; init; }
+        /// <summary>
+        /// If there's a description of how to earn this progression in the local config, this will be that localized description.
+        /// </summary>
+        [JsonPropertyName("source")]
+        public string Source { get; init; }
+        /// <summary>
+        /// Progressions are divided into Steps, which roughly equate to "Levels" in the traditional sense of a Progression. Notably, the last step can be repeated indefinitely if repeatLastStep is true, meaning that the calculation for your level is not as simple as comparing your current progress to the max progress of the steps.
+        /// </summary>
+        [JsonPropertyName("steps")]
+        public ReadOnlyCollection<ProgressionStep> Steps { get; init; } = Defaults.EmptyReadOnlyCollection<ProgressionStep>();
         /// <summary>
         /// If true, the Progression is something worth showing to users.
         /// <para/>
         /// If false, BNet isn't going to show it. But that doesn't mean you can't.
         /// </summary>
+        [JsonPropertyName("visible")]
         public bool Visible { get; init; }
-        /// <summary>
-        /// Progressions are divided into Steps, which roughly equate to "Levels" in the traditional sense of a Progression. Notably, the last step can be repeated indefinitely if repeatLastStep is true, meaning that the calculation for your level is not as simple as comparing your current progress to the max progress of the steps.
-        /// </summary>
-        public ReadOnlyCollection<ProgressionStep> Steps { get; init; }
-        /// <summary>
-        /// If there's a description of how to earn this progression in the local config, this will be that localized description.
-        /// </summary>
-        public string Source { get; init; }
-        public DefinitionHashPointer<DestinyFactionDefinition> Faction { get; init; }
+        [JsonPropertyName("factionHash")]
+        public DefinitionHashPointer<DestinyFactionDefinition> Faction { get; init; } = DefinitionHashPointer<DestinyFactionDefinition>.Empty;
+        [JsonPropertyName("color")]
+        public DestinyColor Color { get; init; }
+        [JsonPropertyName("rankIcon")]
+        public string RankIcon { get; init; }
+        [JsonPropertyName("rewardItems")]
+        public ReadOnlyCollection<DestinyProgressionRewardItemQuantity> RewardItems { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyProgressionRewardItemQuantity>();
+        [JsonPropertyName("progressToNextStepScaling")]
+        public int ProgressToNextStepScaling { get; init; }
+        [JsonPropertyName("storageMappingIndex")]
+        public int StorageMappingIndex { get; init; }  
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyProgressionDefinition(DestinyDisplayPropertiesDefinition displayProperties, DestinyColor color, int progressToNextStepScaling, string rankIcon,
-            bool repeatLastStep, ProgressionReward[] rewardItems, ProgressionScope scope, int storageMappingIndex, bool visible, ProgressionStep[] steps,
-            string source, uint? factionHash, bool blacklisted, uint hash, int index, bool redacted)
-        {
-            DisplayProperties = displayProperties;
-            Color = color;
-            ProgressToNextStepScaling = progressToNextStepScaling;
-            RankIcon = rankIcon;
-            RepeatLastStep = repeatLastStep;
-            RewardItems = rewardItems.AsReadOnlyOrEmpty();
-            Scope = scope;
-            StorageMappingIndex = storageMappingIndex;
-            Visible = visible;
-            Steps = steps.AsReadOnlyOrEmpty();
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-            Source = source;
-            Faction = new DefinitionHashPointer<DestinyFactionDefinition>(factionHash, DefinitionsEnum.DestinyFactionDefinition);
-        }
 
         public override string ToString()
         {

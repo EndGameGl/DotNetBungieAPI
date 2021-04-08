@@ -1,69 +1,61 @@
 ﻿using NetBungieAPI.Attributes;
-using NetBungieAPI.Destiny.Definitions.Lores;
-using NetBungieAPI.Destiny.Definitions.Objectives;
-using NetBungieAPI.Destiny.Definitions.PresentationNodes;
-using NetBungieAPI.Destiny.Definitions.Traits;
-using Newtonsoft.Json;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
+using NetBungieAPI.Models.Destiny.Definitions.Lores;
+using NetBungieAPI.Models.Destiny.Definitions.Objectives;
+using NetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
+using NetBungieAPI.Models.Destiny.Definitions.Traits;
 using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Records
 {
     [DestinyDefinition(DefinitionsEnum.DestinyRecordDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyRecordDefinition : IDestinyDefinition, IDeepEquatable<DestinyRecordDefinition>
+    public sealed record DestinyRecordDefinition : IDestinyDefinition, IDeepEquatable<DestinyRecordDefinition>
     {
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
-        public RecordCompletionInfo CompletionInfo { get; init; }
-        public RecordExpirationInfo ExpirationInfo { get; init; }
-        public RecordIntervalInfo IntervalInfo { get; init; }
-        public RecordStateInfo StateInfo { get; init; }
-        public RecordTitleInfo TitleInfo { get; init; }
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>> Objectives { get; init; }
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentNodes { get; init; }
-        public DestinyPresentationNodeType PresentationNodeType { get; init; }
-        public RecordValueStyle RecordValueStyle { get; init; }
-        public RecordRequirements Requirements { get; init; }
-        public ReadOnlyCollection<DestinyItemQuantity> RewardItems { get; init; }
-        public Scope Scope { get; init; }
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; }
-        public ReadOnlyCollection<string> TraitIds { get; init; }
-        public DefinitionHashPointer<DestinyLoreDefinition> Lore { get; init; }
-        public RecordPresentationInfo PresentationInfo { get; init; }
+        [JsonPropertyName("scope")]
+        public DestinyScope Scope { get; init; }
+        [JsonPropertyName("presentationInfo")]
+        public DestinyPresentationChildBlock PresentationInfo { get; init; }
+        [JsonPropertyName("loreHash")]
+        public DefinitionHashPointer<DestinyLoreDefinition> Lore { get; init; } = DefinitionHashPointer<DestinyLoreDefinition>.Empty;
+        [JsonPropertyName("objectiveHashes")]
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>> Objectives { get; init; } = Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>>();
+        [JsonPropertyName("recordValueStyle")]
+        public DestinyRecordValueStyle RecordValueStyle { get; init; }
+        [JsonPropertyName("forTitleGilding")]
         public bool ForTitleGilding { get; init; }
+        [JsonPropertyName("titleInfo")]
+        public DestinyRecordTitleBlock TitleInfo { get; init; }
+        [JsonPropertyName("completionInfo")]
+        public DestinyRecordCompletionBlock CompletionInfo { get; init; }
+        [JsonPropertyName("stateInfo")]
+        public SchemaRecordStateBlock StateInfo { get; init; }
+        [JsonPropertyName("requirements")]
+        public DestinyPresentationNodeRequirementsBlock Requirements { get; init; }
+        [JsonPropertyName("expirationInfo")]
+        public DestinyRecordExpirationBlock ExpirationInfo { get; init; }
+        [JsonPropertyName("intervalInfo")]
+        public DestinyRecordIntervalBlock IntervalInfo { get; init; }
+        [JsonPropertyName("rewardItems")]
+        public ReadOnlyCollection<DestinyItemQuantity> RewardItems { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
+        [JsonPropertyName("presentationNodeType")]
+        public DestinyPresentationNodeType PresentationNodeType { get; init; }
+        [JsonPropertyName("traitIds")]
+        public ReadOnlyCollection<string> TraitIds { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
+        [JsonPropertyName("traitHashes")]
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; } = Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>();
+        [JsonPropertyName("parentNodeHashes")]
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentNodes { get; init; } = Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyRecordDefinition(DestinyDisplayPropertiesDefinition displayProperties, RecordCompletionInfo completionInfo, RecordExpirationInfo expirationInfo,
-            RecordIntervalInfo intervalInfo, uint[] objectiveHashes, uint[] parentNodeHashes, DestinyPresentationNodeType presentationNodeType, 
-            RecordValueStyle recordValueStyle, RecordRequirements requirements, Scope scope, RecordStateInfo stateInfo, RecordTitleInfo titleInfo, 
-            uint[] traitHashes, string[] traitIds, DestinyItemQuantity[] rewardItems, uint loreHash, RecordPresentationInfo presentationInfo, bool forTitleGilding,
-            bool blacklisted, uint hash, int index, bool redacted)
-        {
-            DisplayProperties = displayProperties;
-            CompletionInfo = completionInfo;
-            ExpirationInfo = expirationInfo;
-            IntervalInfo = intervalInfo;
-            PresentationNodeType = presentationNodeType;
-            RecordValueStyle = recordValueStyle;
-            Requirements = requirements;
-            Scope = scope;
-            StateInfo = stateInfo;
-            TitleInfo = titleInfo;
-            TraitIds = traitIds.AsReadOnlyOrEmpty();
-            Objectives = objectiveHashes.DefinitionsAsReadOnlyOrEmpty<DestinyObjectiveDefinition>(DefinitionsEnum.DestinyObjectiveDefinition);
-            ParentNodes = parentNodeHashes.DefinitionsAsReadOnlyOrEmpty<DestinyPresentationNodeDefinition>(DefinitionsEnum.DestinyPresentationNodeDefinition);
-            Traits = traitHashes.DefinitionsAsReadOnlyOrEmpty<DestinyTraitDefinition>(DefinitionsEnum.DestinyTraitDefinition);
-            RewardItems = rewardItems.AsReadOnlyOrEmpty();
-            Lore = new DefinitionHashPointer<DestinyLoreDefinition>(loreHash, DefinitionsEnum.DestinyLoreDefinition);
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-            PresentationInfo = presentationInfo;
-            ForTitleGilding = forTitleGilding;
-        }
 
         public override string ToString()
         {

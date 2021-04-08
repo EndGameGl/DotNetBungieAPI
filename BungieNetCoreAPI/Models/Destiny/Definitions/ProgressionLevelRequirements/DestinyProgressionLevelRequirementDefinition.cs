@@ -1,7 +1,8 @@
 ﻿using NetBungieAPI.Attributes;
-using NetBungieAPI.Destiny.Definitions.Progressions;
-using Newtonsoft.Json;
+using NetBungieAPI.Models.Destiny.Definitions.Progressions;
+using NetBungieAPI.Models.Interpolation;
 using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.ProgressionLevelRequirements
 {
@@ -11,26 +12,20 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ProgressionLevelRequirements
     /// For instance, say a character receives a new Auto Rifle, and that Auto Rifle's DestinyInventoryItemDefinition.quality.progressionLevelRequirementHash property is pointing at one of these DestinyProgressionLevelRequirementDefinitions. Let's pretend also that the progressionHash it is pointing at is the Character Level progression.In that situation, the character's level will be used to interpolate a value in the requirementCurve property. The value picked up from that interpolation will be the required level for the item.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyProgressionLevelRequirementDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyProgressionLevelRequirementDefinition : IDestinyDefinition, IDeepEquatable<DestinyProgressionLevelRequirementDefinition>
+    public sealed record DestinyProgressionLevelRequirementDefinition : IDestinyDefinition, IDeepEquatable<DestinyProgressionLevelRequirementDefinition>
     {
-        public DefinitionHashPointer<DestinyProgressionDefinition> Progression { get; init; }
-        public ReadOnlyCollection<ProgressionLevelRequirementCurveEntry> RequirementCurve { get; init; }
+        [JsonPropertyName("progressionHash")]
+        public DefinitionHashPointer<DestinyProgressionDefinition> Progression { get; init; } = DefinitionHashPointer<DestinyProgressionDefinition>.Empty;
+        [JsonPropertyName("requirementCurve")]
+        public ReadOnlyCollection<InterpolationPointFloat> RequirementCurve { get; init; } = Defaults.EmptyReadOnlyCollection<InterpolationPointFloat>();
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyProgressionLevelRequirementDefinition(uint progressionHash, ProgressionLevelRequirementCurveEntry[] requirementCurve,
-            bool blacklisted, uint hash, int index, bool redacted)
-        {
-            Progression = new DefinitionHashPointer<DestinyProgressionDefinition>(progressionHash, DefinitionsEnum.DestinyProgressionDefinition);
-            RequirementCurve = requirementCurve.AsReadOnlyOrEmpty();
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

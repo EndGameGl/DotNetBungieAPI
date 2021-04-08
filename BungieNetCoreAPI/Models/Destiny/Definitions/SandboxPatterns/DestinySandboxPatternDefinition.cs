@@ -1,40 +1,34 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
 using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.SandboxPatterns
 {
     [DestinyDefinition(DefinitionsEnum.DestinySandboxPatternDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinySandboxPatternDefinition : IDestinyDefinition, IDeepEquatable<DestinySandboxPatternDefinition>
+    public sealed record DestinySandboxPatternDefinition : IDestinyDefinition, IDeepEquatable<DestinySandboxPatternDefinition>
     {
+        [JsonPropertyName("patternGlobalTagIdHash")]
         public uint PatternGlobalTagIdHash { get; init; }
+        [JsonPropertyName("patternHash")]
         public uint PatternHash { get; init; }
+        [JsonPropertyName("weaponContentGroupHash")]
         public uint WeaponContentGroupHash { get; init; }
+        [JsonPropertyName("weaponTranslationGroupHash")]
         public uint WeaponTranslationGroupHash { get; init; }
+        [JsonPropertyName("weaponType")]
         public int WeaponType { get; init; }
+        [JsonPropertyName("weaponTypeHash")]
         public uint WeaponTypeHash { get; init; }
-        public ReadOnlyCollection<SandboxPatternFilter> Filters { get; init; }
+        [JsonPropertyName("blacklisted")]
+        public ReadOnlyCollection<DestinySandboxPatternFilterDefinition> Filters { get; init; } = Defaults.EmptyReadOnlyCollection<DestinySandboxPatternFilterDefinition>();
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinySandboxPatternDefinition(uint patternGlobalTagIdHash, uint patternHash, uint weaponContentGroupHash, uint weaponTranslationGroupHash,
-            int weaponType, uint weaponTypeHash, SandboxPatternFilter[] filters, bool blacklisted, uint hash, int index, bool redacted)
-        {
-            PatternGlobalTagIdHash = patternGlobalTagIdHash;
-            PatternHash = patternHash;
-            WeaponContentGroupHash = weaponContentGroupHash;
-            WeaponTranslationGroupHash = weaponTranslationGroupHash;
-            WeaponType = weaponType;
-            WeaponTypeHash = weaponTypeHash;
-            Filters = filters.AsReadOnlyOrEmpty();
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

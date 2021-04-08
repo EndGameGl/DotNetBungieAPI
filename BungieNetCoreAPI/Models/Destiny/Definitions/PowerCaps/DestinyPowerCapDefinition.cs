@@ -1,5 +1,5 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.PowerCaps
 {
@@ -7,23 +7,18 @@ namespace NetBungieAPI.Models.Destiny.Definitions.PowerCaps
     /// Defines a 'power cap' (limit) for gear items, based on the rarity tier and season of release.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyPowerCapDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyPowerCapDefinition : IDestinyDefinition, IDeepEquatable<DestinyPowerCapDefinition>
+    public sealed record DestinyPowerCapDefinition : IDestinyDefinition, IDeepEquatable<DestinyPowerCapDefinition>
     {
+        [JsonPropertyName("powerCap")]
         public int PowerCap { get; init; }
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyPowerCapDefinition(int powerCap, bool blacklisted, uint hash, int index, bool redacted)
-        {
-            PowerCap = powerCap;
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

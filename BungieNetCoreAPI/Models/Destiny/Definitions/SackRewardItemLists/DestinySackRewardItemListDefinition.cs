@@ -1,27 +1,19 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.SackRewardItemLists
 {
-    /// <summary>
-    /// Empty definition
-    /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinySackRewardItemListDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinySackRewardItemListDefinition : IDestinyDefinition, IDeepEquatable<DestinySackRewardItemListDefinition>
+    public sealed record DestinySackRewardItemListDefinition : IDestinyDefinition, IDeepEquatable<DestinySackRewardItemListDefinition>
     {
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinySackRewardItemListDefinition(bool blacklisted, uint hash, int index, bool redacted) 
-        {
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {
