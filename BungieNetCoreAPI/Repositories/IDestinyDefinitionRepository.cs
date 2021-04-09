@@ -1,5 +1,4 @@
-﻿using NetBungieAPI.Destiny.Definitions;
-using NetBungieAPI.Models.Destiny;
+﻿using NetBungieAPI.Models.Destiny;
 using System;
 using System.Collections.Generic;
 

@@ -49,7 +49,7 @@
         DestinyPresentationNodeDefinition,
         DestinyProgressionDefinition,
         DestinyProgressionLevelRequirementDefinition,
-        //DestinyProgressionMappingDefinition,
+        DestinyProgressionMappingDefinition,
         DestinyRaceDefinition,
         DestinyRecordDefinition,
         DestinyReportReasonCategoryDefinition,

@@ -1,4 +1,4 @@
-﻿using NetBungieAPI.Destiny.Definitions.ActivityModifiers;
+﻿using NetBungieAPI.Models.Destiny.Definitions.ActivityModifiers;
 using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Activities

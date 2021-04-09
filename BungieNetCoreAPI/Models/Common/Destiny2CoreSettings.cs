@@ -1,7 +1,7 @@
-﻿using NetBungieAPI.Destiny.Definitions.Artifacts;
-using NetBungieAPI.Destiny.Definitions.PresentationNodes;
-using NetBungieAPI.Destiny.Definitions.Progressions;
-using NetBungieAPI.Destiny.Definitions.Seasons;
+﻿using NetBungieAPI.Models.Destiny.Definitions.Artifacts;
+using NetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
+using NetBungieAPI.Models.Destiny.Definitions.Progressions;
+using NetBungieAPI.Models.Destiny.Definitions.Seasons;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 

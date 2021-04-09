@@ -12,7 +12,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
 {
     public class DestinyCharacterProgressionComponent
     {
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyProgressionDefinition>, DestinyProgression> Progressions { get; init; }
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyProgressionMappingDefinition>, DestinyProgression> Progressions { get; init; }
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyFactionDefinition>, DestinyFactionProgression> Factions { get; init; }
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyMilestoneDefinition>, DestinyMilestone> Milestones { get; init; }
         public ReadOnlyCollection<DestinyQuestStatus> Quests { get; init; }
@@ -25,7 +25,7 @@ namespace NetBungieAPI.Destiny.Profile.Components.Contracts
             Dictionary<uint, DestinyMilestone> milestones, DestinyQuestStatus[] quests, Dictionary<uint, UninstancedItemObjective[]> uninstancedItemObjectives, Dictionary<uint, Dictionary<uint, bool>> checklists,
             DestinyArtifactCharacterScoped seasonalArtifact)
         {
-            Progressions = progressions.AsReadOnlyDictionaryWithDefinitionKeyOrEmpty<DestinyProgressionDefinition, DestinyProgression>(DefinitionsEnum.DestinyProgressionDefinition);
+            Progressions = progressions.AsReadOnlyDictionaryWithDefinitionKeyOrEmpty<DestinyProgressionMappingDefinition, DestinyProgression>(DefinitionsEnum.DestinyProgressionDefinition);
             Factions = factions.AsReadOnlyDictionaryWithDefinitionKeyOrEmpty<DestinyFactionDefinition, DestinyFactionProgression>(DefinitionsEnum.DestinyFactionDefinition);
             Milestones = milestones.AsReadOnlyDictionaryWithDefinitionKeyOrEmpty<DestinyMilestoneDefinition, DestinyMilestone>(DefinitionsEnum.DestinyMilestoneDefinition);
             Quests = quests.AsReadOnlyOrEmpty();

@@ -1,6 +1,5 @@
 ﻿using NetBungieAPI.DBComparer;
 using NetBungieAPI.Destiny;
-using NetBungieAPI.Destiny.Definitions;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Pipes;

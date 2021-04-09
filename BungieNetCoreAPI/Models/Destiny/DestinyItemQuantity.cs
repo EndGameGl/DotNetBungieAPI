@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny
 {

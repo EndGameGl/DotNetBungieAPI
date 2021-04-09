@@ -1,4 +1,4 @@
-﻿using NetBungieAPI.Destiny.Definitions.InventoryItems;
+﻿using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Trending

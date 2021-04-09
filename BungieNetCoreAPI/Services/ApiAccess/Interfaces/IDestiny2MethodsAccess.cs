@@ -1,5 +1,4 @@
 ﻿using NetBungieAPI.Destiny;
-using NetBungieAPI.Destiny.Definitions;
 using NetBungieAPI.Destiny.Profile;
 using NetBungieAPI.Destiny.Profile.Components.Contracts;
 using NetBungieAPI.Destiny.Responses;
