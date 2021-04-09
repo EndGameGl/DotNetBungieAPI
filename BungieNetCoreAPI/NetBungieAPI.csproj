@@ -13,6 +13,7 @@
     <None Remove="Models\Destiny\Definitions\EnergyTypes\DestinyEnergyTypeDefinition.cs~RF1ff514cf.TMP" />
     <None Remove="Models\Destiny\Definitions\PlugSets\DestinyItemSocketEntryPlugItemRandomizedDefinition.cs~RF20fb4ef0.TMP" />
     <None Remove="Models\Destiny\Definitions\SandboxPatterns\DestinySandboxPatternFilterDefinition.cs~RF21673252.TMP" />
+    <None Remove="Models\Destiny\Milestones\DestinyMilestoneContentItemCategory.cs~RF2579e848.TMP" />
     <None Remove="Models\Forum\CommunityContentSortMode.cs~RF1a7bb587.TMP" />
     <None Remove="Models\Forum\ForumFlagsEnum.cs~RF1a7093eb.TMP" />
     <None Remove="Models\Forum\ForumPostCategoryEnums.cs~RF1ac823ef.TMP" />

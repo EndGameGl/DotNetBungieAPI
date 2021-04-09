@@ -6,6 +6,7 @@ using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using NetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
+using NetBungieAPI.Models.Destiny.Milestones;
 using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Models.User;
 using NetBungieAPI.Responses;

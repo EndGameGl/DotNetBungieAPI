@@ -1,4 +1,4 @@
-﻿using NetBungieAPI.Destiny.Responses;
+﻿using NetBungieAPI.Models.Destiny.Milestones;
 using System;
 using System.Text.Json.Serialization;
 
