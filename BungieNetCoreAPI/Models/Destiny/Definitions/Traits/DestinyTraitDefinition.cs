@@ -1,32 +1,27 @@
 ﻿using NetBungieAPI.Attributes;
-using NetBungieAPI.Destiny.Definitions.TraitCategories;
-using Newtonsoft.Json;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
+using NetBungieAPI.Models.Destiny.Definitions.TraitCategories;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Traits
 {
     [DestinyDefinition(DefinitionsEnum.DestinyTraitDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyTraitDefinition : IDestinyDefinition, IDeepEquatable<DestinyTraitDefinition>
+    public sealed record DestinyTraitDefinition : IDestinyDefinition, IDeepEquatable<DestinyTraitDefinition>
     {
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+        [JsonPropertyName("traitCategoryId")]
         public string TraitCategoryId { get; init; }
+        [JsonPropertyName("traitCategoryHash")]
         public DefinitionHashPointer<DestinyTraitCategoryDefinition> TraitCategory { get; init; }
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyTraitDefinition(DestinyDisplayPropertiesDefinition displayProperties, uint traitCategoryHash, string traitCategoryId,
-            bool blacklisted, uint hash, int index, bool redacted)
-        {
-            DisplayProperties = displayProperties;
-            TraitCategory = new DefinitionHashPointer<DestinyTraitCategoryDefinition>(traitCategoryHash, DefinitionsEnum.DestinyTraitCategoryDefinition);
-            TraitCategoryId = traitCategoryId;
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

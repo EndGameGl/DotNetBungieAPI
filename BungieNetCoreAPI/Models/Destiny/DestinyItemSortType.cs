@@ -1,6 +1,6 @@
-﻿namespace NetBungieAPI.Destiny.Definitions
+﻿namespace NetBungieAPI.Models.Destiny
 {
-    public enum ItemSortType
+    public enum DestinyItemSortType
     {
         ItemId = 0,
         Timestamp = 1,

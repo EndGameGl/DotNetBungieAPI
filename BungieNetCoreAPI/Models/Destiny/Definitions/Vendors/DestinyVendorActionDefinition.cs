@@ -1,35 +1,29 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
-namespace NetBungieAPI.Destiny.Definitions.Vendors
+namespace NetBungieAPI.Models.Destiny.Definitions.Vendors
 {
-    public class VendorAction : IDeepEquatable<VendorAction>
+    public sealed record DestinyVendorActionDefinition : IDeepEquatable<DestinyVendorActionDefinition>
     {
+        [JsonPropertyName("description")]
         public string Description { get; init; }
+        [JsonPropertyName("executeSeconds")]
         public int ExecuteSeconds { get; init; }
+        [JsonPropertyName("icon")]
         public string Icon { get; init; }
+        [JsonPropertyName("name")]
         public string Name { get; init; }
+        [JsonPropertyName("verb")]
         public string Verb { get; init; }
+        [JsonPropertyName("isPositive")]
         public bool IsPositive { get; init; }
+        [JsonPropertyName("actionId")]
         public string ActionId { get; init; }
+        [JsonPropertyName("actionHash")]
         public uint ActionHash { get; init; }
+        [JsonPropertyName("autoPerformAction")]
         public bool AutoPerformAction { get; init; }
 
-        [JsonConstructor]
-        internal VendorAction(string description, int executeSeconds, string icon, string name, string verb, bool isPositive, string actionId, uint actionHash, 
-            bool autoPerformAction)
-        {
-            Description = description;
-            ExecuteSeconds = executeSeconds;
-            Icon = icon;
-            Name = name;
-            Verb = verb;
-            IsPositive = isPositive;
-            ActionId = actionId;
-            ActionHash = actionHash;
-            AutoPerformAction = autoPerformAction;
-        }
-
-        public bool DeepEquals(VendorAction other)
+        public bool DeepEquals(DestinyVendorActionDefinition other)
         {
             return other != null &&
                    Description == other.Description &&

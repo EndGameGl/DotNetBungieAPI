@@ -1,181 +1,167 @@
 ﻿using NetBungieAPI.Attributes;
-using NetBungieAPI.Destiny.Definitions.Factions;
-using NetBungieAPI.Destiny.Definitions.InventoryItems;
-using Newtonsoft.Json;
-using System;
+using NetBungieAPI.Models.Dates;
+using NetBungieAPI.Models.Destiny.Definitions.Factions;
+using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Vendors
 {
     [DestinyDefinition(DefinitionsEnum.DestinyVendorDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyVendorDefinition : IDestinyDefinition, IDeepEquatable<DestinyVendorDefinition>
+    public sealed record DestinyVendorDefinition : IDestinyDefinition, IDeepEquatable<DestinyVendorDefinition>
     {
         /// <summary>
         /// Display properties of this vendor
         /// </summary>
-        public VendorDisplayProperties DisplayProperties { get; init; }
-        public VendorProgressionType VendorProgressionType { get; init; }
+        [JsonPropertyName("displayProperties")]
+        public DestinyVendorDisplayPropertiesDefinition DisplayProperties { get; init; }
+        [JsonPropertyName("vendorProgressionType")]
+        public DestinyVendorProgressionType VendorProgressionType { get; init; }
+        [JsonPropertyName("buyString")]
         public string BuyString { get; init; }
+        [JsonPropertyName("sellString")]
         public string SellString { get; init; }
         /// <summary>
         /// Item that is featured on this vendor, or a related currency
         /// </summary>
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> DisplayItem { get; init; }
+        [JsonPropertyName("displayItemHash")]
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> DisplayItem { get; init; } = DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
         /// <summary>
         /// Whether you can buy items from this vendor or not
         /// </summary>
+        [JsonPropertyName("inhibitBuying")]
         public bool InhibitBuying { get; init; }
         /// <summary>
         /// Whether you can buy sell items to this vendor or not
         /// </summary>
+        [JsonPropertyName("inhibitSelling")]
         public bool InhibitSelling { get; init; }
         /// <summary>
         /// If this vendor has a faction, this is it
         /// </summary>
-        public DefinitionHashPointer<DestinyFactionDefinition> Faction { get; init; }
+        [JsonPropertyName("factionHash")]
+        public DefinitionHashPointer<DestinyFactionDefinition> Faction { get; init; } = DefinitionHashPointer<DestinyFactionDefinition>.Empty;
         /// <summary>
         /// How frequently this vendor refreshes
         /// </summary>
+        [JsonPropertyName("resetIntervalMinutes")]
         public int ResetIntervalMinutes { get; init; }
         /// <summary>
         /// Vendor reset offset in minutes
         /// </summary>
+        [JsonPropertyName("resetOffsetMinutes")]
         public int ResetOffsetMinutes { get; init; }
         /// <summary>
         /// Possible reasons for getting items failure
         /// </summary>
-        public ReadOnlyCollection<string> FailureStrings { get; init; }
+        [JsonPropertyName("failureStrings")]
+        public ReadOnlyCollection<string> FailureStrings { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
         /// <summary>
         /// Information about when this vendor is available
         /// </summary>
-        public ReadOnlyCollection<VendorUnlockRange> UnlockRanges { get; init; }
+        [JsonPropertyName("unlockRanges")]
+        public ReadOnlyCollection<DateRange> UnlockRanges { get; init; } = Defaults.EmptyReadOnlyCollection<DateRange>();
         /// <summary>
         /// Internal vendor identifier
         /// </summary>
+        [JsonPropertyName("vendorIdentifier")]
         public string VendorIdentifier { get; init; }
+        [JsonPropertyName("vendorPortrait")]
         public string VendorPortrait { get; init; }
+        [JsonPropertyName("vendorBanner")]
         public string VendorBanner { get; init; }
         /// <summary>
         /// Whether this vendor is currently enabled
         /// </summary>
+        [JsonPropertyName("enabled")]
         public bool Enabled { get; init; }
         /// <summary>
         /// Whether this vendor is visible in UI
         /// </summary>
+        [JsonPropertyName("visible")]
         public bool Visible { get; init; }
+        [JsonPropertyName("vendorSubcategoryIdentifier")]
         public string VendorSubcategoryIdentifier { get; init; }
         /// <summary>
         /// Whether you should consolidate categories with minor differences
         /// </summary>
+        [JsonPropertyName("consolidateCategories")]
         public bool ConsolidateCategories { get; init; }
         /// <summary>
         /// Actions that can be performed with this vendor
         /// </summary>
-        public ReadOnlyCollection<VendorAction> Actions { get; init; }
+        [JsonPropertyName("actions")]
+        public ReadOnlyCollection<DestinyVendorActionDefinition> Actions { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyVendorActionDefinition>();
         /// <summary>
         /// Info about how vendor groups items for display
         /// </summary>
-        public ReadOnlyCollection<VendorCategory> Categories { get; init; }
+        [JsonPropertyName("categories")]
+        public ReadOnlyCollection<DestinyVendorCategoryEntryDefinition> Categories { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyVendorCategoryEntryDefinition>();
         /// <summary>
         /// Pre-aggregated category data, before it was turned into <see cref="DestinyVendorDefinition.Categories"/>
         /// </summary>
-        public ReadOnlyCollection<VendorCategory> OriginalCategories { get; init; }
+        [JsonPropertyName("originalCategories")]
+        public ReadOnlyCollection<DestinyVendorCategoryEntryDefinition> OriginalCategories { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyVendorCategoryEntryDefinition>();
         /// <summary>
         ///  Info about which groups are displayed by vendor
         /// </summary>
-        public ReadOnlyCollection<VendorDisplayCategory> DisplayCategories { get; init; }
+        [JsonPropertyName("displayCategories")]
+        public ReadOnlyCollection<DestinyDisplayCategoryDefinition> DisplayCategories { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyDisplayCategoryDefinition>();
         /// <summary>
         /// Information about any interactions with this vendor, such as dialogs with NPC
         /// </summary>
-        public ReadOnlyCollection<VendorInteraction> Interactions { get; init; }
+        [JsonPropertyName("interactions")]
+        public ReadOnlyCollection<DestinyVendorInteractionDefinition> Interactions { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyVendorInteractionDefinition>();
         /// <summary>
         /// Information for displaying your own items to you from this vendor
         /// </summary>
-        public ReadOnlyCollection<VendorInventoryFlyout> InventoryFlyouts { get; init; }
+        [JsonPropertyName("inventoryFlyouts")]
+        public ReadOnlyCollection<DestinyVendorInventoryFlyoutDefinition> InventoryFlyouts { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyVendorInventoryFlyoutDefinition>();
         /// <summary>
         /// Items that this vendors can sell to the player
         /// </summary>
-        public ReadOnlyCollection<VendorItem> ItemList { get; init; }
+        [JsonPropertyName("itemList")]
+        public ReadOnlyCollection<DestinyVendorItemDefinition> ItemList { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyVendorItemDefinition>();
         /// <summary>
         /// Additional info about what services this vendor does
         /// </summary>
-        public ReadOnlyCollection<VendorService> Services { get; init; }
+        [JsonPropertyName("services")]
+        public ReadOnlyCollection<DestinyVendorServiceDefinition> Services { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyVendorServiceDefinition>();
         /// <summary>
         /// If vendor can transer items, this field points out transfer destinations
         /// </summary>
-        public ReadOnlyCollection<VendorAcceptedItem> AcceptedItems { get; init; }
+        [JsonPropertyName("acceptedItems")]
+        public ReadOnlyCollection<DestinyVendorAcceptedItemDefinition> AcceptedItems { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyVendorAcceptedItemDefinition>();
         /// <summary>
         /// Whether this vendor is returned on vendor request
         /// </summary>
+        [JsonPropertyName("returnWithVendorRequest")]
         public bool ReturnWithVendorRequest { get; init; }
         /// <summary>
         /// Possible locations for this vendor to be
         /// </summary>
-        public ReadOnlyCollection<VendorLocation> Locations { get; init; }
+        [JsonPropertyName("locations")]
+        public ReadOnlyCollection<DestinyVendorLocationDefinition> Locations { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyVendorLocationDefinition>();
         /// <summary>
         /// Group that this vendor belongs to
         /// </summary>
-        public ReadOnlyCollection<VendorGroup> Groups { get; init; }
+        [JsonPropertyName("groups")]
+        public ReadOnlyCollection<DestinyVendorGroupReference> Groups { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyVendorGroupReference>();
         /// <summary>
         /// Items that should be ignored when selling something
         /// </summary>
+        [JsonPropertyName("ignoreSaleItemHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> IgnoreSaleItems { get; init; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public uint UnlockValueHash { get; init; }      
+        [JsonPropertyName("unlockValueHash")]
+        public uint UnlockValueHash { get; init; }
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyVendorDefinition(bool consolidateCategories, uint displayItemHash, uint factionHash, string[] failureStrings, bool inhibitBuying, bool inhibitSelling,
-            int resetIntervalMinutes, int resetOffsetMinutes, bool returnWithVendorRequest, uint unlockValueHash, bool visible, VendorDisplayProperties displayProperties,
-            VendorCategory[] categories, VendorDisplayCategory[] displayCategories, VendorCategory[] originalCategories, VendorItem[] itemList,
-            VendorAcceptedItem[] acceptedItems, VendorAction[] actions, uint[] ignoreSaleItemHashes, VendorInteraction[] interactions, string vendorSubcategoryIdentifier,
-            VendorInventoryFlyout[] inventoryFlyouts, VendorService[] services, VendorUnlockRange[] unlockRanges, string vendorIdentifier, string vendorBanner,
-            VendorLocation[] locations, VendorGroup[] groups, VendorProgressionType vendorProgressionType, string buyString, string sellString, string vendorPortrait,
-            bool enabled, bool blacklisted, uint hash, int index, bool redacted)
-        {
-            ConsolidateCategories = consolidateCategories;
-            DisplayItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(displayItemHash, DefinitionsEnum.DestinyInventoryItemDefinition);
-            Faction = new DefinitionHashPointer<DestinyFactionDefinition>(factionHash, DefinitionsEnum.DestinyFactionDefinition);
-            FailureStrings = failureStrings.AsReadOnlyOrEmpty();
-            InhibitBuying = inhibitBuying;
-            InhibitSelling = inhibitSelling;
-            ResetIntervalMinutes = resetIntervalMinutes;
-            ResetOffsetMinutes = resetOffsetMinutes;
-            ReturnWithVendorRequest = returnWithVendorRequest;
-            UnlockValueHash = unlockValueHash;
-            DisplayProperties = displayProperties;
-            Visible = visible;
-            Categories = categories.AsReadOnlyOrEmpty();
-            DisplayCategories = displayCategories.AsReadOnlyOrEmpty();
-            OriginalCategories = originalCategories.AsReadOnlyOrEmpty();
-            ItemList = itemList.AsReadOnlyOrEmpty();
-            AcceptedItems = acceptedItems.AsReadOnlyOrEmpty();
-            Actions = actions.AsReadOnlyOrEmpty();
-            IgnoreSaleItems = ignoreSaleItemHashes.DefinitionsAsReadOnlyOrEmpty<DestinyInventoryItemDefinition>(DefinitionsEnum.DestinyInventoryItemDefinition);
-            Interactions = interactions.AsReadOnlyOrEmpty();
-            InventoryFlyouts = inventoryFlyouts.AsReadOnlyOrEmpty();
-            Services = services.AsReadOnlyOrEmpty();
-            UnlockRanges = unlockRanges.AsReadOnlyOrEmpty();
-            VendorIdentifier = vendorIdentifier;
-            Locations = locations.AsReadOnlyOrEmpty();
-            Groups = groups.AsReadOnlyOrEmpty();
-            Enabled = enabled;
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-            VendorProgressionType = vendorProgressionType;
-            BuyString = buyString;
-            SellString = sellString;
-            VendorPortrait = vendorPortrait;
-            VendorBanner = vendorBanner;
-            VendorSubcategoryIdentifier = vendorSubcategoryIdentifier;
-        }
 
         public override string ToString()
         {

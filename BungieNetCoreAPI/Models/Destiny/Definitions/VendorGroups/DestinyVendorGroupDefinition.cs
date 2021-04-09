@@ -1,31 +1,26 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.VendorGroups
 {
     [DestinyDefinition(DefinitionsEnum.DestinyVendorGroupDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyVendorGroupDefinition : IDestinyDefinition, IDeepEquatable<DestinyVendorGroupDefinition>
+    public sealed record DestinyVendorGroupDefinition : IDestinyDefinition, IDeepEquatable<DestinyVendorGroupDefinition>
     {
         /// <summary>
         /// Vendor group name
         /// </summary>
+        [JsonPropertyName("categoryName")]
         public string CategoryName { get; init; }
+        [JsonPropertyName("order")]
         public int Order { get; init; }
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyVendorGroupDefinition(string categoryName, int order, bool blacklisted, uint hash, int index, bool redacted)
-        {
-            CategoryName = categoryName;
-            Order = order;
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

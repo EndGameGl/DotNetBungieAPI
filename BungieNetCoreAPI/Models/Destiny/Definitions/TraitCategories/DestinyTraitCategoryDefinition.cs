@@ -1,41 +1,36 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.Traits;
 using System.Collections.ObjectModel;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.TraitCategories
 {
     [DestinyDefinition(DefinitionsEnum.DestinyTraitCategoryDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyTraitCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinyTraitCategoryDefinition>
+    public sealed record DestinyTraitCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinyTraitCategoryDefinition>
     {
         /// <summary>
         /// String for this trait category
         /// </summary>
+        [JsonPropertyName("traitCategoryId")]
         public string TraitCategoryId { get; init; }
         /// <summary>
         /// Traits that are in this category
         /// </summary>
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; }
+        [JsonPropertyName("traitHashes")]
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; } = Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>();
         /// <summary>
         /// Possible trait strings for searching in this category
         /// </summary>
-        public ReadOnlyCollection<string> TraitIds { get; init; }
+        [JsonPropertyName("traitIds")]
+        public ReadOnlyCollection<string> TraitIds { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-
-        [JsonConstructor]
-        internal DestinyTraitCategoryDefinition(string traitCategoryId, uint[] traitHashes, string[] traitIds, bool blacklisted, uint hash, int index, bool redacted)
-        {
-            TraitCategoryId = traitCategoryId;
-            Traits = traitHashes.DefinitionsAsReadOnlyOrEmpty<DestinyTraitDefinition>(DefinitionsEnum.DestinyTraitDefinition);
-            TraitIds = traitIds.AsReadOnlyOrEmpty();
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

@@ -1,37 +1,32 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
-using System.Collections.Generic;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
+using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Unlocks
 {
     [DestinyDefinition(DefinitionsEnum.DestinyUnlockDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public class DestinyUnlockDefinition : IDestinyDefinition, IDeepEquatable<DestinyUnlockDefinition>
+    public sealed record DestinyUnlockDefinition : IDestinyDefinition, IDeepEquatable<DestinyUnlockDefinition>
     {
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
         /// <summary>
         /// Always 0 for now, useless
         /// </summary>
+        [JsonPropertyName("scope")]
         public int Scope { get; init; }
         /// <summary>
         /// Always 0 for now, useless
         /// </summary>
+        [JsonPropertyName("unlockType")]
         public int UnlockType { get; init; }
+        [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")]
         public uint Hash { get; init; }
+        [JsonPropertyName("index")]
         public int Index { get; init; }
+        [JsonPropertyName("redacted")]
         public bool Redacted { get; init; }
-
-        [JsonConstructor]
-        internal DestinyUnlockDefinition(DestinyDisplayPropertiesDefinition displayProperties, int scope, int unlockType, bool blacklisted, uint hash, int index, bool redacted)
-        {
-            DisplayProperties = displayProperties;
-            Scope = scope;
-            UnlockType = unlockType;
-            Blacklisted = blacklisted;
-            Hash = hash;
-            Index = index;
-            Redacted = redacted;
-        }
 
         public override string ToString()
         {

@@ -1,4 +1,4 @@
-﻿namespace NetBungieAPI.Destiny.Definitions.Vendors
+﻿namespace NetBungieAPI.Models.Destiny
 {
     public enum VendorDisplayCategorySortOrder
     {

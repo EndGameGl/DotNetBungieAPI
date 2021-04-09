@@ -1,51 +1,44 @@
-﻿using Newtonsoft.Json;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
-namespace NetBungieAPI.Destiny.Definitions.Vendors
+namespace NetBungieAPI.Models.Destiny.Definitions.Vendors
 {
-    public class VendorCategory : IDeepEquatable<VendorCategory>
+    public sealed record DestinyVendorCategoryEntryDefinition : IDeepEquatable<DestinyVendorCategoryEntryDefinition>
     {
+        [JsonPropertyName("buyStringOverride")]
         public string BuyStringOverride { get; init; }
+        [JsonPropertyName("categoryHash")]
         public uint CategoryHash { get; init; }
+        [JsonPropertyName("categoryIndex")]
         public int CategoryIndex { get; init; }
+        [JsonPropertyName("disabledDescription")]
         public string DisabledDescription { get; init; }
+        [JsonPropertyName("hideFromRegularPurchase")]
         public bool HideFromRegularPurchase { get; init; }
+        [JsonPropertyName("hideIfNoCurrency")]
         public bool HideIfNoCurrency { get; init; }
+        [JsonPropertyName("isDisplayOnly")]
         public bool IsDisplayOnly { get; init; }
+        [JsonPropertyName("isPreview")]
         public bool IsPreview { get; init; }
+        [JsonPropertyName("quantityAvailable")]
         public int QuantityAvailable { get; init; }
+        [JsonPropertyName("resetIntervalMinutesOverride")]
         public int ResetIntervalMinutesOverride { get; init; }
+        [JsonPropertyName("resetOffsetMinutesOverride")]
         public int ResetOffsetMinutesOverride { get; init; }
+        [JsonPropertyName("showUnavailableItems")]
         public bool ShowUnavailableItems { get; init; }
-        public int SortValue { get; init; }
-        public ReadOnlyCollection<int> VendorItemIndexes { get; init; }
+        [JsonPropertyName("sortValue")]
+        public VendorDisplayCategorySortOrder SortValue { get; init; }
+        [JsonPropertyName("vendorItemIndexes")]
+        public ReadOnlyCollection<int> VendorItemIndexes { get; init; } = Defaults.EmptyReadOnlyCollection<int>();
+        [JsonPropertyName("displayTitle")]
         public string DisplayTitle { get; init; }
-        public VendorCategoryOverlay Overlay { get; init; }
+        [JsonPropertyName("overlay")]
+        public DestinyVendorCategoryOverlayDefinition Overlay { get; init; }
 
-        [JsonConstructor]
-        internal VendorCategory(string buyStringOverride, uint categoryHash, int categoryIndex, string disabledDescription, bool hideFromRegularPurchase,
-            bool hideIfNoCurrency, bool isDisplayOnly, bool isPreview, int quantityAvailable, int resetIntervalMinutesOverride, int resetOffsetMinutesOverride,
-            bool showUnavailableItems, int sortValue, int[] vendorItemIndexes, string displayTitle, VendorCategoryOverlay overlay)
-        {
-            BuyStringOverride = buyStringOverride;
-            CategoryHash = categoryHash;
-            CategoryIndex = categoryIndex;
-            DisabledDescription = disabledDescription;
-            HideFromRegularPurchase = hideFromRegularPurchase;
-            HideIfNoCurrency = hideIfNoCurrency;
-            IsDisplayOnly = isDisplayOnly;
-            IsPreview = isPreview;
-            QuantityAvailable = quantityAvailable;
-            ResetIntervalMinutesOverride = resetIntervalMinutesOverride;
-            ResetOffsetMinutesOverride = resetIntervalMinutesOverride;
-            ShowUnavailableItems = showUnavailableItems;
-            SortValue = sortValue;
-            VendorItemIndexes = vendorItemIndexes.AsReadOnlyOrEmpty();
-            DisplayTitle = displayTitle;
-            Overlay = overlay;
-        }
-
-        public bool DeepEquals(VendorCategory other)
+        public bool DeepEquals(DestinyVendorCategoryEntryDefinition other)
         {
             return other != null &&
                    BuyStringOverride == other.BuyStringOverride &&

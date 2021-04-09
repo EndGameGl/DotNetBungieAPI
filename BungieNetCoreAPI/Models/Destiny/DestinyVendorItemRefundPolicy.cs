@@ -1,6 +1,6 @@
-﻿namespace NetBungieAPI.Destiny.Definitions.Vendors
+﻿namespace NetBungieAPI.Models.Destiny
 {
-    public enum VendorItemRefundPolicy
+    public enum DestinyVendorItemRefundPolicy
     {
         NotRefundable = 0,
         DeletesItem = 1,
