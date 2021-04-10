@@ -1,4 +1,5 @@
 ﻿using NetBungieAPI.Models.Destiny.Components;
+using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Responses
@@ -37,18 +38,27 @@ namespace NetBungieAPI.Models.Destiny.Responses
         public DictionaryComponentResponseOfint64AndDestinyInventoryComponent CharacterInventories { get; init; }
         [JsonPropertyName("characterProgressions")]
         public DictionaryComponentResponseOfint64AndDestinyCharacterProgressionComponent CharacterProgressions { get; init; }
-
-
-        private DestinyProfileComponent<Dictionary<long, DestinyCharacterRecordsComponent>> _characterRecords;
-        private DestinyProfileComponent<Dictionary<long, DestinyCharacterRenderComponent>> _characterRenderData;
-        private DestinyProfileComponent<Dictionary<long, DestinyCharacterActivitiesComponent>> _characterActivities;
-        private DestinyProfileComponent<Dictionary<long, DestinyInventoryComponent>> _characterEquipment;
-        private DestinyItemSetComponent _itemComponents;
-        private Dictionary<long, СharacterUninstancedItemsComponent> _characterUninstancedItemComponents;
-        private DestinyProfileComponent<Dictionary<long, DestinyKiosksComponent>> _characterKiosks;
-        private DestinyProfileComponent<Dictionary<long, DestinyCurrenciesComponent>> _characterCurrencyLookups;
-        private DestinyProfileComponent<Dictionary<long, DestinyPresentationNodesComponent>> _characterPresentationNodes;
-        private DestinyProfileComponent<Dictionary<long, DestinyCollectiblesComponent>> _characterCollectibles;
-        private DestinyProfileComponent<Dictionary<long, DestinyPlugSetsComponent>> _characterPlugSets;
+        [JsonPropertyName("characterRenderData")]
+        public DictionaryComponentResponseOfint64AndDestinyCharacterRenderComponent CharacterRenderData { get; init; }
+        [JsonPropertyName("characterActivities")]
+        public DictionaryComponentResponseOfint64AndDestinyCharacterActivitiesComponent CharacterActivities { get; init; }
+        [JsonPropertyName("characterEquipment")]
+        public DictionaryComponentResponseOfint64AndDestinyInventoryComponent CharacterEquipment { get; init; }
+        [JsonPropertyName("characterKiosks")]
+        public DictionaryComponentResponseOfint64AndDestinyKiosksComponent CharacterKiosks { get; init; }
+        [JsonPropertyName("characterPlugSets")]
+        public DictionaryComponentResponseOfint64AndDestinyPlugSetsComponent CharacterPlugSets { get; init; }
+        [JsonPropertyName("characterUninstancedItemComponents")]
+        public ReadOnlyDictionary<long, DestinyBaseItemComponentSetOfuint32> CharacterUninstancedItemComponents { get; init; }
+        [JsonPropertyName("characterPresentationNodes")]
+        public DictionaryComponentResponseOfint64AndDestinyPresentationNodesComponent CharacterPresentationNodes { get; init; }
+        [JsonPropertyName("characterRecords")]
+        public DictionaryComponentResponseOfint64AndDestinyCharacterRecordsComponent CharacterRecords { get; init; }
+        [JsonPropertyName("characterCollectibles")]
+        public DictionaryComponentResponseOfint64AndDestinyCollectiblesComponent CharacterCollectibles { get; init; }
+        [JsonPropertyName("itemComponents")]
+        public DestinyItemComponentSetOfint64 ItemComponents { get; init; }
+        [JsonPropertyName("characterCurrencyLookups")]
+        public DictionaryComponentResponseOfint64AndDestinyCurrenciesComponent CharacterCurrencyLookups { get; init; }
     }
 }

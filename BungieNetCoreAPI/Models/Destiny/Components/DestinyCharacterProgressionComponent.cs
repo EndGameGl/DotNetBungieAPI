@@ -1,4 +1,5 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.Checklists;
+﻿using NetBungieAPI.Models.Destiny.Artifacts;
+using NetBungieAPI.Models.Destiny.Definitions.Checklists;
 using NetBungieAPI.Models.Destiny.Definitions.Factions;
 using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Models.Destiny.Definitions.Milestones;
