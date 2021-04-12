@@ -1,4 +1,4 @@
-﻿using NetBungieAPI.Destiny.Profile.Components.Contracts;
+﻿using NetBungieAPI.Models.Destiny.Progressions;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 

@@ -184,7 +184,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Milestones
                     entry.Value.Vendor.TryMapValue();
                     foreach (var item in entry.Value.Items)
                     {
-                        item.Vendor.TryMapValue();
+                        //item.Vendor.TryMapValue();
                         item.Item.TryMapValue();
                     }
                 }

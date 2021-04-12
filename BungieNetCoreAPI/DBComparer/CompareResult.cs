@@ -7,12 +7,12 @@ using System;
 
 namespace NetBungieAPI.DBComparer
 {
-    public class CompareResult
+    public sealed record CompareResult
     {
         private static JsonDiffPatch _diff = new JsonDiffPatch();
         public BungieLocales Locale { get; set; }
         public DefinitionsEnum Definition { get; set; }
-        public uint Hash { get; set; }
+        public uint Hash { get; init; }
         public string Older { get; set; }
         public string Newer { get; set; }
         public bool WasUpdated { get; set; } = false;
@@ -50,6 +50,6 @@ namespace NetBungieAPI.DBComparer
         {
             return JsonConvert.DeserializeObject<T>(Newer);
         }
-        public DefinitionHashPointer<T> AsPointer<T>() where T : IDestinyDefinition => new DefinitionHashPointer<T>(Hash, Definition);
+        public DefinitionHashPointer<T> AsPointer<T>() where T : IDestinyDefinition => new DefinitionHashPointer<T>(Hash);
     }
 }

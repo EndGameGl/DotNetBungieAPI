@@ -6,6 +6,7 @@ using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using NetBungieAPI.Models.Destiny.Config;
 
 namespace NetBungieAPI.Repositories
 {

@@ -29,11 +29,11 @@ namespace NetBungieAPI.Services
         private readonly ILogger _logger;
         private readonly IConfigurationService _config;
 
-        private readonly Uri _authorizationEndpoint = new Uri("https://www.bungie.net/en/oauth/authorize");
-        private readonly Uri _authorizationTokenEndpoint = new Uri("https://www.bungie.net/platform/app/oauth/token/");
-        private readonly Uri _platformEndpoint = new Uri("https://www.bungie.net/Platform");
-        private readonly Uri _cdnEndpoint = new Uri("https://www.bungie.net");
-        private readonly Uri _statsEndpoint = new Uri("https://www.stats.bungie.net");
+        private readonly string _authorizationEndpoint = "https://www.bungie.net/en/oauth/authorize";
+        private readonly string _authorizationTokenEndpoint = "https://www.bungie.net/platform/app/oauth/token/";
+        private readonly string _platformEndpoint = "https://www.bungie.net/Platform";
+        private readonly string _cdnEndpoint = "https://www.bungie.net";
+        private readonly string _statsEndpoint = "https://www.stats.bungie.net";
 
         private readonly HttpClient _httpClient;
         internal HttpClientInstance(ILogger logger, IConfigurationService configuration)
@@ -84,7 +84,7 @@ namespace NetBungieAPI.Services
             var requestMessage = new HttpRequestMessage()
             {
                 Method = HttpMethod.Post,
-                RequestUri = _authorizationTokenEndpoint,
+                RequestUri = new Uri(_authorizationTokenEndpoint),
                 Content = new StringContent($"grant_type=authorization_code&code={code}")
             };
             requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Basic", authValue);
@@ -106,7 +106,7 @@ namespace NetBungieAPI.Services
             var requestMessage = new HttpRequestMessage()
             {
                 Method = HttpMethod.Post,
-                RequestUri = _authorizationTokenEndpoint,
+                RequestUri = new Uri(_authorizationTokenEndpoint),
                 Content = new StringContent($"grant_type=refresh_token&code={oldToken.RefreshToken}")
             };
             requestMessage.Headers.Authorization = new AuthenticationHeaderValue(oldToken.TokenType, oldToken.AccessToken);
@@ -267,21 +267,21 @@ namespace NetBungieAPI.Services
         }
         public async ValueTask<BungieResponse<T>> GetFromBungieNetPlatform<T>(string query, CancellationToken token, string authToken = null)
         {
-            var finalQuery = _platformEndpoint + query;
+            var finalQuery = StringBuilderPool.GetBuilder(token).Append(_platformEndpoint).Append(query).ToString();
             _logger.Log($"Calling api: {finalQuery}", LogType.Debug);
             var request = CreateGetMessage(finalQuery, authToken);
             var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
-            using var stream = await response.Content.ReadAsStreamAsync();
+            await using var stream = await response.Content.ReadAsStreamAsync(token);
             var bungieResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream, _jsonSerializerOptions, token);
             return bungieResponse;
         }
         public async ValueTask<BungieResponse<T>> PostToBungieNetPlatform<T>(string query, CancellationToken token, string authToken = null)
         {
-            var finalQuery = StringBuilderPool.GetBuilder().Append(_platformEndpoint.ToString()).Append(query).ToString();
+            var finalQuery = StringBuilderPool.GetBuilder(token).Append(_platformEndpoint).Append(query).ToString();
             _logger.Log($"Calling api: {finalQuery}", LogType.Debug);
             var request = CreatePostMessage(finalQuery, authToken);
             var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
-            using var stream = await response.Content.ReadAsStreamAsync();
+            await using var stream = await response.Content.ReadAsStreamAsync(token);
             var bungieResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream, _jsonSerializerOptions, token);
             return bungieResponse;
         }

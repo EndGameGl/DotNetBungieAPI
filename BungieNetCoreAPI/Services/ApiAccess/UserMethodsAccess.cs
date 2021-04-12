@@ -10,8 +10,8 @@ namespace NetBungieAPI.Services.ApiAccess
 {
     public class UserMethodsAccess : IUserMethodsAccess
     {
-        private IHttpClientInstance _httpClient;
-        private IAuthorizationStateHandler _authHandler;
+        private readonly IHttpClientInstance _httpClient;
+        private readonly IAuthorizationStateHandler _authHandler;
         internal UserMethodsAccess(IHttpClientInstance httpClient, IAuthorizationStateHandler authHandler)
         {
             _httpClient = httpClient;
@@ -19,17 +19,17 @@ namespace NetBungieAPI.Services.ApiAccess
         }
         public async ValueTask<BungieResponse<GeneralUser>> GetBungieNetUserById(long id, CancellationToken token = default)
         {
-            var url = StringBuilderPool.GetBuilder().Append("/User/GetBungieNetUserById/").Append(id).ToString();
+            var url = StringBuilderPool.GetBuilder(token).Append("/User/GetBungieNetUserById/").Append(id).ToString();
             return await _httpClient.GetFromBungieNetPlatform<GeneralUser>(url, token);
         }
         public async ValueTask<BungieResponse<GeneralUser[]>> SearchUsers(string query, CancellationToken token = default)
         {
-            var url = StringBuilderPool.GetBuilder().Append("/User/SearchUsers/?q=").Append(query).ToString();
+            var url = StringBuilderPool.GetBuilder(token).Append("/User/SearchUsers/?q=").Append(query).ToString();
             return await _httpClient.GetFromBungieNetPlatform<GeneralUser[]>(url, token);
         }
         public async ValueTask<BungieResponse<CredentialTypeForAccount[]>> GetCredentialTypesForTargetAccount(long id, CancellationToken token = default)
         {
-            var url = StringBuilderPool.GetBuilder().Append("/User/GetCredentialTypesForTargetAccount/").Append(id).ToString();
+            var url = StringBuilderPool.GetBuilder(token).Append("/User/GetCredentialTypesForTargetAccount/").Append(id).ToString();
             return await _httpClient.GetFromBungieNetPlatform<CredentialTypeForAccount[]>(url, token);
         }
         public async ValueTask<BungieResponse<UserTheme[]>> GetAvailableThemes(CancellationToken token = default)

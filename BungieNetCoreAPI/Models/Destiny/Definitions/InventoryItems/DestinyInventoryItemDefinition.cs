@@ -417,7 +417,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                 {
                     item.Item.TryMapValue();
                 }
-                Action.RewardSheet.TryMapValue();
+                //Action.RewardSheet.TryMapValue();
             }
             if (EquippingBlock != null)
             {

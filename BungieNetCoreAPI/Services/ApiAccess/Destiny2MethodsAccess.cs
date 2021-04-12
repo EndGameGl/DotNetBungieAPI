@@ -1,16 +1,15 @@
-﻿using NetBungieAPI.Destiny;
-using NetBungieAPI.Destiny.Profile;
-using NetBungieAPI.Destiny.Profile.Components.Contracts;
+﻿using NetBungieAPI.Destiny.Profile;
 using NetBungieAPI.Destiny.Responses;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
+using NetBungieAPI.Models.Destiny.Config;
 using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using NetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using NetBungieAPI.Models.Destiny.Milestones;
+using NetBungieAPI.Models.Destiny.Responses;
 using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Models.User;
 using NetBungieAPI.Responses;
-using NetBungieAPI.Services;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
 using System;
@@ -19,11 +18,12 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace NetBungieAPI
+namespace NetBungieAPI.Services.ApiAccess
 {
     public class Destiny2MethodsAccess : IDestiny2MethodsAccess
     {
         private IHttpClientInstance _httpClient;
+
         internal Destiny2MethodsAccess(IHttpClientInstance httpClient)
         {
             _httpClient = httpClient;
@@ -33,53 +33,98 @@ namespace NetBungieAPI
         {
             return await _httpClient.GetFromBungieNetPlatform<DestinyManifest>("/Destiny2/Manifest", token);
         }
+
         /// <summary>
         /// Returns the  definition of an entity of the given Type and hash identifier.
         /// </summary>
         /// <typeparam name="T">Type of entity.</typeparam>
         /// <param name="entityType">The type of entity for whom you would like results.</param>
         /// <param name="hash">The hash identifier for the specific Entity you want returned.</param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<BungieResponse<T>> GetDestinyEntityDefinition<T>(DefinitionsEnum entityType, uint hash) where T : IDestinyDefinition
+        public async ValueTask<BungieResponse<T>> GetDestinyEntityDefinition<T>(DefinitionsEnum entityType, uint hash,
+            CancellationToken token = default) where T : IDestinyDefinition
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<T>>($"/Destiny2/Manifest/{entityType}/{hash}");
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Destiny2/Manifest/")
+                .AddUrlParam(entityType.ToString())
+                .AddUrlParam(hash.ToString())
+                .ToString();
+            return await _httpClient.GetFromBungieNetPlatform<T>(url, token);
         }
+
         /// <summary>
         /// Returns a list of Destiny memberships given a full Gamertag or PSN ID. Unless you pass returnOriginalProfile=true, this will return membership information for the users' Primary Cross Save Profile if they are engaged in cross save rather than any original Destiny profile that is now being overridden.
         /// </summary>
         /// <param name="membershipType">A valid non-BungieNet membership type, or All.</param>
         /// <param name="displayName">The full gamertag or PSN id of the player. Spaces and case are ignored.</param>
         /// <param name="returnOriginalProfile">If passed in and set to true, we will return the original Destiny Profile(s) linked to that gamertag, and not their currently active Destiny Profile.</param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(BungieMembershipType membershipType, string displayName, bool returnOriginalProfile = false)
+        public async ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(BungieMembershipType membershipType,
+            string displayName, bool returnOriginalProfile = false, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<UserInfoCard[]>>($"/Destiny2/SearchDestinyPlayer/{membershipType}/{displayName}/?returnOriginalProfile={returnOriginalProfile}");
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Destiny2/SearchDestinyPlayer/")
+                .AddUrlParam(((int) membershipType).ToString())
+                .AddUrlParam(displayName)
+                .AddQueryParam("returnOriginalProfile", returnOriginalProfile.ToString(), () => returnOriginalProfile)
+                .ToString();
+            return await _httpClient.GetFromBungieNetPlatform<UserInfoCard[]>(url, token);
         }
+
         /// <summary>
         /// Returns a summary information about all profiles linked to the requesting membership type/membership ID that have valid Destiny information.
         /// </summary>
         /// <param name="membershipType">The type for the membership whose linked Destiny accounts you want returned.</param>
         /// <param name="membershipId">The ID of the membership whose linked Destiny accounts you want returned. Make sure your membership ID matches its Membership Type: don't pass us a PSN membership ID and the XBox membership type, it's not going to work!</param>
         /// <param name="getAllMemberships">if set to 'true', all memberships regardless of whether they're obscured by overrides will be returned. Normal privacy restrictions on account linking will still apply no matter what.</param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<BungieResponse<DestinyLinkedProfilesResponse>> GetLinkedProfiles(BungieMembershipType membershipType, long membershipId, bool getAllMemberships = false)
+        public async ValueTask<BungieResponse<DestinyLinkedProfilesResponse>> GetLinkedProfiles(
+            BungieMembershipType membershipType, long membershipId, bool getAllMemberships = false,
+            CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyLinkedProfilesResponse>>($"/Destiny2/{membershipType}/Profile/{membershipId}/LinkedProfiles/?getAllMemberships={getAllMemberships}");
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Destiny2/")
+                .AddUrlParam(((int) membershipType).ToString())
+                .Append("Profile/")
+                .AddUrlParam(membershipId.ToString())
+                .Append("LinkedProfiles/")
+                .AddQueryParam("getAllMemberships", getAllMemberships.ToString(), () => getAllMemberships)
+                .ToString();
+            return await _httpClient.GetFromBungieNetPlatform<DestinyLinkedProfilesResponse>(url, token);
         }
+
         /// <summary>
         /// Returns Destiny Profile information for the supplied membership.
         /// </summary>
         /// <param name="membershipType">A valid non-BungieNet membership type.</param>
         /// <param name="destinyMembershipId">Destiny membership ID.</param>
         /// <param name="componentTypes">List of components to return. You must request at least one component to receive results.</param>
+        /// <param name="token"></param> 
         /// <returns></returns>
-        public async Task<BungieResponse<DestinyComponentProfileResponse>> GetProfile(BungieMembershipType membershipType, long destinyMembershipId,
-            DestinyComponentType[] componentTypes)
+        public async ValueTask<BungieResponse<DestinyProfileResponse>> GetProfile(BungieMembershipType membershipType,
+            long destinyMembershipId,
+            DestinyComponentType[] componentTypes, CancellationToken token = default)
         {
             if (componentTypes == null || componentTypes.Length == 0)
-                throw new Exception("Specify some components before making a profile call.");
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyComponentProfileResponse>>($"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/?components={componentTypes.ComponentsToIntString()}");
+                throw new ArgumentException("Specify some components before making a profile call.");
+
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Destiny2/")
+                .AddUrlParam(((int) membershipType).ToString())
+                .Append("Profile/")
+                .AddUrlParam(destinyMembershipId.ToString())
+                .AddQueryParam("components", componentTypes.ComponentsToIntString())
+                .ToString();
+            return await _httpClient.GetFromBungieNetPlatform<DestinyProfileResponse>(url, token);
         }
+
         /// <summary>
         /// Returns character information for the supplied character.
         /// </summary>
@@ -87,20 +132,47 @@ namespace NetBungieAPI
         /// <param name="destinyMembershipId">Destiny membership ID.</param>
         /// <param name="characterId">ID of the character.</param>
         /// <param name="componentTypes">List of components to return</param>
+        /// <param name="token"></param>
         /// <returns>Character information for the supplied character.</returns>
-        public async Task<BungieResponse<DestinyComponentCharacterResponse>> GetCharacter(BungieMembershipType membershipType, long destinyMembershipId, long characterId, DestinyComponentType[] componentTypes)
+        public async ValueTask<BungieResponse<DestinyCharacterResponse>> GetCharacter(
+            BungieMembershipType membershipType, long destinyMembershipId, long characterId,
+            DestinyComponentType[] componentTypes, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyComponentCharacterResponse>>($"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/?components={componentTypes.ComponentsToIntString()}");
+            if (componentTypes == null || componentTypes.Length == 0)
+                throw new ArgumentException("Specify some components before making a profile call.");
+
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Destiny2/")
+                .AddUrlParam(((int) membershipType).ToString())
+                .Append("Profile/")
+                .AddUrlParam(destinyMembershipId.ToString())
+                .Append("Character/")
+                .AddUrlParam(characterId.ToString())
+                .AddQueryParam("components", componentTypes.ComponentsToIntString())
+                .ToString();
+
+            return await _httpClient.GetFromBungieNetPlatform<DestinyCharacterResponse>(url, token);
         }
+
         /// <summary>
         /// Returns information on the weekly clan rewards and if the clan has earned them or not. Note that this will always report rewards as not redeemed.
         /// </summary>
         /// <param name="groupId">A valid group id of clan.</param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(long groupId)
+        public async ValueTask<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(long groupId,
+            CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyMilestone>>($"/Destiny2/Clan/{groupId}/WeeklyRewardState/");
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Destiny2/Clan/")
+                .AddUrlParam(groupId.ToString())
+                .Append("WeeklyRewardState/")
+                .ToString();
+            return await _httpClient.GetFromBungieNetPlatform<DestinyMilestone>(url, token);
         }
+
         /// <summary>
         /// Retrieve the details of an instanced Destiny Item. An instanced Destiny item is one with an ItemInstanceId. Non-instanced items, such as materials, have no useful instance-specific details and thus are not queryable here.
         /// </summary>
@@ -108,11 +180,25 @@ namespace NetBungieAPI
         /// <param name="destinyMembershipId">The membership ID of the destiny profile.</param>
         /// <param name="itemInstanceId">The Instance ID of the destiny item.</param>
         /// <param name="componentTypes">List of components to return</param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<BungieResponse<DestinyComponentItemResponse>> GetItem(BungieMembershipType membershipType, long destinyMembershipId, long itemInstanceId, DestinyComponentType[] componentTypes)
+        public async ValueTask<BungieResponse<DestinyItemResponse>> GetItem(BungieMembershipType membershipType,
+            long destinyMembershipId, long itemInstanceId, DestinyComponentType[] componentTypes,
+            CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyComponentItemResponse>>($"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Item/{itemInstanceId}/?components={componentTypes.ComponentsToIntString()}");
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Destiny2/")
+                .AddUrlParam(((int) membershipType).ToString())
+                .Append("Profile/")
+                .AddUrlParam(destinyMembershipId.ToString())
+                .Append("Item/")
+                .AddUrlParam(itemInstanceId.ToString())
+                .AddQueryParam("components", componentTypes.ComponentsToIntString())
+                .ToString();
+            return await _httpClient.GetFromBungieNetPlatform<DestinyItemResponse>(url, token);
         }
+
         /// <summary>
         /// Get currently available vendors from the list of vendors that can possibly have rotating inventory. Note that this does not include things like preview vendors and vendors-as-kiosks, neither of whom have rotating/dynamic inventories. Use their definitions as-is for those.
         /// </summary>
@@ -120,11 +206,26 @@ namespace NetBungieAPI
         /// <param name="destinyMembershipId"></param>
         /// <param name="characterId"></param>
         /// <param name="componentTypes"></param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<BungieResponse<DestinyVendorsResponse>> GetVendors(BungieMembershipType membershipType, long destinyMembershipId, long characterId, DestinyComponentType[] componentTypes)
+        public async ValueTask<BungieResponse<DestinyVendorsResponse>> GetVendors(BungieMembershipType membershipType,
+            long destinyMembershipId, long characterId, DestinyComponentType[] componentTypes,
+            CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyVendorsResponse>>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/?components={componentTypes.ComponentsToIntString()}");
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Destiny2/")
+                .AddUrlParam(((int) membershipType).ToString())
+                .Append("Profile/")
+                .AddUrlParam(destinyMembershipId.ToString())
+                .Append("Character/")
+                .AddUrlParam(characterId.ToString())
+                .Append("Vendors/")
+                .AddQueryParam("components", componentTypes.ComponentsToIntString())
+                .ToString();
+            return await _httpClient.GetFromBungieNetPlatform<DestinyVendorsResponse>(url, token);
         }
+
         /// <summary>
         /// Get the details of a specific Vendor.
         /// </summary>
@@ -133,20 +234,44 @@ namespace NetBungieAPI
         /// <param name="characterId"></param>
         /// <param name="vendorHash"></param>
         /// <param name="componentTypes"></param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<BungieResponse<DestinyVendorResponse>> GetVendor(BungieMembershipType membershipType, long destinyMembershipId, long characterId, uint vendorHash, DestinyComponentType[] componentTypes)
+        public async ValueTask<BungieResponse<DestinyVendorResponse>> GetVendor(BungieMembershipType membershipType,
+            long destinyMembershipId, long characterId, uint vendorHash, DestinyComponentType[] componentTypes,
+            CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyVendorResponse>>($"Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/{vendorHash}/?components={componentTypes.ComponentsToIntString()}");
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Destiny2/")
+                .AddUrlParam(((int) membershipType).ToString())
+                .Append("Profile/")
+                .AddUrlParam(destinyMembershipId.ToString())
+                .Append("Character/")
+                .AddUrlParam(characterId.ToString())
+                .Append("Vendors/")
+                .AddUrlParam(vendorHash.ToString())
+                .AddQueryParam("components", componentTypes.ComponentsToIntString())
+                .ToString();
+            return await _httpClient.GetFromBungieNetPlatform<DestinyVendorResponse>(url, token);
         }
+
         /// <summary>
         /// Get items available from vendors where the vendors have items for sale that are common for everyone.
         /// </summary>
         /// <param name="componentTypes"></param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<BungieResponse<DestinyPublicVendorsResponse>> GetPublicVendors(DestinyComponentType[] componentTypes)
+        public async ValueTask<BungieResponse<DestinyPublicVendorsResponse>> GetPublicVendors(
+            DestinyComponentType[] componentTypes, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyPublicVendorsResponse>>($"/Destiny2/Vendors/?components={componentTypes.ComponentsToIntString()}");
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Destiny2/Vendors/")
+                .AddQueryParam("components", componentTypes.ComponentsToIntString())
+                .ToString();
+            return await _httpClient.GetFromBungieNetPlatform<DestinyPublicVendorsResponse>(url, token);
         }
+
         /// <summary>
         /// Given a Presentation Node that has Collectibles as direct descendants, this will return item details about those descendants in the context of the requesting character.
         /// </summary>
@@ -155,29 +280,54 @@ namespace NetBungieAPI
         /// <param name="characterId"></param>
         /// <param name="collectiblePresentationNodeHash"></param>
         /// <param name="componentTypes"></param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<BungieResponse<DestinyCollectibleNodeDetailResponse>> GetCollectibleNodeDetails(BungieMembershipType membershipType, long destinyMembershipId,
-            long characterId, uint collectiblePresentationNodeHash, DestinyComponentType[] componentTypes)
+        public async ValueTask<BungieResponse<DestinyCollectibleNodeDetailResponse>> GetCollectibleNodeDetails(
+            BungieMembershipType membershipType, long destinyMembershipId,
+            long characterId, uint collectiblePresentationNodeHash, DestinyComponentType[] componentTypes,
+            CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyCollectibleNodeDetailResponse>>($"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Collectibles/{collectiblePresentationNodeHash}/?components={componentTypes.ComponentsToIntString()}");
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Destiny2/")
+                .AddUrlParam(((int) membershipType).ToString())
+                .AddQueryParam("components", componentTypes.ComponentsToIntString())
+                .Append("Profile/")
+                .AddUrlParam(destinyMembershipId.ToString())
+                .Append("Character/")
+                .AddUrlParam(characterId.ToString())
+                .Append("Collectibles/")
+                .AddUrlParam(collectiblePresentationNodeHash.ToString())
+                .AddQueryParam("components", componentTypes.ComponentsToIntString())
+                .ToString();
+            return await _httpClient.GetFromBungieNetPlatform<DestinyCollectibleNodeDetailResponse>(url, token);
         }
+
         /// <summary>
         /// Gets the available post game carnage report for the activity ID.
         /// </summary>
         /// <param name="activityId"></param>
         /// <returns></returns>
-        public async Task<BungieResponse<DestinyPostGameCarnageReportData>> GetPostGameCarnageReport(long activityId)
+        public async ValueTask<BungieResponse<DestinyPostGameCarnageReportData>> GetPostGameCarnageReport(
+            long activityId)
         {
-            return await _httpClient.GetFromStatsPlatfromAndDeserialize<BungieResponse<DestinyPostGameCarnageReportData>>($"/Destiny2/Stats/PostGameCarnageReport/{activityId}/");
+            return await _httpClient
+                .GetFromStatsPlatfromAndDeserialize<BungieResponse<DestinyPostGameCarnageReportData>>(
+                    $"/Destiny2/Stats/PostGameCarnageReport/{activityId}/");
         }
+
         /// <summary>
         /// Gets historical stats definitions.
         /// </summary>
         /// <returns></returns>
-        public async Task<BungieResponse<Dictionary<string, DestinyHistoricalStatsDefinition>>> GetHistoricalStatsDefinition()
+        public async ValueTask<BungieResponse<Dictionary<string, DestinyHistoricalStatsDefinition>>>
+            GetHistoricalStatsDefinition()
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<Dictionary<string, DestinyHistoricalStatsDefinition>>>($"/Destiny2/Stats/Definition/");
+            return await _httpClient
+                .GetFromPlatfromAndDeserialize<BungieResponse<Dictionary<string, DestinyHistoricalStatsDefinition>>>(
+                    $"/Destiny2/Stats/Definition/");
         }
+
         /// <summary>
         /// Gets a page list of Destiny items.
         /// </summary>
@@ -185,10 +335,13 @@ namespace NetBungieAPI
         /// <param name="searchTerm">The string to use when searching for Destiny entities.</param>
         /// <param name="page">Page number to return</param>
         /// <returns></returns>
-        public async Task<BungieResponse<DestinyEntitySearchResult>> SearchDestinyEntities(DefinitionsEnum type, string searchTerm, int page = 0)
+        public async ValueTask<BungieResponse<DestinyEntitySearchResult>> SearchDestinyEntities(DefinitionsEnum type,
+            string searchTerm, int page = 0)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyEntitySearchResult>>($"/Destiny2/Armory/Search/{type}/{searchTerm}/?page={page}");
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyEntitySearchResult>>(
+                $"/Destiny2/Armory/Search/{type}/{searchTerm}/?page={page}");
         }
+
         /// <summary>
         /// Gets historical stats for indicated character.
         /// </summary>
@@ -201,8 +354,10 @@ namespace NetBungieAPI
         /// <param name="modes">Game modes to return.</param>
         /// <param name="periodType">Indicates a specific period type to return. Optional. May be: Daily, AllTime, or Activity</param>
         /// <returns></returns>
-        public async Task<BungieResponse<Dictionary<string, DestinyHistoricalStatsByPeriod>>> GetHistoricalStats(BungieMembershipType membershipType, long destinyMembershipId, long characterId,
-            DateTime? daystart = null, DateTime? dayend = null, DestinyStatsGroupType[] groups = null, DestinyActivityModeType[] modes = null, PeriodType periodType = PeriodType.None)
+        public async ValueTask<BungieResponse<Dictionary<string, DestinyHistoricalStatsByPeriod>>> GetHistoricalStats(
+            BungieMembershipType membershipType, long destinyMembershipId, long characterId,
+            DateTime? daystart = null, DateTime? dayend = null, DestinyStatsGroupType[] groups = null,
+            DestinyActivityModeType[] modes = null, PeriodType periodType = PeriodType.None)
         {
             bool hasParams = false;
             if (daystart != null || dayend != null || groups != null || modes != null || periodType != PeriodType.None)
@@ -216,15 +371,19 @@ namespace NetBungieAPI
                 if (dayend.HasValue)
                     parameters.Add($"dayend={dayend.Value.ToString("yyyy-MM-dd")}");
                 if (groups != null && groups.Length > 0)
-                    parameters.Add($"groups={string.Join(',', groups.Select(x => (int)x))}");
+                    parameters.Add($"groups={string.Join(',', groups.Select(x => (int) x))}");
                 if (modes != null && modes.Length > 0)
-                    parameters.Add($"modes={string.Join(',', modes.Select(x => (int)x))}");
+                    parameters.Add($"modes={string.Join(',', modes.Select(x => (int) x))}");
                 if (periodType != PeriodType.None)
-                    parameters.Add($"periodType={(int)periodType}");
+                    parameters.Add($"periodType={(int) periodType}");
                 query = $"{query}?{string.Join('&', parameters)}";
             }
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<Dictionary<string, DestinyHistoricalStatsByPeriod>>>(query);
+
+            return await _httpClient
+                .GetFromPlatfromAndDeserialize<BungieResponse<Dictionary<string, DestinyHistoricalStatsByPeriod>>>(
+                    query);
         }
+
         /// <summary>
         /// Gets aggregate historical stats organized around each character for a given account.
         /// </summary>
@@ -232,10 +391,13 @@ namespace NetBungieAPI
         /// <param name="destinyMembershipId"></param>
         /// <param name="groups"></param>
         /// <returns></returns>
-        public async Task<BungieResponse<DestinyHistoricalStatsAccountResult>> GetHistoricalStatsForAccount(BungieMembershipType membershipType, long destinyMembershipId, DestinyStatsGroupType[] groups = null)
+        public async ValueTask<BungieResponse<DestinyHistoricalStatsAccountResult>> GetHistoricalStatsForAccount(
+            BungieMembershipType membershipType, long destinyMembershipId, DestinyStatsGroupType[] groups = null)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyHistoricalStatsAccountResult>>($"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Stats/{(groups != null && groups.Length > 0 ? $"?groups={string.Join(',', groups.Select(x => (int)x))}" : string.Empty)}");
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyHistoricalStatsAccountResult>>(
+                $"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Stats/{(groups != null && groups.Length > 0 ? $"?groups={string.Join(',', groups.Select(x => (int) x))}" : string.Empty)}");
         }
+
         /// <summary>
         /// Gets activity history stats for indicated character.
         /// </summary>
@@ -246,11 +408,14 @@ namespace NetBungieAPI
         /// <param name="mode"></param>
         /// <param name="page"></param>
         /// <returns></returns>
-        public async Task<BungieResponse<DestinyActivityHistoryResults>> GetActivityHistory(BungieMembershipType membershipType, long destinyMembershipId, long characterId, int count = 25,
+        public async ValueTask<BungieResponse<DestinyActivityHistoryResults>> GetActivityHistory(
+            BungieMembershipType membershipType, long destinyMembershipId, long characterId, int count = 25,
             DestinyActivityModeType mode = DestinyActivityModeType.None, int page = 0)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyActivityHistoryResults>>($"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/Activities/?count={count}&mode={mode}&page={page}");
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyActivityHistoryResults>>(
+                $"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/Activities/?count={count}&mode={mode}&page={page}");
         }
+
         /// <summary>
         /// Gets details about unique weapon usage, including all exotic weapons.
         /// </summary>
@@ -258,10 +423,13 @@ namespace NetBungieAPI
         /// <param name="destinyMembershipId"></param>
         /// <param name="characterId"></param>
         /// <returns></returns>
-        public async Task<BungieResponse<DestinyHistoricalWeaponStatsData>> GetUniqueWeaponHistory(BungieMembershipType membershipType, long destinyMembershipId, long characterId)
+        public async ValueTask<BungieResponse<DestinyHistoricalWeaponStatsData>> GetUniqueWeaponHistory(
+            BungieMembershipType membershipType, long destinyMembershipId, long characterId)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyHistoricalWeaponStatsData>>($"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/UniqueWeapons/");
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyHistoricalWeaponStatsData>>(
+                $"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/UniqueWeapons/");
         }
+
         /// <summary>
         /// Gets all activities the character has participated in together with aggregate statistics for those activities.
         /// </summary>
@@ -269,26 +437,33 @@ namespace NetBungieAPI
         /// <param name="destinyMembershipId"></param>
         /// <param name="characterId"></param>
         /// <returns></returns>
-        public async Task<BungieResponse<DestinyAggregateActivityResults>> GetDestinyAggregateActivityStats(BungieMembershipType membershipType, long destinyMembershipId, long characterId)
+        public async ValueTask<BungieResponse<DestinyAggregateActivityResults>> GetDestinyAggregateActivityStats(
+            BungieMembershipType membershipType, long destinyMembershipId, long characterId)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyAggregateActivityResults>>($"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/AggregateActivityStats/");
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyAggregateActivityResults>>(
+                $"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/AggregateActivityStats/");
         }
+
         /// <summary>
         /// Gets public information about currently available Milestones.
         /// </summary>
         /// <returns></returns>
-        public async Task<BungieResponse<Dictionary<uint, GetPublicMilestonesResponse>>> GetPublicMilestones()
+        public async ValueTask<BungieResponse<Dictionary<uint, GetPublicMilestonesResponse>>> GetPublicMilestones()
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<Dictionary<uint, GetPublicMilestonesResponse>>>($"/Destiny2/Milestones");
+            return await _httpClient
+                .GetFromPlatfromAndDeserialize<BungieResponse<Dictionary<uint, GetPublicMilestonesResponse>>>(
+                    $"/Destiny2/Milestones");
         }
+
         /// <summary>
         /// Gets custom localized content for the milestone of the given hash, if it exists.
         /// </summary>
         /// <param name="milestoneHash">The identifier for the milestone to be returned.</param>
         /// <returns></returns>
-        public async Task<BungieResponse<DestinyMilestoneContent>> GetPublicMilestoneContent(uint milestoneHash)
+        public async ValueTask<BungieResponse<DestinyMilestoneContent>> GetPublicMilestoneContent(uint milestoneHash)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyMilestoneContent>>($"/Destiny2/Milestones/{milestoneHash}/Content/");
+            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<DestinyMilestoneContent>>(
+                $"/Destiny2/Milestones/{milestoneHash}/Content/");
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Data.SQLite;
 using System.IO;
 using System.Linq;
 using System.Text;
+using NetBungieAPI.Models.Destiny.Config;
 
 namespace NetBungieAPI.Repositories
 {

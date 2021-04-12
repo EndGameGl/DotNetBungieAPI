@@ -1,26 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace NetBungieAPI
 {
     internal static class StringBuilderPool
     {
-        private static List<StringBuilderInstance> _builders;
+        private static readonly List<ExtendedStringBuilder> _builders;
         static StringBuilderPool()
         {
-            _builders = new List<StringBuilderInstance>();
+            _builders = new List<ExtendedStringBuilder>();
         }
 
-        public static StringBuilderInstance GetBuilder()
+        public static ExtendedStringBuilder GetBuilder(CancellationToken ct)
         {
-            StringBuilderInstance builder = _builders.FirstOrDefault(x => !x.IsBusy);
-            if (builder is null)
-            {
-                builder = new StringBuilderInstance();
-                _builders.Add(builder);
-            }
-            builder.PrepareForUse();
-            return builder;
+            var builder = _builders.FirstOrDefault(x => !x.IsBusy);
+            if (builder is not null) 
+                return builder.PrepareForUse(ct);
+            builder = new ExtendedStringBuilder();
+            _builders.Add(builder);
+            return builder.PrepareForUse(ct);
         }
     }
 }

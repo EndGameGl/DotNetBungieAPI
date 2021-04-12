@@ -9,6 +9,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Models.Trending;
 using NetBungieAPI.Models;
+using System.Linq.Expressions;
+using NetBungieAPI.Models.Destiny;
 
 namespace NetBungieAPI.TestProject
 {
@@ -86,7 +88,7 @@ namespace NetBungieAPI.TestProject
         }
 
         private static async Task MainAsync()
-        {         
+        {
             //var shouldUpdate = await _bungieClient.CheckUpdates();
             //if (shouldUpdate)
             //    await _bungieClient.DownloadLatestManifestLocally();

@@ -1,6 +1,4 @@
-﻿using NetBungieAPI.Clients;
-using NetBungieAPI.Destiny;
-using NetBungieAPI.Logging;
+﻿using NetBungieAPI.Logging;
 using NetBungieAPI.Models;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
@@ -13,6 +11,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
+using NetBungieAPI.Models.Destiny.Config;
 
 namespace NetBungieAPI.Services
 {
@@ -66,8 +65,10 @@ namespace NetBungieAPI.Services
 
                 return true;
             }
+
             throw new Exception("Update checking is turned off. Apply proper settings to enable update checking.");
         }
+
         public IList<DestinyManifest> FindManifestsAt(string path)
         {
             if (!Directory.Exists(path))
@@ -93,14 +94,17 @@ namespace NetBungieAPI.Services
             });
             return manifests;
         }
+
         public async Task DownloadLastVersion()
         {
             if (_latestVersionApiResponse == null)
                 _latestVersionApiResponse = await _d2Api.GetDestinyManifest();
-            await DownloadManifestFilesLocally(_latestVersionApiResponse.Response, _configuration.Settings.VersionsRepositoryPath, true);
+            await DownloadManifestFilesLocally(_latestVersionApiResponse.Response,
+                _configuration.Settings.VersionsRepositoryPath, true);
         }
 
-        public async Task DownloadManifestFilesLocally(DestinyManifest manifest, string path, bool unpackSQLite = true, ManifestContentDownloadFilter filters = AllFilters)
+        public async Task DownloadManifestFilesLocally(DestinyManifest manifest, string path, bool unpackSQLite = true,
+            ManifestContentDownloadFilter filters = AllFilters)
         {
             path = $"{path}\\{manifest.Version}";
             if (!Directory.Exists(path))
@@ -131,6 +135,7 @@ namespace NetBungieAPI.Services
             stopwatch.Stop();
             _logger.Log($"Finished getting data! {stopwatch.ElapsedMilliseconds} ms.", LogType.Info);
         }
+
         private bool IsZIP(string filepath)
         {
             if (File.Exists(filepath))
@@ -151,6 +156,7 @@ namespace NetBungieAPI.Services
             else
                 return false;
         }
+
         private async Task DownloadMobileAssetContent(DestinyManifest manifest, string path, bool shouldUnpack)
         {
             _stopwatch.Start();
@@ -168,6 +174,7 @@ namespace NetBungieAPI.Services
             }
             else
                 _logger.Log("File already exists, skipping.", LogType.Info);
+
             if (shouldUnpack)
             {
                 _logger.Log("Unpacking zip...", LogType.Info);
@@ -182,10 +189,12 @@ namespace NetBungieAPI.Services
                 else
                     _logger.Log("File is already unpacked", LogType.Info);
             }
+
             _stopwatch.Stop();
             _logger.Log($"Finished loading MobileAssetContent: {_stopwatch.ElapsedMilliseconds} ms", LogType.Info);
             _stopwatch.Reset();
         }
+
         private async Task DownloadMobileGearAssetDataBases(DestinyManifest manifest, string path, bool shouldUnpack)
         {
             _stopwatch.Start();
@@ -207,6 +216,7 @@ namespace NetBungieAPI.Services
                 }
                 else
                     _logger.Log("File already exists, skipping.", LogType.Info);
+
                 if (shouldUnpack)
                 {
                     _logger.Log("Unpacking zip...", LogType.Info);
@@ -222,10 +232,13 @@ namespace NetBungieAPI.Services
                         _logger.Log("File is already unpacked", LogType.Info);
                 }
             }
+
             _stopwatch.Stop();
-            _logger.Log($"Finished loading MobileGearAssetDataBases: {_stopwatch.ElapsedMilliseconds} ms", LogType.Info);
+            _logger.Log($"Finished loading MobileGearAssetDataBases: {_stopwatch.ElapsedMilliseconds} ms",
+                LogType.Info);
             _stopwatch.Reset();
         }
+
         private async Task DownloadMobileWorldContent(DestinyManifest manifest, string path, bool shouldUnpack)
         {
             _stopwatch.Start();
@@ -247,6 +260,7 @@ namespace NetBungieAPI.Services
                 }
                 else
                     _logger.Log("File already exists, skipping.", LogType.Info);
+
                 if (shouldUnpack)
                 {
                     _logger.Log("Unpacking zip...", LogType.Info);
@@ -262,10 +276,12 @@ namespace NetBungieAPI.Services
                         _logger.Log("File is already unpacked", LogType.Info);
                 }
             }
+
             _stopwatch.Stop();
             _logger.Log($"Finished loading MobileWorldContent: {_stopwatch.ElapsedMilliseconds} ms", LogType.Info);
             _stopwatch.Reset();
         }
+
         private async Task DownloadJsonWorldContent(DestinyManifest manifest, string path)
         {
             _stopwatch.Start();
@@ -288,10 +304,12 @@ namespace NetBungieAPI.Services
                 else
                     _logger.Log("File already exists, skipping.", LogType.Info);
             }
+
             _stopwatch.Stop();
             _logger.Log($"Finished loading JsonWorldContent: {_stopwatch.ElapsedMilliseconds} ms", LogType.Info);
             _stopwatch.Reset();
         }
+
         private async Task DownloadJsonWorldComponentContent(DestinyManifest manifest, string path)
         {
             _stopwatch.Start();
@@ -312,7 +330,8 @@ namespace NetBungieAPI.Services
                     var definitionPath = $"{path}/JsonWorldComponentContent/{localeEntry.Key}/{definitionEntry.Key}";
                     if (!Directory.Exists(definitionPath))
                         Directory.CreateDirectory(definitionPath);
-                    var filePath = $"{path}/JsonWorldComponentContent/{localeEntry.Key}/{definitionEntry.Key}/{Path.GetFileName(definitionEntry.Value)}";
+                    var filePath =
+                        $"{path}/JsonWorldComponentContent/{localeEntry.Key}/{definitionEntry.Key}/{Path.GetFileName(definitionEntry.Value)}";
 
                     if (!File.Exists(filePath))
                     {
@@ -322,10 +341,13 @@ namespace NetBungieAPI.Services
                         _logger.Log("File already exists, skipping.", LogType.Info);
                 }
             }
+
             _stopwatch.Stop();
-            _logger.Log($"Finished loading JsonWorldComponentContent: {_stopwatch.ElapsedMilliseconds} ms", LogType.Info);
+            _logger.Log($"Finished loading JsonWorldComponentContent: {_stopwatch.ElapsedMilliseconds} ms",
+                LogType.Info);
             _stopwatch.Reset();
         }
+
         private async Task DownloadMobileClanBannerDatabase(DestinyManifest manifest, string path, bool shouldUnpack)
         {
             _stopwatch.Start();
@@ -339,10 +361,12 @@ namespace NetBungieAPI.Services
             _logger.Log($"Getting data from: {manifest.MobileClanBannerDatabasePath}", LogType.Info);
             if (!File.Exists(filePath))
             {
-                await _httpClientInstance.DownloadFileStreamFromCDNAsync(manifest.MobileClanBannerDatabasePath, filePath);
+                await _httpClientInstance.DownloadFileStreamFromCDNAsync(manifest.MobileClanBannerDatabasePath,
+                    filePath);
             }
             else
                 _logger.Log("File already exists, skipping.", LogType.Info);
+
             if (shouldUnpack)
             {
                 _logger.Log("Unpacking zip...", LogType.Info);
@@ -357,8 +381,10 @@ namespace NetBungieAPI.Services
                 else
                     _logger.Log("File is already unpacked", LogType.Info);
             }
+
             _stopwatch.Stop();
-            _logger.Log($"Finished loading MobileClanBannerDatabase: {_stopwatch.ElapsedMilliseconds} ms", LogType.Info);
+            _logger.Log($"Finished loading MobileClanBannerDatabase: {_stopwatch.ElapsedMilliseconds} ms",
+                LogType.Info);
             _stopwatch.Reset();
         }
     }

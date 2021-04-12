@@ -1,6 +1,6 @@
-﻿using NetBungieAPI.Destiny;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using NetBungieAPI.Models.Destiny.Config;
 
 namespace NetBungieAPI.Services.Interfaces
 {
