@@ -41,26 +41,27 @@ namespace NetBungieAPI.Serialization
 
         private class ReadOnlyCollectionConverter<T> : JsonConverter<ReadOnlyCollection<T>>
         {
-            private readonly Type _valueType;
-            private readonly JsonConverter<T> _valueConverter;
+            //private readonly Type _valueType;
+            //private readonly JsonConverter<T> _valueConverter;
             private readonly JsonSerializerOptions _options;
             public override bool HandleNull => true;
             public ReadOnlyCollectionConverter(JsonSerializerOptions options)
             {
-                _valueType = typeof(T);
-                _valueConverter = (JsonConverter<T>) options.GetConverter(_valueType);
+                //_valueType = typeof(T);
                 _options = options;
+                //_valueConverter = _options.GetConverter(_valueType) as JsonConverter<T>;
             }
             public override ReadOnlyCollection<T> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
-                IList<T> tempCollection = new List<T>();
                 if (reader.TokenType == JsonTokenType.Null)
                     return Defaults.EmptyReadOnlyCollection<T>();
+                
+                IList<T> tempCollection = new List<T>();
                 while (reader.Read())
                 {
                     if (reader.TokenType == JsonTokenType.EndArray)
                         return new ReadOnlyCollection<T>(tempCollection);
-                    tempCollection.Add(_valueConverter.Read(ref reader, _valueType, _options));
+                    tempCollection.Add(JsonSerializer.Deserialize<T>(ref reader, _options));
                 }
                 throw new JsonException();
             }

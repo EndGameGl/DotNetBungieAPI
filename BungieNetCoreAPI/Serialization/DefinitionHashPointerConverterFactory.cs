@@ -8,6 +8,7 @@ namespace NetBungieAPI.Serialization
 {
     public class DefinitionHashPointerConverterFactory : JsonConverterFactory
     {
+        private readonly Type _definitionHashPointerType = typeof(DefinitionHashPointer<>);
         public override bool CanConvert(Type typeToConvert)
         {
             if (!typeToConvert.IsGenericType)
@@ -15,24 +16,19 @@ namespace NetBungieAPI.Serialization
                 return false;
             }
 
-            if (typeToConvert.GetGenericTypeDefinition() != typeof(DefinitionHashPointer<>))
-            {
-                return false;
-            }
-
-            return true;
+            return typeToConvert.GetGenericTypeDefinition() == _definitionHashPointerType;
         }
 
         public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
         {
-            Type definitionType = typeToConvert.GetGenericArguments()[0];
+            var definitionType = typeToConvert.GetGenericArguments()[0];
 
-            JsonConverter converter = (JsonConverter)Activator.CreateInstance(
+            var converter = (JsonConverter)Activator.CreateInstance(
                 typeof(DefinitionHashPointerConverter<>).MakeGenericType(
                     new Type[] { definitionType }),
                 BindingFlags.Instance | BindingFlags.Public,
                 binder: null,
-                args: new object[] { },
+                args: Array.Empty<object>(),
                 culture: null);
 
             return converter;
@@ -47,9 +43,7 @@ namespace NetBungieAPI.Serialization
             }
             public override DefinitionHashPointer<T> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
-                if (reader.TokenType == JsonTokenType.Null)
-                    return DefinitionHashPointer<T>.Empty;
-                return new DefinitionHashPointer<T>(reader.GetUInt32());
+                return reader.TokenType == JsonTokenType.Null ? DefinitionHashPointer<T>.Empty : new DefinitionHashPointer<T>(reader.GetUInt32());
             }
             public override void Write(Utf8JsonWriter writer, DefinitionHashPointer<T> value, JsonSerializerOptions options)
             {

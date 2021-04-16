@@ -24,7 +24,8 @@ namespace NetBungieAPI.Services
             { 
                 new ReadOnlyCollectionConverterFactory(),
                 new DefinitionHashPointerConverterFactory(),
-                new ReadOnlyDictionaryConverterFactory()
+                new ReadOnlyDictionaryStructKeyConverterFactory(),
+                new ReadOnlyDictionaryDefinitionPointerKeyConverterFactory()
             },
             NumberHandling = JsonNumberHandling.AllowReadingFromString
         };
