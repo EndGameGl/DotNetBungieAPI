@@ -1,6 +1,4 @@
-﻿using NetBungieAPI.Destiny.Profile;
-using NetBungieAPI.Destiny.Responses;
-using NetBungieAPI.Models;
+﻿using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Config;
 using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
@@ -12,8 +10,10 @@ using NetBungieAPI.Models.User;
 using NetBungieAPI.Responses;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
+using NetBungieAPI.Models.Destiny.HistoricalStats;
 
 namespace NetBungieAPI.Services.ApiAccess.Interfaces
 {
@@ -32,14 +32,14 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         ValueTask<BungieResponse<DestinyPublicVendorsResponse>> GetPublicVendors(DestinyComponentType[] componentTypes, CancellationToken token = default);
         ValueTask<BungieResponse<DestinyCollectibleNodeDetailResponse>> GetCollectibleNodeDetails(BungieMembershipType membershipType, long destinyMembershipId, long characterId, uint collectiblePresentationNodeHash, DestinyComponentType[] componentTypes, CancellationToken token = default);
         ValueTask<BungieResponse<DestinyPostGameCarnageReportData>> GetPostGameCarnageReport(long activityId, CancellationToken token = default);
-        ValueTask<BungieResponse<Dictionary<string, DestinyHistoricalStatsDefinition>>> GetHistoricalStatsDefinition(CancellationToken token = default);
+        ValueTask<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>>> GetHistoricalStatsDefinition(CancellationToken token = default);
         ValueTask<BungieResponse<DestinyEntitySearchResult>> SearchDestinyEntities(DefinitionsEnum type, string searchTerm, int page = 0, CancellationToken token = default);
-        ValueTask<BungieResponse<Dictionary<string, DestinyHistoricalStatsByPeriod>>> GetHistoricalStats(BungieMembershipType membershipType, long destinyMembershipId, long characterId, DateTime? daystart = null, DateTime? dayend = null, DestinyStatsGroupType[] groups = null, DestinyActivityModeType[] modes = null, PeriodType periodType = PeriodType.None, CancellationToken token = default);
+        ValueTask<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>>> GetHistoricalStats(BungieMembershipType membershipType, long destinyMembershipId, long characterId, DateTime? daystart = null, DateTime? dayend = null, DestinyStatsGroupType[] groups = null, DestinyActivityModeType[] modes = null, PeriodType periodType = PeriodType.None, CancellationToken token = default);
         ValueTask<BungieResponse<DestinyHistoricalStatsAccountResult>> GetHistoricalStatsForAccount(BungieMembershipType membershipType, long destinyMembershipId, DestinyStatsGroupType[] groups = null, CancellationToken token = default);
         ValueTask<BungieResponse<DestinyActivityHistoryResults>> GetActivityHistory(BungieMembershipType membershipType, long destinyMembershipId, long characterId, int count = 25, DestinyActivityModeType mode = DestinyActivityModeType.None, int page = 0, CancellationToken token = default);
         ValueTask<BungieResponse<DestinyHistoricalWeaponStatsData>> GetUniqueWeaponHistory(BungieMembershipType membershipType, long destinyMembershipId, long characterId, CancellationToken token = default);
         ValueTask<BungieResponse<DestinyAggregateActivityResults>> GetDestinyAggregateActivityStats(BungieMembershipType membershipType, long destinyMembershipId, long characterId, CancellationToken token = default);
-        ValueTask<BungieResponse<Dictionary<uint, GetPublicMilestonesResponse>>> GetPublicMilestones(CancellationToken token = default);
+        ValueTask<BungieResponse<Dictionary<uint, DestinyPublicMilestone>>> GetPublicMilestones(CancellationToken token = default);
         ValueTask<BungieResponse<DestinyMilestoneContent>> GetPublicMilestoneContent(uint milestoneHash, CancellationToken token = default);
     }
 }

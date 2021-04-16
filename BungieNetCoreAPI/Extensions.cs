@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using NetBungieAPI.Clients.Settings;
-using NetBungieAPI.Destiny;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Definitions.Activities;

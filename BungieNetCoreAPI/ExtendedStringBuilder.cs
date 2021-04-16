@@ -78,22 +78,31 @@ namespace NetBungieAPI
                 _optionalUrlParams.Add(key, value);
             return this;
         }
-        public override string ToString()
+
+        public string Build()
         {
             lock (_lock)
             {
-                var result = _sb.ToString();
-                if (_optionalUrlParams.Count > 0)
+                var result = string.Empty;
+                switch (_optionalUrlParams.Count)
                 {
-                    _sb.Append('?');
-                    var iterator = 1;
-                    foreach (var (key, value) in _optionalUrlParams)
-                    {
-                        _sb.Append(key).Append('=').Append(value);
-                        if (iterator < _optionalUrlParams.Count)
-                            _sb.Append('&');
-                        iterator++;
-                    }
+                    case 0:
+                        result = _sb.ToString();
+                        break;
+                    case > 0:
+                        {
+                            _sb.Append('?');
+                            var iterator = 1;
+                            foreach (var (key, value) in _optionalUrlParams)
+                            {
+                                _sb.Append(key).Append('=').Append(value);
+                                if (iterator < _optionalUrlParams.Count)
+                                    _sb.Append('&');
+                                iterator++;
+                            }
+                            result = _sb.ToString();
+                            break;
+                        }
                 }
                 _sb.Clear();
                 _optionalUrlParams.Clear();

@@ -7,6 +7,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using NetBungieAPI.Services.Interfaces;
 using System.Threading;
@@ -24,7 +25,8 @@ namespace NetBungieAPI.Services
                 new ReadOnlyCollectionConverterFactory(),
                 new DefinitionHashPointerConverterFactory(),
                 new ReadOnlyDictionaryConverterFactory()
-            }
+            },
+            NumberHandling = JsonNumberHandling.AllowReadingFromString
         };
         private readonly ILogger _logger;
         private readonly IConfigurationService _config;
@@ -267,7 +269,11 @@ namespace NetBungieAPI.Services
         }
         public async ValueTask<BungieResponse<T>> GetFromBungieNetPlatform<T>(string query, CancellationToken token, string authToken = null)
         {
-            var finalQuery = StringBuilderPool.GetBuilder(token).Append(_platformEndpoint).Append(query).ToString();
+            var finalQuery = StringBuilderPool
+                .GetBuilder(token)
+                .Append(_platformEndpoint)
+                .Append(query)
+                .Build();
             _logger.Log($"Calling api: {finalQuery}", LogType.Debug);
             var request = CreateGetMessage(finalQuery, authToken);
             var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
@@ -277,9 +283,27 @@ namespace NetBungieAPI.Services
         }
         public async ValueTask<BungieResponse<T>> PostToBungieNetPlatform<T>(string query, CancellationToken token, string authToken = null)
         {
-            var finalQuery = StringBuilderPool.GetBuilder(token).Append(_platformEndpoint).Append(query).ToString();
+            var finalQuery = StringBuilderPool
+                .GetBuilder(token)
+                .Append(_platformEndpoint)
+                .Append(query)
+                .Build();
             _logger.Log($"Calling api: {finalQuery}", LogType.Debug);
             var request = CreatePostMessage(finalQuery, authToken);
+            var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
+            await using var stream = await response.Content.ReadAsStreamAsync(token);
+            var bungieResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream, _jsonSerializerOptions, token);
+            return bungieResponse;
+        }
+        public async ValueTask<BungieResponse<T>> GetFromBungieNetStatsPlatform<T>(string query, CancellationToken token, string authToken = null)
+        {
+            var finalQuery = StringBuilderPool
+                .GetBuilder(token)
+                .Append(_statsEndpoint)
+                .Append(query)
+                .Build();
+            _logger.Log($"Calling api: {finalQuery}", LogType.Debug);
+            var request = CreateGetMessage(finalQuery, authToken);
             var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
             await using var stream = await response.Content.ReadAsStreamAsync(token);
             var bungieResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream, _jsonSerializerOptions, token);

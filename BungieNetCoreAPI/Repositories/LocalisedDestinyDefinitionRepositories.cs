@@ -1,5 +1,4 @@
-﻿using NetBungieAPI.Destiny;
-using NetBungieAPI.Logging;
+﻿using NetBungieAPI.Logging;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Definitions.Activities;

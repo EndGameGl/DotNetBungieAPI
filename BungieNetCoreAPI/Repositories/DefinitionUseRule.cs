@@ -1,8 +1,5 @@
 ﻿using NetBungieAPI.Attributes;
-using NetBungieAPI.Destiny;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NetBungieAPI.Repositories
 {

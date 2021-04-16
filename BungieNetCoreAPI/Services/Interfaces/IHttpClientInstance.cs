@@ -1,12 +1,8 @@
 ﻿using NetBungieAPI.Authrorization;
 using NetBungieAPI.Models;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,12 +21,22 @@ namespace NetBungieAPI.Services.Interfaces
         string GetAuthLink(int clientId, string state);
         Task<string> DownloadJSONDataFromCDNAsync(string url);
         Task<Image> DownloadImageFromCDNAsync(string url);
-        Task<Image> DownloadImageFromCDNAndSaveAsync(string url, string folderPath, string filename, ImageFormat format);
+
+        Task<Image> DownloadImageFromCDNAndSaveAsync(string url, string folderPath, string filename,
+            ImageFormat format);
+
         Task<T> GetFromPlatfromAndDeserialize<T>(string query, string token = null);
         Task<T> GetFromStatsPlatfromAndDeserialize<T>(string query);
         Task<T> PostToPlatformAndDeserialize<T>(string query, string data);
         Task DownloadFileStreamFromCDNAsync(string query, string savePath);
-        ValueTask<BungieResponse<T>> GetFromBungieNetPlatform<T>(string query, CancellationToken token, string authToken = null);
-        ValueTask<BungieResponse<T>> PostToBungieNetPlatform<T>(string query, CancellationToken token, string authToken = null);
+
+        ValueTask<BungieResponse<T>> GetFromBungieNetPlatform<T>(string query, CancellationToken token,
+            string authToken = null);
+
+        ValueTask<BungieResponse<T>> PostToBungieNetPlatform<T>(string query, CancellationToken token,
+            string authToken = null);
+
+        ValueTask<BungieResponse<T>> GetFromBungieNetStatsPlatform<T>(string query, CancellationToken token,
+            string authToken = null);
     }
 }

@@ -1,5 +1,4 @@
-﻿using NetBungieAPI.Destiny;
-using NetBungieAPI.Models;
+﻿using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Definitions.Activities;
 using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;

@@ -26,9 +26,9 @@ namespace NetBungieAPI.Serialization
 
         public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
         {
-            Type collectionType = typeToConvert.GetGenericArguments()[0];
+            var collectionType = typeToConvert.GetGenericArguments()[0];
 
-            JsonConverter converter = (JsonConverter)Activator.CreateInstance(
+            var converter = (JsonConverter)Activator.CreateInstance(
                 typeof(ReadOnlyCollectionConverter<>).MakeGenericType(
                     new Type[] { collectionType }),
                 BindingFlags.Instance | BindingFlags.Public,
@@ -43,11 +43,13 @@ namespace NetBungieAPI.Serialization
         {
             private readonly Type _valueType;
             private readonly JsonConverter<T> _valueConverter;
+            private readonly JsonSerializerOptions _options;
             public override bool HandleNull => true;
             public ReadOnlyCollectionConverter(JsonSerializerOptions options)
             {
-                _valueConverter = (JsonConverter<T>)options.GetConverter(typeof(T));
                 _valueType = typeof(T);
+                _valueConverter = (JsonConverter<T>) options.GetConverter(_valueType);
+                _options = options;
             }
             public override ReadOnlyCollection<T> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
@@ -58,7 +60,7 @@ namespace NetBungieAPI.Serialization
                 {
                     if (reader.TokenType == JsonTokenType.EndArray)
                         return new ReadOnlyCollection<T>(tempCollection);
-                    tempCollection.Add(_valueConverter.Read(ref reader, _valueType, options));
+                    tempCollection.Add(_valueConverter.Read(ref reader, _valueType, _options));
                 }
                 throw new JsonException();
             }

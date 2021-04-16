@@ -27,12 +27,23 @@ namespace NetBungieAPI.Services.ApiAccess
         }
         public async ValueTask<BungieResponse<SearchResultOfTrendingEntry>> GetTrendingCategory(string categoryId, int pageNumber = 0, CancellationToken token = default)
         {
-            var url = StringBuilderPool.GetBuilder().Append("/Trending/Categories/").Append(categoryId).Append('/').Append(pageNumber).ToString();
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Trending/Categories/")
+                .Append(categoryId).Append('/')
+                .Append(pageNumber)
+                .Build();
             return await _httpClient.GetFromBungieNetPlatform<SearchResultOfTrendingEntry>(url, token);
         }
         public async ValueTask<BungieResponse<TrendingDetail>> GetTrendingEntryDetail(TrendingEntryType trendingEntryType, string identifier, CancellationToken token = default)
         {
-            var url = StringBuilderPool.GetBuilder().Append("/Trending/Details/").Append((int)trendingEntryType).Append('/').Append(identifier).ToString();
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Trending/Details/")
+                .Append((int)trendingEntryType)
+                .Append('/')
+                .Append(identifier)
+                .Build();
             return await _httpClient.GetFromBungieNetPlatform<TrendingDetail>(url, token);
         }
 
