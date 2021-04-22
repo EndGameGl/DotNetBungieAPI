@@ -16,6 +16,7 @@ namespace NetBungieAPI.Services
             {
                 new ReadOnlyCollectionConverterFactory(),
                 new DefinitionHashPointerConverterFactory(),
+                new ReadOnlyDictionaryEnumKeyConverterFactory(),
                 new ReadOnlyDictionaryStructKeyConverterFactory(),
                 new ReadOnlyDictionaryDefinitionPointerKeyConverterFactory(),
                 new ReadOnlyDictionaryStringKeyConverterFactory()

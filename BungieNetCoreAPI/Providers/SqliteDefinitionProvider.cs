@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SQLite;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NetBungieAPI.Logging;
@@ -15,6 +16,13 @@ namespace NetBungieAPI.Providers
 {
     public class SqliteDefinitionProvider : DefinitionProvider
     {
+        private readonly DefinitionsEnum[] _nonExistInSqliteDefinitions = new DefinitionsEnum[3]
+        {
+            DefinitionsEnum.DestinyUnlockValueDefinition,
+            DefinitionsEnum.DestinyProgressionMappingDefinition,
+            DefinitionsEnum.DestinyHistoricalStatsDefinition
+        };
+
         private SQLiteConnection _connection;
         private Dictionary<BungieLocales, string> _databasePaths = new Dictionary<BungieLocales, string>();
 
@@ -44,30 +52,26 @@ namespace NetBungieAPI.Providers
                 _connection.Open();
                 foreach (var definitionType in definitionsToLoad)
                 {
-                    try
-                    {
-                        Logger.Log($"Loading definitions: {definitionType}.", LogType.Info);
-                        var runtimeType = AssemblyData.DefinitionsToTypeMapping[definitionType].DefinitionType;
-                        var commandObj = new SQLiteCommand()
-                        {
-                            Connection = _connection,
-                            CommandText = $"SELECT * FROM {definitionType}"
-                        };
-                        var reader = commandObj.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            var parsedDefinition =
-                                (IDestinyDefinition) await SerializationHelper.DeserializeAsync(
-                                    (byte[]) reader[1],
-                                    runtimeType);
-                            Repositories.AddDefinition(definitionType, locale, parsedDefinition);
-                        }
-                    }
-                    catch (Exception e)
-                    {
+                    if (_nonExistInSqliteDefinitions.Contains(definitionType))
                         continue;
+                    Logger.Log($"Loading definitions: {definitionType}.", LogType.Info);
+                    var runtimeType = AssemblyData.DefinitionsToTypeMapping[definitionType].DefinitionType;
+                    var commandObj = new SQLiteCommand()
+                    {
+                        Connection = _connection,
+                        CommandText = $"SELECT * FROM {definitionType}"
+                    };
+                    var reader = commandObj.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var parsedDefinition =
+                            (IDestinyDefinition) await SerializationHelper.DeserializeAsync(
+                                (byte[]) reader[1],
+                                runtimeType);
+                        Repositories.AddDefinition(definitionType, locale, parsedDefinition);
                     }
                 }
+
                 _connection.Close();
             }
         }

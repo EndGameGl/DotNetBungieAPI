@@ -74,23 +74,22 @@ namespace NetBungieAPI.TestProject
                     .AddClientIdAndSecret(id: int.Parse(args[1]), secret: args[2])
                     .SpecifyApplicationScopes(ApplicationScopes.ReadUserData)
                     .UseLocalManifestFiles(@"H:\BungieNetCoreAPIRepository\Manifests")
-                    .EnableLogging()
+                    .EnableLogging((mes) => Console.WriteLine(mes))
                     .PremapDefinitions()
                     .LoadAllDefinitionsOnStartup()
                     .SetLocales(new BungieLocales[] { BungieLocales.EN })
                     .SetUpdateBehaviour(true, true);
             });
-
-            _bungieClient.AddListener((mes) => Console.WriteLine(mes));
             MainAsync().GetAwaiter().GetResult();
         }
 
         private static async Task MainAsync()
         {
-            // var profile = await _bungieClient.ApiAccess.Destiny2.GetProfile(
-            //     BungieMembershipType.TigerSteam,
-            //     4611686018483306402,
-            //     ALL_COMPONENTS_ARRAY);
+            
+            var profile = await _bungieClient.ApiAccess.Destiny2.GetProfile(
+                BungieMembershipType.TigerSteam,
+                4611686018483306402,
+                ALL_COMPONENTS_ARRAY);
 
             // var shouldUpdate = await _bungieClient.CheckUpdates();
             // if (shouldUpdate)

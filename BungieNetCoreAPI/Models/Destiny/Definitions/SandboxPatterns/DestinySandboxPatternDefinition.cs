@@ -19,7 +19,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.SandboxPatterns
         public int WeaponType { get; init; }
         [JsonPropertyName("weaponTypeHash")]
         public uint WeaponTypeHash { get; init; }
-        [JsonPropertyName("blacklisted")]
+        [JsonPropertyName("filters")]
         public ReadOnlyCollection<DestinySandboxPatternFilterDefinition> Filters { get; init; } = Defaults.EmptyReadOnlyCollection<DestinySandboxPatternFilterDefinition>();
         [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }

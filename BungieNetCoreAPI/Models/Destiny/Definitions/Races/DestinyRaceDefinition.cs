@@ -14,7 +14,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Races
         [JsonPropertyName("raceType")]
         public DestinyRace RaceType { get; init; }
         [JsonPropertyName("genderedRaceNames")]
-        public ReadOnlyDictionary<DestinyGender, string> GenderedRaceNames { get; init; } = Defaults.EmptyReadOnlyDictionary<DestinyGender, string>();
+        public ReadOnlyDictionary<string, string> GenderedRaceNames { get; init; } = Defaults.EmptyReadOnlyDictionary<string, string>();
         [JsonPropertyName("genderedRaceNamesByGenderHash")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string> GenderedRaceNamesByGender { get; init; } = Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>();
         [JsonPropertyName("blacklisted")]

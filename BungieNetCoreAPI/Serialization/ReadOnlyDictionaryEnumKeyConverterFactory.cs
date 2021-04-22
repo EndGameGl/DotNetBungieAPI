@@ -7,11 +7,10 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Serialization
 {
-    public class ReadOnlyDictionaryStringKeyConverterFactory : JsonConverterFactory
+    public class ReadOnlyDictionaryEnumKeyConverterFactory : JsonConverterFactory
     {
         private Type _genericReadOnlyDictType = typeof(ReadOnlyDictionary<,>);
-        private Type _stringType = typeof(string);
-
+        
         public override bool CanConvert(Type typeToConvert)
         {
             if (!typeToConvert.IsGenericType)
@@ -24,7 +23,7 @@ namespace NetBungieAPI.Serialization
                 return false;
             }
 
-            if (typeToConvert.GenericTypeArguments[0] != _stringType)
+            if (!typeToConvert.GenericTypeArguments[0].IsEnum)
                 return false;
 
             return true;
@@ -32,12 +31,13 @@ namespace NetBungieAPI.Serialization
 
         public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
         {
+            var keyType = typeToConvert.GetGenericArguments()[0];
             var valueType = typeToConvert.GetGenericArguments()[1];
 
             var converter = (JsonConverter) Activator.CreateInstance(
-                typeof(ReadOnlyDictionaryStringKeyConverterFactory.ReadOnlyDictionaryStringKeyConverter<,>)
+                typeof(ReadOnlyDictionaryEnumKeyConverterFactory.ReadOnlyDictionaryEnumKeyConverter<,>)
                     .MakeGenericType(
-                        new Type[] {_stringType, valueType}),
+                        new Type[] { keyType, valueType}),
                 BindingFlags.Instance | BindingFlags.Public,
                 binder: null,
                 args: new object[] {options},
@@ -45,15 +45,15 @@ namespace NetBungieAPI.Serialization
 
             return converter;
         }
-
-        private class ReadOnlyDictionaryStringKeyConverter<TKey, TValue> : JsonConverter<ReadOnlyDictionary<TKey, TValue>>
-            where TKey : IConvertible
+        
+        private class ReadOnlyDictionaryEnumKeyConverter<TKey, TValue> : JsonConverter<ReadOnlyDictionary<TKey, TValue>>
+            where TKey : Enum
         {
-            private Type _stringType = typeof(string);
+            private Type _enumType = typeof(TKey);
 
             public override bool HandleNull => true;
 
-            public ReadOnlyDictionaryStringKeyConverter(JsonSerializerOptions options)
+            public ReadOnlyDictionaryEnumKeyConverter(JsonSerializerOptions options)
             {
             }
 
@@ -70,7 +70,7 @@ namespace NetBungieAPI.Serialization
 
                     var key = reader.GetString();
                     tempDictionary.Add(
-                        key: (TKey) Convert.ChangeType(key, _stringType),
+                        key: (TKey)Enum.Parse(_enumType, key),
                         value: JsonSerializer.Deserialize<TValue>(ref reader, options)
                     );
                 }

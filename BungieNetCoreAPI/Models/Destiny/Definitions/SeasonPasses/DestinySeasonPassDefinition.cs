@@ -8,11 +8,11 @@ namespace NetBungieAPI.Models.Destiny.Definitions.SeasonPasses
     [DestinyDefinition(DefinitionsEnum.DestinySeasonPassDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public sealed record DestinySeasonPassDefinition : IDestinyDefinition, IDeepEquatable<DestinySeasonPassDefinition>
     {
-        [JsonPropertyName("blacklisted")]
+        [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
-        [JsonPropertyName("blacklisted")]
+        [JsonPropertyName("rewardProgressionHash")]
         public DefinitionHashPointer<DestinyProgressionDefinition> RewardProgression { get; init; } = DefinitionHashPointer<DestinyProgressionDefinition>.Empty;
-        [JsonPropertyName("blacklisted")]
+        [JsonPropertyName("prestigeProgressionHash")]
         public DefinitionHashPointer<DestinyProgressionDefinition> PrestigeProgression { get; init; } = DefinitionHashPointer<DestinyProgressionDefinition>.Empty;
         [JsonPropertyName("blacklisted")]
         public bool Blacklisted { get; init; }

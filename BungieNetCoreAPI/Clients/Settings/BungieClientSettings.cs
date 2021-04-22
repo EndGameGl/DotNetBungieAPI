@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using NetBungieAPI.Logging;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Providers;
@@ -82,9 +83,10 @@ namespace NetBungieAPI.Clients.Settings
         /// Enables logging
         /// </summary>
         /// <returns></returns>
-        public BungieClientSettings EnableLogging()
+        public BungieClientSettings EnableLogging(LogListener.NewMessageEvent onLog)
         {
             InternalSettings.IsLoggingEnabled = true;
+            InternalSettings.OnLog = onLog;
             return this;
         }
 
