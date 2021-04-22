@@ -77,7 +77,7 @@ namespace NetBungieAPI.TestProject
                     .EnableLogging()
                     .PremapDefinitions()
                     .LoadAllDefinitionsOnStartup()
-                    .SetLocales(new BungieLocales[] {BungieLocales.EN})
+                    .SetLocales(new BungieLocales[] { BungieLocales.EN })
                     .SetUpdateBehaviour(true, true);
             });
 
@@ -87,10 +87,6 @@ namespace NetBungieAPI.TestProject
 
         private static async Task MainAsync()
         {
-            var definition =
-                await _bungieClient.Repository.Provider.LoadDefinition<DestinyInventoryItemDefinition>(432476743,
-                    BungieLocales.EN);
-
             // var profile = await _bungieClient.ApiAccess.Destiny2.GetProfile(
             //     BungieMembershipType.TigerSteam,
             //     4611686018483306402,
@@ -106,12 +102,12 @@ namespace NetBungieAPI.TestProject
 
         private static void RunDeepEqualityCheck<T>(List<T> collection) where T : IDeepEquatable<T>
         {
-            Stopwatch sw = new Stopwatch();
+            var sw = new Stopwatch();
             sw.Start();
-            int uniqueItems = 0;
+            var uniqueItems = 0;
             foreach (var item in collection)
             {
-                int equalCount = 0;
+                var equalCount = 0;
                 foreach (var itemNested in collection)
                 {
                     if (item.DeepEquals(itemNested))

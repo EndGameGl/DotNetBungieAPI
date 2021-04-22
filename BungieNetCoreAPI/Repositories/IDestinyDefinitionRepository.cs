@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace NetBungieAPI.Repositories
 {
     /// <summary>
-    /// An inteface for accessing <see cref="DestinyDefinitionRepository{T}"/>
+    /// An interface for accessing <see cref="DestinyDefinitionTypeRepository"/>
     /// </summary>
     public interface IDestinyDefinitionRepository
     {
@@ -17,7 +17,7 @@ namespace NetBungieAPI.Repositories
         /// Adds new item into the repository
         /// </summary>
         /// <param name="definition">Definition to add</param>
-        /// <returns>True, if successfull, False, otherwise</returns>
+        /// <returns>True, if successful, False, otherwise</returns>
         bool Add(IDestinyDefinition definition);
         /// <summary>
         /// Removes item from repository

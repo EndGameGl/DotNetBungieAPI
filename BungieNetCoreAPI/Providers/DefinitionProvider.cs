@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using NetBungieAPI.Logging;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Config;
@@ -21,6 +22,8 @@ namespace NetBungieAPI.Providers
 
         protected readonly ILocalisedDestinyDefinitionRepositories Repositories =
             StaticUnityContainer.GetDestinyDefinitionRepositories();
+
+        protected readonly ILogger Logger = StaticUnityContainer.GetLogger();
 
         protected BungieLocales[] Locales = Array.Empty<BungieLocales>();
         protected string ManifestPath = string.Empty;

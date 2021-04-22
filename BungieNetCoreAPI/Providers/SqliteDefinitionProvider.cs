@@ -6,6 +6,7 @@ using System.Data.SQLite;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using NetBungieAPI.Logging;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
@@ -16,7 +17,7 @@ namespace NetBungieAPI.Providers
     {
         private SQLiteConnection _connection;
         private Dictionary<BungieLocales, string> _databasePaths = new Dictionary<BungieLocales, string>();
-        
+
         public SqliteDefinitionProvider()
         {
             _connection = new SQLiteConnection();
@@ -26,7 +27,8 @@ namespace NetBungieAPI.Providers
         {
             foreach (var locale in Locales)
             {
-                var fileLocation = $"{ManifestPath}\\{UsedManifest.Version}\\MobileWorldContent\\{locale.LocaleToString()}\\{Path.GetFileName(UsedManifest.MobileWorldContentPaths[locale.LocaleToString()])}";
+                var fileLocation =
+                    $"{ManifestPath}\\{UsedManifest.Version}\\MobileWorldContent\\{locale.LocaleToString()}\\{Path.GetFileName(UsedManifest.MobileWorldContentPaths[locale.LocaleToString()])}";
                 _databasePaths.Add(locale, fileLocation);
             }
         }
@@ -34,24 +36,36 @@ namespace NetBungieAPI.Providers
         public override async Task ReadDefinitionsToRepository(IEnumerable<DefinitionsEnum> definitionsToLoad)
         {
             Repositories.Initialize(Locales);
-            
+
             foreach (var locale in Locales)
             {
+                Logger.Log($"Loading locale: {locale}.", LogType.Info);
                 _connection.ConnectionString = $"Data Source={_databasePaths[locale]}; Version=3;";
                 _connection.Open();
                 foreach (var definitionType in definitionsToLoad)
                 {
-                    var runtimeType = AssemblyData.DefinitionsToTypeMapping[definitionType].DefinitionType;
-                    var commandObj = new SQLiteCommand()
-                        {Connection = _connection, CommandText = $"SELECT * FROM {definitionType}"};
-                    var reader = commandObj.ExecuteReader();
-                    while (reader.Read())
+                    try
                     {
-                        var parsedDefinition =
-                            (IDestinyDefinition) await SerializationHelper.DeserializeAsync(
-                                (byte[]) reader[1],
-                                runtimeType);
-                        Repositories.AddDefinition(definitionType, locale, parsedDefinition);
+                        Logger.Log($"Loading definitions: {definitionType}.", LogType.Info);
+                        var runtimeType = AssemblyData.DefinitionsToTypeMapping[definitionType].DefinitionType;
+                        var commandObj = new SQLiteCommand()
+                        {
+                            Connection = _connection,
+                            CommandText = $"SELECT * FROM {definitionType}"
+                        };
+                        var reader = commandObj.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            var parsedDefinition =
+                                (IDestinyDefinition) await SerializationHelper.DeserializeAsync(
+                                    (byte[]) reader[1],
+                                    runtimeType);
+                            Repositories.AddDefinition(definitionType, locale, parsedDefinition);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        continue;
                     }
                 }
                 _connection.Close();
