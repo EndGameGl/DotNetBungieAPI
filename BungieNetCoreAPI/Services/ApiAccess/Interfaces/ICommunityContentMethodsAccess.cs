@@ -1,4 +1,5 @@
-﻿using NetBungieAPI.Models;
+﻿using System.Threading;
+using NetBungieAPI.Models;
 using NetBungieAPI.Models.Forum;
 using NetBungieAPI.Models.Queries;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
 {
     public interface ICommunityContentMethodsAccess
     {
-        Task<BungieResponse<PostSearchResponse>> GetCommunityContent(ForumTopicsSortEnum sort, ForumMediaType mediaFilter, int page = 0);
+        ValueTask<BungieResponse<PostSearchResponse>> GetCommunityContent(ForumTopicsSortEnum sort,
+            ForumMediaType mediaFilter, int page = 0, CancellationToken token = default);
     }
 }

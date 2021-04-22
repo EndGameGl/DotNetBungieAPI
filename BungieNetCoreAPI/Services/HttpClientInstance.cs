@@ -22,11 +22,11 @@ namespace NetBungieAPI.Services
         private readonly IConfigurationService _config;
         private readonly IJsonSerializationHelper _serializationHelper;
         
-        private readonly string _authorizationEndpoint = "https://www.bungie.net/en/oauth/authorize";
-        private readonly string _authorizationTokenEndpoint = "https://www.bungie.net/platform/app/oauth/token/";
-        private readonly string _platformEndpoint = "https://www.bungie.net/Platform";
-        private readonly string _cdnEndpoint = "https://www.bungie.net";
-        private readonly string _statsEndpoint = "https://www.stats.bungie.net";
+        private const string _authorizationEndpoint = "https://www.bungie.net/en/oauth/authorize";
+        private const string _authorizationTokenEndpoint = "https://www.bungie.net/platform/app/oauth/token/";
+        private const string _platformEndpoint = "https://www.bungie.net/Platform";
+        private const string _cdnEndpoint = "https://www.bungie.net";
+        private const string _statsEndpoint = "https://www.stats.bungie.net";
 
         private readonly HttpClient _httpClient;
         internal HttpClientInstance(ILogger logger, IConfigurationService configuration, IJsonSerializationHelper serializationHelper)
@@ -47,31 +47,6 @@ namespace NetBungieAPI.Services
         public void AddHeader(string header, string headerValue)
         {
             _httpClient.DefaultRequestHeaders.Add(header, headerValue);
-        }
-        public void RemoveHeader(string header)
-        {
-            _httpClient.DefaultRequestHeaders.Remove(header);
-        }
-        public async Task<HttpResponseMessage> Get(string query)
-        {
-            return await _httpClient.GetAsync(query);
-        }
-
-        public async Task<HttpResponseMessage> PostToPlatform(string query, string content)
-        {
-            var url = $"{_platformEndpoint}{query}";
-            _logger.Log($"Calling platform API: {url}", LogType.Debug);
-            return await _httpClient.PostAsync(url, new StringContent(content));
-        }
-        public async Task<HttpResponseMessage> GetFromPlatform(string query)
-        {
-            var url = $"{_platformEndpoint}{query}";
-            _logger.Log($"Calling platform API: {url}", LogType.Debug);
-            return await _httpClient.GetAsync(url);
-        }
-        public async Task<HttpResponseMessage> GetFromStatsPlatform(string query)
-        {
-            return await _httpClient.GetAsync($"{_statsEndpoint}{query}");
         }
         public async Task<AuthorizationTokenData> GetAuthorizationToken(string code, string authValue)
         {
@@ -126,7 +101,7 @@ namespace NetBungieAPI.Services
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
-        public async Task<string> DownloadJSONDataFromCDNAsync(string url)
+        public async ValueTask<string> DownloadJSONDataFromCDNAsync(string url)
         {
             var response = await _httpClient.GetAsync(_cdnEndpoint + url);
             if (response.IsSuccessStatusCode)
@@ -139,22 +114,17 @@ namespace NetBungieAPI.Services
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
-        public async Task<Image> DownloadImageFromCDNAsync(string url)
+        public async ValueTask<Image>DownloadImageFromCDNAsync(string url)
         {
             Image image = null;
             var response = await _httpClient.GetAsync(_cdnEndpoint + url);
             if (response.IsSuccessStatusCode)
             {
-                using (var stream = await response.Content.ReadAsStreamAsync())
-                {
-                    using (var memStream = new MemoryStream())
-                    {
-
-                        await stream.CopyToAsync(memStream);
-                        memStream.Position = 0;
-                        image = Image.FromStream(memStream);
-                    }
-                }
+                await using var stream = await response.Content.ReadAsStreamAsync();
+                await using var memStream = new MemoryStream();
+                await stream.CopyToAsync(memStream);
+                memStream.Position = 0;
+                image = Image.FromStream(memStream);
             }
             return image;
         }
@@ -198,29 +168,10 @@ namespace NetBungieAPI.Services
                 }
             }
             return image;
-        }     
-        public async Task<T> GetFromStatsPlatfromAndDeserialize<T>(string query)
-        {
-            var response = await GetFromStatsPlatform(query);
-            return await response.ReadObjectFromHttpResponseMessage<T>();
         }
-        public async Task<T> PostToPlatformAndDeserialize<T>(string query, string data)
-        {
-            var response = await PostToPlatform(query, data);
-            return await response.ReadObjectFromHttpResponseMessage<T>();
-        }
-
-
-        public async Task<T> GetFromPlatfromAndDeserialize<T>(string query, string authToken = null)
-        {          
-            var response = await GetFromPlatform(query);
-            return await response.ReadObjectFromHttpResponseMessage<T>();
-        }
-
-
         private HttpRequestMessage CreateGetMessage(string uri, string authToken = null)
         {
-            HttpRequestMessage requestMessage = new HttpRequestMessage()
+            var requestMessage = new HttpRequestMessage()
             {
                 RequestUri = new Uri(uri),
                 Method = HttpMethod.Get               
@@ -229,7 +180,6 @@ namespace NetBungieAPI.Services
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             requestMessage.Headers.TryAddWithoutValidation("X-API-Key", _config.Settings.IdentificationSettings.ApiKey);
             requestMessage.Headers.TryAddWithoutValidation("cache-control", "no-cache");
-            //requestMessage.Headers.UserAgent.ParseAdd("PostmanRuntime/7.26.10");
             if (!string.IsNullOrEmpty(authToken))
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
 
@@ -237,7 +187,7 @@ namespace NetBungieAPI.Services
         }
         private HttpRequestMessage CreatePostMessage(string uri, string authToken = null, string content = null)
         {
-            HttpRequestMessage requestMessage = new HttpRequestMessage()
+            var requestMessage = new HttpRequestMessage()
             {
                 RequestUri = new Uri(uri),
                 Method = HttpMethod.Post
@@ -255,8 +205,8 @@ namespace NetBungieAPI.Services
         public async Task DownloadFileStreamFromCDNAsync(string query, string savePath)
         {
             using var response = await _httpClient.GetAsync(_cdnEndpoint + query, HttpCompletionOption.ResponseHeadersRead);
-            using var stream = await response.Content.ReadAsStreamAsync();
-            using Stream streamToWriteTo = File.Open(savePath, FileMode.Create);
+            await using var stream = await response.Content.ReadAsStreamAsync();
+            await using Stream streamToWriteTo = File.Open(savePath, FileMode.Create);
             await stream.CopyToAsync(streamToWriteTo);
         }
         public async ValueTask<BungieResponse<T>> GetFromBungieNetPlatform<T>(string query, CancellationToken token, string authToken = null)
@@ -273,7 +223,7 @@ namespace NetBungieAPI.Services
             var bungieResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream, _serializationHelper.Options, token);
             return bungieResponse;
         }
-        public async ValueTask<BungieResponse<T>> PostToBungieNetPlatform<T>(string query, CancellationToken token, string authToken = null)
+        public async ValueTask<BungieResponse<T>> PostToBungieNetPlatform<T>(string query, CancellationToken token, string content = null, string authToken = null)
         {
             var finalQuery = StringBuilderPool
                 .GetBuilder(token)
@@ -281,7 +231,7 @@ namespace NetBungieAPI.Services
                 .Append(query)
                 .Build();
             _logger.Log($"Calling api: {finalQuery}", LogType.Debug);
-            var request = CreatePostMessage(finalQuery, authToken);
+            var request = CreatePostMessage(finalQuery, authToken, content);
             var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
             await using var stream = await response.Content.ReadAsStreamAsync(token);
             var bungieResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream, _serializationHelper.Options, token);

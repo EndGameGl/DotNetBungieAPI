@@ -1,22 +1,13 @@
 ﻿using NetBungieAPI.Models.Applications;
-using NetBungieAPI.Attributes;
 using NetBungieAPI.Clients;
 using System;
-using System.Buffers;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Models.Trending;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
-using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
-using NetBungieAPI.Providers;
-using NetBungieAPI.Serialization;
-using System.Linq;
 
 namespace NetBungieAPI.TestProject
 {
@@ -86,16 +77,15 @@ namespace NetBungieAPI.TestProject
         private static async Task MainAsync()
         {
             
-            var profile = await _bungieClient.ApiAccess.Destiny2.GetProfile(
-                BungieMembershipType.TigerSteam,
-                4611686018483306402,
-                ALL_COMPONENTS_ARRAY);
+            // var profile = await _bungieClient.ApiAccess.Destiny2.GetProfile(
+            //     BungieMembershipType.TigerSteam,
+            //     4611686018483306402,
+            //     ALL_COMPONENTS_ARRAY);
 
             // var shouldUpdate = await _bungieClient.CheckUpdates();
             // if (shouldUpdate)
             //     await _bungieClient.DownloadLatestManifestLocally();
 
-            //_bungieClient.LoadDefinitions();
             await Task.Delay(Timeout.Infinite);
         }
 

@@ -30,8 +30,8 @@ namespace NetBungieAPI.Services.ApiAccess
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Trending/Categories/")
-                .Append(categoryId).Append('/')
-                .Append(pageNumber)
+                .AddUrlParam(categoryId)
+                .AddUrlParam(pageNumber.ToString())
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<SearchResultOfTrendingEntry>(url, token);
         }
@@ -40,9 +40,8 @@ namespace NetBungieAPI.Services.ApiAccess
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Trending/Details/")
-                .Append((int)trendingEntryType)
-                .Append('/')
-                .Append(identifier)
+                .AddUrlParam(((int)trendingEntryType).ToString())
+                .AddUrlParam(identifier)
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<TrendingDetail>(url, token);
         }

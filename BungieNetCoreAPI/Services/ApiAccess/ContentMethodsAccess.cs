@@ -11,31 +11,78 @@ namespace NetBungieAPI.Services.ApiAccess
     public class ContentMethodsAccess : IContentMethodsAccess
     {
         private IHttpClientInstance _httpClient;
+
         internal ContentMethodsAccess(IHttpClientInstance httpClient)
         {
             _httpClient = httpClient;
         }
-        public async ValueTask<BungieResponse<ContentTypeDescription>> GetContentType(string type, CancellationToken token = default)
+
+        public async ValueTask<BungieResponse<ContentTypeDescription>> GetContentType(string type,
+            CancellationToken token = default)
         {
-            return await _httpClient.GetFromBungieNetPlatform<ContentTypeDescription>($"/Content/GetContentType/{type}/", token);
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Content/GetContentType/")
+                .AddUrlParam(type)
+                .Build();
+            return await _httpClient.GetFromBungieNetPlatform<ContentTypeDescription>(url, token);
         }
-        public async ValueTask<BungieResponse<ContentItemPublicContract>> GetContentById(long id, string locale, bool head = false, CancellationToken token = default)
+
+        public async ValueTask<BungieResponse<ContentItemPublicContract>> GetContentById(long id, string locale,
+            bool head = false, CancellationToken token = default)
         {
-            return await _httpClient.GetFromBungieNetPlatform<ContentItemPublicContract>($"/Content/GetContentById/{id}/{locale}/?head={head}", token);
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Content/GetContentById/")
+                .AddUrlParam(id.ToString())
+                .AddUrlParam(locale)
+                .AddQueryParam("head", head.ToString())
+                .Build();
+            return await _httpClient.GetFromBungieNetPlatform<ContentItemPublicContract>(url, token);
         }
-        public async ValueTask<BungieResponse<ContentItemPublicContract>> GetContentByTagAndType(string tag, string type, string locale, CancellationToken token = default)
+
+        public async ValueTask<BungieResponse<ContentItemPublicContract>> GetContentByTagAndType(string tag,
+            string type, string locale, CancellationToken token = default)
         {
-            return await _httpClient.GetFromBungieNetPlatform<ContentItemPublicContract>($"/Content/GetContentByTagAndType/{tag}/{type}/{locale}/", token);
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Content/GetContentByTagAndType/")
+                .AddUrlParam(tag)
+                .AddUrlParam(type)
+                .AddUrlParam(locale)
+                .Build();
+            return await _httpClient.GetFromBungieNetPlatform<ContentItemPublicContract>(url, token);
         }
-        public async ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentWithText(string locale, string[] types,
+
+        public async ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentWithText(
+            string locale, string[] types,
             string searchtext, string source, string tag, int currentpage = 1, CancellationToken token = default)
         {
-            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(
-                $"/Content/Search/{locale}/?types={string.Join(" ", types)}&searchtext={searchtext}{(!string.IsNullOrWhiteSpace(source) ? $"&source={source}" : "")}&tag={tag}&currentpage={currentpage}", token);
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Content/Search/")
+                .AddUrlParam(locale)
+                .AddQueryParam("ctype", string.Join(" ", types))
+                .AddQueryParam("currentpage", currentpage.ToString())
+                .AddQueryParam("searchtext", searchtext)
+                .AddQueryParam("source", source, () => !string.IsNullOrEmpty(source))
+                .AddQueryParam("tag", tag)
+                .Build();
+            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(url, token);
         }
-        public async ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentByTagAndType(string locale, string tag, string type, CancellationToken token = default)
+
+        public async ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentByTagAndType(
+            string locale, string tag, string type, int currentpage = 1, CancellationToken token = default)
         {
-            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>($"/Content/SearchContentByTagAndType/{tag}/{type}/{locale}/", token);
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Content/SearchContentByTagAndType/")
+                .AddUrlParam(tag)
+                .AddUrlParam(type)
+                .AddUrlParam(locale)
+                .AddQueryParam("currentpage", currentpage.ToString())
+                .Build();
+            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(url, token);
         }
     }
 }

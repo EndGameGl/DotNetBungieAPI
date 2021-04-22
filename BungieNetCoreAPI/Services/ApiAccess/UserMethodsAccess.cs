@@ -1,10 +1,12 @@
-﻿using NetBungieAPI.Models;
+﻿using System;
+using NetBungieAPI.Models;
 using NetBungieAPI.Models.Config;
 using NetBungieAPI.Models.User;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
+using NetBungieAPI.Models.Applications;
 
 namespace NetBungieAPI.Services.ApiAccess
 {
@@ -12,11 +14,14 @@ namespace NetBungieAPI.Services.ApiAccess
     {
         private readonly IHttpClientInstance _httpClient;
         private readonly IAuthorizationStateHandler _authHandler;
+        private readonly IConfigurationService _configuration;
 
-        internal UserMethodsAccess(IHttpClientInstance httpClient, IAuthorizationStateHandler authHandler)
+        internal UserMethodsAccess(IHttpClientInstance httpClient, IAuthorizationStateHandler authHandler,
+            IConfigurationService configuration)
         {
             _httpClient = httpClient;
             _authHandler = authHandler;
+            _configuration = configuration;
         }
 
         public async ValueTask<BungieResponse<GeneralUser>> GetBungieNetUserById(long id,
@@ -25,7 +30,7 @@ namespace NetBungieAPI.Services.ApiAccess
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/User/GetBungieNetUserById/")
-                .Append(id)
+                .AddUrlParam(id.ToString())
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<GeneralUser>(url, token);
         }
@@ -35,8 +40,9 @@ namespace NetBungieAPI.Services.ApiAccess
         {
             var url = StringBuilderPool
                 .GetBuilder(token)
-                .Append("/User/SearchUsers/?q=")
-                .Append(query).Build();
+                .Append("/User/SearchUsers/")
+                .AddQueryParam("q", query)
+                .Build();
             return await _httpClient.GetFromBungieNetPlatform<GeneralUser[]>(url, token);
         }
 
@@ -62,9 +68,8 @@ namespace NetBungieAPI.Services.ApiAccess
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/User/GetMembershipsById/")
-                .Append(id)
-                .Append('/')
-                .Append((int) membershipType)
+                .AddUrlParam(id.ToString())
+                .AddUrlParam(((int) membershipType).ToString())
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<UserMembershipData>(url, token);
         }
@@ -72,13 +77,17 @@ namespace NetBungieAPI.Services.ApiAccess
         public async ValueTask<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser(long id,
             CancellationToken token = default)
         {
+            if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(ApplicationScopes
+                .ReadBasicUserProfile))
+                throw new Exception(
+                    "Application must have ApplicationScopes.ReadBasicUserProfile scope to run this command.");
             if (_authHandler.TryGetAccessToken(id, out var accessToken))
             {
                 return await _httpClient.GetFromBungieNetPlatform<UserMembershipData>(
                     "/User/GetMembershipsForCurrentUser", token, accessToken);
             }
 
-            throw new System.Exception("Missing token to make a call.");
+            throw new Exception("Missing token to make a call.");
         }
 
         public async ValueTask<BungieResponse<HardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(
@@ -88,9 +97,8 @@ namespace NetBungieAPI.Services.ApiAccess
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/User/GetMembershipFromHardLinkedCredential/")
-                .Append((byte) credentialType)
-                .Append('/')
-                .Append(credential)
+                .AddUrlParam(((byte) credentialType).ToString())
+                .AddUrlParam(credential.ToString())
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<HardLinkedUserMembership>(url, token);
         }
