@@ -19,244 +19,301 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
     /// In practice, you will want to associate this data with "live" item data from a Bungie.Net Platform call: these definitions describe the item in generic, non-instanced terms: but an actual instance of an item can vary widely from these generic definitions.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyInventoryItemDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
-    public sealed record DestinyInventoryItemDefinition : IDestinyDefinition, IDeepEquatable<DestinyInventoryItemDefinition>
+    public sealed record DestinyInventoryItemDefinition : IDestinyDefinition,
+        IDeepEquatable<DestinyInventoryItemDefinition>
     {
         [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+
         /// <summary>
         /// Tooltips that only come up conditionally for the item. Check the live data DestinyItemComponent.tooltipNotificationIndexes property for which of these should be shown at runtime.
         /// </summary>
         [JsonPropertyName("tooltipNotifications")]
-        public ReadOnlyCollection<DestinyItemTooltipNotification> TooltipNotifications { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyItemTooltipNotification>();
+        public ReadOnlyCollection<DestinyItemTooltipNotification> TooltipNotifications { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyItemTooltipNotification>();
+
         /// <summary>
         /// If this item has a collectible related to it, this is that collectible entry.
         /// </summary>
         [JsonPropertyName("collectibleHash")]
-        public DefinitionHashPointer<DestinyCollectibleDefinition> Collectible { get; init; } = DefinitionHashPointer<DestinyCollectibleDefinition>.Empty;
+        public DefinitionHashPointer<DestinyCollectibleDefinition> Collectible { get; init; } =
+            DefinitionHashPointer<DestinyCollectibleDefinition>.Empty;
+
         /// <summary>
         /// If available, this is the original 'active' release watermark overlay for the icon. If the item has different versions, this can be overridden by the 'display version watermark icon' from the 'quality' block. Alternatively, if there is no watermark for the version, and the item version has a power cap below the current season power cap, this can be overridden by the iconWatermarkShelved property.
         /// </summary>
         [JsonPropertyName("iconWatermark")]
         public string IconWatermark { get; init; }
+
         /// <summary>
         /// If available, this is the 'shelved' release watermark overlay for the icon. If the item version has a power cap below the current season power cap, it can be treated as 'shelved', and should be shown with this 'shelved' watermark overlay.
         /// </summary>
         [JsonPropertyName("iconWatermarkShelved")]
         public string IconWatermarkShelved { get; init; }
+
         /// <summary>
         /// A secondary icon associated with the item. Currently this is used in very context specific applications, such as Emblem Nameplates.
         /// </summary>
         [JsonPropertyName("secondaryIcon")]
         public string SecondaryIcon { get; init; }
+
         /// <summary>
         /// Pulled from the secondary icon, this is the "secondary background" of the secondary icon. Confusing? Sure, that's why I call it "overlay" here: because as far as it's been used thus far, it has been for an optional overlay image. We'll see if that holds up, but at least for now it explains what this image is a bit better.
         /// </summary>
         [JsonPropertyName("secondaryOverlay")]
         public string SecondaryOverlay { get; init; }
+
         /// <summary>
         /// Pulled from the Secondary Icon, this is the "special" background for the item. For Emblems, this is the background image used on the Details view: but it need not be limited to that for other types of items.
         /// </summary>
         [JsonPropertyName("secondarySpecial")]
         public string SecondarySpecial { get; init; }
+
         /// <summary>
         /// Sometimes, an item will have a background color. Most notably this occurs with Emblems, who use the Background Color for small character nameplates such as the "friends" view you see in-game. There are almost certainly other items that have background color as well, though I have not bothered to investigate what items have it nor what purposes they serve: use it as you will.
         /// </summary>
         [JsonPropertyName("backgroundColor")]
         public DestinyColor BackgroundColor { get; init; }
+
         /// <summary>
         /// If we were able to acquire an in-game screenshot for the item, the path to that screenshot will be returned here. Note that not all items have screenshots: particularly not any non-equippable items.
         /// </summary>
         [JsonPropertyName("screenshot")]
         public string Screenshot { get; init; }
+
         /// <summary>
         /// The localized title/name of the item's type. This can be whatever the designers want, and has no guarantee of consistency between items.
         /// </summary>
         [JsonPropertyName("itemTypeDisplayName")]
         public string ItemTypeDisplayName { get; init; }
-        [JsonPropertyName("flavorText")]
-        public string FlavorText { get; init; }
+
+        [JsonPropertyName("flavorText")] public string FlavorText { get; init; }
+
         /// <summary>
         /// A string identifier that the game's UI uses to determine how the item should be rendered in inventory screens and the like. This could really be anything - at the moment, we don't have the time to really breakdown and maintain all the possible strings this could be, partly because new ones could be added ad hoc. But if you want to use it to dictate your own UI, or look for items with a certain display style, go for it!
         /// </summary>
         [JsonPropertyName("uiItemDisplayStyle")]
         public string UiItemDisplayStyle { get; init; }
+
         /// <summary>
         /// It became a common enough pattern in our UI to show Item Type and Tier combined into a single localized string that I'm just going to go ahead and start pre-creating these for items.
         /// </summary>
         [JsonPropertyName("itemTypeAndTierDisplayName")]
         public string ItemTypeAndTierDisplayName { get; init; }
+
         /// <summary>
         /// In theory, it is a localized string telling you about how you can find the item. I really wish this was more consistent. Many times, it has nothing. Sometimes, it's instead a more narrative-forward description of the item. Which is cool, and I wish all properties had that data, but it should really be its own property.
         /// </summary>
         [JsonPropertyName("displaySource")]
         public string DisplaySource { get; init; }
+
         /// <summary>
         /// An identifier that the game UI uses to determine what type of tooltip to show for the item. These have no corresponding definitions that BNet can link to: so it'll be up to you to interpret and display your UI differently according to these styles (or ignore it).
         /// </summary>
         [JsonPropertyName("tooltipStyle")]
         public string TooltipStyle { get; init; }
+
         /// <summary>
         /// If the item can be "used", this block will be non-null, and will have data related to the action performed when using the item. (Guess what? 99% of the time, this action is "dismantle". Shocker)
         /// </summary>
         [JsonPropertyName("action")]
         public DestinyItemActionBlockDefinition Action { get; init; }
+
         /// <summary>
         /// If this item can exist in an inventory, this block will be non-null. In practice, every item that currently exists has one of these blocks. But note that it is not necessarily guaranteed.
         /// </summary>
         [JsonPropertyName("inventory")]
         public DestinyItemInventoryBlockDefinition Inventory { get; init; }
+
         /// <summary>
         /// If this item is a quest, this block will be non-null. In practice, I wish I had called this the Quest block, but at the time it wasn't clear to me whether it would end up being used for purposes other than quests. It will contain data about the steps in the quest, and mechanics we can use for displaying and tracking the quest.
         /// </summary>
         [JsonPropertyName("setData")]
         public DestinyItemSetBlockDefinition SetData { get; init; }
+
         /// <summary>
         /// If this item can have stats (such as a weapon, armor, or vehicle), this block will be non-null and populated with the stats found on the item.
         /// </summary>
         [JsonPropertyName("stats")]
         public DestinyItemStatBlockDefinition Stats { get; init; }
+
         /// <summary>
         /// If the item is an emblem that has a special Objective attached to it - for instance, if the emblem tracks PVP Kills, or what-have-you. This is a bit different from, for example, the Vanguard Kill Tracker mod, which pipes data into the "art channel". When I get some time, I would like to standardize these so you can get at the values they expose without having to care about what they're being used for and how they are wired up, but for now here's the raw data.
         /// </summary>
         [JsonPropertyName("emblemObjectiveHash")]
-        public DefinitionHashPointer<DestinyObjectiveDefinition> EmblemObjective { get; init; } = DefinitionHashPointer<DestinyObjectiveDefinition>.Empty;
+        public DefinitionHashPointer<DestinyObjectiveDefinition> EmblemObjective { get; init; } =
+            DefinitionHashPointer<DestinyObjectiveDefinition>.Empty;
+
         /// <summary>
         /// If this item can be equipped, this block will be non-null and will be populated with the conditions under which it can be equipped.
         /// </summary>
         [JsonPropertyName("equippingBlock")]
         public DestinyEquippingBlockDefinition EquippingBlock { get; init; }
+
         /// <summary>
         /// If this item can be rendered, this block will be non-null and will be populated with rendering information.
         /// </summary>
         [JsonPropertyName("translationBlock")]
         public DestinyItemTranslationBlockDefinition TranslationBlock { get; init; }
+
         /// <summary>
         /// If this item can be Used or Acquired to gain other items (for instance, how Eververse Boxes can be consumed to get items from the box), this block will be non-null and will give summary information for the items that can be acquired.
         /// </summary>
         [JsonPropertyName("preview")]
         public DestinyItemPreviewBlockDefinition Preview { get; init; }
+
         /// <summary>
         /// If this item can have a level or stats, this block will be non-null and will be populated with default quality (item level, "quality", and infusion) data. See the block for more details, there's often less upfront information in D2 so you'll want to be aware of how you use quality and item level on the definition level now.
         /// </summary>
         [JsonPropertyName("quality")]
         public DestinyItemQualityBlockDefinition Quality { get; init; }
+
         /// <summary>
         /// The conceptual "Value" of an item, if any was defined.
         /// </summary>
         [JsonPropertyName("value")]
         public DestinyItemValueBlockDefinition Value { get; init; }
+
         /// <summary>
         /// If this item has a known source, this block will be non-null and populated with source information. Unfortunately, at this time we are not generating sources: that is some aggressively manual work which we didn't have time for, and I'm hoping to get back to at some point in the future.
         /// </summary>
         [JsonPropertyName("sourceData")]
         public DestinyItemSourceBlockDefinition SourceData { get; init; }
+
         /// <summary>
         /// If this item has Objectives (extra tasks that can be accomplished related to the item... most frequently when the item is a Quest Step and the Objectives need to be completed to move on to the next Quest Step), this block will be non-null and the objectives defined herein.
         /// </summary>
         [JsonPropertyName("objectives")]
         public DestinyItemObjectiveBlockDefinition Objectives { get; init; }
+
         /// <summary>
         /// If this item has available metrics to be shown, this block will be non-null have the appropriate hashes defined.
         /// </summary>
         [JsonPropertyName("metrics")]
         public DestinyItemMetricBlockDefinition Metrics { get; init; }
+
         /// <summary>
         /// If this item *is* a Plug, this will be non-null and the info defined herein.
         /// </summary>
         [JsonPropertyName("plug")]
         public DestinyItemPlugDefinition Plug { get; init; }
+
         /// <summary>
         /// If this item has related items in a "Gear Set", this will be non-null and the relationships defined herein.
         /// </summary>
         [JsonPropertyName("gearset")]
         public DestinyItemGearsetBlockDefinition Gearset { get; init; }
+
         /// <summary>
         /// If this item is a "reward sack" that can be opened to provide other items, this will be non-null and the properties of the sack contained herein.
         /// </summary>
         [JsonPropertyName("sack")]
         public DestinyItemSackBlockDefinition Sack { get; init; }
+
         /// <summary>
         /// If this item has any Sockets, this will be non-null and the individual sockets on the item will be defined herein.
         /// </summary>
         [JsonPropertyName("sockets")]
         public DestinyItemSocketBlockDefinition Sockets { get; init; }
-        [JsonPropertyName("summary")]
-        public DestinyItemSummaryBlockDefinition Summary { get; init; }
+
+        [JsonPropertyName("summary")] public DestinyItemSummaryBlockDefinition Summary { get; init; }
+
         /// <summary>
         /// If the item has a Talent Grid, this will be non-null and the properties of the grid defined herein. Note that, while many items still have talent grids, the only ones with meaningful Nodes still on them will be Subclass/"Build" items.
         /// </summary>
         [JsonPropertyName("talentGrid")]
         public DestinyItemTalentGridBlockDefinition TalentGrid { get; init; }
+
         /// <summary>
         /// If the item has stats, this block will be defined. It has the "raw" investment stats for the item. These investment stats don't take into account the ways that the items can spawn, nor do they take into account any Stat Group transformations. I have retained them for debugging purposes, but I do not know how useful people will find them.
         /// </summary>
         [JsonPropertyName("investmentStats")]
-        public ReadOnlyCollection<DestinyItemInvestmentStatDefinition> InvestmentStats { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyItemInvestmentStatDefinition>();
+        public ReadOnlyCollection<DestinyItemInvestmentStatDefinition> InvestmentStats { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyItemInvestmentStatDefinition>();
+
         /// <summary>
         /// If the item has any *intrinsic* Perks (Perks that it will provide regardless of Sockets, Talent Grid, and other transitory state), they will be defined here.
         /// </summary>
         [JsonPropertyName("perks")]
-        public ReadOnlyCollection<DestinyItemPerkEntryDefinition> Perks { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyItemPerkEntryDefinition>();
-        [JsonPropertyName("perks")]
-        public DefinitionHashPointer<DestinyLoreDefinition> Lore { get; init; } = DefinitionHashPointer<DestinyLoreDefinition>.Empty;
+        public ReadOnlyCollection<DestinyItemPerkEntryDefinition> Perks { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyItemPerkEntryDefinition>();
+
+        [JsonPropertyName("loreHash")]
+        public DefinitionHashPointer<DestinyLoreDefinition> Lore { get; init; } =
+            DefinitionHashPointer<DestinyLoreDefinition>.Empty;
+
         /// <summary>
         /// There are times when the game will show you a "summary/vague" version of an item - such as a description of its type represented as a DestinyInventoryItemDefinition - rather than display the item itself.
         /// </summary>
         [JsonPropertyName("summaryItemHash")]
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> SummaryItem { get; init; } = DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> SummaryItem { get; init; } =
+            DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
+
         [JsonPropertyName("animations")]
-        public ReadOnlyCollection<DestinyAnimationReference> Animations { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyAnimationReference>();
-        [JsonPropertyName("allowActions")]
-        public bool AllowActions { get; init; }
+        public ReadOnlyCollection<DestinyAnimationReference> Animations { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyAnimationReference>();
+
+        [JsonPropertyName("allowActions")] public bool AllowActions { get; init; }
+
         [JsonPropertyName("links")]
-        public ReadOnlyCollection<HyperlinkReference> Links { get; init; } = Defaults.EmptyReadOnlyCollection<HyperlinkReference>();
+        public ReadOnlyCollection<HyperlinkReference> Links { get; init; } =
+            Defaults.EmptyReadOnlyCollection<HyperlinkReference>();
+
         [JsonPropertyName("doesPostmasterPullHaveSideEffects")]
         public bool DoesPostmasterPullHaveSideEffects { get; init; }
-        [JsonPropertyName("nonTransferrable")]
-        public bool NonTransferrable { get; init; }
+
+        [JsonPropertyName("nonTransferrable")] public bool NonTransferrable { get; init; }
+
         [JsonPropertyName("itemCategoryHashes")]
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>> ItemCategories { get; init; } = Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>>();
-        [JsonPropertyName("specialItemType")]
-        public SpecialItemType SpecialItemType { get; init; }
-        [JsonPropertyName("itemType")]
-        public DestinyItemType ItemType { get; init; }
-        [JsonPropertyName("itemSubType")]
-        public DestinyItemSubType ItemSubType { get; init; }
-        [JsonPropertyName("classType")]
-        public DestinyClass ClassType { get; init; }
-        [JsonPropertyName("breakerType")]
-        public DestinyBreakerType BreakerTypeEnumValue { get; init; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>> ItemCategories { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>>();
+
+        [JsonPropertyName("specialItemType")] public SpecialItemType SpecialItemType { get; init; }
+        [JsonPropertyName("itemType")] public DestinyItemType ItemType { get; init; }
+        [JsonPropertyName("itemSubType")] public DestinyItemSubType ItemSubType { get; init; }
+        [JsonPropertyName("classType")] public DestinyClass ClassType { get; init; }
+        [JsonPropertyName("breakerType")] public DestinyBreakerType BreakerTypeEnumValue { get; init; }
+
         [JsonPropertyName("breakerTypeHash")]
-        public DefinitionHashPointer<DestinyBreakerTypeDefinition> BreakerType { get; init; } = DefinitionHashPointer<DestinyBreakerTypeDefinition>.Empty;
-        [JsonPropertyName("equippable")]
-        public bool Equippable { get; init; }
+        public DefinitionHashPointer<DestinyBreakerTypeDefinition> BreakerType { get; init; } =
+            DefinitionHashPointer<DestinyBreakerTypeDefinition>.Empty;
+
+        [JsonPropertyName("equippable")] public bool Equippable { get; init; }
+
         [JsonPropertyName("damageTypeHashes")]
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyDamageTypeDefinition>> DamageTypes { get; init; } = Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyDamageTypeDefinition>>();
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyDamageTypeDefinition>> DamageTypes { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyDamageTypeDefinition>>();
+
         [JsonPropertyName("damageTypes")]
-        public ReadOnlyCollection<DamageType> DamageTypeEnumValues { get; init; } = Defaults.EmptyReadOnlyCollection<DamageType>();
+        public ReadOnlyCollection<DamageType> DamageTypeEnumValues { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DamageType>();
+
         [JsonPropertyName("defaultDamageType")]
         public DamageType DefaultDamageTypeEnumValue { get; init; }
+
         [JsonPropertyName("defaultDamageTypeHash")]
-        public DefinitionHashPointer<DestinyDamageTypeDefinition> DefaultDamageType { get; init; } = DefinitionHashPointer<DestinyDamageTypeDefinition>.Empty;
+        public DefinitionHashPointer<DestinyDamageTypeDefinition> DefaultDamageType { get; init; } =
+            DefinitionHashPointer<DestinyDamageTypeDefinition>.Empty;
+
         [JsonPropertyName("seasonHash")]
-        public DefinitionHashPointer<DestinySeasonDefinition> Season { get; init; } = DefinitionHashPointer<DestinySeasonDefinition>.Empty;
-        [JsonPropertyName("isWrapper")]
-        public bool IsWrapper { get; init; }
+        public DefinitionHashPointer<DestinySeasonDefinition> Season { get; init; } =
+            DefinitionHashPointer<DestinySeasonDefinition>.Empty;
+
+        [JsonPropertyName("isWrapper")] public bool IsWrapper { get; init; }
+
         [JsonPropertyName("traitIds")]
         public ReadOnlyCollection<string> TraitIds { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
+
         public bool DeepEquals(DestinyInventoryItemDefinition other)
         {
             return other != null &&
@@ -264,7 +321,9 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                    SummaryItem.DeepEquals(other.SummaryItem) &&
                    ItemCategories.DeepEqualsReadOnlyCollections(other.ItemCategories) &&
                    AllowActions == other.AllowActions &&
-                   (BackgroundColor != null ? BackgroundColor.DeepEquals(other.BackgroundColor) : other.BackgroundColor == null) &&
+                   (BackgroundColor != null
+                       ? BackgroundColor.DeepEquals(other.BackgroundColor)
+                       : other.BackgroundColor == null) &&
                    BreakerTypeEnumValue == other.BreakerTypeEnumValue &&
                    BreakerType.DeepEquals(other.BreakerType) &&
                    ClassType == other.ClassType &&
@@ -292,7 +351,9 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                    TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds) &&
                    (Stats != null ? Stats.DeepEquals(other.Stats) : other.Stats == null) &&
                    (TalentGrid != null ? TalentGrid.DeepEquals(other.TalentGrid) : other.TalentGrid == null) &&
-                   (TranslationBlock != null ? TranslationBlock.DeepEquals(other.TranslationBlock) : other.TranslationBlock == null) &&
+                   (TranslationBlock != null
+                       ? TranslationBlock.DeepEquals(other.TranslationBlock)
+                       : other.TranslationBlock == null) &&
                    (Value != null ? Value.DeepEquals(other.Value) : other.Value == null) &&
                    (SetData != null ? SetData.DeepEquals(other.SetData) : other.SetData == null) &&
                    (Plug != null ? Plug.DeepEquals(other.Plug) : other.Plug == null) &&
@@ -301,7 +362,9 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                    (Objectives != null ? Objectives.DeepEquals(other.Objectives) : other.Objectives == null) &&
                    Inventory.DeepEquals(other.Inventory) &&
                    (Action != null ? Action.DeepEquals(other.Action) : other.Action == null) &&
-                   (EquippingBlock != null ? EquippingBlock.DeepEquals(other.EquippingBlock) : other.EquippingBlock == null) &&
+                   (EquippingBlock != null
+                       ? EquippingBlock.DeepEquals(other.EquippingBlock)
+                       : other.EquippingBlock == null) &&
                    (Sockets != null ? Sockets.DeepEquals(other.Sockets) : other.Sockets == null) &&
                    InvestmentStats.DeepEqualsReadOnlyCollections(other.InvestmentStats) &&
                    Perks.DeepEqualsReadOnlyCollections(other.Perks) &&
@@ -324,7 +387,8 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
-        public void MapValues() 
+
+        public void MapValues()
         {
             Collectible.TryMapValue();
             SummaryItem.TryMapValue();
@@ -332,6 +396,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
             {
                 itemCategory.TryMapValue();
             }
+
             BreakerType.TryMapValue();
             DefaultDamageType.TryMapValue();
             if (Stats != null)
@@ -344,6 +409,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                     stat.Value.Stat.TryMapValue();
                 }
             }
+
             TalentGrid?.TalentGrid.TryMapValue();
             if (Value != null)
             {
@@ -352,6 +418,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                     value.Item.TryMapValue();
                 }
             }
+
             if (SetData != null)
             {
                 foreach (var setDataItem in SetData.ItemList)
@@ -359,6 +426,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                     setDataItem.Item.TryMapValue();
                 }
             }
+
             if (Plug != null)
             {
                 Plug.EnabledMaterialRequirement.TryMapValue();
@@ -368,6 +436,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                 //Plug.PlugCategory.TryMapValue();
                 Plug.PreviewItemOverride.TryMapValue();
             }
+
             if (Preview != null)
             {
                 Preview.Artifact.TryMapValue();
@@ -380,6 +449,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                     }
                 }
             }
+
             if (Quality != null)
             {
                 Quality.ProgressionLevelRequirement.TryMapValue();
@@ -388,22 +458,26 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                     version.PowerCap.TryMapValue();
                 }
             }
+
             if (Objectives != null)
             {
                 foreach (var activity in Objectives.DisplayActivities)
                 {
                     activity.TryMapValue();
                 }
+
                 foreach (var objective in Objectives.Objectives)
                 {
                     objective.TryMapValue();
                 }
+
                 Objectives.QuestlineItem.TryMapValue();
                 foreach (var property in Objectives.PerObjectiveDisplayProperties)
                 {
                     property.Activity.TryMapValue();
                 }
             }
+
             Inventory.BucketType.TryMapValue();
             Inventory.TierType.TryMapValue();
             Inventory.RecoveryBucketType.TryMapValue();
@@ -413,17 +487,20 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                 {
                     reward.ProgressionMapping.TryMapValue();
                 }
+
                 foreach (var item in Action.RequiredItems)
                 {
                     item.Item.TryMapValue();
                 }
                 //Action.RewardSheet.TryMapValue();
             }
+
             if (EquippingBlock != null)
             {
                 EquippingBlock.EquipmentSlotType.TryMapValue();
                 EquippingBlock.GearsetItem.TryMapValue();
             }
+
             if (Sockets != null)
             {
                 foreach (var intrinsicSocket in Sockets.IntrinsicSockets)
@@ -431,10 +508,12 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                     intrinsicSocket.PlugItem.TryMapValue();
                     intrinsicSocket.SocketType.TryMapValue();
                 }
+
                 foreach (var socketCategory in Sockets.SocketCategories)
                 {
                     socketCategory.SocketCategory.TryMapValue();
                 }
+
                 foreach (var socket in Sockets.SocketEntries)
                 {
                     socket.RandomizedPlugSet.TryMapValue();
@@ -443,21 +522,25 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                     socket.SocketType.TryMapValue();
                 }
             }
+
             foreach (var stat in InvestmentStats)
             {
                 stat.StatType.TryMapValue();
             }
+
             foreach (var perk in Perks)
             {
                 perk.Perk.TryMapValue();
             }
+
             if (Gearset != null)
             {
                 foreach (var item in Gearset.Items)
                 {
                     item.TryMapValue();
-                }               
+                }
             }
+
             EmblemObjective.TryMapValue();
             if (SourceData != null)
             {
@@ -465,6 +548,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                 {
                     rewardSource.TryMapValue();
                 }
+
                 foreach (var source in SourceData.Sources)
                 {
                     foreach (var sourceSource in source.Sources)
@@ -472,11 +556,13 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                         sourceSource.TryMapValue();
                     }
                 }
+
                 foreach (var vendorSource in SourceData.VendorSources)
                 {
                     vendorSource.Vendor.TryMapValue();
-                }              
+                }
             }
+
             if (Metrics != null)
             {
                 foreach (var node in Metrics.AvailableMetricCategoryNodes)
@@ -484,11 +570,13 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                     node.TryMapValue();
                 }
             }
+
             Lore.TryMapValue();
             foreach (var type in DamageTypes)
             {
                 type.TryMapValue();
             }
+
             Season.TryMapValue();
         }
     }

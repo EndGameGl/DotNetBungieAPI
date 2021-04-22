@@ -18,20 +18,10 @@ namespace NetBungieAPI.Services
 {
     internal class HttpClientInstance : IHttpClientInstance
     {
-        private readonly System.Text.Json.JsonSerializerOptions _jsonSerializerOptions = new System.Text.Json.JsonSerializerOptions()
-        {
-            Converters = 
-            { 
-                new ReadOnlyCollectionConverterFactory(),
-                new DefinitionHashPointerConverterFactory(),
-                new ReadOnlyDictionaryStructKeyConverterFactory(),
-                new ReadOnlyDictionaryDefinitionPointerKeyConverterFactory()
-            },
-            NumberHandling = JsonNumberHandling.AllowReadingFromString
-        };
         private readonly ILogger _logger;
         private readonly IConfigurationService _config;
-
+        private readonly IJsonSerializationHelper _serializationHelper;
+        
         private readonly string _authorizationEndpoint = "https://www.bungie.net/en/oauth/authorize";
         private readonly string _authorizationTokenEndpoint = "https://www.bungie.net/platform/app/oauth/token/";
         private readonly string _platformEndpoint = "https://www.bungie.net/Platform";
@@ -39,7 +29,7 @@ namespace NetBungieAPI.Services
         private readonly string _statsEndpoint = "https://www.stats.bungie.net";
 
         private readonly HttpClient _httpClient;
-        internal HttpClientInstance(ILogger logger, IConfigurationService configuration)
+        internal HttpClientInstance(ILogger logger, IConfigurationService configuration, IJsonSerializationHelper serializationHelper)
         {
             _logger = logger;
             _config = configuration;
@@ -47,6 +37,7 @@ namespace NetBungieAPI.Services
             {
                 Timeout = TimeSpan.FromSeconds(6000)              
             };
+            _serializationHelper = serializationHelper;
         }
 
         public void AddAcceptHeader(string headerValue)
@@ -236,7 +227,7 @@ namespace NetBungieAPI.Services
             };
 
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            requestMessage.Headers.TryAddWithoutValidation("X-API-Key", _config.Settings.ApiKey);
+            requestMessage.Headers.TryAddWithoutValidation("X-API-Key", _config.Settings.IdentificationSettings.ApiKey);
             requestMessage.Headers.TryAddWithoutValidation("cache-control", "no-cache");
             //requestMessage.Headers.UserAgent.ParseAdd("PostmanRuntime/7.26.10");
             if (!string.IsNullOrEmpty(authToken))
@@ -253,7 +244,7 @@ namespace NetBungieAPI.Services
             };
 
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            requestMessage.Headers.TryAddWithoutValidation("X-API-Key", _config.Settings.ApiKey);
+            requestMessage.Headers.TryAddWithoutValidation("X-API-Key", _config.Settings.IdentificationSettings.ApiKey);
 
             if (!string.IsNullOrEmpty(authToken))
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
@@ -279,7 +270,7 @@ namespace NetBungieAPI.Services
             var request = CreateGetMessage(finalQuery, authToken);
             var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
             await using var stream = await response.Content.ReadAsStreamAsync(token);
-            var bungieResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream, _jsonSerializerOptions, token);
+            var bungieResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream, _serializationHelper.Options, token);
             return bungieResponse;
         }
         public async ValueTask<BungieResponse<T>> PostToBungieNetPlatform<T>(string query, CancellationToken token, string authToken = null)
@@ -293,7 +284,7 @@ namespace NetBungieAPI.Services
             var request = CreatePostMessage(finalQuery, authToken);
             var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
             await using var stream = await response.Content.ReadAsStreamAsync(token);
-            var bungieResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream, _jsonSerializerOptions, token);
+            var bungieResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream, _serializationHelper.Options, token);
             return bungieResponse;
         }
         public async ValueTask<BungieResponse<T>> GetFromBungieNetStatsPlatform<T>(string query, CancellationToken token, string authToken = null)
@@ -307,7 +298,7 @@ namespace NetBungieAPI.Services
             var request = CreateGetMessage(finalQuery, authToken);
             var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
             await using var stream = await response.Content.ReadAsStreamAsync(token);
-            var bungieResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream, _jsonSerializerOptions, token);
+            var bungieResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream, _serializationHelper.Options, token);
             return bungieResponse;
         }
     }

@@ -1,219 +1,207 @@
 ﻿using NetBungieAPI.Models.Applications;
-using NetBungieAPI.Attributes;
-using NetBungieAPI.Services.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
+using NetBungieAPI.Providers;
 
 namespace NetBungieAPI.Clients.Settings
 {
     public class BungieClientSettings
     {
-        internal string ApiKey;
-        internal int? ClientID = null;
-        internal string ClientSecret = null;
-        internal ApplicationScopes ApplicationScopes = ApplicationScopes.ReadBasicUserProfile;
+        public ClientIdentificationSettings IdentificationSettings { get; } = ClientIdentificationSettings.Default;
+        public ManifestVersionSettings ManifestVersionSettings { get; } = ManifestVersionSettings.Default;
+        public DefinitionLoadingSettings DefinitionLoadingSettings { get; } = DefinitionLoadingSettings.Default;
+        public LocalFileSettings LocalFileSettings { get; } = LocalFileSettings.Default;
+        internal InternalSettings InternalSettings { get; } = InternalSettings.Default;
 
-        internal int AppConcurrencyLevel = Environment.ProcessorCount * 2;
-        internal bool CacheDefinitionsInMemory = false;
-        internal BungieLocales[] Locales = Array.Empty<BungieLocales>();
-        internal bool ShouldRetryDownloading = false;
-        internal bool PremapDefinitionPointers = false;
-
-        internal bool IsUsingPreloadedData = false;
-
-        internal bool ShouldLoadSpecifiedManifest;
-        internal string PreferredLoadedManifest;
-        internal string VersionsRepositoryPath;
-        internal bool KeepOldVerisons;
-        internal bool CheckUpdates;
-        internal Action<IManifestVersionHandler> OnManifestInitiation;
-
-        internal bool IsLoggingEnabled = false;
-
-        internal bool UseExistingConfig = false;
-        internal string ExistingConfigPath;
-
-        internal Dictionary<DefinitionsEnum, DefinitionSources> SpecifiedLoadSources = new Dictionary<DefinitionsEnum, DefinitionSources>(0);
-        internal DefinitionSources PreferredLoadSource = DefinitionSources.SQLite;
-        internal DefinitionsEnum[] ExcludedDefinitions = Array.Empty<DefinitionsEnum>();
-
-        internal int TokenCheckRefreshRate;
-        internal bool RenewTokens;
 
         /// <summary>
-        /// Adds API key to use for this app.
+        /// Adds client API key to config
         /// </summary>
         /// <param name="key"></param>
-        public BungieClientSettings IncludeApiKey(string key)
-        {
-            if (!string.IsNullOrWhiteSpace(key))
-                ApiKey = key;
-            else
-                throw new Exception("API key is missing or invalid.");
-            return this;
-        }
-        /// <summary>
-        /// Specifies that you want to load settings from json.
-        /// </summary>
-        /// <param name="path"></param>
-        public BungieClientSettings UseExistingSettingsJson(string path)
-        {
-            if (!string.IsNullOrWhiteSpace(path) && File.Exists(path) && Path.GetExtension(path).Equals("json"))
-            {
-                UseExistingConfig = true;
-                ExistingConfigPath = path;
-            }
-            else
-                throw new Exception("Valid file is missing at given path.");
-            return this;
-        }
-        /// <summary>
-        /// Defines how app will hanlde definitions.
-        /// </summary>
-        /// <param name="saveToAppMemory"></param>
-        /// <param name="tryDownloadMissingDefinitions"></param>
-        /// <param name="preferredSource"></param>
-        /// <param name="localesToLoad"></param>
-        public BungieClientSettings SetDefinitionsLoadingBehaviour(bool saveToAppMemory, DefinitionSources preferredSource, bool retryDownloading,
-            params BungieLocales[] localesToLoad)
-        {
-            CacheDefinitionsInMemory = saveToAppMemory;
-            Locales = localesToLoad;
-            PreferredLoadSource = preferredSource;
-            ShouldRetryDownloading = retryDownloading;
-            return this;
-        }    
-        /// <summary>
-        /// Makes app use already downloaded manifest databases. (Make sure to download them first))
-        /// <para/>
-        /// To download you need to run BungieClient.Platform.
-        /// </summary>
-        /// <param name="path"></param>
-        public BungieClientSettings UsePreloadedData(string path)
-        {
-            if (!string.IsNullOrWhiteSpace(path) && Directory.Exists(path))
-            {
-                IsUsingPreloadedData = true;
-                VersionsRepositoryPath = path;
-            }
-            else
-                throw new Exception("Incorrect data folder path.");
-            return this;
-        }
-        /// <summary>
-        /// Uses version control for updating definition databases.
-        /// </summary>
-        /// <param name="keepOldVersions"></param>
-        /// <param name="checkUpdates"></param>
-        /// <param name="repositoryPath"></param>
-        public BungieClientSettings UseVersionControl(bool keepOldVersions, bool checkUpdates, string repositoryPath, 
-            Action<IManifestVersionHandler> afterLoad = null)
-        {
-            KeepOldVerisons = keepOldVersions;
-            CheckUpdates = checkUpdates;
-            if (string.IsNullOrWhiteSpace(VersionsRepositoryPath) && !string.IsNullOrWhiteSpace(repositoryPath))
-                VersionsRepositoryPath = repositoryPath;
-            OnManifestInitiation = afterLoad;
-            return this;
-        }
-        /// <summary>
-        /// Excludes definitions from loading in this session.
-        /// </summary>
-        /// <param name="definitions"></param>
-        public BungieClientSettings ExcludeDefinitionsFromLoading(DefinitionsEnum[] definitions)
-        {
-            ExcludedDefinitions = definitions;
-            return this;
-        }
-        /// <summary>
-        /// Specifies loading sources for chosen definitions
-        /// </summary>
-        /// <param name="config"></param>
-        public BungieClientSettings SpecifyLoadSources(Dictionary<DefinitionsEnum, DefinitionSources> config)
-        {
-            if (config.Values.Any(x => x.HasFlag(DefinitionSources.BungieNet) || x.HasFlag(DefinitionSources.All)))
-                throw new Exception("While specifying load sources. Choose between JSON and SQLite.");
-            SpecifiedLoadSources = config;
-            return this;
-        }
-        /// <summary>
-        /// Specifies which concurrency level will be predefined when creating all <see cref="ConcurrentDictionary{T, P}"/>
-        /// </summary>
-        /// <param name="level"></param>
         /// <returns></returns>
-        public BungieClientSettings ChangeAppConcurrencyLevel(int level)
+        /// <exception cref="ArgumentException"></exception>
+        public BungieClientSettings AddApiKey(string key)
         {
-            if (level > 0)
-                AppConcurrencyLevel = level;
-            else
-                throw new Exception("Concurrency level can't be lower than zero.");
+            if (string.IsNullOrWhiteSpace(key))
+                throw new ArgumentException("API key is missing or invalid.");
+            IdentificationSettings.ApiKey = key;
             return this;
         }
+
         /// <summary>
-        /// Enables logging.
+        /// Adds client ID and secret to config.
         /// </summary>
+        /// <param name="id"></param>
+        /// <param name="secret"></param>
         /// <returns></returns>
-        public BungieClientSettings EnableLogging()
+        /// <exception cref="ArgumentException"></exception>
+        public BungieClientSettings AddClientIdAndSecret(int id, string secret)
         {
-            IsLoggingEnabled = true;
+            if (string.IsNullOrWhiteSpace(secret))
+                throw new ArgumentException("Client secret can't be empty");
+            if (id < 0)
+                throw new ArgumentException("Client id can't be less than 0");
+            IdentificationSettings.ClientId = id;
+            IdentificationSettings.ClientSecret = secret;
             return this;
         }
+
         /// <summary>
-        /// Premaps every <see cref="DefinitionHashPointer{T}"/> present in repository.
-        /// </summary>
-        /// <returns></returns>
-        public BungieClientSettings PremapPointers()
-        {
-            PremapDefinitionPointers = true;
-            return this;
-        }
-        /// <summary>
-        /// Loads in client ID and secret for OAuth2.
-        /// </summary>
-        /// <param name="clientId"></param>
-        /// <param name="clientSecret"></param>
-        /// <returns></returns>
-        public BungieClientSettings IncludeClientIdAndSecret(int clientId, string clientSecret)
-        {
-            ClientID = clientId;
-            ClientSecret = clientSecret;
-            return this;
-        }
-        /// <summary>
-        /// Enables OAuth2 token renewal at specified intervals.
-        /// </summary>
-        /// <param name="refreshRate"></param>
-        /// <returns></returns>
-        public BungieClientSettings EnableTokenRenewal(int refreshRate = 180000)
-        {
-            RenewTokens = true;
-            TokenCheckRefreshRate = refreshRate;
-            return this;
-        }
-        /// <summary>
-        /// If you have multiple databases downloaded, this will force app to load which one to load.
-        /// </summary>
-        /// <param name="manifestVersion"></param>
-        /// <returns></returns>
-        public BungieClientSettings LoadSpecifiedManifest(string manifestVersion)
-        {
-            ShouldLoadSpecifiedManifest = true;
-            PreferredLoadedManifest = manifestVersion;
-            return this;
-        }
-        /// <summary>
-        /// Specifies app client scopes so methods that shouldn't fire won't
+        /// Specifies in which scope should this app work
         /// </summary>
         /// <param name="scopes"></param>
         /// <returns></returns>
         public BungieClientSettings SpecifyApplicationScopes(ApplicationScopes scopes)
         {
-            ApplicationScopes = scopes;
+            IdentificationSettings.ApplicationScopes = scopes;
             return this;
+        }
+
+        /// <summary>
+        /// Specifies path to local manifest files
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="Exception"></exception>
+        public BungieClientSettings UseLocalManifestFiles(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+                throw new ArgumentException("Path can't be empty");
+            if (!Directory.Exists(path))
+                throw new Exception("Directory doesn't exist.");
+            LocalFileSettings.VersionsRepositoryPath = path;
+            return this;
+        }
+
+        /// <summary>
+        /// Enables logging
+        /// </summary>
+        /// <returns></returns>
+        public BungieClientSettings EnableLogging()
+        {
+            InternalSettings.IsLoggingEnabled = true;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets up concurrency level for repository.
+        /// </summary>
+        /// <param name="level"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public BungieClientSettings SetAppConcurrencyLevel(int level)
+        {
+            if (level <= 0)
+                throw new ArgumentException("Concurrency level can't be lower than 0");
+            DefinitionLoadingSettings.AppConcurrencyLevel = level;
+            return this;
+        }
+
+        /// <summary>
+        /// Specifies which locales can be loaded in this app.
+        /// </summary>
+        /// <param name="locales"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public BungieClientSettings SetLocales(BungieLocales[] locales)
+        {
+            if (locales == null || locales.Length == 0)
+                throw new ArgumentException("Specify locales before loading");
+            DefinitionLoadingSettings.Locales = locales;
+            return this;
+        }
+
+        /// <summary>
+        /// Forbids these definitions from loading
+        /// </summary>
+        /// <param name="definitions"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public BungieClientSettings ExcludeDefinitionsFromLoading(DefinitionsEnum[] definitions)
+        {
+            if (definitions == null || definitions.Length == 0)
+                throw new ArgumentException("Specify definitions to exclude before loading");
+            DefinitionLoadingSettings.ForbiddenDefinitions = definitions;
+            return this;
+        }
+
+        /// <summary>
+        /// Premaps all repository definitions after loading
+        /// </summary>
+        /// <returns></returns>
+        public BungieClientSettings PremapDefinitions()
+        {
+            DefinitionLoadingSettings.PremapDefinitionPointers = true;
+            return this;
+        }
+
+        /// <summary>
+        /// Loads all definitions in memory on startup.
+        /// </summary>
+        /// <returns></returns>
+        public BungieClientSettings LoadAllDefinitionsOnStartup()
+        {
+            DefinitionLoadingSettings.LoadAllDefinitionsOnStatup = true;
+            return this;
+        }
+
+        /// <summary>
+        /// Specifies definition provider
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public BungieClientSettings UseDefinitionProvider(DefinitionProvider provider)
+        {
+            if (provider is null)
+                throw new Exception("Provider is null.");
+            DefinitionLoadingSettings.UsedProvider = provider;
+            return this;
+        }
+
+        /// <summary>
+        /// Forces app to look up different manifest version available to load
+        /// </summary>
+        /// <param name="version"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public BungieClientSettings TryLoadManifestVersion(string version)
+        {
+            if (string.IsNullOrWhiteSpace(version))
+                throw new ArgumentException("Version can't be empty");
+            ManifestVersionSettings.ForceLoadManifestVersion = true;
+            ManifestVersionSettings.PreferredLoadedManifestVersion = version;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets up how manifest updater will work.
+        /// </summary>
+        /// <param name="shouldCheckUpdates"></param>
+        /// <param name="keepOldVersions"></param>
+        /// <returns></returns>
+        public BungieClientSettings SetUpdateBehaviour(bool shouldCheckUpdates, bool keepOldVersions)
+        {
+            ManifestVersionSettings.CheckUpdates = shouldCheckUpdates;
+            ManifestVersionSettings.KeepOldVersions = keepOldVersions;
+            return this;
+        }
+        
+        internal async Task AfterConfigurated()
+        {
+            var assemblyData = StaticUnityContainer.GetAssemblyData();
+            var excludedFromLoad = DefinitionLoadingSettings.ForbiddenDefinitions;
+            DefinitionLoadingSettings.AllowedDefinitions = assemblyData
+                .DefinitionsToTypeMapping
+                .Keys
+                .Where(x => !excludedFromLoad.Contains(x))
+                .ToArray();
+            DefinitionLoadingSettings.UsedProvider ??= new SqliteDefinitionProvider();
         }
     }
 }

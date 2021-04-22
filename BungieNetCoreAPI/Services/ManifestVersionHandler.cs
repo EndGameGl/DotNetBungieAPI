@@ -3,7 +3,6 @@ using NetBungieAPI.Models;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,6 +25,7 @@ namespace NetBungieAPI.Services
             ManifestContentDownloadFilter.MobileWorldContent;
 
         private Stopwatch _stopwatch = new Stopwatch();
+        private readonly IJsonSerializationHelper _serializationHelper;
         private readonly IDestiny2MethodsAccess _d2Api;
         private readonly ILogger _logger;
         private readonly IConfigurationService _configuration;
@@ -37,36 +37,32 @@ namespace NetBungieAPI.Services
         public DestinyManifest CurrentUsedManifest => _latestVersionApiResponse.Response;
 
         public ManifestVersionHandler(ILogger logger, IConfigurationService configuration, IDestiny2MethodsAccess d2Api,
-            ILocalisedDestinyDefinitionRepositories repository, IHttpClientInstance httpClientInstance)
+            ILocalisedDestinyDefinitionRepositories repository, IHttpClientInstance httpClientInstance, IJsonSerializationHelper serializationHelper)
         {
             _d2Api = d2Api;
             _logger = logger;
             _configuration = configuration;
             _repository = repository;
             _httpClientInstance = httpClientInstance;
+            _serializationHelper = serializationHelper;
         }
 
         public async ValueTask<bool> HasUpdates()
         {
-            if (_configuration.Settings.CheckUpdates)
-            {
-                var manifests = FindManifestsAt(_configuration.Settings.VersionsRepositoryPath);
+            if (!_configuration.Settings.ManifestVersionSettings.CheckUpdates)
+                throw new Exception("Update checking is turned off. Apply proper settings to enable update checking.");
 
-                _latestVersionApiResponse = await _d2Api.GetDestinyManifest();
-                if (_latestVersionApiResponse?.Response == null)
-                    throw new Exception("Failed to load newest manifest.");
+            var manifests = FindManifestsAt(_configuration.Settings.LocalFileSettings.VersionsRepositoryPath);
 
-                var latestManifest = _latestVersionApiResponse.Response;
-                if (manifests.Count == 0)
-                    return true;
+            _latestVersionApiResponse = await _d2Api.GetDestinyManifest();
+            if (_latestVersionApiResponse?.Response == null)
+                throw new Exception("Failed to load newest manifest.");
 
-                if (manifests.Any(x => x.Version.Equals(latestManifest.Version)))
-                    return false;
-
+            var latestManifest = _latestVersionApiResponse.Response;
+            if (manifests.Count == 0)
                 return true;
-            }
 
-            throw new Exception("Update checking is turned off. Apply proper settings to enable update checking.");
+            return !manifests.Any(x => x.Version.Equals(latestManifest.Version));
         }
 
         public IList<DestinyManifest> FindManifestsAt(string path)
@@ -74,23 +70,18 @@ namespace NetBungieAPI.Services
             if (!Directory.Exists(path))
                 throw new Exception($"No manifest folder found at: {path}");
 
-            List<DestinyManifest> manifests = new List<DestinyManifest>();
+            var manifests = new List<DestinyManifest>();
             var versions = Directory.EnumerateDirectories(path);
-            JsonSerializer serializer = new JsonSerializer();
             Parallel.ForEach(versions, (version) =>
             {
                 var files = Directory.EnumerateFiles(version, "Manifest.json", SearchOption.TopDirectoryOnly);
                 var manifestPath = files.FirstOrDefault();
-                if (manifestPath != null)
-                {
-                    _logger.Log($"Found manifest at: {manifestPath}", LogType.Info);
-                    using FileStream fs = File.OpenRead(manifestPath);
-                    using TextReader tr = new StreamReader(fs);
-                    using JsonReader reader = new JsonTextReader(tr);
-                    var folderManifest = serializer.Deserialize<DestinyManifest>(reader);
-                    //_logger.Log($"Manifest version: {folderManifest.Version} - Date: {folderManifest.VersionDate.ToShortDateString()}", LogType.Info);
-                    manifests.Add(folderManifest);
-                }
+                if (manifestPath == null) 
+                    return;
+                _logger.Log($"Found manifest at: {manifestPath}", LogType.Info);
+                var json = File.ReadAllText(manifestPath);
+                var folderManifest = _serializationHelper.Deserialize<DestinyManifest>(json);
+                manifests.Add(folderManifest);
             });
             return manifests;
         }
@@ -100,7 +91,7 @@ namespace NetBungieAPI.Services
             if (_latestVersionApiResponse == null)
                 _latestVersionApiResponse = await _d2Api.GetDestinyManifest();
             await DownloadManifestFilesLocally(_latestVersionApiResponse.Response,
-                _configuration.Settings.VersionsRepositoryPath, true);
+                _configuration.Settings.LocalFileSettings.VersionsRepositoryPath, true);
         }
 
         public async Task DownloadManifestFilesLocally(DestinyManifest manifest, string path, bool unpackSQLite = true,
@@ -128,7 +119,7 @@ namespace NetBungieAPI.Services
 
             if (!File.Exists($"{path}/Manifest.json"))
             {
-                var manifestJson = JsonConvert.SerializeObject(this.CurrentUsedManifest, Formatting.Indented);
+                var manifestJson = _serializationHelper.Serialize(CurrentUsedManifest);
                 File.WriteAllText($"{path}/Manifest.json", manifestJson);
             }
 
@@ -136,17 +127,15 @@ namespace NetBungieAPI.Services
             _logger.Log($"Finished getting data! {stopwatch.ElapsedMilliseconds} ms.", LogType.Info);
         }
 
-        private bool IsZIP(string filepath)
+        private static bool IsZIP(string filepath)
         {
             if (File.Exists(filepath))
             {
                 try
                 {
-                    using (var zipFile = ZipFile.OpenRead(filepath))
-                    {
-                        var entries = zipFile.Entries;
-                        return true;
-                    }
+                    using var zipFile = ZipFile.OpenRead(filepath);
+                    var entries = zipFile.Entries;
+                    return true;
                 }
                 catch (InvalidDataException)
                 {
@@ -217,20 +206,19 @@ namespace NetBungieAPI.Services
                 else
                     _logger.Log("File already exists, skipping.", LogType.Info);
 
-                if (shouldUnpack)
+                if (!shouldUnpack) 
+                    continue;
+                _logger.Log("Unpacking zip...", LogType.Info);
+                var packedFileName = $"{filePath}.zip";
+                if (IsZIP($"{filePath}"))
                 {
-                    _logger.Log("Unpacking zip...", LogType.Info);
-                    var packedFileName = $"{filePath}.zip";
-                    if (IsZIP($"{filePath}"))
-                    {
-                        File.Move($"{filePath}", packedFileName);
-                        ZipFile.ExtractToDirectory(packedFileName, $"{entryPath}");
-                        _logger.Log("Clearing leftovers.", LogType.Info);
-                        File.Delete(packedFileName);
-                    }
-                    else
-                        _logger.Log("File is already unpacked", LogType.Info);
+                    File.Move($"{filePath}", packedFileName);
+                    ZipFile.ExtractToDirectory(packedFileName, $"{entryPath}");
+                    _logger.Log("Clearing leftovers.", LogType.Info);
+                    File.Delete(packedFileName);
                 }
+                else
+                    _logger.Log("File is already unpacked", LogType.Info);
             }
 
             _stopwatch.Stop();

@@ -85,7 +85,17 @@ namespace NetBungieAPI.Serialization
             }
             public override void Write(Utf8JsonWriter writer, ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue> value, JsonSerializerOptions options)
             {
-                throw new NotImplementedException();
+                writer.WriteStartObject();
+
+                foreach ((var key, var val) in value)
+                {
+                    var propertyName = key.Hash.ToString();
+                    writer.WritePropertyName(propertyName);
+
+                    JsonSerializer.Serialize(writer, val, options);
+                }
+
+                writer.WriteEndObject();
             }
         }
     }

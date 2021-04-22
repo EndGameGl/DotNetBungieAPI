@@ -25,7 +25,7 @@ namespace NetBungieAPI
         }
         public async ValueTask<BungieResponse<ApiUsage>> GetApplicationApiUsage(int applicationId, DateTime? start = null, DateTime? end = null, CancellationToken token = default)
         {
-            if (!_configuration.Settings.ApplicationScopes.HasFlag(ApplicationScopes.ReadUserData))
+            if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(ApplicationScopes.ReadUserData))
                 throw new Exception("ReadUserData scope is required to call this api.");
             if (start.HasValue && end.HasValue && (end.Value - start.Value).TotalHours > 48)
                 throw new Exception("Can't request more than 48 hours.");

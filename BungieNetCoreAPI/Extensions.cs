@@ -89,14 +89,12 @@ namespace NetBungieAPI
         }
         internal static ReadOnlyCollection<T> AsReadOnlyOrEmpty<T>(this T[] source)
         {
-            if (source is null)
-                return new ReadOnlyCollection<T>(new T[0]);
-            return new ReadOnlyCollection<T>(source);
+            return source is null ? new ReadOnlyCollection<T>(Array.Empty<T>()) : new ReadOnlyCollection<T>(source);
         }
         internal static ReadOnlyCollection<DefinitionHashPointer<T>> DefinitionsAsReadOnlyOrEmpty<T>(this uint[] source, DefinitionsEnum enumValue) where T : IDestinyDefinition
         {
             if (source is null)
-                return new ReadOnlyCollection<DefinitionHashPointer<T>>(new DefinitionHashPointer<T>[0]);
+                return new ReadOnlyCollection<DefinitionHashPointer<T>>(Array.Empty<DefinitionHashPointer<T>>());
             IList<DefinitionHashPointer<T>> convertedList = new List<DefinitionHashPointer<T>>(source.Length);
             for (int i = 0; i < source.Length; i++)
             {
@@ -149,7 +147,7 @@ namespace NetBungieAPI
         #region Activity search
         public static List<DestinyActivityDefinition> GetActivitiesWithMode(this ILocalisedDestinyDefinitionRepositories repository, BungieLocales locale, uint activityModeHash)
         {
-            return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale, x => (x as DestinyActivityDefinition).ActivityModes.Where(q => q.Hash.Equals(activityModeHash)).Count() > 0).ToList();
+            return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale, x => ((DestinyActivityDefinition) x).ActivityModes.Any(q => q.Hash.Equals(activityModeHash))).ToList();
         }
         public static List<DestinyActivityDefinition> GetActivitiesWithMode(this ILocalisedDestinyDefinitionRepositories repository, BungieLocales locale, DestinyActivityModeType activityMode)
         {

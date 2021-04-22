@@ -1,7 +1,9 @@
 ﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Attributes;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.UnlockValues
 {
+    [DestinyDefinition(DefinitionsEnum.DestinyUnlockValueDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
     public sealed record DestinyUnlockValueDefinition : IDestinyDefinition, IDeepEquatable<DestinyUnlockValueDefinition>
     {
         [JsonPropertyName("blacklisted")]

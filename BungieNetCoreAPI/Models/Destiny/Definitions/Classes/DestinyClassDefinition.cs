@@ -14,7 +14,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Classes
         [JsonPropertyName("classType")]
         public DestinyClass ClassType { get; init; }
         [JsonPropertyName("genderedClassNames")]
-        public ReadOnlyDictionary<DestinyGender, string> GenderedClassNames { get; init; } = Defaults.EmptyReadOnlyDictionary<DestinyGender, string>();
+        public ReadOnlyDictionary<string, string> GenderedClassNames { get; init; } = Defaults.EmptyReadOnlyDictionary<string, string>();
         [JsonPropertyName("genderedClassNamesByGenderHash")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string> GenderedClassNamesByGender { get; init; } = Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>();
         [JsonPropertyName("blacklisted")]

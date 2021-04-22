@@ -9,11 +9,10 @@ namespace NetBungieAPI.Repositories
     /// <summary>
     /// Repository for any <see cref="IDestinyDefinition"/>
     /// </summary>
-    /// <typeparam name="T">More specific type of <see cref="IDestinyDefinition"/></typeparam>
     public class DestinyDefinitionTypeRepository
     {
-        private ConcurrentDictionary<uint, IDestinyDefinition> _definitions;
-        public Type Type { get; init; }
+        private readonly ConcurrentDictionary<uint, IDestinyDefinition> _definitions;
+        public Type Type { get; }
         public DestinyDefinitionTypeRepository(Type storedType, int concurrencyLevel, int capacity = 31)
         {
             Type = storedType;

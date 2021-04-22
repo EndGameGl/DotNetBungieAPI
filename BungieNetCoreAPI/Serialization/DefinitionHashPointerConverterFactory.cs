@@ -47,7 +47,8 @@ namespace NetBungieAPI.Serialization
             }
             public override void Write(Utf8JsonWriter writer, DefinitionHashPointer<T> value, JsonSerializerOptions options)
             {
-                throw new NotImplementedException();
+                if (value.Hash.HasValue)
+                    writer.WriteNumber("hash", value.Hash.Value);
             }
         }
     }

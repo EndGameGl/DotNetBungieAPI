@@ -6,11 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using NetBungieAPI.Models.Destiny.Config;
+using NetBungieAPI.Providers;
 
 namespace NetBungieAPI.Repositories
 {
     public interface ILocalisedDestinyDefinitionRepositories
     {
+        DefinitionProvider Provider { get; set; }
         BungieLocales CurrentLocaleLoadContext { get; }
         void SetLocaleContext(BungieLocales locale);
         void ResetLocaleContext();
@@ -26,5 +28,8 @@ namespace NetBungieAPI.Repositories
         List<DestinyInventoryItemDefinition> GetSacks(BungieLocales locale);
         List<DestinyActivityDefinition> SearchActivitiesByName(BungieLocales locale, string name);
         string FetchJSONFromDB(BungieLocales locale, DefinitionsEnum definitionType, uint hash);
+
+        bool AddDefinition(DefinitionsEnum definitionType, BungieLocales locale,
+            IDestinyDefinition definition);
     }
 }

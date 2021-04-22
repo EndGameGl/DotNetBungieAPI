@@ -23,7 +23,7 @@ namespace NetBungieAPI
             Container.RegisterType<IManifestVersionHandler, ManifestVersionHandler>(TypeLifetime.Singleton);
             Container.RegisterType<IDefinitionAssemblyData, DefinitionAssemblyData>(TypeLifetime.Singleton);
             Container.RegisterType<IAuthorizationStateHandler, AuthorizationStateHandler>(TypeLifetime.Singleton);
-
+            Container.RegisterType<IJsonSerializationHelper, JsonSerializationHelper>(TypeLifetime.Singleton);
             RegisterApiAccess();
         }
         private static void RegisterApiAccess()

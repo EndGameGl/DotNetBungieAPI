@@ -7,7 +7,5 @@ namespace NetBungieAPI.Repositories
     {
         public DestinyDefinitionAttribute AttributeData { get; internal set; }
         public Type DefinitionType { get; internal set; }
-        public string DefinitionStringName { get; internal set; }
-        public bool? UserOverrideLoadValue { get; internal set; }
     }
 }

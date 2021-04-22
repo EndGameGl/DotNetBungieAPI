@@ -75,7 +75,7 @@
         DestinyUnlockDefinition,
         //DestinyUnlockEventDefinition,
         //DestinyUnlockExpressionMappingDefinition,
-        //DestinyUnlockValueDefinition,
+        DestinyUnlockValueDefinition,
         DestinyVendorDefinition,
         DestinyVendorGroupDefinition
     }

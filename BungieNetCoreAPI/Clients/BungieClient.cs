@@ -23,8 +23,10 @@ namespace NetBungieAPI.Clients
         public ILocalisedDestinyDefinitionRepositories Repository { get; private set; }
         public IBungieApiAccess ApiAccess { get; }
 
-        internal BungieClient(IConfigurationService config, IManifestVersionHandler manifestUpdateHandler, ILogger logger, IBungieApiAccess apiAccess,
-            IHttpClientInstance httpClient, IAuthorizationStateHandler authorizationHandler, ILocalisedDestinyDefinitionRepositories repository)
+        internal BungieClient(IConfigurationService config, IManifestVersionHandler manifestUpdateHandler,
+            ILogger logger, IBungieApiAccess apiAccess,
+            IHttpClientInstance httpClient, IAuthorizationStateHandler authorizationHandler,
+            ILocalisedDestinyDefinitionRepositories repository)
         {
             Configuration = config;
             _httpClient = httpClient;
@@ -32,7 +34,7 @@ namespace NetBungieAPI.Clients
             _versionControl = manifestUpdateHandler;
             _authHandler = authorizationHandler;
             Repository = repository;
-            ApiAccess = apiAccess; 
+            ApiAccess = apiAccess;
             _logListener = new LogListener();
             _logger.Register(_logListener);
         }
@@ -41,40 +43,51 @@ namespace NetBungieAPI.Clients
         {
             return await _versionControl.HasUpdates();
         }
+
         public async Task DownloadLatestManifestLocally()
         {
             await _versionControl.DownloadLastVersion();
         }
+
         public void LoadDefinitions()
         {
-            Repository.Initialize(Configuration.Settings.Locales);
-            Repository.LoadAllDataFromDisk(Configuration.Settings.VersionsRepositoryPath, _versionControl.CurrentUsedManifest);
+            Repository.Initialize(Configuration.Settings.DefinitionLoadingSettings.Locales);
+            Repository.LoadAllDataFromDisk(Configuration.Settings.LocalFileSettings.VersionsRepositoryPath,
+                _versionControl.CurrentUsedManifest);
         }
 
         public void AddListener(NewMessageEvent eventHandler)
         {
             if (_logListener != null)
-                _logListener.OnNewMessage += eventHandler; ;
+                _logListener.OnNewMessage += eventHandler;
+            ;
         }
+
         private bool TryGetAuthorizationValue(out string value)
         {
             value = default;
-            if (Configuration.Settings.ClientID.HasValue && !string.IsNullOrEmpty(Configuration.Settings.ClientSecret))
+            if (Configuration.Settings.IdentificationSettings.ClientId.HasValue &&
+                !string.IsNullOrEmpty(Configuration.Settings.IdentificationSettings.ClientSecret))
             {
-                value = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{Configuration.Settings.ClientID}:{Configuration.Settings.ClientSecret}"));
+                value = Convert.ToBase64String(Encoding.UTF8.GetBytes(
+                    $"{Configuration.Settings.IdentificationSettings.ClientId}:{Configuration.Settings.IdentificationSettings.ClientSecret}"));
                 return true;
             }
+
             return false;
         }
+
         public string GetAuthorizationLink()
         {
             var awaiter = _authHandler.CreateNewAuthAwaiter();
-            return _httpClient.GetAuthLink(Configuration.Settings.ClientID.Value, awaiter.State);
+            return _httpClient.GetAuthLink(Configuration.Settings.IdentificationSettings.ClientId.Value, awaiter.State);
         }
+
         public void ReceiveCode(string state, string code)
         {
             _authHandler.InputCode(state, code);
         }
+
         public async Task<AuthorizationTokenData> GetAuthorizationToken(string code)
         {
             if (TryGetAuthorizationValue(out var value))
@@ -86,6 +99,7 @@ namespace NetBungieAPI.Clients
             else
                 throw new Exception("Couldn't form authorization value.");
         }
+
         public async Task<AuthorizationTokenData> RenewAuthorizationToken(AuthorizationTokenData oldToken)
         {
             return await _httpClient.RenewAuthorizationToken(oldToken);

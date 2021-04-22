@@ -15,7 +15,7 @@ namespace NetBungieAPI.Logging
         }
         public void Log(string message, LogType type)
         {
-            if (_configuration.Settings.IsLoggingEnabled)
+            if (_configuration.Settings.InternalSettings.IsLoggingEnabled)
             {
                 var messageObject = new LogMessage(DateTime.Now, message, type);
                 foreach (var listener in _listeners)

@@ -67,7 +67,14 @@ namespace NetBungieAPI.Serialization
             }
             public override void Write(Utf8JsonWriter writer, ReadOnlyCollection<T> value, JsonSerializerOptions options)
             {
-                throw new NotImplementedException();
+                writer.WriteStartArray();
+
+                foreach (var item in value)
+                {
+                    JsonSerializer.Serialize(writer, item, options);
+                }
+
+                writer.WriteEndArray();
             }
         }
     }
