@@ -18,10 +18,13 @@ namespace NetBungieAPI.Services
 {
     internal class HttpClientInstance : IHttpClientInstance
     {
+        private readonly MediaTypeWithQualityHeaderValue _jsonHeaderValue =
+            new MediaTypeWithQualityHeaderValue("application/json");
+
         private readonly ILogger _logger;
         private readonly IConfigurationService _config;
         private readonly IJsonSerializationHelper _serializationHelper;
-        
+
         private const string _authorizationEndpoint = "https://www.bungie.net/en/oauth/authorize";
         private const string _authorizationTokenEndpoint = "https://www.bungie.net/platform/app/oauth/token/";
         private const string _platformEndpoint = "https://www.bungie.net/Platform";
@@ -29,13 +32,15 @@ namespace NetBungieAPI.Services
         private const string _statsEndpoint = "https://www.stats.bungie.net";
 
         private readonly HttpClient _httpClient;
-        internal HttpClientInstance(ILogger logger, IConfigurationService configuration, IJsonSerializationHelper serializationHelper)
+
+        internal HttpClientInstance(ILogger logger, IConfigurationService configuration,
+            IJsonSerializationHelper serializationHelper)
         {
             _logger = logger;
             _config = configuration;
             _httpClient = new HttpClient()
             {
-                Timeout = TimeSpan.FromSeconds(6000)              
+                Timeout = TimeSpan.FromSeconds(6000)
             };
             _serializationHelper = serializationHelper;
         }
@@ -44,10 +49,12 @@ namespace NetBungieAPI.Services
         {
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(headerValue));
         }
+
         public void AddHeader(string header, string headerValue)
         {
             _httpClient.DefaultRequestHeaders.Add(header, headerValue);
         }
+
         public async Task<AuthorizationTokenData> GetAuthorizationToken(string code, string authValue)
         {
             var requestMessage = new HttpRequestMessage()
@@ -63,13 +70,15 @@ namespace NetBungieAPI.Services
 
             if (response.IsSuccessStatusCode)
             {
-                var token = JsonConvert.DeserializeObject<AuthorizationTokenData>(await response.Content.ReadAsStringAsync());
+                var token = JsonConvert.DeserializeObject<AuthorizationTokenData>(
+                    await response.Content.ReadAsStringAsync());
 
                 return token;
             }
 
             throw new Exception("Failed to fetch token.");
         }
+
         public async Task<AuthorizationTokenData> RenewAuthorizationToken(AuthorizationTokenData oldToken)
         {
             var requestMessage = new HttpRequestMessage()
@@ -78,7 +87,8 @@ namespace NetBungieAPI.Services
                 RequestUri = new Uri(_authorizationTokenEndpoint),
                 Content = new StringContent($"grant_type=refresh_token&code={oldToken.RefreshToken}")
             };
-            requestMessage.Headers.Authorization = new AuthenticationHeaderValue(oldToken.TokenType, oldToken.AccessToken);
+            requestMessage.Headers.Authorization =
+                new AuthenticationHeaderValue(oldToken.TokenType, oldToken.AccessToken);
             requestMessage.Content.Headers.ContentType.MediaType = "application/x-www-form-urlencoded";
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -86,16 +96,19 @@ namespace NetBungieAPI.Services
 
             if (response.IsSuccessStatusCode)
             {
-                return JsonConvert.DeserializeObject<AuthorizationTokenData>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<AuthorizationTokenData>(
+                    await response.Content.ReadAsStringAsync());
             }
 
             throw new Exception("Failed to fetch token.");
         }
+
         public string GetAuthLink(int clientId, string state)
         {
             var link = $"{_authorizationEndpoint}?client_id={clientId}&response_type=code&state={state}";
             return link;
         }
+
         /// <summary>
         /// Downloads json data from CDN
         /// </summary>
@@ -109,12 +122,13 @@ namespace NetBungieAPI.Services
             else
                 throw new Exception(response.ReasonPhrase);
         }
+
         /// <summary>
         /// Downloads image from CDN (WARNING: It can't be saved into file later)
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
-        public async ValueTask<Image>DownloadImageFromCDNAsync(string url)
+        public async ValueTask<Image> DownloadImageFromCDNAsync(string url)
         {
             Image image = null;
             var response = await _httpClient.GetAsync(_cdnEndpoint + url);
@@ -126,8 +140,10 @@ namespace NetBungieAPI.Services
                 memStream.Position = 0;
                 image = Image.FromStream(memStream);
             }
+
             return image;
         }
+
         /// <summary>
         /// Downloads an image from give url and saves to disk
         /// </summary>
@@ -136,7 +152,8 @@ namespace NetBungieAPI.Services
         /// <param name="filename"></param>
         /// <param name="format"></param>
         /// <returns></returns>
-        public async Task<Image> DownloadImageFromCDNAndSaveAsync(string url, string folderPath, string filename, ImageFormat format)
+        public async Task<Image> DownloadImageFromCDNAndSaveAsync(string url, string folderPath, string filename,
+            ImageFormat format)
         {
             Image image = null;
             var response = await _httpClient.GetAsync(_cdnEndpoint + url);
@@ -150,8 +167,10 @@ namespace NetBungieAPI.Services
                         memStream.Position = 0;
                         image = Image.FromStream(memStream);
 
-                        var targetDirectory = $"{(string.IsNullOrWhiteSpace(folderPath) ? Environment.CurrentDirectory : folderPath)}\\";
-                        var targetFileName = $"{(string.IsNullOrWhiteSpace(folderPath) ? Environment.CurrentDirectory : folderPath)}\\{filename}.{format.ToString().ToLower()}";
+                        var targetDirectory =
+                            $"{(string.IsNullOrWhiteSpace(folderPath) ? Environment.CurrentDirectory : folderPath)}\\";
+                        var targetFileName =
+                            $"{(string.IsNullOrWhiteSpace(folderPath) ? Environment.CurrentDirectory : folderPath)}\\{filename}.{format.ToString().ToLower()}";
                         if (Directory.Exists(targetDirectory))
                         {
                             if (!File.Exists(targetFileName))
@@ -167,14 +186,16 @@ namespace NetBungieAPI.Services
                     }
                 }
             }
+
             return image;
         }
+
         private HttpRequestMessage CreateGetMessage(string uri, string authToken = null)
         {
             var requestMessage = new HttpRequestMessage()
             {
                 RequestUri = new Uri(uri),
-                Method = HttpMethod.Get               
+                Method = HttpMethod.Get
             };
 
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -185,7 +206,8 @@ namespace NetBungieAPI.Services
 
             return requestMessage;
         }
-        private HttpRequestMessage CreatePostMessage(string uri, string authToken = null, string content = null)
+
+        private HttpRequestMessage CreatePostMessage(string uri, string authToken = null, Stream content = null)
         {
             var requestMessage = new HttpRequestMessage()
             {
@@ -193,23 +215,27 @@ namespace NetBungieAPI.Services
                 Method = HttpMethod.Post
             };
 
-            requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            requestMessage.Headers.Accept.Add(_jsonHeaderValue);
             requestMessage.Headers.TryAddWithoutValidation("X-API-Key", _config.Settings.IdentificationSettings.ApiKey);
 
             if (!string.IsNullOrEmpty(authToken))
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
-            if (!string.IsNullOrEmpty(content))
-                requestMessage.Content = new StringContent(content);
+            if (content is not null)
+                requestMessage.Content = new StreamContent(content);
             return requestMessage;
         }
+
         public async Task DownloadFileStreamFromCDNAsync(string query, string savePath)
         {
-            using var response = await _httpClient.GetAsync(_cdnEndpoint + query, HttpCompletionOption.ResponseHeadersRead);
+            using var response =
+                await _httpClient.GetAsync(_cdnEndpoint + query, HttpCompletionOption.ResponseHeadersRead);
             await using var stream = await response.Content.ReadAsStreamAsync();
             await using Stream streamToWriteTo = File.Open(savePath, FileMode.Create);
             await stream.CopyToAsync(streamToWriteTo);
         }
-        public async ValueTask<BungieResponse<T>> GetFromBungieNetPlatform<T>(string query, CancellationToken token, string authToken = null)
+
+        public async ValueTask<BungieResponse<T>> GetFromBungieNetPlatform<T>(string query, CancellationToken token,
+            string authToken = null)
         {
             var finalQuery = StringBuilderPool
                 .GetBuilder(token)
@@ -220,10 +246,14 @@ namespace NetBungieAPI.Services
             var request = CreateGetMessage(finalQuery, authToken);
             var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
             await using var stream = await response.Content.ReadAsStreamAsync(token);
-            var bungieResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream, _serializationHelper.Options, token);
+            var bungieResponse =
+                await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream,
+                    _serializationHelper.Options, token);
             return bungieResponse;
         }
-        public async ValueTask<BungieResponse<T>> PostToBungieNetPlatform<T>(string query, CancellationToken token, string content = null, string authToken = null)
+
+        public async ValueTask<BungieResponse<T>> PostToBungieNetPlatform<T>(string query, CancellationToken token,
+            Stream content = null, string authToken = null)
         {
             var finalQuery = StringBuilderPool
                 .GetBuilder(token)
@@ -234,10 +264,14 @@ namespace NetBungieAPI.Services
             var request = CreatePostMessage(finalQuery, authToken, content);
             var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
             await using var stream = await response.Content.ReadAsStreamAsync(token);
-            var bungieResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream, _serializationHelper.Options, token);
+            var bungieResponse =
+                await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream,
+                    _serializationHelper.Options, token);
             return bungieResponse;
         }
-        public async ValueTask<BungieResponse<T>> GetFromBungieNetStatsPlatform<T>(string query, CancellationToken token, string authToken = null)
+
+        public async ValueTask<BungieResponse<T>> GetFromBungieNetStatsPlatform<T>(string query,
+            CancellationToken token, string authToken = null)
         {
             var finalQuery = StringBuilderPool
                 .GetBuilder(token)
@@ -248,7 +282,9 @@ namespace NetBungieAPI.Services
             var request = CreateGetMessage(finalQuery, authToken);
             var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
             await using var stream = await response.Content.ReadAsStreamAsync(token);
-            var bungieResponse = await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream, _serializationHelper.Options, token);
+            var bungieResponse =
+                await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream,
+                    _serializationHelper.Options, token);
             return bungieResponse;
         }
     }

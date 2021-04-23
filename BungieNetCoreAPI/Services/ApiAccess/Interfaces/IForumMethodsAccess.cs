@@ -1,4 +1,5 @@
-﻿using NetBungieAPI.Models;
+﻿using System.Threading;
+using NetBungieAPI.Models;
 using NetBungieAPI.Models.Forum;
 using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Models.Tags;
@@ -20,7 +21,10 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="tagstring"></param>
         /// <param name="locales"></param>
         /// <returns></returns>
-        Task<BungieResponse<PostSearchResponse>> GetTopicsPaged(ForumPostCategoryEnums categoryFilter, ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort, long group, int pageSize = 0, int page = 0, string tagstring = null, BungieLocales[] locales = null);
+        ValueTask<BungieResponse<PostSearchResponse>> GetTopicsPaged(ForumPostCategoryEnums categoryFilter,
+            ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort, long group, int pageSize = 0, int page = 0,
+            string tagstring = null, BungieLocales[] locales = null, CancellationToken token = default);
+
         /// <summary>
         /// Gets a listing of all topics marked as part of the core group.
         /// </summary>
@@ -30,7 +34,10 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="page"></param>
         /// <param name="locales"></param>
         /// <returns></returns>
-        Task<BungieResponse<PostSearchResponse>> GetCoreTopicsPaged(ForumPostCategoryEnums categoryFilter, ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort, int page = 0, BungieLocales[] locales = null);
+        ValueTask<BungieResponse<PostSearchResponse>> GetCoreTopicsPaged(ForumPostCategoryEnums categoryFilter,
+            ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort, int page = 0, BungieLocales[] locales = null,
+            CancellationToken token = default);
+
         /// <summary>
         /// Returns a thread of posts at the given parent, optionally returning replies to those posts as well as the original parent.
         /// </summary>
@@ -43,7 +50,10 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="sortMode"></param>
         /// <param name="showbanned"></param>
         /// <returns></returns>
-        Task<BungieResponse<PostSearchResponse>> GetPostsThreadedPaged(bool getParentPost, int page, int pageSize, long parentPostId, int replySize, bool rootThreadMode, ForumTopicsSortEnum sortMode, bool? showbanned = null);
+        ValueTask<BungieResponse<PostSearchResponse>> GetPostsThreadedPaged(bool getParentPost, int page, int pageSize,
+            long parentPostId, int replySize, bool rootThreadMode, ForumTopicsSortEnum sortMode,
+            bool? showbanned = null, CancellationToken token = default);
+
         /// <summary>
         /// Returns a thread of posts starting at the topicId of the input childPostId, optionally returning replies to those posts as well as the original parent.
         /// </summary>
@@ -55,44 +65,56 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="sortMode"></param>
         /// <param name="showbanned"></param>
         /// <returns></returns>
-        Task<BungieResponse<PostSearchResponse>> GetPostsThreadedPagedFromChild(int page, int pageSize, long childPostId, int replySize, bool rootThreadMode, ForumTopicsSortEnum sortMode, bool? showbanned = null);
+        ValueTask<BungieResponse<PostSearchResponse>> GetPostsThreadedPagedFromChild(int page, int pageSize,
+            long childPostId, int replySize, bool rootThreadMode, ForumTopicsSortEnum sortMode,
+            bool? showbanned = null, CancellationToken token = default);
+
         /// <summary>
         /// Returns the post specified and its immediate parent.
         /// </summary>
         /// <param name="childPostId"></param>
         /// <param name="showbanned"></param>
         /// <returns></returns>
-        Task<BungieResponse<PostSearchResponse>> GetPostAndParent(long childPostId, bool? showbanned = null);
+        ValueTask<BungieResponse<PostSearchResponse>> GetPostAndParent(long childPostId, bool? showbanned = null,
+            CancellationToken token = default);
+
         /// <summary>
         /// Returns the post specified and its immediate parent of posts that are awaiting approval.
         /// </summary>
         /// <param name="childPostId"></param>
         /// <param name="showbanned"></param>
         /// <returns></returns>
-        Task<BungieResponse<PostSearchResponse>> GetPostAndParentAwaitingApproval(long childPostId, bool? showbanned = null);
+        ValueTask<BungieResponse<PostSearchResponse>> GetPostAndParentAwaitingApproval(long childPostId,
+            bool? showbanned = null, CancellationToken token = default);
+
         /// <summary>
         /// Gets the post Id for the given content item's comments, if it exists.
         /// </summary>
         /// <param name="contentId"></param>
         /// <returns></returns>
-        Task<BungieResponse<long>> GetTopicForContent(long contentId);
+        ValueTask<BungieResponse<long>> GetTopicForContent(long contentId, CancellationToken token = default);
+
         /// <summary>
         /// Gets tag suggestions based on partial text entry, matching them with other tags previously used in the forums.
         /// </summary>
         /// <param name="partialtag"></param>
         /// <returns></returns>
-        Task<BungieResponse<TagResponse[]>> GetForumTagSuggestions(string partialtag);
+        ValueTask<BungieResponse<TagResponse[]>> GetForumTagSuggestions(string partialtag,
+            CancellationToken token = default);
+
         /// <summary>
         /// Gets the specified forum poll.
         /// </summary>
         /// <param name="topicId"></param>
         /// <returns></returns>
-        Task<BungieResponse<PostSearchResponse>> GetPoll(long topicId);
+        ValueTask<BungieResponse<PostSearchResponse>> GetPoll(long topicId, CancellationToken token = default);
+
         /// <summary>
         /// Allows the caller to get a list of to 25 recruitment thread summary information objects.
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        Task<BungieResponse<ForumRecruitmentDetail[]>> GetRecruitmentThreadSummaries(long[] request);
+        ValueTask<BungieResponse<ForumRecruitmentDetail[]>> GetRecruitmentThreadSummaries(long[] request,
+            CancellationToken token = default);
     }
 }

@@ -2,6 +2,7 @@
 using NetBungieAPI.Models;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace NetBungieAPI.Services.Interfaces
             string authToken = null);
 
         ValueTask<BungieResponse<T>> PostToBungieNetPlatform<T>(string query, CancellationToken token,
-            string content = null,
+            Stream content = null,
             string authToken = null);
 
         ValueTask<BungieResponse<T>> GetFromBungieNetStatsPlatform<T>(string query, CancellationToken token,

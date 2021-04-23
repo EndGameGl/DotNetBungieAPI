@@ -1,4 +1,5 @@
-﻿using NetBungieAPI.Models;
+﻿using System.IO;
+using NetBungieAPI.Models;
 using NetBungieAPI.Models.Forum;
 using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Models.Tags;
@@ -6,71 +7,168 @@ using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
 using Newtonsoft.Json;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess
 {
     public class ForumMethodsAccess : IForumMethodsAccess
     {
-        private IHttpClientInstance _httpClient;
-        internal ForumMethodsAccess(IHttpClientInstance httpClient)
+        private readonly IHttpClientInstance _httpClient;
+        private readonly IJsonSerializationHelper _serializationHelper;
+
+        internal ForumMethodsAccess(IHttpClientInstance httpClient, IJsonSerializationHelper serializationHelper)
         {
             _httpClient = httpClient;
+            _serializationHelper = serializationHelper;
         }
 
-        public async Task<BungieResponse<PostSearchResponse>> GetTopicsPaged(ForumPostCategoryEnums categoryFilter, ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort, long group, 
-            int pageSize = 0, int page = 0, string tagstring = null, BungieLocales[] locales = null)
+        public async ValueTask<BungieResponse<PostSearchResponse>> GetTopicsPaged(ForumPostCategoryEnums categoryFilter,
+            ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort, long group,
+            int pageSize = 0, int page = 0, string tagstring = null, BungieLocales[] locales = null,
+            CancellationToken token = default)
         {
-            RequestQueryBuilder builder = new RequestQueryBuilder();
-            if (!string.IsNullOrWhiteSpace(tagstring))
-                builder.Add("tagstring", tagstring);
-            if (locales == null)
-                locales = new BungieLocales[] { BungieLocales.EN };
-            builder.Add("locales", string.Join(",", locales.Select(x => x.LocaleToString())));
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Forum/GetTopicsPaged/")
+                .AddUrlParam(page.ToString())
+                .AddUrlParam(pageSize.ToString())
+                .AddUrlParam(group.ToString())
+                .AddUrlParam(((byte) sort).ToString())
+                .AddUrlParam(((int) quickDate).ToString())
+                .AddUrlParam(((int) categoryFilter).ToString())
+                .AddQueryParam("tagstring", tagstring, () => string.IsNullOrWhiteSpace(tagstring))
+                .AddQueryParam("locales", string.Join(",", locales.Select(x => x.LocaleToString())))
+                .Build();
 
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<PostSearchResponse>>($"/Forum/GetTopicsPaged/{page}/{pageSize}/{group}/{sort}/{quickDate}/{categoryFilter}/{builder.Build()}");
+            return await _httpClient.GetFromBungieNetPlatform<PostSearchResponse>(url, token);
         }
-        public async Task<BungieResponse<PostSearchResponse>> GetCoreTopicsPaged(ForumPostCategoryEnums categoryFilter, ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort, int page = 0, BungieLocales[] locales = null)
-        {
-            RequestQueryBuilder builder = new RequestQueryBuilder();
-            if (locales == null)
-                locales = new BungieLocales[] { BungieLocales.EN };
-            builder.Add("locales", string.Join(",", locales.Select(x => x.LocaleToString())));
 
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<PostSearchResponse>>($"/Forum/GetCoreTopicsPaged/{page}/{sort}/{quickDate}/{categoryFilter}/{builder.Build()}");
-        }
-        public async Task<BungieResponse<PostSearchResponse>> GetPostsThreadedPaged(bool getParentPost, int page, int pageSize, long parentPostId, int replySize, bool rootThreadMode, ForumTopicsSortEnum sortMode, bool? showbanned = null)
+        public async ValueTask<BungieResponse<PostSearchResponse>> GetCoreTopicsPaged(
+            ForumPostCategoryEnums categoryFilter, ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort,
+            int page = 0, BungieLocales[] locales = null, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<PostSearchResponse>>($"/Forum/GetPostsThreadedPaged/{parentPostId}/{page}/{pageSize}/{replySize}/{getParentPost}/{rootThreadMode}/{sortMode}/{(showbanned.HasValue ? $"?showbanned={showbanned}" : "")}" );
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Forum/GetCoreTopicsPaged/")
+                .AddUrlParam(page.ToString())
+                .AddUrlParam(((byte) sort).ToString())
+                .AddUrlParam(((int) quickDate).ToString())
+                .AddUrlParam(((int) categoryFilter).ToString())
+                .AddQueryParam("locales", string.Join(",", locales.Select(x => x.LocaleToString())))
+                .Build();
+
+            return await _httpClient.GetFromBungieNetPlatform<PostSearchResponse>(url, token);
         }
-        public async Task<BungieResponse<PostSearchResponse>> GetPostsThreadedPagedFromChild(int page, int pageSize, long childPostId, int replySize, bool rootThreadMode, ForumTopicsSortEnum sortMode, bool? showbanned = null)
+
+        public async ValueTask<BungieResponse<PostSearchResponse>> GetPostsThreadedPaged(bool getParentPost, int page,
+            int pageSize, long parentPostId, int replySize, bool rootThreadMode, ForumTopicsSortEnum sortMode,
+            bool? showbanned = null, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<PostSearchResponse>>($"/Forum/GetPostsThreadedPagedFromChild/{childPostId}/{page}/{pageSize}/{replySize}/{rootThreadMode}/{sortMode}/{(showbanned.HasValue ? $"?showbanned={showbanned}" : "")}");
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Forum/GetPostsThreadedPaged/")
+                .AddUrlParam(parentPostId.ToString())
+                .AddUrlParam(page.ToString())
+                .AddUrlParam(pageSize.ToString())
+                .AddUrlParam(replySize.ToString())
+                .AddUrlParam(getParentPost.ToString())
+                .AddUrlParam(rootThreadMode.ToString())
+                .AddUrlParam(((byte) sortMode).ToString())
+                .AddQueryParam("showbanned", showbanned.ToString(), () => showbanned.HasValue)
+                .Build();
+
+            return await _httpClient.GetFromBungieNetPlatform<PostSearchResponse>(url, token);
         }
-        public async Task<BungieResponse<PostSearchResponse>> GetPostAndParent(long childPostId, bool? showbanned = null)
+
+        public async ValueTask<BungieResponse<PostSearchResponse>> GetPostsThreadedPagedFromChild(int page,
+            int pageSize, long childPostId, int replySize, bool rootThreadMode, ForumTopicsSortEnum sortMode,
+            bool? showbanned = null, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<PostSearchResponse>>($"/Forum/GetPostAndParent/{childPostId}/{(showbanned.HasValue ? $"?showbanned={showbanned}" : "")}");
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Forum/GetPostsThreadedPagedFromChild/")
+                .AddUrlParam(childPostId.ToString())
+                .AddUrlParam(page.ToString())
+                .AddUrlParam(pageSize.ToString())
+                .AddUrlParam(replySize.ToString())
+                .AddUrlParam(rootThreadMode.ToString())
+                .AddUrlParam(((byte) sortMode).ToString())
+                .AddQueryParam("showbanned", showbanned.ToString(), () => showbanned.HasValue)
+                .Build();
+
+            return await _httpClient.GetFromBungieNetPlatform<PostSearchResponse>(url, token);
         }
-        public async Task<BungieResponse<PostSearchResponse>> GetPostAndParentAwaitingApproval(long childPostId, bool? showbanned = null)
+
+        public async ValueTask<BungieResponse<PostSearchResponse>> GetPostAndParent(long childPostId,
+            bool? showbanned = null, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<PostSearchResponse>>($"/Forum/GetPostAndParentAwaitingApproval/{childPostId}/{(showbanned.HasValue ? $"?showbanned={showbanned}" : "")}");
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Forum/GetPostAndParent/")
+                .AddUrlParam(childPostId.ToString())
+                .AddQueryParam("showbanned", showbanned.ToString(), () => showbanned.HasValue)
+                .Build();
+
+            return await _httpClient.GetFromBungieNetPlatform<PostSearchResponse>(url, token);
         }
-        public async Task<BungieResponse<long>> GetTopicForContent(long contentId)
+
+        public async ValueTask<BungieResponse<PostSearchResponse>> GetPostAndParentAwaitingApproval(long childPostId,
+            bool? showbanned = null, CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<long>>($"/Forum/GetTopicForContent/{contentId}/");
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Forum/GetPostAndParentAwaitingApproval/")
+                .AddUrlParam(childPostId.ToString())
+                .AddQueryParam("showbanned", showbanned.ToString(), () => showbanned.HasValue)
+                .Build();
+
+            return await _httpClient.GetFromBungieNetPlatform<PostSearchResponse>(url, token);
         }
-        public async Task<BungieResponse<TagResponse[]>> GetForumTagSuggestions(string partialtag)
+
+        public async ValueTask<BungieResponse<long>> GetTopicForContent(long contentId,
+            CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<TagResponse[]>>($"/Forum/GetForumTagSuggestions/?partialtag={partialtag}");
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Forum/GetTopicForContent/")
+                .AddUrlParam(contentId.ToString())
+                .Build();
+
+            return await _httpClient.GetFromBungieNetPlatform<long>(url, token);
         }
-        public async Task<BungieResponse<PostSearchResponse>> GetPoll(long topicId)
+
+        public async ValueTask<BungieResponse<TagResponse[]>> GetForumTagSuggestions(string partialtag,
+            CancellationToken token = default)
         {
-            return await _httpClient.GetFromPlatfromAndDeserialize<BungieResponse<PostSearchResponse>>($"/Forum/Poll/{topicId}/");
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Forum/GetForumTagSuggestions/")
+                .AddQueryParam("partialtag", partialtag)
+                .Build();
+
+            return await _httpClient.GetFromBungieNetPlatform<TagResponse[]>(url, token);
         }
-        public async Task<BungieResponse<ForumRecruitmentDetail[]>> GetRecruitmentThreadSummaries(long[] request)
+
+        public async ValueTask<BungieResponse<PostSearchResponse>> GetPoll(long topicId,
+            CancellationToken token = default)
         {
-            string body = JsonConvert.SerializeObject(request);
-            return await _httpClient.PostToPlatformAndDeserialize<BungieResponse<ForumRecruitmentDetail[]>>($"/Forum/Recruit/Summaries/", body);
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Forum/Poll/")
+                .AddUrlParam(topicId.ToString())
+                .Build();
+
+            return await _httpClient.GetFromBungieNetPlatform<PostSearchResponse>(url, token);
+        }
+
+        public async ValueTask<BungieResponse<ForumRecruitmentDetail[]>> GetRecruitmentThreadSummaries(long[] request,
+            CancellationToken token = default)
+        {
+            await using var stream = new MemoryStream();
+            await _serializationHelper.SerializeAsync(stream, request);
+            return await _httpClient.PostToBungieNetPlatform<ForumRecruitmentDetail[]>($"/Forum/Recruit/Summaries/",
+                token, stream);
         }
     }
 }

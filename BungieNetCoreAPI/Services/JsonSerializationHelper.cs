@@ -72,6 +72,10 @@ namespace NetBungieAPI.Services
             return JsonSerializer.Serialize(obj, Options);
         }
 
+        public async Task SerializeAsync<T>(Stream stream, T data)
+        {
+            await JsonSerializer.SerializeAsync(stream, data, Options);
+        }
         public JsonSerializationHelper()
         {
             

@@ -17,5 +17,6 @@ namespace NetBungieAPI.Services.Interfaces
         T Deserialize<T>(string json);
         T Deserialize<T>(byte[] data);
         string Serialize<T>(T obj);
+        Task SerializeAsync<T>(Stream stream, T data);
     }
 }
