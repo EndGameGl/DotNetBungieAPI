@@ -23,6 +23,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<GroupTheme[]>> GetAvailableThemes(CancellationToken token = default);
+
         /// <summary>
         /// Gets the state of the user's clan invite preferences for a particular membership type - true if they wish to be invited to clans, false otherwise.
         /// <para/>
@@ -33,6 +34,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <returns></returns>
         ValueTask<BungieResponse<bool>> GetUserClanInviteSetting(BungieMembershipType mType,
             CancellationToken token = default);
+
         /// <summary>
         /// Gets groups recommended for you based on the groups to whom those you follow belong.
         /// <para/>
@@ -101,5 +103,78 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <returns></returns>
         ValueTask<BungieResponse<int>> EditGroup(long groupId, GroupEditAction request,
             CancellationToken token = default);
+
+        /// <summary>
+        /// Edit an existing group's clan banner. You must have suitable permissions in the group to perform this operation. All fields are required.
+        /// <para/>
+        /// Requires AdminGroups scope.
+        /// </summary>
+        /// <param name="groupId">Group ID of the group to edit.</param>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token.</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<int>> EditClanBanner(long groupId, ClanBanner request,
+            CancellationToken token = default);
+
+        /// <summary>
+        /// Edit group options only available to a founder. You must have suitable permissions in the group to perform this operation.
+        /// <para/>
+        /// Requires AdminGroups scope.
+        /// </summary>
+        /// <param name="groupId">Group ID of the group to edit.</param>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token.</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<int>> EditFounderOptions(long groupId, GroupOptionsEditAction request,
+            CancellationToken token = default);
+
+        /// <summary>
+        /// Add a new optional conversation/chat channel. Requires admin permissions to the group.
+        /// <para/>
+        /// Requires AdminGroups scope.
+        /// </summary>
+        /// <param name="groupId">Group ID of the group to edit.</param>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token.</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<long>> AddOptionalConversation(long groupId,
+            GroupOptionalConversationAddRequest request,
+            CancellationToken token = default);
+
+        /// <summary>
+        /// Edit the settings of an optional conversation/chat channel. Requires admin permissions to the group.
+        /// <para/>
+        /// Requires AdminGroups scope.
+        /// </summary>
+        /// <param name="groupId">Group ID of the group to edit.</param>
+        /// <param name="conversationId">Conversation Id of the channel being edited.</param>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token.</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<long>> EditOptionalConversation(long groupId, long conversationId,
+            GroupOptionalConversationEditRequest request, CancellationToken token = default);
+
+        /// <summary>
+        /// Get the list of members in a given group.
+        /// </summary>
+        /// <param name="groupId">The ID of the group.</param>
+        /// <param name="currentpage">Page number (starting with 1). Each page has a fixed size of 50 items per page.</param>
+        /// <param name="memberType">Filter out other member types. Use None for all members.</param>
+        /// <param name="nameSearch">The name fragment upon which a search should be executed for members with matching display or unique names.</param>
+        /// <param name="token">Cancellation token.</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<SearchResultOfGroupMember>> GetMembersOfGroup(long groupId,
+            int currentpage = 1, RuntimeGroupMemberType memberType = RuntimeGroupMemberType.None,
+            string nameSearch = null, CancellationToken token = default);
+
+        /// <summary>
+        /// Get the list of members in a given group who are of admin level or higher.
+        /// </summary>
+        /// <param name="groupId">The ID of the group.</param>
+        /// <param name="currentpage">Page number (starting with 1). Each page has a fixed size of 50 items per page.</param>
+        /// <param name="token">Cancellation token.</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<SearchResultOfGroupMember>> GetAdminsAndFounderOfGroup(long groupId,
+            int currentpage = 1, CancellationToken token = default);
     }
 }

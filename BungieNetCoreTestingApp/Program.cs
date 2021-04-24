@@ -81,17 +81,7 @@ namespace NetBungieAPI.TestProject
 
         private static async Task MainAsync()
         {
-
-
-            var voidForest = await _bungieClient
-                .ApiAccess
-                .GroupV2
-                .EditGroup(
-                    4394229, 
-                    new GroupEditAction()
-                    {
-                        AvatarImageIndex = 10
-                    });
+            var members = await _bungieClient.ApiAccess.GroupV2.GetAdminsAndFounderOfGroup(4394229);
             // var profile = await _bungieClient.ApiAccess.Destiny2.GetProfile(
             //     BungieMembershipType.TigerSteam,
             //     4611686018483306402,

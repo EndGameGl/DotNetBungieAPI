@@ -130,7 +130,7 @@ namespace NetBungieAPI.Services.ApiAccess
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
                 throw new Exception("AdminGroups flag must be set to call this API.");
-            
+
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
                 .AddUrlParam(groupId.ToString())
@@ -139,6 +139,103 @@ namespace NetBungieAPI.Services.ApiAccess
             var stream = new MemoryStream();
             await _serializationHelper.SerializeAsync(stream, request);
             return await _httpClient.PostToBungieNetPlatform<int>(url, token, stream);
+        }
+
+        public async ValueTask<BungieResponse<int>> EditClanBanner(long groupId, ClanBanner request,
+            CancellationToken token = default)
+        {
+            if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
+                .HasFlag(ApplicationScopes.AdminGroups))
+                throw new Exception("AdminGroups flag must be set to call this API.");
+
+            var url = StringBuilderPool.GetBuilder(token)
+                .Append("/GroupV2/")
+                .AddUrlParam(groupId.ToString())
+                .Append("EditClanBanner/")
+                .Build();
+            var stream = new MemoryStream();
+            await _serializationHelper.SerializeAsync(stream, request);
+            return await _httpClient.PostToBungieNetPlatform<int>(url, token, stream);
+        }
+
+        public async ValueTask<BungieResponse<int>> EditFounderOptions(long groupId, GroupOptionsEditAction request,
+            CancellationToken token = default)
+        {
+            if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
+                .HasFlag(ApplicationScopes.AdminGroups))
+                throw new Exception("AdminGroups flag must be set to call this API.");
+
+            var url = StringBuilderPool.GetBuilder(token)
+                .Append("/GroupV2/")
+                .AddUrlParam(groupId.ToString())
+                .Append("EditFounderOptions/")
+                .Build();
+            var stream = new MemoryStream();
+            await _serializationHelper.SerializeAsync(stream, request);
+            return await _httpClient.PostToBungieNetPlatform<int>(url, token, stream);
+        }
+
+        public async ValueTask<BungieResponse<long>> AddOptionalConversation(long groupId,
+            GroupOptionalConversationAddRequest request,
+            CancellationToken token = default)
+        {
+            if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
+                .HasFlag(ApplicationScopes.AdminGroups))
+                throw new Exception("AdminGroups flag must be set to call this API.");
+
+            var url = StringBuilderPool.GetBuilder(token)
+                .Append("/GroupV2/")
+                .AddUrlParam(groupId.ToString())
+                .Append("OptionalConversations/Add/")
+                .Build();
+            var stream = new MemoryStream();
+            await _serializationHelper.SerializeAsync(stream, request);
+            return await _httpClient.PostToBungieNetPlatform<long>(url, token, stream);
+        }
+
+        public async ValueTask<BungieResponse<long>> EditOptionalConversation(long groupId, long conversationId,
+            GroupOptionalConversationEditRequest request, CancellationToken token = default)
+        {
+            if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
+                .HasFlag(ApplicationScopes.AdminGroups))
+                throw new Exception("AdminGroups flag must be set to call this API.");
+
+            var url = StringBuilderPool.GetBuilder(token)
+                .Append("/GroupV2/")
+                .AddUrlParam(groupId.ToString())
+                .Append("OptionalConversations/Edit/")
+                .AddUrlParam(conversationId.ToString())
+                .Build();
+            var stream = new MemoryStream();
+            await _serializationHelper.SerializeAsync(stream, request);
+            return await _httpClient.PostToBungieNetPlatform<long>(url, token, stream);
+        }
+
+        public async ValueTask<BungieResponse<SearchResultOfGroupMember>> GetMembersOfGroup(long groupId,
+            int currentpage = 1, RuntimeGroupMemberType memberType = RuntimeGroupMemberType.None, 
+            string nameSearch = null, CancellationToken token = default)
+        {
+            var url = StringBuilderPool.GetBuilder(token)
+                .Append("/GroupV2/")
+                .AddUrlParam(groupId.ToString())
+                .Append("Members/")
+                .AddQueryParam("currentpage", currentpage.ToString())
+                .AddQueryParam("memberType", ((int) memberType).ToString())
+                .AddQueryParam("nameSearch", nameSearch, () => !string.IsNullOrWhiteSpace(nameSearch))
+                .Build();
+            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfGroupMember>(url, token);
+        }
+        
+        public async ValueTask<BungieResponse<SearchResultOfGroupMember>> GetAdminsAndFounderOfGroup(long groupId,
+            int currentpage = 1, CancellationToken token = default)
+        {
+            var url = StringBuilderPool.GetBuilder(token)
+                .Append("/GroupV2/")
+                .AddUrlParam(groupId.ToString())
+                .Append("AdminsAndFounder/")
+                .AddQueryParam("currentpage", currentpage.ToString())
+                .Build();
+            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfGroupMember>(url, token);
         }
     }
 }
