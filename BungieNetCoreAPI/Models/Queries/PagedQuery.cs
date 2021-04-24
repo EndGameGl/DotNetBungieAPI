@@ -2,7 +2,7 @@
 
 namespace NetBungieAPI.Models.Queries
 {
-    public class PagedQuery
+    public record PagedQuery
     {
         [JsonPropertyName("itemsPerPage")]
         public int ItemsPerPage { get; init; }

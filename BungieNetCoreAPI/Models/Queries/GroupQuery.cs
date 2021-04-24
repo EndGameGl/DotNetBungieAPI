@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Queries
 {
-    public class GroupQuery : PagedQuery
+    public sealed record GroupQuery : PagedQuery
     {
         [JsonPropertyName("name")]
         public string Name { get; private set; }
@@ -25,5 +25,33 @@ namespace NetBungieAPI.Models.Queries
 
         [JsonPropertyName("tagText")]
         public string TagText { get; private set; }
+
+        public GroupQuery(string name, GroupDateRange creationDate, GroupSortBy sortBy,
+            GroupMemberCountFilter? groupMemberCountFilter, string localeFilter, string tagText, int itemsPerPage,
+            int currentPage, string requestContinuationToken)
+        {
+            Name = name;
+            GroupType = GroupType.General;
+            CreationDate = creationDate;
+            SortBy = sortBy;
+            GroupMemberCountFilter = groupMemberCountFilter;
+            LocaleFilter = localeFilter;
+            TagText = tagText;
+            ItemsPerPage = itemsPerPage;
+            CurrentPage = currentPage;
+            RequestContinuationToken = requestContinuationToken;
+        }
+        public GroupQuery(string name, GroupDateRange creationDate, GroupSortBy sortBy, int itemsPerPage,
+            int currentPage, string requestContinuationToken)
+        {
+            Name = name;
+            GroupType = GroupType.Clan;
+            CreationDate = creationDate;
+            SortBy = sortBy;
+            ItemsPerPage = itemsPerPage;
+            CurrentPage = currentPage;
+            RequestContinuationToken = requestContinuationToken;
+        }
+        
     }
 }

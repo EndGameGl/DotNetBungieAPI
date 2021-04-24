@@ -3,11 +3,16 @@ using NetBungieAPI.Clients;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Models.Trending;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
+using NetBungieAPI.Models.GroupsV2;
+using NetBungieAPI.Models.Queries;
+using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.TestProject
 {
@@ -63,11 +68,11 @@ namespace NetBungieAPI.TestProject
                 settings
                     .AddApiKey(key: args[0])
                     .AddClientIdAndSecret(id: int.Parse(args[1]), secret: args[2])
-                    .SpecifyApplicationScopes(ApplicationScopes.ReadUserData)
+                    .SpecifyApplicationScopes(ApplicationScopes.ReadUserData | ApplicationScopes.AdminGroups)
                     .UseLocalManifestFiles(@"H:\BungieNetCoreAPIRepository\Manifests")
                     .EnableLogging((mes) => Console.WriteLine(mes))
                     .PremapDefinitions()
-                    .LoadAllDefinitionsOnStartup()
+                    //.LoadAllDefinitionsOnStartup()
                     .SetLocales(new BungieLocales[] { BungieLocales.EN })
                     .SetUpdateBehaviour(true, true);
             });
@@ -76,7 +81,17 @@ namespace NetBungieAPI.TestProject
 
         private static async Task MainAsync()
         {
-            
+
+
+            var voidForest = await _bungieClient
+                .ApiAccess
+                .GroupV2
+                .EditGroup(
+                    4394229, 
+                    new GroupEditAction()
+                    {
+                        AvatarImageIndex = 10
+                    });
             // var profile = await _bungieClient.ApiAccess.Destiny2.GetProfile(
             //     BungieMembershipType.TigerSteam,
             //     4611686018483306402,

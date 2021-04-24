@@ -1,17 +1,14 @@
 ﻿using NetBungieAPI.Logging;
 using NetBungieAPI.Authrorization;
-using Newtonsoft.Json;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using NetBungieAPI.Services.Interfaces;
 using System.Threading;
-using NetBungieAPI.Serialization;
 using NetBungieAPI.Models;
 
 namespace NetBungieAPI.Services
@@ -68,15 +65,12 @@ namespace NetBungieAPI.Services
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await _httpClient.SendAsync(requestMessage);
 
-            if (response.IsSuccessStatusCode)
-            {
-                var token = JsonConvert.DeserializeObject<AuthorizationTokenData>(
-                    await response.Content.ReadAsStringAsync());
+            if (!response.IsSuccessStatusCode)
+                throw new Exception("Failed to fetch token.");
+            var token = await _serializationHelper.DeserializeAsync<AuthorizationTokenData>(
+                await response.Content.ReadAsStreamAsync());
 
-                return token;
-            }
-
-            throw new Exception("Failed to fetch token.");
+            return token;
         }
 
         public async Task<AuthorizationTokenData> RenewAuthorizationToken(AuthorizationTokenData oldToken)
@@ -96,8 +90,8 @@ namespace NetBungieAPI.Services
 
             if (response.IsSuccessStatusCode)
             {
-                return JsonConvert.DeserializeObject<AuthorizationTokenData>(
-                    await response.Content.ReadAsStringAsync());
+                return await _serializationHelper.DeserializeAsync<AuthorizationTokenData>(
+                    await response.Content.ReadAsStreamAsync());
             }
 
             throw new Exception("Failed to fetch token.");
@@ -221,7 +215,11 @@ namespace NetBungieAPI.Services
             if (!string.IsNullOrEmpty(authToken))
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
             if (content is not null)
+            {
+                content.Position = 0;
                 requestMessage.Content = new StreamContent(content);
+            }
+
             return requestMessage;
         }
 
@@ -246,9 +244,7 @@ namespace NetBungieAPI.Services
             var request = CreateGetMessage(finalQuery, authToken);
             var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
             await using var stream = await response.Content.ReadAsStreamAsync(token);
-            var bungieResponse =
-                await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream,
-                    _serializationHelper.Options, token);
+            var bungieResponse = await _serializationHelper.DeserializeAsync<BungieResponse<T>>(stream);
             return bungieResponse;
         }
 
@@ -264,9 +260,7 @@ namespace NetBungieAPI.Services
             var request = CreatePostMessage(finalQuery, authToken, content);
             var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
             await using var stream = await response.Content.ReadAsStreamAsync(token);
-            var bungieResponse =
-                await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream,
-                    _serializationHelper.Options, token);
+            var bungieResponse = await _serializationHelper.DeserializeAsync<BungieResponse<T>>(stream);
             return bungieResponse;
         }
 
@@ -282,9 +276,7 @@ namespace NetBungieAPI.Services
             var request = CreateGetMessage(finalQuery, authToken);
             var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
             await using var stream = await response.Content.ReadAsStreamAsync(token);
-            var bungieResponse =
-                await System.Text.Json.JsonSerializer.DeserializeAsync<BungieResponse<T>>(stream,
-                    _serializationHelper.Options, token);
+            var bungieResponse = await _serializationHelper.DeserializeAsync<BungieResponse<T>>(stream);
             return bungieResponse;
         }
     }

@@ -43,7 +43,7 @@ namespace NetBungieAPI
             Container.RegisterType<IMiscMethodsAccess, MiscMethodsAccess>(TypeLifetime.Singleton);
         }
 
-        internal static T GetService<T>() => Container.Resolve<T>();
+        public static T GetService<T>() => Container.Resolve<T>();
         internal static ILogger GetLogger() => Container.Resolve<ILogger>();
         internal static IConfigurationService GetConfiguration() => Container.Resolve<IConfigurationService>();
         internal static IHttpClientInstance GetHTTPClient() => Container.Resolve<IHttpClientInstance>();

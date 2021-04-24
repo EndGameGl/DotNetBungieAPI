@@ -22,7 +22,8 @@ namespace NetBungieAPI.Services
                 new ReadOnlyDictionaryStringKeyConverterFactory()
             },
             NumberHandling = JsonNumberHandling.AllowReadingFromString,
-            WriteIndented = true
+            WriteIndented = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
         };
 
         public async Task<object> DeserializeAsync(byte[] data, Type type)
