@@ -57,6 +57,8 @@ namespace NetBungieAPI.Repositories
                         storedType: _assemblyData.DefinitionsToTypeMapping[definition].DefinitionType,
                         concurrencyLevel));
             }
+
+            _historicalStatsDefinitions = new ConcurrentDictionary<string, DestinyHistoricalStatsDefinition>(concurrencyLevel, 31);
         }
 
         /// <summary>
@@ -71,6 +73,11 @@ namespace NetBungieAPI.Repositories
                    repository.Add(definition);
         }
 
+        public bool AddDestinyHistoricalStatsDefinition(DestinyHistoricalStatsDefinition definition)
+        {
+            return _historicalStatsDefinitions.TryAdd(definition.StatId, definition);
+        }
+        
         /// <summary>
         /// Removes definition from repository, if possible
         /// </summary>

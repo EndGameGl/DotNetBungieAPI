@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using NetBungieAPI.Models.Destiny.Config;
+using NetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using NetBungieAPI.Providers;
 
 namespace NetBungieAPI.Repositories
@@ -21,6 +22,10 @@ namespace NetBungieAPI.Repositories
         void AddDefinitionToCache(DefinitionsEnum definitionType, IDestinyDefinition defValue, BungieLocales locale);
         bool TryGetDestinyDefinition(DefinitionsEnum definitionType, uint key, BungieLocales locale, out IDestinyDefinition definition);
         bool TryGetDestinyDefinition<T>(DefinitionsEnum definitionType, uint key, BungieLocales locale, out T definition) where T : IDestinyDefinition;
+        bool TryGetDestinyHistoricalDefinition(BungieLocales locale, string key,
+            out DestinyHistoricalStatsDefinition statsDefinition);
+
+        bool AddDestinyHistoricalDefinition(BungieLocales locale, DestinyHistoricalStatsDefinition statsDefinition);
         IEnumerable<T> Search<T>(DefinitionsEnum definitionType, BungieLocales locale, Func<IDestinyDefinition, bool> predicate) where T : IDestinyDefinition;
         IEnumerable<T> GetAll<T>(DefinitionsEnum definitionType, BungieLocales locale) where T : IDestinyDefinition;
         public IEnumerable<T> GetAll<T>(BungieLocales locale = BungieLocales.EN) where T : IDestinyDefinition;

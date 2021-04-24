@@ -26,7 +26,7 @@ namespace NetBungieAPI.Services
         private const string _authorizationTokenEndpoint = "https://www.bungie.net/platform/app/oauth/token/";
         private const string _platformEndpoint = "https://www.bungie.net/Platform";
         private const string _cdnEndpoint = "https://www.bungie.net";
-        private const string _statsEndpoint = "https://www.stats.bungie.net";
+        private const string _statsEndpoint = "http://stats.bungie.net/Platform";
 
         private readonly HttpClient _httpClient;
 

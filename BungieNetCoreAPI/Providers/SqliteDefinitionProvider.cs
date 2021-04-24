@@ -71,7 +71,19 @@ namespace NetBungieAPI.Providers
                         Repositories.AddDefinition(definitionType, locale, parsedDefinition);
                     }
                 }
-
+                Logger.Log($"Loading definitions: DestinyHistoricalStatsDefinition.", LogType.Info);
+                var historicalFetchCommand = new SQLiteCommand()
+                {
+                    Connection = _connection,
+                    CommandText = $"SELECT * FROM DestinyHistoricalStatsDefinition"
+                };
+                var histReader = historicalFetchCommand.ExecuteReader();
+                while (histReader.Read())
+                {
+                    var parsedDefinition = await SerializationHelper.DeserializeAsync<DestinyHistoricalStatsDefinition>(
+                            (byte[]) histReader[1]);
+                    Repositories.AddDestinyHistoricalDefinition(locale, parsedDefinition);
+                }
                 _connection.Close();
             }
         }

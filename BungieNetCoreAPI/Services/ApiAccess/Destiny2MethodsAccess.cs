@@ -33,15 +33,6 @@ namespace NetBungieAPI.Services.ApiAccess
         {
             return await _httpClient.GetFromBungieNetPlatform<DestinyManifest>("/Destiny2/Manifest", token);
         }
-
-        /// <summary>
-        /// Returns the  definition of an entity of the given Type and hash identifier.
-        /// </summary>
-        /// <typeparam name="T">Type of entity.</typeparam>
-        /// <param name="entityType">The type of entity for whom you would like results.</param>
-        /// <param name="hash">The hash identifier for the specific Entity you want returned.</param>
-        /// <param name="token"></param>
-        /// <returns></returns>
         public async ValueTask<BungieResponse<T>> GetDestinyEntityDefinition<T>(DefinitionsEnum entityType, uint hash,
             CancellationToken token = default) where T : IDestinyDefinition
         {
@@ -53,15 +44,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<T>(url, token);
         }
-
-        /// <summary>
-        /// Returns a list of Destiny memberships given a full Gamertag or PSN ID. Unless you pass returnOriginalProfile=true, this will return membership information for the users' Primary Cross Save Profile if they are engaged in cross save rather than any original Destiny profile that is now being overridden.
-        /// </summary>
-        /// <param name="membershipType">A valid non-BungieNet membership type, or All.</param>
-        /// <param name="displayName">The full gamertag or PSN id of the player. Spaces and case are ignored.</param>
-        /// <param name="returnOriginalProfile">If passed in and set to true, we will return the original Destiny Profile(s) linked to that gamertag, and not their currently active Destiny Profile.</param>
-        /// <param name="token"></param>
-        /// <returns></returns>
+        
         public async ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(BungieMembershipType membershipType,
             string displayName, bool returnOriginalProfile = false, CancellationToken token = default)
         {
@@ -75,14 +58,6 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<UserInfoCard[]>(url, token);
         }
 
-        /// <summary>
-        /// Returns a summary information about all profiles linked to the requesting membership type/membership ID that have valid Destiny information.
-        /// </summary>
-        /// <param name="membershipType">The type for the membership whose linked Destiny accounts you want returned.</param>
-        /// <param name="membershipId">The ID of the membership whose linked Destiny accounts you want returned. Make sure your membership ID matches its Membership Type: don't pass us a PSN membership ID and the XBox membership type, it's not going to work!</param>
-        /// <param name="getAllMemberships">if set to 'true', all memberships regardless of whether they're obscured by overrides will be returned. Normal privacy restrictions on account linking will still apply no matter what.</param>
-        /// <param name="token"></param>
-        /// <returns></returns>
         public async ValueTask<BungieResponse<DestinyLinkedProfilesResponse>> GetLinkedProfiles(
             BungieMembershipType membershipType, long membershipId, bool getAllMemberships = false,
             CancellationToken token = default)
@@ -99,14 +74,6 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<DestinyLinkedProfilesResponse>(url, token);
         }
 
-        /// <summary>
-        /// Returns Destiny Profile information for the supplied membership.
-        /// </summary>
-        /// <param name="membershipType">A valid non-BungieNet membership type.</param>
-        /// <param name="destinyMembershipId">Destiny membership ID.</param>
-        /// <param name="componentTypes">List of components to return. You must request at least one component to receive results.</param>
-        /// <param name="token"></param> 
-        /// <returns></returns>
         public async ValueTask<BungieResponse<DestinyProfileResponse>> GetProfile(BungieMembershipType membershipType,
             long destinyMembershipId,
             DestinyComponentType[] componentTypes, CancellationToken token = default)
@@ -124,16 +91,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<DestinyProfileResponse>(url, token);
         }
-
-        /// <summary>
-        /// Returns character information for the supplied character.
-        /// </summary>
-        /// <param name="membershipType">A valid non-BungieNet membership type.</param>
-        /// <param name="destinyMembershipId">Destiny membership ID.</param>
-        /// <param name="characterId">ID of the character.</param>
-        /// <param name="componentTypes">List of components to return</param>
-        /// <param name="token"></param>
-        /// <returns>Character information for the supplied character.</returns>
+        
         public async ValueTask<BungieResponse<DestinyCharacterResponse>> GetCharacter(
             BungieMembershipType membershipType, long destinyMembershipId, long characterId,
             DestinyComponentType[] componentTypes, CancellationToken token = default)
@@ -154,13 +112,7 @@ namespace NetBungieAPI.Services.ApiAccess
 
             return await _httpClient.GetFromBungieNetPlatform<DestinyCharacterResponse>(url, token);
         }
-
-        /// <summary>
-        /// Returns information on the weekly clan rewards and if the clan has earned them or not. Note that this will always report rewards as not redeemed.
-        /// </summary>
-        /// <param name="groupId">A valid group id of clan.</param>
-        /// <param name="token"></param>
-        /// <returns></returns>
+        
         public async ValueTask<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(long groupId,
             CancellationToken token = default)
         {
@@ -420,7 +372,7 @@ namespace NetBungieAPI.Services.ApiAccess
         {
             var builder = StringBuilderPool
                 .GetBuilder(token)
-                .Append("Destiny2/")
+                .Append("/Destiny2/")
                 .AddUrlParam(((int) membershipType).ToString())
                 .Append("Account/")
                 .AddUrlParam(destinyMembershipId.ToString())
@@ -449,7 +401,7 @@ namespace NetBungieAPI.Services.ApiAccess
         {
             var url = StringBuilderPool
                 .GetBuilder(token)
-                .Append("Destiny2/")
+                .Append("/Destiny2/")
                 .AddUrlParam(((int) membershipType).ToString())
                 .Append("Account/")
                 .AddUrlParam(destinyMembershipId.ToString())

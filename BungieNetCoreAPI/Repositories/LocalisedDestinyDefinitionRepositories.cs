@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NetBungieAPI.Models.Destiny.Config;
+using NetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using NetBungieAPI.Providers;
 
 namespace NetBungieAPI.Repositories
@@ -91,6 +92,16 @@ namespace NetBungieAPI.Repositories
             out T definition) where T : IDestinyDefinition
         {
             return _localisedRepositories[locale].TryGetDefinition(definitionType, key, out definition);
+        }
+
+        public bool TryGetDestinyHistoricalDefinition(BungieLocales locale, string key, out DestinyHistoricalStatsDefinition statsDefinition)
+        {
+            return _localisedRepositories[locale].TryGetHistoricalStatsDefinition(key, out statsDefinition);
+        }
+
+        public bool AddDestinyHistoricalDefinition(BungieLocales locale, DestinyHistoricalStatsDefinition statsDefinition)
+        {
+            return _localisedRepositories[locale].AddDestinyHistoricalStatsDefinition(statsDefinition);
         }
 
         public IEnumerable<T> Search<T>(DefinitionsEnum definitionType, BungieLocales locale,

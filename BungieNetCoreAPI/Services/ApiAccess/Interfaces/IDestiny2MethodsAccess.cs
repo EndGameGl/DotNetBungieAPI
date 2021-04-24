@@ -48,16 +48,47 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(BungieMembershipType membershipType,
             string displayName, bool returnOriginalProfile = false, CancellationToken token = default);
 
+        /// <summary>
+        /// Returns a summary information about all profiles linked to the requesting membership type/membership ID that have valid Destiny information. The passed-in Membership Type/Membership ID may be a Bungie.Net membership or a Destiny membership. It only returns the minimal amount of data to begin making more substantive requests, but will hopefully serve as a useful alternative to UserServices for people who just care about Destiny data. Note that it will only return linked accounts whose linkages you are allowed to view.
+        /// </summary>
+        /// <param name="membershipType">The type for the membership whose linked Destiny accounts you want returned.</param>
+        /// <param name="membershipId">The ID of the membership whose linked Destiny accounts you want returned. Make sure your membership ID matches its Membership Type: don't pass us a PSN membership ID and the XBox membership type, it's not going to work!</param>
+        /// <param name="getAllMemberships">if set to 'true', all memberships regardless of whether they're obscured by overrides will be returned. Normal privacy restrictions on account linking will still apply no matter what.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
         ValueTask<BungieResponse<DestinyLinkedProfilesResponse>> GetLinkedProfiles(BungieMembershipType membershipType,
             long membershipId, bool getAllMemberships = false, CancellationToken token = default);
 
+        /// <summary>
+        /// Returns Destiny Profile information for the supplied membership.
+        /// </summary>
+        /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+        /// <param name="destinyMembershipId">Destiny membership ID.</param>
+        /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
         ValueTask<BungieResponse<DestinyProfileResponse>> GetProfile(BungieMembershipType membershipType,
             long destinyMembershipId, DestinyComponentType[] componentTypes, CancellationToken token = default);
 
+        /// <summary>
+        /// Returns character information for the supplied character.
+        /// </summary>
+        /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+        /// <param name="destinyMembershipId">Destiny membership ID.</param>
+        /// <param name="characterId">ID of the character.</param>
+        /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
         ValueTask<BungieResponse<DestinyCharacterResponse>> GetCharacter(BungieMembershipType membershipType,
             long destinyMembershipId, long characterId, DestinyComponentType[] componentTypes,
             CancellationToken token = default);
 
+        /// <summary>
+        /// Returns information on the weekly clan rewards and if the clan has earned them or not. Note that this will always report rewards as not redeemed.
+        /// </summary>
+        /// <param name="groupId">A valid group id of clan.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
         ValueTask<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(long groupId,
             CancellationToken token = default);
 

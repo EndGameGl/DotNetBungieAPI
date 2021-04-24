@@ -72,7 +72,7 @@ namespace NetBungieAPI.TestProject
                     .UseLocalManifestFiles(@"H:\BungieNetCoreAPIRepository\Manifests")
                     .EnableLogging((mes) => Console.WriteLine(mes))
                     .PremapDefinitions()
-                    //.LoadAllDefinitionsOnStartup()
+                    .LoadAllDefinitionsOnStartup()
                     .SetLocales(new BungieLocales[] { BungieLocales.EN })
                     .SetUpdateBehaviour(true, true);
             });
@@ -83,11 +83,8 @@ namespace NetBungieAPI.TestProject
         {
             //var members = await _bungieClient.ApiAccess.GroupV2.GetAdminsAndFounderOfGroup(4394229);
 
-            var response = await _bungieClient.ApiAccess.GroupV2.GetPotentialGroupsForMember(
-                BungieMembershipType.BungieNext, 
-                20027802,
-                GroupType.General,
-                GroupsForMemberFilter.All);
+            var response =
+                await _bungieClient.ApiAccess.Destiny2.GetClanWeeklyRewardState(4394229);
             
             // var profile = await _bungieClient.ApiAccess.Destiny2.GetProfile(
             //     BungieMembershipType.TigerSteam,
