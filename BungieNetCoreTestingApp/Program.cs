@@ -81,7 +81,14 @@ namespace NetBungieAPI.TestProject
 
         private static async Task MainAsync()
         {
-            var members = await _bungieClient.ApiAccess.GroupV2.GetAdminsAndFounderOfGroup(4394229);
+            //var members = await _bungieClient.ApiAccess.GroupV2.GetAdminsAndFounderOfGroup(4394229);
+
+            var response = await _bungieClient.ApiAccess.GroupV2.GetPotentialGroupsForMember(
+                BungieMembershipType.BungieNext, 
+                20027802,
+                GroupType.General,
+                GroupsForMemberFilter.All);
+            
             // var profile = await _bungieClient.ApiAccess.Destiny2.GetProfile(
             //     BungieMembershipType.TigerSteam,
             //     4611686018483306402,

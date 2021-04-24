@@ -4,6 +4,7 @@ using NetBungieAPI.Models.GroupsV2;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using NetBungieAPI.Models.Entities;
 using NetBungieAPI.Models.Queries;
 
 namespace NetBungieAPI.Services.ApiAccess.Interfaces
@@ -179,6 +180,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
 
         /// <summary>
         /// Edit the membership type of a given member. You must have suitable permissions in the group to perform this operation.
+        /// <para/>
+        /// Requires AdminGroups scope.
         /// </summary>
         /// <param name="groupId">ID of the group to which the member belongs.</param>
         /// <param name="membershipId">Membership ID to modify.</param>
@@ -188,5 +191,200 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <returns></returns>
         ValueTask<BungieResponse<int>> EditGroupMembership(long groupId, long membershipId,
             BungieMembershipType membershipType, RuntimeGroupMemberType memberType, CancellationToken token = default);
+
+        /// <summary>
+        /// Kick a member from the given group, forcing them to reapply if they wish to re-join the group. You must have suitable permissions in the group to perform this operation.
+        /// <para/>
+        /// Requires AdminGroups scope.
+        /// </summary>
+        /// <param name="groupId">Group ID to kick the user from.</param>
+        /// <param name="membershipId">Membership ID to kick.</param>
+        /// <param name="membershipType">Membership type of the provided membership ID.</param>
+        /// <param name="token">Cancellation token.</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<GroupMemberLeaveResult>> KickMember(long groupId, long membershipId,
+            BungieMembershipType membershipType, CancellationToken token = default);
+
+        /// <summary>
+        /// Bans the requested member from the requested group for the specified period of time.
+        /// <para/>
+        /// Requires AdminGroups scope.
+        /// </summary>
+        /// <param name="groupId">Group ID that has the member to ban.</param>
+        /// <param name="membershipId">Membership ID of the member to ban from the group.</param>
+        /// <param name="membershipType">Membership type of the provided membership ID.</param>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token.</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<int>> BanMember(long groupId, long membershipId,
+            BungieMembershipType membershipType, GroupBanRequest request, CancellationToken token = default);
+
+        /// <summary>
+        /// Unbans the requested member, allowing them to re-apply for membership.
+        /// <para/>
+        /// Requires AdminGroups scope.
+        /// </summary>
+        /// <param name="groupId">Group ID that has the member to unban.</param>
+        /// <param name="membershipId">Membership ID of the member to unban from the group</param>
+        /// <param name="membershipType">Membership type of the provided membership ID.</param>
+        /// <param name="token">Cancellation token.</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<int>> UnbanMember(long groupId, long membershipId,
+            BungieMembershipType membershipType, CancellationToken token = default);
+
+        /// <summary>
+        /// Get the list of banned members in a given group. Only accessible to group Admins and above. Not applicable to all groups. Check group features.
+        /// </summary>
+        /// <param name="groupId">Group ID whose banned members you are fetching</param>
+        /// <param name="currentpage">Page number (starting with 1). Each page has a fixed size of 50 entries.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<SearchResultOfGroupBan>> GetBannedMembersOfGroup(long groupId,
+            int currentpage = 1, CancellationToken token = default);
+
+        /// <summary>
+        /// An administrative method to allow the founder of a group or clan to give up their position to another admin permanently.
+        /// </summary>
+        /// <param name="groupId">The target group id</param>
+        /// <param name="founderIdNew">The new founder for this group. Must already be a group admin.</param>
+        /// <param name="membershipType">Membership type of the provided founderIdNew.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<bool>> AbdicateFoundership(long groupId, long founderIdNew,
+            BungieMembershipType membershipType, CancellationToken token = default);
+
+        /// <summary>
+        /// Get the list of users who are awaiting a decision on their application to join a given group. Modified to include application info.
+        /// </summary>
+        /// <param name="groupId">ID of the group.</param>
+        /// <param name="currentpage">Page number (starting with 1). Each page has a fixed size of 50 items per page.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<SearchResultOfGroupMemberApplication>> GetPendingMemberships(long groupId,
+            int currentpage = 1, CancellationToken token = default);
+
+        /// <summary>
+        /// Get the list of users who have been invited into the group.
+        /// </summary>
+        /// <param name="groupId">ID of the group.</param>
+        /// <param name="currentpage">Page number (starting with 1). Each page has a fixed size of 50 items per page.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<SearchResultOfGroupMemberApplication>> GetInvitedIndividuals(long groupId,
+            int currentpage = 1, CancellationToken token = default);
+
+        /// <summary>
+        /// Approve all of the pending users for the given group.
+        /// </summary>
+        /// <param name="groupId">ID of the group.</param>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<EntityActionResult[]>> ApproveAllPending(long groupId, GroupApplicationRequest request,
+            CancellationToken token = default);
+
+        /// <summary>
+        /// Deny all of the pending users for the given group.
+        /// </summary>
+        /// <param name="groupId">ID of the group.</param>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<EntityActionResult[]>> DenyAllPending(long groupId, GroupApplicationRequest request,
+            CancellationToken token = default);
+
+        /// <summary>
+        /// Approve all of the pending users for the given group.
+        /// </summary>
+        /// <param name="groupId">ID of the group.</param>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<EntityActionResult[]>> ApprovePendingForList(long groupId,
+            GroupApplicationListRequest request, CancellationToken token = default);
+
+        /// <summary>
+        /// Approve the given membershipId to join the group/clan as long as they have applied.
+        /// </summary>
+        /// <param name="groupId">ID of the group.</param>
+        /// <param name="membershipId">The membership id being approved.</param>
+        /// <param name="membershipType">Membership type of the supplied membership ID.</param>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<bool>> ApprovePending(long groupId, long membershipId,
+            BungieMembershipType membershipType, GroupApplicationRequest request, CancellationToken token = default);
+
+        /// <summary>
+        /// Deny all of the pending users for the given group that match the passed-in.
+        /// </summary>
+        /// <param name="groupId">ID of the group.</param>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<EntityActionResult[]>> DenyPendingForList(long groupId,
+            GroupApplicationListRequest request, CancellationToken token = default);
+
+        /// <summary>
+        /// Get information about the groups that a given member has joined.
+        /// </summary>
+        /// <param name="membershipType">Membership type of the supplied membership ID.</param>
+        /// <param name="membershipId">Membership ID to for which to find founded groups.</param>
+        /// <param name="filter">Filter apply to list of joined groups.</param>
+        /// <param name="groupType">Type of group the supplied member founded.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<GetGroupsForMemberResponse>> GetGroupsForMember(
+            BungieMembershipType membershipType, long membershipId, GroupsForMemberFilter filter, GroupType groupType,
+            CancellationToken token = default);
+
+        /// <summary>
+        /// Allows a founder to manually recover a group they can see in game but not on bungie.net
+        /// </summary>
+        /// <param name="membershipType">Membership type of the supplied membership ID.</param>
+        /// <param name="membershipId">Membership ID to for which to find founded groups.</param>
+        /// <param name="groupType">Type of group the supplied member founded.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<GroupMembershipSearchResponse>> RecoverGroupForFounder(
+            BungieMembershipType membershipType, long membershipId, GroupType groupType,
+            CancellationToken token = default);
+
+        /// <summary>
+        /// Get information about the groups that a given member has applied to or been invited to.
+        /// </summary>
+        /// <param name="membershipType">Membership type of the supplied membership ID.</param>
+        /// <param name="membershipId">Membership ID to for which to find applied groups.</param>
+        /// <param name="groupType">Type of group the supplied member applied.</param>
+        /// <param name="filter">Filter apply to list of potential joined groups.</param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<GroupPotentialMembershipSearchResponse>> GetPotentialGroupsForMember(
+            BungieMembershipType membershipType, long membershipId, GroupType groupType, GroupsForMemberFilter filter,
+            CancellationToken token = default);
+
+        /// <summary>
+        /// Invite a user to join this group.
+        /// </summary>
+        /// <param name="groupId">ID of the group you would like to join.</param>
+        /// <param name="membershipType">MembershipType of the account being invited.</param>
+        /// <param name="membershipId">Membership id of the account being invited.</param>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<GroupApplicationResponse>> IndividualGroupInvite(long groupId,
+            BungieMembershipType membershipType, long membershipId, GroupApplicationRequest request,
+            CancellationToken token = default);
+
+        /// <summary>
+        /// Cancels a pending invitation to join a group.
+        /// </summary>
+        /// <param name="groupId">ID of the group you would like to join.</param>
+        /// <param name="membershipType">MembershipType of the account being cancelled.</param>
+        /// <param name="membershipId">Membership id of the account being cancelled.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<GroupApplicationResponse>> IndividualGroupInviteCancel(long groupId,
+            BungieMembershipType membershipType, long membershipId, CancellationToken token = default);
     }
 }
