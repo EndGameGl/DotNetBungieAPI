@@ -15,12 +15,6 @@ namespace NetBungieAPI.Services.ApiAccess
         {
             _httpClient = httpClient;
         }
-
-        /// <summary>
-        /// Returns trending items for Bungie.net, collapsed into the first page of items per category. For pagination within a category, call GetTrendingCategory.
-        /// </summary>
-        /// <param name="token"></param>
-        /// <returns></returns>
         public async ValueTask<BungieResponse<TrendingCategories>> GetTrendingCategories(CancellationToken token = default)
         {
             return await _httpClient.GetFromBungieNetPlatform<TrendingCategories>("/Trending/Categories/", token);

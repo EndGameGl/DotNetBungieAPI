@@ -21,13 +21,12 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<PartnerOfferSkuHistoryResponse[]>> GetPartnerOfferSkuHistory(
-            int partnerApplicationId,
-            long targetBnetMembershipId, CancellationToken token = default)
+            int partnerApplicationId, long targetBnetMembershipId, CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(ApplicationScopes
                 .PartnerOfferGrant))
                 throw new Exception("Requires ApplicationScopes.PartnerOfferGrant scope to use this api.");
-            
+
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Tokens/Partner/History/")

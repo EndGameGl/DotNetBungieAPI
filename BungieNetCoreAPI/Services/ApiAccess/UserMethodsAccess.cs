@@ -74,18 +74,18 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<UserMembershipData>(url, token);
         }
 
-        public async ValueTask<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser(long id,
+        public async ValueTask<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser(
             CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(ApplicationScopes
                 .ReadBasicUserProfile))
                 throw new Exception(
                     "Application must have ApplicationScopes.ReadBasicUserProfile scope to run this command.");
-            if (_authHandler.TryGetAccessToken(id, out var accessToken))
-            {
+            //if (_authHandler.TryGetAccessToken(id, out var accessToken))
+            //{
                 return await _httpClient.GetFromBungieNetPlatform<UserMembershipData>(
-                    "/User/GetMembershipsForCurrentUser", token, accessToken);
-            }
+                    "/User/GetMembershipsForCurrentUser", token);//, accessToken);
+            //}
 
             throw new Exception("Missing token to make a call.");
         }

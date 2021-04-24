@@ -11,7 +11,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <summary>
         /// Get list of applications created by Bungie.
         /// </summary>
-        /// <param name="token"></param>
+        /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<Application[]>> GetBungieApplications(CancellationToken token = default);
         /// <summary>
@@ -20,7 +20,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// You must be authenticated with at least the ReadUserData permission to access this endpoint.
         /// </summary>
         /// <param name="applicationId">ID of the application to get usage statistics.</param>
-        /// <param name="token"></param>
+        /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<ApiUsage>> GetApplicationApiUsage(int applicationId, DateTime? start = null, DateTime? end = null, CancellationToken token = default);
     }
