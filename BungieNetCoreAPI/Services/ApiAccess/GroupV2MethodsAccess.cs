@@ -237,5 +237,24 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<SearchResultOfGroupMember>(url, token);
         }
+        
+        public async ValueTask<BungieResponse<int>> EditGroupMembership(long groupId, long membershipId,
+            BungieMembershipType membershipType, RuntimeGroupMemberType memberType, CancellationToken token = default)
+        {
+            if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
+                .HasFlag(ApplicationScopes.AdminGroups))
+                throw new Exception("AdminGroups flag must be set to call this API.");
+            
+            var url = StringBuilderPool.GetBuilder(token)
+                .Append("/GroupV2/")
+                .AddUrlParam(groupId.ToString())
+                .Append("Members/")
+                .AddUrlParam(((int)membershipType).ToString())
+                .AddUrlParam(membershipId.ToString())
+                .Append("SetMembershipType/")
+                .AddUrlParam(((int)memberType).ToString())
+                .Build();
+            return await _httpClient.PostToBungieNetPlatform<int>(url, token);
+        }
     }
 }

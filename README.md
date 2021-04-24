@@ -75,27 +75,27 @@ GetForumTagSuggestions | Done
 GetPoll | Done
 GetRecruitmentThreadSummaries | Done
 
-### GroupV2 methods (0/33)
+### GroupV2 methods (17/33)
 
 Name | Status
 -----|-------
-GetAvailableAvatars | Not done
-GetAvailableThemes | Not done
-GetUserClanInviteSetting | Not done
-GetRecommendedGroups | Not done
-GroupSearch | Not done
-GetGroup | Not done
-GetGroupByName | Not done
-GetGroupByNameV2 | Not done
-GetGroupOptionalConversations | Not done
-EditGroup | Not done
-EditClanBanner | Not done
-EditFounderOptions | Not done
-AddOptionalConversation | Not done
-EditOptionalConversation | Not done
-GetMembersOfGroup | Not done
-GetAdminsAndFounderOfGroup | Not done
-EditGroupMembership | Not done
+GetAvailableAvatars | Done
+GetAvailableThemes | Done
+GetUserClanInviteSetting | Done
+GetRecommendedGroups | Done
+GroupSearch | Done
+GetGroup | Done
+GetGroupByName | Done
+GetGroupByNameV2 | Done
+GetGroupOptionalConversations | Done
+EditGroup | Done
+EditClanBanner | Done
+EditFounderOptions | Done
+AddOptionalConversation | Done
+EditOptionalConversation | Done
+GetMembersOfGroup | Done
+GetAdminsAndFounderOfGroup | Done
+EditGroupMembership | Done
 KickMember | Not done
 BanMember | Not done
 UnbanMember | Not done
@@ -164,19 +164,19 @@ AwaInitializeRequest | Not done
 AwaProvideAuthorizationResult | Not done
 AwaGetActionToken | Not done
 
-### CommunityContent methods (0/1)
+### CommunityContent methods (1/1)
 
 Name | Status
 -----|-------
-GetCommunityContent | Not done
+GetCommunityContent | Done
 
-### Trending methods (0/3)
+### Trending methods (3/3)
 
 Name | Status
 -----|-------
-GetTrendingCategories | Not done
-GetTrendingCategory | Not done
-GetTrendingEntryDetail | Not done
+GetTrendingCategories | Done
+GetTrendingCategory | Done
+GetTrendingEntryDetail | Done
 
 ### Fireteam methods (5/5)
 

@@ -176,5 +176,17 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <returns></returns>
         ValueTask<BungieResponse<SearchResultOfGroupMember>> GetAdminsAndFounderOfGroup(long groupId,
             int currentpage = 1, CancellationToken token = default);
+
+        /// <summary>
+        /// Edit the membership type of a given member. You must have suitable permissions in the group to perform this operation.
+        /// </summary>
+        /// <param name="groupId">ID of the group to which the member belongs.</param>
+        /// <param name="membershipId">Membership ID to modify.</param>
+        /// <param name="membershipType">Membership type of the provide membership ID.</param>
+        /// <param name="memberType">New membertype for the specified member.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<int>> EditGroupMembership(long groupId, long membershipId,
+            BungieMembershipType membershipType, RuntimeGroupMemberType memberType, CancellationToken token = default);
     }
 }
