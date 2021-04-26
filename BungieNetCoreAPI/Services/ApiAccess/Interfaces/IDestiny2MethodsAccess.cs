@@ -14,6 +14,8 @@ using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Models.Destiny.HistoricalStats;
+using NetBungieAPI.Models.Requests;
+using NetBungieAPI.Models.Responses;
 
 namespace NetBungieAPI.Services.ApiAccess.Interfaces
 {
@@ -92,32 +94,174 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         ValueTask<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(long groupId,
             CancellationToken token = default);
 
+        /// <summary>
+        /// Retrieve the details of an instanced Destiny Item. An instanced Destiny item is one with an ItemInstanceId. Non-instanced items, such as materials, have no useful instance-specific details and thus are not queryable here.
+        /// </summary>
+        /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+        /// <param name="destinyMembershipId">The membership ID of the destiny profile.</param>
+        /// <param name="itemInstanceId">The Instance ID of the destiny item.</param>
+        /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
         ValueTask<BungieResponse<DestinyItemResponse>> GetItem(BungieMembershipType membershipType,
             long destinyMembershipId, long itemInstanceId, DestinyComponentType[] componentTypes,
             CancellationToken token = default);
 
+        /// <summary>
+        /// Get currently available vendors from the list of vendors that can possibly have rotating inventory. Note that this does not include things like preview vendors and vendors-as-kiosks, neither of whom have rotating/dynamic inventories. Use their definitions as-is for those.
+        /// </summary>
+        /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+        /// <param name="destinyMembershipId">The Destiny Character ID of the character for whom we're getting vendor info.</param>
+        /// <param name="characterId">Destiny membership ID of another user. You may be denied.</param>
+        /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
         ValueTask<BungieResponse<DestinyVendorsResponse>> GetVendors(BungieMembershipType membershipType,
             long destinyMembershipId, long characterId, DestinyComponentType[] componentTypes,
             CancellationToken token = default);
 
+        /// <summary>
+        /// Get the details of a specific Vendor.
+        /// </summary>
+        /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+        /// <param name="destinyMembershipId">Destiny membership ID of another user. You may be denied.</param>
+        /// <param name="characterId">The Destiny Character ID of the character for whom we're getting vendor info.</param>
+        /// <param name="vendorHash">The Hash identifier of the Vendor to be returned.</param>
+        /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
         ValueTask<BungieResponse<DestinyVendorResponse>> GetVendor(BungieMembershipType membershipType,
             long destinyMembershipId, long characterId, uint vendorHash, DestinyComponentType[] componentTypes,
             CancellationToken token = default);
 
+        /// <summary>
+        /// Get items available from vendors where the vendors have items for sale that are common for everyone.
+        /// </summary>
+        /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
         ValueTask<BungieResponse<DestinyPublicVendorsResponse>> GetPublicVendors(DestinyComponentType[] componentTypes,
             CancellationToken token = default);
 
+        /// <summary>
+        /// Given a Presentation Node that has Collectibles as direct descendants, this will return item details about those descendants in the context of the requesting character.
+        /// </summary>
+        /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+        /// <param name="destinyMembershipId">Destiny membership ID of another user. You may be denied.</param>
+        /// <param name="characterId">The Destiny Character ID of the character for whom we're getting collectible detail info.</param>
+        /// <param name="collectiblePresentationNodeHash">The hash identifier of the Presentation Node for whom we should return collectible details. Details will only be returned for collectibles that are direct descendants of this node.</param>
+        /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
         ValueTask<BungieResponse<DestinyCollectibleNodeDetailResponse>> GetCollectibleNodeDetails(
             BungieMembershipType membershipType, long destinyMembershipId, long characterId,
             uint collectiblePresentationNodeHash, DestinyComponentType[] componentTypes,
             CancellationToken token = default);
 
+        /// <summary>
+        /// Transfer an item to/from your vault.
+        /// </summary>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<int>> TransferItem(DestinyItemTransferRequest request,
+            CancellationToken token = default);
+
+        /// <summary>
+        /// Extract an item from the Postmaster, with whatever implications that may entail.
+        /// </summary>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<int>> PullFromPostmaster(DestinyPostmasterTransferRequest request,
+            CancellationToken token = default);
+
+        /// <summary>
+        /// Equip an item.
+        /// </summary>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<int>> EquipItem(DestinyItemActionRequest request,
+            CancellationToken token = default);
+
+        /// <summary>
+        /// Equip a list of items by itemInstanceIds. 
+        /// </summary>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<DestinyEquipItemResults>> EquipItems(DestinyItemSetActionRequest request,
+            CancellationToken token = default);
+
+        /// <summary>
+        /// Set the Lock State for an instanced item.
+        /// </summary>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<int>> SetItemLockState(DestinyItemStateRequest request,
+            CancellationToken token = default);
+
+        /// <summary>
+        /// Set the Tracking State for an instanced item, if that item is a Quest or Bounty.
+        /// </summary>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<int>> SetQuestTrackedState(DestinyItemStateRequest request,
+            CancellationToken token = default);
+
+        /// <summary>
+        /// Insert a plug into a socketed item.
+        /// </summary>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlug(
+            DestinyInsertPlugsActionRequest request, CancellationToken token = default);
+
+        /// <summary>
+        /// Gets the available post game carnage report for the activity ID.
+        /// </summary>
+        /// <param name="activityId">The ID of the activity whose PGCR is requested.</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
         ValueTask<BungieResponse<DestinyPostGameCarnageReportData>> GetPostGameCarnageReport(long activityId,
             CancellationToken token = default);
 
+        /// <summary>
+        /// Report a player that you met in an activity that was engaging in ToS-violating activities. Both you and the offending player must have played in the activityId passed in. Please use this judiciously and only when you have strong suspicions of violation, pretty please.
+        /// </summary>
+        /// <param name="activityId">The ID of the activity where you ran into the brigand that you're reporting.</param>
+        /// <param name="request">Request body</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<int>> ReportOffensivePostGameCarnageReportPlayer(long activityId,
+            DestinyReportOffensePgcrRequest request, CancellationToken token = default);
+        
+        /// <summary>
+        /// Gets historical stats definitions.
+        /// </summary>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
         ValueTask<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>>>
             GetHistoricalStatsDefinition(CancellationToken token = default);
 
+        /// <summary>
+        /// Gets leaderboards with the signed in user's friends and the supplied destinyMembershipId as the focus.
+        /// </summary>
+        /// <param name="groupId">Group ID of the clan whose leaderboards you wish to fetch.</param>
+        /// <param name="maxtop">Maximum number of top players to return. Use a large number to get entire leaderboard.</param>
+        /// <param name="modes">List of game modes for which to get leaderboards.</param>
+        /// <param name="statid">ID of stat to return rather than returning all Leaderboard stats.</param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<
+                ReadOnlyDictionary<string, ReadOnlyDictionary<string, DestinyClanLeaderboardsResponse>>>>
+            GetClanLeaderboards(long groupId, int maxtop, DestinyActivityModeType[] modes, string statid = null,
+                CancellationToken token = default);
+        
         ValueTask<BungieResponse<DestinyEntitySearchResult>> SearchDestinyEntities(DefinitionsEnum type,
             string searchTerm, int page = 0, CancellationToken token = default);
 

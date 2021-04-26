@@ -19,7 +19,7 @@ namespace NetBungieAPI
         {
             get
             {
-                if (_repository.TryGetDestinyDefinition<T>(DefinitionEnumType, Hash.Value, Locale, out var def))
+                if (_repository.Value.TryGetDestinyDefinition<T>(DefinitionEnumType, Hash.Value, Locale, out var def))
                     return def;
                 else
                     throw new Exception("Definition is missing from repo.");
@@ -27,10 +27,14 @@ namespace NetBungieAPI
         }
 #endif
 
-        private static readonly ILocalisedDestinyDefinitionRepositories _repository = StaticUnityContainer.GetDestinyDefinitionRepositories();
+        private static readonly Lazy<ILocalisedDestinyDefinitionRepositories> _repository = new(() => StaticUnityContainer.GetDestinyDefinitionRepositories());
+        private static readonly Lazy<IDestiny2MethodsAccess> _destiny2MethodsAccess = new(() => StaticUnityContainer.GetService<IDestiny2MethodsAccess>());
 
-        public static DefinitionsEnum EnumValue { get; } = Enum.Parse<DefinitionsEnum>(typeof(T).Name);
-        public static DefinitionHashPointer<T> Empty { get; } = new DefinitionHashPointer<T>(null);
+        private static readonly Lazy<DefinitionsEnum> _lazyEnumValue = new(() => Enum.Parse<DefinitionsEnum>(typeof(T).Name));
+        private static readonly Lazy<DefinitionHashPointer<T>> _lazyEmptyPointer = new(() => new DefinitionHashPointer<T>(null));
+
+        public static DefinitionsEnum EnumValue => _lazyEnumValue.Value;
+        public static DefinitionHashPointer<T> Empty => _lazyEmptyPointer.Value;
 
         private bool _isMapped;
         private T _value;
@@ -59,7 +63,7 @@ namespace NetBungieAPI
             _value = default;
             _isMapped = false;
             Hash = hash;
-            Locale = _repository.CurrentLocaleLoadContext;
+            Locale = _repository.Value.CurrentLocaleLoadContext;
         }
         /// <summary>
         /// Tries to get definition from local cache/API
@@ -76,7 +80,7 @@ namespace NetBungieAPI
             }
             if (HasValidHash)
             {
-                if (_repository.TryGetDestinyDefinition<T>(EnumValue, Hash.Value, Locale, out var foundDefinition))
+                if (_repository.Value.TryGetDestinyDefinition<T>(EnumValue, Hash.Value, Locale, out var foundDefinition))
                 {
                     definition = foundDefinition;
                     return true;
@@ -88,7 +92,7 @@ namespace NetBungieAPI
         {
             if (HasValidHash)
             {
-                var response = await StaticUnityContainer.GetService<IDestiny2MethodsAccess>().GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value);
+                var response = await _destiny2MethodsAccess.Value.GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value);
                 if (response.ErrorCode == PlatformErrorCodes.Success && response.Response != null)
                     return new DefinitionHashPointerDownloadResult<T>(response.Response, true);
                 return new DefinitionHashPointerDownloadResult<T>(default, false, response.Message);
@@ -105,7 +109,7 @@ namespace NetBungieAPI
                 return;
             if (HasValidHash)
             {
-                if (_repository.TryGetDestinyDefinition<T>(DefinitionEnumType, Hash.Value, Locale, out var definition))
+                if (_repository.Value.TryGetDestinyDefinition<T>(DefinitionEnumType, Hash.Value, Locale, out var definition))
                 {
                     _value = definition;
                     _isMapped = true;

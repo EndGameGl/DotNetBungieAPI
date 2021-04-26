@@ -13,26 +13,32 @@ using NetBungieAPI.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Models.Destiny.HistoricalStats;
+using NetBungieAPI.Models.Requests;
+using NetBungieAPI.Models.Responses;
 
 namespace NetBungieAPI.Services.ApiAccess
 {
     public class Destiny2MethodsAccess : IDestiny2MethodsAccess
     {
-        private IHttpClientInstance _httpClient;
+        private readonly IHttpClientInstance _httpClient;
+        private readonly IJsonSerializationHelper _serializationHelper;
 
-        internal Destiny2MethodsAccess(IHttpClientInstance httpClient)
+        internal Destiny2MethodsAccess(IHttpClientInstance httpClient, IJsonSerializationHelper serializationHelper)
         {
             _httpClient = httpClient;
+            _serializationHelper = serializationHelper;
         }
 
         public async ValueTask<BungieResponse<DestinyManifest>> GetDestinyManifest(CancellationToken token = default)
         {
             return await _httpClient.GetFromBungieNetPlatform<DestinyManifest>("/Destiny2/Manifest", token);
         }
+
         public async ValueTask<BungieResponse<T>> GetDestinyEntityDefinition<T>(DefinitionsEnum entityType, uint hash,
             CancellationToken token = default) where T : IDestinyDefinition
         {
@@ -44,7 +50,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<T>(url, token);
         }
-        
+
         public async ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(BungieMembershipType membershipType,
             string displayName, bool returnOriginalProfile = false, CancellationToken token = default)
         {
@@ -91,7 +97,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<DestinyProfileResponse>(url, token);
         }
-        
+
         public async ValueTask<BungieResponse<DestinyCharacterResponse>> GetCharacter(
             BungieMembershipType membershipType, long destinyMembershipId, long characterId,
             DestinyComponentType[] componentTypes, CancellationToken token = default)
@@ -112,7 +118,7 @@ namespace NetBungieAPI.Services.ApiAccess
 
             return await _httpClient.GetFromBungieNetPlatform<DestinyCharacterResponse>(url, token);
         }
-        
+
         public async ValueTask<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(long groupId,
             CancellationToken token = default)
         {
@@ -125,15 +131,6 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<DestinyMilestone>(url, token);
         }
 
-        /// <summary>
-        /// Retrieve the details of an instanced Destiny Item. An instanced Destiny item is one with an ItemInstanceId. Non-instanced items, such as materials, have no useful instance-specific details and thus are not queryable here.
-        /// </summary>
-        /// <param name="membershipType">A valid non-BungieNet membership type.</param>
-        /// <param name="destinyMembershipId">The membership ID of the destiny profile.</param>
-        /// <param name="itemInstanceId">The Instance ID of the destiny item.</param>
-        /// <param name="componentTypes">List of components to return</param>
-        /// <param name="token"></param>
-        /// <returns></returns>
         public async ValueTask<BungieResponse<DestinyItemResponse>> GetItem(BungieMembershipType membershipType,
             long destinyMembershipId, long itemInstanceId, DestinyComponentType[] componentTypes,
             CancellationToken token = default)
@@ -151,15 +148,6 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<DestinyItemResponse>(url, token);
         }
 
-        /// <summary>
-        /// Get currently available vendors from the list of vendors that can possibly have rotating inventory. Note that this does not include things like preview vendors and vendors-as-kiosks, neither of whom have rotating/dynamic inventories. Use their definitions as-is for those.
-        /// </summary>
-        /// <param name="membershipType"></param>
-        /// <param name="destinyMembershipId"></param>
-        /// <param name="characterId"></param>
-        /// <param name="componentTypes"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
         public async ValueTask<BungieResponse<DestinyVendorsResponse>> GetVendors(BungieMembershipType membershipType,
             long destinyMembershipId, long characterId, DestinyComponentType[] componentTypes,
             CancellationToken token = default)
@@ -178,16 +166,6 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<DestinyVendorsResponse>(url, token);
         }
 
-        /// <summary>
-        /// Get the details of a specific Vendor.
-        /// </summary>
-        /// <param name="membershipType"></param>
-        /// <param name="destinyMembershipId"></param>
-        /// <param name="characterId"></param>
-        /// <param name="vendorHash"></param>
-        /// <param name="componentTypes"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
         public async ValueTask<BungieResponse<DestinyVendorResponse>> GetVendor(BungieMembershipType membershipType,
             long destinyMembershipId, long characterId, uint vendorHash, DestinyComponentType[] componentTypes,
             CancellationToken token = default)
@@ -207,12 +185,6 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<DestinyVendorResponse>(url, token);
         }
 
-        /// <summary>
-        /// Get items available from vendors where the vendors have items for sale that are common for everyone.
-        /// </summary>
-        /// <param name="componentTypes"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
         public async ValueTask<BungieResponse<DestinyPublicVendorsResponse>> GetPublicVendors(
             DestinyComponentType[] componentTypes, CancellationToken token = default)
         {
@@ -224,19 +196,9 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<DestinyPublicVendorsResponse>(url, token);
         }
 
-        /// <summary>
-        /// Given a Presentation Node that has Collectibles as direct descendants, this will return item details about those descendants in the context of the requesting character.
-        /// </summary>
-        /// <param name="membershipType"></param>
-        /// <param name="destinyMembershipId"></param>
-        /// <param name="characterId"></param>
-        /// <param name="collectiblePresentationNodeHash"></param>
-        /// <param name="componentTypes"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
         public async ValueTask<BungieResponse<DestinyCollectibleNodeDetailResponse>> GetCollectibleNodeDetails(
-            BungieMembershipType membershipType, long destinyMembershipId,
-            long characterId, uint collectiblePresentationNodeHash, DestinyComponentType[] componentTypes,
+            BungieMembershipType membershipType, long destinyMembershipId, long characterId,
+            uint collectiblePresentationNodeHash, DestinyComponentType[] componentTypes,
             CancellationToken token = default)
         {
             var url = StringBuilderPool
@@ -255,12 +217,70 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<DestinyCollectibleNodeDetailResponse>(url, token);
         }
 
-        /// <summary>
-        /// Gets the available post game carnage report for the activity ID.
-        /// </summary>
-        /// <param name="activityId"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
+        public async ValueTask<BungieResponse<int>> TransferItem(DestinyItemTransferRequest request,
+            CancellationToken token = default)
+        {
+            var stream = new MemoryStream();
+            await _serializationHelper.SerializeAsync(stream, request);
+            return await _httpClient.PostToBungieNetPlatform<int>("/Destiny2/Actions/Items/TransferItem/", token,
+                stream);
+        }
+
+        public async ValueTask<BungieResponse<int>> PullFromPostmaster(DestinyPostmasterTransferRequest request,
+            CancellationToken token = default)
+        {
+            var stream = new MemoryStream();
+            await _serializationHelper.SerializeAsync(stream, request);
+            return await _httpClient.PostToBungieNetPlatform<int>("/Destiny2/Actions/Items/PullFromPostmaster/", token,
+                stream);
+        }
+
+        public async ValueTask<BungieResponse<int>> EquipItem(DestinyItemActionRequest request,
+            CancellationToken token = default)
+        {
+            var stream = new MemoryStream();
+            await _serializationHelper.SerializeAsync(stream, request);
+            return await _httpClient.PostToBungieNetPlatform<int>("/Destiny2/Actions/Items/EquipItem/", token,
+                stream);
+        }
+
+        public async ValueTask<BungieResponse<DestinyEquipItemResults>> EquipItems(DestinyItemSetActionRequest request,
+            CancellationToken token = default)
+        {
+            var stream = new MemoryStream();
+            await _serializationHelper.SerializeAsync(stream, request);
+            return await _httpClient.PostToBungieNetPlatform<DestinyEquipItemResults>(
+                "/Destiny2/Actions/Items/EquipItems/", token,
+                stream);
+        }
+
+        public async ValueTask<BungieResponse<int>> SetItemLockState(DestinyItemStateRequest request,
+            CancellationToken token = default)
+        {
+            var stream = new MemoryStream();
+            await _serializationHelper.SerializeAsync(stream, request);
+            return await _httpClient.PostToBungieNetPlatform<int>("/Destiny2/Actions/Items/SetLockState/", token,
+                stream);
+        }
+
+        public async ValueTask<BungieResponse<int>> SetQuestTrackedState(DestinyItemStateRequest request,
+            CancellationToken token = default)
+        {
+            var stream = new MemoryStream();
+            await _serializationHelper.SerializeAsync(stream, request);
+            return await _httpClient.PostToBungieNetPlatform<int>("/Destiny2/Actions/Items/SetTrackedState/", token,
+                stream);
+        }
+
+        public async ValueTask<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlug(
+            DestinyInsertPlugsActionRequest request, CancellationToken token = default)
+        {
+            var stream = new MemoryStream();
+            await _serializationHelper.SerializeAsync(stream, request);
+            return await _httpClient.PostToBungieNetPlatform<DestinyItemChangeResponse>(
+                "/Destiny2/Actions/Items/InsertSocketPlug/", token, stream);
+        }
+
         public async ValueTask<BungieResponse<DestinyPostGameCarnageReportData>> GetPostGameCarnageReport(
             long activityId, CancellationToken token = default)
         {
@@ -273,17 +293,44 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetStatsPlatform<DestinyPostGameCarnageReportData>(url, token);
         }
 
-        /// <summary>
-        /// Gets historical stats definitions.
-        /// </summary>
-        /// <param name="token"></param>
-        /// <returns></returns>
+        public async ValueTask<BungieResponse<int>> ReportOffensivePostGameCarnageReportPlayer(long activityId,
+            DestinyReportOffensePgcrRequest request, CancellationToken token = default)
+        {
+            var url = StringBuilderPool.GetBuilder(token)
+                .Append("/Destiny2/Stats/PostGameCarnageReport/")
+                .AddUrlParam(activityId.ToString())
+                .Append("Report/")
+                .Build();
+            var stream = new MemoryStream();
+            await _serializationHelper.SerializeAsync(stream, request);
+            return await _httpClient.PostToBungieNetPlatform<int>(url, token, stream);
+        }
+
         public async ValueTask<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>>>
             GetHistoricalStatsDefinition(CancellationToken token = default)
         {
             return await _httpClient
                 .GetFromBungieNetPlatform<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>>(
                     $"/Destiny2/Stats/Definition/", token);
+        }
+
+        public async ValueTask<BungieResponse<
+                ReadOnlyDictionary<string, ReadOnlyDictionary<string, DestinyClanLeaderboardsResponse>>>>
+            GetClanLeaderboards(long groupId, int maxtop, DestinyActivityModeType[] modes, string statid = null, 
+                CancellationToken token = default)
+        {
+            var url = StringBuilderPool.GetBuilder(token)
+                .Append("/Destiny2/Stats/Leaderboards/Clans/")
+                .AddUrlParam(groupId.ToString())
+                .AddQueryParam("maxtop", maxtop.ToString())
+                .AddQueryParam("modes", string.Join(',', modes))
+                .AddQueryParam("statid", statid, () => !string.IsNullOrWhiteSpace(statid))
+                .Build();
+
+            return await _httpClient
+                .GetFromBungieNetPlatform<
+                    ReadOnlyDictionary<string, ReadOnlyDictionary<string, DestinyClanLeaderboardsResponse>>>(url,
+                    token);
         }
 
         /// <summary>

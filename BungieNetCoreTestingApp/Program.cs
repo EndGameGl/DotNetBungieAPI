@@ -4,14 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Models.Trending;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
+using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using NetBungieAPI.Models.GroupsV2;
 using NetBungieAPI.Models.Queries;
+using NetBungieAPI.Models.Requests;
 using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.TestProject
@@ -61,8 +64,10 @@ namespace NetBungieAPI.TestProject
 
         private static IBungieClient _bungieClient;
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             _bungieClient = BungieApiBuilder.GetApiClient((settings) =>
             {
                 settings
@@ -72,29 +77,13 @@ namespace NetBungieAPI.TestProject
                     .UseLocalManifestFiles(@"H:\BungieNetCoreAPIRepository\Manifests")
                     .EnableLogging((mes) => Console.WriteLine(mes))
                     .PremapDefinitions()
-                    .LoadAllDefinitionsOnStartup()
-                    .SetLocales(new BungieLocales[] { BungieLocales.EN })
+                    .LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
+                    .SetLocales(new BungieLocales[] {BungieLocales.EN})
                     .SetUpdateBehaviour(true, true);
             });
-            MainAsync().GetAwaiter().GetResult();
-        }
-
-        private static async Task MainAsync()
-        {
-            //var members = await _bungieClient.ApiAccess.GroupV2.GetAdminsAndFounderOfGroup(4394229);
-
-            var response =
-                await _bungieClient.ApiAccess.Destiny2.GetClanWeeklyRewardState(4394229);
+            sw.Stop();
+            Console.WriteLine($"Startup in: {sw.ElapsedMilliseconds} ms");
             
-            // var profile = await _bungieClient.ApiAccess.Destiny2.GetProfile(
-            //     BungieMembershipType.TigerSteam,
-            //     4611686018483306402,
-            //     ALL_COMPONENTS_ARRAY);
-
-            // var shouldUpdate = await _bungieClient.CheckUpdates();
-            // if (shouldUpdate)
-            //     await _bungieClient.DownloadLatestManifestLocally();
-
             await Task.Delay(Timeout.Infinite);
         }
 

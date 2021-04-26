@@ -146,9 +146,10 @@ namespace NetBungieAPI.Clients.Settings
         /// Loads all definitions in memory on startup.
         /// </summary>
         /// <returns></returns>
-        public BungieClientSettings LoadAllDefinitionsOnStartup()
+        public BungieClientSettings LoadAllDefinitionsOnStartup(bool waitEverythingToLoad)
         {
             DefinitionLoadingSettings.LoadAllDefinitionsOnStatup = true;
+            DefinitionLoadingSettings.WaitAllDefinitionsToLoad = waitEverythingToLoad;
             return this;
         }
 

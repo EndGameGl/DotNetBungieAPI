@@ -14,6 +14,7 @@ namespace NetBungieAPI.Clients.Settings
         public DefinitionProvider UsedProvider { get; internal set; }
         public DefinitionsEnum[] AllowedDefinitions { get; internal set; }
         public DefinitionsEnum[] ForbiddenDefinitions { get; internal set; } 
+        public bool WaitAllDefinitionsToLoad { get; internal set; }
 
         public static DefinitionLoadingSettings Default => new DefinitionLoadingSettings()
         {
@@ -23,7 +24,8 @@ namespace NetBungieAPI.Clients.Settings
             LoadAllDefinitionsOnStatup = false,
             UsedProvider = null,
             AllowedDefinitions = Array.Empty<DefinitionsEnum>(),
-            ForbiddenDefinitions = Array.Empty<DefinitionsEnum>()
+            ForbiddenDefinitions = Array.Empty<DefinitionsEnum>(),
+            WaitAllDefinitionsToLoad = true
         };
     }
 }

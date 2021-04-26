@@ -5,10 +5,10 @@ namespace NetBungieAPI.Models.Destiny.Vendors
 {
     public sealed record DestinyVendorCategory
     {
-        [JsonPropertyName("categories")] 
+        [JsonPropertyName("displayCategoryIndex")] 
         public int DisplayCategoryIndex { get; init; }
 
-        [JsonPropertyName("categories")]
+        [JsonPropertyName("itemIndexes")]
         public ReadOnlyCollection<int> ItemIndexes { get; init; } = Defaults.EmptyReadOnlyCollection<int>();
     }
 }

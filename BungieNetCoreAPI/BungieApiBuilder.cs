@@ -13,7 +13,7 @@ namespace NetBungieAPI
             configuration.Configure(configure);
             var client = StaticUnityContainer.GetService<IBungieClient>();
             client.AddListener(configuration.Settings.InternalSettings.OnLog);
-            
+
             Task.Run(async () =>
             {
                 await configuration.Settings.AfterConfigurated();
@@ -23,14 +23,24 @@ namespace NetBungieAPI
                 await configuration.Settings.DefinitionLoadingSettings.UsedProvider.OnLoad();
             }).Wait();
 
-            
+
             client.Repository.Provider = configuration.Settings.DefinitionLoadingSettings.UsedProvider;
-            if (configuration.Settings.DefinitionLoadingSettings.LoadAllDefinitionsOnStatup)
+            if (!configuration.Settings.DefinitionLoadingSettings.LoadAllDefinitionsOnStatup)
+                return client;
+
+            if (configuration.Settings.DefinitionLoadingSettings.WaitAllDefinitionsToLoad)
                 Task.Run(async () =>
                 {
                     await client.Repository.Provider.ReadDefinitionsToRepository(configuration.Settings
                         .DefinitionLoadingSettings.AllowedDefinitions);
                 }).Wait();
+            else
+                Task.Run(async () =>
+                {
+                    await client.Repository.Provider.ReadDefinitionsToRepository(configuration.Settings
+                        .DefinitionLoadingSettings.AllowedDefinitions);
+                });
+
             return client;
         }
     }
