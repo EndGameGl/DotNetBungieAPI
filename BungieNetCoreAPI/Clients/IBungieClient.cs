@@ -18,5 +18,6 @@ namespace NetBungieAPI.Clients
         ValueTask<bool> CheckUpdates();
         Task DownloadLatestManifestLocally();
         void LoadDefinitions();
+        void SetAuthToken(AuthorizationTokenData token);
     }
 }

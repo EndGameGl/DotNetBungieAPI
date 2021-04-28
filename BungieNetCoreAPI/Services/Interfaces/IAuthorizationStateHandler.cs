@@ -8,10 +8,9 @@ namespace NetBungieAPI.Services.Interfaces
 {
     public interface IAuthorizationStateHandler
     {
-        ConcurrentDictionary<string, AuthorizationState> AuthorizationStates { get; init; }
         AuthorizationState CreateNewAuthAwaiter();
         void InputCode(string state, string code);
         void AddAuthToken(AuthorizationTokenData token);
-        bool TryGetAccessToken(long membershipId, out string accessToken);
+        bool TryGetAccessToken(out string accessToken);
     }
 }

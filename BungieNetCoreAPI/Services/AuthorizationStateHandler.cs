@@ -18,45 +18,37 @@ namespace NetBungieAPI.Services
         private readonly IHttpClientInstance _client;
         private readonly ILogger _logger;
         private readonly IConfigurationService _config;
-        public ConcurrentDictionary<string, AuthorizationState> AuthorizationStates { get; init; }
-        public ConcurrentDictionary<long, AuthorizationTokenData> AuthorizationTokens { get; init; }
+
+        private AuthorizationState _authorizationState;
+        private AuthorizationTokenData _authorizationToken;
 
         public AuthorizationStateHandler(ILogger logger, IConfigurationService configuration, IHttpClientInstance httpClient)
         {
             _logger = logger;
             _config = configuration;
-            AuthorizationStates = new ConcurrentDictionary<string, AuthorizationState>();
-            AuthorizationTokens = new ConcurrentDictionary<long, AuthorizationTokenData>();
             _client = httpClient;
         }
 
         public AuthorizationState CreateNewAuthAwaiter()
         {
-            var awaiter = AuthorizationState.GetNewAuth();
-            AuthorizationStates.TryAdd(awaiter.State, awaiter);
-            return awaiter;
+            var _authorizationState = AuthorizationState.GetNewAuth();
+            return _authorizationState;
         }
         public void InputCode(string state, string code)
         {
-            if (AuthorizationStates.TryGetValue(state, out var awaiter))
-            {
-                awaiter.ReceiveCode(code);
-            }
+            _authorizationState?.ReceiveCode(code);
         }
         public void AddAuthToken(AuthorizationTokenData token)
         {
             _logger.Log($"Added new token for membership: {token.MembershipId}", LogType.Info);
-            AuthorizationTokens.TryAdd(token.MembershipId, token);
+            _authorizationToken = token;
         }
-        public bool TryGetAccessToken(long membershipId, out string accessToken)
+        public bool TryGetAccessToken(out string accessToken)
         {
             accessToken = default;
-            if (AuthorizationTokens.TryGetValue(membershipId, out var token))
-            {
-                accessToken = token.AccessToken;
-                return true;
-            }
-            return false;
+            if (_authorizationToken is null) return false;
+            accessToken = _authorizationToken.AccessToken;
+            return true;
         }
     }
 }

@@ -11,8 +11,7 @@ namespace NetBungieAPI.Clients
 {
     public class BungieClient : IBungieClient
     {
-        internal static IConfigurationService Configuration;
-
+        private readonly IConfigurationService _configuration;
         private readonly IAuthorizationStateHandler _authHandler;
         private readonly IHttpClientInstance _httpClient;
         private readonly IManifestVersionHandler _versionControl;
@@ -20,15 +19,14 @@ namespace NetBungieAPI.Clients
 
         private LogListener _logListener;
 
-        public ILocalisedDestinyDefinitionRepositories Repository { get; private set; }
+        public ILocalisedDestinyDefinitionRepositories Repository { get; }
         public IBungieApiAccess ApiAccess { get; }
 
         internal BungieClient(IConfigurationService config, IManifestVersionHandler manifestUpdateHandler,
-            ILogger logger, IBungieApiAccess apiAccess,
-            IHttpClientInstance httpClient, IAuthorizationStateHandler authorizationHandler,
-            ILocalisedDestinyDefinitionRepositories repository)
+            ILogger logger, IBungieApiAccess apiAccess, IHttpClientInstance httpClient,
+            IAuthorizationStateHandler authorizationHandler, ILocalisedDestinyDefinitionRepositories repository)
         {
-            Configuration = config;
+            _configuration = config;
             _httpClient = httpClient;
             _logger = logger;
             _versionControl = manifestUpdateHandler;
@@ -51,8 +49,8 @@ namespace NetBungieAPI.Clients
 
         public void LoadDefinitions()
         {
-            Repository.Initialize(Configuration.Settings.DefinitionLoadingSettings.Locales);
-            Repository.LoadAllDataFromDisk(Configuration.Settings.LocalFileSettings.VersionsRepositoryPath,
+            Repository.Initialize(_configuration.Settings.DefinitionLoadingSettings.Locales);
+            Repository.LoadAllDataFromDisk(_configuration.Settings.LocalFileSettings.VersionsRepositoryPath,
                 _versionControl.CurrentUsedManifest);
         }
 
@@ -66,21 +64,22 @@ namespace NetBungieAPI.Clients
         private bool TryGetAuthorizationValue(out string value)
         {
             value = default;
-            if (Configuration.Settings.IdentificationSettings.ClientId.HasValue &&
-                !string.IsNullOrEmpty(Configuration.Settings.IdentificationSettings.ClientSecret))
-            {
-                value = Convert.ToBase64String(Encoding.UTF8.GetBytes(
-                    $"{Configuration.Settings.IdentificationSettings.ClientId}:{Configuration.Settings.IdentificationSettings.ClientSecret}"));
-                return true;
-            }
+            if (!_configuration.Settings.IdentificationSettings.ClientId.HasValue ||
+                string.IsNullOrEmpty(_configuration.Settings.IdentificationSettings.ClientSecret))
+                return false;
 
-            return false;
+            value = Convert.ToBase64String(
+                Encoding.UTF8.GetBytes(
+                    $"{_configuration.Settings.IdentificationSettings.ClientId}:{_configuration.Settings.IdentificationSettings.ClientSecret}"));
+
+            return true;
         }
 
         public string GetAuthorizationLink()
         {
             var awaiter = _authHandler.CreateNewAuthAwaiter();
-            return _httpClient.GetAuthLink(Configuration.Settings.IdentificationSettings.ClientId.Value, awaiter.State);
+            return _httpClient.GetAuthLink(_configuration.Settings.IdentificationSettings.ClientId.Value,
+                awaiter.State);
         }
 
         public void ReceiveCode(string state, string code)
@@ -103,6 +102,11 @@ namespace NetBungieAPI.Clients
         public async Task<AuthorizationTokenData> RenewAuthorizationToken(AuthorizationTokenData oldToken)
         {
             return await _httpClient.RenewAuthorizationToken(oldToken);
+        }
+
+        public void SetAuthToken(AuthorizationTokenData token)
+        {
+            _authHandler.AddAuthToken(token);
         }
     }
 }

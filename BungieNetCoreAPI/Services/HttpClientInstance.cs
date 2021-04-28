@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using NetBungieAPI.Services.Interfaces;
 using System.Threading;
@@ -54,11 +55,19 @@ namespace NetBungieAPI.Services
 
         public async Task<AuthorizationTokenData> GetAuthorizationToken(string code, string authValue)
         {
+            var messageContent = $"grant_type=authorization_code&code={code}";
+            // if (_config.Settings.IdentificationSettings.ClientId != null)
+            //     messageContent += $"&client_id={_config.Settings.IdentificationSettings.ClientId}";
+            // if (!string.IsNullOrWhiteSpace(_config.Settings.IdentificationSettings.ClientSecret))
+            // {
+            //     messageContent += $"&client_secret={_config.Settings.IdentificationSettings.ClientSecret}";
+            // }
+
             var requestMessage = new HttpRequestMessage()
             {
                 Method = HttpMethod.Post,
                 RequestUri = new Uri(_authorizationTokenEndpoint),
-                Content = new StringContent($"grant_type=authorization_code&code={code}")
+                Content = new StringContent(messageContent)
             };
             requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Basic", authValue);
             requestMessage.Content.Headers.ContentType.MediaType = "application/x-www-form-urlencoded";
@@ -153,34 +162,29 @@ namespace NetBungieAPI.Services
             var response = await _httpClient.GetAsync(_cdnEndpoint + url);
             if (response.IsSuccessStatusCode)
             {
-                using (var stream = await response.Content.ReadAsStreamAsync())
+                await using var stream = await response.Content.ReadAsStreamAsync();
+                await using var memStream = new MemoryStream();
+                await stream.CopyToAsync(memStream);
+                memStream.Position = 0;
+                image = Image.FromStream(memStream);
+
+                var targetDirectory =
+                    $"{(string.IsNullOrWhiteSpace(folderPath) ? Environment.CurrentDirectory : folderPath)}\\";
+                var targetFileName =
+                    $"{(string.IsNullOrWhiteSpace(folderPath) ? Environment.CurrentDirectory : folderPath)}\\{filename}.{format.ToString().ToLower()}";
+                if (Directory.Exists(targetDirectory))
                 {
-                    using (var memStream = new MemoryStream())
+                    if (!File.Exists(targetFileName))
                     {
-                        await stream.CopyToAsync(memStream);
-                        memStream.Position = 0;
-                        image = Image.FromStream(memStream);
-
-                        var targetDirectory =
-                            $"{(string.IsNullOrWhiteSpace(folderPath) ? Environment.CurrentDirectory : folderPath)}\\";
-                        var targetFileName =
-                            $"{(string.IsNullOrWhiteSpace(folderPath) ? Environment.CurrentDirectory : folderPath)}\\{filename}.{format.ToString().ToLower()}";
-                        if (Directory.Exists(targetDirectory))
-                        {
-                            if (!File.Exists(targetFileName))
-                            {
-                                image.Save(targetFileName, format);
-                                image.Dispose();
-                            }
-                            else
-                                throw new Exception("This file already exists.");
-                        }
-                        else
-                            throw new Exception("Directory doesn't exist.");
+                        image.Save(targetFileName, format);
+                        image.Dispose();
                     }
+                    else
+                        throw new Exception("This file already exists.");
                 }
+                else
+                    throw new Exception("Directory doesn't exist.");
             }
-
             return image;
         }
 
@@ -194,7 +198,9 @@ namespace NetBungieAPI.Services
 
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             requestMessage.Headers.TryAddWithoutValidation("X-API-Key", _config.Settings.IdentificationSettings.ApiKey);
-            requestMessage.Headers.TryAddWithoutValidation("cache-control", "no-cache");
+            //requestMessage.Headers.TryAddWithoutValidation("cache-control", "no-cache");
+            // requestMessage.Headers.TryAddWithoutValidation("user-agent",
+            //     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36");
             if (!string.IsNullOrEmpty(authToken))
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
 

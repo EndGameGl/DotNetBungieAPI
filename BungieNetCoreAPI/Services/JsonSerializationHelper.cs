@@ -19,7 +19,8 @@ namespace NetBungieAPI.Services
                 new ReadOnlyDictionaryEnumKeyConverterFactory(),
                 new ReadOnlyDictionaryStructKeyConverterFactory(),
                 new ReadOnlyDictionaryDefinitionPointerKeyConverterFactory(),
-                new ReadOnlyDictionaryStringKeyConverterFactory()
+                new ReadOnlyDictionaryStringKeyConverterFactory(),
+                new HistoricalStatDefinitionPointerConverter()
             },
             NumberHandling = JsonNumberHandling.AllowReadingFromString,
             WriteIndented = true,

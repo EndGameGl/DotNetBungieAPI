@@ -77,12 +77,22 @@ namespace NetBungieAPI.TestProject
                     .UseLocalManifestFiles(@"H:\BungieNetCoreAPIRepository\Manifests")
                     .EnableLogging((mes) => Console.WriteLine(mes))
                     .PremapDefinitions()
-                    .LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
+                    //.LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
                     .SetLocales(new BungieLocales[] {BungieLocales.EN})
                     .SetUpdateBehaviour(true, true);
             });
             sw.Stop();
             Console.WriteLine($"Startup in: {sw.ElapsedMilliseconds} ms");
+
+            
+            
+            // var authorizationLink = _bungieClient.GetAuthorizationLink();
+            //
+            // var code = Console.ReadLine();
+            //
+            // _bungieClient.ReceiveCode(Console.ReadLine(), code);
+            //
+            // var token = await _bungieClient.GetAuthorizationToken(code);
             
             await Task.Delay(Timeout.Infinite);
         }

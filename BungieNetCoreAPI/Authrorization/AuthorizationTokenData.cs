@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Authrorization
 {
-    public record AuthorizationTokenData
+    public sealed record AuthorizationTokenData
     {
         [JsonPropertyName("access_token")]
         public string AccessToken { get; init; }

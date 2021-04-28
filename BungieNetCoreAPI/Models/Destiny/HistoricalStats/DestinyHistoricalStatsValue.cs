@@ -5,7 +5,7 @@ namespace NetBungieAPI.Models.Destiny.HistoricalStats
     public sealed record DestinyHistoricalStatsValue
     {
         [JsonPropertyName("statId")] 
-        public string StatId { get; init; }
+        public HistoricalStatDefinitionPointer StatId { get; init; }
         [JsonPropertyName("basic")]
         public DestinyHistoricalStatsValuePair BasicValue { get; init; }
         [JsonPropertyName("pga")] 

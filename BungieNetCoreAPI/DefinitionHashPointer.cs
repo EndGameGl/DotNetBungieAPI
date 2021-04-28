@@ -80,9 +80,8 @@ namespace NetBungieAPI
             }
             if (HasValidHash)
             {
-                if (_repository.Value.TryGetDestinyDefinition<T>(EnumValue, Hash.Value, Locale, out var foundDefinition))
+                if (_repository.Value.TryGetDestinyDefinition<T>(EnumValue, Hash.Value, Locale, out definition))
                 {
-                    definition = foundDefinition;
                     return true;
                 }
             }

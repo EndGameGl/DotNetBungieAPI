@@ -33,8 +33,11 @@ namespace NetBungieAPI.Services
         private readonly IHttpClientInstance _httpClientInstance;
 
         private IList<DestinyManifest> _manifestsCache;
+
+
+        private DestinyManifest _currentUsedManifest;
         private BungieResponse<DestinyManifest> _latestVersionApiResponse;
-        public DestinyManifest CurrentUsedManifest => _latestVersionApiResponse.Response;
+        public DestinyManifest CurrentUsedManifest => _latestVersionApiResponse is not null ? _latestVersionApiResponse.Response : _currentUsedManifest;
 
         public ManifestVersionHandler(ILogger logger, IConfigurationService configuration, IDestiny2MethodsAccess d2Api,
             ILocalisedDestinyDefinitionRepositories repository, IHttpClientInstance httpClientInstance, IJsonSerializationHelper serializationHelper)
@@ -49,11 +52,14 @@ namespace NetBungieAPI.Services
 
         public async ValueTask<bool> HasUpdates()
         {
-            if (!_configuration.Settings.ManifestVersionSettings.CheckUpdates)
-                throw new Exception("Update checking is turned off. Apply proper settings to enable update checking.");
-
             var manifests = FindManifestsAt(_configuration.Settings.LocalFileSettings.VersionsRepositoryPath);
-
+            _manifestsCache = manifests;
+            var latestLoadedDate = _manifestsCache.Max(x => x.VersionDate);
+            _currentUsedManifest = _manifestsCache.LastOrDefault(x => x.VersionDate.Equals(latestLoadedDate));
+            
+            if (!_configuration.Settings.ManifestVersionSettings.CheckUpdates) 
+                return false;
+            
             _latestVersionApiResponse = await _d2Api.GetDestinyManifest();
             if (_latestVersionApiResponse?.Response == null)
                 throw new Exception("Failed to load newest manifest.");

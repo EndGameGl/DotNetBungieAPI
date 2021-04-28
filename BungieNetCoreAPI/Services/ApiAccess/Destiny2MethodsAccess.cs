@@ -316,7 +316,7 @@ namespace NetBungieAPI.Services.ApiAccess
 
         public async ValueTask<BungieResponse<
                 ReadOnlyDictionary<string, ReadOnlyDictionary<string, DestinyClanLeaderboardsResponse>>>>
-            GetClanLeaderboards(long groupId, int maxtop, DestinyActivityModeType[] modes, string statid = null, 
+            GetClanLeaderboards(long groupId, int maxtop, DestinyActivityModeType[] modes, string statid = null,
                 CancellationToken token = default)
         {
             var url = StringBuilderPool.GetBuilder(token)
@@ -333,14 +333,36 @@ namespace NetBungieAPI.Services.ApiAccess
                     token);
         }
 
-        /// <summary>
-        /// Gets a page list of Destiny items.
-        /// </summary>
-        /// <param name="type">The type of entity for whom you would like results.</param>
-        /// <param name="searchTerm">The string to use when searching for Destiny entities.</param>
-        /// <param name="page">Page number to return</param>
-        /// <param name="token"></param>
-        /// <returns></returns>
+        public async ValueTask<BungieResponse<DestinyClanAggregateStat[]>> GetClanAggregateStats(long groupId,
+            DestinyActivityModeType[] modes, CancellationToken token = default)
+        {
+            var url = StringBuilderPool.GetBuilder(token)
+                .Append("/Destiny2/Stats/AggregateClanStats/")
+                .AddUrlParam(groupId.ToString())
+                .AddQueryParam("modes", string.Join(',', modes))
+                .Build();
+
+            return await _httpClient.GetFromBungieNetPlatform<DestinyClanAggregateStat[]>(url, token);
+        }
+
+        public async ValueTask<BungieResponse<Dictionary<string, object>>> GetLeaderboards(
+            BungieMembershipType membershipType, long destinyMembershipId, int maxtop, DestinyActivityModeType[] modes,
+            string statid = null, CancellationToken token = default)
+        {
+            var url = StringBuilderPool.GetBuilder(token)
+                .Append("/Destiny2/")
+                .AddUrlParam(((int) membershipType).ToString())
+                .Append("Account/")
+                .AddUrlParam(destinyMembershipId.ToString())
+                .Append("Stats/Leaderboards/")
+                .AddQueryParam("maxtop", maxtop.ToString())
+                .AddQueryParam("modes", string.Join(',', modes))
+                .AddQueryParam("statid", statid, () => !string.IsNullOrWhiteSpace(statid))
+                .Build();
+
+            return await _httpClient.GetFromBungieNetPlatform<Dictionary<string, object>>(url, token);
+        }
+
         public async ValueTask<BungieResponse<DestinyEntitySearchResult>> SearchDestinyEntities(DefinitionsEnum type,
             string searchTerm, int page = 0, CancellationToken token = default)
         {
@@ -354,22 +376,8 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<DestinyEntitySearchResult>(url, token);
         }
 
-        /// <summary>
-        /// Gets historical stats for indicated character.
-        /// </summary>
-        /// <param name="membershipType">A valid non-BungieNet membership type.</param>
-        /// <param name="destinyMembershipId">The Destiny membershipId of the user to retrieve.</param>
-        /// <param name="characterId">The id of the character to retrieve. You can omit this character ID or set it to 0 to get aggregate stats across all characters.</param>
-        /// <param name="daystart">First day to return when daily stats are requested.</param>
-        /// <param name="dayend">Last day to return when daily stats are requested.</param>
-        /// <param name="groups">Group of stats to include, otherwise only general stats are returned. Values: General, Weapons, Medals</param>
-        /// <param name="modes">Game modes to return.</param>
-        /// <param name="periodType">Indicates a specific period type to return. Optional. May be: Daily, AllTime, or Activity</param>
-        /// <param name="token"></param>
-        /// <returns></returns>
         public async ValueTask<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>>>
-            GetHistoricalStats(
-                BungieMembershipType membershipType, long destinyMembershipId, long characterId,
+            GetHistoricalStats(BungieMembershipType membershipType, long destinyMembershipId, long characterId,
                 DateTime? daystart = null, DateTime? dayend = null, DestinyStatsGroupType[] groups = null,
                 DestinyActivityModeType[] modes = null, PeriodType periodType = PeriodType.None,
                 CancellationToken token = default)
@@ -405,14 +413,6 @@ namespace NetBungieAPI.Services.ApiAccess
                     builder.Build(), token);
         }
 
-        /// <summary>
-        /// Gets aggregate historical stats organized around each character for a given account.
-        /// </summary>
-        /// <param name="membershipType"></param>
-        /// <param name="destinyMembershipId"></param>
-        /// <param name="groups"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
         public async ValueTask<BungieResponse<DestinyHistoricalStatsAccountResult>> GetHistoricalStatsForAccount(
             BungieMembershipType membershipType, long destinyMembershipId, DestinyStatsGroupType[] groups = null,
             CancellationToken token = default)
@@ -430,17 +430,6 @@ namespace NetBungieAPI.Services.ApiAccess
                 token);
         }
 
-        /// <summary>
-        /// Gets activity history stats for indicated character.
-        /// </summary>
-        /// <param name="membershipType"></param>
-        /// <param name="destinyMembershipId"></param>
-        /// <param name="characterId"></param>
-        /// <param name="count"></param>
-        /// <param name="mode"></param>
-        /// <param name="page"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
         public async ValueTask<BungieResponse<DestinyActivityHistoryResults>> GetActivityHistory(
             BungieMembershipType membershipType, long destinyMembershipId, long characterId, int count = 25,
             DestinyActivityModeType mode = DestinyActivityModeType.None, int page = 0,
@@ -462,14 +451,6 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<DestinyActivityHistoryResults>(url, token);
         }
 
-        /// <summary>
-        /// Gets details about unique weapon usage, including all exotic weapons.
-        /// </summary>
-        /// <param name="membershipType"></param>
-        /// <param name="destinyMembershipId"></param>
-        /// <param name="characterId"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
         public async ValueTask<BungieResponse<DestinyHistoricalWeaponStatsData>> GetUniqueWeaponHistory(
             BungieMembershipType membershipType, long destinyMembershipId, long characterId,
             CancellationToken token = default)
@@ -487,14 +468,6 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<DestinyHistoricalWeaponStatsData>(url, token);
         }
 
-        /// <summary>
-        /// Gets all activities the character has participated in together with aggregate statistics for those activities.
-        /// </summary>
-        /// <param name="membershipType"></param>
-        /// <param name="destinyMembershipId"></param>
-        /// <param name="characterId"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
         public async ValueTask<BungieResponse<DestinyAggregateActivityResults>> GetDestinyAggregateActivityStats(
             BungieMembershipType membershipType, long destinyMembershipId, long characterId,
             CancellationToken token = default)
@@ -513,11 +486,6 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<DestinyAggregateActivityResults>(url, token);
         }
 
-        /// <summary>
-        /// Gets public information about currently available Milestones.
-        /// </summary>
-        /// <param name="token"></param>
-        /// <returns></returns>
         public async ValueTask<BungieResponse<Dictionary<uint, DestinyPublicMilestone>>> GetPublicMilestones(
             CancellationToken token = default)
         {
@@ -525,12 +493,6 @@ namespace NetBungieAPI.Services.ApiAccess
                 $"/Destiny2/Milestones", token);
         }
 
-        /// <summary>
-        /// Gets custom localized content for the milestone of the given hash, if it exists.
-        /// </summary>
-        /// <param name="milestoneHash">The identifier for the milestone to be returned.</param>
-        /// <param name="token"></param>
-        /// <returns></returns>
         public async ValueTask<BungieResponse<DestinyMilestoneContent>> GetPublicMilestoneContent(uint milestoneHash,
             CancellationToken token = default)
         {
@@ -541,6 +503,36 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("Content/")
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<DestinyMilestoneContent>(url, token);
+        }
+
+        public async ValueTask<BungieResponse<AwaInitializeResponse>> AwaInitializeRequest(
+            AwaPermissionRequested request, CancellationToken token = default)
+        {
+            var stream = new MemoryStream();
+            await _serializationHelper.SerializeAsync(stream, request);
+            return await _httpClient.PostToBungieNetPlatform<AwaInitializeResponse>("/Destiny2/Awa/Initialize/", token,
+                stream);
+        }
+
+        public async ValueTask<BungieResponse<int>> AwaProvideAuthorizationResult(AwaUserResponse request,
+            CancellationToken token = default)
+        {
+            var stream = new MemoryStream();
+            await _serializationHelper.SerializeAsync(stream, request);
+            return await _httpClient.PostToBungieNetPlatform<int>("/Destiny2/Awa/AwaProvideAuthorizationResult/", token,
+                stream);
+        }
+
+        public async ValueTask<BungieResponse<AwaAuthorizationResult>> AwaGetActionToken(string correlationId,
+            CancellationToken token = default)
+        {
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/Destiny2/Awa/GetActionToken/")
+                .AddUrlParam(correlationId)
+                .Build();
+
+            return await _httpClient.PostToBungieNetPlatform<AwaAuthorizationResult>(url, token);
         }
     }
 }

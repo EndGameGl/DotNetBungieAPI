@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetBungieAPI", "BungieNetCo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetBungieAPI.TestProject", "BungieNetCoreTestingApp\NetBungieAPI.TestProject.csproj", "{097079C1-4969-4DE2-87BE-C04F3332DB6C}"
 EndProjec
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

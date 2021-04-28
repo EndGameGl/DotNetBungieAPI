@@ -81,11 +81,11 @@ namespace NetBungieAPI.Services.ApiAccess
                 .ReadBasicUserProfile))
                 throw new Exception(
                     "Application must have ApplicationScopes.ReadBasicUserProfile scope to run this command.");
-            //if (_authHandler.TryGetAccessToken(id, out var accessToken))
-            //{
+            if (_authHandler.TryGetAccessToken(out var accessToken))
+            {
                 return await _httpClient.GetFromBungieNetPlatform<UserMembershipData>(
-                    "/User/GetMembershipsForCurrentUser", token);//, accessToken);
-            //}
+                    "/User/GetMembershipsForCurrentUser", token, accessToken);
+            }
 
             throw new Exception("Missing token to make a call.");
         }
