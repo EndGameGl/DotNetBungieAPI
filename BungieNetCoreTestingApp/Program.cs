@@ -5,16 +5,20 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Models.Trending;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
+using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Models.GroupsV2;
 using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Models.Requests;
+using NetBungieAPI.Providers;
 using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.TestProject
@@ -77,15 +81,16 @@ namespace NetBungieAPI.TestProject
                     .UseLocalManifestFiles(@"H:\BungieNetCoreAPIRepository\Manifests")
                     .EnableLogging((mes) => Console.WriteLine(mes))
                     .PremapDefinitions()
+                    .UseDefinitionProvider(new JsonFileDefinitionProvider())
                     //.LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
                     .SetLocales(new BungieLocales[] {BungieLocales.EN})
-                    .SetUpdateBehaviour(true, true);
+                    .SetUpdateBehaviour(false, true);
             });
             sw.Stop();
-            Console.WriteLine($"Startup in: {sw.ElapsedMilliseconds} ms");
+            
 
-            
-            
+            var allItems = await _bungieClient.Repository.Provider.LoadAllDefinitions<DestinyInventoryItemDefinition>(BungieLocales.EN);
+            Console.WriteLine($"Startup in: {sw.ElapsedMilliseconds} ms");
             // var authorizationLink = _bungieClient.GetAuthorizationLink();
             //
             // var code = Console.ReadLine();
@@ -93,7 +98,7 @@ namespace NetBungieAPI.TestProject
             // _bungieClient.ReceiveCode(Console.ReadLine(), code);
             //
             // var token = await _bungieClient.GetAuthorizationToken(code);
-            
+
             await Task.Delay(Timeout.Infinite);
         }
 
