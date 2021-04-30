@@ -7,7 +7,6 @@ using NetBungieAPI.Models.Destiny.Milestones;
 using NetBungieAPI.Models.Destiny.Responses;
 using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Models.User;
-using NetBungieAPI.Responses;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

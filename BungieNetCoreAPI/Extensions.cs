@@ -5,13 +5,10 @@ using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Definitions.Activities;
 using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using NetBungieAPI.Repositories;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace NetBungieAPI
 {
@@ -21,10 +18,6 @@ namespace NetBungieAPI
         {
             var client = BungieApiBuilder.GetApiClient(configure);
             return services.AddSingleton(client);
-        }
-        internal static async Task<T> ReadObjectFromHttpResponseMessage<T>(this HttpResponseMessage response)
-        {
-            return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
         }
         internal static bool DeepEqualsReadOnlySimpleCollection<T>(this ReadOnlyCollection<T> compared, ReadOnlyCollection<T> comparedWith)
         {

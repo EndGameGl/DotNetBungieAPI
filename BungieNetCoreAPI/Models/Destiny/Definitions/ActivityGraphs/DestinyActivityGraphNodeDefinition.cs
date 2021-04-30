@@ -1,5 +1,4 @@
 ﻿using NetBungieAPI.Models.Destiny.Definitions.Common;
-using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 

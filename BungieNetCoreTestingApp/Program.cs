@@ -82,14 +82,12 @@ namespace NetBungieAPI.TestProject
                     .EnableLogging((mes) => Console.WriteLine(mes))
                     .PremapDefinitions()
                     .UseDefinitionProvider(new JsonFileDefinitionProvider())
-                    //.LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
+                    .LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
                     .SetLocales(new BungieLocales[] {BungieLocales.EN})
                     .SetUpdateBehaviour(false, true);
             });
             sw.Stop();
             
-
-            var allItems = await _bungieClient.Repository.Provider.LoadAllDefinitions<DestinyInventoryItemDefinition>(BungieLocales.EN);
             Console.WriteLine($"Startup in: {sw.ElapsedMilliseconds} ms");
             // var authorizationLink = _bungieClient.GetAuthorizationLink();
             //

@@ -5,7 +5,6 @@ using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Models.Tags;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
-using Newtonsoft.Json;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;

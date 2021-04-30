@@ -1,5 +1,4 @@
 ﻿using NetBungieAPI.Attributes;
-using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 
