@@ -13,7 +13,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.EquipmentSlots
     /// <para/>
     /// An Equipment Slot must have a related Inventory Bucket, but not all inventory buckets must have Equipment Slots.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyEquipmentSlotDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyEquipmentSlotDefinition)]
     public sealed record DestinyEquipmentSlotDefinition : IDestinyDefinition, IDeepEquatable<DestinyEquipmentSlotDefinition>
     {
         [JsonPropertyName("displayProperties")]

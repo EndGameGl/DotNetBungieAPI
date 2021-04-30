@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.SandboxPatterns
 {
-    [DestinyDefinition(DefinitionsEnum.DestinySandboxPatternDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinySandboxPatternDefinition)]
     public sealed record DestinySandboxPatternDefinition : IDestinyDefinition, IDeepEquatable<DestinySandboxPatternDefinition>
     {
         [JsonPropertyName("patternGlobalTagIdHash")]

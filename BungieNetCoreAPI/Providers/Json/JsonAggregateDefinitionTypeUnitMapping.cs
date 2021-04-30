@@ -1,4 +1,6 @@
-﻿namespace NetBungieAPI.Providers.Json
+﻿using System;
+
+namespace NetBungieAPI.Providers.Json
 {
     public class JsonAggregateDefinitionTypeUnitMapping
     {

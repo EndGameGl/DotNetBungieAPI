@@ -8,7 +8,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.PlugSets
     /// <summary>
     /// Sometimes, we have large sets of reusable plugs that are defined identically and thus can (and in some cases, are so large that they *must*) be shared across the places where they are used. These are the definitions for those reusable sets of plugs.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyPlugSetDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyPlugSetDefinition)]
     public sealed record DestinyPlugSetDefinition : IDestinyDefinition, IDeepEquatable<DestinyPlugSetDefinition>
     {
         [JsonPropertyName("displayProperties")]

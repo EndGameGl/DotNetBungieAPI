@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Metrics
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyMetricDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyMetricDefinition)]
     public sealed record DestinyMetricDefinition : IDestinyDefinition, IDeepEquatable<DestinyMetricDefinition>
     {
         [JsonPropertyName("displayProperties")]

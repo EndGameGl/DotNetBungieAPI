@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Unlocks
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyUnlockDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyUnlockDefinition)]
     public sealed record DestinyUnlockDefinition : IDestinyDefinition, IDeepEquatable<DestinyUnlockDefinition>
     {
         [JsonPropertyName("displayProperties")]
@@ -34,7 +34,6 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Unlocks
         }
         public void MapValues()
         {
-            return;
         }
         public bool DeepEquals(DestinyUnlockDefinition other)
         {

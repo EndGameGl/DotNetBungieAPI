@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.SackRewardItemLists
 {
-    [DestinyDefinition(DefinitionsEnum.DestinySackRewardItemListDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinySackRewardItemListDefinition)]
     public sealed record DestinySackRewardItemListDefinition : IDestinyDefinition, IDeepEquatable<DestinySackRewardItemListDefinition>
     {
         [JsonPropertyName("blacklisted")]
@@ -29,7 +29,6 @@ namespace NetBungieAPI.Models.Destiny.Definitions.SackRewardItemLists
         }
         public void MapValues()
         {
-            return;
         }
     }
 }

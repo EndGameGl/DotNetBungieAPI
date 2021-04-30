@@ -18,7 +18,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
     /// <para/>
     /// In practice, you will want to associate this data with "live" item data from a Bungie.Net Platform call: these definitions describe the item in generic, non-instanced terms: but an actual instance of an item can vary widely from these generic definitions.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyInventoryItemDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyInventoryItemDefinition)]
     public sealed record DestinyInventoryItemDefinition : IDestinyDefinition,
         IDeepEquatable<DestinyInventoryItemDefinition>
     {

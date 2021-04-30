@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.ReportReasonCategories
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyReportReasonCategoryDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyReportReasonCategoryDefinition)]
     public sealed record DestinyReportReasonCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinyReportReasonCategoryDefinition>
     {
         [JsonPropertyName("displayProperties")]
@@ -39,7 +39,6 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ReportReasonCategories
         }
         public void MapValues()
         {
-            return;
         }
     }
 }

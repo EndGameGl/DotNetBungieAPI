@@ -7,7 +7,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Lores
     /// <summary>
     /// These are definitions for in-game "Lore," meant to be narrative enhancements of the game experience.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyLoreDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyLoreDefinition)]
     public sealed record DestinyLoreDefinition : IDestinyDefinition, IDeepEquatable<DestinyLoreDefinition>
     {
         [JsonPropertyName("displayProperties")]

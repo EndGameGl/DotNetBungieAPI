@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.SandboxPerks
 {
-    [DestinyDefinition(DefinitionsEnum.DestinySandboxPerkDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinySandboxPerkDefinition)]
     public sealed record DestinySandboxPerkDefinition : IDestinyDefinition, IDeepEquatable<DestinySandboxPerkDefinition>
     {
         [JsonPropertyName("displayProperties")]

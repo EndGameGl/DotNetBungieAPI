@@ -1,6 +1,6 @@
 ﻿namespace NetBungieAPI.Models.Forum
 {
-    public enum ForumMediaType : int
+    public enum ForumMediaType
     {
         None = 0,
         Image = 1,

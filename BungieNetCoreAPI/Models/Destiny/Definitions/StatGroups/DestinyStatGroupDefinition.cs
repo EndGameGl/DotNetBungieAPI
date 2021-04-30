@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.StatGroups
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyStatGroupDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyStatGroupDefinition)]
     public sealed record DestinyStatGroupDefinition : IDestinyDefinition, IDeepEquatable<DestinyStatGroupDefinition>
     {
         [JsonPropertyName("maximumValue")]

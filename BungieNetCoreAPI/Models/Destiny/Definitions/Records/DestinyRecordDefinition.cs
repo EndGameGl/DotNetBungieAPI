@@ -9,7 +9,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Records
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyRecordDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyRecordDefinition)]
     public sealed record DestinyRecordDefinition : IDestinyDefinition, IDeepEquatable<DestinyRecordDefinition>
     {
         [JsonPropertyName("displayProperties")]

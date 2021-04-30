@@ -1,6 +1,6 @@
 ﻿namespace NetBungieAPI.Models
 {
-    public enum GlobalAlertType : int
+    public enum GlobalAlertType
     {
         GlobalAlert = 0,
         StreamingAlert = 1

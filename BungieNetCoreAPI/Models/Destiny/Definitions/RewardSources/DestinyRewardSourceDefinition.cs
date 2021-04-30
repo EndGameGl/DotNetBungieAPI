@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.RewardSources
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyRewardSourceDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyRewardSourceDefinition)]
     public sealed record DestinyRewardSourceDefinition : IDestinyDefinition, IDeepEquatable<DestinyRewardSourceDefinition>
     {
         [JsonPropertyName("blacklisted")]

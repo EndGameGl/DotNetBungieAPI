@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.ItemCategories
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyItemCategoryDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyItemCategoryDefinition)]
     public sealed record DestinyItemCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinyItemCategoryDefinition>
     {
         [JsonPropertyName("displayProperties")]

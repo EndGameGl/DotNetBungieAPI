@@ -13,13 +13,10 @@ namespace NetBungieAPI
             configuration.Configure(configure);
             var client = StaticUnityContainer.GetService<IBungieClient>();
             client.AddListener(configuration.Settings.InternalSettings.OnLog);
-
+            configuration.Settings.AfterConfigurated();
             Task.Run(async () =>
             {
-                await configuration.Settings.AfterConfigurated();
-
                 await configuration.Settings.DefinitionLoadingSettings.UsedProvider.InternalOnLoad(configuration);
-
                 await configuration.Settings.DefinitionLoadingSettings.UsedProvider.OnLoad();
             }).Wait();
 

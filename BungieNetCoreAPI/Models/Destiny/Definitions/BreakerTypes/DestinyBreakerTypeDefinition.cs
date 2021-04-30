@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.BreakerTypes
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyBreakerTypeDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyBreakerTypeDefinition)]
     public sealed record DestinyBreakerTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyBreakerTypeDefinition>
     {
         [JsonPropertyName("displayProperties")]

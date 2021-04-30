@@ -11,7 +11,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityModes
     /// <para/>
     /// Activity modes are nested under each other in a hierarchy, so that if you ask for - for example - "AllPvP", you will get any PVP activities that the user has played, regardless of what specific PVP mode was being played.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyActivityModeDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyActivityModeDefinition)]
     public sealed record DestinyActivityModeDefinition : IDestinyDefinition, IDeepEquatable<DestinyActivityModeDefinition>
     {
         [JsonPropertyName("displayProperties")]

@@ -15,7 +15,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityTypes
     /// <para />
     /// For this reason, BNet will eventually migrate toward Activity Modes as a better indicator of activity category. But for the time being, it is still referred to in many places across our codebase.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyActivityTypeDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyActivityTypeDefinition)]
     public sealed record DestinyActivityTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyActivityTypeDefinition>
     {
         [JsonPropertyName("displayProperties")]

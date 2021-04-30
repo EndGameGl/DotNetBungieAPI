@@ -20,7 +20,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Objectives
     /// <para/>
     /// Objectives have progress, a notion of having been Completed, human readable data describing the task to be accomplished, and a lot of optional tack-on data that can enhance the information provided about the task.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyObjectiveDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyObjectiveDefinition)]
     public sealed record DestinyObjectiveDefinition : IDestinyDefinition, IDeepEquatable<DestinyObjectiveDefinition>
     {
         [JsonPropertyName("displayProperties")]
@@ -63,7 +63,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Objectives
         /// The UI style applied to the objective. It's an enum, take a look at DestinyUnlockValueUIStyle for details of the possible styles. Use this info as you wish to customize your UI.
         /// </summary>
         [JsonPropertyName("valueStyle")]
-        public DestinyUnlockValueUIStyle ValueStyle { get; init; }
+        public DestinyUnlockValueUiStyle ValueStyle { get; init; }
         /// <summary>
         /// Text to describe the progress bar.
         /// </summary>
@@ -98,12 +98,12 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Objectives
         /// The style to use when the objective is completed.
         /// </summary>
         [JsonPropertyName("completedValueStyle")]
-        public DestinyUnlockValueUIStyle CompletedValueStyle { get; init; }
+        public DestinyUnlockValueUiStyle CompletedValueStyle { get; init; }
         /// <summary>
         /// The style to use when the objective is still in progress.
         /// </summary>
         [JsonPropertyName("inProgressValueStyle")]
-        public DestinyUnlockValueUIStyle InProgressValueStyle { get; init; }
+        public DestinyUnlockValueUiStyle InProgressValueStyle { get; init; }
         [JsonPropertyName("isDisplayOnlyObjective")]
         public bool IsDisplayOnlyObjective { get; init; }
         [JsonPropertyName("blacklisted")]

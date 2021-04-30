@@ -10,7 +10,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Seasons
 {
-    [DestinyDefinition(DefinitionsEnum.DestinySeasonDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinySeasonDefinition)]
     public sealed record DestinySeasonDefinition : IDestinyDefinition, IDeepEquatable<DestinySeasonDefinition>
     {
         [JsonPropertyName("displayProperties")]

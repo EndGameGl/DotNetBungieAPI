@@ -1,6 +1,6 @@
 ﻿namespace NetBungieAPI.Models.Applications
 {
-    public enum DeveloperRole : int
+    public enum DeveloperRole
     {
         None = 0,
         Owner = 1,

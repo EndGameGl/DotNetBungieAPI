@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Progressions
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyProgressionDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyProgressionDefinition)]
     public sealed record DestinyProgressionDefinition : IDestinyDefinition, IDeepEquatable<DestinyProgressionDefinition>
     {
         [JsonPropertyName("displayProperties")]

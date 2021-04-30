@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.HistoricalStats
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyHistoricalStatsDefinition, DefinitionSources.BungieNet | DefinitionSources.SQLite, DefinitionKeyType.String)]
+    [DestinyDefinition(DefinitionsEnum.DestinyHistoricalStatsDefinition)]
     public sealed record DestinyHistoricalStatsDefinition
     {
         [JsonPropertyName("statId")]

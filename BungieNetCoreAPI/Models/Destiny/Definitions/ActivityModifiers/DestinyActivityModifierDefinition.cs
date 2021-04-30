@@ -7,7 +7,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityModifiers
     /// <summary>
     /// Modifiers - in Destiny 1, these were referred to as "Skulls" - are changes that can be applied to an Activity.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyActivityModifierDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyActivityModifierDefinition)]
     public sealed record DestinyActivityModifierDefinition : IDestinyDefinition, IDeepEquatable<DestinyActivityModifierDefinition>
     {
         [JsonPropertyName("displayProperties")]

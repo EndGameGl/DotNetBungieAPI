@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Genders
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyGenderDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyGenderDefinition)]
     public sealed record DestinyGenderDefinition : IDestinyDefinition, IDeepEquatable<DestinyGenderDefinition>
     {
         [JsonPropertyName("genderType")]

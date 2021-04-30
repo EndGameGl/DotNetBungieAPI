@@ -12,7 +12,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Destinations
     /// <para />
     /// A "Destination" is a specific region/city/area of a larger "Place". For instance, a Place might be Earth where a Destination might be Bellevue, Washington. (Please, pick a more interesting destination if you come to visit Earth).
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyDestinationDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyDestinationDefinition)]
     public sealed record DestinyDestinationDefinition : IDestinyDefinition, IDeepEquatable<DestinyDestinationDefinition>
     {
         [JsonPropertyName("displayProperties")]

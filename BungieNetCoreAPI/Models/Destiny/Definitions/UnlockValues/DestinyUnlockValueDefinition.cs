@@ -3,7 +3,7 @@ using NetBungieAPI.Attributes;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.UnlockValues
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyUnlockValueDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyUnlockValueDefinition)]
     public sealed record DestinyUnlockValueDefinition : IDestinyDefinition, IDeepEquatable<DestinyUnlockValueDefinition>
     {
         [JsonPropertyName("blacklisted")]

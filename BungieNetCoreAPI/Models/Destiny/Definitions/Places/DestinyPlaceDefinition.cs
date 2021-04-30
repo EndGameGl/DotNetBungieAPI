@@ -7,7 +7,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Places
     /// <summary>
     /// Activities (DestinyActivityDefinition) take place in Destinations (DestinyDestinationDefinition). Destinations are part of larger locations known as Places
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyPlaceDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyPlaceDefinition)]
     public sealed record DestinyPlaceDefinition : IDestinyDefinition, IDeepEquatable<DestinyPlaceDefinition>
     {
         [JsonPropertyName("displayProperties")]

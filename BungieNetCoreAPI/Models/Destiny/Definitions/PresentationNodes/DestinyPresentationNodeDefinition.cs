@@ -15,7 +15,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.PresentationNodes
     /// <para/>
     /// - Collectibles - Records(Or, as the public will call them, "Triumphs." Don't ask me why we're overloading the term "Triumph", it still hurts me to think about it) - Metrics(aka Stat Trackers) - Other Presentation Nodes, allowing a tree of Presentation Nodes to be created
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyPresentationNodeDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyPresentationNodeDefinition)]
     public sealed record DestinyPresentationNodeDefinition : IDestinyDefinition, IDeepEquatable<DestinyPresentationNodeDefinition>
     {
         [JsonPropertyName("displayProperties")]

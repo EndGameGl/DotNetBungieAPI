@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.TraitCategories
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyTraitCategoryDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyTraitCategoryDefinition)]
     public sealed record DestinyTraitCategoryDefinition : IDestinyDefinition, IDeepEquatable<DestinyTraitCategoryDefinition>
     {
         /// <summary>

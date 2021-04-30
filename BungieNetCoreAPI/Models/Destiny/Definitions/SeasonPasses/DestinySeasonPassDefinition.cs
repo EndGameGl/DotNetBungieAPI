@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.SeasonPasses
 {
-    [DestinyDefinition(DefinitionsEnum.DestinySeasonPassDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinySeasonPassDefinition)]
     public sealed record DestinySeasonPassDefinition : IDestinyDefinition, IDeepEquatable<DestinySeasonPassDefinition>
     {
         [JsonPropertyName("displayProperties")]

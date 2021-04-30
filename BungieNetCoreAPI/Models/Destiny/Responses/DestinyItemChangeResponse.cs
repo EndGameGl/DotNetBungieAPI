@@ -7,14 +7,14 @@ namespace NetBungieAPI.Models.Destiny.Responses
     public sealed record DestinyItemChangeResponse
     {
         [JsonPropertyName("item")]
-        public DestinyItemResponse Item { get; }
+        public DestinyItemResponse Item { get; init; }
         
         [JsonPropertyName("addedInventoryItems")]
-        public ReadOnlyCollection<DestinyItemComponent> AddedInventoryItems { get; } =
+        public ReadOnlyCollection<DestinyItemComponent> AddedInventoryItems { get; init; } =
             Defaults.EmptyReadOnlyCollection<DestinyItemComponent>();
         
         [JsonPropertyName("removedInventoryItems")]
-        public ReadOnlyCollection<DestinyItemComponent> RemovedInventoryItems { get; }=
+        public ReadOnlyCollection<DestinyItemComponent> RemovedInventoryItems { get; init; }=
             Defaults.EmptyReadOnlyCollection<DestinyItemComponent>();
     }
 }

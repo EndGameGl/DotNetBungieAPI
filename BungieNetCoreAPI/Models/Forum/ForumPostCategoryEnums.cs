@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace NetBungieAPI.Models.Forum
 {
     [Flags, JsonConverter(typeof(JsonStringEnumConverter))]
-    public enum ForumPostCategoryEnums : int
+    public enum ForumPostCategoryEnums
     {
         None = 0,
         TextOnly = 1,

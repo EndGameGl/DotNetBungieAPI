@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.MedalTiers
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyMedalTierDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyMedalTierDefinition)]
     public sealed record DestinyMedalTierDefinition : IDestinyDefinition, IDeepEquatable<DestinyMedalTierDefinition>
     {
         [JsonPropertyName("order")]

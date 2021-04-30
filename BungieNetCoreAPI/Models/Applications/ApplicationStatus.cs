@@ -1,6 +1,6 @@
 ﻿namespace NetBungieAPI.Models.Applications
 {
-    public enum ApplicationStatus : int
+    public enum ApplicationStatus
     {
         None = 0,
         Private = 1,

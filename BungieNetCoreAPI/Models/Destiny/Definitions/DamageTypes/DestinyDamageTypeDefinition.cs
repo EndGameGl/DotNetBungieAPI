@@ -7,7 +7,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.DamageTypes
     /// <summary>
     /// All damage types that are possible in the game are defined here, along with localized info and icons as needed.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyDamageTypeDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyDamageTypeDefinition)]
     public sealed record DestinyDamageTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyDamageTypeDefinition>
     {
         [JsonPropertyName("displayProperties")]

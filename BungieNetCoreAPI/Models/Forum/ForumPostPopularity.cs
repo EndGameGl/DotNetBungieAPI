@@ -1,6 +1,6 @@
 ﻿namespace NetBungieAPI.Models.Forum
 {
-    public enum ForumPostPopularity : int
+    public enum ForumPostPopularity
     {
         Empty = 0,
         Default = 1,

@@ -195,7 +195,7 @@ namespace NetBungieAPI.Clients.Settings
             return this;
         }
         
-        internal async Task AfterConfigurated()
+        internal void AfterConfigurated()
         {
             var assemblyData = StaticUnityContainer.GetAssemblyData();
             var excludedFromLoad = DefinitionLoadingSettings.ForbiddenDefinitions;

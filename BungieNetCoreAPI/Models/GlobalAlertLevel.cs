@@ -1,6 +1,6 @@
 ﻿namespace NetBungieAPI.Models
 {
-    public enum GlobalAlertLevel : int
+    public enum GlobalAlertLevel
     {
         Unknown = 0,
         Blue = 1,

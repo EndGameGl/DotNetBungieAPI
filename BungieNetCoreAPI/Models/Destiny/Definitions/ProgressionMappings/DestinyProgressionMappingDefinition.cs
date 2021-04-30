@@ -15,7 +15,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ProgressionMappings
     /// <para/>
     /// Earned experience is calculated in a variety of ways, determined by the Progression's scope. These go from looking up a stored value to performing exceedingly obtuse calculations. This is why we provide live data in DestinyCharacterProgressionComponent.progressions, so you don't have to worry about those.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyProgressionMappingDefinition, DefinitionSources.JSON, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyProgressionMappingDefinition)]
     public sealed record DestinyProgressionMappingDefinition : IDestinyDefinition, IDeepEquatable<DestinyProgressionMappingDefinition>
     {
         [JsonPropertyName("displayProperties")]

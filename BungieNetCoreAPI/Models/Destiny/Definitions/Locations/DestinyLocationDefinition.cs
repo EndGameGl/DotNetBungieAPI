@@ -9,7 +9,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Locations
     /// <summary>
     /// A "Location" is a sort of shortcut for referring to a specific combination of Activity, Destination, Place, and even Bubble or NavPoint within a space.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyLocationDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyLocationDefinition)]
     public sealed record DestinyLocationDefinition : IDestinyDefinition, IDeepEquatable<DestinyLocationDefinition>
     {
         /// <summary>

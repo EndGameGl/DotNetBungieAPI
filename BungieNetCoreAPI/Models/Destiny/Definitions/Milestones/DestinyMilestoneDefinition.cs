@@ -36,7 +36,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Milestones
     /// <para/>
     /// This approach will let you avoid, whenever possible, the even less useful (and sometimes nonexistant) milestone-level names and descriptions.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyMilestoneDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyMilestoneDefinition)]
     public sealed record DestinyMilestoneDefinition : IDestinyDefinition, IDeepEquatable<DestinyMilestoneDefinition>
     {
         /// <summary>

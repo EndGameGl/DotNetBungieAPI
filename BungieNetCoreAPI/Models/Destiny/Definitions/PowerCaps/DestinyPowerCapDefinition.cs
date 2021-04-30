@@ -6,7 +6,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.PowerCaps
     /// <summary>
     /// Defines a 'power cap' (limit) for gear items, based on the rarity tier and season of release.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyPowerCapDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyPowerCapDefinition)]
     public sealed record DestinyPowerCapDefinition : IDestinyDefinition, IDeepEquatable<DestinyPowerCapDefinition>
     {
         [JsonPropertyName("powerCap")]

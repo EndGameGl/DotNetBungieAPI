@@ -1,6 +1,6 @@
 ﻿namespace NetBungieAPI.Models.Forum
 {
-    public enum ForumTopicsQuickDateEnum : int
+    public enum ForumTopicsQuickDateEnum
     {
         All = 0,
         LastYear = 1,

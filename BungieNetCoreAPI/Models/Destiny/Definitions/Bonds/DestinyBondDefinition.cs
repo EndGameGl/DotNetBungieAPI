@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Bonds
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyBondDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyBondDefinition)]
     public sealed record DestinyBondDefinition : IDestinyDefinition, IDeepEquatable<DestinyBondDefinition>
     {
         [JsonPropertyName("displayProperties")]

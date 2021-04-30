@@ -7,7 +7,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Achievements
     /// <summary>
     /// Represents account achievements, such as Steam ones
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyAchievementDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyAchievementDefinition)]
     public sealed record DestinyAchievementDefinition : IDestinyDefinition, IDeepEquatable<DestinyAchievementDefinition>
     {
         [JsonPropertyName("acccumulatorThreshold")]

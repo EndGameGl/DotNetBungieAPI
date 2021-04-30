@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace NetBungieAPI.Models.Forum
 {
     [Flags, JsonConverter(typeof(JsonStringEnumConverter))]
-    public enum ForumFlagsEnum : int
+    public enum ForumFlagsEnum
     {
         None = 0,
         BungieStaffPost = 1,

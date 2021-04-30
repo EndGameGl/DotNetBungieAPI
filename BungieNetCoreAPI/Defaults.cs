@@ -7,6 +7,6 @@ namespace NetBungieAPI
     internal static class Defaults
     {
         internal static ReadOnlyCollection<T> EmptyReadOnlyCollection<T>() => new(Array.Empty<T>());
-        internal static ReadOnlyDictionary<T, P> EmptyReadOnlyDictionary<T, P>() => new(new Dictionary<T, P>(0));
+        internal static ReadOnlyDictionary<T,TValue> EmptyReadOnlyDictionary<T, TValue>() => new(new Dictionary<T, TValue>(0));
     }
 }

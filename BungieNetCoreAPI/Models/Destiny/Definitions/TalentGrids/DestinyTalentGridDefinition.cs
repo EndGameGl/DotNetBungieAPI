@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.TalentGrids
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyTalentGridDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyTalentGridDefinition)]
     public sealed record DestinyTalentGridDefinition : IDestinyDefinition, IDeepEquatable<DestinyTalentGridDefinition>
     {
         [JsonPropertyName("maxGridLevel")]

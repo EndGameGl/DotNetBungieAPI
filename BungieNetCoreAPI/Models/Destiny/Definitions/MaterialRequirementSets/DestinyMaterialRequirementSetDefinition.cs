@@ -9,7 +9,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets
     /// <para/>
     /// A variety of other entities refer to these as gatekeepers and payments for actions that can be performed in game.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyMaterialRequirementSetDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyMaterialRequirementSetDefinition)]
     public sealed record DestinyMaterialRequirementSetDefinition : IDestinyDefinition, IDeepEquatable<DestinyMaterialRequirementSetDefinition>
     {
         /// <summary>

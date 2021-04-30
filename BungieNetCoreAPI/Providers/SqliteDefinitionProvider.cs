@@ -180,23 +180,26 @@ namespace NetBungieAPI.Providers
 
         public override async Task<string> LoadHistoricalStatsDefinitionAsJson(string id, BungieLocales locale)
         {
-            var result = string.Empty;
-            _connection.ConnectionString = $"Data Source={_databasePaths[locale]}; Version=3;";
-            _connection.Open();
-            var commandObj = new SQLiteCommand()
+            return await Task.Run(() =>
             {
-                Connection = _connection,
-                CommandText = $"SELECT * FROM DestinyHistoricalStatsDefinition WHERE key='{id}'"
-            };
-            var reader = commandObj.ExecuteReader();
-            while (reader.Read())
-            {
-                var byteArray = (byte[]) reader[1];
-                result = Encoding.UTF8.GetString(byteArray);
-            }
+                var result = string.Empty;
+                _connection.ConnectionString = $"Data Source={_databasePaths[locale]}; Version=3;";
+                _connection.Open();
+                var commandObj = new SQLiteCommand()
+                {
+                    Connection = _connection,
+                    CommandText = $"SELECT * FROM DestinyHistoricalStatsDefinition WHERE key='{id}'"
+                };
+                var reader = commandObj.ExecuteReader();
+                while (reader.Read())
+                {
+                    var byteArray = (byte[]) reader[1];
+                    result = Encoding.UTF8.GetString(byteArray);
+                }
 
-            _connection.Close();
-            return result;
+                _connection.Close();
+                return result;
+            });
         }
 
         public override async Task<ReadOnlyCollection<T>> LoadAllDefinitions<T>(BungieLocales locale)

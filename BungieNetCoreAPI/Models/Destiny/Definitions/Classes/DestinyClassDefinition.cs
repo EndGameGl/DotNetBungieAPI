@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Classes
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyClassDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyClassDefinition)]
     public sealed record DestinyClassDefinition : IDestinyDefinition, IDeepEquatable<DestinyClassDefinition>
     {
         [JsonPropertyName("displayProperties")]

@@ -7,7 +7,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.EnergyTypes
     /// <summary>
     /// Represents types of Energy that can be used for costs and payments related to Armor 2.0 mods.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyEnergyTypeDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyEnergyTypeDefinition)]
     public sealed record DestinyEnergyTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyEnergyTypeDefinition>
     {
         [JsonPropertyName("displayProperties")]

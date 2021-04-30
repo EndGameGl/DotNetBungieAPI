@@ -21,7 +21,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Activities
     /// <para/>
     /// Activities also have Activity Types, but unfortunately in Destiny 2 these are even less reliable of a source of information than they were in Destiny 1. I will be looking into ways to provide more reliable sources for type information as time goes on, but for now we're going to have to deal with the limitations. See DestinyActivityTypeDefinition for more information.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyActivityDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyActivityDefinition)]
     public sealed record DestinyActivityDefinition : IDestinyDefinition, IDeepEquatable<DestinyActivityDefinition>
     {
         /// <summary>

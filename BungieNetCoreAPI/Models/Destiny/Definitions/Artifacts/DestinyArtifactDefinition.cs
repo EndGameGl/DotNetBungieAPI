@@ -10,7 +10,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Artifacts
     /// <para/>
     /// We cannot guarantee that artifact definitions will be immutable between seasons - in fact, we've been told that they will be replaced between seasons. But this definition is built both to minimize the amount of lookups for related data that have to occur, and is built in hope that, if this plan changes, we will be able to accommodate it more easily.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyArtifactDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyArtifactDefinition)]
     public sealed record DestinyArtifactDefinition : IDestinyDefinition, IDeepEquatable<DestinyArtifactDefinition>
     {
         /// <summary>

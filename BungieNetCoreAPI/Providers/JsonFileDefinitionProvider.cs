@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -37,7 +40,8 @@ namespace NetBungieAPI.Providers
         {
             _fileMappings.Add(locale, new JsonAggregateDefinitionMapping());
             DefinitionsEnum? currentReadValue = null;
-            var reader = new Utf8JsonReader(File.ReadAllBytes(path));
+            byte[] array = File.ReadAllBytes(path);
+            var reader = new Utf8JsonReader(array);
             while (reader.Read())
             {
                 if (reader.TokenType is JsonTokenType.StartObject or JsonTokenType.EndObject
@@ -146,18 +150,21 @@ namespace NetBungieAPI.Providers
                 await fileStream.ReadAsync(buffer.AsMemory(0, (int) location.Length));
                 results.Add(await SerializationHelper.DeserializeAsync<T>(buffer));
             }
+
             return new ReadOnlyCollection<T>(results);
         }
 
         public override async Task<DestinyHistoricalStatsDefinition> LoadHistoricalStatsDefinition(string id,
             BungieLocales locale)
         {
-            throw new ProviderUnsupportedException("This definition is not supported for current provider", DefinitionsEnum.DestinyHistoricalStatsDefinition);
+            throw new ProviderUnsupportedException("This definition is not supported for current provider",
+                DefinitionsEnum.DestinyHistoricalStatsDefinition);
         }
 
         public override async Task<string> LoadHistoricalStatsDefinitionAsJson(string id, BungieLocales locale)
         {
-            throw new ProviderUnsupportedException("This definition is not supported for current provider", DefinitionsEnum.DestinyHistoricalStatsDefinition);
+            throw new ProviderUnsupportedException("This definition is not supported for current provider",
+                DefinitionsEnum.DestinyHistoricalStatsDefinition);
         }
 
         public override async Task<ReadOnlyCollection<T>> LoadAllDefinitions<T>(BungieLocales locale)
@@ -173,6 +180,7 @@ namespace NetBungieAPI.Providers
                 await fileStream.ReadAsync(buffer.AsMemory(0, (int) location.Length));
                 results.Add(await SerializationHelper.DeserializeAsync<T>(buffer));
             }
+
             return new ReadOnlyCollection<T>(results);
         }
     }

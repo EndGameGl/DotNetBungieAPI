@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.VendorGroups
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyVendorGroupDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyVendorGroupDefinition)]
     public sealed record DestinyVendorGroupDefinition : IDestinyDefinition, IDeepEquatable<DestinyVendorGroupDefinition>
     {
         /// <summary>

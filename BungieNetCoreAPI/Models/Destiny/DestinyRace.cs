@@ -1,6 +1,6 @@
 ﻿namespace NetBungieAPI.Models.Destiny
 {
-    public enum DestinyRace : int
+    public enum DestinyRace
     {
         Human = 0,
         Awoken = 1,

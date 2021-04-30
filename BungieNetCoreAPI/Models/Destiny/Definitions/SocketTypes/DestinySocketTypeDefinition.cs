@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.SocketTypes
 {
-    [DestinyDefinition(DefinitionsEnum.DestinySocketTypeDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinySocketTypeDefinition)]
     public sealed record DestinySocketTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinySocketTypeDefinition>
     {
         [JsonPropertyName("displayProperties")]

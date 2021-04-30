@@ -1,6 +1,6 @@
 ﻿namespace NetBungieAPI.Models.Destiny
 {
-    public enum DestinyUnlockValueUIStyle
+    public enum DestinyUnlockValueUiStyle
     {
         Automatic = 0,
         Fraction = 1,

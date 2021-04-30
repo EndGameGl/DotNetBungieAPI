@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Vendors
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyVendorDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyVendorDefinition)]
     public sealed record DestinyVendorDefinition : IDestinyDefinition, IDeepEquatable<DestinyVendorDefinition>
     {
         /// <summary>

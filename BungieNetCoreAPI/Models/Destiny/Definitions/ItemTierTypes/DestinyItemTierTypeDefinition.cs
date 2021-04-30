@@ -9,7 +9,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ItemTierTypes
     /// <para/>
     /// It also provides some base data for infusion that could be useful.
     /// </summary>
-    [DestinyDefinition(DefinitionsEnum.DestinyItemTierTypeDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyItemTierTypeDefinition)]
     public sealed record DestinyItemTierTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyItemTierTypeDefinition>
     {
         [JsonPropertyName("displayProperties")]

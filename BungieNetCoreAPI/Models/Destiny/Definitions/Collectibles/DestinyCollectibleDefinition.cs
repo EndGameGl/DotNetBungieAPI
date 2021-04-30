@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Collectibles
 {
-    [DestinyDefinition(DefinitionsEnum.DestinyCollectibleDefinition, DefinitionSources.All, DefinitionKeyType.UInt)]
+    [DestinyDefinition(DefinitionsEnum.DestinyCollectibleDefinition)]
     public sealed record DestinyCollectibleDefinition : IDestinyDefinition, IDeepEquatable<DestinyCollectibleDefinition>
     {
         [JsonPropertyName("displayProperties")]
