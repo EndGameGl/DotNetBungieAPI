@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 using NetBungieAPI.Logging;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
+using NetBungieAPI.Models.Destiny.Config;
 using NetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using NetBungieAPI.Providers.Json;
 
@@ -20,14 +22,15 @@ namespace NetBungieAPI.Providers
     {
         private Dictionary<BungieLocales, JsonAggregateDefinitionMapping> _fileMappings = new();
         private Dictionary<BungieLocales, string> _filePaths = new();
-
-        public JsonFileDefinitionProvider()
+        private readonly string ManifestPath;
+        public JsonFileDefinitionProvider(string manifestsPath)
         {
+            ManifestPath = manifestsPath;
         }
 
         public override async Task OnLoad()
         {
-            foreach (var locale in Locales)
+            foreach (var locale in DefinitionLoadingSettings.Locales)
             {
                 var fileLocation =
                     $"{ManifestPath}\\{UsedManifest.Version}\\JsonWorldContent\\{locale.LocaleToString()}\\{Path.GetFileName(UsedManifest.JsonWorldContentPaths[locale.LocaleToString()])}";
@@ -52,7 +55,7 @@ namespace NetBungieAPI.Providers
                     case 1:
                         if (Enum.TryParse<DefinitionsEnum>(reader.GetString(), out var enumValue))
                         {
-                            if (DefinitionsToLoad.Contains(enumValue))
+                            if (((IList) DefinitionLoadingSettings.AllowedDefinitions).Contains(enumValue))
                             {
                                 currentReadValue = enumValue;
                                 _fileMappings[locale].Mappings.Add(enumValue, new JsonAggregateDefinitionTypeMapping());
@@ -91,7 +94,7 @@ namespace NetBungieAPI.Providers
 
         public override async Task ReadDefinitionsToRepository(IEnumerable<DefinitionsEnum> definitionsToLoad)
         {
-            Repositories.Initialize(Locales);
+            Repositories.Initialize(DefinitionLoadingSettings.Locales);
             byte[] buffer;
             foreach (var filePath in _filePaths)
             {
@@ -115,7 +118,7 @@ namespace NetBungieAPI.Providers
             }
         }
 
-        public override async Task<T> LoadDefinition<T>(uint hash, BungieLocales locale)
+        public override async ValueTask<T> LoadDefinition<T>(uint hash, BungieLocales locale)
         {
             var location = _fileMappings[locale].Mappings[DefinitionHashPointer<T>.EnumValue].DefinitionsData[hash];
             await using var fileStream = File.OpenRead(_filePaths[locale]);
@@ -125,7 +128,7 @@ namespace NetBungieAPI.Providers
             return await SerializationHelper.DeserializeAsync<T>(buffer);
         }
 
-        public override async Task<string> ReadDefinitionAsJson(DefinitionsEnum enumValue, uint hash,
+        public override async ValueTask<string> ReadDefinitionAsJson(DefinitionsEnum enumValue, uint hash,
             BungieLocales locale)
         {
             var location = _fileMappings[locale].Mappings[enumValue].DefinitionsData[hash];
@@ -136,7 +139,7 @@ namespace NetBungieAPI.Providers
             return Encoding.UTF8.GetString(buffer);
         }
 
-        public override async Task<ReadOnlyCollection<T>> LoadMultipleDefinitions<T>(uint[] hashes,
+        public override async ValueTask<ReadOnlyCollection<T>> LoadMultipleDefinitions<T>(uint[] hashes,
             BungieLocales locale)
         {
             var results = new List<T>();
@@ -154,20 +157,20 @@ namespace NetBungieAPI.Providers
             return new ReadOnlyCollection<T>(results);
         }
 
-        public override async Task<DestinyHistoricalStatsDefinition> LoadHistoricalStatsDefinition(string id,
+        public override async ValueTask<DestinyHistoricalStatsDefinition> LoadHistoricalStatsDefinition(string id,
             BungieLocales locale)
         {
             throw new ProviderUnsupportedException("This definition is not supported for current provider",
                 DefinitionsEnum.DestinyHistoricalStatsDefinition);
         }
 
-        public override async Task<string> LoadHistoricalStatsDefinitionAsJson(string id, BungieLocales locale)
+        public override async ValueTask<string> LoadHistoricalStatsDefinitionAsJson(string id, BungieLocales locale)
         {
             throw new ProviderUnsupportedException("This definition is not supported for current provider",
                 DefinitionsEnum.DestinyHistoricalStatsDefinition);
         }
 
-        public override async Task<ReadOnlyCollection<T>> LoadAllDefinitions<T>(BungieLocales locale)
+        public override async ValueTask<ReadOnlyCollection<T>> LoadAllDefinitions<T>(BungieLocales locale)
         {
             var results = new List<T>();
             await using var fileStream = File.OpenRead(_filePaths[locale]);
@@ -182,6 +185,46 @@ namespace NetBungieAPI.Providers
             }
 
             return new ReadOnlyCollection<T>(results);
+        }
+
+        public override ValueTask<IEnumerable<DestinyManifest>> GetAvailableManifests()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ValueTask<DestinyManifest> GetCurrentManifest()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ValueTask<bool> CheckForUpdates()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Task Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Task DownloadNewManifestData(DestinyManifest manifestData)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Task DeleteOldManifestData()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Task DeleteManifestData(DestinyManifest manifestData)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ValueTask<bool> CheckExistingManifestData(string version)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Milestones
     public sealed record DestinyMilestoneQuestRewardItem : DestinyItemQuantity, IDeepEquatable<DestinyMilestoneQuestRewardItem>
     {
         [JsonPropertyName("vendorHash")]
-        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; init; }
+        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; init; } = DefinitionHashPointer<DestinyVendorDefinition>.Empty;
 
         [JsonPropertyName("vendorItemIndex")]
         public int? VendorItemIndex { get; init; }

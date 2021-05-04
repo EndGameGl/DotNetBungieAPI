@@ -17,7 +17,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.SandboxPerks
         [JsonPropertyName("damageType")]
         public DamageType DamageTypeEnumValue { get; init; }
         [JsonPropertyName("damageTypeHash")]
-        public DefinitionHashPointer<DestinyDamageTypeDefinition> DamageType { get; init; }
+        public DefinitionHashPointer<DestinyDamageTypeDefinition> DamageType { get; init; } = DefinitionHashPointer<DestinyDamageTypeDefinition>.Empty;
         [JsonPropertyName("perkGroups")]
         public TalentNodeStepGroups PerkGroups { get; init; }
         [JsonPropertyName("blacklisted")]

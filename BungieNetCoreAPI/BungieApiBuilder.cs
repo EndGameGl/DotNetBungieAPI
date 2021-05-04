@@ -9,15 +9,25 @@ namespace NetBungieAPI
     {
         public static IBungieClient GetApiClient(Action<BungieClientSettings> configure)
         {
+            var logger = StaticUnityContainer.GetLogger();
             var configuration = StaticUnityContainer.GetConfiguration();
             configuration.Configure(configure);
             var client = StaticUnityContainer.GetService<IBungieClient>();
             client.AddListener(configuration.Settings.InternalSettings.OnLog);
-            configuration.Settings.AfterConfigurated();
             Task.Run(async () =>
             {
-                await configuration.Settings.DefinitionLoadingSettings.UsedProvider.InternalOnLoad(configuration);
-                await configuration.Settings.DefinitionLoadingSettings.UsedProvider.OnLoad();
+                configuration.Settings.AfterConfigurated();
+                var provider = configuration.Settings.DefinitionLoadingSettings.UsedProvider;
+                await provider.OnLoadInternal(configuration);
+                if (configuration.Settings.ManifestVersionSettings.CheckUpdates == true)
+                {
+                    if (await provider.CheckForUpdates())
+                        await provider.Update();
+                    if (configuration.Settings.ManifestVersionSettings.KeepOldVersions == false)
+                        await provider.DeleteOldManifestData();
+                }
+
+                await provider.OnLoad();
             }).Wait();
 
 
@@ -30,12 +40,16 @@ namespace NetBungieAPI
                 {
                     await client.Repository.Provider.ReadDefinitionsToRepository(configuration.Settings
                         .DefinitionLoadingSettings.AllowedDefinitions);
+                    if (configuration.Settings.DefinitionLoadingSettings.PremapDefinitionPointers)
+                        client.Repository.PremapPointers();
                 }).Wait();
             else
                 Task.Run(async () =>
                 {
                     await client.Repository.Provider.ReadDefinitionsToRepository(configuration.Settings
                         .DefinitionLoadingSettings.AllowedDefinitions);
+                    if (configuration.Settings.DefinitionLoadingSettings.PremapDefinitionPointers)
+                        client.Repository.PremapPointers();
                 });
 
             return client;

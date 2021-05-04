@@ -495,13 +495,13 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                 //Action.RewardSheet.TryMapValue();
             }
 
-            if (EquippingBlock != null)
+            if (EquippingBlock is not null)
             {
                 EquippingBlock.EquipmentSlotType.TryMapValue();
                 EquippingBlock.GearsetItem.TryMapValue();
             }
 
-            if (Sockets != null)
+            if (Sockets is not null)
             {
                 foreach (var intrinsicSocket in Sockets.IntrinsicSockets)
                 {

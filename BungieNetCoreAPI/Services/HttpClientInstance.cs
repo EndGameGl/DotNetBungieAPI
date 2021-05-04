@@ -23,11 +23,11 @@ namespace NetBungieAPI.Services
         private readonly IConfigurationService _config;
         private readonly IJsonSerializationHelper _serializationHelper;
 
-        private const string _authorizationEndpoint = "https://www.bungie.net/en/oauth/authorize";
-        private const string _authorizationTokenEndpoint = "https://www.bungie.net/platform/app/oauth/token/";
-        private const string _platformEndpoint = "https://www.bungie.net/Platform";
-        private const string _cdnEndpoint = "https://www.bungie.net";
-        private const string _statsEndpoint = "http://stats.bungie.net/Platform";
+        private const string AuthorizationEndpoint = "https://www.bungie.net/en/oauth/authorize";
+        private const string AuthorizationTokenEndpoint = "https://www.bungie.net/platform/app/oauth/token/";
+        private const string PlatformEndpoint = "https://www.bungie.net/Platform";
+        private const string CdnEndpoint = "https://www.bungie.net";
+        private const string StatsEndpoint = "http://stats.bungie.net/Platform";
 
         private readonly HttpClient _httpClient;
 
@@ -38,7 +38,7 @@ namespace NetBungieAPI.Services
             _config = configuration;
             _httpClient = new HttpClient()
             {
-                Timeout = TimeSpan.FromSeconds(6000)
+                Timeout = TimeSpan.FromSeconds(6000),
             };
             _serializationHelper = serializationHelper;
         }
@@ -66,7 +66,7 @@ namespace NetBungieAPI.Services
             var requestMessage = new HttpRequestMessage()
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri(_authorizationTokenEndpoint),
+                RequestUri = new Uri(AuthorizationTokenEndpoint),
                 Content = new StringContent(messageContent)
             };
             requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Basic", authValue);
@@ -87,7 +87,7 @@ namespace NetBungieAPI.Services
             var requestMessage = new HttpRequestMessage()
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri(_authorizationTokenEndpoint),
+                RequestUri = new Uri(AuthorizationTokenEndpoint),
                 Content = new StringContent($"grant_type=refresh_token&code={oldToken.RefreshToken}")
             };
             requestMessage.Headers.Authorization =
@@ -108,7 +108,7 @@ namespace NetBungieAPI.Services
 
         public string GetAuthLink(int clientId, string state)
         {
-            var link = $"{_authorizationEndpoint}?client_id={clientId}&response_type=code&state={state}";
+            var link = $"{AuthorizationEndpoint}?client_id={clientId}&response_type=code&state={state}";
             return link;
         }
 
@@ -119,7 +119,7 @@ namespace NetBungieAPI.Services
         /// <returns></returns>
         public async ValueTask<string> DownloadJSONDataFromCDNAsync(string url)
         {
-            var response = await _httpClient.GetAsync(_cdnEndpoint + url);
+            var response = await _httpClient.GetAsync(CdnEndpoint + url);
             if (response.IsSuccessStatusCode)
                 return await response.Content.ReadAsStringAsync();
             else
@@ -134,7 +134,7 @@ namespace NetBungieAPI.Services
         public async ValueTask<Image> DownloadImageFromCDNAsync(string url)
         {
             Image image = null;
-            var response = await _httpClient.GetAsync(_cdnEndpoint + url);
+            var response = await _httpClient.GetAsync(CdnEndpoint + url);
             if (response.IsSuccessStatusCode)
             {
                 await using var stream = await response.Content.ReadAsStreamAsync();
@@ -159,7 +159,7 @@ namespace NetBungieAPI.Services
             ImageFormat format)
         {
             Image image = null;
-            var response = await _httpClient.GetAsync(_cdnEndpoint + url);
+            var response = await _httpClient.GetAsync(CdnEndpoint + url);
             if (response.IsSuccessStatusCode)
             {
                 await using var stream = await response.Content.ReadAsStreamAsync();
@@ -232,7 +232,7 @@ namespace NetBungieAPI.Services
         public async Task DownloadFileStreamFromCDNAsync(string query, string savePath)
         {
             using var response =
-                await _httpClient.GetAsync(_cdnEndpoint + query, HttpCompletionOption.ResponseHeadersRead);
+                await _httpClient.GetAsync(CdnEndpoint + query, HttpCompletionOption.ResponseHeadersRead);
             await using var stream = await response.Content.ReadAsStreamAsync();
             await using Stream streamToWriteTo = File.Open(savePath, FileMode.Create);
             await stream.CopyToAsync(streamToWriteTo);
@@ -243,7 +243,7 @@ namespace NetBungieAPI.Services
         {
             var finalQuery = StringBuilderPool
                 .GetBuilder(token)
-                .Append(_platformEndpoint)
+                .Append(PlatformEndpoint)
                 .Append(query)
                 .Build();
             _logger.Log($"Calling api: {finalQuery}", LogType.Debug);
@@ -259,7 +259,7 @@ namespace NetBungieAPI.Services
         {
             var finalQuery = StringBuilderPool
                 .GetBuilder(token)
-                .Append(_platformEndpoint)
+                .Append(PlatformEndpoint)
                 .Append(query)
                 .Build();
             _logger.Log($"Calling api: {finalQuery}", LogType.Debug);
@@ -275,7 +275,7 @@ namespace NetBungieAPI.Services
         {
             var finalQuery = StringBuilderPool
                 .GetBuilder(token)
-                .Append(_statsEndpoint)
+                .Append(StatsEndpoint)
                 .Append(query)
                 .Build();
             _logger.Log($"Calling api: {finalQuery}", LogType.Debug);

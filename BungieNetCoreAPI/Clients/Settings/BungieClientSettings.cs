@@ -15,7 +15,6 @@ namespace NetBungieAPI.Clients.Settings
         public ClientIdentificationSettings IdentificationSettings { get; } = ClientIdentificationSettings.Default;
         public ManifestVersionSettings ManifestVersionSettings { get; } = ManifestVersionSettings.Default;
         public DefinitionLoadingSettings DefinitionLoadingSettings { get; } = DefinitionLoadingSettings.Default;
-        public LocalFileSettings LocalFileSettings { get; } = LocalFileSettings.Default;
         internal InternalSettings InternalSettings { get; } = InternalSettings.Default;
 
 
@@ -59,23 +58,6 @@ namespace NetBungieAPI.Clients.Settings
         public BungieClientSettings SpecifyApplicationScopes(ApplicationScopes scopes)
         {
             IdentificationSettings.ApplicationScopes = scopes;
-            return this;
-        }
-
-        /// <summary>
-        /// Specifies path to local manifest files
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentException"></exception>
-        /// <exception cref="Exception"></exception>
-        public BungieClientSettings UseLocalManifestFiles(string path)
-        {
-            if (string.IsNullOrWhiteSpace(path))
-                throw new ArgumentException("Path can't be empty");
-            if (!Directory.Exists(path))
-                throw new Exception("Directory doesn't exist.");
-            LocalFileSettings.VersionsRepositoryPath = path;
             return this;
         }
 
@@ -194,6 +176,12 @@ namespace NetBungieAPI.Clients.Settings
             ManifestVersionSettings.KeepOldVersions = keepOldVersions;
             return this;
         }
+
+        public BungieClientSettings UseDefaultProvider(string filePath)
+        {
+            DefinitionLoadingSettings.UsedProvider = new SqliteDefinitionProvider(filePath);
+            return this;
+        }
         
         internal void AfterConfigurated()
         {
@@ -204,7 +192,10 @@ namespace NetBungieAPI.Clients.Settings
                 .Keys
                 .Where(x => !excludedFromLoad.Contains(x))
                 .ToArray();
-            DefinitionLoadingSettings.UsedProvider ??= new SqliteDefinitionProvider();
+            if (DefinitionLoadingSettings.UsedProvider is null)
+                throw new Exception("Add UseDefaultProvider to config if you want to use default provider.");
         }
+        
+        
     }
 }

@@ -24,7 +24,7 @@ namespace NetBungieAPI.Services
             },
             NumberHandling = JsonNumberHandling.AllowReadingFromString,
             WriteIndented = true,
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
         };
 
         public async Task<object> DeserializeAsync(byte[] data, Type type)

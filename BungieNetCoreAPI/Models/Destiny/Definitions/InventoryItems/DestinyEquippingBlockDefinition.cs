@@ -13,7 +13,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// If the item is part of a gearset, this is a reference to that gearset item.
         /// </summary>
         [JsonPropertyName("gearsetItemHash")]
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> GearsetItem { get; init; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> GearsetItem { get; init; } = DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
         /// <summary>
         /// Ammo type used by a weapon is no longer determined by the bucket in which it is contained. If the item has an ammo type - i.e. if it is a weapon - this will be the type of ammunition expected.
         /// </summary>
@@ -33,7 +33,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// An equipped item *must* be equipped in an Equipment Slot.
         /// </summary>
         [JsonPropertyName("equipmentSlotTypeHash")]
-        public DefinitionHashPointer<DestinyEquipmentSlotDefinition> EquipmentSlotType { get; init; }
+        public DefinitionHashPointer<DestinyEquipmentSlotDefinition> EquipmentSlotType { get; init; } = DefinitionHashPointer<DestinyEquipmentSlotDefinition>.Empty;
         [JsonPropertyName("equippingSoundHash")]
         public uint EquippingSoundHash { get; init; }
         [JsonPropertyName("hornSoundHash")]

@@ -52,7 +52,7 @@ namespace NetBungieAPI.Services
 
         public async ValueTask<bool> HasUpdates()
         {
-            var manifests = FindManifestsAt(_configuration.Settings.LocalFileSettings.VersionsRepositoryPath);
+            var manifests = FindManifestsAt("");//_configuration.Settings.LocalFileSettings.VersionsRepositoryPath);
             _manifestsCache = manifests;
             var latestLoadedDate = _manifestsCache.Max(x => x.VersionDate);
             _currentUsedManifest = _manifestsCache.LastOrDefault(x => x.VersionDate.Equals(latestLoadedDate));
@@ -96,8 +96,8 @@ namespace NetBungieAPI.Services
         {
             if (_latestVersionApiResponse == null)
                 _latestVersionApiResponse = await _d2Api.GetDestinyManifest();
-            await DownloadManifestFilesLocally(_latestVersionApiResponse.Response,
-                _configuration.Settings.LocalFileSettings.VersionsRepositoryPath, true);
+            //await DownloadManifestFilesLocally(_latestVersionApiResponse.Response,
+                //_configuration.Settings.LocalFileSettings.VersionsRepositoryPath, true);
         }
 
         public async Task DownloadManifestFilesLocally(DestinyManifest manifest, string path, bool unpackSQLite = true,

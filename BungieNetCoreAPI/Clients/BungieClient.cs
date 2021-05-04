@@ -47,13 +47,6 @@ namespace NetBungieAPI.Clients
             await _versionControl.DownloadLastVersion();
         }
 
-        public void LoadDefinitions()
-        {
-            Repository.Initialize(_configuration.Settings.DefinitionLoadingSettings.Locales);
-            Repository.LoadAllDataFromDisk(_configuration.Settings.LocalFileSettings.VersionsRepositoryPath,
-                _versionControl.CurrentUsedManifest);
-        }
-
         public void AddListener(NewMessageEvent eventHandler)
         {
             if (_logListener != null)

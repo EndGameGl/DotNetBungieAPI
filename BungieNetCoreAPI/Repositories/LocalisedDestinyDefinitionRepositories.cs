@@ -188,5 +188,13 @@ namespace NetBungieAPI.Repositories
         {
             return _localisedRepositories[locale].AddDefinition(definitionType, definition);
         }
+
+        public void PremapPointers()
+        {
+            foreach (var repository in _localisedRepositories)
+            {
+                repository.Value.PremapPointers();
+            }
+        }
     }
 }

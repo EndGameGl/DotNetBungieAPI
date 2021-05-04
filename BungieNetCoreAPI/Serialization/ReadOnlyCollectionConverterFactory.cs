@@ -41,15 +41,11 @@ namespace NetBungieAPI.Serialization
 
         private class ReadOnlyCollectionConverter<T> : JsonConverter<ReadOnlyCollection<T>>
         {
-            //private readonly Type _valueType;
-            //private readonly JsonConverter<T> _valueConverter;
             private readonly JsonSerializerOptions _options;
             public override bool HandleNull => true;
             public ReadOnlyCollectionConverter(JsonSerializerOptions options)
             {
-                //_valueType = typeof(T);
                 _options = options;
-                //_valueConverter = _options.GetConverter(_valueType) as JsonConverter<T>;
             }
             public override ReadOnlyCollection<T> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {

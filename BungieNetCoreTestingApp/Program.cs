@@ -3,6 +3,8 @@ using NetBungieAPI.Clients;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Models.Trending;
@@ -66,19 +68,14 @@ namespace NetBungieAPI.TestProject
                     .AddApiKey(key: args[0])
                     .AddClientIdAndSecret(id: int.Parse(args[1]), secret: args[2])
                     .SpecifyApplicationScopes(ApplicationScopes.ReadUserData | ApplicationScopes.AdminGroups)
-                    .UseLocalManifestFiles(@"H:\BungieNetCoreAPIRepository\Manifests")
+                    .UseDefaultProvider(@"H:\BungieNetCoreAPIRepository\Manifests")
                     .EnableLogging((mes) => Console.WriteLine(mes))
                     .PremapDefinitions()
-                    //.UseDefinitionProvider(new JsonFileDefinitionProvider())
                     .LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
                     .SetLocales(new BungieLocales[] {BungieLocales.EN})
-                    .SetUpdateBehaviour(false, true);
+                    .SetUpdateBehaviour(true, false);
             });
             sw.Stop();
-
-            var json = await _bungieClient.Repository.Provider.ReadDefinitionAsJson(
-                DefinitionsEnum.DestinyInventoryItemDefinition, 3836861464, BungieLocales.EN);
-
             Console.WriteLine($"Startup in: {sw.ElapsedMilliseconds} ms");
             // var authorizationLink = _bungieClient.GetAuthorizationLink();
             //
@@ -87,6 +84,7 @@ namespace NetBungieAPI.TestProject
             // _bungieClient.ReceiveCode(Console.ReadLine(), code);
             //
             // var token = await _bungieClient.GetAuthorizationToken(code);
+
             await Task.Delay(Timeout.Infinite);
         }
 

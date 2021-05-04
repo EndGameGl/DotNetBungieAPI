@@ -84,6 +84,11 @@ namespace NetBungieAPI.Models.Destiny.Config
             }
             else
                 return false;
-        }      
+        }
+
+        public bool Equals(DestinyManifest manifest)
+        {
+            return this.Version == manifest.Version;
+        }
     }
 }

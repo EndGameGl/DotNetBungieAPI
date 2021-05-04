@@ -17,7 +17,6 @@ namespace NetBungieAPI.Clients
         Task<AuthorizationTokenData> RenewAuthorizationToken(AuthorizationTokenData oldToken);
         ValueTask<bool> CheckUpdates();
         Task DownloadLatestManifestLocally();
-        void LoadDefinitions();
         void SetAuthToken(AuthorizationTokenData token);
     }
 }

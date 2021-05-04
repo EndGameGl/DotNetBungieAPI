@@ -24,7 +24,6 @@ namespace NetBungieAPI.Repositories
         bool TryGetDestinyDefinition<T>(DefinitionsEnum definitionType, uint key, BungieLocales locale, out T definition) where T : IDestinyDefinition;
         bool TryGetDestinyHistoricalDefinition(BungieLocales locale, string key,
             out DestinyHistoricalStatsDefinition statsDefinition);
-
         bool AddDestinyHistoricalDefinition(BungieLocales locale, DestinyHistoricalStatsDefinition statsDefinition);
         IEnumerable<T> Search<T>(DefinitionsEnum definitionType, BungieLocales locale, Func<IDestinyDefinition, bool> predicate) where T : IDestinyDefinition;
         IEnumerable<T> GetAll<T>(DefinitionsEnum definitionType, BungieLocales locale) where T : IDestinyDefinition;
@@ -36,5 +35,7 @@ namespace NetBungieAPI.Repositories
 
         bool AddDefinition(DefinitionsEnum definitionType, BungieLocales locale,
             IDestinyDefinition definition);
+
+        void PremapPointers();
     }
 }
