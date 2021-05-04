@@ -16,7 +16,6 @@ It's more or less done and usable for data analysis and client-side usage (for e
  - Logger support to take a look of what's going inside
  - IBungieApiAccess interface for API methods
  - IDeepEquatable<T> interface is implemented on all definitions, so they can be compared
- - DatabaseComparer class can be used to compare 2 definition databases
  - OAuth2 token creation and storage
  - All API methods coverage
 
