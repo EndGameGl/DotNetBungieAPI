@@ -40,17 +40,8 @@ namespace NetBungieAPI.Services
             {
                 Timeout = TimeSpan.FromSeconds(6000),
             };
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _serializationHelper = serializationHelper;
-        }
-
-        public void AddAcceptHeader(string headerValue)
-        {
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(headerValue));
-        }
-
-        public void AddHeader(string header, string headerValue)
-        {
-            _httpClient.DefaultRequestHeaders.Add(header, headerValue);
         }
 
         public async Task<AuthorizationTokenData> GetAuthorizationToken(string code, string authValue)
@@ -119,7 +110,8 @@ namespace NetBungieAPI.Services
         /// <returns></returns>
         public async ValueTask<string> DownloadJSONDataFromCDNAsync(string url)
         {
-            var response = await _httpClient.GetAsync(CdnEndpoint + url);
+            var message = CreateGetMessage(CdnEndpoint + url, true);
+            var response = await _httpClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
                 return await response.Content.ReadAsStringAsync();
             else
@@ -188,7 +180,7 @@ namespace NetBungieAPI.Services
             return image;
         }
 
-        private HttpRequestMessage CreateGetMessage(string uri, string authToken = null)
+        private HttpRequestMessage CreateGetMessage(string uri, bool omitApiKey = false, string authToken = null)
         {
             var requestMessage = new HttpRequestMessage()
             {
@@ -197,13 +189,11 @@ namespace NetBungieAPI.Services
             };
 
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            requestMessage.Headers.TryAddWithoutValidation("X-API-Key", _config.Settings.IdentificationSettings.ApiKey);
-            //requestMessage.Headers.TryAddWithoutValidation("cache-control", "no-cache");
-            // requestMessage.Headers.TryAddWithoutValidation("user-agent",
-            //     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36");
+            if (omitApiKey == false)
+                requestMessage.Headers.TryAddWithoutValidation("X-API-Key", _config.Settings.IdentificationSettings.ApiKey);
             if (!string.IsNullOrEmpty(authToken))
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
-
+            _logger.Log($"Created http get message for: {requestMessage.RequestUri}", LogType.Debug);
             return requestMessage;
         }
 
@@ -247,7 +237,7 @@ namespace NetBungieAPI.Services
                 .Append(query)
                 .Build();
             _logger.Log($"Calling api: {finalQuery}", LogType.Debug);
-            var request = CreateGetMessage(finalQuery, authToken);
+            var request = CreateGetMessage(finalQuery, false, authToken);
             var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
             await using var stream = await response.Content.ReadAsStreamAsync(token);
             var bungieResponse = await _serializationHelper.DeserializeAsync<BungieResponse<T>>(stream);
@@ -279,7 +269,7 @@ namespace NetBungieAPI.Services
                 .Append(query)
                 .Build();
             _logger.Log($"Calling api: {finalQuery}", LogType.Debug);
-            var request = CreateGetMessage(finalQuery, authToken);
+            var request = CreateGetMessage(finalQuery, false, authToken);
             var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
             await using var stream = await response.Content.ReadAsStreamAsync(token);
             var bungieResponse = await _serializationHelper.DeserializeAsync<BungieResponse<T>>(stream);

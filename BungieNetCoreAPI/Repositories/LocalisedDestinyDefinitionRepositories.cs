@@ -118,7 +118,7 @@ namespace NetBungieAPI.Repositories
 
         public IEnumerable<T> GetAll<T>(BungieLocales locale = BungieLocales.EN) where T : IDestinyDefinition
         {
-            return _localisedRepositories[locale].GetAll<T>(_assemblyData.TypeToEnumMapping[typeof(T)]);
+            return _localisedRepositories[locale].GetAll<T>(DefinitionHashPointer<T>.EnumValue);
         }
 
         /// <summary>

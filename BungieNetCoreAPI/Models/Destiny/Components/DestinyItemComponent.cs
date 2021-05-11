@@ -10,31 +10,36 @@ namespace NetBungieAPI.Models.Destiny.Components
 {
     public sealed record DestinyItemComponent : DestinyItemQuantity
     {
-        [JsonPropertyName("bindStatus")]
-        public ItemBindStatus BindStatus { get; init; }
-        [JsonPropertyName("location")]
-        public ItemLocation Location { get; init; }
+        [JsonPropertyName("bindStatus")] public ItemBindStatus BindStatus { get; init; }
+        [JsonPropertyName("location")] public ItemLocation Location { get; init; }
+
         [JsonPropertyName("bucketHash")]
-        public DefinitionHashPointer<DestinyInventoryBucketDefinition> Bucket { get; init; } = DefinitionHashPointer<DestinyInventoryBucketDefinition>.Empty;
-        [JsonPropertyName("transferStatus")]
-        public TransferStatuses TransferStatus { get; init; }
-        [JsonPropertyName("lockable")]
-        public bool IsLockable { get; init; }
-        [JsonPropertyName("state")]
-        public ItemState State { get; init; }
+        public DefinitionHashPointer<DestinyInventoryBucketDefinition> Bucket { get; init; } =
+            DefinitionHashPointer<DestinyInventoryBucketDefinition>.Empty;
+
+        [JsonPropertyName("transferStatus")] public TransferStatuses TransferStatus { get; init; }
+        [JsonPropertyName("lockable")] public bool IsLockable { get; init; }
+        [JsonPropertyName("state")] public ItemState State { get; init; }
+
         [JsonPropertyName("overrideStyleItemHash")]
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> OverrideStyleItem { get; init; } = DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
-        [JsonPropertyName("expirationDate")]
-        public DateTime? ExpirationDate { get; init; }
-        [JsonPropertyName("isWrapper")]
-        public bool IsWrapper { get; init; }
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> OverrideStyleItem { get; init; } =
+            DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
+
+        [JsonPropertyName("expirationDate")] public DateTime? ExpirationDate { get; init; }
+        [JsonPropertyName("isWrapper")] public bool IsWrapper { get; init; }
+
         [JsonPropertyName("tooltipNotificationIndexes")]
-        public ReadOnlyCollection<int> TooltipNotificationIndexes { get; init; } = Defaults.EmptyReadOnlyCollection<int>();
+        public ReadOnlyCollection<int> TooltipNotificationIndexes { get; init; } =
+            Defaults.EmptyReadOnlyCollection<int>();
+
         [JsonPropertyName("metricHash")]
-        public DefinitionHashPointer<DestinyMetricDefinition> Metric { get; init; } = DefinitionHashPointer<DestinyMetricDefinition>.Empty;
-        [JsonPropertyName("metricObjective")]
-        public DestinyObjectiveProgress MetricObjective { get; init; }
-        [JsonPropertyName("versionNumber")]
-        public int? VersionNumber { get; init; }
+        public DefinitionHashPointer<DestinyMetricDefinition> Metric { get; init; } =
+            DefinitionHashPointer<DestinyMetricDefinition>.Empty;
+
+        [JsonPropertyName("metricObjective")] public DestinyObjectiveProgress MetricObjective { get; init; }
+        [JsonPropertyName("versionNumber")] public int? VersionNumber { get; init; }
+
+        [JsonPropertyName("itemValueVisibility")]
+        public ReadOnlyCollection<bool> ItemValueVisibility { get; init; } = Defaults.EmptyReadOnlyCollection<bool>();
     }
 }

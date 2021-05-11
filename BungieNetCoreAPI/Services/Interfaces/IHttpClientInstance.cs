@@ -11,8 +11,6 @@ namespace NetBungieAPI.Services.Interfaces
 {
     public interface IHttpClientInstance
     {
-        void AddAcceptHeader(string headerValue);
-        void AddHeader(string header, string headerValue);
         Task<AuthorizationTokenData> GetAuthorizationToken(string code, string authValue);
         Task<AuthorizationTokenData> RenewAuthorizationToken(AuthorizationTokenData oldToken);
         string GetAuthLink(int clientId, string state);

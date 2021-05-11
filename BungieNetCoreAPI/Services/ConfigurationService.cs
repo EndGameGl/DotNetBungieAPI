@@ -15,9 +15,6 @@ namespace NetBungieAPI.Services
         public void Configure(Action<BungieClientSettings> configure)
         {
             configure(Settings);
-            var httpClient = StaticUnityContainer.GetHTTPClient();
-            httpClient.AddAcceptHeader("application/json");
-            httpClient.AddHeader("X-API-Key", Settings.IdentificationSettings.ApiKey);
         }
     }
 }

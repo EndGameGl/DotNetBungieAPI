@@ -6,13 +6,20 @@ namespace NetBungieAPI.Models.Destiny.Components
 {
     public sealed record DestinyRecordComponent
     {
-        [JsonPropertyName("state")]
-        public DestinyRecordState State { get; init; }
+        [JsonPropertyName("state")] public DestinyRecordState State { get; init; }
+
         [JsonPropertyName("objectives")]
-        public ReadOnlyCollection<DestinyObjectiveProgress> Objectives { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyObjectiveProgress>();
+        public ReadOnlyCollection<DestinyObjectiveProgress> Objectives { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyObjectiveProgress>();
+
         [JsonPropertyName("intervalObjectives")]
-        public ReadOnlyCollection<DestinyObjectiveProgress> IntervalObjectives { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyObjectiveProgress>();
+        public ReadOnlyCollection<DestinyObjectiveProgress> IntervalObjectives { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyObjectiveProgress>();
+
         [JsonPropertyName("intervalsRedeemedCount")]
         public int IntervalsRedeemedCount { get; init; }
+
+        [JsonPropertyName("rewardVisibilty")]
+        public ReadOnlyCollection<bool> RewardVisibilty { get; init; } = Defaults.EmptyReadOnlyCollection<bool>();
     }
 }

@@ -3,6 +3,7 @@ using NetBungieAPI.Clients;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading;
@@ -10,6 +11,8 @@ using System.Threading.Tasks;
 using NetBungieAPI.Models.Trending;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
+using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
+using NetBungieAPI.Repositories;
 
 namespace NetBungieAPI.TestProject
 {
@@ -77,13 +80,10 @@ namespace NetBungieAPI.TestProject
             });
             sw.Stop();
             Console.WriteLine($"Startup in: {sw.ElapsedMilliseconds} ms");
-            // var authorizationLink = _bungieClient.GetAuthorizationLink();
-            //
-            // var code = Console.ReadLine();
-            //
-            // _bungieClient.ReceiveCode(Console.ReadLine(), code);
-            //
-            // var token = await _bungieClient.GetAuthorizationToken(code);
+
+            var items = _bungieClient
+                .Repository
+                .GetGroupItemsBySeason(BungieLocales.EN);
 
             await Task.Delay(Timeout.Infinite);
         }

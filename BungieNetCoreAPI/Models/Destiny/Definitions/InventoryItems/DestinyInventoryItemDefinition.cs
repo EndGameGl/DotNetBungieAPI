@@ -10,6 +10,7 @@ using NetBungieAPI.Models.Destiny.Definitions.Seasons;
 using NetBungieAPI.Models.Links;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.Traits;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
@@ -87,7 +88,11 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         [JsonPropertyName("itemTypeDisplayName")]
         public string ItemTypeDisplayName { get; init; }
 
-        [JsonPropertyName("flavorText")] public string FlavorText { get; init; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonPropertyName("flavorText")]
+        public string FlavorText { get; init; }
 
         /// <summary>
         /// A string identifier that the game's UI uses to determine how the item should be rendered in inventory screens and the like. This could really be anything - at the moment, we don't have the time to really breakdown and maintain all the possible strings this could be, partly because new ones could be added ad hoc. But if you want to use it to dictate your own UI, or look for items with a certain display style, go for it!
@@ -216,7 +221,11 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         [JsonPropertyName("sockets")]
         public DestinyItemSocketBlockDefinition Sockets { get; init; }
 
-        [JsonPropertyName("summary")] public DestinyItemSummaryBlockDefinition Summary { get; init; }
+        /// <summary>
+        /// Summary data about the item.
+        /// </summary>
+        [JsonPropertyName("summary")]
+        public DestinyItemSummaryBlockDefinition Summary { get; init; }
 
         /// <summary>
         /// If the item has a Talent Grid, this will be non-null and the properties of the grid defined herein. Note that, while many items still have talent grids, the only ones with meaningful Nodes still on them will be Subclass/"Build" items.
@@ -238,6 +247,9 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         public ReadOnlyCollection<DestinyItemPerkEntryDefinition> Perks { get; init; } =
             Defaults.EmptyReadOnlyCollection<DestinyItemPerkEntryDefinition>();
 
+        /// <summary>
+        /// If the item has any related Lore (DestinyLoreDefinition), this will be it.
+        /// </summary>
         [JsonPropertyName("loreHash")]
         public DefinitionHashPointer<DestinyLoreDefinition> Lore { get; init; } =
             DefinitionHashPointer<DestinyLoreDefinition>.Empty;
@@ -249,60 +261,160 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         public DefinitionHashPointer<DestinyInventoryItemDefinition> SummaryItem { get; init; } =
             DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
 
+        /// <summary>
+        /// If any animations were extracted from game content for this item, these will be the definitions of those animations.
+        /// </summary>
         [JsonPropertyName("animations")]
         public ReadOnlyCollection<DestinyAnimationReference> Animations { get; init; } =
             Defaults.EmptyReadOnlyCollection<DestinyAnimationReference>();
 
-        [JsonPropertyName("allowActions")] public bool AllowActions { get; init; }
+        /// <summary>
+        /// BNet may forbid the execution of actions on this item via the API. If that is occurring, allowActions will be set to false.
+        /// </summary>
+        [JsonPropertyName("allowActions")]
+        public bool AllowActions { get; init; }
 
+        /// <summary>
+        /// If we added any help or informational URLs about this item, these will be those links.
+        /// </summary>
         [JsonPropertyName("links")]
         public ReadOnlyCollection<HyperlinkReference> Links { get; init; } =
             Defaults.EmptyReadOnlyCollection<HyperlinkReference>();
 
+        /// <summary>
+        /// The boolean will indicate to us (and you!) whether something *could* happen when you transfer this item from the Postmaster that might be considered a "destructive" action.
+        /// <para/>
+        /// It is not feasible currently to tell you (or ourselves!) in a consistent way whether this *will* actually cause a destructive action, so we are playing it safe: if it has the potential to do so, we will not allow it to be transferred from the Postmaster by default. You will need to check for this flag before transferring an item from the Postmaster, or else you'll end up receiving an error.
+        /// </summary>
         [JsonPropertyName("doesPostmasterPullHaveSideEffects")]
         public bool DoesPostmasterPullHaveSideEffects { get; init; }
 
-        [JsonPropertyName("nonTransferrable")] public bool NonTransferrable { get; init; }
+        /// <summary>
+        /// The intrinsic transferability of an item.
+        /// <para/>
+        /// I hate that this boolean is negative - but there's a reason.
+        /// <para/>
+        /// Just because an item is intrinsically transferrable doesn't mean that it can be transferred, and we don't want to imply that this is the only source of that transferability.
+        /// </summary>
+        [JsonPropertyName("nonTransferrable")]
+        public bool NonTransferrable { get; init; }
 
+        /// <summary>
+        /// BNet attempts to make a more formal definition of item "Categories", as defined by DestinyItemCategoryDefinition. This is a list of all Categories that we were able to algorithmically determine that this item is a member of. (for instance, that it's a "Weapon", that it's an "Auto Rifle", etc...)
+        /// </summary>
         [JsonPropertyName("itemCategoryHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>> ItemCategories { get; init; } =
             Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>>();
 
-        [JsonPropertyName("specialItemType")] public SpecialItemType SpecialItemType { get; init; }
-        [JsonPropertyName("itemType")] public DestinyItemType ItemType { get; init; }
-        [JsonPropertyName("itemSubType")] public DestinyItemSubType ItemSubType { get; init; }
-        [JsonPropertyName("classType")] public DestinyClass ClassType { get; init; }
-        [JsonPropertyName("breakerType")] public DestinyBreakerType BreakerTypeEnumValue { get; init; }
+        /// <summary>
+        /// In Destiny 1, we identified some items as having particular categories that we'd like to know about for various internal logic purposes. These are defined in SpecialItemType, and while these days the ItemCategories are the preferred way of identifying types, we have retained this enum for its convenience.
+        /// </summary>
+        [JsonPropertyName("specialItemType")]
+        public SpecialItemType SpecialItemType { get; init; }
 
+        /// <summary>
+        /// A value indicating the "base" the of the item. This enum is a useful but dramatic oversimplification of what it means for an item to have a "Type". Still, it's handy in many situations.
+        /// <para/>
+        /// ItemCategories are the preferred way of identifying types, we have retained this enum for its convenience.
+        /// </summary>
+        [JsonPropertyName("itemType")]
+        public DestinyItemType ItemType { get; init; }
+
+        /// <summary>
+        /// A value indicating the "sub-type" of the item. For instance, where an item might have an ItemType value "Weapon", this will be something more specific like "Auto Rifle".
+        ///<para/>
+        /// ItemCategories are the preferred way of identifying types, we have retained this enum for its convenience.
+        /// </summary>
+        [JsonPropertyName("itemSubType")]
+        public DestinyItemSubType ItemSubType { get; init; }
+
+        /// <summary>
+        /// If we find item to be restricted in such a way, we set this ClassType property to match the class' enumeration value so that users can easily identify class restricted items.
+        /// </summary>
+        [JsonPropertyName("classType")]
+        public DestinyClass ClassType { get; init; }
+
+        /// <summary>
+        /// Some weapons and plugs can have a "Breaker Type": a special ability that works sort of like damage type vulnerabilities. This is (almost?) always set on items by plugs.
+        /// </summary>
+        [JsonPropertyName("breakerType")]
+        public DestinyBreakerType BreakerTypeEnumValue { get; init; }
+
+        /// <summary>
+        /// Since we also have a breaker type definition, this is the definition for that breaker type.
+        /// </summary>
         [JsonPropertyName("breakerTypeHash")]
         public DefinitionHashPointer<DestinyBreakerTypeDefinition> BreakerType { get; init; } =
             DefinitionHashPointer<DestinyBreakerTypeDefinition>.Empty;
 
-        [JsonPropertyName("equippable")] public bool Equippable { get; init; }
+        /// <summary>
+        /// If true, then you will be allowed to equip the item if you pass its other requirements.
+        ///<para/>
+        ///This being false means that you cannot equip the item under any circumstances.
+        /// </summary>
+        [JsonPropertyName("equippable")]
+        public bool Equippable { get; init; }
 
+        /// <summary>
+        /// This field will return all of the possible damage types that are available to the weapon by default.
+        /// </summary>
         [JsonPropertyName("damageTypeHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyDamageTypeDefinition>> DamageTypes { get; init; } =
             Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyDamageTypeDefinition>>();
 
+        /// <summary>
+        /// This is the list of all damage types that we know ahead of time the item can take on. Unfortunately, this does not preclude the possibility of something funky happening to give the item a damage type that cannot be predicted beforehand: for example, if some designer decides to create arbitrary non-reusable plugs that cause damage type to change.
+        ///<para/>
+        ///This damage type prediction will only use the following to determine potential damage types:
+        ///<para/>
+        ///- Intrinsic perks
+        ///<para/>
+        ///- Talent Node perks
+        ///<para/>
+        ///- Known, reusable plugs for sockets
+        /// </summary>
         [JsonPropertyName("damageTypes")]
         public ReadOnlyCollection<DamageType> DamageTypeEnumValues { get; init; } =
             Defaults.EmptyReadOnlyCollection<DamageType>();
 
+        /// <summary>
+        /// If the item has a damage type that could be considered to be default, it will be populated here.
+        /// </summary>
         [JsonPropertyName("defaultDamageType")]
         public DamageType DefaultDamageTypeEnumValue { get; init; }
 
+        /// <summary>
+        /// Similar to DefaultDamageType, but represented as DestinyDamageTypeDefinition.
+        /// </summary>
         [JsonPropertyName("defaultDamageTypeHash")]
         public DefinitionHashPointer<DestinyDamageTypeDefinition> DefaultDamageType { get; init; } =
             DefinitionHashPointer<DestinyDamageTypeDefinition>.Empty;
 
+        /// <summary>
+        /// If this item is related directly to a Season of Destiny, this is the identifier for that season.
+        /// </summary>
         [JsonPropertyName("seasonHash")]
         public DefinitionHashPointer<DestinySeasonDefinition> Season { get; init; } =
             DefinitionHashPointer<DestinySeasonDefinition>.Empty;
 
-        [JsonPropertyName("isWrapper")] public bool IsWrapper { get; init; }
+        /// <summary>
+        /// If true, this is a dummy vendor-wrapped item template. Items purchased from Eververse will be "wrapped" by one of these items so that we can safely provide refund capabilities before the item is "unwrapped".
+        /// </summary>
+        [JsonPropertyName("isWrapper")]
+        public bool IsWrapper { get; init; }
 
+        /// <summary>
+        /// Traits are metadata tags applied to this item. For example: armor slot, weapon type, foundry, faction, etc. These IDs come from the game and don't map to any content, but should still be useful.
+        /// </summary>
         [JsonPropertyName("traitIds")]
         public ReadOnlyCollection<string> TraitIds { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
+
+        /// <summary>
+        /// These are the corresponding trait definitions for the entries in traitIds.
+        /// </summary>
+        [JsonPropertyName("traitHashes")]
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>();
 
         [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
         [JsonPropertyName("hash")] public uint Hash { get; init; }

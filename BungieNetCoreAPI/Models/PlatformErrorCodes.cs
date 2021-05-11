@@ -1,4 +1,6 @@
-﻿namespace NetBungieAPI.Models
+﻿using System;
+
+namespace NetBungieAPI.Models
 {
     public enum PlatformErrorCodes
     {
@@ -16,6 +18,7 @@
         DataNotFound = 11,
         InsufficientPrivileges = 12,
         Duplicate = 13,
+        [Obsolete("Deprecated, please do not check for this value anywhere.")]
         UnknownSqlResult = 14,
         ValidationError = 15,
         ValidationMissingFieldError = 16,
@@ -391,6 +394,8 @@
         ActivityLoggingDisabled = 707,
         ClanRequiresExistingDestinyAccount = 750,
         ClanNameRestricted = 751,
+        ClanCreationBan = 752,
+        ClanCreationTenureRequirementsNotMet = 753,
         ItemAlreadyFollowed = 801,
         ItemNotFollowed = 802,
         CannotFollowSelf = 803,
@@ -438,6 +443,9 @@
         PsnApiAccountAttributeMissing = 1237,
         PsnApiNoPermission = 1238,
         PsnApiTargetUserBlocked = 1239,
+        PsnApiJwksMissing = 1240,
+        PsnApiJwtMalformedHeader = 1241,
+        PsnApiJwtMalformedPayload = 1242,
         XblExSystemDisabled = 1300,
         XblExUnknownError = 1301,
         XblApiErrorWebException = 1302,
@@ -500,6 +508,9 @@
         DestinyVersionIncompatibility = 1631,
         DestinyItemAlreadyInInventory = 1632,
         DestinyBucketNotFound = 1633,
+        /// <summary>
+        /// Note: This is one of those holdovers from Destiny 1. We didn't change the enum because I am lazy, but in Destiny 2 this would read "DestinyCharacterNotInSocialSpace"
+        /// </summary>
         DestinyCharacterNotInTower = 1634,
         DestinyCharacterNotLoggedIn = 1635,
         DestinyDefinitionsNotLoaded = 1636,
@@ -554,6 +565,7 @@
         DestinyClaimsRequiredLevelNotMet = 1685,
         DestinyClaimsInvalidState = 1686,
         DestinyNotEnoughRoomForMultipleRewards = 1687,
+        DestinyDirectBabelClientTimeout = 1688,
         FbInvalidRequest = 1800,
         FbRedirectMismatch = 1801,
         FbAccessDenied = 1802,
@@ -728,6 +740,9 @@
         ClanFireteamExpired = 3026,
         ClanFireteamInvalidAuthProvider = 3027,
         ClanFireteamInvalidAuthProviderXuid = 3028,
+        ClanFireteamThrottle = 3029,
+        ClanFireteamTooManyOpenScheduledFireteams = 3030,
+        ClanFireteamCannotReopenScheduledFireteams = 3031,
         CrossSaveOverriddenAccountNotFound = 3200,
         CrossSaveTooManyOverriddenPlatforms = 3201,
         CrossSaveNoOverriddenPlatforms = 3202,
@@ -767,6 +782,22 @@
         PCMigrationEntitlementTransferFailed = 3413,
         PCMigrationCannotStompClanFounder = 3414,
         UnsupportedBrowser = 3500,
-        StadiaAccountRequired = 3600
+        StadiaAccountRequired = 3600,
+        ErrorPhoneValidationTooManyUses = 3702,
+        ErrorPhoneValidationNoAssociatedPhone = 3703,
+        ErrorPhoneValidationCodeInvalid = 3705,
+        ErrorPhoneValidationBanned = 3706,
+        ErrorPhoneValidationCodeTooRecentlySent = 3707,
+        ErrorPhoneValidationCodeExpired = 3708,
+        ErrorPhoneValidationInvalidNumberType = 3709,
+        ErrorPhoneValidationCodeTooRecentlyChecked = 3710,
+        ApplePushErrorUnknown = 3800,
+        ApplePushErrorNull = 3801,
+        ApplePushErrorTimeout = 3802,
+        ApplePushBadRequest = 3803,
+        ApplePushFailedAuth = 3804,
+        ApplePushThrottled = 3805,
+        ApplePushServiceUnavailable = 3806,
+        NotAnImageOrVideo = 3807,
     }
 }

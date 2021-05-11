@@ -53,7 +53,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             FireteamSlotSearch slotFilter, int page = 0, string langFilter = null, CancellationToken token = default);
 
         /// <summary>
-        /// Gets a listing of all clan fireteams that caller is an applicant, a member, or an alternate of.
+        /// Gets a listing of all fireteams that caller is an applicant, a member, or an alternate of.
         /// </summary>
         /// <param name="groupId">The group id of the clan. (This parameter is ignored unless the optional query parameter groupFilter is true).</param>
         /// <param name="platform">The platform filter.</param>
@@ -68,7 +68,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             bool groupFilter = false, CancellationToken token = default);
 
         /// <summary>
-        /// Gets a specific clan fireteam.
+        /// Gets a specific fireteam.
         /// </summary>
         /// <param name="groupId">The group id of the clan.</param>
         /// <param name="fireteamId">The unique id of the fireteam.</param>
