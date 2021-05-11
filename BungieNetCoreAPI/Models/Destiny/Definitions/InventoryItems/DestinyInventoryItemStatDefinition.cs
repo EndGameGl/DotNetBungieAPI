@@ -19,18 +19,26 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("displayMaximum")]
         public int? DisplayMaximum { get; init; }
+
         /// <summary>
         /// The maximum possible value for this stat that we think the item can roll.
         /// </summary>
         [JsonPropertyName("maximum")]
         public int Maximum { get; init; }
+
         /// <summary>
         /// The minimum possible value for this stat that we think the item can roll.
         /// </summary>
         [JsonPropertyName("minimum")]
         public int Minimum { get; init; }
+
+        /// <summary>
+        /// DestinyStatDefinition representing this stat.
+        /// </summary>
         [JsonPropertyName("statHash")]
-        public DefinitionHashPointer<DestinyStatDefinition> Stat { get; init; } = DefinitionHashPointer<DestinyStatDefinition>.Empty;
+        public DefinitionHashPointer<DestinyStatDefinition> Stat { get; init; } =
+            DefinitionHashPointer<DestinyStatDefinition>.Empty;
+
         /// <summary>
         /// This value represents the stat value assuming the minimum possible roll but accounting for any mandatory bonuses that should be applied to the stat on item creation.
         /// <para/>

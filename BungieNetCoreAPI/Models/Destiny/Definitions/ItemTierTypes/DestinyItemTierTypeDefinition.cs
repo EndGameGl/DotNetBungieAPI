@@ -10,20 +10,22 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ItemTierTypes
     /// It also provides some base data for infusion that could be useful.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyItemTierTypeDefinition)]
-    public sealed record DestinyItemTierTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyItemTierTypeDefinition>
+    public sealed record DestinyItemTierTypeDefinition : IDestinyDefinition,
+        IDeepEquatable<DestinyItemTierTypeDefinition>
     {
         [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+
+        /// <summary>
+        /// If this tier defines infusion properties, they will be contained here.
+        /// </summary>
         [JsonPropertyName("infusionProcess")]
         public DestinyItemTierTypeInfusionBlock InfusionProcess { get; init; }
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
         public override string ToString()
         {
@@ -40,6 +42,10 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ItemTierTypes
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
-        public void MapValues() { return; }
+
+        public void MapValues()
+        {
+            return;
+        }
     }
 }

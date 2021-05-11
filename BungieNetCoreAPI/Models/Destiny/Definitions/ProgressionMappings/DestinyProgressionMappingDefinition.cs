@@ -5,31 +5,30 @@ using System.Text.Json.Serialization;
 namespace NetBungieAPI.Models.Destiny.Definitions.ProgressionMappings
 {
     /// <summary>
-    /// A "Progression" in Destiny is best explained by an example.
+    /// Aggregations of multiple progressions.
     /// <para/>
-    /// A Character's "Level" is a progression: it has Experience that can be earned, levels that can be gained, and is evaluated and displayed at various points in the game. A Character's "Faction Reputation" is also a progression for much the same reason.
-    /// <para/>
-    /// Progression is used by a variety of systems, and the definition of a Progression will generally only be useful if combining with live data (such as a character's DestinyCharacterProgressionComponent.progressions property, which holds that character's live Progression states).
-    /// <para/>
-    /// Fundamentally, a Progression measures your "Level" by evaluating the thresholds in its Steps(one step per level, except for the last step which can be repeated indefinitely for "Levels" that have no ceiling) against the total earned "progression points"/experience. (for simplicity purposes, we will henceforth refer to earned progression points as experience, though it need not be a mechanic that in any way resembles Experience in a traditional sense).
-    /// <para/>
-    /// Earned experience is calculated in a variety of ways, determined by the Progression's scope. These go from looking up a stored value to performing exceedingly obtuse calculations. This is why we provide live data in DestinyCharacterProgressionComponent.progressions, so you don't have to worry about those.
+    /// These are used to apply rewards to multiple progressions at once. They can sometimes have human readable data as well, but only extremely sporadically.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyProgressionMappingDefinition)]
-    public sealed record DestinyProgressionMappingDefinition : IDestinyDefinition, IDeepEquatable<DestinyProgressionMappingDefinition>
+    public sealed record DestinyProgressionMappingDefinition : IDestinyDefinition,
+        IDeepEquatable<DestinyProgressionMappingDefinition>
     {
+        /// <summary>
+        /// Infrequently defined in practice. Defer to the individual progressions' display properties.
+        /// </summary>
         [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+
+        /// <summary>
+        /// The localized unit of measurement for progression across the progressions defined in this mapping. Unfortunately, this is very infrequently defined. Defer to the individual progressions' display units.
+        /// </summary>
         [JsonPropertyName("displayUnits")]
         public string DisplayUnits { get; init; }
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
         public override string ToString()
         {
@@ -46,6 +45,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ProgressionMappings
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
+
         public void MapValues()
         {
             return;

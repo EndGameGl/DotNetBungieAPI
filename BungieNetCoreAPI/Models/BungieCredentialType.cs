@@ -1,5 +1,8 @@
 ﻿namespace NetBungieAPI.Models
 {
+    /// <summary>
+    /// The types of credentials the Accounts system supports. This is the external facing enum used in place of the internal-only Bungie.SharedDefinitions.CredentialType.
+    /// </summary>
     public enum BungieCredentialType : byte
     {
         None = 0,

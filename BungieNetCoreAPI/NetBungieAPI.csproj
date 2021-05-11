@@ -8,6 +8,10 @@
     <WarningLevel>5</WarningLevel>
   </PropertyGroup>
   
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DocumentationFile>bin\Release\NetBungieAPI.xml</DocumentationFile>
+  </PropertyGroup>
+  
   <ItemGroup>
   </ItemGroup>
 

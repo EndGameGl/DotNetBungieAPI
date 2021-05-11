@@ -19,26 +19,35 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("disablePrimaryStatDisplay")]
         public bool DisablePrimaryStatDisplay { get; init; }
+
         /// <summary>
         /// A quick and lazy way to determine whether any stat other than the "primary" stat is actually visible on the item. Items often have stats that we return in case people find them useful, but they're not part of the "Stat Group" and thus we wouldn't display them in our UI. If this is False, then we're not going to display any of these stats other than the primary one.
         /// </summary>
         [JsonPropertyName("hasDisplayableStats")]
         public bool HasDisplayableStats { get; init; }
+
         /// <summary>
         /// This stat is determined to be the "primary" stat, and can be looked up in the stats or any other stat collection related to the item.
         /// </summary>
         [JsonPropertyName("primaryBaseStatHash")]
-        public DefinitionHashPointer<DestinyStatDefinition> PrimaryBaseStat { get; init; } = DefinitionHashPointer<DestinyStatDefinition>.Empty;
+        public DefinitionHashPointer<DestinyStatDefinition> PrimaryBaseStat { get; init; } =
+            DefinitionHashPointer<DestinyStatDefinition>.Empty;
+
         /// <summary>
         /// If the item's stats are meant to be modified by a DestinyStatGroupDefinition, this will be the identifier for that definition.
         /// </summary>
         [JsonPropertyName("statGroupHash")]
-        public DefinitionHashPointer<DestinyStatGroupDefinition> StatGroup { get; init; } = DefinitionHashPointer<DestinyStatGroupDefinition>.Empty;
+        public DefinitionHashPointer<DestinyStatGroupDefinition> StatGroup { get; init; } =
+            DefinitionHashPointer<DestinyStatGroupDefinition>.Empty;
+
         /// <summary>
         /// If you are looking for precomputed values for the stats on a weapon, this is where they are stored. Technically these are the "Display" stat values. Please see DestinyStatsDefinition for what Display Stat Values means, it's a very long story... but essentially these are the closest values BNet can get to the item stats that you see in-game.
         /// </summary>
         [JsonPropertyName("stats")]
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, DestinyInventoryItemStatDefinition> Stats { get; init; } = Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, DestinyInventoryItemStatDefinition>();
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, DestinyInventoryItemStatDefinition>
+            Stats { get; init; } =
+            Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>,
+                    DestinyInventoryItemStatDefinition>();
 
         public bool DeepEquals(DestinyItemStatBlockDefinition other)
         {

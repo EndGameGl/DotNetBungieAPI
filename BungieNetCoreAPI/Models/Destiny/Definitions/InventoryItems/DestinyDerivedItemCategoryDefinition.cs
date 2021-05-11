@@ -10,16 +10,24 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
     /// </summary>
     public sealed record DestinyDerivedItemCategoryDefinition : IDeepEquatable<DestinyDerivedItemCategoryDefinition>
     {
+        /// <summary>
+        /// The localized string for the category title. This will be something describing the items you can get as a group, or your likelihood/the quantity you'll get.
+        /// </summary>
         [JsonPropertyName("categoryDescription")]
         public string CategoryDescription { get; init; }
+
+        /// <summary>
+        /// This is the list of all of the items for this category and the basic properties we'll know about them.
+        /// </summary>
         [JsonPropertyName("items")]
-        public ReadOnlyCollection<DestinyDerivedItemDefinition> Items { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyDerivedItemDefinition>();
+        public ReadOnlyCollection<DestinyDerivedItemDefinition> Items { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyDerivedItemDefinition>();
 
         public bool DeepEquals(DestinyDerivedItemCategoryDefinition other)
         {
             return other != null &&
-                CategoryDescription == other.CategoryDescription &&
-                Items.DeepEqualsReadOnlyCollections(other.Items);
+                   CategoryDescription == other.CategoryDescription &&
+                   Items.DeepEqualsReadOnlyCollections(other.Items);
         }
     }
 }

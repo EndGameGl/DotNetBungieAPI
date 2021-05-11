@@ -16,6 +16,13 @@ namespace NetBungieAPI.Models.Queries
         [JsonPropertyName("replacementContinuationToken")]
         public string ReplacementContinuationToken { get; init; }
 
+        /// <summary>
+        /// If useTotalResults is true, then totalResults represents an accurate count.
+        /// <para/>
+        /// If False, it does not, and may be estimated/only the size of the current page.
+        /// <para/>
+        /// Either way, you should probably always only trust hasMore.
+        /// </summary>
         [JsonPropertyName("useTotalResults")]
         public bool UseTotalResults { get; init; }
     }

@@ -17,26 +17,33 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("previewActionString")]
         public string PreviewActionString { get; init; }
+
         /// <summary>
         /// If the preview data is derived from a fake "Preview" Vendor, this will be DestinyVendorDefinition of that fake vendor.
         /// </summary>
         [JsonPropertyName("previewVendorHash")]
-        public DefinitionHashPointer<DestinyVendorDefinition> PreviewVendor { get; init; } = DefinitionHashPointer<DestinyVendorDefinition>.Empty;
+        public DefinitionHashPointer<DestinyVendorDefinition> PreviewVendor { get; init; } =
+            DefinitionHashPointer<DestinyVendorDefinition>.Empty;
+
         /// <summary>
         /// A string that the game UI uses as a hint for which detail screen to show for the item. You, too, can leverage this for your own custom screen detail views. Note, however, that these are arbitrarily defined by designers: there's no guarantees of a fixed, known number of these - so fall back to something reasonable if you don't recognize it.
         /// </summary>
         [JsonPropertyName("screenStyle")]
         public string ScreenStyle { get; init; }
+
         /// <summary>
         /// If this item should show you Artifact information when you preview it, this is the DestinyArtifactDefinition for the artifact whose data should be shown.
         /// </summary>
         [JsonPropertyName("artifactHash")]
-        public DefinitionHashPointer<DestinyArtifactDefinition> Artifact { get; init; } = DefinitionHashPointer<DestinyArtifactDefinition>.Empty;
+        public DefinitionHashPointer<DestinyArtifactDefinition> Artifact { get; init; } =
+            DefinitionHashPointer<DestinyArtifactDefinition>.Empty;
+
         /// <summary>
         /// This is a list of the items being previewed, categorized in the same way as they are in the preview UI
         /// </summary>
         [JsonPropertyName("derivedItemCategories")]
-        public ReadOnlyCollection<DestinyDerivedItemCategoryDefinition> DerivedItemCategories { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyDerivedItemCategoryDefinition>();
+        public ReadOnlyCollection<DestinyDerivedItemCategoryDefinition> DerivedItemCategories { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyDerivedItemCategoryDefinition>();
 
         public bool DeepEquals(DestinyItemPreviewBlockDefinition other)
         {

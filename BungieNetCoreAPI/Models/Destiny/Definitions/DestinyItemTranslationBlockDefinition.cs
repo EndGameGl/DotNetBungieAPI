@@ -3,6 +3,9 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions
 {
+    /// <summary>
+    /// This Block defines the rendering data associated with the item, if any.
+    /// </summary>
     public sealed record DestinyItemTranslationBlockDefinition : IDeepEquatable<DestinyItemTranslationBlockDefinition>
     {
         [JsonPropertyName("weaponPatternIdentifier")]
@@ -12,19 +15,22 @@ namespace NetBungieAPI.Models.Destiny.Definitions
         public uint WeaponPatternHash { get; init; }
 
         [JsonPropertyName("defaultDyes")]
-        public ReadOnlyCollection<DyeReference> DefaultDyes { get; init; } = Defaults.EmptyReadOnlyCollection<DyeReference>();
+        public ReadOnlyCollection<DyeReference> DefaultDyes { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DyeReference>();
 
         [JsonPropertyName("lockedDyes")]
-        public ReadOnlyCollection<DyeReference> LockedDyes { get; init; } = Defaults.EmptyReadOnlyCollection<DyeReference>();
+        public ReadOnlyCollection<DyeReference> LockedDyes { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DyeReference>();
 
         [JsonPropertyName("customDyes")]
-        public ReadOnlyCollection<DyeReference> CustomDyes { get; init; } = Defaults.EmptyReadOnlyCollection<DyeReference>();
+        public ReadOnlyCollection<DyeReference> CustomDyes { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DyeReference>();
 
         [JsonPropertyName("arrangements")]
-        public ReadOnlyCollection<DestinyGearArtArrangementReference> Arrangements { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyGearArtArrangementReference>();
+        public ReadOnlyCollection<DestinyGearArtArrangementReference> Arrangements { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyGearArtArrangementReference>();
 
-        [JsonPropertyName("hasGeometry")]
-        public bool HasGeometry { get; init; }
+        [JsonPropertyName("hasGeometry")] public bool HasGeometry { get; init; }
 
         public bool DeepEquals(DestinyItemTranslationBlockDefinition other)
         {
