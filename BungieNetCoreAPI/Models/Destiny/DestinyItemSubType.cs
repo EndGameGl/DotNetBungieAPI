@@ -30,6 +30,7 @@ namespace NetBungieAPI.Models.Destiny
         SniperRifle = 12,
         PulseRifle = 13,
         ScoutRifle = 14,
+
         [Obsolete("DEPRECATED. An item can both be CRM and something else.")]
         Crm = 16,
         Sidearm = 17,

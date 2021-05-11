@@ -18,11 +18,12 @@ namespace NetBungieAPI.Providers
 {
     public class SqliteDefinitionProvider : DefinitionProvider
     {
-        private readonly DefinitionsEnum[] _nonExistInSqliteDefinitions = new DefinitionsEnum[3]
+        private readonly DefinitionsEnum[] _nonExistInSqliteDefinitions = new DefinitionsEnum[]
         {
             DefinitionsEnum.DestinyUnlockValueDefinition,
             DefinitionsEnum.DestinyProgressionMappingDefinition,
-            DefinitionsEnum.DestinyHistoricalStatsDefinition
+            DefinitionsEnum.DestinyHistoricalStatsDefinition,
+            DefinitionsEnum.DestinyEnemyRaceDefinition
         };
 
         private readonly string ManifestPath;

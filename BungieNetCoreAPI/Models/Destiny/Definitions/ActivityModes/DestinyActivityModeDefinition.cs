@@ -12,7 +12,8 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityModes
     /// Activity modes are nested under each other in a hierarchy, so that if you ask for - for example - "AllPvP", you will get any PVP activities that the user has played, regardless of what specific PVP mode was being played.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyActivityModeDefinition)]
-    public sealed record DestinyActivityModeDefinition : IDestinyDefinition, IDeepEquatable<DestinyActivityModeDefinition>
+    public sealed record DestinyActivityModeDefinition : IDestinyDefinition,
+        IDeepEquatable<DestinyActivityModeDefinition>
     {
         [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -22,16 +23,19 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityModes
         /// </summary>
         [JsonPropertyName("pgcrImage")]
         public string PgcrImage { get; init; }
+
         /// <summary>
         /// The Enumeration value for this Activity Mode. Pass this identifier into Stats endpoints to get aggregate stats for this mode.
         /// </summary>
         [JsonPropertyName("modeType")]
         public DestinyActivityModeType ModeType { get; init; }
+
         /// <summary>
         /// The type of play being performed in broad terms (PVP, PVE)
         /// </summary>
         [JsonPropertyName("activityModeCategory")]
         public DestinyActivityModeCategory ActivityModeCategory { get; init; }
+
         /// <summary>
         /// If True, this mode has oppositional teams fighting against each other rather than "Free-For-All" or Co-operative modes of play.
         /// <para/>
@@ -39,31 +43,40 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityModes
         /// </summary>
         [JsonPropertyName("isTeamBased")]
         public bool IsTeamBased { get; init; }
+
         /// <summary>
         /// If true, this mode is an aggregation of other, more specific modes rather than being a mode in itself. This includes modes that group Features/Events rather than Gameplay, such as Trials of The Nine: Trials of the Nine being an Event that is interesting to see aggregate data for, but when you play the activities within Trials of the Nine they are more specific activity modes such as Clash.
         /// </summary>
         [JsonPropertyName("isAggregateMode")]
         public bool IsAggregateMode { get; init; }
+
         /// <summary>
         /// DestinyActivityModeDefinitions that represent all of the "parent" modes for this mode. For instance, the Nightfall Mode is also a member of AllStrikes and AllPvE.
         /// </summary>
         [JsonPropertyName("parentHashes")]
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>> ParentModes { get; init; } = Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>>();
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>> ParentModes { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>>();
+
         /// <summary>
         /// A Friendly identifier you can use for referring to this Activity Mode. We really only used this in our URLs, so... you know, take that for whatever it's worth.
         /// </summary>
         [JsonPropertyName("friendlyName")]
         public string FriendlyName { get; init; }
+
         /// <summary>
         /// If this exists, the mode has specific Activities (referred to by the Key) that should instead map to other Activity Modes when they are played.
         /// </summary>
         [JsonPropertyName("activityModeMappings")]
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyActivityDefinition>, DestinyActivityModeType> ActivityModeMappings { get; init; } = Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyActivityDefinition>, DestinyActivityModeType>();
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyActivityDefinition>, DestinyActivityModeType>
+            ActivityModeMappings { get; init; } = Defaults
+            .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyActivityDefinition>, DestinyActivityModeType>();
+
         /// <summary>
         /// If FALSE, we want to ignore this type when we're showing activity modes in BNet UI. It will still be returned in case 3rd parties want to use it for any purpose.
         /// </summary>
         [JsonPropertyName("display")]
         public bool Display { get; init; }
+
         /// <summary>
         /// The relative ordering of activity modes.
         /// </summary>
@@ -73,30 +86,27 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityModes
         [JsonPropertyName("supportsFeedFiltering")]
         public bool SupportsFeedFiltering { get; init; }
 
-        [JsonPropertyName("tier")]
-        public int Tier { get; init; }
+        [JsonPropertyName("tier")] public int Tier { get; init; }
 
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
 
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
 
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
+
         public bool DeepEquals(DestinyActivityModeDefinition other)
         {
             return other != null &&
                    ActivityModeCategory == other.ActivityModeCategory &&
-                   ActivityModeMappings.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(other.ActivityModeMappings) &&
+                   ActivityModeMappings.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(
+                       other.ActivityModeMappings) &&
                    Display == other.Display &&
                    DisplayProperties.DeepEquals(other.DisplayProperties) &&
                    FriendlyName == other.FriendlyName &&
@@ -113,12 +123,14 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityModes
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
+
         public void MapValues()
         {
             foreach (var actMode in ActivityModeMappings.Keys)
             {
                 actMode.TryMapValue();
             }
+
             foreach (var parentMode in ParentModes)
             {
                 parentMode.TryMapValue();

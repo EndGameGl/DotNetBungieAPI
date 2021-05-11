@@ -8,20 +8,24 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Activities
     public sealed record DestinyActivityLoadoutRequirement : IDeepEquatable<DestinyActivityLoadoutRequirement>
     {
         [JsonPropertyName("equipmentSlotHash")]
-        public DefinitionHashPointer<DestinyEquipmentSlotDefinition> EquipmentSlot { get; init; }
+        public DefinitionHashPointer<DestinyEquipmentSlotDefinition> EquipmentSlot { get; init; } =
+            DefinitionHashPointer<DestinyEquipmentSlotDefinition>.Empty;
 
         [JsonPropertyName("allowedEquippedItemHashes")]
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> AllowedEquippedItems { get; init; } = Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>();
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>
+            AllowedEquippedItems { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>();
 
         [JsonPropertyName("allowedWeaponSubTypes")]
-        public ReadOnlyCollection<DestinyItemSubType> AllowedWeaponSubTypes { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyItemSubType>();
+        public ReadOnlyCollection<DestinyItemSubType> AllowedWeaponSubTypes { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyItemSubType>();
 
         public bool DeepEquals(DestinyActivityLoadoutRequirement other)
         {
             return other != null &&
-                EquipmentSlot.DeepEquals(other.EquipmentSlot) &&
-                AllowedEquippedItems.DeepEqualsReadOnlyCollections(other.AllowedEquippedItems) &&
-                AllowedWeaponSubTypes.DeepEqualsReadOnlySimpleCollection(other.AllowedWeaponSubTypes);
+                   EquipmentSlot.DeepEquals(other.EquipmentSlot) &&
+                   AllowedEquippedItems.DeepEqualsReadOnlyCollections(other.AllowedEquippedItems) &&
+                   AllowedWeaponSubTypes.DeepEqualsReadOnlySimpleCollection(other.AllowedWeaponSubTypes);
         }
     }
 }

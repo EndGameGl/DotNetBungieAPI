@@ -16,27 +16,25 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityTypes
     /// For this reason, BNet will eventually migrate toward Activity Modes as a better indicator of activity category. But for the time being, it is still referred to in many places across our codebase.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyActivityTypeDefinition)]
-    public sealed record DestinyActivityTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyActivityTypeDefinition>
+    public sealed record DestinyActivityTypeDefinition : IDestinyDefinition,
+        IDeepEquatable<DestinyActivityTypeDefinition>
     {
         [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
 
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
 
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
+
         public bool DeepEquals(DestinyActivityTypeDefinition other)
         {
             return other != null &&
@@ -46,6 +44,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityTypes
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
+
         public void MapValues()
         {
             return;

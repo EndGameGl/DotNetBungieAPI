@@ -12,11 +12,13 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Activities
         /// </summary>
         [JsonPropertyName("guidedDisbandCount")]
         public int GuidedDisbandCount { get; init; }
+
         /// <summary>
         /// The maximum amount of people that can be in the waiting lobby.
         /// </summary>
         [JsonPropertyName("guidedMaxLobbySize")]
         public int GuidedMaxLobbySize { get; init; }
+
         /// <summary>
         /// The minimum amount of people that can be in the waiting lobby.
         /// </summary>

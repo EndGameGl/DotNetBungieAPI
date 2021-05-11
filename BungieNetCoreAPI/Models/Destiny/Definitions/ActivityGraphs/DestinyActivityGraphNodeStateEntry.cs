@@ -7,8 +7,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
     /// </summary>
     public sealed record DestinyActivityGraphNodeStateEntry : IDeepEquatable<DestinyActivityGraphNodeStateEntry>
     {
-        [JsonPropertyName("state")]
-        public GraphNodeState State { get; init; }
+        [JsonPropertyName("state")] public DestinyGraphNodeState State { get; init; }
 
         public bool DeepEquals(DestinyActivityGraphNodeStateEntry other)
         {

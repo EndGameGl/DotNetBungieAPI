@@ -1,4 +1,5 @@
-﻿using NetBungieAPI.Attributes;
+﻿using System;
+using NetBungieAPI.Attributes;
 using NetBungieAPI.Models.Dates;
 using NetBungieAPI.Models.Destiny.Definitions.Factions;
 using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
@@ -249,7 +250,9 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Vendors
         /// Some items don't make sense to return in the API, for example because they represent an action to be performed rather than an item being sold. I'd rather we not do this, but at least in the short term this is a workable workaround.
         /// </summary>
         [JsonPropertyName("ignoreSaleItemHashes")]
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> IgnoreSaleItems { get; init; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>
+            IgnoreSaleItems { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>();
 
         [JsonPropertyName("unlockValueHash")] public uint UnlockValueHash { get; init; }
         [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
@@ -326,6 +329,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Vendors
             {
                 group.Group.TryMapValue();
             }
+
 
             foreach (var item in IgnoreSaleItems)
             {

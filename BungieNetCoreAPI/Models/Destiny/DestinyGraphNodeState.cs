@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a potential state of an Activity Graph node.
     /// </summary>
-    public enum GraphNodeState
+    public enum DestinyGraphNodeState
     {
         Hidden = 0,
         Visible = 1,

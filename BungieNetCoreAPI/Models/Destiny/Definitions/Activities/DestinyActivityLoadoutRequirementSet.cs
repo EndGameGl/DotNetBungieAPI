@@ -9,7 +9,8 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Activities
         /// The set of requirements that will be applied on the activity if this requirement set is active.
         /// </summary>
         [JsonPropertyName("requirements")]
-        public ReadOnlyCollection<DestinyActivityLoadoutRequirement> Requirements { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyActivityLoadoutRequirement>();
+        public ReadOnlyCollection<DestinyActivityLoadoutRequirement> Requirements { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyActivityLoadoutRequirement>();
 
         public bool DeepEquals(DestinyActivityLoadoutRequirementSet other)
         {
