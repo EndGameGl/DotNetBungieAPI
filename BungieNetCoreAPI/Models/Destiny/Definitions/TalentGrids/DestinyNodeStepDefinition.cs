@@ -38,7 +38,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.TalentGrids
         [JsonPropertyName("affectsQuality")]
         public bool AffectsQuality { get; init; }
         [JsonPropertyName("stepGroups")]
-        public TalentNodeStepGroups StepGroups { get; init; }
+        public DestinyTalentNodeStepGroups StepGroups { get; init; }
         [JsonPropertyName("affectsLevel")]
         public bool AffectsLevel { get; init; }
         [JsonPropertyName("socketReplacements")]

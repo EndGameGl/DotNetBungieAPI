@@ -16,24 +16,25 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Locations
         /// If the location has a Vendor on it, this is the Vendor.
         /// </summary>
         [JsonPropertyName("vendorHash")]
-        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; init; } = DefinitionHashPointer<DestinyVendorDefinition>.Empty;
+        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; init; } =
+            DefinitionHashPointer<DestinyVendorDefinition>.Empty;
+
         /// <summary>
         /// A Location may refer to different specific spots in the world based on the world's current state. This is a list of those potential spots, and the data we can use at runtime to determine which one of the spots is the currently valid one.
         /// </summary>
         [JsonPropertyName("locationReleases")]
-        public ReadOnlyCollection<DestinyLocationReleaseDefinition> LocationReleases { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyLocationReleaseDefinition>();
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+        public ReadOnlyCollection<DestinyLocationReleaseDefinition> LocationReleases { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyLocationReleaseDefinition>();
+
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
         public override string ToString()
         {
-            return $"{Hash} ({LocationReleases.Count} location releases.) {LocationReleases.LastOrDefault()?.DisplayProperties.Name}";
+            return
+                $"{Hash} ({LocationReleases.Count} location releases.) {LocationReleases.LastOrDefault()?.DisplayProperties.Name}";
         }
 
         public bool DeepEquals(DestinyLocationDefinition other)

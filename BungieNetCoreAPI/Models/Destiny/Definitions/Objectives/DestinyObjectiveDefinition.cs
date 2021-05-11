@@ -25,26 +25,32 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Objectives
     {
         [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+
         /// <summary>
         /// The value that the unlock value defined in unlockValueHash must reach in order for the objective to be considered Completed. Used in calculating progress and completion status.
         /// </summary>
         [JsonPropertyName("completionValue")]
         public int CompletionValue { get; init; }
+
         /// <summary>
         /// A shortcut for determining the most restrictive gating that this Objective is set to use. This includes both the dynamic determination of progress and of completion values.
         /// </summary>
         [JsonPropertyName("scope")]
         public DestinyGatingScope Scope { get; init; }
+
         /// <summary>
         /// The location at which this objective must be accomplished
         /// </summary>
         [JsonPropertyName("locationHash")]
-        public DefinitionHashPointer<DestinyLocationDefinition> Location { get; init; } = DefinitionHashPointer<DestinyLocationDefinition>.Empty;
+        public DefinitionHashPointer<DestinyLocationDefinition> Location { get; init; } =
+            DefinitionHashPointer<DestinyLocationDefinition>.Empty;
+
         /// <summary>
         /// If true, the value is allowed to go negative.
         /// </summary>
         [JsonPropertyName("allowNegativeValue")]
         public bool AllowNegativeValue { get; init; }
+
         /// <summary>
         /// If true, you can effectively "un-complete" this objective if you lose progress after crossing the completion threshold.
         /// <para/>
@@ -52,6 +58,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Objectives
         /// </summary>
         [JsonPropertyName("allowValueChangeWhenCompleted")]
         public bool AllowValueChangeWhenCompleted { get; init; }
+
         /// <summary>
         /// If true, completion means having an unlock value less than or equal to the completionValue.
         /// <para/>
@@ -59,61 +66,68 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Objectives
         /// </summary>
         [JsonPropertyName("isCountingDownward")]
         public bool IsCountingDownward { get; init; }
+
         /// <summary>
         /// The UI style applied to the objective. It's an enum, take a look at DestinyUnlockValueUIStyle for details of the possible styles. Use this info as you wish to customize your UI.
         /// </summary>
         [JsonPropertyName("valueStyle")]
         public DestinyUnlockValueUiStyle ValueStyle { get; init; }
+
         /// <summary>
         /// Text to describe the progress bar.
         /// </summary>
         [JsonPropertyName("progressDescription")]
         public string ProgressDescription { get; init; }
+
         /// <summary>
         /// If this objective enables Perks intrinsically, the conditions for that enabling are defined here.
         /// </summary>
         [JsonPropertyName("perks")]
         public DestinyObjectivePerkEntryDefinition Perks { get; init; }
+
         /// <summary>
         /// If this objective enables modifications on a player's stats intrinsically, the conditions are defined here.
         /// </summary>
         [JsonPropertyName("stats")]
         public DestinyObjectiveStatEntryDefinition Stats { get; init; }
+
         /// <summary>
         /// If nonzero, this is the minimum value at which the objective's progression should be shown. Otherwise, don't show it yet.
         /// </summary>
         [JsonPropertyName("minimumVisibilityThreshold")]
         public int MinimumVisibilityThreshold { get; init; }
+
         /// <summary>
         /// If True, the progress will continue even beyond the point where the objective met its minimum completion requirements. Your UI will have to accommodate it.
         /// </summary>
         [JsonPropertyName("allowOvercompletion")]
         public bool AllowOvercompletion { get; init; }
+
         /// <summary>
         /// If True, you should continue showing the progression value in the UI after it's complete. I mean, we already do that in BNet anyways, but if you want to be better behaved than us you could honor this flag.
         /// </summary>
         [JsonPropertyName("showValueOnComplete")]
         public bool ShowValueOnComplete { get; init; }
+
         /// <summary>
         /// The style to use when the objective is completed.
         /// </summary>
         [JsonPropertyName("completedValueStyle")]
         public DestinyUnlockValueUiStyle CompletedValueStyle { get; init; }
+
         /// <summary>
         /// The style to use when the objective is still in progress.
         /// </summary>
         [JsonPropertyName("inProgressValueStyle")]
         public DestinyUnlockValueUiStyle InProgressValueStyle { get; init; }
+
         [JsonPropertyName("isDisplayOnlyObjective")]
         public bool IsDisplayOnlyObjective { get; init; }
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
         public override string ToString()
         {
@@ -145,6 +159,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Objectives
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
+
         public void MapValues()
         {
             Location.TryMapValue();

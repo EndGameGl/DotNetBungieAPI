@@ -8,15 +8,20 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Activities
     /// <para/>
     /// This contract defines the graph referred to and the gating for when it is relevant.
     /// </summary>
-    public sealed record DestinyActivityGraphListEntryDefinition : IDeepEquatable<DestinyActivityGraphListEntryDefinition>
+    public sealed record DestinyActivityGraphListEntryDefinition
+        : IDeepEquatable<DestinyActivityGraphListEntryDefinition>
     {
+        /// <summary>
+        /// DestinyActivityGraphDefinition that should be shown when opening the director.
+        /// </summary>
         [JsonPropertyName("activityGraphHash")]
-        public DefinitionHashPointer<DestinyActivityGraphDefinition> ActivityGraph { get; init; } = DefinitionHashPointer<DestinyActivityGraphDefinition>.Empty;
+        public DefinitionHashPointer<DestinyActivityGraphDefinition> ActivityGraph { get; init; } =
+            DefinitionHashPointer<DestinyActivityGraphDefinition>.Empty;
 
         public bool DeepEquals(DestinyActivityGraphListEntryDefinition other)
         {
             return other != null &&
-                ActivityGraph.DeepEquals(other.ActivityGraph);
+                   ActivityGraph.DeepEquals(other.ActivityGraph);
         }
     }
 }

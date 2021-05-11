@@ -15,7 +15,8 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Activities
         /// If the quantity is 0, don't show the quantity.
         /// </summary>
         [JsonPropertyName("dummyRewards")]
-        public ReadOnlyCollection<DestinyItemQuantity> DummyRewards { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
+        public ReadOnlyCollection<DestinyItemQuantity> DummyRewards { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
 
         [JsonPropertyName("inhibitRewardsUnlockHash")]
         public int InhibitRewardsUnlockHash { get; init; }
@@ -24,10 +25,10 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Activities
         /// Objective that matches this challenge
         /// </summary>
         [JsonPropertyName("objectiveHash")]
-        public DefinitionHashPointer<DestinyObjectiveDefinition> Objective { get; init; } = DefinitionHashPointer<DestinyObjectiveDefinition>.Empty;
+        public DefinitionHashPointer<DestinyObjectiveDefinition> Objective { get; init; } =
+            DefinitionHashPointer<DestinyObjectiveDefinition>.Empty;
 
-        [JsonPropertyName("rewardSiteHash")]
-        public uint RewardSiteHash { get; init; }
+        [JsonPropertyName("rewardSiteHash")] public uint RewardSiteHash { get; init; }
 
         public bool DeepEquals(DestinyActivityChallengeDefinition other)
         {

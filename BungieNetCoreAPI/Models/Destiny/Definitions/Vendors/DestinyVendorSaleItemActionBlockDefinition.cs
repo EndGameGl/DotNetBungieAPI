@@ -2,12 +2,14 @@
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Vendors
 {
-    public sealed record DestinyVendorSaleItemActionBlockDefinition : IDeepEquatable<DestinyVendorSaleItemActionBlockDefinition>
+    /// <summary>
+    /// Not terribly useful, some basic cooldown interaction info.
+    /// </summary>
+    public sealed record
+        DestinyVendorSaleItemActionBlockDefinition : IDeepEquatable<DestinyVendorSaleItemActionBlockDefinition>
     {
-        [JsonPropertyName("executeSeconds")]
-        public double ExecuteSeconds { get; init; }
-        [JsonPropertyName("isPositive")]
-        public bool IsPositive { get; init; }
+        [JsonPropertyName("executeSeconds")] public double ExecuteSeconds { get; init; }
+        [JsonPropertyName("isPositive")] public bool IsPositive { get; init; }
 
         public bool DeepEquals(DestinyVendorSaleItemActionBlockDefinition other)
         {

@@ -8,27 +8,25 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityModifiers
     /// Modifiers - in Destiny 1, these were referred to as "Skulls" - are changes that can be applied to an Activity.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyActivityModifierDefinition)]
-    public sealed record DestinyActivityModifierDefinition : IDestinyDefinition, IDeepEquatable<DestinyActivityModifierDefinition>
+    public sealed record DestinyActivityModifierDefinition : IDestinyDefinition,
+        IDeepEquatable<DestinyActivityModifierDefinition>
     {
         [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
 
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
 
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
+
         public bool DeepEquals(DestinyActivityModifierDefinition other)
         {
             return other != null &&
@@ -38,6 +36,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityModifiers
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
+
         public void MapValues()
         {
             return;

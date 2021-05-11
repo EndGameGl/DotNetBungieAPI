@@ -8,8 +8,12 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Activities
     /// </summary>
     public class DestinyActivityModifierReferenceDefinition : IDeepEquatable<DestinyActivityModifierReferenceDefinition>
     {
+        /// <summary>
+        /// DestinyActivityModifierDefinition referenced by this activity.
+        /// </summary>
         [JsonPropertyName("activityModifierHash")]
-        public DefinitionHashPointer<DestinyActivityModifierDefinition> ActivityModifier { get; init; } = DefinitionHashPointer<DestinyActivityModifierDefinition>.Empty;
+        public DefinitionHashPointer<DestinyActivityModifierDefinition> ActivityModifier { get; init; } =
+            DefinitionHashPointer<DestinyActivityModifierDefinition>.Empty;
 
         public bool DeepEquals(DestinyActivityModifierReferenceDefinition other)
         {
