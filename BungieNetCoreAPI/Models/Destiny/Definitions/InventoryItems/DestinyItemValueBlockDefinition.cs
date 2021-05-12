@@ -16,7 +16,9 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// References to the items that make up this item's "value", and the quantity.
         /// </summary>
         [JsonPropertyName("itemValue")]
-        public ReadOnlyCollection<DestinyItemQuantity> ItemValue { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
+        public ReadOnlyCollection<DestinyItemQuantity> ItemValue { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
+
         /// <summary>
         /// If there's a localized text description of the value provided, this will be said description.
         /// </summary>

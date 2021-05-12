@@ -9,16 +9,16 @@ namespace NetBungieAPI.Models.Destiny.Definitions.PowerCaps
     [DestinyDefinition(DefinitionsEnum.DestinyPowerCapDefinition)]
     public sealed record DestinyPowerCapDefinition : IDestinyDefinition, IDeepEquatable<DestinyPowerCapDefinition>
     {
+        /// <summary>
+        /// The raw value for a power cap.
+        /// </summary>
         [JsonPropertyName("powerCap")]
         public int PowerCap { get; init; }
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
         public override string ToString()
         {
@@ -34,6 +34,10 @@ namespace NetBungieAPI.Models.Destiny.Definitions.PowerCaps
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
-        public void MapValues() { return; }
+
+        public void MapValues()
+        {
+            return;
+        }
     }
 }

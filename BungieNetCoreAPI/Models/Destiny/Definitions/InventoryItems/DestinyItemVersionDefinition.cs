@@ -12,12 +12,13 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// A reference to the power cap for this item version.
         /// </summary>
         [JsonPropertyName("powerCapHash")]
-        public DefinitionHashPointer<DestinyPowerCapDefinition> PowerCap { get; init; } = DefinitionHashPointer<DestinyPowerCapDefinition>.Empty;
+        public DefinitionHashPointer<DestinyPowerCapDefinition> PowerCap { get; init; } =
+            DefinitionHashPointer<DestinyPowerCapDefinition>.Empty;
 
         public bool DeepEquals(DestinyItemVersionDefinition other)
         {
             return other != null &&
-                PowerCap.DeepEquals(other.PowerCap);
+                   PowerCap.DeepEquals(other.PowerCap);
         }
     }
 }

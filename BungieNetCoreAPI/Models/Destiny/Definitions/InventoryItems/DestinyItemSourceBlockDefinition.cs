@@ -9,14 +9,32 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
     /// </summary>
     public sealed record DestinyItemSourceBlockDefinition : IDeepEquatable<DestinyItemSourceBlockDefinition>
     {
+        /// <summary>
+        /// DestinyRewardSourceDefinitions for Reward Sources that hint where the item can be found
+        /// </summary>
         [JsonPropertyName("sourceHashes")]
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyRewardSourceDefinition>> RewardSources { get; init; } = Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyRewardSourceDefinition>>();
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyRewardSourceDefinition>> RewardSources { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyRewardSourceDefinition>>();
+
+        /// <summary>
+        /// A collection of details about the stats that were computed for the ways we found that the item could be spawned.
+        /// </summary>
         [JsonPropertyName("sources")]
-        public ReadOnlyCollection<DestinyItemSourceDefinition> Sources { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyItemSourceDefinition>();
+        public ReadOnlyCollection<DestinyItemSourceDefinition> Sources { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyItemSourceDefinition>();
+
+        /// <summary>
+        /// If we found that this item is exclusive to a specific platform, this will be set to the BungieMembershipType enumeration that matches that platform.
+        /// </summary>
         [JsonPropertyName("exclusive")]
         public BungieMembershipType ExclusiveTo { get; init; }
+
+        /// <summary>
+        /// A denormalized reference back to vendors that potentially sell this item.
+        /// </summary>
         [JsonPropertyName("vendorSources")]
-        public ReadOnlyCollection<DestinyItemVendorSourceReference> VendorSources { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyItemVendorSourceReference>();
+        public ReadOnlyCollection<DestinyItemVendorSourceReference> VendorSources { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyItemVendorSourceReference>();
 
         public bool DeepEquals(DestinyItemSourceBlockDefinition other)
         {

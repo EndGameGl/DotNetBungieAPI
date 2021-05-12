@@ -16,10 +16,20 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Factions
         /// </summary>
         [JsonPropertyName("backgroundImagePath")]
         public string BackgroundImagePath { get; init; }
+
+        /// <summary>
+        /// DestinyDestinationDefinition for a Destination at which this vendor may be located. Each destination where a Vendor may exist will only ever have a single entry.
+        /// </summary>
         [JsonPropertyName("destinationHash")]
-        public DefinitionHashPointer<DestinyDestinationDefinition> Destination { get; init; } = DefinitionHashPointer<DestinyDestinationDefinition>.Empty;
+        public DefinitionHashPointer<DestinyDestinationDefinition> Destination { get; init; } =
+            DefinitionHashPointer<DestinyDestinationDefinition>.Empty;
+
+        /// <summary>
+        /// The faction vendor.
+        /// </summary>
         [JsonPropertyName("vendorHash")]
-        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; init; } = DefinitionHashPointer<DestinyVendorDefinition>.Empty;
+        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; init; } =
+            DefinitionHashPointer<DestinyVendorDefinition>.Empty;
 
         public bool DeepEquals(DestinyFactionVendorDefinition other)
         {

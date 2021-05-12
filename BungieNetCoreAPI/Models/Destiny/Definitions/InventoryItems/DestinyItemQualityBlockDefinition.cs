@@ -16,16 +16,21 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("currentVersion")]
         public uint CurrentVersion { get; init; }
+
         /// <summary>
         /// Icon overlays to denote the item version and power cap status.
         /// </summary>
         [JsonPropertyName("displayVersionWatermarkIcons")]
-        public ReadOnlyCollection<string> DisplayVersionWatermarkIcons { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
+        public ReadOnlyCollection<string> DisplayVersionWatermarkIcons { get; init; } =
+            Defaults.EmptyReadOnlyCollection<string>();
+
         /// <summary>
         /// If any one of these hashes matches any value in another item's infusionCategoryHashes, the two can infuse with each other.
         /// </summary>
         [JsonPropertyName("infusionCategoryHashes")]
-        public ReadOnlyCollection<uint> InfusionCategoryHashes { get; init; } = Defaults.EmptyReadOnlyCollection<uint>();
+        public ReadOnlyCollection<uint> InfusionCategoryHashes { get; init; } =
+            Defaults.EmptyReadOnlyCollection<uint>();
+
         /// <summary>
         /// The "base" defined level of an item. This is a list because, in theory, each Expansion could define its own base level for an item.
         /// <para/>
@@ -33,27 +38,34 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("itemLevels")]
         public ReadOnlyCollection<int> ItemLevels { get; init; } = Defaults.EmptyReadOnlyCollection<int>();
+
         /// <summary>
         /// An item can refer to pre-set level requirements. They are defined in DestinyProgressionLevelRequirementDefinition
         /// </summary>
         [JsonPropertyName("progressionLevelRequirementHash")]
-        public DefinitionHashPointer<DestinyProgressionLevelRequirementDefinition> ProgressionLevelRequirement { get; init; } = DefinitionHashPointer<DestinyProgressionLevelRequirementDefinition>.Empty;
+        public DefinitionHashPointer<DestinyProgressionLevelRequirementDefinition>
+            ProgressionLevelRequirement { get; init; } =
+            DefinitionHashPointer<DestinyProgressionLevelRequirementDefinition>.Empty;
+
         /// <summary>
         /// QualityLevel is used in combination with the item's level to calculate stats like Attack and Defense. It plays a role in that calculation, but not nearly as large as itemLevel does.
         /// </summary>
         [JsonPropertyName("qualityLevel")]
         public int QualityLevel { get; init; }
+
         /// <summary>
         /// The list of versions available for this item.
         /// </summary>
         [JsonPropertyName("versions")]
-        public ReadOnlyCollection<DestinyItemVersionDefinition> Versions { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyItemVersionDefinition>();
+        public ReadOnlyCollection<DestinyItemVersionDefinition> Versions { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyItemVersionDefinition>();
 
         public bool DeepEquals(DestinyItemQualityBlockDefinition other)
         {
             return other != null &&
                    CurrentVersion == other.CurrentVersion &&
-                   DisplayVersionWatermarkIcons.DeepEqualsReadOnlySimpleCollection(other.DisplayVersionWatermarkIcons) &&
+                   DisplayVersionWatermarkIcons.DeepEqualsReadOnlySimpleCollection(other
+                       .DisplayVersionWatermarkIcons) &&
                    InfusionCategoryHashes.DeepEqualsReadOnlySimpleCollection(other.InfusionCategoryHashes) &&
                    ItemLevels.DeepEqualsReadOnlySimpleCollection(other.ItemLevels) &&
                    ProgressionLevelRequirement.DeepEquals(other.ProgressionLevelRequirement) &&

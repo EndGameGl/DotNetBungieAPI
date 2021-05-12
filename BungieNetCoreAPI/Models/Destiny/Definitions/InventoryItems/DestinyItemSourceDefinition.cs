@@ -17,36 +17,47 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("level")]
         public int Level { get; init; }
+
         /// <summary>
         /// The minimum Quality at which the item spawns for this level. Examine DestinyInventoryItemDefinition for more information about what Quality means. Just don't ask Phaedrus about it, he'll never stop talking and you'll have to write a book about it.
         /// </summary>
         [JsonPropertyName("minQuality")]
         public int MinQuality { get; init; }
+
         /// <summary>
         /// The maximum quality at which the item spawns for this level.
         /// </summary>
         [JsonPropertyName("maxQuality")]
         public int MaxQuality { get; init; }
+
         /// <summary>
         /// The minimum Character Level required for equipping the item when the item spawns at the item level defined on this DestinyItemSourceDefinition, as far as we saw in our processing.
         /// </summary>
         [JsonPropertyName("minLevelRequired")]
         public int MinLevelRequired { get; init; }
+
         /// <summary>
         /// The maximum Character Level required for equipping the item when the item spawns at the item level defined on this DestinyItemSourceDefinition, as far as we saw in our processing.
         /// </summary>
         [JsonPropertyName("maxLevelRequired")]
         public int MaxLevelRequired { get; init; }
+
         /// <summary>
         /// The stats computed for this level/quality range.
         /// </summary>
         [JsonPropertyName("computedStats")]
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, DestinyInventoryItemStatDefinition> ComputedStats { get; init; } = Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, DestinyInventoryItemStatDefinition>();
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, DestinyInventoryItemStatDefinition>
+            ComputedStats { get; init; } =
+            Defaults
+                .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>,
+                    DestinyInventoryItemStatDefinition>();
+
         /// <summary>
         /// The DestinyRewardSourceDefinitions found that can spawn the item at this level.
         /// </summary>
         [JsonPropertyName("sourceHashes")]
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyRewardSourceDefinition>> Sources { get; init; } = Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyRewardSourceDefinition>>();
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyRewardSourceDefinition>> Sources { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyRewardSourceDefinition>>();
 
         public bool DeepEquals(DestinyItemSourceDefinition other)
         {
@@ -58,7 +69,6 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                    MaxLevelRequired == other.MaxLevelRequired &&
                    ComputedStats.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(other.ComputedStats) &&
                    Sources.DeepEqualsReadOnlyCollections(other.Sources);
-
         }
     }
 }

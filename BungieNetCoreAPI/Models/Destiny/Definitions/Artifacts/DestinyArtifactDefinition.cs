@@ -23,7 +23,8 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Artifacts
         /// Any Tier/Rank data related to this artifact, listed in display order. Currently sourced from a Vendor, but this source is subject to change.
         /// </summary>
         [JsonPropertyName("tiers")]
-        public ReadOnlyCollection<DestinyArtifactTierDefinition> Tiers { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyArtifactTierDefinition>();
+        public ReadOnlyCollection<DestinyArtifactTierDefinition> Tiers { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyArtifactTierDefinition>();
 
         /// <summary>
         /// Any Geometry/3D info we know about the Artifact. Currently sourced from a related inventory item's gearset information, but the source of this data is subject to change.
@@ -31,17 +32,13 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Artifacts
         [JsonPropertyName("translationBlock")]
         public DestinyItemTranslationBlockDefinition TranslationBlock { get; init; }
 
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
 
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
 
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
         public override string ToString()
         {
