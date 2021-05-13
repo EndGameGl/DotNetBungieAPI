@@ -7,6 +7,10 @@ namespace NetBungieAPI.Models.Destiny.Components
     public sealed record DestinyPresentationNodesComponent
     {
         [JsonPropertyName("nodes")]
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyPresentationNodeDefinition>, DestinyPresentationNodeComponent> Nodes { get; init; } = Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyPresentationNodeDefinition>, DestinyPresentationNodeComponent>();
+        public
+            ReadOnlyDictionary<DefinitionHashPointer<DestinyPresentationNodeDefinition>,
+                DestinyPresentationNodeComponent> Nodes { get; init; } = Defaults
+            .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyPresentationNodeDefinition>,
+                DestinyPresentationNodeComponent>();
     }
 }

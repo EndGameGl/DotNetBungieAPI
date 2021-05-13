@@ -4,10 +4,19 @@ namespace NetBungieAPI.Models.Requests
 {
     public sealed class DestinyInsertPlugsActionRequest
     {
+        /// <summary>
+        /// Action token provided by the AwaGetActionToken API call.
+        /// </summary>
         [JsonPropertyName("actionToken")]
         public string ActionToken { get; }
+        /// <summary>
+        /// The instance ID of the item having a plug inserted. Only instanced items can have sockets.
+        /// </summary>
         [JsonPropertyName("itemInstanceId")]
         public long ItemInstanceId { get; }
+        /// <summary>
+        /// The plugs being inserted.
+        /// </summary>
         [JsonPropertyName("plug")]
         public DestinyInsertPlugsRequestEntry Plug { get; }
         [JsonPropertyName("characterId")]

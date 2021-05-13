@@ -24,7 +24,8 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Checklists
         /// The individual checklist items.
         /// </summary>
         [JsonPropertyName("entries")]
-        public ReadOnlyCollection<DestinyChecklistEntryDefinition> Entries { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyChecklistEntryDefinition>();
+        public ReadOnlyCollection<DestinyChecklistEntryDefinition> Entries { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyChecklistEntryDefinition>();
 
         /// <summary>
         /// Indicates whether you will find this checklist on the Profile or Character components.
@@ -38,17 +39,13 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Checklists
         [JsonPropertyName("viewActionString")]
         public string ViewActionString { get; init; }
 
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
 
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
 
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
         public override string ToString()
         {
@@ -67,6 +64,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Checklists
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
+
         public void MapValues()
         {
             foreach (var entry in Entries)

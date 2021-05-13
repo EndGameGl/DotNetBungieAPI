@@ -1,6 +1,7 @@
 ﻿using NetBungieAPI.Models.Destiny.Definitions.PlugSets;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Sockets;
 
 namespace NetBungieAPI.Models.Destiny.Components
 {
@@ -15,7 +16,10 @@ namespace NetBungieAPI.Models.Destiny.Components
         /// The shared list of plugs for each relevant PlugSet, keyed by the hash identifier of the PlugSet (DestinyPlugSetDefinition).
         /// </summary>
         [JsonPropertyName("plugs")]
-        public ReadOnlyDictionary<DefinitionHashPointer<DestinyPlugSetDefinition>, object[]> Plugs { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyPlugSetDefinition>, object[]>();
+        public ReadOnlyDictionary<DefinitionHashPointer<DestinyPlugSetDefinition>, ReadOnlyCollection<DestinyItemPlug>>
+            Plugs { get; init; } =
+            Defaults
+                .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyPlugSetDefinition>,
+                    ReadOnlyCollection<DestinyItemPlug>>();
     }
 }

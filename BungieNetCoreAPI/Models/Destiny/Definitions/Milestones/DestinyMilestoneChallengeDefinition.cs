@@ -3,10 +3,14 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Milestones
 {
-    public class DestinyMilestoneChallengeDefinition : IDeepEquatable<DestinyMilestoneChallengeDefinition>
+    public sealed record DestinyMilestoneChallengeDefinition : IDeepEquatable<DestinyMilestoneChallengeDefinition>
     {
+        /// <summary>
+        /// The challenge related to this milestone.
+        /// </summary>
         [JsonPropertyName("challengeObjectiveHash")]
-        public DefinitionHashPointer<DestinyObjectiveDefinition> ChallengeObjective { get; init; } = DefinitionHashPointer<DestinyObjectiveDefinition>.Empty;
+        public DefinitionHashPointer<DestinyObjectiveDefinition> ChallengeObjective { get; init; } =
+            DefinitionHashPointer<DestinyObjectiveDefinition>.Empty;
 
         public bool DeepEquals(DestinyMilestoneChallengeDefinition other)
         {

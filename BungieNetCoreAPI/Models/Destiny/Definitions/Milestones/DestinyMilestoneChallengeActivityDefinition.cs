@@ -4,16 +4,35 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Milestones
 {
-    public sealed record DestinyMilestoneChallengeActivityDefinition : IDeepEquatable<DestinyMilestoneChallengeActivityDefinition>
+    public sealed record
+        DestinyMilestoneChallengeActivityDefinition : IDeepEquatable<DestinyMilestoneChallengeActivityDefinition>
     {
+        /// <summary>
+        /// The activity for which this challenge is active.
+        /// </summary>
         [JsonPropertyName("activityHash")]
-        public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; init; } = DefinitionHashPointer<DestinyActivityDefinition>.Empty;
+        public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; init; } =
+            DefinitionHashPointer<DestinyActivityDefinition>.Empty;
+
+        /// <summary>
+        /// If the activity and its challenge is visible on any of these nodes, it will be returned.
+        /// </summary>
         [JsonPropertyName("activityGraphNodes")]
-        public ReadOnlyCollection<DestinyMilestoneChallengeActivityGraphNodeEntry> ActivityGraphNodes { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyMilestoneChallengeActivityGraphNodeEntry>();
+        public ReadOnlyCollection<DestinyMilestoneChallengeActivityGraphNodeEntry> ActivityGraphNodes { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyMilestoneChallengeActivityGraphNodeEntry>();
+
         [JsonPropertyName("challenges")]
-        public ReadOnlyCollection<DestinyMilestoneChallengeDefinition> Challenges { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyMilestoneChallengeDefinition>();
+        public ReadOnlyCollection<DestinyMilestoneChallengeDefinition> Challenges { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyMilestoneChallengeDefinition>();
+
+        /// <summary>
+        /// Phases related to this activity, if there are any.
+        /// <para/>
+        /// These will be listed in the order in which they will appear in the actual activity.
+        /// </summary>
         [JsonPropertyName("phases")]
-        public ReadOnlyCollection<DestinyMilestoneChallengeActivityPhase> Phases { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyMilestoneChallengeActivityPhase>();
+        public ReadOnlyCollection<DestinyMilestoneChallengeActivityPhase> Phases { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyMilestoneChallengeActivityPhase>();
 
         public bool DeepEquals(DestinyMilestoneChallengeActivityDefinition other)
         {

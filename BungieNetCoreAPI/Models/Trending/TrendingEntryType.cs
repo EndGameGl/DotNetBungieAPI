@@ -1,5 +1,8 @@
 ﻿namespace NetBungieAPI.Models.Trending
 {
+    /// <summary>
+    /// The known entity types that you can have returned from Trending.
+    /// </summary>
     public enum TrendingEntryType
     {
         News = 0,

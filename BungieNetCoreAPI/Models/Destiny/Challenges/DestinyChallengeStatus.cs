@@ -8,7 +8,7 @@ namespace NetBungieAPI.Models.Destiny.Challenges
     /// <para/>
     /// A challenge is a bonus objective, generally tacked onto Quests or Activities, that provide additional variations on play.
     /// </summary>
-    public class DestinyChallengeStatus
+    public sealed record DestinyChallengeStatus
     {
         /// <summary>
         /// The progress - including completion status - of the active challenge.

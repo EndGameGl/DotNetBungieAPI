@@ -7,6 +7,7 @@ namespace NetBungieAPI.Models.Destiny.HistoricalStats
     {
         [JsonPropertyName("mergedDeletedCharacters")]
         public DestinyHistoricalStatsWithMerged MergedDeletedCharacters { get; init; }
+
         [JsonPropertyName("mergedAllCharacters")]
         public DestinyHistoricalStatsWithMerged MergedAllCharacters { get; init; }
 

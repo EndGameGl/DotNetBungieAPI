@@ -2,7 +2,10 @@
 
 namespace NetBungieAPI.Models.User
 {
-    public record EmailSettingSubscriptionLocalization
+    /// <summary>
+    /// Localized text relevant to a given Email setting in a given localization. Extra settings specifically for subscriptions.
+    /// </summary>
+    public sealed record EmailSettingSubscriptionLocalization
     {
         [JsonPropertyName("unknownUserDescription")]
         public string UnknownUserDescription { get; init; }

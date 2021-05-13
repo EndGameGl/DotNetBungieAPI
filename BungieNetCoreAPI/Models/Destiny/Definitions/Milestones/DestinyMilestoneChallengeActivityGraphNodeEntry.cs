@@ -3,10 +3,12 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Milestones
 {
-    public sealed record DestinyMilestoneChallengeActivityGraphNodeEntry : IDeepEquatable<DestinyMilestoneChallengeActivityGraphNodeEntry>
+    public sealed record DestinyMilestoneChallengeActivityGraphNodeEntry 
+        : IDeepEquatable<DestinyMilestoneChallengeActivityGraphNodeEntry>
     {
         [JsonPropertyName("activityGraphHash")]
-        public DefinitionHashPointer<DestinyActivityGraphDefinition> ActivityGraph { get; init; } = DefinitionHashPointer<DestinyActivityGraphDefinition>.Empty;
+        public DefinitionHashPointer<DestinyActivityGraphDefinition> ActivityGraph { get; init; } =
+            DefinitionHashPointer<DestinyActivityGraphDefinition>.Empty;
 
         [JsonPropertyName("activityGraphNodeHash")]
         public uint ActivityGraphNodeHash { get; init; }
@@ -14,8 +16,8 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Milestones
         public bool DeepEquals(DestinyMilestoneChallengeActivityGraphNodeEntry other)
         {
             return other != null &&
-                ActivityGraph.DeepEquals(other.ActivityGraph) &&
-                ActivityGraphNodeHash == other.ActivityGraphNodeHash;
+                   ActivityGraph.DeepEquals(other.ActivityGraph) &&
+                   ActivityGraphNodeHash == other.ActivityGraphNodeHash;
         }
     }
 }

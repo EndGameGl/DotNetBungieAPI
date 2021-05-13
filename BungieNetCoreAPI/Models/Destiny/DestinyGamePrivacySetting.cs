@@ -1,5 +1,8 @@
 ﻿namespace NetBungieAPI.Models.Destiny
 {
+    /// <summary>
+    /// A player can choose to restrict requests to join their Fireteam to specific states. These are the possible states a user can choose.
+    /// </summary>
     public enum DestinyGamePrivacySetting
     {
         Open = 0,
