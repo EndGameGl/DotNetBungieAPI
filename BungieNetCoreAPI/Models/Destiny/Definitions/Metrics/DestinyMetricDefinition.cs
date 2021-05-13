@@ -13,26 +13,35 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Metrics
     {
         [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+
         [JsonPropertyName("trackingObjectiveHash")]
-        public DefinitionHashPointer<DestinyObjectiveDefinition> TrackingObjective { get; init; } = DefinitionHashPointer<DestinyObjectiveDefinition>.Empty;
+        public DefinitionHashPointer<DestinyObjectiveDefinition> TrackingObjective { get; init; } =
+            DefinitionHashPointer<DestinyObjectiveDefinition>.Empty;
+
         [JsonPropertyName("lowerValueIsBetter")]
         public bool LowerValueIsBetter { get; init; }
+
         [JsonPropertyName("presentationNodeType")]
         public DestinyPresentationNodeType PresentationNodeType { get; init; }
+
         [JsonPropertyName("traitIds")]
-        public ReadOnlyCollection<string> TraitIds { get; init; }
+        public ReadOnlyCollection<string> TraitIds { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
+
         [JsonPropertyName("traitHashes")]
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; } = Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>();
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>();
+
+        /// <summary>
+        /// A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under multiple parents.
+        /// </summary>
         [JsonPropertyName("parentNodeHashes")]
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentNodes { get; init; } = Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentNodes { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
+
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
         public override string ToString()
         {
@@ -54,12 +63,14 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Metrics
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
+
         public void MapValues()
         {
             foreach (var node in ParentNodes)
             {
                 node.TryMapValue();
             }
+
             TrackingObjective.TryMapValue();
             foreach (var trait in Traits)
             {

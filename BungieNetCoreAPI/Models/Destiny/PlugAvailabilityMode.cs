@@ -1,5 +1,8 @@
 ﻿namespace NetBungieAPI.Models.Destiny
 {
+    /// <summary>
+    /// This enum determines whether the plug is available to be inserted.
+    /// </summary>
     public enum PlugAvailabilityMode
     {
         /// <summary>

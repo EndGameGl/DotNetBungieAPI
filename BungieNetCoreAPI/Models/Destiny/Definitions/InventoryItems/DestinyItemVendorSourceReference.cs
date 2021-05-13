@@ -17,7 +17,9 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// The vendor that may sell this item.
         /// </summary>
         [JsonPropertyName("vendorHash")]
-        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; init; } = DefinitionHashPointer<DestinyVendorDefinition>.Empty;
+        public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; init; } =
+            DefinitionHashPointer<DestinyVendorDefinition>.Empty;
+
         /// <summary>
         /// The Vendor sale item indexes that represent the sale information for this item. The same vendor may sell an item in multiple "ways", hence why this is a list. (for instance, a weapon may be "sold" as a reward in a quest, for Glimmer, and for Masterwork Cores: each of those ways would be represented by a different vendor sale item with a different index)
         /// </summary>

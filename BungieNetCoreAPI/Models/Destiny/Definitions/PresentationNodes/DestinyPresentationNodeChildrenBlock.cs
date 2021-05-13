@@ -9,13 +9,20 @@ namespace NetBungieAPI.Models.Destiny.Definitions.PresentationNodes
     public sealed record DestinyPresentationNodeChildrenBlock : IDeepEquatable<DestinyPresentationNodeChildrenBlock>
     {
         [JsonPropertyName("presentationNodes")]
-        public ReadOnlyCollection<DestinyPresentationNodeChildEntry> PresentationNodes { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyPresentationNodeChildEntry>();
+        public ReadOnlyCollection<DestinyPresentationNodeChildEntry> PresentationNodes { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyPresentationNodeChildEntry>();
+
         [JsonPropertyName("collectibles")]
-        public ReadOnlyCollection<DestinyPresentationNodeCollectibleChildEntry> Collectibles { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyPresentationNodeCollectibleChildEntry>();
+        public ReadOnlyCollection<DestinyPresentationNodeCollectibleChildEntry> Collectibles { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyPresentationNodeCollectibleChildEntry>();
+
         [JsonPropertyName("records")]
-        public ReadOnlyCollection<DestinyPresentationNodeRecordChildEntry> Records { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyPresentationNodeRecordChildEntry>();
+        public ReadOnlyCollection<DestinyPresentationNodeRecordChildEntry> Records { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyPresentationNodeRecordChildEntry>();
+
         [JsonPropertyName("metrics")]
-        public ReadOnlyCollection<DestinyPresentationNodeMetricChildEntry> Metrics { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyPresentationNodeMetricChildEntry>();
+        public ReadOnlyCollection<DestinyPresentationNodeMetricChildEntry> Metrics { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyPresentationNodeMetricChildEntry>();
 
         public bool DeepEquals(DestinyPresentationNodeChildrenBlock other)
         {

@@ -13,16 +13,19 @@ namespace NetBungieAPI.Models.Destiny.Definitions
         /// </summary>
         [JsonPropertyName("count")]
         public int Count { get; init; }
+
         /// <summary>
         /// If True, the material will be removed from the character's inventory when the action is performed.
         /// </summary>
         [JsonPropertyName("deleteOnAction")]
         public bool DeleteOnAction { get; init; }
+
         /// <summary>
         /// The material required
         /// </summary>
         [JsonPropertyName("itemHash")]
         public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; init; }
+
         /// <summary>
         /// If True, this requirement is "silent": don't bother showing it in a material requirements display. I mean, I'm not your mom: I'm not going to tell you you *can't* show it. But we won't show it in our UI.
         /// </summary>

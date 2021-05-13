@@ -5,6 +5,9 @@
     /// </summary>
     public enum DestinyPresentationDisplayStyle
     {
+        /// <summary>
+        /// Display the item as a category, through which sub-items are filtered.
+        /// </summary>
         Category = 0,
         Badge = 1,
         Medals = 2,

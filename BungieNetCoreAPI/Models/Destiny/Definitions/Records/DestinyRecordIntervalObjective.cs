@@ -6,7 +6,9 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Records
     public class DestinyRecordIntervalObjective : IDeepEquatable<DestinyRecordIntervalObjective>
     {
         [JsonPropertyName("intervalObjectiveHash")]
-        public DefinitionHashPointer<DestinyObjectiveDefinition> IntervalObjective { get; init; } = DefinitionHashPointer<DestinyObjectiveDefinition>.Empty;
+        public DefinitionHashPointer<DestinyObjectiveDefinition> IntervalObjective { get; init; } =
+            DefinitionHashPointer<DestinyObjectiveDefinition>.Empty;
+
         [JsonPropertyName("intervalScoreValue")]
         public int IntervalScoreValue { get; init; }
 

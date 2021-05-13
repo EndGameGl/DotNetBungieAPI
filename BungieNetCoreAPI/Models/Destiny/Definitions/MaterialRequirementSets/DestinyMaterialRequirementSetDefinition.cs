@@ -10,21 +10,20 @@ namespace NetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets
     /// A variety of other entities refer to these as gatekeepers and payments for actions that can be performed in game.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyMaterialRequirementSetDefinition)]
-    public sealed record DestinyMaterialRequirementSetDefinition : IDestinyDefinition, IDeepEquatable<DestinyMaterialRequirementSetDefinition>
+    public sealed record DestinyMaterialRequirementSetDefinition : IDestinyDefinition,
+        IDeepEquatable<DestinyMaterialRequirementSetDefinition>
     {
         /// <summary>
         /// The list of all materials that are required.
         /// </summary>
         [JsonPropertyName("materials")]
-        public ReadOnlyCollection<DestinyMaterialRequirement> Materials { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyMaterialRequirement>();
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+        public ReadOnlyCollection<DestinyMaterialRequirement> Materials { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyMaterialRequirement>();
+
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
         public override string ToString()
         {

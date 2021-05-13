@@ -12,16 +12,12 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Lores
     {
         [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
-        [JsonPropertyName("subtitle")]
-        public string Subtitle { get; init; }
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+
+        [JsonPropertyName("subtitle")] public string Subtitle { get; init; }
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
         public override string ToString()
         {
@@ -39,6 +35,9 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Lores
                    Redacted == other.Redacted;
         }
 
-        public void MapValues() { return; }
+        public void MapValues()
+        {
+            return;
+        }
     }
 }

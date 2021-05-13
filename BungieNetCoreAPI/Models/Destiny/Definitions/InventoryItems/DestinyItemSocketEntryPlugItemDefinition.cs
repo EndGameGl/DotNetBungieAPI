@@ -7,8 +7,12 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
     /// </summary>
     public class DestinyItemSocketEntryPlugItemDefinition : IDeepEquatable<DestinyItemSocketEntryPlugItemDefinition>
     {
-        [JsonPropertyName("defaultVisible")]
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> PlugItem { get; init; } = DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
+        /// <summary>
+        /// DestinyInventoryItemDefinition representing the plug that can be inserted.
+        /// </summary>
+        [JsonPropertyName("plugItemHash")]
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> PlugItem { get; init; } =
+            DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
 
         public bool DeepEquals(DestinyItemSocketEntryPlugItemDefinition other)
         {

@@ -131,6 +131,8 @@ namespace NetBungieAPI.TestProject
             sw.Stop();
             Console.WriteLine($"Startup in: {sw.ElapsedMilliseconds} ms");
 
+            var items = _bungieClient.Repository.GetAll<DestinyInventoryItemDefinition>().ToList();
+
             await Task.Delay(Timeout.Infinite);
         }
 

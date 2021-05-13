@@ -6,11 +6,16 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Records
     public sealed record DestinyRecordIntervalBlock : IDeepEquatable<DestinyRecordIntervalBlock>
     {
         [JsonPropertyName("intervalObjectives")]
-        public ReadOnlyCollection<DestinyRecordIntervalObjective> IntervalObjectives { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyRecordIntervalObjective>();
+        public ReadOnlyCollection<DestinyRecordIntervalObjective> IntervalObjectives { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyRecordIntervalObjective>();
+
         [JsonPropertyName("intervalRewards")]
-        public ReadOnlyCollection<DestinyRecordIntervalRewards> IntervalRewards { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyRecordIntervalRewards>();
+        public ReadOnlyCollection<DestinyRecordIntervalRewards> IntervalRewards { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyRecordIntervalRewards>();
+
         [JsonPropertyName("isIntervalVersionedFromNormalRecord")]
         public bool IsIntervalVersionedFromNormalRecord { get; init; }
+
         [JsonPropertyName("originalObjectiveArrayInsertionIndex")]
         public int OriginalObjectiveArrayInsertionIndex { get; init; }
 

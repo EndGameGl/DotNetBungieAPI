@@ -8,10 +8,22 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
     /// </summary>
     public sealed record DestinyEnergyCostEntry : IDeepEquatable<DestinyEnergyCostEntry>
     {
+        /// <summary>
+        /// The Energy cost for inserting this plug.
+        /// </summary>
         [JsonPropertyName("energyCost")]
         public int EnergyCost { get; init; }
+
+        /// <summary>
+        /// The type of energy that this plug costs, as a reference to the DestinyEnergyTypeDefinition of the energy type.
+        /// </summary>
         [JsonPropertyName("energyTypeHash")]
-        public DefinitionHashPointer<DestinyEnergyTypeDefinition> EnergyType { get; init; } = DefinitionHashPointer<DestinyEnergyTypeDefinition>.Empty;
+        public DefinitionHashPointer<DestinyEnergyTypeDefinition> EnergyType { get; init; } =
+            DefinitionHashPointer<DestinyEnergyTypeDefinition>.Empty;
+
+        /// <summary>
+        /// The type of energy that this plug costs, in enum form.
+        /// </summary>
         [JsonPropertyName("energyType")]
         public DestinyEnergyType EnergyTypeEnumValue { get; init; }
 

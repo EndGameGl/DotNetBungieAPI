@@ -3,10 +3,12 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.PresentationNodes
 {
-    public sealed record DestinyPresentationNodeMetricChildEntry : IDeepEquatable<DestinyPresentationNodeMetricChildEntry>
+    public sealed record
+        DestinyPresentationNodeMetricChildEntry : IDeepEquatable<DestinyPresentationNodeMetricChildEntry>
     {
         [JsonPropertyName("metricHash")]
-        public DefinitionHashPointer<DestinyMetricDefinition> Metric { get; init; } = DefinitionHashPointer<DestinyMetricDefinition>.Empty;
+        public DefinitionHashPointer<DestinyMetricDefinition> Metric { get; init; } =
+            DefinitionHashPointer<DestinyMetricDefinition>.Empty;
 
         public bool DeepEquals(DestinyPresentationNodeMetricChildEntry other)
         {

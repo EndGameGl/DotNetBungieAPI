@@ -12,17 +12,16 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("detailAction")]
         public string DetailAction { get; init; }
+
         /// <summary>
         /// The localized name of the action being performed when you open the sack.
         /// </summary>
         [JsonPropertyName("openAction")]
         public string OpenAction { get; init; }
-        [JsonPropertyName("selectItemCount")]
-        public int SelectItemCount { get; init; }
-        [JsonPropertyName("vendorSackType")]
-        public string VendorSackType { get; init; }
-        [JsonPropertyName("openOnAcquire")]
-        public bool OpenOnAcquire { get; init; }
+
+        [JsonPropertyName("selectItemCount")] public int SelectItemCount { get; init; }
+        [JsonPropertyName("vendorSackType")] public string VendorSackType { get; init; }
+        [JsonPropertyName("openOnAcquire")] public bool OpenOnAcquire { get; init; }
 
         public bool DeepEquals(DestinyItemSackBlockDefinition other)
         {

@@ -8,17 +8,22 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Collectibles
     {
         [JsonPropertyName("runOnlyAcquisitionRewardSite")]
         public bool RunOnlyAcquisitionRewardSite { get; init; }
+
         [JsonPropertyName("acquireMaterialRequirementHash")]
-        public DefinitionHashPointer<DestinyMaterialRequirementSetDefinition> AcquireMaterialRequirement { get; init; } = DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>.Empty;
+        public DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>
+            AcquireMaterialRequirement { get; init; } =
+            DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>.Empty;
+
         [JsonPropertyName("acquireTimestampUnlockValueHash")]
-        public DefinitionHashPointer<DestinyUnlockValueDefinition> AcquireTimestampUnlockValue { get; init; } = DefinitionHashPointer<DestinyUnlockValueDefinition>.Empty;
+        public DefinitionHashPointer<DestinyUnlockValueDefinition> AcquireTimestampUnlockValue { get; init; } =
+            DefinitionHashPointer<DestinyUnlockValueDefinition>.Empty;
 
         public bool DeepEquals(DestinyCollectibleAcquisitionBlock other)
         {
             return other != null &&
-                RunOnlyAcquisitionRewardSite == other.RunOnlyAcquisitionRewardSite &&
-                AcquireMaterialRequirement.DeepEquals(other.AcquireMaterialRequirement) &&
-                AcquireTimestampUnlockValue.DeepEquals(other.AcquireTimestampUnlockValue);
+                   RunOnlyAcquisitionRewardSite == other.RunOnlyAcquisitionRewardSite &&
+                   AcquireMaterialRequirement.DeepEquals(other.AcquireMaterialRequirement) &&
+                   AcquireTimestampUnlockValue.DeepEquals(other.AcquireTimestampUnlockValue);
         }
     }
 }

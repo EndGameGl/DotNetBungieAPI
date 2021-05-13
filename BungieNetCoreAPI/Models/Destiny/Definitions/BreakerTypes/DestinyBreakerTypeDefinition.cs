@@ -10,23 +10,21 @@ namespace NetBungieAPI.Models.Destiny.Definitions.BreakerTypes
         [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
-        [JsonPropertyName("unlockHash")]
-        public uint UnlockHash { get; init; }
+        [JsonPropertyName("unlockHash")] public uint UnlockHash { get; init; }
 
+        /// <summary>
+        /// We have an enumeration for Breaker types for quick reference. This is the current definition's breaker type enum value.
+        /// </summary>
         [JsonPropertyName("enumValue")]
         public DestinyBreakerType EnumValue { get; init; }
 
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
 
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
 
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
         public override string ToString()
         {
@@ -44,6 +42,10 @@ namespace NetBungieAPI.Models.Destiny.Definitions.BreakerTypes
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
-        public void MapValues() { return; }
+
+        public void MapValues()
+        {
+            return;
+        }
     }
 }

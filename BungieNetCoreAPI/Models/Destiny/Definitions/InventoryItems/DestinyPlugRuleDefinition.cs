@@ -9,6 +9,9 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
     /// </summary>
     public sealed record DestinyPlugRuleDefinition : IDeepEquatable<DestinyPlugRuleDefinition>
     {
+        /// <summary>
+        /// The localized string to show if this rule fails.
+        /// </summary>
         [JsonPropertyName("failureMessage")]
         public string FailureMessage { get; init; }
 

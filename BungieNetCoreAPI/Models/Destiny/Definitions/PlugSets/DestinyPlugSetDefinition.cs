@@ -11,8 +11,12 @@ namespace NetBungieAPI.Models.Destiny.Definitions.PlugSets
     [DestinyDefinition(DefinitionsEnum.DestinyPlugSetDefinition)]
     public sealed record DestinyPlugSetDefinition : IDestinyDefinition, IDeepEquatable<DestinyPlugSetDefinition>
     {
+        /// <summary>
+        /// If you want to show these plugs in isolation, these are the display properties for them.
+        /// </summary>
         [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+
         /// <summary>
         /// Mostly for our debugging or reporting bugs, BNet is making "fake" plug sets in a desperate effort to reduce socket sizes.
         /// <para/>
@@ -20,21 +24,20 @@ namespace NetBungieAPI.Models.Destiny.Definitions.PlugSets
         /// </summary>
         [JsonPropertyName("isFakePlugSet")]
         public bool IsFakePlugSet { get; init; }
+
         /// <summary>
         /// This is a list of pre-determined plugs that can be plugged into this socket, without the character having the plug in their inventory.
         /// <para/>
         /// If this list is populated, you will not be allowed to plug an arbitrary item in the socket: you will only be able to choose from one of these reusable plugs.
         /// </summary>
         [JsonPropertyName("reusablePlugItems")]
-        public ReadOnlyCollection<DestinyItemSocketEntryPlugItemRandomizedDefinition> ReusablePlugItems { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyItemSocketEntryPlugItemRandomizedDefinition>();
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+        public ReadOnlyCollection<DestinyItemSocketEntryPlugItemRandomizedDefinition> ReusablePlugItems { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyItemSocketEntryPlugItemRandomizedDefinition>();
+
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
         public override string ToString()
         {
@@ -44,7 +47,9 @@ namespace NetBungieAPI.Models.Destiny.Definitions.PlugSets
         public bool DeepEquals(DestinyPlugSetDefinition other)
         {
             return other != null &&
-                   (DisplayProperties != null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties == null) &&
+                   (DisplayProperties != null
+                       ? DisplayProperties.DeepEquals(other.DisplayProperties)
+                       : other.DisplayProperties == null) &&
                    IsFakePlugSet == other.IsFakePlugSet &&
                    ReusablePlugItems.DeepEqualsReadOnlyCollections(other.ReusablePlugItems) &&
                    Blacklisted == other.Blacklisted &&
@@ -52,6 +57,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.PlugSets
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
+
         public void MapValues()
         {
             foreach (var item in ReusablePlugItems)

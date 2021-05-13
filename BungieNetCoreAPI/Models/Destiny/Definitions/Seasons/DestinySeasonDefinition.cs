@@ -10,43 +10,62 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Seasons
 {
+    /// <summary>
+    /// Defines a canonical "Season" of Destiny: a range of a few months where the game highlights certain challenges, provides new loot, has new Clan-related rewards and celebrates various seasonal events.
+    /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinySeasonDefinition)]
     public sealed record DestinySeasonDefinition : IDestinyDefinition, IDeepEquatable<DestinySeasonDefinition>
     {
         [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+
         [JsonPropertyName("backgroundImagePath")]
         public string BackgroundImagePath { get; init; }
-        [JsonPropertyName("seasonNumber")]
-        public int SeasonNumber { get; init; }
-        [JsonPropertyName("startDate")]
-        public DateTime? StartDate { get; init; }
-        [JsonPropertyName("endDate")]
-        public DateTime? EndDate { get; init; }
+
+        [JsonPropertyName("seasonNumber")] public int SeasonNumber { get; init; }
+        [JsonPropertyName("startDate")] public DateTime? StartDate { get; init; }
+        [JsonPropertyName("endDate")] public DateTime? EndDate { get; init; }
+
         [JsonPropertyName("seasonPassHash")]
-        public DefinitionHashPointer<DestinySeasonPassDefinition> SeasonPass { get; init; } = DefinitionHashPointer<DestinySeasonPassDefinition>.Empty;
+        public DefinitionHashPointer<DestinySeasonPassDefinition> SeasonPass { get; init; } =
+            DefinitionHashPointer<DestinySeasonPassDefinition>.Empty;
+
         [JsonPropertyName("seasonPassProgressionHash")]
-        public DefinitionHashPointer<DestinyProgressionDefinition> SeasonPassProgression { get; init; } = DefinitionHashPointer<DestinyProgressionDefinition>.Empty;
+        public DefinitionHashPointer<DestinyProgressionDefinition> SeasonPassProgression { get; init; } =
+            DefinitionHashPointer<DestinyProgressionDefinition>.Empty;
+
         [JsonPropertyName("artifactItemHash")]
-        public DefinitionHashPointer<DestinyInventoryItemDefinition> ArtifactItem { get; init; } = DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
+        public DefinitionHashPointer<DestinyInventoryItemDefinition> ArtifactItem { get; init; } =
+            DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
+
         [JsonPropertyName("sealPresentationNodeHash")]
-        public DefinitionHashPointer<DestinyPresentationNodeDefinition> SealPresentationNode { get; init; } = DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
+        public DefinitionHashPointer<DestinyPresentationNodeDefinition> SealPresentationNode { get; init; } =
+            DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
+
         [JsonPropertyName("seasonalChallengesPresentationNodeHash")]
-        public DefinitionHashPointer<DestinyPresentationNodeDefinition> SeasonalChallengesPresentationNode { get; init; } = DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
+        public DefinitionHashPointer<DestinyPresentationNodeDefinition> SeasonalChallengesPresentationNode
+        {
+            get;
+            init;
+        } = DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
+
         [JsonPropertyName("seasonPassUnlockHash")]
-        public DefinitionHashPointer<DestinyUnlockDefinition> SeasonPassUnlock { get; init; } = DefinitionHashPointer<DestinyUnlockDefinition>.Empty;
+        public DefinitionHashPointer<DestinyUnlockDefinition> SeasonPassUnlock { get; init; } =
+            DefinitionHashPointer<DestinyUnlockDefinition>.Empty;
+
         [JsonPropertyName("startTimeInSeconds")]
         public string StartTimeInSeconds { get; init; }
+
+        /// <summary>
+        /// Optional - Defines the promotional text, images, and links to preview this season.
+        /// </summary>
         [JsonPropertyName("preview")]
         public DestinySeasonPreviewDefinition Preview { get; init; }
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
         public override string ToString()
         {

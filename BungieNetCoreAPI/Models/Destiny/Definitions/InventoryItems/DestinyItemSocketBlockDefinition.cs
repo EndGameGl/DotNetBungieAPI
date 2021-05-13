@@ -13,21 +13,27 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("detail")]
         public string Detail { get; init; }
+
         /// <summary>
         /// Each intrinsic (or immutable/permanent) socket on an item is defined here, along with the plug that is permanently affixed to the socket.
         /// </summary>
         [JsonPropertyName("intrinsicSockets")]
-        public ReadOnlyCollection<DestinyItemIntrinsicSocketEntryDefinition> IntrinsicSockets { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyItemIntrinsicSocketEntryDefinition>();
+        public ReadOnlyCollection<DestinyItemIntrinsicSocketEntryDefinition> IntrinsicSockets { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyItemIntrinsicSocketEntryDefinition>();
+
         /// <summary>
         /// A convenience property, that refers to the sockets in the "sockets" property, pre-grouped by category and ordered in the manner that they should be grouped in the UI.
         /// </summary>
         [JsonPropertyName("socketCategories")]
-        public ReadOnlyCollection<DestinyItemSocketCategoryDefinition> SocketCategories { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyItemSocketCategoryDefinition>();
+        public ReadOnlyCollection<DestinyItemSocketCategoryDefinition> SocketCategories { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyItemSocketCategoryDefinition>();
+
         /// <summary>
         /// Each non-intrinsic (or mutable) socket on an item is defined here.
         /// </summary>
         [JsonPropertyName("socketEntries")]
-        public ReadOnlyCollection<DestinyItemSocketEntryDefinition> SocketEntries { get; init; } = Defaults.EmptyReadOnlyCollection<DestinyItemSocketEntryDefinition>();
+        public ReadOnlyCollection<DestinyItemSocketEntryDefinition> SocketEntries { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyItemSocketEntryDefinition>();
 
         public bool DeepEquals(DestinyItemSocketBlockDefinition other)
         {
@@ -37,6 +43,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                    SocketCategories.DeepEqualsReadOnlyCollections(other.SocketCategories) &&
                    SocketEntries.DeepEqualsReadOnlyCollections(other.SocketEntries);
         }
+
         public override string ToString()
         {
             return $"{SocketEntries.Count} sockets available.";
