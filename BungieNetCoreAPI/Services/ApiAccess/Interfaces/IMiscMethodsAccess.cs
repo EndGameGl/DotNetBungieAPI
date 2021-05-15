@@ -13,14 +13,16 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// </summary>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<Dictionary<string, string>>> GetAvailableLocales(CancellationToken token = default);
+        ValueTask<BungieResponse<Dictionary<string, string>>> GetAvailableLocales(
+            CancellationToken token = default);
 
         /// <summary>
         /// Get the common settings used by the Bungie.Net environment.
         /// </summary>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<CoreSettingsConfiguration>> GetCommonSettings(CancellationToken token = default);
+        ValueTask<BungieResponse<CoreSettingsConfiguration>> GetCommonSettings(
+            CancellationToken token = default);
 
         /// <summary>
         /// Get the user-specific system overrides that should be respected alongside common systems.
@@ -36,7 +38,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="includestreaming">Determines whether Streaming Alerts are included in results</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<GlobalAlert[]>> GetGlobalAlerts(bool includestreaming = false,
+        ValueTask<BungieResponse<GlobalAlert[]>> GetGlobalAlerts(
+            bool includestreaming = false,
             CancellationToken token = default);
     }
 }

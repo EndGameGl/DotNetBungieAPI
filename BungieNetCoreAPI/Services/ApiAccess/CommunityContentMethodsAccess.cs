@@ -17,8 +17,11 @@ namespace NetBungieAPI
             _httpClient = httpClient;
         }
 
-        public async ValueTask<BungieResponse<PostSearchResponse>> GetCommunityContent(ForumTopicsSortEnum sort,
-            ForumMediaType mediaFilter, int page = 0, CancellationToken token = default)
+        public async ValueTask<BungieResponse<PostSearchResponse>> GetCommunityContent(
+            ForumTopicsSortEnum sort,
+            ForumMediaType mediaFilter,
+            int page = 0, 
+            CancellationToken token = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(token)

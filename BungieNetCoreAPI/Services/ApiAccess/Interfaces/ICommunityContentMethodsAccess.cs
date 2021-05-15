@@ -16,7 +16,10 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="page">Zero based page</param>
         /// <param name="token"></param>
         /// <returns></returns>
-        ValueTask<BungieResponse<PostSearchResponse>> GetCommunityContent(ForumTopicsSortEnum sort,
-            ForumMediaType mediaFilter, int page = 0, CancellationToken token = default);
+        ValueTask<BungieResponse<PostSearchResponse>> GetCommunityContent(
+            ForumTopicsSortEnum sort,
+            ForumMediaType mediaFilter,
+            int page = 0,
+            CancellationToken token = default);
     }
 }

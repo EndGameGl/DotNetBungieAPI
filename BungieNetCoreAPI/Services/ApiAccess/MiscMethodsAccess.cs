@@ -37,7 +37,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 token);
         }
 
-        public async ValueTask<BungieResponse<GlobalAlert[]>> GetGlobalAlerts(bool includestreaming = false,
+        public async ValueTask<BungieResponse<GlobalAlert[]>> GetGlobalAlerts(
+            bool includestreaming = false,
             CancellationToken token = default)
         {
             var url = StringBuilderPool

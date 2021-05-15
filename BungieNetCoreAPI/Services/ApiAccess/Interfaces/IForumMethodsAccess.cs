@@ -22,9 +22,16 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="locales">Comma seperated list of locales posts must match to return in the result list. Default 'en'</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<PostSearchResponse>> GetTopicsPaged(ForumPostCategoryEnums categoryFilter,
-            ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort, long group, int pageSize = 0, int page = 0,
-            string tagstring = null, BungieLocales[] locales = null, CancellationToken token = default);
+        ValueTask<BungieResponse<PostSearchResponse>> GetTopicsPaged(
+            ForumPostCategoryEnums categoryFilter,
+            ForumTopicsQuickDateEnum quickDate, 
+            ForumTopicsSortEnum sort, 
+            long group, 
+            int pageSize = 0, 
+            int page = 0,
+            string tagstring = null, 
+            BungieLocales[] locales = null, 
+            CancellationToken token = default);
 
         /// <summary>
         /// Gets a listing of all topics marked as part of the core group.
@@ -36,8 +43,12 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="locales">Comma seperated list of locales posts must match to return in the result list. Default 'en'</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<PostSearchResponse>> GetCoreTopicsPaged(ForumPostCategoryEnums categoryFilter,
-            ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort, int page = 0, BungieLocales[] locales = null,
+        ValueTask<BungieResponse<PostSearchResponse>> GetCoreTopicsPaged(
+            ForumPostCategoryEnums categoryFilter,
+            ForumTopicsQuickDateEnum quickDate, 
+            ForumTopicsSortEnum sort, 
+            int page = 0, 
+            BungieLocales[] locales = null,
             CancellationToken token = default);
 
         /// <summary>
@@ -53,9 +64,16 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="showbanned">If this value is not null or empty, banned posts are requested to be returned</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<PostSearchResponse>> GetPostsThreadedPaged(bool getParentPost, int page, int pageSize,
-            long parentPostId, int replySize, bool rootThreadMode, ForumTopicsSortEnum sortMode,
-            bool? showbanned = null, CancellationToken token = default);
+        ValueTask<BungieResponse<PostSearchResponse>> GetPostsThreadedPaged(
+            bool getParentPost,
+            int page, 
+            int pageSize,
+            long parentPostId, 
+            int replySize,
+            bool rootThreadMode, 
+            ForumTopicsSortEnum sortMode,
+            bool? showbanned = null, 
+            CancellationToken token = default);
 
         /// <summary>
         /// Returns a thread of posts starting at the topicId of the input childPostId, optionally returning replies to those posts as well as the original parent.
@@ -69,9 +87,15 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="showbanned">If this value is not null or empty, banned posts are requested to be returned</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<PostSearchResponse>> GetPostsThreadedPagedFromChild(int page, int pageSize,
-            long childPostId, int replySize, bool rootThreadMode, ForumTopicsSortEnum sortMode,
-            bool? showbanned = null, CancellationToken token = default);
+        ValueTask<BungieResponse<PostSearchResponse>> GetPostsThreadedPagedFromChild(
+            int page,
+            int pageSize,
+            long childPostId,
+            int replySize,
+            bool rootThreadMode, 
+            ForumTopicsSortEnum sortMode,
+            bool? showbanned = null, 
+            CancellationToken token = default);
 
         /// <summary>
         /// Returns the post specified and its immediate parent.
@@ -80,7 +104,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="showbanned">If this value is not null or empty, banned posts are requested to be returned</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<PostSearchResponse>> GetPostAndParent(long childPostId, bool? showbanned = null,
+        ValueTask<BungieResponse<PostSearchResponse>> GetPostAndParent(
+            long childPostId,
+            bool? showbanned = null,
             CancellationToken token = default);
 
         /// <summary>
@@ -90,8 +116,10 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="showbanned">If this value is not null or empty, banned posts are requested to be returned</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<PostSearchResponse>> GetPostAndParentAwaitingApproval(long childPostId,
-            bool? showbanned = null, CancellationToken token = default);
+        ValueTask<BungieResponse<PostSearchResponse>> GetPostAndParentAwaitingApproval(
+            long childPostId,
+            bool? showbanned = null,
+            CancellationToken token = default);
 
         /// <summary>
         /// Gets the post Id for the given content item's comments, if it exists.
@@ -99,7 +127,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="contentId"></param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<long>> GetTopicForContent(long contentId, CancellationToken token = default);
+        ValueTask<BungieResponse<long>> GetTopicForContent(
+            long contentId, 
+            CancellationToken token = default);
 
         /// <summary>
         /// Gets tag suggestions based on partial text entry, matching them with other tags previously used in the forums.
@@ -107,7 +137,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="partialtag">The partial tag input to generate suggestions from.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<TagResponse[]>> GetForumTagSuggestions(string partialtag,
+        ValueTask<BungieResponse<TagResponse[]>> GetForumTagSuggestions(
+            string partialtag,
             CancellationToken token = default);
 
         /// <summary>
@@ -116,7 +147,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="topicId">The post id of the topic that has the poll.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<PostSearchResponse>> GetPoll(long topicId, CancellationToken token = default);
+        ValueTask<BungieResponse<PostSearchResponse>> GetPoll(
+            long topicId, 
+            CancellationToken token = default);
 
         /// <summary>
         /// Allows the caller to get a list of to 25 recruitment thread summary information objects.
@@ -124,7 +157,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<ForumRecruitmentDetail[]>> GetRecruitmentThreadSummaries(long[] request,
+        ValueTask<BungieResponse<ForumRecruitmentDetail[]>> GetRecruitmentThreadSummaries(
+            long[] request,
             CancellationToken token = default);
     }
 }

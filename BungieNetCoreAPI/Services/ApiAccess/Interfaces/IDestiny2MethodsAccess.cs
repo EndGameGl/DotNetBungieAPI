@@ -25,7 +25,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// </summary>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<DestinyManifest>> GetDestinyManifest(CancellationToken token = default);
+        ValueTask<BungieResponse<DestinyManifest>> GetDestinyManifest(
+            CancellationToken token = default);
 
         /// <summary>
         /// Returns the static definition of an entity of the given Type and hash identifier. Examine the API Documentation for the Type Names of entities that have their own definitions. Note that the return type will always *inherit from* DestinyDefinition, but the specific type returned will be the requested entity type if it can be found. Please don't use this as a chatty alternative to the Manifest database if you require large sets of data, but for simple and one-off accesses this should be handy.
@@ -35,7 +36,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="token">Cancellation token</param>
         /// <typeparam name="T"><see cref="IDestinyDefinition"/> entity</typeparam>
         /// <returns></returns>
-        ValueTask<BungieResponse<T>> GetDestinyEntityDefinition<T>(DefinitionsEnum entityType, uint hash,
+        ValueTask<BungieResponse<T>> GetDestinyEntityDefinition<T>(
+            DefinitionsEnum entityType,
+            uint hash,
             CancellationToken token = default) where T : IDestinyDefinition;
 
         /// <summary>
@@ -46,8 +49,11 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="returnOriginalProfile">If passed in and set to true, we will return the original Destiny Profile(s) linked to that gamertag, and not their currently active Destiny Profile.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(BungieMembershipType membershipType,
-            string displayName, bool returnOriginalProfile = false, CancellationToken token = default);
+        ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(
+            BungieMembershipType membershipType,
+            string displayName,
+            bool returnOriginalProfile = false,
+            CancellationToken token = default);
 
         /// <summary>
         /// Returns a summary information about all profiles linked to the requesting membership type/membership ID that have valid Destiny information. The passed-in Membership Type/Membership ID may be a Bungie.Net membership or a Destiny membership. It only returns the minimal amount of data to begin making more substantive requests, but will hopefully serve as a useful alternative to UserServices for people who just care about Destiny data. Note that it will only return linked accounts whose linkages you are allowed to view.
@@ -57,8 +63,11 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="getAllMemberships">if set to 'true', all memberships regardless of whether they're obscured by overrides will be returned. Normal privacy restrictions on account linking will still apply no matter what.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<DestinyLinkedProfilesResponse>> GetLinkedProfiles(BungieMembershipType membershipType,
-            long membershipId, bool getAllMemberships = false, CancellationToken token = default);
+        ValueTask<BungieResponse<DestinyLinkedProfilesResponse>> GetLinkedProfiles(
+            BungieMembershipType membershipType,
+            long membershipId,
+            bool getAllMemberships = false,
+            CancellationToken token = default);
 
         /// <summary>
         /// Returns Destiny Profile information for the supplied membership.

@@ -15,11 +15,15 @@ namespace NetBungieAPI.Services.ApiAccess
         {
             _httpClient = httpClient;
         }
-        public async ValueTask<BungieResponse<TrendingCategories>> GetTrendingCategories(CancellationToken token = default)
+        public async ValueTask<BungieResponse<TrendingCategories>> GetTrendingCategories(
+            CancellationToken token = default)
         {
             return await _httpClient.GetFromBungieNetPlatform<TrendingCategories>("/Trending/Categories/", token);
         }
-        public async ValueTask<BungieResponse<SearchResultOfTrendingEntry>> GetTrendingCategory(string categoryId, int pageNumber = 0, CancellationToken token = default)
+        public async ValueTask<BungieResponse<SearchResultOfTrendingEntry>> GetTrendingCategory(
+            string categoryId, 
+            int pageNumber = 0, 
+            CancellationToken token = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(token)
@@ -29,7 +33,10 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<SearchResultOfTrendingEntry>(url, token);
         }
-        public async ValueTask<BungieResponse<TrendingDetail>> GetTrendingEntryDetail(TrendingEntryType trendingEntryType, string identifier, CancellationToken token = default)
+        public async ValueTask<BungieResponse<TrendingDetail>> GetTrendingEntryDetail(
+            TrendingEntryType trendingEntryType, 
+            string identifier, 
+            CancellationToken token = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(token)

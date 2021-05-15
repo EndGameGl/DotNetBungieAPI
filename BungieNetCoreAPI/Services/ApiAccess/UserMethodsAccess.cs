@@ -26,7 +26,8 @@ namespace NetBungieAPI.Services.ApiAccess
             _configuration = configuration;
         }
 
-        public async ValueTask<BungieResponse<GeneralUser>> GetBungieNetUserById(long id,
+        public async ValueTask<BungieResponse<GeneralUser>> GetBungieNetUserById(
+            long id,
             CancellationToken token = default)
         {
             var url = StringBuilderPool
@@ -37,7 +38,8 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<GeneralUser>(url, token);
         }
 
-        public async ValueTask<BungieResponse<GeneralUser[]>> SearchUsers(string query,
+        public async ValueTask<BungieResponse<GeneralUser[]>> SearchUsers(
+            string query,
             CancellationToken token = default)
         {
             var url = StringBuilderPool
@@ -48,7 +50,8 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<GeneralUser[]>(url, token);
         }
 
-        public async ValueTask<BungieResponse<CredentialTypeForAccount[]>> GetCredentialTypesForTargetAccount(long id,
+        public async ValueTask<BungieResponse<CredentialTypeForAccount[]>> GetCredentialTypesForTargetAccount(
+            long id,
             CancellationToken token = default)
         {
             var url = StringBuilderPool
@@ -59,7 +62,8 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<CredentialTypeForAccount[]>(url, token);
         }
 
-        public async ValueTask<BungieResponse<UserTheme[]>> GetAvailableThemes(CancellationToken token = default)
+        public async ValueTask<BungieResponse<UserTheme[]>> GetAvailableThemes(
+            CancellationToken token = default)
         {
             return await _httpClient.GetFromBungieNetPlatform<UserTheme[]>("/User/GetAvailableThemes", token);
         }
@@ -77,7 +81,8 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser(
-            AuthorizationTokenData authToken, CancellationToken token = default)
+            AuthorizationTokenData authToken, 
+            CancellationToken token = default)
         {
             if (!_configuration
                 .Settings
@@ -94,7 +99,8 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<HardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(
-            long credential, BungieCredentialType credentialType = BungieCredentialType.SteamId,
+            long credential, 
+            BungieCredentialType credentialType = BungieCredentialType.SteamId,
             CancellationToken token = default)
         {
             var url = StringBuilderPool

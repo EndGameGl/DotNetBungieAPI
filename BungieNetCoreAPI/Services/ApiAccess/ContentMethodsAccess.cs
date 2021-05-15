@@ -17,7 +17,8 @@ namespace NetBungieAPI.Services.ApiAccess
             _httpClient = httpClient;
         }
 
-        public async ValueTask<BungieResponse<ContentTypeDescription>> GetContentType(string type,
+        public async ValueTask<BungieResponse<ContentTypeDescription>> GetContentType(
+            string type,
             CancellationToken token = default)
         {
             var url = StringBuilderPool
@@ -28,8 +29,11 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<ContentTypeDescription>(url, token);
         }
 
-        public async ValueTask<BungieResponse<ContentItemPublicContract>> GetContentById(long id, string locale,
-            bool head = false, CancellationToken token = default)
+        public async ValueTask<BungieResponse<ContentItemPublicContract>> GetContentById(
+            long id,
+            string locale,
+            bool head = false,
+            CancellationToken token = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(token)
@@ -41,8 +45,11 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<ContentItemPublicContract>(url, token);
         }
 
-        public async ValueTask<BungieResponse<ContentItemPublicContract>> GetContentByTagAndType(string tag,
-            string type, string locale, CancellationToken token = default)
+        public async ValueTask<BungieResponse<ContentItemPublicContract>> GetContentByTagAndType(
+            string tag,
+            string type,
+            string locale,
+            CancellationToken token = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(token)
@@ -55,8 +62,13 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentWithText(
-            string locale, string[] types,
-            string searchtext, string source, string tag, int currentpage = 1, CancellationToken token = default)
+            string locale,
+            string[] types,
+            string searchtext,
+            string source,
+            string tag,
+            int currentpage = 1,
+            CancellationToken token = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(token)
@@ -72,7 +84,11 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentByTagAndType(
-            string locale, string tag, string type, int currentpage = 1, CancellationToken token = default)
+            string locale,
+            string tag,
+            string type,
+            int currentpage = 1,
+            CancellationToken token = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(token)

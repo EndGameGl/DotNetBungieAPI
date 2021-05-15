@@ -37,7 +37,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 token);
         }
 
-        public async ValueTask<BungieResponse<GroupTheme[]>> GetAvailableThemes(CancellationToken token = default)
+        public async ValueTask<BungieResponse<GroupTheme[]>> GetAvailableThemes(
+            CancellationToken token = default)
         {
             return await _httpClient.GetFromBungieNetPlatform<GroupTheme[]>("/GroupV2/GetAvailableThemes/", token);
         }
@@ -81,7 +82,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 authToken: authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<GroupSearchResponse>> GroupSearch(GroupQuery query,
+        public async ValueTask<BungieResponse<GroupSearchResponse>> GroupSearch(
+            GroupQuery query,
             CancellationToken token = default)
         {
             var stream = new MemoryStream();
@@ -89,7 +91,9 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.PostToBungieNetPlatform<GroupSearchResponse>("/GroupV2/Search/", token, stream);
         }
 
-        public async ValueTask<BungieResponse<GroupResponse>> GetGroup(long groupId, CancellationToken token = default)
+        public async ValueTask<BungieResponse<GroupResponse>> GetGroup(
+            long groupId, 
+            CancellationToken token = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(token)
@@ -100,7 +104,9 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<GroupResponse>(url, token);
         }
 
-        public async ValueTask<BungieResponse<GroupResponse>> GetGroupByName(string groupName, GroupType groupType,
+        public async ValueTask<BungieResponse<GroupResponse>> GetGroupByName(
+            string groupName, 
+            GroupType groupType,
             CancellationToken token = default)
         {
             var url = StringBuilderPool
@@ -113,7 +119,8 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<GroupResponse>(url, token);
         }
 
-        public async ValueTask<BungieResponse<GroupResponse>> GetGroupByNameV2(GroupNameSearchRequest request,
+        public async ValueTask<BungieResponse<GroupResponse>> GetGroupByNameV2(
+            GroupNameSearchRequest request,
             CancellationToken token = default)
         {
             var stream = new MemoryStream();
@@ -121,7 +128,8 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.PostToBungieNetPlatform<GroupResponse>("/GroupV2/NameV2/", token, stream);
         }
 
-        public async ValueTask<BungieResponse<GroupOptionalConversation[]>> GetGroupOptionalConversations(long groupId,
+        public async ValueTask<BungieResponse<GroupOptionalConversation[]>> GetGroupOptionalConversations(
+            long groupId,
             CancellationToken token = default)
         {
             var url = StringBuilderPool.GetBuilder(token)
@@ -235,9 +243,12 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.PostToBungieNetPlatform<long>(url, token, stream, authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<SearchResultOfGroupMember>> GetMembersOfGroup(long groupId,
-            int currentpage = 1, RuntimeGroupMemberType memberType = RuntimeGroupMemberType.None,
-            string nameSearch = null, CancellationToken token = default)
+        public async ValueTask<BungieResponse<SearchResultOfGroupMember>> GetMembersOfGroup(
+            long groupId,
+            int currentpage = 1, 
+            RuntimeGroupMemberType memberType = RuntimeGroupMemberType.None,
+            string nameSearch = null, 
+            CancellationToken token = default)
         {
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -250,8 +261,10 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<SearchResultOfGroupMember>(url, token);
         }
 
-        public async ValueTask<BungieResponse<SearchResultOfGroupMember>> GetAdminsAndFounderOfGroup(long groupId,
-            int currentpage = 1, CancellationToken token = default)
+        public async ValueTask<BungieResponse<SearchResultOfGroupMember>> GetAdminsAndFounderOfGroup(
+            long groupId,
+            int currentpage = 1, 
+            CancellationToken token = default)
         {
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -560,7 +573,10 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<GetGroupsForMemberResponse>> GetGroupsForMember(
-            BungieMembershipType membershipType, long membershipId, GroupsForMemberFilter filter, GroupType groupType,
+            BungieMembershipType membershipType, 
+            long membershipId, 
+            GroupsForMemberFilter filter, 
+            GroupType groupType,
             CancellationToken token = default)
         {
             var url = StringBuilderPool.GetBuilder(token)
@@ -575,7 +591,9 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<GroupMembershipSearchResponse>> RecoverGroupForFounder(
-            BungieMembershipType membershipType, long membershipId, GroupType groupType,
+            BungieMembershipType membershipType, 
+            long membershipId, 
+            GroupType groupType,
             CancellationToken token = default)
         {
             var url = StringBuilderPool.GetBuilder(token)
@@ -589,7 +607,10 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<GroupPotentialMembershipSearchResponse>> GetPotentialGroupsForMember(
-            BungieMembershipType membershipType, long membershipId, GroupType groupType, GroupsForMemberFilter filter,
+            BungieMembershipType membershipType, 
+            long membershipId, 
+            GroupType groupType, 
+            GroupsForMemberFilter filter,
             CancellationToken token = default)
         {
             var url = StringBuilderPool.GetBuilder(token)

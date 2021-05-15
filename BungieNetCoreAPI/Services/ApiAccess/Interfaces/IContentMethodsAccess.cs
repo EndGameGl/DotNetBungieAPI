@@ -14,7 +14,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="type">Content type</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<ContentTypeDescription>> GetContentType(string type, CancellationToken token = default);
+        ValueTask<BungieResponse<ContentTypeDescription>> GetContentType(
+            string type, 
+            CancellationToken token = default);
 
         /// <summary>
         /// Returns a content item referenced by id
@@ -24,7 +26,10 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="head">Not sure what this is</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<ContentItemPublicContract>> GetContentById(long id, string locale, bool head = false,
+        ValueTask<BungieResponse<ContentItemPublicContract>> GetContentById(
+            long id,
+            string locale,
+            bool head = false,
             CancellationToken token = default);
 
         /// <summary>
@@ -35,8 +40,11 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="locale">Locale to return</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<ContentItemPublicContract>> GetContentByTagAndType(string tag, string type,
-            string locale, CancellationToken token = default);
+        ValueTask<BungieResponse<ContentItemPublicContract>> GetContentByTagAndType(
+            string tag,
+            string type,
+            string locale,
+            CancellationToken token = default);
 
         /// <summary>
         /// Gets content based on querystring information passed in. Provides basic search and text search capabilities.
@@ -49,8 +57,13 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="currentpage">Page number for the search results, starting with page 1.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentWithText(string locale,
-            string[] types, string searchtext, string source, string tag, int currentpage = 1,
+        ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentWithText(
+            string locale,
+            string[] types, 
+            string searchtext, 
+            string source,
+            string tag,
+            int currentpage = 1,
             CancellationToken token = default);
 
         /// <summary>
@@ -62,7 +75,11 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="currentpage">Page number for the search results starting with page 1</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentByTagAndType(string locale,
-            string tag, string type, int currentpage = 1, CancellationToken token = default);
+        ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentByTagAndType(
+            string locale,
+            string tag,
+            string type, 
+            int currentpage = 1, 
+            CancellationToken token = default);
     }
 }

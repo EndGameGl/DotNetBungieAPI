@@ -134,16 +134,12 @@ namespace NetBungieAPI.TestProject
             sw.Stop();
             Console.WriteLine($"Startup in: {sw.ElapsedMilliseconds} ms");
 
-            //var authAwaiter = _bungieClient.Authentification.CreateNewAuthentificationAwaiter();
-            //var authLink = _bungieClient.Authentification.GetAuthorizationLink(authAwaiter);
-            //authAwaiter.ReceiveCode(Console.ReadLine(), Console.ReadLine());
-            //var token = await _bungieClient.Authentification.GetAuthTokenAsync(authAwaiter);
+            var authAwaiter = _bungieClient.Authentification.CreateNewAuthentificationAwaiter();
+            var authLink = _bungieClient.Authentification.GetAuthorizationLink(authAwaiter);
+            authAwaiter.ReceiveCode(Console.ReadLine(), Console.ReadLine());
+            var token = await _bungieClient.Authentification.GetAuthTokenAsync(authAwaiter);
 
-            var response = await _bungieClient.ApiAccess.GroupV2.GetPotentialGroupsForMember(
-                BungieMembershipType.TigerSteam,
-                20027802,
-                GroupType.General, 
-                GroupsForMemberFilter.All);
+            var response = await _bungieClient.ApiAccess.User.GetMembershipDataForCurrentUser(token);
 
             await Task.Delay(Timeout.Infinite);
         }

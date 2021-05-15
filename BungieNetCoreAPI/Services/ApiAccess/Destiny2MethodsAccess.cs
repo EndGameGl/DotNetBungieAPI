@@ -33,7 +33,8 @@ namespace NetBungieAPI.Services.ApiAccess
             _serializationHelper = serializationHelper;
         }
 
-        public async ValueTask<BungieResponse<DestinyManifest>> GetDestinyManifest(CancellationToken token = default)
+        public async ValueTask<BungieResponse<DestinyManifest>> GetDestinyManifest(
+            CancellationToken token = default)
         {
             return await _httpClient.GetFromBungieNetPlatform<DestinyManifest>("/Destiny2/Manifest", token);
         }
@@ -50,8 +51,11 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<T>(url, token);
         }
 
-        public async ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(BungieMembershipType membershipType,
-            string displayName, bool returnOriginalProfile = false, CancellationToken token = default)
+        public async ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(
+            BungieMembershipType membershipType,
+            string displayName,
+            bool returnOriginalProfile = false, 
+            CancellationToken token = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(token)
@@ -64,7 +68,9 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<DestinyLinkedProfilesResponse>> GetLinkedProfiles(
-            BungieMembershipType membershipType, long membershipId, bool getAllMemberships = false,
+            BungieMembershipType membershipType, 
+            long membershipId, 
+            bool getAllMemberships = false,
             CancellationToken token = default)
         {
             var url = StringBuilderPool

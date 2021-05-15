@@ -21,13 +21,18 @@ namespace NetBungieAPI
             _configuration = configuration;
         }
 
-        public async ValueTask<BungieResponse<Application[]>> GetBungieApplications(CancellationToken token = default)
+        public async ValueTask<BungieResponse<Application[]>> GetBungieApplications(
+            CancellationToken token = default)
         {
             return await _httpClient.GetFromBungieNetPlatform<Application[]>("/App/FirstParty/", token);
         }
 
-        public async ValueTask<BungieResponse<ApiUsage>> GetApplicationApiUsage(AuthorizationTokenData authToken, 
-            int applicationId, DateTime? start = null, DateTime? end = null, CancellationToken token = default)
+        public async ValueTask<BungieResponse<ApiUsage>> GetApplicationApiUsage(
+            AuthorizationTokenData authToken, 
+            int applicationId, 
+            DateTime? start = null, 
+            DateTime? end = null, 
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(ApplicationScopes.ReadUserData))
                 throw new InsufficientScopeException(ApplicationScopes.ReadUserData);

@@ -17,14 +17,16 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// </summary>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<Dictionary<int, string>>> GetAvailableAvatars(CancellationToken token = default);
+        ValueTask<BungieResponse<Dictionary<int, string>>> GetAvailableAvatars(
+            CancellationToken token = default);
 
         /// <summary>
         /// Returns a list of all available group themes.
         /// </summary>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<GroupTheme[]>> GetAvailableThemes(CancellationToken token = default);
+        ValueTask<BungieResponse<GroupTheme[]>> GetAvailableThemes(
+            CancellationToken token = default);
 
         /// <summary>
         /// Gets the state of the user's clan invite preferences for a particular membership type - true if they wish to be invited to clans, false otherwise.
@@ -60,7 +62,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="query">Request body</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<GroupSearchResponse>> GroupSearch(GroupQuery query,
+        ValueTask<BungieResponse<GroupSearchResponse>> GroupSearch(
+            GroupQuery query,
             CancellationToken token = default);
 
         /// <summary>
@@ -69,7 +72,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="groupId">Requested group's id.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<GroupResponse>> GetGroup(long groupId, CancellationToken token = default);
+        ValueTask<BungieResponse<GroupResponse>> GetGroup(
+            long groupId, 
+            CancellationToken token = default);
 
         /// <summary>
         /// Get information about a specific group with the given name and type.
@@ -78,7 +83,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="groupType">Type of group to find.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<GroupResponse>> GetGroupByName(string groupName, GroupType groupType,
+        ValueTask<BungieResponse<GroupResponse>> GetGroupByName(
+            string groupName, 
+            GroupType groupType,
             CancellationToken token = default);
 
         /// <summary>
@@ -96,7 +103,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="groupId">Requested group's id.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<GroupOptionalConversation[]>> GetGroupOptionalConversations(long groupId,
+        ValueTask<BungieResponse<GroupOptionalConversation[]>> GetGroupOptionalConversations(
+            long groupId,
             CancellationToken token = default);
 
         /// <summary>
@@ -185,9 +193,12 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="nameSearch">The name fragment upon which a search should be executed for members with matching display or unique names.</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<SearchResultOfGroupMember>> GetMembersOfGroup(long groupId,
-            int currentpage = 1, RuntimeGroupMemberType memberType = RuntimeGroupMemberType.None,
-            string nameSearch = null, CancellationToken token = default);
+        ValueTask<BungieResponse<SearchResultOfGroupMember>> GetMembersOfGroup(
+            long groupId,
+            int currentpage = 1, 
+            RuntimeGroupMemberType memberType = RuntimeGroupMemberType.None,
+            string nameSearch = null, 
+            CancellationToken token = default);
 
         /// <summary>
         /// Get the list of members in a given group who are of admin level or higher.
@@ -196,8 +207,10 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="currentpage">Page number (starting with 1). Each page has a fixed size of 50 items per page.</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<SearchResultOfGroupMember>> GetAdminsAndFounderOfGroup(long groupId,
-            int currentpage = 1, CancellationToken token = default);
+        ValueTask<BungieResponse<SearchResultOfGroupMember>> GetAdminsAndFounderOfGroup(
+            long groupId,
+            int currentpage = 1, 
+            CancellationToken token = default);
 
         /// <summary>
         /// Edit the membership type of a given member. You must have suitable permissions in the group to perform this operation.
@@ -292,7 +305,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="membershipType">Membership type of the provided founderIdNew.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<bool>> AbdicateFoundership(AuthorizationTokenData authData,
+        ValueTask<BungieResponse<bool>> AbdicateFoundership(
+            AuthorizationTokenData authData,
             long groupId,
             long founderIdNew,
             BungieMembershipType membershipType,
@@ -402,7 +416,10 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<GetGroupsForMemberResponse>> GetGroupsForMember(
-            BungieMembershipType membershipType, long membershipId, GroupsForMemberFilter filter, GroupType groupType,
+            BungieMembershipType membershipType, 
+            long membershipId, 
+            GroupsForMemberFilter filter, 
+            GroupType groupType,
             CancellationToken token = default);
 
         /// <summary>
@@ -414,7 +431,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<GroupMembershipSearchResponse>> RecoverGroupForFounder(
-            BungieMembershipType membershipType, long membershipId, GroupType groupType,
+            BungieMembershipType membershipType, 
+            long membershipId, 
+            GroupType groupType,
             CancellationToken token = default);
 
         /// <summary>
@@ -427,7 +446,10 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="token"></param>
         /// <returns></returns>
         ValueTask<BungieResponse<GroupPotentialMembershipSearchResponse>> GetPotentialGroupsForMember(
-            BungieMembershipType membershipType, long membershipId, GroupType groupType, GroupsForMemberFilter filter,
+            BungieMembershipType membershipType, 
+            long membershipId, 
+            GroupType groupType, 
+            GroupsForMemberFilter filter,
             CancellationToken token = default);
 
         /// <summary>

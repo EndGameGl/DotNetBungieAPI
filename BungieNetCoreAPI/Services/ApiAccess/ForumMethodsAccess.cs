@@ -22,9 +22,14 @@ namespace NetBungieAPI.Services.ApiAccess
             _serializationHelper = serializationHelper;
         }
 
-        public async ValueTask<BungieResponse<PostSearchResponse>> GetTopicsPaged(ForumPostCategoryEnums categoryFilter,
-            ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort, long group,
-            int pageSize = 0, int page = 0, string tagstring = null, BungieLocales[] locales = null,
+        public async ValueTask<BungieResponse<PostSearchResponse>> GetTopicsPaged(
+            ForumPostCategoryEnums categoryFilter,
+            ForumTopicsQuickDateEnum quickDate, 
+            ForumTopicsSortEnum sort, long group,
+            int pageSize = 0,
+            int page = 0, 
+            string tagstring = null, 
+            BungieLocales[] locales = null,
             CancellationToken token = default)
         {
             var url = StringBuilderPool
@@ -44,8 +49,12 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<PostSearchResponse>> GetCoreTopicsPaged(
-            ForumPostCategoryEnums categoryFilter, ForumTopicsQuickDateEnum quickDate, ForumTopicsSortEnum sort,
-            int page = 0, BungieLocales[] locales = null, CancellationToken token = default)
+            ForumPostCategoryEnums categoryFilter, 
+            ForumTopicsQuickDateEnum quickDate, 
+            ForumTopicsSortEnum sort,
+            int page = 0, 
+            BungieLocales[] locales = null,
+            CancellationToken token = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(token)
@@ -60,9 +69,16 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<PostSearchResponse>(url, token);
         }
 
-        public async ValueTask<BungieResponse<PostSearchResponse>> GetPostsThreadedPaged(bool getParentPost, int page,
-            int pageSize, long parentPostId, int replySize, bool rootThreadMode, ForumTopicsSortEnum sortMode,
-            bool? showbanned = null, CancellationToken token = default)
+        public async ValueTask<BungieResponse<PostSearchResponse>> GetPostsThreadedPaged(
+            bool getParentPost,
+            int page,
+            int pageSize,
+            long parentPostId, 
+            int replySize, 
+            bool rootThreadMode, 
+            ForumTopicsSortEnum sortMode,
+            bool? showbanned = null, 
+            CancellationToken token = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(token)
@@ -80,9 +96,15 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<PostSearchResponse>(url, token);
         }
 
-        public async ValueTask<BungieResponse<PostSearchResponse>> GetPostsThreadedPagedFromChild(int page,
-            int pageSize, long childPostId, int replySize, bool rootThreadMode, ForumTopicsSortEnum sortMode,
-            bool? showbanned = null, CancellationToken token = default)
+        public async ValueTask<BungieResponse<PostSearchResponse>> GetPostsThreadedPagedFromChild(
+            int page,
+            int pageSize, 
+            long childPostId, 
+            int replySize,
+            bool rootThreadMode,
+            ForumTopicsSortEnum sortMode,
+            bool? showbanned = null, 
+            CancellationToken token = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(token)
@@ -99,8 +121,10 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<PostSearchResponse>(url, token);
         }
 
-        public async ValueTask<BungieResponse<PostSearchResponse>> GetPostAndParent(long childPostId,
-            bool? showbanned = null, CancellationToken token = default)
+        public async ValueTask<BungieResponse<PostSearchResponse>> GetPostAndParent(
+            long childPostId,
+            bool? showbanned = null,
+            CancellationToken token = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(token)
@@ -112,8 +136,10 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<PostSearchResponse>(url, token);
         }
 
-        public async ValueTask<BungieResponse<PostSearchResponse>> GetPostAndParentAwaitingApproval(long childPostId,
-            bool? showbanned = null, CancellationToken token = default)
+        public async ValueTask<BungieResponse<PostSearchResponse>> GetPostAndParentAwaitingApproval(
+            long childPostId,
+            bool? showbanned = null,
+            CancellationToken token = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(token)
@@ -125,7 +151,8 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<PostSearchResponse>(url, token);
         }
 
-        public async ValueTask<BungieResponse<long>> GetTopicForContent(long contentId,
+        public async ValueTask<BungieResponse<long>> GetTopicForContent(
+            long contentId,
             CancellationToken token = default)
         {
             var url = StringBuilderPool
@@ -137,7 +164,8 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<long>(url, token);
         }
 
-        public async ValueTask<BungieResponse<TagResponse[]>> GetForumTagSuggestions(string partialtag,
+        public async ValueTask<BungieResponse<TagResponse[]>> GetForumTagSuggestions(
+            string partialtag,
             CancellationToken token = default)
         {
             var url = StringBuilderPool
@@ -149,7 +177,8 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<TagResponse[]>(url, token);
         }
 
-        public async ValueTask<BungieResponse<PostSearchResponse>> GetPoll(long topicId,
+        public async ValueTask<BungieResponse<PostSearchResponse>> GetPoll(
+            long topicId,
             CancellationToken token = default)
         {
             var url = StringBuilderPool
@@ -161,7 +190,8 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<PostSearchResponse>(url, token);
         }
 
-        public async ValueTask<BungieResponse<ForumRecruitmentDetail[]>> GetRecruitmentThreadSummaries(long[] request,
+        public async ValueTask<BungieResponse<ForumRecruitmentDetail[]>> GetRecruitmentThreadSummaries(
+            long[] request,
             CancellationToken token = default)
         {
             await using var stream = new MemoryStream();
