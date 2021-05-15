@@ -92,7 +92,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 throw new InsufficientScopeException(ApplicationScopes.ReadBasicUserProfile);
 
             return await _httpClient.GetFromBungieNetPlatform<UserMembershipData>(
-                "/User/GetMembershipsForCurrentUser", token, authToken.AccessToken);
+                "/User/GetMembershipsForCurrentUser/", token, authToken.AccessToken);
 
 
             throw new Exception("Missing token to make a call.");

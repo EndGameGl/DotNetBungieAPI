@@ -36,7 +36,7 @@ namespace NetBungieAPI.Services.ApiAccess
         public async ValueTask<BungieResponse<DestinyManifest>> GetDestinyManifest(
             CancellationToken token = default)
         {
-            return await _httpClient.GetFromBungieNetPlatform<DestinyManifest>("/Destiny2/Manifest", token);
+            return await _httpClient.GetFromBungieNetPlatform<DestinyManifest>("/Destiny2/Manifest/", token);
         }
 
         public async ValueTask<BungieResponse<T>> GetDestinyEntityDefinition<T>(DefinitionsEnum entityType, uint hash,
