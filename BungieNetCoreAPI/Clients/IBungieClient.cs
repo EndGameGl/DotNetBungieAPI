@@ -1,4 +1,4 @@
-﻿using NetBungieAPI.Authrorization;
+﻿using NetBungieAPI.Authorization;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.Interfaces;
 using System.Threading.Tasks;
@@ -11,12 +11,8 @@ namespace NetBungieAPI.Clients
         void AddListener(NewMessageEvent eventHandler);
         IBungieApiAccess ApiAccess { get; }
         ILocalisedDestinyDefinitionRepositories Repository { get; }
-        string GetAuthorizationLink();
-        void ReceiveCode(string state, string code);
-        Task<AuthorizationTokenData> GetAuthorizationToken(string code);
-        Task<AuthorizationTokenData> RenewAuthorizationToken(AuthorizationTokenData oldToken);
+        public IAuthorizationStateHandler Authentification { get; }
         ValueTask<bool> CheckUpdates();
         Task DownloadLatestManifestLocally();
-        void SetAuthToken(AuthorizationTokenData token);
     }
 }

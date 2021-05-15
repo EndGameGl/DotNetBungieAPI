@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
+using NetBungieAPI.Exceptions;
 using NetBungieAPI.Models.Applications;
 using NetBungieAPI.Models.Entities;
 using NetBungieAPI.Models.Queries;
@@ -40,12 +42,14 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<GroupTheme[]>("/GroupV2/GetAvailableThemes/", token);
         }
 
-        public async ValueTask<BungieResponse<bool>> GetUserClanInviteSetting(BungieMembershipType mType,
+        public async ValueTask<BungieResponse<bool>> GetUserClanInviteSetting(
+            AuthorizationTokenData authData,
+            BungieMembershipType mType,
             CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(
                 ApplicationScopes.ReadUserData))
-                throw new Exception("Requires ReadUserData flag to run");
+                throw new InsufficientScopeException(ApplicationScopes.ReadUserData);
 
             var url = StringBuilderPool
                 .GetBuilder(token)
@@ -53,15 +57,18 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(((int) mType).ToString())
                 .Build();
 
-            return await _httpClient.GetFromBungieNetPlatform<bool>(url, token);
+            return await _httpClient.GetFromBungieNetPlatform<bool>(url, token, authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<GroupV2Card[]>> GetRecommendedGroups(GroupType groupType,
-            GroupDateRange createDateRange, CancellationToken token = default)
+        public async ValueTask<BungieResponse<GroupV2Card[]>> GetRecommendedGroups(
+            AuthorizationTokenData authData,
+            GroupType groupType,
+            GroupDateRange createDateRange,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(
                 ApplicationScopes.ReadGroups))
-                throw new Exception("Requires ReadGroups flag to run");
+                throw new InsufficientScopeException(ApplicationScopes.ReadGroups);
 
             var url = StringBuilderPool
                 .GetBuilder(token)
@@ -70,7 +77,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(((int) createDateRange).ToString())
                 .Build();
 
-            return await _httpClient.PostToBungieNetPlatform<GroupV2Card[]>(url, token);
+            return await _httpClient.PostToBungieNetPlatform<GroupV2Card[]>(url, token,
+                authToken: authData.AccessToken);
         }
 
         public async ValueTask<BungieResponse<GroupSearchResponse>> GroupSearch(GroupQuery query,
@@ -124,12 +132,15 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<GroupOptionalConversation[]>(url, token);
         }
 
-        public async ValueTask<BungieResponse<int>> EditGroup(long groupId, GroupEditAction request,
+        public async ValueTask<BungieResponse<int>> EditGroup(
+            AuthorizationTokenData authData,
+            long groupId,
+            GroupEditAction request,
             CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -138,15 +149,18 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
             var stream = new MemoryStream();
             await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient.PostToBungieNetPlatform<int>(url, token, stream);
+            return await _httpClient.PostToBungieNetPlatform<int>(url, token, stream, authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<int>> EditClanBanner(long groupId, ClanBanner request,
+        public async ValueTask<BungieResponse<int>> EditClanBanner(
+            AuthorizationTokenData authData,
+            long groupId,
+            ClanBanner request,
             CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -155,15 +169,18 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
             var stream = new MemoryStream();
             await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient.PostToBungieNetPlatform<int>(url, token, stream);
+            return await _httpClient.PostToBungieNetPlatform<int>(url, token, stream, authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<int>> EditFounderOptions(long groupId, GroupOptionsEditAction request,
+        public async ValueTask<BungieResponse<int>> EditFounderOptions(
+            AuthorizationTokenData authData,
+            long groupId,
+            GroupOptionsEditAction request,
             CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -172,15 +189,18 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
             var stream = new MemoryStream();
             await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient.PostToBungieNetPlatform<int>(url, token, stream);
+            return await _httpClient.PostToBungieNetPlatform<int>(url, token, stream, authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<long>> AddOptionalConversation(long groupId,
-            GroupOptionalConversationAddRequest request, CancellationToken token = default)
+        public async ValueTask<BungieResponse<long>> AddOptionalConversation(
+            AuthorizationTokenData authData,
+            long groupId,
+            GroupOptionalConversationAddRequest request,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -189,15 +209,19 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
             var stream = new MemoryStream();
             await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient.PostToBungieNetPlatform<long>(url, token, stream);
+            return await _httpClient.PostToBungieNetPlatform<long>(url, token, stream, authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<long>> EditOptionalConversation(long groupId, long conversationId,
-            GroupOptionalConversationEditRequest request, CancellationToken token = default)
+        public async ValueTask<BungieResponse<long>> EditOptionalConversation(
+            AuthorizationTokenData authData,
+            long groupId,
+            long conversationId,
+            GroupOptionalConversationEditRequest request,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -208,7 +232,7 @@ namespace NetBungieAPI.Services.ApiAccess
 
             var stream = new MemoryStream();
             await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient.PostToBungieNetPlatform<long>(url, token, stream);
+            return await _httpClient.PostToBungieNetPlatform<long>(url, token, stream, authData.AccessToken);
         }
 
         public async ValueTask<BungieResponse<SearchResultOfGroupMember>> GetMembersOfGroup(long groupId,
@@ -238,12 +262,17 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<SearchResultOfGroupMember>(url, token);
         }
 
-        public async ValueTask<BungieResponse<int>> EditGroupMembership(long groupId, long membershipId,
-            BungieMembershipType membershipType, RuntimeGroupMemberType memberType, CancellationToken token = default)
+        public async ValueTask<BungieResponse<int>> EditGroupMembership(
+            AuthorizationTokenData authData,
+            long groupId,
+            long membershipId,
+            BungieMembershipType membershipType,
+            RuntimeGroupMemberType memberType,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -254,15 +283,19 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("SetMembershipType/")
                 .AddUrlParam(((int) memberType).ToString())
                 .Build();
-            return await _httpClient.PostToBungieNetPlatform<int>(url, token);
+            return await _httpClient.PostToBungieNetPlatform<int>(url, token, authToken: authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<GroupMemberLeaveResult>> KickMember(long groupId, long membershipId,
-            BungieMembershipType membershipType, CancellationToken token = default)
+        public async ValueTask<BungieResponse<GroupMemberLeaveResult>> KickMember(
+            AuthorizationTokenData authData,
+            long groupId,
+            long membershipId,
+            BungieMembershipType membershipType,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -272,15 +305,21 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(membershipId.ToString())
                 .Append("Kick/")
                 .Build();
-            return await _httpClient.PostToBungieNetPlatform<GroupMemberLeaveResult>(url, token);
+            return await _httpClient.PostToBungieNetPlatform<GroupMemberLeaveResult>(url, token,
+                authToken: authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<int>> BanMember(long groupId, long membershipId,
-            BungieMembershipType membershipType, GroupBanRequest request, CancellationToken token = default)
+        public async ValueTask<BungieResponse<int>> BanMember(
+            AuthorizationTokenData authData,
+            long groupId,
+            long membershipId,
+            BungieMembershipType membershipType,
+            GroupBanRequest request,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -294,15 +333,19 @@ namespace NetBungieAPI.Services.ApiAccess
             var stream = new MemoryStream();
             await _serializationHelper.SerializeAsync(stream, request);
 
-            return await _httpClient.PostToBungieNetPlatform<int>(url, token, stream);
+            return await _httpClient.PostToBungieNetPlatform<int>(url, token, stream, authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<int>> UnbanMember(long groupId, long membershipId,
-            BungieMembershipType membershipType, CancellationToken token = default)
+        public async ValueTask<BungieResponse<int>> UnbanMember(
+            AuthorizationTokenData authData,
+            long groupId,
+            long membershipId,
+            BungieMembershipType membershipType,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -313,15 +356,18 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("Unban/")
                 .Build();
 
-            return await _httpClient.PostToBungieNetPlatform<int>(url, token);
+            return await _httpClient.PostToBungieNetPlatform<int>(url, token, authToken: authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<SearchResultOfGroupBan>> GetBannedMembersOfGroup(long groupId,
-            int currentpage = 1, CancellationToken token = default)
+        public async ValueTask<BungieResponse<SearchResultOfGroupBan>> GetBannedMembersOfGroup(
+            AuthorizationTokenData authData,
+            long groupId,
+            int currentpage = 1,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -329,11 +375,16 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("Banned/")
                 .AddQueryParam("currentpage", currentpage.ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfGroupBan>(url, token);
+            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfGroupBan>(url, token,
+                authToken: authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<bool>> AbdicateFoundership(long groupId, long founderIdNew,
-            BungieMembershipType membershipType, CancellationToken token = default)
+        public async ValueTask<BungieResponse<bool>> AbdicateFoundership(
+            AuthorizationTokenData authData,
+            long groupId,
+            long founderIdNew,
+            BungieMembershipType membershipType,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
@@ -347,15 +398,18 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(founderIdNew.ToString())
                 .Build();
 
-            return await _httpClient.PostToBungieNetPlatform<bool>(url, token);
+            return await _httpClient.PostToBungieNetPlatform<bool>(url, token, authToken: authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<SearchResultOfGroupMemberApplication>> GetPendingMemberships(long groupId,
-            int currentpage = 1, CancellationToken token = default)
+        public async ValueTask<BungieResponse<SearchResultOfGroupMemberApplication>> GetPendingMemberships(
+            AuthorizationTokenData authData,
+            long groupId,
+            int currentpage = 1,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -363,15 +417,19 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("Members/Pending/")
                 .AddQueryParam("currentpage", currentpage.ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfGroupMemberApplication>(url, token);
+            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfGroupMemberApplication>(url, token,
+                authToken: authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<SearchResultOfGroupMemberApplication>> GetInvitedIndividuals(long groupId,
-            int currentpage = 1, CancellationToken token = default)
+        public async ValueTask<BungieResponse<SearchResultOfGroupMemberApplication>> GetInvitedIndividuals(
+            AuthorizationTokenData authData,
+            long groupId,
+            int currentpage = 1,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -379,15 +437,19 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("Members/InvitedIndividuals/")
                 .AddQueryParam("currentpage", currentpage.ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfGroupMemberApplication>(url, token);
+            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfGroupMemberApplication>(url, token,
+                authToken: authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<EntityActionResult[]>> ApproveAllPending(long groupId,
-            GroupApplicationRequest request, CancellationToken token = default)
+        public async ValueTask<BungieResponse<EntityActionResult[]>> ApproveAllPending(
+            AuthorizationTokenData authData,
+            long groupId,
+            GroupApplicationRequest request,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -398,15 +460,19 @@ namespace NetBungieAPI.Services.ApiAccess
             var stream = new MemoryStream();
             await _serializationHelper.SerializeAsync(stream, request);
 
-            return await _httpClient.PostToBungieNetPlatform<EntityActionResult[]>(url, token, stream);
+            return await _httpClient.PostToBungieNetPlatform<EntityActionResult[]>(url, token, stream,
+                authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<EntityActionResult[]>> DenyAllPending(long groupId,
-            GroupApplicationRequest request, CancellationToken token = default)
+        public async ValueTask<BungieResponse<EntityActionResult[]>> DenyAllPending(
+            AuthorizationTokenData authData,
+            long groupId,
+            GroupApplicationRequest request,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -417,15 +483,19 @@ namespace NetBungieAPI.Services.ApiAccess
             var stream = new MemoryStream();
             await _serializationHelper.SerializeAsync(stream, request);
 
-            return await _httpClient.PostToBungieNetPlatform<EntityActionResult[]>(url, token, stream);
+            return await _httpClient.PostToBungieNetPlatform<EntityActionResult[]>(url, token, stream,
+                authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<EntityActionResult[]>> ApprovePendingForList(long groupId,
-            GroupApplicationListRequest request, CancellationToken token = default)
+        public async ValueTask<BungieResponse<EntityActionResult[]>> ApprovePendingForList(
+            AuthorizationTokenData authData,
+            long groupId,
+            GroupApplicationListRequest request,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -436,15 +506,21 @@ namespace NetBungieAPI.Services.ApiAccess
             var stream = new MemoryStream();
             await _serializationHelper.SerializeAsync(stream, request);
 
-            return await _httpClient.PostToBungieNetPlatform<EntityActionResult[]>(url, token, stream);
+            return await _httpClient.PostToBungieNetPlatform<EntityActionResult[]>(url, token, stream,
+                authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<bool>> ApprovePending(long groupId, long membershipId,
-            BungieMembershipType membershipType, GroupApplicationRequest request, CancellationToken token = default)
+        public async ValueTask<BungieResponse<bool>> ApprovePending(
+            AuthorizationTokenData authData,
+            long groupId,
+            long membershipId,
+            BungieMembershipType membershipType,
+            GroupApplicationRequest request,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -457,15 +533,18 @@ namespace NetBungieAPI.Services.ApiAccess
             var stream = new MemoryStream();
             await _serializationHelper.SerializeAsync(stream, request);
 
-            return await _httpClient.PostToBungieNetPlatform<bool>(url, token, stream);
+            return await _httpClient.PostToBungieNetPlatform<bool>(url, token, stream, authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<EntityActionResult[]>> DenyPendingForList(long groupId,
-            GroupApplicationListRequest request, CancellationToken token = default)
+        public async ValueTask<BungieResponse<EntityActionResult[]>> DenyPendingForList(
+            AuthorizationTokenData authData,
+            long groupId,
+            GroupApplicationListRequest request,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
@@ -476,7 +555,8 @@ namespace NetBungieAPI.Services.ApiAccess
             var stream = new MemoryStream();
             await _serializationHelper.SerializeAsync(stream, request);
 
-            return await _httpClient.PostToBungieNetPlatform<EntityActionResult[]>(url, token, stream);
+            return await _httpClient.PostToBungieNetPlatform<EntityActionResult[]>(url, token, stream,
+                authData.AccessToken);
         }
 
         public async ValueTask<BungieResponse<GetGroupsForMemberResponse>> GetGroupsForMember(
@@ -493,7 +573,7 @@ namespace NetBungieAPI.Services.ApiAccess
 
             return await _httpClient.GetFromBungieNetPlatform<GetGroupsForMemberResponse>(url, token);
         }
-        
+
         public async ValueTask<BungieResponse<GroupMembershipSearchResponse>> RecoverGroupForFounder(
             BungieMembershipType membershipType, long membershipId, GroupType groupType,
             CancellationToken token = default)
@@ -507,7 +587,7 @@ namespace NetBungieAPI.Services.ApiAccess
 
             return await _httpClient.GetFromBungieNetPlatform<GroupMembershipSearchResponse>(url, token);
         }
-        
+
         public async ValueTask<BungieResponse<GroupPotentialMembershipSearchResponse>> GetPotentialGroupsForMember(
             BungieMembershipType membershipType, long membershipId, GroupType groupType, GroupsForMemberFilter filter,
             CancellationToken token = default)
@@ -522,45 +602,55 @@ namespace NetBungieAPI.Services.ApiAccess
 
             return await _httpClient.GetFromBungieNetPlatform<GroupPotentialMembershipSearchResponse>(url, token);
         }
-        
-        public async ValueTask<BungieResponse<GroupApplicationResponse>> IndividualGroupInvite(long groupId, 
-            BungieMembershipType membershipType, long membershipId, GroupApplicationRequest request, 
+
+        public async ValueTask<BungieResponse<GroupApplicationResponse>> IndividualGroupInvite(
+            AuthorizationTokenData authData,
+            long groupId,
+            BungieMembershipType membershipType,
+            long membershipId,
+            GroupApplicationRequest request,
             CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
                 .AddUrlParam(groupId.ToString())
                 .Append("Members/IndividualInvite/")
-                .AddUrlParam(((int)membershipType).ToString())
+                .AddUrlParam(((int) membershipType).ToString())
                 .AddUrlParam(membershipId.ToString())
                 .Build();
 
             var stream = new MemoryStream();
             await _serializationHelper.SerializeAsync(stream, request);
 
-            return await _httpClient.PostToBungieNetPlatform<GroupApplicationResponse>(url, token, stream);
+            return await _httpClient.PostToBungieNetPlatform<GroupApplicationResponse>(url, token, stream,
+                authData.AccessToken);
         }
-        
-        public async ValueTask<BungieResponse<GroupApplicationResponse>> IndividualGroupInviteCancel(long groupId, 
-            BungieMembershipType membershipType, long membershipId, CancellationToken token = default)
+
+        public async ValueTask<BungieResponse<GroupApplicationResponse>> IndividualGroupInviteCancel(
+            AuthorizationTokenData authData,
+            long groupId,
+            BungieMembershipType membershipType,
+            long membershipId,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes
                 .HasFlag(ApplicationScopes.AdminGroups))
-                throw new Exception("AdminGroups flag must be set to call this API.");
+                throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/GroupV2/")
                 .AddUrlParam(groupId.ToString())
                 .Append("Members/IndividualInviteCancel/")
-                .AddUrlParam(((int)membershipType).ToString())
+                .AddUrlParam(((int) membershipType).ToString())
                 .AddUrlParam(membershipId.ToString())
                 .Build();
 
-            return await _httpClient.PostToBungieNetPlatform<GroupApplicationResponse>(url, token);
+            return await _httpClient.PostToBungieNetPlatform<GroupApplicationResponse>(url, token,
+                authToken: authData.AccessToken);
         }
     }
 }

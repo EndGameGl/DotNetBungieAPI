@@ -4,6 +4,7 @@ using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using NetBungieAPI.Models.Fireteam;
 using NetBungieAPI.Models.Queries;
 using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
 
 namespace NetBungieAPI.Services.ApiAccess.Interfaces
 {
@@ -15,7 +16,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="groupId">Group ID</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<int>> GetActivePrivateClanFireteamCount(long groupId,
+        ValueTask<BungieResponse<int>> GetActivePrivateClanFireteamCount(
+            AuthorizationTokenData authData,
+            long groupId,
             CancellationToken token = default);
 
         /// <summary>
@@ -31,9 +34,15 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="langFilter">An optional language filter.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<SearchResultOfFireteamSummary>> GetAvailableClanFireteams(long groupId,
-            FireteamPlatform platform, DestinyActivityModeType activityType, FireteamDateRange dateRange,
-            FireteamSlotSearch slotFilter, FireteamPublicSearchOption publicOnly, int page = 0,
+        ValueTask<BungieResponse<SearchResultOfFireteamSummary>> GetAvailableClanFireteams(
+            AuthorizationTokenData authData,
+            long groupId,
+            FireteamPlatform platform, 
+            DestinyActivityModeType activityType, 
+            FireteamDateRange dateRange,
+            FireteamSlotSearch slotFilter, 
+            FireteamPublicSearchOption publicOnly,
+            int page = 0,
             string langFilter = null,
             CancellationToken token = default);
 
@@ -49,8 +58,14 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<SearchResultOfFireteamSummary>> SearchPublicAvailableClanFireteams(
-            FireteamPlatform platform, DestinyActivityModeType activityType, FireteamDateRange dateRange,
-            FireteamSlotSearch slotFilter, int page = 0, string langFilter = null, CancellationToken token = default);
+            AuthorizationTokenData authData,
+            FireteamPlatform platform, 
+            DestinyActivityModeType activityType, 
+            FireteamDateRange dateRange,
+            FireteamSlotSearch slotFilter,
+            int page = 0, 
+            string langFilter = null, 
+            CancellationToken token = default);
 
         /// <summary>
         /// Gets a listing of all fireteams that caller is an applicant, a member, or an alternate of.
@@ -63,9 +78,15 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="groupFilter">If true, filter by clan. Otherwise, ignore the clan and show all of the user's fireteams.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<SearchResultOfFireteamSummary>> GetMyClanFireteams(long groupId,
-            FireteamPlatform platform, bool includeClosed, int page = 0, string langFilter = null,
-            bool groupFilter = false, CancellationToken token = default);
+        ValueTask<BungieResponse<SearchResultOfFireteamSummary>> GetMyClanFireteams(
+            AuthorizationTokenData authData,
+            long groupId,
+            FireteamPlatform platform, 
+            bool includeClosed, 
+            int page = 0, 
+            string langFilter = null,
+            bool groupFilter = false, 
+            CancellationToken token = default);
 
         /// <summary>
         /// Gets a specific fireteam.
@@ -74,7 +95,10 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="fireteamId">The unique id of the fireteam.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<FireteamResponse>> GetClanFireteam(long groupId, long fireteamId,
+        ValueTask<BungieResponse<FireteamResponse>> GetClanFireteam(
+            AuthorizationTokenData authData,
+            long groupId, 
+            long fireteamId,
             CancellationToken token = default);
     }
 }

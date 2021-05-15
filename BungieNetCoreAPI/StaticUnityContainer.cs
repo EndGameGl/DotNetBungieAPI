@@ -20,7 +20,6 @@ namespace NetBungieAPI
             Container.RegisterType<IConfigurationService, ConfigurationService>(TypeLifetime.Singleton);
             Container.RegisterType<IHttpClientInstance, HttpClientInstance>(TypeLifetime.Singleton);
             Container.RegisterType<ILocalisedDestinyDefinitionRepositories, LocalisedDestinyDefinitionRepositories>(TypeLifetime.Singleton);
-            Container.RegisterType<IManifestVersionHandler, ManifestVersionHandler>(TypeLifetime.Singleton);
             Container.RegisterType<IDefinitionAssemblyData, DefinitionAssemblyData>(TypeLifetime.Singleton);
             Container.RegisterType<IAuthorizationStateHandler, AuthorizationStateHandler>(TypeLifetime.Singleton);
             Container.RegisterType<IJsonSerializationHelper, JsonSerializationHelper>(TypeLifetime.Singleton);
@@ -48,7 +47,6 @@ namespace NetBungieAPI
         internal static IConfigurationService GetConfiguration() => Container.Resolve<IConfigurationService>();
         internal static IHttpClientInstance GetHTTPClient() => Container.Resolve<IHttpClientInstance>();
         internal static ILocalisedDestinyDefinitionRepositories GetDestinyDefinitionRepositories() => Container.Resolve<ILocalisedDestinyDefinitionRepositories>();
-        internal static IManifestVersionHandler GetManifestUpdateHandler() => Container.Resolve<IManifestVersionHandler>();
         internal static IDefinitionAssemblyData GetAssemblyData() => Container.Resolve<IDefinitionAssemblyData>();
         internal static IAuthorizationStateHandler GetAuthHandler() => Container.Resolve<IAuthorizationStateHandler>();
     }

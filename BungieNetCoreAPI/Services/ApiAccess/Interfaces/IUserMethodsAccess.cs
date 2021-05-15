@@ -3,6 +3,7 @@ using NetBungieAPI.Models.Config;
 using NetBungieAPI.Models.User;
 using System.Threading;
 using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
 
 namespace NetBungieAPI.Services.ApiAccess.Interfaces
 {
@@ -53,10 +54,11 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <summary>
         /// Returns a list of accounts associated with signed in user. This is useful for OAuth implementations that do not give you access to the token response.
         /// </summary>
+        /// /// <param name="id">Current user ID, needed to get auth values</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<UserMembershipData>>
-            GetMembershipDataForCurrentUser(CancellationToken token = default);
+            GetMembershipDataForCurrentUser(AuthorizationTokenData authToken, CancellationToken token = default);
 
         /// <summary>
         /// Gets any hard linked membership given a credential. Only works for credentials that are public (just SteamID64 right now). Cross Save aware.

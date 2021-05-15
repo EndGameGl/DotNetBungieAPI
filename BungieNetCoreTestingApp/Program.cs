@@ -62,6 +62,8 @@ using NetBungieAPI.Models.Destiny.Definitions.TraitCategories;
 using NetBungieAPI.Models.Destiny.Definitions.Traits;
 using NetBungieAPI.Models.Destiny.Definitions.VendorGroups;
 using NetBungieAPI.Models.Destiny.Definitions.Vendors;
+using NetBungieAPI.Models.GroupsV2;
+using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Repositories;
 
 namespace NetBungieAPI.TestProject
@@ -120,18 +122,28 @@ namespace NetBungieAPI.TestProject
                 settings
                     .AddApiKey(key: args[0])
                     .AddClientIdAndSecret(id: int.Parse(args[1]), secret: args[2])
-                    .SpecifyApplicationScopes(ApplicationScopes.ReadUserData | ApplicationScopes.AdminGroups)
+                    .SpecifyApplicationScopes(ApplicationScopes.ReadUserData | ApplicationScopes.AdminGroups |
+                                              ApplicationScopes.ReadBasicUserProfile)
                     .UseDefaultProvider(@"H:\BungieNetCoreAPIRepository\Manifests")
                     .EnableLogging((mes) => Console.WriteLine(mes))
-                    .PremapDefinitions()
-                    .LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
+                    //.PremapDefinitions()
+                    //.LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
                     .SetLocales(new BungieLocales[] {BungieLocales.EN})
-                    .SetUpdateBehaviour(true, false);
+                    .SetUpdateBehaviour(false, false);
             });
             sw.Stop();
             Console.WriteLine($"Startup in: {sw.ElapsedMilliseconds} ms");
 
-            var items = _bungieClient.Repository.GetAll<DestinyInventoryItemDefinition>().ToList();
+            //var authAwaiter = _bungieClient.Authentification.CreateNewAuthentificationAwaiter();
+            //var authLink = _bungieClient.Authentification.GetAuthorizationLink(authAwaiter);
+            //authAwaiter.ReceiveCode(Console.ReadLine(), Console.ReadLine());
+            //var token = await _bungieClient.Authentification.GetAuthTokenAsync(authAwaiter);
+
+            var response = await _bungieClient.ApiAccess.GroupV2.GetPotentialGroupsForMember(
+                BungieMembershipType.TigerSteam,
+                20027802,
+                GroupType.General, 
+                GroupsForMemberFilter.All);
 
             await Task.Delay(Timeout.Infinite);
         }
@@ -382,7 +394,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.LocationReleases.FirstOrDefault()?.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/locations.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -390,7 +402,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/lores.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -398,7 +410,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.TierName),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/medalTiers.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -406,7 +418,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/metrics.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -414,7 +426,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/milestones.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -422,7 +434,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/objectives.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -430,7 +442,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/places.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -438,7 +450,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties?.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/plugSets.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -446,7 +458,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.PowerCap),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/powerCaps.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -454,7 +466,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/presentationNodes.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -462,7 +474,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/progressionMappings.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -470,7 +482,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/progressions.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -478,7 +490,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/races.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -486,7 +498,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/records.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -494,7 +506,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/reportReasons.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -502,7 +514,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/reportReasons.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -510,7 +522,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/sandboxPerks.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -518,7 +530,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/seasonPasses.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -526,7 +538,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/seasons.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -534,7 +546,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/socketCategories.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -542,7 +554,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/socketTypes.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -550,7 +562,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/stats.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -558,7 +570,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.TraitCategoryId),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/traitCategories.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -566,7 +578,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/traits.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -574,7 +586,7 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.CategoryName),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/vendorGroups.json", json);
-            
+
             json = JsonSerializer.Serialize(
                 _bungieClient
                     .Repository
@@ -582,51 +594,6 @@ namespace NetBungieAPI.TestProject
                     .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
                 new JsonSerializerOptions() {WriteIndented = true});
             await File.WriteAllTextAsync("data/vendors.json", json);
-        }
-
-        private static async Task UserApiTest()
-        {
-            var getBungieNetUserByIdResponse = await _bungieClient.ApiAccess.User.GetBungieNetUserById(20027802);
-            var searchUsersResponse = await _bungieClient.ApiAccess.User.SearchUsers("megl");
-            var getCredentialTypesForTargetAccountResponse =
-                await _bungieClient.ApiAccess.User.GetCredentialTypesForTargetAccount(getBungieNetUserByIdResponse
-                    .Response.MembershipId);
-            var getAvailableThemesResponse = await _bungieClient.ApiAccess.User.GetAvailableThemes();
-            var getMembershipDataByIdResponse = await _bungieClient.ApiAccess.User.GetMembershipDataById(
-                getBungieNetUserByIdResponse.Response.MembershipId, Models.BungieMembershipType.TigerSteam);
-            //var getMembershipDataForCurrentUserResponse = await _bungieClient.ApiAccess.User.GetMembershipDataForCurrentUser();
-            var getMembershipFromHardLinkedCredentialResponse =
-                await _bungieClient.ApiAccess.User.GetMembershipFromHardLinkedCredential(76561198083556532);
-        }
-
-        private static async Task AppApiTest()
-        {
-            var getBungieApplicationsResponse = await _bungieClient.ApiAccess.App.GetBungieApplications();
-            var getApplicationApiUsageResponse =
-                await _bungieClient.ApiAccess.App.GetApplicationApiUsage(getBungieApplicationsResponse.Response[0]
-                    .ApplicationId);
-        }
-
-        private static async Task ContentApiTest()
-        {
-            var getContentTypeResponse = await _bungieClient.ApiAccess.Content.GetContentType("News");
-            var getContentByIdResponse = await _bungieClient.ApiAccess.Content.GetContentById(50223, "en");
-            var getContentByTagAndTypeResponse =
-                await _bungieClient.ApiAccess.Content.GetContentByTagAndType("News", "destiny-news", "en");
-            var searchContentWithTextResponse =
-                await _bungieClient.ApiAccess.Content.SearchContentWithText("en", new string[] {"News"}, "twab", null,
-                    "destiny-news");
-            var searchContentByTagAndTypeResponse =
-                await _bungieClient.ApiAccess.Content.SearchContentByTagAndType("en", "destiny-news", "News");
-        }
-
-        private static async Task TrendingApiTest()
-        {
-            var getTrendingCategoriesResponse = await _bungieClient.ApiAccess.Trending.GetTrendingCategories();
-            var getTrendingCategoryResponse = await _bungieClient.ApiAccess.Trending.GetTrendingCategory("News");
-            var getTrendingEntryDetailResponse =
-                await _bungieClient.ApiAccess.Trending.GetTrendingEntryDetail(TrendingEntryType.News,
-                    getTrendingCategoryResponse.Response.Results[0].Identifier);
         }
     }
 }

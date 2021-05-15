@@ -1,4 +1,4 @@
-﻿using NetBungieAPI.Authrorization;
+﻿using NetBungieAPI.Authorization;
 using NetBungieAPI.Logging;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.Interfaces;
@@ -12,25 +12,22 @@ namespace NetBungieAPI.Clients
     public class BungieClient : IBungieClient
     {
         private readonly IConfigurationService _configuration;
-        private readonly IAuthorizationStateHandler _authHandler;
         private readonly IHttpClientInstance _httpClient;
-        private readonly IManifestVersionHandler _versionControl;
         private readonly ILogger _logger;
-
         private LogListener _logListener;
 
+        public IAuthorizationStateHandler Authentification { get; }
         public ILocalisedDestinyDefinitionRepositories Repository { get; }
         public IBungieApiAccess ApiAccess { get; }
 
-        internal BungieClient(IConfigurationService config, IManifestVersionHandler manifestUpdateHandler,
-            ILogger logger, IBungieApiAccess apiAccess, IHttpClientInstance httpClient,
-            IAuthorizationStateHandler authorizationHandler, ILocalisedDestinyDefinitionRepositories repository)
+        internal BungieClient(IConfigurationService config, ILogger logger, IBungieApiAccess apiAccess,
+            IHttpClientInstance httpClient, IAuthorizationStateHandler authorizationHandler,
+            ILocalisedDestinyDefinitionRepositories repository)
         {
             _configuration = config;
             _httpClient = httpClient;
             _logger = logger;
-            _versionControl = manifestUpdateHandler;
-            _authHandler = authorizationHandler;
+            Authentification = authorizationHandler;
             Repository = repository;
             ApiAccess = apiAccess;
             _logListener = new LogListener();
@@ -39,67 +36,18 @@ namespace NetBungieAPI.Clients
 
         public async ValueTask<bool> CheckUpdates()
         {
-            return await _versionControl.HasUpdates();
+            return await Repository.Provider.CheckForUpdates();
         }
 
         public async Task DownloadLatestManifestLocally()
         {
-            await _versionControl.DownloadLastVersion();
+            await Repository.Provider.DownloadNewManifestData(await Repository.Provider.GetCurrentManifest());
         }
 
         public void AddListener(NewMessageEvent eventHandler)
         {
             if (_logListener != null)
                 _logListener.OnNewMessage += eventHandler;
-            ;
-        }
-
-        private bool TryGetAuthorizationValue(out string value)
-        {
-            value = default;
-            if (!_configuration.Settings.IdentificationSettings.ClientId.HasValue ||
-                string.IsNullOrEmpty(_configuration.Settings.IdentificationSettings.ClientSecret))
-                return false;
-
-            value = Convert.ToBase64String(
-                Encoding.UTF8.GetBytes(
-                    $"{_configuration.Settings.IdentificationSettings.ClientId}:{_configuration.Settings.IdentificationSettings.ClientSecret}"));
-
-            return true;
-        }
-
-        public string GetAuthorizationLink()
-        {
-            var awaiter = _authHandler.CreateNewAuthAwaiter();
-            return _httpClient.GetAuthLink(_configuration.Settings.IdentificationSettings.ClientId.Value,
-                awaiter.State);
-        }
-
-        public void ReceiveCode(string state, string code)
-        {
-            _authHandler.InputCode(state, code);
-        }
-
-        public async Task<AuthorizationTokenData> GetAuthorizationToken(string code)
-        {
-            if (TryGetAuthorizationValue(out var value))
-            {
-                var token = await _httpClient.GetAuthorizationToken(code, value);
-                _authHandler.AddAuthToken(token);
-                return token;
-            }
-            else
-                throw new Exception("Couldn't form authorization value.");
-        }
-
-        public async Task<AuthorizationTokenData> RenewAuthorizationToken(AuthorizationTokenData oldToken)
-        {
-            return await _httpClient.RenewAuthorizationToken(oldToken);
-        }
-
-        public void SetAuthToken(AuthorizationTokenData token)
-        {
-            _authHandler.AddAuthToken(token);
         }
     }
 }

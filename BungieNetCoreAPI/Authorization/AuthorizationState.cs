@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace NetBungieAPI.Authrorization
+namespace NetBungieAPI.Authorization
 {
+    /// <summary>
+    /// Class for tracking state of authorization code
+    /// </summary>
     public class AuthorizationState
     {
         public string State { get; private set; }
@@ -23,14 +26,13 @@ namespace NetBungieAPI.Authrorization
                 Code = null
             };
 
-        public void ReceiveCode(string code)
+        public void ReceiveCode(string code, string state)
         {
+            if (State != state)
+                throw new Exception("State you provided doesn't match awaiter state.");
             CallbackReceiveTime = DateTime.Now;
+            DidReceiveCallback = true;
             Code = code;
-        }
-        public void RerollState()
-        {
-            State = RandomInstance.GetRandomString(20);
         }
     }
 }

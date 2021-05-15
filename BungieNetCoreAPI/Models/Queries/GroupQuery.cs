@@ -26,6 +26,18 @@ namespace NetBungieAPI.Models.Queries
         [JsonPropertyName("tagText")]
         public string TagText { get; private set; }
 
+        /// <summary>
+        /// Query for a usual group
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="creationDate"></param>
+        /// <param name="sortBy"></param>
+        /// <param name="groupMemberCountFilter"></param>
+        /// <param name="localeFilter"></param>
+        /// <param name="tagText"></param>
+        /// <param name="itemsPerPage"></param>
+        /// <param name="currentPage"></param>
+        /// <param name="requestContinuationToken"></param>
         public GroupQuery(string name, GroupDateRange creationDate, GroupSortBy sortBy,
             GroupMemberCountFilter? groupMemberCountFilter, string localeFilter, string tagText, int itemsPerPage,
             int currentPage, string requestContinuationToken)
@@ -41,6 +53,15 @@ namespace NetBungieAPI.Models.Queries
             CurrentPage = currentPage;
             RequestContinuationToken = requestContinuationToken;
         }
+        /// <summary>
+        /// Query for a clan
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="creationDate"></param>
+        /// <param name="sortBy"></param>
+        /// <param name="itemsPerPage"></param>
+        /// <param name="currentPage"></param>
+        /// <param name="requestContinuationToken"></param>
         public GroupQuery(string name, GroupDateRange creationDate, GroupSortBy sortBy, int itemsPerPage,
             int currentPage, string requestContinuationToken)
         {

@@ -1,9 +1,11 @@
 ﻿using NetBungieAPI.Logging;
-using NetBungieAPI.Authrorization;
+using NetBungieAPI.Authorization;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -36,31 +38,42 @@ namespace NetBungieAPI.Services
         {
             _logger = logger;
             _config = configuration;
-            _httpClient = new HttpClient()
+            _httpClient = new HttpClient(new HttpClientHandler()
             {
-                Timeout = TimeSpan.FromSeconds(6000),
+                CookieContainer = new CookieContainer(),
+                UseCookies = true
+            })
+            {
+                Timeout = TimeSpan.FromSeconds(6000)
             };
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _httpClient.DefaultRequestHeaders.Add("User-Agent", "NetBungieApi Client");
             _serializationHelper = serializationHelper;
         }
 
-        public async Task<AuthorizationTokenData> GetAuthorizationToken(string code, string authValue)
+        public async Task<AuthorizationTokenData> GetAuthorizationToken(string code)
         {
-            var messageContent = $"grant_type=authorization_code&code={code}";
-            // if (_config.Settings.IdentificationSettings.ClientId != null)
-            //     messageContent += $"&client_id={_config.Settings.IdentificationSettings.ClientId}";
-            // if (!string.IsNullOrWhiteSpace(_config.Settings.IdentificationSettings.ClientSecret))
-            // {
-            //     messageContent += $"&client_secret={_config.Settings.IdentificationSettings.ClientSecret}";
-            // }
+            var encodedContentPairs = new List<KeyValuePair<string?, string?>>
+            {
+                new("grant_type", "authorization_code"),
+                new("code", code),
+                new("client_id", _config.Settings.IdentificationSettings.ClientId.ToString())
+            };
+
+            if (!string.IsNullOrEmpty(_config.Settings.IdentificationSettings.ClientSecret))
+                encodedContentPairs.Add(new KeyValuePair<string?, string?>(
+                    "client_secret",
+                    _config.Settings.IdentificationSettings.ClientSecret));
 
             var requestMessage = new HttpRequestMessage()
             {
                 Method = HttpMethod.Post,
                 RequestUri = new Uri(AuthorizationTokenEndpoint),
-                Content = new StringContent(messageContent)
+                Content = new FormUrlEncodedContent(encodedContentPairs)
             };
-            requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Basic", authValue);
+
+            requestMessage.Headers.TryAddWithoutValidation("X-API-Key",
+                _config.Settings.IdentificationSettings.ApiKey);
             requestMessage.Content.Headers.ContentType.MediaType = "application/x-www-form-urlencoded";
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await _httpClient.SendAsync(requestMessage);
@@ -177,6 +190,7 @@ namespace NetBungieAPI.Services
                 else
                     throw new Exception("Directory doesn't exist.");
             }
+
             return image;
         }
 
@@ -190,9 +204,11 @@ namespace NetBungieAPI.Services
 
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             if (omitApiKey == false)
-                requestMessage.Headers.TryAddWithoutValidation("X-API-Key", _config.Settings.IdentificationSettings.ApiKey);
+                requestMessage.Headers.TryAddWithoutValidation("X-API-Key",
+                    _config.Settings.IdentificationSettings.ApiKey);
             if (!string.IsNullOrEmpty(authToken))
-                requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+                requestMessage.Headers.Add("Authorization", $"Bearer {authToken}");
+            //requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
             _logger.Log($"Created http get message for: {requestMessage.RequestUri}", LogType.Debug);
             return requestMessage;
         }
@@ -210,11 +226,11 @@ namespace NetBungieAPI.Services
 
             if (!string.IsNullOrEmpty(authToken))
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
-            if (content is not null)
-            {
-                content.Position = 0;
-                requestMessage.Content = new StreamContent(content);
-            }
+
+            if (content is null)
+                return requestMessage;
+            content.Position = 0;
+            requestMessage.Content = new StreamContent(content);
 
             return requestMessage;
         }

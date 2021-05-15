@@ -21,7 +21,7 @@ namespace NetBungieAPI.Repositories
         public bool Add(IDestinyDefinition definition) => _definitions.TryAdd(definition.Hash, definition);
         public bool Remove(uint hash) => _definitions.TryRemove(hash, out _);
         public IEnumerable<IDestinyDefinition> Where(Func<IDestinyDefinition, bool> predicate) => EnumerateValues().Where(predicate);
-        public IEnumerable<IDestinyDefinition> EnumerateValues() => _definitions.Select(x => x.Value);      
+        public IEnumerable<IDestinyDefinition> EnumerateValues() => _definitions.Select(x => x.Value);
         public bool TryGetDefinition(uint hash, out IDestinyDefinition definition) => _definitions.TryGetValue(hash, out definition);
         public bool TryGetDefinition<T>(uint hash, out T definition) where T : IDestinyDefinition
         {

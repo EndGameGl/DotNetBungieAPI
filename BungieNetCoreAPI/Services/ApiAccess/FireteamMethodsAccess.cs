@@ -7,6 +7,8 @@ using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
 using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
+using NetBungieAPI.Exceptions;
 using NetBungieAPI.Models.Applications;
 
 namespace NetBungieAPI.Services.ApiAccess
@@ -22,11 +24,13 @@ namespace NetBungieAPI.Services.ApiAccess
             _configuration = configuration;
         }
 
-        public async ValueTask<BungieResponse<int>> GetActivePrivateClanFireteamCount(long groupId,
+        public async ValueTask<BungieResponse<int>> GetActivePrivateClanFireteamCount(
+            AuthorizationTokenData authData,
+            long groupId,
             CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(ApplicationScopes.ReadGroups))
-                throw new Exception("ReadGroups flag must be set to make this call.");
+                throw new InsufficientScopeException(ApplicationScopes.ReadGroups);
 
             var url = StringBuilderPool
                 .GetBuilder(token)
@@ -35,16 +39,23 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("ActiveCount/")
                 .Build();
 
-            return await _httpClient.GetFromBungieNetPlatform<int>(url, token);
+            return await _httpClient.GetFromBungieNetPlatform<int>(url, token, authToken: authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<SearchResultOfFireteamSummary>> GetAvailableClanFireteams(long groupId,
-            FireteamPlatform platform, DestinyActivityModeType activityType, FireteamDateRange dateRange,
-            FireteamSlotSearch slotFilter, FireteamPublicSearchOption publicOnly, int page = 0,
-            string langFilter = null, CancellationToken token = default)
+        public async ValueTask<BungieResponse<SearchResultOfFireteamSummary>> GetAvailableClanFireteams(
+            AuthorizationTokenData authData,
+            long groupId,
+            FireteamPlatform platform,
+            DestinyActivityModeType activityType,
+            FireteamDateRange dateRange,
+            FireteamSlotSearch slotFilter,
+            FireteamPublicSearchOption publicOnly,
+            int page = 0,
+            string langFilter = null,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(ApplicationScopes.ReadGroups))
-                throw new Exception("ReadGroups flag must be set to make this call.");
+                throw new InsufficientScopeException(ApplicationScopes.ReadGroups);
 
             var url = StringBuilderPool
                 .GetBuilder(token)
@@ -60,16 +71,23 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("langFilter", langFilter, () => !string.IsNullOrWhiteSpace(langFilter))
                 .Build();
 
-            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, token);
+            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, token,
+                authToken: authData.AccessToken);
         }
 
         public async ValueTask<BungieResponse<SearchResultOfFireteamSummary>> SearchPublicAvailableClanFireteams(
-            FireteamPlatform platform, DestinyActivityModeType activityType, FireteamDateRange dateRange,
-            FireteamSlotSearch slotFilter, int page = 0, string langFilter = null, CancellationToken token = default)
+            AuthorizationTokenData authData,
+            FireteamPlatform platform,
+            DestinyActivityModeType activityType,
+            FireteamDateRange dateRange,
+            FireteamSlotSearch slotFilter,
+            int page = 0,
+            string langFilter = null,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(ApplicationScopes.ReadGroups))
-                throw new Exception("ReadGroups flag must be set to make this call.");
-            
+                throw new InsufficientScopeException(ApplicationScopes.ReadGroups);
+
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Fireteam/Search/Available/")
@@ -80,17 +98,24 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(page.ToString())
                 .AddQueryParam("langFilter", langFilter, () => !string.IsNullOrWhiteSpace(langFilter))
                 .Build();
-            
-            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, token);
+
+            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, token,
+                authToken: authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<SearchResultOfFireteamSummary>> GetMyClanFireteams(long groupId,
-            FireteamPlatform platform, bool includeClosed, int page = 0, string langFilter = null,
-            bool groupFilter = false, CancellationToken token = default)
+        public async ValueTask<BungieResponse<SearchResultOfFireteamSummary>> GetMyClanFireteams(
+            AuthorizationTokenData authData,
+            long groupId,
+            FireteamPlatform platform,
+            bool includeClosed,
+            int page = 0,
+            string langFilter = null,
+            bool groupFilter = false,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(ApplicationScopes.ReadGroups))
-                throw new Exception("ReadGroups flag must be set to make this call.");
-            
+                throw new InsufficientScopeException(ApplicationScopes.ReadGroups);
+
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Fireteam/Clan/")
@@ -102,16 +127,20 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("langFilter", langFilter, () => !string.IsNullOrWhiteSpace(langFilter))
                 .AddQueryParam("groupFilter", groupFilter.ToString())
                 .Build();
-            
-            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, token);
+
+            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, token,
+                authToken: authData.AccessToken);
         }
 
-        public async ValueTask<BungieResponse<FireteamResponse>> GetClanFireteam(long groupId, long fireteamId,
+        public async ValueTask<BungieResponse<FireteamResponse>> GetClanFireteam(
+            AuthorizationTokenData authData,
+            long groupId,
+            long fireteamId,
             CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(ApplicationScopes.ReadGroups))
-                throw new Exception("ReadGroups flag must be set to make this call.");
-            
+                throw new InsufficientScopeException(ApplicationScopes.ReadGroups);
+
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Fireteam/Clan/")
@@ -119,8 +148,9 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("Summary/")
                 .AddUrlParam(fireteamId.ToString())
                 .Build();
-            
-            return await _httpClient.GetFromBungieNetPlatform<FireteamResponse>(url, token);
+
+            return await _httpClient.GetFromBungieNetPlatform<FireteamResponse>(url, token,
+                authToken: authData.AccessToken);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Tokens;
 
@@ -18,6 +19,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<PartnerOfferSkuHistoryResponse[]>> GetPartnerOfferSkuHistory(
-            int partnerApplicationId, long targetBnetMembershipId, CancellationToken token = default);
+            AuthorizationTokenData authData,
+            int partnerApplicationId,
+            long targetBnetMembershipId,
+            CancellationToken token = default);
     }
 }

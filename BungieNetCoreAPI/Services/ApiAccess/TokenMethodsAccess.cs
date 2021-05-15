@@ -3,6 +3,8 @@ using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
+using NetBungieAPI.Exceptions;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Applications;
 using NetBungieAPI.Models.Tokens;
@@ -21,11 +23,14 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<PartnerOfferSkuHistoryResponse[]>> GetPartnerOfferSkuHistory(
-            int partnerApplicationId, long targetBnetMembershipId, CancellationToken token = default)
+            AuthorizationTokenData authData,
+            int partnerApplicationId,
+            long targetBnetMembershipId,
+            CancellationToken token = default)
         {
             if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(ApplicationScopes
                 .PartnerOfferGrant))
-                throw new Exception("Requires ApplicationScopes.PartnerOfferGrant scope to use this api.");
+                throw new InsufficientScopeException(ApplicationScopes.PartnerOfferGrant);
 
             var url = StringBuilderPool
                 .GetBuilder(token)
@@ -33,7 +38,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(partnerApplicationId.ToString())
                 .AddUrlParam(targetBnetMembershipId.ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<PartnerOfferSkuHistoryResponse[]>(url, token);
+            return await _httpClient.GetFromBungieNetPlatform<PartnerOfferSkuHistoryResponse[]>(url, token,
+                authToken: authData.AccessToken);
         }
     }
 }

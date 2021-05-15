@@ -4,6 +4,7 @@ using NetBungieAPI.Models.GroupsV2;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
 using NetBungieAPI.Models.Entities;
 using NetBungieAPI.Models.Queries;
 
@@ -33,7 +34,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="mType">The Destiny membership type of the account we wish to access settings.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<bool>> GetUserClanInviteSetting(BungieMembershipType mType,
+        ValueTask<BungieResponse<bool>> GetUserClanInviteSetting(
+            AuthorizationTokenData authData,
+            BungieMembershipType mType,
             CancellationToken token = default);
 
         /// <summary>
@@ -45,8 +48,11 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="createDateRange">Requested range in which to pull recommended groups</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<GroupV2Card[]>> GetRecommendedGroups(GroupType groupType,
-            GroupDateRange createDateRange, CancellationToken token = default);
+        ValueTask<BungieResponse<GroupV2Card[]>> GetRecommendedGroups(
+            AuthorizationTokenData authData,
+            GroupType groupType,
+            GroupDateRange createDateRange,
+            CancellationToken token = default);
 
         /// <summary>
         /// Search for Groups.
@@ -102,7 +108,10 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<int>> EditGroup(long groupId, GroupEditAction request,
+        ValueTask<BungieResponse<int>> EditGroup(
+            AuthorizationTokenData authData,
+            long groupId,
+            GroupEditAction request,
             CancellationToken token = default);
 
         /// <summary>
@@ -114,7 +123,10 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<int>> EditClanBanner(long groupId, ClanBanner request,
+        ValueTask<BungieResponse<int>> EditClanBanner(
+            AuthorizationTokenData authData,
+            long groupId,
+            ClanBanner request,
             CancellationToken token = default);
 
         /// <summary>
@@ -126,7 +138,10 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<int>> EditFounderOptions(long groupId, GroupOptionsEditAction request,
+        ValueTask<BungieResponse<int>> EditFounderOptions(
+            AuthorizationTokenData authData,
+            long groupId,
+            GroupOptionsEditAction request,
             CancellationToken token = default);
 
         /// <summary>
@@ -138,7 +153,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<long>> AddOptionalConversation(long groupId,
+        ValueTask<BungieResponse<long>> AddOptionalConversation(
+            AuthorizationTokenData authData,
+            long groupId,
             GroupOptionalConversationAddRequest request,
             CancellationToken token = default);
 
@@ -152,8 +169,12 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<long>> EditOptionalConversation(long groupId, long conversationId,
-            GroupOptionalConversationEditRequest request, CancellationToken token = default);
+        ValueTask<BungieResponse<long>> EditOptionalConversation(
+            AuthorizationTokenData authData,
+            long groupId,
+            long conversationId,
+            GroupOptionalConversationEditRequest request,
+            CancellationToken token = default);
 
         /// <summary>
         /// Get the list of members in a given group.
@@ -189,8 +210,13 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="memberType">New membertype for the specified member.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<int>> EditGroupMembership(long groupId, long membershipId,
-            BungieMembershipType membershipType, RuntimeGroupMemberType memberType, CancellationToken token = default);
+        ValueTask<BungieResponse<int>> EditGroupMembership(
+            AuthorizationTokenData authData,
+            long groupId,
+            long membershipId,
+            BungieMembershipType membershipType,
+            RuntimeGroupMemberType memberType,
+            CancellationToken token = default);
 
         /// <summary>
         /// Kick a member from the given group, forcing them to reapply if they wish to re-join the group. You must have suitable permissions in the group to perform this operation.
@@ -202,8 +228,12 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="membershipType">Membership type of the provided membership ID.</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<GroupMemberLeaveResult>> KickMember(long groupId, long membershipId,
-            BungieMembershipType membershipType, CancellationToken token = default);
+        ValueTask<BungieResponse<GroupMemberLeaveResult>> KickMember(
+            AuthorizationTokenData authData,
+            long groupId,
+            long membershipId,
+            BungieMembershipType membershipType,
+            CancellationToken token = default);
 
         /// <summary>
         /// Bans the requested member from the requested group for the specified period of time.
@@ -216,8 +246,13 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<int>> BanMember(long groupId, long membershipId,
-            BungieMembershipType membershipType, GroupBanRequest request, CancellationToken token = default);
+        ValueTask<BungieResponse<int>> BanMember(
+            AuthorizationTokenData authData,
+            long groupId,
+            long membershipId,
+            BungieMembershipType membershipType,
+            GroupBanRequest request,
+            CancellationToken token = default);
 
         /// <summary>
         /// Unbans the requested member, allowing them to re-apply for membership.
@@ -229,8 +264,12 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="membershipType">Membership type of the provided membership ID.</param>
         /// <param name="token">Cancellation token.</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<int>> UnbanMember(long groupId, long membershipId,
-            BungieMembershipType membershipType, CancellationToken token = default);
+        ValueTask<BungieResponse<int>> UnbanMember(
+            AuthorizationTokenData authData,
+            long groupId,
+            long membershipId,
+            BungieMembershipType membershipType,
+            CancellationToken token = default);
 
         /// <summary>
         /// Get the list of banned members in a given group. Only accessible to group Admins and above. Not applicable to all groups. Check group features.
@@ -239,8 +278,11 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="currentpage">Page number (starting with 1). Each page has a fixed size of 50 entries.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<SearchResultOfGroupBan>> GetBannedMembersOfGroup(long groupId,
-            int currentpage = 1, CancellationToken token = default);
+        ValueTask<BungieResponse<SearchResultOfGroupBan>> GetBannedMembersOfGroup(
+            AuthorizationTokenData authData,
+            long groupId,
+            int currentpage = 1,
+            CancellationToken token = default);
 
         /// <summary>
         /// An administrative method to allow the founder of a group or clan to give up their position to another admin permanently.
@@ -250,8 +292,11 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="membershipType">Membership type of the provided founderIdNew.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<bool>> AbdicateFoundership(long groupId, long founderIdNew,
-            BungieMembershipType membershipType, CancellationToken token = default);
+        ValueTask<BungieResponse<bool>> AbdicateFoundership(AuthorizationTokenData authData,
+            long groupId,
+            long founderIdNew,
+            BungieMembershipType membershipType,
+            CancellationToken token = default);
 
         /// <summary>
         /// Get the list of users who are awaiting a decision on their application to join a given group. Modified to include application info.
@@ -260,8 +305,11 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="currentpage">Page number (starting with 1). Each page has a fixed size of 50 items per page.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<SearchResultOfGroupMemberApplication>> GetPendingMemberships(long groupId,
-            int currentpage = 1, CancellationToken token = default);
+        ValueTask<BungieResponse<SearchResultOfGroupMemberApplication>> GetPendingMemberships(
+            AuthorizationTokenData authData,
+            long groupId,
+            int currentpage = 1,
+            CancellationToken token = default);
 
         /// <summary>
         /// Get the list of users who have been invited into the group.
@@ -270,8 +318,11 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="currentpage">Page number (starting with 1). Each page has a fixed size of 50 items per page.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<SearchResultOfGroupMemberApplication>> GetInvitedIndividuals(long groupId,
-            int currentpage = 1, CancellationToken token = default);
+        ValueTask<BungieResponse<SearchResultOfGroupMemberApplication>> GetInvitedIndividuals(
+            AuthorizationTokenData authData,
+            long groupId,
+            int currentpage = 1, 
+            CancellationToken token = default);
 
         /// <summary>
         /// Approve all of the pending users for the given group.
@@ -280,7 +331,10 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<EntityActionResult[]>> ApproveAllPending(long groupId, GroupApplicationRequest request,
+        ValueTask<BungieResponse<EntityActionResult[]>> ApproveAllPending(
+            AuthorizationTokenData authData,
+            long groupId, 
+            GroupApplicationRequest request,
             CancellationToken token = default);
 
         /// <summary>
@@ -290,7 +344,10 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<EntityActionResult[]>> DenyAllPending(long groupId, GroupApplicationRequest request,
+        ValueTask<BungieResponse<EntityActionResult[]>> DenyAllPending(
+            AuthorizationTokenData authData,
+            long groupId, 
+            GroupApplicationRequest request,
             CancellationToken token = default);
 
         /// <summary>
@@ -300,8 +357,11 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<EntityActionResult[]>> ApprovePendingForList(long groupId,
-            GroupApplicationListRequest request, CancellationToken token = default);
+        ValueTask<BungieResponse<EntityActionResult[]>> ApprovePendingForList(
+            AuthorizationTokenData authData,
+            long groupId,
+            GroupApplicationListRequest request, 
+            CancellationToken token = default);
 
         /// <summary>
         /// Approve the given membershipId to join the group/clan as long as they have applied.
@@ -312,8 +372,12 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<bool>> ApprovePending(long groupId, long membershipId,
-            BungieMembershipType membershipType, GroupApplicationRequest request, CancellationToken token = default);
+        ValueTask<BungieResponse<bool>> ApprovePending(
+            AuthorizationTokenData authData,
+            long groupId, 
+            long membershipId,
+            BungieMembershipType membershipType, 
+            GroupApplicationRequest request, CancellationToken token = default);
 
         /// <summary>
         /// Deny all of the pending users for the given group that match the passed-in.
@@ -322,8 +386,11 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<EntityActionResult[]>> DenyPendingForList(long groupId,
-            GroupApplicationListRequest request, CancellationToken token = default);
+        ValueTask<BungieResponse<EntityActionResult[]>> DenyPendingForList(
+            AuthorizationTokenData authData,
+            long groupId,
+            GroupApplicationListRequest request, 
+            CancellationToken token = default);
 
         /// <summary>
         /// Get information about the groups that a given member has joined.
@@ -372,8 +439,12 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<GroupApplicationResponse>> IndividualGroupInvite(long groupId,
-            BungieMembershipType membershipType, long membershipId, GroupApplicationRequest request,
+        ValueTask<BungieResponse<GroupApplicationResponse>> IndividualGroupInvite(
+            AuthorizationTokenData authData,
+            long groupId,
+            BungieMembershipType membershipType, 
+            long membershipId, 
+            GroupApplicationRequest request,
             CancellationToken token = default);
 
         /// <summary>
@@ -384,7 +455,11 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="membershipId">Membership id of the account being cancelled.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<GroupApplicationResponse>> IndividualGroupInviteCancel(long groupId,
-            BungieMembershipType membershipType, long membershipId, CancellationToken token = default);
+        ValueTask<BungieResponse<GroupApplicationResponse>> IndividualGroupInviteCancel(
+            AuthorizationTokenData authData,
+            long groupId,
+            BungieMembershipType membershipType, 
+            long membershipId, 
+            CancellationToken token = default);
     }
 }

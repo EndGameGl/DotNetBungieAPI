@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
-namespace NetBungieAPI.Authrorization
+namespace NetBungieAPI.Authorization
 {
+    /// <summary>
+    /// Data contract to OAuth2 flow token.
+    /// </summary>
     public sealed record AuthorizationTokenData
     {
         [JsonPropertyName("access_token")]

@@ -1,4 +1,4 @@
-﻿using NetBungieAPI.Authrorization;
+﻿using NetBungieAPI.Authorization;
 using NetBungieAPI.Models;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -11,7 +11,7 @@ namespace NetBungieAPI.Services.Interfaces
 {
     public interface IHttpClientInstance
     {
-        Task<AuthorizationTokenData> GetAuthorizationToken(string code, string authValue);
+        Task<AuthorizationTokenData> GetAuthorizationToken(string code);
         Task<AuthorizationTokenData> RenewAuthorizationToken(AuthorizationTokenData oldToken);
         string GetAuthLink(int clientId, string state);
         ValueTask<string> DownloadJSONDataFromCDNAsync(string url);
