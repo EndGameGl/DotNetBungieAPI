@@ -71,7 +71,6 @@ namespace NetBungieAPI.Providers
                             reader.Skip();
                             currentReadValue = null;
                         }
-
                         break;
                     case 2:
                         if (currentReadValue.HasValue)
@@ -86,7 +85,6 @@ namespace NetBungieAPI.Providers
                                     Length = reader.BytesConsumed - index
                                 });
                         }
-
                         break;
                 }
             }

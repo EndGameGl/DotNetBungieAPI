@@ -109,7 +109,8 @@ namespace NetBungieAPI.TestProject
             DestinyComponentType.Collectibles,
             DestinyComponentType.Records,
             DestinyComponentType.Transitory,
-            DestinyComponentType.Metrics
+            DestinyComponentType.Metrics,
+            DestinyComponentType.StringVariables
         };
 
         private static IBungieClient _bungieClient;
@@ -127,8 +128,8 @@ namespace NetBungieAPI.TestProject
                                               ApplicationScopes.ReadBasicUserProfile)
                     .UseDefaultProvider(@"H:\BungieNetCoreAPIRepository\Manifests")
                     .EnableLogging((mes) => Console.WriteLine(mes))
-                    //.PremapDefinitions()
-                    //.LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
+                    .PremapDefinitions()
+                    .LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
                     .SetLocales(new BungieLocales[] {BungieLocales.EN})
                     .SetUpdateBehaviour(false, false);
             });
@@ -140,7 +141,13 @@ namespace NetBungieAPI.TestProject
             authAwaiter.ReceiveCode(Console.ReadLine(), Console.ReadLine());
             var token = await _bungieClient.Authentification.GetAuthTokenAsync(authAwaiter);
 
-            var response = await _bungieClient.ApiAccess.User.GetMembershipDataForCurrentUser(token);
+            var currentUser = await _bungieClient.ApiAccess.User.GetMembershipDataForCurrentUser(token);
+
+            var response = await _bungieClient.ApiAccess.Destiny2.GetProfile(
+                BungieMembershipType.TigerSteam,
+                currentUser.Response.DestinyMemberships.First().MembershipId,
+                ALL_COMPONENTS_ARRAY,
+                token);
 
             await Task.Delay(Timeout.Infinite);
         }

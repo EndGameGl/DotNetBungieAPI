@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
 using NetBungieAPI.Models.Destiny.HistoricalStats;
 using NetBungieAPI.Models.Requests;
 using NetBungieAPI.Models.Responses;
@@ -77,8 +78,12 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<DestinyProfileResponse>> GetProfile(BungieMembershipType membershipType,
-            long destinyMembershipId, DestinyComponentType[] componentTypes, CancellationToken token = default);
+        ValueTask<BungieResponse<DestinyProfileResponse>> GetProfile(
+            BungieMembershipType membershipType,
+            long destinyMembershipId,
+            DestinyComponentType[] componentTypes,
+            AuthorizationTokenData authData = null,
+            CancellationToken token = default);
 
         /// <summary>
         /// Returns character information for the supplied character.
@@ -89,8 +94,12 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<DestinyCharacterResponse>> GetCharacter(BungieMembershipType membershipType,
-            long destinyMembershipId, long characterId, DestinyComponentType[] componentTypes,
+        ValueTask<BungieResponse<DestinyCharacterResponse>> GetCharacter(
+            BungieMembershipType membershipType,
+            long destinyMembershipId,
+            long characterId,
+            DestinyComponentType[] componentTypes,
+            AuthorizationTokenData authData = null,
             CancellationToken token = default);
 
         /// <summary>
@@ -99,7 +108,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="groupId">A valid group id of clan.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(long groupId,
+        ValueTask<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(
+            long groupId,
             CancellationToken token = default);
 
         /// <summary>
@@ -111,8 +121,12 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<DestinyItemResponse>> GetItem(BungieMembershipType membershipType,
-            long destinyMembershipId, long itemInstanceId, DestinyComponentType[] componentTypes,
+        ValueTask<BungieResponse<DestinyItemResponse>> GetItem(
+            BungieMembershipType membershipType,
+            long destinyMembershipId,
+            long itemInstanceId,
+            DestinyComponentType[] componentTypes,
+            AuthorizationTokenData authData = null,
             CancellationToken token = default);
 
         /// <summary>
@@ -124,8 +138,12 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<DestinyVendorsResponse>> GetVendors(BungieMembershipType membershipType,
-            long destinyMembershipId, long characterId, DestinyComponentType[] componentTypes,
+        ValueTask<BungieResponse<DestinyVendorsResponse>> GetVendors(
+            BungieMembershipType membershipType,
+            long destinyMembershipId,
+            long characterId,
+            DestinyComponentType[] componentTypes,
+            AuthorizationTokenData authData = null,
             CancellationToken token = default);
 
         /// <summary>
@@ -138,8 +156,13 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<DestinyVendorResponse>> GetVendor(BungieMembershipType membershipType,
-            long destinyMembershipId, long characterId, uint vendorHash, DestinyComponentType[] componentTypes,
+        ValueTask<BungieResponse<DestinyVendorResponse>> GetVendor(
+            BungieMembershipType membershipType,
+            long destinyMembershipId,
+            long characterId,
+            uint vendorHash,
+            DestinyComponentType[] componentTypes,
+            AuthorizationTokenData authData = null,
             CancellationToken token = default);
 
         /// <summary>
@@ -148,7 +171,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<DestinyPublicVendorsResponse>> GetPublicVendors(DestinyComponentType[] componentTypes,
+        ValueTask<BungieResponse<DestinyPublicVendorsResponse>> GetPublicVendors(
+            DestinyComponentType[] componentTypes,
             CancellationToken token = default);
 
         /// <summary>
@@ -162,8 +186,12 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<DestinyCollectibleNodeDetailResponse>> GetCollectibleNodeDetails(
-            BungieMembershipType membershipType, long destinyMembershipId, long characterId,
-            uint collectiblePresentationNodeHash, DestinyComponentType[] componentTypes,
+            BungieMembershipType membershipType,
+            long destinyMembershipId,
+            long characterId,
+            uint collectiblePresentationNodeHash,
+            DestinyComponentType[] componentTypes,
+            AuthorizationTokenData authData = null,
             CancellationToken token = default);
 
         /// <summary>
@@ -172,7 +200,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<int>> TransferItem(DestinyItemTransferRequest request,
+        ValueTask<BungieResponse<int>> TransferItem(
+            DestinyItemTransferRequest request,
+            AuthorizationTokenData authData,
             CancellationToken token = default);
 
         /// <summary>
@@ -181,7 +211,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<int>> PullFromPostmaster(DestinyPostmasterTransferRequest request,
+        ValueTask<BungieResponse<int>> PullFromPostmaster(
+            DestinyPostmasterTransferRequest request,
+            AuthorizationTokenData authData,
             CancellationToken token = default);
 
         /// <summary>
@@ -190,7 +222,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<int>> EquipItem(DestinyItemActionRequest request,
+        ValueTask<BungieResponse<int>> EquipItem(
+            DestinyItemActionRequest request,
+            AuthorizationTokenData authData,
             CancellationToken token = default);
 
         /// <summary>
@@ -199,7 +233,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<DestinyEquipItemResults>> EquipItems(DestinyItemSetActionRequest request,
+        ValueTask<BungieResponse<DestinyEquipItemResults>> EquipItems(
+            DestinyItemSetActionRequest request,
+            AuthorizationTokenData authData,
             CancellationToken token = default);
 
         /// <summary>
@@ -208,7 +244,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<int>> SetItemLockState(DestinyItemStateRequest request,
+        ValueTask<BungieResponse<int>> SetItemLockState(
+            DestinyItemStateRequest request,
+            AuthorizationTokenData authData,
             CancellationToken token = default);
 
         /// <summary>
@@ -217,7 +255,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<int>> SetQuestTrackedState(DestinyItemStateRequest request,
+        ValueTask<BungieResponse<int>> SetQuestTrackedState(
+            DestinyItemStateRequest request,
+            AuthorizationTokenData authData,
             CancellationToken token = default);
 
         /// <summary>
@@ -227,7 +267,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlug(
-            DestinyInsertPlugsActionRequest request, CancellationToken token = default);
+            DestinyInsertPlugsActionRequest request,
+            AuthorizationTokenData authData,
+            CancellationToken token = default);
 
         /// <summary>
         /// Gets the available post game carnage report for the activity ID.
@@ -235,7 +277,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="activityId">The ID of the activity whose PGCR is requested.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<DestinyPostGameCarnageReportData>> GetPostGameCarnageReport(long activityId,
+        ValueTask<BungieResponse<DestinyPostGameCarnageReportData>> GetPostGameCarnageReport(
+            long activityId,
             CancellationToken token = default);
 
         /// <summary>
@@ -245,8 +288,11 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<int>> ReportOffensivePostGameCarnageReportPlayer(long activityId,
-            DestinyReportOffensePgcrRequest request, CancellationToken token = default);
+        ValueTask<BungieResponse<int>> ReportOffensivePostGameCarnageReportPlayer(
+            long activityId,
+            DestinyReportOffensePgcrRequest request,
+            AuthorizationTokenData authData,
+            CancellationToken token = default);
 
         /// <summary>
         /// Gets historical stats definitions.
@@ -254,7 +300,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>>>
-            GetHistoricalStatsDefinition(CancellationToken token = default);
+            GetHistoricalStatsDefinition(
+                CancellationToken token = default);
 
         /// <summary>
         /// Gets leaderboards with the signed in user's friends and the supplied destinyMembershipId as the focus.
@@ -267,7 +314,11 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <returns></returns>
         ValueTask<BungieResponse<
                 ReadOnlyDictionary<string, ReadOnlyDictionary<string, DestinyClanLeaderboardsResponse>>>>
-            GetClanLeaderboards(long groupId, int maxtop, DestinyActivityModeType[] modes, string statid = null,
+            GetClanLeaderboards(
+                long groupId,
+                int maxtop,
+                DestinyActivityModeType[] modes,
+                string statid = null,
                 CancellationToken token = default);
 
         /// <summary>
@@ -277,8 +328,10 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="modes">List of game modes for which to get leaderboards.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<DestinyClanAggregateStat[]>> GetClanAggregateStats(long groupId,
-            DestinyActivityModeType[] modes, CancellationToken token = default);
+        ValueTask<BungieResponse<DestinyClanAggregateStat[]>> GetClanAggregateStats(
+            long groupId,
+            DestinyActivityModeType[] modes,
+            CancellationToken token = default);
 
         /// <summary>
         /// Gets leaderboards with the signed in user's friends and the supplied destinyMembershipId as the focus. 
@@ -291,8 +344,12 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<Dictionary<string, object>>> GetLeaderboards(
-            BungieMembershipType membershipType, long destinyMembershipId, int maxtop, DestinyActivityModeType[] modes,
-            string statid = null, CancellationToken token = default);
+            BungieMembershipType membershipType,
+            long destinyMembershipId,
+            int maxtop,
+            DestinyActivityModeType[] modes,
+            string statid = null,
+            CancellationToken token = default);
 
         /// <summary>
         /// Gets a page list of Destiny items.
@@ -302,8 +359,11 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="page">Page number to return, starting with 0.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<DestinyEntitySearchResult>> SearchDestinyEntities(DefinitionsEnum type,
-            string searchTerm, int page = 0, CancellationToken token = default);
+        ValueTask<BungieResponse<DestinyEntitySearchResult>> SearchDestinyEntities(
+            DefinitionsEnum type,
+            string searchTerm,
+            int page = 0,
+            CancellationToken token = default);
 
         /// <summary>
         /// Gets historical stats for indicated character.
@@ -319,9 +379,15 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>>> GetHistoricalStats(
-            BungieMembershipType membershipType, long destinyMembershipId, long characterId, DateTime? daystart = null,
-            DateTime? dayend = null, DestinyStatsGroupType[] groups = null, DestinyActivityModeType[] modes = null,
-            PeriodType periodType = PeriodType.None, CancellationToken token = default);
+            BungieMembershipType membershipType,
+            long destinyMembershipId,
+            long characterId,
+            DateTime? daystart = null,
+            DateTime? dayend = null,
+            DestinyStatsGroupType[] groups = null,
+            DestinyActivityModeType[] modes = null,
+            PeriodType periodType = PeriodType.None,
+            CancellationToken token = default);
 
         /// <summary>
         /// Gets aggregate historical stats organized around each character for a given account.
@@ -332,7 +398,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<DestinyHistoricalStatsAccountResult>> GetHistoricalStatsForAccount(
-            BungieMembershipType membershipType, long destinyMembershipId, DestinyStatsGroupType[] groups = null,
+            BungieMembershipType membershipType,
+            long destinyMembershipId,
+            DestinyStatsGroupType[] groups = null,
             CancellationToken token = default);
 
         /// <summary>
@@ -346,9 +414,13 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="page">Page number to return, starting with 0.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<DestinyActivityHistoryResults>> GetActivityHistory(BungieMembershipType membershipType,
-            long destinyMembershipId, long characterId, int count = 25,
-            DestinyActivityModeType mode = DestinyActivityModeType.None, int page = 0,
+        ValueTask<BungieResponse<DestinyActivityHistoryResults>> GetActivityHistory(
+            BungieMembershipType membershipType,
+            long destinyMembershipId,
+            long characterId,
+            int count = 25,
+            DestinyActivityModeType mode = DestinyActivityModeType.None,
+            int page = 0,
             CancellationToken token = default);
 
         /// <summary>
@@ -360,7 +432,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<DestinyHistoricalWeaponStatsData>> GetUniqueWeaponHistory(
-            BungieMembershipType membershipType, long destinyMembershipId, long characterId,
+            BungieMembershipType membershipType,
+            long destinyMembershipId,
+            long characterId,
             CancellationToken token = default);
 
         /// <summary>
@@ -372,7 +446,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<DestinyAggregateActivityResults>> GetDestinyAggregateActivityStats(
-            BungieMembershipType membershipType, long destinyMembershipId, long characterId,
+            BungieMembershipType membershipType,
+            long destinyMembershipId,
+            long characterId,
             CancellationToken token = default);
 
         /// <summary>
@@ -389,7 +465,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="milestoneHash">The identifier for the milestone to be returned.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<DestinyMilestoneContent>> GetPublicMilestoneContent(uint milestoneHash,
+        ValueTask<BungieResponse<DestinyMilestoneContent>> GetPublicMilestoneContent(
+            uint milestoneHash,
             CancellationToken token = default);
 
         /// <summary>
@@ -399,7 +476,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<AwaInitializeResponse>> AwaInitializeRequest(
-            AwaPermissionRequested request, CancellationToken token = default);
+            AwaPermissionRequested request,
+            AuthorizationTokenData authData,
+            CancellationToken token = default);
 
         /// <summary>
         /// Provide the result of the user interaction. Called by the Bungie Destiny App to approve or reject a request.
@@ -407,7 +486,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="request">Request body.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<int>> AwaProvideAuthorizationResult(AwaUserResponse request,
+        ValueTask<BungieResponse<int>> AwaProvideAuthorizationResult(
+            AwaUserResponse request,
+            AuthorizationTokenData authData,
             CancellationToken token = default);
 
         /// <summary>
@@ -416,7 +497,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="correlationId">The identifier for the advanced write action request.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<AwaAuthorizationResult>> AwaGetActionToken(string correlationId,
+        ValueTask<BungieResponse<AwaAuthorizationResult>> AwaGetActionToken(
+            string correlationId,
+            AuthorizationTokenData authData,
             CancellationToken token = default);
     }
 }
