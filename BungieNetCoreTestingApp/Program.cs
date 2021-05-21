@@ -130,25 +130,25 @@ namespace NetBungieAPI.TestProject
                     .EnableLogging((mes) => Console.WriteLine(mes))
                     .PremapDefinitions()
                     .LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
-                    .SetLocales(new BungieLocales[] {BungieLocales.EN})
-                    .SetUpdateBehaviour(false, false);
+                    .SetLocales(new BungieLocales[]
+                    {
+                        BungieLocales.EN,
+                    })
+                    // .ExcludeDefinitionsFromLoading(new DefinitionsEnum[]
+                    // {
+                    //     DefinitionsEnum.DestinyInventoryItemDefinition,
+                    // })
+                    .SetUpdateBehaviour(true, false);
             });
             sw.Stop();
             Console.WriteLine($"Startup in: {sw.ElapsedMilliseconds} ms");
 
-            var authAwaiter = _bungieClient.Authentification.CreateNewAuthentificationAwaiter();
-            var authLink = _bungieClient.Authentification.GetAuthorizationLink(authAwaiter);
-            authAwaiter.ReceiveCode(Console.ReadLine(), Console.ReadLine());
-            var token = await _bungieClient.Authentification.GetAuthTokenAsync(authAwaiter);
+            Console.WriteLine($"{Process.GetCurrentProcess().PrivateMemorySize64} bytes allocated for current app.");
 
-            var currentUser = await _bungieClient.ApiAccess.User.GetMembershipDataForCurrentUser(token);
-
-            var response = await _bungieClient.ApiAccess.Destiny2.GetProfile(
-                BungieMembershipType.TigerSteam,
-                currentUser.Response.DestinyMemberships.First().MembershipId,
-                ALL_COMPONENTS_ARRAY,
-                token);
-
+            await WriteAllDataToJson();
+            
+            Console.WriteLine($"Finished dumping json.");
+            
             await Task.Delay(Timeout.Infinite);
         }
 
@@ -228,376 +228,383 @@ namespace NetBungieAPI.TestProject
 
         private static async Task WriteAllDataToJson()
         {
-            if (!Directory.Exists("data"))
-                Directory.CreateDirectory("data");
+            try
+            {
+                if (!Directory.Exists("data"))
+                    Directory.CreateDirectory("data");
 
-            var json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyAchievementDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/achievements.json", json);
+                var json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyAchievementDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/achievements.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyActivityDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/activities.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyActivityDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/activities.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyActivityModeDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/activityModes.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyActivityModeDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/activityModes.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyActivityModifierDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/activityModifiers.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyActivityModifierDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/activityModifiers.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyActivityTypeDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/activityTypes.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyActivityTypeDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/activityTypes.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyArtifactDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/artifacts.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyArtifactDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/artifacts.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyBreakerTypeDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/breakerTypes.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyBreakerTypeDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/breakerTypes.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyChecklistDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/checklists.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyChecklistDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/checklists.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyClassDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/classes.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyClassDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/classes.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyCollectibleDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/collectibles.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyCollectibleDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/collectibles.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyDamageTypeDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/damageTypes.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyDamageTypeDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/damageTypes.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyDestinationDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/destinations.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyDestinationDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/destinations.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyEnergyTypeDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/energyTypes.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyEnergyTypeDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/energyTypes.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyEquipmentSlotDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/equipmentSlots.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyEquipmentSlotDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/equipmentSlots.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyFactionDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/factions.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyFactionDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/factions.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyGenderDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/genders.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyGenderDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/genders.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyInventoryBucketDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/inventoryBuckets.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyInventoryBucketDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/inventoryBuckets.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyInventoryItemDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/inventoryItems.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyInventoryItemDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/inventoryItems.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyItemCategoryDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/itemCategories.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyItemCategoryDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/itemCategories.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyItemTierTypeDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/itemTierTypes.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyItemTierTypeDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/itemTierTypes.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyLocationDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.LocationReleases.FirstOrDefault()?.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/locations.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyLocationDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.LocationReleases.FirstOrDefault()?.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/locations.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyLoreDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/lores.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyLoreDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/lores.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyMedalTierDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.TierName),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/medalTiers.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyMedalTierDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.TierName),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/medalTiers.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyMetricDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/metrics.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyMetricDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/metrics.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyMilestoneDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/milestones.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyMilestoneDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/milestones.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyObjectiveDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/objectives.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyObjectiveDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/objectives.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyPlaceDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/places.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyPlaceDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/places.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyPlugSetDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties?.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/plugSets.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyPlugSetDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties?.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/plugSets.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyPowerCapDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.PowerCap),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/powerCaps.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyPowerCapDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.PowerCap),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/powerCaps.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyPresentationNodeDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/presentationNodes.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyPresentationNodeDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/presentationNodes.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyProgressionMappingDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/progressionMappings.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyProgressionMappingDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/progressionMappings.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyProgressionDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/progressions.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyProgressionDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/progressions.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyRaceDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/races.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyRaceDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/races.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyRecordDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/records.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyRecordDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/records.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyReportReasonCategoryDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/reportReasons.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyReportReasonCategoryDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/reportReasons.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyReportReasonCategoryDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/reportReasons.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyReportReasonCategoryDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/reportReasons.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinySandboxPerkDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/sandboxPerks.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinySandboxPerkDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/sandboxPerks.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinySeasonPassDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/seasonPasses.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinySeasonPassDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/seasonPasses.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinySeasonDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/seasons.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinySeasonDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/seasons.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinySocketCategoryDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/socketCategories.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinySocketCategoryDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/socketCategories.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinySocketTypeDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/socketTypes.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinySocketTypeDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/socketTypes.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyStatDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/stats.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyStatDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/stats.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyTraitCategoryDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.TraitCategoryId),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/traitCategories.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyTraitCategoryDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.TraitCategoryId),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/traitCategories.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyTraitDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/traits.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyTraitDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/traits.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyVendorGroupDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.CategoryName),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/vendorGroups.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyVendorGroupDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.CategoryName),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/vendorGroups.json", json);
 
-            json = JsonSerializer.Serialize(
-                _bungieClient
-                    .Repository
-                    .GetAll<DestinyVendorDefinition>()
-                    .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
-                new JsonSerializerOptions() {WriteIndented = true});
-            await File.WriteAllTextAsync("data/vendors.json", json);
+                json = JsonSerializer.Serialize(
+                    _bungieClient
+                        .Repository
+                        .GetAll<DestinyVendorDefinition>()
+                        .ToDictionary(x => x.Hash, x => x.DisplayProperties.Name),
+                    new JsonSerializerOptions() {WriteIndented = true});
+                await File.WriteAllTextAsync("data/vendors.json", json);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
