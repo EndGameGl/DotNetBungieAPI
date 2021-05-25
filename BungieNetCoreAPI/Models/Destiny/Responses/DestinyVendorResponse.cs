@@ -37,5 +37,11 @@ namespace NetBungieAPI.Models.Destiny.Responses
         /// </summary>
         [JsonPropertyName("currencyLookups")]
         public SingleComponentResponseOfDestinyCurrenciesComponent CurrencyLookups { get; init; }
+        
+        /// <summary>
+        /// A map of string variable values by hash for this character context.
+        /// </summary>
+        [JsonPropertyName("stringVariables")]
+        public SingleComponentResponseOfDestinyStringVariablesComponent StringVariables { get; init; }
     }
 }

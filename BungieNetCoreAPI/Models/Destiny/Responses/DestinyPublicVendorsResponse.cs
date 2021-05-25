@@ -37,5 +37,11 @@ namespace NetBungieAPI.Models.Destiny.Responses
         /// </summary>
         [JsonPropertyName("sales")]
         public DictionaryComponentResponseOfuint32AndPublicDestinyVendorSaleItemSetComponent Sales { get; init; }
+        
+        /// <summary>
+        /// A set of string variable values by hash for a public vendors context.
+        /// </summary>
+        [JsonPropertyName("stringVariables")]
+        public SingleComponentResponseOfDestinyStringVariablesComponent StringVariables { get; init; }
     }
 }

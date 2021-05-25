@@ -146,7 +146,7 @@ namespace NetBungieAPI.TestProject
             Console.WriteLine($"{Process.GetCurrentProcess().PrivateMemorySize64} bytes allocated for current app.");
 
             await WriteAllDataToJson();
-            
+
             Console.WriteLine($"Finished dumping json.");
             
             await Task.Delay(Timeout.Infinite);

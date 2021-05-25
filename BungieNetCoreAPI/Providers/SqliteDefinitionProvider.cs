@@ -73,6 +73,7 @@ namespace NetBungieAPI.Providers
 
             foreach (var locale in DefinitionLoadingSettings.Locales)
             {
+                Repositories.SetLocaleContext(locale);
                 Logger.Log($"Loading locale: {locale}.", LogType.Info);
                 _connection.ConnectionString = $"Data Source={_databasePaths[locale]}; Version=3;";
                 _connection.Open();
@@ -113,6 +114,7 @@ namespace NetBungieAPI.Providers
                 }
 
                 _connection.Close();
+                Repositories.ResetLocaleContext();
             }
         }
 
