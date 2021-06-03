@@ -1,5 +1,6 @@
 ﻿using NetBungieAPI.Models.GroupsV2;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.User
@@ -26,5 +27,16 @@ namespace NetBungieAPI.Models.User
         /// </summary>
         [JsonPropertyName("bungieNetUser")]
         public GeneralUser BungieNetUser { get; init; }
+
+        /// <summary>
+        /// Gets primary membership for this account.
+        /// </summary>
+        /// <returns></returns>
+        public GroupUserInfoCard GetDestinyPrimaryMembership()
+        {
+            return PrimaryMembershipId.HasValue ? 
+                DestinyMemberships.Single(x => x.MembershipId == PrimaryMembershipId.Value) : 
+                DestinyMemberships.Single();
+        }
     }
 }

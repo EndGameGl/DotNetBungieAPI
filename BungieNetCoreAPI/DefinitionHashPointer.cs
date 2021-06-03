@@ -28,10 +28,10 @@ namespace NetBungieAPI
 #endif
 
         private static readonly Lazy<ILocalisedDestinyDefinitionRepositories> _repository =
-            new(() => StaticUnityContainer.GetDestinyDefinitionRepositories());
+            new(StaticUnityContainer.GetDestinyDefinitionRepositories);
 
         private static readonly Lazy<IDestiny2MethodsAccess> _destiny2MethodsAccess =
-            new(() => StaticUnityContainer.GetService<IDestiny2MethodsAccess>());
+            new(StaticUnityContainer.GetService<IDestiny2MethodsAccess>);
 
         private static readonly Lazy<DefinitionsEnum> _lazyEnumValue =
             new(() => Enum.Parse<DefinitionsEnum>(typeof(T).Name));
@@ -39,7 +39,13 @@ namespace NetBungieAPI
         private static readonly Lazy<DefinitionHashPointer<T>> _lazyEmptyPointer =
             new(() => new DefinitionHashPointer<T>(null));
 
+        /// <summary>
+        /// Definition enum value
+        /// </summary>
         public static DefinitionsEnum EnumValue => _lazyEnumValue.Value;
+        /// <summary>
+        /// Empty pointer
+        /// </summary>
         public static DefinitionHashPointer<T> Empty => _lazyEmptyPointer.Value;
 
         private bool _isMapped;
@@ -64,8 +70,12 @@ namespace NetBungieAPI
         /// Whether this hash isn't empty.
         /// </summary>
         [JsonIgnore]
-        public bool HasValidHash => Hash.HasValue && Hash.Value > 0;
+        public bool HasValidHash => Hash is > 0;
 
+        /// <summary>
+        /// .ctor
+        /// </summary>
+        /// <param name="hash">Definition hash</param>
         public DefinitionHashPointer(uint? hash)
         {
             _value = default;

@@ -6,7 +6,10 @@ namespace NetBungieAPI
     internal static class RandomInstance
     {
         private static readonly Random Rnd = new Random();
-        private static readonly char[] Symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".ToCharArray();
+
+        private static readonly char[] Symbols =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".ToCharArray();
+
         internal static string GetRandomString(int length = 10)
         {
             if (length <= 0)
@@ -17,6 +20,7 @@ namespace NetBungieAPI
             {
                 sb.Append(Symbols[Rnd.Next(Symbols.Length)]);
             }
+
             return sb.ToString();
         }
     }
