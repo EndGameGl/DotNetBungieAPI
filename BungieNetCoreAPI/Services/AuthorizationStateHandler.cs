@@ -22,9 +22,6 @@ namespace NetBungieAPI.Services
         private ConcurrentDictionary<string, AuthorizationState> _authorizationStates { get; }
         private ConcurrentDictionary<long, AuthorizationTokenData> _authorizationTokenDatas { get; }
 
-        private AuthorizationState _authorizationState;
-        private AuthorizationTokenData _authorizationToken;
-
         public AuthorizationStateHandler(ILogger logger, IConfigurationService configuration,
             IHttpClientInstance httpClient)
         {
@@ -79,6 +76,21 @@ namespace NetBungieAPI.Services
             token = tokenData.AccessToken;
             return true;
 
+        }
+
+        public async ValueTask<AuthorizationTokenData> RenewToken(AuthorizationTokenData authData)
+        {
+            try
+            {
+                var newToken = await _client.RenewAuthorizationToken(authData);
+                return _authorizationTokenDatas.AddOrUpdate(newToken.MembershipId, newToken, (_, _) => newToken);
+            }
+            catch (Exception e)
+            {
+                _logger.Log(e.Message, LogType.Error);
+            }
+
+            throw new Exception("Failed to get new token");
         }
     }
 }

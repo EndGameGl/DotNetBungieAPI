@@ -11,6 +11,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
 using NetBungieAPI.Models.Trending;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
@@ -129,7 +130,7 @@ namespace NetBungieAPI.TestProject
                     .UseDefaultProvider(@"H:\BungieNetCoreAPIRepository\Manifests")
                     .EnableLogging((mes) => Console.WriteLine(mes))
                     .PremapDefinitions()
-                    .LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
+                    //.LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
                     .SetLocales(new BungieLocales[]
                     {
                         BungieLocales.EN,

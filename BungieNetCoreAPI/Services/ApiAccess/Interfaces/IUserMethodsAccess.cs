@@ -37,6 +37,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <returns></returns>
         ValueTask<BungieResponse<CredentialTypeForAccount[]>> GetCredentialTypesForTargetAccount(
             long id,
+            AuthorizationTokenData authToken,
             CancellationToken token = default);
 
         /// <summary>
@@ -79,7 +80,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <returns></returns>
         ValueTask<BungieResponse<HardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(
             long credential,
-            BungieCredentialType credentialType = BungieCredentialType.SteamId, 
+            BungieCredentialType credentialType = BungieCredentialType.SteamId,
             CancellationToken token = default);
     }
 }

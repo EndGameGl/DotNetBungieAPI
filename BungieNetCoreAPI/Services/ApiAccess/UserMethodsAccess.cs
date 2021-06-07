@@ -52,14 +52,15 @@ namespace NetBungieAPI.Services.ApiAccess
 
         public async ValueTask<BungieResponse<CredentialTypeForAccount[]>> GetCredentialTypesForTargetAccount(
             long id,
+            AuthorizationTokenData authToken,
             CancellationToken token = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/User/GetCredentialTypesForTargetAccount/")
-                .Append(id)
+                .AddUrlParam(id.ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<CredentialTypeForAccount[]>(url, token);
+            return await _httpClient.GetFromBungieNetPlatform<CredentialTypeForAccount[]>(url, token, authToken.AccessToken);
         }
 
         public async ValueTask<BungieResponse<UserTheme[]>> GetAvailableThemes(
@@ -99,7 +100,7 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<HardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(
-            long credential, 
+            long credential,
             BungieCredentialType credentialType = BungieCredentialType.SteamId,
             CancellationToken token = default)
         {

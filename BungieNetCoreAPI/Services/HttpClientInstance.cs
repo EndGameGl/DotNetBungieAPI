@@ -88,14 +88,28 @@ namespace NetBungieAPI.Services
 
         public async Task<AuthorizationTokenData> RenewAuthorizationToken(AuthorizationTokenData oldToken)
         {
+            var encodedContentPairs = new List<KeyValuePair<string?, string?>>
+            {
+                new("grant_type", "refresh_token"),
+                new("refresh_token", oldToken.RefreshToken),
+                new("client_id", _config.Settings.IdentificationSettings.ClientId.ToString())
+            };
+            
+            if (!string.IsNullOrEmpty(_config.Settings.IdentificationSettings.ClientSecret))
+                encodedContentPairs.Add(new KeyValuePair<string?, string?>(
+                    "client_secret",
+                    _config.Settings.IdentificationSettings.ClientSecret));
+            
             var requestMessage = new HttpRequestMessage()
             {
                 Method = HttpMethod.Post,
                 RequestUri = new Uri(AuthorizationTokenEndpoint),
-                Content = new StringContent($"grant_type=refresh_token&code={oldToken.RefreshToken}")
+                Content = new FormUrlEncodedContent(encodedContentPairs)
             };
-            requestMessage.Headers.Authorization =
-                new AuthenticationHeaderValue(oldToken.TokenType, oldToken.AccessToken);
+            
+            requestMessage.Headers.TryAddWithoutValidation("X-API-Key",
+                _config.Settings.IdentificationSettings.ApiKey);
+            
             requestMessage.Content.Headers.ContentType.MediaType = "application/x-www-form-urlencoded";
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 

@@ -13,5 +13,6 @@ namespace NetBungieAPI.Services.Interfaces
         AuthorizationState CreateNewAuthentificationAwaiter();
         ValueTask<AuthorizationTokenData> GetAuthTokenAsync(AuthorizationState authData);
         bool TryGetAccessToken(long membershipId, out string token);
+        ValueTask<AuthorizationTokenData> RenewToken(AuthorizationTokenData authData);
     }
 }
