@@ -222,8 +222,6 @@ namespace NetBungieAPI.Services
                     _config.Settings.IdentificationSettings.ApiKey);
             if (!string.IsNullOrEmpty(authToken))
                 requestMessage.Headers.Add("Authorization", $"Bearer {authToken}");
-            //requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
-            _logger.Log($"Created http get message for: {requestMessage.RequestUri}", LogType.Debug);
             return requestMessage;
         }
 

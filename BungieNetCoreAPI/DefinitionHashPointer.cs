@@ -101,6 +101,13 @@ namespace NetBungieAPI
             return HasValidHash &&
                    _repository.Value.TryGetDestinyDefinition(EnumValue, Hash.Value, Locale, out definition);
         }
+        
+        public bool TryGetDefinitionFromOtherLocale(BungieLocales locale, out T definition)
+        {
+            definition = default;
+            return HasValidHash &&
+                   _repository.Value.TryGetDestinyDefinition(EnumValue, Hash.Value, locale, out definition);
+        }
 
         public async ValueTask<DefinitionHashPointerDownloadResult<T>> TryDownloadDefinition()
         {
