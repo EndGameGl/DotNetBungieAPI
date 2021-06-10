@@ -33,15 +33,15 @@ namespace NetBungieAPI.Repositories
         /// <returns>True, if successfull, False, otherwise</returns>
         bool TryGetDefinition(uint hash, out IDestinyDefinition definition);
         /// <summary>
-        /// Fetches all items from repository as <see cref="IEnumerable{}"/> 
+        /// Fetches all items from repository as <see cref="IEnumerable{IDestinyDefinition}"/> 
         /// </summary>
-        /// <returns><see cref="IEnumerable{}"/></returns>
+        /// <returns><see cref="IEnumerable{IDestinyDefinition}"/></returns>
         IEnumerable<IDestinyDefinition> GetAll();
         /// <summary>
         /// Searches through all items with give predicate
         /// </summary>
         /// <param name="predicate">Search condition</param>
-        /// <returns><see cref="IEnumerable{}"/></returns>
+        /// <returns><see cref="IEnumerable{IDestinyDefinition}"/></returns>
         IEnumerable<IDestinyDefinition> Where(Func<IDestinyDefinition, bool> predicate); 
         void SortByIndex();
     }

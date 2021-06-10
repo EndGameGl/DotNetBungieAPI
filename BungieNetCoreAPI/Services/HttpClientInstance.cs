@@ -53,7 +53,7 @@ namespace NetBungieAPI.Services
 
         public async Task<AuthorizationTokenData> GetAuthorizationToken(string code)
         {
-            var encodedContentPairs = new List<KeyValuePair<string?, string?>>
+            var encodedContentPairs = new List<KeyValuePair<string, string>>
             {
                 new("grant_type", "authorization_code"),
                 new("code", code),
@@ -61,7 +61,7 @@ namespace NetBungieAPI.Services
             };
 
             if (!string.IsNullOrEmpty(_config.Settings.IdentificationSettings.ClientSecret))
-                encodedContentPairs.Add(new KeyValuePair<string?, string?>(
+                encodedContentPairs.Add(new KeyValuePair<string, string>(
                     "client_secret",
                     _config.Settings.IdentificationSettings.ClientSecret));
 
@@ -88,7 +88,7 @@ namespace NetBungieAPI.Services
 
         public async Task<AuthorizationTokenData> RenewAuthorizationToken(AuthorizationTokenData oldToken)
         {
-            var encodedContentPairs = new List<KeyValuePair<string?, string?>>
+            var encodedContentPairs = new List<KeyValuePair<string, string>>
             {
                 new("grant_type", "refresh_token"),
                 new("refresh_token", oldToken.RefreshToken),
@@ -96,7 +96,7 @@ namespace NetBungieAPI.Services
             };
             
             if (!string.IsNullOrEmpty(_config.Settings.IdentificationSettings.ClientSecret))
-                encodedContentPairs.Add(new KeyValuePair<string?, string?>(
+                encodedContentPairs.Add(new KeyValuePair<string, string>(
                     "client_secret",
                     _config.Settings.IdentificationSettings.ClientSecret));
             

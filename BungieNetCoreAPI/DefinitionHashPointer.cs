@@ -43,6 +43,7 @@ namespace NetBungieAPI
         /// Definition enum value
         /// </summary>
         public static DefinitionsEnum EnumValue => _lazyEnumValue.Value;
+
         /// <summary>
         /// Empty pointer
         /// </summary>
@@ -101,7 +102,7 @@ namespace NetBungieAPI
             return HasValidHash &&
                    _repository.Value.TryGetDestinyDefinition(EnumValue, Hash.Value, Locale, out definition);
         }
-        
+
         public bool TryGetDefinitionFromOtherLocale(BungieLocales locale, out T definition)
         {
             definition = default;
@@ -109,15 +110,24 @@ namespace NetBungieAPI
                    _repository.Value.TryGetDestinyDefinition(EnumValue, Hash.Value, locale, out definition);
         }
 
+        /// <summary>
+        /// Attempts to get definition from bungie.net
+        /// </summary>
+        /// <returns></returns>
         public async ValueTask<DefinitionHashPointerDownloadResult<T>> TryDownloadDefinition()
         {
             if (!HasValidHash)
                 return new DefinitionHashPointerDownloadResult<T>(default, false, "Missing valid hash.");
+
             var response =
-                await _destiny2MethodsAccess.Value.GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value);
-            if (response.ErrorCode == PlatformErrorCodes.Success && response.Response != null)
+                await _destiny2MethodsAccess
+                    .Value
+                    .GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value);
+
+            if (response.IsSuccessfulResponseCode && response.Response is not null)
                 return new DefinitionHashPointerDownloadResult<T>(response.Response, true);
-            return new DefinitionHashPointerDownloadResult<T>(default, false, response.Message);
+
+            return new DefinitionHashPointerDownloadResult<T>(default, false, response.ErrorStatus);
         }
 
         public override string ToString()
@@ -127,7 +137,7 @@ namespace NetBungieAPI
 
         public void TryMapValue()
         {
-            if (_value != null && _isMapped)
+            if (_value is not null && _isMapped)
                 return;
             if (!HasValidHash)
                 return;
