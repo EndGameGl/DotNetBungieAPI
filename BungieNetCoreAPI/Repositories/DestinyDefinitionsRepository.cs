@@ -19,8 +19,8 @@ namespace NetBungieAPI.Repositories
         private readonly IDefinitionAssemblyData _assemblyData;
         private readonly IConfigurationService _config;
 
-        private ConcurrentDictionary<DefinitionsEnum, DestinyDefinitionTypeRepository> _definitionRepositories;
-        private ConcurrentDictionary<string, DestinyHistoricalStatsDefinition> _historicalStatsDefinitions;
+        private readonly ConcurrentDictionary<DefinitionsEnum, DestinyDefinitionTypeRepository> _definitionRepositories;
+        private readonly ConcurrentDictionary<string, DestinyHistoricalStatsDefinition> _historicalStatsDefinitions;
 
         /// <summary>
         /// Locale of this repository
@@ -31,7 +31,9 @@ namespace NetBungieAPI.Repositories
         /// Class .ctor
         /// </summary>
         /// <param name="locale">Locale for this repository</param>
-        internal DestinyDefinitionsRepository(BungieLocales locale, IDefinitionAssemblyData assemblyData,
+        internal DestinyDefinitionsRepository(
+            BungieLocales locale, 
+            IDefinitionAssemblyData assemblyData,
             IConfigurationService configuration,
             ILogger logger)
         {
@@ -160,6 +162,9 @@ namespace NetBungieAPI.Repositories
                 ? repository.EnumerateValues().Cast<T>()
                 : null;
         }
+
+        public IEnumerable<DestinyHistoricalStatsDefinition> GetAllHistoricalStats =>
+            _historicalStatsDefinitions.Select(x => x.Value);
 
         internal void PremapPointers()
         {

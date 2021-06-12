@@ -8,6 +8,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetBungieAPI.TestProject", "BungieNetCoreTestingApp\NetBungieAPI.TestProject.csproj", "{097079C1-4969-4DE2-87BE-C04F3332DB6C}"
 EndProjec
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetBungieAPI.HashReferences", "NetBungieAPI.HashReferences\NetBungieAPI.HashReferences.csproj", "{19B34A6C-C291-47F3-AE3B-937959263432}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{2B5420C0-FDCE-42CF-88FE-185C4929F9A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B5420C0-FDCE-42CF-88FE-185C4929F9A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B5420C0-FDCE-42CF-88FE-185C4929F9A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19B34A6C-C291-47F3-AE3B-937959263432}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19B34A6C-C291-47F3-AE3B-937959263432}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19B34A6C-C291-47F3-AE3B-937959263432}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19B34A6C-C291-47F3-AE3B-937959263432}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

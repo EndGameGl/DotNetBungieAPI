@@ -5,14 +5,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading;
 using System.Threading.Tasks;
-using NetBungieAPI.Authorization;
-using NetBungieAPI.Models.Trending;
+using NetBungieAPI.HashReferences;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Definitions.Achievements;
@@ -64,9 +59,6 @@ using NetBungieAPI.Models.Destiny.Definitions.TraitCategories;
 using NetBungieAPI.Models.Destiny.Definitions.Traits;
 using NetBungieAPI.Models.Destiny.Definitions.VendorGroups;
 using NetBungieAPI.Models.Destiny.Definitions.Vendors;
-using NetBungieAPI.Models.GroupsV2;
-using NetBungieAPI.Models.Queries;
-using NetBungieAPI.Repositories;
 
 namespace NetBungieAPI.TestProject
 {
@@ -130,7 +122,7 @@ namespace NetBungieAPI.TestProject
                     .UseDefaultProvider(@"H:\BungieNetCoreAPIRepository\Manifests")
                     .EnableLogging((mes) => Console.WriteLine(mes))
                     .PremapDefinitions()
-                    //.LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
+                    .LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
                     .SetLocales(new BungieLocales[]
                     {
                         BungieLocales.EN,
@@ -146,11 +138,12 @@ namespace NetBungieAPI.TestProject
 
             Console.WriteLine($"{Process.GetCurrentProcess().PrivateMemorySize64} bytes allocated for current app.");
 
+            GenerateDefinitionHashes();
+  
             //await WriteAllDataToJson();
 
             //Console.WriteLine($"Finished dumping json.");
-            
-            await Task.Delay(Timeout.Infinite);
+            //await Task.Delay(Timeout.Infinite);
         }
 
         private static void RunDeepEqualityCheck<T>(List<T> collection) where T : IDeepEquatable<T>
@@ -606,6 +599,1974 @@ namespace NetBungieAPI.TestProject
             {
                 Console.WriteLine(e.Message);
             }
+        }
+
+        private static void GenerateDefinitionHashes()
+        {
+            string[] forbiddenSymbols = new string[]
+            {
+                " ", ":", "-", "\\", "/", "(", ")", "'", ".", "[", "]", "\"", "?", ",", "", "…", "!", "%", "+", "#",
+                "{", "}", " ", "—", "~", "|", ";", "–", "="
+            };
+
+            if (File.Exists("DefinitionHashes.cs"))
+            {
+                File.Delete("DefinitionHashes.cs");
+            }
+
+            if (!File.Exists("DefinitionHashes.cs"))
+            {
+                File.Create("DefinitionHashes.cs").Close();
+            }
+
+            using (TextWriter textWriter = new StreamWriter("DefinitionHashes.cs", true))
+            {
+                textWriter.Write("namespace NetBungieAPI.HashReferences { public static class DefinitionHashes { ");
+
+                var definitionCacheLookup = new Dictionary<string, uint>();
+
+                #region Activities
+
+                textWriter.Write("public static class Activities {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyActivityDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyActivityDefinition>(
+                        DefinitionsEnum.DestinyActivityDefinition, value, BungieLocales.EN, out var activityDefinition))
+                    {
+                        if (!string.IsNullOrEmpty(activityDefinition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                activityDefinition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", activityDefinition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {activityDefinition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region ActivityModes
+
+                textWriter.Write("public static class ActivityModes {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyActivityModeDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyActivityModeDefinition>(
+                        DefinitionsEnum.DestinyActivityModeDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region ActivityModifiers
+
+                textWriter.Write("public static class ActivityModifiers {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyActivityModifierDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyActivityModifierDefinition>(
+                        DefinitionsEnum.DestinyActivityModifierDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region ActivityTypes
+
+                textWriter.Write("public static class ActivityTypes {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyActivityTypeDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyActivityTypeDefinition>(
+                        DefinitionsEnum.DestinyActivityTypeDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Artifacts
+
+                textWriter.Write("public static class Artifacts {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyArtifactDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyArtifactDefinition>(
+                        DefinitionsEnum.DestinyArtifactDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region BreakerTypes
+
+                textWriter.Write("public static class BreakerTypes {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyBreakerTypeDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyBreakerTypeDefinition>(
+                        DefinitionsEnum.DestinyBreakerTypeDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Checklists
+
+                textWriter.Write("public static class Checklists {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyChecklistDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyChecklistDefinition>(
+                        DefinitionsEnum.DestinyChecklistDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Classes
+
+                textWriter.Write("public static class Classes {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyClassDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyClassDefinition>(
+                        DefinitionsEnum.DestinyClassDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Collectibles
+                
+                textWriter.Write("public static class Collectibles {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyCollectibleDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+                
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyCollectibleDefinition>(
+                        DefinitionsEnum.DestinyCollectibleDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+                
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 && !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+                
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+                
+                #endregion
+
+                #region DamageTypes
+
+                textWriter.Write("public static class DamageTypes {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyDamageTypeDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyDamageTypeDefinition>(
+                        DefinitionsEnum.DestinyDamageTypeDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Destinations
+
+                textWriter.Write("public static class Destinations {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyDestinationDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyDestinationDefinition>(
+                        DefinitionsEnum.DestinyDestinationDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region EnergyTypes
+
+                textWriter.Write("public static class EnergyTypes {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyEnergyTypeDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyEnergyTypeDefinition>(
+                        DefinitionsEnum.DestinyEnergyTypeDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region EquipmentSlots
+
+                textWriter.Write("public static class EquipmentSlots {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyEquipmentSlotDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyEquipmentSlotDefinition>(
+                        DefinitionsEnum.DestinyEquipmentSlotDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Factions
+
+                textWriter.Write("public static class Factions {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyFactionDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyFactionDefinition>(
+                        DefinitionsEnum.DestinyFactionDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Genders
+
+                textWriter.Write("public static class Genders {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyGenderDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyGenderDefinition>(
+                        DefinitionsEnum.DestinyGenderDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region HistoricalStats
+
+                textWriter.Write("public static class HistoricalStats {");
+
+                foreach (var statsDefinition in _bungieClient.Repository.GetAllHistoricalStatsDefinitions(BungieLocales
+                    .EN))
+                {
+                    var key = char.ToUpper(statsDefinition.StatId.First()) + statsDefinition.StatId[1..];
+                    if (key.Contains('_'))
+                    {
+                        var split = key.Split('_');
+                        key = string.Empty;
+                        for (var index = 0; index < split.Length; index++)
+                        {
+                            var entry = split[index];
+                            key += char.ToUpper(entry.First()) + entry[1..];
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(statsDefinition.StatDescription))
+                    {
+                        textWriter.WriteLine(
+                            statsDefinition.StatDescription.Contains("\n")
+                                ? $"/// <summary> {(string.Join("\n/// <para/>", statsDefinition.StatDescription.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                : $"/// <summary>\n /// {statsDefinition.StatDescription}\n/// </summary>");
+                    }
+
+                    textWriter.WriteLine(
+                        $"public const string {key} = \"{statsDefinition.StatId}\";");
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region InventoryBuckets
+
+                textWriter.Write("public static class InventoryBuckets {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyInventoryBucketDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyInventoryBucketDefinition>(
+                        DefinitionsEnum.DestinyInventoryBucketDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region InventoryItems
+                
+                textWriter.Write("public static class InventoryItems {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyInventoryItemDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+                
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyInventoryItemDefinition>(
+                        DefinitionsEnum.DestinyInventoryItemDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+                
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+                
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+                
+                #endregion
+
+                #region ItemCategories
+
+                textWriter.Write("public static class ItemCategories {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyItemCategoryDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyItemCategoryDefinition>(
+                        DefinitionsEnum.DestinyItemCategoryDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region ItemTierTypes
+
+                textWriter.Write("public static class ItemTierTypes {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyItemTierTypeDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyItemTierTypeDefinition>(
+                        DefinitionsEnum.DestinyItemTierTypeDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Lore
+                
+                textWriter.Write("public static class Lore {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyLoreDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+                
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyLoreDefinition>(
+                        DefinitionsEnum.DestinyLoreDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+                
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+                
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+                
+                #endregion
+
+                #region MedalTiers
+
+                textWriter.Write("public static class MedalTiers {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyMedalTierDefinition>())
+                {
+                    textWriter.WriteLine(
+                        $"public const uint {definition.TierName.Replace(" ", "")} = {definition.Hash};");
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Metrics
+
+                textWriter.Write("public static class Metrics {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyMetricDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyMetricDefinition>(
+                        DefinitionsEnum.DestinyMetricDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Milestones
+
+                textWriter.Write("public static class Milestones {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyMilestoneDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyMilestoneDefinition>(
+                        DefinitionsEnum.DestinyMilestoneDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Places
+
+                textWriter.Write("public static class Places {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyPlaceDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyPlaceDefinition>(
+                        DefinitionsEnum.DestinyPlaceDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region PowerCaps
+
+                textWriter.Write("public static class PowerCaps {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyPowerCapDefinition>())
+                {
+                    ValidateAndAddValue(
+                        definitionCacheLookup,
+                        definition.PowerCap.ToString(),
+                        definition.Hash,
+                        forbiddenSymbols);
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region PresentationNodes
+
+                textWriter.Write("public static class PresentationNodes {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyPresentationNodeDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyPresentationNodeDefinition>(
+                        DefinitionsEnum.DestinyPresentationNodeDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Progressions
+
+                textWriter.Write("public static class Progressions {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyProgressionDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyProgressionDefinition>(
+                        DefinitionsEnum.DestinyProgressionDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Races
+
+                textWriter.Write("public static class Races {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyRaceDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyRaceDefinition>(
+                        DefinitionsEnum.DestinyRaceDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Records
+
+                textWriter.Write("public static class Records {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyRecordDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyRecordDefinition>(
+                        DefinitionsEnum.DestinyRecordDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region ReportReasonCategories
+
+                textWriter.Write("public static class ReportReasonCategories {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyReportReasonCategoryDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyReportReasonCategoryDefinition>(
+                        DefinitionsEnum.DestinyReportReasonCategoryDefinition, value, BungieLocales.EN,
+                        out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region SandboxPerks
+
+                textWriter.Write("public static class SandboxPerks {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinySandboxPerkDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinySandboxPerkDefinition>(
+                        DefinitionsEnum.DestinySandboxPerkDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Seasons
+
+                textWriter.Write("public static class Seasons {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinySeasonDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinySeasonDefinition>(
+                        DefinitionsEnum.DestinySeasonDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region SeasonPasses
+
+                textWriter.Write("public static class SeasonPasses {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinySeasonPassDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinySeasonPassDefinition>(
+                        DefinitionsEnum.DestinySeasonPassDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region SocketCategories
+
+                textWriter.Write("public static class SocketCategories {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinySocketCategoryDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinySocketCategoryDefinition>(
+                        DefinitionsEnum.DestinySocketCategoryDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region SocketTypes
+
+                textWriter.Write("public static class SocketTypes {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinySocketTypeDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinySocketTypeDefinition>(
+                        DefinitionsEnum.DestinySocketTypeDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Stats
+
+                textWriter.Write("public static class Stats {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyStatDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyStatDefinition>(
+                        DefinitionsEnum.DestinyStatDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region TraitCategories
+
+                textWriter.Write("public static class TraitCategories {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyTraitCategoryDefinition>())
+                {
+                    textWriter.WriteLine($"public const uint {definition.TraitCategoryId} = {definition.Hash};");
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Traits
+
+                textWriter.Write("public static class Traits {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyTraitDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyTraitDefinition>(
+                        DefinitionsEnum.DestinyTraitDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region Vendors
+
+                textWriter.Write("public static class Vendors {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyVendorDefinition>())
+                {
+                    if (definition.DisplayProperties is not null)
+                    {
+                        ValidateAndAddValue(
+                            definitionCacheLookup,
+                            definition.DisplayProperties.Name,
+                            definition.Hash,
+                            forbiddenSymbols);
+                    }
+                    else
+                    {
+                        definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
+                    }
+                }
+
+                foreach (var (key, value) in definitionCacheLookup)
+                {
+                    if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyVendorDefinition>(
+                        DefinitionsEnum.DestinyVendorDefinition, value, BungieLocales.EN, out var definition))
+                    {
+                        if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
+                        {
+                            textWriter.WriteLine(
+                                definition.DisplayProperties.Description.Contains("\n")
+                                    ? $"/// <summary> {(string.Join("\n/// <para/>", definition.DisplayProperties.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries)))} \n/// </summary>"
+                                    : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
+                        }
+                    }
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
+                    {
+                        textWriter.WriteLine($"public const uint {key}_{value} = {value};");
+                    }
+                    else
+                    {
+                        textWriter.WriteLine($"public const uint {key} = {value};");
+                    }
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                #region VendorGroups
+
+                textWriter.Write("public static class VendorGroups {");
+                foreach (var definition in _bungieClient.Repository.GetAll<DestinyVendorGroupDefinition>())
+                {
+                    var key = string.Join("", definition.CategoryName.Split(forbiddenSymbols, StringSplitOptions.TrimEntries));
+                    textWriter.WriteLine($"public const uint {key} = {definition.Hash};");
+                }
+
+                textWriter.Write(" } ");
+                textWriter.Flush();
+                definitionCacheLookup.Clear();
+
+                #endregion
+
+                textWriter.Write(" } }");
+            }
+
+            Console.WriteLine("Finished generating definitions.");
+        }
+
+        private static void ValidateAndAddValue(
+            Dictionary<string, uint> definitionCacheLookup,
+            string key,
+            uint value,
+            string[] forbiddenSymbols)
+        {
+            key ??= value.ToString();
+
+            key = string.Join("", key.Split(forbiddenSymbols, StringSplitOptions.TrimEntries));
+
+            if (string.IsNullOrWhiteSpace(key))
+            {
+                key = value.ToString();
+            }
+
+            if (char.IsDigit(key[0]))
+            {
+                key = $"F{key}";
+            }
+
+            var sameEntriesAmount = definitionCacheLookup.Keys.Count(x => x.Split("_")[0] == key);
+
+            definitionCacheLookup.Add(
+                sameEntriesAmount > 0 ? $"{key}_{value}" : key, value);
         }
     }
 }

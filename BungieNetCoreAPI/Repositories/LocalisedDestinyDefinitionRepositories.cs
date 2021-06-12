@@ -99,6 +99,11 @@ namespace NetBungieAPI.Repositories
             return _localisedRepositories[locale].TryGetHistoricalStatsDefinition(key, out statsDefinition);
         }
 
+        public IEnumerable<DestinyHistoricalStatsDefinition> GetAllHistoricalStatsDefinitions(BungieLocales locale)
+        {
+            return _localisedRepositories[locale].GetAllHistoricalStats;
+        }
+
         public bool AddDestinyHistoricalDefinition(BungieLocales locale, DestinyHistoricalStatsDefinition statsDefinition)
         {
             return _localisedRepositories[locale].AddDestinyHistoricalStatsDefinition(statsDefinition);

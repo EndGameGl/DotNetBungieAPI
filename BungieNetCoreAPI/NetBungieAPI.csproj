@@ -11,10 +11,6 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DocumentationFile>bin\Release\NetBungieAPI.xml</DocumentationFile>
   </PropertyGroup>
-  
-  <ItemGroup>
-    <Folder Include="JsonHashReferences" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
