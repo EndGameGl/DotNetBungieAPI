@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BungieNetCoreTestingApp": {
+      "commandName": "Project",
+      "commandLineArgs": "\"1aef34652c134f31b988e73dac09e6cc\" \"35821\" \"Zg8kmhkDrioy9brC400L5L-Vd8w-JdDi2WwBe58eV8g\""
+    }
+  }
+}
