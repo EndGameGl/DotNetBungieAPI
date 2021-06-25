@@ -26,13 +26,13 @@ namespace NetBungieAPI.Models.Destiny.Definitions.PresentationNodes
         /// The original icon for this presentation node, before we futzed with it.
         /// </summary>
         [JsonPropertyName("originalIcon")]
-        public string OriginalIcon { get; init; }
+        public DestinyResource OriginalIcon { get; init; }
 
         /// <summary>
         /// Some presentation nodes are meant to be explicitly shown on the "root" or "entry" screens for the feature to which they are related. You should use this icon when showing them on such a view, if you have a similar "entry point" view in your UI. If you don't have a UI, then I guess it doesn't matter either way does it?
         /// </summary>
         [JsonPropertyName("rootViewIcon")]
-        public string RootViewIcon { get; init; }
+        public DestinyResource RootViewIcon { get; init; }
 
         [JsonPropertyName("nodeType")] public DestinyPresentationNodeType NodeType { get; init; }
 

@@ -17,7 +17,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Progressions
         /// If this progression step has a specific icon related to it, this is the icon to show.
         /// </summary>
         [JsonPropertyName("icon")]
-        public string Icon { get; init; }
+        public DestinyResource Icon { get; init; }
         /// <summary>
         /// The total amount of progression points/"experience" you will need to initially reach this step. If this is the last step and the progression is repeating indefinitely (DestinyProgressionDefinition.repeatLastStep), this will also be the progress needed to level it up further by repeating this step again.
         /// </summary>

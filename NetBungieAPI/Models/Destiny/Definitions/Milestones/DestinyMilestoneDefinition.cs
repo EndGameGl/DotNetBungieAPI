@@ -52,7 +52,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Milestones
         /// A custom image someone made just for the milestone.
         /// </summary>
         [JsonPropertyName("image")]
-        public string Image { get; init; }
+        public DestinyResource Image { get; init; }
 
         /// <summary>
         /// An enumeration listing one of the possible types of milestones.

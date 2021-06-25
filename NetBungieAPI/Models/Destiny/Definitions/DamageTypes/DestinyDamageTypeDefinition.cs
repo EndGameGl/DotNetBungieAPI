@@ -32,7 +32,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.DamageTypes
         /// A variant of the icon that is transparent and colorless.
         /// </summary>
         [JsonPropertyName("transparentIconPath")]
-        public string TransparentIconPath { get; init; }
+        public DestinyResource TransparentIconPath { get; init; }
 
         [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
         [JsonPropertyName("hash")] public uint Hash { get; init; }

@@ -36,7 +36,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// An icon for the item.
         /// </summary>
         [JsonPropertyName("iconPath")]
-        public string IconPath { get; init; }
+        public DestinyResource IconPath { get; init; }
 
         /// <summary>
         /// If the item was derived from a "Preview Vendor", this will be an index into the DestinyVendorDefinition's itemList property. Otherwise, -1.

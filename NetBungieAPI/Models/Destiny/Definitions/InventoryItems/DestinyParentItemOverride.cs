@@ -9,7 +9,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         public ReadOnlyCollection<string> AdditionalEquipRequirementsDisplayStrings { get; init; } =
             Defaults.EmptyReadOnlyCollection<string>();
 
-        [JsonPropertyName("pipIcon")] public string PipIcon { get; init; }
+        [JsonPropertyName("pipIcon")] public DestinyResource PipIcon { get; init; }
 
         public bool DeepEquals(DestinyParentItemOverride other)
         {

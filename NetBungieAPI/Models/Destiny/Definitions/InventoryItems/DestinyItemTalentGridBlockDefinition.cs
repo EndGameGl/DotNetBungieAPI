@@ -39,7 +39,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// If the talent grid has a special icon that's shown in the game UI (like builds, funny that), this is the identifier for that icon. Sadly, we don't actually get that icon right now. I'll be looking to replace this with a path to the actual icon itself.
         /// </summary>
         [JsonPropertyName("hudIcon")]
-        public string HudIcon { get; init; }
+        public DestinyResource HudIcon { get; init; }
 
         public bool DeepEquals(DestinyItemTalentGridBlockDefinition other)
         {

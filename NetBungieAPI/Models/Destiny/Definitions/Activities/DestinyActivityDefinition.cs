@@ -46,7 +46,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Activities
         /// If the activity has an icon associated with a specific release (such as a DLC), this is the path to that release's icon.
         /// </summary>
         [JsonPropertyName("releaseIcon")]
-        public string ReleaseIcon { get; init; }
+        public DestinyResource ReleaseIcon { get; init; }
 
         /// <summary>
         /// If the activity will not be visible until a specific and known time, this will be the seconds since the Epoch when it will become visible.
@@ -91,7 +91,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Activities
         /// When Activities are completed, we generate a "Post-Game Carnage Report", or PGCR, with details about what happened in that activity (how many kills someone got, which team won, etc...) We use this image as the background when displaying PGCR information, and often use it when we refer to the Activity in general.
         /// </summary>
         [JsonPropertyName("pgcrImage")]
-        public string PgcrImage { get; init; }
+        public DestinyResource PgcrImage { get; init; }
 
         /// <summary>
         /// The expected possible rewards for the activity. These rewards may or may not be accessible for an individual player based on their character state, the account state, and even the game's state overall. But it is a useful reference for possible rewards you can earn in the activity. These match up to rewards displayed when you hover over the Activity in the in-game Director, and often refer to Placeholder or "Dummy" items: items that tell you what you can earn in vague terms rather than what you'll specifically be earning (partly because the game doesn't even know what you'll earn specifically until you roll for it at the end)

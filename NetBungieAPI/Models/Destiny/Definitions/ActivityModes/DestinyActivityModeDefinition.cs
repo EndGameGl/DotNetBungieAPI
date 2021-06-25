@@ -22,7 +22,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityModes
         /// If this activity mode has a related PGCR image, this will be the path to said image.
         /// </summary>
         [JsonPropertyName("pgcrImage")]
-        public string PgcrImage { get; init; }
+        public DestinyResource PgcrImage { get; init; }
 
         /// <summary>
         /// The Enumeration value for this Activity Mode. Pass this identifier into Stats endpoints to get aggregate stats for this mode.

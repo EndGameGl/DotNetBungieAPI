@@ -9,7 +9,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Records
     {
         [JsonPropertyName("description")] public string Description { get; init; }
         [JsonPropertyName("hasExpiration")] public bool HasExpiration { get; init; }
-        [JsonPropertyName("icon")] public string Icon { get; init; }
+        [JsonPropertyName("icon")] public DestinyResource Icon { get; init; }
 
         public bool DeepEquals(DestinyRecordExpirationBlock other)
         {

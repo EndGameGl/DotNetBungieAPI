@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
 using NetBungieAPI.HashReferences;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
@@ -127,19 +128,18 @@ namespace NetBungieAPI.TestProject
                     {
                         BungieLocales.EN,
                     })
-                    // .ExcludeDefinitionsFromLoading(new DefinitionsEnum[]
-                    // {
-                    //     DefinitionsEnum.DestinyInventoryItemDefinition,
-                    // })
-                    .SetUpdateBehaviour(true, false);
+                    .SetUpdateBehaviour(true, true);
             });
             sw.Stop();
             Console.WriteLine($"Startup in: {sw.ElapsedMilliseconds} ms");
 
             Console.WriteLine($"{Process.GetCurrentProcess().PrivateMemorySize64} bytes allocated for current app.");
 
-            GenerateDefinitionHashes();
-  
+            _bungieClient.Repository.TryGetDestinyDefinition<DestinyVendorDefinition>(350061650, BungieLocales.EN,
+                out var adaDefinition);
+
+            //GenerateDefinitionHashes();
+
             //await WriteAllDataToJson();
 
             //Console.WriteLine($"Finished dumping json.");
@@ -647,7 +647,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyActivityDefinition>(
-                        DefinitionsEnum.DestinyActivityDefinition, value, BungieLocales.EN, out var activityDefinition))
+                        value, BungieLocales.EN, out var activityDefinition))
                     {
                         if (!string.IsNullOrEmpty(activityDefinition.DisplayProperties?.Description))
                         {
@@ -697,7 +697,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyActivityModeDefinition>(
-                        DefinitionsEnum.DestinyActivityModeDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -747,7 +747,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyActivityModifierDefinition>(
-                        DefinitionsEnum.DestinyActivityModifierDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -797,7 +797,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyActivityTypeDefinition>(
-                        DefinitionsEnum.DestinyActivityTypeDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -847,7 +847,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyArtifactDefinition>(
-                        DefinitionsEnum.DestinyArtifactDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -897,7 +897,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyBreakerTypeDefinition>(
-                        DefinitionsEnum.DestinyBreakerTypeDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -947,7 +947,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyChecklistDefinition>(
-                        DefinitionsEnum.DestinyChecklistDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -997,7 +997,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyClassDefinition>(
-                        DefinitionsEnum.DestinyClassDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1047,7 +1047,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyCollectibleDefinition>(
-                        DefinitionsEnum.DestinyCollectibleDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1096,7 +1096,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyDamageTypeDefinition>(
-                        DefinitionsEnum.DestinyDamageTypeDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1146,7 +1146,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyDestinationDefinition>(
-                        DefinitionsEnum.DestinyDestinationDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1196,7 +1196,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyEnergyTypeDefinition>(
-                        DefinitionsEnum.DestinyEnergyTypeDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1246,7 +1246,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyEquipmentSlotDefinition>(
-                        DefinitionsEnum.DestinyEquipmentSlotDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1296,7 +1296,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyFactionDefinition>(
-                        DefinitionsEnum.DestinyFactionDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1346,7 +1346,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyGenderDefinition>(
-                        DefinitionsEnum.DestinyGenderDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1433,7 +1433,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyInventoryBucketDefinition>(
-                        DefinitionsEnum.DestinyInventoryBucketDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1483,7 +1483,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyInventoryItemDefinition>(
-                        DefinitionsEnum.DestinyInventoryItemDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1533,7 +1533,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyItemCategoryDefinition>(
-                        DefinitionsEnum.DestinyItemCategoryDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1583,7 +1583,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyItemTierTypeDefinition>(
-                        DefinitionsEnum.DestinyItemTierTypeDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1633,7 +1633,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyLoreDefinition>(
-                        DefinitionsEnum.DestinyLoreDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1698,7 +1698,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyMetricDefinition>(
-                        DefinitionsEnum.DestinyMetricDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1748,7 +1748,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyMilestoneDefinition>(
-                        DefinitionsEnum.DestinyMilestoneDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1798,7 +1798,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyPlaceDefinition>(
-                        DefinitionsEnum.DestinyPlaceDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1879,7 +1879,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyPresentationNodeDefinition>(
-                        DefinitionsEnum.DestinyPresentationNodeDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1929,7 +1929,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyProgressionDefinition>(
-                        DefinitionsEnum.DestinyProgressionDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -1979,7 +1979,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyRaceDefinition>(
-                        DefinitionsEnum.DestinyRaceDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -2029,7 +2029,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyRecordDefinition>(
-                        DefinitionsEnum.DestinyRecordDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -2079,7 +2079,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyReportReasonCategoryDefinition>(
-                        DefinitionsEnum.DestinyReportReasonCategoryDefinition, value, BungieLocales.EN,
+                        value, BungieLocales.EN,
                         out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
@@ -2130,7 +2130,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinySandboxPerkDefinition>(
-                        DefinitionsEnum.DestinySandboxPerkDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -2180,7 +2180,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinySeasonDefinition>(
-                        DefinitionsEnum.DestinySeasonDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -2230,7 +2230,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinySeasonPassDefinition>(
-                        DefinitionsEnum.DestinySeasonPassDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -2280,7 +2280,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinySocketCategoryDefinition>(
-                        DefinitionsEnum.DestinySocketCategoryDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -2330,7 +2330,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinySocketTypeDefinition>(
-                        DefinitionsEnum.DestinySocketTypeDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -2380,7 +2380,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyStatDefinition>(
-                        DefinitionsEnum.DestinyStatDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -2444,7 +2444,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyTraitDefinition>(
-                        DefinitionsEnum.DestinyTraitDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {
@@ -2494,7 +2494,7 @@ namespace NetBungieAPI.TestProject
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyVendorDefinition>(
-                        DefinitionsEnum.DestinyVendorDefinition, value, BungieLocales.EN, out var definition))
+                        value, BungieLocales.EN, out var definition))
                     {
                         if (!string.IsNullOrEmpty(definition.DisplayProperties?.Description))
                         {

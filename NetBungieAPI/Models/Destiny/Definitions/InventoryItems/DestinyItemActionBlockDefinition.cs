@@ -18,7 +18,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// The icon associated with the overlay screen for the action, if any.
         /// </summary>
         [JsonPropertyName("overlayIcon")]
-        public string OverlayIcon { get; init; }
+        public DestinyResource OverlayIcon { get; init; }
 
         /// <summary>
         /// The internal identifier for the action.

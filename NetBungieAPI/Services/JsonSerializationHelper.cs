@@ -20,7 +20,8 @@ namespace NetBungieAPI.Services
                 new ReadOnlyDictionaryStructKeyConverterFactory(),
                 new ReadOnlyDictionaryDefinitionPointerKeyConverterFactory(),
                 new ReadOnlyDictionaryStringKeyConverterFactory(),
-                new HistoricalStatDefinitionPointerConverter()
+                new HistoricalStatDefinitionPointerConverter(),
+                new DestinyResourceConverter()
             },
             NumberHandling = JsonNumberHandling.AllowReadingFromString,
             WriteIndented = true,

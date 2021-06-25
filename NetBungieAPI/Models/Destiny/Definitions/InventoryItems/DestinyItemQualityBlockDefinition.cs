@@ -21,8 +21,8 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// Icon overlays to denote the item version and power cap status.
         /// </summary>
         [JsonPropertyName("displayVersionWatermarkIcons")]
-        public ReadOnlyCollection<string> DisplayVersionWatermarkIcons { get; init; } =
-            Defaults.EmptyReadOnlyCollection<string>();
+        public ReadOnlyCollection<DestinyResource> DisplayVersionWatermarkIcons { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyResource>();
 
         /// <summary>
         /// If any one of these hashes matches any value in another item's infusionCategoryHashes, the two can infuse with each other.

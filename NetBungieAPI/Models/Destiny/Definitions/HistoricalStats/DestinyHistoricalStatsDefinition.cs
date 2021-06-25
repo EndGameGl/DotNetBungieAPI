@@ -69,7 +69,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.HistoricalStats
         /// Optional URI to an icon for the statistic
         /// </summary>
         [JsonPropertyName("iconImage")]
-        public string IconImage { get; init; }
+        public DestinyResource IconImage { get; init; }
 
         /// <summary>
         /// Optional icon for the statistic

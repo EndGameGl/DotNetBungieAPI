@@ -44,31 +44,31 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// If available, this is the original 'active' release watermark overlay for the icon. If the item has different versions, this can be overridden by the 'display version watermark icon' from the 'quality' block. Alternatively, if there is no watermark for the version, and the item version has a power cap below the current season power cap, this can be overridden by the iconWatermarkShelved property.
         /// </summary>
         [JsonPropertyName("iconWatermark")]
-        public string IconWatermark { get; init; }
+        public DestinyResource IconWatermark { get; init; }
 
         /// <summary>
         /// If available, this is the 'shelved' release watermark overlay for the icon. If the item version has a power cap below the current season power cap, it can be treated as 'shelved', and should be shown with this 'shelved' watermark overlay.
         /// </summary>
         [JsonPropertyName("iconWatermarkShelved")]
-        public string IconWatermarkShelved { get; init; }
+        public DestinyResource IconWatermarkShelved { get; init; }
 
         /// <summary>
         /// A secondary icon associated with the item. Currently this is used in very context specific applications, such as Emblem Nameplates.
         /// </summary>
         [JsonPropertyName("secondaryIcon")]
-        public string SecondaryIcon { get; init; }
+        public DestinyResource SecondaryIcon { get; init; }
 
         /// <summary>
         /// Pulled from the secondary icon, this is the "secondary background" of the secondary icon. Confusing? Sure, that's why I call it "overlay" here: because as far as it's been used thus far, it has been for an optional overlay image. We'll see if that holds up, but at least for now it explains what this image is a bit better.
         /// </summary>
         [JsonPropertyName("secondaryOverlay")]
-        public string SecondaryOverlay { get; init; }
+        public DestinyResource SecondaryOverlay { get; init; }
 
         /// <summary>
         /// Pulled from the Secondary Icon, this is the "special" background for the item. For Emblems, this is the background image used on the Details view: but it need not be limited to that for other types of items.
         /// </summary>
         [JsonPropertyName("secondarySpecial")]
-        public string SecondarySpecial { get; init; }
+        public DestinyResource SecondarySpecial { get; init; }
 
         /// <summary>
         /// Sometimes, an item will have a background color. Most notably this occurs with Emblems, who use the Background Color for small character nameplates such as the "friends" view you see in-game. There are almost certainly other items that have background color as well, though I have not bothered to investigate what items have it nor what purposes they serve: use it as you will.
@@ -80,7 +80,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// If we were able to acquire an in-game screenshot for the item, the path to that screenshot will be returned here. Note that not all items have screenshots: particularly not any non-equippable items.
         /// </summary>
         [JsonPropertyName("screenshot")]
-        public string Screenshot { get; init; }
+        public DestinyResource Screenshot { get; init; }
 
         /// <summary>
         /// The localized title/name of the item's type. This can be whatever the designers want, and has no guarantee of consistency between items.

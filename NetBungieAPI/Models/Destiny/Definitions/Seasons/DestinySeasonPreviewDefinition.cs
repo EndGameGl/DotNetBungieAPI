@@ -18,13 +18,13 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Seasons
         /// A relative path to learn more about the season. Web browsers should be automatically redirected to the user's Bungie.net locale.
         /// </summary>
         [JsonPropertyName("linkPath")]
-        public string LinkPath { get; init; }
+        public DestinyResource LinkPath { get; init; }
 
         /// <summary>
         /// An optional link to a localized video, probably YouTube.
         /// </summary>
         [JsonPropertyName("videoLink")]
-        public string VideoLink { get; init; }
+        public DestinyResource VideoLink { get; init; }
 
         /// <summary>
         /// A list of images to preview the seasonal content. Should have at least three to show.

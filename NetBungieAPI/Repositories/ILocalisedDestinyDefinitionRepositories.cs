@@ -21,7 +21,7 @@ namespace NetBungieAPI.Repositories
         void LoadAllDataFromDisk(string localManifestPath, DestinyManifest manifest);
         void AddDefinitionToCache(DefinitionsEnum definitionType, IDestinyDefinition defValue, BungieLocales locale);
         bool TryGetDestinyDefinition(DefinitionsEnum definitionType, uint key, BungieLocales locale, out IDestinyDefinition definition);
-        bool TryGetDestinyDefinition<T>(DefinitionsEnum definitionType, uint key, BungieLocales locale, out T definition) where T : IDestinyDefinition;
+        bool TryGetDestinyDefinition<T>(uint key, BungieLocales locale, out T definition) where T : IDestinyDefinition;
         bool TryGetDestinyHistoricalDefinition(BungieLocales locale, string key,
             out DestinyHistoricalStatsDefinition statsDefinition);
 

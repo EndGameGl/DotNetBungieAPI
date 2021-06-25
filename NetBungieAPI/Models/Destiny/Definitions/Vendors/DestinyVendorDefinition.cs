@@ -123,13 +123,13 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Vendors
         /// A portrait of the Vendor's smiling mug. Or frothing tentacles.
         /// </summary>
         [JsonPropertyName("vendorPortrait")]
-        public string VendorPortrait { get; init; }
+        public DestinyResource VendorPortrait { get; init; }
 
         /// <summary>
         /// If the vendor has a custom banner image, that can be found here.
         /// </summary>
         [JsonPropertyName("vendorBanner")]
-        public string VendorBanner { get; init; }
+        public DestinyResource VendorBanner { get; init; }
 
         /// <summary>
         /// If a vendor is not enabled, we won't even save the vendor's definition, and we won't return any items or info about them. It's as if they don't exist.

@@ -29,7 +29,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Milestones
         /// If populated, this image can be shown instead of the generic milestone's image when this quest is live, or it can be used to show a background image for the quest itself that differs from that of the Activity or the Milestone.
         /// </summary>
         [JsonPropertyName("overrideImage")]
-        public string OverrideImage { get; init; }
+        public DestinyResource OverrideImage { get; init; }
 
         /// <summary>
         /// The rewards you will get for completing this quest, as best as we could extract them from our data. Sometimes, it'll be a decent amount of data. Sometimes, it's going to be sucky. Sorry.

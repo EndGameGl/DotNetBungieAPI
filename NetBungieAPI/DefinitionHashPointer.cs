@@ -19,7 +19,7 @@ namespace NetBungieAPI
         {
             get
             {
-                if (_repository.Value.TryGetDestinyDefinition<T>(DefinitionEnumType, Hash.Value, Locale, out var def))
+                if (_repository.Value.TryGetDestinyDefinition<T>(Hash.Value, Locale, out var def))
                     return def;
                 else
                     throw new Exception("Definition is missing from repo.");
@@ -100,14 +100,14 @@ namespace NetBungieAPI
             }
 
             return HasValidHash &&
-                   _repository.Value.TryGetDestinyDefinition(EnumValue, Hash.Value, Locale, out definition);
+                   _repository.Value.TryGetDestinyDefinition(Hash.Value, Locale, out definition);
         }
 
         public bool TryGetDefinitionFromOtherLocale(BungieLocales locale, out T definition)
         {
             definition = default;
             return HasValidHash &&
-                   _repository.Value.TryGetDestinyDefinition(EnumValue, Hash.Value, locale, out definition);
+                   _repository.Value.TryGetDestinyDefinition(Hash.Value, locale, out definition);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace NetBungieAPI
                 return;
             if (!HasValidHash)
                 return;
-            if (!_repository.Value.TryGetDestinyDefinition<T>(DefinitionEnumType, Hash.Value, Locale,
+            if (!_repository.Value.TryGetDestinyDefinition<T>(Hash.Value, Locale,
                 out var definition))
                 return;
 

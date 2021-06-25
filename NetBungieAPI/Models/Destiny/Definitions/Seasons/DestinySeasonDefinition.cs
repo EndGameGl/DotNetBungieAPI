@@ -20,7 +20,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Seasons
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
         [JsonPropertyName("backgroundImagePath")]
-        public string BackgroundImagePath { get; init; }
+        public DestinyResource BackgroundImagePath { get; init; }
 
         [JsonPropertyName("seasonNumber")] public int SeasonNumber { get; init; }
         [JsonPropertyName("startDate")] public DateTime? StartDate { get; init; }

@@ -12,7 +12,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Vendors
         [JsonPropertyName("executeSeconds")]
         public int ExecuteSeconds { get; init; }
         [JsonPropertyName("icon")]
-        public string Icon { get; init; }
+        public DestinyResource Icon { get; init; }
         [JsonPropertyName("name")]
         public string Name { get; init; }
         [JsonPropertyName("verb")]

@@ -75,7 +75,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Progressions
         /// For progressions that have it, this is the rank icon we use in the Companion, displayed above the progressions' rank value.
         /// </summary>
         [JsonPropertyName("rankIcon")]
-        public string RankIcon { get; init; }
+        public DestinyResource RankIcon { get; init; }
 
         [JsonPropertyName("rewardItems")]
         public ReadOnlyCollection<DestinyProgressionRewardItemQuantity> RewardItems { get; init; } =

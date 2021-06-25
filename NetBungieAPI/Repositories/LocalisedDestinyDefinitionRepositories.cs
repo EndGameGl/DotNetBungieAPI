@@ -88,10 +88,10 @@ namespace NetBungieAPI.Repositories
             return _localisedRepositories[locale].TryGetDefinition(definitionType, key, out definition);
         }
 
-        public bool TryGetDestinyDefinition<T>(DefinitionsEnum definitionType, uint key, BungieLocales locale,
+        public bool TryGetDestinyDefinition<T>(uint key, BungieLocales locale,
             out T definition) where T : IDestinyDefinition
         {
-            return _localisedRepositories[locale].TryGetDefinition(definitionType, key, out definition);
+            return _localisedRepositories[locale].TryGetDefinition(DefinitionHashPointer<T>.EnumValue, key, out definition);
         }
 
         public bool TryGetDestinyHistoricalDefinition(BungieLocales locale, string key, out DestinyHistoricalStatsDefinition statsDefinition)

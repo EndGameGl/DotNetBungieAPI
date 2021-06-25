@@ -22,13 +22,13 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Common
         /// They are currently represented as 96px x 96px images.
         /// </summary>
         [JsonPropertyName("icon")]
-        public string Icon { get; init; }
+        public DestinyResource Icon { get; init; }
 
         /// <summary>
         /// If this item has a high-res icon (at least for now, many things won't), then the path to that icon will be here.
         /// </summary>
         [JsonPropertyName("highResIcon")]
-        public string HighResolutionIcon { get; init; }
+        public DestinyResource HighResolutionIcon { get; init; }
 
         [JsonPropertyName("iconSequences")]
         public ReadOnlyCollection<DestinyIconSequenceDefinition> IconSequences { get; init; } =

@@ -19,12 +19,12 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Locations
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
         [JsonPropertyName("smallTransparentIcon")]
-        public string SmallTransparentIcon { get; init; }
+        public DestinyResource SmallTransparentIcon { get; init; }
 
-        [JsonPropertyName("mapIcon")] public string MapIcon { get; init; }
+        [JsonPropertyName("mapIcon")] public DestinyResource MapIcon { get; init; }
 
         [JsonPropertyName("largeTransparentIcon")]
-        public string LargeTransparentIcon { get; init; }
+        public DestinyResource LargeTransparentIcon { get; init; }
 
         /// <summary>
         /// If we had map information, this spawnPoint would be interesting. But sadly, we don't have that info.
