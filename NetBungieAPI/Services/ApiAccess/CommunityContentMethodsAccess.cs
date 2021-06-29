@@ -1,12 +1,12 @@
 ﻿using System.Threading;
+using System.Threading.Tasks;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Forum;
 using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
-using System.Threading.Tasks;
 
-namespace NetBungieAPI
+namespace NetBungieAPI.Services.ApiAccess
 {
     public class CommunityContentMethodsAccess : ICommunityContentMethodsAccess
     {

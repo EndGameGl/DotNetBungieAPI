@@ -1,14 +1,14 @@
-﻿using NetBungieAPI.Models;
-using NetBungieAPI.Models.Applications;
-using NetBungieAPI.Services.ApiAccess.Interfaces;
-using NetBungieAPI.Services.Interfaces;
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
 using NetBungieAPI.Exceptions;
+using NetBungieAPI.Models;
+using NetBungieAPI.Models.Applications;
+using NetBungieAPI.Services.ApiAccess.Interfaces;
+using NetBungieAPI.Services.Interfaces;
 
-namespace NetBungieAPI
+namespace NetBungieAPI.Services.ApiAccess
 {
     public class AppMethodsAccess : IAppMethodsAccess
     {

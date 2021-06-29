@@ -2,6 +2,7 @@
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.Interfaces;
 using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
 using static NetBungieAPI.Logging.LogListener;
 
 namespace NetBungieAPI.Clients
@@ -17,9 +18,9 @@ namespace NetBungieAPI.Clients
         private readonly LogListener _logListener;
 
         /// <summary>
-        /// <inheritdoc cref="IBungieClient.Authentification"/>
+        /// <inheritdoc cref="IBungieClient.Authentication"/>
         /// </summary>
-        public IAuthorizationStateHandler Authentification { get; }
+        public IAuthorizationStateHandler Authentication { get; }
 
         /// <summary>
         /// <inheritdoc cref="IBungieClient.Repository"/>
@@ -31,14 +32,18 @@ namespace NetBungieAPI.Clients
         /// </summary>
         public IBungieApiAccess ApiAccess { get; }
 
-        internal BungieClient(IConfigurationService config, ILogger logger, IBungieApiAccess apiAccess,
-            IHttpClientInstance httpClient, IAuthorizationStateHandler authorizationHandler,
+        internal BungieClient(
+            IConfigurationService config, 
+            ILogger logger, 
+            IBungieApiAccess apiAccess,
+            IHttpClientInstance httpClient, 
+            IAuthorizationStateHandler authorizationHandler,
             ILocalisedDestinyDefinitionRepositories repository)
         {
             _configuration = config;
             _httpClient = httpClient;
             _logger = logger;
-            Authentification = authorizationHandler;
+            Authentication = authorizationHandler;
             Repository = repository;
             ApiAccess = apiAccess;
             _logListener = new LogListener();
@@ -60,6 +65,11 @@ namespace NetBungieAPI.Clients
         public async Task DownloadLatestManifestLocally()
         {
             await Repository.Provider.DownloadNewManifestData(await Repository.Provider.GetCurrentManifest());
+        }
+
+        public IUserContextBungieClient ScopeToUser(AuthorizationTokenData token)
+        {
+            return new UserContextBungieClient(Repository, token, Authentication, ApiAccess);
         }
 
         /// <summary>

@@ -49,16 +49,16 @@ namespace NetBungieAPI.Models.Common
         public ReadOnlyCollection<DefinitionHashPointer<DestinyProgressionDefinition>> CurrentRankProgressions { get; init; } = Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyProgressionDefinition>>();
 
         [JsonPropertyName("undiscoveredCollectibleImage")]
-        public string UndiscoveredCollectibleImage { get; init; }
+        public DestinyResource UndiscoveredCollectibleImage { get; init; }
 
         [JsonPropertyName("ammoTypeHeavyIcon")]
-        public string AmmoTypeHeavyIcon { get; init; }
+        public DestinyResource AmmoTypeHeavyIcon { get; init; }
 
         [JsonPropertyName("ammoTypeSpecialIcon")]
-        public string AmmoTypeSpecialIcon { get; init; }
+        public DestinyResource AmmoTypeSpecialIcon { get; init; }
 
         [JsonPropertyName("ammoTypePrimaryIcon")]
-        public string AmmoTypePrimaryIcon { get; init; }
+        public DestinyResource AmmoTypePrimaryIcon { get; init; }
 
         [JsonPropertyName("currentSeasonalArtifactHash")]
         public DefinitionHashPointer<DestinyArtifactDefinition> CurrentSeasonalArtifact { get; init; } = DefinitionHashPointer<DestinyArtifactDefinition>.Empty;

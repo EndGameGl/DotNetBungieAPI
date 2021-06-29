@@ -15,12 +15,12 @@ namespace NetBungieAPI.Logging
         }
         public void Log(string message, LogType type)
         {
-            if (_configuration.Settings.InternalSettings.IsLoggingEnabled)
-            {
-                var messageObject = new LogMessage(DateTime.Now, message, type);
-                foreach (var listener in _listeners)
-                    listener.Invoke(messageObject);
-            }
+            if (!_configuration.Settings.InternalSettings.IsLoggingEnabled) 
+                return;
+            
+            var messageObject = new LogMessage(DateTime.Now, message, type);
+            foreach (var listener in _listeners)
+                listener.Invoke(messageObject);
         }
 
         public void Register(LogListener newListener)

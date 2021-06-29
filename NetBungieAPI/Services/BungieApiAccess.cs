@@ -17,10 +17,17 @@ namespace NetBungieAPI.Services
         public IFireteamMethodsAccess Fireteam { get; init; }
         public IMiscMethodsAccess Misc { get; init; }
 
-        internal BungieApiAccess(IFireteamMethodsAccess fireteamMethodsAccess, IContentMethodsAccess contentMethodsAccess,
-            IAppMethodsAccess appMethodsAccess, IForumMethodsAccess forumMethodsAccess, IUserMethodsAccess userMethodsAccess,
-            IGroupV2MethodsAccess groupV2MethodsAccess, ITokenMethodsAccess tokenMethodsAccess, IDestiny2MethodsAccess destiny2MethodsAccess,
-            ICommunityContentMethodsAccess communityContentMethodsAccess, ITrendingMethodsAccess trendingMethodsAccess,
+        internal BungieApiAccess(
+            IFireteamMethodsAccess fireteamMethodsAccess, 
+            IContentMethodsAccess contentMethodsAccess,
+            IAppMethodsAccess appMethodsAccess, 
+            IForumMethodsAccess forumMethodsAccess, 
+            IUserMethodsAccess userMethodsAccess,
+            IGroupV2MethodsAccess groupV2MethodsAccess, 
+            ITokenMethodsAccess tokenMethodsAccess, 
+            IDestiny2MethodsAccess destiny2MethodsAccess,
+            ICommunityContentMethodsAccess communityContentMethodsAccess, 
+            ITrendingMethodsAccess trendingMethodsAccess,
             IMiscMethodsAccess miscMethodsAccess)
         {
             App = appMethodsAccess;

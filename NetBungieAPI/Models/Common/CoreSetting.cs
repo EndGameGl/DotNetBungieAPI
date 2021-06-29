@@ -18,7 +18,7 @@ namespace NetBungieAPI.Models.Common
         public string Summary { get; init; }
 
         [JsonPropertyName("imagePath")]
-        public string ImagePath { get; init; }
+        public DestinyResource ImagePath { get; init; }
 
         [JsonPropertyName("childSettings")]
         public ReadOnlyCollection<CoreSetting> ChildSettings { get; init; } = Defaults.EmptyReadOnlyCollection<CoreSetting>();

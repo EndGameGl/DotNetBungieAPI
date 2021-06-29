@@ -20,20 +20,20 @@ namespace NetBungieAPI.Services.ApiAccess
         public async ValueTask<BungieResponse<Dictionary<string, string>>> GetAvailableLocales(
             CancellationToken token = default)
         {
-            return await _httpClient.GetFromBungieNetPlatform<Dictionary<string, string>>("/GetAvailableLocales",
+            return await _httpClient.GetFromBungieNetPlatform<Dictionary<string, string>>("/GetAvailableLocales/",
                 token);
         }
         
         public async ValueTask<BungieResponse<CoreSettingsConfiguration>> GetCommonSettings(
             CancellationToken token = default)
         {
-            return await _httpClient.GetFromBungieNetPlatform<CoreSettingsConfiguration>("/Settings", token);
+            return await _httpClient.GetFromBungieNetPlatform<CoreSettingsConfiguration>("/Settings/", token);
         }
         
         public async ValueTask<BungieResponse<Dictionary<string, CoreSystem>>> GetUserSystemOverrides(
             CancellationToken token = default)
         {
-            return await _httpClient.GetFromBungieNetPlatform<Dictionary<string, CoreSystem>>("/UserSystemOverrides",
+            return await _httpClient.GetFromBungieNetPlatform<Dictionary<string, CoreSystem>>("/UserSystemOverrides/",
                 token);
         }
 

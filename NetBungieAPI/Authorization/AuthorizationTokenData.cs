@@ -12,41 +12,56 @@ namespace NetBungieAPI.Authorization
         /// User access token
         /// </summary>
         [JsonPropertyName("access_token")]
-        public string AccessToken { get; init; }
+        public string AccessToken { get; set; }
 
         /// <summary>
         /// Token type: always Bearer in this case
         /// </summary>
         [JsonPropertyName("token_type")]
-        public string TokenType { get; init; }
+        public string TokenType { get; set; }
 
         /// <summary>
         /// Seconds until token expiration
         /// </summary>
         [JsonPropertyName("expires_in")]
-        public int ExpiresIn { get; init; }
+        public int ExpiresIn { get; set; }
 
         /// <summary>
         /// Refresh token
         /// </summary>
         [JsonPropertyName("refresh_token")]
-        public string RefreshToken { get; init; }
+        public string RefreshToken { get; set; }
 
         /// <summary>
         /// Seconds until refresh token expires
         /// </summary>
         [JsonPropertyName("refresh_expires_in")]
-        public int RefreshExpiresIn { get; init; }
+        public int RefreshExpiresIn { get; set; }
 
         /// <summary>
         /// Bungie.net membership id
         /// </summary>
         [JsonPropertyName("membership_id")]
-        public long MembershipId { get; init; }
+        public long MembershipId { get; set; }
 
         /// <summary>
         /// When this token was received
         /// </summary>
-        public DateTime ReceiveTime { get; init; } = DateTime.Now;
+        public DateTime ReceiveTime { get; set; } = DateTime.Now;
+
+        /// <summary>
+        /// Updates same token instance with new data
+        /// </summary>
+        /// <param name="newTokenData"></param>
+        internal void Update(AuthorizationTokenData newTokenData)
+        {
+            this.AccessToken = newTokenData.AccessToken;
+            this.ExpiresIn = newTokenData.ExpiresIn;
+            this.MembershipId = newTokenData.MembershipId;
+            this.ReceiveTime = newTokenData.ReceiveTime;
+            this.RefreshToken = newTokenData.RefreshToken;
+            this.TokenType = newTokenData.TokenType;
+            this.RefreshExpiresIn = newTokenData.RefreshExpiresIn;
+        }
     }
 }

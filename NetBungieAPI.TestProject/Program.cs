@@ -60,6 +60,7 @@ using NetBungieAPI.Models.Destiny.Definitions.TraitCategories;
 using NetBungieAPI.Models.Destiny.Definitions.Traits;
 using NetBungieAPI.Models.Destiny.Definitions.VendorGroups;
 using NetBungieAPI.Models.Destiny.Definitions.Vendors;
+using NetBungieAPI.Models.Requests;
 
 namespace NetBungieAPI.TestProject
 {
@@ -135,8 +136,11 @@ namespace NetBungieAPI.TestProject
 
             Console.WriteLine($"{Process.GetCurrentProcess().PrivateMemorySize64} bytes allocated for current app.");
 
-            _bungieClient.Repository.TryGetDestinyDefinition<DestinyVendorDefinition>(350061650, BungieLocales.EN,
-                out var adaDefinition);
+            var token = await _bungieClient.Authentication.GetAuthTokenAsync(null);
+            
+            var userContext = _bungieClient.ScopeToUser(token);
+
+            await userContext.Destiny2.EquipItem(new DestinyItemActionRequest(0, 0, BungieMembershipType.TigerSteam));
 
             //GenerateDefinitionHashes();
 
@@ -1026,7 +1030,7 @@ namespace NetBungieAPI.TestProject
                 #endregion
 
                 #region Collectibles
-                
+
                 textWriter.Write("public static class Collectibles {");
                 foreach (var definition in _bungieClient.Repository.GetAll<DestinyCollectibleDefinition>())
                 {
@@ -1043,7 +1047,7 @@ namespace NetBungieAPI.TestProject
                         definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
                     }
                 }
-                
+
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyCollectibleDefinition>(
@@ -1057,8 +1061,9 @@ namespace NetBungieAPI.TestProject
                                     : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
                         }
                     }
-                
-                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 && !key.Contains(value.ToString()))
+
+                    if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                        !key.Contains(value.ToString()))
                     {
                         textWriter.WriteLine($"public const uint {key}_{value} = {value};");
                     }
@@ -1067,11 +1072,11 @@ namespace NetBungieAPI.TestProject
                         textWriter.WriteLine($"public const uint {key} = {value};");
                     }
                 }
-                
+
                 textWriter.Write(" } ");
                 textWriter.Flush();
                 definitionCacheLookup.Clear();
-                
+
                 #endregion
 
                 #region DamageTypes
@@ -1462,7 +1467,7 @@ namespace NetBungieAPI.TestProject
                 #endregion
 
                 #region InventoryItems
-                
+
                 textWriter.Write("public static class InventoryItems {");
                 foreach (var definition in _bungieClient.Repository.GetAll<DestinyInventoryItemDefinition>())
                 {
@@ -1479,7 +1484,7 @@ namespace NetBungieAPI.TestProject
                         definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
                     }
                 }
-                
+
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyInventoryItemDefinition>(
@@ -1493,7 +1498,7 @@ namespace NetBungieAPI.TestProject
                                     : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
                         }
                     }
-                
+
                     if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                         !key.Contains(value.ToString()))
                     {
@@ -1504,11 +1509,11 @@ namespace NetBungieAPI.TestProject
                         textWriter.WriteLine($"public const uint {key} = {value};");
                     }
                 }
-                
+
                 textWriter.Write(" } ");
                 textWriter.Flush();
                 definitionCacheLookup.Clear();
-                
+
                 #endregion
 
                 #region ItemCategories
@@ -1612,7 +1617,7 @@ namespace NetBungieAPI.TestProject
                 #endregion
 
                 #region Lore
-                
+
                 textWriter.Write("public static class Lore {");
                 foreach (var definition in _bungieClient.Repository.GetAll<DestinyLoreDefinition>())
                 {
@@ -1629,7 +1634,7 @@ namespace NetBungieAPI.TestProject
                         definitionCacheLookup.Add($"F{definition.Hash.ToString()}", definition.Hash);
                     }
                 }
-                
+
                 foreach (var (key, value) in definitionCacheLookup)
                 {
                     if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyLoreDefinition>(
@@ -1643,7 +1648,7 @@ namespace NetBungieAPI.TestProject
                                     : $"/// <summary>\n /// {definition.DisplayProperties.Description}\n/// </summary>");
                         }
                     }
-                
+
                     if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                         !key.Contains(value.ToString()))
                     {
@@ -1654,11 +1659,11 @@ namespace NetBungieAPI.TestProject
                         textWriter.WriteLine($"public const uint {key} = {value};");
                     }
                 }
-                
+
                 textWriter.Write(" } ");
                 textWriter.Flush();
                 definitionCacheLookup.Clear();
-                
+
                 #endregion
 
                 #region MedalTiers
@@ -2527,7 +2532,8 @@ namespace NetBungieAPI.TestProject
                 textWriter.Write("public static class VendorGroups {");
                 foreach (var definition in _bungieClient.Repository.GetAll<DestinyVendorGroupDefinition>())
                 {
-                    var key = string.Join("", definition.CategoryName.Split(forbiddenSymbols, StringSplitOptions.TrimEntries));
+                    var key = string.Join("",
+                        definition.CategoryName.Split(forbiddenSymbols, StringSplitOptions.TrimEntries));
                     textWriter.WriteLine($"public const uint {key} = {definition.Hash};");
                 }
 

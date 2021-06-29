@@ -34,7 +34,10 @@ namespace NetBungieAPI.Services
 
         public string GetAuthorizationLink(AuthorizationState authData)
         {
-            return _client.GetAuthLink(_config.Settings.IdentificationSettings.ClientId.Value, authData.State);
+            if (_config.Settings.IdentificationSettings.ClientId != null)
+                return _client.GetAuthLink(_config.Settings.IdentificationSettings.ClientId.Value, authData.State);
+            else
+                throw new NullReferenceException("Client ID is missing.");
         }
 
         public AuthorizationState CreateNewAuthentificationAwaiter()
@@ -71,11 +74,10 @@ namespace NetBungieAPI.Services
         public bool TryGetAccessToken(long membershipId, out string token)
         {
             token = default;
-            if (!_authorizationTokenDatas.TryGetValue(membershipId, out var tokenData)) 
+            if (!_authorizationTokenDatas.TryGetValue(membershipId, out var tokenData))
                 return false;
             token = tokenData.AccessToken;
             return true;
-
         }
 
         public async ValueTask<AuthorizationTokenData> RenewToken(AuthorizationTokenData authData)
@@ -83,7 +85,8 @@ namespace NetBungieAPI.Services
             try
             {
                 var newToken = await _client.RenewAuthorizationToken(authData);
-                return _authorizationTokenDatas.AddOrUpdate(newToken.MembershipId, newToken, (_, _) => newToken);
+                authData.Update(newToken);
+                return _authorizationTokenDatas.AddOrUpdate(newToken.MembershipId, authData, (_, _) => authData);
             }
             catch (Exception e)
             {
