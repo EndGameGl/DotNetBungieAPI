@@ -1,12 +1,11 @@
-﻿using NetBungieAPI.Models;
-using NetBungieAPI.Models.Destiny;
-using NetBungieAPI.Models.Destiny.Definitions.Activities;
-using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using NetBungieAPI.Models;
+using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Config;
+using NetBungieAPI.Models.Destiny.Definitions.Activities;
 using NetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
+using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Providers;
 
 namespace NetBungieAPI.Repositories
@@ -20,14 +19,21 @@ namespace NetBungieAPI.Repositories
         void Initialize(BungieLocales[] locales);
         void LoadAllDataFromDisk(string localManifestPath, DestinyManifest manifest);
         void AddDefinitionToCache(DefinitionsEnum definitionType, IDestinyDefinition defValue, BungieLocales locale);
-        bool TryGetDestinyDefinition(DefinitionsEnum definitionType, uint key, BungieLocales locale, out IDestinyDefinition definition);
+
+        bool TryGetDestinyDefinition(DefinitionsEnum definitionType, uint key, BungieLocales locale,
+            out IDestinyDefinition definition);
+
         bool TryGetDestinyDefinition<T>(uint key, BungieLocales locale, out T definition) where T : IDestinyDefinition;
+
         bool TryGetDestinyHistoricalDefinition(BungieLocales locale, string key,
             out DestinyHistoricalStatsDefinition statsDefinition);
 
         IEnumerable<DestinyHistoricalStatsDefinition> GetAllHistoricalStatsDefinitions(BungieLocales locale);
         bool AddDestinyHistoricalDefinition(BungieLocales locale, DestinyHistoricalStatsDefinition statsDefinition);
-        IEnumerable<T> Search<T>(DefinitionsEnum definitionType, BungieLocales locale, Func<IDestinyDefinition, bool> predicate) where T : IDestinyDefinition;
+
+        IEnumerable<T> Search<T>(DefinitionsEnum definitionType, BungieLocales locale,
+            Func<IDestinyDefinition, bool> predicate) where T : IDestinyDefinition;
+
         IEnumerable<T> GetAll<T>(DefinitionsEnum definitionType, BungieLocales locale) where T : IDestinyDefinition;
         public IEnumerable<T> GetAll<T>(BungieLocales locale = BungieLocales.EN) where T : IDestinyDefinition;
         List<DestinyInventoryItemDefinition> GetItemsWithTrait(BungieLocales locale, string trait);

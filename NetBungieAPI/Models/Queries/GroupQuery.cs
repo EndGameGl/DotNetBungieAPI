@@ -1,33 +1,12 @@
-﻿using NetBungieAPI.Models.GroupsV2;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Models.GroupsV2;
 
 namespace NetBungieAPI.Models.Queries
 {
     public sealed record GroupQuery : PagedQuery
     {
-        [JsonPropertyName("name")]
-        public string Name { get; private set; }
-
-        [JsonPropertyName("groupType")]
-        public GroupType GroupType { get; private set; }
-
-        [JsonPropertyName("creationDate")]
-        public GroupDateRange CreationDate { get; private set; }
-
-        [JsonPropertyName("sortBy")]
-        public GroupSortBy SortBy { get; private set; }
-
-        [JsonPropertyName("groupMemberCountFilter")]
-        public GroupMemberCountFilter? GroupMemberCountFilter { get; private set; }
-
-        [JsonPropertyName("localeFilter")]
-        public string LocaleFilter { get; private set; }
-
-        [JsonPropertyName("tagText")]
-        public string TagText { get; private set; }
-
         /// <summary>
-        /// Query for a usual group
+        ///     Query for a usual group
         /// </summary>
         /// <param name="name"></param>
         /// <param name="creationDate"></param>
@@ -53,8 +32,9 @@ namespace NetBungieAPI.Models.Queries
             CurrentPage = currentPage;
             RequestContinuationToken = requestContinuationToken;
         }
+
         /// <summary>
-        /// Query for a clan
+        ///     Query for a clan
         /// </summary>
         /// <param name="name"></param>
         /// <param name="creationDate"></param>
@@ -73,6 +53,20 @@ namespace NetBungieAPI.Models.Queries
             CurrentPage = currentPage;
             RequestContinuationToken = requestContinuationToken;
         }
-        
+
+        [JsonPropertyName("name")] public string Name { get; }
+
+        [JsonPropertyName("groupType")] public GroupType GroupType { get; }
+
+        [JsonPropertyName("creationDate")] public GroupDateRange CreationDate { get; }
+
+        [JsonPropertyName("sortBy")] public GroupSortBy SortBy { get; }
+
+        [JsonPropertyName("groupMemberCountFilter")]
+        public GroupMemberCountFilter? GroupMemberCountFilter { get; }
+
+        [JsonPropertyName("localeFilter")] public string LocaleFilter { get; }
+
+        [JsonPropertyName("tagText")] public string TagText { get; }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
 using NetBungieAPI.Models;
@@ -13,7 +11,7 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
 {
     public class UsedScopedForumMethodsAccess
     {
-        private IForumMethodsAccess _apiAccess;
+        private readonly IForumMethodsAccess _apiAccess;
         private AuthorizationTokenData _token;
 
         internal UsedScopedForumMethodsAccess(

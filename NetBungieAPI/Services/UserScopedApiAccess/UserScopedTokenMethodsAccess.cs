@@ -9,9 +9,9 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
 {
     public class UserScopedTokenMethodsAccess
     {
-        private ITokenMethodsAccess _apiAccess;
-        private AuthorizationTokenData _token;
-        
+        private readonly ITokenMethodsAccess _apiAccess;
+        private readonly AuthorizationTokenData _token;
+
         internal UserScopedTokenMethodsAccess(
             ITokenMethodsAccess apiAccess,
             AuthorizationTokenData token)

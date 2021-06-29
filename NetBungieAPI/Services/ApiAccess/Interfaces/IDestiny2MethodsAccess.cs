@@ -1,28 +1,28 @@
-﻿using NetBungieAPI.Models;
-using NetBungieAPI.Models.Destiny;
-using NetBungieAPI.Models.Destiny.Config;
-using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
-using NetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
-using NetBungieAPI.Models.Destiny.Milestones;
-using NetBungieAPI.Models.Destiny.Responses;
-using NetBungieAPI.Models.Queries;
-using NetBungieAPI.Models.User;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
+using NetBungieAPI.Models;
+using NetBungieAPI.Models.Destiny;
+using NetBungieAPI.Models.Destiny.Config;
+using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
+using NetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using NetBungieAPI.Models.Destiny.HistoricalStats;
+using NetBungieAPI.Models.Destiny.Milestones;
+using NetBungieAPI.Models.Destiny.Responses;
+using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Models.Requests;
 using NetBungieAPI.Models.Responses;
+using NetBungieAPI.Models.User;
 
 namespace NetBungieAPI.Services.ApiAccess.Interfaces
 {
     public interface IDestiny2MethodsAccess
     {
         /// <summary>
-        /// Returns the current version of the manifest as a json object.
+        ///     Returns the current version of the manifest as a json object.
         /// </summary>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
@@ -30,12 +30,21 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Returns the static definition of an entity of the given Type and hash identifier. Examine the API Documentation for the Type Names of entities that have their own definitions. Note that the return type will always *inherit from* DestinyDefinition, but the specific type returned will be the requested entity type if it can be found. Please don't use this as a chatty alternative to the Manifest database if you require large sets of data, but for simple and one-off accesses this should be handy.
+        ///     Returns the static definition of an entity of the given Type and hash identifier. Examine the API Documentation for
+        ///     the Type Names of entities that have their own definitions. Note that the return type will always *inherit from*
+        ///     DestinyDefinition, but the specific type returned will be the requested entity type if it can be found. Please
+        ///     don't use this as a chatty alternative to the Manifest database if you require large sets of data, but for simple
+        ///     and one-off accesses this should be handy.
         /// </summary>
-        /// <param name="entityType">The type of entity for whom you would like results. These correspond to the entity's definition contract name. For instance, if you are looking for items, this property should be 'DestinyInventoryItemDefinition'. PREVIEW: This endpoint is still in beta, and may experience rough edges. The schema is tentatively in final form, but there may be bugs that prevent desirable operation.</param>
+        /// <param name="entityType">
+        ///     The type of entity for whom you would like results. These correspond to the entity's
+        ///     definition contract name. For instance, if you are looking for items, this property should be
+        ///     'DestinyInventoryItemDefinition'. PREVIEW: This endpoint is still in beta, and may experience rough edges. The
+        ///     schema is tentatively in final form, but there may be bugs that prevent desirable operation.
+        /// </param>
         /// <param name="hash">The hash identifier for the specific Entity you want returned.</param>
         /// <param name="token">Cancellation token</param>
-        /// <typeparam name="T"><see cref="IDestinyDefinition"/> entity</typeparam>
+        /// <typeparam name="T"><see cref="IDestinyDefinition" /> entity</typeparam>
         /// <returns></returns>
         ValueTask<BungieResponse<T>> GetDestinyEntityDefinition<T>(
             DefinitionsEnum entityType,
@@ -43,11 +52,16 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default) where T : IDestinyDefinition;
 
         /// <summary>
-        /// Returns a list of Destiny memberships given a full Gamertag or PSN ID. Unless you pass returnOriginalProfile=true, this will return membership information for the users' Primary Cross Save Profile if they are engaged in cross save rather than any original Destiny profile that is now being overridden.
+        ///     Returns a list of Destiny memberships given a full Gamertag or PSN ID. Unless you pass returnOriginalProfile=true,
+        ///     this will return membership information for the users' Primary Cross Save Profile if they are engaged in cross save
+        ///     rather than any original Destiny profile that is now being overridden.
         /// </summary>
         /// <param name="membershipType">A valid non-BungieNet membership type, or All.</param>
         /// <param name="displayName">The full gamertag or PSN id of the player. Spaces and case are ignored.</param>
-        /// <param name="returnOriginalProfile">If passed in and set to true, we will return the original Destiny Profile(s) linked to that gamertag, and not their currently active Destiny Profile.</param>
+        /// <param name="returnOriginalProfile">
+        ///     If passed in and set to true, we will return the original Destiny Profile(s) linked
+        ///     to that gamertag, and not their currently active Destiny Profile.
+        /// </param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(
@@ -57,11 +71,22 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Returns a summary information about all profiles linked to the requesting membership type/membership ID that have valid Destiny information. The passed-in Membership Type/Membership ID may be a Bungie.Net membership or a Destiny membership. It only returns the minimal amount of data to begin making more substantive requests, but will hopefully serve as a useful alternative to UserServices for people who just care about Destiny data. Note that it will only return linked accounts whose linkages you are allowed to view.
+        ///     Returns a summary information about all profiles linked to the requesting membership type/membership ID that have
+        ///     valid Destiny information. The passed-in Membership Type/Membership ID may be a Bungie.Net membership or a Destiny
+        ///     membership. It only returns the minimal amount of data to begin making more substantive requests, but will
+        ///     hopefully serve as a useful alternative to UserServices for people who just care about Destiny data. Note that it
+        ///     will only return linked accounts whose linkages you are allowed to view.
         /// </summary>
         /// <param name="membershipType">The type for the membership whose linked Destiny accounts you want returned.</param>
-        /// <param name="membershipId">The ID of the membership whose linked Destiny accounts you want returned. Make sure your membership ID matches its Membership Type: don't pass us a PSN membership ID and the XBox membership type, it's not going to work!</param>
-        /// <param name="getAllMemberships">if set to 'true', all memberships regardless of whether they're obscured by overrides will be returned. Normal privacy restrictions on account linking will still apply no matter what.</param>
+        /// <param name="membershipId">
+        ///     The ID of the membership whose linked Destiny accounts you want returned. Make sure your
+        ///     membership ID matches its Membership Type: don't pass us a PSN membership ID and the XBox membership type, it's not
+        ///     going to work!
+        /// </param>
+        /// <param name="getAllMemberships">
+        ///     if set to 'true', all memberships regardless of whether they're obscured by overrides
+        ///     will be returned. Normal privacy restrictions on account linking will still apply no matter what.
+        /// </param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<DestinyLinkedProfilesResponse>> GetLinkedProfiles(
@@ -71,11 +96,14 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Returns Destiny Profile information for the supplied membership.
+        ///     Returns Destiny Profile information for the supplied membership.
         /// </summary>
         /// <param name="membershipType">A valid non-BungieNet membership type.</param>
         /// <param name="destinyMembershipId">Destiny membership ID.</param>
-        /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
+        /// <param name="componentTypes">
+        ///     List of components to return. See the DestinyComponentType enum for valid components to
+        ///     request. You must request at least one component to receive results.
+        /// </param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<DestinyProfileResponse>> GetProfile(
@@ -86,12 +114,15 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Returns character information for the supplied character.
+        ///     Returns character information for the supplied character.
         /// </summary>
         /// <param name="membershipType">A valid non-BungieNet membership type.</param>
         /// <param name="destinyMembershipId">Destiny membership ID.</param>
         /// <param name="characterId">ID of the character.</param>
-        /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
+        /// <param name="componentTypes">
+        ///     List of components to return. See the DestinyComponentType enum for valid components to
+        ///     request. You must request at least one component to receive results.
+        /// </param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<DestinyCharacterResponse>> GetCharacter(
@@ -103,7 +134,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Returns information on the weekly clan rewards and if the clan has earned them or not. Note that this will always report rewards as not redeemed.
+        ///     Returns information on the weekly clan rewards and if the clan has earned them or not. Note that this will always
+        ///     report rewards as not redeemed.
         /// </summary>
         /// <param name="groupId">A valid group id of clan.</param>
         /// <param name="token">Cancellation token</param>
@@ -113,12 +145,16 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Retrieve the details of an instanced Destiny Item. An instanced Destiny item is one with an ItemInstanceId. Non-instanced items, such as materials, have no useful instance-specific details and thus are not queryable here.
+        ///     Retrieve the details of an instanced Destiny Item. An instanced Destiny item is one with an ItemInstanceId.
+        ///     Non-instanced items, such as materials, have no useful instance-specific details and thus are not queryable here.
         /// </summary>
         /// <param name="membershipType">A valid non-BungieNet membership type.</param>
         /// <param name="destinyMembershipId">The membership ID of the destiny profile.</param>
         /// <param name="itemInstanceId">The Instance ID of the destiny item.</param>
-        /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
+        /// <param name="componentTypes">
+        ///     List of components to return. See the DestinyComponentType enum for valid components to
+        ///     request. You must request at least one component to receive results.
+        /// </param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<DestinyItemResponse>> GetItem(
@@ -130,12 +166,17 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Get currently available vendors from the list of vendors that can possibly have rotating inventory. Note that this does not include things like preview vendors and vendors-as-kiosks, neither of whom have rotating/dynamic inventories. Use their definitions as-is for those.
+        ///     Get currently available vendors from the list of vendors that can possibly have rotating inventory. Note that this
+        ///     does not include things like preview vendors and vendors-as-kiosks, neither of whom have rotating/dynamic
+        ///     inventories. Use their definitions as-is for those.
         /// </summary>
         /// <param name="membershipType">A valid non-BungieNet membership type.</param>
         /// <param name="destinyMembershipId">The Destiny Character ID of the character for whom we're getting vendor info.</param>
         /// <param name="characterId">Destiny membership ID of another user. You may be denied.</param>
-        /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
+        /// <param name="componentTypes">
+        ///     List of components to return. See the DestinyComponentType enum for valid components to
+        ///     request. You must request at least one component to receive results.
+        /// </param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<DestinyVendorsResponse>> GetVendors(
@@ -147,13 +188,16 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Get the details of a specific Vendor.
+        ///     Get the details of a specific Vendor.
         /// </summary>
         /// <param name="membershipType">A valid non-BungieNet membership type.</param>
         /// <param name="destinyMembershipId">Destiny membership ID of another user. You may be denied.</param>
         /// <param name="characterId">The Destiny Character ID of the character for whom we're getting vendor info.</param>
         /// <param name="vendorHash">The Hash identifier of the Vendor to be returned.</param>
-        /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
+        /// <param name="componentTypes">
+        ///     List of components to return. See the DestinyComponentType enum for valid components to
+        ///     request. You must request at least one component to receive results.
+        /// </param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<DestinyVendorResponse>> GetVendor(
@@ -166,9 +210,12 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Get items available from vendors where the vendors have items for sale that are common for everyone.
+        ///     Get items available from vendors where the vendors have items for sale that are common for everyone.
         /// </summary>
-        /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
+        /// <param name="componentTypes">
+        ///     List of components to return. See the DestinyComponentType enum for valid components to
+        ///     request. You must request at least one component to receive results.
+        /// </param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<DestinyPublicVendorsResponse>> GetPublicVendors(
@@ -176,13 +223,20 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Given a Presentation Node that has Collectibles as direct descendants, this will return item details about those descendants in the context of the requesting character.
+        ///     Given a Presentation Node that has Collectibles as direct descendants, this will return item details about those
+        ///     descendants in the context of the requesting character.
         /// </summary>
         /// <param name="membershipType">A valid non-BungieNet membership type.</param>
         /// <param name="destinyMembershipId">Destiny membership ID of another user. You may be denied.</param>
         /// <param name="characterId">The Destiny Character ID of the character for whom we're getting collectible detail info.</param>
-        /// <param name="collectiblePresentationNodeHash">The hash identifier of the Presentation Node for whom we should return collectible details. Details will only be returned for collectibles that are direct descendants of this node.</param>
-        /// <param name="componentTypes">List of components to return. See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
+        /// <param name="collectiblePresentationNodeHash">
+        ///     The hash identifier of the Presentation Node for whom we should return
+        ///     collectible details. Details will only be returned for collectibles that are direct descendants of this node.
+        /// </param>
+        /// <param name="componentTypes">
+        ///     List of components to return. See the DestinyComponentType enum for valid components to
+        ///     request. You must request at least one component to receive results.
+        /// </param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<DestinyCollectibleNodeDetailResponse>> GetCollectibleNodeDetails(
@@ -195,7 +249,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Transfer an item to/from your vault.
+        ///     Transfer an item to/from your vault.
         /// </summary>
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
@@ -206,7 +260,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Extract an item from the Postmaster, with whatever implications that may entail.
+        ///     Extract an item from the Postmaster, with whatever implications that may entail.
         /// </summary>
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
@@ -217,7 +271,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Equip an item.
+        ///     Equip an item.
         /// </summary>
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
@@ -228,7 +282,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Equip a list of items by itemInstanceIds. 
+        ///     Equip a list of items by itemInstanceIds.
         /// </summary>
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
@@ -239,7 +293,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Set the Lock State for an instanced item.
+        ///     Set the Lock State for an instanced item.
         /// </summary>
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
@@ -250,7 +304,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Set the Tracking State for an instanced item, if that item is a Quest or Bounty.
+        ///     Set the Tracking State for an instanced item, if that item is a Quest or Bounty.
         /// </summary>
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
@@ -261,7 +315,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Insert a plug into a socketed item.
+        ///     Insert a plug into a socketed item.
         /// </summary>
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
@@ -272,7 +326,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Gets the available post game carnage report for the activity ID.
+        ///     Gets the available post game carnage report for the activity ID.
         /// </summary>
         /// <param name="activityId">The ID of the activity whose PGCR is requested.</param>
         /// <param name="token">Cancellation token</param>
@@ -282,7 +336,9 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Report a player that you met in an activity that was engaging in ToS-violating activities. Both you and the offending player must have played in the activityId passed in. Please use this judiciously and only when you have strong suspicions of violation, pretty please.
+        ///     Report a player that you met in an activity that was engaging in ToS-violating activities. Both you and the
+        ///     offending player must have played in the activityId passed in. Please use this judiciously and only when you have
+        ///     strong suspicions of violation, pretty please.
         /// </summary>
         /// <param name="activityId">The ID of the activity where you ran into the brigand that you're reporting.</param>
         /// <param name="request">Request body</param>
@@ -295,7 +351,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Gets historical stats definitions.
+        ///     Gets historical stats definitions.
         /// </summary>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
@@ -304,7 +360,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
                 CancellationToken token = default);
 
         /// <summary>
-        /// Gets leaderboards with the signed in user's friends and the supplied destinyMembershipId as the focus.
+        ///     Gets leaderboards with the signed in user's friends and the supplied destinyMembershipId as the focus.
         /// </summary>
         /// <param name="groupId">Group ID of the clan whose leaderboards you wish to fetch.</param>
         /// <param name="maxtop">Maximum number of top players to return. Use a large number to get entire leaderboard.</param>
@@ -322,7 +378,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
                 CancellationToken token = default);
 
         /// <summary>
-        /// Gets aggregated stats for a clan using the same categories as the clan leaderboards.
+        ///     Gets aggregated stats for a clan using the same categories as the clan leaderboards.
         /// </summary>
         /// <param name="groupId">Group ID of the clan whose leaderboards you wish to fetch.</param>
         /// <param name="modes">List of game modes for which to get leaderboards.</param>
@@ -334,7 +390,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Gets leaderboards with the signed in user's friends and the supplied destinyMembershipId as the focus. 
+        ///     Gets leaderboards with the signed in user's friends and the supplied destinyMembershipId as the focus.
         /// </summary>
         /// <param name="membershipType">A valid non-BungieNet membership type.</param>
         /// <param name="destinyMembershipId">The Destiny membershipId of the user to retrieve.</param>
@@ -352,7 +408,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Gets a page list of Destiny items.
+        ///     Gets a page list of Destiny items.
         /// </summary>
         /// <param name="type">The type of entity for whom you would like results.</param>
         /// <param name="searchTerm">The string to use when searching for Destiny entities.</param>
@@ -366,14 +422,26 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Gets historical stats for indicated character.
+        ///     Gets historical stats for indicated character.
         /// </summary>
         /// <param name="membershipType">A valid non-BungieNet membership type.</param>
         /// <param name="destinyMembershipId">The Destiny membershipId of the user to retrieve</param>
-        /// <param name="characterId">The id of the character to retrieve. You can omit this character ID or set it to 0 to get aggregate stats across all characters.</param>
-        /// <param name="daystart">First day to return when daily stats are requested. Currently, we cannot allow more than 31 days of daily data to be requested in a single request.</param>
-        /// <param name="dayend">Last day to return when daily stats are requested. Currently, we cannot allow more than 31 days of daily data to be requested in a single request.</param>
-        /// <param name="groups">Group of stats to include, otherwise only general stats are returned. Values: General, Weapons, Medals</param>
+        /// <param name="characterId">
+        ///     The id of the character to retrieve. You can omit this character ID or set it to 0 to get
+        ///     aggregate stats across all characters.
+        /// </param>
+        /// <param name="daystart">
+        ///     First day to return when daily stats are requested. Currently, we cannot allow more than 31 days
+        ///     of daily data to be requested in a single request.
+        /// </param>
+        /// <param name="dayend">
+        ///     Last day to return when daily stats are requested. Currently, we cannot allow more than 31 days of
+        ///     daily data to be requested in a single request.
+        /// </param>
+        /// <param name="groups">
+        ///     Group of stats to include, otherwise only general stats are returned. Values: General, Weapons,
+        ///     Medals
+        /// </param>
         /// <param name="modes">Game modes to return.</param>
         /// <param name="periodType">Indicates a specific period type to return. Optional. May be: Daily, AllTime, or Activity</param>
         /// <param name="token">Cancellation token</param>
@@ -390,11 +458,14 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Gets aggregate historical stats organized around each character for a given account.
+        ///     Gets aggregate historical stats organized around each character for a given account.
         /// </summary>
         /// <param name="membershipType">A valid non-BungieNet membership type.</param>
         /// <param name="destinyMembershipId">The Destiny membershipId of the user to retrieve.</param>
-        /// <param name="groups">Group of stats to include, otherwise only general stats are returned. Values: General, Weapons, Medals</param>
+        /// <param name="groups">
+        ///     Group of stats to include, otherwise only general stats are returned. Values: General, Weapons,
+        ///     Medals
+        /// </param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<DestinyHistoricalStatsAccountResult>> GetHistoricalStatsForAccount(
@@ -404,7 +475,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Gets activity history stats for indicated character.
+        ///     Gets activity history stats for indicated character.
         /// </summary>
         /// <param name="membershipType">A valid non-BungieNet membership type.</param>
         /// <param name="destinyMembershipId">The Destiny membershipId of the user to retrieve.</param>
@@ -424,7 +495,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Gets details about unique weapon usage, including all exotic weapons.
+        ///     Gets details about unique weapon usage, including all exotic weapons.
         /// </summary>
         /// <param name="membershipType">A valid non-BungieNet membership type.</param>
         /// <param name="destinyMembershipId">The Destiny membershipId of the user to retrieve.</param>
@@ -438,7 +509,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Gets all activities the character has participated in together with aggregate statistics for those activities.
+        ///     Gets all activities the character has participated in together with aggregate statistics for those activities.
         /// </summary>
         /// <param name="membershipType">A valid non-BungieNet membership type.</param>
         /// <param name="destinyMembershipId">The Destiny membershipId of the user to retrieve.</param>
@@ -452,7 +523,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Gets public information about currently available Milestones.
+        ///     Gets public information about currently available Milestones.
         /// </summary>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
@@ -460,7 +531,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Gets custom localized content for the milestone of the given hash, if it exists.
+        ///     Gets custom localized content for the milestone of the given hash, if it exists.
         /// </summary>
         /// <param name="milestoneHash">The identifier for the milestone to be returned.</param>
         /// <param name="token">Cancellation token</param>
@@ -470,7 +541,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Initialize a request to perform an advanced write action.
+        ///     Initialize a request to perform an advanced write action.
         /// </summary>
         /// <param name="request">Request body</param>
         /// <param name="token">Cancellation token</param>
@@ -481,7 +552,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Provide the result of the user interaction. Called by the Bungie Destiny App to approve or reject a request.
+        ///     Provide the result of the user interaction. Called by the Bungie Destiny App to approve or reject a request.
         /// </summary>
         /// <param name="request">Request body.</param>
         /// <param name="token">Cancellation token</param>
@@ -492,7 +563,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Returns the action token if user approves the request.
+        ///     Returns the action token if user approves the request.
         /// </summary>
         /// <param name="correlationId">The identifier for the advanced write action request.</param>
         /// <param name="token">Cancellation token</param>

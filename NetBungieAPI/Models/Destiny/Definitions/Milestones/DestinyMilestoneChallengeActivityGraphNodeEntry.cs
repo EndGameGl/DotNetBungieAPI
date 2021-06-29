@@ -1,9 +1,9 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.ActivityGraphs;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.ActivityGraphs;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Milestones
 {
-    public sealed record DestinyMilestoneChallengeActivityGraphNodeEntry 
+    public sealed record DestinyMilestoneChallengeActivityGraphNodeEntry
         : IDeepEquatable<DestinyMilestoneChallengeActivityGraphNodeEntry>
     {
         [JsonPropertyName("activityGraphHash")]

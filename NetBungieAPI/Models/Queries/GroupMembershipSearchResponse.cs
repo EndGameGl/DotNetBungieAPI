@@ -7,6 +7,7 @@ namespace NetBungieAPI.Models.Queries
     public sealed record GroupMembershipSearchResponse : SearchResultBase
     {
         [JsonPropertyName("results")]
-        public ReadOnlyCollection<GroupMembership> Results { get; init; } = Defaults.EmptyReadOnlyCollection<GroupMembership>();
+        public ReadOnlyCollection<GroupMembership> Results { get; init; } =
+            Defaults.EmptyReadOnlyCollection<GroupMembership>();
     }
 }

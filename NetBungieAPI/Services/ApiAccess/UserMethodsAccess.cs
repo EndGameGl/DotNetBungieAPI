@@ -1,22 +1,22 @@
 ﻿using System;
-using NetBungieAPI.Models;
-using NetBungieAPI.Models.Config;
-using NetBungieAPI.Models.User;
-using NetBungieAPI.Services.ApiAccess.Interfaces;
-using NetBungieAPI.Services.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
 using NetBungieAPI.Exceptions;
+using NetBungieAPI.Models;
 using NetBungieAPI.Models.Applications;
+using NetBungieAPI.Models.Config;
+using NetBungieAPI.Models.User;
+using NetBungieAPI.Services.ApiAccess.Interfaces;
+using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Services.ApiAccess
 {
     public class UserMethodsAccess : IUserMethodsAccess
     {
-        private readonly IHttpClientInstance _httpClient;
         private readonly IAuthorizationStateHandler _authHandler;
         private readonly IConfigurationService _configuration;
+        private readonly IHttpClientInstance _httpClient;
 
         internal UserMethodsAccess(IHttpClientInstance httpClient, IAuthorizationStateHandler authHandler,
             IConfigurationService configuration)
@@ -60,7 +60,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("/User/GetCredentialTypesForTargetAccount/")
                 .AddUrlParam(id.ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<CredentialTypeForAccount[]>(url, token, authToken.AccessToken);
+            return await _httpClient.GetFromBungieNetPlatform<CredentialTypeForAccount[]>(url, token,
+                authToken.AccessToken);
         }
 
         public async ValueTask<BungieResponse<UserTheme[]>> GetAvailableThemes(
@@ -82,7 +83,7 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser(
-            AuthorizationTokenData authToken, 
+            AuthorizationTokenData authToken,
             CancellationToken token = default)
         {
             if (!_configuration

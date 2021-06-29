@@ -9,25 +9,25 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
 {
     public class UserScopedMiscMethodsAccess
     {
-        private IMiscMethodsAccess _apiAccess;
-        
+        private readonly IMiscMethodsAccess _apiAccess;
+
         internal UserScopedMiscMethodsAccess(IMiscMethodsAccess access)
         {
             _apiAccess = access;
         }
-        
+
         public async ValueTask<BungieResponse<Dictionary<string, string>>> GetAvailableLocales(
             CancellationToken token = default)
         {
             return await _apiAccess.GetAvailableLocales(token);
         }
-        
+
         public async ValueTask<BungieResponse<CoreSettingsConfiguration>> GetCommonSettings(
             CancellationToken token = default)
         {
             return await _apiAccess.GetCommonSettings(token);
         }
-        
+
         public async ValueTask<BungieResponse<Dictionary<string, CoreSystem>>> GetUserSystemOverrides(
             CancellationToken token = default)
         {

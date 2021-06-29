@@ -3,12 +3,12 @@
 namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
     /// <summary>
-    /// The definition of a known, reusable plug that can be applied to a socket.
+    ///     The definition of a known, reusable plug that can be applied to a socket.
     /// </summary>
     public class DestinyItemSocketEntryPlugItemDefinition : IDeepEquatable<DestinyItemSocketEntryPlugItemDefinition>
     {
         /// <summary>
-        /// DestinyInventoryItemDefinition representing the plug that can be inserted.
+        ///     DestinyInventoryItemDefinition representing the plug that can be inserted.
         /// </summary>
         [JsonPropertyName("plugItemHash")]
         public DefinitionHashPointer<DestinyInventoryItemDefinition> PlugItem { get; init; } =

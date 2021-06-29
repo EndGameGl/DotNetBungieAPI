@@ -13,8 +13,8 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
 {
     public class UserScopedGroupV2MethodsAccess
     {
-        private IGroupV2MethodsAccess _apiAccess;
-        private AuthorizationTokenData _token;
+        private readonly IGroupV2MethodsAccess _apiAccess;
+        private readonly AuthorizationTokenData _token;
 
         internal UserScopedGroupV2MethodsAccess(
             IGroupV2MethodsAccess apiAccess,

@@ -1,25 +1,25 @@
-﻿using NetBungieAPI.Models;
-using NetBungieAPI.Models.Config;
-using NetBungieAPI.Models.GroupsV2;
-using NetBungieAPI.Services.ApiAccess.Interfaces;
-using NetBungieAPI.Services.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
 using NetBungieAPI.Exceptions;
+using NetBungieAPI.Models;
 using NetBungieAPI.Models.Applications;
+using NetBungieAPI.Models.Config;
 using NetBungieAPI.Models.Entities;
+using NetBungieAPI.Models.GroupsV2;
 using NetBungieAPI.Models.Queries;
+using NetBungieAPI.Services.ApiAccess.Interfaces;
+using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Services.ApiAccess
 {
     public class GroupV2MethodsAccess : IGroupV2MethodsAccess
     {
-        private readonly IHttpClientInstance _httpClient;
         private readonly IConfigurationService _configuration;
+        private readonly IHttpClientInstance _httpClient;
         private readonly IJsonSerializationHelper _serializationHelper;
 
         internal GroupV2MethodsAccess(IHttpClientInstance httpClient, IConfigurationService configuration,
@@ -92,7 +92,7 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<GroupResponse>> GetGroup(
-            long groupId, 
+            long groupId,
             CancellationToken token = default)
         {
             var url = StringBuilderPool
@@ -105,7 +105,7 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<GroupResponse>> GetGroupByName(
-            string groupName, 
+            string groupName,
             GroupType groupType,
             CancellationToken token = default)
         {
@@ -245,9 +245,9 @@ namespace NetBungieAPI.Services.ApiAccess
 
         public async ValueTask<BungieResponse<SearchResultOfGroupMember>> GetMembersOfGroup(
             long groupId,
-            int currentpage = 1, 
+            int currentpage = 1,
             RuntimeGroupMemberType memberType = RuntimeGroupMemberType.None,
-            string nameSearch = null, 
+            string nameSearch = null,
             CancellationToken token = default)
         {
             var url = StringBuilderPool.GetBuilder(token)
@@ -263,7 +263,7 @@ namespace NetBungieAPI.Services.ApiAccess
 
         public async ValueTask<BungieResponse<SearchResultOfGroupMember>> GetAdminsAndFounderOfGroup(
             long groupId,
-            int currentpage = 1, 
+            int currentpage = 1,
             CancellationToken token = default)
         {
             var url = StringBuilderPool.GetBuilder(token)
@@ -389,7 +389,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("currentpage", currentpage.ToString())
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<SearchResultOfGroupBan>(url, token,
-                authToken: authData.AccessToken);
+                authData.AccessToken);
         }
 
         public async ValueTask<BungieResponse<bool>> AbdicateFoundership(
@@ -431,7 +431,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("currentpage", currentpage.ToString())
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<SearchResultOfGroupMemberApplication>(url, token,
-                authToken: authData.AccessToken);
+                authData.AccessToken);
         }
 
         public async ValueTask<BungieResponse<SearchResultOfGroupMemberApplication>> GetInvitedIndividuals(
@@ -451,7 +451,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("currentpage", currentpage.ToString())
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<SearchResultOfGroupMemberApplication>(url, token,
-                authToken: authData.AccessToken);
+                authData.AccessToken);
         }
 
         public async ValueTask<BungieResponse<EntityActionResult[]>> ApproveAllPending(
@@ -573,9 +573,9 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<GetGroupsForMemberResponse>> GetGroupsForMember(
-            BungieMembershipType membershipType, 
-            long membershipId, 
-            GroupsForMemberFilter filter, 
+            BungieMembershipType membershipType,
+            long membershipId,
+            GroupsForMemberFilter filter,
             GroupType groupType,
             CancellationToken token = default)
         {
@@ -591,8 +591,8 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<GroupMembershipSearchResponse>> RecoverGroupForFounder(
-            BungieMembershipType membershipType, 
-            long membershipId, 
+            BungieMembershipType membershipType,
+            long membershipId,
             GroupType groupType,
             CancellationToken token = default)
         {
@@ -607,9 +607,9 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<GroupPotentialMembershipSearchResponse>> GetPotentialGroupsForMember(
-            BungieMembershipType membershipType, 
-            long membershipId, 
-            GroupType groupType, 
+            BungieMembershipType membershipType,
+            long membershipId,
+            GroupType groupType,
             GroupsForMemberFilter filter,
             CancellationToken token = default)
         {

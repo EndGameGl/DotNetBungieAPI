@@ -1,10 +1,10 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.Progressions;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.Progressions;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
 {
     /// <summary>
-    /// When a Graph needs to show active Progressions, this defines those objectives as well as an identifier.
+    ///     When a Graph needs to show active Progressions, this defines those objectives as well as an identifier.
     /// </summary>
     public sealed record DestinyActivityGraphDisplayProgressionDefinition
         : IDeepEquatable<DestinyActivityGraphDisplayProgressionDefinition>

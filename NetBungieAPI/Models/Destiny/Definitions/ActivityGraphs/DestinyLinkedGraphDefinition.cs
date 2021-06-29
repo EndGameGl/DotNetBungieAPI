@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace NetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
 {
     /// <summary>
-    /// This describes links between the current graph and others, as well as when that link is relevant.
+    ///     This describes links between the current graph and others, as well as when that link is relevant.
     /// </summary>
     public sealed record DestinyLinkedGraphDefinition : IDeepEquatable<DestinyLinkedGraphDefinition>
     {
@@ -18,11 +18,6 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
         public ReadOnlyCollection<DestinyLinkedGraphEntryDefinition> LinkedGraphs { get; init; } =
             Defaults.EmptyReadOnlyCollection<DestinyLinkedGraphEntryDefinition>();
 
-        public override string ToString()
-        {
-            return $"{LinkedGraphId} {Name}: {Description}";
-        }
-
         public bool DeepEquals(DestinyLinkedGraphDefinition other)
         {
             return other != null &&
@@ -32,6 +27,11 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
                    LinkedGraphId == other.LinkedGraphId &&
                    UnlockExpression.DeepEquals(other.UnlockExpression) &&
                    LinkedGraphs.DeepEqualsReadOnlyCollections(other.LinkedGraphs);
+        }
+
+        public override string ToString()
+        {
+            return $"{LinkedGraphId} {Name}: {Description}";
         }
     }
 }

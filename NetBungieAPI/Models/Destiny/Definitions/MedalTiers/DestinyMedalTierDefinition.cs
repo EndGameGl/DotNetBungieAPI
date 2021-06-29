@@ -1,28 +1,14 @@
-﻿using NetBungieAPI.Attributes;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Attributes;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.MedalTiers
 {
     [DestinyDefinition(DefinitionsEnum.DestinyMedalTierDefinition)]
     public sealed record DestinyMedalTierDefinition : IDestinyDefinition, IDeepEquatable<DestinyMedalTierDefinition>
     {
-        [JsonPropertyName("order")]
-        public int Order { get; init; }
-        [JsonPropertyName("tierName")]
-        public string TierName { get; init; }
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
+        [JsonPropertyName("order")] public int Order { get; init; }
 
-        public override string ToString()
-        {
-            return $"{Hash}";
-        }
+        [JsonPropertyName("tierName")] public string TierName { get; init; }
 
         public bool DeepEquals(DestinyMedalTierDefinition other)
         {
@@ -34,6 +20,22 @@ namespace NetBungieAPI.Models.Destiny.Definitions.MedalTiers
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
-        public void MapValues() { return; }
+
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+
+        [JsonPropertyName("index")] public int Index { get; init; }
+
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+        public void MapValues()
+        {
+        }
+
+        public override string ToString()
+        {
+            return $"{Hash}";
+        }
     }
 }

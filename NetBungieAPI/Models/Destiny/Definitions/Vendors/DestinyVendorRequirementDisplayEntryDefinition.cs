@@ -3,7 +3,8 @@
 namespace NetBungieAPI.Models.Destiny.Definitions.Vendors
 {
     /// <summary>
-    /// The localized properties of the RequirementsDisplay, allowing information about the requirement or item being featured to be seen.
+    ///     The localized properties of the RequirementsDisplay, allowing information about the requirement or item being
+    ///     featured to be seen.
     /// </summary>
     public sealed record
         DestinyVendorRequirementDisplayEntryDefinition : IDeepEquatable<DestinyVendorRequirementDisplayEntryDefinition>

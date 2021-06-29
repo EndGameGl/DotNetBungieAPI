@@ -3,9 +3,10 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Components
 {
-    public sealed record DictionaryComponentResponseOfuint32AndDestinyItemObjectivesComponent : ComponentResponse 
+    public sealed record DictionaryComponentResponseOfuint32AndDestinyItemObjectivesComponent : ComponentResponse
     {
         [JsonPropertyName("data")]
-        public ReadOnlyDictionary<uint, DestinyItemObjectivesComponent> Data { get; init; } = Defaults.EmptyReadOnlyDictionary<uint, DestinyItemObjectivesComponent>();
+        public ReadOnlyDictionary<uint, DestinyItemObjectivesComponent> Data { get; init; } =
+            Defaults.EmptyReadOnlyDictionary<uint, DestinyItemObjectivesComponent>();
     }
 }

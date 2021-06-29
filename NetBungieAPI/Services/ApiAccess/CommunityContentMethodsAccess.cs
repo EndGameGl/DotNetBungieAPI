@@ -10,7 +10,7 @@ namespace NetBungieAPI.Services.ApiAccess
 {
     public class CommunityContentMethodsAccess : ICommunityContentMethodsAccess
     {
-        private IHttpClientInstance _httpClient;
+        private readonly IHttpClientInstance _httpClient;
 
         internal CommunityContentMethodsAccess(IHttpClientInstance httpClient)
         {
@@ -20,7 +20,7 @@ namespace NetBungieAPI.Services.ApiAccess
         public async ValueTask<BungieResponse<PostSearchResponse>> GetCommunityContent(
             ForumTopicsSortEnum sort,
             ForumMediaType mediaFilter,
-            int page = 0, 
+            int page = 0,
             CancellationToken token = default)
         {
             var url = StringBuilderPool

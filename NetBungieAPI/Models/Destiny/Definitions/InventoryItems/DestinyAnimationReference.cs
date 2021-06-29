@@ -4,12 +4,11 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
     public sealed record DestinyAnimationReference : IDeepEquatable<DestinyAnimationReference>
     {
-        [JsonPropertyName("animName")]
-        public string Name { get; init; }
-        [JsonPropertyName("animIdentifier")]
-        public string Identifier { get; init; }
-        [JsonPropertyName("path")]
-        public string Path { get; init; }
+        [JsonPropertyName("animName")] public string Name { get; init; }
+
+        [JsonPropertyName("animIdentifier")] public string Identifier { get; init; }
+
+        [JsonPropertyName("path")] public string Path { get; init; }
 
         public bool DeepEquals(DestinyAnimationReference other)
         {

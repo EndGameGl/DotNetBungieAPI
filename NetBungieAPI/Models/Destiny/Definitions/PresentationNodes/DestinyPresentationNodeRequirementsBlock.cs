@@ -2,7 +2,8 @@
 
 namespace NetBungieAPI.Models.Destiny.Definitions.PresentationNodes
 {
-    public sealed record DestinyPresentationNodeRequirementsBlock : IDeepEquatable<DestinyPresentationNodeRequirementsBlock>
+    public sealed record
+        DestinyPresentationNodeRequirementsBlock : IDeepEquatable<DestinyPresentationNodeRequirementsBlock>
     {
         [JsonPropertyName("entitlementUnavailableMessage")]
         public string EntitlementUnavailableMessage { get; init; }

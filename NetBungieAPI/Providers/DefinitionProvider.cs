@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
 using NetBungieAPI.Clients.Settings;
 using NetBungieAPI.Logging;
@@ -17,23 +16,25 @@ namespace NetBungieAPI.Providers
 {
     public abstract class DefinitionProvider
     {
+        protected readonly IDefinitionAssemblyData AssemblyData = StaticUnityContainer.GetAssemblyData();
+
         protected readonly IDestiny2MethodsAccess Destiny2MethodsAccess =
             StaticUnityContainer.GetService<IDestiny2MethodsAccess>();
 
-        protected readonly IJsonSerializationHelper SerializationHelper =
-            StaticUnityContainer.GetService<IJsonSerializationHelper>();
+        protected readonly IHttpClientInstance HttpClientInstance = StaticUnityContainer.GetHTTPClient();
 
-        protected readonly IDefinitionAssemblyData AssemblyData = StaticUnityContainer.GetAssemblyData();
+        protected readonly ILogger Logger = StaticUnityContainer.GetLogger();
 
         protected readonly ILocalisedDestinyDefinitionRepositories Repositories =
             StaticUnityContainer.GetDestinyDefinitionRepositories();
 
-        protected readonly ILogger Logger = StaticUnityContainer.GetLogger();
+        protected readonly IJsonSerializationHelper SerializationHelper =
+            StaticUnityContainer.GetService<IJsonSerializationHelper>();
 
-        protected readonly IHttpClientInstance HttpClientInstance = StaticUnityContainer.GetHTTPClient();
-        protected DestinyManifest UsedManifest { get; set; } = null;
+        protected DestinyManifest UsedManifest { get; set; }
         protected DefinitionLoadingSettings DefinitionLoadingSettings { get; private set; }
         protected ManifestVersionSettings ManifestVersionSettings { get; private set; }
+
         internal async Task OnLoadInternal(IConfigurationService configurationService)
         {
             DefinitionLoadingSettings = configurationService.Settings.DefinitionLoadingSettings;
@@ -52,14 +53,21 @@ namespace NetBungieAPI.Providers
         public abstract Task OnLoad();
         public abstract Task ReadDefinitionsToRepository(IEnumerable<DefinitionsEnum> definitionsToLoad);
         public abstract ValueTask<T> LoadDefinition<T>(uint hash, BungieLocales locale) where T : IDestinyDefinition;
-        public abstract ValueTask<string> ReadDefinitionAsJson(DefinitionsEnum enumValue, uint hash, BungieLocales locale);
+
+        public abstract ValueTask<string> ReadDefinitionAsJson(DefinitionsEnum enumValue, uint hash,
+            BungieLocales locale);
+
         public abstract ValueTask<ReadOnlyCollection<T>> LoadMultipleDefinitions<T>(uint[] hashes, BungieLocales locale)
             where T : IDestinyDefinition;
+
         public abstract ValueTask<DestinyHistoricalStatsDefinition> LoadHistoricalStatsDefinition(string id,
             BungieLocales locale);
+
         public abstract ValueTask<string> LoadHistoricalStatsDefinitionAsJson(string id, BungieLocales locale);
+
         public abstract ValueTask<ReadOnlyCollection<T>> LoadAllDefinitions<T>(BungieLocales locale)
             where T : IDestinyDefinition;
+
         public abstract ValueTask<IEnumerable<DestinyManifest>> GetAvailableManifests();
         public abstract ValueTask<DestinyManifest> GetCurrentManifest();
         public abstract ValueTask<bool> CheckForUpdates();

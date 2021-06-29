@@ -1,6 +1,6 @@
 ﻿namespace NetBungieAPI.Models.GroupsV2
 {
-    public enum GroupApplicationResolveState : int
+    public enum GroupApplicationResolveState
     {
         Unresolved = 0,
         Accepted = 1,

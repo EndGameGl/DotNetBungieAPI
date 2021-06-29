@@ -1,7 +1,7 @@
-﻿using NetBungieAPI.Attributes;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Attributes;
 using NetBungieAPI.Models.Destiny.Definitions.Common;
 using NetBungieAPI.Models.Destiny.Definitions.TraitCategories;
-using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Traits
 {
@@ -10,28 +10,11 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Traits
     {
         [JsonPropertyName("displayProperties")]
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
-        [JsonPropertyName("traitCategoryId")]
-        public string TraitCategoryId { get; init; }
+
+        [JsonPropertyName("traitCategoryId")] public string TraitCategoryId { get; init; }
+
         [JsonPropertyName("traitCategoryHash")]
         public DefinitionHashPointer<DestinyTraitCategoryDefinition> TraitCategory { get; init; }
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
-
-        public override string ToString()
-        {
-            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-        }
-
-        public void MapValues()
-        {
-            TraitCategory.TryMapValue();
-        }
 
         public bool DeepEquals(DestinyTraitDefinition other)
         {
@@ -43,6 +26,24 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Traits
                    Hash == other.Hash &&
                    Index == other.Index &&
                    Redacted == other.Redacted;
+        }
+
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+
+        [JsonPropertyName("index")] public int Index { get; init; }
+
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+        public void MapValues()
+        {
+            TraitCategory.TryMapValue();
+        }
+
+        public override string ToString()
+        {
+            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
     }
 }

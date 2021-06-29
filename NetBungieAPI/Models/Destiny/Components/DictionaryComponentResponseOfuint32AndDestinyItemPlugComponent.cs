@@ -6,6 +6,7 @@ namespace NetBungieAPI.Models.Destiny.Components
     public sealed record DictionaryComponentResponseOfuint32AndDestinyItemPlugComponent : ComponentResponse
     {
         [JsonPropertyName("data")]
-        public ReadOnlyDictionary<uint, DestinyItemPlugComponent> Data { get; init; } = Defaults.EmptyReadOnlyDictionary<uint, DestinyItemPlugComponent>();
+        public ReadOnlyDictionary<uint, DestinyItemPlugComponent> Data { get; init; } =
+            Defaults.EmptyReadOnlyDictionary<uint, DestinyItemPlugComponent>();
     }
 }

@@ -10,7 +10,7 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
 {
     public class UserScopedContentMethodsAccess
     {
-        private IContentMethodsAccess _apiAccess;
+        private readonly IContentMethodsAccess _apiAccess;
         private AuthorizationTokenData _token;
 
         internal UserScopedContentMethodsAccess(

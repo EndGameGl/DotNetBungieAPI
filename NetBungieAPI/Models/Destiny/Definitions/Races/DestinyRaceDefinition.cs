@@ -1,13 +1,15 @@
-﻿using NetBungieAPI.Attributes;
+﻿using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
+using NetBungieAPI.Attributes;
 using NetBungieAPI.Models.Destiny.Definitions.Common;
 using NetBungieAPI.Models.Destiny.Definitions.Genders;
-using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Races
 {
     /// <summary>
-    /// In Destiny, "Races" are really more like "Species". Sort of. I mean, are the Awoken a separate species from humans? I'm not sure. But either way, they're defined here. You'll see Exo, Awoken, and Human as examples of these Species. Players will choose one for their character.
+    ///     In Destiny, "Races" are really more like "Species". Sort of. I mean, are the Awoken a separate species from humans?
+    ///     I'm not sure. But either way, they're defined here. You'll see Exo, Awoken, and Human as examples of these Species.
+    ///     Players will choose one for their character.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyRaceDefinition)]
     public sealed record DestinyRaceDefinition : IDestinyDefinition, IDeepEquatable<DestinyRaceDefinition>
@@ -16,13 +18,15 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Races
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
         /// <summary>
-        /// An enumeration defining the existing, known Races/Species for player characters. This value will be the enum value matching this definition.
+        ///     An enumeration defining the existing, known Races/Species for player characters. This value will be the enum value
+        ///     matching this definition.
         /// </summary>
         [JsonPropertyName("raceType")]
         public DestinyRace RaceType { get; init; }
 
         /// <summary>
-        /// A localized string referring to the singular form of the Race's name when referred to in gendered form. Keyed by the DestinyGender.
+        ///     A localized string referring to the singular form of the Race's name when referred to in gendered form. Keyed by
+        ///     the DestinyGender.
         /// </summary>
         [JsonPropertyName("genderedRaceNames")]
         public ReadOnlyDictionary<string, string> GenderedRaceNames { get; init; } =
@@ -32,16 +36,6 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Races
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>
             GenderedRaceNamesByGender { get; init; } =
             Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>();
-
-        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")] public uint Hash { get; init; }
-        [JsonPropertyName("index")] public int Index { get; init; }
-        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-        public override string ToString()
-        {
-            return $"{Hash}: {DisplayProperties.Name}";
-        }
 
         public bool DeepEquals(DestinyRaceDefinition other)
         {
@@ -57,12 +51,19 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Races
                    Redacted == other.Redacted;
         }
 
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
         public void MapValues()
         {
-            foreach (var race in GenderedRaceNamesByGender.Keys)
-            {
-                race.TryMapValue();
-            }
+            foreach (var race in GenderedRaceNamesByGender.Keys) race.TryMapValue();
+        }
+
+        public override string ToString()
+        {
+            return $"{Hash}: {DisplayProperties.Name}";
         }
     }
 }

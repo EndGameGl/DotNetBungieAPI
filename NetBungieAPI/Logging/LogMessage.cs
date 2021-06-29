@@ -6,10 +6,6 @@ namespace NetBungieAPI.Logging
 {
     public class LogMessage
     {
-        public DateTime Time { get; }
-        public string Message { get; }
-        public LogType Type { get; }
-
         internal LogMessage(DateTime time, string message, LogType type)
         {
             Time = time;
@@ -17,9 +13,13 @@ namespace NetBungieAPI.Logging
             Type = type;
         }
 
+        public DateTime Time { get; }
+        public string Message { get; }
+        public LogType Type { get; }
+
         public override string ToString()
         {
-            return 
+            return
                 StringBuilderPool
                     .GetBuilder(CancellationToken.None)
                     .Append("[").Append(Type.ToString())

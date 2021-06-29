@@ -1,17 +1,17 @@
 ﻿using System.Threading;
+using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using NetBungieAPI.Models.Fireteam;
 using NetBungieAPI.Models.Queries;
-using System.Threading.Tasks;
-using NetBungieAPI.Authorization;
 
 namespace NetBungieAPI.Services.ApiAccess.Interfaces
 {
     public interface IFireteamMethodsAccess
     {
         /// <summary>
-        /// Gets a count of all active non-public fireteams for the specified clan. Maximum value returned is 25.
+        ///     Gets a count of all active non-public fireteams for the specified clan. Maximum value returned is 25.
         /// </summary>
         /// <param name="groupId">Group ID</param>
         /// <param name="token">Cancellation token</param>
@@ -22,7 +22,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Gets a listing of all of this clan's fireteams that are have available slots. Caller is not checked for join criteria so caching is maximized.
+        ///     Gets a listing of all of this clan's fireteams that are have available slots. Caller is not checked for join
+        ///     criteria so caching is maximized.
         /// </summary>
         /// <param name="groupId">The group id of the clan.</param>
         /// <param name="platform">The platform filter.</param>
@@ -37,17 +38,18 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         ValueTask<BungieResponse<SearchResultOfFireteamSummary>> GetAvailableClanFireteams(
             AuthorizationTokenData authData,
             long groupId,
-            FireteamPlatform platform, 
-            DestinyActivityModeType activityType, 
+            FireteamPlatform platform,
+            DestinyActivityModeType activityType,
             FireteamDateRange dateRange,
-            FireteamSlotSearch slotFilter, 
+            FireteamSlotSearch slotFilter,
             FireteamPublicSearchOption publicOnly,
             int page = 0,
             string langFilter = null,
             CancellationToken token = default);
 
         /// <summary>
-        /// Gets a listing of all public fireteams starting now with open slots. Caller is not checked for join criteria so caching is maximized.
+        ///     Gets a listing of all public fireteams starting now with open slots. Caller is not checked for join criteria so
+        ///     caching is maximized.
         /// </summary>
         /// <param name="platform">The platform filter.</param>
         /// <param name="activityType">The activity type to filter by.</param>
@@ -59,18 +61,21 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <returns></returns>
         ValueTask<BungieResponse<SearchResultOfFireteamSummary>> SearchPublicAvailableClanFireteams(
             AuthorizationTokenData authData,
-            FireteamPlatform platform, 
-            DestinyActivityModeType activityType, 
+            FireteamPlatform platform,
+            DestinyActivityModeType activityType,
             FireteamDateRange dateRange,
             FireteamSlotSearch slotFilter,
-            int page = 0, 
-            string langFilter = null, 
+            int page = 0,
+            string langFilter = null,
             CancellationToken token = default);
 
         /// <summary>
-        /// Gets a listing of all fireteams that caller is an applicant, a member, or an alternate of.
+        ///     Gets a listing of all fireteams that caller is an applicant, a member, or an alternate of.
         /// </summary>
-        /// <param name="groupId">The group id of the clan. (This parameter is ignored unless the optional query parameter groupFilter is true).</param>
+        /// <param name="groupId">
+        ///     The group id of the clan. (This parameter is ignored unless the optional query parameter
+        ///     groupFilter is true).
+        /// </param>
         /// <param name="platform">The platform filter.</param>
         /// <param name="includeClosed">If true, return fireteams that have been closed.</param>
         /// <param name="page">Deprecated parameter, ignored.</param>
@@ -81,15 +86,15 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         ValueTask<BungieResponse<SearchResultOfFireteamSummary>> GetMyClanFireteams(
             AuthorizationTokenData authData,
             long groupId,
-            FireteamPlatform platform, 
-            bool includeClosed, 
-            int page = 0, 
+            FireteamPlatform platform,
+            bool includeClosed,
+            int page = 0,
             string langFilter = null,
-            bool groupFilter = false, 
+            bool groupFilter = false,
             CancellationToken token = default);
 
         /// <summary>
-        /// Gets a specific fireteam.
+        ///     Gets a specific fireteam.
         /// </summary>
         /// <param name="groupId">The group id of the clan.</param>
         /// <param name="fireteamId">The unique id of the fireteam.</param>
@@ -97,7 +102,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <returns></returns>
         ValueTask<BungieResponse<FireteamResponse>> GetClanFireteam(
             AuthorizationTokenData authData,
-            long groupId, 
+            long groupId,
             long fireteamId,
             CancellationToken token = default);
     }

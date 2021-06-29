@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NetBungieAPI.Logging
+﻿namespace NetBungieAPI.Logging
 {
     public interface ILogger
     {

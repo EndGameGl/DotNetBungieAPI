@@ -11,15 +11,9 @@ namespace NetBungieAPI.Serialization
     {
         public override bool CanConvert(Type typeToConvert)
         {
-            if (!typeToConvert.IsGenericType)
-            {
-                return false;
-            }
+            if (!typeToConvert.IsGenericType) return false;
 
-            if (typeToConvert.GetGenericTypeDefinition() != typeof(ReadOnlyCollection<>))
-            {
-                return false;
-            }
+            if (typeToConvert.GetGenericTypeDefinition() != typeof(ReadOnlyCollection<>)) return false;
 
             return true;
         }
@@ -28,13 +22,12 @@ namespace NetBungieAPI.Serialization
         {
             var collectionType = typeToConvert.GetGenericArguments()[0];
 
-            var converter = (JsonConverter)Activator.CreateInstance(
-                typeof(ReadOnlyCollectionConverter<>).MakeGenericType(
-                    new Type[] { collectionType }),
+            var converter = (JsonConverter) Activator.CreateInstance(
+                typeof(ReadOnlyCollectionConverter<>).MakeGenericType(collectionType),
                 BindingFlags.Instance | BindingFlags.Public,
-                binder: null,
-                args: new object[] { options },
-                culture: null);
+                null,
+                new object[] {options},
+                null);
 
             return converter;
         }
@@ -42,16 +35,20 @@ namespace NetBungieAPI.Serialization
         private class ReadOnlyCollectionConverter<T> : JsonConverter<ReadOnlyCollection<T>>
         {
             private readonly JsonSerializerOptions _options;
-            public override bool HandleNull => true;
+
             public ReadOnlyCollectionConverter(JsonSerializerOptions options)
             {
                 _options = options;
             }
-            public override ReadOnlyCollection<T> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+
+            public override bool HandleNull => true;
+
+            public override ReadOnlyCollection<T> Read(ref Utf8JsonReader reader, Type typeToConvert,
+                JsonSerializerOptions options)
             {
                 if (reader.TokenType == JsonTokenType.Null)
                     return Defaults.EmptyReadOnlyCollection<T>();
-                
+
                 IList<T> tempCollection = new List<T>();
                 while (reader.Read())
                 {
@@ -59,16 +56,16 @@ namespace NetBungieAPI.Serialization
                         return new ReadOnlyCollection<T>(tempCollection);
                     tempCollection.Add(JsonSerializer.Deserialize<T>(ref reader, _options));
                 }
+
                 throw new JsonException();
             }
-            public override void Write(Utf8JsonWriter writer, ReadOnlyCollection<T> value, JsonSerializerOptions options)
+
+            public override void Write(Utf8JsonWriter writer, ReadOnlyCollection<T> value,
+                JsonSerializerOptions options)
             {
                 writer.WriteStartArray();
 
-                foreach (var item in value)
-                {
-                    JsonSerializer.Serialize(writer, item, options);
-                }
+                foreach (var item in value) JsonSerializer.Serialize(writer, item, options);
 
                 writer.WriteEndArray();
             }

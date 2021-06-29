@@ -1,9 +1,9 @@
 ﻿namespace NetBungieAPI.Models.Destiny.Definitions.ActivityModes
 {
     /// <summary>
-    /// For historical reasons, this list will have both D1 and D2-relevant Activity Modes in it. 
+    ///     For historical reasons, this list will have both D1 and D2-relevant Activity Modes in it.
     /// </summary>
-    public enum DestinyActivityModeType : int
+    public enum DestinyActivityModeType
     {
         None = 0,
         Story = 2,

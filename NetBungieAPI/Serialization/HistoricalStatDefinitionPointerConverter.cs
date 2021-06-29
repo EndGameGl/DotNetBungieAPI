@@ -9,13 +9,15 @@ namespace NetBungieAPI.Serialization
     {
         public override bool HandleNull => true;
 
-        public override HistoricalStatDefinitionPointer? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override HistoricalStatDefinitionPointer? Read(ref Utf8JsonReader reader, Type typeToConvert,
+            JsonSerializerOptions options)
         {
             var statId = reader.GetString();
             return new HistoricalStatDefinitionPointer(statId);
         }
 
-        public override void Write(Utf8JsonWriter writer, HistoricalStatDefinitionPointer value, JsonSerializerOptions options)
+        public override void Write(Utf8JsonWriter writer, HistoricalStatDefinitionPointer value,
+            JsonSerializerOptions options)
         {
             throw new NotImplementedException();
         }

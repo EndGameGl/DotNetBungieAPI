@@ -6,8 +6,9 @@ namespace NetBungieAPI
 {
     internal static class StringBuilderPool
     {
-        private static object _lock = new();
+        private static readonly object _lock = new();
         private static readonly List<ExtendedStringBuilder> _builders;
+
         static StringBuilderPool()
         {
             _builders = new List<ExtendedStringBuilder>();

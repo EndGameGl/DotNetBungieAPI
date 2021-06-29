@@ -1,7 +1,7 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
-using NetBungieAPI.Models.Destiny.Definitions.Records;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
+using NetBungieAPI.Models.Destiny.Definitions.Records;
 
 namespace NetBungieAPI.Models.Destiny.Components
 {
@@ -16,14 +16,14 @@ namespace NetBungieAPI.Models.Destiny.Components
             Defaults.EmptyReadOnlyDictionary<uint, DestinyRecordComponent>();
 
         /// <summary>
-        /// The hash for the root presentation node definition of Triumph categories.
+        ///     The hash for the root presentation node definition of Triumph categories.
         /// </summary>
         [JsonPropertyName("recordCategoriesRootNodeHash")]
         public DefinitionHashPointer<DestinyPresentationNodeDefinition> RecordCategoriesRootNode { get; init; } =
             DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
 
         /// <summary>
-        /// The hash for the root presentation node definition of Triumph Seals.
+        ///     The hash for the root presentation node definition of Triumph Seals.
         /// </summary>
         [JsonPropertyName("recordSealsRootNodeHash")]
         public DefinitionHashPointer<DestinyPresentationNodeDefinition> RecordSealsRootNode { get; init; } =

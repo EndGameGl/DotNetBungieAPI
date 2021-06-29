@@ -5,28 +5,16 @@ namespace NetBungieAPI.Services
 {
     public class BungieApiAccess : IBungieApiAccess
     {
-        public IAppMethodsAccess App { get; init; }
-        public IUserMethodsAccess User { get; init; }
-        public IContentMethodsAccess Content { get; init; }
-        public IForumMethodsAccess Forum { get; init; }
-        public IGroupV2MethodsAccess GroupV2 { get; init; }
-        public ITokenMethodsAccess Tokens { get; init; }
-        public IDestiny2MethodsAccess Destiny2 { get; init; }
-        public ICommunityContentMethodsAccess Community { get; init; }
-        public ITrendingMethodsAccess Trending { get; init; }
-        public IFireteamMethodsAccess Fireteam { get; init; }
-        public IMiscMethodsAccess Misc { get; init; }
-
         internal BungieApiAccess(
-            IFireteamMethodsAccess fireteamMethodsAccess, 
+            IFireteamMethodsAccess fireteamMethodsAccess,
             IContentMethodsAccess contentMethodsAccess,
-            IAppMethodsAccess appMethodsAccess, 
-            IForumMethodsAccess forumMethodsAccess, 
+            IAppMethodsAccess appMethodsAccess,
+            IForumMethodsAccess forumMethodsAccess,
             IUserMethodsAccess userMethodsAccess,
-            IGroupV2MethodsAccess groupV2MethodsAccess, 
-            ITokenMethodsAccess tokenMethodsAccess, 
+            IGroupV2MethodsAccess groupV2MethodsAccess,
+            ITokenMethodsAccess tokenMethodsAccess,
             IDestiny2MethodsAccess destiny2MethodsAccess,
-            ICommunityContentMethodsAccess communityContentMethodsAccess, 
+            ICommunityContentMethodsAccess communityContentMethodsAccess,
             ITrendingMethodsAccess trendingMethodsAccess,
             IMiscMethodsAccess miscMethodsAccess)
         {
@@ -43,6 +31,21 @@ namespace NetBungieAPI.Services
             Misc = miscMethodsAccess;
         }
 
-        public static IBungieApiAccess Create() => StaticUnityContainer.GetService<IBungieApiAccess>();
+        public IAppMethodsAccess App { get; init; }
+        public IUserMethodsAccess User { get; init; }
+        public IContentMethodsAccess Content { get; init; }
+        public IForumMethodsAccess Forum { get; init; }
+        public IGroupV2MethodsAccess GroupV2 { get; init; }
+        public ITokenMethodsAccess Tokens { get; init; }
+        public IDestiny2MethodsAccess Destiny2 { get; init; }
+        public ICommunityContentMethodsAccess Community { get; init; }
+        public ITrendingMethodsAccess Trending { get; init; }
+        public IFireteamMethodsAccess Fireteam { get; init; }
+        public IMiscMethodsAccess Misc { get; init; }
+
+        public static IBungieApiAccess Create()
+        {
+            return StaticUnityContainer.GetService<IBungieApiAccess>();
+        }
     }
 }

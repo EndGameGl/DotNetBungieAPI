@@ -3,7 +3,8 @@
 namespace NetBungieAPI.Models.Destiny.Definitions
 {
     /// <summary>
-    /// These properties are an attempt to categorize talent node steps by certain common properties. See the related enumerations for the type of properties being categorized.
+    ///     These properties are an attempt to categorize talent node steps by certain common properties. See the related
+    ///     enumerations for the type of properties being categorized.
     /// </summary>
     public sealed record DestinyTalentNodeStepGroups : IDeepEquatable<DestinyTalentNodeStepGroups>
     {

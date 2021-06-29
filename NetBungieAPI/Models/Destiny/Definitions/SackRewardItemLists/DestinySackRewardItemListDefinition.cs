@@ -1,24 +1,12 @@
-﻿using NetBungieAPI.Attributes;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Attributes;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.SackRewardItemLists
 {
     [DestinyDefinition(DefinitionsEnum.DestinySackRewardItemListDefinition)]
-    public sealed record DestinySackRewardItemListDefinition : IDestinyDefinition, IDeepEquatable<DestinySackRewardItemListDefinition>
+    public sealed record DestinySackRewardItemListDefinition : IDestinyDefinition,
+        IDeepEquatable<DestinySackRewardItemListDefinition>
     {
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
-
-        public override string ToString()
-        {
-            return $"{Hash}";
-        }
         public bool DeepEquals(DestinySackRewardItemListDefinition other)
         {
             return other != null &&
@@ -27,8 +15,22 @@ namespace NetBungieAPI.Models.Destiny.Definitions.SackRewardItemLists
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
+
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+
+        [JsonPropertyName("index")] public int Index { get; init; }
+
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
         public void MapValues()
         {
+        }
+
+        public override string ToString()
+        {
+            return $"{Hash}";
         }
     }
 }

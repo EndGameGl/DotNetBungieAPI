@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace NetBungieAPI.Models.Destiny.Definitions
 {
     /// <summary>
-    /// This Block defines the rendering data associated with the item, if any.
+    ///     This Block defines the rendering data associated with the item, if any.
     /// </summary>
     public sealed record DestinyItemTranslationBlockDefinition : IDeepEquatable<DestinyItemTranslationBlockDefinition>
     {

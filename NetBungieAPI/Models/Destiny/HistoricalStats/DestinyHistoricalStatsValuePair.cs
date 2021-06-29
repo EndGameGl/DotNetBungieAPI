@@ -5,13 +5,13 @@ namespace NetBungieAPI.Models.Destiny.HistoricalStats
     public sealed record DestinyHistoricalStatsValuePair
     {
         /// <summary>
-        /// Raw value of the statistic
+        ///     Raw value of the statistic
         /// </summary>
         [JsonPropertyName("value")]
         public double Value { get; init; }
 
         /// <summary>
-        /// Localized formatted version of the value.
+        ///     Localized formatted version of the value.
         /// </summary>
         [JsonPropertyName("displayValue")]
         public string DisplayValue { get; init; }

@@ -1,11 +1,11 @@
-﻿using NetBungieAPI.Attributes;
+﻿using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
+using NetBungieAPI.Attributes;
 using NetBungieAPI.Models.Destiny.Definitions.Common;
 using NetBungieAPI.Models.Destiny.Definitions.Lores;
 using NetBungieAPI.Models.Destiny.Definitions.Objectives;
 using NetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 using NetBungieAPI.Models.Destiny.Definitions.Traits;
-using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Records
 {
@@ -16,7 +16,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Records
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
         /// <summary>
-        /// Indicates whether this Record's state is determined on a per-character or on an account-wide basis.
+        ///     Indicates whether this Record's state is determined on a per-character or on an account-wide basis.
         /// </summary>
         [JsonPropertyName("scope")]
         public DestinyScope Scope { get; init; }
@@ -40,15 +40,16 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Records
         [JsonPropertyName("expirationInfo")] public DestinyRecordExpirationBlock ExpirationInfo { get; init; }
 
         /// <summary>
-        /// Some records have multiple 'interval' objectives, and the record may be claimed at each completed interval
+        ///     Some records have multiple 'interval' objectives, and the record may be claimed at each completed interval
         /// </summary>
         [JsonPropertyName("intervalInfo")]
         public DestinyRecordIntervalBlock IntervalInfo { get; init; }
 
         /// <summary>
-        /// If there is any publicly available information about rewards earned for achieving this record, this is the list of those items.
-        /// <para/>
-        /// However, note that some records intentionally have "hidden" rewards. These will not be returned in this list.
+        ///     If there is any publicly available information about rewards earned for achieving this record, this is the list of
+        ///     those items.
+        ///     <para />
+        ///     However, note that some records intentionally have "hidden" rewards. These will not be returned in this list.
         /// </summary>
         [JsonPropertyName("rewardItems")]
         public ReadOnlyCollection<DestinyItemQuantity> RewardItems { get; init; } =
@@ -65,21 +66,12 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Records
             Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>();
 
         /// <summary>
-        /// A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under multiple parents.
+        ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under
+        ///     multiple parents.
         /// </summary>
         [JsonPropertyName("parentNodeHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentNodes { get; init; } =
             Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
-
-        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")] public uint Hash { get; init; }
-        [JsonPropertyName("index")] public int Index { get; init; }
-        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-        public override string ToString()
-        {
-            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-        }
 
         public bool DeepEquals(DestinyRecordDefinition other)
         {
@@ -108,61 +100,45 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Records
                    Redacted == other.Redacted;
         }
 
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
         public void MapValues()
         {
             if (IntervalInfo != null)
             {
-                foreach (var objective in IntervalInfo.IntervalObjectives)
-                {
-                    objective.IntervalObjective.TryMapValue();
-                }
+                foreach (var objective in IntervalInfo.IntervalObjectives) objective.IntervalObjective.TryMapValue();
 
                 foreach (var reward in IntervalInfo.IntervalRewards)
-                {
-                    foreach (var item in reward.IntervalRewardItems)
-                    {
-                        item.Item.TryMapValue();
-                    }
-                }
+                foreach (var item in reward.IntervalRewardItems)
+                    item.Item.TryMapValue();
             }
 
             if (TitleInfo != null)
             {
                 TitleInfo.GildingTrackingRecord.TryMapValue();
-                foreach (var gender in TitleInfo.TitlesByGenderHash.Keys)
-                {
-                    gender.TryMapValue();
-                }
+                foreach (var gender in TitleInfo.TitlesByGenderHash.Keys) gender.TryMapValue();
             }
 
-            foreach (var objective in Objectives)
-            {
-                objective.TryMapValue();
-            }
+            foreach (var objective in Objectives) objective.TryMapValue();
 
-            foreach (var node in ParentNodes)
-            {
-                node.TryMapValue();
-            }
+            foreach (var node in ParentNodes) node.TryMapValue();
 
-            foreach (var item in RewardItems)
-            {
-                item.Item.TryMapValue();
-            }
+            foreach (var item in RewardItems) item.Item.TryMapValue();
 
-            foreach (var trait in Traits)
-            {
-                trait.TryMapValue();
-            }
+            foreach (var trait in Traits) trait.TryMapValue();
 
             Lore.TryMapValue();
             if (PresentationInfo != null)
-            {
                 foreach (var node in PresentationInfo.ParentPresentationNodes)
-                {
                     node.TryMapValue();
-                }
-            }
+        }
+
+        public override string ToString()
+        {
+            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
     }
 }

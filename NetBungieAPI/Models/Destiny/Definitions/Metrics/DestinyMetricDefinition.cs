@@ -1,10 +1,10 @@
-﻿using NetBungieAPI.Attributes;
+﻿using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
+using NetBungieAPI.Attributes;
 using NetBungieAPI.Models.Destiny.Definitions.Common;
 using NetBungieAPI.Models.Destiny.Definitions.Objectives;
 using NetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 using NetBungieAPI.Models.Destiny.Definitions.Traits;
-using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Metrics
 {
@@ -32,21 +32,12 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Metrics
             Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>();
 
         /// <summary>
-        /// A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under multiple parents.
+        ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under
+        ///     multiple parents.
         /// </summary>
         [JsonPropertyName("parentNodeHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentNodes { get; init; } =
             Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
-
-        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")] public uint Hash { get; init; }
-        [JsonPropertyName("index")] public int Index { get; init; }
-        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-        public override string ToString()
-        {
-            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-        }
 
         public bool DeepEquals(DestinyMetricDefinition other)
         {
@@ -64,18 +55,22 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Metrics
                    Redacted == other.Redacted;
         }
 
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
         public void MapValues()
         {
-            foreach (var node in ParentNodes)
-            {
-                node.TryMapValue();
-            }
+            foreach (var node in ParentNodes) node.TryMapValue();
 
             TrackingObjective.TryMapValue();
-            foreach (var trait in Traits)
-            {
-                trait.TryMapValue();
-            }
+            foreach (var trait in Traits) trait.TryMapValue();
+        }
+
+        public override string ToString()
+        {
+            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
     }
 }

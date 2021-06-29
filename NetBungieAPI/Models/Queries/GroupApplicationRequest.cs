@@ -4,7 +4,6 @@ namespace NetBungieAPI.Models.Queries
 {
     public class GroupApplicationRequest
     {
-        [JsonPropertyName("message")]
-        public string Message { get; init; }
+        [JsonPropertyName("message")] public string Message { get; init; }
     }
 }

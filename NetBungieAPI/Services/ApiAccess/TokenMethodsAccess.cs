@@ -1,20 +1,19 @@
-﻿using System;
-using NetBungieAPI.Services.ApiAccess.Interfaces;
-using NetBungieAPI.Services.Interfaces;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
 using NetBungieAPI.Exceptions;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Applications;
 using NetBungieAPI.Models.Tokens;
+using NetBungieAPI.Services.ApiAccess.Interfaces;
+using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Services.ApiAccess
 {
     public class TokenMethodsAccess : ITokenMethodsAccess
     {
-        private readonly IHttpClientInstance _httpClient;
         private readonly IConfigurationService _configuration;
+        private readonly IHttpClientInstance _httpClient;
 
         internal TokenMethodsAccess(IHttpClientInstance httpClient, IConfigurationService configuration)
         {
@@ -39,7 +38,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(targetBnetMembershipId.ToString())
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<PartnerOfferSkuHistoryResponse[]>(url, token,
-                authToken: authData.AccessToken);
+                authData.AccessToken);
         }
     }
 }

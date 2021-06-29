@@ -4,7 +4,6 @@ namespace NetBungieAPI.Models.Destiny.Components
 {
     public sealed record SingleComponentResponseOfDestinyItemStatsComponent : ComponentResponse
     {
-        [JsonPropertyName("data")]
-        public DestinyItemStatsComponent Data { get; init; }
+        [JsonPropertyName("data")] public DestinyItemStatsComponent Data { get; init; }
     }
 }

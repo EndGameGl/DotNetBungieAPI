@@ -1,22 +1,21 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
+using NetBungieAPI.Exceptions;
 using NetBungieAPI.Models;
+using NetBungieAPI.Models.Applications;
 using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using NetBungieAPI.Models.Fireteam;
 using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
-using System.Threading.Tasks;
-using NetBungieAPI.Authorization;
-using NetBungieAPI.Exceptions;
-using NetBungieAPI.Models.Applications;
 
 namespace NetBungieAPI.Services.ApiAccess
 {
     public class FireteamMethodsAccess : IFireteamMethodsAccess
     {
-        private readonly IHttpClientInstance _httpClient;
         private readonly IConfigurationService _configuration;
+        private readonly IHttpClientInstance _httpClient;
 
         public FireteamMethodsAccess(IHttpClientInstance httpClient, IConfigurationService configuration)
         {
@@ -39,7 +38,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("ActiveCount/")
                 .Build();
 
-            return await _httpClient.GetFromBungieNetPlatform<int>(url, token, authToken: authData.AccessToken);
+            return await _httpClient.GetFromBungieNetPlatform<int>(url, token, authData.AccessToken);
         }
 
         public async ValueTask<BungieResponse<SearchResultOfFireteamSummary>> GetAvailableClanFireteams(
@@ -72,7 +71,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
 
             return await _httpClient.GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, token,
-                authToken: authData.AccessToken);
+                authData.AccessToken);
         }
 
         public async ValueTask<BungieResponse<SearchResultOfFireteamSummary>> SearchPublicAvailableClanFireteams(
@@ -100,7 +99,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
 
             return await _httpClient.GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, token,
-                authToken: authData.AccessToken);
+                authData.AccessToken);
         }
 
         public async ValueTask<BungieResponse<SearchResultOfFireteamSummary>> GetMyClanFireteams(
@@ -129,7 +128,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
 
             return await _httpClient.GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, token,
-                authToken: authData.AccessToken);
+                authData.AccessToken);
         }
 
         public async ValueTask<BungieResponse<FireteamResponse>> GetClanFireteam(
@@ -150,7 +149,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
 
             return await _httpClient.GetFromBungieNetPlatform<FireteamResponse>(url, token,
-                authToken: authData.AccessToken);
+                authData.AccessToken);
         }
     }
 }

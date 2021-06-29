@@ -134,13 +134,7 @@ namespace NetBungieAPI.TestProject
             sw.Stop();
             Console.WriteLine($"Startup in: {sw.ElapsedMilliseconds} ms");
 
-            Console.WriteLine($"{Process.GetCurrentProcess().PrivateMemorySize64} bytes allocated for current app.");
-
-            var token = await _bungieClient.Authentication.GetAuthTokenAsync(null);
-            
-            var userContext = _bungieClient.ScopeToUser(token);
-
-            await userContext.Destiny2.EquipItem(new DestinyItemActionRequest(0, 0, BungieMembershipType.TigerSteam));
+            Console.WriteLine($"{Process.GetCurrentProcess().PrivateMemorySize64} bytes allocated for current app.");     
 
             //GenerateDefinitionHashes();
 

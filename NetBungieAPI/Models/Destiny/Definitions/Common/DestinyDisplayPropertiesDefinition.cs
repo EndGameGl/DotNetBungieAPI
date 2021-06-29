@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace NetBungieAPI.Models.Destiny.Definitions.Common
 {
     /// <summary>
-    /// Represents common properties for displaying <see cref="IDestinyDefinition"/>
+    ///     Represents common properties for displaying <see cref="IDestinyDefinition" />
     /// </summary>
     public record DestinyDisplayPropertiesDefinition : IDeepEquatable<DestinyDisplayPropertiesDefinition>
     {
@@ -15,17 +15,18 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Common
         [JsonPropertyName("hasIcon")] public bool HasIcon { get; init; }
 
         /// <summary>
-        /// Note that "icon" is sometimes misleading, and should be interpreted in the context of the entity. For instance, in Destiny 1 the DestinyRecordBookDefinition's icon was a big picture of a book.
-        /// <para/>
-        /// But usually, it will be a small square image that you can use as... well, an icon.
-        /// <para/>
-        /// They are currently represented as 96px x 96px images.
+        ///     Note that "icon" is sometimes misleading, and should be interpreted in the context of the entity. For instance, in
+        ///     Destiny 1 the DestinyRecordBookDefinition's icon was a big picture of a book.
+        ///     <para />
+        ///     But usually, it will be a small square image that you can use as... well, an icon.
+        ///     <para />
+        ///     They are currently represented as 96px x 96px images.
         /// </summary>
         [JsonPropertyName("icon")]
         public DestinyResource Icon { get; init; }
 
         /// <summary>
-        /// If this item has a high-res icon (at least for now, many things won't), then the path to that icon will be here.
+        ///     If this item has a high-res icon (at least for now, many things won't), then the path to that icon will be here.
         /// </summary>
         [JsonPropertyName("highResIcon")]
         public DestinyResource HighResolutionIcon { get; init; }
@@ -33,11 +34,6 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Common
         [JsonPropertyName("iconSequences")]
         public ReadOnlyCollection<DestinyIconSequenceDefinition> IconSequences { get; init; } =
             Defaults.EmptyReadOnlyCollection<DestinyIconSequenceDefinition>();
-
-        public override string ToString()
-        {
-            return $"{Name}: {Description}";
-        }
 
         public bool DeepEquals(DestinyDisplayPropertiesDefinition other)
         {
@@ -48,6 +44,11 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Common
                    Name == other.Name &&
                    HighResolutionIcon == other.HighResolutionIcon &&
                    IconSequences.DeepEqualsReadOnlyCollections(other.IconSequences);
+        }
+
+        public override string ToString()
+        {
+            return $"{Name}: {Description}";
         }
     }
 }

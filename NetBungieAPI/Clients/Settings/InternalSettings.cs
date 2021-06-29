@@ -1,5 +1,4 @@
-﻿using System;
-using NetBungieAPI.Logging;
+﻿using NetBungieAPI.Logging;
 
 namespace NetBungieAPI.Clients.Settings
 {

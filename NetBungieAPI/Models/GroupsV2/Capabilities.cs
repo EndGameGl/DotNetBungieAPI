@@ -3,7 +3,8 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.GroupsV2
 {
-    [Flags, JsonConverter(typeof(JsonStringEnumConverter))]
+    [Flags]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum Capabilities
     {
         None = 0,

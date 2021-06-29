@@ -3,41 +3,47 @@
 namespace NetBungieAPI.Authorization
 {
     /// <summary>
-    /// Class for tracking state of authorization code
+    ///     Class for tracking state of authorization code
     /// </summary>
     public class AuthorizationState
     {
         /// <summary>
-        /// Authorization state nonce
+        ///     Authorization state nonce
         /// </summary>
         public string State { get; private set; }
+
         /// <summary>
-        /// Whether this awaiter already received it's code
+        ///     Whether this awaiter already received it's code
         /// </summary>
         public bool DidReceiveCallback { get; private set; }
+
         /// <summary>
-        /// When this awaiter was created
+        ///     When this awaiter was created
         /// </summary>
         public DateTime LinkHandoutTime { get; private set; }
+
         /// <summary>
-        /// When this awaiter received code
+        ///     When this awaiter received code
         /// </summary>
         public DateTime? CallbackReceiveTime { get; private set; }
+
         /// <summary>
-        /// Received code
+        ///     Received code
         /// </summary>
         public string Code { get; private set; }
+
         /// <summary>
-        /// Whether this awaiter has receiver code
+        ///     Whether this awaiter has receiver code
         /// </summary>
         public bool HasCode => Code != null;
 
         /// <summary>
-        /// Creates new authorization code awaiter
+        ///     Creates new authorization code awaiter
         /// </summary>
         /// <returns></returns>
-        public static AuthorizationState GetNewAuth() =>
-            new AuthorizationState()
+        public static AuthorizationState GetNewAuth()
+        {
+            return new()
             {
                 State = RandomInstance.GetRandomString(50),
                 DidReceiveCallback = false,
@@ -45,9 +51,10 @@ namespace NetBungieAPI.Authorization
                 CallbackReceiveTime = null,
                 Code = null
             };
+        }
 
         /// <summary>
-        /// Receives and handles code
+        ///     Receives and handles code
         /// </summary>
         /// <param name="code"></param>
         /// <param name="state"></param>

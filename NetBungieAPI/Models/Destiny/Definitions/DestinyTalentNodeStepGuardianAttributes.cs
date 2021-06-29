@@ -3,7 +3,8 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions
 {
-    [Flags, JsonConverter(typeof(JsonStringEnumConverter))]
+    [Flags]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum DestinyTalentNodeStepGuardianAttributes
     {
         None = 0,

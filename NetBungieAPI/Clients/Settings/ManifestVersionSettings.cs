@@ -7,7 +7,7 @@
         public bool KeepOldVersions { get; internal set; }
         public bool CheckUpdates { get; internal set; }
 
-        public static ManifestVersionSettings Default => new ManifestVersionSettings()
+        public static ManifestVersionSettings Default => new()
         {
             ForceLoadManifestVersion = false,
             PreferredLoadedManifestVersion = null,

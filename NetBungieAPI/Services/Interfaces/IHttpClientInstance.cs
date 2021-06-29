@@ -1,11 +1,10 @@
-﻿using NetBungieAPI.Authorization;
-using NetBungieAPI.Models;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
+using NetBungieAPI.Models;
 
 namespace NetBungieAPI.Services.Interfaces
 {
@@ -16,8 +15,10 @@ namespace NetBungieAPI.Services.Interfaces
         string GetAuthLink(int clientId, string state);
         ValueTask<string> DownloadJSONDataFromCDNAsync(string url);
         ValueTask<Image> DownloadImageFromCDNAsync(string url);
+
         Task<Image> DownloadImageFromCDNAndSaveAsync(string url, string folderPath, string filename,
             ImageFormat format);
+
         Task DownloadFileStreamFromCDNAsync(string query, string savePath);
 
         ValueTask<BungieResponse<T>> GetFromBungieNetPlatform<T>(string query, CancellationToken token,

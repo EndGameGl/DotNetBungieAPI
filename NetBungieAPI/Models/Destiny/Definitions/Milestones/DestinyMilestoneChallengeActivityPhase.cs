@@ -8,7 +8,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Milestones
         public uint PhaseCompleteUnlockHash { get; init; }
 
         /// <summary>
-        /// The hash identifier of the activity's phase.
+        ///     The hash identifier of the activity's phase.
         /// </summary>
         [JsonPropertyName("phaseHash")]
         public uint PhaseHash { get; init; }

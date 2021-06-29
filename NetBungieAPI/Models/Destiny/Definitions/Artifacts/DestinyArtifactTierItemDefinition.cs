@@ -1,5 +1,5 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Artifacts
 {
@@ -8,7 +8,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Artifacts
         [JsonPropertyName("activeUnlockHash")] public uint ActiveUnlockHash { get; init; }
 
         /// <summary>
-        /// Plug Item unlocked by activating this item in the Artifact.
+        ///     Plug Item unlocked by activating this item in the Artifact.
         /// </summary>
         [JsonPropertyName("itemHash")]
         public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; init; } =

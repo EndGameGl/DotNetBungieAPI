@@ -1,9 +1,9 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.Records;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.Records;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.PresentationNodes
 {
-    public sealed record DestinyPresentationNodeRecordChildEntry 
+    public sealed record DestinyPresentationNodeRecordChildEntry
         : IDeepEquatable<DestinyPresentationNodeRecordChildEntry>
     {
         [JsonPropertyName("recordHash")]

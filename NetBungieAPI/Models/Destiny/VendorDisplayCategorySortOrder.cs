@@ -1,7 +1,7 @@
 ﻿namespace NetBungieAPI.Models.Destiny
 {
     /// <summary>
-    /// Display categories can have custom sort orders. These are the possible options.
+    ///     Display categories can have custom sort orders. These are the possible options.
     /// </summary>
     public enum VendorDisplayCategorySortOrder
     {

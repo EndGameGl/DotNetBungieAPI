@@ -4,13 +4,10 @@ namespace NetBungieAPI.Models.Content
 {
     public sealed record ContentTypeDefaultValue
     {
-        [JsonPropertyName("whenClause")]
-        public string WhenClause { get; init; }
+        [JsonPropertyName("whenClause")] public string WhenClause { get; init; }
 
-        [JsonPropertyName("whenValue")]
-        public string WhenValue { get; init; }
+        [JsonPropertyName("whenValue")] public string WhenValue { get; init; }
 
-        [JsonPropertyName("defaultValue")]
-        public string DefaultValue { get; init; }
+        [JsonPropertyName("defaultValue")] public string DefaultValue { get; init; }
     }
 }

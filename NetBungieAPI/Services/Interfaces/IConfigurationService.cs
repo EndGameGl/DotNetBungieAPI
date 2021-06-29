@@ -1,6 +1,5 @@
-﻿using NetBungieAPI.Clients;
+﻿using System;
 using NetBungieAPI.Clients.Settings;
-using System;
 
 namespace NetBungieAPI.Services.Interfaces
 {

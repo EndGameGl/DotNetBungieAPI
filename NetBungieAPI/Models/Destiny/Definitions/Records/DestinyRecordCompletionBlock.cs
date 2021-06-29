@@ -7,7 +7,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Records
         [JsonPropertyName("ScoreValue")] public int ScoreValue { get; init; }
 
         /// <summary>
-        /// The number of objectives that must be completed before the objective is considered "complete"
+        ///     The number of objectives that must be completed before the objective is considered "complete"
         /// </summary>
         [JsonPropertyName("partialCompletionObjectiveCountThreshold")]
         public int PartialCompletionObjectiveCountThreshold { get; init; }

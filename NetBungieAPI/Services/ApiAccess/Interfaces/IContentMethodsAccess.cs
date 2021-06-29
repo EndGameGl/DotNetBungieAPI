@@ -1,25 +1,25 @@
-﻿using NetBungieAPI.Models;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using NetBungieAPI.Models;
 using NetBungieAPI.Models.Content;
 using NetBungieAPI.Models.Queries;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess.Interfaces
 {
     public interface IContentMethodsAccess
     {
         /// <summary>
-        /// Gets an object describing a particular variant of content.
+        ///     Gets an object describing a particular variant of content.
         /// </summary>
         /// <param name="type">Content type</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<ContentTypeDescription>> GetContentType(
-            string type, 
+            string type,
             CancellationToken token = default);
 
         /// <summary>
-        /// Returns a content item referenced by id
+        ///     Returns a content item referenced by id
         /// </summary>
         /// <param name="id">Content item id</param>
         /// <param name="locale">Locale to return</param>
@@ -33,7 +33,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Returns the newest item that matches a given tag and Content Type.
+        ///     Returns the newest item that matches a given tag and Content Type.
         /// </summary>
         /// <param name="tag">Tag to look up</param>
         /// <param name="type">Content type</param>
@@ -47,7 +47,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        /// Gets content based on querystring information passed in. Provides basic search and text search capabilities.
+        ///     Gets content based on querystring information passed in. Provides basic search and text search capabilities.
         /// </summary>
         /// <param name="locale">Locale to return</param>
         /// <param name="types">Content type tag: Help, News, etc.</param>
@@ -59,15 +59,15 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <returns></returns>
         ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentWithText(
             string locale,
-            string[] types, 
-            string searchtext, 
+            string[] types,
+            string searchtext,
             string source,
             string tag,
             int currentpage = 1,
             CancellationToken token = default);
 
         /// <summary>
-        /// Searches for Content Items that match the given Tag and Content Type.
+        ///     Searches for Content Items that match the given Tag and Content Type.
         /// </summary>
         /// <param name="locale">Locale to return</param>
         /// <param name="tag">Tag to search for</param>
@@ -78,8 +78,8 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentByTagAndType(
             string locale,
             string tag,
-            string type, 
-            int currentpage = 1, 
+            string type,
+            int currentpage = 1,
             CancellationToken token = default);
     }
 }

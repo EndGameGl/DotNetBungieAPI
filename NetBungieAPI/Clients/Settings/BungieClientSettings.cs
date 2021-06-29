@@ -1,10 +1,8 @@
-﻿using NetBungieAPI.Models.Applications;
-using System;
-using System.IO;
+﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
 using NetBungieAPI.Logging;
 using NetBungieAPI.Models;
+using NetBungieAPI.Models.Applications;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Providers;
 
@@ -19,7 +17,7 @@ namespace NetBungieAPI.Clients.Settings
 
 
         /// <summary>
-        /// Adds client API key to config
+        ///     Adds client API key to config
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
@@ -33,7 +31,7 @@ namespace NetBungieAPI.Clients.Settings
         }
 
         /// <summary>
-        /// Adds client ID and secret to config.
+        ///     Adds client ID and secret to config.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="secret"></param>
@@ -51,7 +49,7 @@ namespace NetBungieAPI.Clients.Settings
         }
 
         /// <summary>
-        /// Specifies in which scope should this app work
+        ///     Specifies in which scope should this app work
         /// </summary>
         /// <param name="scopes"></param>
         /// <returns></returns>
@@ -62,7 +60,7 @@ namespace NetBungieAPI.Clients.Settings
         }
 
         /// <summary>
-        /// Enables logging
+        ///     Enables logging
         /// </summary>
         /// <returns></returns>
         public BungieClientSettings EnableLogging(LogListener.NewMessageEvent onLog)
@@ -73,7 +71,7 @@ namespace NetBungieAPI.Clients.Settings
         }
 
         /// <summary>
-        /// Sets up concurrency level for repository.
+        ///     Sets up concurrency level for repository.
         /// </summary>
         /// <param name="level"></param>
         /// <returns></returns>
@@ -87,7 +85,7 @@ namespace NetBungieAPI.Clients.Settings
         }
 
         /// <summary>
-        /// Specifies which locales can be loaded in this app.
+        ///     Specifies which locales can be loaded in this app.
         /// </summary>
         /// <param name="locales"></param>
         /// <returns></returns>
@@ -101,7 +99,7 @@ namespace NetBungieAPI.Clients.Settings
         }
 
         /// <summary>
-        /// Forbids these definitions from loading
+        ///     Forbids these definitions from loading
         /// </summary>
         /// <param name="definitions"></param>
         /// <returns></returns>
@@ -115,7 +113,7 @@ namespace NetBungieAPI.Clients.Settings
         }
 
         /// <summary>
-        /// Premaps all repository definitions after loading
+        ///     Premaps all repository definitions after loading
         /// </summary>
         /// <returns></returns>
         public BungieClientSettings PremapDefinitions()
@@ -125,7 +123,7 @@ namespace NetBungieAPI.Clients.Settings
         }
 
         /// <summary>
-        /// Loads all definitions in memory on startup.
+        ///     Loads all definitions in memory on startup.
         /// </summary>
         /// <returns></returns>
         public BungieClientSettings LoadAllDefinitionsOnStartup(bool waitEverythingToLoad)
@@ -136,7 +134,7 @@ namespace NetBungieAPI.Clients.Settings
         }
 
         /// <summary>
-        /// Specifies definition provider
+        ///     Specifies definition provider
         /// </summary>
         /// <param name="provider"></param>
         /// <returns></returns>
@@ -150,7 +148,7 @@ namespace NetBungieAPI.Clients.Settings
         }
 
         /// <summary>
-        /// Forces app to look up different manifest version available to load
+        ///     Forces app to look up different manifest version available to load
         /// </summary>
         /// <param name="version"></param>
         /// <returns></returns>
@@ -165,7 +163,7 @@ namespace NetBungieAPI.Clients.Settings
         }
 
         /// <summary>
-        /// Sets up how manifest updater will work.
+        ///     Sets up how manifest updater will work.
         /// </summary>
         /// <param name="shouldCheckUpdates"></param>
         /// <param name="keepOldVersions"></param>
@@ -182,7 +180,7 @@ namespace NetBungieAPI.Clients.Settings
             DefinitionLoadingSettings.UsedProvider = new SqliteDefinitionProvider(filePath);
             return this;
         }
-        
+
         internal void AfterConfigurated()
         {
             var assemblyData = StaticUnityContainer.GetAssemblyData();
@@ -195,7 +193,5 @@ namespace NetBungieAPI.Clients.Settings
             if (DefinitionLoadingSettings.UsedProvider is null)
                 throw new Exception("Add UseDefaultProvider to config if you want to use default provider.");
         }
-        
-        
     }
 }

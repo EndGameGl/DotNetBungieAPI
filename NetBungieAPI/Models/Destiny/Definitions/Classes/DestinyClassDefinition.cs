@@ -1,13 +1,14 @@
-﻿using NetBungieAPI.Attributes;
+﻿using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
+using NetBungieAPI.Attributes;
 using NetBungieAPI.Models.Destiny.Definitions.Common;
 using NetBungieAPI.Models.Destiny.Definitions.Genders;
-using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Classes
 {
     /// <summary>
-    /// Defines a Character Class in Destiny 2. These are types of characters you can play, like Titan, Warlock, and Hunter.
+    ///     Defines a Character Class in Destiny 2. These are types of characters you can play, like Titan, Warlock, and
+    ///     Hunter.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyClassDefinition)]
     public sealed record DestinyClassDefinition : IDestinyDefinition, IDeepEquatable<DestinyClassDefinition>
@@ -16,13 +17,15 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Classes
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
         /// <summary>
-        /// In Destiny 1, we added a convenience Enumeration for referring to classes. We've kept it, though mostly for posterity. This is the enum value for this definition's class.
+        ///     In Destiny 1, we added a convenience Enumeration for referring to classes. We've kept it, though mostly for
+        ///     posterity. This is the enum value for this definition's class.
         /// </summary>
         [JsonPropertyName("classType")]
         public DestinyClass ClassType { get; init; }
 
         /// <summary>
-        /// A localized string referring to the singular form of the Class's name when referred to in gendered form. Keyed by the DestinyGender.
+        ///     A localized string referring to the singular form of the Class's name when referred to in gendered form. Keyed by
+        ///     the DestinyGender.
         /// </summary>
         [JsonPropertyName("genderedClassNames")]
         public ReadOnlyDictionary<string, string> GenderedClassNames { get; init; } =
@@ -32,16 +35,6 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Classes
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>
             GenderedClassNamesByGender { get; init; } =
             Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>();
-
-        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")] public uint Hash { get; init; }
-        [JsonPropertyName("index")] public int Index { get; init; }
-        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-        public override string ToString()
-        {
-            return $"{Hash}: {DisplayProperties.Name}";
-        }
 
         public bool DeepEquals(DestinyClassDefinition other)
         {
@@ -58,12 +51,19 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Classes
                    Redacted == other.Redacted;
         }
 
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
         public void MapValues()
         {
-            foreach (var name in GenderedClassNamesByGender)
-            {
-                name.Key.TryMapValue();
-            }
+            foreach (var name in GenderedClassNamesByGender) name.Key.TryMapValue();
+        }
+
+        public override string ToString()
+        {
+            return $"{Hash}: {DisplayProperties.Name}";
         }
     }
 }

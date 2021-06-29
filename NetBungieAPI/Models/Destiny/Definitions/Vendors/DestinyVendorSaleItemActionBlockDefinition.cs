@@ -3,7 +3,7 @@
 namespace NetBungieAPI.Models.Destiny.Definitions.Vendors
 {
     /// <summary>
-    /// Not terribly useful, some basic cooldown interaction info.
+    ///     Not terribly useful, some basic cooldown interaction info.
     /// </summary>
     public sealed record
         DestinyVendorSaleItemActionBlockDefinition : IDeepEquatable<DestinyVendorSaleItemActionBlockDefinition>

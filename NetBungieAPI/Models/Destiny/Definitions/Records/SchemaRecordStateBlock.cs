@@ -1,5 +1,5 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.Unlocks;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.Unlocks;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Records
 {

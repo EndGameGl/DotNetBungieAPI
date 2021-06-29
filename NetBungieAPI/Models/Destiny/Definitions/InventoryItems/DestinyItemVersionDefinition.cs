@@ -1,15 +1,15 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.PowerCaps;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.PowerCaps;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
     /// <summary>
-    /// The version definition currently just holds a reference to the power cap.
+    ///     The version definition currently just holds a reference to the power cap.
     /// </summary>
     public sealed record DestinyItemVersionDefinition : IDeepEquatable<DestinyItemVersionDefinition>
     {
         /// <summary>
-        /// A reference to the power cap for this item version.
+        ///     A reference to the power cap for this item version.
         /// </summary>
         [JsonPropertyName("powerCapHash")]
         public DefinitionHashPointer<DestinyPowerCapDefinition> PowerCap { get; init; } =

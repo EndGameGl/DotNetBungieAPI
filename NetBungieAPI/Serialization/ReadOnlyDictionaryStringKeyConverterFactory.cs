@@ -9,20 +9,14 @@ namespace NetBungieAPI.Serialization
 {
     public class ReadOnlyDictionaryStringKeyConverterFactory : JsonConverterFactory
     {
-        private Type _genericReadOnlyDictType = typeof(ReadOnlyDictionary<,>);
-        private Type _stringType = typeof(string);
+        private readonly Type _genericReadOnlyDictType = typeof(ReadOnlyDictionary<,>);
+        private readonly Type _stringType = typeof(string);
 
         public override bool CanConvert(Type typeToConvert)
         {
-            if (!typeToConvert.IsGenericType)
-            {
-                return false;
-            }
+            if (!typeToConvert.IsGenericType) return false;
 
-            if (typeToConvert.GetGenericTypeDefinition() != _genericReadOnlyDictType)
-            {
-                return false;
-            }
+            if (typeToConvert.GetGenericTypeDefinition() != _genericReadOnlyDictType) return false;
 
             if (typeToConvert.GenericTypeArguments[0] != _stringType)
                 return false;
@@ -35,27 +29,27 @@ namespace NetBungieAPI.Serialization
             var valueType = typeToConvert.GetGenericArguments()[1];
 
             var converter = (JsonConverter) Activator.CreateInstance(
-                typeof(ReadOnlyDictionaryStringKeyConverterFactory.ReadOnlyDictionaryStringKeyConverter<,>)
-                    .MakeGenericType(
-                        new Type[] {_stringType, valueType}),
+                typeof(ReadOnlyDictionaryStringKeyConverter<,>)
+                    .MakeGenericType(_stringType, valueType),
                 BindingFlags.Instance | BindingFlags.Public,
-                binder: null,
-                args: new object[] {options},
-                culture: null);
+                null,
+                new object[] {options},
+                null);
 
             return converter;
         }
 
-        private class ReadOnlyDictionaryStringKeyConverter<TKey, TValue> : JsonConverter<ReadOnlyDictionary<TKey, TValue>>
+        private class
+            ReadOnlyDictionaryStringKeyConverter<TKey, TValue> : JsonConverter<ReadOnlyDictionary<TKey, TValue>>
             where TKey : IConvertible
         {
-            private Type _stringType = typeof(string);
-
-            public override bool HandleNull => true;
+            private readonly Type _stringType = typeof(string);
 
             public ReadOnlyDictionaryStringKeyConverter(JsonSerializerOptions options)
             {
             }
+
+            public override bool HandleNull => true;
 
             public override ReadOnlyDictionary<TKey, TValue> Read(ref Utf8JsonReader reader, Type typeToConvert,
                 JsonSerializerOptions options)
@@ -70,8 +64,8 @@ namespace NetBungieAPI.Serialization
 
                     var key = reader.GetString();
                     tempDictionary.Add(
-                        key: (TKey) Convert.ChangeType(key, _stringType),
-                        value: JsonSerializer.Deserialize<TValue>(ref reader, options)
+                        (TKey) Convert.ChangeType(key, _stringType),
+                        JsonSerializer.Deserialize<TValue>(ref reader, options)
                     );
                 }
 
@@ -83,7 +77,7 @@ namespace NetBungieAPI.Serialization
             {
                 writer.WriteStartObject();
 
-                foreach ((var key, var val) in value)
+                foreach (var (key, val) in value)
                 {
                     var propertyName = key.ToString();
                     writer.WritePropertyName(options.PropertyNamingPolicy?.ConvertName(propertyName) ?? propertyName);

@@ -1,6 +1,6 @@
 ﻿namespace NetBungieAPI.Models.Ignores
 {
-    public enum IgnoreLength : int
+    public enum IgnoreLength
     {
         None = 0,
         Week = 1,

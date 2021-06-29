@@ -1,17 +1,18 @@
-﻿using NetBungieAPI.Attributes;
+﻿using System;
+using System.Text.Json.Serialization;
+using NetBungieAPI.Attributes;
 using NetBungieAPI.Models.Destiny.Definitions.Common;
 using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 using NetBungieAPI.Models.Destiny.Definitions.Progressions;
 using NetBungieAPI.Models.Destiny.Definitions.SeasonPasses;
 using NetBungieAPI.Models.Destiny.Definitions.Unlocks;
-using System;
-using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Seasons
 {
     /// <summary>
-    /// Defines a canonical "Season" of Destiny: a range of a few months where the game highlights certain challenges, provides new loot, has new Clan-related rewards and celebrates various seasonal events.
+    ///     Defines a canonical "Season" of Destiny: a range of a few months where the game highlights certain challenges,
+    ///     provides new loot, has new Clan-related rewards and celebrates various seasonal events.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinySeasonDefinition)]
     public sealed record DestinySeasonDefinition : IDestinyDefinition, IDeepEquatable<DestinySeasonDefinition>
@@ -57,30 +58,10 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Seasons
         public string StartTimeInSeconds { get; init; }
 
         /// <summary>
-        /// Optional - Defines the promotional text, images, and links to preview this season.
+        ///     Optional - Defines the promotional text, images, and links to preview this season.
         /// </summary>
         [JsonPropertyName("preview")]
         public DestinySeasonPreviewDefinition Preview { get; init; }
-
-        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")] public uint Hash { get; init; }
-        [JsonPropertyName("index")] public int Index { get; init; }
-        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-        public override string ToString()
-        {
-            return $"{Hash} {DisplayProperties.Name}";
-        }
-
-        public void MapValues()
-        {
-            ArtifactItem.TryMapValue();
-            SealPresentationNode.TryMapValue();
-            SeasonalChallengesPresentationNode.TryMapValue();
-            SeasonPass.TryMapValue();
-            SeasonPassProgression.TryMapValue();
-            SeasonPassUnlock.TryMapValue();
-        }
 
         public bool DeepEquals(DestinySeasonDefinition other)
         {
@@ -102,6 +83,26 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Seasons
                    Hash == other.Hash &&
                    Index == other.Index &&
                    Redacted == other.Redacted;
+        }
+
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+        public void MapValues()
+        {
+            ArtifactItem.TryMapValue();
+            SealPresentationNode.TryMapValue();
+            SeasonalChallengesPresentationNode.TryMapValue();
+            SeasonPass.TryMapValue();
+            SeasonPassProgression.TryMapValue();
+            SeasonPassUnlock.TryMapValue();
+        }
+
+        public override string ToString()
+        {
+            return $"{Hash} {DisplayProperties.Name}";
         }
     }
 }

@@ -10,8 +10,8 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
 {
     public class UserScopedAppMethodsAccess
     {
-        private IAppMethodsAccess _apiAccess;
-        private AuthorizationTokenData _token;
+        private readonly IAppMethodsAccess _apiAccess;
+        private readonly AuthorizationTokenData _token;
 
         internal UserScopedAppMethodsAccess(
             IAppMethodsAccess access,
@@ -28,10 +28,10 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
         }
 
         public async ValueTask<BungieResponse<ApiUsage>> GetApplicationApiUsage(
-            AuthorizationTokenData authToken, 
-            int applicationId, 
-            DateTime? start = null, 
-            DateTime? end = null, 
+            AuthorizationTokenData authToken,
+            int applicationId,
+            DateTime? start = null,
+            DateTime? end = null,
             CancellationToken token = default)
         {
             return await _apiAccess.GetApplicationApiUsage(_token, applicationId, start, end, token);

@@ -25,7 +25,7 @@ namespace NetBungieAPI.Services
             },
             NumberHandling = JsonNumberHandling.AllowReadingFromString,
             WriteIndented = true,
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
         };
 
         public async Task<object> DeserializeAsync(byte[] data, Type type)
@@ -44,7 +44,7 @@ namespace NetBungieAPI.Services
         {
             return await JsonSerializer.DeserializeAsync(data, type, Options);
         }
-        
+
         public async Task<T> DeserializeAsync<T>(Stream data)
         {
             return await JsonSerializer.DeserializeAsync<T>(data, Options);
@@ -54,7 +54,7 @@ namespace NetBungieAPI.Services
         {
             return JsonSerializer.Deserialize(json, type, Options);
         }
-        
+
         public object Deserialize(ReadOnlySpan<byte> data, Type type)
         {
             return JsonSerializer.Deserialize(data, type, Options);
@@ -64,7 +64,7 @@ namespace NetBungieAPI.Services
         {
             return JsonSerializer.Deserialize<T>(json, Options);
         }
-        
+
         public T Deserialize<T>(byte[] data)
         {
             return JsonSerializer.Deserialize<T>(data, Options);
@@ -79,11 +79,5 @@ namespace NetBungieAPI.Services
         {
             await JsonSerializer.SerializeAsync(stream, data, Options);
         }
-        public JsonSerializationHelper()
-        {
-            
-        }
-        
-        
     }
 }

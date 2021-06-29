@@ -1,15 +1,15 @@
-﻿using NetBungieAPI.Repositories;
-using System;
+﻿using System;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
-using System.Text.Json.Serialization;
+using NetBungieAPI.Repositories;
+using NetBungieAPI.Services.ApiAccess.Interfaces;
 
 namespace NetBungieAPI
 {
     /// <summary>
-    /// Class that points to a certain definition in database
+    ///     Class that points to a certain definition in database
     /// </summary>
     /// <typeparam name="T">Destiny definition type</typeparam>
     public sealed class DefinitionHashPointer<T> : IDeepEquatable<DefinitionHashPointer<T>> where T : IDestinyDefinition
@@ -40,12 +40,12 @@ namespace NetBungieAPI
             new(() => new DefinitionHashPointer<T>(null));
 
         /// <summary>
-        /// Definition enum value
+        ///     Definition enum value
         /// </summary>
         public static DefinitionsEnum EnumValue => _lazyEnumValue.Value;
 
         /// <summary>
-        /// Empty pointer
+        ///     Empty pointer
         /// </summary>
         public static DefinitionHashPointer<T> Empty => _lazyEmptyPointer.Value;
 
@@ -53,28 +53,28 @@ namespace NetBungieAPI
         private T _value;
 
         /// <summary>
-        /// Definition hash, guaranteed to be unique across it's type.
+        ///     Definition hash, guaranteed to be unique across it's type.
         /// </summary>
         public uint? Hash { get; }
 
         /// <summary>
-        /// Definition type enum value
+        ///     Definition type enum value
         /// </summary>
         public DefinitionsEnum DefinitionEnumType => EnumValue;
 
         /// <summary>
-        /// Definition locale
+        ///     Definition locale
         /// </summary>
         public BungieLocales Locale { get; }
 
         /// <summary>
-        /// Whether this hash isn't empty.
+        ///     Whether this hash isn't empty.
         /// </summary>
         [JsonIgnore]
         public bool HasValidHash => Hash is > 0;
 
         /// <summary>
-        /// .ctor
+        ///     .ctor
         /// </summary>
         /// <param name="hash">Definition hash</param>
         public DefinitionHashPointer(uint? hash)
@@ -86,7 +86,7 @@ namespace NetBungieAPI
         }
 
         /// <summary>
-        /// Tries to get definition from local cache/API
+        ///     Tries to get definition from local cache/API
         /// </summary>
         /// <param name="definition">Found definition</param>
         /// <returns>True, if found, False otherwise</returns>
@@ -111,7 +111,7 @@ namespace NetBungieAPI
         }
 
         /// <summary>
-        /// Attempts to get definition from bungie.net
+        ///     Attempts to get definition from bungie.net
         /// </summary>
         /// <returns></returns>
         public async ValueTask<DefinitionHashPointerDownloadResult<T>> TryDownloadDefinition()

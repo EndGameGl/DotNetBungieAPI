@@ -1,19 +1,16 @@
-﻿using NetBungieAPI.Attributes;
-using NetBungieAPI.Models.Destiny;
-using NetBungieAPI.Repositories;
-using NetBungieAPI.Services.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using NetBungieAPI.Attributes;
+using NetBungieAPI.Models.Destiny;
+using NetBungieAPI.Repositories;
+using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Services
 {
     public class DefinitionAssemblyData : IDefinitionAssemblyData
     {
-        public Dictionary<DefinitionsEnum, DefinitionUseRule> DefinitionsToTypeMapping { get; private set; }
-        public Dictionary<Type, DefinitionsEnum> TypeToEnumMapping { get; private set; }
-
         public DefinitionAssemblyData()
         {
             DefinitionsToTypeMapping = new Dictionary<DefinitionsEnum, DefinitionUseRule>();
@@ -28,11 +25,11 @@ namespace NetBungieAPI.Services
             {
                 var definitionAttribute =
                     type.GetCustomAttribute(
-                            attributeType: typeof(DestinyDefinitionAttribute),
-                            inherit: true)
+                            typeof(DestinyDefinitionAttribute),
+                            true)
                         as DestinyDefinitionAttribute;
                 var enumValue = definitionAttribute.DefinitionEnumType;
-                var useRule = new DefinitionUseRule()
+                var useRule = new DefinitionUseRule
                 {
                     DefinitionType = type,
                     AttributeData = definitionAttribute
@@ -41,5 +38,8 @@ namespace NetBungieAPI.Services
                 TypeToEnumMapping.Add(useRule.DefinitionType, enumValue);
             }
         }
+
+        public Dictionary<DefinitionsEnum, DefinitionUseRule> DefinitionsToTypeMapping { get; }
+        public Dictionary<Type, DefinitionsEnum> TypeToEnumMapping { get; }
     }
 }

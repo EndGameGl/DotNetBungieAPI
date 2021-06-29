@@ -1,7 +1,7 @@
 ﻿namespace NetBungieAPI.Models.Destiny
 {
     /// <summary>
-    /// The action that happens when the user attempts to refund an item.
+    ///     The action that happens when the user attempts to refund an item.
     /// </summary>
     public enum DestinyVendorItemRefundPolicy
     {

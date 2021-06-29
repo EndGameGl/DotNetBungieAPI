@@ -1,5 +1,5 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.Objectives;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.Objectives;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Records
 {

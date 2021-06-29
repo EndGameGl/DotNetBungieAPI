@@ -3,7 +3,7 @@
 namespace NetBungieAPI.Models.Destiny.Definitions.Records
 {
     /// <summary>
-    /// If this record has an expiration after which it cannot be earned, this is some information about that expiration.
+    ///     If this record has an expiration after which it cannot be earned, this is some information about that expiration.
     /// </summary>
     public sealed record DestinyRecordExpirationBlock : IDeepEquatable<DestinyRecordExpirationBlock>
     {

@@ -5,7 +5,7 @@
         None = 0,
 
         /// <summary>
-        /// Insert plugs into sockets.
+        ///     Insert plugs into sockets.
         /// </summary>
         InsertPlugs = 1
     }

@@ -1,10 +1,11 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Vendors
 {
     /// <summary>
-    /// The details of an overlay prompt to show to a user. They are all fairly self-explanatory localized strings that can be shown.
+    ///     The details of an overlay prompt to show to a user. They are all fairly self-explanatory localized strings that can
+    ///     be shown.
     /// </summary>
     public sealed record DestinyVendorCategoryOverlayDefinition : IDeepEquatable<DestinyVendorCategoryOverlayDefinition>
     {
@@ -16,7 +17,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Vendors
         [JsonPropertyName("title")] public string Title { get; init; }
 
         /// <summary>
-        /// If this overlay has a currency item that it features, this is said featured item.
+        ///     If this overlay has a currency item that it features, this is said featured item.
         /// </summary>
         [JsonPropertyName("currencyItemHash")]
         public DefinitionHashPointer<DestinyInventoryItemDefinition> CurrencyItem { get; init; } =

@@ -10,22 +10,17 @@ namespace NetBungieAPI.Serialization
 {
     public class ReadOnlyDictionaryDefinitionPointerKeyConverterFactory : JsonConverterFactory
     {
-        private Type _genericReadOnlyDictType = typeof(ReadOnlyDictionary<,>);
-        private Type _definitionPointerType = typeof(DefinitionHashPointer<>);
-        
+        private readonly Type _definitionPointerType = typeof(DefinitionHashPointer<>);
+        private readonly Type _genericReadOnlyDictType = typeof(ReadOnlyDictionary<,>);
+
         public override bool CanConvert(Type typeToConvert)
         {
-            if (!typeToConvert.IsGenericType)
-            {
-                return false;
-            }
+            if (!typeToConvert.IsGenericType) return false;
 
-            if (typeToConvert.GetGenericTypeDefinition() != _genericReadOnlyDictType)
-            {
-                return false;
-            }
+            if (typeToConvert.GetGenericTypeDefinition() != _genericReadOnlyDictType) return false;
 
-            if (!typeToConvert.GenericTypeArguments[0].IsGenericType || typeToConvert.GenericTypeArguments[0].GetGenericTypeDefinition() != _definitionPointerType)
+            if (!typeToConvert.GenericTypeArguments[0].IsGenericType ||
+                typeToConvert.GenericTypeArguments[0].GetGenericTypeDefinition() != _definitionPointerType)
                 return false;
 
             return true;
@@ -39,14 +34,12 @@ namespace NetBungieAPI.Serialization
                 var valueType = typeToConvert.GetGenericArguments()[1];
 
 
-
                 var converter = (JsonConverter) Activator.CreateInstance(
-                    typeof(ReadOnlyDictionaryDefinitionKeyConverter<,>).MakeGenericType(
-                        new Type[] {keyType, valueType}),
+                    typeof(ReadOnlyDictionaryDefinitionKeyConverter<,>).MakeGenericType(keyType, valueType),
                     BindingFlags.Instance | BindingFlags.Public,
-                    binder: null,
-                    args: new object[] {options},
-                    culture: null);
+                    null,
+                    new object[] {options},
+                    null);
 
                 return converter;
             }
@@ -55,18 +48,24 @@ namespace NetBungieAPI.Serialization
                 return null;
             }
         }
-        
-        private class ReadOnlyDictionaryDefinitionKeyConverter<TKey, TValue> : JsonConverter<ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue>> where TKey : IDestinyDefinition
+
+        private class
+            ReadOnlyDictionaryDefinitionKeyConverter<TKey, TValue> : JsonConverter<
+                ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue>> where TKey : IDestinyDefinition
         {
-            public override bool HandleNull => true;
             public ReadOnlyDictionaryDefinitionKeyConverter(JsonSerializerOptions options)
             {
             }
-            public override ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+
+            public override bool HandleNull => true;
+
+            public override ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue> Read(ref Utf8JsonReader reader,
+                Type typeToConvert, JsonSerializerOptions options)
             {
                 if (reader.TokenType == JsonTokenType.Null)
                     return Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue>();
-                IDictionary<DefinitionHashPointer<TKey>, TValue> tempDictionary = new Dictionary<DefinitionHashPointer<TKey>, TValue>();
+                IDictionary<DefinitionHashPointer<TKey>, TValue> tempDictionary =
+                    new Dictionary<DefinitionHashPointer<TKey>, TValue>();
                 while (reader.Read())
                 {
                     if (reader.TokenType == JsonTokenType.EndObject)
@@ -74,20 +73,21 @@ namespace NetBungieAPI.Serialization
 
                     var key = reader.GetString();
                     if (uint.TryParse(key, out var parsedKey))
-                    {
                         tempDictionary.Add(
-                            key: new DefinitionHashPointer<TKey>(parsedKey),
-                            value: JsonSerializer.Deserialize<TValue>(ref reader, options)
+                            new DefinitionHashPointer<TKey>(parsedKey),
+                            JsonSerializer.Deserialize<TValue>(ref reader, options)
                         );
-                    }
                 }
+
                 throw new JsonException();
             }
-            public override void Write(Utf8JsonWriter writer, ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue> value, JsonSerializerOptions options)
+
+            public override void Write(Utf8JsonWriter writer,
+                ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue> value, JsonSerializerOptions options)
             {
                 writer.WriteStartObject();
 
-                foreach ((var key, var val) in value)
+                foreach (var (key, val) in value)
                 {
                     var propertyName = key.Hash.ToString();
                     writer.WritePropertyName(propertyName);

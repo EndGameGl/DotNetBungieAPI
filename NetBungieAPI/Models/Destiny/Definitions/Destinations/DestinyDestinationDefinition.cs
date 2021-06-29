@@ -1,16 +1,19 @@
-﻿using NetBungieAPI.Attributes;
+﻿using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
+using NetBungieAPI.Attributes;
 using NetBungieAPI.Models.Destiny.Definitions.Activities;
 using NetBungieAPI.Models.Destiny.Definitions.Common;
 using NetBungieAPI.Models.Destiny.Definitions.Places;
-using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Destinations
 {
     /// <summary>
-    /// On to one of the more confusing subjects of the API. What is a Destination, and what is the relationship between it, Activities, Locations, and Places?
-    /// <para />
-    /// A "Destination" is a specific region/city/area of a larger "Place". For instance, a Place might be Earth where a Destination might be Bellevue, Washington. (Please, pick a more interesting destination if you come to visit Earth).
+    ///     On to one of the more confusing subjects of the API. What is a Destination, and what is the relationship between
+    ///     it, Activities, Locations, and Places?
+    ///     <para />
+    ///     A "Destination" is a specific region/city/area of a larger "Place". For instance, a Place might be Earth where a
+    ///     Destination might be Bellevue, Washington. (Please, pick a more interesting destination if you come to visit
+    ///     Earth).
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyDestinationDefinition)]
     public sealed record DestinyDestinationDefinition : IDestinyDefinition, IDeepEquatable<DestinyDestinationDefinition>
@@ -19,42 +22,35 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Destinations
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
         /// <summary>
-        /// The place that "owns" this Destination.
+        ///     The place that "owns" this Destination.
         /// </summary>
         [JsonPropertyName("placeHash")]
         public DefinitionHashPointer<DestinyPlaceDefinition> Place { get; init; } =
             DefinitionHashPointer<DestinyPlaceDefinition>.Empty;
 
         /// <summary>
-        /// If this Destination has a default Free-Roam activity, this is the Activity. 
+        ///     If this Destination has a default Free-Roam activity, this is the Activity.
         /// </summary>
         [JsonPropertyName("defaultFreeroamActivityHash")]
         public DefinitionHashPointer<DestinyActivityDefinition> DefaultFreeroamActivity { get; init; } =
             DefinitionHashPointer<DestinyActivityDefinition>.Empty;
 
         /// <summary>
-        /// If the Destination has default Activity Graphs (i.e. "Map") that should be shown in the director, this is the list of those Graphs. At most, only one should be active at any given time for a Destination: these would represent, for example, different variants on a Map if the Destination is changing on a macro level based on game state.
+        ///     If the Destination has default Activity Graphs (i.e. "Map") that should be shown in the director, this is the list
+        ///     of those Graphs. At most, only one should be active at any given time for a Destination: these would represent, for
+        ///     example, different variants on a Map if the Destination is changing on a macro level based on game state.
         /// </summary>
         [JsonPropertyName("activityGraphEntries")]
         public ReadOnlyCollection<DestinyActivityGraphListEntryDefinition> ActivityGraphEntries { get; init; } =
             Defaults.EmptyReadOnlyCollection<DestinyActivityGraphListEntryDefinition>();
 
         /// <summary>
-        /// This provides the unique identifiers for every bubble in the destination (only guaranteed unique within the destination), and any intrinsic properties of the bubble.
+        ///     This provides the unique identifiers for every bubble in the destination (only guaranteed unique within the
+        ///     destination), and any intrinsic properties of the bubble.
         /// </summary>
         [JsonPropertyName("bubbles")]
         public ReadOnlyCollection<DestinyBubbleDefinition> Bubbles { get; init; } =
             Defaults.EmptyReadOnlyCollection<DestinyBubbleDefinition>();
-
-        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")] public uint Hash { get; init; }
-        [JsonPropertyName("index")] public int Index { get; init; }
-        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-        public override string ToString()
-        {
-            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-        }
 
         public bool DeepEquals(DestinyDestinationDefinition other)
         {
@@ -71,15 +67,22 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Destinations
                    Redacted == other.Redacted;
         }
 
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
         public void MapValues()
         {
-            foreach (var activityGraphEntry in ActivityGraphEntries)
-            {
-                activityGraphEntry.ActivityGraph.TryMapValue();
-            }
+            foreach (var activityGraphEntry in ActivityGraphEntries) activityGraphEntry.ActivityGraph.TryMapValue();
 
             DefaultFreeroamActivity.TryMapValue();
             Place.TryMapValue();
+        }
+
+        public override string ToString()
+        {
+            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
     }
 }

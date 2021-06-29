@@ -5,11 +5,11 @@ namespace NetBungieAPI.Providers
 {
     public class ProviderUnsupportedException : Exception
     {
-        public DefinitionsEnum EnumValue { get; }
-        
         public ProviderUnsupportedException(string message, DefinitionsEnum enumValue) : base(message)
         {
             EnumValue = enumValue;
         }
+
+        public DefinitionsEnum EnumValue { get; }
     }
 }

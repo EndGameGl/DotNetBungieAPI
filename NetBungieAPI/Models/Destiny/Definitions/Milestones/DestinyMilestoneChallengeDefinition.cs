@@ -1,12 +1,12 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.Objectives;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.Objectives;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Milestones
 {
     public sealed record DestinyMilestoneChallengeDefinition : IDeepEquatable<DestinyMilestoneChallengeDefinition>
     {
         /// <summary>
-        /// The challenge related to this milestone.
+        ///     The challenge related to this milestone.
         /// </summary>
         [JsonPropertyName("challengeObjectiveHash")]
         public DefinitionHashPointer<DestinyObjectiveDefinition> ChallengeObjective { get; init; } =

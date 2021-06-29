@@ -1,15 +1,4 @@
-﻿using NetBungieAPI.Models;
-using NetBungieAPI.Models.Destiny;
-using NetBungieAPI.Models.Destiny.Config;
-using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
-using NetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
-using NetBungieAPI.Models.Destiny.Milestones;
-using NetBungieAPI.Models.Destiny.Responses;
-using NetBungieAPI.Models.Queries;
-using NetBungieAPI.Models.User;
-using NetBungieAPI.Services.ApiAccess.Interfaces;
-using NetBungieAPI.Services.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -18,18 +7,29 @@ using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
 using NetBungieAPI.Exceptions;
+using NetBungieAPI.Models;
 using NetBungieAPI.Models.Applications;
+using NetBungieAPI.Models.Destiny;
+using NetBungieAPI.Models.Destiny.Config;
+using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
+using NetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using NetBungieAPI.Models.Destiny.HistoricalStats;
+using NetBungieAPI.Models.Destiny.Milestones;
+using NetBungieAPI.Models.Destiny.Responses;
+using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Models.Requests;
 using NetBungieAPI.Models.Responses;
+using NetBungieAPI.Models.User;
+using NetBungieAPI.Services.ApiAccess.Interfaces;
+using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Services.ApiAccess
 {
     public class Destiny2MethodsAccess : IDestiny2MethodsAccess
     {
+        private readonly IConfigurationService _configuration;
         private readonly IHttpClientInstance _httpClient;
         private readonly IJsonSerializationHelper _serializationHelper;
-        private readonly IConfigurationService _configuration;
 
         internal Destiny2MethodsAccess(IHttpClientInstance httpClient, IJsonSerializationHelper serializationHelper,
             IConfigurationService configurationService)
@@ -110,7 +110,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("components", componentTypes.ComponentsToIntString())
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<DestinyProfileResponse>(url, token,
-                authToken: authData?.AccessToken);
+                authData?.AccessToken);
         }
 
         public async ValueTask<BungieResponse<DestinyCharacterResponse>> GetCharacter(
@@ -136,7 +136,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
 
             return await _httpClient.GetFromBungieNetPlatform<DestinyCharacterResponse>(url, token,
-                authToken: authData?.AccessToken);
+                authData?.AccessToken);
         }
 
         public async ValueTask<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(
@@ -171,7 +171,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("components", componentTypes.ComponentsToIntString())
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<DestinyItemResponse>(url, token,
-                authToken: authData?.AccessToken);
+                authData?.AccessToken);
         }
 
         public async ValueTask<BungieResponse<DestinyVendorsResponse>> GetVendors(
@@ -194,7 +194,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("components", componentTypes.ComponentsToIntString())
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<DestinyVendorsResponse>(url, token,
-                authToken: authData?.AccessToken);
+                authData?.AccessToken);
         }
 
         public async ValueTask<BungieResponse<DestinyVendorResponse>> GetVendor(
@@ -219,7 +219,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("components", componentTypes.ComponentsToIntString())
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<DestinyVendorResponse>(url, token,
-                authToken: authData?.AccessToken);
+                authData?.AccessToken);
         }
 
         public async ValueTask<BungieResponse<DestinyPublicVendorsResponse>> GetPublicVendors(
@@ -257,7 +257,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("components", componentTypes.ComponentsToIntString())
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<DestinyCollectibleNodeDetailResponse>(url, token,
-                authToken: authData?.AccessToken);
+                authData?.AccessToken);
         }
 
         public async ValueTask<BungieResponse<int>> TransferItem(
@@ -403,7 +403,7 @@ namespace NetBungieAPI.Services.ApiAccess
         {
             return await _httpClient
                 .GetFromBungieNetPlatform<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>>(
-                    $"/Destiny2/Stats/Definition/", token);
+                    "/Destiny2/Stats/Definition/", token);
         }
 
         public async ValueTask<BungieResponse<
@@ -611,7 +611,7 @@ namespace NetBungieAPI.Services.ApiAccess
             CancellationToken token = default)
         {
             return await _httpClient.GetFromBungieNetPlatform<Dictionary<uint, DestinyPublicMilestone>>(
-                $"/Destiny2/Milestones", token);
+                "/Destiny2/Milestones", token);
         }
 
         public async ValueTask<BungieResponse<DestinyMilestoneContent>> GetPublicMilestoneContent(

@@ -3,28 +3,28 @@
 namespace NetBungieAPI
 {
     /// <summary>
-    /// Result of definition download operation 
+    ///     Result of definition download operation
     /// </summary>
     /// <typeparam name="T">IDestinyDefinition</typeparam>
     public struct DefinitionHashPointerDownloadResult<T> where T : IDestinyDefinition
     {
         /// <summary>
-        /// Definition value
+        ///     Definition value
         /// </summary>
         public T Result { get; }
 
         /// <summary>
-        /// Whether download succeed
+        ///     Whether download succeed
         /// </summary>
         public bool DidSucceed { get; }
 
         /// <summary>
-        /// Error, if failed to download
+        ///     Error, if failed to download
         /// </summary>
         public string ErrorMessage { get; }
 
         /// <summary>
-        /// .ctor
+        ///     .ctor
         /// </summary>
         /// <param name="result"></param>
         /// <param name="didSucceed"></param>

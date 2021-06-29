@@ -2,9 +2,8 @@
 
 namespace NetBungieAPI.Models.Destiny.Components
 {
-    public sealed  record SingleComponentResponseOfDestinyItemRenderComponent : ComponentResponse
+    public sealed record SingleComponentResponseOfDestinyItemRenderComponent : ComponentResponse
     {
-        [JsonPropertyName("data")]
-        public DestinyItemRenderComponent Data { get; init; }
+        [JsonPropertyName("data")] public DestinyItemRenderComponent Data { get; init; }
     }
 }

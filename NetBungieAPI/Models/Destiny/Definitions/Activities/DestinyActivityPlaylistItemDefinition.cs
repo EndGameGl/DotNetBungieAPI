@@ -1,43 +1,44 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Activities
 {
     /// <summary>
-    /// If the activity is a playlist, this is the definition for a specific entry in the playlist: a single possible combination of Activity and Activity Mode that can be chosen.
+    ///     If the activity is a playlist, this is the definition for a specific entry in the playlist: a single possible
+    ///     combination of Activity and Activity Mode that can be chosen.
     /// </summary>
     public sealed record DestinyActivityPlaylistItemDefinition : IDeepEquatable<DestinyActivityPlaylistItemDefinition>
     {
         /// <summary>
-        /// DestinyActivityDefinition that can be played.
+        ///     DestinyActivityDefinition that can be played.
         /// </summary>
         [JsonPropertyName("activityHash")]
         public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; init; } =
             DefinitionHashPointer<DestinyActivityDefinition>.Empty;
 
         /// <summary>
-        /// If this playlist entry had an activity mode directly defined on it, this will be the that mode.
+        ///     If this playlist entry had an activity mode directly defined on it, this will be the that mode.
         /// </summary>
         [JsonPropertyName("directActivityModeHash")]
         public DefinitionHashPointer<DestinyActivityDefinition> DirectActivityMode { get; init; } =
             DefinitionHashPointer<DestinyActivityDefinition>.Empty;
 
         /// <summary>
-        /// If the playlist entry had an activity mode directly defined on it, this will be the enum value of that mode.
+        ///     If the playlist entry had an activity mode directly defined on it, this will be the enum value of that mode.
         /// </summary>
         [JsonPropertyName("directActivityModeType")]
         public DestinyActivityModeType? DirectActivityModeType { get; init; }
 
         /// <summary>
-        /// Activity Modes relevant to this entry.
+        ///     Activity Modes relevant to this entry.
         /// </summary>
         [JsonPropertyName("activityModeHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>> ActivityModes { get; init; } =
             Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>>();
 
         /// <summary>
-        /// The activity modes - if any - in enum form. Because we can't seem to escape the enums.
+        ///     The activity modes - if any - in enum form. Because we can't seem to escape the enums.
         /// </summary>
         [JsonPropertyName("activityModeTypes")]
         public ReadOnlyCollection<DestinyActivityModeType> ActivityModeTypes { get; init; } =

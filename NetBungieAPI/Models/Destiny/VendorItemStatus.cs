@@ -3,7 +3,8 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny
 {
-    [Flags, JsonConverter(typeof(JsonStringEnumConverter))]
+    [Flags]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum VendorItemStatus
     {
         Success = 0,

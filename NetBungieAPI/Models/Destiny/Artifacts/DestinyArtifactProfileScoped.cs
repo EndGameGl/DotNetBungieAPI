@@ -1,13 +1,14 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.Artifacts;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.Artifacts;
 using NetBungieAPI.Models.Destiny.Progressions;
-using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Artifacts
 {
     /// <summary>
-    /// Represents a Seasonal Artifact and all data related to it for the requested Account.
-    /// <para/>
-    /// It can be combined with Character-scoped data for a full picture of what a character has available/has chosen, or just these settings can be used for overview information.
+    ///     Represents a Seasonal Artifact and all data related to it for the requested Account.
+    ///     <para />
+    ///     It can be combined with Character-scoped data for a full picture of what a character has available/has chosen, or
+    ///     just these settings can be used for overview information.
     /// </summary>
     public sealed record DestinyArtifactProfileScoped
     {

@@ -1,13 +1,13 @@
 ﻿using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Forum;
 using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Models.Tags;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess
 {
@@ -24,11 +24,11 @@ namespace NetBungieAPI.Services.ApiAccess
 
         public async ValueTask<BungieResponse<PostSearchResponse>> GetTopicsPaged(
             ForumPostCategoryEnums categoryFilter,
-            ForumTopicsQuickDateEnum quickDate, 
+            ForumTopicsQuickDateEnum quickDate,
             ForumTopicsSortEnum sort, long group,
             int pageSize = 0,
-            int page = 0, 
-            string tagstring = null, 
+            int page = 0,
+            string tagstring = null,
             BungieLocales[] locales = null,
             CancellationToken token = default)
         {
@@ -49,10 +49,10 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<PostSearchResponse>> GetCoreTopicsPaged(
-            ForumPostCategoryEnums categoryFilter, 
-            ForumTopicsQuickDateEnum quickDate, 
+            ForumPostCategoryEnums categoryFilter,
+            ForumTopicsQuickDateEnum quickDate,
             ForumTopicsSortEnum sort,
-            int page = 0, 
+            int page = 0,
             BungieLocales[] locales = null,
             CancellationToken token = default)
         {
@@ -73,11 +73,11 @@ namespace NetBungieAPI.Services.ApiAccess
             bool getParentPost,
             int page,
             int pageSize,
-            long parentPostId, 
-            int replySize, 
-            bool rootThreadMode, 
+            long parentPostId,
+            int replySize,
+            bool rootThreadMode,
             ForumTopicsSortEnum sortMode,
-            bool? showbanned = null, 
+            bool? showbanned = null,
             CancellationToken token = default)
         {
             var url = StringBuilderPool
@@ -98,12 +98,12 @@ namespace NetBungieAPI.Services.ApiAccess
 
         public async ValueTask<BungieResponse<PostSearchResponse>> GetPostsThreadedPagedFromChild(
             int page,
-            int pageSize, 
-            long childPostId, 
+            int pageSize,
+            long childPostId,
             int replySize,
             bool rootThreadMode,
             ForumTopicsSortEnum sortMode,
-            bool? showbanned = null, 
+            bool? showbanned = null,
             CancellationToken token = default)
         {
             var url = StringBuilderPool
@@ -196,7 +196,7 @@ namespace NetBungieAPI.Services.ApiAccess
         {
             await using var stream = new MemoryStream();
             await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient.PostToBungieNetPlatform<ForumRecruitmentDetail[]>($"/Forum/Recruit/Summaries/",
+            return await _httpClient.PostToBungieNetPlatform<ForumRecruitmentDetail[]>("/Forum/Recruit/Summaries/",
                 token, stream);
         }
     }

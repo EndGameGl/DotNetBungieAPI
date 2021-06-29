@@ -1,5 +1,5 @@
-﻿using NetBungieAPI.Models.GroupsV2;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Models.GroupsV2;
 
 namespace NetBungieAPI.Models.Queries
 {
@@ -17,7 +17,6 @@ namespace NetBungieAPI.Models.Queries
         [JsonPropertyName("UpdateBannerPermissionOverride")]
         public bool? UpdateBannerPermissionOverride { get; init; } = null;
 
-        [JsonPropertyName("JoinLevel")]
-        public RuntimeGroupMemberType? JoinLevel { get; init; } = null;
+        [JsonPropertyName("JoinLevel")] public RuntimeGroupMemberType? JoinLevel { get; init; } = null;
     }
 }

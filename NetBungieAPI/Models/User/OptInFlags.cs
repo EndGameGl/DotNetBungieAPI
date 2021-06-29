@@ -3,7 +3,8 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.User
 {
-    [Flags, JsonConverter(typeof(JsonStringEnumConverter))]
+    [Flags]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum OptInFlags : long
     {
         None = 0,

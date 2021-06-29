@@ -10,7 +10,7 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
 {
     public class UserScopedTrendingMethodsAccess
     {
-        private ITrendingMethodsAccess _apiAccess;
+        private readonly ITrendingMethodsAccess _apiAccess;
         private AuthorizationTokenData _token;
 
         internal UserScopedTrendingMethodsAccess(

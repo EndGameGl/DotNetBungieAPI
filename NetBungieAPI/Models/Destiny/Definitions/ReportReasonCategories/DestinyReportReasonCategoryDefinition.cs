@@ -1,14 +1,17 @@
-﻿using NetBungieAPI.Attributes;
-using NetBungieAPI.Models.Destiny.Definitions.Common;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using NetBungieAPI.Attributes;
+using NetBungieAPI.Models.Destiny.Definitions.Common;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.ReportReasonCategories
 {
     /// <summary>
-    /// If you're going to report someone for a Terms of Service violation, you need to choose a category and reason for the report. This definition holds both the categories and the reasons within those categories, for simplicity and my own laziness' sake.
-    /// <para/>
-    /// Note tha this means that, to refer to a Reason by reasonHash, you need a combination of the reasonHash *and* the associated ReasonCategory's hash: there are some reasons defined under multiple categories.
+    ///     If you're going to report someone for a Terms of Service violation, you need to choose a category and reason for
+    ///     the report. This definition holds both the categories and the reasons within those categories, for simplicity and
+    ///     my own laziness' sake.
+    ///     <para />
+    ///     Note tha this means that, to refer to a Reason by reasonHash, you need a combination of the reasonHash *and* the
+    ///     associated ReasonCategory's hash: there are some reasons defined under multiple categories.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyReportReasonCategoryDefinition)]
     public sealed record DestinyReportReasonCategoryDefinition : IDestinyDefinition,
@@ -18,22 +21,11 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ReportReasonCategories
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
         /// <summary>
-        /// The specific reasons for the report under this category.
+        ///     The specific reasons for the report under this category.
         /// </summary>
         [JsonPropertyName("reasons")]
         public ReadOnlyDictionary<uint, DestinyReportReasonDefinition> Reasons { get; init; } =
             Defaults.EmptyReadOnlyDictionary<uint, DestinyReportReasonDefinition>();
-
-        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")] public uint Hash { get; init; }
-        [JsonPropertyName("index")] public int Index { get; init; }
-        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-
-        public override string ToString()
-        {
-            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-        }
 
         public bool DeepEquals(DestinyReportReasonCategoryDefinition other)
         {
@@ -46,8 +38,19 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ReportReasonCategories
                    Redacted == other.Redacted;
         }
 
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
         public void MapValues()
         {
+        }
+
+
+        public override string ToString()
+        {
+            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
     }
 }

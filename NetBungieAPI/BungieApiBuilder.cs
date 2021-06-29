@@ -1,7 +1,7 @@
-﻿using NetBungieAPI.Clients;
-using NetBungieAPI.Clients.Settings;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using NetBungieAPI.Clients;
+using NetBungieAPI.Clients.Settings;
 
 namespace NetBungieAPI
 {
@@ -19,7 +19,7 @@ namespace NetBungieAPI
                 configuration.Settings.AfterConfigurated();
                 var provider = configuration.Settings.DefinitionLoadingSettings.UsedProvider;
                 await provider.OnLoadInternal(configuration);
-                if (configuration.Settings.ManifestVersionSettings.CheckUpdates == true)
+                if (configuration.Settings.ManifestVersionSettings.CheckUpdates)
                 {
                     if (await provider.CheckForUpdates())
                         await provider.Update();

@@ -1,6 +1,6 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Records
 {
@@ -8,10 +8,13 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Records
     {
         [JsonPropertyName("presentationNodeType")]
         public DestinyPresentationNodeType PresentationNodeType { get; init; }
+
         [JsonPropertyName("parentPresentationNodeHashes")]
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentPresentationNodes { get; init; } = Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
-        [JsonPropertyName("displayStyle")]
-        public DestinyPresentationNodeType DisplayStyle { get; init; }
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>
+            ParentPresentationNodes { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
+
+        [JsonPropertyName("displayStyle")] public DestinyPresentationNodeType DisplayStyle { get; init; }
 
         public bool DeepEquals(DestinyPresentationChildBlock other)
         {

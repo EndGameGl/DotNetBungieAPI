@@ -1,6 +1,4 @@
-﻿using NetBungieAPI.Logging;
-using NetBungieAPI.Authorization;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -8,37 +6,38 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
-using NetBungieAPI.Services.Interfaces;
 using System.Threading;
+using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
+using NetBungieAPI.Logging;
 using NetBungieAPI.Models;
+using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Services
 {
     internal class HttpClientInstance : IHttpClientInstance
     {
-        private readonly MediaTypeWithQualityHeaderValue _jsonHeaderValue =
-            new MediaTypeWithQualityHeaderValue("application/json");
-
-        private readonly ILogger _logger;
-        private readonly IConfigurationService _config;
-        private readonly IJsonSerializationHelper _serializationHelper;
-
         private const string AuthorizationEndpoint = "https://www.bungie.net/en/oauth/authorize";
         private const string AuthorizationTokenEndpoint = "https://www.bungie.net/platform/app/oauth/token/";
         private const string PlatformEndpoint = "https://www.bungie.net/Platform";
         private const string CdnEndpoint = "https://www.bungie.net";
         private const string StatsEndpoint = "https://stats.bungie.net/Platform";
+        private readonly IConfigurationService _config;
 
         private readonly HttpClient _httpClient;
+
+        private readonly MediaTypeWithQualityHeaderValue _jsonHeaderValue =
+            new("application/json");
+
+        private readonly ILogger _logger;
+        private readonly IJsonSerializationHelper _serializationHelper;
 
         internal HttpClientInstance(ILogger logger, IConfigurationService configuration,
             IJsonSerializationHelper serializationHelper)
         {
             _logger = logger;
             _config = configuration;
-            _httpClient = new HttpClient(new HttpClientHandler()
+            _httpClient = new HttpClient(new HttpClientHandler
             {
                 CookieContainer = new CookieContainer(),
                 UseCookies = true
@@ -65,7 +64,7 @@ namespace NetBungieAPI.Services
                     "client_secret",
                     _config.Settings.IdentificationSettings.ClientSecret));
 
-            var requestMessage = new HttpRequestMessage()
+            var requestMessage = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
                 RequestUri = new Uri(AuthorizationTokenEndpoint),
@@ -94,32 +93,30 @@ namespace NetBungieAPI.Services
                 new("refresh_token", oldToken.RefreshToken),
                 new("client_id", _config.Settings.IdentificationSettings.ClientId.ToString())
             };
-            
+
             if (!string.IsNullOrEmpty(_config.Settings.IdentificationSettings.ClientSecret))
                 encodedContentPairs.Add(new KeyValuePair<string, string>(
                     "client_secret",
                     _config.Settings.IdentificationSettings.ClientSecret));
-            
-            var requestMessage = new HttpRequestMessage()
+
+            var requestMessage = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
                 RequestUri = new Uri(AuthorizationTokenEndpoint),
                 Content = new FormUrlEncodedContent(encodedContentPairs)
             };
-            
+
             requestMessage.Headers.TryAddWithoutValidation("X-API-Key",
                 _config.Settings.IdentificationSettings.ApiKey);
-            
+
             requestMessage.Content.Headers.ContentType.MediaType = "application/x-www-form-urlencoded";
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             var response = await _httpClient.SendAsync(requestMessage);
 
             if (response.IsSuccessStatusCode)
-            {
                 return await _serializationHelper.DeserializeAsync<AuthorizationTokenData>(
                     await response.Content.ReadAsStreamAsync());
-            }
 
             throw new Exception("Failed to fetch token.");
         }
@@ -131,7 +128,7 @@ namespace NetBungieAPI.Services
         }
 
         /// <summary>
-        /// Downloads json data from CDN
+        ///     Downloads json data from CDN
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
@@ -141,12 +138,11 @@ namespace NetBungieAPI.Services
             var response = await _httpClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
                 return await response.Content.ReadAsStringAsync();
-            else
-                throw new Exception(response.ReasonPhrase);
+            throw new Exception(response.ReasonPhrase);
         }
 
         /// <summary>
-        /// Downloads image from CDN (WARNING: It can't be saved into file later)
+        ///     Downloads image from CDN (WARNING: It can't be saved into file later)
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
@@ -167,7 +163,7 @@ namespace NetBungieAPI.Services
         }
 
         /// <summary>
-        /// Downloads an image from give url and saves to disk
+        ///     Downloads an image from give url and saves to disk
         /// </summary>
         /// <param name="url"></param>
         /// <param name="folderPath"></param>
@@ -199,52 +195,17 @@ namespace NetBungieAPI.Services
                         image.Dispose();
                     }
                     else
+                    {
                         throw new Exception("This file already exists.");
+                    }
                 }
                 else
+                {
                     throw new Exception("Directory doesn't exist.");
+                }
             }
 
             return image;
-        }
-
-        private HttpRequestMessage CreateGetMessage(string uri, bool omitApiKey = false, string authToken = null)
-        {
-            var requestMessage = new HttpRequestMessage()
-            {
-                RequestUri = new Uri(uri),
-                Method = HttpMethod.Get
-            };
-
-            requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            if (omitApiKey == false)
-                requestMessage.Headers.TryAddWithoutValidation("X-API-Key",
-                    _config.Settings.IdentificationSettings.ApiKey);
-            if (!string.IsNullOrEmpty(authToken))
-                requestMessage.Headers.Add("Authorization", $"Bearer {authToken}");
-            return requestMessage;
-        }
-
-        private HttpRequestMessage CreatePostMessage(string uri, string authToken = null, Stream content = null)
-        {
-            var requestMessage = new HttpRequestMessage()
-            {
-                RequestUri = new Uri(uri),
-                Method = HttpMethod.Post
-            };
-
-            requestMessage.Headers.Accept.Add(_jsonHeaderValue);
-            requestMessage.Headers.TryAddWithoutValidation("X-API-Key", _config.Settings.IdentificationSettings.ApiKey);
-
-            if (!string.IsNullOrEmpty(authToken))
-                requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
-
-            if (content is null)
-                return requestMessage;
-            content.Position = 0;
-            requestMessage.Content = new StreamContent(content);
-
-            return requestMessage;
         }
 
         public async Task DownloadFileStreamFromCDNAsync(string query, string savePath)
@@ -302,6 +263,45 @@ namespace NetBungieAPI.Services
             await using var stream = await response.Content.ReadAsStreamAsync(token);
             var bungieResponse = await _serializationHelper.DeserializeAsync<BungieResponse<T>>(stream);
             return bungieResponse;
+        }
+
+        private HttpRequestMessage CreateGetMessage(string uri, bool omitApiKey = false, string authToken = null)
+        {
+            var requestMessage = new HttpRequestMessage
+            {
+                RequestUri = new Uri(uri),
+                Method = HttpMethod.Get
+            };
+
+            requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            if (omitApiKey == false)
+                requestMessage.Headers.TryAddWithoutValidation("X-API-Key",
+                    _config.Settings.IdentificationSettings.ApiKey);
+            if (!string.IsNullOrEmpty(authToken))
+                requestMessage.Headers.Add("Authorization", $"Bearer {authToken}");
+            return requestMessage;
+        }
+
+        private HttpRequestMessage CreatePostMessage(string uri, string authToken = null, Stream content = null)
+        {
+            var requestMessage = new HttpRequestMessage
+            {
+                RequestUri = new Uri(uri),
+                Method = HttpMethod.Post
+            };
+
+            requestMessage.Headers.Accept.Add(_jsonHeaderValue);
+            requestMessage.Headers.TryAddWithoutValidation("X-API-Key", _config.Settings.IdentificationSettings.ApiKey);
+
+            if (!string.IsNullOrEmpty(authToken))
+                requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+
+            if (content is null)
+                return requestMessage;
+            content.Position = 0;
+            requestMessage.Content = new StreamContent(content);
+
+            return requestMessage;
         }
     }
 }

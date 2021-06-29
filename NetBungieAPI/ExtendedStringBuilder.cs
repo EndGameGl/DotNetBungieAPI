@@ -7,17 +7,18 @@ namespace NetBungieAPI
 {
     internal class ExtendedStringBuilder
     {
+        private readonly object _lock = new();
         private readonly Dictionary<string, string> _optionalUrlParams = new();
         private readonly StringBuilder _sb = new();
-        private readonly object _lock = new();
 
         private CancellationTokenRegistration _currentTokenRegistration;
-        public bool IsBusy { get; private set; }
 
         public ExtendedStringBuilder()
         {
             IsBusy = false;
         }
+
+        public bool IsBusy { get; private set; }
 
         public ExtendedStringBuilder PrepareForUse(CancellationToken ct)
         {

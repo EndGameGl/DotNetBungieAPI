@@ -1,15 +1,15 @@
 ﻿using System.Threading;
+using System.Threading.Tasks;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Forum;
 using NetBungieAPI.Models.Queries;
-using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess.Interfaces
 {
     public interface ICommunityContentMethodsAccess
     {
         /// <summary>
-        /// Returns community content.
+        ///     Returns community content.
         /// </summary>
         /// <param name="sort">The sort mode.</param>
         /// <param name="mediaFilter">The type of media to get</param>

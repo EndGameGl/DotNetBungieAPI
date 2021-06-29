@@ -4,10 +4,8 @@ namespace NetBungieAPI.Models.Content
 {
     public sealed record CommentSummary
     {
-        [JsonPropertyName("topicId")]
-        public long TopicId { get; init; }
+        [JsonPropertyName("topicId")] public long TopicId { get; init; }
 
-        [JsonPropertyName("commentCount")]
-        public int CommentCount { get; init; }
+        [JsonPropertyName("commentCount")] public int CommentCount { get; init; }
     }
 }

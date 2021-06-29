@@ -1,6 +1,6 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.Activities;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using NetBungieAPI.Models.Destiny.Activities;
+using NetBungieAPI.Models.Destiny.Definitions.Activities;
 
 namespace NetBungieAPI.Models.Trending
 {
@@ -9,7 +9,6 @@ namespace NetBungieAPI.Models.Trending
         [JsonPropertyName("activityHash")]
         public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; init; }
 
-        [JsonPropertyName("status")]
-        public DestinyPublicActivityStatus Status { get; init; }
+        [JsonPropertyName("status")] public DestinyPublicActivityStatus Status { get; init; }
     }
 }

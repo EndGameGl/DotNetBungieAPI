@@ -1,6 +1,6 @@
 ﻿namespace NetBungieAPI.Models.GroupsV2
 {
-    public enum GroupMemberCountFilter : int
+    public enum GroupMemberCountFilter
     {
         All = 0,
         OneToTen = 1,

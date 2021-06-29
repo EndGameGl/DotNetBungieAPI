@@ -1,6 +1,6 @@
-﻿using NetBungieAPI.Models.GroupsV2;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using NetBungieAPI.Models.GroupsV2;
 
 namespace NetBungieAPI.Models.Queries
 {

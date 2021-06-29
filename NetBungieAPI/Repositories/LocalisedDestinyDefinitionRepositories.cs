@@ -1,32 +1,26 @@
-﻿using NetBungieAPI.Logging;
-using NetBungieAPI.Models;
-using NetBungieAPI.Models.Destiny;
-using NetBungieAPI.Models.Destiny.Definitions.Activities;
-using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
-using NetBungieAPI.Services.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Data.SQLite;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using NetBungieAPI.Logging;
+using NetBungieAPI.Models;
+using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Config;
+using NetBungieAPI.Models.Destiny.Definitions.Activities;
 using NetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
+using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Providers;
+using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Repositories
 {
     public class LocalisedDestinyDefinitionRepositories : ILocalisedDestinyDefinitionRepositories
     {
-        private BungieLocales? _currentLocaleLoadContext;
-        private readonly ILogger _logger;
-        private readonly IConfigurationService _configs;
         private readonly IDefinitionAssemblyData _assemblyData;
-
-        public BungieLocales CurrentLocaleLoadContext => _currentLocaleLoadContext ?? BungieLocales.EN;
-        public DefinitionProvider Provider { get; set; }
+        private readonly IConfigurationService _configs;
+        private readonly ILogger _logger;
+        private BungieLocales? _currentLocaleLoadContext;
         private ConcurrentDictionary<BungieLocales, DestinyDefinitionsRepository> _localisedRepositories;
 
         public LocalisedDestinyDefinitionRepositories(ILogger logger, IConfigurationService config,
@@ -37,6 +31,9 @@ namespace NetBungieAPI.Repositories
             _assemblyData = assemblyData;
         }
 
+        public BungieLocales CurrentLocaleLoadContext => _currentLocaleLoadContext ?? BungieLocales.EN;
+        public DefinitionProvider Provider { get; set; }
+
         public void Initialize(BungieLocales[] locales)
         {
             _logger.Log("Initializing Global Definitions Cache Repository", LogType.Info);
@@ -44,15 +41,13 @@ namespace NetBungieAPI.Repositories
                 new ConcurrentDictionary<BungieLocales, DestinyDefinitionsRepository>(
                     _configs.Settings.DefinitionLoadingSettings.AppConcurrencyLevel, locales.Length);
             foreach (var locale in locales)
-            {
                 _localisedRepositories.TryAdd(
-                    key: locale,
-                    value: new DestinyDefinitionsRepository(
-                        locale: locale,
-                        assemblyData: _assemblyData,
-                        configuration: _configs,
-                        logger: _logger));
-            }
+                    locale,
+                    new DestinyDefinitionsRepository(
+                        locale,
+                        _assemblyData,
+                        _configs,
+                        _logger));
         }
 
         public void LoadAllDataFromDisk(string localManifestPath, DestinyManifest manifest)
@@ -60,17 +55,16 @@ namespace NetBungieAPI.Repositories
             foreach (var repo in _localisedRepositories.Values)
             {
                 SetLocaleContext(repo.Locale);
-                Task.Run(async () => await Provider.ReadDefinitionsToRepository(_configs.Settings.DefinitionLoadingSettings.AllowedDefinitions));
+                Task.Run(async () =>
+                    await Provider.ReadDefinitionsToRepository(_configs.Settings.DefinitionLoadingSettings
+                        .AllowedDefinitions));
                 ResetLocaleContext();
             }
 
             if (_configs.Settings.DefinitionLoadingSettings.PremapDefinitionPointers)
             {
                 _logger.Log("Premapping pointers...", LogType.Info);
-                foreach (var repo in _localisedRepositories.Select(x => x.Value))
-                {
-                    repo.PremapPointers();
-                }
+                foreach (var repo in _localisedRepositories.Select(x => x.Value)) repo.PremapPointers();
 
                 _logger.Log("Finished premapping pointers!", LogType.Info);
             }
@@ -91,10 +85,12 @@ namespace NetBungieAPI.Repositories
         public bool TryGetDestinyDefinition<T>(uint key, BungieLocales locale,
             out T definition) where T : IDestinyDefinition
         {
-            return _localisedRepositories[locale].TryGetDefinition(DefinitionHashPointer<T>.EnumValue, key, out definition);
+            return _localisedRepositories[locale]
+                .TryGetDefinition(DefinitionHashPointer<T>.EnumValue, key, out definition);
         }
 
-        public bool TryGetDestinyHistoricalDefinition(BungieLocales locale, string key, out DestinyHistoricalStatsDefinition statsDefinition)
+        public bool TryGetDestinyHistoricalDefinition(BungieLocales locale, string key,
+            out DestinyHistoricalStatsDefinition statsDefinition)
         {
             return _localisedRepositories[locale].TryGetHistoricalStatsDefinition(key, out statsDefinition);
         }
@@ -104,7 +100,8 @@ namespace NetBungieAPI.Repositories
             return _localisedRepositories[locale].GetAllHistoricalStats;
         }
 
-        public bool AddDestinyHistoricalDefinition(BungieLocales locale, DestinyHistoricalStatsDefinition statsDefinition)
+        public bool AddDestinyHistoricalDefinition(BungieLocales locale,
+            DestinyHistoricalStatsDefinition statsDefinition)
         {
             return _localisedRepositories[locale].AddDestinyHistoricalStatsDefinition(statsDefinition);
         }
@@ -127,18 +124,27 @@ namespace NetBungieAPI.Repositories
         }
 
         /// <summary>
-        /// Gets all items with given trait
-        /// <para>Possible traits:</para>
-        /// <para>item_type: weapon, armor, ghost_hologram, boost, emote, finisher, currency, engram, shader, emblem, consumable, light_subclass, ghost,
-        /// weapon_ornament, ship, vehicle, aura, dark_subclass, bounty</para>
-        /// <para>armor_type: head, chest, arms, legs, class</para>
-        /// <para>weapon_type: rocket_launcher, sniper_rifle, grenade_launcher, pulse_rifle, shotgun, auto_rifle, sidearm, bow, fusion_rifle, machinegun, 
-        /// trace_rifle, hand_cannon, scout_rifle, submachinegun, sword, linear_fusion_rifle</para>
-        /// <para>foundry: suros, fotc, hakke, omolon, veist, field_forged, tex_mechanica, daito</para>
-        /// <para>faction: new_monarchy, trials, vanguard, iron_banner, crucible, dead_orbit, future_war_cult, gambit, mamba, commando</para>
-        /// <para>inventory_filtering: quest, bounty, featured</para>
-        /// <para>quest: new_light, seasonal, playlists, past, exotic, current_release</para>
-        /// <para>mamba_role: collector, defender, invader, killer</para>
+        ///     Gets all items with given trait
+        ///     <para>Possible traits:</para>
+        ///     <para>
+        ///         item_type: weapon, armor, ghost_hologram, boost, emote, finisher, currency, engram, shader, emblem, consumable,
+        ///         light_subclass, ghost,
+        ///         weapon_ornament, ship, vehicle, aura, dark_subclass, bounty
+        ///     </para>
+        ///     <para>armor_type: head, chest, arms, legs, class</para>
+        ///     <para>
+        ///         weapon_type: rocket_launcher, sniper_rifle, grenade_launcher, pulse_rifle, shotgun, auto_rifle, sidearm, bow,
+        ///         fusion_rifle, machinegun,
+        ///         trace_rifle, hand_cannon, scout_rifle, submachinegun, sword, linear_fusion_rifle
+        ///     </para>
+        ///     <para>foundry: suros, fotc, hakke, omolon, veist, field_forged, tex_mechanica, daito</para>
+        ///     <para>
+        ///         faction: new_monarchy, trials, vanguard, iron_banner, crucible, dead_orbit, future_war_cult, gambit, mamba,
+        ///         commando
+        ///     </para>
+        ///     <para>inventory_filtering: quest, bounty, featured</para>
+        ///     <para>quest: new_light, seasonal, playlists, past, exotic, current_release</para>
+        ///     <para>mamba_role: collector, defender, invader, killer</para>
         /// </summary>
         /// <param name="trait">Item trait to search for</param>
         /// <returns></returns>
@@ -150,10 +156,7 @@ namespace NetBungieAPI.Repositories
                     var traits = (x as DestinyInventoryItemDefinition).TraitIds;
                     if (traits == null)
                         return false;
-                    else
-                    {
-                        return traits.Contains(trait);
-                    }
+                    return traits.Contains(trait);
                 }).ToList();
         }
 
@@ -196,10 +199,7 @@ namespace NetBungieAPI.Repositories
 
         public void PremapPointers()
         {
-            foreach (var repository in _localisedRepositories)
-            {
-                repository.Value.PremapPointers();
-            }
+            foreach (var repository in _localisedRepositories) repository.Value.PremapPointers();
         }
     }
 }

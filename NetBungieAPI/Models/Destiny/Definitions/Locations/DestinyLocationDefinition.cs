@@ -1,41 +1,33 @@
-﻿using NetBungieAPI.Attributes;
-using NetBungieAPI.Models.Destiny.Definitions.Vendors;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.Json.Serialization;
+using NetBungieAPI.Attributes;
+using NetBungieAPI.Models.Destiny.Definitions.Vendors;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Locations
 {
     /// <summary>
-    /// A "Location" is a sort of shortcut for referring to a specific combination of Activity, Destination, Place, and even Bubble or NavPoint within a space.
+    ///     A "Location" is a sort of shortcut for referring to a specific combination of Activity, Destination, Place, and
+    ///     even Bubble or NavPoint within a space.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyLocationDefinition)]
     public sealed record DestinyLocationDefinition : IDestinyDefinition, IDeepEquatable<DestinyLocationDefinition>
     {
         /// <summary>
-        /// If the location has a Vendor on it, this is the Vendor.
+        ///     If the location has a Vendor on it, this is the Vendor.
         /// </summary>
         [JsonPropertyName("vendorHash")]
         public DefinitionHashPointer<DestinyVendorDefinition> Vendor { get; init; } =
             DefinitionHashPointer<DestinyVendorDefinition>.Empty;
 
         /// <summary>
-        /// A Location may refer to different specific spots in the world based on the world's current state. This is a list of those potential spots, and the data we can use at runtime to determine which one of the spots is the currently valid one.
+        ///     A Location may refer to different specific spots in the world based on the world's current state. This is a list of
+        ///     those potential spots, and the data we can use at runtime to determine which one of the spots is the currently
+        ///     valid one.
         /// </summary>
         [JsonPropertyName("locationReleases")]
         public ReadOnlyCollection<DestinyLocationReleaseDefinition> LocationReleases { get; init; } =
             Defaults.EmptyReadOnlyCollection<DestinyLocationReleaseDefinition>();
-
-        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")] public uint Hash { get; init; }
-        [JsonPropertyName("index")] public int Index { get; init; }
-        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-        public override string ToString()
-        {
-            return
-                $"{Hash} ({LocationReleases.Count} location releases.) {LocationReleases.LastOrDefault()?.DisplayProperties.Name}";
-        }
 
         public bool DeepEquals(DestinyLocationDefinition other)
         {
@@ -48,6 +40,11 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Locations
                    Redacted == other.Redacted;
         }
 
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
         public void MapValues()
         {
             Vendor.TryMapValue();
@@ -57,6 +54,12 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Locations
                 locationRelease.ActivityGraph.TryMapValue();
                 locationRelease.Destination.TryMapValue();
             }
+        }
+
+        public override string ToString()
+        {
+            return
+                $"{Hash} ({LocationReleases.Count} location releases.) {LocationReleases.LastOrDefault()?.DisplayProperties.Name}";
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using NetBungieAPI.Models.User;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Models.User;
 
 namespace NetBungieAPI.Models.Fireteam
 {

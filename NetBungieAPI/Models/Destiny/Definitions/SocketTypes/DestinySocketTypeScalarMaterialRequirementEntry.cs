@@ -1,9 +1,9 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.SocketTypes
 {
-    public sealed record DestinySocketTypeScalarMaterialRequirementEntry : 
+    public sealed record DestinySocketTypeScalarMaterialRequirementEntry :
         IDeepEquatable<DestinySocketTypeScalarMaterialRequirementEntry>
     {
         [JsonPropertyName("currencyItemHash")]

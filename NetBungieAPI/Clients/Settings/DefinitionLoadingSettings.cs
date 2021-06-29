@@ -17,7 +17,7 @@ namespace NetBungieAPI.Clients.Settings
         public bool WaitAllDefinitionsToLoad { get; internal set; }
         public bool DownloadLatestManifestOnLoad { get; internal set; }
 
-        public static DefinitionLoadingSettings Default => new DefinitionLoadingSettings()
+        public static DefinitionLoadingSettings Default => new()
         {
             AppConcurrencyLevel = Environment.ProcessorCount * 2,
             Locales = Array.Empty<BungieLocales>(),

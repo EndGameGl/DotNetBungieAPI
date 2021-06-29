@@ -1,14 +1,14 @@
-﻿using NetBungieAPI.Logging;
+﻿using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
+using NetBungieAPI.Logging;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.Interfaces;
-using System.Threading.Tasks;
-using NetBungieAPI.Authorization;
 using static NetBungieAPI.Logging.LogListener;
 
 namespace NetBungieAPI.Clients
 {
     /// <summary>
-    /// <see cref="IBungieClient"/> implementation
+    ///     <see cref="IBungieClient" /> implementation
     /// </summary>
     public class BungieClient : IBungieClient
     {
@@ -17,26 +17,11 @@ namespace NetBungieAPI.Clients
         private readonly ILogger _logger;
         private readonly LogListener _logListener;
 
-        /// <summary>
-        /// <inheritdoc cref="IBungieClient.Authentication"/>
-        /// </summary>
-        public IAuthorizationStateHandler Authentication { get; }
-
-        /// <summary>
-        /// <inheritdoc cref="IBungieClient.Repository"/>
-        /// </summary>
-        public ILocalisedDestinyDefinitionRepositories Repository { get; }
-
-        /// <summary>
-        /// <inheritdoc cref="IBungieClient.ApiAccess"/>
-        /// </summary>
-        public IBungieApiAccess ApiAccess { get; }
-
         internal BungieClient(
-            IConfigurationService config, 
-            ILogger logger, 
+            IConfigurationService config,
+            ILogger logger,
             IBungieApiAccess apiAccess,
-            IHttpClientInstance httpClient, 
+            IHttpClientInstance httpClient,
             IAuthorizationStateHandler authorizationHandler,
             ILocalisedDestinyDefinitionRepositories repository)
         {
@@ -51,16 +36,31 @@ namespace NetBungieAPI.Clients
         }
 
         /// <summary>
-        /// <inheritdoc cref="IBungieClient.CheckUpdates"/>
+        ///     <inheritdoc cref="IBungieClient.Authentication" />
+        /// </summary>
+        public IAuthorizationStateHandler Authentication { get; }
+
+        /// <summary>
+        ///     <inheritdoc cref="IBungieClient.Repository" />
+        /// </summary>
+        public ILocalisedDestinyDefinitionRepositories Repository { get; }
+
+        /// <summary>
+        ///     <inheritdoc cref="IBungieClient.ApiAccess" />
+        /// </summary>
+        public IBungieApiAccess ApiAccess { get; }
+
+        /// <summary>
+        ///     <inheritdoc cref="IBungieClient.CheckUpdates" />
         /// </summary>
         /// <returns></returns>
         public async ValueTask<bool> CheckUpdates()
         {
             return await Repository.Provider.CheckForUpdates();
         }
-        
+
         /// <summary>
-        /// <inheritdoc cref="IBungieClient.DownloadLatestManifestLocally"/>
+        ///     <inheritdoc cref="IBungieClient.DownloadLatestManifestLocally" />
         /// </summary>
         public async Task DownloadLatestManifestLocally()
         {
@@ -73,7 +73,7 @@ namespace NetBungieAPI.Clients
         }
 
         /// <summary>
-        /// <inheritdoc cref="IBungieClient.AddListener"/>
+        ///     <inheritdoc cref="IBungieClient.AddListener" />
         /// </summary>
         /// <param name="eventHandler"></param>
         public void AddListener(NewMessageEvent eventHandler)

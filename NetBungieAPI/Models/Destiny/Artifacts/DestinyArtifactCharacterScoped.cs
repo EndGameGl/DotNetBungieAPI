@@ -1,6 +1,6 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.Artifacts;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.Artifacts;
 
 namespace NetBungieAPI.Models.Destiny.Artifacts
 {

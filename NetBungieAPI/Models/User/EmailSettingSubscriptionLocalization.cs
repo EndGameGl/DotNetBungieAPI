@@ -3,7 +3,8 @@
 namespace NetBungieAPI.Models.User
 {
     /// <summary>
-    /// Localized text relevant to a given Email setting in a given localization. Extra settings specifically for subscriptions.
+    ///     Localized text relevant to a given Email setting in a given localization. Extra settings specifically for
+    ///     subscriptions.
     /// </summary>
     public sealed record EmailSettingSubscriptionLocalization
     {
@@ -22,10 +23,8 @@ namespace NetBungieAPI.Models.User
         [JsonPropertyName("knownUserActionText")]
         public string KnownUserActionText { get; init; }
 
-        [JsonPropertyName("title")]
-        public string Title { get; init; }
+        [JsonPropertyName("title")] public string Title { get; init; }
 
-        [JsonPropertyName("description")]
-        public string Description { get; init; }
+        [JsonPropertyName("description")] public string Description { get; init; }
     }
 }

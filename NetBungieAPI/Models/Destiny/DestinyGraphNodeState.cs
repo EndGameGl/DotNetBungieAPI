@@ -1,7 +1,7 @@
 ﻿namespace NetBungieAPI.Models.Destiny
 {
     /// <summary>
-    /// Represents a potential state of an Activity Graph node.
+    ///     Represents a potential state of an Activity Graph node.
     /// </summary>
     public enum DestinyGraphNodeState
     {

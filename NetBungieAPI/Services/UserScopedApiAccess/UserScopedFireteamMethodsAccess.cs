@@ -1,9 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
-using NetBungieAPI.Exceptions;
 using NetBungieAPI.Models;
-using NetBungieAPI.Models.Applications;
 using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using NetBungieAPI.Models.Fireteam;
 using NetBungieAPI.Models.Queries;
@@ -13,8 +11,8 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
 {
     public class UserScopedFireteamMethodsAccess
     {
-        private IFireteamMethodsAccess _apiAccess;
-        private AuthorizationTokenData _token;
+        private readonly IFireteamMethodsAccess _apiAccess;
+        private readonly AuthorizationTokenData _token;
 
         internal UserScopedFireteamMethodsAccess(
             IFireteamMethodsAccess apiAccess,
@@ -25,7 +23,7 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
         }
 
         /// <summary>
-        /// <inheritdoc cref="IFireteamMethodsAccess.GetActivePrivateClanFireteamCount"/>
+        ///     <inheritdoc cref="IFireteamMethodsAccess.GetActivePrivateClanFireteamCount" />
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="token"></param>
@@ -38,7 +36,7 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
         }
 
         /// <summary>
-        /// <inheritdoc cref="IFireteamMethodsAccess.GetActivePrivateClanFireteamCount"/>
+        ///     <inheritdoc cref="IFireteamMethodsAccess.GetActivePrivateClanFireteamCount" />
         /// </summary>
         /// <param name="authData"></param>
         /// <param name="groupId"></param>
@@ -68,7 +66,7 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
         }
 
         /// <summary>
-        /// <inheritdoc cref="IFireteamMethodsAccess.GetActivePrivateClanFireteamCount"/>
+        ///     <inheritdoc cref="IFireteamMethodsAccess.GetActivePrivateClanFireteamCount" />
         /// </summary>
         /// <param name="platform"></param>
         /// <param name="activityType"></param>

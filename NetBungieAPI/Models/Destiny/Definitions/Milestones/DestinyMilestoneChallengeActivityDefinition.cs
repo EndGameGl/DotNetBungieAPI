@@ -1,6 +1,6 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.Activities;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.Activities;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Milestones
 {
@@ -8,14 +8,14 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Milestones
         DestinyMilestoneChallengeActivityDefinition : IDeepEquatable<DestinyMilestoneChallengeActivityDefinition>
     {
         /// <summary>
-        /// The activity for which this challenge is active.
+        ///     The activity for which this challenge is active.
         /// </summary>
         [JsonPropertyName("activityHash")]
         public DefinitionHashPointer<DestinyActivityDefinition> Activity { get; init; } =
             DefinitionHashPointer<DestinyActivityDefinition>.Empty;
 
         /// <summary>
-        /// If the activity and its challenge is visible on any of these nodes, it will be returned.
+        ///     If the activity and its challenge is visible on any of these nodes, it will be returned.
         /// </summary>
         [JsonPropertyName("activityGraphNodes")]
         public ReadOnlyCollection<DestinyMilestoneChallengeActivityGraphNodeEntry> ActivityGraphNodes { get; init; } =
@@ -26,9 +26,9 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Milestones
             Defaults.EmptyReadOnlyCollection<DestinyMilestoneChallengeDefinition>();
 
         /// <summary>
-        /// Phases related to this activity, if there are any.
-        /// <para/>
-        /// These will be listed in the order in which they will appear in the actual activity.
+        ///     Phases related to this activity, if there are any.
+        ///     <para />
+        ///     These will be listed in the order in which they will appear in the actual activity.
         /// </summary>
         [JsonPropertyName("phases")]
         public ReadOnlyCollection<DestinyMilestoneChallengeActivityPhase> Phases { get; init; } =

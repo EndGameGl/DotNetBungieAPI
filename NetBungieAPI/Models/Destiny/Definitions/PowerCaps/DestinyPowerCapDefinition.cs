@@ -1,29 +1,19 @@
-﻿using NetBungieAPI.Attributes;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Attributes;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.PowerCaps
 {
     /// <summary>
-    /// Defines a 'power cap' (limit) for gear items, based on the rarity tier and season of release.
+    ///     Defines a 'power cap' (limit) for gear items, based on the rarity tier and season of release.
     /// </summary>
     [DestinyDefinition(DefinitionsEnum.DestinyPowerCapDefinition)]
     public sealed record DestinyPowerCapDefinition : IDestinyDefinition, IDeepEquatable<DestinyPowerCapDefinition>
     {
         /// <summary>
-        /// The raw value for a power cap.
+        ///     The raw value for a power cap.
         /// </summary>
         [JsonPropertyName("powerCap")]
         public int PowerCap { get; init; }
-
-        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-        [JsonPropertyName("hash")] public uint Hash { get; init; }
-        [JsonPropertyName("index")] public int Index { get; init; }
-        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-        public override string ToString()
-        {
-            return $"{Hash}";
-        }
 
         public bool DeepEquals(DestinyPowerCapDefinition other)
         {
@@ -35,9 +25,18 @@ namespace NetBungieAPI.Models.Destiny.Definitions.PowerCaps
                    Redacted == other.Redacted;
         }
 
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+        [JsonPropertyName("index")] public int Index { get; init; }
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
         public void MapValues()
         {
-            return;
+        }
+
+        public override string ToString()
+        {
+            return $"{Hash}";
         }
     }
 }

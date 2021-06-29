@@ -1,7 +1,7 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.Collectibles;
-using NetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.Collectibles;
+using NetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 
 namespace NetBungieAPI.Models.Destiny.Components
 {
@@ -15,14 +15,14 @@ namespace NetBungieAPI.Models.Destiny.Components
                     DestinyCollectibleComponent>();
 
         /// <summary>
-        /// The hash for the root presentation node definition of Collection categories.
+        ///     The hash for the root presentation node definition of Collection categories.
         /// </summary>
         [JsonPropertyName("collectionCategoriesRootNodeHash")]
         public DefinitionHashPointer<DestinyPresentationNodeDefinition> CollectionCategoriesRootNode { get; init; } =
             DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
 
         /// <summary>
-        /// The hash for the root presentation node definition of Collection Badges.
+        ///     The hash for the root presentation node definition of Collection Badges.
         /// </summary>
         [JsonPropertyName("collectionBadgesRootNodeHash")]
         public DefinitionHashPointer<DestinyPresentationNodeDefinition> CollectionBadgesRootNode { get; init; } =

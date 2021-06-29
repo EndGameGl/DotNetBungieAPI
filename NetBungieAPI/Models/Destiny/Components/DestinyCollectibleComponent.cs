@@ -4,7 +4,6 @@ namespace NetBungieAPI.Models.Destiny.Components
 {
     public sealed record DestinyCollectibleComponent
     {
-        [JsonPropertyName("state")]
-        public DestinyCollectibleState State { get; init; }
+        [JsonPropertyName("state")] public DestinyCollectibleState State { get; init; }
     }
 }

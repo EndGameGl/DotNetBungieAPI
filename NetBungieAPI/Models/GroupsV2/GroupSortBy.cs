@@ -1,6 +1,6 @@
 ﻿namespace NetBungieAPI.Models.GroupsV2
 {
-    public enum GroupSortBy : int
+    public enum GroupSortBy
     {
         Name = 0,
         Date = 1,

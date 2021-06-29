@@ -2,7 +2,7 @@
 {
     public struct DestinyResource
     {
-        public static DestinyResource Empty { get; } = new DestinyResource(null);
+        public static DestinyResource Empty { get; } = new(null);
         public string RelativePath { get; }
 
         public string AbsolutePath => $"https://bungie.net{RelativePath}";

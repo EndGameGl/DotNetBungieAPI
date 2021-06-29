@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NetBungieAPI.Logging
+﻿namespace NetBungieAPI.Logging
 {
     public class LogListener
     {
-        public event NewMessageEvent OnNewMessage;
         public delegate void NewMessageEvent(LogMessage logMessage);
+
+        public event NewMessageEvent OnNewMessage;
 
         public void Invoke(LogMessage message)
         {

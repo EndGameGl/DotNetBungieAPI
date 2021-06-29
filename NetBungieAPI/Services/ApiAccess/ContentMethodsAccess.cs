@@ -1,16 +1,16 @@
-﻿using NetBungieAPI.Models;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using NetBungieAPI.Models;
 using NetBungieAPI.Models.Content;
 using NetBungieAPI.Models.Queries;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess
 {
     public class ContentMethodsAccess : IContentMethodsAccess
     {
-        private IHttpClientInstance _httpClient;
+        private readonly IHttpClientInstance _httpClient;
 
         internal ContentMethodsAccess(IHttpClientInstance httpClient)
         {

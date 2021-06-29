@@ -1,60 +1,72 @@
 ﻿namespace NetBungieAPI.Models
 {
     /// <summary>
-    /// Enumeration for available locales on bungie.net
+    ///     Enumeration for available locales on bungie.net
     /// </summary>
     public enum BungieLocales
     {
         /// <summary>
-        /// English
+        ///     English
         /// </summary>
         EN,
+
         /// <summary>
-        /// Russian
+        ///     Russian
         /// </summary>
         RU,
+
         /// <summary>
-        /// German
+        ///     German
         /// </summary>
         DE,
+
         /// <summary>
-        /// Spanish
+        ///     Spanish
         /// </summary>
         ES,
+
         /// <summary>
-        /// Spanish (Mexico)
+        ///     Spanish (Mexico)
         /// </summary>
         ES_MX,
+
         /// <summary>
-        /// French
+        ///     French
         /// </summary>
         FR,
+
         /// <summary>
-        /// Italian
+        ///     Italian
         /// </summary>
         IT,
+
         /// <summary>
-        /// Japanese
+        ///     Japanese
         /// </summary>
         JA,
+
         /// <summary>
-        /// Korean
+        ///     Korean
         /// </summary>
         KO,
+
         /// <summary>
-        /// Polish
+        ///     Polish
         /// </summary>
         PL,
+
         /// <summary>
-        /// Portuguese (Brazil)
+        ///     Portuguese (Brazil)
         /// </summary>
         PT_BR,
+
         /// <summary>
-        /// Chinese (Simplified)
+        ///     Chinese (Simplified)
         /// </summary>
         ZH_CHS,
+
         /// <summary>
-        /// Chinese (Traditional)
+        ///     Chinese (Traditional)
         /// </summary>
         ZH_CHT
     }

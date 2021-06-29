@@ -1,6 +1,6 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets;
 using NetBungieAPI.Models.Destiny.Definitions.UnlockValues;
-using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Collectibles
 {

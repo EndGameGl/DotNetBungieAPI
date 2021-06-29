@@ -1,7 +1,7 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.EquipmentSlots;
-using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.EquipmentSlots;
+using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Activities
 {

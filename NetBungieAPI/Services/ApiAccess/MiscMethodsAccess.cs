@@ -1,35 +1,35 @@
-﻿using NetBungieAPI.Models;
+﻿using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using NetBungieAPI.Models;
 using NetBungieAPI.Models.Common;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace NetBungieAPI.Services.ApiAccess
 {
     public class MiscMethodsAccess : IMiscMethodsAccess
     {
-        private IHttpClientInstance _httpClient;
+        private readonly IHttpClientInstance _httpClient;
 
         internal MiscMethodsAccess(IHttpClientInstance httpClient)
         {
             _httpClient = httpClient;
         }
-        
+
         public async ValueTask<BungieResponse<Dictionary<string, string>>> GetAvailableLocales(
             CancellationToken token = default)
         {
             return await _httpClient.GetFromBungieNetPlatform<Dictionary<string, string>>("/GetAvailableLocales/",
                 token);
         }
-        
+
         public async ValueTask<BungieResponse<CoreSettingsConfiguration>> GetCommonSettings(
             CancellationToken token = default)
         {
             return await _httpClient.GetFromBungieNetPlatform<CoreSettingsConfiguration>("/Settings/", token);
         }
-        
+
         public async ValueTask<BungieResponse<Dictionary<string, CoreSystem>>> GetUserSystemOverrides(
             CancellationToken token = default)
         {

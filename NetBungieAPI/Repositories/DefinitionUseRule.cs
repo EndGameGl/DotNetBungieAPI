@@ -1,5 +1,5 @@
-﻿using NetBungieAPI.Attributes;
-using System;
+﻿using System;
+using NetBungieAPI.Attributes;
 
 namespace NetBungieAPI.Repositories
 {

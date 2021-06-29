@@ -1,6 +1,6 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Collectibles
 {

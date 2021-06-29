@@ -1,6 +1,5 @@
 ﻿using System.Text.Json.Serialization;
 
-
 namespace NetBungieAPI.Models.Destiny.Definitions
 {
     public sealed record DestinyArtDyeReference : IDeepEquatable<DestinyArtDyeReference>

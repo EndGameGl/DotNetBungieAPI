@@ -1,14 +1,8 @@
-﻿using NetBungieAPI.Clients;
-using NetBungieAPI.Logging;
-using NetBungieAPI.Services;
-using NetBungieAPI.Authorization;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
+using NetBungieAPI.Logging;
 using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Services
@@ -16,11 +10,8 @@ namespace NetBungieAPI.Services
     public class AuthorizationStateHandler : IAuthorizationStateHandler
     {
         private readonly IHttpClientInstance _client;
-        private readonly ILogger _logger;
         private readonly IConfigurationService _config;
-
-        private ConcurrentDictionary<string, AuthorizationState> _authorizationStates { get; }
-        private ConcurrentDictionary<long, AuthorizationTokenData> _authorizationTokenDatas { get; }
+        private readonly ILogger _logger;
 
         public AuthorizationStateHandler(ILogger logger, IConfigurationService configuration,
             IHttpClientInstance httpClient)
@@ -32,21 +23,20 @@ namespace NetBungieAPI.Services
             _authorizationTokenDatas = new ConcurrentDictionary<long, AuthorizationTokenData>();
         }
 
+        private ConcurrentDictionary<string, AuthorizationState> _authorizationStates { get; }
+        private ConcurrentDictionary<long, AuthorizationTokenData> _authorizationTokenDatas { get; }
+
         public string GetAuthorizationLink(AuthorizationState authData)
         {
             if (_config.Settings.IdentificationSettings.ClientId != null)
                 return _client.GetAuthLink(_config.Settings.IdentificationSettings.ClientId.Value, authData.State);
-            else
-                throw new NullReferenceException("Client ID is missing.");
+            throw new NullReferenceException("Client ID is missing.");
         }
 
         public AuthorizationState CreateNewAuthentificationAwaiter()
         {
             var authAwaiter = AuthorizationState.GetNewAuth();
-            if (_authorizationStates.TryAdd(authAwaiter.State, authAwaiter))
-            {
-                return authAwaiter;
-            }
+            if (_authorizationStates.TryAdd(authAwaiter.State, authAwaiter)) return authAwaiter;
 
             throw new Exception("Couldn't create new authentification state.");
         }

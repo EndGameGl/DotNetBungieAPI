@@ -1,10 +1,7 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
-using NetBungieAPI.Exceptions;
 using NetBungieAPI.Models;
-using NetBungieAPI.Models.Applications;
 using NetBungieAPI.Models.Config;
 using NetBungieAPI.Models.User;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
@@ -13,9 +10,9 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
 {
     public class UserScopedUserMethodsAccess
     {
-        private IUserMethodsAccess _apiAccess;
-        private AuthorizationTokenData _token;
-        
+        private readonly IUserMethodsAccess _apiAccess;
+        private readonly AuthorizationTokenData _token;
+
         internal UserScopedUserMethodsAccess(
             IUserMethodsAccess access,
             AuthorizationTokenData token)

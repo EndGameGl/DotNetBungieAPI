@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
-using NetBungieAPI.Exceptions;
 using NetBungieAPI.Models;
-using NetBungieAPI.Models.Applications;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Config;
 using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
@@ -26,8 +22,8 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
 {
     public class UserScopedDestiny2MethodsAccess
     {
-        private IDestiny2MethodsAccess _apiAccess;
-        private AuthorizationTokenData _token;
+        private readonly IDestiny2MethodsAccess _apiAccess;
+        private readonly AuthorizationTokenData _token;
 
         internal UserScopedDestiny2MethodsAccess(
             IDestiny2MethodsAccess apiAccess,

@@ -1,19 +1,20 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.Objectives;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.Objectives;
 
 namespace NetBungieAPI.Models.Destiny.Quests
 {
     public sealed record UninstancedItemObjective
     {
         [JsonPropertyName("objectiveHash")]
-        public DefinitionHashPointer<DestinyObjectiveDefinition> Objective { get; init; } = DefinitionHashPointer<DestinyObjectiveDefinition>.Empty;
-        [JsonPropertyName("progress")]
-        public double Progress { get; init; }
-        [JsonPropertyName("completionValue")]
-        public double CompletionValue { get; init; }
-        [JsonPropertyName("complete")]
-        public bool IsComplete { get; init; }
-        [JsonPropertyName("visible")]
-        public bool IsVisible { get; init; }
+        public DefinitionHashPointer<DestinyObjectiveDefinition> Objective { get; init; } =
+            DefinitionHashPointer<DestinyObjectiveDefinition>.Empty;
+
+        [JsonPropertyName("progress")] public double Progress { get; init; }
+
+        [JsonPropertyName("completionValue")] public double CompletionValue { get; init; }
+
+        [JsonPropertyName("complete")] public bool IsComplete { get; init; }
+
+        [JsonPropertyName("visible")] public bool IsVisible { get; init; }
     }
 }

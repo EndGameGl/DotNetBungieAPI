@@ -1,16 +1,17 @@
 ﻿namespace NetBungieAPI.Repositories
 {
     /// <summary>
-    /// Loading mode for definition files
+    ///     Loading mode for definition files
     /// </summary>
     public enum LoadSourceMode
     {
         /// <summary>
-        /// Loads from JSON files
+        ///     Loads from JSON files
         /// </summary>
         JSON,
+
         /// <summary>
-        /// Loads from SQLite database
+        ///     Loads from SQLite database
         /// </summary>
         SQLite
     }

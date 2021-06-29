@@ -8,11 +8,12 @@ namespace NetBungieAPI.Serialization
     {
         public override bool HandleNull => true;
 
-        public override DestinyResource Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override DestinyResource Read(ref Utf8JsonReader reader, Type typeToConvert,
+            JsonSerializerOptions options)
         {
             if (reader.TokenType == JsonTokenType.Null)
                 return new DestinyResource(null);
-            
+
             return new DestinyResource(reader.GetString());
         }
 

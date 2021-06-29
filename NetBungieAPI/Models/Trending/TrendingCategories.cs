@@ -6,6 +6,7 @@ namespace NetBungieAPI.Models.Trending
     public sealed record TrendingCategories
     {
         [JsonPropertyName("categories")]
-        public ReadOnlyCollection<TrendingCategory> Categories { get; init; } = Defaults.EmptyReadOnlyCollection<TrendingCategory>();
+        public ReadOnlyCollection<TrendingCategory> Categories { get; init; } =
+            Defaults.EmptyReadOnlyCollection<TrendingCategory>();
     }
 }

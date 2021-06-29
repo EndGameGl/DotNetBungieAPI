@@ -2,10 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Drawing;
 using System.IO;
-using System.Runtime.InteropServices;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -20,9 +17,10 @@ namespace NetBungieAPI.Providers
 {
     public class JsonFileDefinitionProvider : DefinitionProvider
     {
-        private Dictionary<BungieLocales, JsonAggregateDefinitionMapping> _fileMappings = new();
-        private Dictionary<BungieLocales, string> _filePaths = new();
         private readonly string ManifestPath;
+        private readonly Dictionary<BungieLocales, JsonAggregateDefinitionMapping> _fileMappings = new();
+        private readonly Dictionary<BungieLocales, string> _filePaths = new();
+
         public JsonFileDefinitionProvider(string manifestsPath)
         {
             ManifestPath = manifestsPath;
@@ -43,7 +41,7 @@ namespace NetBungieAPI.Providers
         {
             _fileMappings.Add(locale, new JsonAggregateDefinitionMapping());
             DefinitionsEnum? currentReadValue = null;
-            byte[] array = File.ReadAllBytes(path);
+            var array = File.ReadAllBytes(path);
             var reader = new Utf8JsonReader(array);
             while (reader.Read())
             {
@@ -71,6 +69,7 @@ namespace NetBungieAPI.Providers
                             reader.Skip();
                             currentReadValue = null;
                         }
+
                         break;
                     case 2:
                         if (currentReadValue.HasValue)
@@ -79,12 +78,13 @@ namespace NetBungieAPI.Providers
                             var index = reader.BytesConsumed;
                             reader.Skip();
                             _fileMappings[locale].Mappings[currentReadValue.Value].DefinitionsData.Add(hash,
-                                new JsonAggregateDefinitionTypeUnitMapping()
+                                new JsonAggregateDefinitionTypeUnitMapping
                                 {
                                     Position = index,
                                     Length = reader.BytesConsumed - index
                                 });
                         }
+
                         break;
                 }
             }

@@ -1,25 +1,28 @@
-﻿using NetBungieAPI.Models.Destiny.Definitions.Milestones;
-using NetBungieAPI.Models.Destiny.Definitions.Vendors;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using NetBungieAPI.Models.Destiny.Definitions.Milestones;
+using NetBungieAPI.Models.Destiny.Definitions.Vendors;
 
 namespace NetBungieAPI.Models.Destiny.Milestones
 {
     /// <summary>
-    /// Information about milestones, presented in a character state-agnostic manner. Combine this data with DestinyMilestoneDefinition to get a full picture of the milestone, which is basically a checklist of things to do in the game. Think of this as GetPublicAdvisors 3.0, for those who used the Destiny 1 API.
+    ///     Information about milestones, presented in a character state-agnostic manner. Combine this data with
+    ///     DestinyMilestoneDefinition to get a full picture of the milestone, which is basically a checklist of things to do
+    ///     in the game. Think of this as GetPublicAdvisors 3.0, for those who used the Destiny 1 API.
     /// </summary>
     public sealed record DestinyPublicMilestone
     {
         /// <summary>
-        /// The hash identifier for the milestone. Use it to look up the DestinyMilestoneDefinition for static data about the Milestone.
+        ///     The hash identifier for the milestone. Use it to look up the DestinyMilestoneDefinition for static data about the
+        ///     Milestone.
         /// </summary>
         [JsonPropertyName("milestoneHash")]
         public DefinitionHashPointer<DestinyMilestoneDefinition> Milestone { get; init; } =
             DefinitionHashPointer<DestinyMilestoneDefinition>.Empty;
 
         /// <summary>
-        /// A milestone not need have even a single quest, but if there are active quests they will be returned here.
+        ///     A milestone not need have even a single quest, but if there are active quests they will be returned here.
         /// </summary>
         [JsonPropertyName("availableQuests")]
         public ReadOnlyCollection<DestinyPublicMilestoneQuest> AvailableQuests { get; init; } =
@@ -30,33 +33,36 @@ namespace NetBungieAPI.Models.Destiny.Milestones
             Defaults.EmptyReadOnlyCollection<DestinyPublicMilestoneChallengeActivity>();
 
         /// <summary>
-        /// Sometimes milestones - or activities active in milestones - will have relevant vendors. These are the vendors that are currently relevant.
+        ///     Sometimes milestones - or activities active in milestones - will have relevant vendors. These are the vendors that
+        ///     are currently relevant.
         /// </summary>
         [JsonPropertyName("vendorHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyVendorDefinition>> VendorPointers { get; init; } =
             Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyVendorDefinition>>();
 
         /// <summary>
-        /// This is why we can't have nice things. This is the ordered list of vendors to be shown that relate to this milestone, potentially along with other interesting data.
+        ///     This is why we can't have nice things. This is the ordered list of vendors to be shown that relate to this
+        ///     milestone, potentially along with other interesting data.
         /// </summary>
         [JsonPropertyName("vendors")]
         public ReadOnlyCollection<DestinyPublicMilestoneVendor> Vendors { get; init; } =
             Defaults.EmptyReadOnlyCollection<DestinyPublicMilestoneVendor>();
 
         /// <summary>
-        /// If known, this is the date when the Milestone started/became active.
+        ///     If known, this is the date when the Milestone started/became active.
         /// </summary>
         [JsonPropertyName("startDate")]
         public DateTime? StartDate { get; init; }
 
         /// <summary>
-        /// If known, this is the date when the Milestone will expire/recycle/end.
+        ///     If known, this is the date when the Milestone will expire/recycle/end.
         /// </summary>
         [JsonPropertyName("endDate")]
         public DateTime? EndDate { get; init; }
 
         /// <summary>
-        /// Used for ordering milestones in a display to match how we order them in BNet. May pull from static data, or possibly in the future from dynamic information.
+        ///     Used for ordering milestones in a display to match how we order them in BNet. May pull from static data, or
+        ///     possibly in the future from dynamic information.
         /// </summary>
         [JsonPropertyName("order")]
         public int Order { get; init; }

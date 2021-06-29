@@ -9,7 +9,7 @@ namespace NetBungieAPI.Clients.Settings
         public string ClientSecret { get; internal set; }
         public ApplicationScopes ApplicationScopes { get; internal set; }
 
-        public static ClientIdentificationSettings Default => new ClientIdentificationSettings()
+        public static ClientIdentificationSettings Default => new()
         {
             ApiKey = null,
             ClientId = null,

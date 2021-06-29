@@ -18,6 +18,7 @@ namespace NetBungieAPI.Models
         DataNotFound = 11,
         InsufficientPrivileges = 12,
         Duplicate = 13,
+
         [Obsolete("Deprecated, please do not check for this value anywhere.")]
         UnknownSqlResult = 14,
         ValidationError = 15,
@@ -508,8 +509,10 @@ namespace NetBungieAPI.Models
         DestinyVersionIncompatibility = 1631,
         DestinyItemAlreadyInInventory = 1632,
         DestinyBucketNotFound = 1633,
+
         /// <summary>
-        /// Note: This is one of those holdovers from Destiny 1. We didn't change the enum because I am lazy, but in Destiny 2 this would read "DestinyCharacterNotInSocialSpace"
+        ///     Note: This is one of those holdovers from Destiny 1. We didn't change the enum because I am lazy, but in Destiny 2
+        ///     this would read "DestinyCharacterNotInSocialSpace"
         /// </summary>
         DestinyCharacterNotInTower = 1634,
         DestinyCharacterNotLoggedIn = 1635,
@@ -798,6 +801,6 @@ namespace NetBungieAPI.Models
         ApplePushFailedAuth = 3804,
         ApplePushThrottled = 3805,
         ApplePushServiceUnavailable = 3806,
-        NotAnImageOrVideo = 3807,
+        NotAnImageOrVideo = 3807
     }
 }

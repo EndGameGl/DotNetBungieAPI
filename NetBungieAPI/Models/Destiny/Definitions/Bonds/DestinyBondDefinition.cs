@@ -1,6 +1,6 @@
-﻿using NetBungieAPI.Attributes;
+﻿using System.Text.Json.Serialization;
+using NetBungieAPI.Attributes;
 using NetBungieAPI.Models.Destiny.Definitions.Common;
-using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Bonds
 {
@@ -16,18 +16,6 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Bonds
         [JsonPropertyName("providedUnlockValueHash")]
         public uint ProvidedUnlockValueHash { get; init; }
 
-        [JsonPropertyName("blacklisted")]
-        public bool Blacklisted { get; init; }
-
-        [JsonPropertyName("hash")]
-        public uint Hash { get; init; }
-
-        [JsonPropertyName("index")]
-        public int Index { get; init; }
-
-        [JsonPropertyName("redacted")]
-        public bool Redacted { get; init; }
-
         public bool DeepEquals(DestinyBondDefinition other)
         {
             return other != null &&
@@ -39,6 +27,17 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Bonds
                    Index == other.Index &&
                    Redacted == other.Redacted;
         }
-        public void MapValues() { return; }
+
+        [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+
+        [JsonPropertyName("hash")] public uint Hash { get; init; }
+
+        [JsonPropertyName("index")] public int Index { get; init; }
+
+        [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+        public void MapValues()
+        {
+        }
     }
 }

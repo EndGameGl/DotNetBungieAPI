@@ -1,7 +1,7 @@
 ﻿namespace NetBungieAPI.Models.Destiny
 {
     /// <summary>
-    /// Determines how items are sorted in an inventory bucket.
+    ///     Determines how items are sorted in an inventory bucket.
     /// </summary>
     public enum DestinyItemSortType
     {

@@ -9,20 +9,8 @@ namespace NetBungieAPI.Clients
 {
     public class UserContextBungieClient : IUserContextBungieClient
     {
-        private AuthorizationTokenData _token;
-        private IAuthorizationStateHandler _authorizationStateHandler;
-        public ILocalisedDestinyDefinitionRepositories Repository { get; }
-        public UserScopedAppMethodsAccess App { get; }
-        public UserScopedUserMethodsAccess User { get; }
-        public UserScopedTrendingMethodsAccess Trending { get; }
-        public UserScopedTokenMethodsAccess Tokens { get; }
-        public UserScopedMiscMethodsAccess Misc { get; }
-        public UserScopedGroupV2MethodsAccess GroupV2 { get; }
-        public UsedScopedForumMethodsAccess Forum { get; }
-        public UserScopedFireteamMethodsAccess Fireteam { get; }
-        public UserScopedContentMethodsAccess Content { get; }
-        public UserScopedCommunityContentMethodsAccess CommunityContent { get; }
-        public UserScopedDestiny2MethodsAccess Destiny2 { get; }
+        private readonly IAuthorizationStateHandler _authorizationStateHandler;
+        private readonly AuthorizationTokenData _token;
 
         internal UserContextBungieClient(
             ILocalisedDestinyDefinitionRepositories repository,
@@ -46,12 +34,23 @@ namespace NetBungieAPI.Clients
             Destiny2 = new UserScopedDestiny2MethodsAccess(apiAccess.Destiny2, _token);
         }
 
+        public ILocalisedDestinyDefinitionRepositories Repository { get; }
+        public UserScopedAppMethodsAccess App { get; }
+        public UserScopedUserMethodsAccess User { get; }
+        public UserScopedTrendingMethodsAccess Trending { get; }
+        public UserScopedTokenMethodsAccess Tokens { get; }
+        public UserScopedMiscMethodsAccess Misc { get; }
+        public UserScopedGroupV2MethodsAccess GroupV2 { get; }
+        public UsedScopedForumMethodsAccess Forum { get; }
+        public UserScopedFireteamMethodsAccess Fireteam { get; }
+        public UserScopedContentMethodsAccess Content { get; }
+        public UserScopedCommunityContentMethodsAccess CommunityContent { get; }
+        public UserScopedDestiny2MethodsAccess Destiny2 { get; }
+
         public async Task ValidateToken()
         {
             if (_token.ReceiveTime.AddSeconds(_token.ExpiresIn) < DateTime.Now)
-            {
                 await _authorizationStateHandler.RenewToken(_token);
-            }
         }
     }
 }

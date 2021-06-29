@@ -11,7 +11,8 @@ namespace NetBungieAPI
 {
     internal static class StaticUnityContainer
     {
-        private static IUnityContainer Container;
+        private static readonly IUnityContainer Container;
+
         static StaticUnityContainer()
         {
             Container = new UnityContainer();
@@ -19,12 +20,14 @@ namespace NetBungieAPI
             Container.RegisterType<ILogger, Logger>(TypeLifetime.Singleton);
             Container.RegisterType<IConfigurationService, ConfigurationService>(TypeLifetime.Singleton);
             Container.RegisterType<IHttpClientInstance, HttpClientInstance>(TypeLifetime.Singleton);
-            Container.RegisterType<ILocalisedDestinyDefinitionRepositories, LocalisedDestinyDefinitionRepositories>(TypeLifetime.Singleton);
+            Container.RegisterType<ILocalisedDestinyDefinitionRepositories, LocalisedDestinyDefinitionRepositories>(
+                TypeLifetime.Singleton);
             Container.RegisterType<IDefinitionAssemblyData, DefinitionAssemblyData>(TypeLifetime.Singleton);
             Container.RegisterType<IAuthorizationStateHandler, AuthorizationStateHandler>(TypeLifetime.Singleton);
             Container.RegisterType<IJsonSerializationHelper, JsonSerializationHelper>(TypeLifetime.Singleton);
             RegisterApiAccess();
         }
+
         private static void RegisterApiAccess()
         {
             Container.RegisterType<IBungieApiAccess, BungieApiAccess>(TypeLifetime.Singleton);
@@ -37,17 +40,45 @@ namespace NetBungieAPI
             Container.RegisterType<IUserMethodsAccess, UserMethodsAccess>(TypeLifetime.Singleton);
             Container.RegisterType<ITokenMethodsAccess, TokenMethodsAccess>(TypeLifetime.Singleton);
             Container.RegisterType<IDestiny2MethodsAccess, Destiny2MethodsAccess>(TypeLifetime.Singleton);
-            Container.RegisterType<ICommunityContentMethodsAccess, CommunityContentMethodsAccess>(TypeLifetime.Singleton);
-            Container.RegisterType<ITrendingMethodsAccess, TrendingMethodsAccess>(TypeLifetime.Singleton); 
+            Container.RegisterType<ICommunityContentMethodsAccess, CommunityContentMethodsAccess>(
+                TypeLifetime.Singleton);
+            Container.RegisterType<ITrendingMethodsAccess, TrendingMethodsAccess>(TypeLifetime.Singleton);
             Container.RegisterType<IMiscMethodsAccess, MiscMethodsAccess>(TypeLifetime.Singleton);
         }
 
-        public static T GetService<T>() => Container.Resolve<T>();
-        internal static ILogger GetLogger() => Container.Resolve<ILogger>();
-        internal static IConfigurationService GetConfiguration() => Container.Resolve<IConfigurationService>();
-        internal static IHttpClientInstance GetHTTPClient() => Container.Resolve<IHttpClientInstance>();
-        internal static ILocalisedDestinyDefinitionRepositories GetDestinyDefinitionRepositories() => Container.Resolve<ILocalisedDestinyDefinitionRepositories>();
-        internal static IDefinitionAssemblyData GetAssemblyData() => Container.Resolve<IDefinitionAssemblyData>();
-        internal static IAuthorizationStateHandler GetAuthHandler() => Container.Resolve<IAuthorizationStateHandler>();
+        public static T GetService<T>()
+        {
+            return Container.Resolve<T>();
+        }
+
+        internal static ILogger GetLogger()
+        {
+            return Container.Resolve<ILogger>();
+        }
+
+        internal static IConfigurationService GetConfiguration()
+        {
+            return Container.Resolve<IConfigurationService>();
+        }
+
+        internal static IHttpClientInstance GetHTTPClient()
+        {
+            return Container.Resolve<IHttpClientInstance>();
+        }
+
+        internal static ILocalisedDestinyDefinitionRepositories GetDestinyDefinitionRepositories()
+        {
+            return Container.Resolve<ILocalisedDestinyDefinitionRepositories>();
+        }
+
+        internal static IDefinitionAssemblyData GetAssemblyData()
+        {
+            return Container.Resolve<IDefinitionAssemblyData>();
+        }
+
+        internal static IAuthorizationStateHandler GetAuthHandler()
+        {
+            return Container.Resolve<IAuthorizationStateHandler>();
+        }
     }
 }
