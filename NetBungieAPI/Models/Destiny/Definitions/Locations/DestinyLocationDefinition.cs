@@ -40,6 +40,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Locations
                    Redacted == other.Redacted;
         }
 
+        public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyLocationDefinition;
         [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
         [JsonPropertyName("hash")] public uint Hash { get; init; }
         [JsonPropertyName("index")] public int Index { get; init; }

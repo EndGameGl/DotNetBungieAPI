@@ -51,6 +51,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Classes
                    Redacted == other.Redacted;
         }
 
+        public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyClassDefinition;
         [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
         [JsonPropertyName("hash")] public uint Hash { get; init; }
         [JsonPropertyName("index")] public int Index { get; init; }

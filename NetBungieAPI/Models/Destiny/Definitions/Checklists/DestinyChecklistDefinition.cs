@@ -59,6 +59,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Checklists
                    Redacted == other.Redacted;
         }
 
+        public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyChecklistDefinition;
         [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
         [JsonPropertyName("hash")] public uint Hash { get; init; }

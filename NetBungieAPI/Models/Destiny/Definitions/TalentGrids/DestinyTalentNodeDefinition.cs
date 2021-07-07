@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
-using NetBungieAPI.Models.Destiny.Definitions.Lores;
+using NetBungieAPI.Models.Destiny.Definitions.Lore;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.TalentGrids
 {

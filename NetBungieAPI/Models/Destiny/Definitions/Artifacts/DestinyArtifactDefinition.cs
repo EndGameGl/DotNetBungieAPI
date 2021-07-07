@@ -50,6 +50,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Artifacts
                    Redacted == other.Redacted;
         }
 
+        public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyArtifactDefinition;
         [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
         [JsonPropertyName("hash")] public uint Hash { get; init; }

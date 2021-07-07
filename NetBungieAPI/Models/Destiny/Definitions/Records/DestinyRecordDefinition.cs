@@ -2,7 +2,7 @@
 using System.Text.Json.Serialization;
 using NetBungieAPI.Attributes;
 using NetBungieAPI.Models.Destiny.Definitions.Common;
-using NetBungieAPI.Models.Destiny.Definitions.Lores;
+using NetBungieAPI.Models.Destiny.Definitions.Lore;
 using NetBungieAPI.Models.Destiny.Definitions.Objectives;
 using NetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 using NetBungieAPI.Models.Destiny.Definitions.Traits;
@@ -100,6 +100,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Records
                    Redacted == other.Redacted;
         }
 
+        public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyRecordDefinition;
         [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
         [JsonPropertyName("hash")] public uint Hash { get; init; }
         [JsonPropertyName("index")] public int Index { get; init; }

@@ -6,7 +6,7 @@ using NetBungieAPI.Models.Destiny.Definitions.Collectibles;
 using NetBungieAPI.Models.Destiny.Definitions.Common;
 using NetBungieAPI.Models.Destiny.Definitions.DamageTypes;
 using NetBungieAPI.Models.Destiny.Definitions.ItemCategories;
-using NetBungieAPI.Models.Destiny.Definitions.Lores;
+using NetBungieAPI.Models.Destiny.Definitions.Lore;
 using NetBungieAPI.Models.Destiny.Definitions.Objectives;
 using NetBungieAPI.Models.Destiny.Definitions.Seasons;
 using NetBungieAPI.Models.Destiny.Definitions.Traits;
@@ -561,6 +561,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
                    Redacted == other.Redacted;
         }
 
+        public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyInventoryItemDefinition;
         [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
         [JsonPropertyName("hash")] public uint Hash { get; init; }
         [JsonPropertyName("index")] public int Index { get; init; }

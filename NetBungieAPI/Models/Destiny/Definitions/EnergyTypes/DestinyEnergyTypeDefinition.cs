@@ -66,6 +66,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.EnergyTypes
                    Redacted == other.Redacted;
         }
 
+        public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyEnergyTypeDefinition;
         [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
         [JsonPropertyName("hash")] public uint Hash { get; init; }
         [JsonPropertyName("index")] public int Index { get; init; }

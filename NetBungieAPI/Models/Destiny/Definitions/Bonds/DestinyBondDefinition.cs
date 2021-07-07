@@ -28,6 +28,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Bonds
                    Redacted == other.Redacted;
         }
 
+        public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyBondDefinition;
         [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
         [JsonPropertyName("hash")] public uint Hash { get; init; }

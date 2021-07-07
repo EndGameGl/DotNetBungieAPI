@@ -40,6 +40,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.TraitCategories
                    Redacted == other.Redacted;
         }
 
+        public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyTraitCategoryDefinition;
         [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
         [JsonPropertyName("hash")] public uint Hash { get; init; }

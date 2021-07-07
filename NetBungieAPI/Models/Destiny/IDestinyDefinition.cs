@@ -6,6 +6,11 @@
     public interface IDestinyDefinition
     {
         /// <summary>
+        ///     Enum value for this definition
+        /// </summary>
+        DefinitionsEnum DefinitionEnumValue { get; }
+        
+        /// <summary>
         ///     Whether this definition is blacklisted
         /// </summary>
         bool Blacklisted { get; init; }

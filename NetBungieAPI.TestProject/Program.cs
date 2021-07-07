@@ -33,7 +33,7 @@ using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Models.Destiny.Definitions.ItemCategories;
 using NetBungieAPI.Models.Destiny.Definitions.ItemTierTypes;
 using NetBungieAPI.Models.Destiny.Definitions.Locations;
-using NetBungieAPI.Models.Destiny.Definitions.Lores;
+using NetBungieAPI.Models.Destiny.Definitions.Lore;
 using NetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets;
 using NetBungieAPI.Models.Destiny.Definitions.MedalTiers;
 using NetBungieAPI.Models.Destiny.Definitions.Metrics;
@@ -136,7 +136,7 @@ namespace NetBungieAPI.TestProject
 
             Console.WriteLine($"{Process.GetCurrentProcess().PrivateMemorySize64} bytes allocated for current app.");     
 
-            //GenerateDefinitionHashes();
+            GenerateDefinitionHashes();
 
             //await WriteAllDataToJson();
 

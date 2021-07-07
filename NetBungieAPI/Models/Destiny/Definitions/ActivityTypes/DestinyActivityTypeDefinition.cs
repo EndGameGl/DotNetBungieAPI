@@ -35,6 +35,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityTypes
                    Redacted == other.Redacted;
         }
 
+        public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyActivityTypeDefinition;
         [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
         [JsonPropertyName("hash")] public uint Hash { get; init; }

@@ -24,6 +24,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityModifiers
                    Redacted == other.Redacted;
         }
 
+        public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyActivityModifierDefinition;
         [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
         [JsonPropertyName("hash")] public uint Hash { get; init; }

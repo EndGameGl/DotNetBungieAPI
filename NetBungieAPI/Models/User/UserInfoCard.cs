@@ -20,6 +20,6 @@ namespace NetBungieAPI.Models.User
         ///     URL the Icon if available.
         /// </summary>
         [JsonPropertyName("iconPath")]
-        public DestinyResource IconPath { get; init; }
+        public string IconPath { get; init; }
     }
 }

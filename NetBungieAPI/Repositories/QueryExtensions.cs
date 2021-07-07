@@ -3,7 +3,7 @@ using System.Linq;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Models.Destiny.Definitions.ItemCategories;
-using NetBungieAPI.Models.Destiny.Definitions.Lores;
+using NetBungieAPI.Models.Destiny.Definitions.Lore;
 using NetBungieAPI.Models.Destiny.Definitions.Seasons;
 
 namespace NetBungieAPI.Repositories

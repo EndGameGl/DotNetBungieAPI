@@ -56,10 +56,10 @@ namespace NetBungieAPI.Models.User
         public bool ShowGroupMessaging { get; init; }
 
         [JsonPropertyName("profilePicturePath")]
-        public DestinyResource ProfilePicturePath { get; init; }
+        public string ProfilePicturePath { get; init; }
 
         [JsonPropertyName("profilePictureWidePath")]
-        public DestinyResource ProfilePictureWidePath { get; init; }
+        public string ProfilePictureWidePath { get; init; }
 
         [JsonPropertyName("profileThemeName")] public string ProfileThemeName { get; init; }
 

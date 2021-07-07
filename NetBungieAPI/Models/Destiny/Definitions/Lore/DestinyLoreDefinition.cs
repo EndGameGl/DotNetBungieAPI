@@ -2,7 +2,7 @@
 using NetBungieAPI.Attributes;
 using NetBungieAPI.Models.Destiny.Definitions.Common;
 
-namespace NetBungieAPI.Models.Destiny.Definitions.Lores
+namespace NetBungieAPI.Models.Destiny.Definitions.Lore
 {
     /// <summary>
     ///     These are definitions for in-game "Lore," meant to be narrative enhancements of the game experience.
@@ -26,6 +26,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Lores
                    Redacted == other.Redacted;
         }
 
+        public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyLoreDefinition;
         [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
         [JsonPropertyName("hash")] public uint Hash { get; init; }
         [JsonPropertyName("index")] public int Index { get; init; }
