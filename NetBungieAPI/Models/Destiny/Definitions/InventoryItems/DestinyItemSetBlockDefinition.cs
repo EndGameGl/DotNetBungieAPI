@@ -12,7 +12,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// <summary>
         ///     A collection of set items, for items such as Quest Metadata items that possess this data.
         /// </summary>
-        [JsonPropertyName("setData")]
+        [JsonPropertyName("itemList")]
         public ReadOnlyCollection<DestinyItemSetBlockEntryDefinition> ItemList { get; init; } =
             Defaults.EmptyReadOnlyCollection<DestinyItemSetBlockEntryDefinition>();
 

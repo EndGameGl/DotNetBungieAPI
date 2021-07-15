@@ -88,7 +88,7 @@ namespace NetBungieAPI.Providers
 
         public override async ValueTask<DestinyManifest> GetCurrentManifest()
         {
-            return _currentManifest;
+            return UsedManifest;
         }
 
         public override async ValueTask<bool> CheckForUpdates()
