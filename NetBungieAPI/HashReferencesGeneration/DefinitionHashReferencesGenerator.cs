@@ -1469,7 +1469,7 @@ namespace NetBungieAPI.HashReferencesGeneration
 
                 await textWriter.WriteLineAsync(GetIndentedString(
                     indentationLevel,
-                    $"public const uint {key} = \"{statsDefinition.StatId}\";"));
+                    $"public const string {key} = \"{statsDefinition.StatId}\";"));
             }
         }
 

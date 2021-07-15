@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
-using NetBungieAPI.HashReferences;
 using NetBungieAPI.HashReferencesGeneration;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
