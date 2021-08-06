@@ -46,6 +46,7 @@ namespace NetBungieAPI.Providers
             Logger.Log("Checking if preferred manifest exists.", LogType.Debug);
             if (ManifestVersionSettings.ForceLoadManifestVersion &&
                 !string.IsNullOrWhiteSpace(ManifestVersionSettings.PreferredLoadedManifestVersion))
+            {
                 if (await CheckExistingManifestData(ManifestVersionSettings.PreferredLoadedManifestVersion))
                 {
                     UsedManifest = _availableManifests
@@ -53,6 +54,7 @@ namespace NetBungieAPI.Providers
                         .Key;
                     Logger.Log($"Set manifest version to: {UsedManifest.Version}", LogType.Debug);
                 }
+            }
 
             Logger.Log("Searching locales...", LogType.Debug);
             foreach (var locale in DefinitionLoadingSettings.Locales)
@@ -72,7 +74,10 @@ namespace NetBungieAPI.Providers
             var versions = Directory.EnumerateDirectories(ManifestPath);
             Parallel.ForEach(versions, version =>
             {
-                var files = Directory.EnumerateFiles(version, "Manifest.json", SearchOption.TopDirectoryOnly);
+                var files = Directory.EnumerateFiles(
+                    version,
+                    "Manifest.json",
+                    SearchOption.TopDirectoryOnly);
                 var manifestPath = files.FirstOrDefault();
                 if (manifestPath == null)
                     return;
@@ -137,7 +142,6 @@ namespace NetBungieAPI.Providers
                 Directory.Delete(manifestPath);
             }
         }
-
         public override async ValueTask<bool> CheckExistingManifestData(string version)
         {
             return (await GetAvailableManifests()).Any(x => x.Version == version);
@@ -339,8 +343,8 @@ namespace NetBungieAPI.Providers
                     while (reader.Read())
                     {
                         var parsedDefinition =
-                            (IDestinyDefinition) await SerializationHelper.DeserializeAsync(
-                                (byte[]) reader[1],
+                            (IDestinyDefinition)await SerializationHelper.DeserializeAsync(
+                                (byte[])reader[1],
                                 runtimeType);
                         Repositories.AddDefinition(definitionType, locale, parsedDefinition);
                     }
@@ -356,7 +360,7 @@ namespace NetBungieAPI.Providers
                 while (histReader.Read())
                 {
                     var parsedDefinition = await SerializationHelper.DeserializeAsync<DestinyHistoricalStatsDefinition>(
-                        (byte[]) histReader[1]);
+                        (byte[])histReader[1]);
                     Repositories.AddDestinyHistoricalDefinition(locale, parsedDefinition);
                 }
 
@@ -373,12 +377,12 @@ namespace NetBungieAPI.Providers
             var commandObj = new SQLiteCommand
             {
                 Connection = _connection,
-                CommandText = $"SELECT * FROM {DefinitionHashPointer<T>.EnumValue} WHERE id='{(int) hash}'"
+                CommandText = $"SELECT * FROM {DefinitionHashPointer<T>.EnumValue} WHERE id='{(int)hash}'"
             };
             var reader = commandObj.ExecuteReader();
             while (reader.Read())
             {
-                var byteArray = (byte[]) reader[1];
+                var byteArray = (byte[])reader[1];
                 result = await SerializationHelper.DeserializeAsync<T>(byteArray);
             }
 
@@ -395,12 +399,12 @@ namespace NetBungieAPI.Providers
             var commandObj = new SQLiteCommand
             {
                 Connection = _connection,
-                CommandText = $"SELECT * FROM {enumValue} WHERE id='{(int) hash}'"
+                CommandText = $"SELECT * FROM {enumValue} WHERE id='{(int)hash}'"
             };
             var reader = commandObj.ExecuteReader();
             while (reader.Read())
             {
-                var byteArray = (byte[]) reader[1];
+                var byteArray = (byte[])reader[1];
                 result = Encoding.UTF8.GetString(byteArray);
             }
 
@@ -419,12 +423,12 @@ namespace NetBungieAPI.Providers
                 var commandObj = new SQLiteCommand
                 {
                     Connection = _connection,
-                    CommandText = $"SELECT * FROM {DefinitionHashPointer<T>.EnumValue} WHERE id='{(int) hash}'"
+                    CommandText = $"SELECT * FROM {DefinitionHashPointer<T>.EnumValue} WHERE id='{(int)hash}'"
                 };
                 var reader = commandObj.ExecuteReader();
                 while (reader.Read())
                 {
-                    var byteArray = (byte[]) reader[1];
+                    var byteArray = (byte[])reader[1];
                     tempCollection.Add(await SerializationHelper.DeserializeAsync<T>(byteArray));
                 }
             }
@@ -447,7 +451,7 @@ namespace NetBungieAPI.Providers
             var reader = commandObj.ExecuteReader();
             while (reader.Read())
             {
-                var byteArray = (byte[]) reader[1];
+                var byteArray = (byte[])reader[1];
                 result = await SerializationHelper.DeserializeAsync<DestinyHistoricalStatsDefinition>(byteArray);
             }
 
@@ -470,7 +474,7 @@ namespace NetBungieAPI.Providers
                 var reader = commandObj.ExecuteReader();
                 while (reader.Read())
                 {
-                    var byteArray = (byte[]) reader[1];
+                    var byteArray = (byte[])reader[1];
                     result = Encoding.UTF8.GetString(byteArray);
                 }
 
@@ -492,7 +496,7 @@ namespace NetBungieAPI.Providers
             var reader = commandObj.ExecuteReader();
             while (reader.Read())
             {
-                var byteArray = (byte[]) reader[1];
+                var byteArray = (byte[])reader[1];
                 tempCollection.Add(await SerializationHelper.DeserializeAsync<T>(byteArray));
             }
 

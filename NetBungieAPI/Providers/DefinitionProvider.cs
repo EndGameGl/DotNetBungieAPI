@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using NetBungieAPI.Clients.Settings;
+using NetBungieAPI.Exceptions;
 using NetBungieAPI.Logging;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
@@ -42,7 +43,12 @@ namespace NetBungieAPI.Providers
             try
             {
                 if (DefinitionLoadingSettings.DownloadLatestManifestOnLoad)
-                    UsedManifest = (await Destiny2MethodsAccess.GetDestinyManifest()).Response;
+                {
+                    var manifest = await Destiny2MethodsAccess.GetDestinyManifest();
+                    if (!manifest.IsSuccessfulResponseCode)
+                        throw manifest.ToException();
+                    UsedManifest = manifest.Response;
+                }
             }
             catch (Exception e)
             {

@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Components
@@ -19,5 +21,15 @@ namespace NetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("items")]
         public ReadOnlyCollection<DestinyItemComponent> Items { get; init; } =
             Defaults.EmptyReadOnlyCollection<DestinyItemComponent>();
+
+        /// <summary>
+        /// Gets all items with specified bucket hash
+        /// </summary>
+        /// <param name="bucketHash"></param>
+        /// <returns></returns>
+        public IEnumerable<DestinyItemComponent> GetItemsWithBucketHash(uint bucketHash)
+        {
+            return Items.Where(x => x.Bucket.Hash == bucketHash);
+        }
     }
 }

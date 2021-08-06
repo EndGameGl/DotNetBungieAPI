@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using NetBungieAPI.Exceptions;
 
 namespace NetBungieAPI.Models
 {
@@ -61,5 +62,14 @@ namespace NetBungieAPI.Models
         ///     Whether this request was successful
         /// </summary>
         public bool IsSuccessfulResponseCode => ErrorCode == PlatformErrorCodes.Success;
+
+        /// <summary>
+        /// Forms exception based on response
+        /// </summary>
+        /// <returns></returns>
+        public BungieResponseErrorException ToException()
+        {
+            return new BungieResponseErrorException(ErrorCode, ErrorStatus, Message, MessageData);
+        }
     }
 }

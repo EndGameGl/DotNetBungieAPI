@@ -10,9 +10,9 @@ namespace NetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("collectibles")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyCollectibleDefinition>, DestinyCollectibleComponent>
             Collectibles { get; init; } =
-            Defaults
-                .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyCollectibleDefinition>,
-                    DestinyCollectibleComponent>();
+            Defaults.EmptyReadOnlyDictionary<
+                DefinitionHashPointer<DestinyCollectibleDefinition>,
+                DestinyCollectibleComponent>();
 
         /// <summary>
         ///     The hash for the root presentation node definition of Collection categories.

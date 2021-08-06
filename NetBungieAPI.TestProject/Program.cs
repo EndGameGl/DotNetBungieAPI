@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
@@ -117,7 +118,7 @@ namespace NetBungieAPI.TestProject
                     .UseDefaultProvider(@"H:\BungieNetCoreAPIRepository\Manifests")
                     .EnableLogging((mes) => Console.WriteLine(mes))
                     .PremapDefinitions()
-                    .LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
+                    .LoadAllDefinitionsOnStartup(waitEverythingToLoad: false)
                     .SetLocales(new BungieLocales[]
                     {
                         BungieLocales.EN,
@@ -129,12 +130,12 @@ namespace NetBungieAPI.TestProject
 
             Console.WriteLine($"{Process.GetCurrentProcess().PrivateMemorySize64} bytes allocated for current app.");
 
-            var generator = new HashReferencesGeneration.DefinitionHashReferencesGenerator(_bungieClient);
+            //var generator = new HashReferencesGeneration.DefinitionHashReferencesGenerator(_bungieClient);
 
-            await generator.Generate();
+            //await generator.Generate();
             
             //Console.WriteLine($"Finished dumping json.");
-            //await Task.Delay(Timeout.Infinite);
+            await Task.Delay(Timeout.Infinite);
         }
 
         private static void RunDeepEqualityCheck<T>(List<T> collection) where T : IDeepEquatable<T>

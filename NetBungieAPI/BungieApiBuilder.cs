@@ -21,8 +21,20 @@ namespace NetBungieAPI
                 await provider.OnLoadInternal(configuration);
                 if (configuration.Settings.ManifestVersionSettings.CheckUpdates)
                 {
-                    if (await provider.CheckForUpdates())
-                        await provider.Update();
+                    if (!configuration.Settings.DefinitionLoadingSettings.DownloadLatestManifestOnLoad)
+                    {
+                        if (await provider.CheckForUpdates())
+                            await provider.Update();
+                    }
+                    else
+                    {
+                        var manifest = await provider.GetCurrentManifest();
+                        if (!await provider.CheckExistingManifestData(manifest.Version))
+                        {
+                            await provider.Update();
+                        }
+                    }
+
                     if (configuration.Settings.ManifestVersionSettings.KeepOldVersions == false)
                         await provider.DeleteOldManifestData();
                 }
@@ -36,21 +48,24 @@ namespace NetBungieAPI
                 return client;
 
             if (configuration.Settings.DefinitionLoadingSettings.WaitAllDefinitionsToLoad)
-                Task.Run(async () =>
-                {
-                    await client.Repository.Provider.ReadDefinitionsToRepository(configuration.Settings
-                        .DefinitionLoadingSettings.AllowedDefinitions);
-                    if (configuration.Settings.DefinitionLoadingSettings.PremapDefinitionPointers)
-                        client.Repository.PremapPointers();
-                }).Wait();
+            {
+                client.Repository.Provider.ReadDefinitionsToRepository(configuration.Settings
+                    .DefinitionLoadingSettings.AllowedDefinitions).RunSynchronously();
+
+                if (configuration.Settings.DefinitionLoadingSettings.PremapDefinitionPointers)
+                    client.Repository.PremapPointers();
+            }
             else
+            {
                 Task.Run(async () =>
                 {
                     await client.Repository.Provider.ReadDefinitionsToRepository(configuration.Settings
                         .DefinitionLoadingSettings.AllowedDefinitions);
+
                     if (configuration.Settings.DefinitionLoadingSettings.PremapDefinitionPointers)
                         client.Repository.PremapPointers();
                 });
+            }
 
             return client;
         }

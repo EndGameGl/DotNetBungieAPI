@@ -6,7 +6,7 @@ namespace NetBungieAPI.Models.Destiny.Components
     ///     The base class for any component-returning object that may need to indicate information about the state of the
     ///     component being returned.
     /// </summary>
-    public record ComponentResponse
+    public abstract record ComponentResponse
     {
         [JsonPropertyName("privacy")] public ComponentPrivacySetting Privacy { get; init; }
 
