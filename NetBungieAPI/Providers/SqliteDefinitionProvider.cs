@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SQLite;
@@ -27,7 +28,7 @@ namespace NetBungieAPI.Providers
 
         private readonly string ManifestPath;
 
-        private readonly Dictionary<DestinyManifest, string> _availableManifests = new();
+        private readonly ConcurrentDictionary<DestinyManifest, string> _availableManifests = new();
         private readonly SQLiteConnection _connection;
         private DestinyManifest _currentManifest;
         private readonly Dictionary<BungieLocales, string> _databasePaths = new();
@@ -64,6 +65,8 @@ namespace NetBungieAPI.Providers
                     $"{ManifestPath}\\{UsedManifest.Version}\\MobileWorldContent\\{locale.LocaleToString()}\\{Path.GetFileName(UsedManifest.MobileWorldContentPaths[locale.LocaleToString()])}";
                 _databasePaths.Add(locale, fileLocation);
             }
+            
+            Repositories.Initialize(DefinitionLoadingSettings.Locales);
         }
 
         public override async ValueTask<IEnumerable<DestinyManifest>> GetAvailableManifests()
@@ -81,7 +84,7 @@ namespace NetBungieAPI.Providers
                 var manifestPath = files.FirstOrDefault();
                 if (manifestPath == null)
                     return;
-                if (_availableManifests.ContainsValue(version))
+                if (_availableManifests.Values.Contains(version))
                     return;
                 Logger.Log($"Found manifest at: {manifestPath}", LogType.Info);
                 var json = File.ReadAllText(manifestPath);
@@ -320,8 +323,6 @@ namespace NetBungieAPI.Providers
 
         public override async Task ReadDefinitionsToRepository(IEnumerable<DefinitionsEnum> definitionsToLoad)
         {
-            Repositories.Initialize(DefinitionLoadingSettings.Locales);
-
             foreach (var locale in DefinitionLoadingSettings.Locales)
             {
                 Repositories.SetLocaleContext(locale);

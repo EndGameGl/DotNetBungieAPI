@@ -8,12 +8,12 @@ namespace NetBungieAPI
     {
         internal static ReadOnlyCollection<T> EmptyReadOnlyCollection<T>()
         {
-            return new(Array.Empty<T>());
+            return new ReadOnlyCollection<T>(Array.Empty<T>());
         }
 
         internal static ReadOnlyDictionary<T, TValue> EmptyReadOnlyDictionary<T, TValue>()
         {
-            return new(new Dictionary<T, TValue>(0));
+            return new ReadOnlyDictionary<T, TValue>(new Dictionary<T, TValue>(0));
         }
     }
 }

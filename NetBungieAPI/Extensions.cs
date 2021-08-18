@@ -96,38 +96,73 @@ namespace NetBungieAPI
             if (source is null)
                 return new ReadOnlyCollection<DefinitionHashPointer<T>>(Array.Empty<DefinitionHashPointer<T>>());
             IList<DefinitionHashPointer<T>> convertedList = new List<DefinitionHashPointer<T>>(source.Length);
-            for (var i = 0; i < source.Length; i++) convertedList.Add(new DefinitionHashPointer<T>(source[i]));
+            for (var i = 0; i < source.Length; i++)
+                convertedList.Add(new DefinitionHashPointer<T>(source[i]));
             return new ReadOnlyCollection<DefinitionHashPointer<T>>(convertedList);
         }
 
-        internal static ReadOnlyDictionary<DefinitionHashPointer<T>, P>
-            AsReadOnlyDictionaryWithDefinitionKeyOrEmpty<T, P>(this Dictionary<uint, P> dictionary,
-                DefinitionsEnum enumValue) where T : IDestinyDefinition
+        /// <summary>
+        /// Converts <see cref="Dictionary{TKey, TValue}"/> with uint key to <see cref="ReadOnlyDictionary{TKey, TValue}"/> with <see cref="DefinitionHashPointer{T}"/> key or returns empty if value is null
+        /// </summary>
+        /// <param name="dictionary"></param>
+        /// <typeparam name="TKey"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <returns></returns>
+        internal static ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue>
+            AsReadOnlyDictionaryWithDefinitionKeyOrEmpty<TKey, TValue>(
+                this Dictionary<uint, TValue> dictionary) where TKey : IDestinyDefinition
         {
             if (dictionary is null)
-                return new ReadOnlyDictionary<DefinitionHashPointer<T>, P>(
-                    new Dictionary<DefinitionHashPointer<T>, P>(0));
-            var convertedDict = dictionary.ToDictionary(x => new DefinitionHashPointer<T>(x.Key), y => y.Value);
-            return new ReadOnlyDictionary<DefinitionHashPointer<T>, P>(convertedDict);
+                return new ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue>(
+                    new Dictionary<DefinitionHashPointer<TKey>, TValue>(0));
+            var convertedDict = dictionary
+                .ToDictionary(
+                    x => new DefinitionHashPointer<TKey>(x.Key),
+                    y => y.Value);
+            return new ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue>(convertedDict);
         }
 
-        internal static ReadOnlyDictionary<T, P> AsReadOnlyDictionaryOrEmpty<T, P>(this Dictionary<T, P> dictionary)
+        /// <summary>
+        /// Converts <see cref="Dictionary{TKey, TValue}"/> to <see cref="ReadOnlyDictionary{TKey, TValue}"/> or returns empty if value is null
+        /// </summary>
+        /// <param name="dictionary">Value to convert</param>
+        /// <typeparam name="TKey">Key type</typeparam>
+        /// <typeparam name="TValue">Value type</typeparam>
+        /// <returns></returns>
+        internal static ReadOnlyDictionary<TKey, TValue> AsReadOnlyDictionaryOrEmpty<TKey, TValue>(
+            this Dictionary<TKey, TValue> dictionary)
         {
-            if (dictionary is null)
-                return new ReadOnlyDictionary<T, P>(new Dictionary<T, P>(0));
-            return new ReadOnlyDictionary<T, P>(dictionary);
+            return dictionary is null
+                ? new ReadOnlyDictionary<TKey, TValue>(new Dictionary<TKey, TValue>(0))
+                : new ReadOnlyDictionary<TKey, TValue>(dictionary);
         }
 
-        internal static string ComponentsToWordString(this DestinyComponentType[] componentTypes)
+        /// <summary>
+        /// Converts destiny component types to query string
+        /// </summary>
+        /// <param name="componentTypes"></param>
+        /// <returns></returns>
+        internal static string ComponentsToWordString(this IEnumerable<DestinyComponentType> componentTypes)
         {
             return string.Join(',', componentTypes);
         }
 
-        internal static string ComponentsToIntString(this DestinyComponentType[] componentTypes)
+        /// <summary>
+        /// Converts destiny component types to query string
+        /// </summary>
+        /// <param name="componentTypes"></param>
+        /// <returns></returns>
+        internal static string ComponentsToIntString(this IEnumerable<DestinyComponentType> componentTypes)
         {
-            return string.Join(',', componentTypes.Select(x => (int) x));
+            return string.Join(',', componentTypes.Select(x => (int)x));
         }
 
+        /// <summary>
+        /// Converts <see cref="BungieLocales"/> to string equivalent
+        /// </summary>
+        /// <param name="locale"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static string LocaleToString(this BungieLocales locale)
         {
             return locale switch
@@ -149,14 +184,24 @@ namespace NetBungieAPI
             };
         }
 
+        /// <summary>
+        /// Converts <see cref="uint"/> hash to <see cref="int"/> value
+        /// </summary>
+        /// <param name="hash"></param>
+        /// <returns></returns>
         public static int ToInt32(this uint hash)
         {
-            return unchecked((int) hash);
+            return unchecked((int)hash);
         }
 
+        /// <summary>
+        /// Converts <see cref="int"/> hash to <see cref="uint"/> value
+        /// </summary>
+        /// <param name="hash"></param>
+        /// <returns></returns>
         public static uint ToUInt32(this int hash)
         {
-            return unchecked((uint) hash);
+            return unchecked((uint)hash);
         }
 
         #region Activity search
@@ -165,7 +210,7 @@ namespace NetBungieAPI
             this ILocalisedDestinyDefinitionRepositories repository, BungieLocales locale, uint activityModeHash)
         {
             return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale,
-                x => ((DestinyActivityDefinition) x).ActivityModes.Any(q => q.Hash.Equals(activityModeHash))).ToList();
+                x => ((DestinyActivityDefinition)x).ActivityModes.Any(q => q.Hash.Equals(activityModeHash))).ToList();
         }
 
         public static List<DestinyActivityDefinition> GetActivitiesWithMode(

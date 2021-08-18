@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.Interfaces;
@@ -44,6 +45,16 @@ namespace NetBungieAPI.Clients
         /// <returns></returns>
         Task DownloadLatestManifestLocally();
 
+        /// <summary>
+        ///     Creates a scoped user client, that doesn't need user to pass token manually
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
         IUserContextBungieClient ScopeToUser(AuthorizationTokenData token);
+
+        /// <summary>
+        ///     Signals that definitions finished loading.
+        /// </summary>
+        event Action DefinitionsLoaded;
     }
 }

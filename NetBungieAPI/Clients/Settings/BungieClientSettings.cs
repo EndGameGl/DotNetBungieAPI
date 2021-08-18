@@ -8,11 +8,29 @@ using NetBungieAPI.Providers;
 
 namespace NetBungieAPI.Clients.Settings
 {
+    /// <summary>
+    /// Class that contains all settings to be used within this lib
+    /// </summary>
     public class BungieClientSettings
     {
+        /// <summary>
+        /// Settings that are used for identifying client
+        /// </summary>
         public ClientIdentificationSettings IdentificationSettings { get; } = ClientIdentificationSettings.Default;
+
+        /// <summary>
+        ///  Settings that are used for handling manifest versions
+        /// </summary>
         public ManifestVersionSettings ManifestVersionSettings { get; } = ManifestVersionSettings.Default;
+
+        /// <summary>
+        /// Settings that are used for handling definition loading
+        /// </summary>
         public DefinitionLoadingSettings DefinitionLoadingSettings { get; } = DefinitionLoadingSettings.Default;
+
+        /// <summary>
+        /// Some internal settings (as of now, it's mostly logging)
+        /// </summary>
         internal InternalSettings InternalSettings { get; } = InternalSettings.Default;
 
 
@@ -175,12 +193,21 @@ namespace NetBungieAPI.Clients.Settings
             return this;
         }
 
+        /// <summary>
+        /// Use default provider for this lib (<see cref="SqliteDefinitionProvider"/>)
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         public BungieClientSettings UseDefaultProvider(string filePath)
         {
             DefinitionLoadingSettings.UsedProvider = new SqliteDefinitionProvider(filePath);
             return this;
         }
 
+        /// <summary>
+        /// Some actions to take after configuration is finished
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         internal void AfterConfigurated()
         {
             var assemblyData = StaticUnityContainer.GetAssemblyData();

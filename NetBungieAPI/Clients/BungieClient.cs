@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
 using NetBungieAPI.Logging;
 using NetBungieAPI.Repositories;
@@ -67,10 +68,20 @@ namespace NetBungieAPI.Clients
             await Repository.Provider.DownloadNewManifestData(await Repository.Provider.GetCurrentManifest());
         }
 
+        /// <summary>
+        /// <inheritdoc cref="IBungieClient.ScopeToUser" />
+        /// </summary>
+        /// <param name="token">Auth token</param>
+        /// <returns></returns>
         public IUserContextBungieClient ScopeToUser(AuthorizationTokenData token)
         {
             return new UserContextBungieClient(Repository, token, Authentication, ApiAccess);
         }
+
+        /// <summary>
+        /// <inheritdoc cref="IBungieClient.DefinitionsLoaded" />
+        /// </summary>
+        public event Action DefinitionsLoaded;
 
         /// <summary>
         ///     <inheritdoc cref="IBungieClient.AddListener" />
@@ -80,6 +91,11 @@ namespace NetBungieAPI.Clients
         {
             if (_logListener is not null)
                 _logListener.OnNewMessage += eventHandler;
+        }
+
+        internal void SignalDefinitionsLoadedInternal()
+        {
+            DefinitionsLoaded?.Invoke();
         }
     }
 }

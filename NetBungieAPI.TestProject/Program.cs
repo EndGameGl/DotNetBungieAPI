@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using NetBungieAPI.HashReferences;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Definitions.Achievements;
@@ -117,14 +118,15 @@ namespace NetBungieAPI.TestProject
                                               ApplicationScopes.ReadBasicUserProfile)
                     .UseDefaultProvider(@"H:\BungieNetCoreAPIRepository\Manifests")
                     .EnableLogging((mes) => Console.WriteLine(mes))
-                    .PremapDefinitions()
-                    .LoadAllDefinitionsOnStartup(waitEverythingToLoad: false)
+                    //.PremapDefinitions()
+                    //.LoadAllDefinitionsOnStartup(waitEverythingToLoad: false)
                     .SetLocales(new BungieLocales[]
                     {
                         BungieLocales.EN,
                     })
                     .SetUpdateBehaviour(true, true);
             });
+            //_bungieClient.DefinitionsLoaded += () => Console.WriteLine("Finished loading definitions");
             sw.Stop();
             Console.WriteLine($"Startup in: {sw.ElapsedMilliseconds} ms");
 
@@ -135,6 +137,11 @@ namespace NetBungieAPI.TestProject
             //await generator.Generate();
             
             //Console.WriteLine($"Finished dumping json.");
+
+            var someItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(DefinitionHashes.InventoryItems.Adored);
+
+            someItem.TryGetDefinition(out var adored);
+
             await Task.Delay(Timeout.Infinite);
         }
 
@@ -167,6 +174,17 @@ namespace NetBungieAPI.TestProject
             var sw = new Stopwatch();
             sw.Start();
             action.Invoke();
+            sw.Stop();
+            if (writeResult)
+                Console.WriteLine($"{sw.ElapsedMilliseconds} ms elapsed.");
+            return sw.ElapsedMilliseconds;
+        }
+
+        private static async ValueTask<long> MeasureOperationAsync(Task task, bool writeResult = true)
+        {
+            var sw = new Stopwatch();
+            sw.Start();
+            await task.ConfigureAwait(false);
             sw.Stop();
             if (writeResult)
                 Console.WriteLine($"{sw.ElapsedMilliseconds} ms elapsed.");

@@ -15,17 +15,27 @@ using NetBungieAPI.Providers.Json;
 
 namespace NetBungieAPI.Providers
 {
+    /// <summary>
+    /// Definition provider based of json files
+    /// </summary>
     public class JsonFileDefinitionProvider : DefinitionProvider
     {
         private readonly string ManifestPath;
         private readonly Dictionary<BungieLocales, JsonAggregateDefinitionMapping> _fileMappings = new();
         private readonly Dictionary<BungieLocales, string> _filePaths = new();
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="manifestsPath">path to manifest</param>
         public JsonFileDefinitionProvider(string manifestsPath)
         {
             ManifestPath = manifestsPath;
         }
 
+        /// <summary>
+        /// <inheritdoc cref="DefinitionProvider.OnLoad"/>
+        /// </summary>
         public override async Task OnLoad()
         {
             foreach (var locale in DefinitionLoadingSettings.Locales)
@@ -37,6 +47,9 @@ namespace NetBungieAPI.Providers
             }
         }
 
+        /// <summary>
+        /// <inheritdoc cref="DefinitionProvider.OnLoadInternal"/>
+        /// </summary>
         private void OnLoadInternal(BungieLocales locale, string path)
         {
             _fileMappings.Add(locale, new JsonAggregateDefinitionMapping());
@@ -53,7 +66,7 @@ namespace NetBungieAPI.Providers
                     case 1:
                         if (Enum.TryParse<DefinitionsEnum>(reader.GetString(), out var enumValue))
                         {
-                            if (((IList) DefinitionLoadingSettings.AllowedDefinitions).Contains(enumValue))
+                            if (((IList)DefinitionLoadingSettings.AllowedDefinitions).Contains(enumValue))
                             {
                                 currentReadValue = enumValue;
                                 _fileMappings[locale].Mappings.Add(enumValue, new JsonAggregateDefinitionTypeMapping());
@@ -109,7 +122,7 @@ namespace NetBungieAPI.Providers
                         await fileStream.ReadAsync(buffer.AsMemory(0, buffer.Length));
                         Repositories.AddDefinitionToCache(
                             fileMapping.Key,
-                            (IDestinyDefinition) await SerializationHelper.DeserializeAsync(buffer, type),
+                            (IDestinyDefinition)await SerializationHelper.DeserializeAsync(buffer, type),
                             filePath.Key);
                     }
                 }
@@ -122,7 +135,7 @@ namespace NetBungieAPI.Providers
             await using var fileStream = File.OpenRead(_filePaths[locale]);
             var buffer = new byte[location.Length];
             fileStream.Position = location.Position;
-            await fileStream.ReadAsync(buffer.AsMemory(0, (int) location.Length));
+            await fileStream.ReadAsync(buffer.AsMemory(0, (int)location.Length));
             return await SerializationHelper.DeserializeAsync<T>(buffer);
         }
 
@@ -133,7 +146,7 @@ namespace NetBungieAPI.Providers
             await using var fileStream = File.OpenRead(_filePaths[locale]);
             var buffer = new byte[location.Length];
             fileStream.Position = location.Position;
-            await fileStream.ReadAsync(buffer.AsMemory(0, (int) location.Length));
+            await fileStream.ReadAsync(buffer.AsMemory(0, (int)location.Length));
             return Encoding.UTF8.GetString(buffer);
         }
 
@@ -148,7 +161,7 @@ namespace NetBungieAPI.Providers
                 var location = _fileMappings[locale].Mappings[DefinitionHashPointer<T>.EnumValue].DefinitionsData[hash];
                 buffer = new byte[location.Length];
                 fileStream.Position = location.Position;
-                await fileStream.ReadAsync(buffer.AsMemory(0, (int) location.Length));
+                await fileStream.ReadAsync(buffer.AsMemory(0, (int)location.Length));
                 results.Add(await SerializationHelper.DeserializeAsync<T>(buffer));
             }
 
@@ -162,6 +175,13 @@ namespace NetBungieAPI.Providers
                 DefinitionsEnum.DestinyHistoricalStatsDefinition);
         }
 
+        /// <summary>
+        /// <inheritdoc cref="DefinitionProvider.LoadHistoricalStatsDefinitionAsJson"/>
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="locale"></param>
+        /// <returns></returns>
+        /// <exception cref="ProviderUnsupportedException"></exception>
         public override async ValueTask<string> LoadHistoricalStatsDefinitionAsJson(string id, BungieLocales locale)
         {
             throw new ProviderUnsupportedException("This definition is not supported for current provider",
@@ -178,7 +198,7 @@ namespace NetBungieAPI.Providers
                 var location = hashData.Value;
                 buffer = new byte[location.Length];
                 fileStream.Position = location.Position;
-                await fileStream.ReadAsync(buffer.AsMemory(0, (int) location.Length));
+                await fileStream.ReadAsync(buffer.AsMemory(0, (int)location.Length));
                 results.Add(await SerializationHelper.DeserializeAsync<T>(buffer));
             }
 

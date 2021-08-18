@@ -112,11 +112,11 @@ namespace NetBungieAPI.Services
             requestMessage.Content.Headers.ContentType.MediaType = "application/x-www-form-urlencoded";
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var response = await _httpClient.SendAsync(requestMessage);
+            var response = await _httpClient.SendAsync(requestMessage).ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
                 return await _serializationHelper.DeserializeAsync<AuthorizationTokenData>(
-                    await response.Content.ReadAsStreamAsync());
+                    await response.Content.ReadAsStreamAsync()).ConfigureAwait(false);
 
             throw new Exception("Failed to fetch token.");
         }
