@@ -13,12 +13,8 @@ namespace NetBungieAPI.Repositories
     public interface ILocalisedDestinyDefinitionRepositories
     {
         DefinitionProvider Provider { get; set; }
-        BungieLocales CurrentLocaleLoadContext { get; }
-        void SetLocaleContext(BungieLocales locale);
-        void ResetLocaleContext();
         void Initialize(BungieLocales[] locales);
         void LoadAllDataFromDisk(string localManifestPath, DestinyManifest manifest);
-        void AddDefinitionToCache(DefinitionsEnum definitionType, IDestinyDefinition defValue, BungieLocales locale);
 
         bool TryGetDestinyDefinition(DefinitionsEnum definitionType, uint key, BungieLocales locale,
             out IDestinyDefinition definition);

@@ -35,6 +35,10 @@ namespace NetBungieAPI.Models.Destiny.Definitions.PowerCaps
         {
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+        }
+
         public override string ToString()
         {
             return $"{Hash}";

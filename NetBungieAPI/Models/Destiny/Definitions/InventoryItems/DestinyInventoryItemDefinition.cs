@@ -696,6 +696,136 @@ namespace NetBungieAPI.Models.Destiny.Definitions.InventoryItems
             Season.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            Collectible.SetLocale(locale);
+            SummaryItem.SetLocale(locale);
+            foreach (var itemCategory in ItemCategories) itemCategory.SetLocale(locale);
+
+            BreakerType.SetLocale(locale);
+            DefaultDamageType.SetLocale(locale);
+            if (Stats != null)
+            {
+                Stats.StatGroup.SetLocale(locale);
+                Stats.PrimaryBaseStat.SetLocale(locale);
+                foreach (var stat in Stats.Stats)
+                {
+                    stat.Key.SetLocale(locale);
+                    stat.Value.Stat.SetLocale(locale);
+                }
+            }
+
+            TalentGrid?.TalentGrid.SetLocale(locale);
+            if (Value != null)
+                foreach (var value in Value.ItemValue)
+                    value.Item.SetLocale(locale);
+
+            if (SetData != null)
+                foreach (var setDataItem in SetData.ItemList)
+                    setDataItem.Item.SetLocale(locale);
+
+            if (Plug != null)
+            {
+                Plug.EnabledMaterialRequirement.SetLocale(locale);
+                Plug.EnergyCapacity?.EnergyType.SetLocale(locale);
+                Plug.EnergyCost?.EnergyType.SetLocale(locale);
+                Plug.InsertionMaterialRequirement.SetLocale(locale);
+                //Plug.PlugCategory.TryMapValue();
+                Plug.PreviewItemOverride.SetLocale(locale);
+            }
+
+            if (Preview != null)
+            {
+                Preview.Artifact.SetLocale(locale);
+                Preview.PreviewVendor.SetLocale(locale);
+                foreach (var category in Preview.DerivedItemCategories)
+                foreach (var item in category.Items)
+                    item.Item.SetLocale(locale);
+            }
+
+            if (Quality != null)
+            {
+                Quality.ProgressionLevelRequirement.SetLocale(locale);
+                foreach (var version in Quality.Versions) version.PowerCap.SetLocale(locale);
+            }
+
+            if (Objectives != null)
+            {
+                foreach (var activity in Objectives.DisplayActivities) activity.SetLocale(locale);
+
+                foreach (var objective in Objectives.Objectives) objective.SetLocale(locale);
+
+                Objectives.QuestlineItem.SetLocale(locale);
+                foreach (var property in Objectives.PerObjectiveDisplayProperties) property.Activity.SetLocale(locale);
+            }
+
+            Inventory.BucketType.SetLocale(locale);
+            Inventory.TierType.SetLocale(locale);
+            Inventory.RecoveryBucketType.SetLocale(locale);
+            if (Action != null)
+            {
+                foreach (var reward in Action.ProgressionRewards) reward.ProgressionMapping.SetLocale(locale);
+
+                foreach (var item in Action.RequiredItems) item.Item.SetLocale(locale);
+                //Action.RewardSheet.TryMapValue();
+            }
+
+            if (EquippingBlock is not null)
+            {
+                EquippingBlock.EquipmentSlotType.SetLocale(locale);
+                EquippingBlock.GearsetItem.SetLocale(locale);
+            }
+
+            if (Sockets is not null)
+            {
+                foreach (var intrinsicSocket in Sockets.IntrinsicSockets)
+                {
+                    intrinsicSocket.PlugItem.SetLocale(locale);
+                    intrinsicSocket.SocketType.SetLocale(locale);
+                }
+
+                foreach (var socketCategory in Sockets.SocketCategories)
+                    socketCategory.SocketCategory.SetLocale(locale);
+
+                foreach (var socket in Sockets.SocketEntries)
+                {
+                    socket.RandomizedPlugSet.SetLocale(locale);
+                    socket.ReusablePlugSet.SetLocale(locale);
+                    socket.SingleInitialItem.SetLocale(locale);
+                    socket.SocketType.SetLocale(locale);
+                }
+            }
+
+            foreach (var stat in InvestmentStats) stat.StatType.SetLocale(locale);
+
+            foreach (var perk in Perks) perk.Perk.SetLocale(locale);
+
+            if (Gearset != null)
+                foreach (var item in Gearset.Items)
+                    item.SetLocale(locale);
+
+            EmblemObjective.SetLocale(locale);
+            if (SourceData != null)
+            {
+                foreach (var rewardSource in SourceData.RewardSources) rewardSource.SetLocale(locale);
+
+                foreach (var source in SourceData.Sources)
+                foreach (var sourceSource in source.Sources)
+                    sourceSource.SetLocale(locale);
+
+                foreach (var vendorSource in SourceData.VendorSources) vendorSource.Vendor.SetLocale(locale);
+            }
+
+            if (Metrics != null)
+                foreach (var node in Metrics.AvailableMetricCategoryNodes)
+                    node.SetLocale(locale);
+
+            Lore.SetLocale(locale);
+            foreach (var type in DamageTypes) type.SetLocale(locale);
+
+            Season.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";

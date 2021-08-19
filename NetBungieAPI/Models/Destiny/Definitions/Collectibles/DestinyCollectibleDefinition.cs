@@ -103,6 +103,21 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Collectibles
             foreach (var trait in Traits) trait.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            AcquisitionInfo?.AcquireMaterialRequirement.SetLocale(locale);
+            AcquisitionInfo?.AcquireTimestampUnlockValue.SetLocale(locale);
+            if (PresentationInfo != null)
+                foreach (var node in PresentationInfo.ParentPresentationNodes)
+                    node.SetLocale(locale);
+
+            Item.SetLocale(locale);
+            foreach (var node in ParentNodes) node.SetLocale(locale);
+
+            StateInfo?.ObscuredOverrideItem.SetLocale(locale);
+            foreach (var trait in Traits) trait.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";

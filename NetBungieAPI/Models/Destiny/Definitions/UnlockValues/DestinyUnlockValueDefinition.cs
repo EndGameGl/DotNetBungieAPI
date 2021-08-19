@@ -30,5 +30,9 @@ namespace NetBungieAPI.Models.Destiny.Definitions.UnlockValues
         public void MapValues()
         {
         }
+
+        public void SetPointerLocales(BungieLocales locale)
+        {
+        }
     }
 }

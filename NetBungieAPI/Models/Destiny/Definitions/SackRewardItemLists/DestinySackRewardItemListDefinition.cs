@@ -29,6 +29,10 @@ namespace NetBungieAPI.Models.Destiny.Definitions.SackRewardItemLists
         {
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+        }
+
         public override string ToString()
         {
             return $"{Hash}";

@@ -267,6 +267,52 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Milestones
             foreach (var vendor in Vendors) vendor.Vendor.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            foreach (var activity in Activities)
+            {
+                activity.Activity.SetLocale(locale);
+                foreach (var node in activity.ActivityGraphNodes) node.ActivityGraph.SetLocale(locale);
+
+                foreach (var challenge in activity.Challenges) challenge.ChallengeObjective.SetLocale(locale);
+            }
+
+            foreach (var quest in Quests)
+            {
+                quest.Key.SetLocale(locale);
+                quest.Value.Destination.SetLocale(locale);
+                foreach (var activity in quest.Value.Activities)
+                {
+                    activity.Key.SetLocale(locale);
+                    activity.Value.ConceptualActivity.SetLocale(locale);
+                    foreach (var activityVariant in activity.Value.Variants)
+                    {
+                        activityVariant.Key.SetLocale(locale);
+                        activityVariant.Value.Activity.SetLocale(locale);
+                    }
+                }
+
+                quest.Value.QuestItem.SetLocale(locale);
+                if (quest.Value.QuestRewards != null)
+                    foreach (var item in quest.Value.QuestRewards.Items)
+                    {
+                        item.Vendor.SetLocale(locale);
+                        item.Item.SetLocale(locale);
+                    }
+            }
+
+            foreach (var reward in Rewards)
+            foreach (var entry in reward.Value.RewardEntries)
+            {
+                entry.Value.Vendor.SetLocale(locale);
+                foreach (var item in entry.Value.Items)
+                    //item.Vendor.TryMapValue();
+                    item.Item.SetLocale(locale);
+            }
+
+            foreach (var vendor in Vendors) vendor.Vendor.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";

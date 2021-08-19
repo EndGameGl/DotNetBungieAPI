@@ -143,6 +143,13 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ActivityModes
             foreach (var parentMode in ParentModes) parentMode.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            foreach (var actMode in ActivityModeMappings.Keys) actMode.SetLocale(locale);
+
+            foreach (var parentMode in ParentModes) parentMode.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";

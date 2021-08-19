@@ -65,7 +65,7 @@ namespace NetBungieAPI.Providers
                     $"{ManifestPath}\\{UsedManifest.Version}\\MobileWorldContent\\{locale.LocaleToString()}\\{Path.GetFileName(UsedManifest.MobileWorldContentPaths[locale.LocaleToString()])}";
                 _databasePaths.Add(locale, fileLocation);
             }
-            
+
             Repositories.Initialize(DefinitionLoadingSettings.Locales);
         }
 
@@ -145,6 +145,7 @@ namespace NetBungieAPI.Providers
                 Directory.Delete(manifestPath);
             }
         }
+
         public override async ValueTask<bool> CheckExistingManifestData(string version)
         {
             return (await GetAvailableManifests()).Any(x => x.Version == version);
@@ -321,18 +322,22 @@ namespace NetBungieAPI.Providers
 
         #region Definition loading
 
+        /// <summary>
+        /// <inheritdoc cref="DefinitionProvider.ReadDefinitionsToRepository"/>
+        /// </summary>
+        /// <param name="definitionsToLoad"></param>
         public override async Task ReadDefinitionsToRepository(IEnumerable<DefinitionsEnum> definitionsToLoad)
         {
             foreach (var locale in DefinitionLoadingSettings.Locales)
             {
-                Repositories.SetLocaleContext(locale);
                 Logger.Log($"Loading locale: {locale}.", LogType.Info);
                 _connection.ConnectionString = $"Data Source={_databasePaths[locale]}; Version=3;";
                 _connection.Open();
-                foreach (var definitionType in definitionsToLoad)
+
+                Parallel.ForEach(definitionsToLoad, (definitionType) =>
                 {
                     if (_nonExistInSqliteDefinitions.Contains(definitionType))
-                        continue;
+                        return;
                     Logger.Log($"Loading definitions: {definitionType}.", LogType.Info);
                     var runtimeType = AssemblyData.DefinitionsToTypeMapping[definitionType].DefinitionType;
                     var commandObj = new SQLiteCommand
@@ -344,12 +349,13 @@ namespace NetBungieAPI.Providers
                     while (reader.Read())
                     {
                         var parsedDefinition =
-                            (IDestinyDefinition)await SerializationHelper.DeserializeAsync(
+                            (IDestinyDefinition)SerializationHelper.Deserialize(
                                 (byte[])reader[1],
                                 runtimeType);
+                        parsedDefinition.SetPointerLocales(locale);
                         Repositories.AddDefinition(definitionType, locale, parsedDefinition);
                     }
-                }
+                });
 
                 Logger.Log("Loading definitions: DestinyHistoricalStatsDefinition.", LogType.Info);
                 var historicalFetchCommand = new SQLiteCommand
@@ -366,7 +372,6 @@ namespace NetBungieAPI.Providers
                 }
 
                 _connection.Close();
-                Repositories.ResetLocaleContext();
             }
         }
 
@@ -388,6 +393,7 @@ namespace NetBungieAPI.Providers
             }
 
             _connection.Close();
+            result.SetPointerLocales(locale);
             return result;
         }
 
@@ -430,7 +436,9 @@ namespace NetBungieAPI.Providers
                 while (reader.Read())
                 {
                     var byteArray = (byte[])reader[1];
-                    tempCollection.Add(await SerializationHelper.DeserializeAsync<T>(byteArray));
+                    var def = await SerializationHelper.DeserializeAsync<T>(byteArray);
+                    def.SetPointerLocales(locale);
+                    tempCollection.Add(def);
                 }
             }
 
@@ -498,11 +506,109 @@ namespace NetBungieAPI.Providers
             while (reader.Read())
             {
                 var byteArray = (byte[])reader[1];
-                tempCollection.Add(await SerializationHelper.DeserializeAsync<T>(byteArray));
+                var def = await SerializationHelper.DeserializeAsync<T>(byteArray);
+                def.SetPointerLocales(locale);
+                tempCollection.Add(def);
             }
 
             _connection.Close();
             return new ReadOnlyCollection<T>(tempCollection);
+        }
+
+        public async IAsyncEnumerable<T> GetDefinitionsAsync<T>(BungieLocales locale) where T : IDestinyDefinition
+        {
+            _connection.ConnectionString = $"Data Source={_databasePaths[locale]}; Version=3;";
+            _connection.Open();
+
+            var commandObj = new SQLiteCommand
+            {
+                Connection = _connection,
+                CommandText = $"SELECT * FROM {DefinitionHashPointer<T>.EnumValue}"
+            };
+
+            var reader = commandObj.ExecuteReader();
+            while (reader.Read())
+            {
+                var byteArray = (byte[])reader[1];
+                var result = await SerializationHelper.DeserializeAsync<T>(byteArray).ConfigureAwait(false);
+                result.SetPointerLocales(locale);
+                yield return result;
+            }
+
+            _connection.Close();
+        }
+
+        public async IAsyncEnumerable<T> GetDefinitionsRangeAsync<T>(BungieLocales locale, int offset, int amount)
+            where T : IDestinyDefinition
+        {
+            _connection.ConnectionString = $"Data Source={_databasePaths[locale]}; Version=3;";
+            _connection.Open();
+
+            var commandObj = new SQLiteCommand
+            {
+                Connection = _connection,
+                CommandText = $"SELECT * FROM {DefinitionHashPointer<T>.EnumValue}"
+            };
+
+            var reader = commandObj.ExecuteReader();
+            var counter = 0;
+            var amountRead = 0;
+            while (reader.Read())
+            {
+                if (counter < offset)
+                {
+                    counter++;
+                    continue;
+                }
+
+                if (amountRead >= amount)
+                    break;
+                var byteArray = (byte[])reader[1];
+                var result = await SerializationHelper.DeserializeAsync<T>(byteArray);
+                result.SetPointerLocales(locale);
+                amountRead++;
+                yield return result;
+            }
+
+            _connection.Close();
+        }
+
+        public async IAsyncEnumerable<T> GetDefinitionsFilteredRangeAsync<T>(BungieLocales locale, int offset,
+            int amount, Func<T, bool> condition)
+            where T : IDestinyDefinition
+        {
+            _connection.ConnectionString = $"Data Source={_databasePaths[locale]}; Version=3;";
+            _connection.Open();
+
+            var commandObj = new SQLiteCommand
+            {
+                Connection = _connection,
+                CommandText = $"SELECT * FROM {DefinitionHashPointer<T>.EnumValue}"
+            };
+
+            var reader = commandObj.ExecuteReader();
+            var counter = 0;
+            var amountRead = 0;
+            while (reader.Read())
+            {
+                if (counter < offset)
+                {
+                    counter++;
+                    continue;
+                }
+
+                if (amountRead >= amount)
+                    break;
+                var byteArray = (byte[])reader[1];
+                var result = await SerializationHelper.DeserializeAsync<T>(byteArray);
+                result.SetPointerLocales(locale);
+                if (!condition(result))
+                    continue;
+                amountRead++;
+                yield return result;
+            }
+
+            _connection.Close();
         }
 
         #endregion

@@ -58,6 +58,10 @@ namespace NetBungieAPI.Models.Destiny.Definitions.DamageTypes
         {
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";

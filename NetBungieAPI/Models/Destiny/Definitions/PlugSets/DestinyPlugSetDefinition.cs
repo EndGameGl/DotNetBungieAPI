@@ -65,6 +65,11 @@ namespace NetBungieAPI.Models.Destiny.Definitions.PlugSets
             foreach (var item in ReusablePlugItems) item.PlugItem.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            foreach (var item in ReusablePlugItems) item.PlugItem.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties?.Description}";

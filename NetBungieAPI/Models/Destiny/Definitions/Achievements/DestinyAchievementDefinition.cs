@@ -41,6 +41,12 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Achievements
 
         public void MapValues()
         {
+            return;
+        }
+
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            return;
         }
 
         public override string ToString()

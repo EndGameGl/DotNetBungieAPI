@@ -67,7 +67,7 @@ namespace NetBungieAPI
         /// <summary>
         ///     Definition locale
         /// </summary>
-        public BungieLocales Locale { get; }
+        public BungieLocales Locale { get; internal set; } = BungieLocales.EN;
 
         /// <summary>
         ///     Whether this hash isn't empty.
@@ -79,12 +79,19 @@ namespace NetBungieAPI
         ///     .ctor
         /// </summary>
         /// <param name="hash">Definition hash</param>
-        public DefinitionHashPointer(uint? hash)
+        internal DefinitionHashPointer(uint? hash)
         {
             _value = default;
             _isMapped = false;
             Hash = hash;
-            Locale = _repository.CurrentLocaleLoadContext;
+        }
+
+        public DefinitionHashPointer(uint hash, BungieLocales locale)
+        {
+            _value = default;
+            _isMapped = false;
+            Hash = hash;
+            Locale = locale;
         }
 
         /// <summary>
@@ -94,6 +101,17 @@ namespace NetBungieAPI
         /// <returns>True, if found, False otherwise</returns>
         public bool TryGetDefinition(out T definition)
         {
+            return TryGetDefinitionFromOtherLocale(Locale, out definition);
+        }
+
+        /// <summary>
+        /// Tries to get definition from local cache/given provider with specified locale
+        /// </summary>
+        /// <param name="locale"></param>
+        /// <param name="definition"></param>
+        /// <returns></returns>
+        public bool TryGetDefinitionFromOtherLocale(BungieLocales locale, out T definition)
+        {
             definition = default;
             if (_isMapped)
             {
@@ -101,31 +119,31 @@ namespace NetBungieAPI
                 return true;
             }
 
-            if (HasValidHash && _repository.TryGetDestinyDefinition(Hash!.Value, Locale, out definition))
+            if (HasValidHash && _repository.TryGetDestinyDefinition(Hash.Value, locale, out definition))
             {
                 _value = definition;
                 _isMapped = true;
                 return true;
             }
 
-            definition = Task.Run(async () => await _repository.Provider.LoadDefinition<T>(Hash!.Value, Locale))
-                .ConfigureAwait(false).GetAwaiter().GetResult();
-
-            if (definition is not null)
+            try
             {
-                _value = definition;
-                _isMapped = true;
-                return true;
-            }
+                var loadTask = _repository.Provider.LoadDefinition<T>(Hash.Value, locale);
+                definition = loadTask.ConfigureAwait(false).GetAwaiter().GetResult();
 
+                if (definition is not null)
+                {
+                    _value = definition;
+                    _isMapped = true;
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            
             return false;
-        }
-
-        public bool TryGetDefinitionFromOtherLocale(BungieLocales locale, out T definition)
-        {
-            definition = default;
-            return HasValidHash &&
-                   _repository.TryGetDestinyDefinition(Hash.Value, locale, out definition);
         }
 
         /// <summary>
@@ -139,7 +157,7 @@ namespace NetBungieAPI
 
             var response =
                 await _destiny2MethodsAccess
-                    .GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash.Value);
+                    .GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash!.Value);
 
             if (response.IsSuccessfulResponseCode && response.Response is not null)
                 return new DefinitionHashPointerDownloadResult<T>(response.Response, true);
@@ -184,6 +202,11 @@ namespace NetBungieAPI
                    Hash == other.Hash &&
                    DefinitionEnumType == other.DefinitionEnumType &&
                    Locale == other.Locale;
+        }
+
+        internal void SetLocale(BungieLocales locale)
+        {
+            Locale = locale;
         }
     }
 }

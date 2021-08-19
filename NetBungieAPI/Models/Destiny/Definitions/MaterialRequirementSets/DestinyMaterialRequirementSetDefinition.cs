@@ -42,6 +42,11 @@ namespace NetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets
             foreach (var material in Materials) material.Item.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            foreach (var material in Materials) material.Item.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash}";

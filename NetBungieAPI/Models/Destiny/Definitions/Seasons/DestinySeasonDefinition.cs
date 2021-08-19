@@ -101,6 +101,16 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Seasons
             SeasonPassUnlock.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            ArtifactItem.SetLocale(locale);
+            SealPresentationNode.SetLocale(locale);
+            SeasonalChallengesPresentationNode.SetLocale(locale);
+            SeasonPass.SetLocale(locale);
+            SeasonPassProgression.SetLocale(locale);
+            SeasonPassUnlock.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}";

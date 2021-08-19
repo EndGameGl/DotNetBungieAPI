@@ -53,6 +53,10 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Unlocks
         {
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";

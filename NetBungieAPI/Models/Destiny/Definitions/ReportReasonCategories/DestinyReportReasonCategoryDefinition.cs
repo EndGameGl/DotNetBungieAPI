@@ -48,6 +48,10 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ReportReasonCategories
         {
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+        }
+
 
         public override string ToString()
         {

@@ -140,6 +140,17 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Progressions
             Faction.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            foreach (var item in RewardItems) item.Item.SetLocale(locale);
+
+            foreach (var step in Steps)
+            foreach (var item in step.RewardItems)
+                item.Item.SetLocale(locale);
+
+            Faction.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";

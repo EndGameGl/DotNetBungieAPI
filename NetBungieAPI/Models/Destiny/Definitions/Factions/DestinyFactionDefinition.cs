@@ -98,6 +98,20 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Factions
             }
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            Progression.SetLocale(locale);
+            RewardItem.SetLocale(locale);
+            RewardVendor.SetLocale(locale);
+            foreach (var item in TokenValues.Keys) item.SetLocale(locale);
+
+            foreach (var vendor in Vendors)
+            {
+                vendor.Destination.SetLocale(locale);
+                vendor.Vendor.SetLocale(locale);
+            }
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";

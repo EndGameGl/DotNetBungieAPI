@@ -57,6 +57,11 @@ namespace NetBungieAPI.Models.Destiny.Definitions.SandboxPatterns
             foreach (var filter in Filters) filter.Stat.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            foreach (var filter in Filters) filter.Stat.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash}";

@@ -137,6 +137,37 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Records
                     node.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            if (IntervalInfo != null)
+            {
+                foreach (var objective in IntervalInfo.IntervalObjectives) objective.IntervalObjective.SetLocale(locale);
+
+                foreach (var reward in IntervalInfo.IntervalRewards)
+                foreach (var item in reward.IntervalRewardItems)
+                    item.Item.SetLocale(locale);
+            }
+
+            if (TitleInfo != null)
+            {
+                TitleInfo.GildingTrackingRecord.SetLocale(locale);
+                foreach (var gender in TitleInfo.TitlesByGenderHash.Keys) gender.SetLocale(locale);
+            }
+
+            foreach (var objective in Objectives) objective.SetLocale(locale);
+
+            foreach (var node in ParentNodes) node.SetLocale(locale);
+
+            foreach (var item in RewardItems) item.Item.SetLocale(locale);
+
+            foreach (var trait in Traits) trait.SetLocale(locale);
+
+            Lore.SetLocale(locale);
+            if (PresentationInfo is not null)
+                foreach (var node in PresentationInfo.ParentPresentationNodes)
+                    node.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";

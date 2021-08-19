@@ -357,6 +357,52 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Activities
             }
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            foreach (var activityGraph in ActivityGraphList) activityGraph.ActivityGraph.SetLocale(locale);
+
+            foreach (var activityLocationMapping in ActivityLocationMappings)
+            {
+                activityLocationMapping.Activity.SetLocale(locale);
+                activityLocationMapping.Item.SetLocale(locale);
+                activityLocationMapping.Location.SetLocale(locale);
+                activityLocationMapping.Objective.SetLocale(locale);
+            }
+
+            foreach (var activityMode in ActivityModes) activityMode.SetLocale(locale);
+
+            ActivityType.SetLocale(locale);
+            foreach (var challenge in Challenges)
+            {
+                challenge.Objective.SetLocale(locale);
+                foreach (var dummyReward in challenge.DummyRewards) dummyReward.Item.SetLocale(locale);
+            }
+
+            Destination.SetLocale(locale);
+            DirectActivityMode.SetLocale(locale);
+            foreach (var modifier in Modifiers) modifier.ActivityModifier.SetLocale(locale);
+
+            Place.SetLocale(locale);
+            foreach (var playlistItem in PlaylistItems)
+            {
+                playlistItem.Activity.SetLocale(locale);
+                playlistItem.DirectActivityMode.SetLocale(locale);
+                foreach (var playlistItemActivityMode in playlistItem.ActivityModes)
+                    playlistItemActivityMode.SetLocale(locale);
+            }
+
+            foreach (var reward in Rewards)
+            foreach (var rewardItem in reward.RewardItems)
+                rewardItem.Item.SetLocale(locale);
+
+            foreach (var loadout in Loadouts)
+            foreach (var requirement in loadout.Requirements)
+            {
+                requirement.EquipmentSlot.SetLocale(locale);
+                foreach (var item in requirement.AllowedEquippedItems) item.SetLocale(locale);
+            }
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}";

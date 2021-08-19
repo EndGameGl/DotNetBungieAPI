@@ -76,6 +76,11 @@ namespace NetBungieAPI.Models.Destiny.Definitions.EquipmentSlots
             BucketType.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            BucketType.SetLocale(locale);
+        }
+
 
         public override string ToString()
         {

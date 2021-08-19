@@ -34,6 +34,10 @@ namespace NetBungieAPI.Models.Destiny.Definitions.MedalTiers
         {
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+        }
+
         public override string ToString()
         {
             return $"{Hash}";

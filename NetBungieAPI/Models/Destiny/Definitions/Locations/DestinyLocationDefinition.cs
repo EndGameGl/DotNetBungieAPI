@@ -57,6 +57,17 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Locations
             }
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            Vendor.SetLocale(locale);
+            foreach (var locationRelease in LocationReleases)
+            {
+                locationRelease.Activity.SetLocale(locale);
+                locationRelease.ActivityGraph.SetLocale(locale);
+                locationRelease.Destination.SetLocale(locale);
+            }
+        }
+
         public override string ToString()
         {
             return

@@ -394,6 +394,51 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Vendors
             foreach (var item in IgnoreSaleItems) item.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            DisplayItem.SetLocale(locale);
+            Faction.SetLocale(locale);
+            foreach (var category in Categories) category.Overlay?.CurrencyItem.SetLocale(locale);
+
+            foreach (var category in OriginalCategories) category.Overlay?.CurrencyItem.SetLocale(locale);
+
+            foreach (var category in DisplayCategories) category.Progression.SetLocale(locale);
+
+            foreach (var interaction in Interactions) interaction.QuestlineItem.SetLocale(locale);
+
+            foreach (var flyout in InventoryFlyouts)
+            {
+                flyout.EquipmentSlot.SetLocale(locale);
+                foreach (var bucket in flyout.Buckets) bucket.InventoryBucket.SetLocale(locale);
+            }
+
+            foreach (var item in ItemList)
+            {
+                item.Item.SetLocale(locale);
+                foreach (var currency in item.Currencies) currency.Item.SetLocale(locale);
+
+                item.InventoryBucket.SetLocale(locale);
+                foreach (var socketOverride in item.SocketOverrides)
+                {
+                    socketOverride.SingleItem.SetLocale(locale);
+                    socketOverride.SocketType.SetLocale(locale);
+                }
+            }
+
+            foreach (var item in AcceptedItems)
+            {
+                item.AcceptedInventoryBucket.SetLocale(locale);
+                item.DestinationInventoryBucket.SetLocale(locale);
+            }
+
+            foreach (var location in Locations) location.Destination.SetLocale(locale);
+
+            foreach (var group in Groups) @group.Group.SetLocale(locale);
+
+
+            foreach (var item in IgnoreSaleItems) item.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";

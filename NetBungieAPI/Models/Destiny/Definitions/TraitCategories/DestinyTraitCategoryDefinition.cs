@@ -54,6 +54,11 @@ namespace NetBungieAPI.Models.Destiny.Definitions.TraitCategories
             foreach (var trait in Traits) trait.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            foreach (var trait in Traits) trait.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash} {TraitCategoryId}";

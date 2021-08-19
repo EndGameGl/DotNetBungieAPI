@@ -98,6 +98,11 @@ namespace NetBungieAPI.Models.Destiny.Definitions.SandboxPerks
             DamageType.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            DamageType.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";

@@ -111,6 +111,16 @@ namespace NetBungieAPI.Models.Destiny.Definitions.SocketTypes
                 plug.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            SocketCategory.SetLocale(locale);
+            foreach (var scalar in CurrencyScalars) scalar.CurrencyItem.SetLocale(locale);
+
+            foreach (var plugList in PlugWhitelist)
+            foreach (var plug in plugList.ReinitializationPossiblePlugs)
+                plug.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";

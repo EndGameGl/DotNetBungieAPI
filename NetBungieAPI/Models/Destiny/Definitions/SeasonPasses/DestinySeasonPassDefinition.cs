@@ -55,6 +55,12 @@ namespace NetBungieAPI.Models.Destiny.Definitions.SeasonPasses
             PrestigeProgression.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            RewardProgression.SetLocale(locale);
+            PrestigeProgression.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";

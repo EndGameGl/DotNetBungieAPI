@@ -165,6 +165,13 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ItemCategories
             foreach (var parentCategory in ParentCategories) parentCategory.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            foreach (var childCategories in GroupedCategories) childCategories.SetLocale(locale);
+
+            foreach (var parentCategory in ParentCategories) parentCategory.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return

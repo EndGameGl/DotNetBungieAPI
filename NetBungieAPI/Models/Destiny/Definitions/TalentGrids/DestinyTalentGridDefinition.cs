@@ -185,6 +185,36 @@ namespace NetBungieAPI.Models.Destiny.Definitions.TalentGrids
             }
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            foreach (var groupValue in Groups.Values) groupValue.Lore.SetLocale(locale);
+
+            Progression.SetLocale(locale);
+            foreach (var node in Nodes)
+            {
+                node.Lore.SetLocale(locale);
+                if (node.RandomActivationRequirement != null)
+                    foreach (var req in node.RandomActivationRequirement.MaterialRequirements)
+                        req.SetLocale(locale);
+
+                foreach (var nodeStep in node.Steps)
+                {
+                    nodeStep.DamageType.SetLocale(locale);
+                    foreach (var req in nodeStep.ActivationRequirement?.MaterialRequirements) req.SetLocale(locale);
+
+                    foreach (var perk in nodeStep.Perks) perk.SetLocale(locale);
+
+                    foreach (var stat in nodeStep.Stats) stat.SetLocale(locale);
+
+                    foreach (var replacement in nodeStep.SocketReplacements)
+                    {
+                        replacement.PlugItem.SetLocale(locale);
+                        replacement.SocketType.SetLocale(locale);
+                    }
+                }
+            }
+        }
+
         public override string ToString()
         {
             return $"{Hash}";

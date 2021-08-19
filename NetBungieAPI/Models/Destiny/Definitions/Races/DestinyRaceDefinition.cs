@@ -62,6 +62,11 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Races
             foreach (var race in GenderedRaceNamesByGender.Keys) race.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            foreach (var race in GenderedRaceNamesByGender.Keys) race.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash}: {DisplayProperties.Name}";

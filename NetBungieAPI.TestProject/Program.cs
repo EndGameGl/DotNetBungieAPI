@@ -56,6 +56,7 @@ using NetBungieAPI.Models.Destiny.Definitions.TraitCategories;
 using NetBungieAPI.Models.Destiny.Definitions.Traits;
 using NetBungieAPI.Models.Destiny.Definitions.VendorGroups;
 using NetBungieAPI.Models.Destiny.Definitions.Vendors;
+using NetBungieAPI.Providers;
 
 namespace NetBungieAPI.TestProject
 {
@@ -118,11 +119,11 @@ namespace NetBungieAPI.TestProject
                                               ApplicationScopes.ReadBasicUserProfile)
                     .UseDefaultProvider(@"H:\BungieNetCoreAPIRepository\Manifests")
                     .EnableLogging((mes) => Console.WriteLine(mes))
-                    //.PremapDefinitions()
-                    //.LoadAllDefinitionsOnStartup(waitEverythingToLoad: false)
+                    .PremapDefinitions()
+                    .LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
                     .SetLocales(new BungieLocales[]
                     {
-                        BungieLocales.EN,
+                        BungieLocales.RU
                     })
                     .SetUpdateBehaviour(true, true);
             });
@@ -138,9 +139,13 @@ namespace NetBungieAPI.TestProject
             
             //Console.WriteLine($"Finished dumping json.");
 
-            var someItem = new DefinitionHashPointer<DestinyInventoryItemDefinition>(DefinitionHashes.InventoryItems.Adored);
-
-            someItem.TryGetDefinition(out var adored);
+            // var sqliteDefinitionProvider = _bungieClient.Repository.Provider as SqliteDefinitionProvider;
+            // List<DestinyInventoryItemDefinition> items = new List<DestinyInventoryItemDefinition>();
+            // await foreach (var item in sqliteDefinitionProvider.GetDefinitionsRangeAsync<DestinyInventoryItemDefinition>(
+            //     BungieLocales.RU, 100, 50))
+            // {
+            //     items.Add(item);
+            // }
 
             await Task.Delay(Timeout.Infinite);
         }

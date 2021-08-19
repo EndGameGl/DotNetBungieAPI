@@ -85,6 +85,13 @@ namespace NetBungieAPI.Models.Destiny.Definitions.StatGroups
             foreach (var value in Overrides.Values) value.Stat.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            foreach (var stat in ScaledStats) stat.Stat.SetLocale(locale);
+
+            foreach (var value in Overrides.Values) value.Stat.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash} {MaximumValue}";

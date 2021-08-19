@@ -120,10 +120,10 @@ namespace NetBungieAPI.Providers
                         buffer = new byte[definitionPointerData.Value.Length];
                         fileStream.Position = definitionPointerData.Value.Position;
                         await fileStream.ReadAsync(buffer.AsMemory(0, buffer.Length));
-                        Repositories.AddDefinitionToCache(
+                        Repositories.AddDefinition(
                             fileMapping.Key,
-                            (IDestinyDefinition)await SerializationHelper.DeserializeAsync(buffer, type),
-                            filePath.Key);
+                            filePath.Key,
+                            (IDestinyDefinition)await SerializationHelper.DeserializeAsync(buffer, type));
                     }
                 }
             }

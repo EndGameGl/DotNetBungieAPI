@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
 using NetBungieAPI.Logging;
+using NetBungieAPI.Models;
+using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.Interfaces;
 using static NetBungieAPI.Logging.LogListener;
@@ -96,6 +98,27 @@ namespace NetBungieAPI.Clients
         internal void SignalDefinitionsLoadedInternal()
         {
             DefinitionsLoaded?.Invoke();
+        }
+
+        public async ValueTask<bool> TryGetDefinitionAsync<T>(uint hash, BungieLocales locale, Action<T> success)
+            where T : IDestinyDefinition
+        {
+            T definition = default;
+            if (Repository.TryGetDestinyDefinition<T>(hash, locale, out definition))
+            {
+                success(definition);
+                return true;
+            }
+
+            definition = await Repository.Provider.LoadDefinition<T>(hash, locale);
+            if (definition is not null)
+            {
+                Repository.AddDefinition(DefinitionHashPointer<T>.EnumValue, locale, definition);
+                success(definition);
+                return true;
+            }
+
+            return false;
         }
     }
 }

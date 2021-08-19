@@ -66,6 +66,13 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Artifacts
                 tierItems.Item.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            foreach (var tier in Tiers)
+            foreach (var tierItems in tier.Items)
+                tierItems.Item.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";

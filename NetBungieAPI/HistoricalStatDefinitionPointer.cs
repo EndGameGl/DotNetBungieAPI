@@ -35,7 +35,7 @@ namespace NetBungieAPI
         private bool _isMapped;
         private DestinyHistoricalStatsDefinition _value;
 
-        public BungieLocales Locale { get; }
+        public BungieLocales Locale { get; } = BungieLocales.EN;
         public string StatId { get; }
 
         public HistoricalStatDefinitionPointer(string statId)
@@ -43,7 +43,6 @@ namespace NetBungieAPI
             _value = default;
             _isMapped = false;
             StatId = statId;
-            Locale = _repository.Value.CurrentLocaleLoadContext;
         }
 
         public bool TryGetDefinition(out DestinyHistoricalStatsDefinition definition)

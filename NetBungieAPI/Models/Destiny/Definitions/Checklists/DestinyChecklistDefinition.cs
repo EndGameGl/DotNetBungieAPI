@@ -80,6 +80,18 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Checklists
             }
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            foreach (var entry in Entries)
+            {
+                entry.Activity.SetLocale(locale);
+                entry.Destination.SetLocale(locale);
+                entry.Item.SetLocale(locale);
+                entry.Location.SetLocale(locale);
+                entry.Vendor.SetLocale(locale);
+            }
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";

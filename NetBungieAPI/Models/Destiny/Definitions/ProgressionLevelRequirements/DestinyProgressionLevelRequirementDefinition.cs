@@ -59,6 +59,11 @@ namespace NetBungieAPI.Models.Destiny.Definitions.ProgressionLevelRequirements
             Progression.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            Progression.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash}";

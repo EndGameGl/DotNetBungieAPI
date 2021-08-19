@@ -148,7 +148,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.PresentationNodes
 
         public void MapValues()
         {
-            if (Children != null)
+            if (Children is not null)
             {
                 foreach (var collectible in Children.Collectibles) collectible.Collectible.TryMapValue();
 
@@ -165,6 +165,27 @@ namespace NetBungieAPI.Models.Destiny.Definitions.PresentationNodes
             foreach (var trait in Traits) trait.TryMapValue();
 
             CompletionRecord.TryMapValue();
+        }
+
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            if (Children is not null)
+            {
+                foreach (var collectible in Children.Collectibles) collectible.Collectible.SetLocale(locale);
+
+                foreach (var metric in Children.Metrics) metric.Metric.SetLocale(locale);
+
+                foreach (var node in Children.PresentationNodes) node.PresentationNode.SetLocale(locale);
+
+                foreach (var record in Children.Records) record.Record.SetLocale(locale);
+            }
+
+            Objective.SetLocale(locale);
+            foreach (var node in ParentNodes) node.SetLocale(locale);
+
+            foreach (var trait in Traits) trait.SetLocale(locale);
+
+            CompletionRecord.SetLocale(locale);
         }
 
         public override string ToString()

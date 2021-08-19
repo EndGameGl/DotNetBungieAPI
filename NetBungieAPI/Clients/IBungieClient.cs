@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
+using NetBungieAPI.Models;
+using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.Interfaces;
 using static NetBungieAPI.Logging.LogListener;
@@ -56,5 +58,8 @@ namespace NetBungieAPI.Clients
         ///     Signals that definitions finished loading.
         /// </summary>
         event Action DefinitionsLoaded;
+
+        ValueTask<bool> TryGetDefinitionAsync<T>(uint hash, BungieLocales locale, Action<T> success)
+            where T : IDestinyDefinition;
     }
 }

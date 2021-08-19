@@ -20,7 +20,6 @@ namespace NetBungieAPI.Repositories
         private readonly IDefinitionAssemblyData _assemblyData;
         private readonly IConfigurationService _configs;
         private readonly ILogger _logger;
-        private BungieLocales? _currentLocaleLoadContext;
         private ConcurrentDictionary<BungieLocales, DestinyDefinitionsRepository> _localisedRepositories;
 
         public LocalisedDestinyDefinitionRepositories(ILogger logger, IConfigurationService config,
@@ -31,7 +30,6 @@ namespace NetBungieAPI.Repositories
             _assemblyData = assemblyData;
         }
 
-        public BungieLocales CurrentLocaleLoadContext => _currentLocaleLoadContext ?? BungieLocales.EN;
         public DefinitionProvider Provider { get; set; }
 
         public void Initialize(BungieLocales[] locales)
@@ -54,11 +52,9 @@ namespace NetBungieAPI.Repositories
         {
             foreach (var repo in _localisedRepositories.Values)
             {
-                SetLocaleContext(repo.Locale);
                 Task.Run(async () =>
                     await Provider.ReadDefinitionsToRepository(_configs.Settings.DefinitionLoadingSettings
                         .AllowedDefinitions));
-                ResetLocaleContext();
             }
 
             if (_configs.Settings.DefinitionLoadingSettings.PremapDefinitionPointers)
@@ -68,12 +64,6 @@ namespace NetBungieAPI.Repositories
 
                 _logger.Log("Finished premapping pointers!", LogType.Info);
             }
-        }
-
-        public void AddDefinitionToCache(DefinitionsEnum definitionType, IDestinyDefinition defValue,
-            BungieLocales locale)
-        {
-            _localisedRepositories[locale].AddDefinition(definitionType, defValue);
         }
 
         public bool TryGetDestinyDefinition(DefinitionsEnum definitionType, uint key, BungieLocales locale,
@@ -177,16 +167,6 @@ namespace NetBungieAPI.Repositories
                 .ToList();
         }
 
-        public void SetLocaleContext(BungieLocales locale)
-        {
-            _currentLocaleLoadContext = locale;
-        }
-
-        public void ResetLocaleContext()
-        {
-            _currentLocaleLoadContext = null;
-        }
-
         public string FetchJSONFromDB(BungieLocales locale, DefinitionsEnum definitionType, uint hash)
         {
             return Provider.ReadDefinitionAsJson(definitionType, hash, locale).Result;
@@ -201,5 +181,7 @@ namespace NetBungieAPI.Repositories
         {
             foreach (var repository in _localisedRepositories) repository.Value.PremapPointers();
         }
+        
+        
     }
 }

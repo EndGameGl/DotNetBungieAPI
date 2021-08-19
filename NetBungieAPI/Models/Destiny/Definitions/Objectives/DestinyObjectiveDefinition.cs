@@ -171,6 +171,13 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Objectives
             Stats?.Stat?.StatType.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            Location.SetLocale(locale);
+            Perks?.Perk.SetLocale(locale);
+            Stats?.Stat?.StatType.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description} {ProgressDescription}";

@@ -81,6 +81,14 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Destinations
             Place.TryMapValue();
         }
 
+        public void SetPointerLocales(BungieLocales locale)
+        {
+            foreach (var activityGraphEntry in ActivityGraphEntries) activityGraphEntry.ActivityGraph.SetLocale(locale);
+
+            DefaultFreeroamActivity.SetLocale(locale);
+            Place.SetLocale(locale);
+        }
+
         public override string ToString()
         {
             return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
