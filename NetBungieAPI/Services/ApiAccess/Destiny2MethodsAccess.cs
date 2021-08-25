@@ -67,7 +67,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .GetBuilder(token)
                 .Append("/Destiny2/SearchDestinyPlayer/")
                 .AddUrlParam(((int)membershipType).ToString())
-                .AddUrlParam(displayName)
+                .AddUrlParam(displayName.Contains("#") ? displayName.Replace("#", "%23") : displayName)
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<UserInfoCard[]>(url, token);
         }

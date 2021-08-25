@@ -58,7 +58,7 @@ namespace NetBungieAPI
             if (configuration.Settings.DefinitionLoadingSettings.WaitAllDefinitionsToLoad)
             {
                 client.Repository.Provider.ReadDefinitionsToRepository(
-                    configuration.Settings.DefinitionLoadingSettings.AllowedDefinitions);
+                    configuration.Settings.DefinitionLoadingSettings.AllowedDefinitions).Wait();
 
                 if (configuration.Settings.DefinitionLoadingSettings.PremapDefinitionPointers)
                     client.Repository.PremapPointers();

@@ -119,8 +119,8 @@ namespace NetBungieAPI.TestProject
                                               ApplicationScopes.ReadBasicUserProfile)
                     .UseDefaultProvider(@"H:\BungieNetCoreAPIRepository\Manifests")
                     .EnableLogging((mes) => Console.WriteLine(mes))
-                    .PremapDefinitions()
-                    .LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
+                    //.PremapDefinitions()
+                    //.LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
                     .SetLocales(new BungieLocales[]
                     {
                         BungieLocales.EN
@@ -132,6 +132,8 @@ namespace NetBungieAPI.TestProject
             Console.WriteLine($"Startup in: {sw.ElapsedMilliseconds} ms");
 
             Console.WriteLine($"{Process.GetCurrentProcess().PrivateMemorySize64} bytes allocated for current app.");
+
+            var userSearchResult = await _bungieClient.ApiAccess.Destiny2.SearchDestinyPlayer(BungieMembershipType.All, "MeGl#6834");
             
             //var generator = new HashReferencesGeneration.DefinitionHashReferencesGenerator(_bungieClient);
             //await generator.Generate();
