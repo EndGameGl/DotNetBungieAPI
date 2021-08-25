@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
 using NetBungieAPI.Models;
+using NetBungieAPI.Models.Config;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Config;
 using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
@@ -52,22 +53,15 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default) where T : IDestinyDefinition;
 
         /// <summary>
-        ///     Returns a list of Destiny memberships given a full Gamertag or PSN ID. Unless you pass returnOriginalProfile=true,
-        ///     this will return membership information for the users' Primary Cross Save Profile if they are engaged in cross save
-        ///     rather than any original Destiny profile that is now being overridden.
+        ///     Returns a list of Destiny memberships given a global Bungie Display Name. This method will hide overridden memberships due to cross save.
         /// </summary>
-        /// <param name="membershipType">A valid non-BungieNet membership type, or All.</param>
-        /// <param name="displayName">The full gamertag or PSN id of the player. Spaces and case are ignored.</param>
-        /// <param name="returnOriginalProfile">
-        ///     If passed in and set to true, we will return the original Destiny Profile(s) linked
-        ///     to that gamertag, and not their currently active Destiny Profile.
-        /// </param>
+        /// <param name="membershipType">A valid non-BungieNet membership type, or All. Indicates which memberships to return. You probably want this set to All.</param>
+        /// <param name="displayName">The full bungie global display name to look up, include the # and the code at the end. This is an exact match lookup.</param>
         /// <param name="token">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(
             BungieMembershipType membershipType,
             string displayName,
-            bool returnOriginalProfile = false,
             CancellationToken token = default);
 
         /// <summary>
@@ -143,6 +137,13 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         ValueTask<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(
             long groupId,
             CancellationToken token = default);
+
+        /// <summary>
+        /// Returns the dictionary of values for the Clan Banner
+        /// </summary>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<ClanBannerSource>> GetClanBannerSource(CancellationToken token = default);
 
         /// <summary>
         ///     Retrieve the details of an instanced Destiny Item. An instanced Destiny item is one with an ItemInstanceId.

@@ -20,16 +20,6 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken token = default);
 
         /// <summary>
-        ///     Returns a list of possible users based on the search string
-        /// </summary>
-        /// <param name="query">The search string.</param>
-        /// <param name="token">Cancellation token</param>
-        /// <returns></returns>
-        ValueTask<BungieResponse<GeneralUser[]>> SearchUsers(
-            string query,
-            CancellationToken token = default);
-
-        /// <summary>
         ///     Returns a list of credential types attached to the requested account
         /// </summary>
         /// <param name="id">The user's membership id</param>

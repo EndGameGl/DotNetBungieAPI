@@ -188,6 +188,8 @@ namespace NetBungieAPI.Models
         UserEmailMustBeVerified = 233,
         UserMustAllowCustomerServiceEmails = 234,
         NonTransactionalEmailSendFailure = 235,
+        UnknownErrorSettingGlobalDisplayName = 236,
+        DuplicateGlobalDisplayName = 237,
         MessagingUnknownError = 300,
         MessagingSelfError = 301,
         MessagingSendThrottle = 302,
@@ -714,6 +716,8 @@ namespace NetBungieAPI.Models
         AwaWriteRequestTokenUsageLimitReached = 2806,
         SteamWebApiError = 2900,
         SteamWebNullResponseError = 2901,
+        SteamAccountRequired = 2902,
+        SteamNotAuthorized = 2903,
         ClanFireteamNotFound = 3000,
         ClanFireteamAddNoAlternatesForImmediate = 3001,
         ClanFireteamFull = 3002,
@@ -746,6 +750,7 @@ namespace NetBungieAPI.Models
         ClanFireteamThrottle = 3029,
         ClanFireteamTooManyOpenScheduledFireteams = 3030,
         ClanFireteamCannotReopenScheduledFireteams = 3031,
+        ClanFireteamJoinNoAccountSpecified = 2032,
         CrossSaveOverriddenAccountNotFound = 3200,
         CrossSaveTooManyOverriddenPlatforms = 3201,
         CrossSaveNoOverriddenPlatforms = 3202,
@@ -801,6 +806,13 @@ namespace NetBungieAPI.Models
         ApplePushFailedAuth = 3804,
         ApplePushThrottled = 3805,
         ApplePushServiceUnavailable = 3806,
-        NotAnImageOrVideo = 3807
+        NotAnImageOrVideo = 3807,
+        ErrorBungieFriendsBlockFailed = 3900,
+        ErrorBungieFriendsAutoReject = 3901,
+        ErrorBungieFriendsNoRequestFound = 3902,
+        ErrorBungieFriendsAlreadyFriends = 3903,
+        ErrorBungieFriendsUnableToRemoveRequest = 3904,
+        ErrorBungieFriendsUnableToRemove = 3905,
+        ErrorBungieFriendsIdenticalSourceTarget = 3906
     }
 }

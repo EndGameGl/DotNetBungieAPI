@@ -91,6 +91,16 @@ namespace NetBungieAPI.Models.Destiny
         /// <summary>
         ///     This indicates that the item has a seasonal reward expiration.
         /// </summary>
-        SeasonalRewardExpiration = 16384
+        SeasonalRewardExpiration = 16384,
+
+        /// <summary>
+        ///     This indicates that the sale item is the best deal among different choices.
+        /// </summary>
+        BestDeal = 32768,
+
+        /// <summary>
+        ///     This indicates that the sale item is popular.
+        /// </summary>
+        Popular = 65536,
     }
 }

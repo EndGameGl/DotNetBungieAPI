@@ -42,6 +42,7 @@ namespace NetBungieAPI
             Container.RegisterType<IDestiny2MethodsAccess, Destiny2MethodsAccess>(TypeLifetime.Singleton);
             Container.RegisterType<ICommunityContentMethodsAccess, CommunityContentMethodsAccess>(
                 TypeLifetime.Singleton);
+            Container.RegisterType<ISocialMethodsAccess, SocialMethodsAccess>(TypeLifetime.Singleton);
             Container.RegisterType<ITrendingMethodsAccess, TrendingMethodsAccess>(TypeLifetime.Singleton);
             Container.RegisterType<IMiscMethodsAccess, MiscMethodsAccess>(TypeLifetime.Singleton);
         }

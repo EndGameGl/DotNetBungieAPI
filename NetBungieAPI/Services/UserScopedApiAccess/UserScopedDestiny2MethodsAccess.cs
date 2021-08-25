@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
 using NetBungieAPI.Models;
+using NetBungieAPI.Models.Config;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Config;
 using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
@@ -50,10 +51,9 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
         public async ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(
             BungieMembershipType membershipType,
             string displayName,
-            bool returnOriginalProfile = false,
             CancellationToken token = default)
         {
-            return await _apiAccess.SearchDestinyPlayer(membershipType, displayName, returnOriginalProfile, token);
+            return await _apiAccess.SearchDestinyPlayer(membershipType, displayName, token);
         }
 
         public async ValueTask<BungieResponse<DestinyLinkedProfilesResponse>> GetLinkedProfiles(
@@ -90,6 +90,11 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
             CancellationToken token = default)
         {
             return await _apiAccess.GetClanWeeklyRewardState(groupId, token);
+        }
+
+        public async ValueTask<BungieResponse<ClanBannerSource>> GetClanBannerSource(CancellationToken token = default)
+        {
+            return await _apiAccess.GetClanBannerSource(token);
         }
 
         public async ValueTask<BungieResponse<DestinyItemResponse>> GetItem(

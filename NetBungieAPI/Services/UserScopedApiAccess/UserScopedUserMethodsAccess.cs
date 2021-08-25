@@ -28,13 +28,6 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
             return await _apiAccess.GetBungieNetUserById(id, token);
         }
 
-        public async ValueTask<BungieResponse<GeneralUser[]>> SearchUsers(
-            string query,
-            CancellationToken token = default)
-        {
-            return await _apiAccess.SearchUsers(query, token);
-        }
-
         public async ValueTask<BungieResponse<CredentialTypeForAccount[]>> GetCredentialTypesForTargetAccount(
             long id,
             CancellationToken token = default)

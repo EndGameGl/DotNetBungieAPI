@@ -9,6 +9,7 @@ using NetBungieAPI.Authorization;
 using NetBungieAPI.Exceptions;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Applications;
+using NetBungieAPI.Models.Config;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Config;
 using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
@@ -60,15 +61,13 @@ namespace NetBungieAPI.Services.ApiAccess
         public async ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(
             BungieMembershipType membershipType,
             string displayName,
-            bool returnOriginalProfile = false,
             CancellationToken token = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Destiny2/SearchDestinyPlayer/")
-                .AddUrlParam(((int) membershipType).ToString())
+                .AddUrlParam(((int)membershipType).ToString())
                 .AddUrlParam(displayName)
-                .AddQueryParam("returnOriginalProfile", returnOriginalProfile.ToString(), () => returnOriginalProfile)
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<UserInfoCard[]>(url, token);
         }
@@ -82,7 +81,7 @@ namespace NetBungieAPI.Services.ApiAccess
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Destiny2/")
-                .AddUrlParam(((int) membershipType).ToString())
+                .AddUrlParam(((int)membershipType).ToString())
                 .Append("Profile/")
                 .AddUrlParam(membershipId.ToString())
                 .Append("LinkedProfiles/")
@@ -104,7 +103,7 @@ namespace NetBungieAPI.Services.ApiAccess
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Destiny2/")
-                .AddUrlParam(((int) membershipType).ToString())
+                .AddUrlParam(((int)membershipType).ToString())
                 .Append("Profile/")
                 .AddUrlParam(destinyMembershipId.ToString())
                 .AddQueryParam("components", componentTypes.ComponentsToIntString())
@@ -127,7 +126,7 @@ namespace NetBungieAPI.Services.ApiAccess
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Destiny2/")
-                .AddUrlParam(((int) membershipType).ToString())
+                .AddUrlParam(((int)membershipType).ToString())
                 .Append("Profile/")
                 .AddUrlParam(destinyMembershipId.ToString())
                 .Append("Character/")
@@ -152,6 +151,13 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<DestinyMilestone>(url, token);
         }
 
+        public async ValueTask<BungieResponse<ClanBannerSource>> GetClanBannerSource(
+            CancellationToken token = default)
+        {
+            return await _httpClient.GetFromBungieNetPlatform<ClanBannerSource>("/Destiny2/Clan/ClanBannerDictionary/",
+                token);
+        }
+
         public async ValueTask<BungieResponse<DestinyItemResponse>> GetItem(
             BungieMembershipType membershipType,
             long destinyMembershipId,
@@ -163,7 +169,7 @@ namespace NetBungieAPI.Services.ApiAccess
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Destiny2/")
-                .AddUrlParam(((int) membershipType).ToString())
+                .AddUrlParam(((int)membershipType).ToString())
                 .Append("Profile/")
                 .AddUrlParam(destinyMembershipId.ToString())
                 .Append("Item/")
@@ -185,7 +191,7 @@ namespace NetBungieAPI.Services.ApiAccess
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Destiny2/")
-                .AddUrlParam(((int) membershipType).ToString())
+                .AddUrlParam(((int)membershipType).ToString())
                 .Append("Profile/")
                 .AddUrlParam(destinyMembershipId.ToString())
                 .Append("Character/")
@@ -209,7 +215,7 @@ namespace NetBungieAPI.Services.ApiAccess
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Destiny2/")
-                .AddUrlParam(((int) membershipType).ToString())
+                .AddUrlParam(((int)membershipType).ToString())
                 .Append("Profile/")
                 .AddUrlParam(destinyMembershipId.ToString())
                 .Append("Character/")
@@ -246,7 +252,7 @@ namespace NetBungieAPI.Services.ApiAccess
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Destiny2/")
-                .AddUrlParam(((int) membershipType).ToString())
+                .AddUrlParam(((int)membershipType).ToString())
                 .AddQueryParam("components", componentTypes.ComponentsToIntString())
                 .Append("Profile/")
                 .AddUrlParam(destinyMembershipId.ToString())
@@ -453,7 +459,7 @@ namespace NetBungieAPI.Services.ApiAccess
         {
             var url = StringBuilderPool.GetBuilder(token)
                 .Append("/Destiny2/")
-                .AddUrlParam(((int) membershipType).ToString())
+                .AddUrlParam(((int)membershipType).ToString())
                 .Append("Account/")
                 .AddUrlParam(destinyMembershipId.ToString())
                 .Append("Stats/Leaderboards/")
@@ -498,7 +504,7 @@ namespace NetBungieAPI.Services.ApiAccess
             var builder = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Destiny2/")
-                .AddUrlParam(((int) membershipType).ToString())
+                .AddUrlParam(((int)membershipType).ToString())
                 .Append("Account/")
                 .AddUrlParam(destinyMembershipId.ToString())
                 .Append("Character/")
@@ -512,12 +518,12 @@ namespace NetBungieAPI.Services.ApiAccess
                 builder.AddQueryParam("daystart", daystart.Value.ToString("yyyy-MM-dd"));
             if (dayend.HasValue)
                 builder.AddQueryParam("dayend", dayend.Value.ToString("yyyy-MM-dd"));
-            if (groups is {Length: > 0})
-                builder.AddQueryParam("groups", string.Join(',', groups.Select(x => (int) x)));
-            if (modes is {Length: > 0})
-                builder.AddQueryParam("modes", string.Join(',', modes.Select(x => (int) x)));
+            if (groups is { Length: > 0 })
+                builder.AddQueryParam("groups", string.Join(',', groups.Select(x => (int)x)));
+            if (modes is { Length: > 0 })
+                builder.AddQueryParam("modes", string.Join(',', modes.Select(x => (int)x)));
             if (periodType != PeriodType.None)
-                builder.AddQueryParam("periodType", ((int) periodType).ToString());
+                builder.AddQueryParam("periodType", ((int)periodType).ToString());
 
             return await _httpClient
                 .GetFromBungieNetPlatform<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>>(
@@ -533,12 +539,12 @@ namespace NetBungieAPI.Services.ApiAccess
             var builder = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Destiny2/")
-                .AddUrlParam(((int) membershipType).ToString())
+                .AddUrlParam(((int)membershipType).ToString())
                 .Append("Account/")
                 .AddUrlParam(destinyMembershipId.ToString())
                 .Append("Stats/");
-            if (groups is {Length: > 0})
-                builder.AddQueryParam("groups", string.Join(',', groups.Select(x => (int) x)));
+            if (groups is { Length: > 0 })
+                builder.AddQueryParam("groups", string.Join(',', groups.Select(x => (int)x)));
             return await _httpClient.GetFromBungieNetPlatform<DestinyHistoricalStatsAccountResult>(builder.Build(),
                 token);
         }
@@ -555,14 +561,14 @@ namespace NetBungieAPI.Services.ApiAccess
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Destiny2/")
-                .AddUrlParam(((int) membershipType).ToString())
+                .AddUrlParam(((int)membershipType).ToString())
                 .Append("Account/")
                 .AddUrlParam(destinyMembershipId.ToString())
                 .Append("Character/")
                 .AddUrlParam(characterId.ToString())
                 .Append("Stats/Activities/")
                 .AddQueryParam("count", count.ToString())
-                .AddQueryParam("mode", ((int) mode).ToString())
+                .AddQueryParam("mode", ((int)mode).ToString())
                 .AddQueryParam("page", page.ToString())
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<DestinyActivityHistoryResults>(url, token);
@@ -577,7 +583,7 @@ namespace NetBungieAPI.Services.ApiAccess
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Destiny2/")
-                .AddUrlParam(((int) membershipType).ToString())
+                .AddUrlParam(((int)membershipType).ToString())
                 .Append("Account/")
                 .AddUrlParam(destinyMembershipId.ToString())
                 .Append("Character/")
@@ -596,7 +602,7 @@ namespace NetBungieAPI.Services.ApiAccess
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/Destiny2/")
-                .AddUrlParam(((int) membershipType).ToString())
+                .AddUrlParam(((int)membershipType).ToString())
                 .Append("Account/")
                 .AddUrlParam(destinyMembershipId.ToString())
                 .Append("Character/")

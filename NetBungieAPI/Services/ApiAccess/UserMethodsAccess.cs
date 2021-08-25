@@ -38,18 +38,6 @@ namespace NetBungieAPI.Services.ApiAccess
             return await _httpClient.GetFromBungieNetPlatform<GeneralUser>(url, token);
         }
 
-        public async ValueTask<BungieResponse<GeneralUser[]>> SearchUsers(
-            string query,
-            CancellationToken token = default)
-        {
-            var url = StringBuilderPool
-                .GetBuilder(token)
-                .Append("/User/SearchUsers/")
-                .AddQueryParam("q", query)
-                .Build();
-            return await _httpClient.GetFromBungieNetPlatform<GeneralUser[]>(url, token);
-        }
-
         public async ValueTask<BungieResponse<CredentialTypeForAccount[]>> GetCredentialTypesForTargetAccount(
             long id,
             AuthorizationTokenData authToken,

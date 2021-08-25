@@ -123,7 +123,7 @@ namespace NetBungieAPI.TestProject
                     .LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
                     .SetLocales(new BungieLocales[]
                     {
-                        BungieLocales.RU
+                        BungieLocales.EN
                     })
                     .SetUpdateBehaviour(true, true);
             });
@@ -132,11 +132,10 @@ namespace NetBungieAPI.TestProject
             Console.WriteLine($"Startup in: {sw.ElapsedMilliseconds} ms");
 
             Console.WriteLine($"{Process.GetCurrentProcess().PrivateMemorySize64} bytes allocated for current app.");
-
-            //var generator = new HashReferencesGeneration.DefinitionHashReferencesGenerator(_bungieClient);
-
-            //await generator.Generate();
             
+            //var generator = new HashReferencesGeneration.DefinitionHashReferencesGenerator(_bungieClient);
+            //await generator.Generate();
+
             //Console.WriteLine($"Finished dumping json.");
 
             // var sqliteDefinitionProvider = _bungieClient.Repository.Provider as SqliteDefinitionProvider;

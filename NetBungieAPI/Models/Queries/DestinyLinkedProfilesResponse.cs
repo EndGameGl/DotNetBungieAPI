@@ -17,8 +17,8 @@ namespace NetBungieAPI.Models.Queries
         ///     make further queries)
         /// </summary>
         [JsonPropertyName("profiles")]
-        public ReadOnlyCollection<UserInfoCard> Profiles { get; init; } =
-            Defaults.EmptyReadOnlyCollection<UserInfoCard>();
+        public ReadOnlyCollection<DestinyProfileUserInfoCard> Profiles { get; init; } =
+            Defaults.EmptyReadOnlyCollection<DestinyProfileUserInfoCard>();
 
         /// <summary>
         ///     If the requested membership had a linked Bungie.Net membership ID, this is the basic information about that BNet

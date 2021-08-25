@@ -16,7 +16,8 @@ namespace NetBungieAPI.Services
             IDestiny2MethodsAccess destiny2MethodsAccess,
             ICommunityContentMethodsAccess communityContentMethodsAccess,
             ITrendingMethodsAccess trendingMethodsAccess,
-            IMiscMethodsAccess miscMethodsAccess)
+            IMiscMethodsAccess miscMethodsAccess,
+            ISocialMethodsAccess socialMethodsAccess)
         {
             App = appMethodsAccess;
             User = userMethodsAccess;
@@ -29,6 +30,7 @@ namespace NetBungieAPI.Services
             Trending = trendingMethodsAccess;
             Fireteam = fireteamMethodsAccess;
             Misc = miscMethodsAccess;
+            Social = socialMethodsAccess;
         }
 
         public IAppMethodsAccess App { get; init; }
@@ -41,6 +43,7 @@ namespace NetBungieAPI.Services
         public ICommunityContentMethodsAccess Community { get; init; }
         public ITrendingMethodsAccess Trending { get; init; }
         public IFireteamMethodsAccess Fireteam { get; init; }
+        public ISocialMethodsAccess Social { get; init; }
         public IMiscMethodsAccess Misc { get; init; }
 
         public static IBungieApiAccess Create()

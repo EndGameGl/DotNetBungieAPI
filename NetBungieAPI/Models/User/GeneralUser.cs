@@ -81,5 +81,11 @@ namespace NetBungieAPI.Models.User
 
         [JsonPropertyName("twitchDisplayName")]
         public string TwitchDisplayName { get; init; }
+        
+        [JsonPropertyName("cachedBungieGlobalDisplayName")]
+        public string CachedBungieGlobalDisplayName { get; init; }
+        
+        [JsonPropertyName("cachedBungieGlobalDisplayNameCode")]
+        public short? CachedBungieGlobalDisplayNameCode { get; init; }
     }
 }

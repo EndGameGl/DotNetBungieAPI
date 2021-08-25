@@ -21,10 +21,22 @@ namespace NetBungieAPI.Models.User
         public long MembershipId { get; init; }
 
         /// <summary>
-        ///     Display Name the player has chosen for themselves. The display name is optional when the data type is used as input
+        ///     Display Name the player has chosen for themselves. The display name is optional when the data type is used as inut
         ///     to a platform API.
         /// </summary>
         [JsonPropertyName("displayName")]
         public string DisplayName { get; init; }
+
+        /// <summary>
+        /// The bungie global display name, if set.
+        /// </summary>
+        [JsonPropertyName("bungieGlobalDisplayName")]
+        public string BungieGlobalDisplayName { get; init; }
+
+        /// <summary>
+        /// The bungie global display name code, if set.
+        /// </summary>
+        [JsonPropertyName("bungieGlobalDisplayNameCode")]
+        public short? BungieGlobalDisplayNameCode { get; init; }
     }
 }
