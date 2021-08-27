@@ -26,7 +26,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("/Content/GetContentType/")
                 .AddUrlParam(type)
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<ContentTypeDescription>(url, token);
+            return await _httpClient.GetFromBungieNetPlatform<ContentTypeDescription>(url, token).ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<ContentItemPublicContract>> GetContentById(
@@ -42,7 +42,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(locale)
                 .AddQueryParam("head", head.ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<ContentItemPublicContract>(url, token);
+            return await _httpClient.GetFromBungieNetPlatform<ContentItemPublicContract>(url, token)
+                .ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<ContentItemPublicContract>> GetContentByTagAndType(
@@ -80,7 +81,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("source", source, () => !string.IsNullOrEmpty(source))
                 .AddQueryParam("tag", tag)
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(url, token);
+            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(url, token)
+                .ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentByTagAndType(
@@ -98,7 +100,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(locale)
                 .AddQueryParam("currentpage", currentpage.ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(url, token);
+            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(url, token)
+                .ConfigureAwait(false);
         }
     }
 }

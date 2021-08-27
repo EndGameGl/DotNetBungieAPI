@@ -26,11 +26,11 @@ namespace NetBungieAPI.Services.ApiAccess
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/CommunityContent/Get/")
-                .AddUrlParam(((byte) sort).ToString())
-                .AddUrlParam(((int) mediaFilter).ToString())
+                .AddUrlParam(((byte)sort).ToString())
+                .AddUrlParam(((int)mediaFilter).ToString())
                 .AddUrlParam(page.ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<PostSearchResponse>(url, token);
+            return await _httpClient.GetFromBungieNetPlatform<PostSearchResponse>(url, token).ConfigureAwait(false);
         }
     }
 }

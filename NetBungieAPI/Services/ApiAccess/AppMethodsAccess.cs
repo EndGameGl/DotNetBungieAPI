@@ -25,7 +25,8 @@ namespace NetBungieAPI.Services.ApiAccess
         public async ValueTask<BungieResponse<Application[]>> GetBungieApplications(
             CancellationToken token = default)
         {
-            return await _httpClient.GetFromBungieNetPlatform<Application[]>("/App/FirstParty/", token);
+            return await _httpClient.GetFromBungieNetPlatform<Application[]>("/App/FirstParty/", token)
+                .ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<ApiUsage>> GetApplicationApiUsage(
@@ -51,7 +52,8 @@ namespace NetBungieAPI.Services.ApiAccess
                     end.Value.ToString("yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture))
                 .Build();
 
-            return await _httpClient.GetFromBungieNetPlatform<ApiUsage>(url, token, authToken.AccessToken);
+            return await _httpClient.GetFromBungieNetPlatform<ApiUsage>(url, token, authToken.AccessToken)
+                .ConfigureAwait(false);
         }
     }
 }

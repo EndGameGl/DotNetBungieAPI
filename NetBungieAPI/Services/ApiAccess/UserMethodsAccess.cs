@@ -65,7 +65,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .GetBuilder(token)
                 .Append("/User/GetMembershipsById/")
                 .AddUrlParam(id.ToString())
-                .AddUrlParam(((int) membershipType).ToString())
+                .AddUrlParam(((int)membershipType).ToString())
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<UserMembershipData>(url, token);
         }
@@ -96,15 +96,15 @@ namespace NetBungieAPI.Services.ApiAccess
             var url = StringBuilderPool
                 .GetBuilder(token)
                 .Append("/User/GetMembershipFromHardLinkedCredential/")
-                .AddUrlParam(((byte) credentialType).ToString())
+                .AddUrlParam(((byte)credentialType).ToString())
                 .AddUrlParam(credential.ToString())
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<HardLinkedUserMembership>(url, token);
         }
 
         public async ValueTask<BungieResponse<UserPrefixSearchResponse>> SearchUsersByPrefix(
-            string prefix, 
-            int page = 0, 
+            string prefix,
+            int page = 0,
             CancellationToken token = default)
         {
             var url = StringBuilderPool
@@ -113,7 +113,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(prefix)
                 .AddUrlParam(page.ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<UserPrefixSearchResponse>(url, token);
+            return await _httpClient.GetFromBungieNetPlatform<UserPrefixSearchResponse>(url, token)
+                .ConfigureAwait(false);
         }
     }
 }
