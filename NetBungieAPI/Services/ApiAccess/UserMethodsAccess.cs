@@ -101,5 +101,19 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
             return await _httpClient.GetFromBungieNetPlatform<HardLinkedUserMembership>(url, token);
         }
+
+        public async ValueTask<BungieResponse<UserPrefixSearchResponse>> SearchUsersByPrefix(
+            string prefix, 
+            int page = 0, 
+            CancellationToken token = default)
+        {
+            var url = StringBuilderPool
+                .GetBuilder(token)
+                .Append("/User/Search/Prefix/")
+                .AddUrlParam(prefix)
+                .AddUrlParam(page.ToString())
+                .Build();
+            return await _httpClient.GetFromBungieNetPlatform<UserPrefixSearchResponse>(url, token);
+        }
     }
 }

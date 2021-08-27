@@ -76,5 +76,14 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             long credential,
             BungieCredentialType credentialType = BungieCredentialType.SteamId,
             CancellationToken token = default);
+
+        /// <summary>
+        ///     Searches bungie.net users by their prefix
+        /// </summary>
+        /// <param name="prefix">Search parameter</param>
+        /// <param name="page">Zero based page</param>
+        /// <param name="token">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<UserPrefixSearchResponse>> SearchUsersByPrefix(string prefix, int page = 0, CancellationToken token = default);
     }
 }

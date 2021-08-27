@@ -133,7 +133,7 @@ namespace NetBungieAPI.TestProject
 
             Console.WriteLine($"{Process.GetCurrentProcess().PrivateMemorySize64} bytes allocated for current app.");
 
-            var userSearchResult = await _bungieClient.ApiAccess.Destiny2.SearchDestinyPlayer(BungieMembershipType.All, "MeGl#6834");
+            var userSearchResult = await _bungieClient.ApiAccess.User.SearchUsersByPrefix("megl");
             
             //var generator = new HashReferencesGeneration.DefinitionHashReferencesGenerator(_bungieClient);
             //await generator.Generate();

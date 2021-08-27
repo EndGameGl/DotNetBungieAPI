@@ -21,7 +21,7 @@ namespace NetBungieAPI.Models.User
         public long MembershipId { get; init; }
 
         /// <summary>
-        ///     Display Name the player has chosen for themselves. The display name is optional when the data type is used as inut
+        ///     Display Name the player has chosen for themselves. The display name is optional when the data type is used as input
         ///     to a platform API.
         /// </summary>
         [JsonPropertyName("displayName")]
