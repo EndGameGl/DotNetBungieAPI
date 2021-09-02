@@ -7,15 +7,18 @@ using NetBungieAPI.Models.Applications;
 
 namespace NetBungieAPI.Services.ApiAccess.Interfaces
 {
+    /// <summary>
+    /// Access to https://bungie.net/Platform/App endpoint
+    /// </summary>
     public interface IAppMethodsAccess
     {
         /// <summary>
         ///     Get list of applications created by Bungie.
         /// </summary>
-        /// <param name="token">Cancellation token</param>
+        /// <param name="cancellationToken">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<Application[]>> GetBungieApplications(
-            CancellationToken token = default);
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         ///     Get API usage by application for time frame specified. You can go as far back as 30 days ago, and can ask for up to
@@ -23,14 +26,15 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         ///     <para />
         ///     You must be authenticated with at least the ReadUserData permission to access this endpoint.
         /// </summary>
+        /// <param name="authorizationToken"></param>
         /// <param name="applicationId">ID of the application to get usage statistics.</param>
-        /// <param name="token">Cancellation token</param>
+        /// <param name="cancellationToken">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<ApiUsage>> GetApplicationApiUsage(
-            AuthorizationTokenData authToken,
+            AuthorizationTokenData authorizationToken,
             int applicationId,
             DateTime? start = null,
             DateTime? end = null,
-            CancellationToken token = default);
+            CancellationToken cancellationToken = default);
     }
 }

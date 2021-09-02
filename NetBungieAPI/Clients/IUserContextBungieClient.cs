@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.Interfaces;
 using NetBungieAPI.Services.UserScopedApiAccess;
@@ -75,5 +76,10 @@ namespace NetBungieAPI.Clients
         /// </summary>
         /// <returns></returns>
         Task ValidateToken();
+
+        /// <summary>
+        /// User token
+        /// </summary>
+        public AuthorizationTokenData TokenData { get; }
     }
 }

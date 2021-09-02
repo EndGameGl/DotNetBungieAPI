@@ -43,7 +43,7 @@ namespace NetBungieAPI.Authorization
         /// <returns></returns>
         public static AuthorizationState GetNewAuth()
         {
-            return new()
+            return new AuthorizationState
             {
                 State = RandomInstance.GetRandomString(50),
                 DidReceiveCallback = false,

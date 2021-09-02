@@ -3,7 +3,8 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Social
 {
-    [Flags, JsonConverter(typeof(JsonStringEnumConverter))]
+    [Flags]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum PresenceOnlineStateFlags
     {
         None = 0,

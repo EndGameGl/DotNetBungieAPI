@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
-using NetBungieAPI.Providers;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
 using NetBungieAPI.Services.Interfaces;
@@ -14,7 +14,8 @@ namespace NetBungieAPI
     ///     Class that points to a certain definition in database
     /// </summary>
     /// <typeparam name="T">Destiny definition type</typeparam>
-    public sealed class DefinitionHashPointer<T> : IDeepEquatable<DefinitionHashPointer<T>> where T : IDestinyDefinition
+    [DebuggerDisplay("{DebuggerDisplay}")]
+    public class DefinitionHashPointer<T> : IDeepEquatable<DefinitionHashPointer<T>> where T : IDestinyDefinition
     {
 #if DEBUG
         private T debug_value_getter
@@ -49,7 +50,7 @@ namespace NetBungieAPI
         /// <summary>
         ///     Empty pointer
         /// </summary>
-        public static DefinitionHashPointer<T> Empty { get; } = new DefinitionHashPointer<T>(null);
+        public static DefinitionHashPointer<T> Empty { get; } = new(null);
 
         private bool _isMapped;
         private T _value;
@@ -67,7 +68,7 @@ namespace NetBungieAPI
         /// <summary>
         ///     Definition locale
         /// </summary>
-        public BungieLocales Locale { get; internal set; } = BungieLocales.EN;
+        public BungieLocales Locale { get; internal set; }
 
         /// <summary>
         ///     Whether this hash isn't empty.
@@ -84,8 +85,14 @@ namespace NetBungieAPI
             _value = default;
             _isMapped = false;
             Hash = hash;
+            Locale = BungieLocales.EN;
         }
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="hash"></param>
+        /// <param name="locale"></param>
         public DefinitionHashPointer(uint hash, BungieLocales locale)
         {
             _value = default;
@@ -142,7 +149,7 @@ namespace NetBungieAPI
             {
                 return false;
             }
-            
+
             return false;
         }
 
@@ -155,23 +162,13 @@ namespace NetBungieAPI
             if (!HasValidHash)
                 return new DefinitionHashPointerDownloadResult<T>(default, false, "Missing valid hash.");
 
-            var response =
-                await _destiny2MethodsAccess
-                    .GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash!.Value);
+            var response = await _destiny2MethodsAccess
+                .GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash!.Value);
 
             if (response.IsSuccessfulResponseCode && response.Response is not null)
                 return new DefinitionHashPointerDownloadResult<T>(response.Response, true);
 
             return new DefinitionHashPointerDownloadResult<T>(default, false, response.ErrorStatus);
-        }
-
-        /// <summary>
-        /// <inheritdoc cref="object.ToString"/>
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            return $"{(_isMapped ? _value.ToString() : $"{DefinitionEnumType} - {Hash} - {Locale}")}";
         }
 
         /// <summary>
@@ -198,8 +195,7 @@ namespace NetBungieAPI
         /// <returns></returns>
         public bool DeepEquals(DefinitionHashPointer<T> other)
         {
-            return other != null &&
-                   Hash == other.Hash &&
+            return Hash == other.Hash &&
                    DefinitionEnumType == other.DefinitionEnumType &&
                    Locale == other.Locale;
         }
@@ -208,5 +204,8 @@ namespace NetBungieAPI
         {
             Locale = locale;
         }
+
+        private string DebuggerDisplay =>
+            $"{(_isMapped ? _value.ToString() : $"{DefinitionEnumType} - {Hash} - {Locale}")}";
     }
 }

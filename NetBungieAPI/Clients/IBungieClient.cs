@@ -59,6 +59,14 @@ namespace NetBungieAPI.Clients
         /// </summary>
         event Action DefinitionsLoaded;
 
+        /// <summary>
+        /// Tries to get definition async from all available sources
+        /// </summary>
+        /// <param name="hash"></param>
+        /// <param name="locale"></param>
+        /// <param name="success"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         ValueTask<bool> TryGetDefinitionAsync<T>(uint hash, BungieLocales locale, Action<T> success)
             where T : IDestinyDefinition;
     }

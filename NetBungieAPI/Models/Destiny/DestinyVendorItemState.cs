@@ -101,6 +101,6 @@ namespace NetBungieAPI.Models.Destiny
         /// <summary>
         ///     This indicates that the sale item is popular.
         /// </summary>
-        Popular = 65536,
+        Popular = 65536
     }
 }

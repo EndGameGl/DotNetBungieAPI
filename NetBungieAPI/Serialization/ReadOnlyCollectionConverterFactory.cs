@@ -22,11 +22,11 @@ namespace NetBungieAPI.Serialization
         {
             var collectionType = typeToConvert.GetGenericArguments()[0];
 
-            var converter = (JsonConverter) Activator.CreateInstance(
+            var converter = (JsonConverter)Activator.CreateInstance(
                 typeof(ReadOnlyCollectionConverter<>).MakeGenericType(collectionType),
                 BindingFlags.Instance | BindingFlags.Public,
                 null,
-                new object[] {options},
+                new object[] { options },
                 null);
 
             return converter;

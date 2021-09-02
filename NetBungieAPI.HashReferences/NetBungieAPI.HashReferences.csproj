@@ -6,11 +6,11 @@
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <DocumentationFile>bin\Debug\NetBungieAPI.HashReferences.xml</DocumentationFile>
+        <DocumentationFile>bin\Debug\NetBungieAPI.HashReferences.xml</DocumentationFile>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <DocumentationFile>bin\Release\NetBungieAPI.HashReferences.xml</DocumentationFile>
+        <DocumentationFile>bin\Release\NetBungieAPI.HashReferences.xml</DocumentationFile>
     </PropertyGroup>
 
 </Project>

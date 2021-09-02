@@ -34,11 +34,11 @@ namespace NetBungieAPI.Serialization
                 var valueType = typeToConvert.GetGenericArguments()[1];
 
 
-                var converter = (JsonConverter) Activator.CreateInstance(
+                var converter = (JsonConverter)Activator.CreateInstance(
                     typeof(ReadOnlyDictionaryDefinitionKeyConverter<,>).MakeGenericType(keyType, valueType),
                     BindingFlags.Instance | BindingFlags.Public,
                     null,
-                    new object[] {options},
+                    new object[] { options },
                     null);
 
                 return converter;

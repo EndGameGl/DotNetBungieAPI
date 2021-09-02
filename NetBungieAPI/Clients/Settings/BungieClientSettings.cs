@@ -154,13 +154,13 @@ namespace NetBungieAPI.Clients.Settings
         /// <summary>
         ///     Specifies definition provider
         /// </summary>
-        /// <param name="provider"></param>
+        /// <param name="provider">Custom provider to be used</param>
         /// <returns></returns>
-        /// <exception cref="Exception"></exception>
+        /// <exception cref="ArgumentNullException">Provider equals null</exception>
         public BungieClientSettings UseDefinitionProvider(DefinitionProvider provider)
         {
             if (provider is null)
-                throw new Exception("Provider is null.");
+                throw new ArgumentNullException(nameof(provider), "Provider is null.");
             DefinitionLoadingSettings.UsedProvider = provider;
             return this;
         }
@@ -168,9 +168,9 @@ namespace NetBungieAPI.Clients.Settings
         /// <summary>
         ///     Forces app to look up different manifest version available to load
         /// </summary>
-        /// <param name="version"></param>
+        /// <param name="version">Version string to look for</param>
         /// <returns></returns>
-        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentException">Empty version will throw an error</exception>
         public BungieClientSettings TryLoadManifestVersion(string version)
         {
             if (string.IsNullOrWhiteSpace(version))
@@ -183,8 +183,8 @@ namespace NetBungieAPI.Clients.Settings
         /// <summary>
         ///     Sets up how manifest updater will work.
         /// </summary>
-        /// <param name="shouldCheckUpdates"></param>
-        /// <param name="keepOldVersions"></param>
+        /// <param name="shouldCheckUpdates">Whether updates will be checked</param>
+        /// <param name="keepOldVersions">Whether old versions would be kept after updates</param>
         /// <returns></returns>
         public BungieClientSettings SetUpdateBehaviour(bool shouldCheckUpdates, bool keepOldVersions)
         {
@@ -196,7 +196,7 @@ namespace NetBungieAPI.Clients.Settings
         /// <summary>
         /// Use default provider for this lib (<see cref="SqliteDefinitionProvider"/>)
         /// </summary>
-        /// <param name="filePath"></param>
+        /// <param name="filePath">Path to the folder that contains all manifest data</param>
         /// <returns></returns>
         public BungieClientSettings UseDefaultProvider(string filePath)
         {
@@ -208,7 +208,7 @@ namespace NetBungieAPI.Clients.Settings
         /// Some actions to take after configuration is finished
         /// </summary>
         /// <exception cref="Exception"></exception>
-        internal void AfterConfigurated()
+        internal void AfterConfiguration()
         {
             var assemblyData = StaticUnityContainer.GetAssemblyData();
             var excludedFromLoad = DefinitionLoadingSettings.ForbiddenDefinitions;

@@ -1,5 +1,6 @@
 ﻿using System;
 using NetBungieAPI.Clients.Settings;
+using NetBungieAPI.Models.Applications;
 using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Services
@@ -11,6 +12,11 @@ namespace NetBungieAPI.Services
         public void Configure(Action<BungieClientSettings> configure)
         {
             configure(Settings);
+        }
+
+        public bool HasSufficientRights(ApplicationScopes applicationScopes)
+        {
+            return Settings.IdentificationSettings.ApplicationScopes.HasFlag(applicationScopes);
         }
     }
 }

@@ -36,7 +36,7 @@ namespace NetBungieAPI.Providers
         /// <summary>
         /// <inheritdoc cref="DefinitionProvider.OnLoad"/>
         /// </summary>
-        public override async Task OnLoad()
+        public override Task OnLoad()
         {
             foreach (var locale in DefinitionLoadingSettings.Locales)
             {
@@ -45,6 +45,8 @@ namespace NetBungieAPI.Providers
                 _filePaths.Add(locale, fileLocation);
                 OnLoadInternal(locale, fileLocation);
             }
+
+            return Task.CompletedTask;
         }
 
         /// <summary>
@@ -168,7 +170,7 @@ namespace NetBungieAPI.Providers
             return new ReadOnlyCollection<T>(results);
         }
 
-        public override async ValueTask<DestinyHistoricalStatsDefinition> LoadHistoricalStatsDefinition(string id,
+        public override ValueTask<DestinyHistoricalStatsDefinition> LoadHistoricalStatsDefinition(string id,
             BungieLocales locale)
         {
             throw new ProviderUnsupportedException("This definition is not supported for current provider",
@@ -182,7 +184,7 @@ namespace NetBungieAPI.Providers
         /// <param name="locale"></param>
         /// <returns></returns>
         /// <exception cref="ProviderUnsupportedException"></exception>
-        public override async ValueTask<string> LoadHistoricalStatsDefinitionAsJson(string id, BungieLocales locale)
+        public override ValueTask<string> LoadHistoricalStatsDefinitionAsJson(string id, BungieLocales locale)
         {
             throw new ProviderUnsupportedException("This definition is not supported for current provider",
                 DefinitionsEnum.DestinyHistoricalStatsDefinition);

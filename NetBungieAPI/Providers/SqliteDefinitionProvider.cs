@@ -47,7 +47,6 @@ namespace NetBungieAPI.Providers
             Logger.Log("Checking if preferred manifest exists.", LogType.Debug);
             if (ManifestVersionSettings.ForceLoadManifestVersion &&
                 !string.IsNullOrWhiteSpace(ManifestVersionSettings.PreferredLoadedManifestVersion))
-            {
                 if (await CheckExistingManifestData(ManifestVersionSettings.PreferredLoadedManifestVersion))
                 {
                     UsedManifest = _availableManifests
@@ -55,7 +54,6 @@ namespace NetBungieAPI.Providers
                         .Key;
                     Logger.Log($"Set manifest version to: {UsedManifest.Version}", LogType.Debug);
                 }
-            }
 
             Logger.Log("Searching locales...", LogType.Debug);
             foreach (var locale in DefinitionLoadingSettings.Locales)
@@ -69,7 +67,7 @@ namespace NetBungieAPI.Providers
             Repositories.Initialize(DefinitionLoadingSettings.Locales);
         }
 
-        public override async ValueTask<IEnumerable<DestinyManifest>> GetAvailableManifests()
+        public override ValueTask<IEnumerable<DestinyManifest>> GetAvailableManifests()
         {
             if (!Directory.Exists(ManifestPath))
                 throw new Exception($"No manifest folder found at: {ManifestPath}");
@@ -91,12 +89,12 @@ namespace NetBungieAPI.Providers
                 var folderManifest = SerializationHelper.Deserialize<DestinyManifest>(json);
                 _availableManifests.TryAdd(folderManifest, version);
             });
-            return _availableManifests.Select(x => x.Key);
+            return ValueTask.FromResult(_availableManifests.Select(x => x.Key));
         }
 
-        public override async ValueTask<DestinyManifest> GetCurrentManifest()
+        public override ValueTask<DestinyManifest> GetCurrentManifest()
         {
-            return UsedManifest;
+            return ValueTask.FromResult(UsedManifest);
         }
 
         public override async ValueTask<bool> CheckForUpdates()
@@ -132,7 +130,7 @@ namespace NetBungieAPI.Providers
             foreach (var manifestData in manifestList) await DeleteManifestData(manifestData);
         }
 
-        public override async Task DeleteManifestData(DestinyManifest manifestData)
+        public override Task DeleteManifestData(DestinyManifest manifestData)
         {
             var manifestPath = $"{ManifestPath}\\{manifestData.Version}";
             if (Directory.Exists(manifestPath))
@@ -144,6 +142,8 @@ namespace NetBungieAPI.Providers
 
                 Directory.Delete(manifestPath);
             }
+
+            return Task.CompletedTask;
         }
 
         public override async ValueTask<bool> CheckExistingManifestData(string version)
@@ -397,7 +397,7 @@ namespace NetBungieAPI.Providers
             return result;
         }
 
-        public override async ValueTask<string> ReadDefinitionAsJson(DefinitionsEnum enumValue, uint hash,
+        public override ValueTask<string> ReadDefinitionAsJson(DefinitionsEnum enumValue, uint hash,
             BungieLocales locale)
         {
             var result = string.Empty;
@@ -416,7 +416,7 @@ namespace NetBungieAPI.Providers
             }
 
             _connection.Close();
-            return result;
+            return ValueTask.FromResult(result);
         }
 
         public override async ValueTask<ReadOnlyCollection<T>> LoadMultipleDefinitions<T>(uint[] hashes,

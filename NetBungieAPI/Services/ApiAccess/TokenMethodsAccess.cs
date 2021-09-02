@@ -10,6 +10,9 @@ using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Services.ApiAccess
 {
+    /// <summary>
+    /// <see cref="ITokenMethodsAccess"/>
+    /// </summary>
     public class TokenMethodsAccess : ITokenMethodsAccess
     {
         private readonly IConfigurationService _configuration;
@@ -22,23 +25,27 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<PartnerOfferSkuHistoryResponse[]>> GetPartnerOfferSkuHistory(
-            AuthorizationTokenData authData,
+            AuthorizationTokenData authorizationToken,
             int partnerApplicationId,
             long targetBnetMembershipId,
-            CancellationToken token = default)
+            CancellationToken cancellationToken = default)
         {
-            if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(ApplicationScopes
-                .PartnerOfferGrant))
+            if (!_configuration.HasSufficientRights(ApplicationScopes.PartnerOfferGrant))
                 throw new InsufficientScopeException(ApplicationScopes.PartnerOfferGrant);
 
             var url = StringBuilderPool
-                .GetBuilder(token)
+                .GetBuilder(cancellationToken)
                 .Append("/Tokens/Partner/History/")
                 .AddUrlParam(partnerApplicationId.ToString())
                 .AddUrlParam(targetBnetMembershipId.ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<PartnerOfferSkuHistoryResponse[]>(url, token,
-                authData.AccessToken);
+
+            return await _httpClient
+                .GetFromBungieNetPlatform<PartnerOfferSkuHistoryResponse[]>(
+                    url,
+                    cancellationToken,
+                    authorizationToken.AccessToken)
+                .ConfigureAwait(false);
         }
     }
 }

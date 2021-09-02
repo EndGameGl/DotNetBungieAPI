@@ -6,6 +6,9 @@ using NetBungieAPI.Models.Tokens;
 
 namespace NetBungieAPI.Services.ApiAccess.Interfaces
 {
+    /// <summary>
+    /// Access to https://bungie.net/Platform/Tokens endpoint
+    /// </summary>
     public interface ITokenMethodsAccess
     {
         /// <summary>
@@ -17,12 +20,13 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         ///     The bungie.net user to apply missing offers to. If not self, elevated permissions
         ///     are required.
         /// </param>
-        /// <param name="token">Cancellation token</param>
+        /// <param name="cancellationToken">Cancellation token</param>
+        /// /// <param name="authorizationToken">Authorization token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<PartnerOfferSkuHistoryResponse[]>> GetPartnerOfferSkuHistory(
-            AuthorizationTokenData authData,
+            AuthorizationTokenData authorizationToken,
             int partnerApplicationId,
             long targetBnetMembershipId,
-            CancellationToken token = default);
+            CancellationToken cancellationToken = default);
     }
 }

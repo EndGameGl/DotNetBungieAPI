@@ -24,7 +24,7 @@ namespace NetBungieAPI
             client.AddListener(configuration.Settings.InternalSettings.OnLog);
             Task.Run(async () =>
             {
-                configuration.Settings.AfterConfigurated();
+                configuration.Settings.AfterConfiguration();
                 var provider = configuration.Settings.DefinitionLoadingSettings.UsedProvider;
                 await provider.OnLoadInternal(configuration);
                 if (configuration.Settings.ManifestVersionSettings.CheckUpdates)
@@ -37,10 +37,7 @@ namespace NetBungieAPI
                     else
                     {
                         var manifest = await provider.GetCurrentManifest();
-                        if (!await provider.CheckExistingManifestData(manifest.Version))
-                        {
-                            await provider.Update();
-                        }
+                        if (!await provider.CheckExistingManifestData(manifest.Version)) await provider.Update();
                     }
 
                     if (configuration.Settings.ManifestVersionSettings.KeepOldVersions == false)
@@ -93,7 +90,7 @@ namespace NetBungieAPI
             var client = StaticUnityContainer.GetService<IBungieClient>();
             client.AddListener(configuration.Settings.InternalSettings.OnLog);
 
-            configuration.Settings.AfterConfigurated();
+            configuration.Settings.AfterConfiguration();
             var provider = configuration.Settings.DefinitionLoadingSettings.UsedProvider;
             await provider.OnLoadInternal(configuration);
             if (configuration.Settings.ManifestVersionSettings.CheckUpdates)
@@ -106,10 +103,7 @@ namespace NetBungieAPI
                 else
                 {
                     var manifest = await provider.GetCurrentManifest();
-                    if (!await provider.CheckExistingManifestData(manifest.Version))
-                    {
-                        await provider.Update();
-                    }
+                    if (!await provider.CheckExistingManifestData(manifest.Version)) await provider.Update();
                 }
 
                 if (configuration.Settings.ManifestVersionSettings.KeepOldVersions == false)
@@ -117,15 +111,15 @@ namespace NetBungieAPI
             }
 
             await provider.OnLoad();
-            
+
             client.Repository.Provider = configuration.Settings.DefinitionLoadingSettings.UsedProvider;
             if (!configuration.Settings.DefinitionLoadingSettings.LoadAllDefinitionsOnStatup)
                 return client;
 
             if (configuration.Settings.DefinitionLoadingSettings.WaitAllDefinitionsToLoad)
             {
-                client.Repository.Provider.ReadDefinitionsToRepository(configuration.Settings
-                    .DefinitionLoadingSettings.AllowedDefinitions).RunSynchronously();
+                await client.Repository.Provider.ReadDefinitionsToRepository(configuration.Settings
+                    .DefinitionLoadingSettings.AllowedDefinitions);
 
                 if (configuration.Settings.DefinitionLoadingSettings.PremapDefinitionPointers)
                     client.Repository.PremapPointers();

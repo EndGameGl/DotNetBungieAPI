@@ -100,25 +100,29 @@ namespace NetBungieAPI.Clients
             DefinitionsLoaded?.Invoke();
         }
 
+        /// <summary>
+        /// <inheritdoc cref="IBungieClient.TryGetDefinitionAsync{T}"/>
+        /// </summary>
+        /// <param name="hash"></param>
+        /// <param name="locale"></param>
+        /// <param name="success"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public async ValueTask<bool> TryGetDefinitionAsync<T>(uint hash, BungieLocales locale, Action<T> success)
             where T : IDestinyDefinition
         {
-            T definition = default;
-            if (Repository.TryGetDestinyDefinition<T>(hash, locale, out definition))
+            if (Repository.TryGetDestinyDefinition<T>(hash, locale, out var definition))
             {
                 success(definition);
                 return true;
             }
 
             definition = await Repository.Provider.LoadDefinition<T>(hash, locale);
-            if (definition is not null)
-            {
-                Repository.AddDefinition(DefinitionHashPointer<T>.EnumValue, locale, definition);
-                success(definition);
-                return true;
-            }
-
-            return false;
+            if (definition is null)
+                return false;
+            Repository.AddDefinition(DefinitionHashPointer<T>.EnumValue, locale, definition);
+            success(definition);
+            return true;
         }
     }
 }

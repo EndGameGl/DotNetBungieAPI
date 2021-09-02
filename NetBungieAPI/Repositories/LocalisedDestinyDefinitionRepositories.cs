@@ -51,11 +51,9 @@ namespace NetBungieAPI.Repositories
         public void LoadAllDataFromDisk(string localManifestPath, DestinyManifest manifest)
         {
             foreach (var repo in _localisedRepositories.Values)
-            {
                 Task.Run(async () =>
                     await Provider.ReadDefinitionsToRepository(_configs.Settings.DefinitionLoadingSettings
                         .AllowedDefinitions));
-            }
 
             if (_configs.Settings.DefinitionLoadingSettings.PremapDefinitionPointers)
             {
@@ -181,7 +179,5 @@ namespace NetBungieAPI.Repositories
         {
             foreach (var repository in _localisedRepositories) repository.Value.PremapPointers();
         }
-        
-        
     }
 }

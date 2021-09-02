@@ -23,28 +23,28 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<Application[]>> GetBungieApplications(
-            CancellationToken token = default)
+            CancellationToken cancellationToken = default)
         {
-            return await _httpClient.GetFromBungieNetPlatform<Application[]>("/App/FirstParty/", token)
+            return await _httpClient
+                .GetFromBungieNetPlatform<Application[]>("/App/FirstParty/", cancellationToken)
                 .ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<ApiUsage>> GetApplicationApiUsage(
-            AuthorizationTokenData authToken,
+            AuthorizationTokenData authorizationToken,
             int applicationId,
             DateTime? start = null,
             DateTime? end = null,
-            CancellationToken token = default)
+            CancellationToken cancellationToken = default)
         {
-            if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(
-                ApplicationScopes.ReadUserData))
+            if (!_configuration.HasSufficientRights(ApplicationScopes.ReadUserData))
                 throw new InsufficientScopeException(ApplicationScopes.ReadUserData);
             if (start.HasValue && end.HasValue && (end.Value - start.Value).TotalHours > 48)
                 throw new Exception("Can't request more than 48 hours.");
             end ??= DateTime.Now;
             start ??= end.Value.AddHours(-24);
             var url = StringBuilderPool
-                .GetBuilder(token)
+                .GetBuilder(cancellationToken)
                 .Append("/App/ApiUsage/")
                 .AddQueryParam("start",
                     start.Value.ToString("yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture))
@@ -52,7 +52,8 @@ namespace NetBungieAPI.Services.ApiAccess
                     end.Value.ToString("yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture))
                 .Build();
 
-            return await _httpClient.GetFromBungieNetPlatform<ApiUsage>(url, token, authToken.AccessToken)
+            return await _httpClient
+                .GetFromBungieNetPlatform<ApiUsage>(url, cancellationToken, authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
     }

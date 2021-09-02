@@ -8,6 +8,9 @@ using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Services.ApiAccess
 {
+    /// <summary>
+    /// <see cref="ICommunityContentMethodsAccess"/>
+    /// </summary>
     public class CommunityContentMethodsAccess : ICommunityContentMethodsAccess
     {
         private readonly IHttpClientInstance _httpClient;
@@ -21,16 +24,18 @@ namespace NetBungieAPI.Services.ApiAccess
             ForumTopicsSortEnum sort,
             ForumMediaType mediaFilter,
             int page = 0,
-            CancellationToken token = default)
+            CancellationToken cancellationToken = default)
         {
             var url = StringBuilderPool
-                .GetBuilder(token)
+                .GetBuilder(cancellationToken)
                 .Append("/CommunityContent/Get/")
                 .AddUrlParam(((byte)sort).ToString())
                 .AddUrlParam(((int)mediaFilter).ToString())
                 .AddUrlParam(page.ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<PostSearchResponse>(url, token).ConfigureAwait(false);
+            return await _httpClient
+                .GetFromBungieNetPlatform<PostSearchResponse>(url, cancellationToken)
+                .ConfigureAwait(false);
         }
     }
 }

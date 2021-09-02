@@ -1,25 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild> 
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <WarningLevel>5</WarningLevel>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <DocumentationFile>bin\Release\NetBungieAPI.xml</DocumentationFile>
-  </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
-    <PackageReference Include="System.Data.SQLite" Version="1.0.114.3" />
-    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
-    <PackageReference Include="System.ObjectModel" Version="4.3.0" />
-    <PackageReference Include="Unity" Version="5.11.10" />
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <WarningLevel>5</WarningLevel>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <DocumentationFile>bin\Release\NetBungieAPI.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+        <PackageReference Include="System.Data.SQLite" Version="1.0.114.3" />
+        <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+        <PackageReference Include="System.ObjectModel" Version="4.3.0" />
+        <PackageReference Include="Unity" Version="5.11.10" />
+    </ItemGroup>
 
 </Project>

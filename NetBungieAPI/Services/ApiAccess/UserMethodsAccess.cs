@@ -12,108 +12,120 @@ using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Services.ApiAccess
 {
+    /// <summary>
+    /// <inheritdoc cref="IUserMethodsAccess"/>
+    /// </summary>
     public class UserMethodsAccess : IUserMethodsAccess
     {
-        private readonly IAuthorizationStateHandler _authHandler;
         private readonly IConfigurationService _configuration;
         private readonly IHttpClientInstance _httpClient;
 
-        internal UserMethodsAccess(IHttpClientInstance httpClient, IAuthorizationStateHandler authHandler,
+        internal UserMethodsAccess(
+            IHttpClientInstance httpClient,
             IConfigurationService configuration)
         {
             _httpClient = httpClient;
-            _authHandler = authHandler;
             _configuration = configuration;
         }
 
         public async ValueTask<BungieResponse<GeneralUser>> GetBungieNetUserById(
             long id,
-            CancellationToken token = default)
+            CancellationToken cancellationToken = default)
         {
             var url = StringBuilderPool
-                .GetBuilder(token)
+                .GetBuilder(cancellationToken)
                 .Append("/User/GetBungieNetUserById/")
                 .AddUrlParam(id.ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<GeneralUser>(url, token);
+            return await _httpClient
+                .GetFromBungieNetPlatform<GeneralUser>(url, cancellationToken)
+                .ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<CredentialTypeForAccount[]>> GetCredentialTypesForTargetAccount(
             long id,
-            AuthorizationTokenData authToken,
-            CancellationToken token = default)
+            AuthorizationTokenData authorizationToken,
+            CancellationToken cancellationToken = default)
         {
             var url = StringBuilderPool
-                .GetBuilder(token)
+                .GetBuilder(cancellationToken)
                 .Append("/User/GetCredentialTypesForTargetAccount/")
                 .AddUrlParam(id.ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<CredentialTypeForAccount[]>(url, token,
-                authToken.AccessToken);
+            return await _httpClient
+                .GetFromBungieNetPlatform<CredentialTypeForAccount[]>(
+                    url,
+                    cancellationToken,
+                    authorizationToken.AccessToken)
+                .ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<UserTheme[]>> GetAvailableThemes(
-            CancellationToken token = default)
+            CancellationToken cancellationToken = default)
         {
-            return await _httpClient.GetFromBungieNetPlatform<UserTheme[]>("/User/GetAvailableThemes", token);
+            return await _httpClient
+                .GetFromBungieNetPlatform<UserTheme[]>("/User/GetAvailableThemes", cancellationToken)
+                .ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<UserMembershipData>> GetMembershipDataById(long id,
-            BungieMembershipType membershipType, CancellationToken token = default)
+            BungieMembershipType membershipType, CancellationToken cancellationToken = default)
         {
             var url = StringBuilderPool
-                .GetBuilder(token)
+                .GetBuilder(cancellationToken)
                 .Append("/User/GetMembershipsById/")
                 .AddUrlParam(id.ToString())
                 .AddUrlParam(((int)membershipType).ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<UserMembershipData>(url, token);
+            return await _httpClient
+                .GetFromBungieNetPlatform<UserMembershipData>(url, cancellationToken)
+                .ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser(
-            AuthorizationTokenData authToken,
-            CancellationToken token = default)
+            AuthorizationTokenData authorizationToken,
+            CancellationToken cancellationToken = default)
         {
-            if (!_configuration
-                .Settings
-                .IdentificationSettings
-                .ApplicationScopes
-                .HasFlag(ApplicationScopes.ReadBasicUserProfile))
+            if (!_configuration.HasSufficientRights(ApplicationScopes.ReadBasicUserProfile))
                 throw new InsufficientScopeException(ApplicationScopes.ReadBasicUserProfile);
 
-            return await _httpClient.GetFromBungieNetPlatform<UserMembershipData>(
-                "/User/GetMembershipsForCurrentUser/", token, authToken.AccessToken);
-
-
-            throw new Exception("Missing token to make a call.");
+            return await _httpClient
+                .GetFromBungieNetPlatform<UserMembershipData>(
+                    "/User/GetMembershipsForCurrentUser/",
+                    cancellationToken,
+                    authorizationToken.AccessToken)
+                .ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<HardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(
             long credential,
             BungieCredentialType credentialType = BungieCredentialType.SteamId,
-            CancellationToken token = default)
+            CancellationToken cancellationToken = default)
         {
             var url = StringBuilderPool
-                .GetBuilder(token)
+                .GetBuilder(cancellationToken)
                 .Append("/User/GetMembershipFromHardLinkedCredential/")
                 .AddUrlParam(((byte)credentialType).ToString())
                 .AddUrlParam(credential.ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<HardLinkedUserMembership>(url, token);
+            return await _httpClient
+                .GetFromBungieNetPlatform<HardLinkedUserMembership>(url, cancellationToken)
+                .ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<UserPrefixSearchResponse>> SearchUsersByPrefix(
             string prefix,
             int page = 0,
-            CancellationToken token = default)
+            CancellationToken cancellationToken = default)
         {
             var url = StringBuilderPool
-                .GetBuilder(token)
+                .GetBuilder(cancellationToken)
                 .Append("/User/Search/Prefix/")
                 .AddUrlParam(prefix)
                 .AddUrlParam(page.ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<UserPrefixSearchResponse>(url, token)
+            return await _httpClient
+                .GetFromBungieNetPlatform<UserPrefixSearchResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
     }

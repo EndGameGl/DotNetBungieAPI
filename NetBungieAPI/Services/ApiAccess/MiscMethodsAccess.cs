@@ -18,35 +18,41 @@ namespace NetBungieAPI.Services.ApiAccess
         }
 
         public async ValueTask<BungieResponse<Dictionary<string, string>>> GetAvailableLocales(
-            CancellationToken token = default)
+            CancellationToken cancellationToken = default)
         {
-            return await _httpClient.GetFromBungieNetPlatform<Dictionary<string, string>>("/GetAvailableLocales/",
-                token);
+            return await _httpClient
+                .GetFromBungieNetPlatform<Dictionary<string, string>>("/GetAvailableLocales/", cancellationToken)
+                .ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<CoreSettingsConfiguration>> GetCommonSettings(
-            CancellationToken token = default)
+            CancellationToken cancellationToken = default)
         {
-            return await _httpClient.GetFromBungieNetPlatform<CoreSettingsConfiguration>("/Settings/", token);
+            return await _httpClient
+                .GetFromBungieNetPlatform<CoreSettingsConfiguration>("/Settings/", cancellationToken)
+                .ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<Dictionary<string, CoreSystem>>> GetUserSystemOverrides(
-            CancellationToken token = default)
+            CancellationToken cancellationToken = default)
         {
-            return await _httpClient.GetFromBungieNetPlatform<Dictionary<string, CoreSystem>>("/UserSystemOverrides/",
-                token);
+            return await _httpClient
+                .GetFromBungieNetPlatform<Dictionary<string, CoreSystem>>("/UserSystemOverrides/", cancellationToken)
+                .ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<GlobalAlert[]>> GetGlobalAlerts(
             bool includestreaming = false,
-            CancellationToken token = default)
+            CancellationToken cancellationToken = default)
         {
             var url = StringBuilderPool
-                .GetBuilder(token)
+                .GetBuilder(cancellationToken)
                 .Append("/GlobalAlerts/")
                 .AddQueryParam("includestreaming", includestreaming.ToString())
                 .Build();
-            return await _httpClient.GetFromBungieNetPlatform<GlobalAlert[]>(url, token);
+            return await _httpClient
+                .GetFromBungieNetPlatform<GlobalAlert[]>(url, cancellationToken)
+                .ConfigureAwait(false);
         }
     }
 }

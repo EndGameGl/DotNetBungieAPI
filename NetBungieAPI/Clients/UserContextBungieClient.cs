@@ -13,7 +13,6 @@ namespace NetBungieAPI.Clients
     public class UserContextBungieClient : IUserContextBungieClient
     {
         private readonly IAuthorizationStateHandler _authorizationStateHandler;
-        private readonly AuthorizationTokenData _token;
 
         internal UserContextBungieClient(
             ILocalisedDestinyDefinitionRepositories repository,
@@ -22,19 +21,19 @@ namespace NetBungieAPI.Clients
             IBungieApiAccess apiAccess)
         {
             Repository = repository;
-            _token = token;
+            TokenData = token;
             _authorizationStateHandler = authorizationStateHandler;
-            App = new UserScopedAppMethodsAccess(apiAccess.App, _token);
-            User = new UserScopedUserMethodsAccess(apiAccess.User, _token);
-            Trending = new UserScopedTrendingMethodsAccess(apiAccess.Trending, _token);
-            Tokens = new UserScopedTokenMethodsAccess(apiAccess.Tokens, _token);
+            App = new UserScopedAppMethodsAccess(apiAccess.App, TokenData);
+            User = new UserScopedUserMethodsAccess(apiAccess.User, TokenData);
+            Trending = new UserScopedTrendingMethodsAccess(apiAccess.Trending, TokenData);
+            Tokens = new UserScopedTokenMethodsAccess(apiAccess.Tokens, TokenData);
             Misc = new UserScopedMiscMethodsAccess(apiAccess.Misc);
-            GroupV2 = new UserScopedGroupV2MethodsAccess(apiAccess.GroupV2, _token);
-            Forum = new UsedScopedForumMethodsAccess(apiAccess.Forum, _token);
-            Fireteam = new UserScopedFireteamMethodsAccess(apiAccess.Fireteam, _token);
-            Content = new UserScopedContentMethodsAccess(apiAccess.Content, _token);
+            GroupV2 = new UserScopedGroupV2MethodsAccess(apiAccess.GroupV2, TokenData);
+            Forum = new UsedScopedForumMethodsAccess(apiAccess.Forum, TokenData);
+            Fireteam = new UserScopedFireteamMethodsAccess(apiAccess.Fireteam, TokenData);
+            Content = new UserScopedContentMethodsAccess(apiAccess.Content, TokenData);
             CommunityContent = new UserScopedCommunityContentMethodsAccess(apiAccess.Community);
-            Destiny2 = new UserScopedDestiny2MethodsAccess(apiAccess.Destiny2, _token);
+            Destiny2 = new UserScopedDestiny2MethodsAccess(apiAccess.Destiny2, TokenData);
         }
 
         /// <summary>
@@ -102,8 +101,13 @@ namespace NetBungieAPI.Clients
         /// </summary>
         public async Task ValidateToken()
         {
-            if (_token.ReceiveTime.AddSeconds(_token.ExpiresIn) < DateTime.Now)
-                await _authorizationStateHandler.RenewToken(_token);
+            if (TokenData.ReceiveTime.AddSeconds(TokenData.ExpiresIn) < DateTime.Now)
+                await _authorizationStateHandler.RenewToken(TokenData);
         }
+
+        /// <summary>
+        /// <inheritdoc cref="IUserContextBungieClient.TokenData"/>
+        /// </summary>
+        public AuthorizationTokenData TokenData { get; }
     }
 }

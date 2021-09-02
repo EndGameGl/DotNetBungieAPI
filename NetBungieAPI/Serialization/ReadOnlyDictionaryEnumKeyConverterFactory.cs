@@ -28,12 +28,12 @@ namespace NetBungieAPI.Serialization
             var keyType = typeToConvert.GetGenericArguments()[0];
             var valueType = typeToConvert.GetGenericArguments()[1];
 
-            var converter = (JsonConverter) Activator.CreateInstance(
+            var converter = (JsonConverter)Activator.CreateInstance(
                 typeof(ReadOnlyDictionaryEnumKeyConverter<,>)
                     .MakeGenericType(keyType, valueType),
                 BindingFlags.Instance | BindingFlags.Public,
                 null,
-                new object[] {options},
+                new object[] { options },
                 null);
 
             return converter;
@@ -63,7 +63,7 @@ namespace NetBungieAPI.Serialization
 
                     var key = reader.GetString();
                     tempDictionary.Add(
-                        (TKey) Enum.Parse(_enumType, key),
+                        (TKey)Enum.Parse(_enumType, key),
                         JsonSerializer.Deserialize<TValue>(ref reader, options)
                     );
                 }

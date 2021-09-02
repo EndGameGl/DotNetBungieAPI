@@ -141,7 +141,8 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Records
         {
             if (IntervalInfo != null)
             {
-                foreach (var objective in IntervalInfo.IntervalObjectives) objective.IntervalObjective.SetLocale(locale);
+                foreach (var objective in IntervalInfo.IntervalObjectives)
+                    objective.IntervalObjective.SetLocale(locale);
 
                 foreach (var reward in IntervalInfo.IntervalRewards)
                 foreach (var item in reward.IntervalRewardItems)

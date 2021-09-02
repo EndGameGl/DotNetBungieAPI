@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using NetBungieAPI.Models.Destiny;
 
@@ -9,6 +10,7 @@ namespace NetBungieAPI.Repositories
     /// <summary>
     ///     Repository for any <see cref="IDestinyDefinition" />
     /// </summary>
+    [DebuggerDisplay("{DebuggerDisplay}")]
     public class DestinyDefinitionTypeRepository
     {
         private readonly ConcurrentDictionary<uint, IDestinyDefinition> _definitions;
@@ -51,21 +53,18 @@ namespace NetBungieAPI.Repositories
             definition = default;
             if (_definitions.TryGetValue(hash, out var item))
             {
-                definition = (T) item;
+                definition = (T)item;
                 return true;
             }
 
             return false;
         }
 
-        public override string ToString()
-        {
-            return $"{Type.Name}: {_definitions.Count} entities.";
-        }
-
         public void MapValues()
         {
             foreach (var definition in EnumerateValues()) definition.MapValues();
         }
+
+        private string DebuggerDisplay => $"{Type.Name}: {_definitions.Count} entities.";
     }
 }

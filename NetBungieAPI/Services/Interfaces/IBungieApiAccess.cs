@@ -56,7 +56,7 @@ namespace NetBungieAPI.Services.Interfaces
         /// Access to https://bungie.net/Platform/Fireteam endpoint
         /// </summary>
         IFireteamMethodsAccess Fireteam { get; init; }
-        
+
         /// <summary>
         /// Access to https://bungie.net/Platform/Social endpoint
         /// </summary>

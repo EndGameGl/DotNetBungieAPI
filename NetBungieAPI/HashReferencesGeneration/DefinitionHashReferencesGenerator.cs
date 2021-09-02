@@ -65,7 +65,7 @@ namespace NetBungieAPI.HashReferencesGeneration
         private static readonly string NewLine = Environment.NewLine;
         private const char OpenCurvyBrackets = '{';
         private const char CloseCurvyBrackets = '}';
-        private const char Tabulation = (char) 9;
+        private const char Tabulation = (char)9;
 
         private readonly IBungieClient _bungieClient;
         private readonly string _fileName;
@@ -669,20 +669,25 @@ namespace NetBungieAPI.HashReferencesGeneration
 
         private void ValidateFileExistence()
         {
-            if (File.Exists(_fileName))
-            {
-                File.Delete(_fileName);
-            }
+            if (File.Exists(_fileName)) File.Delete(_fileName);
 
-            if (!File.Exists(_fileName))
-            {
-                File.Create(_fileName).Close();
-            }
+            if (!File.Exists(_fileName)) File.Create(_fileName).Close();
         }
 
-        private static string GetIndent(int level) => new(Tabulation, level);
-        private static string GetIndentedString(int level, string text) => $"{GetIndent(level)}{text}";
-        private static string GetClassNameString(string className) => $"public static class {className}{NewLine}";
+        private static string GetIndent(int level)
+        {
+            return new(Tabulation, level);
+        }
+
+        private static string GetIndentedString(int level, string text)
+        {
+            return $"{GetIndent(level)}{text}";
+        }
+
+        private static string GetClassNameString(string className)
+        {
+            return $"public static class {className}{NewLine}";
+        }
 
         private static void ValidateAndAddValue(
             Dictionary<string, uint> definitionCacheLookup,
@@ -694,15 +699,9 @@ namespace NetBungieAPI.HashReferencesGeneration
 
             key = string.Join("", key.Split(forbiddenSymbols, StringSplitOptions.TrimEntries));
 
-            if (string.IsNullOrWhiteSpace(key))
-            {
-                key = value.ToString();
-            }
+            if (string.IsNullOrWhiteSpace(key)) key = value.ToString();
 
-            if (char.IsDigit(key[0]))
-            {
-                key = $"H{key}";
-            }
+            if (char.IsDigit(key[0])) key = $"H{key}";
 
             var sameEntriesAmount = definitionCacheLookup.Keys.Count(x => x.Split("_")[0] == key);
 
@@ -726,9 +725,7 @@ namespace NetBungieAPI.HashReferencesGeneration
                             $"/// {GetIndentedString(1, lines[i])}"));
 
                         if (i < arrayLength)
-                        {
                             await textWriter.WriteLineAsync(GetIndentedString(indentLevel, "/// <para/>"));
-                        }
                     }
                 }
                 else
@@ -748,42 +745,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyActivityDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyActivityDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -795,42 +780,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyActivityModeDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyActivityModeDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -842,42 +815,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyActivityModifierDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyActivityModifierDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -889,42 +850,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyActivityTypeDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyActivityTypeDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -936,42 +885,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyArtifactDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyArtifactDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -983,42 +920,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyBreakerTypeDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyBreakerTypeDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1030,42 +955,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyChecklistDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyChecklistDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1077,42 +990,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyClassDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyClassDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1124,42 +1025,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyCollectibleDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyCollectibleDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1171,42 +1060,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyDamageTypeDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyDamageTypeDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1218,42 +1095,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyDestinationDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyDestinationDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1265,42 +1130,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyDestinationDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyDestinationDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1312,42 +1165,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyEquipmentSlotDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyEquipmentSlotDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1359,42 +1200,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyFactionDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyFactionDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1406,42 +1235,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyGenderDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyGenderDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1479,42 +1296,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyInventoryBucketDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyInventoryBucketDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1526,42 +1331,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyInventoryItemDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyInventoryItemDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1573,42 +1366,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyItemCategoryDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyItemCategoryDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1620,42 +1401,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyItemTierTypeDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyItemTierTypeDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1667,42 +1436,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyLoreDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyLoreDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1713,11 +1470,9 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyMedalTierDefinition>())
-            {
                 await textWriter.WriteLineAsync(GetIndentedString(
                     indentationLevel,
                     $"public const uint {definition.TierName.Replace(" ", "")} = {definition.Hash};"));
-            }
         }
 
         private async Task AddMilestonesInfo(
@@ -1726,42 +1481,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyMetricDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyMetricDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1773,42 +1516,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyMilestoneDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyMilestoneDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1820,42 +1551,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyPlaceDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyPlaceDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1867,30 +1586,22 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyPowerCapDefinition>())
-            {
                 ValidateAndAddValue(
                     definitionCacheLookup,
                     definition.PowerCap.ToString(),
                     definition.Hash,
                     ForbiddenSymbols);
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
-            {
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
-            }
 
             definitionCacheLookup.Clear();
         }
@@ -1901,42 +1612,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyPresentationNodeDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyPresentationNodeDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1948,42 +1647,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyProgressionDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyProgressionDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -1995,42 +1682,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyRaceDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyRaceDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -2042,42 +1717,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyRecordDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyRecordDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -2089,42 +1752,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyReportReasonCategoryDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyReportReasonCategoryDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -2136,42 +1787,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinySandboxPerkDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinySandboxPerkDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -2183,42 +1822,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinySeasonDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinySeasonDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -2230,42 +1857,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinySeasonPassDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinySeasonPassDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -2277,42 +1892,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinySocketCategoryDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinySocketCategoryDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -2324,42 +1927,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinySocketTypeDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinySocketTypeDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -2371,42 +1962,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyStatDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyStatDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -2442,7 +2021,6 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyTraitDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
                 {
                     if (!string.IsNullOrEmpty(definition.DisplayProperties.Name))
@@ -2494,29 +2072,22 @@ namespace NetBungieAPI.HashReferencesGeneration
                 {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
                 }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyTraitDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -2528,42 +2099,30 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyVendorDefinition>())
-            {
                 if (definition.DisplayProperties is not null)
-                {
                     ValidateAndAddValue(
                         definitionCacheLookup,
                         definition.DisplayProperties.Name,
                         definition.Hash,
                         ForbiddenSymbols);
-                }
                 else
-                {
                     definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-                }
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
             {
                 if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyVendorDefinition>(
                     value, BungieLocales.EN, out var definition))
-                {
                     await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
-                }
 
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
             }
 
             definitionCacheLookup.Clear();
@@ -2575,30 +2134,22 @@ namespace NetBungieAPI.HashReferencesGeneration
             int indentationLevel)
         {
             foreach (var definition in _bungieClient.Repository.GetAll<DestinyVendorGroupDefinition>())
-            {
                 ValidateAndAddValue(
                     definitionCacheLookup,
                     definition.CategoryName,
                     definition.Hash,
                     ForbiddenSymbols);
-            }
 
             foreach (var (key, value) in definitionCacheLookup)
-            {
                 if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
                     !key.Contains(value.ToString()))
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key}_{value} = {value};"));
-                }
                 else
-                {
                     await textWriter.WriteLineAsync(GetIndentedString(
                         indentationLevel,
                         $"public const uint {key} = {value};"));
-                }
-            }
 
             definitionCacheLookup.Clear();
         }

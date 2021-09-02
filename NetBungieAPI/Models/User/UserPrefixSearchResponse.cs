@@ -8,11 +8,9 @@ namespace NetBungieAPI.Models.User
         [JsonPropertyName("searchResults")]
         public ReadOnlyCollection<UserPrefixSearchResultEntry> SearchResults { get; init; } =
             Defaults.EmptyReadOnlyCollection<UserPrefixSearchResultEntry>();
-        
-        [JsonPropertyName("page")]
-        public int Page { get; init; }
-        
-        [JsonPropertyName("hasMore")]
-        public bool HasMore { get; init; }
+
+        [JsonPropertyName("page")] public int Page { get; init; }
+
+        [JsonPropertyName("hasMore")] public bool HasMore { get; init; }
     }
 }

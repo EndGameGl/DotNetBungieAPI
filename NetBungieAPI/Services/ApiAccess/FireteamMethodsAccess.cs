@@ -17,32 +17,36 @@ namespace NetBungieAPI.Services.ApiAccess
         private readonly IConfigurationService _configuration;
         private readonly IHttpClientInstance _httpClient;
 
-        public FireteamMethodsAccess(IHttpClientInstance httpClient, IConfigurationService configuration)
+        internal FireteamMethodsAccess(
+            IHttpClientInstance httpClient,
+            IConfigurationService configuration)
         {
             _httpClient = httpClient;
             _configuration = configuration;
         }
 
         public async ValueTask<BungieResponse<int>> GetActivePrivateClanFireteamCount(
-            AuthorizationTokenData authData,
+            AuthorizationTokenData authorizationToken,
             long groupId,
-            CancellationToken token = default)
+            CancellationToken cancellationToken = default)
         {
-            if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(ApplicationScopes.ReadGroups))
+            if (!_configuration.HasSufficientRights(ApplicationScopes.ReadGroups))
                 throw new InsufficientScopeException(ApplicationScopes.ReadGroups);
 
             var url = StringBuilderPool
-                .GetBuilder(token)
+                .GetBuilder(cancellationToken)
                 .Append("/Fireteam/Clan/")
                 .AddUrlParam(groupId.ToString())
                 .Append("ActiveCount/")
                 .Build();
 
-            return await _httpClient.GetFromBungieNetPlatform<int>(url, token, authData.AccessToken);
+            return await _httpClient
+                .GetFromBungieNetPlatform<int>(url, cancellationToken, authorizationToken.AccessToken)
+                .ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<SearchResultOfFireteamSummary>> GetAvailableClanFireteams(
-            AuthorizationTokenData authData,
+            AuthorizationTokenData authorizationToken,
             long groupId,
             FireteamPlatform platform,
             DestinyActivityModeType activityType,
@@ -51,75 +55,79 @@ namespace NetBungieAPI.Services.ApiAccess
             FireteamPublicSearchOption publicOnly,
             int page = 0,
             string langFilter = null,
-            CancellationToken token = default)
+            CancellationToken cancellationToken = default)
         {
-            if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(ApplicationScopes.ReadGroups))
+            if (!_configuration.HasSufficientRights(ApplicationScopes.ReadGroups))
                 throw new InsufficientScopeException(ApplicationScopes.ReadGroups);
 
             var url = StringBuilderPool
-                .GetBuilder(token)
+                .GetBuilder(cancellationToken)
                 .Append("/Fireteam/Clan/")
                 .AddUrlParam(groupId.ToString())
                 .Append("Available/")
-                .AddUrlParam(((byte) platform).ToString())
-                .AddUrlParam(((int) activityType).ToString())
-                .AddUrlParam(((byte) dateRange).ToString())
-                .AddUrlParam(((byte) slotFilter).ToString())
-                .AddUrlParam(((byte) publicOnly).ToString())
+                .AddUrlParam(((byte)platform).ToString())
+                .AddUrlParam(((int)activityType).ToString())
+                .AddUrlParam(((byte)dateRange).ToString())
+                .AddUrlParam(((byte)slotFilter).ToString())
+                .AddUrlParam(((byte)publicOnly).ToString())
                 .AddUrlParam(page.ToString())
                 .AddQueryParam("langFilter", langFilter, () => !string.IsNullOrWhiteSpace(langFilter))
                 .Build();
 
-            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, token,
-                authData.AccessToken);
+            return await _httpClient
+                .GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, cancellationToken,
+                    authorizationToken.AccessToken)
+                .ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<SearchResultOfFireteamSummary>> SearchPublicAvailableClanFireteams(
-            AuthorizationTokenData authData,
+            AuthorizationTokenData authorizationToken,
             FireteamPlatform platform,
             DestinyActivityModeType activityType,
             FireteamDateRange dateRange,
             FireteamSlotSearch slotFilter,
             int page = 0,
             string langFilter = null,
-            CancellationToken token = default)
+            CancellationToken cancellationToken = default)
         {
-            if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(ApplicationScopes.ReadGroups))
+            if (!_configuration.HasSufficientRights(ApplicationScopes.ReadGroups))
                 throw new InsufficientScopeException(ApplicationScopes.ReadGroups);
 
             var url = StringBuilderPool
-                .GetBuilder(token)
+                .GetBuilder(cancellationToken)
                 .Append("/Fireteam/Search/Available/")
-                .AddUrlParam(((byte) platform).ToString())
-                .AddUrlParam(((int) activityType).ToString())
-                .AddUrlParam(((byte) dateRange).ToString())
-                .AddUrlParam(((byte) slotFilter).ToString())
+                .AddUrlParam(((byte)platform).ToString())
+                .AddUrlParam(((int)activityType).ToString())
+                .AddUrlParam(((byte)dateRange).ToString())
+                .AddUrlParam(((byte)slotFilter).ToString())
                 .AddUrlParam(page.ToString())
                 .AddQueryParam("langFilter", langFilter, () => !string.IsNullOrWhiteSpace(langFilter))
                 .Build();
 
-            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, token,
-                authData.AccessToken);
+            return await _httpClient
+                .GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, cancellationToken,
+                    authorizationToken.AccessToken)
+                .ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<SearchResultOfFireteamSummary>> GetMyClanFireteams(
-            AuthorizationTokenData authData,
+            AuthorizationTokenData authorizationToken,
             long groupId,
             FireteamPlatform platform,
             bool includeClosed,
             int page = 0,
             string langFilter = null,
             bool groupFilter = false,
-            CancellationToken token = default)
+            CancellationToken cancellationToken = default)
         {
-            if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(ApplicationScopes.ReadGroups))
+            if (!_configuration.HasSufficientRights(ApplicationScopes.ReadGroups))
                 throw new InsufficientScopeException(ApplicationScopes.ReadGroups);
 
             var url = StringBuilderPool
-                .GetBuilder(token)
+                .GetBuilder(cancellationToken)
                 .Append("/Fireteam/Clan/")
                 .AddUrlParam(groupId.ToString())
-                .AddUrlParam(((byte) platform).ToString())
+                .AddUrlParam(((byte)platform).ToString())
                 .Append("My/")
                 .AddUrlParam(includeClosed.ToString())
                 .AddUrlParam(page.ToString())
@@ -127,29 +135,32 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("groupFilter", groupFilter.ToString())
                 .Build();
 
-            return await _httpClient.GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, token,
-                authData.AccessToken);
+            return await _httpClient
+                .GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, cancellationToken,
+                    authorizationToken.AccessToken)
+                .ConfigureAwait(false);
         }
 
         public async ValueTask<BungieResponse<FireteamResponse>> GetClanFireteam(
-            AuthorizationTokenData authData,
+            AuthorizationTokenData authorizationToken,
             long groupId,
             long fireteamId,
-            CancellationToken token = default)
+            CancellationToken cancellationToken = default)
         {
-            if (!_configuration.Settings.IdentificationSettings.ApplicationScopes.HasFlag(ApplicationScopes.ReadGroups))
+            if (!_configuration.HasSufficientRights(ApplicationScopes.ReadGroups))
                 throw new InsufficientScopeException(ApplicationScopes.ReadGroups);
 
             var url = StringBuilderPool
-                .GetBuilder(token)
+                .GetBuilder(cancellationToken)
                 .Append("/Fireteam/Clan/")
                 .AddUrlParam(groupId.ToString())
                 .Append("Summary/")
                 .AddUrlParam(fireteamId.ToString())
                 .Build();
 
-            return await _httpClient.GetFromBungieNetPlatform<FireteamResponse>(url, token,
-                authData.AccessToken);
+            return await _httpClient
+                .GetFromBungieNetPlatform<FireteamResponse>(url, cancellationToken, authorizationToken.AccessToken)
+                .ConfigureAwait(false);
         }
     }
 }

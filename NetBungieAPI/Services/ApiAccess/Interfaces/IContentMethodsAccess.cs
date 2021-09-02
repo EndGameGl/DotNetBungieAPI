@@ -6,17 +6,20 @@ using NetBungieAPI.Models.Queries;
 
 namespace NetBungieAPI.Services.ApiAccess.Interfaces
 {
+    /// <summary>
+    /// Access to https://bungie.net/Platform/Content endpoint
+    /// </summary>
     public interface IContentMethodsAccess
     {
         /// <summary>
         ///     Gets an object describing a particular variant of content.
         /// </summary>
         /// <param name="type">Content type</param>
-        /// <param name="token">Cancellation token</param>
+        /// <param name="cancellationToken">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<ContentTypeDescription>> GetContentType(
             string type,
-            CancellationToken token = default);
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         ///     Returns a content item referenced by id
@@ -24,13 +27,13 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="id">Content item id</param>
         /// <param name="locale">Locale to return</param>
         /// <param name="head">Not sure what this is</param>
-        /// <param name="token">Cancellation token</param>
+        /// <param name="cancellationToken">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<ContentItemPublicContract>> GetContentById(
             long id,
             string locale,
             bool head = false,
-            CancellationToken token = default);
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         ///     Returns the newest item that matches a given tag and Content Type.
@@ -38,13 +41,13 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="tag">Tag to look up</param>
         /// <param name="type">Content type</param>
         /// <param name="locale">Locale to return</param>
-        /// <param name="token">Cancellation token</param>
+        /// <param name="cancellationToken">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<ContentItemPublicContract>> GetContentByTagAndType(
             string tag,
             string type,
             string locale,
-            CancellationToken token = default);
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         ///     Gets content based on querystring information passed in. Provides basic search and text search capabilities.
@@ -55,7 +58,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="source">For analytics, hint at the part of the app that triggered the search. Optional.</param>
         /// <param name="tag">Tag used on the content to be searched.</param>
         /// <param name="currentpage">Page number for the search results, starting with page 1.</param>
-        /// <param name="token">Cancellation token</param>
+        /// <param name="cancellationToken">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentWithText(
             string locale,
@@ -64,7 +67,7 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             string source,
             string tag,
             int currentpage = 1,
-            CancellationToken token = default);
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         ///     Searches for Content Items that match the given Tag and Content Type.
@@ -73,13 +76,13 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="tag">Tag to search for</param>
         /// <param name="type">Type to search for</param>
         /// <param name="currentpage">Page number for the search results starting with page 1</param>
-        /// <param name="token">Cancellation token</param>
+        /// <param name="cancellationToken">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentByTagAndType(
             string locale,
             string tag,
             string type,
             int currentpage = 1,
-            CancellationToken token = default);
+            CancellationToken cancellationToken = default);
     }
 }
