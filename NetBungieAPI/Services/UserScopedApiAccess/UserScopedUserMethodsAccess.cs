@@ -76,13 +76,13 @@ namespace NetBungieAPI.Services.UserScopedApiAccess
                 .ConfigureAwait(false);
         }
 
-        public async ValueTask<BungieResponse<UserPrefixSearchResponse>> SearchUsersByPrefix(
+        public async ValueTask<BungieResponse<UserSearchResponse>> SearchUsersByPrefix(
             string prefix,
             int page = 0,
             CancellationToken token = default)
         {
             return await _apiAccess
-                .SearchUsersByPrefix(prefix, page, token)
+                .SearchByGlobalNamePrefix(prefix, page, token)
                 .ConfigureAwait(false);
         }
     }

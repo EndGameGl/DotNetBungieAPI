@@ -82,14 +82,14 @@ namespace NetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken cancellationToken = default);
 
         /// <summary>
-        ///     Searches bungie.net users by their prefix
+        ///     Given the prefix of a global display name, returns all users who share that name.
         /// </summary>
-        /// <param name="prefix">Search parameter</param>
-        /// <param name="page">Zero based page</param>
+        /// <param name="displayNamePrefix">The display name prefix you're looking for.</param>
+        /// <param name="page">The zero-based page of results you desire.</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<UserPrefixSearchResponse>> SearchUsersByPrefix(
-            string prefix,
+        ValueTask<BungieResponse<UserSearchResponse>> SearchByGlobalNamePrefix(
+            string displayNamePrefix,
             int page = 0,
             CancellationToken cancellationToken = default);
     }

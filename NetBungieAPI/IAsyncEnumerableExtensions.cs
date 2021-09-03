@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using NetBungieAPI.Authorization;
 using NetBungieAPI.Models.Social;
@@ -13,7 +14,7 @@ namespace NetBungieAPI
             int maxPages,
             PlatformFriendType friendPlatform,
             AuthorizationTokenData authorizationToken,
-            CancellationToken cancellationToken = default)
+            [EnumeratorCancellation] CancellationToken cancellationToken = default)
         {
             int currentPage = 0;
             bool hasMoreToGet = true;

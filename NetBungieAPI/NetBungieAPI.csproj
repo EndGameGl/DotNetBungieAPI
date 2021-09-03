@@ -3,6 +3,15 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>NetBungieAPI</Title>
+        <Authors>MeGl</Authors>
+        <RepositoryUrl>https://github.com/EndGameGl/.NetBungieAPI</RepositoryUrl>
+        <PackageId>DotNetBungieAPI</PackageId>
+        <Description>Bungie.net API wrapper.</Description>
+        <Copyright>Copyright (c) MeGl 2021</Copyright>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <PackageVersion>1.0.1</PackageVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

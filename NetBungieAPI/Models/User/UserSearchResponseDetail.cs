@@ -4,11 +4,11 @@ using NetBungieAPI.Models.GroupsV2;
 
 namespace NetBungieAPI.Models.User
 {
-    public sealed record UserPrefixSearchResultEntry
+    public sealed record UserSearchResponseDetail
     {
         [JsonPropertyName("destinyMemberships")]
-        public ReadOnlyCollection<GroupUserInfoCard> DestinyMemberships { get; init; } =
-            Defaults.EmptyReadOnlyCollection<GroupUserInfoCard>();
+        public ReadOnlyCollection<UserInfoCard> DestinyMemberships { get; init; } =
+            Defaults.EmptyReadOnlyCollection<UserInfoCard>();
 
         [JsonPropertyName("bungieGlobalDisplayName")]
         public string BungieGlobalDisplayName { get; init; }

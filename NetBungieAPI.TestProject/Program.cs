@@ -6,10 +6,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using NetBungieAPI.Authorization;
 using NetBungieAPI.HashReferences;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Definitions.Activities;
+using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using NetBungieAPI.Models.Social;
 
 namespace NetBungieAPI.TestProject
@@ -62,8 +64,6 @@ namespace NetBungieAPI.TestProject
 
         private static async Task Main(string[] args)
         {
-            var sw = new Stopwatch();
-            sw.Start();
             _bungieClient = await BungieApiBuilder.GetApiClientAsync((settings) =>
             {
                 settings
@@ -80,22 +80,23 @@ namespace NetBungieAPI.TestProject
                     {
                         BungieLocales.EN
                     })
-                    .SetUpdateBehaviour(false, true)
-                    .TryLoadManifestVersion("96750.21.08.09.1845-3-bnet.39541");
+                    .SetUpdateBehaviour(false, true);
+                //.TryLoadManifestVersion("96750.21.08.09.1845-3-bnet.39541");
             });
-            //_bungieClient.DefinitionsLoaded += () => Console.WriteLine("Finished loading definitions");
 
-            sw.Stop();
-            Console.WriteLine($"Startup in: {sw.ElapsedMilliseconds} ms");
+            var adoredDefinitionResponse = await _bungieClient
+                .ApiAccess
+                .Destiny2
+                .GetDestinyEntityDefinition<DestinyInventoryItemDefinition>(
+                    DefinitionsEnum.DestinyInventoryItemDefinition,
+                    DefinitionHashes.InventoryItems.Adored);
 
-            Console.WriteLine($"{Process.GetCurrentProcess().PrivateMemorySize64} bytes allocated for current app.");
-
-            await foreach (var friendListPage in _bungieClient.ApiAccess.Social.GetPlatformFriendList(
-                5, PlatformFriendType.Steam, null))
+            if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyInventoryItemDefinition>(
+                DefinitionHashes.InventoryItems.Adored, BungieLocales.EN, out var adoredDefinition))
             {
-                
+                Console.WriteLine($"{adoredDefinition.DisplayProperties.Name}");
             }
-            
+
             //var generator = new HashReferencesGeneration.DefinitionHashReferencesGenerator(_bungieClient);
             //await generator.Generate();
 

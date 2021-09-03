@@ -17,6 +17,8 @@ namespace NetBungieAPI.Services
 {
     internal class HttpClientInstance : IHttpClientInstance
     {
+        private const string ApiKeyHeader = "X-API-Key";
+        
         private const string AuthorizationEndpoint = "https://www.bungie.net/en/oauth/authorize";
         private const string AuthorizationTokenEndpoint = "https://www.bungie.net/platform/app/oauth/token/";
         private const string PlatformEndpoint = "https://www.bungie.net/Platform";
@@ -32,7 +34,9 @@ namespace NetBungieAPI.Services
         private readonly ILogger _logger;
         private readonly IJsonSerializationHelper _serializationHelper;
 
-        internal HttpClientInstance(ILogger logger, IConfigurationService configuration,
+        internal HttpClientInstance(
+            ILogger logger,
+            IConfigurationService configuration,
             IJsonSerializationHelper serializationHelper)
         {
             _logger = logger;
@@ -45,7 +49,7 @@ namespace NetBungieAPI.Services
             {
                 Timeout = TimeSpan.FromSeconds(6000)
             };
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _httpClient.DefaultRequestHeaders.Accept.Add(_jsonHeaderValue);
             _httpClient.DefaultRequestHeaders.Add("User-Agent", "NetBungieApi Client");
             _serializationHelper = serializationHelper;
         }
@@ -71,7 +75,7 @@ namespace NetBungieAPI.Services
                 Content = new FormUrlEncodedContent(encodedContentPairs)
             };
 
-            requestMessage.Headers.TryAddWithoutValidation("X-API-Key",
+            requestMessage.Headers.TryAddWithoutValidation(ApiKeyHeader,
                 _config.Settings.IdentificationSettings.ApiKey);
             requestMessage.Content.Headers.ContentType.MediaType = "application/x-www-form-urlencoded";
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -106,7 +110,7 @@ namespace NetBungieAPI.Services
                 Content = new FormUrlEncodedContent(encodedContentPairs)
             };
 
-            requestMessage.Headers.TryAddWithoutValidation("X-API-Key",
+            requestMessage.Headers.TryAddWithoutValidation(ApiKeyHeader,
                 _config.Settings.IdentificationSettings.ApiKey);
 
             requestMessage.Content.Headers.ContentType.MediaType = "application/x-www-form-urlencoded";
@@ -273,12 +277,12 @@ namespace NetBungieAPI.Services
                 Method = HttpMethod.Get
             };
 
-            requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            requestMessage.Headers.Accept.Add(_jsonHeaderValue);
             if (omitApiKey == false)
-                requestMessage.Headers.TryAddWithoutValidation("X-API-Key",
+                requestMessage.Headers.TryAddWithoutValidation(ApiKeyHeader,
                     _config.Settings.IdentificationSettings.ApiKey);
             if (!string.IsNullOrEmpty(authToken))
-                requestMessage.Headers.Add("Authorization", $"Bearer {authToken}");
+                requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
             return requestMessage;
         }
 
@@ -291,7 +295,7 @@ namespace NetBungieAPI.Services
             };
 
             requestMessage.Headers.Accept.Add(_jsonHeaderValue);
-            requestMessage.Headers.TryAddWithoutValidation("X-API-Key", _config.Settings.IdentificationSettings.ApiKey);
+            requestMessage.Headers.TryAddWithoutValidation(ApiKeyHeader, _config.Settings.IdentificationSettings.ApiKey);
 
             if (!string.IsNullOrEmpty(authToken))
                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);

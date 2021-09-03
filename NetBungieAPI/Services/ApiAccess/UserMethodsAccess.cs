@@ -113,19 +113,19 @@ namespace NetBungieAPI.Services.ApiAccess
                 .ConfigureAwait(false);
         }
 
-        public async ValueTask<BungieResponse<UserPrefixSearchResponse>> SearchUsersByPrefix(
-            string prefix,
+        public async ValueTask<BungieResponse<UserSearchResponse>> SearchByGlobalNamePrefix(
+            string displayNamePrefix,
             int page = 0,
             CancellationToken cancellationToken = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(cancellationToken)
                 .Append("/User/Search/Prefix/")
-                .AddUrlParam(prefix)
+                .AddUrlParam(displayNamePrefix)
                 .AddUrlParam(page.ToString())
                 .Build();
             return await _httpClient
-                .GetFromBungieNetPlatform<UserPrefixSearchResponse>(url, cancellationToken)
+                .GetFromBungieNetPlatform<UserSearchResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
     }
