@@ -74,41 +74,18 @@ namespace NetBungieAPI.TestProject
                                               ApplicationScopes.ReadBasicUserProfile)
                     .UseDefaultProvider(@"H:\BungieNetCoreAPIRepository\Manifests")
                     .EnableLogging((mes) => Console.WriteLine(mes))
-                    //PremapDefinitions()
-                    //.LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
+                    .PremapDefinitions()
+                    .LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
                     .SetLocales(new BungieLocales[]
                     {
                         BungieLocales.EN
                     })
-                    .SetUpdateBehaviour(false, true);
+                    .SetUpdateBehaviour(true, true);
                 //.TryLoadManifestVersion("96750.21.08.09.1845-3-bnet.39541");
             });
 
-            var adoredDefinitionResponse = await _bungieClient
-                .ApiAccess
-                .Destiny2
-                .GetDestinyEntityDefinition<DestinyInventoryItemDefinition>(
-                    DefinitionsEnum.DestinyInventoryItemDefinition,
-                    DefinitionHashes.InventoryItems.Adored);
-
-            if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyInventoryItemDefinition>(
-                DefinitionHashes.InventoryItems.Adored, BungieLocales.EN, out var adoredDefinition))
-            {
-                Console.WriteLine($"{adoredDefinition.DisplayProperties.Name}");
-            }
-
-            //var generator = new HashReferencesGeneration.DefinitionHashReferencesGenerator(_bungieClient);
-            //await generator.Generate();
-
-            //Console.WriteLine($"Finished dumping json.");
-
-            // var sqliteDefinitionProvider = _bungieClient.Repository.Provider as SqliteDefinitionProvider;
-            // List<DestinyInventoryItemDefinition> items = new List<DestinyInventoryItemDefinition>();
-            // await foreach (var item in sqliteDefinitionProvider.GetDefinitionsRangeAsync<DestinyInventoryItemDefinition>(
-            //     BungieLocales.RU, 100, 50))
-            // {
-            //     items.Add(item);
-            // }
+            var generator = new HashReferencesGeneration.DefinitionHashReferencesGenerator(_bungieClient);
+            await generator.Generate();
 
             await Task.Delay(Timeout.Infinite);
         }
