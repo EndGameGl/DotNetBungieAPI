@@ -6,7 +6,7 @@ using DotNetBungieAPI.Models.Destiny;
 
 namespace DotNetBungieAPI.Services.Default.ServiceConfigurations
 {
-    public class DefaultDestiny2DefinitionRepositoryConfiguration
+    public sealed class DefaultDestiny2DefinitionRepositoryConfiguration
     {
         private int _appConcurrencyLevel = Environment.ProcessorCount;
         public List<BungieLocales> UsedLocales { get; } = new List<BungieLocales>();
@@ -19,7 +19,7 @@ namespace DotNetBungieAPI.Services.Default.ServiceConfigurations
             set => _appConcurrencyLevel = Conditions.Int32MoreThan(value, 0);
         }
 
-        private void IgnoreDefinitionType(DefinitionsEnum definitionType)
+        public void IgnoreDefinitionType(DefinitionsEnum definitionType)
         {
             AllowedDefinitions.Remove(definitionType);
         }

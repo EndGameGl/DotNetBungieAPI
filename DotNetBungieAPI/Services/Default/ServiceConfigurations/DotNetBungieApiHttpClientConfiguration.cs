@@ -2,7 +2,7 @@
 
 namespace DotNetBungieAPI.Services.Default.ServiceConfigurations
 {
-    public class DotNetBungieApiHttpClientConfiguration
+    public sealed class DotNetBungieApiHttpClientConfiguration
     {
         public HttpClient HttpClient { get; internal set; } = new HttpClient();
 

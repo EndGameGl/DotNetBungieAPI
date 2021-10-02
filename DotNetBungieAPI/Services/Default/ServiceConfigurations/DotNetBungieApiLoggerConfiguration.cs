@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DotNetBungieAPI.Services.Default.ServiceConfigurations
 {
-    public class DotNetBungieApiLoggerConfiguration
+    public sealed class DotNetBungieApiLoggerConfiguration
     {
         private readonly HashSet<LogLevel> _loggedLevels = new HashSet<LogLevel>(7);
         public bool IsEnabled { get; set; } = false;
