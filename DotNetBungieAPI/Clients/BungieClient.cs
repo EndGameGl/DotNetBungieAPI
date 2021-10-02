@@ -6,7 +6,6 @@ using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using DotNetBungieAPI.Services.Interfaces;
 using Microsoft.Extensions.Logging;
-using DotNetBungieAPI.Repositories;
 
 namespace DotNetBungieAPI.Clients
 {
