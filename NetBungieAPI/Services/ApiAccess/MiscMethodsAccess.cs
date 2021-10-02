@@ -10,17 +10,17 @@ namespace NetBungieAPI.Services.ApiAccess
 {
     public class MiscMethodsAccess : IMiscMethodsAccess
     {
-        private readonly IHttpClientInstance _httpClient;
+        private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
-        internal MiscMethodsAccess(IHttpClientInstance httpClient)
+        internal MiscMethodsAccess(IDotNetBungieApiHttpClient dotNetBungieApiHttpClient)
         {
-            _httpClient = httpClient;
+            _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         }
 
         public async ValueTask<BungieResponse<Dictionary<string, string>>> GetAvailableLocales(
             CancellationToken cancellationToken = default)
         {
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<Dictionary<string, string>>("/GetAvailableLocales/", cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -28,7 +28,7 @@ namespace NetBungieAPI.Services.ApiAccess
         public async ValueTask<BungieResponse<CoreSettingsConfiguration>> GetCommonSettings(
             CancellationToken cancellationToken = default)
         {
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<CoreSettingsConfiguration>("/Settings/", cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -36,7 +36,7 @@ namespace NetBungieAPI.Services.ApiAccess
         public async ValueTask<BungieResponse<Dictionary<string, CoreSystem>>> GetUserSystemOverrides(
             CancellationToken cancellationToken = default)
         {
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<Dictionary<string, CoreSystem>>("/UserSystemOverrides/", cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -50,7 +50,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("/GlobalAlerts/")
                 .AddQueryParam("includestreaming", includestreaming.ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<GlobalAlert[]>(url, cancellationToken)
                 .ConfigureAwait(false);
         }

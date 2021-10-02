@@ -13,17 +13,17 @@ namespace NetBungieAPI.Services.ApiAccess
     /// </summary>
     public class TrendingMethodsAccess : ITrendingMethodsAccess
     {
-        private readonly IHttpClientInstance _httpClient;
+        private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
-        internal TrendingMethodsAccess(IHttpClientInstance httpClient)
+        internal TrendingMethodsAccess(IDotNetBungieApiHttpClient dotNetBungieApiHttpClient)
         {
-            _httpClient = httpClient;
+            _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         }
 
         public async ValueTask<BungieResponse<TrendingCategories>> GetTrendingCategories(
             CancellationToken cancellationToken = default)
         {
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<TrendingCategories>("/Trending/Categories/", cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -39,7 +39,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(categoryId)
                 .AddUrlParam(pageNumber.ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<SearchResultOfTrendingEntry>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -55,7 +55,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(((int)trendingEntryType).ToString())
                 .AddUrlParam(identifier)
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<TrendingDetail>(url, cancellationToken)
                 .ConfigureAwait(false);
         }

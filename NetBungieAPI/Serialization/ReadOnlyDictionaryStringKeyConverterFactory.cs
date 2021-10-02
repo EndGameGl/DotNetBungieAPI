@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Serialization
 {
-    public class ReadOnlyDictionaryStringKeyConverterFactory : JsonConverterFactory
+    internal sealed class ReadOnlyDictionaryStringKeyConverterFactory : JsonConverterFactory
     {
         private readonly Type _genericReadOnlyDictType = typeof(ReadOnlyDictionary<,>);
         private readonly Type _stringType = typeof(string);

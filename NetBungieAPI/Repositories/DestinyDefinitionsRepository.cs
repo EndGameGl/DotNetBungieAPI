@@ -2,10 +2,11 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using NetBungieAPI.Logging;
+using Microsoft.Extensions.Logging;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
+using NetBungieAPI.Services.Default.ServiceConfigurations;
 using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Repositories
@@ -14,41 +15,35 @@ namespace NetBungieAPI.Repositories
     ///     Repository class for storing and accessing all classes with <see cref="Attributes.DestinyDefinitionAttribute" />
     ///     attribute
     /// </summary>
-    public class DestinyDefinitionsRepository
+    internal sealed class DestinyDefinitionsRepository
     {
         private readonly IDefinitionAssemblyData _assemblyData;
-        private readonly IConfigurationService _config;
 
         private readonly ConcurrentDictionary<DefinitionsEnum, DestinyDefinitionTypeRepository> _definitionRepositories;
         private readonly ConcurrentDictionary<string, DestinyHistoricalStatsDefinition> _historicalStatsDefinitions;
         private readonly ILogger _logger;
-
-        /// <summary>
-        ///     Class .ctor
-        /// </summary>
-        /// <param name="locale">Locale for this repository</param>
+        
         internal DestinyDefinitionsRepository(
             BungieLocales locale,
             IDefinitionAssemblyData assemblyData,
-            IConfigurationService configuration,
-            ILogger logger)
+            ILogger logger,
+            DefaultDestiny2DefinitionRepositoryConfiguration configuration)
         {
             _assemblyData = assemblyData;
-            _config = configuration;
             _logger = logger;
             Locale = locale;
 
-            var definitionsLoaded = _config.Settings.DefinitionLoadingSettings.AllowedDefinitions.Length;
-            var concurrencyLevel = _config.Settings.DefinitionLoadingSettings.AppConcurrencyLevel;
+            var definitionsLoaded = configuration.AllowedDefinitions.Count;
+            var concurrencyLevel = configuration.AppConcurrencyLevel;
 
-            _logger.Log(
-                $"Initializing definitions repository with settings: Locale: {Locale}, Concurrency level: {concurrencyLevel}, Capacity: {definitionsLoaded}",
-                LogType.Debug);
+            _logger.LogDebug(
+                "Initializing definitions repository with settings: Locale: {Locale}, Concurrency level: {ConcurrencyLevel}, Capacity: {DefinitionsLoaded}",
+                Locale, concurrencyLevel, definitionsLoaded);
 
             _definitionRepositories = new ConcurrentDictionary<DefinitionsEnum, DestinyDefinitionTypeRepository>(
                 concurrencyLevel,
                 definitionsLoaded);
-            foreach (var definition in configuration.Settings.DefinitionLoadingSettings.AllowedDefinitions)
+            foreach (var definition in configuration.AllowedDefinitions)
                 _definitionRepositories.TryAdd(definition,
                     new DestinyDefinitionTypeRepository(
                         _assemblyData.DefinitionsToTypeMapping[definition].DefinitionType,
@@ -163,6 +158,15 @@ namespace NetBungieAPI.Repositories
             return _definitionRepositories.TryGetValue(definitionType, out var repository)
                 ? repository.EnumerateValues().Cast<T>()
                 : null;
+        }
+
+        public void Clear()
+        {
+            foreach (var repository in _definitionRepositories.Values)
+            {
+                repository.Clear();
+            }
+            _historicalStatsDefinitions.Clear();
         }
 
         internal void PremapPointers()

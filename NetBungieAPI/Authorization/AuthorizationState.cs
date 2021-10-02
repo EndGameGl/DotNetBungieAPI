@@ -47,7 +47,7 @@ namespace NetBungieAPI.Authorization
             {
                 State = RandomInstance.GetRandomString(50),
                 DidReceiveCallback = false,
-                LinkHandoutTime = DateTime.Now,
+                LinkHandoutTime = DateTime.UtcNow,
                 CallbackReceiveTime = null,
                 Code = null
             };
@@ -63,7 +63,7 @@ namespace NetBungieAPI.Authorization
         {
             if (State != state)
                 throw new Exception("State you provided doesn't match awaiter state.");
-            CallbackReceiveTime = DateTime.Now;
+            CallbackReceiveTime = DateTime.UtcNow;
             DidReceiveCallback = true;
             Code = code;
         }

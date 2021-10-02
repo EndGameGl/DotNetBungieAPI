@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
 using NetBungieAPI.Repositories;
+using NetBungieAPI.Services.ApiAccess.UserScoped;
 using NetBungieAPI.Services.Interfaces;
-using NetBungieAPI.Services.UserScopedApiAccess;
 
 namespace NetBungieAPI.Clients
 {
@@ -12,17 +12,17 @@ namespace NetBungieAPI.Clients
     /// </summary>
     public class UserContextBungieClient : IUserContextBungieClient
     {
-        private readonly IAuthorizationStateHandler _authorizationStateHandler;
+        private readonly IAuthorizationHandler _authorizationHandler;
 
         internal UserContextBungieClient(
-            ILocalisedDestinyDefinitionRepositories repository,
+            IDestiny2DefinitionRepository repository,
             AuthorizationTokenData token,
-            IAuthorizationStateHandler authorizationStateHandler,
+            IAuthorizationHandler authorizationHandler,
             IBungieApiAccess apiAccess)
         {
             Repository = repository;
             TokenData = token;
-            _authorizationStateHandler = authorizationStateHandler;
+            _authorizationHandler = authorizationHandler;
             App = new UserScopedAppMethodsAccess(apiAccess.App, TokenData);
             User = new UserScopedUserMethodsAccess(apiAccess.User, TokenData);
             Trending = new UserScopedTrendingMethodsAccess(apiAccess.Trending, TokenData);
@@ -39,7 +39,7 @@ namespace NetBungieAPI.Clients
         /// <summary>
         /// <inheritdoc cref="IUserContextBungieClient.Repository"/>
         /// </summary>
-        public ILocalisedDestinyDefinitionRepositories Repository { get; }
+        public IDestiny2DefinitionRepository Repository { get; }
 
         /// <summary>
         /// <inheritdoc cref="IUserContextBungieClient.App"/>
@@ -101,8 +101,8 @@ namespace NetBungieAPI.Clients
         /// </summary>
         public async Task ValidateToken()
         {
-            if (TokenData.ReceiveTime.AddSeconds(TokenData.ExpiresIn) < DateTime.Now)
-                await _authorizationStateHandler.RenewToken(TokenData);
+            if (TokenData.LastReceived.AddSeconds(TokenData.ExpiresIn) < DateTime.Now)
+                await _authorizationHandler.RenewToken(TokenData);
         }
 
         /// <summary>

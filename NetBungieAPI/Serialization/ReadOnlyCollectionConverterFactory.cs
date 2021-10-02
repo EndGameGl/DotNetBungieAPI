@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Serialization
 {
-    public class ReadOnlyCollectionConverterFactory : JsonConverterFactory
+    internal sealed class ReadOnlyCollectionConverterFactory : JsonConverterFactory
     {
         public override bool CanConvert(Type typeToConvert)
         {

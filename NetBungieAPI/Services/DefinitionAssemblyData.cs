@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using NetBungieAPI.Attributes;
@@ -9,37 +10,37 @@ using NetBungieAPI.Services.Interfaces;
 
 namespace NetBungieAPI.Services
 {
-    public class DefinitionAssemblyData : IDefinitionAssemblyData
+    internal sealed class DefinitionAssemblyData : IDefinitionAssemblyData
     {
-        public DefinitionAssemblyData()
+        internal DefinitionAssemblyData()
         {
-            DefinitionsToTypeMapping = new Dictionary<DefinitionsEnum, DefinitionUseRule>();
-            TypeToEnumMapping = new Dictionary<Type, DefinitionsEnum>();
+            var tempDefinitionsToTypeMapping = new Dictionary<DefinitionsEnum, DefinitionUseRule>();
+            var tempTypeToEnumMapping = new Dictionary<Type, DefinitionsEnum>();
             var mappedTypes =
                 Assembly
                     .GetAssembly(typeof(DefinitionAssemblyData))
-                    .GetTypes()
-                    .Where(x => x.GetCustomAttributes(typeof(DestinyDefinitionAttribute), true).Length > 0);
+                    !.GetTypes()
+                    .Where(x => x.GetCustomAttributes<DestinyDefinitionAttribute>().Any());
 
             foreach (var type in mappedTypes)
             {
-                var definitionAttribute =
-                    type.GetCustomAttribute(
-                            typeof(DestinyDefinitionAttribute),
-                            true)
-                        as DestinyDefinitionAttribute;
-                var enumValue = definitionAttribute.DefinitionEnumType;
+                var definitionAttribute = type.GetCustomAttribute<DestinyDefinitionAttribute>();
+                var enumValue = definitionAttribute!.DefinitionEnumType;
                 var useRule = new DefinitionUseRule
                 {
                     DefinitionType = type,
                     AttributeData = definitionAttribute
                 };
-                DefinitionsToTypeMapping.Add(enumValue, useRule);
-                TypeToEnumMapping.Add(useRule.DefinitionType, enumValue);
+                tempDefinitionsToTypeMapping.Add(enumValue, useRule);
+                tempTypeToEnumMapping.Add(useRule.DefinitionType, enumValue);
             }
+
+            DefinitionsToTypeMapping =
+                new ReadOnlyDictionary<DefinitionsEnum, DefinitionUseRule>(tempDefinitionsToTypeMapping);
+            TypeToEnumMapping = new ReadOnlyDictionary<Type, DefinitionsEnum>(tempTypeToEnumMapping);
         }
 
-        public Dictionary<DefinitionsEnum, DefinitionUseRule> DefinitionsToTypeMapping { get; }
-        public Dictionary<Type, DefinitionsEnum> TypeToEnumMapping { get; }
+        public ReadOnlyDictionary<DefinitionsEnum, DefinitionUseRule> DefinitionsToTypeMapping { get; }
+        public ReadOnlyDictionary<Type, DefinitionsEnum> TypeToEnumMapping { get; }
     }
 }

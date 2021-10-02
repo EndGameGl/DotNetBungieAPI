@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
+using NetBungieAPI.Clients;
 using NetBungieAPI.Exceptions;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Applications;
@@ -28,22 +29,24 @@ namespace NetBungieAPI.Services.ApiAccess
 {
     public class Destiny2MethodsAccess : IDestiny2MethodsAccess
     {
-        private readonly IConfigurationService _configuration;
-        private readonly IHttpClientInstance _httpClient;
-        private readonly IJsonSerializationHelper _serializationHelper;
+        private readonly BungieClientConfiguration _configuration;
+        private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
+        private readonly IBungieNetJsonSerializer _serializer;
 
-        internal Destiny2MethodsAccess(IHttpClientInstance httpClient, IJsonSerializationHelper serializationHelper,
-            IConfigurationService configurationService)
+        internal Destiny2MethodsAccess(
+            IDotNetBungieApiHttpClient dotNetBungieApiHttpClient, 
+            IBungieNetJsonSerializer serializer,
+            BungieClientConfiguration configurationService)
         {
-            _httpClient = httpClient;
-            _serializationHelper = serializationHelper;
+            _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
+            _serializer = serializer;
             _configuration = configurationService;
         }
 
         public async ValueTask<BungieResponse<DestinyManifest>> GetDestinyManifest(
             CancellationToken cancellationToken = default)
         {
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<DestinyManifest>("/Destiny2/Manifest/", cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -59,7 +62,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(entityType.ToString())
                 .AddUrlParam(hash.ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<T>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -75,7 +78,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(((int)membershipType).ToString())
                 .AddUrlParam(displayName.Contains("#") ? displayName.Replace("#", "%23") : displayName)
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<UserInfoCard[]>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -95,7 +98,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("LinkedProfiles/")
                 .AddQueryParam("getAllMemberships", getAllMemberships.ToString(), () => getAllMemberships)
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<DestinyLinkedProfilesResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -118,7 +121,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(destinyMembershipId.ToString())
                 .AddQueryParam("components", componentTypes.ComponentsToIntString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<DestinyProfileResponse>(url, cancellationToken,
                     authorizationToken?.AccessToken)
                 .ConfigureAwait(false);
@@ -146,7 +149,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("components", componentTypes.ComponentsToIntString())
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<DestinyCharacterResponse>(url, cancellationToken,
                     authorizationToken?.AccessToken)
                 .ConfigureAwait(false);
@@ -162,7 +165,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(groupId.ToString())
                 .Append("WeeklyRewardState/")
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<DestinyMilestone>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -170,7 +173,7 @@ namespace NetBungieAPI.Services.ApiAccess
         public async ValueTask<BungieResponse<ClanBannerSource>> GetClanBannerSource(
             CancellationToken cancellationToken = default)
         {
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<ClanBannerSource>("/Destiny2/Clan/ClanBannerDictionary/", cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -193,7 +196,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(itemInstanceId.ToString())
                 .AddQueryParam("components", componentTypes.ComponentsToIntString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<DestinyItemResponse>(url, cancellationToken, authorizationToken?.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -217,7 +220,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("Vendors/")
                 .AddQueryParam("components", componentTypes.ComponentsToIntString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<DestinyVendorsResponse>(url, cancellationToken,
                     authorizationToken?.AccessToken)
                 .ConfigureAwait(false);
@@ -244,7 +247,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(vendorHash.ToString())
                 .AddQueryParam("components", componentTypes.ComponentsToIntString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<DestinyVendorResponse>(url, cancellationToken,
                     authorizationToken?.AccessToken)
                 .ConfigureAwait(false);
@@ -259,7 +262,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("/Destiny2/Vendors/")
                 .AddQueryParam("components", componentTypes.ComponentsToIntString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<DestinyPublicVendorsResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -286,7 +289,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(collectiblePresentationNodeHash.ToString())
                 .AddQueryParam("components", componentTypes.ComponentsToIntString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<DestinyCollectibleNodeDetailResponse>(url, cancellationToken,
                     authorizationToken?.AccessToken)
                 .ConfigureAwait(false);
@@ -300,8 +303,8 @@ namespace NetBungieAPI.Services.ApiAccess
             if (!_configuration.HasSufficientRights(ApplicationScopes.MoveEquipDestinyItems))
                 throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<int>("/Destiny2/Actions/Items/TransferItem/", cancellationToken, stream,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -316,8 +319,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
 
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<int>("/Destiny2/Actions/Items/PullFromPostmaster/", cancellationToken, stream,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -332,8 +335,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
 
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<int>("/Destiny2/Actions/Items/EquipItem/", cancellationToken, stream,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -348,8 +351,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
 
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<DestinyEquipItemResults>("/Destiny2/Actions/Items/EquipItems/",
                     cancellationToken, stream, authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -364,8 +367,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
 
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<int>("/Destiny2/Actions/Items/SetLockState/", cancellationToken, stream,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -380,8 +383,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
 
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<int>("/Destiny2/Actions/Items/SetTrackedState/", cancellationToken, stream,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -396,8 +399,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 throw new InsufficientScopeException(ApplicationScopes.AdvancedWriteActions);
 
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<DestinyItemChangeResponse>("/Destiny2/Actions/Items/InsertSocketPlug/",
                     cancellationToken, stream, authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -413,7 +416,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(activityId.ToString())
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetStatsPlatform<DestinyPostGameCarnageReportData>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -433,8 +436,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("Report/")
                 .Build();
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -443,7 +446,7 @@ namespace NetBungieAPI.Services.ApiAccess
             GetHistoricalStatsDefinition(
                 CancellationToken cancellationToken = default)
         {
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>>(
                     "/Destiny2/Stats/Definition/", cancellationToken)
                 .ConfigureAwait(false);
@@ -466,7 +469,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("statid", statid, () => !string.IsNullOrWhiteSpace(statid))
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<
                     ReadOnlyDictionary<string, ReadOnlyDictionary<string, DestinyClanLeaderboardsResponse>>>(url,
                     cancellationToken)
@@ -484,7 +487,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("modes", string.Join(',', modes))
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<DestinyClanAggregateStat[]>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -508,7 +511,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("statid", statid, () => !string.IsNullOrWhiteSpace(statid))
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<Dictionary<string, object>>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -526,7 +529,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(searchTerm)
                 .AddQueryParam("page", page.ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<DestinyEntitySearchResult>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -555,7 +558,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(characterId.ToString())
                 .Append("Stats/");
             if (!hasParams)
-                return await _httpClient
+                return await _dotNetBungieApiHttpClient
                     .GetFromBungieNetPlatform<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>>(
                         builder.Build(), cancellationToken)
                     .ConfigureAwait(false);
@@ -570,7 +573,7 @@ namespace NetBungieAPI.Services.ApiAccess
             if (periodType != PeriodType.None)
                 builder.AddQueryParam("periodType", ((int)periodType).ToString());
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>>(builder.Build(),
                     cancellationToken)
                 .ConfigureAwait(false);
@@ -591,7 +594,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("Stats/");
             if (groups is { Length: > 0 })
                 builder.AddQueryParam("groups", string.Join(',', groups.Select(x => (int)x)));
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<DestinyHistoricalStatsAccountResult>(builder.Build(), cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -618,7 +621,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("mode", ((int)mode).ToString())
                 .AddQueryParam("page", page.ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<DestinyActivityHistoryResults>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -639,7 +642,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(characterId.ToString())
                 .Append("Stats/UniqueWeapons/")
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<DestinyHistoricalWeaponStatsData>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -661,7 +664,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("Stats/AggregateActivityStats/")
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<DestinyAggregateActivityResults>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -669,7 +672,7 @@ namespace NetBungieAPI.Services.ApiAccess
         public async ValueTask<BungieResponse<Dictionary<uint, DestinyPublicMilestone>>> GetPublicMilestones(
             CancellationToken cancellationToken = default)
         {
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<Dictionary<uint, DestinyPublicMilestone>>("/Destiny2/Milestones",
                     cancellationToken)
                 .ConfigureAwait(false);
@@ -685,7 +688,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(milestoneHash.ToString())
                 .Append("Content/")
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<DestinyMilestoneContent>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -699,8 +702,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 throw new InsufficientScopeException(ApplicationScopes.AdvancedWriteActions);
 
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<AwaInitializeResponse>("/Destiny2/Awa/Initialize/", cancellationToken, stream,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -712,8 +715,8 @@ namespace NetBungieAPI.Services.ApiAccess
             CancellationToken cancellationToken = default)
         {
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<int>("/Destiny2/Awa/AwaProvideAuthorizationResult/", cancellationToken, stream,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -733,7 +736,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(correlationId)
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<AwaAuthorizationResult>(url, cancellationToken,
                     authToken: authorizationToken.AccessToken)
                 .ConfigureAwait(false);

@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Serialization
 {
-    public class DestinyResourceConverter : JsonConverter<DestinyResource>
+    internal sealed class DestinyResourceConverter : JsonConverter<DestinyResource>
     {
         public override bool HandleNull => true;
 

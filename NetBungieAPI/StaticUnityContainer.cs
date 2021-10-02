@@ -1,9 +1,10 @@
-﻿using NetBungieAPI.Clients;
-using NetBungieAPI.Logging;
+﻿using Microsoft.Extensions.Logging;
+using NetBungieAPI.Clients;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services;
 using NetBungieAPI.Services.ApiAccess;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
+using NetBungieAPI.Services.Default;
 using NetBungieAPI.Services.Interfaces;
 using Unity;
 
@@ -11,20 +12,13 @@ namespace NetBungieAPI
 {
     internal static class StaticUnityContainer
     {
-        private static readonly IUnityContainer Container;
+        internal static readonly IUnityContainer Container;
 
         static StaticUnityContainer()
         {
             Container = new UnityContainer();
-            Container.RegisterType<IBungieClient, BungieClient>(TypeLifetime.Singleton);
-            Container.RegisterType<ILogger, Logger>(TypeLifetime.Singleton);
-            Container.RegisterType<IConfigurationService, ConfigurationService>(TypeLifetime.Singleton);
-            Container.RegisterType<IHttpClientInstance, HttpClientInstance>(TypeLifetime.Singleton);
-            Container.RegisterType<ILocalisedDestinyDefinitionRepositories, LocalisedDestinyDefinitionRepositories>(
-                TypeLifetime.Singleton);
             Container.RegisterType<IDefinitionAssemblyData, DefinitionAssemblyData>(TypeLifetime.Singleton);
-            Container.RegisterType<IAuthorizationStateHandler, AuthorizationStateHandler>(TypeLifetime.Singleton);
-            Container.RegisterType<IJsonSerializationHelper, JsonSerializationHelper>(TypeLifetime.Singleton);
+            Container.RegisterType<IBungieClient, BungieClient>(TypeLifetime.Singleton);
             RegisterApiAccess();
         }
 
@@ -50,36 +44,6 @@ namespace NetBungieAPI
         public static T GetService<T>()
         {
             return Container.Resolve<T>();
-        }
-
-        internal static ILogger GetLogger()
-        {
-            return Container.Resolve<ILogger>();
-        }
-
-        internal static IConfigurationService GetConfiguration()
-        {
-            return Container.Resolve<IConfigurationService>();
-        }
-
-        internal static IHttpClientInstance GetHTTPClient()
-        {
-            return Container.Resolve<IHttpClientInstance>();
-        }
-
-        internal static ILocalisedDestinyDefinitionRepositories GetDestinyDefinitionRepositories()
-        {
-            return Container.Resolve<ILocalisedDestinyDefinitionRepositories>();
-        }
-
-        internal static IDefinitionAssemblyData GetAssemblyData()
-        {
-            return Container.Resolve<IDefinitionAssemblyData>();
-        }
-
-        internal static IAuthorizationStateHandler GetAuthHandler()
-        {
-            return Container.Resolve<IAuthorizationStateHandler>();
         }
     }
 }

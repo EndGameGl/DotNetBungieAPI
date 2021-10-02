@@ -1,74 +1,55 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using NetBungieAPI.Authorization;
-using NetBungieAPI.Logging;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
+using NetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.Interfaces;
-using static NetBungieAPI.Logging.LogListener;
 
 namespace NetBungieAPI.Clients
 {
     /// <summary>
     ///     <see cref="IBungieClient" /> implementation
     /// </summary>
-    public class BungieClient : IBungieClient
+    internal sealed class BungieClient : IBungieClient
     {
-        private readonly IConfigurationService _configuration;
-        private readonly IHttpClientInstance _httpClient;
         private readonly ILogger _logger;
-        private readonly LogListener _logListener;
+        private readonly BungieClientConfiguration _configuration;
 
         internal BungieClient(
-            IConfigurationService config,
             ILogger logger,
             IBungieApiAccess apiAccess,
-            IHttpClientInstance httpClient,
-            IAuthorizationStateHandler authorizationHandler,
-            ILocalisedDestinyDefinitionRepositories repository)
+            IAuthorizationHandler authorizationHandler,
+            IDestiny2DefinitionRepository repository,
+            IDefinitionProvider definitionProvider,
+            BungieClientConfiguration configuration)
         {
-            _configuration = config;
-            _httpClient = httpClient;
             _logger = logger;
+            _configuration = configuration;
             Authentication = authorizationHandler;
             Repository = repository;
             ApiAccess = apiAccess;
-            _logListener = new LogListener();
-            _logger.Register(_logListener);
+            DefinitionProvider = definitionProvider;
         }
 
         /// <summary>
         ///     <inheritdoc cref="IBungieClient.Authentication" />
         /// </summary>
-        public IAuthorizationStateHandler Authentication { get; }
+        public IAuthorizationHandler Authentication { get; }
 
         /// <summary>
         ///     <inheritdoc cref="IBungieClient.Repository" />
         /// </summary>
-        public ILocalisedDestinyDefinitionRepositories Repository { get; }
+        public IDestiny2DefinitionRepository Repository { get; }
 
         /// <summary>
         ///     <inheritdoc cref="IBungieClient.ApiAccess" />
         /// </summary>
         public IBungieApiAccess ApiAccess { get; }
 
-        /// <summary>
-        ///     <inheritdoc cref="IBungieClient.CheckUpdates" />
-        /// </summary>
-        /// <returns></returns>
-        public async ValueTask<bool> CheckUpdates()
-        {
-            return await Repository.Provider.CheckForUpdates();
-        }
-
-        /// <summary>
-        ///     <inheritdoc cref="IBungieClient.DownloadLatestManifestLocally" />
-        /// </summary>
-        public async Task DownloadLatestManifestLocally()
-        {
-            await Repository.Provider.DownloadNewManifestData(await Repository.Provider.GetCurrentManifest());
-        }
+        public IDefinitionProvider DefinitionProvider { get; }
 
         /// <summary>
         /// <inheritdoc cref="IBungieClient.ScopeToUser" />
@@ -78,26 +59,6 @@ namespace NetBungieAPI.Clients
         public IUserContextBungieClient ScopeToUser(AuthorizationTokenData token)
         {
             return new UserContextBungieClient(Repository, token, Authentication, ApiAccess);
-        }
-
-        /// <summary>
-        /// <inheritdoc cref="IBungieClient.DefinitionsLoaded" />
-        /// </summary>
-        public event Action DefinitionsLoaded;
-
-        /// <summary>
-        ///     <inheritdoc cref="IBungieClient.AddListener" />
-        /// </summary>
-        /// <param name="eventHandler"></param>
-        public void AddListener(NewMessageEvent eventHandler)
-        {
-            if (_logListener is not null)
-                _logListener.OnNewMessage += eventHandler;
-        }
-
-        internal void SignalDefinitionsLoadedInternal()
-        {
-            DefinitionsLoaded?.Invoke();
         }
 
         /// <summary>
@@ -117,11 +78,69 @@ namespace NetBungieAPI.Clients
                 return true;
             }
 
-            definition = await Repository.Provider.LoadDefinition<T>(hash, locale);
+            definition = await DefinitionProvider.LoadDefinition<T>(hash, locale);
             if (definition is null)
                 return false;
-            Repository.AddDefinition(DefinitionHashPointer<T>.EnumValue, locale, definition);
+            if (_configuration.CacheDefinitions)
+                Repository.AddDefinition(locale, definition);
             success(definition);
+            return true;
+        }
+
+        public bool TryGetDefinition<T>(uint hash, BungieLocales locale, out T definition) where T : IDestinyDefinition
+        {
+            if (Repository.TryGetDestinyDefinition<T>(hash, locale, out definition))
+            {
+                return true;
+            }
+
+            var defTask = DefinitionProvider.LoadDefinition<T>(hash, locale);
+            definition = defTask.GetAwaiter().GetResult();
+            if (!defTask.IsCompleted)
+                throw new Exception("ValueTask faulted to get result.");
+            if (definition is null)
+                return false;
+            if (_configuration.CacheDefinitions)
+                Repository.AddDefinition(locale, definition);
+            return true;
+        }
+
+        public async ValueTask<bool> TryGetHistoricalStatDefinitionAsync(string key, BungieLocales locale,
+            Action<DestinyHistoricalStatsDefinition> success)
+        {
+            if (Repository.TryGetDestinyHistoricalDefinition(locale, key, out var definition))
+            {
+                success(definition);
+                return true;
+            }
+
+            definition = await DefinitionProvider.LoadHistoricalStatsDefinition(key, locale);
+            if (definition is null)
+                return false;
+            if (_configuration.CacheDefinitions)
+                Repository.AddDestinyHistoricalDefinition(locale, definition);
+            success(definition);
+            return true;
+        }
+
+        public bool TryGetHistoricalStatDefinition(string key, BungieLocales locale,
+            out DestinyHistoricalStatsDefinition definition)
+        {
+            if (Repository.TryGetDestinyHistoricalDefinition(locale, key, out definition))
+            {
+                return true;
+            }
+
+            var getterTask = DefinitionProvider.LoadHistoricalStatsDefinition(key, locale);
+            definition = getterTask.GetAwaiter().GetResult();
+
+            if (!getterTask.IsCompleted)
+                throw new Exception("ValueTask faulted to get result.");
+
+            if (definition is null)
+                return false;
+            if (_configuration.CacheDefinitions)
+                Repository.AddDestinyHistoricalDefinition(locale, definition);
             return true;
         }
     }

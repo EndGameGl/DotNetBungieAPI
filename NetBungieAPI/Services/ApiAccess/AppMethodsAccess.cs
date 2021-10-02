@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
+using NetBungieAPI.Clients;
 using NetBungieAPI.Exceptions;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Applications;
@@ -13,19 +14,21 @@ namespace NetBungieAPI.Services.ApiAccess
 {
     public class AppMethodsAccess : IAppMethodsAccess
     {
-        private readonly IConfigurationService _configuration;
-        private readonly IHttpClientInstance _httpClient;
+        private readonly BungieClientConfiguration _configuration;
+        private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
-        internal AppMethodsAccess(IHttpClientInstance httpClient, IConfigurationService configuration)
+        internal AppMethodsAccess(
+            IDotNetBungieApiHttpClient dotNetBungieApiHttpClient, 
+            BungieClientConfiguration configuration)
         {
-            _httpClient = httpClient;
+            _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
             _configuration = configuration;
         }
 
         public async ValueTask<BungieResponse<Application[]>> GetBungieApplications(
             CancellationToken cancellationToken = default)
         {
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<Application[]>("/App/FirstParty/", cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -52,7 +55,7 @@ namespace NetBungieAPI.Services.ApiAccess
                     end.Value.ToString("yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture))
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<ApiUsage>(url, cancellationToken, authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }

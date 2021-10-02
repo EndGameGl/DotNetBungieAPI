@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
 using NetBungieAPI.Repositories;
+using NetBungieAPI.Services.ApiAccess.UserScoped;
 using NetBungieAPI.Services.Interfaces;
-using NetBungieAPI.Services.UserScopedApiAccess;
 
 namespace NetBungieAPI.Clients
 {
@@ -14,7 +14,7 @@ namespace NetBungieAPI.Clients
         /// <summary>
         /// <inheritdoc cref="IBungieClient.Repository"/>
         /// </summary>
-        ILocalisedDestinyDefinitionRepositories Repository { get; }
+        IDestiny2DefinitionRepository Repository { get; }
 
         /// <summary>
         /// <inheritdoc cref="IBungieApiAccess.App"/>

@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
+using NetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.Interfaces;
-using static NetBungieAPI.Logging.LogListener;
 
 namespace NetBungieAPI.Clients
 {
@@ -22,30 +22,14 @@ namespace NetBungieAPI.Clients
         /// <summary>
         ///     Access to in-memory definition repository
         /// </summary>
-        ILocalisedDestinyDefinitionRepositories Repository { get; }
+        IDestiny2DefinitionRepository Repository { get; }
 
         /// <summary>
         ///     Access to OAuth2 methods
         /// </summary>
-        IAuthorizationStateHandler Authentication { get; }
+        IAuthorizationHandler Authentication { get; }
 
-        /// <summary>
-        ///     Adds log listener
-        /// </summary>
-        /// <param name="eventHandler">Log event handler</param>
-        void AddListener(NewMessageEvent eventHandler);
-
-        /// <summary>
-        ///     Checks whether manifest should be updated
-        /// </summary>
-        /// <returns></returns>
-        ValueTask<bool> CheckUpdates();
-
-        /// <summary>
-        ///     Downloads latest manifest data
-        /// </summary>
-        /// <returns></returns>
-        Task DownloadLatestManifestLocally();
+        IDefinitionProvider DefinitionProvider { get; }
 
         /// <summary>
         ///     Creates a scoped user client, that doesn't need user to pass token manually
@@ -53,11 +37,6 @@ namespace NetBungieAPI.Clients
         /// <param name="token"></param>
         /// <returns></returns>
         IUserContextBungieClient ScopeToUser(AuthorizationTokenData token);
-
-        /// <summary>
-        ///     Signals that definitions finished loading.
-        /// </summary>
-        event Action DefinitionsLoaded;
 
         /// <summary>
         /// Tries to get definition async from all available sources
@@ -69,5 +48,13 @@ namespace NetBungieAPI.Clients
         /// <returns></returns>
         ValueTask<bool> TryGetDefinitionAsync<T>(uint hash, BungieLocales locale, Action<T> success)
             where T : IDestinyDefinition;
+
+        bool TryGetDefinition<T>(uint hash, BungieLocales locale, out T definition) where T : IDestinyDefinition;
+
+        ValueTask<bool> TryGetHistoricalStatDefinitionAsync(string key, BungieLocales locale,
+            Action<DestinyHistoricalStatsDefinition> success);
+
+        bool TryGetHistoricalStatDefinition(string key, BungieLocales locale,
+            out DestinyHistoricalStatsDefinition definition);
     }
 }

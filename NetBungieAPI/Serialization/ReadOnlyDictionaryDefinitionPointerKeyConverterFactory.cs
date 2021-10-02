@@ -8,7 +8,7 @@ using NetBungieAPI.Models.Destiny;
 
 namespace NetBungieAPI.Serialization
 {
-    public class ReadOnlyDictionaryDefinitionPointerKeyConverterFactory : JsonConverterFactory
+    internal sealed class ReadOnlyDictionaryDefinitionPointerKeyConverterFactory : JsonConverterFactory
     {
         private readonly Type _definitionPointerType = typeof(DefinitionHashPointer<>);
         private readonly Type _genericReadOnlyDictType = typeof(ReadOnlyDictionary<,>);

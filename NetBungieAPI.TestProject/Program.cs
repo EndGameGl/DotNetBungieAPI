@@ -6,13 +6,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using NetBungieAPI.Authorization;
 using NetBungieAPI.HashReferences;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
-using NetBungieAPI.Models.Destiny.Definitions.Activities;
 using NetBungieAPI.Models.Destiny.Definitions.InventoryItems;
-using NetBungieAPI.Models.Social;
 
 namespace NetBungieAPI.TestProject
 {
@@ -64,29 +63,50 @@ namespace NetBungieAPI.TestProject
 
         private static async Task Main(string[] args)
         {
-            _bungieClient = await BungieApiBuilder.GetApiClientAsync((settings) =>
+            _bungieClient = BungieApiBuilder.GetApiClient((BungieClientConfiguration configuration) =>
             {
-                settings
-                    .AddApiKey(args[0])
-                    .AddClientIdAndSecret(int.Parse(args[1]), args[2])
-                    .SpecifyApplicationScopes(ApplicationScopes.ReadUserData |
-                                              ApplicationScopes.AdminGroups |
-                                              ApplicationScopes.ReadBasicUserProfile)
-                    .UseDefaultProvider(@"H:\BungieNetCoreAPIRepository\Manifests")
-                    .EnableLogging((mes) => Console.WriteLine(mes))
-                    .PremapDefinitions()
-                    .LoadAllDefinitionsOnStartup(waitEverythingToLoad: true)
-                    .SetLocales(new BungieLocales[]
+                configuration.ApiKey = args[0];
+                configuration.ClientId = int.Parse(args[1]);
+                configuration.ClientSecret = args[2];
+                configuration.ApplicationScopes = ApplicationScopes.ReadUserData |
+                                                  ApplicationScopes.AdminGroups |
+                                                  ApplicationScopes.ReadBasicUserProfile;
+                configuration
+                    .UseDefaultLogger(loggingConfig =>
                     {
-                        BungieLocales.EN
+                        loggingConfig.IsEnabled = true;
+                        loggingConfig.LogEventLevels(new[]
+                        {
+                            LogLevel.Debug, 
+                            LogLevel.Information,
+                            LogLevel.Error
+                        });
                     })
-                    .SetUpdateBehaviour(true, true);
-                //.TryLoadManifestVersion("96750.21.08.09.1845-3-bnet.39541");
+                    .UseDefaultBungieNetJsonSerializer(serializerConfig =>
+                    {
+                        serializerConfig.Options.WriteIndented = false;
+                    })
+                    .UseDefaultHttpClient(httpClientConfig =>
+                    {
+                        httpClientConfig.HttpClient.Timeout = TimeSpan.FromSeconds(30);
+                    })
+                    .UseDefaultAuthorizationHandler()
+                    .UseDefaultDefinitionProvider(providerConfig =>
+                    {
+                        providerConfig.ManifestFolderPath = "H:\\BungieNetCoreAPIRepository\\Manifests";
+                        providerConfig.FetchLatestManifestOnInitialize = false;
+                        providerConfig.AutoUpdateManifestOnStartup = true;
+                    })
+                    .UseDefaultDefinitionRepository(repositoryConfig =>
+                    {
+                        repositoryConfig.UsedLocales.Add(BungieLocales.EN);
+                    });
             });
 
-            var generator = new HashReferencesGeneration.DefinitionHashReferencesGenerator(_bungieClient);
-            await generator.Generate();
+            await _bungieClient.DefinitionProvider.Initialize();
 
+            _bungieClient.TryGetDefinition<DestinyInventoryItemDefinition>(DefinitionHashes.InventoryItems.Adored, BungieLocales.EN, out var adoredDef);
+            
             await Task.Delay(Timeout.Infinite);
         }
 

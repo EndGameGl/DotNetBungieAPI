@@ -9,7 +9,7 @@ namespace NetBungieAPI.Serialization
     /// <summary>
     /// Definition hash pointer converter factory
     /// </summary>
-    public class DefinitionHashPointerConverterFactory : JsonConverterFactory
+    internal sealed class DefinitionHashPointerConverterFactory : JsonConverterFactory
     {
         private readonly Type _definitionHashPointerType = typeof(DefinitionHashPointer<>);
 

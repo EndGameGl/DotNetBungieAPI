@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
+using NetBungieAPI.Clients;
 using NetBungieAPI.Exceptions;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Applications;
@@ -14,14 +15,14 @@ namespace NetBungieAPI.Services.ApiAccess
 {
     public class FireteamMethodsAccess : IFireteamMethodsAccess
     {
-        private readonly IConfigurationService _configuration;
-        private readonly IHttpClientInstance _httpClient;
+        private readonly BungieClientConfiguration _configuration;
+        private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
         internal FireteamMethodsAccess(
-            IHttpClientInstance httpClient,
-            IConfigurationService configuration)
+            IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
+            BungieClientConfiguration configuration)
         {
-            _httpClient = httpClient;
+            _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
             _configuration = configuration;
         }
 
@@ -40,7 +41,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("ActiveCount/")
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<int>(url, cancellationToken, authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -74,7 +75,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("langFilter", langFilter, () => !string.IsNullOrWhiteSpace(langFilter))
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, cancellationToken,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -104,7 +105,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("langFilter", langFilter, () => !string.IsNullOrWhiteSpace(langFilter))
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, cancellationToken,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -135,7 +136,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("groupFilter", groupFilter.ToString())
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, cancellationToken,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -158,7 +159,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(fireteamId.ToString())
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<FireteamResponse>(url, cancellationToken, authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }

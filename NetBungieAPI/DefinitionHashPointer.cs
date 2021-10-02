@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using NetBungieAPI.Clients;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Repositories;
@@ -15,8 +16,51 @@ namespace NetBungieAPI
     /// </summary>
     /// <typeparam name="T">Destiny definition type</typeparam>
     [DebuggerDisplay("{DebuggerDisplay}")]
-    public class DefinitionHashPointer<T> : IDeepEquatable<DefinitionHashPointer<T>> where T : IDestinyDefinition
+    public class DefinitionHashPointer<T> :
+        IDeepEquatable<DefinitionHashPointer<T>>,
+        IEquatable<DefinitionHashPointer<T>> where T : IDestinyDefinition
     {
+        /// <summary>
+        /// <inheritdoc>
+        ///     <cref>IEquatable{T}.Equals</cref>
+        /// </inheritdoc>
+        /// </summary>
+        /// <param name="other">
+        /// <inheritdoc>
+        ///     <cref>IEquatable{T}.Equals</cref>
+        /// </inheritdoc></param>
+        /// <returns></returns>
+        public bool Equals(DefinitionHashPointer<T> other)
+        {
+            return other is not null &&
+                   Hash == other.Hash;
+        }
+
+        /// <summary>
+        /// <inheritdoc>
+        ///     <cref>object.Equals</cref>
+        /// </inheritdoc>
+        /// </summary>
+        /// <param name="obj">
+        /// <inheritdoc>
+        ///     <cref>object.Equals</cref>
+        /// </inheritdoc>
+        /// </param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            return obj is DefinitionHashPointer<T> objPointer &&
+                   Equals(objPointer);
+        }
+
+        /// <summary>
+        /// <inheritdoc cref="object.GetHashCode"/>
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return Hash.HasValue ? Hash.Value.ToInt32() : 0;
+        }
 #if DEBUG
         private T debug_value_getter
         {
@@ -26,18 +70,13 @@ namespace NetBungieAPI
                 {
                     return def;
                 }
-                else
-                {
-                    throw new Exception("Failed to get definition");
-                }
+
+                throw new Exception("Failed to get definition");
             }
         }
 #endif
-
-        private static readonly IConfigurationService _configuration = StaticUnityContainer.GetConfiguration();
-
-        private static readonly ILocalisedDestinyDefinitionRepositories _repository =
-            StaticUnityContainer.GetDestinyDefinitionRepositories();
+        private static readonly IBungieClient _client =
+            StaticUnityContainer.GetService<IBungieClient>();
 
         private static readonly IDestiny2MethodsAccess _destiny2MethodsAccess =
             StaticUnityContainer.GetService<IDestiny2MethodsAccess>();
@@ -126,28 +165,11 @@ namespace NetBungieAPI
                 return true;
             }
 
-            if (HasValidHash && _repository.TryGetDestinyDefinition(Hash.Value, locale, out definition))
+            if (HasValidHash && _client.TryGetDefinition(Hash!.Value, locale, out definition))
             {
                 _value = definition;
                 _isMapped = true;
                 return true;
-            }
-
-            try
-            {
-                var loadTask = _repository.Provider.LoadDefinition<T>(Hash.Value, locale);
-                definition = loadTask.ConfigureAwait(false).GetAwaiter().GetResult();
-
-                if (definition is not null)
-                {
-                    _value = definition;
-                    _isMapped = true;
-                    return true;
-                }
-            }
-            catch (Exception)
-            {
-                return false;
             }
 
             return false;
@@ -180,7 +202,9 @@ namespace NetBungieAPI
                 return;
             if (!HasValidHash)
                 return;
-            if (!_repository.TryGetDestinyDefinition<T>(Hash!.Value, Locale,
+            if (!_client.TryGetDefinition<T>(
+                Hash!.Value,
+                Locale,
                 out var definition))
                 return;
 
@@ -200,12 +224,38 @@ namespace NetBungieAPI
                    Locale == other.Locale;
         }
 
+        /// <summary>
+        /// Overload for quick hash comparing
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="hash"></param>
+        /// <returns></returns>
+        public static bool operator ==(DefinitionHashPointer<T> a, uint hash) => a is not null && a.Hash == hash;
+
+        /// <summary>
+        /// Overload for quick hash comparing
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="hash"></param>
+        /// <returns></returns>
+        public static bool operator !=(DefinitionHashPointer<T> a, uint hash) => !(a == hash);
+
+        public static implicit operator DefinitionHashPointer<T>(uint hash)
+            => new(hash);
+
         internal void SetLocale(BungieLocales locale)
         {
             Locale = locale;
         }
 
-        private string DebuggerDisplay =>
-            $"{(_isMapped ? _value.ToString() : $"{DefinitionEnumType} - {Hash} - {Locale}")}";
+        private string DebuggerDisplay => GetDebuggerDisplayString();
+
+        private string GetDebuggerDisplayString()
+        {
+            var value = HasValidHash
+                ? $"{(_isMapped ? _value.ToString() : $"{DefinitionEnumType} - {Hash} - {Locale}")}"
+                : $"DefinitionHashPointer<{DefinitionEnumType}>.Empty";
+            return value;
+        }
     }
 }

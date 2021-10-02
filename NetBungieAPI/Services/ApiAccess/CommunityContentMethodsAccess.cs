@@ -13,11 +13,11 @@ namespace NetBungieAPI.Services.ApiAccess
     /// </summary>
     public class CommunityContentMethodsAccess : ICommunityContentMethodsAccess
     {
-        private readonly IHttpClientInstance _httpClient;
+        private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
-        internal CommunityContentMethodsAccess(IHttpClientInstance httpClient)
+        internal CommunityContentMethodsAccess(IDotNetBungieApiHttpClient dotNetBungieApiHttpClient)
         {
-            _httpClient = httpClient;
+            _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         }
 
         public async ValueTask<BungieResponse<PostSearchResponse>> GetCommunityContent(
@@ -33,7 +33,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(((int)mediaFilter).ToString())
                 .AddUrlParam(page.ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<PostSearchResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }

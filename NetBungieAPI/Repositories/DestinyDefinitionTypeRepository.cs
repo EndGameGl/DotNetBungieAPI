@@ -65,6 +65,11 @@ namespace NetBungieAPI.Repositories
             foreach (var definition in EnumerateValues()) definition.MapValues();
         }
 
+        public void Clear()
+        {
+            _definitions.Clear();
+        }
+
         private string DebuggerDisplay => $"{Type.Name}: {_definitions.Count} entities.";
     }
 }

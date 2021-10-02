@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
+using NetBungieAPI.Clients;
 using NetBungieAPI.Exceptions;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Applications;
@@ -15,14 +16,14 @@ namespace NetBungieAPI.Services.ApiAccess
     /// </summary>
     public class SocialMethodsAccess : ISocialMethodsAccess
     {
-        private readonly IConfigurationService _configuration;
-        private readonly IHttpClientInstance _httpClient;
+        private readonly BungieClientConfiguration _configuration;
+        private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
         internal SocialMethodsAccess(
-            IHttpClientInstance httpClient,
-            IConfigurationService configuration)
+            IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
+            BungieClientConfiguration configuration)
         {
-            _httpClient = httpClient;
+            _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
             _configuration = configuration;
         }
 
@@ -33,7 +34,7 @@ namespace NetBungieAPI.Services.ApiAccess
         {
             if (!_configuration.HasSufficientRights(ApplicationScopes.ReadUserData))
                 throw new InsufficientScopeException(ApplicationScopes.ReadUserData);
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<BungieFriendListResponse>(
                     "/Social/Friends/",
                     cancellationToken,
@@ -47,7 +48,7 @@ namespace NetBungieAPI.Services.ApiAccess
         {
             if (!_configuration.HasSufficientRights(ApplicationScopes.ReadUserData))
                 throw new InsufficientScopeException(ApplicationScopes.ReadUserData);
-            return await _httpClient.GetFromBungieNetPlatform<BungieFriendRequestListResponse>(
+            return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<BungieFriendRequestListResponse>(
                 "/Social/Friends/Requests/", cancellationToken, authorizationToken.AccessToken);
         }
 
@@ -65,7 +66,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(membershipId)
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<bool>(url, cancellationToken, authToken: authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -84,7 +85,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(membershipId)
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<bool>(url, cancellationToken, authToken: authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -103,7 +104,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(membershipId)
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<bool>(url, cancellationToken, authToken: authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -122,7 +123,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(membershipId)
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<bool>(url, cancellationToken, authToken: authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -141,7 +142,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(membershipId)
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<bool>(url, cancellationToken, authToken: authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -159,7 +160,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(page.ToString())
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<PlatformFriendResponse>(
                     url,
                     cancellationToken,

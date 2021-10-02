@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Models.Destiny.Definitions.Common
@@ -6,6 +7,7 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Common
     /// <summary>
     ///     Represents common properties for displaying <see cref="IDestinyDefinition" />
     /// </summary>
+    [DebuggerDisplay("{Name}: {Description}")]
     public record DestinyDisplayPropertiesDefinition : IDeepEquatable<DestinyDisplayPropertiesDefinition>
     {
         [JsonPropertyName("description")] public string Description { get; init; }
@@ -44,11 +46,6 @@ namespace NetBungieAPI.Models.Destiny.Definitions.Common
                    Name == other.Name &&
                    HighResolutionIcon == other.HighResolutionIcon &&
                    IconSequences.DeepEqualsReadOnlyCollections(other.IconSequences);
-        }
-
-        public override string ToString()
-        {
-            return $"{Name}: {Description}";
         }
     }
 }

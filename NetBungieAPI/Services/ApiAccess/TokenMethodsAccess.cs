@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
+using NetBungieAPI.Clients;
 using NetBungieAPI.Exceptions;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Applications;
@@ -15,12 +16,14 @@ namespace NetBungieAPI.Services.ApiAccess
     /// </summary>
     public class TokenMethodsAccess : ITokenMethodsAccess
     {
-        private readonly IConfigurationService _configuration;
-        private readonly IHttpClientInstance _httpClient;
+        private readonly BungieClientConfiguration _configuration;
+        private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
-        internal TokenMethodsAccess(IHttpClientInstance httpClient, IConfigurationService configuration)
+        internal TokenMethodsAccess(
+            IDotNetBungieApiHttpClient dotNetBungieApiHttpClient, 
+            BungieClientConfiguration configuration)
         {
-            _httpClient = httpClient;
+            _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
             _configuration = configuration;
         }
 
@@ -40,7 +43,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(targetBnetMembershipId.ToString())
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<PartnerOfferSkuHistoryResponse[]>(
                     url,
                     cancellationToken,

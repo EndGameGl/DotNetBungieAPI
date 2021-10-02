@@ -13,11 +13,11 @@ namespace NetBungieAPI.Services.ApiAccess
     /// </summary>
     public class ContentMethodsAccess : IContentMethodsAccess
     {
-        private readonly IHttpClientInstance _httpClient;
+        private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
-        internal ContentMethodsAccess(IHttpClientInstance httpClient)
+        internal ContentMethodsAccess(IDotNetBungieApiHttpClient dotNetBungieApiHttpClient)
         {
-            _httpClient = httpClient;
+            _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         }
 
         public async ValueTask<BungieResponse<ContentTypeDescription>> GetContentType(
@@ -29,7 +29,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("/Content/GetContentType/")
                 .AddUrlParam(type)
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<ContentTypeDescription>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -47,7 +47,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(locale)
                 .AddQueryParam("head", head.ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<ContentItemPublicContract>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -65,7 +65,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(type)
                 .AddUrlParam(locale)
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<ContentItemPublicContract>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -89,7 +89,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("source", source, () => !string.IsNullOrEmpty(source))
                 .AddQueryParam("tag", tag)
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -109,7 +109,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(locale)
                 .AddQueryParam("currentpage", currentpage.ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(url, cancellationToken)
                 .ConfigureAwait(false);
         }

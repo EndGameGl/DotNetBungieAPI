@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace NetBungieAPI.Serialization
 {
-    public class HistoricalStatDefinitionPointerConverter : JsonConverter<HistoricalStatDefinitionPointer>
+    internal sealed class HistoricalStatDefinitionPointerConverter : JsonConverter<HistoricalStatDefinitionPointer>
     {
         public override bool HandleNull => true;
 

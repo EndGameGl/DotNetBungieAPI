@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
+using NetBungieAPI.Clients;
 using NetBungieAPI.Exceptions;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Applications;
@@ -17,14 +18,14 @@ namespace NetBungieAPI.Services.ApiAccess
     /// </summary>
     public class UserMethodsAccess : IUserMethodsAccess
     {
-        private readonly IConfigurationService _configuration;
-        private readonly IHttpClientInstance _httpClient;
+        private readonly BungieClientConfiguration _configuration;
+        private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
         internal UserMethodsAccess(
-            IHttpClientInstance httpClient,
-            IConfigurationService configuration)
+            IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
+            BungieClientConfiguration configuration)
         {
-            _httpClient = httpClient;
+            _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
             _configuration = configuration;
         }
 
@@ -37,7 +38,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("/User/GetBungieNetUserById/")
                 .AddUrlParam(id.ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<GeneralUser>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -52,7 +53,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("/User/GetCredentialTypesForTargetAccount/")
                 .AddUrlParam(id.ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<CredentialTypeForAccount[]>(
                     url,
                     cancellationToken,
@@ -63,7 +64,7 @@ namespace NetBungieAPI.Services.ApiAccess
         public async ValueTask<BungieResponse<UserTheme[]>> GetAvailableThemes(
             CancellationToken cancellationToken = default)
         {
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<UserTheme[]>("/User/GetAvailableThemes", cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -77,7 +78,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(id.ToString())
                 .AddUrlParam(((int)membershipType).ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<UserMembershipData>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -89,7 +90,7 @@ namespace NetBungieAPI.Services.ApiAccess
             if (!_configuration.HasSufficientRights(ApplicationScopes.ReadBasicUserProfile))
                 throw new InsufficientScopeException(ApplicationScopes.ReadBasicUserProfile);
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<UserMembershipData>(
                     "/User/GetMembershipsForCurrentUser/",
                     cancellationToken,
@@ -108,7 +109,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(((byte)credentialType).ToString())
                 .AddUrlParam(credential.ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<HardLinkedUserMembership>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -124,7 +125,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(displayNamePrefix)
                 .AddUrlParam(page.ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<UserSearchResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }

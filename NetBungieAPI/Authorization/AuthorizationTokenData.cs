@@ -45,9 +45,24 @@ namespace NetBungieAPI.Authorization
         public long MembershipId { get; set; }
 
         /// <summary>
-        ///     When this token was received
+        ///     When this token was last received
         /// </summary>
-        public DateTime ReceiveTime { get; set; } = DateTime.Now;
+        public DateTime LastReceived { get; set; } = DateTime.UtcNow;
+
+        /// <summary>
+        ///     When this token was first received
+        /// </summary>
+        public DateTime FirstReceived { get; } = DateTime.UtcNow;
+
+        /// <summary>
+        ///     Whether token did expire
+        /// </summary>
+        public bool DidExpire => LastReceived.AddSeconds(ExpiresIn) < DateTime.UtcNow;
+
+        /// <summary>
+        ///     Whether refresh token did expire
+        /// </summary>
+        public bool DidRefreshExpired => FirstReceived.AddSeconds(RefreshExpiresIn) < DateTime.UtcNow;
 
         /// <summary>
         ///     Updates same token instance with new data
@@ -58,7 +73,7 @@ namespace NetBungieAPI.Authorization
             AccessToken = newTokenData.AccessToken;
             ExpiresIn = newTokenData.ExpiresIn;
             MembershipId = newTokenData.MembershipId;
-            ReceiveTime = newTokenData.ReceiveTime;
+            LastReceived = newTokenData.LastReceived;
             RefreshToken = newTokenData.RefreshToken;
             TokenType = newTokenData.TokenType;
             RefreshExpiresIn = newTokenData.RefreshExpiresIn;

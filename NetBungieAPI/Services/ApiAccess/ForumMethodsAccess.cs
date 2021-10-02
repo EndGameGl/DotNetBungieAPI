@@ -13,13 +13,13 @@ namespace NetBungieAPI.Services.ApiAccess
 {
     public class ForumMethodsAccess : IForumMethodsAccess
     {
-        private readonly IHttpClientInstance _httpClient;
-        private readonly IJsonSerializationHelper _serializationHelper;
+        private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
+        private readonly IBungieNetJsonSerializer _serializer;
 
-        internal ForumMethodsAccess(IHttpClientInstance httpClient, IJsonSerializationHelper serializationHelper)
+        internal ForumMethodsAccess(IDotNetBungieApiHttpClient dotNetBungieApiHttpClient, IBungieNetJsonSerializer serializer)
         {
-            _httpClient = httpClient;
-            _serializationHelper = serializationHelper;
+            _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
+            _serializer = serializer;
         }
 
         public async ValueTask<BungieResponse<PostSearchResponse>> GetTopicsPaged(
@@ -45,7 +45,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("locales", string.Join(",", locales.Select(x => x.LocaleToString())))
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<PostSearchResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -68,7 +68,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("locales", string.Join(",", locales.Select(x => x.LocaleToString())))
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<PostSearchResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -97,7 +97,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("showbanned", showbanned.ToString(), () => showbanned.HasValue)
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<PostSearchResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -124,7 +124,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("showbanned", showbanned.ToString(), () => showbanned.HasValue)
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<PostSearchResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -141,7 +141,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("showbanned", showbanned.ToString(), () => showbanned.HasValue)
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<PostSearchResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -158,7 +158,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("showbanned", showbanned.ToString(), () => showbanned.HasValue)
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<PostSearchResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -173,7 +173,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(contentId.ToString())
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<long>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -188,7 +188,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("partialtag", partialtag)
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<TagResponse[]>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -203,7 +203,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(topicId.ToString())
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<PostSearchResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -213,8 +213,8 @@ namespace NetBungieAPI.Services.ApiAccess
             CancellationToken cancellationToken = default)
         {
             await using var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<ForumRecruitmentDetail[]>("/Forum/Recruit/Summaries/", cancellationToken,
                     stream)
                 .ConfigureAwait(false);

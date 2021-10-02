@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using NetBungieAPI.Authorization;
+using NetBungieAPI.Clients;
 using NetBungieAPI.Exceptions;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Applications;
@@ -18,22 +19,24 @@ namespace NetBungieAPI.Services.ApiAccess
 {
     public class GroupV2MethodsAccess : IGroupV2MethodsAccess
     {
-        private readonly IConfigurationService _configuration;
-        private readonly IHttpClientInstance _httpClient;
-        private readonly IJsonSerializationHelper _serializationHelper;
+        private readonly BungieClientConfiguration _configuration;
+        private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
+        private readonly IBungieNetJsonSerializer _serializer;
 
-        internal GroupV2MethodsAccess(IHttpClientInstance httpClient, IConfigurationService configuration,
-            IJsonSerializationHelper serializationHelper)
+        internal GroupV2MethodsAccess(
+            IDotNetBungieApiHttpClient dotNetBungieApiHttpClient, 
+            BungieClientConfiguration configuration,
+            IBungieNetJsonSerializer serializer)
         {
-            _httpClient = httpClient;
+            _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
             _configuration = configuration;
-            _serializationHelper = serializationHelper;
+            _serializer = serializer;
         }
 
         public async ValueTask<BungieResponse<Dictionary<int, string>>> GetAvailableAvatars(
             CancellationToken cancellationToken = default)
         {
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<Dictionary<int, string>>("/GroupV2/GetAvailableAvatars/", cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -41,7 +44,7 @@ namespace NetBungieAPI.Services.ApiAccess
         public async ValueTask<BungieResponse<GroupTheme[]>> GetAvailableThemes(
             CancellationToken cancellationToken = default)
         {
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<GroupTheme[]>("/GroupV2/GetAvailableThemes/", cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -60,7 +63,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(((int)mType).ToString())
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<bool>(url, cancellationToken, authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -81,7 +84,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(((int)createDateRange).ToString())
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<GroupV2Card[]>(url, cancellationToken,
                     authToken: authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -92,8 +95,8 @@ namespace NetBungieAPI.Services.ApiAccess
             CancellationToken cancellationToken = default)
         {
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, query);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, query);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<GroupSearchResponse>("/GroupV2/Search/", cancellationToken, stream)
                 .ConfigureAwait(false);
         }
@@ -108,7 +111,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(groupId.ToString())
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<GroupResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -125,7 +128,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(((int)groupType).ToString())
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<GroupResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -135,8 +138,8 @@ namespace NetBungieAPI.Services.ApiAccess
             CancellationToken cancellationToken = default)
         {
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<GroupResponse>("/GroupV2/NameV2/", cancellationToken, stream)
                 .ConfigureAwait(false);
         }
@@ -150,7 +153,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(groupId.ToString())
                 .Append("OptionalConversations/")
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<GroupOptionalConversation[]>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -170,8 +173,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("Edit/")
                 .Build();
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -191,8 +194,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("EditClanBanner/")
                 .Build();
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -212,8 +215,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("EditFounderOptions/")
                 .Build();
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -233,8 +236,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("OptionalConversations/Add/")
                 .Build();
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<long>(url, cancellationToken, stream, authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -257,8 +260,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
 
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<long>(url, cancellationToken, stream, authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -278,7 +281,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddQueryParam("memberType", ((int)memberType).ToString())
                 .AddQueryParam("nameSearch", nameSearch, () => !string.IsNullOrWhiteSpace(nameSearch))
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<SearchResultOfGroupMember>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -294,7 +297,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("AdminsAndFounder/")
                 .AddQueryParam("currentpage", currentpage.ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<SearchResultOfGroupMember>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -319,7 +322,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("SetMembershipType/")
                 .AddUrlParam(((int)memberType).ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<int>(url, cancellationToken, authToken: authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -342,7 +345,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(membershipId.ToString())
                 .Append("Kick/")
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<GroupMemberLeaveResult>(url, cancellationToken,
                     authToken: authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -369,8 +372,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
 
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -394,7 +397,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("Unban/")
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<int>(url, cancellationToken, authToken: authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -414,7 +417,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("Banned/")
                 .AddQueryParam("currentpage", currentpage.ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<SearchResultOfGroupBan>(url, cancellationToken,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -438,7 +441,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(founderIdNew.ToString())
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<bool>(url, cancellationToken, authToken: authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -458,7 +461,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("Members/Pending/")
                 .AddQueryParam("currentpage", currentpage.ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<SearchResultOfGroupMemberApplication>(url, token,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -479,7 +482,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Append("Members/InvitedIndividuals/")
                 .AddQueryParam("currentpage", currentpage.ToString())
                 .Build();
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<SearchResultOfGroupMemberApplication>(url, cancellationToken,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -501,8 +504,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
 
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<EntityActionResult[]>(url, cancellationToken, stream,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -524,9 +527,9 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
 
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
+            await _serializer.SerializeAsync(stream, request);
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<EntityActionResult[]>(url, cancellationToken, stream,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -548,8 +551,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
 
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<EntityActionResult[]>(url, cancellationToken, stream,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -575,8 +578,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
 
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<bool>(url, cancellationToken, stream, authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
@@ -597,8 +600,8 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
 
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
-            return await _httpClient
+            await _serializer.SerializeAsync(stream, request);
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<EntityActionResult[]>(url, cancellationToken, stream,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -619,7 +622,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(((int)groupType).ToString())
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<GetGroupsForMemberResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -637,7 +640,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(((int)groupType).ToString())
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<GroupMembershipSearchResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -657,7 +660,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(((int)groupType).ToString())
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<GroupPotentialMembershipSearchResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
         }
@@ -682,9 +685,9 @@ namespace NetBungieAPI.Services.ApiAccess
                 .Build();
 
             var stream = new MemoryStream();
-            await _serializationHelper.SerializeAsync(stream, request);
+            await _serializer.SerializeAsync(stream, request);
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<GroupApplicationResponse>(url, cancellationToken, stream,
                     authorizationToken.AccessToken)
                 .ConfigureAwait(false);
@@ -708,7 +711,7 @@ namespace NetBungieAPI.Services.ApiAccess
                 .AddUrlParam(membershipId.ToString())
                 .Build();
 
-            return await _httpClient
+            return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<GroupApplicationResponse>(url, cancellationToken,
                     authToken: authorizationToken.AccessToken)
                 .ConfigureAwait(false);

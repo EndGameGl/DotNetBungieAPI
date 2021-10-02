@@ -1,8 +1,10 @@
 ﻿using System;
+using NetBungieAPI.Clients;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using NetBungieAPI.Repositories;
 using NetBungieAPI.Services.ApiAccess.Interfaces;
+using Unity;
 
 namespace NetBungieAPI
 {
@@ -13,7 +15,7 @@ namespace NetBungieAPI
         {
             get
             {
-                if (_repository.Value.TryGetDestinyHistoricalDefinition(Locale, StatId, out var def))
+                if (_client.Value.TryGetHistoricalStatDefinition(StatId, Locale, out var def))
                     return def;
                 else
                     throw new Exception("Definition is missing from repo.");
@@ -21,8 +23,8 @@ namespace NetBungieAPI
         }
 #endif
 
-        private static readonly Lazy<ILocalisedDestinyDefinitionRepositories> _repository =
-            new(() => StaticUnityContainer.GetDestinyDefinitionRepositories());
+        private static readonly Lazy<IBungieClient> _client =
+            new(() => StaticUnityContainer.GetService<IBungieClient>());
 
         private static readonly Lazy<IDestiny2MethodsAccess> _destiny2MethodsAccess =
             new(() => StaticUnityContainer.GetService<IDestiny2MethodsAccess>());
@@ -48,11 +50,20 @@ namespace NetBungieAPI
         public bool TryGetDefinition(out DestinyHistoricalStatsDefinition definition)
         {
             definition = default;
-            if (!_isMapped)
-                return !string.IsNullOrWhiteSpace(StatId) &&
-                       _repository.Value.TryGetDestinyHistoricalDefinition(Locale, StatId, out definition);
 
-            definition = _value;
+            if (_isMapped)
+            {
+                definition = _value;
+                return true;
+            }
+
+            if (_client.Value.TryGetHistoricalStatDefinition(StatId, Locale, out definition))
+            {
+                _value = definition;
+                _isMapped = true;
+                return true;
+            }
+
             return true;
         }
 
@@ -67,10 +78,12 @@ namespace NetBungieAPI
                 return;
             if (string.IsNullOrWhiteSpace(StatId))
                 return;
-            if (!_repository.Value.TryGetDestinyHistoricalDefinition(Locale, StatId, out var definition))
-                return;
-            _value = definition;
-            _isMapped = true;
+
+            if (_client.Value.TryGetHistoricalStatDefinition(StatId, Locale, out var definition))
+            {
+                _value = definition;
+                _isMapped = true;
+            }
         }
     }
 }

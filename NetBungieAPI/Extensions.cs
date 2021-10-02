@@ -3,19 +3,26 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
-using NetBungieAPI.Clients.Settings;
+using NetBungieAPI.Clients;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
 using NetBungieAPI.Models.Destiny.Definitions.Activities;
 using NetBungieAPI.Models.Destiny.Definitions.ActivityModes;
-using NetBungieAPI.Repositories;
 
 namespace NetBungieAPI
 {
     public static class Extensions
     {
+        public static TValue GetValueByHashFromReadonlyDictionary<TKey, TValue>(
+            this ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue> dictionary, uint hash) where TKey : IDestinyDefinition
+        {
+            KeyValuePair<DefinitionHashPointer<TKey>, TValue>? searchResult = null;
+            searchResult = dictionary.FirstOrDefault(x => x.Key == hash);
+            return searchResult.HasValue ? searchResult.Value.Value : default;
+        }
+        
         public static IServiceCollection UseBungieApiClient(this IServiceCollection services,
-            Action<BungieClientSettings> configure)
+            Action<BungieClientConfiguration> configure)
         {
             var client = BungieApiBuilder.GetApiClient(configure);
             return services.AddSingleton(client);
@@ -203,108 +210,5 @@ namespace NetBungieAPI
         {
             return unchecked((uint)hash);
         }
-
-        #region Activity search
-
-        public static List<DestinyActivityDefinition> GetActivitiesWithMode(
-            this ILocalisedDestinyDefinitionRepositories repository, BungieLocales locale, uint activityModeHash)
-        {
-            return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale,
-                x => ((DestinyActivityDefinition)x).ActivityModes.Any(q => q.Hash.Equals(activityModeHash))).ToList();
-        }
-
-        public static List<DestinyActivityDefinition> GetActivitiesWithMode(
-            this ILocalisedDestinyDefinitionRepositories repository, BungieLocales locale,
-            DestinyActivityModeType activityMode)
-        {
-            return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale,
-                x => (x as DestinyActivityDefinition).ActivityModeTypes.Contains(activityMode)).ToList();
-        }
-
-        public static List<DestinyActivityDefinition> GetActivitiesWithDirectMode(
-            this ILocalisedDestinyDefinitionRepositories repository, BungieLocales locale, uint activityModeHash)
-        {
-            return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale,
-                x => (x as DestinyActivityDefinition).DirectActivityMode.Hash.Equals(activityModeHash)).ToList();
-        }
-
-        public static List<DestinyActivityDefinition> GetActivitiesWithDirectMode(
-            this ILocalisedDestinyDefinitionRepositories repository, BungieLocales locale,
-            DestinyActivityModeType activityMode)
-        {
-            return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale,
-                x => (x as DestinyActivityDefinition).DirectActivityModeType.Equals(activityMode)).ToList();
-        }
-
-        public static List<DestinyActivityDefinition> GetActivitiesWithPlace(
-            this ILocalisedDestinyDefinitionRepositories repository, BungieLocales locale, uint placeHash)
-        {
-            return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale,
-                x => (x as DestinyActivityDefinition).Place.Hash.Equals(placeHash)).ToList();
-        }
-
-        public static List<DestinyActivityDefinition> GetActivitiesWithDestination(
-            this ILocalisedDestinyDefinitionRepositories repository, BungieLocales locale, uint destinationHash)
-        {
-            return repository.Search<DestinyActivityDefinition>(DefinitionsEnum.DestinyActivityDefinition, locale,
-                x => (x as DestinyActivityDefinition).Destination.Hash.Equals(destinationHash)).ToList();
-        }
-
-        public static IEnumerable<DestinyActivityDefinition> WithMode(
-            this IEnumerable<DestinyActivityDefinition> definitions, DestinyActivityModeType activityMode)
-        {
-            return definitions.Where(x => x.ActivityModeTypes.Contains(activityMode));
-        }
-
-        public static IEnumerable<DestinyActivityDefinition> WithDirectMode(
-            this IEnumerable<DestinyActivityDefinition> definitions, DestinyActivityModeType activityMode)
-        {
-            return definitions.Where(x => x.DirectActivityModeType.Equals(activityMode));
-        }
-
-        public static IEnumerable<DestinyActivityDefinition> WithPlace(
-            this IEnumerable<DestinyActivityDefinition> definitions, uint placeHash)
-        {
-            return definitions.Where(x => x.Place.Hash.Equals(placeHash));
-        }
-
-        public static IEnumerable<DestinyActivityDefinition> WithDestination(
-            this IEnumerable<DestinyActivityDefinition> definitions, uint destinationHash)
-        {
-            return definitions.Where(x => x.Destination.Hash.Equals(destinationHash));
-        }
-
-        public static IEnumerable<DestinyActivityDefinition> IsPvP(
-            this IEnumerable<DestinyActivityDefinition> definitions, bool isPvP)
-        {
-            return definitions.Where(x => x.IsPvP.Equals(isPvP));
-        }
-
-        public static IEnumerable<DestinyActivityDefinition> IsPlaylist(
-            this IEnumerable<DestinyActivityDefinition> definitions, bool isPlaylist)
-        {
-            return definitions.Where(x => x.IsPlaylist.Equals(isPlaylist));
-        }
-
-        public static IEnumerable<DestinyActivityDefinition> InheritsFromFreeRoam(
-            this IEnumerable<DestinyActivityDefinition> definitions, bool inheritFromFreeRoam)
-        {
-            return definitions.Where(x => x.InheritFromFreeRoam.Equals(inheritFromFreeRoam));
-        }
-
-        public static IEnumerable<DestinyActivityDefinition> WithName(
-            this IEnumerable<DestinyActivityDefinition> definitions, string name)
-        {
-            return definitions.Where(x => x.DisplayProperties.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-        }
-
-        public static IEnumerable<DestinyActivityDefinition> WithDescription(
-            this IEnumerable<DestinyActivityDefinition> definitions, string description)
-        {
-            return definitions.Where(x =>
-                x.DisplayProperties.Description.Equals(description, StringComparison.OrdinalIgnoreCase));
-        }
-
-        #endregion
     }
 }
