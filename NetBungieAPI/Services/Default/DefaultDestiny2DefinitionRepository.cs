@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Extensions.Logging;
 using NetBungieAPI.Models;
 using NetBungieAPI.Models.Destiny;
@@ -15,6 +16,7 @@ namespace NetBungieAPI.Services.Default
     {
         private readonly ILogger _logger;
         private readonly ConcurrentDictionary<BungieLocales, DestinyDefinitionsRepository> _localisedRepositories;
+        private readonly DefaultDestiny2DefinitionRepositoryConfiguration _configuration;
 
         internal DefaultDestiny2DefinitionRepository(
             IDefinitionAssemblyData assemblyData,
@@ -22,6 +24,7 @@ namespace NetBungieAPI.Services.Default
             DefaultDestiny2DefinitionRepositoryConfiguration configuration)
         {
             _logger = logger;
+            _configuration = configuration;
             _localisedRepositories =
                 new ConcurrentDictionary<BungieLocales, DestinyDefinitionsRepository>(
                     configuration.AppConcurrencyLevel, configuration.UsedLocales.Count);
@@ -102,6 +105,9 @@ namespace NetBungieAPI.Services.Default
             return _localisedRepositories.TryGetValue(locale, out var repository) &&
                    repository.AddDefinition(enumValue, definition);
         }
+
+        public IEnumerable<BungieLocales> AvailableLocales => _localisedRepositories.Select(x => x.Key);
+        public IEnumerable<DefinitionsEnum> AllowedDefinitions => _configuration.AllowedDefinitions;
 
         public void Clear()
         {

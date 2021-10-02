@@ -41,6 +41,9 @@ namespace NetBungieAPI.Services.Interfaces
             BungieLocales locale, 
             IDestinyDefinition definition);
 
+        IEnumerable<BungieLocales> AvailableLocales { get; }
+        IEnumerable<DefinitionsEnum> AllowedDefinitions { get; }
+
         void Clear();
 
         void PremapPointers();

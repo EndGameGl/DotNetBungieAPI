@@ -24,6 +24,8 @@ namespace NetBungieAPI.Services.Default
         private const string SelectDefinitionQuery = "SELECT json FROM {0} WHERE id = {1}";
         private const string SelectHistoricalDefinitionQuery = "SELECT json FROM {0} WHERE key = '{1}'";
 
+        private const string SelectAllDefinitionsQuery = "SELECT json FROM {0}";
+
         private const string ConnectionStringTemplate = "Data Source={0}; Version=3;";
 
         private readonly DefinitionsEnum[] _nonExistInSqliteDefinitions =
@@ -39,6 +41,7 @@ namespace NetBungieAPI.Services.Default
         private readonly IBungieNetJsonSerializer _serializer;
         private readonly IDestiny2MethodsAccess _destiny2MethodsAccess;
         private readonly IDotNetBungieApiHttpClient _httpClient;
+        private readonly IDefinitionAssemblyData _assemblyData;
 
         private DestinyManifest _currentManifest;
         private DestinyManifest _latestManifest;
@@ -82,13 +85,15 @@ namespace NetBungieAPI.Services.Default
             ILogger logger,
             IBungieNetJsonSerializer serializer,
             IDestiny2MethodsAccess destiny2MethodsAccess,
-            IDotNetBungieApiHttpClient httpClient)
+            IDotNetBungieApiHttpClient httpClient,
+            IDefinitionAssemblyData assemblyData)
         {
             _configuration = configuration;
             _logger = logger;
             _serializer = serializer;
             _destiny2MethodsAccess = destiny2MethodsAccess;
             _httpClient = httpClient;
+            _assemblyData = assemblyData;
         }
 
         public async ValueTask<T> LoadDefinition<T>(uint hash, BungieLocales locale) where T : IDestinyDefinition
@@ -350,7 +355,59 @@ namespace NetBungieAPI.Services.Default
 
         public async Task ReadToRepository(IDestiny2DefinitionRepository repository)
         {
-            throw new NotImplementedException();
+            var definitionsToLoad = repository.AllowedDefinitions.ToList();
+            foreach (var nonExistInSqliteDefinition in _nonExistInSqliteDefinitions)
+            {
+                definitionsToLoad.Remove(nonExistInSqliteDefinition);
+            }
+
+            definitionsToLoad.Remove(DefinitionsEnum.DestinyHistoricalStatsDefinition);
+
+            _logger.LogInformation("Reading all definitions into repository");
+            foreach (var locale in repository.AvailableLocales)
+            {
+                _logger.LogInformation("Reading locale: {Locale}", locale);
+                var connection = _sqliteConnections[locale];
+                connection.Open();
+
+                Parallel.ForEach(definitionsToLoad, definitionType =>
+                {
+                    _logger.LogInformation("Reading definitions: {DefinitionType}", definitionType);
+                    var runtimeType = _assemblyData.DefinitionsToTypeMapping[definitionType].DefinitionType;
+                    var commandObj = new SQLiteCommand
+                    {
+                        Connection = connection,
+                        CommandText = string.Format(SelectAllDefinitionsQuery, definitionType)
+                    };
+
+                    var reader = commandObj.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var parsedDefinition =
+                            (IDestinyDefinition)_serializer.Deserialize(
+                                (byte[])reader[0],
+                                runtimeType);
+                        parsedDefinition.SetPointerLocales(locale);
+                        repository.AddDefinition(definitionType, locale, parsedDefinition);
+                    }
+                });
+
+                var historicalFetchCommand = new SQLiteCommand
+                {
+                    Connection = connection,
+                    CommandText = string.Format(SelectAllDefinitionsQuery,
+                        DefinitionsEnum.DestinyHistoricalStatsDefinition)
+                };
+                var histReader = historicalFetchCommand.ExecuteReader();
+                while (histReader.Read())
+                {
+                    var parsedDefinition = await _serializer.DeserializeAsync<DestinyHistoricalStatsDefinition>(
+                        (byte[])histReader[0]);
+                    repository.AddDestinyHistoricalDefinition(locale, parsedDefinition);
+                }
+
+                connection.Close();
+            }
         }
 
         public async Task DownloadManifestData(DestinyManifest manifestData)

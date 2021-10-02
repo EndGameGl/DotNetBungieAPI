@@ -105,7 +105,7 @@ namespace NetBungieAPI.TestProject
 
             await _bungieClient.DefinitionProvider.Initialize();
 
-            _bungieClient.TryGetDefinition<DestinyInventoryItemDefinition>(DefinitionHashes.InventoryItems.Adored, BungieLocales.EN, out var adoredDef);
+            await _bungieClient.DefinitionProvider.ReadToRepository(_bungieClient.Repository);
             
             await Task.Delay(Timeout.Infinite);
         }

@@ -6,23 +6,23 @@ namespace NetBungieAPI
 {
     internal static class StringBuilderPool
     {
-        private static readonly object _lock = new();
-        private static readonly List<ExtendedStringBuilder> _builders;
+        private static readonly object Lock = new();
+        private static readonly List<ExtendedStringBuilder> Builders;
 
         static StringBuilderPool()
         {
-            _builders = new List<ExtendedStringBuilder>();
+            Builders = new List<ExtendedStringBuilder>();
         }
 
         public static ExtendedStringBuilder GetBuilder(CancellationToken ct)
         {
-            lock (_lock)
+            lock (Lock)
             {
-                var builder = _builders.FirstOrDefault(x => !x.IsBusy);
+                var builder = Builders.FirstOrDefault(x => !x.IsBusy);
                 if (builder is not null)
                     return builder.PrepareForUse(ct);
                 builder = new ExtendedStringBuilder();
-                _builders.Add(builder);
+                Builders.Add(builder);
                 return builder.PrepareForUse(ct);
             }
         }
