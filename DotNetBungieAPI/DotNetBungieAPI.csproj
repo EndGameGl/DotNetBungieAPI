@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Title>NetBungieAPI</Title>
+        <Title>DotNetBungieAPI</Title>
         <Authors>MeGl</Authors>
         <RepositoryUrl>https://github.com/EndGameGl/.NetBungieAPI</RepositoryUrl>
         <PackageId>DotNetBungieAPI</PackageId>
@@ -11,7 +11,7 @@
         <Copyright>Copyright (c) MeGl 2021</Copyright>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <PackageVersion>1.1.2</PackageVersion>
+        <PackageVersion>1.2.0</PackageVersion>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
