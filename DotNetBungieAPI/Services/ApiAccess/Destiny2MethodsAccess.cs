@@ -27,13 +27,13 @@ using DotNetBungieAPI.Services.Interfaces;
 
 namespace DotNetBungieAPI.Services.ApiAccess
 {
-    public class Destiny2MethodsAccess : IDestiny2MethodsAccess
+    internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
     {
         private readonly BungieClientConfiguration _configuration;
         private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
         private readonly IBungieNetJsonSerializer _serializer;
 
-        internal Destiny2MethodsAccess(
+        public Destiny2MethodsAccess(
             IDotNetBungieApiHttpClient dotNetBungieApiHttpClient, 
             IBungieNetJsonSerializer serializer,
             BungieClientConfiguration configurationService)

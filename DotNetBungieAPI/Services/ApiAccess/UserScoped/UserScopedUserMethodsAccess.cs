@@ -11,7 +11,7 @@ namespace DotNetBungieAPI.Services.ApiAccess.UserScoped
     /// <summary>
     /// <inheritdoc cref="IUserMethodsAccess"/>
     /// </summary>
-    public class UserScopedUserMethodsAccess
+    public sealed class UserScopedUserMethodsAccess
     {
         private readonly IUserMethodsAccess _apiAccess;
         private readonly AuthorizationTokenData _token;

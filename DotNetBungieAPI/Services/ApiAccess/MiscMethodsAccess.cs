@@ -8,11 +8,11 @@ using DotNetBungieAPI.Services.Interfaces;
 
 namespace DotNetBungieAPI.Services.ApiAccess
 {
-    public class MiscMethodsAccess : IMiscMethodsAccess
+    internal sealed class MiscMethodsAccess : IMiscMethodsAccess
     {
         private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
-        internal MiscMethodsAccess(IDotNetBungieApiHttpClient dotNetBungieApiHttpClient)
+        public MiscMethodsAccess(IDotNetBungieApiHttpClient dotNetBungieApiHttpClient)
         {
             _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         }

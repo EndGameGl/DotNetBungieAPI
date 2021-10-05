@@ -11,11 +11,11 @@ namespace DotNetBungieAPI.Services.ApiAccess
     /// <summary>
     /// <see cref="IContentMethodsAccess"/>
     /// </summary>
-    public class ContentMethodsAccess : IContentMethodsAccess
+    internal sealed class ContentMethodsAccess : IContentMethodsAccess
     {
         private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
-        internal ContentMethodsAccess(IDotNetBungieApiHttpClient dotNetBungieApiHttpClient)
+        public ContentMethodsAccess(IDotNetBungieApiHttpClient dotNetBungieApiHttpClient)
         {
             _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         }

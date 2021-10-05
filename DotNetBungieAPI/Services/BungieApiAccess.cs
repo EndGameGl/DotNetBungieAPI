@@ -1,11 +1,12 @@
 ﻿using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 using DotNetBungieAPI.Services.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DotNetBungieAPI.Services
 {
-    public class BungieApiAccess : IBungieApiAccess
+    internal sealed class BungieApiAccess : IBungieApiAccess
     {
-        internal BungieApiAccess(
+        public BungieApiAccess(
             IFireteamMethodsAccess fireteamMethodsAccess,
             IContentMethodsAccess contentMethodsAccess,
             IAppMethodsAccess appMethodsAccess,
@@ -45,10 +46,5 @@ namespace DotNetBungieAPI.Services
         public IFireteamMethodsAccess Fireteam { get; init; }
         public ISocialMethodsAccess Social { get; init; }
         public IMiscMethodsAccess Misc { get; init; }
-
-        public static IBungieApiAccess Create()
-        {
-            return StaticUnityContainer.GetService<IBungieApiAccess>();
-        }
     }
 }

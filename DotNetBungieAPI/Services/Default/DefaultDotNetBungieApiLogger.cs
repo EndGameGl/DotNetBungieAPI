@@ -8,7 +8,7 @@ namespace DotNetBungieAPI.Services.Default
     {
         private readonly DotNetBungieApiLoggerConfiguration _configuration;
 
-        internal DefaultDotNetBungieApiLogger(DotNetBungieApiLoggerConfiguration configuration)
+        public DefaultDotNetBungieApiLogger(DotNetBungieApiLoggerConfiguration configuration)
         {
             _configuration = configuration;
         }

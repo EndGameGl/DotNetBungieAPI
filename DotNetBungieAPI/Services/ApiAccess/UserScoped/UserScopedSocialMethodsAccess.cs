@@ -10,7 +10,7 @@ namespace DotNetBungieAPI.Services.ApiAccess.UserScoped
     /// <summary>
     /// <inheritdoc cref="ISocialMethodsAccess"/>
     /// </summary>
-    public class UserScopedSocialMethodsAccess
+    public sealed class UserScopedSocialMethodsAccess
     {
         private readonly ISocialMethodsAccess _socialMethodsAccess;
         private readonly AuthorizationTokenData _token;

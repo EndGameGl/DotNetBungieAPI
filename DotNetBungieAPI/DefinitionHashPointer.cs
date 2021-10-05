@@ -8,6 +8,7 @@ using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 using DotNetBungieAPI.Repositories;
 using DotNetBungieAPI.Services.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DotNetBungieAPI
 {
@@ -75,11 +76,7 @@ namespace DotNetBungieAPI
             }
         }
 #endif
-        private static readonly IBungieClient _client =
-            StaticUnityContainer.GetService<IBungieClient>();
-
-        private static readonly IDestiny2MethodsAccess _destiny2MethodsAccess =
-            StaticUnityContainer.GetService<IDestiny2MethodsAccess>();
+        private static readonly IBungieClient _client = ServiceProviderInstance.Instance.GetService<IBungieClient>();
 
         /// <summary>
         ///     Definition enum value
@@ -184,7 +181,7 @@ namespace DotNetBungieAPI
             if (!HasValidHash)
                 return new DefinitionHashPointerDownloadResult<T>(default, false, "Missing valid hash.");
 
-            var response = await _destiny2MethodsAccess
+            var response = await _client.ApiAccess.Destiny2
                 .GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash!.Value);
 
             if (response.IsSuccessfulResponseCode && response.Response is not null)

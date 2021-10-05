@@ -21,13 +21,6 @@ namespace DotNetBungieAPI
             return searchResult.HasValue ? searchResult.Value.Value : default;
         }
         
-        public static IServiceCollection UseBungieApiClient(this IServiceCollection services,
-            Action<BungieClientConfiguration> configure)
-        {
-            var client = BungieApiBuilder.GetApiClient(configure);
-            return services.AddSingleton(client);
-        }
-
         internal static bool DeepEqualsReadOnlySimpleCollection<T>(this ReadOnlyCollection<T> compared,
             ReadOnlyCollection<T> comparedWith)
         {

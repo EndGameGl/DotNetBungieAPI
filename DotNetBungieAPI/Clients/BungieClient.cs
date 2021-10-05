@@ -17,13 +17,14 @@ namespace DotNetBungieAPI.Clients
         private readonly ILogger _logger;
         private readonly BungieClientConfiguration _configuration;
 
-        internal BungieClient(
+        public BungieClient(
             ILogger logger,
             IBungieApiAccess apiAccess,
             IAuthorizationHandler authorizationHandler,
             IDestiny2DefinitionRepository repository,
             IDefinitionProvider definitionProvider,
-            BungieClientConfiguration configuration)
+            BungieClientConfiguration configuration,
+            IServiceProvider serviceProvider)
         {
             _logger = logger;
             _configuration = configuration;
@@ -31,6 +32,7 @@ namespace DotNetBungieAPI.Clients
             Repository = repository;
             ApiAccess = apiAccess;
             DefinitionProvider = definitionProvider;
+            ServiceProviderInstance.Instance = serviceProvider;
         }
 
         /// <summary>

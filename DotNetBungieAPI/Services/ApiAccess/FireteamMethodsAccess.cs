@@ -13,12 +13,12 @@ using DotNetBungieAPI.Services.Interfaces;
 
 namespace DotNetBungieAPI.Services.ApiAccess
 {
-    public class FireteamMethodsAccess : IFireteamMethodsAccess
+    internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
     {
         private readonly BungieClientConfiguration _configuration;
         private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
-        internal FireteamMethodsAccess(
+        public FireteamMethodsAccess(
             IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
             BungieClientConfiguration configuration)
         {

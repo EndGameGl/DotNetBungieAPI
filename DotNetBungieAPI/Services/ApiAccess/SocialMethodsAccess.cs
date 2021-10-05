@@ -14,12 +14,12 @@ namespace DotNetBungieAPI.Services.ApiAccess
     /// <summary>
     /// <inheritdoc cref="ISocialMethodsAccess"/>
     /// </summary>
-    public class SocialMethodsAccess : ISocialMethodsAccess
+    internal sealed class SocialMethodsAccess : ISocialMethodsAccess
     {
         private readonly BungieClientConfiguration _configuration;
         private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
-        internal SocialMethodsAccess(
+        public SocialMethodsAccess(
             IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
             BungieClientConfiguration configuration)
         {

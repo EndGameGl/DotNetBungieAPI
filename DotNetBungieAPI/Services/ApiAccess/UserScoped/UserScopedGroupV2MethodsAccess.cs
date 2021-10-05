@@ -11,7 +11,7 @@ using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 
 namespace DotNetBungieAPI.Services.ApiAccess.UserScoped
 {
-    public class UserScopedGroupV2MethodsAccess
+    public sealed class UserScopedGroupV2MethodsAccess
     {
         private readonly IGroupV2MethodsAccess _apiAccess;
         private readonly AuthorizationTokenData _token;

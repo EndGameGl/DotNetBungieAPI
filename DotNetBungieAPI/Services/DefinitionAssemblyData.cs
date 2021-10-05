@@ -12,7 +12,7 @@ namespace DotNetBungieAPI.Services
 {
     internal sealed class DefinitionAssemblyData : IDefinitionAssemblyData
     {
-        internal DefinitionAssemblyData()
+        public DefinitionAssemblyData()
         {
             var tempDefinitionsToTypeMapping = new Dictionary<DefinitionsEnum, DefinitionUseRule>();
             var tempTypeToEnumMapping = new Dictionary<Type, DefinitionsEnum>();

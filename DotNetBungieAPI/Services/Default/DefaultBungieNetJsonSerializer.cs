@@ -16,7 +16,7 @@ namespace DotNetBungieAPI.Services.Default
     {
         private readonly JsonSerializerOptions _serializerOptions;
 
-        internal DefaultBungieNetJsonSerializer(DotNetBungieApiJsonSerializerConfiguration configuration)
+        public DefaultBungieNetJsonSerializer(DotNetBungieApiJsonSerializerConfiguration configuration)
         {
             _serializerOptions = configuration.Options;
             _serializerOptions.NumberHandling = JsonNumberHandling.AllowReadingFromString;

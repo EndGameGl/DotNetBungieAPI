@@ -11,11 +11,11 @@ namespace DotNetBungieAPI.Services.ApiAccess
     /// <summary>
     /// <inheritdoc cref="ITrendingMethodsAccess"/>
     /// </summary>
-    public class TrendingMethodsAccess : ITrendingMethodsAccess
+    internal sealed class TrendingMethodsAccess : ITrendingMethodsAccess
     {
         private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
-        internal TrendingMethodsAccess(IDotNetBungieApiHttpClient dotNetBungieApiHttpClient)
+        public TrendingMethodsAccess(IDotNetBungieApiHttpClient dotNetBungieApiHttpClient)
         {
             _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         }

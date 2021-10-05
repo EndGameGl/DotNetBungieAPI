@@ -7,7 +7,7 @@ using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 
 namespace DotNetBungieAPI.Services.ApiAccess.UserScoped
 {
-    public class UserScopedMiscMethodsAccess
+    public sealed class UserScopedMiscMethodsAccess
     {
         private readonly IMiscMethodsAccess _apiAccess;
 

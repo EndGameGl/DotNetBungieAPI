@@ -80,7 +80,7 @@ namespace DotNetBungieAPI.Services.Default
             [BungieLocales.ZH_CHT] = new SQLiteConnection()
         };
 
-        internal SqliteDefinitionProvider(
+        public SqliteDefinitionProvider(
             DotNetBungieApiDefaultDefinitionProviderConfiguration configuration,
             ILogger logger,
             IBungieNetJsonSerializer serializer,

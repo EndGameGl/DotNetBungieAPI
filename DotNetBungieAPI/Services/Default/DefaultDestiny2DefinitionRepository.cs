@@ -18,7 +18,7 @@ namespace DotNetBungieAPI.Services.Default
         private readonly ConcurrentDictionary<BungieLocales, DestinyDefinitionsRepository> _localisedRepositories;
         private readonly DefaultDestiny2DefinitionRepositoryConfiguration _configuration;
 
-        internal DefaultDestiny2DefinitionRepository(
+        public DefaultDestiny2DefinitionRepository(
             IDefinitionAssemblyData assemblyData,
             ILogger logger,
             DefaultDestiny2DefinitionRepositoryConfiguration configuration)

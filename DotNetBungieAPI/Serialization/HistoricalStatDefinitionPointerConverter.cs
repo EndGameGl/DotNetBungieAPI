@@ -19,7 +19,7 @@ namespace DotNetBungieAPI.Serialization
         public override void Write(Utf8JsonWriter writer, HistoricalStatDefinitionPointer value,
             JsonSerializerOptions options)
         {
-            throw new NotImplementedException();
+            JsonSerializer.Serialize(writer, value.StatId, options);
         }
     }
 }

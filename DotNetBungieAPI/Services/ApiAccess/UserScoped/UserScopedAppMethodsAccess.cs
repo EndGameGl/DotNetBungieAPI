@@ -8,7 +8,7 @@ using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 
 namespace DotNetBungieAPI.Services.ApiAccess.UserScoped
 {
-    public class UserScopedAppMethodsAccess
+    public sealed class UserScopedAppMethodsAccess
     {
         private readonly IAppMethodsAccess _apiAccess;
         private readonly AuthorizationTokenData _token;

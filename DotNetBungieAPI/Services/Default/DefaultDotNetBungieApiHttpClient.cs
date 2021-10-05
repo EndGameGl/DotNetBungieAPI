@@ -36,7 +36,7 @@ namespace DotNetBungieAPI.Services.Default
         private readonly MediaTypeWithQualityHeaderValue _jsonHeaderValue =
             new("application/json");
 
-        internal DefaultDotNetBungieApiHttpClient(
+        public DefaultDotNetBungieApiHttpClient(
             BungieClientConfiguration configuration, 
             DotNetBungieApiHttpClientConfiguration httpClientConfiguration,
             ILogger logger,

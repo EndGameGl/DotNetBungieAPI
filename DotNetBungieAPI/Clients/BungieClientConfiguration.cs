@@ -4,19 +4,32 @@ using DotNetBungieAPI.Models.Applications;
 using DotNetBungieAPI.Services.Default;
 using DotNetBungieAPI.Services.Default.ServiceConfigurations;
 using DotNetBungieAPI.Services.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Unity;
 using DefaultDestiny2DefinitionRepository = DotNetBungieAPI.Services.Default.DefaultDestiny2DefinitionRepository;
 
 namespace DotNetBungieAPI.Clients
 {
     public sealed class BungieClientConfiguration
     {
+        internal readonly IServiceCollection ServiceCollection;
+        internal readonly Lazy<Type> DefaultAuthorizationHandlerType = new(() => typeof(DefaultAuthorizationHandler));
+        internal readonly Lazy<Type> DefaultSerializerType = new(() => typeof(DefaultBungieNetJsonSerializer));
+        internal readonly Lazy<Type> DefaultRepositoryType = new(() => typeof(DefaultDestiny2DefinitionRepository));
+        internal readonly Lazy<Type> DefaultHttpClientType = new(() => typeof(DefaultDotNetBungieApiHttpClient));
+        internal readonly Lazy<Type> DefaultLoggerType = new(() => typeof(DefaultDotNetBungieApiLogger));
+        internal readonly Lazy<Type> DefaultDefinitionProviderType = new(() => typeof(SqliteDefinitionProvider));
+
         private string _apiKey;
         private int _clientId;
         private string _clientSecret;
         private ApplicationScopes _applicationScopes;
 
+        /// <summary>
+        /// Checks whether scope is available for this app
+        /// </summary>
+        /// <param name="applicationScope"></param>
+        /// <returns></returns>
         public bool HasSufficientRights(ApplicationScopes applicationScope)
         {
             return _applicationScopes.HasFlag(applicationScope);
@@ -57,8 +70,16 @@ namespace DotNetBungieAPI.Clients
             get => _applicationScopes;
             set => _applicationScopes = value;
         }
-        
+
+        /// <summary>
+        /// Caches definitions to repository if not present currently after fetching from provider.
+        /// </summary>
         public bool CacheDefinitions { get; set; }
+
+        internal BungieClientConfiguration(IServiceCollection serviceCollection)
+        {
+            ServiceCollection = serviceCollection;
+        }
 
         /// <summary>
         /// Configures default console logger
@@ -68,9 +89,9 @@ namespace DotNetBungieAPI.Clients
         public BungieClientConfiguration UseDefaultLogger(Action<DotNetBungieApiLoggerConfiguration> configure)
         {
             var configuration = new DotNetBungieApiLoggerConfiguration();
-            configure(configuration);
-            StaticUnityContainer.Container.RegisterInstance(configuration);
-            StaticUnityContainer.Container.RegisterType<ILogger, DefaultDotNetBungieApiLogger>(TypeLifetime.Singleton);
+            configure?.Invoke(configuration);
+            ServiceCollection.AddSingleton(configuration);
+            ServiceCollection.AddSingleton(typeof(ILogger), DefaultLoggerType.Value);
             return this;
         }
 
@@ -80,7 +101,7 @@ namespace DotNetBungieAPI.Clients
         /// <returns></returns>
         public BungieClientConfiguration UseCustomLogger<T>() where T : ILogger
         {
-            StaticUnityContainer.Container.RegisterType(typeof(ILogger), typeof(T), TypeLifetime.Singleton);
+            ServiceCollection.AddSingleton(typeof(ILogger), typeof(T));
             return this;
         }
 
@@ -96,10 +117,9 @@ namespace DotNetBungieAPI.Clients
             {
                 Options = new JsonSerializerOptions()
             };
-            configure(configuration);
-            StaticUnityContainer.Container.RegisterInstance(configuration);
-            StaticUnityContainer.Container.RegisterType<IBungieNetJsonSerializer, DefaultBungieNetJsonSerializer>(
-                TypeLifetime.Singleton);
+            configure?.Invoke(configuration);
+            ServiceCollection.AddSingleton(configuration);
+            ServiceCollection.AddSingleton(typeof(IBungieNetJsonSerializer), DefaultSerializerType.Value);
             return this;
         }
 
@@ -109,8 +129,7 @@ namespace DotNetBungieAPI.Clients
         /// <returns></returns>
         public BungieClientConfiguration UseCustomBungieNetJsonSerializer<T>() where T : IBungieNetJsonSerializer
         {
-            StaticUnityContainer.Container.RegisterType(typeof(IBungieNetJsonSerializer), typeof(T),
-                TypeLifetime.Singleton);
+            ServiceCollection.AddSingleton(typeof(IBungieNetJsonSerializer), typeof(T));
             return this;
         }
 
@@ -118,31 +137,27 @@ namespace DotNetBungieAPI.Clients
             Action<DotNetBungieApiHttpClientConfiguration> configure)
         {
             var configuration = new DotNetBungieApiHttpClientConfiguration();
-            configure(configuration);
-            StaticUnityContainer.Container.RegisterInstance(configuration);
-            StaticUnityContainer.Container.RegisterType<IDotNetBungieApiHttpClient, DefaultDotNetBungieApiHttpClient>(
-                TypeLifetime.Singleton);
+            configure?.Invoke(configuration);
+            ServiceCollection.AddSingleton(configuration);
+            ServiceCollection.AddSingleton(typeof(IDotNetBungieApiHttpClient), DefaultHttpClientType.Value);
             return this;
         }
 
         public BungieClientConfiguration UseCustomHttpClient<T>() where T : IDotNetBungieApiHttpClient
         {
-            StaticUnityContainer.Container.RegisterType(typeof(IDotNetBungieApiHttpClient), typeof(T),
-                TypeLifetime.Singleton);
+            ServiceCollection.AddSingleton(typeof(IDotNetBungieApiHttpClient), typeof(T));
             return this;
         }
 
         public BungieClientConfiguration UseDefaultAuthorizationHandler()
         {
-            StaticUnityContainer.Container.RegisterType<IAuthorizationHandler, DefaultAuthorizationHandler>(TypeLifetime
-                .Singleton);
+            ServiceCollection.AddSingleton(typeof(IAuthorizationHandler), DefaultAuthorizationHandlerType.Value);
             return this;
         }
 
         public BungieClientConfiguration UseCustomAuthorizationHandler<T>() where T : IAuthorizationHandler
         {
-            StaticUnityContainer.Container.RegisterType(typeof(IAuthorizationHandler), typeof(T),
-                TypeLifetime.Singleton);
+            ServiceCollection.AddSingleton(typeof(IAuthorizationHandler), typeof(T));
             return this;
         }
 
@@ -150,17 +165,15 @@ namespace DotNetBungieAPI.Clients
             Action<DotNetBungieApiDefaultDefinitionProviderConfiguration> configure)
         {
             var configuration = new DotNetBungieApiDefaultDefinitionProviderConfiguration();
-            configure(configuration);
-            StaticUnityContainer.Container.RegisterInstance(configuration);
-            StaticUnityContainer.Container.RegisterType<IDefinitionProvider, SqliteDefinitionProvider>(TypeLifetime
-                .Singleton);
+            configure?.Invoke(configuration);
+            ServiceCollection.AddSingleton(configuration);
+            ServiceCollection.AddSingleton(typeof(IDefinitionProvider), DefaultDefinitionProviderType.Value);
             return this;
         }
 
-        public BungieClientConfiguration UseCustomDefinitionProvider<T>()
+        public BungieClientConfiguration UseCustomDefinitionProvider<T>() where T : IDefinitionProvider
         {
-            StaticUnityContainer.Container.RegisterType(typeof(IDefinitionProvider), typeof(T),
-                TypeLifetime.Singleton);
+            ServiceCollection.AddSingleton(typeof(IDefinitionProvider), typeof(T));
             return this;
         }
 
@@ -168,18 +181,15 @@ namespace DotNetBungieAPI.Clients
             Action<DefaultDestiny2DefinitionRepositoryConfiguration> configure)
         {
             var configuration = new DefaultDestiny2DefinitionRepositoryConfiguration();
-            configure(configuration);
-            StaticUnityContainer.Container.RegisterInstance(configuration);
-            StaticUnityContainer.Container
-                .RegisterType<IDestiny2DefinitionRepository, Services.Default.DefaultDestiny2DefinitionRepository>(TypeLifetime
-                    .Singleton);
+            configure?.Invoke(configuration);
+            ServiceCollection.AddSingleton(configuration);
+            ServiceCollection.AddSingleton(typeof(IDestiny2DefinitionRepository), DefaultRepositoryType.Value);
             return this;
         }
 
-        public BungieClientConfiguration UseCustomDefinitionRepository<T>()
+        public BungieClientConfiguration UseCustomDefinitionRepository<T>() where T : IDestiny2DefinitionRepository
         {
-            StaticUnityContainer.Container.RegisterType(typeof(IDestiny2DefinitionRepository), typeof(T),
-                TypeLifetime.Singleton);
+            ServiceCollection.AddSingleton(typeof(IDestiny2DefinitionRepository), typeof(T));
             return this;
         }
     }

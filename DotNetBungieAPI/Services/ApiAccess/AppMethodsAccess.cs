@@ -12,12 +12,12 @@ using DotNetBungieAPI.Services.Interfaces;
 
 namespace DotNetBungieAPI.Services.ApiAccess
 {
-    public class AppMethodsAccess : IAppMethodsAccess
+    internal sealed class AppMethodsAccess : IAppMethodsAccess
     {
         private readonly BungieClientConfiguration _configuration;
         private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
-        internal AppMethodsAccess(
+        public AppMethodsAccess(
             IDotNetBungieApiHttpClient dotNetBungieApiHttpClient, 
             BungieClientConfiguration configuration)
         {

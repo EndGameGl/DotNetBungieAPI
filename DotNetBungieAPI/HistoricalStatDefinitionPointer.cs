@@ -2,9 +2,7 @@
 using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
-using DotNetBungieAPI.Services.ApiAccess.Interfaces;
-using DotNetBungieAPI.Repositories;
-using Unity;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DotNetBungieAPI
 {
@@ -24,10 +22,7 @@ namespace DotNetBungieAPI
 #endif
 
         private static readonly Lazy<IBungieClient> _client =
-            new(() => StaticUnityContainer.GetService<IBungieClient>());
-
-        private static readonly Lazy<IDestiny2MethodsAccess> _destiny2MethodsAccess =
-            new(() => StaticUnityContainer.GetService<IDestiny2MethodsAccess>());
+            new(() => ServiceProviderInstance.Instance.GetService<IBungieClient>());
 
         private static readonly Lazy<HistoricalStatDefinitionPointer> _lazyEmptyPointer =
             new(() => new HistoricalStatDefinitionPointer(null));

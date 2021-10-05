@@ -16,12 +16,12 @@ namespace DotNetBungieAPI.Services.ApiAccess
     /// <summary>
     /// <inheritdoc cref="IUserMethodsAccess"/>
     /// </summary>
-    public class UserMethodsAccess : IUserMethodsAccess
+    internal sealed class UserMethodsAccess : IUserMethodsAccess
     {
         private readonly BungieClientConfiguration _configuration;
         private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
-        internal UserMethodsAccess(
+        public UserMethodsAccess(
             IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
             BungieClientConfiguration configuration)
         {

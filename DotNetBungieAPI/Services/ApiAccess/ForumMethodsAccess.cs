@@ -11,12 +11,12 @@ using DotNetBungieAPI.Services.Interfaces;
 
 namespace DotNetBungieAPI.Services.ApiAccess
 {
-    public class ForumMethodsAccess : IForumMethodsAccess
+    internal sealed class ForumMethodsAccess : IForumMethodsAccess
     {
         private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
         private readonly IBungieNetJsonSerializer _serializer;
 
-        internal ForumMethodsAccess(IDotNetBungieApiHttpClient dotNetBungieApiHttpClient, IBungieNetJsonSerializer serializer)
+        public ForumMethodsAccess(IDotNetBungieApiHttpClient dotNetBungieApiHttpClient, IBungieNetJsonSerializer serializer)
         {
             _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
             _serializer = serializer;

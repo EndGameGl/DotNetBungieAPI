@@ -9,7 +9,7 @@ using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 
 namespace DotNetBungieAPI.Services.ApiAccess.UserScoped
 {
-    public class UserScopedFireteamMethodsAccess
+    public sealed class UserScopedFireteamMethodsAccess
     {
         private readonly IFireteamMethodsAccess _apiAccess;
         private readonly AuthorizationTokenData _token;

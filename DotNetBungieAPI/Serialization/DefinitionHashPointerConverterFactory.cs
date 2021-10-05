@@ -61,8 +61,7 @@ namespace DotNetBungieAPI.Serialization
             public override void Write(Utf8JsonWriter writer, DefinitionHashPointer<T> value,
                 JsonSerializerOptions options)
             {
-                if (value.Hash.HasValue)
-                    writer.WriteNumber("hash", value.Hash.Value);
+                JsonSerializer.Serialize(writer, value.Hash, options);
             }
         }
     }

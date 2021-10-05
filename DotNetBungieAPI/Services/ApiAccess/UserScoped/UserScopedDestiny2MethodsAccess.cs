@@ -21,7 +21,7 @@ using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 
 namespace DotNetBungieAPI.Services.ApiAccess.UserScoped
 {
-    public class UserScopedDestiny2MethodsAccess
+    public sealed class UserScopedDestiny2MethodsAccess
     {
         private readonly IDestiny2MethodsAccess _apiAccess;
         private readonly AuthorizationTokenData _token;

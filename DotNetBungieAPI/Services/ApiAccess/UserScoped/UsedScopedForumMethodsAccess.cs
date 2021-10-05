@@ -9,7 +9,7 @@ using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 
 namespace DotNetBungieAPI.Services.ApiAccess.UserScoped
 {
-    public class UsedScopedForumMethodsAccess
+    public sealed class UsedScopedForumMethodsAccess
     {
         private readonly IForumMethodsAccess _apiAccess;
         private AuthorizationTokenData _token;
