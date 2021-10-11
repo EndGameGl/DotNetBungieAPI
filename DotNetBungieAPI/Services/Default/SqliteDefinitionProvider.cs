@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using System.IO.Compression;
@@ -100,7 +101,6 @@ namespace DotNetBungieAPI.Services.Default
         {
             T result = default;
             var connection = _sqliteConnections[locale];
-            connection.Open();
             var commandObj = new SQLiteCommand
             {
                 Connection = connection,
@@ -121,7 +121,6 @@ namespace DotNetBungieAPI.Services.Default
             }
 
             reader.Close();
-            connection.Close();
             return result;
         }
 
@@ -130,11 +129,10 @@ namespace DotNetBungieAPI.Services.Default
         {
             DestinyHistoricalStatsDefinition result = default;
             var connection = _sqliteConnections[locale];
-            connection.Open();
             var commandObj = new SQLiteCommand
             {
                 Connection = connection,
-                CommandText = string.Format(SelectDefinitionQuery, "DestinyHistoricalStatsDefinition", id)
+                CommandText = string.Format(SelectHistoricalDefinitionQuery, "DestinyHistoricalStatsDefinition", id)
             };
             var reader = commandObj.ExecuteReader();
             if (reader.Read())
@@ -150,7 +148,6 @@ namespace DotNetBungieAPI.Services.Default
             }
 
             reader.Close();
-            connection.Close();
             return result;
         }
 
@@ -158,7 +155,6 @@ namespace DotNetBungieAPI.Services.Default
         {
             string result;
             var connection = _sqliteConnections[locale];
-            connection.Open();
             var commandObj = new SQLiteCommand
             {
                 Connection = connection,
@@ -178,7 +174,6 @@ namespace DotNetBungieAPI.Services.Default
             }
 
             reader.Close();
-            connection.Close();
             return ValueTask.FromResult(result);
         }
 
@@ -186,11 +181,10 @@ namespace DotNetBungieAPI.Services.Default
         {
             string result;
             var connection = _sqliteConnections[locale];
-            connection.Open();
             var commandObj = new SQLiteCommand
             {
                 Connection = connection,
-                CommandText = string.Format(SelectDefinitionQuery, "DestinyHistoricalStatsDefinition", id)
+                CommandText = string.Format(SelectHistoricalDefinitionQuery, "DestinyHistoricalStatsDefinition", id)
             };
             var reader = commandObj.ExecuteReader();
             if (reader.Read())
@@ -201,7 +195,6 @@ namespace DotNetBungieAPI.Services.Default
             else
             {
                 reader.Close();
-                connection.Close();
                 throw new Exception($"Historical definition with key {id} wasn't found in database.");
             }
 
@@ -368,8 +361,6 @@ namespace DotNetBungieAPI.Services.Default
             {
                 _logger.LogInformation("Reading locale: {Locale}", locale);
                 var connection = _sqliteConnections[locale];
-                connection.Open();
-
                 Parallel.ForEach(definitionsToLoad, definitionType =>
                 {
                     _logger.LogInformation("Reading definitions: {DefinitionType}", definitionType);
@@ -405,8 +396,6 @@ namespace DotNetBungieAPI.Services.Default
                         (byte[])histReader[0]);
                     repository.AddDestinyHistoricalDefinition(locale, parsedDefinition);
                 }
-
-                connection.Close();
             }
         }
 
@@ -522,6 +511,12 @@ namespace DotNetBungieAPI.Services.Default
 
         private void OnCurrentManifestChanged(DestinyManifest manifestData)
         {
+            foreach (var (locale, connection) in _sqliteConnections)
+            {
+                if (connection is not null && connection.State == ConnectionState.Open)
+                    connection.Close();
+            }
+
             foreach (var (localeStr, path) in manifestData.MobileWorldContentPaths)
             {
                 var locale = ParseLocaleFromString(localeStr);
@@ -530,6 +525,7 @@ namespace DotNetBungieAPI.Services.Default
                 _databasePaths[locale] = newPath;
                 _sqliteConnections[locale].ConnectionString = string.Format(ConnectionStringTemplate, newPath);
                 _sqliteConnections[locale].ParseViaFramework = true;
+                _sqliteConnections[locale].Open();
             }
         }
 
@@ -552,6 +548,30 @@ namespace DotNetBungieAPI.Services.Default
                 "zh-cht" => BungieLocales.ZH_CHT,
                 _ => throw new Exception("Wrong locale.")
             };
+        }
+
+        public void Dispose()
+        {
+            foreach (var (_, connection) in _sqliteConnections)
+            {
+                if (connection is not null && connection.State == ConnectionState.Open)
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
+            }
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            foreach (var (_, connection) in _sqliteConnections)
+            {
+                if (connection is not null && connection.State == ConnectionState.Open)
+                {
+                    await connection.CloseAsync();
+                    await connection.DisposeAsync();
+                }
+            }
         }
     }
 }

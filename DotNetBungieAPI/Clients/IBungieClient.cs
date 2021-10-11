@@ -12,7 +12,7 @@ namespace DotNetBungieAPI.Clients
     /// <summary>
     ///     Interface for bungie.net API client
     /// </summary>
-    public interface IBungieClient
+    public interface IBungieClient : IDisposable, IAsyncDisposable
     {
         /// <summary>
         ///     Access to all API methods

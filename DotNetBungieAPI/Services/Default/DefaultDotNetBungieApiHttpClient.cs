@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
+using ComposableAsync;
 using DotNetBungieAPI.Authorization;
 using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Exceptions;
@@ -14,6 +15,7 @@ using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Services.Default.ServiceConfigurations;
 using DotNetBungieAPI.Services.Interfaces;
 using Microsoft.Extensions.Logging;
+using RateLimiter;
 
 namespace DotNetBungieAPI.Services.Default
 {
@@ -22,6 +24,7 @@ namespace DotNetBungieAPI.Services.Default
         private readonly BungieClientConfiguration _configuration;
         private readonly ILogger _logger;
         private readonly IBungieNetJsonSerializer _serializer;
+        private readonly TimeLimiter _rateTimeLimiter;
         
         private const string ApiKeyHeader = "X-API-Key";
 
@@ -48,6 +51,23 @@ namespace DotNetBungieAPI.Services.Default
             _httpClient = httpClientConfiguration.HttpClient;
             _httpClient.DefaultRequestHeaders.Accept.Add(_jsonHeaderValue);
             _httpClient.DefaultRequestHeaders.Add("User-Agent", "NetBungieApi Client");
+            _rateTimeLimiter = TimeLimiter.GetFromMaxCountByInterval(25, TimeSpan.FromSeconds(1));
+        }
+
+        private async Task<HttpResponseMessage> SendAsyncInternal(
+            HttpRequestMessage requestMessage)
+        {
+            await _rateTimeLimiter;
+            return await _httpClient.SendAsync(requestMessage);
+        }
+        
+        private async Task<HttpResponseMessage> SendAsyncInternal(
+            HttpRequestMessage requestMessage, 
+            HttpCompletionOption httpCompletionOption,
+            CancellationToken cancellationToken)
+        {
+            await _rateTimeLimiter;
+            return await _httpClient.SendAsync(requestMessage, httpCompletionOption, cancellationToken);
         }
 
         public async ValueTask<AuthorizationTokenData> GetAuthorizationToken(string code)
@@ -75,7 +95,7 @@ namespace DotNetBungieAPI.Services.Default
                 _configuration.ApiKey);
             requestMessage.Content.Headers.ContentType!.MediaType = "application/x-www-form-urlencoded";
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            var response = await _httpClient.SendAsync(requestMessage);
+            var response = await SendAsyncInternal(requestMessage).ConfigureAwait(false);
 
             if (!response.IsSuccessStatusCode)
                 throw new Exception("Failed to fetch token.");
@@ -115,7 +135,7 @@ namespace DotNetBungieAPI.Services.Default
             requestMessage.Content.Headers.ContentType!.MediaType = "application/x-www-form-urlencoded";
             requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var response = await _httpClient.SendAsync(requestMessage).ConfigureAwait(false);
+            var response = await SendAsyncInternal(requestMessage).ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
                 return await _serializer.DeserializeAsync<AuthorizationTokenData>(
@@ -138,7 +158,7 @@ namespace DotNetBungieAPI.Services.Default
         public async ValueTask<string> DownloadJsonDataFromCdnAsync(string url)
         {
             var message = CreateGetMessage(CdnEndpoint + url, true);
-            var response = await _httpClient.SendAsync(message);
+            var response = await SendAsyncInternal(message);
             if (response.IsSuccessStatusCode)
                 return await response.Content.ReadAsStringAsync();
             throw new Exception(response.ReasonPhrase);
@@ -230,7 +250,7 @@ namespace DotNetBungieAPI.Services.Default
                 .Build();
             _logger.LogDebug("Calling api: {FinalQuery}", finalQuery);
             var request = CreateGetMessage(finalQuery, false, authToken);
-            var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
+            var response = await SendAsyncInternal(request, HttpCompletionOption.ResponseHeadersRead, token);
             await using var stream = await response.Content.ReadAsStreamAsync(token);
             var bungieResponse = await _serializer.DeserializeAsync<BungieResponse<T>>(stream);
             return bungieResponse;
@@ -246,7 +266,7 @@ namespace DotNetBungieAPI.Services.Default
                 .Build();
             _logger.LogDebug("Calling api: {FinalQuery}", finalQuery);
             var request = CreatePostMessage(finalQuery, authToken, content);
-            var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
+            var response = await SendAsyncInternal(request, HttpCompletionOption.ResponseHeadersRead, token);
             await using var stream = await response.Content.ReadAsStreamAsync(token);
             var bungieResponse = await _serializer.DeserializeAsync<BungieResponse<T>>(stream);
             return bungieResponse;
@@ -262,7 +282,7 @@ namespace DotNetBungieAPI.Services.Default
                 .Build();
             _logger.LogDebug("Calling api: {FinalQuery}", finalQuery);
             var request = CreateGetMessage(finalQuery, false, authToken);
-            var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, token);
+            var response = await SendAsyncInternal(request, HttpCompletionOption.ResponseHeadersRead, token);
             await using var stream = await response.Content.ReadAsStreamAsync(token);
             var bungieResponse = await _serializer.DeserializeAsync<BungieResponse<T>>(stream);
             return bungieResponse;

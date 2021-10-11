@@ -144,5 +144,15 @@ namespace DotNetBungieAPI.Clients
                 Repository.AddDestinyHistoricalDefinition(locale, definition);
             return true;
         }
+
+        public void Dispose()
+        {
+            DefinitionProvider.Dispose();
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            await DefinitionProvider.DisposeAsync();
+        }
     }
 }

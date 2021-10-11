@@ -5,13 +5,13 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>DotNetBungieAPI</Title>
         <Authors>MeGl</Authors>
-        <RepositoryUrl>https://github.com/EndGameGl/.NetBungieAPI</RepositoryUrl>
+        <RepositoryUrl>https://github.com/EndGameGl/DotNetBungieAPI</RepositoryUrl>
         <PackageId>DotNetBungieAPI</PackageId>
         <Description>Bungie.net API wrapper.</Description>
         <Copyright>Copyright (c) MeGl 2021</Copyright>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <PackageVersion>1.2.0</PackageVersion>
+        <PackageVersion>1.2.1</PackageVersion>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
@@ -28,6 +28,7 @@
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+        <PackageReference Include="RateLimiter" Version="2.2.0" />
         <PackageReference Include="System.Data.SQLite" Version="1.0.115" />
         <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
         <PackageReference Include="System.ObjectModel" Version="4.3.0" />

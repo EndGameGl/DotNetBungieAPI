@@ -3,7 +3,7 @@
     /// <summary>
     /// Struct that represents bungie.net resource link
     /// </summary>
-    public struct DestinyResource
+    public readonly struct DestinyResource
     {
         /// <summary>
         /// Empty resource link

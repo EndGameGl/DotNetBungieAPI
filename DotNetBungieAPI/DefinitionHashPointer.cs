@@ -173,24 +173,6 @@ namespace DotNetBungieAPI
         }
 
         /// <summary>
-        ///     Attempts to get definition from bungie.net
-        /// </summary>
-        /// <returns></returns>
-        public async ValueTask<DefinitionHashPointerDownloadResult<T>> TryDownloadDefinition()
-        {
-            if (!HasValidHash)
-                return new DefinitionHashPointerDownloadResult<T>(default, false, "Missing valid hash.");
-
-            var response = await _client.ApiAccess.Destiny2
-                .GetDestinyEntityDefinition<T>(DefinitionEnumType, Hash!.Value);
-
-            if (response.IsSuccessfulResponseCode && response.Response is not null)
-                return new DefinitionHashPointerDownloadResult<T>(response.Response, true);
-
-            return new DefinitionHashPointerDownloadResult<T>(default, false, response.ErrorStatus);
-        }
-
-        /// <summary>
         /// Tries to map value from repository
         /// </summary>
         public void TryMapValue()

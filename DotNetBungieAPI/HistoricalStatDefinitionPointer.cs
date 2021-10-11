@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
@@ -6,35 +7,37 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace DotNetBungieAPI
 {
+    /// <summary>
+    /// Class that points to <see cref="HistoricalStatDefinition"/> in repository or provider.
+    /// </summary>
+    [DebuggerDisplay("{StatId}")]
     public sealed class HistoricalStatDefinitionPointer
     {
-#if DEBUG
-        private DestinyHistoricalStatsDefinition debug_value
-        {
-            get
-            {
-                if (_client.Value.TryGetHistoricalStatDefinition(StatId, Locale, out var def))
-                    return def;
-                else
-                    throw new Exception("Definition is missing from repo.");
-            }
-        }
-#endif
-
         private static readonly Lazy<IBungieClient> _client =
             new(() => ServiceProviderInstance.Instance.GetService<IBungieClient>());
 
-        private static readonly Lazy<HistoricalStatDefinitionPointer> _lazyEmptyPointer =
-            new(() => new HistoricalStatDefinitionPointer(null));
-
-        public static HistoricalStatDefinitionPointer Empty => _lazyEmptyPointer.Value;
+        /// <summary>
+        /// Empty default <see cref="HistoricalStatDefinitionPointer"/>
+        /// </summary>
+        public static HistoricalStatDefinitionPointer Empty { get; } = new(null);
 
         private bool _isMapped;
         private DestinyHistoricalStatsDefinition _value;
 
-        public BungieLocales Locale { get; } = BungieLocales.EN;
+        /// <summary>
+        /// Locale of this definition
+        /// </summary>
+        public BungieLocales Locale { get; private set; } = BungieLocales.EN;
+
+        /// <summary>
+        /// ID of this stat definition
+        /// </summary>
         public string StatId { get; }
 
+        /// <summary>
+        /// Class constructor
+        /// </summary>
+        /// <param name="statId">Pointer key</param>
         public HistoricalStatDefinitionPointer(string statId)
         {
             _value = default;
@@ -42,6 +45,11 @@ namespace DotNetBungieAPI
             StatId = statId;
         }
 
+        /// <summary>
+        /// Attempts to get definition from this pointer
+        /// </summary>
+        /// <param name="definition"></param>
+        /// <returns></returns>
         public bool TryGetDefinition(out DestinyHistoricalStatsDefinition definition)
         {
             definition = default;
@@ -62,11 +70,9 @@ namespace DotNetBungieAPI
             return true;
         }
 
-        public override string ToString()
-        {
-            return $"{StatId}";
-        }
-
+        /// <summary>
+        /// Attempts to map value for this pointer
+        /// </summary>
         public void TryMapValue()
         {
             if (_value != null && _isMapped)
@@ -79,6 +85,11 @@ namespace DotNetBungieAPI
                 _value = definition;
                 _isMapped = true;
             }
+        }
+
+        internal void SetLocale(BungieLocales locale)
+        {
+            Locale = locale;
         }
     }
 }

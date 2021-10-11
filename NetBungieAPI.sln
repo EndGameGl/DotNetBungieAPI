@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetBungieAPI", "DotNetBu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBungieAPI.HashReferences", "DotNetBungieAPI.HashReferences\DotNetBungieAPI.HashReferences.csproj", "{19B34A6C-C291-47F3-AE3B-937959263432}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBungieAPI.Tests", "DotNetBungieAPI.Tests\DotNetBungieAPI.Tests.csproj", "{27C59E4C-13CE-45EE-9DF8-F5018EE970AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{19B34A6C-C291-47F3-AE3B-937959263432}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19B34A6C-C291-47F3-AE3B-937959263432}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19B34A6C-C291-47F3-AE3B-937959263432}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27C59E4C-13CE-45EE-9DF8-F5018EE970AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27C59E4C-13CE-45EE-9DF8-F5018EE970AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27C59E4C-13CE-45EE-9DF8-F5018EE970AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27C59E4C-13CE-45EE-9DF8-F5018EE970AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

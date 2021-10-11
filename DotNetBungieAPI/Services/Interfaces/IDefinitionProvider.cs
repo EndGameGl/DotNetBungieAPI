@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
@@ -7,7 +8,7 @@ using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 
 namespace DotNetBungieAPI.Services.Interfaces
 {
-    public interface IDefinitionProvider
+    public interface IDefinitionProvider : IDisposable, IAsyncDisposable
     {
         ValueTask<T> LoadDefinition<T>(uint hash, BungieLocales locale) where T : IDestinyDefinition;
 
