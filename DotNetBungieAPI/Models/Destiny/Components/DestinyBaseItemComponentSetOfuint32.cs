@@ -6,5 +6,8 @@ namespace DotNetBungieAPI.Models.Destiny.Components
     {
         [JsonPropertyName("objectives")]
         public DictionaryComponentResponseOfuint32AndDestinyItemObjectivesComponent Objectives { get; init; }
+
+        [JsonPropertyName("perks")]
+        public DictionaryComponentResponseOfuint32AndDestinyItemPerksComponent Perks { get; init; }
     }
 }

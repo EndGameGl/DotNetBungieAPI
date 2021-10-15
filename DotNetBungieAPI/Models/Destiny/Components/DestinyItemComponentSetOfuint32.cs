@@ -7,9 +7,6 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("instances")]
         public DictionaryComponentResponseOfuint32AndDestinyItemInstanceComponent Instances { get; init; }
 
-        [JsonPropertyName("perks")]
-        public DictionaryComponentResponseOfuint32AndDestinyItemPerksComponent Perks { get; init; }
-
         [JsonPropertyName("renderData")]
         public DictionaryComponentResponseOfuint32AndDestinyItemRenderComponent RenderData { get; init; }
 
@@ -33,5 +30,8 @@ namespace DotNetBungieAPI.Models.Destiny.Components
 
         [JsonPropertyName("objectives")]
         public DictionaryComponentResponseOfuint32AndDestinyItemObjectivesComponent Objectives { get; init; }
+
+        [JsonPropertyName("perks")]
+        public DictionaryComponentResponseOfuint32AndDestinyItemPerksComponent Perks { get; init; }
     }
 }
