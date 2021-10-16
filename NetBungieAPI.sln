@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBungieAPI.UserClient"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBungieAPI.Benchmark", "DotNetBungieAPI.Benchmark\DotNetBungieAPI.Benchmark.csproj", "{47D77268-5F1D-4FCD-8527-60A338986714}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTestApp", "ConsoleTestApp\ConsoleTestApp.csproj", "{1D2C8954-8DEB-43B3-BE80-4D6CEA1E51AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{47D77268-5F1D-4FCD-8527-60A338986714}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47D77268-5F1D-4FCD-8527-60A338986714}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47D77268-5F1D-4FCD-8527-60A338986714}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D2C8954-8DEB-43B3-BE80-4D6CEA1E51AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D2C8954-8DEB-43B3-BE80-4D6CEA1E51AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D2C8954-8DEB-43B3-BE80-4D6CEA1E51AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D2C8954-8DEB-43B3-BE80-4D6CEA1E51AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
