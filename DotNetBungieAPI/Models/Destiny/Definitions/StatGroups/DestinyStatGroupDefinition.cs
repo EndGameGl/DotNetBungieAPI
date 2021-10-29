@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.StatGroups
 {
@@ -46,7 +47,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.StatGroups
         /// </summary>
         [JsonPropertyName("scaledStats")]
         public ReadOnlyCollection<DestinyStatDisplayDefinition> ScaledStats { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyStatDisplayDefinition>();
+            ReadOnlyCollections<DestinyStatDisplayDefinition>.Empty;
 
         /// <summary>
         ///     The game has the ability to override, based on the stat group, what the localized text is that is displayed for
@@ -57,7 +58,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.StatGroups
         /// </summary>
         [JsonPropertyName("overrides")]
         public ReadOnlyDictionary<uint, DestinyStatOverrideDefinition> Overrides { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<uint, DestinyStatOverrideDefinition>();
+            ReadOnlyDictionaries<uint, DestinyStatOverrideDefinition>.Empty;
 
         public bool DeepEquals(DestinyStatGroupDefinition other)
         {

@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using DotNetBungieAPI.Models.Destiny.Definitions.MedalTiers;
 
@@ -26,14 +27,14 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats
         /// </summary>
         [JsonPropertyName("periodTypes")]
         public ReadOnlyCollection<PeriodType> PeriodTypes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<PeriodType>();
+            ReadOnlyCollections<PeriodType>.Empty;
 
         /// <summary>
         ///     Game modes where this statistic can be reported.
         /// </summary>
         [JsonPropertyName("modes")]
         public ReadOnlyCollection<DestinyActivityModeType> Modes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityModeType>();
+            ReadOnlyCollections<DestinyActivityModeType>.Empty;
 
         /// <summary>
         ///     Category for the stat.
@@ -69,7 +70,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats
         ///     Optional URI to an icon for the statistic
         /// </summary>
         [JsonPropertyName("iconImage")]
-        public DestinyResource IconImage { get; init; }
+        public BungieNetResource IconImage { get; init; }
 
         /// <summary>
         ///     Optional icon for the statistic

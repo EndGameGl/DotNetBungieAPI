@@ -9,7 +9,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
     public sealed record
         DestinyVendorRequirementDisplayEntryDefinition : IDeepEquatable<DestinyVendorRequirementDisplayEntryDefinition>
     {
-        [JsonPropertyName("icon")] public DestinyResource Icon { get; init; }
+        [JsonPropertyName("icon")] public BungieNetResource Icon { get; init; }
         [JsonPropertyName("name")] public string Name { get; init; }
         [JsonPropertyName("source")] public string Source { get; init; }
         [JsonPropertyName("type")] public string Type { get; init; }

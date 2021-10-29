@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Applications
 {
@@ -9,7 +10,7 @@ namespace DotNetBungieAPI.Models.Applications
         ///     Collection of samples with time and value.
         /// </summary>
         [JsonPropertyName("datapoints")]
-        public ReadOnlyCollection<Datapoint> Datapoints { get; init; } = Defaults.EmptyReadOnlyCollection<Datapoint>();
+        public ReadOnlyCollection<Datapoint> Datapoints { get; init; } = ReadOnlyCollections<Datapoint>.Empty;
 
         /// <summary>
         ///     Target to which to datapoints apply.

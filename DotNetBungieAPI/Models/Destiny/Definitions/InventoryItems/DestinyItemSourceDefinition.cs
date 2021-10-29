@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.RewardSources;
 using DotNetBungieAPI.Models.Destiny.Definitions.Stats;
 
@@ -55,16 +56,15 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         [JsonPropertyName("computedStats")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, DestinyInventoryItemStatDefinition>
             ComputedStats { get; init; } =
-            Defaults
-                .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>,
-                    DestinyInventoryItemStatDefinition>();
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyStatDefinition>, DestinyInventoryItemStatDefinition>
+                .Empty;
 
         /// <summary>
         ///     The DestinyRewardSourceDefinitions found that can spawn the item at this level.
         /// </summary>
         [JsonPropertyName("sourceHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyRewardSourceDefinition>> Sources { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyRewardSourceDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyRewardSourceDefinition>>.Empty;
 
         public bool DeepEquals(DestinyItemSourceDefinition other)
         {

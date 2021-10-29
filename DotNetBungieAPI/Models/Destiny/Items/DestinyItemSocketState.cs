@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
 namespace DotNetBungieAPI.Models.Destiny.Items
@@ -47,6 +48,6 @@ namespace DotNetBungieAPI.Models.Destiny.Items
         ///     plug.enabledRules property, so that you can show the reasons why it is not enabled.
         /// </summary>
         [JsonPropertyName("enableFailIndexes")]
-        public ReadOnlyCollection<int> EnableFailIndexes { get; init; } = Defaults.EmptyReadOnlyCollection<int>();
+        public ReadOnlyCollection<int> EnableFailIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
     }
 }

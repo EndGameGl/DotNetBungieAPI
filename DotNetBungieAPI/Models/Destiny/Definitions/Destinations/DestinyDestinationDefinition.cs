@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.Places;
@@ -42,7 +43,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Destinations
         /// </summary>
         [JsonPropertyName("activityGraphEntries")]
         public ReadOnlyCollection<DestinyActivityGraphListEntryDefinition> ActivityGraphEntries { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityGraphListEntryDefinition>();
+            ReadOnlyCollections<DestinyActivityGraphListEntryDefinition>.Empty;
 
         /// <summary>
         ///     This provides the unique identifiers for every bubble in the destination (only guaranteed unique within the
@@ -50,7 +51,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Destinations
         /// </summary>
         [JsonPropertyName("bubbles")]
         public ReadOnlyCollection<DestinyBubbleDefinition> Bubbles { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyBubbleDefinition>();
+            ReadOnlyCollections<DestinyBubbleDefinition>.Empty;
 
         public bool DeepEquals(DestinyDestinationDefinition other)
         {

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using DotNetBungieAPI.Clients;
-using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DotNetBungieAPI
+namespace DotNetBungieAPI.Models
 {
     /// <summary>
     /// Class that points to <see cref="HistoricalStatDefinition"/> in repository or provider.

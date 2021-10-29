@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Components;
 
 namespace DotNetBungieAPI.Models.Destiny.Responses
@@ -13,13 +14,13 @@ namespace DotNetBungieAPI.Models.Destiny.Responses
         /// </summary>
         [JsonPropertyName("addedInventoryItems")]
         public ReadOnlyCollection<DestinyItemComponent> AddedInventoryItems { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemComponent>();
+            ReadOnlyCollections<DestinyItemComponent>.Empty;
 
         /// <summary>
         ///     Items that disappeared from the inventory possibly as a result of an action.
         /// </summary>
         [JsonPropertyName("removedInventoryItems")]
         public ReadOnlyCollection<DestinyItemComponent> RemovedInventoryItems { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemComponent>();
+            ReadOnlyCollections<DestinyItemComponent>.Empty;
     }
 }

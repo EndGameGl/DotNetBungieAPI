@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
 
 namespace DotNetBungieAPI.Serialization

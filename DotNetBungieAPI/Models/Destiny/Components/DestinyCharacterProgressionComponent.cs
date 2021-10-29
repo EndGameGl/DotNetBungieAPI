@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Artifacts;
 using DotNetBungieAPI.Models.Destiny.Definitions.Checklists;
 using DotNetBungieAPI.Models.Destiny.Definitions.Factions;
@@ -24,9 +25,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("progressions")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyProgressionMappingDefinition>, DestinyProgression>
             Progressions { get; init; } =
-            Defaults
-                .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyProgressionMappingDefinition>,
-                    DestinyProgression>();
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyProgressionMappingDefinition>, DestinyProgression>.Empty;
 
         /// <summary>
         ///     A dictionary of all known Factions, keyed by the Faction's hash. It contains data about this character's status
@@ -35,8 +34,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("factions")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyFactionDefinition>, DestinyFactionProgression>
             Factions { get; init; } =
-            Defaults
-                .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyFactionDefinition>, DestinyFactionProgression>();
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyFactionDefinition>, DestinyFactionProgression>.Empty;
 
         /// <summary>
         ///     Milestones are related to the simple progressions shown in the game, but return additional and hopefully helpful
@@ -45,7 +43,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("milestones")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyMilestoneDefinition>, DestinyMilestone>
             Milestones { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyMilestoneDefinition>, DestinyMilestone>();
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyMilestoneDefinition>, DestinyMilestone>.Empty;
 
         /// <summary>
         ///     If the user has any active quests, the quests' statuses will be returned here.
@@ -55,7 +53,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("quests")]
         public ReadOnlyCollection<DestinyQuestStatus> Quests { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyQuestStatus>();
+            ReadOnlyCollections<DestinyQuestStatus>.Empty;
 
         /// <summary>
         ///     Sometimes, you have items in your inventory that don't have instances, but still have Objective information. This
@@ -67,9 +65,9 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("uninstancedItemObjectives")]
         public
             ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>,
-                ReadOnlyCollection<UninstancedItemObjective>> UninstancedItemObjectives { get; init; } = Defaults
-            .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>,
-                ReadOnlyCollection<UninstancedItemObjective>>();
+                ReadOnlyCollection<UninstancedItemObjective>> UninstancedItemObjectives { get; init; } =
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>,
+                ReadOnlyCollection<UninstancedItemObjective>>.Empty;
 
         /// <summary>
         ///     The set of checklists that can be examined for this specific character, keyed by the hash identifier of the
@@ -81,9 +79,8 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("checklists")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyChecklistDefinition>, ReadOnlyDictionary<uint, bool>>
             Checklists { get; init; } =
-            Defaults
-                .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyChecklistDefinition>,
-                    ReadOnlyDictionary<uint, bool>>();
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyChecklistDefinition>, ReadOnlyDictionary<uint, bool>>
+                .Empty;
 
         /// <summary>
         ///     Data related to your progress on the current season's artifact that can vary per character.

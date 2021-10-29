@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids;
 using DotNetBungieAPI.Models.Destiny.Progressions;
 using DotNetBungieAPI.Models.Destiny.TalentNodes;
@@ -45,7 +46,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("nodes")]
         public ReadOnlyCollection<DestinyTalentNode> Nodes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyTalentNode>();
+            ReadOnlyCollections<DestinyTalentNode>.Empty;
 
         /// <summary>
         ///     Indicates whether the talent grid on this item is completed, and thus whether it should have a gold border around

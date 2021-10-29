@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.HistoricalStats
 {
@@ -10,13 +11,13 @@ namespace DotNetBungieAPI.Models.Destiny.HistoricalStats
         /// </summary>
         [JsonPropertyName("weapons")]
         public ReadOnlyCollection<DestinyHistoricalWeaponStats> Weapons { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyHistoricalWeaponStats>();
+            ReadOnlyCollections<DestinyHistoricalWeaponStats>.Empty;
 
         /// <summary>
         ///     Collection of stats for the player in this activity.
         /// </summary>
         [JsonPropertyName("values")]
         public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> Values { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<string, DestinyHistoricalStatsValue>();
+            ReadOnlyDictionaries<string, DestinyHistoricalStatsValue>.Empty;
     }
 }

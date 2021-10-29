@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Milestones
 {
@@ -23,6 +24,6 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("phases")]
         public ReadOnlyCollection<DestinyMilestoneActivityPhase> Phases { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyMilestoneActivityPhase>();
+            ReadOnlyCollections<DestinyMilestoneActivityPhase>.Empty;
     }
 }

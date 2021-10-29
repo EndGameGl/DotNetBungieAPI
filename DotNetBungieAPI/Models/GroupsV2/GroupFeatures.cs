@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.GroupsV2
 {
@@ -18,7 +19,7 @@ namespace DotNetBungieAPI.Models.GroupsV2
 
         [JsonPropertyName("membershipTypes")]
         public ReadOnlyCollection<BungieMembershipType> MembershipTypes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<BungieMembershipType>();
+            ReadOnlyCollections<BungieMembershipType>.Empty;
 
         /// <summary>
         ///     Minimum Member Level allowed to invite new members to group

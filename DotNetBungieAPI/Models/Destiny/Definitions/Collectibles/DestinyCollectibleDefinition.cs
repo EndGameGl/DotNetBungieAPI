@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
@@ -45,11 +46,11 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Collectibles
         public DestinyPresentationNodeType PresentationNodeType { get; init; }
 
         [JsonPropertyName("traitIds")]
-        public ReadOnlyCollection<string> TraitIds { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
+        public ReadOnlyCollection<string> TraitIds { get; init; } = ReadOnlyCollections<string>.Empty;
 
         [JsonPropertyName("traitHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyTraitDefinition>>.Empty;
 
         /// <summary>
         ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under
@@ -57,7 +58,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Collectibles
         /// </summary>
         [JsonPropertyName("parentNodeHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentNodes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
 
         public bool DeepEquals(DestinyCollectibleDefinition other)
         {
@@ -116,11 +117,6 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Collectibles
 
             StateInfo?.ObscuredOverrideItem.SetLocale(locale);
             foreach (var trait in Traits) trait.SetLocale(locale);
-        }
-
-        public override string ToString()
-        {
-            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
     }
 }

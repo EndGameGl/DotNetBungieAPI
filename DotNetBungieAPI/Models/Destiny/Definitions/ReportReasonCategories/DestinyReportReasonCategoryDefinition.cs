@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.ReportReasonCategories
@@ -25,7 +26,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ReportReasonCategories
         /// </summary>
         [JsonPropertyName("reasons")]
         public ReadOnlyDictionary<uint, DestinyReportReasonDefinition> Reasons { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<uint, DestinyReportReasonDefinition>();
+            ReadOnlyDictionaries<uint, DestinyReportReasonDefinition>.Empty;
 
         public bool DeepEquals(DestinyReportReasonCategoryDefinition other)
         {

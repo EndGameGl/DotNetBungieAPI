@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Collectibles;
 using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 
@@ -13,7 +14,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("recentCollectibleHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyCollectibleDefinition>>
             RecentCollectibles { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyCollectibleDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyCollectibleDefinition>>.Empty;
 
         /// <summary>
         ///     The list of collectibles determined by the game as having been "recently" acquired.
@@ -24,7 +25,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("newnessFlaggedCollectibleHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyCollectibleDefinition>>
             NewnessFlaggedCollectibles { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyCollectibleDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyCollectibleDefinition>>.Empty;
 
         [JsonPropertyName("collectibles")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyCollectibleDefinition>, DestinyCollectibleComponent>

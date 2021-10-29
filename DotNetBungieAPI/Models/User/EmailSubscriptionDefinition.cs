@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.User
 {
@@ -20,7 +21,7 @@ namespace DotNetBungieAPI.Models.User
         /// </summary>
         [JsonPropertyName("localization")]
         public ReadOnlyDictionary<string, EmailSettingSubscriptionLocalization> Localization { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<string, EmailSettingSubscriptionLocalization>();
+            ReadOnlyDictionaries<string, EmailSettingSubscriptionLocalization>.Empty;
 
         /// <summary>
         ///     The bitflag value for this subscription. Should be a unique power of two value.

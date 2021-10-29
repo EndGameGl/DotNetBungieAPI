@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
 {
@@ -16,7 +17,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
 
         [JsonPropertyName("linkedGraphs")]
         public ReadOnlyCollection<DestinyLinkedGraphEntryDefinition> LinkedGraphs { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyLinkedGraphEntryDefinition>();
+            ReadOnlyCollections<DestinyLinkedGraphEntryDefinition>.Empty;
 
         public bool DeepEquals(DestinyLinkedGraphDefinition other)
         {
@@ -27,11 +28,6 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
                    LinkedGraphId == other.LinkedGraphId &&
                    UnlockExpression.DeepEquals(other.UnlockExpression) &&
                    LinkedGraphs.DeepEqualsReadOnlyCollections(other.LinkedGraphs);
-        }
-
-        public override string ToString()
-        {
-            return $"{LinkedGraphId} {Name}: {Description}";
         }
     }
 }

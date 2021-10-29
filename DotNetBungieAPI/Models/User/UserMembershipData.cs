@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.GroupsV2;
 
 namespace DotNetBungieAPI.Models.User
@@ -13,7 +14,7 @@ namespace DotNetBungieAPI.Models.User
         /// </summary>
         [JsonPropertyName("destinyMemberships")]
         public ReadOnlyCollection<GroupUserInfoCard> DestinyMemberships { get; init; } =
-            Defaults.EmptyReadOnlyCollection<GroupUserInfoCard>();
+            ReadOnlyCollections<GroupUserInfoCard>.Empty;
 
         /// <summary>
         ///     If this property is populated, it will have the membership ID of the account considered to be "primary" in this
@@ -35,9 +36,11 @@ namespace DotNetBungieAPI.Models.User
         /// <returns></returns>
         public GroupUserInfoCard GetDestinyPrimaryMembership()
         {
-            return PrimaryMembershipId.HasValue
-                ? DestinyMemberships.Single(x => x.MembershipId == PrimaryMembershipId.Value)
-                : DestinyMemberships.Single();
+            if (PrimaryMembershipId.HasValue)
+            {
+                return DestinyMemberships.Single(x => x.MembershipId == PrimaryMembershipId.Value);
+            }
+            return DestinyMemberships.Count > 1 ? DestinyMemberships.FirstOrDefault() : DestinyMemberships.Single();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 
@@ -36,7 +37,7 @@ namespace DotNetBungieAPI.Models.Destiny.Quests
         /// </summary>
         [JsonPropertyName("stepObjectives")]
         public ReadOnlyCollection<DestinyObjectiveProgress> StepObjectives { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyObjectiveProgress>();
+            ReadOnlyCollections<DestinyObjectiveProgress>.Empty;
 
         /// <summary>
         ///     Whether or not the quest is tracked

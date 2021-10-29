@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
@@ -19,7 +20,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         ///     The icon associated with the overlay screen for the action, if any.
         /// </summary>
         [JsonPropertyName("overlayIcon")]
-        public DestinyResource OverlayIcon { get; init; }
+        public BungieNetResource OverlayIcon { get; init; }
 
         /// <summary>
         ///     The internal identifier for the action.
@@ -51,7 +52,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("progressionRewards")]
         public ReadOnlyCollection<DestinyProgressionRewardDefinition> ProgressionRewards { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyProgressionRewardDefinition>();
+            ReadOnlyCollections<DestinyProgressionRewardDefinition>.Empty;
 
         /// <summary>
         ///     The identifier hash for the Cooldown associated with this action. We have not pulled this data yet for you to have
@@ -75,7 +76,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 
         [JsonPropertyName("requiredItems")]
         public ReadOnlyCollection<DestinyItemActionRequiredItemDefinition> RequiredItems { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemActionRequiredItemDefinition>();
+            ReadOnlyCollections<DestinyItemActionRequiredItemDefinition>.Empty;
 
         /// <summary>
         ///     If true, this action will be performed as soon as you earn this item. Some rewards work this way, providing you a

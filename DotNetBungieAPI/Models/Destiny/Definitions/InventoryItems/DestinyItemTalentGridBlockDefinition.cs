@@ -45,7 +45,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         ///     actual icon itself.
         /// </summary>
         [JsonPropertyName("hudIcon")]
-        public DestinyResource HudIcon { get; init; }
+        public BungieNetResource HudIcon { get; init; }
 
         public bool DeepEquals(DestinyItemTalentGridBlockDefinition other)
         {

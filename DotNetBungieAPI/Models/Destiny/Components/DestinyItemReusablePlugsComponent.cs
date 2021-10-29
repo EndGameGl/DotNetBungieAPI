@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Items;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
@@ -25,6 +26,6 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("plugs")]
         public ReadOnlyDictionary<int, ReadOnlyCollection<PlugItemSettings>> Plugs { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<int, ReadOnlyCollection<PlugItemSettings>>();
+            ReadOnlyDictionaries<int, ReadOnlyCollection<PlugItemSettings>>.Empty;
     }
 }

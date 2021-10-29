@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Content
 {
@@ -11,7 +12,7 @@ namespace DotNetBungieAPI.Models.Content
 
         [JsonPropertyName("items")]
         public ReadOnlyCollection<TagMetadataItem> Items { get; init; } =
-            Defaults.EmptyReadOnlyCollection<TagMetadataItem>();
+            ReadOnlyCollections<TagMetadataItem>.Empty;
 
         [JsonPropertyName("datatype")] public string Datatype { get; init; }
 

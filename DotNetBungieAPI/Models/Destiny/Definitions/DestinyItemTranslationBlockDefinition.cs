@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions
 {
@@ -16,19 +17,19 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions
 
         [JsonPropertyName("defaultDyes")]
         public ReadOnlyCollection<DyeReference> DefaultDyes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DyeReference>();
+            ReadOnlyCollections<DyeReference>.Empty;
 
         [JsonPropertyName("lockedDyes")]
         public ReadOnlyCollection<DyeReference> LockedDyes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DyeReference>();
+            ReadOnlyCollections<DyeReference>.Empty;
 
         [JsonPropertyName("customDyes")]
         public ReadOnlyCollection<DyeReference> CustomDyes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DyeReference>();
+            ReadOnlyCollections<DyeReference>.Empty;
 
         [JsonPropertyName("arrangements")]
         public ReadOnlyCollection<DestinyGearArtArrangementReference> Arrangements { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyGearArtArrangementReference>();
+            ReadOnlyCollections<DestinyGearArtArrangementReference>.Empty;
 
         [JsonPropertyName("hasGeometry")] public bool HasGeometry { get; init; }
 

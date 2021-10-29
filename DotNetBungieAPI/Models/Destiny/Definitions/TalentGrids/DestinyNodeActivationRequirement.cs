@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
@@ -33,8 +34,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
         /// </summary>
         [JsonPropertyName("materialRequirementHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>>
-            MaterialRequirements { get; init; } = Defaults
-            .EmptyReadOnlyCollection<DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>>();
+            MaterialRequirements { get; init; } =
+            ReadOnlyCollections<DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>>.Empty;
 
         public bool DeepEquals(DestinyNodeActivationRequirement other)
         {

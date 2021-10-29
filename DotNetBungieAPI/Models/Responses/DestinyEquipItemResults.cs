@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Responses
 {
@@ -10,6 +11,6 @@ namespace DotNetBungieAPI.Models.Responses
     {
         [JsonPropertyName("equipResults")]
         public ReadOnlyCollection<DestinyEquipItemResult> EquipResults { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyEquipItemResult>();
+            ReadOnlyCollections<DestinyEquipItemResult>.Empty;
     }
 }

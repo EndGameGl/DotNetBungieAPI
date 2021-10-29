@@ -1,13 +1,14 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Common
 {
     public sealed record DestinyIconSequenceDefinition : IDeepEquatable<DestinyIconSequenceDefinition>
     {
         [JsonPropertyName("frames")]
-        public ReadOnlyCollection<DestinyResource> Frames { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyResource>();
+        public ReadOnlyCollection<BungieNetResource> Frames { get; init; } =
+            ReadOnlyCollections<BungieNetResource>.Empty;
 
         public bool DeepEquals(DestinyIconSequenceDefinition other)
         {

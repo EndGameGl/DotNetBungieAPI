@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
@@ -33,7 +34,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
         /// </summary>
         [JsonPropertyName("rewardEntries")]
         public ReadOnlyDictionary<uint, DestinyMilestoneRewardEntryDefinition> RewardEntries { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<uint, DestinyMilestoneRewardEntryDefinition>();
+            ReadOnlyDictionaries<uint, DestinyMilestoneRewardEntryDefinition>.Empty;
 
         /// <summary>
         ///     If you want to use BNet's recommended order for rendering categories programmatically, use this value and compare

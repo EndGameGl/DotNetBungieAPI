@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.User
 {
@@ -32,6 +33,6 @@ namespace DotNetBungieAPI.Models.User
         /// </summary>
         [JsonPropertyName("dependentSubscriptions")]
         public ReadOnlyCollection<EmailSubscriptionDefinition> DependentSubscriptions { get; init; } =
-            Defaults.EmptyReadOnlyCollection<EmailSubscriptionDefinition>();
+            ReadOnlyCollections<EmailSubscriptionDefinition>.Empty;
     }
 }

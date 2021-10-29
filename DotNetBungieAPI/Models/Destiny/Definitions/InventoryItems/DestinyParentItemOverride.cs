@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
@@ -7,9 +8,9 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
     {
         [JsonPropertyName("additionalEquipRequirementsDisplayStrings")]
         public ReadOnlyCollection<string> AdditionalEquipRequirementsDisplayStrings { get; init; } =
-            Defaults.EmptyReadOnlyCollection<string>();
+            ReadOnlyCollections<string>.Empty;
 
-        [JsonPropertyName("pipIcon")] public DestinyResource PipIcon { get; init; }
+        [JsonPropertyName("pipIcon")] public BungieNetResource PipIcon { get; init; }
 
         public bool DeepEquals(DestinyParentItemOverride other)
         {

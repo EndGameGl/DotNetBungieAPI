@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 
@@ -46,7 +47,7 @@ namespace DotNetBungieAPI.Models.Destiny.HistoricalStats
         /// </summary>
         [JsonPropertyName("modes")]
         public ReadOnlyCollection<DestinyActivityModeType> Modes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityModeType>();
+            ReadOnlyCollections<DestinyActivityModeType>.Empty;
 
         /// <summary>
         ///     Whether or not the match was a private match.

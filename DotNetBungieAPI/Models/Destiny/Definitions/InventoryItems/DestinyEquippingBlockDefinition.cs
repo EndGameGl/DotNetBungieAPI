@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.EquipmentSlots;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
@@ -35,7 +36,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         ///     trying to equip the item. They match up one-to-one with requiredUnlockExpressions.
         /// </summary>
         [JsonPropertyName("displayStrings")]
-        public ReadOnlyCollection<string> DisplayStrings { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
+        public ReadOnlyCollection<string> DisplayStrings { get; init; } = ReadOnlyCollections<string>.Empty;
 
         /// <summary>
         ///     An equipped item *must* be equipped in an Equipment Slot.

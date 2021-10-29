@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
 using DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 
@@ -30,7 +31,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("availableQuests")]
         public ReadOnlyCollection<DestinyMilestoneQuest> AvailableQuests { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyMilestoneQuest>();
+            ReadOnlyCollections<DestinyMilestoneQuest>.Empty;
 
         /// <summary>
         ///     The currently active Activities in this milestone, when the Milestone is driven by Challenges.
@@ -40,7 +41,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("activities")]
         public ReadOnlyCollection<DestinyMilestoneChallengeActivity> Activities { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyMilestoneChallengeActivity>();
+            ReadOnlyCollections<DestinyMilestoneChallengeActivity>.Empty;
 
         /// <summary>
         ///     Milestones may have arbitrary key/value pairs associated with them, for data that users will want to know about but
@@ -52,7 +53,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("values")]
         public ReadOnlyDictionary<string, double> Values { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<string, double>();
+            ReadOnlyDictionaries<string, double>.Empty;
 
         /// <summary>
         ///     A milestone may have one or more active vendors that are "related" to it (that provide rewards, or that are the
@@ -64,7 +65,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("vendorHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyVendorDefinition>> Vendors { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyVendorDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyVendorDefinition>>.Empty;
 
         /// <summary>
         ///     Replaces vendorHashes, which I knew was going to be trouble the day it walked in the door. This will return not
@@ -74,7 +75,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("vendors")]
         public ReadOnlyCollection<DestinyMilestoneVendor> VendorsData { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyMilestoneVendor>();
+            ReadOnlyCollections<DestinyMilestoneVendor>.Empty;
 
         /// <summary>
         ///     If the entity to which this component is attached has known active Rewards for the player, this will detail
@@ -85,7 +86,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("rewards")]
         public ReadOnlyCollection<DestinyMilestoneRewardCategory> Rewards { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyMilestoneRewardCategory>();
+            ReadOnlyCollections<DestinyMilestoneRewardCategory>.Empty;
 
         /// <summary>
         ///     If known, this is the date when the event last began or refreshed. It will only be populated for events with fixed

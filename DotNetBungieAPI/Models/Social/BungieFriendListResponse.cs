@@ -1,12 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Social
 {
     public sealed record BungieFriendListResponse
     {
         [JsonPropertyName("friends")]
-        public ReadOnlyCollection<BungieFriend> Friends { get; init; } =
-            Defaults.EmptyReadOnlyCollection<BungieFriend>();
+        public ReadOnlyCollection<BungieFriend> Friends { get; init; } = ReadOnlyCollections<BungieFriend>.Empty;
     }
 }

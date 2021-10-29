@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
@@ -37,7 +38,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
         /// </summary>
         [JsonPropertyName("featuringStates")]
         public ReadOnlyCollection<DestinyActivityGraphNodeFeaturingStateDefinition> FeaturingStates { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityGraphNodeFeaturingStateDefinition>();
+            ReadOnlyCollections<DestinyActivityGraphNodeFeaturingStateDefinition>.Empty;
 
         /// <summary>
         ///     The node may have various possible activities that could be active for it, however only one may be active at a
@@ -45,7 +46,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
         /// </summary>
         [JsonPropertyName("activities")]
         public ReadOnlyCollection<DestinyActivityGraphNodeActivityDefinition> Activities { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityGraphNodeActivityDefinition>();
+            ReadOnlyCollections<DestinyActivityGraphNodeActivityDefinition>.Empty;
 
         /// <summary>
         ///     Represents possible states that the graph node can be in. These are combined with some checking that happens in the
@@ -53,7 +54,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
         /// </summary>
         [JsonPropertyName("states")]
         public ReadOnlyCollection<DestinyActivityGraphNodeStateEntry> States { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityGraphNodeStateEntry>();
+            ReadOnlyCollections<DestinyActivityGraphNodeStateEntry>.Empty;
 
         [JsonPropertyName("uiActivityTypeOverrideHash")]
         public uint UIActivityTypeOverrideHash { get; init; }

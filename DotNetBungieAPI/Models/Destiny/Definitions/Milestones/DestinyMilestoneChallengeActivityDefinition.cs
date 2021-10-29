@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
@@ -19,11 +20,11 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
         /// </summary>
         [JsonPropertyName("activityGraphNodes")]
         public ReadOnlyCollection<DestinyMilestoneChallengeActivityGraphNodeEntry> ActivityGraphNodes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyMilestoneChallengeActivityGraphNodeEntry>();
+            ReadOnlyCollections<DestinyMilestoneChallengeActivityGraphNodeEntry>.Empty;
 
         [JsonPropertyName("challenges")]
         public ReadOnlyCollection<DestinyMilestoneChallengeDefinition> Challenges { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyMilestoneChallengeDefinition>();
+            ReadOnlyCollections<DestinyMilestoneChallengeDefinition>.Empty;
 
         /// <summary>
         ///     Phases related to this activity, if there are any.
@@ -32,7 +33,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
         /// </summary>
         [JsonPropertyName("phases")]
         public ReadOnlyCollection<DestinyMilestoneChallengeActivityPhase> Phases { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyMilestoneChallengeActivityPhase>();
+            ReadOnlyCollections<DestinyMilestoneChallengeActivityPhase>.Empty;
 
         public bool DeepEquals(DestinyMilestoneChallengeActivityDefinition other)
         {

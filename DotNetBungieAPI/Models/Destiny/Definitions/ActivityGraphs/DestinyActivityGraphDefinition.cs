@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
 {
@@ -28,21 +29,21 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
         /// </summary>
         [JsonPropertyName("nodes")]
         public ReadOnlyCollection<DestinyActivityGraphNodeDefinition> Nodes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityGraphNodeDefinition>();
+            ReadOnlyCollections<DestinyActivityGraphNodeDefinition>.Empty;
 
         /// <summary>
         ///     Represents one-off/special UI elements that appear on the map.
         /// </summary>
         [JsonPropertyName("artElements")]
         public ReadOnlyCollection<DestinyActivityGraphArtElementDefinition> ArtElements { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityGraphArtElementDefinition>();
+            ReadOnlyCollections<DestinyActivityGraphArtElementDefinition>.Empty;
 
         /// <summary>
         ///     Represents connections between graph nodes. However, it lacks context that we'd need to make good use of it.
         /// </summary>
         [JsonPropertyName("connections")]
         public ReadOnlyCollection<DestinyActivityGraphConnectionDefinition> Connections { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityGraphConnectionDefinition>();
+            ReadOnlyCollections<DestinyActivityGraphConnectionDefinition>.Empty;
 
         /// <summary>
         ///     Objectives can display on maps, and this is supposedly metadata for that. I have not had the time to analyze the
@@ -51,7 +52,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
         /// </summary>
         [JsonPropertyName("displayObjectives")]
         public ReadOnlyCollection<DestinyActivityGraphDisplayObjectiveDefinition> DisplayObjectives { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityGraphDisplayObjectiveDefinition>();
+            ReadOnlyCollections<DestinyActivityGraphDisplayObjectiveDefinition>.Empty;
 
         /// <summary>
         ///     Progressions can also display on maps, but similarly to displayObjectives we appear to lack some required
@@ -59,7 +60,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
         /// </summary>
         [JsonPropertyName("displayProgressions")]
         public ReadOnlyCollection<DestinyActivityGraphDisplayProgressionDefinition> DisplayProgressions { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityGraphDisplayProgressionDefinition>();
+            ReadOnlyCollections<DestinyActivityGraphDisplayProgressionDefinition>.Empty;
 
         [JsonPropertyName("ignoreForMilestones")]
         public bool IgnoreForMilestones { get; init; }
@@ -69,7 +70,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
         /// </summary>
         [JsonPropertyName("linkedGraphs")]
         public ReadOnlyCollection<DestinyLinkedGraphDefinition> LinkedGraphs { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyLinkedGraphDefinition>();
+            ReadOnlyCollections<DestinyLinkedGraphDefinition>.Empty;
 
         [JsonPropertyName("uiScreen")] public int UIScreen { get; init; }
 

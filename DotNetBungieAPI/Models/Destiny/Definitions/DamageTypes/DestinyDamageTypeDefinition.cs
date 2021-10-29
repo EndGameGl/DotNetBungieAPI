@@ -33,7 +33,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.DamageTypes
         ///     A variant of the icon that is transparent and colorless.
         /// </summary>
         [JsonPropertyName("transparentIconPath")]
-        public DestinyResource TransparentIconPath { get; init; }
+        public BungieNetResource TransparentIconPath { get; init; }
 
         public bool DeepEquals(DestinyDamageTypeDefinition other)
         {

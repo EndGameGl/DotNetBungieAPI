@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Locations
@@ -27,7 +28,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Locations
         /// </summary>
         [JsonPropertyName("locationReleases")]
         public ReadOnlyCollection<DestinyLocationReleaseDefinition> LocationReleases { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyLocationReleaseDefinition>();
+            ReadOnlyCollections<DestinyLocationReleaseDefinition>.Empty;
 
         public bool DeepEquals(DestinyLocationDefinition other)
         {

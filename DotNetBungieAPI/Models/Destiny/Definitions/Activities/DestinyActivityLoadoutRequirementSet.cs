@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
 {
@@ -10,7 +11,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
         /// </summary>
         [JsonPropertyName("requirements")]
         public ReadOnlyCollection<DestinyActivityLoadoutRequirement> Requirements { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityLoadoutRequirement>();
+            ReadOnlyCollections<DestinyActivityLoadoutRequirement>.Empty;
 
         public bool DeepEquals(DestinyActivityLoadoutRequirementSet other)
         {

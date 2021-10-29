@@ -14,7 +14,7 @@ namespace DotNetBungieAPI
             Builders = new List<ExtendedStringBuilder>();
         }
 
-        public static ExtendedStringBuilder GetBuilder(CancellationToken ct)
+        internal static ExtendedStringBuilder GetBuilder(CancellationToken ct)
         {
             lock (Lock)
             {

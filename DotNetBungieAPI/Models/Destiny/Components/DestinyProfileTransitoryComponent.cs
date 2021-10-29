@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Destinations;
 using DotNetBungieAPI.Models.Destiny.Profiles;
 
@@ -22,7 +23,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("partyMembers")]
         public ReadOnlyCollection<DestinyProfileTransitoryPartyMember> PartyMembers { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyProfileTransitoryPartyMember>();
+            ReadOnlyCollections<DestinyProfileTransitoryPartyMember>.Empty;
 
         /// <summary>
         ///     If you are in an activity, this is some transitory info about the activity currently being played.
@@ -41,7 +42,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("tracking")]
         public ReadOnlyCollection<DestinyProfileTransitoryTrackingEntry> TrackedEntities { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyProfileTransitoryTrackingEntry>();
+            ReadOnlyCollections<DestinyProfileTransitoryTrackingEntry>.Empty;
 
         /// <summary>
         ///     The hash identifier for the DestinyDestinationDefinition of the last location you were orbiting when in orbit.

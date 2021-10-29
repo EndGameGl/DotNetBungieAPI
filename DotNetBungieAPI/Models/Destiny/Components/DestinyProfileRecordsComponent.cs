@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Records;
 
@@ -40,7 +41,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
 
         [JsonPropertyName("records")]
         public ReadOnlyDictionary<uint, DestinyRecordComponent> Records { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<uint, DestinyRecordComponent>();
+            ReadOnlyDictionaries<uint, DestinyRecordComponent>.Empty;
 
         /// <summary>
         ///     The hash for the root presentation node definition of Triumph categories.

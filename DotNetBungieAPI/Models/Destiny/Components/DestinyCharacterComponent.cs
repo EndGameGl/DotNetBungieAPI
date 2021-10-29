@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Classes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Genders;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
@@ -68,7 +69,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("stats")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, int> Stats { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, int>();
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyStatDefinition>, int>.Empty;
 
         /// <summary>
         ///     Use this hash to look up the character's DestinyRaceDefinition.

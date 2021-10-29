@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.User
 {
@@ -22,7 +23,7 @@ namespace DotNetBungieAPI.Models.User
         /// </summary>
         [JsonPropertyName("applicableMembershipTypes")]
         public ReadOnlyCollection<BungieMembershipType> ApplicableMembershipTypes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<BungieMembershipType>();
+            ReadOnlyCollections<BungieMembershipType>.Empty;
 
         /// <summary>
         ///     If True, this is a public user membership.

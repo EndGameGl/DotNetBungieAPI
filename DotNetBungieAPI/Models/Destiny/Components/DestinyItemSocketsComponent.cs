@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Items;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
@@ -17,6 +18,6 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("sockets")]
         public ReadOnlyCollection<DestinyItemSocketState> Sockets { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemSocketState>();
+            ReadOnlyCollections<DestinyItemSocketState>.Empty;
     }
 }

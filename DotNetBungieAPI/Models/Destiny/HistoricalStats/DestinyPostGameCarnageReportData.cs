@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.HistoricalStats
 {
@@ -29,13 +30,13 @@ namespace DotNetBungieAPI.Models.Destiny.HistoricalStats
         /// </summary>
         [JsonPropertyName("entries")]
         public ReadOnlyCollection<DestinyPostGameCarnageReportEntry> Entries { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyPostGameCarnageReportEntry>();
+            ReadOnlyCollections<DestinyPostGameCarnageReportEntry>.Empty;
 
         /// <summary>
         ///     Collection of stats for the player in this activity.
         /// </summary>
         [JsonPropertyName("teams")]
         public ReadOnlyCollection<DestinyPostGameCarnageReportTeamEntry> Teams { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyPostGameCarnageReportTeamEntry>();
+            ReadOnlyCollections<DestinyPostGameCarnageReportTeamEntry>.Empty;
     }
 }

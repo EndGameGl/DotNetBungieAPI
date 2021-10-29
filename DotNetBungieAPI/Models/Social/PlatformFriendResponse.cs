@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Social
 {
@@ -11,6 +12,6 @@ namespace DotNetBungieAPI.Models.Social
 
         [JsonPropertyName("platformFriends")]
         public ReadOnlyCollection<PlatformFriend> PlatformFriends { get; init; } =
-            Defaults.EmptyReadOnlyCollection<PlatformFriend>();
+            ReadOnlyCollections<PlatformFriend>.Empty;
     }
 }

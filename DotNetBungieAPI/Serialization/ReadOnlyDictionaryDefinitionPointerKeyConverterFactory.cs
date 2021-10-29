@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
+using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
 
 namespace DotNetBungieAPI.Serialization
@@ -63,7 +65,7 @@ namespace DotNetBungieAPI.Serialization
                 Type typeToConvert, JsonSerializerOptions options)
             {
                 if (reader.TokenType == JsonTokenType.Null)
-                    return Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue>();
+                    return ReadOnlyDictionaries<DefinitionHashPointer<TKey>, TValue>.Empty;
                 IDictionary<DefinitionHashPointer<TKey>, TValue> tempDictionary =
                     new Dictionary<DefinitionHashPointer<TKey>, TValue>();
                 while (reader.Read())

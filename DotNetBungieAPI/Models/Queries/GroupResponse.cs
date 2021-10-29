@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.GroupsV2
 {
@@ -10,7 +11,7 @@ namespace DotNetBungieAPI.Models.GroupsV2
         [JsonPropertyName("founder")] public GroupMember Founder { get; init; }
 
         [JsonPropertyName("alliedIds")]
-        public ReadOnlyCollection<long> AlliedIds { get; init; } = Defaults.EmptyReadOnlyCollection<long>();
+        public ReadOnlyCollection<long> AlliedIds { get; init; } = ReadOnlyCollections<long>.Empty;
 
         [JsonPropertyName("parentGroup")] public GroupV2 ParentGroup { get; init; }
 
@@ -33,7 +34,7 @@ namespace DotNetBungieAPI.Models.GroupsV2
         /// </summary>
         [JsonPropertyName("currentUserMemberMap")]
         public ReadOnlyDictionary<int, GroupMember> CurrentUserMemberMap { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<int, GroupMember>();
+            ReadOnlyDictionaries<int, GroupMember>.Empty;
 
         /// <summary>
         ///     This property will be populated if the authenticated user is an applicant or has an outstanding invitation to join.
@@ -41,6 +42,6 @@ namespace DotNetBungieAPI.Models.GroupsV2
         /// </summary>
         [JsonPropertyName("currentUserPotentialMemberMap")]
         public ReadOnlyDictionary<int, GroupPotentialMember> CurrentUserPotentialMemberMap { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<int, GroupPotentialMember>();
+            ReadOnlyDictionaries<int, GroupPotentialMember>.Empty;
     }
 }

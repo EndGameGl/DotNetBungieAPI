@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Seasons
 {
@@ -19,20 +20,20 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Seasons
         ///     Bungie.net locale.
         /// </summary>
         [JsonPropertyName("linkPath")]
-        public DestinyResource LinkPath { get; init; }
+        public BungieNetResource LinkPath { get; init; }
 
         /// <summary>
         ///     An optional link to a localized video, probably YouTube.
         /// </summary>
         [JsonPropertyName("videoLink")]
-        public DestinyResource VideoLink { get; init; }
+        public BungieNetResource VideoLink { get; init; }
 
         /// <summary>
         ///     A list of images to preview the seasonal content. Should have at least three to show.
         /// </summary>
         [JsonPropertyName("images")]
         public ReadOnlyCollection<DestinySeasonPreviewImageDefinition> Images { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinySeasonPreviewImageDefinition>();
+            ReadOnlyCollections<DestinySeasonPreviewImageDefinition>.Empty;
 
         public bool DeepEquals(DestinySeasonPreviewDefinition other)
         {

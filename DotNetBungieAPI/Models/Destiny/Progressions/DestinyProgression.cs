@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Progressions;
 
 namespace DotNetBungieAPI.Models.Destiny.Progressions
@@ -95,7 +96,7 @@ namespace DotNetBungieAPI.Models.Destiny.Progressions
         /// </summary>
         [JsonPropertyName("seasonResets")]
         public ReadOnlyCollection<DestinyProgressionResetEntry> SeasonResets { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyProgressionResetEntry>();
+            ReadOnlyCollections<DestinyProgressionResetEntry>.Empty;
 
         /// <summary>
         ///     Information about historical rewards for this progression, if there is any data for it.

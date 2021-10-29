@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Content;
 
 namespace DotNetBungieAPI.Models.Queries
@@ -8,6 +9,6 @@ namespace DotNetBungieAPI.Models.Queries
     {
         [JsonPropertyName("results")]
         public ReadOnlyCollection<ContentItemPublicContract> Results { get; init; } =
-            Defaults.EmptyReadOnlyCollection<ContentItemPublicContract>();
+            ReadOnlyCollections<ContentItemPublicContract>.Empty;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Vendors;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
@@ -22,6 +23,6 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("categories")]
         public ReadOnlyCollection<DestinyVendorCategory> Categories { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyVendorCategory>();
+            ReadOnlyCollections<DestinyVendorCategory>.Empty;
     }
 }

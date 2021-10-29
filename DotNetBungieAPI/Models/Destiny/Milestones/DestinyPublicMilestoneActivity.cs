@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModifiers;
@@ -28,7 +29,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("modifierHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>> Modifiers { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModifierDefinition>>.Empty;
 
         /// <summary>
         ///     Every relevant variation of this conceptual activity, including the conceptual activity itself, have variants
@@ -36,7 +37,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("variants")]
         public ReadOnlyCollection<DestinyPublicMilestoneActivityVariant> Variants { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyPublicMilestoneActivityVariant>();
+            ReadOnlyCollections<DestinyPublicMilestoneActivityVariant>.Empty;
 
         /// <summary>
         ///     The hash identifier of the most specific Activity Mode under which this activity is played. This is useful for

@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes
 {
@@ -12,19 +13,19 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes
     {
         [JsonPropertyName("presentationNodes")]
         public ReadOnlyCollection<DestinyPresentationNodeChildEntry> PresentationNodes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyPresentationNodeChildEntry>();
+            ReadOnlyCollections<DestinyPresentationNodeChildEntry>.Empty;
 
         [JsonPropertyName("collectibles")]
         public ReadOnlyCollection<DestinyPresentationNodeCollectibleChildEntry> Collectibles { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyPresentationNodeCollectibleChildEntry>();
+            ReadOnlyCollections<DestinyPresentationNodeCollectibleChildEntry>.Empty;
 
         [JsonPropertyName("records")]
         public ReadOnlyCollection<DestinyPresentationNodeRecordChildEntry> Records { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyPresentationNodeRecordChildEntry>();
+            ReadOnlyCollections<DestinyPresentationNodeRecordChildEntry>.Empty;
 
         [JsonPropertyName("metrics")]
         public ReadOnlyCollection<DestinyPresentationNodeMetricChildEntry> Metrics { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyPresentationNodeMetricChildEntry>();
+            ReadOnlyCollections<DestinyPresentationNodeMetricChildEntry>.Empty;
 
         public bool DeepEquals(DestinyPresentationNodeChildrenBlock other)
         {

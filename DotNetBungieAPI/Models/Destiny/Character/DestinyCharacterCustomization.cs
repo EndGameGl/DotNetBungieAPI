@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Character
 {
@@ -20,10 +21,10 @@ namespace DotNetBungieAPI.Models.Destiny.Character
         [JsonPropertyName("eyeColor")] public uint EyeColor { get; init; }
 
         [JsonPropertyName("hairColors")]
-        public ReadOnlyCollection<uint> HairColors { get; init; } = Defaults.EmptyReadOnlyCollection<uint>();
+        public ReadOnlyCollection<uint> HairColors { get; init; } = ReadOnlyCollections<uint>.Empty;
 
         [JsonPropertyName("featureColors")]
-        public ReadOnlyCollection<uint> FeatureColors { get; init; } = Defaults.EmptyReadOnlyCollection<uint>();
+        public ReadOnlyCollection<uint> FeatureColors { get; init; } = ReadOnlyCollections<uint>.Empty;
 
         [JsonPropertyName("decalColor")] public uint DecalColor { get; init; }
         [JsonPropertyName("wearHelmet")] public bool WearHelmet { get; init; }

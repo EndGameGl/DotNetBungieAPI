@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Records
 {
@@ -7,7 +8,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Records
     {
         [JsonPropertyName("intervalRewardItems")]
         public ReadOnlyCollection<DestinyItemQuantity> IntervalRewardItems { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
+            ReadOnlyCollections<DestinyItemQuantity>.Empty;
 
         public bool DeepEquals(DestinyRecordIntervalRewards other)
         {

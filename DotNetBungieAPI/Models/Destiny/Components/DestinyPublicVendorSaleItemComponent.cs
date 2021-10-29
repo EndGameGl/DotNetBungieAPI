@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
@@ -54,7 +55,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("costs")]
         public ReadOnlyCollection<DestinyItemQuantity> Costs { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
+            ReadOnlyCollections<DestinyItemQuantity>.Empty;
 
         /// <summary>
         ///     If this item has its own custom date where it may be removed from the Vendor's rotation, this is that date.

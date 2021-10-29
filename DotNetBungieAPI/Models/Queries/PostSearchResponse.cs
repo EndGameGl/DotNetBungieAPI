@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Forum;
 using DotNetBungieAPI.Models.GroupsV2;
 using DotNetBungieAPI.Models.Tags;
@@ -11,30 +12,29 @@ namespace DotNetBungieAPI.Models.Queries
     {
         [JsonPropertyName("relatedPosts")]
         public ReadOnlyCollection<PostResponse> RelatedPosts { get; init; } =
-            Defaults.EmptyReadOnlyCollection<PostResponse>();
+            ReadOnlyCollections<PostResponse>.Empty;
 
         [JsonPropertyName("authors")]
-        public ReadOnlyCollection<GeneralUser> Authors { get; init; } = Defaults.EmptyReadOnlyCollection<GeneralUser>();
+        public ReadOnlyCollection<GeneralUser> Authors { get; init; } = ReadOnlyCollections<GeneralUser>.Empty;
 
         [JsonPropertyName("groups")]
         public ReadOnlyCollection<GroupResponse> Groups { get; init; } =
-            Defaults.EmptyReadOnlyCollection<GroupResponse>();
+            ReadOnlyCollections<GroupResponse>.Empty;
 
         [JsonPropertyName("searchedTags")]
         public ReadOnlyCollection<TagResponse> SearchedTags { get; init; } =
-            Defaults.EmptyReadOnlyCollection<TagResponse>();
+            ReadOnlyCollections<TagResponse>.Empty;
 
         [JsonPropertyName("polls")]
-        public ReadOnlyCollection<PollResponse> Polls { get; init; } = Defaults.EmptyReadOnlyCollection<PollResponse>();
+        public ReadOnlyCollection<PollResponse> Polls { get; init; } = ReadOnlyCollections<PollResponse>.Empty;
 
         [JsonPropertyName("recruitmentDetails")]
         public ReadOnlyCollection<ForumRecruitmentDetail> RecruitmentDetails { get; init; } =
-            Defaults.EmptyReadOnlyCollection<ForumRecruitmentDetail>();
+            ReadOnlyCollections<ForumRecruitmentDetail>.Empty;
 
         [JsonPropertyName("availablePages")] public int? AvailablePages { get; init; }
 
         [JsonPropertyName("results")]
-        public ReadOnlyCollection<PostResponse> Results { get; init; } =
-            Defaults.EmptyReadOnlyCollection<PostResponse>();
+        public ReadOnlyCollection<PostResponse> Results { get; init; } = ReadOnlyCollections<PostResponse>.Empty;
     }
 }

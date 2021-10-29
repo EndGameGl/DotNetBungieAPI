@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryBuckets;
 
@@ -49,7 +50,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.EquipmentSlots
         /// </summary>
         [JsonPropertyName("artDyeChannels")]
         public ReadOnlyCollection<DestinyArtDyeReference> ArtDyeChannels { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyArtDyeReference>();
+            ReadOnlyCollections<DestinyArtDyeReference>.Empty;
 
         public bool DeepEquals(DestinyEquipmentSlotDefinition other)
         {

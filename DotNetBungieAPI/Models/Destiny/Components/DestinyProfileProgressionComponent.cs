@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Artifacts;
 using DotNetBungieAPI.Models.Destiny.Definitions.Checklists;
 
@@ -22,9 +23,8 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("checklists")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyChecklistDefinition>, ReadOnlyDictionary<uint, bool>>
             Checklists { get; init; } =
-            Defaults
-                .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyChecklistDefinition>,
-                    ReadOnlyDictionary<uint, bool>>();
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyChecklistDefinition>, ReadOnlyDictionary<uint, bool>>
+                .Empty;
 
         /// <summary>
         ///     Data related to your progress on the current season's artifact that is the same across characters.

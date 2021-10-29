@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Artifacts;
 using DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 
@@ -48,7 +49,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("derivedItemCategories")]
         public ReadOnlyCollection<DestinyDerivedItemCategoryDefinition> DerivedItemCategories { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyDerivedItemCategoryDefinition>();
+            ReadOnlyCollections<DestinyDerivedItemCategoryDefinition>.Empty;
 
         public bool DeepEquals(DestinyItemPreviewBlockDefinition other)
         {

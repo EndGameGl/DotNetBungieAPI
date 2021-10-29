@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Records
 {
@@ -7,11 +8,11 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Records
     {
         [JsonPropertyName("intervalObjectives")]
         public ReadOnlyCollection<DestinyRecordIntervalObjective> IntervalObjectives { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyRecordIntervalObjective>();
+            ReadOnlyCollections<DestinyRecordIntervalObjective>.Empty;
 
         [JsonPropertyName("intervalRewards")]
         public ReadOnlyCollection<DestinyRecordIntervalRewards> IntervalRewards { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyRecordIntervalRewards>();
+            ReadOnlyCollections<DestinyRecordIntervalRewards>.Empty;
 
         [JsonPropertyName("isIntervalVersionedFromNormalRecord")]
         public bool IsIntervalVersionedFromNormalRecord { get; init; }

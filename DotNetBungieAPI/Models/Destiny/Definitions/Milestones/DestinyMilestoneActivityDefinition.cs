@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
@@ -37,9 +38,9 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
         [JsonPropertyName("variants")]
         public
             ReadOnlyDictionary<DefinitionHashPointer<DestinyActivityDefinition>,
-                DestinyMilestoneActivityVariantDefinition> Variants { get; init; } = Defaults
-            .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyActivityDefinition>,
-                DestinyMilestoneActivityVariantDefinition>();
+                DestinyMilestoneActivityVariantDefinition> Variants { get; init; } =
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyActivityDefinition>,
+                DestinyMilestoneActivityVariantDefinition>.Empty;
 
         public bool DeepEquals(DestinyMilestoneActivityDefinition other)
         {

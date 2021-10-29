@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Applications
 {
@@ -71,7 +72,6 @@ namespace DotNetBungieAPI.Models.Applications
         ///     owner.
         /// </summary>
         [JsonPropertyName("team")]
-        public ReadOnlyCollection<ApplicationDeveloper> Team { get; init; } =
-            Defaults.EmptyReadOnlyCollection<ApplicationDeveloper>();
+        public ReadOnlyCollection<ApplicationDeveloper> Team { get; init; } = ReadOnlyCollections<ApplicationDeveloper>.Empty;
     }
 }

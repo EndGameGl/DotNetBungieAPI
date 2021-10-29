@@ -20,7 +20,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.EnergyTypes
         ///     A variant of the icon that is transparent and colorless.
         /// </summary>
         [JsonPropertyName("transparentIconPath")]
-        public DestinyResource TransparentIconPath { get; init; }
+        public BungieNetResource TransparentIconPath { get; init; }
 
         /// <summary>
         ///     If TRUE, the game shows this Energy type's icon. Otherwise, it doesn't. Whether you show it or not is up to you.

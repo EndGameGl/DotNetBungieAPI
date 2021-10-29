@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.BreakerTypes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Collectibles;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
@@ -36,7 +37,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("tooltipNotifications")]
         public ReadOnlyCollection<DestinyItemTooltipNotification> TooltipNotifications { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemTooltipNotification>();
+            ReadOnlyCollections<DestinyItemTooltipNotification>.Empty;
 
         /// <summary>
         ///     If this item has a collectible related to it, this is that collectible entry.
@@ -52,7 +53,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         ///     this can be overridden by the iconWatermarkShelved property.
         /// </summary>
         [JsonPropertyName("iconWatermark")]
-        public DestinyResource IconWatermark { get; init; }
+        public BungieNetResource IconWatermark { get; init; }
 
         /// <summary>
         ///     If available, this is the 'shelved' release watermark overlay for the icon. If the item version has a power cap
@@ -60,14 +61,14 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         ///     watermark overlay.
         /// </summary>
         [JsonPropertyName("iconWatermarkShelved")]
-        public DestinyResource IconWatermarkShelved { get; init; }
+        public BungieNetResource IconWatermarkShelved { get; init; }
 
         /// <summary>
         ///     A secondary icon associated with the item. Currently this is used in very context specific applications, such as
         ///     Emblem Nameplates.
         /// </summary>
         [JsonPropertyName("secondaryIcon")]
-        public DestinyResource SecondaryIcon { get; init; }
+        public BungieNetResource SecondaryIcon { get; init; }
 
         /// <summary>
         ///     Pulled from the secondary icon, this is the "secondary background" of the secondary icon. Confusing? Sure, that's
@@ -75,14 +76,14 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         ///     We'll see if that holds up, but at least for now it explains what this image is a bit better.
         /// </summary>
         [JsonPropertyName("secondaryOverlay")]
-        public DestinyResource SecondaryOverlay { get; init; }
+        public BungieNetResource SecondaryOverlay { get; init; }
 
         /// <summary>
         ///     Pulled from the Secondary Icon, this is the "special" background for the item. For Emblems, this is the background
         ///     image used on the Details view: but it need not be limited to that for other types of items.
         /// </summary>
         [JsonPropertyName("secondarySpecial")]
-        public DestinyResource SecondarySpecial { get; init; }
+        public BungieNetResource SecondarySpecial { get; init; }
 
         /// <summary>
         ///     Sometimes, an item will have a background color. Most notably this occurs with Emblems, who use the Background
@@ -98,7 +99,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         ///     Note that not all items have screenshots: particularly not any non-equippable items.
         /// </summary>
         [JsonPropertyName("screenshot")]
-        public DestinyResource Screenshot { get; init; }
+        public BungieNetResource Screenshot { get; init; }
 
         /// <summary>
         ///     The localized title/name of the item's type. This can be whatever the designers want, and has no guarantee of
@@ -287,7 +288,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("investmentStats")]
         public ReadOnlyCollection<DestinyItemInvestmentStatDefinition> InvestmentStats { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemInvestmentStatDefinition>();
+            ReadOnlyCollections<DestinyItemInvestmentStatDefinition>.Empty;
 
         /// <summary>
         ///     If the item has any *intrinsic* Perks (Perks that it will provide regardless of Sockets, Talent Grid, and other
@@ -295,7 +296,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("perks")]
         public ReadOnlyCollection<DestinyItemPerkEntryDefinition> Perks { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemPerkEntryDefinition>();
+            ReadOnlyCollections<DestinyItemPerkEntryDefinition>.Empty;
 
         /// <summary>
         ///     If the item has any related Lore (DestinyLoreDefinition), this will be it.
@@ -318,7 +319,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("animations")]
         public ReadOnlyCollection<DestinyAnimationReference> Animations { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyAnimationReference>();
+            ReadOnlyCollections<DestinyAnimationReference>.Empty;
 
         /// <summary>
         ///     BNet may forbid the execution of actions on this item via the API. If that is occurring, allowActions will be set
@@ -332,7 +333,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("links")]
         public ReadOnlyCollection<HyperlinkReference> Links { get; init; } =
-            Defaults.EmptyReadOnlyCollection<HyperlinkReference>();
+            ReadOnlyCollections<HyperlinkReference>.Empty;
 
         /// <summary>
         ///     The boolean will indicate to us (and you!) whether something *could* happen when you transfer this item from the
@@ -364,7 +365,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("itemCategoryHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>> ItemCategories { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyItemCategoryDefinition>>.Empty;
 
         /// <summary>
         ///     In Destiny 1, we identified some items as having particular categories that we'd like to know about for various
@@ -426,7 +427,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("damageTypeHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyDamageTypeDefinition>> DamageTypes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyDamageTypeDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyDamageTypeDefinition>>.Empty;
 
         /// <summary>
         ///     This is the list of all damage types that we know ahead of time the item can take on. Unfortunately, this does not
@@ -444,7 +445,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("damageTypes")]
         public ReadOnlyCollection<DamageType> DamageTypeEnumValues { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DamageType>();
+            ReadOnlyCollections<DamageType>.Empty;
 
         /// <summary>
         ///     If the item has a damage type that could be considered to be default, it will be populated here.
@@ -478,14 +479,14 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         ///     IDs come from the game and don't map to any content, but should still be useful.
         /// </summary>
         [JsonPropertyName("traitIds")]
-        public ReadOnlyCollection<string> TraitIds { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
+        public ReadOnlyCollection<string> TraitIds { get; init; } = ReadOnlyCollections<string>.Empty;
 
         /// <summary>
         ///     These are the corresponding trait definitions for the entries in traitIds.
         /// </summary>
         [JsonPropertyName("traitHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyTraitDefinition>>.Empty;
 
         public bool DeepEquals(DestinyInventoryItemDefinition other)
         {

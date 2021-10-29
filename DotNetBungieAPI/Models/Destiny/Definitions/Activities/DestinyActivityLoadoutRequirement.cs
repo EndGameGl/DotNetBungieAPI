@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.EquipmentSlots;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
@@ -14,11 +15,11 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
         [JsonPropertyName("allowedEquippedItemHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>
             AllowedEquippedItems { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 
         [JsonPropertyName("allowedWeaponSubTypes")]
         public ReadOnlyCollection<DestinyItemSubType> AllowedWeaponSubTypes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemSubType>();
+            ReadOnlyCollections<DestinyItemSubType>.Empty;
 
         public bool DeepEquals(DestinyActivityLoadoutRequirement other)
         {

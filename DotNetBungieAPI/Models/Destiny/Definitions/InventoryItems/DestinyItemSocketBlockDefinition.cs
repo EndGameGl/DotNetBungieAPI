@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
@@ -21,7 +22,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("intrinsicSockets")]
         public ReadOnlyCollection<DestinyItemIntrinsicSocketEntryDefinition> IntrinsicSockets { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemIntrinsicSocketEntryDefinition>();
+            ReadOnlyCollections<DestinyItemIntrinsicSocketEntryDefinition>.Empty;
 
         /// <summary>
         ///     A convenience property, that refers to the sockets in the "sockets" property, pre-grouped by category and ordered
@@ -29,14 +30,14 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("socketCategories")]
         public ReadOnlyCollection<DestinyItemSocketCategoryDefinition> SocketCategories { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemSocketCategoryDefinition>();
+            ReadOnlyCollections<DestinyItemSocketCategoryDefinition>.Empty;
 
         /// <summary>
         ///     Each non-intrinsic (or mutable) socket on an item is defined here.
         /// </summary>
         [JsonPropertyName("socketEntries")]
         public ReadOnlyCollection<DestinyItemSocketEntryDefinition> SocketEntries { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemSocketEntryDefinition>();
+            ReadOnlyCollections<DestinyItemSocketEntryDefinition>.Empty;
 
         public bool DeepEquals(DestinyItemSocketBlockDefinition other)
         {

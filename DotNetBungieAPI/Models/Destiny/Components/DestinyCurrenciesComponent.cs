@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
@@ -27,6 +28,6 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("itemQuantities")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, object>
             ItemQuantities { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, object>();
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>, object>.Empty;
     }
 }

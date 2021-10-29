@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes;
@@ -24,7 +25,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("availableActivities")]
         public ReadOnlyCollection<DestinyActivity> AvailableActivities { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivity>();
+            ReadOnlyCollections<DestinyActivity>.Empty;
 
         /// <summary>
         ///     If the user is in an activity, this will be the hash of the Activity being played. Note that you must combine this
@@ -56,14 +57,14 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("currentActivityModeHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>>
             CurrentActivityModes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModeDefinition>>.Empty;
 
         /// <summary>
         ///     All Activity Modes that apply to the current activity being played, in enum form.
         /// </summary>
         [JsonPropertyName("currentActivityModeTypes")]
         public ReadOnlyCollection<DestinyActivityModeType> CurrentActivityModeTypes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityModeType>();
+            ReadOnlyCollections<DestinyActivityModeType>.Empty;
 
         /// <summary>
         ///     If the user is in a playlist, this is the hash identifier for the playlist that they chose.

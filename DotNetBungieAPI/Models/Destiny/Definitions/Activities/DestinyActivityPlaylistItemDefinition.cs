@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
@@ -35,14 +36,14 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
         /// </summary>
         [JsonPropertyName("activityModeHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>> ActivityModes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModeDefinition>>.Empty;
 
         /// <summary>
         ///     The activity modes - if any - in enum form. Because we can't seem to escape the enums.
         /// </summary>
         [JsonPropertyName("activityModeTypes")]
         public ReadOnlyCollection<DestinyActivityModeType> ActivityModeTypes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityModeType>();
+            ReadOnlyCollections<DestinyActivityModeType>.Empty;
 
         [JsonPropertyName("weight")] public int Weight { get; init; }
 

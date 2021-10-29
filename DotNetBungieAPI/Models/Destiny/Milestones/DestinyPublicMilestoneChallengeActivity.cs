@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModifiers;
 using DotNetBungieAPI.Models.Destiny.Definitions.Objectives;
@@ -15,7 +16,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         [JsonPropertyName("challengeObjectiveHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>>
             ChallengeObjectives { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyObjectiveDefinition>>.Empty;
 
         /// <summary>
         ///     If the activity has modifiers, this will be the list of modifiers that all variants have in common. Perform lookups
@@ -27,7 +28,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("modifierHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>> Modifiers { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModifierDefinition>>.Empty;
 
         /// <summary>
         ///     If returned, this is the index into the DestinyActivityDefinition's "loadouts" property, indicating the currently
@@ -41,7 +42,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         ///     entities to relate them to: relating these hashes to something human readable is up to you unfortunately.
         /// </summary>
         [JsonPropertyName("phaseHashes")]
-        public ReadOnlyCollection<uint> PhaseHashes { get; init; } = Defaults.EmptyReadOnlyCollection<uint>();
+        public ReadOnlyCollection<uint> PhaseHashes { get; init; } = ReadOnlyCollections<uint>.Empty;
 
         /// <summary>
         ///     The set of activity options for this activity, keyed by an identifier that's unique for this activity (not
@@ -58,6 +59,6 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("booleanActivityOptions")]
         public ReadOnlyDictionary<uint, bool> BooleanActivityOptions { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<uint, bool>();
+            ReadOnlyDictionaries<uint, bool>.Empty;
     }
 }

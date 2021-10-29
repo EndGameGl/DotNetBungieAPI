@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
@@ -16,7 +17,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         [JsonPropertyName("availableMetricCategoryNodeHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>
             AvailableMetricCategoryNodes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
 
         public bool DeepEquals(DestinyItemMetricBlockDefinition other)
         {

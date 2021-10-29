@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Artifacts;
 
 namespace DotNetBungieAPI.Models.Destiny.Artifacts
@@ -15,6 +16,6 @@ namespace DotNetBungieAPI.Models.Destiny.Artifacts
 
         [JsonPropertyName("tiers")]
         public ReadOnlyCollection<DestinyArtifactTier> Tiers { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyArtifactTier>();
+            ReadOnlyCollections<DestinyArtifactTier>.Empty;
     }
 }

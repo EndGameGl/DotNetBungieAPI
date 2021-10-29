@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Stats;
 using DotNetBungieAPI.Models.Destiny.Items;
 
@@ -20,6 +21,6 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("stats")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, DestinyStat> Stats { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, DestinyStat>();
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyStatDefinition>, DestinyStat>.Empty;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
 {
@@ -14,7 +15,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
         ///     The list of node indexes for the exclusive set. Historically, these were indexes.
         /// </summary>
         [JsonPropertyName("nodeIndexes")]
-        public ReadOnlyCollection<int> NodeIndexes { get; init; } = Defaults.EmptyReadOnlyCollection<int>();
+        public ReadOnlyCollection<int> NodeIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
 
         public bool DeepEquals(DestinyTalentNodeExclusiveSetDefinition other)
         {

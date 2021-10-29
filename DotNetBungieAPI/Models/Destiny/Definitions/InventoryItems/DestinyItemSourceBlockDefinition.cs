@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.RewardSources;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
@@ -14,14 +15,14 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("sourceHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyRewardSourceDefinition>> RewardSources { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyRewardSourceDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyRewardSourceDefinition>>.Empty;
 
         /// <summary>
         ///     A collection of details about the stats that were computed for the ways we found that the item could be spawned.
         /// </summary>
         [JsonPropertyName("sources")]
         public ReadOnlyCollection<DestinyItemSourceDefinition> Sources { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemSourceDefinition>();
+            ReadOnlyCollections<DestinyItemSourceDefinition>.Empty;
 
         /// <summary>
         ///     If we found that this item is exclusive to a specific platform, this will be set to the BungieMembershipType
@@ -35,7 +36,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("vendorSources")]
         public ReadOnlyCollection<DestinyItemVendorSourceReference> VendorSources { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemVendorSourceReference>();
+            ReadOnlyCollections<DestinyItemVendorSourceReference>.Empty;
 
         public bool DeepEquals(DestinyItemSourceBlockDefinition other)
         {

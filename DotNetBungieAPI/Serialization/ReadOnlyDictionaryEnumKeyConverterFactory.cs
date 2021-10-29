@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Serialization
 {
@@ -54,7 +55,7 @@ namespace DotNetBungieAPI.Serialization
                 JsonSerializerOptions options)
             {
                 if (reader.TokenType == JsonTokenType.Null)
-                    return Defaults.EmptyReadOnlyDictionary<TKey, TValue>();
+                    return ReadOnlyDictionaries<TKey, TValue>.Empty;
                 IDictionary<TKey, TValue> tempDictionary = new Dictionary<TKey, TValue>();
                 while (reader.Read())
                 {

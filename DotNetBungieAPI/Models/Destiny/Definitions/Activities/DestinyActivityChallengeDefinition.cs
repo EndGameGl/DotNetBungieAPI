@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Objectives;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
@@ -17,7 +18,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
         /// </summary>
         [JsonPropertyName("dummyRewards")]
         public ReadOnlyCollection<DestinyItemQuantity> DummyRewards { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
+            ReadOnlyCollections<DestinyItemQuantity>.Empty;
 
         [JsonPropertyName("inhibitRewardsUnlockHash")]
         public int InhibitRewardsUnlockHash { get; init; }

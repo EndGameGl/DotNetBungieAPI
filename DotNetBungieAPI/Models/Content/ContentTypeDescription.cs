@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Content
 {
@@ -20,18 +21,18 @@ namespace DotNetBungieAPI.Models.Content
 
         [JsonPropertyName("properties")]
         public ReadOnlyCollection<ContentTypeProperty> Properties { get; init; } =
-            Defaults.EmptyReadOnlyCollection<ContentTypeProperty>();
+            ReadOnlyCollections<ContentTypeProperty>.Empty;
 
         [JsonPropertyName("tagMetadata")]
         public ReadOnlyCollection<TagMetadataDefinition> TagMetadata { get; init; } =
-            Defaults.EmptyReadOnlyCollection<TagMetadataDefinition>();
+            ReadOnlyCollections<TagMetadataDefinition>.Empty;
 
         [JsonPropertyName("tagMetadataItems")]
         public ReadOnlyDictionary<string, TagMetadataItem> TagMetadataItems { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<string, TagMetadataItem>();
+            ReadOnlyDictionaries<string, TagMetadataItem>.Empty;
 
         [JsonPropertyName("usageExamples")]
-        public ReadOnlyCollection<string> UsageExamples { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
+        public ReadOnlyCollection<string> UsageExamples { get; init; } = ReadOnlyCollections<string>.Empty;
 
         [JsonPropertyName("showInContentEditor")]
         public bool ShowInContentEditor { get; init; }
@@ -54,13 +55,12 @@ namespace DotNetBungieAPI.Models.Content
         [JsonPropertyName("bulkUploadable")] public bool BulkUploadable { get; init; }
 
         [JsonPropertyName("previews")]
-        public ReadOnlyCollection<ContentPreview> Previews { get; init; } =
-            Defaults.EmptyReadOnlyCollection<ContentPreview>();
+        public ReadOnlyCollection<ContentPreview> Previews { get; init; } = ReadOnlyCollections<ContentPreview>.Empty;
 
         [JsonPropertyName("suppressCmsPath")] public bool SuppressCmsPath { get; init; }
 
         [JsonPropertyName("propertySections")]
         public ReadOnlyCollection<ContentTypePropertySection> PropertySections { get; init; } =
-            Defaults.EmptyReadOnlyCollection<ContentTypePropertySection>();
+            ReadOnlyCollections<ContentTypePropertySection>.Empty;
     }
 }

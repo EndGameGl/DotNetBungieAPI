@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
 {
@@ -24,6 +25,6 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         ///     choice.
         /// </summary>
         [JsonPropertyName("artRegions")]
-        public ReadOnlyDictionary<int, int> ArtRegions { get; init; } = Defaults.EmptyReadOnlyDictionary<int, int>();
+        public ReadOnlyDictionary<int, int> ArtRegions { get; init; } = ReadOnlyDictionaries<int, int>.Empty;
     }
 }

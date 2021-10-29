@@ -21,7 +21,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Seasons
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
         [JsonPropertyName("backgroundImagePath")]
-        public DestinyResource BackgroundImagePath { get; init; }
+        public BungieNetResource BackgroundImagePath { get; init; }
 
         [JsonPropertyName("seasonNumber")] public int SeasonNumber { get; init; }
         [JsonPropertyName("startDate")] public DateTime? StartDate { get; init; }

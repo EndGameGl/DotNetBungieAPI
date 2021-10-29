@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
 {
@@ -89,7 +90,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         ///     runtime.
         /// </summary>
         [JsonPropertyName("vendorItemIndexes")]
-        public ReadOnlyCollection<int> VendorItemIndexes { get; init; } = Defaults.EmptyReadOnlyCollection<int>();
+        public ReadOnlyCollection<int> VendorItemIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
 
         /// <summary>
         ///     The localized title of the category.

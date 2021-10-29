@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.BreakerTypes;
 using DotNetBungieAPI.Models.Destiny.Definitions.DamageTypes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Unlocks;
@@ -80,7 +81,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("unlockHashesRequiredToEquip")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyUnlockDefinition>>
             UnlocksRequiredToEquip { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyUnlockDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyUnlockDefinition>>.Empty;
 
         /// <summary>
         ///     If you cannot equip the item, this is a flags enum that enumerates all of the reasons why you couldn't equip the

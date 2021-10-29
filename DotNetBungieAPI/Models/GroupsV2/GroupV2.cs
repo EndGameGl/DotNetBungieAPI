@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.GroupsV2
 {
@@ -22,7 +23,7 @@ namespace DotNetBungieAPI.Models.GroupsV2
         [JsonPropertyName("about")] public string About { get; init; }
 
         [JsonPropertyName("tags")]
-        public ReadOnlyCollection<string> Tags { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
+        public ReadOnlyCollection<string> Tags { get; init; } = ReadOnlyCollections<string>.Empty;
 
         [JsonPropertyName("memberCount")] public int MemberCount { get; init; }
 

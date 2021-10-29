@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.User
 {
@@ -20,6 +21,6 @@ namespace DotNetBungieAPI.Models.User
         /// </summary>
         [JsonPropertyName("viewSettings")]
         public ReadOnlyCollection<EmailViewDefinitionSetting> ViewSettings { get; init; } =
-            Defaults.EmptyReadOnlyCollection<EmailViewDefinitionSetting>();
+            ReadOnlyCollections<EmailViewDefinitionSetting>.Empty;
     }
 }

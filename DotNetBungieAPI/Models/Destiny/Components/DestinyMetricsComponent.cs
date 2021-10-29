@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
@@ -8,7 +9,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
     {
         [JsonPropertyName("metrics")]
         public ReadOnlyDictionary<uint, DestinyMetricComponent> Metrics { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<uint, DestinyMetricComponent>();
+            ReadOnlyDictionaries<uint, DestinyMetricComponent>.Empty;
 
         [JsonPropertyName("metricsRootNodeHash")]
         public DefinitionHashPointer<DestinyPresentationNodeDefinition> MetricRootNode { get; init; } =

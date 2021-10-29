@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
@@ -22,7 +23,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("insertionRules")]
         public ReadOnlyCollection<DestinyPlugRuleDefinition> InsertionRules { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyPlugRuleDefinition>();
+            ReadOnlyCollections<DestinyPlugRuleDefinition>.Empty;
 
         /// <summary>
         ///     The string identifier for the plug's category. Use the socket's DestinySocketTypeDefinition.plugWhitelist to

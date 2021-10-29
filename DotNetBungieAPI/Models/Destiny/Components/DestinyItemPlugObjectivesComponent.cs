@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using DotNetBungieAPI.Models.Destiny.Quests;
 
@@ -25,8 +26,8 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("objectivesPerPlug")]
         public
             ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>,
-                ReadOnlyCollection<DestinyObjectiveProgress>> ObjectivesPerPlug { get; init; } = Defaults
-            .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>,
-                ReadOnlyCollection<DestinyObjectiveProgress>>();
+                ReadOnlyCollection<DestinyObjectiveProgress>> ObjectivesPerPlug { get; init; } =
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>,
+                ReadOnlyCollection<DestinyObjectiveProgress>>.Empty;
     }
 }

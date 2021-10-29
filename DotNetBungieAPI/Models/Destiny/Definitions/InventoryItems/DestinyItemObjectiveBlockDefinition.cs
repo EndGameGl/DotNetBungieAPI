@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.Objectives;
 
@@ -21,7 +22,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("displayActivityHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityDefinition>> DisplayActivities { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyActivityDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyActivityDefinition>>.Empty;
 
         /// <summary>
         ///     The localized string for narrative text related to this quest step, if any.
@@ -35,7 +36,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("objectiveHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>> Objectives { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyObjectiveDefinition>>.Empty;
 
         /// <summary>
         ///     The localized string describing an action to be performed associated with the objectives, if any.
@@ -48,7 +49,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("perObjectiveDisplayProperties")]
         public ReadOnlyCollection<DestinyObjectiveDisplayProperties> PerObjectiveDisplayProperties { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyObjectiveDisplayProperties>();
+            ReadOnlyCollections<DestinyObjectiveDisplayProperties>.Empty;
 
         /// <summary>
         ///     A hashed value for the questTypeIdentifier, because apparently I like to be redundant.

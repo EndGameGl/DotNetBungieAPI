@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.PlugSets
@@ -38,7 +39,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.PlugSets
         /// </summary>
         [JsonPropertyName("reusablePlugItems")]
         public ReadOnlyCollection<DestinyItemSocketEntryPlugItemRandomizedDefinition> ReusablePlugItems { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemSocketEntryPlugItemRandomizedDefinition>();
+            ReadOnlyCollections<DestinyItemSocketEntryPlugItemRandomizedDefinition>.Empty;
 
         public bool DeepEquals(DestinyPlugSetDefinition other)
         {

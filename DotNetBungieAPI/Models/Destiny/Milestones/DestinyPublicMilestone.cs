@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
 using DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 
@@ -26,11 +27,11 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("availableQuests")]
         public ReadOnlyCollection<DestinyPublicMilestoneQuest> AvailableQuests { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyPublicMilestoneQuest>();
+            ReadOnlyCollections<DestinyPublicMilestoneQuest>.Empty;
 
         [JsonPropertyName("activities")]
         public ReadOnlyCollection<DestinyPublicMilestoneChallengeActivity> Activities { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyPublicMilestoneChallengeActivity>();
+            ReadOnlyCollections<DestinyPublicMilestoneChallengeActivity>.Empty;
 
         /// <summary>
         ///     Sometimes milestones - or activities active in milestones - will have relevant vendors. These are the vendors that
@@ -38,7 +39,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("vendorHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyVendorDefinition>> VendorPointers { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyVendorDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyVendorDefinition>>.Empty;
 
         /// <summary>
         ///     This is why we can't have nice things. This is the ordered list of vendors to be shown that relate to this
@@ -46,7 +47,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("vendors")]
         public ReadOnlyCollection<DestinyPublicMilestoneVendor> Vendors { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyPublicMilestoneVendor>();
+            ReadOnlyCollections<DestinyPublicMilestoneVendor>.Empty;
 
         /// <summary>
         ///     If known, this is the date when the Milestone started/became active.

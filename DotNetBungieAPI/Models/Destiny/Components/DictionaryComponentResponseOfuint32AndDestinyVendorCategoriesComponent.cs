@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
 {
@@ -7,6 +8,6 @@ namespace DotNetBungieAPI.Models.Destiny.Components
     {
         [JsonPropertyName("data")]
         public ReadOnlyDictionary<uint, DestinyVendorCategoriesComponent> Data { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<uint, DestinyVendorCategoriesComponent>();
+            ReadOnlyDictionaries<uint, DestinyVendorCategoriesComponent>.Empty;
     }
 }

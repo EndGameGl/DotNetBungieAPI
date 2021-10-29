@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Vendors;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
@@ -16,6 +17,6 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("groups")]
         public ReadOnlyCollection<DestinyVendorGroup> Groups { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyVendorGroup>();
+            ReadOnlyCollections<DestinyVendorGroup>.Empty;
     }
 }

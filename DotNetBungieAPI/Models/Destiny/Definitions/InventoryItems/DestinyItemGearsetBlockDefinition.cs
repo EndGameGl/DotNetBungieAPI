@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
@@ -20,7 +21,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("itemList")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> Items { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 
         public bool DeepEquals(DestinyItemGearsetBlockDefinition other)
         {

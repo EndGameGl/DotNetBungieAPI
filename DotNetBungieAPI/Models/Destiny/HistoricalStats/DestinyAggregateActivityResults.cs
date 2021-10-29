@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.HistoricalStats
 {
@@ -10,6 +11,6 @@ namespace DotNetBungieAPI.Models.Destiny.HistoricalStats
         /// </summary>
         [JsonPropertyName("activities")]
         public ReadOnlyCollection<DestinyAggregateActivityStats> Activities { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyAggregateActivityStats>();
+            ReadOnlyCollections<DestinyAggregateActivityStats>.Empty;
     }
 }

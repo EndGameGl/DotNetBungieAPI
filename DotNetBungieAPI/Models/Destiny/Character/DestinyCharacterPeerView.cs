@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Character
 {
@@ -11,6 +12,6 @@ namespace DotNetBungieAPI.Models.Destiny.Character
     {
         [JsonPropertyName("equipment")]
         public ReadOnlyCollection<DestinyItemPeerView> Equipment { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemPeerView>();
+            ReadOnlyCollections<DestinyItemPeerView>.Empty;
     }
 }

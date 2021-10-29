@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using DotNetBungieAPI.Extensions;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Forum;
 using DotNetBungieAPI.Models.Queries;
@@ -42,7 +43,7 @@ namespace DotNetBungieAPI.Services.ApiAccess
                 .AddUrlParam(((int)quickDate).ToString())
                 .AddUrlParam(((int)categoryFilter).ToString())
                 .AddQueryParam("tagstring", tagstring, () => string.IsNullOrWhiteSpace(tagstring))
-                .AddQueryParam("locales", string.Join(",", locales.Select(x => x.LocaleToString())))
+                .AddQueryParam("locales", string.Join(",", locales.Select(x => x.AsString())))
                 .Build();
 
             return await _dotNetBungieApiHttpClient
@@ -65,7 +66,7 @@ namespace DotNetBungieAPI.Services.ApiAccess
                 .AddUrlParam(((byte)sort).ToString())
                 .AddUrlParam(((int)quickDate).ToString())
                 .AddUrlParam(((int)categoryFilter).ToString())
-                .AddQueryParam("locales", string.Join(",", locales.Select(x => x.LocaleToString())))
+                .AddQueryParam("locales", string.Join(",", locales.Select(x => x.AsString())))
                 .Build();
 
             return await _dotNetBungieApiHttpClient

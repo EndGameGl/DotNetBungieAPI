@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
 namespace DotNetBungieAPI.Models.Destiny.Milestones
@@ -14,6 +15,6 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
 
         [JsonPropertyName("itemHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> Items { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets
 {
@@ -19,7 +20,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets
         /// </summary>
         [JsonPropertyName("materials")]
         public ReadOnlyCollection<DestinyMaterialRequirement> Materials { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyMaterialRequirement>();
+            ReadOnlyCollections<DestinyMaterialRequirement>.Empty;
 
         public bool DeepEquals(DestinyMaterialRequirementSetDefinition other)
         {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Trending
 {
@@ -77,8 +78,7 @@ namespace DotNetBungieAPI.Models.Trending
         ///     within it. This is the ordered list of those to display under the Container's header.
         /// </summary>
         [JsonPropertyName("items")]
-        public ReadOnlyCollection<TrendingEntry> Items { get; init; } =
-            Defaults.EmptyReadOnlyCollection<TrendingEntry>();
+        public ReadOnlyCollection<TrendingEntry> Items { get; init; } = ReadOnlyCollections<TrendingEntry>.Empty;
 
         /// <summary>
         ///     If the entry has a date at which it was created, this is that date.

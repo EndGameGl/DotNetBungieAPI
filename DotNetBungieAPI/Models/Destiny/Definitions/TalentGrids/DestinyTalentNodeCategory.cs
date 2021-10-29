@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
@@ -37,7 +38,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
         ///     this Category.
         /// </summary>
         [JsonPropertyName("nodeHashes")]
-        public ReadOnlyCollection<uint> NodeHashes { get; init; } = Defaults.EmptyReadOnlyCollection<uint>();
+        public ReadOnlyCollection<uint> NodeHashes { get; init; } = ReadOnlyCollections<uint>.Empty;
 
         public bool DeepEquals(DestinyTalentNodeCategory other)
         {

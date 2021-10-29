@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Seasons;
 using DotNetBungieAPI.Models.User;
 
@@ -42,7 +43,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         ///     A list of the character IDs, for further querying on your part.
         /// </summary>
         [JsonPropertyName("characterIds")]
-        public ReadOnlyCollection<long> CharacterIds { get; init; } = Defaults.EmptyReadOnlyCollection<long>();
+        public ReadOnlyCollection<long> CharacterIds { get; init; } = ReadOnlyCollections<long>.Empty;
 
         /// <summary>
         ///     A list of seasons that this profile owns. Unlike versionsOwned, these stay with the profile across Platforms, and
@@ -54,7 +55,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("seasonHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinySeasonDefinition>> Seasons { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinySeasonDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinySeasonDefinition>>.Empty;
 
         /// <summary>
         ///     If populated, this is a reference to the season that is currently active.

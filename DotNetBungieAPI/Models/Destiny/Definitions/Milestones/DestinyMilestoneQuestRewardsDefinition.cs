@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
 {
@@ -23,7 +24,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
         /// </summary>
         [JsonPropertyName("items")]
         public ReadOnlyCollection<DestinyMilestoneQuestRewardItem> Items { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyMilestoneQuestRewardItem>();
+            ReadOnlyCollections<DestinyMilestoneQuestRewardItem>.Empty;
 
         public bool DeepEquals(DestinyMilestoneQuestRewardsDefinition other)
         {

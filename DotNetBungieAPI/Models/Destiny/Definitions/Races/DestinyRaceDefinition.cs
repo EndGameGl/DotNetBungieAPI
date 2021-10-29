@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.Genders;
 
@@ -30,12 +31,12 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Races
         /// </summary>
         [JsonPropertyName("genderedRaceNames")]
         public ReadOnlyDictionary<string, string> GenderedRaceNames { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<string, string>();
+            ReadOnlyDictionaries<string, string>.Empty;
 
         [JsonPropertyName("genderedRaceNamesByGenderHash")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>
             GenderedRaceNamesByGender { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>();
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyGenderDefinition>, string>.Empty;
 
         public bool DeepEquals(DestinyRaceDefinition other)
         {

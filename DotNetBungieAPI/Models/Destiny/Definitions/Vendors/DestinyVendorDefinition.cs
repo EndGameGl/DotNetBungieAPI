@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Dates;
 using DotNetBungieAPI.Models.Destiny.Definitions.Factions;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
@@ -123,7 +124,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         ///     show the user the appropriate failure message for the item that can't be bought.
         /// </summary>
         [JsonPropertyName("failureStrings")]
-        public ReadOnlyCollection<string> FailureStrings { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
+        public ReadOnlyCollection<string> FailureStrings { get; init; } = ReadOnlyCollections<string>.Empty;
 
         /// <summary>
         ///     If we were able to predict the dates when this Vendor will be visible/available, this will be the list of those
@@ -131,7 +132,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         /// </summary>
         [JsonPropertyName("unlockRanges")]
         public ReadOnlyCollection<DateRange> UnlockRanges { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DateRange>();
+            ReadOnlyCollections<DateRange>.Empty;
 
         /// <summary>
         ///     The internal identifier for the Vendor. A holdover from the old days of Vendors, but we don't have time to refactor
@@ -144,13 +145,13 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         ///     A portrait of the Vendor's smiling mug. Or frothing tentacles.
         /// </summary>
         [JsonPropertyName("vendorPortrait")]
-        public DestinyResource VendorPortrait { get; init; }
+        public BungieNetResource VendorPortrait { get; init; }
 
         /// <summary>
         ///     If the vendor has a custom banner image, that can be found here.
         /// </summary>
         [JsonPropertyName("vendorBanner")]
-        public DestinyResource VendorBanner { get; init; }
+        public BungieNetResource VendorBanner { get; init; }
 
         /// <summary>
         ///     If a vendor is not enabled, we won't even save the vendor's definition, and we won't return any items or info about
@@ -185,7 +186,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         /// </summary>
         [JsonPropertyName("actions")]
         public ReadOnlyCollection<DestinyVendorActionDefinition> Actions { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyVendorActionDefinition>();
+            ReadOnlyCollections<DestinyVendorActionDefinition>.Empty;
 
         /// <summary>
         ///     These are the headers for sections of items that the vendor is selling. When you see items organized by category in
@@ -199,14 +200,14 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         /// </summary>
         [JsonPropertyName("categories")]
         public ReadOnlyCollection<DestinyVendorCategoryEntryDefinition> Categories { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyVendorCategoryEntryDefinition>();
+            ReadOnlyCollections<DestinyVendorCategoryEntryDefinition>.Empty;
 
         /// <summary>
         ///     See the categories property for a description of categories and why OriginalCategories exists.
         /// </summary>
         [JsonPropertyName("originalCategories")]
         public ReadOnlyCollection<DestinyVendorCategoryEntryDefinition> OriginalCategories { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyVendorCategoryEntryDefinition>();
+            ReadOnlyCollections<DestinyVendorCategoryEntryDefinition>.Empty;
 
         /// <summary>
         ///     Display Categories are different from "categories" in that these are specifically for visual grouping and display
@@ -217,7 +218,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         /// </summary>
         [JsonPropertyName("displayCategories")]
         public ReadOnlyCollection<DestinyDisplayCategoryDefinition> DisplayCategories { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyDisplayCategoryDefinition>();
+            ReadOnlyCollections<DestinyDisplayCategoryDefinition>.Empty;
 
         /// <summary>
         ///     In addition to selling items, vendors can have "interactions": UI where you "talk" with the vendor and they offer
@@ -225,7 +226,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         /// </summary>
         [JsonPropertyName("interactions")]
         public ReadOnlyCollection<DestinyVendorInteractionDefinition> Interactions { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyVendorInteractionDefinition>();
+            ReadOnlyCollections<DestinyVendorInteractionDefinition>.Empty;
 
         /// <summary>
         ///     If the vendor shows you items from your own inventory - such as the Vault vendor does - this data describes the UI
@@ -233,7 +234,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         /// </summary>
         [JsonPropertyName("inventoryFlyouts")]
         public ReadOnlyCollection<DestinyVendorInventoryFlyoutDefinition> InventoryFlyouts { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyVendorInventoryFlyoutDefinition>();
+            ReadOnlyCollections<DestinyVendorInventoryFlyoutDefinition>.Empty;
 
         /// <summary>
         ///     If the vendor sells items (or merely has a list of items to show like the "Sack" vendors do), this is the list of
@@ -245,7 +246,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         /// </summary>
         [JsonPropertyName("itemList")]
         public ReadOnlyCollection<DestinyVendorItemDefinition> ItemList { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyVendorItemDefinition>();
+            ReadOnlyCollections<DestinyVendorItemDefinition>.Empty;
 
         /// <summary>
         ///     BNet doesn't use this data yet, but it appears to be an optional list of flavor text about services that the Vendor
@@ -253,7 +254,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         /// </summary>
         [JsonPropertyName("services")]
         public ReadOnlyCollection<DestinyVendorServiceDefinition> Services { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyVendorServiceDefinition>();
+            ReadOnlyCollections<DestinyVendorServiceDefinition>.Empty;
 
         /// <summary>
         ///     If the Vendor is actually a vehicle for the transferring of items (like the Vault and Postmaster vendors), this
@@ -261,7 +262,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         /// </summary>
         [JsonPropertyName("acceptedItems")]
         public ReadOnlyCollection<DestinyVendorAcceptedItemDefinition> AcceptedItems { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyVendorAcceptedItemDefinition>();
+            ReadOnlyCollections<DestinyVendorAcceptedItemDefinition>.Empty;
 
         /// <summary>
         ///     As many of you know, Vendor data has historically been pretty brutal on the BNet servers. In an effort to reduce
@@ -278,7 +279,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         /// </summary>
         [JsonPropertyName("locations")]
         public ReadOnlyCollection<DestinyVendorLocationDefinition> Locations { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyVendorLocationDefinition>();
+            ReadOnlyCollections<DestinyVendorLocationDefinition>.Empty;
 
         /// <summary>
         ///     A vendor can be a part of 0 or 1 "groups" at a time: a group being a collection of Vendors related by either
@@ -287,7 +288,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         /// </summary>
         [JsonPropertyName("groups")]
         public ReadOnlyCollection<DestinyVendorGroupReference> Groups { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyVendorGroupReference>();
+            ReadOnlyCollections<DestinyVendorGroupReference>.Empty;
 
         /// <summary>
         ///     Some items don't make sense to return in the API, for example because they represent an action to be performed
@@ -297,7 +298,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         [JsonPropertyName("ignoreSaleItemHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>
             IgnoreSaleItems { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 
         [JsonPropertyName("unlockValueHash")] public uint UnlockValueHash { get; init; }
 

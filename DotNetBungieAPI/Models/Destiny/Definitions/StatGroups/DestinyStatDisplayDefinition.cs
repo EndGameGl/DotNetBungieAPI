@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Stats;
 using DotNetBungieAPI.Models.Interpolation;
 
@@ -29,7 +30,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.StatGroups
         /// </summary>
         [JsonPropertyName("displayInterpolation")]
         public ReadOnlyCollection<InterpolationPoint> DisplayInterpolation { get; init; } =
-            Defaults.EmptyReadOnlyCollection<InterpolationPoint>();
+            ReadOnlyCollections<InterpolationPoint>.Empty;
 
         /// <summary>
         ///     Regardless of the output of interpolation, this is the maximum possible value that the stat can be. It should also

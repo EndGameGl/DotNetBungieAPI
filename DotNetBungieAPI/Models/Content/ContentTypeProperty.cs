@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Content
 {
@@ -51,11 +52,11 @@ namespace DotNetBungieAPI.Models.Content
 
         [JsonPropertyName("attributes")]
         public ReadOnlyDictionary<string, string> Attributes { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<string, string>();
+            ReadOnlyDictionaries<string, string>.Empty;
 
         [JsonPropertyName("childProperties")]
         public ReadOnlyCollection<ContentTypeProperty> ChildProperties { get; init; } =
-            Defaults.EmptyReadOnlyCollection<ContentTypeProperty>();
+            ReadOnlyCollections<ContentTypeProperty>.Empty;
 
         [JsonPropertyName("contentTypeAllowed")]
         public string ContentTypeAllowed { get; init; }
@@ -66,11 +67,11 @@ namespace DotNetBungieAPI.Models.Content
 
         [JsonPropertyName("representationSelection")]
         public ReadOnlyDictionary<string, string> RepresentationSelection { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<string, string>();
+            ReadOnlyDictionaries<string, string>.Empty;
 
         [JsonPropertyName("defaultValues")]
         public ReadOnlyCollection<ContentTypeDefaultValue> DefaultValues { get; init; } =
-            Defaults.EmptyReadOnlyCollection<ContentTypeDefaultValue>();
+            ReadOnlyCollections<ContentTypeDefaultValue>.Empty;
 
         [JsonPropertyName("isExternalAllowed")]
         public bool IsExternalAllowed { get; init; }
@@ -86,7 +87,7 @@ namespace DotNetBungieAPI.Models.Content
         [JsonPropertyName("suppressProperty")] public bool SuppressProperty { get; init; }
 
         [JsonPropertyName("legalContentTypes")]
-        public ReadOnlyCollection<string> LegalContentTypes { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
+        public ReadOnlyCollection<string> LegalContentTypes { get; init; } = ReadOnlyCollections<string>.Empty;
 
         [JsonPropertyName("representationValidationString")]
         public string RepresentationValidationString { get; init; }

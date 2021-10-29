@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 
@@ -26,7 +27,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes
         ///     If this activity mode has a related PGCR image, this will be the path to said image.
         /// </summary>
         [JsonPropertyName("pgcrImage")]
-        public DestinyResource PgcrImage { get; init; }
+        public BungieNetResource PgcrImage { get; init; }
 
         /// <summary>
         ///     The Enumeration value for this Activity Mode. Pass this identifier into Stats endpoints to get aggregate stats for
@@ -68,7 +69,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes
         /// </summary>
         [JsonPropertyName("parentHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>> ParentModes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModeDefinition>>.Empty;
 
         /// <summary>
         ///     A Friendly identifier you can use for referring to this Activity Mode. We really only used this in our URLs, so...
@@ -83,8 +84,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes
         /// </summary>
         [JsonPropertyName("activityModeMappings")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyActivityDefinition>, DestinyActivityModeType>
-            ActivityModeMappings { get; init; } = Defaults
-            .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyActivityDefinition>, DestinyActivityModeType>();
+            ActivityModeMappings { get; init; } =
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyActivityDefinition>, DestinyActivityModeType>.Empty;
 
         /// <summary>
         ///     If FALSE, we want to ignore this type when we're showing activity modes in BNet UI. It will still be returned in
@@ -148,11 +149,6 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes
             foreach (var actMode in ActivityModeMappings.Keys) actMode.SetLocale(locale);
 
             foreach (var parentMode in ParentModes) parentMode.SetLocale(locale);
-        }
-
-        public override string ToString()
-        {
-            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
     }
 }

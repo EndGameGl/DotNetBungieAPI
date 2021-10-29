@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.Genders;
 
@@ -29,12 +30,12 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Classes
         /// </summary>
         [JsonPropertyName("genderedClassNames")]
         public ReadOnlyDictionary<string, string> GenderedClassNames { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<string, string>();
+            ReadOnlyDictionaries<string, string>.Empty;
 
         [JsonPropertyName("genderedClassNamesByGenderHash")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>
             GenderedClassNamesByGender { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>();
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyGenderDefinition>, string>.Empty;
 
         public bool DeepEquals(DestinyClassDefinition other)
         {
@@ -65,11 +66,6 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Classes
         public void SetPointerLocales(BungieLocales locale)
         {
             foreach (var name in GenderedClassNamesByGender) name.Key.SetLocale(locale);
-        }
-
-        public override string ToString()
-        {
-            return $"{Hash}: {DisplayProperties.Name}";
         }
     }
 }

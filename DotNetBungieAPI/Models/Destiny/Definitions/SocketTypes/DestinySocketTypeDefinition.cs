@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.SocketCategories;
 
@@ -39,7 +40,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.SocketTypes
         /// </summary>
         [JsonPropertyName("plugWhitelist")]
         public ReadOnlyCollection<DestinyPlugWhitelistEntryDefinition> PlugWhitelist { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyPlugWhitelistEntryDefinition>();
+            ReadOnlyCollections<DestinyPlugWhitelistEntryDefinition>.Empty;
 
         [JsonPropertyName("socketCategoryHash")]
         public DefinitionHashPointer<DestinySocketCategoryDefinition> SocketCategory { get; init; } =
@@ -73,7 +74,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.SocketTypes
 
         [JsonPropertyName("currencyScalars")]
         public ReadOnlyCollection<DestinySocketTypeScalarMaterialRequirementEntry> CurrencyScalars { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinySocketTypeScalarMaterialRequirementEntry>();
+            ReadOnlyCollections<DestinySocketTypeScalarMaterialRequirementEntry>.Empty;
 
         public bool DeepEquals(DestinySocketTypeDefinition other)
         {

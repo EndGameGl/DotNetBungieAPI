@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Queries
 {
@@ -7,6 +8,6 @@ namespace DotNetBungieAPI.Models.Queries
     {
         [JsonPropertyName("results")]
         public ReadOnlyCollection<FireteamResponse> Results { get; init; } =
-            Defaults.EmptyReadOnlyCollection<FireteamResponse>();
+            ReadOnlyCollections<FireteamResponse>.Empty;
     }
 }

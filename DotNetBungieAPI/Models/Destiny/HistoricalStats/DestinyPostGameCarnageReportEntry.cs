@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.HistoricalStats
 {
@@ -34,7 +35,7 @@ namespace DotNetBungieAPI.Models.Destiny.HistoricalStats
         /// </summary>
         [JsonPropertyName("values")]
         public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> Values { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<string, DestinyHistoricalStatsValue>();
+            ReadOnlyDictionaries<string, DestinyHistoricalStatsValue>.Empty;
 
         /// <summary>
         ///     Extended data extracted from the activity blob.

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Tokens
 {
@@ -21,6 +22,6 @@ namespace DotNetBungieAPI.Models.Tokens
 
         [JsonPropertyName("SkuOffers")]
         public ReadOnlyCollection<PartnerOfferHistoryResponse> SkuOffers { get; init; } =
-            Defaults.EmptyReadOnlyCollection<PartnerOfferHistoryResponse>();
+            ReadOnlyCollections<PartnerOfferHistoryResponse>.Empty;
     }
 }

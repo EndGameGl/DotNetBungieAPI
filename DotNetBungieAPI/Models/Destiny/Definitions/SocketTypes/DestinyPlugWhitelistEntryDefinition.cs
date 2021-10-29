@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.SocketTypes
@@ -45,7 +46,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.SocketTypes
         [JsonPropertyName("reinitializationPossiblePlugHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>
             ReinitializationPossiblePlugs { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 
         public bool DeepEquals(DestinyPlugWhitelistEntryDefinition other)
         {

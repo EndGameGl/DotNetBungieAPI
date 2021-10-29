@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.DamageTypes;
 using DotNetBungieAPI.Models.Destiny.Definitions.SandboxPerks;
@@ -108,7 +109,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
         /// </summary>
         [JsonPropertyName("perkHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinySandboxPerkDefinition>> Perks { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinySandboxPerkDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinySandboxPerkDefinition>>.Empty;
 
         /// <summary>
         ///     When the Talent Grid's progression reaches this value, the circular "progress bar" that surrounds the talent node
@@ -127,7 +128,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
         /// </summary>
         [JsonPropertyName("statHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyStatDefinition>> Stats { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyStatDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyStatDefinition>>.Empty;
 
         /// <summary>
         ///     If this is true, the step affects the item's Quality in some way. See DestinyInventoryItemDefinition for more
@@ -158,7 +159,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
         /// </summary>
         [JsonPropertyName("socketReplacements")]
         public ReadOnlyCollection<DestinyNodeSocketReplaceResponse> SocketReplacements { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyNodeSocketReplaceResponse>();
+            ReadOnlyCollections<DestinyNodeSocketReplaceResponse>.Empty;
 
         [JsonPropertyName("truePropertyIndex")]
         public int TruePropertyIndex { get; init; }

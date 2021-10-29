@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Genders;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Records
@@ -10,12 +11,12 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Records
 
         [JsonPropertyName("titlesByGender")]
         public ReadOnlyDictionary<DestinyGender, string> TitlesByGender { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<DestinyGender, string>();
+            ReadOnlyDictionaries<DestinyGender, string>.Empty;
 
         [JsonPropertyName("titlesByGenderHash")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>
             TitlesByGenderHash { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>();
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyGenderDefinition>, string>.Empty;
 
         [JsonPropertyName("gildingTrackingRecordHash")]
         public DefinitionHashPointer<DestinyRecordDefinition> GildingTrackingRecord { get; init; } =

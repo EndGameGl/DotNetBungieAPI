@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using DotNetBungieAPI.Clients;
-using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
-using DotNetBungieAPI.Services.ApiAccess.Interfaces;
-using DotNetBungieAPI.Repositories;
-using DotNetBungieAPI.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DotNetBungieAPI
+namespace DotNetBungieAPI.Models
 {
     /// <summary>
     ///     Class that points to a certain definition in database

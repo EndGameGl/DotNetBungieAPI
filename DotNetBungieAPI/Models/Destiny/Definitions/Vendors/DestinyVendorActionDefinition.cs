@@ -13,7 +13,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
 
         [JsonPropertyName("executeSeconds")] public int ExecuteSeconds { get; init; }
 
-        [JsonPropertyName("icon")] public DestinyResource Icon { get; init; }
+        [JsonPropertyName("icon")] public BungieNetResource Icon { get; init; }
 
         [JsonPropertyName("name")] public string Name { get; init; }
 

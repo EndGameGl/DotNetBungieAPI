@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
 {
@@ -28,7 +29,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
         /// </summary>
         [JsonPropertyName("rewardItems")]
         public ReadOnlyCollection<DestinyItemQuantity> RewardItems { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
+            ReadOnlyCollections<DestinyItemQuantity>.Empty;
 
         public bool DeepEquals(DestinyActivityRewardDefinition other)
         {

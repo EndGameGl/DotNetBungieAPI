@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Trending
 {
@@ -7,6 +8,6 @@ namespace DotNetBungieAPI.Models.Trending
     {
         [JsonPropertyName("categories")]
         public ReadOnlyCollection<TrendingCategory> Categories { get; init; } =
-            Defaults.EmptyReadOnlyCollection<TrendingCategory>();
+            ReadOnlyCollections<TrendingCategory>.Empty;
     }
 }

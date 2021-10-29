@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Artifacts
 {
@@ -16,7 +17,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Artifacts
         /// </summary>
         [JsonPropertyName("items")]
         public ReadOnlyCollection<DestinyArtifactTierItemDefinition> Items { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyArtifactTierItemDefinition>();
+            ReadOnlyCollections<DestinyArtifactTierItemDefinition>.Empty;
 
         /// <summary>
         ///     The minimum number of "unlock points" that you must have used before you can unlock items from this tier.

@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using DotNetBungieAPI.Models.Destiny.Quests;
 
@@ -17,7 +18,7 @@ namespace DotNetBungieAPI.Models.Destiny.Sockets
         /// </summary>
         [JsonPropertyName("plugObjectives")]
         public ReadOnlyCollection<DestinyObjectiveProgress> PlugObjectives { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyObjectiveProgress>();
+            ReadOnlyCollections<DestinyObjectiveProgress>.Empty;
 
         /// <summary>
         ///     The hash identifier of the DestinyInventoryItemDefinition that represents this plug.
@@ -45,8 +46,7 @@ namespace DotNetBungieAPI.Models.Destiny.Sockets
         ///     This list will be empty if the plug can be inserted.
         /// </summary>
         [JsonPropertyName("insertFailIndexes")]
-        public ReadOnlyCollection<int> InsertFailIndexes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<int>();
+        public ReadOnlyCollection<int> InsertFailIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
 
         /// <summary>
         ///     If a plug is not enabled, this will be populated with indexes into the plug item definition's plug.enabledRules
@@ -55,7 +55,6 @@ namespace DotNetBungieAPI.Models.Destiny.Sockets
         ///     This list will be empty if the plug is enabled.
         /// </summary>
         [JsonPropertyName("enableFailIndexes")]
-        public ReadOnlyCollection<int> EnableFailIndexes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<int>();
+        public ReadOnlyCollection<int> EnableFailIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
     }
 }

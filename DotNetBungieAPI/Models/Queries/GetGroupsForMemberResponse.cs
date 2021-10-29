@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.GroupsV2;
 
 namespace DotNetBungieAPI.Models.Queries
@@ -8,10 +9,9 @@ namespace DotNetBungieAPI.Models.Queries
     {
         [JsonPropertyName("areAllMembershipsInactive")]
         public ReadOnlyDictionary<long, bool> AreAllMembershipsInactive { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<long, bool>();
+            ReadOnlyDictionaries<long, bool>.Empty;
 
         [JsonPropertyName("results")]
-        public ReadOnlyCollection<GroupMembership> Results { get; init; } =
-            Defaults.EmptyReadOnlyCollection<GroupMembership>();
+        public ReadOnlyCollection<GroupMembership> Results { get; init; } = ReadOnlyCollections<GroupMembership>.Empty;
     }
 }

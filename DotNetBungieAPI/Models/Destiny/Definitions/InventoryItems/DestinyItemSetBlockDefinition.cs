@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
@@ -14,7 +15,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("itemList")]
         public ReadOnlyCollection<DestinyItemSetBlockEntryDefinition> ItemList { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemSetBlockEntryDefinition>();
+            ReadOnlyCollections<DestinyItemSetBlockEntryDefinition>.Empty;
 
         /// <summary>
         ///     The description of the quest line that this quest step is a part of.

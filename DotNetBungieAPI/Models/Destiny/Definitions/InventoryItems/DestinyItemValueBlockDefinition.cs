@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
@@ -22,7 +23,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("itemValue")]
         public ReadOnlyCollection<DestinyItemQuantity> ItemValue { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
+            ReadOnlyCollections<DestinyItemQuantity>.Empty;
 
         /// <summary>
         ///     If there's a localized text description of the value provided, this will be said description.

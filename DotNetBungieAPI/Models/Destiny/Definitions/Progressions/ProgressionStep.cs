@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Progressions
 {
@@ -19,7 +20,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Progressions
         ///     If this progression step has a specific icon related to it, this is the icon to show.
         /// </summary>
         [JsonPropertyName("icon")]
-        public DestinyResource Icon { get; init; }
+        public BungieNetResource Icon { get; init; }
 
         /// <summary>
         ///     The total amount of progression points/"experience" you will need to initially reach this step. If this is the last
@@ -41,7 +42,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Progressions
         /// </summary>
         [JsonPropertyName("rewardItems")]
         public ReadOnlyCollection<DestinyItemQuantity> RewardItems { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
+            ReadOnlyCollections<DestinyItemQuantity>.Empty;
 
         public bool DeepEquals(ProgressionStep other)
         {

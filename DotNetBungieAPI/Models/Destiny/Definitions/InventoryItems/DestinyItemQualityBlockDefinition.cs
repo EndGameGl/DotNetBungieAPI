@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.ProgressionLevelRequirements;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
@@ -25,8 +26,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         ///     Icon overlays to denote the item version and power cap status.
         /// </summary>
         [JsonPropertyName("displayVersionWatermarkIcons")]
-        public ReadOnlyCollection<DestinyResource> DisplayVersionWatermarkIcons { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyResource>();
+        public ReadOnlyCollection<BungieNetResource> DisplayVersionWatermarkIcons { get; init; } =
+            ReadOnlyCollections<BungieNetResource>.Empty;
 
         /// <summary>
         ///     If any one of these hashes matches any value in another item's infusionCategoryHashes, the two can infuse with each
@@ -34,7 +35,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("infusionCategoryHashes")]
         public ReadOnlyCollection<uint> InfusionCategoryHashes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<uint>();
+            ReadOnlyCollections<uint>.Empty;
 
         /// <summary>
         ///     The "base" defined level of an item. This is a list because, in theory, each Expansion could define its own base
@@ -45,7 +46,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         ///     imperfect view and will only be reliable on instanced data as a result.
         /// </summary>
         [JsonPropertyName("itemLevels")]
-        public ReadOnlyCollection<int> ItemLevels { get; init; } = Defaults.EmptyReadOnlyCollection<int>();
+        public ReadOnlyCollection<int> ItemLevels { get; init; } = ReadOnlyCollections<int>.Empty;
 
         /// <summary>
         ///     An item can refer to pre-set level requirements. They are defined in DestinyProgressionLevelRequirementDefinition
@@ -67,7 +68,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("versions")]
         public ReadOnlyCollection<DestinyItemVersionDefinition> Versions { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemVersionDefinition>();
+            ReadOnlyCollections<DestinyItemVersionDefinition>.Empty;
 
         public bool DeepEquals(DestinyItemQualityBlockDefinition other)
         {

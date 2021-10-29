@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.Destinations;
@@ -32,7 +33,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
         ///     be used to show a background image for the quest itself that differs from that of the Activity or the Milestone.
         /// </summary>
         [JsonPropertyName("overrideImage")]
-        public DestinyResource OverrideImage { get; init; }
+        public BungieNetResource OverrideImage { get; init; }
 
         /// <summary>
         ///     The rewards you will get for completing this quest, as best as we could extract them from our data. Sometimes,
@@ -49,9 +50,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
         [JsonPropertyName("activities")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyActivityDefinition>, DestinyMilestoneActivityDefinition>
             Activities { get; init; } =
-            Defaults
-                .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyActivityDefinition>,
-                    DestinyMilestoneActivityDefinition>();
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyActivityDefinition>, DestinyMilestoneActivityDefinition>
+                .Empty;
 
         /// <summary>
         ///     Sometimes, a Milestone's quest is related to an entire Destination rather than a specific activity. In that

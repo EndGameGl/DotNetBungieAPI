@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Progressions;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
@@ -71,7 +72,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
         /// </summary>
         [JsonPropertyName("nodes")]
         public ReadOnlyCollection<DestinyTalentNodeDefinition> Nodes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyTalentNodeDefinition>();
+            ReadOnlyCollections<DestinyTalentNodeDefinition>.Empty;
 
         /// <summary>
         ///     Talent Nodes can exist in "exclusive sets": these are sets of nodes in which only a single node in the set can be
@@ -87,14 +88,14 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
         /// </summary>
         [JsonPropertyName("exclusiveSets")]
         public ReadOnlyCollection<DestinyTalentNodeExclusiveSetDefinition> ExclusiveSets { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyTalentNodeExclusiveSetDefinition>();
+            ReadOnlyCollections<DestinyTalentNodeExclusiveSetDefinition>.Empty;
 
         /// <summary>
         ///     This is a quick reference to the indexes of nodes that are not part of exclusive sets. Handy for knowing which
         ///     talent nodes can only be activated directly, rather than via swapping.
         /// </summary>
         [JsonPropertyName("independentNodeIndexes")]
-        public ReadOnlyCollection<int> IndependentNodeIndexes { get; init; } = Defaults.EmptyReadOnlyCollection<int>();
+        public ReadOnlyCollection<int> IndependentNodeIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
 
         /// <summary>
         ///     Talent Nodes can have "Exclusive Groups". These are not to be confused with Exclusive Sets (see exclusiveSets
@@ -105,7 +106,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
         /// </summary>
         [JsonPropertyName("groups")]
         public ReadOnlyDictionary<uint, DestinyTalentExclusiveGroup> Groups { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<uint, DestinyTalentExclusiveGroup>();
+            ReadOnlyDictionaries<uint, DestinyTalentExclusiveGroup>.Empty;
 
         /// <summary>
         ///     BNet wants to show talent nodes grouped by similar purpose with localized titles. This is the ordered list of those
@@ -119,7 +120,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
         /// </summary>
         [JsonPropertyName("nodeCategories")]
         public ReadOnlyCollection<DestinyTalentNodeCategory> NodeCategories { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyTalentNodeCategory>();
+            ReadOnlyCollections<DestinyTalentNodeCategory>.Empty;
 
         [JsonPropertyName("calcMaxGridLevel")] public int CalcMaxGridLevel { get; init; }
 

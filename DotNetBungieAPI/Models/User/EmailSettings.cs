@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.User
 {
@@ -13,20 +14,20 @@ namespace DotNetBungieAPI.Models.User
         /// </summary>
         [JsonPropertyName("optInDefinitions")]
         public ReadOnlyDictionary<string, EmailOptInDefinition> OptInDefinitions { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<string, EmailOptInDefinition>();
+            ReadOnlyDictionaries<string, EmailOptInDefinition>.Empty;
 
         /// <summary>
         ///     Keyed by the name identifier of the Subscription definition.
         /// </summary>
         [JsonPropertyName("subscriptionDefinitions")]
         public ReadOnlyDictionary<string, EmailSubscriptionDefinition> SubscriptionDefinitions { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<string, EmailSubscriptionDefinition>();
+            ReadOnlyDictionaries<string, EmailSubscriptionDefinition>.Empty;
 
         /// <summary>
         ///     Keyed by the name identifier of the View definition.
         /// </summary>
         [JsonPropertyName("views")]
         public ReadOnlyDictionary<string, EmailViewDefinition> Views { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<string, EmailViewDefinition>();
+            ReadOnlyDictionaries<string, EmailViewDefinition>.Empty;
     }
 }

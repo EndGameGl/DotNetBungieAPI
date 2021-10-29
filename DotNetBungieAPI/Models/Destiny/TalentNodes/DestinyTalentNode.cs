@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions;
 
 namespace DotNetBungieAPI.Models.Destiny.TalentNodes
@@ -62,7 +63,7 @@ namespace DotNetBungieAPI.Models.Destiny.TalentNodes
         /// </summary>
         [JsonPropertyName("materialsToUpgrade")]
         public ReadOnlyCollection<DestinyMaterialRequirement> MaterialsToUpgrade { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyMaterialRequirement>();
+            ReadOnlyCollections<DestinyMaterialRequirement>.Empty;
 
         /// <summary>
         ///     The progression level required on the Talent Grid in order to be able to activate this talent node. Talent Grids

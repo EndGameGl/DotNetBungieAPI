@@ -1,14 +1,14 @@
-﻿namespace DotNetBungieAPI
+﻿namespace DotNetBungieAPI.Models
 {
     /// <summary>
     /// Struct that represents bungie.net resource link
     /// </summary>
-    public readonly struct DestinyResource
+    public readonly struct BungieNetResource
     {
         /// <summary>
         /// Empty resource link
         /// </summary>
-        public static DestinyResource Empty { get; } = new(null);
+        public static BungieNetResource Empty { get; } = new(null);
 
         /// <summary>
         /// Relative path to resource
@@ -29,7 +29,7 @@
         /// Default constructor
         /// </summary>
         /// <param name="path"></param>
-        public DestinyResource(string path)
+        public BungieNetResource(string path)
         {
             RelativePath = path;
         }
@@ -40,7 +40,7 @@
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static bool operator ==(DestinyResource a, DestinyResource b)
+        public static bool operator ==(BungieNetResource a, BungieNetResource b)
         {
             return a.RelativePath.Equals(b.RelativePath);
         }
@@ -51,7 +51,7 @@
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static bool operator !=(DestinyResource a, DestinyResource b)
+        public static bool operator !=(BungieNetResource a, BungieNetResource b)
         {
             return !(a == b);
         }

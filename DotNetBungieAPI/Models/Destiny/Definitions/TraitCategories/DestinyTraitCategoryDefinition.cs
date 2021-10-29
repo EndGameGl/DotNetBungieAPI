@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Traits;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.TraitCategories
@@ -20,13 +21,13 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.TraitCategories
         /// </summary>
         [JsonPropertyName("traitHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyTraitDefinition>>.Empty;
 
         /// <summary>
         ///     Possible trait strings for searching in this category
         /// </summary>
         [JsonPropertyName("traitIds")]
-        public ReadOnlyCollection<string> TraitIds { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
+        public ReadOnlyCollection<string> TraitIds { get; init; } = ReadOnlyCollections<string>.Empty;
 
         public bool DeepEquals(DestinyTraitCategoryDefinition other)
         {

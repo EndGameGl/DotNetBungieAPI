@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.User;
 
 namespace DotNetBungieAPI.Models.Content
@@ -34,14 +35,14 @@ namespace DotNetBungieAPI.Models.Content
 
         [JsonPropertyName("properties")]
         public ReadOnlyDictionary<string, object> Properties { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<string, object>();
+            ReadOnlyDictionaries<string, object>.Empty;
 
         [JsonPropertyName("representations")]
         public ReadOnlyCollection<ContentRepresentation> Representations { get; init; } =
-            Defaults.EmptyReadOnlyCollection<ContentRepresentation>();
+            ReadOnlyCollections<ContentRepresentation>.Empty;
 
         [JsonPropertyName("tags")]
-        public ReadOnlyCollection<string> Tags { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
+        public ReadOnlyCollection<string> Tags { get; init; } = ReadOnlyCollections<string>.Empty;
 
         [JsonPropertyName("commentSummary")] public CommentSummary CommentSummary { get; init; }
     }

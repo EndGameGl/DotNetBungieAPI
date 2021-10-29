@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Challenges;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using DotNetBungieAPI.Models.Destiny.Quests;
@@ -45,6 +46,6 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("challenges")]
         public ReadOnlyCollection<DestinyChallengeStatus> Challenges { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyChallengeStatus>();
+            ReadOnlyCollections<DestinyChallengeStatus>.Empty;
     }
 }

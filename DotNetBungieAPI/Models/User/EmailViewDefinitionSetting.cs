@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.User
 {
@@ -16,7 +17,7 @@ namespace DotNetBungieAPI.Models.User
         /// </summary>
         [JsonPropertyName("localization")]
         public ReadOnlyDictionary<string, EmailSettingLocalization> Localization { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<string, EmailSettingLocalization>();
+            ReadOnlyDictionaries<string, EmailSettingLocalization>.Empty;
 
         /// <summary>
         ///     If true, this setting should be set by default if the user hasn't chosen whether it's set or cleared yet.
@@ -36,6 +37,6 @@ namespace DotNetBungieAPI.Models.User
         /// </summary>
         [JsonPropertyName("subscriptions")]
         public ReadOnlyCollection<EmailSubscriptionDefinition> Subscriptions { get; init; } =
-            Defaults.EmptyReadOnlyCollection<EmailSubscriptionDefinition>();
+            ReadOnlyCollections<EmailSubscriptionDefinition>.Empty;
     }
 }

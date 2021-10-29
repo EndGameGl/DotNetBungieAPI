@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Items;
 
 namespace DotNetBungieAPI.Models.Destiny.TalentNodes
@@ -14,8 +15,7 @@ namespace DotNetBungieAPI.Models.Destiny.TalentNodes
         ///     The stat benefits conferred when this talent node is activated for the current Step that is active on the node.
         /// </summary>
         [JsonPropertyName("currentStepStats")]
-        public ReadOnlyCollection<DestinyStat> CurrentStepStats { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyStat>();
+        public ReadOnlyCollection<DestinyStat> CurrentStepStats { get; init; } = ReadOnlyCollections<DestinyStat>.Empty;
 
         /// <summary>
         ///     This is a holdover from the old days of Destiny 1, when a node could be activated multiple times, conferring
@@ -25,7 +25,6 @@ namespace DotNetBungieAPI.Models.Destiny.TalentNodes
         ///     designers to make such a talent grid still exists. Whether you want to show it is up to you.
         /// </summary>
         [JsonPropertyName("nextStepStats")]
-        public ReadOnlyCollection<DestinyStat> NextStepStats { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyStat>();
+        public ReadOnlyCollection<DestinyStat> NextStepStats { get; init; } = ReadOnlyCollections<DestinyStat>.Empty;
     }
 }

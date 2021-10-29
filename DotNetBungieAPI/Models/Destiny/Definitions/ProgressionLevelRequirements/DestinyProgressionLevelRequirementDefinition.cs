@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Progressions;
 using DotNetBungieAPI.Models.Interpolation;
 
@@ -35,7 +36,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ProgressionLevelRequirement
         /// </summary>
         [JsonPropertyName("requirementCurve")]
         public ReadOnlyCollection<InterpolationPointFloat> RequirementCurve { get; init; } =
-            Defaults.EmptyReadOnlyCollection<InterpolationPointFloat>();
+            ReadOnlyCollections<InterpolationPointFloat>.Empty;
 
         public bool DeepEquals(DestinyProgressionLevelRequirementDefinition other)
         {

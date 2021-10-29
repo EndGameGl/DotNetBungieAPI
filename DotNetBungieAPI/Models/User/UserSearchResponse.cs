@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.User
 {
@@ -7,7 +8,7 @@ namespace DotNetBungieAPI.Models.User
     {
         [JsonPropertyName("searchResults")]
         public ReadOnlyCollection<UserSearchResponseDetail> SearchResults { get; init; } =
-            Defaults.EmptyReadOnlyCollection<UserSearchResponseDetail>();
+            ReadOnlyCollections<UserSearchResponseDetail>.Empty;
 
         [JsonPropertyName("page")] public int Page { get; init; }
 

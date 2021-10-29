@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Artifacts
@@ -29,7 +30,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Artifacts
         /// </summary>
         [JsonPropertyName("tiers")]
         public ReadOnlyCollection<DestinyArtifactTierDefinition> Tiers { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyArtifactTierDefinition>();
+            ReadOnlyCollections<DestinyArtifactTierDefinition>.Empty;
 
         /// <summary>
         ///     Any Geometry/3D info we know about the Artifact. Currently sourced from a related inventory item's gearset
@@ -71,11 +72,6 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Artifacts
             foreach (var tier in Tiers)
             foreach (var tierItems in tier.Items)
                 tierItems.Item.SetLocale(locale);
-        }
-
-        public override string ToString()
-        {
-            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
     }
 }

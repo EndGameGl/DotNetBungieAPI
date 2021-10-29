@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Lore;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
@@ -30,20 +31,20 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
         ///     DestinyTalentNodeDefinition.nodeHash)
         /// </summary>
         [JsonPropertyName("nodeHashes")]
-        public ReadOnlyCollection<uint> NodeHashes { get; init; } = Defaults.EmptyReadOnlyCollection<uint>();
+        public ReadOnlyCollection<uint> NodeHashes { get; init; } = ReadOnlyCollections<uint>.Empty;
 
         /// <summary>
         ///     A quick reference of Groups whose nodes will be deactivated if any node in this group is activated.
         /// </summary>
         [JsonPropertyName("opposingGroupHashes")]
-        public ReadOnlyCollection<uint> OpposingGroupHashes { get; init; } = Defaults.EmptyReadOnlyCollection<uint>();
+        public ReadOnlyCollection<uint> OpposingGroupHashes { get; init; } = ReadOnlyCollections<uint>.Empty;
 
         /// <summary>
         ///     A quick reference of Nodes that will be deactivated if any node in this group is activated, by their Talent Node
         ///     hashes. (See DestinyTalentNodeDefinition.nodeHash)
         /// </summary>
         [JsonPropertyName("opposingNodeHashes")]
-        public ReadOnlyCollection<uint> OpposingNodeHashes { get; init; } = Defaults.EmptyReadOnlyCollection<uint>();
+        public ReadOnlyCollection<uint> OpposingNodeHashes { get; init; } = ReadOnlyCollections<uint>.Empty;
 
         public bool DeepEquals(DestinyTalentExclusiveGroup other)
         {

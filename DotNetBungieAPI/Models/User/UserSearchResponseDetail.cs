@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.GroupsV2;
 
 namespace DotNetBungieAPI.Models.User
@@ -8,7 +9,7 @@ namespace DotNetBungieAPI.Models.User
     {
         [JsonPropertyName("destinyMemberships")]
         public ReadOnlyCollection<UserInfoCard> DestinyMemberships { get; init; } =
-            Defaults.EmptyReadOnlyCollection<UserInfoCard>();
+            ReadOnlyCollections<UserInfoCard>.Empty;
 
         [JsonPropertyName("bungieGlobalDisplayName")]
         public string BungieGlobalDisplayName { get; init; }

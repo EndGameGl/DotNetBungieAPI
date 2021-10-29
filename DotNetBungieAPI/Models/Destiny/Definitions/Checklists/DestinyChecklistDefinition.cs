@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Checklists
@@ -32,7 +33,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Checklists
         /// </summary>
         [JsonPropertyName("entries")]
         public ReadOnlyCollection<DestinyChecklistEntryDefinition> Entries { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyChecklistEntryDefinition>();
+            ReadOnlyCollections<DestinyChecklistEntryDefinition>.Empty;
 
         /// <summary>
         ///     Indicates whether you will find this checklist on the Profile or Character components.
@@ -90,11 +91,6 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Checklists
                 entry.Location.SetLocale(locale);
                 entry.Vendor.SetLocale(locale);
             }
-        }
-
-        public override string ToString()
-        {
-            return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
@@ -19,12 +20,12 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Locations
         public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
         [JsonPropertyName("smallTransparentIcon")]
-        public DestinyResource SmallTransparentIcon { get; init; }
+        public BungieNetResource SmallTransparentIcon { get; init; }
 
-        [JsonPropertyName("mapIcon")] public DestinyResource MapIcon { get; init; }
+        [JsonPropertyName("mapIcon")] public BungieNetResource MapIcon { get; init; }
 
         [JsonPropertyName("largeTransparentIcon")]
-        public DestinyResource LargeTransparentIcon { get; init; }
+        public BungieNetResource LargeTransparentIcon { get; init; }
 
         /// <summary>
         ///     If we had map information, this spawnPoint would be interesting. But sadly, we don't have that info.
@@ -91,7 +92,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Locations
         ///     Looks like it should be the position on the map, but sadly it does not look populated... yet?
         /// </summary>
         [JsonPropertyName("worldPosition")]
-        public ReadOnlyCollection<int> WorldPosition { get; init; } = Defaults.EmptyReadOnlyCollection<int>();
+        public ReadOnlyCollection<int> WorldPosition { get; init; } = ReadOnlyCollections<int>.Empty;
 
         public bool DeepEquals(DestinyLocationReleaseDefinition other)
         {

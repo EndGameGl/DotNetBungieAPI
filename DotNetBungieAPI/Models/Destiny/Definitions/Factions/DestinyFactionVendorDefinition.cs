@@ -15,7 +15,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Factions
         ///     The relative path to the background image representing this Vendor at this location, for use in a banner.
         /// </summary>
         [JsonPropertyName("backgroundImagePath")]
-        public DestinyResource BackgroundImagePath { get; init; }
+        public BungieNetResource BackgroundImagePath { get; init; }
 
         /// <summary>
         ///     DestinyDestinationDefinition for a Destination at which this vendor may be located. Each destination where a Vendor

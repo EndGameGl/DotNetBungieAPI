@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Fireteam;
 
 namespace DotNetBungieAPI.Models.Queries
@@ -9,11 +10,9 @@ namespace DotNetBungieAPI.Models.Queries
         [JsonPropertyName("Summary")] public FireteamSummary Summary { get; init; }
 
         [JsonPropertyName("Members")]
-        public ReadOnlyCollection<FireteamMember> Members { get; init; } =
-            Defaults.EmptyReadOnlyCollection<FireteamMember>();
+        public ReadOnlyCollection<FireteamMember> Members { get; init; } = ReadOnlyCollections<FireteamMember>.Empty;
 
         [JsonPropertyName("Alternates")]
-        public ReadOnlyCollection<FireteamMember> Alternates { get; init; } =
-            Defaults.EmptyReadOnlyCollection<FireteamMember>();
+        public ReadOnlyCollection<FireteamMember> Alternates { get; init; } = ReadOnlyCollections<FireteamMember>.Empty;
     }
 }

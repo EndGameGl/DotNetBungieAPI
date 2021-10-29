@@ -13,7 +13,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         public string ChoiceDescription { get; init; }
 
         [JsonPropertyName("description")] public string Description { get; init; }
-        [JsonPropertyName("icon")] public DestinyResource Icon { get; init; }
+        [JsonPropertyName("icon")] public BungieNetResource Icon { get; init; }
         [JsonPropertyName("title")] public string Title { get; init; }
 
         /// <summary>

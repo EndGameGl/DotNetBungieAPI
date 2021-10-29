@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
@@ -27,7 +28,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("items")]
         public ReadOnlyCollection<DestinyDerivedItemDefinition> Items { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyDerivedItemDefinition>();
+            ReadOnlyCollections<DestinyDerivedItemDefinition>.Empty;
 
         public bool DeepEquals(DestinyDerivedItemCategoryDefinition other)
         {

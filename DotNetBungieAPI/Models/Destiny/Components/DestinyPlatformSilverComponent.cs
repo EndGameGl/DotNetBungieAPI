@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
 {
@@ -11,6 +12,6 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("platformSilver")]
         public ReadOnlyDictionary<BungieMembershipType, DestinyItemComponent> PlatformSilver { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<BungieMembershipType, DestinyItemComponent>();
+            ReadOnlyDictionaries<BungieMembershipType, DestinyItemComponent>.Empty;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Collectibles;
 using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 
@@ -10,9 +11,8 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("collectibles")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyCollectibleDefinition>, DestinyCollectibleComponent>
             Collectibles { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<
-                DefinitionHashPointer<DestinyCollectibleDefinition>,
-                DestinyCollectibleComponent>();
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyCollectibleDefinition>, DestinyCollectibleComponent>
+                .Empty;
 
         /// <summary>
         ///     The hash for the root presentation node definition of Collection categories.

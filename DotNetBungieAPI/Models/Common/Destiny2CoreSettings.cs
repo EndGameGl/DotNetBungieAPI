@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Artifacts;
 using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Progressions;
@@ -60,19 +61,19 @@ namespace DotNetBungieAPI.Models.Common
         [JsonPropertyName("currentRankProgressionHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyProgressionDefinition>>
             CurrentRankProgressions { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyProgressionDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyProgressionDefinition>>.Empty;
 
         [JsonPropertyName("undiscoveredCollectibleImage")]
-        public DestinyResource UndiscoveredCollectibleImage { get; init; }
+        public BungieNetResource UndiscoveredCollectibleImage { get; init; }
 
         [JsonPropertyName("ammoTypeHeavyIcon")]
-        public DestinyResource AmmoTypeHeavyIcon { get; init; }
+        public BungieNetResource AmmoTypeHeavyIcon { get; init; }
 
         [JsonPropertyName("ammoTypeSpecialIcon")]
-        public DestinyResource AmmoTypeSpecialIcon { get; init; }
+        public BungieNetResource AmmoTypeSpecialIcon { get; init; }
 
         [JsonPropertyName("ammoTypePrimaryIcon")]
-        public DestinyResource AmmoTypePrimaryIcon { get; init; }
+        public BungieNetResource AmmoTypePrimaryIcon { get; init; }
 
         [JsonPropertyName("currentSeasonalArtifactHash")]
         public DefinitionHashPointer<DestinyArtifactDefinition> CurrentSeasonalArtifact { get; init; } =
@@ -84,10 +85,10 @@ namespace DotNetBungieAPI.Models.Common
 
         [JsonPropertyName("futureSeasonHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinySeasonDefinition>> FutureSeasons { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinySeasonDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinySeasonDefinition>>.Empty;
 
         [JsonPropertyName("pastSeasonHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinySeasonDefinition>> PastSeasons { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinySeasonDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinySeasonDefinition>>.Empty;
     }
 }

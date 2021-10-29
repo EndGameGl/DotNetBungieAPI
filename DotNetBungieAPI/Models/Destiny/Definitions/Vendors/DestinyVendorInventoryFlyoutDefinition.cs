@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.EquipmentSlots;
 
@@ -28,7 +29,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         /// </summary>
         [JsonPropertyName("buckets")]
         public ReadOnlyCollection<DestinyVendorInventoryFlyoutBucketDefinition> Buckets { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyVendorInventoryFlyoutBucketDefinition>();
+            ReadOnlyCollections<DestinyVendorInventoryFlyoutBucketDefinition>.Empty;
 
         /// <summary>
         ///     If this is true, don't show any of the glistening "this is a new item" UI elements, like we show on the inventory

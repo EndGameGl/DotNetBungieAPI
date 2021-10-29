@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
 {
@@ -8,7 +9,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
     {
         [JsonPropertyName("data")]
         public ReadOnlyDictionary<long, DestinyCharacterComponent> Data { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<long, DestinyCharacterComponent>();
+            ReadOnlyDictionaries<long, DestinyCharacterComponent>.Empty;
 
         /// <summary>
         ///     Returns last played character from this account

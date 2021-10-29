@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Queries;
 
 namespace DotNetBungieAPI.Models.Destiny.Responses
@@ -8,6 +9,6 @@ namespace DotNetBungieAPI.Models.Destiny.Responses
     {
         [JsonPropertyName("results")]
         public ReadOnlyCollection<DestinyEntitySearchResultItem> Results { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyEntitySearchResultItem>();
+            ReadOnlyCollections<DestinyEntitySearchResultItem>.Empty;
     }
 }

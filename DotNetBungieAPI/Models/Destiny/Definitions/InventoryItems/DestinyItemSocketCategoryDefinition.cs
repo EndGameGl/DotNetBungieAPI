@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.SocketCategories;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
@@ -23,7 +24,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         ///     the indexes under the category, in game-rendered order.
         /// </summary>
         [JsonPropertyName("socketIndexes")]
-        public ReadOnlyCollection<int> SocketIndexes { get; init; } = Defaults.EmptyReadOnlyCollection<int>();
+        public ReadOnlyCollection<int> SocketIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
 
         public bool DeepEquals(DestinyItemSocketCategoryDefinition other)
         {

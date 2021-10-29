@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 
@@ -25,7 +26,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
         /// </summary>
         [JsonPropertyName("items")]
         public ReadOnlyCollection<DestinyItemQuantity> Items { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
+            ReadOnlyCollections<DestinyItemQuantity>.Empty;
 
         /// <summary>
         ///     If this reward is redeemed at a Vendor, this is the hash of the Vendor to go to in order to redeem the reward. Use

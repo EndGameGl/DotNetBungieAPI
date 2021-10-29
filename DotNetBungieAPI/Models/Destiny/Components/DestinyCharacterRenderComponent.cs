@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Character;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
@@ -20,7 +21,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("customDyes")]
         public ReadOnlyCollection<DyeReference> CustomDyes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DyeReference>();
+            ReadOnlyCollections<DyeReference>.Empty;
 
         /// <summary>
         ///     This is actually something that Spasm.js *doesn't* do right now, and that we don't return assets for yet. This is

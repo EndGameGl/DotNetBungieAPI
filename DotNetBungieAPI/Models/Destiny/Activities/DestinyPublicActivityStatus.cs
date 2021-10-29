@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModifiers;
 using DotNetBungieAPI.Models.Destiny.Definitions.Objectives;
 
@@ -17,14 +18,14 @@ namespace DotNetBungieAPI.Models.Destiny.Activities
         [JsonPropertyName("challengeObjectiveHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>>
             ChallengeObjectives { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyObjectiveDefinition>>.Empty;
 
         /// <summary>
         ///     The active modifiers on this activity, if any - represented as hashes for DestinyActivityModifierDefinitions.
         /// </summary>
         [JsonPropertyName("modifierHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>> Modifiers { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModifierDefinition>>.Empty;
 
         /// <summary>
         ///     If the activity itself provides any specific "mock" rewards, this will be the items and their quantity.
@@ -36,6 +37,6 @@ namespace DotNetBungieAPI.Models.Destiny.Activities
         /// </summary>
         [JsonPropertyName("rewardTooltipItems")]
         public ReadOnlyCollection<DestinyItemQuantity> RewardTooltipItems { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
+            ReadOnlyCollections<DestinyItemQuantity>.Empty;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.ItemCategories
@@ -106,7 +107,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ItemCategories
         [JsonPropertyName("groupedCategoryHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>>
             GroupedCategories { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyItemCategoryDefinition>>.Empty;
 
         /// <summary>
         ///     All item category hashes of "parent" categories: categories that contain this as a child through the hierarchy of
@@ -115,7 +116,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ItemCategories
         [JsonPropertyName("parentCategoryHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>>
             ParentCategories { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyItemCategoryDefinition>>.Empty;
 
         /// <summary>
         ///     If true, this category is only used for grouping, and should not be evaluated with its own checks. Rather, the item

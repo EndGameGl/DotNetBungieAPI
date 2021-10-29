@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.Factions;
 
@@ -59,7 +60,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Progressions
         /// </summary>
         [JsonPropertyName("steps")]
         public ReadOnlyCollection<ProgressionStep> Steps { get; init; } =
-            Defaults.EmptyReadOnlyCollection<ProgressionStep>();
+            ReadOnlyCollections<ProgressionStep>.Empty;
 
         /// <summary>
         ///     If true, the Progression is something worth showing to users.
@@ -90,11 +91,11 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Progressions
         ///     rank value.
         /// </summary>
         [JsonPropertyName("rankIcon")]
-        public DestinyResource RankIcon { get; init; }
+        public BungieNetResource RankIcon { get; init; }
 
         [JsonPropertyName("rewardItems")]
         public ReadOnlyCollection<DestinyProgressionRewardItemQuantity> RewardItems { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyProgressionRewardItemQuantity>();
+            ReadOnlyCollections<DestinyProgressionRewardItemQuantity>.Empty;
 
         [JsonPropertyName("progressToNextStepScaling")]
         public int ProgressToNextStepScaling { get; init; }

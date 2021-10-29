@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.Objectives;
 using DotNetBungieAPI.Models.Destiny.Definitions.Records;
@@ -28,7 +29,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes
         ///     The original icon for this presentation node, before we futzed with it.
         /// </summary>
         [JsonPropertyName("originalIcon")]
-        public DestinyResource OriginalIcon { get; init; }
+        public BungieNetResource OriginalIcon { get; init; }
 
         /// <summary>
         ///     Some presentation nodes are meant to be explicitly shown on the "root" or "entry" screens for the feature to which
@@ -36,7 +37,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes
         ///     view in your UI. If you don't have a UI, then I guess it doesn't matter either way does it?
         /// </summary>
         [JsonPropertyName("rootViewIcon")]
-        public DestinyResource RootViewIcon { get; init; }
+        public BungieNetResource RootViewIcon { get; init; }
 
         [JsonPropertyName("nodeType")] public DestinyPresentationNodeType NodeType { get; init; }
 
@@ -100,11 +101,11 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes
         public DestinyPresentationNodeType PresentationNodeType { get; init; }
 
         [JsonPropertyName("traitIds")]
-        public ReadOnlyCollection<string> TraitIds { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
+        public ReadOnlyCollection<string> TraitIds { get; init; } = ReadOnlyCollections<string>.Empty;
 
         [JsonPropertyName("traitHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyTraitDefinition>>.Empty;
 
         /// <summary>
         ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under
@@ -112,7 +113,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes
         /// </summary>
         [JsonPropertyName("parentNodeHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentNodes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
 
         public bool DeepEquals(DestinyPresentationNodeDefinition other)
         {

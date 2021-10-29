@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityTypes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
@@ -59,7 +60,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
         ///     icon.
         /// </summary>
         [JsonPropertyName("releaseIcon")]
-        public DestinyResource ReleaseIcon { get; init; }
+        public BungieNetResource ReleaseIcon { get; init; }
 
         /// <summary>
         ///     If the activity will not be visible until a specific and known time, this will be the seconds since the Epoch when
@@ -108,7 +109,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
         ///     displaying PGCR information, and often use it when we refer to the Activity in general.
         /// </summary>
         [JsonPropertyName("pgcrImage")]
-        public DestinyResource PgcrImage { get; init; }
+        public BungieNetResource PgcrImage { get; init; }
 
         /// <summary>
         ///     The expected possible rewards for the activity. These rewards may or may not be accessible for an individual player
@@ -120,7 +121,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
         /// </summary>
         [JsonPropertyName("rewards")]
         public ReadOnlyCollection<DestinyActivityRewardDefinition> Rewards { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityRewardDefinition>();
+            ReadOnlyCollections<DestinyActivityRewardDefinition>.Empty;
 
         /// <summary>
         ///     Activities can have Modifiers, as defined in DestinyActivityModifierDefinition. These are references to the
@@ -129,7 +130,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
         /// </summary>
         [JsonPropertyName("modifiers")]
         public ReadOnlyCollection<DestinyActivityModifierReferenceDefinition> Modifiers { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityModifierReferenceDefinition>();
+            ReadOnlyCollections<DestinyActivityModifierReferenceDefinition>.Empty;
 
         /// <summary>
         ///     If True, this Activity is actually a Playlist that refers to multiple possible specific Activities and Activity
@@ -150,7 +151,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
         /// </summary>
         [JsonPropertyName("challenges")]
         public ReadOnlyCollection<DestinyActivityChallengeDefinition> Challenges { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityChallengeDefinition>();
+            ReadOnlyCollections<DestinyActivityChallengeDefinition>.Empty;
 
         /// <summary>
         ///     If there are status strings related to the activity and based on internal state of the game, account, or character,
@@ -158,7 +159,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
         /// </summary>
         [JsonPropertyName("optionalUnlockStrings")]
         public ReadOnlyCollection<DestinyActivityUnlockStringDefinition> OptionalUnlockStrings { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityUnlockStringDefinition>();
+            ReadOnlyCollections<DestinyActivityUnlockStringDefinition>.Empty;
 
         /// <summary>
         ///     Represents all of the possible activities that could be played in the Playlist, along with information that we can
@@ -166,7 +167,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
         /// </summary>
         [JsonPropertyName("playlistItems")]
         public ReadOnlyCollection<DestinyActivityPlaylistItemDefinition> PlaylistItems { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityPlaylistItemDefinition>();
+            ReadOnlyCollections<DestinyActivityPlaylistItemDefinition>.Empty;
 
         /// <summary>
         ///     Unfortunately, in practice this is almost never populated. In theory, this is supposed to tell which Activity Graph
@@ -174,7 +175,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
         /// </summary>
         [JsonPropertyName("activityGraphList")]
         public ReadOnlyCollection<DestinyActivityGraphListEntryDefinition> ActivityGraphList { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityGraphListEntryDefinition>();
+            ReadOnlyCollections<DestinyActivityGraphListEntryDefinition>.Empty;
 
         /// <summary>
         ///     This block of data provides information about the Activity's matchmaking attributes: how many people can join and
@@ -210,21 +211,21 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
         /// </summary>
         [JsonPropertyName("loadouts")]
         public ReadOnlyCollection<DestinyActivityLoadoutRequirementSet> Loadouts { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityLoadoutRequirementSet>();
+            ReadOnlyCollections<DestinyActivityLoadoutRequirementSet>.Empty;
 
         /// <summary>
         ///     The activity modes
         /// </summary>
         [JsonPropertyName("activityModeHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>> ActivityModes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModeDefinition>>.Empty;
 
         /// <summary>
         ///     The activity modes - if any - in enum form.
         /// </summary>
         [JsonPropertyName("activityModeTypes")]
         public ReadOnlyCollection<DestinyActivityModeType> ActivityModeTypes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityModeType>();
+            ReadOnlyCollections<DestinyActivityModeType>.Empty;
 
         /// <summary>
         ///     If true, this activity is a PVP activity or playlist.
@@ -238,14 +239,14 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
         /// </summary>
         [JsonPropertyName("insertionPoints")]
         public ReadOnlyCollection<DestinyActivityInsertionPointDefinition> InsertionPoints { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyActivityInsertionPointDefinition>();
+            ReadOnlyCollections<DestinyActivityInsertionPointDefinition>.Empty;
 
         /// <summary>
         ///     A list of location mappings that are affected by this activity.
         /// </summary>
         [JsonPropertyName("activityLocationMappings")]
         public ReadOnlyCollection<DestinyEnvironmentLocationMapping> ActivityLocationMappings { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyEnvironmentLocationMapping>();
+            ReadOnlyCollections<DestinyEnvironmentLocationMapping>.Empty;
 
         /// <summary>
         ///     The difficulty level of the activity.

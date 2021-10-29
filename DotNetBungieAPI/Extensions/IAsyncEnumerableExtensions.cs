@@ -5,7 +5,7 @@ using DotNetBungieAPI.Authorization;
 using DotNetBungieAPI.Models.Social;
 using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 
-namespace DotNetBungieAPI
+namespace DotNetBungieAPI.Extensions
 {
     public static class IAsyncEnumerableExtensions
     {

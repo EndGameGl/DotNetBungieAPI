@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryBuckets;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
@@ -38,7 +39,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         ///     that can be relevant for this item.
         /// </summary>
         [JsonPropertyName("failureIndexes")]
-        public ReadOnlyCollection<int> FailureIndexes { get; init; } = Defaults.EmptyReadOnlyCollection<int>();
+        public ReadOnlyCollection<int> FailureIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
 
         /// <summary>
         ///     This is a pre-compiled aggregation of item value and priceOverrideList, so that we have one place to check for what
@@ -49,7 +50,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         /// </summary>
         [JsonPropertyName("currencies")]
         public ReadOnlyCollection<DestinyItemQuantity> Currencies { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
+            ReadOnlyCollections<DestinyItemQuantity>.Empty;
 
         /// <summary>
         ///     If this item can be refunded, this is the policy for what will be refunded, how, and in what time period.
@@ -70,7 +71,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         /// </summary>
         [JsonPropertyName("creationLevels")]
         public ReadOnlyCollection<DestinyItemCreationEntryLevelDefinition> CreationLevels { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemCreationEntryLevelDefinition>();
+            ReadOnlyCollections<DestinyItemCreationEntryLevelDefinition>.Empty;
 
         /// <summary>
         ///     This is an index specifically into the display category, as opposed to the server-side Categories (which do not
@@ -179,11 +180,11 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         ///     If this is populated, the purchase of this item should redirect to purchasing these other items instead.
         /// </summary>
         [JsonPropertyName("redirectToSaleIndexes")]
-        public ReadOnlyCollection<int> RedirectToSaleIndexes { get; init; } = Defaults.EmptyReadOnlyCollection<int>();
+        public ReadOnlyCollection<int> RedirectToSaleIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
 
         [JsonPropertyName("socketOverrides")]
         public ReadOnlyCollection<DestinyVendorItemSocketOverride> SocketOverrides { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyVendorItemSocketOverride>();
+            ReadOnlyCollections<DestinyVendorItemSocketOverride>.Empty;
 
         /// <summary>
         ///     If true, this item is some sort of dummy sale item that cannot actually be purchased. It may be a display only

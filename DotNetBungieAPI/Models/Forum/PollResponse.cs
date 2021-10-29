@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Forum
 {
@@ -10,7 +11,7 @@ namespace DotNetBungieAPI.Models.Forum
         public long TopicId { get; init; }
 
         [JsonPropertyName("results")]
-        public ReadOnlyCollection<PollResult> Results { get; init; } = Defaults.EmptyReadOnlyCollection<PollResult>();
+        public ReadOnlyCollection<PollResult> Results { get; init; } = ReadOnlyCollections<PollResult>.Empty;
 
         [JsonPropertyName("totalVotes")] public int TotalVotes { get; init; }
     }

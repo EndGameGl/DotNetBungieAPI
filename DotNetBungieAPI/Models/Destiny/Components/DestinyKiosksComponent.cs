@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 using DotNetBungieAPI.Models.Destiny.Kiosks;
 
@@ -27,8 +28,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("kioskItems")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyVendorDefinition>, ReadOnlyCollection<DestinyKioskItem>>
             KioskItems { get; init; } =
-            Defaults
-                .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyVendorDefinition>,
-                    ReadOnlyCollection<DestinyKioskItem>>();
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyVendorDefinition>, ReadOnlyCollection<DestinyKioskItem>>
+                .Empty;
     }
 }

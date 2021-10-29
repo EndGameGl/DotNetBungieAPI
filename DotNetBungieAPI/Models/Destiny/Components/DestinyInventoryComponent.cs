@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
 {
@@ -20,7 +21,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("items")]
         public ReadOnlyCollection<DestinyItemComponent> Items { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemComponent>();
+            ReadOnlyCollections<DestinyItemComponent>.Empty;
 
         /// <summary>
         /// Gets all items with specified bucket hash

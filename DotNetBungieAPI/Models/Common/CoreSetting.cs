@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Common
 {
@@ -13,11 +14,10 @@ namespace DotNetBungieAPI.Models.Common
 
         [JsonPropertyName("summary")] public string Summary { get; init; }
 
-        [JsonPropertyName("imagePath")] public DestinyResource ImagePath { get; init; }
+        [JsonPropertyName("imagePath")] public BungieNetResource ImagePath { get; init; }
 
         [JsonPropertyName("childSettings")]
-        public ReadOnlyCollection<CoreSetting> ChildSettings { get; init; } =
-            Defaults.EmptyReadOnlyCollection<CoreSetting>();
+        public ReadOnlyCollection<CoreSetting> ChildSettings { get; init; } = ReadOnlyCollections<CoreSetting>.Empty;
 
         public override string ToString()
         {

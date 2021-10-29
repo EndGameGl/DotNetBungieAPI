@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
@@ -66,7 +67,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
         ///     A custom image someone made just for the milestone.
         /// </summary>
         [JsonPropertyName("image")]
-        public DestinyResource Image { get; init; }
+        public BungieNetResource Image { get; init; }
 
         /// <summary>
         ///     An enumeration listing one of the possible types of milestones.
@@ -131,9 +132,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
         public
             ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, DestinyMilestoneQuestDefinition>
             Quests { get; init; } =
-            Defaults
-                .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>,
-                    DestinyMilestoneQuestDefinition>();
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>, DestinyMilestoneQuestDefinition>
+                .Empty;
 
         /// <summary>
         ///     If this milestone can provide rewards, this will define the categories into which the individual reward entries are
@@ -141,7 +141,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
         /// </summary>
         [JsonPropertyName("rewards")]
         public ReadOnlyDictionary<uint, DestinyMilestoneRewardCategoryDefinition> Rewards { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<uint, DestinyMilestoneRewardCategoryDefinition>();
+            ReadOnlyDictionaries<uint, DestinyMilestoneRewardCategoryDefinition>.Empty;
 
         /// <summary>
         ///     If you're going to show Vendors for the Milestone, you can use this as a localized "header" for the section where
@@ -158,7 +158,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
         /// </summary>
         [JsonPropertyName("vendors")]
         public ReadOnlyCollection<DestinyMilestoneVendorDefinition> Vendors { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyMilestoneVendorDefinition>();
+            ReadOnlyCollections<DestinyMilestoneVendorDefinition>.Empty;
 
         /// <summary>
         ///     Sometimes, milestones will have arbitrary values associated with them that are of interest to us or to third party
@@ -167,7 +167,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
         /// </summary>
         [JsonPropertyName("values")]
         public ReadOnlyDictionary<string, DestinyMilestoneValueDefinition> Values { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<string, DestinyMilestoneValueDefinition>();
+            ReadOnlyDictionaries<string, DestinyMilestoneValueDefinition>.Empty;
 
         /// <summary>
         ///     Some milestones are explicit objectives that you can see and interact with in the game. Some milestones are more
@@ -184,7 +184,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
         /// </summary>
         [JsonPropertyName("activities")]
         public ReadOnlyCollection<DestinyMilestoneChallengeActivityDefinition> Activities { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyMilestoneChallengeActivityDefinition>();
+            ReadOnlyCollections<DestinyMilestoneChallengeActivityDefinition>.Empty;
 
         [JsonPropertyName("defaultOrder")] public int DefaultOrder { get; init; }
 

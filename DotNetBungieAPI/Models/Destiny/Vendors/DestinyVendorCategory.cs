@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Vendors
 {
@@ -21,6 +22,6 @@ namespace DotNetBungieAPI.Models.Destiny.Vendors
         ///     DestinyVendorSaleItemComponent data, if you asked for that data to be returned.
         /// </summary>
         [JsonPropertyName("itemIndexes")]
-        public ReadOnlyCollection<int> ItemIndexes { get; init; } = Defaults.EmptyReadOnlyCollection<int>();
+        public ReadOnlyCollection<int> ItemIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
     }
 }

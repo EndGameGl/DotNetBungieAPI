@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.PlugSets;
 using DotNetBungieAPI.Models.Destiny.Definitions.SocketTypes;
 
@@ -58,7 +59,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("reusablePlugItems")]
         public ReadOnlyCollection<DestinyItemSocketEntryPlugItemDefinition> ReusablePlugItems { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemSocketEntryPlugItemDefinition>();
+            ReadOnlyCollections<DestinyItemSocketEntryPlugItemDefinition>.Empty;
 
         /// <summary>
         ///     If this socket's plugs come from a reusable DestinyPlugSetDefinition, this is the identifier for that set. We added

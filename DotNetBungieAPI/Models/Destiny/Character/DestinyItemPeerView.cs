@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
 namespace DotNetBungieAPI.Models.Destiny.Character
@@ -21,6 +22,6 @@ namespace DotNetBungieAPI.Models.Destiny.Character
         ///     The list of dyes that have been applied to this item.
         /// </summary>
         [JsonPropertyName("dyes")]
-        public ReadOnlyCollection<DyeReference> Dyes { get; init; } = Defaults.EmptyReadOnlyCollection<DyeReference>();
+        public ReadOnlyCollection<DyeReference> Dyes { get; init; } = ReadOnlyCollections<DyeReference>.Empty;
     }
 }

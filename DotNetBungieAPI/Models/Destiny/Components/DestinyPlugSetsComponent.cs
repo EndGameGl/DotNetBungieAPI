@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.PlugSets;
 using DotNetBungieAPI.Models.Destiny.Sockets;
 
@@ -23,8 +24,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("plugs")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyPlugSetDefinition>, ReadOnlyCollection<DestinyItemPlug>>
             Plugs { get; init; } =
-            Defaults
-                .EmptyReadOnlyDictionary<DefinitionHashPointer<DestinyPlugSetDefinition>,
-                    ReadOnlyCollection<DestinyItemPlug>>();
+            ReadOnlyDictionaries<DefinitionHashPointer<DestinyPlugSetDefinition>, ReadOnlyCollection<DestinyItemPlug>>.
+            Empty;
     }
 }

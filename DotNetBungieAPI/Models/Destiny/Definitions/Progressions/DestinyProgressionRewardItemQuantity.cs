@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Progressions
 {
@@ -11,7 +12,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Progressions
 
         [JsonPropertyName("claimUnlockDisplayStrings")]
         public ReadOnlyCollection<string> ClaimUnlockDisplayStrings { get; init; } =
-            Defaults.EmptyReadOnlyCollection<string>();
+            ReadOnlyCollections<string>.Empty;
 
         [JsonPropertyName("rewardedAtProgressionLevel")]
         public int RewardedAtProgressionLevel { get; init; }

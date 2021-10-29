@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Vendors
 {
@@ -16,14 +17,14 @@ namespace DotNetBungieAPI.Models.Destiny.Vendors
         /// </summary>
         [JsonPropertyName("currencyPaid")]
         public ReadOnlyCollection<DestinyItemQuantity> CurrencyPaid { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
+            ReadOnlyCollections<DestinyItemQuantity>.Empty;
 
         /// <summary>
         ///     The item that was received, and its quantity.
         /// </summary>
         [JsonPropertyName("itemReceived")]
         public ReadOnlyCollection<DestinyItemQuantity> ItemReceived { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
+            ReadOnlyCollections<DestinyItemQuantity>.Empty;
 
         /// <summary>
         ///     The unlock flag used to determine whether you still have the purchased item.

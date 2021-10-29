@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Milestones
 {
@@ -27,7 +28,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         ///     A list of tips, provided by the Firehose.
         /// </summary>
         [JsonPropertyName("tips")]
-        public ReadOnlyCollection<string> Tips { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
+        public ReadOnlyCollection<string> Tips { get; init; } = ReadOnlyCollections<string>.Empty;
 
         /// <summary>
         ///     If DPS has defined items related to this Milestone, they can categorize those items in the Firehose. That data will
@@ -35,6 +36,6 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("itemCategories")]
         public ReadOnlyCollection<DestinyMilestoneContentItemCategory> ItemCategories { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyMilestoneContentItemCategory>();
+            ReadOnlyCollections<DestinyMilestoneContentItemCategory>.Empty;
     }
 }

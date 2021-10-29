@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
@@ -23,7 +24,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         /// </summary>
         [JsonPropertyName("replies")]
         public ReadOnlyCollection<DestinyVendorInteractionReplyDefinition> Replies { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyVendorInteractionReplyDefinition>();
+            ReadOnlyCollections<DestinyVendorInteractionReplyDefinition>.Empty;
 
         /// <summary>
         ///     If >= 0, this is the category of sale items to show along with this interaction dialog.
@@ -46,7 +47,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         /// </summary>
         [JsonPropertyName("sackInteractionList")]
         public ReadOnlyCollection<DestinyVendorInteractionSackEntryDefinition> SackInteractionList { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyVendorInteractionSackEntryDefinition>();
+            ReadOnlyCollections<DestinyVendorInteractionSackEntryDefinition>.Empty;
 
         /// <summary>
         ///     A UI hint for the behavior of the interaction screen. This is useful to determine what type of interaction is

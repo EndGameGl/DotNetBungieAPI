@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModifiers;
@@ -47,7 +48,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("modifierHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>> Modifiers { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModifierDefinition>>.Empty;
 
         /// <summary>
         ///     If you want more than just name/location/etc... you're going to have to dig into and show the variants of the
@@ -56,6 +57,6 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("variants")]
         public ReadOnlyCollection<DestinyMilestoneActivityVariant> Variants { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyMilestoneActivityVariant>();
+            ReadOnlyCollections<DestinyMilestoneActivityVariant>.Empty;
     }
 }

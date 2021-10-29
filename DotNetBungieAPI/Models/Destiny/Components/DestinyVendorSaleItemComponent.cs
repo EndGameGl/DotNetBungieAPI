@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using DotNetBungieAPI.Models.Destiny.Definitions.Unlocks;
 
@@ -33,7 +34,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("requiredUnlocks")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyUnlockDefinition>> RequiredUnlocks { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyUnlockDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyUnlockDefinition>>.Empty;
 
         /// <summary>
         ///     If any complex unlock states are checked in determining purchasability, these will be returned here along with the
@@ -44,7 +45,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("unlockStatuses")]
         public ReadOnlyCollection<DestinyUnlockStatus> UnlockStatuses { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyUnlockStatus>();
+            ReadOnlyCollections<DestinyUnlockStatus>.Empty;
 
         /// <summary>
         ///     Indexes in to the "failureStrings" lookup table in DestinyVendorDefinition for the given Vendor. Gives some more
@@ -54,7 +55,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         ///     someone can do something interesting with it that I didn't anticipate.
         /// </summary>
         [JsonPropertyName("failureIndexes")]
-        public ReadOnlyCollection<int> FailureIndexes { get; init; } = Defaults.EmptyReadOnlyCollection<int>();
+        public ReadOnlyCollection<int> FailureIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
 
         /// <summary>
         ///     A flags enumeration value representing the current state of any "state modifiers" on the item being sold. These are
@@ -71,7 +72,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         ///     If available, a list that describes which item values (rewards) should be shown (true) or hidden (false).
         /// </summary>
         [JsonPropertyName("itemValueVisibility")]
-        public ReadOnlyCollection<bool> ItemValueVisibility { get; init; } = Defaults.EmptyReadOnlyCollection<bool>();
+        public ReadOnlyCollection<bool> ItemValueVisibility { get; init; } = ReadOnlyCollections<bool>.Empty;
 
         /// <summary>
         ///     The index into the DestinyVendorDefinition.itemList property. Note that this means Vendor data *is* Content Version
@@ -113,7 +114,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("costs")]
         public ReadOnlyCollection<DestinyItemQuantity> Costs { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
+            ReadOnlyCollections<DestinyItemQuantity>.Empty;
 
         /// <summary>
         ///     If this item has its own custom date where it may be removed from the Vendor's rotation, this is that date.

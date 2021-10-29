@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.SandboxPatterns
 {
@@ -25,7 +26,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.SandboxPatterns
 
         [JsonPropertyName("filters")]
         public ReadOnlyCollection<DestinySandboxPatternFilterDefinition> Filters { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinySandboxPatternFilterDefinition>();
+            ReadOnlyCollections<DestinySandboxPatternFilterDefinition>.Empty;
 
         public bool DeepEquals(DestinySandboxPatternDefinition other)
         {

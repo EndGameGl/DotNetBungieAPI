@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryBuckets;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using DotNetBungieAPI.Models.Destiny.Definitions.Metrics;
@@ -86,8 +87,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         ///     special tooltip messages that need to be shown for this item.
         /// </summary>
         [JsonPropertyName("tooltipNotificationIndexes")]
-        public ReadOnlyCollection<int> TooltipNotificationIndexes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<int>();
+        public ReadOnlyCollection<int> TooltipNotificationIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
 
         /// <summary>
         ///     The identifier for the currently-selected metric definition, to be displayed on the emblem nameplate.
@@ -112,6 +112,6 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         ///     If available, a list that describes which item values (rewards) should be shown (true) or hidden (false).
         /// </summary>
         [JsonPropertyName("itemValueVisibility")]
-        public ReadOnlyCollection<bool> ItemValueVisibility { get; init; } = Defaults.EmptyReadOnlyCollection<bool>();
+        public ReadOnlyCollection<bool> ItemValueVisibility { get; init; } = ReadOnlyCollections<bool>.Empty;
     }
 }

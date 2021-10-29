@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Attributes;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.Lore;
 using DotNetBungieAPI.Models.Destiny.Definitions.Objectives;
@@ -29,7 +30,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Records
 
         [JsonPropertyName("objectiveHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>> Objectives { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyObjectiveDefinition>>.Empty;
 
         [JsonPropertyName("recordValueStyle")] public DestinyRecordValueStyle RecordValueStyle { get; init; }
         [JsonPropertyName("forTitleGilding")] public bool ForTitleGilding { get; init; }
@@ -53,17 +54,17 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Records
         /// </summary>
         [JsonPropertyName("rewardItems")]
         public ReadOnlyCollection<DestinyItemQuantity> RewardItems { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyItemQuantity>();
+            ReadOnlyCollections<DestinyItemQuantity>.Empty;
 
         [JsonPropertyName("presentationNodeType")]
         public DestinyPresentationNodeType PresentationNodeType { get; init; }
 
         [JsonPropertyName("traitIds")]
-        public ReadOnlyCollection<string> TraitIds { get; init; } = Defaults.EmptyReadOnlyCollection<string>();
+        public ReadOnlyCollection<string> TraitIds { get; init; } = ReadOnlyCollections<string>.Empty;
 
         [JsonPropertyName("traitHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyTraitDefinition>>.Empty;
 
         /// <summary>
         ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under
@@ -71,7 +72,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Records
         /// </summary>
         [JsonPropertyName("parentNodeHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentNodes { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
 
         public bool DeepEquals(DestinyRecordDefinition other)
         {

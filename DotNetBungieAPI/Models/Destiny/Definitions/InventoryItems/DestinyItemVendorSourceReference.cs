@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
@@ -29,7 +30,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         ///     different index)
         /// </summary>
         [JsonPropertyName("vendorItemIndexes")]
-        public ReadOnlyCollection<int> VendorItemIndexes { get; init; } = Defaults.EmptyReadOnlyCollection<int>();
+        public ReadOnlyCollection<int> VendorItemIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
 
         public bool DeepEquals(DestinyItemVendorSourceReference other)
         {

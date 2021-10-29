@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Responses;
 using DotNetBungieAPI.Models.User;
 
@@ -18,7 +19,7 @@ namespace DotNetBungieAPI.Models.Queries
         /// </summary>
         [JsonPropertyName("profiles")]
         public ReadOnlyCollection<DestinyProfileUserInfoCard> Profiles { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyProfileUserInfoCard>();
+            ReadOnlyCollections<DestinyProfileUserInfoCard>.Empty;
 
         /// <summary>
         ///     If the requested membership had a linked Bungie.Net membership ID, this is the basic information about that BNet
@@ -33,6 +34,6 @@ namespace DotNetBungieAPI.Models.Queries
         /// </summary>
         [JsonPropertyName("profilesWithErrors")]
         public ReadOnlyCollection<DestinyErrorProfile> ProfilesWithErrors { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyErrorProfile>();
+            ReadOnlyCollections<DestinyErrorProfile>.Empty;
     }
 }

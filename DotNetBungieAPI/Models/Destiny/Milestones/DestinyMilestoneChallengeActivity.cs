@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Challenges;
 using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModifiers;
@@ -14,7 +15,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
 
         [JsonPropertyName("challenges")]
         public ReadOnlyCollection<DestinyChallengeStatus> Challenges { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyChallengeStatus>();
+            ReadOnlyCollections<DestinyChallengeStatus>.Empty;
 
         /// <summary>
         ///     If the activity has modifiers, this will be the list of modifiers that all variants have in common. Perform lookups
@@ -26,7 +27,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("modifierHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>> Modifiers { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>>();
+            ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModifierDefinition>>.Empty;
 
         /// <summary>
         ///     The set of activity options for this activity, keyed by an identifier that's unique for this activity (not
@@ -47,7 +48,7 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("booleanActivityOptions")]
         public ReadOnlyDictionary<uint, bool> BooleanActivityOptions { get; init; } =
-            Defaults.EmptyReadOnlyDictionary<uint, bool>();
+            ReadOnlyDictionaries<uint, bool>.Empty;
 
         /// <summary>
         ///     If returned, this is the index into the DestinyActivityDefinition's "loadouts" property, indicating the currently
@@ -62,6 +63,6 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
         /// </summary>
         [JsonPropertyName("phases")]
         public ReadOnlyCollection<DestinyMilestoneActivityPhase> Phases { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyMilestoneActivityPhase>();
+            ReadOnlyCollections<DestinyMilestoneActivityPhase>.Empty;
     }
 }

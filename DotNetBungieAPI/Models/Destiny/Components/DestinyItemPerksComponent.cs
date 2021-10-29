@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
+using DotNetBungieAPI.Defaults;
 using DotNetBungieAPI.Models.Destiny.Perks;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
@@ -19,6 +20,6 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("perks")]
         public ReadOnlyCollection<DestinyPerkReference> Perks { get; init; } =
-            Defaults.EmptyReadOnlyCollection<DestinyPerkReference>();
+            ReadOnlyCollections<DestinyPerkReference>.Empty;
     }
 }
