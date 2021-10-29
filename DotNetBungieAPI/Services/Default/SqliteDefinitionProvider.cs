@@ -442,28 +442,38 @@ namespace DotNetBungieAPI.Services.Default
             _logger.LogInformation("Started loading {PropertyName}", propertyName);
             var rootDirectoryPath = $"{path}\\{propertyName}";
             rootDirectoryPath.EnsureDirectoryExists();
+            
+            var downloadTasks = new List<Task>(values.Count);
+
             foreach (var (key, value) in values)
             {
-                var entryPath = $"{path}\\{propertyName}\\{key}";
-                var filePath = $"{path}\\{propertyName}\\{key}\\{Path.GetFileName(value)}";
-                entryPath.EnsureDirectoryExists();
-                if (!File.Exists(filePath))
+                var task = ((Func<Task>)(async () =>
                 {
-                    _logger.LogInformation("Downloading and writing db file: {FilePath}", filePath);
-                    await using var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                    await using var stream = await _httpClient.GetStreamFromWebSourceAsync(value);
-                    using var archive = new ZipArchive(stream);
-                    foreach (var zipArchiveEntry in archive.Entries)
+                    var entryPath = Path.Combine(path, propertyName, key);
+                    var filePath = Path.Combine(path, propertyName, key, Path.GetFileName(value));
+                    entryPath.EnsureDirectoryExists();
+                    if (!File.Exists(filePath))
                     {
-                        await using var zipArchiveEntryStream = zipArchiveEntry.Open();
-                        await zipArchiveEntryStream.CopyToAsync(fileStream);
+                        _logger.LogInformation("Downloading and writing db file: {FilePath}", filePath);
+                        await using var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                        await using var stream = await _httpClient.GetStreamFromWebSourceAsync(value);
+                        using var archive = new ZipArchive(stream);
+                        foreach (var zipArchiveEntry in archive.Entries)
+                        {
+                            await using var zipArchiveEntryStream = zipArchiveEntry.Open();
+                            await zipArchiveEntryStream.CopyToAsync(fileStream);
+                        }
                     }
-                }
-                else
-                {
-                    _logger.LogInformation("File already exists, skipping");
-                }
+                    else
+                    {
+                        _logger.LogInformation("File already exists, skipping");
+                    }
+                })).Invoke();
+                
+                downloadTasks.Add(task);
             }
+
+            await Task.WhenAll(downloadTasks.ToArray());
 
             _logger.LogInformation("Finished loading {PropertyName}", propertyName);
         }
