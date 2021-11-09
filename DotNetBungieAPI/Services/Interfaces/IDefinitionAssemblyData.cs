@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using DotNetBungieAPI.Models.Destiny;
+﻿using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Repositories;
 
 namespace DotNetBungieAPI.Services.Interfaces

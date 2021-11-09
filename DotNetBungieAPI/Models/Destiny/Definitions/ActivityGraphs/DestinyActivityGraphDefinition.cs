@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Attributes;
-using DotNetBungieAPI.Defaults;
+﻿using DotNetBungieAPI.Attributes;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
 {
@@ -104,12 +101,12 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
             foreach (var displayProgression in DisplayProgressions) displayProgression.Progression.TryMapValue();
 
             foreach (var linkedGraph in LinkedGraphs)
-            foreach (var graph in linkedGraph.LinkedGraphs)
-                graph.ActivityGraph.TryMapValue();
+                foreach (var graph in linkedGraph.LinkedGraphs)
+                    graph.ActivityGraph.TryMapValue();
 
             foreach (var node in Nodes)
-            foreach (var activity in node.Activities)
-                activity.Activity.TryMapValue();
+                foreach (var activity in node.Activities)
+                    activity.Activity.TryMapValue();
         }
 
         public void SetPointerLocales(BungieLocales locale)
@@ -119,12 +116,12 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
             foreach (var displayProgression in DisplayProgressions) displayProgression.Progression.SetLocale(locale);
 
             foreach (var linkedGraph in LinkedGraphs)
-            foreach (var graph in linkedGraph.LinkedGraphs)
-                graph.ActivityGraph.SetLocale(locale);
+                foreach (var graph in linkedGraph.LinkedGraphs)
+                    graph.ActivityGraph.SetLocale(locale);
 
             foreach (var node in Nodes)
-            foreach (var activity in node.Activities)
-                activity.Activity.SetLocale(locale);
+                foreach (var activity in node.Activities)
+                    activity.Activity.SetLocale(locale);
         }
     }
 }

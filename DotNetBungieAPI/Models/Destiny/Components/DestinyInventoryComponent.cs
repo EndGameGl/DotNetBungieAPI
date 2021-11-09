@@ -1,10 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Components
+﻿namespace DotNetBungieAPI.Models.Destiny.Components
 {
     /// <summary>
     ///     A list of minimal information for items in an inventory: be it a character's inventory, or a Profile's inventory.

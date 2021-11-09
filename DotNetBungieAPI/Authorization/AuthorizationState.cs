@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DotNetBungieAPI.Authorization
+﻿namespace DotNetBungieAPI.Authorization
 {
     /// <summary>
     ///     Class for tracking state of authorization code

@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.GroupsV2
+﻿namespace DotNetBungieAPI.Models.GroupsV2
 {
     public sealed record GroupFeatures
     {

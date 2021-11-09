@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
 {
     /// <summary>
     ///     Represents a status string that could be conditionally displayed about an activity. Note that externally, you can

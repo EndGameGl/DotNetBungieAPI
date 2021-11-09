@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Components;
+﻿using DotNetBungieAPI.Models.Destiny.Components;
 
 namespace DotNetBungieAPI.Models.Destiny.Responses
 {

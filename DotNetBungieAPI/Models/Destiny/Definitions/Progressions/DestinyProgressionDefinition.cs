@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Attributes;
-using DotNetBungieAPI.Defaults;
+﻿using DotNetBungieAPI.Attributes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.Factions;
 
@@ -135,8 +132,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Progressions
             foreach (var item in RewardItems) item.Item.TryMapValue();
 
             foreach (var step in Steps)
-            foreach (var item in step.RewardItems)
-                item.Item.TryMapValue();
+                foreach (var item in step.RewardItems)
+                    item.Item.TryMapValue();
 
             Faction.TryMapValue();
         }
@@ -146,8 +143,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Progressions
             foreach (var item in RewardItems) item.Item.SetLocale(locale);
 
             foreach (var step in Steps)
-            foreach (var item in step.RewardItems)
-                item.Item.SetLocale(locale);
+                foreach (var item in step.RewardItems)
+                    item.Item.SetLocale(locale);
 
             Faction.SetLocale(locale);
         }

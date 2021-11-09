@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.Artifacts;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Artifacts;
 using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Progressions;
 using DotNetBungieAPI.Models.Destiny.Definitions.Seasons;
@@ -60,7 +57,8 @@ namespace DotNetBungieAPI.Models.Common
 
         [JsonPropertyName("currentRankProgressionHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyProgressionDefinition>>
-            CurrentRankProgressions { get; init; } =
+            CurrentRankProgressions
+        { get; init; } =
             ReadOnlyCollections<DefinitionHashPointer<DestinyProgressionDefinition>>.Empty;
 
         [JsonPropertyName("undiscoveredCollectibleImage")]

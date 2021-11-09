@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Attributes;
-using DotNetBungieAPI.Defaults;
+﻿using DotNetBungieAPI.Attributes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.SocketCategories;
 
@@ -108,8 +105,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.SocketTypes
             foreach (var scalar in CurrencyScalars) scalar.CurrencyItem.TryMapValue();
 
             foreach (var plugList in PlugWhitelist)
-            foreach (var plug in plugList.ReinitializationPossiblePlugs)
-                plug.TryMapValue();
+                foreach (var plug in plugList.ReinitializationPossiblePlugs)
+                    plug.TryMapValue();
         }
 
         public void SetPointerLocales(BungieLocales locale)
@@ -118,8 +115,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.SocketTypes
             foreach (var scalar in CurrencyScalars) scalar.CurrencyItem.SetLocale(locale);
 
             foreach (var plugList in PlugWhitelist)
-            foreach (var plug in plugList.ReinitializationPossiblePlugs)
-                plug.SetLocale(locale);
+                foreach (var plug in plugList.ReinitializationPossiblePlugs)
+                    plug.SetLocale(locale);
         }
 
         public override string ToString()

@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     ///     Primarily for Quests, this is the definition of properties related to the item if it is a quest and its various

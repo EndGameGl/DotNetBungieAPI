@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Milestones
+﻿namespace DotNetBungieAPI.Models.Destiny.Milestones
 {
     /// <summary>
     ///     Represents whatever information we can return about an explicit phase in an activity. In the future, I hope we'll

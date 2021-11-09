@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Authorization
+﻿namespace DotNetBungieAPI.Authorization
 {
     /// <summary>
     ///     Data contract to OAuth2 flow token.

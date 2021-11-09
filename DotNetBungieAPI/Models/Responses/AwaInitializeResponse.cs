@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Responses
+﻿namespace DotNetBungieAPI.Models.Responses
 {
     public sealed record AwaInitializeResponse
     {

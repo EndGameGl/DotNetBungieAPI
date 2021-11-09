@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.User
+﻿namespace DotNetBungieAPI.Models.User
 {
     /// <summary>
     ///     The set of all email subscription/opt-in settings and definitions.

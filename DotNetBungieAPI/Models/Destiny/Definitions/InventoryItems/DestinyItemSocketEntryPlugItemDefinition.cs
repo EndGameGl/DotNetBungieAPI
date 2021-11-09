@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     ///     The definition of a known, reusable plug that can be applied to a socket.

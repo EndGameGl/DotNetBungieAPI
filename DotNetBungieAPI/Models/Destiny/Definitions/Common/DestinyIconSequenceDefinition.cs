@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Common
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Common
 {
     public sealed record DestinyIconSequenceDefinition : IDeepEquatable<DestinyIconSequenceDefinition>
     {

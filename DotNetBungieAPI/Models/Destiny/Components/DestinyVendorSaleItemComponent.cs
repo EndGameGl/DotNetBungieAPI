@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using DotNetBungieAPI.Models.Destiny.Definitions.Unlocks;
 
 namespace DotNetBungieAPI.Models.Destiny.Components

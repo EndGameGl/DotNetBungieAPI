@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModifiers;
 using DotNetBungieAPI.Models.Destiny.Definitions.Objectives;
 
@@ -15,7 +12,8 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones
 
         [JsonPropertyName("challengeObjectiveHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>>
-            ChallengeObjectives { get; init; } =
+            ChallengeObjectives
+        { get; init; } =
             ReadOnlyCollections<DefinitionHashPointer<DestinyObjectiveDefinition>>.Empty;
 
         /// <summary>

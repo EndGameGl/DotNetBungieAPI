@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny
+﻿namespace DotNetBungieAPI.Models.Destiny
 {
     /// <summary>
     ///     Indicates how a socket is populated, and where you should look for valid plug data.

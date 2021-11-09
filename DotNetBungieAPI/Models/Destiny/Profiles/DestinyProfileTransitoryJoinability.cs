@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Profiles
+﻿namespace DotNetBungieAPI.Models.Destiny.Profiles
 {
     /// <summary>
     ///     Some basic information about whether you can be joined, how many slots are left etc. Note that this can change

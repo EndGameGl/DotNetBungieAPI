@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
@@ -46,7 +43,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("insertionMaterialRequirementHash")]
         public DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>
-            InsertionMaterialRequirement { get; init; } =
+            InsertionMaterialRequirement
+        { get; init; } =
             DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>.Empty;
 
         /// <summary>
@@ -63,7 +61,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("enabledMaterialRequirementHash")]
         public DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>
-            EnabledMaterialRequirement { get; init; } =
+            EnabledMaterialRequirement
+        { get; init; } =
             DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>.Empty;
 
         /// <summary>

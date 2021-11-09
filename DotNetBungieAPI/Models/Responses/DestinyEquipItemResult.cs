@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Responses
+﻿namespace DotNetBungieAPI.Models.Responses
 {
     /// <summary>
     ///     The results of an Equipping operation performed through the Destiny API.

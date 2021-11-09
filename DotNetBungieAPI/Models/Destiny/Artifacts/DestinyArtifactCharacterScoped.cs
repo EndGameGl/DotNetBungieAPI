@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.Artifacts;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Artifacts;
 
 namespace DotNetBungieAPI.Models.Destiny.Artifacts
 {

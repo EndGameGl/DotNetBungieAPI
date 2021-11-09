@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.Classes;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Classes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Genders;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using DotNetBungieAPI.Models.Destiny.Definitions.Races;

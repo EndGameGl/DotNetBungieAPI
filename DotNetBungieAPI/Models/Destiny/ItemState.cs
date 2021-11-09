@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny
+﻿namespace DotNetBungieAPI.Models.Destiny
 {
     /// <summary>
     ///     A flags enumeration/bitmask where each bit represents a different possible state that the item can be in that may

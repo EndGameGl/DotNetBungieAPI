@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using DotNetBungieAPI.Models.Destiny;
+﻿using DotNetBungieAPI.Models.Destiny;
 
 namespace DotNetBungieAPI
 {
@@ -72,7 +69,7 @@ namespace DotNetBungieAPI
         }
 
         /// <summary>
-        /// Converts destiny component types to query string
+        ///     Converts destiny component types to query string
         /// </summary>
         /// <param name="componentTypes"></param>
         /// <returns></returns>
@@ -82,7 +79,7 @@ namespace DotNetBungieAPI
         }
 
         /// <summary>
-        /// Converts destiny component types to query string
+        ///     Converts destiny component types to query string
         /// </summary>
         /// <param name="componentTypes"></param>
         /// <returns></returns>
@@ -92,7 +89,7 @@ namespace DotNetBungieAPI
         }
 
         /// <summary>
-        /// Converts <see cref="uint"/> hash to <see cref="int"/> value
+        ///     Converts <see cref="uint" /> hash to <see cref="int" /> value
         /// </summary>
         /// <param name="hash"></param>
         /// <returns></returns>
@@ -102,7 +99,7 @@ namespace DotNetBungieAPI
         }
 
         /// <summary>
-        /// Converts <see cref="int"/> hash to <see cref="uint"/> value
+        ///     Converts <see cref="int" /> hash to <see cref="uint" /> value
         /// </summary>
         /// <param name="hash"></param>
         /// <returns></returns>

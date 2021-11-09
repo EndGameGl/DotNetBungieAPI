@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.EquipmentSlots;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.EquipmentSlots;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
@@ -14,7 +11,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
 
         [JsonPropertyName("allowedEquippedItemHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>
-            AllowedEquippedItems { get; init; } =
+            AllowedEquippedItems
+        { get; init; } =
             ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 
         [JsonPropertyName("allowedWeaponSubTypes")]

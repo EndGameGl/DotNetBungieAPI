@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes
 {
     public sealed record
         DestinyPresentationNodeRequirementsBlock : IDeepEquatable<DestinyPresentationNodeRequirementsBlock>

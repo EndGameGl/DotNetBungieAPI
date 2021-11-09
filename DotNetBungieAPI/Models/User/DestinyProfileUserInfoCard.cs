@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny;
+﻿using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Components;
 
 namespace DotNetBungieAPI.Models.User

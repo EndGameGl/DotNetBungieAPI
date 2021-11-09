@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 
 namespace DotNetBungieAPI.Models.Fireteam
 {

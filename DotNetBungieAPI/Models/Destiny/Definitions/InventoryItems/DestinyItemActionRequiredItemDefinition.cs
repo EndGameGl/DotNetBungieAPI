@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     ///     The definition of an item and quantity required in a character's inventory in order to perform an action.

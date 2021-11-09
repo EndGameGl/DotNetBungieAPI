@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Milestones
+﻿namespace DotNetBungieAPI.Models.Destiny.Milestones
 {
     /// <summary>
     ///     The character-specific data for a milestone's reward entry. See DestinyMilestoneDefinition for more information

@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
 {

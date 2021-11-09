@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
 {

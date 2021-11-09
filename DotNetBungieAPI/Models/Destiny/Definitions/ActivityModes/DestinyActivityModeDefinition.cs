@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Attributes;
-using DotNetBungieAPI.Defaults;
+﻿using DotNetBungieAPI.Attributes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 
@@ -84,7 +81,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes
         /// </summary>
         [JsonPropertyName("activityModeMappings")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyActivityDefinition>, DestinyActivityModeType>
-            ActivityModeMappings { get; init; } =
+            ActivityModeMappings
+        { get; init; } =
             ReadOnlyDictionaries<DefinitionHashPointer<DestinyActivityDefinition>, DestinyActivityModeType>.Empty;
 
         /// <summary>

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-using DotNetBungieAPI.Authorization;
+﻿using DotNetBungieAPI.Authorization;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using DotNetBungieAPI.Services.Interfaces;
-using DotNetBungieAPI.Repositories;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Clients
 {
@@ -39,7 +37,7 @@ namespace DotNetBungieAPI.Clients
         IUserContextBungieClient ScopeToUser(AuthorizationTokenData token);
 
         /// <summary>
-        /// Tries to get definition async from all available sources
+        ///     Tries to get definition async from all available sources
         /// </summary>
         /// <param name="hash"></param>
         /// <param name="locale"></param>

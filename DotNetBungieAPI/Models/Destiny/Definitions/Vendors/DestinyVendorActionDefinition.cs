@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
 {
     /// <summary>
     ///     If a vendor can ever end up performing actions, these are the properties that will be related to those actions. I'm

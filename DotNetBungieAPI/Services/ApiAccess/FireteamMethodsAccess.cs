@@ -1,6 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using DotNetBungieAPI.Authorization;
+﻿using DotNetBungieAPI.Authorization;
 using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Exceptions;
 using DotNetBungieAPI.Models;
@@ -10,6 +8,8 @@ using DotNetBungieAPI.Models.Fireteam;
 using DotNetBungieAPI.Models.Queries;
 using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 using DotNetBungieAPI.Services.Interfaces;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.ApiAccess
 {

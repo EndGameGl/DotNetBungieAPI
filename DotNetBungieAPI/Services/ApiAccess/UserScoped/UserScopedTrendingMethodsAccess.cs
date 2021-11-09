@@ -1,10 +1,10 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using DotNetBungieAPI.Authorization;
+﻿using DotNetBungieAPI.Authorization;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Queries;
 using DotNetBungieAPI.Models.Trending;
 using DotNetBungieAPI.Services.ApiAccess.Interfaces;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.ApiAccess.UserScoped
 {

@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     ///     If an item can have an action performed on it (like "Dismantle"), it will be defined here if you care.

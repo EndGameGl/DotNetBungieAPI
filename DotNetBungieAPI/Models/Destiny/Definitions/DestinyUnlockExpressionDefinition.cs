@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions
 {
     /// <summary>
     ///     Unlock Expressions are the foundation of the game's gating mechanics and investment-related restrictions. They can

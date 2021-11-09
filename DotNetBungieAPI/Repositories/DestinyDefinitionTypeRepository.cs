@@ -1,9 +1,6 @@
-﻿using System;
+﻿using DotNetBungieAPI.Models.Destiny;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using DotNetBungieAPI.Models.Destiny;
 
 namespace DotNetBungieAPI.Repositories
 {

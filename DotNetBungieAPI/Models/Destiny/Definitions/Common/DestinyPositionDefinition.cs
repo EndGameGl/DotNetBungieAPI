@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Common
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Common
 {
     public sealed record DestinyPositionDefinition : IDeepEquatable<DestinyPositionDefinition>
     {

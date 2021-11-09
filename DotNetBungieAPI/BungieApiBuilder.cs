@@ -1,5 +1,4 @@
-﻿using System;
-using DotNetBungieAPI.Clients;
+﻿using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Services;
 using DotNetBungieAPI.Services.ApiAccess;
 using DotNetBungieAPI.Services.ApiAccess.Interfaces;
@@ -9,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace DotNetBungieAPI
 {
     /// <summary>
-    /// Static class helper for building <see cref="IBungieClient"/>
+    ///     Static class helper for building <see cref="IBungieClient" />
     /// </summary>
     public static class BungieApiBuilder
     {
@@ -18,16 +17,16 @@ namespace DotNetBungieAPI
             IServiceCollection serviceCollection = null)
         {
             serviceCollection ??= new ServiceCollection();
-            
+
             var configuration = new BungieClientConfiguration(serviceCollection);
             configure.Invoke(configuration);
 
             serviceCollection.AddSingleton(configuration);
             serviceCollection.AddSingleton<IBungieClient, BungieClient>();
             serviceCollection.AddSingleton<IDefinitionAssemblyData, DefinitionAssemblyData>();
-            
+
             serviceCollection.AddSingleton<IBungieApiAccess, BungieApiAccess>();
-            
+
             serviceCollection.AddSingleton<IFireteamMethodsAccess, FireteamMethodsAccess>();
             serviceCollection.AddSingleton<IContentMethodsAccess, ContentMethodsAccess>();
             serviceCollection.AddSingleton<IAppMethodsAccess, AppMethodsAccess>();
@@ -43,9 +42,9 @@ namespace DotNetBungieAPI
 
             return serviceCollection.BuildServiceProvider().GetService<IBungieClient>();
         }
-        
+
         /// <summary>
-        /// Registers <see cref="IBungieClient"/> to specified <see cref="IServiceCollection"/>
+        ///     Registers <see cref="IBungieClient" /> to specified <see cref="IServiceCollection" />
         /// </summary>
         /// <param name="serviceCollection"></param>
         /// <param name="configure"></param>
@@ -60,9 +59,9 @@ namespace DotNetBungieAPI
             serviceCollection.AddSingleton(configuration);
             serviceCollection.AddSingleton<IBungieClient, BungieClient>();
             serviceCollection.AddSingleton<IDefinitionAssemblyData, DefinitionAssemblyData>();
-            
+
             serviceCollection.AddSingleton<IBungieApiAccess, BungieApiAccess>();
-            
+
             serviceCollection.AddSingleton<IFireteamMethodsAccess, FireteamMethodsAccess>();
             serviceCollection.AddSingleton<IContentMethodsAccess, ContentMethodsAccess>();
             serviceCollection.AddSingleton<IAppMethodsAccess, AppMethodsAccess>();
@@ -75,7 +74,7 @@ namespace DotNetBungieAPI
             serviceCollection.AddSingleton<ISocialMethodsAccess, SocialMethodsAccess>();
             serviceCollection.AddSingleton<ITrendingMethodsAccess, TrendingMethodsAccess>();
             serviceCollection.AddSingleton<IMiscMethodsAccess, MiscMethodsAccess>();
-            
+
             return serviceCollection;
         }
     }

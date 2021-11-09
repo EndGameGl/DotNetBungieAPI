@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Interpolation
+﻿namespace DotNetBungieAPI.Models.Interpolation
 {
     public sealed record InterpolationPoint : IDeepEquatable<InterpolationPoint>
     {

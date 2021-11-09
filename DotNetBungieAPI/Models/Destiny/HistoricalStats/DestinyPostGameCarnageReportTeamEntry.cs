@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.HistoricalStats
+﻿namespace DotNetBungieAPI.Models.Destiny.HistoricalStats
 {
     public sealed record DestinyPostGameCarnageReportTeamEntry
     {

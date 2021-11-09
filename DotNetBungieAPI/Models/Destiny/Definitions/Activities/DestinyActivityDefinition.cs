@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Attributes;
-using DotNetBungieAPI.Defaults;
+﻿using DotNetBungieAPI.Attributes;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityTypes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
@@ -347,15 +344,15 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
             }
 
             foreach (var reward in Rewards)
-            foreach (var rewardItem in reward.RewardItems)
-                rewardItem.Item.TryMapValue();
+                foreach (var rewardItem in reward.RewardItems)
+                    rewardItem.Item.TryMapValue();
 
             foreach (var loadout in Loadouts)
-            foreach (var requirement in loadout.Requirements)
-            {
-                requirement.EquipmentSlot.TryMapValue();
-                foreach (var item in requirement.AllowedEquippedItems) item.TryMapValue();
-            }
+                foreach (var requirement in loadout.Requirements)
+                {
+                    requirement.EquipmentSlot.TryMapValue();
+                    foreach (var item in requirement.AllowedEquippedItems) item.TryMapValue();
+                }
         }
 
         public void SetPointerLocales(BungieLocales locale)
@@ -393,15 +390,15 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
             }
 
             foreach (var reward in Rewards)
-            foreach (var rewardItem in reward.RewardItems)
-                rewardItem.Item.SetLocale(locale);
+                foreach (var rewardItem in reward.RewardItems)
+                    rewardItem.Item.SetLocale(locale);
 
             foreach (var loadout in Loadouts)
-            foreach (var requirement in loadout.Requirements)
-            {
-                requirement.EquipmentSlot.SetLocale(locale);
-                foreach (var item in requirement.AllowedEquippedItems) item.SetLocale(locale);
-            }
+                foreach (var requirement in loadout.Requirements)
+                {
+                    requirement.EquipmentSlot.SetLocale(locale);
+                    foreach (var item in requirement.AllowedEquippedItems) item.SetLocale(locale);
+                }
         }
 
         public override string ToString()

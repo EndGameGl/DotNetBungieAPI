@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.Objectives;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Objectives;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
 {

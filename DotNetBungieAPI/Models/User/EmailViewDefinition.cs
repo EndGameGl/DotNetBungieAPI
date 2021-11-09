@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.User
+﻿namespace DotNetBungieAPI.Models.User
 {
     /// <summary>
     ///     Represents a data-driven view for Email settings. Web/Mobile UI can use this data to show new EMail settings

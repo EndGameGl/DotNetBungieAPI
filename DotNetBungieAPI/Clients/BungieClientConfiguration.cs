@@ -1,38 +1,29 @@
-﻿using System;
-using System.Text.Json;
-using DotNetBungieAPI.Models.Applications;
+﻿using DotNetBungieAPI.Models.Applications;
 using DotNetBungieAPI.Services.Default;
 using DotNetBungieAPI.Services.Default.ServiceConfigurations;
 using DotNetBungieAPI.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using DefaultDestiny2DefinitionRepository = DotNetBungieAPI.Services.Default.DefaultDestiny2DefinitionRepository;
 
 namespace DotNetBungieAPI.Clients
 {
     public sealed class BungieClientConfiguration
     {
-        internal readonly IServiceCollection ServiceCollection;
         internal readonly Lazy<Type> DefaultAuthorizationHandlerType = new(() => typeof(DefaultAuthorizationHandler));
-        internal readonly Lazy<Type> DefaultSerializerType = new(() => typeof(DefaultBungieNetJsonSerializer));
-        internal readonly Lazy<Type> DefaultRepositoryType = new(() => typeof(DefaultDestiny2DefinitionRepository));
+        internal readonly Lazy<Type> DefaultDefinitionProviderType = new(() => typeof(SqliteDefinitionProvider));
         internal readonly Lazy<Type> DefaultHttpClientType = new(() => typeof(DefaultDotNetBungieApiHttpClient));
         internal readonly Lazy<Type> DefaultLoggerType = new(() => typeof(DefaultDotNetBungieApiLogger));
-        internal readonly Lazy<Type> DefaultDefinitionProviderType = new(() => typeof(SqliteDefinitionProvider));
+        internal readonly Lazy<Type> DefaultRepositoryType = new(() => typeof(DefaultDestiny2DefinitionRepository));
+        internal readonly Lazy<Type> DefaultSerializerType = new(() => typeof(DefaultBungieNetJsonSerializer));
+        internal readonly IServiceCollection ServiceCollection;
 
         private string _apiKey;
         private int _clientId;
         private string _clientSecret;
-        private ApplicationScopes _applicationScopes;
 
-        /// <summary>
-        /// Checks whether scope is available for this app
-        /// </summary>
-        /// <param name="applicationScope"></param>
-        /// <returns></returns>
-        public bool HasSufficientRights(ApplicationScopes applicationScope)
+        internal BungieClientConfiguration(IServiceCollection serviceCollection)
         {
-            return _applicationScopes.HasFlag(applicationScope);
+            ServiceCollection = serviceCollection;
         }
 
         /// <summary>
@@ -65,24 +56,25 @@ namespace DotNetBungieAPI.Clients
         /// <summary>
         ///     Only specified scope API operations will be allowed to run in this app.
         /// </summary>
-        public ApplicationScopes ApplicationScopes
-        {
-            get => _applicationScopes;
-            set => _applicationScopes = value;
-        }
+        public ApplicationScopes ApplicationScopes { get; set; }
 
         /// <summary>
-        /// Caches definitions to repository if not present currently after fetching from provider.
+        ///     Caches definitions to repository if not present currently after fetching from provider.
         /// </summary>
         public bool CacheDefinitions { get; set; }
 
-        internal BungieClientConfiguration(IServiceCollection serviceCollection)
+        /// <summary>
+        ///     Checks whether scope is available for this app
+        /// </summary>
+        /// <param name="applicationScope"></param>
+        /// <returns></returns>
+        public bool HasSufficientRights(ApplicationScopes applicationScope)
         {
-            ServiceCollection = serviceCollection;
+            return ApplicationScopes.HasFlag(applicationScope);
         }
 
         /// <summary>
-        /// Configures default console logger
+        ///     Configures default console logger
         /// </summary>
         /// <param name="configure"></param>
         /// <returns></returns>
@@ -96,7 +88,7 @@ namespace DotNetBungieAPI.Clients
         }
 
         /// <summary>
-        /// Enables this library use custom <see cref="Microsoft.Extensions.Logging.ILogger"/>
+        ///     Enables this library use custom <see cref="Microsoft.Extensions.Logging.ILogger" />
         /// </summary>
         /// <returns></returns>
         public BungieClientConfiguration UseCustomLogger<T>() where T : ILogger
@@ -106,14 +98,14 @@ namespace DotNetBungieAPI.Clients
         }
 
         /// <summary>
-        /// Configures default json serializer for this application 
+        ///     Configures default json serializer for this application
         /// </summary>
         /// <param name="configure"></param>
         /// <returns></returns>
         public BungieClientConfiguration UseDefaultBungieNetJsonSerializer(
             Action<DotNetBungieApiJsonSerializerConfiguration> configure)
         {
-            var configuration = new DotNetBungieApiJsonSerializerConfiguration()
+            var configuration = new DotNetBungieApiJsonSerializerConfiguration
             {
                 Options = new JsonSerializerOptions()
             };
@@ -124,7 +116,7 @@ namespace DotNetBungieAPI.Clients
         }
 
         /// <summary>
-        /// Sets custom <see cref="IBungieNetJsonSerializer"/> for this application
+        ///     Sets custom <see cref="IBungieNetJsonSerializer" /> for this application
         /// </summary>
         /// <returns></returns>
         public BungieClientConfiguration UseCustomBungieNetJsonSerializer<T>() where T : IBungieNetJsonSerializer

@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Ignores
+﻿namespace DotNetBungieAPI.Models.Ignores
 {
     public sealed record IgnoreResponse
     {

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using DotNetBungieAPI.Authorization;
+﻿using DotNetBungieAPI.Authorization;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using DotNetBungieAPI.Services.Interfaces;
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Clients
 {
@@ -14,8 +13,8 @@ namespace DotNetBungieAPI.Clients
     /// </summary>
     internal sealed class BungieClient : IBungieClient
     {
-        private readonly ILogger _logger;
         private readonly BungieClientConfiguration _configuration;
+        private readonly ILogger _logger;
 
         public BungieClient(
             ILogger logger,
@@ -53,7 +52,7 @@ namespace DotNetBungieAPI.Clients
         public IDefinitionProvider DefinitionProvider { get; }
 
         /// <summary>
-        /// <inheritdoc cref="IBungieClient.ScopeToUser" />
+        ///     <inheritdoc cref="IBungieClient.ScopeToUser" />
         /// </summary>
         /// <param name="token">Auth token</param>
         /// <returns></returns>
@@ -63,7 +62,7 @@ namespace DotNetBungieAPI.Clients
         }
 
         /// <summary>
-        /// <inheritdoc cref="IBungieClient.TryGetDefinitionAsync{T}"/>
+        ///     <inheritdoc cref="IBungieClient.TryGetDefinitionAsync{T}" />
         /// </summary>
         /// <param name="hash"></param>
         /// <param name="locale"></param>
@@ -90,10 +89,7 @@ namespace DotNetBungieAPI.Clients
 
         public bool TryGetDefinition<T>(uint hash, BungieLocales locale, out T definition) where T : IDestinyDefinition
         {
-            if (Repository.TryGetDestinyDefinition<T>(hash, locale, out definition))
-            {
-                return true;
-            }
+            if (Repository.TryGetDestinyDefinition(hash, locale, out definition)) return true;
 
             var defTask = DefinitionProvider.LoadDefinition<T>(hash, locale);
             definition = defTask.GetAwaiter().GetResult();
@@ -127,10 +123,7 @@ namespace DotNetBungieAPI.Clients
         public bool TryGetHistoricalStatDefinition(string key, BungieLocales locale,
             out DestinyHistoricalStatsDefinition definition)
         {
-            if (Repository.TryGetDestinyHistoricalDefinition(locale, key, out definition))
-            {
-                return true;
-            }
+            if (Repository.TryGetDestinyHistoricalDefinition(locale, key, out definition)) return true;
 
             var getterTask = DefinitionProvider.LoadHistoricalStatsDefinition(key, locale);
             definition = getterTask.GetAwaiter().GetResult();

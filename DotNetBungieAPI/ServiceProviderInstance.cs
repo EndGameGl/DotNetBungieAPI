@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DotNetBungieAPI
+﻿namespace DotNetBungieAPI
 {
     internal static class ServiceProviderInstance
     {

@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Responses
+﻿namespace DotNetBungieAPI.Models.Destiny.Responses
 {
     public sealed record DestinyClanLeaderboardsResponse
     {

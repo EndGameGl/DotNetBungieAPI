@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
     /// <summary>
     ///     Defines a particular entry in an ItemSet (AKA a particular Quest Step in a Quest)

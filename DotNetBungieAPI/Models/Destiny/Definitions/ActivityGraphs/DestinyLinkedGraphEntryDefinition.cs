@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
 {
     public class DestinyLinkedGraphEntryDefinition : IDeepEquatable<DestinyLinkedGraphEntryDefinition>
     {

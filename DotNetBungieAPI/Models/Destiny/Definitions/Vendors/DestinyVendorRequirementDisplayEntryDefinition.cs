@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
 {
     /// <summary>
     ///     The localized properties of the RequirementsDisplay, allowing information about the requirement or item being

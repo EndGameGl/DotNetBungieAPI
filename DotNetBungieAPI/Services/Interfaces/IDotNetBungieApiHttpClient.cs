@@ -1,10 +1,10 @@
-﻿using System.Drawing;
+﻿using DotNetBungieAPI.Authorization;
+using DotNetBungieAPI.Models;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using DotNetBungieAPI.Authorization;
-using DotNetBungieAPI.Models;
 
 namespace DotNetBungieAPI.Services.Interfaces
 {

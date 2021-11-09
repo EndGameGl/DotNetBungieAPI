@@ -1,14 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
-using DotNetBungieAPI.Authorization;
+﻿using DotNetBungieAPI.Authorization;
 using DotNetBungieAPI.Services.ApiAccess.UserScoped;
 using DotNetBungieAPI.Services.Interfaces;
-using DotNetBungieAPI.Repositories;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Clients
 {
     /// <summary>
-    /// <inheritdoc cref="IUserContextBungieClient"/>
+    ///     <inheritdoc cref="IUserContextBungieClient" />
     /// </summary>
     public class UserContextBungieClient : IUserContextBungieClient
     {
@@ -37,67 +35,67 @@ namespace DotNetBungieAPI.Clients
         }
 
         /// <summary>
-        /// <inheritdoc cref="IUserContextBungieClient.Repository"/>
+        ///     <inheritdoc cref="IUserContextBungieClient.Repository" />
         /// </summary>
         public IDestiny2DefinitionRepository Repository { get; }
 
         /// <summary>
-        /// <inheritdoc cref="IUserContextBungieClient.App"/>
+        ///     <inheritdoc cref="IUserContextBungieClient.App" />
         /// </summary>
         public UserScopedAppMethodsAccess App { get; }
 
         /// <summary>
-        /// <inheritdoc cref="IUserContextBungieClient.User"/>
+        ///     <inheritdoc cref="IUserContextBungieClient.User" />
         /// </summary>
         public UserScopedUserMethodsAccess User { get; }
 
         /// <summary>
-        /// <inheritdoc cref="IUserContextBungieClient.Trending"/>
+        ///     <inheritdoc cref="IUserContextBungieClient.Trending" />
         /// </summary>
         public UserScopedTrendingMethodsAccess Trending { get; }
 
         /// <summary>
-        /// <inheritdoc cref="IUserContextBungieClient.Tokens"/>
+        ///     <inheritdoc cref="IUserContextBungieClient.Tokens" />
         /// </summary>
         public UserScopedTokenMethodsAccess Tokens { get; }
 
         /// <summary>
-        /// <inheritdoc cref="IUserContextBungieClient.Misc"/>
+        ///     <inheritdoc cref="IUserContextBungieClient.Misc" />
         /// </summary>
         public UserScopedMiscMethodsAccess Misc { get; }
 
         /// <summary>
-        /// <inheritdoc cref="IUserContextBungieClient.GroupV2"/>
+        ///     <inheritdoc cref="IUserContextBungieClient.GroupV2" />
         /// </summary>
         public UserScopedGroupV2MethodsAccess GroupV2 { get; }
 
         /// <summary>
-        /// <inheritdoc cref="IUserContextBungieClient.Forum"/>
+        ///     <inheritdoc cref="IUserContextBungieClient.Forum" />
         /// </summary>
         public UsedScopedForumMethodsAccess Forum { get; }
 
         /// <summary>
-        /// <inheritdoc cref="IUserContextBungieClient.Fireteam"/>
+        ///     <inheritdoc cref="IUserContextBungieClient.Fireteam" />
         /// </summary>
         public UserScopedFireteamMethodsAccess Fireteam { get; }
 
         /// <summary>
-        /// <inheritdoc cref="IUserContextBungieClient.Content"/>
+        ///     <inheritdoc cref="IUserContextBungieClient.Content" />
         /// </summary>
         public UserScopedContentMethodsAccess Content { get; }
 
         /// <summary>
-        /// <inheritdoc cref="IUserContextBungieClient.CommunityContent"/>
+        ///     <inheritdoc cref="IUserContextBungieClient.CommunityContent" />
         /// </summary>
         public UserScopedCommunityContentMethodsAccess CommunityContent { get; }
 
         /// <summary>
-        /// <inheritdoc cref="IUserContextBungieClient.Destiny2"/>
+        ///     <inheritdoc cref="IUserContextBungieClient.Destiny2" />
         /// </summary>
         public UserScopedDestiny2MethodsAccess Destiny2 { get; }
 
         /// <summary>
-        /// <inheritdoc cref="IUserContextBungieClient.ValidateToken"/>
+        ///     <inheritdoc cref="IUserContextBungieClient.ValidateToken" />
         /// </summary>
         public async Task ValidateToken()
         {
@@ -106,7 +104,7 @@ namespace DotNetBungieAPI.Clients
         }
 
         /// <summary>
-        /// <inheritdoc cref="IUserContextBungieClient.TokenData"/>
+        ///     <inheritdoc cref="IUserContextBungieClient.TokenData" />
         /// </summary>
         public AuthorizationTokenData TokenData { get; }
     }

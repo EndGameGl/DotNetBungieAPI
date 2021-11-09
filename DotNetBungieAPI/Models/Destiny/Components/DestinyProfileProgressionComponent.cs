@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Artifacts;
+﻿using DotNetBungieAPI.Models.Destiny.Artifacts;
 using DotNetBungieAPI.Models.Destiny.Definitions.Checklists;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
@@ -22,7 +19,8 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("checklists")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyChecklistDefinition>, ReadOnlyDictionary<uint, bool>>
-            Checklists { get; init; } =
+            Checklists
+        { get; init; } =
             ReadOnlyDictionaries<DefinitionHashPointer<DestinyChecklistDefinition>, ReadOnlyDictionary<uint, bool>>
                 .Empty;
 

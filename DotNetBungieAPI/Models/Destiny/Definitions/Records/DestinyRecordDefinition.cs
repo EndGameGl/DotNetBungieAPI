@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Attributes;
-using DotNetBungieAPI.Defaults;
+﻿using DotNetBungieAPI.Attributes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.Lore;
 using DotNetBungieAPI.Models.Destiny.Definitions.Objectives;
@@ -114,8 +111,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Records
                 foreach (var objective in IntervalInfo.IntervalObjectives) objective.IntervalObjective.TryMapValue();
 
                 foreach (var reward in IntervalInfo.IntervalRewards)
-                foreach (var item in reward.IntervalRewardItems)
-                    item.Item.TryMapValue();
+                    foreach (var item in reward.IntervalRewardItems)
+                        item.Item.TryMapValue();
             }
 
             if (TitleInfo != null)
@@ -146,8 +143,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Records
                     objective.IntervalObjective.SetLocale(locale);
 
                 foreach (var reward in IntervalInfo.IntervalRewards)
-                foreach (var item in reward.IntervalRewardItems)
-                    item.Item.SetLocale(locale);
+                    foreach (var item in reward.IntervalRewardItems)
+                        item.Item.SetLocale(locale);
             }
 
             if (TitleInfo != null)

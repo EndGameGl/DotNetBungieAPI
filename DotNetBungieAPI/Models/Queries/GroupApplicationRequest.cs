@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Queries
+﻿namespace DotNetBungieAPI.Models.Queries
 {
     public class GroupApplicationRequest
     {

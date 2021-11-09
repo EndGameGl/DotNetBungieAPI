@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
 {
     /// <summary>
     ///     Nodes on a graph can be visually connected: this appears to be the information about which nodes to link. It

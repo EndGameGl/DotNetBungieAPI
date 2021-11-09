@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Responses
+﻿namespace DotNetBungieAPI.Models.Destiny.Responses
 {
     /// <summary>
     ///     The results of a search for Destiny content. This will be improved on over time, I've been doing some experimenting

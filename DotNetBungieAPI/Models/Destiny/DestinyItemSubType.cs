@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DotNetBungieAPI.Models.Destiny
+﻿namespace DotNetBungieAPI.Models.Destiny
 {
     /// <summary>
     ///     This Enumeration further classifies items by more specific categorizations than DestinyItemType. The "Sub-Type" is

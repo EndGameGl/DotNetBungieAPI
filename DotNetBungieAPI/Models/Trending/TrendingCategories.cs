@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Trending
+﻿namespace DotNetBungieAPI.Models.Trending
 {
     public sealed record TrendingCategories
     {

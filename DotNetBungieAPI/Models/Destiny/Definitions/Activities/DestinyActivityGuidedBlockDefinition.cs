@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
 {
     /// <summary>
     ///     Guided Game information for activity.

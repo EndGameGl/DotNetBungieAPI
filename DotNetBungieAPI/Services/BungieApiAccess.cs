@@ -1,6 +1,5 @@
 ﻿using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 using DotNetBungieAPI.Services.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace DotNetBungieAPI.Services
 {

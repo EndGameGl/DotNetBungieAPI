@@ -1,6 +1,4 @@
-﻿using System.Text.Json;
-
-namespace DotNetBungieAPI.Services.Default.ServiceConfigurations
+﻿namespace DotNetBungieAPI.Services.Default.ServiceConfigurations
 {
     public sealed class DotNetBungieApiJsonSerializerConfiguration
     {

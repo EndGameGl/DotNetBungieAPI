@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Content
+﻿namespace DotNetBungieAPI.Models.Content
 {
     public sealed record CommentSummary
     {

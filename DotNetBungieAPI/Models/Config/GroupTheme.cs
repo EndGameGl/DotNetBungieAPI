@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Config
+﻿namespace DotNetBungieAPI.Models.Config
 {
     public sealed record GroupTheme
     {

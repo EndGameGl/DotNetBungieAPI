@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.EnergyTypes;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.EnergyTypes;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {

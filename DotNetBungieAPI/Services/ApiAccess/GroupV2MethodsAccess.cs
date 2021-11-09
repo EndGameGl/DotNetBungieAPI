@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-using DotNetBungieAPI.Authorization;
+﻿using DotNetBungieAPI.Authorization;
 using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Exceptions;
 using DotNetBungieAPI.Models;
@@ -14,6 +9,9 @@ using DotNetBungieAPI.Models.GroupsV2;
 using DotNetBungieAPI.Models.Queries;
 using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 using DotNetBungieAPI.Services.Interfaces;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.ApiAccess
 {
@@ -24,7 +22,7 @@ namespace DotNetBungieAPI.Services.ApiAccess
         private readonly IBungieNetJsonSerializer _serializer;
 
         public GroupV2MethodsAccess(
-            IDotNetBungieApiHttpClient dotNetBungieApiHttpClient, 
+            IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
             BungieClientConfiguration configuration,
             IBungieNetJsonSerializer serializer)
         {

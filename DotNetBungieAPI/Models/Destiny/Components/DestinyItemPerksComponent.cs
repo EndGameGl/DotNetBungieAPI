@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Perks;
+﻿using DotNetBungieAPI.Models.Destiny.Perks;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
 {

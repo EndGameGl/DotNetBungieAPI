@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Dates
+﻿namespace DotNetBungieAPI.Models.Dates
 {
     public sealed record DateRange : IDeepEquatable<DateRange>
     {

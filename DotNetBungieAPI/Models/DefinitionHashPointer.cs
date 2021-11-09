@@ -1,9 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Clients;
+﻿using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Models.Destiny;
 using Microsoft.Extensions.DependencyInjection;
+using System.Diagnostics;
 
 namespace DotNetBungieAPI.Models
 {

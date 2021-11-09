@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.User
+﻿namespace DotNetBungieAPI.Models.User
 {
     /// <summary>
     ///     Very basic info about a user as returned by the Account server, but including CrossSave information.

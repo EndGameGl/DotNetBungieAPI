@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.SocketTypes
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.SocketTypes
 {
     /// <summary>
     ///     Data related to what happens while a plug is being inserted, mostly for UI purposes.

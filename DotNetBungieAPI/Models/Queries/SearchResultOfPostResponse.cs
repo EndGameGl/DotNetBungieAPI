@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Forum;
+﻿using DotNetBungieAPI.Models.Forum;
 
 namespace DotNetBungieAPI.Models.Queries
 {

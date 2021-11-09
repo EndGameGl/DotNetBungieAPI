@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets;
 using DotNetBungieAPI.Models.Destiny.Definitions.UnlockValues;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Collectibles
@@ -11,7 +10,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Collectibles
 
         [JsonPropertyName("acquireMaterialRequirementHash")]
         public DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>
-            AcquireMaterialRequirement { get; init; } =
+            AcquireMaterialRequirement
+        { get; init; } =
             DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>.Empty;
 
         [JsonPropertyName("acquireTimestampUnlockValueHash")]

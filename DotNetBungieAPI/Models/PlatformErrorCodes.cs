@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DotNetBungieAPI.Models
+﻿namespace DotNetBungieAPI.Models
 {
     public enum PlatformErrorCodes
     {

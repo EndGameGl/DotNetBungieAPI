@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using DotNetBungieAPI.Authorization;
+﻿using DotNetBungieAPI.Authorization;
 using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Exceptions;
 using DotNetBungieAPI.Models;
@@ -24,6 +17,9 @@ using DotNetBungieAPI.Models.Responses;
 using DotNetBungieAPI.Models.User;
 using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 using DotNetBungieAPI.Services.Interfaces;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.ApiAccess
 {
@@ -34,7 +30,7 @@ namespace DotNetBungieAPI.Services.ApiAccess
         private readonly IBungieNetJsonSerializer _serializer;
 
         public Destiny2MethodsAccess(
-            IDotNetBungieApiHttpClient dotNetBungieApiHttpClient, 
+            IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
             IBungieNetJsonSerializer serializer,
             BungieClientConfiguration configurationService)
         {

@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Progressions
+﻿namespace DotNetBungieAPI.Models.Destiny.Progressions
 {
     /// <summary>
     ///     Represents a season and the number of resets you had in that season.

@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.EquipmentSlots;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.EquipmentSlots;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {

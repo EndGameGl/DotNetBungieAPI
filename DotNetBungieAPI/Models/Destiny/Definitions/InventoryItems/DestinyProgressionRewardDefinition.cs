@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.ProgressionMappings;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.ProgressionMappings;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {

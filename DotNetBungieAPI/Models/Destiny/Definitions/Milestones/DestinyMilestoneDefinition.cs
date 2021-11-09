@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Attributes;
-using DotNetBungieAPI.Defaults;
+﻿using DotNetBungieAPI.Attributes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
@@ -131,7 +128,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
         [JsonPropertyName("quests")]
         public
             ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, DestinyMilestoneQuestDefinition>
-            Quests { get; init; } =
+            Quests
+        { get; init; } =
             ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>, DestinyMilestoneQuestDefinition>
                 .Empty;
 
@@ -256,13 +254,13 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
             }
 
             foreach (var reward in Rewards)
-            foreach (var entry in reward.Value.RewardEntries)
-            {
-                entry.Value.Vendor.TryMapValue();
-                foreach (var item in entry.Value.Items)
-                    //item.Vendor.TryMapValue();
-                    item.Item.TryMapValue();
-            }
+                foreach (var entry in reward.Value.RewardEntries)
+                {
+                    entry.Value.Vendor.TryMapValue();
+                    foreach (var item in entry.Value.Items)
+                        //item.Vendor.TryMapValue();
+                        item.Item.TryMapValue();
+                }
 
             foreach (var vendor in Vendors) vendor.Vendor.TryMapValue();
         }
@@ -302,13 +300,13 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
             }
 
             foreach (var reward in Rewards)
-            foreach (var entry in reward.Value.RewardEntries)
-            {
-                entry.Value.Vendor.SetLocale(locale);
-                foreach (var item in entry.Value.Items)
-                    //item.Vendor.TryMapValue();
-                    item.Item.SetLocale(locale);
-            }
+                foreach (var entry in reward.Value.RewardEntries)
+                {
+                    entry.Value.Vendor.SetLocale(locale);
+                    foreach (var item in entry.Value.Items)
+                        //item.Vendor.TryMapValue();
+                        item.Item.SetLocale(locale);
+                }
 
             foreach (var vendor in Vendors) vendor.Vendor.SetLocale(locale);
         }

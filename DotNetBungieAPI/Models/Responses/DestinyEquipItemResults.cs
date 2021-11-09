@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Responses
+﻿namespace DotNetBungieAPI.Models.Responses
 {
     /// <summary>
     ///     The results of a bulk Equipping operation performed through the Destiny API.

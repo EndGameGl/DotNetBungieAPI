@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Trending
+﻿namespace DotNetBungieAPI.Models.Trending
 {
     /// <summary>
     ///     The list entry view for trending items. Returns just enough to show the item on the trending page.

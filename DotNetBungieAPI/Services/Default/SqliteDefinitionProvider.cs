@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SQLite;
-using System.IO;
-using System.IO.Compression;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DotNetBungieAPI.Helpers;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Config;
@@ -16,7 +7,13 @@ using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 using DotNetBungieAPI.Services.Default.ServiceConfigurations;
 using DotNetBungieAPI.Services.Interfaces;
 using Microsoft.Extensions.Logging;
-using DotNetBungieAPI.Helpers;
+using System.Collections.Concurrent;
+using System.Data;
+using System.Data.SQLite;
+using System.IO;
+using System.IO.Compression;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.Default
 {
@@ -442,7 +439,7 @@ namespace DotNetBungieAPI.Services.Default
             _logger.LogInformation("Started loading {PropertyName}", propertyName);
             var rootDirectoryPath = $"{path}\\{propertyName}";
             rootDirectoryPath.EnsureDirectoryExists();
-            
+
             var downloadTasks = new List<Task>(values.Count);
 
             foreach (var (key, value) in values)
@@ -469,7 +466,7 @@ namespace DotNetBungieAPI.Services.Default
                         _logger.LogInformation("File already exists, skipping");
                     }
                 })).Invoke();
-                
+
                 downloadTasks.Add(task);
             }
 

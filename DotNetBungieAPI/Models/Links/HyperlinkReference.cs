@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Links
+﻿namespace DotNetBungieAPI.Models.Links
 {
     public sealed record HyperlinkReference : IDeepEquatable<HyperlinkReference>
     {

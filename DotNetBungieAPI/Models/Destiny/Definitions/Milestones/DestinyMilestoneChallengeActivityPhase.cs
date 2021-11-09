@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
 {
     public sealed record DestinyMilestoneChallengeActivityPhase : IDeepEquatable<DestinyMilestoneChallengeActivityPhase>
     {

@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
 {
     public sealed record DestinyActivityLoadoutRequirementSet : IDeepEquatable<DestinyActivityLoadoutRequirementSet>
     {

@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Attributes;
+﻿using DotNetBungieAPI.Attributes;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.VendorGroups
 {

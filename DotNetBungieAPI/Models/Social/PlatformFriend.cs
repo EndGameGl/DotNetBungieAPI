@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Social
+﻿namespace DotNetBungieAPI.Models.Social
 {
     public sealed record PlatformFriend
     {

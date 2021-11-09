@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Config
+﻿namespace DotNetBungieAPI.Models.Destiny.Config
 {
     public sealed record MobileGearAssetDataBaseEntry
     {

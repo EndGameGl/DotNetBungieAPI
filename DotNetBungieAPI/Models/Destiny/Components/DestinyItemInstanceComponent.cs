@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.BreakerTypes;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.BreakerTypes;
 using DotNetBungieAPI.Models.Destiny.Definitions.DamageTypes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Unlocks;
 using DotNetBungieAPI.Models.Destiny.Items;
@@ -80,7 +77,8 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("unlockHashesRequiredToEquip")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyUnlockDefinition>>
-            UnlocksRequiredToEquip { get; init; } =
+            UnlocksRequiredToEquip
+        { get; init; } =
             ReadOnlyCollections<DefinitionHashPointer<DestinyUnlockDefinition>>.Empty;
 
         /// <summary>

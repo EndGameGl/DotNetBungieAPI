@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-
-namespace DotNetBungieAPI.Defaults
+﻿namespace DotNetBungieAPI.Defaults
 {
     internal class ReadOnlyDictionaries<TKey, TValue>
     {

@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.StatGroups;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.StatGroups;
 using DotNetBungieAPI.Models.Destiny.Definitions.Stats;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
@@ -61,7 +58,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("stats")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, DestinyInventoryItemStatDefinition>
-            Stats { get; init; } =
+            Stats
+        { get; init; } =
             ReadOnlyDictionaries<DefinitionHashPointer<DestinyStatDefinition>, DestinyInventoryItemStatDefinition>
                 .Empty;
 

@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Milestones
+﻿namespace DotNetBungieAPI.Models.Destiny.Milestones
 {
     /// <summary>
     ///     Represents localized, extended content related to Milestones. This is intentionally returned by a separate endpoint

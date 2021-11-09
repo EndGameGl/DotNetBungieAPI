@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading;
-using System.Threading.Tasks;
-using ComposableAsync;
+﻿using ComposableAsync;
 using DotNetBungieAPI.Authorization;
 using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Exceptions;
@@ -16,6 +7,13 @@ using DotNetBungieAPI.Services.Default.ServiceConfigurations;
 using DotNetBungieAPI.Services.Interfaces;
 using Microsoft.Extensions.Logging;
 using RateLimiter;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.Default
 {
@@ -25,7 +23,7 @@ namespace DotNetBungieAPI.Services.Default
         private readonly ILogger _logger;
         private readonly IBungieNetJsonSerializer _serializer;
         private readonly TimeLimiter _rateTimeLimiter;
-        
+
         private const string ApiKeyHeader = "X-API-Key";
 
         private const string AuthorizationEndpoint = "https://www.bungie.net/en/oauth/authorize";
@@ -40,7 +38,7 @@ namespace DotNetBungieAPI.Services.Default
             new("application/json");
 
         public DefaultDotNetBungieApiHttpClient(
-            BungieClientConfiguration configuration, 
+            BungieClientConfiguration configuration,
             DotNetBungieApiHttpClientConfiguration httpClientConfiguration,
             ILogger logger,
             IBungieNetJsonSerializer serializer)
@@ -60,9 +58,9 @@ namespace DotNetBungieAPI.Services.Default
             await _rateTimeLimiter;
             return await _httpClient.SendAsync(requestMessage);
         }
-        
+
         private async Task<HttpResponseMessage> SendAsyncInternal(
-            HttpRequestMessage requestMessage, 
+            HttpRequestMessage requestMessage,
             HttpCompletionOption httpCompletionOption,
             CancellationToken cancellationToken)
         {

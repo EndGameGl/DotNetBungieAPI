@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
 {
     /// <summary>
     ///     If rewards are given in a quest - as opposed to overall in the entire Milestone - there's way less to track. We're

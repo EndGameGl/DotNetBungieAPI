@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using DotNetBungieAPI.Models;
+﻿using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Config;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.Interfaces
 {

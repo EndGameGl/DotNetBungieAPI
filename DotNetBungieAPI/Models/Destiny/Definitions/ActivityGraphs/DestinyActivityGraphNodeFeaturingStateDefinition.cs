@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
 {
     /// <summary>
     ///     Nodes can have different visual states. This object represents a single visual state ("highlight type") that a node

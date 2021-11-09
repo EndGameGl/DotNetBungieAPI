@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
 {
     public sealed record
         DestinyVendorInteractionSackEntryDefinition : IDeepEquatable<DestinyVendorInteractionSackEntryDefinition>

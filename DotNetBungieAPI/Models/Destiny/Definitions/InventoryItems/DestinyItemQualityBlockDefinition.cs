@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.ProgressionLevelRequirements;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.ProgressionLevelRequirements;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {
@@ -53,7 +50,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
         /// </summary>
         [JsonPropertyName("progressionLevelRequirementHash")]
         public DefinitionHashPointer<DestinyProgressionLevelRequirementDefinition>
-            ProgressionLevelRequirement { get; init; } =
+            ProgressionLevelRequirement
+        { get; init; } =
             DefinitionHashPointer<DestinyProgressionLevelRequirementDefinition>.Empty;
 
         /// <summary>

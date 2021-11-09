@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny;
+﻿using DotNetBungieAPI.Models.Destiny;
 
 namespace DotNetBungieAPI.Models.Config
 {

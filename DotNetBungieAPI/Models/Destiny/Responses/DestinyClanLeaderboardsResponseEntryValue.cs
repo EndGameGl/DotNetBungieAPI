@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.HistoricalStats;
+﻿using DotNetBungieAPI.Models.Destiny.HistoricalStats;
 
 namespace DotNetBungieAPI.Models.Destiny.Responses
 {

@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Attributes;
-using DotNetBungieAPI.Defaults;
+﻿using DotNetBungieAPI.Attributes;
 using DotNetBungieAPI.Models.Dates;
 using DotNetBungieAPI.Models.Destiny.Definitions.Factions;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
@@ -297,7 +294,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
         /// </summary>
         [JsonPropertyName("ignoreSaleItemHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>
-            IgnoreSaleItems { get; init; } =
+            IgnoreSaleItems
+        { get; init; } =
             ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 
         [JsonPropertyName("unlockValueHash")] public uint UnlockValueHash { get; init; }

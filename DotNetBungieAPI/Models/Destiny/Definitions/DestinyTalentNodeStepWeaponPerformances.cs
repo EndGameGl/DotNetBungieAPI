@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions
 {
     [Flags]
     [JsonConverter(typeof(JsonStringEnumConverter))]

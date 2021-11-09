@@ -1,9 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.GroupsV2;
-
-namespace DotNetBungieAPI.Models.User
+﻿namespace DotNetBungieAPI.Models.User
 {
     public sealed record UserSearchResponseDetail
     {
