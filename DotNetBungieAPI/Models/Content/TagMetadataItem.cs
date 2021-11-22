@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Content
+﻿namespace DotNetBungieAPI.Models.Content
 {
     public sealed record TagMetadataItem
     {

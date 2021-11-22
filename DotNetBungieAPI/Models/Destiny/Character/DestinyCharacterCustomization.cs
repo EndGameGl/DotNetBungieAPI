@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Character
+﻿namespace DotNetBungieAPI.Models.Destiny.Character
 {
     /// <summary>
     ///     Raw data about the customization options chosen for a character's face and appearance.

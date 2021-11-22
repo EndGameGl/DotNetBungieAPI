@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Social
+﻿namespace DotNetBungieAPI.Models.Social
 {
     [Flags]
     [JsonConverter(typeof(JsonStringEnumConverter))]

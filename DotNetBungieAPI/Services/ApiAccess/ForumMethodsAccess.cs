@@ -1,14 +1,13 @@
-﻿using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using DotNetBungieAPI.Extensions;
+﻿using DotNetBungieAPI.Extensions;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Forum;
 using DotNetBungieAPI.Models.Queries;
 using DotNetBungieAPI.Models.Tags;
 using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 using DotNetBungieAPI.Services.Interfaces;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.ApiAccess
 {

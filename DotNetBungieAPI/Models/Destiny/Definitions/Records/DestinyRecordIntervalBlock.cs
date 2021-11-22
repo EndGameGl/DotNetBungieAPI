@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Records
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Records
 {
     public sealed record DestinyRecordIntervalBlock : IDeepEquatable<DestinyRecordIntervalBlock>
     {

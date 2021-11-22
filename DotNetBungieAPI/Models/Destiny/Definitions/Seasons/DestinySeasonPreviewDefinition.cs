@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Seasons
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Seasons
 {
     /// <summary>
     ///     Defines the promotional text, images, and links to preview this season.

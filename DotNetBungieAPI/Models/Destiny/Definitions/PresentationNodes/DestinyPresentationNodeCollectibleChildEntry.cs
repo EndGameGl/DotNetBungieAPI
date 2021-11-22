@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.Collectibles;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Collectibles;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes
 {

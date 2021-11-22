@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.User;
+﻿using DotNetBungieAPI.Models.User;
 
 namespace DotNetBungieAPI.Models.Forum
 {

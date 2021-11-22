@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Content;
+﻿using DotNetBungieAPI.Models.Content;
 
 namespace DotNetBungieAPI.Models.Trending
 {

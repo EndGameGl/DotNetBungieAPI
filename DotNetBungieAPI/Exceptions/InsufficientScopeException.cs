@@ -1,5 +1,4 @@
-﻿using System;
-using DotNetBungieAPI.Models.Applications;
+﻿using DotNetBungieAPI.Models.Applications;
 
 namespace DotNetBungieAPI.Exceptions
 {

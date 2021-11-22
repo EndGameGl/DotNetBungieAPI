@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Collectibles
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Collectibles
 {
     /// <summary>
     ///     Presentation nodes can be restricted by various requirements. This defines the rules of those requirements, and the

@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Collectibles
 {
@@ -12,7 +9,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Collectibles
 
         [JsonPropertyName("parentPresentationNodeHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>
-            ParentPresentationNodes { get; init; } =
+            ParentPresentationNodes
+        { get; init; } =
             ReadOnlyCollections<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
 
         [JsonPropertyName("displayStyle")] public DestinyPresentationDisplayStyle DisplayStyle { get; init; }

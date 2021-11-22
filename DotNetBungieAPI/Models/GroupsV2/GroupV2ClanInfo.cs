@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.GroupsV2
+﻿namespace DotNetBungieAPI.Models.GroupsV2
 {
     /// <summary>
     ///     This contract contains clan-specific group information. It does not include any investment data.

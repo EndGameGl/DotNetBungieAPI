@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Quests;
+﻿using DotNetBungieAPI.Models.Destiny.Quests;
 
 namespace DotNetBungieAPI.Models.Destiny.Challenges
 {

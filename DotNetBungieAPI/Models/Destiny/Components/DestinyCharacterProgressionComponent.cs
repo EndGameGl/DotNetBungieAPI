@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Artifacts;
+﻿using DotNetBungieAPI.Models.Destiny.Artifacts;
 using DotNetBungieAPI.Models.Destiny.Definitions.Checklists;
 using DotNetBungieAPI.Models.Destiny.Definitions.Factions;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
@@ -24,7 +21,8 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("progressions")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyProgressionMappingDefinition>, DestinyProgression>
-            Progressions { get; init; } =
+            Progressions
+        { get; init; } =
             ReadOnlyDictionaries<DefinitionHashPointer<DestinyProgressionMappingDefinition>, DestinyProgression>.Empty;
 
         /// <summary>
@@ -33,7 +31,8 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("factions")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyFactionDefinition>, DestinyFactionProgression>
-            Factions { get; init; } =
+            Factions
+        { get; init; } =
             ReadOnlyDictionaries<DefinitionHashPointer<DestinyFactionDefinition>, DestinyFactionProgression>.Empty;
 
         /// <summary>
@@ -42,7 +41,8 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("milestones")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyMilestoneDefinition>, DestinyMilestone>
-            Milestones { get; init; } =
+            Milestones
+        { get; init; } =
             ReadOnlyDictionaries<DefinitionHashPointer<DestinyMilestoneDefinition>, DestinyMilestone>.Empty;
 
         /// <summary>
@@ -65,7 +65,8 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         [JsonPropertyName("uninstancedItemObjectives")]
         public
             ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>,
-                ReadOnlyCollection<UninstancedItemObjective>> UninstancedItemObjectives { get; init; } =
+                ReadOnlyCollection<UninstancedItemObjective>> UninstancedItemObjectives
+        { get; init; } =
             ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>,
                 ReadOnlyCollection<UninstancedItemObjective>>.Empty;
 
@@ -78,7 +79,8 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("checklists")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyChecklistDefinition>, ReadOnlyDictionary<uint, bool>>
-            Checklists { get; init; } =
+            Checklists
+        { get; init; } =
             ReadOnlyDictionaries<DefinitionHashPointer<DestinyChecklistDefinition>, ReadOnlyDictionary<uint, bool>>
                 .Empty;
 

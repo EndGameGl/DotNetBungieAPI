@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Profiles
+﻿namespace DotNetBungieAPI.Models.Destiny.Profiles
 {
     /// <summary>
     ///     If you are playing in an activity, this is some information about it.

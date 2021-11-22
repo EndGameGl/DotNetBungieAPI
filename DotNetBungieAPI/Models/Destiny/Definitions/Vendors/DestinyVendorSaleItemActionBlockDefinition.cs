@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
 {
     /// <summary>
     ///     Not terribly useful, some basic cooldown interaction info.

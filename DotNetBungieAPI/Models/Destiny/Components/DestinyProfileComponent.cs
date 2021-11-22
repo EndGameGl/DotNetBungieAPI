@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.Seasons;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Seasons;
 using DotNetBungieAPI.Models.User;
 
 namespace DotNetBungieAPI.Models.Destiny.Components

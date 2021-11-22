@@ -1,9 +1,10 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using DotNetBungieAPI.Authorization;
+﻿using DotNetBungieAPI.Authorization;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Config;
+using DotNetBungieAPI.Models.Requests;
 using DotNetBungieAPI.Models.User;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.ApiAccess.Interfaces
 {
@@ -90,6 +91,11 @@ namespace DotNetBungieAPI.Services.ApiAccess.Interfaces
         /// <returns></returns>
         ValueTask<BungieResponse<UserSearchResponse>> SearchByGlobalNamePrefix(
             string displayNamePrefix,
+            int page = 0,
+            CancellationToken cancellationToken = default);
+
+        ValueTask<BungieResponse<UserSearchResponse>> SearchByGlobalNamePost(
+            UserSearchPrefixRequest request,
             int page = 0,
             CancellationToken cancellationToken = default);
     }

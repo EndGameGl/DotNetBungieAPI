@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Attributes;
-using DotNetBungieAPI.Defaults;
+﻿using DotNetBungieAPI.Attributes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Locations

@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
 {
     /// <summary>
     ///     When the interaction is replied to, Reward sites will fire and items potentially selected based on whether the

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Tokens
+﻿namespace DotNetBungieAPI.Models.Tokens
 {
     public sealed record PartnerOfferSkuHistoryResponse
     {

@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.InventoryBuckets;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.InventoryBuckets;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors
 {

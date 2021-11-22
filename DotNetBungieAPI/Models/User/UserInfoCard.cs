@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.User
+﻿namespace DotNetBungieAPI.Models.User
 {
     /// <summary>
     ///     This contract supplies basic information commonly used to display a minimal amount of information about a user.

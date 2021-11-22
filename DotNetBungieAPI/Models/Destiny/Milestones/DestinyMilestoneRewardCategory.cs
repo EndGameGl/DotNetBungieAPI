@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Milestones
+﻿namespace DotNetBungieAPI.Models.Destiny.Milestones
 {
     /// <summary>
     ///     Represents a category of "summary" rewards that can be earned for the Milestone regardless of specific quest

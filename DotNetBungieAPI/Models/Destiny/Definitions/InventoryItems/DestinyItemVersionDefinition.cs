@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.PowerCaps;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.PowerCaps;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using System.Threading;
 
 namespace DotNetBungieAPI
@@ -101,20 +99,20 @@ namespace DotNetBungieAPI
                         result = _sb.ToString();
                         break;
                     case > 0:
-                    {
-                        _sb.Append('?');
-                        var iterator = 1;
-                        foreach (var (key, value) in _optionalUrlParams)
                         {
-                            _sb.Append(key).Append('=').Append(value);
-                            if (iterator < _optionalUrlParams.Count)
-                                _sb.Append('&');
-                            iterator++;
-                        }
+                            _sb.Append('?');
+                            var iterator = 1;
+                            foreach (var (key, value) in _optionalUrlParams)
+                            {
+                                _sb.Append(key).Append('=').Append(value);
+                                if (iterator < _optionalUrlParams.Count)
+                                    _sb.Append('&');
+                                iterator++;
+                            }
 
-                        result = _sb.ToString();
-                        break;
-                    }
+                            result = _sb.ToString();
+                            break;
+                        }
                 }
 
                 _sb.Clear();

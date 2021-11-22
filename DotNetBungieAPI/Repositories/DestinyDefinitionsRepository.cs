@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using DotNetBungieAPI.Models;
+﻿using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using DotNetBungieAPI.Services.Default.ServiceConfigurations;
 using DotNetBungieAPI.Services.Interfaces;
 using Microsoft.Extensions.Logging;
+using System.Collections.Concurrent;
 
 namespace DotNetBungieAPI.Repositories
 {
@@ -22,7 +19,7 @@ namespace DotNetBungieAPI.Repositories
         private readonly ConcurrentDictionary<DefinitionsEnum, DestinyDefinitionTypeRepository> _definitionRepositories;
         private readonly ConcurrentDictionary<string, DestinyHistoricalStatsDefinition> _historicalStatsDefinitions;
         private readonly ILogger _logger;
-        
+
         internal DestinyDefinitionsRepository(
             BungieLocales locale,
             IDefinitionAssemblyData assemblyData,

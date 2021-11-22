@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using DotNetBungieAPI.Models.Destiny.Definitions.Locations;
 using DotNetBungieAPI.Models.Destiny.Definitions.Objectives;

@@ -1,8 +1,8 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using DotNetBungieAPI.Models;
+﻿using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Forum;
 using DotNetBungieAPI.Models.Queries;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.ApiAccess.Interfaces
 {

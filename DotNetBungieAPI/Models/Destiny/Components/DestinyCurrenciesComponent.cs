@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
 {
@@ -27,7 +24,8 @@ namespace DotNetBungieAPI.Models.Destiny.Components
         /// </summary>
         [JsonPropertyName("itemQuantities")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, object>
-            ItemQuantities { get; init; } =
+            ItemQuantities
+        { get; init; } =
             ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>, object>.Empty;
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.HistoricalStats
+﻿namespace DotNetBungieAPI.Models.Destiny.HistoricalStats
 {
     public sealed record DestinyHistoricalStatsPeriodGroup
     {

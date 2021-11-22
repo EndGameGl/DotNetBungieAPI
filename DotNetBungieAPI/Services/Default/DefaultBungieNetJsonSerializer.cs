@@ -1,11 +1,8 @@
-﻿using System;
-using System.IO;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using DotNetBungieAPI.Serialization;
+﻿using DotNetBungieAPI.Serialization;
 using DotNetBungieAPI.Services.Default.ServiceConfigurations;
 using DotNetBungieAPI.Services.Interfaces;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.Default
 {

@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
+﻿using System.Diagnostics;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Common
 {

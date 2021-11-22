@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Common
+﻿namespace DotNetBungieAPI.Models.Common
 {
     public sealed record CoreSystem
     {

@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Attributes;
-using DotNetBungieAPI.Defaults;
+﻿using DotNetBungieAPI.Attributes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.ItemCategories
@@ -106,7 +103,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ItemCategories
         /// </summary>
         [JsonPropertyName("groupedCategoryHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>>
-            GroupedCategories { get; init; } =
+            GroupedCategories
+        { get; init; } =
             ReadOnlyCollections<DefinitionHashPointer<DestinyItemCategoryDefinition>>.Empty;
 
         /// <summary>
@@ -115,7 +113,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ItemCategories
         /// </summary>
         [JsonPropertyName("parentCategoryHashes")]
         public ReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>>
-            ParentCategories { get; init; } =
+            ParentCategories
+        { get; init; } =
             ReadOnlyCollections<DefinitionHashPointer<DestinyItemCategoryDefinition>>.Empty;
 
         /// <summary>

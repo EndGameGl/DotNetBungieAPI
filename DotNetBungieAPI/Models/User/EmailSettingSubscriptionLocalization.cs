@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.User
+﻿namespace DotNetBungieAPI.Models.User
 {
     /// <summary>
     ///     Localized text relevant to a given Email setting in a given localization. Extra settings specifically for

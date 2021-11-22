@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
 {

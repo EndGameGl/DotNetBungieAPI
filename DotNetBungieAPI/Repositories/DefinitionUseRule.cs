@@ -1,5 +1,4 @@
-﻿using System;
-using DotNetBungieAPI.Attributes;
+﻿using DotNetBungieAPI.Attributes;
 
 namespace DotNetBungieAPI.Repositories
 {

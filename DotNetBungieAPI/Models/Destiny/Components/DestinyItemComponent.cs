@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.InventoryBuckets;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.InventoryBuckets;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using DotNetBungieAPI.Models.Destiny.Definitions.Metrics;
 using DotNetBungieAPI.Models.Destiny.Quests;

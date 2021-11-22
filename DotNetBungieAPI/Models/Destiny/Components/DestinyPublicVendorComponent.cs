@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
 {

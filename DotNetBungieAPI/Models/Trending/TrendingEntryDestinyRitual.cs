@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Milestones;
+﻿using DotNetBungieAPI.Models.Destiny.Milestones;
 
 namespace DotNetBungieAPI.Models.Trending
 {

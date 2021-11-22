@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.Stats;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Stats;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.SandboxPatterns
 {

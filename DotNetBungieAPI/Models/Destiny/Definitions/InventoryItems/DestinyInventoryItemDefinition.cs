@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Attributes;
-using DotNetBungieAPI.Defaults;
+﻿using DotNetBungieAPI.Attributes;
 using DotNetBungieAPI.Models.Destiny.Definitions.BreakerTypes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Collectibles;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
@@ -611,8 +608,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
                 Preview.Artifact.TryMapValue();
                 Preview.PreviewVendor.TryMapValue();
                 foreach (var category in Preview.DerivedItemCategories)
-                foreach (var item in category.Items)
-                    item.Item.TryMapValue();
+                    foreach (var item in category.Items)
+                        item.Item.TryMapValue();
             }
 
             if (Quality != null)
@@ -681,8 +678,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
                 foreach (var rewardSource in SourceData.RewardSources) rewardSource.TryMapValue();
 
                 foreach (var source in SourceData.Sources)
-                foreach (var sourceSource in source.Sources)
-                    sourceSource.TryMapValue();
+                    foreach (var sourceSource in source.Sources)
+                        sourceSource.TryMapValue();
 
                 foreach (var vendorSource in SourceData.VendorSources) vendorSource.Vendor.TryMapValue();
             }
@@ -740,8 +737,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
                 Preview.Artifact.SetLocale(locale);
                 Preview.PreviewVendor.SetLocale(locale);
                 foreach (var category in Preview.DerivedItemCategories)
-                foreach (var item in category.Items)
-                    item.Item.SetLocale(locale);
+                    foreach (var item in category.Items)
+                        item.Item.SetLocale(locale);
             }
 
             if (Quality != null)
@@ -811,8 +808,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
                 foreach (var rewardSource in SourceData.RewardSources) rewardSource.SetLocale(locale);
 
                 foreach (var source in SourceData.Sources)
-                foreach (var sourceSource in source.Sources)
-                    sourceSource.SetLocale(locale);
+                    foreach (var sourceSource in source.Sources)
+                        sourceSource.SetLocale(locale);
 
                 foreach (var vendorSource in SourceData.VendorSources) vendorSource.Vendor.SetLocale(locale);
             }

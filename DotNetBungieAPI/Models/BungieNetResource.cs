@@ -1,32 +1,32 @@
 ﻿namespace DotNetBungieAPI.Models
 {
     /// <summary>
-    /// Struct that represents bungie.net resource link
+    ///     Struct that represents bungie.net resource link
     /// </summary>
     public readonly struct BungieNetResource
     {
         /// <summary>
-        /// Empty resource link
+        ///     Empty resource link
         /// </summary>
         public static BungieNetResource Empty { get; } = new(null);
 
         /// <summary>
-        /// Relative path to resource
+        ///     Relative path to resource
         /// </summary>
         public string RelativePath { get; }
 
         /// <summary>
-        /// Absolute path to resource
+        ///     Absolute path to resource
         /// </summary>
         public string AbsolutePath => $"https://bungie.net{RelativePath}";
 
         /// <summary>
-        /// Whether resource is not empty link
+        ///     Whether resource is not empty link
         /// </summary>
         public bool HasValue => !string.IsNullOrEmpty(RelativePath);
 
         /// <summary>
-        /// Default constructor
+        ///     Default constructor
         /// </summary>
         /// <param name="path"></param>
         public BungieNetResource(string path)
@@ -35,7 +35,7 @@
         }
 
         /// <summary>
-        /// Whether one resource equals another
+        ///     Whether one resource equals another
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
@@ -46,7 +46,7 @@
         }
 
         /// <summary>
-        /// Whether one resource is not equal to another
+        ///     Whether one resource is not equal to another
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>

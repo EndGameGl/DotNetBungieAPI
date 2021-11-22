@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
 {
     /// <summary>
     ///     Represents a single state that a graph node might end up in. Depending on what's going on in the game, graph nodes

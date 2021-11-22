@@ -1,9 +1,6 @@
-﻿using System;
-using System.Reflection;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models;
+﻿using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
+using System.Reflection;
 
 namespace DotNetBungieAPI.Serialization
 {

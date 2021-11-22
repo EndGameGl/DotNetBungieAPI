@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Requests
+﻿namespace DotNetBungieAPI.Models.Requests
 {
     /// <summary>
     ///     If you want to report a player causing trouble in a game, this request will let you report that player and the

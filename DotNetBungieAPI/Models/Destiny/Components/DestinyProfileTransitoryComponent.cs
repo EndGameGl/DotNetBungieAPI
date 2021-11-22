@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.Destinations;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Destinations;
 using DotNetBungieAPI.Models.Destiny.Profiles;
 
 namespace DotNetBungieAPI.Models.Destiny.Components

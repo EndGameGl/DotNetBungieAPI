@@ -1,12 +1,11 @@
-﻿using System;
-using DotNetBungieAPI.Models;
+﻿using DotNetBungieAPI.Models;
 
 namespace DotNetBungieAPI.Extensions
 {
     public static class LocaleExtensions
     {
         /// <summary>
-        /// Converts <see cref="BungieLocales"/> to string equivalent
+        ///     Converts <see cref="BungieLocales" /> to string equivalent
         /// </summary>
         /// <param name="locale"></param>
         /// <returns></returns>

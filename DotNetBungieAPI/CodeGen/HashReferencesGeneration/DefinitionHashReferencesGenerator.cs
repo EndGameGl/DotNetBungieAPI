@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DotNetBungieAPI.Clients;
+﻿using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes;
@@ -45,16 +39,22 @@ using DotNetBungieAPI.Models.Destiny.Definitions.TraitCategories;
 using DotNetBungieAPI.Models.Destiny.Definitions.Traits;
 using DotNetBungieAPI.Models.Destiny.Definitions.VendorGroups;
 using DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.CodeGen.HashReferencesGeneration
 {
     /// <summary>
-    /// Class for generating definition hash references from actual definitions
+    ///     Class for generating definition hash references from actual definitions
     /// </summary>
     public class DefinitionHashReferencesGenerator
     {
         private const string Namespace = "DotNetBungieAPI.HashReferences";
         private const string ClassName = "DefinitionHashes";
+        private const char OpenCurvyBrackets = '{';
+        private const char CloseCurvyBrackets = '}';
+        private const char Tabulation = (char)9;
 
         private static readonly string[] ForbiddenSymbols =
         {
@@ -63,15 +63,12 @@ namespace DotNetBungieAPI.CodeGen.HashReferencesGeneration
         };
 
         private static readonly string NewLine = Environment.NewLine;
-        private const char OpenCurvyBrackets = '{';
-        private const char CloseCurvyBrackets = '}';
-        private const char Tabulation = (char)9;
 
         private readonly IBungieClient _bungieClient;
         private readonly string _fileName;
 
         /// <summary>
-        /// .ctor
+        ///     .ctor
         /// </summary>
         /// <param name="client"></param>
         /// <param name="fileName"></param>
@@ -82,7 +79,7 @@ namespace DotNetBungieAPI.CodeGen.HashReferencesGeneration
         }
 
         /// <summary>
-        /// Generates file with references
+        ///     Generates file with references
         /// </summary>
         public async Task Generate()
         {
@@ -676,7 +673,7 @@ namespace DotNetBungieAPI.CodeGen.HashReferencesGeneration
 
         private static string GetIndent(int level)
         {
-            return new(Tabulation, level);
+            return new string(Tabulation, level);
         }
 
         private static string GetIndentedString(int level, string text)

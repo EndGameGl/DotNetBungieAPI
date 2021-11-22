@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Requests
+﻿namespace DotNetBungieAPI.Models.Requests
 {
     /// <summary>
     ///     Represents all of the data related to a single plug to be inserted.

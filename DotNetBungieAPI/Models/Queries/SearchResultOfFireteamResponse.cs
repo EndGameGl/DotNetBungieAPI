@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Queries
+﻿namespace DotNetBungieAPI.Models.Queries
 {
     public sealed record SearchResultOfFireteamResponse
     {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Ignores
+﻿namespace DotNetBungieAPI.Models.Ignores
 {
     [Flags]
     [JsonConverter(typeof(JsonStringEnumConverter))]

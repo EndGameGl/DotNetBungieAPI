@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Threading.Tasks;
-using DotNetBungieAPI.Authorization;
+﻿using DotNetBungieAPI.Authorization;
 using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Services.Interfaces;
 using Microsoft.Extensions.Logging;
+using System.Collections.Concurrent;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.Default
 {

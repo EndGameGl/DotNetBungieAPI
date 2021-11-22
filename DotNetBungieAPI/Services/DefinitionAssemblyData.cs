@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
-using DotNetBungieAPI.Attributes;
+﻿using DotNetBungieAPI.Attributes;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Repositories;
 using DotNetBungieAPI.Services.Interfaces;
+using System.Reflection;
 
 namespace DotNetBungieAPI.Services
 {

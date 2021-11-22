@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Milestones
+﻿namespace DotNetBungieAPI.Models.Destiny.Milestones
 {
     /// <summary>
     ///     Represents this player's personal completion status for the Activity under a Milestone, if the activity has

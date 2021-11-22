@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Artifacts
+﻿namespace DotNetBungieAPI.Models.Destiny.Artifacts
 {
     public sealed record DestinyArtifactTier
     {

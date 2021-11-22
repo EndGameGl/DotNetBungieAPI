@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.Artifacts;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Artifacts;
 using DotNetBungieAPI.Models.Destiny.Progressions;
 
 namespace DotNetBungieAPI.Models.Destiny.Artifacts

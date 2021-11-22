@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.Unlocks;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Unlocks;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Records
 {

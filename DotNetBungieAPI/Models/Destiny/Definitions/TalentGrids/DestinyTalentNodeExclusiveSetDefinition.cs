@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids
 {
     /// <summary>
     ///     The list of indexes into the Talent Grid's "nodes" property for nodes in this exclusive set. (See

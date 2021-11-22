@@ -1,5 +1,4 @@
-﻿using System;
-using DotNetBungieAPI.Services.Default.ServiceConfigurations;
+﻿using DotNetBungieAPI.Services.Default.ServiceConfigurations;
 using Microsoft.Extensions.Logging;
 
 namespace DotNetBungieAPI.Services.Default

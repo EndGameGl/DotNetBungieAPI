@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Exceptions;
+﻿using DotNetBungieAPI.Exceptions;
 
 namespace DotNetBungieAPI.Models
 {
@@ -64,7 +61,7 @@ namespace DotNetBungieAPI.Models
         public bool IsSuccessfulResponseCode => ErrorCode == PlatformErrorCodes.Success;
 
         /// <summary>
-        /// Forms exception based on response
+        ///     Forms exception based on response
         /// </summary>
         /// <returns></returns>
         public BungieResponseErrorException ToException()

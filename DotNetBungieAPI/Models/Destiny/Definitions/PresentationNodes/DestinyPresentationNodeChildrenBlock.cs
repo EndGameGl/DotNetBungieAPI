@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes
 {
     /// <summary>
     ///     As/if presentation nodes begin to host more entities as children, these lists will be added to. One list property

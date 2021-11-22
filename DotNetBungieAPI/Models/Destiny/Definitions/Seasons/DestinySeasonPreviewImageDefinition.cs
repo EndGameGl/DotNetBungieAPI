@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Seasons
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Seasons
 {
     /// <summary>
     ///     Defines the thumbnail icon, high-res image, and video link for promotional images

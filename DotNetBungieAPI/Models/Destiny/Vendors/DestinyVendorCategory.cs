@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Vendors
+﻿namespace DotNetBungieAPI.Models.Destiny.Vendors
 {
     /// <summary>
     ///     Information about the category and items currently sold in that category.

@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions
 {
     /// <summary>
     ///     These properties are an attempt to categorize talent node steps by certain common properties. See the related

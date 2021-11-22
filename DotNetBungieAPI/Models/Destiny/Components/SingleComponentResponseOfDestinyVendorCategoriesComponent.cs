@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Components
+﻿namespace DotNetBungieAPI.Models.Destiny.Components
 {
     public sealed record SingleComponentResponseOfDestinyVendorCategoriesComponent : ComponentResponse
     {

@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Attributes;
-using DotNetBungieAPI.Defaults;
+﻿using DotNetBungieAPI.Attributes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Artifacts
@@ -63,15 +60,15 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Artifacts
         public void MapValues()
         {
             foreach (var tier in Tiers)
-            foreach (var tierItems in tier.Items)
-                tierItems.Item.TryMapValue();
+                foreach (var tierItems in tier.Items)
+                    tierItems.Item.TryMapValue();
         }
 
         public void SetPointerLocales(BungieLocales locale)
         {
             foreach (var tier in Tiers)
-            foreach (var tierItems in tier.Items)
-                tierItems.Item.SetLocale(locale);
+                foreach (var tierItems in tier.Items)
+                    tierItems.Item.SetLocale(locale);
         }
     }
 }

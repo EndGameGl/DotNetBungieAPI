@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.Progressions;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Progressions;
 
 namespace DotNetBungieAPI.Models.Destiny.Progressions
 {

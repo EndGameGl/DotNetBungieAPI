@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs
 {
     /// <summary>
     ///     This describes links between the current graph and others, as well as when that link is relevant.

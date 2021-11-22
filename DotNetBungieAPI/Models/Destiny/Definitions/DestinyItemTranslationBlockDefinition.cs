@@ -1,8 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions
 {
     /// <summary>
     ///     This Block defines the rendering data associated with the item, if any.

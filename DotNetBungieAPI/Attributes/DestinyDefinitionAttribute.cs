@@ -1,16 +1,15 @@
-﻿using System;
-using DotNetBungieAPI.Models.Destiny;
+﻿using DotNetBungieAPI.Models.Destiny;
 
 namespace DotNetBungieAPI.Attributes
 {
     /// <summary>
-    /// Marks class as a destiny definition
+    ///     Marks class as a destiny definition
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
     public class DestinyDefinitionAttribute : Attribute
     {
         /// <summary>
-        /// Default .ctor
+        ///     Default .ctor
         /// </summary>
         /// <param name="type">Definition type</param>
         /// <param name="isManuallyDisabled">Whether it is currently disabled</param>
@@ -21,12 +20,12 @@ namespace DotNetBungieAPI.Attributes
         }
 
         /// <summary>
-        /// Definition type
+        ///     Definition type
         /// </summary>
         public DefinitionsEnum DefinitionEnumType { get; }
 
         /// <summary>
-        /// Whether this definition type is currently disabled
+        ///     Whether this definition type is currently disabled
         /// </summary>
         public bool IsManuallyDisabled { get; }
     }

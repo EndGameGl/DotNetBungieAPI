@@ -340,3 +340,6 @@ healthchecksdb
 
 # local stuff
 BungieNetCoreTestingApp/
+/ConsoleTestApp
+/DotNetBungieAPI.Benchmark
+/DotNetBungieAPI.Tests

@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models
+﻿namespace DotNetBungieAPI.Models
 {
     public sealed record StreamInfo
     {

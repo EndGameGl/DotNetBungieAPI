@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Components
+﻿namespace DotNetBungieAPI.Models.Destiny.Components
 {
     /// <summary>
     ///     The base class for any component-returning object that may need to indicate information about the state of the

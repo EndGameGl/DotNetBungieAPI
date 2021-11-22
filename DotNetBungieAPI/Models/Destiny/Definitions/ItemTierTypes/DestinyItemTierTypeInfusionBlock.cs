@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.ItemTierTypes
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.ItemTierTypes
 {
     public sealed record DestinyItemTierTypeInfusionBlock : IDeepEquatable<DestinyItemTierTypeInfusionBlock>
     {

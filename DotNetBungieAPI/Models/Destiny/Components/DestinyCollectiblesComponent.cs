@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.Collectibles;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Collectibles;
 using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
@@ -10,7 +7,8 @@ namespace DotNetBungieAPI.Models.Destiny.Components
     {
         [JsonPropertyName("collectibles")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyCollectibleDefinition>, DestinyCollectibleComponent>
-            Collectibles { get; init; } =
+            Collectibles
+        { get; init; } =
             ReadOnlyDictionaries<DefinitionHashPointer<DestinyCollectibleDefinition>, DestinyCollectibleComponent>
                 .Empty;
 

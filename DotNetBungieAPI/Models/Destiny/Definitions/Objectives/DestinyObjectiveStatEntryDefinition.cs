@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Objectives
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Objectives
 {
     /// <summary>
     ///     Defines the conditions under which stat modifications will be applied to a Character while participating in an

@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using DotNetBungieAPI.Models;
+using DotNetBungieAPI.Models.Common;
 using System.Threading;
 using System.Threading.Tasks;
-using DotNetBungieAPI.Models;
-using DotNetBungieAPI.Models.Common;
 
 namespace DotNetBungieAPI.Services.ApiAccess.Interfaces
 {

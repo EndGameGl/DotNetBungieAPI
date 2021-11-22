@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.Factions;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Factions;
 
 namespace DotNetBungieAPI.Models.Destiny.Progressions
 {

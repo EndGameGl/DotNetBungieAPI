@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.Destinations;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
@@ -49,7 +46,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones
         /// </summary>
         [JsonPropertyName("activities")]
         public ReadOnlyDictionary<DefinitionHashPointer<DestinyActivityDefinition>, DestinyMilestoneActivityDefinition>
-            Activities { get; init; } =
+            Activities
+        { get; init; } =
             ReadOnlyDictionaries<DefinitionHashPointer<DestinyActivityDefinition>, DestinyMilestoneActivityDefinition>
                 .Empty;
 

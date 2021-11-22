@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities
 {
     /// <summary>
     ///     A point of entry into an activity, gated by an unlock flag and with some more-or-less useless (for our purposes)

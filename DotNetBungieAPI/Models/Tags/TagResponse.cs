@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Ignores;
+﻿using DotNetBungieAPI.Models.Ignores;
 
 namespace DotNetBungieAPI.Models.Tags
 {

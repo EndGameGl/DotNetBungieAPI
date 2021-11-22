@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading;
-using System.Threading.Tasks;
-using DotNetBungieAPI.Authorization;
+﻿using DotNetBungieAPI.Authorization;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Config;
 using DotNetBungieAPI.Models.Destiny;
@@ -17,6 +12,8 @@ using DotNetBungieAPI.Models.Queries;
 using DotNetBungieAPI.Models.Requests;
 using DotNetBungieAPI.Models.Responses;
 using DotNetBungieAPI.Models.User;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.ApiAccess.Interfaces
 {

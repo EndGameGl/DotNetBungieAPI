@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Trending
+﻿namespace DotNetBungieAPI.Models.Trending
 {
     public sealed record TrendingEntryCommunityCreation
     {

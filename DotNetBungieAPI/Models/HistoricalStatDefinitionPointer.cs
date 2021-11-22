@@ -1,8 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using DotNetBungieAPI.Clients;
+﻿using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using Microsoft.Extensions.DependencyInjection;
+using System.Diagnostics;
 
 namespace DotNetBungieAPI.Models
 {

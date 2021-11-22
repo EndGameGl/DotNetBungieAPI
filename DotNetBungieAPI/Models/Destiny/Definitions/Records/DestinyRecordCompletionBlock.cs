@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Destiny.Definitions.Records
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Records
 {
     public sealed record DestinyRecordCompletionBlock : IDeepEquatable<DestinyRecordCompletionBlock>
     {

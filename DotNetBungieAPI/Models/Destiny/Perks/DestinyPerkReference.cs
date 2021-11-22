@@ -1,5 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DotNetBungieAPI.Models.Destiny.Definitions.SandboxPerks;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.SandboxPerks;
 
 namespace DotNetBungieAPI.Models.Destiny.Perks
 {

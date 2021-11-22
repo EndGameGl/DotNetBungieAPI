@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.Defaults;
-using DotNetBungieAPI.Models.Destiny.Vendors;
+﻿using DotNetBungieAPI.Models.Destiny.Vendors;
 
 namespace DotNetBungieAPI.Models.Destiny.Components
 {

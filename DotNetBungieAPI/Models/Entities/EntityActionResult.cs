@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Models.Entities
+﻿namespace DotNetBungieAPI.Models.Entities
 {
     public sealed record EntityActionResult
     {

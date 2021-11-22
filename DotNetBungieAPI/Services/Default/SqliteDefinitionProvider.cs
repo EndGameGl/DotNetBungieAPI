@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SQLite;
-using System.IO;
-using System.IO.Compression;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DotNetBungieAPI.Helpers;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Config;
@@ -16,7 +7,13 @@ using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 using DotNetBungieAPI.Services.Default.ServiceConfigurations;
 using DotNetBungieAPI.Services.Interfaces;
 using Microsoft.Extensions.Logging;
-using DotNetBungieAPI.Helpers;
+using System.Collections.Concurrent;
+using System.Data;
+using System.Data.SQLite;
+using System.IO;
+using System.IO.Compression;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.Default
 {
@@ -203,13 +200,14 @@ namespace DotNetBungieAPI.Services.Default
             return ValueTask.FromResult(result);
         }
 
-        public ValueTask<IEnumerable<DestinyManifest>> GetAvailableManifests()
+        public async ValueTask<IEnumerable<DestinyManifest>> GetAvailableManifests()
         {
             if (!Directory.Exists(_configuration.ManifestFolderPath))
                 throw new Exception($"No manifest folder found at: {_configuration.ManifestFolderPath}");
 
             var versions = Directory.EnumerateDirectories(_configuration.ManifestFolderPath);
             var values = new ConcurrentDictionary<string, DestinyManifest>();
+#if NET5_0
             Parallel.ForEach(versions, version =>
             {
                 var files = Directory.EnumerateFiles(
@@ -224,7 +222,27 @@ namespace DotNetBungieAPI.Services.Default
                 var folderManifest = _serializer.Deserialize<DestinyManifest>(json);
                 values.TryAdd(version, folderManifest);
             });
-            return ValueTask.FromResult(values.Select(x => x.Value));
+#endif
+
+#if NET6_0_OR_GREATER
+            await Parallel.ForEachAsync(versions, async (version, cancellationToken) =>
+            {
+                var files = Directory.EnumerateFiles(
+                    version,
+                    "Manifest.json",
+                    SearchOption.TopDirectoryOnly);
+
+                var manifestPath = files.FirstOrDefault();
+                if (manifestPath == null)
+                    return;
+                _logger.LogInformation("Found manifest at: {ManifestPath}", manifestPath);
+
+                await using var fileStream = File.OpenRead(manifestPath);
+                var folderManifest = await _serializer.DeserializeAsync<DestinyManifest>(fileStream);
+                values.TryAdd(version, folderManifest);
+            });
+#endif
+            return values.Select(x => x.Value);
         }
 
         public ValueTask<DestinyManifest> GetCurrentManifest()
@@ -361,6 +379,7 @@ namespace DotNetBungieAPI.Services.Default
             {
                 _logger.LogInformation("Reading locale: {Locale}", locale);
                 var connection = _sqliteConnections[locale];
+#if NET5_0
                 Parallel.ForEach(definitionsToLoad, definitionType =>
                 {
                     _logger.LogInformation("Reading definitions: {DefinitionType}", definitionType);
@@ -382,6 +401,30 @@ namespace DotNetBungieAPI.Services.Default
                         repository.AddDefinition(definitionType, locale, parsedDefinition);
                     }
                 });
+#endif
+#if NET6_0_OR_GREATER
+                await Parallel.ForEachAsync(definitionsToLoad, async (definitionType, cancellationToken) =>
+                {
+                    _logger.LogInformation("Reading definitions: {DefinitionType}", definitionType);
+                    var runtimeType = _assemblyData.DefinitionsToTypeMapping[definitionType].DefinitionType;
+                    var commandObj = new SQLiteCommand
+                    {
+                        Connection = connection,
+                        CommandText = string.Format(SelectAllDefinitionsQuery, definitionType)
+                    };
+
+                    var reader = commandObj.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var parsedDefinition =
+                            (IDestinyDefinition)await _serializer.DeserializeAsync(
+                                (byte[])reader[0],
+                                runtimeType);
+                        parsedDefinition.SetPointerLocales(locale);
+                        repository.AddDefinition(definitionType, locale, parsedDefinition);
+                    }
+                });
+#endif
 
                 var historicalFetchCommand = new SQLiteCommand
                 {
@@ -442,7 +485,7 @@ namespace DotNetBungieAPI.Services.Default
             _logger.LogInformation("Started loading {PropertyName}", propertyName);
             var rootDirectoryPath = $"{path}\\{propertyName}";
             rootDirectoryPath.EnsureDirectoryExists();
-            
+
             var downloadTasks = new List<Task>(values.Count);
 
             foreach (var (key, value) in values)
@@ -469,7 +512,7 @@ namespace DotNetBungieAPI.Services.Default
                         _logger.LogInformation("File already exists, skipping");
                     }
                 })).Invoke();
-                
+
                 downloadTasks.Add(task);
             }
 

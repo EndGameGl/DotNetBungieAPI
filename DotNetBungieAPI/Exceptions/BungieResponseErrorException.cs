@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using DotNetBungieAPI.Models;
+﻿using DotNetBungieAPI.Models;
 
 namespace DotNetBungieAPI.Exceptions
 {
     /// <summary>
-    /// Exception, based of <see cref="BungieResponse{T}"/>
+    ///     Exception, based of <see cref="BungieResponse{T}" />
     /// </summary>
     public class BungieResponseErrorException : Exception
     {
-        public PlatformErrorCodes ErrorCode { get; }
-        public string ErrorStatus { get; }
-        public string ResponseMessage { get; }
-        public Dictionary<string, string> MessageData { get; }
-
         public BungieResponseErrorException(
             PlatformErrorCodes errorCode,
             string errorStatus,
@@ -25,5 +18,10 @@ namespace DotNetBungieAPI.Exceptions
             ResponseMessage = responseMessage;
             MessageData = messageData;
         }
+
+        public PlatformErrorCodes ErrorCode { get; }
+        public string ErrorStatus { get; }
+        public string ResponseMessage { get; }
+        public Dictionary<string, string> MessageData { get; }
     }
 }
