@@ -4,9 +4,11 @@ using DotNetBungieAPI.Exceptions;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Applications;
 using DotNetBungieAPI.Models.Config;
+using DotNetBungieAPI.Models.Requests;
 using DotNetBungieAPI.Models.User;
 using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 using DotNetBungieAPI.Services.Interfaces;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -19,13 +21,16 @@ namespace DotNetBungieAPI.Services.ApiAccess
     {
         private readonly BungieClientConfiguration _configuration;
         private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
+        private readonly IBungieNetJsonSerializer _bungieNetJsonSerializer;
 
         public UserMethodsAccess(
             IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
-            BungieClientConfiguration configuration)
+            BungieClientConfiguration configuration,
+            IBungieNetJsonSerializer bungieNetJsonSerializer)
         {
             _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
             _configuration = configuration;
+            _bungieNetJsonSerializer = bungieNetJsonSerializer;
         }
 
         public async ValueTask<BungieResponse<GeneralUser>> GetBungieNetUserById(
@@ -127,6 +132,22 @@ namespace DotNetBungieAPI.Services.ApiAccess
             return await _dotNetBungieApiHttpClient
                 .GetFromBungieNetPlatform<UserSearchResponse>(url, cancellationToken)
                 .ConfigureAwait(false);
+        }
+
+        public async ValueTask<BungieResponse<UserSearchResponse>> SearchByGlobalNamePost(
+            UserSearchPrefixRequest request, 
+            int page = 0, 
+            CancellationToken cancellationToken = default)
+        {
+            var url = StringBuilderPool
+                .GetBuilder(cancellationToken)
+                .Append("/User/Search/GlobalName/")
+                .AddUrlParam(page.ToString())
+                .Build();
+
+            using var memoryStream = new MemoryStream();
+            await _bungieNetJsonSerializer.SerializeAsync(memoryStream, request).ConfigureAwait(false);
+            return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<UserSearchResponse>(url, cancellationToken, memoryStream).ConfigureAwait(false);
         }
     }
 }
