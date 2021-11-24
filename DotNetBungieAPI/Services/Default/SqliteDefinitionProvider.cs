@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Concurrent;
 using System.Data;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Text;
@@ -148,7 +149,7 @@ namespace DotNetBungieAPI.Services.Default
             return result;
         }
 
-        public ValueTask<string> ReadDefinitionAsJson(DefinitionsEnum enumValue, uint hash, BungieLocales locale)
+        public ValueTask<string> ReadDefinitionRaw(DefinitionsEnum enumValue, uint hash, BungieLocales locale)
         {
             string result;
             var connection = _sqliteConnections[locale];
@@ -174,7 +175,7 @@ namespace DotNetBungieAPI.Services.Default
             return ValueTask.FromResult(result);
         }
 
-        public ValueTask<string> LoadHistoricalStatsDefinitionAsJson(string id, BungieLocales locale)
+        public ValueTask<string> ReadHistoricalStatsDefinitionRaw(string id, BungieLocales locale)
         {
             string result;
             var connection = _sqliteConnections[locale];
@@ -497,15 +498,7 @@ namespace DotNetBungieAPI.Services.Default
                     entryPath.EnsureDirectoryExists();
                     if (!File.Exists(filePath))
                     {
-                        _logger.LogInformation("Downloading and writing db file: {FilePath}", filePath);
-                        await using var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                        await using var stream = await _httpClient.GetStreamFromWebSourceAsync(value);
-                        using var archive = new ZipArchive(stream);
-                        foreach (var zipArchiveEntry in archive.Entries)
-                        {
-                            await using var zipArchiveEntryStream = zipArchiveEntry.Open();
-                            await zipArchiveEntryStream.CopyToAsync(fileStream);
-                        }
+                        await DownloadAndUnpackSqliteFile(filePath, value);
                     }
                     else
                     {
@@ -523,24 +516,14 @@ namespace DotNetBungieAPI.Services.Default
 
         private async Task DownloadSqliteDatabase(string propertyName, string path, string dbSourcePath)
         {
-            _logger.LogInformation("Started loading {PropertyName}", propertyName);
+           _logger.LogInformation("Started loading {PropertyName}", propertyName);
             var rootDirectoryPath = $"{path}\\{propertyName}";
             rootDirectoryPath.EnsureDirectoryExists();
 
-            var entryPath = $"{path}\\{propertyName}\\{dbSourcePath}";
             var filePath = $"{path}\\{propertyName}\\{Path.GetFileName(dbSourcePath)}";
-            entryPath.EnsureDirectoryExists();
             if (!File.Exists(filePath))
             {
-                _logger.LogInformation("Downloading and writing db file: {FilePath}", filePath);
-                await using var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
-                await using var stream = await _httpClient.GetStreamFromWebSourceAsync(dbSourcePath);
-                using var archive = new ZipArchive(stream);
-                foreach (var zipArchiveEntry in archive.Entries)
-                {
-                    await using var zipArchiveEntryStream = zipArchiveEntry.Open();
-                    await zipArchiveEntryStream.CopyToAsync(fileStream);
-                }
+                await DownloadAndUnpackSqliteFile(filePath, dbSourcePath);
             }
             else
             {
@@ -549,6 +532,23 @@ namespace DotNetBungieAPI.Services.Default
 
 
             _logger.LogInformation("Finished loading {PropertyName}", propertyName);
+        }
+
+        private async Task DownloadAndUnpackSqliteFile(string filePath, string dbSourcePath)
+        {
+            _logger.LogInformation("Downloading and writing db file: {FilePath}", filePath);
+            await using (var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write))
+            {
+                var (httpContentStream, contentLength) = await _httpClient.GetStreamFromWebSourceAsync(dbSourcePath);
+
+                using var archive = new ZipArchive(httpContentStream);
+                foreach (var zipArchiveEntry in archive.Entries)
+                {
+                    await using var zipArchiveEntryStream = zipArchiveEntry.Open();
+                    await zipArchiveEntryStream.CopyToAsync(fileStream);
+                }
+                await httpContentStream.DisposeAsync();
+            }
         }
 
         private async Task UpdateLatestManifest()

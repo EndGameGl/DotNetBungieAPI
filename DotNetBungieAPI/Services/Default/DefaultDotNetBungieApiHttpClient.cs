@@ -286,12 +286,12 @@ namespace DotNetBungieAPI.Services.Default
             return bungieResponse;
         }
 
-        public async ValueTask<Stream> GetStreamFromWebSourceAsync(string path)
+        public async ValueTask<(Stream ContentStream, long? TotalLength)> GetStreamFromWebSourceAsync(string path)
         {
             var response = await _httpClient.GetAsync(
                 CdnEndpoint + path,
-                HttpCompletionOption.ResponseHeadersRead);
-            return await response.Content.ReadAsStreamAsync();
+                HttpCompletionOption.ResponseHeadersRead);     
+            return (await response.Content.ReadAsStreamAsync(), response.Content.Headers.ContentLength);
         }
 
         private HttpRequestMessage CreateGetMessage(string uri, bool omitApiKey = false, string authToken = null)

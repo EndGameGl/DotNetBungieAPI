@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.Interfaces
 {
+    /// <summary>
+    ///     <see cref="System.Net.Http.HttpClient"/> wrapper for this library
+    /// </summary>
     public interface IDotNetBungieApiHttpClient
     {
         /// <summary>
@@ -43,6 +46,6 @@ namespace DotNetBungieAPI.Services.Interfaces
         ValueTask<BungieResponse<T>> GetFromBungieNetStatsPlatform<T>(string query, CancellationToken token,
             string authToken = null);
 
-        ValueTask<Stream> GetStreamFromWebSourceAsync(string path);
+        ValueTask<(Stream ContentStream, long? TotalLength)> GetStreamFromWebSourceAsync(string path);
     }
 }
