@@ -81,6 +81,7 @@
         Momentum = 81,
         Dungeon = 82,
         Sundial = 83,
-        TrialsOfOsiris = 84
+        TrialsOfOsiris = 84,
+        Dares = 85
     }
 }

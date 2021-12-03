@@ -737,5 +737,26 @@ namespace DotNetBungieAPI.Services.ApiAccess
                     authToken: authorizationToken.AccessToken)
                 .ConfigureAwait(false);
         }
+
+        public async ValueTask<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlugFree(
+            DestinyInsertPlugsFreeActionRequest request,
+            AuthorizationTokenData authorizationToken,
+            CancellationToken cancellationToken = default)
+        {
+            if (!_configuration.HasSufficientRights(ApplicationScopes.MoveEquipDestinyItems))
+                throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
+
+            var url = StringBuilderPool
+                .GetBuilder(cancellationToken)
+                .Append("/Destiny2/Actions/Items/InsertSocketPlugFree/")
+                .Build();
+
+            var stream = new MemoryStream();
+            await _serializer.SerializeAsync(stream, request);
+
+            return await _dotNetBungieApiHttpClient
+                .PostToBungieNetPlatform<DestinyItemChangeResponse>(url, cancellationToken, stream, authorizationToken.AccessToken)
+                .ConfigureAwait(false);
+        }
     }
 }
