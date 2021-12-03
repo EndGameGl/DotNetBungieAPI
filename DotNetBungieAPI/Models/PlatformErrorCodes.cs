@@ -811,6 +811,10 @@
         ErrorBungieFriendsAlreadyFriends = 3903,
         ErrorBungieFriendsUnableToRemoveRequest = 3904,
         ErrorBungieFriendsUnableToRemove = 3905,
-        ErrorBungieFriendsIdenticalSourceTarget = 3906
+        ErrorBungieFriendsIdenticalSourceTarget = 3906,
+        ErrorBungieFriendsSelf = 3907,
+        ErrorBungieBlockSelf = 3908,
+        ErrorBungieFriendsListFull = 3910,
+        ErrorBungieBlockListFull = 3911
     }
 }

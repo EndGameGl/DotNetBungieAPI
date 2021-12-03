@@ -332,11 +332,23 @@ namespace DotNetBungieAPI.Services.ApiAccess.Interfaces
         ///     Insert a plug into a socketed item.
         /// </summary>
         /// <param name="request">Request body</param>
-        /// <param name="authorizationToken"></param>
+        /// <param name="authorizationToken">Authorization token</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns></returns>
         ValueTask<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlug(
             DestinyInsertPlugsActionRequest request,
+            AuthorizationTokenData authorizationToken,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
+        ///     Insert a 'free' plug into an item's socket. This does not require 'Advanced Write Action' authorization and is available to 3rd-party apps, but will only work on 'free and reversible' socket actions (Perks, Armor Mods, Shaders, Ornaments, etc.). You must have a valid Destiny Account, and the character must either be in a social space, in orbit, or offline.
+        /// </summary>
+        /// <param name="request">Request body</param>
+        /// <param name="authorizationToken">Authorization token</param>
+        /// <param name="cancellationToken">Cancellation token</param>
+        /// <returns></returns>
+        ValueTask<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlugFree(
+            DestinyInsertPlugsFreeActionRequest request,
             AuthorizationTokenData authorizationToken,
             CancellationToken cancellationToken = default);
 

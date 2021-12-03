@@ -1,7 +1,9 @@
 ﻿using DotNetBungieAPI.Models.Destiny.Definitions.Artifacts;
+using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Progressions;
 using DotNetBungieAPI.Models.Destiny.Definitions.Seasons;
+using DotNetBungieAPI.Models.Destiny.Definitions.SocketTypes;
 
 namespace DotNetBungieAPI.Models.Common
 {
@@ -56,10 +58,16 @@ namespace DotNetBungieAPI.Models.Common
             DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
 
         [JsonPropertyName("currentRankProgressionHashes")]
-        public ReadOnlyCollection<DefinitionHashPointer<DestinyProgressionDefinition>>
-            CurrentRankProgressions
-        { get; init; } =
-            ReadOnlyCollections<DefinitionHashPointer<DestinyProgressionDefinition>>.Empty;
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyProgressionDefinition>> CurrentRankProgressions { get; init; } 
+            = ReadOnlyCollections<DefinitionHashPointer<DestinyProgressionDefinition>>.Empty;
+
+        [JsonPropertyName("insertPlugFreeProtectedPlugItemHashes")]
+        public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> InsertPlugFreeProtectedPlugItems { get; init; }
+            = ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
+
+        [JsonPropertyName("insertPlugFreeBlockedSocketTypeHashes")]
+        public ReadOnlyCollection<DefinitionHashPointer<DestinySocketTypeDefinition>> InsertPlugFreeBlockedSocketTypes { get; init; }
+            = ReadOnlyCollections<DefinitionHashPointer<DestinySocketTypeDefinition>>.Empty;
 
         [JsonPropertyName("undiscoveredCollectibleImage")]
         public BungieNetResource UndiscoveredCollectibleImage { get; init; }
