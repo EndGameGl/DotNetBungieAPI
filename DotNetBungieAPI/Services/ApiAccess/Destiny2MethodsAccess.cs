@@ -63,19 +63,23 @@ namespace DotNetBungieAPI.Services.ApiAccess
                 .ConfigureAwait(false);
         }
 
-        public async ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(
+        public async ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayerByBungieName(
             BungieMembershipType membershipType,
-            string displayName,
+            ExactSearchRequest request,
             CancellationToken cancellationToken = default)
         {
             var url = StringBuilderPool
                 .GetBuilder(cancellationToken)
                 .Append("/Destiny2/SearchDestinyPlayer/")
                 .AddUrlParam(((int)membershipType).ToString())
-                .AddUrlParam(displayName.Contains("#") ? displayName.Replace("#", "%23") : displayName)
                 .Build();
+
+            var stream = new MemoryStream();
+
+            await _serializer.SerializeAsync(stream, request).ConfigureAwait(false);
+
             return await _dotNetBungieApiHttpClient
-                .GetFromBungieNetPlatform<UserInfoCard[]>(url, cancellationToken)
+                .PostToBungieNetPlatform<UserInfoCard[]>(url, cancellationToken, stream)
                 .ConfigureAwait(false);
         }
 
@@ -752,7 +756,7 @@ namespace DotNetBungieAPI.Services.ApiAccess
                 .Build();
 
             var stream = new MemoryStream();
-            await _serializer.SerializeAsync(stream, request);
+            await _serializer.SerializeAsync(stream, request).ConfigureAwait(false);
 
             return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<DestinyItemChangeResponse>(url, cancellationToken, stream, authorizationToken.AccessToken)

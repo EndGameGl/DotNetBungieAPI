@@ -89,11 +89,19 @@ namespace DotNetBungieAPI.Services.ApiAccess.Interfaces
         /// <param name="page">The zero-based page of results you desire.</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns></returns>
+        [Obsolete("Do not use this to search users, use SearchByGlobalNamePost instead.")]
         ValueTask<BungieResponse<UserSearchResponse>> SearchByGlobalNamePrefix(
             string displayNamePrefix,
             int page = 0,
             CancellationToken cancellationToken = default);
 
+        /// <summary>
+        ///     Given the prefix of a global display name, returns all users who share that name.
+        /// </summary>
+        /// <param name="request">Request body</param>
+        /// <param name="page">The zero-based page of results you desire.</param>
+        /// <param name="cancellationToken">Cancellation token</param>
+        /// <returns></returns>
         ValueTask<BungieResponse<UserSearchResponse>> SearchByGlobalNamePost(
             UserSearchPrefixRequest request,
             int page = 0,

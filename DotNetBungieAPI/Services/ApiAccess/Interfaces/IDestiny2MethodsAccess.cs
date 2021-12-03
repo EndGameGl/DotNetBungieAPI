@@ -53,15 +53,15 @@ namespace DotNetBungieAPI.Services.ApiAccess.Interfaces
             CancellationToken cancellationToken = default) where T : IDestinyDefinition;
 
         /// <summary>
-        ///     Returns a list of Destiny memberships given a global Bungie Display Name. This method will hide overridden memberships due to cross save.
+        /// Returns a list of Destiny memberships given a global Bungie Display Name. This method will hide overridden memberships due to cross save.
         /// </summary>
         /// <param name="membershipType">A valid non-BungieNet membership type, or All. Indicates which memberships to return. You probably want this set to All.</param>
-        /// <param name="displayName">The full bungie global display name to look up, include the # and the code at the end. This is an exact match lookup.</param>
+        /// <param name="request">Request body</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns></returns>
-        ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(
+        ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayerByBungieName(
             BungieMembershipType membershipType,
-            string displayName,
+            ExactSearchRequest request,
             CancellationToken cancellationToken = default);
 
         /// <summary>
