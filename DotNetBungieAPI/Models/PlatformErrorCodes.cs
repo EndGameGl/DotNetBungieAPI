@@ -424,6 +424,7 @@
         IgnoreNotFound = 1007,
         IgnoreUserGloballyIgnored = 1008,
         IgnoreUserIgnored = 1009,
+        TargetUserIgnored = 1010,
         NotificationSettingInvalid = 1100,
         PsnApiExpiredAccessToken = 1204,
         PSNExForbidden = 1205,
