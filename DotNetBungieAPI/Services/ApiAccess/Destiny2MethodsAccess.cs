@@ -70,14 +70,14 @@ namespace DotNetBungieAPI.Services.ApiAccess
         {
             var url = StringBuilderPool
                 .GetBuilder(cancellationToken)
-                .Append("/Destiny2/SearchDestinyPlayer/")
+                .Append("/Destiny2/SearchDestinyPlayerByBungieName/")
                 .AddUrlParam(((int)membershipType).ToString())
                 .Build();
 
             var stream = new MemoryStream();
 
             await _serializer.SerializeAsync(stream, request).ConfigureAwait(false);
-
+            stream.Position = 0;
             return await _dotNetBungieApiHttpClient
                 .PostToBungieNetPlatform<UserInfoCard[]>(url, cancellationToken, stream)
                 .ConfigureAwait(false);

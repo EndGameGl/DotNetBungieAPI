@@ -45,14 +45,6 @@ namespace DotNetBungieAPI.Services.ApiAccess.UserScoped
             return await _apiAccess.GetDestinyEntityDefinition<T>(entityType, hash, token);
         }
 
-        public async ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayer(
-            BungieMembershipType membershipType,
-            string displayName,
-            CancellationToken token = default)
-        {
-            return await _apiAccess.SearchDestinyPlayer(membershipType, displayName, token);
-        }
-
         public async ValueTask<BungieResponse<DestinyLinkedProfilesResponse>> GetLinkedProfiles(
             BungieMembershipType membershipType,
             long membershipId,
