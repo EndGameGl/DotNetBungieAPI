@@ -14,10 +14,5 @@
 
         [JsonPropertyName("childSettings")]
         public ReadOnlyCollection<CoreSetting> ChildSettings { get; init; } = ReadOnlyCollections<CoreSetting>.Empty;
-
-        public override string ToString()
-        {
-            return $"{Identifier} : {DisplayName} | {Summary}";
-        }
     }
 }

@@ -11,6 +11,7 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Classes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Collectibles;
 using DotNetBungieAPI.Models.Destiny.Definitions.DamageTypes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Destinations;
+using DotNetBungieAPI.Models.Destiny.Definitions.EnergyTypes;
 using DotNetBungieAPI.Models.Destiny.Definitions.EquipmentSlots;
 using DotNetBungieAPI.Models.Destiny.Definitions.Factions;
 using DotNetBungieAPI.Models.Destiny.Definitions.Genders;
@@ -1126,7 +1127,7 @@ namespace DotNetBungieAPI.CodeGen.HashReferencesGeneration
             Dictionary<string, uint> definitionCacheLookup,
             int indentationLevel)
         {
-            foreach (var definition in _bungieClient.Repository.GetAll<DestinyDestinationDefinition>())
+            foreach (var definition in _bungieClient.Repository.GetAll<DestinyEnergyTypeDefinition>())
                 if (definition.DisplayProperties is not null)
                     ValidateAndAddValue(
                         definitionCacheLookup,
