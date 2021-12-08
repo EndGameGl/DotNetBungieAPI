@@ -1,8 +1,7 @@
-﻿namespace DotNetBungieAPI.Models.Social
+﻿namespace DotNetBungieAPI.Models.Social;
+
+public sealed record BungieFriendListResponse
 {
-    public sealed record BungieFriendListResponse
-    {
-        [JsonPropertyName("friends")]
-        public ReadOnlyCollection<BungieFriend> Friends { get; init; } = ReadOnlyCollections<BungieFriend>.Empty;
-    }
+    [JsonPropertyName("friends")]
+    public ReadOnlyCollection<BungieFriend> Friends { get; init; } = ReadOnlyCollections<BungieFriend>.Empty;
 }

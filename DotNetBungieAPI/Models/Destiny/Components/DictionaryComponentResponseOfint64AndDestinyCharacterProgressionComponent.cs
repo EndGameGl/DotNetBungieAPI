@@ -1,9 +1,8 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Components
+﻿namespace DotNetBungieAPI.Models.Destiny.Components;
+
+public sealed record DictionaryComponentResponseOfint64AndDestinyCharacterProgressionComponent : ComponentResponse
 {
-    public sealed record DictionaryComponentResponseOfint64AndDestinyCharacterProgressionComponent : ComponentResponse
-    {
-        [JsonPropertyName("data")]
-        public ReadOnlyDictionary<long, DestinyCharacterProgressionComponent> Data { get; init; } =
-            ReadOnlyDictionaries<long, DestinyCharacterProgressionComponent>.Empty;
-    }
+    [JsonPropertyName("data")]
+    public ReadOnlyDictionary<long, DestinyCharacterProgressionComponent> Data { get; init; } =
+        ReadOnlyDictionaries<long, DestinyCharacterProgressionComponent>.Empty;
 }

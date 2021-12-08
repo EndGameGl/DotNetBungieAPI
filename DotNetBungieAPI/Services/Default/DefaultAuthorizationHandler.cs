@@ -1,91 +1,90 @@
-﻿using DotNetBungieAPI.Authorization;
+﻿using System.Collections.Concurrent;
+using System.Threading.Tasks;
+using DotNetBungieAPI.Authorization;
 using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Services.Interfaces;
 using Microsoft.Extensions.Logging;
-using System.Collections.Concurrent;
-using System.Threading.Tasks;
 
-namespace DotNetBungieAPI.Services.Default
+namespace DotNetBungieAPI.Services.Default;
+
+internal sealed class DefaultAuthorizationHandler : IAuthorizationHandler
 {
-    internal sealed class DefaultAuthorizationHandler : IAuthorizationHandler
+    private readonly IDotNetBungieApiHttpClient _client;
+    private readonly BungieClientConfiguration _configuration;
+    private readonly ILogger _logger;
+
+    public DefaultAuthorizationHandler(
+        ILogger logger,
+        IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
+        BungieClientConfiguration configuration)
     {
-        private readonly IDotNetBungieApiHttpClient _client;
-        private readonly ILogger _logger;
-        private readonly BungieClientConfiguration _configuration;
+        _logger = logger;
+        _client = dotNetBungieApiHttpClient;
+        _configuration = configuration;
+        _authorizationStates = new ConcurrentDictionary<string, AuthorizationState>();
+        _authorizationTokenDatas = new ConcurrentDictionary<long, AuthorizationTokenData>();
+    }
 
-        public DefaultAuthorizationHandler(
-            ILogger logger,
-            IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
-            BungieClientConfiguration configuration)
+    private ConcurrentDictionary<string, AuthorizationState> _authorizationStates { get; }
+    private ConcurrentDictionary<long, AuthorizationTokenData> _authorizationTokenDatas { get; }
+
+    public string GetAuthorizationLink(AuthorizationState authData)
+    {
+        if (_configuration.ClientId != 0)
+            return _client.GetAuthLink(_configuration.ClientId, authData.State);
+        throw new NullReferenceException("Client ID is missing.");
+    }
+
+    public AuthorizationState CreateNewAuthenticationAwaiter()
+    {
+        var authAwaiter = AuthorizationState.GetNewAuth();
+        if (_authorizationStates.TryAdd(authAwaiter.State, authAwaiter)) return authAwaiter;
+
+        throw new Exception("Couldn't create new authentication state.");
+    }
+
+    public async ValueTask<AuthorizationTokenData> GetAuthTokenAsync(AuthorizationState authData)
+    {
+        if (!authData.DidReceiveCallback)
+            throw new Exception("No callback was received from state.");
+        if (!authData.HasCode)
+            throw new Exception("No code is present in state.");
+
+        try
         {
-            _logger = logger;
-            _client = dotNetBungieApiHttpClient;
-            _configuration = configuration;
-            _authorizationStates = new ConcurrentDictionary<string, AuthorizationState>();
-            _authorizationTokenDatas = new ConcurrentDictionary<long, AuthorizationTokenData>();
+            var newToken = await _client.GetAuthorizationToken(authData.Code);
+            return _authorizationTokenDatas.AddOrUpdate(newToken.MembershipId, newToken, (_, _) => newToken);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("{Message}", e.Message);
         }
 
-        private ConcurrentDictionary<string, AuthorizationState> _authorizationStates { get; }
-        private ConcurrentDictionary<long, AuthorizationTokenData> _authorizationTokenDatas { get; }
+        throw new Exception("Failed to get new token");
+    }
 
-        public string GetAuthorizationLink(AuthorizationState authData)
+    public bool TryGetAccessToken(long membershipId, out string token)
+    {
+        token = default;
+        if (!_authorizationTokenDatas.TryGetValue(membershipId, out var tokenData))
+            return false;
+        token = tokenData.AccessToken;
+        return true;
+    }
+
+    public async ValueTask<AuthorizationTokenData> RenewToken(AuthorizationTokenData authData)
+    {
+        try
         {
-            if (_configuration.ClientId != 0)
-                return _client.GetAuthLink(_configuration.ClientId, authData.State);
-            throw new NullReferenceException("Client ID is missing.");
+            var newToken = await _client.RenewAuthorizationToken(authData);
+            authData.Update(newToken);
+            return _authorizationTokenDatas.AddOrUpdate(newToken.MembershipId, authData, (_, _) => authData);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("{Message}", e.Message);
         }
 
-        public AuthorizationState CreateNewAuthenticationAwaiter()
-        {
-            var authAwaiter = AuthorizationState.GetNewAuth();
-            if (_authorizationStates.TryAdd(authAwaiter.State, authAwaiter)) return authAwaiter;
-
-            throw new Exception("Couldn't create new authentication state.");
-        }
-
-        public async ValueTask<AuthorizationTokenData> GetAuthTokenAsync(AuthorizationState authData)
-        {
-            if (!authData.DidReceiveCallback)
-                throw new Exception("No callback was received from state.");
-            if (!authData.HasCode)
-                throw new Exception("No code is present in state.");
-
-            try
-            {
-                var newToken = await _client.GetAuthorizationToken(authData.Code);
-                return _authorizationTokenDatas.AddOrUpdate(newToken.MembershipId, newToken, (_, _) => newToken);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError("{Message}", e.Message);
-            }
-
-            throw new Exception("Failed to get new token");
-        }
-
-        public bool TryGetAccessToken(long membershipId, out string token)
-        {
-            token = default;
-            if (!_authorizationTokenDatas.TryGetValue(membershipId, out var tokenData))
-                return false;
-            token = tokenData.AccessToken;
-            return true;
-        }
-
-        public async ValueTask<AuthorizationTokenData> RenewToken(AuthorizationTokenData authData)
-        {
-            try
-            {
-                var newToken = await _client.RenewAuthorizationToken(authData);
-                authData.Update(newToken);
-                return _authorizationTokenDatas.AddOrUpdate(newToken.MembershipId, authData, (_, _) => authData);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError("{Message}", e.Message);
-            }
-
-            throw new Exception("Failed to get new token");
-        }
+        throw new Exception("Failed to get new token");
     }
 }

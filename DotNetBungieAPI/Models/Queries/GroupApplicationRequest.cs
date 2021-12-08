@@ -1,7 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Queries
+﻿namespace DotNetBungieAPI.Models.Queries;
+
+public class GroupApplicationRequest
 {
-    public class GroupApplicationRequest
-    {
-        [JsonPropertyName("message")] public string Message { get; init; }
-    }
+    [JsonPropertyName("message")] public string Message { get; init; }
 }

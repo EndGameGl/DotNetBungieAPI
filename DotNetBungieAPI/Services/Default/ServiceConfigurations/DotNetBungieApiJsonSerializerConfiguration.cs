@@ -1,7 +1,6 @@
-﻿namespace DotNetBungieAPI.Services.Default.ServiceConfigurations
+﻿namespace DotNetBungieAPI.Services.Default.ServiceConfigurations;
+
+public sealed class DotNetBungieApiJsonSerializerConfiguration
 {
-    public sealed class DotNetBungieApiJsonSerializerConfiguration
-    {
-        public JsonSerializerOptions Options { get; init; }
-    }
+    public JsonSerializerOptions Options { get; init; }
 }

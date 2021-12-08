@@ -1,9 +1,8 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Components
+﻿namespace DotNetBungieAPI.Models.Destiny.Components;
+
+public sealed record PublicDestinyVendorSaleItemSetComponent
 {
-    public sealed record PublicDestinyVendorSaleItemSetComponent
-    {
-        [JsonPropertyName("saleItems")]
-        public ReadOnlyDictionary<int, DestinyPublicVendorSaleItemComponent> SaleItems { get; init; } =
-            ReadOnlyDictionaries<int, DestinyPublicVendorSaleItemComponent>.Empty;
-    }
+    [JsonPropertyName("saleItems")]
+    public ReadOnlyDictionary<int, DestinyPublicVendorSaleItemComponent> SaleItems { get; init; } =
+        ReadOnlyDictionaries<int, DestinyPublicVendorSaleItemComponent>.Empty;
 }

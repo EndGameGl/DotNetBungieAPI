@@ -1,7 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Components
+﻿namespace DotNetBungieAPI.Models.Destiny.Components;
+
+public sealed record SingleComponentResponseOfDestinyProfileTransitoryComponent : ComponentResponse
 {
-    public sealed record SingleComponentResponseOfDestinyProfileTransitoryComponent : ComponentResponse
-    {
-        [JsonPropertyName("data")] public DestinyProfileTransitoryComponent Data { get; init; }
-    }
+    [JsonPropertyName("data")] public DestinyProfileTransitoryComponent Data { get; init; }
 }

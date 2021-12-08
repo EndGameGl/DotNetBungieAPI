@@ -1,10 +1,9 @@
-﻿namespace DotNetBungieAPI.Models.Forum
+﻿namespace DotNetBungieAPI.Models.Forum;
+
+public enum ForumMediaType
 {
-    public enum ForumMediaType
-    {
-        None = 0,
-        Image = 1,
-        Video = 2,
-        Youtube = 3
-    }
+    None = 0,
+    Image = 1,
+    Video = 2,
+    Youtube = 3
 }

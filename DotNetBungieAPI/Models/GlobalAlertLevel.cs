@@ -1,10 +1,9 @@
-﻿namespace DotNetBungieAPI.Models
+﻿namespace DotNetBungieAPI.Models;
+
+public enum GlobalAlertLevel
 {
-    public enum GlobalAlertLevel
-    {
-        Unknown = 0,
-        Blue = 1,
-        Yellow = 2,
-        Red = 3
-    }
+    Unknown = 0,
+    Blue = 1,
+    Yellow = 2,
+    Red = 3
 }

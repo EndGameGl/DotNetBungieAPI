@@ -1,22 +1,21 @@
-﻿namespace DotNetBungieAPI.Models.Responses
+﻿namespace DotNetBungieAPI.Models.Responses;
+
+public enum AwaResponseReason
 {
-    public enum AwaResponseReason
-    {
-        None = 0,
+    None = 0,
 
-        /// <summary>
-        ///     User provided an answer
-        /// </summary>
-        Answered = 1,
+    /// <summary>
+    ///     User provided an answer
+    /// </summary>
+    Answered = 1,
 
-        /// <summary>
-        ///     The HTTP request timed out, a new request may be made and an answer may still be provided.
-        /// </summary>
-        TimedOut = 2,
+    /// <summary>
+    ///     The HTTP request timed out, a new request may be made and an answer may still be provided.
+    /// </summary>
+    TimedOut = 2,
 
-        /// <summary>
-        ///     This request was replaced by another request.
-        /// </summary>
-        Replaced = 3
-    }
+    /// <summary>
+    ///     This request was replaced by another request.
+    /// </summary>
+    Replaced = 3
 }

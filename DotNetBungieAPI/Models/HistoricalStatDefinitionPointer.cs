@@ -1,93 +1,92 @@
-﻿using DotNetBungieAPI.Clients;
+﻿using System.Diagnostics;
+using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using Microsoft.Extensions.DependencyInjection;
-using System.Diagnostics;
 
-namespace DotNetBungieAPI.Models
+namespace DotNetBungieAPI.Models;
+
+/// <summary>
+///     Class that points to <see cref="HistoricalStatDefinition" /> in repository or provider.
+/// </summary>
+[DebuggerDisplay("{StatId}")]
+public sealed class HistoricalStatDefinitionPointer
 {
+    private static readonly Lazy<IBungieClient> _client =
+        new(() => ServiceProviderInstance.Instance.GetService<IBungieClient>());
+
+    private bool _isMapped;
+    private DestinyHistoricalStatsDefinition _value;
+
     /// <summary>
-    /// Class that points to <see cref="HistoricalStatDefinition"/> in repository or provider.
+    ///     Class constructor
     /// </summary>
-    [DebuggerDisplay("{StatId}")]
-    public sealed class HistoricalStatDefinitionPointer
+    /// <param name="statId">Pointer key</param>
+    public HistoricalStatDefinitionPointer(string statId)
     {
-        private static readonly Lazy<IBungieClient> _client =
-            new(() => ServiceProviderInstance.Instance.GetService<IBungieClient>());
+        _value = default;
+        _isMapped = false;
+        StatId = statId;
+    }
 
-        /// <summary>
-        /// Empty default <see cref="HistoricalStatDefinitionPointer"/>
-        /// </summary>
-        public static HistoricalStatDefinitionPointer Empty { get; } = new(null);
+    /// <summary>
+    ///     Empty default <see cref="HistoricalStatDefinitionPointer" />
+    /// </summary>
+    public static HistoricalStatDefinitionPointer Empty { get; } = new(null);
 
-        private bool _isMapped;
-        private DestinyHistoricalStatsDefinition _value;
+    /// <summary>
+    ///     Locale of this definition
+    /// </summary>
+    public BungieLocales Locale { get; private set; } = BungieLocales.EN;
 
-        /// <summary>
-        /// Locale of this definition
-        /// </summary>
-        public BungieLocales Locale { get; private set; } = BungieLocales.EN;
+    /// <summary>
+    ///     ID of this stat definition
+    /// </summary>
+    public string StatId { get; }
 
-        /// <summary>
-        /// ID of this stat definition
-        /// </summary>
-        public string StatId { get; }
+    /// <summary>
+    ///     Attempts to get definition from this pointer
+    /// </summary>
+    /// <param name="definition"></param>
+    /// <returns></returns>
+    public bool TryGetDefinition(out DestinyHistoricalStatsDefinition definition)
+    {
+        definition = default;
 
-        /// <summary>
-        /// Class constructor
-        /// </summary>
-        /// <param name="statId">Pointer key</param>
-        public HistoricalStatDefinitionPointer(string statId)
+        if (_isMapped)
         {
-            _value = default;
-            _isMapped = false;
-            StatId = statId;
-        }
-
-        /// <summary>
-        /// Attempts to get definition from this pointer
-        /// </summary>
-        /// <param name="definition"></param>
-        /// <returns></returns>
-        public bool TryGetDefinition(out DestinyHistoricalStatsDefinition definition)
-        {
-            definition = default;
-
-            if (_isMapped)
-            {
-                definition = _value;
-                return true;
-            }
-
-            if (_client.Value.TryGetHistoricalStatDefinition(StatId, Locale, out definition))
-            {
-                _value = definition;
-                _isMapped = true;
-                return true;
-            }
-
+            definition = _value;
             return true;
         }
 
-        /// <summary>
-        /// Attempts to map value for this pointer
-        /// </summary>
-        public void TryMapValue()
+        if (_client.Value.TryGetHistoricalStatDefinition(StatId, Locale, out definition))
         {
-            if (_value != null && _isMapped)
-                return;
-            if (string.IsNullOrWhiteSpace(StatId))
-                return;
-
-            if (_client.Value.TryGetHistoricalStatDefinition(StatId, Locale, out var definition))
-            {
-                _value = definition;
-                _isMapped = true;
-            }
+            _value = definition;
+            _isMapped = true;
+            return true;
         }
 
-        internal void SetLocale(BungieLocales locale)
+        return true;
+    }
+
+    /// <summary>
+    ///     Attempts to map value for this pointer
+    /// </summary>
+    public void TryMapValue()
+    {
+        if (_value != null && _isMapped)
+            return;
+        if (string.IsNullOrWhiteSpace(StatId))
+            return;
+
+        if (_client.Value.TryGetHistoricalStatDefinition(StatId, Locale, out var definition))
         {
-            Locale = locale;
+            _value = definition;
+            _isMapped = true;
         }
+    }
+
+    internal void SetLocale(BungieLocales locale)
+    {
+        Locale = locale;
     }
 }

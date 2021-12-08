@@ -1,15 +1,14 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.HistoricalStats
+﻿namespace DotNetBungieAPI.Models.Destiny.HistoricalStats;
+
+public sealed record DestinyHistoricalStatsAccountResult
 {
-    public sealed record DestinyHistoricalStatsAccountResult
-    {
-        [JsonPropertyName("mergedDeletedCharacters")]
-        public DestinyHistoricalStatsWithMerged MergedDeletedCharacters { get; init; }
+    [JsonPropertyName("mergedDeletedCharacters")]
+    public DestinyHistoricalStatsWithMerged MergedDeletedCharacters { get; init; }
 
-        [JsonPropertyName("mergedAllCharacters")]
-        public DestinyHistoricalStatsWithMerged MergedAllCharacters { get; init; }
+    [JsonPropertyName("mergedAllCharacters")]
+    public DestinyHistoricalStatsWithMerged MergedAllCharacters { get; init; }
 
-        [JsonPropertyName("characters")]
-        public ReadOnlyCollection<DestinyHistoricalStatsPerCharacter> Characters { get; init; } =
-            ReadOnlyCollections<DestinyHistoricalStatsPerCharacter>.Empty;
-    }
+    [JsonPropertyName("characters")]
+    public ReadOnlyCollection<DestinyHistoricalStatsPerCharacter> Characters { get; init; } =
+        ReadOnlyCollections<DestinyHistoricalStatsPerCharacter>.Empty;
 }

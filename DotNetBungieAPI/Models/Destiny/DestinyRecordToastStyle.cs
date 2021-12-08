@@ -1,14 +1,13 @@
-﻿namespace DotNetBungieAPI.Models.Destiny
+﻿namespace DotNetBungieAPI.Models.Destiny;
+
+public enum DestinyRecordToastStyle
 {
-    public enum DestinyRecordToastStyle
-    {
-        None = 0,
-        Record = 1,
-        Lore = 2,
-        Badge = 3,
-        MetaRecord = 4,
-        MedalComplete = 5,
-        SeasonChallengeComplete = 6,
-        GildedTitleComplete = 7
-    }
+    None = 0,
+    Record = 1,
+    Lore = 2,
+    Badge = 3,
+    MetaRecord = 4,
+    MedalComplete = 5,
+    SeasonChallengeComplete = 6,
+    GildedTitleComplete = 7
 }

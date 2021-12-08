@@ -2,48 +2,48 @@
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 
-namespace DotNetBungieAPI.Services.Interfaces
+namespace DotNetBungieAPI.Services.Interfaces;
+
+public interface IDestiny2DefinitionRepository
 {
-    public interface IDestiny2DefinitionRepository
-    {
-        bool TryGetDestinyDefinition<T>(
-            uint key,
-            BungieLocales locale,
-            out T definition) where T : IDestinyDefinition;
+    IEnumerable<BungieLocales> AvailableLocales { get; }
+    IEnumerable<DefinitionsEnum> AllowedDefinitions { get; }
 
-        bool TryGetDestinyHistoricalDefinition(
-            BungieLocales locale,
-            string key,
-            out DestinyHistoricalStatsDefinition statsDefinition);
+    bool TryGetDestinyDefinition<T>(
+        uint key,
+        BungieLocales locale,
+        out T definition) where T : IDestinyDefinition;
 
-        IEnumerable<DestinyHistoricalStatsDefinition> GetAllHistoricalStatsDefinitions(
-            BungieLocales locale);
-        bool AddDestinyHistoricalDefinition(
-            BungieLocales locale,
-            DestinyHistoricalStatsDefinition statsDefinition);
+    bool TryGetDestinyHistoricalDefinition(
+        BungieLocales locale,
+        string key,
+        out DestinyHistoricalStatsDefinition statsDefinition);
 
-        IEnumerable<T> Search<T>(
-            DefinitionsEnum definitionType,
-            BungieLocales locale,
-            Func<IDestinyDefinition, bool> predicate) where T : IDestinyDefinition;
+    IEnumerable<DestinyHistoricalStatsDefinition> GetAllHistoricalStatsDefinitions(
+        BungieLocales locale);
 
-        public IEnumerable<T> GetAll<T>(
-            BungieLocales locale = BungieLocales.EN) where T : IDestinyDefinition;
+    bool AddDestinyHistoricalDefinition(
+        BungieLocales locale,
+        DestinyHistoricalStatsDefinition statsDefinition);
 
-        bool AddDefinition<T>(
-            BungieLocales locale,
-            T definition) where T : IDestinyDefinition;
+    IEnumerable<T> Search<T>(
+        DefinitionsEnum definitionType,
+        BungieLocales locale,
+        Func<IDestinyDefinition, bool> predicate) where T : IDestinyDefinition;
 
-        bool AddDefinition(
-            DefinitionsEnum enumValue,
-            BungieLocales locale,
-            IDestinyDefinition definition);
+    public IEnumerable<T> GetAll<T>(
+        BungieLocales locale = BungieLocales.EN) where T : IDestinyDefinition;
 
-        IEnumerable<BungieLocales> AvailableLocales { get; }
-        IEnumerable<DefinitionsEnum> AllowedDefinitions { get; }
+    bool AddDefinition<T>(
+        BungieLocales locale,
+        T definition) where T : IDestinyDefinition;
 
-        void Clear();
+    bool AddDefinition(
+        DefinitionsEnum enumValue,
+        BungieLocales locale,
+        IDestinyDefinition definition);
 
-        void PremapPointers();
-    }
+    void Clear();
+
+    void PremapPointers();
 }

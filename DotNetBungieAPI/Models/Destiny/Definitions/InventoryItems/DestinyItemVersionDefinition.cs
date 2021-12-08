@@ -1,23 +1,22 @@
 ﻿using DotNetBungieAPI.Models.Destiny.Definitions.PowerCaps;
 
-namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems
+namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
+
+/// <summary>
+///     The version definition currently just holds a reference to the power cap.
+/// </summary>
+public sealed record DestinyItemVersionDefinition : IDeepEquatable<DestinyItemVersionDefinition>
 {
     /// <summary>
-    ///     The version definition currently just holds a reference to the power cap.
+    ///     A reference to the power cap for this item version.
     /// </summary>
-    public sealed record DestinyItemVersionDefinition : IDeepEquatable<DestinyItemVersionDefinition>
-    {
-        /// <summary>
-        ///     A reference to the power cap for this item version.
-        /// </summary>
-        [JsonPropertyName("powerCapHash")]
-        public DefinitionHashPointer<DestinyPowerCapDefinition> PowerCap { get; init; } =
-            DefinitionHashPointer<DestinyPowerCapDefinition>.Empty;
+    [JsonPropertyName("powerCapHash")]
+    public DefinitionHashPointer<DestinyPowerCapDefinition> PowerCap { get; init; } =
+        DefinitionHashPointer<DestinyPowerCapDefinition>.Empty;
 
-        public bool DeepEquals(DestinyItemVersionDefinition other)
-        {
-            return other != null &&
-                   PowerCap.DeepEquals(other.PowerCap);
-        }
+    public bool DeepEquals(DestinyItemVersionDefinition other)
+    {
+        return other != null &&
+               PowerCap.DeepEquals(other.PowerCap);
     }
 }

@@ -1,9 +1,8 @@
 ﻿using DotNetBungieAPI.Models.Content;
 
-namespace DotNetBungieAPI.Models.Trending
+namespace DotNetBungieAPI.Models.Trending;
+
+public sealed record TrendingEntrySupportArticle
 {
-    public sealed record TrendingEntrySupportArticle
-    {
-        [JsonPropertyName("article")] public ContentItemPublicContract Article { get; init; }
-    }
+    [JsonPropertyName("article")] public ContentItemPublicContract Article { get; init; }
 }

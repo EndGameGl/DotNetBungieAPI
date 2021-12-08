@@ -1,86 +1,85 @@
 ﻿using System.Reflection;
 
-namespace DotNetBungieAPI.Serialization
+namespace DotNetBungieAPI.Serialization;
+
+internal sealed class ReadOnlyDictionaryEnumKeyConverterFactory : JsonConverterFactory
 {
-    internal sealed class ReadOnlyDictionaryEnumKeyConverterFactory : JsonConverterFactory
+    private readonly Type _genericReadOnlyDictType = typeof(ReadOnlyDictionary<,>);
+
+    public override bool CanConvert(Type typeToConvert)
     {
-        private readonly Type _genericReadOnlyDictType = typeof(ReadOnlyDictionary<,>);
+        if (!typeToConvert.IsGenericType) return false;
 
-        public override bool CanConvert(Type typeToConvert)
+        if (typeToConvert.GetGenericTypeDefinition() != _genericReadOnlyDictType) return false;
+
+        if (!typeToConvert.GenericTypeArguments[0].IsEnum)
+            return false;
+
+        return true;
+    }
+
+    public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
+    {
+        var keyType = typeToConvert.GetGenericArguments()[0];
+        var valueType = typeToConvert.GetGenericArguments()[1];
+
+        var converter = (JsonConverter)Activator.CreateInstance(
+            typeof(ReadOnlyDictionaryEnumKeyConverter<,>)
+                .MakeGenericType(keyType, valueType),
+            BindingFlags.Instance | BindingFlags.Public,
+            null,
+            new object[] { options },
+            null);
+
+        return converter;
+    }
+
+    private class ReadOnlyDictionaryEnumKeyConverter<TKey, TValue> : JsonConverter<ReadOnlyDictionary<TKey, TValue>>
+        where TKey : Enum
+    {
+        private readonly Type _enumType = typeof(TKey);
+
+        public ReadOnlyDictionaryEnumKeyConverter(JsonSerializerOptions options)
         {
-            if (!typeToConvert.IsGenericType) return false;
-
-            if (typeToConvert.GetGenericTypeDefinition() != _genericReadOnlyDictType) return false;
-
-            if (!typeToConvert.GenericTypeArguments[0].IsEnum)
-                return false;
-
-            return true;
         }
 
-        public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
+        public override bool HandleNull => true;
+
+        public override ReadOnlyDictionary<TKey, TValue> Read(ref Utf8JsonReader reader, Type typeToConvert,
+            JsonSerializerOptions options)
         {
-            var keyType = typeToConvert.GetGenericArguments()[0];
-            var valueType = typeToConvert.GetGenericArguments()[1];
+            if (reader.TokenType == JsonTokenType.Null)
+                return ReadOnlyDictionaries<TKey, TValue>.Empty;
+            IDictionary<TKey, TValue> tempDictionary = new Dictionary<TKey, TValue>();
+            while (reader.Read())
+            {
+                if (reader.TokenType == JsonTokenType.EndObject)
+                    return new ReadOnlyDictionary<TKey, TValue>(tempDictionary);
 
-            var converter = (JsonConverter)Activator.CreateInstance(
-                typeof(ReadOnlyDictionaryEnumKeyConverter<,>)
-                    .MakeGenericType(keyType, valueType),
-                BindingFlags.Instance | BindingFlags.Public,
-                null,
-                new object[] { options },
-                null);
+                var key = reader.GetString();
+                tempDictionary.Add(
+                    (TKey)Enum.Parse(_enumType, key),
+                    JsonSerializer.Deserialize<TValue>(ref reader, options)
+                );
+            }
 
-            return converter;
+            throw new JsonException();
         }
 
-        private class ReadOnlyDictionaryEnumKeyConverter<TKey, TValue> : JsonConverter<ReadOnlyDictionary<TKey, TValue>>
-            where TKey : Enum
+        public override void Write(Utf8JsonWriter writer, ReadOnlyDictionary<TKey, TValue> value,
+            JsonSerializerOptions options)
         {
-            private readonly Type _enumType = typeof(TKey);
+            writer.WriteStartObject();
 
-            public ReadOnlyDictionaryEnumKeyConverter(JsonSerializerOptions options)
+            foreach (var (key, val) in value)
             {
+                var propertyName = key.ToString();
+                writer.WritePropertyName(options.PropertyNamingPolicy?.ConvertName(propertyName) ?? propertyName);
+
+                JsonSerializer.Serialize(writer, val, options);
             }
 
-            public override bool HandleNull => true;
-
-            public override ReadOnlyDictionary<TKey, TValue> Read(ref Utf8JsonReader reader, Type typeToConvert,
-                JsonSerializerOptions options)
-            {
-                if (reader.TokenType == JsonTokenType.Null)
-                    return ReadOnlyDictionaries<TKey, TValue>.Empty;
-                IDictionary<TKey, TValue> tempDictionary = new Dictionary<TKey, TValue>();
-                while (reader.Read())
-                {
-                    if (reader.TokenType == JsonTokenType.EndObject)
-                        return new ReadOnlyDictionary<TKey, TValue>(tempDictionary);
-
-                    var key = reader.GetString();
-                    tempDictionary.Add(
-                        (TKey)Enum.Parse(_enumType, key),
-                        JsonSerializer.Deserialize<TValue>(ref reader, options)
-                    );
-                }
-
-                throw new JsonException();
-            }
-
-            public override void Write(Utf8JsonWriter writer, ReadOnlyDictionary<TKey, TValue> value,
-                JsonSerializerOptions options)
-            {
-                writer.WriteStartObject();
-
-                foreach (var (key, val) in value)
-                {
-                    var propertyName = key.ToString();
-                    writer.WritePropertyName(options.PropertyNamingPolicy?.ConvertName(propertyName) ?? propertyName);
-
-                    JsonSerializer.Serialize(writer, val, options);
-                }
-
-                writer.WriteEndObject();
-            }
+            writer.WriteEndObject();
         }
     }
 }

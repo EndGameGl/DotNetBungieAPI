@@ -1,98 +1,97 @@
-﻿using DotNetBungieAPI.Models;
+﻿using System.Reflection;
+using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
-using System.Reflection;
 
-namespace DotNetBungieAPI.Serialization
+namespace DotNetBungieAPI.Serialization;
+
+internal sealed class ReadOnlyDictionaryDefinitionPointerKeyConverterFactory : JsonConverterFactory
 {
-    internal sealed class ReadOnlyDictionaryDefinitionPointerKeyConverterFactory : JsonConverterFactory
+    private readonly Type _definitionPointerType = typeof(DefinitionHashPointer<>);
+    private readonly Type _genericReadOnlyDictType = typeof(ReadOnlyDictionary<,>);
+
+    public override bool CanConvert(Type typeToConvert)
     {
-        private readonly Type _definitionPointerType = typeof(DefinitionHashPointer<>);
-        private readonly Type _genericReadOnlyDictType = typeof(ReadOnlyDictionary<,>);
+        if (!typeToConvert.IsGenericType) return false;
 
-        public override bool CanConvert(Type typeToConvert)
+        if (typeToConvert.GetGenericTypeDefinition() != _genericReadOnlyDictType) return false;
+
+        if (!typeToConvert.GenericTypeArguments[0].IsGenericType ||
+            typeToConvert.GenericTypeArguments[0].GetGenericTypeDefinition() != _definitionPointerType)
+            return false;
+
+        return true;
+    }
+
+    public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
+    {
+        try
         {
-            if (!typeToConvert.IsGenericType) return false;
+            var keyType = typeToConvert.GetGenericArguments()[0].GenericTypeArguments[0];
+            var valueType = typeToConvert.GetGenericArguments()[1];
 
-            if (typeToConvert.GetGenericTypeDefinition() != _genericReadOnlyDictType) return false;
 
-            if (!typeToConvert.GenericTypeArguments[0].IsGenericType ||
-                typeToConvert.GenericTypeArguments[0].GetGenericTypeDefinition() != _definitionPointerType)
-                return false;
+            var converter = (JsonConverter)Activator.CreateInstance(
+                typeof(ReadOnlyDictionaryDefinitionKeyConverter<,>).MakeGenericType(keyType, valueType),
+                BindingFlags.Instance | BindingFlags.Public,
+                null,
+                new object[] { options },
+                null);
 
-            return true;
+            return converter;
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    private class
+        ReadOnlyDictionaryDefinitionKeyConverter<TKey, TValue> : JsonConverter<
+            ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue>> where TKey : IDestinyDefinition
+    {
+        public ReadOnlyDictionaryDefinitionKeyConverter(JsonSerializerOptions options)
+        {
         }
 
-        public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
+        public override bool HandleNull => true;
+
+        public override ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue> Read(ref Utf8JsonReader reader,
+            Type typeToConvert, JsonSerializerOptions options)
         {
-            try
+            if (reader.TokenType == JsonTokenType.Null)
+                return ReadOnlyDictionaries<DefinitionHashPointer<TKey>, TValue>.Empty;
+            IDictionary<DefinitionHashPointer<TKey>, TValue> tempDictionary =
+                new Dictionary<DefinitionHashPointer<TKey>, TValue>();
+            while (reader.Read())
             {
-                var keyType = typeToConvert.GetGenericArguments()[0].GenericTypeArguments[0];
-                var valueType = typeToConvert.GetGenericArguments()[1];
+                if (reader.TokenType == JsonTokenType.EndObject)
+                    return new ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue>(tempDictionary);
 
-
-                var converter = (JsonConverter)Activator.CreateInstance(
-                    typeof(ReadOnlyDictionaryDefinitionKeyConverter<,>).MakeGenericType(keyType, valueType),
-                    BindingFlags.Instance | BindingFlags.Public,
-                    null,
-                    new object[] { options },
-                    null);
-
-                return converter;
+                var key = reader.GetString();
+                if (uint.TryParse(key, out var parsedKey))
+                    tempDictionary.Add(
+                        new DefinitionHashPointer<TKey>(parsedKey),
+                        JsonSerializer.Deserialize<TValue>(ref reader, options)
+                    );
             }
-            catch
-            {
-                return null;
-            }
+
+            throw new JsonException();
         }
 
-        private class
-            ReadOnlyDictionaryDefinitionKeyConverter<TKey, TValue> : JsonConverter<
-                ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue>> where TKey : IDestinyDefinition
+        public override void Write(Utf8JsonWriter writer,
+            ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue> value, JsonSerializerOptions options)
         {
-            public ReadOnlyDictionaryDefinitionKeyConverter(JsonSerializerOptions options)
+            writer.WriteStartObject();
+
+            foreach (var (key, val) in value)
             {
+                var propertyName = key.Hash.ToString();
+                writer.WritePropertyName(propertyName);
+
+                JsonSerializer.Serialize(writer, val, options);
             }
 
-            public override bool HandleNull => true;
-
-            public override ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue> Read(ref Utf8JsonReader reader,
-                Type typeToConvert, JsonSerializerOptions options)
-            {
-                if (reader.TokenType == JsonTokenType.Null)
-                    return ReadOnlyDictionaries<DefinitionHashPointer<TKey>, TValue>.Empty;
-                IDictionary<DefinitionHashPointer<TKey>, TValue> tempDictionary =
-                    new Dictionary<DefinitionHashPointer<TKey>, TValue>();
-                while (reader.Read())
-                {
-                    if (reader.TokenType == JsonTokenType.EndObject)
-                        return new ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue>(tempDictionary);
-
-                    var key = reader.GetString();
-                    if (uint.TryParse(key, out var parsedKey))
-                        tempDictionary.Add(
-                            new DefinitionHashPointer<TKey>(parsedKey),
-                            JsonSerializer.Deserialize<TValue>(ref reader, options)
-                        );
-                }
-
-                throw new JsonException();
-            }
-
-            public override void Write(Utf8JsonWriter writer,
-                ReadOnlyDictionary<DefinitionHashPointer<TKey>, TValue> value, JsonSerializerOptions options)
-            {
-                writer.WriteStartObject();
-
-                foreach (var (key, val) in value)
-                {
-                    var propertyName = key.Hash.ToString();
-                    writer.WritePropertyName(propertyName);
-
-                    JsonSerializer.Serialize(writer, val, options);
-                }
-
-                writer.WriteEndObject();
-            }
+            writer.WriteEndObject();
         }
     }
 }

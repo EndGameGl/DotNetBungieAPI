@@ -1,8 +1,7 @@
-﻿namespace DotNetBungieAPI.Models.Destiny
+﻿namespace DotNetBungieAPI.Models.Destiny;
+
+public enum EquippingItemBlockAttributes
 {
-    public enum EquippingItemBlockAttributes
-    {
-        None = 0,
-        EquipOnAcquire = 1
-    }
+    None = 0,
+    EquipOnAcquire = 1
 }

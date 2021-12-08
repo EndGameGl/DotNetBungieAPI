@@ -1,9 +1,8 @@
 ﻿using DotNetBungieAPI.Models.Destiny.HistoricalStats;
 
-namespace DotNetBungieAPI.Models.Destiny.Responses
+namespace DotNetBungieAPI.Models.Destiny.Responses;
+
+public sealed record DestinyClanLeaderboardsResponseEntryValue
 {
-    public sealed record DestinyClanLeaderboardsResponseEntryValue
-    {
-        [JsonPropertyName("basic")] public DestinyHistoricalStatsValuePair Basic { get; init; }
-    }
+    [JsonPropertyName("basic")] public DestinyHistoricalStatsValuePair Basic { get; init; }
 }

@@ -1,9 +1,8 @@
-﻿namespace DotNetBungieAPI.Models.Queries
+﻿namespace DotNetBungieAPI.Models.Queries;
+
+public sealed record SearchResultOfFireteamResponse
 {
-    public sealed record SearchResultOfFireteamResponse
-    {
-        [JsonPropertyName("results")]
-        public ReadOnlyCollection<FireteamResponse> Results { get; init; } =
-            ReadOnlyCollections<FireteamResponse>.Empty;
-    }
+    [JsonPropertyName("results")]
+    public ReadOnlyCollection<FireteamResponse> Results { get; init; } =
+        ReadOnlyCollections<FireteamResponse>.Empty;
 }

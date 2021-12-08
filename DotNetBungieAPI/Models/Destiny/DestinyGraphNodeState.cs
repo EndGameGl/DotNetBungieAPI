@@ -1,14 +1,13 @@
-﻿namespace DotNetBungieAPI.Models.Destiny
+﻿namespace DotNetBungieAPI.Models.Destiny;
+
+/// <summary>
+///     Represents a potential state of an Activity Graph node.
+/// </summary>
+public enum DestinyGraphNodeState
 {
-    /// <summary>
-    ///     Represents a potential state of an Activity Graph node.
-    /// </summary>
-    public enum DestinyGraphNodeState
-    {
-        Hidden = 0,
-        Visible = 1,
-        Teaser = 2,
-        Incomplete = 3,
-        Completed = 4
-    }
+    Hidden = 0,
+    Visible = 1,
+    Teaser = 2,
+    Incomplete = 3,
+    Completed = 4
 }

@@ -1,13 +1,12 @@
-﻿namespace DotNetBungieAPI.Models.Social
-{
-    public sealed record PlatformFriendResponse
-    {
-        [JsonPropertyName("itemsPerPage")] public int ItemsPerPage { get; init; }
-        [JsonPropertyName("currentPage")] public int CurrentPage { get; init; }
-        [JsonPropertyName("hasMore")] public bool HasMore { get; init; }
+﻿namespace DotNetBungieAPI.Models.Social;
 
-        [JsonPropertyName("platformFriends")]
-        public ReadOnlyCollection<PlatformFriend> PlatformFriends { get; init; } =
-            ReadOnlyCollections<PlatformFriend>.Empty;
-    }
+public sealed record PlatformFriendResponse
+{
+    [JsonPropertyName("itemsPerPage")] public int ItemsPerPage { get; init; }
+    [JsonPropertyName("currentPage")] public int CurrentPage { get; init; }
+    [JsonPropertyName("hasMore")] public bool HasMore { get; init; }
+
+    [JsonPropertyName("platformFriends")]
+    public ReadOnlyCollection<PlatformFriend> PlatformFriends { get; init; } =
+        ReadOnlyCollections<PlatformFriend>.Empty;
 }

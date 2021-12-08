@@ -1,7 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Components
+﻿namespace DotNetBungieAPI.Models.Destiny.Components;
+
+public sealed record SingleComponentResponseOfDestinyItemReusablePlugsComponent : ComponentResponse
 {
-    public sealed record SingleComponentResponseOfDestinyItemReusablePlugsComponent : ComponentResponse
-    {
-        [JsonPropertyName("data")] public DestinyItemReusablePlugsComponent Data { get; init; }
-    }
+    [JsonPropertyName("data")] public DestinyItemReusablePlugsComponent Data { get; init; }
 }

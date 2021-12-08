@@ -1,14 +1,13 @@
 ﻿using System.Net.Http;
 
-namespace DotNetBungieAPI.Services.Default.ServiceConfigurations
-{
-    public sealed class DotNetBungieApiHttpClientConfiguration
-    {
-        public HttpClient HttpClient { get; internal set; } = new HttpClient();
+namespace DotNetBungieAPI.Services.Default.ServiceConfigurations;
 
-        public void UseExternalHttpClient(HttpClient httpClient)
-        {
-            HttpClient = Conditions.NotNull(httpClient);
-        }
+public sealed class DotNetBungieApiHttpClientConfiguration
+{
+    public HttpClient HttpClient { get; internal set; } = new();
+
+    public void UseExternalHttpClient(HttpClient httpClient)
+    {
+        HttpClient = Conditions.NotNull(httpClient);
     }
 }

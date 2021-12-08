@@ -1,9 +1,8 @@
-﻿namespace DotNetBungieAPI.Models.Forum
+﻿namespace DotNetBungieAPI.Models.Forum;
+
+public enum ForumRecruitmentIntensityLabel : byte
 {
-    public enum ForumRecruitmentIntensityLabel : byte
-    {
-        None = 0,
-        Casual = 1,
-        Professional = 2
-    }
+    None = 0,
+    Casual = 1,
+    Professional = 2
 }

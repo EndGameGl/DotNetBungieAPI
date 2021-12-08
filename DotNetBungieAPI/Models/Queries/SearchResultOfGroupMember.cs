@@ -1,10 +1,9 @@
 ﻿using DotNetBungieAPI.Models.GroupsV2;
 
-namespace DotNetBungieAPI.Models.Queries
+namespace DotNetBungieAPI.Models.Queries;
+
+public sealed record SearchResultOfGroupMember : SearchResultBase
 {
-    public sealed record SearchResultOfGroupMember : SearchResultBase
-    {
-        [JsonPropertyName("results")]
-        public ReadOnlyCollection<GroupMember> Results { get; init; } = ReadOnlyCollections<GroupMember>.Empty;
-    }
+    [JsonPropertyName("results")]
+    public ReadOnlyCollection<GroupMember> Results { get; init; } = ReadOnlyCollections<GroupMember>.Empty;
 }

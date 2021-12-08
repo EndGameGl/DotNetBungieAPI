@@ -1,10 +1,9 @@
-﻿namespace DotNetBungieAPI.Models.Social
+﻿namespace DotNetBungieAPI.Models.Social;
+
+public enum PlatformFriendType
 {
-    public enum PlatformFriendType
-    {
-        Unknown = 0,
-        Xbox = 1,
-        PSN = 2,
-        Steam = 3
-    }
+    Unknown = 0,
+    Xbox = 1,
+    PSN = 2,
+    Steam = 3
 }

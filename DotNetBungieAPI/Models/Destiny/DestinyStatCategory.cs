@@ -1,13 +1,12 @@
-﻿namespace DotNetBungieAPI.Models.Destiny
+﻿namespace DotNetBungieAPI.Models.Destiny;
+
+/// <summary>
+///     At last, stats have categories. Use this for whatever purpose you might wish.
+/// </summary>
+public enum DestinyStatCategory
 {
-    /// <summary>
-    ///     At last, stats have categories. Use this for whatever purpose you might wish.
-    /// </summary>
-    public enum DestinyStatCategory
-    {
-        Gameplay = 0,
-        Weapon = 1,
-        Defense = 2,
-        Primary = 3
-    }
+    Gameplay = 0,
+    Weapon = 1,
+    Defense = 2,
+    Primary = 3
 }

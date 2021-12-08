@@ -1,12 +1,11 @@
-﻿namespace DotNetBungieAPI.Models.Requests
-{
-    public enum AwaType
-    {
-        None = 0,
+﻿namespace DotNetBungieAPI.Models.Requests;
 
-        /// <summary>
-        ///     Insert plugs into sockets.
-        /// </summary>
-        InsertPlugs = 1
-    }
+public enum AwaType
+{
+    None = 0,
+
+    /// <summary>
+    ///     Insert plugs into sockets.
+    /// </summary>
+    InsertPlugs = 1
 }

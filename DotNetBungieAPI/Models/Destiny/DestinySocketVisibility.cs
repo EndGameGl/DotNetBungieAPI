@@ -1,10 +1,9 @@
-﻿namespace DotNetBungieAPI.Models.Destiny
+﻿namespace DotNetBungieAPI.Models.Destiny;
+
+public enum DestinySocketVisibility
 {
-    public enum DestinySocketVisibility
-    {
-        Visible = 0,
-        Hidden = 1,
-        HiddenWhenEmpty = 2,
-        HiddenIfNoPlugsAvailable = 3
-    }
+    Visible = 0,
+    Hidden = 1,
+    HiddenWhenEmpty = 2,
+    HiddenIfNoPlugsAvailable = 3
 }

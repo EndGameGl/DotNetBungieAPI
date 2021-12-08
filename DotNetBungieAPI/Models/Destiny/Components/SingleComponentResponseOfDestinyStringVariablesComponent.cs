@@ -1,7 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Components
+﻿namespace DotNetBungieAPI.Models.Destiny.Components;
+
+public sealed record SingleComponentResponseOfDestinyStringVariablesComponent : ComponentResponse
 {
-    public sealed record SingleComponentResponseOfDestinyStringVariablesComponent : ComponentResponse
-    {
-        [JsonPropertyName("data")] public DestinyStringVariablesComponent Data { get; init; }
-    }
+    [JsonPropertyName("data")] public DestinyStringVariablesComponent Data { get; init; }
 }

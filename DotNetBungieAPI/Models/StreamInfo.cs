@@ -1,7 +1,6 @@
-﻿namespace DotNetBungieAPI.Models
+﻿namespace DotNetBungieAPI.Models;
+
+public sealed record StreamInfo
 {
-    public sealed record StreamInfo
-    {
-        [JsonPropertyName("ChannelName")] public string ChannelName { get; init; }
-    }
+    [JsonPropertyName("ChannelName")] public string ChannelName { get; init; }
 }

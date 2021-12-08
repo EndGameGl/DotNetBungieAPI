@@ -1,10 +1,9 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats
+﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
+
+public enum PeriodType
 {
-    public enum PeriodType
-    {
-        None = 0,
-        Daily = 1,
-        AllTime = 2,
-        Activity = 3
-    }
+    None = 0,
+    Daily = 1,
+    AllTime = 2,
+    Activity = 3
 }

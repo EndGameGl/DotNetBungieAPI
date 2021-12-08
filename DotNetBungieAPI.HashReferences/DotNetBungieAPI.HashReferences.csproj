@@ -7,11 +7,12 @@
     <RepositoryUrl>https://github.com/EndGameGl/DotNetBungieAPI</RepositoryUrl>
     <Description>Destiny 2 hash references for definitions</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <FileVersion>1.0.0.1</FileVersion>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <FileVersion>1.1.0</FileVersion>
     <Copyright>Copyright (c) MeGl 2021</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>$(AssemblyVersion)</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">

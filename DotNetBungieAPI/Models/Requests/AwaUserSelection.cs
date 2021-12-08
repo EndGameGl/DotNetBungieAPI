@@ -1,9 +1,8 @@
-﻿namespace DotNetBungieAPI.Models.Requests
+﻿namespace DotNetBungieAPI.Models.Requests;
+
+public enum AwaUserSelection
 {
-    public enum AwaUserSelection
-    {
-        None = 0,
-        Rejected = 1,
-        Approved = 2
-    }
+    None = 0,
+    Rejected = 1,
+    Approved = 2
 }

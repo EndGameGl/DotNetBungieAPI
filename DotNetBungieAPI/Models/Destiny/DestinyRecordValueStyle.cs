@@ -1,11 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.Destiny
+﻿namespace DotNetBungieAPI.Models.Destiny;
+
+public enum DestinyRecordValueStyle
 {
-    public enum DestinyRecordValueStyle
-    {
-        Integer = 0,
-        Percentage = 1,
-        Milliseconds = 2,
-        Boolean = 3,
-        Decimal = 4
-    }
+    Integer = 0,
+    Percentage = 1,
+    Milliseconds = 2,
+    Boolean = 3,
+    Decimal = 4
 }

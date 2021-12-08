@@ -1,10 +1,9 @@
 ﻿using DotNetBungieAPI.Attributes;
 
-namespace DotNetBungieAPI.Repositories
+namespace DotNetBungieAPI.Repositories;
+
+public class DefinitionUseRule
 {
-    public class DefinitionUseRule
-    {
-        public DestinyDefinitionAttribute AttributeData { get; internal set; }
-        public Type DefinitionType { get; internal set; }
-    }
+    public DestinyDefinitionAttribute AttributeData { get; internal set; }
+    public Type DefinitionType { get; internal set; }
 }

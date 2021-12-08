@@ -1,9 +1,8 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Components
+﻿namespace DotNetBungieAPI.Models.Destiny.Components;
+
+public sealed record DictionaryComponentResponseOfint64AndDestinyStringVariablesComponent : ComponentResponse
 {
-    public sealed record DictionaryComponentResponseOfint64AndDestinyStringVariablesComponent : ComponentResponse
-    {
-        [JsonPropertyName("data")]
-        public ReadOnlyDictionary<long, DestinyStringVariablesComponent> Data { get; init; } =
-            ReadOnlyDictionaries<long, DestinyStringVariablesComponent>.Empty;
-    }
+    [JsonPropertyName("data")]
+    public ReadOnlyDictionary<long, DestinyStringVariablesComponent> Data { get; init; } =
+        ReadOnlyDictionaries<long, DestinyStringVariablesComponent>.Empty;
 }

@@ -1,7 +1,6 @@
-﻿namespace DotNetBungieAPI.Defaults
+﻿namespace DotNetBungieAPI.Defaults;
+
+internal class ReadOnlyCollections<T>
 {
-    internal class ReadOnlyCollections<T>
-    {
-        internal static ReadOnlyCollection<T> Empty { get; } = new(Array.Empty<T>());
-    }
+    internal static ReadOnlyCollection<T> Empty { get; } = new(Array.Empty<T>());
 }

@@ -1,62 +1,61 @@
-﻿namespace DotNetBungieAPI.Models.Content
+﻿namespace DotNetBungieAPI.Models.Content;
+
+public sealed record ContentTypeDescription
 {
-    public sealed record ContentTypeDescription
-    {
-        [JsonPropertyName("cType")] public string ContentType { get; init; }
+    [JsonPropertyName("cType")] public string ContentType { get; init; }
 
-        [JsonPropertyName("name")] public string Name { get; init; }
+    [JsonPropertyName("name")] public string Name { get; init; }
 
-        [JsonPropertyName("contentDescription")]
-        public string ContentDescription { get; init; }
+    [JsonPropertyName("contentDescription")]
+    public string ContentDescription { get; init; }
 
-        [JsonPropertyName("previewImage")] public string PreviewImage { get; init; }
+    [JsonPropertyName("previewImage")] public string PreviewImage { get; init; }
 
-        [JsonPropertyName("priority")] public int Priority { get; init; }
+    [JsonPropertyName("priority")] public int Priority { get; init; }
 
-        [JsonPropertyName("reminder")] public string Reminder { get; init; }
+    [JsonPropertyName("reminder")] public string Reminder { get; init; }
 
-        [JsonPropertyName("properties")]
-        public ReadOnlyCollection<ContentTypeProperty> Properties { get; init; } =
-            ReadOnlyCollections<ContentTypeProperty>.Empty;
+    [JsonPropertyName("properties")]
+    public ReadOnlyCollection<ContentTypeProperty> Properties { get; init; } =
+        ReadOnlyCollections<ContentTypeProperty>.Empty;
 
-        [JsonPropertyName("tagMetadata")]
-        public ReadOnlyCollection<TagMetadataDefinition> TagMetadata { get; init; } =
-            ReadOnlyCollections<TagMetadataDefinition>.Empty;
+    [JsonPropertyName("tagMetadata")]
+    public ReadOnlyCollection<TagMetadataDefinition> TagMetadata { get; init; } =
+        ReadOnlyCollections<TagMetadataDefinition>.Empty;
 
-        [JsonPropertyName("tagMetadataItems")]
-        public ReadOnlyDictionary<string, TagMetadataItem> TagMetadataItems { get; init; } =
-            ReadOnlyDictionaries<string, TagMetadataItem>.Empty;
+    [JsonPropertyName("tagMetadataItems")]
+    public ReadOnlyDictionary<string, TagMetadataItem> TagMetadataItems { get; init; } =
+        ReadOnlyDictionaries<string, TagMetadataItem>.Empty;
 
-        [JsonPropertyName("usageExamples")]
-        public ReadOnlyCollection<string> UsageExamples { get; init; } = ReadOnlyCollections<string>.Empty;
+    [JsonPropertyName("usageExamples")]
+    public ReadOnlyCollection<string> UsageExamples { get; init; } = ReadOnlyCollections<string>.Empty;
 
-        [JsonPropertyName("showInContentEditor")]
-        public bool ShowInContentEditor { get; init; }
+    [JsonPropertyName("showInContentEditor")]
+    public bool ShowInContentEditor { get; init; }
 
-        [JsonPropertyName("typeOf")] public string TypeOf { get; init; }
+    [JsonPropertyName("typeOf")] public string TypeOf { get; init; }
 
-        [JsonPropertyName("bindIdentifierToProperty")]
-        public string BindIdentifierToProperty { get; init; }
+    [JsonPropertyName("bindIdentifierToProperty")]
+    public string BindIdentifierToProperty { get; init; }
 
-        [JsonPropertyName("boundRegex")] public string BoundRegex { get; init; }
+    [JsonPropertyName("boundRegex")] public string BoundRegex { get; init; }
 
-        [JsonPropertyName("forceIdentifierBinding")]
-        public bool ForceIdentifierBinding { get; init; }
+    [JsonPropertyName("forceIdentifierBinding")]
+    public bool ForceIdentifierBinding { get; init; }
 
-        [JsonPropertyName("allowComments")] public bool AllowComments { get; init; }
+    [JsonPropertyName("allowComments")] public bool AllowComments { get; init; }
 
-        [JsonPropertyName("autoEnglishPropertyFallback")]
-        public bool AutoEnglishPropertyFallback { get; init; }
+    [JsonPropertyName("autoEnglishPropertyFallback")]
+    public bool AutoEnglishPropertyFallback { get; init; }
 
-        [JsonPropertyName("bulkUploadable")] public bool BulkUploadable { get; init; }
+    [JsonPropertyName("bulkUploadable")] public bool BulkUploadable { get; init; }
 
-        [JsonPropertyName("previews")]
-        public ReadOnlyCollection<ContentPreview> Previews { get; init; } = ReadOnlyCollections<ContentPreview>.Empty;
+    [JsonPropertyName("previews")]
+    public ReadOnlyCollection<ContentPreview> Previews { get; init; } = ReadOnlyCollections<ContentPreview>.Empty;
 
-        [JsonPropertyName("suppressCmsPath")] public bool SuppressCmsPath { get; init; }
+    [JsonPropertyName("suppressCmsPath")] public bool SuppressCmsPath { get; init; }
 
-        [JsonPropertyName("propertySections")]
-        public ReadOnlyCollection<ContentTypePropertySection> PropertySections { get; init; } =
-            ReadOnlyCollections<ContentTypePropertySection>.Empty;
-    }
+    [JsonPropertyName("propertySections")]
+    public ReadOnlyCollection<ContentTypePropertySection> PropertySections { get; init; } =
+        ReadOnlyCollections<ContentTypePropertySection>.Empty;
 }

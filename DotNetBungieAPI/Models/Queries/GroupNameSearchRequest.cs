@@ -1,11 +1,10 @@
 ﻿using DotNetBungieAPI.Models.GroupsV2;
 
-namespace DotNetBungieAPI.Models.Queries
-{
-    public class GroupNameSearchRequest
-    {
-        [JsonPropertyName("groupName")] public string GroupName { get; init; }
+namespace DotNetBungieAPI.Models.Queries;
 
-        [JsonPropertyName("groupType")] public GroupType GroupType { get; init; }
-    }
+public class GroupNameSearchRequest
+{
+    [JsonPropertyName("groupName")] public string GroupName { get; init; }
+
+    [JsonPropertyName("groupType")] public GroupType GroupType { get; init; }
 }

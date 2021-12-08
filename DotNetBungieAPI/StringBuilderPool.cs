@@ -1,28 +1,27 @@
 ﻿using System.Threading;
 
-namespace DotNetBungieAPI
+namespace DotNetBungieAPI;
+
+internal static class StringBuilderPool
 {
-    internal static class StringBuilderPool
+    private static readonly object Lock = new();
+    private static readonly List<ExtendedStringBuilder> Builders;
+
+    static StringBuilderPool()
     {
-        private static readonly object Lock = new();
-        private static readonly List<ExtendedStringBuilder> Builders;
+        Builders = new List<ExtendedStringBuilder>();
+    }
 
-        static StringBuilderPool()
+    internal static ExtendedStringBuilder GetBuilder(CancellationToken ct)
+    {
+        lock (Lock)
         {
-            Builders = new List<ExtendedStringBuilder>();
-        }
-
-        internal static ExtendedStringBuilder GetBuilder(CancellationToken ct)
-        {
-            lock (Lock)
-            {
-                var builder = Builders.FirstOrDefault(x => !x.IsBusy);
-                if (builder is not null)
-                    return builder.PrepareForUse(ct);
-                builder = new ExtendedStringBuilder();
-                Builders.Add(builder);
+            var builder = Builders.FirstOrDefault(x => !x.IsBusy);
+            if (builder is not null)
                 return builder.PrepareForUse(ct);
-            }
+            builder = new ExtendedStringBuilder();
+            Builders.Add(builder);
+            return builder.PrepareForUse(ct);
         }
     }
 }

@@ -1,7 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Components
+﻿namespace DotNetBungieAPI.Models.Destiny.Components;
+
+public class SingleComponentResponseOfDestinyCharacterRenderComponent
 {
-    public class SingleComponentResponseOfDestinyCharacterRenderComponent
-    {
-        [JsonPropertyName("data")] public DestinyCharacterRenderComponent Data { get; init; }
-    }
+    [JsonPropertyName("data")] public DestinyCharacterRenderComponent Data { get; init; }
 }

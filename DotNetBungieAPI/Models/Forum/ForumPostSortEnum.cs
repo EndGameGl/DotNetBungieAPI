@@ -1,8 +1,7 @@
-﻿namespace DotNetBungieAPI.Models.Forum
+﻿namespace DotNetBungieAPI.Models.Forum;
+
+public enum ForumPostSortEnum
 {
-    public enum ForumPostSortEnum
-    {
-        Default = 0,
-        OldestFirst = 1
-    }
+    Default = 0,
+    OldestFirst = 1
 }

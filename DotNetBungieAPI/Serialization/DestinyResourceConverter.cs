@@ -1,23 +1,22 @@
 ﻿using DotNetBungieAPI.Models;
 
-namespace DotNetBungieAPI.Serialization
+namespace DotNetBungieAPI.Serialization;
+
+internal sealed class DestinyResourceConverter : JsonConverter<BungieNetResource>
 {
-    internal sealed class DestinyResourceConverter : JsonConverter<BungieNetResource>
+    public override bool HandleNull => true;
+
+    public override BungieNetResource Read(ref Utf8JsonReader reader, Type typeToConvert,
+        JsonSerializerOptions options)
     {
-        public override bool HandleNull => true;
+        if (reader.TokenType == JsonTokenType.Null)
+            return new BungieNetResource(null);
 
-        public override BungieNetResource Read(ref Utf8JsonReader reader, Type typeToConvert,
-            JsonSerializerOptions options)
-        {
-            if (reader.TokenType == JsonTokenType.Null)
-                return new BungieNetResource(null);
+        return new BungieNetResource(reader.GetString());
+    }
 
-            return new BungieNetResource(reader.GetString());
-        }
-
-        public override void Write(Utf8JsonWriter writer, BungieNetResource value, JsonSerializerOptions options)
-        {
-            JsonSerializer.Serialize(writer, value.RelativePath, options);
-        }
+    public override void Write(Utf8JsonWriter writer, BungieNetResource value, JsonSerializerOptions options)
+    {
+        JsonSerializer.Serialize(writer, value.RelativePath, options);
     }
 }

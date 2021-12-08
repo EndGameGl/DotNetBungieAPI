@@ -1,11 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.Config
-{
-    public sealed record ClanBannerDecals
-    {
-        [JsonPropertyName("foregroundPath")]
-        public BungieNetResource ForegroundPath { get; init; } = BungieNetResource.Empty;
+﻿namespace DotNetBungieAPI.Models.Config;
 
-        [JsonPropertyName("backgroundPath")]
-        public BungieNetResource BackgroundPath { get; init; } = BungieNetResource.Empty;
-    }
+public sealed record ClanBannerDecals
+{
+    [JsonPropertyName("foregroundPath")]
+    public BungieNetResource ForegroundPath { get; init; } = BungieNetResource.Empty;
+
+    [JsonPropertyName("backgroundPath")]
+    public BungieNetResource BackgroundPath { get; init; } = BungieNetResource.Empty;
 }

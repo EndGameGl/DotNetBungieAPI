@@ -1,11 +1,10 @@
 ﻿using DotNetBungieAPI.Models.Fireteam;
 
-namespace DotNetBungieAPI.Models.Queries
+namespace DotNetBungieAPI.Models.Queries;
+
+public sealed record SearchResultOfFireteamSummary : SearchResultBase
 {
-    public sealed record SearchResultOfFireteamSummary : SearchResultBase
-    {
-        [JsonPropertyName("results")]
-        public ReadOnlyCollection<FireteamSummary> Results { get; init; } =
-            ReadOnlyCollections<FireteamSummary>.Empty;
-    }
+    [JsonPropertyName("results")]
+    public ReadOnlyCollection<FireteamSummary> Results { get; init; } =
+        ReadOnlyCollections<FireteamSummary>.Empty;
 }

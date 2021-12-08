@@ -1,9 +1,8 @@
-﻿namespace DotNetBungieAPI.Models.Content
-{
-    public sealed record CommentSummary
-    {
-        [JsonPropertyName("topicId")] public long TopicId { get; init; }
+﻿namespace DotNetBungieAPI.Models.Content;
 
-        [JsonPropertyName("commentCount")] public int CommentCount { get; init; }
-    }
+public sealed record CommentSummary
+{
+    [JsonPropertyName("topicId")] public long TopicId { get; init; }
+
+    [JsonPropertyName("commentCount")] public int CommentCount { get; init; }
 }

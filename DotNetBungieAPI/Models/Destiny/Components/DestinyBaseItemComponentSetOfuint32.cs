@@ -1,11 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Components
-{
-    public sealed record DestinyBaseItemComponentSetOfuint32
-    {
-        [JsonPropertyName("objectives")]
-        public DictionaryComponentResponseOfuint32AndDestinyItemObjectivesComponent Objectives { get; init; }
+﻿namespace DotNetBungieAPI.Models.Destiny.Components;
 
-        [JsonPropertyName("perks")]
-        public DictionaryComponentResponseOfuint32AndDestinyItemPerksComponent Perks { get; init; }
-    }
+public sealed record DestinyBaseItemComponentSetOfuint32
+{
+    [JsonPropertyName("objectives")]
+    public DictionaryComponentResponseOfuint32AndDestinyItemObjectivesComponent Objectives { get; init; }
+
+    [JsonPropertyName("perks")]
+    public DictionaryComponentResponseOfuint32AndDestinyItemPerksComponent Perks { get; init; }
 }

@@ -1,8 +1,7 @@
-﻿namespace DotNetBungieAPI.Models.Destiny
+﻿namespace DotNetBungieAPI.Models.Destiny;
+
+public enum BucketScope
 {
-    public enum BucketScope
-    {
-        Character = 0,
-        Account = 1
-    }
+    Character = 0,
+    Account = 1
 }

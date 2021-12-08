@@ -1,8 +1,7 @@
-﻿namespace DotNetBungieAPI.Models.GroupsV2
+﻿namespace DotNetBungieAPI.Models.GroupsV2;
+
+public enum ChatSecuritySetting
 {
-    public enum ChatSecuritySetting
-    {
-        Group = 0,
-        Admins = 1
-    }
+    Group = 0,
+    Admins = 1
 }

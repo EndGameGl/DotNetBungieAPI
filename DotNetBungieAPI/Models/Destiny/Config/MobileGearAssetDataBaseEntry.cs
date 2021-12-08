@@ -1,9 +1,8 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Config
-{
-    public sealed record MobileGearAssetDataBaseEntry
-    {
-        [JsonPropertyName("version")] public int Version { get; init; }
+﻿namespace DotNetBungieAPI.Models.Destiny.Config;
 
-        [JsonPropertyName("path")] public string Path { get; init; }
-    }
+public sealed record MobileGearAssetDataBaseEntry
+{
+    [JsonPropertyName("version")] public int Version { get; init; }
+
+    [JsonPropertyName("path")] public string Path { get; init; }
 }

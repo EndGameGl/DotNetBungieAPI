@@ -1,8 +1,7 @@
-﻿namespace DotNetBungieAPI.Models.Social
+﻿namespace DotNetBungieAPI.Models.Social;
+
+public enum PresenceStatus
 {
-    public enum PresenceStatus
-    {
-        OfflineOrUnknown = 0,
-        Online = 1
-    }
+    OfflineOrUnknown = 0,
+    Online = 1
 }

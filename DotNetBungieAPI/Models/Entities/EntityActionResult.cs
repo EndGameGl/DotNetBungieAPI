@@ -1,9 +1,8 @@
-﻿namespace DotNetBungieAPI.Models.Entities
-{
-    public sealed record EntityActionResult
-    {
-        [JsonPropertyName("entityId")] public long EntityId { get; init; }
+﻿namespace DotNetBungieAPI.Models.Entities;
 
-        [JsonPropertyName("result")] public int Result { get; init; }
-    }
+public sealed record EntityActionResult
+{
+    [JsonPropertyName("entityId")] public long EntityId { get; init; }
+
+    [JsonPropertyName("result")] public int Result { get; init; }
 }

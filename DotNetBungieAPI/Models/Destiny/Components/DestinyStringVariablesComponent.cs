@@ -1,9 +1,8 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Components
+﻿namespace DotNetBungieAPI.Models.Destiny.Components;
+
+public sealed record DestinyStringVariablesComponent
 {
-    public sealed record DestinyStringVariablesComponent
-    {
-        [JsonPropertyName("integerValuesByHash")]
-        public ReadOnlyDictionary<uint, int> IntegerValuesByHash { get; init; } =
-            ReadOnlyDictionaries<uint, int>.Empty;
-    }
+    [JsonPropertyName("integerValuesByHash")]
+    public ReadOnlyDictionary<uint, int> IntegerValuesByHash { get; init; } =
+        ReadOnlyDictionaries<uint, int>.Empty;
 }

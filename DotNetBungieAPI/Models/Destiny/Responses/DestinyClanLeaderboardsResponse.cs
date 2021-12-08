@@ -1,11 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Responses
-{
-    public sealed record DestinyClanLeaderboardsResponse
-    {
-        [JsonPropertyName("statId")] public string StatId { get; init; }
+﻿namespace DotNetBungieAPI.Models.Destiny.Responses;
 
-        [JsonPropertyName("entries")]
-        public ReadOnlyCollection<DestinyClanLeaderboardsResponseEntry> Entries { get; init; } =
-            ReadOnlyCollections<DestinyClanLeaderboardsResponseEntry>.Empty;
-    }
+public sealed record DestinyClanLeaderboardsResponse
+{
+    [JsonPropertyName("statId")] public string StatId { get; init; }
+
+    [JsonPropertyName("entries")]
+    public ReadOnlyCollection<DestinyClanLeaderboardsResponseEntry> Entries { get; init; } =
+        ReadOnlyCollections<DestinyClanLeaderboardsResponseEntry>.Empty;
 }

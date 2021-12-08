@@ -1,9 +1,8 @@
-﻿namespace DotNetBungieAPI.Models.Fireteam
+﻿namespace DotNetBungieAPI.Models.Fireteam;
+
+public enum FireteamPublicSearchOption : byte
 {
-    public enum FireteamPublicSearchOption : byte
-    {
-        PublicAndPrivate = 0,
-        PublicOnly = 1,
-        PrivateOnly = 2
-    }
+    PublicAndPrivate = 0,
+    PublicOnly = 1,
+    PrivateOnly = 2
 }

@@ -1,12 +1,11 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.HistoricalStats
+﻿namespace DotNetBungieAPI.Models.Destiny.HistoricalStats;
+
+public sealed record DestinyAggregateActivityResults
 {
-    public sealed record DestinyAggregateActivityResults
-    {
-        /// <summary>
-        ///     List of all activities the player has participated in.
-        /// </summary>
-        [JsonPropertyName("activities")]
-        public ReadOnlyCollection<DestinyAggregateActivityStats> Activities { get; init; } =
-            ReadOnlyCollections<DestinyAggregateActivityStats>.Empty;
-    }
+    /// <summary>
+    ///     List of all activities the player has participated in.
+    /// </summary>
+    [JsonPropertyName("activities")]
+    public ReadOnlyCollection<DestinyAggregateActivityStats> Activities { get; init; } =
+        ReadOnlyCollections<DestinyAggregateActivityStats>.Empty;
 }
