@@ -49,7 +49,7 @@ public sealed record AuthorizationTokenData
     /// <summary>
     ///     When this token was first received
     /// </summary>
-    public DateTime FirstReceived { get; } = DateTime.UtcNow;
+    public DateTime FirstReceived { get; set; } = DateTime.UtcNow;
 
     /// <summary>
     ///     Whether token did expire

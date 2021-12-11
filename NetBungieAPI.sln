@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBungieAPI.Benchmark",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTestApp", "ConsoleTestApp\ConsoleTestApp.csproj", "{1D2C8954-8DEB-43B3-BE80-4D6CEA1E51AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBungieAPI.Data", "DotNetBungieAPI.Data\DotNetBungieAPI.Data.csproj", "{90B66C57-F8D3-47E6-990D-BF66DAA9C5A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{1D2C8954-8DEB-43B3-BE80-4D6CEA1E51AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D2C8954-8DEB-43B3-BE80-4D6CEA1E51AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D2C8954-8DEB-43B3-BE80-4D6CEA1E51AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90B66C57-F8D3-47E6-990D-BF66DAA9C5A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90B66C57-F8D3-47E6-990D-BF66DAA9C5A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90B66C57-F8D3-47E6-990D-BF66DAA9C5A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90B66C57-F8D3-47E6-990D-BF66DAA9C5A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
