@@ -20,7 +20,7 @@ namespace DotNetBungieAPI.Services.Default;
 internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpClient
 {
     private const string ApiKeyHeader = "X-API-Key";
-
+    
     private const string AuthorizationEndpoint = "https://www.bungie.net/en/oauth/authorize";
     private const string AuthorizationTokenEndpoint = "https://www.bungie.net/platform/app/oauth/token/";
     private const string PlatformEndpoint = "https://www.bungie.net/Platform";
@@ -48,8 +48,11 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         _serializer = serializer;
         _httpClient = httpClientConfiguration.HttpClient;
         _httpClient.DefaultRequestHeaders.Accept.Add(_jsonHeaderValue);
-        _httpClient.DefaultRequestHeaders.Add("User-Agent", "NetBungieApi Client");
-        _rateTimeLimiter = TimeLimiter.GetFromMaxCountByInterval(25, TimeSpan.FromSeconds(1));
+        _httpClient.DefaultRequestHeaders.Add("User-Agent", "DotNetBungieApi Client");
+        
+        _rateTimeLimiter = TimeLimiter.GetFromMaxCountByInterval(
+            httpClientConfiguration.RatelimitPerInterval, 
+            httpClientConfiguration.RatelimitInterval);
     }
 
     public async ValueTask<AuthorizationTokenData> GetAuthorizationToken(string code)

@@ -10,60 +10,62 @@ public interface IBungieApiAccess
     /// <summary>
     ///     Access to https://bungie.net/Platform/App endpoint
     /// </summary>
-    IAppMethodsAccess App { get; init; }
+    IAppMethodsAccess App { get; }
 
     /// <summary>
     ///     Access to https://bungie.net/Platform/User endpoint
     /// </summary>
-    IUserMethodsAccess User { get; init; }
+    IUserMethodsAccess User { get; }
 
     /// <summary>
     ///     Access to https://bungie.net/Platform/Content endpoint
     /// </summary>
-    IContentMethodsAccess Content { get; init; }
+    IContentMethodsAccess Content { get; }
 
     /// <summary>
     ///     Access to https://bungie.net/Platform/Forum endpoint
     /// </summary>
-    IForumMethodsAccess Forum { get; init; }
+    IForumMethodsAccess Forum { get; }
 
     /// <summary>
     ///     Access to https://bungie.net/Platform/GroupV2 endpoint
     /// </summary>
-    IGroupV2MethodsAccess GroupV2 { get; init; }
+    IGroupV2MethodsAccess GroupV2 { get; }
 
     /// <summary>
     ///     Access to https://bungie.net/Platform/Tokens endpoint
     /// </summary>
-    ITokenMethodsAccess Tokens { get; init; }
+    ITokenMethodsAccess Tokens { get; }
 
     /// <summary>
     ///     Access to https://bungie.net/Platform/Destiny2 endpoint
     /// </summary>
-    IDestiny2MethodsAccess Destiny2 { get; init; }
+    IDestiny2MethodsAccess Destiny2 { get; }
 
     /// <summary>
     ///     Access to https://bungie.net/Platform/CommunityContent endpoint
     /// </summary>
-    ICommunityContentMethodsAccess Community { get; init; }
+    ICommunityContentMethodsAccess Community { get; }
 
     /// <summary>
     ///     Access to https://bungie.net/Platform/Trending endpoint
     /// </summary>
-    ITrendingMethodsAccess Trending { get; init; }
+    ITrendingMethodsAccess Trending { get; }
 
     /// <summary>
     ///     Access to https://bungie.net/Platform/Fireteam endpoint
     /// </summary>
-    IFireteamMethodsAccess Fireteam { get; init; }
+    IFireteamMethodsAccess Fireteam { get; }
 
     /// <summary>
     ///     Access to https://bungie.net/Platform/Social endpoint
     /// </summary>
-    ISocialMethodsAccess Social { get; init; }
+    ISocialMethodsAccess Social { get; }
 
     /// <summary>
     ///     Access to unclassified endpoints
     /// </summary>
-    IMiscMethodsAccess Misc { get; init; }
+    IMiscMethodsAccess Misc { get; }
+    
+    IRenderApiAccess RenderApi { get; }
 }

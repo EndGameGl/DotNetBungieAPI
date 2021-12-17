@@ -39,6 +39,7 @@ public static class BungieApiBuilder
         serviceCollection.AddSingleton<ISocialMethodsAccess, SocialMethodsAccess>();
         serviceCollection.AddSingleton<ITrendingMethodsAccess, TrendingMethodsAccess>();
         serviceCollection.AddSingleton<IMiscMethodsAccess, MiscMethodsAccess>();
+        serviceCollection.AddSingleton<IRenderApiAccess, RenderApiAccess>();
 
         return serviceCollection.BuildServiceProvider().GetService<IBungieClient>();
     }

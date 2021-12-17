@@ -10,6 +10,7 @@ using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Config;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
+using DotNetBungieAPI.Models.Destiny.Rendering;
 using DotNetBungieAPI.Services.ApiAccess.Interfaces;
 using DotNetBungieAPI.Services.Default.ServiceConfigurations;
 using DotNetBungieAPI.Services.Interfaces;
@@ -21,8 +22,8 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
 {
     private const string SelectDefinitionQuery = "SELECT json FROM {0} WHERE id = {1}";
     private const string SelectHistoricalDefinitionQuery = "SELECT json FROM {0} WHERE key = '{1}'";
-
     private const string SelectAllDefinitionsQuery = "SELECT json FROM {0}";
+    private const string SelectDestinyGearAssetDefinition = "SELECT json FROM DestinyGearAssetsDefinition WHERE id = {0}";
 
     private const string ConnectionStringTemplate = "Data Source={0}; Version=3;";
     private readonly IDefinitionAssemblyData _assemblyData;
@@ -79,6 +80,8 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
         [BungieLocales.ZH_CHS] = new SQLiteConnection(),
         [BungieLocales.ZH_CHT] = new SQLiteConnection()
     };
+
+    private readonly SQLiteConnection _mobileGearAssetDataBaseConnection = new SQLiteConnection();
 
     public SqliteDefinitionProvider(
         DotNetBungieApiDefaultDefinitionProviderConfiguration configuration,
@@ -437,6 +440,22 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
         }
     }
 
+    public async ValueTask<DestinyGearAssetDefinition> GetGearAssetDefinition(uint itemHash)
+    {
+        var destinyGearAssetDefinitionFetchCommand = new SQLiteCommand
+        {
+            Connection = _mobileGearAssetDataBaseConnection,
+            CommandText = string.Format(SelectDestinyGearAssetDefinition, itemHash.ToInt32())
+        };
+        var reader = destinyGearAssetDefinitionFetchCommand.ExecuteReader();
+        if (reader.Read())
+            return await _serializer.DeserializeAsync<DestinyGearAssetDefinition>((byte[])reader[0]);
+        else
+        {
+            return null;
+        }
+    }
+
     public async Task DownloadManifestData(DestinyManifest manifestData)
     {
         var folderPath = $"{_configuration.ManifestFolderPath}\\{manifestData.Version}";
@@ -575,12 +594,32 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
         foreach (var (localeStr, path) in manifestData.MobileWorldContentPaths)
         {
             var locale = ParseLocaleFromString(localeStr);
-            var newPath =
-                $"{_configuration.ManifestFolderPath}\\{manifestData.Version}\\MobileWorldContent\\{localeStr}\\{Path.GetFileName(path)}";
+            
+            var newPath = Path.Combine(
+                _configuration.ManifestFolderPath,
+                manifestData.Version,
+                "MobileWorldContent",
+                localeStr,
+                Path.GetFileName(path));
+            
             _databasePaths[locale] = newPath;
             _sqliteConnections[locale].ConnectionString = string.Format(ConnectionStringTemplate, newPath);
             _sqliteConnections[locale].ParseViaFramework = true;
             _sqliteConnections[locale].Open();
+        }
+
+        var assetsEntry = _currentManifest.MobileGearAssetDataBases.FirstOrDefault(x => x.Version == 2);
+        if (assetsEntry is not null)
+        {
+            var mobileGearAssetDataBasePath = Path.Combine(
+                _configuration.ManifestFolderPath,
+                manifestData.Version,
+                "MobileGearAssetDataBases",
+                "2",
+                Path.GetFileName(assetsEntry.Path));
+            _mobileGearAssetDataBaseConnection.ConnectionString =
+                string.Format(ConnectionStringTemplate, mobileGearAssetDataBasePath);
+            _mobileGearAssetDataBaseConnection.Open();
         }
     }
 

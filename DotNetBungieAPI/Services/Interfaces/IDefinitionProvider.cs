@@ -3,6 +3,7 @@ using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Config;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
+using DotNetBungieAPI.Models.Destiny.Rendering;
 
 namespace DotNetBungieAPI.Services.Interfaces;
 
@@ -116,4 +117,6 @@ public interface IDefinitionProvider : IDisposable, IAsyncDisposable
     /// <param name="repository"></param>
     /// <returns></returns>
     Task ReadToRepository(IDestiny2DefinitionRepository repository);
+
+    ValueTask<DestinyGearAssetDefinition> GetGearAssetDefinition(uint itemHash);
 }
