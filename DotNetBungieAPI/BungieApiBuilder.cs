@@ -21,6 +21,33 @@ public static class BungieApiBuilder
         var configuration = new BungieClientConfiguration(serviceCollection);
         configure.Invoke(configuration);
 
+        RegisterServices(serviceCollection, configuration);
+
+        return serviceCollection.BuildServiceProvider().GetService<IBungieClient>();
+    }
+
+    /// <summary>
+    ///     Registers <see cref="IBungieClient" /> to specified <see cref="IServiceCollection" />
+    /// </summary>
+    /// <param name="serviceCollection"></param>
+    /// <param name="configure"></param>
+    /// <returns></returns>
+    public static IServiceCollection UseBungieApiClient(
+        this IServiceCollection serviceCollection,
+        Action<BungieClientConfiguration> configure)
+    {
+        var configuration = new BungieClientConfiguration(serviceCollection);
+        configure.Invoke(configuration);
+
+        RegisterServices(serviceCollection, configuration);
+
+        return serviceCollection;
+    }
+
+    private static void RegisterServices(
+        IServiceCollection serviceCollection,
+        BungieClientConfiguration configuration)
+    {
         serviceCollection.AddSingleton(configuration);
         serviceCollection.AddSingleton<IBungieClient, BungieClient>();
         serviceCollection.AddSingleton<IDefinitionAssemblyData, DefinitionAssemblyData>();
@@ -40,42 +67,5 @@ public static class BungieApiBuilder
         serviceCollection.AddSingleton<ITrendingMethodsAccess, TrendingMethodsAccess>();
         serviceCollection.AddSingleton<IMiscMethodsAccess, MiscMethodsAccess>();
         serviceCollection.AddSingleton<IRenderApiAccess, RenderApiAccess>();
-
-        return serviceCollection.BuildServiceProvider().GetService<IBungieClient>();
-    }
-
-    /// <summary>
-    ///     Registers <see cref="IBungieClient" /> to specified <see cref="IServiceCollection" />
-    /// </summary>
-    /// <param name="serviceCollection"></param>
-    /// <param name="configure"></param>
-    /// <returns></returns>
-    public static IServiceCollection UseBungieApiClient(
-        this IServiceCollection serviceCollection,
-        Action<BungieClientConfiguration> configure)
-    {
-        var configuration = new BungieClientConfiguration(serviceCollection);
-        configure.Invoke(configuration);
-
-        serviceCollection.AddSingleton(configuration);
-        serviceCollection.AddSingleton<IBungieClient, BungieClient>();
-        serviceCollection.AddSingleton<IDefinitionAssemblyData, DefinitionAssemblyData>();
-
-        serviceCollection.AddSingleton<IBungieApiAccess, BungieApiAccess>();
-
-        serviceCollection.AddSingleton<IFireteamMethodsAccess, FireteamMethodsAccess>();
-        serviceCollection.AddSingleton<IContentMethodsAccess, ContentMethodsAccess>();
-        serviceCollection.AddSingleton<IAppMethodsAccess, AppMethodsAccess>();
-        serviceCollection.AddSingleton<IForumMethodsAccess, ForumMethodsAccess>();
-        serviceCollection.AddSingleton<IGroupV2MethodsAccess, GroupV2MethodsAccess>();
-        serviceCollection.AddSingleton<IUserMethodsAccess, UserMethodsAccess>();
-        serviceCollection.AddSingleton<ITokenMethodsAccess, TokenMethodsAccess>();
-        serviceCollection.AddSingleton<IDestiny2MethodsAccess, Destiny2MethodsAccess>();
-        serviceCollection.AddSingleton<ICommunityContentMethodsAccess, CommunityContentMethodsAccess>();
-        serviceCollection.AddSingleton<ISocialMethodsAccess, SocialMethodsAccess>();
-        serviceCollection.AddSingleton<ITrendingMethodsAccess, TrendingMethodsAccess>();
-        serviceCollection.AddSingleton<IMiscMethodsAccess, MiscMethodsAccess>();
-
-        return serviceCollection;
     }
 }
