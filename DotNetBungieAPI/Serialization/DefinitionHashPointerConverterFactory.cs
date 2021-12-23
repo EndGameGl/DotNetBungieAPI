@@ -48,7 +48,9 @@ internal sealed class DefinitionHashPointerConverterFactory : JsonConverterFacto
     {
         public override bool HandleNull => true;
 
-        public override DefinitionHashPointer<T> Read(ref Utf8JsonReader reader, Type typeToConvert,
+        public override DefinitionHashPointer<T> Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
             JsonSerializerOptions options)
         {
             return reader.TokenType == JsonTokenType.Null
@@ -56,7 +58,9 @@ internal sealed class DefinitionHashPointerConverterFactory : JsonConverterFacto
                 : new DefinitionHashPointer<T>(reader.GetUInt32());
         }
 
-        public override void Write(Utf8JsonWriter writer, DefinitionHashPointer<T> value,
+        public override void Write(
+            Utf8JsonWriter writer,
+            DefinitionHashPointer<T> value,
             JsonSerializerOptions options)
         {
             JsonSerializer.Serialize(writer, value.Hash, options);

@@ -10,7 +10,7 @@
         <Copyright>Copyright (c) MeGl 2021</Copyright>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <PackageVersion>1.5.5</PackageVersion>
+        <PackageVersion>1.5.6</PackageVersion>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <TargetFrameworks>net5.0;net6.0</TargetFrameworks>

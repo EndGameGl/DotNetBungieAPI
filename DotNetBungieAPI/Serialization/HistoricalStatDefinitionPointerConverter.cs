@@ -7,14 +7,18 @@ internal sealed class HistoricalStatDefinitionPointerConverter : JsonConverter<H
 {
     public override bool HandleNull => true;
 
-    public override HistoricalStatDefinitionPointer? Read(ref Utf8JsonReader reader, Type typeToConvert,
+    public override HistoricalStatDefinitionPointer? Read(
+        ref Utf8JsonReader reader,
+        Type typeToConvert,
         JsonSerializerOptions options)
     {
         var statId = reader.GetString();
         return new HistoricalStatDefinitionPointer(statId);
     }
 
-    public override void Write(Utf8JsonWriter writer, HistoricalStatDefinitionPointer value,
+    public override void Write(
+        Utf8JsonWriter writer,
+        HistoricalStatDefinitionPointer value,
         JsonSerializerOptions options)
     {
         JsonSerializer.Serialize(writer, value.StatId, options);

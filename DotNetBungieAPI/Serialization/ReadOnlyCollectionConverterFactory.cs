@@ -38,7 +38,9 @@ internal sealed class ReadOnlyCollectionConverterFactory : JsonConverterFactory
 
         public override bool HandleNull => true;
 
-        public override ReadOnlyCollection<T> Read(ref Utf8JsonReader reader, Type typeToConvert,
+        public override ReadOnlyCollection<T> Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
             JsonSerializerOptions options)
         {
             if (reader.TokenType == JsonTokenType.Null)
@@ -55,7 +57,9 @@ internal sealed class ReadOnlyCollectionConverterFactory : JsonConverterFactory
             throw new JsonException();
         }
 
-        public override void Write(Utf8JsonWriter writer, ReadOnlyCollection<T> value,
+        public override void Write(
+            Utf8JsonWriter writer,
+            ReadOnlyCollection<T> value,
             JsonSerializerOptions options)
         {
             writer.WriteStartArray();

@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Threading.Tasks;
 using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Models.Destiny;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,11 +9,11 @@ namespace DotNetBungieAPI.Models;
 /// <summary>
 ///     Class that points to a certain definition in database
 /// </summary>
-/// <typeparam name="T">Destiny definition type</typeparam>
+/// <typeparam name="TDefinition">Destiny definition type</typeparam>
 [DebuggerDisplay("{DebuggerDisplay}")]
-public class DefinitionHashPointer<T> :
-    IDeepEquatable<DefinitionHashPointer<T>>,
-    IEquatable<DefinitionHashPointer<T>> where T : IDestinyDefinition
+public class DefinitionHashPointer<TDefinition> :
+    IDeepEquatable<DefinitionHashPointer<TDefinition>>,
+    IEquatable<DefinitionHashPointer<TDefinition>> where TDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     <inheritdoc>
@@ -25,7 +26,7 @@ public class DefinitionHashPointer<T> :
     ///     </inheritdoc>
     /// </param>
     /// <returns></returns>
-    public bool Equals(DefinitionHashPointer<T> other)
+    public bool Equals(DefinitionHashPointer<TDefinition> other)
     {
         return other is not null &&
                Hash == other.Hash;
@@ -44,7 +45,7 @@ public class DefinitionHashPointer<T> :
     /// <returns></returns>
     public override bool Equals(object obj)
     {
-        return obj is DefinitionHashPointer<T> objPointer &&
+        return obj is DefinitionHashPointer<TDefinition> objPointer &&
                Equals(objPointer);
     }
 
@@ -75,15 +76,15 @@ public class DefinitionHashPointer<T> :
     /// <summary>
     ///     Definition enum value
     /// </summary>
-    public static DefinitionsEnum EnumValue { get; } = Enum.Parse<DefinitionsEnum>(typeof(T).Name);
+    public static DefinitionsEnum EnumValue { get; } = Enum.Parse<DefinitionsEnum>(typeof(TDefinition).Name);
 
     /// <summary>
     ///     Empty pointer
     /// </summary>
-    public static DefinitionHashPointer<T> Empty { get; } = new(null);
+    public static DefinitionHashPointer<TDefinition> Empty { get; } = new(null);
 
     private bool _isMapped;
-    private T _value;
+    private TDefinition _value;
 
     /// <summary>
     ///     Definition hash, guaranteed to be unique across it's type.
@@ -136,7 +137,7 @@ public class DefinitionHashPointer<T> :
     /// </summary>
     /// <param name="definition">Found definition</param>
     /// <returns>True, if found, False otherwise</returns>
-    public bool TryGetDefinition(out T definition)
+    public bool TryGetDefinition(out TDefinition definition)
     {
         return TryGetDefinitionFromOtherLocale(Locale, out definition);
     }
@@ -147,7 +148,7 @@ public class DefinitionHashPointer<T> :
     /// <param name="locale"></param>
     /// <param name="definition"></param>
     /// <returns></returns>
-    public bool TryGetDefinitionFromOtherLocale(BungieLocales locale, out T definition)
+    public bool TryGetDefinitionFromOtherLocale(BungieLocales locale, out TDefinition definition)
     {
         definition = default;
         if (_isMapped)
@@ -167,6 +168,50 @@ public class DefinitionHashPointer<T> :
     }
 
     /// <summary>
+    ///     Returns a value if could be fetched or null if none was found
+    /// </summary>
+    /// <returns></returns>
+    public TDefinition GetValueOrNull()
+    {
+        return TryGetDefinition(out var definition) ? definition : default(TDefinition);
+    }
+
+    /// <summary>
+    ///     Returns a value from other locale if could be fetched or null if none was found
+    /// </summary>
+    /// <param name="locale"></param>
+    /// <returns></returns>
+    public TDefinition GetValueOrNullFromOtherLocale(BungieLocales locale)
+    {
+        return TryGetDefinitionFromOtherLocale(locale, out var definition) ? definition : default(TDefinition);
+    }
+
+    /// <summary>
+    ///     Returns a value async if could be fetched or null if none was found
+    /// </summary>
+    /// <returns></returns>
+    public async ValueTask<TDefinition> GetValueOrNullAsync()
+    {
+        TDefinition definition = default;
+        if (HasValidHash)
+            await _client.TryGetDefinitionAsync<TDefinition>(Hash.Value, Locale, def => definition = def);
+        return definition;
+    }
+
+    /// <summary>
+    ///     Returns a value from other locale async if could be fetched or null if none was found
+    /// </summary>
+    /// <param name="locale"></param>
+    /// <returns></returns>
+    public async ValueTask<TDefinition> GetValueOrNullFromOtherLocaleAsync(BungieLocales locale)
+    {
+        TDefinition definition = default;
+        if (HasValidHash)
+            await _client.TryGetDefinitionAsync<TDefinition>(Hash.Value, locale, def => definition = def);
+        return definition;
+    }
+
+    /// <summary>
     ///     Tries to map value from repository
     /// </summary>
     public void TryMapValue()
@@ -175,7 +220,7 @@ public class DefinitionHashPointer<T> :
             return;
         if (!HasValidHash)
             return;
-        if (!_client.TryGetDefinition<T>(
+        if (!_client.TryGetDefinition<TDefinition>(
                 Hash!.Value,
                 Locale,
                 out var definition))
@@ -186,11 +231,36 @@ public class DefinitionHashPointer<T> :
     }
 
     /// <summary>
+    ///     Gets underlying definition and checks whether this expression is True or False
+    /// </summary>
+    /// <param name="predicate">Condition to check for</param>
+    /// <returns></returns>
+    public bool Is(Func<TDefinition, bool> predicate)
+    {
+        if (_isMapped)
+            return predicate(_value);
+        return TryGetDefinition(out var definition) && predicate(definition);
+    }
+
+    /// <summary>
+    ///     Tries to execute expression and get value, returns null if nothing was found
+    /// </summary>
+    /// <param name="func">Method to execute</param>
+    /// <typeparam name="TValue">Return Type</typeparam>
+    /// <returns></returns>
+    public TValue Select<TValue>(Func<TDefinition, TValue> func)
+    {
+        if (_isMapped)
+            return func(_value);
+        return TryGetDefinition(out var definition) ? func(definition) : default(TValue);
+    }
+
+    /// <summary>
     ///     <inheritdoc cref="IDeepEquatable{T}.DeepEquals" />
     /// </summary>
     /// <param name="other"></param>
     /// <returns></returns>
-    public bool DeepEquals(DefinitionHashPointer<T> other)
+    public bool DeepEquals(DefinitionHashPointer<TDefinition> other)
     {
         return Hash == other.Hash &&
                DefinitionEnumType == other.DefinitionEnumType &&
@@ -203,7 +273,7 @@ public class DefinitionHashPointer<T> :
     /// <param name="a"></param>
     /// <param name="hash"></param>
     /// <returns></returns>
-    public static bool operator ==(DefinitionHashPointer<T> a, uint hash)
+    public static bool operator ==(DefinitionHashPointer<TDefinition> a, uint hash)
     {
         return a is not null && a.Hash == hash;
     }
@@ -214,14 +284,19 @@ public class DefinitionHashPointer<T> :
     /// <param name="a"></param>
     /// <param name="hash"></param>
     /// <returns></returns>
-    public static bool operator !=(DefinitionHashPointer<T> a, uint hash)
+    public static bool operator !=(DefinitionHashPointer<TDefinition> a, uint hash)
     {
         return !(a == hash);
     }
 
-    public static implicit operator DefinitionHashPointer<T>(uint hash)
+    /// <summary>
+    ///     Constructs <see cref="DefinitionHashPointer{T}"/> from hash
+    /// </summary>
+    /// <param name="hash">Definition hash</param>
+    /// <returns></returns>
+    public static implicit operator DefinitionHashPointer<TDefinition>(uint hash)
     {
-        return new(hash);
+        return new DefinitionHashPointer<TDefinition>(hash);
     }
 
     internal void SetLocale(BungieLocales locale)
