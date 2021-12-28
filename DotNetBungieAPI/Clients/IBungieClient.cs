@@ -27,7 +27,15 @@ public interface IBungieClient : IDisposable, IAsyncDisposable
     /// </summary>
     IAuthorizationHandler Authentication { get; }
 
+    /// <summary>
+    ///     Access to <see cref="IDefinitionProvider"/>, which helps to retrieve definitions from external source
+    /// </summary>
     IDefinitionProvider DefinitionProvider { get; }
+    
+    /// <summary>
+    ///     Access to service, which resolves when next Destiny 2 reset will occur
+    /// </summary>
+    IDestiny2ResetService ResetService { get; }
 
     /// <summary>
     ///     Creates a scoped user client, that doesn't need user to pass token manually

@@ -48,6 +48,21 @@ public static class BungieApiBuilder
         IServiceCollection serviceCollection,
         BungieClientConfiguration configuration)
     {
+        if (!configuration.LoggerConfigured)
+            configuration.UseDefaultLogger();
+        if (!configuration.RepositoryConfigured)
+            configuration.UseDefaultDefinitionRepository();
+        if (!configuration.SerializerConfigured)
+            configuration.UseDefaultBungieNetJsonSerializer();
+        if (!configuration.AuthHandlerConfigured)
+            configuration.UseDefaultAuthorizationHandler();
+        if (!configuration.DefinitionProviderConfigured)
+            configuration.UseDefaultDefinitionProvider();
+        if (!configuration.HttpClientConfigured)
+            configuration.UseDefaultHttpClient();
+        if (!configuration.ResetServiceConfigured)
+            configuration.UseDefaultDestiny2ResetService();
+
         serviceCollection.AddSingleton(configuration);
         serviceCollection.AddSingleton<IBungieClient, BungieClient>();
         serviceCollection.AddSingleton<IDefinitionAssemblyData, DefinitionAssemblyData>();

@@ -58,7 +58,7 @@ public class DefinitionHashPointer<TDefinition> :
         return Hash.HasValue ? Hash.Value.ToInt32() : 0;
     }
 #if DEBUG
-        private T debug_value_getter
+        private TDefinition DebugValueGetter
         {
             get
             {

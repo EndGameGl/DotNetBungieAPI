@@ -15,6 +15,7 @@ internal sealed class BungieClient : IBungieClient
 {
     private readonly BungieClientConfiguration _configuration;
     private readonly ILogger _logger;
+    private IDestiny2ResetService _resetService;
 
     public BungieClient(
         ILogger logger,
@@ -22,10 +23,12 @@ internal sealed class BungieClient : IBungieClient
         IAuthorizationHandler authorizationHandler,
         IDestiny2DefinitionRepository repository,
         IDefinitionProvider definitionProvider,
+        IDestiny2ResetService destiny2ResetService,
         BungieClientConfiguration configuration,
         IServiceProvider serviceProvider)
     {
         _logger = logger;
+        ResetService = destiny2ResetService;
         _configuration = configuration;
         Authentication = authorizationHandler;
         Repository = repository;
@@ -50,6 +53,8 @@ internal sealed class BungieClient : IBungieClient
     public IBungieApiAccess ApiAccess { get; }
 
     public IDefinitionProvider DefinitionProvider { get; }
+
+    public IDestiny2ResetService ResetService { get; }
 
     /// <summary>
     ///     <inheritdoc cref="IBungieClient.ScopeToUser" />
