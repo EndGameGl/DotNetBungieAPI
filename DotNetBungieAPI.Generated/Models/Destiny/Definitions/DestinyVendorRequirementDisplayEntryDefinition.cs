@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 
+/// <summary>
+///     The localized properties of the requirementsDisplay, allowing information about the requirement or item being featured to be seen.
+/// </summary>
 public sealed class DestinyVendorRequirementDisplayEntryDefinition
 {
 

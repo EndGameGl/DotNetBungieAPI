@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.Destiny.Misc;
 
+/// <summary>
+///     Represents a color whose RGBA values are all represented as values between 0 and 255.
+/// </summary>
 public sealed class DestinyColor
 {
 

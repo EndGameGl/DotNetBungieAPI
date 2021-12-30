@@ -11,6 +11,9 @@ public sealed class DestinyPostmasterTransferRequest
     [JsonPropertyName("stackSize")]
     public int StackSize { get; init; }
 
+    /// <summary>
+    ///     The instance ID of the item for this action request.
+    /// </summary>
     [JsonPropertyName("itemId")]
     public long ItemId { get; init; }
 

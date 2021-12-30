@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.Destiny;
 
+/// <summary>
+///     The results of a bulk Equipping operation performed through the Destiny API.
+/// </summary>
 public sealed class DestinyEquipItemResults
 {
 

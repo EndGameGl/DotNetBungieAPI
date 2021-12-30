@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.Destiny;
 
+/// <summary>
+///     At last, stats have categories. Use this for whatever purpose you might wish.
+/// </summary>
 public enum DestinyStatCategory : int
 {
     Gameplay = 0,

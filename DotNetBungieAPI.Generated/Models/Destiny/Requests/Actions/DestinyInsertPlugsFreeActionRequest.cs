@@ -5,9 +5,15 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Requests.Actions;
 public sealed class DestinyInsertPlugsFreeActionRequest
 {
 
+    /// <summary>
+    ///     The plugs being inserted.
+    /// </summary>
     [JsonPropertyName("plug")]
     public Destiny.Requests.Actions.DestinyInsertPlugsRequestEntry Plug { get; init; }
 
+    /// <summary>
+    ///     The instance ID of the item for this action request.
+    /// </summary>
     [JsonPropertyName("itemId")]
     public long ItemId { get; init; }
 

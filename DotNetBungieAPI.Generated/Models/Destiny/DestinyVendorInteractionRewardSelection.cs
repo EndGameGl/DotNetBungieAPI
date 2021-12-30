@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.Destiny;
 
+/// <summary>
+///     When a Vendor Interaction provides rewards, they'll either let you choose one or let you have all of them. This determines which it will be.
+/// </summary>
 public enum DestinyVendorInteractionRewardSelection : int
 {
     None = 0,

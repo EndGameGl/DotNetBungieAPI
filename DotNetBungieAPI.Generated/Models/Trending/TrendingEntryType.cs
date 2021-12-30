@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.Trending;
 
+/// <summary>
+///     The known entity types that you can have returned from Trending.
+/// </summary>
 public enum TrendingEntryType : int
 {
     News = 0,

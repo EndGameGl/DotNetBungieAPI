@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.Destiny;
 
+/// <summary>
+///     A flags enumeration/bitmask indicating the versions of the game that a given user has purchased.
+/// </summary>
 [System.Flags]
 public enum DestinyGameVersions : int
 {

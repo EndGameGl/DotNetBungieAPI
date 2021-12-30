@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats.Definitions;
 
+/// <summary>
+///     For historical reasons, this list will have both D1 and D2-relevant Activity Modes in it. Please don't take this to mean that some D1-only feature is coming back!
+/// </summary>
 public enum DestinyActivityModeType : int
 {
     None = 0,
@@ -14,6 +17,9 @@ public enum DestinyActivityModeType : int
     Reserved9 = 9,
     Control = 10,
     Reserved11 = 11,
+    /// <summary>
+    ///     Clash -> Destiny's name for Team Deathmatch. 4v4 combat, the team with the highest kills at the end of time wins.
+    /// </summary>
     Clash = 12,
     Reserved13 = 13,
     CrimsonDoubles = 15,

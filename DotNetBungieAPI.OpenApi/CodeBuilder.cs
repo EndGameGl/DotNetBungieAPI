@@ -96,6 +96,8 @@ public class CodeBuilder
 
             await streamWriter.WriteLineAsync();
 
+            await WriteComment(false, typeSchema.Description, streamWriter);
+
             switch (typeSchema)
             {
                 case { Type: "object" }:
@@ -106,6 +108,7 @@ public class CodeBuilder
                         foreach (var (propertyName, propertyDefinition) in typeSchema.Properties)
                         {
                             await streamWriter.WriteLineAsync();
+                            await WriteComment(true, propertyDefinition.Description, streamWriter);
                             await streamWriter.WriteLineAsync($"{Indent}[JsonPropertyName(\"{propertyName}\")]");
                             await streamWriter.WriteLineAsync(
                                 $"{Indent}public {propertyDefinition.GetCSharpType()} {char.ToUpper(propertyName[0])}{propertyName[1..]} {{ get; init; }}");
@@ -127,10 +130,12 @@ public class CodeBuilder
                         var current = typeSchema.EnumValues[i];
                         if (i == beforeTotal)
                         {
+                            await WriteComment(true, current.Description, streamWriter);
                             await streamWriter.WriteLineAsync($"{Indent}{current.Identifier} = {current.NumericValue}");
                         }
                         else
                         {
+                            await WriteComment(true, current.Description, streamWriter);
                             await streamWriter.WriteLineAsync(
                                 $"{Indent}{current.Identifier} = {current.NumericValue},");
                         }
@@ -139,6 +144,37 @@ public class CodeBuilder
                     await streamWriter.WriteLineAsync(CloseCurlyBrackets);
                     break;
             }
+        }
+    }
+
+    private async Task WriteComment(bool indent, string text, StreamWriter streamWriter)
+    {
+        if (!string.IsNullOrEmpty(text))
+        {
+            await streamWriter.WriteLineAsync($"{(indent ? Indent : string.Empty)}/// <summary>");
+            var entries = text.Split('\n');
+            if (entries.Length == 1)
+            {
+                await streamWriter.WriteLineAsync($"{(indent ? Indent : string.Empty)}///     {text}");
+            }
+            else
+            {
+                for (int i = 0; i < entries.Length; i++)
+                {
+                    var descLine = entries[i];
+                    if (i == entries.Length - 1)
+                    {
+                        await streamWriter.WriteLineAsync($"{(indent ? Indent : string.Empty)}///     {descLine}");
+                    }
+                    else
+                    {
+                        await streamWriter.WriteLineAsync($"{(indent ? Indent : string.Empty)}///     {descLine}");
+                        await streamWriter.WriteLineAsync($"{(indent ? Indent : string.Empty)}/// <para />");
+                    }
+                }
+            }
+
+            await streamWriter.WriteLineAsync($"{(indent ? Indent : string.Empty)}/// </summary>");
         }
     }
 }

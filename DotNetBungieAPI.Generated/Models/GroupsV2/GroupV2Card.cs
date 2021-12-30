@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
+/// <summary>
+///     A small infocard of group information, usually used for when a list of groups are returned
+/// </summary>
 public sealed class GroupV2Card
 {
 

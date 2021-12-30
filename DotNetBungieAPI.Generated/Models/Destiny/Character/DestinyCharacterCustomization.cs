@@ -2,6 +2,11 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.Destiny.Character;
 
+/// <summary>
+///     Raw data about the customization options chosen for a character's face and appearance.
+/// <para />
+///     You can look up the relevant class/race/gender combo in DestinyCharacterCustomizationOptionDefinition for the character, and then look up these values within the CustomizationOptions found to pull some data about their choices. Warning: not all of that data is meaningful. Some data has useful icons. Others have nothing, and are only meant for 3D rendering purposes (which we sadly do not expose yet)
+/// </summary>
 public sealed class DestinyCharacterCustomization
 {
 

@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.User;
 
+/// <summary>
+///     Localized text relevant to a given EMail setting in a given localization.
+/// </summary>
 public sealed class EMailSettingLocalization
 {
 

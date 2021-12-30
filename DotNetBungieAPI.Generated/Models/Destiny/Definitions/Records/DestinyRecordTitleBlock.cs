@@ -11,6 +11,9 @@ public sealed class DestinyRecordTitleBlock
     [JsonPropertyName("titlesByGender")]
     public Dictionary<Destiny.DestinyGender, string> TitlesByGender { get; init; }
 
+    /// <summary>
+    ///     For those who prefer to use the definitions.
+    /// </summary>
     [JsonPropertyName("titlesByGenderHash")]
     public Dictionary<uint, string> TitlesByGenderHash { get; init; }
 

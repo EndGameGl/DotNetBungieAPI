@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.Destiny;
 
+/// <summary>
+///     An enumeration representing the potential difficulty levels of an activity. Their names are... more qualitative than quantitative.
+/// </summary>
 public enum DestinyActivityDifficultyTier : int
 {
     Trivial = 0,

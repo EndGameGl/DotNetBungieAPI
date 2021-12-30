@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 
+/// <summary>
+///     This Block defines the rendering data associated with the item, if any.
+/// </summary>
 public sealed class DestinyItemTranslationBlockDefinition
 {
 

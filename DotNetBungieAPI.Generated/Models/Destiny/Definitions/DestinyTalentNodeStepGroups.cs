@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 
+/// <summary>
+///     These properties are an attempt to categorize talent node steps by certain common properties. See the related enumerations for the type of properties being categorized.
+/// </summary>
 public sealed class DestinyTalentNodeStepGroups
 {
 

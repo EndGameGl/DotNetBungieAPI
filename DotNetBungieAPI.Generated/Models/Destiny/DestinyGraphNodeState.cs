@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.Destiny;
 
+/// <summary>
+///     Represents a potential state of an Activity Graph node.
+/// </summary>
 public enum DestinyGraphNodeState : int
 {
     Hidden = 0,

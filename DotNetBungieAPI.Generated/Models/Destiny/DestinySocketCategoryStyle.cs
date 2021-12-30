@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.Destiny;
 
+/// <summary>
+///     Represents the possible and known UI styles used by the game for rendering Socket Categories.
+/// </summary>
 public enum DestinySocketCategoryStyle : int
 {
     Unknown = 0,

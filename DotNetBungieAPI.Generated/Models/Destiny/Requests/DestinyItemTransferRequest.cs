@@ -14,6 +14,9 @@ public sealed class DestinyItemTransferRequest
     [JsonPropertyName("transferToVault")]
     public bool TransferToVault { get; init; }
 
+    /// <summary>
+    ///     The instance ID of the item for this action request.
+    /// </summary>
     [JsonPropertyName("itemId")]
     public long ItemId { get; init; }
 

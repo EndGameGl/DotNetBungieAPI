@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
+/// <summary>
+///     The same as GroupV2ClanInfo, but includes any investment data.
+/// </summary>
 public sealed class GroupV2ClanInfoAndInvestment
 {
 

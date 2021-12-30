@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 
+/// <summary>
+///     Not terribly useful, some basic cooldown interaction info.
+/// </summary>
 public sealed class DestinyVendorSaleItemActionBlockDefinition
 {
 

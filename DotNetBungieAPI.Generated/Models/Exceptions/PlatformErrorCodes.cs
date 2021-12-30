@@ -18,6 +18,9 @@ public enum PlatformErrorCodes : int
     DataNotFound = 11,
     InsufficientPrivileges = 12,
     Duplicate = 13,
+    /// <summary>
+    ///     Deprecated, please do not check for this value anywhere.
+    /// </summary>
     UnknownSqlResult = 14,
     ValidationError = 15,
     ValidationMissingFieldError = 16,
@@ -510,6 +513,9 @@ public enum PlatformErrorCodes : int
     DestinyVersionIncompatibility = 1631,
     DestinyItemAlreadyInInventory = 1632,
     DestinyBucketNotFound = 1633,
+    /// <summary>
+    ///     Note: This is one of those holdovers from Destiny 1. We didn't change the enum because I am lazy, but in Destiny 2 this would read "DestinyCharacterNotInSocialSpace"
+    /// </summary>
     DestinyCharacterNotInTower = 1634,
     DestinyCharacterNotLoggedIn = 1635,
     DestinyDefinitionsNotLoaded = 1636,

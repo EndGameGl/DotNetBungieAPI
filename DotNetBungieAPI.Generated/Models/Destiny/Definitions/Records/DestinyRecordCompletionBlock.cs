@@ -5,6 +5,9 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Records;
 public sealed class DestinyRecordCompletionBlock
 {
 
+    /// <summary>
+    ///     The number of objectives that must be completed before the objective is considered "complete"
+    /// </summary>
     [JsonPropertyName("partialCompletionObjectiveCountThreshold")]
     public int PartialCompletionObjectiveCountThreshold { get; init; }
 

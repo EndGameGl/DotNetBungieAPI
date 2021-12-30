@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Director;
 
+/// <summary>
+///     When a Graph needs to show active Progressions, this defines those objectives as well as an identifier.
+/// </summary>
 public sealed class DestinyActivityGraphDisplayProgressionDefinition
 {
 
