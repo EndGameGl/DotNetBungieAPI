@@ -19,8 +19,8 @@ public sealed record DestinyActivityPlaylistItemDefinition : IDeepEquatable<Dest
     ///     If this playlist entry had an activity mode directly defined on it, this will be the that mode.
     /// </summary>
     [JsonPropertyName("directActivityModeHash")]
-    public DefinitionHashPointer<DestinyActivityDefinition> DirectActivityMode { get; init; } =
-        DefinitionHashPointer<DestinyActivityDefinition>.Empty;
+    public DefinitionHashPointer<DestinyActivityModeDefinition> DirectActivityMode { get; init; } =
+        DefinitionHashPointer<DestinyActivityModeDefinition>.Empty;
 
     /// <summary>
     ///     If the playlist entry had an activity mode directly defined on it, this will be the enum value of that mode.

@@ -80,6 +80,7 @@ public sealed record DestinyItemInventoryBlockDefinition : IDeepEquatable<Destin
     /// </summary>
     [JsonPropertyName("tierTypeHash")]
     public DefinitionHashPointer<DestinyItemTierTypeDefinition> TierType { get; init; }
+        = DefinitionHashPointer<DestinyItemTierTypeDefinition>.Empty;
 
     /// <summary>
     ///     The localized name of the tier type, which is a useful shortcut so you don't have to look up the definition every
