@@ -23,7 +23,6 @@ public sealed record DestinyCurrenciesComponent
     ///     re-create this list itself.
     /// </summary>
     [JsonPropertyName("itemQuantities")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, object>
-        ItemQuantities { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>, object>.Empty;
+    public ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, int> ItemQuantities { get; init; }
+        = ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>, int>.Empty;
 }

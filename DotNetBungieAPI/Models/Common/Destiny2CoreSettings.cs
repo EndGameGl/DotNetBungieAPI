@@ -1,9 +1,9 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.Artifacts;
-using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Progressions;
 using DotNetBungieAPI.Models.Destiny.Definitions.Seasons;
 using DotNetBungieAPI.Models.Destiny.Definitions.SocketTypes;
+using DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 
 namespace DotNetBungieAPI.Models.Common;
 
@@ -94,12 +94,16 @@ public sealed record Destiny2CoreSettings
     public BungieNetResource AmmoTypePrimaryIcon { get; init; }
 
     [JsonPropertyName("currentSeasonalArtifactHash")]
-    public DefinitionHashPointer<DestinyArtifactDefinition> CurrentSeasonalArtifact { get; init; } =
-        DefinitionHashPointer<DestinyArtifactDefinition>.Empty;
+    public DefinitionHashPointer<DestinyVendorDefinition> CurrentSeasonalArtifact { get; init; } =
+        DefinitionHashPointer<DestinyVendorDefinition>.Empty;
 
     [JsonPropertyName("currentSeasonHash")]
     public DefinitionHashPointer<DestinySeasonDefinition> СurrentSeason { get; init; } =
         DefinitionHashPointer<DestinySeasonDefinition>.Empty;
+    
+    [JsonPropertyName("seasonalChallengesPresentationNodeHash")]
+    public DefinitionHashPointer<DestinyPresentationNodeDefinition> SeasonalChallengesPresentationNode { get; init; } =
+        DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
 
     [JsonPropertyName("futureSeasonHashes")]
     public ReadOnlyCollection<DefinitionHashPointer<DestinySeasonDefinition>> FutureSeasons { get; init; } =
