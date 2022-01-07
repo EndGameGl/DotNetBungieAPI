@@ -12,7 +12,7 @@ public sealed class DestinyItemQuantity
     ///     The hash identifier for the item in question. Use it to look up the item's DestinyInventoryItemDefinition.
     /// </summary>
     [JsonPropertyName("itemHash")]
-    public uint ItemHash { get; init; }
+    public uint ItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     If this quantity is referring to a specific instance of an item, this will have the item's instance ID. Normally, this will be null.

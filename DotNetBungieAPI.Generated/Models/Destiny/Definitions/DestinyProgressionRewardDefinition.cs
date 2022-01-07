@@ -14,7 +14,7 @@ public sealed class DestinyProgressionRewardDefinition
     ///     The hash identifier of the DestinyProgressionMappingDefinition that contains the progressions for which experience should be applied.
     /// </summary>
     [JsonPropertyName("progressionMappingHash")]
-    public uint ProgressionMappingHash { get; init; }
+    public uint ProgressionMappingHash { get; init; } // DestinyProgressionMappingDefinition
 
     /// <summary>
     ///     The amount of experience to give to each of the mapped progressions.

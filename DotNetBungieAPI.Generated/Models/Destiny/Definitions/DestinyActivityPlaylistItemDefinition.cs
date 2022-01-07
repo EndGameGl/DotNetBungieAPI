@@ -12,13 +12,13 @@ public sealed class DestinyActivityPlaylistItemDefinition
     ///     The hash identifier of the Activity that can be played. Use it to look up the DestinyActivityDefinition.
     /// </summary>
     [JsonPropertyName("activityHash")]
-    public uint ActivityHash { get; init; }
+    public uint ActivityHash { get; init; } // DestinyActivityDefinition
 
     /// <summary>
     ///     If this playlist entry had an activity mode directly defined on it, this will be the hash of that mode.
     /// </summary>
     [JsonPropertyName("directActivityModeHash")]
-    public uint? DirectActivityModeHash { get; init; }
+    public uint? DirectActivityModeHash { get; init; } // DestinyActivityModeDefinition
 
     /// <summary>
     ///     If the playlist entry had an activity mode directly defined on it, this will be the enum value of that mode.
@@ -30,7 +30,7 @@ public sealed class DestinyActivityPlaylistItemDefinition
     ///     The hash identifiers for Activity Modes relevant to this entry.
     /// </summary>
     [JsonPropertyName("activityModeHashes")]
-    public List<uint> ActivityModeHashes { get; init; }
+    public List<uint> ActivityModeHashes { get; init; } // DestinyActivityModeDefinition
 
     /// <summary>
     ///     The activity modes - if any - in enum form. Because we can't seem to escape the enums.

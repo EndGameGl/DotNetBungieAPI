@@ -16,5 +16,5 @@ public sealed class DestinyItemStatsComponent
     ///     If the item has stats that it provides (damage, defense, etc...), it will be given here.
     /// </summary>
     [JsonPropertyName("stats")]
-    public Dictionary<uint, Destiny.DestinyStat> Stats { get; init; }
+    public Dictionary<uint, Destiny.DestinyStat> Stats { get; init; } // DestinyStatDefinition
 }

@@ -12,7 +12,7 @@ public sealed class DestinyVendorBaseComponent
     ///     The unique identifier for the vendor. Use it to look up their DestinyVendorDefinition.
     /// </summary>
     [JsonPropertyName("vendorHash")]
-    public uint VendorHash { get; init; }
+    public uint VendorHash { get; init; } // DestinyVendorDefinition
 
     /// <summary>
     ///     The date when this vendor's inventory will next rotate/refresh.

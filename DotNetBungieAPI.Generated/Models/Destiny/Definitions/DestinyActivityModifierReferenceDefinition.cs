@@ -14,5 +14,5 @@ public sealed class DestinyActivityModifierReferenceDefinition
     ///     The hash identifier for the DestinyActivityModifierDefinition referenced by this activity.
     /// </summary>
     [JsonPropertyName("activityModifierHash")]
-    public uint ActivityModifierHash { get; init; }
+    public uint ActivityModifierHash { get; init; } // DestinyActivityModifierDefinition
 }

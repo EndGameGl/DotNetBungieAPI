@@ -50,7 +50,7 @@ public sealed class DestinySandboxPerkDefinition
     ///     This is preferred over using the damageType enumeration value, which has been left purely because it is occasionally convenient.
     /// </summary>
     [JsonPropertyName("damageTypeHash")]
-    public uint? DamageTypeHash { get; init; }
+    public uint? DamageTypeHash { get; init; } // DestinyDamageTypeDefinition
 
     /// <summary>
     ///     An old holdover from the original Armory, this was an attempt to group perks by functionality.

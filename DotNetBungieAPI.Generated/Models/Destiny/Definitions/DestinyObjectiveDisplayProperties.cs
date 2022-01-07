@@ -9,7 +9,7 @@ public sealed class DestinyObjectiveDisplayProperties
     ///     The activity associated with this objective in the context of this item, if any.
     /// </summary>
     [JsonPropertyName("activityHash")]
-    public uint? ActivityHash { get; init; }
+    public uint? ActivityHash { get; init; } // DestinyActivityDefinition
 
     /// <summary>
     ///     If true, the game shows this objective on item preview screens.

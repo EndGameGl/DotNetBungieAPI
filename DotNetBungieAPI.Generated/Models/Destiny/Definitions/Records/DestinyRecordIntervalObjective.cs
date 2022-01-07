@@ -6,7 +6,7 @@ public sealed class DestinyRecordIntervalObjective
 {
 
     [JsonPropertyName("intervalObjectiveHash")]
-    public uint IntervalObjectiveHash { get; init; }
+    public uint IntervalObjectiveHash { get; init; } // DestinyObjectiveDefinition
 
     [JsonPropertyName("intervalScoreValue")]
     public int IntervalScoreValue { get; init; }

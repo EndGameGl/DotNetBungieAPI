@@ -24,7 +24,7 @@ public sealed class DestinyProgressionLevelRequirementDefinition
     ///     Look up the DestinyProgressionDefinition with this hash for more information about the progression in question.
     /// </summary>
     [JsonPropertyName("progressionHash")]
-    public uint ProgressionHash { get; init; }
+    public uint ProgressionHash { get; init; } // DestinyProgressionDefinition
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

@@ -20,7 +20,7 @@ public sealed class DestinyItemPlugComponent
     ///     The hash identifier of the DestinyInventoryItemDefinition that represents this plug.
     /// </summary>
     [JsonPropertyName("plugItemHash")]
-    public uint PlugItemHash { get; init; }
+    public uint PlugItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     If true, this plug has met all of its insertion requirements. Big if true.

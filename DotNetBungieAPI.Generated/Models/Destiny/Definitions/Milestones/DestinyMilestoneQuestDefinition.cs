@@ -12,7 +12,7 @@ public sealed class DestinyMilestoneQuestDefinition
     ///     The item representing this Milestone quest. Use this hash to look up the DestinyInventoryItemDefinition for the quest to find its steps and human readable data.
     /// </summary>
     [JsonPropertyName("questItemHash")]
-    public uint QuestItemHash { get; init; }
+    public uint QuestItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     The individual quests may have different definitions from the overall milestone: if there's a specific active quest, use these displayProperties instead of that of the overall DestinyMilestoneDefinition.
@@ -36,11 +36,11 @@ public sealed class DestinyMilestoneQuestDefinition
     ///     The full set of all possible "conceptual activities" that are related to this Milestone. Tiers or alternative modes of play within these conceptual activities will be defined as sub-entities. Keyed by the Conceptual Activity Hash. Use the key to look up DestinyActivityDefinition.
     /// </summary>
     [JsonPropertyName("activities")]
-    public Dictionary<uint, Destiny.Definitions.Milestones.DestinyMilestoneActivityDefinition> Activities { get; init; }
+    public Dictionary<uint, Destiny.Definitions.Milestones.DestinyMilestoneActivityDefinition> Activities { get; init; } // DestinyActivityDefinition
 
     /// <summary>
     ///     Sometimes, a Milestone's quest is related to an entire Destination rather than a specific activity. In that situation, this will be the hash of that Destination. Hotspots are currently the only Milestones that expose this data, but that does not preclude this data from being returned for other Milestones in the future.
     /// </summary>
     [JsonPropertyName("destinationHash")]
-    public uint? DestinationHash { get; init; }
+    public uint? DestinationHash { get; init; } // DestinyDestinationDefinition
 }

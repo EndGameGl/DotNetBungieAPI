@@ -12,7 +12,7 @@ public sealed class DestinyProgression
     ///     The hash identifier of the Progression in question. Use it to look up the DestinyProgressionDefinition in static data.
     /// </summary>
     [JsonPropertyName("progressionHash")]
-    public uint ProgressionHash { get; init; }
+    public uint ProgressionHash { get; init; } // DestinyProgressionDefinition
 
     /// <summary>
     ///     The amount of progress earned today for this progression.

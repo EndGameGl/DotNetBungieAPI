@@ -18,5 +18,5 @@ public sealed class DestinyItemSetBlockEntryDefinition
     ///     This is the hash identifier for a DestinyInventoryItemDefinition representing this quest step.
     /// </summary>
     [JsonPropertyName("itemHash")]
-    public uint ItemHash { get; init; }
+    public uint ItemHash { get; init; } // DestinyInventoryItemDefinition
 }

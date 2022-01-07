@@ -18,5 +18,5 @@ public sealed class DestinyActivityGraphNodeActivityDefinition
     ///     The activity that will be activated if the user clicks on this node. Controls all activity-related information displayed on the node if it is active (the text shown in the tooltip etc)
     /// </summary>
     [JsonPropertyName("activityHash")]
-    public uint ActivityHash { get; init; }
+    public uint ActivityHash { get; init; } // DestinyActivityDefinition
 }

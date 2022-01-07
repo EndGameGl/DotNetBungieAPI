@@ -22,7 +22,7 @@ public sealed class DestinyVendorSaleItemComponent
     ///     Prefer using failureIndexes instead. These are provided for informational purposes, but have largely been supplanted by failureIndexes.
     /// </summary>
     [JsonPropertyName("requiredUnlocks")]
-    public List<uint> RequiredUnlocks { get; init; }
+    public List<uint> RequiredUnlocks { get; init; } // DestinyUnlockDefinition
 
     /// <summary>
     ///     If any complex unlock states are checked in determining purchasability, these will be returned here along with the status of the unlock check.
@@ -66,7 +66,7 @@ public sealed class DestinyVendorSaleItemComponent
     ///     The hash of the item being sold, as a quick shortcut for looking up the DestinyInventoryItemDefinition of the sale item.
     /// </summary>
     [JsonPropertyName("itemHash")]
-    public uint ItemHash { get; init; }
+    public uint ItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     If populated, this is the hash of the item whose icon (and other secondary styles, but *not* the human readable strings) should override whatever icons/styles are on the item being sold.
@@ -74,7 +74,7 @@ public sealed class DestinyVendorSaleItemComponent
     ///     If you don't do this, certain items whose styles are being overridden by socketed items - such as the "Recycle Shader" item - would show whatever their default icon/style is, and it wouldn't be pretty or look accurate.
     /// </summary>
     [JsonPropertyName("overrideStyleItemHash")]
-    public uint? OverrideStyleItemHash { get; init; }
+    public uint? OverrideStyleItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     How much of the item you'll be getting.

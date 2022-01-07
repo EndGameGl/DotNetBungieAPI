@@ -18,7 +18,7 @@ public sealed class DestinyItemPerkEntryDefinition
     ///     A hash identifier for the DestinySandboxPerkDefinition being provided on the item.
     /// </summary>
     [JsonPropertyName("perkHash")]
-    public uint PerkHash { get; init; }
+    public uint PerkHash { get; init; } // DestinySandboxPerkDefinition
 
     /// <summary>
     ///     Indicates whether this perk should be shown, or if it should be shown disabled.

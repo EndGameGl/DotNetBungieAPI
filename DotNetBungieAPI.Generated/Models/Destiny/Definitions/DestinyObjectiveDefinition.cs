@@ -42,7 +42,7 @@ public sealed class DestinyObjectiveDefinition
     ///     OPTIONAL: a hash identifier for the location at which this objective must be accomplished, if there is a location defined. Look up the DestinyLocationDefinition for this hash for that additional location info.
     /// </summary>
     [JsonPropertyName("locationHash")]
-    public uint LocationHash { get; init; }
+    public uint LocationHash { get; init; } // DestinyLocationDefinition
 
     /// <summary>
     ///     If true, the value is allowed to go negative.

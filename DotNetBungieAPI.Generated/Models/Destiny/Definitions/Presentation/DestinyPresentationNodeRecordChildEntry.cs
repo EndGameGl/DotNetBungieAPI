@@ -6,5 +6,5 @@ public sealed class DestinyPresentationNodeRecordChildEntry
 {
 
     [JsonPropertyName("recordHash")]
-    public uint RecordHash { get; init; }
+    public uint RecordHash { get; init; } // DestinyRecordDefinition
 }

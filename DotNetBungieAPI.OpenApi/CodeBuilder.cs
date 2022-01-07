@@ -110,8 +110,12 @@ public class CodeBuilder
                             await streamWriter.WriteLineAsync();
                             await WriteComment(true, propertyDefinition.Description, streamWriter);
                             await streamWriter.WriteLineAsync($"{Indent}[JsonPropertyName(\"{propertyName}\")]");
-                            await streamWriter.WriteLineAsync(
-                                $"{Indent}public {propertyDefinition.GetCSharpType()} {char.ToUpper(propertyName[0])}{propertyName[1..]} {{ get; init; }}");
+                            await streamWriter.WriteAsync($"{Indent}public {propertyDefinition.GetCSharpType()} {char.ToUpper(propertyName[0])}{propertyName[1..]} {{ get; init; }}");
+                            if (propertyDefinition.MappedDefinition is not null)
+                            {
+                                await streamWriter.WriteAsync($" // {propertyDefinition.MappedDefinition.TypeReference.GetTypeName()}");
+                            }
+                            await streamWriter.WriteLineAsync();
                         }
                     }
 

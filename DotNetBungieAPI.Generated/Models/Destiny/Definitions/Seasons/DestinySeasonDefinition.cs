@@ -24,19 +24,19 @@ public sealed class DestinySeasonDefinition
     public DateTime? EndDate { get; init; }
 
     [JsonPropertyName("seasonPassHash")]
-    public uint? SeasonPassHash { get; init; }
+    public uint? SeasonPassHash { get; init; } // DestinySeasonPassDefinition
 
     [JsonPropertyName("seasonPassProgressionHash")]
-    public uint? SeasonPassProgressionHash { get; init; }
+    public uint? SeasonPassProgressionHash { get; init; } // DestinyProgressionDefinition
 
     [JsonPropertyName("artifactItemHash")]
-    public uint? ArtifactItemHash { get; init; }
+    public uint? ArtifactItemHash { get; init; } // DestinyInventoryItemDefinition
 
     [JsonPropertyName("sealPresentationNodeHash")]
-    public uint? SealPresentationNodeHash { get; init; }
+    public uint? SealPresentationNodeHash { get; init; } // DestinyPresentationNodeDefinition
 
     [JsonPropertyName("seasonalChallengesPresentationNodeHash")]
-    public uint? SeasonalChallengesPresentationNodeHash { get; init; }
+    public uint? SeasonalChallengesPresentationNodeHash { get; init; } // DestinyPresentationNodeDefinition
 
     /// <summary>
     ///     Optional - Defines the promotional text, images, and links to preview this season.

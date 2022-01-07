@@ -6,7 +6,7 @@ public sealed class DestinyArtifactCharacterScoped
 {
 
     [JsonPropertyName("artifactHash")]
-    public uint ArtifactHash { get; init; }
+    public uint ArtifactHash { get; init; } // DestinyArtifactDefinition
 
     [JsonPropertyName("pointsUsed")]
     public int PointsUsed { get; init; }

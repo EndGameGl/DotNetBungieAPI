@@ -50,5 +50,5 @@ public sealed class DestinyItemSourceDefinition
     ///     The DestinyRewardSourceDefinitions found that can spawn the item at this level.
     /// </summary>
     [JsonPropertyName("sourceHashes")]
-    public List<uint> SourceHashes { get; init; }
+    public List<uint> SourceHashes { get; init; } // DestinyRewardSourceDefinition
 }

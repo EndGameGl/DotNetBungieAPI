@@ -14,7 +14,7 @@ public sealed class DestinyMilestoneQuestRewardItem
     ///     The quest reward item *may* be associated with a vendor. If so, this is that vendor. Use this hash to look up the DestinyVendorDefinition.
     /// </summary>
     [JsonPropertyName("vendorHash")]
-    public uint? VendorHash { get; init; }
+    public uint? VendorHash { get; init; } // DestinyVendorDefinition
 
     /// <summary>
     ///     The quest reward item *may* be associated with a vendor. If so, this is the index of the item being sold, which we can use at runtime to find instanced item information for the reward item.
@@ -26,7 +26,7 @@ public sealed class DestinyMilestoneQuestRewardItem
     ///     The hash identifier for the item in question. Use it to look up the item's DestinyInventoryItemDefinition.
     /// </summary>
     [JsonPropertyName("itemHash")]
-    public uint ItemHash { get; init; }
+    public uint ItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     If this quantity is referring to a specific instance of an item, this will have the item's instance ID. Normally, this will be null.

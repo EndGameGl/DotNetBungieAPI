@@ -1,27 +1,26 @@
 using System.Text.Json.Serialization;
 
-namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Presentation;
+namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 
 /// <summary>
-///     This is the base class for all presentation system children. Presentation Nodes, Records, Collectibles, and Metrics.
+///     An artificial construct of our own creation, to try and put some order on top of Medals and keep them from being one giant, unmanageable and unsorted blob of stats.
+/// <para />
+///     Unfortunately, we haven't had time to do this evaluation yet in Destiny 2, so we're short on Medal Tiers. This will hopefully be updated over time, if Medals continue to exist.
 /// </summary>
-public sealed class DestinyPresentationNodeBaseDefinition
+public sealed class DestinyMedalTierDefinition
 {
 
-    [JsonPropertyName("presentationNodeType")]
-    public Destiny.DestinyPresentationNodeType PresentationNodeType { get; init; }
-
-    [JsonPropertyName("traitIds")]
-    public List<string> TraitIds { get; init; }
-
-    [JsonPropertyName("traitHashes")]
-    public List<uint> TraitHashes { get; init; } // DestinyTraitDefinition
+    /// <summary>
+    ///     The name of the tier.
+    /// </summary>
+    [JsonPropertyName("tierName")]
+    public string TierName { get; init; }
 
     /// <summary>
-    ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under multiple parents.
+    ///     If you're rendering medals by tier, render them in this order (ascending)
     /// </summary>
-    [JsonPropertyName("parentNodeHashes")]
-    public List<uint> ParentNodeHashes { get; init; } // DestinyPresentationNodeDefinition
+    [JsonPropertyName("order")]
+    public int Order { get; init; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

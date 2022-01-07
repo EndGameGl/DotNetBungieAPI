@@ -16,7 +16,7 @@ public sealed class DestinyProfileProgressionComponent
     ///     For each checklist returned, its value is itself a Dictionary keyed by the checklist's hash identifier with the value being a boolean indicating if it's been discovered yet.
     /// </summary>
     [JsonPropertyName("checklists")]
-    public Dictionary<uint, Dictionary<uint, bool>> Checklists { get; init; }
+    public Dictionary<uint, Dictionary<uint, bool>> Checklists { get; init; } // DestinyChecklistDefinition
 
     /// <summary>
     ///     Data related to your progress on the current season's artifact that is the same across characters.

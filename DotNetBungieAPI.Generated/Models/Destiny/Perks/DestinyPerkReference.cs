@@ -14,7 +14,7 @@ public sealed class DestinyPerkReference
     ///     The hash identifier for the perk, which can be used to look up DestinySandboxPerkDefinition if it exists. Be warned, perks frequently do not have user-viewable information. You should examine whether you actually found a name/description in the perk's definition before you show it to the user.
     /// </summary>
     [JsonPropertyName("perkHash")]
-    public uint PerkHash { get; init; }
+    public uint PerkHash { get; init; } // DestinySandboxPerkDefinition
 
     /// <summary>
     ///     The icon for the perk.

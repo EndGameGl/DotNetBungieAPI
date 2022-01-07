@@ -23,7 +23,7 @@ public sealed class DestinyInventoryItemDefinition
     ///     If this item has a collectible related to it, this is the hash identifier of that collectible entry.
     /// </summary>
     [JsonPropertyName("collectibleHash")]
-    public uint? CollectibleHash { get; init; }
+    public uint? CollectibleHash { get; init; } // DestinyCollectibleDefinition
 
     /// <summary>
     ///     If available, this is the original 'active' release watermark overlay for the icon. If the item has different versions, this can be overridden by the 'display version watermark icon' from the 'quality' block. Alternatively, if there is no watermark for the version, and the item version has a power cap below the current season power cap, this can be overridden by the iconWatermarkShelved property.
@@ -230,7 +230,7 @@ public sealed class DestinyInventoryItemDefinition
     ///     If the item has any related Lore (DestinyLoreDefinition), this will be the hash identifier you can use to look up the lore definition.
     /// </summary>
     [JsonPropertyName("loreHash")]
-    public uint? LoreHash { get; init; }
+    public uint? LoreHash { get; init; } // DestinyLoreDefinition
 
     /// <summary>
     ///     There are times when the game will show you a "summary/vague" version of an item - such as a description of its type represented as a DestinyInventoryItemDefinition - rather than display the item itself.
@@ -238,7 +238,7 @@ public sealed class DestinyInventoryItemDefinition
     ///     This happens sometimes when summarizing possible rewards in a tooltip. This is the item displayed instead, if it exists.
     /// </summary>
     [JsonPropertyName("summaryItemHash")]
-    public uint? SummaryItemHash { get; init; }
+    public uint? SummaryItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     If any animations were extracted from game content for this item, these will be the definitions of those animations.
@@ -282,7 +282,7 @@ public sealed class DestinyInventoryItemDefinition
     ///     The algorithm for these is, unfortunately, volatile. If you believe you see a miscategorized item, please let us know on the Bungie API forums.
     /// </summary>
     [JsonPropertyName("itemCategoryHashes")]
-    public List<uint> ItemCategoryHashes { get; init; }
+    public List<uint> ItemCategoryHashes { get; init; } // DestinyItemCategoryDefinition
 
     /// <summary>
     ///     In Destiny 1, we identified some items as having particular categories that we'd like to know about for various internal logic purposes. These are defined in SpecialItemType, and while these days the itemCategoryHashes are the preferred way of identifying types, we have retained this enum for its convenience.
@@ -324,7 +324,7 @@ public sealed class DestinyInventoryItemDefinition
     ///     Since we also have a breaker type definition, this is the hash for that breaker type for your convenience. Whether you use the enum or hash and look up the definition depends on what's cleanest for your code.
     /// </summary>
     [JsonPropertyName("breakerTypeHash")]
-    public uint? BreakerTypeHash { get; init; }
+    public uint? BreakerTypeHash { get; init; } // DestinyBreakerTypeDefinition
 
     /// <summary>
     ///     If true, then you will be allowed to equip the item if you pass its other requirements.
@@ -338,7 +338,7 @@ public sealed class DestinyInventoryItemDefinition
     ///     Theoretically, an item can have many possible damage types. In *practice*, this is not true, but just in case weapons start being made that have multiple (for instance, an item where a socket has reusable plugs for every possible damage type that you can choose from freely), this field will return all of the possible damage types that are available to the weapon by default.
     /// </summary>
     [JsonPropertyName("damageTypeHashes")]
-    public List<uint> DamageTypeHashes { get; init; }
+    public List<uint> DamageTypeHashes { get; init; } // DestinyDamageTypeDefinition
 
     /// <summary>
     ///     This is the list of all damage types that we know ahead of time the item can take on. Unfortunately, this does not preclude the possibility of something funky happening to give the item a damage type that cannot be predicted beforehand: for example, if some designer decides to create arbitrary non-reusable plugs that cause damage type to change.
@@ -368,13 +368,13 @@ public sealed class DestinyInventoryItemDefinition
     ///     I will likely regret leaving in the enumeration versions of these properties, but for now they're very convenient.
     /// </summary>
     [JsonPropertyName("defaultDamageTypeHash")]
-    public uint? DefaultDamageTypeHash { get; init; }
+    public uint? DefaultDamageTypeHash { get; init; } // DestinyDamageTypeDefinition
 
     /// <summary>
     ///     If this item is related directly to a Season of Destiny, this is the hash identifier for that season.
     /// </summary>
     [JsonPropertyName("seasonHash")]
-    public uint? SeasonHash { get; init; }
+    public uint? SeasonHash { get; init; } // DestinySeasonDefinition
 
     /// <summary>
     ///     If true, this is a dummy vendor-wrapped item template. Items purchased from Eververse will be "wrapped" by one of these items so that we can safely provide refund capabilities before the item is "unwrapped".

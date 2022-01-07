@@ -11,7 +11,7 @@ public sealed class DestinyArtifactProfileScoped
 {
 
     [JsonPropertyName("artifactHash")]
-    public uint ArtifactHash { get; init; }
+    public uint ArtifactHash { get; init; } // DestinyArtifactDefinition
 
     [JsonPropertyName("pointProgression")]
     public Destiny.DestinyProgression PointProgression { get; init; }

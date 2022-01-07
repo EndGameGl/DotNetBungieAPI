@@ -6,8 +6,8 @@ public sealed class DestinyCollectibleAcquisitionBlock
 {
 
     [JsonPropertyName("acquireMaterialRequirementHash")]
-    public uint? AcquireMaterialRequirementHash { get; init; }
+    public uint? AcquireMaterialRequirementHash { get; init; } // DestinyMaterialRequirementSetDefinition
 
     [JsonPropertyName("acquireTimestampUnlockValueHash")]
-    public uint? AcquireTimestampUnlockValueHash { get; init; }
+    public uint? AcquireTimestampUnlockValueHash { get; init; } // DestinyUnlockValueDefinition
 }

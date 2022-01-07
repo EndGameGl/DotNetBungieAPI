@@ -34,7 +34,7 @@ public sealed class DestinyCollectibleDefinition
     public uint? SourceHash { get; init; }
 
     [JsonPropertyName("itemHash")]
-    public uint ItemHash { get; init; }
+    public uint ItemHash { get; init; } // DestinyInventoryItemDefinition
 
     [JsonPropertyName("acquisitionInfo")]
     public Destiny.Definitions.Collectibles.DestinyCollectibleAcquisitionBlock AcquisitionInfo { get; init; }
@@ -52,13 +52,13 @@ public sealed class DestinyCollectibleDefinition
     public List<string> TraitIds { get; init; }
 
     [JsonPropertyName("traitHashes")]
-    public List<uint> TraitHashes { get; init; }
+    public List<uint> TraitHashes { get; init; } // DestinyTraitDefinition
 
     /// <summary>
     ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under multiple parents.
     /// </summary>
     [JsonPropertyName("parentNodeHashes")]
-    public List<uint> ParentNodeHashes { get; init; }
+    public List<uint> ParentNodeHashes { get; init; } // DestinyPresentationNodeDefinition
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

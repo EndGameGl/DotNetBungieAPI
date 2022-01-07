@@ -12,7 +12,7 @@ public sealed class DestinyItemSourceBlockDefinition
     ///     The list of hash identifiers for Reward Sources that hint where the item can be found (DestinyRewardSourceDefinition).
     /// </summary>
     [JsonPropertyName("sourceHashes")]
-    public List<uint> SourceHashes { get; init; }
+    public List<uint> SourceHashes { get; init; } // DestinyRewardSourceDefinition
 
     /// <summary>
     ///     A collection of details about the stats that were computed for the ways we found that the item could be spawned.

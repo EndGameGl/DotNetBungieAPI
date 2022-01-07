@@ -15,5 +15,5 @@ public sealed class DestinyItemSocketEntryPlugItemRandomizedDefinition
     ///     The hash identifier of a DestinyInventoryItemDefinition representing the plug that can be inserted.
     /// </summary>
     [JsonPropertyName("plugItemHash")]
-    public uint PlugItemHash { get; init; }
+    public uint PlugItemHash { get; init; } // DestinyInventoryItemDefinition
 }

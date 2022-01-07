@@ -9,7 +9,7 @@ public sealed class DestinyProfileCollectiblesComponent
     ///     The list of collectibles determined by the game as having been "recently" acquired.
     /// </summary>
     [JsonPropertyName("recentCollectibleHashes")]
-    public List<uint> RecentCollectibleHashes { get; init; }
+    public List<uint> RecentCollectibleHashes { get; init; } // DestinyCollectibleDefinition
 
     /// <summary>
     ///     The list of collectibles determined by the game as having been "recently" acquired.
@@ -17,20 +17,20 @@ public sealed class DestinyProfileCollectiblesComponent
     ///     The game client itself actually controls this data, so I personally question whether anyone will get much use out of this: because we can't edit this value through the API. But in case anyone finds it useful, here it is.
     /// </summary>
     [JsonPropertyName("newnessFlaggedCollectibleHashes")]
-    public List<uint> NewnessFlaggedCollectibleHashes { get; init; }
+    public List<uint> NewnessFlaggedCollectibleHashes { get; init; } // DestinyCollectibleDefinition
 
     [JsonPropertyName("collectibles")]
-    public Dictionary<uint, Destiny.Components.Collectibles.DestinyCollectibleComponent> Collectibles { get; init; }
+    public Dictionary<uint, Destiny.Components.Collectibles.DestinyCollectibleComponent> Collectibles { get; init; } // DestinyCollectibleDefinition
 
     /// <summary>
     ///     The hash for the root presentation node definition of Collection categories.
     /// </summary>
     [JsonPropertyName("collectionCategoriesRootNodeHash")]
-    public uint CollectionCategoriesRootNodeHash { get; init; }
+    public uint CollectionCategoriesRootNodeHash { get; init; } // DestinyPresentationNodeDefinition
 
     /// <summary>
     ///     The hash for the root presentation node definition of Collection Badges.
     /// </summary>
     [JsonPropertyName("collectionBadgesRootNodeHash")]
-    public uint CollectionBadgesRootNodeHash { get; init; }
+    public uint CollectionBadgesRootNodeHash { get; init; } // DestinyPresentationNodeDefinition
 }

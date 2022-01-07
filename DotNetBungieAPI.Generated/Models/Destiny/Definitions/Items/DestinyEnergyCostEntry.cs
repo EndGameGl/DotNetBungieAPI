@@ -18,7 +18,7 @@ public sealed class DestinyEnergyCostEntry
     ///     The type of energy that this plug costs, as a reference to the DestinyEnergyTypeDefinition of the energy type.
     /// </summary>
     [JsonPropertyName("energyTypeHash")]
-    public uint EnergyTypeHash { get; init; }
+    public uint EnergyTypeHash { get; init; } // DestinyEnergyTypeDefinition
 
     /// <summary>
     ///     The type of energy that this plug costs, in enum form.

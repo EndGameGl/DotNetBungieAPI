@@ -12,7 +12,7 @@ public sealed class DestinyTraitDefinition
     public string TraitCategoryId { get; init; }
 
     [JsonPropertyName("traitCategoryHash")]
-    public uint TraitCategoryHash { get; init; }
+    public uint TraitCategoryHash { get; init; } // DestinyTraitCategoryDefinition
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

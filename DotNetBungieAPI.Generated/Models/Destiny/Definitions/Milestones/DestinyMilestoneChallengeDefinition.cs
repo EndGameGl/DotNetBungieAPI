@@ -9,5 +9,5 @@ public sealed class DestinyMilestoneChallengeDefinition
     ///     The challenge related to this milestone.
     /// </summary>
     [JsonPropertyName("challengeObjectiveHash")]
-    public uint ChallengeObjectiveHash { get; init; }
+    public uint ChallengeObjectiveHash { get; init; } // DestinyObjectiveDefinition
 }

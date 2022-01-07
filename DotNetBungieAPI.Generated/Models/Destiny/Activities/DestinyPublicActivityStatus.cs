@@ -12,13 +12,13 @@ public sealed class DestinyPublicActivityStatus
     ///     Active Challenges for the activity, if any - represented as hashes for DestinyObjectiveDefinitions.
     /// </summary>
     [JsonPropertyName("challengeObjectiveHashes")]
-    public List<uint> ChallengeObjectiveHashes { get; init; }
+    public List<uint> ChallengeObjectiveHashes { get; init; } // DestinyObjectiveDefinition
 
     /// <summary>
     ///     The active modifiers on this activity, if any - represented as hashes for DestinyActivityModifierDefinitions.
     /// </summary>
     [JsonPropertyName("modifierHashes")]
-    public List<uint> ModifierHashes { get; init; }
+    public List<uint> ModifierHashes { get; init; } // DestinyActivityModifierDefinition
 
     /// <summary>
     ///     If the activity itself provides any specific "mock" rewards, this will be the items and their quantity.

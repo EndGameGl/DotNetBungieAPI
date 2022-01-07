@@ -12,7 +12,7 @@ public sealed class DestinyActivityChallengeDefinition
     ///     The hash for the Objective that matches this challenge. Use it to look up the DestinyObjectiveDefinition.
     /// </summary>
     [JsonPropertyName("objectiveHash")]
-    public uint ObjectiveHash { get; init; }
+    public uint ObjectiveHash { get; init; } // DestinyObjectiveDefinition
 
     /// <summary>
     ///     The rewards as they're represented in the UI. Note that they generally link to "dummy" items that give a summary of rewards rather than direct, real items themselves.

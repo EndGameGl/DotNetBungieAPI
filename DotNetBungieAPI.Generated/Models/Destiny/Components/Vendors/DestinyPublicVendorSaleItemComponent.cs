@@ -22,7 +22,7 @@ public sealed class DestinyPublicVendorSaleItemComponent
     ///     The hash of the item being sold, as a quick shortcut for looking up the DestinyInventoryItemDefinition of the sale item.
     /// </summary>
     [JsonPropertyName("itemHash")]
-    public uint ItemHash { get; init; }
+    public uint ItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     If populated, this is the hash of the item whose icon (and other secondary styles, but *not* the human readable strings) should override whatever icons/styles are on the item being sold.
@@ -30,7 +30,7 @@ public sealed class DestinyPublicVendorSaleItemComponent
     ///     If you don't do this, certain items whose styles are being overridden by socketed items - such as the "Recycle Shader" item - would show whatever their default icon/style is, and it wouldn't be pretty or look accurate.
     /// </summary>
     [JsonPropertyName("overrideStyleItemHash")]
-    public uint? OverrideStyleItemHash { get; init; }
+    public uint? OverrideStyleItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     How much of the item you'll be getting.

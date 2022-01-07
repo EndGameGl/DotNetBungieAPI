@@ -101,7 +101,7 @@ public sealed class DestinyItemCategoryDefinition
     ///     (I hope someone named Carl reads this someday)
     /// </summary>
     [JsonPropertyName("groupedCategoryHashes")]
-    public List<uint> GroupedCategoryHashes { get; init; }
+    public List<uint> GroupedCategoryHashes { get; init; } // DestinyItemCategoryDefinition
 
     /// <summary>
     ///     All item category hashes of "parent" categories: categories that contain this as a child through the hierarchy of groupedCategoryHashes. It's a bit redundant, but having this child-centric list speeds up some calculations.

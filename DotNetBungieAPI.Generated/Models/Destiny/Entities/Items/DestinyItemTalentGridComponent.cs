@@ -26,7 +26,7 @@ public sealed class DestinyItemTalentGridComponent
     ///     You can use this hash to lookup the DestinyTalentGridDefinition attached to this item, which will be crucial for understanding the node values on the item.
     /// </summary>
     [JsonPropertyName("talentGridHash")]
-    public uint TalentGridHash { get; init; }
+    public uint TalentGridHash { get; init; } // DestinyTalentGridDefinition
 
     /// <summary>
     ///     Detailed information about the individual nodes in the talent grid.

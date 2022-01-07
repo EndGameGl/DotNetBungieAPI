@@ -15,8 +15,8 @@ public sealed class DestinyRecordTitleBlock
     ///     For those who prefer to use the definitions.
     /// </summary>
     [JsonPropertyName("titlesByGenderHash")]
-    public Dictionary<uint, string> TitlesByGenderHash { get; init; }
+    public Dictionary<uint, string> TitlesByGenderHash { get; init; } // DestinyGenderDefinition
 
     [JsonPropertyName("gildingTrackingRecordHash")]
-    public uint? GildingTrackingRecordHash { get; init; }
+    public uint? GildingTrackingRecordHash { get; init; } // DestinyRecordDefinition
 }

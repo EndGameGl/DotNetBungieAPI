@@ -14,5 +14,5 @@ public sealed class DestinyPlugSetsComponent
     ///     The shared list of plugs for each relevant PlugSet, keyed by the hash identifier of the PlugSet (DestinyPlugSetDefinition).
     /// </summary>
     [JsonPropertyName("plugs")]
-    public Dictionary<uint, List<Destiny.Sockets.DestinyItemPlug>> Plugs { get; init; }
+    public Dictionary<uint, List<Destiny.Sockets.DestinyItemPlug>> Plugs { get; init; } // DestinyPlugSetDefinition
 }

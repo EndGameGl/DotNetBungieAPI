@@ -6,10 +6,10 @@ public sealed class DestinyActivityLoadoutRequirement
 {
 
     [JsonPropertyName("equipmentSlotHash")]
-    public uint EquipmentSlotHash { get; init; }
+    public uint EquipmentSlotHash { get; init; } // DestinyEquipmentSlotDefinition
 
     [JsonPropertyName("allowedEquippedItemHashes")]
-    public List<uint> AllowedEquippedItemHashes { get; init; }
+    public List<uint> AllowedEquippedItemHashes { get; init; } // DestinyInventoryItemDefinition
 
     [JsonPropertyName("allowedWeaponSubTypes")]
     public List<Destiny.DestinyItemSubType> AllowedWeaponSubTypes { get; init; }

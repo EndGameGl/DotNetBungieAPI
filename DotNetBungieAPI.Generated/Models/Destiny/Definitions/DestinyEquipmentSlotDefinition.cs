@@ -25,7 +25,7 @@ public sealed class DestinyEquipmentSlotDefinition
     ///     The inventory bucket that owns this equipment slot.
     /// </summary>
     [JsonPropertyName("bucketTypeHash")]
-    public uint BucketTypeHash { get; init; }
+    public uint BucketTypeHash { get; init; } // DestinyInventoryBucketDefinition
 
     /// <summary>
     ///     If True, equipped items should have their custom art dyes applied when rendering the item. Otherwise, custom art dyes on an item should be ignored if the item is equipped in this slot.

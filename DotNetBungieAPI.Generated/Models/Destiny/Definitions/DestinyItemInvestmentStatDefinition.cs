@@ -14,7 +14,7 @@ public sealed class DestinyItemInvestmentStatDefinition
     ///     The hash identifier for the DestinyStatDefinition defining this stat.
     /// </summary>
     [JsonPropertyName("statTypeHash")]
-    public uint StatTypeHash { get; init; }
+    public uint StatTypeHash { get; init; } // DestinyStatDefinition
 
     /// <summary>
     ///     The raw "Investment" value for the stat, before transformations are performed to turn this raw stat into stats that are displayed in the game UI.

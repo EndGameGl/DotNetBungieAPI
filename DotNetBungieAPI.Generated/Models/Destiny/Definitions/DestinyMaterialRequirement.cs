@@ -12,7 +12,7 @@ public sealed class DestinyMaterialRequirement
     ///     The hash identifier of the material required. Use it to look up the material's DestinyInventoryItemDefinition.
     /// </summary>
     [JsonPropertyName("itemHash")]
-    public uint ItemHash { get; init; }
+    public uint ItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     If True, the material will be removed from the character's inventory when the action is performed.

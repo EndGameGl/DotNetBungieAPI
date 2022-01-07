@@ -24,5 +24,5 @@ public sealed class DestinyVendorCategoryOverlayDefinition
     ///     If this overlay has a currency item that it features, this is said featured item.
     /// </summary>
     [JsonPropertyName("currencyItemHash")]
-    public uint? CurrencyItemHash { get; init; }
+    public uint? CurrencyItemHash { get; init; } // DestinyInventoryItemDefinition
 }

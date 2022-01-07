@@ -20,7 +20,7 @@ public sealed class DestinyProfileTransitoryPartyMember
     ///     The identifier for the DestinyInventoryItemDefinition of the player's emblem.
     /// </summary>
     [JsonPropertyName("emblemHash")]
-    public uint EmblemHash { get; init; }
+    public uint EmblemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     The player's last known display name.

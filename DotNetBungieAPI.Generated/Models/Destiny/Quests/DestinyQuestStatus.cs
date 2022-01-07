@@ -12,13 +12,13 @@ public sealed class DestinyQuestStatus
     ///     The hash identifier for the Quest Item. (Note: Quests are defined as Items, and thus you would use this to look up the quest's DestinyInventoryItemDefinition). For information on all steps in the quest, you can then examine its DestinyInventoryItemDefinition.setData property for Quest Steps (which are *also* items). You can use the Item Definition to display human readable data about the overall quest.
     /// </summary>
     [JsonPropertyName("questHash")]
-    public uint QuestHash { get; init; }
+    public uint QuestHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     The hash identifier of the current Quest Step, which is also a DestinyInventoryItemDefinition. You can use this to get human readable data about the current step and what to do in that step.
     /// </summary>
     [JsonPropertyName("stepHash")]
-    public uint StepHash { get; init; }
+    public uint StepHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     A step can have multiple objectives. This will give you the progress for each objective in the current step, in the order in which they are rendered in-game.

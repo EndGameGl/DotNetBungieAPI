@@ -12,5 +12,5 @@ public sealed class DestinyItemVersionDefinition
     ///     A reference to the power cap for this item version.
     /// </summary>
     [JsonPropertyName("powerCapHash")]
-    public uint PowerCapHash { get; init; }
+    public uint PowerCapHash { get; init; } // DestinyPowerCapDefinition
 }

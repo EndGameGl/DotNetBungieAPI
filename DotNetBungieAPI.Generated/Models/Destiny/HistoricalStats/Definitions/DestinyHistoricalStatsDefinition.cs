@@ -87,5 +87,5 @@ public sealed class DestinyHistoricalStatsDefinition
     ///     The tier associated with this medal - be it implicitly or explicitly.
     /// </summary>
     [JsonPropertyName("medalTierHash")]
-    public uint? MedalTierHash { get; init; }
+    public uint? MedalTierHash { get; init; } // DestinyMedalTierDefinition
 }

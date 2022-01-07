@@ -30,7 +30,7 @@ public sealed class DestinyVendorInteractionDefinition
     ///     If this interaction dialog is about a quest, this is the questline related to the interaction. You can use this to show the quest overview, or even the character's status with the quest if you use it to find the character's current Quest Step by checking their inventory against this questlineItemHash's DestinyInventoryItemDefinition.setData.
     /// </summary>
     [JsonPropertyName("questlineItemHash")]
-    public uint QuestlineItemHash { get; init; }
+    public uint QuestlineItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     If this interaction is meant to show you sacks, this is the list of types of sacks to be shown. If empty, the interaction is not meant to show sacks.

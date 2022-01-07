@@ -9,5 +9,5 @@ public sealed class DestinyVendorGroupReference
     ///     The DestinyVendorGroupDefinition to which this Vendor can belong.
     /// </summary>
     [JsonPropertyName("vendorGroupHash")]
-    public uint VendorGroupHash { get; init; }
+    public uint VendorGroupHash { get; init; } // DestinyVendorGroupDefinition
 }

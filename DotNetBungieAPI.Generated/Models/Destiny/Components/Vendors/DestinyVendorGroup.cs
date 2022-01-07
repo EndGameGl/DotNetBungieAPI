@@ -11,11 +11,11 @@ public sealed class DestinyVendorGroup
 {
 
     [JsonPropertyName("vendorGroupHash")]
-    public uint VendorGroupHash { get; init; }
+    public uint VendorGroupHash { get; init; } // DestinyVendorGroupDefinition
 
     /// <summary>
     ///     The ordered list of vendors within a particular group.
     /// </summary>
     [JsonPropertyName("vendorHashes")]
-    public List<uint> VendorHashes { get; init; }
+    public List<uint> VendorHashes { get; init; } // DestinyVendorDefinition
 }

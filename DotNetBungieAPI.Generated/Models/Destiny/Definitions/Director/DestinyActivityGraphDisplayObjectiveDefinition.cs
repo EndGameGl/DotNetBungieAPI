@@ -18,5 +18,5 @@ public sealed class DestinyActivityGraphDisplayObjectiveDefinition
     ///     The objective being shown on the map.
     /// </summary>
     [JsonPropertyName("objectiveHash")]
-    public uint ObjectiveHash { get; init; }
+    public uint ObjectiveHash { get; init; } // DestinyObjectiveDefinition
 }

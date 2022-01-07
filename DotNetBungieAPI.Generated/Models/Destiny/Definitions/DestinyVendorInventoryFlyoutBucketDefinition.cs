@@ -18,7 +18,7 @@ public sealed class DestinyVendorInventoryFlyoutBucketDefinition
     ///     The inventory bucket whose contents should be shown.
     /// </summary>
     [JsonPropertyName("inventoryBucketHash")]
-    public uint InventoryBucketHash { get; init; }
+    public uint InventoryBucketHash { get; init; } // DestinyInventoryBucketDefinition
 
     /// <summary>
     ///     The methodology to use for sorting items from the flyout.

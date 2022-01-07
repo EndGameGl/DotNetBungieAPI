@@ -20,7 +20,7 @@ public sealed class DestinyVendorItemDefinition
     ///     Note that a vendor can sell the same item in multiple ways, so don't assume that itemHash is a unique identifier for this entity.
     /// </summary>
     [JsonPropertyName("itemHash")]
-    public uint ItemHash { get; init; }
+    public uint ItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     The amount you will recieve of the item described in itemHash if you make the purchase.
@@ -106,7 +106,7 @@ public sealed class DestinyVendorItemDefinition
     ///     The inventory bucket into which this item will be placed upon purchase.
     /// </summary>
     [JsonPropertyName("inventoryBucketHash")]
-    public uint InventoryBucketHash { get; init; }
+    public uint InventoryBucketHash { get; init; } // DestinyInventoryBucketDefinition
 
     /// <summary>
     ///     The most restrictive scope that determines whether the item is available in the Vendor's inventory. See DestinyGatingScope's documentation for more information.

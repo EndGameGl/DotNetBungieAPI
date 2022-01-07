@@ -58,19 +58,19 @@ public sealed class DestinyActivityDefinition
     ///     The hash identifier for the Destination on which this Activity is played. Use it to look up the DestinyDestinationDefinition for human readable info about the destination. A Destination can be thought of as a more specific location than a "Place". For instance, if the "Place" is Earth, the "Destination" would be a specific city or region on Earth.
     /// </summary>
     [JsonPropertyName("destinationHash")]
-    public uint DestinationHash { get; init; }
+    public uint DestinationHash { get; init; } // DestinyDestinationDefinition
 
     /// <summary>
     ///     The hash identifier for the "Place" on which this Activity is played. Use it to look up the DestinyPlaceDefinition for human readable info about the Place. A Place is the largest-scoped concept for location information. For instance, if the "Place" is Earth, the "Destination" would be a specific city or region on Earth.
     /// </summary>
     [JsonPropertyName("placeHash")]
-    public uint PlaceHash { get; init; }
+    public uint PlaceHash { get; init; } // DestinyPlaceDefinition
 
     /// <summary>
     ///     The hash identifier for the Activity Type of this Activity. You may use it to look up the DestinyActivityTypeDefinition for human readable info, but be forewarned: Playlists and many PVP Map Activities will map to generic Activity Types. You'll have to use your knowledge of the Activity Mode being played to get more specific information about what the user is playing.
     /// </summary>
     [JsonPropertyName("activityTypeHash")]
-    public uint ActivityTypeHash { get; init; }
+    public uint ActivityTypeHash { get; init; } // DestinyActivityTypeDefinition
 
     /// <summary>
     ///     The difficulty tier of the activity.
@@ -142,7 +142,7 @@ public sealed class DestinyActivityDefinition
     ///     If this activity had an activity mode directly defined on it, this will be the hash of that mode.
     /// </summary>
     [JsonPropertyName("directActivityModeHash")]
-    public uint? DirectActivityModeHash { get; init; }
+    public uint? DirectActivityModeHash { get; init; } // DestinyActivityModeDefinition
 
     /// <summary>
     ///     If the activity had an activity mode directly defined on it, this will be the enum value of that mode.
@@ -160,7 +160,7 @@ public sealed class DestinyActivityDefinition
     ///     The hash identifiers for Activity Modes relevant to this activity.  Note that if this is a playlist, the specific playlist entry chosen will determine the actual activity modes that end up being relevant.
     /// </summary>
     [JsonPropertyName("activityModeHashes")]
-    public List<uint> ActivityModeHashes { get; init; }
+    public List<uint> ActivityModeHashes { get; init; } // DestinyActivityModeDefinition
 
     /// <summary>
     ///     The activity modes - if any - in enum form. Because we can't seem to escape the enums.

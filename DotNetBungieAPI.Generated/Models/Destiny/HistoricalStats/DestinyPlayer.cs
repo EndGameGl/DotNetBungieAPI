@@ -18,13 +18,13 @@ public sealed class DestinyPlayer
     public string CharacterClass { get; init; }
 
     [JsonPropertyName("classHash")]
-    public uint ClassHash { get; init; }
+    public uint ClassHash { get; init; } // DestinyClassDefinition
 
     [JsonPropertyName("raceHash")]
-    public uint RaceHash { get; init; }
+    public uint RaceHash { get; init; } // DestinyRaceDefinition
 
     [JsonPropertyName("genderHash")]
-    public uint GenderHash { get; init; }
+    public uint GenderHash { get; init; } // DestinyGenderDefinition
 
     /// <summary>
     ///     Level of the character if available. Zero if it is not available.
@@ -60,5 +60,5 @@ public sealed class DestinyPlayer
     ///     If we know the emblem's hash, this can be used to look up the player's emblem at the time of a match when receiving PGCR data, or otherwise their currently equipped emblem (if we are able to obtain it).
     /// </summary>
     [JsonPropertyName("emblemHash")]
-    public uint EmblemHash { get; init; }
+    public uint EmblemHash { get; init; } // DestinyInventoryItemDefinition
 }

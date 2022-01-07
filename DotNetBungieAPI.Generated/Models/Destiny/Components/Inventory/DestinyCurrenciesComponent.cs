@@ -18,5 +18,5 @@ public sealed class DestinyCurrenciesComponent
     ///     This allows you to see whether the requesting character can afford any given purchase/action without having to re-create this list itself.
     /// </summary>
     [JsonPropertyName("itemQuantities")]
-    public Dictionary<uint, int> ItemQuantities { get; init; }
+    public Dictionary<uint, int> ItemQuantities { get; init; } // DestinyInventoryItemDefinition
 }

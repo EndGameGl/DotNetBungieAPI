@@ -52,7 +52,7 @@ public sealed class DestinyItemQualityBlockDefinition
     ///     An item can refer to pre-set level requirements. They are defined in DestinyProgressionLevelRequirementDefinition, and you can use this hash to find the appropriate definition.
     /// </summary>
     [JsonPropertyName("progressionLevelRequirementHash")]
-    public uint ProgressionLevelRequirementHash { get; init; }
+    public uint ProgressionLevelRequirementHash { get; init; } // DestinyProgressionLevelRequirementDefinition
 
     /// <summary>
     ///     The latest version available for this item.

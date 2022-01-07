@@ -42,13 +42,13 @@ public sealed class DestinyProfileComponent
     ///      It turns out that Stadia Pro subscriptions will give access to seasons but only while playing on Stadia and with an active subscription. So some users (users who have Stadia Pro but choose to play on some other platform) won't see these as available: it will be whatever seasons are available for the platform on which they last played.
     /// </summary>
     [JsonPropertyName("seasonHashes")]
-    public List<uint> SeasonHashes { get; init; }
+    public List<uint> SeasonHashes { get; init; } // DestinySeasonDefinition
 
     /// <summary>
     ///     If populated, this is a reference to the season that is currently active.
     /// </summary>
     [JsonPropertyName("currentSeasonHash")]
-    public uint? CurrentSeasonHash { get; init; }
+    public uint? CurrentSeasonHash { get; init; } // DestinySeasonDefinition
 
     /// <summary>
     ///     If populated, this is the reward power cap for the current season.

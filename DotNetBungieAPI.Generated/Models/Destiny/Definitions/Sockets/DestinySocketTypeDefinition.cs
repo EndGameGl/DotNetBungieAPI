@@ -33,7 +33,7 @@ public sealed class DestinySocketTypeDefinition
     public List<Destiny.Definitions.Sockets.DestinyPlugWhitelistEntryDefinition> PlugWhitelist { get; init; }
 
     [JsonPropertyName("socketCategoryHash")]
-    public uint SocketCategoryHash { get; init; }
+    public uint SocketCategoryHash { get; init; } // DestinySocketCategoryDefinition
 
     /// <summary>
     ///     Sometimes a socket isn't visible. These are some of the conditions under which sockets of this type are not visible. Unfortunately, the truth of visibility is much, much more complex. Best to rely on the live data for whether the socket is visible and enabled.

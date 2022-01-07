@@ -14,7 +14,7 @@ public sealed class DestinyActivity
     ///     The hash identifier of the Activity. Use this to look up the DestinyActivityDefinition of the activity.
     /// </summary>
     [JsonPropertyName("activityHash")]
-    public uint ActivityHash { get; init; }
+    public uint ActivityHash { get; init; } // DestinyActivityDefinition
 
     /// <summary>
     ///     If true, then the activity should have a "new" indicator in the Director UI.
@@ -73,7 +73,7 @@ public sealed class DestinyActivity
     ///     Note that, in the DestiyActivityDefinition, you will see many more modifiers than this being referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the active ones to match what's really live.
     /// </summary>
     [JsonPropertyName("modifierHashes")]
-    public List<uint> ModifierHashes { get; init; }
+    public List<uint> ModifierHashes { get; init; } // DestinyActivityModifierDefinition
 
     /// <summary>
     ///     The set of activity options for this activity, keyed by an identifier that's unique for this activity (not guaranteed to be unique between or across all activities, though should be unique for every *variant* of a given *conceptual* activity: for instance, the original D2 Raid has many variant DestinyActivityDefinitions. While other activities could potentially have the same option hashes, for any given D2 base Raid variant the hash will be unique).

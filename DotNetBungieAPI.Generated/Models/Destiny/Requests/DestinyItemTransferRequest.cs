@@ -6,7 +6,7 @@ public sealed class DestinyItemTransferRequest
 {
 
     [JsonPropertyName("itemReferenceHash")]
-    public uint ItemReferenceHash { get; init; }
+    public uint ItemReferenceHash { get; init; } // DestinyInventoryItemDefinition
 
     [JsonPropertyName("stackSize")]
     public int StackSize { get; init; }

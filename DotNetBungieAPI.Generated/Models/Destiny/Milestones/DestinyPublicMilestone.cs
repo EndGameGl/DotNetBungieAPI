@@ -12,7 +12,7 @@ public sealed class DestinyPublicMilestone
     ///     The hash identifier for the milestone. Use it to look up the DestinyMilestoneDefinition for static data about the Milestone.
     /// </summary>
     [JsonPropertyName("milestoneHash")]
-    public uint MilestoneHash { get; init; }
+    public uint MilestoneHash { get; init; } // DestinyMilestoneDefinition
 
     /// <summary>
     ///     A milestone not need have even a single quest, but if there are active quests they will be returned here.

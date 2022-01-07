@@ -15,5 +15,5 @@ public sealed class DestinyItemPlugObjectivesComponent
     ///      Sometimes, Plugs may have objectives: generally, these are used for flavor and display purposes. For instance, a Plug might be tracking the number of PVP kills you have made. It will use the parent item's data about that tracking status to determine what to show, and will generally show it using the DestinyObjectiveDefinition's progressDescription property. Refer to the plug's itemHash and objective property for more information if you would like to display even more data.
     /// </summary>
     [JsonPropertyName("objectivesPerPlug")]
-    public Dictionary<uint, List<Destiny.Quests.DestinyObjectiveProgress>> ObjectivesPerPlug { get; init; }
+    public Dictionary<uint, List<Destiny.Quests.DestinyObjectiveProgress>> ObjectivesPerPlug { get; init; } // DestinyInventoryItemDefinition
 }

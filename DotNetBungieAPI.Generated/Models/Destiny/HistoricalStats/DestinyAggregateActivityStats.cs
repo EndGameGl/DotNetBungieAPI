@@ -9,7 +9,7 @@ public sealed class DestinyAggregateActivityStats
     ///     Hash ID that can be looked up in the DestinyActivityTable.
     /// </summary>
     [JsonPropertyName("activityHash")]
-    public uint ActivityHash { get; init; }
+    public uint ActivityHash { get; init; } // DestinyActivityDefinition
 
     /// <summary>
     ///     Collection of stats for the player in this activity.

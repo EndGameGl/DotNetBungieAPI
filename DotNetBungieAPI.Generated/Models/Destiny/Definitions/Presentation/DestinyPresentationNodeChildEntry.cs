@@ -6,5 +6,5 @@ public sealed class DestinyPresentationNodeChildEntry
 {
 
     [JsonPropertyName("presentationNodeHash")]
-    public uint PresentationNodeHash { get; init; }
+    public uint PresentationNodeHash { get; init; } // DestinyPresentationNodeDefinition
 }

@@ -14,7 +14,7 @@ public sealed class DestinyItemTalentGridBlockDefinition
     ///     The hash identifier of the DestinyTalentGridDefinition attached to this item.
     /// </summary>
     [JsonPropertyName("talentGridHash")]
-    public uint TalentGridHash { get; init; }
+    public uint TalentGridHash { get; init; } // DestinyTalentGridDefinition
 
     /// <summary>
     ///     This is meant to be a subtitle for looking at the talent grid. In practice, somewhat frustratingly, this always merely says the localized word for "Details". Great. Maybe it'll have more if talent grids ever get used for more than builds and subclasses again.

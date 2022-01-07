@@ -12,13 +12,13 @@ public sealed class DestinyItemSocketEntryDefinition
     ///     All sockets have a type, and this is the hash identifier for this particular type. Use it to look up the DestinySocketTypeDefinition: read there for more information on how socket types affect the behavior of the socket.
     /// </summary>
     [JsonPropertyName("socketTypeHash")]
-    public uint SocketTypeHash { get; init; }
+    public uint SocketTypeHash { get; init; } // DestinySocketTypeDefinition
 
     /// <summary>
     ///     If a valid hash, this is the hash identifier for the DestinyInventoryItemDefinition representing the Plug that will be initially inserted into the item on item creation. Otherwise, this Socket will either start without a plug inserted, or will have one randomly inserted.
     /// </summary>
     [JsonPropertyName("singleInitialItemHash")]
-    public uint SingleInitialItemHash { get; init; }
+    public uint SingleInitialItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     This is a list of pre-determined plugs that can *always* be plugged into this socket, without the character having the plug in their inventory.
@@ -54,7 +54,7 @@ public sealed class DestinyItemSocketEntryDefinition
     ///      As of Shadowkeep, these will come up much more frequently and be driven by game content rather than custom curation.
     /// </summary>
     [JsonPropertyName("reusablePlugSetHash")]
-    public uint? ReusablePlugSetHash { get; init; }
+    public uint? ReusablePlugSetHash { get; init; } // DestinyPlugSetDefinition
 
     /// <summary>
     ///     This field replaces "randomizedPlugItems" as of Shadowkeep launch. If a socket has randomized plugs, this is a pointer to the set of plugs that could be used, as defined in DestinyPlugSetDefinition.
@@ -62,7 +62,7 @@ public sealed class DestinyItemSocketEntryDefinition
     ///      If null, the item has no randomized plugs.
     /// </summary>
     [JsonPropertyName("randomizedPlugSetHash")]
-    public uint? RandomizedPlugSetHash { get; init; }
+    public uint? RandomizedPlugSetHash { get; init; } // DestinyPlugSetDefinition
 
     /// <summary>
     ///     If true, then this socket is visible in the item's "default" state. If you have an instance, you should always check the runtime state, as that can override this visibility setting: but if you're looking at the item on a conceptual level, this property can be useful for hiding data such as legacy sockets - which remain defined on items for infrastructure purposes, but can be confusing for users to see.

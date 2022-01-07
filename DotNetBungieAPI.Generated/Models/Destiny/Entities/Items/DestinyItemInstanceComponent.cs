@@ -22,7 +22,7 @@ public sealed class DestinyItemInstanceComponent
     ///     The current damage type's hash, so you can look up localized info and icons for it.
     /// </summary>
     [JsonPropertyName("damageTypeHash")]
-    public uint? DamageTypeHash { get; init; }
+    public uint? DamageTypeHash { get; init; } // DestinyDamageTypeDefinition
 
     /// <summary>
     ///     The item stat that we consider to be "primary" for the item. For instance, this would be "Attack" for Weapons or "Defense" for armor.
@@ -66,7 +66,7 @@ public sealed class DestinyItemInstanceComponent
     ///     This is a list of flags that they need in order to equip the item that the character has not met. Use these to look up the descriptions to show in your UI by looking up the relevant DestinyUnlockDefinitions for the hashes.
     /// </summary>
     [JsonPropertyName("unlockHashesRequiredToEquip")]
-    public List<uint> UnlockHashesRequiredToEquip { get; init; }
+    public List<uint> UnlockHashesRequiredToEquip { get; init; } // DestinyUnlockDefinition
 
     /// <summary>
     ///     If you cannot equip the item, this is a flags enum that enumerates all of the reasons why you couldn't equip the item. You may need to refine your UI further by using unlockHashesRequiredToEquip and equipRequiredLevel.
@@ -84,7 +84,7 @@ public sealed class DestinyItemInstanceComponent
     ///     If populated, this is the hash identifier for the item's breaker type. See DestinyBreakerTypeDefinition for more details.
     /// </summary>
     [JsonPropertyName("breakerTypeHash")]
-    public uint? BreakerTypeHash { get; init; }
+    public uint? BreakerTypeHash { get; init; } // DestinyBreakerTypeDefinition
 
     /// <summary>
     ///     IF populated, this item supports Energy mechanics (i.e. Armor 2.0), and these are the current details of its energy type and available capacity to spend energy points.

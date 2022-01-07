@@ -6,7 +6,7 @@ public sealed class DestinyCollectibleStateBlock
 {
 
     [JsonPropertyName("obscuredOverrideItemHash")]
-    public uint? ObscuredOverrideItemHash { get; init; }
+    public uint? ObscuredOverrideItemHash { get; init; } // DestinyInventoryItemDefinition
 
     [JsonPropertyName("requirements")]
     public Destiny.Definitions.Presentation.DestinyPresentationNodeRequirementsBlock Requirements { get; init; }

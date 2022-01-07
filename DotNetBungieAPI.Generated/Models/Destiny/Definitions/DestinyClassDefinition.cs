@@ -24,13 +24,13 @@ public sealed class DestinyClassDefinition
     public Dictionary<Destiny.DestinyGender, string> GenderedClassNames { get; init; }
 
     [JsonPropertyName("genderedClassNamesByGenderHash")]
-    public Dictionary<uint, string> GenderedClassNamesByGenderHash { get; init; }
+    public Dictionary<uint, string> GenderedClassNamesByGenderHash { get; init; } // DestinyGenderDefinition
 
     /// <summary>
     ///     Mentors don't really mean anything anymore. Don't expect this to be populated.
     /// </summary>
     [JsonPropertyName("mentorVendorHash")]
-    public uint? MentorVendorHash { get; init; }
+    public uint? MentorVendorHash { get; init; } // DestinyVendorDefinition
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

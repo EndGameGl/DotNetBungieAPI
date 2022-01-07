@@ -51,7 +51,7 @@ public sealed class DestinyVendorDefinition
     ///     Apparently this is usually a related currency, like a reputation token. But it need not be restricted to that.
     /// </summary>
     [JsonPropertyName("displayItemHash")]
-    public uint DisplayItemHash { get; init; }
+    public uint DisplayItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     If this is true, you aren't allowed to buy whatever the vendor is selling.
@@ -71,7 +71,7 @@ public sealed class DestinyVendorDefinition
     ///     The game UI and BNet often mine the faction definition for additional elements and details to place on the screen, such as the faction's Progression status (aka "Reputation").
     /// </summary>
     [JsonPropertyName("factionHash")]
-    public uint FactionHash { get; init; }
+    public uint FactionHash { get; init; } // DestinyFactionDefinition
 
     /// <summary>
     ///     A number used for calculating the frequency of a vendor's inventory resetting/refreshing.

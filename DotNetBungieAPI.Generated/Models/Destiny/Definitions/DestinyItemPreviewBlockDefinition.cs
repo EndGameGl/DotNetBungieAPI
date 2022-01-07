@@ -20,13 +20,13 @@ public sealed class DestinyItemPreviewBlockDefinition
     ///     If the preview data is derived from a fake "Preview" Vendor, this will be the hash identifier for the DestinyVendorDefinition of that fake vendor.
     /// </summary>
     [JsonPropertyName("previewVendorHash")]
-    public uint PreviewVendorHash { get; init; }
+    public uint PreviewVendorHash { get; init; } // DestinyVendorDefinition
 
     /// <summary>
     ///     If this item should show you Artifact information when you preview it, this is the hash identifier of the DestinyArtifactDefinition for the artifact whose data should be shown.
     /// </summary>
     [JsonPropertyName("artifactHash")]
-    public uint? ArtifactHash { get; init; }
+    public uint? ArtifactHash { get; init; } // DestinyArtifactDefinition
 
     /// <summary>
     ///     If the preview has an associated action (like "Open"), this will be the localized string for that action.

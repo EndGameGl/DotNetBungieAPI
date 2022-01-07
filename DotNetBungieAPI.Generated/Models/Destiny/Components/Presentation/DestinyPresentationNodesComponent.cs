@@ -6,5 +6,5 @@ public sealed class DestinyPresentationNodesComponent
 {
 
     [JsonPropertyName("nodes")]
-    public Dictionary<uint, Destiny.Components.Presentation.DestinyPresentationNodeComponent> Nodes { get; init; }
+    public Dictionary<uint, Destiny.Components.Presentation.DestinyPresentationNodeComponent> Nodes { get; init; } // DestinyPresentationNodeDefinition
 }

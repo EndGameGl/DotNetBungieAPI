@@ -130,7 +130,7 @@ public sealed class DestinyTalentNodeDefinition
     ///     Talent nodes can be associated with a piece of Lore, generally rendered in a tooltip. This is the hash identifier of the lore element to show, if there is one to be show.
     /// </summary>
     [JsonPropertyName("loreHash")]
-    public uint? LoreHash { get; init; }
+    public uint? LoreHash { get; init; } // DestinyLoreDefinition
 
     /// <summary>
     ///     Comes from the talent grid node style: this identifier should be used to determine how to render the node in the UI.

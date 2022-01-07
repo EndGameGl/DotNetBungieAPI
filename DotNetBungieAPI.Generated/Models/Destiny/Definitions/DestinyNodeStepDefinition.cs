@@ -50,7 +50,7 @@ public sealed class DestinyNodeStepDefinition
     ///     If the step provides a damage type, this will be the hash identifier used to look up the damage type's DestinyDamageTypeDefinition.
     /// </summary>
     [JsonPropertyName("damageTypeHash")]
-    public uint? DamageTypeHash { get; init; }
+    public uint? DamageTypeHash { get; init; } // DestinyDamageTypeDefinition
 
     /// <summary>
     ///     If the step has requirements for activation (they almost always do, if nothing else than for the Talent Grid's Progression to have reached a certain level), they will be defined here.
@@ -84,7 +84,7 @@ public sealed class DestinyNodeStepDefinition
     ///     The list of hash identifiers for Perks (DestinySandboxPerkDefinition) that are applied when this step is active. Perks provide a variety of benefits and modifications - examine DestinySandboxPerkDefinition to learn more.
     /// </summary>
     [JsonPropertyName("perkHashes")]
-    public List<uint> PerkHashes { get; init; }
+    public List<uint> PerkHashes { get; init; } // DestinySandboxPerkDefinition
 
     /// <summary>
     ///     When the Talent Grid's progression reaches this value, the circular "progress bar" that surrounds the talent node should be shown.
@@ -98,7 +98,7 @@ public sealed class DestinyNodeStepDefinition
     ///     When the step provides stat benefits on the item or character, this is the list of hash identifiers for stats (DestinyStatDefinition) that are provided.
     /// </summary>
     [JsonPropertyName("statHashes")]
-    public List<uint> StatHashes { get; init; }
+    public List<uint> StatHashes { get; init; } // DestinyStatDefinition
 
     /// <summary>
     ///     If this is true, the step affects the item's Quality in some way. See DestinyInventoryItemDefinition for more information about the meaning of Quality. I already made a joke about Zen and the Art of Motorcycle Maintenance elsewhere in the documentation, so I will avoid doing it again. Oops too late

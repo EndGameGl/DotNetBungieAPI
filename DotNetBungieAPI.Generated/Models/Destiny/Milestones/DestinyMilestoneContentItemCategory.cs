@@ -12,5 +12,5 @@ public sealed class DestinyMilestoneContentItemCategory
     public string Title { get; init; }
 
     [JsonPropertyName("itemHashes")]
-    public List<uint> ItemHashes { get; init; }
+    public List<uint> ItemHashes { get; init; } // DestinyInventoryItemDefinition
 }

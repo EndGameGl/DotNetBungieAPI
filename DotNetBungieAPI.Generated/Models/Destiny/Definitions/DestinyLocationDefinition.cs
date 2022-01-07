@@ -14,7 +14,7 @@ public sealed class DestinyLocationDefinition
     ///     If the location has a Vendor on it, this is the hash identifier for that Vendor. Look them up with DestinyVendorDefinition.
     /// </summary>
     [JsonPropertyName("vendorHash")]
-    public uint VendorHash { get; init; }
+    public uint VendorHash { get; init; } // DestinyVendorDefinition
 
     /// <summary>
     ///     A Location may refer to different specific spots in the world based on the world's current state. This is a list of those potential spots, and the data we can use at runtime to determine which one of the spots is the currently valid one.

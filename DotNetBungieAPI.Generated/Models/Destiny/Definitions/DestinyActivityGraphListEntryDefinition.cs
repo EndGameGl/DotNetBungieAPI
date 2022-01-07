@@ -14,5 +14,5 @@ public sealed class DestinyActivityGraphListEntryDefinition
     ///     The hash identifier of the DestinyActivityGraphDefinition that should be shown when opening the director.
     /// </summary>
     [JsonPropertyName("activityGraphHash")]
-    public uint ActivityGraphHash { get; init; }
+    public uint ActivityGraphHash { get; init; } // DestinyActivityGraphDefinition
 }

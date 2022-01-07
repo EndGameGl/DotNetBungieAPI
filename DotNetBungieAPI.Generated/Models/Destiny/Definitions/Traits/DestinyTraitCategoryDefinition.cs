@@ -9,7 +9,7 @@ public sealed class DestinyTraitCategoryDefinition
     public string TraitCategoryId { get; init; }
 
     [JsonPropertyName("traitHashes")]
-    public List<uint> TraitHashes { get; init; }
+    public List<uint> TraitHashes { get; init; } // DestinyTraitCategoryDefinition
 
     [JsonPropertyName("traitIds")]
     public List<string> TraitIds { get; init; }

@@ -24,5 +24,5 @@ public sealed class DestinyNodeActivationRequirement
     ///     In this case, only a single DestinyMaterialRequirementSetDefinition will be chosen from this list, and we won't know which one will be chosen until an instance of the item is created.
     /// </summary>
     [JsonPropertyName("materialRequirementHashes")]
-    public List<uint> MaterialRequirementHashes { get; init; }
+    public List<uint> MaterialRequirementHashes { get; init; } // DestinyMaterialRequirementSetDefinition
 }

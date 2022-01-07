@@ -18,10 +18,10 @@ public sealed class DestinyRecordDefinition
     public Destiny.Definitions.Presentation.DestinyPresentationChildBlock PresentationInfo { get; init; }
 
     [JsonPropertyName("loreHash")]
-    public uint? LoreHash { get; init; }
+    public uint? LoreHash { get; init; } // DestinyLoreDefinition
 
     [JsonPropertyName("objectiveHashes")]
-    public List<uint> ObjectiveHashes { get; init; }
+    public List<uint> ObjectiveHashes { get; init; } // DestinyObjectiveDefinition
 
     [JsonPropertyName("recordValueStyle")]
     public Destiny.DestinyRecordValueStyle RecordValueStyle { get; init; }
@@ -65,13 +65,13 @@ public sealed class DestinyRecordDefinition
     public List<string> TraitIds { get; init; }
 
     [JsonPropertyName("traitHashes")]
-    public List<uint> TraitHashes { get; init; }
+    public List<uint> TraitHashes { get; init; } // DestinyTraitDefinition
 
     /// <summary>
     ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under multiple parents.
     /// </summary>
     [JsonPropertyName("parentNodeHashes")]
-    public List<uint> ParentNodeHashes { get; init; }
+    public List<uint> ParentNodeHashes { get; init; } // DestinyPresentationNodeDefinition
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

@@ -12,7 +12,7 @@ public sealed class DestinyItemComponent
     ///     The identifier for the item's definition, which is where most of the useful static information for the item can be found.
     /// </summary>
     [JsonPropertyName("itemHash")]
-    public uint ItemHash { get; init; }
+    public uint ItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     If the item is instanced, it will have an instance ID. Lack of an instance ID implies that the item has no distinct local qualities aside from stack size.
@@ -42,7 +42,7 @@ public sealed class DestinyItemComponent
     ///     The hash identifier for the specific inventory bucket in which the item is located.
     /// </summary>
     [JsonPropertyName("bucketHash")]
-    public uint BucketHash { get; init; }
+    public uint BucketHash { get; init; } // DestinyInventoryBucketDefinition
 
     /// <summary>
     ///     If there is a known error state that would cause this item to not be transferable, this Flags enum will indicate all of those error states. Otherwise, it will be 0 (CanTransfer).
@@ -68,7 +68,7 @@ public sealed class DestinyItemComponent
     ///     If you don't do this, certain items whose styles are being overridden by socketed items - such as the "Recycle Shader" item - would show whatever their default icon/style is, and it wouldn't be pretty or look accurate.
     /// </summary>
     [JsonPropertyName("overrideStyleItemHash")]
-    public uint? OverrideStyleItemHash { get; init; }
+    public uint? OverrideStyleItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     If the item can expire, this is the date at which it will/did expire.
@@ -94,7 +94,7 @@ public sealed class DestinyItemComponent
     ///     The identifier for the currently-selected metric definition, to be displayed on the emblem nameplate.
     /// </summary>
     [JsonPropertyName("metricHash")]
-    public uint? MetricHash { get; init; }
+    public uint? MetricHash { get; init; } // DestinyMetricDefinition
 
     /// <summary>
     ///     The objective progress for the currently-selected metric definition, to be displayed on the emblem nameplate.

@@ -18,5 +18,5 @@ public sealed class DestinyItemGearsetBlockDefinition
     ///     The list of hashes for items in the gearset. Use them to look up DestinyInventoryItemDefinition entries for the items in the set.
     /// </summary>
     [JsonPropertyName("itemList")]
-    public List<uint> ItemList { get; init; }
+    public List<uint> ItemList { get; init; } // DestinyInventoryItemDefinition
 }

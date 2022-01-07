@@ -18,7 +18,7 @@ public sealed class DestinyStatOverrideDefinition
     ///     The hash identifier of the stat whose display properties are being overridden.
     /// </summary>
     [JsonPropertyName("statHash")]
-    public uint StatHash { get; init; }
+    public uint StatHash { get; init; } // DestinyStatDefinition
 
     /// <summary>
     ///     The display properties to show instead of the base DestinyStatDefinition display properties.

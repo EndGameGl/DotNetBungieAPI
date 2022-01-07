@@ -6,5 +6,5 @@ public sealed class DestinyPresentationNodeMetricChildEntry
 {
 
     [JsonPropertyName("metricHash")]
-    public uint MetricHash { get; init; }
+    public uint MetricHash { get; init; } // DestinyMetricDefinition
 }

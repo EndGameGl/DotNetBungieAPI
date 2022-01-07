@@ -17,13 +17,13 @@ public sealed class DestinyDestinationDefinition
     ///     The place that "owns" this Destination. Use this hash to look up the DestinyPlaceDefinition.
     /// </summary>
     [JsonPropertyName("placeHash")]
-    public uint PlaceHash { get; init; }
+    public uint PlaceHash { get; init; } // DestinyPlaceDefinition
 
     /// <summary>
     ///     If this Destination has a default Free-Roam activity, this is the hash for that Activity. Use it to look up the DestinyActivityDefintion.
     /// </summary>
     [JsonPropertyName("defaultFreeroamActivityHash")]
-    public uint DefaultFreeroamActivityHash { get; init; }
+    public uint DefaultFreeroamActivityHash { get; init; } // DestinyActivityDefinition
 
     /// <summary>
     ///     If the Destination has default Activity Graphs (i.e. "Map") that should be shown in the director, this is the list of those Graphs. At most, only one should be active at any given time for a Destination: these would represent, for example, different variants on a Map if the Destination is changing on a macro level based on game state.

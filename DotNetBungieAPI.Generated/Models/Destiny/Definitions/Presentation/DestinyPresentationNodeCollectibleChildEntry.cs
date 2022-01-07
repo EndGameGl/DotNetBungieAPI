@@ -6,5 +6,5 @@ public sealed class DestinyPresentationNodeCollectibleChildEntry
 {
 
     [JsonPropertyName("collectibleHash")]
-    public uint CollectibleHash { get; init; }
+    public uint CollectibleHash { get; init; } // DestinyCollectibleDefinition
 }

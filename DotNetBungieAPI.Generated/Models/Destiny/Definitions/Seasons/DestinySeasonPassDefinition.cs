@@ -12,7 +12,7 @@ public sealed class DestinySeasonPassDefinition
     ///     This is the progression definition related to the progression for the initial levels 1-100 that provide item rewards for the Season pass. Further experience after you reach the limit is provided in the "Prestige" progression referred to by prestigeProgressionHash.
     /// </summary>
     [JsonPropertyName("rewardProgressionHash")]
-    public uint RewardProgressionHash { get; init; }
+    public uint RewardProgressionHash { get; init; } // DestinyProgressionDefinition
 
     /// <summary>
     ///     I know what you're thinking, but I promise we're not going to duplicate and drown you. Instead, we're giving you sweet, sweet power bonuses.
@@ -20,7 +20,7 @@ public sealed class DestinySeasonPassDefinition
     ///      Prestige progression is further progression that you can make on the Season pass after you gain max ranks, that will ultimately increase your power/light level over the theoretical limit.
     /// </summary>
     [JsonPropertyName("prestigeProgressionHash")]
-    public uint PrestigeProgressionHash { get; init; }
+    public uint PrestigeProgressionHash { get; init; } // DestinyProgressionDefinition
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

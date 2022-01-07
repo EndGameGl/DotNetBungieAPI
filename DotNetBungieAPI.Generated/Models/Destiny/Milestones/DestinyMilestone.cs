@@ -12,7 +12,7 @@ public sealed class DestinyMilestone
     ///     The unique identifier for the Milestone. Use it to look up the DestinyMilestoneDefinition, so you can combine the other data in this contract with static definition data.
     /// </summary>
     [JsonPropertyName("milestoneHash")]
-    public uint MilestoneHash { get; init; }
+    public uint MilestoneHash { get; init; } // DestinyMilestoneDefinition
 
     /// <summary>
     ///     Indicates what quests are available for this Milestone. Usually this will be only a single Quest, but some quests have multiple available that you can choose from at any given time. All possible quests for a milestone can be found in the DestinyMilestoneDefinition, but they must be combined with this Live data to determine which one(s) are actually active right now. It is possible for Milestones to not have any quests.
@@ -40,7 +40,7 @@ public sealed class DestinyMilestone
     ///     Before we even use it, it's already deprecated! How much of a bummer is that? We need more data.
     /// </summary>
     [JsonPropertyName("vendorHashes")]
-    public List<uint> VendorHashes { get; init; }
+    public List<uint> VendorHashes { get; init; } // DestinyVendorDefinition
 
     /// <summary>
     ///     Replaces vendorHashes, which I knew was going to be trouble the day it walked in the door. This will return not only what Vendors are active and relevant to the activity (in an implied order that you can choose to ignore), but also other data - for example, if the Vendor is featuring a specific item relevant to this event that you should show with them.

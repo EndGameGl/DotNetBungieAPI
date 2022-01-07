@@ -17,7 +17,7 @@ public sealed class DestinyFactionDefinition
     ///     The hash identifier for the DestinyProgressionDefinition that indicates the character's relationship with this faction in terms of experience and levels.
     /// </summary>
     [JsonPropertyName("progressionHash")]
-    public uint ProgressionHash { get; init; }
+    public uint ProgressionHash { get; init; } // DestinyProgressionDefinition
 
     /// <summary>
     ///     The faction token item hashes, and their respective progression values.
@@ -29,13 +29,13 @@ public sealed class DestinyFactionDefinition
     ///     The faction reward item hash, usually an engram.
     /// </summary>
     [JsonPropertyName("rewardItemHash")]
-    public uint RewardItemHash { get; init; }
+    public uint RewardItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     The faction reward vendor hash, used for faction engram previews.
     /// </summary>
     [JsonPropertyName("rewardVendorHash")]
-    public uint RewardVendorHash { get; init; }
+    public uint RewardVendorHash { get; init; } // DestinyVendorDefinition
 
     /// <summary>
     ///     List of vendors that are associated with this faction. The last vendor that passes the unlock flag checks is the one that should be shown.

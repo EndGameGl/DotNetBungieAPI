@@ -24,19 +24,19 @@ public sealed class DestinyItemInventoryBlockDefinition
     ///     The hash identifier for the DestinyInventoryBucketDefinition to which this item belongs. I should have named this "bucketHash", but too many things refer to it now. Sigh.
     /// </summary>
     [JsonPropertyName("bucketTypeHash")]
-    public uint BucketTypeHash { get; init; }
+    public uint BucketTypeHash { get; init; } // DestinyInventoryBucketDefinition
 
     /// <summary>
     ///     If the item is picked up by the lost loot queue, this is the hash identifier for the DestinyInventoryBucketDefinition into which it will be placed. Again, I should have named this recoveryBucketHash instead.
     /// </summary>
     [JsonPropertyName("recoveryBucketTypeHash")]
-    public uint RecoveryBucketTypeHash { get; init; }
+    public uint RecoveryBucketTypeHash { get; init; } // DestinyInventoryBucketDefinition
 
     /// <summary>
     ///     The hash identifier for the Tier Type of the item, use to look up its DestinyItemTierTypeDefinition if you need to show localized data for the item's tier.
     /// </summary>
     [JsonPropertyName("tierTypeHash")]
-    public uint TierTypeHash { get; init; }
+    public uint TierTypeHash { get; init; } // DestinyItemTierTypeDefinition
 
     /// <summary>
     ///     If TRUE, this item is instanced. Otherwise, it is a generic item that merely has a quantity in a stack (like Glimmer).

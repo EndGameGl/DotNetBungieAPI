@@ -18,7 +18,7 @@ public sealed class DestinyItemActionRequiredItemDefinition
     ///     The hash identifier of the item you need to have. Use it to look up the DestinyInventoryItemDefinition for more info.
     /// </summary>
     [JsonPropertyName("itemHash")]
-    public uint ItemHash { get; init; }
+    public uint ItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     If true, the item/quantity will be deleted from your inventory when the action is performed. Otherwise, you'll retain these required items after the action is complete.

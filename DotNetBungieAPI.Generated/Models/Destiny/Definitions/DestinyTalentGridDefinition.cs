@@ -34,7 +34,7 @@ public sealed class DestinyTalentGridDefinition
     ///     The hash identifier of the Progression (DestinyProgressionDefinition) that drives whether and when Talent Nodes can be activated on the Grid. Items will have instances of this Progression, and will gain experience that will eventually cause the grid to increase in level. As the grid's level increases, it will cross the threshold where nodes can be activated. See DestinyTalentGridStepDefinition's activation requirements for more information.
     /// </summary>
     [JsonPropertyName("progressionHash")]
-    public uint ProgressionHash { get; init; }
+    public uint ProgressionHash { get; init; } // DestinyProgressionDefinition
 
     /// <summary>
     ///     The list of Talent Nodes on the Grid (recall that Nodes themselves are really just locations in the UI to show whatever their current Step is. You will only know the current step for a node by retrieving instanced data through platform calls to the API that return DestinyItemTalentGridComponent).

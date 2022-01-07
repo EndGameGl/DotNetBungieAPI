@@ -18,7 +18,7 @@ public sealed class DestinyTalentExclusiveGroup
     ///     If this group has an associated piece of lore to show next to it, this will be the identifier for that DestinyLoreDefinition.
     /// </summary>
     [JsonPropertyName("loreHash")]
-    public uint? LoreHash { get; init; }
+    public uint? LoreHash { get; init; } // DestinyLoreDefinition
 
     /// <summary>
     ///     A quick reference of the talent nodes that are part of this group, by their Talent Node hashes. (See DestinyTalentNodeDefinition.nodeHash)

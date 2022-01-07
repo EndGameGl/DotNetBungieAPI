@@ -16,31 +16,31 @@ public sealed class DestinyProfileTransitoryTrackingEntry
     ///     OPTIONAL - If this is tracking a DestinyLocationDefinition, this is the identifier for that location.
     /// </summary>
     [JsonPropertyName("locationHash")]
-    public uint? LocationHash { get; init; }
+    public uint? LocationHash { get; init; } // DestinyLocationDefinition
 
     /// <summary>
     ///     OPTIONAL - If this is tracking the status of a DestinyInventoryItemDefinition, this is the identifier for that item.
     /// </summary>
     [JsonPropertyName("itemHash")]
-    public uint? ItemHash { get; init; }
+    public uint? ItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     OPTIONAL - If this is tracking the status of a DestinyObjectiveDefinition, this is the identifier for that objective.
     /// </summary>
     [JsonPropertyName("objectiveHash")]
-    public uint? ObjectiveHash { get; init; }
+    public uint? ObjectiveHash { get; init; } // DestinyObjectiveDefinition
 
     /// <summary>
     ///     OPTIONAL - If this is tracking the status of a DestinyActivityDefinition, this is the identifier for that activity.
     /// </summary>
     [JsonPropertyName("activityHash")]
-    public uint? ActivityHash { get; init; }
+    public uint? ActivityHash { get; init; } // DestinyActivityDefinition
 
     /// <summary>
     ///     OPTIONAL - If this is tracking the status of a quest, this is the identifier for the DestinyInventoryItemDefinition that containst that questline data.
     /// </summary>
     [JsonPropertyName("questlineItemHash")]
-    public uint? QuestlineItemHash { get; init; }
+    public uint? QuestlineItemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     OPTIONAL - I've got to level with you, I don't really know what this is. Is it when you started tracking it? Is it only populated for tracked items that have time limits?

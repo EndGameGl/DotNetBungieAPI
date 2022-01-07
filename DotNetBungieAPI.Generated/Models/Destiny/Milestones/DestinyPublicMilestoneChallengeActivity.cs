@@ -6,7 +6,7 @@ public sealed class DestinyPublicMilestoneChallengeActivity
 {
 
     [JsonPropertyName("activityHash")]
-    public uint ActivityHash { get; init; }
+    public uint ActivityHash { get; init; } // DestinyActivityDefinition
 
     [JsonPropertyName("challengeObjectiveHashes")]
     public List<uint> ChallengeObjectiveHashes { get; init; }
@@ -17,7 +17,7 @@ public sealed class DestinyPublicMilestoneChallengeActivity
     ///     Note that, in the DestiyActivityDefinition, you will see many more modifiers than this being referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the active ones to match what's really live.
     /// </summary>
     [JsonPropertyName("modifierHashes")]
-    public List<uint> ModifierHashes { get; init; }
+    public List<uint> ModifierHashes { get; init; } // DestinyActivityModifierDefinition
 
     /// <summary>
     ///     If returned, this is the index into the DestinyActivityDefinition's "loadouts" property, indicating the currently active loadout requirements.

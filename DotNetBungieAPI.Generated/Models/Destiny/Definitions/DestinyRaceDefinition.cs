@@ -24,7 +24,7 @@ public sealed class DestinyRaceDefinition
     public Dictionary<Destiny.DestinyGender, string> GenderedRaceNames { get; init; }
 
     [JsonPropertyName("genderedRaceNamesByGenderHash")]
-    public Dictionary<uint, string> GenderedRaceNamesByGenderHash { get; init; }
+    public Dictionary<uint, string> GenderedRaceNamesByGenderHash { get; init; } // DestinyGenderDefinition
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

@@ -12,7 +12,7 @@ public sealed class DestinyFactionProgression
     ///     The hash identifier of the Faction related to this progression. Use it to look up the DestinyFactionDefinition for more rendering info.
     /// </summary>
     [JsonPropertyName("factionHash")]
-    public uint FactionHash { get; init; }
+    public uint FactionHash { get; init; } // DestinyFactionDefinition
 
     /// <summary>
     ///     The index of the Faction vendor that is currently available. Will be set to -1 if no vendors are available.
@@ -24,7 +24,7 @@ public sealed class DestinyFactionProgression
     ///     The hash identifier of the Progression in question. Use it to look up the DestinyProgressionDefinition in static data.
     /// </summary>
     [JsonPropertyName("progressionHash")]
-    public uint ProgressionHash { get; init; }
+    public uint ProgressionHash { get; init; } // DestinyProgressionDefinition
 
     /// <summary>
     ///     The amount of progress earned today for this progression.

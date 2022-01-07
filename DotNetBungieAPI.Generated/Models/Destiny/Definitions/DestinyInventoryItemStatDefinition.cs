@@ -14,7 +14,7 @@ public sealed class DestinyInventoryItemStatDefinition
     ///     The hash for the DestinyStatDefinition representing this stat.
     /// </summary>
     [JsonPropertyName("statHash")]
-    public uint StatHash { get; init; }
+    public uint StatHash { get; init; } // DestinyStatDefinition
 
     /// <summary>
     ///     This value represents the stat value assuming the minimum possible roll but accounting for any mandatory bonuses that should be applied to the stat on item creation.

@@ -12,13 +12,13 @@ public sealed class DestinyHistoricalStatsActivity
     ///     The unique hash identifier of the DestinyActivityDefinition that was played. If I had this to do over, it'd be named activityHash. Too late now.
     /// </summary>
     [JsonPropertyName("referenceId")]
-    public uint ReferenceId { get; init; }
+    public uint ReferenceId { get; init; } // DestinyActivityDefinition
 
     /// <summary>
     ///     The unique hash identifier of the DestinyActivityDefinition that was played.
     /// </summary>
     [JsonPropertyName("directorActivityHash")]
-    public uint DirectorActivityHash { get; init; }
+    public uint DirectorActivityHash { get; init; } // DestinyActivityDefinition
 
     /// <summary>
     ///     The unique identifier for this *specific* match that was played.

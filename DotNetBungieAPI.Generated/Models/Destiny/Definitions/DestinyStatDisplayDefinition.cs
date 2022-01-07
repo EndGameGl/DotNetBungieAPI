@@ -16,7 +16,7 @@ public sealed class DestinyStatDisplayDefinition
     ///     Use it to look up the DestinyStatDefinition, or key into a DestinyInventoryItemDefinition's stats property.
     /// </summary>
     [JsonPropertyName("statHash")]
-    public uint StatHash { get; init; }
+    public uint StatHash { get; init; } // DestinyStatDefinition
 
     /// <summary>
     ///     Regardless of the output of interpolation, this is the maximum possible value that the stat can be. It should also be used as the upper bound for displaying the stat as a progress bar (the minimum always being 0)

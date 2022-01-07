@@ -62,19 +62,19 @@ public sealed class DestinyCharacterComponent
     ///     Use this hash to look up the character's DestinyRaceDefinition.
     /// </summary>
     [JsonPropertyName("raceHash")]
-    public uint RaceHash { get; init; }
+    public uint RaceHash { get; init; } // DestinyRaceDefinition
 
     /// <summary>
     ///     Use this hash to look up the character's DestinyGenderDefinition.
     /// </summary>
     [JsonPropertyName("genderHash")]
-    public uint GenderHash { get; init; }
+    public uint GenderHash { get; init; } // DestinyGenderDefinition
 
     /// <summary>
     ///     Use this hash to look up the character's DestinyClassDefinition.
     /// </summary>
     [JsonPropertyName("classHash")]
-    public uint ClassHash { get; init; }
+    public uint ClassHash { get; init; } // DestinyClassDefinition
 
     /// <summary>
     ///     Mostly for historical purposes at this point, this is an enumeration for the character's race.
@@ -116,7 +116,7 @@ public sealed class DestinyCharacterComponent
     ///     The hash of the currently equipped emblem for the user. Can be used to look up the DestinyInventoryItemDefinition.
     /// </summary>
     [JsonPropertyName("emblemHash")]
-    public uint EmblemHash { get; init; }
+    public uint EmblemHash { get; init; } // DestinyInventoryItemDefinition
 
     /// <summary>
     ///     A shortcut for getting the background color of the user's currently equipped emblem without having to do a DestinyInventoryItemDefinition lookup.
@@ -146,5 +146,5 @@ public sealed class DestinyCharacterComponent
     ///     If this Character has a title assigned to it, this is the identifier of the DestinyRecordDefinition that has that title information.
     /// </summary>
     [JsonPropertyName("titleRecordHash")]
-    public uint? TitleRecordHash { get; init; }
+    public uint? TitleRecordHash { get; init; } // DestinyRecordDefinition
 }

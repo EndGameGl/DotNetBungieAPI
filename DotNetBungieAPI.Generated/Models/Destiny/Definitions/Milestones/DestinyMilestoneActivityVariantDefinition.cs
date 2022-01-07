@@ -16,7 +16,7 @@ public sealed class DestinyMilestoneActivityVariantDefinition
     ///     Frequently, that will be the only distinguishing characteristics in practice, which is somewhat of a bummer.
     /// </summary>
     [JsonPropertyName("activityHash")]
-    public uint ActivityHash { get; init; }
+    public uint ActivityHash { get; init; } // DestinyActivityDefinition
 
     /// <summary>
     ///     If you care to do so, render the variants in the order prescribed by this value.

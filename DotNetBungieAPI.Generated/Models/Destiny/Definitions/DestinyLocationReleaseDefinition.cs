@@ -33,13 +33,13 @@ public sealed class DestinyLocationReleaseDefinition
     ///     The Destination being pointed to by this location.
     /// </summary>
     [JsonPropertyName("destinationHash")]
-    public uint DestinationHash { get; init; }
+    public uint DestinationHash { get; init; } // DestinyDestinationDefinition
 
     /// <summary>
     ///     The Activity being pointed to by this location.
     /// </summary>
     [JsonPropertyName("activityHash")]
-    public uint ActivityHash { get; init; }
+    public uint ActivityHash { get; init; } // DestinyActivityDefinition
 
     /// <summary>
     ///     The Activity Graph being pointed to by this location.
