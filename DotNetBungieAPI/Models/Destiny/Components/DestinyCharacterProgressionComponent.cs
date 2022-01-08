@@ -3,7 +3,7 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Checklists;
 using DotNetBungieAPI.Models.Destiny.Definitions.Factions;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
-using DotNetBungieAPI.Models.Destiny.Definitions.ProgressionMappings;
+using DotNetBungieAPI.Models.Destiny.Definitions.Progressions;
 using DotNetBungieAPI.Models.Destiny.Milestones;
 using DotNetBungieAPI.Models.Destiny.Progressions;
 using DotNetBungieAPI.Models.Destiny.Quests;
@@ -20,9 +20,9 @@ public sealed record DestinyCharacterProgressionComponent
     ///     A Dictionary of all known progressions for the Character, keyed by the Progression's hash.
     /// </summary>
     [JsonPropertyName("progressions")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyProgressionMappingDefinition>, DestinyProgression>
+    public ReadOnlyDictionary<DefinitionHashPointer<DestinyProgressionDefinition>, DestinyProgression>
         Progressions { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyProgressionMappingDefinition>, DestinyProgression>.Empty;
+        ReadOnlyDictionaries<DefinitionHashPointer<DestinyProgressionDefinition>, DestinyProgression>.Empty;
 
     /// <summary>
     ///     A dictionary of all known Factions, keyed by the Faction's hash. It contains data about this character's status
@@ -65,6 +65,17 @@ public sealed record DestinyCharacterProgressionComponent
             ReadOnlyCollection<UninstancedItemObjective>> UninstancedItemObjectives { get; init; } =
         ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>,
             ReadOnlyCollection<UninstancedItemObjective>>.Empty;
+
+    /// <summary>
+    ///     Sometimes, you have items in your inventory that don't have instances, but still have perks (for example: Trials passage cards). This gives you the perk information for uninstanced items.
+    /// <para />
+    ///     This dictionary is keyed by item hash, which you can use to look up the corresponding item definition. The value is the list of perks states for the item.
+    /// </summary>
+    [JsonPropertyName("uninstancedItemPerks")]
+    public
+        ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, DestinyItemPerksComponent>
+        UninstancedItemPerks { get; init; } =
+        ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>, DestinyItemPerksComponent>.Empty;
 
     /// <summary>
     ///     The set of checklists that can be examined for this specific character, keyed by the hash identifier of the

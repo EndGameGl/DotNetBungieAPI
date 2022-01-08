@@ -1,5 +1,6 @@
 ﻿using DotNetBungieAPI.Attributes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
+using DotNetBungieAPI.Models.Destiny.Definitions.Stats;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.EnergyTypes;
 
@@ -41,21 +42,23 @@ public sealed record DestinyEnergyTypeDefinition : IDestinyDefinition, IDeepEqua
     ///     Energy Type for determining the energy type that the Armor is restricted to use)
     /// </summary>
     [JsonPropertyName("capacityStatHash")]
-    public uint? CapacityStatHash { get; init; }
+    public DefinitionHashPointer<DestinyStatDefinition> CapacityStat { get; init; }
+        = DefinitionHashPointer<DestinyStatDefinition>.Empty;
 
     /// <summary>
     ///     If this Energy Type can be used as a cost to pay for socketing Armor 2.0 items, this is the hash for the
     ///     DestinyInvestmentStatDefinition that stores the plug's raw cost.
     /// </summary>
     [JsonPropertyName("costStatHash")]
-    public uint CostStatHash { get; init; }
+    public DefinitionHashPointer<DestinyStatDefinition> CostStat { get; init; }
+        = DefinitionHashPointer<DestinyStatDefinition>.Empty;
 
     public bool DeepEquals(DestinyEnergyTypeDefinition other)
     {
         return other != null &&
                DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               CapacityStatHash == other.CapacityStatHash &&
-               CostStatHash == other.CostStatHash &&
+               CapacityStat.DeepEquals(other.CapacityStat) &&
+               CostStat.DeepEquals(other.CostStat) &&
                EnumValue == other.EnumValue &&
                ShowIcon == other.ShowIcon &&
                TransparentIconPath == other.TransparentIconPath &&

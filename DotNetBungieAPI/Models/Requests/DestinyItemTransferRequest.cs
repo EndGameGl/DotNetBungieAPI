@@ -2,8 +2,13 @@
 
 public sealed class DestinyItemTransferRequest
 {
-    public DestinyItemTransferRequest(uint itemReferenceHash, int stackSize, bool transferToVault, long itemId,
-        long characterId, BungieMembershipType membershipType)
+    public DestinyItemTransferRequest(
+        uint itemReferenceHash,
+        int stackSize,
+        bool transferToVault,
+        long itemId,
+        long characterId,
+        BungieMembershipType membershipType)
     {
         (ItemReferenceHash, StackSize, TransferToVault, ItemId, CharacterId, MembershipType) =
             (itemReferenceHash, stackSize, transferToVault, itemId, characterId, membershipType);

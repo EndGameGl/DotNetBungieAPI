@@ -1,4 +1,4 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
 namespace DotNetBungieAPI.Models.Destiny.Milestones;
 
@@ -11,8 +11,8 @@ public sealed record DestinyPublicMilestoneQuest
     ///     DestinyInventoryItemDefinition.setData property, and themselves are Items with their own renderable data.
     /// </summary>
     [JsonPropertyName("questItemHash")]
-    public DefinitionHashPointer<DestinyMilestoneDefinition> QuestItem { get; init; } =
-        DefinitionHashPointer<DestinyMilestoneDefinition>.Empty;
+    public DefinitionHashPointer<DestinyInventoryItemDefinition> QuestItem { get; init; } =
+        DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
 
     /// <summary>
     ///     A milestone need not have an active activity, but if there is one it will be returned here, along with any variant

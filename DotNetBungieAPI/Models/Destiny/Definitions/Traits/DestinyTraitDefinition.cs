@@ -14,6 +14,7 @@ public sealed record DestinyTraitDefinition : IDestinyDefinition, IDeepEquatable
 
     [JsonPropertyName("traitCategoryHash")]
     public DefinitionHashPointer<DestinyTraitCategoryDefinition> TraitCategory { get; init; }
+        = DefinitionHashPointer<DestinyTraitCategoryDefinition>.Empty;
 
     public bool DeepEquals(DestinyTraitDefinition other)
     {

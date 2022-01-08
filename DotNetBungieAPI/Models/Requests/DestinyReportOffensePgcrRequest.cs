@@ -13,7 +13,9 @@
 /// </summary>
 public sealed class DestinyReportOffensePgcrRequest
 {
-    public DestinyReportOffensePgcrRequest(uint[] reasonCategoryHashes, uint[] reasonHashes,
+    public DestinyReportOffensePgcrRequest(
+        uint[] reasonCategoryHashes,
+        uint[] reasonHashes,
         long offendingCharacterId)
     {
         ReasonCategoryHashes = reasonCategoryHashes;
