@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Traits;
 
 public sealed class DestinyTraitDefinition

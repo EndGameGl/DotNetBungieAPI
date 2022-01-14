@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace DotNetBungieAPI.Generated.Models.Content.Models;
 
 public sealed class ContentTypePropertySection

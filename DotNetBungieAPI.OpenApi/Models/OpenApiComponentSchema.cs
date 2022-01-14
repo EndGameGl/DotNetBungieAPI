@@ -25,7 +25,7 @@ public class OpenApiComponentSchema
 
     [JsonPropertyName("items")] public OpenApiComponentSchema Items { get; init; }
 
-    [JsonPropertyName("properties")] public Dictionary<string, OpenApiComponentSchema> Properties { get; init; }
+    [JsonPropertyName("properties")] public Dictionary<string, OpenApiComponentSchema>? Properties { get; init; }
 
     [JsonPropertyName("nullable")] public bool Nullable { get; init; }
 
@@ -35,7 +35,7 @@ public class OpenApiComponentSchema
     [JsonPropertyName("x-dictionary-key")] public OpenApiComponentSchema DictionaryKey { get; init; }
 
     [JsonPropertyName("x-mapped-definition")]
-    public OpenApiComponentSchema MappedDefinition { get; init; }
+    public OpenApiComponentSchema? MappedDefinition { get; init; }
 
     [JsonPropertyName("allOf")] public List<OpenApiComponentSchema> AllOf { get; init; }
 

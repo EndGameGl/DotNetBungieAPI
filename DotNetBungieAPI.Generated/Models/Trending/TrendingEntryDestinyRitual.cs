@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace DotNetBungieAPI.Generated.Models.Trending;
 
 public sealed class TrendingEntryDestinyRitual

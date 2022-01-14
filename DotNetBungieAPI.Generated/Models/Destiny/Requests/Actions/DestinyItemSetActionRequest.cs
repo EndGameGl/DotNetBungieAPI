@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace DotNetBungieAPI.Generated.Models.Destiny.Requests.Actions;
 
 public sealed class DestinyItemSetActionRequest

@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace DotNetBungieAPI.Generated.Models.Tags.Models.Contracts;
 
 public sealed class TagResponse

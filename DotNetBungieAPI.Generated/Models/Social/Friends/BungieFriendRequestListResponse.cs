@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace DotNetBungieAPI.Generated.Models.Social.Friends;
 
 public sealed class BungieFriendRequestListResponse

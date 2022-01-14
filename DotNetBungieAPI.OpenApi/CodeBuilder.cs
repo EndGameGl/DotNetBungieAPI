@@ -6,21 +6,21 @@ namespace DotNetBungieAPI.OpenApi;
 
 public class CodeBuilder
 {
-    private const string Usings = "using System.Text.Json.Serialization;";
+    private const string GlobalUsingsText = @"
+global using System.Text.Json.Serialization;
+
+namespace DotNetBungieAPI.Generated.Models;
+";
+
     private const string NameSpace = "namespace DotNetBungieAPI.Generated.Models;";
-
     private const string NamespaceBase = "namespace DotNetBungieAPI.Generated.Models";
-
     private const string ClassDeclaration = "public sealed class";
     private const string EnumDeclaration = "public enum";
 
     private const char OpenCurlyBrackets = '{';
     private const char CloseCurlyBrackets = '}';
 
-    private readonly string Indent = new string(' ', 4);
-    private readonly string NewLine = Environment.NewLine;
-
-    private const string LibTestFile = "Models.cs";
+    private readonly string _indent = new(' ', 4);
     private readonly string _destinationFolder;
 
     public CodeBuilder(string destinationFolder)
@@ -32,18 +32,26 @@ public class CodeBuilder
         }
     }
 
-    public async Task BuildDefinitions(Models.OpenApi openApiModel)
+    public async Task BuildBareDefinitions(Models.OpenApi openApiModel)
     {
         var typeTree = new TypeTree();
         typeTree.CreateTypeTree(openApiModel);
 
+        await using (var streamWriter = new StreamWriter(Path.Combine(
+                         _destinationFolder,
+                         "GlobalUsings.cs"), append: false))
+        {
+            await streamWriter.WriteAsync(GlobalUsingsText);
+        }
+
+
         foreach (var treeNode in typeTree.Nodes.Values)
         {
-            await IterateThroughTypeTree(openApiModel, treeNode, _destinationFolder);
+            await IterateThroughTypeTreeBare(openApiModel, treeNode, _destinationFolder);
         }
     }
 
-    private async Task IterateThroughTypeTree(
+    private async Task IterateThroughTypeTreeBare(
         Models.OpenApi openApiModel,
         TreeNode treeNode,
         string previousPath)
@@ -54,7 +62,7 @@ public class CodeBuilder
             Directory.CreateDirectory(currentFolder);
             foreach (var childNode in treeNode.Nodes.Values)
             {
-                await IterateThroughTypeTree(openApiModel, childNode, currentFolder);
+                await IterateThroughTypeTreeBare(openApiModel, childNode, currentFolder);
             }
         }
 
@@ -71,12 +79,13 @@ public class CodeBuilder
                 [1..^3];
 
             var typeSchema = openApiModel.Components.Schemas[fullTypeName];
+
+            if (typeSchema.Type is "object" && (typeSchema.Properties is null || !typeSchema.Properties.Any()))
+                return;
+
             await using var streamWriter = new StreamWriter(currentFile, append: false);
 
-            await streamWriter.WriteLineAsync(Usings);
-            await streamWriter.WriteLineAsync();
-
-            if (fullTypeName.Count(x => x == '.') > 0)
+            if (fullTypeName.Any(x => x == '.'))
             {
                 var pathData = fullTypeName.Split('.')[0..^1];
                 var stringBuilder = new StringBuilder();
@@ -109,12 +118,15 @@ public class CodeBuilder
                         {
                             await streamWriter.WriteLineAsync();
                             await WriteComment(true, propertyDefinition.Description, streamWriter);
-                            await streamWriter.WriteLineAsync($"{Indent}[JsonPropertyName(\"{propertyName}\")]");
-                            await streamWriter.WriteAsync($"{Indent}public {propertyDefinition.GetCSharpType()} {char.ToUpper(propertyName[0])}{propertyName[1..]} {{ get; init; }}");
+                            await streamWriter.WriteLineAsync($"{_indent}[JsonPropertyName(\"{propertyName}\")]");
+                            await streamWriter.WriteAsync(
+                                $"{_indent}public {propertyDefinition.GetCSharpType()} {char.ToUpper(propertyName[0])}{propertyName[1..]} {{ get; init; }}");
                             if (propertyDefinition.MappedDefinition is not null)
                             {
-                                await streamWriter.WriteAsync($" // {propertyDefinition.MappedDefinition.TypeReference.GetTypeName()}");
+                                await streamWriter.WriteAsync(
+                                    $" // {propertyDefinition.MappedDefinition.TypeReference.GetTypeName()}");
                             }
+
                             await streamWriter.WriteLineAsync();
                         }
                     }
@@ -135,13 +147,14 @@ public class CodeBuilder
                         if (i == beforeTotal)
                         {
                             await WriteComment(true, current.Description, streamWriter);
-                            await streamWriter.WriteLineAsync($"{Indent}{current.Identifier} = {current.NumericValue}");
+                            await streamWriter.WriteLineAsync(
+                                $"{_indent}{current.Identifier} = {current.NumericValue}");
                         }
                         else
                         {
                             await WriteComment(true, current.Description, streamWriter);
                             await streamWriter.WriteLineAsync(
-                                $"{Indent}{current.Identifier} = {current.NumericValue},");
+                                $"{_indent}{current.Identifier} = {current.NumericValue},");
                         }
                     }
 
@@ -155,11 +168,11 @@ public class CodeBuilder
     {
         if (!string.IsNullOrEmpty(text))
         {
-            await streamWriter.WriteLineAsync($"{(indent ? Indent : string.Empty)}/// <summary>");
+            await streamWriter.WriteLineAsync($"{(indent ? _indent : string.Empty)}/// <summary>");
             var entries = text.Split('\n');
             if (entries.Length == 1)
             {
-                await streamWriter.WriteLineAsync($"{(indent ? Indent : string.Empty)}///     {text}");
+                await streamWriter.WriteLineAsync($"{(indent ? _indent : string.Empty)}///     {text}");
             }
             else
             {
@@ -168,17 +181,17 @@ public class CodeBuilder
                     var descLine = entries[i];
                     if (i == entries.Length - 1)
                     {
-                        await streamWriter.WriteLineAsync($"{(indent ? Indent : string.Empty)}///     {descLine}");
+                        await streamWriter.WriteLineAsync($"{(indent ? _indent : string.Empty)}///     {descLine}");
                     }
                     else
                     {
-                        await streamWriter.WriteLineAsync($"{(indent ? Indent : string.Empty)}///     {descLine}");
-                        await streamWriter.WriteLineAsync($"{(indent ? Indent : string.Empty)}/// <para />");
+                        await streamWriter.WriteLineAsync($"{(indent ? _indent : string.Empty)}///     {descLine}");
+                        await streamWriter.WriteLineAsync($"{(indent ? _indent : string.Empty)}/// <para />");
                     }
                 }
             }
 
-            await streamWriter.WriteLineAsync($"{(indent ? Indent : string.Empty)}/// </summary>");
+            await streamWriter.WriteLineAsync($"{(indent ? _indent : string.Empty)}/// </summary>");
         }
     }
 }

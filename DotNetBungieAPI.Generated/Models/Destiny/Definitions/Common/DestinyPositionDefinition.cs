@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Common;
 
 public sealed class DestinyPositionDefinition

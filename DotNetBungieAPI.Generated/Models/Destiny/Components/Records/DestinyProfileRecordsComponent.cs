@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Records;
 
 public sealed class DestinyProfileRecordsComponent
