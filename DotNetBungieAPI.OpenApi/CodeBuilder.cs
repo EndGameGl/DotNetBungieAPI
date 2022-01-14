@@ -80,6 +80,9 @@ namespace DotNetBungieAPI.Generated.Models;
 
             var typeSchema = openApiModel.Components.Schemas[fullTypeName];
 
+            if (typeSchema.Type is "array")
+                return;
+            
             if (typeSchema.Type is "object" && (typeSchema.Properties is null || !typeSchema.Properties.Any()))
                 return;
 
