@@ -51,7 +51,7 @@ namespace DotNetBungieAPI.Generated.Models;
             {
                 if (typeSchema.Type is "object" && (typeSchema.Properties is null || !typeSchema.Properties.Any()))
                     continue;
-                await streamWriter.WriteLineAsync($"[JsonSerializable(typeof(DotNetBungieAPI.Generated.Models.{typeName}))]");
+                await streamWriter.WriteLineAsync($"[JsonSerializable(typeof({typeName}))]");
             }
             
             await streamWriter.WriteLineAsync("public partial class DotNetBungieAPIJsonSerializationContext : JsonSerializerContext { }");
