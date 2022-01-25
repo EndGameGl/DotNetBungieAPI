@@ -1,26 +1,25 @@
 namespace DotNetBungieAPI.Generated.Models.Social.Friends;
 
-public sealed class PlatformFriend
+public class PlatformFriend
 {
-
     [JsonPropertyName("platformDisplayName")]
-    public string PlatformDisplayName { get; init; }
+    public string PlatformDisplayName { get; set; }
 
     [JsonPropertyName("friendPlatform")]
-    public Social.Friends.PlatformFriendType FriendPlatform { get; init; }
+    public Social.Friends.PlatformFriendType FriendPlatform { get; set; }
 
     [JsonPropertyName("destinyMembershipId")]
-    public long? DestinyMembershipId { get; init; }
+    public long? DestinyMembershipId { get; set; }
 
     [JsonPropertyName("destinyMembershipType")]
-    public int? DestinyMembershipType { get; init; }
+    public int? DestinyMembershipType { get; set; }
 
     [JsonPropertyName("bungieNetMembershipId")]
-    public long? BungieNetMembershipId { get; init; }
+    public long? BungieNetMembershipId { get; set; }
 
     [JsonPropertyName("bungieGlobalDisplayName")]
-    public string BungieGlobalDisplayName { get; init; }
+    public string BungieGlobalDisplayName { get; set; }
 
     [JsonPropertyName("bungieGlobalDisplayNameCode")]
-    public short? BungieGlobalDisplayNameCode { get; init; }
+    public short? BungieGlobalDisplayNameCode { get; set; }
 }

@@ -1,6 +1,8 @@
 ﻿using System.Text;
+using System.Text.Json.Serialization;
 using DotNetBungieAPI.OpenApi.Analysis;
 using DotNetBungieAPI.OpenApi.Extensions;
+using DotNetBungieAPI.OpenApi.Metadata;
 
 namespace DotNetBungieAPI.OpenApi;
 
@@ -14,13 +16,7 @@ namespace DotNetBungieAPI.Generated.Models;
 
     private const string NameSpace = "namespace DotNetBungieAPI.Generated.Models;";
     private const string NamespaceBase = "namespace DotNetBungieAPI.Generated.Models";
-    private const string ClassDeclaration = "public sealed class";
-    private const string EnumDeclaration = "public enum";
-
-    private const char OpenCurlyBrackets = '{';
-    private const char CloseCurlyBrackets = '}';
-
-    private readonly string _indent = new(' ', 4);
+    
     private readonly string _destinationFolder;
 
     public CodeBuilder(string destinationFolder)
@@ -35,7 +31,7 @@ namespace DotNetBungieAPI.Generated.Models;
     public async Task BuildBareDefinitions(Models.OpenApi openApiModel)
     {
         var typeTree = new TypeTree();
-        typeTree.CreateTypeTree(openApiModel);
+        typeTree.CreateSchemasTypeTree(openApiModel);
 
         await using (var streamWriter = new StreamWriter(Path.Combine(
                          _destinationFolder,
@@ -43,11 +39,34 @@ namespace DotNetBungieAPI.Generated.Models;
         {
             await streamWriter.WriteAsync(GlobalUsingsText);
         }
-
+        
+        await using (var streamWriter = new StreamWriter(Path.Combine(
+                         _destinationFolder,
+                         "DotNetBungieAPIJsonSerializationContext.cs"), append: false))
+        {
+            await streamWriter.WriteLineAsync("namespace DotNetBungieAPI.Generated.Models;");
+            await streamWriter.WriteLineAsync();
+            
+            foreach (var (typeName, typeSchema) in openApiModel.Components.Schemas)
+            {
+                if (typeSchema.Type is "object" && (typeSchema.Properties is null || !typeSchema.Properties.Any()))
+                    continue;
+                await streamWriter.WriteLineAsync($"[JsonSerializable(typeof(DotNetBungieAPI.Generated.Models.{typeName}))]");
+            }
+            
+            await streamWriter.WriteLineAsync("public partial class DotNetBungieAPIJsonSerializationContext : JsonSerializerContext { }");
+        }
 
         foreach (var treeNode in typeTree.Nodes.Values)
         {
             await IterateThroughTypeTreeBare(openApiModel, treeNode, _destinationFolder);
+        }
+        
+        
+
+        foreach (var (responseName, openApiComponentResponse) in openApiModel.Components.Responses)
+        {
+            var schema = openApiComponentResponse.Content.Schema;
         }
     }
 
@@ -107,94 +126,16 @@ namespace DotNetBungieAPI.Generated.Models;
             }
 
             await streamWriter.WriteLineAsync();
-
-            await WriteComment(false, typeSchema.Description, streamWriter);
-
-            switch (typeSchema)
+            
+            try
             {
-                case { Type: "object" }:
-                    await streamWriter.WriteLineAsync($"{ClassDeclaration} {fullTypeName.GetTypeName()}");
-                    await streamWriter.WriteLineAsync(OpenCurlyBrackets);
-                    if (typeSchema.Properties is not null)
-                    {
-                        foreach (var (propertyName, propertyDefinition) in typeSchema.Properties)
-                        {
-                            await streamWriter.WriteLineAsync();
-                            await WriteComment(true, propertyDefinition.Description, streamWriter);
-                            await streamWriter.WriteLineAsync($"{_indent}[JsonPropertyName(\"{propertyName}\")]");
-                            await streamWriter.WriteAsync(
-                                $"{_indent}public {propertyDefinition.GetCSharpType()} {char.ToUpper(propertyName[0])}{propertyName[1..]} {{ get; init; }}");
-                            if (propertyDefinition.MappedDefinition is not null)
-                            {
-                                await streamWriter.WriteAsync(
-                                    $" // {propertyDefinition.MappedDefinition.TypeReference.GetTypeName()}");
-                            }
-
-                            await streamWriter.WriteLineAsync();
-                        }
-                    }
-
-                    await streamWriter.WriteLineAsync(CloseCurlyBrackets);
-                    break;
-                case { Enum: not null }:
-                    if (typeSchema.EnumIsBitmask)
-                        await streamWriter.WriteLineAsync("[System.Flags]");
-                    await streamWriter.WriteLineAsync(
-                        $"{EnumDeclaration} {fullTypeName.GetTypeName()} : {Resources.TypeMappings[typeSchema.Format]}");
-                    await streamWriter.WriteLineAsync(OpenCurlyBrackets);
-                    var total = typeSchema.EnumValues.Count;
-                    var beforeTotal = total - 1;
-                    for (int i = 0; i < total; i++)
-                    {
-                        var current = typeSchema.EnumValues[i];
-                        if (i == beforeTotal)
-                        {
-                            await WriteComment(true, current.Description, streamWriter);
-                            await streamWriter.WriteLineAsync(
-                                $"{_indent}{current.Identifier} = {current.NumericValue}");
-                        }
-                        else
-                        {
-                            await WriteComment(true, current.Description, streamWriter);
-                            await streamWriter.WriteLineAsync(
-                                $"{_indent}{current.Identifier} = {current.NumericValue},");
-                        }
-                    }
-
-                    await streamWriter.WriteLineAsync(CloseCurlyBrackets);
-                    break;
+                var typeData = TypeData.CreateTypeData(fullTypeName, typeSchema);
+                await typeData.SerializeTypeDataToStream(streamWriter);
             }
-        }
-    }
-
-    private async Task WriteComment(bool indent, string text, StreamWriter streamWriter)
-    {
-        if (!string.IsNullOrEmpty(text))
-        {
-            await streamWriter.WriteLineAsync($"{(indent ? _indent : string.Empty)}/// <summary>");
-            var entries = text.Split('\n');
-            if (entries.Length == 1)
+            catch (Exception e)
             {
-                await streamWriter.WriteLineAsync($"{(indent ? _indent : string.Empty)}///     {text}");
+                Console.WriteLine(e.Message);
             }
-            else
-            {
-                for (int i = 0; i < entries.Length; i++)
-                {
-                    var descLine = entries[i];
-                    if (i == entries.Length - 1)
-                    {
-                        await streamWriter.WriteLineAsync($"{(indent ? _indent : string.Empty)}///     {descLine}");
-                    }
-                    else
-                    {
-                        await streamWriter.WriteLineAsync($"{(indent ? _indent : string.Empty)}///     {descLine}");
-                        await streamWriter.WriteLineAsync($"{(indent ? _indent : string.Empty)}/// <para />");
-                    }
-                }
-            }
-
-            await streamWriter.WriteLineAsync($"{(indent ? _indent : string.Empty)}/// </summary>");
         }
     }
 }

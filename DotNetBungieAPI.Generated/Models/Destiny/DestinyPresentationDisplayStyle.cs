@@ -9,8 +9,12 @@ public enum DestinyPresentationDisplayStyle : int
     ///     Display the item as a category, through which sub-items are filtered.
     /// </summary>
     Category = 0,
+
     Badge = 1,
+
     Medals = 2,
+
     Collectible = 3,
+
     Record = 4
 }

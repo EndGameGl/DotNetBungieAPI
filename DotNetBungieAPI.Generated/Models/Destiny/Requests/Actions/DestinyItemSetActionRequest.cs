@@ -1,14 +1,13 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Requests.Actions;
 
-public sealed class DestinyItemSetActionRequest
+public class DestinyItemSetActionRequest
 {
-
     [JsonPropertyName("itemIds")]
-    public List<long> ItemIds { get; init; }
+    public List<long> ItemIds { get; set; }
 
     [JsonPropertyName("characterId")]
-    public long CharacterId { get; init; }
+    public long CharacterId { get; set; }
 
     [JsonPropertyName("membershipType")]
-    public BungieMembershipType MembershipType { get; init; }
+    public BungieMembershipType MembershipType { get; set; }
 }

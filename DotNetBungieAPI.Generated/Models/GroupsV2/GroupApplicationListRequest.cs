@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public sealed class GroupApplicationListRequest
+public class GroupApplicationListRequest
 {
-
     [JsonPropertyName("memberships")]
-    public List<User.UserMembership> Memberships { get; init; }
+    public List<User.UserMembership> Memberships { get; set; }
 
     [JsonPropertyName("message")]
-    public string Message { get; init; }
+    public string Message { get; set; }
 }

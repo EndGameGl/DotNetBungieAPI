@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public sealed class GroupPotentialMembership
+public class GroupPotentialMembership
 {
-
     [JsonPropertyName("member")]
-    public GroupsV2.GroupPotentialMember Member { get; init; }
+    public GroupsV2.GroupPotentialMember Member { get; set; }
 
     [JsonPropertyName("group")]
-    public GroupsV2.GroupV2 Group { get; init; }
+    public GroupsV2.GroupV2 Group { get; set; }
 }

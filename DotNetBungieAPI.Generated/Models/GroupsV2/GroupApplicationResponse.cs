@@ -1,8 +1,7 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public sealed class GroupApplicationResponse
+public class GroupApplicationResponse
 {
-
     [JsonPropertyName("resolution")]
-    public GroupsV2.GroupApplicationResolveState Resolution { get; init; }
+    public GroupsV2.GroupApplicationResolveState Resolution { get; set; }
 }

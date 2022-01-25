@@ -9,7 +9,7 @@ public class TypeTree
         Nodes = new Dictionary<string, TreeNode>();
     }
 
-    public void CreateTypeTree(Models.OpenApi openApi)
+    public void CreateSchemasTypeTree(Models.OpenApi openApi)
     {
         var modelTypes = openApi.Components.Schemas.Keys.ToList();
 

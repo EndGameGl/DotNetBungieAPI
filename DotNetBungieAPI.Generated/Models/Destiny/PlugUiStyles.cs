@@ -7,5 +7,6 @@ namespace DotNetBungieAPI.Generated.Models.Destiny;
 public enum PlugUiStyles : int
 {
     None = 0,
+
     Masterwork = 1
 }

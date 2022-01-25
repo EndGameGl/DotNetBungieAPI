@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.Interpolation;
 
-public sealed class InterpolationPoint
+public class InterpolationPoint
 {
-
     [JsonPropertyName("value")]
-    public int Value { get; init; }
+    public int Value { get; set; }
 
     [JsonPropertyName("weight")]
-    public int Weight { get; init; }
+    public int Weight { get; set; }
 }

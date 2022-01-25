@@ -1,17 +1,16 @@
 namespace DotNetBungieAPI.Generated.Models.User;
 
-public sealed class UserSearchResponseDetail
+public class UserSearchResponseDetail
 {
-
     [JsonPropertyName("bungieGlobalDisplayName")]
-    public string BungieGlobalDisplayName { get; init; }
+    public string BungieGlobalDisplayName { get; set; }
 
     [JsonPropertyName("bungieGlobalDisplayNameCode")]
-    public short? BungieGlobalDisplayNameCode { get; init; }
+    public short? BungieGlobalDisplayNameCode { get; set; }
 
     [JsonPropertyName("bungieNetMembershipId")]
-    public long? BungieNetMembershipId { get; init; }
+    public long? BungieNetMembershipId { get; set; }
 
     [JsonPropertyName("destinyMemberships")]
-    public List<User.UserInfoCard> DestinyMemberships { get; init; }
+    public List<User.UserInfoCard> DestinyMemberships { get; set; }
 }

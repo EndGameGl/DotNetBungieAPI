@@ -1,53 +1,52 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public sealed class GroupEditAction
+public class GroupEditAction
 {
-
     [JsonPropertyName("name")]
-    public string Name { get; init; }
+    public string Name { get; set; }
 
     [JsonPropertyName("about")]
-    public string About { get; init; }
+    public string About { get; set; }
 
     [JsonPropertyName("motto")]
-    public string Motto { get; init; }
+    public string Motto { get; set; }
 
     [JsonPropertyName("theme")]
-    public string Theme { get; init; }
+    public string Theme { get; set; }
 
     [JsonPropertyName("avatarImageIndex")]
-    public int? AvatarImageIndex { get; init; }
+    public int? AvatarImageIndex { get; set; }
 
     [JsonPropertyName("tags")]
-    public string Tags { get; init; }
+    public string Tags { get; set; }
 
     [JsonPropertyName("isPublic")]
-    public bool? IsPublic { get; init; }
+    public bool? IsPublic { get; set; }
 
     [JsonPropertyName("membershipOption")]
-    public int? MembershipOption { get; init; }
+    public int? MembershipOption { get; set; }
 
     [JsonPropertyName("isPublicTopicAdminOnly")]
-    public bool? IsPublicTopicAdminOnly { get; init; }
+    public bool? IsPublicTopicAdminOnly { get; set; }
 
     [JsonPropertyName("allowChat")]
-    public bool? AllowChat { get; init; }
+    public bool? AllowChat { get; set; }
 
     [JsonPropertyName("chatSecurity")]
-    public int? ChatSecurity { get; init; }
+    public int? ChatSecurity { get; set; }
 
     [JsonPropertyName("callsign")]
-    public string Callsign { get; init; }
+    public string Callsign { get; set; }
 
     [JsonPropertyName("locale")]
-    public string Locale { get; init; }
+    public string Locale { get; set; }
 
     [JsonPropertyName("homepage")]
-    public int? Homepage { get; init; }
+    public int? Homepage { get; set; }
 
     [JsonPropertyName("enableInvitationMessagingForAdmins")]
-    public bool? EnableInvitationMessagingForAdmins { get; init; }
+    public bool? EnableInvitationMessagingForAdmins { get; set; }
 
     [JsonPropertyName("defaultPublicity")]
-    public int? DefaultPublicity { get; init; }
+    public int? DefaultPublicity { get; set; }
 }

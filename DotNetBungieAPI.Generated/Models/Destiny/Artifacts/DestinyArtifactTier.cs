@@ -1,17 +1,16 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Artifacts;
 
-public sealed class DestinyArtifactTier
+public class DestinyArtifactTier
 {
-
     [JsonPropertyName("tierHash")]
-    public uint TierHash { get; init; }
+    public uint TierHash { get; set; }
 
     [JsonPropertyName("isUnlocked")]
-    public bool IsUnlocked { get; init; }
+    public bool IsUnlocked { get; set; }
 
     [JsonPropertyName("pointsToUnlock")]
-    public int PointsToUnlock { get; init; }
+    public int PointsToUnlock { get; set; }
 
     [JsonPropertyName("items")]
-    public List<Destiny.Artifacts.DestinyArtifactTierItem> Items { get; init; }
+    public List<Destiny.Artifacts.DestinyArtifactTierItem> Items { get; set; }
 }

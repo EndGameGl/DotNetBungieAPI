@@ -1,8 +1,7 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Director;
 
-public sealed class DestinyLinkedGraphEntryDefinition
+public class DestinyLinkedGraphEntryDefinition
 {
-
     [JsonPropertyName("activityGraphHash")]
-    public uint ActivityGraphHash { get; init; }
+    public uint ActivityGraphHash { get; set; }
 }

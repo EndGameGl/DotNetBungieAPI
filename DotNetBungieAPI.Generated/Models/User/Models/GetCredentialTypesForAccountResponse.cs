@@ -1,17 +1,16 @@
 namespace DotNetBungieAPI.Generated.Models.User.Models;
 
-public sealed class GetCredentialTypesForAccountResponse
+public class GetCredentialTypesForAccountResponse
 {
-
     [JsonPropertyName("credentialType")]
-    public BungieCredentialType CredentialType { get; init; }
+    public BungieCredentialType CredentialType { get; set; }
 
     [JsonPropertyName("credentialDisplayName")]
-    public string CredentialDisplayName { get; init; }
+    public string CredentialDisplayName { get; set; }
 
     [JsonPropertyName("isPublic")]
-    public bool IsPublic { get; init; }
+    public bool IsPublic { get; set; }
 
     [JsonPropertyName("credentialAsString")]
-    public string CredentialAsString { get; init; }
+    public string CredentialAsString { get; set; }
 }

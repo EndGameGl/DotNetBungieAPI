@@ -1,14 +1,13 @@
 namespace DotNetBungieAPI.Generated.Models.Tokens;
 
-public sealed class PartnerOfferClaimRequest
+public class PartnerOfferClaimRequest
 {
-
     [JsonPropertyName("PartnerOfferId")]
-    public string PartnerOfferId { get; init; }
+    public string PartnerOfferId { get; set; }
 
     [JsonPropertyName("BungieNetMembershipId")]
-    public long BungieNetMembershipId { get; init; }
+    public long BungieNetMembershipId { get; set; }
 
     [JsonPropertyName("TransactionId")]
-    public string TransactionId { get; init; }
+    public string TransactionId { get; set; }
 }

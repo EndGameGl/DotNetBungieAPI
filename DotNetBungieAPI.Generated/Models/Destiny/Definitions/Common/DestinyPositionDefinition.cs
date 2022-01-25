@@ -1,14 +1,13 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Common;
 
-public sealed class DestinyPositionDefinition
+public class DestinyPositionDefinition
 {
-
     [JsonPropertyName("x")]
-    public int X { get; init; }
+    public int X { get; set; }
 
     [JsonPropertyName("y")]
-    public int Y { get; init; }
+    public int Y { get; set; }
 
     [JsonPropertyName("z")]
-    public int Z { get; init; }
+    public int Z { get; set; }
 }

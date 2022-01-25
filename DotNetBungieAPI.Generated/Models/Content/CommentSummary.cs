@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.Content;
 
-public sealed class CommentSummary
+public class CommentSummary
 {
-
     [JsonPropertyName("topicId")]
-    public long TopicId { get; init; }
+    public long TopicId { get; set; }
 
     [JsonPropertyName("commentCount")]
-    public int CommentCount { get; init; }
+    public int CommentCount { get; set; }
 }

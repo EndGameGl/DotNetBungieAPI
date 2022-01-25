@@ -3,12 +3,11 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Not terribly useful, some basic cooldown interaction info.
 /// </summary>
-public sealed class DestinyVendorSaleItemActionBlockDefinition
+public class DestinyVendorSaleItemActionBlockDefinition
 {
-
     [JsonPropertyName("executeSeconds")]
-    public float ExecuteSeconds { get; init; }
+    public float ExecuteSeconds { get; set; }
 
     [JsonPropertyName("isPositive")]
-    public bool IsPositive { get; init; }
+    public bool IsPositive { get; set; }
 }

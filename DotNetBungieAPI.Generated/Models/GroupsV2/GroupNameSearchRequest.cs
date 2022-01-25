@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public sealed class GroupNameSearchRequest
+public class GroupNameSearchRequest
 {
-
     [JsonPropertyName("groupName")]
-    public string GroupName { get; init; }
+    public string GroupName { get; set; }
 
     [JsonPropertyName("groupType")]
-    public GroupsV2.GroupType GroupType { get; init; }
+    public GroupsV2.GroupType GroupType { get; set; }
 }

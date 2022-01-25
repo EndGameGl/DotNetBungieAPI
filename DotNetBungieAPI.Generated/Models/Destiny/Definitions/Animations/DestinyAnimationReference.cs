@@ -1,14 +1,13 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Animations;
 
-public sealed class DestinyAnimationReference
+public class DestinyAnimationReference
 {
-
     [JsonPropertyName("animName")]
-    public string AnimName { get; init; }
+    public string AnimName { get; set; }
 
     [JsonPropertyName("animIdentifier")]
-    public string AnimIdentifier { get; init; }
+    public string AnimIdentifier { get; set; }
 
     [JsonPropertyName("path")]
-    public string Path { get; init; }
+    public string Path { get; set; }
 }

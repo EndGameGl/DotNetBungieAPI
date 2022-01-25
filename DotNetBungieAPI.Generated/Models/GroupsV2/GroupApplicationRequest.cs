@@ -1,8 +1,7 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public sealed class GroupApplicationRequest
+public class GroupApplicationRequest
 {
-
     [JsonPropertyName("message")]
-    public string Message { get; init; }
+    public string Message { get; set; }
 }

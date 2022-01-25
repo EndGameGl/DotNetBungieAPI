@@ -1,8 +1,7 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 
-public sealed class DestinyArtDyeReference
+public class DestinyArtDyeReference
 {
-
     [JsonPropertyName("artDyeChannelHash")]
-    public uint ArtDyeChannelHash { get; init; }
+    public uint ArtDyeChannelHash { get; set; }
 }

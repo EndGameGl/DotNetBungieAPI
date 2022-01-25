@@ -1,23 +1,22 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public sealed class DestinyHistoricalStatsByPeriod
+public class DestinyHistoricalStatsByPeriod
 {
-
     [JsonPropertyName("allTime")]
-    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue> AllTime { get; init; }
+    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue> AllTime { get; set; }
 
     [JsonPropertyName("allTimeTier1")]
-    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue> AllTimeTier1 { get; init; }
+    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue> AllTimeTier1 { get; set; }
 
     [JsonPropertyName("allTimeTier2")]
-    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue> AllTimeTier2 { get; init; }
+    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue> AllTimeTier2 { get; set; }
 
     [JsonPropertyName("allTimeTier3")]
-    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue> AllTimeTier3 { get; init; }
+    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue> AllTimeTier3 { get; set; }
 
     [JsonPropertyName("daily")]
-    public List<Destiny.HistoricalStats.DestinyHistoricalStatsPeriodGroup> Daily { get; init; }
+    public List<Destiny.HistoricalStats.DestinyHistoricalStatsPeriodGroup> Daily { get; set; }
 
     [JsonPropertyName("monthly")]
-    public List<Destiny.HistoricalStats.DestinyHistoricalStatsPeriodGroup> Monthly { get; init; }
+    public List<Destiny.HistoricalStats.DestinyHistoricalStatsPeriodGroup> Monthly { get; set; }
 }

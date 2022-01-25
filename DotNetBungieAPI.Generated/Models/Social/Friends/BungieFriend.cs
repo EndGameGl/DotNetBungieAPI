@@ -1,29 +1,28 @@
 namespace DotNetBungieAPI.Generated.Models.Social.Friends;
 
-public sealed class BungieFriend
+public class BungieFriend
 {
-
     [JsonPropertyName("lastSeenAsMembershipId")]
-    public long LastSeenAsMembershipId { get; init; }
+    public long LastSeenAsMembershipId { get; set; }
 
     [JsonPropertyName("lastSeenAsBungieMembershipType")]
-    public BungieMembershipType LastSeenAsBungieMembershipType { get; init; }
+    public BungieMembershipType LastSeenAsBungieMembershipType { get; set; }
 
     [JsonPropertyName("bungieGlobalDisplayName")]
-    public string BungieGlobalDisplayName { get; init; }
+    public string BungieGlobalDisplayName { get; set; }
 
     [JsonPropertyName("bungieGlobalDisplayNameCode")]
-    public short? BungieGlobalDisplayNameCode { get; init; }
+    public short? BungieGlobalDisplayNameCode { get; set; }
 
     [JsonPropertyName("onlineStatus")]
-    public Social.Friends.PresenceStatus OnlineStatus { get; init; }
+    public Social.Friends.PresenceStatus OnlineStatus { get; set; }
 
     [JsonPropertyName("onlineTitle")]
-    public Social.Friends.PresenceOnlineStateFlags OnlineTitle { get; init; }
+    public Social.Friends.PresenceOnlineStateFlags OnlineTitle { get; set; }
 
     [JsonPropertyName("relationship")]
-    public Social.Friends.FriendRelationshipState Relationship { get; init; }
+    public Social.Friends.FriendRelationshipState Relationship { get; set; }
 
     [JsonPropertyName("bungieNetUser")]
-    public User.GeneralUser BungieNetUser { get; init; }
+    public User.GeneralUser BungieNetUser { get; set; }
 }

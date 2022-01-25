@@ -1,14 +1,13 @@
 namespace DotNetBungieAPI.Generated.Models.User;
 
-public sealed class UserToUserContext
+public class UserToUserContext
 {
-
     [JsonPropertyName("isFollowing")]
-    public bool IsFollowing { get; init; }
+    public bool IsFollowing { get; set; }
 
     [JsonPropertyName("ignoreStatus")]
-    public Ignores.IgnoreResponse IgnoreStatus { get; init; }
+    public Ignores.IgnoreResponse IgnoreStatus { get; set; }
 
     [JsonPropertyName("globalIgnoreEndDate")]
-    public DateTime? GlobalIgnoreEndDate { get; init; }
+    public DateTime? GlobalIgnoreEndDate { get; set; }
 }

@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Metrics;
 
-public sealed class DestinyMetricComponent
+public class DestinyMetricComponent
 {
-
     [JsonPropertyName("invisible")]
-    public bool Invisible { get; init; }
+    public bool Invisible { get; set; }
 
     [JsonPropertyName("objectiveProgress")]
-    public Destiny.Quests.DestinyObjectiveProgress ObjectiveProgress { get; init; }
+    public Destiny.Quests.DestinyObjectiveProgress ObjectiveProgress { get; set; }
 }

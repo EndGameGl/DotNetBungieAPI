@@ -1,20 +1,19 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public sealed class GroupPotentialMember
+public class GroupPotentialMember
 {
-
     [JsonPropertyName("potentialStatus")]
-    public GroupsV2.GroupPotentialMemberStatus PotentialStatus { get; init; }
+    public GroupsV2.GroupPotentialMemberStatus PotentialStatus { get; set; }
 
     [JsonPropertyName("groupId")]
-    public long GroupId { get; init; }
+    public long GroupId { get; set; }
 
     [JsonPropertyName("destinyUserInfo")]
-    public GroupsV2.GroupUserInfoCard DestinyUserInfo { get; init; }
+    public GroupsV2.GroupUserInfoCard DestinyUserInfo { get; set; }
 
     [JsonPropertyName("bungieNetUserInfo")]
-    public User.UserInfoCard BungieNetUserInfo { get; init; }
+    public User.UserInfoCard BungieNetUserInfo { get; set; }
 
     [JsonPropertyName("joinDate")]
-    public DateTime JoinDate { get; init; }
+    public DateTime JoinDate { get; set; }
 }

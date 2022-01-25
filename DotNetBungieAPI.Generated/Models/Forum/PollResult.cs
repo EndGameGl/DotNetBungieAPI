@@ -1,20 +1,19 @@
 namespace DotNetBungieAPI.Generated.Models.Forum;
 
-public sealed class PollResult
+public class PollResult
 {
-
     [JsonPropertyName("answerText")]
-    public string AnswerText { get; init; }
+    public string AnswerText { get; set; }
 
     [JsonPropertyName("answerSlot")]
-    public int AnswerSlot { get; init; }
+    public int AnswerSlot { get; set; }
 
     [JsonPropertyName("lastVoteDate")]
-    public DateTime LastVoteDate { get; init; }
+    public DateTime LastVoteDate { get; set; }
 
     [JsonPropertyName("votes")]
-    public int Votes { get; init; }
+    public int Votes { get; set; }
 
     [JsonPropertyName("requestingUserVoted")]
-    public bool RequestingUserVoted { get; init; }
+    public bool RequestingUserVoted { get; set; }
 }

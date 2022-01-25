@@ -1,14 +1,13 @@
 namespace DotNetBungieAPI.Generated.Models.Content;
 
-public sealed class ContentRepresentation
+public class ContentRepresentation
 {
-
     [JsonPropertyName("name")]
-    public string Name { get; init; }
+    public string Name { get; set; }
 
     [JsonPropertyName("path")]
-    public string Path { get; init; }
+    public string Path { get; set; }
 
     [JsonPropertyName("validationString")]
-    public string ValidationString { get; init; }
+    public string ValidationString { get; set; }
 }

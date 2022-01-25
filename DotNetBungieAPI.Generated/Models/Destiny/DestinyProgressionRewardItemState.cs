@@ -7,18 +7,22 @@ namespace DotNetBungieAPI.Generated.Models.Destiny;
 public enum DestinyProgressionRewardItemState : int
 {
     None = 0,
+
     /// <summary>
     ///     If this is set, the reward should be hidden.
     /// </summary>
     Invisible = 1,
+
     /// <summary>
     ///     If this is set, the reward has been earned.
     /// </summary>
     Earned = 2,
+
     /// <summary>
     ///     If this is set, the reward has been claimed.
     /// </summary>
     Claimed = 4,
+
     /// <summary>
     ///     If this is set, the reward is allowed to be claimed by this Character. An item can be earned but still can't be claimed in certain circumstances, like if it's only allowed for certain subclasses. It also might not be able to be claimed if you already claimed it!
     /// </summary>

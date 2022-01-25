@@ -1,14 +1,13 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public sealed class GroupOptionalConversationEditRequest
+public class GroupOptionalConversationEditRequest
 {
-
     [JsonPropertyName("chatEnabled")]
-    public bool? ChatEnabled { get; init; }
+    public bool? ChatEnabled { get; set; }
 
     [JsonPropertyName("chatName")]
-    public string ChatName { get; init; }
+    public string ChatName { get; set; }
 
     [JsonPropertyName("chatSecurity")]
-    public int? ChatSecurity { get; init; }
+    public int? ChatSecurity { get; set; }
 }

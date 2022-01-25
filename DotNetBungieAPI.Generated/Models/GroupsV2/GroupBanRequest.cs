@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public sealed class GroupBanRequest
+public class GroupBanRequest
 {
-
     [JsonPropertyName("comment")]
-    public string Comment { get; init; }
+    public string Comment { get; set; }
 
     [JsonPropertyName("length")]
-    public Ignores.IgnoreLength Length { get; init; }
+    public Ignores.IgnoreLength Length { get; set; }
 }

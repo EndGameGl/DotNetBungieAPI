@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public sealed class GroupMemberLeaveResult
+public class GroupMemberLeaveResult
 {
-
     [JsonPropertyName("group")]
-    public GroupsV2.GroupV2 Group { get; init; }
+    public GroupsV2.GroupV2 Group { get; set; }
 
     [JsonPropertyName("groupDeleted")]
-    public bool GroupDeleted { get; init; }
+    public bool GroupDeleted { get; set; }
 }

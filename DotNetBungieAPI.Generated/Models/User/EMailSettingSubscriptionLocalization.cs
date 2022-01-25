@@ -3,27 +3,26 @@ namespace DotNetBungieAPI.Generated.Models.User;
 /// <summary>
 ///     Localized text relevant to a given EMail setting in a given localization. Extra settings specifically for subscriptions.
 /// </summary>
-public sealed class EMailSettingSubscriptionLocalization
+public class EMailSettingSubscriptionLocalization
 {
-
     [JsonPropertyName("unknownUserDescription")]
-    public string UnknownUserDescription { get; init; }
+    public string UnknownUserDescription { get; set; }
 
     [JsonPropertyName("registeredUserDescription")]
-    public string RegisteredUserDescription { get; init; }
+    public string RegisteredUserDescription { get; set; }
 
     [JsonPropertyName("unregisteredUserDescription")]
-    public string UnregisteredUserDescription { get; init; }
+    public string UnregisteredUserDescription { get; set; }
 
     [JsonPropertyName("unknownUserActionText")]
-    public string UnknownUserActionText { get; init; }
+    public string UnknownUserActionText { get; set; }
 
     [JsonPropertyName("knownUserActionText")]
-    public string KnownUserActionText { get; init; }
+    public string KnownUserActionText { get; set; }
 
     [JsonPropertyName("title")]
-    public string Title { get; init; }
+    public string Title { get; set; }
 
     [JsonPropertyName("description")]
-    public string Description { get; init; }
+    public string Description { get; set; }
 }

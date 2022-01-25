@@ -1,62 +1,61 @@
 namespace DotNetBungieAPI.Generated.Models.Fireteam;
 
-public sealed class FireteamSummary
+public class FireteamSummary
 {
-
     [JsonPropertyName("fireteamId")]
-    public long FireteamId { get; init; }
+    public long FireteamId { get; set; }
 
     [JsonPropertyName("groupId")]
-    public long GroupId { get; init; }
+    public long GroupId { get; set; }
 
     [JsonPropertyName("platform")]
-    public Fireteam.FireteamPlatform Platform { get; init; }
+    public Fireteam.FireteamPlatform Platform { get; set; }
 
     [JsonPropertyName("activityType")]
-    public int ActivityType { get; init; }
+    public int ActivityType { get; set; }
 
     [JsonPropertyName("isImmediate")]
-    public bool IsImmediate { get; init; }
+    public bool IsImmediate { get; set; }
 
     [JsonPropertyName("scheduledTime")]
-    public DateTime? ScheduledTime { get; init; }
+    public DateTime? ScheduledTime { get; set; }
 
     [JsonPropertyName("ownerMembershipId")]
-    public long OwnerMembershipId { get; init; }
+    public long OwnerMembershipId { get; set; }
 
     [JsonPropertyName("playerSlotCount")]
-    public int PlayerSlotCount { get; init; }
+    public int PlayerSlotCount { get; set; }
 
     [JsonPropertyName("alternateSlotCount")]
-    public int? AlternateSlotCount { get; init; }
+    public int? AlternateSlotCount { get; set; }
 
     [JsonPropertyName("availablePlayerSlotCount")]
-    public int AvailablePlayerSlotCount { get; init; }
+    public int AvailablePlayerSlotCount { get; set; }
 
     [JsonPropertyName("availableAlternateSlotCount")]
-    public int AvailableAlternateSlotCount { get; init; }
+    public int AvailableAlternateSlotCount { get; set; }
 
     [JsonPropertyName("title")]
-    public string Title { get; init; }
+    public string Title { get; set; }
 
     [JsonPropertyName("dateCreated")]
-    public DateTime DateCreated { get; init; }
+    public DateTime DateCreated { get; set; }
 
     [JsonPropertyName("dateModified")]
-    public DateTime? DateModified { get; init; }
+    public DateTime? DateModified { get; set; }
 
     [JsonPropertyName("isPublic")]
-    public bool IsPublic { get; init; }
+    public bool IsPublic { get; set; }
 
     [JsonPropertyName("locale")]
-    public string Locale { get; init; }
+    public string Locale { get; set; }
 
     [JsonPropertyName("isValid")]
-    public bool IsValid { get; init; }
+    public bool IsValid { get; set; }
 
     [JsonPropertyName("datePlayerModified")]
-    public DateTime DatePlayerModified { get; init; }
+    public DateTime DatePlayerModified { get; set; }
 
     [JsonPropertyName("titleBeforeModeration")]
-    public string TitleBeforeModeration { get; init; }
+    public string TitleBeforeModeration { get; set; }
 }

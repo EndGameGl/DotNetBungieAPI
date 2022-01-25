@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 
-public sealed class DestinyMilestoneChallengeActivityGraphNodeEntry
+public class DestinyMilestoneChallengeActivityGraphNodeEntry
 {
-
     [JsonPropertyName("activityGraphHash")]
-    public uint ActivityGraphHash { get; init; }
+    public uint ActivityGraphHash { get; set; }
 
     [JsonPropertyName("activityGraphNodeHash")]
-    public uint ActivityGraphNodeHash { get; init; }
+    public uint ActivityGraphNodeHash { get; set; }
 }

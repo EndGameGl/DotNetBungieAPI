@@ -1,32 +1,31 @@
 namespace DotNetBungieAPI.Generated.Models;
 
-public sealed class SearchResultOfContentItemPublicContract
+public class SearchResultOfContentItemPublicContract
 {
-
     [JsonPropertyName("results")]
-    public List<Content.ContentItemPublicContract> Results { get; init; }
+    public List<Content.ContentItemPublicContract> Results { get; set; }
 
     [JsonPropertyName("totalResults")]
-    public int TotalResults { get; init; }
+    public int TotalResults { get; set; }
 
     [JsonPropertyName("hasMore")]
-    public bool HasMore { get; init; }
+    public bool HasMore { get; set; }
 
     [JsonPropertyName("query")]
-    public Queries.PagedQuery Query { get; init; }
+    public Queries.PagedQuery Query { get; set; }
 
     [JsonPropertyName("replacementContinuationToken")]
-    public string ReplacementContinuationToken { get; init; }
+    public string ReplacementContinuationToken { get; set; }
 
     /// <summary>
-    ///     If useTotalResults is true, then totalResults represents an accurate count.
+    ///     If useTotalResults is true, then totalResults represents an accurate count.
     /// <para />
-    ///     If False, it does not, and may be estimated/only the size of the current page.
+    ///     If False, it does not, and may be estimated/only the size of the current page.
     /// <para />
-    ///     Either way, you should probably always only trust hasMore.
+    ///     Either way, you should probably always only trust hasMore.
     /// <para />
     ///     This is a long-held historical throwback to when we used to do paging with known total results. Those queries toasted our database, and we were left to hastily alter our endpoints and create backward- compatible shims, of which useTotalResults is one.
     /// </summary>
     [JsonPropertyName("useTotalResults")]
-    public bool UseTotalResults { get; init; }
+    public bool UseTotalResults { get; set; }
 }

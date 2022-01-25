@@ -1,26 +1,25 @@
 namespace DotNetBungieAPI.Generated.Models.Fireteam;
 
-public sealed class FireteamMember
+public class FireteamMember
 {
-
     [JsonPropertyName("destinyUserInfo")]
-    public Fireteam.FireteamUserInfoCard DestinyUserInfo { get; init; }
+    public Fireteam.FireteamUserInfoCard DestinyUserInfo { get; set; }
 
     [JsonPropertyName("bungieNetUserInfo")]
-    public User.UserInfoCard BungieNetUserInfo { get; init; }
+    public User.UserInfoCard BungieNetUserInfo { get; set; }
 
     [JsonPropertyName("characterId")]
-    public long CharacterId { get; init; }
+    public long CharacterId { get; set; }
 
     [JsonPropertyName("dateJoined")]
-    public DateTime DateJoined { get; init; }
+    public DateTime DateJoined { get; set; }
 
     [JsonPropertyName("hasMicrophone")]
-    public bool HasMicrophone { get; init; }
+    public bool HasMicrophone { get; set; }
 
     [JsonPropertyName("lastPlatformInviteAttemptDate")]
-    public DateTime LastPlatformInviteAttemptDate { get; init; }
+    public DateTime LastPlatformInviteAttemptDate { get; set; }
 
     [JsonPropertyName("lastPlatformInviteAttemptResult")]
-    public Fireteam.FireteamPlatformInviteResult LastPlatformInviteAttemptResult { get; init; }
+    public Fireteam.FireteamPlatformInviteResult LastPlatformInviteAttemptResult { get; set; }
 }

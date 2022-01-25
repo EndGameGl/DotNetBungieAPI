@@ -1,14 +1,13 @@
 namespace DotNetBungieAPI.Generated.Models.Content.Models;
 
-public sealed class ContentTypeDefaultValue
+public class ContentTypeDefaultValue
 {
-
     [JsonPropertyName("whenClause")]
-    public string WhenClause { get; init; }
+    public string WhenClause { get; set; }
 
     [JsonPropertyName("whenValue")]
-    public string WhenValue { get; init; }
+    public string WhenValue { get; set; }
 
     [JsonPropertyName("defaultValue")]
-    public string DefaultValue { get; init; }
+    public string DefaultValue { get; set; }
 }

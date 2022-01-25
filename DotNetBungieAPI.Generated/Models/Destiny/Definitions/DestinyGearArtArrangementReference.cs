@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 
-public sealed class DestinyGearArtArrangementReference
+public class DestinyGearArtArrangementReference
 {
-
     [JsonPropertyName("classHash")]
-    public uint ClassHash { get; init; } // DestinyClassDefinition
+    public uint ClassHash { get; set; }
 
     [JsonPropertyName("artArrangementHash")]
-    public uint ArtArrangementHash { get; init; }
+    public uint ArtArrangementHash { get; set; }
 }

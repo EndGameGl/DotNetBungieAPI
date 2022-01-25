@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.User;
 
-public sealed class ExactSearchRequest
+public class ExactSearchRequest
 {
-
     [JsonPropertyName("displayName")]
-    public string DisplayName { get; init; }
+    public string DisplayName { get; set; }
 
     [JsonPropertyName("displayNameCode")]
-    public short DisplayNameCode { get; init; }
+    public short DisplayNameCode { get; set; }
 }

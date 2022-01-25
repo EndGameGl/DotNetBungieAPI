@@ -1,8 +1,7 @@
 namespace DotNetBungieAPI.Generated.Models.User;
 
-public sealed class UserSearchPrefixRequest
+public class UserSearchPrefixRequest
 {
-
     [JsonPropertyName("displayNamePrefix")]
-    public string DisplayNamePrefix { get; init; }
+    public string DisplayNamePrefix { get; set; }
 }

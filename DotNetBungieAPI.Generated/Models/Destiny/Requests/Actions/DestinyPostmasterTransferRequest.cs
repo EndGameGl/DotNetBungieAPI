@@ -1,23 +1,22 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Requests.Actions;
 
-public sealed class DestinyPostmasterTransferRequest
+public class DestinyPostmasterTransferRequest
 {
-
     [JsonPropertyName("itemReferenceHash")]
-    public uint ItemReferenceHash { get; init; } // DestinyInventoryItemDefinition
+    public uint ItemReferenceHash { get; set; }
 
     [JsonPropertyName("stackSize")]
-    public int StackSize { get; init; }
+    public int StackSize { get; set; }
 
     /// <summary>
     ///     The instance ID of the item for this action request.
     /// </summary>
     [JsonPropertyName("itemId")]
-    public long ItemId { get; init; }
+    public long ItemId { get; set; }
 
     [JsonPropertyName("characterId")]
-    public long CharacterId { get; init; }
+    public long CharacterId { get; set; }
 
     [JsonPropertyName("membershipType")]
-    public BungieMembershipType MembershipType { get; init; }
+    public BungieMembershipType MembershipType { get; set; }
 }

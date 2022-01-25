@@ -1,35 +1,34 @@
 namespace DotNetBungieAPI.Generated.Models.Forum;
 
-public sealed class ForumRecruitmentDetail
+public class ForumRecruitmentDetail
 {
-
     [JsonPropertyName("topicId")]
-    public long TopicId { get; init; }
+    public long TopicId { get; set; }
 
     [JsonPropertyName("microphoneRequired")]
-    public bool MicrophoneRequired { get; init; }
+    public bool MicrophoneRequired { get; set; }
 
     [JsonPropertyName("intensity")]
-    public Forum.ForumRecruitmentIntensityLabel Intensity { get; init; }
+    public Forum.ForumRecruitmentIntensityLabel Intensity { get; set; }
 
     [JsonPropertyName("tone")]
-    public Forum.ForumRecruitmentToneLabel Tone { get; init; }
+    public Forum.ForumRecruitmentToneLabel Tone { get; set; }
 
     [JsonPropertyName("approved")]
-    public bool Approved { get; init; }
+    public bool Approved { get; set; }
 
     [JsonPropertyName("conversationId")]
-    public long? ConversationId { get; init; }
+    public long? ConversationId { get; set; }
 
     [JsonPropertyName("playerSlotsTotal")]
-    public int PlayerSlotsTotal { get; init; }
+    public int PlayerSlotsTotal { get; set; }
 
     [JsonPropertyName("playerSlotsRemaining")]
-    public int PlayerSlotsRemaining { get; init; }
+    public int PlayerSlotsRemaining { get; set; }
 
     [JsonPropertyName("Fireteam")]
-    public List<User.GeneralUser> Fireteam { get; init; }
+    public List<User.GeneralUser> Fireteam { get; set; }
 
     [JsonPropertyName("kickedPlayerIds")]
-    public List<long> KickedPlayerIds { get; init; }
+    public List<long> KickedPlayerIds { get; set; }
 }

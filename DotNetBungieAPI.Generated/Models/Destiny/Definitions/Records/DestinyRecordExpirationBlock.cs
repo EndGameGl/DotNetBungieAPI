@@ -3,15 +3,14 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Records;
 /// <summary>
 ///     If this record has an expiration after which it cannot be earned, this is some information about that expiration.
 /// </summary>
-public sealed class DestinyRecordExpirationBlock
+public class DestinyRecordExpirationBlock
 {
-
     [JsonPropertyName("hasExpiration")]
-    public bool HasExpiration { get; init; }
+    public bool HasExpiration { get; set; }
 
     [JsonPropertyName("description")]
-    public string Description { get; init; }
+    public string Description { get; set; }
 
     [JsonPropertyName("icon")]
-    public string Icon { get; init; }
+    public string Icon { get; set; }
 }

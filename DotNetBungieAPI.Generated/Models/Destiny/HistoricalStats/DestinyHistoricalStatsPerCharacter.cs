@@ -1,17 +1,16 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public sealed class DestinyHistoricalStatsPerCharacter
+public class DestinyHistoricalStatsPerCharacter
 {
-
     [JsonPropertyName("characterId")]
-    public long CharacterId { get; init; }
+    public long CharacterId { get; set; }
 
     [JsonPropertyName("deleted")]
-    public bool Deleted { get; init; }
+    public bool Deleted { get; set; }
 
     [JsonPropertyName("results")]
-    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsByPeriod> Results { get; init; }
+    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsByPeriod> Results { get; set; }
 
     [JsonPropertyName("merged")]
-    public Destiny.HistoricalStats.DestinyHistoricalStatsByPeriod Merged { get; init; }
+    public Destiny.HistoricalStats.DestinyHistoricalStatsByPeriod Merged { get; set; }
 }

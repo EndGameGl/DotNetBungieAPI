@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models;
 
-public sealed class DestinyBaseItemComponentSetOfint64
+public class DestinyBaseItemComponentSetOfint64
 {
-
     [JsonPropertyName("objectives")]
-    public DictionaryComponentResponseOfint64AndDestinyItemObjectivesComponent Objectives { get; init; }
+    public DictionaryComponentResponseOfint64AndDestinyItemObjectivesComponent Objectives { get; set; }
 
     [JsonPropertyName("perks")]
-    public DictionaryComponentResponseOfint64AndDestinyItemPerksComponent Perks { get; init; }
+    public DictionaryComponentResponseOfint64AndDestinyItemPerksComponent Perks { get; set; }
 }

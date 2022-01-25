@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Records;
 
-public sealed class SchemaRecordStateBlock
+public class SchemaRecordStateBlock
 {
-
     [JsonPropertyName("featuredPriority")]
-    public int FeaturedPriority { get; init; }
+    public int FeaturedPriority { get; set; }
 
     [JsonPropertyName("obscuredString")]
-    public string ObscuredString { get; init; }
+    public string ObscuredString { get; set; }
 }

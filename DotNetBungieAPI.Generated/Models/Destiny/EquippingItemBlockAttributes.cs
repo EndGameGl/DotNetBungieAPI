@@ -4,5 +4,6 @@ namespace DotNetBungieAPI.Generated.Models.Destiny;
 public enum EquippingItemBlockAttributes : int
 {
     None = 0,
+
     EquipOnAcquire = 1
 }

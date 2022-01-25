@@ -7,10 +7,12 @@ namespace DotNetBungieAPI.Generated.Models.Destiny;
 public enum DestinyPresentationNodeState : int
 {
     None = 0,
+
     /// <summary>
     ///     If this is set, the game recommends that you not show this node. But you know your life, do what you've got to do.
     /// </summary>
     Invisible = 1,
+
     /// <summary>
     ///     Turns out Presentation Nodes can also be obscured. If they are, this is set.
     /// </summary>

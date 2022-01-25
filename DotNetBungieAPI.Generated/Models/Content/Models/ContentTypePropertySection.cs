@@ -1,14 +1,13 @@
 namespace DotNetBungieAPI.Generated.Models.Content.Models;
 
-public sealed class ContentTypePropertySection
+public class ContentTypePropertySection
 {
-
     [JsonPropertyName("name")]
-    public string Name { get; init; }
+    public string Name { get; set; }
 
     [JsonPropertyName("readableName")]
-    public string ReadableName { get; init; }
+    public string ReadableName { get; set; }
 
     [JsonPropertyName("collapsed")]
-    public bool Collapsed { get; init; }
+    public bool Collapsed { get; set; }
 }

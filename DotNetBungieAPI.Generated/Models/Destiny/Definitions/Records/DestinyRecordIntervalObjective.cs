@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Records;
 
-public sealed class DestinyRecordIntervalObjective
+public class DestinyRecordIntervalObjective
 {
-
     [JsonPropertyName("intervalObjectiveHash")]
-    public uint IntervalObjectiveHash { get; init; } // DestinyObjectiveDefinition
+    public uint IntervalObjectiveHash { get; set; }
 
     [JsonPropertyName("intervalScoreValue")]
-    public int IntervalScoreValue { get; init; }
+    public int IntervalScoreValue { get; set; }
 }

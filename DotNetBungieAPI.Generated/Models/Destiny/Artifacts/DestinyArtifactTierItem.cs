@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Artifacts;
 
-public sealed class DestinyArtifactTierItem
+public class DestinyArtifactTierItem
 {
-
     [JsonPropertyName("itemHash")]
-    public uint ItemHash { get; init; } // DestinyInventoryItemDefinition
+    public uint ItemHash { get; set; }
 
     [JsonPropertyName("isActive")]
-    public bool IsActive { get; init; }
+    public bool IsActive { get; set; }
 }

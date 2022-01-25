@@ -1,8 +1,7 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Records;
 
-public sealed class DestinyRecordIntervalRewards
+public class DestinyRecordIntervalRewards
 {
-
     [JsonPropertyName("intervalRewardItems")]
-    public List<Destiny.DestinyItemQuantity> IntervalRewardItems { get; init; }
+    public List<Destiny.DestinyItemQuantity> IntervalRewardItems { get; set; }
 }

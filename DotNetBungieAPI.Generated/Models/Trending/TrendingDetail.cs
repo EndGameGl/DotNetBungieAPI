@@ -1,29 +1,28 @@
 namespace DotNetBungieAPI.Generated.Models.Trending;
 
-public sealed class TrendingDetail
+public class TrendingDetail
 {
-
     [JsonPropertyName("identifier")]
-    public string Identifier { get; init; }
+    public string Identifier { get; set; }
 
     [JsonPropertyName("entityType")]
-    public Trending.TrendingEntryType EntityType { get; init; }
+    public Trending.TrendingEntryType EntityType { get; set; }
 
     [JsonPropertyName("news")]
-    public Trending.TrendingEntryNews News { get; init; }
+    public Trending.TrendingEntryNews News { get; set; }
 
     [JsonPropertyName("support")]
-    public Trending.TrendingEntrySupportArticle Support { get; init; }
+    public Trending.TrendingEntrySupportArticle Support { get; set; }
 
     [JsonPropertyName("destinyItem")]
-    public Trending.TrendingEntryDestinyItem DestinyItem { get; init; }
+    public Trending.TrendingEntryDestinyItem DestinyItem { get; set; }
 
     [JsonPropertyName("destinyActivity")]
-    public Trending.TrendingEntryDestinyActivity DestinyActivity { get; init; }
+    public Trending.TrendingEntryDestinyActivity DestinyActivity { get; set; }
 
     [JsonPropertyName("destinyRitual")]
-    public Trending.TrendingEntryDestinyRitual DestinyRitual { get; init; }
+    public Trending.TrendingEntryDestinyRitual DestinyRitual { get; set; }
 
     [JsonPropertyName("creation")]
-    public Trending.TrendingEntryCommunityCreation Creation { get; init; }
+    public Trending.TrendingEntryCommunityCreation Creation { get; set; }
 }

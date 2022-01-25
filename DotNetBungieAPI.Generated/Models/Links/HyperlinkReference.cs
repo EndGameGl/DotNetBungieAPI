@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.Links;
 
-public sealed class HyperlinkReference
+public class HyperlinkReference
 {
-
     [JsonPropertyName("title")]
-    public string Title { get; init; }
+    public string Title { get; set; }
 
     [JsonPropertyName("url")]
-    public string Url { get; init; }
+    public string Url { get; set; }
 }

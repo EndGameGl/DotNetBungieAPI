@@ -1,14 +1,13 @@
 namespace DotNetBungieAPI.Generated.Models.Config;
 
-public sealed class GroupTheme
+public class GroupTheme
 {
-
     [JsonPropertyName("name")]
-    public string Name { get; init; }
+    public string Name { get; set; }
 
     [JsonPropertyName("folder")]
-    public string Folder { get; init; }
+    public string Folder { get; set; }
 
     [JsonPropertyName("description")]
-    public string Description { get; init; }
+    public string Description { get; set; }
 }

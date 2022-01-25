@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Config;
 
-public sealed class GearAssetDataBaseDefinition
+public class GearAssetDataBaseDefinition
 {
-
     [JsonPropertyName("version")]
-    public int Version { get; init; }
+    public int Version { get; set; }
 
     [JsonPropertyName("path")]
-    public string Path { get; init; }
+    public string Path { get; set; }
 }

@@ -1,14 +1,13 @@
 namespace DotNetBungieAPI.Generated.Models.Applications;
 
-public sealed class ApplicationDeveloper
+public class ApplicationDeveloper
 {
-
     [JsonPropertyName("role")]
-    public Applications.DeveloperRole Role { get; init; }
+    public Applications.DeveloperRole Role { get; set; }
 
     [JsonPropertyName("apiEulaVersion")]
-    public int ApiEulaVersion { get; init; }
+    public int ApiEulaVersion { get; set; }
 
     [JsonPropertyName("user")]
-    public User.UserInfoCard User { get; init; }
+    public User.UserInfoCard User { get; set; }
 }

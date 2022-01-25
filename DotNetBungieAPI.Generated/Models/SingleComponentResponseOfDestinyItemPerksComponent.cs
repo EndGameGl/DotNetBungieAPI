@@ -1,17 +1,16 @@
 namespace DotNetBungieAPI.Generated.Models;
 
-public sealed class SingleComponentResponseOfDestinyItemPerksComponent
+public class SingleComponentResponseOfDestinyItemPerksComponent
 {
-
     [JsonPropertyName("data")]
-    public Destiny.Entities.Items.DestinyItemPerksComponent Data { get; init; }
+    public Destiny.Entities.Items.DestinyItemPerksComponent Data { get; set; }
 
     [JsonPropertyName("privacy")]
-    public Components.ComponentPrivacySetting Privacy { get; init; }
+    public Components.ComponentPrivacySetting Privacy { get; set; }
 
     /// <summary>
     ///     If true, this component is disabled.
     /// </summary>
     [JsonPropertyName("disabled")]
-    public bool? Disabled { get; init; }
+    public bool? Disabled { get; set; }
 }

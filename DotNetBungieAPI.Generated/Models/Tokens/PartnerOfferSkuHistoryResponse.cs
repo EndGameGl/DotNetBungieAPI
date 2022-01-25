@@ -1,26 +1,25 @@
 namespace DotNetBungieAPI.Generated.Models.Tokens;
 
-public sealed class PartnerOfferSkuHistoryResponse
+public class PartnerOfferSkuHistoryResponse
 {
-
     [JsonPropertyName("SkuIdentifier")]
-    public string SkuIdentifier { get; init; }
+    public string SkuIdentifier { get; set; }
 
     [JsonPropertyName("LocalizedName")]
-    public string LocalizedName { get; init; }
+    public string LocalizedName { get; set; }
 
     [JsonPropertyName("LocalizedDescription")]
-    public string LocalizedDescription { get; init; }
+    public string LocalizedDescription { get; set; }
 
     [JsonPropertyName("ClaimDate")]
-    public DateTime ClaimDate { get; init; }
+    public DateTime ClaimDate { get; set; }
 
     [JsonPropertyName("AllOffersApplied")]
-    public bool AllOffersApplied { get; init; }
+    public bool AllOffersApplied { get; set; }
 
     [JsonPropertyName("TransactionId")]
-    public string TransactionId { get; init; }
+    public string TransactionId { get; set; }
 
     [JsonPropertyName("SkuOffers")]
-    public List<Tokens.PartnerOfferHistoryResponse> SkuOffers { get; init; }
+    public List<Tokens.PartnerOfferHistoryResponse> SkuOffers { get; set; }
 }

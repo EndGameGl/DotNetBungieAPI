@@ -1,8 +1,7 @@
 namespace DotNetBungieAPI.Generated.Models.Trending;
 
-public sealed class TrendingCategories
+public class TrendingCategories
 {
-
     [JsonPropertyName("categories")]
-    public List<Trending.TrendingCategory> Categories { get; init; }
+    public List<Trending.TrendingCategory> Categories { get; set; }
 }

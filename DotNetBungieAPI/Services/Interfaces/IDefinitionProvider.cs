@@ -16,7 +16,7 @@ public interface IDefinitionProvider : IDisposable, IAsyncDisposable
     ///     Uses provider to load <see cref="IDestinyDefinition" />
     /// </summary>
     /// <typeparam name="T">Any class that inherits IDestinyDefinition</typeparam>
-    /// <param name="hash">Defition hash</param>
+    /// <param name="hash">Definition hash</param>
     /// <param name="locale">Definition locale</param>
     /// <returns></returns>
     ValueTask<T> LoadDefinition<T>(uint hash, BungieLocales locale) where T : IDestinyDefinition;
@@ -31,7 +31,7 @@ public interface IDefinitionProvider : IDisposable, IAsyncDisposable
         BungieLocales locale);
 
     /// <summary>
-    ///     Uses provider to load raw defintion (JSON string)
+    ///     Uses provider to load raw definition (JSON string)
     /// </summary>
     /// <param name="enumValue">Definition type</param>
     /// <param name="hash">Definition hash</param>

@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public sealed class DestinyLeaderboard
+public class DestinyLeaderboard
 {
-
     [JsonPropertyName("statId")]
-    public string StatId { get; init; }
+    public string StatId { get; set; }
 
     [JsonPropertyName("entries")]
-    public List<Destiny.HistoricalStats.DestinyLeaderboardEntry> Entries { get; init; }
+    public List<Destiny.HistoricalStats.DestinyLeaderboardEntry> Entries { get; set; }
 }

@@ -1,14 +1,13 @@
 namespace DotNetBungieAPI.Generated.Models.User;
 
-public sealed class UserSearchResponse
+public class UserSearchResponse
 {
-
     [JsonPropertyName("searchResults")]
-    public List<User.UserSearchResponseDetail> SearchResults { get; init; }
+    public List<User.UserSearchResponseDetail> SearchResults { get; set; }
 
     [JsonPropertyName("page")]
-    public int Page { get; init; }
+    public int Page { get; set; }
 
     [JsonPropertyName("hasMore")]
-    public bool HasMore { get; init; }
+    public bool HasMore { get; set; }
 }

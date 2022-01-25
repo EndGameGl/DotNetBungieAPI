@@ -1,8 +1,7 @@
 namespace DotNetBungieAPI.Generated.Models;
 
-public sealed class DestinyVendorSaleItemSetComponentOfDestinyPublicVendorSaleItemComponent
+public class DestinyVendorSaleItemSetComponentOfDestinyPublicVendorSaleItemComponent
 {
-
     [JsonPropertyName("saleItems")]
-    public Dictionary<int, Destiny.Components.Vendors.DestinyPublicVendorSaleItemComponent> SaleItems { get; init; }
+    public Dictionary<int, Destiny.Components.Vendors.DestinyPublicVendorSaleItemComponent> SaleItems { get; set; }
 }

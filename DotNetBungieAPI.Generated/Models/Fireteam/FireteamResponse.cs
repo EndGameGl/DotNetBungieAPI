@@ -1,14 +1,13 @@
 namespace DotNetBungieAPI.Generated.Models.Fireteam;
 
-public sealed class FireteamResponse
+public class FireteamResponse
 {
-
     [JsonPropertyName("Summary")]
-    public Fireteam.FireteamSummary Summary { get; init; }
+    public Fireteam.FireteamSummary Summary { get; set; }
 
     [JsonPropertyName("Members")]
-    public List<Fireteam.FireteamMember> Members { get; init; }
+    public List<Fireteam.FireteamMember> Members { get; set; }
 
     [JsonPropertyName("Alternates")]
-    public List<Fireteam.FireteamMember> Alternates { get; init; }
+    public List<Fireteam.FireteamMember> Alternates { get; set; }
 }

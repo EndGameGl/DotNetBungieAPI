@@ -1,14 +1,13 @@
 namespace DotNetBungieAPI.Generated.Models.Forum;
 
-public sealed class PollResponse
+public class PollResponse
 {
-
     [JsonPropertyName("topicId")]
-    public long TopicId { get; init; }
+    public long TopicId { get; set; }
 
     [JsonPropertyName("results")]
-    public List<Forum.PollResult> Results { get; init; }
+    public List<Forum.PollResult> Results { get; set; }
 
     [JsonPropertyName("totalVotes")]
-    public int TotalVotes { get; init; }
+    public int TotalVotes { get; set; }
 }

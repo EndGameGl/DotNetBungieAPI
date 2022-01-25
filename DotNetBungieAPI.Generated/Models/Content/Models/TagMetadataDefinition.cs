@@ -1,23 +1,22 @@
 namespace DotNetBungieAPI.Generated.Models.Content.Models;
 
-public sealed class TagMetadataDefinition
+public class TagMetadataDefinition
 {
-
     [JsonPropertyName("description")]
-    public string Description { get; init; }
+    public string Description { get; set; }
 
     [JsonPropertyName("order")]
-    public int Order { get; init; }
+    public int Order { get; set; }
 
     [JsonPropertyName("items")]
-    public List<Content.Models.TagMetadataItem> Items { get; init; }
+    public List<Content.Models.TagMetadataItem> Items { get; set; }
 
     [JsonPropertyName("datatype")]
-    public string Datatype { get; init; }
+    public string Datatype { get; set; }
 
     [JsonPropertyName("name")]
-    public string Name { get; init; }
+    public string Name { get; set; }
 
     [JsonPropertyName("isRequired")]
-    public bool IsRequired { get; init; }
+    public bool IsRequired { get; set; }
 }

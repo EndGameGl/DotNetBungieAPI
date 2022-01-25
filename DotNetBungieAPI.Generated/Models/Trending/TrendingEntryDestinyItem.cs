@@ -1,8 +1,7 @@
 namespace DotNetBungieAPI.Generated.Models.Trending;
 
-public sealed class TrendingEntryDestinyItem
+public class TrendingEntryDestinyItem
 {
-
     [JsonPropertyName("itemHash")]
-    public uint ItemHash { get; init; }
+    public uint ItemHash { get; set; }
 }

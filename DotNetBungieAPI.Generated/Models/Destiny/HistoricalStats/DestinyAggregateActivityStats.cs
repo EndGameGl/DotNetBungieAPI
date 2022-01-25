@@ -1,17 +1,16 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public sealed class DestinyAggregateActivityStats
+public class DestinyAggregateActivityStats
 {
-
     /// <summary>
     ///     Hash ID that can be looked up in the DestinyActivityTable.
     /// </summary>
     [JsonPropertyName("activityHash")]
-    public uint ActivityHash { get; init; } // DestinyActivityDefinition
+    public uint ActivityHash { get; set; }
 
     /// <summary>
     ///     Collection of stats for the player in this activity.
     /// </summary>
     [JsonPropertyName("values")]
-    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue> Values { get; init; }
+    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue> Values { get; set; }
 }

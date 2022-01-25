@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public sealed class DestinyHistoricalStatsWithMerged
+public class DestinyHistoricalStatsWithMerged
 {
-
     [JsonPropertyName("results")]
-    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsByPeriod> Results { get; init; }
+    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsByPeriod> Results { get; set; }
 
     [JsonPropertyName("merged")]
-    public Destiny.HistoricalStats.DestinyHistoricalStatsByPeriod Merged { get; init; }
+    public Destiny.HistoricalStats.DestinyHistoricalStatsByPeriod Merged { get; set; }
 }

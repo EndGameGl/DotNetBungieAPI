@@ -1,17 +1,16 @@
 namespace DotNetBungieAPI.Generated.Models;
 
-public sealed class SingleComponentResponseOfDestinyItemReusablePlugsComponent
+public class SingleComponentResponseOfDestinyItemReusablePlugsComponent
 {
-
     [JsonPropertyName("data")]
-    public Destiny.Components.Items.DestinyItemReusablePlugsComponent Data { get; init; }
+    public Destiny.Components.Items.DestinyItemReusablePlugsComponent Data { get; set; }
 
     [JsonPropertyName("privacy")]
-    public Components.ComponentPrivacySetting Privacy { get; init; }
+    public Components.ComponentPrivacySetting Privacy { get; set; }
 
     /// <summary>
     ///     If true, this component is disabled.
     /// </summary>
     [JsonPropertyName("disabled")]
-    public bool? Disabled { get; init; }
+    public bool? Disabled { get; set; }
 }

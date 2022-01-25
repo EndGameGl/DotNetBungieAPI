@@ -3,12 +3,11 @@ namespace DotNetBungieAPI.Generated.Models.User;
 /// <summary>
 ///     Localized text relevant to a given EMail setting in a given localization.
 /// </summary>
-public sealed class EMailSettingLocalization
+public class EMailSettingLocalization
 {
-
     [JsonPropertyName("title")]
-    public string Title { get; init; }
+    public string Title { get; set; }
 
     [JsonPropertyName("description")]
-    public string Description { get; init; }
+    public string Description { get; set; }
 }

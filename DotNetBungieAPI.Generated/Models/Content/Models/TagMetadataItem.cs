@@ -1,20 +1,19 @@
 namespace DotNetBungieAPI.Generated.Models.Content.Models;
 
-public sealed class TagMetadataItem
+public class TagMetadataItem
 {
-
     [JsonPropertyName("description")]
-    public string Description { get; init; }
+    public string Description { get; set; }
 
     [JsonPropertyName("tagText")]
-    public string TagText { get; init; }
+    public string TagText { get; set; }
 
     [JsonPropertyName("groups")]
-    public List<string> Groups { get; init; }
+    public List<string> Groups { get; set; }
 
     [JsonPropertyName("isDefault")]
-    public bool IsDefault { get; init; }
+    public bool IsDefault { get; set; }
 
     [JsonPropertyName("name")]
-    public string Name { get; init; }
+    public string Name { get; set; }
 }

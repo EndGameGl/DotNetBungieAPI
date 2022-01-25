@@ -1,29 +1,28 @@
 namespace DotNetBungieAPI.Generated.Models.Tokens;
 
-public sealed class PartnerOfferHistoryResponse
+public class PartnerOfferHistoryResponse
 {
-
     [JsonPropertyName("PartnerOfferKey")]
-    public string PartnerOfferKey { get; init; }
+    public string PartnerOfferKey { get; set; }
 
     [JsonPropertyName("MembershipId")]
-    public long? MembershipId { get; init; }
+    public long? MembershipId { get; set; }
 
     [JsonPropertyName("MembershipType")]
-    public int? MembershipType { get; init; }
+    public int? MembershipType { get; set; }
 
     [JsonPropertyName("LocalizedName")]
-    public string LocalizedName { get; init; }
+    public string LocalizedName { get; set; }
 
     [JsonPropertyName("LocalizedDescription")]
-    public string LocalizedDescription { get; init; }
+    public string LocalizedDescription { get; set; }
 
     [JsonPropertyName("IsConsumable")]
-    public bool IsConsumable { get; init; }
+    public bool IsConsumable { get; set; }
 
     [JsonPropertyName("QuantityApplied")]
-    public int QuantityApplied { get; init; }
+    public int QuantityApplied { get; set; }
 
     [JsonPropertyName("ApplyDate")]
-    public DateTime? ApplyDate { get; init; }
+    public DateTime? ApplyDate { get; set; }
 }

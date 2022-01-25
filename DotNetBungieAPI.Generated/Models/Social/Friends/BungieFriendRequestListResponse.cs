@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.Social.Friends;
 
-public sealed class BungieFriendRequestListResponse
+public class BungieFriendRequestListResponse
 {
-
     [JsonPropertyName("incomingRequests")]
-    public List<Social.Friends.BungieFriend> IncomingRequests { get; init; }
+    public List<Social.Friends.BungieFriend> IncomingRequests { get; set; }
 
     [JsonPropertyName("outgoingRequests")]
-    public List<Social.Friends.BungieFriend> OutgoingRequests { get; init; }
+    public List<Social.Friends.BungieFriend> OutgoingRequests { get; set; }
 }

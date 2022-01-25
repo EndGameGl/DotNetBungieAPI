@@ -1,35 +1,34 @@
 namespace DotNetBungieAPI.Generated.Models;
 
-public sealed class DestinyItemComponentSetOfint32
+public class DestinyItemComponentSetOfint32
 {
-
     [JsonPropertyName("instances")]
-    public DictionaryComponentResponseOfint32AndDestinyItemInstanceComponent Instances { get; init; }
+    public DictionaryComponentResponseOfint32AndDestinyItemInstanceComponent Instances { get; set; }
 
     [JsonPropertyName("renderData")]
-    public DictionaryComponentResponseOfint32AndDestinyItemRenderComponent RenderData { get; init; }
+    public DictionaryComponentResponseOfint32AndDestinyItemRenderComponent RenderData { get; set; }
 
     [JsonPropertyName("stats")]
-    public DictionaryComponentResponseOfint32AndDestinyItemStatsComponent Stats { get; init; }
+    public DictionaryComponentResponseOfint32AndDestinyItemStatsComponent Stats { get; set; }
 
     [JsonPropertyName("sockets")]
-    public DictionaryComponentResponseOfint32AndDestinyItemSocketsComponent Sockets { get; init; }
+    public DictionaryComponentResponseOfint32AndDestinyItemSocketsComponent Sockets { get; set; }
 
     [JsonPropertyName("reusablePlugs")]
-    public DictionaryComponentResponseOfint32AndDestinyItemReusablePlugsComponent ReusablePlugs { get; init; }
+    public DictionaryComponentResponseOfint32AndDestinyItemReusablePlugsComponent ReusablePlugs { get; set; }
 
     [JsonPropertyName("plugObjectives")]
-    public DictionaryComponentResponseOfint32AndDestinyItemPlugObjectivesComponent PlugObjectives { get; init; }
+    public DictionaryComponentResponseOfint32AndDestinyItemPlugObjectivesComponent PlugObjectives { get; set; }
 
     [JsonPropertyName("talentGrids")]
-    public DictionaryComponentResponseOfint32AndDestinyItemTalentGridComponent TalentGrids { get; init; }
+    public DictionaryComponentResponseOfint32AndDestinyItemTalentGridComponent TalentGrids { get; set; }
 
     [JsonPropertyName("plugStates")]
-    public DictionaryComponentResponseOfuint32AndDestinyItemPlugComponent PlugStates { get; init; }
+    public DictionaryComponentResponseOfuint32AndDestinyItemPlugComponent PlugStates { get; set; }
 
     [JsonPropertyName("objectives")]
-    public DictionaryComponentResponseOfint32AndDestinyItemObjectivesComponent Objectives { get; init; }
+    public DictionaryComponentResponseOfint32AndDestinyItemObjectivesComponent Objectives { get; set; }
 
     [JsonPropertyName("perks")]
-    public DictionaryComponentResponseOfint32AndDestinyItemPerksComponent Perks { get; init; }
+    public DictionaryComponentResponseOfint32AndDestinyItemPerksComponent Perks { get; set; }
 }

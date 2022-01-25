@@ -1,11 +1,10 @@
 namespace DotNetBungieAPI.Generated.Models.Trending;
 
-public sealed class TrendingEntryDestinyActivity
+public class TrendingEntryDestinyActivity
 {
-
     [JsonPropertyName("activityHash")]
-    public uint ActivityHash { get; init; }
+    public uint ActivityHash { get; set; }
 
     [JsonPropertyName("status")]
-    public Destiny.Activities.DestinyPublicActivityStatus Status { get; init; }
+    public Destiny.Activities.DestinyPublicActivityStatus Status { get; set; }
 }

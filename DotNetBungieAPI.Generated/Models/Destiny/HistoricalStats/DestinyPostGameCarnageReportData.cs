@@ -1,35 +1,34 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public sealed class DestinyPostGameCarnageReportData
+public class DestinyPostGameCarnageReportData
 {
-
     /// <summary>
     ///     Date and time for the activity.
     /// </summary>
     [JsonPropertyName("period")]
-    public DateTime Period { get; init; }
+    public DateTime Period { get; set; }
 
     /// <summary>
     ///     If this activity has "phases", this is the phase at which the activity was started.
     /// </summary>
     [JsonPropertyName("startingPhaseIndex")]
-    public int? StartingPhaseIndex { get; init; }
+    public int? StartingPhaseIndex { get; set; }
 
     /// <summary>
     ///     Details about the activity.
     /// </summary>
     [JsonPropertyName("activityDetails")]
-    public Destiny.HistoricalStats.DestinyHistoricalStatsActivity ActivityDetails { get; init; }
+    public Destiny.HistoricalStats.DestinyHistoricalStatsActivity ActivityDetails { get; set; }
 
     /// <summary>
     ///     Collection of players and their data for this activity.
     /// </summary>
     [JsonPropertyName("entries")]
-    public List<Destiny.HistoricalStats.DestinyPostGameCarnageReportEntry> Entries { get; init; }
+    public List<Destiny.HistoricalStats.DestinyPostGameCarnageReportEntry> Entries { get; set; }
 
     /// <summary>
     ///     Collection of stats for the player in this activity.
     /// </summary>
     [JsonPropertyName("teams")]
-    public List<Destiny.HistoricalStats.DestinyPostGameCarnageReportTeamEntry> Teams { get; init; }
+    public List<Destiny.HistoricalStats.DestinyPostGameCarnageReportTeamEntry> Teams { get; set; }
 }
