@@ -18,4 +18,32 @@ public class GroupOptionalConversationEditRequest : IDeepEquatable<GroupOptional
                ChatName == other.ChatName &&
                ChatSecurity == other.ChatSecurity;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(GroupOptionalConversationEditRequest? other)
+    {
+        if (other is null) return;
+        if (ChatEnabled != other.ChatEnabled)
+        {
+            ChatEnabled = other.ChatEnabled;
+            OnPropertyChanged(nameof(ChatEnabled));
+        }
+        if (ChatName != other.ChatName)
+        {
+            ChatName = other.ChatName;
+            OnPropertyChanged(nameof(ChatName));
+        }
+        if (ChatSecurity != other.ChatSecurity)
+        {
+            ChatSecurity = other.ChatSecurity;
+            OnPropertyChanged(nameof(ChatSecurity));
+        }
+    }
 }

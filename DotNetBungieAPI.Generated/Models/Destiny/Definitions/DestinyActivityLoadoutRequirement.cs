@@ -18,4 +18,32 @@ public class DestinyActivityLoadoutRequirement : IDeepEquatable<DestinyActivityL
                AllowedEquippedItemHashes.DeepEqualsListNaive(other.AllowedEquippedItemHashes) &&
                AllowedWeaponSubTypes.DeepEqualsListNaive(other.AllowedWeaponSubTypes);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityLoadoutRequirement? other)
+    {
+        if (other is null) return;
+        if (EquipmentSlotHash != other.EquipmentSlotHash)
+        {
+            EquipmentSlotHash = other.EquipmentSlotHash;
+            OnPropertyChanged(nameof(EquipmentSlotHash));
+        }
+        if (!AllowedEquippedItemHashes.DeepEqualsListNaive(other.AllowedEquippedItemHashes))
+        {
+            AllowedEquippedItemHashes = other.AllowedEquippedItemHashes;
+            OnPropertyChanged(nameof(AllowedEquippedItemHashes));
+        }
+        if (!AllowedWeaponSubTypes.DeepEqualsListNaive(other.AllowedWeaponSubTypes))
+        {
+            AllowedWeaponSubTypes = other.AllowedWeaponSubTypes;
+            OnPropertyChanged(nameof(AllowedWeaponSubTypes));
+        }
+    }
 }

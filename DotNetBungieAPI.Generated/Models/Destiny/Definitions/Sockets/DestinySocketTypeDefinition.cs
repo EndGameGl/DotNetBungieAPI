@@ -97,4 +97,87 @@ public class DestinySocketTypeDefinition : IDeepEquatable<DestinySocketTypeDefin
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinySocketTypeDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (!InsertAction.DeepEquals(other.InsertAction))
+        {
+            InsertAction.Update(other.InsertAction);
+            OnPropertyChanged(nameof(InsertAction));
+        }
+        if (!PlugWhitelist.DeepEqualsList(other.PlugWhitelist))
+        {
+            PlugWhitelist = other.PlugWhitelist;
+            OnPropertyChanged(nameof(PlugWhitelist));
+        }
+        if (SocketCategoryHash != other.SocketCategoryHash)
+        {
+            SocketCategoryHash = other.SocketCategoryHash;
+            OnPropertyChanged(nameof(SocketCategoryHash));
+        }
+        if (Visibility != other.Visibility)
+        {
+            Visibility = other.Visibility;
+            OnPropertyChanged(nameof(Visibility));
+        }
+        if (AlwaysRandomizeSockets != other.AlwaysRandomizeSockets)
+        {
+            AlwaysRandomizeSockets = other.AlwaysRandomizeSockets;
+            OnPropertyChanged(nameof(AlwaysRandomizeSockets));
+        }
+        if (IsPreviewEnabled != other.IsPreviewEnabled)
+        {
+            IsPreviewEnabled = other.IsPreviewEnabled;
+            OnPropertyChanged(nameof(IsPreviewEnabled));
+        }
+        if (HideDuplicateReusablePlugs != other.HideDuplicateReusablePlugs)
+        {
+            HideDuplicateReusablePlugs = other.HideDuplicateReusablePlugs;
+            OnPropertyChanged(nameof(HideDuplicateReusablePlugs));
+        }
+        if (OverridesUiAppearance != other.OverridesUiAppearance)
+        {
+            OverridesUiAppearance = other.OverridesUiAppearance;
+            OnPropertyChanged(nameof(OverridesUiAppearance));
+        }
+        if (AvoidDuplicatesOnInitialization != other.AvoidDuplicatesOnInitialization)
+        {
+            AvoidDuplicatesOnInitialization = other.AvoidDuplicatesOnInitialization;
+            OnPropertyChanged(nameof(AvoidDuplicatesOnInitialization));
+        }
+        if (!CurrencyScalars.DeepEqualsList(other.CurrencyScalars))
+        {
+            CurrencyScalars = other.CurrencyScalars;
+            OnPropertyChanged(nameof(CurrencyScalars));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

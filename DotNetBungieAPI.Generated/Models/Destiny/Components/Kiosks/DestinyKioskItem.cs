@@ -34,4 +34,37 @@ public class DestinyKioskItem : IDeepEquatable<DestinyKioskItem>
                FailureIndexes.DeepEqualsListNaive(other.FailureIndexes) &&
                (FlavorObjective is not null ? FlavorObjective.DeepEquals(other.FlavorObjective) : other.FlavorObjective is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyKioskItem? other)
+    {
+        if (other is null) return;
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (CanAcquire != other.CanAcquire)
+        {
+            CanAcquire = other.CanAcquire;
+            OnPropertyChanged(nameof(CanAcquire));
+        }
+        if (!FailureIndexes.DeepEqualsListNaive(other.FailureIndexes))
+        {
+            FailureIndexes = other.FailureIndexes;
+            OnPropertyChanged(nameof(FailureIndexes));
+        }
+        if (!FlavorObjective.DeepEquals(other.FlavorObjective))
+        {
+            FlavorObjective.Update(other.FlavorObjective);
+            OnPropertyChanged(nameof(FlavorObjective));
+        }
+    }
 }

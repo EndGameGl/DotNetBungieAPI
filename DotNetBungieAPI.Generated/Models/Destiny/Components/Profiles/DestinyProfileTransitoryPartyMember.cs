@@ -39,4 +39,37 @@ public class DestinyProfileTransitoryPartyMember : IDeepEquatable<DestinyProfile
                DisplayName == other.DisplayName &&
                Status == other.Status;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyProfileTransitoryPartyMember? other)
+    {
+        if (other is null) return;
+        if (MembershipId != other.MembershipId)
+        {
+            MembershipId = other.MembershipId;
+            OnPropertyChanged(nameof(MembershipId));
+        }
+        if (EmblemHash != other.EmblemHash)
+        {
+            EmblemHash = other.EmblemHash;
+            OnPropertyChanged(nameof(EmblemHash));
+        }
+        if (DisplayName != other.DisplayName)
+        {
+            DisplayName = other.DisplayName;
+            OnPropertyChanged(nameof(DisplayName));
+        }
+        if (Status != other.Status)
+        {
+            Status = other.Status;
+            OnPropertyChanged(nameof(Status));
+        }
+    }
 }

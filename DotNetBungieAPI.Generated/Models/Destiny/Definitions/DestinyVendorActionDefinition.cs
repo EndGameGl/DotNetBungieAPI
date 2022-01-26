@@ -45,4 +45,62 @@ public class DestinyVendorActionDefinition : IDeepEquatable<DestinyVendorActionD
                ActionHash == other.ActionHash &&
                AutoPerformAction == other.AutoPerformAction;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorActionDefinition? other)
+    {
+        if (other is null) return;
+        if (Description != other.Description)
+        {
+            Description = other.Description;
+            OnPropertyChanged(nameof(Description));
+        }
+        if (ExecuteSeconds != other.ExecuteSeconds)
+        {
+            ExecuteSeconds = other.ExecuteSeconds;
+            OnPropertyChanged(nameof(ExecuteSeconds));
+        }
+        if (Icon != other.Icon)
+        {
+            Icon = other.Icon;
+            OnPropertyChanged(nameof(Icon));
+        }
+        if (Name != other.Name)
+        {
+            Name = other.Name;
+            OnPropertyChanged(nameof(Name));
+        }
+        if (Verb != other.Verb)
+        {
+            Verb = other.Verb;
+            OnPropertyChanged(nameof(Verb));
+        }
+        if (IsPositive != other.IsPositive)
+        {
+            IsPositive = other.IsPositive;
+            OnPropertyChanged(nameof(IsPositive));
+        }
+        if (ActionId != other.ActionId)
+        {
+            ActionId = other.ActionId;
+            OnPropertyChanged(nameof(ActionId));
+        }
+        if (ActionHash != other.ActionHash)
+        {
+            ActionHash = other.ActionHash;
+            OnPropertyChanged(nameof(ActionHash));
+        }
+        if (AutoPerformAction != other.AutoPerformAction)
+        {
+            AutoPerformAction = other.AutoPerformAction;
+            OnPropertyChanged(nameof(AutoPerformAction));
+        }
+    }
 }

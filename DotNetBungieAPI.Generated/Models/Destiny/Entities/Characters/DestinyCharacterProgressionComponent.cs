@@ -77,4 +77,57 @@ public class DestinyCharacterProgressionComponent : IDeepEquatable<DestinyCharac
                Checklists.DeepEqualsDictionaryNaive(other.Checklists) &&
                (SeasonalArtifact is not null ? SeasonalArtifact.DeepEquals(other.SeasonalArtifact) : other.SeasonalArtifact is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyCharacterProgressionComponent? other)
+    {
+        if (other is null) return;
+        if (!Progressions.DeepEqualsDictionary(other.Progressions))
+        {
+            Progressions = other.Progressions;
+            OnPropertyChanged(nameof(Progressions));
+        }
+        if (!Factions.DeepEqualsDictionary(other.Factions))
+        {
+            Factions = other.Factions;
+            OnPropertyChanged(nameof(Factions));
+        }
+        if (!Milestones.DeepEqualsDictionary(other.Milestones))
+        {
+            Milestones = other.Milestones;
+            OnPropertyChanged(nameof(Milestones));
+        }
+        if (!Quests.DeepEqualsList(other.Quests))
+        {
+            Quests = other.Quests;
+            OnPropertyChanged(nameof(Quests));
+        }
+        if (!UninstancedItemObjectives.DeepEqualsDictionary(other.UninstancedItemObjectives))
+        {
+            UninstancedItemObjectives = other.UninstancedItemObjectives;
+            OnPropertyChanged(nameof(UninstancedItemObjectives));
+        }
+        if (!UninstancedItemPerks.DeepEqualsDictionary(other.UninstancedItemPerks))
+        {
+            UninstancedItemPerks = other.UninstancedItemPerks;
+            OnPropertyChanged(nameof(UninstancedItemPerks));
+        }
+        if (!Checklists.DeepEqualsDictionary(other.Checklists))
+        {
+            Checklists = other.Checklists;
+            OnPropertyChanged(nameof(Checklists));
+        }
+        if (!SeasonalArtifact.DeepEquals(other.SeasonalArtifact))
+        {
+            SeasonalArtifact.Update(other.SeasonalArtifact);
+            OnPropertyChanged(nameof(SeasonalArtifact));
+        }
+    }
 }

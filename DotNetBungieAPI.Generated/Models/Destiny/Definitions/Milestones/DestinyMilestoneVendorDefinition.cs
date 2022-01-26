@@ -18,4 +18,22 @@ public class DestinyMilestoneVendorDefinition : IDeepEquatable<DestinyMilestoneV
         return other is not null &&
                VendorHash == other.VendorHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneVendorDefinition? other)
+    {
+        if (other is null) return;
+        if (VendorHash != other.VendorHash)
+        {
+            VendorHash = other.VendorHash;
+            OnPropertyChanged(nameof(VendorHash));
+        }
+    }
 }

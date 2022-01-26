@@ -46,4 +46,42 @@ public class DestinyItemPreviewBlockDefinition : IDeepEquatable<DestinyItemPrevi
                PreviewActionString == other.PreviewActionString &&
                DerivedItemCategories.DeepEqualsList(other.DerivedItemCategories);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemPreviewBlockDefinition? other)
+    {
+        if (other is null) return;
+        if (ScreenStyle != other.ScreenStyle)
+        {
+            ScreenStyle = other.ScreenStyle;
+            OnPropertyChanged(nameof(ScreenStyle));
+        }
+        if (PreviewVendorHash != other.PreviewVendorHash)
+        {
+            PreviewVendorHash = other.PreviewVendorHash;
+            OnPropertyChanged(nameof(PreviewVendorHash));
+        }
+        if (ArtifactHash != other.ArtifactHash)
+        {
+            ArtifactHash = other.ArtifactHash;
+            OnPropertyChanged(nameof(ArtifactHash));
+        }
+        if (PreviewActionString != other.PreviewActionString)
+        {
+            PreviewActionString = other.PreviewActionString;
+            OnPropertyChanged(nameof(PreviewActionString));
+        }
+        if (!DerivedItemCategories.DeepEqualsList(other.DerivedItemCategories))
+        {
+            DerivedItemCategories = other.DerivedItemCategories;
+            OnPropertyChanged(nameof(DerivedItemCategories));
+        }
+    }
 }

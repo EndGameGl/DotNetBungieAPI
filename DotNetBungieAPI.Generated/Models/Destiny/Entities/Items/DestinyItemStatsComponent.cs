@@ -20,4 +20,22 @@ public class DestinyItemStatsComponent : IDeepEquatable<DestinyItemStatsComponen
         return other is not null &&
                Stats.DeepEqualsDictionary(other.Stats);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemStatsComponent? other)
+    {
+        if (other is null) return;
+        if (!Stats.DeepEqualsDictionary(other.Stats))
+        {
+            Stats = other.Stats;
+            OnPropertyChanged(nameof(Stats));
+        }
+    }
 }

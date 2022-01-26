@@ -30,4 +30,32 @@ public class EmailSettings : IDeepEquatable<EmailSettings>
                SubscriptionDefinitions.DeepEqualsDictionary(other.SubscriptionDefinitions) &&
                Views.DeepEqualsDictionary(other.Views);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(EmailSettings? other)
+    {
+        if (other is null) return;
+        if (!OptInDefinitions.DeepEqualsDictionary(other.OptInDefinitions))
+        {
+            OptInDefinitions = other.OptInDefinitions;
+            OnPropertyChanged(nameof(OptInDefinitions));
+        }
+        if (!SubscriptionDefinitions.DeepEqualsDictionary(other.SubscriptionDefinitions))
+        {
+            SubscriptionDefinitions = other.SubscriptionDefinitions;
+            OnPropertyChanged(nameof(SubscriptionDefinitions));
+        }
+        if (!Views.DeepEqualsDictionary(other.Views))
+        {
+            Views = other.Views;
+            OnPropertyChanged(nameof(Views));
+        }
+    }
 }

@@ -106,4 +106,82 @@ public class DestinyItemInstanceComponent : IDeepEquatable<DestinyItemInstanceCo
                BreakerTypeHash == other.BreakerTypeHash &&
                (Energy is not null ? Energy.DeepEquals(other.Energy) : other.Energy is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemInstanceComponent? other)
+    {
+        if (other is null) return;
+        if (DamageType != other.DamageType)
+        {
+            DamageType = other.DamageType;
+            OnPropertyChanged(nameof(DamageType));
+        }
+        if (DamageTypeHash != other.DamageTypeHash)
+        {
+            DamageTypeHash = other.DamageTypeHash;
+            OnPropertyChanged(nameof(DamageTypeHash));
+        }
+        if (!PrimaryStat.DeepEquals(other.PrimaryStat))
+        {
+            PrimaryStat.Update(other.PrimaryStat);
+            OnPropertyChanged(nameof(PrimaryStat));
+        }
+        if (ItemLevel != other.ItemLevel)
+        {
+            ItemLevel = other.ItemLevel;
+            OnPropertyChanged(nameof(ItemLevel));
+        }
+        if (Quality != other.Quality)
+        {
+            Quality = other.Quality;
+            OnPropertyChanged(nameof(Quality));
+        }
+        if (IsEquipped != other.IsEquipped)
+        {
+            IsEquipped = other.IsEquipped;
+            OnPropertyChanged(nameof(IsEquipped));
+        }
+        if (CanEquip != other.CanEquip)
+        {
+            CanEquip = other.CanEquip;
+            OnPropertyChanged(nameof(CanEquip));
+        }
+        if (EquipRequiredLevel != other.EquipRequiredLevel)
+        {
+            EquipRequiredLevel = other.EquipRequiredLevel;
+            OnPropertyChanged(nameof(EquipRequiredLevel));
+        }
+        if (!UnlockHashesRequiredToEquip.DeepEqualsListNaive(other.UnlockHashesRequiredToEquip))
+        {
+            UnlockHashesRequiredToEquip = other.UnlockHashesRequiredToEquip;
+            OnPropertyChanged(nameof(UnlockHashesRequiredToEquip));
+        }
+        if (CannotEquipReason != other.CannotEquipReason)
+        {
+            CannotEquipReason = other.CannotEquipReason;
+            OnPropertyChanged(nameof(CannotEquipReason));
+        }
+        if (BreakerType != other.BreakerType)
+        {
+            BreakerType = other.BreakerType;
+            OnPropertyChanged(nameof(BreakerType));
+        }
+        if (BreakerTypeHash != other.BreakerTypeHash)
+        {
+            BreakerTypeHash = other.BreakerTypeHash;
+            OnPropertyChanged(nameof(BreakerTypeHash));
+        }
+        if (!Energy.DeepEquals(other.Energy))
+        {
+            Energy.Update(other.Energy);
+            OnPropertyChanged(nameof(Energy));
+        }
+    }
 }

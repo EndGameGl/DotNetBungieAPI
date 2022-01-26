@@ -41,4 +41,47 @@ public class DestinyTraitCategoryDefinition : IDeepEquatable<DestinyTraitCategor
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyTraitCategoryDefinition? other)
+    {
+        if (other is null) return;
+        if (TraitCategoryId != other.TraitCategoryId)
+        {
+            TraitCategoryId = other.TraitCategoryId;
+            OnPropertyChanged(nameof(TraitCategoryId));
+        }
+        if (!TraitHashes.DeepEqualsListNaive(other.TraitHashes))
+        {
+            TraitHashes = other.TraitHashes;
+            OnPropertyChanged(nameof(TraitHashes));
+        }
+        if (!TraitIds.DeepEqualsListNaive(other.TraitIds))
+        {
+            TraitIds = other.TraitIds;
+            OnPropertyChanged(nameof(TraitIds));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

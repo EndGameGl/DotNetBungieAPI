@@ -107,4 +107,82 @@ public class DestinyActivity : IDeepEquatable<DestinyActivity>
                BooleanActivityOptions.DeepEqualsDictionaryNaive(other.BooleanActivityOptions) &&
                LoadoutRequirementIndex == other.LoadoutRequirementIndex;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivity? other)
+    {
+        if (other is null) return;
+        if (ActivityHash != other.ActivityHash)
+        {
+            ActivityHash = other.ActivityHash;
+            OnPropertyChanged(nameof(ActivityHash));
+        }
+        if (IsNew != other.IsNew)
+        {
+            IsNew = other.IsNew;
+            OnPropertyChanged(nameof(IsNew));
+        }
+        if (CanLead != other.CanLead)
+        {
+            CanLead = other.CanLead;
+            OnPropertyChanged(nameof(CanLead));
+        }
+        if (CanJoin != other.CanJoin)
+        {
+            CanJoin = other.CanJoin;
+            OnPropertyChanged(nameof(CanJoin));
+        }
+        if (IsCompleted != other.IsCompleted)
+        {
+            IsCompleted = other.IsCompleted;
+            OnPropertyChanged(nameof(IsCompleted));
+        }
+        if (IsVisible != other.IsVisible)
+        {
+            IsVisible = other.IsVisible;
+            OnPropertyChanged(nameof(IsVisible));
+        }
+        if (DisplayLevel != other.DisplayLevel)
+        {
+            DisplayLevel = other.DisplayLevel;
+            OnPropertyChanged(nameof(DisplayLevel));
+        }
+        if (RecommendedLight != other.RecommendedLight)
+        {
+            RecommendedLight = other.RecommendedLight;
+            OnPropertyChanged(nameof(RecommendedLight));
+        }
+        if (DifficultyTier != other.DifficultyTier)
+        {
+            DifficultyTier = other.DifficultyTier;
+            OnPropertyChanged(nameof(DifficultyTier));
+        }
+        if (!Challenges.DeepEqualsList(other.Challenges))
+        {
+            Challenges = other.Challenges;
+            OnPropertyChanged(nameof(Challenges));
+        }
+        if (!ModifierHashes.DeepEqualsListNaive(other.ModifierHashes))
+        {
+            ModifierHashes = other.ModifierHashes;
+            OnPropertyChanged(nameof(ModifierHashes));
+        }
+        if (!BooleanActivityOptions.DeepEqualsDictionaryNaive(other.BooleanActivityOptions))
+        {
+            BooleanActivityOptions = other.BooleanActivityOptions;
+            OnPropertyChanged(nameof(BooleanActivityOptions));
+        }
+        if (LoadoutRequirementIndex != other.LoadoutRequirementIndex)
+        {
+            LoadoutRequirementIndex = other.LoadoutRequirementIndex;
+            OnPropertyChanged(nameof(LoadoutRequirementIndex));
+        }
+    }
 }

@@ -14,4 +14,27 @@ public class EntityActionResult : IDeepEquatable<EntityActionResult>
                EntityId == other.EntityId &&
                Result == other.Result;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(EntityActionResult? other)
+    {
+        if (other is null) return;
+        if (EntityId != other.EntityId)
+        {
+            EntityId = other.EntityId;
+            OnPropertyChanged(nameof(EntityId));
+        }
+        if (Result != other.Result)
+        {
+            Result = other.Result;
+            OnPropertyChanged(nameof(Result));
+        }
+    }
 }

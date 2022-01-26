@@ -14,4 +14,27 @@ public class BungieFriendRequestListResponse : IDeepEquatable<BungieFriendReques
                IncomingRequests.DeepEqualsList(other.IncomingRequests) &&
                OutgoingRequests.DeepEqualsList(other.OutgoingRequests);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(BungieFriendRequestListResponse? other)
+    {
+        if (other is null) return;
+        if (!IncomingRequests.DeepEqualsList(other.IncomingRequests))
+        {
+            IncomingRequests = other.IncomingRequests;
+            OnPropertyChanged(nameof(IncomingRequests));
+        }
+        if (!OutgoingRequests.DeepEqualsList(other.OutgoingRequests))
+        {
+            OutgoingRequests = other.OutgoingRequests;
+            OnPropertyChanged(nameof(OutgoingRequests));
+        }
+    }
 }

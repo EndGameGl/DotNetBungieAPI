@@ -30,4 +30,47 @@ public class DestinyHistoricalStatsByPeriod : IDeepEquatable<DestinyHistoricalSt
                Daily.DeepEqualsList(other.Daily) &&
                Monthly.DeepEqualsList(other.Monthly);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyHistoricalStatsByPeriod? other)
+    {
+        if (other is null) return;
+        if (!AllTime.DeepEqualsDictionary(other.AllTime))
+        {
+            AllTime = other.AllTime;
+            OnPropertyChanged(nameof(AllTime));
+        }
+        if (!AllTimeTier1.DeepEqualsDictionary(other.AllTimeTier1))
+        {
+            AllTimeTier1 = other.AllTimeTier1;
+            OnPropertyChanged(nameof(AllTimeTier1));
+        }
+        if (!AllTimeTier2.DeepEqualsDictionary(other.AllTimeTier2))
+        {
+            AllTimeTier2 = other.AllTimeTier2;
+            OnPropertyChanged(nameof(AllTimeTier2));
+        }
+        if (!AllTimeTier3.DeepEqualsDictionary(other.AllTimeTier3))
+        {
+            AllTimeTier3 = other.AllTimeTier3;
+            OnPropertyChanged(nameof(AllTimeTier3));
+        }
+        if (!Daily.DeepEqualsList(other.Daily))
+        {
+            Daily = other.Daily;
+            OnPropertyChanged(nameof(Daily));
+        }
+        if (!Monthly.DeepEqualsList(other.Monthly))
+        {
+            Monthly = other.Monthly;
+            OnPropertyChanged(nameof(Monthly));
+        }
+    }
 }

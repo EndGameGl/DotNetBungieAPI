@@ -51,4 +51,47 @@ public class DestinyMilestoneRewardEntryDefinition : IDeepEquatable<DestinyMiles
                (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
                Order == other.Order;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneRewardEntryDefinition? other)
+    {
+        if (other is null) return;
+        if (RewardEntryHash != other.RewardEntryHash)
+        {
+            RewardEntryHash = other.RewardEntryHash;
+            OnPropertyChanged(nameof(RewardEntryHash));
+        }
+        if (RewardEntryIdentifier != other.RewardEntryIdentifier)
+        {
+            RewardEntryIdentifier = other.RewardEntryIdentifier;
+            OnPropertyChanged(nameof(RewardEntryIdentifier));
+        }
+        if (!Items.DeepEqualsList(other.Items))
+        {
+            Items = other.Items;
+            OnPropertyChanged(nameof(Items));
+        }
+        if (VendorHash != other.VendorHash)
+        {
+            VendorHash = other.VendorHash;
+            OnPropertyChanged(nameof(VendorHash));
+        }
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (Order != other.Order)
+        {
+            Order = other.Order;
+            OnPropertyChanged(nameof(Order));
+        }
+    }
 }

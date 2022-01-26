@@ -45,4 +45,37 @@ public class DestinyItemSocketState : IDeepEquatable<DestinyItemSocketState>
                IsVisible == other.IsVisible &&
                EnableFailIndexes.DeepEqualsListNaive(other.EnableFailIndexes);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemSocketState? other)
+    {
+        if (other is null) return;
+        if (PlugHash != other.PlugHash)
+        {
+            PlugHash = other.PlugHash;
+            OnPropertyChanged(nameof(PlugHash));
+        }
+        if (IsEnabled != other.IsEnabled)
+        {
+            IsEnabled = other.IsEnabled;
+            OnPropertyChanged(nameof(IsEnabled));
+        }
+        if (IsVisible != other.IsVisible)
+        {
+            IsVisible = other.IsVisible;
+            OnPropertyChanged(nameof(IsVisible));
+        }
+        if (!EnableFailIndexes.DeepEqualsListNaive(other.EnableFailIndexes))
+        {
+            EnableFailIndexes = other.EnableFailIndexes;
+            OnPropertyChanged(nameof(EnableFailIndexes));
+        }
+    }
 }

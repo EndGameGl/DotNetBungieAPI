@@ -19,4 +19,27 @@ public class DestinyMilestoneValueDefinition : IDeepEquatable<DestinyMilestoneVa
                Key == other.Key &&
                (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneValueDefinition? other)
+    {
+        if (other is null) return;
+        if (Key != other.Key)
+        {
+            Key = other.Key;
+            OnPropertyChanged(nameof(Key));
+        }
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+    }
 }

@@ -19,4 +19,27 @@ public class DestinyProgressionResetEntry : IDeepEquatable<DestinyProgressionRes
                Season == other.Season &&
                Resets == other.Resets;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyProgressionResetEntry? other)
+    {
+        if (other is null) return;
+        if (Season != other.Season)
+        {
+            Season = other.Season;
+            OnPropertyChanged(nameof(Season));
+        }
+        if (Resets != other.Resets)
+        {
+            Resets = other.Resets;
+            OnPropertyChanged(nameof(Resets));
+        }
+    }
 }

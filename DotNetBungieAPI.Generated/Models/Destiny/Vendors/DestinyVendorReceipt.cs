@@ -65,4 +65,57 @@ public class DestinyVendorReceipt : IDeepEquatable<DestinyVendorReceipt>
                TimeToExpiration == other.TimeToExpiration &&
                ExpiresOn == other.ExpiresOn;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorReceipt? other)
+    {
+        if (other is null) return;
+        if (!CurrencyPaid.DeepEqualsList(other.CurrencyPaid))
+        {
+            CurrencyPaid = other.CurrencyPaid;
+            OnPropertyChanged(nameof(CurrencyPaid));
+        }
+        if (!ItemReceived.DeepEquals(other.ItemReceived))
+        {
+            ItemReceived.Update(other.ItemReceived);
+            OnPropertyChanged(nameof(ItemReceived));
+        }
+        if (LicenseUnlockHash != other.LicenseUnlockHash)
+        {
+            LicenseUnlockHash = other.LicenseUnlockHash;
+            OnPropertyChanged(nameof(LicenseUnlockHash));
+        }
+        if (PurchasedByCharacterId != other.PurchasedByCharacterId)
+        {
+            PurchasedByCharacterId = other.PurchasedByCharacterId;
+            OnPropertyChanged(nameof(PurchasedByCharacterId));
+        }
+        if (RefundPolicy != other.RefundPolicy)
+        {
+            RefundPolicy = other.RefundPolicy;
+            OnPropertyChanged(nameof(RefundPolicy));
+        }
+        if (SequenceNumber != other.SequenceNumber)
+        {
+            SequenceNumber = other.SequenceNumber;
+            OnPropertyChanged(nameof(SequenceNumber));
+        }
+        if (TimeToExpiration != other.TimeToExpiration)
+        {
+            TimeToExpiration = other.TimeToExpiration;
+            OnPropertyChanged(nameof(TimeToExpiration));
+        }
+        if (ExpiresOn != other.ExpiresOn)
+        {
+            ExpiresOn = other.ExpiresOn;
+            OnPropertyChanged(nameof(ExpiresOn));
+        }
+    }
 }

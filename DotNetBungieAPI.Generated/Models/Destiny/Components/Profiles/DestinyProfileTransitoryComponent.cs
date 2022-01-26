@@ -46,4 +46,42 @@ public class DestinyProfileTransitoryComponent : IDeepEquatable<DestinyProfileTr
                Tracking.DeepEqualsList(other.Tracking) &&
                LastOrbitedDestinationHash == other.LastOrbitedDestinationHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyProfileTransitoryComponent? other)
+    {
+        if (other is null) return;
+        if (!PartyMembers.DeepEqualsList(other.PartyMembers))
+        {
+            PartyMembers = other.PartyMembers;
+            OnPropertyChanged(nameof(PartyMembers));
+        }
+        if (!CurrentActivity.DeepEquals(other.CurrentActivity))
+        {
+            CurrentActivity.Update(other.CurrentActivity);
+            OnPropertyChanged(nameof(CurrentActivity));
+        }
+        if (!Joinability.DeepEquals(other.Joinability))
+        {
+            Joinability.Update(other.Joinability);
+            OnPropertyChanged(nameof(Joinability));
+        }
+        if (!Tracking.DeepEqualsList(other.Tracking))
+        {
+            Tracking = other.Tracking;
+            OnPropertyChanged(nameof(Tracking));
+        }
+        if (LastOrbitedDestinationHash != other.LastOrbitedDestinationHash)
+        {
+            LastOrbitedDestinationHash = other.LastOrbitedDestinationHash;
+            OnPropertyChanged(nameof(LastOrbitedDestinationHash));
+        }
+    }
 }

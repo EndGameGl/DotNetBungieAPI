@@ -108,4 +108,72 @@ public class DestinyItemResponse : IDeepEquatable<DestinyItemResponse>
                (ReusablePlugs is not null ? ReusablePlugs.DeepEquals(other.ReusablePlugs) : other.ReusablePlugs is null) &&
                (PlugObjectives is not null ? PlugObjectives.DeepEquals(other.PlugObjectives) : other.PlugObjectives is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemResponse? other)
+    {
+        if (other is null) return;
+        if (CharacterId != other.CharacterId)
+        {
+            CharacterId = other.CharacterId;
+            OnPropertyChanged(nameof(CharacterId));
+        }
+        if (!Item.DeepEquals(other.Item))
+        {
+            Item.Update(other.Item);
+            OnPropertyChanged(nameof(Item));
+        }
+        if (!Instance.DeepEquals(other.Instance))
+        {
+            Instance.Update(other.Instance);
+            OnPropertyChanged(nameof(Instance));
+        }
+        if (!Objectives.DeepEquals(other.Objectives))
+        {
+            Objectives.Update(other.Objectives);
+            OnPropertyChanged(nameof(Objectives));
+        }
+        if (!Perks.DeepEquals(other.Perks))
+        {
+            Perks.Update(other.Perks);
+            OnPropertyChanged(nameof(Perks));
+        }
+        if (!RenderData.DeepEquals(other.RenderData))
+        {
+            RenderData.Update(other.RenderData);
+            OnPropertyChanged(nameof(RenderData));
+        }
+        if (!Stats.DeepEquals(other.Stats))
+        {
+            Stats.Update(other.Stats);
+            OnPropertyChanged(nameof(Stats));
+        }
+        if (!TalentGrid.DeepEquals(other.TalentGrid))
+        {
+            TalentGrid.Update(other.TalentGrid);
+            OnPropertyChanged(nameof(TalentGrid));
+        }
+        if (!Sockets.DeepEquals(other.Sockets))
+        {
+            Sockets.Update(other.Sockets);
+            OnPropertyChanged(nameof(Sockets));
+        }
+        if (!ReusablePlugs.DeepEquals(other.ReusablePlugs))
+        {
+            ReusablePlugs.Update(other.ReusablePlugs);
+            OnPropertyChanged(nameof(ReusablePlugs));
+        }
+        if (!PlugObjectives.DeepEquals(other.PlugObjectives))
+        {
+            PlugObjectives.Update(other.PlugObjectives);
+            OnPropertyChanged(nameof(PlugObjectives));
+        }
+    }
 }

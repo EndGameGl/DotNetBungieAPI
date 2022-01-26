@@ -106,4 +106,72 @@ public class DestinyTalentGridDefinition : IDeepEquatable<DestinyTalentGridDefin
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyTalentGridDefinition? other)
+    {
+        if (other is null) return;
+        if (MaxGridLevel != other.MaxGridLevel)
+        {
+            MaxGridLevel = other.MaxGridLevel;
+            OnPropertyChanged(nameof(MaxGridLevel));
+        }
+        if (GridLevelPerColumn != other.GridLevelPerColumn)
+        {
+            GridLevelPerColumn = other.GridLevelPerColumn;
+            OnPropertyChanged(nameof(GridLevelPerColumn));
+        }
+        if (ProgressionHash != other.ProgressionHash)
+        {
+            ProgressionHash = other.ProgressionHash;
+            OnPropertyChanged(nameof(ProgressionHash));
+        }
+        if (!Nodes.DeepEqualsList(other.Nodes))
+        {
+            Nodes = other.Nodes;
+            OnPropertyChanged(nameof(Nodes));
+        }
+        if (!ExclusiveSets.DeepEqualsList(other.ExclusiveSets))
+        {
+            ExclusiveSets = other.ExclusiveSets;
+            OnPropertyChanged(nameof(ExclusiveSets));
+        }
+        if (!IndependentNodeIndexes.DeepEqualsListNaive(other.IndependentNodeIndexes))
+        {
+            IndependentNodeIndexes = other.IndependentNodeIndexes;
+            OnPropertyChanged(nameof(IndependentNodeIndexes));
+        }
+        if (!Groups.DeepEqualsDictionary(other.Groups))
+        {
+            Groups = other.Groups;
+            OnPropertyChanged(nameof(Groups));
+        }
+        if (!NodeCategories.DeepEqualsList(other.NodeCategories))
+        {
+            NodeCategories = other.NodeCategories;
+            OnPropertyChanged(nameof(NodeCategories));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

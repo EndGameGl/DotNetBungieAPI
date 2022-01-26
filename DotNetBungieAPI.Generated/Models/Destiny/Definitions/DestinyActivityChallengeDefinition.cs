@@ -25,4 +25,27 @@ public class DestinyActivityChallengeDefinition : IDeepEquatable<DestinyActivity
                ObjectiveHash == other.ObjectiveHash &&
                DummyRewards.DeepEqualsList(other.DummyRewards);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityChallengeDefinition? other)
+    {
+        if (other is null) return;
+        if (ObjectiveHash != other.ObjectiveHash)
+        {
+            ObjectiveHash = other.ObjectiveHash;
+            OnPropertyChanged(nameof(ObjectiveHash));
+        }
+        if (!DummyRewards.DeepEqualsList(other.DummyRewards))
+        {
+            DummyRewards = other.DummyRewards;
+            OnPropertyChanged(nameof(DummyRewards));
+        }
+    }
 }

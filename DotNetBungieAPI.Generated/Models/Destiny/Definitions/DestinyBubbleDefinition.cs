@@ -23,4 +23,27 @@ public class DestinyBubbleDefinition : IDeepEquatable<DestinyBubbleDefinition>
                Hash == other.Hash &&
                (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyBubbleDefinition? other)
+    {
+        if (other is null) return;
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+    }
 }

@@ -50,4 +50,47 @@ public class DestinyMilestoneChallengeActivity : IDeepEquatable<DestinyMilestone
                LoadoutRequirementIndex == other.LoadoutRequirementIndex &&
                Phases.DeepEqualsList(other.Phases);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneChallengeActivity? other)
+    {
+        if (other is null) return;
+        if (ActivityHash != other.ActivityHash)
+        {
+            ActivityHash = other.ActivityHash;
+            OnPropertyChanged(nameof(ActivityHash));
+        }
+        if (!Challenges.DeepEqualsList(other.Challenges))
+        {
+            Challenges = other.Challenges;
+            OnPropertyChanged(nameof(Challenges));
+        }
+        if (!ModifierHashes.DeepEqualsListNaive(other.ModifierHashes))
+        {
+            ModifierHashes = other.ModifierHashes;
+            OnPropertyChanged(nameof(ModifierHashes));
+        }
+        if (!BooleanActivityOptions.DeepEqualsDictionaryNaive(other.BooleanActivityOptions))
+        {
+            BooleanActivityOptions = other.BooleanActivityOptions;
+            OnPropertyChanged(nameof(BooleanActivityOptions));
+        }
+        if (LoadoutRequirementIndex != other.LoadoutRequirementIndex)
+        {
+            LoadoutRequirementIndex = other.LoadoutRequirementIndex;
+            OnPropertyChanged(nameof(LoadoutRequirementIndex));
+        }
+        if (!Phases.DeepEqualsList(other.Phases))
+        {
+            Phases = other.Phases;
+            OnPropertyChanged(nameof(Phases));
+        }
+    }
 }

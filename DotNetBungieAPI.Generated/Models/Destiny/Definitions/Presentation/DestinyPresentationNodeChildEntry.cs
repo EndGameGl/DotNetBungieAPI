@@ -10,4 +10,22 @@ public class DestinyPresentationNodeChildEntry : IDeepEquatable<DestinyPresentat
         return other is not null &&
                PresentationNodeHash == other.PresentationNodeHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPresentationNodeChildEntry? other)
+    {
+        if (other is null) return;
+        if (PresentationNodeHash != other.PresentationNodeHash)
+        {
+            PresentationNodeHash = other.PresentationNodeHash;
+            OnPropertyChanged(nameof(PresentationNodeHash));
+        }
+    }
 }

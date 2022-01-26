@@ -23,4 +23,27 @@ public class DestinyMilestoneRewardCategory : IDeepEquatable<DestinyMilestoneRew
                RewardCategoryHash == other.RewardCategoryHash &&
                Entries.DeepEqualsList(other.Entries);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneRewardCategory? other)
+    {
+        if (other is null) return;
+        if (RewardCategoryHash != other.RewardCategoryHash)
+        {
+            RewardCategoryHash = other.RewardCategoryHash;
+            OnPropertyChanged(nameof(RewardCategoryHash));
+        }
+        if (!Entries.DeepEqualsList(other.Entries))
+        {
+            Entries = other.Entries;
+            OnPropertyChanged(nameof(Entries));
+        }
+    }
 }

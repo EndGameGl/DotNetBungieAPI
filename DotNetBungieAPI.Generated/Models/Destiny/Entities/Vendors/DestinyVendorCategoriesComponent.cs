@@ -20,4 +20,22 @@ public class DestinyVendorCategoriesComponent : IDeepEquatable<DestinyVendorCate
         return other is not null &&
                Categories.DeepEqualsList(other.Categories);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorCategoriesComponent? other)
+    {
+        if (other is null) return;
+        if (!Categories.DeepEqualsList(other.Categories))
+        {
+            Categories = other.Categories;
+            OnPropertyChanged(nameof(Categories));
+        }
+    }
 }

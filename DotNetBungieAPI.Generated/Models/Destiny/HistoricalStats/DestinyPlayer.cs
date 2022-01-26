@@ -74,4 +74,72 @@ public class DestinyPlayer : IDeepEquatable<DestinyPlayer>
                ClanTag == other.ClanTag &&
                EmblemHash == other.EmblemHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPlayer? other)
+    {
+        if (other is null) return;
+        if (!DestinyUserInfo.DeepEquals(other.DestinyUserInfo))
+        {
+            DestinyUserInfo.Update(other.DestinyUserInfo);
+            OnPropertyChanged(nameof(DestinyUserInfo));
+        }
+        if (CharacterClass != other.CharacterClass)
+        {
+            CharacterClass = other.CharacterClass;
+            OnPropertyChanged(nameof(CharacterClass));
+        }
+        if (ClassHash != other.ClassHash)
+        {
+            ClassHash = other.ClassHash;
+            OnPropertyChanged(nameof(ClassHash));
+        }
+        if (RaceHash != other.RaceHash)
+        {
+            RaceHash = other.RaceHash;
+            OnPropertyChanged(nameof(RaceHash));
+        }
+        if (GenderHash != other.GenderHash)
+        {
+            GenderHash = other.GenderHash;
+            OnPropertyChanged(nameof(GenderHash));
+        }
+        if (CharacterLevel != other.CharacterLevel)
+        {
+            CharacterLevel = other.CharacterLevel;
+            OnPropertyChanged(nameof(CharacterLevel));
+        }
+        if (LightLevel != other.LightLevel)
+        {
+            LightLevel = other.LightLevel;
+            OnPropertyChanged(nameof(LightLevel));
+        }
+        if (!BungieNetUserInfo.DeepEquals(other.BungieNetUserInfo))
+        {
+            BungieNetUserInfo.Update(other.BungieNetUserInfo);
+            OnPropertyChanged(nameof(BungieNetUserInfo));
+        }
+        if (ClanName != other.ClanName)
+        {
+            ClanName = other.ClanName;
+            OnPropertyChanged(nameof(ClanName));
+        }
+        if (ClanTag != other.ClanTag)
+        {
+            ClanTag = other.ClanTag;
+            OnPropertyChanged(nameof(ClanTag));
+        }
+        if (EmblemHash != other.EmblemHash)
+        {
+            EmblemHash = other.EmblemHash;
+            OnPropertyChanged(nameof(EmblemHash));
+        }
+    }
 }

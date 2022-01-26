@@ -13,4 +13,22 @@ public class DestinyEquipItemResults : IDeepEquatable<DestinyEquipItemResults>
         return other is not null &&
                EquipResults.DeepEqualsList(other.EquipResults);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyEquipItemResults? other)
+    {
+        if (other is null) return;
+        if (!EquipResults.DeepEqualsList(other.EquipResults))
+        {
+            EquipResults = other.EquipResults;
+            OnPropertyChanged(nameof(EquipResults));
+        }
+    }
 }

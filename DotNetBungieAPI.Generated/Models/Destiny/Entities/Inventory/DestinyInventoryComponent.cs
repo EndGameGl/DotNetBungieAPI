@@ -18,4 +18,22 @@ public class DestinyInventoryComponent : IDeepEquatable<DestinyInventoryComponen
         return other is not null &&
                Items.DeepEqualsList(other.Items);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyInventoryComponent? other)
+    {
+        if (other is null) return;
+        if (!Items.DeepEqualsList(other.Items))
+        {
+            Items = other.Items;
+            OnPropertyChanged(nameof(Items));
+        }
+    }
 }

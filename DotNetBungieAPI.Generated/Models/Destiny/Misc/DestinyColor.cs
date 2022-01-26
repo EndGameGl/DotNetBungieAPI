@@ -25,4 +25,37 @@ public class DestinyColor : IDeepEquatable<DestinyColor>
                Blue == other.Blue &&
                Alpha == other.Alpha;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyColor? other)
+    {
+        if (other is null) return;
+        if (Red != other.Red)
+        {
+            Red = other.Red;
+            OnPropertyChanged(nameof(Red));
+        }
+        if (Green != other.Green)
+        {
+            Green = other.Green;
+            OnPropertyChanged(nameof(Green));
+        }
+        if (Blue != other.Blue)
+        {
+            Blue = other.Blue;
+            OnPropertyChanged(nameof(Blue));
+        }
+        if (Alpha != other.Alpha)
+        {
+            Alpha = other.Alpha;
+            OnPropertyChanged(nameof(Alpha));
+        }
+    }
 }

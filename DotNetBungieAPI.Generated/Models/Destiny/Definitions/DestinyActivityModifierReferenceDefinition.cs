@@ -18,4 +18,22 @@ public class DestinyActivityModifierReferenceDefinition : IDeepEquatable<Destiny
         return other is not null &&
                ActivityModifierHash == other.ActivityModifierHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityModifierReferenceDefinition? other)
+    {
+        if (other is null) return;
+        if (ActivityModifierHash != other.ActivityModifierHash)
+        {
+            ActivityModifierHash = other.ActivityModifierHash;
+            OnPropertyChanged(nameof(ActivityModifierHash));
+        }
+    }
 }

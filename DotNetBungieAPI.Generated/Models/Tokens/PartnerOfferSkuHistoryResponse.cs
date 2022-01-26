@@ -34,4 +34,52 @@ public class PartnerOfferSkuHistoryResponse : IDeepEquatable<PartnerOfferSkuHist
                TransactionId == other.TransactionId &&
                SkuOffers.DeepEqualsList(other.SkuOffers);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(PartnerOfferSkuHistoryResponse? other)
+    {
+        if (other is null) return;
+        if (SkuIdentifier != other.SkuIdentifier)
+        {
+            SkuIdentifier = other.SkuIdentifier;
+            OnPropertyChanged(nameof(SkuIdentifier));
+        }
+        if (LocalizedName != other.LocalizedName)
+        {
+            LocalizedName = other.LocalizedName;
+            OnPropertyChanged(nameof(LocalizedName));
+        }
+        if (LocalizedDescription != other.LocalizedDescription)
+        {
+            LocalizedDescription = other.LocalizedDescription;
+            OnPropertyChanged(nameof(LocalizedDescription));
+        }
+        if (ClaimDate != other.ClaimDate)
+        {
+            ClaimDate = other.ClaimDate;
+            OnPropertyChanged(nameof(ClaimDate));
+        }
+        if (AllOffersApplied != other.AllOffersApplied)
+        {
+            AllOffersApplied = other.AllOffersApplied;
+            OnPropertyChanged(nameof(AllOffersApplied));
+        }
+        if (TransactionId != other.TransactionId)
+        {
+            TransactionId = other.TransactionId;
+            OnPropertyChanged(nameof(TransactionId));
+        }
+        if (!SkuOffers.DeepEqualsList(other.SkuOffers))
+        {
+            SkuOffers = other.SkuOffers;
+            OnPropertyChanged(nameof(SkuOffers));
+        }
+    }
 }

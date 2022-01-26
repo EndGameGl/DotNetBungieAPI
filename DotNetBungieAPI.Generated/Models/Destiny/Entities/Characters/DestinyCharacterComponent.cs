@@ -171,4 +171,127 @@ public class DestinyCharacterComponent : IDeepEquatable<DestinyCharacterComponen
                PercentToNextLevel == other.PercentToNextLevel &&
                TitleRecordHash == other.TitleRecordHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyCharacterComponent? other)
+    {
+        if (other is null) return;
+        if (MembershipId != other.MembershipId)
+        {
+            MembershipId = other.MembershipId;
+            OnPropertyChanged(nameof(MembershipId));
+        }
+        if (MembershipType != other.MembershipType)
+        {
+            MembershipType = other.MembershipType;
+            OnPropertyChanged(nameof(MembershipType));
+        }
+        if (CharacterId != other.CharacterId)
+        {
+            CharacterId = other.CharacterId;
+            OnPropertyChanged(nameof(CharacterId));
+        }
+        if (DateLastPlayed != other.DateLastPlayed)
+        {
+            DateLastPlayed = other.DateLastPlayed;
+            OnPropertyChanged(nameof(DateLastPlayed));
+        }
+        if (MinutesPlayedThisSession != other.MinutesPlayedThisSession)
+        {
+            MinutesPlayedThisSession = other.MinutesPlayedThisSession;
+            OnPropertyChanged(nameof(MinutesPlayedThisSession));
+        }
+        if (MinutesPlayedTotal != other.MinutesPlayedTotal)
+        {
+            MinutesPlayedTotal = other.MinutesPlayedTotal;
+            OnPropertyChanged(nameof(MinutesPlayedTotal));
+        }
+        if (Light != other.Light)
+        {
+            Light = other.Light;
+            OnPropertyChanged(nameof(Light));
+        }
+        if (!Stats.DeepEqualsDictionaryNaive(other.Stats))
+        {
+            Stats = other.Stats;
+            OnPropertyChanged(nameof(Stats));
+        }
+        if (RaceHash != other.RaceHash)
+        {
+            RaceHash = other.RaceHash;
+            OnPropertyChanged(nameof(RaceHash));
+        }
+        if (GenderHash != other.GenderHash)
+        {
+            GenderHash = other.GenderHash;
+            OnPropertyChanged(nameof(GenderHash));
+        }
+        if (ClassHash != other.ClassHash)
+        {
+            ClassHash = other.ClassHash;
+            OnPropertyChanged(nameof(ClassHash));
+        }
+        if (RaceType != other.RaceType)
+        {
+            RaceType = other.RaceType;
+            OnPropertyChanged(nameof(RaceType));
+        }
+        if (ClassType != other.ClassType)
+        {
+            ClassType = other.ClassType;
+            OnPropertyChanged(nameof(ClassType));
+        }
+        if (GenderType != other.GenderType)
+        {
+            GenderType = other.GenderType;
+            OnPropertyChanged(nameof(GenderType));
+        }
+        if (EmblemPath != other.EmblemPath)
+        {
+            EmblemPath = other.EmblemPath;
+            OnPropertyChanged(nameof(EmblemPath));
+        }
+        if (EmblemBackgroundPath != other.EmblemBackgroundPath)
+        {
+            EmblemBackgroundPath = other.EmblemBackgroundPath;
+            OnPropertyChanged(nameof(EmblemBackgroundPath));
+        }
+        if (EmblemHash != other.EmblemHash)
+        {
+            EmblemHash = other.EmblemHash;
+            OnPropertyChanged(nameof(EmblemHash));
+        }
+        if (!EmblemColor.DeepEquals(other.EmblemColor))
+        {
+            EmblemColor.Update(other.EmblemColor);
+            OnPropertyChanged(nameof(EmblemColor));
+        }
+        if (!LevelProgression.DeepEquals(other.LevelProgression))
+        {
+            LevelProgression.Update(other.LevelProgression);
+            OnPropertyChanged(nameof(LevelProgression));
+        }
+        if (BaseCharacterLevel != other.BaseCharacterLevel)
+        {
+            BaseCharacterLevel = other.BaseCharacterLevel;
+            OnPropertyChanged(nameof(BaseCharacterLevel));
+        }
+        if (PercentToNextLevel != other.PercentToNextLevel)
+        {
+            PercentToNextLevel = other.PercentToNextLevel;
+            OnPropertyChanged(nameof(PercentToNextLevel));
+        }
+        if (TitleRecordHash != other.TitleRecordHash)
+        {
+            TitleRecordHash = other.TitleRecordHash;
+            OnPropertyChanged(nameof(TitleRecordHash));
+        }
+    }
 }

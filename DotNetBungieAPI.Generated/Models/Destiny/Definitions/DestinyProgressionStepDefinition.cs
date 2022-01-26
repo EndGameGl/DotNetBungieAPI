@@ -44,4 +44,42 @@ public class DestinyProgressionStepDefinition : IDeepEquatable<DestinyProgressio
                RewardItems.DeepEqualsList(other.RewardItems) &&
                Icon == other.Icon;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyProgressionStepDefinition? other)
+    {
+        if (other is null) return;
+        if (StepName != other.StepName)
+        {
+            StepName = other.StepName;
+            OnPropertyChanged(nameof(StepName));
+        }
+        if (DisplayEffectType != other.DisplayEffectType)
+        {
+            DisplayEffectType = other.DisplayEffectType;
+            OnPropertyChanged(nameof(DisplayEffectType));
+        }
+        if (ProgressTotal != other.ProgressTotal)
+        {
+            ProgressTotal = other.ProgressTotal;
+            OnPropertyChanged(nameof(ProgressTotal));
+        }
+        if (!RewardItems.DeepEqualsList(other.RewardItems))
+        {
+            RewardItems = other.RewardItems;
+            OnPropertyChanged(nameof(RewardItems));
+        }
+        if (Icon != other.Icon)
+        {
+            Icon = other.Icon;
+            OnPropertyChanged(nameof(Icon));
+        }
+    }
 }

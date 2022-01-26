@@ -32,4 +32,32 @@ public class DestinyVendorItemSocketOverride : IDeepEquatable<DestinyVendorItemS
                RandomizedOptionsCount == other.RandomizedOptionsCount &&
                SocketTypeHash == other.SocketTypeHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorItemSocketOverride? other)
+    {
+        if (other is null) return;
+        if (SingleItemHash != other.SingleItemHash)
+        {
+            SingleItemHash = other.SingleItemHash;
+            OnPropertyChanged(nameof(SingleItemHash));
+        }
+        if (RandomizedOptionsCount != other.RandomizedOptionsCount)
+        {
+            RandomizedOptionsCount = other.RandomizedOptionsCount;
+            OnPropertyChanged(nameof(RandomizedOptionsCount));
+        }
+        if (SocketTypeHash != other.SocketTypeHash)
+        {
+            SocketTypeHash = other.SocketTypeHash;
+            OnPropertyChanged(nameof(SocketTypeHash));
+        }
+    }
 }

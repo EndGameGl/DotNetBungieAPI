@@ -20,4 +20,27 @@ public class ComponentResponse : IDeepEquatable<ComponentResponse>
                Privacy == other.Privacy &&
                Disabled == other.Disabled;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(ComponentResponse? other)
+    {
+        if (other is null) return;
+        if (Privacy != other.Privacy)
+        {
+            Privacy = other.Privacy;
+            OnPropertyChanged(nameof(Privacy));
+        }
+        if (Disabled != other.Disabled)
+        {
+            Disabled = other.Disabled;
+            OnPropertyChanged(nameof(Disabled));
+        }
+    }
 }

@@ -35,4 +35,42 @@ public class DestinyInsertPlugsActionRequest : IDeepEquatable<DestinyInsertPlugs
                CharacterId == other.CharacterId &&
                MembershipType == other.MembershipType;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyInsertPlugsActionRequest? other)
+    {
+        if (other is null) return;
+        if (ActionToken != other.ActionToken)
+        {
+            ActionToken = other.ActionToken;
+            OnPropertyChanged(nameof(ActionToken));
+        }
+        if (ItemInstanceId != other.ItemInstanceId)
+        {
+            ItemInstanceId = other.ItemInstanceId;
+            OnPropertyChanged(nameof(ItemInstanceId));
+        }
+        if (!Plug.DeepEquals(other.Plug))
+        {
+            Plug.Update(other.Plug);
+            OnPropertyChanged(nameof(Plug));
+        }
+        if (CharacterId != other.CharacterId)
+        {
+            CharacterId = other.CharacterId;
+            OnPropertyChanged(nameof(CharacterId));
+        }
+        if (MembershipType != other.MembershipType)
+        {
+            MembershipType = other.MembershipType;
+            OnPropertyChanged(nameof(MembershipType));
+        }
+    }
 }

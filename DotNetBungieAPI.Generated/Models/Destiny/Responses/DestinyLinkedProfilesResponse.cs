@@ -34,4 +34,32 @@ public class DestinyLinkedProfilesResponse : IDeepEquatable<DestinyLinkedProfile
                (BnetMembership is not null ? BnetMembership.DeepEquals(other.BnetMembership) : other.BnetMembership is null) &&
                ProfilesWithErrors.DeepEqualsList(other.ProfilesWithErrors);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyLinkedProfilesResponse? other)
+    {
+        if (other is null) return;
+        if (!Profiles.DeepEqualsList(other.Profiles))
+        {
+            Profiles = other.Profiles;
+            OnPropertyChanged(nameof(Profiles));
+        }
+        if (!BnetMembership.DeepEquals(other.BnetMembership))
+        {
+            BnetMembership.Update(other.BnetMembership);
+            OnPropertyChanged(nameof(BnetMembership));
+        }
+        if (!ProfilesWithErrors.DeepEqualsList(other.ProfilesWithErrors))
+        {
+            ProfilesWithErrors = other.ProfilesWithErrors;
+            OnPropertyChanged(nameof(ProfilesWithErrors));
+        }
+    }
 }

@@ -72,4 +72,62 @@ public class DestinyQuestStatus : IDeepEquatable<DestinyQuestStatus>
                Started == other.Started &&
                VendorHash == other.VendorHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyQuestStatus? other)
+    {
+        if (other is null) return;
+        if (QuestHash != other.QuestHash)
+        {
+            QuestHash = other.QuestHash;
+            OnPropertyChanged(nameof(QuestHash));
+        }
+        if (StepHash != other.StepHash)
+        {
+            StepHash = other.StepHash;
+            OnPropertyChanged(nameof(StepHash));
+        }
+        if (!StepObjectives.DeepEqualsList(other.StepObjectives))
+        {
+            StepObjectives = other.StepObjectives;
+            OnPropertyChanged(nameof(StepObjectives));
+        }
+        if (Tracked != other.Tracked)
+        {
+            Tracked = other.Tracked;
+            OnPropertyChanged(nameof(Tracked));
+        }
+        if (ItemInstanceId != other.ItemInstanceId)
+        {
+            ItemInstanceId = other.ItemInstanceId;
+            OnPropertyChanged(nameof(ItemInstanceId));
+        }
+        if (Completed != other.Completed)
+        {
+            Completed = other.Completed;
+            OnPropertyChanged(nameof(Completed));
+        }
+        if (Redeemed != other.Redeemed)
+        {
+            Redeemed = other.Redeemed;
+            OnPropertyChanged(nameof(Redeemed));
+        }
+        if (Started != other.Started)
+        {
+            Started = other.Started;
+            OnPropertyChanged(nameof(Started));
+        }
+        if (VendorHash != other.VendorHash)
+        {
+            VendorHash = other.VendorHash;
+            OnPropertyChanged(nameof(VendorHash));
+        }
+    }
 }

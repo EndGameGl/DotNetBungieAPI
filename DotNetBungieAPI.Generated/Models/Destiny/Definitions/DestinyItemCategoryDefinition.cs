@@ -155,4 +155,112 @@ public class DestinyItemCategoryDefinition : IDeepEquatable<DestinyItemCategoryD
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemCategoryDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (Visible != other.Visible)
+        {
+            Visible = other.Visible;
+            OnPropertyChanged(nameof(Visible));
+        }
+        if (Deprecated != other.Deprecated)
+        {
+            Deprecated = other.Deprecated;
+            OnPropertyChanged(nameof(Deprecated));
+        }
+        if (ShortTitle != other.ShortTitle)
+        {
+            ShortTitle = other.ShortTitle;
+            OnPropertyChanged(nameof(ShortTitle));
+        }
+        if (ItemTypeRegex != other.ItemTypeRegex)
+        {
+            ItemTypeRegex = other.ItemTypeRegex;
+            OnPropertyChanged(nameof(ItemTypeRegex));
+        }
+        if (GrantDestinyBreakerType != other.GrantDestinyBreakerType)
+        {
+            GrantDestinyBreakerType = other.GrantDestinyBreakerType;
+            OnPropertyChanged(nameof(GrantDestinyBreakerType));
+        }
+        if (PlugCategoryIdentifier != other.PlugCategoryIdentifier)
+        {
+            PlugCategoryIdentifier = other.PlugCategoryIdentifier;
+            OnPropertyChanged(nameof(PlugCategoryIdentifier));
+        }
+        if (ItemTypeRegexNot != other.ItemTypeRegexNot)
+        {
+            ItemTypeRegexNot = other.ItemTypeRegexNot;
+            OnPropertyChanged(nameof(ItemTypeRegexNot));
+        }
+        if (OriginBucketIdentifier != other.OriginBucketIdentifier)
+        {
+            OriginBucketIdentifier = other.OriginBucketIdentifier;
+            OnPropertyChanged(nameof(OriginBucketIdentifier));
+        }
+        if (GrantDestinyItemType != other.GrantDestinyItemType)
+        {
+            GrantDestinyItemType = other.GrantDestinyItemType;
+            OnPropertyChanged(nameof(GrantDestinyItemType));
+        }
+        if (GrantDestinySubType != other.GrantDestinySubType)
+        {
+            GrantDestinySubType = other.GrantDestinySubType;
+            OnPropertyChanged(nameof(GrantDestinySubType));
+        }
+        if (GrantDestinyClass != other.GrantDestinyClass)
+        {
+            GrantDestinyClass = other.GrantDestinyClass;
+            OnPropertyChanged(nameof(GrantDestinyClass));
+        }
+        if (TraitId != other.TraitId)
+        {
+            TraitId = other.TraitId;
+            OnPropertyChanged(nameof(TraitId));
+        }
+        if (!GroupedCategoryHashes.DeepEqualsListNaive(other.GroupedCategoryHashes))
+        {
+            GroupedCategoryHashes = other.GroupedCategoryHashes;
+            OnPropertyChanged(nameof(GroupedCategoryHashes));
+        }
+        if (!ParentCategoryHashes.DeepEqualsListNaive(other.ParentCategoryHashes))
+        {
+            ParentCategoryHashes = other.ParentCategoryHashes;
+            OnPropertyChanged(nameof(ParentCategoryHashes));
+        }
+        if (GroupCategoryOnly != other.GroupCategoryOnly)
+        {
+            GroupCategoryOnly = other.GroupCategoryOnly;
+            OnPropertyChanged(nameof(GroupCategoryOnly));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

@@ -20,4 +20,27 @@ public class DestinyReportReasonDefinition : IDeepEquatable<DestinyReportReasonD
                ReasonHash == other.ReasonHash &&
                (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyReportReasonDefinition? other)
+    {
+        if (other is null) return;
+        if (ReasonHash != other.ReasonHash)
+        {
+            ReasonHash = other.ReasonHash;
+            OnPropertyChanged(nameof(ReasonHash));
+        }
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+    }
 }

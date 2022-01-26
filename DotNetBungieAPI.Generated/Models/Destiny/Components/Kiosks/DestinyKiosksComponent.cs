@@ -20,4 +20,22 @@ public class DestinyKiosksComponent : IDeepEquatable<DestinyKiosksComponent>
         return other is not null &&
                KioskItems.DeepEqualsDictionaryNaive(other.KioskItems);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyKiosksComponent? other)
+    {
+        if (other is null) return;
+        if (!KioskItems.DeepEqualsDictionary(other.KioskItems))
+        {
+            KioskItems = other.KioskItems;
+            OnPropertyChanged(nameof(KioskItems));
+        }
+    }
 }

@@ -20,4 +20,27 @@ public class DestinyItemSocketEntryPlugItemRandomizedDefinition : IDeepEquatable
                CurrentlyCanRoll == other.CurrentlyCanRoll &&
                PlugItemHash == other.PlugItemHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemSocketEntryPlugItemRandomizedDefinition? other)
+    {
+        if (other is null) return;
+        if (CurrentlyCanRoll != other.CurrentlyCanRoll)
+        {
+            CurrentlyCanRoll = other.CurrentlyCanRoll;
+            OnPropertyChanged(nameof(CurrentlyCanRoll));
+        }
+        if (PlugItemHash != other.PlugItemHash)
+        {
+            PlugItemHash = other.PlugItemHash;
+            OnPropertyChanged(nameof(PlugItemHash));
+        }
+    }
 }

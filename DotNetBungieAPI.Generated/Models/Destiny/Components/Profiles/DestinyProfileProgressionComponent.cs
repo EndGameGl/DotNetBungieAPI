@@ -27,4 +27,27 @@ public class DestinyProfileProgressionComponent : IDeepEquatable<DestinyProfileP
                Checklists.DeepEqualsDictionaryNaive(other.Checklists) &&
                (SeasonalArtifact is not null ? SeasonalArtifact.DeepEquals(other.SeasonalArtifact) : other.SeasonalArtifact is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyProfileProgressionComponent? other)
+    {
+        if (other is null) return;
+        if (!Checklists.DeepEqualsDictionary(other.Checklists))
+        {
+            Checklists = other.Checklists;
+            OnPropertyChanged(nameof(Checklists));
+        }
+        if (!SeasonalArtifact.DeepEquals(other.SeasonalArtifact))
+        {
+            SeasonalArtifact.Update(other.SeasonalArtifact);
+            OnPropertyChanged(nameof(SeasonalArtifact));
+        }
+    }
 }

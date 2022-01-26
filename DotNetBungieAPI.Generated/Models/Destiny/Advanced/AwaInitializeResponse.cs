@@ -20,4 +20,27 @@ public class AwaInitializeResponse : IDeepEquatable<AwaInitializeResponse>
                CorrelationId == other.CorrelationId &&
                SentToSelf == other.SentToSelf;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(AwaInitializeResponse? other)
+    {
+        if (other is null) return;
+        if (CorrelationId != other.CorrelationId)
+        {
+            CorrelationId = other.CorrelationId;
+            OnPropertyChanged(nameof(CorrelationId));
+        }
+        if (SentToSelf != other.SentToSelf)
+        {
+            SentToSelf = other.SentToSelf;
+            OnPropertyChanged(nameof(SentToSelf));
+        }
+    }
 }

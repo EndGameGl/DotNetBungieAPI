@@ -13,4 +13,22 @@ public class DestinyMilestoneChallengeDefinition : IDeepEquatable<DestinyMilesto
         return other is not null &&
                ChallengeObjectiveHash == other.ChallengeObjectiveHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneChallengeDefinition? other)
+    {
+        if (other is null) return;
+        if (ChallengeObjectiveHash != other.ChallengeObjectiveHash)
+        {
+            ChallengeObjectiveHash = other.ChallengeObjectiveHash;
+            OnPropertyChanged(nameof(ChallengeObjectiveHash));
+        }
+    }
 }

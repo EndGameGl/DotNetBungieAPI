@@ -23,4 +23,27 @@ public class DestinySeasonPreviewImageDefinition : IDeepEquatable<DestinySeasonP
                ThumbnailImage == other.ThumbnailImage &&
                HighResImage == other.HighResImage;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinySeasonPreviewImageDefinition? other)
+    {
+        if (other is null) return;
+        if (ThumbnailImage != other.ThumbnailImage)
+        {
+            ThumbnailImage = other.ThumbnailImage;
+            OnPropertyChanged(nameof(ThumbnailImage));
+        }
+        if (HighResImage != other.HighResImage)
+        {
+            HighResImage = other.HighResImage;
+            OnPropertyChanged(nameof(HighResImage));
+        }
+    }
 }

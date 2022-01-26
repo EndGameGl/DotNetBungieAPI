@@ -14,4 +14,27 @@ public class DestinyCollectibleStateBlock : IDeepEquatable<DestinyCollectibleSta
                ObscuredOverrideItemHash == other.ObscuredOverrideItemHash &&
                (Requirements is not null ? Requirements.DeepEquals(other.Requirements) : other.Requirements is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyCollectibleStateBlock? other)
+    {
+        if (other is null) return;
+        if (ObscuredOverrideItemHash != other.ObscuredOverrideItemHash)
+        {
+            ObscuredOverrideItemHash = other.ObscuredOverrideItemHash;
+            OnPropertyChanged(nameof(ObscuredOverrideItemHash));
+        }
+        if (!Requirements.DeepEquals(other.Requirements))
+        {
+            Requirements.Update(other.Requirements);
+            OnPropertyChanged(nameof(Requirements));
+        }
+    }
 }

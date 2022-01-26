@@ -30,4 +30,32 @@ public class DestinyPublicMilestoneActivityVariant : IDeepEquatable<DestinyPubli
                ActivityModeHash == other.ActivityModeHash &&
                ActivityModeType == other.ActivityModeType;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPublicMilestoneActivityVariant? other)
+    {
+        if (other is null) return;
+        if (ActivityHash != other.ActivityHash)
+        {
+            ActivityHash = other.ActivityHash;
+            OnPropertyChanged(nameof(ActivityHash));
+        }
+        if (ActivityModeHash != other.ActivityModeHash)
+        {
+            ActivityModeHash = other.ActivityModeHash;
+            OnPropertyChanged(nameof(ActivityModeHash));
+        }
+        if (ActivityModeType != other.ActivityModeType)
+        {
+            ActivityModeType = other.ActivityModeType;
+            OnPropertyChanged(nameof(ActivityModeType));
+        }
+    }
 }

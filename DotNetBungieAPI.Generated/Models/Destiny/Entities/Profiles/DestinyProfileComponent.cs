@@ -64,4 +64,52 @@ public class DestinyProfileComponent : IDeepEquatable<DestinyProfileComponent>
                CurrentSeasonHash == other.CurrentSeasonHash &&
                CurrentSeasonRewardPowerCap == other.CurrentSeasonRewardPowerCap;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyProfileComponent? other)
+    {
+        if (other is null) return;
+        if (!UserInfo.DeepEquals(other.UserInfo))
+        {
+            UserInfo.Update(other.UserInfo);
+            OnPropertyChanged(nameof(UserInfo));
+        }
+        if (DateLastPlayed != other.DateLastPlayed)
+        {
+            DateLastPlayed = other.DateLastPlayed;
+            OnPropertyChanged(nameof(DateLastPlayed));
+        }
+        if (VersionsOwned != other.VersionsOwned)
+        {
+            VersionsOwned = other.VersionsOwned;
+            OnPropertyChanged(nameof(VersionsOwned));
+        }
+        if (!CharacterIds.DeepEqualsListNaive(other.CharacterIds))
+        {
+            CharacterIds = other.CharacterIds;
+            OnPropertyChanged(nameof(CharacterIds));
+        }
+        if (!SeasonHashes.DeepEqualsListNaive(other.SeasonHashes))
+        {
+            SeasonHashes = other.SeasonHashes;
+            OnPropertyChanged(nameof(SeasonHashes));
+        }
+        if (CurrentSeasonHash != other.CurrentSeasonHash)
+        {
+            CurrentSeasonHash = other.CurrentSeasonHash;
+            OnPropertyChanged(nameof(CurrentSeasonHash));
+        }
+        if (CurrentSeasonRewardPowerCap != other.CurrentSeasonRewardPowerCap)
+        {
+            CurrentSeasonRewardPowerCap = other.CurrentSeasonRewardPowerCap;
+            OnPropertyChanged(nameof(CurrentSeasonRewardPowerCap));
+        }
+    }
 }

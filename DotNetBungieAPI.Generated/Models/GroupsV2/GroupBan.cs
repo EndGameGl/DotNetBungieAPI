@@ -38,4 +38,57 @@ public class GroupBan : IDeepEquatable<GroupBan>
                (BungieNetUserInfo is not null ? BungieNetUserInfo.DeepEquals(other.BungieNetUserInfo) : other.BungieNetUserInfo is null) &&
                (DestinyUserInfo is not null ? DestinyUserInfo.DeepEquals(other.DestinyUserInfo) : other.DestinyUserInfo is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(GroupBan? other)
+    {
+        if (other is null) return;
+        if (GroupId != other.GroupId)
+        {
+            GroupId = other.GroupId;
+            OnPropertyChanged(nameof(GroupId));
+        }
+        if (!LastModifiedBy.DeepEquals(other.LastModifiedBy))
+        {
+            LastModifiedBy.Update(other.LastModifiedBy);
+            OnPropertyChanged(nameof(LastModifiedBy));
+        }
+        if (!CreatedBy.DeepEquals(other.CreatedBy))
+        {
+            CreatedBy.Update(other.CreatedBy);
+            OnPropertyChanged(nameof(CreatedBy));
+        }
+        if (DateBanned != other.DateBanned)
+        {
+            DateBanned = other.DateBanned;
+            OnPropertyChanged(nameof(DateBanned));
+        }
+        if (DateExpires != other.DateExpires)
+        {
+            DateExpires = other.DateExpires;
+            OnPropertyChanged(nameof(DateExpires));
+        }
+        if (Comment != other.Comment)
+        {
+            Comment = other.Comment;
+            OnPropertyChanged(nameof(Comment));
+        }
+        if (!BungieNetUserInfo.DeepEquals(other.BungieNetUserInfo))
+        {
+            BungieNetUserInfo.Update(other.BungieNetUserInfo);
+            OnPropertyChanged(nameof(BungieNetUserInfo));
+        }
+        if (!DestinyUserInfo.DeepEquals(other.DestinyUserInfo))
+        {
+            DestinyUserInfo.Update(other.DestinyUserInfo);
+            OnPropertyChanged(nameof(DestinyUserInfo));
+        }
+    }
 }

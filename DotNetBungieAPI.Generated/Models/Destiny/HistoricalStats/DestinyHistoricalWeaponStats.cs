@@ -20,4 +20,27 @@ public class DestinyHistoricalWeaponStats : IDeepEquatable<DestinyHistoricalWeap
                ReferenceId == other.ReferenceId &&
                Values.DeepEqualsDictionary(other.Values);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyHistoricalWeaponStats? other)
+    {
+        if (other is null) return;
+        if (ReferenceId != other.ReferenceId)
+        {
+            ReferenceId = other.ReferenceId;
+            OnPropertyChanged(nameof(ReferenceId));
+        }
+        if (!Values.DeepEqualsDictionary(other.Values))
+        {
+            Values = other.Values;
+            OnPropertyChanged(nameof(Values));
+        }
+    }
 }

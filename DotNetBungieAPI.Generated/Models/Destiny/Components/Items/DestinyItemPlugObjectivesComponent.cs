@@ -19,4 +19,22 @@ public class DestinyItemPlugObjectivesComponent : IDeepEquatable<DestinyItemPlug
         return other is not null &&
                ObjectivesPerPlug.DeepEqualsDictionaryNaive(other.ObjectivesPerPlug);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemPlugObjectivesComponent? other)
+    {
+        if (other is null) return;
+        if (!ObjectivesPerPlug.DeepEqualsDictionary(other.ObjectivesPerPlug))
+        {
+            ObjectivesPerPlug = other.ObjectivesPerPlug;
+            OnPropertyChanged(nameof(ObjectivesPerPlug));
+        }
+    }
 }

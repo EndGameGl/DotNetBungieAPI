@@ -25,4 +25,37 @@ public class DestinyRecordCompletionBlock : IDeepEquatable<DestinyRecordCompleti
                ShouldFireToast == other.ShouldFireToast &&
                ToastStyle == other.ToastStyle;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyRecordCompletionBlock? other)
+    {
+        if (other is null) return;
+        if (PartialCompletionObjectiveCountThreshold != other.PartialCompletionObjectiveCountThreshold)
+        {
+            PartialCompletionObjectiveCountThreshold = other.PartialCompletionObjectiveCountThreshold;
+            OnPropertyChanged(nameof(PartialCompletionObjectiveCountThreshold));
+        }
+        if (ScoreValue != other.ScoreValue)
+        {
+            ScoreValue = other.ScoreValue;
+            OnPropertyChanged(nameof(ScoreValue));
+        }
+        if (ShouldFireToast != other.ShouldFireToast)
+        {
+            ShouldFireToast = other.ShouldFireToast;
+            OnPropertyChanged(nameof(ShouldFireToast));
+        }
+        if (ToastStyle != other.ToastStyle)
+        {
+            ToastStyle = other.ToastStyle;
+            OnPropertyChanged(nameof(ToastStyle));
+        }
+    }
 }

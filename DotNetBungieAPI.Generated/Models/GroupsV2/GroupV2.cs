@@ -118,4 +118,157 @@ public class GroupV2 : IDeepEquatable<GroupV2>
                (Features is not null ? Features.DeepEquals(other.Features) : other.Features is null) &&
                (ClanInfo is not null ? ClanInfo.DeepEquals(other.ClanInfo) : other.ClanInfo is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(GroupV2? other)
+    {
+        if (other is null) return;
+        if (GroupId != other.GroupId)
+        {
+            GroupId = other.GroupId;
+            OnPropertyChanged(nameof(GroupId));
+        }
+        if (Name != other.Name)
+        {
+            Name = other.Name;
+            OnPropertyChanged(nameof(Name));
+        }
+        if (GroupType != other.GroupType)
+        {
+            GroupType = other.GroupType;
+            OnPropertyChanged(nameof(GroupType));
+        }
+        if (MembershipIdCreated != other.MembershipIdCreated)
+        {
+            MembershipIdCreated = other.MembershipIdCreated;
+            OnPropertyChanged(nameof(MembershipIdCreated));
+        }
+        if (CreationDate != other.CreationDate)
+        {
+            CreationDate = other.CreationDate;
+            OnPropertyChanged(nameof(CreationDate));
+        }
+        if (ModificationDate != other.ModificationDate)
+        {
+            ModificationDate = other.ModificationDate;
+            OnPropertyChanged(nameof(ModificationDate));
+        }
+        if (About != other.About)
+        {
+            About = other.About;
+            OnPropertyChanged(nameof(About));
+        }
+        if (!Tags.DeepEqualsListNaive(other.Tags))
+        {
+            Tags = other.Tags;
+            OnPropertyChanged(nameof(Tags));
+        }
+        if (MemberCount != other.MemberCount)
+        {
+            MemberCount = other.MemberCount;
+            OnPropertyChanged(nameof(MemberCount));
+        }
+        if (IsPublic != other.IsPublic)
+        {
+            IsPublic = other.IsPublic;
+            OnPropertyChanged(nameof(IsPublic));
+        }
+        if (IsPublicTopicAdminOnly != other.IsPublicTopicAdminOnly)
+        {
+            IsPublicTopicAdminOnly = other.IsPublicTopicAdminOnly;
+            OnPropertyChanged(nameof(IsPublicTopicAdminOnly));
+        }
+        if (Motto != other.Motto)
+        {
+            Motto = other.Motto;
+            OnPropertyChanged(nameof(Motto));
+        }
+        if (AllowChat != other.AllowChat)
+        {
+            AllowChat = other.AllowChat;
+            OnPropertyChanged(nameof(AllowChat));
+        }
+        if (IsDefaultPostPublic != other.IsDefaultPostPublic)
+        {
+            IsDefaultPostPublic = other.IsDefaultPostPublic;
+            OnPropertyChanged(nameof(IsDefaultPostPublic));
+        }
+        if (ChatSecurity != other.ChatSecurity)
+        {
+            ChatSecurity = other.ChatSecurity;
+            OnPropertyChanged(nameof(ChatSecurity));
+        }
+        if (Locale != other.Locale)
+        {
+            Locale = other.Locale;
+            OnPropertyChanged(nameof(Locale));
+        }
+        if (AvatarImageIndex != other.AvatarImageIndex)
+        {
+            AvatarImageIndex = other.AvatarImageIndex;
+            OnPropertyChanged(nameof(AvatarImageIndex));
+        }
+        if (Homepage != other.Homepage)
+        {
+            Homepage = other.Homepage;
+            OnPropertyChanged(nameof(Homepage));
+        }
+        if (MembershipOption != other.MembershipOption)
+        {
+            MembershipOption = other.MembershipOption;
+            OnPropertyChanged(nameof(MembershipOption));
+        }
+        if (DefaultPublicity != other.DefaultPublicity)
+        {
+            DefaultPublicity = other.DefaultPublicity;
+            OnPropertyChanged(nameof(DefaultPublicity));
+        }
+        if (Theme != other.Theme)
+        {
+            Theme = other.Theme;
+            OnPropertyChanged(nameof(Theme));
+        }
+        if (BannerPath != other.BannerPath)
+        {
+            BannerPath = other.BannerPath;
+            OnPropertyChanged(nameof(BannerPath));
+        }
+        if (AvatarPath != other.AvatarPath)
+        {
+            AvatarPath = other.AvatarPath;
+            OnPropertyChanged(nameof(AvatarPath));
+        }
+        if (ConversationId != other.ConversationId)
+        {
+            ConversationId = other.ConversationId;
+            OnPropertyChanged(nameof(ConversationId));
+        }
+        if (EnableInvitationMessagingForAdmins != other.EnableInvitationMessagingForAdmins)
+        {
+            EnableInvitationMessagingForAdmins = other.EnableInvitationMessagingForAdmins;
+            OnPropertyChanged(nameof(EnableInvitationMessagingForAdmins));
+        }
+        if (BanExpireDate != other.BanExpireDate)
+        {
+            BanExpireDate = other.BanExpireDate;
+            OnPropertyChanged(nameof(BanExpireDate));
+        }
+        if (!Features.DeepEquals(other.Features))
+        {
+            Features.Update(other.Features);
+            OnPropertyChanged(nameof(Features));
+        }
+        if (!ClanInfo.DeepEquals(other.ClanInfo))
+        {
+            ClanInfo.Update(other.ClanInfo);
+            OnPropertyChanged(nameof(ClanInfo));
+        }
+    }
 }

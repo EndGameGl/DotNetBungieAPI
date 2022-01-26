@@ -56,4 +56,42 @@ public class DestinyItemStatBlockDefinition : IDeepEquatable<DestinyItemStatBloc
                HasDisplayableStats == other.HasDisplayableStats &&
                PrimaryBaseStatHash == other.PrimaryBaseStatHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemStatBlockDefinition? other)
+    {
+        if (other is null) return;
+        if (DisablePrimaryStatDisplay != other.DisablePrimaryStatDisplay)
+        {
+            DisablePrimaryStatDisplay = other.DisablePrimaryStatDisplay;
+            OnPropertyChanged(nameof(DisablePrimaryStatDisplay));
+        }
+        if (StatGroupHash != other.StatGroupHash)
+        {
+            StatGroupHash = other.StatGroupHash;
+            OnPropertyChanged(nameof(StatGroupHash));
+        }
+        if (!Stats.DeepEqualsDictionary(other.Stats))
+        {
+            Stats = other.Stats;
+            OnPropertyChanged(nameof(Stats));
+        }
+        if (HasDisplayableStats != other.HasDisplayableStats)
+        {
+            HasDisplayableStats = other.HasDisplayableStats;
+            OnPropertyChanged(nameof(HasDisplayableStats));
+        }
+        if (PrimaryBaseStatHash != other.PrimaryBaseStatHash)
+        {
+            PrimaryBaseStatHash = other.PrimaryBaseStatHash;
+            OnPropertyChanged(nameof(PrimaryBaseStatHash));
+        }
+    }
 }

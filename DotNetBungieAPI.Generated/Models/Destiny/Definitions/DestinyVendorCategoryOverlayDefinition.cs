@@ -32,4 +32,42 @@ public class DestinyVendorCategoryOverlayDefinition : IDeepEquatable<DestinyVend
                Title == other.Title &&
                CurrencyItemHash == other.CurrencyItemHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorCategoryOverlayDefinition? other)
+    {
+        if (other is null) return;
+        if (ChoiceDescription != other.ChoiceDescription)
+        {
+            ChoiceDescription = other.ChoiceDescription;
+            OnPropertyChanged(nameof(ChoiceDescription));
+        }
+        if (Description != other.Description)
+        {
+            Description = other.Description;
+            OnPropertyChanged(nameof(Description));
+        }
+        if (Icon != other.Icon)
+        {
+            Icon = other.Icon;
+            OnPropertyChanged(nameof(Icon));
+        }
+        if (Title != other.Title)
+        {
+            Title = other.Title;
+            OnPropertyChanged(nameof(Title));
+        }
+        if (CurrencyItemHash != other.CurrencyItemHash)
+        {
+            CurrencyItemHash = other.CurrencyItemHash;
+            OnPropertyChanged(nameof(CurrencyItemHash));
+        }
+    }
 }

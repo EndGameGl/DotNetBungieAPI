@@ -52,4 +52,47 @@ public class DestinyItemPlug : IDeepEquatable<DestinyItemPlug>
                InsertFailIndexes.DeepEqualsListNaive(other.InsertFailIndexes) &&
                EnableFailIndexes.DeepEqualsListNaive(other.EnableFailIndexes);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemPlug? other)
+    {
+        if (other is null) return;
+        if (!PlugObjectives.DeepEqualsList(other.PlugObjectives))
+        {
+            PlugObjectives = other.PlugObjectives;
+            OnPropertyChanged(nameof(PlugObjectives));
+        }
+        if (PlugItemHash != other.PlugItemHash)
+        {
+            PlugItemHash = other.PlugItemHash;
+            OnPropertyChanged(nameof(PlugItemHash));
+        }
+        if (CanInsert != other.CanInsert)
+        {
+            CanInsert = other.CanInsert;
+            OnPropertyChanged(nameof(CanInsert));
+        }
+        if (Enabled != other.Enabled)
+        {
+            Enabled = other.Enabled;
+            OnPropertyChanged(nameof(Enabled));
+        }
+        if (!InsertFailIndexes.DeepEqualsListNaive(other.InsertFailIndexes))
+        {
+            InsertFailIndexes = other.InsertFailIndexes;
+            OnPropertyChanged(nameof(InsertFailIndexes));
+        }
+        if (!EnableFailIndexes.DeepEqualsListNaive(other.EnableFailIndexes))
+        {
+            EnableFailIndexes = other.EnableFailIndexes;
+            OnPropertyChanged(nameof(EnableFailIndexes));
+        }
+    }
 }

@@ -18,4 +18,22 @@ public class DestinyChallengeStatus : IDeepEquatable<DestinyChallengeStatus>
         return other is not null &&
                (Objective is not null ? Objective.DeepEquals(other.Objective) : other.Objective is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyChallengeStatus? other)
+    {
+        if (other is null) return;
+        if (!Objective.DeepEquals(other.Objective))
+        {
+            Objective.Update(other.Objective);
+            OnPropertyChanged(nameof(Objective));
+        }
+    }
 }

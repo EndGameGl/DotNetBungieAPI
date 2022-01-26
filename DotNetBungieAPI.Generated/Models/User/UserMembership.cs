@@ -44,4 +44,42 @@ public class UserMembership : IDeepEquatable<UserMembership>
                BungieGlobalDisplayName == other.BungieGlobalDisplayName &&
                BungieGlobalDisplayNameCode == other.BungieGlobalDisplayNameCode;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(UserMembership? other)
+    {
+        if (other is null) return;
+        if (MembershipType != other.MembershipType)
+        {
+            MembershipType = other.MembershipType;
+            OnPropertyChanged(nameof(MembershipType));
+        }
+        if (MembershipId != other.MembershipId)
+        {
+            MembershipId = other.MembershipId;
+            OnPropertyChanged(nameof(MembershipId));
+        }
+        if (DisplayName != other.DisplayName)
+        {
+            DisplayName = other.DisplayName;
+            OnPropertyChanged(nameof(DisplayName));
+        }
+        if (BungieGlobalDisplayName != other.BungieGlobalDisplayName)
+        {
+            BungieGlobalDisplayName = other.BungieGlobalDisplayName;
+            OnPropertyChanged(nameof(BungieGlobalDisplayName));
+        }
+        if (BungieGlobalDisplayNameCode != other.BungieGlobalDisplayNameCode)
+        {
+            BungieGlobalDisplayNameCode = other.BungieGlobalDisplayNameCode;
+            OnPropertyChanged(nameof(BungieGlobalDisplayNameCode));
+        }
+    }
 }

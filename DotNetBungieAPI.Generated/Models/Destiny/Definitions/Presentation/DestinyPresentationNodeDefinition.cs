@@ -141,4 +141,117 @@ public class DestinyPresentationNodeDefinition : IDeepEquatable<DestinyPresentat
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPresentationNodeDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (OriginalIcon != other.OriginalIcon)
+        {
+            OriginalIcon = other.OriginalIcon;
+            OnPropertyChanged(nameof(OriginalIcon));
+        }
+        if (RootViewIcon != other.RootViewIcon)
+        {
+            RootViewIcon = other.RootViewIcon;
+            OnPropertyChanged(nameof(RootViewIcon));
+        }
+        if (NodeType != other.NodeType)
+        {
+            NodeType = other.NodeType;
+            OnPropertyChanged(nameof(NodeType));
+        }
+        if (Scope != other.Scope)
+        {
+            Scope = other.Scope;
+            OnPropertyChanged(nameof(Scope));
+        }
+        if (ObjectiveHash != other.ObjectiveHash)
+        {
+            ObjectiveHash = other.ObjectiveHash;
+            OnPropertyChanged(nameof(ObjectiveHash));
+        }
+        if (CompletionRecordHash != other.CompletionRecordHash)
+        {
+            CompletionRecordHash = other.CompletionRecordHash;
+            OnPropertyChanged(nameof(CompletionRecordHash));
+        }
+        if (!Children.DeepEquals(other.Children))
+        {
+            Children.Update(other.Children);
+            OnPropertyChanged(nameof(Children));
+        }
+        if (DisplayStyle != other.DisplayStyle)
+        {
+            DisplayStyle = other.DisplayStyle;
+            OnPropertyChanged(nameof(DisplayStyle));
+        }
+        if (ScreenStyle != other.ScreenStyle)
+        {
+            ScreenStyle = other.ScreenStyle;
+            OnPropertyChanged(nameof(ScreenStyle));
+        }
+        if (!Requirements.DeepEquals(other.Requirements))
+        {
+            Requirements.Update(other.Requirements);
+            OnPropertyChanged(nameof(Requirements));
+        }
+        if (DisableChildSubscreenNavigation != other.DisableChildSubscreenNavigation)
+        {
+            DisableChildSubscreenNavigation = other.DisableChildSubscreenNavigation;
+            OnPropertyChanged(nameof(DisableChildSubscreenNavigation));
+        }
+        if (MaxCategoryRecordScore != other.MaxCategoryRecordScore)
+        {
+            MaxCategoryRecordScore = other.MaxCategoryRecordScore;
+            OnPropertyChanged(nameof(MaxCategoryRecordScore));
+        }
+        if (PresentationNodeType != other.PresentationNodeType)
+        {
+            PresentationNodeType = other.PresentationNodeType;
+            OnPropertyChanged(nameof(PresentationNodeType));
+        }
+        if (!TraitIds.DeepEqualsListNaive(other.TraitIds))
+        {
+            TraitIds = other.TraitIds;
+            OnPropertyChanged(nameof(TraitIds));
+        }
+        if (!TraitHashes.DeepEqualsListNaive(other.TraitHashes))
+        {
+            TraitHashes = other.TraitHashes;
+            OnPropertyChanged(nameof(TraitHashes));
+        }
+        if (!ParentNodeHashes.DeepEqualsListNaive(other.ParentNodeHashes))
+        {
+            ParentNodeHashes = other.ParentNodeHashes;
+            OnPropertyChanged(nameof(ParentNodeHashes));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

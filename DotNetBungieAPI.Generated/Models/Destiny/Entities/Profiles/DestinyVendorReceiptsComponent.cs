@@ -16,4 +16,22 @@ public class DestinyVendorReceiptsComponent : IDeepEquatable<DestinyVendorReceip
         return other is not null &&
                Receipts.DeepEqualsList(other.Receipts);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorReceiptsComponent? other)
+    {
+        if (other is null) return;
+        if (!Receipts.DeepEqualsList(other.Receipts))
+        {
+            Receipts = other.Receipts;
+            OnPropertyChanged(nameof(Receipts));
+        }
+    }
 }

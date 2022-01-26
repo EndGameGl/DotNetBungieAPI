@@ -16,4 +16,22 @@ public class DestinyItemSummaryBlockDefinition : IDeepEquatable<DestinyItemSumma
         return other is not null &&
                SortPriority == other.SortPriority;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemSummaryBlockDefinition? other)
+    {
+        if (other is null) return;
+        if (SortPriority != other.SortPriority)
+        {
+            SortPriority = other.SortPriority;
+            OnPropertyChanged(nameof(SortPriority));
+        }
+    }
 }

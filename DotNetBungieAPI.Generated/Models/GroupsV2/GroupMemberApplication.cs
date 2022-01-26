@@ -42,4 +42,62 @@ public class GroupMemberApplication : IDeepEquatable<GroupMemberApplication>
                (DestinyUserInfo is not null ? DestinyUserInfo.DeepEquals(other.DestinyUserInfo) : other.DestinyUserInfo is null) &&
                (BungieNetUserInfo is not null ? BungieNetUserInfo.DeepEquals(other.BungieNetUserInfo) : other.BungieNetUserInfo is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(GroupMemberApplication? other)
+    {
+        if (other is null) return;
+        if (GroupId != other.GroupId)
+        {
+            GroupId = other.GroupId;
+            OnPropertyChanged(nameof(GroupId));
+        }
+        if (CreationDate != other.CreationDate)
+        {
+            CreationDate = other.CreationDate;
+            OnPropertyChanged(nameof(CreationDate));
+        }
+        if (ResolveState != other.ResolveState)
+        {
+            ResolveState = other.ResolveState;
+            OnPropertyChanged(nameof(ResolveState));
+        }
+        if (ResolveDate != other.ResolveDate)
+        {
+            ResolveDate = other.ResolveDate;
+            OnPropertyChanged(nameof(ResolveDate));
+        }
+        if (ResolvedByMembershipId != other.ResolvedByMembershipId)
+        {
+            ResolvedByMembershipId = other.ResolvedByMembershipId;
+            OnPropertyChanged(nameof(ResolvedByMembershipId));
+        }
+        if (RequestMessage != other.RequestMessage)
+        {
+            RequestMessage = other.RequestMessage;
+            OnPropertyChanged(nameof(RequestMessage));
+        }
+        if (ResolveMessage != other.ResolveMessage)
+        {
+            ResolveMessage = other.ResolveMessage;
+            OnPropertyChanged(nameof(ResolveMessage));
+        }
+        if (!DestinyUserInfo.DeepEquals(other.DestinyUserInfo))
+        {
+            DestinyUserInfo.Update(other.DestinyUserInfo);
+            OnPropertyChanged(nameof(DestinyUserInfo));
+        }
+        if (!BungieNetUserInfo.DeepEquals(other.BungieNetUserInfo))
+        {
+            BungieNetUserInfo.Update(other.BungieNetUserInfo);
+            OnPropertyChanged(nameof(BungieNetUserInfo));
+        }
+    }
 }

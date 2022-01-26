@@ -115,4 +115,122 @@ public class DestinyRecordDefinition : IDeepEquatable<DestinyRecordDefinition>
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyRecordDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (Scope != other.Scope)
+        {
+            Scope = other.Scope;
+            OnPropertyChanged(nameof(Scope));
+        }
+        if (!PresentationInfo.DeepEquals(other.PresentationInfo))
+        {
+            PresentationInfo.Update(other.PresentationInfo);
+            OnPropertyChanged(nameof(PresentationInfo));
+        }
+        if (LoreHash != other.LoreHash)
+        {
+            LoreHash = other.LoreHash;
+            OnPropertyChanged(nameof(LoreHash));
+        }
+        if (!ObjectiveHashes.DeepEqualsListNaive(other.ObjectiveHashes))
+        {
+            ObjectiveHashes = other.ObjectiveHashes;
+            OnPropertyChanged(nameof(ObjectiveHashes));
+        }
+        if (RecordValueStyle != other.RecordValueStyle)
+        {
+            RecordValueStyle = other.RecordValueStyle;
+            OnPropertyChanged(nameof(RecordValueStyle));
+        }
+        if (ForTitleGilding != other.ForTitleGilding)
+        {
+            ForTitleGilding = other.ForTitleGilding;
+            OnPropertyChanged(nameof(ForTitleGilding));
+        }
+        if (!TitleInfo.DeepEquals(other.TitleInfo))
+        {
+            TitleInfo.Update(other.TitleInfo);
+            OnPropertyChanged(nameof(TitleInfo));
+        }
+        if (!CompletionInfo.DeepEquals(other.CompletionInfo))
+        {
+            CompletionInfo.Update(other.CompletionInfo);
+            OnPropertyChanged(nameof(CompletionInfo));
+        }
+        if (!StateInfo.DeepEquals(other.StateInfo))
+        {
+            StateInfo.Update(other.StateInfo);
+            OnPropertyChanged(nameof(StateInfo));
+        }
+        if (!Requirements.DeepEquals(other.Requirements))
+        {
+            Requirements.Update(other.Requirements);
+            OnPropertyChanged(nameof(Requirements));
+        }
+        if (!ExpirationInfo.DeepEquals(other.ExpirationInfo))
+        {
+            ExpirationInfo.Update(other.ExpirationInfo);
+            OnPropertyChanged(nameof(ExpirationInfo));
+        }
+        if (!IntervalInfo.DeepEquals(other.IntervalInfo))
+        {
+            IntervalInfo.Update(other.IntervalInfo);
+            OnPropertyChanged(nameof(IntervalInfo));
+        }
+        if (!RewardItems.DeepEqualsList(other.RewardItems))
+        {
+            RewardItems = other.RewardItems;
+            OnPropertyChanged(nameof(RewardItems));
+        }
+        if (PresentationNodeType != other.PresentationNodeType)
+        {
+            PresentationNodeType = other.PresentationNodeType;
+            OnPropertyChanged(nameof(PresentationNodeType));
+        }
+        if (!TraitIds.DeepEqualsListNaive(other.TraitIds))
+        {
+            TraitIds = other.TraitIds;
+            OnPropertyChanged(nameof(TraitIds));
+        }
+        if (!TraitHashes.DeepEqualsListNaive(other.TraitHashes))
+        {
+            TraitHashes = other.TraitHashes;
+            OnPropertyChanged(nameof(TraitHashes));
+        }
+        if (!ParentNodeHashes.DeepEqualsListNaive(other.ParentNodeHashes))
+        {
+            ParentNodeHashes = other.ParentNodeHashes;
+            OnPropertyChanged(nameof(ParentNodeHashes));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

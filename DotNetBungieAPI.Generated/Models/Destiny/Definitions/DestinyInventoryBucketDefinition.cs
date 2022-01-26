@@ -102,4 +102,77 @@ public class DestinyInventoryBucketDefinition : IDeepEquatable<DestinyInventoryB
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyInventoryBucketDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (Scope != other.Scope)
+        {
+            Scope = other.Scope;
+            OnPropertyChanged(nameof(Scope));
+        }
+        if (Category != other.Category)
+        {
+            Category = other.Category;
+            OnPropertyChanged(nameof(Category));
+        }
+        if (BucketOrder != other.BucketOrder)
+        {
+            BucketOrder = other.BucketOrder;
+            OnPropertyChanged(nameof(BucketOrder));
+        }
+        if (ItemCount != other.ItemCount)
+        {
+            ItemCount = other.ItemCount;
+            OnPropertyChanged(nameof(ItemCount));
+        }
+        if (Location != other.Location)
+        {
+            Location = other.Location;
+            OnPropertyChanged(nameof(Location));
+        }
+        if (HasTransferDestination != other.HasTransferDestination)
+        {
+            HasTransferDestination = other.HasTransferDestination;
+            OnPropertyChanged(nameof(HasTransferDestination));
+        }
+        if (Enabled != other.Enabled)
+        {
+            Enabled = other.Enabled;
+            OnPropertyChanged(nameof(Enabled));
+        }
+        if (Fifo != other.Fifo)
+        {
+            Fifo = other.Fifo;
+            OnPropertyChanged(nameof(Fifo));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

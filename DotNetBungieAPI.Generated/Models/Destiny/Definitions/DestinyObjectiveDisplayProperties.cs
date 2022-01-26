@@ -20,4 +20,27 @@ public class DestinyObjectiveDisplayProperties : IDeepEquatable<DestinyObjective
                ActivityHash == other.ActivityHash &&
                DisplayOnItemPreviewScreen == other.DisplayOnItemPreviewScreen;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyObjectiveDisplayProperties? other)
+    {
+        if (other is null) return;
+        if (ActivityHash != other.ActivityHash)
+        {
+            ActivityHash = other.ActivityHash;
+            OnPropertyChanged(nameof(ActivityHash));
+        }
+        if (DisplayOnItemPreviewScreen != other.DisplayOnItemPreviewScreen)
+        {
+            DisplayOnItemPreviewScreen = other.DisplayOnItemPreviewScreen;
+            OnPropertyChanged(nameof(DisplayOnItemPreviewScreen));
+        }
+    }
 }

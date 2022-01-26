@@ -30,4 +30,32 @@ public class EmailSubscriptionDefinition : IDeepEquatable<EmailSubscriptionDefin
                Localization.DeepEqualsDictionary(other.Localization) &&
                Value == other.Value;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(EmailSubscriptionDefinition? other)
+    {
+        if (other is null) return;
+        if (Name != other.Name)
+        {
+            Name = other.Name;
+            OnPropertyChanged(nameof(Name));
+        }
+        if (!Localization.DeepEqualsDictionary(other.Localization))
+        {
+            Localization = other.Localization;
+            OnPropertyChanged(nameof(Localization));
+        }
+        if (Value != other.Value)
+        {
+            Value = other.Value;
+            OnPropertyChanged(nameof(Value));
+        }
+    }
 }

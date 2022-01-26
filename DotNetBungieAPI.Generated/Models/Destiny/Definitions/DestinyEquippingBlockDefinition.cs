@@ -62,4 +62,52 @@ public class DestinyEquippingBlockDefinition : IDeepEquatable<DestinyEquippingBl
                AmmoType == other.AmmoType &&
                DisplayStrings.DeepEqualsListNaive(other.DisplayStrings);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyEquippingBlockDefinition? other)
+    {
+        if (other is null) return;
+        if (GearsetItemHash != other.GearsetItemHash)
+        {
+            GearsetItemHash = other.GearsetItemHash;
+            OnPropertyChanged(nameof(GearsetItemHash));
+        }
+        if (UniqueLabel != other.UniqueLabel)
+        {
+            UniqueLabel = other.UniqueLabel;
+            OnPropertyChanged(nameof(UniqueLabel));
+        }
+        if (UniqueLabelHash != other.UniqueLabelHash)
+        {
+            UniqueLabelHash = other.UniqueLabelHash;
+            OnPropertyChanged(nameof(UniqueLabelHash));
+        }
+        if (EquipmentSlotTypeHash != other.EquipmentSlotTypeHash)
+        {
+            EquipmentSlotTypeHash = other.EquipmentSlotTypeHash;
+            OnPropertyChanged(nameof(EquipmentSlotTypeHash));
+        }
+        if (Attributes != other.Attributes)
+        {
+            Attributes = other.Attributes;
+            OnPropertyChanged(nameof(Attributes));
+        }
+        if (AmmoType != other.AmmoType)
+        {
+            AmmoType = other.AmmoType;
+            OnPropertyChanged(nameof(AmmoType));
+        }
+        if (!DisplayStrings.DeepEqualsListNaive(other.DisplayStrings))
+        {
+            DisplayStrings = other.DisplayStrings;
+            OnPropertyChanged(nameof(DisplayStrings));
+        }
+    }
 }

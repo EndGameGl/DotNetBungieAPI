@@ -36,4 +36,47 @@ public class DestinyRecordComponent : IDeepEquatable<DestinyRecordComponent>
                CompletedCount == other.CompletedCount &&
                RewardVisibilty.DeepEqualsListNaive(other.RewardVisibilty);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyRecordComponent? other)
+    {
+        if (other is null) return;
+        if (State != other.State)
+        {
+            State = other.State;
+            OnPropertyChanged(nameof(State));
+        }
+        if (!Objectives.DeepEqualsList(other.Objectives))
+        {
+            Objectives = other.Objectives;
+            OnPropertyChanged(nameof(Objectives));
+        }
+        if (!IntervalObjectives.DeepEqualsList(other.IntervalObjectives))
+        {
+            IntervalObjectives = other.IntervalObjectives;
+            OnPropertyChanged(nameof(IntervalObjectives));
+        }
+        if (IntervalsRedeemedCount != other.IntervalsRedeemedCount)
+        {
+            IntervalsRedeemedCount = other.IntervalsRedeemedCount;
+            OnPropertyChanged(nameof(IntervalsRedeemedCount));
+        }
+        if (CompletedCount != other.CompletedCount)
+        {
+            CompletedCount = other.CompletedCount;
+            OnPropertyChanged(nameof(CompletedCount));
+        }
+        if (!RewardVisibilty.DeepEqualsListNaive(other.RewardVisibilty))
+        {
+            RewardVisibilty = other.RewardVisibilty;
+            OnPropertyChanged(nameof(RewardVisibilty));
+        }
+    }
 }

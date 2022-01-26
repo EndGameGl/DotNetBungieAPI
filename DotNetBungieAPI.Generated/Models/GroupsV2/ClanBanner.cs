@@ -34,4 +34,52 @@ public class ClanBanner : IDeepEquatable<ClanBanner>
                GonfalonDetailId == other.GonfalonDetailId &&
                GonfalonDetailColorId == other.GonfalonDetailColorId;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(ClanBanner? other)
+    {
+        if (other is null) return;
+        if (DecalId != other.DecalId)
+        {
+            DecalId = other.DecalId;
+            OnPropertyChanged(nameof(DecalId));
+        }
+        if (DecalColorId != other.DecalColorId)
+        {
+            DecalColorId = other.DecalColorId;
+            OnPropertyChanged(nameof(DecalColorId));
+        }
+        if (DecalBackgroundColorId != other.DecalBackgroundColorId)
+        {
+            DecalBackgroundColorId = other.DecalBackgroundColorId;
+            OnPropertyChanged(nameof(DecalBackgroundColorId));
+        }
+        if (GonfalonId != other.GonfalonId)
+        {
+            GonfalonId = other.GonfalonId;
+            OnPropertyChanged(nameof(GonfalonId));
+        }
+        if (GonfalonColorId != other.GonfalonColorId)
+        {
+            GonfalonColorId = other.GonfalonColorId;
+            OnPropertyChanged(nameof(GonfalonColorId));
+        }
+        if (GonfalonDetailId != other.GonfalonDetailId)
+        {
+            GonfalonDetailId = other.GonfalonDetailId;
+            OnPropertyChanged(nameof(GonfalonDetailId));
+        }
+        if (GonfalonDetailColorId != other.GonfalonDetailColorId)
+        {
+            GonfalonDetailColorId = other.GonfalonDetailColorId;
+            OnPropertyChanged(nameof(GonfalonDetailColorId));
+        }
+    }
 }

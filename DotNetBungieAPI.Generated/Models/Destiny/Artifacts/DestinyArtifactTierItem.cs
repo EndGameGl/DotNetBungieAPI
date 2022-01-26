@@ -14,4 +14,27 @@ public class DestinyArtifactTierItem : IDeepEquatable<DestinyArtifactTierItem>
                ItemHash == other.ItemHash &&
                IsActive == other.IsActive;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyArtifactTierItem? other)
+    {
+        if (other is null) return;
+        if (ItemHash != other.ItemHash)
+        {
+            ItemHash = other.ItemHash;
+            OnPropertyChanged(nameof(ItemHash));
+        }
+        if (IsActive != other.IsActive)
+        {
+            IsActive = other.IsActive;
+            OnPropertyChanged(nameof(IsActive));
+        }
+    }
 }

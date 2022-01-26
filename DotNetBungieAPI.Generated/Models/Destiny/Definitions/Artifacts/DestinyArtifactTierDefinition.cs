@@ -41,4 +41,42 @@ public class DestinyArtifactTierDefinition : IDeepEquatable<DestinyArtifactTierD
                Items.DeepEqualsList(other.Items) &&
                MinimumUnlockPointsUsedRequirement == other.MinimumUnlockPointsUsedRequirement;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyArtifactTierDefinition? other)
+    {
+        if (other is null) return;
+        if (TierHash != other.TierHash)
+        {
+            TierHash = other.TierHash;
+            OnPropertyChanged(nameof(TierHash));
+        }
+        if (DisplayTitle != other.DisplayTitle)
+        {
+            DisplayTitle = other.DisplayTitle;
+            OnPropertyChanged(nameof(DisplayTitle));
+        }
+        if (ProgressRequirementMessage != other.ProgressRequirementMessage)
+        {
+            ProgressRequirementMessage = other.ProgressRequirementMessage;
+            OnPropertyChanged(nameof(ProgressRequirementMessage));
+        }
+        if (!Items.DeepEqualsList(other.Items))
+        {
+            Items = other.Items;
+            OnPropertyChanged(nameof(Items));
+        }
+        if (MinimumUnlockPointsUsedRequirement != other.MinimumUnlockPointsUsedRequirement)
+        {
+            MinimumUnlockPointsUsedRequirement = other.MinimumUnlockPointsUsedRequirement;
+            OnPropertyChanged(nameof(MinimumUnlockPointsUsedRequirement));
+        }
+    }
 }

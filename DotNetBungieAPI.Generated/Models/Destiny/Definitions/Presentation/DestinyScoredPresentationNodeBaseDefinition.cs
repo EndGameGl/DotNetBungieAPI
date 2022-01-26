@@ -52,4 +52,57 @@ public class DestinyScoredPresentationNodeBaseDefinition : IDeepEquatable<Destin
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyScoredPresentationNodeBaseDefinition? other)
+    {
+        if (other is null) return;
+        if (MaxCategoryRecordScore != other.MaxCategoryRecordScore)
+        {
+            MaxCategoryRecordScore = other.MaxCategoryRecordScore;
+            OnPropertyChanged(nameof(MaxCategoryRecordScore));
+        }
+        if (PresentationNodeType != other.PresentationNodeType)
+        {
+            PresentationNodeType = other.PresentationNodeType;
+            OnPropertyChanged(nameof(PresentationNodeType));
+        }
+        if (!TraitIds.DeepEqualsListNaive(other.TraitIds))
+        {
+            TraitIds = other.TraitIds;
+            OnPropertyChanged(nameof(TraitIds));
+        }
+        if (!TraitHashes.DeepEqualsListNaive(other.TraitHashes))
+        {
+            TraitHashes = other.TraitHashes;
+            OnPropertyChanged(nameof(TraitHashes));
+        }
+        if (!ParentNodeHashes.DeepEqualsListNaive(other.ParentNodeHashes))
+        {
+            ParentNodeHashes = other.ParentNodeHashes;
+            OnPropertyChanged(nameof(ParentNodeHashes));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

@@ -90,4 +90,77 @@ public class DestinyItemInventoryBlockDefinition : IDeepEquatable<DestinyItemInv
                ExpiredInOrbitMessage == other.ExpiredInOrbitMessage &&
                SuppressExpirationWhenObjectivesComplete == other.SuppressExpirationWhenObjectivesComplete;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemInventoryBlockDefinition? other)
+    {
+        if (other is null) return;
+        if (StackUniqueLabel != other.StackUniqueLabel)
+        {
+            StackUniqueLabel = other.StackUniqueLabel;
+            OnPropertyChanged(nameof(StackUniqueLabel));
+        }
+        if (MaxStackSize != other.MaxStackSize)
+        {
+            MaxStackSize = other.MaxStackSize;
+            OnPropertyChanged(nameof(MaxStackSize));
+        }
+        if (BucketTypeHash != other.BucketTypeHash)
+        {
+            BucketTypeHash = other.BucketTypeHash;
+            OnPropertyChanged(nameof(BucketTypeHash));
+        }
+        if (RecoveryBucketTypeHash != other.RecoveryBucketTypeHash)
+        {
+            RecoveryBucketTypeHash = other.RecoveryBucketTypeHash;
+            OnPropertyChanged(nameof(RecoveryBucketTypeHash));
+        }
+        if (TierTypeHash != other.TierTypeHash)
+        {
+            TierTypeHash = other.TierTypeHash;
+            OnPropertyChanged(nameof(TierTypeHash));
+        }
+        if (IsInstanceItem != other.IsInstanceItem)
+        {
+            IsInstanceItem = other.IsInstanceItem;
+            OnPropertyChanged(nameof(IsInstanceItem));
+        }
+        if (TierTypeName != other.TierTypeName)
+        {
+            TierTypeName = other.TierTypeName;
+            OnPropertyChanged(nameof(TierTypeName));
+        }
+        if (TierType != other.TierType)
+        {
+            TierType = other.TierType;
+            OnPropertyChanged(nameof(TierType));
+        }
+        if (ExpirationTooltip != other.ExpirationTooltip)
+        {
+            ExpirationTooltip = other.ExpirationTooltip;
+            OnPropertyChanged(nameof(ExpirationTooltip));
+        }
+        if (ExpiredInActivityMessage != other.ExpiredInActivityMessage)
+        {
+            ExpiredInActivityMessage = other.ExpiredInActivityMessage;
+            OnPropertyChanged(nameof(ExpiredInActivityMessage));
+        }
+        if (ExpiredInOrbitMessage != other.ExpiredInOrbitMessage)
+        {
+            ExpiredInOrbitMessage = other.ExpiredInOrbitMessage;
+            OnPropertyChanged(nameof(ExpiredInOrbitMessage));
+        }
+        if (SuppressExpirationWhenObjectivesComplete != other.SuppressExpirationWhenObjectivesComplete)
+        {
+            SuppressExpirationWhenObjectivesComplete = other.SuppressExpirationWhenObjectivesComplete;
+            OnPropertyChanged(nameof(SuppressExpirationWhenObjectivesComplete));
+        }
+    }
 }

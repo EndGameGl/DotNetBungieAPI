@@ -17,4 +17,27 @@ public class DestinyActivityGraphDisplayProgressionDefinition : IDeepEquatable<D
                Id == other.Id &&
                ProgressionHash == other.ProgressionHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityGraphDisplayProgressionDefinition? other)
+    {
+        if (other is null) return;
+        if (Id != other.Id)
+        {
+            Id = other.Id;
+            OnPropertyChanged(nameof(Id));
+        }
+        if (ProgressionHash != other.ProgressionHash)
+        {
+            ProgressionHash = other.ProgressionHash;
+            OnPropertyChanged(nameof(ProgressionHash));
+        }
+    }
 }

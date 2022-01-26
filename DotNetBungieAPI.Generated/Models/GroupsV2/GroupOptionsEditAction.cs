@@ -67,4 +67,42 @@ public class GroupOptionsEditAction : IDeepEquatable<GroupOptionsEditAction>
                UpdateBannerPermissionOverride == other.UpdateBannerPermissionOverride &&
                JoinLevel == other.JoinLevel;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(GroupOptionsEditAction? other)
+    {
+        if (other is null) return;
+        if (InvitePermissionOverride != other.InvitePermissionOverride)
+        {
+            InvitePermissionOverride = other.InvitePermissionOverride;
+            OnPropertyChanged(nameof(InvitePermissionOverride));
+        }
+        if (UpdateCulturePermissionOverride != other.UpdateCulturePermissionOverride)
+        {
+            UpdateCulturePermissionOverride = other.UpdateCulturePermissionOverride;
+            OnPropertyChanged(nameof(UpdateCulturePermissionOverride));
+        }
+        if (HostGuidedGamePermissionOverride != other.HostGuidedGamePermissionOverride)
+        {
+            HostGuidedGamePermissionOverride = other.HostGuidedGamePermissionOverride;
+            OnPropertyChanged(nameof(HostGuidedGamePermissionOverride));
+        }
+        if (UpdateBannerPermissionOverride != other.UpdateBannerPermissionOverride)
+        {
+            UpdateBannerPermissionOverride = other.UpdateBannerPermissionOverride;
+            OnPropertyChanged(nameof(UpdateBannerPermissionOverride));
+        }
+        if (JoinLevel != other.JoinLevel)
+        {
+            JoinLevel = other.JoinLevel;
+            OnPropertyChanged(nameof(JoinLevel));
+        }
+    }
 }

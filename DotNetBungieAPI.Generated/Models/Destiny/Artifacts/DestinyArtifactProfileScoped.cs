@@ -31,4 +31,42 @@ public class DestinyArtifactProfileScoped : IDeepEquatable<DestinyArtifactProfil
                (PowerBonusProgression is not null ? PowerBonusProgression.DeepEquals(other.PowerBonusProgression) : other.PowerBonusProgression is null) &&
                PowerBonus == other.PowerBonus;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyArtifactProfileScoped? other)
+    {
+        if (other is null) return;
+        if (ArtifactHash != other.ArtifactHash)
+        {
+            ArtifactHash = other.ArtifactHash;
+            OnPropertyChanged(nameof(ArtifactHash));
+        }
+        if (!PointProgression.DeepEquals(other.PointProgression))
+        {
+            PointProgression.Update(other.PointProgression);
+            OnPropertyChanged(nameof(PointProgression));
+        }
+        if (PointsAcquired != other.PointsAcquired)
+        {
+            PointsAcquired = other.PointsAcquired;
+            OnPropertyChanged(nameof(PointsAcquired));
+        }
+        if (!PowerBonusProgression.DeepEquals(other.PowerBonusProgression))
+        {
+            PowerBonusProgression.Update(other.PowerBonusProgression);
+            OnPropertyChanged(nameof(PowerBonusProgression));
+        }
+        if (PowerBonus != other.PowerBonus)
+        {
+            PowerBonus = other.PowerBonus;
+            OnPropertyChanged(nameof(PowerBonus));
+        }
+    }
 }

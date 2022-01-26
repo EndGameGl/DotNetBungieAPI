@@ -16,4 +16,22 @@ public class DestinyActivityGraphNodeFeaturingStateDefinition : IDeepEquatable<D
         return other is not null &&
                HighlightType == other.HighlightType;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityGraphNodeFeaturingStateDefinition? other)
+    {
+        if (other is null) return;
+        if (HighlightType != other.HighlightType)
+        {
+            HighlightType = other.HighlightType;
+            OnPropertyChanged(nameof(HighlightType));
+        }
+    }
 }

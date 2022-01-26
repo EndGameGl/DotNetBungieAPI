@@ -29,4 +29,27 @@ public class DestinyMilestoneActivityVariantDefinition : IDeepEquatable<DestinyM
                ActivityHash == other.ActivityHash &&
                Order == other.Order;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneActivityVariantDefinition? other)
+    {
+        if (other is null) return;
+        if (ActivityHash != other.ActivityHash)
+        {
+            ActivityHash = other.ActivityHash;
+            OnPropertyChanged(nameof(ActivityHash));
+        }
+        if (Order != other.Order)
+        {
+            Order = other.Order;
+            OnPropertyChanged(nameof(Order));
+        }
+    }
 }

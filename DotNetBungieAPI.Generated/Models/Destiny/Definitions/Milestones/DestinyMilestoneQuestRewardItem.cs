@@ -53,4 +53,47 @@ public class DestinyMilestoneQuestRewardItem : IDeepEquatable<DestinyMilestoneQu
                Quantity == other.Quantity &&
                HasConditionalVisibility == other.HasConditionalVisibility;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneQuestRewardItem? other)
+    {
+        if (other is null) return;
+        if (VendorHash != other.VendorHash)
+        {
+            VendorHash = other.VendorHash;
+            OnPropertyChanged(nameof(VendorHash));
+        }
+        if (VendorItemIndex != other.VendorItemIndex)
+        {
+            VendorItemIndex = other.VendorItemIndex;
+            OnPropertyChanged(nameof(VendorItemIndex));
+        }
+        if (ItemHash != other.ItemHash)
+        {
+            ItemHash = other.ItemHash;
+            OnPropertyChanged(nameof(ItemHash));
+        }
+        if (ItemInstanceId != other.ItemInstanceId)
+        {
+            ItemInstanceId = other.ItemInstanceId;
+            OnPropertyChanged(nameof(ItemInstanceId));
+        }
+        if (Quantity != other.Quantity)
+        {
+            Quantity = other.Quantity;
+            OnPropertyChanged(nameof(Quantity));
+        }
+        if (HasConditionalVisibility != other.HasConditionalVisibility)
+        {
+            HasConditionalVisibility = other.HasConditionalVisibility;
+            OnPropertyChanged(nameof(HasConditionalVisibility));
+        }
+    }
 }

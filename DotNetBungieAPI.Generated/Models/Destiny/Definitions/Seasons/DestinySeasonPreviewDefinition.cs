@@ -37,4 +37,37 @@ public class DestinySeasonPreviewDefinition : IDeepEquatable<DestinySeasonPrevie
                VideoLink == other.VideoLink &&
                Images.DeepEqualsList(other.Images);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinySeasonPreviewDefinition? other)
+    {
+        if (other is null) return;
+        if (Description != other.Description)
+        {
+            Description = other.Description;
+            OnPropertyChanged(nameof(Description));
+        }
+        if (LinkPath != other.LinkPath)
+        {
+            LinkPath = other.LinkPath;
+            OnPropertyChanged(nameof(LinkPath));
+        }
+        if (VideoLink != other.VideoLink)
+        {
+            VideoLink = other.VideoLink;
+            OnPropertyChanged(nameof(VideoLink));
+        }
+        if (!Images.DeepEqualsList(other.Images))
+        {
+            Images = other.Images;
+            OnPropertyChanged(nameof(Images));
+        }
+    }
 }

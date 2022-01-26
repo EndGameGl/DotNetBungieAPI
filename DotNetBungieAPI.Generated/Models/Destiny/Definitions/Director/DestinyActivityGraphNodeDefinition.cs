@@ -51,4 +51,47 @@ public class DestinyActivityGraphNodeDefinition : IDeepEquatable<DestinyActivity
                Activities.DeepEqualsList(other.Activities) &&
                States.DeepEqualsList(other.States);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityGraphNodeDefinition? other)
+    {
+        if (other is null) return;
+        if (NodeId != other.NodeId)
+        {
+            NodeId = other.NodeId;
+            OnPropertyChanged(nameof(NodeId));
+        }
+        if (!OverrideDisplay.DeepEquals(other.OverrideDisplay))
+        {
+            OverrideDisplay.Update(other.OverrideDisplay);
+            OnPropertyChanged(nameof(OverrideDisplay));
+        }
+        if (!Position.DeepEquals(other.Position))
+        {
+            Position.Update(other.Position);
+            OnPropertyChanged(nameof(Position));
+        }
+        if (!FeaturingStates.DeepEqualsList(other.FeaturingStates))
+        {
+            FeaturingStates = other.FeaturingStates;
+            OnPropertyChanged(nameof(FeaturingStates));
+        }
+        if (!Activities.DeepEqualsList(other.Activities))
+        {
+            Activities = other.Activities;
+            OnPropertyChanged(nameof(Activities));
+        }
+        if (!States.DeepEqualsList(other.States))
+        {
+            States = other.States;
+            OnPropertyChanged(nameof(States));
+        }
+    }
 }

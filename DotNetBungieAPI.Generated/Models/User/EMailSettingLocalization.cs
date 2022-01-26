@@ -17,4 +17,27 @@ public class EMailSettingLocalization : IDeepEquatable<EMailSettingLocalization>
                Title == other.Title &&
                Description == other.Description;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(EMailSettingLocalization? other)
+    {
+        if (other is null) return;
+        if (Title != other.Title)
+        {
+            Title = other.Title;
+            OnPropertyChanged(nameof(Title));
+        }
+        if (Description != other.Description)
+        {
+            Description = other.Description;
+            OnPropertyChanged(nameof(Description));
+        }
+    }
 }

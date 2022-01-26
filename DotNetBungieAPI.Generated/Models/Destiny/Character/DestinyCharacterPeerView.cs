@@ -13,4 +13,22 @@ public class DestinyCharacterPeerView : IDeepEquatable<DestinyCharacterPeerView>
         return other is not null &&
                Equipment.DeepEqualsList(other.Equipment);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyCharacterPeerView? other)
+    {
+        if (other is null) return;
+        if (!Equipment.DeepEqualsList(other.Equipment))
+        {
+            Equipment = other.Equipment;
+            OnPropertyChanged(nameof(Equipment));
+        }
+    }
 }

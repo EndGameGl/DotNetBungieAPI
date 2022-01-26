@@ -57,4 +57,67 @@ public class GroupQuery : IDeepEquatable<GroupQuery>
                CurrentPage == other.CurrentPage &&
                RequestContinuationToken == other.RequestContinuationToken;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(GroupQuery? other)
+    {
+        if (other is null) return;
+        if (Name != other.Name)
+        {
+            Name = other.Name;
+            OnPropertyChanged(nameof(Name));
+        }
+        if (GroupType != other.GroupType)
+        {
+            GroupType = other.GroupType;
+            OnPropertyChanged(nameof(GroupType));
+        }
+        if (CreationDate != other.CreationDate)
+        {
+            CreationDate = other.CreationDate;
+            OnPropertyChanged(nameof(CreationDate));
+        }
+        if (SortBy != other.SortBy)
+        {
+            SortBy = other.SortBy;
+            OnPropertyChanged(nameof(SortBy));
+        }
+        if (GroupMemberCountFilter != other.GroupMemberCountFilter)
+        {
+            GroupMemberCountFilter = other.GroupMemberCountFilter;
+            OnPropertyChanged(nameof(GroupMemberCountFilter));
+        }
+        if (LocaleFilter != other.LocaleFilter)
+        {
+            LocaleFilter = other.LocaleFilter;
+            OnPropertyChanged(nameof(LocaleFilter));
+        }
+        if (TagText != other.TagText)
+        {
+            TagText = other.TagText;
+            OnPropertyChanged(nameof(TagText));
+        }
+        if (ItemsPerPage != other.ItemsPerPage)
+        {
+            ItemsPerPage = other.ItemsPerPage;
+            OnPropertyChanged(nameof(ItemsPerPage));
+        }
+        if (CurrentPage != other.CurrentPage)
+        {
+            CurrentPage = other.CurrentPage;
+            OnPropertyChanged(nameof(CurrentPage));
+        }
+        if (RequestContinuationToken != other.RequestContinuationToken)
+        {
+            RequestContinuationToken = other.RequestContinuationToken;
+            OnPropertyChanged(nameof(RequestContinuationToken));
+        }
+    }
 }

@@ -41,4 +41,42 @@ public class EmailViewDefinitionSetting : IDeepEquatable<EmailViewDefinitionSett
                OptInAggregateValue == other.OptInAggregateValue &&
                Subscriptions.DeepEqualsList(other.Subscriptions);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(EmailViewDefinitionSetting? other)
+    {
+        if (other is null) return;
+        if (Name != other.Name)
+        {
+            Name = other.Name;
+            OnPropertyChanged(nameof(Name));
+        }
+        if (!Localization.DeepEqualsDictionary(other.Localization))
+        {
+            Localization = other.Localization;
+            OnPropertyChanged(nameof(Localization));
+        }
+        if (SetByDefault != other.SetByDefault)
+        {
+            SetByDefault = other.SetByDefault;
+            OnPropertyChanged(nameof(SetByDefault));
+        }
+        if (OptInAggregateValue != other.OptInAggregateValue)
+        {
+            OptInAggregateValue = other.OptInAggregateValue;
+            OnPropertyChanged(nameof(OptInAggregateValue));
+        }
+        if (!Subscriptions.DeepEqualsList(other.Subscriptions))
+        {
+            Subscriptions = other.Subscriptions;
+            OnPropertyChanged(nameof(Subscriptions));
+        }
+    }
 }

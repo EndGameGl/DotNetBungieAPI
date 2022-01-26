@@ -64,4 +64,57 @@ public class DestinyPublicMilestone : IDeepEquatable<DestinyPublicMilestone>
                EndDate == other.EndDate &&
                Order == other.Order;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPublicMilestone? other)
+    {
+        if (other is null) return;
+        if (MilestoneHash != other.MilestoneHash)
+        {
+            MilestoneHash = other.MilestoneHash;
+            OnPropertyChanged(nameof(MilestoneHash));
+        }
+        if (!AvailableQuests.DeepEqualsList(other.AvailableQuests))
+        {
+            AvailableQuests = other.AvailableQuests;
+            OnPropertyChanged(nameof(AvailableQuests));
+        }
+        if (!Activities.DeepEqualsList(other.Activities))
+        {
+            Activities = other.Activities;
+            OnPropertyChanged(nameof(Activities));
+        }
+        if (!VendorHashes.DeepEqualsListNaive(other.VendorHashes))
+        {
+            VendorHashes = other.VendorHashes;
+            OnPropertyChanged(nameof(VendorHashes));
+        }
+        if (!Vendors.DeepEqualsList(other.Vendors))
+        {
+            Vendors = other.Vendors;
+            OnPropertyChanged(nameof(Vendors));
+        }
+        if (StartDate != other.StartDate)
+        {
+            StartDate = other.StartDate;
+            OnPropertyChanged(nameof(StartDate));
+        }
+        if (EndDate != other.EndDate)
+        {
+            EndDate = other.EndDate;
+            OnPropertyChanged(nameof(EndDate));
+        }
+        if (Order != other.Order)
+        {
+            Order = other.Order;
+            OnPropertyChanged(nameof(Order));
+        }
+    }
 }

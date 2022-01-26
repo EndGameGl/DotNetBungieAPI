@@ -20,4 +20,27 @@ public class DestinyHistoricalStatsValuePair : IDeepEquatable<DestinyHistoricalS
                Value == other.Value &&
                DisplayValue == other.DisplayValue;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyHistoricalStatsValuePair? other)
+    {
+        if (other is null) return;
+        if (Value != other.Value)
+        {
+            Value = other.Value;
+            OnPropertyChanged(nameof(Value));
+        }
+        if (DisplayValue != other.DisplayValue)
+        {
+            DisplayValue = other.DisplayValue;
+            OnPropertyChanged(nameof(DisplayValue));
+        }
+    }
 }

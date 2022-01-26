@@ -178,4 +178,122 @@ public class DestinyMilestoneDefinition : IDeepEquatable<DestinyMilestoneDefinit
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (DisplayPreference != other.DisplayPreference)
+        {
+            DisplayPreference = other.DisplayPreference;
+            OnPropertyChanged(nameof(DisplayPreference));
+        }
+        if (Image != other.Image)
+        {
+            Image = other.Image;
+            OnPropertyChanged(nameof(Image));
+        }
+        if (MilestoneType != other.MilestoneType)
+        {
+            MilestoneType = other.MilestoneType;
+            OnPropertyChanged(nameof(MilestoneType));
+        }
+        if (Recruitable != other.Recruitable)
+        {
+            Recruitable = other.Recruitable;
+            OnPropertyChanged(nameof(Recruitable));
+        }
+        if (FriendlyName != other.FriendlyName)
+        {
+            FriendlyName = other.FriendlyName;
+            OnPropertyChanged(nameof(FriendlyName));
+        }
+        if (ShowInExplorer != other.ShowInExplorer)
+        {
+            ShowInExplorer = other.ShowInExplorer;
+            OnPropertyChanged(nameof(ShowInExplorer));
+        }
+        if (ShowInMilestones != other.ShowInMilestones)
+        {
+            ShowInMilestones = other.ShowInMilestones;
+            OnPropertyChanged(nameof(ShowInMilestones));
+        }
+        if (ExplorePrioritizesActivityImage != other.ExplorePrioritizesActivityImage)
+        {
+            ExplorePrioritizesActivityImage = other.ExplorePrioritizesActivityImage;
+            OnPropertyChanged(nameof(ExplorePrioritizesActivityImage));
+        }
+        if (HasPredictableDates != other.HasPredictableDates)
+        {
+            HasPredictableDates = other.HasPredictableDates;
+            OnPropertyChanged(nameof(HasPredictableDates));
+        }
+        if (!Quests.DeepEqualsDictionary(other.Quests))
+        {
+            Quests = other.Quests;
+            OnPropertyChanged(nameof(Quests));
+        }
+        if (!Rewards.DeepEqualsDictionary(other.Rewards))
+        {
+            Rewards = other.Rewards;
+            OnPropertyChanged(nameof(Rewards));
+        }
+        if (VendorsDisplayTitle != other.VendorsDisplayTitle)
+        {
+            VendorsDisplayTitle = other.VendorsDisplayTitle;
+            OnPropertyChanged(nameof(VendorsDisplayTitle));
+        }
+        if (!Vendors.DeepEqualsList(other.Vendors))
+        {
+            Vendors = other.Vendors;
+            OnPropertyChanged(nameof(Vendors));
+        }
+        if (!Values.DeepEqualsDictionary(other.Values))
+        {
+            Values = other.Values;
+            OnPropertyChanged(nameof(Values));
+        }
+        if (IsInGameMilestone != other.IsInGameMilestone)
+        {
+            IsInGameMilestone = other.IsInGameMilestone;
+            OnPropertyChanged(nameof(IsInGameMilestone));
+        }
+        if (!Activities.DeepEqualsList(other.Activities))
+        {
+            Activities = other.Activities;
+            OnPropertyChanged(nameof(Activities));
+        }
+        if (DefaultOrder != other.DefaultOrder)
+        {
+            DefaultOrder = other.DefaultOrder;
+            OnPropertyChanged(nameof(DefaultOrder));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

@@ -60,4 +60,52 @@ public class DestinyItemSourceDefinition : IDeepEquatable<DestinyItemSourceDefin
                ComputedStats.DeepEqualsDictionary(other.ComputedStats) &&
                SourceHashes.DeepEqualsListNaive(other.SourceHashes);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemSourceDefinition? other)
+    {
+        if (other is null) return;
+        if (Level != other.Level)
+        {
+            Level = other.Level;
+            OnPropertyChanged(nameof(Level));
+        }
+        if (MinQuality != other.MinQuality)
+        {
+            MinQuality = other.MinQuality;
+            OnPropertyChanged(nameof(MinQuality));
+        }
+        if (MaxQuality != other.MaxQuality)
+        {
+            MaxQuality = other.MaxQuality;
+            OnPropertyChanged(nameof(MaxQuality));
+        }
+        if (MinLevelRequired != other.MinLevelRequired)
+        {
+            MinLevelRequired = other.MinLevelRequired;
+            OnPropertyChanged(nameof(MinLevelRequired));
+        }
+        if (MaxLevelRequired != other.MaxLevelRequired)
+        {
+            MaxLevelRequired = other.MaxLevelRequired;
+            OnPropertyChanged(nameof(MaxLevelRequired));
+        }
+        if (!ComputedStats.DeepEqualsDictionary(other.ComputedStats))
+        {
+            ComputedStats = other.ComputedStats;
+            OnPropertyChanged(nameof(ComputedStats));
+        }
+        if (!SourceHashes.DeepEqualsListNaive(other.SourceHashes))
+        {
+            SourceHashes = other.SourceHashes;
+            OnPropertyChanged(nameof(SourceHashes));
+        }
+    }
 }

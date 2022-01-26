@@ -42,4 +42,32 @@ public class DestinyPlugWhitelistEntryDefinition : IDeepEquatable<DestinyPlugWhi
                CategoryIdentifier == other.CategoryIdentifier &&
                ReinitializationPossiblePlugHashes.DeepEqualsListNaive(other.ReinitializationPossiblePlugHashes);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPlugWhitelistEntryDefinition? other)
+    {
+        if (other is null) return;
+        if (CategoryHash != other.CategoryHash)
+        {
+            CategoryHash = other.CategoryHash;
+            OnPropertyChanged(nameof(CategoryHash));
+        }
+        if (CategoryIdentifier != other.CategoryIdentifier)
+        {
+            CategoryIdentifier = other.CategoryIdentifier;
+            OnPropertyChanged(nameof(CategoryIdentifier));
+        }
+        if (!ReinitializationPossiblePlugHashes.DeepEqualsListNaive(other.ReinitializationPossiblePlugHashes))
+        {
+            ReinitializationPossiblePlugHashes = other.ReinitializationPossiblePlugHashes;
+            OnPropertyChanged(nameof(ReinitializationPossiblePlugHashes));
+        }
+    }
 }

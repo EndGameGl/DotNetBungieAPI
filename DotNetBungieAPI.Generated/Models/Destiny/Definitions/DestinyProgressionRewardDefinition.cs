@@ -32,4 +32,32 @@ public class DestinyProgressionRewardDefinition : IDeepEquatable<DestinyProgress
                Amount == other.Amount &&
                ApplyThrottles == other.ApplyThrottles;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyProgressionRewardDefinition? other)
+    {
+        if (other is null) return;
+        if (ProgressionMappingHash != other.ProgressionMappingHash)
+        {
+            ProgressionMappingHash = other.ProgressionMappingHash;
+            OnPropertyChanged(nameof(ProgressionMappingHash));
+        }
+        if (Amount != other.Amount)
+        {
+            Amount = other.Amount;
+            OnPropertyChanged(nameof(Amount));
+        }
+        if (ApplyThrottles != other.ApplyThrottles)
+        {
+            ApplyThrottles = other.ApplyThrottles;
+            OnPropertyChanged(nameof(ApplyThrottles));
+        }
+    }
 }

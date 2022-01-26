@@ -29,4 +29,27 @@ public class DestinyNodeActivationRequirement : IDeepEquatable<DestinyNodeActiva
                GridLevel == other.GridLevel &&
                MaterialRequirementHashes.DeepEqualsListNaive(other.MaterialRequirementHashes);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyNodeActivationRequirement? other)
+    {
+        if (other is null) return;
+        if (GridLevel != other.GridLevel)
+        {
+            GridLevel = other.GridLevel;
+            OnPropertyChanged(nameof(GridLevel));
+        }
+        if (!MaterialRequirementHashes.DeepEqualsListNaive(other.MaterialRequirementHashes))
+        {
+            MaterialRequirementHashes = other.MaterialRequirementHashes;
+            OnPropertyChanged(nameof(MaterialRequirementHashes));
+        }
+    }
 }

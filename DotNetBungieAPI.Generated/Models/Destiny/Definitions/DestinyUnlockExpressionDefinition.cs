@@ -18,4 +18,22 @@ public class DestinyUnlockExpressionDefinition : IDeepEquatable<DestinyUnlockExp
         return other is not null &&
                Scope == other.Scope;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyUnlockExpressionDefinition? other)
+    {
+        if (other is null) return;
+        if (Scope != other.Scope)
+        {
+            Scope = other.Scope;
+            OnPropertyChanged(nameof(Scope));
+        }
+    }
 }

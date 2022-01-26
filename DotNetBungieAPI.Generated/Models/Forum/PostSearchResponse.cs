@@ -67,4 +67,82 @@ public class PostSearchResponse : IDeepEquatable<PostSearchResponse>
                ReplacementContinuationToken == other.ReplacementContinuationToken &&
                UseTotalResults == other.UseTotalResults;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(PostSearchResponse? other)
+    {
+        if (other is null) return;
+        if (!RelatedPosts.DeepEqualsList(other.RelatedPosts))
+        {
+            RelatedPosts = other.RelatedPosts;
+            OnPropertyChanged(nameof(RelatedPosts));
+        }
+        if (!Authors.DeepEqualsList(other.Authors))
+        {
+            Authors = other.Authors;
+            OnPropertyChanged(nameof(Authors));
+        }
+        if (!Groups.DeepEqualsList(other.Groups))
+        {
+            Groups = other.Groups;
+            OnPropertyChanged(nameof(Groups));
+        }
+        if (!SearchedTags.DeepEqualsList(other.SearchedTags))
+        {
+            SearchedTags = other.SearchedTags;
+            OnPropertyChanged(nameof(SearchedTags));
+        }
+        if (!Polls.DeepEqualsList(other.Polls))
+        {
+            Polls = other.Polls;
+            OnPropertyChanged(nameof(Polls));
+        }
+        if (!RecruitmentDetails.DeepEqualsList(other.RecruitmentDetails))
+        {
+            RecruitmentDetails = other.RecruitmentDetails;
+            OnPropertyChanged(nameof(RecruitmentDetails));
+        }
+        if (AvailablePages != other.AvailablePages)
+        {
+            AvailablePages = other.AvailablePages;
+            OnPropertyChanged(nameof(AvailablePages));
+        }
+        if (!Results.DeepEqualsList(other.Results))
+        {
+            Results = other.Results;
+            OnPropertyChanged(nameof(Results));
+        }
+        if (TotalResults != other.TotalResults)
+        {
+            TotalResults = other.TotalResults;
+            OnPropertyChanged(nameof(TotalResults));
+        }
+        if (HasMore != other.HasMore)
+        {
+            HasMore = other.HasMore;
+            OnPropertyChanged(nameof(HasMore));
+        }
+        if (!Query.DeepEquals(other.Query))
+        {
+            Query.Update(other.Query);
+            OnPropertyChanged(nameof(Query));
+        }
+        if (ReplacementContinuationToken != other.ReplacementContinuationToken)
+        {
+            ReplacementContinuationToken = other.ReplacementContinuationToken;
+            OnPropertyChanged(nameof(ReplacementContinuationToken));
+        }
+        if (UseTotalResults != other.UseTotalResults)
+        {
+            UseTotalResults = other.UseTotalResults;
+            OnPropertyChanged(nameof(UseTotalResults));
+        }
+    }
 }

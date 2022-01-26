@@ -90,4 +90,62 @@ public class DestinySandboxPerkDefinition : IDeepEquatable<DestinySandboxPerkDef
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinySandboxPerkDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (PerkIdentifier != other.PerkIdentifier)
+        {
+            PerkIdentifier = other.PerkIdentifier;
+            OnPropertyChanged(nameof(PerkIdentifier));
+        }
+        if (IsDisplayable != other.IsDisplayable)
+        {
+            IsDisplayable = other.IsDisplayable;
+            OnPropertyChanged(nameof(IsDisplayable));
+        }
+        if (DamageType != other.DamageType)
+        {
+            DamageType = other.DamageType;
+            OnPropertyChanged(nameof(DamageType));
+        }
+        if (DamageTypeHash != other.DamageTypeHash)
+        {
+            DamageTypeHash = other.DamageTypeHash;
+            OnPropertyChanged(nameof(DamageTypeHash));
+        }
+        if (!PerkGroups.DeepEquals(other.PerkGroups))
+        {
+            PerkGroups.Update(other.PerkGroups);
+            OnPropertyChanged(nameof(PerkGroups));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

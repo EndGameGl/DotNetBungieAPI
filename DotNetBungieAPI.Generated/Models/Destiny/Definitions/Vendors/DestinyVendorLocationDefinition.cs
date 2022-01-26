@@ -23,4 +23,27 @@ public class DestinyVendorLocationDefinition : IDeepEquatable<DestinyVendorLocat
                DestinationHash == other.DestinationHash &&
                BackgroundImagePath == other.BackgroundImagePath;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorLocationDefinition? other)
+    {
+        if (other is null) return;
+        if (DestinationHash != other.DestinationHash)
+        {
+            DestinationHash = other.DestinationHash;
+            OnPropertyChanged(nameof(DestinationHash));
+        }
+        if (BackgroundImagePath != other.BackgroundImagePath)
+        {
+            BackgroundImagePath = other.BackgroundImagePath;
+            OnPropertyChanged(nameof(BackgroundImagePath));
+        }
+    }
 }

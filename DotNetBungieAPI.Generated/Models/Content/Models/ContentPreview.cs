@@ -30,4 +30,47 @@ public class ContentPreview : IDeepEquatable<ContentPreview>
                SetNesting == other.SetNesting &&
                UseSetId == other.UseSetId;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(ContentPreview? other)
+    {
+        if (other is null) return;
+        if (Name != other.Name)
+        {
+            Name = other.Name;
+            OnPropertyChanged(nameof(Name));
+        }
+        if (Path != other.Path)
+        {
+            Path = other.Path;
+            OnPropertyChanged(nameof(Path));
+        }
+        if (ItemInSet != other.ItemInSet)
+        {
+            ItemInSet = other.ItemInSet;
+            OnPropertyChanged(nameof(ItemInSet));
+        }
+        if (SetTag != other.SetTag)
+        {
+            SetTag = other.SetTag;
+            OnPropertyChanged(nameof(SetTag));
+        }
+        if (SetNesting != other.SetNesting)
+        {
+            SetNesting = other.SetNesting;
+            OnPropertyChanged(nameof(SetNesting));
+        }
+        if (UseSetId != other.UseSetId)
+        {
+            UseSetId = other.UseSetId;
+            OnPropertyChanged(nameof(UseSetId));
+        }
+    }
 }

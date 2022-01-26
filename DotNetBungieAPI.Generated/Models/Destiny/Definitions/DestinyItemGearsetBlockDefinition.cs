@@ -23,4 +23,27 @@ public class DestinyItemGearsetBlockDefinition : IDeepEquatable<DestinyItemGears
                TrackingValueMax == other.TrackingValueMax &&
                ItemList.DeepEqualsListNaive(other.ItemList);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemGearsetBlockDefinition? other)
+    {
+        if (other is null) return;
+        if (TrackingValueMax != other.TrackingValueMax)
+        {
+            TrackingValueMax = other.TrackingValueMax;
+            OnPropertyChanged(nameof(TrackingValueMax));
+        }
+        if (!ItemList.DeepEqualsListNaive(other.ItemList))
+        {
+            ItemList = other.ItemList;
+            OnPropertyChanged(nameof(ItemList));
+        }
+    }
 }

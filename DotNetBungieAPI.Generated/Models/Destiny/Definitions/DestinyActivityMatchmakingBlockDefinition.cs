@@ -44,4 +44,42 @@ public class DestinyActivityMatchmakingBlockDefinition : IDeepEquatable<DestinyA
                MaxPlayers == other.MaxPlayers &&
                RequiresGuardianOath == other.RequiresGuardianOath;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityMatchmakingBlockDefinition? other)
+    {
+        if (other is null) return;
+        if (IsMatchmade != other.IsMatchmade)
+        {
+            IsMatchmade = other.IsMatchmade;
+            OnPropertyChanged(nameof(IsMatchmade));
+        }
+        if (MinParty != other.MinParty)
+        {
+            MinParty = other.MinParty;
+            OnPropertyChanged(nameof(MinParty));
+        }
+        if (MaxParty != other.MaxParty)
+        {
+            MaxParty = other.MaxParty;
+            OnPropertyChanged(nameof(MaxParty));
+        }
+        if (MaxPlayers != other.MaxPlayers)
+        {
+            MaxPlayers = other.MaxPlayers;
+            OnPropertyChanged(nameof(MaxPlayers));
+        }
+        if (RequiresGuardianOath != other.RequiresGuardianOath)
+        {
+            RequiresGuardianOath = other.RequiresGuardianOath;
+            OnPropertyChanged(nameof(RequiresGuardianOath));
+        }
+    }
 }

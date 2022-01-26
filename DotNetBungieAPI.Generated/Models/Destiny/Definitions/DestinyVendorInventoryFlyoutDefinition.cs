@@ -51,4 +51,47 @@ public class DestinyVendorInventoryFlyoutDefinition : IDeepEquatable<DestinyVend
                SuppressNewness == other.SuppressNewness &&
                EquipmentSlotHash == other.EquipmentSlotHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorInventoryFlyoutDefinition? other)
+    {
+        if (other is null) return;
+        if (LockedDescription != other.LockedDescription)
+        {
+            LockedDescription = other.LockedDescription;
+            OnPropertyChanged(nameof(LockedDescription));
+        }
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (!Buckets.DeepEqualsList(other.Buckets))
+        {
+            Buckets = other.Buckets;
+            OnPropertyChanged(nameof(Buckets));
+        }
+        if (FlyoutId != other.FlyoutId)
+        {
+            FlyoutId = other.FlyoutId;
+            OnPropertyChanged(nameof(FlyoutId));
+        }
+        if (SuppressNewness != other.SuppressNewness)
+        {
+            SuppressNewness = other.SuppressNewness;
+            OnPropertyChanged(nameof(SuppressNewness));
+        }
+        if (EquipmentSlotHash != other.EquipmentSlotHash)
+        {
+            EquipmentSlotHash = other.EquipmentSlotHash;
+            OnPropertyChanged(nameof(EquipmentSlotHash));
+        }
+    }
 }

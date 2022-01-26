@@ -21,4 +21,32 @@ public class SingleComponentResponseOfDestinyItemPlugObjectivesComponent : IDeep
                Privacy == other.Privacy &&
                Disabled == other.Disabled;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(SingleComponentResponseOfDestinyItemPlugObjectivesComponent? other)
+    {
+        if (other is null) return;
+        if (!Data.DeepEquals(other.Data))
+        {
+            Data.Update(other.Data);
+            OnPropertyChanged(nameof(Data));
+        }
+        if (Privacy != other.Privacy)
+        {
+            Privacy = other.Privacy;
+            OnPropertyChanged(nameof(Privacy));
+        }
+        if (Disabled != other.Disabled)
+        {
+            Disabled = other.Disabled;
+            OnPropertyChanged(nameof(Disabled));
+        }
+    }
 }

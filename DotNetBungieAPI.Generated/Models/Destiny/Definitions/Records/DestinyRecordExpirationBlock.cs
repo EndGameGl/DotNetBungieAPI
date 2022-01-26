@@ -21,4 +21,32 @@ public class DestinyRecordExpirationBlock : IDeepEquatable<DestinyRecordExpirati
                Description == other.Description &&
                Icon == other.Icon;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyRecordExpirationBlock? other)
+    {
+        if (other is null) return;
+        if (HasExpiration != other.HasExpiration)
+        {
+            HasExpiration = other.HasExpiration;
+            OnPropertyChanged(nameof(HasExpiration));
+        }
+        if (Description != other.Description)
+        {
+            Description = other.Description;
+            OnPropertyChanged(nameof(Description));
+        }
+        if (Icon != other.Icon)
+        {
+            Icon = other.Icon;
+            OnPropertyChanged(nameof(Icon));
+        }
+    }
 }

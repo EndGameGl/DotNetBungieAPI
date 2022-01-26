@@ -27,4 +27,32 @@ public class DestinyClanAggregateStat : IDeepEquatable<DestinyClanAggregateStat>
                StatId == other.StatId &&
                (Value is not null ? Value.DeepEquals(other.Value) : other.Value is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyClanAggregateStat? other)
+    {
+        if (other is null) return;
+        if (Mode != other.Mode)
+        {
+            Mode = other.Mode;
+            OnPropertyChanged(nameof(Mode));
+        }
+        if (StatId != other.StatId)
+        {
+            StatId = other.StatId;
+            OnPropertyChanged(nameof(StatId));
+        }
+        if (!Value.DeepEquals(other.Value))
+        {
+            Value.Update(other.Value);
+            OnPropertyChanged(nameof(Value));
+        }
+    }
 }

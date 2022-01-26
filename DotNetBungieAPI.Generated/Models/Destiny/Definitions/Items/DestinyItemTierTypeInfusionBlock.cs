@@ -20,4 +20,27 @@ public class DestinyItemTierTypeInfusionBlock : IDeepEquatable<DestinyItemTierTy
                BaseQualityTransferRatio == other.BaseQualityTransferRatio &&
                MinimumQualityIncrement == other.MinimumQualityIncrement;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemTierTypeInfusionBlock? other)
+    {
+        if (other is null) return;
+        if (BaseQualityTransferRatio != other.BaseQualityTransferRatio)
+        {
+            BaseQualityTransferRatio = other.BaseQualityTransferRatio;
+            OnPropertyChanged(nameof(BaseQualityTransferRatio));
+        }
+        if (MinimumQualityIncrement != other.MinimumQualityIncrement)
+        {
+            MinimumQualityIncrement = other.MinimumQualityIncrement;
+            OnPropertyChanged(nameof(MinimumQualityIncrement));
+        }
+    }
 }

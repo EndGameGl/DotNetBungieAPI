@@ -25,4 +25,37 @@ public class DestinyPresentationNodeChildrenBlock : IDeepEquatable<DestinyPresen
                Records.DeepEqualsList(other.Records) &&
                Metrics.DeepEqualsList(other.Metrics);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPresentationNodeChildrenBlock? other)
+    {
+        if (other is null) return;
+        if (!PresentationNodes.DeepEqualsList(other.PresentationNodes))
+        {
+            PresentationNodes = other.PresentationNodes;
+            OnPropertyChanged(nameof(PresentationNodes));
+        }
+        if (!Collectibles.DeepEqualsList(other.Collectibles))
+        {
+            Collectibles = other.Collectibles;
+            OnPropertyChanged(nameof(Collectibles));
+        }
+        if (!Records.DeepEqualsList(other.Records))
+        {
+            Records = other.Records;
+            OnPropertyChanged(nameof(Records));
+        }
+        if (!Metrics.DeepEqualsList(other.Metrics))
+        {
+            Metrics = other.Metrics;
+            OnPropertyChanged(nameof(Metrics));
+        }
+    }
 }

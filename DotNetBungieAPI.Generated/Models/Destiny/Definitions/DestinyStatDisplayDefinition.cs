@@ -43,4 +43,37 @@ public class DestinyStatDisplayDefinition : IDeepEquatable<DestinyStatDisplayDef
                DisplayAsNumeric == other.DisplayAsNumeric &&
                DisplayInterpolation.DeepEqualsList(other.DisplayInterpolation);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyStatDisplayDefinition? other)
+    {
+        if (other is null) return;
+        if (StatHash != other.StatHash)
+        {
+            StatHash = other.StatHash;
+            OnPropertyChanged(nameof(StatHash));
+        }
+        if (MaximumValue != other.MaximumValue)
+        {
+            MaximumValue = other.MaximumValue;
+            OnPropertyChanged(nameof(MaximumValue));
+        }
+        if (DisplayAsNumeric != other.DisplayAsNumeric)
+        {
+            DisplayAsNumeric = other.DisplayAsNumeric;
+            OnPropertyChanged(nameof(DisplayAsNumeric));
+        }
+        if (!DisplayInterpolation.DeepEqualsList(other.DisplayInterpolation))
+        {
+            DisplayInterpolation = other.DisplayInterpolation;
+            OnPropertyChanged(nameof(DisplayInterpolation));
+        }
+    }
 }

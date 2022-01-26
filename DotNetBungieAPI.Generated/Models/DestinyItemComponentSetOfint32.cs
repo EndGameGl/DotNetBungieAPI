@@ -46,4 +46,67 @@ public class DestinyItemComponentSetOfint32 : IDeepEquatable<DestinyItemComponen
                (Objectives is not null ? Objectives.DeepEquals(other.Objectives) : other.Objectives is null) &&
                (Perks is not null ? Perks.DeepEquals(other.Perks) : other.Perks is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemComponentSetOfint32? other)
+    {
+        if (other is null) return;
+        if (!Instances.DeepEquals(other.Instances))
+        {
+            Instances.Update(other.Instances);
+            OnPropertyChanged(nameof(Instances));
+        }
+        if (!RenderData.DeepEquals(other.RenderData))
+        {
+            RenderData.Update(other.RenderData);
+            OnPropertyChanged(nameof(RenderData));
+        }
+        if (!Stats.DeepEquals(other.Stats))
+        {
+            Stats.Update(other.Stats);
+            OnPropertyChanged(nameof(Stats));
+        }
+        if (!Sockets.DeepEquals(other.Sockets))
+        {
+            Sockets.Update(other.Sockets);
+            OnPropertyChanged(nameof(Sockets));
+        }
+        if (!ReusablePlugs.DeepEquals(other.ReusablePlugs))
+        {
+            ReusablePlugs.Update(other.ReusablePlugs);
+            OnPropertyChanged(nameof(ReusablePlugs));
+        }
+        if (!PlugObjectives.DeepEquals(other.PlugObjectives))
+        {
+            PlugObjectives.Update(other.PlugObjectives);
+            OnPropertyChanged(nameof(PlugObjectives));
+        }
+        if (!TalentGrids.DeepEquals(other.TalentGrids))
+        {
+            TalentGrids.Update(other.TalentGrids);
+            OnPropertyChanged(nameof(TalentGrids));
+        }
+        if (!PlugStates.DeepEquals(other.PlugStates))
+        {
+            PlugStates.Update(other.PlugStates);
+            OnPropertyChanged(nameof(PlugStates));
+        }
+        if (!Objectives.DeepEquals(other.Objectives))
+        {
+            Objectives.Update(other.Objectives);
+            OnPropertyChanged(nameof(Objectives));
+        }
+        if (!Perks.DeepEquals(other.Perks))
+        {
+            Perks.Update(other.Perks);
+            OnPropertyChanged(nameof(Perks));
+        }
+    }
 }

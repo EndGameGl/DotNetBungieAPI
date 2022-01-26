@@ -18,4 +18,32 @@ public class ContentRepresentation : IDeepEquatable<ContentRepresentation>
                Path == other.Path &&
                ValidationString == other.ValidationString;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(ContentRepresentation? other)
+    {
+        if (other is null) return;
+        if (Name != other.Name)
+        {
+            Name = other.Name;
+            OnPropertyChanged(nameof(Name));
+        }
+        if (Path != other.Path)
+        {
+            Path = other.Path;
+            OnPropertyChanged(nameof(Path));
+        }
+        if (ValidationString != other.ValidationString)
+        {
+            ValidationString = other.ValidationString;
+            OnPropertyChanged(nameof(ValidationString));
+        }
+    }
 }

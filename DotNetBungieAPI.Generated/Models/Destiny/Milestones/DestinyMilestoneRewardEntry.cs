@@ -30,4 +30,32 @@ public class DestinyMilestoneRewardEntry : IDeepEquatable<DestinyMilestoneReward
                Earned == other.Earned &&
                Redeemed == other.Redeemed;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneRewardEntry? other)
+    {
+        if (other is null) return;
+        if (RewardEntryHash != other.RewardEntryHash)
+        {
+            RewardEntryHash = other.RewardEntryHash;
+            OnPropertyChanged(nameof(RewardEntryHash));
+        }
+        if (Earned != other.Earned)
+        {
+            Earned = other.Earned;
+            OnPropertyChanged(nameof(Earned));
+        }
+        if (Redeemed != other.Redeemed)
+        {
+            Redeemed = other.Redeemed;
+            OnPropertyChanged(nameof(Redeemed));
+        }
+    }
 }

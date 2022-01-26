@@ -56,4 +56,42 @@ public class DestinyInventoryItemStatDefinition : IDeepEquatable<DestinyInventor
                Maximum == other.Maximum &&
                DisplayMaximum == other.DisplayMaximum;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyInventoryItemStatDefinition? other)
+    {
+        if (other is null) return;
+        if (StatHash != other.StatHash)
+        {
+            StatHash = other.StatHash;
+            OnPropertyChanged(nameof(StatHash));
+        }
+        if (Value != other.Value)
+        {
+            Value = other.Value;
+            OnPropertyChanged(nameof(Value));
+        }
+        if (Minimum != other.Minimum)
+        {
+            Minimum = other.Minimum;
+            OnPropertyChanged(nameof(Minimum));
+        }
+        if (Maximum != other.Maximum)
+        {
+            Maximum = other.Maximum;
+            OnPropertyChanged(nameof(Maximum));
+        }
+        if (DisplayMaximum != other.DisplayMaximum)
+        {
+            DisplayMaximum = other.DisplayMaximum;
+            OnPropertyChanged(nameof(DisplayMaximum));
+        }
+    }
 }

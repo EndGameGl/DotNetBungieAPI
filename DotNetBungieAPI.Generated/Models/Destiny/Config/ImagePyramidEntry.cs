@@ -20,4 +20,27 @@ public class ImagePyramidEntry : IDeepEquatable<ImagePyramidEntry>
                Name == other.Name &&
                Factor == other.Factor;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(ImagePyramidEntry? other)
+    {
+        if (other is null) return;
+        if (Name != other.Name)
+        {
+            Name = other.Name;
+            OnPropertyChanged(nameof(Name));
+        }
+        if (Factor != other.Factor)
+        {
+            Factor = other.Factor;
+            OnPropertyChanged(nameof(Factor));
+        }
+    }
 }

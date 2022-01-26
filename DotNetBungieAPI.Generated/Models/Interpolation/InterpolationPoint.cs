@@ -14,4 +14,27 @@ public class InterpolationPoint : IDeepEquatable<InterpolationPoint>
                Value == other.Value &&
                Weight == other.Weight;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(InterpolationPoint? other)
+    {
+        if (other is null) return;
+        if (Value != other.Value)
+        {
+            Value = other.Value;
+            OnPropertyChanged(nameof(Value));
+        }
+        if (Weight != other.Weight)
+        {
+            Weight = other.Weight;
+            OnPropertyChanged(nameof(Weight));
+        }
+    }
 }

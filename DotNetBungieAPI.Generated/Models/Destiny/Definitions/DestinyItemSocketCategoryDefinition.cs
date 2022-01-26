@@ -23,4 +23,27 @@ public class DestinyItemSocketCategoryDefinition : IDeepEquatable<DestinyItemSoc
                SocketCategoryHash == other.SocketCategoryHash &&
                SocketIndexes.DeepEqualsListNaive(other.SocketIndexes);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemSocketCategoryDefinition? other)
+    {
+        if (other is null) return;
+        if (SocketCategoryHash != other.SocketCategoryHash)
+        {
+            SocketCategoryHash = other.SocketCategoryHash;
+            OnPropertyChanged(nameof(SocketCategoryHash));
+        }
+        if (!SocketIndexes.DeepEqualsListNaive(other.SocketIndexes))
+        {
+            SocketIndexes = other.SocketIndexes;
+            OnPropertyChanged(nameof(SocketIndexes));
+        }
+    }
 }

@@ -39,4 +39,37 @@ public class DestinyTalentNodeCategory : IDeepEquatable<DestinyTalentNodeCategor
                (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
                NodeHashes.DeepEqualsListNaive(other.NodeHashes);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyTalentNodeCategory? other)
+    {
+        if (other is null) return;
+        if (Identifier != other.Identifier)
+        {
+            Identifier = other.Identifier;
+            OnPropertyChanged(nameof(Identifier));
+        }
+        if (IsLoreDriven != other.IsLoreDriven)
+        {
+            IsLoreDriven = other.IsLoreDriven;
+            OnPropertyChanged(nameof(IsLoreDriven));
+        }
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (!NodeHashes.DeepEqualsListNaive(other.NodeHashes))
+        {
+            NodeHashes = other.NodeHashes;
+            OnPropertyChanged(nameof(NodeHashes));
+        }
+    }
 }

@@ -20,4 +20,27 @@ public class DestinyPostGameCarnageReportExtendedData : IDeepEquatable<DestinyPo
                Weapons.DeepEqualsList(other.Weapons) &&
                Values.DeepEqualsDictionary(other.Values);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPostGameCarnageReportExtendedData? other)
+    {
+        if (other is null) return;
+        if (!Weapons.DeepEqualsList(other.Weapons))
+        {
+            Weapons = other.Weapons;
+            OnPropertyChanged(nameof(Weapons));
+        }
+        if (!Values.DeepEqualsDictionary(other.Values))
+        {
+            Values = other.Values;
+            OnPropertyChanged(nameof(Values));
+        }
+    }
 }

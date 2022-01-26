@@ -32,4 +32,32 @@ public class DestinyItemObjectivesComponent : IDeepEquatable<DestinyItemObjectiv
                (FlavorObjective is not null ? FlavorObjective.DeepEquals(other.FlavorObjective) : other.FlavorObjective is null) &&
                DateCompleted == other.DateCompleted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemObjectivesComponent? other)
+    {
+        if (other is null) return;
+        if (!Objectives.DeepEqualsList(other.Objectives))
+        {
+            Objectives = other.Objectives;
+            OnPropertyChanged(nameof(Objectives));
+        }
+        if (!FlavorObjective.DeepEquals(other.FlavorObjective))
+        {
+            FlavorObjective.Update(other.FlavorObjective);
+            OnPropertyChanged(nameof(FlavorObjective));
+        }
+        if (DateCompleted != other.DateCompleted)
+        {
+            DateCompleted = other.DateCompleted;
+            OnPropertyChanged(nameof(DateCompleted));
+        }
+    }
 }

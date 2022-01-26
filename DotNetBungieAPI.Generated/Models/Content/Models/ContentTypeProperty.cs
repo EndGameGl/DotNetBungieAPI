@@ -174,4 +174,227 @@ public class ContentTypeProperty : IDeepEquatable<ContentTypeProperty>
                IsVideo == other.IsVideo &&
                IsImage == other.IsImage;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(ContentTypeProperty? other)
+    {
+        if (other is null) return;
+        if (Name != other.Name)
+        {
+            Name = other.Name;
+            OnPropertyChanged(nameof(Name));
+        }
+        if (RootPropertyName != other.RootPropertyName)
+        {
+            RootPropertyName = other.RootPropertyName;
+            OnPropertyChanged(nameof(RootPropertyName));
+        }
+        if (ReadableName != other.ReadableName)
+        {
+            ReadableName = other.ReadableName;
+            OnPropertyChanged(nameof(ReadableName));
+        }
+        if (Value != other.Value)
+        {
+            Value = other.Value;
+            OnPropertyChanged(nameof(Value));
+        }
+        if (PropertyDescription != other.PropertyDescription)
+        {
+            PropertyDescription = other.PropertyDescription;
+            OnPropertyChanged(nameof(PropertyDescription));
+        }
+        if (Localizable != other.Localizable)
+        {
+            Localizable = other.Localizable;
+            OnPropertyChanged(nameof(Localizable));
+        }
+        if (Fallback != other.Fallback)
+        {
+            Fallback = other.Fallback;
+            OnPropertyChanged(nameof(Fallback));
+        }
+        if (Enabled != other.Enabled)
+        {
+            Enabled = other.Enabled;
+            OnPropertyChanged(nameof(Enabled));
+        }
+        if (Order != other.Order)
+        {
+            Order = other.Order;
+            OnPropertyChanged(nameof(Order));
+        }
+        if (Visible != other.Visible)
+        {
+            Visible = other.Visible;
+            OnPropertyChanged(nameof(Visible));
+        }
+        if (IsTitle != other.IsTitle)
+        {
+            IsTitle = other.IsTitle;
+            OnPropertyChanged(nameof(IsTitle));
+        }
+        if (Required != other.Required)
+        {
+            Required = other.Required;
+            OnPropertyChanged(nameof(Required));
+        }
+        if (MaxLength != other.MaxLength)
+        {
+            MaxLength = other.MaxLength;
+            OnPropertyChanged(nameof(MaxLength));
+        }
+        if (MaxByteLength != other.MaxByteLength)
+        {
+            MaxByteLength = other.MaxByteLength;
+            OnPropertyChanged(nameof(MaxByteLength));
+        }
+        if (MaxFileSize != other.MaxFileSize)
+        {
+            MaxFileSize = other.MaxFileSize;
+            OnPropertyChanged(nameof(MaxFileSize));
+        }
+        if (Regexp != other.Regexp)
+        {
+            Regexp = other.Regexp;
+            OnPropertyChanged(nameof(Regexp));
+        }
+        if (ValidateAs != other.ValidateAs)
+        {
+            ValidateAs = other.ValidateAs;
+            OnPropertyChanged(nameof(ValidateAs));
+        }
+        if (RssAttribute != other.RssAttribute)
+        {
+            RssAttribute = other.RssAttribute;
+            OnPropertyChanged(nameof(RssAttribute));
+        }
+        if (VisibleDependency != other.VisibleDependency)
+        {
+            VisibleDependency = other.VisibleDependency;
+            OnPropertyChanged(nameof(VisibleDependency));
+        }
+        if (VisibleOn != other.VisibleOn)
+        {
+            VisibleOn = other.VisibleOn;
+            OnPropertyChanged(nameof(VisibleOn));
+        }
+        if (Datatype != other.Datatype)
+        {
+            Datatype = other.Datatype;
+            OnPropertyChanged(nameof(Datatype));
+        }
+        if (!Attributes.DeepEqualsDictionaryNaive(other.Attributes))
+        {
+            Attributes = other.Attributes;
+            OnPropertyChanged(nameof(Attributes));
+        }
+        if (!ChildProperties.DeepEqualsList(other.ChildProperties))
+        {
+            ChildProperties = other.ChildProperties;
+            OnPropertyChanged(nameof(ChildProperties));
+        }
+        if (ContentTypeAllowed != other.ContentTypeAllowed)
+        {
+            ContentTypeAllowed = other.ContentTypeAllowed;
+            OnPropertyChanged(nameof(ContentTypeAllowed));
+        }
+        if (BindToProperty != other.BindToProperty)
+        {
+            BindToProperty = other.BindToProperty;
+            OnPropertyChanged(nameof(BindToProperty));
+        }
+        if (BoundRegex != other.BoundRegex)
+        {
+            BoundRegex = other.BoundRegex;
+            OnPropertyChanged(nameof(BoundRegex));
+        }
+        if (!RepresentationSelection.DeepEqualsDictionaryNaive(other.RepresentationSelection))
+        {
+            RepresentationSelection = other.RepresentationSelection;
+            OnPropertyChanged(nameof(RepresentationSelection));
+        }
+        if (!DefaultValues.DeepEqualsList(other.DefaultValues))
+        {
+            DefaultValues = other.DefaultValues;
+            OnPropertyChanged(nameof(DefaultValues));
+        }
+        if (IsExternalAllowed != other.IsExternalAllowed)
+        {
+            IsExternalAllowed = other.IsExternalAllowed;
+            OnPropertyChanged(nameof(IsExternalAllowed));
+        }
+        if (PropertySection != other.PropertySection)
+        {
+            PropertySection = other.PropertySection;
+            OnPropertyChanged(nameof(PropertySection));
+        }
+        if (Weight != other.Weight)
+        {
+            Weight = other.Weight;
+            OnPropertyChanged(nameof(Weight));
+        }
+        if (Entitytype != other.Entitytype)
+        {
+            Entitytype = other.Entitytype;
+            OnPropertyChanged(nameof(Entitytype));
+        }
+        if (IsCombo != other.IsCombo)
+        {
+            IsCombo = other.IsCombo;
+            OnPropertyChanged(nameof(IsCombo));
+        }
+        if (SuppressProperty != other.SuppressProperty)
+        {
+            SuppressProperty = other.SuppressProperty;
+            OnPropertyChanged(nameof(SuppressProperty));
+        }
+        if (!LegalContentTypes.DeepEqualsListNaive(other.LegalContentTypes))
+        {
+            LegalContentTypes = other.LegalContentTypes;
+            OnPropertyChanged(nameof(LegalContentTypes));
+        }
+        if (RepresentationValidationString != other.RepresentationValidationString)
+        {
+            RepresentationValidationString = other.RepresentationValidationString;
+            OnPropertyChanged(nameof(RepresentationValidationString));
+        }
+        if (MinWidth != other.MinWidth)
+        {
+            MinWidth = other.MinWidth;
+            OnPropertyChanged(nameof(MinWidth));
+        }
+        if (MaxWidth != other.MaxWidth)
+        {
+            MaxWidth = other.MaxWidth;
+            OnPropertyChanged(nameof(MaxWidth));
+        }
+        if (MinHeight != other.MinHeight)
+        {
+            MinHeight = other.MinHeight;
+            OnPropertyChanged(nameof(MinHeight));
+        }
+        if (MaxHeight != other.MaxHeight)
+        {
+            MaxHeight = other.MaxHeight;
+            OnPropertyChanged(nameof(MaxHeight));
+        }
+        if (IsVideo != other.IsVideo)
+        {
+            IsVideo = other.IsVideo;
+            OnPropertyChanged(nameof(IsVideo));
+        }
+        if (IsImage != other.IsImage)
+        {
+            IsImage = other.IsImage;
+            OnPropertyChanged(nameof(IsImage));
+        }
+    }
 }

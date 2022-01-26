@@ -29,4 +29,27 @@ public class DestinyStatOverrideDefinition : IDeepEquatable<DestinyStatOverrideD
                StatHash == other.StatHash &&
                (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyStatOverrideDefinition? other)
+    {
+        if (other is null) return;
+        if (StatHash != other.StatHash)
+        {
+            StatHash = other.StatHash;
+            OnPropertyChanged(nameof(StatHash));
+        }
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+    }
 }

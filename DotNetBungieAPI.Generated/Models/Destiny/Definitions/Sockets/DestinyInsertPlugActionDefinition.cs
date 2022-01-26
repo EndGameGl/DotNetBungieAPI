@@ -23,4 +23,27 @@ public class DestinyInsertPlugActionDefinition : IDeepEquatable<DestinyInsertPlu
                ActionExecuteSeconds == other.ActionExecuteSeconds &&
                ActionType == other.ActionType;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyInsertPlugActionDefinition? other)
+    {
+        if (other is null) return;
+        if (ActionExecuteSeconds != other.ActionExecuteSeconds)
+        {
+            ActionExecuteSeconds = other.ActionExecuteSeconds;
+            OnPropertyChanged(nameof(ActionExecuteSeconds));
+        }
+        if (ActionType != other.ActionType)
+        {
+            ActionType = other.ActionType;
+            OnPropertyChanged(nameof(ActionType));
+        }
+    }
 }

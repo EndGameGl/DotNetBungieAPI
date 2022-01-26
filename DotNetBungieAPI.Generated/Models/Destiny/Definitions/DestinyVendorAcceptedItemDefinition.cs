@@ -27,4 +27,27 @@ public class DestinyVendorAcceptedItemDefinition : IDeepEquatable<DestinyVendorA
                AcceptedInventoryBucketHash == other.AcceptedInventoryBucketHash &&
                DestinationInventoryBucketHash == other.DestinationInventoryBucketHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorAcceptedItemDefinition? other)
+    {
+        if (other is null) return;
+        if (AcceptedInventoryBucketHash != other.AcceptedInventoryBucketHash)
+        {
+            AcceptedInventoryBucketHash = other.AcceptedInventoryBucketHash;
+            OnPropertyChanged(nameof(AcceptedInventoryBucketHash));
+        }
+        if (DestinationInventoryBucketHash != other.DestinationInventoryBucketHash)
+        {
+            DestinationInventoryBucketHash = other.DestinationInventoryBucketHash;
+            OnPropertyChanged(nameof(DestinationInventoryBucketHash));
+        }
+    }
 }

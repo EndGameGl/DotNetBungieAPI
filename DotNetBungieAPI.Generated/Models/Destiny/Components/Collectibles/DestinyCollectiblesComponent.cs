@@ -24,4 +24,32 @@ public class DestinyCollectiblesComponent : IDeepEquatable<DestinyCollectiblesCo
                CollectionCategoriesRootNodeHash == other.CollectionCategoriesRootNodeHash &&
                CollectionBadgesRootNodeHash == other.CollectionBadgesRootNodeHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyCollectiblesComponent? other)
+    {
+        if (other is null) return;
+        if (!Collectibles.DeepEqualsDictionary(other.Collectibles))
+        {
+            Collectibles = other.Collectibles;
+            OnPropertyChanged(nameof(Collectibles));
+        }
+        if (CollectionCategoriesRootNodeHash != other.CollectionCategoriesRootNodeHash)
+        {
+            CollectionCategoriesRootNodeHash = other.CollectionCategoriesRootNodeHash;
+            OnPropertyChanged(nameof(CollectionCategoriesRootNodeHash));
+        }
+        if (CollectionBadgesRootNodeHash != other.CollectionBadgesRootNodeHash)
+        {
+            CollectionBadgesRootNodeHash = other.CollectionBadgesRootNodeHash;
+            OnPropertyChanged(nameof(CollectionBadgesRootNodeHash));
+        }
+    }
 }

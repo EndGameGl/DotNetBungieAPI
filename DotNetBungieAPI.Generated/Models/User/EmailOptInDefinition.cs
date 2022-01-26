@@ -37,4 +37,37 @@ public class EmailOptInDefinition : IDeepEquatable<EmailOptInDefinition>
                SetByDefault == other.SetByDefault &&
                DependentSubscriptions.DeepEqualsList(other.DependentSubscriptions);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(EmailOptInDefinition? other)
+    {
+        if (other is null) return;
+        if (Name != other.Name)
+        {
+            Name = other.Name;
+            OnPropertyChanged(nameof(Name));
+        }
+        if (Value != other.Value)
+        {
+            Value = other.Value;
+            OnPropertyChanged(nameof(Value));
+        }
+        if (SetByDefault != other.SetByDefault)
+        {
+            SetByDefault = other.SetByDefault;
+            OnPropertyChanged(nameof(SetByDefault));
+        }
+        if (!DependentSubscriptions.DeepEqualsList(other.DependentSubscriptions))
+        {
+            DependentSubscriptions = other.DependentSubscriptions;
+            OnPropertyChanged(nameof(DependentSubscriptions));
+        }
+    }
 }

@@ -34,4 +34,37 @@ public class AwaPermissionRequested : IDeepEquatable<AwaPermissionRequested>
                MembershipType == other.MembershipType &&
                CharacterId == other.CharacterId;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(AwaPermissionRequested? other)
+    {
+        if (other is null) return;
+        if (Type != other.Type)
+        {
+            Type = other.Type;
+            OnPropertyChanged(nameof(Type));
+        }
+        if (AffectedItemId != other.AffectedItemId)
+        {
+            AffectedItemId = other.AffectedItemId;
+            OnPropertyChanged(nameof(AffectedItemId));
+        }
+        if (MembershipType != other.MembershipType)
+        {
+            MembershipType = other.MembershipType;
+            OnPropertyChanged(nameof(MembershipType));
+        }
+        if (CharacterId != other.CharacterId)
+        {
+            CharacterId = other.CharacterId;
+            OnPropertyChanged(nameof(CharacterId));
+        }
+    }
 }

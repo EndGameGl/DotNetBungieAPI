@@ -30,4 +30,32 @@ public class DestinyEnergyCostEntry : IDeepEquatable<DestinyEnergyCostEntry>
                EnergyTypeHash == other.EnergyTypeHash &&
                EnergyType == other.EnergyType;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyEnergyCostEntry? other)
+    {
+        if (other is null) return;
+        if (EnergyCost != other.EnergyCost)
+        {
+            EnergyCost = other.EnergyCost;
+            OnPropertyChanged(nameof(EnergyCost));
+        }
+        if (EnergyTypeHash != other.EnergyTypeHash)
+        {
+            EnergyTypeHash = other.EnergyTypeHash;
+            OnPropertyChanged(nameof(EnergyTypeHash));
+        }
+        if (EnergyType != other.EnergyType)
+        {
+            EnergyType = other.EnergyType;
+            OnPropertyChanged(nameof(EnergyType));
+        }
+    }
 }

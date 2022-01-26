@@ -18,4 +18,32 @@ public class DestinyHistoricalStatsAccountResult : IDeepEquatable<DestinyHistori
                (MergedAllCharacters is not null ? MergedAllCharacters.DeepEquals(other.MergedAllCharacters) : other.MergedAllCharacters is null) &&
                Characters.DeepEqualsList(other.Characters);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyHistoricalStatsAccountResult? other)
+    {
+        if (other is null) return;
+        if (!MergedDeletedCharacters.DeepEquals(other.MergedDeletedCharacters))
+        {
+            MergedDeletedCharacters.Update(other.MergedDeletedCharacters);
+            OnPropertyChanged(nameof(MergedDeletedCharacters));
+        }
+        if (!MergedAllCharacters.DeepEquals(other.MergedAllCharacters))
+        {
+            MergedAllCharacters.Update(other.MergedAllCharacters);
+            OnPropertyChanged(nameof(MergedAllCharacters));
+        }
+        if (!Characters.DeepEqualsList(other.Characters))
+        {
+            Characters = other.Characters;
+            OnPropertyChanged(nameof(Characters));
+        }
+    }
 }

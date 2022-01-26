@@ -41,4 +41,42 @@ public class DestinyHistoricalStatsValue : IDeepEquatable<DestinyHistoricalStats
                (Weighted is not null ? Weighted.DeepEquals(other.Weighted) : other.Weighted is null) &&
                ActivityId == other.ActivityId;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyHistoricalStatsValue? other)
+    {
+        if (other is null) return;
+        if (StatId != other.StatId)
+        {
+            StatId = other.StatId;
+            OnPropertyChanged(nameof(StatId));
+        }
+        if (!Basic.DeepEquals(other.Basic))
+        {
+            Basic.Update(other.Basic);
+            OnPropertyChanged(nameof(Basic));
+        }
+        if (!Pga.DeepEquals(other.Pga))
+        {
+            Pga.Update(other.Pga);
+            OnPropertyChanged(nameof(Pga));
+        }
+        if (!Weighted.DeepEquals(other.Weighted))
+        {
+            Weighted.Update(other.Weighted);
+            OnPropertyChanged(nameof(Weighted));
+        }
+        if (ActivityId != other.ActivityId)
+        {
+            ActivityId = other.ActivityId;
+            OnPropertyChanged(nameof(ActivityId));
+        }
+    }
 }

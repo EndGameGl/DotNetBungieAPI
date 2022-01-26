@@ -59,4 +59,57 @@ public class AwaAuthorizationResult : IDeepEquatable<AwaAuthorizationResult>
                Type == other.Type &&
                MembershipType == other.MembershipType;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(AwaAuthorizationResult? other)
+    {
+        if (other is null) return;
+        if (UserSelection != other.UserSelection)
+        {
+            UserSelection = other.UserSelection;
+            OnPropertyChanged(nameof(UserSelection));
+        }
+        if (ResponseReason != other.ResponseReason)
+        {
+            ResponseReason = other.ResponseReason;
+            OnPropertyChanged(nameof(ResponseReason));
+        }
+        if (DeveloperNote != other.DeveloperNote)
+        {
+            DeveloperNote = other.DeveloperNote;
+            OnPropertyChanged(nameof(DeveloperNote));
+        }
+        if (ActionToken != other.ActionToken)
+        {
+            ActionToken = other.ActionToken;
+            OnPropertyChanged(nameof(ActionToken));
+        }
+        if (MaximumNumberOfUses != other.MaximumNumberOfUses)
+        {
+            MaximumNumberOfUses = other.MaximumNumberOfUses;
+            OnPropertyChanged(nameof(MaximumNumberOfUses));
+        }
+        if (ValidUntil != other.ValidUntil)
+        {
+            ValidUntil = other.ValidUntil;
+            OnPropertyChanged(nameof(ValidUntil));
+        }
+        if (Type != other.Type)
+        {
+            Type = other.Type;
+            OnPropertyChanged(nameof(Type));
+        }
+        if (MembershipType != other.MembershipType)
+        {
+            MembershipType = other.MembershipType;
+            OnPropertyChanged(nameof(MembershipType));
+        }
+    }
 }

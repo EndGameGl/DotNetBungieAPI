@@ -27,4 +27,32 @@ public class AwaUserResponse : IDeepEquatable<AwaUserResponse>
                CorrelationId == other.CorrelationId &&
                Nonce.DeepEqualsListNaive(other.Nonce);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(AwaUserResponse? other)
+    {
+        if (other is null) return;
+        if (Selection != other.Selection)
+        {
+            Selection = other.Selection;
+            OnPropertyChanged(nameof(Selection));
+        }
+        if (CorrelationId != other.CorrelationId)
+        {
+            CorrelationId = other.CorrelationId;
+            OnPropertyChanged(nameof(CorrelationId));
+        }
+        if (!Nonce.DeepEqualsListNaive(other.Nonce))
+        {
+            Nonce = other.Nonce;
+            OnPropertyChanged(nameof(Nonce));
+        }
+    }
 }

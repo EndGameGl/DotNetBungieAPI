@@ -90,4 +90,77 @@ public class Application : IDeepEquatable<Application>
                Team.DeepEqualsList(other.Team) &&
                OverrideAuthorizeViewName == other.OverrideAuthorizeViewName;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(Application? other)
+    {
+        if (other is null) return;
+        if (ApplicationId != other.ApplicationId)
+        {
+            ApplicationId = other.ApplicationId;
+            OnPropertyChanged(nameof(ApplicationId));
+        }
+        if (Name != other.Name)
+        {
+            Name = other.Name;
+            OnPropertyChanged(nameof(Name));
+        }
+        if (RedirectUrl != other.RedirectUrl)
+        {
+            RedirectUrl = other.RedirectUrl;
+            OnPropertyChanged(nameof(RedirectUrl));
+        }
+        if (Link != other.Link)
+        {
+            Link = other.Link;
+            OnPropertyChanged(nameof(Link));
+        }
+        if (Scope != other.Scope)
+        {
+            Scope = other.Scope;
+            OnPropertyChanged(nameof(Scope));
+        }
+        if (Origin != other.Origin)
+        {
+            Origin = other.Origin;
+            OnPropertyChanged(nameof(Origin));
+        }
+        if (Status != other.Status)
+        {
+            Status = other.Status;
+            OnPropertyChanged(nameof(Status));
+        }
+        if (CreationDate != other.CreationDate)
+        {
+            CreationDate = other.CreationDate;
+            OnPropertyChanged(nameof(CreationDate));
+        }
+        if (StatusChanged != other.StatusChanged)
+        {
+            StatusChanged = other.StatusChanged;
+            OnPropertyChanged(nameof(StatusChanged));
+        }
+        if (FirstPublished != other.FirstPublished)
+        {
+            FirstPublished = other.FirstPublished;
+            OnPropertyChanged(nameof(FirstPublished));
+        }
+        if (!Team.DeepEqualsList(other.Team))
+        {
+            Team = other.Team;
+            OnPropertyChanged(nameof(Team));
+        }
+        if (OverrideAuthorizeViewName != other.OverrideAuthorizeViewName)
+        {
+            OverrideAuthorizeViewName = other.OverrideAuthorizeViewName;
+            OnPropertyChanged(nameof(OverrideAuthorizeViewName));
+        }
+    }
 }

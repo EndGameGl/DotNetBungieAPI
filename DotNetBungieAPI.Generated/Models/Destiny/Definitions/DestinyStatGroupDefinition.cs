@@ -70,4 +70,52 @@ public class DestinyStatGroupDefinition : IDeepEquatable<DestinyStatGroupDefinit
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyStatGroupDefinition? other)
+    {
+        if (other is null) return;
+        if (MaximumValue != other.MaximumValue)
+        {
+            MaximumValue = other.MaximumValue;
+            OnPropertyChanged(nameof(MaximumValue));
+        }
+        if (UiPosition != other.UiPosition)
+        {
+            UiPosition = other.UiPosition;
+            OnPropertyChanged(nameof(UiPosition));
+        }
+        if (!ScaledStats.DeepEqualsList(other.ScaledStats))
+        {
+            ScaledStats = other.ScaledStats;
+            OnPropertyChanged(nameof(ScaledStats));
+        }
+        if (!Overrides.DeepEqualsDictionary(other.Overrides))
+        {
+            Overrides = other.Overrides;
+            OnPropertyChanged(nameof(Overrides));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

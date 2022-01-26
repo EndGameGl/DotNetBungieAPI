@@ -37,4 +37,37 @@ public class DestinyItemQuantity : IDeepEquatable<DestinyItemQuantity>
                Quantity == other.Quantity &&
                HasConditionalVisibility == other.HasConditionalVisibility;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemQuantity? other)
+    {
+        if (other is null) return;
+        if (ItemHash != other.ItemHash)
+        {
+            ItemHash = other.ItemHash;
+            OnPropertyChanged(nameof(ItemHash));
+        }
+        if (ItemInstanceId != other.ItemInstanceId)
+        {
+            ItemInstanceId = other.ItemInstanceId;
+            OnPropertyChanged(nameof(ItemInstanceId));
+        }
+        if (Quantity != other.Quantity)
+        {
+            Quantity = other.Quantity;
+            OnPropertyChanged(nameof(Quantity));
+        }
+        if (HasConditionalVisibility != other.HasConditionalVisibility)
+        {
+            HasConditionalVisibility = other.HasConditionalVisibility;
+            OnPropertyChanged(nameof(HasConditionalVisibility));
+        }
+    }
 }

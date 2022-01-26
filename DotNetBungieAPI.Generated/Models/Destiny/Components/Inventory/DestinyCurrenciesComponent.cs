@@ -22,4 +22,22 @@ public class DestinyCurrenciesComponent : IDeepEquatable<DestinyCurrenciesCompon
         return other is not null &&
                ItemQuantities.DeepEqualsDictionaryNaive(other.ItemQuantities);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyCurrenciesComponent? other)
+    {
+        if (other is null) return;
+        if (!ItemQuantities.DeepEqualsDictionaryNaive(other.ItemQuantities))
+        {
+            ItemQuantities = other.ItemQuantities;
+            OnPropertyChanged(nameof(ItemQuantities));
+        }
+    }
 }

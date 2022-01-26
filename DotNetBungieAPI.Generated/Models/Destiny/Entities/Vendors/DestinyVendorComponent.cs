@@ -64,4 +64,52 @@ public class DestinyVendorComponent : IDeepEquatable<DestinyVendorComponent>
                NextRefreshDate == other.NextRefreshDate &&
                Enabled == other.Enabled;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorComponent? other)
+    {
+        if (other is null) return;
+        if (CanPurchase != other.CanPurchase)
+        {
+            CanPurchase = other.CanPurchase;
+            OnPropertyChanged(nameof(CanPurchase));
+        }
+        if (!Progression.DeepEquals(other.Progression))
+        {
+            Progression.Update(other.Progression);
+            OnPropertyChanged(nameof(Progression));
+        }
+        if (VendorLocationIndex != other.VendorLocationIndex)
+        {
+            VendorLocationIndex = other.VendorLocationIndex;
+            OnPropertyChanged(nameof(VendorLocationIndex));
+        }
+        if (SeasonalRank != other.SeasonalRank)
+        {
+            SeasonalRank = other.SeasonalRank;
+            OnPropertyChanged(nameof(SeasonalRank));
+        }
+        if (VendorHash != other.VendorHash)
+        {
+            VendorHash = other.VendorHash;
+            OnPropertyChanged(nameof(VendorHash));
+        }
+        if (NextRefreshDate != other.NextRefreshDate)
+        {
+            NextRefreshDate = other.NextRefreshDate;
+            OnPropertyChanged(nameof(NextRefreshDate));
+        }
+        if (Enabled != other.Enabled)
+        {
+            Enabled = other.Enabled;
+            OnPropertyChanged(nameof(Enabled));
+        }
+    }
 }

@@ -21,4 +21,32 @@ public class GroupV2ClanInfoAndInvestment : IDeepEquatable<GroupV2ClanInfoAndInv
                ClanCallsign == other.ClanCallsign &&
                (ClanBannerData is not null ? ClanBannerData.DeepEquals(other.ClanBannerData) : other.ClanBannerData is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(GroupV2ClanInfoAndInvestment? other)
+    {
+        if (other is null) return;
+        if (!D2ClanProgressions.DeepEqualsDictionary(other.D2ClanProgressions))
+        {
+            D2ClanProgressions = other.D2ClanProgressions;
+            OnPropertyChanged(nameof(D2ClanProgressions));
+        }
+        if (ClanCallsign != other.ClanCallsign)
+        {
+            ClanCallsign = other.ClanCallsign;
+            OnPropertyChanged(nameof(ClanCallsign));
+        }
+        if (!ClanBannerData.DeepEquals(other.ClanBannerData))
+        {
+            ClanBannerData.Update(other.ClanBannerData);
+            OnPropertyChanged(nameof(ClanBannerData));
+        }
+    }
 }

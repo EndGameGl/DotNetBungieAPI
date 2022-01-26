@@ -46,4 +46,42 @@ public class DestinyItemTalentGridBlockDefinition : IDeepEquatable<DestinyItemTa
                HudDamageType == other.HudDamageType &&
                HudIcon == other.HudIcon;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemTalentGridBlockDefinition? other)
+    {
+        if (other is null) return;
+        if (TalentGridHash != other.TalentGridHash)
+        {
+            TalentGridHash = other.TalentGridHash;
+            OnPropertyChanged(nameof(TalentGridHash));
+        }
+        if (ItemDetailString != other.ItemDetailString)
+        {
+            ItemDetailString = other.ItemDetailString;
+            OnPropertyChanged(nameof(ItemDetailString));
+        }
+        if (BuildName != other.BuildName)
+        {
+            BuildName = other.BuildName;
+            OnPropertyChanged(nameof(BuildName));
+        }
+        if (HudDamageType != other.HudDamageType)
+        {
+            HudDamageType = other.HudDamageType;
+            OnPropertyChanged(nameof(HudDamageType));
+        }
+        if (HudIcon != other.HudIcon)
+        {
+            HudIcon = other.HudIcon;
+            OnPropertyChanged(nameof(HudIcon));
+        }
+    }
 }

@@ -100,4 +100,82 @@ public class DestinyVendorInteractionDefinition : IDeepEquatable<DestinyVendorIn
                (HeaderDisplayProperties is not null ? HeaderDisplayProperties.DeepEquals(other.HeaderDisplayProperties) : other.HeaderDisplayProperties is null) &&
                Instructions == other.Instructions;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorInteractionDefinition? other)
+    {
+        if (other is null) return;
+        if (InteractionIndex != other.InteractionIndex)
+        {
+            InteractionIndex = other.InteractionIndex;
+            OnPropertyChanged(nameof(InteractionIndex));
+        }
+        if (!Replies.DeepEqualsList(other.Replies))
+        {
+            Replies = other.Replies;
+            OnPropertyChanged(nameof(Replies));
+        }
+        if (VendorCategoryIndex != other.VendorCategoryIndex)
+        {
+            VendorCategoryIndex = other.VendorCategoryIndex;
+            OnPropertyChanged(nameof(VendorCategoryIndex));
+        }
+        if (QuestlineItemHash != other.QuestlineItemHash)
+        {
+            QuestlineItemHash = other.QuestlineItemHash;
+            OnPropertyChanged(nameof(QuestlineItemHash));
+        }
+        if (!SackInteractionList.DeepEqualsList(other.SackInteractionList))
+        {
+            SackInteractionList = other.SackInteractionList;
+            OnPropertyChanged(nameof(SackInteractionList));
+        }
+        if (UiInteractionType != other.UiInteractionType)
+        {
+            UiInteractionType = other.UiInteractionType;
+            OnPropertyChanged(nameof(UiInteractionType));
+        }
+        if (InteractionType != other.InteractionType)
+        {
+            InteractionType = other.InteractionType;
+            OnPropertyChanged(nameof(InteractionType));
+        }
+        if (RewardBlockLabel != other.RewardBlockLabel)
+        {
+            RewardBlockLabel = other.RewardBlockLabel;
+            OnPropertyChanged(nameof(RewardBlockLabel));
+        }
+        if (RewardVendorCategoryIndex != other.RewardVendorCategoryIndex)
+        {
+            RewardVendorCategoryIndex = other.RewardVendorCategoryIndex;
+            OnPropertyChanged(nameof(RewardVendorCategoryIndex));
+        }
+        if (FlavorLineOne != other.FlavorLineOne)
+        {
+            FlavorLineOne = other.FlavorLineOne;
+            OnPropertyChanged(nameof(FlavorLineOne));
+        }
+        if (FlavorLineTwo != other.FlavorLineTwo)
+        {
+            FlavorLineTwo = other.FlavorLineTwo;
+            OnPropertyChanged(nameof(FlavorLineTwo));
+        }
+        if (!HeaderDisplayProperties.DeepEquals(other.HeaderDisplayProperties))
+        {
+            HeaderDisplayProperties.Update(other.HeaderDisplayProperties);
+            OnPropertyChanged(nameof(HeaderDisplayProperties));
+        }
+        if (Instructions != other.Instructions)
+        {
+            Instructions = other.Instructions;
+            OnPropertyChanged(nameof(Instructions));
+        }
+    }
 }

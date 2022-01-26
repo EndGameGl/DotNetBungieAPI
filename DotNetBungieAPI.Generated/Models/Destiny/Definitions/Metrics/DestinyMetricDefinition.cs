@@ -60,4 +60,67 @@ public class DestinyMetricDefinition : IDeepEquatable<DestinyMetricDefinition>
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMetricDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (TrackingObjectiveHash != other.TrackingObjectiveHash)
+        {
+            TrackingObjectiveHash = other.TrackingObjectiveHash;
+            OnPropertyChanged(nameof(TrackingObjectiveHash));
+        }
+        if (LowerValueIsBetter != other.LowerValueIsBetter)
+        {
+            LowerValueIsBetter = other.LowerValueIsBetter;
+            OnPropertyChanged(nameof(LowerValueIsBetter));
+        }
+        if (PresentationNodeType != other.PresentationNodeType)
+        {
+            PresentationNodeType = other.PresentationNodeType;
+            OnPropertyChanged(nameof(PresentationNodeType));
+        }
+        if (!TraitIds.DeepEqualsListNaive(other.TraitIds))
+        {
+            TraitIds = other.TraitIds;
+            OnPropertyChanged(nameof(TraitIds));
+        }
+        if (!TraitHashes.DeepEqualsListNaive(other.TraitHashes))
+        {
+            TraitHashes = other.TraitHashes;
+            OnPropertyChanged(nameof(TraitHashes));
+        }
+        if (!ParentNodeHashes.DeepEqualsListNaive(other.ParentNodeHashes))
+        {
+            ParentNodeHashes = other.ParentNodeHashes;
+            OnPropertyChanged(nameof(ParentNodeHashes));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

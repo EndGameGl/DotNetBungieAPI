@@ -23,4 +23,27 @@ public class DestinyTalentNodeStatBlock : IDeepEquatable<DestinyTalentNodeStatBl
                CurrentStepStats.DeepEqualsList(other.CurrentStepStats) &&
                NextStepStats.DeepEqualsList(other.NextStepStats);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyTalentNodeStatBlock? other)
+    {
+        if (other is null) return;
+        if (!CurrentStepStats.DeepEqualsList(other.CurrentStepStats))
+        {
+            CurrentStepStats = other.CurrentStepStats;
+            OnPropertyChanged(nameof(CurrentStepStats));
+        }
+        if (!NextStepStats.DeepEqualsList(other.NextStepStats))
+        {
+            NextStepStats = other.NextStepStats;
+            OnPropertyChanged(nameof(NextStepStats));
+        }
+    }
 }

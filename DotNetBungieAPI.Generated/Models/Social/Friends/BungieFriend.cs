@@ -38,4 +38,57 @@ public class BungieFriend : IDeepEquatable<BungieFriend>
                Relationship == other.Relationship &&
                (BungieNetUser is not null ? BungieNetUser.DeepEquals(other.BungieNetUser) : other.BungieNetUser is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(BungieFriend? other)
+    {
+        if (other is null) return;
+        if (LastSeenAsMembershipId != other.LastSeenAsMembershipId)
+        {
+            LastSeenAsMembershipId = other.LastSeenAsMembershipId;
+            OnPropertyChanged(nameof(LastSeenAsMembershipId));
+        }
+        if (LastSeenAsBungieMembershipType != other.LastSeenAsBungieMembershipType)
+        {
+            LastSeenAsBungieMembershipType = other.LastSeenAsBungieMembershipType;
+            OnPropertyChanged(nameof(LastSeenAsBungieMembershipType));
+        }
+        if (BungieGlobalDisplayName != other.BungieGlobalDisplayName)
+        {
+            BungieGlobalDisplayName = other.BungieGlobalDisplayName;
+            OnPropertyChanged(nameof(BungieGlobalDisplayName));
+        }
+        if (BungieGlobalDisplayNameCode != other.BungieGlobalDisplayNameCode)
+        {
+            BungieGlobalDisplayNameCode = other.BungieGlobalDisplayNameCode;
+            OnPropertyChanged(nameof(BungieGlobalDisplayNameCode));
+        }
+        if (OnlineStatus != other.OnlineStatus)
+        {
+            OnlineStatus = other.OnlineStatus;
+            OnPropertyChanged(nameof(OnlineStatus));
+        }
+        if (OnlineTitle != other.OnlineTitle)
+        {
+            OnlineTitle = other.OnlineTitle;
+            OnPropertyChanged(nameof(OnlineTitle));
+        }
+        if (Relationship != other.Relationship)
+        {
+            Relationship = other.Relationship;
+            OnPropertyChanged(nameof(Relationship));
+        }
+        if (!BungieNetUser.DeepEquals(other.BungieNetUser))
+        {
+            BungieNetUser.Update(other.BungieNetUser);
+            OnPropertyChanged(nameof(BungieNetUser));
+        }
+    }
 }

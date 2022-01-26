@@ -65,4 +65,62 @@ public class DestinyDisplayCategoryDefinition : IDeepEquatable<DestinyDisplayCat
                DisplayStyleHash == other.DisplayStyleHash &&
                DisplayStyleIdentifier == other.DisplayStyleIdentifier;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyDisplayCategoryDefinition? other)
+    {
+        if (other is null) return;
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Identifier != other.Identifier)
+        {
+            Identifier = other.Identifier;
+            OnPropertyChanged(nameof(Identifier));
+        }
+        if (DisplayCategoryHash != other.DisplayCategoryHash)
+        {
+            DisplayCategoryHash = other.DisplayCategoryHash;
+            OnPropertyChanged(nameof(DisplayCategoryHash));
+        }
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (DisplayInBanner != other.DisplayInBanner)
+        {
+            DisplayInBanner = other.DisplayInBanner;
+            OnPropertyChanged(nameof(DisplayInBanner));
+        }
+        if (ProgressionHash != other.ProgressionHash)
+        {
+            ProgressionHash = other.ProgressionHash;
+            OnPropertyChanged(nameof(ProgressionHash));
+        }
+        if (SortOrder != other.SortOrder)
+        {
+            SortOrder = other.SortOrder;
+            OnPropertyChanged(nameof(SortOrder));
+        }
+        if (DisplayStyleHash != other.DisplayStyleHash)
+        {
+            DisplayStyleHash = other.DisplayStyleHash;
+            OnPropertyChanged(nameof(DisplayStyleHash));
+        }
+        if (DisplayStyleIdentifier != other.DisplayStyleIdentifier)
+        {
+            DisplayStyleIdentifier = other.DisplayStyleIdentifier;
+            OnPropertyChanged(nameof(DisplayStyleIdentifier));
+        }
+    }
 }

@@ -10,4 +10,22 @@ public class DestinyPresentationNodesComponent : IDeepEquatable<DestinyPresentat
         return other is not null &&
                Nodes.DeepEqualsDictionary(other.Nodes);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPresentationNodesComponent? other)
+    {
+        if (other is null) return;
+        if (!Nodes.DeepEqualsDictionary(other.Nodes))
+        {
+            Nodes = other.Nodes;
+            OnPropertyChanged(nameof(Nodes));
+        }
+    }
 }

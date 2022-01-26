@@ -57,4 +57,47 @@ public class DestinyProfileTransitoryTrackingEntry : IDeepEquatable<DestinyProfi
                QuestlineItemHash == other.QuestlineItemHash &&
                TrackedDate == other.TrackedDate;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyProfileTransitoryTrackingEntry? other)
+    {
+        if (other is null) return;
+        if (LocationHash != other.LocationHash)
+        {
+            LocationHash = other.LocationHash;
+            OnPropertyChanged(nameof(LocationHash));
+        }
+        if (ItemHash != other.ItemHash)
+        {
+            ItemHash = other.ItemHash;
+            OnPropertyChanged(nameof(ItemHash));
+        }
+        if (ObjectiveHash != other.ObjectiveHash)
+        {
+            ObjectiveHash = other.ObjectiveHash;
+            OnPropertyChanged(nameof(ObjectiveHash));
+        }
+        if (ActivityHash != other.ActivityHash)
+        {
+            ActivityHash = other.ActivityHash;
+            OnPropertyChanged(nameof(ActivityHash));
+        }
+        if (QuestlineItemHash != other.QuestlineItemHash)
+        {
+            QuestlineItemHash = other.QuestlineItemHash;
+            OnPropertyChanged(nameof(QuestlineItemHash));
+        }
+        if (TrackedDate != other.TrackedDate)
+        {
+            TrackedDate = other.TrackedDate;
+            OnPropertyChanged(nameof(TrackedDate));
+        }
+    }
 }

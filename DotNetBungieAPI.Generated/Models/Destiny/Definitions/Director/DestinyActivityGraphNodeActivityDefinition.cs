@@ -23,4 +23,27 @@ public class DestinyActivityGraphNodeActivityDefinition : IDeepEquatable<Destiny
                NodeActivityId == other.NodeActivityId &&
                ActivityHash == other.ActivityHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityGraphNodeActivityDefinition? other)
+    {
+        if (other is null) return;
+        if (NodeActivityId != other.NodeActivityId)
+        {
+            NodeActivityId = other.NodeActivityId;
+            OnPropertyChanged(nameof(NodeActivityId));
+        }
+        if (ActivityHash != other.ActivityHash)
+        {
+            ActivityHash = other.ActivityHash;
+            OnPropertyChanged(nameof(ActivityHash));
+        }
+    }
 }

@@ -27,4 +27,32 @@ public class DestinyHistoricalStatsPeriodGroup : IDeepEquatable<DestinyHistorica
                (ActivityDetails is not null ? ActivityDetails.DeepEquals(other.ActivityDetails) : other.ActivityDetails is null) &&
                Values.DeepEqualsDictionary(other.Values);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyHistoricalStatsPeriodGroup? other)
+    {
+        if (other is null) return;
+        if (Period != other.Period)
+        {
+            Period = other.Period;
+            OnPropertyChanged(nameof(Period));
+        }
+        if (!ActivityDetails.DeepEquals(other.ActivityDetails))
+        {
+            ActivityDetails.Update(other.ActivityDetails);
+            OnPropertyChanged(nameof(ActivityDetails));
+        }
+        if (!Values.DeepEqualsDictionary(other.Values))
+        {
+            Values = other.Values;
+            OnPropertyChanged(nameof(Values));
+        }
+    }
 }

@@ -13,4 +13,22 @@ public class DestinyPlatformSilverComponent : IDeepEquatable<DestinyPlatformSilv
         return other is not null &&
                PlatformSilver.DeepEqualsDictionary(other.PlatformSilver);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPlatformSilverComponent? other)
+    {
+        if (other is null) return;
+        if (!PlatformSilver.DeepEqualsDictionary(other.PlatformSilver))
+        {
+            PlatformSilver = other.PlatformSilver;
+            OnPropertyChanged(nameof(PlatformSilver));
+        }
+    }
 }

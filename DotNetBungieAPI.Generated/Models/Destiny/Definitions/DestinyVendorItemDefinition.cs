@@ -198,4 +198,147 @@ public class DestinyVendorItemDefinition : IDeepEquatable<DestinyVendorItemDefin
                SocketOverrides.DeepEqualsList(other.SocketOverrides) &&
                Unpurchasable == other.Unpurchasable;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorItemDefinition? other)
+    {
+        if (other is null) return;
+        if (VendorItemIndex != other.VendorItemIndex)
+        {
+            VendorItemIndex = other.VendorItemIndex;
+            OnPropertyChanged(nameof(VendorItemIndex));
+        }
+        if (ItemHash != other.ItemHash)
+        {
+            ItemHash = other.ItemHash;
+            OnPropertyChanged(nameof(ItemHash));
+        }
+        if (Quantity != other.Quantity)
+        {
+            Quantity = other.Quantity;
+            OnPropertyChanged(nameof(Quantity));
+        }
+        if (!FailureIndexes.DeepEqualsListNaive(other.FailureIndexes))
+        {
+            FailureIndexes = other.FailureIndexes;
+            OnPropertyChanged(nameof(FailureIndexes));
+        }
+        if (!Currencies.DeepEqualsList(other.Currencies))
+        {
+            Currencies = other.Currencies;
+            OnPropertyChanged(nameof(Currencies));
+        }
+        if (RefundPolicy != other.RefundPolicy)
+        {
+            RefundPolicy = other.RefundPolicy;
+            OnPropertyChanged(nameof(RefundPolicy));
+        }
+        if (RefundTimeLimit != other.RefundTimeLimit)
+        {
+            RefundTimeLimit = other.RefundTimeLimit;
+            OnPropertyChanged(nameof(RefundTimeLimit));
+        }
+        if (!CreationLevels.DeepEqualsList(other.CreationLevels))
+        {
+            CreationLevels = other.CreationLevels;
+            OnPropertyChanged(nameof(CreationLevels));
+        }
+        if (DisplayCategoryIndex != other.DisplayCategoryIndex)
+        {
+            DisplayCategoryIndex = other.DisplayCategoryIndex;
+            OnPropertyChanged(nameof(DisplayCategoryIndex));
+        }
+        if (CategoryIndex != other.CategoryIndex)
+        {
+            CategoryIndex = other.CategoryIndex;
+            OnPropertyChanged(nameof(CategoryIndex));
+        }
+        if (OriginalCategoryIndex != other.OriginalCategoryIndex)
+        {
+            OriginalCategoryIndex = other.OriginalCategoryIndex;
+            OnPropertyChanged(nameof(OriginalCategoryIndex));
+        }
+        if (MinimumLevel != other.MinimumLevel)
+        {
+            MinimumLevel = other.MinimumLevel;
+            OnPropertyChanged(nameof(MinimumLevel));
+        }
+        if (MaximumLevel != other.MaximumLevel)
+        {
+            MaximumLevel = other.MaximumLevel;
+            OnPropertyChanged(nameof(MaximumLevel));
+        }
+        if (!Action.DeepEquals(other.Action))
+        {
+            Action.Update(other.Action);
+            OnPropertyChanged(nameof(Action));
+        }
+        if (DisplayCategory != other.DisplayCategory)
+        {
+            DisplayCategory = other.DisplayCategory;
+            OnPropertyChanged(nameof(DisplayCategory));
+        }
+        if (InventoryBucketHash != other.InventoryBucketHash)
+        {
+            InventoryBucketHash = other.InventoryBucketHash;
+            OnPropertyChanged(nameof(InventoryBucketHash));
+        }
+        if (VisibilityScope != other.VisibilityScope)
+        {
+            VisibilityScope = other.VisibilityScope;
+            OnPropertyChanged(nameof(VisibilityScope));
+        }
+        if (PurchasableScope != other.PurchasableScope)
+        {
+            PurchasableScope = other.PurchasableScope;
+            OnPropertyChanged(nameof(PurchasableScope));
+        }
+        if (Exclusivity != other.Exclusivity)
+        {
+            Exclusivity = other.Exclusivity;
+            OnPropertyChanged(nameof(Exclusivity));
+        }
+        if (IsOffer != other.IsOffer)
+        {
+            IsOffer = other.IsOffer;
+            OnPropertyChanged(nameof(IsOffer));
+        }
+        if (IsCrm != other.IsCrm)
+        {
+            IsCrm = other.IsCrm;
+            OnPropertyChanged(nameof(IsCrm));
+        }
+        if (SortValue != other.SortValue)
+        {
+            SortValue = other.SortValue;
+            OnPropertyChanged(nameof(SortValue));
+        }
+        if (ExpirationTooltip != other.ExpirationTooltip)
+        {
+            ExpirationTooltip = other.ExpirationTooltip;
+            OnPropertyChanged(nameof(ExpirationTooltip));
+        }
+        if (!RedirectToSaleIndexes.DeepEqualsListNaive(other.RedirectToSaleIndexes))
+        {
+            RedirectToSaleIndexes = other.RedirectToSaleIndexes;
+            OnPropertyChanged(nameof(RedirectToSaleIndexes));
+        }
+        if (!SocketOverrides.DeepEqualsList(other.SocketOverrides))
+        {
+            SocketOverrides = other.SocketOverrides;
+            OnPropertyChanged(nameof(SocketOverrides));
+        }
+        if (Unpurchasable != other.Unpurchasable)
+        {
+            Unpurchasable = other.Unpurchasable;
+            OnPropertyChanged(nameof(Unpurchasable));
+        }
+    }
 }

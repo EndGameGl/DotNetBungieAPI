@@ -30,4 +30,32 @@ public class DestinyItemPerkEntryDefinition : IDeepEquatable<DestinyItemPerkEntr
                PerkHash == other.PerkHash &&
                PerkVisibility == other.PerkVisibility;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemPerkEntryDefinition? other)
+    {
+        if (other is null) return;
+        if (RequirementDisplayString != other.RequirementDisplayString)
+        {
+            RequirementDisplayString = other.RequirementDisplayString;
+            OnPropertyChanged(nameof(RequirementDisplayString));
+        }
+        if (PerkHash != other.PerkHash)
+        {
+            PerkHash = other.PerkHash;
+            OnPropertyChanged(nameof(PerkHash));
+        }
+        if (PerkVisibility != other.PerkVisibility)
+        {
+            PerkVisibility = other.PerkVisibility;
+            OnPropertyChanged(nameof(PerkVisibility));
+        }
+    }
 }

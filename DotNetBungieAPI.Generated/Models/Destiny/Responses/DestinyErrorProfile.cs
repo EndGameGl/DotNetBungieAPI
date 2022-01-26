@@ -25,4 +25,27 @@ public class DestinyErrorProfile : IDeepEquatable<DestinyErrorProfile>
                ErrorCode == other.ErrorCode &&
                (InfoCard is not null ? InfoCard.DeepEquals(other.InfoCard) : other.InfoCard is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyErrorProfile? other)
+    {
+        if (other is null) return;
+        if (ErrorCode != other.ErrorCode)
+        {
+            ErrorCode = other.ErrorCode;
+            OnPropertyChanged(nameof(ErrorCode));
+        }
+        if (!InfoCard.DeepEquals(other.InfoCard))
+        {
+            InfoCard.Update(other.InfoCard);
+            OnPropertyChanged(nameof(InfoCard));
+        }
+    }
 }

@@ -18,4 +18,22 @@ public class DestinyPlugSetsComponent : IDeepEquatable<DestinyPlugSetsComponent>
         return other is not null &&
                Plugs.DeepEqualsDictionaryNaive(other.Plugs);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPlugSetsComponent? other)
+    {
+        if (other is null) return;
+        if (!Plugs.DeepEqualsDictionary(other.Plugs))
+        {
+            Plugs = other.Plugs;
+            OnPropertyChanged(nameof(Plugs));
+        }
+    }
 }

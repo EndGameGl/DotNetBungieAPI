@@ -34,4 +34,52 @@ public class FireteamMember : IDeepEquatable<FireteamMember>
                LastPlatformInviteAttemptDate == other.LastPlatformInviteAttemptDate &&
                LastPlatformInviteAttemptResult == other.LastPlatformInviteAttemptResult;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(FireteamMember? other)
+    {
+        if (other is null) return;
+        if (!DestinyUserInfo.DeepEquals(other.DestinyUserInfo))
+        {
+            DestinyUserInfo.Update(other.DestinyUserInfo);
+            OnPropertyChanged(nameof(DestinyUserInfo));
+        }
+        if (!BungieNetUserInfo.DeepEquals(other.BungieNetUserInfo))
+        {
+            BungieNetUserInfo.Update(other.BungieNetUserInfo);
+            OnPropertyChanged(nameof(BungieNetUserInfo));
+        }
+        if (CharacterId != other.CharacterId)
+        {
+            CharacterId = other.CharacterId;
+            OnPropertyChanged(nameof(CharacterId));
+        }
+        if (DateJoined != other.DateJoined)
+        {
+            DateJoined = other.DateJoined;
+            OnPropertyChanged(nameof(DateJoined));
+        }
+        if (HasMicrophone != other.HasMicrophone)
+        {
+            HasMicrophone = other.HasMicrophone;
+            OnPropertyChanged(nameof(HasMicrophone));
+        }
+        if (LastPlatformInviteAttemptDate != other.LastPlatformInviteAttemptDate)
+        {
+            LastPlatformInviteAttemptDate = other.LastPlatformInviteAttemptDate;
+            OnPropertyChanged(nameof(LastPlatformInviteAttemptDate));
+        }
+        if (LastPlatformInviteAttemptResult != other.LastPlatformInviteAttemptResult)
+        {
+            LastPlatformInviteAttemptResult = other.LastPlatformInviteAttemptResult;
+            OnPropertyChanged(nameof(LastPlatformInviteAttemptResult));
+        }
+    }
 }

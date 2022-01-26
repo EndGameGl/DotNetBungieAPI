@@ -268,4 +268,162 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
                (ItemComponents is not null ? ItemComponents.DeepEquals(other.ItemComponents) : other.ItemComponents is null) &&
                (CharacterCurrencyLookups is not null ? CharacterCurrencyLookups.DeepEquals(other.CharacterCurrencyLookups) : other.CharacterCurrencyLookups is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyProfileResponse? other)
+    {
+        if (other is null) return;
+        if (!VendorReceipts.DeepEquals(other.VendorReceipts))
+        {
+            VendorReceipts.Update(other.VendorReceipts);
+            OnPropertyChanged(nameof(VendorReceipts));
+        }
+        if (!ProfileInventory.DeepEquals(other.ProfileInventory))
+        {
+            ProfileInventory.Update(other.ProfileInventory);
+            OnPropertyChanged(nameof(ProfileInventory));
+        }
+        if (!ProfileCurrencies.DeepEquals(other.ProfileCurrencies))
+        {
+            ProfileCurrencies.Update(other.ProfileCurrencies);
+            OnPropertyChanged(nameof(ProfileCurrencies));
+        }
+        if (!Profile.DeepEquals(other.Profile))
+        {
+            Profile.Update(other.Profile);
+            OnPropertyChanged(nameof(Profile));
+        }
+        if (!PlatformSilver.DeepEquals(other.PlatformSilver))
+        {
+            PlatformSilver.Update(other.PlatformSilver);
+            OnPropertyChanged(nameof(PlatformSilver));
+        }
+        if (!ProfileKiosks.DeepEquals(other.ProfileKiosks))
+        {
+            ProfileKiosks.Update(other.ProfileKiosks);
+            OnPropertyChanged(nameof(ProfileKiosks));
+        }
+        if (!ProfilePlugSets.DeepEquals(other.ProfilePlugSets))
+        {
+            ProfilePlugSets.Update(other.ProfilePlugSets);
+            OnPropertyChanged(nameof(ProfilePlugSets));
+        }
+        if (!ProfileProgression.DeepEquals(other.ProfileProgression))
+        {
+            ProfileProgression.Update(other.ProfileProgression);
+            OnPropertyChanged(nameof(ProfileProgression));
+        }
+        if (!ProfilePresentationNodes.DeepEquals(other.ProfilePresentationNodes))
+        {
+            ProfilePresentationNodes.Update(other.ProfilePresentationNodes);
+            OnPropertyChanged(nameof(ProfilePresentationNodes));
+        }
+        if (!ProfileRecords.DeepEquals(other.ProfileRecords))
+        {
+            ProfileRecords.Update(other.ProfileRecords);
+            OnPropertyChanged(nameof(ProfileRecords));
+        }
+        if (!ProfileCollectibles.DeepEquals(other.ProfileCollectibles))
+        {
+            ProfileCollectibles.Update(other.ProfileCollectibles);
+            OnPropertyChanged(nameof(ProfileCollectibles));
+        }
+        if (!ProfileTransitoryData.DeepEquals(other.ProfileTransitoryData))
+        {
+            ProfileTransitoryData.Update(other.ProfileTransitoryData);
+            OnPropertyChanged(nameof(ProfileTransitoryData));
+        }
+        if (!Metrics.DeepEquals(other.Metrics))
+        {
+            Metrics.Update(other.Metrics);
+            OnPropertyChanged(nameof(Metrics));
+        }
+        if (!ProfileStringVariables.DeepEquals(other.ProfileStringVariables))
+        {
+            ProfileStringVariables.Update(other.ProfileStringVariables);
+            OnPropertyChanged(nameof(ProfileStringVariables));
+        }
+        if (!Characters.DeepEquals(other.Characters))
+        {
+            Characters.Update(other.Characters);
+            OnPropertyChanged(nameof(Characters));
+        }
+        if (!CharacterInventories.DeepEquals(other.CharacterInventories))
+        {
+            CharacterInventories.Update(other.CharacterInventories);
+            OnPropertyChanged(nameof(CharacterInventories));
+        }
+        if (!CharacterProgressions.DeepEquals(other.CharacterProgressions))
+        {
+            CharacterProgressions.Update(other.CharacterProgressions);
+            OnPropertyChanged(nameof(CharacterProgressions));
+        }
+        if (!CharacterRenderData.DeepEquals(other.CharacterRenderData))
+        {
+            CharacterRenderData.Update(other.CharacterRenderData);
+            OnPropertyChanged(nameof(CharacterRenderData));
+        }
+        if (!CharacterActivities.DeepEquals(other.CharacterActivities))
+        {
+            CharacterActivities.Update(other.CharacterActivities);
+            OnPropertyChanged(nameof(CharacterActivities));
+        }
+        if (!CharacterEquipment.DeepEquals(other.CharacterEquipment))
+        {
+            CharacterEquipment.Update(other.CharacterEquipment);
+            OnPropertyChanged(nameof(CharacterEquipment));
+        }
+        if (!CharacterKiosks.DeepEquals(other.CharacterKiosks))
+        {
+            CharacterKiosks.Update(other.CharacterKiosks);
+            OnPropertyChanged(nameof(CharacterKiosks));
+        }
+        if (!CharacterPlugSets.DeepEquals(other.CharacterPlugSets))
+        {
+            CharacterPlugSets.Update(other.CharacterPlugSets);
+            OnPropertyChanged(nameof(CharacterPlugSets));
+        }
+        if (!CharacterUninstancedItemComponents.DeepEqualsDictionary(other.CharacterUninstancedItemComponents))
+        {
+            CharacterUninstancedItemComponents = other.CharacterUninstancedItemComponents;
+            OnPropertyChanged(nameof(CharacterUninstancedItemComponents));
+        }
+        if (!CharacterPresentationNodes.DeepEquals(other.CharacterPresentationNodes))
+        {
+            CharacterPresentationNodes.Update(other.CharacterPresentationNodes);
+            OnPropertyChanged(nameof(CharacterPresentationNodes));
+        }
+        if (!CharacterRecords.DeepEquals(other.CharacterRecords))
+        {
+            CharacterRecords.Update(other.CharacterRecords);
+            OnPropertyChanged(nameof(CharacterRecords));
+        }
+        if (!CharacterCollectibles.DeepEquals(other.CharacterCollectibles))
+        {
+            CharacterCollectibles.Update(other.CharacterCollectibles);
+            OnPropertyChanged(nameof(CharacterCollectibles));
+        }
+        if (!CharacterStringVariables.DeepEquals(other.CharacterStringVariables))
+        {
+            CharacterStringVariables.Update(other.CharacterStringVariables);
+            OnPropertyChanged(nameof(CharacterStringVariables));
+        }
+        if (!ItemComponents.DeepEquals(other.ItemComponents))
+        {
+            ItemComponents.Update(other.ItemComponents);
+            OnPropertyChanged(nameof(ItemComponents));
+        }
+        if (!CharacterCurrencyLookups.DeepEquals(other.CharacterCurrencyLookups))
+        {
+            CharacterCurrencyLookups.Update(other.CharacterCurrencyLookups);
+            OnPropertyChanged(nameof(CharacterCurrencyLookups));
+        }
+    }
 }

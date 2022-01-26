@@ -18,4 +18,32 @@ public class DestinyRecordIntervalBlock : IDeepEquatable<DestinyRecordIntervalBl
                IntervalRewards.DeepEqualsList(other.IntervalRewards) &&
                OriginalObjectiveArrayInsertionIndex == other.OriginalObjectiveArrayInsertionIndex;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyRecordIntervalBlock? other)
+    {
+        if (other is null) return;
+        if (!IntervalObjectives.DeepEqualsList(other.IntervalObjectives))
+        {
+            IntervalObjectives = other.IntervalObjectives;
+            OnPropertyChanged(nameof(IntervalObjectives));
+        }
+        if (!IntervalRewards.DeepEqualsList(other.IntervalRewards))
+        {
+            IntervalRewards = other.IntervalRewards;
+            OnPropertyChanged(nameof(IntervalRewards));
+        }
+        if (OriginalObjectiveArrayInsertionIndex != other.OriginalObjectiveArrayInsertionIndex)
+        {
+            OriginalObjectiveArrayInsertionIndex = other.OriginalObjectiveArrayInsertionIndex;
+            OnPropertyChanged(nameof(OriginalObjectiveArrayInsertionIndex));
+        }
+    }
 }

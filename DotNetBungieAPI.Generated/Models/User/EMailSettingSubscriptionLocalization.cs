@@ -37,4 +37,52 @@ public class EMailSettingSubscriptionLocalization : IDeepEquatable<EMailSettingS
                Title == other.Title &&
                Description == other.Description;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(EMailSettingSubscriptionLocalization? other)
+    {
+        if (other is null) return;
+        if (UnknownUserDescription != other.UnknownUserDescription)
+        {
+            UnknownUserDescription = other.UnknownUserDescription;
+            OnPropertyChanged(nameof(UnknownUserDescription));
+        }
+        if (RegisteredUserDescription != other.RegisteredUserDescription)
+        {
+            RegisteredUserDescription = other.RegisteredUserDescription;
+            OnPropertyChanged(nameof(RegisteredUserDescription));
+        }
+        if (UnregisteredUserDescription != other.UnregisteredUserDescription)
+        {
+            UnregisteredUserDescription = other.UnregisteredUserDescription;
+            OnPropertyChanged(nameof(UnregisteredUserDescription));
+        }
+        if (UnknownUserActionText != other.UnknownUserActionText)
+        {
+            UnknownUserActionText = other.UnknownUserActionText;
+            OnPropertyChanged(nameof(UnknownUserActionText));
+        }
+        if (KnownUserActionText != other.KnownUserActionText)
+        {
+            KnownUserActionText = other.KnownUserActionText;
+            OnPropertyChanged(nameof(KnownUserActionText));
+        }
+        if (Title != other.Title)
+        {
+            Title = other.Title;
+            OnPropertyChanged(nameof(Title));
+        }
+        if (Description != other.Description)
+        {
+            Description = other.Description;
+            OnPropertyChanged(nameof(Description));
+        }
+    }
 }

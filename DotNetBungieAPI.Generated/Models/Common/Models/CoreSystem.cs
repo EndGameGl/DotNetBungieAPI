@@ -14,4 +14,27 @@ public class CoreSystem : IDeepEquatable<CoreSystem>
                Enabled == other.Enabled &&
                Parameters.DeepEqualsDictionaryNaive(other.Parameters);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(CoreSystem? other)
+    {
+        if (other is null) return;
+        if (Enabled != other.Enabled)
+        {
+            Enabled = other.Enabled;
+            OnPropertyChanged(nameof(Enabled));
+        }
+        if (!Parameters.DeepEqualsDictionaryNaive(other.Parameters))
+        {
+            Parameters = other.Parameters;
+            OnPropertyChanged(nameof(Parameters));
+        }
+    }
 }

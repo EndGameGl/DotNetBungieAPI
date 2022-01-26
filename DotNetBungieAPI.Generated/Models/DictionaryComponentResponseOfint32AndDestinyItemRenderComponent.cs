@@ -21,4 +21,32 @@ public class DictionaryComponentResponseOfint32AndDestinyItemRenderComponent : I
                Privacy == other.Privacy &&
                Disabled == other.Disabled;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DictionaryComponentResponseOfint32AndDestinyItemRenderComponent? other)
+    {
+        if (other is null) return;
+        if (!Data.DeepEqualsDictionary(other.Data))
+        {
+            Data = other.Data;
+            OnPropertyChanged(nameof(Data));
+        }
+        if (Privacy != other.Privacy)
+        {
+            Privacy = other.Privacy;
+            OnPropertyChanged(nameof(Privacy));
+        }
+        if (Disabled != other.Disabled)
+        {
+            Disabled = other.Disabled;
+            OnPropertyChanged(nameof(Disabled));
+        }
+    }
 }

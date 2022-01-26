@@ -62,4 +62,52 @@ public class DestinyObjectiveProgress : IDeepEquatable<DestinyObjectiveProgress>
                Complete == other.Complete &&
                Visible == other.Visible;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyObjectiveProgress? other)
+    {
+        if (other is null) return;
+        if (ObjectiveHash != other.ObjectiveHash)
+        {
+            ObjectiveHash = other.ObjectiveHash;
+            OnPropertyChanged(nameof(ObjectiveHash));
+        }
+        if (DestinationHash != other.DestinationHash)
+        {
+            DestinationHash = other.DestinationHash;
+            OnPropertyChanged(nameof(DestinationHash));
+        }
+        if (ActivityHash != other.ActivityHash)
+        {
+            ActivityHash = other.ActivityHash;
+            OnPropertyChanged(nameof(ActivityHash));
+        }
+        if (Progress != other.Progress)
+        {
+            Progress = other.Progress;
+            OnPropertyChanged(nameof(Progress));
+        }
+        if (CompletionValue != other.CompletionValue)
+        {
+            CompletionValue = other.CompletionValue;
+            OnPropertyChanged(nameof(CompletionValue));
+        }
+        if (Complete != other.Complete)
+        {
+            Complete = other.Complete;
+            OnPropertyChanged(nameof(Complete));
+        }
+        if (Visible != other.Visible)
+        {
+            Visible = other.Visible;
+            OnPropertyChanged(nameof(Visible));
+        }
+    }
 }

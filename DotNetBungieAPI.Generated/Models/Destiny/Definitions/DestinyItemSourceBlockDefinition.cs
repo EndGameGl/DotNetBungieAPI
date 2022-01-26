@@ -37,4 +37,37 @@ public class DestinyItemSourceBlockDefinition : IDeepEquatable<DestinyItemSource
                Exclusive == other.Exclusive &&
                VendorSources.DeepEqualsList(other.VendorSources);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemSourceBlockDefinition? other)
+    {
+        if (other is null) return;
+        if (!SourceHashes.DeepEqualsListNaive(other.SourceHashes))
+        {
+            SourceHashes = other.SourceHashes;
+            OnPropertyChanged(nameof(SourceHashes));
+        }
+        if (!Sources.DeepEqualsList(other.Sources))
+        {
+            Sources = other.Sources;
+            OnPropertyChanged(nameof(Sources));
+        }
+        if (Exclusive != other.Exclusive)
+        {
+            Exclusive = other.Exclusive;
+            OnPropertyChanged(nameof(Exclusive));
+        }
+        if (!VendorSources.DeepEqualsList(other.VendorSources))
+        {
+            VendorSources = other.VendorSources;
+            OnPropertyChanged(nameof(VendorSources));
+        }
+    }
 }

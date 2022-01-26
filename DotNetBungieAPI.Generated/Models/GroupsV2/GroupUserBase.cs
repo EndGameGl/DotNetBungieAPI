@@ -22,4 +22,37 @@ public class GroupUserBase : IDeepEquatable<GroupUserBase>
                (BungieNetUserInfo is not null ? BungieNetUserInfo.DeepEquals(other.BungieNetUserInfo) : other.BungieNetUserInfo is null) &&
                JoinDate == other.JoinDate;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(GroupUserBase? other)
+    {
+        if (other is null) return;
+        if (GroupId != other.GroupId)
+        {
+            GroupId = other.GroupId;
+            OnPropertyChanged(nameof(GroupId));
+        }
+        if (!DestinyUserInfo.DeepEquals(other.DestinyUserInfo))
+        {
+            DestinyUserInfo.Update(other.DestinyUserInfo);
+            OnPropertyChanged(nameof(DestinyUserInfo));
+        }
+        if (!BungieNetUserInfo.DeepEquals(other.BungieNetUserInfo))
+        {
+            BungieNetUserInfo.Update(other.BungieNetUserInfo);
+            OnPropertyChanged(nameof(BungieNetUserInfo));
+        }
+        if (JoinDate != other.JoinDate)
+        {
+            JoinDate = other.JoinDate;
+            OnPropertyChanged(nameof(JoinDate));
+        }
+    }
 }

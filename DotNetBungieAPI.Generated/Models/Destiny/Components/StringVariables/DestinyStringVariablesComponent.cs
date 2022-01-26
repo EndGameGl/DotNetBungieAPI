@@ -10,4 +10,22 @@ public class DestinyStringVariablesComponent : IDeepEquatable<DestinyStringVaria
         return other is not null &&
                IntegerValuesByHash.DeepEqualsDictionaryNaive(other.IntegerValuesByHash);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyStringVariablesComponent? other)
+    {
+        if (other is null) return;
+        if (!IntegerValuesByHash.DeepEqualsDictionaryNaive(other.IntegerValuesByHash))
+        {
+            IntegerValuesByHash = other.IntegerValuesByHash;
+            OnPropertyChanged(nameof(IntegerValuesByHash));
+        }
+    }
 }

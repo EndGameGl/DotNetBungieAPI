@@ -54,4 +54,52 @@ public class DestinyRaceDefinition : IDeepEquatable<DestinyRaceDefinition>
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyRaceDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (RaceType != other.RaceType)
+        {
+            RaceType = other.RaceType;
+            OnPropertyChanged(nameof(RaceType));
+        }
+        if (!GenderedRaceNames.DeepEqualsDictionaryNaive(other.GenderedRaceNames))
+        {
+            GenderedRaceNames = other.GenderedRaceNames;
+            OnPropertyChanged(nameof(GenderedRaceNames));
+        }
+        if (!GenderedRaceNamesByGenderHash.DeepEqualsDictionaryNaive(other.GenderedRaceNamesByGenderHash))
+        {
+            GenderedRaceNamesByGenderHash = other.GenderedRaceNamesByGenderHash;
+            OnPropertyChanged(nameof(GenderedRaceNamesByGenderHash));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

@@ -27,4 +27,27 @@ public class DestinyItemVendorSourceReference : IDeepEquatable<DestinyItemVendor
                VendorHash == other.VendorHash &&
                VendorItemIndexes.DeepEqualsListNaive(other.VendorItemIndexes);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemVendorSourceReference? other)
+    {
+        if (other is null) return;
+        if (VendorHash != other.VendorHash)
+        {
+            VendorHash = other.VendorHash;
+            OnPropertyChanged(nameof(VendorHash));
+        }
+        if (!VendorItemIndexes.DeepEqualsListNaive(other.VendorItemIndexes))
+        {
+            VendorItemIndexes = other.VendorItemIndexes;
+            OnPropertyChanged(nameof(VendorItemIndexes));
+        }
+    }
 }

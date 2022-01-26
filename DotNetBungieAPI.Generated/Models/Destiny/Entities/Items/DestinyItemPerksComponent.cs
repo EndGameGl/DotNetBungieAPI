@@ -20,4 +20,22 @@ public class DestinyItemPerksComponent : IDeepEquatable<DestinyItemPerksComponen
         return other is not null &&
                Perks.DeepEqualsList(other.Perks);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemPerksComponent? other)
+    {
+        if (other is null) return;
+        if (!Perks.DeepEqualsList(other.Perks))
+        {
+            Perks = other.Perks;
+            OnPropertyChanged(nameof(Perks));
+        }
+    }
 }

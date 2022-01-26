@@ -146,4 +146,192 @@ public class GeneralUser : IDeepEquatable<GeneralUser>
                CachedBungieGlobalDisplayName == other.CachedBungieGlobalDisplayName &&
                CachedBungieGlobalDisplayNameCode == other.CachedBungieGlobalDisplayNameCode;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(GeneralUser? other)
+    {
+        if (other is null) return;
+        if (MembershipId != other.MembershipId)
+        {
+            MembershipId = other.MembershipId;
+            OnPropertyChanged(nameof(MembershipId));
+        }
+        if (UniqueName != other.UniqueName)
+        {
+            UniqueName = other.UniqueName;
+            OnPropertyChanged(nameof(UniqueName));
+        }
+        if (NormalizedName != other.NormalizedName)
+        {
+            NormalizedName = other.NormalizedName;
+            OnPropertyChanged(nameof(NormalizedName));
+        }
+        if (DisplayName != other.DisplayName)
+        {
+            DisplayName = other.DisplayName;
+            OnPropertyChanged(nameof(DisplayName));
+        }
+        if (ProfilePicture != other.ProfilePicture)
+        {
+            ProfilePicture = other.ProfilePicture;
+            OnPropertyChanged(nameof(ProfilePicture));
+        }
+        if (ProfileTheme != other.ProfileTheme)
+        {
+            ProfileTheme = other.ProfileTheme;
+            OnPropertyChanged(nameof(ProfileTheme));
+        }
+        if (UserTitle != other.UserTitle)
+        {
+            UserTitle = other.UserTitle;
+            OnPropertyChanged(nameof(UserTitle));
+        }
+        if (SuccessMessageFlags != other.SuccessMessageFlags)
+        {
+            SuccessMessageFlags = other.SuccessMessageFlags;
+            OnPropertyChanged(nameof(SuccessMessageFlags));
+        }
+        if (IsDeleted != other.IsDeleted)
+        {
+            IsDeleted = other.IsDeleted;
+            OnPropertyChanged(nameof(IsDeleted));
+        }
+        if (About != other.About)
+        {
+            About = other.About;
+            OnPropertyChanged(nameof(About));
+        }
+        if (FirstAccess != other.FirstAccess)
+        {
+            FirstAccess = other.FirstAccess;
+            OnPropertyChanged(nameof(FirstAccess));
+        }
+        if (LastUpdate != other.LastUpdate)
+        {
+            LastUpdate = other.LastUpdate;
+            OnPropertyChanged(nameof(LastUpdate));
+        }
+        if (LegacyPortalUID != other.LegacyPortalUID)
+        {
+            LegacyPortalUID = other.LegacyPortalUID;
+            OnPropertyChanged(nameof(LegacyPortalUID));
+        }
+        if (!Context.DeepEquals(other.Context))
+        {
+            Context.Update(other.Context);
+            OnPropertyChanged(nameof(Context));
+        }
+        if (PsnDisplayName != other.PsnDisplayName)
+        {
+            PsnDisplayName = other.PsnDisplayName;
+            OnPropertyChanged(nameof(PsnDisplayName));
+        }
+        if (XboxDisplayName != other.XboxDisplayName)
+        {
+            XboxDisplayName = other.XboxDisplayName;
+            OnPropertyChanged(nameof(XboxDisplayName));
+        }
+        if (FbDisplayName != other.FbDisplayName)
+        {
+            FbDisplayName = other.FbDisplayName;
+            OnPropertyChanged(nameof(FbDisplayName));
+        }
+        if (ShowActivity != other.ShowActivity)
+        {
+            ShowActivity = other.ShowActivity;
+            OnPropertyChanged(nameof(ShowActivity));
+        }
+        if (Locale != other.Locale)
+        {
+            Locale = other.Locale;
+            OnPropertyChanged(nameof(Locale));
+        }
+        if (LocaleInheritDefault != other.LocaleInheritDefault)
+        {
+            LocaleInheritDefault = other.LocaleInheritDefault;
+            OnPropertyChanged(nameof(LocaleInheritDefault));
+        }
+        if (LastBanReportId != other.LastBanReportId)
+        {
+            LastBanReportId = other.LastBanReportId;
+            OnPropertyChanged(nameof(LastBanReportId));
+        }
+        if (ShowGroupMessaging != other.ShowGroupMessaging)
+        {
+            ShowGroupMessaging = other.ShowGroupMessaging;
+            OnPropertyChanged(nameof(ShowGroupMessaging));
+        }
+        if (ProfilePicturePath != other.ProfilePicturePath)
+        {
+            ProfilePicturePath = other.ProfilePicturePath;
+            OnPropertyChanged(nameof(ProfilePicturePath));
+        }
+        if (ProfilePictureWidePath != other.ProfilePictureWidePath)
+        {
+            ProfilePictureWidePath = other.ProfilePictureWidePath;
+            OnPropertyChanged(nameof(ProfilePictureWidePath));
+        }
+        if (ProfileThemeName != other.ProfileThemeName)
+        {
+            ProfileThemeName = other.ProfileThemeName;
+            OnPropertyChanged(nameof(ProfileThemeName));
+        }
+        if (UserTitleDisplay != other.UserTitleDisplay)
+        {
+            UserTitleDisplay = other.UserTitleDisplay;
+            OnPropertyChanged(nameof(UserTitleDisplay));
+        }
+        if (StatusText != other.StatusText)
+        {
+            StatusText = other.StatusText;
+            OnPropertyChanged(nameof(StatusText));
+        }
+        if (StatusDate != other.StatusDate)
+        {
+            StatusDate = other.StatusDate;
+            OnPropertyChanged(nameof(StatusDate));
+        }
+        if (ProfileBanExpire != other.ProfileBanExpire)
+        {
+            ProfileBanExpire = other.ProfileBanExpire;
+            OnPropertyChanged(nameof(ProfileBanExpire));
+        }
+        if (BlizzardDisplayName != other.BlizzardDisplayName)
+        {
+            BlizzardDisplayName = other.BlizzardDisplayName;
+            OnPropertyChanged(nameof(BlizzardDisplayName));
+        }
+        if (SteamDisplayName != other.SteamDisplayName)
+        {
+            SteamDisplayName = other.SteamDisplayName;
+            OnPropertyChanged(nameof(SteamDisplayName));
+        }
+        if (StadiaDisplayName != other.StadiaDisplayName)
+        {
+            StadiaDisplayName = other.StadiaDisplayName;
+            OnPropertyChanged(nameof(StadiaDisplayName));
+        }
+        if (TwitchDisplayName != other.TwitchDisplayName)
+        {
+            TwitchDisplayName = other.TwitchDisplayName;
+            OnPropertyChanged(nameof(TwitchDisplayName));
+        }
+        if (CachedBungieGlobalDisplayName != other.CachedBungieGlobalDisplayName)
+        {
+            CachedBungieGlobalDisplayName = other.CachedBungieGlobalDisplayName;
+            OnPropertyChanged(nameof(CachedBungieGlobalDisplayName));
+        }
+        if (CachedBungieGlobalDisplayNameCode != other.CachedBungieGlobalDisplayNameCode)
+        {
+            CachedBungieGlobalDisplayNameCode = other.CachedBungieGlobalDisplayNameCode;
+            OnPropertyChanged(nameof(CachedBungieGlobalDisplayNameCode));
+        }
+    }
 }

@@ -22,4 +22,37 @@ public class HardLinkedUserMembership : IDeepEquatable<HardLinkedUserMembership>
                CrossSaveOverriddenType == other.CrossSaveOverriddenType &&
                CrossSaveOverriddenMembershipId == other.CrossSaveOverriddenMembershipId;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(HardLinkedUserMembership? other)
+    {
+        if (other is null) return;
+        if (MembershipType != other.MembershipType)
+        {
+            MembershipType = other.MembershipType;
+            OnPropertyChanged(nameof(MembershipType));
+        }
+        if (MembershipId != other.MembershipId)
+        {
+            MembershipId = other.MembershipId;
+            OnPropertyChanged(nameof(MembershipId));
+        }
+        if (CrossSaveOverriddenType != other.CrossSaveOverriddenType)
+        {
+            CrossSaveOverriddenType = other.CrossSaveOverriddenType;
+            OnPropertyChanged(nameof(CrossSaveOverriddenType));
+        }
+        if (CrossSaveOverriddenMembershipId != other.CrossSaveOverriddenMembershipId)
+        {
+            CrossSaveOverriddenMembershipId = other.CrossSaveOverriddenMembershipId;
+            OnPropertyChanged(nameof(CrossSaveOverriddenMembershipId));
+        }
+    }
 }

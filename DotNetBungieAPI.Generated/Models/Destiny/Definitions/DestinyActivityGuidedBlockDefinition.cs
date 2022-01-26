@@ -30,4 +30,32 @@ public class DestinyActivityGuidedBlockDefinition : IDeepEquatable<DestinyActivi
                GuidedMinLobbySize == other.GuidedMinLobbySize &&
                GuidedDisbandCount == other.GuidedDisbandCount;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityGuidedBlockDefinition? other)
+    {
+        if (other is null) return;
+        if (GuidedMaxLobbySize != other.GuidedMaxLobbySize)
+        {
+            GuidedMaxLobbySize = other.GuidedMaxLobbySize;
+            OnPropertyChanged(nameof(GuidedMaxLobbySize));
+        }
+        if (GuidedMinLobbySize != other.GuidedMinLobbySize)
+        {
+            GuidedMinLobbySize = other.GuidedMinLobbySize;
+            OnPropertyChanged(nameof(GuidedMinLobbySize));
+        }
+        if (GuidedDisbandCount != other.GuidedDisbandCount)
+        {
+            GuidedDisbandCount = other.GuidedDisbandCount;
+            OnPropertyChanged(nameof(GuidedDisbandCount));
+        }
+    }
 }

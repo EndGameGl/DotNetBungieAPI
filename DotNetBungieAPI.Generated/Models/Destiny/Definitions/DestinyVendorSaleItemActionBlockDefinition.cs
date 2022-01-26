@@ -17,4 +17,27 @@ public class DestinyVendorSaleItemActionBlockDefinition : IDeepEquatable<Destiny
                ExecuteSeconds == other.ExecuteSeconds &&
                IsPositive == other.IsPositive;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorSaleItemActionBlockDefinition? other)
+    {
+        if (other is null) return;
+        if (ExecuteSeconds != other.ExecuteSeconds)
+        {
+            ExecuteSeconds = other.ExecuteSeconds;
+            OnPropertyChanged(nameof(ExecuteSeconds));
+        }
+        if (IsPositive != other.IsPositive)
+        {
+            IsPositive = other.IsPositive;
+            OnPropertyChanged(nameof(IsPositive));
+        }
+    }
 }

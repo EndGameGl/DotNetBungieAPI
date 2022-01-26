@@ -90,4 +90,122 @@ public class CoreSettingsConfiguration : IDeepEquatable<CoreSettingsConfiguratio
                (EmailSettings is not null ? EmailSettings.DeepEquals(other.EmailSettings) : other.EmailSettings is null) &&
                FireteamActivities.DeepEqualsList(other.FireteamActivities);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(CoreSettingsConfiguration? other)
+    {
+        if (other is null) return;
+        if (Environment != other.Environment)
+        {
+            Environment = other.Environment;
+            OnPropertyChanged(nameof(Environment));
+        }
+        if (!Systems.DeepEqualsDictionary(other.Systems))
+        {
+            Systems = other.Systems;
+            OnPropertyChanged(nameof(Systems));
+        }
+        if (!IgnoreReasons.DeepEqualsList(other.IgnoreReasons))
+        {
+            IgnoreReasons = other.IgnoreReasons;
+            OnPropertyChanged(nameof(IgnoreReasons));
+        }
+        if (!ForumCategories.DeepEqualsList(other.ForumCategories))
+        {
+            ForumCategories = other.ForumCategories;
+            OnPropertyChanged(nameof(ForumCategories));
+        }
+        if (!GroupAvatars.DeepEqualsList(other.GroupAvatars))
+        {
+            GroupAvatars = other.GroupAvatars;
+            OnPropertyChanged(nameof(GroupAvatars));
+        }
+        if (!DestinyMembershipTypes.DeepEqualsList(other.DestinyMembershipTypes))
+        {
+            DestinyMembershipTypes = other.DestinyMembershipTypes;
+            OnPropertyChanged(nameof(DestinyMembershipTypes));
+        }
+        if (!RecruitmentPlatformTags.DeepEqualsList(other.RecruitmentPlatformTags))
+        {
+            RecruitmentPlatformTags = other.RecruitmentPlatformTags;
+            OnPropertyChanged(nameof(RecruitmentPlatformTags));
+        }
+        if (!RecruitmentMiscTags.DeepEqualsList(other.RecruitmentMiscTags))
+        {
+            RecruitmentMiscTags = other.RecruitmentMiscTags;
+            OnPropertyChanged(nameof(RecruitmentMiscTags));
+        }
+        if (!RecruitmentActivities.DeepEqualsList(other.RecruitmentActivities))
+        {
+            RecruitmentActivities = other.RecruitmentActivities;
+            OnPropertyChanged(nameof(RecruitmentActivities));
+        }
+        if (!UserContentLocales.DeepEqualsList(other.UserContentLocales))
+        {
+            UserContentLocales = other.UserContentLocales;
+            OnPropertyChanged(nameof(UserContentLocales));
+        }
+        if (!SystemContentLocales.DeepEqualsList(other.SystemContentLocales))
+        {
+            SystemContentLocales = other.SystemContentLocales;
+            OnPropertyChanged(nameof(SystemContentLocales));
+        }
+        if (!ClanBannerDecals.DeepEqualsList(other.ClanBannerDecals))
+        {
+            ClanBannerDecals = other.ClanBannerDecals;
+            OnPropertyChanged(nameof(ClanBannerDecals));
+        }
+        if (!ClanBannerDecalColors.DeepEqualsList(other.ClanBannerDecalColors))
+        {
+            ClanBannerDecalColors = other.ClanBannerDecalColors;
+            OnPropertyChanged(nameof(ClanBannerDecalColors));
+        }
+        if (!ClanBannerGonfalons.DeepEqualsList(other.ClanBannerGonfalons))
+        {
+            ClanBannerGonfalons = other.ClanBannerGonfalons;
+            OnPropertyChanged(nameof(ClanBannerGonfalons));
+        }
+        if (!ClanBannerGonfalonColors.DeepEqualsList(other.ClanBannerGonfalonColors))
+        {
+            ClanBannerGonfalonColors = other.ClanBannerGonfalonColors;
+            OnPropertyChanged(nameof(ClanBannerGonfalonColors));
+        }
+        if (!ClanBannerGonfalonDetails.DeepEqualsList(other.ClanBannerGonfalonDetails))
+        {
+            ClanBannerGonfalonDetails = other.ClanBannerGonfalonDetails;
+            OnPropertyChanged(nameof(ClanBannerGonfalonDetails));
+        }
+        if (!ClanBannerGonfalonDetailColors.DeepEqualsList(other.ClanBannerGonfalonDetailColors))
+        {
+            ClanBannerGonfalonDetailColors = other.ClanBannerGonfalonDetailColors;
+            OnPropertyChanged(nameof(ClanBannerGonfalonDetailColors));
+        }
+        if (!ClanBannerStandards.DeepEqualsList(other.ClanBannerStandards))
+        {
+            ClanBannerStandards = other.ClanBannerStandards;
+            OnPropertyChanged(nameof(ClanBannerStandards));
+        }
+        if (!Destiny2CoreSettings.DeepEquals(other.Destiny2CoreSettings))
+        {
+            Destiny2CoreSettings.Update(other.Destiny2CoreSettings);
+            OnPropertyChanged(nameof(Destiny2CoreSettings));
+        }
+        if (!EmailSettings.DeepEquals(other.EmailSettings))
+        {
+            EmailSettings.Update(other.EmailSettings);
+            OnPropertyChanged(nameof(EmailSettings));
+        }
+        if (!FireteamActivities.DeepEqualsList(other.FireteamActivities))
+        {
+            FireteamActivities = other.FireteamActivities;
+            OnPropertyChanged(nameof(FireteamActivities));
+        }
+    }
 }

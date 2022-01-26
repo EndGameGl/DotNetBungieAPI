@@ -60,4 +60,52 @@ public class DestinyHistoricalStatsActivity : IDeepEquatable<DestinyHistoricalSt
                IsPrivate == other.IsPrivate &&
                MembershipType == other.MembershipType;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyHistoricalStatsActivity? other)
+    {
+        if (other is null) return;
+        if (ReferenceId != other.ReferenceId)
+        {
+            ReferenceId = other.ReferenceId;
+            OnPropertyChanged(nameof(ReferenceId));
+        }
+        if (DirectorActivityHash != other.DirectorActivityHash)
+        {
+            DirectorActivityHash = other.DirectorActivityHash;
+            OnPropertyChanged(nameof(DirectorActivityHash));
+        }
+        if (InstanceId != other.InstanceId)
+        {
+            InstanceId = other.InstanceId;
+            OnPropertyChanged(nameof(InstanceId));
+        }
+        if (Mode != other.Mode)
+        {
+            Mode = other.Mode;
+            OnPropertyChanged(nameof(Mode));
+        }
+        if (!Modes.DeepEqualsListNaive(other.Modes))
+        {
+            Modes = other.Modes;
+            OnPropertyChanged(nameof(Modes));
+        }
+        if (IsPrivate != other.IsPrivate)
+        {
+            IsPrivate = other.IsPrivate;
+            OnPropertyChanged(nameof(IsPrivate));
+        }
+        if (MembershipType != other.MembershipType)
+        {
+            MembershipType = other.MembershipType;
+            OnPropertyChanged(nameof(MembershipType));
+        }
+    }
 }

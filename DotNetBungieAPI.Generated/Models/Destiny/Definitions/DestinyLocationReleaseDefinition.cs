@@ -98,4 +98,87 @@ public class DestinyLocationReleaseDefinition : IDeepEquatable<DestinyLocationRe
                NavPointType == other.NavPointType &&
                WorldPosition.DeepEqualsListNaive(other.WorldPosition);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyLocationReleaseDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (SmallTransparentIcon != other.SmallTransparentIcon)
+        {
+            SmallTransparentIcon = other.SmallTransparentIcon;
+            OnPropertyChanged(nameof(SmallTransparentIcon));
+        }
+        if (MapIcon != other.MapIcon)
+        {
+            MapIcon = other.MapIcon;
+            OnPropertyChanged(nameof(MapIcon));
+        }
+        if (LargeTransparentIcon != other.LargeTransparentIcon)
+        {
+            LargeTransparentIcon = other.LargeTransparentIcon;
+            OnPropertyChanged(nameof(LargeTransparentIcon));
+        }
+        if (SpawnPoint != other.SpawnPoint)
+        {
+            SpawnPoint = other.SpawnPoint;
+            OnPropertyChanged(nameof(SpawnPoint));
+        }
+        if (DestinationHash != other.DestinationHash)
+        {
+            DestinationHash = other.DestinationHash;
+            OnPropertyChanged(nameof(DestinationHash));
+        }
+        if (ActivityHash != other.ActivityHash)
+        {
+            ActivityHash = other.ActivityHash;
+            OnPropertyChanged(nameof(ActivityHash));
+        }
+        if (ActivityGraphHash != other.ActivityGraphHash)
+        {
+            ActivityGraphHash = other.ActivityGraphHash;
+            OnPropertyChanged(nameof(ActivityGraphHash));
+        }
+        if (ActivityGraphNodeHash != other.ActivityGraphNodeHash)
+        {
+            ActivityGraphNodeHash = other.ActivityGraphNodeHash;
+            OnPropertyChanged(nameof(ActivityGraphNodeHash));
+        }
+        if (ActivityBubbleName != other.ActivityBubbleName)
+        {
+            ActivityBubbleName = other.ActivityBubbleName;
+            OnPropertyChanged(nameof(ActivityBubbleName));
+        }
+        if (ActivityPathBundle != other.ActivityPathBundle)
+        {
+            ActivityPathBundle = other.ActivityPathBundle;
+            OnPropertyChanged(nameof(ActivityPathBundle));
+        }
+        if (ActivityPathDestination != other.ActivityPathDestination)
+        {
+            ActivityPathDestination = other.ActivityPathDestination;
+            OnPropertyChanged(nameof(ActivityPathDestination));
+        }
+        if (NavPointType != other.NavPointType)
+        {
+            NavPointType = other.NavPointType;
+            OnPropertyChanged(nameof(NavPointType));
+        }
+        if (!WorldPosition.DeepEqualsListNaive(other.WorldPosition))
+        {
+            WorldPosition = other.WorldPosition;
+            OnPropertyChanged(nameof(WorldPosition));
+        }
+    }
 }

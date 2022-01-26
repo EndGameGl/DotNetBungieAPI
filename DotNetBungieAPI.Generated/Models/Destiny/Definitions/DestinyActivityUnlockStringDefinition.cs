@@ -16,4 +16,22 @@ public class DestinyActivityUnlockStringDefinition : IDeepEquatable<DestinyActiv
         return other is not null &&
                DisplayString == other.DisplayString;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityUnlockStringDefinition? other)
+    {
+        if (other is null) return;
+        if (DisplayString != other.DisplayString)
+        {
+            DisplayString = other.DisplayString;
+            OnPropertyChanged(nameof(DisplayString));
+        }
+    }
 }

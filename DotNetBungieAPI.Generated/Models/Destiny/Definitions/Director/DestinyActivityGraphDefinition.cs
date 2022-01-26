@@ -82,4 +82,62 @@ public class DestinyActivityGraphDefinition : IDeepEquatable<DestinyActivityGrap
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityGraphDefinition? other)
+    {
+        if (other is null) return;
+        if (!Nodes.DeepEqualsList(other.Nodes))
+        {
+            Nodes = other.Nodes;
+            OnPropertyChanged(nameof(Nodes));
+        }
+        if (!ArtElements.DeepEqualsList(other.ArtElements))
+        {
+            ArtElements = other.ArtElements;
+            OnPropertyChanged(nameof(ArtElements));
+        }
+        if (!Connections.DeepEqualsList(other.Connections))
+        {
+            Connections = other.Connections;
+            OnPropertyChanged(nameof(Connections));
+        }
+        if (!DisplayObjectives.DeepEqualsList(other.DisplayObjectives))
+        {
+            DisplayObjectives = other.DisplayObjectives;
+            OnPropertyChanged(nameof(DisplayObjectives));
+        }
+        if (!DisplayProgressions.DeepEqualsList(other.DisplayProgressions))
+        {
+            DisplayProgressions = other.DisplayProgressions;
+            OnPropertyChanged(nameof(DisplayProgressions));
+        }
+        if (!LinkedGraphs.DeepEqualsList(other.LinkedGraphs))
+        {
+            LinkedGraphs = other.LinkedGraphs;
+            OnPropertyChanged(nameof(LinkedGraphs));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

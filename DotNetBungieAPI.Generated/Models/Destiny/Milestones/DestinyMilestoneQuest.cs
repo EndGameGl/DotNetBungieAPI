@@ -37,4 +37,37 @@ public class DestinyMilestoneQuest : IDeepEquatable<DestinyMilestoneQuest>
                (Activity is not null ? Activity.DeepEquals(other.Activity) : other.Activity is null) &&
                Challenges.DeepEqualsList(other.Challenges);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneQuest? other)
+    {
+        if (other is null) return;
+        if (QuestItemHash != other.QuestItemHash)
+        {
+            QuestItemHash = other.QuestItemHash;
+            OnPropertyChanged(nameof(QuestItemHash));
+        }
+        if (!Status.DeepEquals(other.Status))
+        {
+            Status.Update(other.Status);
+            OnPropertyChanged(nameof(Status));
+        }
+        if (!Activity.DeepEquals(other.Activity))
+        {
+            Activity.Update(other.Activity);
+            OnPropertyChanged(nameof(Activity));
+        }
+        if (!Challenges.DeepEqualsList(other.Challenges))
+        {
+            Challenges = other.Challenges;
+            OnPropertyChanged(nameof(Challenges));
+        }
+    }
 }

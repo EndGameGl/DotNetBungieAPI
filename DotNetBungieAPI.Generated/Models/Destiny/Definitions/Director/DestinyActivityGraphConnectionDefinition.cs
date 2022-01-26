@@ -17,4 +17,27 @@ public class DestinyActivityGraphConnectionDefinition : IDeepEquatable<DestinyAc
                SourceNodeHash == other.SourceNodeHash &&
                DestNodeHash == other.DestNodeHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityGraphConnectionDefinition? other)
+    {
+        if (other is null) return;
+        if (SourceNodeHash != other.SourceNodeHash)
+        {
+            SourceNodeHash = other.SourceNodeHash;
+            OnPropertyChanged(nameof(SourceNodeHash));
+        }
+        if (DestNodeHash != other.DestNodeHash)
+        {
+            DestNodeHash = other.DestNodeHash;
+            OnPropertyChanged(nameof(DestNodeHash));
+        }
+    }
 }

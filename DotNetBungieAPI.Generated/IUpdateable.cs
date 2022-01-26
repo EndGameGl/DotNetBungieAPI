@@ -1,6 +1,6 @@
 ﻿namespace DotNetBungieAPI.Generated;
 
-public interface IUpdateable<T>
+public interface IUpdateable<T> where T : INotifyPropertyChanged
 {
     void Update(T newData);
 }

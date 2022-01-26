@@ -14,4 +14,27 @@ public class DestinyMetricComponent : IDeepEquatable<DestinyMetricComponent>
                Invisible == other.Invisible &&
                (ObjectiveProgress is not null ? ObjectiveProgress.DeepEquals(other.ObjectiveProgress) : other.ObjectiveProgress is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMetricComponent? other)
+    {
+        if (other is null) return;
+        if (Invisible != other.Invisible)
+        {
+            Invisible = other.Invisible;
+            OnPropertyChanged(nameof(Invisible));
+        }
+        if (!ObjectiveProgress.DeepEquals(other.ObjectiveProgress))
+        {
+            ObjectiveProgress.Update(other.ObjectiveProgress);
+            OnPropertyChanged(nameof(ObjectiveProgress));
+        }
+    }
 }

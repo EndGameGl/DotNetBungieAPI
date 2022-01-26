@@ -14,4 +14,27 @@ public class IgnoreResponse : IDeepEquatable<IgnoreResponse>
                IsIgnored == other.IsIgnored &&
                IgnoreFlags == other.IgnoreFlags;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(IgnoreResponse? other)
+    {
+        if (other is null) return;
+        if (IsIgnored != other.IsIgnored)
+        {
+            IsIgnored = other.IsIgnored;
+            OnPropertyChanged(nameof(IsIgnored));
+        }
+        if (IgnoreFlags != other.IgnoreFlags)
+        {
+            IgnoreFlags = other.IgnoreFlags;
+            OnPropertyChanged(nameof(IgnoreFlags));
+        }
+    }
 }

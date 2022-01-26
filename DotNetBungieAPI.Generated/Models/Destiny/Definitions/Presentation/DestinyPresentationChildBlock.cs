@@ -18,4 +18,32 @@ public class DestinyPresentationChildBlock : IDeepEquatable<DestinyPresentationC
                ParentPresentationNodeHashes.DeepEqualsListNaive(other.ParentPresentationNodeHashes) &&
                DisplayStyle == other.DisplayStyle;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPresentationChildBlock? other)
+    {
+        if (other is null) return;
+        if (PresentationNodeType != other.PresentationNodeType)
+        {
+            PresentationNodeType = other.PresentationNodeType;
+            OnPropertyChanged(nameof(PresentationNodeType));
+        }
+        if (!ParentPresentationNodeHashes.DeepEqualsListNaive(other.ParentPresentationNodeHashes))
+        {
+            ParentPresentationNodeHashes = other.ParentPresentationNodeHashes;
+            OnPropertyChanged(nameof(ParentPresentationNodeHashes));
+        }
+        if (DisplayStyle != other.DisplayStyle)
+        {
+            DisplayStyle = other.DisplayStyle;
+            OnPropertyChanged(nameof(DisplayStyle));
+        }
+    }
 }

@@ -38,4 +38,42 @@ public class DestinyPresentationNodeComponent : IDeepEquatable<DestinyPresentati
                CompletionValue == other.CompletionValue &&
                RecordCategoryScore == other.RecordCategoryScore;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPresentationNodeComponent? other)
+    {
+        if (other is null) return;
+        if (State != other.State)
+        {
+            State = other.State;
+            OnPropertyChanged(nameof(State));
+        }
+        if (!Objective.DeepEquals(other.Objective))
+        {
+            Objective.Update(other.Objective);
+            OnPropertyChanged(nameof(Objective));
+        }
+        if (ProgressValue != other.ProgressValue)
+        {
+            ProgressValue = other.ProgressValue;
+            OnPropertyChanged(nameof(ProgressValue));
+        }
+        if (CompletionValue != other.CompletionValue)
+        {
+            CompletionValue = other.CompletionValue;
+            OnPropertyChanged(nameof(CompletionValue));
+        }
+        if (RecordCategoryScore != other.RecordCategoryScore)
+        {
+            RecordCategoryScore = other.RecordCategoryScore;
+            OnPropertyChanged(nameof(RecordCategoryScore));
+        }
+    }
 }

@@ -34,4 +34,32 @@ public class DestinyInsertPlugsRequestEntry : IDeepEquatable<DestinyInsertPlugsR
                SocketArrayType == other.SocketArrayType &&
                PlugItemHash == other.PlugItemHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyInsertPlugsRequestEntry? other)
+    {
+        if (other is null) return;
+        if (SocketIndex != other.SocketIndex)
+        {
+            SocketIndex = other.SocketIndex;
+            OnPropertyChanged(nameof(SocketIndex));
+        }
+        if (SocketArrayType != other.SocketArrayType)
+        {
+            SocketArrayType = other.SocketArrayType;
+            OnPropertyChanged(nameof(SocketArrayType));
+        }
+        if (PlugItemHash != other.PlugItemHash)
+        {
+            PlugItemHash = other.PlugItemHash;
+            OnPropertyChanged(nameof(PlugItemHash));
+        }
+    }
 }

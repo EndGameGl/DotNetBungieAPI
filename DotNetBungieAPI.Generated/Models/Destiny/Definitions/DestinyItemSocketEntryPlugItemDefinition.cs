@@ -16,4 +16,22 @@ public class DestinyItemSocketEntryPlugItemDefinition : IDeepEquatable<DestinyIt
         return other is not null &&
                PlugItemHash == other.PlugItemHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemSocketEntryPlugItemDefinition? other)
+    {
+        if (other is null) return;
+        if (PlugItemHash != other.PlugItemHash)
+        {
+            PlugItemHash = other.PlugItemHash;
+            OnPropertyChanged(nameof(PlugItemHash));
+        }
+    }
 }

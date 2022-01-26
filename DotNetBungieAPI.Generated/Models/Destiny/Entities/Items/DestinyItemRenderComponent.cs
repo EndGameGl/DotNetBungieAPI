@@ -27,4 +27,27 @@ public class DestinyItemRenderComponent : IDeepEquatable<DestinyItemRenderCompon
                UseCustomDyes == other.UseCustomDyes &&
                ArtRegions.DeepEqualsDictionaryNaive(other.ArtRegions);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemRenderComponent? other)
+    {
+        if (other is null) return;
+        if (UseCustomDyes != other.UseCustomDyes)
+        {
+            UseCustomDyes = other.UseCustomDyes;
+            OnPropertyChanged(nameof(UseCustomDyes));
+        }
+        if (!ArtRegions.DeepEqualsDictionaryNaive(other.ArtRegions))
+        {
+            ArtRegions = other.ArtRegions;
+            OnPropertyChanged(nameof(ArtRegions));
+        }
+    }
 }

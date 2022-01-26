@@ -142,4 +142,102 @@ public class DestinyNodeStepDefinition : IDeepEquatable<DestinyNodeStepDefinitio
                AffectsLevel == other.AffectsLevel &&
                SocketReplacements.DeepEqualsList(other.SocketReplacements);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyNodeStepDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (StepIndex != other.StepIndex)
+        {
+            StepIndex = other.StepIndex;
+            OnPropertyChanged(nameof(StepIndex));
+        }
+        if (NodeStepHash != other.NodeStepHash)
+        {
+            NodeStepHash = other.NodeStepHash;
+            OnPropertyChanged(nameof(NodeStepHash));
+        }
+        if (InteractionDescription != other.InteractionDescription)
+        {
+            InteractionDescription = other.InteractionDescription;
+            OnPropertyChanged(nameof(InteractionDescription));
+        }
+        if (DamageType != other.DamageType)
+        {
+            DamageType = other.DamageType;
+            OnPropertyChanged(nameof(DamageType));
+        }
+        if (DamageTypeHash != other.DamageTypeHash)
+        {
+            DamageTypeHash = other.DamageTypeHash;
+            OnPropertyChanged(nameof(DamageTypeHash));
+        }
+        if (!ActivationRequirement.DeepEquals(other.ActivationRequirement))
+        {
+            ActivationRequirement.Update(other.ActivationRequirement);
+            OnPropertyChanged(nameof(ActivationRequirement));
+        }
+        if (CanActivateNextStep != other.CanActivateNextStep)
+        {
+            CanActivateNextStep = other.CanActivateNextStep;
+            OnPropertyChanged(nameof(CanActivateNextStep));
+        }
+        if (NextStepIndex != other.NextStepIndex)
+        {
+            NextStepIndex = other.NextStepIndex;
+            OnPropertyChanged(nameof(NextStepIndex));
+        }
+        if (IsNextStepRandom != other.IsNextStepRandom)
+        {
+            IsNextStepRandom = other.IsNextStepRandom;
+            OnPropertyChanged(nameof(IsNextStepRandom));
+        }
+        if (!PerkHashes.DeepEqualsListNaive(other.PerkHashes))
+        {
+            PerkHashes = other.PerkHashes;
+            OnPropertyChanged(nameof(PerkHashes));
+        }
+        if (StartProgressionBarAtProgress != other.StartProgressionBarAtProgress)
+        {
+            StartProgressionBarAtProgress = other.StartProgressionBarAtProgress;
+            OnPropertyChanged(nameof(StartProgressionBarAtProgress));
+        }
+        if (!StatHashes.DeepEqualsListNaive(other.StatHashes))
+        {
+            StatHashes = other.StatHashes;
+            OnPropertyChanged(nameof(StatHashes));
+        }
+        if (AffectsQuality != other.AffectsQuality)
+        {
+            AffectsQuality = other.AffectsQuality;
+            OnPropertyChanged(nameof(AffectsQuality));
+        }
+        if (!StepGroups.DeepEquals(other.StepGroups))
+        {
+            StepGroups.Update(other.StepGroups);
+            OnPropertyChanged(nameof(StepGroups));
+        }
+        if (AffectsLevel != other.AffectsLevel)
+        {
+            AffectsLevel = other.AffectsLevel;
+            OnPropertyChanged(nameof(AffectsLevel));
+        }
+        if (!SocketReplacements.DeepEqualsList(other.SocketReplacements))
+        {
+            SocketReplacements = other.SocketReplacements;
+            OnPropertyChanged(nameof(SocketReplacements));
+        }
+    }
 }

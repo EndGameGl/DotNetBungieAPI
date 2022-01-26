@@ -34,4 +34,32 @@ public class DestinyReportOffensePgcrRequest : IDeepEquatable<DestinyReportOffen
                ReasonHashes.DeepEqualsListNaive(other.ReasonHashes) &&
                OffendingCharacterId == other.OffendingCharacterId;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyReportOffensePgcrRequest? other)
+    {
+        if (other is null) return;
+        if (!ReasonCategoryHashes.DeepEqualsListNaive(other.ReasonCategoryHashes))
+        {
+            ReasonCategoryHashes = other.ReasonCategoryHashes;
+            OnPropertyChanged(nameof(ReasonCategoryHashes));
+        }
+        if (!ReasonHashes.DeepEqualsListNaive(other.ReasonHashes))
+        {
+            ReasonHashes = other.ReasonHashes;
+            OnPropertyChanged(nameof(ReasonHashes));
+        }
+        if (OffendingCharacterId != other.OffendingCharacterId)
+        {
+            OffendingCharacterId = other.OffendingCharacterId;
+            OnPropertyChanged(nameof(OffendingCharacterId));
+        }
+    }
 }

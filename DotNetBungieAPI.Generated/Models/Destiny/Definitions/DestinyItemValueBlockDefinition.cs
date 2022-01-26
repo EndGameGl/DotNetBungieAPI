@@ -27,4 +27,27 @@ public class DestinyItemValueBlockDefinition : IDeepEquatable<DestinyItemValueBl
                ItemValue.DeepEqualsList(other.ItemValue) &&
                ValueDescription == other.ValueDescription;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemValueBlockDefinition? other)
+    {
+        if (other is null) return;
+        if (!ItemValue.DeepEqualsList(other.ItemValue))
+        {
+            ItemValue = other.ItemValue;
+            OnPropertyChanged(nameof(ItemValue));
+        }
+        if (ValueDescription != other.ValueDescription)
+        {
+            ValueDescription = other.ValueDescription;
+            OnPropertyChanged(nameof(ValueDescription));
+        }
+    }
 }

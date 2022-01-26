@@ -18,4 +18,22 @@ public class DestinyActivityGraphListEntryDefinition : IDeepEquatable<DestinyAct
         return other is not null &&
                ActivityGraphHash == other.ActivityGraphHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityGraphListEntryDefinition? other)
+    {
+        if (other is null) return;
+        if (ActivityGraphHash != other.ActivityGraphHash)
+        {
+            ActivityGraphHash = other.ActivityGraphHash;
+            OnPropertyChanged(nameof(ActivityGraphHash));
+        }
+    }
 }

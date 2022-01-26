@@ -20,4 +20,27 @@ public class ApiUsage : IDeepEquatable<ApiUsage>
                ApiCalls.DeepEqualsList(other.ApiCalls) &&
                ThrottledRequests.DeepEqualsList(other.ThrottledRequests);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(ApiUsage? other)
+    {
+        if (other is null) return;
+        if (!ApiCalls.DeepEqualsList(other.ApiCalls))
+        {
+            ApiCalls = other.ApiCalls;
+            OnPropertyChanged(nameof(ApiCalls));
+        }
+        if (!ThrottledRequests.DeepEqualsList(other.ThrottledRequests))
+        {
+            ThrottledRequests = other.ThrottledRequests;
+            OnPropertyChanged(nameof(ThrottledRequests));
+        }
+    }
 }

@@ -160,4 +160,112 @@ public class DestinyObjectiveDefinition : IDeepEquatable<DestinyObjectiveDefinit
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyObjectiveDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (CompletionValue != other.CompletionValue)
+        {
+            CompletionValue = other.CompletionValue;
+            OnPropertyChanged(nameof(CompletionValue));
+        }
+        if (Scope != other.Scope)
+        {
+            Scope = other.Scope;
+            OnPropertyChanged(nameof(Scope));
+        }
+        if (LocationHash != other.LocationHash)
+        {
+            LocationHash = other.LocationHash;
+            OnPropertyChanged(nameof(LocationHash));
+        }
+        if (AllowNegativeValue != other.AllowNegativeValue)
+        {
+            AllowNegativeValue = other.AllowNegativeValue;
+            OnPropertyChanged(nameof(AllowNegativeValue));
+        }
+        if (AllowValueChangeWhenCompleted != other.AllowValueChangeWhenCompleted)
+        {
+            AllowValueChangeWhenCompleted = other.AllowValueChangeWhenCompleted;
+            OnPropertyChanged(nameof(AllowValueChangeWhenCompleted));
+        }
+        if (IsCountingDownward != other.IsCountingDownward)
+        {
+            IsCountingDownward = other.IsCountingDownward;
+            OnPropertyChanged(nameof(IsCountingDownward));
+        }
+        if (ValueStyle != other.ValueStyle)
+        {
+            ValueStyle = other.ValueStyle;
+            OnPropertyChanged(nameof(ValueStyle));
+        }
+        if (ProgressDescription != other.ProgressDescription)
+        {
+            ProgressDescription = other.ProgressDescription;
+            OnPropertyChanged(nameof(ProgressDescription));
+        }
+        if (!Perks.DeepEquals(other.Perks))
+        {
+            Perks.Update(other.Perks);
+            OnPropertyChanged(nameof(Perks));
+        }
+        if (!Stats.DeepEquals(other.Stats))
+        {
+            Stats.Update(other.Stats);
+            OnPropertyChanged(nameof(Stats));
+        }
+        if (MinimumVisibilityThreshold != other.MinimumVisibilityThreshold)
+        {
+            MinimumVisibilityThreshold = other.MinimumVisibilityThreshold;
+            OnPropertyChanged(nameof(MinimumVisibilityThreshold));
+        }
+        if (AllowOvercompletion != other.AllowOvercompletion)
+        {
+            AllowOvercompletion = other.AllowOvercompletion;
+            OnPropertyChanged(nameof(AllowOvercompletion));
+        }
+        if (ShowValueOnComplete != other.ShowValueOnComplete)
+        {
+            ShowValueOnComplete = other.ShowValueOnComplete;
+            OnPropertyChanged(nameof(ShowValueOnComplete));
+        }
+        if (CompletedValueStyle != other.CompletedValueStyle)
+        {
+            CompletedValueStyle = other.CompletedValueStyle;
+            OnPropertyChanged(nameof(CompletedValueStyle));
+        }
+        if (InProgressValueStyle != other.InProgressValueStyle)
+        {
+            InProgressValueStyle = other.InProgressValueStyle;
+            OnPropertyChanged(nameof(InProgressValueStyle));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

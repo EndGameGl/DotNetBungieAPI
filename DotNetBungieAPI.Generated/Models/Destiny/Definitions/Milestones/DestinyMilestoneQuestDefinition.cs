@@ -51,4 +51,47 @@ public class DestinyMilestoneQuestDefinition : IDeepEquatable<DestinyMilestoneQu
                Activities.DeepEqualsDictionary(other.Activities) &&
                DestinationHash == other.DestinationHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneQuestDefinition? other)
+    {
+        if (other is null) return;
+        if (QuestItemHash != other.QuestItemHash)
+        {
+            QuestItemHash = other.QuestItemHash;
+            OnPropertyChanged(nameof(QuestItemHash));
+        }
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (OverrideImage != other.OverrideImage)
+        {
+            OverrideImage = other.OverrideImage;
+            OnPropertyChanged(nameof(OverrideImage));
+        }
+        if (!QuestRewards.DeepEquals(other.QuestRewards))
+        {
+            QuestRewards.Update(other.QuestRewards);
+            OnPropertyChanged(nameof(QuestRewards));
+        }
+        if (!Activities.DeepEqualsDictionary(other.Activities))
+        {
+            Activities = other.Activities;
+            OnPropertyChanged(nameof(Activities));
+        }
+        if (DestinationHash != other.DestinationHash)
+        {
+            DestinationHash = other.DestinationHash;
+            OnPropertyChanged(nameof(DestinationHash));
+        }
+    }
 }

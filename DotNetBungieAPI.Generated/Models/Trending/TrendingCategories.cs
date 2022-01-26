@@ -10,4 +10,22 @@ public class TrendingCategories : IDeepEquatable<TrendingCategories>
         return other is not null &&
                Categories.DeepEqualsList(other.Categories);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(TrendingCategories? other)
+    {
+        if (other is null) return;
+        if (!Categories.DeepEqualsList(other.Categories))
+        {
+            Categories = other.Categories;
+            OnPropertyChanged(nameof(Categories));
+        }
+    }
 }

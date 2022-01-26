@@ -38,4 +38,57 @@ public class TrendingDetail : IDeepEquatable<TrendingDetail>
                (DestinyRitual is not null ? DestinyRitual.DeepEquals(other.DestinyRitual) : other.DestinyRitual is null) &&
                (Creation is not null ? Creation.DeepEquals(other.Creation) : other.Creation is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(TrendingDetail? other)
+    {
+        if (other is null) return;
+        if (Identifier != other.Identifier)
+        {
+            Identifier = other.Identifier;
+            OnPropertyChanged(nameof(Identifier));
+        }
+        if (EntityType != other.EntityType)
+        {
+            EntityType = other.EntityType;
+            OnPropertyChanged(nameof(EntityType));
+        }
+        if (!News.DeepEquals(other.News))
+        {
+            News.Update(other.News);
+            OnPropertyChanged(nameof(News));
+        }
+        if (!Support.DeepEquals(other.Support))
+        {
+            Support.Update(other.Support);
+            OnPropertyChanged(nameof(Support));
+        }
+        if (!DestinyItem.DeepEquals(other.DestinyItem))
+        {
+            DestinyItem.Update(other.DestinyItem);
+            OnPropertyChanged(nameof(DestinyItem));
+        }
+        if (!DestinyActivity.DeepEquals(other.DestinyActivity))
+        {
+            DestinyActivity.Update(other.DestinyActivity);
+            OnPropertyChanged(nameof(DestinyActivity));
+        }
+        if (!DestinyRitual.DeepEquals(other.DestinyRitual))
+        {
+            DestinyRitual.Update(other.DestinyRitual);
+            OnPropertyChanged(nameof(DestinyRitual));
+        }
+        if (!Creation.DeepEquals(other.Creation))
+        {
+            Creation.Update(other.Creation);
+            OnPropertyChanged(nameof(Creation));
+        }
+    }
 }

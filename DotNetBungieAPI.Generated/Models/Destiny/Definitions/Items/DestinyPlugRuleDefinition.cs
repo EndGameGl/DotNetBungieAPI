@@ -18,4 +18,22 @@ public class DestinyPlugRuleDefinition : IDeepEquatable<DestinyPlugRuleDefinitio
         return other is not null &&
                FailureMessage == other.FailureMessage;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPlugRuleDefinition? other)
+    {
+        if (other is null) return;
+        if (FailureMessage != other.FailureMessage)
+        {
+            FailureMessage = other.FailureMessage;
+            OnPropertyChanged(nameof(FailureMessage));
+        }
+    }
 }

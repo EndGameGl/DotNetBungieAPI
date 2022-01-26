@@ -45,4 +45,42 @@ public class DestinyItemPlugBase : IDeepEquatable<DestinyItemPlugBase>
                InsertFailIndexes.DeepEqualsListNaive(other.InsertFailIndexes) &&
                EnableFailIndexes.DeepEqualsListNaive(other.EnableFailIndexes);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemPlugBase? other)
+    {
+        if (other is null) return;
+        if (PlugItemHash != other.PlugItemHash)
+        {
+            PlugItemHash = other.PlugItemHash;
+            OnPropertyChanged(nameof(PlugItemHash));
+        }
+        if (CanInsert != other.CanInsert)
+        {
+            CanInsert = other.CanInsert;
+            OnPropertyChanged(nameof(CanInsert));
+        }
+        if (Enabled != other.Enabled)
+        {
+            Enabled = other.Enabled;
+            OnPropertyChanged(nameof(Enabled));
+        }
+        if (!InsertFailIndexes.DeepEqualsListNaive(other.InsertFailIndexes))
+        {
+            InsertFailIndexes = other.InsertFailIndexes;
+            OnPropertyChanged(nameof(InsertFailIndexes));
+        }
+        if (!EnableFailIndexes.DeepEqualsListNaive(other.EnableFailIndexes))
+        {
+            EnableFailIndexes = other.EnableFailIndexes;
+            OnPropertyChanged(nameof(EnableFailIndexes));
+        }
+    }
 }

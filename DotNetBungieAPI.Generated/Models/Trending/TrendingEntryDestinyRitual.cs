@@ -44,4 +44,57 @@ public class TrendingEntryDestinyRitual : IDeepEquatable<TrendingEntryDestinyRit
                (MilestoneDetails is not null ? MilestoneDetails.DeepEquals(other.MilestoneDetails) : other.MilestoneDetails is null) &&
                (EventContent is not null ? EventContent.DeepEquals(other.EventContent) : other.EventContent is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(TrendingEntryDestinyRitual? other)
+    {
+        if (other is null) return;
+        if (Image != other.Image)
+        {
+            Image = other.Image;
+            OnPropertyChanged(nameof(Image));
+        }
+        if (Icon != other.Icon)
+        {
+            Icon = other.Icon;
+            OnPropertyChanged(nameof(Icon));
+        }
+        if (Title != other.Title)
+        {
+            Title = other.Title;
+            OnPropertyChanged(nameof(Title));
+        }
+        if (Subtitle != other.Subtitle)
+        {
+            Subtitle = other.Subtitle;
+            OnPropertyChanged(nameof(Subtitle));
+        }
+        if (DateStart != other.DateStart)
+        {
+            DateStart = other.DateStart;
+            OnPropertyChanged(nameof(DateStart));
+        }
+        if (DateEnd != other.DateEnd)
+        {
+            DateEnd = other.DateEnd;
+            OnPropertyChanged(nameof(DateEnd));
+        }
+        if (!MilestoneDetails.DeepEquals(other.MilestoneDetails))
+        {
+            MilestoneDetails.Update(other.MilestoneDetails);
+            OnPropertyChanged(nameof(MilestoneDetails));
+        }
+        if (!EventContent.DeepEquals(other.EventContent))
+        {
+            EventContent.Update(other.EventContent);
+            OnPropertyChanged(nameof(EventContent));
+        }
+    }
 }

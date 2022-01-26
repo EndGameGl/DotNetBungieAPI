@@ -135,4 +135,102 @@ public class DestinyItemPlugDefinition : IDeepEquatable<DestinyItemPlugDefinitio
                (EnergyCapacity is not null ? EnergyCapacity.DeepEquals(other.EnergyCapacity) : other.EnergyCapacity is null) &&
                (EnergyCost is not null ? EnergyCost.DeepEquals(other.EnergyCost) : other.EnergyCost is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemPlugDefinition? other)
+    {
+        if (other is null) return;
+        if (!InsertionRules.DeepEqualsList(other.InsertionRules))
+        {
+            InsertionRules = other.InsertionRules;
+            OnPropertyChanged(nameof(InsertionRules));
+        }
+        if (PlugCategoryIdentifier != other.PlugCategoryIdentifier)
+        {
+            PlugCategoryIdentifier = other.PlugCategoryIdentifier;
+            OnPropertyChanged(nameof(PlugCategoryIdentifier));
+        }
+        if (PlugCategoryHash != other.PlugCategoryHash)
+        {
+            PlugCategoryHash = other.PlugCategoryHash;
+            OnPropertyChanged(nameof(PlugCategoryHash));
+        }
+        if (OnActionRecreateSelf != other.OnActionRecreateSelf)
+        {
+            OnActionRecreateSelf = other.OnActionRecreateSelf;
+            OnPropertyChanged(nameof(OnActionRecreateSelf));
+        }
+        if (InsertionMaterialRequirementHash != other.InsertionMaterialRequirementHash)
+        {
+            InsertionMaterialRequirementHash = other.InsertionMaterialRequirementHash;
+            OnPropertyChanged(nameof(InsertionMaterialRequirementHash));
+        }
+        if (PreviewItemOverrideHash != other.PreviewItemOverrideHash)
+        {
+            PreviewItemOverrideHash = other.PreviewItemOverrideHash;
+            OnPropertyChanged(nameof(PreviewItemOverrideHash));
+        }
+        if (EnabledMaterialRequirementHash != other.EnabledMaterialRequirementHash)
+        {
+            EnabledMaterialRequirementHash = other.EnabledMaterialRequirementHash;
+            OnPropertyChanged(nameof(EnabledMaterialRequirementHash));
+        }
+        if (!EnabledRules.DeepEqualsList(other.EnabledRules))
+        {
+            EnabledRules = other.EnabledRules;
+            OnPropertyChanged(nameof(EnabledRules));
+        }
+        if (UiPlugLabel != other.UiPlugLabel)
+        {
+            UiPlugLabel = other.UiPlugLabel;
+            OnPropertyChanged(nameof(UiPlugLabel));
+        }
+        if (PlugStyle != other.PlugStyle)
+        {
+            PlugStyle = other.PlugStyle;
+            OnPropertyChanged(nameof(PlugStyle));
+        }
+        if (PlugAvailability != other.PlugAvailability)
+        {
+            PlugAvailability = other.PlugAvailability;
+            OnPropertyChanged(nameof(PlugAvailability));
+        }
+        if (AlternateUiPlugLabel != other.AlternateUiPlugLabel)
+        {
+            AlternateUiPlugLabel = other.AlternateUiPlugLabel;
+            OnPropertyChanged(nameof(AlternateUiPlugLabel));
+        }
+        if (AlternatePlugStyle != other.AlternatePlugStyle)
+        {
+            AlternatePlugStyle = other.AlternatePlugStyle;
+            OnPropertyChanged(nameof(AlternatePlugStyle));
+        }
+        if (IsDummyPlug != other.IsDummyPlug)
+        {
+            IsDummyPlug = other.IsDummyPlug;
+            OnPropertyChanged(nameof(IsDummyPlug));
+        }
+        if (!ParentItemOverride.DeepEquals(other.ParentItemOverride))
+        {
+            ParentItemOverride.Update(other.ParentItemOverride);
+            OnPropertyChanged(nameof(ParentItemOverride));
+        }
+        if (!EnergyCapacity.DeepEquals(other.EnergyCapacity))
+        {
+            EnergyCapacity.Update(other.EnergyCapacity);
+            OnPropertyChanged(nameof(EnergyCapacity));
+        }
+        if (!EnergyCost.DeepEquals(other.EnergyCost))
+        {
+            EnergyCost.Update(other.EnergyCost);
+            OnPropertyChanged(nameof(EnergyCost));
+        }
+    }
 }

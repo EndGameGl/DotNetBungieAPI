@@ -92,4 +92,77 @@ public class GroupUserInfoCard : IDeepEquatable<GroupUserInfoCard>
                BungieGlobalDisplayName == other.BungieGlobalDisplayName &&
                BungieGlobalDisplayNameCode == other.BungieGlobalDisplayNameCode;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(GroupUserInfoCard? other)
+    {
+        if (other is null) return;
+        if (LastSeenDisplayName != other.LastSeenDisplayName)
+        {
+            LastSeenDisplayName = other.LastSeenDisplayName;
+            OnPropertyChanged(nameof(LastSeenDisplayName));
+        }
+        if (LastSeenDisplayNameType != other.LastSeenDisplayNameType)
+        {
+            LastSeenDisplayNameType = other.LastSeenDisplayNameType;
+            OnPropertyChanged(nameof(LastSeenDisplayNameType));
+        }
+        if (SupplementalDisplayName != other.SupplementalDisplayName)
+        {
+            SupplementalDisplayName = other.SupplementalDisplayName;
+            OnPropertyChanged(nameof(SupplementalDisplayName));
+        }
+        if (IconPath != other.IconPath)
+        {
+            IconPath = other.IconPath;
+            OnPropertyChanged(nameof(IconPath));
+        }
+        if (CrossSaveOverride != other.CrossSaveOverride)
+        {
+            CrossSaveOverride = other.CrossSaveOverride;
+            OnPropertyChanged(nameof(CrossSaveOverride));
+        }
+        if (!ApplicableMembershipTypes.DeepEqualsListNaive(other.ApplicableMembershipTypes))
+        {
+            ApplicableMembershipTypes = other.ApplicableMembershipTypes;
+            OnPropertyChanged(nameof(ApplicableMembershipTypes));
+        }
+        if (IsPublic != other.IsPublic)
+        {
+            IsPublic = other.IsPublic;
+            OnPropertyChanged(nameof(IsPublic));
+        }
+        if (MembershipType != other.MembershipType)
+        {
+            MembershipType = other.MembershipType;
+            OnPropertyChanged(nameof(MembershipType));
+        }
+        if (MembershipId != other.MembershipId)
+        {
+            MembershipId = other.MembershipId;
+            OnPropertyChanged(nameof(MembershipId));
+        }
+        if (DisplayName != other.DisplayName)
+        {
+            DisplayName = other.DisplayName;
+            OnPropertyChanged(nameof(DisplayName));
+        }
+        if (BungieGlobalDisplayName != other.BungieGlobalDisplayName)
+        {
+            BungieGlobalDisplayName = other.BungieGlobalDisplayName;
+            OnPropertyChanged(nameof(BungieGlobalDisplayName));
+        }
+        if (BungieGlobalDisplayNameCode != other.BungieGlobalDisplayNameCode)
+        {
+            BungieGlobalDisplayNameCode = other.BungieGlobalDisplayNameCode;
+            OnPropertyChanged(nameof(BungieGlobalDisplayNameCode));
+        }
+    }
 }

@@ -44,4 +44,42 @@ public class DestinyTalentExclusiveGroup : IDeepEquatable<DestinyTalentExclusive
                OpposingGroupHashes.DeepEqualsListNaive(other.OpposingGroupHashes) &&
                OpposingNodeHashes.DeepEqualsListNaive(other.OpposingNodeHashes);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyTalentExclusiveGroup? other)
+    {
+        if (other is null) return;
+        if (GroupHash != other.GroupHash)
+        {
+            GroupHash = other.GroupHash;
+            OnPropertyChanged(nameof(GroupHash));
+        }
+        if (LoreHash != other.LoreHash)
+        {
+            LoreHash = other.LoreHash;
+            OnPropertyChanged(nameof(LoreHash));
+        }
+        if (!NodeHashes.DeepEqualsListNaive(other.NodeHashes))
+        {
+            NodeHashes = other.NodeHashes;
+            OnPropertyChanged(nameof(NodeHashes));
+        }
+        if (!OpposingGroupHashes.DeepEqualsListNaive(other.OpposingGroupHashes))
+        {
+            OpposingGroupHashes = other.OpposingGroupHashes;
+            OnPropertyChanged(nameof(OpposingGroupHashes));
+        }
+        if (!OpposingNodeHashes.DeepEqualsListNaive(other.OpposingNodeHashes))
+        {
+            OpposingNodeHashes = other.OpposingNodeHashes;
+            OnPropertyChanged(nameof(OpposingNodeHashes));
+        }
+    }
 }

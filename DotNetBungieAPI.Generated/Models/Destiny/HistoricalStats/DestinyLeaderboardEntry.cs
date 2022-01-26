@@ -34,4 +34,37 @@ public class DestinyLeaderboardEntry : IDeepEquatable<DestinyLeaderboardEntry>
                CharacterId == other.CharacterId &&
                (Value is not null ? Value.DeepEquals(other.Value) : other.Value is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyLeaderboardEntry? other)
+    {
+        if (other is null) return;
+        if (Rank != other.Rank)
+        {
+            Rank = other.Rank;
+            OnPropertyChanged(nameof(Rank));
+        }
+        if (!Player.DeepEquals(other.Player))
+        {
+            Player.Update(other.Player);
+            OnPropertyChanged(nameof(Player));
+        }
+        if (CharacterId != other.CharacterId)
+        {
+            CharacterId = other.CharacterId;
+            OnPropertyChanged(nameof(CharacterId));
+        }
+        if (!Value.DeepEquals(other.Value))
+        {
+            Value.Update(other.Value);
+            OnPropertyChanged(nameof(Value));
+        }
+    }
 }

@@ -23,4 +23,27 @@ public class DestinyMilestoneActivityCompletionStatus : IDeepEquatable<DestinyMi
                Completed == other.Completed &&
                Phases.DeepEqualsList(other.Phases);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneActivityCompletionStatus? other)
+    {
+        if (other is null) return;
+        if (Completed != other.Completed)
+        {
+            Completed = other.Completed;
+            OnPropertyChanged(nameof(Completed));
+        }
+        if (!Phases.DeepEqualsList(other.Phases))
+        {
+            Phases = other.Phases;
+            OnPropertyChanged(nameof(Phases));
+        }
+    }
 }

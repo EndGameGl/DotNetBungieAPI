@@ -59,4 +59,57 @@ public class DestinyProfileRecordsComponent : IDeepEquatable<DestinyProfileRecor
                RecordCategoriesRootNodeHash == other.RecordCategoriesRootNodeHash &&
                RecordSealsRootNodeHash == other.RecordSealsRootNodeHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyProfileRecordsComponent? other)
+    {
+        if (other is null) return;
+        if (Score != other.Score)
+        {
+            Score = other.Score;
+            OnPropertyChanged(nameof(Score));
+        }
+        if (ActiveScore != other.ActiveScore)
+        {
+            ActiveScore = other.ActiveScore;
+            OnPropertyChanged(nameof(ActiveScore));
+        }
+        if (LegacyScore != other.LegacyScore)
+        {
+            LegacyScore = other.LegacyScore;
+            OnPropertyChanged(nameof(LegacyScore));
+        }
+        if (LifetimeScore != other.LifetimeScore)
+        {
+            LifetimeScore = other.LifetimeScore;
+            OnPropertyChanged(nameof(LifetimeScore));
+        }
+        if (TrackedRecordHash != other.TrackedRecordHash)
+        {
+            TrackedRecordHash = other.TrackedRecordHash;
+            OnPropertyChanged(nameof(TrackedRecordHash));
+        }
+        if (!Records.DeepEqualsDictionary(other.Records))
+        {
+            Records = other.Records;
+            OnPropertyChanged(nameof(Records));
+        }
+        if (RecordCategoriesRootNodeHash != other.RecordCategoriesRootNodeHash)
+        {
+            RecordCategoriesRootNodeHash = other.RecordCategoriesRootNodeHash;
+            OnPropertyChanged(nameof(RecordCategoriesRootNodeHash));
+        }
+        if (RecordSealsRootNodeHash != other.RecordSealsRootNodeHash)
+        {
+            RecordSealsRootNodeHash = other.RecordSealsRootNodeHash;
+            OnPropertyChanged(nameof(RecordSealsRootNodeHash));
+        }
+    }
 }

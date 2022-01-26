@@ -20,4 +20,27 @@ public class DestinyAggregateActivityStats : IDeepEquatable<DestinyAggregateActi
                ActivityHash == other.ActivityHash &&
                Values.DeepEqualsDictionary(other.Values);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyAggregateActivityStats? other)
+    {
+        if (other is null) return;
+        if (ActivityHash != other.ActivityHash)
+        {
+            ActivityHash = other.ActivityHash;
+            OnPropertyChanged(nameof(ActivityHash));
+        }
+        if (!Values.DeepEqualsDictionary(other.Values))
+        {
+            Values = other.Values;
+            OnPropertyChanged(nameof(Values));
+        }
+    }
 }

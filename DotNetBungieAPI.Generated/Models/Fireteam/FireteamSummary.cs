@@ -82,4 +82,112 @@ public class FireteamSummary : IDeepEquatable<FireteamSummary>
                DatePlayerModified == other.DatePlayerModified &&
                TitleBeforeModeration == other.TitleBeforeModeration;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(FireteamSummary? other)
+    {
+        if (other is null) return;
+        if (FireteamId != other.FireteamId)
+        {
+            FireteamId = other.FireteamId;
+            OnPropertyChanged(nameof(FireteamId));
+        }
+        if (GroupId != other.GroupId)
+        {
+            GroupId = other.GroupId;
+            OnPropertyChanged(nameof(GroupId));
+        }
+        if (Platform != other.Platform)
+        {
+            Platform = other.Platform;
+            OnPropertyChanged(nameof(Platform));
+        }
+        if (ActivityType != other.ActivityType)
+        {
+            ActivityType = other.ActivityType;
+            OnPropertyChanged(nameof(ActivityType));
+        }
+        if (IsImmediate != other.IsImmediate)
+        {
+            IsImmediate = other.IsImmediate;
+            OnPropertyChanged(nameof(IsImmediate));
+        }
+        if (ScheduledTime != other.ScheduledTime)
+        {
+            ScheduledTime = other.ScheduledTime;
+            OnPropertyChanged(nameof(ScheduledTime));
+        }
+        if (OwnerMembershipId != other.OwnerMembershipId)
+        {
+            OwnerMembershipId = other.OwnerMembershipId;
+            OnPropertyChanged(nameof(OwnerMembershipId));
+        }
+        if (PlayerSlotCount != other.PlayerSlotCount)
+        {
+            PlayerSlotCount = other.PlayerSlotCount;
+            OnPropertyChanged(nameof(PlayerSlotCount));
+        }
+        if (AlternateSlotCount != other.AlternateSlotCount)
+        {
+            AlternateSlotCount = other.AlternateSlotCount;
+            OnPropertyChanged(nameof(AlternateSlotCount));
+        }
+        if (AvailablePlayerSlotCount != other.AvailablePlayerSlotCount)
+        {
+            AvailablePlayerSlotCount = other.AvailablePlayerSlotCount;
+            OnPropertyChanged(nameof(AvailablePlayerSlotCount));
+        }
+        if (AvailableAlternateSlotCount != other.AvailableAlternateSlotCount)
+        {
+            AvailableAlternateSlotCount = other.AvailableAlternateSlotCount;
+            OnPropertyChanged(nameof(AvailableAlternateSlotCount));
+        }
+        if (Title != other.Title)
+        {
+            Title = other.Title;
+            OnPropertyChanged(nameof(Title));
+        }
+        if (DateCreated != other.DateCreated)
+        {
+            DateCreated = other.DateCreated;
+            OnPropertyChanged(nameof(DateCreated));
+        }
+        if (DateModified != other.DateModified)
+        {
+            DateModified = other.DateModified;
+            OnPropertyChanged(nameof(DateModified));
+        }
+        if (IsPublic != other.IsPublic)
+        {
+            IsPublic = other.IsPublic;
+            OnPropertyChanged(nameof(IsPublic));
+        }
+        if (Locale != other.Locale)
+        {
+            Locale = other.Locale;
+            OnPropertyChanged(nameof(Locale));
+        }
+        if (IsValid != other.IsValid)
+        {
+            IsValid = other.IsValid;
+            OnPropertyChanged(nameof(IsValid));
+        }
+        if (DatePlayerModified != other.DatePlayerModified)
+        {
+            DatePlayerModified = other.DatePlayerModified;
+            OnPropertyChanged(nameof(DatePlayerModified));
+        }
+        if (TitleBeforeModeration != other.TitleBeforeModeration)
+        {
+            TitleBeforeModeration = other.TitleBeforeModeration;
+            OnPropertyChanged(nameof(TitleBeforeModeration));
+        }
+    }
 }

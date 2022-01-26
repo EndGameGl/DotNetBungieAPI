@@ -23,4 +23,27 @@ public class DestinyPublicMilestoneChallenge : IDeepEquatable<DestinyPublicMiles
                ObjectiveHash == other.ObjectiveHash &&
                ActivityHash == other.ActivityHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPublicMilestoneChallenge? other)
+    {
+        if (other is null) return;
+        if (ObjectiveHash != other.ObjectiveHash)
+        {
+            ObjectiveHash = other.ObjectiveHash;
+            OnPropertyChanged(nameof(ObjectiveHash));
+        }
+        if (ActivityHash != other.ActivityHash)
+        {
+            ActivityHash = other.ActivityHash;
+            OnPropertyChanged(nameof(ActivityHash));
+        }
+    }
 }

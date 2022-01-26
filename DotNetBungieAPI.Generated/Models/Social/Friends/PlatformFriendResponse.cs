@@ -22,4 +22,37 @@ public class PlatformFriendResponse : IDeepEquatable<PlatformFriendResponse>
                HasMore == other.HasMore &&
                PlatformFriends.DeepEqualsList(other.PlatformFriends);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(PlatformFriendResponse? other)
+    {
+        if (other is null) return;
+        if (ItemsPerPage != other.ItemsPerPage)
+        {
+            ItemsPerPage = other.ItemsPerPage;
+            OnPropertyChanged(nameof(ItemsPerPage));
+        }
+        if (CurrentPage != other.CurrentPage)
+        {
+            CurrentPage = other.CurrentPage;
+            OnPropertyChanged(nameof(CurrentPage));
+        }
+        if (HasMore != other.HasMore)
+        {
+            HasMore = other.HasMore;
+            OnPropertyChanged(nameof(HasMore));
+        }
+        if (!PlatformFriends.DeepEqualsList(other.PlatformFriends))
+        {
+            PlatformFriends = other.PlatformFriends;
+            OnPropertyChanged(nameof(PlatformFriends));
+        }
+    }
 }

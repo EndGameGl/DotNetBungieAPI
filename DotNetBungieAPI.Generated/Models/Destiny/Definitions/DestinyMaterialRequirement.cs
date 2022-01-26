@@ -37,4 +37,37 @@ public class DestinyMaterialRequirement : IDeepEquatable<DestinyMaterialRequirem
                Count == other.Count &&
                OmitFromRequirements == other.OmitFromRequirements;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMaterialRequirement? other)
+    {
+        if (other is null) return;
+        if (ItemHash != other.ItemHash)
+        {
+            ItemHash = other.ItemHash;
+            OnPropertyChanged(nameof(ItemHash));
+        }
+        if (DeleteOnAction != other.DeleteOnAction)
+        {
+            DeleteOnAction = other.DeleteOnAction;
+            OnPropertyChanged(nameof(DeleteOnAction));
+        }
+        if (Count != other.Count)
+        {
+            Count = other.Count;
+            OnPropertyChanged(nameof(Count));
+        }
+        if (OmitFromRequirements != other.OmitFromRequirements)
+        {
+            OmitFromRequirements = other.OmitFromRequirements;
+            OnPropertyChanged(nameof(OmitFromRequirements));
+        }
+    }
 }

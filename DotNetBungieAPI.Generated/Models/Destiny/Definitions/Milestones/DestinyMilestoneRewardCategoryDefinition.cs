@@ -44,4 +44,42 @@ public class DestinyMilestoneRewardCategoryDefinition : IDeepEquatable<DestinyMi
                RewardEntries.DeepEqualsDictionary(other.RewardEntries) &&
                Order == other.Order;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneRewardCategoryDefinition? other)
+    {
+        if (other is null) return;
+        if (CategoryHash != other.CategoryHash)
+        {
+            CategoryHash = other.CategoryHash;
+            OnPropertyChanged(nameof(CategoryHash));
+        }
+        if (CategoryIdentifier != other.CategoryIdentifier)
+        {
+            CategoryIdentifier = other.CategoryIdentifier;
+            OnPropertyChanged(nameof(CategoryIdentifier));
+        }
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (!RewardEntries.DeepEqualsDictionary(other.RewardEntries))
+        {
+            RewardEntries = other.RewardEntries;
+            OnPropertyChanged(nameof(RewardEntries));
+        }
+        if (Order != other.Order)
+        {
+            Order = other.Order;
+            OnPropertyChanged(nameof(Order));
+        }
+    }
 }

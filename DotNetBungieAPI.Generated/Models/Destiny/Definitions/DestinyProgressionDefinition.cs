@@ -112,4 +112,82 @@ public class DestinyProgressionDefinition : IDeepEquatable<DestinyProgressionDef
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyProgressionDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (Scope != other.Scope)
+        {
+            Scope = other.Scope;
+            OnPropertyChanged(nameof(Scope));
+        }
+        if (RepeatLastStep != other.RepeatLastStep)
+        {
+            RepeatLastStep = other.RepeatLastStep;
+            OnPropertyChanged(nameof(RepeatLastStep));
+        }
+        if (Source != other.Source)
+        {
+            Source = other.Source;
+            OnPropertyChanged(nameof(Source));
+        }
+        if (!Steps.DeepEqualsList(other.Steps))
+        {
+            Steps = other.Steps;
+            OnPropertyChanged(nameof(Steps));
+        }
+        if (Visible != other.Visible)
+        {
+            Visible = other.Visible;
+            OnPropertyChanged(nameof(Visible));
+        }
+        if (FactionHash != other.FactionHash)
+        {
+            FactionHash = other.FactionHash;
+            OnPropertyChanged(nameof(FactionHash));
+        }
+        if (!Color.DeepEquals(other.Color))
+        {
+            Color.Update(other.Color);
+            OnPropertyChanged(nameof(Color));
+        }
+        if (RankIcon != other.RankIcon)
+        {
+            RankIcon = other.RankIcon;
+            OnPropertyChanged(nameof(RankIcon));
+        }
+        if (!RewardItems.DeepEqualsList(other.RewardItems))
+        {
+            RewardItems = other.RewardItems;
+            OnPropertyChanged(nameof(RewardItems));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

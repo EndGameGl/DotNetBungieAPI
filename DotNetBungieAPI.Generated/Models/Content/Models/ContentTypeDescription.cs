@@ -90,4 +90,122 @@ public class ContentTypeDescription : IDeepEquatable<ContentTypeDescription>
                SuppressCmsPath == other.SuppressCmsPath &&
                PropertySections.DeepEqualsList(other.PropertySections);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(ContentTypeDescription? other)
+    {
+        if (other is null) return;
+        if (CType != other.CType)
+        {
+            CType = other.CType;
+            OnPropertyChanged(nameof(CType));
+        }
+        if (Name != other.Name)
+        {
+            Name = other.Name;
+            OnPropertyChanged(nameof(Name));
+        }
+        if (ContentDescription != other.ContentDescription)
+        {
+            ContentDescription = other.ContentDescription;
+            OnPropertyChanged(nameof(ContentDescription));
+        }
+        if (PreviewImage != other.PreviewImage)
+        {
+            PreviewImage = other.PreviewImage;
+            OnPropertyChanged(nameof(PreviewImage));
+        }
+        if (Priority != other.Priority)
+        {
+            Priority = other.Priority;
+            OnPropertyChanged(nameof(Priority));
+        }
+        if (Reminder != other.Reminder)
+        {
+            Reminder = other.Reminder;
+            OnPropertyChanged(nameof(Reminder));
+        }
+        if (!Properties.DeepEqualsList(other.Properties))
+        {
+            Properties = other.Properties;
+            OnPropertyChanged(nameof(Properties));
+        }
+        if (!TagMetadata.DeepEqualsList(other.TagMetadata))
+        {
+            TagMetadata = other.TagMetadata;
+            OnPropertyChanged(nameof(TagMetadata));
+        }
+        if (!TagMetadataItems.DeepEqualsDictionary(other.TagMetadataItems))
+        {
+            TagMetadataItems = other.TagMetadataItems;
+            OnPropertyChanged(nameof(TagMetadataItems));
+        }
+        if (!UsageExamples.DeepEqualsListNaive(other.UsageExamples))
+        {
+            UsageExamples = other.UsageExamples;
+            OnPropertyChanged(nameof(UsageExamples));
+        }
+        if (ShowInContentEditor != other.ShowInContentEditor)
+        {
+            ShowInContentEditor = other.ShowInContentEditor;
+            OnPropertyChanged(nameof(ShowInContentEditor));
+        }
+        if (TypeOf != other.TypeOf)
+        {
+            TypeOf = other.TypeOf;
+            OnPropertyChanged(nameof(TypeOf));
+        }
+        if (BindIdentifierToProperty != other.BindIdentifierToProperty)
+        {
+            BindIdentifierToProperty = other.BindIdentifierToProperty;
+            OnPropertyChanged(nameof(BindIdentifierToProperty));
+        }
+        if (BoundRegex != other.BoundRegex)
+        {
+            BoundRegex = other.BoundRegex;
+            OnPropertyChanged(nameof(BoundRegex));
+        }
+        if (ForceIdentifierBinding != other.ForceIdentifierBinding)
+        {
+            ForceIdentifierBinding = other.ForceIdentifierBinding;
+            OnPropertyChanged(nameof(ForceIdentifierBinding));
+        }
+        if (AllowComments != other.AllowComments)
+        {
+            AllowComments = other.AllowComments;
+            OnPropertyChanged(nameof(AllowComments));
+        }
+        if (AutoEnglishPropertyFallback != other.AutoEnglishPropertyFallback)
+        {
+            AutoEnglishPropertyFallback = other.AutoEnglishPropertyFallback;
+            OnPropertyChanged(nameof(AutoEnglishPropertyFallback));
+        }
+        if (BulkUploadable != other.BulkUploadable)
+        {
+            BulkUploadable = other.BulkUploadable;
+            OnPropertyChanged(nameof(BulkUploadable));
+        }
+        if (!Previews.DeepEqualsList(other.Previews))
+        {
+            Previews = other.Previews;
+            OnPropertyChanged(nameof(Previews));
+        }
+        if (SuppressCmsPath != other.SuppressCmsPath)
+        {
+            SuppressCmsPath = other.SuppressCmsPath;
+            OnPropertyChanged(nameof(SuppressCmsPath));
+        }
+        if (!PropertySections.DeepEqualsList(other.PropertySections))
+        {
+            PropertySections = other.PropertySections;
+            OnPropertyChanged(nameof(PropertySections));
+        }
+    }
 }

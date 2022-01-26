@@ -44,4 +44,42 @@ public class DestinyMilestoneActivity : IDeepEquatable<DestinyMilestoneActivity>
                ModifierHashes.DeepEqualsListNaive(other.ModifierHashes) &&
                Variants.DeepEqualsList(other.Variants);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneActivity? other)
+    {
+        if (other is null) return;
+        if (ActivityHash != other.ActivityHash)
+        {
+            ActivityHash = other.ActivityHash;
+            OnPropertyChanged(nameof(ActivityHash));
+        }
+        if (ActivityModeHash != other.ActivityModeHash)
+        {
+            ActivityModeHash = other.ActivityModeHash;
+            OnPropertyChanged(nameof(ActivityModeHash));
+        }
+        if (ActivityModeType != other.ActivityModeType)
+        {
+            ActivityModeType = other.ActivityModeType;
+            OnPropertyChanged(nameof(ActivityModeType));
+        }
+        if (!ModifierHashes.DeepEqualsListNaive(other.ModifierHashes))
+        {
+            ModifierHashes = other.ModifierHashes;
+            OnPropertyChanged(nameof(ModifierHashes));
+        }
+        if (!Variants.DeepEqualsList(other.Variants))
+        {
+            Variants = other.Variants;
+            OnPropertyChanged(nameof(Variants));
+        }
+    }
 }

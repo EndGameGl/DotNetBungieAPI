@@ -54,6 +54,10 @@ public class ObjectTypeData : TypeData
 
         await WriteDeepEqualsMethod(streamWriter);
 
+        await streamWriter.WriteLineAsync();
+
+        await WriteUpdateMethod(streamWriter);
+        
         await streamWriter.WriteAsync('}');
     }
 
@@ -110,6 +114,85 @@ public class ObjectTypeData : TypeData
 
                 }
             }
+        }
+
+        await streamWriter.WriteLineAsync($"{Indent}}}");
+    }
+
+    private async Task WriteUpdateMethod(StreamWriter streamWriter)
+    {
+        await streamWriter.WriteLineAsync($"{Indent}public event PropertyChangedEventHandler? PropertyChanged;");
+        await streamWriter.WriteLineAsync();
+        await streamWriter.WriteLineAsync($"{Indent}[NotifyPropertyChangedInvocator]");
+        await streamWriter.WriteLineAsync($"{Indent}protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)\n{Indent}{{\n{Indent}   PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));\n{Indent}}}");
+        await streamWriter.WriteLineAsync();
+        
+        await streamWriter.WriteLineAsync($"{Indent}public void Update({TypeName}? other)");
+        await streamWriter.WriteLineAsync($"{Indent}{{");
+
+        await streamWriter.WriteLineAsync($"{Indent}    if (other is null) return;");
+        
+        var totalValues = Properties.Count;
+
+        for (var i = 0; i < totalValues; i++)
+        {
+            var propertyTypeData = Properties[i];
+            if (propertyTypeData.IsClassObject)
+            {
+                await streamWriter.WriteLineAsync($"{Indent}    if (!{propertyTypeData.CSharpPropertyName}.DeepEquals(other.{propertyTypeData.CSharpPropertyName}))");
+                await streamWriter.WriteLineAsync($"{Indent}    {{");
+                await streamWriter.WriteLineAsync($"{Indent}        {propertyTypeData.CSharpPropertyName}.Update(other.{propertyTypeData.CSharpPropertyName});");
+                await streamWriter.WriteLineAsync($"{Indent}        OnPropertyChanged(nameof({propertyTypeData.CSharpPropertyName}));");
+                await streamWriter.WriteLineAsync($"{Indent}    }}");
+            }
+            else if (propertyTypeData.IsCollection)
+            {
+                if (propertyTypeData.GenericProperties[0].IsValueType)
+                {
+                    await streamWriter.WriteLineAsync($"{Indent}    if (!{propertyTypeData.CSharpPropertyName}.DeepEqualsListNaive(other.{propertyTypeData.CSharpPropertyName}))");
+                    await streamWriter.WriteLineAsync($"{Indent}    {{");
+                    await streamWriter.WriteLineAsync($"{Indent}        {propertyTypeData.CSharpPropertyName} = other.{propertyTypeData.CSharpPropertyName};");
+                    await streamWriter.WriteLineAsync($"{Indent}        OnPropertyChanged(nameof({propertyTypeData.CSharpPropertyName}));");
+                    await streamWriter.WriteLineAsync($"{Indent}    }}");
+                }
+                else
+                {
+                    await streamWriter.WriteLineAsync($"{Indent}    if (!{propertyTypeData.CSharpPropertyName}.DeepEqualsList(other.{propertyTypeData.CSharpPropertyName}))");
+                    await streamWriter.WriteLineAsync($"{Indent}    {{");
+                    await streamWriter.WriteLineAsync($"{Indent}        {propertyTypeData.CSharpPropertyName} = other.{propertyTypeData.CSharpPropertyName};");
+                    await streamWriter.WriteLineAsync($"{Indent}        OnPropertyChanged(nameof({propertyTypeData.CSharpPropertyName}));");
+                    await streamWriter.WriteLineAsync($"{Indent}    }}");
+                }
+            }
+            else if (propertyTypeData.IsDictionary)
+            {
+                if (propertyTypeData.GenericProperties[1].IsValueType)
+                {
+                    await streamWriter.WriteLineAsync($"{Indent}    if (!{propertyTypeData.CSharpPropertyName}.DeepEqualsDictionaryNaive(other.{propertyTypeData.CSharpPropertyName}))");
+                    await streamWriter.WriteLineAsync($"{Indent}    {{");
+                    await streamWriter.WriteLineAsync($"{Indent}        {propertyTypeData.CSharpPropertyName} = other.{propertyTypeData.CSharpPropertyName};");
+                    await streamWriter.WriteLineAsync($"{Indent}        OnPropertyChanged(nameof({propertyTypeData.CSharpPropertyName}));");
+                    await streamWriter.WriteLineAsync($"{Indent}    }}");
+                }
+                else
+                {
+                    await streamWriter.WriteLineAsync($"{Indent}    if (!{propertyTypeData.CSharpPropertyName}.DeepEqualsDictionary(other.{propertyTypeData.CSharpPropertyName}))");
+                    await streamWriter.WriteLineAsync($"{Indent}    {{");
+                    await streamWriter.WriteLineAsync($"{Indent}        {propertyTypeData.CSharpPropertyName} = other.{propertyTypeData.CSharpPropertyName};");
+                    await streamWriter.WriteLineAsync($"{Indent}        OnPropertyChanged(nameof({propertyTypeData.CSharpPropertyName}));");
+                    await streamWriter.WriteLineAsync($"{Indent}    }}");
+                }
+            }
+            else
+            {
+                await streamWriter.WriteLineAsync($"{Indent}    if ({propertyTypeData.CSharpPropertyName} != other.{propertyTypeData.CSharpPropertyName})");
+                await streamWriter.WriteLineAsync($"{Indent}    {{");
+                await streamWriter.WriteLineAsync($"{Indent}        {propertyTypeData.CSharpPropertyName} = other.{propertyTypeData.CSharpPropertyName};");
+                await streamWriter.WriteLineAsync($"{Indent}        OnPropertyChanged(nameof({propertyTypeData.CSharpPropertyName}));");
+                await streamWriter.WriteLineAsync($"{Indent}    }}");
+            }
+
+            
         }
 
         await streamWriter.WriteLineAsync($"{Indent}}}");

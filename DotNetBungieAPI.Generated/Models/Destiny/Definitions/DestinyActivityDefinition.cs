@@ -238,4 +238,172 @@ public class DestinyActivityDefinition : IDeepEquatable<DestinyActivityDefinitio
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (!OriginalDisplayProperties.DeepEquals(other.OriginalDisplayProperties))
+        {
+            OriginalDisplayProperties.Update(other.OriginalDisplayProperties);
+            OnPropertyChanged(nameof(OriginalDisplayProperties));
+        }
+        if (!SelectionScreenDisplayProperties.DeepEquals(other.SelectionScreenDisplayProperties))
+        {
+            SelectionScreenDisplayProperties.Update(other.SelectionScreenDisplayProperties);
+            OnPropertyChanged(nameof(SelectionScreenDisplayProperties));
+        }
+        if (ReleaseIcon != other.ReleaseIcon)
+        {
+            ReleaseIcon = other.ReleaseIcon;
+            OnPropertyChanged(nameof(ReleaseIcon));
+        }
+        if (ReleaseTime != other.ReleaseTime)
+        {
+            ReleaseTime = other.ReleaseTime;
+            OnPropertyChanged(nameof(ReleaseTime));
+        }
+        if (ActivityLightLevel != other.ActivityLightLevel)
+        {
+            ActivityLightLevel = other.ActivityLightLevel;
+            OnPropertyChanged(nameof(ActivityLightLevel));
+        }
+        if (DestinationHash != other.DestinationHash)
+        {
+            DestinationHash = other.DestinationHash;
+            OnPropertyChanged(nameof(DestinationHash));
+        }
+        if (PlaceHash != other.PlaceHash)
+        {
+            PlaceHash = other.PlaceHash;
+            OnPropertyChanged(nameof(PlaceHash));
+        }
+        if (ActivityTypeHash != other.ActivityTypeHash)
+        {
+            ActivityTypeHash = other.ActivityTypeHash;
+            OnPropertyChanged(nameof(ActivityTypeHash));
+        }
+        if (Tier != other.Tier)
+        {
+            Tier = other.Tier;
+            OnPropertyChanged(nameof(Tier));
+        }
+        if (PgcrImage != other.PgcrImage)
+        {
+            PgcrImage = other.PgcrImage;
+            OnPropertyChanged(nameof(PgcrImage));
+        }
+        if (!Rewards.DeepEqualsList(other.Rewards))
+        {
+            Rewards = other.Rewards;
+            OnPropertyChanged(nameof(Rewards));
+        }
+        if (!Modifiers.DeepEqualsList(other.Modifiers))
+        {
+            Modifiers = other.Modifiers;
+            OnPropertyChanged(nameof(Modifiers));
+        }
+        if (IsPlaylist != other.IsPlaylist)
+        {
+            IsPlaylist = other.IsPlaylist;
+            OnPropertyChanged(nameof(IsPlaylist));
+        }
+        if (!Challenges.DeepEqualsList(other.Challenges))
+        {
+            Challenges = other.Challenges;
+            OnPropertyChanged(nameof(Challenges));
+        }
+        if (!OptionalUnlockStrings.DeepEqualsList(other.OptionalUnlockStrings))
+        {
+            OptionalUnlockStrings = other.OptionalUnlockStrings;
+            OnPropertyChanged(nameof(OptionalUnlockStrings));
+        }
+        if (!PlaylistItems.DeepEqualsList(other.PlaylistItems))
+        {
+            PlaylistItems = other.PlaylistItems;
+            OnPropertyChanged(nameof(PlaylistItems));
+        }
+        if (!ActivityGraphList.DeepEqualsList(other.ActivityGraphList))
+        {
+            ActivityGraphList = other.ActivityGraphList;
+            OnPropertyChanged(nameof(ActivityGraphList));
+        }
+        if (!Matchmaking.DeepEquals(other.Matchmaking))
+        {
+            Matchmaking.Update(other.Matchmaking);
+            OnPropertyChanged(nameof(Matchmaking));
+        }
+        if (!GuidedGame.DeepEquals(other.GuidedGame))
+        {
+            GuidedGame.Update(other.GuidedGame);
+            OnPropertyChanged(nameof(GuidedGame));
+        }
+        if (DirectActivityModeHash != other.DirectActivityModeHash)
+        {
+            DirectActivityModeHash = other.DirectActivityModeHash;
+            OnPropertyChanged(nameof(DirectActivityModeHash));
+        }
+        if (DirectActivityModeType != other.DirectActivityModeType)
+        {
+            DirectActivityModeType = other.DirectActivityModeType;
+            OnPropertyChanged(nameof(DirectActivityModeType));
+        }
+        if (!Loadouts.DeepEqualsList(other.Loadouts))
+        {
+            Loadouts = other.Loadouts;
+            OnPropertyChanged(nameof(Loadouts));
+        }
+        if (!ActivityModeHashes.DeepEqualsListNaive(other.ActivityModeHashes))
+        {
+            ActivityModeHashes = other.ActivityModeHashes;
+            OnPropertyChanged(nameof(ActivityModeHashes));
+        }
+        if (!ActivityModeTypes.DeepEqualsListNaive(other.ActivityModeTypes))
+        {
+            ActivityModeTypes = other.ActivityModeTypes;
+            OnPropertyChanged(nameof(ActivityModeTypes));
+        }
+        if (IsPvP != other.IsPvP)
+        {
+            IsPvP = other.IsPvP;
+            OnPropertyChanged(nameof(IsPvP));
+        }
+        if (!InsertionPoints.DeepEqualsList(other.InsertionPoints))
+        {
+            InsertionPoints = other.InsertionPoints;
+            OnPropertyChanged(nameof(InsertionPoints));
+        }
+        if (!ActivityLocationMappings.DeepEqualsList(other.ActivityLocationMappings))
+        {
+            ActivityLocationMappings = other.ActivityLocationMappings;
+            OnPropertyChanged(nameof(ActivityLocationMappings));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

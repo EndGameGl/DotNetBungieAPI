@@ -29,4 +29,27 @@ public class DestinyCollectibleNodeDetailResponse : IDeepEquatable<DestinyCollec
                (Collectibles is not null ? Collectibles.DeepEquals(other.Collectibles) : other.Collectibles is null) &&
                (CollectibleItemComponents is not null ? CollectibleItemComponents.DeepEquals(other.CollectibleItemComponents) : other.CollectibleItemComponents is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyCollectibleNodeDetailResponse? other)
+    {
+        if (other is null) return;
+        if (!Collectibles.DeepEquals(other.Collectibles))
+        {
+            Collectibles.Update(other.Collectibles);
+            OnPropertyChanged(nameof(Collectibles));
+        }
+        if (!CollectibleItemComponents.DeepEquals(other.CollectibleItemComponents))
+        {
+            CollectibleItemComponents.Update(other.CollectibleItemComponents);
+            OnPropertyChanged(nameof(CollectibleItemComponents));
+        }
+    }
 }

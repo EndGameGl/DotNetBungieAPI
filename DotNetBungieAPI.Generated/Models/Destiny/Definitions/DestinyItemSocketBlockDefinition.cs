@@ -37,4 +37,37 @@ public class DestinyItemSocketBlockDefinition : IDeepEquatable<DestinyItemSocket
                IntrinsicSockets.DeepEqualsList(other.IntrinsicSockets) &&
                SocketCategories.DeepEqualsList(other.SocketCategories);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemSocketBlockDefinition? other)
+    {
+        if (other is null) return;
+        if (Detail != other.Detail)
+        {
+            Detail = other.Detail;
+            OnPropertyChanged(nameof(Detail));
+        }
+        if (!SocketEntries.DeepEqualsList(other.SocketEntries))
+        {
+            SocketEntries = other.SocketEntries;
+            OnPropertyChanged(nameof(SocketEntries));
+        }
+        if (!IntrinsicSockets.DeepEqualsList(other.IntrinsicSockets))
+        {
+            IntrinsicSockets = other.IntrinsicSockets;
+            OnPropertyChanged(nameof(IntrinsicSockets));
+        }
+        if (!SocketCategories.DeepEqualsList(other.SocketCategories))
+        {
+            SocketCategories = other.SocketCategories;
+            OnPropertyChanged(nameof(SocketCategories));
+        }
+    }
 }

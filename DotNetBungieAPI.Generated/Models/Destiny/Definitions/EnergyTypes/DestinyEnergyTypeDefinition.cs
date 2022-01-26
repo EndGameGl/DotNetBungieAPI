@@ -74,4 +74,62 @@ public class DestinyEnergyTypeDefinition : IDeepEquatable<DestinyEnergyTypeDefin
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyEnergyTypeDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (TransparentIconPath != other.TransparentIconPath)
+        {
+            TransparentIconPath = other.TransparentIconPath;
+            OnPropertyChanged(nameof(TransparentIconPath));
+        }
+        if (ShowIcon != other.ShowIcon)
+        {
+            ShowIcon = other.ShowIcon;
+            OnPropertyChanged(nameof(ShowIcon));
+        }
+        if (EnumValue != other.EnumValue)
+        {
+            EnumValue = other.EnumValue;
+            OnPropertyChanged(nameof(EnumValue));
+        }
+        if (CapacityStatHash != other.CapacityStatHash)
+        {
+            CapacityStatHash = other.CapacityStatHash;
+            OnPropertyChanged(nameof(CapacityStatHash));
+        }
+        if (CostStatHash != other.CostStatHash)
+        {
+            CostStatHash = other.CostStatHash;
+            OnPropertyChanged(nameof(CostStatHash));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

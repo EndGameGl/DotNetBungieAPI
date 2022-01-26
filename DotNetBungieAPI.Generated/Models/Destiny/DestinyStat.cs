@@ -23,4 +23,27 @@ public class DestinyStat : IDeepEquatable<DestinyStat>
                StatHash == other.StatHash &&
                Value == other.Value;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyStat? other)
+    {
+        if (other is null) return;
+        if (StatHash != other.StatHash)
+        {
+            StatHash = other.StatHash;
+            OnPropertyChanged(nameof(StatHash));
+        }
+        if (Value != other.Value)
+        {
+            Value = other.Value;
+            OnPropertyChanged(nameof(Value));
+        }
+    }
 }

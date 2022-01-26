@@ -37,4 +37,37 @@ public class DestinyMilestoneContent : IDeepEquatable<DestinyMilestoneContent>
                Tips.DeepEqualsListNaive(other.Tips) &&
                ItemCategories.DeepEqualsList(other.ItemCategories);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneContent? other)
+    {
+        if (other is null) return;
+        if (About != other.About)
+        {
+            About = other.About;
+            OnPropertyChanged(nameof(About));
+        }
+        if (Status != other.Status)
+        {
+            Status = other.Status;
+            OnPropertyChanged(nameof(Status));
+        }
+        if (!Tips.DeepEqualsListNaive(other.Tips))
+        {
+            Tips = other.Tips;
+            OnPropertyChanged(nameof(Tips));
+        }
+        if (!ItemCategories.DeepEqualsList(other.ItemCategories))
+        {
+            ItemCategories = other.ItemCategories;
+            OnPropertyChanged(nameof(ItemCategories));
+        }
+    }
 }

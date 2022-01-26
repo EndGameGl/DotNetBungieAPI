@@ -23,4 +23,27 @@ public class DestinyEquipItemResult : IDeepEquatable<DestinyEquipItemResult>
                ItemInstanceId == other.ItemInstanceId &&
                EquipStatus == other.EquipStatus;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyEquipItemResult? other)
+    {
+        if (other is null) return;
+        if (ItemInstanceId != other.ItemInstanceId)
+        {
+            ItemInstanceId = other.ItemInstanceId;
+            OnPropertyChanged(nameof(ItemInstanceId));
+        }
+        if (EquipStatus != other.EquipStatus)
+        {
+            EquipStatus = other.EquipStatus;
+            OnPropertyChanged(nameof(EquipStatus));
+        }
+    }
 }

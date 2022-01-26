@@ -33,4 +33,37 @@ public class DestinyMilestoneChallengeActivityDefinition : IDeepEquatable<Destin
                ActivityGraphNodes.DeepEqualsList(other.ActivityGraphNodes) &&
                Phases.DeepEqualsList(other.Phases);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneChallengeActivityDefinition? other)
+    {
+        if (other is null) return;
+        if (ActivityHash != other.ActivityHash)
+        {
+            ActivityHash = other.ActivityHash;
+            OnPropertyChanged(nameof(ActivityHash));
+        }
+        if (!Challenges.DeepEqualsList(other.Challenges))
+        {
+            Challenges = other.Challenges;
+            OnPropertyChanged(nameof(Challenges));
+        }
+        if (!ActivityGraphNodes.DeepEqualsList(other.ActivityGraphNodes))
+        {
+            ActivityGraphNodes = other.ActivityGraphNodes;
+            OnPropertyChanged(nameof(ActivityGraphNodes));
+        }
+        if (!Phases.DeepEqualsList(other.Phases))
+        {
+            Phases = other.Phases;
+            OnPropertyChanged(nameof(Phases));
+        }
+    }
 }

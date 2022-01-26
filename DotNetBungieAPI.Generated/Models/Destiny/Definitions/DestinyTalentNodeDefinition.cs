@@ -164,4 +164,112 @@ public class DestinyTalentNodeDefinition : IDeepEquatable<DestinyTalentNodeDefin
                NodeStyleIdentifier == other.NodeStyleIdentifier &&
                IgnoreForCompletion == other.IgnoreForCompletion;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyTalentNodeDefinition? other)
+    {
+        if (other is null) return;
+        if (NodeIndex != other.NodeIndex)
+        {
+            NodeIndex = other.NodeIndex;
+            OnPropertyChanged(nameof(NodeIndex));
+        }
+        if (NodeHash != other.NodeHash)
+        {
+            NodeHash = other.NodeHash;
+            OnPropertyChanged(nameof(NodeHash));
+        }
+        if (Row != other.Row)
+        {
+            Row = other.Row;
+            OnPropertyChanged(nameof(Row));
+        }
+        if (Column != other.Column)
+        {
+            Column = other.Column;
+            OnPropertyChanged(nameof(Column));
+        }
+        if (!PrerequisiteNodeIndexes.DeepEqualsListNaive(other.PrerequisiteNodeIndexes))
+        {
+            PrerequisiteNodeIndexes = other.PrerequisiteNodeIndexes;
+            OnPropertyChanged(nameof(PrerequisiteNodeIndexes));
+        }
+        if (BinaryPairNodeIndex != other.BinaryPairNodeIndex)
+        {
+            BinaryPairNodeIndex = other.BinaryPairNodeIndex;
+            OnPropertyChanged(nameof(BinaryPairNodeIndex));
+        }
+        if (AutoUnlocks != other.AutoUnlocks)
+        {
+            AutoUnlocks = other.AutoUnlocks;
+            OnPropertyChanged(nameof(AutoUnlocks));
+        }
+        if (LastStepRepeats != other.LastStepRepeats)
+        {
+            LastStepRepeats = other.LastStepRepeats;
+            OnPropertyChanged(nameof(LastStepRepeats));
+        }
+        if (IsRandom != other.IsRandom)
+        {
+            IsRandom = other.IsRandom;
+            OnPropertyChanged(nameof(IsRandom));
+        }
+        if (!RandomActivationRequirement.DeepEquals(other.RandomActivationRequirement))
+        {
+            RandomActivationRequirement.Update(other.RandomActivationRequirement);
+            OnPropertyChanged(nameof(RandomActivationRequirement));
+        }
+        if (IsRandomRepurchasable != other.IsRandomRepurchasable)
+        {
+            IsRandomRepurchasable = other.IsRandomRepurchasable;
+            OnPropertyChanged(nameof(IsRandomRepurchasable));
+        }
+        if (!Steps.DeepEqualsList(other.Steps))
+        {
+            Steps = other.Steps;
+            OnPropertyChanged(nameof(Steps));
+        }
+        if (!ExclusiveWithNodeHashes.DeepEqualsListNaive(other.ExclusiveWithNodeHashes))
+        {
+            ExclusiveWithNodeHashes = other.ExclusiveWithNodeHashes;
+            OnPropertyChanged(nameof(ExclusiveWithNodeHashes));
+        }
+        if (RandomStartProgressionBarAtProgression != other.RandomStartProgressionBarAtProgression)
+        {
+            RandomStartProgressionBarAtProgression = other.RandomStartProgressionBarAtProgression;
+            OnPropertyChanged(nameof(RandomStartProgressionBarAtProgression));
+        }
+        if (LayoutIdentifier != other.LayoutIdentifier)
+        {
+            LayoutIdentifier = other.LayoutIdentifier;
+            OnPropertyChanged(nameof(LayoutIdentifier));
+        }
+        if (GroupHash != other.GroupHash)
+        {
+            GroupHash = other.GroupHash;
+            OnPropertyChanged(nameof(GroupHash));
+        }
+        if (LoreHash != other.LoreHash)
+        {
+            LoreHash = other.LoreHash;
+            OnPropertyChanged(nameof(LoreHash));
+        }
+        if (NodeStyleIdentifier != other.NodeStyleIdentifier)
+        {
+            NodeStyleIdentifier = other.NodeStyleIdentifier;
+            OnPropertyChanged(nameof(NodeStyleIdentifier));
+        }
+        if (IgnoreForCompletion != other.IgnoreForCompletion)
+        {
+            IgnoreForCompletion = other.IgnoreForCompletion;
+            OnPropertyChanged(nameof(IgnoreForCompletion));
+        }
+    }
 }

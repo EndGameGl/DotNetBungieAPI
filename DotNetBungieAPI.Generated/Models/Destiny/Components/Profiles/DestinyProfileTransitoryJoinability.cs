@@ -30,4 +30,32 @@ public class DestinyProfileTransitoryJoinability : IDeepEquatable<DestinyProfile
                PrivacySetting == other.PrivacySetting &&
                ClosedReasons == other.ClosedReasons;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyProfileTransitoryJoinability? other)
+    {
+        if (other is null) return;
+        if (OpenSlots != other.OpenSlots)
+        {
+            OpenSlots = other.OpenSlots;
+            OnPropertyChanged(nameof(OpenSlots));
+        }
+        if (PrivacySetting != other.PrivacySetting)
+        {
+            PrivacySetting = other.PrivacySetting;
+            OnPropertyChanged(nameof(PrivacySetting));
+        }
+        if (ClosedReasons != other.ClosedReasons)
+        {
+            ClosedReasons = other.ClosedReasons;
+            OnPropertyChanged(nameof(ClosedReasons));
+        }
+    }
 }

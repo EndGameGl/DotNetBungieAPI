@@ -72,4 +72,62 @@ public class DestinyCharacterActivitiesComponent : IDeepEquatable<DestinyCharact
                CurrentPlaylistActivityHash == other.CurrentPlaylistActivityHash &&
                LastCompletedStoryHash == other.LastCompletedStoryHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyCharacterActivitiesComponent? other)
+    {
+        if (other is null) return;
+        if (DateActivityStarted != other.DateActivityStarted)
+        {
+            DateActivityStarted = other.DateActivityStarted;
+            OnPropertyChanged(nameof(DateActivityStarted));
+        }
+        if (!AvailableActivities.DeepEqualsList(other.AvailableActivities))
+        {
+            AvailableActivities = other.AvailableActivities;
+            OnPropertyChanged(nameof(AvailableActivities));
+        }
+        if (CurrentActivityHash != other.CurrentActivityHash)
+        {
+            CurrentActivityHash = other.CurrentActivityHash;
+            OnPropertyChanged(nameof(CurrentActivityHash));
+        }
+        if (CurrentActivityModeHash != other.CurrentActivityModeHash)
+        {
+            CurrentActivityModeHash = other.CurrentActivityModeHash;
+            OnPropertyChanged(nameof(CurrentActivityModeHash));
+        }
+        if (CurrentActivityModeType != other.CurrentActivityModeType)
+        {
+            CurrentActivityModeType = other.CurrentActivityModeType;
+            OnPropertyChanged(nameof(CurrentActivityModeType));
+        }
+        if (!CurrentActivityModeHashes.DeepEqualsListNaive(other.CurrentActivityModeHashes))
+        {
+            CurrentActivityModeHashes = other.CurrentActivityModeHashes;
+            OnPropertyChanged(nameof(CurrentActivityModeHashes));
+        }
+        if (!CurrentActivityModeTypes.DeepEqualsListNaive(other.CurrentActivityModeTypes))
+        {
+            CurrentActivityModeTypes = other.CurrentActivityModeTypes;
+            OnPropertyChanged(nameof(CurrentActivityModeTypes));
+        }
+        if (CurrentPlaylistActivityHash != other.CurrentPlaylistActivityHash)
+        {
+            CurrentPlaylistActivityHash = other.CurrentPlaylistActivityHash;
+            OnPropertyChanged(nameof(CurrentPlaylistActivityHash));
+        }
+        if (LastCompletedStoryHash != other.LastCompletedStoryHash)
+        {
+            LastCompletedStoryHash = other.LastCompletedStoryHash;
+            OnPropertyChanged(nameof(LastCompletedStoryHash));
+        }
+    }
 }

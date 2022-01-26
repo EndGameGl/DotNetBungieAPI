@@ -39,4 +39,37 @@ public class DestinyPerkReference : IDeepEquatable<DestinyPerkReference>
                IsActive == other.IsActive &&
                Visible == other.Visible;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPerkReference? other)
+    {
+        if (other is null) return;
+        if (PerkHash != other.PerkHash)
+        {
+            PerkHash = other.PerkHash;
+            OnPropertyChanged(nameof(PerkHash));
+        }
+        if (IconPath != other.IconPath)
+        {
+            IconPath = other.IconPath;
+            OnPropertyChanged(nameof(IconPath));
+        }
+        if (IsActive != other.IsActive)
+        {
+            IsActive = other.IsActive;
+            OnPropertyChanged(nameof(IsActive));
+        }
+        if (Visible != other.Visible)
+        {
+            Visible = other.Visible;
+            OnPropertyChanged(nameof(Visible));
+        }
+    }
 }

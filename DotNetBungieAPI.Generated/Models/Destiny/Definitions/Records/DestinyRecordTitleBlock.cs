@@ -25,4 +25,37 @@ public class DestinyRecordTitleBlock : IDeepEquatable<DestinyRecordTitleBlock>
                TitlesByGenderHash.DeepEqualsDictionaryNaive(other.TitlesByGenderHash) &&
                GildingTrackingRecordHash == other.GildingTrackingRecordHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyRecordTitleBlock? other)
+    {
+        if (other is null) return;
+        if (HasTitle != other.HasTitle)
+        {
+            HasTitle = other.HasTitle;
+            OnPropertyChanged(nameof(HasTitle));
+        }
+        if (!TitlesByGender.DeepEqualsDictionaryNaive(other.TitlesByGender))
+        {
+            TitlesByGender = other.TitlesByGender;
+            OnPropertyChanged(nameof(TitlesByGender));
+        }
+        if (!TitlesByGenderHash.DeepEqualsDictionaryNaive(other.TitlesByGenderHash))
+        {
+            TitlesByGenderHash = other.TitlesByGenderHash;
+            OnPropertyChanged(nameof(TitlesByGenderHash));
+        }
+        if (GildingTrackingRecordHash != other.GildingTrackingRecordHash)
+        {
+            GildingTrackingRecordHash = other.GildingTrackingRecordHash;
+            OnPropertyChanged(nameof(GildingTrackingRecordHash));
+        }
+    }
 }

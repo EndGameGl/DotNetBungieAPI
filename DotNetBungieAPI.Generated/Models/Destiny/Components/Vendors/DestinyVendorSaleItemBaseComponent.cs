@@ -66,4 +66,52 @@ public class DestinyVendorSaleItemBaseComponent : IDeepEquatable<DestinyVendorSa
                OverrideNextRefreshDate == other.OverrideNextRefreshDate &&
                ApiPurchasable == other.ApiPurchasable;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorSaleItemBaseComponent? other)
+    {
+        if (other is null) return;
+        if (VendorItemIndex != other.VendorItemIndex)
+        {
+            VendorItemIndex = other.VendorItemIndex;
+            OnPropertyChanged(nameof(VendorItemIndex));
+        }
+        if (ItemHash != other.ItemHash)
+        {
+            ItemHash = other.ItemHash;
+            OnPropertyChanged(nameof(ItemHash));
+        }
+        if (OverrideStyleItemHash != other.OverrideStyleItemHash)
+        {
+            OverrideStyleItemHash = other.OverrideStyleItemHash;
+            OnPropertyChanged(nameof(OverrideStyleItemHash));
+        }
+        if (Quantity != other.Quantity)
+        {
+            Quantity = other.Quantity;
+            OnPropertyChanged(nameof(Quantity));
+        }
+        if (!Costs.DeepEqualsList(other.Costs))
+        {
+            Costs = other.Costs;
+            OnPropertyChanged(nameof(Costs));
+        }
+        if (OverrideNextRefreshDate != other.OverrideNextRefreshDate)
+        {
+            OverrideNextRefreshDate = other.OverrideNextRefreshDate;
+            OnPropertyChanged(nameof(OverrideNextRefreshDate));
+        }
+        if (ApiPurchasable != other.ApiPurchasable)
+        {
+            ApiPurchasable = other.ApiPurchasable;
+            OnPropertyChanged(nameof(ApiPurchasable));
+        }
+    }
 }

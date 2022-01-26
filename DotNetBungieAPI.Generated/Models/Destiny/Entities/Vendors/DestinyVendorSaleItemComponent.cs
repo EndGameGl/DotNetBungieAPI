@@ -116,4 +116,82 @@ public class DestinyVendorSaleItemComponent : IDeepEquatable<DestinyVendorSaleIt
                OverrideNextRefreshDate == other.OverrideNextRefreshDate &&
                ApiPurchasable == other.ApiPurchasable;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorSaleItemComponent? other)
+    {
+        if (other is null) return;
+        if (SaleStatus != other.SaleStatus)
+        {
+            SaleStatus = other.SaleStatus;
+            OnPropertyChanged(nameof(SaleStatus));
+        }
+        if (!RequiredUnlocks.DeepEqualsListNaive(other.RequiredUnlocks))
+        {
+            RequiredUnlocks = other.RequiredUnlocks;
+            OnPropertyChanged(nameof(RequiredUnlocks));
+        }
+        if (!UnlockStatuses.DeepEqualsList(other.UnlockStatuses))
+        {
+            UnlockStatuses = other.UnlockStatuses;
+            OnPropertyChanged(nameof(UnlockStatuses));
+        }
+        if (!FailureIndexes.DeepEqualsListNaive(other.FailureIndexes))
+        {
+            FailureIndexes = other.FailureIndexes;
+            OnPropertyChanged(nameof(FailureIndexes));
+        }
+        if (Augments != other.Augments)
+        {
+            Augments = other.Augments;
+            OnPropertyChanged(nameof(Augments));
+        }
+        if (!ItemValueVisibility.DeepEqualsListNaive(other.ItemValueVisibility))
+        {
+            ItemValueVisibility = other.ItemValueVisibility;
+            OnPropertyChanged(nameof(ItemValueVisibility));
+        }
+        if (VendorItemIndex != other.VendorItemIndex)
+        {
+            VendorItemIndex = other.VendorItemIndex;
+            OnPropertyChanged(nameof(VendorItemIndex));
+        }
+        if (ItemHash != other.ItemHash)
+        {
+            ItemHash = other.ItemHash;
+            OnPropertyChanged(nameof(ItemHash));
+        }
+        if (OverrideStyleItemHash != other.OverrideStyleItemHash)
+        {
+            OverrideStyleItemHash = other.OverrideStyleItemHash;
+            OnPropertyChanged(nameof(OverrideStyleItemHash));
+        }
+        if (Quantity != other.Quantity)
+        {
+            Quantity = other.Quantity;
+            OnPropertyChanged(nameof(Quantity));
+        }
+        if (!Costs.DeepEqualsList(other.Costs))
+        {
+            Costs = other.Costs;
+            OnPropertyChanged(nameof(Costs));
+        }
+        if (OverrideNextRefreshDate != other.OverrideNextRefreshDate)
+        {
+            OverrideNextRefreshDate = other.OverrideNextRefreshDate;
+            OnPropertyChanged(nameof(OverrideNextRefreshDate));
+        }
+        if (ApiPurchasable != other.ApiPurchasable)
+        {
+            ApiPurchasable = other.ApiPurchasable;
+            OnPropertyChanged(nameof(ApiPurchasable));
+        }
+    }
 }

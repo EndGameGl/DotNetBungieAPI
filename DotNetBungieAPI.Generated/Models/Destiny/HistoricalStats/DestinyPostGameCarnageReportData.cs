@@ -41,4 +41,42 @@ public class DestinyPostGameCarnageReportData : IDeepEquatable<DestinyPostGameCa
                Entries.DeepEqualsList(other.Entries) &&
                Teams.DeepEqualsList(other.Teams);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPostGameCarnageReportData? other)
+    {
+        if (other is null) return;
+        if (Period != other.Period)
+        {
+            Period = other.Period;
+            OnPropertyChanged(nameof(Period));
+        }
+        if (StartingPhaseIndex != other.StartingPhaseIndex)
+        {
+            StartingPhaseIndex = other.StartingPhaseIndex;
+            OnPropertyChanged(nameof(StartingPhaseIndex));
+        }
+        if (!ActivityDetails.DeepEquals(other.ActivityDetails))
+        {
+            ActivityDetails.Update(other.ActivityDetails);
+            OnPropertyChanged(nameof(ActivityDetails));
+        }
+        if (!Entries.DeepEqualsList(other.Entries))
+        {
+            Entries = other.Entries;
+            OnPropertyChanged(nameof(Entries));
+        }
+        if (!Teams.DeepEqualsList(other.Teams))
+        {
+            Teams = other.Teams;
+            OnPropertyChanged(nameof(Teams));
+        }
+    }
 }

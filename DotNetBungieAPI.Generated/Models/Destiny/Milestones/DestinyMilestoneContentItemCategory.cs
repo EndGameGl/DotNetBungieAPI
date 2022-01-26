@@ -17,4 +17,27 @@ public class DestinyMilestoneContentItemCategory : IDeepEquatable<DestinyMilesto
                Title == other.Title &&
                ItemHashes.DeepEqualsListNaive(other.ItemHashes);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneContentItemCategory? other)
+    {
+        if (other is null) return;
+        if (Title != other.Title)
+        {
+            Title = other.Title;
+            OnPropertyChanged(nameof(Title));
+        }
+        if (!ItemHashes.DeepEqualsListNaive(other.ItemHashes))
+        {
+            ItemHashes = other.ItemHashes;
+            OnPropertyChanged(nameof(ItemHashes));
+        }
+    }
 }

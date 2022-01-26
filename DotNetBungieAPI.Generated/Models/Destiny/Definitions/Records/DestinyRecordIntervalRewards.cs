@@ -10,4 +10,22 @@ public class DestinyRecordIntervalRewards : IDeepEquatable<DestinyRecordInterval
         return other is not null &&
                IntervalRewardItems.DeepEqualsList(other.IntervalRewardItems);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyRecordIntervalRewards? other)
+    {
+        if (other is null) return;
+        if (!IntervalRewardItems.DeepEqualsList(other.IntervalRewardItems))
+        {
+            IntervalRewardItems = other.IntervalRewardItems;
+            OnPropertyChanged(nameof(IntervalRewardItems));
+        }
+    }
 }

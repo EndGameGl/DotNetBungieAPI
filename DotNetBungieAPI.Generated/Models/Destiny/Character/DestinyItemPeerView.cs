@@ -23,4 +23,27 @@ public class DestinyItemPeerView : IDeepEquatable<DestinyItemPeerView>
                ItemHash == other.ItemHash &&
                Dyes.DeepEqualsList(other.Dyes);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemPeerView? other)
+    {
+        if (other is null) return;
+        if (ItemHash != other.ItemHash)
+        {
+            ItemHash = other.ItemHash;
+            OnPropertyChanged(nameof(ItemHash));
+        }
+        if (!Dyes.DeepEqualsList(other.Dyes))
+        {
+            Dyes = other.Dyes;
+            OnPropertyChanged(nameof(Dyes));
+        }
+    }
 }

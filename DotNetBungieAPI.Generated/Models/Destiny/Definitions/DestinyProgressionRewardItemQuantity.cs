@@ -50,4 +50,57 @@ public class DestinyProgressionRewardItemQuantity : IDeepEquatable<DestinyProgre
                Quantity == other.Quantity &&
                HasConditionalVisibility == other.HasConditionalVisibility;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyProgressionRewardItemQuantity? other)
+    {
+        if (other is null) return;
+        if (RewardedAtProgressionLevel != other.RewardedAtProgressionLevel)
+        {
+            RewardedAtProgressionLevel = other.RewardedAtProgressionLevel;
+            OnPropertyChanged(nameof(RewardedAtProgressionLevel));
+        }
+        if (AcquisitionBehavior != other.AcquisitionBehavior)
+        {
+            AcquisitionBehavior = other.AcquisitionBehavior;
+            OnPropertyChanged(nameof(AcquisitionBehavior));
+        }
+        if (UiDisplayStyle != other.UiDisplayStyle)
+        {
+            UiDisplayStyle = other.UiDisplayStyle;
+            OnPropertyChanged(nameof(UiDisplayStyle));
+        }
+        if (!ClaimUnlockDisplayStrings.DeepEqualsListNaive(other.ClaimUnlockDisplayStrings))
+        {
+            ClaimUnlockDisplayStrings = other.ClaimUnlockDisplayStrings;
+            OnPropertyChanged(nameof(ClaimUnlockDisplayStrings));
+        }
+        if (ItemHash != other.ItemHash)
+        {
+            ItemHash = other.ItemHash;
+            OnPropertyChanged(nameof(ItemHash));
+        }
+        if (ItemInstanceId != other.ItemInstanceId)
+        {
+            ItemInstanceId = other.ItemInstanceId;
+            OnPropertyChanged(nameof(ItemInstanceId));
+        }
+        if (Quantity != other.Quantity)
+        {
+            Quantity = other.Quantity;
+            OnPropertyChanged(nameof(Quantity));
+        }
+        if (HasConditionalVisibility != other.HasConditionalVisibility)
+        {
+            HasConditionalVisibility = other.HasConditionalVisibility;
+            OnPropertyChanged(nameof(HasConditionalVisibility));
+        }
+    }
 }

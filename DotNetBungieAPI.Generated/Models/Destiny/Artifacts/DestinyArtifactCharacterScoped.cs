@@ -22,4 +22,37 @@ public class DestinyArtifactCharacterScoped : IDeepEquatable<DestinyArtifactChar
                ResetCount == other.ResetCount &&
                Tiers.DeepEqualsList(other.Tiers);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyArtifactCharacterScoped? other)
+    {
+        if (other is null) return;
+        if (ArtifactHash != other.ArtifactHash)
+        {
+            ArtifactHash = other.ArtifactHash;
+            OnPropertyChanged(nameof(ArtifactHash));
+        }
+        if (PointsUsed != other.PointsUsed)
+        {
+            PointsUsed = other.PointsUsed;
+            OnPropertyChanged(nameof(PointsUsed));
+        }
+        if (ResetCount != other.ResetCount)
+        {
+            ResetCount = other.ResetCount;
+            OnPropertyChanged(nameof(ResetCount));
+        }
+        if (!Tiers.DeepEqualsList(other.Tiers))
+        {
+            Tiers = other.Tiers;
+            OnPropertyChanged(nameof(Tiers));
+        }
+    }
 }

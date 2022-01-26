@@ -10,4 +10,22 @@ public class DestinyCollectibleComponent : IDeepEquatable<DestinyCollectibleComp
         return other is not null &&
                State == other.State;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyCollectibleComponent? other)
+    {
+        if (other is null) return;
+        if (State != other.State)
+        {
+            State = other.State;
+            OnPropertyChanged(nameof(State));
+        }
+    }
 }

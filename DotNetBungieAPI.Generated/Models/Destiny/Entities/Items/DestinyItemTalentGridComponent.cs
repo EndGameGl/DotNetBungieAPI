@@ -55,4 +55,37 @@ public class DestinyItemTalentGridComponent : IDeepEquatable<DestinyItemTalentGr
                IsGridComplete == other.IsGridComplete &&
                (GridProgression is not null ? GridProgression.DeepEquals(other.GridProgression) : other.GridProgression is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemTalentGridComponent? other)
+    {
+        if (other is null) return;
+        if (TalentGridHash != other.TalentGridHash)
+        {
+            TalentGridHash = other.TalentGridHash;
+            OnPropertyChanged(nameof(TalentGridHash));
+        }
+        if (!Nodes.DeepEqualsList(other.Nodes))
+        {
+            Nodes = other.Nodes;
+            OnPropertyChanged(nameof(Nodes));
+        }
+        if (IsGridComplete != other.IsGridComplete)
+        {
+            IsGridComplete = other.IsGridComplete;
+            OnPropertyChanged(nameof(IsGridComplete));
+        }
+        if (!GridProgression.DeepEquals(other.GridProgression))
+        {
+            GridProgression.Update(other.GridProgression);
+            OnPropertyChanged(nameof(GridProgression));
+        }
+    }
 }

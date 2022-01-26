@@ -96,4 +96,92 @@ public class DestinyCollectibleDefinition : IDeepEquatable<DestinyCollectibleDef
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyCollectibleDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (Scope != other.Scope)
+        {
+            Scope = other.Scope;
+            OnPropertyChanged(nameof(Scope));
+        }
+        if (SourceString != other.SourceString)
+        {
+            SourceString = other.SourceString;
+            OnPropertyChanged(nameof(SourceString));
+        }
+        if (SourceHash != other.SourceHash)
+        {
+            SourceHash = other.SourceHash;
+            OnPropertyChanged(nameof(SourceHash));
+        }
+        if (ItemHash != other.ItemHash)
+        {
+            ItemHash = other.ItemHash;
+            OnPropertyChanged(nameof(ItemHash));
+        }
+        if (!AcquisitionInfo.DeepEquals(other.AcquisitionInfo))
+        {
+            AcquisitionInfo.Update(other.AcquisitionInfo);
+            OnPropertyChanged(nameof(AcquisitionInfo));
+        }
+        if (!StateInfo.DeepEquals(other.StateInfo))
+        {
+            StateInfo.Update(other.StateInfo);
+            OnPropertyChanged(nameof(StateInfo));
+        }
+        if (!PresentationInfo.DeepEquals(other.PresentationInfo))
+        {
+            PresentationInfo.Update(other.PresentationInfo);
+            OnPropertyChanged(nameof(PresentationInfo));
+        }
+        if (PresentationNodeType != other.PresentationNodeType)
+        {
+            PresentationNodeType = other.PresentationNodeType;
+            OnPropertyChanged(nameof(PresentationNodeType));
+        }
+        if (!TraitIds.DeepEqualsListNaive(other.TraitIds))
+        {
+            TraitIds = other.TraitIds;
+            OnPropertyChanged(nameof(TraitIds));
+        }
+        if (!TraitHashes.DeepEqualsListNaive(other.TraitHashes))
+        {
+            TraitHashes = other.TraitHashes;
+            OnPropertyChanged(nameof(TraitHashes));
+        }
+        if (!ParentNodeHashes.DeepEqualsListNaive(other.ParentNodeHashes))
+        {
+            ParentNodeHashes = other.ParentNodeHashes;
+            OnPropertyChanged(nameof(ParentNodeHashes));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

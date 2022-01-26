@@ -18,4 +18,32 @@ public class ContentTypeDefaultValue : IDeepEquatable<ContentTypeDefaultValue>
                WhenValue == other.WhenValue &&
                DefaultValue == other.DefaultValue;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(ContentTypeDefaultValue? other)
+    {
+        if (other is null) return;
+        if (WhenClause != other.WhenClause)
+        {
+            WhenClause = other.WhenClause;
+            OnPropertyChanged(nameof(WhenClause));
+        }
+        if (WhenValue != other.WhenValue)
+        {
+            WhenValue = other.WhenValue;
+            OnPropertyChanged(nameof(WhenValue));
+        }
+        if (DefaultValue != other.DefaultValue)
+        {
+            DefaultValue = other.DefaultValue;
+            OnPropertyChanged(nameof(DefaultValue));
+        }
+    }
 }

@@ -48,4 +48,47 @@ public class DestinyPostGameCarnageReportEntry : IDeepEquatable<DestinyPostGameC
                Values.DeepEqualsDictionary(other.Values) &&
                (Extended is not null ? Extended.DeepEquals(other.Extended) : other.Extended is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPostGameCarnageReportEntry? other)
+    {
+        if (other is null) return;
+        if (Standing != other.Standing)
+        {
+            Standing = other.Standing;
+            OnPropertyChanged(nameof(Standing));
+        }
+        if (!Score.DeepEquals(other.Score))
+        {
+            Score.Update(other.Score);
+            OnPropertyChanged(nameof(Score));
+        }
+        if (!Player.DeepEquals(other.Player))
+        {
+            Player.Update(other.Player);
+            OnPropertyChanged(nameof(Player));
+        }
+        if (CharacterId != other.CharacterId)
+        {
+            CharacterId = other.CharacterId;
+            OnPropertyChanged(nameof(CharacterId));
+        }
+        if (!Values.DeepEqualsDictionary(other.Values))
+        {
+            Values = other.Values;
+            OnPropertyChanged(nameof(Values));
+        }
+        if (!Extended.DeepEquals(other.Extended))
+        {
+            Extended.Update(other.Extended);
+            OnPropertyChanged(nameof(Extended));
+        }
+    }
 }

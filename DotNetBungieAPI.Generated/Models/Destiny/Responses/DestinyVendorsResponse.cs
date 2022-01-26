@@ -74,4 +74,52 @@ public class DestinyVendorsResponse : IDeepEquatable<DestinyVendorsResponse>
                (CurrencyLookups is not null ? CurrencyLookups.DeepEquals(other.CurrencyLookups) : other.CurrencyLookups is null) &&
                (StringVariables is not null ? StringVariables.DeepEquals(other.StringVariables) : other.StringVariables is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorsResponse? other)
+    {
+        if (other is null) return;
+        if (!VendorGroups.DeepEquals(other.VendorGroups))
+        {
+            VendorGroups.Update(other.VendorGroups);
+            OnPropertyChanged(nameof(VendorGroups));
+        }
+        if (!Vendors.DeepEquals(other.Vendors))
+        {
+            Vendors.Update(other.Vendors);
+            OnPropertyChanged(nameof(Vendors));
+        }
+        if (!Categories.DeepEquals(other.Categories))
+        {
+            Categories.Update(other.Categories);
+            OnPropertyChanged(nameof(Categories));
+        }
+        if (!Sales.DeepEquals(other.Sales))
+        {
+            Sales.Update(other.Sales);
+            OnPropertyChanged(nameof(Sales));
+        }
+        if (!ItemComponents.DeepEqualsDictionary(other.ItemComponents))
+        {
+            ItemComponents = other.ItemComponents;
+            OnPropertyChanged(nameof(ItemComponents));
+        }
+        if (!CurrencyLookups.DeepEquals(other.CurrencyLookups))
+        {
+            CurrencyLookups.Update(other.CurrencyLookups);
+            OnPropertyChanged(nameof(CurrencyLookups));
+        }
+        if (!StringVariables.DeepEquals(other.StringVariables))
+        {
+            StringVariables.Update(other.StringVariables);
+            OnPropertyChanged(nameof(StringVariables));
+        }
+    }
 }

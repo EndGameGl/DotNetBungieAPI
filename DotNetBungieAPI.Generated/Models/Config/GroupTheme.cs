@@ -18,4 +18,32 @@ public class GroupTheme : IDeepEquatable<GroupTheme>
                Folder == other.Folder &&
                Description == other.Description;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(GroupTheme? other)
+    {
+        if (other is null) return;
+        if (Name != other.Name)
+        {
+            Name = other.Name;
+            OnPropertyChanged(nameof(Name));
+        }
+        if (Folder != other.Folder)
+        {
+            Folder = other.Folder;
+            OnPropertyChanged(nameof(Folder));
+        }
+        if (Description != other.Description)
+        {
+            Description = other.Description;
+            OnPropertyChanged(nameof(Description));
+        }
+    }
 }

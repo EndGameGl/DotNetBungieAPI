@@ -20,4 +20,27 @@ public class DestinyLeaderboardResults : IDeepEquatable<DestinyLeaderboardResult
                FocusMembershipId == other.FocusMembershipId &&
                FocusCharacterId == other.FocusCharacterId;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyLeaderboardResults? other)
+    {
+        if (other is null) return;
+        if (FocusMembershipId != other.FocusMembershipId)
+        {
+            FocusMembershipId = other.FocusMembershipId;
+            OnPropertyChanged(nameof(FocusMembershipId));
+        }
+        if (FocusCharacterId != other.FocusCharacterId)
+        {
+            FocusCharacterId = other.FocusCharacterId;
+            OnPropertyChanged(nameof(FocusCharacterId));
+        }
+    }
 }

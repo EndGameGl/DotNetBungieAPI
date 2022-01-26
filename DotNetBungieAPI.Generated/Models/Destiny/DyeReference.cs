@@ -14,4 +14,27 @@ public class DyeReference : IDeepEquatable<DyeReference>
                ChannelHash == other.ChannelHash &&
                DyeHash == other.DyeHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DyeReference? other)
+    {
+        if (other is null) return;
+        if (ChannelHash != other.ChannelHash)
+        {
+            ChannelHash = other.ChannelHash;
+            OnPropertyChanged(nameof(ChannelHash));
+        }
+        if (DyeHash != other.DyeHash)
+        {
+            DyeHash = other.DyeHash;
+            OnPropertyChanged(nameof(DyeHash));
+        }
+    }
 }

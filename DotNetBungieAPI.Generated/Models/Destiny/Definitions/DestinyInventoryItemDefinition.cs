@@ -478,4 +478,332 @@ public class DestinyInventoryItemDefinition : IDeepEquatable<DestinyInventoryIte
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyInventoryItemDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (!TooltipNotifications.DeepEqualsList(other.TooltipNotifications))
+        {
+            TooltipNotifications = other.TooltipNotifications;
+            OnPropertyChanged(nameof(TooltipNotifications));
+        }
+        if (CollectibleHash != other.CollectibleHash)
+        {
+            CollectibleHash = other.CollectibleHash;
+            OnPropertyChanged(nameof(CollectibleHash));
+        }
+        if (IconWatermark != other.IconWatermark)
+        {
+            IconWatermark = other.IconWatermark;
+            OnPropertyChanged(nameof(IconWatermark));
+        }
+        if (IconWatermarkShelved != other.IconWatermarkShelved)
+        {
+            IconWatermarkShelved = other.IconWatermarkShelved;
+            OnPropertyChanged(nameof(IconWatermarkShelved));
+        }
+        if (SecondaryIcon != other.SecondaryIcon)
+        {
+            SecondaryIcon = other.SecondaryIcon;
+            OnPropertyChanged(nameof(SecondaryIcon));
+        }
+        if (SecondaryOverlay != other.SecondaryOverlay)
+        {
+            SecondaryOverlay = other.SecondaryOverlay;
+            OnPropertyChanged(nameof(SecondaryOverlay));
+        }
+        if (SecondarySpecial != other.SecondarySpecial)
+        {
+            SecondarySpecial = other.SecondarySpecial;
+            OnPropertyChanged(nameof(SecondarySpecial));
+        }
+        if (!BackgroundColor.DeepEquals(other.BackgroundColor))
+        {
+            BackgroundColor.Update(other.BackgroundColor);
+            OnPropertyChanged(nameof(BackgroundColor));
+        }
+        if (Screenshot != other.Screenshot)
+        {
+            Screenshot = other.Screenshot;
+            OnPropertyChanged(nameof(Screenshot));
+        }
+        if (ItemTypeDisplayName != other.ItemTypeDisplayName)
+        {
+            ItemTypeDisplayName = other.ItemTypeDisplayName;
+            OnPropertyChanged(nameof(ItemTypeDisplayName));
+        }
+        if (FlavorText != other.FlavorText)
+        {
+            FlavorText = other.FlavorText;
+            OnPropertyChanged(nameof(FlavorText));
+        }
+        if (UiItemDisplayStyle != other.UiItemDisplayStyle)
+        {
+            UiItemDisplayStyle = other.UiItemDisplayStyle;
+            OnPropertyChanged(nameof(UiItemDisplayStyle));
+        }
+        if (ItemTypeAndTierDisplayName != other.ItemTypeAndTierDisplayName)
+        {
+            ItemTypeAndTierDisplayName = other.ItemTypeAndTierDisplayName;
+            OnPropertyChanged(nameof(ItemTypeAndTierDisplayName));
+        }
+        if (DisplaySource != other.DisplaySource)
+        {
+            DisplaySource = other.DisplaySource;
+            OnPropertyChanged(nameof(DisplaySource));
+        }
+        if (TooltipStyle != other.TooltipStyle)
+        {
+            TooltipStyle = other.TooltipStyle;
+            OnPropertyChanged(nameof(TooltipStyle));
+        }
+        if (!Action.DeepEquals(other.Action))
+        {
+            Action.Update(other.Action);
+            OnPropertyChanged(nameof(Action));
+        }
+        if (!Inventory.DeepEquals(other.Inventory))
+        {
+            Inventory.Update(other.Inventory);
+            OnPropertyChanged(nameof(Inventory));
+        }
+        if (!SetData.DeepEquals(other.SetData))
+        {
+            SetData.Update(other.SetData);
+            OnPropertyChanged(nameof(SetData));
+        }
+        if (!Stats.DeepEquals(other.Stats))
+        {
+            Stats.Update(other.Stats);
+            OnPropertyChanged(nameof(Stats));
+        }
+        if (EmblemObjectiveHash != other.EmblemObjectiveHash)
+        {
+            EmblemObjectiveHash = other.EmblemObjectiveHash;
+            OnPropertyChanged(nameof(EmblemObjectiveHash));
+        }
+        if (!EquippingBlock.DeepEquals(other.EquippingBlock))
+        {
+            EquippingBlock.Update(other.EquippingBlock);
+            OnPropertyChanged(nameof(EquippingBlock));
+        }
+        if (!TranslationBlock.DeepEquals(other.TranslationBlock))
+        {
+            TranslationBlock.Update(other.TranslationBlock);
+            OnPropertyChanged(nameof(TranslationBlock));
+        }
+        if (!Preview.DeepEquals(other.Preview))
+        {
+            Preview.Update(other.Preview);
+            OnPropertyChanged(nameof(Preview));
+        }
+        if (!Quality.DeepEquals(other.Quality))
+        {
+            Quality.Update(other.Quality);
+            OnPropertyChanged(nameof(Quality));
+        }
+        if (!Value.DeepEquals(other.Value))
+        {
+            Value.Update(other.Value);
+            OnPropertyChanged(nameof(Value));
+        }
+        if (!SourceData.DeepEquals(other.SourceData))
+        {
+            SourceData.Update(other.SourceData);
+            OnPropertyChanged(nameof(SourceData));
+        }
+        if (!Objectives.DeepEquals(other.Objectives))
+        {
+            Objectives.Update(other.Objectives);
+            OnPropertyChanged(nameof(Objectives));
+        }
+        if (!Metrics.DeepEquals(other.Metrics))
+        {
+            Metrics.Update(other.Metrics);
+            OnPropertyChanged(nameof(Metrics));
+        }
+        if (!Plug.DeepEquals(other.Plug))
+        {
+            Plug.Update(other.Plug);
+            OnPropertyChanged(nameof(Plug));
+        }
+        if (!Gearset.DeepEquals(other.Gearset))
+        {
+            Gearset.Update(other.Gearset);
+            OnPropertyChanged(nameof(Gearset));
+        }
+        if (!Sack.DeepEquals(other.Sack))
+        {
+            Sack.Update(other.Sack);
+            OnPropertyChanged(nameof(Sack));
+        }
+        if (!Sockets.DeepEquals(other.Sockets))
+        {
+            Sockets.Update(other.Sockets);
+            OnPropertyChanged(nameof(Sockets));
+        }
+        if (!Summary.DeepEquals(other.Summary))
+        {
+            Summary.Update(other.Summary);
+            OnPropertyChanged(nameof(Summary));
+        }
+        if (!TalentGrid.DeepEquals(other.TalentGrid))
+        {
+            TalentGrid.Update(other.TalentGrid);
+            OnPropertyChanged(nameof(TalentGrid));
+        }
+        if (!InvestmentStats.DeepEqualsList(other.InvestmentStats))
+        {
+            InvestmentStats = other.InvestmentStats;
+            OnPropertyChanged(nameof(InvestmentStats));
+        }
+        if (!Perks.DeepEqualsList(other.Perks))
+        {
+            Perks = other.Perks;
+            OnPropertyChanged(nameof(Perks));
+        }
+        if (LoreHash != other.LoreHash)
+        {
+            LoreHash = other.LoreHash;
+            OnPropertyChanged(nameof(LoreHash));
+        }
+        if (SummaryItemHash != other.SummaryItemHash)
+        {
+            SummaryItemHash = other.SummaryItemHash;
+            OnPropertyChanged(nameof(SummaryItemHash));
+        }
+        if (!Animations.DeepEqualsList(other.Animations))
+        {
+            Animations = other.Animations;
+            OnPropertyChanged(nameof(Animations));
+        }
+        if (AllowActions != other.AllowActions)
+        {
+            AllowActions = other.AllowActions;
+            OnPropertyChanged(nameof(AllowActions));
+        }
+        if (!Links.DeepEqualsList(other.Links))
+        {
+            Links = other.Links;
+            OnPropertyChanged(nameof(Links));
+        }
+        if (DoesPostmasterPullHaveSideEffects != other.DoesPostmasterPullHaveSideEffects)
+        {
+            DoesPostmasterPullHaveSideEffects = other.DoesPostmasterPullHaveSideEffects;
+            OnPropertyChanged(nameof(DoesPostmasterPullHaveSideEffects));
+        }
+        if (NonTransferrable != other.NonTransferrable)
+        {
+            NonTransferrable = other.NonTransferrable;
+            OnPropertyChanged(nameof(NonTransferrable));
+        }
+        if (!ItemCategoryHashes.DeepEqualsListNaive(other.ItemCategoryHashes))
+        {
+            ItemCategoryHashes = other.ItemCategoryHashes;
+            OnPropertyChanged(nameof(ItemCategoryHashes));
+        }
+        if (SpecialItemType != other.SpecialItemType)
+        {
+            SpecialItemType = other.SpecialItemType;
+            OnPropertyChanged(nameof(SpecialItemType));
+        }
+        if (ItemType != other.ItemType)
+        {
+            ItemType = other.ItemType;
+            OnPropertyChanged(nameof(ItemType));
+        }
+        if (ItemSubType != other.ItemSubType)
+        {
+            ItemSubType = other.ItemSubType;
+            OnPropertyChanged(nameof(ItemSubType));
+        }
+        if (ClassType != other.ClassType)
+        {
+            ClassType = other.ClassType;
+            OnPropertyChanged(nameof(ClassType));
+        }
+        if (BreakerType != other.BreakerType)
+        {
+            BreakerType = other.BreakerType;
+            OnPropertyChanged(nameof(BreakerType));
+        }
+        if (BreakerTypeHash != other.BreakerTypeHash)
+        {
+            BreakerTypeHash = other.BreakerTypeHash;
+            OnPropertyChanged(nameof(BreakerTypeHash));
+        }
+        if (Equippable != other.Equippable)
+        {
+            Equippable = other.Equippable;
+            OnPropertyChanged(nameof(Equippable));
+        }
+        if (!DamageTypeHashes.DeepEqualsListNaive(other.DamageTypeHashes))
+        {
+            DamageTypeHashes = other.DamageTypeHashes;
+            OnPropertyChanged(nameof(DamageTypeHashes));
+        }
+        if (!DamageTypes.DeepEqualsListNaive(other.DamageTypes))
+        {
+            DamageTypes = other.DamageTypes;
+            OnPropertyChanged(nameof(DamageTypes));
+        }
+        if (DefaultDamageType != other.DefaultDamageType)
+        {
+            DefaultDamageType = other.DefaultDamageType;
+            OnPropertyChanged(nameof(DefaultDamageType));
+        }
+        if (DefaultDamageTypeHash != other.DefaultDamageTypeHash)
+        {
+            DefaultDamageTypeHash = other.DefaultDamageTypeHash;
+            OnPropertyChanged(nameof(DefaultDamageTypeHash));
+        }
+        if (SeasonHash != other.SeasonHash)
+        {
+            SeasonHash = other.SeasonHash;
+            OnPropertyChanged(nameof(SeasonHash));
+        }
+        if (IsWrapper != other.IsWrapper)
+        {
+            IsWrapper = other.IsWrapper;
+            OnPropertyChanged(nameof(IsWrapper));
+        }
+        if (!TraitIds.DeepEqualsListNaive(other.TraitIds))
+        {
+            TraitIds = other.TraitIds;
+            OnPropertyChanged(nameof(TraitIds));
+        }
+        if (!TraitHashes.DeepEqualsListNaive(other.TraitHashes))
+        {
+            TraitHashes = other.TraitHashes;
+            OnPropertyChanged(nameof(TraitHashes));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

@@ -51,4 +51,47 @@ public class DestinyDerivedItemDefinition : IDeepEquatable<DestinyDerivedItemDef
                IconPath == other.IconPath &&
                VendorItemIndex == other.VendorItemIndex;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyDerivedItemDefinition? other)
+    {
+        if (other is null) return;
+        if (ItemHash != other.ItemHash)
+        {
+            ItemHash = other.ItemHash;
+            OnPropertyChanged(nameof(ItemHash));
+        }
+        if (ItemName != other.ItemName)
+        {
+            ItemName = other.ItemName;
+            OnPropertyChanged(nameof(ItemName));
+        }
+        if (ItemDetail != other.ItemDetail)
+        {
+            ItemDetail = other.ItemDetail;
+            OnPropertyChanged(nameof(ItemDetail));
+        }
+        if (ItemDescription != other.ItemDescription)
+        {
+            ItemDescription = other.ItemDescription;
+            OnPropertyChanged(nameof(ItemDescription));
+        }
+        if (IconPath != other.IconPath)
+        {
+            IconPath = other.IconPath;
+            OnPropertyChanged(nameof(IconPath));
+        }
+        if (VendorItemIndex != other.VendorItemIndex)
+        {
+            VendorItemIndex = other.VendorItemIndex;
+            OnPropertyChanged(nameof(VendorItemIndex));
+        }
+    }
 }

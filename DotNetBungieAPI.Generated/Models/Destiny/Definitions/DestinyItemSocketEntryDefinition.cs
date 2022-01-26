@@ -80,4 +80,62 @@ public class DestinyItemSocketEntryDefinition : IDeepEquatable<DestinyItemSocket
                RandomizedPlugSetHash == other.RandomizedPlugSetHash &&
                DefaultVisible == other.DefaultVisible;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemSocketEntryDefinition? other)
+    {
+        if (other is null) return;
+        if (SocketTypeHash != other.SocketTypeHash)
+        {
+            SocketTypeHash = other.SocketTypeHash;
+            OnPropertyChanged(nameof(SocketTypeHash));
+        }
+        if (SingleInitialItemHash != other.SingleInitialItemHash)
+        {
+            SingleInitialItemHash = other.SingleInitialItemHash;
+            OnPropertyChanged(nameof(SingleInitialItemHash));
+        }
+        if (!ReusablePlugItems.DeepEqualsList(other.ReusablePlugItems))
+        {
+            ReusablePlugItems = other.ReusablePlugItems;
+            OnPropertyChanged(nameof(ReusablePlugItems));
+        }
+        if (PreventInitializationOnVendorPurchase != other.PreventInitializationOnVendorPurchase)
+        {
+            PreventInitializationOnVendorPurchase = other.PreventInitializationOnVendorPurchase;
+            OnPropertyChanged(nameof(PreventInitializationOnVendorPurchase));
+        }
+        if (HidePerksInItemTooltip != other.HidePerksInItemTooltip)
+        {
+            HidePerksInItemTooltip = other.HidePerksInItemTooltip;
+            OnPropertyChanged(nameof(HidePerksInItemTooltip));
+        }
+        if (PlugSources != other.PlugSources)
+        {
+            PlugSources = other.PlugSources;
+            OnPropertyChanged(nameof(PlugSources));
+        }
+        if (ReusablePlugSetHash != other.ReusablePlugSetHash)
+        {
+            ReusablePlugSetHash = other.ReusablePlugSetHash;
+            OnPropertyChanged(nameof(ReusablePlugSetHash));
+        }
+        if (RandomizedPlugSetHash != other.RandomizedPlugSetHash)
+        {
+            RandomizedPlugSetHash = other.RandomizedPlugSetHash;
+            OnPropertyChanged(nameof(RandomizedPlugSetHash));
+        }
+        if (DefaultVisible != other.DefaultVisible)
+        {
+            DefaultVisible = other.DefaultVisible;
+            OnPropertyChanged(nameof(DefaultVisible));
+        }
+    }
 }

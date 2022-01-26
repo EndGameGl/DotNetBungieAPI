@@ -59,4 +59,77 @@ public class DestinyCharacterCustomization : IDeepEquatable<DestinyCharacterCust
                FeatureIndex == other.FeatureIndex &&
                DecalIndex == other.DecalIndex;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyCharacterCustomization? other)
+    {
+        if (other is null) return;
+        if (Personality != other.Personality)
+        {
+            Personality = other.Personality;
+            OnPropertyChanged(nameof(Personality));
+        }
+        if (Face != other.Face)
+        {
+            Face = other.Face;
+            OnPropertyChanged(nameof(Face));
+        }
+        if (SkinColor != other.SkinColor)
+        {
+            SkinColor = other.SkinColor;
+            OnPropertyChanged(nameof(SkinColor));
+        }
+        if (LipColor != other.LipColor)
+        {
+            LipColor = other.LipColor;
+            OnPropertyChanged(nameof(LipColor));
+        }
+        if (EyeColor != other.EyeColor)
+        {
+            EyeColor = other.EyeColor;
+            OnPropertyChanged(nameof(EyeColor));
+        }
+        if (!HairColors.DeepEqualsListNaive(other.HairColors))
+        {
+            HairColors = other.HairColors;
+            OnPropertyChanged(nameof(HairColors));
+        }
+        if (!FeatureColors.DeepEqualsListNaive(other.FeatureColors))
+        {
+            FeatureColors = other.FeatureColors;
+            OnPropertyChanged(nameof(FeatureColors));
+        }
+        if (DecalColor != other.DecalColor)
+        {
+            DecalColor = other.DecalColor;
+            OnPropertyChanged(nameof(DecalColor));
+        }
+        if (WearHelmet != other.WearHelmet)
+        {
+            WearHelmet = other.WearHelmet;
+            OnPropertyChanged(nameof(WearHelmet));
+        }
+        if (HairIndex != other.HairIndex)
+        {
+            HairIndex = other.HairIndex;
+            OnPropertyChanged(nameof(HairIndex));
+        }
+        if (FeatureIndex != other.FeatureIndex)
+        {
+            FeatureIndex = other.FeatureIndex;
+            OnPropertyChanged(nameof(FeatureIndex));
+        }
+        if (DecalIndex != other.DecalIndex)
+        {
+            DecalIndex = other.DecalIndex;
+            OnPropertyChanged(nameof(DecalIndex));
+        }
+    }
 }

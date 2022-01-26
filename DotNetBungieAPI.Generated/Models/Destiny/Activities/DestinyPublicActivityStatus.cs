@@ -34,4 +34,32 @@ public class DestinyPublicActivityStatus : IDeepEquatable<DestinyPublicActivityS
                ModifierHashes.DeepEqualsListNaive(other.ModifierHashes) &&
                RewardTooltipItems.DeepEqualsList(other.RewardTooltipItems);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPublicActivityStatus? other)
+    {
+        if (other is null) return;
+        if (!ChallengeObjectiveHashes.DeepEqualsListNaive(other.ChallengeObjectiveHashes))
+        {
+            ChallengeObjectiveHashes = other.ChallengeObjectiveHashes;
+            OnPropertyChanged(nameof(ChallengeObjectiveHashes));
+        }
+        if (!ModifierHashes.DeepEqualsListNaive(other.ModifierHashes))
+        {
+            ModifierHashes = other.ModifierHashes;
+            OnPropertyChanged(nameof(ModifierHashes));
+        }
+        if (!RewardTooltipItems.DeepEqualsList(other.RewardTooltipItems))
+        {
+            RewardTooltipItems = other.RewardTooltipItems;
+            OnPropertyChanged(nameof(RewardTooltipItems));
+        }
+    }
 }

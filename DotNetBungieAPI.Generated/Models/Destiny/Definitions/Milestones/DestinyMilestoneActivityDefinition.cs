@@ -33,4 +33,27 @@ public class DestinyMilestoneActivityDefinition : IDeepEquatable<DestinyMileston
                ConceptualActivityHash == other.ConceptualActivityHash &&
                Variants.DeepEqualsDictionary(other.Variants);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneActivityDefinition? other)
+    {
+        if (other is null) return;
+        if (ConceptualActivityHash != other.ConceptualActivityHash)
+        {
+            ConceptualActivityHash = other.ConceptualActivityHash;
+            OnPropertyChanged(nameof(ConceptualActivityHash));
+        }
+        if (!Variants.DeepEqualsDictionary(other.Variants))
+        {
+            Variants = other.Variants;
+            OnPropertyChanged(nameof(Variants));
+        }
+    }
 }

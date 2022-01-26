@@ -22,4 +22,27 @@ public class DestinyVendorGroup : IDeepEquatable<DestinyVendorGroup>
                VendorGroupHash == other.VendorGroupHash &&
                VendorHashes.DeepEqualsListNaive(other.VendorHashes);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorGroup? other)
+    {
+        if (other is null) return;
+        if (VendorGroupHash != other.VendorGroupHash)
+        {
+            VendorGroupHash = other.VendorGroupHash;
+            OnPropertyChanged(nameof(VendorGroupHash));
+        }
+        if (!VendorHashes.DeepEqualsListNaive(other.VendorHashes))
+        {
+            VendorHashes = other.VendorHashes;
+            OnPropertyChanged(nameof(VendorHashes));
+        }
+    }
 }

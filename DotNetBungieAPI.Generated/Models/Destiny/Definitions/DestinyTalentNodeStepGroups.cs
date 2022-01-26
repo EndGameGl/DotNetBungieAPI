@@ -29,4 +29,42 @@ public class DestinyTalentNodeStepGroups : IDeepEquatable<DestinyTalentNodeStepG
                LightAbilities == other.LightAbilities &&
                DamageTypes == other.DamageTypes;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyTalentNodeStepGroups? other)
+    {
+        if (other is null) return;
+        if (WeaponPerformance != other.WeaponPerformance)
+        {
+            WeaponPerformance = other.WeaponPerformance;
+            OnPropertyChanged(nameof(WeaponPerformance));
+        }
+        if (ImpactEffects != other.ImpactEffects)
+        {
+            ImpactEffects = other.ImpactEffects;
+            OnPropertyChanged(nameof(ImpactEffects));
+        }
+        if (GuardianAttributes != other.GuardianAttributes)
+        {
+            GuardianAttributes = other.GuardianAttributes;
+            OnPropertyChanged(nameof(GuardianAttributes));
+        }
+        if (LightAbilities != other.LightAbilities)
+        {
+            LightAbilities = other.LightAbilities;
+            OnPropertyChanged(nameof(LightAbilities));
+        }
+        if (DamageTypes != other.DamageTypes)
+        {
+            DamageTypes = other.DamageTypes;
+            OnPropertyChanged(nameof(DamageTypes));
+        }
+    }
 }

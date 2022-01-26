@@ -16,4 +16,22 @@ public class DestinyActivityGraphArtElementDefinition : IDeepEquatable<DestinyAc
         return other is not null &&
                (Position is not null ? Position.DeepEquals(other.Position) : other.Position is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityGraphArtElementDefinition? other)
+    {
+        if (other is null) return;
+        if (!Position.DeepEquals(other.Position))
+        {
+            Position.Update(other.Position);
+            OnPropertyChanged(nameof(Position));
+        }
+    }
 }

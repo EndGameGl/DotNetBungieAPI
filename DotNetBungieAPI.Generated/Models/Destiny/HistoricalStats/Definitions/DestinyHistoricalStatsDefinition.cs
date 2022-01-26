@@ -104,4 +104,87 @@ public class DestinyHistoricalStatsDefinition : IDeepEquatable<DestinyHistorical
                Weight == other.Weight &&
                MedalTierHash == other.MedalTierHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyHistoricalStatsDefinition? other)
+    {
+        if (other is null) return;
+        if (StatId != other.StatId)
+        {
+            StatId = other.StatId;
+            OnPropertyChanged(nameof(StatId));
+        }
+        if (Group != other.Group)
+        {
+            Group = other.Group;
+            OnPropertyChanged(nameof(Group));
+        }
+        if (!PeriodTypes.DeepEqualsListNaive(other.PeriodTypes))
+        {
+            PeriodTypes = other.PeriodTypes;
+            OnPropertyChanged(nameof(PeriodTypes));
+        }
+        if (!Modes.DeepEqualsListNaive(other.Modes))
+        {
+            Modes = other.Modes;
+            OnPropertyChanged(nameof(Modes));
+        }
+        if (Category != other.Category)
+        {
+            Category = other.Category;
+            OnPropertyChanged(nameof(Category));
+        }
+        if (StatName != other.StatName)
+        {
+            StatName = other.StatName;
+            OnPropertyChanged(nameof(StatName));
+        }
+        if (StatNameAbbr != other.StatNameAbbr)
+        {
+            StatNameAbbr = other.StatNameAbbr;
+            OnPropertyChanged(nameof(StatNameAbbr));
+        }
+        if (StatDescription != other.StatDescription)
+        {
+            StatDescription = other.StatDescription;
+            OnPropertyChanged(nameof(StatDescription));
+        }
+        if (UnitType != other.UnitType)
+        {
+            UnitType = other.UnitType;
+            OnPropertyChanged(nameof(UnitType));
+        }
+        if (IconImage != other.IconImage)
+        {
+            IconImage = other.IconImage;
+            OnPropertyChanged(nameof(IconImage));
+        }
+        if (MergeMethod != other.MergeMethod)
+        {
+            MergeMethod = other.MergeMethod;
+            OnPropertyChanged(nameof(MergeMethod));
+        }
+        if (UnitLabel != other.UnitLabel)
+        {
+            UnitLabel = other.UnitLabel;
+            OnPropertyChanged(nameof(UnitLabel));
+        }
+        if (Weight != other.Weight)
+        {
+            Weight = other.Weight;
+            OnPropertyChanged(nameof(Weight));
+        }
+        if (MedalTierHash != other.MedalTierHash)
+        {
+            MedalTierHash = other.MedalTierHash;
+            OnPropertyChanged(nameof(MedalTierHash));
+        }
+    }
 }

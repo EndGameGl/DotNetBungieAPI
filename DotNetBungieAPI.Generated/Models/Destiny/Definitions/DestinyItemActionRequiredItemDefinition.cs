@@ -30,4 +30,32 @@ public class DestinyItemActionRequiredItemDefinition : IDeepEquatable<DestinyIte
                ItemHash == other.ItemHash &&
                DeleteOnAction == other.DeleteOnAction;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemActionRequiredItemDefinition? other)
+    {
+        if (other is null) return;
+        if (Count != other.Count)
+        {
+            Count = other.Count;
+            OnPropertyChanged(nameof(Count));
+        }
+        if (ItemHash != other.ItemHash)
+        {
+            ItemHash = other.ItemHash;
+            OnPropertyChanged(nameof(ItemHash));
+        }
+        if (DeleteOnAction != other.DeleteOnAction)
+        {
+            DeleteOnAction = other.DeleteOnAction;
+            OnPropertyChanged(nameof(DeleteOnAction));
+        }
+    }
 }

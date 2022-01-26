@@ -18,4 +18,32 @@ public class DestinyItemSetActionRequest : IDeepEquatable<DestinyItemSetActionRe
                CharacterId == other.CharacterId &&
                MembershipType == other.MembershipType;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemSetActionRequest? other)
+    {
+        if (other is null) return;
+        if (!ItemIds.DeepEqualsListNaive(other.ItemIds))
+        {
+            ItemIds = other.ItemIds;
+            OnPropertyChanged(nameof(ItemIds));
+        }
+        if (CharacterId != other.CharacterId)
+        {
+            CharacterId = other.CharacterId;
+            OnPropertyChanged(nameof(CharacterId));
+        }
+        if (MembershipType != other.MembershipType)
+        {
+            MembershipType = other.MembershipType;
+            OnPropertyChanged(nameof(MembershipType));
+        }
+    }
 }

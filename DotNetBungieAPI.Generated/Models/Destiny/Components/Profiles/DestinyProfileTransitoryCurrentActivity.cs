@@ -53,4 +53,47 @@ public class DestinyProfileTransitoryCurrentActivity : IDeepEquatable<DestinyPro
                NumberOfOpponents == other.NumberOfOpponents &&
                NumberOfPlayers == other.NumberOfPlayers;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyProfileTransitoryCurrentActivity? other)
+    {
+        if (other is null) return;
+        if (StartTime != other.StartTime)
+        {
+            StartTime = other.StartTime;
+            OnPropertyChanged(nameof(StartTime));
+        }
+        if (EndTime != other.EndTime)
+        {
+            EndTime = other.EndTime;
+            OnPropertyChanged(nameof(EndTime));
+        }
+        if (Score != other.Score)
+        {
+            Score = other.Score;
+            OnPropertyChanged(nameof(Score));
+        }
+        if (HighestOpposingFactionScore != other.HighestOpposingFactionScore)
+        {
+            HighestOpposingFactionScore = other.HighestOpposingFactionScore;
+            OnPropertyChanged(nameof(HighestOpposingFactionScore));
+        }
+        if (NumberOfOpponents != other.NumberOfOpponents)
+        {
+            NumberOfOpponents = other.NumberOfOpponents;
+            OnPropertyChanged(nameof(NumberOfOpponents));
+        }
+        if (NumberOfPlayers != other.NumberOfPlayers)
+        {
+            NumberOfPlayers = other.NumberOfPlayers;
+            OnPropertyChanged(nameof(NumberOfPlayers));
+        }
+    }
 }

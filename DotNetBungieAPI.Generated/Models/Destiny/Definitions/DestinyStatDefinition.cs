@@ -77,4 +77,52 @@ public class DestinyStatDefinition : IDeepEquatable<DestinyStatDefinition>
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyStatDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (AggregationType != other.AggregationType)
+        {
+            AggregationType = other.AggregationType;
+            OnPropertyChanged(nameof(AggregationType));
+        }
+        if (HasComputedBlock != other.HasComputedBlock)
+        {
+            HasComputedBlock = other.HasComputedBlock;
+            OnPropertyChanged(nameof(HasComputedBlock));
+        }
+        if (StatCategory != other.StatCategory)
+        {
+            StatCategory = other.StatCategory;
+            OnPropertyChanged(nameof(StatCategory));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

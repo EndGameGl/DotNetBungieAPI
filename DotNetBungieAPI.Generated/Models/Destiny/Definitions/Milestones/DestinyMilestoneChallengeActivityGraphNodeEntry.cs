@@ -14,4 +14,27 @@ public class DestinyMilestoneChallengeActivityGraphNodeEntry : IDeepEquatable<De
                ActivityGraphHash == other.ActivityGraphHash &&
                ActivityGraphNodeHash == other.ActivityGraphNodeHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyMilestoneChallengeActivityGraphNodeEntry? other)
+    {
+        if (other is null) return;
+        if (ActivityGraphHash != other.ActivityGraphHash)
+        {
+            ActivityGraphHash = other.ActivityGraphHash;
+            OnPropertyChanged(nameof(ActivityGraphHash));
+        }
+        if (ActivityGraphNodeHash != other.ActivityGraphNodeHash)
+        {
+            ActivityGraphNodeHash = other.ActivityGraphNodeHash;
+            OnPropertyChanged(nameof(ActivityGraphNodeHash));
+        }
+    }
 }

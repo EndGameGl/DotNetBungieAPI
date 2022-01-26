@@ -20,4 +20,27 @@ public class Datapoint : IDeepEquatable<Datapoint>
                Time == other.Time &&
                Count == other.Count;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(Datapoint? other)
+    {
+        if (other is null) return;
+        if (Time != other.Time)
+        {
+            Time = other.Time;
+            OnPropertyChanged(nameof(Time));
+        }
+        if (Count != other.Count)
+        {
+            Count = other.Count;
+            OnPropertyChanged(nameof(Count));
+        }
+    }
 }

@@ -52,4 +52,42 @@ public class DestinyProgressionLevelRequirementDefinition : IDeepEquatable<Desti
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyProgressionLevelRequirementDefinition? other)
+    {
+        if (other is null) return;
+        if (!RequirementCurve.DeepEqualsList(other.RequirementCurve))
+        {
+            RequirementCurve = other.RequirementCurve;
+            OnPropertyChanged(nameof(RequirementCurve));
+        }
+        if (ProgressionHash != other.ProgressionHash)
+        {
+            ProgressionHash = other.ProgressionHash;
+            OnPropertyChanged(nameof(ProgressionHash));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

@@ -34,4 +34,37 @@ public class DestinyPostGameCarnageReportTeamEntry : IDeepEquatable<DestinyPostG
                (Score is not null ? Score.DeepEquals(other.Score) : other.Score is null) &&
                TeamName == other.TeamName;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPostGameCarnageReportTeamEntry? other)
+    {
+        if (other is null) return;
+        if (TeamId != other.TeamId)
+        {
+            TeamId = other.TeamId;
+            OnPropertyChanged(nameof(TeamId));
+        }
+        if (!Standing.DeepEquals(other.Standing))
+        {
+            Standing.Update(other.Standing);
+            OnPropertyChanged(nameof(Standing));
+        }
+        if (!Score.DeepEquals(other.Score))
+        {
+            Score.Update(other.Score);
+            OnPropertyChanged(nameof(Score));
+        }
+        if (TeamName != other.TeamName)
+        {
+            TeamName = other.TeamName;
+            OnPropertyChanged(nameof(TeamName));
+        }
+    }
 }

@@ -46,4 +46,67 @@ public class ForumRecruitmentDetail : IDeepEquatable<ForumRecruitmentDetail>
                Fireteam.DeepEqualsList(other.Fireteam) &&
                KickedPlayerIds.DeepEqualsListNaive(other.KickedPlayerIds);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(ForumRecruitmentDetail? other)
+    {
+        if (other is null) return;
+        if (TopicId != other.TopicId)
+        {
+            TopicId = other.TopicId;
+            OnPropertyChanged(nameof(TopicId));
+        }
+        if (MicrophoneRequired != other.MicrophoneRequired)
+        {
+            MicrophoneRequired = other.MicrophoneRequired;
+            OnPropertyChanged(nameof(MicrophoneRequired));
+        }
+        if (Intensity != other.Intensity)
+        {
+            Intensity = other.Intensity;
+            OnPropertyChanged(nameof(Intensity));
+        }
+        if (Tone != other.Tone)
+        {
+            Tone = other.Tone;
+            OnPropertyChanged(nameof(Tone));
+        }
+        if (Approved != other.Approved)
+        {
+            Approved = other.Approved;
+            OnPropertyChanged(nameof(Approved));
+        }
+        if (ConversationId != other.ConversationId)
+        {
+            ConversationId = other.ConversationId;
+            OnPropertyChanged(nameof(ConversationId));
+        }
+        if (PlayerSlotsTotal != other.PlayerSlotsTotal)
+        {
+            PlayerSlotsTotal = other.PlayerSlotsTotal;
+            OnPropertyChanged(nameof(PlayerSlotsTotal));
+        }
+        if (PlayerSlotsRemaining != other.PlayerSlotsRemaining)
+        {
+            PlayerSlotsRemaining = other.PlayerSlotsRemaining;
+            OnPropertyChanged(nameof(PlayerSlotsRemaining));
+        }
+        if (!Fireteam.DeepEqualsList(other.Fireteam))
+        {
+            Fireteam = other.Fireteam;
+            OnPropertyChanged(nameof(Fireteam));
+        }
+        if (!KickedPlayerIds.DeepEqualsListNaive(other.KickedPlayerIds))
+        {
+            KickedPlayerIds = other.KickedPlayerIds;
+            OnPropertyChanged(nameof(KickedPlayerIds));
+        }
+    }
 }

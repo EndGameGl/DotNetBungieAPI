@@ -80,4 +80,67 @@ public class DestinyItemObjectiveBlockDefinition : IDeepEquatable<DestinyItemObj
                PerObjectiveDisplayProperties.DeepEqualsList(other.PerObjectiveDisplayProperties) &&
                DisplayAsStatTracker == other.DisplayAsStatTracker;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemObjectiveBlockDefinition? other)
+    {
+        if (other is null) return;
+        if (!ObjectiveHashes.DeepEqualsListNaive(other.ObjectiveHashes))
+        {
+            ObjectiveHashes = other.ObjectiveHashes;
+            OnPropertyChanged(nameof(ObjectiveHashes));
+        }
+        if (!DisplayActivityHashes.DeepEqualsListNaive(other.DisplayActivityHashes))
+        {
+            DisplayActivityHashes = other.DisplayActivityHashes;
+            OnPropertyChanged(nameof(DisplayActivityHashes));
+        }
+        if (RequireFullObjectiveCompletion != other.RequireFullObjectiveCompletion)
+        {
+            RequireFullObjectiveCompletion = other.RequireFullObjectiveCompletion;
+            OnPropertyChanged(nameof(RequireFullObjectiveCompletion));
+        }
+        if (QuestlineItemHash != other.QuestlineItemHash)
+        {
+            QuestlineItemHash = other.QuestlineItemHash;
+            OnPropertyChanged(nameof(QuestlineItemHash));
+        }
+        if (Narrative != other.Narrative)
+        {
+            Narrative = other.Narrative;
+            OnPropertyChanged(nameof(Narrative));
+        }
+        if (ObjectiveVerbName != other.ObjectiveVerbName)
+        {
+            ObjectiveVerbName = other.ObjectiveVerbName;
+            OnPropertyChanged(nameof(ObjectiveVerbName));
+        }
+        if (QuestTypeIdentifier != other.QuestTypeIdentifier)
+        {
+            QuestTypeIdentifier = other.QuestTypeIdentifier;
+            OnPropertyChanged(nameof(QuestTypeIdentifier));
+        }
+        if (QuestTypeHash != other.QuestTypeHash)
+        {
+            QuestTypeHash = other.QuestTypeHash;
+            OnPropertyChanged(nameof(QuestTypeHash));
+        }
+        if (!PerObjectiveDisplayProperties.DeepEqualsList(other.PerObjectiveDisplayProperties))
+        {
+            PerObjectiveDisplayProperties = other.PerObjectiveDisplayProperties;
+            OnPropertyChanged(nameof(PerObjectiveDisplayProperties));
+        }
+        if (DisplayAsStatTracker != other.DisplayAsStatTracker)
+        {
+            DisplayAsStatTracker = other.DisplayAsStatTracker;
+            OnPropertyChanged(nameof(DisplayAsStatTracker));
+        }
+    }
 }

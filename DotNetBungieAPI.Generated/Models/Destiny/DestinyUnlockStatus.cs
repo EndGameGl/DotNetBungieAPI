@@ -25,4 +25,27 @@ public class DestinyUnlockStatus : IDeepEquatable<DestinyUnlockStatus>
                UnlockHash == other.UnlockHash &&
                IsSet == other.IsSet;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyUnlockStatus? other)
+    {
+        if (other is null) return;
+        if (UnlockHash != other.UnlockHash)
+        {
+            UnlockHash = other.UnlockHash;
+            OnPropertyChanged(nameof(UnlockHash));
+        }
+        if (IsSet != other.IsSet)
+        {
+            IsSet = other.IsSet;
+            OnPropertyChanged(nameof(IsSet));
+        }
+    }
 }

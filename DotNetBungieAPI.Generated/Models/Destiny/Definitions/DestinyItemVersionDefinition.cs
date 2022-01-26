@@ -16,4 +16,22 @@ public class DestinyItemVersionDefinition : IDeepEquatable<DestinyItemVersionDef
         return other is not null &&
                PowerCapHash == other.PowerCapHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemVersionDefinition? other)
+    {
+        if (other is null) return;
+        if (PowerCapHash != other.PowerCapHash)
+        {
+            PowerCapHash = other.PowerCapHash;
+            OnPropertyChanged(nameof(PowerCapHash));
+        }
+    }
 }

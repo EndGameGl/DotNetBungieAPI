@@ -18,4 +18,32 @@ public class UserTheme : IDeepEquatable<UserTheme>
                UserThemeName == other.UserThemeName &&
                UserThemeDescription == other.UserThemeDescription;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(UserTheme? other)
+    {
+        if (other is null) return;
+        if (UserThemeId != other.UserThemeId)
+        {
+            UserThemeId = other.UserThemeId;
+            OnPropertyChanged(nameof(UserThemeId));
+        }
+        if (UserThemeName != other.UserThemeName)
+        {
+            UserThemeName = other.UserThemeName;
+            OnPropertyChanged(nameof(UserThemeName));
+        }
+        if (UserThemeDescription != other.UserThemeDescription)
+        {
+            UserThemeDescription = other.UserThemeDescription;
+            OnPropertyChanged(nameof(UserThemeDescription));
+        }
+    }
 }

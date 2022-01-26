@@ -26,4 +26,32 @@ public class UserMembershipData : IDeepEquatable<UserMembershipData>
                PrimaryMembershipId == other.PrimaryMembershipId &&
                (BungieNetUser is not null ? BungieNetUser.DeepEquals(other.BungieNetUser) : other.BungieNetUser is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(UserMembershipData? other)
+    {
+        if (other is null) return;
+        if (!DestinyMemberships.DeepEqualsList(other.DestinyMemberships))
+        {
+            DestinyMemberships = other.DestinyMemberships;
+            OnPropertyChanged(nameof(DestinyMemberships));
+        }
+        if (PrimaryMembershipId != other.PrimaryMembershipId)
+        {
+            PrimaryMembershipId = other.PrimaryMembershipId;
+            OnPropertyChanged(nameof(PrimaryMembershipId));
+        }
+        if (!BungieNetUser.DeepEquals(other.BungieNetUser))
+        {
+            BungieNetUser.Update(other.BungieNetUser);
+            OnPropertyChanged(nameof(BungieNetUser));
+        }
+    }
 }

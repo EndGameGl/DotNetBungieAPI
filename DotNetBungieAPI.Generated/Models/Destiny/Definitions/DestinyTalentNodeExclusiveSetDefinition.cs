@@ -16,4 +16,22 @@ public class DestinyTalentNodeExclusiveSetDefinition : IDeepEquatable<DestinyTal
         return other is not null &&
                NodeIndexes.DeepEqualsListNaive(other.NodeIndexes);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyTalentNodeExclusiveSetDefinition? other)
+    {
+        if (other is null) return;
+        if (!NodeIndexes.DeepEqualsListNaive(other.NodeIndexes))
+        {
+            NodeIndexes = other.NodeIndexes;
+            OnPropertyChanged(nameof(NodeIndexes));
+        }
+    }
 }

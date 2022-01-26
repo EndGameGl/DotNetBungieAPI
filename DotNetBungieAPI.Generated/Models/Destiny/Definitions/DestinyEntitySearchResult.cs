@@ -23,4 +23,27 @@ public class DestinyEntitySearchResult : IDeepEquatable<DestinyEntitySearchResul
                SuggestedWords.DeepEqualsListNaive(other.SuggestedWords) &&
                (Results is not null ? Results.DeepEquals(other.Results) : other.Results is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyEntitySearchResult? other)
+    {
+        if (other is null) return;
+        if (!SuggestedWords.DeepEqualsListNaive(other.SuggestedWords))
+        {
+            SuggestedWords = other.SuggestedWords;
+            OnPropertyChanged(nameof(SuggestedWords));
+        }
+        if (!Results.DeepEquals(other.Results))
+        {
+            Results.Update(other.Results);
+            OnPropertyChanged(nameof(Results));
+        }
+    }
 }

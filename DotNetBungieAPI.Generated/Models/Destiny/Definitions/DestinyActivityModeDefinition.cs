@@ -110,4 +110,87 @@ public class DestinyActivityModeDefinition : IDeepEquatable<DestinyActivityModeD
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityModeDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (PgcrImage != other.PgcrImage)
+        {
+            PgcrImage = other.PgcrImage;
+            OnPropertyChanged(nameof(PgcrImage));
+        }
+        if (ModeType != other.ModeType)
+        {
+            ModeType = other.ModeType;
+            OnPropertyChanged(nameof(ModeType));
+        }
+        if (ActivityModeCategory != other.ActivityModeCategory)
+        {
+            ActivityModeCategory = other.ActivityModeCategory;
+            OnPropertyChanged(nameof(ActivityModeCategory));
+        }
+        if (IsTeamBased != other.IsTeamBased)
+        {
+            IsTeamBased = other.IsTeamBased;
+            OnPropertyChanged(nameof(IsTeamBased));
+        }
+        if (IsAggregateMode != other.IsAggregateMode)
+        {
+            IsAggregateMode = other.IsAggregateMode;
+            OnPropertyChanged(nameof(IsAggregateMode));
+        }
+        if (!ParentHashes.DeepEqualsListNaive(other.ParentHashes))
+        {
+            ParentHashes = other.ParentHashes;
+            OnPropertyChanged(nameof(ParentHashes));
+        }
+        if (FriendlyName != other.FriendlyName)
+        {
+            FriendlyName = other.FriendlyName;
+            OnPropertyChanged(nameof(FriendlyName));
+        }
+        if (!ActivityModeMappings.DeepEqualsDictionaryNaive(other.ActivityModeMappings))
+        {
+            ActivityModeMappings = other.ActivityModeMappings;
+            OnPropertyChanged(nameof(ActivityModeMappings));
+        }
+        if (Display != other.Display)
+        {
+            Display = other.Display;
+            OnPropertyChanged(nameof(Display));
+        }
+        if (Order != other.Order)
+        {
+            Order = other.Order;
+            OnPropertyChanged(nameof(Order));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

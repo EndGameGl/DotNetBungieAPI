@@ -30,4 +30,32 @@ public class DestinyItemIntrinsicSocketEntryDefinition : IDeepEquatable<DestinyI
                SocketTypeHash == other.SocketTypeHash &&
                DefaultVisible == other.DefaultVisible;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemIntrinsicSocketEntryDefinition? other)
+    {
+        if (other is null) return;
+        if (PlugItemHash != other.PlugItemHash)
+        {
+            PlugItemHash = other.PlugItemHash;
+            OnPropertyChanged(nameof(PlugItemHash));
+        }
+        if (SocketTypeHash != other.SocketTypeHash)
+        {
+            SocketTypeHash = other.SocketTypeHash;
+            OnPropertyChanged(nameof(SocketTypeHash));
+        }
+        if (DefaultVisible != other.DefaultVisible)
+        {
+            DefaultVisible = other.DefaultVisible;
+            OnPropertyChanged(nameof(DefaultVisible));
+        }
+    }
 }

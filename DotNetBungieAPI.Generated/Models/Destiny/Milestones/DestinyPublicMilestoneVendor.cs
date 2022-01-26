@@ -20,4 +20,27 @@ public class DestinyPublicMilestoneVendor : IDeepEquatable<DestinyPublicMileston
                VendorHash == other.VendorHash &&
                PreviewItemHash == other.PreviewItemHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyPublicMilestoneVendor? other)
+    {
+        if (other is null) return;
+        if (VendorHash != other.VendorHash)
+        {
+            VendorHash = other.VendorHash;
+            OnPropertyChanged(nameof(VendorHash));
+        }
+        if (PreviewItemHash != other.PreviewItemHash)
+        {
+            PreviewItemHash = other.PreviewItemHash;
+            OnPropertyChanged(nameof(PreviewItemHash));
+        }
+    }
 }

@@ -14,4 +14,27 @@ public class GroupNameSearchRequest : IDeepEquatable<GroupNameSearchRequest>
                GroupName == other.GroupName &&
                GroupType == other.GroupType;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(GroupNameSearchRequest? other)
+    {
+        if (other is null) return;
+        if (GroupName != other.GroupName)
+        {
+            GroupName = other.GroupName;
+            OnPropertyChanged(nameof(GroupName));
+        }
+        if (GroupType != other.GroupType)
+        {
+            GroupType = other.GroupType;
+            OnPropertyChanged(nameof(GroupType));
+        }
+    }
 }

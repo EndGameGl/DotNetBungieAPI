@@ -44,4 +44,42 @@ public class DestinyActivityPlaylistItemDefinition : IDeepEquatable<DestinyActiv
                ActivityModeHashes.DeepEqualsListNaive(other.ActivityModeHashes) &&
                ActivityModeTypes.DeepEqualsListNaive(other.ActivityModeTypes);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityPlaylistItemDefinition? other)
+    {
+        if (other is null) return;
+        if (ActivityHash != other.ActivityHash)
+        {
+            ActivityHash = other.ActivityHash;
+            OnPropertyChanged(nameof(ActivityHash));
+        }
+        if (DirectActivityModeHash != other.DirectActivityModeHash)
+        {
+            DirectActivityModeHash = other.DirectActivityModeHash;
+            OnPropertyChanged(nameof(DirectActivityModeHash));
+        }
+        if (DirectActivityModeType != other.DirectActivityModeType)
+        {
+            DirectActivityModeType = other.DirectActivityModeType;
+            OnPropertyChanged(nameof(DirectActivityModeType));
+        }
+        if (!ActivityModeHashes.DeepEqualsListNaive(other.ActivityModeHashes))
+        {
+            ActivityModeHashes = other.ActivityModeHashes;
+            OnPropertyChanged(nameof(ActivityModeHashes));
+        }
+        if (!ActivityModeTypes.DeepEqualsListNaive(other.ActivityModeTypes))
+        {
+            ActivityModeTypes = other.ActivityModeTypes;
+            OnPropertyChanged(nameof(ActivityModeTypes));
+        }
+    }
 }

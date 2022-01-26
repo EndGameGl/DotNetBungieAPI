@@ -38,4 +38,32 @@ public class DestinyCharacterRenderComponent : IDeepEquatable<DestinyCharacterRe
                (Customization is not null ? Customization.DeepEquals(other.Customization) : other.Customization is null) &&
                (PeerView is not null ? PeerView.DeepEquals(other.PeerView) : other.PeerView is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyCharacterRenderComponent? other)
+    {
+        if (other is null) return;
+        if (!CustomDyes.DeepEqualsList(other.CustomDyes))
+        {
+            CustomDyes = other.CustomDyes;
+            OnPropertyChanged(nameof(CustomDyes));
+        }
+        if (!Customization.DeepEquals(other.Customization))
+        {
+            Customization.Update(other.Customization);
+            OnPropertyChanged(nameof(Customization));
+        }
+        if (!PeerView.DeepEquals(other.PeerView))
+        {
+            PeerView.Update(other.PeerView);
+            OnPropertyChanged(nameof(PeerView));
+        }
+    }
 }

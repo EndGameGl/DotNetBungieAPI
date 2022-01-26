@@ -13,4 +13,22 @@ public class DestinyVendorGroupReference : IDeepEquatable<DestinyVendorGroupRefe
         return other is not null &&
                VendorGroupHash == other.VendorGroupHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorGroupReference? other)
+    {
+        if (other is null) return;
+        if (VendorGroupHash != other.VendorGroupHash)
+        {
+            VendorGroupHash = other.VendorGroupHash;
+            OnPropertyChanged(nameof(VendorGroupHash));
+        }
+    }
 }

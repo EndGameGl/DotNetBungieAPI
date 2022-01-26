@@ -24,4 +24,32 @@ public class DestinyItemChangeResponse : IDeepEquatable<DestinyItemChangeRespons
                AddedInventoryItems.DeepEqualsList(other.AddedInventoryItems) &&
                RemovedInventoryItems.DeepEqualsList(other.RemovedInventoryItems);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemChangeResponse? other)
+    {
+        if (other is null) return;
+        if (!Item.DeepEquals(other.Item))
+        {
+            Item.Update(other.Item);
+            OnPropertyChanged(nameof(Item));
+        }
+        if (!AddedInventoryItems.DeepEqualsList(other.AddedInventoryItems))
+        {
+            AddedInventoryItems = other.AddedInventoryItems;
+            OnPropertyChanged(nameof(AddedInventoryItems));
+        }
+        if (!RemovedInventoryItems.DeepEqualsList(other.RemovedInventoryItems))
+        {
+            RemovedInventoryItems = other.RemovedInventoryItems;
+            OnPropertyChanged(nameof(RemovedInventoryItems));
+        }
+    }
 }

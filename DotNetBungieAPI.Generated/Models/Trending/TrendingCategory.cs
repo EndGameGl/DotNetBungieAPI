@@ -18,4 +18,32 @@ public class TrendingCategory : IDeepEquatable<TrendingCategory>
                (Entries is not null ? Entries.DeepEquals(other.Entries) : other.Entries is null) &&
                CategoryId == other.CategoryId;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(TrendingCategory? other)
+    {
+        if (other is null) return;
+        if (CategoryName != other.CategoryName)
+        {
+            CategoryName = other.CategoryName;
+            OnPropertyChanged(nameof(CategoryName));
+        }
+        if (!Entries.DeepEquals(other.Entries))
+        {
+            Entries.Update(other.Entries);
+            OnPropertyChanged(nameof(Entries));
+        }
+        if (CategoryId != other.CategoryId)
+        {
+            CategoryId = other.CategoryId;
+            OnPropertyChanged(nameof(CategoryId));
+        }
+    }
 }

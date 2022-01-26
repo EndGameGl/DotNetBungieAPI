@@ -13,4 +13,22 @@ public class DestinyActivityLoadoutRequirementSet : IDeepEquatable<DestinyActivi
         return other is not null &&
                Requirements.DeepEqualsList(other.Requirements);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityLoadoutRequirementSet? other)
+    {
+        if (other is null) return;
+        if (!Requirements.DeepEqualsList(other.Requirements))
+        {
+            Requirements = other.Requirements;
+            OnPropertyChanged(nameof(Requirements));
+        }
+    }
 }

@@ -58,4 +58,52 @@ public class DestinyItemSetBlockDefinition : IDeepEquatable<DestinyItemSetBlockD
                QuestLineDescription == other.QuestLineDescription &&
                QuestStepSummary == other.QuestStepSummary;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemSetBlockDefinition? other)
+    {
+        if (other is null) return;
+        if (!ItemList.DeepEqualsList(other.ItemList))
+        {
+            ItemList = other.ItemList;
+            OnPropertyChanged(nameof(ItemList));
+        }
+        if (RequireOrderedSetItemAdd != other.RequireOrderedSetItemAdd)
+        {
+            RequireOrderedSetItemAdd = other.RequireOrderedSetItemAdd;
+            OnPropertyChanged(nameof(RequireOrderedSetItemAdd));
+        }
+        if (SetIsFeatured != other.SetIsFeatured)
+        {
+            SetIsFeatured = other.SetIsFeatured;
+            OnPropertyChanged(nameof(SetIsFeatured));
+        }
+        if (SetType != other.SetType)
+        {
+            SetType = other.SetType;
+            OnPropertyChanged(nameof(SetType));
+        }
+        if (QuestLineName != other.QuestLineName)
+        {
+            QuestLineName = other.QuestLineName;
+            OnPropertyChanged(nameof(QuestLineName));
+        }
+        if (QuestLineDescription != other.QuestLineDescription)
+        {
+            QuestLineDescription = other.QuestLineDescription;
+            OnPropertyChanged(nameof(QuestLineDescription));
+        }
+        if (QuestStepSummary != other.QuestStepSummary)
+        {
+            QuestStepSummary = other.QuestStepSummary;
+            OnPropertyChanged(nameof(QuestStepSummary));
+        }
+    }
 }

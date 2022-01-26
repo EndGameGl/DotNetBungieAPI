@@ -32,4 +32,32 @@ public class DestinyVendorInteractionReplyDefinition : IDeepEquatable<DestinyVen
                Reply == other.Reply &&
                ReplyType == other.ReplyType;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyVendorInteractionReplyDefinition? other)
+    {
+        if (other is null) return;
+        if (ItemRewardsSelection != other.ItemRewardsSelection)
+        {
+            ItemRewardsSelection = other.ItemRewardsSelection;
+            OnPropertyChanged(nameof(ItemRewardsSelection));
+        }
+        if (Reply != other.Reply)
+        {
+            Reply = other.Reply;
+            OnPropertyChanged(nameof(Reply));
+        }
+        if (ReplyType != other.ReplyType)
+        {
+            ReplyType = other.ReplyType;
+            OnPropertyChanged(nameof(ReplyType));
+        }
+    }
 }

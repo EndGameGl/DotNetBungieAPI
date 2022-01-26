@@ -79,4 +79,67 @@ public class DestinyTalentNode : IDeepEquatable<DestinyTalentNode>
                Hidden == other.Hidden &&
                (NodeStatsBlock is not null ? NodeStatsBlock.DeepEquals(other.NodeStatsBlock) : other.NodeStatsBlock is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyTalentNode? other)
+    {
+        if (other is null) return;
+        if (NodeIndex != other.NodeIndex)
+        {
+            NodeIndex = other.NodeIndex;
+            OnPropertyChanged(nameof(NodeIndex));
+        }
+        if (NodeHash != other.NodeHash)
+        {
+            NodeHash = other.NodeHash;
+            OnPropertyChanged(nameof(NodeHash));
+        }
+        if (State != other.State)
+        {
+            State = other.State;
+            OnPropertyChanged(nameof(State));
+        }
+        if (IsActivated != other.IsActivated)
+        {
+            IsActivated = other.IsActivated;
+            OnPropertyChanged(nameof(IsActivated));
+        }
+        if (StepIndex != other.StepIndex)
+        {
+            StepIndex = other.StepIndex;
+            OnPropertyChanged(nameof(StepIndex));
+        }
+        if (!MaterialsToUpgrade.DeepEqualsList(other.MaterialsToUpgrade))
+        {
+            MaterialsToUpgrade = other.MaterialsToUpgrade;
+            OnPropertyChanged(nameof(MaterialsToUpgrade));
+        }
+        if (ActivationGridLevel != other.ActivationGridLevel)
+        {
+            ActivationGridLevel = other.ActivationGridLevel;
+            OnPropertyChanged(nameof(ActivationGridLevel));
+        }
+        if (ProgressPercent != other.ProgressPercent)
+        {
+            ProgressPercent = other.ProgressPercent;
+            OnPropertyChanged(nameof(ProgressPercent));
+        }
+        if (Hidden != other.Hidden)
+        {
+            Hidden = other.Hidden;
+            OnPropertyChanged(nameof(Hidden));
+        }
+        if (!NodeStatsBlock.DeepEquals(other.NodeStatsBlock))
+        {
+            NodeStatsBlock.Update(other.NodeStatsBlock);
+            OnPropertyChanged(nameof(NodeStatsBlock));
+        }
+    }
 }

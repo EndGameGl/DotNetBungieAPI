@@ -51,4 +51,62 @@ public class GroupResponse : IDeepEquatable<GroupResponse>
                CurrentUserMemberMap.DeepEqualsDictionary(other.CurrentUserMemberMap) &&
                CurrentUserPotentialMemberMap.DeepEqualsDictionary(other.CurrentUserPotentialMemberMap);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(GroupResponse? other)
+    {
+        if (other is null) return;
+        if (!Detail.DeepEquals(other.Detail))
+        {
+            Detail.Update(other.Detail);
+            OnPropertyChanged(nameof(Detail));
+        }
+        if (!Founder.DeepEquals(other.Founder))
+        {
+            Founder.Update(other.Founder);
+            OnPropertyChanged(nameof(Founder));
+        }
+        if (!AlliedIds.DeepEqualsListNaive(other.AlliedIds))
+        {
+            AlliedIds = other.AlliedIds;
+            OnPropertyChanged(nameof(AlliedIds));
+        }
+        if (!ParentGroup.DeepEquals(other.ParentGroup))
+        {
+            ParentGroup.Update(other.ParentGroup);
+            OnPropertyChanged(nameof(ParentGroup));
+        }
+        if (AllianceStatus != other.AllianceStatus)
+        {
+            AllianceStatus = other.AllianceStatus;
+            OnPropertyChanged(nameof(AllianceStatus));
+        }
+        if (GroupJoinInviteCount != other.GroupJoinInviteCount)
+        {
+            GroupJoinInviteCount = other.GroupJoinInviteCount;
+            OnPropertyChanged(nameof(GroupJoinInviteCount));
+        }
+        if (CurrentUserMembershipsInactiveForDestiny != other.CurrentUserMembershipsInactiveForDestiny)
+        {
+            CurrentUserMembershipsInactiveForDestiny = other.CurrentUserMembershipsInactiveForDestiny;
+            OnPropertyChanged(nameof(CurrentUserMembershipsInactiveForDestiny));
+        }
+        if (!CurrentUserMemberMap.DeepEqualsDictionary(other.CurrentUserMemberMap))
+        {
+            CurrentUserMemberMap = other.CurrentUserMemberMap;
+            OnPropertyChanged(nameof(CurrentUserMemberMap));
+        }
+        if (!CurrentUserPotentialMemberMap.DeepEqualsDictionary(other.CurrentUserPotentialMemberMap))
+        {
+            CurrentUserPotentialMemberMap = other.CurrentUserPotentialMemberMap;
+            OnPropertyChanged(nameof(CurrentUserPotentialMemberMap));
+        }
+    }
 }

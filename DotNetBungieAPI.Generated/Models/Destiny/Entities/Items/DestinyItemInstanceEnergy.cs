@@ -41,4 +41,42 @@ public class DestinyItemInstanceEnergy : IDeepEquatable<DestinyItemInstanceEnerg
                EnergyUsed == other.EnergyUsed &&
                EnergyUnused == other.EnergyUnused;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemInstanceEnergy? other)
+    {
+        if (other is null) return;
+        if (EnergyTypeHash != other.EnergyTypeHash)
+        {
+            EnergyTypeHash = other.EnergyTypeHash;
+            OnPropertyChanged(nameof(EnergyTypeHash));
+        }
+        if (EnergyType != other.EnergyType)
+        {
+            EnergyType = other.EnergyType;
+            OnPropertyChanged(nameof(EnergyType));
+        }
+        if (EnergyCapacity != other.EnergyCapacity)
+        {
+            EnergyCapacity = other.EnergyCapacity;
+            OnPropertyChanged(nameof(EnergyCapacity));
+        }
+        if (EnergyUsed != other.EnergyUsed)
+        {
+            EnergyUsed = other.EnergyUsed;
+            OnPropertyChanged(nameof(EnergyUsed));
+        }
+        if (EnergyUnused != other.EnergyUnused)
+        {
+            EnergyUnused = other.EnergyUnused;
+            OnPropertyChanged(nameof(EnergyUnused));
+        }
+    }
 }

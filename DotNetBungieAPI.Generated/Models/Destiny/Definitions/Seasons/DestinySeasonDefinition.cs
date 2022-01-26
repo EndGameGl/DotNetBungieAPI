@@ -79,4 +79,87 @@ public class DestinySeasonDefinition : IDeepEquatable<DestinySeasonDefinition>
                Index == other.Index &&
                Redacted == other.Redacted;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinySeasonDefinition? other)
+    {
+        if (other is null) return;
+        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
+        {
+            DisplayProperties.Update(other.DisplayProperties);
+            OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (BackgroundImagePath != other.BackgroundImagePath)
+        {
+            BackgroundImagePath = other.BackgroundImagePath;
+            OnPropertyChanged(nameof(BackgroundImagePath));
+        }
+        if (SeasonNumber != other.SeasonNumber)
+        {
+            SeasonNumber = other.SeasonNumber;
+            OnPropertyChanged(nameof(SeasonNumber));
+        }
+        if (StartDate != other.StartDate)
+        {
+            StartDate = other.StartDate;
+            OnPropertyChanged(nameof(StartDate));
+        }
+        if (EndDate != other.EndDate)
+        {
+            EndDate = other.EndDate;
+            OnPropertyChanged(nameof(EndDate));
+        }
+        if (SeasonPassHash != other.SeasonPassHash)
+        {
+            SeasonPassHash = other.SeasonPassHash;
+            OnPropertyChanged(nameof(SeasonPassHash));
+        }
+        if (SeasonPassProgressionHash != other.SeasonPassProgressionHash)
+        {
+            SeasonPassProgressionHash = other.SeasonPassProgressionHash;
+            OnPropertyChanged(nameof(SeasonPassProgressionHash));
+        }
+        if (ArtifactItemHash != other.ArtifactItemHash)
+        {
+            ArtifactItemHash = other.ArtifactItemHash;
+            OnPropertyChanged(nameof(ArtifactItemHash));
+        }
+        if (SealPresentationNodeHash != other.SealPresentationNodeHash)
+        {
+            SealPresentationNodeHash = other.SealPresentationNodeHash;
+            OnPropertyChanged(nameof(SealPresentationNodeHash));
+        }
+        if (SeasonalChallengesPresentationNodeHash != other.SeasonalChallengesPresentationNodeHash)
+        {
+            SeasonalChallengesPresentationNodeHash = other.SeasonalChallengesPresentationNodeHash;
+            OnPropertyChanged(nameof(SeasonalChallengesPresentationNodeHash));
+        }
+        if (!Preview.DeepEquals(other.Preview))
+        {
+            Preview.Update(other.Preview);
+            OnPropertyChanged(nameof(Preview));
+        }
+        if (Hash != other.Hash)
+        {
+            Hash = other.Hash;
+            OnPropertyChanged(nameof(Hash));
+        }
+        if (Index != other.Index)
+        {
+            Index = other.Index;
+            OnPropertyChanged(nameof(Index));
+        }
+        if (Redacted != other.Redacted)
+        {
+            Redacted = other.Redacted;
+            OnPropertyChanged(nameof(Redacted));
+        }
+    }
 }

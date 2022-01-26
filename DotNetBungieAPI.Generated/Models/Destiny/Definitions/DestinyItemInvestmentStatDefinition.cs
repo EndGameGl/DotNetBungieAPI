@@ -32,4 +32,32 @@ public class DestinyItemInvestmentStatDefinition : IDeepEquatable<DestinyItemInv
                Value == other.Value &&
                IsConditionallyActive == other.IsConditionallyActive;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemInvestmentStatDefinition? other)
+    {
+        if (other is null) return;
+        if (StatTypeHash != other.StatTypeHash)
+        {
+            StatTypeHash = other.StatTypeHash;
+            OnPropertyChanged(nameof(StatTypeHash));
+        }
+        if (Value != other.Value)
+        {
+            Value = other.Value;
+            OnPropertyChanged(nameof(Value));
+        }
+        if (IsConditionallyActive != other.IsConditionallyActive)
+        {
+            IsConditionallyActive = other.IsConditionallyActive;
+            OnPropertyChanged(nameof(IsConditionallyActive));
+        }
+    }
 }

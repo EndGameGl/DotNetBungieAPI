@@ -107,4 +107,87 @@ public class DestinyItemActionBlockDefinition : IDeepEquatable<DestinyItemAction
                ConsumeEntireStack == other.ConsumeEntireStack &&
                UseOnAcquire == other.UseOnAcquire;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyItemActionBlockDefinition? other)
+    {
+        if (other is null) return;
+        if (VerbName != other.VerbName)
+        {
+            VerbName = other.VerbName;
+            OnPropertyChanged(nameof(VerbName));
+        }
+        if (VerbDescription != other.VerbDescription)
+        {
+            VerbDescription = other.VerbDescription;
+            OnPropertyChanged(nameof(VerbDescription));
+        }
+        if (IsPositive != other.IsPositive)
+        {
+            IsPositive = other.IsPositive;
+            OnPropertyChanged(nameof(IsPositive));
+        }
+        if (OverlayScreenName != other.OverlayScreenName)
+        {
+            OverlayScreenName = other.OverlayScreenName;
+            OnPropertyChanged(nameof(OverlayScreenName));
+        }
+        if (OverlayIcon != other.OverlayIcon)
+        {
+            OverlayIcon = other.OverlayIcon;
+            OnPropertyChanged(nameof(OverlayIcon));
+        }
+        if (RequiredCooldownSeconds != other.RequiredCooldownSeconds)
+        {
+            RequiredCooldownSeconds = other.RequiredCooldownSeconds;
+            OnPropertyChanged(nameof(RequiredCooldownSeconds));
+        }
+        if (!RequiredItems.DeepEqualsList(other.RequiredItems))
+        {
+            RequiredItems = other.RequiredItems;
+            OnPropertyChanged(nameof(RequiredItems));
+        }
+        if (!ProgressionRewards.DeepEqualsList(other.ProgressionRewards))
+        {
+            ProgressionRewards = other.ProgressionRewards;
+            OnPropertyChanged(nameof(ProgressionRewards));
+        }
+        if (ActionTypeLabel != other.ActionTypeLabel)
+        {
+            ActionTypeLabel = other.ActionTypeLabel;
+            OnPropertyChanged(nameof(ActionTypeLabel));
+        }
+        if (RequiredLocation != other.RequiredLocation)
+        {
+            RequiredLocation = other.RequiredLocation;
+            OnPropertyChanged(nameof(RequiredLocation));
+        }
+        if (RequiredCooldownHash != other.RequiredCooldownHash)
+        {
+            RequiredCooldownHash = other.RequiredCooldownHash;
+            OnPropertyChanged(nameof(RequiredCooldownHash));
+        }
+        if (DeleteOnAction != other.DeleteOnAction)
+        {
+            DeleteOnAction = other.DeleteOnAction;
+            OnPropertyChanged(nameof(DeleteOnAction));
+        }
+        if (ConsumeEntireStack != other.ConsumeEntireStack)
+        {
+            ConsumeEntireStack = other.ConsumeEntireStack;
+            OnPropertyChanged(nameof(ConsumeEntireStack));
+        }
+        if (UseOnAcquire != other.UseOnAcquire)
+        {
+            UseOnAcquire = other.UseOnAcquire;
+            OnPropertyChanged(nameof(UseOnAcquire));
+        }
+    }
 }

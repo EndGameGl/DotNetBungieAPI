@@ -18,4 +18,22 @@ public class DestinyActivityInsertionPointDefinition : IDeepEquatable<DestinyAct
         return other is not null &&
                PhaseHash == other.PhaseHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityInsertionPointDefinition? other)
+    {
+        if (other is null) return;
+        if (PhaseHash != other.PhaseHash)
+        {
+            PhaseHash = other.PhaseHash;
+            OnPropertyChanged(nameof(PhaseHash));
+        }
+    }
 }

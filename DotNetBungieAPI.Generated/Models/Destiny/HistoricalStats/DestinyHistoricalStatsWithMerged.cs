@@ -14,4 +14,27 @@ public class DestinyHistoricalStatsWithMerged : IDeepEquatable<DestinyHistorical
                Results.DeepEqualsDictionary(other.Results) &&
                (Merged is not null ? Merged.DeepEquals(other.Merged) : other.Merged is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyHistoricalStatsWithMerged? other)
+    {
+        if (other is null) return;
+        if (!Results.DeepEqualsDictionary(other.Results))
+        {
+            Results = other.Results;
+            OnPropertyChanged(nameof(Results));
+        }
+        if (!Merged.DeepEquals(other.Merged))
+        {
+            Merged.Update(other.Merged);
+            OnPropertyChanged(nameof(Merged));
+        }
+    }
 }

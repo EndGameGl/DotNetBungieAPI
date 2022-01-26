@@ -14,4 +14,27 @@ public class GroupMembership : IDeepEquatable<GroupMembership>
                (Member is not null ? Member.DeepEquals(other.Member) : other.Member is null) &&
                (Group is not null ? Group.DeepEquals(other.Group) : other.Group is null);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(GroupMembership? other)
+    {
+        if (other is null) return;
+        if (!Member.DeepEquals(other.Member))
+        {
+            Member.Update(other.Member);
+            OnPropertyChanged(nameof(Member));
+        }
+        if (!Group.DeepEquals(other.Group))
+        {
+            Group.Update(other.Group);
+            OnPropertyChanged(nameof(Group));
+        }
+    }
 }

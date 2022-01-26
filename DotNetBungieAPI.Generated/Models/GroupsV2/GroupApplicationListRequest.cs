@@ -14,4 +14,27 @@ public class GroupApplicationListRequest : IDeepEquatable<GroupApplicationListRe
                Memberships.DeepEqualsList(other.Memberships) &&
                Message == other.Message;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(GroupApplicationListRequest? other)
+    {
+        if (other is null) return;
+        if (!Memberships.DeepEqualsList(other.Memberships))
+        {
+            Memberships = other.Memberships;
+            OnPropertyChanged(nameof(Memberships));
+        }
+        if (Message != other.Message)
+        {
+            Message = other.Message;
+            OnPropertyChanged(nameof(Message));
+        }
+    }
 }

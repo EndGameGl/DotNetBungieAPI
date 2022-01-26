@@ -54,4 +54,62 @@ public class DestinyManifest : IDeepEquatable<DestinyManifest>
                MobileGearCDN.DeepEqualsDictionaryNaive(other.MobileGearCDN) &&
                IconImagePyramidInfo.DeepEqualsList(other.IconImagePyramidInfo);
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyManifest? other)
+    {
+        if (other is null) return;
+        if (Version != other.Version)
+        {
+            Version = other.Version;
+            OnPropertyChanged(nameof(Version));
+        }
+        if (MobileAssetContentPath != other.MobileAssetContentPath)
+        {
+            MobileAssetContentPath = other.MobileAssetContentPath;
+            OnPropertyChanged(nameof(MobileAssetContentPath));
+        }
+        if (!MobileGearAssetDataBases.DeepEqualsList(other.MobileGearAssetDataBases))
+        {
+            MobileGearAssetDataBases = other.MobileGearAssetDataBases;
+            OnPropertyChanged(nameof(MobileGearAssetDataBases));
+        }
+        if (!MobileWorldContentPaths.DeepEqualsDictionaryNaive(other.MobileWorldContentPaths))
+        {
+            MobileWorldContentPaths = other.MobileWorldContentPaths;
+            OnPropertyChanged(nameof(MobileWorldContentPaths));
+        }
+        if (!JsonWorldContentPaths.DeepEqualsDictionaryNaive(other.JsonWorldContentPaths))
+        {
+            JsonWorldContentPaths = other.JsonWorldContentPaths;
+            OnPropertyChanged(nameof(JsonWorldContentPaths));
+        }
+        if (!JsonWorldComponentContentPaths.DeepEqualsDictionary(other.JsonWorldComponentContentPaths))
+        {
+            JsonWorldComponentContentPaths = other.JsonWorldComponentContentPaths;
+            OnPropertyChanged(nameof(JsonWorldComponentContentPaths));
+        }
+        if (MobileClanBannerDatabasePath != other.MobileClanBannerDatabasePath)
+        {
+            MobileClanBannerDatabasePath = other.MobileClanBannerDatabasePath;
+            OnPropertyChanged(nameof(MobileClanBannerDatabasePath));
+        }
+        if (!MobileGearCDN.DeepEqualsDictionaryNaive(other.MobileGearCDN))
+        {
+            MobileGearCDN = other.MobileGearCDN;
+            OnPropertyChanged(nameof(MobileGearCDN));
+        }
+        if (!IconImagePyramidInfo.DeepEqualsList(other.IconImagePyramidInfo))
+        {
+            IconImagePyramidInfo = other.IconImagePyramidInfo;
+            OnPropertyChanged(nameof(IconImagePyramidInfo));
+        }
+    }
 }

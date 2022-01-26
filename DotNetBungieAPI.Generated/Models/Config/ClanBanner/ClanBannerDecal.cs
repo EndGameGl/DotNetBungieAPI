@@ -18,4 +18,32 @@ public class ClanBannerDecal : IDeepEquatable<ClanBannerDecal>
                ForegroundPath == other.ForegroundPath &&
                BackgroundPath == other.BackgroundPath;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(ClanBannerDecal? other)
+    {
+        if (other is null) return;
+        if (Identifier != other.Identifier)
+        {
+            Identifier = other.Identifier;
+            OnPropertyChanged(nameof(Identifier));
+        }
+        if (ForegroundPath != other.ForegroundPath)
+        {
+            ForegroundPath = other.ForegroundPath;
+            OnPropertyChanged(nameof(ForegroundPath));
+        }
+        if (BackgroundPath != other.BackgroundPath)
+        {
+            BackgroundPath = other.BackgroundPath;
+            OnPropertyChanged(nameof(BackgroundPath));
+        }
+    }
 }

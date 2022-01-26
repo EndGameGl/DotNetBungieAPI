@@ -40,4 +40,42 @@ public class DestinyProfileCollectiblesComponent : IDeepEquatable<DestinyProfile
                CollectionCategoriesRootNodeHash == other.CollectionCategoriesRootNodeHash &&
                CollectionBadgesRootNodeHash == other.CollectionBadgesRootNodeHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyProfileCollectiblesComponent? other)
+    {
+        if (other is null) return;
+        if (!RecentCollectibleHashes.DeepEqualsListNaive(other.RecentCollectibleHashes))
+        {
+            RecentCollectibleHashes = other.RecentCollectibleHashes;
+            OnPropertyChanged(nameof(RecentCollectibleHashes));
+        }
+        if (!NewnessFlaggedCollectibleHashes.DeepEqualsListNaive(other.NewnessFlaggedCollectibleHashes))
+        {
+            NewnessFlaggedCollectibleHashes = other.NewnessFlaggedCollectibleHashes;
+            OnPropertyChanged(nameof(NewnessFlaggedCollectibleHashes));
+        }
+        if (!Collectibles.DeepEqualsDictionary(other.Collectibles))
+        {
+            Collectibles = other.Collectibles;
+            OnPropertyChanged(nameof(Collectibles));
+        }
+        if (CollectionCategoriesRootNodeHash != other.CollectionCategoriesRootNodeHash)
+        {
+            CollectionCategoriesRootNodeHash = other.CollectionCategoriesRootNodeHash;
+            OnPropertyChanged(nameof(CollectionCategoriesRootNodeHash));
+        }
+        if (CollectionBadgesRootNodeHash != other.CollectionBadgesRootNodeHash)
+        {
+            CollectionBadgesRootNodeHash = other.CollectionBadgesRootNodeHash;
+            OnPropertyChanged(nameof(CollectionBadgesRootNodeHash));
+        }
+    }
 }

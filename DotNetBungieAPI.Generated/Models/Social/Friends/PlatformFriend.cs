@@ -34,4 +34,52 @@ public class PlatformFriend : IDeepEquatable<PlatformFriend>
                BungieGlobalDisplayName == other.BungieGlobalDisplayName &&
                BungieGlobalDisplayNameCode == other.BungieGlobalDisplayNameCode;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(PlatformFriend? other)
+    {
+        if (other is null) return;
+        if (PlatformDisplayName != other.PlatformDisplayName)
+        {
+            PlatformDisplayName = other.PlatformDisplayName;
+            OnPropertyChanged(nameof(PlatformDisplayName));
+        }
+        if (FriendPlatform != other.FriendPlatform)
+        {
+            FriendPlatform = other.FriendPlatform;
+            OnPropertyChanged(nameof(FriendPlatform));
+        }
+        if (DestinyMembershipId != other.DestinyMembershipId)
+        {
+            DestinyMembershipId = other.DestinyMembershipId;
+            OnPropertyChanged(nameof(DestinyMembershipId));
+        }
+        if (DestinyMembershipType != other.DestinyMembershipType)
+        {
+            DestinyMembershipType = other.DestinyMembershipType;
+            OnPropertyChanged(nameof(DestinyMembershipType));
+        }
+        if (BungieNetMembershipId != other.BungieNetMembershipId)
+        {
+            BungieNetMembershipId = other.BungieNetMembershipId;
+            OnPropertyChanged(nameof(BungieNetMembershipId));
+        }
+        if (BungieGlobalDisplayName != other.BungieGlobalDisplayName)
+        {
+            BungieGlobalDisplayName = other.BungieGlobalDisplayName;
+            OnPropertyChanged(nameof(BungieGlobalDisplayName));
+        }
+        if (BungieGlobalDisplayNameCode != other.BungieGlobalDisplayNameCode)
+        {
+            BungieGlobalDisplayNameCode = other.BungieGlobalDisplayNameCode;
+            OnPropertyChanged(nameof(BungieGlobalDisplayNameCode));
+        }
+    }
 }

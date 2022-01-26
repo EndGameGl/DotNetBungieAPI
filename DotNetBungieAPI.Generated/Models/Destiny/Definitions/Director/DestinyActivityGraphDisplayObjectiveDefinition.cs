@@ -23,4 +23,27 @@ public class DestinyActivityGraphDisplayObjectiveDefinition : IDeepEquatable<Des
                Id == other.Id &&
                ObjectiveHash == other.ObjectiveHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyActivityGraphDisplayObjectiveDefinition? other)
+    {
+        if (other is null) return;
+        if (Id != other.Id)
+        {
+            Id = other.Id;
+            OnPropertyChanged(nameof(Id));
+        }
+        if (ObjectiveHash != other.ObjectiveHash)
+        {
+            ObjectiveHash = other.ObjectiveHash;
+            OnPropertyChanged(nameof(ObjectiveHash));
+        }
+    }
 }

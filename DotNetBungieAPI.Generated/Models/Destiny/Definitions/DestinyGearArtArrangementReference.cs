@@ -14,4 +14,27 @@ public class DestinyGearArtArrangementReference : IDeepEquatable<DestinyGearArtA
                ClassHash == other.ClassHash &&
                ArtArrangementHash == other.ArtArrangementHash;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyGearArtArrangementReference? other)
+    {
+        if (other is null) return;
+        if (ClassHash != other.ClassHash)
+        {
+            ClassHash = other.ClassHash;
+            OnPropertyChanged(nameof(ClassHash));
+        }
+        if (ArtArrangementHash != other.ArtArrangementHash)
+        {
+            ArtArrangementHash = other.ArtArrangementHash;
+            OnPropertyChanged(nameof(ArtArrangementHash));
+        }
+    }
 }

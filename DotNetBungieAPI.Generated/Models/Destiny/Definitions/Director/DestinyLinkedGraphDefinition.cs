@@ -33,4 +33,47 @@ public class DestinyLinkedGraphDefinition : IDeepEquatable<DestinyLinkedGraphDef
                LinkedGraphs.DeepEqualsList(other.LinkedGraphs) &&
                Overview == other.Overview;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(DestinyLinkedGraphDefinition? other)
+    {
+        if (other is null) return;
+        if (Description != other.Description)
+        {
+            Description = other.Description;
+            OnPropertyChanged(nameof(Description));
+        }
+        if (Name != other.Name)
+        {
+            Name = other.Name;
+            OnPropertyChanged(nameof(Name));
+        }
+        if (!UnlockExpression.DeepEquals(other.UnlockExpression))
+        {
+            UnlockExpression.Update(other.UnlockExpression);
+            OnPropertyChanged(nameof(UnlockExpression));
+        }
+        if (LinkedGraphId != other.LinkedGraphId)
+        {
+            LinkedGraphId = other.LinkedGraphId;
+            OnPropertyChanged(nameof(LinkedGraphId));
+        }
+        if (!LinkedGraphs.DeepEqualsList(other.LinkedGraphs))
+        {
+            LinkedGraphs = other.LinkedGraphs;
+            OnPropertyChanged(nameof(LinkedGraphs));
+        }
+        if (Overview != other.Overview)
+        {
+            Overview = other.Overview;
+            OnPropertyChanged(nameof(Overview));
+        }
+    }
 }

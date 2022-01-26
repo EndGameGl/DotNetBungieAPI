@@ -20,4 +20,27 @@ public class Series : IDeepEquatable<Series>
                Datapoints.DeepEqualsList(other.Datapoints) &&
                Target == other.Target;
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    [NotifyPropertyChangedInvocator]
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Update(Series? other)
+    {
+        if (other is null) return;
+        if (!Datapoints.DeepEqualsList(other.Datapoints))
+        {
+            Datapoints = other.Datapoints;
+            OnPropertyChanged(nameof(Datapoints));
+        }
+        if (Target != other.Target)
+        {
+            Target = other.Target;
+            OnPropertyChanged(nameof(Target));
+        }
+    }
 }
