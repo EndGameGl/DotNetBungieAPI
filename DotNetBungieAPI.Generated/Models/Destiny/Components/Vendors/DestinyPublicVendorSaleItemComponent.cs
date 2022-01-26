@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Vendors;
 /// <para />
 ///     Note that if you want instance, stats, etc... data for the item, you'll have to request additional components such as ItemInstances, ItemPerks etc... and acquire them from the DestinyVendorResponse's "items" property. For most of these, however, you'll have to ask for it in context of a specific character.
 /// </summary>
-public class DestinyPublicVendorSaleItemComponent
+public class DestinyPublicVendorSaleItemComponent : IDeepEquatable<DestinyPublicVendorSaleItemComponent>
 {
     /// <summary>
     ///     The index into the DestinyVendorDefinition.itemList property. Note that this means Vendor data *is* Content Version dependent: make sure you have the latest content before you use Vendor data, or these indexes may mismatch. 
@@ -54,4 +54,16 @@ public class DestinyPublicVendorSaleItemComponent
     /// </summary>
     [JsonPropertyName("apiPurchasable")]
     public bool? ApiPurchasable { get; set; }
+
+    public bool DeepEquals(DestinyPublicVendorSaleItemComponent? other)
+    {
+        return other is not null &&
+               VendorItemIndex == other.VendorItemIndex &&
+               ItemHash == other.ItemHash &&
+               OverrideStyleItemHash == other.OverrideStyleItemHash &&
+               Quantity == other.Quantity &&
+               Costs.DeepEqualsList(other.Costs) &&
+               OverrideNextRefreshDate == other.OverrideNextRefreshDate &&
+               ApiPurchasable == other.ApiPurchasable;
+    }
 }

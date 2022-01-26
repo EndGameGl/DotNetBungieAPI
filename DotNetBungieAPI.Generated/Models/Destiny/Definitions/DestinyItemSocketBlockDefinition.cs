@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     If defined, the item has at least one socket.
 /// </summary>
-public class DestinyItemSocketBlockDefinition
+public class DestinyItemSocketBlockDefinition : IDeepEquatable<DestinyItemSocketBlockDefinition>
 {
     /// <summary>
     ///     This was supposed to be a string that would give per-item details about sockets. In practice, it turns out that all this ever has is the localized word "details". ... that's lame, but perhaps it will become something cool in the future.
@@ -28,4 +28,13 @@ public class DestinyItemSocketBlockDefinition
     /// </summary>
     [JsonPropertyName("socketCategories")]
     public List<Destiny.Definitions.DestinyItemSocketCategoryDefinition> SocketCategories { get; set; }
+
+    public bool DeepEquals(DestinyItemSocketBlockDefinition? other)
+    {
+        return other is not null &&
+               Detail == other.Detail &&
+               SocketEntries.DeepEqualsList(other.SocketEntries) &&
+               IntrinsicSockets.DeepEqualsList(other.IntrinsicSockets) &&
+               SocketCategories.DeepEqualsList(other.SocketCategories);
+    }
 }

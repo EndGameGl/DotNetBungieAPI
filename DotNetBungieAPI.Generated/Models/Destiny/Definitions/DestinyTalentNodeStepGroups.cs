@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     These properties are an attempt to categorize talent node steps by certain common properties. See the related enumerations for the type of properties being categorized.
 /// </summary>
-public class DestinyTalentNodeStepGroups
+public class DestinyTalentNodeStepGroups : IDeepEquatable<DestinyTalentNodeStepGroups>
 {
     [JsonPropertyName("weaponPerformance")]
     public Destiny.Definitions.DestinyTalentNodeStepWeaponPerformances WeaponPerformance { get; set; }
@@ -19,4 +19,14 @@ public class DestinyTalentNodeStepGroups
 
     [JsonPropertyName("damageTypes")]
     public Destiny.Definitions.DestinyTalentNodeStepDamageTypes DamageTypes { get; set; }
+
+    public bool DeepEquals(DestinyTalentNodeStepGroups? other)
+    {
+        return other is not null &&
+               WeaponPerformance == other.WeaponPerformance &&
+               ImpactEffects == other.ImpactEffects &&
+               GuardianAttributes == other.GuardianAttributes &&
+               LightAbilities == other.LightAbilities &&
+               DamageTypes == other.DamageTypes;
+    }
 }

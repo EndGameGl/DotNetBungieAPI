@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Responses;
 /// <summary>
 ///     A response containing all of the components for a vendor.
 /// </summary>
-public class DestinyVendorResponse
+public class DestinyVendorResponse : IDeepEquatable<DestinyVendorResponse>
 {
     /// <summary>
     ///     The base properties of the vendor.
@@ -52,4 +52,15 @@ public class DestinyVendorResponse
     /// </summary>
     [JsonPropertyName("stringVariables")]
     public SingleComponentResponseOfDestinyStringVariablesComponent StringVariables { get; set; }
+
+    public bool DeepEquals(DestinyVendorResponse? other)
+    {
+        return other is not null &&
+               (Vendor is not null ? Vendor.DeepEquals(other.Vendor) : other.Vendor is null) &&
+               (Categories is not null ? Categories.DeepEquals(other.Categories) : other.Categories is null) &&
+               (Sales is not null ? Sales.DeepEquals(other.Sales) : other.Sales is null) &&
+               (ItemComponents is not null ? ItemComponents.DeepEquals(other.ItemComponents) : other.ItemComponents is null) &&
+               (CurrencyLookups is not null ? CurrencyLookups.DeepEquals(other.CurrencyLookups) : other.CurrencyLookups is null) &&
+               (StringVariables is not null ? StringVariables.DeepEquals(other.StringVariables) : other.StringVariables is null);
+    }
 }

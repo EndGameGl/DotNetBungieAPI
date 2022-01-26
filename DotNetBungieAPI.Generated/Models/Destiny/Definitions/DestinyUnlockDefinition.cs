@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Unlock Flags are small bits (literally, a bit, as in a boolean value) that the game server uses for an extremely wide range of state checks, progress storage, and other interesting tidbits of information.
 /// </summary>
-public class DestinyUnlockDefinition
+public class DestinyUnlockDefinition : IDeepEquatable<DestinyUnlockDefinition>
 {
     /// <summary>
     ///     Sometimes, but not frequently, these unlock flags also have human readable information: usually when they are being directly tested for some requirement, in which case the string is a localized description of why the requirement check failed.
@@ -30,4 +30,13 @@ public class DestinyUnlockDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyUnlockDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

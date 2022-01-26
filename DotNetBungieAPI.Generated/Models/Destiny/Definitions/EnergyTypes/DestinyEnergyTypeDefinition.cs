@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.EnergyTypes;
 /// <summary>
 ///     Represents types of Energy that can be used for costs and payments related to Armor 2.0 mods.
 /// </summary>
-public class DestinyEnergyTypeDefinition
+public class DestinyEnergyTypeDefinition : IDeepEquatable<DestinyEnergyTypeDefinition>
 {
     /// <summary>
     ///     The description of the energy type, icon etc...
@@ -60,4 +60,18 @@ public class DestinyEnergyTypeDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyEnergyTypeDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               TransparentIconPath == other.TransparentIconPath &&
+               ShowIcon == other.ShowIcon &&
+               EnumValue == other.EnumValue &&
+               CapacityStatHash == other.CapacityStatHash &&
+               CostStatHash == other.CostStatHash &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

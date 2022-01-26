@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Sockets;
 
-public class DestinyItemPlug
+public class DestinyItemPlug : IDeepEquatable<DestinyItemPlug>
 {
     /// <summary>
     ///     Sometimes, Plugs may have objectives: these are often used for flavor and display purposes, but they can be used for any arbitrary purpose (both fortunately and unfortunately). Recently (with Season 2) they were expanded in use to be used as the "gating" for whether the plug can be inserted at all. For instance, a Plug might be tracking the number of PVP kills you have made. It will use the parent item's data about that tracking status to determine what to show, and will generally show it using the DestinyObjectiveDefinition's progressDescription property. Refer to the plug's itemHash and objective property for more information if you would like to display even more data.
@@ -41,4 +41,15 @@ public class DestinyItemPlug
     /// </summary>
     [JsonPropertyName("enableFailIndexes")]
     public List<int> EnableFailIndexes { get; set; }
+
+    public bool DeepEquals(DestinyItemPlug? other)
+    {
+        return other is not null &&
+               PlugObjectives.DeepEqualsList(other.PlugObjectives) &&
+               PlugItemHash == other.PlugItemHash &&
+               CanInsert == other.CanInsert &&
+               Enabled == other.Enabled &&
+               InsertFailIndexes.DeepEqualsListNaive(other.InsertFailIndexes) &&
+               EnableFailIndexes.DeepEqualsListNaive(other.EnableFailIndexes);
+    }
 }

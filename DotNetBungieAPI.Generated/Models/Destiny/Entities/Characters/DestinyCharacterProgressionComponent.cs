@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Characters;
 /// <summary>
 ///     This component returns anything that could be considered "Progression" on a user: data where the user is gaining levels, reputation, completions, rewards, etc...
 /// </summary>
-public class DestinyCharacterProgressionComponent
+public class DestinyCharacterProgressionComponent : IDeepEquatable<DestinyCharacterProgressionComponent>
 {
     /// <summary>
     ///     A Dictionary of all known progressions for the Character, keyed by the Progression's hash.
@@ -64,4 +64,17 @@ public class DestinyCharacterProgressionComponent
     /// </summary>
     [JsonPropertyName("seasonalArtifact")]
     public Destiny.Artifacts.DestinyArtifactCharacterScoped SeasonalArtifact { get; set; }
+
+    public bool DeepEquals(DestinyCharacterProgressionComponent? other)
+    {
+        return other is not null &&
+               Progressions.DeepEqualsDictionary(other.Progressions) &&
+               Factions.DeepEqualsDictionary(other.Factions) &&
+               Milestones.DeepEqualsDictionary(other.Milestones) &&
+               Quests.DeepEqualsList(other.Quests) &&
+               UninstancedItemObjectives.DeepEqualsDictionaryNaive(other.UninstancedItemObjectives) &&
+               UninstancedItemPerks.DeepEqualsDictionary(other.UninstancedItemPerks) &&
+               Checklists.DeepEqualsDictionaryNaive(other.Checklists) &&
+               (SeasonalArtifact is not null ? SeasonalArtifact.DeepEquals(other.SeasonalArtifact) : other.SeasonalArtifact is null);
+    }
 }

@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Represents a socket that has a plug associated with it intrinsically. This is useful for situations where the weapon needs to have a visual plug/Mod on it, but that plug/Mod should never change.
 /// </summary>
-public class DestinyItemIntrinsicSocketEntryDefinition
+public class DestinyItemIntrinsicSocketEntryDefinition : IDeepEquatable<DestinyItemIntrinsicSocketEntryDefinition>
 {
     /// <summary>
     ///     Indicates the plug that is intrinsically inserted into this socket.
@@ -22,4 +22,12 @@ public class DestinyItemIntrinsicSocketEntryDefinition
     /// </summary>
     [JsonPropertyName("defaultVisible")]
     public bool DefaultVisible { get; set; }
+
+    public bool DeepEquals(DestinyItemIntrinsicSocketEntryDefinition? other)
+    {
+        return other is not null &&
+               PlugItemHash == other.PlugItemHash &&
+               SocketTypeHash == other.SocketTypeHash &&
+               DefaultVisible == other.DefaultVisible;
+    }
 }

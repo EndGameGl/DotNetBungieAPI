@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Records;
 
-public class DestinyRecordTitleBlock
+public class DestinyRecordTitleBlock : IDeepEquatable<DestinyRecordTitleBlock>
 {
     [JsonPropertyName("hasTitle")]
     public bool HasTitle { get; set; }
@@ -16,4 +16,13 @@ public class DestinyRecordTitleBlock
 
     [JsonPropertyName("gildingTrackingRecordHash")]
     public uint? GildingTrackingRecordHash { get; set; }
+
+    public bool DeepEquals(DestinyRecordTitleBlock? other)
+    {
+        return other is not null &&
+               HasTitle == other.HasTitle &&
+               TitlesByGender.DeepEqualsDictionaryNaive(other.TitlesByGender) &&
+               TitlesByGenderHash.DeepEqualsDictionaryNaive(other.TitlesByGenderHash) &&
+               GildingTrackingRecordHash == other.GildingTrackingRecordHash;
+    }
 }

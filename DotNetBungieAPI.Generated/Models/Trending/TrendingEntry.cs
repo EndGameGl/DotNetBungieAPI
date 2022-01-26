@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Trending;
 /// <summary>
 ///     The list entry view for trending items. Returns just enough to show the item on the trending page.
 /// </summary>
-public class TrendingEntry
+public class TrendingEntry : IDeepEquatable<TrendingEntry>
 {
     /// <summary>
     ///     The weighted score of this trending item.
@@ -79,4 +79,24 @@ public class TrendingEntry
     /// </summary>
     [JsonPropertyName("creationDate")]
     public DateTime? CreationDate { get; set; }
+
+    public bool DeepEquals(TrendingEntry? other)
+    {
+        return other is not null &&
+               Weight == other.Weight &&
+               IsFeatured == other.IsFeatured &&
+               Identifier == other.Identifier &&
+               EntityType == other.EntityType &&
+               DisplayName == other.DisplayName &&
+               Tagline == other.Tagline &&
+               Image == other.Image &&
+               StartDate == other.StartDate &&
+               EndDate == other.EndDate &&
+               Link == other.Link &&
+               WebmVideo == other.WebmVideo &&
+               Mp4Video == other.Mp4Video &&
+               FeatureImage == other.FeatureImage &&
+               Items.DeepEqualsList(other.Items) &&
+               CreationDate == other.CreationDate;
+    }
 }

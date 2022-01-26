@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     All damage types that are possible in the game are defined here, along with localized info and icons as needed.
 /// </summary>
-public class DestinyDamageTypeDefinition
+public class DestinyDamageTypeDefinition : IDeepEquatable<DestinyDamageTypeDefinition>
 {
     /// <summary>
     ///     The description of the damage type, icon etc...
@@ -48,4 +48,16 @@ public class DestinyDamageTypeDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyDamageTypeDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               TransparentIconPath == other.TransparentIconPath &&
+               ShowIcon == other.ShowIcon &&
+               EnumValue == other.EnumValue &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

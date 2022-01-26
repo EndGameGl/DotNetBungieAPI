@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Fireteam;
 
-public class FireteamSummary
+public class FireteamSummary : IDeepEquatable<FireteamSummary>
 {
     [JsonPropertyName("fireteamId")]
     public long FireteamId { get; set; }
@@ -58,4 +58,28 @@ public class FireteamSummary
 
     [JsonPropertyName("titleBeforeModeration")]
     public string TitleBeforeModeration { get; set; }
+
+    public bool DeepEquals(FireteamSummary? other)
+    {
+        return other is not null &&
+               FireteamId == other.FireteamId &&
+               GroupId == other.GroupId &&
+               Platform == other.Platform &&
+               ActivityType == other.ActivityType &&
+               IsImmediate == other.IsImmediate &&
+               ScheduledTime == other.ScheduledTime &&
+               OwnerMembershipId == other.OwnerMembershipId &&
+               PlayerSlotCount == other.PlayerSlotCount &&
+               AlternateSlotCount == other.AlternateSlotCount &&
+               AvailablePlayerSlotCount == other.AvailablePlayerSlotCount &&
+               AvailableAlternateSlotCount == other.AvailableAlternateSlotCount &&
+               Title == other.Title &&
+               DateCreated == other.DateCreated &&
+               DateModified == other.DateModified &&
+               IsPublic == other.IsPublic &&
+               Locale == other.Locale &&
+               IsValid == other.IsValid &&
+               DatePlayerModified == other.DatePlayerModified &&
+               TitleBeforeModeration == other.TitleBeforeModeration;
+    }
 }

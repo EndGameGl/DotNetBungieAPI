@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Applications;
 
-public class ApiUsage
+public class ApiUsage : IDeepEquatable<ApiUsage>
 {
     /// <summary>
     ///     Counts for on API calls made for the time range.
@@ -13,4 +13,11 @@ public class ApiUsage
     /// </summary>
     [JsonPropertyName("throttledRequests")]
     public List<Applications.Series> ThrottledRequests { get; set; }
+
+    public bool DeepEquals(ApiUsage? other)
+    {
+        return other is not null &&
+               ApiCalls.DeepEqualsList(other.ApiCalls) &&
+               ThrottledRequests.DeepEqualsList(other.ThrottledRequests);
+    }
 }

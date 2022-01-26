@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Requests.Actions;
 
-public class DestinyInsertPlugsFreeActionRequest
+public class DestinyInsertPlugsFreeActionRequest : IDeepEquatable<DestinyInsertPlugsFreeActionRequest>
 {
     /// <summary>
     ///     The plugs being inserted.
@@ -19,4 +19,13 @@ public class DestinyInsertPlugsFreeActionRequest
 
     [JsonPropertyName("membershipType")]
     public BungieMembershipType MembershipType { get; set; }
+
+    public bool DeepEquals(DestinyInsertPlugsFreeActionRequest? other)
+    {
+        return other is not null &&
+               (Plug is not null ? Plug.DeepEquals(other.Plug) : other.Plug is null) &&
+               ItemId == other.ItemId &&
+               CharacterId == other.CharacterId &&
+               MembershipType == other.MembershipType;
+    }
 }

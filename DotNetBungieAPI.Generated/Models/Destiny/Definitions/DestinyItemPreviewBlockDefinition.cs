@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     This defines those categories, and gives some insights into that data's source.
 /// </summary>
-public class DestinyItemPreviewBlockDefinition
+public class DestinyItemPreviewBlockDefinition : IDeepEquatable<DestinyItemPreviewBlockDefinition>
 {
     /// <summary>
     ///     A string that the game UI uses as a hint for which detail screen to show for the item. You, too, can leverage this for your own custom screen detail views. Note, however, that these are arbitrarily defined by designers: there's no guarantees of a fixed, known number of these - so fall back to something reasonable if you don't recognize it.
@@ -36,4 +36,14 @@ public class DestinyItemPreviewBlockDefinition
     /// </summary>
     [JsonPropertyName("derivedItemCategories")]
     public List<Destiny.Definitions.Items.DestinyDerivedItemCategoryDefinition> DerivedItemCategories { get; set; }
+
+    public bool DeepEquals(DestinyItemPreviewBlockDefinition? other)
+    {
+        return other is not null &&
+               ScreenStyle == other.ScreenStyle &&
+               PreviewVendorHash == other.PreviewVendorHash &&
+               ArtifactHash == other.ArtifactHash &&
+               PreviewActionString == other.PreviewActionString &&
+               DerivedItemCategories.DeepEqualsList(other.DerivedItemCategories);
+    }
 }

@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public class DestinyHistoricalStatsValue
+public class DestinyHistoricalStatsValue : IDeepEquatable<DestinyHistoricalStatsValue>
 {
     /// <summary>
     ///     Unique ID for this stat
@@ -31,4 +31,14 @@ public class DestinyHistoricalStatsValue
     /// </summary>
     [JsonPropertyName("activityId")]
     public long? ActivityId { get; set; }
+
+    public bool DeepEquals(DestinyHistoricalStatsValue? other)
+    {
+        return other is not null &&
+               StatId == other.StatId &&
+               (Basic is not null ? Basic.DeepEquals(other.Basic) : other.Basic is null) &&
+               (Pga is not null ? Pga.DeepEquals(other.Pga) : other.Pga is null) &&
+               (Weighted is not null ? Weighted.DeepEquals(other.Weighted) : other.Weighted is null) &&
+               ActivityId == other.ActivityId;
+    }
 }

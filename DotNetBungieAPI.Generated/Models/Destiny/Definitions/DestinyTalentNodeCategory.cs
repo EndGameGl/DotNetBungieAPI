@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     This is a single set of references to Talent Nodes that share a common trait or purpose.
 /// </summary>
-public class DestinyTalentNodeCategory
+public class DestinyTalentNodeCategory : IDeepEquatable<DestinyTalentNodeCategory>
 {
     /// <summary>
     ///     Mostly just for debug purposes, but if you find it useful you can have it. This is BNet's manually created identifier for this category.
@@ -30,4 +30,13 @@ public class DestinyTalentNodeCategory
     /// </summary>
     [JsonPropertyName("nodeHashes")]
     public List<uint> NodeHashes { get; set; }
+
+    public bool DeepEquals(DestinyTalentNodeCategory? other)
+    {
+        return other is not null &&
+               Identifier == other.Identifier &&
+               IsLoreDriven == other.IsLoreDriven &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               NodeHashes.DeepEqualsListNaive(other.NodeHashes);
+    }
 }

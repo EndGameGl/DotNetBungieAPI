@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny;
 /// <summary>
 ///     This property has some history. A talent grid can provide stats on both the item it's related to and the character equipping the item. This returns data about those stat bonuses.
 /// </summary>
-public class DestinyTalentNodeStatBlock
+public class DestinyTalentNodeStatBlock : IDeepEquatable<DestinyTalentNodeStatBlock>
 {
     /// <summary>
     ///     The stat benefits conferred when this talent node is activated for the current Step that is active on the node.
@@ -16,4 +16,11 @@ public class DestinyTalentNodeStatBlock
     /// </summary>
     [JsonPropertyName("nextStepStats")]
     public List<Destiny.DestinyStat> NextStepStats { get; set; }
+
+    public bool DeepEquals(DestinyTalentNodeStatBlock? other)
+    {
+        return other is not null &&
+               CurrentStepStats.DeepEqualsList(other.CurrentStepStats) &&
+               NextStepStats.DeepEqualsList(other.NextStepStats);
+    }
 }

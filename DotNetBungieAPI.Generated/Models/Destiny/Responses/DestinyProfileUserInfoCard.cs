@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Responses;
 
-public class DestinyProfileUserInfoCard
+public class DestinyProfileUserInfoCard : IDeepEquatable<DestinyProfileUserInfoCard>
 {
     [JsonPropertyName("dateLastPlayed")]
     public DateTime DateLastPlayed { get; set; }
@@ -96,4 +96,24 @@ public class DestinyProfileUserInfoCard
     /// </summary>
     [JsonPropertyName("bungieGlobalDisplayNameCode")]
     public short? BungieGlobalDisplayNameCode { get; set; }
+
+    public bool DeepEquals(DestinyProfileUserInfoCard? other)
+    {
+        return other is not null &&
+               DateLastPlayed == other.DateLastPlayed &&
+               IsOverridden == other.IsOverridden &&
+               IsCrossSavePrimary == other.IsCrossSavePrimary &&
+               (PlatformSilver is not null ? PlatformSilver.DeepEquals(other.PlatformSilver) : other.PlatformSilver is null) &&
+               UnpairedGameVersions == other.UnpairedGameVersions &&
+               SupplementalDisplayName == other.SupplementalDisplayName &&
+               IconPath == other.IconPath &&
+               CrossSaveOverride == other.CrossSaveOverride &&
+               ApplicableMembershipTypes.DeepEqualsListNaive(other.ApplicableMembershipTypes) &&
+               IsPublic == other.IsPublic &&
+               MembershipType == other.MembershipType &&
+               MembershipId == other.MembershipId &&
+               DisplayName == other.DisplayName &&
+               BungieGlobalDisplayName == other.BungieGlobalDisplayName &&
+               BungieGlobalDisplayNameCode == other.BungieGlobalDisplayNameCode;
+    }
 }

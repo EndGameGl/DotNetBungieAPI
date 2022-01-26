@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     A single faction may contain multiple vendors, or the same vendor available at two different locations.
 /// </summary>
-public class DestinyFactionVendorDefinition
+public class DestinyFactionVendorDefinition : IDeepEquatable<DestinyFactionVendorDefinition>
 {
     /// <summary>
     ///     The faction vendor hash.
@@ -24,4 +24,12 @@ public class DestinyFactionVendorDefinition
     /// </summary>
     [JsonPropertyName("backgroundImagePath")]
     public string BackgroundImagePath { get; set; }
+
+    public bool DeepEquals(DestinyFactionVendorDefinition? other)
+    {
+        return other is not null &&
+               VendorHash == other.VendorHash &&
+               DestinationHash == other.DestinationHash &&
+               BackgroundImagePath == other.BackgroundImagePath;
+    }
 }

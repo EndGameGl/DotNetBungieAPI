@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     An Equipment Slot must have a related Inventory Bucket, but not all inventory buckets must have Equipment Slots.
 /// </summary>
-public class DestinyEquipmentSlotDefinition
+public class DestinyEquipmentSlotDefinition : IDeepEquatable<DestinyEquipmentSlotDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -55,4 +55,17 @@ public class DestinyEquipmentSlotDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyEquipmentSlotDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               EquipmentCategoryHash == other.EquipmentCategoryHash &&
+               BucketTypeHash == other.BucketTypeHash &&
+               ApplyCustomArtDyes == other.ApplyCustomArtDyes &&
+               ArtDyeChannels.DeepEqualsList(other.ArtDyeChannels) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

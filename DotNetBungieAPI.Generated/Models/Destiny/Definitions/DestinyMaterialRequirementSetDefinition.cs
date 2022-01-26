@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     A variety of other entities refer to these as gatekeepers and payments for actions that can be performed in game.
 /// </summary>
-public class DestinyMaterialRequirementSetDefinition
+public class DestinyMaterialRequirementSetDefinition : IDeepEquatable<DestinyMaterialRequirementSetDefinition>
 {
     /// <summary>
     ///     The list of all materials that are required.
@@ -32,4 +32,13 @@ public class DestinyMaterialRequirementSetDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyMaterialRequirementSetDefinition? other)
+    {
+        return other is not null &&
+               Materials.DeepEqualsList(other.Materials) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

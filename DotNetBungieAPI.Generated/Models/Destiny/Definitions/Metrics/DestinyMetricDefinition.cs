@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Metrics;
 
-public class DestinyMetricDefinition
+public class DestinyMetricDefinition : IDeepEquatable<DestinyMetricDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -45,4 +45,19 @@ public class DestinyMetricDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyMetricDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               TrackingObjectiveHash == other.TrackingObjectiveHash &&
+               LowerValueIsBetter == other.LowerValueIsBetter &&
+               PresentationNodeType == other.PresentationNodeType &&
+               TraitIds.DeepEqualsListNaive(other.TraitIds) &&
+               TraitHashes.DeepEqualsListNaive(other.TraitHashes) &&
+               ParentNodeHashes.DeepEqualsListNaive(other.ParentNodeHashes) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

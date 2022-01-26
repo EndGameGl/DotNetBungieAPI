@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Collectibles;
 /// <summary>
 ///     Defines a
 /// </summary>
-public class DestinyCollectibleDefinition
+public class DestinyCollectibleDefinition : IDeepEquatable<DestinyCollectibleDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -76,4 +76,24 @@ public class DestinyCollectibleDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyCollectibleDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               Scope == other.Scope &&
+               SourceString == other.SourceString &&
+               SourceHash == other.SourceHash &&
+               ItemHash == other.ItemHash &&
+               (AcquisitionInfo is not null ? AcquisitionInfo.DeepEquals(other.AcquisitionInfo) : other.AcquisitionInfo is null) &&
+               (StateInfo is not null ? StateInfo.DeepEquals(other.StateInfo) : other.StateInfo is null) &&
+               (PresentationInfo is not null ? PresentationInfo.DeepEquals(other.PresentationInfo) : other.PresentationInfo is null) &&
+               PresentationNodeType == other.PresentationNodeType &&
+               TraitIds.DeepEqualsListNaive(other.TraitIds) &&
+               TraitHashes.DeepEqualsListNaive(other.TraitHashes) &&
+               ParentNodeHashes.DeepEqualsListNaive(other.ParentNodeHashes) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

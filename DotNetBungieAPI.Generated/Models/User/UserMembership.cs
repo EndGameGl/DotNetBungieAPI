@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.User;
 /// <summary>
 ///     Very basic info about a user as returned by the Account server.
 /// </summary>
-public class UserMembership
+public class UserMembership : IDeepEquatable<UserMembership>
 {
     /// <summary>
     ///     Type of the membership. Not necessarily the native type.
@@ -34,4 +34,14 @@ public class UserMembership
     /// </summary>
     [JsonPropertyName("bungieGlobalDisplayNameCode")]
     public short? BungieGlobalDisplayNameCode { get; set; }
+
+    public bool DeepEquals(UserMembership? other)
+    {
+        return other is not null &&
+               MembershipType == other.MembershipType &&
+               MembershipId == other.MembershipId &&
+               DisplayName == other.DisplayName &&
+               BungieGlobalDisplayName == other.BungieGlobalDisplayName &&
+               BungieGlobalDisplayNameCode == other.BungieGlobalDisplayNameCode;
+    }
 }

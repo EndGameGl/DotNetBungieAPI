@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Some items are "sacks" - they can be "opened" to produce other items. This is information related to its sack status, mostly UI strings. Engrams are an example of items that are considered to be "Sacks".
 /// </summary>
-public class DestinyItemSackBlockDefinition
+public class DestinyItemSackBlockDefinition : IDeepEquatable<DestinyItemSackBlockDefinition>
 {
     /// <summary>
     ///     A description of what will happen when you open the sack. As far as I can tell, this is blank currently. Unknown whether it will eventually be populated with useful info.
@@ -25,4 +25,14 @@ public class DestinyItemSackBlockDefinition
 
     [JsonPropertyName("openOnAcquire")]
     public bool OpenOnAcquire { get; set; }
+
+    public bool DeepEquals(DestinyItemSackBlockDefinition? other)
+    {
+        return other is not null &&
+               DetailAction == other.DetailAction &&
+               OpenAction == other.OpenAction &&
+               SelectItemCount == other.SelectItemCount &&
+               VendorSackType == other.VendorSackType &&
+               OpenOnAcquire == other.OpenOnAcquire;
+    }
 }

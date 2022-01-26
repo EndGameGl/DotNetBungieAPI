@@ -5,11 +5,17 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Use UnlockExpressionParser to evaluate expressions using an IUnlockContext parsed from Babel.
 /// </summary>
-public class DestinyUnlockExpressionDefinition
+public class DestinyUnlockExpressionDefinition : IDeepEquatable<DestinyUnlockExpressionDefinition>
 {
     /// <summary>
     ///     A shortcut for determining the most restrictive gating that this expression performs. See the DestinyGatingScope enum's documentation for more details.
     /// </summary>
     [JsonPropertyName("scope")]
     public Destiny.DestinyGatingScope Scope { get; set; }
+
+    public bool DeepEquals(DestinyUnlockExpressionDefinition? other)
+    {
+        return other is not null &&
+               Scope == other.Scope;
+    }
 }

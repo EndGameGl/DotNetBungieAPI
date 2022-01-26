@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Content.Models;
 
-public class ContentTypeDescription
+public class ContentTypeDescription : IDeepEquatable<ContentTypeDescription>
 {
     [JsonPropertyName("cType")]
     public string CType { get; set; }
@@ -64,4 +64,30 @@ public class ContentTypeDescription
 
     [JsonPropertyName("propertySections")]
     public List<Content.Models.ContentTypePropertySection> PropertySections { get; set; }
+
+    public bool DeepEquals(ContentTypeDescription? other)
+    {
+        return other is not null &&
+               CType == other.CType &&
+               Name == other.Name &&
+               ContentDescription == other.ContentDescription &&
+               PreviewImage == other.PreviewImage &&
+               Priority == other.Priority &&
+               Reminder == other.Reminder &&
+               Properties.DeepEqualsList(other.Properties) &&
+               TagMetadata.DeepEqualsList(other.TagMetadata) &&
+               TagMetadataItems.DeepEqualsDictionary(other.TagMetadataItems) &&
+               UsageExamples.DeepEqualsListNaive(other.UsageExamples) &&
+               ShowInContentEditor == other.ShowInContentEditor &&
+               TypeOf == other.TypeOf &&
+               BindIdentifierToProperty == other.BindIdentifierToProperty &&
+               BoundRegex == other.BoundRegex &&
+               ForceIdentifierBinding == other.ForceIdentifierBinding &&
+               AllowComments == other.AllowComments &&
+               AutoEnglishPropertyFallback == other.AutoEnglishPropertyFallback &&
+               BulkUploadable == other.BulkUploadable &&
+               Previews.DeepEqualsList(other.Previews) &&
+               SuppressCmsPath == other.SuppressCmsPath &&
+               PropertySections.DeepEqualsList(other.PropertySections);
+    }
 }

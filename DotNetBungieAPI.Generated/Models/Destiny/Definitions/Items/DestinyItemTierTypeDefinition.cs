@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Items;
 /// <para />
 ///     It also provides some base data for infusion that could be useful.
 /// </summary>
-public class DestinyItemTierTypeDefinition
+public class DestinyItemTierTypeDefinition : IDeepEquatable<DestinyItemTierTypeDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -35,4 +35,14 @@ public class DestinyItemTierTypeDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyItemTierTypeDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               (InfusionProcess is not null ? InfusionProcess.DeepEquals(other.InfusionProcess) : other.InfusionProcess is null) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

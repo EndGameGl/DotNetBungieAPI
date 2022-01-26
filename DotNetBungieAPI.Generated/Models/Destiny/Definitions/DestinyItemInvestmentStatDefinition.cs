@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Because these won't match what you see in-game, consider carefully whether you really want to use these stats. I have left them in case someone can do something useful or interesting with the pre-processed statistics.
 /// </summary>
-public class DestinyItemInvestmentStatDefinition
+public class DestinyItemInvestmentStatDefinition : IDeepEquatable<DestinyItemInvestmentStatDefinition>
 {
     /// <summary>
     ///     The hash identifier for the DestinyStatDefinition defining this stat.
@@ -24,4 +24,12 @@ public class DestinyItemInvestmentStatDefinition
     /// </summary>
     [JsonPropertyName("isConditionallyActive")]
     public bool IsConditionallyActive { get; set; }
+
+    public bool DeepEquals(DestinyItemInvestmentStatDefinition? other)
+    {
+        return other is not null &&
+               StatTypeHash == other.StatTypeHash &&
+               Value == other.Value &&
+               IsConditionallyActive == other.IsConditionallyActive;
+    }
 }

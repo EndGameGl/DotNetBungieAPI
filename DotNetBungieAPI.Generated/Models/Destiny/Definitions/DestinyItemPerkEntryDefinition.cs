@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     An intrinsic perk on an item, and the requirements for it to be activated.
 /// </summary>
-public class DestinyItemPerkEntryDefinition
+public class DestinyItemPerkEntryDefinition : IDeepEquatable<DestinyItemPerkEntryDefinition>
 {
     /// <summary>
     ///     If this perk is not active, this is the string to show for why it's not providing its benefits.
@@ -22,4 +22,12 @@ public class DestinyItemPerkEntryDefinition
     /// </summary>
     [JsonPropertyName("perkVisibility")]
     public Destiny.ItemPerkVisibility PerkVisibility { get; set; }
+
+    public bool DeepEquals(DestinyItemPerkEntryDefinition? other)
+    {
+        return other is not null &&
+               RequirementDisplayString == other.RequirementDisplayString &&
+               PerkHash == other.PerkHash &&
+               PerkVisibility == other.PerkVisibility;
+    }
 }

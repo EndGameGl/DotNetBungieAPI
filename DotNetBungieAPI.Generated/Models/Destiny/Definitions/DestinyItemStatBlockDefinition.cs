@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     It is also worth noting that some stats, like Magazine size, have further calculations performed on them by scripts in-game and on the game servers that BNet does not have access to. We cannot know how those stats are further transformed, and thus some stats will be inaccurate even on instances of items in BNet vs. how they appear in-game. This is a known limitation of our item statistics, without any planned fix.
 /// </summary>
-public class DestinyItemStatBlockDefinition
+public class DestinyItemStatBlockDefinition : IDeepEquatable<DestinyItemStatBlockDefinition>
 {
     /// <summary>
     ///     If true, the game won't show the "primary" stat on this item when you inspect it.
@@ -46,4 +46,14 @@ public class DestinyItemStatBlockDefinition
     /// </summary>
     [JsonPropertyName("primaryBaseStatHash")]
     public uint PrimaryBaseStatHash { get; set; }
+
+    public bool DeepEquals(DestinyItemStatBlockDefinition? other)
+    {
+        return other is not null &&
+               DisablePrimaryStatDisplay == other.DisablePrimaryStatDisplay &&
+               StatGroupHash == other.StatGroupHash &&
+               Stats.DeepEqualsDictionary(other.Stats) &&
+               HasDisplayableStats == other.HasDisplayableStats &&
+               PrimaryBaseStatHash == other.PrimaryBaseStatHash;
+    }
 }

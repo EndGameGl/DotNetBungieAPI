@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Responses;
 /// <summary>
 ///     The response contract for GetDestinyCharacter, with components that can be returned for character and item-level data.
 /// </summary>
-public class DestinyCharacterResponse
+public class DestinyCharacterResponse : IDeepEquatable<DestinyCharacterResponse>
 {
     /// <summary>
     ///     The character-level non-equipped inventory items.
@@ -112,4 +112,23 @@ public class DestinyCharacterResponse
     /// </summary>
     [JsonPropertyName("currencyLookups")]
     public SingleComponentResponseOfDestinyCurrenciesComponent CurrencyLookups { get; set; }
+
+    public bool DeepEquals(DestinyCharacterResponse? other)
+    {
+        return other is not null &&
+               (Inventory is not null ? Inventory.DeepEquals(other.Inventory) : other.Inventory is null) &&
+               (Character is not null ? Character.DeepEquals(other.Character) : other.Character is null) &&
+               (Progressions is not null ? Progressions.DeepEquals(other.Progressions) : other.Progressions is null) &&
+               (RenderData is not null ? RenderData.DeepEquals(other.RenderData) : other.RenderData is null) &&
+               (Activities is not null ? Activities.DeepEquals(other.Activities) : other.Activities is null) &&
+               (Equipment is not null ? Equipment.DeepEquals(other.Equipment) : other.Equipment is null) &&
+               (Kiosks is not null ? Kiosks.DeepEquals(other.Kiosks) : other.Kiosks is null) &&
+               (PlugSets is not null ? PlugSets.DeepEquals(other.PlugSets) : other.PlugSets is null) &&
+               (PresentationNodes is not null ? PresentationNodes.DeepEquals(other.PresentationNodes) : other.PresentationNodes is null) &&
+               (Records is not null ? Records.DeepEquals(other.Records) : other.Records is null) &&
+               (Collectibles is not null ? Collectibles.DeepEquals(other.Collectibles) : other.Collectibles is null) &&
+               (ItemComponents is not null ? ItemComponents.DeepEquals(other.ItemComponents) : other.ItemComponents is null) &&
+               (UninstancedItemComponents is not null ? UninstancedItemComponents.DeepEquals(other.UninstancedItemComponents) : other.UninstancedItemComponents is null) &&
+               (CurrencyLookups is not null ? CurrencyLookups.DeepEquals(other.CurrencyLookups) : other.CurrencyLookups is null);
+    }
 }

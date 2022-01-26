@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Tokens;
 
-public class PartnerOfferHistoryResponse
+public class PartnerOfferHistoryResponse : IDeepEquatable<PartnerOfferHistoryResponse>
 {
     [JsonPropertyName("PartnerOfferKey")]
     public string PartnerOfferKey { get; set; }
@@ -25,4 +25,17 @@ public class PartnerOfferHistoryResponse
 
     [JsonPropertyName("ApplyDate")]
     public DateTime? ApplyDate { get; set; }
+
+    public bool DeepEquals(PartnerOfferHistoryResponse? other)
+    {
+        return other is not null &&
+               PartnerOfferKey == other.PartnerOfferKey &&
+               MembershipId == other.MembershipId &&
+               MembershipType == other.MembershipType &&
+               LocalizedName == other.LocalizedName &&
+               LocalizedDescription == other.LocalizedDescription &&
+               IsConsumable == other.IsConsumable &&
+               QuantityApplied == other.QuantityApplied &&
+               ApplyDate == other.ApplyDate;
+    }
 }

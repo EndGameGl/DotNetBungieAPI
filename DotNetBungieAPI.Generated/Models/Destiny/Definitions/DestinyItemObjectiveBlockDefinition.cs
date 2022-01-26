@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Quest steps have 1:M objectives that we end up processing and returning in live data as DestinyQuestStatus data, and other useful information.
 /// </summary>
-public class DestinyItemObjectiveBlockDefinition
+public class DestinyItemObjectiveBlockDefinition : IDeepEquatable<DestinyItemObjectiveBlockDefinition>
 {
     /// <summary>
     ///     The hashes to Objectives (DestinyObjectiveDefinition) that are part of this Quest Step, in the order that they should be rendered.
@@ -65,4 +65,19 @@ public class DestinyItemObjectiveBlockDefinition
 
     [JsonPropertyName("displayAsStatTracker")]
     public bool DisplayAsStatTracker { get; set; }
+
+    public bool DeepEquals(DestinyItemObjectiveBlockDefinition? other)
+    {
+        return other is not null &&
+               ObjectiveHashes.DeepEqualsListNaive(other.ObjectiveHashes) &&
+               DisplayActivityHashes.DeepEqualsListNaive(other.DisplayActivityHashes) &&
+               RequireFullObjectiveCompletion == other.RequireFullObjectiveCompletion &&
+               QuestlineItemHash == other.QuestlineItemHash &&
+               Narrative == other.Narrative &&
+               ObjectiveVerbName == other.ObjectiveVerbName &&
+               QuestTypeIdentifier == other.QuestTypeIdentifier &&
+               QuestTypeHash == other.QuestTypeHash &&
+               PerObjectiveDisplayProperties.DeepEqualsList(other.PerObjectiveDisplayProperties) &&
+               DisplayAsStatTracker == other.DisplayAsStatTracker;
+    }
 }

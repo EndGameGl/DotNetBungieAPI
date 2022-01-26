@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 
-public class DestinyProgressionDisplayPropertiesDefinition
+public class DestinyProgressionDisplayPropertiesDefinition : IDeepEquatable<DestinyProgressionDisplayPropertiesDefinition>
 {
     /// <summary>
     ///     When progressions show your "experience" gained, that bar has units (i.e. "Experience", "Bad Dudes Snuffed Out", whatever). This is the localized string for that unit of measurement.
@@ -35,4 +35,16 @@ public class DestinyProgressionDisplayPropertiesDefinition
 
     [JsonPropertyName("hasIcon")]
     public bool HasIcon { get; set; }
+
+    public bool DeepEquals(DestinyProgressionDisplayPropertiesDefinition? other)
+    {
+        return other is not null &&
+               DisplayUnitsName == other.DisplayUnitsName &&
+               Description == other.Description &&
+               Name == other.Name &&
+               Icon == other.Icon &&
+               IconSequences.DeepEqualsList(other.IconSequences) &&
+               HighResIcon == other.HighResIcon &&
+               HasIcon == other.HasIcon;
+    }
 }

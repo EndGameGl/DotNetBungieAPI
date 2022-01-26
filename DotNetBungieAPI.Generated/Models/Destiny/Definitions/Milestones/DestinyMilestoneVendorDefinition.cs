@@ -5,11 +5,17 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 /// <para />
 ///     It also contains information we need to determine whether that vendor is actually relevant at the moment, given the user's current state.
 /// </summary>
-public class DestinyMilestoneVendorDefinition
+public class DestinyMilestoneVendorDefinition : IDeepEquatable<DestinyMilestoneVendorDefinition>
 {
     /// <summary>
     ///     The hash of the vendor whose wares should be shown as associated with the Milestone.
     /// </summary>
     [JsonPropertyName("vendorHash")]
     public uint VendorHash { get; set; }
+
+    public bool DeepEquals(DestinyMilestoneVendorDefinition? other)
+    {
+        return other is not null &&
+               VendorHash == other.VendorHash;
+    }
 }

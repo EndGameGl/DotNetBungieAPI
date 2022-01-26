@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 
-public class DestinyVendorDisplayPropertiesDefinition
+public class DestinyVendorDisplayPropertiesDefinition : IDeepEquatable<DestinyVendorDisplayPropertiesDefinition>
 {
     /// <summary>
     ///     I regret calling this a "large icon". It's more like a medium-sized image with a picture of the vendor's mug on it, trying their best to look cool. Not what one would call an icon.
@@ -68,4 +68,22 @@ public class DestinyVendorDisplayPropertiesDefinition
 
     [JsonPropertyName("hasIcon")]
     public bool HasIcon { get; set; }
+
+    public bool DeepEquals(DestinyVendorDisplayPropertiesDefinition? other)
+    {
+        return other is not null &&
+               LargeIcon == other.LargeIcon &&
+               Subtitle == other.Subtitle &&
+               OriginalIcon == other.OriginalIcon &&
+               RequirementsDisplay.DeepEqualsList(other.RequirementsDisplay) &&
+               SmallTransparentIcon == other.SmallTransparentIcon &&
+               MapIcon == other.MapIcon &&
+               LargeTransparentIcon == other.LargeTransparentIcon &&
+               Description == other.Description &&
+               Name == other.Name &&
+               Icon == other.Icon &&
+               IconSequences.DeepEqualsList(other.IconSequences) &&
+               HighResIcon == other.HighResIcon &&
+               HasIcon == other.HasIcon;
+    }
 }

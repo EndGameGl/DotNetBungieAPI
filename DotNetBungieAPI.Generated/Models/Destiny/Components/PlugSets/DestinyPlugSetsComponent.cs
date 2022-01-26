@@ -5,11 +5,17 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Components.PlugSets;
 /// <para />
 ///     This is the set of those plugs that we came across in the users' inventory, along with the values for plugs in the set. Any given set in this component may be represented in Character and Profile-level, as some plugs may be Profile-level restricted, and some character-level restricted. (note that the ones that are even more specific will remain on the actual socket component itself, as they cannot be reused)
 /// </summary>
-public class DestinyPlugSetsComponent
+public class DestinyPlugSetsComponent : IDeepEquatable<DestinyPlugSetsComponent>
 {
     /// <summary>
     ///     The shared list of plugs for each relevant PlugSet, keyed by the hash identifier of the PlugSet (DestinyPlugSetDefinition).
     /// </summary>
     [JsonPropertyName("plugs")]
     public Dictionary<uint, List<Destiny.Sockets.DestinyItemPlug>> Plugs { get; set; }
+
+    public bool DeepEquals(DestinyPlugSetsComponent? other)
+    {
+        return other is not null &&
+               Plugs.DeepEqualsDictionaryNaive(other.Plugs);
+    }
 }

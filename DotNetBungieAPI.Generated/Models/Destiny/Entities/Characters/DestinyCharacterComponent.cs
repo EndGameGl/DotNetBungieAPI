@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Characters;
 /// <summary>
 ///     This component contains base properties of the character. You'll probably want to always request this component, but hey you do you.
 /// </summary>
-public class DestinyCharacterComponent
+public class DestinyCharacterComponent : IDeepEquatable<DestinyCharacterComponent>
 {
     /// <summary>
     ///     Every Destiny Profile has a membershipId. This is provided on the character as well for convenience.
@@ -144,4 +144,31 @@ public class DestinyCharacterComponent
     /// </summary>
     [JsonPropertyName("titleRecordHash")]
     public uint? TitleRecordHash { get; set; }
+
+    public bool DeepEquals(DestinyCharacterComponent? other)
+    {
+        return other is not null &&
+               MembershipId == other.MembershipId &&
+               MembershipType == other.MembershipType &&
+               CharacterId == other.CharacterId &&
+               DateLastPlayed == other.DateLastPlayed &&
+               MinutesPlayedThisSession == other.MinutesPlayedThisSession &&
+               MinutesPlayedTotal == other.MinutesPlayedTotal &&
+               Light == other.Light &&
+               Stats.DeepEqualsDictionaryNaive(other.Stats) &&
+               RaceHash == other.RaceHash &&
+               GenderHash == other.GenderHash &&
+               ClassHash == other.ClassHash &&
+               RaceType == other.RaceType &&
+               ClassType == other.ClassType &&
+               GenderType == other.GenderType &&
+               EmblemPath == other.EmblemPath &&
+               EmblemBackgroundPath == other.EmblemBackgroundPath &&
+               EmblemHash == other.EmblemHash &&
+               (EmblemColor is not null ? EmblemColor.DeepEquals(other.EmblemColor) : other.EmblemColor is null) &&
+               (LevelProgression is not null ? LevelProgression.DeepEquals(other.LevelProgression) : other.LevelProgression is null) &&
+               BaseCharacterLevel == other.BaseCharacterLevel &&
+               PercentToNextLevel == other.PercentToNextLevel &&
+               TitleRecordHash == other.TitleRecordHash;
+    }
 }

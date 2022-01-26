@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Config;
 
-public class ImagePyramidEntry
+public class ImagePyramidEntry : IDeepEquatable<ImagePyramidEntry>
 {
     /// <summary>
     ///     The name of the subfolder where these images are located.
@@ -13,4 +13,11 @@ public class ImagePyramidEntry
     /// </summary>
     [JsonPropertyName("factor")]
     public float Factor { get; set; }
+
+    public bool DeepEquals(ImagePyramidEntry? other)
+    {
+        return other is not null &&
+               Name == other.Name &&
+               Factor == other.Factor;
+    }
 }

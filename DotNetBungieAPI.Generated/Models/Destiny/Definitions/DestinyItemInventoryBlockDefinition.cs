@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     If the item can exist in an inventory - the overwhelming majority of them can and do - then this is the basic properties regarding the item's relationship with the inventory.
 /// </summary>
-public class DestinyItemInventoryBlockDefinition
+public class DestinyItemInventoryBlockDefinition : IDeepEquatable<DestinyItemInventoryBlockDefinition>
 {
     /// <summary>
     ///     If this string is populated, you can't have more than one stack with this label in a given inventory. Note that this is different from the equipping block's unique label, which is used for equipping uniqueness.
@@ -73,4 +73,21 @@ public class DestinyItemInventoryBlockDefinition
 
     [JsonPropertyName("suppressExpirationWhenObjectivesComplete")]
     public bool SuppressExpirationWhenObjectivesComplete { get; set; }
+
+    public bool DeepEquals(DestinyItemInventoryBlockDefinition? other)
+    {
+        return other is not null &&
+               StackUniqueLabel == other.StackUniqueLabel &&
+               MaxStackSize == other.MaxStackSize &&
+               BucketTypeHash == other.BucketTypeHash &&
+               RecoveryBucketTypeHash == other.RecoveryBucketTypeHash &&
+               TierTypeHash == other.TierTypeHash &&
+               IsInstanceItem == other.IsInstanceItem &&
+               TierTypeName == other.TierTypeName &&
+               TierType == other.TierType &&
+               ExpirationTooltip == other.ExpirationTooltip &&
+               ExpiredInActivityMessage == other.ExpiredInActivityMessage &&
+               ExpiredInOrbitMessage == other.ExpiredInOrbitMessage &&
+               SuppressExpirationWhenObjectivesComplete == other.SuppressExpirationWhenObjectivesComplete;
+    }
 }

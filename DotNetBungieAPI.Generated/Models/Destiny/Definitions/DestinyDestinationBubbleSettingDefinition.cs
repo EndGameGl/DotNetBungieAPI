@@ -5,8 +5,14 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     DEPRECATED - Just use bubbles.
 /// </summary>
-public class DestinyDestinationBubbleSettingDefinition
+public class DestinyDestinationBubbleSettingDefinition : IDeepEquatable<DestinyDestinationBubbleSettingDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+
+    public bool DeepEquals(DestinyDestinationBubbleSettingDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null);
+    }
 }

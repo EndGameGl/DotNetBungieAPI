@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Common.Models;
 
-public class Destiny2CoreSettings
+public class Destiny2CoreSettings : IDeepEquatable<Destiny2CoreSettings>
 {
     [JsonPropertyName("collectionRootNode")]
     public uint CollectionRootNode { get; set; }
@@ -73,4 +73,33 @@ public class Destiny2CoreSettings
 
     [JsonPropertyName("pastSeasonHashes")]
     public List<uint> PastSeasonHashes { get; set; }
+
+    public bool DeepEquals(Destiny2CoreSettings? other)
+    {
+        return other is not null &&
+               CollectionRootNode == other.CollectionRootNode &&
+               BadgesRootNode == other.BadgesRootNode &&
+               RecordsRootNode == other.RecordsRootNode &&
+               MedalsRootNode == other.MedalsRootNode &&
+               MetricsRootNode == other.MetricsRootNode &&
+               ActiveTriumphsRootNodeHash == other.ActiveTriumphsRootNodeHash &&
+               ActiveSealsRootNodeHash == other.ActiveSealsRootNodeHash &&
+               LegacyTriumphsRootNodeHash == other.LegacyTriumphsRootNodeHash &&
+               LegacySealsRootNodeHash == other.LegacySealsRootNodeHash &&
+               MedalsRootNodeHash == other.MedalsRootNodeHash &&
+               ExoticCatalystsRootNodeHash == other.ExoticCatalystsRootNodeHash &&
+               LoreRootNodeHash == other.LoreRootNodeHash &&
+               CurrentRankProgressionHashes.DeepEqualsListNaive(other.CurrentRankProgressionHashes) &&
+               InsertPlugFreeProtectedPlugItemHashes.DeepEqualsListNaive(other.InsertPlugFreeProtectedPlugItemHashes) &&
+               InsertPlugFreeBlockedSocketTypeHashes.DeepEqualsListNaive(other.InsertPlugFreeBlockedSocketTypeHashes) &&
+               UndiscoveredCollectibleImage == other.UndiscoveredCollectibleImage &&
+               AmmoTypeHeavyIcon == other.AmmoTypeHeavyIcon &&
+               AmmoTypeSpecialIcon == other.AmmoTypeSpecialIcon &&
+               AmmoTypePrimaryIcon == other.AmmoTypePrimaryIcon &&
+               CurrentSeasonalArtifactHash == other.CurrentSeasonalArtifactHash &&
+               CurrentSeasonHash == other.CurrentSeasonHash &&
+               SeasonalChallengesPresentationNodeHash == other.SeasonalChallengesPresentationNodeHash &&
+               FutureSeasonHashes.DeepEqualsListNaive(other.FutureSeasonHashes) &&
+               PastSeasonHashes.DeepEqualsListNaive(other.PastSeasonHashes);
+    }
 }

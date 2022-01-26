@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Responses;
 /// <summary>
 ///     The response object for retrieving an individual instanced item. None of these components are relevant for an item that doesn't have an "itemInstanceId": for those, get your information from the DestinyInventoryDefinition.
 /// </summary>
-public class DestinyItemResponse
+public class DestinyItemResponse : IDeepEquatable<DestinyItemResponse>
 {
     /// <summary>
     ///     If the item is on a character, this will return the ID of the character that is holding the item.
@@ -92,4 +92,20 @@ public class DestinyItemResponse
     /// </summary>
     [JsonPropertyName("plugObjectives")]
     public SingleComponentResponseOfDestinyItemPlugObjectivesComponent PlugObjectives { get; set; }
+
+    public bool DeepEquals(DestinyItemResponse? other)
+    {
+        return other is not null &&
+               CharacterId == other.CharacterId &&
+               (Item is not null ? Item.DeepEquals(other.Item) : other.Item is null) &&
+               (Instance is not null ? Instance.DeepEquals(other.Instance) : other.Instance is null) &&
+               (Objectives is not null ? Objectives.DeepEquals(other.Objectives) : other.Objectives is null) &&
+               (Perks is not null ? Perks.DeepEquals(other.Perks) : other.Perks is null) &&
+               (RenderData is not null ? RenderData.DeepEquals(other.RenderData) : other.RenderData is null) &&
+               (Stats is not null ? Stats.DeepEquals(other.Stats) : other.Stats is null) &&
+               (TalentGrid is not null ? TalentGrid.DeepEquals(other.TalentGrid) : other.TalentGrid is null) &&
+               (Sockets is not null ? Sockets.DeepEquals(other.Sockets) : other.Sockets is null) &&
+               (ReusablePlugs is not null ? ReusablePlugs.DeepEquals(other.ReusablePlugs) : other.ReusablePlugs is null) &&
+               (PlugObjectives is not null ? PlugObjectives.DeepEquals(other.PlugObjectives) : other.PlugObjectives is null);
+    }
 }

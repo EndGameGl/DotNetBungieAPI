@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public class GetGroupsForMemberResponse
+public class GetGroupsForMemberResponse : IDeepEquatable<GetGroupsForMemberResponse>
 {
     /// <summary>
     ///     A convenience property that indicates if every membership this user has that is a part of this group are part of an account that is considered inactive - for example, overridden accounts in Cross Save.
@@ -36,4 +36,16 @@ public class GetGroupsForMemberResponse
     /// </summary>
     [JsonPropertyName("useTotalResults")]
     public bool UseTotalResults { get; set; }
+
+    public bool DeepEquals(GetGroupsForMemberResponse? other)
+    {
+        return other is not null &&
+               AreAllMembershipsInactive.DeepEqualsDictionaryNaive(other.AreAllMembershipsInactive) &&
+               Results.DeepEqualsList(other.Results) &&
+               TotalResults == other.TotalResults &&
+               HasMore == other.HasMore &&
+               (Query is not null ? Query.DeepEquals(other.Query) : other.Query is null) &&
+               ReplacementContinuationToken == other.ReplacementContinuationToken &&
+               UseTotalResults == other.UseTotalResults;
+    }
 }

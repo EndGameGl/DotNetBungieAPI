@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Collectibles;
 
-public class DestinyProfileCollectiblesComponent
+public class DestinyProfileCollectiblesComponent : IDeepEquatable<DestinyProfileCollectiblesComponent>
 {
     /// <summary>
     ///     The list of collectibles determined by the game as having been "recently" acquired.
@@ -30,4 +30,14 @@ public class DestinyProfileCollectiblesComponent
     /// </summary>
     [JsonPropertyName("collectionBadgesRootNodeHash")]
     public uint CollectionBadgesRootNodeHash { get; set; }
+
+    public bool DeepEquals(DestinyProfileCollectiblesComponent? other)
+    {
+        return other is not null &&
+               RecentCollectibleHashes.DeepEqualsListNaive(other.RecentCollectibleHashes) &&
+               NewnessFlaggedCollectibleHashes.DeepEqualsListNaive(other.NewnessFlaggedCollectibleHashes) &&
+               Collectibles.DeepEqualsDictionary(other.Collectibles) &&
+               CollectionCategoriesRootNodeHash == other.CollectionCategoriesRootNodeHash &&
+               CollectionBadgesRootNodeHash == other.CollectionBadgesRootNodeHash;
+    }
 }

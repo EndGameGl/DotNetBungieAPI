@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     The information for how the vendor purchase should override a given socket with custom plug data.
 /// </summary>
-public class DestinyVendorItemSocketOverride
+public class DestinyVendorItemSocketOverride : IDeepEquatable<DestinyVendorItemSocketOverride>
 {
     /// <summary>
     ///     If this is populated, the socket will be overridden with a specific plug.
@@ -24,4 +24,12 @@ public class DestinyVendorItemSocketOverride
     /// </summary>
     [JsonPropertyName("socketTypeHash")]
     public uint SocketTypeHash { get; set; }
+
+    public bool DeepEquals(DestinyVendorItemSocketOverride? other)
+    {
+        return other is not null &&
+               SingleItemHash == other.SingleItemHash &&
+               RandomizedOptionsCount == other.RandomizedOptionsCount &&
+               SocketTypeHash == other.SocketTypeHash;
+    }
 }

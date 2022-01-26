@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public class GroupOptionalConversation
+public class GroupOptionalConversation : IDeepEquatable<GroupOptionalConversation>
 {
     [JsonPropertyName("groupId")]
     public long GroupId { get; set; }
@@ -16,4 +16,14 @@ public class GroupOptionalConversation
 
     [JsonPropertyName("chatSecurity")]
     public GroupsV2.ChatSecuritySetting ChatSecurity { get; set; }
+
+    public bool DeepEquals(GroupOptionalConversation? other)
+    {
+        return other is not null &&
+               GroupId == other.GroupId &&
+               ConversationId == other.ConversationId &&
+               ChatEnabled == other.ChatEnabled &&
+               ChatName == other.ChatName &&
+               ChatSecurity == other.ChatSecurity;
+    }
 }

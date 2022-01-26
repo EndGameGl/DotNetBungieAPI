@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     This Block defines the rendering data associated with the item, if any.
 /// </summary>
-public class DestinyItemTranslationBlockDefinition
+public class DestinyItemTranslationBlockDefinition : IDeepEquatable<DestinyItemTranslationBlockDefinition>
 {
     [JsonPropertyName("weaponPatternIdentifier")]
     public string WeaponPatternIdentifier { get; set; }
@@ -25,4 +25,16 @@ public class DestinyItemTranslationBlockDefinition
 
     [JsonPropertyName("hasGeometry")]
     public bool HasGeometry { get; set; }
+
+    public bool DeepEquals(DestinyItemTranslationBlockDefinition? other)
+    {
+        return other is not null &&
+               WeaponPatternIdentifier == other.WeaponPatternIdentifier &&
+               WeaponPatternHash == other.WeaponPatternHash &&
+               DefaultDyes.DeepEqualsList(other.DefaultDyes) &&
+               LockedDyes.DeepEqualsList(other.LockedDyes) &&
+               CustomDyes.DeepEqualsList(other.CustomDyes) &&
+               Arrangements.DeepEqualsList(other.Arrangements) &&
+               HasGeometry == other.HasGeometry;
+    }
 }

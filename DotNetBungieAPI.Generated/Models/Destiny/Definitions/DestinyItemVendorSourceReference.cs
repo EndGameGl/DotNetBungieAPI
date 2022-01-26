@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///      Note also that a vendor may sell the same item in multiple "ways", which means there may be multiple vendorItemIndexes for a single Vendor hash.
 /// </summary>
-public class DestinyItemVendorSourceReference
+public class DestinyItemVendorSourceReference : IDeepEquatable<DestinyItemVendorSourceReference>
 {
     /// <summary>
     ///     The identifier for the vendor that may sell this item.
@@ -20,4 +20,11 @@ public class DestinyItemVendorSourceReference
     /// </summary>
     [JsonPropertyName("vendorItemIndexes")]
     public List<int> VendorItemIndexes { get; set; }
+
+    public bool DeepEquals(DestinyItemVendorSourceReference? other)
+    {
+        return other is not null &&
+               VendorHash == other.VendorHash &&
+               VendorItemIndexes.DeepEqualsListNaive(other.VendorItemIndexes);
+    }
 }

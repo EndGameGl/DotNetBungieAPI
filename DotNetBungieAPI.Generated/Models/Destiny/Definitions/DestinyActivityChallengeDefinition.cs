@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Represents a reference to a Challenge, which for now is just an Objective.
 /// </summary>
-public class DestinyActivityChallengeDefinition
+public class DestinyActivityChallengeDefinition : IDeepEquatable<DestinyActivityChallengeDefinition>
 {
     /// <summary>
     ///     The hash for the Objective that matches this challenge. Use it to look up the DestinyObjectiveDefinition.
@@ -18,4 +18,11 @@ public class DestinyActivityChallengeDefinition
     /// </summary>
     [JsonPropertyName("dummyRewards")]
     public List<Destiny.DestinyItemQuantity> DummyRewards { get; set; }
+
+    public bool DeepEquals(DestinyActivityChallengeDefinition? other)
+    {
+        return other is not null &&
+               ObjectiveHash == other.ObjectiveHash &&
+               DummyRewards.DeepEqualsList(other.DummyRewards);
+    }
 }

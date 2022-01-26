@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     The definition information for a specific socket on an item. This will determine how the socket behaves in-game.
 /// </summary>
-public class DestinyItemSocketEntryDefinition
+public class DestinyItemSocketEntryDefinition : IDeepEquatable<DestinyItemSocketEntryDefinition>
 {
     /// <summary>
     ///     All sockets have a type, and this is the hash identifier for this particular type. Use it to look up the DestinySocketTypeDefinition: read there for more information on how socket types affect the behavior of the socket.
@@ -66,4 +66,18 @@ public class DestinyItemSocketEntryDefinition
     /// </summary>
     [JsonPropertyName("defaultVisible")]
     public bool DefaultVisible { get; set; }
+
+    public bool DeepEquals(DestinyItemSocketEntryDefinition? other)
+    {
+        return other is not null &&
+               SocketTypeHash == other.SocketTypeHash &&
+               SingleInitialItemHash == other.SingleInitialItemHash &&
+               ReusablePlugItems.DeepEqualsList(other.ReusablePlugItems) &&
+               PreventInitializationOnVendorPurchase == other.PreventInitializationOnVendorPurchase &&
+               HidePerksInItemTooltip == other.HidePerksInItemTooltip &&
+               PlugSources == other.PlugSources &&
+               ReusablePlugSetHash == other.ReusablePlugSetHash &&
+               RandomizedPlugSetHash == other.RandomizedPlugSetHash &&
+               DefaultVisible == other.DefaultVisible;
+    }
 }

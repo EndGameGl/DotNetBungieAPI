@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Vendors;
 /// <summary>
 ///     If a character purchased an item that is refundable, a Vendor Receipt will be created on the user's Destiny Profile. These expire after a configurable period of time, but until then can be used to get refunds on items. BNet does not provide the ability to refund a purchase *yet*, but you know.
 /// </summary>
-public class DestinyVendorReceipt
+public class DestinyVendorReceipt : IDeepEquatable<DestinyVendorReceipt>
 {
     /// <summary>
     ///     The amount paid for the item, in terms of items that were consumed in the purchase and their quantity.
@@ -52,4 +52,17 @@ public class DestinyVendorReceipt
     /// </summary>
     [JsonPropertyName("expiresOn")]
     public DateTime ExpiresOn { get; set; }
+
+    public bool DeepEquals(DestinyVendorReceipt? other)
+    {
+        return other is not null &&
+               CurrencyPaid.DeepEqualsList(other.CurrencyPaid) &&
+               (ItemReceived is not null ? ItemReceived.DeepEquals(other.ItemReceived) : other.ItemReceived is null) &&
+               LicenseUnlockHash == other.LicenseUnlockHash &&
+               PurchasedByCharacterId == other.PurchasedByCharacterId &&
+               RefundPolicy == other.RefundPolicy &&
+               SequenceNumber == other.SequenceNumber &&
+               TimeToExpiration == other.TimeToExpiration &&
+               ExpiresOn == other.ExpiresOn;
+    }
 }

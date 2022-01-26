@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public class GroupPotentialMember
+public class GroupPotentialMember : IDeepEquatable<GroupPotentialMember>
 {
     [JsonPropertyName("potentialStatus")]
     public GroupsV2.GroupPotentialMemberStatus PotentialStatus { get; set; }
@@ -16,4 +16,14 @@ public class GroupPotentialMember
 
     [JsonPropertyName("joinDate")]
     public DateTime JoinDate { get; set; }
+
+    public bool DeepEquals(GroupPotentialMember? other)
+    {
+        return other is not null &&
+               PotentialStatus == other.PotentialStatus &&
+               GroupId == other.GroupId &&
+               (DestinyUserInfo is not null ? DestinyUserInfo.DeepEquals(other.DestinyUserInfo) : other.DestinyUserInfo is null) &&
+               (BungieNetUserInfo is not null ? BungieNetUserInfo.DeepEquals(other.BungieNetUserInfo) : other.BungieNetUserInfo is null) &&
+               JoinDate == other.JoinDate;
+    }
 }

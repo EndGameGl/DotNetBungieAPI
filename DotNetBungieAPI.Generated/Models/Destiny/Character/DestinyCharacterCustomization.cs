@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Character;
 /// <para />
 ///     You can look up the relevant class/race/gender combo in DestinyCharacterCustomizationOptionDefinition for the character, and then look up these values within the CustomizationOptions found to pull some data about their choices. Warning: not all of that data is meaningful. Some data has useful icons. Others have nothing, and are only meant for 3D rendering purposes (which we sadly do not expose yet)
 /// </summary>
-public class DestinyCharacterCustomization
+public class DestinyCharacterCustomization : IDeepEquatable<DestinyCharacterCustomization>
 {
     [JsonPropertyName("personality")]
     public uint Personality { get; set; }
@@ -42,4 +42,21 @@ public class DestinyCharacterCustomization
 
     [JsonPropertyName("decalIndex")]
     public int DecalIndex { get; set; }
+
+    public bool DeepEquals(DestinyCharacterCustomization? other)
+    {
+        return other is not null &&
+               Personality == other.Personality &&
+               Face == other.Face &&
+               SkinColor == other.SkinColor &&
+               LipColor == other.LipColor &&
+               EyeColor == other.EyeColor &&
+               HairColors.DeepEqualsListNaive(other.HairColors) &&
+               FeatureColors.DeepEqualsListNaive(other.FeatureColors) &&
+               DecalColor == other.DecalColor &&
+               WearHelmet == other.WearHelmet &&
+               HairIndex == other.HairIndex &&
+               FeatureIndex == other.FeatureIndex &&
+               DecalIndex == other.DecalIndex;
+    }
 }

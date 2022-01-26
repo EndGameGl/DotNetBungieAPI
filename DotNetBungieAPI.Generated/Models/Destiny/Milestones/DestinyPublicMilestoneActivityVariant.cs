@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 /// <summary>
 ///     Represents a variant of an activity that's relevant to a milestone.
 /// </summary>
-public class DestinyPublicMilestoneActivityVariant
+public class DestinyPublicMilestoneActivityVariant : IDeepEquatable<DestinyPublicMilestoneActivityVariant>
 {
     /// <summary>
     ///     The hash identifier of this activity variant. Examine the activity's definition in the Manifest database to determine what makes it a distinct variant. Usually it will be difficulty level or whether or not it is a guided game variant of the activity, but theoretically it could be distinguished in any arbitrary way.
@@ -22,4 +22,12 @@ public class DestinyPublicMilestoneActivityVariant
     /// </summary>
     [JsonPropertyName("activityModeType")]
     public int? ActivityModeType { get; set; }
+
+    public bool DeepEquals(DestinyPublicMilestoneActivityVariant? other)
+    {
+        return other is not null &&
+               ActivityHash == other.ActivityHash &&
+               ActivityModeHash == other.ActivityModeHash &&
+               ActivityModeType == other.ActivityModeType;
+    }
 }

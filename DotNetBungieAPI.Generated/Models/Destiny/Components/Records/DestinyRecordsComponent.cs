@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Records;
 
-public class DestinyRecordsComponent
+public class DestinyRecordsComponent : IDeepEquatable<DestinyRecordsComponent>
 {
     [JsonPropertyName("records")]
     public Dictionary<uint, Destiny.Components.Records.DestinyRecordComponent> Records { get; set; }
@@ -16,4 +16,12 @@ public class DestinyRecordsComponent
     /// </summary>
     [JsonPropertyName("recordSealsRootNodeHash")]
     public uint RecordSealsRootNodeHash { get; set; }
+
+    public bool DeepEquals(DestinyRecordsComponent? other)
+    {
+        return other is not null &&
+               Records.DeepEqualsDictionary(other.Records) &&
+               RecordCategoriesRootNodeHash == other.RecordCategoriesRootNodeHash &&
+               RecordSealsRootNodeHash == other.RecordSealsRootNodeHash;
+    }
 }

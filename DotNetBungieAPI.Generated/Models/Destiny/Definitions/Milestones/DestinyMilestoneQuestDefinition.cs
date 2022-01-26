@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 /// <summary>
 ///     Any data we need to figure out whether this Quest Item is the currently active one for the conceptual Milestone. Even just typing this description, I already regret it.
 /// </summary>
-public class DestinyMilestoneQuestDefinition
+public class DestinyMilestoneQuestDefinition : IDeepEquatable<DestinyMilestoneQuestDefinition>
 {
     /// <summary>
     ///     The item representing this Milestone quest. Use this hash to look up the DestinyInventoryItemDefinition for the quest to find its steps and human readable data.
@@ -40,4 +40,15 @@ public class DestinyMilestoneQuestDefinition
     /// </summary>
     [JsonPropertyName("destinationHash")]
     public uint? DestinationHash { get; set; }
+
+    public bool DeepEquals(DestinyMilestoneQuestDefinition? other)
+    {
+        return other is not null &&
+               QuestItemHash == other.QuestItemHash &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               OverrideImage == other.OverrideImage &&
+               (QuestRewards is not null ? QuestRewards.DeepEquals(other.QuestRewards) : other.QuestRewards is null) &&
+               Activities.DeepEqualsDictionary(other.Activities) &&
+               DestinationHash == other.DestinationHash;
+    }
 }

@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Activities;
 /// <summary>
 ///     Represents the public-facing status of an activity: any data about what is currently active in the Activity, regardless of an individual character's progress in it.
 /// </summary>
-public class DestinyPublicActivityStatus
+public class DestinyPublicActivityStatus : IDeepEquatable<DestinyPublicActivityStatus>
 {
     /// <summary>
     ///     Active Challenges for the activity, if any - represented as hashes for DestinyObjectiveDefinitions.
@@ -26,4 +26,12 @@ public class DestinyPublicActivityStatus
     /// </summary>
     [JsonPropertyName("rewardTooltipItems")]
     public List<Destiny.DestinyItemQuantity> RewardTooltipItems { get; set; }
+
+    public bool DeepEquals(DestinyPublicActivityStatus? other)
+    {
+        return other is not null &&
+               ChallengeObjectiveHashes.DeepEqualsListNaive(other.ChallengeObjectiveHashes) &&
+               ModifierHashes.DeepEqualsListNaive(other.ModifierHashes) &&
+               RewardTooltipItems.DeepEqualsList(other.RewardTooltipItems);
+    }
 }

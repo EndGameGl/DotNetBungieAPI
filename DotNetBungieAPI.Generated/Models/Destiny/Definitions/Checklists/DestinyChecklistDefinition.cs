@@ -9,7 +9,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Checklists;
 /// <para />
 ///     Note that, in the future, there will be something resembling the old D1 Record Books in at least some vague form. When that is created, it may be that it will supercede much or all of this Checklist data. It remains to be seen if that will be the case, so for now assume that the Checklists will still exist even after the release of D2: Forsaken.
 /// </summary>
-public class DestinyChecklistDefinition
+public class DestinyChecklistDefinition : IDeepEquatable<DestinyChecklistDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -51,4 +51,16 @@ public class DestinyChecklistDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyChecklistDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               ViewActionString == other.ViewActionString &&
+               Scope == other.Scope &&
+               Entries.DeepEqualsList(other.Entries) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

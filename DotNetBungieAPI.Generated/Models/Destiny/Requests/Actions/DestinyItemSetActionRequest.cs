@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Requests.Actions;
 
-public class DestinyItemSetActionRequest
+public class DestinyItemSetActionRequest : IDeepEquatable<DestinyItemSetActionRequest>
 {
     [JsonPropertyName("itemIds")]
     public List<long> ItemIds { get; set; }
@@ -10,4 +10,12 @@ public class DestinyItemSetActionRequest
 
     [JsonPropertyName("membershipType")]
     public BungieMembershipType MembershipType { get; set; }
+
+    public bool DeepEquals(DestinyItemSetActionRequest? other)
+    {
+        return other is not null &&
+               ItemIds.DeepEqualsListNaive(other.ItemIds) &&
+               CharacterId == other.CharacterId &&
+               MembershipType == other.MembershipType;
+    }
 }

@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.User;
 
-public class UserSearchResponseDetail
+public class UserSearchResponseDetail : IDeepEquatable<UserSearchResponseDetail>
 {
     [JsonPropertyName("bungieGlobalDisplayName")]
     public string BungieGlobalDisplayName { get; set; }
@@ -13,4 +13,13 @@ public class UserSearchResponseDetail
 
     [JsonPropertyName("destinyMemberships")]
     public List<User.UserInfoCard> DestinyMemberships { get; set; }
+
+    public bool DeepEquals(UserSearchResponseDetail? other)
+    {
+        return other is not null &&
+               BungieGlobalDisplayName == other.BungieGlobalDisplayName &&
+               BungieGlobalDisplayNameCode == other.BungieGlobalDisplayNameCode &&
+               BungieNetMembershipId == other.BungieNetMembershipId &&
+               DestinyMemberships.DeepEqualsList(other.DestinyMemberships);
+    }
 }

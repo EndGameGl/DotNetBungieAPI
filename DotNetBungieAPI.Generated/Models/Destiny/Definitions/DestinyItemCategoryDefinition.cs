@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     We then populate all of the categories that we think an item belongs to in its DestinyInventoryItemDefinition.itemCategoryHashes property. You can use that to provide your own custom item filtering, sorting, aggregating... go nuts on it! And let us know if you see more categories that you wish would be added!
 /// </summary>
-public class DestinyItemCategoryDefinition
+public class DestinyItemCategoryDefinition : IDeepEquatable<DestinyItemCategoryDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -131,4 +131,28 @@ public class DestinyItemCategoryDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyItemCategoryDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               Visible == other.Visible &&
+               Deprecated == other.Deprecated &&
+               ShortTitle == other.ShortTitle &&
+               ItemTypeRegex == other.ItemTypeRegex &&
+               GrantDestinyBreakerType == other.GrantDestinyBreakerType &&
+               PlugCategoryIdentifier == other.PlugCategoryIdentifier &&
+               ItemTypeRegexNot == other.ItemTypeRegexNot &&
+               OriginBucketIdentifier == other.OriginBucketIdentifier &&
+               GrantDestinyItemType == other.GrantDestinyItemType &&
+               GrantDestinySubType == other.GrantDestinySubType &&
+               GrantDestinyClass == other.GrantDestinyClass &&
+               TraitId == other.TraitId &&
+               GroupedCategoryHashes.DeepEqualsListNaive(other.GroupedCategoryHashes) &&
+               ParentCategoryHashes.DeepEqualsListNaive(other.ParentCategoryHashes) &&
+               GroupCategoryOnly == other.GroupCategoryOnly &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

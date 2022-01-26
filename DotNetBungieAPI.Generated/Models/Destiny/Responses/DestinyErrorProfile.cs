@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Responses;
 /// <para />
 ///     Assume that the most you'll get is the Error Code, the Membership Type and the Membership ID.
 /// </summary>
-public class DestinyErrorProfile
+public class DestinyErrorProfile : IDeepEquatable<DestinyErrorProfile>
 {
     /// <summary>
     ///     The error that we encountered. You should be able to look up localized text to show to the user for these failures.
@@ -18,4 +18,11 @@ public class DestinyErrorProfile
     /// </summary>
     [JsonPropertyName("infoCard")]
     public User.UserInfoCard InfoCard { get; set; }
+
+    public bool DeepEquals(DestinyErrorProfile? other)
+    {
+        return other is not null &&
+               ErrorCode == other.ErrorCode &&
+               (InfoCard is not null ? InfoCard.DeepEquals(other.InfoCard) : other.InfoCard is null);
+    }
 }

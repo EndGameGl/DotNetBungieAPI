@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Sockets;
 
-public class DestinyItemPlugBase
+public class DestinyItemPlugBase : IDeepEquatable<DestinyItemPlugBase>
 {
     /// <summary>
     ///     The hash identifier of the DestinyInventoryItemDefinition that represents this plug.
@@ -35,4 +35,14 @@ public class DestinyItemPlugBase
     /// </summary>
     [JsonPropertyName("enableFailIndexes")]
     public List<int> EnableFailIndexes { get; set; }
+
+    public bool DeepEquals(DestinyItemPlugBase? other)
+    {
+        return other is not null &&
+               PlugItemHash == other.PlugItemHash &&
+               CanInsert == other.CanInsert &&
+               Enabled == other.Enabled &&
+               InsertFailIndexes.DeepEqualsListNaive(other.InsertFailIndexes) &&
+               EnableFailIndexes.DeepEqualsListNaive(other.EnableFailIndexes);
+    }
 }

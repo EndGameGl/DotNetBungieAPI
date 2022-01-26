@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Items that can be equipped define this block. It contains information we need to understand how and when the item can be equipped.
 /// </summary>
-public class DestinyEquippingBlockDefinition
+public class DestinyEquippingBlockDefinition : IDeepEquatable<DestinyEquippingBlockDefinition>
 {
     /// <summary>
     ///     If the item is part of a gearset, this is a reference to that gearset item.
@@ -50,4 +50,16 @@ public class DestinyEquippingBlockDefinition
     /// </summary>
     [JsonPropertyName("displayStrings")]
     public List<string> DisplayStrings { get; set; }
+
+    public bool DeepEquals(DestinyEquippingBlockDefinition? other)
+    {
+        return other is not null &&
+               GearsetItemHash == other.GearsetItemHash &&
+               UniqueLabel == other.UniqueLabel &&
+               UniqueLabelHash == other.UniqueLabelHash &&
+               EquipmentSlotTypeHash == other.EquipmentSlotTypeHash &&
+               Attributes == other.Attributes &&
+               AmmoType == other.AmmoType &&
+               DisplayStrings.DeepEqualsListNaive(other.DisplayStrings);
+    }
 }

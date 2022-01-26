@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     This describes the material costs, the Level of the Talent Grid's progression required, and other conditional information that limits whether a talent node can be activated.
 /// </summary>
-public class DestinyNodeActivationRequirement
+public class DestinyNodeActivationRequirement : IDeepEquatable<DestinyNodeActivationRequirement>
 {
     /// <summary>
     ///     The Progression level on the Talent Grid required to activate this node.
@@ -22,4 +22,11 @@ public class DestinyNodeActivationRequirement
     /// </summary>
     [JsonPropertyName("materialRequirementHashes")]
     public List<uint> MaterialRequirementHashes { get; set; }
+
+    public bool DeepEquals(DestinyNodeActivationRequirement? other)
+    {
+        return other is not null &&
+               GridLevel == other.GridLevel &&
+               MaterialRequirementHashes.DeepEqualsListNaive(other.MaterialRequirementHashes);
+    }
 }

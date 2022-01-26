@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Perks;
 /// <para />
 ///     Perks apply a variety of effects to a character, and are generally either intrinsic to the item or provided in activated talent nodes or sockets.
 /// </summary>
-public class DestinyPerkReference
+public class DestinyPerkReference : IDeepEquatable<DestinyPerkReference>
 {
     /// <summary>
     ///     The hash identifier for the perk, which can be used to look up DestinySandboxPerkDefinition if it exists. Be warned, perks frequently do not have user-viewable information. You should examine whether you actually found a name/description in the perk's definition before you show it to the user.
@@ -30,4 +30,13 @@ public class DestinyPerkReference
     /// </summary>
     [JsonPropertyName("visible")]
     public bool Visible { get; set; }
+
+    public bool DeepEquals(DestinyPerkReference? other)
+    {
+        return other is not null &&
+               PerkHash == other.PerkHash &&
+               IconPath == other.IconPath &&
+               IsActive == other.IsActive &&
+               Visible == other.Visible;
+    }
 }

@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     The results of a search for Destiny content. This will be improved on over time, I've been doing some experimenting to see what might be useful.
 /// </summary>
-public class DestinyEntitySearchResult
+public class DestinyEntitySearchResult : IDeepEquatable<DestinyEntitySearchResult>
 {
     /// <summary>
     ///     A list of suggested words that might make for better search results, based on the text searched for.
@@ -16,4 +16,11 @@ public class DestinyEntitySearchResult
     /// </summary>
     [JsonPropertyName("results")]
     public SearchResultOfDestinyEntitySearchResultItem Results { get; set; }
+
+    public bool DeepEquals(DestinyEntitySearchResult? other)
+    {
+        return other is not null &&
+               SuggestedWords.DeepEqualsListNaive(other.SuggestedWords) &&
+               (Results is not null ? Results.DeepEquals(other.Results) : other.Results is null);
+    }
 }

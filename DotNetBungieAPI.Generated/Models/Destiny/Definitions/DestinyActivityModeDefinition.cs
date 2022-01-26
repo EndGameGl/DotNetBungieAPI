@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Activity modes are nested under each other in a hierarchy, so that if you ask for - for example - "AllPvP", you will get any PVP activities that the user has played, regardless of what specific PVP mode was being played.
 /// </summary>
-public class DestinyActivityModeDefinition
+public class DestinyActivityModeDefinition : IDeepEquatable<DestinyActivityModeDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -91,4 +91,23 @@ public class DestinyActivityModeDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyActivityModeDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               PgcrImage == other.PgcrImage &&
+               ModeType == other.ModeType &&
+               ActivityModeCategory == other.ActivityModeCategory &&
+               IsTeamBased == other.IsTeamBased &&
+               IsAggregateMode == other.IsAggregateMode &&
+               ParentHashes.DeepEqualsListNaive(other.ParentHashes) &&
+               FriendlyName == other.FriendlyName &&
+               ActivityModeMappings.DeepEqualsDictionaryNaive(other.ActivityModeMappings) &&
+               Display == other.Display &&
+               Order == other.Order &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

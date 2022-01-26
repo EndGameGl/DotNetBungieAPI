@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.User;
 /// <summary>
 ///     The set of all email subscription/opt-in settings and definitions.
 /// </summary>
-public class EmailSettings
+public class EmailSettings : IDeepEquatable<EmailSettings>
 {
     /// <summary>
     ///     Keyed by the name identifier of the opt-in definition.
@@ -22,4 +22,12 @@ public class EmailSettings
     /// </summary>
     [JsonPropertyName("views")]
     public Dictionary<string, User.EmailViewDefinition> Views { get; set; }
+
+    public bool DeepEquals(EmailSettings? other)
+    {
+        return other is not null &&
+               OptInDefinitions.DeepEqualsDictionary(other.OptInDefinitions) &&
+               SubscriptionDefinitions.DeepEqualsDictionary(other.SubscriptionDefinitions) &&
+               Views.DeepEqualsDictionary(other.Views);
+    }
 }

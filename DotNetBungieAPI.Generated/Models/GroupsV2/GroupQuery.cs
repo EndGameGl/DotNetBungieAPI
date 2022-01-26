@@ -11,7 +11,7 @@ namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 /// <para />
 ///     If you pass these, you will get a useless InvalidParameters error.
 /// </summary>
-public class GroupQuery
+public class GroupQuery : IDeepEquatable<GroupQuery>
 {
     [JsonPropertyName("name")]
     public string Name { get; set; }
@@ -42,4 +42,19 @@ public class GroupQuery
 
     [JsonPropertyName("requestContinuationToken")]
     public string RequestContinuationToken { get; set; }
+
+    public bool DeepEquals(GroupQuery? other)
+    {
+        return other is not null &&
+               Name == other.Name &&
+               GroupType == other.GroupType &&
+               CreationDate == other.CreationDate &&
+               SortBy == other.SortBy &&
+               GroupMemberCountFilter == other.GroupMemberCountFilter &&
+               LocaleFilter == other.LocaleFilter &&
+               TagText == other.TagText &&
+               ItemsPerPage == other.ItemsPerPage &&
+               CurrentPage == other.CurrentPage &&
+               RequestContinuationToken == other.RequestContinuationToken;
+    }
 }

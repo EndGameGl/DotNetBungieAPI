@@ -19,7 +19,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Since Vendors are so many things to so many parts of the game, the definition is understandably complex. You will want to combine this data with live Vendor information from the API when it is available.
 /// </summary>
-public class DestinyVendorDefinition
+public class DestinyVendorDefinition : IDeepEquatable<DestinyVendorDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.DestinyVendorDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -245,4 +245,44 @@ public class DestinyVendorDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyVendorDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               VendorProgressionType == other.VendorProgressionType &&
+               BuyString == other.BuyString &&
+               SellString == other.SellString &&
+               DisplayItemHash == other.DisplayItemHash &&
+               InhibitBuying == other.InhibitBuying &&
+               InhibitSelling == other.InhibitSelling &&
+               FactionHash == other.FactionHash &&
+               ResetIntervalMinutes == other.ResetIntervalMinutes &&
+               ResetOffsetMinutes == other.ResetOffsetMinutes &&
+               FailureStrings.DeepEqualsListNaive(other.FailureStrings) &&
+               UnlockRanges.DeepEqualsList(other.UnlockRanges) &&
+               VendorIdentifier == other.VendorIdentifier &&
+               VendorPortrait == other.VendorPortrait &&
+               VendorBanner == other.VendorBanner &&
+               Enabled == other.Enabled &&
+               Visible == other.Visible &&
+               VendorSubcategoryIdentifier == other.VendorSubcategoryIdentifier &&
+               ConsolidateCategories == other.ConsolidateCategories &&
+               Actions.DeepEqualsList(other.Actions) &&
+               Categories.DeepEqualsList(other.Categories) &&
+               OriginalCategories.DeepEqualsList(other.OriginalCategories) &&
+               DisplayCategories.DeepEqualsList(other.DisplayCategories) &&
+               Interactions.DeepEqualsList(other.Interactions) &&
+               InventoryFlyouts.DeepEqualsList(other.InventoryFlyouts) &&
+               ItemList.DeepEqualsList(other.ItemList) &&
+               Services.DeepEqualsList(other.Services) &&
+               AcceptedItems.DeepEqualsList(other.AcceptedItems) &&
+               ReturnWithVendorRequest == other.ReturnWithVendorRequest &&
+               Locations.DeepEqualsList(other.Locations) &&
+               Groups.DeepEqualsList(other.Groups) &&
+               IgnoreSaleItemHashes.DeepEqualsListNaive(other.IgnoreSaleItemHashes) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     These are used to apply rewards to multiple progressions at once. They can sometimes have human readable data as well, but only extremely sporadically.
 /// </summary>
-public class DestinyProgressionMappingDefinition
+public class DestinyProgressionMappingDefinition : IDeepEquatable<DestinyProgressionMappingDefinition>
 {
     /// <summary>
     ///     Infrequently defined in practice. Defer to the individual progressions' display properties.
@@ -38,4 +38,14 @@ public class DestinyProgressionMappingDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyProgressionMappingDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               DisplayUnits == other.DisplayUnits &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

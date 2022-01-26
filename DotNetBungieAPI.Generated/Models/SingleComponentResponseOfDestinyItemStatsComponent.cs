@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models;
 
-public class SingleComponentResponseOfDestinyItemStatsComponent
+public class SingleComponentResponseOfDestinyItemStatsComponent : IDeepEquatable<SingleComponentResponseOfDestinyItemStatsComponent>
 {
     [JsonPropertyName("data")]
     public Destiny.Entities.Items.DestinyItemStatsComponent Data { get; set; }
@@ -13,4 +13,12 @@ public class SingleComponentResponseOfDestinyItemStatsComponent
     /// </summary>
     [JsonPropertyName("disabled")]
     public bool? Disabled { get; set; }
+
+    public bool DeepEquals(SingleComponentResponseOfDestinyItemStatsComponent? other)
+    {
+        return other is not null &&
+               (Data is not null ? Data.DeepEquals(other.Data) : other.Data is null) &&
+               Privacy == other.Privacy &&
+               Disabled == other.Disabled;
+    }
 }

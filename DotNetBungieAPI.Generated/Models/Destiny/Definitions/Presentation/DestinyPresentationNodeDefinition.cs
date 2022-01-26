@@ -11,7 +11,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Presentation;
 /// <para />
 ///     We'll see if I come to regret this as well.
 /// </summary>
-public class DestinyPresentationNodeDefinition
+public class DestinyPresentationNodeDefinition : IDeepEquatable<DestinyPresentationNodeDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -116,4 +116,29 @@ public class DestinyPresentationNodeDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyPresentationNodeDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               OriginalIcon == other.OriginalIcon &&
+               RootViewIcon == other.RootViewIcon &&
+               NodeType == other.NodeType &&
+               Scope == other.Scope &&
+               ObjectiveHash == other.ObjectiveHash &&
+               CompletionRecordHash == other.CompletionRecordHash &&
+               (Children is not null ? Children.DeepEquals(other.Children) : other.Children is null) &&
+               DisplayStyle == other.DisplayStyle &&
+               ScreenStyle == other.ScreenStyle &&
+               (Requirements is not null ? Requirements.DeepEquals(other.Requirements) : other.Requirements is null) &&
+               DisableChildSubscreenNavigation == other.DisableChildSubscreenNavigation &&
+               MaxCategoryRecordScore == other.MaxCategoryRecordScore &&
+               PresentationNodeType == other.PresentationNodeType &&
+               TraitIds.DeepEqualsListNaive(other.TraitIds) &&
+               TraitHashes.DeepEqualsListNaive(other.TraitHashes) &&
+               ParentNodeHashes.DeepEqualsListNaive(other.ParentNodeHashes) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

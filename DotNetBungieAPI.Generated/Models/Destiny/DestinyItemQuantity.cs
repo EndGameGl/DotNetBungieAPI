@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny;
 /// <summary>
 ///     Used in a number of Destiny contracts to return data about an item stack and its quantity. Can optionally return an itemInstanceId if the item is instanced - in which case, the quantity returned will be 1. If it's not... uh, let me know okay? Thanks.
 /// </summary>
-public class DestinyItemQuantity
+public class DestinyItemQuantity : IDeepEquatable<DestinyItemQuantity>
 {
     /// <summary>
     ///     The hash identifier for the item in question. Use it to look up the item's DestinyInventoryItemDefinition.
@@ -28,4 +28,13 @@ public class DestinyItemQuantity
     /// </summary>
     [JsonPropertyName("hasConditionalVisibility")]
     public bool HasConditionalVisibility { get; set; }
+
+    public bool DeepEquals(DestinyItemQuantity? other)
+    {
+        return other is not null &&
+               ItemHash == other.ItemHash &&
+               ItemInstanceId == other.ItemInstanceId &&
+               Quantity == other.Quantity &&
+               HasConditionalVisibility == other.HasConditionalVisibility;
+    }
 }

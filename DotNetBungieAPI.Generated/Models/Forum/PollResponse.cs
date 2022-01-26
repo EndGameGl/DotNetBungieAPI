@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Forum;
 
-public class PollResponse
+public class PollResponse : IDeepEquatable<PollResponse>
 {
     [JsonPropertyName("topicId")]
     public long TopicId { get; set; }
@@ -10,4 +10,12 @@ public class PollResponse
 
     [JsonPropertyName("totalVotes")]
     public int TotalVotes { get; set; }
+
+    public bool DeepEquals(PollResponse? other)
+    {
+        return other is not null &&
+               TopicId == other.TopicId &&
+               Results.DeepEqualsList(other.Results) &&
+               TotalVotes == other.TotalVotes;
+    }
 }

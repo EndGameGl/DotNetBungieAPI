@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Advanced;
 
-public class AwaPermissionRequested
+public class AwaPermissionRequested : IDeepEquatable<AwaPermissionRequested>
 {
     /// <summary>
     ///     Type of advanced write action.
@@ -25,4 +25,13 @@ public class AwaPermissionRequested
     /// </summary>
     [JsonPropertyName("characterId")]
     public long? CharacterId { get; set; }
+
+    public bool DeepEquals(AwaPermissionRequested? other)
+    {
+        return other is not null &&
+               Type == other.Type &&
+               AffectedItemId == other.AffectedItemId &&
+               MembershipType == other.MembershipType &&
+               CharacterId == other.CharacterId;
+    }
 }

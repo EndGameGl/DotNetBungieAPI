@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Director;
 /// <summary>
 ///     This describes links between the current graph and others, as well as when that link is relevant.
 /// </summary>
-public class DestinyLinkedGraphDefinition
+public class DestinyLinkedGraphDefinition : IDeepEquatable<DestinyLinkedGraphDefinition>
 {
     [JsonPropertyName("description")]
     public string Description { get; set; }
@@ -22,4 +22,15 @@ public class DestinyLinkedGraphDefinition
 
     [JsonPropertyName("overview")]
     public string Overview { get; set; }
+
+    public bool DeepEquals(DestinyLinkedGraphDefinition? other)
+    {
+        return other is not null &&
+               Description == other.Description &&
+               Name == other.Name &&
+               (UnlockExpression is not null ? UnlockExpression.DeepEquals(other.UnlockExpression) : other.UnlockExpression is null) &&
+               LinkedGraphId == other.LinkedGraphId &&
+               LinkedGraphs.DeepEqualsList(other.LinkedGraphs) &&
+               Overview == other.Overview;
+    }
 }

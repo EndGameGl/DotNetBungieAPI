@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Items;
 /// <summary>
 ///     Many items can be rendered in 3D. When you request this block, you will obtain the custom data needed to render this specific instance of the item.
 /// </summary>
-public class DestinyItemRenderComponent
+public class DestinyItemRenderComponent : IDeepEquatable<DestinyItemRenderComponent>
 {
     /// <summary>
     ///     If you should use custom dyes on this item, it will be indicated here.
@@ -20,4 +20,11 @@ public class DestinyItemRenderComponent
     /// </summary>
     [JsonPropertyName("artRegions")]
     public Dictionary<int, int> ArtRegions { get; set; }
+
+    public bool DeepEquals(DestinyItemRenderComponent? other)
+    {
+        return other is not null &&
+               UseCustomDyes == other.UseCustomDyes &&
+               ArtRegions.DeepEqualsDictionaryNaive(other.ArtRegions);
+    }
 }

@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Items;
 /// <para />
 ///     This gives information about when it can be inserted, what the plug's category is (and thus whether it is compatible with a socket... see DestinySocketTypeDefinition for information about Plug Categories and socket compatibility), whether it is enabled and other Plug info.
 /// </summary>
-public class DestinyItemPlugDefinition
+public class DestinyItemPlugDefinition : IDeepEquatable<DestinyItemPlugDefinition>
 {
     /// <summary>
     ///     The rules around when this plug can be inserted into a socket, aside from the socket's individual restrictions.
@@ -113,4 +113,26 @@ public class DestinyItemPlugDefinition
     /// </summary>
     [JsonPropertyName("energyCost")]
     public Destiny.Definitions.Items.DestinyEnergyCostEntry EnergyCost { get; set; }
+
+    public bool DeepEquals(DestinyItemPlugDefinition? other)
+    {
+        return other is not null &&
+               InsertionRules.DeepEqualsList(other.InsertionRules) &&
+               PlugCategoryIdentifier == other.PlugCategoryIdentifier &&
+               PlugCategoryHash == other.PlugCategoryHash &&
+               OnActionRecreateSelf == other.OnActionRecreateSelf &&
+               InsertionMaterialRequirementHash == other.InsertionMaterialRequirementHash &&
+               PreviewItemOverrideHash == other.PreviewItemOverrideHash &&
+               EnabledMaterialRequirementHash == other.EnabledMaterialRequirementHash &&
+               EnabledRules.DeepEqualsList(other.EnabledRules) &&
+               UiPlugLabel == other.UiPlugLabel &&
+               PlugStyle == other.PlugStyle &&
+               PlugAvailability == other.PlugAvailability &&
+               AlternateUiPlugLabel == other.AlternateUiPlugLabel &&
+               AlternatePlugStyle == other.AlternatePlugStyle &&
+               IsDummyPlug == other.IsDummyPlug &&
+               (ParentItemOverride is not null ? ParentItemOverride.DeepEquals(other.ParentItemOverride) : other.ParentItemOverride is null) &&
+               (EnergyCapacity is not null ? EnergyCapacity.DeepEquals(other.EnergyCapacity) : other.EnergyCapacity is null) &&
+               (EnergyCost is not null ? EnergyCost.DeepEquals(other.EnergyCost) : other.EnergyCost is null);
+    }
 }

@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Items;
 
-public class DestinyItemInstanceEnergy
+public class DestinyItemInstanceEnergy : IDeepEquatable<DestinyItemInstanceEnergy>
 {
     /// <summary>
     ///     The type of energy for this item. Plugs that require Energy can only be inserted if they have the "Any" Energy Type or the matching energy type of this item. This is a reference to the DestinyEnergyTypeDefinition for the energy type, where you can find extended info about it.
@@ -31,4 +31,14 @@ public class DestinyItemInstanceEnergy
     /// </summary>
     [JsonPropertyName("energyUnused")]
     public int EnergyUnused { get; set; }
+
+    public bool DeepEquals(DestinyItemInstanceEnergy? other)
+    {
+        return other is not null &&
+               EnergyTypeHash == other.EnergyTypeHash &&
+               EnergyType == other.EnergyType &&
+               EnergyCapacity == other.EnergyCapacity &&
+               EnergyUsed == other.EnergyUsed &&
+               EnergyUnused == other.EnergyUnused;
+    }
 }

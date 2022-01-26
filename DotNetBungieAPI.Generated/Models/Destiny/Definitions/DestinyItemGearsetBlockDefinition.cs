@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     If an item has a related gearset, this is the list of items in that set, and an unlock expression that evaluates to a number representing the progress toward gearset completion (a very rare use for unlock expressions!)
 /// </summary>
-public class DestinyItemGearsetBlockDefinition
+public class DestinyItemGearsetBlockDefinition : IDeepEquatable<DestinyItemGearsetBlockDefinition>
 {
     /// <summary>
     ///     The maximum possible number of items that can be collected.
@@ -16,4 +16,11 @@ public class DestinyItemGearsetBlockDefinition
     /// </summary>
     [JsonPropertyName("itemList")]
     public List<uint> ItemList { get; set; }
+
+    public bool DeepEquals(DestinyItemGearsetBlockDefinition? other)
+    {
+        return other is not null &&
+               TrackingValueMax == other.TrackingValueMax &&
+               ItemList.DeepEqualsListNaive(other.ItemList);
+    }
 }

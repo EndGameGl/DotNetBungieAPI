@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Items;
 /// <summary>
 ///     The base item component, filled with properties that are generally useful to know in any item request or that don't feel worthwhile to put in their own component.
 /// </summary>
-public class DestinyItemComponent
+public class DestinyItemComponent : IDeepEquatable<DestinyItemComponent>
 {
     /// <summary>
     ///     The identifier for the item's definition, which is where most of the useful static information for the item can be found.
@@ -110,4 +110,26 @@ public class DestinyItemComponent
     /// </summary>
     [JsonPropertyName("itemValueVisibility")]
     public List<bool> ItemValueVisibility { get; set; }
+
+    public bool DeepEquals(DestinyItemComponent? other)
+    {
+        return other is not null &&
+               ItemHash == other.ItemHash &&
+               ItemInstanceId == other.ItemInstanceId &&
+               Quantity == other.Quantity &&
+               BindStatus == other.BindStatus &&
+               Location == other.Location &&
+               BucketHash == other.BucketHash &&
+               TransferStatus == other.TransferStatus &&
+               Lockable == other.Lockable &&
+               State == other.State &&
+               OverrideStyleItemHash == other.OverrideStyleItemHash &&
+               ExpirationDate == other.ExpirationDate &&
+               IsWrapper == other.IsWrapper &&
+               TooltipNotificationIndexes.DeepEqualsListNaive(other.TooltipNotificationIndexes) &&
+               MetricHash == other.MetricHash &&
+               (MetricObjective is not null ? MetricObjective.DeepEquals(other.MetricObjective) : other.MetricObjective is null) &&
+               VersionNumber == other.VersionNumber &&
+               ItemValueVisibility.DeepEqualsListNaive(other.ItemValueVisibility);
+    }
 }

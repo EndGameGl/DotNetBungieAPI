@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Constants;
 
-public class DestinyEnvironmentLocationMapping
+public class DestinyEnvironmentLocationMapping : IDeepEquatable<DestinyEnvironmentLocationMapping>
 {
     /// <summary>
     ///     The location that is revealed on the director by this mapping.
@@ -31,4 +31,14 @@ public class DestinyEnvironmentLocationMapping
     /// </summary>
     [JsonPropertyName("activityHash")]
     public uint? ActivityHash { get; set; }
+
+    public bool DeepEquals(DestinyEnvironmentLocationMapping? other)
+    {
+        return other is not null &&
+               LocationHash == other.LocationHash &&
+               ActivationSource == other.ActivationSource &&
+               ItemHash == other.ItemHash &&
+               ObjectiveHash == other.ObjectiveHash &&
+               ActivityHash == other.ActivityHash;
+    }
 }

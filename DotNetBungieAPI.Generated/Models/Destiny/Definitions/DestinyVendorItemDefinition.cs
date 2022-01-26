@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     This represents an item being sold by the vendor.
 /// </summary>
-public class DestinyVendorItemDefinition
+public class DestinyVendorItemDefinition : IDeepEquatable<DestinyVendorItemDefinition>
 {
     /// <summary>
     ///     The index into the DestinyVendorDefinition.saleList. This is what we use to refer to items being sold throughout live and definition data.
@@ -167,4 +167,35 @@ public class DestinyVendorItemDefinition
     /// </summary>
     [JsonPropertyName("unpurchasable")]
     public bool? Unpurchasable { get; set; }
+
+    public bool DeepEquals(DestinyVendorItemDefinition? other)
+    {
+        return other is not null &&
+               VendorItemIndex == other.VendorItemIndex &&
+               ItemHash == other.ItemHash &&
+               Quantity == other.Quantity &&
+               FailureIndexes.DeepEqualsListNaive(other.FailureIndexes) &&
+               Currencies.DeepEqualsList(other.Currencies) &&
+               RefundPolicy == other.RefundPolicy &&
+               RefundTimeLimit == other.RefundTimeLimit &&
+               CreationLevels.DeepEqualsList(other.CreationLevels) &&
+               DisplayCategoryIndex == other.DisplayCategoryIndex &&
+               CategoryIndex == other.CategoryIndex &&
+               OriginalCategoryIndex == other.OriginalCategoryIndex &&
+               MinimumLevel == other.MinimumLevel &&
+               MaximumLevel == other.MaximumLevel &&
+               (Action is not null ? Action.DeepEquals(other.Action) : other.Action is null) &&
+               DisplayCategory == other.DisplayCategory &&
+               InventoryBucketHash == other.InventoryBucketHash &&
+               VisibilityScope == other.VisibilityScope &&
+               PurchasableScope == other.PurchasableScope &&
+               Exclusivity == other.Exclusivity &&
+               IsOffer == other.IsOffer &&
+               IsCrm == other.IsCrm &&
+               SortValue == other.SortValue &&
+               ExpirationTooltip == other.ExpirationTooltip &&
+               RedirectToSaleIndexes.DeepEqualsListNaive(other.RedirectToSaleIndexes) &&
+               SocketOverrides.DeepEqualsList(other.SocketOverrides) &&
+               Unpurchasable == other.Unpurchasable;
+    }
 }

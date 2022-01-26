@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Artifacts;
 
-public class DestinyArtifactTierDefinition
+public class DestinyArtifactTierDefinition : IDeepEquatable<DestinyArtifactTierDefinition>
 {
     /// <summary>
     ///     An identifier, unique within the Artifact, for this specific tier.
@@ -31,4 +31,14 @@ public class DestinyArtifactTierDefinition
     /// </summary>
     [JsonPropertyName("minimumUnlockPointsUsedRequirement")]
     public int MinimumUnlockPointsUsedRequirement { get; set; }
+
+    public bool DeepEquals(DestinyArtifactTierDefinition? other)
+    {
+        return other is not null &&
+               TierHash == other.TierHash &&
+               DisplayTitle == other.DisplayTitle &&
+               ProgressRequirementMessage == other.ProgressRequirementMessage &&
+               Items.DeepEqualsList(other.Items) &&
+               MinimumUnlockPointsUsedRequirement == other.MinimumUnlockPointsUsedRequirement;
+    }
 }

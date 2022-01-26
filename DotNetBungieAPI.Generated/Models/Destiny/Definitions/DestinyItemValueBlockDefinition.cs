@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     It will likely be used in a number of other ways in the future, it appears to be a bucket where they put arbitrary items and quantities into the item.
 /// </summary>
-public class DestinyItemValueBlockDefinition
+public class DestinyItemValueBlockDefinition : IDeepEquatable<DestinyItemValueBlockDefinition>
 {
     /// <summary>
     ///     References to the items that make up this item's "value", and the quantity.
@@ -20,4 +20,11 @@ public class DestinyItemValueBlockDefinition
     /// </summary>
     [JsonPropertyName("valueDescription")]
     public string ValueDescription { get; set; }
+
+    public bool DeepEquals(DestinyItemValueBlockDefinition? other)
+    {
+        return other is not null &&
+               ItemValue.DeepEqualsList(other.ItemValue) &&
+               ValueDescription == other.ValueDescription;
+    }
 }

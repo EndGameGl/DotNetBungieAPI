@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.User;
 
-public class GeneralUser
+public class GeneralUser : IDeepEquatable<GeneralUser>
 {
     [JsonPropertyName("membershipId")]
     public long MembershipId { get; set; }
@@ -106,4 +106,44 @@ public class GeneralUser
 
     [JsonPropertyName("cachedBungieGlobalDisplayNameCode")]
     public short? CachedBungieGlobalDisplayNameCode { get; set; }
+
+    public bool DeepEquals(GeneralUser? other)
+    {
+        return other is not null &&
+               MembershipId == other.MembershipId &&
+               UniqueName == other.UniqueName &&
+               NormalizedName == other.NormalizedName &&
+               DisplayName == other.DisplayName &&
+               ProfilePicture == other.ProfilePicture &&
+               ProfileTheme == other.ProfileTheme &&
+               UserTitle == other.UserTitle &&
+               SuccessMessageFlags == other.SuccessMessageFlags &&
+               IsDeleted == other.IsDeleted &&
+               About == other.About &&
+               FirstAccess == other.FirstAccess &&
+               LastUpdate == other.LastUpdate &&
+               LegacyPortalUID == other.LegacyPortalUID &&
+               (Context is not null ? Context.DeepEquals(other.Context) : other.Context is null) &&
+               PsnDisplayName == other.PsnDisplayName &&
+               XboxDisplayName == other.XboxDisplayName &&
+               FbDisplayName == other.FbDisplayName &&
+               ShowActivity == other.ShowActivity &&
+               Locale == other.Locale &&
+               LocaleInheritDefault == other.LocaleInheritDefault &&
+               LastBanReportId == other.LastBanReportId &&
+               ShowGroupMessaging == other.ShowGroupMessaging &&
+               ProfilePicturePath == other.ProfilePicturePath &&
+               ProfilePictureWidePath == other.ProfilePictureWidePath &&
+               ProfileThemeName == other.ProfileThemeName &&
+               UserTitleDisplay == other.UserTitleDisplay &&
+               StatusText == other.StatusText &&
+               StatusDate == other.StatusDate &&
+               ProfileBanExpire == other.ProfileBanExpire &&
+               BlizzardDisplayName == other.BlizzardDisplayName &&
+               SteamDisplayName == other.SteamDisplayName &&
+               StadiaDisplayName == other.StadiaDisplayName &&
+               TwitchDisplayName == other.TwitchDisplayName &&
+               CachedBungieGlobalDisplayName == other.CachedBungieGlobalDisplayName &&
+               CachedBungieGlobalDisplayNameCode == other.CachedBungieGlobalDisplayNameCode;
+    }
 }

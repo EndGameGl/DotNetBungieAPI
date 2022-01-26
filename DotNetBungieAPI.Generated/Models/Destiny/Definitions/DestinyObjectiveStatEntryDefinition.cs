@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Defines the conditions under which stat modifications will be applied to a Character while participating in an objective.
 /// </summary>
-public class DestinyObjectiveStatEntryDefinition
+public class DestinyObjectiveStatEntryDefinition : IDeepEquatable<DestinyObjectiveStatEntryDefinition>
 {
     /// <summary>
     ///     The stat being modified, and the value used.
@@ -16,4 +16,11 @@ public class DestinyObjectiveStatEntryDefinition
     /// </summary>
     [JsonPropertyName("style")]
     public Destiny.DestinyObjectiveGrantStyle Style { get; set; }
+
+    public bool DeepEquals(DestinyObjectiveStatEntryDefinition? other)
+    {
+        return other is not null &&
+               (Stat is not null ? Stat.DeepEquals(other.Stat) : other.Stat is null) &&
+               Style == other.Style;
+    }
 }

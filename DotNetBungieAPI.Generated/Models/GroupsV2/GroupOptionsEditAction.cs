@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public class GroupOptionsEditAction
+public class GroupOptionsEditAction : IDeepEquatable<GroupOptionsEditAction>
 {
     /// <summary>
     ///     Minimum Member Level allowed to invite new members to group
@@ -57,4 +57,14 @@ public class GroupOptionsEditAction
     /// </summary>
     [JsonPropertyName("JoinLevel")]
     public int? JoinLevel { get; set; }
+
+    public bool DeepEquals(GroupOptionsEditAction? other)
+    {
+        return other is not null &&
+               InvitePermissionOverride == other.InvitePermissionOverride &&
+               UpdateCulturePermissionOverride == other.UpdateCulturePermissionOverride &&
+               HostGuidedGamePermissionOverride == other.HostGuidedGamePermissionOverride &&
+               UpdateBannerPermissionOverride == other.UpdateBannerPermissionOverride &&
+               JoinLevel == other.JoinLevel;
+    }
 }

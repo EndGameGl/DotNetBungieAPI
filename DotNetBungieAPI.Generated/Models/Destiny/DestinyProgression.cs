@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny;
 /// <summary>
 ///     Information about a current character's status with a Progression. A progression is a value that can increase with activity and has levels. Think Character Level and Reputation Levels. Combine this "live" data with the related DestinyProgressionDefinition for a full picture of the Progression.
 /// </summary>
-public class DestinyProgression
+public class DestinyProgression : IDeepEquatable<DestinyProgression>
 {
     /// <summary>
     ///     The hash identifier of the Progression in question. Use it to look up the DestinyProgressionDefinition in static data.
@@ -88,4 +88,23 @@ public class DestinyProgression
     /// </summary>
     [JsonPropertyName("rewardItemStates")]
     public List<Destiny.DestinyProgressionRewardItemState> RewardItemStates { get; set; }
+
+    public bool DeepEquals(DestinyProgression? other)
+    {
+        return other is not null &&
+               ProgressionHash == other.ProgressionHash &&
+               DailyProgress == other.DailyProgress &&
+               DailyLimit == other.DailyLimit &&
+               WeeklyProgress == other.WeeklyProgress &&
+               WeeklyLimit == other.WeeklyLimit &&
+               CurrentProgress == other.CurrentProgress &&
+               Level == other.Level &&
+               LevelCap == other.LevelCap &&
+               StepIndex == other.StepIndex &&
+               ProgressToNextLevel == other.ProgressToNextLevel &&
+               NextLevelAt == other.NextLevelAt &&
+               CurrentResetCount == other.CurrentResetCount &&
+               SeasonResets.DeepEqualsList(other.SeasonResets) &&
+               RewardItemStates.DeepEqualsListNaive(other.RewardItemStates);
+    }
 }

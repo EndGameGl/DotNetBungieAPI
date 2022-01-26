@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     A Faction is really just an entity that has a related progression for which a character can gain experience. In Destiny 1, Dead Orbit was an example of a Faction: there happens to be a Vendor that represents Dead Orbit (and indeed, DestinyVendorDefinition.factionHash defines to this relationship), but Dead Orbit could theoretically exist without the Vendor that provides rewards.
 /// </summary>
-public class DestinyFactionDefinition
+public class DestinyFactionDefinition : IDeepEquatable<DestinyFactionDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -59,4 +59,18 @@ public class DestinyFactionDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyFactionDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               ProgressionHash == other.ProgressionHash &&
+               TokenValues.DeepEqualsDictionaryNaive(other.TokenValues) &&
+               RewardItemHash == other.RewardItemHash &&
+               RewardVendorHash == other.RewardVendorHash &&
+               Vendors.DeepEqualsList(other.Vendors) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

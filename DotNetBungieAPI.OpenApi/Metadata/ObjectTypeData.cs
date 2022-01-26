@@ -28,7 +28,7 @@ public class ObjectTypeData : TypeData
             await WriteComment(false, Description, streamWriter);
         }
 
-        await streamWriter.WriteLineAsync($"public class {TypeName}");
+        await streamWriter.WriteLineAsync($"public class {TypeName} : IDeepEquatable<{TypeName}>");
         await streamWriter.WriteLineAsync('{');
 
         var totalValues = Properties.Count;
@@ -43,13 +43,75 @@ public class ObjectTypeData : TypeData
 
             await streamWriter.WriteLineAsync($"{Indent}[JsonPropertyName(\"{propertyTypeData.OriginPropertyName}\")]");
             await streamWriter.WriteLineAsync(
-                $"{Indent}public {propertyTypeData.PropertyTypeName} {propertyTypeData.CSharpPropertyName} {{ get; set; }}");
+                $"{Indent}public {propertyTypeData.CSharpPropertyTypeName} {propertyTypeData.CSharpPropertyName} {{ get; set; }}");
             if (i != amountCheckValue)
             {
                 await streamWriter.WriteLineAsync();
             }
         }
 
-        await streamWriter.WriteLineAsync('}');
+        await streamWriter.WriteLineAsync();
+
+        await WriteDeepEqualsMethod(streamWriter);
+
+        await streamWriter.WriteAsync('}');
+    }
+
+    private async Task WriteDeepEqualsMethod(StreamWriter streamWriter)
+    {
+        await streamWriter.WriteLineAsync($"{Indent}public bool DeepEquals({TypeName}? other)");
+        await streamWriter.WriteLineAsync($"{Indent}{{");
+
+        await streamWriter.WriteLineAsync($"{Indent}{Indent}return other is not null &&");
+
+        var totalValues = Properties.Count;
+        var amountCheckValue = totalValues - 1;
+
+        for (var i = 0; i < totalValues; i++)
+        {
+            var propertyTypeData = Properties[i];
+            if (propertyTypeData.IsValueType)
+            {
+                await streamWriter.WriteLineAsync(
+                    $"{Indent}{Indent}{Indent}   {propertyTypeData.CSharpPropertyName} == other.{propertyTypeData.CSharpPropertyName}{(i != amountCheckValue ? " &&" : ";")}");
+            }
+
+            if (propertyTypeData.IsClassObject)
+            {
+                await streamWriter.WriteLineAsync(
+                    $"{Indent}{Indent}{Indent}   ({propertyTypeData.CSharpPropertyName} is not null ? {propertyTypeData.CSharpPropertyName}.DeepEquals(other.{propertyTypeData.CSharpPropertyName}) : other.{propertyTypeData.CSharpPropertyName} is null){(i != amountCheckValue ? " &&" : ";")}");
+            }
+
+            if (propertyTypeData.IsCollection)
+            {
+                if (propertyTypeData.GenericProperties[0].IsValueType)
+                {
+                    await streamWriter.WriteLineAsync(
+                        $"{Indent}{Indent}{Indent}   {propertyTypeData.CSharpPropertyName}.DeepEqualsListNaive(other.{propertyTypeData.CSharpPropertyName}){(i != amountCheckValue ? " &&" : ";")}");
+                }
+                else
+                {
+                    await streamWriter.WriteLineAsync(
+                        $"{Indent}{Indent}{Indent}   {propertyTypeData.CSharpPropertyName}.DeepEqualsList(other.{propertyTypeData.CSharpPropertyName}){(i != amountCheckValue ? " &&" : ";")}");
+                }
+            }
+
+            if (propertyTypeData.IsDictionary)
+            {
+                if (propertyTypeData.GenericProperties[1].IsClassObject)
+                {
+                    await streamWriter.WriteLineAsync(
+                        $"{Indent}{Indent}{Indent}   {propertyTypeData.CSharpPropertyName}.DeepEqualsDictionary(other.{propertyTypeData.CSharpPropertyName}){(i != amountCheckValue ? " &&" : ";")}");
+                }
+                else
+                {
+                    await streamWriter.WriteLineAsync(
+                        $"{Indent}{Indent}{Indent}   {propertyTypeData.CSharpPropertyName}.DeepEqualsDictionaryNaive(other.{propertyTypeData.CSharpPropertyName}){(i != amountCheckValue ? " &&" : ";")}");
+
+                }
+            }
+        }
+
+        await streamWriter.WriteLineAsync($"{Indent}}}");
     }
 }

@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 /// <summary>
 ///     Summary information about the activity that was played.
 /// </summary>
-public class DestinyHistoricalStatsActivity
+public class DestinyHistoricalStatsActivity : IDeepEquatable<DestinyHistoricalStatsActivity>
 {
     /// <summary>
     ///     The unique hash identifier of the DestinyActivityDefinition that was played. If I had this to do over, it'd be named activityHash. Too late now.
@@ -48,4 +48,16 @@ public class DestinyHistoricalStatsActivity
     /// </summary>
     [JsonPropertyName("membershipType")]
     public BungieMembershipType MembershipType { get; set; }
+
+    public bool DeepEquals(DestinyHistoricalStatsActivity? other)
+    {
+        return other is not null &&
+               ReferenceId == other.ReferenceId &&
+               DirectorActivityHash == other.DirectorActivityHash &&
+               InstanceId == other.InstanceId &&
+               Mode == other.Mode &&
+               Modes.DeepEqualsListNaive(other.Modes) &&
+               IsPrivate == other.IsPrivate &&
+               MembershipType == other.MembershipType;
+    }
 }

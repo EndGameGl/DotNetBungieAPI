@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     You can potentially choose one from multiple replies when replying to an interaction: this is how you get either/or rewards from vendors.
 /// </summary>
-public class DestinyVendorInteractionReplyDefinition
+public class DestinyVendorInteractionReplyDefinition : IDeepEquatable<DestinyVendorInteractionReplyDefinition>
 {
     /// <summary>
     ///     The rewards granted upon responding to the vendor.
@@ -24,4 +24,12 @@ public class DestinyVendorInteractionReplyDefinition
     /// </summary>
     [JsonPropertyName("replyType")]
     public Destiny.DestinyVendorReplyType ReplyType { get; set; }
+
+    public bool DeepEquals(DestinyVendorInteractionReplyDefinition? other)
+    {
+        return other is not null &&
+               ItemRewardsSelection == other.ItemRewardsSelection &&
+               Reply == other.Reply &&
+               ReplyType == other.ReplyType;
+    }
 }

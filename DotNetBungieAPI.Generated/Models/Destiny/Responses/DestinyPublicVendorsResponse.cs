@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Responses;
 /// <para />
 ///      If you want any of the other data - item details, whether or not you can buy it, etc... you'll have to call in the context of a character. I know, sad but true.
 /// </summary>
-public class DestinyPublicVendorsResponse
+public class DestinyPublicVendorsResponse : IDeepEquatable<DestinyPublicVendorsResponse>
 {
     /// <summary>
     ///     For Vendors being returned, this will give you the information you need to group them and order them in the same way that the Bungie Companion app performs grouping. It will automatically be returned if you request the Vendors component.
@@ -50,4 +50,14 @@ public class DestinyPublicVendorsResponse
     /// </summary>
     [JsonPropertyName("stringVariables")]
     public SingleComponentResponseOfDestinyStringVariablesComponent StringVariables { get; set; }
+
+    public bool DeepEquals(DestinyPublicVendorsResponse? other)
+    {
+        return other is not null &&
+               (VendorGroups is not null ? VendorGroups.DeepEquals(other.VendorGroups) : other.VendorGroups is null) &&
+               (Vendors is not null ? Vendors.DeepEquals(other.Vendors) : other.Vendors is null) &&
+               (Categories is not null ? Categories.DeepEquals(other.Categories) : other.Categories is null) &&
+               (Sales is not null ? Sales.DeepEquals(other.Sales) : other.Sales is null) &&
+               (StringVariables is not null ? StringVariables.DeepEquals(other.StringVariables) : other.StringVariables is null);
+    }
 }

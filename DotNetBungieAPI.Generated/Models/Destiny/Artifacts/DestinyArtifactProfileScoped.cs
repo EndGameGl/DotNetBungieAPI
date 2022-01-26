@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Artifacts;
 /// <para />
 ///     It can be combined with Character-scoped data for a full picture of what a character has available/has chosen, or just these settings can be used for overview information.
 /// </summary>
-public class DestinyArtifactProfileScoped
+public class DestinyArtifactProfileScoped : IDeepEquatable<DestinyArtifactProfileScoped>
 {
     [JsonPropertyName("artifactHash")]
     public uint ArtifactHash { get; set; }
@@ -21,4 +21,14 @@ public class DestinyArtifactProfileScoped
 
     [JsonPropertyName("powerBonus")]
     public int PowerBonus { get; set; }
+
+    public bool DeepEquals(DestinyArtifactProfileScoped? other)
+    {
+        return other is not null &&
+               ArtifactHash == other.ArtifactHash &&
+               (PointProgression is not null ? PointProgression.DeepEquals(other.PointProgression) : other.PointProgression is null) &&
+               PointsAcquired == other.PointsAcquired &&
+               (PowerBonusProgression is not null ? PowerBonusProgression.DeepEquals(other.PowerBonusProgression) : other.PowerBonusProgression is null) &&
+               PowerBonus == other.PowerBonus;
+    }
 }

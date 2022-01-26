@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.User;
 
-public class UserSearchResponse
+public class UserSearchResponse : IDeepEquatable<UserSearchResponse>
 {
     [JsonPropertyName("searchResults")]
     public List<User.UserSearchResponseDetail> SearchResults { get; set; }
@@ -10,4 +10,12 @@ public class UserSearchResponse
 
     [JsonPropertyName("hasMore")]
     public bool HasMore { get; set; }
+
+    public bool DeepEquals(UserSearchResponse? other)
+    {
+        return other is not null &&
+               SearchResults.DeepEqualsList(other.SearchResults) &&
+               Page == other.Page &&
+               HasMore == other.HasMore;
+    }
 }

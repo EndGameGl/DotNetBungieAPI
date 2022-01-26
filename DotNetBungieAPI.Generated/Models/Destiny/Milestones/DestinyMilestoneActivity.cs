@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 /// <summary>
 ///     Sometimes, we know the specific activity that the Milestone wants you to play. This entity provides additional information about that Activity and all of its variants. (sometimes there's only one variant, but I think you get the point)
 /// </summary>
-public class DestinyMilestoneActivity
+public class DestinyMilestoneActivity : IDeepEquatable<DestinyMilestoneActivity>
 {
     /// <summary>
     ///     The hash of an arbitrarily chosen variant of this activity. We'll go ahead and call that the "canonical" activity, because if you're using this value you should only use it for properties that are common across the variants: things like the name of the activity, it's location, etc... Use this hash to look up the DestinyActivityDefinition of this activity for rendering data.
@@ -34,4 +34,14 @@ public class DestinyMilestoneActivity
     /// </summary>
     [JsonPropertyName("variants")]
     public List<Destiny.Milestones.DestinyMilestoneActivityVariant> Variants { get; set; }
+
+    public bool DeepEquals(DestinyMilestoneActivity? other)
+    {
+        return other is not null &&
+               ActivityHash == other.ActivityHash &&
+               ActivityModeHash == other.ActivityModeHash &&
+               ActivityModeType == other.ActivityModeType &&
+               ModifierHashes.DeepEqualsListNaive(other.ModifierHashes) &&
+               Variants.DeepEqualsList(other.Variants);
+    }
 }

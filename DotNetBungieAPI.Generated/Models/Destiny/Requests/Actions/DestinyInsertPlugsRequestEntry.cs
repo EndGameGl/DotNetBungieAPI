@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Requests.Actions;
 /// <para />
 ///     Note that, while you *can* point to a socket that represents infusion, you will receive an error if you attempt to do so. Come on guys, let's play nice.
 /// </summary>
-public class DestinyInsertPlugsRequestEntry
+public class DestinyInsertPlugsRequestEntry : IDeepEquatable<DestinyInsertPlugsRequestEntry>
 {
     /// <summary>
     ///     The index into the socket array, which identifies the specific socket being operated on. We also need to know the socketArrayType in order to uniquely identify the socket.
@@ -26,4 +26,12 @@ public class DestinyInsertPlugsRequestEntry
     /// </summary>
     [JsonPropertyName("plugItemHash")]
     public uint PlugItemHash { get; set; }
+
+    public bool DeepEquals(DestinyInsertPlugsRequestEntry? other)
+    {
+        return other is not null &&
+               SocketIndex == other.SocketIndex &&
+               SocketArrayType == other.SocketArrayType &&
+               PlugItemHash == other.PlugItemHash;
+    }
 }

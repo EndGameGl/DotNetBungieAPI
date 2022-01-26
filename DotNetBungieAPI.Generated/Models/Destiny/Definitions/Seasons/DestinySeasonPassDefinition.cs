@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Seasons;
 
-public class DestinySeasonPassDefinition
+public class DestinySeasonPassDefinition : IDeepEquatable<DestinySeasonPassDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -38,4 +38,15 @@ public class DestinySeasonPassDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinySeasonPassDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               RewardProgressionHash == other.RewardProgressionHash &&
+               PrestigeProgressionHash == other.PrestigeProgressionHash &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

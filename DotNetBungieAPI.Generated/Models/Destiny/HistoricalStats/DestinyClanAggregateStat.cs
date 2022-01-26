@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public class DestinyClanAggregateStat
+public class DestinyClanAggregateStat : IDeepEquatable<DestinyClanAggregateStat>
 {
     /// <summary>
     ///     The id of the mode of stats (allPvp, allPvE, etc)
@@ -19,4 +19,12 @@ public class DestinyClanAggregateStat
     /// </summary>
     [JsonPropertyName("value")]
     public Destiny.HistoricalStats.DestinyHistoricalStatsValue Value { get; set; }
+
+    public bool DeepEquals(DestinyClanAggregateStat? other)
+    {
+        return other is not null &&
+               Mode == other.Mode &&
+               StatId == other.StatId &&
+               (Value is not null ? Value.DeepEquals(other.Value) : other.Value is null);
+    }
 }

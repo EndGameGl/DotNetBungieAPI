@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Progression;
 /// <summary>
 ///     Mostly for historical purposes, we segregate Faction progressions from other progressions. This is just a DestinyProgression with a shortcut for finding the DestinyFactionDefinition of the faction related to the progression.
 /// </summary>
-public class DestinyFactionProgression
+public class DestinyFactionProgression : IDeepEquatable<DestinyFactionProgression>
 {
     /// <summary>
     ///     The hash identifier of the Faction related to this progression. Use it to look up the DestinyFactionDefinition for more rendering info.
@@ -100,4 +100,25 @@ public class DestinyFactionProgression
     /// </summary>
     [JsonPropertyName("rewardItemStates")]
     public List<Destiny.DestinyProgressionRewardItemState> RewardItemStates { get; set; }
+
+    public bool DeepEquals(DestinyFactionProgression? other)
+    {
+        return other is not null &&
+               FactionHash == other.FactionHash &&
+               FactionVendorIndex == other.FactionVendorIndex &&
+               ProgressionHash == other.ProgressionHash &&
+               DailyProgress == other.DailyProgress &&
+               DailyLimit == other.DailyLimit &&
+               WeeklyProgress == other.WeeklyProgress &&
+               WeeklyLimit == other.WeeklyLimit &&
+               CurrentProgress == other.CurrentProgress &&
+               Level == other.Level &&
+               LevelCap == other.LevelCap &&
+               StepIndex == other.StepIndex &&
+               ProgressToNextLevel == other.ProgressToNextLevel &&
+               NextLevelAt == other.NextLevelAt &&
+               CurrentResetCount == other.CurrentResetCount &&
+               SeasonResets.DeepEqualsList(other.SeasonResets) &&
+               RewardItemStates.DeepEqualsListNaive(other.RewardItemStates);
+    }
 }

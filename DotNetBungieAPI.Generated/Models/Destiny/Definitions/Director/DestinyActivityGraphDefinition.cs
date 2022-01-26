@@ -11,7 +11,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Director;
 /// <para />
 ///     If we end up having time, we may end up trying to manually populate those here: but the last time we tried that, before the lead-up to D1, it proved to be unmaintainable as the game's content changed. So don't bet the farm on us providing that content in this definition.
 /// </summary>
-public class DestinyActivityGraphDefinition
+public class DestinyActivityGraphDefinition : IDeepEquatable<DestinyActivityGraphDefinition>
 {
     /// <summary>
     ///     These represent the visual "nodes" on the map's view. These are the activities you can click on in the map.
@@ -68,4 +68,18 @@ public class DestinyActivityGraphDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyActivityGraphDefinition? other)
+    {
+        return other is not null &&
+               Nodes.DeepEqualsList(other.Nodes) &&
+               ArtElements.DeepEqualsList(other.ArtElements) &&
+               Connections.DeepEqualsList(other.Connections) &&
+               DisplayObjectives.DeepEqualsList(other.DisplayObjectives) &&
+               DisplayProgressions.DeepEqualsList(other.DisplayProgressions) &&
+               LinkedGraphs.DeepEqualsList(other.LinkedGraphs) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

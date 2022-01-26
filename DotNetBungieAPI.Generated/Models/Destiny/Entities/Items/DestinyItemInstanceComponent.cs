@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Items;
 /// <para />
 ///     You can tell from an item's definition whether it will be instanced or not by looking at the DestinyInventoryItemDefinition's definition.inventory.isInstanceItem property.
 /// </summary>
-public class DestinyItemInstanceComponent
+public class DestinyItemInstanceComponent : IDeepEquatable<DestinyItemInstanceComponent>
 {
     /// <summary>
     ///     If the item has a damage type, this is the item's current damage type.
@@ -88,4 +88,22 @@ public class DestinyItemInstanceComponent
     /// </summary>
     [JsonPropertyName("energy")]
     public Destiny.Entities.Items.DestinyItemInstanceEnergy Energy { get; set; }
+
+    public bool DeepEquals(DestinyItemInstanceComponent? other)
+    {
+        return other is not null &&
+               DamageType == other.DamageType &&
+               DamageTypeHash == other.DamageTypeHash &&
+               (PrimaryStat is not null ? PrimaryStat.DeepEquals(other.PrimaryStat) : other.PrimaryStat is null) &&
+               ItemLevel == other.ItemLevel &&
+               Quality == other.Quality &&
+               IsEquipped == other.IsEquipped &&
+               CanEquip == other.CanEquip &&
+               EquipRequiredLevel == other.EquipRequiredLevel &&
+               UnlockHashesRequiredToEquip.DeepEqualsListNaive(other.UnlockHashesRequiredToEquip) &&
+               CannotEquipReason == other.CannotEquipReason &&
+               BreakerType == other.BreakerType &&
+               BreakerTypeHash == other.BreakerTypeHash &&
+               (Energy is not null ? Energy.DeepEquals(other.Energy) : other.Energy is null);
+    }
 }

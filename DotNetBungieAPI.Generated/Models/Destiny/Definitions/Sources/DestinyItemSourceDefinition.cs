@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Sources;
 /// <para />
 ///     Items will have many of these sources, one per level at which it spawns, to try and give more granular data about where items spawn for specific level ranges.
 /// </summary>
-public class DestinyItemSourceDefinition
+public class DestinyItemSourceDefinition : IDeepEquatable<DestinyItemSourceDefinition>
 {
     /// <summary>
     ///     The level at which the item spawns. Essentially the Primary Key for this source data: there will be multiple of these source entries per item that has source data, grouped by the level at which the item spawns.
@@ -48,4 +48,16 @@ public class DestinyItemSourceDefinition
     /// </summary>
     [JsonPropertyName("sourceHashes")]
     public List<uint> SourceHashes { get; set; }
+
+    public bool DeepEquals(DestinyItemSourceDefinition? other)
+    {
+        return other is not null &&
+               Level == other.Level &&
+               MinQuality == other.MinQuality &&
+               MaxQuality == other.MaxQuality &&
+               MinLevelRequired == other.MinLevelRequired &&
+               MaxLevelRequired == other.MaxLevelRequired &&
+               ComputedStats.DeepEqualsDictionary(other.ComputedStats) &&
+               SourceHashes.DeepEqualsListNaive(other.SourceHashes);
+    }
 }

@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Applications;
 
-public class Datapoint
+public class Datapoint : IDeepEquatable<Datapoint>
 {
     /// <summary>
     ///     Timestamp for the related count.
@@ -13,4 +13,11 @@ public class Datapoint
     /// </summary>
     [JsonPropertyName("count")]
     public double? Count { get; set; }
+
+    public bool DeepEquals(Datapoint? other)
+    {
+        return other is not null &&
+               Time == other.Time &&
+               Count == other.Count;
+    }
 }

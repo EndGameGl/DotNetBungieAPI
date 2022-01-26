@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Inventory;
 /// <para />
 ///     You *could* figure this out yourself by doing a GetCharacter or GetProfile request and forming your own lookup table, but that is inconvenient enough that this feels like a worthwhile (and optional) redundency. Don't bother requesting it if you have already created your own lookup from prior GetCharacter/GetProfile calls.
 /// </summary>
-public class DestinyCurrenciesComponent
+public class DestinyCurrenciesComponent : IDeepEquatable<DestinyCurrenciesComponent>
 {
     /// <summary>
     ///     A dictionary - keyed by the item's hash identifier (DestinyInventoryItemDefinition), and whose value is the amount of that item you have across all available inventory buckets for purchasing.
@@ -16,4 +16,10 @@ public class DestinyCurrenciesComponent
     /// </summary>
     [JsonPropertyName("itemQuantities")]
     public Dictionary<uint, int> ItemQuantities { get; set; }
+
+    public bool DeepEquals(DestinyCurrenciesComponent? other)
+    {
+        return other is not null &&
+               ItemQuantities.DeepEqualsDictionaryNaive(other.ItemQuantities);
+    }
 }

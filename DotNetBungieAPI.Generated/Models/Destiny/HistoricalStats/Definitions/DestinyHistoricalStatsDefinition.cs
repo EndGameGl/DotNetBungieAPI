@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats.Definitions;
 
-public class DestinyHistoricalStatsDefinition
+public class DestinyHistoricalStatsDefinition : IDeepEquatable<DestinyHistoricalStatsDefinition>
 {
     /// <summary>
     ///     Unique programmer friendly ID for this stat
@@ -85,4 +85,23 @@ public class DestinyHistoricalStatsDefinition
     /// </summary>
     [JsonPropertyName("medalTierHash")]
     public uint? MedalTierHash { get; set; }
+
+    public bool DeepEquals(DestinyHistoricalStatsDefinition? other)
+    {
+        return other is not null &&
+               StatId == other.StatId &&
+               Group == other.Group &&
+               PeriodTypes.DeepEqualsListNaive(other.PeriodTypes) &&
+               Modes.DeepEqualsListNaive(other.Modes) &&
+               Category == other.Category &&
+               StatName == other.StatName &&
+               StatNameAbbr == other.StatNameAbbr &&
+               StatDescription == other.StatDescription &&
+               UnitType == other.UnitType &&
+               IconImage == other.IconImage &&
+               MergeMethod == other.MergeMethod &&
+               UnitLabel == other.UnitLabel &&
+               Weight == other.Weight &&
+               MedalTierHash == other.MedalTierHash;
+    }
 }

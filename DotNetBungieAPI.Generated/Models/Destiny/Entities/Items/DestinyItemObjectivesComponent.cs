@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Items;
 /// <summary>
 ///     Items can have objectives and progression. When you request this block, you will obtain information about any Objectives and progression tied to this item.
 /// </summary>
-public class DestinyItemObjectivesComponent
+public class DestinyItemObjectivesComponent : IDeepEquatable<DestinyItemObjectivesComponent>
 {
     /// <summary>
     ///     If the item has a hard association with objectives, your progress on them will be defined here. 
@@ -24,4 +24,12 @@ public class DestinyItemObjectivesComponent
     /// </summary>
     [JsonPropertyName("dateCompleted")]
     public DateTime? DateCompleted { get; set; }
+
+    public bool DeepEquals(DestinyItemObjectivesComponent? other)
+    {
+        return other is not null &&
+               Objectives.DeepEqualsList(other.Objectives) &&
+               (FlavorObjective is not null ? FlavorObjective.DeepEquals(other.FlavorObjective) : other.FlavorObjective is null) &&
+               DateCompleted == other.DateCompleted;
+    }
 }

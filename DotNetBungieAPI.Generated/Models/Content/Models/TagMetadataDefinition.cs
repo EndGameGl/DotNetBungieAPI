@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Content.Models;
 
-public class TagMetadataDefinition
+public class TagMetadataDefinition : IDeepEquatable<TagMetadataDefinition>
 {
     [JsonPropertyName("description")]
     public string Description { get; set; }
@@ -19,4 +19,15 @@ public class TagMetadataDefinition
 
     [JsonPropertyName("isRequired")]
     public bool IsRequired { get; set; }
+
+    public bool DeepEquals(TagMetadataDefinition? other)
+    {
+        return other is not null &&
+               Description == other.Description &&
+               Order == other.Order &&
+               Items.DeepEqualsList(other.Items) &&
+               Datatype == other.Datatype &&
+               Name == other.Name &&
+               IsRequired == other.IsRequired;
+    }
 }

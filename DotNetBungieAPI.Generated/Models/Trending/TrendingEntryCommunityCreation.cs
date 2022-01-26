@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Trending;
 
-public class TrendingEntryCommunityCreation
+public class TrendingEntryCommunityCreation : IDeepEquatable<TrendingEntryCommunityCreation>
 {
     [JsonPropertyName("media")]
     public string Media { get; set; }
@@ -22,4 +22,16 @@ public class TrendingEntryCommunityCreation
 
     [JsonPropertyName("upvotes")]
     public int Upvotes { get; set; }
+
+    public bool DeepEquals(TrendingEntryCommunityCreation? other)
+    {
+        return other is not null &&
+               Media == other.Media &&
+               Title == other.Title &&
+               Author == other.Author &&
+               AuthorMembershipId == other.AuthorMembershipId &&
+               PostId == other.PostId &&
+               Body == other.Body &&
+               Upvotes == other.Upvotes;
+    }
 }

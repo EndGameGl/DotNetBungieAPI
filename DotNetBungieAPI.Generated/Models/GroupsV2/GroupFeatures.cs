@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public class GroupFeatures
+public class GroupFeatures : IDeepEquatable<GroupFeatures>
 {
     [JsonPropertyName("maximumMembers")]
     public int MaximumMembers { get; set; }
@@ -72,4 +72,18 @@ public class GroupFeatures
     /// </summary>
     [JsonPropertyName("joinLevel")]
     public GroupsV2.RuntimeGroupMemberType JoinLevel { get; set; }
+
+    public bool DeepEquals(GroupFeatures? other)
+    {
+        return other is not null &&
+               MaximumMembers == other.MaximumMembers &&
+               MaximumMembershipsOfGroupType == other.MaximumMembershipsOfGroupType &&
+               Capabilities == other.Capabilities &&
+               MembershipTypes.DeepEqualsListNaive(other.MembershipTypes) &&
+               InvitePermissionOverride == other.InvitePermissionOverride &&
+               UpdateCulturePermissionOverride == other.UpdateCulturePermissionOverride &&
+               HostGuidedGamePermissionOverride == other.HostGuidedGamePermissionOverride &&
+               UpdateBannerPermissionOverride == other.UpdateBannerPermissionOverride &&
+               JoinLevel == other.JoinLevel;
+    }
 }

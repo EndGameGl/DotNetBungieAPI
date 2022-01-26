@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Presentation;
 /// <summary>
 ///     This is the base class for all presentation system children. Presentation Nodes, Records, Collectibles, and Metrics.
 /// </summary>
-public class DestinyPresentationNodeBaseDefinition
+public class DestinyPresentationNodeBaseDefinition : IDeepEquatable<DestinyPresentationNodeBaseDefinition>
 {
     [JsonPropertyName("presentationNodeType")]
     public Destiny.DestinyPresentationNodeType PresentationNodeType { get; set; }
@@ -39,4 +39,16 @@ public class DestinyPresentationNodeBaseDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyPresentationNodeBaseDefinition? other)
+    {
+        return other is not null &&
+               PresentationNodeType == other.PresentationNodeType &&
+               TraitIds.DeepEqualsListNaive(other.TraitIds) &&
+               TraitHashes.DeepEqualsListNaive(other.TraitHashes) &&
+               ParentNodeHashes.DeepEqualsListNaive(other.ParentNodeHashes) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

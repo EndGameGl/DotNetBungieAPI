@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Content.Models;
 
-public class ContentTypeProperty
+public class ContentTypeProperty : IDeepEquatable<ContentTypeProperty>
 {
     [JsonPropertyName("name")]
     public string Name { get; set; }
@@ -127,4 +127,51 @@ public class ContentTypeProperty
 
     [JsonPropertyName("isImage")]
     public bool IsImage { get; set; }
+
+    public bool DeepEquals(ContentTypeProperty? other)
+    {
+        return other is not null &&
+               Name == other.Name &&
+               RootPropertyName == other.RootPropertyName &&
+               ReadableName == other.ReadableName &&
+               Value == other.Value &&
+               PropertyDescription == other.PropertyDescription &&
+               Localizable == other.Localizable &&
+               Fallback == other.Fallback &&
+               Enabled == other.Enabled &&
+               Order == other.Order &&
+               Visible == other.Visible &&
+               IsTitle == other.IsTitle &&
+               Required == other.Required &&
+               MaxLength == other.MaxLength &&
+               MaxByteLength == other.MaxByteLength &&
+               MaxFileSize == other.MaxFileSize &&
+               Regexp == other.Regexp &&
+               ValidateAs == other.ValidateAs &&
+               RssAttribute == other.RssAttribute &&
+               VisibleDependency == other.VisibleDependency &&
+               VisibleOn == other.VisibleOn &&
+               Datatype == other.Datatype &&
+               Attributes.DeepEqualsDictionaryNaive(other.Attributes) &&
+               ChildProperties.DeepEqualsList(other.ChildProperties) &&
+               ContentTypeAllowed == other.ContentTypeAllowed &&
+               BindToProperty == other.BindToProperty &&
+               BoundRegex == other.BoundRegex &&
+               RepresentationSelection.DeepEqualsDictionaryNaive(other.RepresentationSelection) &&
+               DefaultValues.DeepEqualsList(other.DefaultValues) &&
+               IsExternalAllowed == other.IsExternalAllowed &&
+               PropertySection == other.PropertySection &&
+               Weight == other.Weight &&
+               Entitytype == other.Entitytype &&
+               IsCombo == other.IsCombo &&
+               SuppressProperty == other.SuppressProperty &&
+               LegalContentTypes.DeepEqualsListNaive(other.LegalContentTypes) &&
+               RepresentationValidationString == other.RepresentationValidationString &&
+               MinWidth == other.MinWidth &&
+               MaxWidth == other.MaxWidth &&
+               MinHeight == other.MinHeight &&
+               MaxHeight == other.MaxHeight &&
+               IsVideo == other.IsVideo &&
+               IsImage == other.IsImage;
+    }
 }

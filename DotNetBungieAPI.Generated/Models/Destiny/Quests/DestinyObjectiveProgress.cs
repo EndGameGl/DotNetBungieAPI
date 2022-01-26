@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Quests;
 /// <summary>
 ///     Returns data about a character's status with a given Objective. Combine with DestinyObjectiveDefinition static data for display purposes.
 /// </summary>
-public class DestinyObjectiveProgress
+public class DestinyObjectiveProgress : IDeepEquatable<DestinyObjectiveProgress>
 {
     /// <summary>
     ///     The unique identifier of the Objective being referred to. Use to look up the DestinyObjectiveDefinition in static data.
@@ -50,4 +50,16 @@ public class DestinyObjectiveProgress
     /// </summary>
     [JsonPropertyName("visible")]
     public bool Visible { get; set; }
+
+    public bool DeepEquals(DestinyObjectiveProgress? other)
+    {
+        return other is not null &&
+               ObjectiveHash == other.ObjectiveHash &&
+               DestinationHash == other.DestinationHash &&
+               ActivityHash == other.ActivityHash &&
+               Progress == other.Progress &&
+               CompletionValue == other.CompletionValue &&
+               Complete == other.Complete &&
+               Visible == other.Visible;
+    }
 }

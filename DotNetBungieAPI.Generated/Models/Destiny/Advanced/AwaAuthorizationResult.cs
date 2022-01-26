@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Advanced;
 
-public class AwaAuthorizationResult
+public class AwaAuthorizationResult : IDeepEquatable<AwaAuthorizationResult>
 {
     /// <summary>
     ///     Indication of how the user responded to the request. If the value is "Approved" the actionToken will contain the token that can be presented when performing the advanced write action.
@@ -46,4 +46,17 @@ public class AwaAuthorizationResult
     /// </summary>
     [JsonPropertyName("membershipType")]
     public BungieMembershipType MembershipType { get; set; }
+
+    public bool DeepEquals(AwaAuthorizationResult? other)
+    {
+        return other is not null &&
+               UserSelection == other.UserSelection &&
+               ResponseReason == other.ResponseReason &&
+               DeveloperNote == other.DeveloperNote &&
+               ActionToken == other.ActionToken &&
+               MaximumNumberOfUses == other.MaximumNumberOfUses &&
+               ValidUntil == other.ValidUntil &&
+               Type == other.Type &&
+               MembershipType == other.MembershipType;
+    }
 }

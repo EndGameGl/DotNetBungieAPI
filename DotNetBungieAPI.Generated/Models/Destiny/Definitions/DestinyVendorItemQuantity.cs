@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     In addition to item quantity information for vendor prices, this also has any optional information that may exist about how the item's quantity can be modified. (unfortunately not information that is able to be read outside of the BNet servers, but it's there)
 /// </summary>
-public class DestinyVendorItemQuantity
+public class DestinyVendorItemQuantity : IDeepEquatable<DestinyVendorItemQuantity>
 {
     /// <summary>
     ///     The hash identifier for the item in question. Use it to look up the item's DestinyInventoryItemDefinition.
@@ -28,4 +28,13 @@ public class DestinyVendorItemQuantity
     /// </summary>
     [JsonPropertyName("hasConditionalVisibility")]
     public bool HasConditionalVisibility { get; set; }
+
+    public bool DeepEquals(DestinyVendorItemQuantity? other)
+    {
+        return other is not null &&
+               ItemHash == other.ItemHash &&
+               ItemInstanceId == other.ItemInstanceId &&
+               Quantity == other.Quantity &&
+               HasConditionalVisibility == other.HasConditionalVisibility;
+    }
 }

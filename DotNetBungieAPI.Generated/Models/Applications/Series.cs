@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Applications;
 
-public class Series
+public class Series : IDeepEquatable<Series>
 {
     /// <summary>
     ///     Collection of samples with time and value.
@@ -13,4 +13,11 @@ public class Series
     /// </summary>
     [JsonPropertyName("target")]
     public string Target { get; set; }
+
+    public bool DeepEquals(Series? other)
+    {
+        return other is not null &&
+               Datapoints.DeepEqualsList(other.Datapoints) &&
+               Target == other.Target;
+    }
 }

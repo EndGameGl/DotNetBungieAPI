@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Vendors;
 /// <summary>
 ///     Information about the category and items currently sold in that category.
 /// </summary>
-public class DestinyVendorCategory
+public class DestinyVendorCategory : IDeepEquatable<DestinyVendorCategory>
 {
     /// <summary>
     ///     An index into the DestinyVendorDefinition.displayCategories property, so you can grab the display data for this category.
@@ -16,4 +16,11 @@ public class DestinyVendorCategory
     /// </summary>
     [JsonPropertyName("itemIndexes")]
     public List<int> ItemIndexes { get; set; }
+
+    public bool DeepEquals(DestinyVendorCategory? other)
+    {
+        return other is not null &&
+               DisplayCategoryIndex == other.DisplayCategoryIndex &&
+               ItemIndexes.DeepEqualsListNaive(other.ItemIndexes);
+    }
 }

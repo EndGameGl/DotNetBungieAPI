@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models;
 
-public class SingleComponentResponseOfDestinyPlugSetsComponent
+public class SingleComponentResponseOfDestinyPlugSetsComponent : IDeepEquatable<SingleComponentResponseOfDestinyPlugSetsComponent>
 {
     [JsonPropertyName("data")]
     public Destiny.Components.PlugSets.DestinyPlugSetsComponent Data { get; set; }
@@ -13,4 +13,12 @@ public class SingleComponentResponseOfDestinyPlugSetsComponent
     /// </summary>
     [JsonPropertyName("disabled")]
     public bool? Disabled { get; set; }
+
+    public bool DeepEquals(SingleComponentResponseOfDestinyPlugSetsComponent? other)
+    {
+        return other is not null &&
+               (Data is not null ? Data.DeepEquals(other.Data) : other.Data is null) &&
+               Privacy == other.Privacy &&
+               Disabled == other.Disabled;
+    }
 }

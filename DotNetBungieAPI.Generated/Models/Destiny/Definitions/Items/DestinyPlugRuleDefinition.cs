@@ -5,11 +5,17 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Items;
 /// <para />
 ///     In practice, the live Destiny data will refer to these entries by index. You can then look up that index in the appropriate property (enabledRules or insertionRules) to get the localized string for the failure message if it failed.
 /// </summary>
-public class DestinyPlugRuleDefinition
+public class DestinyPlugRuleDefinition : IDeepEquatable<DestinyPlugRuleDefinition>
 {
     /// <summary>
     ///     The localized string to show if this rule fails.
     /// </summary>
     [JsonPropertyName("failureMessage")]
     public string FailureMessage { get; set; }
+
+    public bool DeepEquals(DestinyPlugRuleDefinition? other)
+    {
+        return other is not null &&
+               FailureMessage == other.FailureMessage;
+    }
 }

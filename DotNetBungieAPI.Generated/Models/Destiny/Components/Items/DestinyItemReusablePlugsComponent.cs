@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Items;
 
-public class DestinyItemReusablePlugsComponent
+public class DestinyItemReusablePlugsComponent : IDeepEquatable<DestinyItemReusablePlugsComponent>
 {
     /// <summary>
     ///     If the item supports reusable plugs, this is the list of plugs that are allowed to be used for the socket, and any relevant information about whether they are "enabled", whether they are allowed to be inserted, and any other information such as objectives.
@@ -15,4 +15,10 @@ public class DestinyItemReusablePlugsComponent
     /// </summary>
     [JsonPropertyName("plugs")]
     public Dictionary<int, List<Destiny.Sockets.DestinyItemPlugBase>> Plugs { get; set; }
+
+    public bool DeepEquals(DestinyItemReusablePlugsComponent? other)
+    {
+        return other is not null &&
+               Plugs.DeepEqualsDictionaryNaive(other.Plugs);
+    }
 }

@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Queries;
 
-public class SearchResult
+public class SearchResult : IDeepEquatable<SearchResult>
 {
     [JsonPropertyName("totalResults")]
     public int TotalResults { get; set; }
@@ -25,4 +25,14 @@ public class SearchResult
     /// </summary>
     [JsonPropertyName("useTotalResults")]
     public bool UseTotalResults { get; set; }
+
+    public bool DeepEquals(SearchResult? other)
+    {
+        return other is not null &&
+               TotalResults == other.TotalResults &&
+               HasMore == other.HasMore &&
+               (Query is not null ? Query.DeepEquals(other.Query) : other.Query is null) &&
+               ReplacementContinuationToken == other.ReplacementContinuationToken &&
+               UseTotalResults == other.UseTotalResults;
+    }
 }

@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Profiles;
 /// <para />
 ///     Note that we cannot guarantee any of this resembles what ends up in the PGCR in any way. They are sourced by two entirely separate systems with their own logic, and the one we source this data from should be considered non-authoritative in comparison.
 /// </summary>
-public class DestinyProfileTransitoryCurrentActivity
+public class DestinyProfileTransitoryCurrentActivity : IDeepEquatable<DestinyProfileTransitoryCurrentActivity>
 {
     /// <summary>
     ///     When the activity started.
@@ -42,4 +42,15 @@ public class DestinyProfileTransitoryCurrentActivity
     /// </summary>
     [JsonPropertyName("numberOfPlayers")]
     public int NumberOfPlayers { get; set; }
+
+    public bool DeepEquals(DestinyProfileTransitoryCurrentActivity? other)
+    {
+        return other is not null &&
+               StartTime == other.StartTime &&
+               EndTime == other.EndTime &&
+               Score == other.Score &&
+               HighestOpposingFactionScore == other.HighestOpposingFactionScore &&
+               NumberOfOpponents == other.NumberOfOpponents &&
+               NumberOfPlayers == other.NumberOfPlayers;
+    }
 }

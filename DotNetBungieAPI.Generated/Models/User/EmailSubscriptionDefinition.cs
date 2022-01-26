@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.User;
 /// <summary>
 ///     Defines a single subscription: permission to send emails for a specific, focused subject (generally timeboxed, such as for a specific release of a product or feature).
 /// </summary>
-public class EmailSubscriptionDefinition
+public class EmailSubscriptionDefinition : IDeepEquatable<EmailSubscriptionDefinition>
 {
     /// <summary>
     ///     The unique identifier for this subscription.
@@ -22,4 +22,12 @@ public class EmailSubscriptionDefinition
     /// </summary>
     [JsonPropertyName("value")]
     public long Value { get; set; }
+
+    public bool DeepEquals(EmailSubscriptionDefinition? other)
+    {
+        return other is not null &&
+               Name == other.Name &&
+               Localization.DeepEqualsDictionary(other.Localization) &&
+               Value == other.Value;
+    }
 }

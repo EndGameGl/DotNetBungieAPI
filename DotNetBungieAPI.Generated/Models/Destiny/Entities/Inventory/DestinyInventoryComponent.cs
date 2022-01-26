@@ -5,11 +5,17 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Inventory;
 /// <para />
 ///     Inventory Items returned here are in a flat list, but importantly they have a bucketHash property that indicates the specific inventory bucket that is holding them. These buckets constitute things like the separate sections of the Vault, the user's inventory slots, etc. See DestinyInventoryBucketDefinition for more info.
 /// </summary>
-public class DestinyInventoryComponent
+public class DestinyInventoryComponent : IDeepEquatable<DestinyInventoryComponent>
 {
     /// <summary>
     ///     The items in this inventory. If you care to bucket them, use the item's bucketHash property to group them.
     /// </summary>
     [JsonPropertyName("items")]
     public List<Destiny.Entities.Items.DestinyItemComponent> Items { get; set; }
+
+    public bool DeepEquals(DestinyInventoryComponent? other)
+    {
+        return other is not null &&
+               Items.DeepEqualsList(other.Items);
+    }
 }

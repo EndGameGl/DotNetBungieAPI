@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Requests.Actions;
 
-public class DestinyInsertPlugsActionRequest
+public class DestinyInsertPlugsActionRequest : IDeepEquatable<DestinyInsertPlugsActionRequest>
 {
     /// <summary>
     ///     Action token provided by the AwaGetActionToken API call.
@@ -25,4 +25,14 @@ public class DestinyInsertPlugsActionRequest
 
     [JsonPropertyName("membershipType")]
     public BungieMembershipType MembershipType { get; set; }
+
+    public bool DeepEquals(DestinyInsertPlugsActionRequest? other)
+    {
+        return other is not null &&
+               ActionToken == other.ActionToken &&
+               ItemInstanceId == other.ItemInstanceId &&
+               (Plug is not null ? Plug.DeepEquals(other.Plug) : other.Plug is null) &&
+               CharacterId == other.CharacterId &&
+               MembershipType == other.MembershipType;
+    }
 }

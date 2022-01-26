@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public class DestinyPostGameCarnageReportData
+public class DestinyPostGameCarnageReportData : IDeepEquatable<DestinyPostGameCarnageReportData>
 {
     /// <summary>
     ///     Date and time for the activity.
@@ -31,4 +31,14 @@ public class DestinyPostGameCarnageReportData
     /// </summary>
     [JsonPropertyName("teams")]
     public List<Destiny.HistoricalStats.DestinyPostGameCarnageReportTeamEntry> Teams { get; set; }
+
+    public bool DeepEquals(DestinyPostGameCarnageReportData? other)
+    {
+        return other is not null &&
+               Period == other.Period &&
+               StartingPhaseIndex == other.StartingPhaseIndex &&
+               (ActivityDetails is not null ? ActivityDetails.DeepEquals(other.ActivityDetails) : other.ActivityDetails is null) &&
+               Entries.DeepEqualsList(other.Entries) &&
+               Teams.DeepEqualsList(other.Teams);
+    }
 }

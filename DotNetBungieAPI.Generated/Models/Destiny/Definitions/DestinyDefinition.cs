@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Provides common properties for destiny definitions.
 /// </summary>
-public class DestinyDefinition
+public class DestinyDefinition : IDeepEquatable<DestinyDefinition>
 {
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
@@ -24,4 +24,12 @@ public class DestinyDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyDefinition? other)
+    {
+        return other is not null &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

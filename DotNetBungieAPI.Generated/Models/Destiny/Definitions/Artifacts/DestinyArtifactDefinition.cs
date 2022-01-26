@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Artifacts;
 /// <para />
 ///     We cannot guarantee that artifact definitions will be immutable between seasons - in fact, we've been told that they will be replaced between seasons. But this definition is built both to minimize the amount of lookups for related data that have to occur, and is built in hope that, if this plan changes, we will be able to accommodate it more easily.
 /// </summary>
-public class DestinyArtifactDefinition
+public class DestinyArtifactDefinition : IDeepEquatable<DestinyArtifactDefinition>
 {
     /// <summary>
     ///     Any basic display info we know about the Artifact. Currently sourced from a related inventory item, but the source of this data is subject to change.
@@ -44,4 +44,15 @@ public class DestinyArtifactDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyArtifactDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               (TranslationBlock is not null ? TranslationBlock.DeepEquals(other.TranslationBlock) : other.TranslationBlock is null) &&
+               Tiers.DeepEqualsList(other.Tiers) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

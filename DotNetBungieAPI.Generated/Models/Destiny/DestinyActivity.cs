@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny;
 /// <para />
 ///     Meant to be combined with static DestinyActivityDefinition data for a full picture of the Activity.
 /// </summary>
-public class DestinyActivity
+public class DestinyActivity : IDeepEquatable<DestinyActivity>
 {
     /// <summary>
     ///     The hash identifier of the Activity. Use this to look up the DestinyActivityDefinition of the activity.
@@ -89,4 +89,22 @@ public class DestinyActivity
     /// </summary>
     [JsonPropertyName("loadoutRequirementIndex")]
     public int? LoadoutRequirementIndex { get; set; }
+
+    public bool DeepEquals(DestinyActivity? other)
+    {
+        return other is not null &&
+               ActivityHash == other.ActivityHash &&
+               IsNew == other.IsNew &&
+               CanLead == other.CanLead &&
+               CanJoin == other.CanJoin &&
+               IsCompleted == other.IsCompleted &&
+               IsVisible == other.IsVisible &&
+               DisplayLevel == other.DisplayLevel &&
+               RecommendedLight == other.RecommendedLight &&
+               DifficultyTier == other.DifficultyTier &&
+               Challenges.DeepEqualsList(other.Challenges) &&
+               ModifierHashes.DeepEqualsListNaive(other.ModifierHashes) &&
+               BooleanActivityOptions.DeepEqualsDictionaryNaive(other.BooleanActivityOptions) &&
+               LoadoutRequirementIndex == other.LoadoutRequirementIndex;
+    }
 }

@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Records;
 
-public class DestinyRecordCompletionBlock
+public class DestinyRecordCompletionBlock : IDeepEquatable<DestinyRecordCompletionBlock>
 {
     /// <summary>
     ///     The number of objectives that must be completed before the objective is considered "complete"
@@ -16,4 +16,13 @@ public class DestinyRecordCompletionBlock
 
     [JsonPropertyName("toastStyle")]
     public Destiny.DestinyRecordToastStyle ToastStyle { get; set; }
+
+    public bool DeepEquals(DestinyRecordCompletionBlock? other)
+    {
+        return other is not null &&
+               PartialCompletionObjectiveCountThreshold == other.PartialCompletionObjectiveCountThreshold &&
+               ScoreValue == other.ScoreValue &&
+               ShouldFireToast == other.ShouldFireToast &&
+               ToastStyle == other.ToastStyle;
+    }
 }

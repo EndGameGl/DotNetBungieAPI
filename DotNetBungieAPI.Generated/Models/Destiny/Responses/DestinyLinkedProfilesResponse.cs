@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Responses;
 /// <para />
 ///     This contract returns a minimal amount of data about Destiny Accounts that are linked through your Bungie.Net account. We will not return accounts in this response whose
 /// </summary>
-public class DestinyLinkedProfilesResponse
+public class DestinyLinkedProfilesResponse : IDeepEquatable<DestinyLinkedProfilesResponse>
 {
     /// <summary>
     ///     Any Destiny account for whom we could successfully pull characters will be returned here, as the Platform-level summary of user data. (no character data, no Destiny account data other than the Membership ID and Type so you can make further queries)
@@ -26,4 +26,12 @@ public class DestinyLinkedProfilesResponse
     /// </summary>
     [JsonPropertyName("profilesWithErrors")]
     public List<Destiny.Responses.DestinyErrorProfile> ProfilesWithErrors { get; set; }
+
+    public bool DeepEquals(DestinyLinkedProfilesResponse? other)
+    {
+        return other is not null &&
+               Profiles.DeepEqualsList(other.Profiles) &&
+               (BnetMembership is not null ? BnetMembership.DeepEquals(other.BnetMembership) : other.BnetMembership is null) &&
+               ProfilesWithErrors.DeepEqualsList(other.ProfilesWithErrors);
+    }
 }

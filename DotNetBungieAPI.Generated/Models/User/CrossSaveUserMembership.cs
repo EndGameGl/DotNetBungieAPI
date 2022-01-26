@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.User;
 /// <summary>
 ///     Very basic info about a user as returned by the Account server, but including CrossSave information. Do NOT use as a request contract.
 /// </summary>
-public class CrossSaveUserMembership
+public class CrossSaveUserMembership : IDeepEquatable<CrossSaveUserMembership>
 {
     /// <summary>
     ///     If there is a cross save override in effect, this value will tell you the type that is overridding this one.
@@ -54,4 +54,17 @@ public class CrossSaveUserMembership
     /// </summary>
     [JsonPropertyName("bungieGlobalDisplayNameCode")]
     public short? BungieGlobalDisplayNameCode { get; set; }
+
+    public bool DeepEquals(CrossSaveUserMembership? other)
+    {
+        return other is not null &&
+               CrossSaveOverride == other.CrossSaveOverride &&
+               ApplicableMembershipTypes.DeepEqualsListNaive(other.ApplicableMembershipTypes) &&
+               IsPublic == other.IsPublic &&
+               MembershipType == other.MembershipType &&
+               MembershipId == other.MembershipId &&
+               DisplayName == other.DisplayName &&
+               BungieGlobalDisplayName == other.BungieGlobalDisplayName &&
+               BungieGlobalDisplayNameCode == other.BungieGlobalDisplayNameCode;
+    }
 }

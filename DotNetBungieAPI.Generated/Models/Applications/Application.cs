@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Applications;
 
-public class Application
+public class Application : IDeepEquatable<Application>
 {
     /// <summary>
     ///     Unique ID assigned to the application
@@ -73,4 +73,21 @@ public class Application
     /// </summary>
     [JsonPropertyName("overrideAuthorizeViewName")]
     public string OverrideAuthorizeViewName { get; set; }
+
+    public bool DeepEquals(Application? other)
+    {
+        return other is not null &&
+               ApplicationId == other.ApplicationId &&
+               Name == other.Name &&
+               RedirectUrl == other.RedirectUrl &&
+               Link == other.Link &&
+               Scope == other.Scope &&
+               Origin == other.Origin &&
+               Status == other.Status &&
+               CreationDate == other.CreationDate &&
+               StatusChanged == other.StatusChanged &&
+               FirstPublished == other.FirstPublished &&
+               Team.DeepEqualsList(other.Team) &&
+               OverrideAuthorizeViewName == other.OverrideAuthorizeViewName;
+    }
 }

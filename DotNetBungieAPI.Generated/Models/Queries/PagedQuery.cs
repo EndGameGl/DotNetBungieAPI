@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Queries;
 
-public class PagedQuery
+public class PagedQuery : IDeepEquatable<PagedQuery>
 {
     [JsonPropertyName("itemsPerPage")]
     public int ItemsPerPage { get; set; }
@@ -10,4 +10,12 @@ public class PagedQuery
 
     [JsonPropertyName("requestContinuationToken")]
     public string RequestContinuationToken { get; set; }
+
+    public bool DeepEquals(PagedQuery? other)
+    {
+        return other is not null &&
+               ItemsPerPage == other.ItemsPerPage &&
+               CurrentPage == other.CurrentPage &&
+               RequestContinuationToken == other.RequestContinuationToken;
+    }
 }

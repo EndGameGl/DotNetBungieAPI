@@ -9,7 +9,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Sockets;
 /// <para />
 ///      DisplayProperties, in particular, will no longer be guaranteed to contain valid information. We will make a best effort to guess what ought to be populated there where possible, but it will be invalid for many/most plug sets.
 /// </summary>
-public class DestinyPlugSetDefinition
+public class DestinyPlugSetDefinition : IDeepEquatable<DestinyPlugSetDefinition>
 {
     /// <summary>
     ///     If you want to show these plugs in isolation, these are the display properties for them.
@@ -52,4 +52,15 @@ public class DestinyPlugSetDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyPlugSetDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               ReusablePlugItems.DeepEqualsList(other.ReusablePlugItems) &&
+               IsFakePlugSet == other.IsFakePlugSet &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

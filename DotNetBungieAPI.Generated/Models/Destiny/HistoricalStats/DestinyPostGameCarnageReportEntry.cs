@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public class DestinyPostGameCarnageReportEntry
+public class DestinyPostGameCarnageReportEntry : IDeepEquatable<DestinyPostGameCarnageReportEntry>
 {
     /// <summary>
     ///     Standing of the player
@@ -37,4 +37,15 @@ public class DestinyPostGameCarnageReportEntry
     /// </summary>
     [JsonPropertyName("extended")]
     public Destiny.HistoricalStats.DestinyPostGameCarnageReportExtendedData Extended { get; set; }
+
+    public bool DeepEquals(DestinyPostGameCarnageReportEntry? other)
+    {
+        return other is not null &&
+               Standing == other.Standing &&
+               (Score is not null ? Score.DeepEquals(other.Score) : other.Score is null) &&
+               (Player is not null ? Player.DeepEquals(other.Player) : other.Player is null) &&
+               CharacterId == other.CharacterId &&
+               Values.DeepEqualsDictionary(other.Values) &&
+               (Extended is not null ? Extended.DeepEquals(other.Extended) : other.Extended is null);
+    }
 }

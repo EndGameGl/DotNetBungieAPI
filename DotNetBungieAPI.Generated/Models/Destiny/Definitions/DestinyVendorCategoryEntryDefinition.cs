@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     This is the definition for a single Vendor Category, into which Sale Items are grouped.
 /// </summary>
-public class DestinyVendorCategoryEntryDefinition
+public class DestinyVendorCategoryEntryDefinition : IDeepEquatable<DestinyVendorCategoryEntryDefinition>
 {
     /// <summary>
     ///     The index of the category in the original category definitions for the vendor.
@@ -94,4 +94,25 @@ public class DestinyVendorCategoryEntryDefinition
 
     [JsonPropertyName("resetOffsetMinutesOverride")]
     public int ResetOffsetMinutesOverride { get; set; }
+
+    public bool DeepEquals(DestinyVendorCategoryEntryDefinition? other)
+    {
+        return other is not null &&
+               CategoryIndex == other.CategoryIndex &&
+               SortValue == other.SortValue &&
+               CategoryHash == other.CategoryHash &&
+               QuantityAvailable == other.QuantityAvailable &&
+               ShowUnavailableItems == other.ShowUnavailableItems &&
+               HideIfNoCurrency == other.HideIfNoCurrency &&
+               HideFromRegularPurchase == other.HideFromRegularPurchase &&
+               BuyStringOverride == other.BuyStringOverride &&
+               DisabledDescription == other.DisabledDescription &&
+               DisplayTitle == other.DisplayTitle &&
+               (Overlay is not null ? Overlay.DeepEquals(other.Overlay) : other.Overlay is null) &&
+               VendorItemIndexes.DeepEqualsListNaive(other.VendorItemIndexes) &&
+               IsPreview == other.IsPreview &&
+               IsDisplayOnly == other.IsDisplayOnly &&
+               ResetIntervalMinutesOverride == other.ResetIntervalMinutesOverride &&
+               ResetOffsetMinutesOverride == other.ResetOffsetMinutesOverride;
+    }
 }

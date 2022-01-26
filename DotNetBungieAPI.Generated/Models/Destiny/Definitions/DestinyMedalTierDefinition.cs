@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Unfortunately, we haven't had time to do this evaluation yet in Destiny 2, so we're short on Medal Tiers. This will hopefully be updated over time, if Medals continue to exist.
 /// </summary>
-public class DestinyMedalTierDefinition
+public class DestinyMedalTierDefinition : IDeepEquatable<DestinyMedalTierDefinition>
 {
     /// <summary>
     ///     The name of the tier.
@@ -38,4 +38,14 @@ public class DestinyMedalTierDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyMedalTierDefinition? other)
+    {
+        return other is not null &&
+               TierName == other.TierName &&
+               Order == other.Order &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

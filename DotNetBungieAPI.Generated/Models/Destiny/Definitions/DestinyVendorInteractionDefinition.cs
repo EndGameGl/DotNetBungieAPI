@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     A Vendor Interaction is a dialog shown by the vendor other than sale items or transfer screens. The vendor is showing you something, and asking you to reply to it by choosing an option or reward.
 /// </summary>
-public class DestinyVendorInteractionDefinition
+public class DestinyVendorInteractionDefinition : IDeepEquatable<DestinyVendorInteractionDefinition>
 {
     /// <summary>
     ///     The position of this interaction in its parent array. Note that this is NOT content agnostic, and should not be used as such.
@@ -82,4 +82,22 @@ public class DestinyVendorInteractionDefinition
     /// </summary>
     [JsonPropertyName("instructions")]
     public string Instructions { get; set; }
+
+    public bool DeepEquals(DestinyVendorInteractionDefinition? other)
+    {
+        return other is not null &&
+               InteractionIndex == other.InteractionIndex &&
+               Replies.DeepEqualsList(other.Replies) &&
+               VendorCategoryIndex == other.VendorCategoryIndex &&
+               QuestlineItemHash == other.QuestlineItemHash &&
+               SackInteractionList.DeepEqualsList(other.SackInteractionList) &&
+               UiInteractionType == other.UiInteractionType &&
+               InteractionType == other.InteractionType &&
+               RewardBlockLabel == other.RewardBlockLabel &&
+               RewardVendorCategoryIndex == other.RewardVendorCategoryIndex &&
+               FlavorLineOne == other.FlavorLineOne &&
+               FlavorLineTwo == other.FlavorLineTwo &&
+               (HeaderDisplayProperties is not null ? HeaderDisplayProperties.DeepEquals(other.HeaderDisplayProperties) : other.HeaderDisplayProperties is null) &&
+               Instructions == other.Instructions;
+    }
 }

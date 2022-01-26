@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Advanced;
 
-public class AwaInitializeResponse
+public class AwaInitializeResponse : IDeepEquatable<AwaInitializeResponse>
 {
     /// <summary>
     ///     ID used to get the token. Present this ID to the user as it will identify this specific request on their device.
@@ -13,4 +13,11 @@ public class AwaInitializeResponse
     /// </summary>
     [JsonPropertyName("sentToSelf")]
     public bool SentToSelf { get; set; }
+
+    public bool DeepEquals(AwaInitializeResponse? other)
+    {
+        return other is not null &&
+               CorrelationId == other.CorrelationId &&
+               SentToSelf == other.SentToSelf;
+    }
 }

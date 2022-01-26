@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Data about an item's "sources": ways that the item can be obtained.
 /// </summary>
-public class DestinyItemSourceBlockDefinition
+public class DestinyItemSourceBlockDefinition : IDeepEquatable<DestinyItemSourceBlockDefinition>
 {
     /// <summary>
     ///     The list of hash identifiers for Reward Sources that hint where the item can be found (DestinyRewardSourceDefinition).
@@ -28,4 +28,13 @@ public class DestinyItemSourceBlockDefinition
     /// </summary>
     [JsonPropertyName("vendorSources")]
     public List<Destiny.Definitions.DestinyItemVendorSourceReference> VendorSources { get; set; }
+
+    public bool DeepEquals(DestinyItemSourceBlockDefinition? other)
+    {
+        return other is not null &&
+               SourceHashes.DeepEqualsListNaive(other.SourceHashes) &&
+               Sources.DeepEqualsList(other.Sources) &&
+               Exclusive == other.Exclusive &&
+               VendorSources.DeepEqualsList(other.VendorSources);
+    }
 }

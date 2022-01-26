@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.User;
 
-public class HardLinkedUserMembership
+public class HardLinkedUserMembership : IDeepEquatable<HardLinkedUserMembership>
 {
     [JsonPropertyName("membershipType")]
     public BungieMembershipType MembershipType { get; set; }
@@ -13,4 +13,13 @@ public class HardLinkedUserMembership
 
     [JsonPropertyName("CrossSaveOverriddenMembershipId")]
     public long? CrossSaveOverriddenMembershipId { get; set; }
+
+    public bool DeepEquals(HardLinkedUserMembership? other)
+    {
+        return other is not null &&
+               MembershipType == other.MembershipType &&
+               MembershipId == other.MembershipId &&
+               CrossSaveOverriddenType == other.CrossSaveOverriddenType &&
+               CrossSaveOverriddenMembershipId == other.CrossSaveOverriddenMembershipId;
+    }
 }

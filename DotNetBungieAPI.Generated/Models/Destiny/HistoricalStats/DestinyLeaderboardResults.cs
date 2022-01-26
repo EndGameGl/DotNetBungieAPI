@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public class DestinyLeaderboardResults
+public class DestinyLeaderboardResults : IDeepEquatable<DestinyLeaderboardResults>
 {
     /// <summary>
     ///     Indicate the membership ID of the account that is the focal point of the provided leaderboards.
@@ -13,4 +13,11 @@ public class DestinyLeaderboardResults
     /// </summary>
     [JsonPropertyName("focusCharacterId")]
     public long? FocusCharacterId { get; set; }
+
+    public bool DeepEquals(DestinyLeaderboardResults? other)
+    {
+        return other is not null &&
+               FocusMembershipId == other.FocusMembershipId &&
+               FocusCharacterId == other.FocusCharacterId;
+    }
 }

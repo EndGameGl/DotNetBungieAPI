@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 /// <summary>
 ///     Represents whatever information we can return about an explicit phase in an activity. In the future, I hope we'll have more than just "guh, you done gone and did something," but for the forseeable future that's all we've got. I'm making it more than just a list of booleans out of that overly-optimistic hope.
 /// </summary>
-public class DestinyMilestoneActivityPhase
+public class DestinyMilestoneActivityPhase : IDeepEquatable<DestinyMilestoneActivityPhase>
 {
     /// <summary>
     ///     Indicates if the phase has been completed.
@@ -16,4 +16,11 @@ public class DestinyMilestoneActivityPhase
     /// </summary>
     [JsonPropertyName("phaseHash")]
     public uint PhaseHash { get; set; }
+
+    public bool DeepEquals(DestinyMilestoneActivityPhase? other)
+    {
+        return other is not null &&
+               Complete == other.Complete &&
+               PhaseHash == other.PhaseHash;
+    }
 }

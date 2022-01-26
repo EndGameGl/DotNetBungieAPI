@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Defines a Character Class in Destiny 2. These are types of characters you can play, like Titan, Warlock, and Hunter.
 /// </summary>
-public class DestinyClassDefinition
+public class DestinyClassDefinition : IDeepEquatable<DestinyClassDefinition>
 {
     /// <summary>
     ///     In Destiny 1, we added a convenience Enumeration for referring to classes. We've kept it, though mostly for posterity. This is the enum value for this definition's class.
@@ -48,4 +48,17 @@ public class DestinyClassDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyClassDefinition? other)
+    {
+        return other is not null &&
+               ClassType == other.ClassType &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               GenderedClassNames.DeepEqualsDictionaryNaive(other.GenderedClassNames) &&
+               GenderedClassNamesByGenderHash.DeepEqualsDictionaryNaive(other.GenderedClassNamesByGenderHash) &&
+               MentorVendorHash == other.MentorVendorHash &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Social.Friends;
 
-public class BungieFriend
+public class BungieFriend : IDeepEquatable<BungieFriend>
 {
     [JsonPropertyName("lastSeenAsMembershipId")]
     public long LastSeenAsMembershipId { get; set; }
@@ -25,4 +25,17 @@ public class BungieFriend
 
     [JsonPropertyName("bungieNetUser")]
     public User.GeneralUser BungieNetUser { get; set; }
+
+    public bool DeepEquals(BungieFriend? other)
+    {
+        return other is not null &&
+               LastSeenAsMembershipId == other.LastSeenAsMembershipId &&
+               LastSeenAsBungieMembershipType == other.LastSeenAsBungieMembershipType &&
+               BungieGlobalDisplayName == other.BungieGlobalDisplayName &&
+               BungieGlobalDisplayNameCode == other.BungieGlobalDisplayNameCode &&
+               OnlineStatus == other.OnlineStatus &&
+               OnlineTitle == other.OnlineTitle &&
+               Relationship == other.Relationship &&
+               (BungieNetUser is not null ? BungieNetUser.DeepEquals(other.BungieNetUser) : other.BungieNetUser is null);
+    }
 }

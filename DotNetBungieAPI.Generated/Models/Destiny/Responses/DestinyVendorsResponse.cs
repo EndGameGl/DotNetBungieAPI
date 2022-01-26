@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Responses;
 /// <summary>
 ///     A response containing all of the components for all requested vendors.
 /// </summary>
-public class DestinyVendorsResponse
+public class DestinyVendorsResponse : IDeepEquatable<DestinyVendorsResponse>
 {
     /// <summary>
     ///     For Vendors being returned, this will give you the information you need to group them and order them in the same way that the Bungie Companion app performs grouping. It will automatically be returned if you request the Vendors component.
@@ -62,4 +62,16 @@ public class DestinyVendorsResponse
     /// </summary>
     [JsonPropertyName("stringVariables")]
     public SingleComponentResponseOfDestinyStringVariablesComponent StringVariables { get; set; }
+
+    public bool DeepEquals(DestinyVendorsResponse? other)
+    {
+        return other is not null &&
+               (VendorGroups is not null ? VendorGroups.DeepEquals(other.VendorGroups) : other.VendorGroups is null) &&
+               (Vendors is not null ? Vendors.DeepEquals(other.Vendors) : other.Vendors is null) &&
+               (Categories is not null ? Categories.DeepEquals(other.Categories) : other.Categories is null) &&
+               (Sales is not null ? Sales.DeepEquals(other.Sales) : other.Sales is null) &&
+               ItemComponents.DeepEqualsDictionary(other.ItemComponents) &&
+               (CurrencyLookups is not null ? CurrencyLookups.DeepEquals(other.CurrencyLookups) : other.CurrencyLookups is null) &&
+               (StringVariables is not null ? StringVariables.DeepEquals(other.StringVariables) : other.StringVariables is null);
+    }
 }

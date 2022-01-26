@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Items;
 /// <para />
 ///     If I had it to do over, this would probably have a DestinyItemPlug representing the inserted item instead of most of these properties. :shrug:
 /// </summary>
-public class DestinyItemSocketState
+public class DestinyItemSocketState : IDeepEquatable<DestinyItemSocketState>
 {
     /// <summary>
     ///     The currently active plug, if any.
@@ -36,4 +36,13 @@ public class DestinyItemSocketState
     /// </summary>
     [JsonPropertyName("enableFailIndexes")]
     public List<int> EnableFailIndexes { get; set; }
+
+    public bool DeepEquals(DestinyItemSocketState? other)
+    {
+        return other is not null &&
+               PlugHash == other.PlugHash &&
+               IsEnabled == other.IsEnabled &&
+               IsVisible == other.IsVisible &&
+               EnableFailIndexes.DeepEqualsListNaive(other.EnableFailIndexes);
+    }
 }

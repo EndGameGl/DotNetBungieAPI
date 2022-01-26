@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.User.Models;
 
-public class GetCredentialTypesForAccountResponse
+public class GetCredentialTypesForAccountResponse : IDeepEquatable<GetCredentialTypesForAccountResponse>
 {
     [JsonPropertyName("credentialType")]
     public BungieCredentialType CredentialType { get; set; }
@@ -13,4 +13,13 @@ public class GetCredentialTypesForAccountResponse
 
     [JsonPropertyName("credentialAsString")]
     public string CredentialAsString { get; set; }
+
+    public bool DeepEquals(GetCredentialTypesForAccountResponse? other)
+    {
+        return other is not null &&
+               CredentialType == other.CredentialType &&
+               CredentialDisplayName == other.CredentialDisplayName &&
+               IsPublic == other.IsPublic &&
+               CredentialAsString == other.CredentialAsString;
+    }
 }

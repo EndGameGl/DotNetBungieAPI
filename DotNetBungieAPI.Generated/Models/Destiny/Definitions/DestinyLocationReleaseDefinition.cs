@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     A specific "spot" referred to by a location. Only one of these can be active at a time for a given Location.
 /// </summary>
-public class DestinyLocationReleaseDefinition
+public class DestinyLocationReleaseDefinition : IDeepEquatable<DestinyLocationReleaseDefinition>
 {
     /// <summary>
     ///     Sadly, these don't appear to be populated anymore (ever?)
@@ -79,4 +79,23 @@ public class DestinyLocationReleaseDefinition
     /// </summary>
     [JsonPropertyName("worldPosition")]
     public List<int> WorldPosition { get; set; }
+
+    public bool DeepEquals(DestinyLocationReleaseDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               SmallTransparentIcon == other.SmallTransparentIcon &&
+               MapIcon == other.MapIcon &&
+               LargeTransparentIcon == other.LargeTransparentIcon &&
+               SpawnPoint == other.SpawnPoint &&
+               DestinationHash == other.DestinationHash &&
+               ActivityHash == other.ActivityHash &&
+               ActivityGraphHash == other.ActivityGraphHash &&
+               ActivityGraphNodeHash == other.ActivityGraphNodeHash &&
+               ActivityBubbleName == other.ActivityBubbleName &&
+               ActivityPathBundle == other.ActivityPathBundle &&
+               ActivityPathDestination == other.ActivityPathDestination &&
+               NavPointType == other.NavPointType &&
+               WorldPosition.DeepEqualsListNaive(other.WorldPosition);
+    }
 }

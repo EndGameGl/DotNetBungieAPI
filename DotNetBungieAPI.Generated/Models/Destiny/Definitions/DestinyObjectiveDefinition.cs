@@ -15,7 +15,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Objectives have progress, a notion of having been Completed, human readable data describing the task to be accomplished, and a lot of optional tack-on data that can enhance the information provided about the task.
 /// </summary>
-public class DestinyObjectiveDefinition
+public class DestinyObjectiveDefinition : IDeepEquatable<DestinyObjectiveDefinition>
 {
     /// <summary>
     ///     Ideally, this should tell you what your task is. I'm not going to lie to you though. Sometimes this doesn't have useful information at all. Which sucks, but there's nothing either of us can do about it.
@@ -136,4 +136,28 @@ public class DestinyObjectiveDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyObjectiveDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               CompletionValue == other.CompletionValue &&
+               Scope == other.Scope &&
+               LocationHash == other.LocationHash &&
+               AllowNegativeValue == other.AllowNegativeValue &&
+               AllowValueChangeWhenCompleted == other.AllowValueChangeWhenCompleted &&
+               IsCountingDownward == other.IsCountingDownward &&
+               ValueStyle == other.ValueStyle &&
+               ProgressDescription == other.ProgressDescription &&
+               (Perks is not null ? Perks.DeepEquals(other.Perks) : other.Perks is null) &&
+               (Stats is not null ? Stats.DeepEquals(other.Stats) : other.Stats is null) &&
+               MinimumVisibilityThreshold == other.MinimumVisibilityThreshold &&
+               AllowOvercompletion == other.AllowOvercompletion &&
+               ShowValueOnComplete == other.ShowValueOnComplete &&
+               CompletedValueStyle == other.CompletedValueStyle &&
+               InProgressValueStyle == other.InProgressValueStyle &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

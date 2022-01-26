@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public class DestinyHistoricalStatsValuePair
+public class DestinyHistoricalStatsValuePair : IDeepEquatable<DestinyHistoricalStatsValuePair>
 {
     /// <summary>
     ///     Raw value of the statistic
@@ -13,4 +13,11 @@ public class DestinyHistoricalStatsValuePair
     /// </summary>
     [JsonPropertyName("displayValue")]
     public string DisplayValue { get; set; }
+
+    public bool DeepEquals(DestinyHistoricalStatsValuePair? other)
+    {
+        return other is not null &&
+               Value == other.Value &&
+               DisplayValue == other.DisplayValue;
+    }
 }

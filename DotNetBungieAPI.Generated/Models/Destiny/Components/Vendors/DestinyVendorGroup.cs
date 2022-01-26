@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Vendors;
 /// <para />
 ///     How do we figure out this order? It's a long story, and will likely get more complicated over time.
 /// </summary>
-public class DestinyVendorGroup
+public class DestinyVendorGroup : IDeepEquatable<DestinyVendorGroup>
 {
     [JsonPropertyName("vendorGroupHash")]
     public uint VendorGroupHash { get; set; }
@@ -15,4 +15,11 @@ public class DestinyVendorGroup
     /// </summary>
     [JsonPropertyName("vendorHashes")]
     public List<uint> VendorHashes { get; set; }
+
+    public bool DeepEquals(DestinyVendorGroup? other)
+    {
+        return other is not null &&
+               VendorGroupHash == other.VendorGroupHash &&
+               VendorHashes.DeepEqualsListNaive(other.VendorHashes);
+    }
 }

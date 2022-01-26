@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public class GroupResponse
+public class GroupResponse : IDeepEquatable<GroupResponse>
 {
     [JsonPropertyName("detail")]
     public GroupsV2.GroupV2 Detail { get; set; }
@@ -37,4 +37,18 @@ public class GroupResponse
     /// </summary>
     [JsonPropertyName("currentUserPotentialMemberMap")]
     public Dictionary<BungieMembershipType, GroupsV2.GroupPotentialMember> CurrentUserPotentialMemberMap { get; set; }
+
+    public bool DeepEquals(GroupResponse? other)
+    {
+        return other is not null &&
+               (Detail is not null ? Detail.DeepEquals(other.Detail) : other.Detail is null) &&
+               (Founder is not null ? Founder.DeepEquals(other.Founder) : other.Founder is null) &&
+               AlliedIds.DeepEqualsListNaive(other.AlliedIds) &&
+               (ParentGroup is not null ? ParentGroup.DeepEquals(other.ParentGroup) : other.ParentGroup is null) &&
+               AllianceStatus == other.AllianceStatus &&
+               GroupJoinInviteCount == other.GroupJoinInviteCount &&
+               CurrentUserMembershipsInactiveForDestiny == other.CurrentUserMembershipsInactiveForDestiny &&
+               CurrentUserMemberMap.DeepEqualsDictionary(other.CurrentUserMemberMap) &&
+               CurrentUserPotentialMemberMap.DeepEqualsDictionary(other.CurrentUserPotentialMemberMap);
+    }
 }

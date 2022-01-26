@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 
-public class DestinyObjectiveDisplayProperties
+public class DestinyObjectiveDisplayProperties : IDeepEquatable<DestinyObjectiveDisplayProperties>
 {
     /// <summary>
     ///     The activity associated with this objective in the context of this item, if any.
@@ -13,4 +13,11 @@ public class DestinyObjectiveDisplayProperties
     /// </summary>
     [JsonPropertyName("displayOnItemPreviewScreen")]
     public bool DisplayOnItemPreviewScreen { get; set; }
+
+    public bool DeepEquals(DestinyObjectiveDisplayProperties? other)
+    {
+        return other is not null &&
+               ActivityHash == other.ActivityHash &&
+               DisplayOnItemPreviewScreen == other.DisplayOnItemPreviewScreen;
+    }
 }

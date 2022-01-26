@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Not guaranteed to match real-world instances of the item, but should hopefully at least be close. If it's not close, let us know on the Bungie API forums.
 /// </summary>
-public class DestinyInventoryItemStatDefinition
+public class DestinyInventoryItemStatDefinition : IDeepEquatable<DestinyInventoryItemStatDefinition>
 {
     /// <summary>
     ///     The hash for the DestinyStatDefinition representing this stat.
@@ -46,4 +46,14 @@ public class DestinyInventoryItemStatDefinition
     /// </summary>
     [JsonPropertyName("displayMaximum")]
     public int? DisplayMaximum { get; set; }
+
+    public bool DeepEquals(DestinyInventoryItemStatDefinition? other)
+    {
+        return other is not null &&
+               StatHash == other.StatHash &&
+               Value == other.Value &&
+               Minimum == other.Minimum &&
+               Maximum == other.Maximum &&
+               DisplayMaximum == other.DisplayMaximum;
+    }
 }

@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Many actions relating to items require you to expend materials: - Activating a talent node - Inserting a plug into a socket The items will refer to material requirements by a materialRequirementsHash in these cases, and this is the definition for those requirements in terms of the item required, how much of it is required and other interesting info. This is one of the rare/strange times where a single contract class is used both in definitions *and* in live data response contracts. I'm not sure yet whether I regret that.
 /// </summary>
-public class DestinyMaterialRequirement
+public class DestinyMaterialRequirement : IDeepEquatable<DestinyMaterialRequirement>
 {
     /// <summary>
     ///     The hash identifier of the material required. Use it to look up the material's DestinyInventoryItemDefinition.
@@ -28,4 +28,13 @@ public class DestinyMaterialRequirement
     /// </summary>
     [JsonPropertyName("omitFromRequirements")]
     public bool OmitFromRequirements { get; set; }
+
+    public bool DeepEquals(DestinyMaterialRequirement? other)
+    {
+        return other is not null &&
+               ItemHash == other.ItemHash &&
+               DeleteOnAction == other.DeleteOnAction &&
+               Count == other.Count &&
+               OmitFromRequirements == other.OmitFromRequirements;
+    }
 }

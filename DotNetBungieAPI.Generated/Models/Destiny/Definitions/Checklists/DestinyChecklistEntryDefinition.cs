@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Checklists;
 /// <para />
 ///     Whatever UI you build, do it with the knowledge that any given entry might not actually be able to be associated with some other Destiny entity.
 /// </summary>
-public class DestinyChecklistEntryDefinition
+public class DestinyChecklistEntryDefinition : IDeepEquatable<DestinyChecklistEntryDefinition>
 {
     /// <summary>
     ///     The identifier for this Checklist entry. Guaranteed unique only within this Checklist Definition, and not globally/for all checklists.
@@ -50,4 +50,19 @@ public class DestinyChecklistEntryDefinition
     /// </summary>
     [JsonPropertyName("scope")]
     public Destiny.DestinyScope Scope { get; set; }
+
+    public bool DeepEquals(DestinyChecklistEntryDefinition? other)
+    {
+        return other is not null &&
+               Hash == other.Hash &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               DestinationHash == other.DestinationHash &&
+               LocationHash == other.LocationHash &&
+               BubbleHash == other.BubbleHash &&
+               ActivityHash == other.ActivityHash &&
+               ItemHash == other.ItemHash &&
+               VendorHash == other.VendorHash &&
+               VendorInteractionIndex == other.VendorInteractionIndex &&
+               Scope == other.Scope;
+    }
 }

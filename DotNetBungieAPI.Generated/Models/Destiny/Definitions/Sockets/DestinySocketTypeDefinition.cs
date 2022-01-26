@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Sockets;
 /// <para />
 ///     See DestinyInventoryItemDefinition for more information about Socketed items and Plugs.
 /// </summary>
-public class DestinySocketTypeDefinition
+public class DestinySocketTypeDefinition : IDeepEquatable<DestinySocketTypeDefinition>
 {
     /// <summary>
     ///     There are fields for this display data, but they appear to be unpopulated as of now. I am not sure where in the UI these would show if they even were populated, but I will continue to return this data in case it becomes useful.
@@ -78,4 +78,23 @@ public class DestinySocketTypeDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinySocketTypeDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               (InsertAction is not null ? InsertAction.DeepEquals(other.InsertAction) : other.InsertAction is null) &&
+               PlugWhitelist.DeepEqualsList(other.PlugWhitelist) &&
+               SocketCategoryHash == other.SocketCategoryHash &&
+               Visibility == other.Visibility &&
+               AlwaysRandomizeSockets == other.AlwaysRandomizeSockets &&
+               IsPreviewEnabled == other.IsPreviewEnabled &&
+               HideDuplicateReusablePlugs == other.HideDuplicateReusablePlugs &&
+               OverridesUiAppearance == other.OverridesUiAppearance &&
+               AvoidDuplicatesOnInitialization == other.AvoidDuplicatesOnInitialization &&
+               CurrencyScalars.DeepEqualsList(other.CurrencyScalars) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Sockets;
 /// <para />
 ///     This should be compared against a given plug item's DestinyInventoryItemDefinition.plug.plugCategoryHash, which indicates the plug item's category.
 /// </summary>
-public class DestinyPlugWhitelistEntryDefinition
+public class DestinyPlugWhitelistEntryDefinition : IDeepEquatable<DestinyPlugWhitelistEntryDefinition>
 {
     /// <summary>
     ///     The hash identifier of the Plug Category to compare against the plug item's plug.plugCategoryHash.
@@ -34,4 +34,12 @@ public class DestinyPlugWhitelistEntryDefinition
     /// </summary>
     [JsonPropertyName("reinitializationPossiblePlugHashes")]
     public List<uint> ReinitializationPossiblePlugHashes { get; set; }
+
+    public bool DeepEquals(DestinyPlugWhitelistEntryDefinition? other)
+    {
+        return other is not null &&
+               CategoryHash == other.CategoryHash &&
+               CategoryIdentifier == other.CategoryIdentifier &&
+               ReinitializationPossiblePlugHashes.DeepEqualsListNaive(other.ReinitializationPossiblePlugHashes);
+    }
 }

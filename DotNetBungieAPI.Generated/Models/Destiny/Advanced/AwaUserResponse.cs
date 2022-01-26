@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Advanced;
 
-public class AwaUserResponse
+public class AwaUserResponse : IDeepEquatable<AwaUserResponse>
 {
     /// <summary>
     ///     Indication of the selection the user has made (Approving or rejecting the action)
@@ -19,4 +19,12 @@ public class AwaUserResponse
     /// </summary>
     [JsonPropertyName("nonce")]
     public List<string> Nonce { get; set; }
+
+    public bool DeepEquals(AwaUserResponse? other)
+    {
+        return other is not null &&
+               Selection == other.Selection &&
+               CorrelationId == other.CorrelationId &&
+               Nonce.DeepEqualsListNaive(other.Nonce);
+    }
 }

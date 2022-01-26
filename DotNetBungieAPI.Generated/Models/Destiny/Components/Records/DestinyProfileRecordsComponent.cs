@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Records;
 
-public class DestinyProfileRecordsComponent
+public class DestinyProfileRecordsComponent : IDeepEquatable<DestinyProfileRecordsComponent>
 {
     /// <summary>
     ///     Your 'active' Triumphs score, maintained for backwards compatibility.
@@ -46,4 +46,17 @@ public class DestinyProfileRecordsComponent
     /// </summary>
     [JsonPropertyName("recordSealsRootNodeHash")]
     public uint RecordSealsRootNodeHash { get; set; }
+
+    public bool DeepEquals(DestinyProfileRecordsComponent? other)
+    {
+        return other is not null &&
+               Score == other.Score &&
+               ActiveScore == other.ActiveScore &&
+               LegacyScore == other.LegacyScore &&
+               LifetimeScore == other.LifetimeScore &&
+               TrackedRecordHash == other.TrackedRecordHash &&
+               Records.DeepEqualsDictionary(other.Records) &&
+               RecordCategoriesRootNodeHash == other.RecordCategoriesRootNodeHash &&
+               RecordSealsRootNodeHash == other.RecordSealsRootNodeHash;
+    }
 }

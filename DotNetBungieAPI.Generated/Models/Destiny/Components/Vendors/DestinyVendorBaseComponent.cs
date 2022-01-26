@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Vendors;
 /// <summary>
 ///     This component contains essential/summary information about the vendor.
 /// </summary>
-public class DestinyVendorBaseComponent
+public class DestinyVendorBaseComponent : IDeepEquatable<DestinyVendorBaseComponent>
 {
     /// <summary>
     ///     The unique identifier for the vendor. Use it to look up their DestinyVendorDefinition.
@@ -28,4 +28,12 @@ public class DestinyVendorBaseComponent
     /// </summary>
     [JsonPropertyName("enabled")]
     public bool Enabled { get; set; }
+
+    public bool DeepEquals(DestinyVendorBaseComponent? other)
+    {
+        return other is not null &&
+               VendorHash == other.VendorHash &&
+               NextRefreshDate == other.NextRefreshDate &&
+               Enabled == other.Enabled;
+    }
 }

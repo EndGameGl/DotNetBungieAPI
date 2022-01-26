@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Traits;
 
-public class DestinyTraitCategoryDefinition
+public class DestinyTraitCategoryDefinition : IDeepEquatable<DestinyTraitCategoryDefinition>
 {
     [JsonPropertyName("traitCategoryId")]
     public string TraitCategoryId { get; set; }
@@ -30,4 +30,15 @@ public class DestinyTraitCategoryDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyTraitCategoryDefinition? other)
+    {
+        return other is not null &&
+               TraitCategoryId == other.TraitCategoryId &&
+               TraitHashes.DeepEqualsListNaive(other.TraitHashes) &&
+               TraitIds.DeepEqualsListNaive(other.TraitIds) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

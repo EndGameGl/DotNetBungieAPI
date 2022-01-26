@@ -7,11 +7,17 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Items;
 /// <para />
 ///     Talent Grids, Sockets, and the item itself can apply Perks, which are then summarized here for your convenience.
 /// </summary>
-public class DestinyItemPerksComponent
+public class DestinyItemPerksComponent : IDeepEquatable<DestinyItemPerksComponent>
 {
     /// <summary>
     ///     The list of perks to display in an item tooltip - and whether or not they have been activated.
     /// </summary>
     [JsonPropertyName("perks")]
     public List<Destiny.Perks.DestinyPerkReference> Perks { get; set; }
+
+    public bool DeepEquals(DestinyItemPerksComponent? other)
+    {
+        return other is not null &&
+               Perks.DeepEqualsList(other.Perks);
+    }
 }

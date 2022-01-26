@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Vendors;
 /// <para />
 ///     Note that if you want instance, stats, etc... data for the item, you'll have to request additional components such as ItemInstances, ItemPerks etc... and acquire them from the DestinyVendorResponse's "items" property.
 /// </summary>
-public class DestinyVendorSaleItemComponent
+public class DestinyVendorSaleItemComponent : IDeepEquatable<DestinyVendorSaleItemComponent>
 {
     /// <summary>
     ///     A flag indicating whether the requesting character can buy the item, and if not the reasons why the character can't buy it.
@@ -98,4 +98,22 @@ public class DestinyVendorSaleItemComponent
     /// </summary>
     [JsonPropertyName("apiPurchasable")]
     public bool? ApiPurchasable { get; set; }
+
+    public bool DeepEquals(DestinyVendorSaleItemComponent? other)
+    {
+        return other is not null &&
+               SaleStatus == other.SaleStatus &&
+               RequiredUnlocks.DeepEqualsListNaive(other.RequiredUnlocks) &&
+               UnlockStatuses.DeepEqualsList(other.UnlockStatuses) &&
+               FailureIndexes.DeepEqualsListNaive(other.FailureIndexes) &&
+               Augments == other.Augments &&
+               ItemValueVisibility.DeepEqualsListNaive(other.ItemValueVisibility) &&
+               VendorItemIndex == other.VendorItemIndex &&
+               ItemHash == other.ItemHash &&
+               OverrideStyleItemHash == other.OverrideStyleItemHash &&
+               Quantity == other.Quantity &&
+               Costs.DeepEqualsList(other.Costs) &&
+               OverrideNextRefreshDate == other.OverrideNextRefreshDate &&
+               ApiPurchasable == other.ApiPurchasable;
+    }
 }

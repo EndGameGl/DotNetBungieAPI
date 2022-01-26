@@ -7,11 +7,17 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Items;
 /// <para />
 ///     Note that some stats have additional computation in-game at runtime - for instance, Magazine Size - and thus these stats might not be 100% accurate compared to what you see in-game for some stats. I know, it sucks. I hate it too.
 /// </summary>
-public class DestinyItemStatsComponent
+public class DestinyItemStatsComponent : IDeepEquatable<DestinyItemStatsComponent>
 {
     /// <summary>
     ///     If the item has stats that it provides (damage, defense, etc...), it will be given here.
     /// </summary>
     [JsonPropertyName("stats")]
     public Dictionary<uint, Destiny.DestinyStat> Stats { get; set; }
+
+    public bool DeepEquals(DestinyItemStatsComponent? other)
+    {
+        return other is not null &&
+               Stats.DeepEqualsDictionary(other.Stats);
+    }
 }

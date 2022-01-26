@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Profiles;
 /// <para />
 ///     This information is provided exclusively for convenience should any of it be useful to users: we provide no guarantees to the accuracy or timeliness of data that comes from this source. Know that this data can potentially be out-of-date or even wrong entirely if the user disconnected from the game or suddenly changed their status before we can receive refreshed data.
 /// </summary>
-public class DestinyProfileTransitoryComponent
+public class DestinyProfileTransitoryComponent : IDeepEquatable<DestinyProfileTransitoryComponent>
 {
     /// <summary>
     ///     If you have any members currently in your party, this is some (very) bare-bones information about those members.
@@ -36,4 +36,14 @@ public class DestinyProfileTransitoryComponent
     /// </summary>
     [JsonPropertyName("lastOrbitedDestinationHash")]
     public uint? LastOrbitedDestinationHash { get; set; }
+
+    public bool DeepEquals(DestinyProfileTransitoryComponent? other)
+    {
+        return other is not null &&
+               PartyMembers.DeepEqualsList(other.PartyMembers) &&
+               (CurrentActivity is not null ? CurrentActivity.DeepEquals(other.CurrentActivity) : other.CurrentActivity is null) &&
+               (Joinability is not null ? Joinability.DeepEquals(other.Joinability) : other.Joinability is null) &&
+               Tracking.DeepEqualsList(other.Tracking) &&
+               LastOrbitedDestinationHash == other.LastOrbitedDestinationHash;
+    }
 }

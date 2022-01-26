@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Sockets;
 /// <summary>
 ///     Data related to what happens while a plug is being inserted, mostly for UI purposes.
 /// </summary>
-public class DestinyInsertPlugActionDefinition
+public class DestinyInsertPlugActionDefinition : IDeepEquatable<DestinyInsertPlugActionDefinition>
 {
     /// <summary>
     ///     How long it takes for the Plugging of the item to be completed once it is initiated, if you care.
@@ -16,4 +16,11 @@ public class DestinyInsertPlugActionDefinition
     /// </summary>
     [JsonPropertyName("actionType")]
     public Destiny.SocketTypeActionType ActionType { get; set; }
+
+    public bool DeepEquals(DestinyInsertPlugActionDefinition? other)
+    {
+        return other is not null &&
+               ActionExecuteSeconds == other.ActionExecuteSeconds &&
+               ActionType == other.ActionType;
+    }
 }

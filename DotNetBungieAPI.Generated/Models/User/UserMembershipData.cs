@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.User;
 
-public class UserMembershipData
+public class UserMembershipData : IDeepEquatable<UserMembershipData>
 {
     /// <summary>
     ///     this allows you to see destiny memberships that are visible and linked to this account (regardless of whether or not they have characters on the world server)
@@ -18,4 +18,12 @@ public class UserMembershipData
 
     [JsonPropertyName("bungieNetUser")]
     public User.GeneralUser BungieNetUser { get; set; }
+
+    public bool DeepEquals(UserMembershipData? other)
+    {
+        return other is not null &&
+               DestinyMemberships.DeepEqualsList(other.DestinyMemberships) &&
+               PrimaryMembershipId == other.PrimaryMembershipId &&
+               (BungieNetUser is not null ? BungieNetUser.DeepEquals(other.BungieNetUser) : other.BungieNetUser is null);
+    }
 }

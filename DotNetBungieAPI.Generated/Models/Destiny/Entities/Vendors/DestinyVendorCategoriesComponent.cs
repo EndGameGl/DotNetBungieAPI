@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Vendors;
 /// <para />
 ///     Note that, since both the category and items are indexes, this data is Content Version dependent. Be sure to check that your content is up to date before using this data. This is an unfortunate, but permanent, limitation of Vendor data.
 /// </summary>
-public class DestinyVendorCategoriesComponent
+public class DestinyVendorCategoriesComponent : IDeepEquatable<DestinyVendorCategoriesComponent>
 {
     /// <summary>
     ///     The list of categories for items that the vendor sells, in rendering order.
@@ -14,4 +14,10 @@ public class DestinyVendorCategoriesComponent
     /// </summary>
     [JsonPropertyName("categories")]
     public List<Destiny.Entities.Vendors.DestinyVendorCategory> Categories { get; set; }
+
+    public bool DeepEquals(DestinyVendorCategoriesComponent? other)
+    {
+        return other is not null &&
+               Categories.DeepEqualsList(other.Categories);
+    }
 }

@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models;
 
-public class GlobalAlert
+public class GlobalAlert : IDeepEquatable<GlobalAlert>
 {
     [JsonPropertyName("AlertKey")]
     public string AlertKey { get; set; }
@@ -22,4 +22,16 @@ public class GlobalAlert
 
     [JsonPropertyName("StreamInfo")]
     public StreamInfo StreamInfo { get; set; }
+
+    public bool DeepEquals(GlobalAlert? other)
+    {
+        return other is not null &&
+               AlertKey == other.AlertKey &&
+               AlertHtml == other.AlertHtml &&
+               AlertTimestamp == other.AlertTimestamp &&
+               AlertLink == other.AlertLink &&
+               AlertLevel == other.AlertLevel &&
+               AlertType == other.AlertType &&
+               (StreamInfo is not null ? StreamInfo.DeepEquals(other.StreamInfo) : other.StreamInfo is null);
+    }
 }

@@ -15,7 +15,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Items;
 /// <para />
 ///     See DestinyTalentGridDefinition for more information. Brace yourself, the water's cold out there in the deep end.
 /// </summary>
-public class DestinyItemTalentGridComponent
+public class DestinyItemTalentGridComponent : IDeepEquatable<DestinyItemTalentGridComponent>
 {
     /// <summary>
     ///     Most items don't have useful talent grids anymore, but Builds in particular still do.
@@ -46,4 +46,13 @@ public class DestinyItemTalentGridComponent
     /// </summary>
     [JsonPropertyName("gridProgression")]
     public Destiny.DestinyProgression GridProgression { get; set; }
+
+    public bool DeepEquals(DestinyItemTalentGridComponent? other)
+    {
+        return other is not null &&
+               TalentGridHash == other.TalentGridHash &&
+               Nodes.DeepEqualsList(other.Nodes) &&
+               IsGridComplete == other.IsGridComplete &&
+               (GridProgression is not null ? GridProgression.DeepEquals(other.GridProgression) : other.GridProgression is null);
+    }
 }

@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public class GroupV2
+public class GroupV2 : IDeepEquatable<GroupV2>
 {
     [JsonPropertyName("groupId")]
     public long GroupId { get; set; }
@@ -85,4 +85,37 @@ public class GroupV2
 
     [JsonPropertyName("clanInfo")]
     public GroupsV2.GroupV2ClanInfoAndInvestment ClanInfo { get; set; }
+
+    public bool DeepEquals(GroupV2? other)
+    {
+        return other is not null &&
+               GroupId == other.GroupId &&
+               Name == other.Name &&
+               GroupType == other.GroupType &&
+               MembershipIdCreated == other.MembershipIdCreated &&
+               CreationDate == other.CreationDate &&
+               ModificationDate == other.ModificationDate &&
+               About == other.About &&
+               Tags.DeepEqualsListNaive(other.Tags) &&
+               MemberCount == other.MemberCount &&
+               IsPublic == other.IsPublic &&
+               IsPublicTopicAdminOnly == other.IsPublicTopicAdminOnly &&
+               Motto == other.Motto &&
+               AllowChat == other.AllowChat &&
+               IsDefaultPostPublic == other.IsDefaultPostPublic &&
+               ChatSecurity == other.ChatSecurity &&
+               Locale == other.Locale &&
+               AvatarImageIndex == other.AvatarImageIndex &&
+               Homepage == other.Homepage &&
+               MembershipOption == other.MembershipOption &&
+               DefaultPublicity == other.DefaultPublicity &&
+               Theme == other.Theme &&
+               BannerPath == other.BannerPath &&
+               AvatarPath == other.AvatarPath &&
+               ConversationId == other.ConversationId &&
+               EnableInvitationMessagingForAdmins == other.EnableInvitationMessagingForAdmins &&
+               BanExpireDate == other.BanExpireDate &&
+               (Features is not null ? Features.DeepEquals(other.Features) : other.Features is null) &&
+               (ClanInfo is not null ? ClanInfo.DeepEquals(other.ClanInfo) : other.ClanInfo is null);
+    }
 }

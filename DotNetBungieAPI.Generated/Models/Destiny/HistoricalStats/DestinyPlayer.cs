@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public class DestinyPlayer
+public class DestinyPlayer : IDeepEquatable<DestinyPlayer>
 {
     /// <summary>
     ///     Details about the player as they are known in game (platform display name, Destiny emblem)
@@ -58,4 +58,20 @@ public class DestinyPlayer
     /// </summary>
     [JsonPropertyName("emblemHash")]
     public uint EmblemHash { get; set; }
+
+    public bool DeepEquals(DestinyPlayer? other)
+    {
+        return other is not null &&
+               (DestinyUserInfo is not null ? DestinyUserInfo.DeepEquals(other.DestinyUserInfo) : other.DestinyUserInfo is null) &&
+               CharacterClass == other.CharacterClass &&
+               ClassHash == other.ClassHash &&
+               RaceHash == other.RaceHash &&
+               GenderHash == other.GenderHash &&
+               CharacterLevel == other.CharacterLevel &&
+               LightLevel == other.LightLevel &&
+               (BungieNetUserInfo is not null ? BungieNetUserInfo.DeepEquals(other.BungieNetUserInfo) : other.BungieNetUserInfo is null) &&
+               ClanName == other.ClanName &&
+               ClanTag == other.ClanTag &&
+               EmblemHash == other.EmblemHash;
+    }
 }

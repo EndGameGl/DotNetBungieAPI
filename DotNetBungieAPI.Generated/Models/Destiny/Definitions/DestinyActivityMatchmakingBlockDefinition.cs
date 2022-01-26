@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Information about matchmaking and party size for the activity.
 /// </summary>
-public class DestinyActivityMatchmakingBlockDefinition
+public class DestinyActivityMatchmakingBlockDefinition : IDeepEquatable<DestinyActivityMatchmakingBlockDefinition>
 {
     /// <summary>
     ///     If TRUE, the activity is matchmade. Otherwise, it requires explicit forming of a party.
@@ -34,4 +34,14 @@ public class DestinyActivityMatchmakingBlockDefinition
     /// </summary>
     [JsonPropertyName("requiresGuardianOath")]
     public bool RequiresGuardianOath { get; set; }
+
+    public bool DeepEquals(DestinyActivityMatchmakingBlockDefinition? other)
+    {
+        return other is not null &&
+               IsMatchmade == other.IsMatchmade &&
+               MinParty == other.MinParty &&
+               MaxParty == other.MaxParty &&
+               MaxPlayers == other.MaxPlayers &&
+               RequiresGuardianOath == other.RequiresGuardianOath;
+    }
 }

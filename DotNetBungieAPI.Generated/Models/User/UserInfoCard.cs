@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.User;
 /// <summary>
 ///     This contract supplies basic information commonly used to display a minimal amount of information about a user. Take care to not add more properties here unless the property applies in all (or at least the majority) of the situations where UserInfoCard is used. Avoid adding game specific or platform specific details here. In cases where UserInfoCard is a subset of the data needed in a contract, use UserInfoCard as a property of other contracts.
 /// </summary>
-public class UserInfoCard
+public class UserInfoCard : IDeepEquatable<UserInfoCard>
 {
     /// <summary>
     ///     A platform specific additional display name - ex: psn Real Name, bnet Unique Name, etc.
@@ -66,4 +66,19 @@ public class UserInfoCard
     /// </summary>
     [JsonPropertyName("bungieGlobalDisplayNameCode")]
     public short? BungieGlobalDisplayNameCode { get; set; }
+
+    public bool DeepEquals(UserInfoCard? other)
+    {
+        return other is not null &&
+               SupplementalDisplayName == other.SupplementalDisplayName &&
+               IconPath == other.IconPath &&
+               CrossSaveOverride == other.CrossSaveOverride &&
+               ApplicableMembershipTypes.DeepEqualsListNaive(other.ApplicableMembershipTypes) &&
+               IsPublic == other.IsPublic &&
+               MembershipType == other.MembershipType &&
+               MembershipId == other.MembershipId &&
+               DisplayName == other.DisplayName &&
+               BungieGlobalDisplayName == other.BungieGlobalDisplayName &&
+               BungieGlobalDisplayNameCode == other.BungieGlobalDisplayNameCode;
+    }
 }

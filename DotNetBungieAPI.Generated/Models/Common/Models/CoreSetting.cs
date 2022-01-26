@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Common.Models;
 
-public class CoreSetting
+public class CoreSetting : IDeepEquatable<CoreSetting>
 {
     [JsonPropertyName("identifier")]
     public string Identifier { get; set; }
@@ -19,4 +19,15 @@ public class CoreSetting
 
     [JsonPropertyName("childSettings")]
     public List<Common.Models.CoreSetting> ChildSettings { get; set; }
+
+    public bool DeepEquals(CoreSetting? other)
+    {
+        return other is not null &&
+               Identifier == other.Identifier &&
+               IsDefault == other.IsDefault &&
+               DisplayName == other.DisplayName &&
+               Summary == other.Summary &&
+               ImagePath == other.ImagePath &&
+               ChildSettings.DeepEqualsList(other.ChildSettings);
+    }
 }

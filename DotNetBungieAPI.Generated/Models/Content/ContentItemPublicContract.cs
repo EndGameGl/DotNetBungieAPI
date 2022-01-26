@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Content;
 
-public class ContentItemPublicContract
+public class ContentItemPublicContract : IDeepEquatable<ContentItemPublicContract>
 {
     [JsonPropertyName("contentId")]
     public long ContentId { get; set; }
@@ -54,4 +54,24 @@ public class ContentItemPublicContract
 
     [JsonPropertyName("commentSummary")]
     public Content.CommentSummary CommentSummary { get; set; }
+
+    public bool DeepEquals(ContentItemPublicContract? other)
+    {
+        return other is not null &&
+               ContentId == other.ContentId &&
+               CType == other.CType &&
+               CmsPath == other.CmsPath &&
+               CreationDate == other.CreationDate &&
+               ModifyDate == other.ModifyDate &&
+               AllowComments == other.AllowComments &&
+               HasAgeGate == other.HasAgeGate &&
+               MinimumAge == other.MinimumAge &&
+               RatingImagePath == other.RatingImagePath &&
+               (Author is not null ? Author.DeepEquals(other.Author) : other.Author is null) &&
+               AutoEnglishPropertyFallback == other.AutoEnglishPropertyFallback &&
+               Properties.DeepEqualsDictionaryNaive(other.Properties) &&
+               Representations.DeepEqualsList(other.Representations) &&
+               Tags.DeepEqualsListNaive(other.Tags) &&
+               (CommentSummary is not null ? CommentSummary.DeepEquals(other.CommentSummary) : other.CommentSummary is null);
+    }
 }

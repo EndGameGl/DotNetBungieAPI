@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Requests.Actions;
 
-public class DestinyPostmasterTransferRequest
+public class DestinyPostmasterTransferRequest : IDeepEquatable<DestinyPostmasterTransferRequest>
 {
     [JsonPropertyName("itemReferenceHash")]
     public uint ItemReferenceHash { get; set; }
@@ -19,4 +19,14 @@ public class DestinyPostmasterTransferRequest
 
     [JsonPropertyName("membershipType")]
     public BungieMembershipType MembershipType { get; set; }
+
+    public bool DeepEquals(DestinyPostmasterTransferRequest? other)
+    {
+        return other is not null &&
+               ItemReferenceHash == other.ItemReferenceHash &&
+               StackSize == other.StackSize &&
+               ItemId == other.ItemId &&
+               CharacterId == other.CharacterId &&
+               MembershipType == other.MembershipType;
+    }
 }

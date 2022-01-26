@@ -9,7 +9,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Note that, if this gets used, the override will apply only to items using the overriding Stat Group. Other items will still show the default stat's name/description.
 /// </summary>
-public class DestinyStatOverrideDefinition
+public class DestinyStatOverrideDefinition : IDeepEquatable<DestinyStatOverrideDefinition>
 {
     /// <summary>
     ///     The hash identifier of the stat whose display properties are being overridden.
@@ -22,4 +22,11 @@ public class DestinyStatOverrideDefinition
     /// </summary>
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+
+    public bool DeepEquals(DestinyStatOverrideDefinition? other)
+    {
+        return other is not null &&
+               StatHash == other.StatHash &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null);
+    }
 }

@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 /// <para />
 ///     Information we need to be able to return that data is defined here, along with Tier data to establish a relationship between a conceptual Activity and its difficulty levels and variants.
 /// </summary>
-public class DestinyMilestoneActivityDefinition
+public class DestinyMilestoneActivityDefinition : IDeepEquatable<DestinyMilestoneActivityDefinition>
 {
     /// <summary>
     ///     The "Conceptual" activity hash. Basically, we picked the lowest level activity and are treating it as the canonical definition of the activity for rendering purposes.
@@ -26,4 +26,11 @@ public class DestinyMilestoneActivityDefinition
     /// </summary>
     [JsonPropertyName("variants")]
     public Dictionary<uint, Destiny.Definitions.Milestones.DestinyMilestoneActivityVariantDefinition> Variants { get; set; }
+
+    public bool DeepEquals(DestinyMilestoneActivityDefinition? other)
+    {
+        return other is not null &&
+               ConceptualActivityHash == other.ConceptualActivityHash &&
+               Variants.DeepEqualsDictionary(other.Variants);
+    }
 }

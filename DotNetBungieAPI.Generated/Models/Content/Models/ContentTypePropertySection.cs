@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Content.Models;
 
-public class ContentTypePropertySection
+public class ContentTypePropertySection : IDeepEquatable<ContentTypePropertySection>
 {
     [JsonPropertyName("name")]
     public string Name { get; set; }
@@ -10,4 +10,12 @@ public class ContentTypePropertySection
 
     [JsonPropertyName("collapsed")]
     public bool Collapsed { get; set; }
+
+    public bool DeepEquals(ContentTypePropertySection? other)
+    {
+        return other is not null &&
+               Name == other.Name &&
+               ReadableName == other.ReadableName &&
+               Collapsed == other.Collapsed;
+    }
 }

@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     You cannot transfer an item to a bucket that is not its Default without going through a Vendor's "accepted items" (DestinyVendorDefinition.acceptedItems). This is how transfer functionality like the Vault is implemented, as a feature of a Vendor. See the vendor's acceptedItems property for more details.
 /// </summary>
-public class DestinyInventoryBucketDefinition
+public class DestinyInventoryBucketDefinition : IDeepEquatable<DestinyInventoryBucketDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -85,4 +85,21 @@ public class DestinyInventoryBucketDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyInventoryBucketDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               Scope == other.Scope &&
+               Category == other.Category &&
+               BucketOrder == other.BucketOrder &&
+               ItemCount == other.ItemCount &&
+               Location == other.Location &&
+               HasTransferDestination == other.HasTransferDestination &&
+               Enabled == other.Enabled &&
+               Fifo == other.Fifo &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

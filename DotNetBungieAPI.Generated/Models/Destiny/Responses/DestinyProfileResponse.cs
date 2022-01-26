@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Responses;
 /// <summary>
 ///     The response for GetDestinyProfile, with components for character and item-level data.
 /// </summary>
-public class DestinyProfileResponse
+public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
 {
     /// <summary>
     ///     Recent, refundable purchases you have made from vendors. When will you use it? Couldn't say...
@@ -234,4 +234,38 @@ public class DestinyProfileResponse
     /// </summary>
     [JsonPropertyName("characterCurrencyLookups")]
     public DictionaryComponentResponseOfint64AndDestinyCurrenciesComponent CharacterCurrencyLookups { get; set; }
+
+    public bool DeepEquals(DestinyProfileResponse? other)
+    {
+        return other is not null &&
+               (VendorReceipts is not null ? VendorReceipts.DeepEquals(other.VendorReceipts) : other.VendorReceipts is null) &&
+               (ProfileInventory is not null ? ProfileInventory.DeepEquals(other.ProfileInventory) : other.ProfileInventory is null) &&
+               (ProfileCurrencies is not null ? ProfileCurrencies.DeepEquals(other.ProfileCurrencies) : other.ProfileCurrencies is null) &&
+               (Profile is not null ? Profile.DeepEquals(other.Profile) : other.Profile is null) &&
+               (PlatformSilver is not null ? PlatformSilver.DeepEquals(other.PlatformSilver) : other.PlatformSilver is null) &&
+               (ProfileKiosks is not null ? ProfileKiosks.DeepEquals(other.ProfileKiosks) : other.ProfileKiosks is null) &&
+               (ProfilePlugSets is not null ? ProfilePlugSets.DeepEquals(other.ProfilePlugSets) : other.ProfilePlugSets is null) &&
+               (ProfileProgression is not null ? ProfileProgression.DeepEquals(other.ProfileProgression) : other.ProfileProgression is null) &&
+               (ProfilePresentationNodes is not null ? ProfilePresentationNodes.DeepEquals(other.ProfilePresentationNodes) : other.ProfilePresentationNodes is null) &&
+               (ProfileRecords is not null ? ProfileRecords.DeepEquals(other.ProfileRecords) : other.ProfileRecords is null) &&
+               (ProfileCollectibles is not null ? ProfileCollectibles.DeepEquals(other.ProfileCollectibles) : other.ProfileCollectibles is null) &&
+               (ProfileTransitoryData is not null ? ProfileTransitoryData.DeepEquals(other.ProfileTransitoryData) : other.ProfileTransitoryData is null) &&
+               (Metrics is not null ? Metrics.DeepEquals(other.Metrics) : other.Metrics is null) &&
+               (ProfileStringVariables is not null ? ProfileStringVariables.DeepEquals(other.ProfileStringVariables) : other.ProfileStringVariables is null) &&
+               (Characters is not null ? Characters.DeepEquals(other.Characters) : other.Characters is null) &&
+               (CharacterInventories is not null ? CharacterInventories.DeepEquals(other.CharacterInventories) : other.CharacterInventories is null) &&
+               (CharacterProgressions is not null ? CharacterProgressions.DeepEquals(other.CharacterProgressions) : other.CharacterProgressions is null) &&
+               (CharacterRenderData is not null ? CharacterRenderData.DeepEquals(other.CharacterRenderData) : other.CharacterRenderData is null) &&
+               (CharacterActivities is not null ? CharacterActivities.DeepEquals(other.CharacterActivities) : other.CharacterActivities is null) &&
+               (CharacterEquipment is not null ? CharacterEquipment.DeepEquals(other.CharacterEquipment) : other.CharacterEquipment is null) &&
+               (CharacterKiosks is not null ? CharacterKiosks.DeepEquals(other.CharacterKiosks) : other.CharacterKiosks is null) &&
+               (CharacterPlugSets is not null ? CharacterPlugSets.DeepEquals(other.CharacterPlugSets) : other.CharacterPlugSets is null) &&
+               CharacterUninstancedItemComponents.DeepEqualsDictionary(other.CharacterUninstancedItemComponents) &&
+               (CharacterPresentationNodes is not null ? CharacterPresentationNodes.DeepEquals(other.CharacterPresentationNodes) : other.CharacterPresentationNodes is null) &&
+               (CharacterRecords is not null ? CharacterRecords.DeepEquals(other.CharacterRecords) : other.CharacterRecords is null) &&
+               (CharacterCollectibles is not null ? CharacterCollectibles.DeepEquals(other.CharacterCollectibles) : other.CharacterCollectibles is null) &&
+               (CharacterStringVariables is not null ? CharacterStringVariables.DeepEquals(other.CharacterStringVariables) : other.CharacterStringVariables is null) &&
+               (ItemComponents is not null ? ItemComponents.DeepEquals(other.ItemComponents) : other.ItemComponents is null) &&
+               (CharacterCurrencyLookups is not null ? CharacterCurrencyLookups.DeepEquals(other.CharacterCurrencyLookups) : other.CharacterCurrencyLookups is null);
+    }
 }

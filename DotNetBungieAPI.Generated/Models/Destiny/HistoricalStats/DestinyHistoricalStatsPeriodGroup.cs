@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public class DestinyHistoricalStatsPeriodGroup
+public class DestinyHistoricalStatsPeriodGroup : IDeepEquatable<DestinyHistoricalStatsPeriodGroup>
 {
     /// <summary>
     ///     Period for the group. If the stat periodType is day, then this will have a specific day. If the type is monthly, then this value will be the first day of the applicable month. This value is not set when the periodType is 'all time'.
@@ -19,4 +19,12 @@ public class DestinyHistoricalStatsPeriodGroup
     /// </summary>
     [JsonPropertyName("values")]
     public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue> Values { get; set; }
+
+    public bool DeepEquals(DestinyHistoricalStatsPeriodGroup? other)
+    {
+        return other is not null &&
+               Period == other.Period &&
+               (ActivityDetails is not null ? ActivityDetails.DeepEquals(other.ActivityDetails) : other.ActivityDetails is null) &&
+               Values.DeepEqualsDictionary(other.Values);
+    }
 }

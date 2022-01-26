@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Guided Game information for this activity.
 /// </summary>
-public class DestinyActivityGuidedBlockDefinition
+public class DestinyActivityGuidedBlockDefinition : IDeepEquatable<DestinyActivityGuidedBlockDefinition>
 {
     /// <summary>
     ///     The maximum amount of people that can be in the waiting lobby.
@@ -22,4 +22,12 @@ public class DestinyActivityGuidedBlockDefinition
     /// </summary>
     [JsonPropertyName("guidedDisbandCount")]
     public int GuidedDisbandCount { get; set; }
+
+    public bool DeepEquals(DestinyActivityGuidedBlockDefinition? other)
+    {
+        return other is not null &&
+               GuidedMaxLobbySize == other.GuidedMaxLobbySize &&
+               GuidedMinLobbySize == other.GuidedMinLobbySize &&
+               GuidedDisbandCount == other.GuidedDisbandCount;
+    }
 }

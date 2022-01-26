@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Records;
 
-public class DestinyRecordComponent
+public class DestinyRecordComponent : IDeepEquatable<DestinyRecordComponent>
 {
     [JsonPropertyName("state")]
     public Destiny.DestinyRecordState State { get; set; }
@@ -25,4 +25,15 @@ public class DestinyRecordComponent
     /// </summary>
     [JsonPropertyName("rewardVisibilty")]
     public List<bool> RewardVisibilty { get; set; }
+
+    public bool DeepEquals(DestinyRecordComponent? other)
+    {
+        return other is not null &&
+               State == other.State &&
+               Objectives.DeepEqualsList(other.Objectives) &&
+               IntervalObjectives.DeepEqualsList(other.IntervalObjectives) &&
+               IntervalsRedeemedCount == other.IntervalsRedeemedCount &&
+               CompletedCount == other.CompletedCount &&
+               RewardVisibilty.DeepEqualsListNaive(other.RewardVisibilty);
+    }
 }

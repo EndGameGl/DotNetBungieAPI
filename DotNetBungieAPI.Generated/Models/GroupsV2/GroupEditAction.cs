@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public class GroupEditAction
+public class GroupEditAction : IDeepEquatable<GroupEditAction>
 {
     [JsonPropertyName("name")]
     public string Name { get; set; }
@@ -49,4 +49,25 @@ public class GroupEditAction
 
     [JsonPropertyName("defaultPublicity")]
     public int? DefaultPublicity { get; set; }
+
+    public bool DeepEquals(GroupEditAction? other)
+    {
+        return other is not null &&
+               Name == other.Name &&
+               About == other.About &&
+               Motto == other.Motto &&
+               Theme == other.Theme &&
+               AvatarImageIndex == other.AvatarImageIndex &&
+               Tags == other.Tags &&
+               IsPublic == other.IsPublic &&
+               MembershipOption == other.MembershipOption &&
+               IsPublicTopicAdminOnly == other.IsPublicTopicAdminOnly &&
+               AllowChat == other.AllowChat &&
+               ChatSecurity == other.ChatSecurity &&
+               Callsign == other.Callsign &&
+               Locale == other.Locale &&
+               Homepage == other.Homepage &&
+               EnableInvitationMessagingForAdmins == other.EnableInvitationMessagingForAdmins &&
+               DefaultPublicity == other.DefaultPublicity;
+    }
 }

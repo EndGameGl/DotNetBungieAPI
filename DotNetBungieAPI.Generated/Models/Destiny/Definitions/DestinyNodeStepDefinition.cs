@@ -9,7 +9,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Note that, when dealing with Talent Node Steps, you must ensure that you have the latest version of content. stepIndex and nodeStepHash - two ways of identifying the step within a node - are both content version dependent, and thus are subject to change between content updates.
 /// </summary>
-public class DestinyNodeStepDefinition
+public class DestinyNodeStepDefinition : IDeepEquatable<DestinyNodeStepDefinition>
 {
     /// <summary>
     ///     These are the display properties actually used to render the Talent Node. The currently active step's displayProperties are shown.
@@ -120,4 +120,26 @@ public class DestinyNodeStepDefinition
     /// </summary>
     [JsonPropertyName("socketReplacements")]
     public List<Destiny.Definitions.DestinyNodeSocketReplaceResponse> SocketReplacements { get; set; }
+
+    public bool DeepEquals(DestinyNodeStepDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               StepIndex == other.StepIndex &&
+               NodeStepHash == other.NodeStepHash &&
+               InteractionDescription == other.InteractionDescription &&
+               DamageType == other.DamageType &&
+               DamageTypeHash == other.DamageTypeHash &&
+               (ActivationRequirement is not null ? ActivationRequirement.DeepEquals(other.ActivationRequirement) : other.ActivationRequirement is null) &&
+               CanActivateNextStep == other.CanActivateNextStep &&
+               NextStepIndex == other.NextStepIndex &&
+               IsNextStepRandom == other.IsNextStepRandom &&
+               PerkHashes.DeepEqualsListNaive(other.PerkHashes) &&
+               StartProgressionBarAtProgress == other.StartProgressionBarAtProgress &&
+               StatHashes.DeepEqualsListNaive(other.StatHashes) &&
+               AffectsQuality == other.AffectsQuality &&
+               (StepGroups is not null ? StepGroups.DeepEquals(other.StepGroups) : other.StepGroups is null) &&
+               AffectsLevel == other.AffectsLevel &&
+               SocketReplacements.DeepEqualsList(other.SocketReplacements);
+    }
 }

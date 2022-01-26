@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Kiosks;
 
-public class DestinyKioskItem
+public class DestinyKioskItem : IDeepEquatable<DestinyKioskItem>
 {
     /// <summary>
     ///     The index of the item in the related DestinyVendorDefintion's itemList property, representing the sale.
@@ -25,4 +25,13 @@ public class DestinyKioskItem
     /// </summary>
     [JsonPropertyName("flavorObjective")]
     public Destiny.Quests.DestinyObjectiveProgress FlavorObjective { get; set; }
+
+    public bool DeepEquals(DestinyKioskItem? other)
+    {
+        return other is not null &&
+               Index == other.Index &&
+               CanAcquire == other.CanAcquire &&
+               FailureIndexes.DeepEqualsListNaive(other.FailureIndexes) &&
+               (FlavorObjective is not null ? FlavorObjective.DeepEquals(other.FlavorObjective) : other.FlavorObjective is null);
+    }
 }

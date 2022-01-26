@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 /// <para />
 ///     If you want it, please ask! We're just out of time to wire it up right now. Or a clever person just may do it with our existing endpoints.
 /// </summary>
-public class DestinyMilestoneQuestRewardItem
+public class DestinyMilestoneQuestRewardItem : IDeepEquatable<DestinyMilestoneQuestRewardItem>
 {
     /// <summary>
     ///     The quest reward item *may* be associated with a vendor. If so, this is that vendor. Use this hash to look up the DestinyVendorDefinition.
@@ -42,4 +42,15 @@ public class DestinyMilestoneQuestRewardItem
     /// </summary>
     [JsonPropertyName("hasConditionalVisibility")]
     public bool HasConditionalVisibility { get; set; }
+
+    public bool DeepEquals(DestinyMilestoneQuestRewardItem? other)
+    {
+        return other is not null &&
+               VendorHash == other.VendorHash &&
+               VendorItemIndex == other.VendorItemIndex &&
+               ItemHash == other.ItemHash &&
+               ItemInstanceId == other.ItemInstanceId &&
+               Quantity == other.Quantity &&
+               HasConditionalVisibility == other.HasConditionalVisibility;
+    }
 }

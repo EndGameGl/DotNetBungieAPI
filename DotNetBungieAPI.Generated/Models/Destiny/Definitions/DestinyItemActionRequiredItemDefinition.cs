@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     The definition of an item and quantity required in a character's inventory in order to perform an action.
 /// </summary>
-public class DestinyItemActionRequiredItemDefinition
+public class DestinyItemActionRequiredItemDefinition : IDeepEquatable<DestinyItemActionRequiredItemDefinition>
 {
     /// <summary>
     ///     The minimum quantity of the item you have to have.
@@ -22,4 +22,12 @@ public class DestinyItemActionRequiredItemDefinition
     /// </summary>
     [JsonPropertyName("deleteOnAction")]
     public bool DeleteOnAction { get; set; }
+
+    public bool DeepEquals(DestinyItemActionRequiredItemDefinition? other)
+    {
+        return other is not null &&
+               Count == other.Count &&
+               ItemHash == other.ItemHash &&
+               DeleteOnAction == other.DeleteOnAction;
+    }
 }

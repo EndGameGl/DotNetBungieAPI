@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Trending;
 
-public class TrendingCategory
+public class TrendingCategory : IDeepEquatable<TrendingCategory>
 {
     [JsonPropertyName("categoryName")]
     public string CategoryName { get; set; }
@@ -10,4 +10,12 @@ public class TrendingCategory
 
     [JsonPropertyName("categoryId")]
     public string CategoryId { get; set; }
+
+    public bool DeepEquals(TrendingCategory? other)
+    {
+        return other is not null &&
+               CategoryName == other.CategoryName &&
+               (Entries is not null ? Entries.DeepEquals(other.Entries) : other.Entries is null) &&
+               CategoryId == other.CategoryId;
+    }
 }

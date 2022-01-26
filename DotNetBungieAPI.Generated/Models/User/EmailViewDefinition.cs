@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.User;
 /// <summary>
 ///     Represents a data-driven view for Email settings. Web/Mobile UI can use this data to show new EMail settings consistently without further manual work.
 /// </summary>
-public class EmailViewDefinition
+public class EmailViewDefinition : IDeepEquatable<EmailViewDefinition>
 {
     /// <summary>
     ///     The identifier for this view.
@@ -16,4 +16,11 @@ public class EmailViewDefinition
     /// </summary>
     [JsonPropertyName("viewSettings")]
     public List<User.EmailViewDefinitionSetting> ViewSettings { get; set; }
+
+    public bool DeepEquals(EmailViewDefinition? other)
+    {
+        return other is not null &&
+               Name == other.Name &&
+               ViewSettings.DeepEqualsList(other.ViewSettings);
+    }
 }

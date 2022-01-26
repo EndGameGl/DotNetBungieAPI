@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Characters;
 /// <summary>
 ///     This component holds activity data for a character. It will tell you about the character's current activity status, as well as activities that are available to the user.
 /// </summary>
-public class DestinyCharacterActivitiesComponent
+public class DestinyCharacterActivitiesComponent : IDeepEquatable<DestinyCharacterActivitiesComponent>
 {
     /// <summary>
     ///     The last date that the user started playing an activity.
@@ -58,4 +58,18 @@ public class DestinyCharacterActivitiesComponent
     /// </summary>
     [JsonPropertyName("lastCompletedStoryHash")]
     public uint LastCompletedStoryHash { get; set; }
+
+    public bool DeepEquals(DestinyCharacterActivitiesComponent? other)
+    {
+        return other is not null &&
+               DateActivityStarted == other.DateActivityStarted &&
+               AvailableActivities.DeepEqualsList(other.AvailableActivities) &&
+               CurrentActivityHash == other.CurrentActivityHash &&
+               CurrentActivityModeHash == other.CurrentActivityModeHash &&
+               CurrentActivityModeType == other.CurrentActivityModeType &&
+               CurrentActivityModeHashes.DeepEqualsListNaive(other.CurrentActivityModeHashes) &&
+               CurrentActivityModeTypes.DeepEqualsListNaive(other.CurrentActivityModeTypes) &&
+               CurrentPlaylistActivityHash == other.CurrentPlaylistActivityHash &&
+               LastCompletedStoryHash == other.LastCompletedStoryHash;
+    }
 }

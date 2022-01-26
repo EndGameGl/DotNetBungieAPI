@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 
-public class DestinyPublicMilestoneVendor
+public class DestinyPublicMilestoneVendor : IDeepEquatable<DestinyPublicMilestoneVendor>
 {
     /// <summary>
     ///     The hash identifier of the Vendor related to this Milestone. You can show useful things from this, such as thier Faction icon or whatever you might care about.
@@ -13,4 +13,11 @@ public class DestinyPublicMilestoneVendor
     /// </summary>
     [JsonPropertyName("previewItemHash")]
     public uint? PreviewItemHash { get; set; }
+
+    public bool DeepEquals(DestinyPublicMilestoneVendor? other)
+    {
+        return other is not null &&
+               VendorHash == other.VendorHash &&
+               PreviewItemHash == other.PreviewItemHash;
+    }
 }

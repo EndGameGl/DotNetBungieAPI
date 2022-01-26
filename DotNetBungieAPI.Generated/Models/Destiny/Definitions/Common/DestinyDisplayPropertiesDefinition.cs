@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Common;
 /// <summary>
 ///     Many Destiny*Definition contracts - the "first order" entities of Destiny that have their own tables in the Manifest Database - also have displayable information. This is the base class for that display information.
 /// </summary>
-public class DestinyDisplayPropertiesDefinition
+public class DestinyDisplayPropertiesDefinition : IDeepEquatable<DestinyDisplayPropertiesDefinition>
 {
     [JsonPropertyName("description")]
     public string Description { get; set; }
@@ -32,4 +32,15 @@ public class DestinyDisplayPropertiesDefinition
 
     [JsonPropertyName("hasIcon")]
     public bool HasIcon { get; set; }
+
+    public bool DeepEquals(DestinyDisplayPropertiesDefinition? other)
+    {
+        return other is not null &&
+               Description == other.Description &&
+               Name == other.Name &&
+               Icon == other.Icon &&
+               IconSequences.DeepEqualsList(other.IconSequences) &&
+               HighResIcon == other.HighResIcon &&
+               HasIcon == other.HasIcon;
+    }
 }

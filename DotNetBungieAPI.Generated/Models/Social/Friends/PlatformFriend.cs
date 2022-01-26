@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Social.Friends;
 
-public class PlatformFriend
+public class PlatformFriend : IDeepEquatable<PlatformFriend>
 {
     [JsonPropertyName("platformDisplayName")]
     public string PlatformDisplayName { get; set; }
@@ -22,4 +22,16 @@ public class PlatformFriend
 
     [JsonPropertyName("bungieGlobalDisplayNameCode")]
     public short? BungieGlobalDisplayNameCode { get; set; }
+
+    public bool DeepEquals(PlatformFriend? other)
+    {
+        return other is not null &&
+               PlatformDisplayName == other.PlatformDisplayName &&
+               FriendPlatform == other.FriendPlatform &&
+               DestinyMembershipId == other.DestinyMembershipId &&
+               DestinyMembershipType == other.DestinyMembershipType &&
+               BungieNetMembershipId == other.BungieNetMembershipId &&
+               BungieGlobalDisplayName == other.BungieGlobalDisplayName &&
+               BungieGlobalDisplayNameCode == other.BungieGlobalDisplayNameCode;
+    }
 }

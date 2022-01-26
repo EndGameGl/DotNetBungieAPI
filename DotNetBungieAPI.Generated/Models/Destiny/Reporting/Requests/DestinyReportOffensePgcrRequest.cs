@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Reporting.Requests;
 /// <para />
 ///     Note that this request object doesn't have the actual PGCR ID nor your Account/Character ID in it. We will infer that information from your authentication information and the PGCR ID that you pass into the URL of the reporting endpoint itself.
 /// </summary>
-public class DestinyReportOffensePgcrRequest
+public class DestinyReportOffensePgcrRequest : IDeepEquatable<DestinyReportOffensePgcrRequest>
 {
     /// <summary>
     ///     So you've decided to report someone instead of cursing them and their descendants. Well, okay then. This is the category or categorie(s) of infractions for which you are reporting the user. These are hash identifiers that map to DestinyReportReasonCategoryDefinition entries.
@@ -26,4 +26,12 @@ public class DestinyReportOffensePgcrRequest
     /// </summary>
     [JsonPropertyName("offendingCharacterId")]
     public long OffendingCharacterId { get; set; }
+
+    public bool DeepEquals(DestinyReportOffensePgcrRequest? other)
+    {
+        return other is not null &&
+               ReasonCategoryHashes.DeepEqualsListNaive(other.ReasonCategoryHashes) &&
+               ReasonHashes.DeepEqualsListNaive(other.ReasonHashes) &&
+               OffendingCharacterId == other.OffendingCharacterId;
+    }
 }

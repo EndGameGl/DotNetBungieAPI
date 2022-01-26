@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Common.Models;
 
-public class CoreSettingsConfiguration
+public class CoreSettingsConfiguration : IDeepEquatable<CoreSettingsConfiguration>
 {
     [JsonPropertyName("environment")]
     public string Environment { get; set; }
@@ -64,4 +64,30 @@ public class CoreSettingsConfiguration
 
     [JsonPropertyName("fireteamActivities")]
     public List<Common.Models.CoreSetting> FireteamActivities { get; set; }
+
+    public bool DeepEquals(CoreSettingsConfiguration? other)
+    {
+        return other is not null &&
+               Environment == other.Environment &&
+               Systems.DeepEqualsDictionary(other.Systems) &&
+               IgnoreReasons.DeepEqualsList(other.IgnoreReasons) &&
+               ForumCategories.DeepEqualsList(other.ForumCategories) &&
+               GroupAvatars.DeepEqualsList(other.GroupAvatars) &&
+               DestinyMembershipTypes.DeepEqualsList(other.DestinyMembershipTypes) &&
+               RecruitmentPlatformTags.DeepEqualsList(other.RecruitmentPlatformTags) &&
+               RecruitmentMiscTags.DeepEqualsList(other.RecruitmentMiscTags) &&
+               RecruitmentActivities.DeepEqualsList(other.RecruitmentActivities) &&
+               UserContentLocales.DeepEqualsList(other.UserContentLocales) &&
+               SystemContentLocales.DeepEqualsList(other.SystemContentLocales) &&
+               ClanBannerDecals.DeepEqualsList(other.ClanBannerDecals) &&
+               ClanBannerDecalColors.DeepEqualsList(other.ClanBannerDecalColors) &&
+               ClanBannerGonfalons.DeepEqualsList(other.ClanBannerGonfalons) &&
+               ClanBannerGonfalonColors.DeepEqualsList(other.ClanBannerGonfalonColors) &&
+               ClanBannerGonfalonDetails.DeepEqualsList(other.ClanBannerGonfalonDetails) &&
+               ClanBannerGonfalonDetailColors.DeepEqualsList(other.ClanBannerGonfalonDetailColors) &&
+               ClanBannerStandards.DeepEqualsList(other.ClanBannerStandards) &&
+               (Destiny2CoreSettings is not null ? Destiny2CoreSettings.DeepEquals(other.Destiny2CoreSettings) : other.Destiny2CoreSettings is null) &&
+               (EmailSettings is not null ? EmailSettings.DeepEquals(other.EmailSettings) : other.EmailSettings is null) &&
+               FireteamActivities.DeepEqualsList(other.FireteamActivities);
+    }
 }

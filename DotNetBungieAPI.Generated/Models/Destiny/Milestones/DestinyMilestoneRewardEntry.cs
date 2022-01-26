@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 /// <summary>
 ///     The character-specific data for a milestone's reward entry. See DestinyMilestoneDefinition for more information about Reward Entries.
 /// </summary>
-public class DestinyMilestoneRewardEntry
+public class DestinyMilestoneRewardEntry : IDeepEquatable<DestinyMilestoneRewardEntry>
 {
     /// <summary>
     ///     The identifier for the reward entry in question. It is important to look up the related DestinyMilestoneRewardEntryDefinition to get the static details about the reward, which you can do by looking up the milestone's DestinyMilestoneDefinition and examining the DestinyMilestoneDefinition.rewards[rewardCategoryHash].rewardEntries[rewardEntryHash] data.
@@ -22,4 +22,12 @@ public class DestinyMilestoneRewardEntry
     /// </summary>
     [JsonPropertyName("redeemed")]
     public bool Redeemed { get; set; }
+
+    public bool DeepEquals(DestinyMilestoneRewardEntry? other)
+    {
+        return other is not null &&
+               RewardEntryHash == other.RewardEntryHash &&
+               Earned == other.Earned &&
+               Redeemed == other.Redeemed;
+    }
 }

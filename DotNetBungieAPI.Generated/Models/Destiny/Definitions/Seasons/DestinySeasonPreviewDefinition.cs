@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Seasons;
 /// <summary>
 ///     Defines the promotional text, images, and links to preview this season.
 /// </summary>
-public class DestinySeasonPreviewDefinition
+public class DestinySeasonPreviewDefinition : IDeepEquatable<DestinySeasonPreviewDefinition>
 {
     /// <summary>
     ///     A localized description of the season.
@@ -28,4 +28,13 @@ public class DestinySeasonPreviewDefinition
     /// </summary>
     [JsonPropertyName("images")]
     public List<Destiny.Definitions.Seasons.DestinySeasonPreviewImageDefinition> Images { get; set; }
+
+    public bool DeepEquals(DestinySeasonPreviewDefinition? other)
+    {
+        return other is not null &&
+               Description == other.Description &&
+               LinkPath == other.LinkPath &&
+               VideoLink == other.VideoLink &&
+               Images.DeepEqualsList(other.Images);
+    }
 }

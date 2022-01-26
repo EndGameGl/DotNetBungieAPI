@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Vendors;
 /// <summary>
 ///     This component contains essential/summary information about the vendor.
 /// </summary>
-public class DestinyVendorComponent
+public class DestinyVendorComponent : IDeepEquatable<DestinyVendorComponent>
 {
     /// <summary>
     ///     If True, you can purchase from the Vendor.
@@ -52,4 +52,16 @@ public class DestinyVendorComponent
     /// </summary>
     [JsonPropertyName("enabled")]
     public bool Enabled { get; set; }
+
+    public bool DeepEquals(DestinyVendorComponent? other)
+    {
+        return other is not null &&
+               CanPurchase == other.CanPurchase &&
+               (Progression is not null ? Progression.DeepEquals(other.Progression) : other.Progression is null) &&
+               VendorLocationIndex == other.VendorLocationIndex &&
+               SeasonalRank == other.SeasonalRank &&
+               VendorHash == other.VendorHash &&
+               NextRefreshDate == other.NextRefreshDate &&
+               Enabled == other.Enabled;
+    }
 }

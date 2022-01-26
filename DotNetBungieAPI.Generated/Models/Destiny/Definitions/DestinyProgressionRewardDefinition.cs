@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Note that this maps to a DestinyProgressionMappingDefinition, and *not* a DestinyProgressionDefinition directly. This is apparently so that multiple progressions can be granted progression points/experience at the same time.
 /// </summary>
-public class DestinyProgressionRewardDefinition
+public class DestinyProgressionRewardDefinition : IDeepEquatable<DestinyProgressionRewardDefinition>
 {
     /// <summary>
     ///     The hash identifier of the DestinyProgressionMappingDefinition that contains the progressions for which experience should be applied.
@@ -24,4 +24,12 @@ public class DestinyProgressionRewardDefinition
     /// </summary>
     [JsonPropertyName("applyThrottles")]
     public bool ApplyThrottles { get; set; }
+
+    public bool DeepEquals(DestinyProgressionRewardDefinition? other)
+    {
+        return other is not null &&
+               ProgressionMappingHash == other.ProgressionMappingHash &&
+               Amount == other.Amount &&
+               ApplyThrottles == other.ApplyThrottles;
+    }
 }

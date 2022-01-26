@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public class GroupMemberApplication
+public class GroupMemberApplication : IDeepEquatable<GroupMemberApplication>
 {
     [JsonPropertyName("groupId")]
     public long GroupId { get; set; }
@@ -28,4 +28,18 @@ public class GroupMemberApplication
 
     [JsonPropertyName("bungieNetUserInfo")]
     public User.UserInfoCard BungieNetUserInfo { get; set; }
+
+    public bool DeepEquals(GroupMemberApplication? other)
+    {
+        return other is not null &&
+               GroupId == other.GroupId &&
+               CreationDate == other.CreationDate &&
+               ResolveState == other.ResolveState &&
+               ResolveDate == other.ResolveDate &&
+               ResolvedByMembershipId == other.ResolvedByMembershipId &&
+               RequestMessage == other.RequestMessage &&
+               ResolveMessage == other.ResolveMessage &&
+               (DestinyUserInfo is not null ? DestinyUserInfo.DeepEquals(other.DestinyUserInfo) : other.DestinyUserInfo is null) &&
+               (BungieNetUserInfo is not null ? BungieNetUserInfo.DeepEquals(other.BungieNetUserInfo) : other.BungieNetUserInfo is null);
+    }
 }

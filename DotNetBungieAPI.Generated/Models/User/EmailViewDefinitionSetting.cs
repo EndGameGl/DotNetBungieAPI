@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.User;
 
-public class EmailViewDefinitionSetting
+public class EmailViewDefinitionSetting : IDeepEquatable<EmailViewDefinitionSetting>
 {
     /// <summary>
     ///     The identifier for this UI Setting, which can be used to relate it to custom strings or other data as desired.
@@ -31,4 +31,14 @@ public class EmailViewDefinitionSetting
     /// </summary>
     [JsonPropertyName("subscriptions")]
     public List<User.EmailSubscriptionDefinition> Subscriptions { get; set; }
+
+    public bool DeepEquals(EmailViewDefinitionSetting? other)
+    {
+        return other is not null &&
+               Name == other.Name &&
+               Localization.DeepEqualsDictionary(other.Localization) &&
+               SetByDefault == other.SetByDefault &&
+               OptInAggregateValue == other.OptInAggregateValue &&
+               Subscriptions.DeepEqualsList(other.Subscriptions);
+    }
 }

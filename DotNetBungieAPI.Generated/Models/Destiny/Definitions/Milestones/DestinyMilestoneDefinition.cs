@@ -25,7 +25,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 /// <para />
 ///     This approach will let you avoid, whenever possible, the even less useful (and sometimes nonexistant) milestone-level names and descriptions.
 /// </summary>
-public class DestinyMilestoneDefinition
+public class DestinyMilestoneDefinition : IDeepEquatable<DestinyMilestoneDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -152,4 +152,30 @@ public class DestinyMilestoneDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyMilestoneDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               DisplayPreference == other.DisplayPreference &&
+               Image == other.Image &&
+               MilestoneType == other.MilestoneType &&
+               Recruitable == other.Recruitable &&
+               FriendlyName == other.FriendlyName &&
+               ShowInExplorer == other.ShowInExplorer &&
+               ShowInMilestones == other.ShowInMilestones &&
+               ExplorePrioritizesActivityImage == other.ExplorePrioritizesActivityImage &&
+               HasPredictableDates == other.HasPredictableDates &&
+               Quests.DeepEqualsDictionary(other.Quests) &&
+               Rewards.DeepEqualsDictionary(other.Rewards) &&
+               VendorsDisplayTitle == other.VendorsDisplayTitle &&
+               Vendors.DeepEqualsList(other.Vendors) &&
+               Values.DeepEqualsDictionary(other.Values) &&
+               IsInGameMilestone == other.IsInGameMilestone &&
+               Activities.DeepEqualsList(other.Activities) &&
+               DefaultOrder == other.DefaultOrder &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

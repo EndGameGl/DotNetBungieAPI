@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public class DestinyAggregateActivityStats
+public class DestinyAggregateActivityStats : IDeepEquatable<DestinyAggregateActivityStats>
 {
     /// <summary>
     ///     Hash ID that can be looked up in the DestinyActivityTable.
@@ -13,4 +13,11 @@ public class DestinyAggregateActivityStats
     /// </summary>
     [JsonPropertyName("values")]
     public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue> Values { get; set; }
+
+    public bool DeepEquals(DestinyAggregateActivityStats? other)
+    {
+        return other is not null &&
+               ActivityHash == other.ActivityHash &&
+               Values.DeepEqualsDictionary(other.Values);
+    }
 }

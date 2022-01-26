@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Profiles;
 /// <summary>
 ///     The most essential summary information about a Profile (in Destiny 1, we called these "Accounts").
 /// </summary>
-public class DestinyProfileComponent
+public class DestinyProfileComponent : IDeepEquatable<DestinyProfileComponent>
 {
     /// <summary>
     ///     If you need to render the Profile (their platform name, icon, etc...) somewhere, this property contains that information.
@@ -52,4 +52,16 @@ public class DestinyProfileComponent
     /// </summary>
     [JsonPropertyName("currentSeasonRewardPowerCap")]
     public int? CurrentSeasonRewardPowerCap { get; set; }
+
+    public bool DeepEquals(DestinyProfileComponent? other)
+    {
+        return other is not null &&
+               (UserInfo is not null ? UserInfo.DeepEquals(other.UserInfo) : other.UserInfo is null) &&
+               DateLastPlayed == other.DateLastPlayed &&
+               VersionsOwned == other.VersionsOwned &&
+               CharacterIds.DeepEqualsListNaive(other.CharacterIds) &&
+               SeasonHashes.DeepEqualsListNaive(other.SeasonHashes) &&
+               CurrentSeasonHash == other.CurrentSeasonHash &&
+               CurrentSeasonRewardPowerCap == other.CurrentSeasonRewardPowerCap;
+    }
 }

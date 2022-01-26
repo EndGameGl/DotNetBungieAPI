@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Content.Models;
 
-public class ContentPreview
+public class ContentPreview : IDeepEquatable<ContentPreview>
 {
     [JsonPropertyName("name")]
     public string Name { get; set; }
@@ -19,4 +19,15 @@ public class ContentPreview
 
     [JsonPropertyName("useSetId")]
     public int UseSetId { get; set; }
+
+    public bool DeepEquals(ContentPreview? other)
+    {
+        return other is not null &&
+               Name == other.Name &&
+               Path == other.Path &&
+               ItemInSet == other.ItemInSet &&
+               SetTag == other.SetTag &&
+               SetNesting == other.SetNesting &&
+               UseSetId == other.UseSetId;
+    }
 }

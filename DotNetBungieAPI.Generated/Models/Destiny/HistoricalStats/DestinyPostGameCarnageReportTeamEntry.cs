@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public class DestinyPostGameCarnageReportTeamEntry
+public class DestinyPostGameCarnageReportTeamEntry : IDeepEquatable<DestinyPostGameCarnageReportTeamEntry>
 {
     /// <summary>
     ///     Integer ID for the team.
@@ -25,4 +25,13 @@ public class DestinyPostGameCarnageReportTeamEntry
     /// </summary>
     [JsonPropertyName("teamName")]
     public string TeamName { get; set; }
+
+    public bool DeepEquals(DestinyPostGameCarnageReportTeamEntry? other)
+    {
+        return other is not null &&
+               TeamId == other.TeamId &&
+               (Standing is not null ? Standing.DeepEquals(other.Standing) : other.Standing is null) &&
+               (Score is not null ? Score.DeepEquals(other.Score) : other.Score is null) &&
+               TeamName == other.TeamName;
+    }
 }

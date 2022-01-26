@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     If an item can have an action performed on it (like "Dismantle"), it will be defined here if you care.
 /// </summary>
-public class DestinyItemActionBlockDefinition
+public class DestinyItemActionBlockDefinition : IDeepEquatable<DestinyItemActionBlockDefinition>
 {
     /// <summary>
     ///     Localized text for the verb of the action being performed.
@@ -88,4 +88,23 @@ public class DestinyItemActionBlockDefinition
     /// </summary>
     [JsonPropertyName("useOnAcquire")]
     public bool UseOnAcquire { get; set; }
+
+    public bool DeepEquals(DestinyItemActionBlockDefinition? other)
+    {
+        return other is not null &&
+               VerbName == other.VerbName &&
+               VerbDescription == other.VerbDescription &&
+               IsPositive == other.IsPositive &&
+               OverlayScreenName == other.OverlayScreenName &&
+               OverlayIcon == other.OverlayIcon &&
+               RequiredCooldownSeconds == other.RequiredCooldownSeconds &&
+               RequiredItems.DeepEqualsList(other.RequiredItems) &&
+               ProgressionRewards.DeepEqualsList(other.ProgressionRewards) &&
+               ActionTypeLabel == other.ActionTypeLabel &&
+               RequiredLocation == other.RequiredLocation &&
+               RequiredCooldownHash == other.RequiredCooldownHash &&
+               DeleteOnAction == other.DeleteOnAction &&
+               ConsumeEntireStack == other.ConsumeEntireStack &&
+               UseOnAcquire == other.UseOnAcquire;
+    }
 }

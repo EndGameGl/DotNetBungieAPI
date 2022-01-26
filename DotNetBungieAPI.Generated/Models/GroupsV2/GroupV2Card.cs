@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 /// <summary>
 ///     A small infocard of group information, usually used for when a list of groups are returned
 /// </summary>
-public class GroupV2Card
+public class GroupV2Card : IDeepEquatable<GroupV2Card>
 {
     [JsonPropertyName("groupId")]
     public long GroupId { get; set; }
@@ -43,4 +43,22 @@ public class GroupV2Card
 
     [JsonPropertyName("theme")]
     public string Theme { get; set; }
+
+    public bool DeepEquals(GroupV2Card? other)
+    {
+        return other is not null &&
+               GroupId == other.GroupId &&
+               Name == other.Name &&
+               GroupType == other.GroupType &&
+               CreationDate == other.CreationDate &&
+               About == other.About &&
+               Motto == other.Motto &&
+               MemberCount == other.MemberCount &&
+               Locale == other.Locale &&
+               MembershipOption == other.MembershipOption &&
+               Capabilities == other.Capabilities &&
+               (ClanInfo is not null ? ClanInfo.DeepEquals(other.ClanInfo) : other.ClanInfo is null) &&
+               AvatarPath == other.AvatarPath &&
+               Theme == other.Theme;
+    }
 }

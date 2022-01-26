@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     An individual Destiny Entity returned from the entity search.
 /// </summary>
-public class DestinyEntitySearchResultItem
+public class DestinyEntitySearchResultItem : IDeepEquatable<DestinyEntitySearchResultItem>
 {
     /// <summary>
     ///     The hash identifier of the entity. You will use this to look up the DestinyDefinition relevant for the entity found.
@@ -28,4 +28,13 @@ public class DestinyEntitySearchResultItem
     /// </summary>
     [JsonPropertyName("weight")]
     public double Weight { get; set; }
+
+    public bool DeepEquals(DestinyEntitySearchResultItem? other)
+    {
+        return other is not null &&
+               Hash == other.Hash &&
+               EntityType == other.EntityType &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               Weight == other.Weight;
+    }
 }

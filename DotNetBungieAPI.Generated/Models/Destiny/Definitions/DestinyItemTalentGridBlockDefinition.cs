@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Builds/Subclasses are the only items left that still have talent grids with meaningful Nodes.
 /// </summary>
-public class DestinyItemTalentGridBlockDefinition
+public class DestinyItemTalentGridBlockDefinition : IDeepEquatable<DestinyItemTalentGridBlockDefinition>
 {
     /// <summary>
     ///     The hash identifier of the DestinyTalentGridDefinition attached to this item.
@@ -36,4 +36,14 @@ public class DestinyItemTalentGridBlockDefinition
     /// </summary>
     [JsonPropertyName("hudIcon")]
     public string HudIcon { get; set; }
+
+    public bool DeepEquals(DestinyItemTalentGridBlockDefinition? other)
+    {
+        return other is not null &&
+               TalentGridHash == other.TalentGridHash &&
+               ItemDetailString == other.ItemDetailString &&
+               BuildName == other.BuildName &&
+               HudDamageType == other.HudDamageType &&
+               HudIcon == other.HudIcon;
+    }
 }

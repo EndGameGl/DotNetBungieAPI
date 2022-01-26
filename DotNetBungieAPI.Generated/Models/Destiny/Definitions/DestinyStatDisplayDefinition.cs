@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     This represents the transformation of a stat into a "Display" stat (the closest value that BNet can get to the in-game display value of the stat)
 /// </summary>
-public class DestinyStatDisplayDefinition
+public class DestinyStatDisplayDefinition : IDeepEquatable<DestinyStatDisplayDefinition>
 {
     /// <summary>
     ///     The hash identifier for the stat being transformed into a Display stat.
@@ -34,4 +34,13 @@ public class DestinyStatDisplayDefinition
     /// </summary>
     [JsonPropertyName("displayInterpolation")]
     public List<Interpolation.InterpolationPoint> DisplayInterpolation { get; set; }
+
+    public bool DeepEquals(DestinyStatDisplayDefinition? other)
+    {
+        return other is not null &&
+               StatHash == other.StatHash &&
+               MaximumValue == other.MaximumValue &&
+               DisplayAsNumeric == other.DisplayAsNumeric &&
+               DisplayInterpolation.DeepEqualsList(other.DisplayInterpolation);
+    }
 }

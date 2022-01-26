@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     As of Destiny 2, nodes can exist as part of "Exclusive Groups". These differ from exclusive sets in that, within the group, many nodes can be activated. But the act of activating any node in the group will cause "opposing" nodes (nodes in groups that are not allowed to be activated at the same time as this group) to deactivate.
 /// </summary>
-public class DestinyTalentExclusiveGroup
+public class DestinyTalentExclusiveGroup : IDeepEquatable<DestinyTalentExclusiveGroup>
 {
     /// <summary>
     ///     The identifier for this exclusive group. Only guaranteed unique within the talent grid, not globally.
@@ -34,4 +34,14 @@ public class DestinyTalentExclusiveGroup
     /// </summary>
     [JsonPropertyName("opposingNodeHashes")]
     public List<uint> OpposingNodeHashes { get; set; }
+
+    public bool DeepEquals(DestinyTalentExclusiveGroup? other)
+    {
+        return other is not null &&
+               GroupHash == other.GroupHash &&
+               LoreHash == other.LoreHash &&
+               NodeHashes.DeepEqualsListNaive(other.NodeHashes) &&
+               OpposingGroupHashes.DeepEqualsListNaive(other.OpposingGroupHashes) &&
+               OpposingNodeHashes.DeepEqualsListNaive(other.OpposingNodeHashes);
+    }
 }

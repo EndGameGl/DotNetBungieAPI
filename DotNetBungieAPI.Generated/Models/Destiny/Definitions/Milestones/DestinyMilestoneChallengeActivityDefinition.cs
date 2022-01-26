@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 
-public class DestinyMilestoneChallengeActivityDefinition
+public class DestinyMilestoneChallengeActivityDefinition : IDeepEquatable<DestinyMilestoneChallengeActivityDefinition>
 {
     /// <summary>
     ///     The activity for which this challenge is active.
@@ -24,4 +24,13 @@ public class DestinyMilestoneChallengeActivityDefinition
     /// </summary>
     [JsonPropertyName("phases")]
     public List<Destiny.Definitions.Milestones.DestinyMilestoneChallengeActivityPhase> Phases { get; set; }
+
+    public bool DeepEquals(DestinyMilestoneChallengeActivityDefinition? other)
+    {
+        return other is not null &&
+               ActivityHash == other.ActivityHash &&
+               Challenges.DeepEqualsList(other.Challenges) &&
+               ActivityGraphNodes.DeepEqualsList(other.ActivityGraphNodes) &&
+               Phases.DeepEqualsList(other.Phases);
+    }
 }

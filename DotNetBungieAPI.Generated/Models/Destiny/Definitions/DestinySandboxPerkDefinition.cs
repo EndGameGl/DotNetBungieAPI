@@ -13,7 +13,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     What Perks often don't have is human readable information, so we attempt to reverse engineer that by pulling that data from places that uniquely refer to these perks: namely, Talent Nodes and Plugs. That only gives us a subset of perks that are human readable, but those perks are the ones people generally care about anyways. The others are left as a mystery, their true purpose mostly unknown and undocumented.
 /// </summary>
-public class DestinySandboxPerkDefinition
+public class DestinySandboxPerkDefinition : IDeepEquatable<DestinySandboxPerkDefinition>
 {
     /// <summary>
     ///     These display properties are by no means guaranteed to be populated. Usually when it is, it's only because we back-filled them with the displayProperties of some Talent Node or Plug item that happened to be uniquely providing that perk.
@@ -76,4 +76,18 @@ public class DestinySandboxPerkDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinySandboxPerkDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               PerkIdentifier == other.PerkIdentifier &&
+               IsDisplayable == other.IsDisplayable &&
+               DamageType == other.DamageType &&
+               DamageTypeHash == other.DamageTypeHash &&
+               (PerkGroups is not null ? PerkGroups.DeepEquals(other.PerkGroups) : other.PerkGroups is null) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

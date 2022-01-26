@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 /// <summary>
 ///     A milestone may have one or more conceptual Activities associated with it, and each of those conceptual activities could have a variety of variants, modes, tiers, what-have-you. Our attempts to determine what qualifies as a conceptual activity are, unfortunately, janky. So if you see missing modes or modes that don't seem appropriate to you, let us know and I'll buy you a beer if we ever meet up in person.
 /// </summary>
-public class DestinyPublicMilestoneActivity
+public class DestinyPublicMilestoneActivity : IDeepEquatable<DestinyPublicMilestoneActivity>
 {
     /// <summary>
     ///     The hash identifier of the activity that's been chosen to be considered the canonical "conceptual" activity definition. This may have many variants, defined herein.
@@ -34,4 +34,14 @@ public class DestinyPublicMilestoneActivity
     /// </summary>
     [JsonPropertyName("activityModeType")]
     public int? ActivityModeType { get; set; }
+
+    public bool DeepEquals(DestinyPublicMilestoneActivity? other)
+    {
+        return other is not null &&
+               ActivityHash == other.ActivityHash &&
+               ModifierHashes.DeepEqualsListNaive(other.ModifierHashes) &&
+               Variants.DeepEqualsList(other.Variants) &&
+               ActivityModeHash == other.ActivityModeHash &&
+               ActivityModeType == other.ActivityModeType;
+    }
 }

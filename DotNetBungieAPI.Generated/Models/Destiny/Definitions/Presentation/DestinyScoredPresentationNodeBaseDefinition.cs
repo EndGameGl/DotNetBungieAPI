@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Presentation;
 
-public class DestinyScoredPresentationNodeBaseDefinition
+public class DestinyScoredPresentationNodeBaseDefinition : IDeepEquatable<DestinyScoredPresentationNodeBaseDefinition>
 {
     [JsonPropertyName("maxCategoryRecordScore")]
     public int MaxCategoryRecordScore { get; set; }
@@ -39,4 +39,17 @@ public class DestinyScoredPresentationNodeBaseDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyScoredPresentationNodeBaseDefinition? other)
+    {
+        return other is not null &&
+               MaxCategoryRecordScore == other.MaxCategoryRecordScore &&
+               PresentationNodeType == other.PresentationNodeType &&
+               TraitIds.DeepEqualsListNaive(other.TraitIds) &&
+               TraitHashes.DeepEqualsListNaive(other.TraitHashes) &&
+               ParentNodeHashes.DeepEqualsListNaive(other.ParentNodeHashes) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 /// <summary>
 ///     The definition of a category of rewards, that contains many individual rewards.
 /// </summary>
-public class DestinyMilestoneRewardCategoryDefinition
+public class DestinyMilestoneRewardCategoryDefinition : IDeepEquatable<DestinyMilestoneRewardCategoryDefinition>
 {
     /// <summary>
     ///     Identifies the reward category. Only guaranteed unique within this specific component!
@@ -34,4 +34,14 @@ public class DestinyMilestoneRewardCategoryDefinition
     /// </summary>
     [JsonPropertyName("order")]
     public int Order { get; set; }
+
+    public bool DeepEquals(DestinyMilestoneRewardCategoryDefinition? other)
+    {
+        return other is not null &&
+               CategoryHash == other.CategoryHash &&
+               CategoryIdentifier == other.CategoryIdentifier &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               RewardEntries.DeepEqualsDictionary(other.RewardEntries) &&
+               Order == other.Order;
+    }
 }

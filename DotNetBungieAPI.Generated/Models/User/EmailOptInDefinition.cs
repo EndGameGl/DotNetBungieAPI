@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.User;
 /// <summary>
 ///     Defines a single opt-in category: a wide-scoped permission to send emails for the subject related to the opt-in.
 /// </summary>
-public class EmailOptInDefinition
+public class EmailOptInDefinition : IDeepEquatable<EmailOptInDefinition>
 {
     /// <summary>
     ///     The unique identifier for this opt-in category.
@@ -28,4 +28,13 @@ public class EmailOptInDefinition
     /// </summary>
     [JsonPropertyName("dependentSubscriptions")]
     public List<User.EmailSubscriptionDefinition> DependentSubscriptions { get; set; }
+
+    public bool DeepEquals(EmailOptInDefinition? other)
+    {
+        return other is not null &&
+               Name == other.Name &&
+               Value == other.Value &&
+               SetByDefault == other.SetByDefault &&
+               DependentSubscriptions.DeepEqualsList(other.DependentSubscriptions);
+    }
 }

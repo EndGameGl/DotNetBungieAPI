@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Items;
 /// <para />
 ///     A common example of this in Destiny 1 was Eververse "Boxes," which could have many possible items. This "Preview Vendor" is not a vendor you can actually see in the game, but it defines categories and sale items for all of the possible items you could get from the Box so that the game can show them to you. We summarize that info here so that you don't have to do that Vendor lookup and aggregation manually.
 /// </summary>
-public class DestinyDerivedItemCategoryDefinition
+public class DestinyDerivedItemCategoryDefinition : IDeepEquatable<DestinyDerivedItemCategoryDefinition>
 {
     /// <summary>
     ///     The localized string for the category title. This will be something describing the items you can get as a group, or your likelihood/the quantity you'll get.
@@ -18,4 +18,11 @@ public class DestinyDerivedItemCategoryDefinition
     /// </summary>
     [JsonPropertyName("items")]
     public List<Destiny.Definitions.Items.DestinyDerivedItemDefinition> Items { get; set; }
+
+    public bool DeepEquals(DestinyDerivedItemCategoryDefinition? other)
+    {
+        return other is not null &&
+               CategoryDescription == other.CategoryDescription &&
+               Items.DeepEqualsList(other.Items);
+    }
 }

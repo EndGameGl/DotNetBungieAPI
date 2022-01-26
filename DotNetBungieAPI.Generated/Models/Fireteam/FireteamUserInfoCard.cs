@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Fireteam;
 
-public class FireteamUserInfoCard
+public class FireteamUserInfoCard : IDeepEquatable<FireteamUserInfoCard>
 {
     [JsonPropertyName("FireteamDisplayName")]
     public string FireteamDisplayName { get; set; }
@@ -69,4 +69,21 @@ public class FireteamUserInfoCard
     /// </summary>
     [JsonPropertyName("bungieGlobalDisplayNameCode")]
     public short? BungieGlobalDisplayNameCode { get; set; }
+
+    public bool DeepEquals(FireteamUserInfoCard? other)
+    {
+        return other is not null &&
+               FireteamDisplayName == other.FireteamDisplayName &&
+               FireteamMembershipType == other.FireteamMembershipType &&
+               SupplementalDisplayName == other.SupplementalDisplayName &&
+               IconPath == other.IconPath &&
+               CrossSaveOverride == other.CrossSaveOverride &&
+               ApplicableMembershipTypes.DeepEqualsListNaive(other.ApplicableMembershipTypes) &&
+               IsPublic == other.IsPublic &&
+               MembershipType == other.MembershipType &&
+               MembershipId == other.MembershipId &&
+               DisplayName == other.DisplayName &&
+               BungieGlobalDisplayName == other.BungieGlobalDisplayName &&
+               BungieGlobalDisplayNameCode == other.BungieGlobalDisplayNameCode;
+    }
 }

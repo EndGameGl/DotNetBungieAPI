@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Profiles;
 /// <para />
 ///     It's up to you to interpret what it means when various combinations of these entries have values being tracked.
 /// </summary>
-public class DestinyProfileTransitoryTrackingEntry
+public class DestinyProfileTransitoryTrackingEntry : IDeepEquatable<DestinyProfileTransitoryTrackingEntry>
 {
     /// <summary>
     ///     OPTIONAL - If this is tracking a DestinyLocationDefinition, this is the identifier for that location.
@@ -46,4 +46,15 @@ public class DestinyProfileTransitoryTrackingEntry
     /// </summary>
     [JsonPropertyName("trackedDate")]
     public DateTime? TrackedDate { get; set; }
+
+    public bool DeepEquals(DestinyProfileTransitoryTrackingEntry? other)
+    {
+        return other is not null &&
+               LocationHash == other.LocationHash &&
+               ItemHash == other.ItemHash &&
+               ObjectiveHash == other.ObjectiveHash &&
+               ActivityHash == other.ActivityHash &&
+               QuestlineItemHash == other.QuestlineItemHash &&
+               TrackedDate == other.TrackedDate;
+    }
 }

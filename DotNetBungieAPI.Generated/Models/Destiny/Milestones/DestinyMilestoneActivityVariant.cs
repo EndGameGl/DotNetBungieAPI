@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 /// <summary>
 ///     Represents custom data that we know about an individual variant of an activity.
 /// </summary>
-public class DestinyMilestoneActivityVariant
+public class DestinyMilestoneActivityVariant : IDeepEquatable<DestinyMilestoneActivityVariant>
 {
     /// <summary>
     ///     The hash for the specific variant of the activity related to this milestone. You can pull more detailed static info from the DestinyActivityDefinition, such as difficulty level.
@@ -28,4 +28,13 @@ public class DestinyMilestoneActivityVariant
     /// </summary>
     [JsonPropertyName("activityModeType")]
     public int? ActivityModeType { get; set; }
+
+    public bool DeepEquals(DestinyMilestoneActivityVariant? other)
+    {
+        return other is not null &&
+               ActivityHash == other.ActivityHash &&
+               (CompletionStatus is not null ? CompletionStatus.DeepEquals(other.CompletionStatus) : other.CompletionStatus is null) &&
+               ActivityModeHash == other.ActivityModeHash &&
+               ActivityModeType == other.ActivityModeType;
+    }
 }

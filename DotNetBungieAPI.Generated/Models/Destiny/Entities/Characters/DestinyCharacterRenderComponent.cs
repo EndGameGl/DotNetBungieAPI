@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Characters;
 /// <para />
 ///     Examine the Javascript returned by https://bungie.net/sharedbundle/spasm to see how we use this data, but be warned: the rabbit hole goes pretty deep.
 /// </summary>
-public class DestinyCharacterRenderComponent
+public class DestinyCharacterRenderComponent : IDeepEquatable<DestinyCharacterRenderComponent>
 {
     /// <summary>
     ///     Custom dyes, calculated by iterating over the character's equipped items. Useful for pre-fetching all of the dye data needed from our server.
@@ -30,4 +30,12 @@ public class DestinyCharacterRenderComponent
     /// </summary>
     [JsonPropertyName("peerView")]
     public Destiny.Character.DestinyCharacterPeerView PeerView { get; set; }
+
+    public bool DeepEquals(DestinyCharacterRenderComponent? other)
+    {
+        return other is not null &&
+               CustomDyes.DeepEqualsList(other.CustomDyes) &&
+               (Customization is not null ? Customization.DeepEquals(other.Customization) : other.Customization is null) &&
+               (PeerView is not null ? PeerView.DeepEquals(other.PeerView) : other.PeerView is null);
+    }
 }

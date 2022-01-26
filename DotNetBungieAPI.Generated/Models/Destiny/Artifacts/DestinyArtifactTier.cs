@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Artifacts;
 
-public class DestinyArtifactTier
+public class DestinyArtifactTier : IDeepEquatable<DestinyArtifactTier>
 {
     [JsonPropertyName("tierHash")]
     public uint TierHash { get; set; }
@@ -13,4 +13,13 @@ public class DestinyArtifactTier
 
     [JsonPropertyName("items")]
     public List<Destiny.Artifacts.DestinyArtifactTierItem> Items { get; set; }
+
+    public bool DeepEquals(DestinyArtifactTier? other)
+    {
+        return other is not null &&
+               TierHash == other.TierHash &&
+               IsUnlocked == other.IsUnlocked &&
+               PointsToUnlock == other.PointsToUnlock &&
+               Items.DeepEqualsList(other.Items);
+    }
 }

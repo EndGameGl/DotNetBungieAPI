@@ -13,7 +13,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Activities also have Activity Types, but unfortunately in Destiny 2 these are even less reliable of a source of information than they were in Destiny 1. I will be looking into ways to provide more reliable sources for type information as time goes on, but for now we're going to have to deal with the limitations. See DestinyActivityTypeDefinition for more information.
 /// </summary>
-public class DestinyActivityDefinition
+public class DestinyActivityDefinition : IDeepEquatable<DestinyActivityDefinition>
 {
     /// <summary>
     ///     The title, subtitle, and icon for the activity. We do a little post-processing on this to try and account for Activities where the designers have left this data too minimal to determine what activity is actually being played.
@@ -202,4 +202,40 @@ public class DestinyActivityDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyActivityDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               (OriginalDisplayProperties is not null ? OriginalDisplayProperties.DeepEquals(other.OriginalDisplayProperties) : other.OriginalDisplayProperties is null) &&
+               (SelectionScreenDisplayProperties is not null ? SelectionScreenDisplayProperties.DeepEquals(other.SelectionScreenDisplayProperties) : other.SelectionScreenDisplayProperties is null) &&
+               ReleaseIcon == other.ReleaseIcon &&
+               ReleaseTime == other.ReleaseTime &&
+               ActivityLightLevel == other.ActivityLightLevel &&
+               DestinationHash == other.DestinationHash &&
+               PlaceHash == other.PlaceHash &&
+               ActivityTypeHash == other.ActivityTypeHash &&
+               Tier == other.Tier &&
+               PgcrImage == other.PgcrImage &&
+               Rewards.DeepEqualsList(other.Rewards) &&
+               Modifiers.DeepEqualsList(other.Modifiers) &&
+               IsPlaylist == other.IsPlaylist &&
+               Challenges.DeepEqualsList(other.Challenges) &&
+               OptionalUnlockStrings.DeepEqualsList(other.OptionalUnlockStrings) &&
+               PlaylistItems.DeepEqualsList(other.PlaylistItems) &&
+               ActivityGraphList.DeepEqualsList(other.ActivityGraphList) &&
+               (Matchmaking is not null ? Matchmaking.DeepEquals(other.Matchmaking) : other.Matchmaking is null) &&
+               (GuidedGame is not null ? GuidedGame.DeepEquals(other.GuidedGame) : other.GuidedGame is null) &&
+               DirectActivityModeHash == other.DirectActivityModeHash &&
+               DirectActivityModeType == other.DirectActivityModeType &&
+               Loadouts.DeepEqualsList(other.Loadouts) &&
+               ActivityModeHashes.DeepEqualsListNaive(other.ActivityModeHashes) &&
+               ActivityModeTypes.DeepEqualsListNaive(other.ActivityModeTypes) &&
+               IsPvP == other.IsPvP &&
+               InsertionPoints.DeepEqualsList(other.InsertionPoints) &&
+               ActivityLocationMappings.DeepEqualsList(other.ActivityLocationMappings) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

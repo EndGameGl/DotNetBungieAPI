@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 
-public class DestinyPublicMilestoneChallengeActivity
+public class DestinyPublicMilestoneChallengeActivity : IDeepEquatable<DestinyPublicMilestoneChallengeActivity>
 {
     [JsonPropertyName("activityHash")]
     public uint ActivityHash { get; set; }
@@ -37,4 +37,15 @@ public class DestinyPublicMilestoneChallengeActivity
     /// </summary>
     [JsonPropertyName("booleanActivityOptions")]
     public Dictionary<uint, bool> BooleanActivityOptions { get; set; }
+
+    public bool DeepEquals(DestinyPublicMilestoneChallengeActivity? other)
+    {
+        return other is not null &&
+               ActivityHash == other.ActivityHash &&
+               ChallengeObjectiveHashes.DeepEqualsListNaive(other.ChallengeObjectiveHashes) &&
+               ModifierHashes.DeepEqualsListNaive(other.ModifierHashes) &&
+               LoadoutRequirementIndex == other.LoadoutRequirementIndex &&
+               PhaseHashes.DeepEqualsListNaive(other.PhaseHashes) &&
+               BooleanActivityOptions.DeepEqualsDictionaryNaive(other.BooleanActivityOptions);
+    }
 }

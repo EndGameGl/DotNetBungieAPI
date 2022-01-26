@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models;
 
-public class SingleComponentResponseOfDestinyItemTalentGridComponent
+public class SingleComponentResponseOfDestinyItemTalentGridComponent : IDeepEquatable<SingleComponentResponseOfDestinyItemTalentGridComponent>
 {
     [JsonPropertyName("data")]
     public Destiny.Entities.Items.DestinyItemTalentGridComponent Data { get; set; }
@@ -13,4 +13,12 @@ public class SingleComponentResponseOfDestinyItemTalentGridComponent
     /// </summary>
     [JsonPropertyName("disabled")]
     public bool? Disabled { get; set; }
+
+    public bool DeepEquals(SingleComponentResponseOfDestinyItemTalentGridComponent? other)
+    {
+        return other is not null &&
+               (Data is not null ? Data.DeepEquals(other.Data) : other.Data is null) &&
+               Privacy == other.Privacy &&
+               Disabled == other.Disabled;
+    }
 }

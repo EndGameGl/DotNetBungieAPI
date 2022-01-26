@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     This defines a single Step in a progression (which roughly equates to a level. See DestinyProgressionDefinition for caveats).
 /// </summary>
-public class DestinyProgressionStepDefinition
+public class DestinyProgressionStepDefinition : IDeepEquatable<DestinyProgressionStepDefinition>
 {
     /// <summary>
     ///     Very rarely, Progressions will have localized text describing the Level of the progression. This will be that localized text, if it exists. Otherwise, the standard appears to be to simply show the level numerically.
@@ -34,4 +34,14 @@ public class DestinyProgressionStepDefinition
     /// </summary>
     [JsonPropertyName("icon")]
     public string Icon { get; set; }
+
+    public bool DeepEquals(DestinyProgressionStepDefinition? other)
+    {
+        return other is not null &&
+               StepName == other.StepName &&
+               DisplayEffectType == other.DisplayEffectType &&
+               ProgressTotal == other.ProgressTotal &&
+               RewardItems.DeepEqualsList(other.RewardItems) &&
+               Icon == other.Icon;
+    }
 }

@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Profiles;
 /// <para />
 ///     Notably, we don't and can't feasibly return info on characters. If you can, try to use just the data below for your UI and purposes. Only hit us with further queries if you absolutely must know the character ID of the currently playing character. Pretty please with sugar on top.
 /// </summary>
-public class DestinyProfileTransitoryPartyMember
+public class DestinyProfileTransitoryPartyMember : IDeepEquatable<DestinyProfileTransitoryPartyMember>
 {
     /// <summary>
     ///     The Membership ID that matches the party member.
@@ -30,4 +30,13 @@ public class DestinyProfileTransitoryPartyMember
     /// </summary>
     [JsonPropertyName("status")]
     public Destiny.DestinyPartyMemberStates Status { get; set; }
+
+    public bool DeepEquals(DestinyProfileTransitoryPartyMember? other)
+    {
+        return other is not null &&
+               MembershipId == other.MembershipId &&
+               EmblemHash == other.EmblemHash &&
+               DisplayName == other.DisplayName &&
+               Status == other.Status;
+    }
 }

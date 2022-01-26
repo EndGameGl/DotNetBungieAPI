@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Activities can refer to one or more sets of tooltip-friendly reward data. These are the definitions for those tooltip friendly rewards.
 /// </summary>
-public class DestinyActivityRewardDefinition
+public class DestinyActivityRewardDefinition : IDeepEquatable<DestinyActivityRewardDefinition>
 {
     /// <summary>
     ///     The header for the reward set, if any.
@@ -18,4 +18,11 @@ public class DestinyActivityRewardDefinition
     /// </summary>
     [JsonPropertyName("rewardItems")]
     public List<Destiny.DestinyItemQuantity> RewardItems { get; set; }
+
+    public bool DeepEquals(DestinyActivityRewardDefinition? other)
+    {
+        return other is not null &&
+               RewardText == other.RewardText &&
+               RewardItems.DeepEqualsList(other.RewardItems);
+    }
 }

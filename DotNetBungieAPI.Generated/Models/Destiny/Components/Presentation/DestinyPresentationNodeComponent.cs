@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Presentation;
 
-public class DestinyPresentationNodeComponent
+public class DestinyPresentationNodeComponent : IDeepEquatable<DestinyPresentationNodeComponent>
 {
     [JsonPropertyName("state")]
     public Destiny.DestinyPresentationNodeState State { get; set; }
@@ -28,4 +28,14 @@ public class DestinyPresentationNodeComponent
     /// </summary>
     [JsonPropertyName("recordCategoryScore")]
     public int? RecordCategoryScore { get; set; }
+
+    public bool DeepEquals(DestinyPresentationNodeComponent? other)
+    {
+        return other is not null &&
+               State == other.State &&
+               (Objective is not null ? Objective.DeepEquals(other.Objective) : other.Objective is null) &&
+               ProgressValue == other.ProgressValue &&
+               CompletionValue == other.CompletionValue &&
+               RecordCategoryScore == other.RecordCategoryScore;
+    }
 }

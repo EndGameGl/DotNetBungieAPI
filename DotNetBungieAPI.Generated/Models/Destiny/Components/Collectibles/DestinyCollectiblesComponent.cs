@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Collectibles;
 
-public class DestinyCollectiblesComponent
+public class DestinyCollectiblesComponent : IDeepEquatable<DestinyCollectiblesComponent>
 {
     [JsonPropertyName("collectibles")]
     public Dictionary<uint, Destiny.Components.Collectibles.DestinyCollectibleComponent> Collectibles { get; set; }
@@ -16,4 +16,12 @@ public class DestinyCollectiblesComponent
     /// </summary>
     [JsonPropertyName("collectionBadgesRootNodeHash")]
     public uint CollectionBadgesRootNodeHash { get; set; }
+
+    public bool DeepEquals(DestinyCollectiblesComponent? other)
+    {
+        return other is not null &&
+               Collectibles.DeepEqualsDictionary(other.Collectibles) &&
+               CollectionCategoriesRootNodeHash == other.CollectionCategoriesRootNodeHash &&
+               CollectionBadgesRootNodeHash == other.CollectionBadgesRootNodeHash;
+    }
 }

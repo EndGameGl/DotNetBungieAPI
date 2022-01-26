@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Trending;
 
-public class TrendingEntryDestinyRitual
+public class TrendingEntryDestinyRitual : IDeepEquatable<TrendingEntryDestinyRitual>
 {
     [JsonPropertyName("image")]
     public string Image { get; set; }
@@ -31,4 +31,17 @@ public class TrendingEntryDestinyRitual
     /// </summary>
     [JsonPropertyName("eventContent")]
     public Destiny.Milestones.DestinyMilestoneContent EventContent { get; set; }
+
+    public bool DeepEquals(TrendingEntryDestinyRitual? other)
+    {
+        return other is not null &&
+               Image == other.Image &&
+               Icon == other.Icon &&
+               Title == other.Title &&
+               Subtitle == other.Subtitle &&
+               DateStart == other.DateStart &&
+               DateEnd == other.DateEnd &&
+               (MilestoneDetails is not null ? MilestoneDetails.DeepEquals(other.MilestoneDetails) : other.MilestoneDetails is null) &&
+               (EventContent is not null ? EventContent.DeepEquals(other.EventContent) : other.EventContent is null);
+    }
 }

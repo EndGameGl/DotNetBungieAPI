@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 /// <summary>
 ///     Information about milestones, presented in a character state-agnostic manner. Combine this data with DestinyMilestoneDefinition to get a full picture of the milestone, which is basically a checklist of things to do in the game. Think of this as GetPublicAdvisors 3.0, for those who used the Destiny 1 API.
 /// </summary>
-public class DestinyPublicMilestone
+public class DestinyPublicMilestone : IDeepEquatable<DestinyPublicMilestone>
 {
     /// <summary>
     ///     The hash identifier for the milestone. Use it to look up the DestinyMilestoneDefinition for static data about the Milestone.
@@ -51,4 +51,17 @@ public class DestinyPublicMilestone
     /// </summary>
     [JsonPropertyName("order")]
     public int Order { get; set; }
+
+    public bool DeepEquals(DestinyPublicMilestone? other)
+    {
+        return other is not null &&
+               MilestoneHash == other.MilestoneHash &&
+               AvailableQuests.DeepEqualsList(other.AvailableQuests) &&
+               Activities.DeepEqualsList(other.Activities) &&
+               VendorHashes.DeepEqualsListNaive(other.VendorHashes) &&
+               Vendors.DeepEqualsList(other.Vendors) &&
+               StartDate == other.StartDate &&
+               EndDate == other.EndDate &&
+               Order == other.Order;
+    }
 }

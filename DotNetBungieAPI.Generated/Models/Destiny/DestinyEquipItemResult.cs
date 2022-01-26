@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny;
 /// <summary>
 ///     The results of an Equipping operation performed through the Destiny API.
 /// </summary>
-public class DestinyEquipItemResult
+public class DestinyEquipItemResult : IDeepEquatable<DestinyEquipItemResult>
 {
     /// <summary>
     ///     The instance ID of the item in question (all items that can be equipped must, but definition, be Instanced and thus have an Instance ID that you can use to refer to them)
@@ -16,4 +16,11 @@ public class DestinyEquipItemResult
     /// </summary>
     [JsonPropertyName("equipStatus")]
     public Exceptions.PlatformErrorCodes EquipStatus { get; set; }
+
+    public bool DeepEquals(DestinyEquipItemResult? other)
+    {
+        return other is not null &&
+               ItemInstanceId == other.ItemInstanceId &&
+               EquipStatus == other.EquipStatus;
+    }
 }

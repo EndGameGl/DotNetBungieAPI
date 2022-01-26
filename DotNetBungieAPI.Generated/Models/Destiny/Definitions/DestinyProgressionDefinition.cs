@@ -11,7 +11,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Earned experience is calculated in a variety of ways, determined by the Progression's scope. These go from looking up a stored value to performing exceedingly obtuse calculations. This is why we provide live data in DestinyCharacterProgressionComponent.progressions, so you don't have to worry about those.
 /// </summary>
-public class DestinyProgressionDefinition
+public class DestinyProgressionDefinition : IDeepEquatable<DestinyProgressionDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.DestinyProgressionDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -94,4 +94,22 @@ public class DestinyProgressionDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyProgressionDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               Scope == other.Scope &&
+               RepeatLastStep == other.RepeatLastStep &&
+               Source == other.Source &&
+               Steps.DeepEqualsList(other.Steps) &&
+               Visible == other.Visible &&
+               FactionHash == other.FactionHash &&
+               (Color is not null ? Color.DeepEquals(other.Color) : other.Color is null) &&
+               RankIcon == other.RankIcon &&
+               RewardItems.DeepEqualsList(other.RewardItems) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Items;
 /// <summary>
 ///     Items can have Energy Capacity, and plugs can provide that capacity such as on a piece of Armor in Armor 2.0. This is how much "Energy" can be spent on activating plugs for this item.
 /// </summary>
-public class DestinyEnergyCapacityEntry
+public class DestinyEnergyCapacityEntry : IDeepEquatable<DestinyEnergyCapacityEntry>
 {
     /// <summary>
     ///     How much energy capacity this plug provides.
@@ -22,4 +22,12 @@ public class DestinyEnergyCapacityEntry
     /// </summary>
     [JsonPropertyName("energyType")]
     public Destiny.DestinyEnergyType EnergyType { get; set; }
+
+    public bool DeepEquals(DestinyEnergyCapacityEntry? other)
+    {
+        return other is not null &&
+               CapacityValue == other.CapacityValue &&
+               EnergyTypeHash == other.EnergyTypeHash &&
+               EnergyType == other.EnergyType;
+    }
 }

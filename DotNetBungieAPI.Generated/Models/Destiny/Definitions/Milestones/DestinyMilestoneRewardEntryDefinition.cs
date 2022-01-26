@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 /// <summary>
 ///     The definition of a specific reward, which may be contained in a category of rewards and that has optional information about how it is obtained.
 /// </summary>
-public class DestinyMilestoneRewardEntryDefinition
+public class DestinyMilestoneRewardEntryDefinition : IDeepEquatable<DestinyMilestoneRewardEntryDefinition>
 {
     /// <summary>
     ///     The identifier for this reward entry. Runtime data will refer to reward entries by this hash. Only guaranteed unique within the specific Milestone.
@@ -40,4 +40,15 @@ public class DestinyMilestoneRewardEntryDefinition
     /// </summary>
     [JsonPropertyName("order")]
     public int Order { get; set; }
+
+    public bool DeepEquals(DestinyMilestoneRewardEntryDefinition? other)
+    {
+        return other is not null &&
+               RewardEntryHash == other.RewardEntryHash &&
+               RewardEntryIdentifier == other.RewardEntryIdentifier &&
+               Items.DeepEqualsList(other.Items) &&
+               VendorHash == other.VendorHash &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               Order == other.Order;
+    }
 }

@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     In practice, you will want to associate this data with "live" item data from a Bungie.Net Platform call: these definitions describe the item in generic, non-instanced terms: but an actual instance of an item can vary widely from these generic definitions.
 /// </summary>
-public class DestinyInventoryItemDefinition
+public class DestinyInventoryItemDefinition : IDeepEquatable<DestinyInventoryItemDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -410,4 +410,72 @@ public class DestinyInventoryItemDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyInventoryItemDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               TooltipNotifications.DeepEqualsList(other.TooltipNotifications) &&
+               CollectibleHash == other.CollectibleHash &&
+               IconWatermark == other.IconWatermark &&
+               IconWatermarkShelved == other.IconWatermarkShelved &&
+               SecondaryIcon == other.SecondaryIcon &&
+               SecondaryOverlay == other.SecondaryOverlay &&
+               SecondarySpecial == other.SecondarySpecial &&
+               (BackgroundColor is not null ? BackgroundColor.DeepEquals(other.BackgroundColor) : other.BackgroundColor is null) &&
+               Screenshot == other.Screenshot &&
+               ItemTypeDisplayName == other.ItemTypeDisplayName &&
+               FlavorText == other.FlavorText &&
+               UiItemDisplayStyle == other.UiItemDisplayStyle &&
+               ItemTypeAndTierDisplayName == other.ItemTypeAndTierDisplayName &&
+               DisplaySource == other.DisplaySource &&
+               TooltipStyle == other.TooltipStyle &&
+               (Action is not null ? Action.DeepEquals(other.Action) : other.Action is null) &&
+               (Inventory is not null ? Inventory.DeepEquals(other.Inventory) : other.Inventory is null) &&
+               (SetData is not null ? SetData.DeepEquals(other.SetData) : other.SetData is null) &&
+               (Stats is not null ? Stats.DeepEquals(other.Stats) : other.Stats is null) &&
+               EmblemObjectiveHash == other.EmblemObjectiveHash &&
+               (EquippingBlock is not null ? EquippingBlock.DeepEquals(other.EquippingBlock) : other.EquippingBlock is null) &&
+               (TranslationBlock is not null ? TranslationBlock.DeepEquals(other.TranslationBlock) : other.TranslationBlock is null) &&
+               (Preview is not null ? Preview.DeepEquals(other.Preview) : other.Preview is null) &&
+               (Quality is not null ? Quality.DeepEquals(other.Quality) : other.Quality is null) &&
+               (Value is not null ? Value.DeepEquals(other.Value) : other.Value is null) &&
+               (SourceData is not null ? SourceData.DeepEquals(other.SourceData) : other.SourceData is null) &&
+               (Objectives is not null ? Objectives.DeepEquals(other.Objectives) : other.Objectives is null) &&
+               (Metrics is not null ? Metrics.DeepEquals(other.Metrics) : other.Metrics is null) &&
+               (Plug is not null ? Plug.DeepEquals(other.Plug) : other.Plug is null) &&
+               (Gearset is not null ? Gearset.DeepEquals(other.Gearset) : other.Gearset is null) &&
+               (Sack is not null ? Sack.DeepEquals(other.Sack) : other.Sack is null) &&
+               (Sockets is not null ? Sockets.DeepEquals(other.Sockets) : other.Sockets is null) &&
+               (Summary is not null ? Summary.DeepEquals(other.Summary) : other.Summary is null) &&
+               (TalentGrid is not null ? TalentGrid.DeepEquals(other.TalentGrid) : other.TalentGrid is null) &&
+               InvestmentStats.DeepEqualsList(other.InvestmentStats) &&
+               Perks.DeepEqualsList(other.Perks) &&
+               LoreHash == other.LoreHash &&
+               SummaryItemHash == other.SummaryItemHash &&
+               Animations.DeepEqualsList(other.Animations) &&
+               AllowActions == other.AllowActions &&
+               Links.DeepEqualsList(other.Links) &&
+               DoesPostmasterPullHaveSideEffects == other.DoesPostmasterPullHaveSideEffects &&
+               NonTransferrable == other.NonTransferrable &&
+               ItemCategoryHashes.DeepEqualsListNaive(other.ItemCategoryHashes) &&
+               SpecialItemType == other.SpecialItemType &&
+               ItemType == other.ItemType &&
+               ItemSubType == other.ItemSubType &&
+               ClassType == other.ClassType &&
+               BreakerType == other.BreakerType &&
+               BreakerTypeHash == other.BreakerTypeHash &&
+               Equippable == other.Equippable &&
+               DamageTypeHashes.DeepEqualsListNaive(other.DamageTypeHashes) &&
+               DamageTypes.DeepEqualsListNaive(other.DamageTypes) &&
+               DefaultDamageType == other.DefaultDamageType &&
+               DefaultDamageTypeHash == other.DefaultDamageTypeHash &&
+               SeasonHash == other.SeasonHash &&
+               IsWrapper == other.IsWrapper &&
+               TraitIds.DeepEqualsListNaive(other.TraitIds) &&
+               TraitHashes.DeepEqualsListNaive(other.TraitHashes) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

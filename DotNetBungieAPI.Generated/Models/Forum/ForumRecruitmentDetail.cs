@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Forum;
 
-public class ForumRecruitmentDetail
+public class ForumRecruitmentDetail : IDeepEquatable<ForumRecruitmentDetail>
 {
     [JsonPropertyName("topicId")]
     public long TopicId { get; set; }
@@ -31,4 +31,19 @@ public class ForumRecruitmentDetail
 
     [JsonPropertyName("kickedPlayerIds")]
     public List<long> KickedPlayerIds { get; set; }
+
+    public bool DeepEquals(ForumRecruitmentDetail? other)
+    {
+        return other is not null &&
+               TopicId == other.TopicId &&
+               MicrophoneRequired == other.MicrophoneRequired &&
+               Intensity == other.Intensity &&
+               Tone == other.Tone &&
+               Approved == other.Approved &&
+               ConversationId == other.ConversationId &&
+               PlayerSlotsTotal == other.PlayerSlotsTotal &&
+               PlayerSlotsRemaining == other.PlayerSlotsRemaining &&
+               Fireteam.DeepEqualsList(other.Fireteam) &&
+               KickedPlayerIds.DeepEqualsListNaive(other.KickedPlayerIds);
+    }
 }

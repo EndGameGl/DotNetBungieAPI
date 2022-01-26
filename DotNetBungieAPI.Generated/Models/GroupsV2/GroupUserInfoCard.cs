@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public class GroupUserInfoCard
+public class GroupUserInfoCard : IDeepEquatable<GroupUserInfoCard>
 {
     /// <summary>
     ///     This will be the display name the clan server last saw the user as. If the account is an active cross save override, this will be the display name to use. Otherwise, this will match the displayName property.
@@ -75,4 +75,21 @@ public class GroupUserInfoCard
     /// </summary>
     [JsonPropertyName("bungieGlobalDisplayNameCode")]
     public short? BungieGlobalDisplayNameCode { get; set; }
+
+    public bool DeepEquals(GroupUserInfoCard? other)
+    {
+        return other is not null &&
+               LastSeenDisplayName == other.LastSeenDisplayName &&
+               LastSeenDisplayNameType == other.LastSeenDisplayNameType &&
+               SupplementalDisplayName == other.SupplementalDisplayName &&
+               IconPath == other.IconPath &&
+               CrossSaveOverride == other.CrossSaveOverride &&
+               ApplicableMembershipTypes.DeepEqualsListNaive(other.ApplicableMembershipTypes) &&
+               IsPublic == other.IsPublic &&
+               MembershipType == other.MembershipType &&
+               MembershipId == other.MembershipId &&
+               DisplayName == other.DisplayName &&
+               BungieGlobalDisplayName == other.BungieGlobalDisplayName &&
+               BungieGlobalDisplayNameCode == other.BungieGlobalDisplayNameCode;
+    }
 }

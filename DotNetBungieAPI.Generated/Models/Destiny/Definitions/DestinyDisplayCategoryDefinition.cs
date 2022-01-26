@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Display Categories are different from "categories" in that these are specifically for visual grouping and display of categories in Vendor UI. The "categories" structure is for validation of the contained items, and can be categorized entirely separately from "Display Categories", there need be and often will be no meaningful relationship between the two.
 /// </summary>
-public class DestinyDisplayCategoryDefinition
+public class DestinyDisplayCategoryDefinition : IDeepEquatable<DestinyDisplayCategoryDefinition>
 {
     [JsonPropertyName("index")]
     public int Index { get; set; }
@@ -51,4 +51,18 @@ public class DestinyDisplayCategoryDefinition
     /// </summary>
     [JsonPropertyName("displayStyleIdentifier")]
     public string DisplayStyleIdentifier { get; set; }
+
+    public bool DeepEquals(DestinyDisplayCategoryDefinition? other)
+    {
+        return other is not null &&
+               Index == other.Index &&
+               Identifier == other.Identifier &&
+               DisplayCategoryHash == other.DisplayCategoryHash &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               DisplayInBanner == other.DisplayInBanner &&
+               ProgressionHash == other.ProgressionHash &&
+               SortOrder == other.SortOrder &&
+               DisplayStyleHash == other.DisplayStyleHash &&
+               DisplayStyleIdentifier == other.DisplayStyleIdentifier;
+    }
 }

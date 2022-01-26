@@ -7,11 +7,17 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Kiosks;
 /// <para />
 ///     Note that, because this component returns vendorItemIndexes (that is to say, indexes into the Kiosk Vendor's itemList property), these results are necessarily content version dependent. Make sure that you have the latest version of the content manifest databases before using this data.
 /// </summary>
-public class DestinyKiosksComponent
+public class DestinyKiosksComponent : IDeepEquatable<DestinyKiosksComponent>
 {
     /// <summary>
     ///     A dictionary keyed by the Kiosk Vendor's hash identifier (use it to look up the DestinyVendorDefinition for the relevant kiosk vendor), and whose value is a list of all the items that the user can "see" in the Kiosk, and any other interesting metadata.
     /// </summary>
     [JsonPropertyName("kioskItems")]
     public Dictionary<uint, List<Destiny.Components.Kiosks.DestinyKioskItem>> KioskItems { get; set; }
+
+    public bool DeepEquals(DestinyKiosksComponent? other)
+    {
+        return other is not null &&
+               KioskItems.DeepEqualsDictionaryNaive(other.KioskItems);
+    }
 }

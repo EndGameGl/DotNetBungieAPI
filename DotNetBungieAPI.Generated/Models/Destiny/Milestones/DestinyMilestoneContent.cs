@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 /// <summary>
 ///     Represents localized, extended content related to Milestones. This is intentionally returned by a separate endpoint and not with Character-level Milestone data because we do not put localized data into standard Destiny responses, both for brevity of response and for caching purposes. If you really need this data, hit the Milestone Content endpoint.
 /// </summary>
-public class DestinyMilestoneContent
+public class DestinyMilestoneContent : IDeepEquatable<DestinyMilestoneContent>
 {
     /// <summary>
     ///     The "About this Milestone" text from the Firehose.
@@ -28,4 +28,13 @@ public class DestinyMilestoneContent
     /// </summary>
     [JsonPropertyName("itemCategories")]
     public List<Destiny.Milestones.DestinyMilestoneContentItemCategory> ItemCategories { get; set; }
+
+    public bool DeepEquals(DestinyMilestoneContent? other)
+    {
+        return other is not null &&
+               About == other.About &&
+               Status == other.Status &&
+               Tips.DeepEqualsListNaive(other.Tips) &&
+               ItemCategories.DeepEqualsList(other.ItemCategories);
+    }
 }

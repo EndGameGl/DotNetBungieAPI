@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 
-public class DestinyActivityLoadoutRequirement
+public class DestinyActivityLoadoutRequirement : IDeepEquatable<DestinyActivityLoadoutRequirement>
 {
     [JsonPropertyName("equipmentSlotHash")]
     public uint EquipmentSlotHash { get; set; }
@@ -10,4 +10,12 @@ public class DestinyActivityLoadoutRequirement
 
     [JsonPropertyName("allowedWeaponSubTypes")]
     public List<Destiny.DestinyItemSubType> AllowedWeaponSubTypes { get; set; }
+
+    public bool DeepEquals(DestinyActivityLoadoutRequirement? other)
+    {
+        return other is not null &&
+               EquipmentSlotHash == other.EquipmentSlotHash &&
+               AllowedEquippedItemHashes.DeepEqualsListNaive(other.AllowedEquippedItemHashes) &&
+               AllowedWeaponSubTypes.DeepEqualsListNaive(other.AllowedWeaponSubTypes);
+    }
 }

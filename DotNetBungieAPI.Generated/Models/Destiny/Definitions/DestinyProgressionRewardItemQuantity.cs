@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 
-public class DestinyProgressionRewardItemQuantity
+public class DestinyProgressionRewardItemQuantity : IDeepEquatable<DestinyProgressionRewardItemQuantity>
 {
     [JsonPropertyName("rewardedAtProgressionLevel")]
     public int RewardedAtProgressionLevel { get; set; }
@@ -37,4 +37,17 @@ public class DestinyProgressionRewardItemQuantity
     /// </summary>
     [JsonPropertyName("hasConditionalVisibility")]
     public bool HasConditionalVisibility { get; set; }
+
+    public bool DeepEquals(DestinyProgressionRewardItemQuantity? other)
+    {
+        return other is not null &&
+               RewardedAtProgressionLevel == other.RewardedAtProgressionLevel &&
+               AcquisitionBehavior == other.AcquisitionBehavior &&
+               UiDisplayStyle == other.UiDisplayStyle &&
+               ClaimUnlockDisplayStrings.DeepEqualsListNaive(other.ClaimUnlockDisplayStrings) &&
+               ItemHash == other.ItemHash &&
+               ItemInstanceId == other.ItemInstanceId &&
+               Quantity == other.Quantity &&
+               HasConditionalVisibility == other.HasConditionalVisibility;
+    }
 }

@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Items;
 
-public class DestinyItemTierTypeInfusionBlock
+public class DestinyItemTierTypeInfusionBlock : IDeepEquatable<DestinyItemTierTypeInfusionBlock>
 {
     /// <summary>
     ///     The default portion of quality that will transfer from the infuser to the infusee item. (InfuserQuality - InfuseeQuality) * baseQualityTransferRatio = base quality transferred.
@@ -13,4 +13,11 @@ public class DestinyItemTierTypeInfusionBlock
     /// </summary>
     [JsonPropertyName("minimumQualityIncrement")]
     public int MinimumQualityIncrement { get; set; }
+
+    public bool DeepEquals(DestinyItemTierTypeInfusionBlock? other)
+    {
+        return other is not null &&
+               BaseQualityTransferRatio == other.BaseQualityTransferRatio &&
+               MinimumQualityIncrement == other.MinimumQualityIncrement;
+    }
 }

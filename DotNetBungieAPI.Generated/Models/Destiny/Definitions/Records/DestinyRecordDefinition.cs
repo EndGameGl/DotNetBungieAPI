@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Records;
 
-public class DestinyRecordDefinition
+public class DestinyRecordDefinition : IDeepEquatable<DestinyRecordDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -89,4 +89,30 @@ public class DestinyRecordDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyRecordDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               Scope == other.Scope &&
+               (PresentationInfo is not null ? PresentationInfo.DeepEquals(other.PresentationInfo) : other.PresentationInfo is null) &&
+               LoreHash == other.LoreHash &&
+               ObjectiveHashes.DeepEqualsListNaive(other.ObjectiveHashes) &&
+               RecordValueStyle == other.RecordValueStyle &&
+               ForTitleGilding == other.ForTitleGilding &&
+               (TitleInfo is not null ? TitleInfo.DeepEquals(other.TitleInfo) : other.TitleInfo is null) &&
+               (CompletionInfo is not null ? CompletionInfo.DeepEquals(other.CompletionInfo) : other.CompletionInfo is null) &&
+               (StateInfo is not null ? StateInfo.DeepEquals(other.StateInfo) : other.StateInfo is null) &&
+               (Requirements is not null ? Requirements.DeepEquals(other.Requirements) : other.Requirements is null) &&
+               (ExpirationInfo is not null ? ExpirationInfo.DeepEquals(other.ExpirationInfo) : other.ExpirationInfo is null) &&
+               (IntervalInfo is not null ? IntervalInfo.DeepEquals(other.IntervalInfo) : other.IntervalInfo is null) &&
+               RewardItems.DeepEqualsList(other.RewardItems) &&
+               PresentationNodeType == other.PresentationNodeType &&
+               TraitIds.DeepEqualsListNaive(other.TraitIds) &&
+               TraitHashes.DeepEqualsListNaive(other.TraitHashes) &&
+               ParentNodeHashes.DeepEqualsListNaive(other.ParentNodeHashes) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

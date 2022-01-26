@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     See DestinyTalentGridDefinition for a more complete overview of how Talent Grids work, and how they are used in Destiny 2 (and how they were used in Destiny 1).
 /// </summary>
-public class DestinyTalentNodeDefinition
+public class DestinyTalentNodeDefinition : IDeepEquatable<DestinyTalentNodeDefinition>
 {
     /// <summary>
     ///     The index into the DestinyTalentGridDefinition's "nodes" property where this node is located. Used to uniquely identify the node within the Talent Grid. Note that this is content version dependent: make sure you have the latest version of content before trying to use these properties.
@@ -140,4 +140,28 @@ public class DestinyTalentNodeDefinition
     /// </summary>
     [JsonPropertyName("ignoreForCompletion")]
     public bool IgnoreForCompletion { get; set; }
+
+    public bool DeepEquals(DestinyTalentNodeDefinition? other)
+    {
+        return other is not null &&
+               NodeIndex == other.NodeIndex &&
+               NodeHash == other.NodeHash &&
+               Row == other.Row &&
+               Column == other.Column &&
+               PrerequisiteNodeIndexes.DeepEqualsListNaive(other.PrerequisiteNodeIndexes) &&
+               BinaryPairNodeIndex == other.BinaryPairNodeIndex &&
+               AutoUnlocks == other.AutoUnlocks &&
+               LastStepRepeats == other.LastStepRepeats &&
+               IsRandom == other.IsRandom &&
+               (RandomActivationRequirement is not null ? RandomActivationRequirement.DeepEquals(other.RandomActivationRequirement) : other.RandomActivationRequirement is null) &&
+               IsRandomRepurchasable == other.IsRandomRepurchasable &&
+               Steps.DeepEqualsList(other.Steps) &&
+               ExclusiveWithNodeHashes.DeepEqualsListNaive(other.ExclusiveWithNodeHashes) &&
+               RandomStartProgressionBarAtProgression == other.RandomStartProgressionBarAtProgression &&
+               LayoutIdentifier == other.LayoutIdentifier &&
+               GroupHash == other.GroupHash &&
+               LoreHash == other.LoreHash &&
+               NodeStyleIdentifier == other.NodeStyleIdentifier &&
+               IgnoreForCompletion == other.IgnoreForCompletion;
+    }
 }

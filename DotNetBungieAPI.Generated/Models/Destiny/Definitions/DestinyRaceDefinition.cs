@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     In Destiny, "Races" are really more like "Species". Sort of. I mean, are the Awoken a separate species from humans? I'm not sure. But either way, they're defined here. You'll see Exo, Awoken, and Human as examples of these Species. Players will choose one for their character.
 /// </summary>
-public class DestinyRaceDefinition
+public class DestinyRaceDefinition : IDeepEquatable<DestinyRaceDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -42,4 +42,16 @@ public class DestinyRaceDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinyRaceDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               RaceType == other.RaceType &&
+               GenderedRaceNames.DeepEqualsDictionaryNaive(other.GenderedRaceNames) &&
+               GenderedRaceNamesByGenderHash.DeepEqualsDictionaryNaive(other.GenderedRaceNamesByGenderHash) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

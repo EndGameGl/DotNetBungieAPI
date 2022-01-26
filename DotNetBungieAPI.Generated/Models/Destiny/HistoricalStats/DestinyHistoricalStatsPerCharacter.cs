@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public class DestinyHistoricalStatsPerCharacter
+public class DestinyHistoricalStatsPerCharacter : IDeepEquatable<DestinyHistoricalStatsPerCharacter>
 {
     [JsonPropertyName("characterId")]
     public long CharacterId { get; set; }
@@ -13,4 +13,13 @@ public class DestinyHistoricalStatsPerCharacter
 
     [JsonPropertyName("merged")]
     public Destiny.HistoricalStats.DestinyHistoricalStatsByPeriod Merged { get; set; }
+
+    public bool DeepEquals(DestinyHistoricalStatsPerCharacter? other)
+    {
+        return other is not null &&
+               CharacterId == other.CharacterId &&
+               Deleted == other.Deleted &&
+               Results.DeepEqualsDictionary(other.Results) &&
+               (Merged is not null ? Merged.DeepEquals(other.Merged) : other.Merged is null);
+    }
 }

@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Requests;
 
-public class DestinyItemTransferRequest
+public class DestinyItemTransferRequest : IDeepEquatable<DestinyItemTransferRequest>
 {
     [JsonPropertyName("itemReferenceHash")]
     public uint ItemReferenceHash { get; set; }
@@ -22,4 +22,15 @@ public class DestinyItemTransferRequest
 
     [JsonPropertyName("membershipType")]
     public BungieMembershipType MembershipType { get; set; }
+
+    public bool DeepEquals(DestinyItemTransferRequest? other)
+    {
+        return other is not null &&
+               ItemReferenceHash == other.ItemReferenceHash &&
+               StackSize == other.StackSize &&
+               TransferToVault == other.TransferToVault &&
+               ItemId == other.ItemId &&
+               CharacterId == other.CharacterId &&
+               MembershipType == other.MembershipType;
+    }
 }

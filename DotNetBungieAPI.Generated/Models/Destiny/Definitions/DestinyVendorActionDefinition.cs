@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     If a vendor can ever end up performing actions, these are the properties that will be related to those actions. I'm not going to bother documenting this yet, as it is unused and unclear if it will ever be used... but in case it is ever populated and someone finds it useful, it is defined here.
 /// </summary>
-public class DestinyVendorActionDefinition
+public class DestinyVendorActionDefinition : IDeepEquatable<DestinyVendorActionDefinition>
 {
     [JsonPropertyName("description")]
     public string Description { get; set; }
@@ -31,4 +31,18 @@ public class DestinyVendorActionDefinition
 
     [JsonPropertyName("autoPerformAction")]
     public bool AutoPerformAction { get; set; }
+
+    public bool DeepEquals(DestinyVendorActionDefinition? other)
+    {
+        return other is not null &&
+               Description == other.Description &&
+               ExecuteSeconds == other.ExecuteSeconds &&
+               Icon == other.Icon &&
+               Name == other.Name &&
+               Verb == other.Verb &&
+               IsPositive == other.IsPositive &&
+               ActionId == other.ActionId &&
+               ActionHash == other.ActionHash &&
+               AutoPerformAction == other.AutoPerformAction;
+    }
 }

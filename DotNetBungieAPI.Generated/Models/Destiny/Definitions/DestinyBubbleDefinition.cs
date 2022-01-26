@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Basic identifying data about the bubble. Combine with DestinyDestinationBubbleSettingDefinition - see DestinyDestinationDefinition.bubbleSettings for more information.
 /// </summary>
-public class DestinyBubbleDefinition
+public class DestinyBubbleDefinition : IDeepEquatable<DestinyBubbleDefinition>
 {
     /// <summary>
     ///     The identifier for the bubble: only guaranteed to be unique within the Destination.
@@ -16,4 +16,11 @@ public class DestinyBubbleDefinition
     /// </summary>
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+
+    public bool DeepEquals(DestinyBubbleDefinition? other)
+    {
+        return other is not null &&
+               Hash == other.Hash &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null);
+    }
 }

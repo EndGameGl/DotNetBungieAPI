@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Config;
 /// <summary>
 ///     DestinyManifest is the external-facing contract for just the properties needed by those calling the Destiny Platform.
 /// </summary>
-public class DestinyManifest
+public class DestinyManifest : IDeepEquatable<DestinyManifest>
 {
     [JsonPropertyName("version")]
     public string Version { get; set; }
@@ -40,4 +40,18 @@ public class DestinyManifest
     /// </summary>
     [JsonPropertyName("iconImagePyramidInfo")]
     public List<Destiny.Config.ImagePyramidEntry> IconImagePyramidInfo { get; set; }
+
+    public bool DeepEquals(DestinyManifest? other)
+    {
+        return other is not null &&
+               Version == other.Version &&
+               MobileAssetContentPath == other.MobileAssetContentPath &&
+               MobileGearAssetDataBases.DeepEqualsList(other.MobileGearAssetDataBases) &&
+               MobileWorldContentPaths.DeepEqualsDictionaryNaive(other.MobileWorldContentPaths) &&
+               JsonWorldContentPaths.DeepEqualsDictionaryNaive(other.JsonWorldContentPaths) &&
+               JsonWorldComponentContentPaths.DeepEqualsDictionaryNaive(other.JsonWorldComponentContentPaths) &&
+               MobileClanBannerDatabasePath == other.MobileClanBannerDatabasePath &&
+               MobileGearCDN.DeepEqualsDictionaryNaive(other.MobileGearCDN) &&
+               IconImagePyramidInfo.DeepEqualsList(other.IconImagePyramidInfo);
+    }
 }

@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Seasons;
 /// <summary>
 ///     Defines a canonical "Season" of Destiny: a range of a few months where the game highlights certain challenges, provides new loot, has new Clan-related rewards and celebrates various seasonal events.
 /// </summary>
-public class DestinySeasonDefinition
+public class DestinySeasonDefinition : IDeepEquatable<DestinySeasonDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -60,4 +60,23 @@ public class DestinySeasonDefinition
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
+
+    public bool DeepEquals(DestinySeasonDefinition? other)
+    {
+        return other is not null &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               BackgroundImagePath == other.BackgroundImagePath &&
+               SeasonNumber == other.SeasonNumber &&
+               StartDate == other.StartDate &&
+               EndDate == other.EndDate &&
+               SeasonPassHash == other.SeasonPassHash &&
+               SeasonPassProgressionHash == other.SeasonPassProgressionHash &&
+               ArtifactItemHash == other.ArtifactItemHash &&
+               SealPresentationNodeHash == other.SealPresentationNodeHash &&
+               SeasonalChallengesPresentationNodeHash == other.SeasonalChallengesPresentationNodeHash &&
+               (Preview is not null ? Preview.DeepEquals(other.Preview) : other.Preview is null) &&
+               Hash == other.Hash &&
+               Index == other.Index &&
+               Redacted == other.Redacted;
+    }
 }

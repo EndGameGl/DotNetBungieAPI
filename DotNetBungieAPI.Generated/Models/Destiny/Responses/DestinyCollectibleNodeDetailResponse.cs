@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Responses;
 /// <summary>
 ///     Returns the detailed information about a Collectible Presentation Node and any Collectibles that are direct descendants.
 /// </summary>
-public class DestinyCollectibleNodeDetailResponse
+public class DestinyCollectibleNodeDetailResponse : IDeepEquatable<DestinyCollectibleNodeDetailResponse>
 {
     /// <summary>
     ///     COMPONENT TYPE: Collectibles
@@ -22,4 +22,11 @@ public class DestinyCollectibleNodeDetailResponse
     /// </summary>
     [JsonPropertyName("collectibleItemComponents")]
     public DestinyItemComponentSetOfuint32 CollectibleItemComponents { get; set; }
+
+    public bool DeepEquals(DestinyCollectibleNodeDetailResponse? other)
+    {
+        return other is not null &&
+               (Collectibles is not null ? Collectibles.DeepEquals(other.Collectibles) : other.Collectibles is null) &&
+               (CollectibleItemComponents is not null ? CollectibleItemComponents.DeepEquals(other.CollectibleItemComponents) : other.CollectibleItemComponents is null);
+    }
 }

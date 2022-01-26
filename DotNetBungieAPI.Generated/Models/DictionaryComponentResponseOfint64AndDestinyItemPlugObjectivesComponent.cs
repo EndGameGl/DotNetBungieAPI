@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models;
 
-public class DictionaryComponentResponseOfint64AndDestinyItemPlugObjectivesComponent
+public class DictionaryComponentResponseOfint64AndDestinyItemPlugObjectivesComponent : IDeepEquatable<DictionaryComponentResponseOfint64AndDestinyItemPlugObjectivesComponent>
 {
     [JsonPropertyName("data")]
     public Dictionary<long, Destiny.Components.Items.DestinyItemPlugObjectivesComponent> Data { get; set; }
@@ -13,4 +13,12 @@ public class DictionaryComponentResponseOfint64AndDestinyItemPlugObjectivesCompo
     /// </summary>
     [JsonPropertyName("disabled")]
     public bool? Disabled { get; set; }
+
+    public bool DeepEquals(DictionaryComponentResponseOfint64AndDestinyItemPlugObjectivesComponent? other)
+    {
+        return other is not null &&
+               Data.DeepEqualsDictionary(other.Data) &&
+               Privacy == other.Privacy &&
+               Disabled == other.Disabled;
+    }
 }

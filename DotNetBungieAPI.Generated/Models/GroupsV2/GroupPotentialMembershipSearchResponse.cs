@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public class GroupPotentialMembershipSearchResponse
+public class GroupPotentialMembershipSearchResponse : IDeepEquatable<GroupPotentialMembershipSearchResponse>
 {
     [JsonPropertyName("results")]
     public List<GroupsV2.GroupPotentialMembership> Results { get; set; }
@@ -28,4 +28,15 @@ public class GroupPotentialMembershipSearchResponse
     /// </summary>
     [JsonPropertyName("useTotalResults")]
     public bool UseTotalResults { get; set; }
+
+    public bool DeepEquals(GroupPotentialMembershipSearchResponse? other)
+    {
+        return other is not null &&
+               Results.DeepEqualsList(other.Results) &&
+               TotalResults == other.TotalResults &&
+               HasMore == other.HasMore &&
+               (Query is not null ? Query.DeepEquals(other.Query) : other.Query is null) &&
+               ReplacementContinuationToken == other.ReplacementContinuationToken &&
+               UseTotalResults == other.UseTotalResults;
+    }
 }

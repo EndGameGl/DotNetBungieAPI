@@ -5,11 +5,18 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 /// <para />
 ///     This lets us more flexibly pass up information that's useful to someone, even if it's not necessarily us.
 /// </summary>
-public class DestinyMilestoneValueDefinition
+public class DestinyMilestoneValueDefinition : IDeepEquatable<DestinyMilestoneValueDefinition>
 {
     [JsonPropertyName("key")]
     public string Key { get; set; }
 
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+
+    public bool DeepEquals(DestinyMilestoneValueDefinition? other)
+    {
+        return other is not null &&
+               Key == other.Key &&
+               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null);
+    }
 }

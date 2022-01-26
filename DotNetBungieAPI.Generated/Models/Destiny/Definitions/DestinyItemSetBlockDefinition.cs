@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Primarily for Quests, this is the definition of properties related to the item if it is a quest and its various quest steps.
 /// </summary>
-public class DestinyItemSetBlockDefinition
+public class DestinyItemSetBlockDefinition : IDeepEquatable<DestinyItemSetBlockDefinition>
 {
     /// <summary>
     ///     A collection of hashes of set items, for items such as Quest Metadata items that possess this data.
@@ -46,4 +46,16 @@ public class DestinyItemSetBlockDefinition
     /// </summary>
     [JsonPropertyName("questStepSummary")]
     public string QuestStepSummary { get; set; }
+
+    public bool DeepEquals(DestinyItemSetBlockDefinition? other)
+    {
+        return other is not null &&
+               ItemList.DeepEqualsList(other.ItemList) &&
+               RequireOrderedSetItemAdd == other.RequireOrderedSetItemAdd &&
+               SetIsFeatured == other.SetIsFeatured &&
+               SetType == other.SetType &&
+               QuestLineName == other.QuestLineName &&
+               QuestLineDescription == other.QuestLineDescription &&
+               QuestStepSummary == other.QuestStepSummary;
+    }
 }

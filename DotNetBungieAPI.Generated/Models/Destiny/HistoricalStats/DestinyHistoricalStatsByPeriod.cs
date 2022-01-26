@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public class DestinyHistoricalStatsByPeriod
+public class DestinyHistoricalStatsByPeriod : IDeepEquatable<DestinyHistoricalStatsByPeriod>
 {
     [JsonPropertyName("allTime")]
     public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue> AllTime { get; set; }
@@ -19,4 +19,15 @@ public class DestinyHistoricalStatsByPeriod
 
     [JsonPropertyName("monthly")]
     public List<Destiny.HistoricalStats.DestinyHistoricalStatsPeriodGroup> Monthly { get; set; }
+
+    public bool DeepEquals(DestinyHistoricalStatsByPeriod? other)
+    {
+        return other is not null &&
+               AllTime.DeepEqualsDictionary(other.AllTime) &&
+               AllTimeTier1.DeepEqualsDictionary(other.AllTimeTier1) &&
+               AllTimeTier2.DeepEqualsDictionary(other.AllTimeTier2) &&
+               AllTimeTier3.DeepEqualsDictionary(other.AllTimeTier3) &&
+               Daily.DeepEqualsList(other.Daily) &&
+               Monthly.DeepEqualsList(other.Monthly);
+    }
 }

@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Forum;
 
-public class PostSearchResponse
+public class PostSearchResponse : IDeepEquatable<PostSearchResponse>
 {
     [JsonPropertyName("relatedPosts")]
     public List<Forum.PostResponse> RelatedPosts { get; set; }
@@ -49,4 +49,22 @@ public class PostSearchResponse
     /// </summary>
     [JsonPropertyName("useTotalResults")]
     public bool UseTotalResults { get; set; }
+
+    public bool DeepEquals(PostSearchResponse? other)
+    {
+        return other is not null &&
+               RelatedPosts.DeepEqualsList(other.RelatedPosts) &&
+               Authors.DeepEqualsList(other.Authors) &&
+               Groups.DeepEqualsList(other.Groups) &&
+               SearchedTags.DeepEqualsList(other.SearchedTags) &&
+               Polls.DeepEqualsList(other.Polls) &&
+               RecruitmentDetails.DeepEqualsList(other.RecruitmentDetails) &&
+               AvailablePages == other.AvailablePages &&
+               Results.DeepEqualsList(other.Results) &&
+               TotalResults == other.TotalResults &&
+               HasMore == other.HasMore &&
+               (Query is not null ? Query.DeepEquals(other.Query) : other.Query is null) &&
+               ReplacementContinuationToken == other.ReplacementContinuationToken &&
+               UseTotalResults == other.UseTotalResults;
+    }
 }
