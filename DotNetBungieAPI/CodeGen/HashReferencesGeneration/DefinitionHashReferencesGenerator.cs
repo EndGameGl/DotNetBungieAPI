@@ -1478,7 +1478,7 @@ public class DefinitionHashReferencesGenerator
         Dictionary<string, uint> definitionCacheLookup,
         int indentationLevel)
     {
-        foreach (var definition in _bungieClient.Repository.GetAll<DestinyMetricDefinition>())
+        foreach (var definition in _bungieClient.Repository.GetAll<DestinyMilestoneDefinition>())
             if (definition.DisplayProperties is not null)
                 ValidateAndAddValue(
                     definitionCacheLookup,
@@ -1513,7 +1513,7 @@ public class DefinitionHashReferencesGenerator
         Dictionary<string, uint> definitionCacheLookup,
         int indentationLevel)
     {
-        foreach (var definition in _bungieClient.Repository.GetAll<DestinyMilestoneDefinition>())
+        foreach (var definition in _bungieClient.Repository.GetAll<DestinyMetricDefinition>())
             if (definition.DisplayProperties is not null)
                 ValidateAndAddValue(
                     definitionCacheLookup,
