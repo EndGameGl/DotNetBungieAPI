@@ -334,6 +334,19 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
                     "Manifest.json");
                 _currentManifest = await _serializer
                     .DeserializeAsync<DestinyManifest>(await File.ReadAllBytesAsync(filePath));
+                
+                try
+                {
+                    OnCurrentManifestChanged(_currentManifest);
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(
+                        ex,
+                        "Couldn't load exact version of manifest: {Version}",
+                        _currentManifest.Version);
+                }
             }
         }
 
@@ -348,7 +361,6 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
                 if (!_configuration.TryLoadExactVersion)
                 {
                     _currentManifest = _latestManifest;
-                    OnCurrentManifestChanged(_latestManifest);
                 }
             }
             else
