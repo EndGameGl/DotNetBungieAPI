@@ -23,7 +23,9 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
     private const string SelectDefinitionQuery = "SELECT json FROM {0} WHERE id = {1}";
     private const string SelectHistoricalDefinitionQuery = "SELECT json FROM {0} WHERE key = '{1}'";
     private const string SelectAllDefinitionsQuery = "SELECT json FROM {0}";
-    private const string SelectDestinyGearAssetDefinition = "SELECT json FROM DestinyGearAssetsDefinition WHERE id = {0}";
+
+    private const string SelectDestinyGearAssetDefinition =
+        "SELECT json FROM DestinyGearAssetsDefinition WHERE id = {0}";
 
     private const string ConnectionStringTemplate = "Data Source={0}; Version=3;";
     private readonly IDefinitionAssemblyData _assemblyData;
@@ -230,22 +232,22 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
 #endif
 
 #if NET6_0_OR_GREATER
-            await Parallel.ForEachAsync(versions, async (version, cancellationToken) =>
-            {
-                var files = Directory.EnumerateFiles(
-                    version,
-                    "Manifest.json",
-                    SearchOption.TopDirectoryOnly);
+        await Parallel.ForEachAsync(versions, async (version, cancellationToken) =>
+        {
+            var files = Directory.EnumerateFiles(
+                version,
+                "Manifest.json",
+                SearchOption.TopDirectoryOnly);
 
-                var manifestPath = files.FirstOrDefault();
-                if (manifestPath == null)
-                    return;
-                _logger.LogInformation("Found manifest at: {ManifestPath}", manifestPath);
+            var manifestPath = files.FirstOrDefault();
+            if (manifestPath == null)
+                return;
+            _logger.LogInformation("Found manifest at: {ManifestPath}", manifestPath);
 
-                await using var fileStream = File.OpenRead(manifestPath);
-                var folderManifest = await _serializer.DeserializeAsync<DestinyManifest>(fileStream);
-                values.TryAdd(version, folderManifest);
-            });
+            await using var fileStream = File.OpenRead(manifestPath);
+            var folderManifest = await _serializer.DeserializeAsync<DestinyManifest>(fileStream);
+            values.TryAdd(version, folderManifest);
+        });
 #endif
         return values.Select(x => x.Value);
     }
@@ -294,7 +296,7 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
 
     public Task DeleteManifestData(string version)
     {
-        var manifestPath = $"{_configuration.ManifestFolderPath}\\{version}";
+        var manifestPath = Path.Combine(_configuration.ManifestFolderPath, version);
 
         if (!Directory.Exists(manifestPath))
             return Task.CompletedTask;
@@ -323,20 +325,25 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
         }
 
         if (_configuration.TryLoadExactVersion)
+        {
             if (await CheckExistingManifestData(_configuration.PreferredManifestVersion))
             {
-                var filePath =
-                    $"{_configuration.ManifestFolderPath}\\{_configuration.PreferredManifestVersion}\\Manifest.json";
-                _currentManifest =
-                    await _serializer.DeserializeAsync<DestinyManifest>(await File.ReadAllBytesAsync(filePath));
+                var filePath = Path.Combine(
+                    _configuration.ManifestFolderPath,
+                    _configuration.PreferredManifestVersion,
+                    "Manifest.json");
+                _currentManifest = await _serializer
+                    .DeserializeAsync<DestinyManifest>(await File.ReadAllBytesAsync(filePath));
             }
+        }
 
         if (_configuration.AutoUpdateManifestOnStartup)
         {
             if (await CheckForUpdates())
             {
                 await DownloadManifestData(_latestManifest);
-                if (_configuration.DeleteOldManifestDataAfterUpdates) await DeleteOldManifestData();
+                if (_configuration.DeleteOldManifestDataAfterUpdates)
+                    await DeleteOldManifestData();
 
                 if (!_configuration.TryLoadExactVersion)
                 {
@@ -351,8 +358,6 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
         }
 
         OnCurrentManifestChanged(_currentManifest);
-
-        //var availableManifests = await GetAvailableManifests();
     }
 
     public async Task ChangeManifestVersion(string version)
@@ -360,7 +365,10 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
         var manifests = await GetAvailableManifests();
         var neededManifest = manifests.FirstOrDefault(x => x.Version.Equals(version));
         if (neededManifest is null)
+        {
             throw new Exception($"Couldn't find manifest version when changing to: {version}");
+        }
+
         OnCurrentManifestChanged(neededManifest);
     }
 
@@ -401,27 +409,26 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
             });
 #endif
 #if NET6_0_OR_GREATER
-                await Parallel.ForEachAsync(definitionsToLoad, async (definitionType, cancellationToken) =>
+            await Parallel.ForEachAsync(definitionsToLoad, async (definitionType, cancellationToken) =>
+            {
+                _logger.LogInformation("Reading definitions: {DefinitionType}", definitionType);
+                var runtimeType = _assemblyData.DefinitionsToTypeMapping[definitionType].DefinitionType;
+                var commandObj = new SQLiteCommand
                 {
-                    _logger.LogInformation("Reading definitions: {DefinitionType}", definitionType);
-                    var runtimeType = _assemblyData.DefinitionsToTypeMapping[definitionType].DefinitionType;
-                    var commandObj = new SQLiteCommand
-                    {
-                        Connection = connection,
-                        CommandText = string.Format(SelectAllDefinitionsQuery, definitionType)
-                    };
+                    Connection = connection,
+                    CommandText = string.Format(SelectAllDefinitionsQuery, definitionType)
+                };
 
-                    var reader = commandObj.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        var parsedDefinition =
-                            (IDestinyDefinition)await _serializer.DeserializeAsync(
-                                (byte[])reader[0],
-                                runtimeType);
-                        parsedDefinition.SetPointerLocales(locale);
-                        repository.AddDefinition(definitionType, locale, parsedDefinition);
-                    }
-                });
+                var reader = commandObj.ExecuteReader();
+                while (reader.Read())
+                {
+                    var parsedDefinition = (IDestinyDefinition)await _serializer.DeserializeAsync(
+                        (byte[])reader[0],
+                        runtimeType);
+                    parsedDefinition.SetPointerLocales(locale);
+                    repository.AddDefinition(definitionType, locale, parsedDefinition);
+                }
+            });
 #endif
 
             var historicalFetchCommand = new SQLiteCommand
@@ -450,16 +457,13 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
         var reader = destinyGearAssetDefinitionFetchCommand.ExecuteReader();
         if (reader.Read())
             return await _serializer.DeserializeAsync<DestinyGearAssetDefinition>((byte[])reader[0]);
-        else
-        {
-            return null;
-        }
+        return null;
     }
 
     public async Task DownloadManifestData(DestinyManifest manifestData)
     {
-        var folderPath = $"{_configuration.ManifestFolderPath}\\{manifestData.Version}";
-        var manifestFilePath = $"{folderPath}\\Manifest.json";
+        var folderPath = Path.Combine(_configuration.ManifestFolderPath, manifestData.Version);
+        var manifestFilePath = Path.Combine(folderPath, "Manifest.json");
 
         await DownloadSqliteDatabases(
             "MobileWorldContent",
@@ -497,34 +501,52 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
     public void Dispose()
     {
         foreach (var (_, connection) in _sqliteConnections)
-            if (connection is not null && connection.State == ConnectionState.Open)
+        {
+            if (connection is not null)
             {
-                connection.Close();
-                connection.Dispose();
+                try
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
+                catch (Exception exception)
+                {
+                    _logger.LogError(exception, "Error in {DisposeName}", nameof(Dispose));
+                }
             }
+        }
     }
 
     public async ValueTask DisposeAsync()
     {
         foreach (var (_, connection) in _sqliteConnections)
-            if (connection is not null && connection.State == ConnectionState.Open)
+        {
+            if (connection is not null)
             {
-                await connection.CloseAsync();
-                await connection.DisposeAsync();
+                try
+                {
+                    await connection.CloseAsync();
+                    await connection.DisposeAsync();
+                }
+                catch (Exception exception)
+                {
+                    _logger.LogError(exception, "Error in {DisposeAsyncName}", nameof(DisposeAsync));
+                }
             }
+        }
     }
 
     private async Task DownloadSqliteDatabases(string propertyName, string path, IDictionary<string, string> values)
     {
         _logger.LogInformation("Started loading {PropertyName}", propertyName);
-        var rootDirectoryPath = $"{path}\\{propertyName}";
+        var rootDirectoryPath = Path.Combine(path, propertyName);
         rootDirectoryPath.EnsureDirectoryExists();
 
         var downloadTasks = new List<Task>(values.Count);
 
         foreach (var (key, value) in values)
         {
-            var task = ((Func<Task>)(async () =>
+            var task = Task.Run(async () =>
             {
                 var entryPath = Path.Combine(path, propertyName, key);
                 var filePath = Path.Combine(path, propertyName, key, Path.GetFileName(value));
@@ -533,7 +555,7 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
                     await DownloadAndUnpackSqliteFile(filePath, value);
                 else
                     _logger.LogInformation("File already exists, skipping");
-            })).Invoke();
+            });
 
             downloadTasks.Add(task);
         }
@@ -546,10 +568,10 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
     private async Task DownloadSqliteDatabase(string propertyName, string path, string dbSourcePath)
     {
         _logger.LogInformation("Started loading {PropertyName}", propertyName);
-        var rootDirectoryPath = $"{path}\\{propertyName}";
+        var rootDirectoryPath = Path.Combine(path, propertyName);
         rootDirectoryPath.EnsureDirectoryExists();
 
-        var filePath = $"{path}\\{propertyName}\\{Path.GetFileName(dbSourcePath)}";
+        var filePath = Path.Combine(path, propertyName, Path.GetFileName(dbSourcePath));
         if (!File.Exists(filePath))
             await DownloadAndUnpackSqliteFile(filePath, dbSourcePath);
         else
@@ -588,20 +610,22 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
     private void OnCurrentManifestChanged(DestinyManifest manifestData)
     {
         foreach (var (locale, connection) in _sqliteConnections)
-            if (connection is not null && connection.State == ConnectionState.Open)
+        {
+            if (connection is not null && connection.State != ConnectionState.Closed)
                 connection.Close();
+        }
 
         foreach (var (localeStr, path) in manifestData.MobileWorldContentPaths)
         {
             var locale = ParseLocaleFromString(localeStr);
-            
+
             var newPath = Path.Combine(
                 _configuration.ManifestFolderPath,
                 manifestData.Version,
                 "MobileWorldContent",
                 localeStr,
                 Path.GetFileName(path));
-            
+
             _databasePaths[locale] = newPath;
             _sqliteConnections[locale].ConnectionString = string.Format(ConnectionStringTemplate, newPath);
             _sqliteConnections[locale].ParseViaFramework = true;
