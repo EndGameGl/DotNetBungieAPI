@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
@@ -20,7 +21,7 @@ namespace DotNetBungieAPI.Services.Default;
 internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpClient
 {
     private const string ApiKeyHeader = "X-API-Key";
-    
+
     private const string AuthorizationEndpoint = "https://www.bungie.net/en/oauth/authorize";
     private const string AuthorizationTokenEndpoint = "https://www.bungie.net/platform/app/oauth/token/";
     private const string PlatformEndpoint = "https://www.bungie.net/Platform";
@@ -49,9 +50,9 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         _httpClient = httpClientConfiguration.HttpClient;
         _httpClient.DefaultRequestHeaders.Accept.Add(_jsonHeaderValue);
         _httpClient.DefaultRequestHeaders.Add("User-Agent", "DotNetBungieApi Client");
-        
+
         _rateTimeLimiter = TimeLimiter.GetFromMaxCountByInterval(
-            httpClientConfiguration.RatelimitPerInterval, 
+            httpClientConfiguration.RatelimitPerInterval,
             httpClientConfiguration.RatelimitInterval);
     }
 
@@ -275,9 +276,8 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
 
     public async ValueTask<(Stream ContentStream, long? TotalLength)> GetStreamFromWebSourceAsync(string path)
     {
-        var response = await _httpClient.GetAsync(
-            CdnEndpoint + path,
-            HttpCompletionOption.ResponseHeadersRead);
+        var request = new HttpRequestMessage(HttpMethod.Get, CdnEndpoint + path);
+        var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
         return (await response.Content.ReadAsStreamAsync(), response.Content.Headers.ContentLength);
     }
 

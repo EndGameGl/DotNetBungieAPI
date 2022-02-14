@@ -8,10 +8,16 @@ namespace DotNetBungieAPI.Services.Default.ServiceConfigurations;
 /// </summary>
 public sealed class DotNetBungieApiHttpClientConfiguration
 {
+    public DotNetBungieApiHttpClientConfiguration()
+    {
+        var httpClientHandler = new HttpClientHandler();
+        HttpClient = new HttpClient(httpClientHandler);
+    }
+    
     /// <summary>
     ///     HttpClient that is used for this lib
     /// </summary>
-    public HttpClient HttpClient { get; internal set; } = new();
+    public HttpClient HttpClient { get; internal set; }
     
     /// <summary>
     ///     Ratelimit that is used for interval
