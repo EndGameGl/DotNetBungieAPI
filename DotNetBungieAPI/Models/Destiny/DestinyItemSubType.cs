@@ -52,5 +52,6 @@ public enum DestinyItemSubType
     LegArmor = 29,
     ClassArmor = 30,
     Bow = 31,
-    DummyRepeatableBounty = 32
+    DummyRepeatableBounty = 32,
+    Glaive = 33
 }

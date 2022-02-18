@@ -57,6 +57,10 @@ public sealed record Destiny2CoreSettings
     public DefinitionHashPointer<DestinyPresentationNodeDefinition> LoreRootNode { get; init; } =
         DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
 
+    [JsonPropertyName("craftingRootNodeHash")]
+    public DefinitionHashPointer<DestinyPresentationNodeDefinition> CraftingRootNode { get; init; } =
+        DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
+
     [JsonPropertyName("currentRankProgressionHashes")]
     public ReadOnlyCollection<DefinitionHashPointer<DestinyProgressionDefinition>> CurrentRankProgressions
     {

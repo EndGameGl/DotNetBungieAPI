@@ -30,6 +30,12 @@ public sealed record DestinyMaterialRequirement : IDeepEquatable<DestinyMaterial
     public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; init; }
 
     /// <summary>
+    ///     If true, the material requirement count value is constant. Since The Witch Queen expansion, some material requirement counts can be dynamic and will need to be returned with an API call.
+    /// </summary>
+    [JsonPropertyName("countIsConstant")]
+    public bool CountIsConstant { get; init; }
+    
+    /// <summary>
     ///     If True, this requirement is "silent": don't bother showing it in a material requirements display. I mean, I'm not
     ///     your mom: I'm not going to tell you you *can't* show it. But we won't show it in our UI.
     /// </summary>
@@ -42,6 +48,7 @@ public sealed record DestinyMaterialRequirement : IDeepEquatable<DestinyMaterial
                Count == other.Count &&
                DeleteOnAction == other.DeleteOnAction &&
                Item.DeepEquals(other.Item) &&
-               OmitFromRequirements == other.OmitFromRequirements;
+               OmitFromRequirements == other.OmitFromRequirements &&
+               CountIsConstant == other.CountIsConstant;
     }
 }

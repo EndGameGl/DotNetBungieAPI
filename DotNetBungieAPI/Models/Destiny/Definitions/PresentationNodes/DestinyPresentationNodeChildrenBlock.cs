@@ -23,12 +23,17 @@ public sealed record DestinyPresentationNodeChildrenBlock : IDeepEquatable<Desti
     public ReadOnlyCollection<DestinyPresentationNodeMetricChildEntry> Metrics { get; init; } =
         ReadOnlyCollections<DestinyPresentationNodeMetricChildEntry>.Empty;
 
+    [JsonPropertyName("craftables")]
+    public ReadOnlyCollection<DestinyPresentationNodeCraftableChildEntry> Craftables { get; init; }
+        = ReadOnlyCollections<DestinyPresentationNodeCraftableChildEntry>.Empty;
+
     public bool DeepEquals(DestinyPresentationNodeChildrenBlock other)
     {
         return other != null &&
                Collectibles.DeepEqualsReadOnlyCollections(other.Collectibles) &&
                Metrics.DeepEqualsReadOnlyCollections(other.Metrics) &&
                PresentationNodes.DeepEqualsReadOnlyCollections(other.PresentationNodes) &&
-               Records.DeepEqualsReadOnlyCollections(other.Records);
+               Records.DeepEqualsReadOnlyCollections(other.Records) &&
+               Craftables.DeepEqualsReadOnlyCollections(other.Craftables);
     }
 }

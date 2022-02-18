@@ -148,6 +148,12 @@ public sealed record DestinyInventoryItemDefinition : IDestinyDefinition,
     /// </summary>
     [JsonPropertyName("action")]
     public DestinyItemActionBlockDefinition Action { get; init; }
+    
+    /// <summary>
+    ///     Recipe items will have relevant crafting information available here.
+    /// </summary>
+    [JsonPropertyName("crafting")]
+    public DestinyItemCraftingBlockDefinition Crafting { get; init; }
 
     /// <summary>
     ///     If this item can exist in an inventory, this block will be non-null. In practice, every item that currently exists
@@ -536,7 +542,7 @@ public sealed record DestinyInventoryItemDefinition : IDestinyDefinition,
                (EquippingBlock != null
                    ? EquippingBlock.DeepEquals(other.EquippingBlock)
                    : other.EquippingBlock == null) &&
-               (Sockets != null ? Sockets.DeepEquals(other.Sockets) : other.Sockets == null) &&
+               (Sockets is not null ? Sockets.DeepEquals(other.Sockets) : other.Sockets == null) &&
                InvestmentStats.DeepEqualsReadOnlyCollections(other.InvestmentStats) &&
                Perks.DeepEqualsReadOnlyCollections(other.Perks) &&
                TooltipNotifications.DeepEqualsReadOnlyCollections(other.TooltipNotifications) &&
@@ -553,6 +559,7 @@ public sealed record DestinyInventoryItemDefinition : IDestinyDefinition,
                DamageTypeEnumValues.DeepEqualsReadOnlySimpleCollection(other.DamageTypeEnumValues) &&
                Season.DeepEquals(other.Season) &&
                FlavorText.Equals(other.FlavorText) &&
+               (Crafting is not null ? Crafting.DeepEquals(other.Crafting) : other.Crafting is null) &&
                Blacklisted == other.Blacklisted &&
                Hash == other.Hash &&
                Index == other.Index &&
@@ -692,6 +699,22 @@ public sealed record DestinyInventoryItemDefinition : IDestinyDefinition,
         foreach (var type in DamageTypes) type.TryMapValue();
 
         Season.TryMapValue();
+
+        if (Crafting is not null)
+        {
+            Crafting.OutputItem.TryMapValue();
+            Crafting.BaseMaterialRequirements.TryMapValue();
+            foreach (var requiredSocketType in Crafting.RequiredSocketTypes)
+            {
+                requiredSocketType.TryMapValue();
+            }
+
+            foreach (var bonusPlug in Crafting.BonusPlugs)
+            {
+                bonusPlug.PlugItem.TryMapValue();
+                bonusPlug.SocketType.TryMapValue();
+            }
+        }
     }
 
     public void SetPointerLocales(BungieLocales locale)
@@ -822,10 +845,20 @@ public sealed record DestinyInventoryItemDefinition : IDestinyDefinition,
         foreach (var type in DamageTypes) type.SetLocale(locale);
 
         Season.SetLocale(locale);
-    }
 
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
+        if (Crafting is not null)
+        {
+            Crafting.OutputItem.SetLocale(locale);
+            foreach (var requiredSocketType in Crafting.RequiredSocketTypes)
+            {
+                requiredSocketType.SetLocale(locale);
+            }
+
+            foreach (var bonusPlug in Crafting.BonusPlugs)
+            {
+                bonusPlug.PlugItem.SetLocale(locale);
+                bonusPlug.SocketType.SetLocale(locale);
+            }
+        }
     }
 }

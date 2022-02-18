@@ -187,6 +187,12 @@ public sealed record DestinyProfileResponse
 
     [JsonPropertyName("characterStringVariables")]
     public DictionaryComponentResponseOfint64AndDestinyStringVariablesComponent CharacterStringVariables { get; init; }
+    
+    /// <summary>
+    ///     COMPONENT TYPE: Craftables
+    /// </summary>
+    [JsonPropertyName("characterCraftables")]
+    public DictionaryComponentResponseOfint64AndDestinyCraftablesComponent CharacterCraftables { get; init; }
 
     /// <summary>
     ///     Information about instanced items across all returned characters, keyed by the item's instance ID.

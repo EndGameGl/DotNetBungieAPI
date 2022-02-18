@@ -23,6 +23,9 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Objectives;
 [DestinyDefinition(DefinitionsEnum.DestinyObjectiveDefinition)]
 public sealed record DestinyObjectiveDefinition : IDestinyDefinition, IDeepEquatable<DestinyObjectiveDefinition>
 {
+    /// <summary>
+    ///     Ideally, this should tell you what your task is. I'm not going to lie to you though. Sometimes this doesn't have useful information at all. Which sucks, but there's nothing either of us can do about it.
+    /// </summary>
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
@@ -128,6 +131,18 @@ public sealed record DestinyObjectiveDefinition : IDestinyDefinition, IDeepEquat
     [JsonPropertyName("inProgressValueStyle")]
     public DestinyUnlockValueUiStyle InProgressValueStyle { get; init; }
 
+    /// <summary>
+    ///     Objectives can have arbitrary UI-defined identifiers that define the style applied to objectives. For convenience, known UI labels will be defined in the uiStyle enum value.
+    /// </summary>
+    [JsonPropertyName("uiLabel")]
+    public string UiLabel { get; init; }
+
+    /// <summary>
+    ///     If the objective has a known UI label value, this property will represent it.
+    /// </summary>
+    [JsonPropertyName("uiStyle")]
+    public DestinyObjectiveUiStyle UiStyle { get; init; }
+
     [JsonPropertyName("isDisplayOnlyObjective")]
     public bool IsDisplayOnlyObjective { get; init; }
 
@@ -145,12 +160,14 @@ public sealed record DestinyObjectiveDefinition : IDestinyDefinition, IDeepEquat
                ProgressDescription == other.ProgressDescription &&
                Scope == other.Scope &&
                ShowValueOnComplete == other.ShowValueOnComplete &&
-               (Perks != null ? Perks.DeepEquals(other.Perks) : other == null) &&
-               (Stats != null ? Stats.DeepEquals(other.Stats) : other == null) &&
+               (Perks is not null ? Perks.DeepEquals(other.Perks) : other is null) &&
+               (Stats is not null ? Stats.DeepEquals(other.Stats) : other is null) &&
                ValueStyle == other.ValueStyle &&
                CompletedValueStyle == other.CompletedValueStyle &&
                InProgressValueStyle == other.InProgressValueStyle &&
                DisplayProperties.DeepEquals(other.DisplayProperties) &&
+               UiLabel == other.UiLabel &&
+               UiStyle == other.UiStyle &&
                Blacklisted == other.Blacklisted &&
                Hash == other.Hash &&
                Index == other.Index &&

@@ -6,5 +6,6 @@ public enum DestinyPresentationNodeType
     Category = 1,
     Collectibles = 2,
     Records = 3,
-    Metric = 4
+    Metric = 4,
+    Craftable = 5
 }

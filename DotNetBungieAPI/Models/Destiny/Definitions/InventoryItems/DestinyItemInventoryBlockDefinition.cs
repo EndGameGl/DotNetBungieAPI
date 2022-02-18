@@ -1,5 +1,6 @@
 ﻿using DotNetBungieAPI.Models.Destiny.Definitions.InventoryBuckets;
 using DotNetBungieAPI.Models.Destiny.Definitions.ItemTierTypes;
+using DotNetBungieAPI.Models.Destiny.Definitions.UnlockValues;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
@@ -67,6 +68,13 @@ public sealed record DestinyItemInventoryBlockDefinition : IDeepEquatable<Destin
 
     [JsonPropertyName("suppressExpirationWhenObjectivesComplete")]
     public bool SuppressExpirationWhenObjectivesComplete { get; init; }
+    
+    /// <summary>
+    ///     A reference to the associated crafting 'recipe' item definition, if this item can be crafted.
+    /// </summary>
+    [JsonPropertyName("recipeItemHash")]
+    public DefinitionHashPointer<DestinyInventoryItemDefinition> RecipeItem { get; init; } 
+        = DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
 
     /// <summary>
     ///     The enumeration matching the tier type of the item to known values, again for convenience sake.
@@ -104,6 +112,7 @@ public sealed record DestinyItemInventoryBlockDefinition : IDeepEquatable<Destin
                SuppressExpirationWhenObjectivesComplete == other.SuppressExpirationWhenObjectivesComplete &&
                TierTypeEnumValue == other.TierTypeEnumValue &&
                TierType.DeepEquals(other.TierType) &&
-               TierTypeName == other.TierTypeName;
+               TierTypeName == other.TierTypeName &&
+               RecipeItem.DeepEquals(other.RecipeItem);
     }
 }

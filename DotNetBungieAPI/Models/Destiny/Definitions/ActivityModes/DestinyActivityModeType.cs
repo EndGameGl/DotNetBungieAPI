@@ -82,5 +82,6 @@ public enum DestinyActivityModeType
     Dungeon = 82,
     Sundial = 83,
     TrialsOfOsiris = 84,
-    Dares = 85
+    Dares = 85,
+    Offensive = 86
 }

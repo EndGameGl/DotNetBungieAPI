@@ -12,8 +12,15 @@ public sealed record DestinyPostGameCarnageReportData
     ///     If this activity has "phases", this is the phase at which the activity was started.
     /// </summary>
     [JsonPropertyName("startingPhaseIndex")]
+    [Obsolete("Use ActivityWasStartedFromBeginning instead")]
     public int? StartingPhaseIndex { get; init; }
 
+    /// <summary>
+    ///     True if the activity was started from the beginning, if that information is available.
+    /// </summary>
+    [JsonPropertyName("activityWasStartedFromBeginning")]
+    public bool? ActivityWasStartedFromBeginning { get; set; }
+    
     /// <summary>
     ///     Details about the activity.
     /// </summary>

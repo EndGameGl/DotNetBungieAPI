@@ -65,11 +65,16 @@ public sealed record DestinyPlugSetDefinition : IDestinyDefinition, IDeepEquatab
 
     public void SetPointerLocales(BungieLocales locale)
     {
-        foreach (var item in ReusablePlugItems) item.PlugItem.SetLocale(locale);
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties?.Description}";
+        foreach (var item in ReusablePlugItems)
+        {
+            item.PlugItem.SetLocale(locale);
+            if (item.CraftingRequirements is not null)
+            {
+                foreach (var materialRequirement in item.CraftingRequirements.MaterialRequirements)
+                {
+                    materialRequirement.SetLocale(locale);
+                }
+            }
+        }
     }
 }

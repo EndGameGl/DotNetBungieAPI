@@ -22,12 +22,16 @@ public sealed record DestinyItemSocketEntryPlugItemRandomizedDefinition
     [JsonPropertyName("currentlyCanRoll")]
     public bool CurrentlyCanRoll { get; init; }
 
+    [JsonPropertyName("craftingRequirements")]
+    public DestinyPlugItemCraftingRequirements CraftingRequirements { get; init; }
+
     public bool DeepEquals(DestinyItemSocketEntryPlugItemRandomizedDefinition other)
     {
         return other != null &&
                Weight == other.Weight &&
                AlternateWeight == other.AlternateWeight &&
                PlugItem.DeepEquals(other.PlugItem) &&
-               CurrentlyCanRoll == other.CurrentlyCanRoll;
+               CurrentlyCanRoll == other.CurrentlyCanRoll &&
+               (CraftingRequirements is not null ? CraftingRequirements.DeepEquals(other.CraftingRequirements) : other.CraftingRequirements is null);
     }
 }

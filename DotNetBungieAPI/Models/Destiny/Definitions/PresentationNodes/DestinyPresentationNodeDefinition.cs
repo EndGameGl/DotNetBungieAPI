@@ -155,6 +155,8 @@ public sealed record DestinyPresentationNodeDefinition : IDestinyDefinition,
             foreach (var node in Children.PresentationNodes) node.PresentationNode.TryMapValue();
 
             foreach (var record in Children.Records) record.Record.TryMapValue();
+
+            foreach (var craftable in Children.Craftables) craftable.CraftableItem.TryMapValue();
         }
 
         Objective.TryMapValue();
@@ -176,6 +178,8 @@ public sealed record DestinyPresentationNodeDefinition : IDestinyDefinition,
             foreach (var node in Children.PresentationNodes) node.PresentationNode.SetLocale(locale);
 
             foreach (var record in Children.Records) record.Record.SetLocale(locale);
+
+            foreach (var craftable in Children.Craftables) craftable.CraftableItem.SetLocale(locale);
         }
 
         Objective.SetLocale(locale);
