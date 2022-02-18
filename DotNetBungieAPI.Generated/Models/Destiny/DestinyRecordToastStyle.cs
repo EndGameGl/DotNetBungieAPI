@@ -16,5 +16,7 @@ public enum DestinyRecordToastStyle : int
 
     SeasonChallengeComplete = 6,
 
-    GildedTitleComplete = 7
+    GildedTitleComplete = 7,
+
+    CraftingRecipeUnlocked = 8
 }

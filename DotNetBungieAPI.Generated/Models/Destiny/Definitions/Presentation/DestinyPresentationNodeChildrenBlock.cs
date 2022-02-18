@@ -17,13 +17,17 @@ public class DestinyPresentationNodeChildrenBlock : IDeepEquatable<DestinyPresen
     [JsonPropertyName("metrics")]
     public List<Destiny.Definitions.Presentation.DestinyPresentationNodeMetricChildEntry> Metrics { get; set; }
 
+    [JsonPropertyName("craftables")]
+    public List<Destiny.Definitions.Presentation.DestinyPresentationNodeCraftableChildEntry> Craftables { get; set; }
+
     public bool DeepEquals(DestinyPresentationNodeChildrenBlock? other)
     {
         return other is not null &&
                PresentationNodes.DeepEqualsList(other.PresentationNodes) &&
                Collectibles.DeepEqualsList(other.Collectibles) &&
                Records.DeepEqualsList(other.Records) &&
-               Metrics.DeepEqualsList(other.Metrics);
+               Metrics.DeepEqualsList(other.Metrics) &&
+               Craftables.DeepEqualsList(other.Craftables);
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
@@ -56,6 +60,11 @@ public class DestinyPresentationNodeChildrenBlock : IDeepEquatable<DestinyPresen
         {
             Metrics = other.Metrics;
             OnPropertyChanged(nameof(Metrics));
+        }
+        if (!Craftables.DeepEqualsList(other.Craftables))
+        {
+            Craftables = other.Craftables;
+            OnPropertyChanged(nameof(Craftables));
         }
     }
 }

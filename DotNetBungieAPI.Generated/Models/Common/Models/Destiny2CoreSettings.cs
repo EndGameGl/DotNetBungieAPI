@@ -38,6 +38,9 @@ public class Destiny2CoreSettings : IDeepEquatable<Destiny2CoreSettings>
     [JsonPropertyName("loreRootNodeHash")]
     public uint LoreRootNodeHash { get; set; }
 
+    [JsonPropertyName("craftingRootNodeHash")]
+    public uint CraftingRootNodeHash { get; set; }
+
     [JsonPropertyName("currentRankProgressionHashes")]
     public List<uint> CurrentRankProgressionHashes { get; set; }
 
@@ -89,6 +92,7 @@ public class Destiny2CoreSettings : IDeepEquatable<Destiny2CoreSettings>
                MedalsRootNodeHash == other.MedalsRootNodeHash &&
                ExoticCatalystsRootNodeHash == other.ExoticCatalystsRootNodeHash &&
                LoreRootNodeHash == other.LoreRootNodeHash &&
+               CraftingRootNodeHash == other.CraftingRootNodeHash &&
                CurrentRankProgressionHashes.DeepEqualsListNaive(other.CurrentRankProgressionHashes) &&
                InsertPlugFreeProtectedPlugItemHashes.DeepEqualsListNaive(other.InsertPlugFreeProtectedPlugItemHashes) &&
                InsertPlugFreeBlockedSocketTypeHashes.DeepEqualsListNaive(other.InsertPlugFreeBlockedSocketTypeHashes) &&
@@ -173,6 +177,11 @@ public class Destiny2CoreSettings : IDeepEquatable<Destiny2CoreSettings>
         {
             LoreRootNodeHash = other.LoreRootNodeHash;
             OnPropertyChanged(nameof(LoreRootNodeHash));
+        }
+        if (CraftingRootNodeHash != other.CraftingRootNodeHash)
+        {
+            CraftingRootNodeHash = other.CraftingRootNodeHash;
+            OnPropertyChanged(nameof(CraftingRootNodeHash));
         }
         if (!CurrentRankProgressionHashes.DeepEqualsListNaive(other.CurrentRankProgressionHashes))
         {

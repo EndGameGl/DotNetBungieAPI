@@ -79,5 +79,7 @@ public enum DestinyItemSubType : int
 
     Bow = 31,
 
-    DummyRepeatableBounty = 32
+    DummyRepeatableBounty = 32,
+
+    Glaive = 33
 }

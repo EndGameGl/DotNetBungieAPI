@@ -24,6 +24,12 @@ public class DestinyMaterialRequirement : IDeepEquatable<DestinyMaterialRequirem
     public int Count { get; set; }
 
     /// <summary>
+    ///     If true, the material requirement count value is constant. Since The Witch Queen expansion, some material requirement counts can be dynamic and will need to be returned with an API call.
+    /// </summary>
+    [JsonPropertyName("countIsConstant")]
+    public bool CountIsConstant { get; set; }
+
+    /// <summary>
     ///     If True, this requirement is "silent": don't bother showing it in a material requirements display. I mean, I'm not your mom: I'm not going to tell you you *can't* show it. But we won't show it in our UI.
     /// </summary>
     [JsonPropertyName("omitFromRequirements")]
@@ -35,6 +41,7 @@ public class DestinyMaterialRequirement : IDeepEquatable<DestinyMaterialRequirem
                ItemHash == other.ItemHash &&
                DeleteOnAction == other.DeleteOnAction &&
                Count == other.Count &&
+               CountIsConstant == other.CountIsConstant &&
                OmitFromRequirements == other.OmitFromRequirements;
     }
 
@@ -63,6 +70,11 @@ public class DestinyMaterialRequirement : IDeepEquatable<DestinyMaterialRequirem
         {
             Count = other.Count;
             OnPropertyChanged(nameof(Count));
+        }
+        if (CountIsConstant != other.CountIsConstant)
+        {
+            CountIsConstant = other.CountIsConstant;
+            OnPropertyChanged(nameof(CountIsConstant));
         }
         if (OmitFromRequirements != other.OmitFromRequirements)
         {

@@ -21,5 +21,15 @@ public enum ItemState : int
     /// <summary>
     ///     If this bit is set, the item has a Masterwork plug inserted. This usually coincides with having a special "glowing" effect applied to the item's icon.
     /// </summary>
-    Masterwork = 4
+    Masterwork = 4,
+
+    /// <summary>
+    ///     If this bit is set, the item has been 'crafted' by the player. You may want to represent this visually with a "crafted" icon overlay.
+    /// </summary>
+    Crafted = 8,
+
+    /// <summary>
+    ///     If this bit is set, the item has a 'highlighted' objective. You may want to represent this with an orange-red icon border color.
+    /// </summary>
+    HighlightedObjective = 16
 }

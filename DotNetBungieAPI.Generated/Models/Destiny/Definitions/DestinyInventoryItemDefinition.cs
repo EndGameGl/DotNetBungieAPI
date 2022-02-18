@@ -104,6 +104,12 @@ public class DestinyInventoryItemDefinition : IDeepEquatable<DestinyInventoryIte
     public Destiny.Definitions.DestinyItemActionBlockDefinition Action { get; set; }
 
     /// <summary>
+    ///     Recipe items will have relevant crafting information available here.
+    /// </summary>
+    [JsonPropertyName("crafting")]
+    public Destiny.Definitions.DestinyItemCraftingBlockDefinition Crafting { get; set; }
+
+    /// <summary>
     ///     If this item can exist in an inventory, this block will be non-null. In practice, every item that currently exists has one of these blocks. But note that it is not necessarily guaranteed.
     /// </summary>
     [JsonPropertyName("inventory")]
@@ -431,6 +437,7 @@ public class DestinyInventoryItemDefinition : IDeepEquatable<DestinyInventoryIte
                DisplaySource == other.DisplaySource &&
                TooltipStyle == other.TooltipStyle &&
                (Action is not null ? Action.DeepEquals(other.Action) : other.Action is null) &&
+               (Crafting is not null ? Crafting.DeepEquals(other.Crafting) : other.Crafting is null) &&
                (Inventory is not null ? Inventory.DeepEquals(other.Inventory) : other.Inventory is null) &&
                (SetData is not null ? SetData.DeepEquals(other.SetData) : other.SetData is null) &&
                (Stats is not null ? Stats.DeepEquals(other.Stats) : other.Stats is null) &&
@@ -574,6 +581,11 @@ public class DestinyInventoryItemDefinition : IDeepEquatable<DestinyInventoryIte
         {
             Action.Update(other.Action);
             OnPropertyChanged(nameof(Action));
+        }
+        if (!Crafting.DeepEquals(other.Crafting))
+        {
+            Crafting.Update(other.Crafting);
+            OnPropertyChanged(nameof(Crafting));
         }
         if (!Inventory.DeepEquals(other.Inventory))
         {

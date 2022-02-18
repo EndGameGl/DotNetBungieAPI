@@ -9,10 +9,16 @@ public class DestinyPostGameCarnageReportData : IDeepEquatable<DestinyPostGameCa
     public DateTime Period { get; set; }
 
     /// <summary>
-    ///     If this activity has "phases", this is the phase at which the activity was started.
+    ///     OBSOLETE - If this activity has "phases", this is the phase at which the activity was started.
     /// </summary>
     [JsonPropertyName("startingPhaseIndex")]
     public int? StartingPhaseIndex { get; set; }
+
+    /// <summary>
+    ///     True if the activity was started from the beginning, if that information is available.
+    /// </summary>
+    [JsonPropertyName("activityWasStartedFromBeginning")]
+    public bool? ActivityWasStartedFromBeginning { get; set; }
 
     /// <summary>
     ///     Details about the activity.
@@ -37,6 +43,7 @@ public class DestinyPostGameCarnageReportData : IDeepEquatable<DestinyPostGameCa
         return other is not null &&
                Period == other.Period &&
                StartingPhaseIndex == other.StartingPhaseIndex &&
+               ActivityWasStartedFromBeginning == other.ActivityWasStartedFromBeginning &&
                (ActivityDetails is not null ? ActivityDetails.DeepEquals(other.ActivityDetails) : other.ActivityDetails is null) &&
                Entries.DeepEqualsList(other.Entries) &&
                Teams.DeepEqualsList(other.Teams);
@@ -62,6 +69,11 @@ public class DestinyPostGameCarnageReportData : IDeepEquatable<DestinyPostGameCa
         {
             StartingPhaseIndex = other.StartingPhaseIndex;
             OnPropertyChanged(nameof(StartingPhaseIndex));
+        }
+        if (ActivityWasStartedFromBeginning != other.ActivityWasStartedFromBeginning)
+        {
+            ActivityWasStartedFromBeginning = other.ActivityWasStartedFromBeginning;
+            OnPropertyChanged(nameof(ActivityWasStartedFromBeginning));
         }
         if (!ActivityDetails.DeepEquals(other.ActivityDetails))
         {

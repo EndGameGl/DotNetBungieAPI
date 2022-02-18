@@ -162,5 +162,7 @@ public enum DestinyActivityModeType : int
 
     TrialsOfOsiris = 84,
 
-    Dares = 85
+    Dares = 85,
+
+    Offensive = 86
 }

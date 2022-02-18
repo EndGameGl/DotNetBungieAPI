@@ -220,6 +220,12 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     public DictionaryComponentResponseOfint64AndDestinyStringVariablesComponent CharacterStringVariables { get; set; }
 
     /// <summary>
+    ///     COMPONENT TYPE: Craftables
+    /// </summary>
+    [JsonPropertyName("characterCraftables")]
+    public DictionaryComponentResponseOfint64AndDestinyCraftablesComponent CharacterCraftables { get; set; }
+
+    /// <summary>
     ///     Information about instanced items across all returned characters, keyed by the item's instance ID.
     /// <para />
     ///     COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]
@@ -265,6 +271,7 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
                (CharacterRecords is not null ? CharacterRecords.DeepEquals(other.CharacterRecords) : other.CharacterRecords is null) &&
                (CharacterCollectibles is not null ? CharacterCollectibles.DeepEquals(other.CharacterCollectibles) : other.CharacterCollectibles is null) &&
                (CharacterStringVariables is not null ? CharacterStringVariables.DeepEquals(other.CharacterStringVariables) : other.CharacterStringVariables is null) &&
+               (CharacterCraftables is not null ? CharacterCraftables.DeepEquals(other.CharacterCraftables) : other.CharacterCraftables is null) &&
                (ItemComponents is not null ? ItemComponents.DeepEquals(other.ItemComponents) : other.ItemComponents is null) &&
                (CharacterCurrencyLookups is not null ? CharacterCurrencyLookups.DeepEquals(other.CharacterCurrencyLookups) : other.CharacterCurrencyLookups is null);
     }
@@ -414,6 +421,11 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
         {
             CharacterStringVariables.Update(other.CharacterStringVariables);
             OnPropertyChanged(nameof(CharacterStringVariables));
+        }
+        if (!CharacterCraftables.DeepEquals(other.CharacterCraftables))
+        {
+            CharacterCraftables.Update(other.CharacterCraftables);
+            OnPropertyChanged(nameof(CharacterCraftables));
         }
         if (!ItemComponents.DeepEquals(other.ItemComponents))
         {

@@ -10,5 +10,7 @@ public enum DestinyPresentationNodeType : int
 
     Records = 3,
 
-    Metric = 4
+    Metric = 4,
+
+    Craftable = 5
 }

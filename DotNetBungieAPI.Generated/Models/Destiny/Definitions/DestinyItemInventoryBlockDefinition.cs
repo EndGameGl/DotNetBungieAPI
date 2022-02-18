@@ -74,6 +74,12 @@ public class DestinyItemInventoryBlockDefinition : IDeepEquatable<DestinyItemInv
     [JsonPropertyName("suppressExpirationWhenObjectivesComplete")]
     public bool SuppressExpirationWhenObjectivesComplete { get; set; }
 
+    /// <summary>
+    ///     A reference to the associated crafting 'recipe' item definition, if this item can be crafted.
+    /// </summary>
+    [JsonPropertyName("recipeItemHash")]
+    public uint? RecipeItemHash { get; set; }
+
     public bool DeepEquals(DestinyItemInventoryBlockDefinition? other)
     {
         return other is not null &&
@@ -88,7 +94,8 @@ public class DestinyItemInventoryBlockDefinition : IDeepEquatable<DestinyItemInv
                ExpirationTooltip == other.ExpirationTooltip &&
                ExpiredInActivityMessage == other.ExpiredInActivityMessage &&
                ExpiredInOrbitMessage == other.ExpiredInOrbitMessage &&
-               SuppressExpirationWhenObjectivesComplete == other.SuppressExpirationWhenObjectivesComplete;
+               SuppressExpirationWhenObjectivesComplete == other.SuppressExpirationWhenObjectivesComplete &&
+               RecipeItemHash == other.RecipeItemHash;
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
@@ -161,6 +168,11 @@ public class DestinyItemInventoryBlockDefinition : IDeepEquatable<DestinyItemInv
         {
             SuppressExpirationWhenObjectivesComplete = other.SuppressExpirationWhenObjectivesComplete;
             OnPropertyChanged(nameof(SuppressExpirationWhenObjectivesComplete));
+        }
+        if (RecipeItemHash != other.RecipeItemHash)
+        {
+            RecipeItemHash = other.RecipeItemHash;
+            OnPropertyChanged(nameof(RecipeItemHash));
         }
     }
 }

@@ -5,10 +5,17 @@ public class DestinyPresentationNodeRecordChildEntry : IDeepEquatable<DestinyPre
     [JsonPropertyName("recordHash")]
     public uint RecordHash { get; set; }
 
+    /// <summary>
+    ///     Use this value to sort the presentation node children in ascending order.
+    /// </summary>
+    [JsonPropertyName("nodeDisplayPriority")]
+    public uint NodeDisplayPriority { get; set; }
+
     public bool DeepEquals(DestinyPresentationNodeRecordChildEntry? other)
     {
         return other is not null &&
-               RecordHash == other.RecordHash;
+               RecordHash == other.RecordHash &&
+               NodeDisplayPriority == other.NodeDisplayPriority;
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
@@ -26,6 +33,11 @@ public class DestinyPresentationNodeRecordChildEntry : IDeepEquatable<DestinyPre
         {
             RecordHash = other.RecordHash;
             OnPropertyChanged(nameof(RecordHash));
+        }
+        if (NodeDisplayPriority != other.NodeDisplayPriority)
+        {
+            NodeDisplayPriority = other.NodeDisplayPriority;
+            OnPropertyChanged(nameof(NodeDisplayPriority));
         }
     }
 }

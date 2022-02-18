@@ -118,6 +118,18 @@ public class DestinyObjectiveDefinition : IDeepEquatable<DestinyObjectiveDefinit
     public Destiny.DestinyUnlockValueUIStyle InProgressValueStyle { get; set; }
 
     /// <summary>
+    ///     Objectives can have arbitrary UI-defined identifiers that define the style applied to objectives. For convenience, known UI labels will be defined in the uiStyle enum value.
+    /// </summary>
+    [JsonPropertyName("uiLabel")]
+    public string UiLabel { get; set; }
+
+    /// <summary>
+    ///     If the objective has a known UI label value, this property will represent it.
+    /// </summary>
+    [JsonPropertyName("uiStyle")]
+    public Destiny.DestinyObjectiveUiStyle UiStyle { get; set; }
+
+    /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
     /// <para />
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
@@ -156,6 +168,8 @@ public class DestinyObjectiveDefinition : IDeepEquatable<DestinyObjectiveDefinit
                ShowValueOnComplete == other.ShowValueOnComplete &&
                CompletedValueStyle == other.CompletedValueStyle &&
                InProgressValueStyle == other.InProgressValueStyle &&
+               UiLabel == other.UiLabel &&
+               UiStyle == other.UiStyle &&
                Hash == other.Hash &&
                Index == other.Index &&
                Redacted == other.Redacted;
@@ -251,6 +265,16 @@ public class DestinyObjectiveDefinition : IDeepEquatable<DestinyObjectiveDefinit
         {
             InProgressValueStyle = other.InProgressValueStyle;
             OnPropertyChanged(nameof(InProgressValueStyle));
+        }
+        if (UiLabel != other.UiLabel)
+        {
+            UiLabel = other.UiLabel;
+            OnPropertyChanged(nameof(UiLabel));
+        }
+        if (UiStyle != other.UiStyle)
+        {
+            UiStyle = other.UiStyle;
+            OnPropertyChanged(nameof(UiStyle));
         }
         if (Hash != other.Hash)
         {
