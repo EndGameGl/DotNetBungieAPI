@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace DotNetBungieAPI.Serialization;
 
@@ -45,6 +46,7 @@ public class StringEnumConverterFactory : JsonConverterFactory
                     return _underlyingTypeCode switch
                     {
                         TypeCode.Byte => ConvertToEnum<TEnum, byte>(byte.Parse(stringValue)),
+                        TypeCode.SByte => ConvertToEnum<TEnum, sbyte>(sbyte.Parse(stringValue)),
                         TypeCode.Int16 => ConvertToEnum<TEnum, short>(short.Parse(stringValue)),
                         TypeCode.Int32 => ConvertToEnum<TEnum, int>(int.Parse(stringValue)),
                         TypeCode.Int64 => ConvertToEnum<TEnum, long>(long.Parse(stringValue)),
@@ -56,6 +58,7 @@ public class StringEnumConverterFactory : JsonConverterFactory
                 default: return _underlyingTypeCode switch
                 {
                     TypeCode.Byte => ConvertToEnum<TEnum, byte>(reader.GetByte()),
+                    TypeCode.SByte => ConvertToEnum<TEnum, sbyte>(reader.GetSByte()),
                     TypeCode.Int16 => ConvertToEnum<TEnum, short>(reader.GetInt16()),
                     TypeCode.Int32 => ConvertToEnum<TEnum, int>(reader.GetInt32()),
                     TypeCode.Int64 => ConvertToEnum<TEnum, long>(reader.GetInt64()),
@@ -69,7 +72,33 @@ public class StringEnumConverterFactory : JsonConverterFactory
 
         public override void Write(Utf8JsonWriter writer, TEnum value, JsonSerializerOptions options)
         {
-            JsonSerializer.Serialize(writer, value, options);
+            switch (_underlyingTypeCode)
+            {
+                case TypeCode.Int32:
+                    writer.WriteNumberValue(Unsafe.As<TEnum, int>(ref value));
+                    break;
+                case TypeCode.UInt32:
+                    writer.WriteNumberValue(Unsafe.As<TEnum, uint>(ref value));
+                    break;
+                case TypeCode.UInt64:
+                    writer.WriteNumberValue(Unsafe.As<TEnum, ulong>(ref value));
+                    break;
+                case TypeCode.Int64:
+                    writer.WriteNumberValue(Unsafe.As<TEnum, long>(ref value));
+                    break;
+                case TypeCode.Int16:
+                    writer.WriteNumberValue(Unsafe.As<TEnum, short>(ref value));
+                    break;
+                case TypeCode.UInt16:
+                    writer.WriteNumberValue(Unsafe.As<TEnum, ushort>(ref value));
+                    break;
+                case TypeCode.Byte:
+                    writer.WriteNumberValue(Unsafe.As<TEnum, byte>(ref value));
+                    break;
+                case TypeCode.SByte:
+                    writer.WriteNumberValue(Unsafe.As<TEnum, sbyte>(ref value));
+                    break;
+            }
         }
     }
 

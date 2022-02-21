@@ -16,7 +16,6 @@ internal sealed class DefaultBungieNetJsonSerializer : IBungieNetJsonSerializer
     public DefaultBungieNetJsonSerializer(DotNetBungieApiJsonSerializerConfiguration configuration)
     {
         _serializerOptions = configuration.Options;
-        _serializerOptions.NumberHandling = JsonNumberHandling.AllowReadingFromString;
         _serializerOptions.Converters.Add(new ReadOnlyCollectionConverterFactory());
         _serializerOptions.Converters.Add(new DefinitionHashPointerConverterFactory());
         _serializerOptions.Converters.Add(new ReadOnlyDictionaryDefinitionPointerKeyConverterFactory());

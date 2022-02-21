@@ -66,7 +66,9 @@ internal sealed class ReadOnlyDictionaryStructKeyConverterFactory : JsonConverte
             throw new JsonException();
         }
 
-        public override void Write(Utf8JsonWriter writer, ReadOnlyDictionary<TKey, TValue> value,
+        public override void Write(
+            Utf8JsonWriter writer,
+            ReadOnlyDictionary<TKey, TValue> value,
             JsonSerializerOptions options)
         {
             writer.WriteStartObject();

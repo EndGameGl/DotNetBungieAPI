@@ -170,7 +170,7 @@ public sealed record DestinyProfileResponse
     {
         get;
         init;
-    }
+    } = ReadOnlyDictionaries<long, DestinyBaseItemComponentSetOfuint32>.Empty;
 
     [JsonPropertyName("characterPresentationNodes")]
     public DictionaryComponentResponseOfint64AndDestinyPresentationNodesComponent CharacterPresentationNodes
