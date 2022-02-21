@@ -11,7 +11,6 @@
 ///     be able to know all of the plugs available for a socket.
 /// </summary>
 [Flags]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum SocketPlugSources
 {
     /// <summary>

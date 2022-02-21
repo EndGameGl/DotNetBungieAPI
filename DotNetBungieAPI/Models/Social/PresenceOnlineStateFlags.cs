@@ -1,7 +1,6 @@
 ﻿namespace DotNetBungieAPI.Models.Social;
 
 [Flags]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum PresenceOnlineStateFlags
 {
     None = 0,

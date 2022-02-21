@@ -1,7 +1,6 @@
 ﻿namespace DotNetBungieAPI.Models.Forum;
 
 [Flags]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum ForumFlagsEnum
 {
     None = 0,

@@ -1,7 +1,6 @@
 ﻿namespace DotNetBungieAPI.Models.User;
 
 [Flags]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum OptInFlags : long
 {
     None = 0,

@@ -4,7 +4,6 @@
 ///     A Flags enumeration/bitmask where each bit represents a possible state that a Record/Triumph can be in.
 /// </summary>
 [Flags]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum DestinyRecordState
 {
     /// <summary>

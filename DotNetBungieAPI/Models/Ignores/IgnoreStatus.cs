@@ -1,7 +1,6 @@
 ﻿namespace DotNetBungieAPI.Models.Ignores;
 
 [Flags]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum IgnoreStatus
 {
     NotIgnored = 0,

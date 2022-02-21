@@ -25,6 +25,7 @@ internal sealed class DefaultBungieNetJsonSerializer : IBungieNetJsonSerializer
         _serializerOptions.Converters.Add(new ReadOnlyDictionaryStringKeyConverterFactory());
         _serializerOptions.Converters.Add(new HistoricalStatDefinitionPointerConverter());
         _serializerOptions.Converters.Add(new DestinyResourceConverter());
+        _serializerOptions.Converters.Add(new StringEnumConverterFactory());
     }
 
 

@@ -1,7 +1,6 @@
 ﻿namespace DotNetBungieAPI.Models.Applications;
 
 [Flags]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum ApplicationScopes : long
 {
     /// <summary>

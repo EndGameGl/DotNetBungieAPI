@@ -1,7 +1,6 @@
 ﻿namespace DotNetBungieAPI.Models.Destiny.Definitions;
 
 [Flags]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum DestinyTalentNodeStepGuardianAttributes
 {
     None = 0,

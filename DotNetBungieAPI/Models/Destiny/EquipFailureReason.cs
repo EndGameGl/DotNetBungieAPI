@@ -4,7 +4,6 @@
 ///     The reasons why an item cannot be equipped, if any. Many flags can be set, or "None" if
 /// </summary>
 [Flags]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum EquipFailureReason
 {
     /// <summary>

@@ -4,7 +4,6 @@
 ///     Represents the different states a progression reward item can be in.
 /// </summary>
 [Flags]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum DestinyProgressionRewardItemState
 {
     None = 0,

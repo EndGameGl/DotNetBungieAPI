@@ -7,7 +7,6 @@
 ///     people who only pretend to inhale before quickly passing it to the left. So, you know, do what you got to do.
 /// </summary>
 [Flags]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum DestinyCollectibleState
 {
     None = 0,

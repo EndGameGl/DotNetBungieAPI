@@ -5,7 +5,6 @@
 ///     effect how the item is displayed to the user and what actions can be performed against it.
 /// </summary>
 [Flags]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum ItemState
 {
     None = 0,

@@ -5,7 +5,6 @@
 ///     states simultaneously: as a result, this was altered to be a flags enumeration/bitmask for v3.2.0.
 /// </summary>
 [Flags]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum DestinyVendorItemState
 {
     /// <summary>

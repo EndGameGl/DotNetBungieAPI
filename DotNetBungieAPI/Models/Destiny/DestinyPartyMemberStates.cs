@@ -4,7 +4,6 @@
 ///     A flags enumeration that represents a Fireteam Member's status.
 /// </summary>
 [Flags]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum DestinyPartyMemberStates
 {
     None = 0,

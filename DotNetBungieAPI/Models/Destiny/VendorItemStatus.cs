@@ -1,7 +1,6 @@
 ﻿namespace DotNetBungieAPI.Models.Destiny;
 
 [Flags]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum VendorItemStatus
 {
     Success = 0,

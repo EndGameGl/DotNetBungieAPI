@@ -129,6 +129,9 @@ public sealed class BungieClientConfiguration
         var configuration = new DotNetBungieApiJsonSerializerConfiguration
         {
             Options = new JsonSerializerOptions()
+            {
+                NumberHandling = JsonNumberHandling.AllowReadingFromString
+            }
         };
         configure?.Invoke(configuration);
         ServiceCollection.AddSingleton(configuration);

@@ -6,7 +6,6 @@
 ///     future. So don't treat it like a straight up enumeration.
 /// </summary>
 [Flags]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum DestinyPresentationNodeState
 {
     None = 0,

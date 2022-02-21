@@ -4,7 +4,6 @@
 ///     Whether you can transfer an item, and why not if you can't.
 /// </summary>
 [Flags]
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum TransferStatuses
 {
     /// <summary>
