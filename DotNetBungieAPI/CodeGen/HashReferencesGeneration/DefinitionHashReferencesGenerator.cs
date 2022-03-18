@@ -60,7 +60,7 @@ public class DefinitionHashReferencesGenerator
     private static readonly string[] ForbiddenSymbols =
     {
         " ", ":", "-", "\\", "/", "(", ")", "'", ".", "[", "]", "\"", "?", ",", "", "…", "!", "%", "+", "#",
-        "{", "}", " ", "—", "~", "|", ";", "–", "="
+        "{", "}", " ", "—", "~", "|", ";", "–", "=", "&"
     };
 
     private static readonly string NewLine = Environment.NewLine;
