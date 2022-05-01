@@ -6,24 +6,27 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.SandboxPatterns;
 public sealed record DestinySandboxPatternDefinition : IDestinyDefinition,
     IDeepEquatable<DestinySandboxPatternDefinition>
 {
+    [JsonPropertyName("patternHash")] 
+    public uint PatternHash { get; init; }
+    
     [JsonPropertyName("patternGlobalTagIdHash")]
     public uint PatternGlobalTagIdHash { get; init; }
-
-    [JsonPropertyName("patternHash")] public uint PatternHash { get; init; }
 
     [JsonPropertyName("weaponContentGroupHash")]
     public uint WeaponContentGroupHash { get; init; }
 
     [JsonPropertyName("weaponTranslationGroupHash")]
     public uint WeaponTranslationGroupHash { get; init; }
-
-    [JsonPropertyName("weaponType")] public int WeaponType { get; init; }
-
-    [JsonPropertyName("weaponTypeHash")] public uint WeaponTypeHash { get; init; }
-
+    
+    [JsonPropertyName("weaponTypeHash")] 
+    public uint? WeaponTypeHash { get; init; }
+    
+    [JsonPropertyName("weaponType")] 
+    public int WeaponType { get; init; }
+    
     [JsonPropertyName("filters")]
-    public ReadOnlyCollection<DestinySandboxPatternFilterDefinition> Filters { get; init; } =
-        ReadOnlyCollections<DestinySandboxPatternFilterDefinition>.Empty;
+    public ReadOnlyCollection<DestinyArrangementRegionFilterDefinition> Filters { get; init; } =
+        ReadOnlyCollections<DestinyArrangementRegionFilterDefinition>.Empty;
 
     public bool DeepEquals(DestinySandboxPatternDefinition other)
     {
@@ -52,12 +55,12 @@ public sealed record DestinySandboxPatternDefinition : IDestinyDefinition,
 
     public void MapValues()
     {
-        foreach (var filter in Filters) filter.Stat.TryMapValue();
+        
     }
 
     public void SetPointerLocales(BungieLocales locale)
     {
-        foreach (var filter in Filters) filter.Stat.SetLocale(locale);
+        
     }
 
     public override string ToString()

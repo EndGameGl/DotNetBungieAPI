@@ -35,7 +35,7 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
     private readonly IDotNetBungieApiHttpClient _httpClient;
     private readonly ILogger _logger;
 
-    private readonly DefinitionsEnum[] _nonExistInSqliteDefinitions =
+    private readonly DefinitionsEnum[] _sqliteDefinitionsBlacklist =
     {
         DefinitionsEnum.DestinyUnlockValueDefinition,
         DefinitionsEnum.DestinyProgressionMappingDefinition,
@@ -83,7 +83,7 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
         [BungieLocales.ZH_CHT] = new SQLiteConnection()
     };
 
-    private readonly SQLiteConnection _mobileGearAssetDataBaseConnection = new SQLiteConnection();
+    private readonly SQLiteConnection _mobileGearAssetDataBaseConnection = new();
 
     public SqliteDefinitionProvider(
         DotNetBungieApiDefaultDefinitionProviderConfiguration configuration,
@@ -103,7 +103,7 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
 
     public async ValueTask<T> LoadDefinition<T>(uint hash, BungieLocales locale) where T : IDestinyDefinition
     {
-        T result = default;
+        T result;
         var connection = _sqliteConnections[locale];
         var commandObj = new SQLiteCommand
         {
@@ -387,7 +387,7 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
     public async Task ReadToRepository(IDestiny2DefinitionRepository repository)
     {
         var definitionsToLoad = repository.AllowedDefinitions.ToList();
-        foreach (var nonExistInSqliteDefinition in _nonExistInSqliteDefinitions)
+        foreach (var nonExistInSqliteDefinition in _sqliteDefinitionsBlacklist)
             definitionsToLoad.Remove(nonExistInSqliteDefinition);
 
         definitionsToLoad.Remove(DefinitionsEnum.DestinyHistoricalStatsDefinition);

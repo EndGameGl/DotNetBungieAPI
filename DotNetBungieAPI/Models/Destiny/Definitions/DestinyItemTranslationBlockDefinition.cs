@@ -1,4 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Definitions;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.SandboxPatterns;
+
+namespace DotNetBungieAPI.Models.Destiny.Definitions;
 
 /// <summary>
 ///     This Block defines the rendering data associated with the item, if any.
@@ -9,7 +11,7 @@ public sealed record DestinyItemTranslationBlockDefinition : IDeepEquatable<Dest
     public string WeaponPatternIdentifier { get; init; }
 
     [JsonPropertyName("weaponPatternHash")]
-    public uint WeaponPatternHash { get; init; }
+    public DefinitionHashPointer<DestinySandboxPatternDefinition> WeaponPattern { get; init; } = DefinitionHashPointer<DestinySandboxPatternDefinition>.Empty;
 
     [JsonPropertyName("defaultDyes")]
     public ReadOnlyCollection<DyeReference> DefaultDyes { get; init; } =
@@ -37,7 +39,7 @@ public sealed record DestinyItemTranslationBlockDefinition : IDeepEquatable<Dest
                DefaultDyes.DeepEqualsReadOnlyCollections(other.DefaultDyes) &&
                LockedDyes.DeepEqualsReadOnlyCollections(other.LockedDyes) &&
                HasGeometry == other.HasGeometry &&
-               WeaponPatternHash == other.WeaponPatternHash &&
+               WeaponPattern.DeepEquals(other.WeaponPattern) &&
                WeaponPatternIdentifier == other.WeaponPatternIdentifier;
     }
 }
