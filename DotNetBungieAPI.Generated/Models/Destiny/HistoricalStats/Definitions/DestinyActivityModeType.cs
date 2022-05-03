@@ -164,5 +164,7 @@ public enum DestinyActivityModeType : int
 
     Dares = 85,
 
-    Offensive = 86
+    Offensive = 86,
+
+    LostSector = 87
 }

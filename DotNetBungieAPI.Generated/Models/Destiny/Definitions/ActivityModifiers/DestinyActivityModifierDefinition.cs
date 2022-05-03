@@ -8,6 +8,12 @@ public class DestinyActivityModifierDefinition : IDeepEquatable<DestinyActivityM
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
+    [JsonPropertyName("displayInNavMode")]
+    public bool DisplayInNavMode { get; set; }
+
+    [JsonPropertyName("displayInActivitySelection")]
+    public bool DisplayInActivitySelection { get; set; }
+
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
     /// <para />
@@ -32,6 +38,8 @@ public class DestinyActivityModifierDefinition : IDeepEquatable<DestinyActivityM
     {
         return other is not null &&
                (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
+               DisplayInNavMode == other.DisplayInNavMode &&
+               DisplayInActivitySelection == other.DisplayInActivitySelection &&
                Hash == other.Hash &&
                Index == other.Index &&
                Redacted == other.Redacted;
@@ -52,6 +60,16 @@ public class DestinyActivityModifierDefinition : IDeepEquatable<DestinyActivityM
         {
             DisplayProperties.Update(other.DisplayProperties);
             OnPropertyChanged(nameof(DisplayProperties));
+        }
+        if (DisplayInNavMode != other.DisplayInNavMode)
+        {
+            DisplayInNavMode = other.DisplayInNavMode;
+            OnPropertyChanged(nameof(DisplayInNavMode));
+        }
+        if (DisplayInActivitySelection != other.DisplayInActivitySelection)
+        {
+            DisplayInActivitySelection = other.DisplayInActivitySelection;
+            OnPropertyChanged(nameof(DisplayInActivitySelection));
         }
         if (Hash != other.Hash)
         {

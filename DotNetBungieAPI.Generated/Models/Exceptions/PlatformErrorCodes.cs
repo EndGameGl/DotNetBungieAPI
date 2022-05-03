@@ -373,6 +373,14 @@ public enum PlatformErrorCodes : int
 
     DuplicateGlobalDisplayName = 237,
 
+    ErrorRunningNameValidationChecks = 238,
+
+    ErrorDatabaseGlobalName = 239,
+
+    ErrorNoAvailableNameChanges = 240,
+
+    ErrorNameAlreadySetToInput = 241,
+
     MessagingUnknownError = 300,
 
     MessagingSelfError = 301,
@@ -1489,6 +1497,18 @@ public enum PlatformErrorCodes : int
     ClanFireteamCannotReopenScheduledFireteams = 3031,
 
     ClanFireteamJoinNoAccountSpecified = 3032,
+
+    ClanFireteamMinDestiny2ProgressForCreation = 3033,
+
+    ClanFireteamMinDestiny2ProgressForJoin = 3034,
+
+    ClanFireteamSMSOrPurchaseRequiredCreate = 3035,
+
+    ClanFireteamPurchaseRequiredCreate = 3036,
+
+    ClanFireteamSMSOrPurchaseRequiredJoin = 3037,
+
+    ClanFireteamPurchaseRequiredJoin = 3038,
 
     CrossSaveOverriddenAccountNotFound = 3200,
 
