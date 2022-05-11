@@ -1,4 +1,5 @@
 ﻿using DotNetBungieAPI.Exceptions;
+using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Applications;
 using DotNetBungieAPI.Services.Default;
 using DotNetBungieAPI.Services.Default.ServiceConfigurations;
@@ -72,6 +73,11 @@ public sealed class BungieClientConfiguration
     ///     Caches definitions to repository if not present currently after fetching from provider.
     /// </summary>
     public bool CacheDefinitions { get; set; }
+    
+    /// <summary>
+    ///     Locales that'll be used in this app
+    /// </summary>
+    public List<BungieLocales> UsedLocales { get; } = new();
 
     /// <summary>
     ///     Checks whether scope is available for this app

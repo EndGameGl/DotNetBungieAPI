@@ -6,7 +6,6 @@ namespace DotNetBungieAPI.Services.Default.ServiceConfigurations;
 public sealed class DefaultDestiny2DefinitionRepositoryConfiguration
 {
     private int _appConcurrencyLevel = Environment.ProcessorCount;
-    public List<BungieLocales> UsedLocales { get; } = new();
 
     internal List<DefinitionsEnum> AllowedDefinitions { get; } = Enum.GetValues<DefinitionsEnum>().ToList();
 

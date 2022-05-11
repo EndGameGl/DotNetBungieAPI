@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
@@ -13,20 +14,23 @@ internal sealed class DefaultDestiny2DefinitionRepository : IDestiny2DefinitionR
 {
     private readonly DefaultDestiny2DefinitionRepositoryConfiguration _configuration;
     private readonly ConcurrentDictionary<BungieLocales, DestinyDefinitionsRepository> _localisedRepositories;
+    private readonly BungieClientConfiguration _bungieClientConfiguration;
     private readonly ILogger _logger;
 
     public DefaultDestiny2DefinitionRepository(
+        BungieClientConfiguration bungieClientConfiguration,
         IDefinitionAssemblyData assemblyData,
         ILogger logger,
         DefaultDestiny2DefinitionRepositoryConfiguration configuration)
     {
+        _bungieClientConfiguration = bungieClientConfiguration;
         _logger = logger;
         _configuration = configuration;
         _localisedRepositories =
             new ConcurrentDictionary<BungieLocales, DestinyDefinitionsRepository>(
-                configuration.AppConcurrencyLevel, configuration.UsedLocales.Count);
+                configuration.AppConcurrencyLevel, _bungieClientConfiguration.UsedLocales.Count);
 
-        foreach (var locale in configuration.UsedLocales)
+        foreach (var locale in _bungieClientConfiguration.UsedLocales)
             _localisedRepositories.TryAdd(
                 locale,
                 new DestinyDefinitionsRepository(

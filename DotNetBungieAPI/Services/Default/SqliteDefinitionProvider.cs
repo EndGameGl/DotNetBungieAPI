@@ -5,6 +5,8 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 using System.Threading.Tasks;
+using DotNetBungieAPI.Clients;
+using DotNetBungieAPI.Extensions;
 using DotNetBungieAPI.Helpers;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
@@ -30,6 +32,7 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
     private const string ConnectionStringTemplate = "Data Source={0}; Version=3;";
     private readonly IDefinitionAssemblyData _assemblyData;
 
+    private readonly BungieClientConfiguration _bungieClientConfiguration;
     private readonly DotNetBungieApiDefaultDefinitionProviderConfiguration _configuration;
     private readonly IDestiny2MethodsAccess _destiny2MethodsAccess;
     private readonly IDotNetBungieApiHttpClient _httpClient;
@@ -86,6 +89,7 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
     private readonly SQLiteConnection _mobileGearAssetDataBaseConnection = new();
 
     public SqliteDefinitionProvider(
+        BungieClientConfiguration bungieClientConfiguration,
         DotNetBungieApiDefaultDefinitionProviderConfiguration configuration,
         ILogger logger,
         IBungieNetJsonSerializer serializer,
@@ -93,6 +97,7 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
         IDotNetBungieApiHttpClient httpClient,
         IDefinitionAssemblyData assemblyData)
     {
+        _bungieClientConfiguration = bungieClientConfiguration;
         _configuration = configuration;
         _logger = logger;
         _serializer = serializer;
@@ -266,7 +271,12 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
 
         _latestManifest = latestManifest.Response;
 
-        return !(await GetAvailableManifests()).Contains(latestManifest.Response);
+        var availableManifests = await GetAvailableManifests();
+
+        if (availableManifests.Contains(latestManifest.Response))
+            return false;
+
+        return true;
     }
 
     public async Task Update()
@@ -334,7 +344,7 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
                     "Manifest.json");
                 _currentManifest = await _serializer
                     .DeserializeAsync<DestinyManifest>(await File.ReadAllBytesAsync(filePath));
-                
+
                 try
                 {
                     OnCurrentManifestChanged(_currentManifest);
@@ -366,6 +376,7 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
             else
             {
                 _currentManifest = _latestManifest;
+                await Update();
             }
         }
 
@@ -480,7 +491,10 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
         await DownloadSqliteDatabases(
             "MobileWorldContent",
             folderPath,
-            manifestData.MobileWorldContentPaths);
+            manifestData
+                .MobileWorldContentPaths
+                .Where(x => _bungieClientConfiguration.UsedLocales.Contains(x.Key.ParseLocale()))
+                .ToDictionary(x => x.Key, x => x.Value));
 
         var mobileGearAssetDataBasesDictionary = manifestData
             .MobileGearAssetDataBases
@@ -626,10 +640,13 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
             if (connection is not null && connection.State != ConnectionState.Closed)
                 connection.Close();
         }
-
+        
         foreach (var (localeStr, path) in manifestData.MobileWorldContentPaths)
         {
             var locale = ParseLocaleFromString(localeStr);
+
+            if (!_bungieClientConfiguration.UsedLocales.Contains(locale))
+                continue;
 
             var newPath = Path.Combine(
                 _configuration.ManifestFolderPath,

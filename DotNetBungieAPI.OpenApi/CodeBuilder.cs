@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.OpenApi.Analysis;
+using DotNetBungieAPI.OpenApi.CodeGeneration;
 using DotNetBungieAPI.OpenApi.Extensions;
 using DotNetBungieAPI.OpenApi.Metadata;
 
@@ -28,7 +29,7 @@ namespace DotNetBungieAPI.Generated.Models;
         }
     }
 
-    public async Task BuildBareDefinitions(Models.OpenApi openApiModel)
+    public async Task BuildBareDefinitions(Models.OpenApi openApiModel, ModelGeneratorBase modelGenerator)
     {
         var typeTree = new TypeTree();
         typeTree.CreateSchemasTypeTree(openApiModel);
@@ -56,10 +57,10 @@ namespace DotNetBungieAPI.Generated.Models;
             
             await streamWriter.WriteLineAsync("public partial class DotNetBungieAPIJsonSerializationContext : JsonSerializerContext { }");
         }
-
+        
         foreach (var treeNode in typeTree.Nodes.Values)
         {
-            await IterateThroughTypeTreeBare(openApiModel, treeNode, _destinationFolder);
+            await IterateThroughTypeTreeBare(openApiModel, treeNode, _destinationFolder, modelGenerator);
         }
         
         
@@ -73,7 +74,8 @@ namespace DotNetBungieAPI.Generated.Models;
     private async Task IterateThroughTypeTreeBare(
         Models.OpenApi openApiModel,
         TreeNode treeNode,
-        string previousPath)
+        string previousPath,
+        ModelGeneratorBase modelGenerator)
     {
         if (treeNode.IsFolder)
         {
@@ -81,13 +83,13 @@ namespace DotNetBungieAPI.Generated.Models;
             Directory.CreateDirectory(currentFolder);
             foreach (var childNode in treeNode.Nodes.Values)
             {
-                await IterateThroughTypeTreeBare(openApiModel, childNode, currentFolder);
+                await IterateThroughTypeTreeBare(openApiModel, childNode, currentFolder, modelGenerator);
             }
         }
 
         if (treeNode.IsType)
         {
-            var currentFile = Path.Combine(previousPath, $"{treeNode.Name}.cs");
+            var currentFile = Path.Combine(previousPath, $"{treeNode.Name}.{modelGenerator.FileExtension}");
             var fullTypeName = currentFile
                 .Replace(
                     _destinationFolder,
@@ -130,7 +132,16 @@ namespace DotNetBungieAPI.Generated.Models;
             try
             {
                 var typeData = TypeData.CreateTypeData(fullTypeName, typeSchema);
-                await typeData.SerializeTypeDataToStream(streamWriter);
+                modelGenerator.Writer = streamWriter;
+                switch (typeData)
+                {
+                    case ObjectTypeData objectTypeData:
+                        await modelGenerator.GenerateDataForObjectType(objectTypeData);
+                        break;
+                    case EnumTypeData enumTypeData:
+                        await modelGenerator.GenerateDataForEnumType(enumTypeData);
+                        break;
+                }
             }
             catch (Exception e)
             {

@@ -1,4 +1,4 @@
-﻿namespace DotNetBungieAPI.OpenApi;
+﻿namespace DotNetBungieAPI.OpenApi.CSharp;
 
 internal static class Resources
 {
