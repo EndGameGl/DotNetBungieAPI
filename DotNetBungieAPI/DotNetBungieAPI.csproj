@@ -7,7 +7,7 @@
         <RepositoryUrl>https://github.com/EndGameGl/DotNetBungieAPI</RepositoryUrl>
         <PackageId>DotNetBungieAPI</PackageId>
         <Description>Bungie.net API wrapper.</Description>
-        <Copyright>Copyright (c) MeGl 2021</Copyright>
+        <Copyright>Copyright (c) MeGl 2022</Copyright>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <PackageVersion>1.7.5</PackageVersion>

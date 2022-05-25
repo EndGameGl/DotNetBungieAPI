@@ -4,6 +4,7 @@ using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Config;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using DotNetBungieAPI.Models.Destiny.Rendering;
+using DotNetBungieAPI.Services.Default.Provider.Sqlite;
 
 namespace DotNetBungieAPI.Services.Interfaces;
 
@@ -119,4 +120,6 @@ public interface IDefinitionProvider : IDisposable, IAsyncDisposable
     Task ReadToRepository(IDestiny2DefinitionRepository repository);
 
     ValueTask<DestinyGearAssetDefinition> GetGearAssetDefinition(uint itemHash);
+
+    IAsyncEnumerable<DbDefinitionReference> SearchForReferencingEntriesAsync(uint lookupHash);
 }

@@ -14,6 +14,7 @@ using DotNetBungieAPI.Models.Destiny.Config;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using DotNetBungieAPI.Models.Destiny.Rendering;
 using DotNetBungieAPI.Services.ApiAccess.Interfaces;
+using DotNetBungieAPI.Services.Default.Provider.Sqlite;
 using DotNetBungieAPI.Services.Default.ServiceConfigurations;
 using DotNetBungieAPI.Services.Interfaces;
 using Microsoft.Extensions.Logging;
@@ -28,6 +29,8 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
 
     private const string SelectDestinyGearAssetDefinition =
         "SELECT json FROM DestinyGearAssetsDefinition WHERE id = {0}";
+
+    private const string SearchHashesWhichReferenceId = "SELECT id FROM {0} WHERE json LIKE '%{1}%'";
 
     private const string ConnectionStringTemplate = "Data Source={0}; Version=3;";
     private readonly IDefinitionAssemblyData _assemblyData;
@@ -640,7 +643,7 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
             if (connection is not null && connection.State != ConnectionState.Closed)
                 connection.Close();
         }
-        
+
         foreach (var (localeStr, path) in manifestData.MobileWorldContentPaths)
         {
             var locale = ParseLocaleFromString(localeStr);
@@ -695,5 +698,35 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
             "zh-cht" => BungieLocales.ZH_CHT,
             _ => throw new Exception("Wrong locale.")
         };
+    }
+
+    public async IAsyncEnumerable<DbDefinitionReference> SearchForReferencingEntriesAsync(uint lookupHash)
+    {
+        var definitionsToLoad = Enum.GetValues<DefinitionsEnum>().ToList();
+
+        foreach (var nonExistInSqliteDefinition in _sqliteDefinitionsBlacklist)
+            definitionsToLoad.Remove(nonExistInSqliteDefinition);
+
+        definitionsToLoad.Remove(DefinitionsEnum.DestinyHistoricalStatsDefinition);
+
+        var connection = _sqliteConnections
+            .FirstOrDefault(x => x.Value.State.HasFlag(ConnectionState.Open));
+
+        foreach (var definitionType in definitionsToLoad)
+        {
+            var commandObj = new SQLiteCommand
+            {
+                Connection = connection.Value,
+                CommandText = string.Format(SearchHashesWhichReferenceId, definitionType.ToString(), lookupHash)
+            };
+            var reader = commandObj.ExecuteReader();
+            while (reader.Read())
+            {
+                var hashInt32 = reader.GetInt32(0);
+                yield return new DbDefinitionReference(definitionType, hashInt32.ToUInt32());
+            }
+
+            reader.Close();
+        }
     }
 }
