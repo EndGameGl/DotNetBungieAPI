@@ -42,5 +42,6 @@ public enum DestinyItemType
     Bounty = 26,
     Wrapper = 27,
     SeasonalArtifact = 28,
-    Finisher = 29
+    Finisher = 29,
+    Pattern = 30
 }

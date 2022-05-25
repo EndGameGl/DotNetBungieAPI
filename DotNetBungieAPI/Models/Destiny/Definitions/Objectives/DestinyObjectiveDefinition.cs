@@ -77,6 +77,7 @@ public sealed record DestinyObjectiveDefinition : IDestinyDefinition, IDeepEquat
     ///     The UI style applied to the objective. It's an enum, take a look at DestinyUnlockValueUIStyle for details of the
     ///     possible styles. Use this info as you wish to customize your UI.
     /// </summary>
+    [Obsolete("This is no longer populated by Destiny 2 game content. Please use InProgressValueStyle and CompletedValueStyle instead.")]
     [JsonPropertyName("valueStyle")]
     public DestinyUnlockValueUiStyle ValueStyle { get; init; }
 

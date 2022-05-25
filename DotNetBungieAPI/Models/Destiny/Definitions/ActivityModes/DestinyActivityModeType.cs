@@ -83,5 +83,6 @@ public enum DestinyActivityModeType
     Sundial = 83,
     TrialsOfOsiris = 84,
     Dares = 85,
-    Offensive = 86
+    Offensive = 86,
+    LostSector = 87
 }

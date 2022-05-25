@@ -12,11 +12,19 @@ public sealed record DestinyActivityModifierDefinition : IDestinyDefinition,
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+    
+    [JsonPropertyName("displayInNavMode")]
+    public bool DisplayInNavMode { get; set; }
+    
+    [JsonPropertyName("displayInActivitySelection")]
+    public bool DisplayInActivitySelection { get; set; }
 
     public bool DeepEquals(DestinyActivityModifierDefinition other)
     {
-        return other != null &&
+        return other is not null &&
                DisplayProperties.DeepEquals(other.DisplayProperties) &&
+               DisplayInNavMode == other.DisplayInNavMode &&
+               DisplayInActivitySelection == other.DisplayInActivitySelection &&
                Blacklisted == other.Blacklisted &&
                Hash == other.Hash &&
                Index == other.Index &&
