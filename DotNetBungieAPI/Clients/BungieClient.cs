@@ -57,16 +57,6 @@ internal sealed class BungieClient : IBungieClient
     public IDestiny2ResetService ResetService { get; }
 
     /// <summary>
-    ///     <inheritdoc cref="IBungieClient.ScopeToUser" />
-    /// </summary>
-    /// <param name="token">Auth token</param>
-    /// <returns></returns>
-    public IUserContextBungieClient ScopeToUser(AuthorizationTokenData token)
-    {
-        return new UserContextBungieClient(Repository, token, Authentication, ApiAccess);
-    }
-
-    /// <summary>
     ///     <inheritdoc cref="IBungieClient.TryGetDefinitionAsync{T}" />
     /// </summary>
     /// <param name="hash"></param>

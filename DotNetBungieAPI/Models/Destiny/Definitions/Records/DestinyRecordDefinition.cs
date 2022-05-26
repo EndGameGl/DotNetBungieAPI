@@ -31,6 +31,9 @@ public sealed record DestinyRecordDefinition : IDestinyDefinition, IDeepEquatabl
 
     [JsonPropertyName("recordValueStyle")] public DestinyRecordValueStyle RecordValueStyle { get; init; }
     [JsonPropertyName("forTitleGilding")] public bool ForTitleGilding { get; init; }
+    
+    [JsonPropertyName("shouldShowLargeIcons")]
+    public bool ShouldShowLargeIcons { get; init; }
     [JsonPropertyName("titleInfo")] public DestinyRecordTitleBlock TitleInfo { get; init; }
     [JsonPropertyName("completionInfo")] public DestinyRecordCompletionBlock CompletionInfo { get; init; }
     [JsonPropertyName("stateInfo")] public SchemaRecordStateBlock StateInfo { get; init; }

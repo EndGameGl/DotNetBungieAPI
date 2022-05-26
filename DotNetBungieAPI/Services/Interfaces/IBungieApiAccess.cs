@@ -35,7 +35,7 @@ public interface IBungieApiAccess
     /// <summary>
     ///     Access to https://bungie.net/Platform/Tokens endpoint
     /// </summary>
-    ITokenMethodsAccess Tokens { get; }
+    ITokensMethodsAccess Tokens { get; }
 
     /// <summary>
     ///     Access to https://bungie.net/Platform/Destiny2 endpoint

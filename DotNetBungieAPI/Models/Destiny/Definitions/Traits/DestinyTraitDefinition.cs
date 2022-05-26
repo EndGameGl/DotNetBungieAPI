@@ -15,6 +15,12 @@ public sealed record DestinyTraitDefinition : IDestinyDefinition, IDeepEquatable
     [JsonPropertyName("traitCategoryHash")]
     public DefinitionHashPointer<DestinyTraitCategoryDefinition> TraitCategory { get; init; }
         = DefinitionHashPointer<DestinyTraitCategoryDefinition>.Empty;
+    
+    /// <summary>
+    ///     An identifier for how this trait can be displayed. For example: a 'keyword' hint to show an explanation for certain related terms.
+    /// </summary>
+    [JsonPropertyName("displayHint")]
+    public string DisplayHint { get; init; }
 
     public bool DeepEquals(DestinyTraitDefinition other)
     {
@@ -22,6 +28,7 @@ public sealed record DestinyTraitDefinition : IDestinyDefinition, IDeepEquatable
                DisplayProperties.DeepEquals(other.DisplayProperties) &&
                TraitCategoryId == other.TraitCategoryId &&
                TraitCategory.DeepEquals(other.TraitCategory) &&
+               DisplayHint == other.DisplayHint &&
                Blacklisted == other.Blacklisted &&
                Hash == other.Hash &&
                Index == other.Index &&

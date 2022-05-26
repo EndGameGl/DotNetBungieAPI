@@ -75,7 +75,7 @@ public static class BungieApiBuilder
         serviceCollection.AddSingleton<IForumMethodsAccess, ForumMethodsAccess>();
         serviceCollection.AddSingleton<IGroupV2MethodsAccess, GroupV2MethodsAccess>();
         serviceCollection.AddSingleton<IUserMethodsAccess, UserMethodsAccess>();
-        serviceCollection.AddSingleton<ITokenMethodsAccess, TokenMethodsAccess>();
+        serviceCollection.AddSingleton<ITokensMethodsAccess, TokensMethodsAccess>();
         serviceCollection.AddSingleton<IDestiny2MethodsAccess, Destiny2MethodsAccess>();
         serviceCollection.AddSingleton<ICommunityContentMethodsAccess, CommunityContentMethodsAccess>();
         serviceCollection.AddSingleton<ISocialMethodsAccess, SocialMethodsAccess>();

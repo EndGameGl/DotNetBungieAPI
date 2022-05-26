@@ -9,7 +9,7 @@ namespace DotNetBungieAPI.Services.ApiAccess.Interfaces;
 /// <summary>
 ///     Access to https://bungie.net/Platform/Tokens endpoint
 /// </summary>
-public interface ITokenMethodsAccess
+public interface ITokensMethodsAccess
 {
     /// <summary>
     ///     Returns the partner sku and offer history of the targeted user. Elevated permissions are required to see users that
@@ -28,5 +28,20 @@ public interface ITokenMethodsAccess
         AuthorizationTokenData authorizationToken,
         int partnerApplicationId,
         long targetBnetMembershipId,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    ///     Returns the bungie rewards for the targeted user.
+    /// </summary>
+    /// <param name="membershipId">bungie.net user membershipId for requested user rewards. If not self, elevated permissions are required.</param>
+    /// <param name="authorizationToken"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    ValueTask<BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>> GetBungieRewardsForUser(
+        long membershipId,
+        AuthorizationTokenData authorizationToken,
+        CancellationToken cancellationToken = default);
+
+    ValueTask<BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>> GetBungieRewardsList(
         CancellationToken cancellationToken = default);
 }

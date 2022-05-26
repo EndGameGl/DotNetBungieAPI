@@ -38,13 +38,6 @@ public interface IBungieClient : IDisposable, IAsyncDisposable
     IDestiny2ResetService ResetService { get; }
 
     /// <summary>
-    ///     Creates a scoped user client, that doesn't need user to pass token manually
-    /// </summary>
-    /// <param name="token"></param>
-    /// <returns></returns>
-    IUserContextBungieClient ScopeToUser(AuthorizationTokenData token);
-
-    /// <summary>
     ///     Tries to get definition async from all available sources
     /// </summary>
     /// <param name="hash"></param>

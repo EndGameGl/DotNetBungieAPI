@@ -14,12 +14,12 @@ namespace DotNetBungieAPI.Services.ApiAccess;
 /// <summary>
 ///     <see cref="ITokenMethodsAccess" />
 /// </summary>
-internal sealed class TokenMethodsAccess : ITokenMethodsAccess
+internal sealed class TokensMethodsAccess : ITokensMethodsAccess
 {
     private readonly BungieClientConfiguration _configuration;
     private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
-    public TokenMethodsAccess(
+    public TokensMethodsAccess(
         IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
         BungieClientConfiguration configuration)
     {
@@ -48,6 +48,43 @@ internal sealed class TokenMethodsAccess : ITokenMethodsAccess
                 url,
                 cancellationToken,
                 authorizationToken.AccessToken)
+            .ConfigureAwait(false);
+    }
+
+    public async ValueTask<BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>> GetBungieRewardsForUser(
+        long membershipId, 
+        AuthorizationTokenData authorizationToken, 
+        CancellationToken cancellationToken = default)
+    {
+        if (!_configuration.HasSufficientRights(ApplicationScopes.ReadAndApplyTokens))
+            throw new InsufficientScopeException(ApplicationScopes.ReadAndApplyTokens);
+        
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
+            .Append("/Tokens/Rewards/GetRewardsForUser/")
+            .AddUrlParam(membershipId.ToString())
+            .Build();
+        
+        return await _dotNetBungieApiHttpClient
+            .GetFromBungieNetPlatform<ReadOnlyDictionary<string, BungieRewardDisplay>>(
+                url,
+                cancellationToken,
+                authorizationToken.AccessToken)
+            .ConfigureAwait(false);
+    }
+
+    public async ValueTask<BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>> GetBungieRewardsList(
+        CancellationToken cancellationToken = default)
+    {
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
+            .Append("/Tokens/Rewards/BungieRewards/")
+            .Build();
+        
+        return await _dotNetBungieApiHttpClient
+            .GetFromBungieNetPlatform<ReadOnlyDictionary<string, BungieRewardDisplay>>(
+                url,
+                cancellationToken)
             .ConfigureAwait(false);
     }
 }

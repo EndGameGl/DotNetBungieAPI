@@ -12,7 +12,7 @@ internal sealed class BungieApiAccess : IBungieApiAccess
         IForumMethodsAccess forumMethodsAccess,
         IUserMethodsAccess userMethodsAccess,
         IGroupV2MethodsAccess groupV2MethodsAccess,
-        ITokenMethodsAccess tokenMethodsAccess,
+        ITokensMethodsAccess tokenMethodsAccess,
         IDestiny2MethodsAccess destiny2MethodsAccess,
         ICommunityContentMethodsAccess communityContentMethodsAccess,
         ITrendingMethodsAccess trendingMethodsAccess,
@@ -40,7 +40,7 @@ internal sealed class BungieApiAccess : IBungieApiAccess
     public IContentMethodsAccess Content { get; }
     public IForumMethodsAccess Forum { get; }
     public IGroupV2MethodsAccess GroupV2 { get; }
-    public ITokenMethodsAccess Tokens { get; }
+    public ITokensMethodsAccess Tokens { get; }
     public IDestiny2MethodsAccess Destiny2 { get; }
     public ICommunityContentMethodsAccess Community { get; }
     public ITrendingMethodsAccess Trending { get; }
