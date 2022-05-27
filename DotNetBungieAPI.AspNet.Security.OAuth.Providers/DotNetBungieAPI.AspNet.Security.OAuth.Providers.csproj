@@ -9,6 +9,13 @@
         <Title>DotNetBungieAPI.AspNet.Security.OAuth.Providers</Title>
         <Authors>MeGl</Authors>
         <Description>ASP.NET Core security middleware enabling Bungie.net authentication.</Description>
+        <Copyright>Copyright (c) MeGl 2022</Copyright>
+        <RepositoryUrl>https://github.com/EndGameGl/DotNetBungieAPI</RepositoryUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
     
     <ItemGroup>
