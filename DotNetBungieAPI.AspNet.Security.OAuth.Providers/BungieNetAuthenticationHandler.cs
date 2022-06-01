@@ -2,10 +2,13 @@
 using System.Net;
 using System.Net.Http.Headers;
 using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OAuth;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -59,7 +62,8 @@ public partial class BungieNetAuthenticationHandler : OAuthHandler<BungieNetAuth
         return new AuthenticationTicket(context.Principal!, context.Properties, Scheme.Name);
     }
 
-    protected override async Task<OAuthTokenResponse> ExchangeCodeAsync(OAuthCodeExchangeContext context)
+    protected override async Task<OAuthTokenResponse> ExchangeCodeAsync(
+        OAuthCodeExchangeContext context)
     {
         var tokenRequestParameters = new List<KeyValuePair<string, string>>()
         {
@@ -77,7 +81,7 @@ public partial class BungieNetAuthenticationHandler : OAuthHandler<BungieNetAuth
 
         using var request = new HttpRequestMessage(HttpMethod.Post, Options.TokenEndpoint);
 
-        request.Content = new FormUrlEncodedContent(tokenRequestParameters);
+        request.Content = new FormUrlEncodedContent(tokenRequestParameters!);
 
         using var response = await Backchannel.SendAsync(request, Context.RequestAborted);
 
@@ -90,6 +94,37 @@ public partial class BungieNetAuthenticationHandler : OAuthHandler<BungieNetAuth
         var payload = JsonDocument.Parse(await response.Content.ReadAsStringAsync(Context.RequestAborted));
 
         return OAuthTokenResponse.Success(payload);
+    }
+
+    protected override string BuildChallengeUrl(
+        AuthenticationProperties properties, 
+        string redirectUri)
+    {
+        var parameters = new Dictionary<string, string>
+        {
+            { "client_id", Options.ClientId },
+            { "response_type", "code" },
+        };
+
+        if (Options.UsePkce)
+        {
+            var bytes = new byte[32];
+            RandomNumberGenerator.Fill(bytes);
+            var codeVerifier = Microsoft.AspNetCore.WebUtilities.Base64UrlTextEncoder.Encode(bytes);
+
+            // Store this for use during the code redemption.
+            properties.Items.Add(OAuthConstants.CodeVerifierKey, codeVerifier);
+
+            var challengeBytes = SHA256.HashData(Encoding.UTF8.GetBytes(codeVerifier));
+            var codeChallenge = WebEncoders.Base64UrlEncode(challengeBytes);
+
+            parameters[OAuthConstants.CodeChallengeKey] = codeChallenge;
+            parameters[OAuthConstants.CodeChallengeMethodKey] = OAuthConstants.CodeChallengeMethodS256;
+        }
+
+        parameters["state"] = Options.StateDataFormat.Protect(properties);
+
+        return QueryHelpers.AddQueryString(Options.AuthorizationEndpoint, parameters!);
     }
 
     private static partial class Log

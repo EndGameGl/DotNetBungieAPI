@@ -4,8 +4,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
-        <AssemblyVersion>1.0.1</AssemblyVersion>
-        <FileVersion>1.0.1</FileVersion>
+        <AssemblyVersion>1.0.2</AssemblyVersion>
+        <FileVersion>1.0.2</FileVersion>
         <Title>DotNetBungieAPI.AspNet.Security.OAuth.Providers</Title>
         <Authors>MeGl</Authors>
         <Description>ASP.NET Core security middleware enabling Bungie.net authentication.</Description>
@@ -17,7 +17,7 @@
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <LangVersion>10</LangVersion>
-        <PackageVersion>1.0.1</PackageVersion>
+        <PackageVersion>1.0.2</PackageVersion>
     </PropertyGroup>
     
     <ItemGroup>
