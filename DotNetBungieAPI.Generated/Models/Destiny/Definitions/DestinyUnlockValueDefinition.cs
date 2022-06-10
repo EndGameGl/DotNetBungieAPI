@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     An Unlock Value is an internal integer value, stored on the server and used in a variety of ways, most frequently for the gating/requirement checks that the game performs across all of its main features. They can also be used as the storage data for mapped Progressions, Objectives, and other features that require storage of variable numeric values.
 /// </summary>
-public class DestinyUnlockValueDefinition : IDeepEquatable<DestinyUnlockValueDefinition>
+public class DestinyUnlockValueDefinition
 {
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
@@ -24,40 +24,4 @@ public class DestinyUnlockValueDefinition : IDeepEquatable<DestinyUnlockValueDef
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyUnlockValueDefinition? other)
-    {
-        return other is not null &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyUnlockValueDefinition? other)
-    {
-        if (other is null) return;
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

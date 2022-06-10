@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Sockets;
 /// <para />
 ///     This should be compared against a given plug item's DestinyInventoryItemDefinition.plug.plugCategoryHash, which indicates the plug item's category.
 /// </summary>
-public class DestinyPlugWhitelistEntryDefinition : IDeepEquatable<DestinyPlugWhitelistEntryDefinition>
+public class DestinyPlugWhitelistEntryDefinition
 {
     /// <summary>
     ///     The hash identifier of the Plug Category to compare against the plug item's plug.plugCategoryHash.
@@ -34,40 +34,4 @@ public class DestinyPlugWhitelistEntryDefinition : IDeepEquatable<DestinyPlugWhi
     /// </summary>
     [JsonPropertyName("reinitializationPossiblePlugHashes")]
     public List<uint> ReinitializationPossiblePlugHashes { get; set; }
-
-    public bool DeepEquals(DestinyPlugWhitelistEntryDefinition? other)
-    {
-        return other is not null &&
-               CategoryHash == other.CategoryHash &&
-               CategoryIdentifier == other.CategoryIdentifier &&
-               ReinitializationPossiblePlugHashes.DeepEqualsListNaive(other.ReinitializationPossiblePlugHashes);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyPlugWhitelistEntryDefinition? other)
-    {
-        if (other is null) return;
-        if (CategoryHash != other.CategoryHash)
-        {
-            CategoryHash = other.CategoryHash;
-            OnPropertyChanged(nameof(CategoryHash));
-        }
-        if (CategoryIdentifier != other.CategoryIdentifier)
-        {
-            CategoryIdentifier = other.CategoryIdentifier;
-            OnPropertyChanged(nameof(CategoryIdentifier));
-        }
-        if (!ReinitializationPossiblePlugHashes.DeepEqualsListNaive(other.ReinitializationPossiblePlugHashes))
-        {
-            ReinitializationPossiblePlugHashes = other.ReinitializationPossiblePlugHashes;
-            OnPropertyChanged(nameof(ReinitializationPossiblePlugHashes));
-        }
-    }
 }

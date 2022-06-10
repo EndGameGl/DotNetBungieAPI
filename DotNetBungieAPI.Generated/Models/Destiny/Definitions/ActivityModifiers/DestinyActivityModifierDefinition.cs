@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.ActivityModifiers
 /// <summary>
 ///     Modifiers - in Destiny 1, these were referred to as "Skulls" - are changes that can be applied to an Activity.
 /// </summary>
-public class DestinyActivityModifierDefinition : IDeepEquatable<DestinyActivityModifierDefinition>
+public class DestinyActivityModifierDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -33,58 +33,4 @@ public class DestinyActivityModifierDefinition : IDeepEquatable<DestinyActivityM
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyActivityModifierDefinition? other)
-    {
-        return other is not null &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               DisplayInNavMode == other.DisplayInNavMode &&
-               DisplayInActivitySelection == other.DisplayInActivitySelection &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyActivityModifierDefinition? other)
-    {
-        if (other is null) return;
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (DisplayInNavMode != other.DisplayInNavMode)
-        {
-            DisplayInNavMode = other.DisplayInNavMode;
-            OnPropertyChanged(nameof(DisplayInNavMode));
-        }
-        if (DisplayInActivitySelection != other.DisplayInActivitySelection)
-        {
-            DisplayInActivitySelection = other.DisplayInActivitySelection;
-            OnPropertyChanged(nameof(DisplayInActivitySelection));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

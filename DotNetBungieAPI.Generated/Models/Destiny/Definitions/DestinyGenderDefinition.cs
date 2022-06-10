@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Gender is a social construct, and as such we have definitions for Genders. Right now there happens to only be two, but we'll see what the future holds.
 /// </summary>
-public class DestinyGenderDefinition : IDeepEquatable<DestinyGenderDefinition>
+public class DestinyGenderDefinition
 {
     /// <summary>
     ///     This is a quick reference enumeration for all of the currently defined Genders. We use the enumeration for quicker lookups in related data, like DestinyClassDefinition.genderedClassNames.
@@ -33,52 +33,4 @@ public class DestinyGenderDefinition : IDeepEquatable<DestinyGenderDefinition>
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyGenderDefinition? other)
-    {
-        return other is not null &&
-               GenderType == other.GenderType &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyGenderDefinition? other)
-    {
-        if (other is null) return;
-        if (GenderType != other.GenderType)
-        {
-            GenderType = other.GenderType;
-            OnPropertyChanged(nameof(GenderType));
-        }
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

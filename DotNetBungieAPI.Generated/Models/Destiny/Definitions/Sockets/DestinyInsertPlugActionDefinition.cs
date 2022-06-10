@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Sockets;
 /// <summary>
 ///     Data related to what happens while a plug is being inserted, mostly for UI purposes.
 /// </summary>
-public class DestinyInsertPlugActionDefinition : IDeepEquatable<DestinyInsertPlugActionDefinition>
+public class DestinyInsertPlugActionDefinition
 {
     /// <summary>
     ///     How long it takes for the Plugging of the item to be completed once it is initiated, if you care.
@@ -16,34 +16,4 @@ public class DestinyInsertPlugActionDefinition : IDeepEquatable<DestinyInsertPlu
     /// </summary>
     [JsonPropertyName("actionType")]
     public Destiny.SocketTypeActionType ActionType { get; set; }
-
-    public bool DeepEquals(DestinyInsertPlugActionDefinition? other)
-    {
-        return other is not null &&
-               ActionExecuteSeconds == other.ActionExecuteSeconds &&
-               ActionType == other.ActionType;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyInsertPlugActionDefinition? other)
-    {
-        if (other is null) return;
-        if (ActionExecuteSeconds != other.ActionExecuteSeconds)
-        {
-            ActionExecuteSeconds = other.ActionExecuteSeconds;
-            OnPropertyChanged(nameof(ActionExecuteSeconds));
-        }
-        if (ActionType != other.ActionType)
-        {
-            ActionType = other.ActionType;
-            OnPropertyChanged(nameof(ActionType));
-        }
-    }
 }

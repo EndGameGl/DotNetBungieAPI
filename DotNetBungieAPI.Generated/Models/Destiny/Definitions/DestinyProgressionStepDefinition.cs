@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     This defines a single Step in a progression (which roughly equates to a level. See DestinyProgressionDefinition for caveats).
 /// </summary>
-public class DestinyProgressionStepDefinition : IDeepEquatable<DestinyProgressionStepDefinition>
+public class DestinyProgressionStepDefinition
 {
     /// <summary>
     ///     Very rarely, Progressions will have localized text describing the Level of the progression. This will be that localized text, if it exists. Otherwise, the standard appears to be to simply show the level numerically.
@@ -34,52 +34,4 @@ public class DestinyProgressionStepDefinition : IDeepEquatable<DestinyProgressio
     /// </summary>
     [JsonPropertyName("icon")]
     public string Icon { get; set; }
-
-    public bool DeepEquals(DestinyProgressionStepDefinition? other)
-    {
-        return other is not null &&
-               StepName == other.StepName &&
-               DisplayEffectType == other.DisplayEffectType &&
-               ProgressTotal == other.ProgressTotal &&
-               RewardItems.DeepEqualsList(other.RewardItems) &&
-               Icon == other.Icon;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyProgressionStepDefinition? other)
-    {
-        if (other is null) return;
-        if (StepName != other.StepName)
-        {
-            StepName = other.StepName;
-            OnPropertyChanged(nameof(StepName));
-        }
-        if (DisplayEffectType != other.DisplayEffectType)
-        {
-            DisplayEffectType = other.DisplayEffectType;
-            OnPropertyChanged(nameof(DisplayEffectType));
-        }
-        if (ProgressTotal != other.ProgressTotal)
-        {
-            ProgressTotal = other.ProgressTotal;
-            OnPropertyChanged(nameof(ProgressTotal));
-        }
-        if (!RewardItems.DeepEqualsList(other.RewardItems))
-        {
-            RewardItems = other.RewardItems;
-            OnPropertyChanged(nameof(RewardItems));
-        }
-        if (Icon != other.Icon)
-        {
-            Icon = other.Icon;
-            OnPropertyChanged(nameof(Icon));
-        }
-    }
 }

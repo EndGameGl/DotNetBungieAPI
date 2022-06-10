@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Seasons;
 /// <summary>
 ///     Defines the promotional text, images, and links to preview this season.
 /// </summary>
-public class DestinySeasonPreviewDefinition : IDeepEquatable<DestinySeasonPreviewDefinition>
+public class DestinySeasonPreviewDefinition
 {
     /// <summary>
     ///     A localized description of the season.
@@ -28,46 +28,4 @@ public class DestinySeasonPreviewDefinition : IDeepEquatable<DestinySeasonPrevie
     /// </summary>
     [JsonPropertyName("images")]
     public List<Destiny.Definitions.Seasons.DestinySeasonPreviewImageDefinition> Images { get; set; }
-
-    public bool DeepEquals(DestinySeasonPreviewDefinition? other)
-    {
-        return other is not null &&
-               Description == other.Description &&
-               LinkPath == other.LinkPath &&
-               VideoLink == other.VideoLink &&
-               Images.DeepEqualsList(other.Images);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinySeasonPreviewDefinition? other)
-    {
-        if (other is null) return;
-        if (Description != other.Description)
-        {
-            Description = other.Description;
-            OnPropertyChanged(nameof(Description));
-        }
-        if (LinkPath != other.LinkPath)
-        {
-            LinkPath = other.LinkPath;
-            OnPropertyChanged(nameof(LinkPath));
-        }
-        if (VideoLink != other.VideoLink)
-        {
-            VideoLink = other.VideoLink;
-            OnPropertyChanged(nameof(VideoLink));
-        }
-        if (!Images.DeepEqualsList(other.Images))
-        {
-            Images = other.Images;
-            OnPropertyChanged(nameof(Images));
-        }
-    }
 }

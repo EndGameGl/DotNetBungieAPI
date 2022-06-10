@@ -3,13 +3,13 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.EnergyTypes;
 /// <summary>
 ///     Represents types of Energy that can be used for costs and payments related to Armor 2.0 mods.
 /// </summary>
-public class DestinyEnergyTypeDefinition : IDeepEquatable<DestinyEnergyTypeDefinition>
+public class DestinyEnergyTypeDefinition
 {
     /// <summary>
     ///     The description of the energy type, icon etc...
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public object DisplayProperties { get; set; }
 
     /// <summary>
     ///     A variant of the icon that is transparent and colorless.
@@ -33,7 +33,7 @@ public class DestinyEnergyTypeDefinition : IDeepEquatable<DestinyEnergyTypeDefin
     ///     If this Energy Type can be used for determining the Type of Energy that an item can consume, this is the hash for the DestinyInvestmentStatDefinition that represents the stat which holds the Capacity for that energy type. (Note that this is optional because "Any" is a valid cost, but not valid for Capacity - an Armor must have a specific Energy Type for determining the energy type that the Armor is restricted to use)
     /// </summary>
     [JsonPropertyName("capacityStatHash")]
-    public uint? CapacityStatHash { get; set; }
+    public uint CapacityStatHash { get; set; }
 
     /// <summary>
     ///     If this Energy Type can be used as a cost to pay for socketing Armor 2.0 items, this is the hash for the DestinyInvestmentStatDefinition that stores the plug's raw cost.
@@ -60,76 +60,4 @@ public class DestinyEnergyTypeDefinition : IDeepEquatable<DestinyEnergyTypeDefin
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyEnergyTypeDefinition? other)
-    {
-        return other is not null &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               TransparentIconPath == other.TransparentIconPath &&
-               ShowIcon == other.ShowIcon &&
-               EnumValue == other.EnumValue &&
-               CapacityStatHash == other.CapacityStatHash &&
-               CostStatHash == other.CostStatHash &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyEnergyTypeDefinition? other)
-    {
-        if (other is null) return;
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (TransparentIconPath != other.TransparentIconPath)
-        {
-            TransparentIconPath = other.TransparentIconPath;
-            OnPropertyChanged(nameof(TransparentIconPath));
-        }
-        if (ShowIcon != other.ShowIcon)
-        {
-            ShowIcon = other.ShowIcon;
-            OnPropertyChanged(nameof(ShowIcon));
-        }
-        if (EnumValue != other.EnumValue)
-        {
-            EnumValue = other.EnumValue;
-            OnPropertyChanged(nameof(EnumValue));
-        }
-        if (CapacityStatHash != other.CapacityStatHash)
-        {
-            CapacityStatHash = other.CapacityStatHash;
-            OnPropertyChanged(nameof(CapacityStatHash));
-        }
-        if (CostStatHash != other.CostStatHash)
-        {
-            CostStatHash = other.CostStatHash;
-            OnPropertyChanged(nameof(CostStatHash));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

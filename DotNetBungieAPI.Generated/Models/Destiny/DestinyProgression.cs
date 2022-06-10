@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny;
 /// <summary>
 ///     Information about a current character's status with a Progression. A progression is a value that can increase with activity and has levels. Think Character Level and Reputation Levels. Combine this "live" data with the related DestinyProgressionDefinition for a full picture of the Progression.
 /// </summary>
-public class DestinyProgression : IDeepEquatable<DestinyProgression>
+public class DestinyProgression
 {
     /// <summary>
     ///     The hash identifier of the Progression in question. Use it to look up the DestinyProgressionDefinition in static data.
@@ -75,7 +75,7 @@ public class DestinyProgression : IDeepEquatable<DestinyProgression>
     ///     The number of resets of this progression you've executed this season, if applicable to this progression.
     /// </summary>
     [JsonPropertyName("currentResetCount")]
-    public int? CurrentResetCount { get; set; }
+    public int CurrentResetCount { get; set; }
 
     /// <summary>
     ///     Information about historical resets of this progression, if there is any data for it.
@@ -88,106 +88,4 @@ public class DestinyProgression : IDeepEquatable<DestinyProgression>
     /// </summary>
     [JsonPropertyName("rewardItemStates")]
     public List<Destiny.DestinyProgressionRewardItemState> RewardItemStates { get; set; }
-
-    public bool DeepEquals(DestinyProgression? other)
-    {
-        return other is not null &&
-               ProgressionHash == other.ProgressionHash &&
-               DailyProgress == other.DailyProgress &&
-               DailyLimit == other.DailyLimit &&
-               WeeklyProgress == other.WeeklyProgress &&
-               WeeklyLimit == other.WeeklyLimit &&
-               CurrentProgress == other.CurrentProgress &&
-               Level == other.Level &&
-               LevelCap == other.LevelCap &&
-               StepIndex == other.StepIndex &&
-               ProgressToNextLevel == other.ProgressToNextLevel &&
-               NextLevelAt == other.NextLevelAt &&
-               CurrentResetCount == other.CurrentResetCount &&
-               SeasonResets.DeepEqualsList(other.SeasonResets) &&
-               RewardItemStates.DeepEqualsListNaive(other.RewardItemStates);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyProgression? other)
-    {
-        if (other is null) return;
-        if (ProgressionHash != other.ProgressionHash)
-        {
-            ProgressionHash = other.ProgressionHash;
-            OnPropertyChanged(nameof(ProgressionHash));
-        }
-        if (DailyProgress != other.DailyProgress)
-        {
-            DailyProgress = other.DailyProgress;
-            OnPropertyChanged(nameof(DailyProgress));
-        }
-        if (DailyLimit != other.DailyLimit)
-        {
-            DailyLimit = other.DailyLimit;
-            OnPropertyChanged(nameof(DailyLimit));
-        }
-        if (WeeklyProgress != other.WeeklyProgress)
-        {
-            WeeklyProgress = other.WeeklyProgress;
-            OnPropertyChanged(nameof(WeeklyProgress));
-        }
-        if (WeeklyLimit != other.WeeklyLimit)
-        {
-            WeeklyLimit = other.WeeklyLimit;
-            OnPropertyChanged(nameof(WeeklyLimit));
-        }
-        if (CurrentProgress != other.CurrentProgress)
-        {
-            CurrentProgress = other.CurrentProgress;
-            OnPropertyChanged(nameof(CurrentProgress));
-        }
-        if (Level != other.Level)
-        {
-            Level = other.Level;
-            OnPropertyChanged(nameof(Level));
-        }
-        if (LevelCap != other.LevelCap)
-        {
-            LevelCap = other.LevelCap;
-            OnPropertyChanged(nameof(LevelCap));
-        }
-        if (StepIndex != other.StepIndex)
-        {
-            StepIndex = other.StepIndex;
-            OnPropertyChanged(nameof(StepIndex));
-        }
-        if (ProgressToNextLevel != other.ProgressToNextLevel)
-        {
-            ProgressToNextLevel = other.ProgressToNextLevel;
-            OnPropertyChanged(nameof(ProgressToNextLevel));
-        }
-        if (NextLevelAt != other.NextLevelAt)
-        {
-            NextLevelAt = other.NextLevelAt;
-            OnPropertyChanged(nameof(NextLevelAt));
-        }
-        if (CurrentResetCount != other.CurrentResetCount)
-        {
-            CurrentResetCount = other.CurrentResetCount;
-            OnPropertyChanged(nameof(CurrentResetCount));
-        }
-        if (!SeasonResets.DeepEqualsList(other.SeasonResets))
-        {
-            SeasonResets = other.SeasonResets;
-            OnPropertyChanged(nameof(SeasonResets));
-        }
-        if (!RewardItemStates.DeepEqualsListNaive(other.RewardItemStates))
-        {
-            RewardItemStates = other.RewardItemStates;
-            OnPropertyChanged(nameof(RewardItemStates));
-        }
-    }
 }

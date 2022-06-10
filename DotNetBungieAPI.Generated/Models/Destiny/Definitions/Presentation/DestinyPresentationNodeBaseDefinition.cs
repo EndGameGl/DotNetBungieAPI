@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Presentation;
 /// <summary>
 ///     This is the base class for all presentation system children. Presentation Nodes, Records, Collectibles, and Metrics.
 /// </summary>
-public class DestinyPresentationNodeBaseDefinition : IDeepEquatable<DestinyPresentationNodeBaseDefinition>
+public class DestinyPresentationNodeBaseDefinition
 {
     [JsonPropertyName("presentationNodeType")]
     public Destiny.DestinyPresentationNodeType PresentationNodeType { get; set; }
@@ -39,64 +39,4 @@ public class DestinyPresentationNodeBaseDefinition : IDeepEquatable<DestinyPrese
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyPresentationNodeBaseDefinition? other)
-    {
-        return other is not null &&
-               PresentationNodeType == other.PresentationNodeType &&
-               TraitIds.DeepEqualsListNaive(other.TraitIds) &&
-               TraitHashes.DeepEqualsListNaive(other.TraitHashes) &&
-               ParentNodeHashes.DeepEqualsListNaive(other.ParentNodeHashes) &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyPresentationNodeBaseDefinition? other)
-    {
-        if (other is null) return;
-        if (PresentationNodeType != other.PresentationNodeType)
-        {
-            PresentationNodeType = other.PresentationNodeType;
-            OnPropertyChanged(nameof(PresentationNodeType));
-        }
-        if (!TraitIds.DeepEqualsListNaive(other.TraitIds))
-        {
-            TraitIds = other.TraitIds;
-            OnPropertyChanged(nameof(TraitIds));
-        }
-        if (!TraitHashes.DeepEqualsListNaive(other.TraitHashes))
-        {
-            TraitHashes = other.TraitHashes;
-            OnPropertyChanged(nameof(TraitHashes));
-        }
-        if (!ParentNodeHashes.DeepEqualsListNaive(other.ParentNodeHashes))
-        {
-            ParentNodeHashes = other.ParentNodeHashes;
-            OnPropertyChanged(nameof(ParentNodeHashes));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Seasons;
 /// <summary>
 ///     Defines the thumbnail icon, high-res image, and video link for promotional images
 /// </summary>
-public class DestinySeasonPreviewImageDefinition : IDeepEquatable<DestinySeasonPreviewImageDefinition>
+public class DestinySeasonPreviewImageDefinition
 {
     /// <summary>
     ///     A thumbnail icon path to preview seasonal content, probably 480x270.
@@ -16,34 +16,4 @@ public class DestinySeasonPreviewImageDefinition : IDeepEquatable<DestinySeasonP
     /// </summary>
     [JsonPropertyName("highResImage")]
     public string HighResImage { get; set; }
-
-    public bool DeepEquals(DestinySeasonPreviewImageDefinition? other)
-    {
-        return other is not null &&
-               ThumbnailImage == other.ThumbnailImage &&
-               HighResImage == other.HighResImage;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinySeasonPreviewImageDefinition? other)
-    {
-        if (other is null) return;
-        if (ThumbnailImage != other.ThumbnailImage)
-        {
-            ThumbnailImage = other.ThumbnailImage;
-            OnPropertyChanged(nameof(ThumbnailImage));
-        }
-        if (HighResImage != other.HighResImage)
-        {
-            HighResImage = other.HighResImage;
-            OnPropertyChanged(nameof(HighResImage));
-        }
-    }
 }

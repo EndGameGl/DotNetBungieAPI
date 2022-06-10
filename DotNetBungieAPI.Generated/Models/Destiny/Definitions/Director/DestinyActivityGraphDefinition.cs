@@ -11,7 +11,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Director;
 /// <para />
 ///     If we end up having time, we may end up trying to manually populate those here: but the last time we tried that, before the lead-up to D1, it proved to be unmaintainable as the game's content changed. So don't bet the farm on us providing that content in this definition.
 /// </summary>
-public class DestinyActivityGraphDefinition : IDeepEquatable<DestinyActivityGraphDefinition>
+public class DestinyActivityGraphDefinition
 {
     /// <summary>
     ///     These represent the visual "nodes" on the map's view. These are the activities you can click on in the map.
@@ -68,76 +68,4 @@ public class DestinyActivityGraphDefinition : IDeepEquatable<DestinyActivityGrap
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyActivityGraphDefinition? other)
-    {
-        return other is not null &&
-               Nodes.DeepEqualsList(other.Nodes) &&
-               ArtElements.DeepEqualsList(other.ArtElements) &&
-               Connections.DeepEqualsList(other.Connections) &&
-               DisplayObjectives.DeepEqualsList(other.DisplayObjectives) &&
-               DisplayProgressions.DeepEqualsList(other.DisplayProgressions) &&
-               LinkedGraphs.DeepEqualsList(other.LinkedGraphs) &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyActivityGraphDefinition? other)
-    {
-        if (other is null) return;
-        if (!Nodes.DeepEqualsList(other.Nodes))
-        {
-            Nodes = other.Nodes;
-            OnPropertyChanged(nameof(Nodes));
-        }
-        if (!ArtElements.DeepEqualsList(other.ArtElements))
-        {
-            ArtElements = other.ArtElements;
-            OnPropertyChanged(nameof(ArtElements));
-        }
-        if (!Connections.DeepEqualsList(other.Connections))
-        {
-            Connections = other.Connections;
-            OnPropertyChanged(nameof(Connections));
-        }
-        if (!DisplayObjectives.DeepEqualsList(other.DisplayObjectives))
-        {
-            DisplayObjectives = other.DisplayObjectives;
-            OnPropertyChanged(nameof(DisplayObjectives));
-        }
-        if (!DisplayProgressions.DeepEqualsList(other.DisplayProgressions))
-        {
-            DisplayProgressions = other.DisplayProgressions;
-            OnPropertyChanged(nameof(DisplayProgressions));
-        }
-        if (!LinkedGraphs.DeepEqualsList(other.LinkedGraphs))
-        {
-            LinkedGraphs = other.LinkedGraphs;
-            OnPropertyChanged(nameof(LinkedGraphs));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Items;
 
-public class DestinyItemPlugObjectivesComponent : IDeepEquatable<DestinyItemPlugObjectivesComponent>
+public class DestinyItemPlugObjectivesComponent
 {
     /// <summary>
     ///     This set of data is keyed by the Item Hash (DestinyInventoryItemDefinition) of the plug whose objectives are being returned, with the value being the list of those objectives.
@@ -13,28 +13,4 @@ public class DestinyItemPlugObjectivesComponent : IDeepEquatable<DestinyItemPlug
     /// </summary>
     [JsonPropertyName("objectivesPerPlug")]
     public Dictionary<uint, List<Destiny.Quests.DestinyObjectiveProgress>> ObjectivesPerPlug { get; set; }
-
-    public bool DeepEquals(DestinyItemPlugObjectivesComponent? other)
-    {
-        return other is not null &&
-               ObjectivesPerPlug.DeepEqualsDictionaryNaive(other.ObjectivesPerPlug);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemPlugObjectivesComponent? other)
-    {
-        if (other is null) return;
-        if (!ObjectivesPerPlug.DeepEqualsDictionary(other.ObjectivesPerPlug))
-        {
-            ObjectivesPerPlug = other.ObjectivesPerPlug;
-            OnPropertyChanged(nameof(ObjectivesPerPlug));
-        }
-    }
 }

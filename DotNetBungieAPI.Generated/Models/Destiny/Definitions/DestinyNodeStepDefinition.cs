@@ -9,13 +9,13 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Note that, when dealing with Talent Node Steps, you must ensure that you have the latest version of content. stepIndex and nodeStepHash - two ways of identifying the step within a node - are both content version dependent, and thus are subject to change between content updates.
 /// </summary>
-public class DestinyNodeStepDefinition : IDeepEquatable<DestinyNodeStepDefinition>
+public class DestinyNodeStepDefinition
 {
     /// <summary>
     ///     These are the display properties actually used to render the Talent Node. The currently active step's displayProperties are shown.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public object DisplayProperties { get; set; }
 
     /// <summary>
     ///     The index of this step in the list of Steps on the Talent Node.
@@ -47,13 +47,13 @@ public class DestinyNodeStepDefinition : IDeepEquatable<DestinyNodeStepDefinitio
     ///     If the step provides a damage type, this will be the hash identifier used to look up the damage type's DestinyDamageTypeDefinition.
     /// </summary>
     [JsonPropertyName("damageTypeHash")]
-    public uint? DamageTypeHash { get; set; }
+    public uint DamageTypeHash { get; set; }
 
     /// <summary>
     ///     If the step has requirements for activation (they almost always do, if nothing else than for the Talent Grid's Progression to have reached a certain level), they will be defined here.
     /// </summary>
     [JsonPropertyName("activationRequirement")]
-    public Destiny.Definitions.DestinyNodeActivationRequirement ActivationRequirement { get; set; }
+    public object ActivationRequirement { get; set; }
 
     /// <summary>
     ///     There was a time when talent nodes could be activated multiple times, and the effects of subsequent Steps would be compounded on each other, essentially "upgrading" the node. We have moved away from this, but theoretically the capability still exists.
@@ -107,7 +107,7 @@ public class DestinyNodeStepDefinition : IDeepEquatable<DestinyNodeStepDefinitio
     ///     In Destiny 1, the Armory's Perk Filtering was driven by a concept of TalentNodeStepGroups: categorizations of talent nodes based on their functionality. While the Armory isn't a BNet-facing thing for now, and the new Armory will need to account for Sockets rather than Talent Nodes, this categorization capability feels useful enough to still keep around.
     /// </summary>
     [JsonPropertyName("stepGroups")]
-    public Destiny.Definitions.DestinyTalentNodeStepGroups StepGroups { get; set; }
+    public object StepGroups { get; set; }
 
     /// <summary>
     ///     If true, this step can affect the level of the item. See DestinyInventoryItemDefintion for more information about item levels and their effect on stats.
@@ -120,124 +120,4 @@ public class DestinyNodeStepDefinition : IDeepEquatable<DestinyNodeStepDefinitio
     /// </summary>
     [JsonPropertyName("socketReplacements")]
     public List<Destiny.Definitions.DestinyNodeSocketReplaceResponse> SocketReplacements { get; set; }
-
-    public bool DeepEquals(DestinyNodeStepDefinition? other)
-    {
-        return other is not null &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               StepIndex == other.StepIndex &&
-               NodeStepHash == other.NodeStepHash &&
-               InteractionDescription == other.InteractionDescription &&
-               DamageType == other.DamageType &&
-               DamageTypeHash == other.DamageTypeHash &&
-               (ActivationRequirement is not null ? ActivationRequirement.DeepEquals(other.ActivationRequirement) : other.ActivationRequirement is null) &&
-               CanActivateNextStep == other.CanActivateNextStep &&
-               NextStepIndex == other.NextStepIndex &&
-               IsNextStepRandom == other.IsNextStepRandom &&
-               PerkHashes.DeepEqualsListNaive(other.PerkHashes) &&
-               StartProgressionBarAtProgress == other.StartProgressionBarAtProgress &&
-               StatHashes.DeepEqualsListNaive(other.StatHashes) &&
-               AffectsQuality == other.AffectsQuality &&
-               (StepGroups is not null ? StepGroups.DeepEquals(other.StepGroups) : other.StepGroups is null) &&
-               AffectsLevel == other.AffectsLevel &&
-               SocketReplacements.DeepEqualsList(other.SocketReplacements);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyNodeStepDefinition? other)
-    {
-        if (other is null) return;
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (StepIndex != other.StepIndex)
-        {
-            StepIndex = other.StepIndex;
-            OnPropertyChanged(nameof(StepIndex));
-        }
-        if (NodeStepHash != other.NodeStepHash)
-        {
-            NodeStepHash = other.NodeStepHash;
-            OnPropertyChanged(nameof(NodeStepHash));
-        }
-        if (InteractionDescription != other.InteractionDescription)
-        {
-            InteractionDescription = other.InteractionDescription;
-            OnPropertyChanged(nameof(InteractionDescription));
-        }
-        if (DamageType != other.DamageType)
-        {
-            DamageType = other.DamageType;
-            OnPropertyChanged(nameof(DamageType));
-        }
-        if (DamageTypeHash != other.DamageTypeHash)
-        {
-            DamageTypeHash = other.DamageTypeHash;
-            OnPropertyChanged(nameof(DamageTypeHash));
-        }
-        if (!ActivationRequirement.DeepEquals(other.ActivationRequirement))
-        {
-            ActivationRequirement.Update(other.ActivationRequirement);
-            OnPropertyChanged(nameof(ActivationRequirement));
-        }
-        if (CanActivateNextStep != other.CanActivateNextStep)
-        {
-            CanActivateNextStep = other.CanActivateNextStep;
-            OnPropertyChanged(nameof(CanActivateNextStep));
-        }
-        if (NextStepIndex != other.NextStepIndex)
-        {
-            NextStepIndex = other.NextStepIndex;
-            OnPropertyChanged(nameof(NextStepIndex));
-        }
-        if (IsNextStepRandom != other.IsNextStepRandom)
-        {
-            IsNextStepRandom = other.IsNextStepRandom;
-            OnPropertyChanged(nameof(IsNextStepRandom));
-        }
-        if (!PerkHashes.DeepEqualsListNaive(other.PerkHashes))
-        {
-            PerkHashes = other.PerkHashes;
-            OnPropertyChanged(nameof(PerkHashes));
-        }
-        if (StartProgressionBarAtProgress != other.StartProgressionBarAtProgress)
-        {
-            StartProgressionBarAtProgress = other.StartProgressionBarAtProgress;
-            OnPropertyChanged(nameof(StartProgressionBarAtProgress));
-        }
-        if (!StatHashes.DeepEqualsListNaive(other.StatHashes))
-        {
-            StatHashes = other.StatHashes;
-            OnPropertyChanged(nameof(StatHashes));
-        }
-        if (AffectsQuality != other.AffectsQuality)
-        {
-            AffectsQuality = other.AffectsQuality;
-            OnPropertyChanged(nameof(AffectsQuality));
-        }
-        if (!StepGroups.DeepEquals(other.StepGroups))
-        {
-            StepGroups.Update(other.StepGroups);
-            OnPropertyChanged(nameof(StepGroups));
-        }
-        if (AffectsLevel != other.AffectsLevel)
-        {
-            AffectsLevel = other.AffectsLevel;
-            OnPropertyChanged(nameof(AffectsLevel));
-        }
-        if (!SocketReplacements.DeepEqualsList(other.SocketReplacements))
-        {
-            SocketReplacements = other.SocketReplacements;
-            OnPropertyChanged(nameof(SocketReplacements));
-        }
-    }
 }

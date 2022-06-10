@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     The definition for an "inventory flyout": a UI screen where we show you part of an otherwise hidden vendor inventory: like the Vault inventory buckets.
 /// </summary>
-public class DestinyVendorInventoryFlyoutDefinition : IDeepEquatable<DestinyVendorInventoryFlyoutDefinition>
+public class DestinyVendorInventoryFlyoutDefinition
 {
     /// <summary>
     ///     If the flyout is locked, this is the reason why.
@@ -15,7 +15,7 @@ public class DestinyVendorInventoryFlyoutDefinition : IDeepEquatable<DestinyVend
     ///     The title and other common properties of the flyout.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public object DisplayProperties { get; set; }
 
     /// <summary>
     ///     A list of inventory buckets and other metadata to show on the screen.
@@ -39,59 +39,5 @@ public class DestinyVendorInventoryFlyoutDefinition : IDeepEquatable<DestinyVend
     ///     If this flyout is meant to show you the contents of the player's equipment slot, this is the slot to show.
     /// </summary>
     [JsonPropertyName("equipmentSlotHash")]
-    public uint? EquipmentSlotHash { get; set; }
-
-    public bool DeepEquals(DestinyVendorInventoryFlyoutDefinition? other)
-    {
-        return other is not null &&
-               LockedDescription == other.LockedDescription &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               Buckets.DeepEqualsList(other.Buckets) &&
-               FlyoutId == other.FlyoutId &&
-               SuppressNewness == other.SuppressNewness &&
-               EquipmentSlotHash == other.EquipmentSlotHash;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyVendorInventoryFlyoutDefinition? other)
-    {
-        if (other is null) return;
-        if (LockedDescription != other.LockedDescription)
-        {
-            LockedDescription = other.LockedDescription;
-            OnPropertyChanged(nameof(LockedDescription));
-        }
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (!Buckets.DeepEqualsList(other.Buckets))
-        {
-            Buckets = other.Buckets;
-            OnPropertyChanged(nameof(Buckets));
-        }
-        if (FlyoutId != other.FlyoutId)
-        {
-            FlyoutId = other.FlyoutId;
-            OnPropertyChanged(nameof(FlyoutId));
-        }
-        if (SuppressNewness != other.SuppressNewness)
-        {
-            SuppressNewness = other.SuppressNewness;
-            OnPropertyChanged(nameof(SuppressNewness));
-        }
-        if (EquipmentSlotHash != other.EquipmentSlotHash)
-        {
-            EquipmentSlotHash = other.EquipmentSlotHash;
-            OnPropertyChanged(nameof(EquipmentSlotHash));
-        }
-    }
+    public uint EquipmentSlotHash { get; set; }
 }

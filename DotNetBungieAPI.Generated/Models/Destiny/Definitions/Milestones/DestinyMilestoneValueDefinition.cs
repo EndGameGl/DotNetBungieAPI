@@ -5,41 +5,11 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 /// <para />
 ///     This lets us more flexibly pass up information that's useful to someone, even if it's not necessarily us.
 /// </summary>
-public class DestinyMilestoneValueDefinition : IDeepEquatable<DestinyMilestoneValueDefinition>
+public class DestinyMilestoneValueDefinition
 {
     [JsonPropertyName("key")]
     public string Key { get; set; }
 
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
-
-    public bool DeepEquals(DestinyMilestoneValueDefinition? other)
-    {
-        return other is not null &&
-               Key == other.Key &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyMilestoneValueDefinition? other)
-    {
-        if (other is null) return;
-        if (Key != other.Key)
-        {
-            Key = other.Key;
-            OnPropertyChanged(nameof(Key));
-        }
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-    }
 }

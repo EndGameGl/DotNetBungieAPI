@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Guided Game information for this activity.
 /// </summary>
-public class DestinyActivityGuidedBlockDefinition : IDeepEquatable<DestinyActivityGuidedBlockDefinition>
+public class DestinyActivityGuidedBlockDefinition
 {
     /// <summary>
     ///     The maximum amount of people that can be in the waiting lobby.
@@ -22,40 +22,4 @@ public class DestinyActivityGuidedBlockDefinition : IDeepEquatable<DestinyActivi
     /// </summary>
     [JsonPropertyName("guidedDisbandCount")]
     public int GuidedDisbandCount { get; set; }
-
-    public bool DeepEquals(DestinyActivityGuidedBlockDefinition? other)
-    {
-        return other is not null &&
-               GuidedMaxLobbySize == other.GuidedMaxLobbySize &&
-               GuidedMinLobbySize == other.GuidedMinLobbySize &&
-               GuidedDisbandCount == other.GuidedDisbandCount;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyActivityGuidedBlockDefinition? other)
-    {
-        if (other is null) return;
-        if (GuidedMaxLobbySize != other.GuidedMaxLobbySize)
-        {
-            GuidedMaxLobbySize = other.GuidedMaxLobbySize;
-            OnPropertyChanged(nameof(GuidedMaxLobbySize));
-        }
-        if (GuidedMinLobbySize != other.GuidedMinLobbySize)
-        {
-            GuidedMinLobbySize = other.GuidedMinLobbySize;
-            OnPropertyChanged(nameof(GuidedMinLobbySize));
-        }
-        if (GuidedDisbandCount != other.GuidedDisbandCount)
-        {
-            GuidedDisbandCount = other.GuidedDisbandCount;
-            OnPropertyChanged(nameof(GuidedDisbandCount));
-        }
-    }
 }

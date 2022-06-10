@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Using this will let you group your vendors in your UI in a similar manner to how we will do grouping in the Companion.
 /// </summary>
-public class DestinyVendorGroupDefinition : IDeepEquatable<DestinyVendorGroupDefinition>
+public class DestinyVendorGroupDefinition
 {
     /// <summary>
     ///     The recommended order in which to render the groups, Ascending order.
@@ -40,52 +40,4 @@ public class DestinyVendorGroupDefinition : IDeepEquatable<DestinyVendorGroupDef
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyVendorGroupDefinition? other)
-    {
-        return other is not null &&
-               Order == other.Order &&
-               CategoryName == other.CategoryName &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyVendorGroupDefinition? other)
-    {
-        if (other is null) return;
-        if (Order != other.Order)
-        {
-            Order = other.Order;
-            OnPropertyChanged(nameof(Order));
-        }
-        if (CategoryName != other.CategoryName)
-        {
-            CategoryName = other.CategoryName;
-            OnPropertyChanged(nameof(CategoryName));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

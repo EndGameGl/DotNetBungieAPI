@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.User;
 /// <summary>
 ///     This contract supplies basic information commonly used to display a minimal amount of information about a user. Take care to not add more properties here unless the property applies in all (or at least the majority) of the situations where UserInfoCard is used. Avoid adding game specific or platform specific details here. In cases where UserInfoCard is a subset of the data needed in a contract, use UserInfoCard as a property of other contracts.
 /// </summary>
-public class UserInfoCard : IDeepEquatable<UserInfoCard>
+public class UserInfoCard
 {
     /// <summary>
     ///     A platform specific additional display name - ex: psn Real Name, bnet Unique Name, etc.
@@ -65,83 +65,5 @@ public class UserInfoCard : IDeepEquatable<UserInfoCard>
     ///     The bungie global display name code, if set.
     /// </summary>
     [JsonPropertyName("bungieGlobalDisplayNameCode")]
-    public short? BungieGlobalDisplayNameCode { get; set; }
-
-    public bool DeepEquals(UserInfoCard? other)
-    {
-        return other is not null &&
-               SupplementalDisplayName == other.SupplementalDisplayName &&
-               IconPath == other.IconPath &&
-               CrossSaveOverride == other.CrossSaveOverride &&
-               ApplicableMembershipTypes.DeepEqualsListNaive(other.ApplicableMembershipTypes) &&
-               IsPublic == other.IsPublic &&
-               MembershipType == other.MembershipType &&
-               MembershipId == other.MembershipId &&
-               DisplayName == other.DisplayName &&
-               BungieGlobalDisplayName == other.BungieGlobalDisplayName &&
-               BungieGlobalDisplayNameCode == other.BungieGlobalDisplayNameCode;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(UserInfoCard? other)
-    {
-        if (other is null) return;
-        if (SupplementalDisplayName != other.SupplementalDisplayName)
-        {
-            SupplementalDisplayName = other.SupplementalDisplayName;
-            OnPropertyChanged(nameof(SupplementalDisplayName));
-        }
-        if (IconPath != other.IconPath)
-        {
-            IconPath = other.IconPath;
-            OnPropertyChanged(nameof(IconPath));
-        }
-        if (CrossSaveOverride != other.CrossSaveOverride)
-        {
-            CrossSaveOverride = other.CrossSaveOverride;
-            OnPropertyChanged(nameof(CrossSaveOverride));
-        }
-        if (!ApplicableMembershipTypes.DeepEqualsListNaive(other.ApplicableMembershipTypes))
-        {
-            ApplicableMembershipTypes = other.ApplicableMembershipTypes;
-            OnPropertyChanged(nameof(ApplicableMembershipTypes));
-        }
-        if (IsPublic != other.IsPublic)
-        {
-            IsPublic = other.IsPublic;
-            OnPropertyChanged(nameof(IsPublic));
-        }
-        if (MembershipType != other.MembershipType)
-        {
-            MembershipType = other.MembershipType;
-            OnPropertyChanged(nameof(MembershipType));
-        }
-        if (MembershipId != other.MembershipId)
-        {
-            MembershipId = other.MembershipId;
-            OnPropertyChanged(nameof(MembershipId));
-        }
-        if (DisplayName != other.DisplayName)
-        {
-            DisplayName = other.DisplayName;
-            OnPropertyChanged(nameof(DisplayName));
-        }
-        if (BungieGlobalDisplayName != other.BungieGlobalDisplayName)
-        {
-            BungieGlobalDisplayName = other.BungieGlobalDisplayName;
-            OnPropertyChanged(nameof(BungieGlobalDisplayName));
-        }
-        if (BungieGlobalDisplayNameCode != other.BungieGlobalDisplayNameCode)
-        {
-            BungieGlobalDisplayNameCode = other.BungieGlobalDisplayNameCode;
-            OnPropertyChanged(nameof(BungieGlobalDisplayNameCode));
-        }
-    }
+    public short BungieGlobalDisplayNameCode { get; set; }
 }

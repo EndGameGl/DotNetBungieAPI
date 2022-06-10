@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     This is a single set of references to Talent Nodes that share a common trait or purpose.
 /// </summary>
-public class DestinyTalentNodeCategory : IDeepEquatable<DestinyTalentNodeCategory>
+public class DestinyTalentNodeCategory
 {
     /// <summary>
     ///     Mostly just for debug purposes, but if you find it useful you can have it. This is BNet's manually created identifier for this category.
@@ -23,53 +23,11 @@ public class DestinyTalentNodeCategory : IDeepEquatable<DestinyTalentNodeCategor
     ///     Will contain at least the "name", which will be the title of the category. We will likely not have description and an icon yet, but I'm going to keep my options open.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public object DisplayProperties { get; set; }
 
     /// <summary>
     ///     The set of all hash identifiers for Talent Nodes (DestinyTalentNodeDefinition) in this Talent Grid that are part of this Category.
     /// </summary>
     [JsonPropertyName("nodeHashes")]
     public List<uint> NodeHashes { get; set; }
-
-    public bool DeepEquals(DestinyTalentNodeCategory? other)
-    {
-        return other is not null &&
-               Identifier == other.Identifier &&
-               IsLoreDriven == other.IsLoreDriven &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               NodeHashes.DeepEqualsListNaive(other.NodeHashes);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyTalentNodeCategory? other)
-    {
-        if (other is null) return;
-        if (Identifier != other.Identifier)
-        {
-            Identifier = other.Identifier;
-            OnPropertyChanged(nameof(Identifier));
-        }
-        if (IsLoreDriven != other.IsLoreDriven)
-        {
-            IsLoreDriven = other.IsLoreDriven;
-            OnPropertyChanged(nameof(IsLoreDriven));
-        }
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (!NodeHashes.DeepEqualsListNaive(other.NodeHashes))
-        {
-            NodeHashes = other.NodeHashes;
-            OnPropertyChanged(nameof(NodeHashes));
-        }
-    }
 }

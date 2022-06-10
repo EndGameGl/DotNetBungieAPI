@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///      Note also that a vendor may sell the same item in multiple "ways", which means there may be multiple vendorItemIndexes for a single Vendor hash.
 /// </summary>
-public class DestinyItemVendorSourceReference : IDeepEquatable<DestinyItemVendorSourceReference>
+public class DestinyItemVendorSourceReference
 {
     /// <summary>
     ///     The identifier for the vendor that may sell this item.
@@ -20,34 +20,4 @@ public class DestinyItemVendorSourceReference : IDeepEquatable<DestinyItemVendor
     /// </summary>
     [JsonPropertyName("vendorItemIndexes")]
     public List<int> VendorItemIndexes { get; set; }
-
-    public bool DeepEquals(DestinyItemVendorSourceReference? other)
-    {
-        return other is not null &&
-               VendorHash == other.VendorHash &&
-               VendorItemIndexes.DeepEqualsListNaive(other.VendorItemIndexes);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemVendorSourceReference? other)
-    {
-        if (other is null) return;
-        if (VendorHash != other.VendorHash)
-        {
-            VendorHash = other.VendorHash;
-            OnPropertyChanged(nameof(VendorHash));
-        }
-        if (!VendorItemIndexes.DeepEqualsListNaive(other.VendorItemIndexes))
-        {
-            VendorItemIndexes = other.VendorItemIndexes;
-            OnPropertyChanged(nameof(VendorItemIndexes));
-        }
-    }
 }

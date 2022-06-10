@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     The definition information for a specific socket on an item. This will determine how the socket behaves in-game.
 /// </summary>
-public class DestinyItemSocketEntryDefinition : IDeepEquatable<DestinyItemSocketEntryDefinition>
+public class DestinyItemSocketEntryDefinition
 {
     /// <summary>
     ///     All sockets have a type, and this is the hash identifier for this particular type. Use it to look up the DestinySocketTypeDefinition: read there for more information on how socket types affect the behavior of the socket.
@@ -51,7 +51,7 @@ public class DestinyItemSocketEntryDefinition : IDeepEquatable<DestinyItemSocket
     ///      As of Shadowkeep, these will come up much more frequently and be driven by game content rather than custom curation.
     /// </summary>
     [JsonPropertyName("reusablePlugSetHash")]
-    public uint? ReusablePlugSetHash { get; set; }
+    public uint ReusablePlugSetHash { get; set; }
 
     /// <summary>
     ///     This field replaces "randomizedPlugItems" as of Shadowkeep launch. If a socket has randomized plugs, this is a pointer to the set of plugs that could be used, as defined in DestinyPlugSetDefinition.
@@ -59,83 +59,11 @@ public class DestinyItemSocketEntryDefinition : IDeepEquatable<DestinyItemSocket
     ///      If null, the item has no randomized plugs.
     /// </summary>
     [JsonPropertyName("randomizedPlugSetHash")]
-    public uint? RandomizedPlugSetHash { get; set; }
+    public uint RandomizedPlugSetHash { get; set; }
 
     /// <summary>
     ///     If true, then this socket is visible in the item's "default" state. If you have an instance, you should always check the runtime state, as that can override this visibility setting: but if you're looking at the item on a conceptual level, this property can be useful for hiding data such as legacy sockets - which remain defined on items for infrastructure purposes, but can be confusing for users to see.
     /// </summary>
     [JsonPropertyName("defaultVisible")]
     public bool DefaultVisible { get; set; }
-
-    public bool DeepEquals(DestinyItemSocketEntryDefinition? other)
-    {
-        return other is not null &&
-               SocketTypeHash == other.SocketTypeHash &&
-               SingleInitialItemHash == other.SingleInitialItemHash &&
-               ReusablePlugItems.DeepEqualsList(other.ReusablePlugItems) &&
-               PreventInitializationOnVendorPurchase == other.PreventInitializationOnVendorPurchase &&
-               HidePerksInItemTooltip == other.HidePerksInItemTooltip &&
-               PlugSources == other.PlugSources &&
-               ReusablePlugSetHash == other.ReusablePlugSetHash &&
-               RandomizedPlugSetHash == other.RandomizedPlugSetHash &&
-               DefaultVisible == other.DefaultVisible;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemSocketEntryDefinition? other)
-    {
-        if (other is null) return;
-        if (SocketTypeHash != other.SocketTypeHash)
-        {
-            SocketTypeHash = other.SocketTypeHash;
-            OnPropertyChanged(nameof(SocketTypeHash));
-        }
-        if (SingleInitialItemHash != other.SingleInitialItemHash)
-        {
-            SingleInitialItemHash = other.SingleInitialItemHash;
-            OnPropertyChanged(nameof(SingleInitialItemHash));
-        }
-        if (!ReusablePlugItems.DeepEqualsList(other.ReusablePlugItems))
-        {
-            ReusablePlugItems = other.ReusablePlugItems;
-            OnPropertyChanged(nameof(ReusablePlugItems));
-        }
-        if (PreventInitializationOnVendorPurchase != other.PreventInitializationOnVendorPurchase)
-        {
-            PreventInitializationOnVendorPurchase = other.PreventInitializationOnVendorPurchase;
-            OnPropertyChanged(nameof(PreventInitializationOnVendorPurchase));
-        }
-        if (HidePerksInItemTooltip != other.HidePerksInItemTooltip)
-        {
-            HidePerksInItemTooltip = other.HidePerksInItemTooltip;
-            OnPropertyChanged(nameof(HidePerksInItemTooltip));
-        }
-        if (PlugSources != other.PlugSources)
-        {
-            PlugSources = other.PlugSources;
-            OnPropertyChanged(nameof(PlugSources));
-        }
-        if (ReusablePlugSetHash != other.ReusablePlugSetHash)
-        {
-            ReusablePlugSetHash = other.ReusablePlugSetHash;
-            OnPropertyChanged(nameof(ReusablePlugSetHash));
-        }
-        if (RandomizedPlugSetHash != other.RandomizedPlugSetHash)
-        {
-            RandomizedPlugSetHash = other.RandomizedPlugSetHash;
-            OnPropertyChanged(nameof(RandomizedPlugSetHash));
-        }
-        if (DefaultVisible != other.DefaultVisible)
-        {
-            DefaultVisible = other.DefaultVisible;
-            OnPropertyChanged(nameof(DefaultVisible));
-        }
-    }
 }

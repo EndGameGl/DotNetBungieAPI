@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 /// <summary>
 ///     The same as GroupV2ClanInfo, but includes any investment data.
 /// </summary>
-public class GroupV2ClanInfoAndInvestment : IDeepEquatable<GroupV2ClanInfoAndInvestment>
+public class GroupV2ClanInfoAndInvestment
 {
     [JsonPropertyName("d2ClanProgressions")]
     public Dictionary<uint, Destiny.DestinyProgression> D2ClanProgressions { get; set; }
@@ -13,40 +13,4 @@ public class GroupV2ClanInfoAndInvestment : IDeepEquatable<GroupV2ClanInfoAndInv
 
     [JsonPropertyName("clanBannerData")]
     public GroupsV2.ClanBanner ClanBannerData { get; set; }
-
-    public bool DeepEquals(GroupV2ClanInfoAndInvestment? other)
-    {
-        return other is not null &&
-               D2ClanProgressions.DeepEqualsDictionary(other.D2ClanProgressions) &&
-               ClanCallsign == other.ClanCallsign &&
-               (ClanBannerData is not null ? ClanBannerData.DeepEquals(other.ClanBannerData) : other.ClanBannerData is null);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(GroupV2ClanInfoAndInvestment? other)
-    {
-        if (other is null) return;
-        if (!D2ClanProgressions.DeepEqualsDictionary(other.D2ClanProgressions))
-        {
-            D2ClanProgressions = other.D2ClanProgressions;
-            OnPropertyChanged(nameof(D2ClanProgressions));
-        }
-        if (ClanCallsign != other.ClanCallsign)
-        {
-            ClanCallsign = other.ClanCallsign;
-            OnPropertyChanged(nameof(ClanCallsign));
-        }
-        if (!ClanBannerData.DeepEquals(other.ClanBannerData))
-        {
-            ClanBannerData.Update(other.ClanBannerData);
-            OnPropertyChanged(nameof(ClanBannerData));
-        }
-    }
 }

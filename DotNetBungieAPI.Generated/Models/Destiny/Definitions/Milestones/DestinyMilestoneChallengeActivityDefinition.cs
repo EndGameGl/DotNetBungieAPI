@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 
-public class DestinyMilestoneChallengeActivityDefinition : IDeepEquatable<DestinyMilestoneChallengeActivityDefinition>
+public class DestinyMilestoneChallengeActivityDefinition
 {
     /// <summary>
     ///     The activity for which this challenge is active.
@@ -24,46 +24,4 @@ public class DestinyMilestoneChallengeActivityDefinition : IDeepEquatable<Destin
     /// </summary>
     [JsonPropertyName("phases")]
     public List<Destiny.Definitions.Milestones.DestinyMilestoneChallengeActivityPhase> Phases { get; set; }
-
-    public bool DeepEquals(DestinyMilestoneChallengeActivityDefinition? other)
-    {
-        return other is not null &&
-               ActivityHash == other.ActivityHash &&
-               Challenges.DeepEqualsList(other.Challenges) &&
-               ActivityGraphNodes.DeepEqualsList(other.ActivityGraphNodes) &&
-               Phases.DeepEqualsList(other.Phases);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyMilestoneChallengeActivityDefinition? other)
-    {
-        if (other is null) return;
-        if (ActivityHash != other.ActivityHash)
-        {
-            ActivityHash = other.ActivityHash;
-            OnPropertyChanged(nameof(ActivityHash));
-        }
-        if (!Challenges.DeepEqualsList(other.Challenges))
-        {
-            Challenges = other.Challenges;
-            OnPropertyChanged(nameof(Challenges));
-        }
-        if (!ActivityGraphNodes.DeepEqualsList(other.ActivityGraphNodes))
-        {
-            ActivityGraphNodes = other.ActivityGraphNodes;
-            OnPropertyChanged(nameof(ActivityGraphNodes));
-        }
-        if (!Phases.DeepEqualsList(other.Phases))
-        {
-            Phases = other.Phases;
-            OnPropertyChanged(nameof(Phases));
-        }
-    }
 }

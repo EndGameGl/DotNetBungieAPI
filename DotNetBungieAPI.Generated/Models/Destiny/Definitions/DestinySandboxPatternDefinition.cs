@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 
-public class DestinySandboxPatternDefinition : IDeepEquatable<DestinySandboxPatternDefinition>
+public class DestinySandboxPatternDefinition
 {
     [JsonPropertyName("patternHash")]
     public uint PatternHash { get; set; }
@@ -15,7 +15,7 @@ public class DestinySandboxPatternDefinition : IDeepEquatable<DestinySandboxPatt
     public uint WeaponTranslationGroupHash { get; set; }
 
     [JsonPropertyName("weaponTypeHash")]
-    public uint? WeaponTypeHash { get; set; }
+    public uint WeaponTypeHash { get; set; }
 
     [JsonPropertyName("weaponType")]
     public Destiny.DestinyItemSubType WeaponType { get; set; }
@@ -42,82 +42,4 @@ public class DestinySandboxPatternDefinition : IDeepEquatable<DestinySandboxPatt
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinySandboxPatternDefinition? other)
-    {
-        return other is not null &&
-               PatternHash == other.PatternHash &&
-               PatternGlobalTagIdHash == other.PatternGlobalTagIdHash &&
-               WeaponContentGroupHash == other.WeaponContentGroupHash &&
-               WeaponTranslationGroupHash == other.WeaponTranslationGroupHash &&
-               WeaponTypeHash == other.WeaponTypeHash &&
-               WeaponType == other.WeaponType &&
-               Filters.DeepEqualsList(other.Filters) &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinySandboxPatternDefinition? other)
-    {
-        if (other is null) return;
-        if (PatternHash != other.PatternHash)
-        {
-            PatternHash = other.PatternHash;
-            OnPropertyChanged(nameof(PatternHash));
-        }
-        if (PatternGlobalTagIdHash != other.PatternGlobalTagIdHash)
-        {
-            PatternGlobalTagIdHash = other.PatternGlobalTagIdHash;
-            OnPropertyChanged(nameof(PatternGlobalTagIdHash));
-        }
-        if (WeaponContentGroupHash != other.WeaponContentGroupHash)
-        {
-            WeaponContentGroupHash = other.WeaponContentGroupHash;
-            OnPropertyChanged(nameof(WeaponContentGroupHash));
-        }
-        if (WeaponTranslationGroupHash != other.WeaponTranslationGroupHash)
-        {
-            WeaponTranslationGroupHash = other.WeaponTranslationGroupHash;
-            OnPropertyChanged(nameof(WeaponTranslationGroupHash));
-        }
-        if (WeaponTypeHash != other.WeaponTypeHash)
-        {
-            WeaponTypeHash = other.WeaponTypeHash;
-            OnPropertyChanged(nameof(WeaponTypeHash));
-        }
-        if (WeaponType != other.WeaponType)
-        {
-            WeaponType = other.WeaponType;
-            OnPropertyChanged(nameof(WeaponType));
-        }
-        if (!Filters.DeepEqualsList(other.Filters))
-        {
-            Filters = other.Filters;
-            OnPropertyChanged(nameof(Filters));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

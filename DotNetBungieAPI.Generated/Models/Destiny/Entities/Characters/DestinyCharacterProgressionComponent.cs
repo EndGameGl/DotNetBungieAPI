@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Characters;
 /// <summary>
 ///     This component returns anything that could be considered "Progression" on a user: data where the user is gaining levels, reputation, completions, rewards, etc...
 /// </summary>
-public class DestinyCharacterProgressionComponent : IDeepEquatable<DestinyCharacterProgressionComponent>
+public class DestinyCharacterProgressionComponent
 {
     /// <summary>
     ///     A Dictionary of all known progressions for the Character, keyed by the Progression's hash.
@@ -63,71 +63,5 @@ public class DestinyCharacterProgressionComponent : IDeepEquatable<DestinyCharac
     ///     Data related to your progress on the current season's artifact that can vary per character.
     /// </summary>
     [JsonPropertyName("seasonalArtifact")]
-    public Destiny.Artifacts.DestinyArtifactCharacterScoped SeasonalArtifact { get; set; }
-
-    public bool DeepEquals(DestinyCharacterProgressionComponent? other)
-    {
-        return other is not null &&
-               Progressions.DeepEqualsDictionary(other.Progressions) &&
-               Factions.DeepEqualsDictionary(other.Factions) &&
-               Milestones.DeepEqualsDictionary(other.Milestones) &&
-               Quests.DeepEqualsList(other.Quests) &&
-               UninstancedItemObjectives.DeepEqualsDictionaryNaive(other.UninstancedItemObjectives) &&
-               UninstancedItemPerks.DeepEqualsDictionary(other.UninstancedItemPerks) &&
-               Checklists.DeepEqualsDictionaryNaive(other.Checklists) &&
-               (SeasonalArtifact is not null ? SeasonalArtifact.DeepEquals(other.SeasonalArtifact) : other.SeasonalArtifact is null);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyCharacterProgressionComponent? other)
-    {
-        if (other is null) return;
-        if (!Progressions.DeepEqualsDictionary(other.Progressions))
-        {
-            Progressions = other.Progressions;
-            OnPropertyChanged(nameof(Progressions));
-        }
-        if (!Factions.DeepEqualsDictionary(other.Factions))
-        {
-            Factions = other.Factions;
-            OnPropertyChanged(nameof(Factions));
-        }
-        if (!Milestones.DeepEqualsDictionary(other.Milestones))
-        {
-            Milestones = other.Milestones;
-            OnPropertyChanged(nameof(Milestones));
-        }
-        if (!Quests.DeepEqualsList(other.Quests))
-        {
-            Quests = other.Quests;
-            OnPropertyChanged(nameof(Quests));
-        }
-        if (!UninstancedItemObjectives.DeepEqualsDictionary(other.UninstancedItemObjectives))
-        {
-            UninstancedItemObjectives = other.UninstancedItemObjectives;
-            OnPropertyChanged(nameof(UninstancedItemObjectives));
-        }
-        if (!UninstancedItemPerks.DeepEqualsDictionary(other.UninstancedItemPerks))
-        {
-            UninstancedItemPerks = other.UninstancedItemPerks;
-            OnPropertyChanged(nameof(UninstancedItemPerks));
-        }
-        if (!Checklists.DeepEqualsDictionary(other.Checklists))
-        {
-            Checklists = other.Checklists;
-            OnPropertyChanged(nameof(Checklists));
-        }
-        if (!SeasonalArtifact.DeepEquals(other.SeasonalArtifact))
-        {
-            SeasonalArtifact.Update(other.SeasonalArtifact);
-            OnPropertyChanged(nameof(SeasonalArtifact));
-        }
-    }
+    public object SeasonalArtifact { get; set; }
 }

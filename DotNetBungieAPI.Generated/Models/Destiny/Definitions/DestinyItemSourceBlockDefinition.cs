@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Data about an item's "sources": ways that the item can be obtained.
 /// </summary>
-public class DestinyItemSourceBlockDefinition : IDeepEquatable<DestinyItemSourceBlockDefinition>
+public class DestinyItemSourceBlockDefinition
 {
     /// <summary>
     ///     The list of hash identifiers for Reward Sources that hint where the item can be found (DestinyRewardSourceDefinition).
@@ -28,46 +28,4 @@ public class DestinyItemSourceBlockDefinition : IDeepEquatable<DestinyItemSource
     /// </summary>
     [JsonPropertyName("vendorSources")]
     public List<Destiny.Definitions.DestinyItemVendorSourceReference> VendorSources { get; set; }
-
-    public bool DeepEquals(DestinyItemSourceBlockDefinition? other)
-    {
-        return other is not null &&
-               SourceHashes.DeepEqualsListNaive(other.SourceHashes) &&
-               Sources.DeepEqualsList(other.Sources) &&
-               Exclusive == other.Exclusive &&
-               VendorSources.DeepEqualsList(other.VendorSources);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemSourceBlockDefinition? other)
-    {
-        if (other is null) return;
-        if (!SourceHashes.DeepEqualsListNaive(other.SourceHashes))
-        {
-            SourceHashes = other.SourceHashes;
-            OnPropertyChanged(nameof(SourceHashes));
-        }
-        if (!Sources.DeepEqualsList(other.Sources))
-        {
-            Sources = other.Sources;
-            OnPropertyChanged(nameof(Sources));
-        }
-        if (Exclusive != other.Exclusive)
-        {
-            Exclusive = other.Exclusive;
-            OnPropertyChanged(nameof(Exclusive));
-        }
-        if (!VendorSources.DeepEqualsList(other.VendorSources))
-        {
-            VendorSources = other.VendorSources;
-            OnPropertyChanged(nameof(VendorSources));
-        }
-    }
 }

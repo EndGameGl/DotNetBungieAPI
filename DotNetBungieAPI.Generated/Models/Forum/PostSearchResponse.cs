@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Forum;
 
-public class PostSearchResponse : IDeepEquatable<PostSearchResponse>
+public class PostSearchResponse
 {
     [JsonPropertyName("relatedPosts")]
     public List<Forum.PostResponse> RelatedPosts { get; set; }
@@ -21,7 +21,7 @@ public class PostSearchResponse : IDeepEquatable<PostSearchResponse>
     public List<Forum.ForumRecruitmentDetail> RecruitmentDetails { get; set; }
 
     [JsonPropertyName("availablePages")]
-    public int? AvailablePages { get; set; }
+    public int AvailablePages { get; set; }
 
     [JsonPropertyName("results")]
     public List<Forum.PostResponse> Results { get; set; }
@@ -49,100 +49,4 @@ public class PostSearchResponse : IDeepEquatable<PostSearchResponse>
     /// </summary>
     [JsonPropertyName("useTotalResults")]
     public bool UseTotalResults { get; set; }
-
-    public bool DeepEquals(PostSearchResponse? other)
-    {
-        return other is not null &&
-               RelatedPosts.DeepEqualsList(other.RelatedPosts) &&
-               Authors.DeepEqualsList(other.Authors) &&
-               Groups.DeepEqualsList(other.Groups) &&
-               SearchedTags.DeepEqualsList(other.SearchedTags) &&
-               Polls.DeepEqualsList(other.Polls) &&
-               RecruitmentDetails.DeepEqualsList(other.RecruitmentDetails) &&
-               AvailablePages == other.AvailablePages &&
-               Results.DeepEqualsList(other.Results) &&
-               TotalResults == other.TotalResults &&
-               HasMore == other.HasMore &&
-               (Query is not null ? Query.DeepEquals(other.Query) : other.Query is null) &&
-               ReplacementContinuationToken == other.ReplacementContinuationToken &&
-               UseTotalResults == other.UseTotalResults;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(PostSearchResponse? other)
-    {
-        if (other is null) return;
-        if (!RelatedPosts.DeepEqualsList(other.RelatedPosts))
-        {
-            RelatedPosts = other.RelatedPosts;
-            OnPropertyChanged(nameof(RelatedPosts));
-        }
-        if (!Authors.DeepEqualsList(other.Authors))
-        {
-            Authors = other.Authors;
-            OnPropertyChanged(nameof(Authors));
-        }
-        if (!Groups.DeepEqualsList(other.Groups))
-        {
-            Groups = other.Groups;
-            OnPropertyChanged(nameof(Groups));
-        }
-        if (!SearchedTags.DeepEqualsList(other.SearchedTags))
-        {
-            SearchedTags = other.SearchedTags;
-            OnPropertyChanged(nameof(SearchedTags));
-        }
-        if (!Polls.DeepEqualsList(other.Polls))
-        {
-            Polls = other.Polls;
-            OnPropertyChanged(nameof(Polls));
-        }
-        if (!RecruitmentDetails.DeepEqualsList(other.RecruitmentDetails))
-        {
-            RecruitmentDetails = other.RecruitmentDetails;
-            OnPropertyChanged(nameof(RecruitmentDetails));
-        }
-        if (AvailablePages != other.AvailablePages)
-        {
-            AvailablePages = other.AvailablePages;
-            OnPropertyChanged(nameof(AvailablePages));
-        }
-        if (!Results.DeepEqualsList(other.Results))
-        {
-            Results = other.Results;
-            OnPropertyChanged(nameof(Results));
-        }
-        if (TotalResults != other.TotalResults)
-        {
-            TotalResults = other.TotalResults;
-            OnPropertyChanged(nameof(TotalResults));
-        }
-        if (HasMore != other.HasMore)
-        {
-            HasMore = other.HasMore;
-            OnPropertyChanged(nameof(HasMore));
-        }
-        if (!Query.DeepEquals(other.Query))
-        {
-            Query.Update(other.Query);
-            OnPropertyChanged(nameof(Query));
-        }
-        if (ReplacementContinuationToken != other.ReplacementContinuationToken)
-        {
-            ReplacementContinuationToken = other.ReplacementContinuationToken;
-            OnPropertyChanged(nameof(ReplacementContinuationToken));
-        }
-        if (UseTotalResults != other.UseTotalResults)
-        {
-            UseTotalResults = other.UseTotalResults;
-            OnPropertyChanged(nameof(UseTotalResults));
-        }
-    }
 }

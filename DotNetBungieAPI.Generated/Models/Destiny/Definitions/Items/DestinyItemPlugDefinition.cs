@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Items;
 /// <para />
 ///     This gives information about when it can be inserted, what the plug's category is (and thus whether it is compatible with a socket... see DestinySocketTypeDefinition for information about Plug Categories and socket compatibility), whether it is enabled and other Plug info.
 /// </summary>
-public class DestinyItemPlugDefinition : IDeepEquatable<DestinyItemPlugDefinition>
+public class DestinyItemPlugDefinition
 {
     /// <summary>
     ///     The rules around when this plug can be inserted into a socket, aside from the socket's individual restrictions.
@@ -100,137 +100,17 @@ public class DestinyItemPlugDefinition : IDeepEquatable<DestinyItemPlugDefinitio
     ///     If this is populated, it will have the override data to be applied when this plug is applied to an item.
     /// </summary>
     [JsonPropertyName("parentItemOverride")]
-    public Destiny.Definitions.Items.DestinyParentItemOverride ParentItemOverride { get; set; }
+    public object ParentItemOverride { get; set; }
 
     /// <summary>
     ///     IF not null, this plug provides Energy capacity to the item in which it is socketed. In Armor 2.0 for example, is implemented in a similar way to Masterworks, where visually it's a single area of the UI being clicked on to "Upgrade" to higher energy levels, but it's actually socketing new plugs.
     /// </summary>
     [JsonPropertyName("energyCapacity")]
-    public Destiny.Definitions.Items.DestinyEnergyCapacityEntry EnergyCapacity { get; set; }
+    public object EnergyCapacity { get; set; }
 
     /// <summary>
     ///     IF not null, this plug has an energy cost. This contains the details of that cost.
     /// </summary>
     [JsonPropertyName("energyCost")]
-    public Destiny.Definitions.Items.DestinyEnergyCostEntry EnergyCost { get; set; }
-
-    public bool DeepEquals(DestinyItemPlugDefinition? other)
-    {
-        return other is not null &&
-               InsertionRules.DeepEqualsList(other.InsertionRules) &&
-               PlugCategoryIdentifier == other.PlugCategoryIdentifier &&
-               PlugCategoryHash == other.PlugCategoryHash &&
-               OnActionRecreateSelf == other.OnActionRecreateSelf &&
-               InsertionMaterialRequirementHash == other.InsertionMaterialRequirementHash &&
-               PreviewItemOverrideHash == other.PreviewItemOverrideHash &&
-               EnabledMaterialRequirementHash == other.EnabledMaterialRequirementHash &&
-               EnabledRules.DeepEqualsList(other.EnabledRules) &&
-               UiPlugLabel == other.UiPlugLabel &&
-               PlugStyle == other.PlugStyle &&
-               PlugAvailability == other.PlugAvailability &&
-               AlternateUiPlugLabel == other.AlternateUiPlugLabel &&
-               AlternatePlugStyle == other.AlternatePlugStyle &&
-               IsDummyPlug == other.IsDummyPlug &&
-               (ParentItemOverride is not null ? ParentItemOverride.DeepEquals(other.ParentItemOverride) : other.ParentItemOverride is null) &&
-               (EnergyCapacity is not null ? EnergyCapacity.DeepEquals(other.EnergyCapacity) : other.EnergyCapacity is null) &&
-               (EnergyCost is not null ? EnergyCost.DeepEquals(other.EnergyCost) : other.EnergyCost is null);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemPlugDefinition? other)
-    {
-        if (other is null) return;
-        if (!InsertionRules.DeepEqualsList(other.InsertionRules))
-        {
-            InsertionRules = other.InsertionRules;
-            OnPropertyChanged(nameof(InsertionRules));
-        }
-        if (PlugCategoryIdentifier != other.PlugCategoryIdentifier)
-        {
-            PlugCategoryIdentifier = other.PlugCategoryIdentifier;
-            OnPropertyChanged(nameof(PlugCategoryIdentifier));
-        }
-        if (PlugCategoryHash != other.PlugCategoryHash)
-        {
-            PlugCategoryHash = other.PlugCategoryHash;
-            OnPropertyChanged(nameof(PlugCategoryHash));
-        }
-        if (OnActionRecreateSelf != other.OnActionRecreateSelf)
-        {
-            OnActionRecreateSelf = other.OnActionRecreateSelf;
-            OnPropertyChanged(nameof(OnActionRecreateSelf));
-        }
-        if (InsertionMaterialRequirementHash != other.InsertionMaterialRequirementHash)
-        {
-            InsertionMaterialRequirementHash = other.InsertionMaterialRequirementHash;
-            OnPropertyChanged(nameof(InsertionMaterialRequirementHash));
-        }
-        if (PreviewItemOverrideHash != other.PreviewItemOverrideHash)
-        {
-            PreviewItemOverrideHash = other.PreviewItemOverrideHash;
-            OnPropertyChanged(nameof(PreviewItemOverrideHash));
-        }
-        if (EnabledMaterialRequirementHash != other.EnabledMaterialRequirementHash)
-        {
-            EnabledMaterialRequirementHash = other.EnabledMaterialRequirementHash;
-            OnPropertyChanged(nameof(EnabledMaterialRequirementHash));
-        }
-        if (!EnabledRules.DeepEqualsList(other.EnabledRules))
-        {
-            EnabledRules = other.EnabledRules;
-            OnPropertyChanged(nameof(EnabledRules));
-        }
-        if (UiPlugLabel != other.UiPlugLabel)
-        {
-            UiPlugLabel = other.UiPlugLabel;
-            OnPropertyChanged(nameof(UiPlugLabel));
-        }
-        if (PlugStyle != other.PlugStyle)
-        {
-            PlugStyle = other.PlugStyle;
-            OnPropertyChanged(nameof(PlugStyle));
-        }
-        if (PlugAvailability != other.PlugAvailability)
-        {
-            PlugAvailability = other.PlugAvailability;
-            OnPropertyChanged(nameof(PlugAvailability));
-        }
-        if (AlternateUiPlugLabel != other.AlternateUiPlugLabel)
-        {
-            AlternateUiPlugLabel = other.AlternateUiPlugLabel;
-            OnPropertyChanged(nameof(AlternateUiPlugLabel));
-        }
-        if (AlternatePlugStyle != other.AlternatePlugStyle)
-        {
-            AlternatePlugStyle = other.AlternatePlugStyle;
-            OnPropertyChanged(nameof(AlternatePlugStyle));
-        }
-        if (IsDummyPlug != other.IsDummyPlug)
-        {
-            IsDummyPlug = other.IsDummyPlug;
-            OnPropertyChanged(nameof(IsDummyPlug));
-        }
-        if (!ParentItemOverride.DeepEquals(other.ParentItemOverride))
-        {
-            ParentItemOverride.Update(other.ParentItemOverride);
-            OnPropertyChanged(nameof(ParentItemOverride));
-        }
-        if (!EnergyCapacity.DeepEquals(other.EnergyCapacity))
-        {
-            EnergyCapacity.Update(other.EnergyCapacity);
-            OnPropertyChanged(nameof(EnergyCapacity));
-        }
-        if (!EnergyCost.DeepEquals(other.EnergyCost))
-        {
-            EnergyCost.Update(other.EnergyCost);
-            OnPropertyChanged(nameof(EnergyCost));
-        }
-    }
+    public object EnergyCost { get; set; }
 }

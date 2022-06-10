@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 /// <summary>
 ///     Information about milestones, presented in a character state-agnostic manner. Combine this data with DestinyMilestoneDefinition to get a full picture of the milestone, which is basically a checklist of things to do in the game. Think of this as GetPublicAdvisors 3.0, for those who used the Destiny 1 API.
 /// </summary>
-public class DestinyPublicMilestone : IDeepEquatable<DestinyPublicMilestone>
+public class DestinyPublicMilestone
 {
     /// <summary>
     ///     The hash identifier for the milestone. Use it to look up the DestinyMilestoneDefinition for static data about the Milestone.
@@ -38,83 +38,17 @@ public class DestinyPublicMilestone : IDeepEquatable<DestinyPublicMilestone>
     ///     If known, this is the date when the Milestone started/became active.
     /// </summary>
     [JsonPropertyName("startDate")]
-    public DateTime? StartDate { get; set; }
+    public DateTime StartDate { get; set; }
 
     /// <summary>
     ///     If known, this is the date when the Milestone will expire/recycle/end.
     /// </summary>
     [JsonPropertyName("endDate")]
-    public DateTime? EndDate { get; set; }
+    public DateTime EndDate { get; set; }
 
     /// <summary>
     ///     Used for ordering milestones in a display to match how we order them in BNet. May pull from static data, or possibly in the future from dynamic information.
     /// </summary>
     [JsonPropertyName("order")]
     public int Order { get; set; }
-
-    public bool DeepEquals(DestinyPublicMilestone? other)
-    {
-        return other is not null &&
-               MilestoneHash == other.MilestoneHash &&
-               AvailableQuests.DeepEqualsList(other.AvailableQuests) &&
-               Activities.DeepEqualsList(other.Activities) &&
-               VendorHashes.DeepEqualsListNaive(other.VendorHashes) &&
-               Vendors.DeepEqualsList(other.Vendors) &&
-               StartDate == other.StartDate &&
-               EndDate == other.EndDate &&
-               Order == other.Order;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyPublicMilestone? other)
-    {
-        if (other is null) return;
-        if (MilestoneHash != other.MilestoneHash)
-        {
-            MilestoneHash = other.MilestoneHash;
-            OnPropertyChanged(nameof(MilestoneHash));
-        }
-        if (!AvailableQuests.DeepEqualsList(other.AvailableQuests))
-        {
-            AvailableQuests = other.AvailableQuests;
-            OnPropertyChanged(nameof(AvailableQuests));
-        }
-        if (!Activities.DeepEqualsList(other.Activities))
-        {
-            Activities = other.Activities;
-            OnPropertyChanged(nameof(Activities));
-        }
-        if (!VendorHashes.DeepEqualsListNaive(other.VendorHashes))
-        {
-            VendorHashes = other.VendorHashes;
-            OnPropertyChanged(nameof(VendorHashes));
-        }
-        if (!Vendors.DeepEqualsList(other.Vendors))
-        {
-            Vendors = other.Vendors;
-            OnPropertyChanged(nameof(Vendors));
-        }
-        if (StartDate != other.StartDate)
-        {
-            StartDate = other.StartDate;
-            OnPropertyChanged(nameof(StartDate));
-        }
-        if (EndDate != other.EndDate)
-        {
-            EndDate = other.EndDate;
-            OnPropertyChanged(nameof(EndDate));
-        }
-        if (Order != other.Order)
-        {
-            Order = other.Order;
-            OnPropertyChanged(nameof(Order));
-        }
-    }
 }

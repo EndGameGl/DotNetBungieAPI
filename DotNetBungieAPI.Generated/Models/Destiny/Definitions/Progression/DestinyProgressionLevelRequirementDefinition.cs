@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Progression;
 /// <para />
 ///     For instance, say a character receives a new Auto Rifle, and that Auto Rifle's DestinyInventoryItemDefinition.quality.progressionLevelRequirementHash property is pointing at one of these DestinyProgressionLevelRequirementDefinitions. Let's pretend also that the progressionHash it is pointing at is the Character Level progression. In that situation, the character's level will be used to interpolate a value in the requirementCurve property. The value picked up from that interpolation will be the required level for the item.
 /// </summary>
-public class DestinyProgressionLevelRequirementDefinition : IDeepEquatable<DestinyProgressionLevelRequirementDefinition>
+public class DestinyProgressionLevelRequirementDefinition
 {
     /// <summary>
     ///     A curve of level requirements, weighted by the related progressions' level.
@@ -42,52 +42,4 @@ public class DestinyProgressionLevelRequirementDefinition : IDeepEquatable<Desti
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyProgressionLevelRequirementDefinition? other)
-    {
-        return other is not null &&
-               RequirementCurve.DeepEqualsList(other.RequirementCurve) &&
-               ProgressionHash == other.ProgressionHash &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyProgressionLevelRequirementDefinition? other)
-    {
-        if (other is null) return;
-        if (!RequirementCurve.DeepEqualsList(other.RequirementCurve))
-        {
-            RequirementCurve = other.RequirementCurve;
-            OnPropertyChanged(nameof(RequirementCurve));
-        }
-        if (ProgressionHash != other.ProgressionHash)
-        {
-            ProgressionHash = other.ProgressionHash;
-            OnPropertyChanged(nameof(ProgressionHash));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

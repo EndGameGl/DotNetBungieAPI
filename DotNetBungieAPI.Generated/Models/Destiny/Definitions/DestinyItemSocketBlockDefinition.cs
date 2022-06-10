@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     If defined, the item has at least one socket.
 /// </summary>
-public class DestinyItemSocketBlockDefinition : IDeepEquatable<DestinyItemSocketBlockDefinition>
+public class DestinyItemSocketBlockDefinition
 {
     /// <summary>
     ///     This was supposed to be a string that would give per-item details about sockets. In practice, it turns out that all this ever has is the localized word "details". ... that's lame, but perhaps it will become something cool in the future.
@@ -28,46 +28,4 @@ public class DestinyItemSocketBlockDefinition : IDeepEquatable<DestinyItemSocket
     /// </summary>
     [JsonPropertyName("socketCategories")]
     public List<Destiny.Definitions.DestinyItemSocketCategoryDefinition> SocketCategories { get; set; }
-
-    public bool DeepEquals(DestinyItemSocketBlockDefinition? other)
-    {
-        return other is not null &&
-               Detail == other.Detail &&
-               SocketEntries.DeepEqualsList(other.SocketEntries) &&
-               IntrinsicSockets.DeepEqualsList(other.IntrinsicSockets) &&
-               SocketCategories.DeepEqualsList(other.SocketCategories);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemSocketBlockDefinition? other)
-    {
-        if (other is null) return;
-        if (Detail != other.Detail)
-        {
-            Detail = other.Detail;
-            OnPropertyChanged(nameof(Detail));
-        }
-        if (!SocketEntries.DeepEqualsList(other.SocketEntries))
-        {
-            SocketEntries = other.SocketEntries;
-            OnPropertyChanged(nameof(SocketEntries));
-        }
-        if (!IntrinsicSockets.DeepEqualsList(other.IntrinsicSockets))
-        {
-            IntrinsicSockets = other.IntrinsicSockets;
-            OnPropertyChanged(nameof(IntrinsicSockets));
-        }
-        if (!SocketCategories.DeepEqualsList(other.SocketCategories))
-        {
-            SocketCategories = other.SocketCategories;
-            OnPropertyChanged(nameof(SocketCategories));
-        }
-    }
 }

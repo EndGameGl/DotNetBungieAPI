@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Vendors;
 /// <summary>
 ///     This component contains essential/summary information about the vendor.
 /// </summary>
-public class DestinyVendorBaseComponent : IDeepEquatable<DestinyVendorBaseComponent>
+public class DestinyVendorBaseComponent
 {
     /// <summary>
     ///     The unique identifier for the vendor. Use it to look up their DestinyVendorDefinition.
@@ -28,40 +28,4 @@ public class DestinyVendorBaseComponent : IDeepEquatable<DestinyVendorBaseCompon
     /// </summary>
     [JsonPropertyName("enabled")]
     public bool Enabled { get; set; }
-
-    public bool DeepEquals(DestinyVendorBaseComponent? other)
-    {
-        return other is not null &&
-               VendorHash == other.VendorHash &&
-               NextRefreshDate == other.NextRefreshDate &&
-               Enabled == other.Enabled;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyVendorBaseComponent? other)
-    {
-        if (other is null) return;
-        if (VendorHash != other.VendorHash)
-        {
-            VendorHash = other.VendorHash;
-            OnPropertyChanged(nameof(VendorHash));
-        }
-        if (NextRefreshDate != other.NextRefreshDate)
-        {
-            NextRefreshDate = other.NextRefreshDate;
-            OnPropertyChanged(nameof(NextRefreshDate));
-        }
-        if (Enabled != other.Enabled)
-        {
-            Enabled = other.Enabled;
-            OnPropertyChanged(nameof(Enabled));
-        }
-    }
 }

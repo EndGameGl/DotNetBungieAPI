@@ -9,7 +9,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Note that, if this gets used, the override will apply only to items using the overriding Stat Group. Other items will still show the default stat's name/description.
 /// </summary>
-public class DestinyStatOverrideDefinition : IDeepEquatable<DestinyStatOverrideDefinition>
+public class DestinyStatOverrideDefinition
 {
     /// <summary>
     ///     The hash identifier of the stat whose display properties are being overridden.
@@ -21,35 +21,5 @@ public class DestinyStatOverrideDefinition : IDeepEquatable<DestinyStatOverrideD
     ///     The display properties to show instead of the base DestinyStatDefinition display properties.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
-
-    public bool DeepEquals(DestinyStatOverrideDefinition? other)
-    {
-        return other is not null &&
-               StatHash == other.StatHash &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyStatOverrideDefinition? other)
-    {
-        if (other is null) return;
-        if (StatHash != other.StatHash)
-        {
-            StatHash = other.StatHash;
-            OnPropertyChanged(nameof(StatHash));
-        }
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-    }
+    public object DisplayProperties { get; set; }
 }

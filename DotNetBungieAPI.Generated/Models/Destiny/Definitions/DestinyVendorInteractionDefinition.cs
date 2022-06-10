@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     A Vendor Interaction is a dialog shown by the vendor other than sale items or transfer screens. The vendor is showing you something, and asking you to reply to it by choosing an option or reward.
 /// </summary>
-public class DestinyVendorInteractionDefinition : IDeepEquatable<DestinyVendorInteractionDefinition>
+public class DestinyVendorInteractionDefinition
 {
     /// <summary>
     ///     The position of this interaction in its parent array. Note that this is NOT content agnostic, and should not be used as such.
@@ -75,107 +75,11 @@ public class DestinyVendorInteractionDefinition : IDeepEquatable<DestinyVendorIn
     ///     The header for the interaction dialog.
     /// </summary>
     [JsonPropertyName("headerDisplayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition HeaderDisplayProperties { get; set; }
+    public object HeaderDisplayProperties { get; set; }
 
     /// <summary>
     ///     The localized text telling the player what to do when they see this dialog.
     /// </summary>
     [JsonPropertyName("instructions")]
     public string Instructions { get; set; }
-
-    public bool DeepEquals(DestinyVendorInteractionDefinition? other)
-    {
-        return other is not null &&
-               InteractionIndex == other.InteractionIndex &&
-               Replies.DeepEqualsList(other.Replies) &&
-               VendorCategoryIndex == other.VendorCategoryIndex &&
-               QuestlineItemHash == other.QuestlineItemHash &&
-               SackInteractionList.DeepEqualsList(other.SackInteractionList) &&
-               UiInteractionType == other.UiInteractionType &&
-               InteractionType == other.InteractionType &&
-               RewardBlockLabel == other.RewardBlockLabel &&
-               RewardVendorCategoryIndex == other.RewardVendorCategoryIndex &&
-               FlavorLineOne == other.FlavorLineOne &&
-               FlavorLineTwo == other.FlavorLineTwo &&
-               (HeaderDisplayProperties is not null ? HeaderDisplayProperties.DeepEquals(other.HeaderDisplayProperties) : other.HeaderDisplayProperties is null) &&
-               Instructions == other.Instructions;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyVendorInteractionDefinition? other)
-    {
-        if (other is null) return;
-        if (InteractionIndex != other.InteractionIndex)
-        {
-            InteractionIndex = other.InteractionIndex;
-            OnPropertyChanged(nameof(InteractionIndex));
-        }
-        if (!Replies.DeepEqualsList(other.Replies))
-        {
-            Replies = other.Replies;
-            OnPropertyChanged(nameof(Replies));
-        }
-        if (VendorCategoryIndex != other.VendorCategoryIndex)
-        {
-            VendorCategoryIndex = other.VendorCategoryIndex;
-            OnPropertyChanged(nameof(VendorCategoryIndex));
-        }
-        if (QuestlineItemHash != other.QuestlineItemHash)
-        {
-            QuestlineItemHash = other.QuestlineItemHash;
-            OnPropertyChanged(nameof(QuestlineItemHash));
-        }
-        if (!SackInteractionList.DeepEqualsList(other.SackInteractionList))
-        {
-            SackInteractionList = other.SackInteractionList;
-            OnPropertyChanged(nameof(SackInteractionList));
-        }
-        if (UiInteractionType != other.UiInteractionType)
-        {
-            UiInteractionType = other.UiInteractionType;
-            OnPropertyChanged(nameof(UiInteractionType));
-        }
-        if (InteractionType != other.InteractionType)
-        {
-            InteractionType = other.InteractionType;
-            OnPropertyChanged(nameof(InteractionType));
-        }
-        if (RewardBlockLabel != other.RewardBlockLabel)
-        {
-            RewardBlockLabel = other.RewardBlockLabel;
-            OnPropertyChanged(nameof(RewardBlockLabel));
-        }
-        if (RewardVendorCategoryIndex != other.RewardVendorCategoryIndex)
-        {
-            RewardVendorCategoryIndex = other.RewardVendorCategoryIndex;
-            OnPropertyChanged(nameof(RewardVendorCategoryIndex));
-        }
-        if (FlavorLineOne != other.FlavorLineOne)
-        {
-            FlavorLineOne = other.FlavorLineOne;
-            OnPropertyChanged(nameof(FlavorLineOne));
-        }
-        if (FlavorLineTwo != other.FlavorLineTwo)
-        {
-            FlavorLineTwo = other.FlavorLineTwo;
-            OnPropertyChanged(nameof(FlavorLineTwo));
-        }
-        if (!HeaderDisplayProperties.DeepEquals(other.HeaderDisplayProperties))
-        {
-            HeaderDisplayProperties.Update(other.HeaderDisplayProperties);
-            OnPropertyChanged(nameof(HeaderDisplayProperties));
-        }
-        if (Instructions != other.Instructions)
-        {
-            Instructions = other.Instructions;
-            OnPropertyChanged(nameof(Instructions));
-        }
-    }
 }

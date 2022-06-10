@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     A single faction may contain multiple vendors, or the same vendor available at two different locations.
 /// </summary>
-public class DestinyFactionVendorDefinition : IDeepEquatable<DestinyFactionVendorDefinition>
+public class DestinyFactionVendorDefinition
 {
     /// <summary>
     ///     The faction vendor hash.
@@ -24,40 +24,4 @@ public class DestinyFactionVendorDefinition : IDeepEquatable<DestinyFactionVendo
     /// </summary>
     [JsonPropertyName("backgroundImagePath")]
     public string BackgroundImagePath { get; set; }
-
-    public bool DeepEquals(DestinyFactionVendorDefinition? other)
-    {
-        return other is not null &&
-               VendorHash == other.VendorHash &&
-               DestinationHash == other.DestinationHash &&
-               BackgroundImagePath == other.BackgroundImagePath;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyFactionVendorDefinition? other)
-    {
-        if (other is null) return;
-        if (VendorHash != other.VendorHash)
-        {
-            VendorHash = other.VendorHash;
-            OnPropertyChanged(nameof(VendorHash));
-        }
-        if (DestinationHash != other.DestinationHash)
-        {
-            DestinationHash = other.DestinationHash;
-            OnPropertyChanged(nameof(DestinationHash));
-        }
-        if (BackgroundImagePath != other.BackgroundImagePath)
-        {
-            BackgroundImagePath = other.BackgroundImagePath;
-            OnPropertyChanged(nameof(BackgroundImagePath));
-        }
-    }
 }

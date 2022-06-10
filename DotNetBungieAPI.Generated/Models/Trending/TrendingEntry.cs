@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Trending;
 /// <summary>
 ///     The list entry view for trending items. Returns just enough to show the item on the trending page.
 /// </summary>
-public class TrendingEntry : IDeepEquatable<TrendingEntry>
+public class TrendingEntry
 {
     /// <summary>
     ///     The weighted score of this trending item.
@@ -42,10 +42,10 @@ public class TrendingEntry : IDeepEquatable<TrendingEntry>
     public string Image { get; set; }
 
     [JsonPropertyName("startDate")]
-    public DateTime? StartDate { get; set; }
+    public DateTime StartDate { get; set; }
 
     [JsonPropertyName("endDate")]
-    public DateTime? EndDate { get; set; }
+    public DateTime EndDate { get; set; }
 
     [JsonPropertyName("link")]
     public string Link { get; set; }
@@ -78,113 +78,5 @@ public class TrendingEntry : IDeepEquatable<TrendingEntry>
     ///     If the entry has a date at which it was created, this is that date.
     /// </summary>
     [JsonPropertyName("creationDate")]
-    public DateTime? CreationDate { get; set; }
-
-    public bool DeepEquals(TrendingEntry? other)
-    {
-        return other is not null &&
-               Weight == other.Weight &&
-               IsFeatured == other.IsFeatured &&
-               Identifier == other.Identifier &&
-               EntityType == other.EntityType &&
-               DisplayName == other.DisplayName &&
-               Tagline == other.Tagline &&
-               Image == other.Image &&
-               StartDate == other.StartDate &&
-               EndDate == other.EndDate &&
-               Link == other.Link &&
-               WebmVideo == other.WebmVideo &&
-               Mp4Video == other.Mp4Video &&
-               FeatureImage == other.FeatureImage &&
-               Items.DeepEqualsList(other.Items) &&
-               CreationDate == other.CreationDate;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(TrendingEntry? other)
-    {
-        if (other is null) return;
-        if (Weight != other.Weight)
-        {
-            Weight = other.Weight;
-            OnPropertyChanged(nameof(Weight));
-        }
-        if (IsFeatured != other.IsFeatured)
-        {
-            IsFeatured = other.IsFeatured;
-            OnPropertyChanged(nameof(IsFeatured));
-        }
-        if (Identifier != other.Identifier)
-        {
-            Identifier = other.Identifier;
-            OnPropertyChanged(nameof(Identifier));
-        }
-        if (EntityType != other.EntityType)
-        {
-            EntityType = other.EntityType;
-            OnPropertyChanged(nameof(EntityType));
-        }
-        if (DisplayName != other.DisplayName)
-        {
-            DisplayName = other.DisplayName;
-            OnPropertyChanged(nameof(DisplayName));
-        }
-        if (Tagline != other.Tagline)
-        {
-            Tagline = other.Tagline;
-            OnPropertyChanged(nameof(Tagline));
-        }
-        if (Image != other.Image)
-        {
-            Image = other.Image;
-            OnPropertyChanged(nameof(Image));
-        }
-        if (StartDate != other.StartDate)
-        {
-            StartDate = other.StartDate;
-            OnPropertyChanged(nameof(StartDate));
-        }
-        if (EndDate != other.EndDate)
-        {
-            EndDate = other.EndDate;
-            OnPropertyChanged(nameof(EndDate));
-        }
-        if (Link != other.Link)
-        {
-            Link = other.Link;
-            OnPropertyChanged(nameof(Link));
-        }
-        if (WebmVideo != other.WebmVideo)
-        {
-            WebmVideo = other.WebmVideo;
-            OnPropertyChanged(nameof(WebmVideo));
-        }
-        if (Mp4Video != other.Mp4Video)
-        {
-            Mp4Video = other.Mp4Video;
-            OnPropertyChanged(nameof(Mp4Video));
-        }
-        if (FeatureImage != other.FeatureImage)
-        {
-            FeatureImage = other.FeatureImage;
-            OnPropertyChanged(nameof(FeatureImage));
-        }
-        if (!Items.DeepEqualsList(other.Items))
-        {
-            Items = other.Items;
-            OnPropertyChanged(nameof(Items));
-        }
-        if (CreationDate != other.CreationDate)
-        {
-            CreationDate = other.CreationDate;
-            OnPropertyChanged(nameof(CreationDate));
-        }
-    }
+    public DateTime CreationDate { get; set; }
 }

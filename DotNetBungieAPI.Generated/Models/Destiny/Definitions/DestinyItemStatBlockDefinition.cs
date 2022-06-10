@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     It is also worth noting that some stats, like Magazine size, have further calculations performed on them by scripts in-game and on the game servers that BNet does not have access to. We cannot know how those stats are further transformed, and thus some stats will be inaccurate even on instances of items in BNet vs. how they appear in-game. This is a known limitation of our item statistics, without any planned fix.
 /// </summary>
-public class DestinyItemStatBlockDefinition : IDeepEquatable<DestinyItemStatBlockDefinition>
+public class DestinyItemStatBlockDefinition
 {
     /// <summary>
     ///     If true, the game won't show the "primary" stat on this item when you inspect it.
@@ -23,7 +23,7 @@ public class DestinyItemStatBlockDefinition : IDeepEquatable<DestinyItemStatBloc
     ///     If you are using live data or precomputed stats data on the DestinyInventoryItemDefinition.stats.stats property, you don't have to worry about statGroupHash and how it alters stats: the already altered stats are provided to you. But if you want to see how the sausage gets made, or perform computations yourself, this is valuable information.
     /// </summary>
     [JsonPropertyName("statGroupHash")]
-    public uint? StatGroupHash { get; set; }
+    public uint StatGroupHash { get; set; }
 
     /// <summary>
     ///     If you are looking for precomputed values for the stats on a weapon, this is where they are stored. Technically these are the "Display" stat values. Please see DestinyStatsDefinition for what Display Stat Values means, it's a very long story... but essentially these are the closest values BNet can get to the item stats that you see in-game.
@@ -46,52 +46,4 @@ public class DestinyItemStatBlockDefinition : IDeepEquatable<DestinyItemStatBloc
     /// </summary>
     [JsonPropertyName("primaryBaseStatHash")]
     public uint PrimaryBaseStatHash { get; set; }
-
-    public bool DeepEquals(DestinyItemStatBlockDefinition? other)
-    {
-        return other is not null &&
-               DisablePrimaryStatDisplay == other.DisablePrimaryStatDisplay &&
-               StatGroupHash == other.StatGroupHash &&
-               Stats.DeepEqualsDictionary(other.Stats) &&
-               HasDisplayableStats == other.HasDisplayableStats &&
-               PrimaryBaseStatHash == other.PrimaryBaseStatHash;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemStatBlockDefinition? other)
-    {
-        if (other is null) return;
-        if (DisablePrimaryStatDisplay != other.DisablePrimaryStatDisplay)
-        {
-            DisablePrimaryStatDisplay = other.DisablePrimaryStatDisplay;
-            OnPropertyChanged(nameof(DisablePrimaryStatDisplay));
-        }
-        if (StatGroupHash != other.StatGroupHash)
-        {
-            StatGroupHash = other.StatGroupHash;
-            OnPropertyChanged(nameof(StatGroupHash));
-        }
-        if (!Stats.DeepEqualsDictionary(other.Stats))
-        {
-            Stats = other.Stats;
-            OnPropertyChanged(nameof(Stats));
-        }
-        if (HasDisplayableStats != other.HasDisplayableStats)
-        {
-            HasDisplayableStats = other.HasDisplayableStats;
-            OnPropertyChanged(nameof(HasDisplayableStats));
-        }
-        if (PrimaryBaseStatHash != other.PrimaryBaseStatHash)
-        {
-            PrimaryBaseStatHash = other.PrimaryBaseStatHash;
-            OnPropertyChanged(nameof(PrimaryBaseStatHash));
-        }
-    }
 }

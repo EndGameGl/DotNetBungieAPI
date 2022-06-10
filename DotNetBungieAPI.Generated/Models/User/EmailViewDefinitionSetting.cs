@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.User;
 
-public class EmailViewDefinitionSetting : IDeepEquatable<EmailViewDefinitionSetting>
+public class EmailViewDefinitionSetting
 {
     /// <summary>
     ///     The identifier for this UI Setting, which can be used to relate it to custom strings or other data as desired.
@@ -31,52 +31,4 @@ public class EmailViewDefinitionSetting : IDeepEquatable<EmailViewDefinitionSett
     /// </summary>
     [JsonPropertyName("subscriptions")]
     public List<User.EmailSubscriptionDefinition> Subscriptions { get; set; }
-
-    public bool DeepEquals(EmailViewDefinitionSetting? other)
-    {
-        return other is not null &&
-               Name == other.Name &&
-               Localization.DeepEqualsDictionary(other.Localization) &&
-               SetByDefault == other.SetByDefault &&
-               OptInAggregateValue == other.OptInAggregateValue &&
-               Subscriptions.DeepEqualsList(other.Subscriptions);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(EmailViewDefinitionSetting? other)
-    {
-        if (other is null) return;
-        if (Name != other.Name)
-        {
-            Name = other.Name;
-            OnPropertyChanged(nameof(Name));
-        }
-        if (!Localization.DeepEqualsDictionary(other.Localization))
-        {
-            Localization = other.Localization;
-            OnPropertyChanged(nameof(Localization));
-        }
-        if (SetByDefault != other.SetByDefault)
-        {
-            SetByDefault = other.SetByDefault;
-            OnPropertyChanged(nameof(SetByDefault));
-        }
-        if (OptInAggregateValue != other.OptInAggregateValue)
-        {
-            OptInAggregateValue = other.OptInAggregateValue;
-            OnPropertyChanged(nameof(OptInAggregateValue));
-        }
-        if (!Subscriptions.DeepEqualsList(other.Subscriptions))
-        {
-            Subscriptions = other.Subscriptions;
-            OnPropertyChanged(nameof(Subscriptions));
-        }
-    }
 }

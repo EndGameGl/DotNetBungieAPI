@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Quests;
 /// <summary>
 ///     Data regarding the progress of a Quest for a specific character. Quests are composed of multiple steps, each with potentially multiple objectives: this QuestStatus will return Objective data for the *currently active* step in this quest.
 /// </summary>
-public class DestinyQuestStatus : IDeepEquatable<DestinyQuestStatus>
+public class DestinyQuestStatus
 {
     /// <summary>
     ///     The hash identifier for the Quest Item. (Note: Quests are defined as Items, and thus you would use this to look up the quest's DestinyInventoryItemDefinition). For information on all steps in the quest, you can then examine its DestinyInventoryItemDefinition.setData property for Quest Steps (which are *also* items). You can use the Item Definition to display human readable data about the overall quest.
@@ -57,77 +57,5 @@ public class DestinyQuestStatus : IDeepEquatable<DestinyQuestStatus>
     ///     If the quest has a related Vendor that you should talk to in order to initiate the quest/earn rewards/continue the quest, this will be the hash identifier of that Vendor. Look it up its DestinyVendorDefinition.
     /// </summary>
     [JsonPropertyName("vendorHash")]
-    public uint? VendorHash { get; set; }
-
-    public bool DeepEquals(DestinyQuestStatus? other)
-    {
-        return other is not null &&
-               QuestHash == other.QuestHash &&
-               StepHash == other.StepHash &&
-               StepObjectives.DeepEqualsList(other.StepObjectives) &&
-               Tracked == other.Tracked &&
-               ItemInstanceId == other.ItemInstanceId &&
-               Completed == other.Completed &&
-               Redeemed == other.Redeemed &&
-               Started == other.Started &&
-               VendorHash == other.VendorHash;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyQuestStatus? other)
-    {
-        if (other is null) return;
-        if (QuestHash != other.QuestHash)
-        {
-            QuestHash = other.QuestHash;
-            OnPropertyChanged(nameof(QuestHash));
-        }
-        if (StepHash != other.StepHash)
-        {
-            StepHash = other.StepHash;
-            OnPropertyChanged(nameof(StepHash));
-        }
-        if (!StepObjectives.DeepEqualsList(other.StepObjectives))
-        {
-            StepObjectives = other.StepObjectives;
-            OnPropertyChanged(nameof(StepObjectives));
-        }
-        if (Tracked != other.Tracked)
-        {
-            Tracked = other.Tracked;
-            OnPropertyChanged(nameof(Tracked));
-        }
-        if (ItemInstanceId != other.ItemInstanceId)
-        {
-            ItemInstanceId = other.ItemInstanceId;
-            OnPropertyChanged(nameof(ItemInstanceId));
-        }
-        if (Completed != other.Completed)
-        {
-            Completed = other.Completed;
-            OnPropertyChanged(nameof(Completed));
-        }
-        if (Redeemed != other.Redeemed)
-        {
-            Redeemed = other.Redeemed;
-            OnPropertyChanged(nameof(Redeemed));
-        }
-        if (Started != other.Started)
-        {
-            Started = other.Started;
-            OnPropertyChanged(nameof(Started));
-        }
-        if (VendorHash != other.VendorHash)
-        {
-            VendorHash = other.VendorHash;
-            OnPropertyChanged(nameof(VendorHash));
-        }
-    }
+    public uint VendorHash { get; set; }
 }

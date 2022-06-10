@@ -99,5 +99,10 @@ public enum DestinyVendorItemState : int
     /// <summary>
     ///     This indicates that the sale item is free.
     /// </summary>
-    Free = 131072
+    Free = 131072,
+
+    /// <summary>
+    ///     This indicates that the sale item is locked.
+    /// </summary>
+    Locked = 262144
 }

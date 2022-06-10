@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Artifacts;
 
-public class DestinyArtifactTierDefinition : IDeepEquatable<DestinyArtifactTierDefinition>
+public class DestinyArtifactTierDefinition
 {
     /// <summary>
     ///     An identifier, unique within the Artifact, for this specific tier.
@@ -31,52 +31,4 @@ public class DestinyArtifactTierDefinition : IDeepEquatable<DestinyArtifactTierD
     /// </summary>
     [JsonPropertyName("minimumUnlockPointsUsedRequirement")]
     public int MinimumUnlockPointsUsedRequirement { get; set; }
-
-    public bool DeepEquals(DestinyArtifactTierDefinition? other)
-    {
-        return other is not null &&
-               TierHash == other.TierHash &&
-               DisplayTitle == other.DisplayTitle &&
-               ProgressRequirementMessage == other.ProgressRequirementMessage &&
-               Items.DeepEqualsList(other.Items) &&
-               MinimumUnlockPointsUsedRequirement == other.MinimumUnlockPointsUsedRequirement;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyArtifactTierDefinition? other)
-    {
-        if (other is null) return;
-        if (TierHash != other.TierHash)
-        {
-            TierHash = other.TierHash;
-            OnPropertyChanged(nameof(TierHash));
-        }
-        if (DisplayTitle != other.DisplayTitle)
-        {
-            DisplayTitle = other.DisplayTitle;
-            OnPropertyChanged(nameof(DisplayTitle));
-        }
-        if (ProgressRequirementMessage != other.ProgressRequirementMessage)
-        {
-            ProgressRequirementMessage = other.ProgressRequirementMessage;
-            OnPropertyChanged(nameof(ProgressRequirementMessage));
-        }
-        if (!Items.DeepEqualsList(other.Items))
-        {
-            Items = other.Items;
-            OnPropertyChanged(nameof(Items));
-        }
-        if (MinimumUnlockPointsUsedRequirement != other.MinimumUnlockPointsUsedRequirement)
-        {
-            MinimumUnlockPointsUsedRequirement = other.MinimumUnlockPointsUsedRequirement;
-            OnPropertyChanged(nameof(MinimumUnlockPointsUsedRequirement));
-        }
-    }
 }

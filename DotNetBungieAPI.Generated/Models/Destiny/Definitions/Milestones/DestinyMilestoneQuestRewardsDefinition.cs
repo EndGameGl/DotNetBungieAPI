@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 /// <summary>
 ///     If rewards are given in a quest - as opposed to overall in the entire Milestone - there's way less to track. We're going to simplify this contract as a result. However, this also gives us the opportunity to potentially put more than just item information into the reward data if we're able to mine it out in the future. Remember this if you come back and ask "why are quest reward items nested inside of their own class?"
 /// </summary>
-public class DestinyMilestoneQuestRewardsDefinition : IDeepEquatable<DestinyMilestoneQuestRewardsDefinition>
+public class DestinyMilestoneQuestRewardsDefinition
 {
     /// <summary>
     ///     The items that represent your reward for completing the quest.
@@ -14,28 +14,4 @@ public class DestinyMilestoneQuestRewardsDefinition : IDeepEquatable<DestinyMile
     /// </summary>
     [JsonPropertyName("items")]
     public List<Destiny.Definitions.Milestones.DestinyMilestoneQuestRewardItem> Items { get; set; }
-
-    public bool DeepEquals(DestinyMilestoneQuestRewardsDefinition? other)
-    {
-        return other is not null &&
-               Items.DeepEqualsList(other.Items);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyMilestoneQuestRewardsDefinition? other)
-    {
-        if (other is null) return;
-        if (!Items.DeepEqualsList(other.Items))
-        {
-            Items = other.Items;
-            OnPropertyChanged(nameof(Items));
-        }
-    }
 }

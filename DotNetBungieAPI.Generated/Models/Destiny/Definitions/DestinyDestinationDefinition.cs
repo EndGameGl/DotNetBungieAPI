@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     A "Destination" is a specific region/city/area of a larger "Place". For instance, a Place might be Earth where a Destination might be Bellevue, Washington. (Please, pick a more interesting destination if you come to visit Earth).
 /// </summary>
-public class DestinyDestinationDefinition : IDeepEquatable<DestinyDestinationDefinition>
+public class DestinyDestinationDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -65,76 +65,4 @@ public class DestinyDestinationDefinition : IDeepEquatable<DestinyDestinationDef
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyDestinationDefinition? other)
-    {
-        return other is not null &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               PlaceHash == other.PlaceHash &&
-               DefaultFreeroamActivityHash == other.DefaultFreeroamActivityHash &&
-               ActivityGraphEntries.DeepEqualsList(other.ActivityGraphEntries) &&
-               BubbleSettings.DeepEqualsList(other.BubbleSettings) &&
-               Bubbles.DeepEqualsList(other.Bubbles) &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyDestinationDefinition? other)
-    {
-        if (other is null) return;
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (PlaceHash != other.PlaceHash)
-        {
-            PlaceHash = other.PlaceHash;
-            OnPropertyChanged(nameof(PlaceHash));
-        }
-        if (DefaultFreeroamActivityHash != other.DefaultFreeroamActivityHash)
-        {
-            DefaultFreeroamActivityHash = other.DefaultFreeroamActivityHash;
-            OnPropertyChanged(nameof(DefaultFreeroamActivityHash));
-        }
-        if (!ActivityGraphEntries.DeepEqualsList(other.ActivityGraphEntries))
-        {
-            ActivityGraphEntries = other.ActivityGraphEntries;
-            OnPropertyChanged(nameof(ActivityGraphEntries));
-        }
-        if (!BubbleSettings.DeepEqualsList(other.BubbleSettings))
-        {
-            BubbleSettings = other.BubbleSettings;
-            OnPropertyChanged(nameof(BubbleSettings));
-        }
-        if (!Bubbles.DeepEqualsList(other.Bubbles))
-        {
-            Bubbles = other.Bubbles;
-            OnPropertyChanged(nameof(Bubbles));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

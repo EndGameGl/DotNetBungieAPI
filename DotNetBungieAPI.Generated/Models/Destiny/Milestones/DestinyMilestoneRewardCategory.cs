@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 /// <summary>
 ///     Represents a category of "summary" rewards that can be earned for the Milestone regardless of specific quest rewards that can be earned.
 /// </summary>
-public class DestinyMilestoneRewardCategory : IDeepEquatable<DestinyMilestoneRewardCategory>
+public class DestinyMilestoneRewardCategory
 {
     /// <summary>
     ///     Look up the relevant DestinyMilestoneDefinition, and then use rewardCategoryHash to look up the category info in DestinyMilestoneDefinition.rewards.
@@ -16,34 +16,4 @@ public class DestinyMilestoneRewardCategory : IDeepEquatable<DestinyMilestoneRew
     /// </summary>
     [JsonPropertyName("entries")]
     public List<Destiny.Milestones.DestinyMilestoneRewardEntry> Entries { get; set; }
-
-    public bool DeepEquals(DestinyMilestoneRewardCategory? other)
-    {
-        return other is not null &&
-               RewardCategoryHash == other.RewardCategoryHash &&
-               Entries.DeepEqualsList(other.Entries);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyMilestoneRewardCategory? other)
-    {
-        if (other is null) return;
-        if (RewardCategoryHash != other.RewardCategoryHash)
-        {
-            RewardCategoryHash = other.RewardCategoryHash;
-            OnPropertyChanged(nameof(RewardCategoryHash));
-        }
-        if (!Entries.DeepEqualsList(other.Entries))
-        {
-            Entries = other.Entries;
-            OnPropertyChanged(nameof(Entries));
-        }
-    }
 }

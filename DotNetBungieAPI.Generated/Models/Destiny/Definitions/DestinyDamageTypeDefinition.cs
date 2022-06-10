@@ -3,13 +3,13 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     All damage types that are possible in the game are defined here, along with localized info and icons as needed.
 /// </summary>
-public class DestinyDamageTypeDefinition : IDeepEquatable<DestinyDamageTypeDefinition>
+public class DestinyDamageTypeDefinition
 {
     /// <summary>
     ///     The description of the damage type, icon etc...
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public object DisplayProperties { get; set; }
 
     /// <summary>
     ///     A variant of the icon that is transparent and colorless.
@@ -48,64 +48,4 @@ public class DestinyDamageTypeDefinition : IDeepEquatable<DestinyDamageTypeDefin
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyDamageTypeDefinition? other)
-    {
-        return other is not null &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               TransparentIconPath == other.TransparentIconPath &&
-               ShowIcon == other.ShowIcon &&
-               EnumValue == other.EnumValue &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyDamageTypeDefinition? other)
-    {
-        if (other is null) return;
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (TransparentIconPath != other.TransparentIconPath)
-        {
-            TransparentIconPath = other.TransparentIconPath;
-            OnPropertyChanged(nameof(TransparentIconPath));
-        }
-        if (ShowIcon != other.ShowIcon)
-        {
-            ShowIcon = other.ShowIcon;
-            OnPropertyChanged(nameof(ShowIcon));
-        }
-        if (EnumValue != other.EnumValue)
-        {
-            EnumValue = other.EnumValue;
-            OnPropertyChanged(nameof(EnumValue));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

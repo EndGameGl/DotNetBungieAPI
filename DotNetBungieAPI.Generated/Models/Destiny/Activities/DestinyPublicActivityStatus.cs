@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Activities;
 /// <summary>
 ///     Represents the public-facing status of an activity: any data about what is currently active in the Activity, regardless of an individual character's progress in it.
 /// </summary>
-public class DestinyPublicActivityStatus : IDeepEquatable<DestinyPublicActivityStatus>
+public class DestinyPublicActivityStatus
 {
     /// <summary>
     ///     Active Challenges for the activity, if any - represented as hashes for DestinyObjectiveDefinitions.
@@ -26,40 +26,4 @@ public class DestinyPublicActivityStatus : IDeepEquatable<DestinyPublicActivityS
     /// </summary>
     [JsonPropertyName("rewardTooltipItems")]
     public List<Destiny.DestinyItemQuantity> RewardTooltipItems { get; set; }
-
-    public bool DeepEquals(DestinyPublicActivityStatus? other)
-    {
-        return other is not null &&
-               ChallengeObjectiveHashes.DeepEqualsListNaive(other.ChallengeObjectiveHashes) &&
-               ModifierHashes.DeepEqualsListNaive(other.ModifierHashes) &&
-               RewardTooltipItems.DeepEqualsList(other.RewardTooltipItems);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyPublicActivityStatus? other)
-    {
-        if (other is null) return;
-        if (!ChallengeObjectiveHashes.DeepEqualsListNaive(other.ChallengeObjectiveHashes))
-        {
-            ChallengeObjectiveHashes = other.ChallengeObjectiveHashes;
-            OnPropertyChanged(nameof(ChallengeObjectiveHashes));
-        }
-        if (!ModifierHashes.DeepEqualsListNaive(other.ModifierHashes))
-        {
-            ModifierHashes = other.ModifierHashes;
-            OnPropertyChanged(nameof(ModifierHashes));
-        }
-        if (!RewardTooltipItems.DeepEqualsList(other.RewardTooltipItems))
-        {
-            RewardTooltipItems = other.RewardTooltipItems;
-            OnPropertyChanged(nameof(RewardTooltipItems));
-        }
-    }
 }

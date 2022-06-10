@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Display Categories are different from "categories" in that these are specifically for visual grouping and display of categories in Vendor UI. The "categories" structure is for validation of the contained items, and can be categorized entirely separately from "Display Categories", there need be and often will be no meaningful relationship between the two.
 /// </summary>
-public class DestinyDisplayCategoryDefinition : IDeepEquatable<DestinyDisplayCategoryDefinition>
+public class DestinyDisplayCategoryDefinition
 {
     [JsonPropertyName("index")]
     public int Index { get; set; }
@@ -32,7 +32,7 @@ public class DestinyDisplayCategoryDefinition : IDeepEquatable<DestinyDisplayCat
     ///     Specific categories can now have thier own distinct progression, apparently. So that's cool.
     /// </summary>
     [JsonPropertyName("progressionHash")]
-    public uint? ProgressionHash { get; set; }
+    public uint ProgressionHash { get; set; }
 
     /// <summary>
     ///     If this category sorts items in a nonstandard way, this will be the way we sort.
@@ -44,83 +44,11 @@ public class DestinyDisplayCategoryDefinition : IDeepEquatable<DestinyDisplayCat
     ///     An indicator of how the category will be displayed in the UI. It's up to you to do something cool or interesting in response to this, or just to treat it as a normal category.
     /// </summary>
     [JsonPropertyName("displayStyleHash")]
-    public uint? DisplayStyleHash { get; set; }
+    public uint DisplayStyleHash { get; set; }
 
     /// <summary>
     ///     An indicator of how the category will be displayed in the UI. It's up to you to do something cool or interesting in response to this, or just to treat it as a normal category.
     /// </summary>
     [JsonPropertyName("displayStyleIdentifier")]
     public string DisplayStyleIdentifier { get; set; }
-
-    public bool DeepEquals(DestinyDisplayCategoryDefinition? other)
-    {
-        return other is not null &&
-               Index == other.Index &&
-               Identifier == other.Identifier &&
-               DisplayCategoryHash == other.DisplayCategoryHash &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               DisplayInBanner == other.DisplayInBanner &&
-               ProgressionHash == other.ProgressionHash &&
-               SortOrder == other.SortOrder &&
-               DisplayStyleHash == other.DisplayStyleHash &&
-               DisplayStyleIdentifier == other.DisplayStyleIdentifier;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyDisplayCategoryDefinition? other)
-    {
-        if (other is null) return;
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Identifier != other.Identifier)
-        {
-            Identifier = other.Identifier;
-            OnPropertyChanged(nameof(Identifier));
-        }
-        if (DisplayCategoryHash != other.DisplayCategoryHash)
-        {
-            DisplayCategoryHash = other.DisplayCategoryHash;
-            OnPropertyChanged(nameof(DisplayCategoryHash));
-        }
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (DisplayInBanner != other.DisplayInBanner)
-        {
-            DisplayInBanner = other.DisplayInBanner;
-            OnPropertyChanged(nameof(DisplayInBanner));
-        }
-        if (ProgressionHash != other.ProgressionHash)
-        {
-            ProgressionHash = other.ProgressionHash;
-            OnPropertyChanged(nameof(ProgressionHash));
-        }
-        if (SortOrder != other.SortOrder)
-        {
-            SortOrder = other.SortOrder;
-            OnPropertyChanged(nameof(SortOrder));
-        }
-        if (DisplayStyleHash != other.DisplayStyleHash)
-        {
-            DisplayStyleHash = other.DisplayStyleHash;
-            OnPropertyChanged(nameof(DisplayStyleHash));
-        }
-        if (DisplayStyleIdentifier != other.DisplayStyleIdentifier)
-        {
-            DisplayStyleIdentifier = other.DisplayStyleIdentifier;
-            OnPropertyChanged(nameof(DisplayStyleIdentifier));
-        }
-    }
 }

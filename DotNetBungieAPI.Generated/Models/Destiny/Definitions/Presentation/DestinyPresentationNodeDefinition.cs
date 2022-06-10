@@ -11,7 +11,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Presentation;
 /// <para />
 ///     We'll see if I come to regret this as well.
 /// </summary>
-public class DestinyPresentationNodeDefinition : IDeepEquatable<DestinyPresentationNodeDefinition>
+public class DestinyPresentationNodeDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -41,19 +41,19 @@ public class DestinyPresentationNodeDefinition : IDeepEquatable<DestinyPresentat
     ///     If this presentation node shows a related objective (for instance, if it tracks the progress of its children), the objective being tracked is indicated here.
     /// </summary>
     [JsonPropertyName("objectiveHash")]
-    public uint? ObjectiveHash { get; set; }
+    public uint ObjectiveHash { get; set; }
 
     /// <summary>
     ///     If this presentation node has an associated "Record" that you can accomplish for completing its children, this is the identifier of that Record.
     /// </summary>
     [JsonPropertyName("completionRecordHash")]
-    public uint? CompletionRecordHash { get; set; }
+    public uint CompletionRecordHash { get; set; }
 
     /// <summary>
     ///     The child entities contained by this presentation node.
     /// </summary>
     [JsonPropertyName("children")]
-    public Destiny.Definitions.Presentation.DestinyPresentationNodeChildrenBlock Children { get; set; }
+    public object Children { get; set; }
 
     /// <summary>
     ///     A hint for how to display this presentation node when it's shown in a list.
@@ -71,7 +71,7 @@ public class DestinyPresentationNodeDefinition : IDeepEquatable<DestinyPresentat
     ///     The requirements for being able to interact with this presentation node and its children.
     /// </summary>
     [JsonPropertyName("requirements")]
-    public Destiny.Definitions.Presentation.DestinyPresentationNodeRequirementsBlock Requirements { get; set; }
+    public object Requirements { get; set; }
 
     /// <summary>
     ///     If this presentation node has children, but the game doesn't let you inspect the details of those children, that is indicated here.
@@ -116,142 +116,4 @@ public class DestinyPresentationNodeDefinition : IDeepEquatable<DestinyPresentat
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyPresentationNodeDefinition? other)
-    {
-        return other is not null &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               OriginalIcon == other.OriginalIcon &&
-               RootViewIcon == other.RootViewIcon &&
-               NodeType == other.NodeType &&
-               Scope == other.Scope &&
-               ObjectiveHash == other.ObjectiveHash &&
-               CompletionRecordHash == other.CompletionRecordHash &&
-               (Children is not null ? Children.DeepEquals(other.Children) : other.Children is null) &&
-               DisplayStyle == other.DisplayStyle &&
-               ScreenStyle == other.ScreenStyle &&
-               (Requirements is not null ? Requirements.DeepEquals(other.Requirements) : other.Requirements is null) &&
-               DisableChildSubscreenNavigation == other.DisableChildSubscreenNavigation &&
-               MaxCategoryRecordScore == other.MaxCategoryRecordScore &&
-               PresentationNodeType == other.PresentationNodeType &&
-               TraitIds.DeepEqualsListNaive(other.TraitIds) &&
-               TraitHashes.DeepEqualsListNaive(other.TraitHashes) &&
-               ParentNodeHashes.DeepEqualsListNaive(other.ParentNodeHashes) &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyPresentationNodeDefinition? other)
-    {
-        if (other is null) return;
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (OriginalIcon != other.OriginalIcon)
-        {
-            OriginalIcon = other.OriginalIcon;
-            OnPropertyChanged(nameof(OriginalIcon));
-        }
-        if (RootViewIcon != other.RootViewIcon)
-        {
-            RootViewIcon = other.RootViewIcon;
-            OnPropertyChanged(nameof(RootViewIcon));
-        }
-        if (NodeType != other.NodeType)
-        {
-            NodeType = other.NodeType;
-            OnPropertyChanged(nameof(NodeType));
-        }
-        if (Scope != other.Scope)
-        {
-            Scope = other.Scope;
-            OnPropertyChanged(nameof(Scope));
-        }
-        if (ObjectiveHash != other.ObjectiveHash)
-        {
-            ObjectiveHash = other.ObjectiveHash;
-            OnPropertyChanged(nameof(ObjectiveHash));
-        }
-        if (CompletionRecordHash != other.CompletionRecordHash)
-        {
-            CompletionRecordHash = other.CompletionRecordHash;
-            OnPropertyChanged(nameof(CompletionRecordHash));
-        }
-        if (!Children.DeepEquals(other.Children))
-        {
-            Children.Update(other.Children);
-            OnPropertyChanged(nameof(Children));
-        }
-        if (DisplayStyle != other.DisplayStyle)
-        {
-            DisplayStyle = other.DisplayStyle;
-            OnPropertyChanged(nameof(DisplayStyle));
-        }
-        if (ScreenStyle != other.ScreenStyle)
-        {
-            ScreenStyle = other.ScreenStyle;
-            OnPropertyChanged(nameof(ScreenStyle));
-        }
-        if (!Requirements.DeepEquals(other.Requirements))
-        {
-            Requirements.Update(other.Requirements);
-            OnPropertyChanged(nameof(Requirements));
-        }
-        if (DisableChildSubscreenNavigation != other.DisableChildSubscreenNavigation)
-        {
-            DisableChildSubscreenNavigation = other.DisableChildSubscreenNavigation;
-            OnPropertyChanged(nameof(DisableChildSubscreenNavigation));
-        }
-        if (MaxCategoryRecordScore != other.MaxCategoryRecordScore)
-        {
-            MaxCategoryRecordScore = other.MaxCategoryRecordScore;
-            OnPropertyChanged(nameof(MaxCategoryRecordScore));
-        }
-        if (PresentationNodeType != other.PresentationNodeType)
-        {
-            PresentationNodeType = other.PresentationNodeType;
-            OnPropertyChanged(nameof(PresentationNodeType));
-        }
-        if (!TraitIds.DeepEqualsListNaive(other.TraitIds))
-        {
-            TraitIds = other.TraitIds;
-            OnPropertyChanged(nameof(TraitIds));
-        }
-        if (!TraitHashes.DeepEqualsListNaive(other.TraitHashes))
-        {
-            TraitHashes = other.TraitHashes;
-            OnPropertyChanged(nameof(TraitHashes));
-        }
-        if (!ParentNodeHashes.DeepEqualsListNaive(other.ParentNodeHashes))
-        {
-            ParentNodeHashes = other.ParentNodeHashes;
-            OnPropertyChanged(nameof(ParentNodeHashes));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

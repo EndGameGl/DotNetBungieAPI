@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     You cannot transfer an item to a bucket that is not its Default without going through a Vendor's "accepted items" (DestinyVendorDefinition.acceptedItems). This is how transfer functionality like the Vault is implemented, as a feature of a Vendor. See the vendor's acceptedItems property for more details.
 /// </summary>
-public class DestinyInventoryBucketDefinition : IDeepEquatable<DestinyInventoryBucketDefinition>
+public class DestinyInventoryBucketDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -85,94 +85,4 @@ public class DestinyInventoryBucketDefinition : IDeepEquatable<DestinyInventoryB
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyInventoryBucketDefinition? other)
-    {
-        return other is not null &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               Scope == other.Scope &&
-               Category == other.Category &&
-               BucketOrder == other.BucketOrder &&
-               ItemCount == other.ItemCount &&
-               Location == other.Location &&
-               HasTransferDestination == other.HasTransferDestination &&
-               Enabled == other.Enabled &&
-               Fifo == other.Fifo &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyInventoryBucketDefinition? other)
-    {
-        if (other is null) return;
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (Scope != other.Scope)
-        {
-            Scope = other.Scope;
-            OnPropertyChanged(nameof(Scope));
-        }
-        if (Category != other.Category)
-        {
-            Category = other.Category;
-            OnPropertyChanged(nameof(Category));
-        }
-        if (BucketOrder != other.BucketOrder)
-        {
-            BucketOrder = other.BucketOrder;
-            OnPropertyChanged(nameof(BucketOrder));
-        }
-        if (ItemCount != other.ItemCount)
-        {
-            ItemCount = other.ItemCount;
-            OnPropertyChanged(nameof(ItemCount));
-        }
-        if (Location != other.Location)
-        {
-            Location = other.Location;
-            OnPropertyChanged(nameof(Location));
-        }
-        if (HasTransferDestination != other.HasTransferDestination)
-        {
-            HasTransferDestination = other.HasTransferDestination;
-            OnPropertyChanged(nameof(HasTransferDestination));
-        }
-        if (Enabled != other.Enabled)
-        {
-            Enabled = other.Enabled;
-            OnPropertyChanged(nameof(Enabled));
-        }
-        if (Fifo != other.Fifo)
-        {
-            Fifo = other.Fifo;
-            OnPropertyChanged(nameof(Fifo));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

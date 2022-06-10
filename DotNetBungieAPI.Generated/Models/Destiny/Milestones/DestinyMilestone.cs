@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 /// <summary>
 ///     Represents a runtime instance of a user's milestone status. Live Milestone data should be combined with DestinyMilestoneDefinition data to show the user a picture of what is available for them to do in the game, and their status in regards to said "things to do." Consider it a big, wonky to-do list, or Advisors 3.0 for those who remember the Destiny 1 API.
 /// </summary>
-public class DestinyMilestone : IDeepEquatable<DestinyMilestone>
+public class DestinyMilestone
 {
     /// <summary>
     ///     The unique identifier for the Milestone. Use it to look up the DestinyMilestoneDefinition, so you can combine the other data in this contract with static definition data.
@@ -55,95 +55,17 @@ public class DestinyMilestone : IDeepEquatable<DestinyMilestone>
     ///     If known, this is the date when the event last began or refreshed. It will only be populated for events with fixed and repeating start and end dates.
     /// </summary>
     [JsonPropertyName("startDate")]
-    public DateTime? StartDate { get; set; }
+    public DateTime StartDate { get; set; }
 
     /// <summary>
     ///     If known, this is the date when the event will next end or repeat. It will only be populated for events with fixed and repeating start and end dates.
     /// </summary>
     [JsonPropertyName("endDate")]
-    public DateTime? EndDate { get; set; }
+    public DateTime EndDate { get; set; }
 
     /// <summary>
     ///     Used for ordering milestones in a display to match how we order them in BNet. May pull from static data, or possibly in the future from dynamic information.
     /// </summary>
     [JsonPropertyName("order")]
     public int Order { get; set; }
-
-    public bool DeepEquals(DestinyMilestone? other)
-    {
-        return other is not null &&
-               MilestoneHash == other.MilestoneHash &&
-               AvailableQuests.DeepEqualsList(other.AvailableQuests) &&
-               Activities.DeepEqualsList(other.Activities) &&
-               Values.DeepEqualsDictionaryNaive(other.Values) &&
-               VendorHashes.DeepEqualsListNaive(other.VendorHashes) &&
-               Vendors.DeepEqualsList(other.Vendors) &&
-               Rewards.DeepEqualsList(other.Rewards) &&
-               StartDate == other.StartDate &&
-               EndDate == other.EndDate &&
-               Order == other.Order;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyMilestone? other)
-    {
-        if (other is null) return;
-        if (MilestoneHash != other.MilestoneHash)
-        {
-            MilestoneHash = other.MilestoneHash;
-            OnPropertyChanged(nameof(MilestoneHash));
-        }
-        if (!AvailableQuests.DeepEqualsList(other.AvailableQuests))
-        {
-            AvailableQuests = other.AvailableQuests;
-            OnPropertyChanged(nameof(AvailableQuests));
-        }
-        if (!Activities.DeepEqualsList(other.Activities))
-        {
-            Activities = other.Activities;
-            OnPropertyChanged(nameof(Activities));
-        }
-        if (!Values.DeepEqualsDictionaryNaive(other.Values))
-        {
-            Values = other.Values;
-            OnPropertyChanged(nameof(Values));
-        }
-        if (!VendorHashes.DeepEqualsListNaive(other.VendorHashes))
-        {
-            VendorHashes = other.VendorHashes;
-            OnPropertyChanged(nameof(VendorHashes));
-        }
-        if (!Vendors.DeepEqualsList(other.Vendors))
-        {
-            Vendors = other.Vendors;
-            OnPropertyChanged(nameof(Vendors));
-        }
-        if (!Rewards.DeepEqualsList(other.Rewards))
-        {
-            Rewards = other.Rewards;
-            OnPropertyChanged(nameof(Rewards));
-        }
-        if (StartDate != other.StartDate)
-        {
-            StartDate = other.StartDate;
-            OnPropertyChanged(nameof(StartDate));
-        }
-        if (EndDate != other.EndDate)
-        {
-            EndDate = other.EndDate;
-            OnPropertyChanged(nameof(EndDate));
-        }
-        if (Order != other.Order)
-        {
-            Order = other.Order;
-            OnPropertyChanged(nameof(Order));
-        }
-    }
 }

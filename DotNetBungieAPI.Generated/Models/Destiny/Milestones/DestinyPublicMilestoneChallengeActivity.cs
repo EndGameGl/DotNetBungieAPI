@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 
-public class DestinyPublicMilestoneChallengeActivity : IDeepEquatable<DestinyPublicMilestoneChallengeActivity>
+public class DestinyPublicMilestoneChallengeActivity
 {
     [JsonPropertyName("activityHash")]
     public uint ActivityHash { get; set; }
@@ -20,7 +20,7 @@ public class DestinyPublicMilestoneChallengeActivity : IDeepEquatable<DestinyPub
     ///     If returned, this is the index into the DestinyActivityDefinition's "loadouts" property, indicating the currently active loadout requirements.
     /// </summary>
     [JsonPropertyName("loadoutRequirementIndex")]
-    public int? LoadoutRequirementIndex { get; set; }
+    public int LoadoutRequirementIndex { get; set; }
 
     /// <summary>
     ///     The ordered list of phases for this activity, if any. Note that we have no human readable info for phases, nor any entities to relate them to: relating these hashes to something human readable is up to you unfortunately.
@@ -37,58 +37,4 @@ public class DestinyPublicMilestoneChallengeActivity : IDeepEquatable<DestinyPub
     /// </summary>
     [JsonPropertyName("booleanActivityOptions")]
     public Dictionary<uint, bool> BooleanActivityOptions { get; set; }
-
-    public bool DeepEquals(DestinyPublicMilestoneChallengeActivity? other)
-    {
-        return other is not null &&
-               ActivityHash == other.ActivityHash &&
-               ChallengeObjectiveHashes.DeepEqualsListNaive(other.ChallengeObjectiveHashes) &&
-               ModifierHashes.DeepEqualsListNaive(other.ModifierHashes) &&
-               LoadoutRequirementIndex == other.LoadoutRequirementIndex &&
-               PhaseHashes.DeepEqualsListNaive(other.PhaseHashes) &&
-               BooleanActivityOptions.DeepEqualsDictionaryNaive(other.BooleanActivityOptions);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyPublicMilestoneChallengeActivity? other)
-    {
-        if (other is null) return;
-        if (ActivityHash != other.ActivityHash)
-        {
-            ActivityHash = other.ActivityHash;
-            OnPropertyChanged(nameof(ActivityHash));
-        }
-        if (!ChallengeObjectiveHashes.DeepEqualsListNaive(other.ChallengeObjectiveHashes))
-        {
-            ChallengeObjectiveHashes = other.ChallengeObjectiveHashes;
-            OnPropertyChanged(nameof(ChallengeObjectiveHashes));
-        }
-        if (!ModifierHashes.DeepEqualsListNaive(other.ModifierHashes))
-        {
-            ModifierHashes = other.ModifierHashes;
-            OnPropertyChanged(nameof(ModifierHashes));
-        }
-        if (LoadoutRequirementIndex != other.LoadoutRequirementIndex)
-        {
-            LoadoutRequirementIndex = other.LoadoutRequirementIndex;
-            OnPropertyChanged(nameof(LoadoutRequirementIndex));
-        }
-        if (!PhaseHashes.DeepEqualsListNaive(other.PhaseHashes))
-        {
-            PhaseHashes = other.PhaseHashes;
-            OnPropertyChanged(nameof(PhaseHashes));
-        }
-        if (!BooleanActivityOptions.DeepEqualsDictionaryNaive(other.BooleanActivityOptions))
-        {
-            BooleanActivityOptions = other.BooleanActivityOptions;
-            OnPropertyChanged(nameof(BooleanActivityOptions));
-        }
-    }
 }

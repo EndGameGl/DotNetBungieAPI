@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 /// <summary>
 ///     Summary information about the activity that was played.
 /// </summary>
-public class DestinyHistoricalStatsActivity : IDeepEquatable<DestinyHistoricalStatsActivity>
+public class DestinyHistoricalStatsActivity
 {
     /// <summary>
     ///     The unique hash identifier of the DestinyActivityDefinition that was played. If I had this to do over, it'd be named activityHash. Too late now.
@@ -48,64 +48,4 @@ public class DestinyHistoricalStatsActivity : IDeepEquatable<DestinyHistoricalSt
     /// </summary>
     [JsonPropertyName("membershipType")]
     public BungieMembershipType MembershipType { get; set; }
-
-    public bool DeepEquals(DestinyHistoricalStatsActivity? other)
-    {
-        return other is not null &&
-               ReferenceId == other.ReferenceId &&
-               DirectorActivityHash == other.DirectorActivityHash &&
-               InstanceId == other.InstanceId &&
-               Mode == other.Mode &&
-               Modes.DeepEqualsListNaive(other.Modes) &&
-               IsPrivate == other.IsPrivate &&
-               MembershipType == other.MembershipType;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyHistoricalStatsActivity? other)
-    {
-        if (other is null) return;
-        if (ReferenceId != other.ReferenceId)
-        {
-            ReferenceId = other.ReferenceId;
-            OnPropertyChanged(nameof(ReferenceId));
-        }
-        if (DirectorActivityHash != other.DirectorActivityHash)
-        {
-            DirectorActivityHash = other.DirectorActivityHash;
-            OnPropertyChanged(nameof(DirectorActivityHash));
-        }
-        if (InstanceId != other.InstanceId)
-        {
-            InstanceId = other.InstanceId;
-            OnPropertyChanged(nameof(InstanceId));
-        }
-        if (Mode != other.Mode)
-        {
-            Mode = other.Mode;
-            OnPropertyChanged(nameof(Mode));
-        }
-        if (!Modes.DeepEqualsListNaive(other.Modes))
-        {
-            Modes = other.Modes;
-            OnPropertyChanged(nameof(Modes));
-        }
-        if (IsPrivate != other.IsPrivate)
-        {
-            IsPrivate = other.IsPrivate;
-            OnPropertyChanged(nameof(IsPrivate));
-        }
-        if (MembershipType != other.MembershipType)
-        {
-            MembershipType = other.MembershipType;
-            OnPropertyChanged(nameof(MembershipType));
-        }
-    }
 }

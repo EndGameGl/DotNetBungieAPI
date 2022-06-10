@@ -15,7 +15,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Items;
 /// <para />
 ///     See DestinyTalentGridDefinition for more information. Brace yourself, the water's cold out there in the deep end.
 /// </summary>
-public class DestinyItemTalentGridComponent : IDeepEquatable<DestinyItemTalentGridComponent>
+public class DestinyItemTalentGridComponent
 {
     /// <summary>
     ///     Most items don't have useful talent grids anymore, but Builds in particular still do.
@@ -45,47 +45,5 @@ public class DestinyItemTalentGridComponent : IDeepEquatable<DestinyItemTalentGr
     ///     If the item has a progression, it will be detailed here. A progression means that the item can gain experience. Thresholds of experience are what determines whether and when a talent node can be activated.
     /// </summary>
     [JsonPropertyName("gridProgression")]
-    public Destiny.DestinyProgression GridProgression { get; set; }
-
-    public bool DeepEquals(DestinyItemTalentGridComponent? other)
-    {
-        return other is not null &&
-               TalentGridHash == other.TalentGridHash &&
-               Nodes.DeepEqualsList(other.Nodes) &&
-               IsGridComplete == other.IsGridComplete &&
-               (GridProgression is not null ? GridProgression.DeepEquals(other.GridProgression) : other.GridProgression is null);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemTalentGridComponent? other)
-    {
-        if (other is null) return;
-        if (TalentGridHash != other.TalentGridHash)
-        {
-            TalentGridHash = other.TalentGridHash;
-            OnPropertyChanged(nameof(TalentGridHash));
-        }
-        if (!Nodes.DeepEqualsList(other.Nodes))
-        {
-            Nodes = other.Nodes;
-            OnPropertyChanged(nameof(Nodes));
-        }
-        if (IsGridComplete != other.IsGridComplete)
-        {
-            IsGridComplete = other.IsGridComplete;
-            OnPropertyChanged(nameof(IsGridComplete));
-        }
-        if (!GridProgression.DeepEquals(other.GridProgression))
-        {
-            GridProgression.Update(other.GridProgression);
-            OnPropertyChanged(nameof(GridProgression));
-        }
-    }
+    public object GridProgression { get; set; }
 }

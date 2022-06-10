@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Sources;
 /// <para />
 ///     Items will have many of these sources, one per level at which it spawns, to try and give more granular data about where items spawn for specific level ranges.
 /// </summary>
-public class DestinyItemSourceDefinition : IDeepEquatable<DestinyItemSourceDefinition>
+public class DestinyItemSourceDefinition
 {
     /// <summary>
     ///     The level at which the item spawns. Essentially the Primary Key for this source data: there will be multiple of these source entries per item that has source data, grouped by the level at which the item spawns.
@@ -48,64 +48,4 @@ public class DestinyItemSourceDefinition : IDeepEquatable<DestinyItemSourceDefin
     /// </summary>
     [JsonPropertyName("sourceHashes")]
     public List<uint> SourceHashes { get; set; }
-
-    public bool DeepEquals(DestinyItemSourceDefinition? other)
-    {
-        return other is not null &&
-               Level == other.Level &&
-               MinQuality == other.MinQuality &&
-               MaxQuality == other.MaxQuality &&
-               MinLevelRequired == other.MinLevelRequired &&
-               MaxLevelRequired == other.MaxLevelRequired &&
-               ComputedStats.DeepEqualsDictionary(other.ComputedStats) &&
-               SourceHashes.DeepEqualsListNaive(other.SourceHashes);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemSourceDefinition? other)
-    {
-        if (other is null) return;
-        if (Level != other.Level)
-        {
-            Level = other.Level;
-            OnPropertyChanged(nameof(Level));
-        }
-        if (MinQuality != other.MinQuality)
-        {
-            MinQuality = other.MinQuality;
-            OnPropertyChanged(nameof(MinQuality));
-        }
-        if (MaxQuality != other.MaxQuality)
-        {
-            MaxQuality = other.MaxQuality;
-            OnPropertyChanged(nameof(MaxQuality));
-        }
-        if (MinLevelRequired != other.MinLevelRequired)
-        {
-            MinLevelRequired = other.MinLevelRequired;
-            OnPropertyChanged(nameof(MinLevelRequired));
-        }
-        if (MaxLevelRequired != other.MaxLevelRequired)
-        {
-            MaxLevelRequired = other.MaxLevelRequired;
-            OnPropertyChanged(nameof(MaxLevelRequired));
-        }
-        if (!ComputedStats.DeepEqualsDictionary(other.ComputedStats))
-        {
-            ComputedStats = other.ComputedStats;
-            OnPropertyChanged(nameof(ComputedStats));
-        }
-        if (!SourceHashes.DeepEqualsListNaive(other.SourceHashes))
-        {
-            SourceHashes = other.SourceHashes;
-            OnPropertyChanged(nameof(SourceHashes));
-        }
-    }
 }

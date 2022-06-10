@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 
-public class DestinyVendorDisplayPropertiesDefinition : IDeepEquatable<DestinyVendorDisplayPropertiesDefinition>
+public class DestinyVendorDisplayPropertiesDefinition
 {
     /// <summary>
     ///     I regret calling this a "large icon". It's more like a medium-sized image with a picture of the vendor's mug on it, trying their best to look cool. Not what one would call an icon.
@@ -68,100 +68,4 @@ public class DestinyVendorDisplayPropertiesDefinition : IDeepEquatable<DestinyVe
 
     [JsonPropertyName("hasIcon")]
     public bool HasIcon { get; set; }
-
-    public bool DeepEquals(DestinyVendorDisplayPropertiesDefinition? other)
-    {
-        return other is not null &&
-               LargeIcon == other.LargeIcon &&
-               Subtitle == other.Subtitle &&
-               OriginalIcon == other.OriginalIcon &&
-               RequirementsDisplay.DeepEqualsList(other.RequirementsDisplay) &&
-               SmallTransparentIcon == other.SmallTransparentIcon &&
-               MapIcon == other.MapIcon &&
-               LargeTransparentIcon == other.LargeTransparentIcon &&
-               Description == other.Description &&
-               Name == other.Name &&
-               Icon == other.Icon &&
-               IconSequences.DeepEqualsList(other.IconSequences) &&
-               HighResIcon == other.HighResIcon &&
-               HasIcon == other.HasIcon;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyVendorDisplayPropertiesDefinition? other)
-    {
-        if (other is null) return;
-        if (LargeIcon != other.LargeIcon)
-        {
-            LargeIcon = other.LargeIcon;
-            OnPropertyChanged(nameof(LargeIcon));
-        }
-        if (Subtitle != other.Subtitle)
-        {
-            Subtitle = other.Subtitle;
-            OnPropertyChanged(nameof(Subtitle));
-        }
-        if (OriginalIcon != other.OriginalIcon)
-        {
-            OriginalIcon = other.OriginalIcon;
-            OnPropertyChanged(nameof(OriginalIcon));
-        }
-        if (!RequirementsDisplay.DeepEqualsList(other.RequirementsDisplay))
-        {
-            RequirementsDisplay = other.RequirementsDisplay;
-            OnPropertyChanged(nameof(RequirementsDisplay));
-        }
-        if (SmallTransparentIcon != other.SmallTransparentIcon)
-        {
-            SmallTransparentIcon = other.SmallTransparentIcon;
-            OnPropertyChanged(nameof(SmallTransparentIcon));
-        }
-        if (MapIcon != other.MapIcon)
-        {
-            MapIcon = other.MapIcon;
-            OnPropertyChanged(nameof(MapIcon));
-        }
-        if (LargeTransparentIcon != other.LargeTransparentIcon)
-        {
-            LargeTransparentIcon = other.LargeTransparentIcon;
-            OnPropertyChanged(nameof(LargeTransparentIcon));
-        }
-        if (Description != other.Description)
-        {
-            Description = other.Description;
-            OnPropertyChanged(nameof(Description));
-        }
-        if (Name != other.Name)
-        {
-            Name = other.Name;
-            OnPropertyChanged(nameof(Name));
-        }
-        if (Icon != other.Icon)
-        {
-            Icon = other.Icon;
-            OnPropertyChanged(nameof(Icon));
-        }
-        if (!IconSequences.DeepEqualsList(other.IconSequences))
-        {
-            IconSequences = other.IconSequences;
-            OnPropertyChanged(nameof(IconSequences));
-        }
-        if (HighResIcon != other.HighResIcon)
-        {
-            HighResIcon = other.HighResIcon;
-            OnPropertyChanged(nameof(HighResIcon));
-        }
-        if (HasIcon != other.HasIcon)
-        {
-            HasIcon = other.HasIcon;
-            OnPropertyChanged(nameof(HasIcon));
-        }
-    }
 }

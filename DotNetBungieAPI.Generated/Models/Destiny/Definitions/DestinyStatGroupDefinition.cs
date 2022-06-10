@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     If you don't want to do these calculations on your own, fear not: pulling live data from the BNet endpoints will return display stat values pre-computed and ready for you to use. I highly recommend this approach, saves a lot of time and also accounts for certain stat modifiers that can't easily be accounted for without live data (such as stat modifiers on Talent Grids and Socket Plugs)
 /// </summary>
-public class DestinyStatGroupDefinition : IDeepEquatable<DestinyStatGroupDefinition>
+public class DestinyStatGroupDefinition
 {
     /// <summary>
     ///     The maximum possible value that any stat in this group can be transformed into.
@@ -58,64 +58,4 @@ public class DestinyStatGroupDefinition : IDeepEquatable<DestinyStatGroupDefinit
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyStatGroupDefinition? other)
-    {
-        return other is not null &&
-               MaximumValue == other.MaximumValue &&
-               UiPosition == other.UiPosition &&
-               ScaledStats.DeepEqualsList(other.ScaledStats) &&
-               Overrides.DeepEqualsDictionary(other.Overrides) &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyStatGroupDefinition? other)
-    {
-        if (other is null) return;
-        if (MaximumValue != other.MaximumValue)
-        {
-            MaximumValue = other.MaximumValue;
-            OnPropertyChanged(nameof(MaximumValue));
-        }
-        if (UiPosition != other.UiPosition)
-        {
-            UiPosition = other.UiPosition;
-            OnPropertyChanged(nameof(UiPosition));
-        }
-        if (!ScaledStats.DeepEqualsList(other.ScaledStats))
-        {
-            ScaledStats = other.ScaledStats;
-            OnPropertyChanged(nameof(ScaledStats));
-        }
-        if (!Overrides.DeepEqualsDictionary(other.Overrides))
-        {
-            Overrides = other.Overrides;
-            OnPropertyChanged(nameof(Overrides));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

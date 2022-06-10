@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Responses;
 
-public class DestinyProfileUserInfoCard : IDeepEquatable<DestinyProfileUserInfoCard>
+public class DestinyProfileUserInfoCard
 {
     [JsonPropertyName("dateLastPlayed")]
     public DateTime DateLastPlayed { get; set; }
@@ -23,7 +23,7 @@ public class DestinyProfileUserInfoCard : IDeepEquatable<DestinyProfileUserInfoC
     ///      This is only available if you are requesting yourself.
     /// </summary>
     [JsonPropertyName("platformSilver")]
-    public Destiny.Components.Inventory.DestinyPlatformSilverComponent PlatformSilver { get; set; }
+    public object PlatformSilver { get; set; }
 
     /// <summary>
     ///     If this profile is not in a cross save pairing, this will return the game versions that we believe this profile has access to.
@@ -33,7 +33,7 @@ public class DestinyProfileUserInfoCard : IDeepEquatable<DestinyProfileUserInfoC
     ///      If we ever can get this data, this field will be deprecated and replaced with data on the DestinyLinkedProfileResponse itself, with game versions per linked Platform. But since we can't get that, we have this as a stop-gap measure for getting the data in the only situation that we currently need it.
     /// </summary>
     [JsonPropertyName("unpairedGameVersions")]
-    public int? UnpairedGameVersions { get; set; }
+    public int UnpairedGameVersions { get; set; }
 
     /// <summary>
     ///     A platform specific additional display name - ex: psn Real Name, bnet Unique Name, etc.
@@ -95,113 +95,5 @@ public class DestinyProfileUserInfoCard : IDeepEquatable<DestinyProfileUserInfoC
     ///     The bungie global display name code, if set.
     /// </summary>
     [JsonPropertyName("bungieGlobalDisplayNameCode")]
-    public short? BungieGlobalDisplayNameCode { get; set; }
-
-    public bool DeepEquals(DestinyProfileUserInfoCard? other)
-    {
-        return other is not null &&
-               DateLastPlayed == other.DateLastPlayed &&
-               IsOverridden == other.IsOverridden &&
-               IsCrossSavePrimary == other.IsCrossSavePrimary &&
-               (PlatformSilver is not null ? PlatformSilver.DeepEquals(other.PlatformSilver) : other.PlatformSilver is null) &&
-               UnpairedGameVersions == other.UnpairedGameVersions &&
-               SupplementalDisplayName == other.SupplementalDisplayName &&
-               IconPath == other.IconPath &&
-               CrossSaveOverride == other.CrossSaveOverride &&
-               ApplicableMembershipTypes.DeepEqualsListNaive(other.ApplicableMembershipTypes) &&
-               IsPublic == other.IsPublic &&
-               MembershipType == other.MembershipType &&
-               MembershipId == other.MembershipId &&
-               DisplayName == other.DisplayName &&
-               BungieGlobalDisplayName == other.BungieGlobalDisplayName &&
-               BungieGlobalDisplayNameCode == other.BungieGlobalDisplayNameCode;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyProfileUserInfoCard? other)
-    {
-        if (other is null) return;
-        if (DateLastPlayed != other.DateLastPlayed)
-        {
-            DateLastPlayed = other.DateLastPlayed;
-            OnPropertyChanged(nameof(DateLastPlayed));
-        }
-        if (IsOverridden != other.IsOverridden)
-        {
-            IsOverridden = other.IsOverridden;
-            OnPropertyChanged(nameof(IsOverridden));
-        }
-        if (IsCrossSavePrimary != other.IsCrossSavePrimary)
-        {
-            IsCrossSavePrimary = other.IsCrossSavePrimary;
-            OnPropertyChanged(nameof(IsCrossSavePrimary));
-        }
-        if (!PlatformSilver.DeepEquals(other.PlatformSilver))
-        {
-            PlatformSilver.Update(other.PlatformSilver);
-            OnPropertyChanged(nameof(PlatformSilver));
-        }
-        if (UnpairedGameVersions != other.UnpairedGameVersions)
-        {
-            UnpairedGameVersions = other.UnpairedGameVersions;
-            OnPropertyChanged(nameof(UnpairedGameVersions));
-        }
-        if (SupplementalDisplayName != other.SupplementalDisplayName)
-        {
-            SupplementalDisplayName = other.SupplementalDisplayName;
-            OnPropertyChanged(nameof(SupplementalDisplayName));
-        }
-        if (IconPath != other.IconPath)
-        {
-            IconPath = other.IconPath;
-            OnPropertyChanged(nameof(IconPath));
-        }
-        if (CrossSaveOverride != other.CrossSaveOverride)
-        {
-            CrossSaveOverride = other.CrossSaveOverride;
-            OnPropertyChanged(nameof(CrossSaveOverride));
-        }
-        if (!ApplicableMembershipTypes.DeepEqualsListNaive(other.ApplicableMembershipTypes))
-        {
-            ApplicableMembershipTypes = other.ApplicableMembershipTypes;
-            OnPropertyChanged(nameof(ApplicableMembershipTypes));
-        }
-        if (IsPublic != other.IsPublic)
-        {
-            IsPublic = other.IsPublic;
-            OnPropertyChanged(nameof(IsPublic));
-        }
-        if (MembershipType != other.MembershipType)
-        {
-            MembershipType = other.MembershipType;
-            OnPropertyChanged(nameof(MembershipType));
-        }
-        if (MembershipId != other.MembershipId)
-        {
-            MembershipId = other.MembershipId;
-            OnPropertyChanged(nameof(MembershipId));
-        }
-        if (DisplayName != other.DisplayName)
-        {
-            DisplayName = other.DisplayName;
-            OnPropertyChanged(nameof(DisplayName));
-        }
-        if (BungieGlobalDisplayName != other.BungieGlobalDisplayName)
-        {
-            BungieGlobalDisplayName = other.BungieGlobalDisplayName;
-            OnPropertyChanged(nameof(BungieGlobalDisplayName));
-        }
-        if (BungieGlobalDisplayNameCode != other.BungieGlobalDisplayNameCode)
-        {
-            BungieGlobalDisplayNameCode = other.BungieGlobalDisplayNameCode;
-            OnPropertyChanged(nameof(BungieGlobalDisplayNameCode));
-        }
-    }
+    public short BungieGlobalDisplayNameCode { get; set; }
 }

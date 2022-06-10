@@ -3,13 +3,13 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Profiles;
 /// <summary>
 ///     The most essential summary information about a Profile (in Destiny 1, we called these "Accounts").
 /// </summary>
-public class DestinyProfileComponent : IDeepEquatable<DestinyProfileComponent>
+public class DestinyProfileComponent
 {
     /// <summary>
     ///     If you need to render the Profile (their platform name, icon, etc...) somewhere, this property contains that information.
     /// </summary>
     [JsonPropertyName("userInfo")]
-    public User.UserInfoCard UserInfo { get; set; }
+    public object UserInfo { get; set; }
 
     /// <summary>
     ///     The last time the user played with any character on this Profile.
@@ -45,71 +45,11 @@ public class DestinyProfileComponent : IDeepEquatable<DestinyProfileComponent>
     ///     If populated, this is a reference to the season that is currently active.
     /// </summary>
     [JsonPropertyName("currentSeasonHash")]
-    public uint? CurrentSeasonHash { get; set; }
+    public uint CurrentSeasonHash { get; set; }
 
     /// <summary>
     ///     If populated, this is the reward power cap for the current season.
     /// </summary>
     [JsonPropertyName("currentSeasonRewardPowerCap")]
-    public int? CurrentSeasonRewardPowerCap { get; set; }
-
-    public bool DeepEquals(DestinyProfileComponent? other)
-    {
-        return other is not null &&
-               (UserInfo is not null ? UserInfo.DeepEquals(other.UserInfo) : other.UserInfo is null) &&
-               DateLastPlayed == other.DateLastPlayed &&
-               VersionsOwned == other.VersionsOwned &&
-               CharacterIds.DeepEqualsListNaive(other.CharacterIds) &&
-               SeasonHashes.DeepEqualsListNaive(other.SeasonHashes) &&
-               CurrentSeasonHash == other.CurrentSeasonHash &&
-               CurrentSeasonRewardPowerCap == other.CurrentSeasonRewardPowerCap;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyProfileComponent? other)
-    {
-        if (other is null) return;
-        if (!UserInfo.DeepEquals(other.UserInfo))
-        {
-            UserInfo.Update(other.UserInfo);
-            OnPropertyChanged(nameof(UserInfo));
-        }
-        if (DateLastPlayed != other.DateLastPlayed)
-        {
-            DateLastPlayed = other.DateLastPlayed;
-            OnPropertyChanged(nameof(DateLastPlayed));
-        }
-        if (VersionsOwned != other.VersionsOwned)
-        {
-            VersionsOwned = other.VersionsOwned;
-            OnPropertyChanged(nameof(VersionsOwned));
-        }
-        if (!CharacterIds.DeepEqualsListNaive(other.CharacterIds))
-        {
-            CharacterIds = other.CharacterIds;
-            OnPropertyChanged(nameof(CharacterIds));
-        }
-        if (!SeasonHashes.DeepEqualsListNaive(other.SeasonHashes))
-        {
-            SeasonHashes = other.SeasonHashes;
-            OnPropertyChanged(nameof(SeasonHashes));
-        }
-        if (CurrentSeasonHash != other.CurrentSeasonHash)
-        {
-            CurrentSeasonHash = other.CurrentSeasonHash;
-            OnPropertyChanged(nameof(CurrentSeasonHash));
-        }
-        if (CurrentSeasonRewardPowerCap != other.CurrentSeasonRewardPowerCap)
-        {
-            CurrentSeasonRewardPowerCap = other.CurrentSeasonRewardPowerCap;
-            OnPropertyChanged(nameof(CurrentSeasonRewardPowerCap));
-        }
-    }
+    public int CurrentSeasonRewardPowerCap { get; set; }
 }

@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 /// <para />
 ///     Information we need to be able to return that data is defined here, along with Tier data to establish a relationship between a conceptual Activity and its difficulty levels and variants.
 /// </summary>
-public class DestinyMilestoneActivityDefinition : IDeepEquatable<DestinyMilestoneActivityDefinition>
+public class DestinyMilestoneActivityDefinition
 {
     /// <summary>
     ///     The "Conceptual" activity hash. Basically, we picked the lowest level activity and are treating it as the canonical definition of the activity for rendering purposes.
@@ -26,34 +26,4 @@ public class DestinyMilestoneActivityDefinition : IDeepEquatable<DestinyMileston
     /// </summary>
     [JsonPropertyName("variants")]
     public Dictionary<uint, Destiny.Definitions.Milestones.DestinyMilestoneActivityVariantDefinition> Variants { get; set; }
-
-    public bool DeepEquals(DestinyMilestoneActivityDefinition? other)
-    {
-        return other is not null &&
-               ConceptualActivityHash == other.ConceptualActivityHash &&
-               Variants.DeepEqualsDictionary(other.Variants);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyMilestoneActivityDefinition? other)
-    {
-        if (other is null) return;
-        if (ConceptualActivityHash != other.ConceptualActivityHash)
-        {
-            ConceptualActivityHash = other.ConceptualActivityHash;
-            OnPropertyChanged(nameof(ConceptualActivityHash));
-        }
-        if (!Variants.DeepEqualsDictionary(other.Variants))
-        {
-            Variants = other.Variants;
-            OnPropertyChanged(nameof(Variants));
-        }
-    }
 }

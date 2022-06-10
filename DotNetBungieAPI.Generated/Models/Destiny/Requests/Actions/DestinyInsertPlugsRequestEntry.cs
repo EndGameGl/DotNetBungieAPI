@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Requests.Actions;
 /// <para />
 ///     Note that, while you *can* point to a socket that represents infusion, you will receive an error if you attempt to do so. Come on guys, let's play nice.
 /// </summary>
-public class DestinyInsertPlugsRequestEntry : IDeepEquatable<DestinyInsertPlugsRequestEntry>
+public class DestinyInsertPlugsRequestEntry
 {
     /// <summary>
     ///     The index into the socket array, which identifies the specific socket being operated on. We also need to know the socketArrayType in order to uniquely identify the socket.
@@ -26,40 +26,4 @@ public class DestinyInsertPlugsRequestEntry : IDeepEquatable<DestinyInsertPlugsR
     /// </summary>
     [JsonPropertyName("plugItemHash")]
     public uint PlugItemHash { get; set; }
-
-    public bool DeepEquals(DestinyInsertPlugsRequestEntry? other)
-    {
-        return other is not null &&
-               SocketIndex == other.SocketIndex &&
-               SocketArrayType == other.SocketArrayType &&
-               PlugItemHash == other.PlugItemHash;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyInsertPlugsRequestEntry? other)
-    {
-        if (other is null) return;
-        if (SocketIndex != other.SocketIndex)
-        {
-            SocketIndex = other.SocketIndex;
-            OnPropertyChanged(nameof(SocketIndex));
-        }
-        if (SocketArrayType != other.SocketArrayType)
-        {
-            SocketArrayType = other.SocketArrayType;
-            OnPropertyChanged(nameof(SocketArrayType));
-        }
-        if (PlugItemHash != other.PlugItemHash)
-        {
-            PlugItemHash = other.PlugItemHash;
-            OnPropertyChanged(nameof(PlugItemHash));
-        }
-    }
 }

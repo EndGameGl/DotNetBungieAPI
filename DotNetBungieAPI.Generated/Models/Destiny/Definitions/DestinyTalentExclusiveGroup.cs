@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     As of Destiny 2, nodes can exist as part of "Exclusive Groups". These differ from exclusive sets in that, within the group, many nodes can be activated. But the act of activating any node in the group will cause "opposing" nodes (nodes in groups that are not allowed to be activated at the same time as this group) to deactivate.
 /// </summary>
-public class DestinyTalentExclusiveGroup : IDeepEquatable<DestinyTalentExclusiveGroup>
+public class DestinyTalentExclusiveGroup
 {
     /// <summary>
     ///     The identifier for this exclusive group. Only guaranteed unique within the talent grid, not globally.
@@ -15,7 +15,7 @@ public class DestinyTalentExclusiveGroup : IDeepEquatable<DestinyTalentExclusive
     ///     If this group has an associated piece of lore to show next to it, this will be the identifier for that DestinyLoreDefinition.
     /// </summary>
     [JsonPropertyName("loreHash")]
-    public uint? LoreHash { get; set; }
+    public uint LoreHash { get; set; }
 
     /// <summary>
     ///     A quick reference of the talent nodes that are part of this group, by their Talent Node hashes. (See DestinyTalentNodeDefinition.nodeHash)
@@ -34,52 +34,4 @@ public class DestinyTalentExclusiveGroup : IDeepEquatable<DestinyTalentExclusive
     /// </summary>
     [JsonPropertyName("opposingNodeHashes")]
     public List<uint> OpposingNodeHashes { get; set; }
-
-    public bool DeepEquals(DestinyTalentExclusiveGroup? other)
-    {
-        return other is not null &&
-               GroupHash == other.GroupHash &&
-               LoreHash == other.LoreHash &&
-               NodeHashes.DeepEqualsListNaive(other.NodeHashes) &&
-               OpposingGroupHashes.DeepEqualsListNaive(other.OpposingGroupHashes) &&
-               OpposingNodeHashes.DeepEqualsListNaive(other.OpposingNodeHashes);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyTalentExclusiveGroup? other)
-    {
-        if (other is null) return;
-        if (GroupHash != other.GroupHash)
-        {
-            GroupHash = other.GroupHash;
-            OnPropertyChanged(nameof(GroupHash));
-        }
-        if (LoreHash != other.LoreHash)
-        {
-            LoreHash = other.LoreHash;
-            OnPropertyChanged(nameof(LoreHash));
-        }
-        if (!NodeHashes.DeepEqualsListNaive(other.NodeHashes))
-        {
-            NodeHashes = other.NodeHashes;
-            OnPropertyChanged(nameof(NodeHashes));
-        }
-        if (!OpposingGroupHashes.DeepEqualsListNaive(other.OpposingGroupHashes))
-        {
-            OpposingGroupHashes = other.OpposingGroupHashes;
-            OnPropertyChanged(nameof(OpposingGroupHashes));
-        }
-        if (!OpposingNodeHashes.DeepEqualsListNaive(other.OpposingNodeHashes))
-        {
-            OpposingNodeHashes = other.OpposingNodeHashes;
-            OnPropertyChanged(nameof(OpposingNodeHashes));
-        }
-    }
 }

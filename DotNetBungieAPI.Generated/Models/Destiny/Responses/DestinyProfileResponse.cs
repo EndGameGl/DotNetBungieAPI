@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Responses;
 /// <summary>
 ///     The response for GetDestinyProfile, with components for character and item-level data.
 /// </summary>
-public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
+public class DestinyProfileResponse
 {
     /// <summary>
     ///     Recent, refundable purchases you have made from vendors. When will you use it? Couldn't say...
@@ -11,7 +11,7 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: VendorReceipts
     /// </summary>
     [JsonPropertyName("vendorReceipts")]
-    public SingleComponentResponseOfDestinyVendorReceiptsComponent VendorReceipts { get; set; }
+    public object VendorReceipts { get; set; }
 
     /// <summary>
     ///     The profile-level inventory of the Destiny Profile.
@@ -19,7 +19,7 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: ProfileInventories
     /// </summary>
     [JsonPropertyName("profileInventory")]
-    public SingleComponentResponseOfDestinyInventoryComponent ProfileInventory { get; set; }
+    public object ProfileInventory { get; set; }
 
     /// <summary>
     ///     The profile-level currencies owned by the Destiny Profile.
@@ -27,7 +27,7 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: ProfileCurrencies
     /// </summary>
     [JsonPropertyName("profileCurrencies")]
-    public SingleComponentResponseOfDestinyInventoryComponent ProfileCurrencies { get; set; }
+    public object ProfileCurrencies { get; set; }
 
     /// <summary>
     ///     The basic information about the Destiny Profile (formerly "Account").
@@ -35,7 +35,7 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: Profiles
     /// </summary>
     [JsonPropertyName("profile")]
-    public SingleComponentResponseOfDestinyProfileComponent Profile { get; set; }
+    public object Profile { get; set; }
 
     /// <summary>
     ///     Silver quantities for any platform on which this Profile plays destiny.
@@ -43,7 +43,7 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///      COMPONENT TYPE: PlatformSilver
     /// </summary>
     [JsonPropertyName("platformSilver")]
-    public SingleComponentResponseOfDestinyPlatformSilverComponent PlatformSilver { get; set; }
+    public object PlatformSilver { get; set; }
 
     /// <summary>
     ///     Items available from Kiosks that are available Profile-wide (i.e. across all characters)
@@ -53,7 +53,7 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: Kiosks
     /// </summary>
     [JsonPropertyName("profileKiosks")]
-    public SingleComponentResponseOfDestinyKiosksComponent ProfileKiosks { get; set; }
+    public object ProfileKiosks { get; set; }
 
     /// <summary>
     ///     When sockets refer to reusable Plug Sets (see DestinyPlugSetDefinition for more info), this is the set of plugs and their states that are profile-scoped.
@@ -63,7 +63,7 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: ItemSockets
     /// </summary>
     [JsonPropertyName("profilePlugSets")]
-    public SingleComponentResponseOfDestinyPlugSetsComponent ProfilePlugSets { get; set; }
+    public object ProfilePlugSets { get; set; }
 
     /// <summary>
     ///     When we have progression information - such as Checklists - that may apply profile-wide, it will be returned here rather than in the per-character progression data.
@@ -71,43 +71,43 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: ProfileProgression
     /// </summary>
     [JsonPropertyName("profileProgression")]
-    public SingleComponentResponseOfDestinyProfileProgressionComponent ProfileProgression { get; set; }
+    public object ProfileProgression { get; set; }
 
     /// <summary>
     ///     COMPONENT TYPE: PresentationNodes
     /// </summary>
     [JsonPropertyName("profilePresentationNodes")]
-    public SingleComponentResponseOfDestinyPresentationNodesComponent ProfilePresentationNodes { get; set; }
+    public object ProfilePresentationNodes { get; set; }
 
     /// <summary>
     ///     COMPONENT TYPE: Records
     /// </summary>
     [JsonPropertyName("profileRecords")]
-    public SingleComponentResponseOfDestinyProfileRecordsComponent ProfileRecords { get; set; }
+    public object ProfileRecords { get; set; }
 
     /// <summary>
     ///     COMPONENT TYPE: Collectibles
     /// </summary>
     [JsonPropertyName("profileCollectibles")]
-    public SingleComponentResponseOfDestinyProfileCollectiblesComponent ProfileCollectibles { get; set; }
+    public object ProfileCollectibles { get; set; }
 
     /// <summary>
     ///     COMPONENT TYPE: Transitory
     /// </summary>
     [JsonPropertyName("profileTransitoryData")]
-    public SingleComponentResponseOfDestinyProfileTransitoryComponent ProfileTransitoryData { get; set; }
+    public object ProfileTransitoryData { get; set; }
 
     /// <summary>
     ///     COMPONENT TYPE: Metrics
     /// </summary>
     [JsonPropertyName("metrics")]
-    public SingleComponentResponseOfDestinyMetricsComponent Metrics { get; set; }
+    public object Metrics { get; set; }
 
     /// <summary>
     ///     COMPONENT TYPE: StringVariables
     /// </summary>
     [JsonPropertyName("profileStringVariables")]
-    public SingleComponentResponseOfDestinyStringVariablesComponent ProfileStringVariables { get; set; }
+    public object ProfileStringVariables { get; set; }
 
     /// <summary>
     ///     Basic information about each character, keyed by the CharacterId.
@@ -115,7 +115,7 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: Characters
     /// </summary>
     [JsonPropertyName("characters")]
-    public DictionaryComponentResponseOfint64AndDestinyCharacterComponent Characters { get; set; }
+    public object Characters { get; set; }
 
     /// <summary>
     ///     The character-level non-equipped inventory items, keyed by the Character's Id.
@@ -123,7 +123,7 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: CharacterInventories
     /// </summary>
     [JsonPropertyName("characterInventories")]
-    public DictionaryComponentResponseOfint64AndDestinyInventoryComponent CharacterInventories { get; set; }
+    public object CharacterInventories { get; set; }
 
     /// <summary>
     ///     Character-level progression data, keyed by the Character's Id.
@@ -131,7 +131,7 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: CharacterProgressions
     /// </summary>
     [JsonPropertyName("characterProgressions")]
-    public DictionaryComponentResponseOfint64AndDestinyCharacterProgressionComponent CharacterProgressions { get; set; }
+    public object CharacterProgressions { get; set; }
 
     /// <summary>
     ///     Character rendering data - a minimal set of info needed to render a character in 3D - keyed by the Character's Id.
@@ -139,7 +139,7 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: CharacterRenderData
     /// </summary>
     [JsonPropertyName("characterRenderData")]
-    public DictionaryComponentResponseOfint64AndDestinyCharacterRenderComponent CharacterRenderData { get; set; }
+    public object CharacterRenderData { get; set; }
 
     /// <summary>
     ///     Character activity data - the activities available to this character and its status, keyed by the Character's Id.
@@ -147,7 +147,7 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: CharacterActivities
     /// </summary>
     [JsonPropertyName("characterActivities")]
-    public DictionaryComponentResponseOfint64AndDestinyCharacterActivitiesComponent CharacterActivities { get; set; }
+    public object CharacterActivities { get; set; }
 
     /// <summary>
     ///     The character's equipped items, keyed by the Character's Id.
@@ -155,7 +155,7 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: CharacterEquipment
     /// </summary>
     [JsonPropertyName("characterEquipment")]
-    public DictionaryComponentResponseOfint64AndDestinyInventoryComponent CharacterEquipment { get; set; }
+    public object CharacterEquipment { get; set; }
 
     /// <summary>
     ///     Items available from Kiosks that are available to a specific character as opposed to the account as a whole. It must be combined with data from the profileKiosks property to get a full picture of the character's available items to check out of a kiosk.
@@ -165,7 +165,7 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: Kiosks
     /// </summary>
     [JsonPropertyName("characterKiosks")]
-    public DictionaryComponentResponseOfint64AndDestinyKiosksComponent CharacterKiosks { get; set; }
+    public object CharacterKiosks { get; set; }
 
     /// <summary>
     ///     When sockets refer to reusable Plug Sets (see DestinyPlugSetDefinition for more info), this is the set of plugs and their states, per character, that are character-scoped.
@@ -175,7 +175,7 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: ItemSockets
     /// </summary>
     [JsonPropertyName("characterPlugSets")]
-    public DictionaryComponentResponseOfint64AndDestinyPlugSetsComponent CharacterPlugSets { get; set; }
+    public object CharacterPlugSets { get; set; }
 
     /// <summary>
     ///     Do you ever get the feeling that a system was designed *too* flexibly? That it can be used in so many different ways that you end up being unable to provide an easy to use abstraction for the mess that's happening under the surface?
@@ -199,31 +199,31 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: PresentationNodes
     /// </summary>
     [JsonPropertyName("characterPresentationNodes")]
-    public DictionaryComponentResponseOfint64AndDestinyPresentationNodesComponent CharacterPresentationNodes { get; set; }
+    public object CharacterPresentationNodes { get; set; }
 
     /// <summary>
     ///     COMPONENT TYPE: Records
     /// </summary>
     [JsonPropertyName("characterRecords")]
-    public DictionaryComponentResponseOfint64AndDestinyCharacterRecordsComponent CharacterRecords { get; set; }
+    public object CharacterRecords { get; set; }
 
     /// <summary>
     ///     COMPONENT TYPE: Collectibles
     /// </summary>
     [JsonPropertyName("characterCollectibles")]
-    public DictionaryComponentResponseOfint64AndDestinyCollectiblesComponent CharacterCollectibles { get; set; }
+    public object CharacterCollectibles { get; set; }
 
     /// <summary>
     ///     COMPONENT TYPE: StringVariables
     /// </summary>
     [JsonPropertyName("characterStringVariables")]
-    public DictionaryComponentResponseOfint64AndDestinyStringVariablesComponent CharacterStringVariables { get; set; }
+    public object CharacterStringVariables { get; set; }
 
     /// <summary>
     ///     COMPONENT TYPE: Craftables
     /// </summary>
     [JsonPropertyName("characterCraftables")]
-    public DictionaryComponentResponseOfint64AndDestinyCraftablesComponent CharacterCraftables { get; set; }
+    public object CharacterCraftables { get; set; }
 
     /// <summary>
     ///     Information about instanced items across all returned characters, keyed by the item's instance ID.
@@ -231,7 +231,7 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]
     /// </summary>
     [JsonPropertyName("itemComponents")]
-    public DestinyItemComponentSetOfint64 ItemComponents { get; set; }
+    public object ItemComponents { get; set; }
 
     /// <summary>
     ///     A "lookup" convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.
@@ -239,203 +239,5 @@ public class DestinyProfileResponse : IDeepEquatable<DestinyProfileResponse>
     ///     COMPONENT TYPE: CurrencyLookups
     /// </summary>
     [JsonPropertyName("characterCurrencyLookups")]
-    public DictionaryComponentResponseOfint64AndDestinyCurrenciesComponent CharacterCurrencyLookups { get; set; }
-
-    public bool DeepEquals(DestinyProfileResponse? other)
-    {
-        return other is not null &&
-               (VendorReceipts is not null ? VendorReceipts.DeepEquals(other.VendorReceipts) : other.VendorReceipts is null) &&
-               (ProfileInventory is not null ? ProfileInventory.DeepEquals(other.ProfileInventory) : other.ProfileInventory is null) &&
-               (ProfileCurrencies is not null ? ProfileCurrencies.DeepEquals(other.ProfileCurrencies) : other.ProfileCurrencies is null) &&
-               (Profile is not null ? Profile.DeepEquals(other.Profile) : other.Profile is null) &&
-               (PlatformSilver is not null ? PlatformSilver.DeepEquals(other.PlatformSilver) : other.PlatformSilver is null) &&
-               (ProfileKiosks is not null ? ProfileKiosks.DeepEquals(other.ProfileKiosks) : other.ProfileKiosks is null) &&
-               (ProfilePlugSets is not null ? ProfilePlugSets.DeepEquals(other.ProfilePlugSets) : other.ProfilePlugSets is null) &&
-               (ProfileProgression is not null ? ProfileProgression.DeepEquals(other.ProfileProgression) : other.ProfileProgression is null) &&
-               (ProfilePresentationNodes is not null ? ProfilePresentationNodes.DeepEquals(other.ProfilePresentationNodes) : other.ProfilePresentationNodes is null) &&
-               (ProfileRecords is not null ? ProfileRecords.DeepEquals(other.ProfileRecords) : other.ProfileRecords is null) &&
-               (ProfileCollectibles is not null ? ProfileCollectibles.DeepEquals(other.ProfileCollectibles) : other.ProfileCollectibles is null) &&
-               (ProfileTransitoryData is not null ? ProfileTransitoryData.DeepEquals(other.ProfileTransitoryData) : other.ProfileTransitoryData is null) &&
-               (Metrics is not null ? Metrics.DeepEquals(other.Metrics) : other.Metrics is null) &&
-               (ProfileStringVariables is not null ? ProfileStringVariables.DeepEquals(other.ProfileStringVariables) : other.ProfileStringVariables is null) &&
-               (Characters is not null ? Characters.DeepEquals(other.Characters) : other.Characters is null) &&
-               (CharacterInventories is not null ? CharacterInventories.DeepEquals(other.CharacterInventories) : other.CharacterInventories is null) &&
-               (CharacterProgressions is not null ? CharacterProgressions.DeepEquals(other.CharacterProgressions) : other.CharacterProgressions is null) &&
-               (CharacterRenderData is not null ? CharacterRenderData.DeepEquals(other.CharacterRenderData) : other.CharacterRenderData is null) &&
-               (CharacterActivities is not null ? CharacterActivities.DeepEquals(other.CharacterActivities) : other.CharacterActivities is null) &&
-               (CharacterEquipment is not null ? CharacterEquipment.DeepEquals(other.CharacterEquipment) : other.CharacterEquipment is null) &&
-               (CharacterKiosks is not null ? CharacterKiosks.DeepEquals(other.CharacterKiosks) : other.CharacterKiosks is null) &&
-               (CharacterPlugSets is not null ? CharacterPlugSets.DeepEquals(other.CharacterPlugSets) : other.CharacterPlugSets is null) &&
-               CharacterUninstancedItemComponents.DeepEqualsDictionary(other.CharacterUninstancedItemComponents) &&
-               (CharacterPresentationNodes is not null ? CharacterPresentationNodes.DeepEquals(other.CharacterPresentationNodes) : other.CharacterPresentationNodes is null) &&
-               (CharacterRecords is not null ? CharacterRecords.DeepEquals(other.CharacterRecords) : other.CharacterRecords is null) &&
-               (CharacterCollectibles is not null ? CharacterCollectibles.DeepEquals(other.CharacterCollectibles) : other.CharacterCollectibles is null) &&
-               (CharacterStringVariables is not null ? CharacterStringVariables.DeepEquals(other.CharacterStringVariables) : other.CharacterStringVariables is null) &&
-               (CharacterCraftables is not null ? CharacterCraftables.DeepEquals(other.CharacterCraftables) : other.CharacterCraftables is null) &&
-               (ItemComponents is not null ? ItemComponents.DeepEquals(other.ItemComponents) : other.ItemComponents is null) &&
-               (CharacterCurrencyLookups is not null ? CharacterCurrencyLookups.DeepEquals(other.CharacterCurrencyLookups) : other.CharacterCurrencyLookups is null);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyProfileResponse? other)
-    {
-        if (other is null) return;
-        if (!VendorReceipts.DeepEquals(other.VendorReceipts))
-        {
-            VendorReceipts.Update(other.VendorReceipts);
-            OnPropertyChanged(nameof(VendorReceipts));
-        }
-        if (!ProfileInventory.DeepEquals(other.ProfileInventory))
-        {
-            ProfileInventory.Update(other.ProfileInventory);
-            OnPropertyChanged(nameof(ProfileInventory));
-        }
-        if (!ProfileCurrencies.DeepEquals(other.ProfileCurrencies))
-        {
-            ProfileCurrencies.Update(other.ProfileCurrencies);
-            OnPropertyChanged(nameof(ProfileCurrencies));
-        }
-        if (!Profile.DeepEquals(other.Profile))
-        {
-            Profile.Update(other.Profile);
-            OnPropertyChanged(nameof(Profile));
-        }
-        if (!PlatformSilver.DeepEquals(other.PlatformSilver))
-        {
-            PlatformSilver.Update(other.PlatformSilver);
-            OnPropertyChanged(nameof(PlatformSilver));
-        }
-        if (!ProfileKiosks.DeepEquals(other.ProfileKiosks))
-        {
-            ProfileKiosks.Update(other.ProfileKiosks);
-            OnPropertyChanged(nameof(ProfileKiosks));
-        }
-        if (!ProfilePlugSets.DeepEquals(other.ProfilePlugSets))
-        {
-            ProfilePlugSets.Update(other.ProfilePlugSets);
-            OnPropertyChanged(nameof(ProfilePlugSets));
-        }
-        if (!ProfileProgression.DeepEquals(other.ProfileProgression))
-        {
-            ProfileProgression.Update(other.ProfileProgression);
-            OnPropertyChanged(nameof(ProfileProgression));
-        }
-        if (!ProfilePresentationNodes.DeepEquals(other.ProfilePresentationNodes))
-        {
-            ProfilePresentationNodes.Update(other.ProfilePresentationNodes);
-            OnPropertyChanged(nameof(ProfilePresentationNodes));
-        }
-        if (!ProfileRecords.DeepEquals(other.ProfileRecords))
-        {
-            ProfileRecords.Update(other.ProfileRecords);
-            OnPropertyChanged(nameof(ProfileRecords));
-        }
-        if (!ProfileCollectibles.DeepEquals(other.ProfileCollectibles))
-        {
-            ProfileCollectibles.Update(other.ProfileCollectibles);
-            OnPropertyChanged(nameof(ProfileCollectibles));
-        }
-        if (!ProfileTransitoryData.DeepEquals(other.ProfileTransitoryData))
-        {
-            ProfileTransitoryData.Update(other.ProfileTransitoryData);
-            OnPropertyChanged(nameof(ProfileTransitoryData));
-        }
-        if (!Metrics.DeepEquals(other.Metrics))
-        {
-            Metrics.Update(other.Metrics);
-            OnPropertyChanged(nameof(Metrics));
-        }
-        if (!ProfileStringVariables.DeepEquals(other.ProfileStringVariables))
-        {
-            ProfileStringVariables.Update(other.ProfileStringVariables);
-            OnPropertyChanged(nameof(ProfileStringVariables));
-        }
-        if (!Characters.DeepEquals(other.Characters))
-        {
-            Characters.Update(other.Characters);
-            OnPropertyChanged(nameof(Characters));
-        }
-        if (!CharacterInventories.DeepEquals(other.CharacterInventories))
-        {
-            CharacterInventories.Update(other.CharacterInventories);
-            OnPropertyChanged(nameof(CharacterInventories));
-        }
-        if (!CharacterProgressions.DeepEquals(other.CharacterProgressions))
-        {
-            CharacterProgressions.Update(other.CharacterProgressions);
-            OnPropertyChanged(nameof(CharacterProgressions));
-        }
-        if (!CharacterRenderData.DeepEquals(other.CharacterRenderData))
-        {
-            CharacterRenderData.Update(other.CharacterRenderData);
-            OnPropertyChanged(nameof(CharacterRenderData));
-        }
-        if (!CharacterActivities.DeepEquals(other.CharacterActivities))
-        {
-            CharacterActivities.Update(other.CharacterActivities);
-            OnPropertyChanged(nameof(CharacterActivities));
-        }
-        if (!CharacterEquipment.DeepEquals(other.CharacterEquipment))
-        {
-            CharacterEquipment.Update(other.CharacterEquipment);
-            OnPropertyChanged(nameof(CharacterEquipment));
-        }
-        if (!CharacterKiosks.DeepEquals(other.CharacterKiosks))
-        {
-            CharacterKiosks.Update(other.CharacterKiosks);
-            OnPropertyChanged(nameof(CharacterKiosks));
-        }
-        if (!CharacterPlugSets.DeepEquals(other.CharacterPlugSets))
-        {
-            CharacterPlugSets.Update(other.CharacterPlugSets);
-            OnPropertyChanged(nameof(CharacterPlugSets));
-        }
-        if (!CharacterUninstancedItemComponents.DeepEqualsDictionary(other.CharacterUninstancedItemComponents))
-        {
-            CharacterUninstancedItemComponents = other.CharacterUninstancedItemComponents;
-            OnPropertyChanged(nameof(CharacterUninstancedItemComponents));
-        }
-        if (!CharacterPresentationNodes.DeepEquals(other.CharacterPresentationNodes))
-        {
-            CharacterPresentationNodes.Update(other.CharacterPresentationNodes);
-            OnPropertyChanged(nameof(CharacterPresentationNodes));
-        }
-        if (!CharacterRecords.DeepEquals(other.CharacterRecords))
-        {
-            CharacterRecords.Update(other.CharacterRecords);
-            OnPropertyChanged(nameof(CharacterRecords));
-        }
-        if (!CharacterCollectibles.DeepEquals(other.CharacterCollectibles))
-        {
-            CharacterCollectibles.Update(other.CharacterCollectibles);
-            OnPropertyChanged(nameof(CharacterCollectibles));
-        }
-        if (!CharacterStringVariables.DeepEquals(other.CharacterStringVariables))
-        {
-            CharacterStringVariables.Update(other.CharacterStringVariables);
-            OnPropertyChanged(nameof(CharacterStringVariables));
-        }
-        if (!CharacterCraftables.DeepEquals(other.CharacterCraftables))
-        {
-            CharacterCraftables.Update(other.CharacterCraftables);
-            OnPropertyChanged(nameof(CharacterCraftables));
-        }
-        if (!ItemComponents.DeepEquals(other.ItemComponents))
-        {
-            ItemComponents.Update(other.ItemComponents);
-            OnPropertyChanged(nameof(ItemComponents));
-        }
-        if (!CharacterCurrencyLookups.DeepEquals(other.CharacterCurrencyLookups))
-        {
-            CharacterCurrencyLookups.Update(other.CharacterCurrencyLookups);
-            OnPropertyChanged(nameof(CharacterCurrencyLookups));
-        }
-    }
+    public object CharacterCurrencyLookups { get; set; }
 }

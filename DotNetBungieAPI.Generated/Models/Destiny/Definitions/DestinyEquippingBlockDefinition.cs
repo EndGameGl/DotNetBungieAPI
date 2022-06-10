@@ -3,13 +3,13 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Items that can be equipped define this block. It contains information we need to understand how and when the item can be equipped.
 /// </summary>
-public class DestinyEquippingBlockDefinition : IDeepEquatable<DestinyEquippingBlockDefinition>
+public class DestinyEquippingBlockDefinition
 {
     /// <summary>
     ///     If the item is part of a gearset, this is a reference to that gearset item.
     /// </summary>
     [JsonPropertyName("gearsetItemHash")]
-    public uint? GearsetItemHash { get; set; }
+    public uint GearsetItemHash { get; set; }
 
     /// <summary>
     ///     If defined, this is the label used to check if the item has other items of matching types already equipped. 
@@ -50,64 +50,4 @@ public class DestinyEquippingBlockDefinition : IDeepEquatable<DestinyEquippingBl
     /// </summary>
     [JsonPropertyName("displayStrings")]
     public List<string> DisplayStrings { get; set; }
-
-    public bool DeepEquals(DestinyEquippingBlockDefinition? other)
-    {
-        return other is not null &&
-               GearsetItemHash == other.GearsetItemHash &&
-               UniqueLabel == other.UniqueLabel &&
-               UniqueLabelHash == other.UniqueLabelHash &&
-               EquipmentSlotTypeHash == other.EquipmentSlotTypeHash &&
-               Attributes == other.Attributes &&
-               AmmoType == other.AmmoType &&
-               DisplayStrings.DeepEqualsListNaive(other.DisplayStrings);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyEquippingBlockDefinition? other)
-    {
-        if (other is null) return;
-        if (GearsetItemHash != other.GearsetItemHash)
-        {
-            GearsetItemHash = other.GearsetItemHash;
-            OnPropertyChanged(nameof(GearsetItemHash));
-        }
-        if (UniqueLabel != other.UniqueLabel)
-        {
-            UniqueLabel = other.UniqueLabel;
-            OnPropertyChanged(nameof(UniqueLabel));
-        }
-        if (UniqueLabelHash != other.UniqueLabelHash)
-        {
-            UniqueLabelHash = other.UniqueLabelHash;
-            OnPropertyChanged(nameof(UniqueLabelHash));
-        }
-        if (EquipmentSlotTypeHash != other.EquipmentSlotTypeHash)
-        {
-            EquipmentSlotTypeHash = other.EquipmentSlotTypeHash;
-            OnPropertyChanged(nameof(EquipmentSlotTypeHash));
-        }
-        if (Attributes != other.Attributes)
-        {
-            Attributes = other.Attributes;
-            OnPropertyChanged(nameof(Attributes));
-        }
-        if (AmmoType != other.AmmoType)
-        {
-            AmmoType = other.AmmoType;
-            OnPropertyChanged(nameof(AmmoType));
-        }
-        if (!DisplayStrings.DeepEqualsListNaive(other.DisplayStrings))
-        {
-            DisplayStrings = other.DisplayStrings;
-            OnPropertyChanged(nameof(DisplayStrings));
-        }
-    }
 }

@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Queries;
 
-public class SearchResult : IDeepEquatable<SearchResult>
+public class SearchResult
 {
     [JsonPropertyName("totalResults")]
     public int TotalResults { get; set; }
@@ -25,52 +25,4 @@ public class SearchResult : IDeepEquatable<SearchResult>
     /// </summary>
     [JsonPropertyName("useTotalResults")]
     public bool UseTotalResults { get; set; }
-
-    public bool DeepEquals(SearchResult? other)
-    {
-        return other is not null &&
-               TotalResults == other.TotalResults &&
-               HasMore == other.HasMore &&
-               (Query is not null ? Query.DeepEquals(other.Query) : other.Query is null) &&
-               ReplacementContinuationToken == other.ReplacementContinuationToken &&
-               UseTotalResults == other.UseTotalResults;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(SearchResult? other)
-    {
-        if (other is null) return;
-        if (TotalResults != other.TotalResults)
-        {
-            TotalResults = other.TotalResults;
-            OnPropertyChanged(nameof(TotalResults));
-        }
-        if (HasMore != other.HasMore)
-        {
-            HasMore = other.HasMore;
-            OnPropertyChanged(nameof(HasMore));
-        }
-        if (!Query.DeepEquals(other.Query))
-        {
-            Query.Update(other.Query);
-            OnPropertyChanged(nameof(Query));
-        }
-        if (ReplacementContinuationToken != other.ReplacementContinuationToken)
-        {
-            ReplacementContinuationToken = other.ReplacementContinuationToken;
-            OnPropertyChanged(nameof(ReplacementContinuationToken));
-        }
-        if (UseTotalResults != other.UseTotalResults)
-        {
-            UseTotalResults = other.UseTotalResults;
-            OnPropertyChanged(nameof(UseTotalResults));
-        }
-    }
 }

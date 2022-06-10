@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models;
 
-public class SearchResultOfGroupV2Card : IDeepEquatable<SearchResultOfGroupV2Card>
+public class SearchResultOfGroupV2Card
 {
     [JsonPropertyName("results")]
     public List<GroupsV2.GroupV2Card> Results { get; set; }
@@ -28,58 +28,4 @@ public class SearchResultOfGroupV2Card : IDeepEquatable<SearchResultOfGroupV2Car
     /// </summary>
     [JsonPropertyName("useTotalResults")]
     public bool UseTotalResults { get; set; }
-
-    public bool DeepEquals(SearchResultOfGroupV2Card? other)
-    {
-        return other is not null &&
-               Results.DeepEqualsList(other.Results) &&
-               TotalResults == other.TotalResults &&
-               HasMore == other.HasMore &&
-               (Query is not null ? Query.DeepEquals(other.Query) : other.Query is null) &&
-               ReplacementContinuationToken == other.ReplacementContinuationToken &&
-               UseTotalResults == other.UseTotalResults;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(SearchResultOfGroupV2Card? other)
-    {
-        if (other is null) return;
-        if (!Results.DeepEqualsList(other.Results))
-        {
-            Results = other.Results;
-            OnPropertyChanged(nameof(Results));
-        }
-        if (TotalResults != other.TotalResults)
-        {
-            TotalResults = other.TotalResults;
-            OnPropertyChanged(nameof(TotalResults));
-        }
-        if (HasMore != other.HasMore)
-        {
-            HasMore = other.HasMore;
-            OnPropertyChanged(nameof(HasMore));
-        }
-        if (!Query.DeepEquals(other.Query))
-        {
-            Query.Update(other.Query);
-            OnPropertyChanged(nameof(Query));
-        }
-        if (ReplacementContinuationToken != other.ReplacementContinuationToken)
-        {
-            ReplacementContinuationToken = other.ReplacementContinuationToken;
-            OnPropertyChanged(nameof(ReplacementContinuationToken));
-        }
-        if (UseTotalResults != other.UseTotalResults)
-        {
-            UseTotalResults = other.UseTotalResults;
-            OnPropertyChanged(nameof(UseTotalResults));
-        }
-    }
 }

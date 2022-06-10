@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     If an item has a related gearset, this is the list of items in that set, and an unlock expression that evaluates to a number representing the progress toward gearset completion (a very rare use for unlock expressions!)
 /// </summary>
-public class DestinyItemGearsetBlockDefinition : IDeepEquatable<DestinyItemGearsetBlockDefinition>
+public class DestinyItemGearsetBlockDefinition
 {
     /// <summary>
     ///     The maximum possible number of items that can be collected.
@@ -16,34 +16,4 @@ public class DestinyItemGearsetBlockDefinition : IDeepEquatable<DestinyItemGears
     /// </summary>
     [JsonPropertyName("itemList")]
     public List<uint> ItemList { get; set; }
-
-    public bool DeepEquals(DestinyItemGearsetBlockDefinition? other)
-    {
-        return other is not null &&
-               TrackingValueMax == other.TrackingValueMax &&
-               ItemList.DeepEqualsListNaive(other.ItemList);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemGearsetBlockDefinition? other)
-    {
-        if (other is null) return;
-        if (TrackingValueMax != other.TrackingValueMax)
-        {
-            TrackingValueMax = other.TrackingValueMax;
-            OnPropertyChanged(nameof(TrackingValueMax));
-        }
-        if (!ItemList.DeepEqualsListNaive(other.ItemList))
-        {
-            ItemList = other.ItemList;
-            OnPropertyChanged(nameof(ItemList));
-        }
-    }
 }

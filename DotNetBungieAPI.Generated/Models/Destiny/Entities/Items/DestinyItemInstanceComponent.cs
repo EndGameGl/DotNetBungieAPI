@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Items;
 /// <para />
 ///     You can tell from an item's definition whether it will be instanced or not by looking at the DestinyInventoryItemDefinition's definition.inventory.isInstanceItem property.
 /// </summary>
-public class DestinyItemInstanceComponent : IDeepEquatable<DestinyItemInstanceComponent>
+public class DestinyItemInstanceComponent
 {
     /// <summary>
     ///     If the item has a damage type, this is the item's current damage type.
@@ -19,13 +19,13 @@ public class DestinyItemInstanceComponent : IDeepEquatable<DestinyItemInstanceCo
     ///     The current damage type's hash, so you can look up localized info and icons for it.
     /// </summary>
     [JsonPropertyName("damageTypeHash")]
-    public uint? DamageTypeHash { get; set; }
+    public uint DamageTypeHash { get; set; }
 
     /// <summary>
     ///     The item stat that we consider to be "primary" for the item. For instance, this would be "Attack" for Weapons or "Defense" for armor.
     /// </summary>
     [JsonPropertyName("primaryStat")]
-    public Destiny.DestinyStat PrimaryStat { get; set; }
+    public object PrimaryStat { get; set; }
 
     /// <summary>
     ///     The Item's "Level" has the most significant bearing on its stats, such as Light and Power.
@@ -75,113 +75,17 @@ public class DestinyItemInstanceComponent : IDeepEquatable<DestinyItemInstanceCo
     ///     If populated, this item has a breaker type corresponding to the given value. See DestinyBreakerTypeDefinition for more details.
     /// </summary>
     [JsonPropertyName("breakerType")]
-    public int? BreakerType { get; set; }
+    public int BreakerType { get; set; }
 
     /// <summary>
     ///     If populated, this is the hash identifier for the item's breaker type. See DestinyBreakerTypeDefinition for more details.
     /// </summary>
     [JsonPropertyName("breakerTypeHash")]
-    public uint? BreakerTypeHash { get; set; }
+    public uint BreakerTypeHash { get; set; }
 
     /// <summary>
     ///     IF populated, this item supports Energy mechanics (i.e. Armor 2.0), and these are the current details of its energy type and available capacity to spend energy points.
     /// </summary>
     [JsonPropertyName("energy")]
-    public Destiny.Entities.Items.DestinyItemInstanceEnergy Energy { get; set; }
-
-    public bool DeepEquals(DestinyItemInstanceComponent? other)
-    {
-        return other is not null &&
-               DamageType == other.DamageType &&
-               DamageTypeHash == other.DamageTypeHash &&
-               (PrimaryStat is not null ? PrimaryStat.DeepEquals(other.PrimaryStat) : other.PrimaryStat is null) &&
-               ItemLevel == other.ItemLevel &&
-               Quality == other.Quality &&
-               IsEquipped == other.IsEquipped &&
-               CanEquip == other.CanEquip &&
-               EquipRequiredLevel == other.EquipRequiredLevel &&
-               UnlockHashesRequiredToEquip.DeepEqualsListNaive(other.UnlockHashesRequiredToEquip) &&
-               CannotEquipReason == other.CannotEquipReason &&
-               BreakerType == other.BreakerType &&
-               BreakerTypeHash == other.BreakerTypeHash &&
-               (Energy is not null ? Energy.DeepEquals(other.Energy) : other.Energy is null);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemInstanceComponent? other)
-    {
-        if (other is null) return;
-        if (DamageType != other.DamageType)
-        {
-            DamageType = other.DamageType;
-            OnPropertyChanged(nameof(DamageType));
-        }
-        if (DamageTypeHash != other.DamageTypeHash)
-        {
-            DamageTypeHash = other.DamageTypeHash;
-            OnPropertyChanged(nameof(DamageTypeHash));
-        }
-        if (!PrimaryStat.DeepEquals(other.PrimaryStat))
-        {
-            PrimaryStat.Update(other.PrimaryStat);
-            OnPropertyChanged(nameof(PrimaryStat));
-        }
-        if (ItemLevel != other.ItemLevel)
-        {
-            ItemLevel = other.ItemLevel;
-            OnPropertyChanged(nameof(ItemLevel));
-        }
-        if (Quality != other.Quality)
-        {
-            Quality = other.Quality;
-            OnPropertyChanged(nameof(Quality));
-        }
-        if (IsEquipped != other.IsEquipped)
-        {
-            IsEquipped = other.IsEquipped;
-            OnPropertyChanged(nameof(IsEquipped));
-        }
-        if (CanEquip != other.CanEquip)
-        {
-            CanEquip = other.CanEquip;
-            OnPropertyChanged(nameof(CanEquip));
-        }
-        if (EquipRequiredLevel != other.EquipRequiredLevel)
-        {
-            EquipRequiredLevel = other.EquipRequiredLevel;
-            OnPropertyChanged(nameof(EquipRequiredLevel));
-        }
-        if (!UnlockHashesRequiredToEquip.DeepEqualsListNaive(other.UnlockHashesRequiredToEquip))
-        {
-            UnlockHashesRequiredToEquip = other.UnlockHashesRequiredToEquip;
-            OnPropertyChanged(nameof(UnlockHashesRequiredToEquip));
-        }
-        if (CannotEquipReason != other.CannotEquipReason)
-        {
-            CannotEquipReason = other.CannotEquipReason;
-            OnPropertyChanged(nameof(CannotEquipReason));
-        }
-        if (BreakerType != other.BreakerType)
-        {
-            BreakerType = other.BreakerType;
-            OnPropertyChanged(nameof(BreakerType));
-        }
-        if (BreakerTypeHash != other.BreakerTypeHash)
-        {
-            BreakerTypeHash = other.BreakerTypeHash;
-            OnPropertyChanged(nameof(BreakerTypeHash));
-        }
-        if (!Energy.DeepEquals(other.Energy))
-        {
-            Energy.Update(other.Energy);
-            OnPropertyChanged(nameof(Energy));
-        }
-    }
+    public object Energy { get; set; }
 }

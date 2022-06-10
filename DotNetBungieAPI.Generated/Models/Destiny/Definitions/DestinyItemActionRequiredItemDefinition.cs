@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     The definition of an item and quantity required in a character's inventory in order to perform an action.
 /// </summary>
-public class DestinyItemActionRequiredItemDefinition : IDeepEquatable<DestinyItemActionRequiredItemDefinition>
+public class DestinyItemActionRequiredItemDefinition
 {
     /// <summary>
     ///     The minimum quantity of the item you have to have.
@@ -22,40 +22,4 @@ public class DestinyItemActionRequiredItemDefinition : IDeepEquatable<DestinyIte
     /// </summary>
     [JsonPropertyName("deleteOnAction")]
     public bool DeleteOnAction { get; set; }
-
-    public bool DeepEquals(DestinyItemActionRequiredItemDefinition? other)
-    {
-        return other is not null &&
-               Count == other.Count &&
-               ItemHash == other.ItemHash &&
-               DeleteOnAction == other.DeleteOnAction;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemActionRequiredItemDefinition? other)
-    {
-        if (other is null) return;
-        if (Count != other.Count)
-        {
-            Count = other.Count;
-            OnPropertyChanged(nameof(Count));
-        }
-        if (ItemHash != other.ItemHash)
-        {
-            ItemHash = other.ItemHash;
-            OnPropertyChanged(nameof(ItemHash));
-        }
-        if (DeleteOnAction != other.DeleteOnAction)
-        {
-            DeleteOnAction = other.DeleteOnAction;
-            OnPropertyChanged(nameof(DeleteOnAction));
-        }
-    }
 }

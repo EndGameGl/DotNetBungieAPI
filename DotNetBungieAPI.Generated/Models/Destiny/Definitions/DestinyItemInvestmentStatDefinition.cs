@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Because these won't match what you see in-game, consider carefully whether you really want to use these stats. I have left them in case someone can do something useful or interesting with the pre-processed statistics.
 /// </summary>
-public class DestinyItemInvestmentStatDefinition : IDeepEquatable<DestinyItemInvestmentStatDefinition>
+public class DestinyItemInvestmentStatDefinition
 {
     /// <summary>
     ///     The hash identifier for the DestinyStatDefinition defining this stat.
@@ -24,40 +24,4 @@ public class DestinyItemInvestmentStatDefinition : IDeepEquatable<DestinyItemInv
     /// </summary>
     [JsonPropertyName("isConditionallyActive")]
     public bool IsConditionallyActive { get; set; }
-
-    public bool DeepEquals(DestinyItemInvestmentStatDefinition? other)
-    {
-        return other is not null &&
-               StatTypeHash == other.StatTypeHash &&
-               Value == other.Value &&
-               IsConditionallyActive == other.IsConditionallyActive;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemInvestmentStatDefinition? other)
-    {
-        if (other is null) return;
-        if (StatTypeHash != other.StatTypeHash)
-        {
-            StatTypeHash = other.StatTypeHash;
-            OnPropertyChanged(nameof(StatTypeHash));
-        }
-        if (Value != other.Value)
-        {
-            Value = other.Value;
-            OnPropertyChanged(nameof(Value));
-        }
-        if (IsConditionallyActive != other.IsConditionallyActive)
-        {
-            IsConditionallyActive = other.IsConditionallyActive;
-            OnPropertyChanged(nameof(IsConditionallyActive));
-        }
-    }
 }

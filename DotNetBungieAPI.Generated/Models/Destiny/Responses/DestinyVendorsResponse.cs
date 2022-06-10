@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Responses;
 /// <summary>
 ///     A response containing all of the components for all requested vendors.
 /// </summary>
-public class DestinyVendorsResponse : IDeepEquatable<DestinyVendorsResponse>
+public class DestinyVendorsResponse
 {
     /// <summary>
     ///     For Vendors being returned, this will give you the information you need to group them and order them in the same way that the Bungie Companion app performs grouping. It will automatically be returned if you request the Vendors component.
@@ -11,7 +11,7 @@ public class DestinyVendorsResponse : IDeepEquatable<DestinyVendorsResponse>
     ///     COMPONENT TYPE: Vendors
     /// </summary>
     [JsonPropertyName("vendorGroups")]
-    public SingleComponentResponseOfDestinyVendorGroupComponent VendorGroups { get; set; }
+    public object VendorGroups { get; set; }
 
     /// <summary>
     ///     The base properties of the vendor. These are keyed by the Vendor Hash, so you will get one Vendor Component per vendor returned.
@@ -19,7 +19,7 @@ public class DestinyVendorsResponse : IDeepEquatable<DestinyVendorsResponse>
     ///     COMPONENT TYPE: Vendors
     /// </summary>
     [JsonPropertyName("vendors")]
-    public DictionaryComponentResponseOfuint32AndDestinyVendorComponent Vendors { get; set; }
+    public object Vendors { get; set; }
 
     /// <summary>
     ///     Categories that the vendor has available, and references to the sales therein. These are keyed by the Vendor Hash, so you will get one Categories Component per vendor returned.
@@ -27,7 +27,7 @@ public class DestinyVendorsResponse : IDeepEquatable<DestinyVendorsResponse>
     ///     COMPONENT TYPE: VendorCategories
     /// </summary>
     [JsonPropertyName("categories")]
-    public DictionaryComponentResponseOfuint32AndDestinyVendorCategoriesComponent Categories { get; set; }
+    public object Categories { get; set; }
 
     /// <summary>
     ///     Sales, keyed by the vendorItemIndex of the item being sold. These are keyed by the Vendor Hash, so you will get one Sale Item Set Component per vendor returned.
@@ -37,7 +37,7 @@ public class DestinyVendorsResponse : IDeepEquatable<DestinyVendorsResponse>
     ///     COMPONENT TYPE: VendorSales
     /// </summary>
     [JsonPropertyName("sales")]
-    public DictionaryComponentResponseOfuint32AndPersonalDestinyVendorSaleItemSetComponent Sales { get; set; }
+    public object Sales { get; set; }
 
     /// <summary>
     ///     The set of item detail components, one set of item components per Vendor. These are keyed by the Vendor Hash, so you will get one Item Component Set per vendor returned.
@@ -53,7 +53,7 @@ public class DestinyVendorsResponse : IDeepEquatable<DestinyVendorsResponse>
     ///     COMPONENT TYPE: CurrencyLookups
     /// </summary>
     [JsonPropertyName("currencyLookups")]
-    public SingleComponentResponseOfDestinyCurrenciesComponent CurrencyLookups { get; set; }
+    public object CurrencyLookups { get; set; }
 
     /// <summary>
     ///     A map of string variable values by hash for this character context.
@@ -61,65 +61,5 @@ public class DestinyVendorsResponse : IDeepEquatable<DestinyVendorsResponse>
     ///     COMPONENT TYPE: StringVariables
     /// </summary>
     [JsonPropertyName("stringVariables")]
-    public SingleComponentResponseOfDestinyStringVariablesComponent StringVariables { get; set; }
-
-    public bool DeepEquals(DestinyVendorsResponse? other)
-    {
-        return other is not null &&
-               (VendorGroups is not null ? VendorGroups.DeepEquals(other.VendorGroups) : other.VendorGroups is null) &&
-               (Vendors is not null ? Vendors.DeepEquals(other.Vendors) : other.Vendors is null) &&
-               (Categories is not null ? Categories.DeepEquals(other.Categories) : other.Categories is null) &&
-               (Sales is not null ? Sales.DeepEquals(other.Sales) : other.Sales is null) &&
-               ItemComponents.DeepEqualsDictionary(other.ItemComponents) &&
-               (CurrencyLookups is not null ? CurrencyLookups.DeepEquals(other.CurrencyLookups) : other.CurrencyLookups is null) &&
-               (StringVariables is not null ? StringVariables.DeepEquals(other.StringVariables) : other.StringVariables is null);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyVendorsResponse? other)
-    {
-        if (other is null) return;
-        if (!VendorGroups.DeepEquals(other.VendorGroups))
-        {
-            VendorGroups.Update(other.VendorGroups);
-            OnPropertyChanged(nameof(VendorGroups));
-        }
-        if (!Vendors.DeepEquals(other.Vendors))
-        {
-            Vendors.Update(other.Vendors);
-            OnPropertyChanged(nameof(Vendors));
-        }
-        if (!Categories.DeepEquals(other.Categories))
-        {
-            Categories.Update(other.Categories);
-            OnPropertyChanged(nameof(Categories));
-        }
-        if (!Sales.DeepEquals(other.Sales))
-        {
-            Sales.Update(other.Sales);
-            OnPropertyChanged(nameof(Sales));
-        }
-        if (!ItemComponents.DeepEqualsDictionary(other.ItemComponents))
-        {
-            ItemComponents = other.ItemComponents;
-            OnPropertyChanged(nameof(ItemComponents));
-        }
-        if (!CurrencyLookups.DeepEquals(other.CurrencyLookups))
-        {
-            CurrencyLookups.Update(other.CurrencyLookups);
-            OnPropertyChanged(nameof(CurrencyLookups));
-        }
-        if (!StringVariables.DeepEquals(other.StringVariables))
-        {
-            StringVariables.Update(other.StringVariables);
-            OnPropertyChanged(nameof(StringVariables));
-        }
-    }
+    public object StringVariables { get; set; }
 }

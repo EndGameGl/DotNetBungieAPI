@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     This represents the transformation of a stat into a "Display" stat (the closest value that BNet can get to the in-game display value of the stat)
 /// </summary>
-public class DestinyStatDisplayDefinition : IDeepEquatable<DestinyStatDisplayDefinition>
+public class DestinyStatDisplayDefinition
 {
     /// <summary>
     ///     The hash identifier for the stat being transformed into a Display stat.
@@ -34,46 +34,4 @@ public class DestinyStatDisplayDefinition : IDeepEquatable<DestinyStatDisplayDef
     /// </summary>
     [JsonPropertyName("displayInterpolation")]
     public List<Interpolation.InterpolationPoint> DisplayInterpolation { get; set; }
-
-    public bool DeepEquals(DestinyStatDisplayDefinition? other)
-    {
-        return other is not null &&
-               StatHash == other.StatHash &&
-               MaximumValue == other.MaximumValue &&
-               DisplayAsNumeric == other.DisplayAsNumeric &&
-               DisplayInterpolation.DeepEqualsList(other.DisplayInterpolation);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyStatDisplayDefinition? other)
-    {
-        if (other is null) return;
-        if (StatHash != other.StatHash)
-        {
-            StatHash = other.StatHash;
-            OnPropertyChanged(nameof(StatHash));
-        }
-        if (MaximumValue != other.MaximumValue)
-        {
-            MaximumValue = other.MaximumValue;
-            OnPropertyChanged(nameof(MaximumValue));
-        }
-        if (DisplayAsNumeric != other.DisplayAsNumeric)
-        {
-            DisplayAsNumeric = other.DisplayAsNumeric;
-            OnPropertyChanged(nameof(DisplayAsNumeric));
-        }
-        if (!DisplayInterpolation.DeepEqualsList(other.DisplayInterpolation))
-        {
-            DisplayInterpolation = other.DisplayInterpolation;
-            OnPropertyChanged(nameof(DisplayInterpolation));
-        }
-    }
 }

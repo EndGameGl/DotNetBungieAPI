@@ -9,7 +9,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Checklists;
 /// <para />
 ///     Note that, in the future, there will be something resembling the old D1 Record Books in at least some vague form. When that is created, it may be that it will supercede much or all of this Checklist data. It remains to be seen if that will be the case, so for now assume that the Checklists will still exist even after the release of D2: Forsaken.
 /// </summary>
-public class DestinyChecklistDefinition : IDeepEquatable<DestinyChecklistDefinition>
+public class DestinyChecklistDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -51,64 +51,4 @@ public class DestinyChecklistDefinition : IDeepEquatable<DestinyChecklistDefinit
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyChecklistDefinition? other)
-    {
-        return other is not null &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               ViewActionString == other.ViewActionString &&
-               Scope == other.Scope &&
-               Entries.DeepEqualsList(other.Entries) &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyChecklistDefinition? other)
-    {
-        if (other is null) return;
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (ViewActionString != other.ViewActionString)
-        {
-            ViewActionString = other.ViewActionString;
-            OnPropertyChanged(nameof(ViewActionString));
-        }
-        if (Scope != other.Scope)
-        {
-            Scope = other.Scope;
-            OnPropertyChanged(nameof(Scope));
-        }
-        if (!Entries.DeepEqualsList(other.Entries))
-        {
-            Entries = other.Entries;
-            OnPropertyChanged(nameof(Entries));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

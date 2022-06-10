@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     This is the definition for a single Vendor Category, into which Sale Items are grouped.
 /// </summary>
-public class DestinyVendorCategoryEntryDefinition : IDeepEquatable<DestinyVendorCategoryEntryDefinition>
+public class DestinyVendorCategoryEntryDefinition
 {
     /// <summary>
     ///     The index of the category in the original category definitions for the vendor.
@@ -69,7 +69,7 @@ public class DestinyVendorCategoryEntryDefinition : IDeepEquatable<DestinyVendor
     ///     If this category has an overlay prompt that should appear, this contains the details of that prompt.
     /// </summary>
     [JsonPropertyName("overlay")]
-    public Destiny.Definitions.DestinyVendorCategoryOverlayDefinition Overlay { get; set; }
+    public object Overlay { get; set; }
 
     /// <summary>
     ///     A shortcut for the vendor item indexes sold under this category. Saves us from some expensive reorganization at runtime.
@@ -94,118 +94,4 @@ public class DestinyVendorCategoryEntryDefinition : IDeepEquatable<DestinyVendor
 
     [JsonPropertyName("resetOffsetMinutesOverride")]
     public int ResetOffsetMinutesOverride { get; set; }
-
-    public bool DeepEquals(DestinyVendorCategoryEntryDefinition? other)
-    {
-        return other is not null &&
-               CategoryIndex == other.CategoryIndex &&
-               SortValue == other.SortValue &&
-               CategoryHash == other.CategoryHash &&
-               QuantityAvailable == other.QuantityAvailable &&
-               ShowUnavailableItems == other.ShowUnavailableItems &&
-               HideIfNoCurrency == other.HideIfNoCurrency &&
-               HideFromRegularPurchase == other.HideFromRegularPurchase &&
-               BuyStringOverride == other.BuyStringOverride &&
-               DisabledDescription == other.DisabledDescription &&
-               DisplayTitle == other.DisplayTitle &&
-               (Overlay is not null ? Overlay.DeepEquals(other.Overlay) : other.Overlay is null) &&
-               VendorItemIndexes.DeepEqualsListNaive(other.VendorItemIndexes) &&
-               IsPreview == other.IsPreview &&
-               IsDisplayOnly == other.IsDisplayOnly &&
-               ResetIntervalMinutesOverride == other.ResetIntervalMinutesOverride &&
-               ResetOffsetMinutesOverride == other.ResetOffsetMinutesOverride;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyVendorCategoryEntryDefinition? other)
-    {
-        if (other is null) return;
-        if (CategoryIndex != other.CategoryIndex)
-        {
-            CategoryIndex = other.CategoryIndex;
-            OnPropertyChanged(nameof(CategoryIndex));
-        }
-        if (SortValue != other.SortValue)
-        {
-            SortValue = other.SortValue;
-            OnPropertyChanged(nameof(SortValue));
-        }
-        if (CategoryHash != other.CategoryHash)
-        {
-            CategoryHash = other.CategoryHash;
-            OnPropertyChanged(nameof(CategoryHash));
-        }
-        if (QuantityAvailable != other.QuantityAvailable)
-        {
-            QuantityAvailable = other.QuantityAvailable;
-            OnPropertyChanged(nameof(QuantityAvailable));
-        }
-        if (ShowUnavailableItems != other.ShowUnavailableItems)
-        {
-            ShowUnavailableItems = other.ShowUnavailableItems;
-            OnPropertyChanged(nameof(ShowUnavailableItems));
-        }
-        if (HideIfNoCurrency != other.HideIfNoCurrency)
-        {
-            HideIfNoCurrency = other.HideIfNoCurrency;
-            OnPropertyChanged(nameof(HideIfNoCurrency));
-        }
-        if (HideFromRegularPurchase != other.HideFromRegularPurchase)
-        {
-            HideFromRegularPurchase = other.HideFromRegularPurchase;
-            OnPropertyChanged(nameof(HideFromRegularPurchase));
-        }
-        if (BuyStringOverride != other.BuyStringOverride)
-        {
-            BuyStringOverride = other.BuyStringOverride;
-            OnPropertyChanged(nameof(BuyStringOverride));
-        }
-        if (DisabledDescription != other.DisabledDescription)
-        {
-            DisabledDescription = other.DisabledDescription;
-            OnPropertyChanged(nameof(DisabledDescription));
-        }
-        if (DisplayTitle != other.DisplayTitle)
-        {
-            DisplayTitle = other.DisplayTitle;
-            OnPropertyChanged(nameof(DisplayTitle));
-        }
-        if (!Overlay.DeepEquals(other.Overlay))
-        {
-            Overlay.Update(other.Overlay);
-            OnPropertyChanged(nameof(Overlay));
-        }
-        if (!VendorItemIndexes.DeepEqualsListNaive(other.VendorItemIndexes))
-        {
-            VendorItemIndexes = other.VendorItemIndexes;
-            OnPropertyChanged(nameof(VendorItemIndexes));
-        }
-        if (IsPreview != other.IsPreview)
-        {
-            IsPreview = other.IsPreview;
-            OnPropertyChanged(nameof(IsPreview));
-        }
-        if (IsDisplayOnly != other.IsDisplayOnly)
-        {
-            IsDisplayOnly = other.IsDisplayOnly;
-            OnPropertyChanged(nameof(IsDisplayOnly));
-        }
-        if (ResetIntervalMinutesOverride != other.ResetIntervalMinutesOverride)
-        {
-            ResetIntervalMinutesOverride = other.ResetIntervalMinutesOverride;
-            OnPropertyChanged(nameof(ResetIntervalMinutesOverride));
-        }
-        if (ResetOffsetMinutesOverride != other.ResetOffsetMinutesOverride)
-        {
-            ResetOffsetMinutesOverride = other.ResetOffsetMinutesOverride;
-            OnPropertyChanged(nameof(ResetOffsetMinutesOverride));
-        }
-    }
 }

@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.PowerCaps;
 /// <summary>
 ///     Defines a 'power cap' (limit) for gear items, based on the rarity tier and season of release.
 /// </summary>
-public class DestinyPowerCapDefinition : IDeepEquatable<DestinyPowerCapDefinition>
+public class DestinyPowerCapDefinition
 {
     /// <summary>
     ///     The raw value for a power cap.
@@ -30,46 +30,4 @@ public class DestinyPowerCapDefinition : IDeepEquatable<DestinyPowerCapDefinitio
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyPowerCapDefinition? other)
-    {
-        return other is not null &&
-               PowerCap == other.PowerCap &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyPowerCapDefinition? other)
-    {
-        if (other is null) return;
-        if (PowerCap != other.PowerCap)
-        {
-            PowerCap = other.PowerCap;
-            OnPropertyChanged(nameof(PowerCap));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

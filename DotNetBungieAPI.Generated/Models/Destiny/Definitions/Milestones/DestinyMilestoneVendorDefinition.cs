@@ -5,35 +5,11 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 /// <para />
 ///     It also contains information we need to determine whether that vendor is actually relevant at the moment, given the user's current state.
 /// </summary>
-public class DestinyMilestoneVendorDefinition : IDeepEquatable<DestinyMilestoneVendorDefinition>
+public class DestinyMilestoneVendorDefinition
 {
     /// <summary>
     ///     The hash of the vendor whose wares should be shown as associated with the Milestone.
     /// </summary>
     [JsonPropertyName("vendorHash")]
     public uint VendorHash { get; set; }
-
-    public bool DeepEquals(DestinyMilestoneVendorDefinition? other)
-    {
-        return other is not null &&
-               VendorHash == other.VendorHash;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyMilestoneVendorDefinition? other)
-    {
-        if (other is null) return;
-        if (VendorHash != other.VendorHash)
-        {
-            VendorHash = other.VendorHash;
-            OnPropertyChanged(nameof(VendorHash));
-        }
-    }
 }

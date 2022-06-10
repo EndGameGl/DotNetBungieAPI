@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Collectibles;
 
-public class DestinyProfileCollectiblesComponent : IDeepEquatable<DestinyProfileCollectiblesComponent>
+public class DestinyProfileCollectiblesComponent
 {
     /// <summary>
     ///     The list of collectibles determined by the game as having been "recently" acquired.
@@ -30,52 +30,4 @@ public class DestinyProfileCollectiblesComponent : IDeepEquatable<DestinyProfile
     /// </summary>
     [JsonPropertyName("collectionBadgesRootNodeHash")]
     public uint CollectionBadgesRootNodeHash { get; set; }
-
-    public bool DeepEquals(DestinyProfileCollectiblesComponent? other)
-    {
-        return other is not null &&
-               RecentCollectibleHashes.DeepEqualsListNaive(other.RecentCollectibleHashes) &&
-               NewnessFlaggedCollectibleHashes.DeepEqualsListNaive(other.NewnessFlaggedCollectibleHashes) &&
-               Collectibles.DeepEqualsDictionary(other.Collectibles) &&
-               CollectionCategoriesRootNodeHash == other.CollectionCategoriesRootNodeHash &&
-               CollectionBadgesRootNodeHash == other.CollectionBadgesRootNodeHash;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyProfileCollectiblesComponent? other)
-    {
-        if (other is null) return;
-        if (!RecentCollectibleHashes.DeepEqualsListNaive(other.RecentCollectibleHashes))
-        {
-            RecentCollectibleHashes = other.RecentCollectibleHashes;
-            OnPropertyChanged(nameof(RecentCollectibleHashes));
-        }
-        if (!NewnessFlaggedCollectibleHashes.DeepEqualsListNaive(other.NewnessFlaggedCollectibleHashes))
-        {
-            NewnessFlaggedCollectibleHashes = other.NewnessFlaggedCollectibleHashes;
-            OnPropertyChanged(nameof(NewnessFlaggedCollectibleHashes));
-        }
-        if (!Collectibles.DeepEqualsDictionary(other.Collectibles))
-        {
-            Collectibles = other.Collectibles;
-            OnPropertyChanged(nameof(Collectibles));
-        }
-        if (CollectionCategoriesRootNodeHash != other.CollectionCategoriesRootNodeHash)
-        {
-            CollectionCategoriesRootNodeHash = other.CollectionCategoriesRootNodeHash;
-            OnPropertyChanged(nameof(CollectionCategoriesRootNodeHash));
-        }
-        if (CollectionBadgesRootNodeHash != other.CollectionBadgesRootNodeHash)
-        {
-            CollectionBadgesRootNodeHash = other.CollectionBadgesRootNodeHash;
-            OnPropertyChanged(nameof(CollectionBadgesRootNodeHash));
-        }
-    }
 }

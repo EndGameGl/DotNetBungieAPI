@@ -11,7 +11,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Sockets;
 /// <para />
 ///     As a result, I will try to compile these rules into the individual sockets on items, and provide the best hint possible there through the plugSources property. In the future, I may attempt to use this information in conjunction with the item to provide a more usable UI hint on the socket layer, but for now improving the consistency of plugSources is the best I have time to provide. (See https://github.com/Bungie-net/api/issues/522 for more info)
 /// </summary>
-public class DestinySocketCategoryDefinition : IDeepEquatable<DestinySocketCategoryDefinition>
+public class DestinySocketCategoryDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -49,58 +49,4 @@ public class DestinySocketCategoryDefinition : IDeepEquatable<DestinySocketCateg
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinySocketCategoryDefinition? other)
-    {
-        return other is not null &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               UiCategoryStyle == other.UiCategoryStyle &&
-               CategoryStyle == other.CategoryStyle &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinySocketCategoryDefinition? other)
-    {
-        if (other is null) return;
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (UiCategoryStyle != other.UiCategoryStyle)
-        {
-            UiCategoryStyle = other.UiCategoryStyle;
-            OnPropertyChanged(nameof(UiCategoryStyle));
-        }
-        if (CategoryStyle != other.CategoryStyle)
-        {
-            CategoryStyle = other.CategoryStyle;
-            OnPropertyChanged(nameof(CategoryStyle));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

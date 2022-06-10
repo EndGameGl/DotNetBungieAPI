@@ -6,47 +6,47 @@ namespace DotNetBungieAPI.OpenApi.CSharp;
 
 public static class PropertyTypeDataExtensions
 {
-    public static string GetCSharpType(this OpenApiComponentSchema schema)
+    internal static string GetCSharpType(this PropertyTypeData property)
     {
-        return schema switch
+        if (property.IsCollection)
         {
-            { TypeReference: not null } => schema.TypeReference.GetFullTypeName(),
-            // simple object ref 
-            { Type: "object", AllOf.Count: > 0 } => schema.AllOf.First().TypeReference?.GetFullTypeName(),
-            // simple object ref 
-            //{ Type: "object", TypeReference: not null } => schema.TypeReference.GetFullTypeName(),
-            // dictionary with key specified
-            { Type: "object", AdditionalProperties: not null, DictionaryKey: not null } =>
-                $"Dictionary<{GetCSharpType(schema.DictionaryKey)}, {GetCSharpType(schema.AdditionalProperties)}>",
-            // dictionary with key unspecified
-            { Type: "object", AdditionalProperties: not null, DictionaryKey: null } =>
-                $"Dictionary<{GetCSharpType(schema.AdditionalProperties)}, {GetCSharpType(schema.AdditionalProperties)}>",
-            // no type specified
-            { Type: "object" } => "object",
-            // list
-            { Type: "array", Items: not null } => schema.Items switch
-            {
-                // T is object
-                { TypeReference: not null } => $"List<{GetCSharpType(schema.Items)}>",
-                // T is enum
-                { EnumReference: not null } => $"List<{GetCSharpType(schema.Items.EnumReference)}>",
-                // T is value type, process as is
-                _ => $"List<{GetCSharpType(schema.Items)}>"
-            },
-            // DateTime
-            { Type: "string", Format: "date-time" } => $"DateTime{(schema.Nullable ? "?" : "")}",
-            // string
-            { Type: "string" } => "string",
-            // float or double
-            { Type: "number" } => $"{schema.Format}{(schema.Nullable ? "?" : "")}",
-            // enum
-            { Type: "integer", EnumReference: not null } =>
-                $"{schema.EnumReference.TypeReference.GetFullTypeName()}{(schema.Nullable ? "?" : "")}",
-            // int variable
-            { Type: "integer" } => $"{Resources.TypeMappings[schema.Format]}{(schema.Nullable ? "?" : "")}",
-            // bool
-            { Type: "boolean" } => $"bool{(schema.Nullable ? "?" : "")}",
-            _ => throw new Exception("Type couldn't be processed")
+            var genericProperty = property.GenericProperties[0];
+            return $"List<{genericProperty.GetCSharpType()}>";
+        }
+        else if (property.IsHashMap)
+        {
+            var keyProperty = property.GenericProperties[0];
+            var valueProperty = property.GenericProperties[1];
+            return $"Dictionary<{keyProperty.GetCSharpType()}, {valueProperty.GetCSharpType()}>";
+        }
+        else if (property.IsClass)
+        {
+            if (property.TypeReference is null)
+                return "object";
+            return $"{property.TypeReference.GetFullTypeName()}";
+        }
+        else if (property.IsEnum)
+        {
+            return $"{property.TypeReference.GetFullTypeName()}";
+        }
+        else if (property.IsValue)
+        {
+            return $"{property.FormatCSharpValueType()}";
+        }
+
+        throw new Exception("Failed to format C# property");
+    }
+
+    private static string FormatCSharpValueType(this PropertyTypeData property)
+    {
+        return property switch
+        {
+            { TypeReference: "string", Format: "date-time" } => "DateTime",
+            { TypeReference: "string" } => "string",
+            { TypeReference: "boolean" } => "bool",
+            { TypeReference: "number" } => property.Format,
+            { TypeReference: "integer" } => Resources.TypeMappings[property.Format],
+            _ => throw new Exception("Failed to format C# property")
         };
     }
 

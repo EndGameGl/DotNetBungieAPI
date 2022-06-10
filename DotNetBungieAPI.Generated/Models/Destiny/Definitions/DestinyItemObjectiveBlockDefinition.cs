@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Quest steps have 1:M objectives that we end up processing and returning in live data as DestinyQuestStatus data, and other useful information.
 /// </summary>
-public class DestinyItemObjectiveBlockDefinition : IDeepEquatable<DestinyItemObjectiveBlockDefinition>
+public class DestinyItemObjectiveBlockDefinition
 {
     /// <summary>
     ///     The hashes to Objectives (DestinyObjectiveDefinition) that are part of this Quest Step, in the order that they should be rendered.
@@ -65,82 +65,4 @@ public class DestinyItemObjectiveBlockDefinition : IDeepEquatable<DestinyItemObj
 
     [JsonPropertyName("displayAsStatTracker")]
     public bool DisplayAsStatTracker { get; set; }
-
-    public bool DeepEquals(DestinyItemObjectiveBlockDefinition? other)
-    {
-        return other is not null &&
-               ObjectiveHashes.DeepEqualsListNaive(other.ObjectiveHashes) &&
-               DisplayActivityHashes.DeepEqualsListNaive(other.DisplayActivityHashes) &&
-               RequireFullObjectiveCompletion == other.RequireFullObjectiveCompletion &&
-               QuestlineItemHash == other.QuestlineItemHash &&
-               Narrative == other.Narrative &&
-               ObjectiveVerbName == other.ObjectiveVerbName &&
-               QuestTypeIdentifier == other.QuestTypeIdentifier &&
-               QuestTypeHash == other.QuestTypeHash &&
-               PerObjectiveDisplayProperties.DeepEqualsList(other.PerObjectiveDisplayProperties) &&
-               DisplayAsStatTracker == other.DisplayAsStatTracker;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemObjectiveBlockDefinition? other)
-    {
-        if (other is null) return;
-        if (!ObjectiveHashes.DeepEqualsListNaive(other.ObjectiveHashes))
-        {
-            ObjectiveHashes = other.ObjectiveHashes;
-            OnPropertyChanged(nameof(ObjectiveHashes));
-        }
-        if (!DisplayActivityHashes.DeepEqualsListNaive(other.DisplayActivityHashes))
-        {
-            DisplayActivityHashes = other.DisplayActivityHashes;
-            OnPropertyChanged(nameof(DisplayActivityHashes));
-        }
-        if (RequireFullObjectiveCompletion != other.RequireFullObjectiveCompletion)
-        {
-            RequireFullObjectiveCompletion = other.RequireFullObjectiveCompletion;
-            OnPropertyChanged(nameof(RequireFullObjectiveCompletion));
-        }
-        if (QuestlineItemHash != other.QuestlineItemHash)
-        {
-            QuestlineItemHash = other.QuestlineItemHash;
-            OnPropertyChanged(nameof(QuestlineItemHash));
-        }
-        if (Narrative != other.Narrative)
-        {
-            Narrative = other.Narrative;
-            OnPropertyChanged(nameof(Narrative));
-        }
-        if (ObjectiveVerbName != other.ObjectiveVerbName)
-        {
-            ObjectiveVerbName = other.ObjectiveVerbName;
-            OnPropertyChanged(nameof(ObjectiveVerbName));
-        }
-        if (QuestTypeIdentifier != other.QuestTypeIdentifier)
-        {
-            QuestTypeIdentifier = other.QuestTypeIdentifier;
-            OnPropertyChanged(nameof(QuestTypeIdentifier));
-        }
-        if (QuestTypeHash != other.QuestTypeHash)
-        {
-            QuestTypeHash = other.QuestTypeHash;
-            OnPropertyChanged(nameof(QuestTypeHash));
-        }
-        if (!PerObjectiveDisplayProperties.DeepEqualsList(other.PerObjectiveDisplayProperties))
-        {
-            PerObjectiveDisplayProperties = other.PerObjectiveDisplayProperties;
-            OnPropertyChanged(nameof(PerObjectiveDisplayProperties));
-        }
-        if (DisplayAsStatTracker != other.DisplayAsStatTracker)
-        {
-            DisplayAsStatTracker = other.DisplayAsStatTracker;
-            OnPropertyChanged(nameof(DisplayAsStatTracker));
-        }
-    }
 }

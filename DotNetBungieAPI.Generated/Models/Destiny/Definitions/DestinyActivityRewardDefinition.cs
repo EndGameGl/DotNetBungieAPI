@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Activities can refer to one or more sets of tooltip-friendly reward data. These are the definitions for those tooltip friendly rewards.
 /// </summary>
-public class DestinyActivityRewardDefinition : IDeepEquatable<DestinyActivityRewardDefinition>
+public class DestinyActivityRewardDefinition
 {
     /// <summary>
     ///     The header for the reward set, if any.
@@ -18,34 +18,4 @@ public class DestinyActivityRewardDefinition : IDeepEquatable<DestinyActivityRew
     /// </summary>
     [JsonPropertyName("rewardItems")]
     public List<Destiny.DestinyItemQuantity> RewardItems { get; set; }
-
-    public bool DeepEquals(DestinyActivityRewardDefinition? other)
-    {
-        return other is not null &&
-               RewardText == other.RewardText &&
-               RewardItems.DeepEqualsList(other.RewardItems);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyActivityRewardDefinition? other)
-    {
-        if (other is null) return;
-        if (RewardText != other.RewardText)
-        {
-            RewardText = other.RewardText;
-            OnPropertyChanged(nameof(RewardText));
-        }
-        if (!RewardItems.DeepEqualsList(other.RewardItems))
-        {
-            RewardItems = other.RewardItems;
-            OnPropertyChanged(nameof(RewardItems));
-        }
-    }
 }

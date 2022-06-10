@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.User;
 
-public class UserMembershipData : IDeepEquatable<UserMembershipData>
+public class UserMembershipData
 {
     /// <summary>
     ///     this allows you to see destiny memberships that are visible and linked to this account (regardless of whether or not they have characters on the world server)
@@ -14,44 +14,8 @@ public class UserMembershipData : IDeepEquatable<UserMembershipData>
     ///      If null, this user has no cross save relationship, nor primary account.
     /// </summary>
     [JsonPropertyName("primaryMembershipId")]
-    public long? PrimaryMembershipId { get; set; }
+    public long PrimaryMembershipId { get; set; }
 
     [JsonPropertyName("bungieNetUser")]
     public User.GeneralUser BungieNetUser { get; set; }
-
-    public bool DeepEquals(UserMembershipData? other)
-    {
-        return other is not null &&
-               DestinyMemberships.DeepEqualsList(other.DestinyMemberships) &&
-               PrimaryMembershipId == other.PrimaryMembershipId &&
-               (BungieNetUser is not null ? BungieNetUser.DeepEquals(other.BungieNetUser) : other.BungieNetUser is null);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(UserMembershipData? other)
-    {
-        if (other is null) return;
-        if (!DestinyMemberships.DeepEqualsList(other.DestinyMemberships))
-        {
-            DestinyMemberships = other.DestinyMemberships;
-            OnPropertyChanged(nameof(DestinyMemberships));
-        }
-        if (PrimaryMembershipId != other.PrimaryMembershipId)
-        {
-            PrimaryMembershipId = other.PrimaryMembershipId;
-            OnPropertyChanged(nameof(PrimaryMembershipId));
-        }
-        if (!BungieNetUser.DeepEquals(other.BungieNetUser))
-        {
-            BungieNetUser.Update(other.BungieNetUser);
-            OnPropertyChanged(nameof(BungieNetUser));
-        }
-    }
 }

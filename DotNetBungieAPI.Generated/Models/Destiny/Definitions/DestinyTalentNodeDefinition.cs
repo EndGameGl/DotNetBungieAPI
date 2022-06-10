@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     See DestinyTalentGridDefinition for a more complete overview of how Talent Grids work, and how they are used in Destiny 2 (and how they were used in Destiny 1).
 /// </summary>
-public class DestinyTalentNodeDefinition : IDeepEquatable<DestinyTalentNodeDefinition>
+public class DestinyTalentNodeDefinition
 {
     /// <summary>
     ///     The index into the DestinyTalentGridDefinition's "nodes" property where this node is located. Used to uniquely identify the node within the Talent Grid. Note that this is content version dependent: make sure you have the latest version of content before trying to use these properties.
@@ -77,7 +77,7 @@ public class DestinyTalentNodeDefinition : IDeepEquatable<DestinyTalentNodeDefin
     ///     The system still exists to do this, as far as I know, so it may yet come back around!
     /// </summary>
     [JsonPropertyName("randomActivationRequirement")]
-    public Destiny.Definitions.DestinyNodeActivationRequirement RandomActivationRequirement { get; set; }
+    public object RandomActivationRequirement { get; set; }
 
     /// <summary>
     ///     If this is true, the node can be "re-rolled" to acquire a different random current step. This is not used, but still exists for a theoretical future of talent grids.
@@ -121,13 +121,13 @@ public class DestinyTalentNodeDefinition : IDeepEquatable<DestinyTalentNodeDefin
     ///     See DestinyTalentExclusiveGroup for more information on the details. This is an identifier for this node's group, if it is part of one.
     /// </summary>
     [JsonPropertyName("groupHash")]
-    public uint? GroupHash { get; set; }
+    public uint GroupHash { get; set; }
 
     /// <summary>
     ///     Talent nodes can be associated with a piece of Lore, generally rendered in a tooltip. This is the hash identifier of the lore element to show, if there is one to be show.
     /// </summary>
     [JsonPropertyName("loreHash")]
-    public uint? LoreHash { get; set; }
+    public uint LoreHash { get; set; }
 
     /// <summary>
     ///     Comes from the talent grid node style: this identifier should be used to determine how to render the node in the UI.
@@ -140,136 +140,4 @@ public class DestinyTalentNodeDefinition : IDeepEquatable<DestinyTalentNodeDefin
     /// </summary>
     [JsonPropertyName("ignoreForCompletion")]
     public bool IgnoreForCompletion { get; set; }
-
-    public bool DeepEquals(DestinyTalentNodeDefinition? other)
-    {
-        return other is not null &&
-               NodeIndex == other.NodeIndex &&
-               NodeHash == other.NodeHash &&
-               Row == other.Row &&
-               Column == other.Column &&
-               PrerequisiteNodeIndexes.DeepEqualsListNaive(other.PrerequisiteNodeIndexes) &&
-               BinaryPairNodeIndex == other.BinaryPairNodeIndex &&
-               AutoUnlocks == other.AutoUnlocks &&
-               LastStepRepeats == other.LastStepRepeats &&
-               IsRandom == other.IsRandom &&
-               (RandomActivationRequirement is not null ? RandomActivationRequirement.DeepEquals(other.RandomActivationRequirement) : other.RandomActivationRequirement is null) &&
-               IsRandomRepurchasable == other.IsRandomRepurchasable &&
-               Steps.DeepEqualsList(other.Steps) &&
-               ExclusiveWithNodeHashes.DeepEqualsListNaive(other.ExclusiveWithNodeHashes) &&
-               RandomStartProgressionBarAtProgression == other.RandomStartProgressionBarAtProgression &&
-               LayoutIdentifier == other.LayoutIdentifier &&
-               GroupHash == other.GroupHash &&
-               LoreHash == other.LoreHash &&
-               NodeStyleIdentifier == other.NodeStyleIdentifier &&
-               IgnoreForCompletion == other.IgnoreForCompletion;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyTalentNodeDefinition? other)
-    {
-        if (other is null) return;
-        if (NodeIndex != other.NodeIndex)
-        {
-            NodeIndex = other.NodeIndex;
-            OnPropertyChanged(nameof(NodeIndex));
-        }
-        if (NodeHash != other.NodeHash)
-        {
-            NodeHash = other.NodeHash;
-            OnPropertyChanged(nameof(NodeHash));
-        }
-        if (Row != other.Row)
-        {
-            Row = other.Row;
-            OnPropertyChanged(nameof(Row));
-        }
-        if (Column != other.Column)
-        {
-            Column = other.Column;
-            OnPropertyChanged(nameof(Column));
-        }
-        if (!PrerequisiteNodeIndexes.DeepEqualsListNaive(other.PrerequisiteNodeIndexes))
-        {
-            PrerequisiteNodeIndexes = other.PrerequisiteNodeIndexes;
-            OnPropertyChanged(nameof(PrerequisiteNodeIndexes));
-        }
-        if (BinaryPairNodeIndex != other.BinaryPairNodeIndex)
-        {
-            BinaryPairNodeIndex = other.BinaryPairNodeIndex;
-            OnPropertyChanged(nameof(BinaryPairNodeIndex));
-        }
-        if (AutoUnlocks != other.AutoUnlocks)
-        {
-            AutoUnlocks = other.AutoUnlocks;
-            OnPropertyChanged(nameof(AutoUnlocks));
-        }
-        if (LastStepRepeats != other.LastStepRepeats)
-        {
-            LastStepRepeats = other.LastStepRepeats;
-            OnPropertyChanged(nameof(LastStepRepeats));
-        }
-        if (IsRandom != other.IsRandom)
-        {
-            IsRandom = other.IsRandom;
-            OnPropertyChanged(nameof(IsRandom));
-        }
-        if (!RandomActivationRequirement.DeepEquals(other.RandomActivationRequirement))
-        {
-            RandomActivationRequirement.Update(other.RandomActivationRequirement);
-            OnPropertyChanged(nameof(RandomActivationRequirement));
-        }
-        if (IsRandomRepurchasable != other.IsRandomRepurchasable)
-        {
-            IsRandomRepurchasable = other.IsRandomRepurchasable;
-            OnPropertyChanged(nameof(IsRandomRepurchasable));
-        }
-        if (!Steps.DeepEqualsList(other.Steps))
-        {
-            Steps = other.Steps;
-            OnPropertyChanged(nameof(Steps));
-        }
-        if (!ExclusiveWithNodeHashes.DeepEqualsListNaive(other.ExclusiveWithNodeHashes))
-        {
-            ExclusiveWithNodeHashes = other.ExclusiveWithNodeHashes;
-            OnPropertyChanged(nameof(ExclusiveWithNodeHashes));
-        }
-        if (RandomStartProgressionBarAtProgression != other.RandomStartProgressionBarAtProgression)
-        {
-            RandomStartProgressionBarAtProgression = other.RandomStartProgressionBarAtProgression;
-            OnPropertyChanged(nameof(RandomStartProgressionBarAtProgression));
-        }
-        if (LayoutIdentifier != other.LayoutIdentifier)
-        {
-            LayoutIdentifier = other.LayoutIdentifier;
-            OnPropertyChanged(nameof(LayoutIdentifier));
-        }
-        if (GroupHash != other.GroupHash)
-        {
-            GroupHash = other.GroupHash;
-            OnPropertyChanged(nameof(GroupHash));
-        }
-        if (LoreHash != other.LoreHash)
-        {
-            LoreHash = other.LoreHash;
-            OnPropertyChanged(nameof(LoreHash));
-        }
-        if (NodeStyleIdentifier != other.NodeStyleIdentifier)
-        {
-            NodeStyleIdentifier = other.NodeStyleIdentifier;
-            OnPropertyChanged(nameof(NodeStyleIdentifier));
-        }
-        if (IgnoreForCompletion != other.IgnoreForCompletion)
-        {
-            IgnoreForCompletion = other.IgnoreForCompletion;
-            OnPropertyChanged(nameof(IgnoreForCompletion));
-        }
-    }
 }

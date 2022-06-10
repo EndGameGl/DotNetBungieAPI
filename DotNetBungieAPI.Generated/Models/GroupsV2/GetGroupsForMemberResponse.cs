@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public class GetGroupsForMemberResponse : IDeepEquatable<GetGroupsForMemberResponse>
+public class GetGroupsForMemberResponse
 {
     /// <summary>
     ///     A convenience property that indicates if every membership this user has that is a part of this group are part of an account that is considered inactive - for example, overridden accounts in Cross Save.
@@ -36,64 +36,4 @@ public class GetGroupsForMemberResponse : IDeepEquatable<GetGroupsForMemberRespo
     /// </summary>
     [JsonPropertyName("useTotalResults")]
     public bool UseTotalResults { get; set; }
-
-    public bool DeepEquals(GetGroupsForMemberResponse? other)
-    {
-        return other is not null &&
-               AreAllMembershipsInactive.DeepEqualsDictionaryNaive(other.AreAllMembershipsInactive) &&
-               Results.DeepEqualsList(other.Results) &&
-               TotalResults == other.TotalResults &&
-               HasMore == other.HasMore &&
-               (Query is not null ? Query.DeepEquals(other.Query) : other.Query is null) &&
-               ReplacementContinuationToken == other.ReplacementContinuationToken &&
-               UseTotalResults == other.UseTotalResults;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(GetGroupsForMemberResponse? other)
-    {
-        if (other is null) return;
-        if (!AreAllMembershipsInactive.DeepEqualsDictionaryNaive(other.AreAllMembershipsInactive))
-        {
-            AreAllMembershipsInactive = other.AreAllMembershipsInactive;
-            OnPropertyChanged(nameof(AreAllMembershipsInactive));
-        }
-        if (!Results.DeepEqualsList(other.Results))
-        {
-            Results = other.Results;
-            OnPropertyChanged(nameof(Results));
-        }
-        if (TotalResults != other.TotalResults)
-        {
-            TotalResults = other.TotalResults;
-            OnPropertyChanged(nameof(TotalResults));
-        }
-        if (HasMore != other.HasMore)
-        {
-            HasMore = other.HasMore;
-            OnPropertyChanged(nameof(HasMore));
-        }
-        if (!Query.DeepEquals(other.Query))
-        {
-            Query.Update(other.Query);
-            OnPropertyChanged(nameof(Query));
-        }
-        if (ReplacementContinuationToken != other.ReplacementContinuationToken)
-        {
-            ReplacementContinuationToken = other.ReplacementContinuationToken;
-            OnPropertyChanged(nameof(ReplacementContinuationToken));
-        }
-        if (UseTotalResults != other.UseTotalResults)
-        {
-            UseTotalResults = other.UseTotalResults;
-            OnPropertyChanged(nameof(UseTotalResults));
-        }
-    }
 }

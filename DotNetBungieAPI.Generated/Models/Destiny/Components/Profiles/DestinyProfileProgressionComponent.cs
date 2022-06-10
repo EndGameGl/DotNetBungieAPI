@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Profiles;
 /// <para />
 ///     This will include information such as Checklist info.
 /// </summary>
-public class DestinyProfileProgressionComponent : IDeepEquatable<DestinyProfileProgressionComponent>
+public class DestinyProfileProgressionComponent
 {
     /// <summary>
     ///     The set of checklists that can be examined on a profile-wide basis, keyed by the hash identifier of the Checklist (DestinyChecklistDefinition)
@@ -19,35 +19,5 @@ public class DestinyProfileProgressionComponent : IDeepEquatable<DestinyProfileP
     ///     Data related to your progress on the current season's artifact that is the same across characters.
     /// </summary>
     [JsonPropertyName("seasonalArtifact")]
-    public Destiny.Artifacts.DestinyArtifactProfileScoped SeasonalArtifact { get; set; }
-
-    public bool DeepEquals(DestinyProfileProgressionComponent? other)
-    {
-        return other is not null &&
-               Checklists.DeepEqualsDictionaryNaive(other.Checklists) &&
-               (SeasonalArtifact is not null ? SeasonalArtifact.DeepEquals(other.SeasonalArtifact) : other.SeasonalArtifact is null);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyProfileProgressionComponent? other)
-    {
-        if (other is null) return;
-        if (!Checklists.DeepEqualsDictionary(other.Checklists))
-        {
-            Checklists = other.Checklists;
-            OnPropertyChanged(nameof(Checklists));
-        }
-        if (!SeasonalArtifact.DeepEquals(other.SeasonalArtifact))
-        {
-            SeasonalArtifact.Update(other.SeasonalArtifact);
-            OnPropertyChanged(nameof(SeasonalArtifact));
-        }
-    }
+    public object SeasonalArtifact { get; set; }
 }

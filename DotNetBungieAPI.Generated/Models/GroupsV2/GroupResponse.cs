@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public class GroupResponse : IDeepEquatable<GroupResponse>
+public class GroupResponse
 {
     [JsonPropertyName("detail")]
     public GroupsV2.GroupV2 Detail { get; set; }
@@ -37,76 +37,4 @@ public class GroupResponse : IDeepEquatable<GroupResponse>
     /// </summary>
     [JsonPropertyName("currentUserPotentialMemberMap")]
     public Dictionary<BungieMembershipType, GroupsV2.GroupPotentialMember> CurrentUserPotentialMemberMap { get; set; }
-
-    public bool DeepEquals(GroupResponse? other)
-    {
-        return other is not null &&
-               (Detail is not null ? Detail.DeepEquals(other.Detail) : other.Detail is null) &&
-               (Founder is not null ? Founder.DeepEquals(other.Founder) : other.Founder is null) &&
-               AlliedIds.DeepEqualsListNaive(other.AlliedIds) &&
-               (ParentGroup is not null ? ParentGroup.DeepEquals(other.ParentGroup) : other.ParentGroup is null) &&
-               AllianceStatus == other.AllianceStatus &&
-               GroupJoinInviteCount == other.GroupJoinInviteCount &&
-               CurrentUserMembershipsInactiveForDestiny == other.CurrentUserMembershipsInactiveForDestiny &&
-               CurrentUserMemberMap.DeepEqualsDictionary(other.CurrentUserMemberMap) &&
-               CurrentUserPotentialMemberMap.DeepEqualsDictionary(other.CurrentUserPotentialMemberMap);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(GroupResponse? other)
-    {
-        if (other is null) return;
-        if (!Detail.DeepEquals(other.Detail))
-        {
-            Detail.Update(other.Detail);
-            OnPropertyChanged(nameof(Detail));
-        }
-        if (!Founder.DeepEquals(other.Founder))
-        {
-            Founder.Update(other.Founder);
-            OnPropertyChanged(nameof(Founder));
-        }
-        if (!AlliedIds.DeepEqualsListNaive(other.AlliedIds))
-        {
-            AlliedIds = other.AlliedIds;
-            OnPropertyChanged(nameof(AlliedIds));
-        }
-        if (!ParentGroup.DeepEquals(other.ParentGroup))
-        {
-            ParentGroup.Update(other.ParentGroup);
-            OnPropertyChanged(nameof(ParentGroup));
-        }
-        if (AllianceStatus != other.AllianceStatus)
-        {
-            AllianceStatus = other.AllianceStatus;
-            OnPropertyChanged(nameof(AllianceStatus));
-        }
-        if (GroupJoinInviteCount != other.GroupJoinInviteCount)
-        {
-            GroupJoinInviteCount = other.GroupJoinInviteCount;
-            OnPropertyChanged(nameof(GroupJoinInviteCount));
-        }
-        if (CurrentUserMembershipsInactiveForDestiny != other.CurrentUserMembershipsInactiveForDestiny)
-        {
-            CurrentUserMembershipsInactiveForDestiny = other.CurrentUserMembershipsInactiveForDestiny;
-            OnPropertyChanged(nameof(CurrentUserMembershipsInactiveForDestiny));
-        }
-        if (!CurrentUserMemberMap.DeepEqualsDictionary(other.CurrentUserMemberMap))
-        {
-            CurrentUserMemberMap = other.CurrentUserMemberMap;
-            OnPropertyChanged(nameof(CurrentUserMemberMap));
-        }
-        if (!CurrentUserPotentialMemberMap.DeepEqualsDictionary(other.CurrentUserPotentialMemberMap))
-        {
-            CurrentUserPotentialMemberMap = other.CurrentUserPotentialMemberMap;
-            OnPropertyChanged(nameof(CurrentUserPotentialMemberMap));
-        }
-    }
 }

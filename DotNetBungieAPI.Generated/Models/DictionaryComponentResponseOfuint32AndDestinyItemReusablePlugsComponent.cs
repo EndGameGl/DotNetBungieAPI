@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models;
 
-public class DictionaryComponentResponseOfuint32AndDestinyItemReusablePlugsComponent : IDeepEquatable<DictionaryComponentResponseOfuint32AndDestinyItemReusablePlugsComponent>
+public class DictionaryComponentResponseOfuint32AndDestinyItemReusablePlugsComponent
 {
     [JsonPropertyName("data")]
     public Dictionary<uint, Destiny.Components.Items.DestinyItemReusablePlugsComponent> Data { get; set; }
@@ -12,41 +12,5 @@ public class DictionaryComponentResponseOfuint32AndDestinyItemReusablePlugsCompo
     ///     If true, this component is disabled.
     /// </summary>
     [JsonPropertyName("disabled")]
-    public bool? Disabled { get; set; }
-
-    public bool DeepEquals(DictionaryComponentResponseOfuint32AndDestinyItemReusablePlugsComponent? other)
-    {
-        return other is not null &&
-               Data.DeepEqualsDictionary(other.Data) &&
-               Privacy == other.Privacy &&
-               Disabled == other.Disabled;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DictionaryComponentResponseOfuint32AndDestinyItemReusablePlugsComponent? other)
-    {
-        if (other is null) return;
-        if (!Data.DeepEqualsDictionary(other.Data))
-        {
-            Data = other.Data;
-            OnPropertyChanged(nameof(Data));
-        }
-        if (Privacy != other.Privacy)
-        {
-            Privacy = other.Privacy;
-            OnPropertyChanged(nameof(Privacy));
-        }
-        if (Disabled != other.Disabled)
-        {
-            Disabled = other.Disabled;
-            OnPropertyChanged(nameof(Disabled));
-        }
-    }
+    public bool Disabled { get; set; }
 }

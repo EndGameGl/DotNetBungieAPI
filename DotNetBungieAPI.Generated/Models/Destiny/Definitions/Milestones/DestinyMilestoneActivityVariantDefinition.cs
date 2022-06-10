@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 /// <para />
 ///     These will often have more specific details, such as an associated Guided Game, progression steps, tier-specific rewards, and custom values.
 /// </summary>
-public class DestinyMilestoneActivityVariantDefinition : IDeepEquatable<DestinyMilestoneActivityVariantDefinition>
+public class DestinyMilestoneActivityVariantDefinition
 {
     /// <summary>
     ///     The hash to use for looking up the variant Activity's definition (DestinyActivityDefinition), where you can find its distinguishing characteristics such as difficulty level and recommended light level. 
@@ -22,34 +22,4 @@ public class DestinyMilestoneActivityVariantDefinition : IDeepEquatable<DestinyM
     /// </summary>
     [JsonPropertyName("order")]
     public int Order { get; set; }
-
-    public bool DeepEquals(DestinyMilestoneActivityVariantDefinition? other)
-    {
-        return other is not null &&
-               ActivityHash == other.ActivityHash &&
-               Order == other.Order;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyMilestoneActivityVariantDefinition? other)
-    {
-        if (other is null) return;
-        if (ActivityHash != other.ActivityHash)
-        {
-            ActivityHash = other.ActivityHash;
-            OnPropertyChanged(nameof(ActivityHash));
-        }
-        if (Order != other.Order)
-        {
-            Order = other.Order;
-            OnPropertyChanged(nameof(Order));
-        }
-    }
 }

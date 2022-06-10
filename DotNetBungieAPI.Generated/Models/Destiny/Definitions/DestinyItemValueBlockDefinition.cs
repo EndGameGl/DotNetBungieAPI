@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     It will likely be used in a number of other ways in the future, it appears to be a bucket where they put arbitrary items and quantities into the item.
 /// </summary>
-public class DestinyItemValueBlockDefinition : IDeepEquatable<DestinyItemValueBlockDefinition>
+public class DestinyItemValueBlockDefinition
 {
     /// <summary>
     ///     References to the items that make up this item's "value", and the quantity.
@@ -20,34 +20,4 @@ public class DestinyItemValueBlockDefinition : IDeepEquatable<DestinyItemValueBl
     /// </summary>
     [JsonPropertyName("valueDescription")]
     public string ValueDescription { get; set; }
-
-    public bool DeepEquals(DestinyItemValueBlockDefinition? other)
-    {
-        return other is not null &&
-               ItemValue.DeepEqualsList(other.ItemValue) &&
-               ValueDescription == other.ValueDescription;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemValueBlockDefinition? other)
-    {
-        if (other is null) return;
-        if (!ItemValue.DeepEqualsList(other.ItemValue))
-        {
-            ItemValue = other.ItemValue;
-            OnPropertyChanged(nameof(ItemValue));
-        }
-        if (ValueDescription != other.ValueDescription)
-        {
-            ValueDescription = other.ValueDescription;
-            OnPropertyChanged(nameof(ValueDescription));
-        }
-    }
 }

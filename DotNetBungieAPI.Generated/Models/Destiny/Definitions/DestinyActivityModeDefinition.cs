@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Activity modes are nested under each other in a hierarchy, so that if you ask for - for example - "AllPvP", you will get any PVP activities that the user has played, regardless of what specific PVP mode was being played.
 /// </summary>
-public class DestinyActivityModeDefinition : IDeepEquatable<DestinyActivityModeDefinition>
+public class DestinyActivityModeDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -91,106 +91,4 @@ public class DestinyActivityModeDefinition : IDeepEquatable<DestinyActivityModeD
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyActivityModeDefinition? other)
-    {
-        return other is not null &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               PgcrImage == other.PgcrImage &&
-               ModeType == other.ModeType &&
-               ActivityModeCategory == other.ActivityModeCategory &&
-               IsTeamBased == other.IsTeamBased &&
-               IsAggregateMode == other.IsAggregateMode &&
-               ParentHashes.DeepEqualsListNaive(other.ParentHashes) &&
-               FriendlyName == other.FriendlyName &&
-               ActivityModeMappings.DeepEqualsDictionaryNaive(other.ActivityModeMappings) &&
-               Display == other.Display &&
-               Order == other.Order &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyActivityModeDefinition? other)
-    {
-        if (other is null) return;
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (PgcrImage != other.PgcrImage)
-        {
-            PgcrImage = other.PgcrImage;
-            OnPropertyChanged(nameof(PgcrImage));
-        }
-        if (ModeType != other.ModeType)
-        {
-            ModeType = other.ModeType;
-            OnPropertyChanged(nameof(ModeType));
-        }
-        if (ActivityModeCategory != other.ActivityModeCategory)
-        {
-            ActivityModeCategory = other.ActivityModeCategory;
-            OnPropertyChanged(nameof(ActivityModeCategory));
-        }
-        if (IsTeamBased != other.IsTeamBased)
-        {
-            IsTeamBased = other.IsTeamBased;
-            OnPropertyChanged(nameof(IsTeamBased));
-        }
-        if (IsAggregateMode != other.IsAggregateMode)
-        {
-            IsAggregateMode = other.IsAggregateMode;
-            OnPropertyChanged(nameof(IsAggregateMode));
-        }
-        if (!ParentHashes.DeepEqualsListNaive(other.ParentHashes))
-        {
-            ParentHashes = other.ParentHashes;
-            OnPropertyChanged(nameof(ParentHashes));
-        }
-        if (FriendlyName != other.FriendlyName)
-        {
-            FriendlyName = other.FriendlyName;
-            OnPropertyChanged(nameof(FriendlyName));
-        }
-        if (!ActivityModeMappings.DeepEqualsDictionaryNaive(other.ActivityModeMappings))
-        {
-            ActivityModeMappings = other.ActivityModeMappings;
-            OnPropertyChanged(nameof(ActivityModeMappings));
-        }
-        if (Display != other.Display)
-        {
-            Display = other.Display;
-            OnPropertyChanged(nameof(Display));
-        }
-        if (Order != other.Order)
-        {
-            Order = other.Order;
-            OnPropertyChanged(nameof(Order));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

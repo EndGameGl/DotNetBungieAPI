@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     If an item can have an action performed on it (like "Dismantle"), it will be defined here if you care.
 /// </summary>
-public class DestinyItemCraftingBlockDefinition : IDeepEquatable<DestinyItemCraftingBlockDefinition>
+public class DestinyItemCraftingBlockDefinition
 {
     /// <summary>
     ///     A reference to the item definition that is created when crafting with this 'recipe' item.
@@ -24,59 +24,11 @@ public class DestinyItemCraftingBlockDefinition : IDeepEquatable<DestinyItemCraf
     ///     A reference to the base material requirements for crafting with this recipe.
     /// </summary>
     [JsonPropertyName("baseMaterialRequirements")]
-    public uint? BaseMaterialRequirements { get; set; }
+    public uint BaseMaterialRequirements { get; set; }
 
     /// <summary>
     ///     A list of 'bonus' socket plugs that may be available if certain requirements are met.
     /// </summary>
     [JsonPropertyName("bonusPlugs")]
     public List<Destiny.Definitions.DestinyItemCraftingBlockBonusPlugDefinition> BonusPlugs { get; set; }
-
-    public bool DeepEquals(DestinyItemCraftingBlockDefinition? other)
-    {
-        return other is not null &&
-               OutputItemHash == other.OutputItemHash &&
-               RequiredSocketTypeHashes.DeepEqualsListNaive(other.RequiredSocketTypeHashes) &&
-               FailedRequirementStrings.DeepEqualsListNaive(other.FailedRequirementStrings) &&
-               BaseMaterialRequirements == other.BaseMaterialRequirements &&
-               BonusPlugs.DeepEqualsList(other.BonusPlugs);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemCraftingBlockDefinition? other)
-    {
-        if (other is null) return;
-        if (OutputItemHash != other.OutputItemHash)
-        {
-            OutputItemHash = other.OutputItemHash;
-            OnPropertyChanged(nameof(OutputItemHash));
-        }
-        if (!RequiredSocketTypeHashes.DeepEqualsListNaive(other.RequiredSocketTypeHashes))
-        {
-            RequiredSocketTypeHashes = other.RequiredSocketTypeHashes;
-            OnPropertyChanged(nameof(RequiredSocketTypeHashes));
-        }
-        if (!FailedRequirementStrings.DeepEqualsListNaive(other.FailedRequirementStrings))
-        {
-            FailedRequirementStrings = other.FailedRequirementStrings;
-            OnPropertyChanged(nameof(FailedRequirementStrings));
-        }
-        if (BaseMaterialRequirements != other.BaseMaterialRequirements)
-        {
-            BaseMaterialRequirements = other.BaseMaterialRequirements;
-            OnPropertyChanged(nameof(BaseMaterialRequirements));
-        }
-        if (!BonusPlugs.DeepEqualsList(other.BonusPlugs))
-        {
-            BonusPlugs = other.BonusPlugs;
-            OnPropertyChanged(nameof(BonusPlugs));
-        }
-    }
 }

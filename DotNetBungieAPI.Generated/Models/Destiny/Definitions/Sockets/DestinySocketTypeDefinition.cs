@@ -5,19 +5,19 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Sockets;
 /// <para />
 ///     See DestinyInventoryItemDefinition for more information about Socketed items and Plugs.
 /// </summary>
-public class DestinySocketTypeDefinition : IDeepEquatable<DestinySocketTypeDefinition>
+public class DestinySocketTypeDefinition
 {
     /// <summary>
     ///     There are fields for this display data, but they appear to be unpopulated as of now. I am not sure where in the UI these would show if they even were populated, but I will continue to return this data in case it becomes useful.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public object DisplayProperties { get; set; }
 
     /// <summary>
     ///     Defines what happens when a plug is inserted into sockets of this type.
     /// </summary>
     [JsonPropertyName("insertAction")]
-    public Destiny.Definitions.Sockets.DestinyInsertPlugActionDefinition InsertAction { get; set; }
+    public object InsertAction { get; set; }
 
     /// <summary>
     ///     A list of Plug "Categories" that are allowed to be plugged into sockets of this type.
@@ -78,106 +78,4 @@ public class DestinySocketTypeDefinition : IDeepEquatable<DestinySocketTypeDefin
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinySocketTypeDefinition? other)
-    {
-        return other is not null &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               (InsertAction is not null ? InsertAction.DeepEquals(other.InsertAction) : other.InsertAction is null) &&
-               PlugWhitelist.DeepEqualsList(other.PlugWhitelist) &&
-               SocketCategoryHash == other.SocketCategoryHash &&
-               Visibility == other.Visibility &&
-               AlwaysRandomizeSockets == other.AlwaysRandomizeSockets &&
-               IsPreviewEnabled == other.IsPreviewEnabled &&
-               HideDuplicateReusablePlugs == other.HideDuplicateReusablePlugs &&
-               OverridesUiAppearance == other.OverridesUiAppearance &&
-               AvoidDuplicatesOnInitialization == other.AvoidDuplicatesOnInitialization &&
-               CurrencyScalars.DeepEqualsList(other.CurrencyScalars) &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinySocketTypeDefinition? other)
-    {
-        if (other is null) return;
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (!InsertAction.DeepEquals(other.InsertAction))
-        {
-            InsertAction.Update(other.InsertAction);
-            OnPropertyChanged(nameof(InsertAction));
-        }
-        if (!PlugWhitelist.DeepEqualsList(other.PlugWhitelist))
-        {
-            PlugWhitelist = other.PlugWhitelist;
-            OnPropertyChanged(nameof(PlugWhitelist));
-        }
-        if (SocketCategoryHash != other.SocketCategoryHash)
-        {
-            SocketCategoryHash = other.SocketCategoryHash;
-            OnPropertyChanged(nameof(SocketCategoryHash));
-        }
-        if (Visibility != other.Visibility)
-        {
-            Visibility = other.Visibility;
-            OnPropertyChanged(nameof(Visibility));
-        }
-        if (AlwaysRandomizeSockets != other.AlwaysRandomizeSockets)
-        {
-            AlwaysRandomizeSockets = other.AlwaysRandomizeSockets;
-            OnPropertyChanged(nameof(AlwaysRandomizeSockets));
-        }
-        if (IsPreviewEnabled != other.IsPreviewEnabled)
-        {
-            IsPreviewEnabled = other.IsPreviewEnabled;
-            OnPropertyChanged(nameof(IsPreviewEnabled));
-        }
-        if (HideDuplicateReusablePlugs != other.HideDuplicateReusablePlugs)
-        {
-            HideDuplicateReusablePlugs = other.HideDuplicateReusablePlugs;
-            OnPropertyChanged(nameof(HideDuplicateReusablePlugs));
-        }
-        if (OverridesUiAppearance != other.OverridesUiAppearance)
-        {
-            OverridesUiAppearance = other.OverridesUiAppearance;
-            OnPropertyChanged(nameof(OverridesUiAppearance));
-        }
-        if (AvoidDuplicatesOnInitialization != other.AvoidDuplicatesOnInitialization)
-        {
-            AvoidDuplicatesOnInitialization = other.AvoidDuplicatesOnInitialization;
-            OnPropertyChanged(nameof(AvoidDuplicatesOnInitialization));
-        }
-        if (!CurrencyScalars.DeepEqualsList(other.CurrencyScalars))
-        {
-            CurrencyScalars = other.CurrencyScalars;
-            OnPropertyChanged(nameof(CurrencyScalars));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

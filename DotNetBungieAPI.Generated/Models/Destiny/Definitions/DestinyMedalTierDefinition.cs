@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Unfortunately, we haven't had time to do this evaluation yet in Destiny 2, so we're short on Medal Tiers. This will hopefully be updated over time, if Medals continue to exist.
 /// </summary>
-public class DestinyMedalTierDefinition : IDeepEquatable<DestinyMedalTierDefinition>
+public class DestinyMedalTierDefinition
 {
     /// <summary>
     ///     The name of the tier.
@@ -38,52 +38,4 @@ public class DestinyMedalTierDefinition : IDeepEquatable<DestinyMedalTierDefinit
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyMedalTierDefinition? other)
-    {
-        return other is not null &&
-               TierName == other.TierName &&
-               Order == other.Order &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyMedalTierDefinition? other)
-    {
-        if (other is null) return;
-        if (TierName != other.TierName)
-        {
-            TierName = other.TierName;
-            OnPropertyChanged(nameof(TierName));
-        }
-        if (Order != other.Order)
-        {
-            Order = other.Order;
-            OnPropertyChanged(nameof(Order));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

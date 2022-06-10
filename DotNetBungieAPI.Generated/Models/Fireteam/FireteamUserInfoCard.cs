@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Fireteam;
 
-public class FireteamUserInfoCard : IDeepEquatable<FireteamUserInfoCard>
+public class FireteamUserInfoCard
 {
     [JsonPropertyName("FireteamDisplayName")]
     public string FireteamDisplayName { get; set; }
@@ -68,95 +68,5 @@ public class FireteamUserInfoCard : IDeepEquatable<FireteamUserInfoCard>
     ///     The bungie global display name code, if set.
     /// </summary>
     [JsonPropertyName("bungieGlobalDisplayNameCode")]
-    public short? BungieGlobalDisplayNameCode { get; set; }
-
-    public bool DeepEquals(FireteamUserInfoCard? other)
-    {
-        return other is not null &&
-               FireteamDisplayName == other.FireteamDisplayName &&
-               FireteamMembershipType == other.FireteamMembershipType &&
-               SupplementalDisplayName == other.SupplementalDisplayName &&
-               IconPath == other.IconPath &&
-               CrossSaveOverride == other.CrossSaveOverride &&
-               ApplicableMembershipTypes.DeepEqualsListNaive(other.ApplicableMembershipTypes) &&
-               IsPublic == other.IsPublic &&
-               MembershipType == other.MembershipType &&
-               MembershipId == other.MembershipId &&
-               DisplayName == other.DisplayName &&
-               BungieGlobalDisplayName == other.BungieGlobalDisplayName &&
-               BungieGlobalDisplayNameCode == other.BungieGlobalDisplayNameCode;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(FireteamUserInfoCard? other)
-    {
-        if (other is null) return;
-        if (FireteamDisplayName != other.FireteamDisplayName)
-        {
-            FireteamDisplayName = other.FireteamDisplayName;
-            OnPropertyChanged(nameof(FireteamDisplayName));
-        }
-        if (FireteamMembershipType != other.FireteamMembershipType)
-        {
-            FireteamMembershipType = other.FireteamMembershipType;
-            OnPropertyChanged(nameof(FireteamMembershipType));
-        }
-        if (SupplementalDisplayName != other.SupplementalDisplayName)
-        {
-            SupplementalDisplayName = other.SupplementalDisplayName;
-            OnPropertyChanged(nameof(SupplementalDisplayName));
-        }
-        if (IconPath != other.IconPath)
-        {
-            IconPath = other.IconPath;
-            OnPropertyChanged(nameof(IconPath));
-        }
-        if (CrossSaveOverride != other.CrossSaveOverride)
-        {
-            CrossSaveOverride = other.CrossSaveOverride;
-            OnPropertyChanged(nameof(CrossSaveOverride));
-        }
-        if (!ApplicableMembershipTypes.DeepEqualsListNaive(other.ApplicableMembershipTypes))
-        {
-            ApplicableMembershipTypes = other.ApplicableMembershipTypes;
-            OnPropertyChanged(nameof(ApplicableMembershipTypes));
-        }
-        if (IsPublic != other.IsPublic)
-        {
-            IsPublic = other.IsPublic;
-            OnPropertyChanged(nameof(IsPublic));
-        }
-        if (MembershipType != other.MembershipType)
-        {
-            MembershipType = other.MembershipType;
-            OnPropertyChanged(nameof(MembershipType));
-        }
-        if (MembershipId != other.MembershipId)
-        {
-            MembershipId = other.MembershipId;
-            OnPropertyChanged(nameof(MembershipId));
-        }
-        if (DisplayName != other.DisplayName)
-        {
-            DisplayName = other.DisplayName;
-            OnPropertyChanged(nameof(DisplayName));
-        }
-        if (BungieGlobalDisplayName != other.BungieGlobalDisplayName)
-        {
-            BungieGlobalDisplayName = other.BungieGlobalDisplayName;
-            OnPropertyChanged(nameof(BungieGlobalDisplayName));
-        }
-        if (BungieGlobalDisplayNameCode != other.BungieGlobalDisplayNameCode)
-        {
-            BungieGlobalDisplayNameCode = other.BungieGlobalDisplayNameCode;
-            OnPropertyChanged(nameof(BungieGlobalDisplayNameCode));
-        }
-    }
+    public short BungieGlobalDisplayNameCode { get; set; }
 }

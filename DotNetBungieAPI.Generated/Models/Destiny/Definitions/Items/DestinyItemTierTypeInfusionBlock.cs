@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Items;
 
-public class DestinyItemTierTypeInfusionBlock : IDeepEquatable<DestinyItemTierTypeInfusionBlock>
+public class DestinyItemTierTypeInfusionBlock
 {
     /// <summary>
     ///     The default portion of quality that will transfer from the infuser to the infusee item. (InfuserQuality - InfuseeQuality) * baseQualityTransferRatio = base quality transferred.
@@ -13,34 +13,4 @@ public class DestinyItemTierTypeInfusionBlock : IDeepEquatable<DestinyItemTierTy
     /// </summary>
     [JsonPropertyName("minimumQualityIncrement")]
     public int MinimumQualityIncrement { get; set; }
-
-    public bool DeepEquals(DestinyItemTierTypeInfusionBlock? other)
-    {
-        return other is not null &&
-               BaseQualityTransferRatio == other.BaseQualityTransferRatio &&
-               MinimumQualityIncrement == other.MinimumQualityIncrement;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemTierTypeInfusionBlock? other)
-    {
-        if (other is null) return;
-        if (BaseQualityTransferRatio != other.BaseQualityTransferRatio)
-        {
-            BaseQualityTransferRatio = other.BaseQualityTransferRatio;
-            OnPropertyChanged(nameof(BaseQualityTransferRatio));
-        }
-        if (MinimumQualityIncrement != other.MinimumQualityIncrement)
-        {
-            MinimumQualityIncrement = other.MinimumQualityIncrement;
-            OnPropertyChanged(nameof(MinimumQualityIncrement));
-        }
-    }
 }

@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Note that this maps to a DestinyProgressionMappingDefinition, and *not* a DestinyProgressionDefinition directly. This is apparently so that multiple progressions can be granted progression points/experience at the same time.
 /// </summary>
-public class DestinyProgressionRewardDefinition : IDeepEquatable<DestinyProgressionRewardDefinition>
+public class DestinyProgressionRewardDefinition
 {
     /// <summary>
     ///     The hash identifier of the DestinyProgressionMappingDefinition that contains the progressions for which experience should be applied.
@@ -24,40 +24,4 @@ public class DestinyProgressionRewardDefinition : IDeepEquatable<DestinyProgress
     /// </summary>
     [JsonPropertyName("applyThrottles")]
     public bool ApplyThrottles { get; set; }
-
-    public bool DeepEquals(DestinyProgressionRewardDefinition? other)
-    {
-        return other is not null &&
-               ProgressionMappingHash == other.ProgressionMappingHash &&
-               Amount == other.Amount &&
-               ApplyThrottles == other.ApplyThrottles;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyProgressionRewardDefinition? other)
-    {
-        if (other is null) return;
-        if (ProgressionMappingHash != other.ProgressionMappingHash)
-        {
-            ProgressionMappingHash = other.ProgressionMappingHash;
-            OnPropertyChanged(nameof(ProgressionMappingHash));
-        }
-        if (Amount != other.Amount)
-        {
-            Amount = other.Amount;
-            OnPropertyChanged(nameof(Amount));
-        }
-        if (ApplyThrottles != other.ApplyThrottles)
-        {
-            ApplyThrottles = other.ApplyThrottles;
-            OnPropertyChanged(nameof(ApplyThrottles));
-        }
-    }
 }

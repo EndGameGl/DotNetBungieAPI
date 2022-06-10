@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 
-public class GroupFeatures : IDeepEquatable<GroupFeatures>
+public class GroupFeatures
 {
     [JsonPropertyName("maximumMembers")]
     public int MaximumMembers { get; set; }
@@ -72,76 +72,4 @@ public class GroupFeatures : IDeepEquatable<GroupFeatures>
     /// </summary>
     [JsonPropertyName("joinLevel")]
     public GroupsV2.RuntimeGroupMemberType JoinLevel { get; set; }
-
-    public bool DeepEquals(GroupFeatures? other)
-    {
-        return other is not null &&
-               MaximumMembers == other.MaximumMembers &&
-               MaximumMembershipsOfGroupType == other.MaximumMembershipsOfGroupType &&
-               Capabilities == other.Capabilities &&
-               MembershipTypes.DeepEqualsListNaive(other.MembershipTypes) &&
-               InvitePermissionOverride == other.InvitePermissionOverride &&
-               UpdateCulturePermissionOverride == other.UpdateCulturePermissionOverride &&
-               HostGuidedGamePermissionOverride == other.HostGuidedGamePermissionOverride &&
-               UpdateBannerPermissionOverride == other.UpdateBannerPermissionOverride &&
-               JoinLevel == other.JoinLevel;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(GroupFeatures? other)
-    {
-        if (other is null) return;
-        if (MaximumMembers != other.MaximumMembers)
-        {
-            MaximumMembers = other.MaximumMembers;
-            OnPropertyChanged(nameof(MaximumMembers));
-        }
-        if (MaximumMembershipsOfGroupType != other.MaximumMembershipsOfGroupType)
-        {
-            MaximumMembershipsOfGroupType = other.MaximumMembershipsOfGroupType;
-            OnPropertyChanged(nameof(MaximumMembershipsOfGroupType));
-        }
-        if (Capabilities != other.Capabilities)
-        {
-            Capabilities = other.Capabilities;
-            OnPropertyChanged(nameof(Capabilities));
-        }
-        if (!MembershipTypes.DeepEqualsListNaive(other.MembershipTypes))
-        {
-            MembershipTypes = other.MembershipTypes;
-            OnPropertyChanged(nameof(MembershipTypes));
-        }
-        if (InvitePermissionOverride != other.InvitePermissionOverride)
-        {
-            InvitePermissionOverride = other.InvitePermissionOverride;
-            OnPropertyChanged(nameof(InvitePermissionOverride));
-        }
-        if (UpdateCulturePermissionOverride != other.UpdateCulturePermissionOverride)
-        {
-            UpdateCulturePermissionOverride = other.UpdateCulturePermissionOverride;
-            OnPropertyChanged(nameof(UpdateCulturePermissionOverride));
-        }
-        if (HostGuidedGamePermissionOverride != other.HostGuidedGamePermissionOverride)
-        {
-            HostGuidedGamePermissionOverride = other.HostGuidedGamePermissionOverride;
-            OnPropertyChanged(nameof(HostGuidedGamePermissionOverride));
-        }
-        if (UpdateBannerPermissionOverride != other.UpdateBannerPermissionOverride)
-        {
-            UpdateBannerPermissionOverride = other.UpdateBannerPermissionOverride;
-            OnPropertyChanged(nameof(UpdateBannerPermissionOverride));
-        }
-        if (JoinLevel != other.JoinLevel)
-        {
-            JoinLevel = other.JoinLevel;
-            OnPropertyChanged(nameof(JoinLevel));
-        }
-    }
 }

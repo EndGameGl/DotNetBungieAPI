@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Not guaranteed to match real-world instances of the item, but should hopefully at least be close. If it's not close, let us know on the Bungie API forums.
 /// </summary>
-public class DestinyInventoryItemStatDefinition : IDeepEquatable<DestinyInventoryItemStatDefinition>
+public class DestinyInventoryItemStatDefinition
 {
     /// <summary>
     ///     The hash for the DestinyStatDefinition representing this stat.
@@ -45,53 +45,5 @@ public class DestinyInventoryItemStatDefinition : IDeepEquatable<DestinyInventor
     ///     If not returned, there is no maximum to use (and thus the stat should not be shown in a way that assumes there is a limit to the stat)
     /// </summary>
     [JsonPropertyName("displayMaximum")]
-    public int? DisplayMaximum { get; set; }
-
-    public bool DeepEquals(DestinyInventoryItemStatDefinition? other)
-    {
-        return other is not null &&
-               StatHash == other.StatHash &&
-               Value == other.Value &&
-               Minimum == other.Minimum &&
-               Maximum == other.Maximum &&
-               DisplayMaximum == other.DisplayMaximum;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyInventoryItemStatDefinition? other)
-    {
-        if (other is null) return;
-        if (StatHash != other.StatHash)
-        {
-            StatHash = other.StatHash;
-            OnPropertyChanged(nameof(StatHash));
-        }
-        if (Value != other.Value)
-        {
-            Value = other.Value;
-            OnPropertyChanged(nameof(Value));
-        }
-        if (Minimum != other.Minimum)
-        {
-            Minimum = other.Minimum;
-            OnPropertyChanged(nameof(Minimum));
-        }
-        if (Maximum != other.Maximum)
-        {
-            Maximum = other.Maximum;
-            OnPropertyChanged(nameof(Maximum));
-        }
-        if (DisplayMaximum != other.DisplayMaximum)
-        {
-            DisplayMaximum = other.DisplayMaximum;
-            OnPropertyChanged(nameof(DisplayMaximum));
-        }
-    }
+    public int DisplayMaximum { get; set; }
 }

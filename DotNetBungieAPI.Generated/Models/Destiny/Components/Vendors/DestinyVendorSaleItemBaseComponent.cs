@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Vendors;
 /// <para />
 ///     Note that if you want instance, stats, etc... data for the item, you'll have to request additional components such as ItemInstances, ItemPerks etc... and acquire them from the DestinyVendorResponse's "items" property.
 /// </summary>
-public class DestinyVendorSaleItemBaseComponent : IDeepEquatable<DestinyVendorSaleItemBaseComponent>
+public class DestinyVendorSaleItemBaseComponent
 {
     /// <summary>
     ///     The index into the DestinyVendorDefinition.itemList property. Note that this means Vendor data *is* Content Version dependent: make sure you have the latest content before you use Vendor data, or these indexes may mismatch. 
@@ -27,7 +27,7 @@ public class DestinyVendorSaleItemBaseComponent : IDeepEquatable<DestinyVendorSa
     ///     If you don't do this, certain items whose styles are being overridden by socketed items - such as the "Recycle Shader" item - would show whatever their default icon/style is, and it wouldn't be pretty or look accurate.
     /// </summary>
     [JsonPropertyName("overrideStyleItemHash")]
-    public uint? OverrideStyleItemHash { get; set; }
+    public uint OverrideStyleItemHash { get; set; }
 
     /// <summary>
     ///     How much of the item you'll be getting.
@@ -47,71 +47,11 @@ public class DestinyVendorSaleItemBaseComponent : IDeepEquatable<DestinyVendorSa
     ///     Note that there's not actually any guarantee that it will go away: it could be chosen again and end up still being in the Vendor's sale items! But this is the next date where that test will occur, and is also the date that the game shows for availability on things like Bounties being sold. So it's the best we can give.
     /// </summary>
     [JsonPropertyName("overrideNextRefreshDate")]
-    public DateTime? OverrideNextRefreshDate { get; set; }
+    public DateTime OverrideNextRefreshDate { get; set; }
 
     /// <summary>
     ///     If true, this item can be purchased through the Bungie.net API.
     /// </summary>
     [JsonPropertyName("apiPurchasable")]
-    public bool? ApiPurchasable { get; set; }
-
-    public bool DeepEquals(DestinyVendorSaleItemBaseComponent? other)
-    {
-        return other is not null &&
-               VendorItemIndex == other.VendorItemIndex &&
-               ItemHash == other.ItemHash &&
-               OverrideStyleItemHash == other.OverrideStyleItemHash &&
-               Quantity == other.Quantity &&
-               Costs.DeepEqualsList(other.Costs) &&
-               OverrideNextRefreshDate == other.OverrideNextRefreshDate &&
-               ApiPurchasable == other.ApiPurchasable;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyVendorSaleItemBaseComponent? other)
-    {
-        if (other is null) return;
-        if (VendorItemIndex != other.VendorItemIndex)
-        {
-            VendorItemIndex = other.VendorItemIndex;
-            OnPropertyChanged(nameof(VendorItemIndex));
-        }
-        if (ItemHash != other.ItemHash)
-        {
-            ItemHash = other.ItemHash;
-            OnPropertyChanged(nameof(ItemHash));
-        }
-        if (OverrideStyleItemHash != other.OverrideStyleItemHash)
-        {
-            OverrideStyleItemHash = other.OverrideStyleItemHash;
-            OnPropertyChanged(nameof(OverrideStyleItemHash));
-        }
-        if (Quantity != other.Quantity)
-        {
-            Quantity = other.Quantity;
-            OnPropertyChanged(nameof(Quantity));
-        }
-        if (!Costs.DeepEqualsList(other.Costs))
-        {
-            Costs = other.Costs;
-            OnPropertyChanged(nameof(Costs));
-        }
-        if (OverrideNextRefreshDate != other.OverrideNextRefreshDate)
-        {
-            OverrideNextRefreshDate = other.OverrideNextRefreshDate;
-            OnPropertyChanged(nameof(OverrideNextRefreshDate));
-        }
-        if (ApiPurchasable != other.ApiPurchasable)
-        {
-            ApiPurchasable = other.ApiPurchasable;
-            OnPropertyChanged(nameof(ApiPurchasable));
-        }
-    }
+    public bool ApiPurchasable { get; set; }
 }

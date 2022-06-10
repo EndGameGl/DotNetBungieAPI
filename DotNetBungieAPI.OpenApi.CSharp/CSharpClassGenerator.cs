@@ -16,7 +16,7 @@ public class CSharpClassGenerator : ModelGeneratorBase
             await WriteComment(false, typeData.Description);
         }
 
-        await WriteLineAsync($"public class {typeData.TypeName} : IDeepEquatable<{typeData.TypeName}>");
+        await WriteLineAsync($"public class {typeData.TypeName}");
         await WriteLineAsync('{');
 
         var totalValues = typeData.Properties.Count;
@@ -30,23 +30,17 @@ public class CSharpClassGenerator : ModelGeneratorBase
             }
 
             await WriteLineAsync($"{Indent}[JsonPropertyName(\"{propertyTypeData.OriginPropertyName}\")]");
+
             await WriteLineAsync(
-                $"{Indent}public {propertyTypeData} {propertyTypeData.OriginPropertyName.GetCSharpPropertyName()} {{ get; set; }}");
+                $"{Indent}public {propertyTypeData.GetCSharpType()} {propertyTypeData.OriginPropertyName.GetCSharpPropertyName()} {{ get; set; }}");
+
             if (i != amountCheckValue)
             {
                 await WriteLineAsync();
             }
         }
-
-        await WriteLineAsync();
-
-        await WriteDeepEqualsMethod(typeData);
-
-        await WriteLineAsync();
-
-        await WriteUpdateMethod(typeData);
-
-        await WriteAsync('}');
+        
+        await WriteLineAsync('}');
     }
 
     public override async Task GenerateDataForEnumType(EnumTypeData typeData)
@@ -61,7 +55,7 @@ public class CSharpClassGenerator : ModelGeneratorBase
             await WriteLineAsync("[System.Flags]");
         }
 
-        await WriteLineAsync($"public enum {typeData.TypeName} : {typeData.Format}");
+        await WriteLineAsync($"public enum {typeData.TypeName} : {Resources.TypeMappings[typeData.Format]}");
         await WriteLineAsync('{');
 
         var totalValues = typeData.Values.Count;
@@ -111,143 +105,5 @@ public class CSharpClassGenerator : ModelGeneratorBase
         }
 
         await WriteLineAsync($"{(indent ? Indent : string.Empty)}/// </summary>");
-    }
-
-    private async Task WriteDeepEqualsMethod(ObjectTypeData typeData)
-    {
-        await WriteLineAsync($"{Indent}public bool DeepEquals({typeData.TypeName}? other)");
-        await WriteLineAsync($"{Indent}{{");
-
-        await WriteLineAsync($"{Indent}{Indent}return other is not null &&");
-
-        var totalValues = typeData.Properties.Count;
-        var amountCheckValue = totalValues - 1;
-
-        for (var i = 0; i < totalValues; i++)
-        {
-            var propertyTypeData = typeData.Properties[i];
-            var propertyName = propertyTypeData.OriginPropertyName.GetCSharpPropertyName();
-            if (propertyTypeData.IsValueType)
-            {
-                await WriteLineAsync(
-                    $"{Indent}{Indent}{Indent}   {propertyName} == other.{propertyName}{(i != amountCheckValue ? " &&" : ";")}");
-            }
-
-            if (propertyTypeData.IsClassObject)
-            {
-                await WriteLineAsync(
-                    $"{Indent}{Indent}{Indent}   ({propertyName} is not null ? {propertyName}.DeepEquals(other.{propertyName}) : other.{propertyName} is null){(i != amountCheckValue ? " &&" : ";")}");
-            }
-
-            if (propertyTypeData.IsCollection)
-            {
-                if (propertyTypeData.GenericProperties[0].IsValueType)
-                {
-                    await WriteLineAsync(
-                        $"{Indent}{Indent}{Indent}   {propertyName}.DeepEqualsListNaive(other.{propertyName}){(i != amountCheckValue ? " &&" : ";")}");
-                }
-                else
-                {
-                    await WriteLineAsync(
-                        $"{Indent}{Indent}{Indent}   {propertyName}.DeepEqualsList(other.{propertyName}){(i != amountCheckValue ? " &&" : ";")}");
-                }
-            }
-
-            if (propertyTypeData.IsDictionary)
-            {
-                if (propertyTypeData.GenericProperties[1].IsClassObject)
-                {
-                    await WriteLineAsync(
-                        $"{Indent}{Indent}{Indent}   {propertyName}.DeepEqualsDictionary(other.{propertyName}){(i != amountCheckValue ? " &&" : ";")}");
-                }
-                else
-                {
-                    await WriteLineAsync(
-                        $"{Indent}{Indent}{Indent}   {propertyName}.DeepEqualsDictionaryNaive(other.{propertyName}){(i != amountCheckValue ? " &&" : ";")}");
-                }
-            }
-        }
-
-        await WriteLineAsync($"{Indent}}}");
-    }
-
-    private async Task WriteUpdateMethod(ObjectTypeData typeData)
-    {
-        await WriteLineAsync($"{Indent}public event PropertyChangedEventHandler? PropertyChanged;");
-        await WriteLineAsync();
-        await WriteLineAsync($"{Indent}[NotifyPropertyChangedInvocator]");
-        await WriteLineAsync($"{Indent}protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)\n{Indent}{{\n{Indent}   PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));\n{Indent}}}");
-        await WriteLineAsync();
-        
-        await WriteLineAsync($"{Indent}public void Update({typeData.TypeName}? other)");
-        await WriteLineAsync($"{Indent}{{");
-
-        await WriteLineAsync($"{Indent}    if (other is null) return;");
-        
-        var totalValues = typeData.Properties.Count;
-
-        for (var i = 0; i < totalValues; i++)
-        {
-            var propertyTypeData = typeData.Properties[i];
-            var propertyName = propertyTypeData.OriginPropertyName.GetCSharpPropertyName();
-            if (propertyTypeData.IsClassObject)
-            {
-                await WriteLineAsync($"{Indent}    if (!{propertyName}.DeepEquals(other.{propertyName}))");
-                await WriteLineAsync($"{Indent}    {{");
-                await WriteLineAsync($"{Indent}        {propertyName}.Update(other.{propertyName});");
-                await WriteLineAsync($"{Indent}        OnPropertyChanged(nameof({propertyName}));");
-                await WriteLineAsync($"{Indent}    }}");
-            }
-            else if (propertyTypeData.IsCollection)
-            {
-                if (propertyTypeData.GenericProperties[0].IsValueType)
-                {
-                    await WriteLineAsync($"{Indent}    if (!{propertyName}.DeepEqualsListNaive(other.{propertyName}))");
-                    await WriteLineAsync($"{Indent}    {{");
-                    await WriteLineAsync($"{Indent}        {propertyName} = other.{propertyName};");
-                    await WriteLineAsync($"{Indent}        OnPropertyChanged(nameof({propertyName}));");
-                    await WriteLineAsync($"{Indent}    }}");
-                }
-                else
-                {
-                    await WriteLineAsync($"{Indent}    if (!{propertyName}.DeepEqualsList(other.{propertyName}))");
-                    await WriteLineAsync($"{Indent}    {{");
-                    await WriteLineAsync($"{Indent}        {propertyName} = other.{propertyName};");
-                    await WriteLineAsync($"{Indent}        OnPropertyChanged(nameof({propertyName}));");
-                    await WriteLineAsync($"{Indent}    }}");
-                }
-            }
-            else if (propertyTypeData.IsDictionary)
-            {
-                if (propertyTypeData.GenericProperties[1].IsValueType)
-                {
-                    await WriteLineAsync($"{Indent}    if (!{propertyName}.DeepEqualsDictionaryNaive(other.{propertyName}))");
-                    await WriteLineAsync($"{Indent}    {{");
-                    await WriteLineAsync($"{Indent}        {propertyName} = other.{propertyName};");
-                    await WriteLineAsync($"{Indent}        OnPropertyChanged(nameof({propertyName}));");
-                    await WriteLineAsync($"{Indent}    }}");
-                }
-                else
-                {
-                    await WriteLineAsync($"{Indent}    if (!{propertyName}.DeepEqualsDictionary(other.{propertyName}))");
-                    await WriteLineAsync($"{Indent}    {{");
-                    await WriteLineAsync($"{Indent}        {propertyName} = other.{propertyName};");
-                    await WriteLineAsync($"{Indent}        OnPropertyChanged(nameof({propertyName}));");
-                    await WriteLineAsync($"{Indent}    }}");
-                }
-            }
-            else
-            {
-                await WriteLineAsync($"{Indent}    if ({propertyName} != other.{propertyName})");
-                await WriteLineAsync($"{Indent}    {{");
-                await WriteLineAsync($"{Indent}        {propertyName} = other.{propertyName};");
-                await WriteLineAsync($"{Indent}        OnPropertyChanged(nameof({propertyName}));");
-                await WriteLineAsync($"{Indent}    }}");
-            }
-
-            
-        }
-
-        await WriteLineAsync($"{Indent}}}");
     }
 }

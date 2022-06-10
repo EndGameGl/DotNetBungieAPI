@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.HistoricalStats;
 
-public class DestinyPostGameCarnageReportExtendedData : IDeepEquatable<DestinyPostGameCarnageReportExtendedData>
+public class DestinyPostGameCarnageReportExtendedData
 {
     /// <summary>
     ///     List of weapons and their perspective values.
@@ -13,34 +13,4 @@ public class DestinyPostGameCarnageReportExtendedData : IDeepEquatable<DestinyPo
     /// </summary>
     [JsonPropertyName("values")]
     public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue> Values { get; set; }
-
-    public bool DeepEquals(DestinyPostGameCarnageReportExtendedData? other)
-    {
-        return other is not null &&
-               Weapons.DeepEqualsList(other.Weapons) &&
-               Values.DeepEqualsDictionary(other.Values);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyPostGameCarnageReportExtendedData? other)
-    {
-        if (other is null) return;
-        if (!Weapons.DeepEqualsList(other.Weapons))
-        {
-            Weapons = other.Weapons;
-            OnPropertyChanged(nameof(Weapons));
-        }
-        if (!Values.DeepEqualsDictionary(other.Values))
-        {
-            Values = other.Values;
-            OnPropertyChanged(nameof(Values));
-        }
-    }
 }

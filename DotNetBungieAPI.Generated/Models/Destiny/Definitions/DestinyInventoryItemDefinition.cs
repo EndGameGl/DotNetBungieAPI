@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     In practice, you will want to associate this data with "live" item data from a Bungie.Net Platform call: these definitions describe the item in generic, non-instanced terms: but an actual instance of an item can vary widely from these generic definitions.
 /// </summary>
-public class DestinyInventoryItemDefinition : IDeepEquatable<DestinyInventoryItemDefinition>
+public class DestinyInventoryItemDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -20,7 +20,7 @@ public class DestinyInventoryItemDefinition : IDeepEquatable<DestinyInventoryIte
     ///     If this item has a collectible related to it, this is the hash identifier of that collectible entry.
     /// </summary>
     [JsonPropertyName("collectibleHash")]
-    public uint? CollectibleHash { get; set; }
+    public uint CollectibleHash { get; set; }
 
     /// <summary>
     ///     If available, this is the original 'active' release watermark overlay for the icon. If the item has different versions, this can be overridden by the 'display version watermark icon' from the 'quality' block. Alternatively, if there is no watermark for the version, and the item version has a power cap below the current season power cap, this can be overridden by the iconWatermarkShelved property.
@@ -56,7 +56,7 @@ public class DestinyInventoryItemDefinition : IDeepEquatable<DestinyInventoryIte
     ///     Sometimes, an item will have a background color. Most notably this occurs with Emblems, who use the Background Color for small character nameplates such as the "friends" view you see in-game. There are almost certainly other items that have background color as well, though I have not bothered to investigate what items have it nor what purposes they serve: use it as you will.
     /// </summary>
     [JsonPropertyName("backgroundColor")]
-    public Destiny.Misc.DestinyColor BackgroundColor { get; set; }
+    public object BackgroundColor { get; set; }
 
     /// <summary>
     ///     If we were able to acquire an in-game screenshot for the item, the path to that screenshot will be returned here. Note that not all items have screenshots: particularly not any non-equippable items.
@@ -101,121 +101,121 @@ public class DestinyInventoryItemDefinition : IDeepEquatable<DestinyInventoryIte
     ///     If the item can be "used", this block will be non-null, and will have data related to the action performed when using the item. (Guess what? 99% of the time, this action is "dismantle". Shocker)
     /// </summary>
     [JsonPropertyName("action")]
-    public Destiny.Definitions.DestinyItemActionBlockDefinition Action { get; set; }
+    public object Action { get; set; }
 
     /// <summary>
     ///     Recipe items will have relevant crafting information available here.
     /// </summary>
     [JsonPropertyName("crafting")]
-    public Destiny.Definitions.DestinyItemCraftingBlockDefinition Crafting { get; set; }
+    public object Crafting { get; set; }
 
     /// <summary>
     ///     If this item can exist in an inventory, this block will be non-null. In practice, every item that currently exists has one of these blocks. But note that it is not necessarily guaranteed.
     /// </summary>
     [JsonPropertyName("inventory")]
-    public Destiny.Definitions.DestinyItemInventoryBlockDefinition Inventory { get; set; }
+    public object Inventory { get; set; }
 
     /// <summary>
     ///     If this item is a quest, this block will be non-null. In practice, I wish I had called this the Quest block, but at the time it wasn't clear to me whether it would end up being used for purposes other than quests. It will contain data about the steps in the quest, and mechanics we can use for displaying and tracking the quest.
     /// </summary>
     [JsonPropertyName("setData")]
-    public Destiny.Definitions.DestinyItemSetBlockDefinition SetData { get; set; }
+    public object SetData { get; set; }
 
     /// <summary>
     ///     If this item can have stats (such as a weapon, armor, or vehicle), this block will be non-null and populated with the stats found on the item.
     /// </summary>
     [JsonPropertyName("stats")]
-    public Destiny.Definitions.DestinyItemStatBlockDefinition Stats { get; set; }
+    public object Stats { get; set; }
 
     /// <summary>
     ///     If the item is an emblem that has a special Objective attached to it - for instance, if the emblem tracks PVP Kills, or what-have-you. This is a bit different from, for example, the Vanguard Kill Tracker mod, which pipes data into the "art channel". When I get some time, I would like to standardize these so you can get at the values they expose without having to care about what they're being used for and how they are wired up, but for now here's the raw data.
     /// </summary>
     [JsonPropertyName("emblemObjectiveHash")]
-    public uint? EmblemObjectiveHash { get; set; }
+    public uint EmblemObjectiveHash { get; set; }
 
     /// <summary>
     ///     If this item can be equipped, this block will be non-null and will be populated with the conditions under which it can be equipped.
     /// </summary>
     [JsonPropertyName("equippingBlock")]
-    public Destiny.Definitions.DestinyEquippingBlockDefinition EquippingBlock { get; set; }
+    public object EquippingBlock { get; set; }
 
     /// <summary>
     ///     If this item can be rendered, this block will be non-null and will be populated with rendering information.
     /// </summary>
     [JsonPropertyName("translationBlock")]
-    public Destiny.Definitions.DestinyItemTranslationBlockDefinition TranslationBlock { get; set; }
+    public object TranslationBlock { get; set; }
 
     /// <summary>
     ///     If this item can be Used or Acquired to gain other items (for instance, how Eververse Boxes can be consumed to get items from the box), this block will be non-null and will give summary information for the items that can be acquired.
     /// </summary>
     [JsonPropertyName("preview")]
-    public Destiny.Definitions.DestinyItemPreviewBlockDefinition Preview { get; set; }
+    public object Preview { get; set; }
 
     /// <summary>
     ///     If this item can have a level or stats, this block will be non-null and will be populated with default quality (item level, "quality", and infusion) data. See the block for more details, there's often less upfront information in D2 so you'll want to be aware of how you use quality and item level on the definition level now.
     /// </summary>
     [JsonPropertyName("quality")]
-    public Destiny.Definitions.DestinyItemQualityBlockDefinition Quality { get; set; }
+    public object Quality { get; set; }
 
     /// <summary>
     ///     The conceptual "Value" of an item, if any was defined. See the DestinyItemValueBlockDefinition for more details.
     /// </summary>
     [JsonPropertyName("value")]
-    public Destiny.Definitions.DestinyItemValueBlockDefinition Value { get; set; }
+    public object Value { get; set; }
 
     /// <summary>
     ///     If this item has a known source, this block will be non-null and populated with source information. Unfortunately, at this time we are not generating sources: that is some aggressively manual work which we didn't have time for, and I'm hoping to get back to at some point in the future.
     /// </summary>
     [JsonPropertyName("sourceData")]
-    public Destiny.Definitions.DestinyItemSourceBlockDefinition SourceData { get; set; }
+    public object SourceData { get; set; }
 
     /// <summary>
     ///     If this item has Objectives (extra tasks that can be accomplished related to the item... most frequently when the item is a Quest Step and the Objectives need to be completed to move on to the next Quest Step), this block will be non-null and the objectives defined herein.
     /// </summary>
     [JsonPropertyName("objectives")]
-    public Destiny.Definitions.DestinyItemObjectiveBlockDefinition Objectives { get; set; }
+    public object Objectives { get; set; }
 
     /// <summary>
     ///     If this item has available metrics to be shown, this block will be non-null have the appropriate hashes defined.
     /// </summary>
     [JsonPropertyName("metrics")]
-    public Destiny.Definitions.DestinyItemMetricBlockDefinition Metrics { get; set; }
+    public object Metrics { get; set; }
 
     /// <summary>
     ///     If this item *is* a Plug, this will be non-null and the info defined herein. See DestinyItemPlugDefinition for more information.
     /// </summary>
     [JsonPropertyName("plug")]
-    public Destiny.Definitions.Items.DestinyItemPlugDefinition Plug { get; set; }
+    public object Plug { get; set; }
 
     /// <summary>
     ///     If this item has related items in a "Gear Set", this will be non-null and the relationships defined herein.
     /// </summary>
     [JsonPropertyName("gearset")]
-    public Destiny.Definitions.DestinyItemGearsetBlockDefinition Gearset { get; set; }
+    public object Gearset { get; set; }
 
     /// <summary>
     ///     If this item is a "reward sack" that can be opened to provide other items, this will be non-null and the properties of the sack contained herein.
     /// </summary>
     [JsonPropertyName("sack")]
-    public Destiny.Definitions.DestinyItemSackBlockDefinition Sack { get; set; }
+    public object Sack { get; set; }
 
     /// <summary>
     ///     If this item has any Sockets, this will be non-null and the individual sockets on the item will be defined herein.
     /// </summary>
     [JsonPropertyName("sockets")]
-    public Destiny.Definitions.DestinyItemSocketBlockDefinition Sockets { get; set; }
+    public object Sockets { get; set; }
 
     /// <summary>
     ///     Summary data about the item.
     /// </summary>
     [JsonPropertyName("summary")]
-    public Destiny.Definitions.DestinyItemSummaryBlockDefinition Summary { get; set; }
+    public object Summary { get; set; }
 
     /// <summary>
     ///     If the item has a Talent Grid, this will be non-null and the properties of the grid defined herein. Note that, while many items still have talent grids, the only ones with meaningful Nodes still on them will be Subclass/"Build" items.
     /// </summary>
     [JsonPropertyName("talentGrid")]
-    public Destiny.Definitions.DestinyItemTalentGridBlockDefinition TalentGrid { get; set; }
+    public object TalentGrid { get; set; }
 
     /// <summary>
     ///     If the item has stats, this block will be defined. It has the "raw" investment stats for the item. These investment stats don't take into account the ways that the items can spawn, nor do they take into account any Stat Group transformations. I have retained them for debugging purposes, but I do not know how useful people will find them.
@@ -233,7 +233,7 @@ public class DestinyInventoryItemDefinition : IDeepEquatable<DestinyInventoryIte
     ///     If the item has any related Lore (DestinyLoreDefinition), this will be the hash identifier you can use to look up the lore definition.
     /// </summary>
     [JsonPropertyName("loreHash")]
-    public uint? LoreHash { get; set; }
+    public uint LoreHash { get; set; }
 
     /// <summary>
     ///     There are times when the game will show you a "summary/vague" version of an item - such as a description of its type represented as a DestinyInventoryItemDefinition - rather than display the item itself.
@@ -241,7 +241,7 @@ public class DestinyInventoryItemDefinition : IDeepEquatable<DestinyInventoryIte
     ///     This happens sometimes when summarizing possible rewards in a tooltip. This is the item displayed instead, if it exists.
     /// </summary>
     [JsonPropertyName("summaryItemHash")]
-    public uint? SummaryItemHash { get; set; }
+    public uint SummaryItemHash { get; set; }
 
     /// <summary>
     ///     If any animations were extracted from game content for this item, these will be the definitions of those animations.
@@ -327,7 +327,7 @@ public class DestinyInventoryItemDefinition : IDeepEquatable<DestinyInventoryIte
     ///     Since we also have a breaker type definition, this is the hash for that breaker type for your convenience. Whether you use the enum or hash and look up the definition depends on what's cleanest for your code.
     /// </summary>
     [JsonPropertyName("breakerTypeHash")]
-    public uint? BreakerTypeHash { get; set; }
+    public uint BreakerTypeHash { get; set; }
 
     /// <summary>
     ///     If true, then you will be allowed to equip the item if you pass its other requirements.
@@ -371,13 +371,13 @@ public class DestinyInventoryItemDefinition : IDeepEquatable<DestinyInventoryIte
     ///     I will likely regret leaving in the enumeration versions of these properties, but for now they're very convenient.
     /// </summary>
     [JsonPropertyName("defaultDamageTypeHash")]
-    public uint? DefaultDamageTypeHash { get; set; }
+    public uint DefaultDamageTypeHash { get; set; }
 
     /// <summary>
     ///     If this item is related directly to a Season of Destiny, this is the hash identifier for that season.
     /// </summary>
     [JsonPropertyName("seasonHash")]
-    public uint? SeasonHash { get; set; }
+    public uint SeasonHash { get; set; }
 
     /// <summary>
     ///     If true, this is a dummy vendor-wrapped item template. Items purchased from Eververse will be "wrapped" by one of these items so that we can safely provide refund capabilities before the item is "unwrapped".
@@ -416,406 +416,4 @@ public class DestinyInventoryItemDefinition : IDeepEquatable<DestinyInventoryIte
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyInventoryItemDefinition? other)
-    {
-        return other is not null &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               TooltipNotifications.DeepEqualsList(other.TooltipNotifications) &&
-               CollectibleHash == other.CollectibleHash &&
-               IconWatermark == other.IconWatermark &&
-               IconWatermarkShelved == other.IconWatermarkShelved &&
-               SecondaryIcon == other.SecondaryIcon &&
-               SecondaryOverlay == other.SecondaryOverlay &&
-               SecondarySpecial == other.SecondarySpecial &&
-               (BackgroundColor is not null ? BackgroundColor.DeepEquals(other.BackgroundColor) : other.BackgroundColor is null) &&
-               Screenshot == other.Screenshot &&
-               ItemTypeDisplayName == other.ItemTypeDisplayName &&
-               FlavorText == other.FlavorText &&
-               UiItemDisplayStyle == other.UiItemDisplayStyle &&
-               ItemTypeAndTierDisplayName == other.ItemTypeAndTierDisplayName &&
-               DisplaySource == other.DisplaySource &&
-               TooltipStyle == other.TooltipStyle &&
-               (Action is not null ? Action.DeepEquals(other.Action) : other.Action is null) &&
-               (Crafting is not null ? Crafting.DeepEquals(other.Crafting) : other.Crafting is null) &&
-               (Inventory is not null ? Inventory.DeepEquals(other.Inventory) : other.Inventory is null) &&
-               (SetData is not null ? SetData.DeepEquals(other.SetData) : other.SetData is null) &&
-               (Stats is not null ? Stats.DeepEquals(other.Stats) : other.Stats is null) &&
-               EmblemObjectiveHash == other.EmblemObjectiveHash &&
-               (EquippingBlock is not null ? EquippingBlock.DeepEquals(other.EquippingBlock) : other.EquippingBlock is null) &&
-               (TranslationBlock is not null ? TranslationBlock.DeepEquals(other.TranslationBlock) : other.TranslationBlock is null) &&
-               (Preview is not null ? Preview.DeepEquals(other.Preview) : other.Preview is null) &&
-               (Quality is not null ? Quality.DeepEquals(other.Quality) : other.Quality is null) &&
-               (Value is not null ? Value.DeepEquals(other.Value) : other.Value is null) &&
-               (SourceData is not null ? SourceData.DeepEquals(other.SourceData) : other.SourceData is null) &&
-               (Objectives is not null ? Objectives.DeepEquals(other.Objectives) : other.Objectives is null) &&
-               (Metrics is not null ? Metrics.DeepEquals(other.Metrics) : other.Metrics is null) &&
-               (Plug is not null ? Plug.DeepEquals(other.Plug) : other.Plug is null) &&
-               (Gearset is not null ? Gearset.DeepEquals(other.Gearset) : other.Gearset is null) &&
-               (Sack is not null ? Sack.DeepEquals(other.Sack) : other.Sack is null) &&
-               (Sockets is not null ? Sockets.DeepEquals(other.Sockets) : other.Sockets is null) &&
-               (Summary is not null ? Summary.DeepEquals(other.Summary) : other.Summary is null) &&
-               (TalentGrid is not null ? TalentGrid.DeepEquals(other.TalentGrid) : other.TalentGrid is null) &&
-               InvestmentStats.DeepEqualsList(other.InvestmentStats) &&
-               Perks.DeepEqualsList(other.Perks) &&
-               LoreHash == other.LoreHash &&
-               SummaryItemHash == other.SummaryItemHash &&
-               Animations.DeepEqualsList(other.Animations) &&
-               AllowActions == other.AllowActions &&
-               Links.DeepEqualsList(other.Links) &&
-               DoesPostmasterPullHaveSideEffects == other.DoesPostmasterPullHaveSideEffects &&
-               NonTransferrable == other.NonTransferrable &&
-               ItemCategoryHashes.DeepEqualsListNaive(other.ItemCategoryHashes) &&
-               SpecialItemType == other.SpecialItemType &&
-               ItemType == other.ItemType &&
-               ItemSubType == other.ItemSubType &&
-               ClassType == other.ClassType &&
-               BreakerType == other.BreakerType &&
-               BreakerTypeHash == other.BreakerTypeHash &&
-               Equippable == other.Equippable &&
-               DamageTypeHashes.DeepEqualsListNaive(other.DamageTypeHashes) &&
-               DamageTypes.DeepEqualsListNaive(other.DamageTypes) &&
-               DefaultDamageType == other.DefaultDamageType &&
-               DefaultDamageTypeHash == other.DefaultDamageTypeHash &&
-               SeasonHash == other.SeasonHash &&
-               IsWrapper == other.IsWrapper &&
-               TraitIds.DeepEqualsListNaive(other.TraitIds) &&
-               TraitHashes.DeepEqualsListNaive(other.TraitHashes) &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyInventoryItemDefinition? other)
-    {
-        if (other is null) return;
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (!TooltipNotifications.DeepEqualsList(other.TooltipNotifications))
-        {
-            TooltipNotifications = other.TooltipNotifications;
-            OnPropertyChanged(nameof(TooltipNotifications));
-        }
-        if (CollectibleHash != other.CollectibleHash)
-        {
-            CollectibleHash = other.CollectibleHash;
-            OnPropertyChanged(nameof(CollectibleHash));
-        }
-        if (IconWatermark != other.IconWatermark)
-        {
-            IconWatermark = other.IconWatermark;
-            OnPropertyChanged(nameof(IconWatermark));
-        }
-        if (IconWatermarkShelved != other.IconWatermarkShelved)
-        {
-            IconWatermarkShelved = other.IconWatermarkShelved;
-            OnPropertyChanged(nameof(IconWatermarkShelved));
-        }
-        if (SecondaryIcon != other.SecondaryIcon)
-        {
-            SecondaryIcon = other.SecondaryIcon;
-            OnPropertyChanged(nameof(SecondaryIcon));
-        }
-        if (SecondaryOverlay != other.SecondaryOverlay)
-        {
-            SecondaryOverlay = other.SecondaryOverlay;
-            OnPropertyChanged(nameof(SecondaryOverlay));
-        }
-        if (SecondarySpecial != other.SecondarySpecial)
-        {
-            SecondarySpecial = other.SecondarySpecial;
-            OnPropertyChanged(nameof(SecondarySpecial));
-        }
-        if (!BackgroundColor.DeepEquals(other.BackgroundColor))
-        {
-            BackgroundColor.Update(other.BackgroundColor);
-            OnPropertyChanged(nameof(BackgroundColor));
-        }
-        if (Screenshot != other.Screenshot)
-        {
-            Screenshot = other.Screenshot;
-            OnPropertyChanged(nameof(Screenshot));
-        }
-        if (ItemTypeDisplayName != other.ItemTypeDisplayName)
-        {
-            ItemTypeDisplayName = other.ItemTypeDisplayName;
-            OnPropertyChanged(nameof(ItemTypeDisplayName));
-        }
-        if (FlavorText != other.FlavorText)
-        {
-            FlavorText = other.FlavorText;
-            OnPropertyChanged(nameof(FlavorText));
-        }
-        if (UiItemDisplayStyle != other.UiItemDisplayStyle)
-        {
-            UiItemDisplayStyle = other.UiItemDisplayStyle;
-            OnPropertyChanged(nameof(UiItemDisplayStyle));
-        }
-        if (ItemTypeAndTierDisplayName != other.ItemTypeAndTierDisplayName)
-        {
-            ItemTypeAndTierDisplayName = other.ItemTypeAndTierDisplayName;
-            OnPropertyChanged(nameof(ItemTypeAndTierDisplayName));
-        }
-        if (DisplaySource != other.DisplaySource)
-        {
-            DisplaySource = other.DisplaySource;
-            OnPropertyChanged(nameof(DisplaySource));
-        }
-        if (TooltipStyle != other.TooltipStyle)
-        {
-            TooltipStyle = other.TooltipStyle;
-            OnPropertyChanged(nameof(TooltipStyle));
-        }
-        if (!Action.DeepEquals(other.Action))
-        {
-            Action.Update(other.Action);
-            OnPropertyChanged(nameof(Action));
-        }
-        if (!Crafting.DeepEquals(other.Crafting))
-        {
-            Crafting.Update(other.Crafting);
-            OnPropertyChanged(nameof(Crafting));
-        }
-        if (!Inventory.DeepEquals(other.Inventory))
-        {
-            Inventory.Update(other.Inventory);
-            OnPropertyChanged(nameof(Inventory));
-        }
-        if (!SetData.DeepEquals(other.SetData))
-        {
-            SetData.Update(other.SetData);
-            OnPropertyChanged(nameof(SetData));
-        }
-        if (!Stats.DeepEquals(other.Stats))
-        {
-            Stats.Update(other.Stats);
-            OnPropertyChanged(nameof(Stats));
-        }
-        if (EmblemObjectiveHash != other.EmblemObjectiveHash)
-        {
-            EmblemObjectiveHash = other.EmblemObjectiveHash;
-            OnPropertyChanged(nameof(EmblemObjectiveHash));
-        }
-        if (!EquippingBlock.DeepEquals(other.EquippingBlock))
-        {
-            EquippingBlock.Update(other.EquippingBlock);
-            OnPropertyChanged(nameof(EquippingBlock));
-        }
-        if (!TranslationBlock.DeepEquals(other.TranslationBlock))
-        {
-            TranslationBlock.Update(other.TranslationBlock);
-            OnPropertyChanged(nameof(TranslationBlock));
-        }
-        if (!Preview.DeepEquals(other.Preview))
-        {
-            Preview.Update(other.Preview);
-            OnPropertyChanged(nameof(Preview));
-        }
-        if (!Quality.DeepEquals(other.Quality))
-        {
-            Quality.Update(other.Quality);
-            OnPropertyChanged(nameof(Quality));
-        }
-        if (!Value.DeepEquals(other.Value))
-        {
-            Value.Update(other.Value);
-            OnPropertyChanged(nameof(Value));
-        }
-        if (!SourceData.DeepEquals(other.SourceData))
-        {
-            SourceData.Update(other.SourceData);
-            OnPropertyChanged(nameof(SourceData));
-        }
-        if (!Objectives.DeepEquals(other.Objectives))
-        {
-            Objectives.Update(other.Objectives);
-            OnPropertyChanged(nameof(Objectives));
-        }
-        if (!Metrics.DeepEquals(other.Metrics))
-        {
-            Metrics.Update(other.Metrics);
-            OnPropertyChanged(nameof(Metrics));
-        }
-        if (!Plug.DeepEquals(other.Plug))
-        {
-            Plug.Update(other.Plug);
-            OnPropertyChanged(nameof(Plug));
-        }
-        if (!Gearset.DeepEquals(other.Gearset))
-        {
-            Gearset.Update(other.Gearset);
-            OnPropertyChanged(nameof(Gearset));
-        }
-        if (!Sack.DeepEquals(other.Sack))
-        {
-            Sack.Update(other.Sack);
-            OnPropertyChanged(nameof(Sack));
-        }
-        if (!Sockets.DeepEquals(other.Sockets))
-        {
-            Sockets.Update(other.Sockets);
-            OnPropertyChanged(nameof(Sockets));
-        }
-        if (!Summary.DeepEquals(other.Summary))
-        {
-            Summary.Update(other.Summary);
-            OnPropertyChanged(nameof(Summary));
-        }
-        if (!TalentGrid.DeepEquals(other.TalentGrid))
-        {
-            TalentGrid.Update(other.TalentGrid);
-            OnPropertyChanged(nameof(TalentGrid));
-        }
-        if (!InvestmentStats.DeepEqualsList(other.InvestmentStats))
-        {
-            InvestmentStats = other.InvestmentStats;
-            OnPropertyChanged(nameof(InvestmentStats));
-        }
-        if (!Perks.DeepEqualsList(other.Perks))
-        {
-            Perks = other.Perks;
-            OnPropertyChanged(nameof(Perks));
-        }
-        if (LoreHash != other.LoreHash)
-        {
-            LoreHash = other.LoreHash;
-            OnPropertyChanged(nameof(LoreHash));
-        }
-        if (SummaryItemHash != other.SummaryItemHash)
-        {
-            SummaryItemHash = other.SummaryItemHash;
-            OnPropertyChanged(nameof(SummaryItemHash));
-        }
-        if (!Animations.DeepEqualsList(other.Animations))
-        {
-            Animations = other.Animations;
-            OnPropertyChanged(nameof(Animations));
-        }
-        if (AllowActions != other.AllowActions)
-        {
-            AllowActions = other.AllowActions;
-            OnPropertyChanged(nameof(AllowActions));
-        }
-        if (!Links.DeepEqualsList(other.Links))
-        {
-            Links = other.Links;
-            OnPropertyChanged(nameof(Links));
-        }
-        if (DoesPostmasterPullHaveSideEffects != other.DoesPostmasterPullHaveSideEffects)
-        {
-            DoesPostmasterPullHaveSideEffects = other.DoesPostmasterPullHaveSideEffects;
-            OnPropertyChanged(nameof(DoesPostmasterPullHaveSideEffects));
-        }
-        if (NonTransferrable != other.NonTransferrable)
-        {
-            NonTransferrable = other.NonTransferrable;
-            OnPropertyChanged(nameof(NonTransferrable));
-        }
-        if (!ItemCategoryHashes.DeepEqualsListNaive(other.ItemCategoryHashes))
-        {
-            ItemCategoryHashes = other.ItemCategoryHashes;
-            OnPropertyChanged(nameof(ItemCategoryHashes));
-        }
-        if (SpecialItemType != other.SpecialItemType)
-        {
-            SpecialItemType = other.SpecialItemType;
-            OnPropertyChanged(nameof(SpecialItemType));
-        }
-        if (ItemType != other.ItemType)
-        {
-            ItemType = other.ItemType;
-            OnPropertyChanged(nameof(ItemType));
-        }
-        if (ItemSubType != other.ItemSubType)
-        {
-            ItemSubType = other.ItemSubType;
-            OnPropertyChanged(nameof(ItemSubType));
-        }
-        if (ClassType != other.ClassType)
-        {
-            ClassType = other.ClassType;
-            OnPropertyChanged(nameof(ClassType));
-        }
-        if (BreakerType != other.BreakerType)
-        {
-            BreakerType = other.BreakerType;
-            OnPropertyChanged(nameof(BreakerType));
-        }
-        if (BreakerTypeHash != other.BreakerTypeHash)
-        {
-            BreakerTypeHash = other.BreakerTypeHash;
-            OnPropertyChanged(nameof(BreakerTypeHash));
-        }
-        if (Equippable != other.Equippable)
-        {
-            Equippable = other.Equippable;
-            OnPropertyChanged(nameof(Equippable));
-        }
-        if (!DamageTypeHashes.DeepEqualsListNaive(other.DamageTypeHashes))
-        {
-            DamageTypeHashes = other.DamageTypeHashes;
-            OnPropertyChanged(nameof(DamageTypeHashes));
-        }
-        if (!DamageTypes.DeepEqualsListNaive(other.DamageTypes))
-        {
-            DamageTypes = other.DamageTypes;
-            OnPropertyChanged(nameof(DamageTypes));
-        }
-        if (DefaultDamageType != other.DefaultDamageType)
-        {
-            DefaultDamageType = other.DefaultDamageType;
-            OnPropertyChanged(nameof(DefaultDamageType));
-        }
-        if (DefaultDamageTypeHash != other.DefaultDamageTypeHash)
-        {
-            DefaultDamageTypeHash = other.DefaultDamageTypeHash;
-            OnPropertyChanged(nameof(DefaultDamageTypeHash));
-        }
-        if (SeasonHash != other.SeasonHash)
-        {
-            SeasonHash = other.SeasonHash;
-            OnPropertyChanged(nameof(SeasonHash));
-        }
-        if (IsWrapper != other.IsWrapper)
-        {
-            IsWrapper = other.IsWrapper;
-            OnPropertyChanged(nameof(IsWrapper));
-        }
-        if (!TraitIds.DeepEqualsListNaive(other.TraitIds))
-        {
-            TraitIds = other.TraitIds;
-            OnPropertyChanged(nameof(TraitIds));
-        }
-        if (!TraitHashes.DeepEqualsListNaive(other.TraitHashes))
-        {
-            TraitHashes = other.TraitHashes;
-            OnPropertyChanged(nameof(TraitHashes));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

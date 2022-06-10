@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Information about matchmaking and party size for the activity.
 /// </summary>
-public class DestinyActivityMatchmakingBlockDefinition : IDeepEquatable<DestinyActivityMatchmakingBlockDefinition>
+public class DestinyActivityMatchmakingBlockDefinition
 {
     /// <summary>
     ///     If TRUE, the activity is matchmade. Otherwise, it requires explicit forming of a party.
@@ -34,52 +34,4 @@ public class DestinyActivityMatchmakingBlockDefinition : IDeepEquatable<DestinyA
     /// </summary>
     [JsonPropertyName("requiresGuardianOath")]
     public bool RequiresGuardianOath { get; set; }
-
-    public bool DeepEquals(DestinyActivityMatchmakingBlockDefinition? other)
-    {
-        return other is not null &&
-               IsMatchmade == other.IsMatchmade &&
-               MinParty == other.MinParty &&
-               MaxParty == other.MaxParty &&
-               MaxPlayers == other.MaxPlayers &&
-               RequiresGuardianOath == other.RequiresGuardianOath;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyActivityMatchmakingBlockDefinition? other)
-    {
-        if (other is null) return;
-        if (IsMatchmade != other.IsMatchmade)
-        {
-            IsMatchmade = other.IsMatchmade;
-            OnPropertyChanged(nameof(IsMatchmade));
-        }
-        if (MinParty != other.MinParty)
-        {
-            MinParty = other.MinParty;
-            OnPropertyChanged(nameof(MinParty));
-        }
-        if (MaxParty != other.MaxParty)
-        {
-            MaxParty = other.MaxParty;
-            OnPropertyChanged(nameof(MaxParty));
-        }
-        if (MaxPlayers != other.MaxPlayers)
-        {
-            MaxPlayers = other.MaxPlayers;
-            OnPropertyChanged(nameof(MaxPlayers));
-        }
-        if (RequiresGuardianOath != other.RequiresGuardianOath)
-        {
-            RequiresGuardianOath = other.RequiresGuardianOath;
-            OnPropertyChanged(nameof(RequiresGuardianOath));
-        }
-    }
 }

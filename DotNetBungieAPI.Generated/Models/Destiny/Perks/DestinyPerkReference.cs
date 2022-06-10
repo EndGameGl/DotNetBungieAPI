@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Perks;
 /// <para />
 ///     Perks apply a variety of effects to a character, and are generally either intrinsic to the item or provided in activated talent nodes or sockets.
 /// </summary>
-public class DestinyPerkReference : IDeepEquatable<DestinyPerkReference>
+public class DestinyPerkReference
 {
     /// <summary>
     ///     The hash identifier for the perk, which can be used to look up DestinySandboxPerkDefinition if it exists. Be warned, perks frequently do not have user-viewable information. You should examine whether you actually found a name/description in the perk's definition before you show it to the user.
@@ -30,46 +30,4 @@ public class DestinyPerkReference : IDeepEquatable<DestinyPerkReference>
     /// </summary>
     [JsonPropertyName("visible")]
     public bool Visible { get; set; }
-
-    public bool DeepEquals(DestinyPerkReference? other)
-    {
-        return other is not null &&
-               PerkHash == other.PerkHash &&
-               IconPath == other.IconPath &&
-               IsActive == other.IsActive &&
-               Visible == other.Visible;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyPerkReference? other)
-    {
-        if (other is null) return;
-        if (PerkHash != other.PerkHash)
-        {
-            PerkHash = other.PerkHash;
-            OnPropertyChanged(nameof(PerkHash));
-        }
-        if (IconPath != other.IconPath)
-        {
-            IconPath = other.IconPath;
-            OnPropertyChanged(nameof(IconPath));
-        }
-        if (IsActive != other.IsActive)
-        {
-            IsActive = other.IsActive;
-            OnPropertyChanged(nameof(IsActive));
-        }
-        if (Visible != other.Visible)
-        {
-            Visible = other.Visible;
-            OnPropertyChanged(nameof(Visible));
-        }
-    }
 }

@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     Primarily for Quests, this is the definition of properties related to the item if it is a quest and its various quest steps.
 /// </summary>
-public class DestinyItemSetBlockDefinition : IDeepEquatable<DestinyItemSetBlockDefinition>
+public class DestinyItemSetBlockDefinition
 {
     /// <summary>
     ///     A collection of hashes of set items, for items such as Quest Metadata items that possess this data.
@@ -46,64 +46,4 @@ public class DestinyItemSetBlockDefinition : IDeepEquatable<DestinyItemSetBlockD
     /// </summary>
     [JsonPropertyName("questStepSummary")]
     public string QuestStepSummary { get; set; }
-
-    public bool DeepEquals(DestinyItemSetBlockDefinition? other)
-    {
-        return other is not null &&
-               ItemList.DeepEqualsList(other.ItemList) &&
-               RequireOrderedSetItemAdd == other.RequireOrderedSetItemAdd &&
-               SetIsFeatured == other.SetIsFeatured &&
-               SetType == other.SetType &&
-               QuestLineName == other.QuestLineName &&
-               QuestLineDescription == other.QuestLineDescription &&
-               QuestStepSummary == other.QuestStepSummary;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyItemSetBlockDefinition? other)
-    {
-        if (other is null) return;
-        if (!ItemList.DeepEqualsList(other.ItemList))
-        {
-            ItemList = other.ItemList;
-            OnPropertyChanged(nameof(ItemList));
-        }
-        if (RequireOrderedSetItemAdd != other.RequireOrderedSetItemAdd)
-        {
-            RequireOrderedSetItemAdd = other.RequireOrderedSetItemAdd;
-            OnPropertyChanged(nameof(RequireOrderedSetItemAdd));
-        }
-        if (SetIsFeatured != other.SetIsFeatured)
-        {
-            SetIsFeatured = other.SetIsFeatured;
-            OnPropertyChanged(nameof(SetIsFeatured));
-        }
-        if (SetType != other.SetType)
-        {
-            SetType = other.SetType;
-            OnPropertyChanged(nameof(SetType));
-        }
-        if (QuestLineName != other.QuestLineName)
-        {
-            QuestLineName = other.QuestLineName;
-            OnPropertyChanged(nameof(QuestLineName));
-        }
-        if (QuestLineDescription != other.QuestLineDescription)
-        {
-            QuestLineDescription = other.QuestLineDescription;
-            OnPropertyChanged(nameof(QuestLineDescription));
-        }
-        if (QuestStepSummary != other.QuestStepSummary)
-        {
-            QuestStepSummary = other.QuestStepSummary;
-            OnPropertyChanged(nameof(QuestStepSummary));
-        }
-    }
 }

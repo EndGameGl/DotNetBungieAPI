@@ -62,8 +62,6 @@ namespace DotNetBungieAPI.Generated.Models;
         {
             await IterateThroughTypeTreeBare(openApiModel, treeNode, _destinationFolder, modelGenerator);
         }
-        
-        
 
         foreach (var (responseName, openApiComponentResponse) in openApiModel.Components.Responses)
         {

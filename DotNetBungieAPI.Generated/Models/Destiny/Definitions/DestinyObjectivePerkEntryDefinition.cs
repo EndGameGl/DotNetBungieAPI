@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     These perks will generally not be benefit-granting perks, but rather a perk that modifies gameplay in some interesting way.
 /// </summary>
-public class DestinyObjectivePerkEntryDefinition : IDeepEquatable<DestinyObjectivePerkEntryDefinition>
+public class DestinyObjectivePerkEntryDefinition
 {
     /// <summary>
     ///     The hash identifier of the DestinySandboxPerkDefinition that will be applied to the character.
@@ -18,34 +18,4 @@ public class DestinyObjectivePerkEntryDefinition : IDeepEquatable<DestinyObjecti
     /// </summary>
     [JsonPropertyName("style")]
     public Destiny.DestinyObjectiveGrantStyle Style { get; set; }
-
-    public bool DeepEquals(DestinyObjectivePerkEntryDefinition? other)
-    {
-        return other is not null &&
-               PerkHash == other.PerkHash &&
-               Style == other.Style;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyObjectivePerkEntryDefinition? other)
-    {
-        if (other is null) return;
-        if (PerkHash != other.PerkHash)
-        {
-            PerkHash = other.PerkHash;
-            OnPropertyChanged(nameof(PerkHash));
-        }
-        if (Style != other.Style)
-        {
-            Style = other.Style;
-            OnPropertyChanged(nameof(Style));
-        }
-    }
 }

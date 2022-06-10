@@ -11,7 +11,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Earned experience is calculated in a variety of ways, determined by the Progression's scope. These go from looking up a stored value to performing exceedingly obtuse calculations. This is why we provide live data in DestinyCharacterProgressionComponent.progressions, so you don't have to worry about those.
 /// </summary>
-public class DestinyProgressionDefinition : IDeepEquatable<DestinyProgressionDefinition>
+public class DestinyProgressionDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.DestinyProgressionDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -58,13 +58,13 @@ public class DestinyProgressionDefinition : IDeepEquatable<DestinyProgressionDef
     ///     This is purely for convenience, if you're looking at a progression and want to know if and who it's related to in terms of Faction Reputation.
     /// </summary>
     [JsonPropertyName("factionHash")]
-    public uint? FactionHash { get; set; }
+    public uint FactionHash { get; set; }
 
     /// <summary>
     ///     The #RGB string value for the color related to this progression, if there is one.
     /// </summary>
     [JsonPropertyName("color")]
-    public Destiny.Misc.DestinyColor Color { get; set; }
+    public object Color { get; set; }
 
     /// <summary>
     ///     For progressions that have it, this is the rank icon we use in the Companion, displayed above the progressions' rank value.
@@ -94,100 +94,4 @@ public class DestinyProgressionDefinition : IDeepEquatable<DestinyProgressionDef
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyProgressionDefinition? other)
-    {
-        return other is not null &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               Scope == other.Scope &&
-               RepeatLastStep == other.RepeatLastStep &&
-               Source == other.Source &&
-               Steps.DeepEqualsList(other.Steps) &&
-               Visible == other.Visible &&
-               FactionHash == other.FactionHash &&
-               (Color is not null ? Color.DeepEquals(other.Color) : other.Color is null) &&
-               RankIcon == other.RankIcon &&
-               RewardItems.DeepEqualsList(other.RewardItems) &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyProgressionDefinition? other)
-    {
-        if (other is null) return;
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (Scope != other.Scope)
-        {
-            Scope = other.Scope;
-            OnPropertyChanged(nameof(Scope));
-        }
-        if (RepeatLastStep != other.RepeatLastStep)
-        {
-            RepeatLastStep = other.RepeatLastStep;
-            OnPropertyChanged(nameof(RepeatLastStep));
-        }
-        if (Source != other.Source)
-        {
-            Source = other.Source;
-            OnPropertyChanged(nameof(Source));
-        }
-        if (!Steps.DeepEqualsList(other.Steps))
-        {
-            Steps = other.Steps;
-            OnPropertyChanged(nameof(Steps));
-        }
-        if (Visible != other.Visible)
-        {
-            Visible = other.Visible;
-            OnPropertyChanged(nameof(Visible));
-        }
-        if (FactionHash != other.FactionHash)
-        {
-            FactionHash = other.FactionHash;
-            OnPropertyChanged(nameof(FactionHash));
-        }
-        if (!Color.DeepEquals(other.Color))
-        {
-            Color.Update(other.Color);
-            OnPropertyChanged(nameof(Color));
-        }
-        if (RankIcon != other.RankIcon)
-        {
-            RankIcon = other.RankIcon;
-            OnPropertyChanged(nameof(RankIcon));
-        }
-        if (!RewardItems.DeepEqualsList(other.RewardItems))
-        {
-            RewardItems = other.RewardItems;
-            OnPropertyChanged(nameof(RewardItems));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

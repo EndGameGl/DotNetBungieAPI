@@ -13,25 +13,25 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Activities also have Activity Types, but unfortunately in Destiny 2 these are even less reliable of a source of information than they were in Destiny 1. I will be looking into ways to provide more reliable sources for type information as time goes on, but for now we're going to have to deal with the limitations. See DestinyActivityTypeDefinition for more information.
 /// </summary>
-public class DestinyActivityDefinition : IDeepEquatable<DestinyActivityDefinition>
+public class DestinyActivityDefinition
 {
     /// <summary>
     ///     The title, subtitle, and icon for the activity. We do a little post-processing on this to try and account for Activities where the designers have left this data too minimal to determine what activity is actually being played.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public object DisplayProperties { get; set; }
 
     /// <summary>
     ///     The unadulterated form of the display properties, as they ought to be shown in the Director (if the activity appears in the director).
     /// </summary>
     [JsonPropertyName("originalDisplayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition OriginalDisplayProperties { get; set; }
+    public object OriginalDisplayProperties { get; set; }
 
     /// <summary>
     ///     The title, subtitle, and icon for the activity as determined by Selection Screen data, if there is any for this activity. There won't be data in this field if the activity is never shown in a selection/options screen.
     /// </summary>
     [JsonPropertyName("selectionScreenDisplayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition SelectionScreenDisplayProperties { get; set; }
+    public object SelectionScreenDisplayProperties { get; set; }
 
     /// <summary>
     ///     If the activity has an icon associated with a specific release (such as a DLC), this is the path to that release's icon.
@@ -127,25 +127,25 @@ public class DestinyActivityDefinition : IDeepEquatable<DestinyActivityDefinitio
     ///     This block of data provides information about the Activity's matchmaking attributes: how many people can join and such.
     /// </summary>
     [JsonPropertyName("matchmaking")]
-    public Destiny.Definitions.DestinyActivityMatchmakingBlockDefinition Matchmaking { get; set; }
+    public object Matchmaking { get; set; }
 
     /// <summary>
     ///     This block of data, if it exists, provides information about the guided game experience and restrictions for this activity. If it doesn't exist, the game is not able to be played as a guided game.
     /// </summary>
     [JsonPropertyName("guidedGame")]
-    public Destiny.Definitions.DestinyActivityGuidedBlockDefinition GuidedGame { get; set; }
+    public object GuidedGame { get; set; }
 
     /// <summary>
     ///     If this activity had an activity mode directly defined on it, this will be the hash of that mode.
     /// </summary>
     [JsonPropertyName("directActivityModeHash")]
-    public uint? DirectActivityModeHash { get; set; }
+    public uint DirectActivityModeHash { get; set; }
 
     /// <summary>
     ///     If the activity had an activity mode directly defined on it, this will be the enum value of that mode.
     /// </summary>
     [JsonPropertyName("directActivityModeType")]
-    public int? DirectActivityModeType { get; set; }
+    public int DirectActivityModeType { get; set; }
 
     /// <summary>
     ///     The set of all possible loadout requirements that could be active for this activity. Only one will be active at any given time, and you can discover which one through activity-associated data such as Milestones that have activity info on them.
@@ -202,208 +202,4 @@ public class DestinyActivityDefinition : IDeepEquatable<DestinyActivityDefinitio
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyActivityDefinition? other)
-    {
-        return other is not null &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               (OriginalDisplayProperties is not null ? OriginalDisplayProperties.DeepEquals(other.OriginalDisplayProperties) : other.OriginalDisplayProperties is null) &&
-               (SelectionScreenDisplayProperties is not null ? SelectionScreenDisplayProperties.DeepEquals(other.SelectionScreenDisplayProperties) : other.SelectionScreenDisplayProperties is null) &&
-               ReleaseIcon == other.ReleaseIcon &&
-               ReleaseTime == other.ReleaseTime &&
-               ActivityLightLevel == other.ActivityLightLevel &&
-               DestinationHash == other.DestinationHash &&
-               PlaceHash == other.PlaceHash &&
-               ActivityTypeHash == other.ActivityTypeHash &&
-               Tier == other.Tier &&
-               PgcrImage == other.PgcrImage &&
-               Rewards.DeepEqualsList(other.Rewards) &&
-               Modifiers.DeepEqualsList(other.Modifiers) &&
-               IsPlaylist == other.IsPlaylist &&
-               Challenges.DeepEqualsList(other.Challenges) &&
-               OptionalUnlockStrings.DeepEqualsList(other.OptionalUnlockStrings) &&
-               PlaylistItems.DeepEqualsList(other.PlaylistItems) &&
-               ActivityGraphList.DeepEqualsList(other.ActivityGraphList) &&
-               (Matchmaking is not null ? Matchmaking.DeepEquals(other.Matchmaking) : other.Matchmaking is null) &&
-               (GuidedGame is not null ? GuidedGame.DeepEquals(other.GuidedGame) : other.GuidedGame is null) &&
-               DirectActivityModeHash == other.DirectActivityModeHash &&
-               DirectActivityModeType == other.DirectActivityModeType &&
-               Loadouts.DeepEqualsList(other.Loadouts) &&
-               ActivityModeHashes.DeepEqualsListNaive(other.ActivityModeHashes) &&
-               ActivityModeTypes.DeepEqualsListNaive(other.ActivityModeTypes) &&
-               IsPvP == other.IsPvP &&
-               InsertionPoints.DeepEqualsList(other.InsertionPoints) &&
-               ActivityLocationMappings.DeepEqualsList(other.ActivityLocationMappings) &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyActivityDefinition? other)
-    {
-        if (other is null) return;
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (!OriginalDisplayProperties.DeepEquals(other.OriginalDisplayProperties))
-        {
-            OriginalDisplayProperties.Update(other.OriginalDisplayProperties);
-            OnPropertyChanged(nameof(OriginalDisplayProperties));
-        }
-        if (!SelectionScreenDisplayProperties.DeepEquals(other.SelectionScreenDisplayProperties))
-        {
-            SelectionScreenDisplayProperties.Update(other.SelectionScreenDisplayProperties);
-            OnPropertyChanged(nameof(SelectionScreenDisplayProperties));
-        }
-        if (ReleaseIcon != other.ReleaseIcon)
-        {
-            ReleaseIcon = other.ReleaseIcon;
-            OnPropertyChanged(nameof(ReleaseIcon));
-        }
-        if (ReleaseTime != other.ReleaseTime)
-        {
-            ReleaseTime = other.ReleaseTime;
-            OnPropertyChanged(nameof(ReleaseTime));
-        }
-        if (ActivityLightLevel != other.ActivityLightLevel)
-        {
-            ActivityLightLevel = other.ActivityLightLevel;
-            OnPropertyChanged(nameof(ActivityLightLevel));
-        }
-        if (DestinationHash != other.DestinationHash)
-        {
-            DestinationHash = other.DestinationHash;
-            OnPropertyChanged(nameof(DestinationHash));
-        }
-        if (PlaceHash != other.PlaceHash)
-        {
-            PlaceHash = other.PlaceHash;
-            OnPropertyChanged(nameof(PlaceHash));
-        }
-        if (ActivityTypeHash != other.ActivityTypeHash)
-        {
-            ActivityTypeHash = other.ActivityTypeHash;
-            OnPropertyChanged(nameof(ActivityTypeHash));
-        }
-        if (Tier != other.Tier)
-        {
-            Tier = other.Tier;
-            OnPropertyChanged(nameof(Tier));
-        }
-        if (PgcrImage != other.PgcrImage)
-        {
-            PgcrImage = other.PgcrImage;
-            OnPropertyChanged(nameof(PgcrImage));
-        }
-        if (!Rewards.DeepEqualsList(other.Rewards))
-        {
-            Rewards = other.Rewards;
-            OnPropertyChanged(nameof(Rewards));
-        }
-        if (!Modifiers.DeepEqualsList(other.Modifiers))
-        {
-            Modifiers = other.Modifiers;
-            OnPropertyChanged(nameof(Modifiers));
-        }
-        if (IsPlaylist != other.IsPlaylist)
-        {
-            IsPlaylist = other.IsPlaylist;
-            OnPropertyChanged(nameof(IsPlaylist));
-        }
-        if (!Challenges.DeepEqualsList(other.Challenges))
-        {
-            Challenges = other.Challenges;
-            OnPropertyChanged(nameof(Challenges));
-        }
-        if (!OptionalUnlockStrings.DeepEqualsList(other.OptionalUnlockStrings))
-        {
-            OptionalUnlockStrings = other.OptionalUnlockStrings;
-            OnPropertyChanged(nameof(OptionalUnlockStrings));
-        }
-        if (!PlaylistItems.DeepEqualsList(other.PlaylistItems))
-        {
-            PlaylistItems = other.PlaylistItems;
-            OnPropertyChanged(nameof(PlaylistItems));
-        }
-        if (!ActivityGraphList.DeepEqualsList(other.ActivityGraphList))
-        {
-            ActivityGraphList = other.ActivityGraphList;
-            OnPropertyChanged(nameof(ActivityGraphList));
-        }
-        if (!Matchmaking.DeepEquals(other.Matchmaking))
-        {
-            Matchmaking.Update(other.Matchmaking);
-            OnPropertyChanged(nameof(Matchmaking));
-        }
-        if (!GuidedGame.DeepEquals(other.GuidedGame))
-        {
-            GuidedGame.Update(other.GuidedGame);
-            OnPropertyChanged(nameof(GuidedGame));
-        }
-        if (DirectActivityModeHash != other.DirectActivityModeHash)
-        {
-            DirectActivityModeHash = other.DirectActivityModeHash;
-            OnPropertyChanged(nameof(DirectActivityModeHash));
-        }
-        if (DirectActivityModeType != other.DirectActivityModeType)
-        {
-            DirectActivityModeType = other.DirectActivityModeType;
-            OnPropertyChanged(nameof(DirectActivityModeType));
-        }
-        if (!Loadouts.DeepEqualsList(other.Loadouts))
-        {
-            Loadouts = other.Loadouts;
-            OnPropertyChanged(nameof(Loadouts));
-        }
-        if (!ActivityModeHashes.DeepEqualsListNaive(other.ActivityModeHashes))
-        {
-            ActivityModeHashes = other.ActivityModeHashes;
-            OnPropertyChanged(nameof(ActivityModeHashes));
-        }
-        if (!ActivityModeTypes.DeepEqualsListNaive(other.ActivityModeTypes))
-        {
-            ActivityModeTypes = other.ActivityModeTypes;
-            OnPropertyChanged(nameof(ActivityModeTypes));
-        }
-        if (IsPvP != other.IsPvP)
-        {
-            IsPvP = other.IsPvP;
-            OnPropertyChanged(nameof(IsPvP));
-        }
-        if (!InsertionPoints.DeepEqualsList(other.InsertionPoints))
-        {
-            InsertionPoints = other.InsertionPoints;
-            OnPropertyChanged(nameof(InsertionPoints));
-        }
-        if (!ActivityLocationMappings.DeepEqualsList(other.ActivityLocationMappings))
-        {
-            ActivityLocationMappings = other.ActivityLocationMappings;
-            OnPropertyChanged(nameof(ActivityLocationMappings));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

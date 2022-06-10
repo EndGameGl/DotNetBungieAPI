@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Characters;
 /// <summary>
 ///     This component holds activity data for a character. It will tell you about the character's current activity status, as well as activities that are available to the user.
 /// </summary>
-public class DestinyCharacterActivitiesComponent : IDeepEquatable<DestinyCharacterActivitiesComponent>
+public class DestinyCharacterActivitiesComponent
 {
     /// <summary>
     ///     The last date that the user started playing an activity.
@@ -33,7 +33,7 @@ public class DestinyCharacterActivitiesComponent : IDeepEquatable<DestinyCharact
     ///     And the current activity's most specific mode type, if it can be found.
     /// </summary>
     [JsonPropertyName("currentActivityModeType")]
-    public int? CurrentActivityModeType { get; set; }
+    public int CurrentActivityModeType { get; set; }
 
     /// <summary>
     ///     If the user is in an activity, this will be the hashes of the DestinyActivityModeDefinition being played. Combine with currentActivityHash to give a person a full picture of what they're doing right now.
@@ -51,83 +51,11 @@ public class DestinyCharacterActivitiesComponent : IDeepEquatable<DestinyCharact
     ///     If the user is in a playlist, this is the hash identifier for the playlist that they chose.
     /// </summary>
     [JsonPropertyName("currentPlaylistActivityHash")]
-    public uint? CurrentPlaylistActivityHash { get; set; }
+    public uint CurrentPlaylistActivityHash { get; set; }
 
     /// <summary>
     ///     This will have the activity hash of the last completed story/campaign mission, in case you care about that.
     /// </summary>
     [JsonPropertyName("lastCompletedStoryHash")]
     public uint LastCompletedStoryHash { get; set; }
-
-    public bool DeepEquals(DestinyCharacterActivitiesComponent? other)
-    {
-        return other is not null &&
-               DateActivityStarted == other.DateActivityStarted &&
-               AvailableActivities.DeepEqualsList(other.AvailableActivities) &&
-               CurrentActivityHash == other.CurrentActivityHash &&
-               CurrentActivityModeHash == other.CurrentActivityModeHash &&
-               CurrentActivityModeType == other.CurrentActivityModeType &&
-               CurrentActivityModeHashes.DeepEqualsListNaive(other.CurrentActivityModeHashes) &&
-               CurrentActivityModeTypes.DeepEqualsListNaive(other.CurrentActivityModeTypes) &&
-               CurrentPlaylistActivityHash == other.CurrentPlaylistActivityHash &&
-               LastCompletedStoryHash == other.LastCompletedStoryHash;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyCharacterActivitiesComponent? other)
-    {
-        if (other is null) return;
-        if (DateActivityStarted != other.DateActivityStarted)
-        {
-            DateActivityStarted = other.DateActivityStarted;
-            OnPropertyChanged(nameof(DateActivityStarted));
-        }
-        if (!AvailableActivities.DeepEqualsList(other.AvailableActivities))
-        {
-            AvailableActivities = other.AvailableActivities;
-            OnPropertyChanged(nameof(AvailableActivities));
-        }
-        if (CurrentActivityHash != other.CurrentActivityHash)
-        {
-            CurrentActivityHash = other.CurrentActivityHash;
-            OnPropertyChanged(nameof(CurrentActivityHash));
-        }
-        if (CurrentActivityModeHash != other.CurrentActivityModeHash)
-        {
-            CurrentActivityModeHash = other.CurrentActivityModeHash;
-            OnPropertyChanged(nameof(CurrentActivityModeHash));
-        }
-        if (CurrentActivityModeType != other.CurrentActivityModeType)
-        {
-            CurrentActivityModeType = other.CurrentActivityModeType;
-            OnPropertyChanged(nameof(CurrentActivityModeType));
-        }
-        if (!CurrentActivityModeHashes.DeepEqualsListNaive(other.CurrentActivityModeHashes))
-        {
-            CurrentActivityModeHashes = other.CurrentActivityModeHashes;
-            OnPropertyChanged(nameof(CurrentActivityModeHashes));
-        }
-        if (!CurrentActivityModeTypes.DeepEqualsListNaive(other.CurrentActivityModeTypes))
-        {
-            CurrentActivityModeTypes = other.CurrentActivityModeTypes;
-            OnPropertyChanged(nameof(CurrentActivityModeTypes));
-        }
-        if (CurrentPlaylistActivityHash != other.CurrentPlaylistActivityHash)
-        {
-            CurrentPlaylistActivityHash = other.CurrentPlaylistActivityHash;
-            OnPropertyChanged(nameof(CurrentPlaylistActivityHash));
-        }
-        if (LastCompletedStoryHash != other.LastCompletedStoryHash)
-        {
-            LastCompletedStoryHash = other.LastCompletedStoryHash;
-            OnPropertyChanged(nameof(LastCompletedStoryHash));
-        }
-    }
 }

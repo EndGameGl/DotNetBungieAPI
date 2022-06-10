@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny;
 /// <para />
 ///     Meant to be combined with static DestinyActivityDefinition data for a full picture of the Activity.
 /// </summary>
-public class DestinyActivity : IDeepEquatable<DestinyActivity>
+public class DestinyActivity
 {
     /// <summary>
     ///     The hash identifier of the Activity. Use this to look up the DestinyActivityDefinition of the activity.
@@ -47,13 +47,13 @@ public class DestinyActivity : IDeepEquatable<DestinyActivity>
     ///     The difficulty level of the activity, if applicable.
     /// </summary>
     [JsonPropertyName("displayLevel")]
-    public int? DisplayLevel { get; set; }
+    public int DisplayLevel { get; set; }
 
     /// <summary>
     ///     The recommended light level for the activity, if applicable.
     /// </summary>
     [JsonPropertyName("recommendedLight")]
-    public int? RecommendedLight { get; set; }
+    public int RecommendedLight { get; set; }
 
     /// <summary>
     ///     A DestinyActivityDifficultyTier enum value indicating the difficulty of the activity.
@@ -88,101 +88,5 @@ public class DestinyActivity : IDeepEquatable<DestinyActivity>
     ///     If returned, this is the index into the DestinyActivityDefinition's "loadouts" property, indicating the currently active loadout requirements.
     /// </summary>
     [JsonPropertyName("loadoutRequirementIndex")]
-    public int? LoadoutRequirementIndex { get; set; }
-
-    public bool DeepEquals(DestinyActivity? other)
-    {
-        return other is not null &&
-               ActivityHash == other.ActivityHash &&
-               IsNew == other.IsNew &&
-               CanLead == other.CanLead &&
-               CanJoin == other.CanJoin &&
-               IsCompleted == other.IsCompleted &&
-               IsVisible == other.IsVisible &&
-               DisplayLevel == other.DisplayLevel &&
-               RecommendedLight == other.RecommendedLight &&
-               DifficultyTier == other.DifficultyTier &&
-               Challenges.DeepEqualsList(other.Challenges) &&
-               ModifierHashes.DeepEqualsListNaive(other.ModifierHashes) &&
-               BooleanActivityOptions.DeepEqualsDictionaryNaive(other.BooleanActivityOptions) &&
-               LoadoutRequirementIndex == other.LoadoutRequirementIndex;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyActivity? other)
-    {
-        if (other is null) return;
-        if (ActivityHash != other.ActivityHash)
-        {
-            ActivityHash = other.ActivityHash;
-            OnPropertyChanged(nameof(ActivityHash));
-        }
-        if (IsNew != other.IsNew)
-        {
-            IsNew = other.IsNew;
-            OnPropertyChanged(nameof(IsNew));
-        }
-        if (CanLead != other.CanLead)
-        {
-            CanLead = other.CanLead;
-            OnPropertyChanged(nameof(CanLead));
-        }
-        if (CanJoin != other.CanJoin)
-        {
-            CanJoin = other.CanJoin;
-            OnPropertyChanged(nameof(CanJoin));
-        }
-        if (IsCompleted != other.IsCompleted)
-        {
-            IsCompleted = other.IsCompleted;
-            OnPropertyChanged(nameof(IsCompleted));
-        }
-        if (IsVisible != other.IsVisible)
-        {
-            IsVisible = other.IsVisible;
-            OnPropertyChanged(nameof(IsVisible));
-        }
-        if (DisplayLevel != other.DisplayLevel)
-        {
-            DisplayLevel = other.DisplayLevel;
-            OnPropertyChanged(nameof(DisplayLevel));
-        }
-        if (RecommendedLight != other.RecommendedLight)
-        {
-            RecommendedLight = other.RecommendedLight;
-            OnPropertyChanged(nameof(RecommendedLight));
-        }
-        if (DifficultyTier != other.DifficultyTier)
-        {
-            DifficultyTier = other.DifficultyTier;
-            OnPropertyChanged(nameof(DifficultyTier));
-        }
-        if (!Challenges.DeepEqualsList(other.Challenges))
-        {
-            Challenges = other.Challenges;
-            OnPropertyChanged(nameof(Challenges));
-        }
-        if (!ModifierHashes.DeepEqualsListNaive(other.ModifierHashes))
-        {
-            ModifierHashes = other.ModifierHashes;
-            OnPropertyChanged(nameof(ModifierHashes));
-        }
-        if (!BooleanActivityOptions.DeepEqualsDictionaryNaive(other.BooleanActivityOptions))
-        {
-            BooleanActivityOptions = other.BooleanActivityOptions;
-            OnPropertyChanged(nameof(BooleanActivityOptions));
-        }
-        if (LoadoutRequirementIndex != other.LoadoutRequirementIndex)
-        {
-            LoadoutRequirementIndex = other.LoadoutRequirementIndex;
-            OnPropertyChanged(nameof(LoadoutRequirementIndex));
-        }
-    }
+    public int LoadoutRequirementIndex { get; set; }
 }

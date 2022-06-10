@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     In Destiny, "Races" are really more like "Species". Sort of. I mean, are the Awoken a separate species from humans? I'm not sure. But either way, they're defined here. You'll see Exo, Awoken, and Human as examples of these Species. Players will choose one for their character.
 /// </summary>
-public class DestinyRaceDefinition : IDeepEquatable<DestinyRaceDefinition>
+public class DestinyRaceDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
@@ -42,64 +42,4 @@ public class DestinyRaceDefinition : IDeepEquatable<DestinyRaceDefinition>
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyRaceDefinition? other)
-    {
-        return other is not null &&
-               (DisplayProperties is not null ? DisplayProperties.DeepEquals(other.DisplayProperties) : other.DisplayProperties is null) &&
-               RaceType == other.RaceType &&
-               GenderedRaceNames.DeepEqualsDictionaryNaive(other.GenderedRaceNames) &&
-               GenderedRaceNamesByGenderHash.DeepEqualsDictionaryNaive(other.GenderedRaceNamesByGenderHash) &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyRaceDefinition? other)
-    {
-        if (other is null) return;
-        if (!DisplayProperties.DeepEquals(other.DisplayProperties))
-        {
-            DisplayProperties.Update(other.DisplayProperties);
-            OnPropertyChanged(nameof(DisplayProperties));
-        }
-        if (RaceType != other.RaceType)
-        {
-            RaceType = other.RaceType;
-            OnPropertyChanged(nameof(RaceType));
-        }
-        if (!GenderedRaceNames.DeepEqualsDictionaryNaive(other.GenderedRaceNames))
-        {
-            GenderedRaceNames = other.GenderedRaceNames;
-            OnPropertyChanged(nameof(GenderedRaceNames));
-        }
-        if (!GenderedRaceNamesByGenderHash.DeepEqualsDictionaryNaive(other.GenderedRaceNamesByGenderHash))
-        {
-            GenderedRaceNamesByGenderHash = other.GenderedRaceNamesByGenderHash;
-            OnPropertyChanged(nameof(GenderedRaceNamesByGenderHash));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

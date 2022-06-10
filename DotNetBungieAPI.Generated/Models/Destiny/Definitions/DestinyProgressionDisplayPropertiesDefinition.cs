@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 
-public class DestinyProgressionDisplayPropertiesDefinition : IDeepEquatable<DestinyProgressionDisplayPropertiesDefinition>
+public class DestinyProgressionDisplayPropertiesDefinition
 {
     /// <summary>
     ///     When progressions show your "experience" gained, that bar has units (i.e. "Experience", "Bad Dudes Snuffed Out", whatever). This is the localized string for that unit of measurement.
@@ -35,64 +35,4 @@ public class DestinyProgressionDisplayPropertiesDefinition : IDeepEquatable<Dest
 
     [JsonPropertyName("hasIcon")]
     public bool HasIcon { get; set; }
-
-    public bool DeepEquals(DestinyProgressionDisplayPropertiesDefinition? other)
-    {
-        return other is not null &&
-               DisplayUnitsName == other.DisplayUnitsName &&
-               Description == other.Description &&
-               Name == other.Name &&
-               Icon == other.Icon &&
-               IconSequences.DeepEqualsList(other.IconSequences) &&
-               HighResIcon == other.HighResIcon &&
-               HasIcon == other.HasIcon;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyProgressionDisplayPropertiesDefinition? other)
-    {
-        if (other is null) return;
-        if (DisplayUnitsName != other.DisplayUnitsName)
-        {
-            DisplayUnitsName = other.DisplayUnitsName;
-            OnPropertyChanged(nameof(DisplayUnitsName));
-        }
-        if (Description != other.Description)
-        {
-            Description = other.Description;
-            OnPropertyChanged(nameof(Description));
-        }
-        if (Name != other.Name)
-        {
-            Name = other.Name;
-            OnPropertyChanged(nameof(Name));
-        }
-        if (Icon != other.Icon)
-        {
-            Icon = other.Icon;
-            OnPropertyChanged(nameof(Icon));
-        }
-        if (!IconSequences.DeepEqualsList(other.IconSequences))
-        {
-            IconSequences = other.IconSequences;
-            OnPropertyChanged(nameof(IconSequences));
-        }
-        if (HighResIcon != other.HighResIcon)
-        {
-            HighResIcon = other.HighResIcon;
-            OnPropertyChanged(nameof(HighResIcon));
-        }
-        if (HasIcon != other.HasIcon)
-        {
-            HasIcon = other.HasIcon;
-            OnPropertyChanged(nameof(HasIcon));
-        }
-    }
 }

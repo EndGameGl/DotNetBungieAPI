@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Most of this data isn't intrinsically useful to us, but Objectives refer to locations, and through that we can at least infer the Activity, Destination, and Place being referred to by the Objective.
 /// </summary>
-public class DestinyLocationDefinition : IDeepEquatable<DestinyLocationDefinition>
+public class DestinyLocationDefinition
 {
     /// <summary>
     ///     If the location has a Vendor on it, this is the hash identifier for that Vendor. Look them up with DestinyVendorDefinition.
@@ -38,52 +38,4 @@ public class DestinyLocationDefinition : IDeepEquatable<DestinyLocationDefinitio
     /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; set; }
-
-    public bool DeepEquals(DestinyLocationDefinition? other)
-    {
-        return other is not null &&
-               VendorHash == other.VendorHash &&
-               LocationReleases.DeepEqualsList(other.LocationReleases) &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyLocationDefinition? other)
-    {
-        if (other is null) return;
-        if (VendorHash != other.VendorHash)
-        {
-            VendorHash = other.VendorHash;
-            OnPropertyChanged(nameof(VendorHash));
-        }
-        if (!LocationReleases.DeepEqualsList(other.LocationReleases))
-        {
-            LocationReleases = other.LocationReleases;
-            OnPropertyChanged(nameof(LocationReleases));
-        }
-        if (Hash != other.Hash)
-        {
-            Hash = other.Hash;
-            OnPropertyChanged(nameof(Hash));
-        }
-        if (Index != other.Index)
-        {
-            Index = other.Index;
-            OnPropertyChanged(nameof(Index));
-        }
-        if (Redacted != other.Redacted)
-        {
-            Redacted = other.Redacted;
-            OnPropertyChanged(nameof(Redacted));
-        }
-    }
 }

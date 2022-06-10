@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.User;
 /// <summary>
 ///     Very basic info about a user as returned by the Account server, but including CrossSave information. Do NOT use as a request contract.
 /// </summary>
-public class CrossSaveUserMembership : IDeepEquatable<CrossSaveUserMembership>
+public class CrossSaveUserMembership
 {
     /// <summary>
     ///     If there is a cross save override in effect, this value will tell you the type that is overridding this one.
@@ -53,71 +53,5 @@ public class CrossSaveUserMembership : IDeepEquatable<CrossSaveUserMembership>
     ///     The bungie global display name code, if set.
     /// </summary>
     [JsonPropertyName("bungieGlobalDisplayNameCode")]
-    public short? BungieGlobalDisplayNameCode { get; set; }
-
-    public bool DeepEquals(CrossSaveUserMembership? other)
-    {
-        return other is not null &&
-               CrossSaveOverride == other.CrossSaveOverride &&
-               ApplicableMembershipTypes.DeepEqualsListNaive(other.ApplicableMembershipTypes) &&
-               IsPublic == other.IsPublic &&
-               MembershipType == other.MembershipType &&
-               MembershipId == other.MembershipId &&
-               DisplayName == other.DisplayName &&
-               BungieGlobalDisplayName == other.BungieGlobalDisplayName &&
-               BungieGlobalDisplayNameCode == other.BungieGlobalDisplayNameCode;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(CrossSaveUserMembership? other)
-    {
-        if (other is null) return;
-        if (CrossSaveOverride != other.CrossSaveOverride)
-        {
-            CrossSaveOverride = other.CrossSaveOverride;
-            OnPropertyChanged(nameof(CrossSaveOverride));
-        }
-        if (!ApplicableMembershipTypes.DeepEqualsListNaive(other.ApplicableMembershipTypes))
-        {
-            ApplicableMembershipTypes = other.ApplicableMembershipTypes;
-            OnPropertyChanged(nameof(ApplicableMembershipTypes));
-        }
-        if (IsPublic != other.IsPublic)
-        {
-            IsPublic = other.IsPublic;
-            OnPropertyChanged(nameof(IsPublic));
-        }
-        if (MembershipType != other.MembershipType)
-        {
-            MembershipType = other.MembershipType;
-            OnPropertyChanged(nameof(MembershipType));
-        }
-        if (MembershipId != other.MembershipId)
-        {
-            MembershipId = other.MembershipId;
-            OnPropertyChanged(nameof(MembershipId));
-        }
-        if (DisplayName != other.DisplayName)
-        {
-            DisplayName = other.DisplayName;
-            OnPropertyChanged(nameof(DisplayName));
-        }
-        if (BungieGlobalDisplayName != other.BungieGlobalDisplayName)
-        {
-            BungieGlobalDisplayName = other.BungieGlobalDisplayName;
-            OnPropertyChanged(nameof(BungieGlobalDisplayName));
-        }
-        if (BungieGlobalDisplayNameCode != other.BungieGlobalDisplayNameCode)
-        {
-            BungieGlobalDisplayNameCode = other.BungieGlobalDisplayNameCode;
-            OnPropertyChanged(nameof(BungieGlobalDisplayNameCode));
-        }
-    }
+    public short BungieGlobalDisplayNameCode { get; set; }
 }

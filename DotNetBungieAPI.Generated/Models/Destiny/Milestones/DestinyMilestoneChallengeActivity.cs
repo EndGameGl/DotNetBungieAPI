@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 
-public class DestinyMilestoneChallengeActivity : IDeepEquatable<DestinyMilestoneChallengeActivity>
+public class DestinyMilestoneChallengeActivity
 {
     [JsonPropertyName("activityHash")]
     public uint ActivityHash { get; set; }
@@ -32,65 +32,11 @@ public class DestinyMilestoneChallengeActivity : IDeepEquatable<DestinyMilestone
     ///     If returned, this is the index into the DestinyActivityDefinition's "loadouts" property, indicating the currently active loadout requirements.
     /// </summary>
     [JsonPropertyName("loadoutRequirementIndex")]
-    public int? LoadoutRequirementIndex { get; set; }
+    public int LoadoutRequirementIndex { get; set; }
 
     /// <summary>
     ///     If the Activity has discrete "phases" that we can track, that info will be here. Otherwise, this value will be NULL. Note that this is a list and not a dictionary: the order implies the ascending order of phases or progression in this activity.
     /// </summary>
     [JsonPropertyName("phases")]
     public List<Destiny.Milestones.DestinyMilestoneActivityPhase> Phases { get; set; }
-
-    public bool DeepEquals(DestinyMilestoneChallengeActivity? other)
-    {
-        return other is not null &&
-               ActivityHash == other.ActivityHash &&
-               Challenges.DeepEqualsList(other.Challenges) &&
-               ModifierHashes.DeepEqualsListNaive(other.ModifierHashes) &&
-               BooleanActivityOptions.DeepEqualsDictionaryNaive(other.BooleanActivityOptions) &&
-               LoadoutRequirementIndex == other.LoadoutRequirementIndex &&
-               Phases.DeepEqualsList(other.Phases);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyMilestoneChallengeActivity? other)
-    {
-        if (other is null) return;
-        if (ActivityHash != other.ActivityHash)
-        {
-            ActivityHash = other.ActivityHash;
-            OnPropertyChanged(nameof(ActivityHash));
-        }
-        if (!Challenges.DeepEqualsList(other.Challenges))
-        {
-            Challenges = other.Challenges;
-            OnPropertyChanged(nameof(Challenges));
-        }
-        if (!ModifierHashes.DeepEqualsListNaive(other.ModifierHashes))
-        {
-            ModifierHashes = other.ModifierHashes;
-            OnPropertyChanged(nameof(ModifierHashes));
-        }
-        if (!BooleanActivityOptions.DeepEqualsDictionaryNaive(other.BooleanActivityOptions))
-        {
-            BooleanActivityOptions = other.BooleanActivityOptions;
-            OnPropertyChanged(nameof(BooleanActivityOptions));
-        }
-        if (LoadoutRequirementIndex != other.LoadoutRequirementIndex)
-        {
-            LoadoutRequirementIndex = other.LoadoutRequirementIndex;
-            OnPropertyChanged(nameof(LoadoutRequirementIndex));
-        }
-        if (!Phases.DeepEqualsList(other.Phases))
-        {
-            Phases = other.Phases;
-            OnPropertyChanged(nameof(Phases));
-        }
-    }
 }

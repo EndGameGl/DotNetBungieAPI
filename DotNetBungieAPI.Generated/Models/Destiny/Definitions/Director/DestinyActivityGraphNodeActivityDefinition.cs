@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Director;
 /// <summary>
 ///     The actual activity to be redirected to when you click on the node. Note that a node can have many Activities attached to it: but only one will be active at any given time. The list of Node Activities will be traversed, and the first one found to be active will be displayed. This way, a node can layer multiple variants of an activity on top of each other. For instance, one node can control the weekly Crucible Playlist. There are multiple possible playlists, but only one is active for the week.
 /// </summary>
-public class DestinyActivityGraphNodeActivityDefinition : IDeepEquatable<DestinyActivityGraphNodeActivityDefinition>
+public class DestinyActivityGraphNodeActivityDefinition
 {
     /// <summary>
     ///     An identifier for this node activity. It is only guaranteed to be unique within the Activity Graph.
@@ -16,34 +16,4 @@ public class DestinyActivityGraphNodeActivityDefinition : IDeepEquatable<Destiny
     /// </summary>
     [JsonPropertyName("activityHash")]
     public uint ActivityHash { get; set; }
-
-    public bool DeepEquals(DestinyActivityGraphNodeActivityDefinition? other)
-    {
-        return other is not null &&
-               NodeActivityId == other.NodeActivityId &&
-               ActivityHash == other.ActivityHash;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyActivityGraphNodeActivityDefinition? other)
-    {
-        if (other is null) return;
-        if (NodeActivityId != other.NodeActivityId)
-        {
-            NodeActivityId = other.NodeActivityId;
-            OnPropertyChanged(nameof(NodeActivityId));
-        }
-        if (ActivityHash != other.ActivityHash)
-        {
-            ActivityHash = other.ActivityHash;
-            OnPropertyChanged(nameof(ActivityHash));
-        }
-    }
 }

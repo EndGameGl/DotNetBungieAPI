@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     The details of an overlay prompt to show to a user. They are all fairly self-explanatory localized strings that can be shown.
 /// </summary>
-public class DestinyVendorCategoryOverlayDefinition : IDeepEquatable<DestinyVendorCategoryOverlayDefinition>
+public class DestinyVendorCategoryOverlayDefinition
 {
     [JsonPropertyName("choiceDescription")]
     public string ChoiceDescription { get; set; }
@@ -21,53 +21,5 @@ public class DestinyVendorCategoryOverlayDefinition : IDeepEquatable<DestinyVend
     ///     If this overlay has a currency item that it features, this is said featured item.
     /// </summary>
     [JsonPropertyName("currencyItemHash")]
-    public uint? CurrencyItemHash { get; set; }
-
-    public bool DeepEquals(DestinyVendorCategoryOverlayDefinition? other)
-    {
-        return other is not null &&
-               ChoiceDescription == other.ChoiceDescription &&
-               Description == other.Description &&
-               Icon == other.Icon &&
-               Title == other.Title &&
-               CurrencyItemHash == other.CurrencyItemHash;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyVendorCategoryOverlayDefinition? other)
-    {
-        if (other is null) return;
-        if (ChoiceDescription != other.ChoiceDescription)
-        {
-            ChoiceDescription = other.ChoiceDescription;
-            OnPropertyChanged(nameof(ChoiceDescription));
-        }
-        if (Description != other.Description)
-        {
-            Description = other.Description;
-            OnPropertyChanged(nameof(Description));
-        }
-        if (Icon != other.Icon)
-        {
-            Icon = other.Icon;
-            OnPropertyChanged(nameof(Icon));
-        }
-        if (Title != other.Title)
-        {
-            Title = other.Title;
-            OnPropertyChanged(nameof(Title));
-        }
-        if (CurrencyItemHash != other.CurrencyItemHash)
-        {
-            CurrencyItemHash = other.CurrencyItemHash;
-            OnPropertyChanged(nameof(CurrencyItemHash));
-        }
-    }
+    public uint CurrencyItemHash { get; set; }
 }

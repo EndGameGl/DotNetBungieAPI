@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Vendors;
 /// <summary>
 ///     Information about the category and items currently sold in that category.
 /// </summary>
-public class DestinyVendorCategory : IDeepEquatable<DestinyVendorCategory>
+public class DestinyVendorCategory
 {
     /// <summary>
     ///     An index into the DestinyVendorDefinition.displayCategories property, so you can grab the display data for this category.
@@ -16,34 +16,4 @@ public class DestinyVendorCategory : IDeepEquatable<DestinyVendorCategory>
     /// </summary>
     [JsonPropertyName("itemIndexes")]
     public List<int> ItemIndexes { get; set; }
-
-    public bool DeepEquals(DestinyVendorCategory? other)
-    {
-        return other is not null &&
-               DisplayCategoryIndex == other.DisplayCategoryIndex &&
-               ItemIndexes.DeepEqualsListNaive(other.ItemIndexes);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyVendorCategory? other)
-    {
-        if (other is null) return;
-        if (DisplayCategoryIndex != other.DisplayCategoryIndex)
-        {
-            DisplayCategoryIndex = other.DisplayCategoryIndex;
-            OnPropertyChanged(nameof(DisplayCategoryIndex));
-        }
-        if (!ItemIndexes.DeepEqualsListNaive(other.ItemIndexes))
-        {
-            ItemIndexes = other.ItemIndexes;
-            OnPropertyChanged(nameof(ItemIndexes));
-        }
-    }
 }

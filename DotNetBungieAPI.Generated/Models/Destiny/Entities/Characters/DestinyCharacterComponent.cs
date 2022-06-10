@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Entities.Characters;
 /// <summary>
 ///     This component contains base properties of the character. You'll probably want to always request this component, but hey you do you.
 /// </summary>
-public class DestinyCharacterComponent : IDeepEquatable<DestinyCharacterComponent>
+public class DestinyCharacterComponent
 {
     /// <summary>
     ///     Every Destiny Profile has a membershipId. This is provided on the character as well for convenience.
@@ -119,13 +119,13 @@ public class DestinyCharacterComponent : IDeepEquatable<DestinyCharacterComponen
     ///     A shortcut for getting the background color of the user's currently equipped emblem without having to do a DestinyInventoryItemDefinition lookup.
     /// </summary>
     [JsonPropertyName("emblemColor")]
-    public Destiny.Misc.DestinyColor EmblemColor { get; set; }
+    public object EmblemColor { get; set; }
 
     /// <summary>
     ///     The progression that indicates your character's level. Not their light level, but their character level: you know, the thing you max out a couple hours in and then ignore for the sake of light level.
     /// </summary>
     [JsonPropertyName("levelProgression")]
-    public Destiny.DestinyProgression LevelProgression { get; set; }
+    public object LevelProgression { get; set; }
 
     /// <summary>
     ///     The "base" level of your character, not accounting for any light level.
@@ -143,155 +143,5 @@ public class DestinyCharacterComponent : IDeepEquatable<DestinyCharacterComponen
     ///     If this Character has a title assigned to it, this is the identifier of the DestinyRecordDefinition that has that title information.
     /// </summary>
     [JsonPropertyName("titleRecordHash")]
-    public uint? TitleRecordHash { get; set; }
-
-    public bool DeepEquals(DestinyCharacterComponent? other)
-    {
-        return other is not null &&
-               MembershipId == other.MembershipId &&
-               MembershipType == other.MembershipType &&
-               CharacterId == other.CharacterId &&
-               DateLastPlayed == other.DateLastPlayed &&
-               MinutesPlayedThisSession == other.MinutesPlayedThisSession &&
-               MinutesPlayedTotal == other.MinutesPlayedTotal &&
-               Light == other.Light &&
-               Stats.DeepEqualsDictionaryNaive(other.Stats) &&
-               RaceHash == other.RaceHash &&
-               GenderHash == other.GenderHash &&
-               ClassHash == other.ClassHash &&
-               RaceType == other.RaceType &&
-               ClassType == other.ClassType &&
-               GenderType == other.GenderType &&
-               EmblemPath == other.EmblemPath &&
-               EmblemBackgroundPath == other.EmblemBackgroundPath &&
-               EmblemHash == other.EmblemHash &&
-               (EmblemColor is not null ? EmblemColor.DeepEquals(other.EmblemColor) : other.EmblemColor is null) &&
-               (LevelProgression is not null ? LevelProgression.DeepEquals(other.LevelProgression) : other.LevelProgression is null) &&
-               BaseCharacterLevel == other.BaseCharacterLevel &&
-               PercentToNextLevel == other.PercentToNextLevel &&
-               TitleRecordHash == other.TitleRecordHash;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyCharacterComponent? other)
-    {
-        if (other is null) return;
-        if (MembershipId != other.MembershipId)
-        {
-            MembershipId = other.MembershipId;
-            OnPropertyChanged(nameof(MembershipId));
-        }
-        if (MembershipType != other.MembershipType)
-        {
-            MembershipType = other.MembershipType;
-            OnPropertyChanged(nameof(MembershipType));
-        }
-        if (CharacterId != other.CharacterId)
-        {
-            CharacterId = other.CharacterId;
-            OnPropertyChanged(nameof(CharacterId));
-        }
-        if (DateLastPlayed != other.DateLastPlayed)
-        {
-            DateLastPlayed = other.DateLastPlayed;
-            OnPropertyChanged(nameof(DateLastPlayed));
-        }
-        if (MinutesPlayedThisSession != other.MinutesPlayedThisSession)
-        {
-            MinutesPlayedThisSession = other.MinutesPlayedThisSession;
-            OnPropertyChanged(nameof(MinutesPlayedThisSession));
-        }
-        if (MinutesPlayedTotal != other.MinutesPlayedTotal)
-        {
-            MinutesPlayedTotal = other.MinutesPlayedTotal;
-            OnPropertyChanged(nameof(MinutesPlayedTotal));
-        }
-        if (Light != other.Light)
-        {
-            Light = other.Light;
-            OnPropertyChanged(nameof(Light));
-        }
-        if (!Stats.DeepEqualsDictionaryNaive(other.Stats))
-        {
-            Stats = other.Stats;
-            OnPropertyChanged(nameof(Stats));
-        }
-        if (RaceHash != other.RaceHash)
-        {
-            RaceHash = other.RaceHash;
-            OnPropertyChanged(nameof(RaceHash));
-        }
-        if (GenderHash != other.GenderHash)
-        {
-            GenderHash = other.GenderHash;
-            OnPropertyChanged(nameof(GenderHash));
-        }
-        if (ClassHash != other.ClassHash)
-        {
-            ClassHash = other.ClassHash;
-            OnPropertyChanged(nameof(ClassHash));
-        }
-        if (RaceType != other.RaceType)
-        {
-            RaceType = other.RaceType;
-            OnPropertyChanged(nameof(RaceType));
-        }
-        if (ClassType != other.ClassType)
-        {
-            ClassType = other.ClassType;
-            OnPropertyChanged(nameof(ClassType));
-        }
-        if (GenderType != other.GenderType)
-        {
-            GenderType = other.GenderType;
-            OnPropertyChanged(nameof(GenderType));
-        }
-        if (EmblemPath != other.EmblemPath)
-        {
-            EmblemPath = other.EmblemPath;
-            OnPropertyChanged(nameof(EmblemPath));
-        }
-        if (EmblemBackgroundPath != other.EmblemBackgroundPath)
-        {
-            EmblemBackgroundPath = other.EmblemBackgroundPath;
-            OnPropertyChanged(nameof(EmblemBackgroundPath));
-        }
-        if (EmblemHash != other.EmblemHash)
-        {
-            EmblemHash = other.EmblemHash;
-            OnPropertyChanged(nameof(EmblemHash));
-        }
-        if (!EmblemColor.DeepEquals(other.EmblemColor))
-        {
-            EmblemColor.Update(other.EmblemColor);
-            OnPropertyChanged(nameof(EmblemColor));
-        }
-        if (!LevelProgression.DeepEquals(other.LevelProgression))
-        {
-            LevelProgression.Update(other.LevelProgression);
-            OnPropertyChanged(nameof(LevelProgression));
-        }
-        if (BaseCharacterLevel != other.BaseCharacterLevel)
-        {
-            BaseCharacterLevel = other.BaseCharacterLevel;
-            OnPropertyChanged(nameof(BaseCharacterLevel));
-        }
-        if (PercentToNextLevel != other.PercentToNextLevel)
-        {
-            PercentToNextLevel = other.PercentToNextLevel;
-            OnPropertyChanged(nameof(PercentToNextLevel));
-        }
-        if (TitleRecordHash != other.TitleRecordHash)
-        {
-            TitleRecordHash = other.TitleRecordHash;
-            OnPropertyChanged(nameof(TitleRecordHash));
-        }
-    }
+    public uint TitleRecordHash { get; set; }
 }

@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Common;
 /// <summary>
 ///     Many Destiny*Definition contracts - the "first order" entities of Destiny that have their own tables in the Manifest Database - also have displayable information. This is the base class for that display information.
 /// </summary>
-public class DestinyDisplayPropertiesDefinition : IDeepEquatable<DestinyDisplayPropertiesDefinition>
+public class DestinyDisplayPropertiesDefinition
 {
     [JsonPropertyName("description")]
     public string Description { get; set; }
@@ -32,58 +32,4 @@ public class DestinyDisplayPropertiesDefinition : IDeepEquatable<DestinyDisplayP
 
     [JsonPropertyName("hasIcon")]
     public bool HasIcon { get; set; }
-
-    public bool DeepEquals(DestinyDisplayPropertiesDefinition? other)
-    {
-        return other is not null &&
-               Description == other.Description &&
-               Name == other.Name &&
-               Icon == other.Icon &&
-               IconSequences.DeepEqualsList(other.IconSequences) &&
-               HighResIcon == other.HighResIcon &&
-               HasIcon == other.HasIcon;
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    public void Update(DestinyDisplayPropertiesDefinition? other)
-    {
-        if (other is null) return;
-        if (Description != other.Description)
-        {
-            Description = other.Description;
-            OnPropertyChanged(nameof(Description));
-        }
-        if (Name != other.Name)
-        {
-            Name = other.Name;
-            OnPropertyChanged(nameof(Name));
-        }
-        if (Icon != other.Icon)
-        {
-            Icon = other.Icon;
-            OnPropertyChanged(nameof(Icon));
-        }
-        if (!IconSequences.DeepEqualsList(other.IconSequences))
-        {
-            IconSequences = other.IconSequences;
-            OnPropertyChanged(nameof(IconSequences));
-        }
-        if (HighResIcon != other.HighResIcon)
-        {
-            HighResIcon = other.HighResIcon;
-            OnPropertyChanged(nameof(HighResIcon));
-        }
-        if (HasIcon != other.HasIcon)
-        {
-            HasIcon = other.HasIcon;
-            OnPropertyChanged(nameof(HasIcon));
-        }
-    }
 }
