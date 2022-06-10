@@ -9,7 +9,7 @@ public class DestinyProfileComponent
     ///     If you need to render the Profile (their platform name, icon, etc...) somewhere, this property contains that information.
     /// </summary>
     [JsonPropertyName("userInfo")]
-    public object UserInfo { get; set; }
+    public User.UserInfoCard UserInfo { get; set; }
 
     /// <summary>
     ///     The last time the user played with any character on this Profile.

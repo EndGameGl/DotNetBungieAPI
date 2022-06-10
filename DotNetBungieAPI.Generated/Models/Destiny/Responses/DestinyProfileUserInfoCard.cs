@@ -23,7 +23,7 @@ public class DestinyProfileUserInfoCard
     ///      This is only available if you are requesting yourself.
     /// </summary>
     [JsonPropertyName("platformSilver")]
-    public object PlatformSilver { get; set; }
+    public Destiny.Components.Inventory.DestinyPlatformSilverComponent PlatformSilver { get; set; }
 
     /// <summary>
     ///     If this profile is not in a cross save pairing, this will return the game versions that we believe this profile has access to.

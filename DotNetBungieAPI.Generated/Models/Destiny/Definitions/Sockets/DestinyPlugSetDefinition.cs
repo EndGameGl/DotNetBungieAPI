@@ -15,7 +15,7 @@ public class DestinyPlugSetDefinition
     ///     If you want to show these plugs in isolation, these are the display properties for them.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public object DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
     /// <summary>
     ///     This is a list of pre-determined plugs that can be plugged into this socket, without the character having the plug in their inventory.

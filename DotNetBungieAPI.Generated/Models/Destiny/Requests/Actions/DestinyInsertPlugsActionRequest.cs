@@ -18,7 +18,7 @@ public class DestinyInsertPlugsActionRequest
     ///     The plugs being inserted.
     /// </summary>
     [JsonPropertyName("plug")]
-    public object Plug { get; set; }
+    public Destiny.Requests.Actions.DestinyInsertPlugsRequestEntry Plug { get; set; }
 
     [JsonPropertyName("characterId")]
     public long CharacterId { get; set; }

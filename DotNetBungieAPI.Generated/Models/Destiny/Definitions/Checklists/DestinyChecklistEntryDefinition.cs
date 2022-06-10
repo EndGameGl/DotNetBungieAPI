@@ -17,7 +17,7 @@ public class DestinyChecklistEntryDefinition
     ///     Even if no other associations exist, we will give you *something* for display properties. In cases where we have no associated entities, it may be as simple as a numerical identifier.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public object DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
     [JsonPropertyName("destinationHash")]
     public uint DestinationHash { get; set; }

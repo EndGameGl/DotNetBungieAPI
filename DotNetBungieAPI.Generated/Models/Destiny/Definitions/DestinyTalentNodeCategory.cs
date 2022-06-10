@@ -23,7 +23,7 @@ public class DestinyTalentNodeCategory
     ///     Will contain at least the "name", which will be the title of the category. We will likely not have description and an icon yet, but I'm going to keep my options open.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public object DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
     /// <summary>
     ///     The set of all hash identifiers for Talent Nodes (DestinyTalentNodeDefinition) in this Talent Grid that are part of this Category.

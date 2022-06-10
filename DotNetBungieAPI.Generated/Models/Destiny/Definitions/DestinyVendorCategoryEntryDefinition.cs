@@ -69,7 +69,7 @@ public class DestinyVendorCategoryEntryDefinition
     ///     If this category has an overlay prompt that should appear, this contains the details of that prompt.
     /// </summary>
     [JsonPropertyName("overlay")]
-    public object Overlay { get; set; }
+    public Destiny.Definitions.DestinyVendorCategoryOverlayDefinition Overlay { get; set; }
 
     /// <summary>
     ///     A shortcut for the vendor item indexes sold under this category. Saves us from some expensive reorganization at runtime.

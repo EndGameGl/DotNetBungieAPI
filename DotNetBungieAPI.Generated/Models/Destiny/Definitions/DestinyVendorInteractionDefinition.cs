@@ -75,7 +75,7 @@ public class DestinyVendorInteractionDefinition
     ///     The header for the interaction dialog.
     /// </summary>
     [JsonPropertyName("headerDisplayProperties")]
-    public object HeaderDisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition HeaderDisplayProperties { get; set; }
 
     /// <summary>
     ///     The localized text telling the player what to do when they see this dialog.

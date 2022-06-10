@@ -12,13 +12,13 @@ public class DestinyPostGameCarnageReportTeamEntry
     ///     Team's standing relative to other teams.
     /// </summary>
     [JsonPropertyName("standing")]
-    public object Standing { get; set; }
+    public Destiny.HistoricalStats.DestinyHistoricalStatsValue Standing { get; set; }
 
     /// <summary>
     ///     Score earned by the team
     /// </summary>
     [JsonPropertyName("score")]
-    public object Score { get; set; }
+    public Destiny.HistoricalStats.DestinyHistoricalStatsValue Score { get; set; }
 
     /// <summary>
     ///     Alpha or Bravo

@@ -64,7 +64,7 @@ public class DestinyProgressionDefinition
     ///     The #RGB string value for the color related to this progression, if there is one.
     /// </summary>
     [JsonPropertyName("color")]
-    public object Color { get; set; }
+    public Destiny.Misc.DestinyColor Color { get; set; }
 
     /// <summary>
     ///     For progressions that have it, this is the rank icon we use in the Companion, displayed above the progressions' rank value.

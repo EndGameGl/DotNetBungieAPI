@@ -18,5 +18,5 @@ public class DestinyClanAggregateStat
     ///     Value of the stat for this player
     /// </summary>
     [JsonPropertyName("value")]
-    public object Value { get; set; }
+    public Destiny.HistoricalStats.DestinyHistoricalStatsValue Value { get; set; }
 }

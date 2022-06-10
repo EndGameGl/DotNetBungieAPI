@@ -15,7 +15,7 @@ public class DestinyNodeStepDefinition
     ///     These are the display properties actually used to render the Talent Node. The currently active step's displayProperties are shown.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public object DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
     /// <summary>
     ///     The index of this step in the list of Steps on the Talent Node.
@@ -53,7 +53,7 @@ public class DestinyNodeStepDefinition
     ///     If the step has requirements for activation (they almost always do, if nothing else than for the Talent Grid's Progression to have reached a certain level), they will be defined here.
     /// </summary>
     [JsonPropertyName("activationRequirement")]
-    public object ActivationRequirement { get; set; }
+    public Destiny.Definitions.DestinyNodeActivationRequirement ActivationRequirement { get; set; }
 
     /// <summary>
     ///     There was a time when talent nodes could be activated multiple times, and the effects of subsequent Steps would be compounded on each other, essentially "upgrading" the node. We have moved away from this, but theoretically the capability still exists.
@@ -107,7 +107,7 @@ public class DestinyNodeStepDefinition
     ///     In Destiny 1, the Armory's Perk Filtering was driven by a concept of TalentNodeStepGroups: categorizations of talent nodes based on their functionality. While the Armory isn't a BNet-facing thing for now, and the new Armory will need to account for Sockets rather than Talent Nodes, this categorization capability feels useful enough to still keep around.
     /// </summary>
     [JsonPropertyName("stepGroups")]
-    public object StepGroups { get; set; }
+    public Destiny.Definitions.DestinyTalentNodeStepGroups StepGroups { get; set; }
 
     /// <summary>
     ///     If true, this step can affect the level of the item. See DestinyInventoryItemDefintion for more information about item levels and their effect on stats.

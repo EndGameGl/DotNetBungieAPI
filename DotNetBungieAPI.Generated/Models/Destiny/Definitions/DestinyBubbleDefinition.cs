@@ -15,5 +15,5 @@ public class DestinyBubbleDefinition
     ///     The display properties of this bubble, so you don't have to look them up in a separate list anymore.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public object DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 }

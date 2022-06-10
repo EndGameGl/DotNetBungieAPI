@@ -25,7 +25,7 @@ public class DestinyItemInstanceComponent
     ///     The item stat that we consider to be "primary" for the item. For instance, this would be "Attack" for Weapons or "Defense" for armor.
     /// </summary>
     [JsonPropertyName("primaryStat")]
-    public object PrimaryStat { get; set; }
+    public Destiny.DestinyStat PrimaryStat { get; set; }
 
     /// <summary>
     ///     The Item's "Level" has the most significant bearing on its stats, such as Light and Power.
@@ -87,5 +87,5 @@ public class DestinyItemInstanceComponent
     ///     IF populated, this item supports Energy mechanics (i.e. Armor 2.0), and these are the current details of its energy type and available capacity to spend energy points.
     /// </summary>
     [JsonPropertyName("energy")]
-    public object Energy { get; set; }
+    public Destiny.Entities.Items.DestinyItemInstanceEnergy Energy { get; set; }
 }

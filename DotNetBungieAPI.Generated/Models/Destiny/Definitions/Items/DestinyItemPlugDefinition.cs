@@ -100,17 +100,17 @@ public class DestinyItemPlugDefinition
     ///     If this is populated, it will have the override data to be applied when this plug is applied to an item.
     /// </summary>
     [JsonPropertyName("parentItemOverride")]
-    public object ParentItemOverride { get; set; }
+    public Destiny.Definitions.Items.DestinyParentItemOverride ParentItemOverride { get; set; }
 
     /// <summary>
     ///     IF not null, this plug provides Energy capacity to the item in which it is socketed. In Armor 2.0 for example, is implemented in a similar way to Masterworks, where visually it's a single area of the UI being clicked on to "Upgrade" to higher energy levels, but it's actually socketing new plugs.
     /// </summary>
     [JsonPropertyName("energyCapacity")]
-    public object EnergyCapacity { get; set; }
+    public Destiny.Definitions.Items.DestinyEnergyCapacityEntry EnergyCapacity { get; set; }
 
     /// <summary>
     ///     IF not null, this plug has an energy cost. This contains the details of that cost.
     /// </summary>
     [JsonPropertyName("energyCost")]
-    public object EnergyCost { get; set; }
+    public Destiny.Definitions.Items.DestinyEnergyCostEntry EnergyCost { get; set; }
 }

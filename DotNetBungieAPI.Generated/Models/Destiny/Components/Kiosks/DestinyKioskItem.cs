@@ -24,5 +24,5 @@ public class DestinyKioskItem
     ///     I may regret naming it this way - but this represents when an item has an objective that doesn't serve a beneficial purpose, but rather is used for "flavor" or additional information. For instance, when Emblems track specific stats, those stats are represented as Objectives on the item.
     /// </summary>
     [JsonPropertyName("flavorObjective")]
-    public object FlavorObjective { get; set; }
+    public Destiny.Quests.DestinyObjectiveProgress FlavorObjective { get; set; }
 }

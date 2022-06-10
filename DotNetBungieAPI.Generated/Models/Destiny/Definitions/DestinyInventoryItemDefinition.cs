@@ -56,7 +56,7 @@ public class DestinyInventoryItemDefinition
     ///     Sometimes, an item will have a background color. Most notably this occurs with Emblems, who use the Background Color for small character nameplates such as the "friends" view you see in-game. There are almost certainly other items that have background color as well, though I have not bothered to investigate what items have it nor what purposes they serve: use it as you will.
     /// </summary>
     [JsonPropertyName("backgroundColor")]
-    public object BackgroundColor { get; set; }
+    public Destiny.Misc.DestinyColor BackgroundColor { get; set; }
 
     /// <summary>
     ///     If we were able to acquire an in-game screenshot for the item, the path to that screenshot will be returned here. Note that not all items have screenshots: particularly not any non-equippable items.
@@ -101,31 +101,31 @@ public class DestinyInventoryItemDefinition
     ///     If the item can be "used", this block will be non-null, and will have data related to the action performed when using the item. (Guess what? 99% of the time, this action is "dismantle". Shocker)
     /// </summary>
     [JsonPropertyName("action")]
-    public object Action { get; set; }
+    public Destiny.Definitions.DestinyItemActionBlockDefinition Action { get; set; }
 
     /// <summary>
     ///     Recipe items will have relevant crafting information available here.
     /// </summary>
     [JsonPropertyName("crafting")]
-    public object Crafting { get; set; }
+    public Destiny.Definitions.DestinyItemCraftingBlockDefinition Crafting { get; set; }
 
     /// <summary>
     ///     If this item can exist in an inventory, this block will be non-null. In practice, every item that currently exists has one of these blocks. But note that it is not necessarily guaranteed.
     /// </summary>
     [JsonPropertyName("inventory")]
-    public object Inventory { get; set; }
+    public Destiny.Definitions.DestinyItemInventoryBlockDefinition Inventory { get; set; }
 
     /// <summary>
     ///     If this item is a quest, this block will be non-null. In practice, I wish I had called this the Quest block, but at the time it wasn't clear to me whether it would end up being used for purposes other than quests. It will contain data about the steps in the quest, and mechanics we can use for displaying and tracking the quest.
     /// </summary>
     [JsonPropertyName("setData")]
-    public object SetData { get; set; }
+    public Destiny.Definitions.DestinyItemSetBlockDefinition SetData { get; set; }
 
     /// <summary>
     ///     If this item can have stats (such as a weapon, armor, or vehicle), this block will be non-null and populated with the stats found on the item.
     /// </summary>
     [JsonPropertyName("stats")]
-    public object Stats { get; set; }
+    public Destiny.Definitions.DestinyItemStatBlockDefinition Stats { get; set; }
 
     /// <summary>
     ///     If the item is an emblem that has a special Objective attached to it - for instance, if the emblem tracks PVP Kills, or what-have-you. This is a bit different from, for example, the Vanguard Kill Tracker mod, which pipes data into the "art channel". When I get some time, I would like to standardize these so you can get at the values they expose without having to care about what they're being used for and how they are wired up, but for now here's the raw data.
@@ -137,85 +137,85 @@ public class DestinyInventoryItemDefinition
     ///     If this item can be equipped, this block will be non-null and will be populated with the conditions under which it can be equipped.
     /// </summary>
     [JsonPropertyName("equippingBlock")]
-    public object EquippingBlock { get; set; }
+    public Destiny.Definitions.DestinyEquippingBlockDefinition EquippingBlock { get; set; }
 
     /// <summary>
     ///     If this item can be rendered, this block will be non-null and will be populated with rendering information.
     /// </summary>
     [JsonPropertyName("translationBlock")]
-    public object TranslationBlock { get; set; }
+    public Destiny.Definitions.DestinyItemTranslationBlockDefinition TranslationBlock { get; set; }
 
     /// <summary>
     ///     If this item can be Used or Acquired to gain other items (for instance, how Eververse Boxes can be consumed to get items from the box), this block will be non-null and will give summary information for the items that can be acquired.
     /// </summary>
     [JsonPropertyName("preview")]
-    public object Preview { get; set; }
+    public Destiny.Definitions.DestinyItemPreviewBlockDefinition Preview { get; set; }
 
     /// <summary>
     ///     If this item can have a level or stats, this block will be non-null and will be populated with default quality (item level, "quality", and infusion) data. See the block for more details, there's often less upfront information in D2 so you'll want to be aware of how you use quality and item level on the definition level now.
     /// </summary>
     [JsonPropertyName("quality")]
-    public object Quality { get; set; }
+    public Destiny.Definitions.DestinyItemQualityBlockDefinition Quality { get; set; }
 
     /// <summary>
     ///     The conceptual "Value" of an item, if any was defined. See the DestinyItemValueBlockDefinition for more details.
     /// </summary>
     [JsonPropertyName("value")]
-    public object Value { get; set; }
+    public Destiny.Definitions.DestinyItemValueBlockDefinition Value { get; set; }
 
     /// <summary>
     ///     If this item has a known source, this block will be non-null and populated with source information. Unfortunately, at this time we are not generating sources: that is some aggressively manual work which we didn't have time for, and I'm hoping to get back to at some point in the future.
     /// </summary>
     [JsonPropertyName("sourceData")]
-    public object SourceData { get; set; }
+    public Destiny.Definitions.DestinyItemSourceBlockDefinition SourceData { get; set; }
 
     /// <summary>
     ///     If this item has Objectives (extra tasks that can be accomplished related to the item... most frequently when the item is a Quest Step and the Objectives need to be completed to move on to the next Quest Step), this block will be non-null and the objectives defined herein.
     /// </summary>
     [JsonPropertyName("objectives")]
-    public object Objectives { get; set; }
+    public Destiny.Definitions.DestinyItemObjectiveBlockDefinition Objectives { get; set; }
 
     /// <summary>
     ///     If this item has available metrics to be shown, this block will be non-null have the appropriate hashes defined.
     /// </summary>
     [JsonPropertyName("metrics")]
-    public object Metrics { get; set; }
+    public Destiny.Definitions.DestinyItemMetricBlockDefinition Metrics { get; set; }
 
     /// <summary>
     ///     If this item *is* a Plug, this will be non-null and the info defined herein. See DestinyItemPlugDefinition for more information.
     /// </summary>
     [JsonPropertyName("plug")]
-    public object Plug { get; set; }
+    public Destiny.Definitions.Items.DestinyItemPlugDefinition Plug { get; set; }
 
     /// <summary>
     ///     If this item has related items in a "Gear Set", this will be non-null and the relationships defined herein.
     /// </summary>
     [JsonPropertyName("gearset")]
-    public object Gearset { get; set; }
+    public Destiny.Definitions.DestinyItemGearsetBlockDefinition Gearset { get; set; }
 
     /// <summary>
     ///     If this item is a "reward sack" that can be opened to provide other items, this will be non-null and the properties of the sack contained herein.
     /// </summary>
     [JsonPropertyName("sack")]
-    public object Sack { get; set; }
+    public Destiny.Definitions.DestinyItemSackBlockDefinition Sack { get; set; }
 
     /// <summary>
     ///     If this item has any Sockets, this will be non-null and the individual sockets on the item will be defined herein.
     /// </summary>
     [JsonPropertyName("sockets")]
-    public object Sockets { get; set; }
+    public Destiny.Definitions.DestinyItemSocketBlockDefinition Sockets { get; set; }
 
     /// <summary>
     ///     Summary data about the item.
     /// </summary>
     [JsonPropertyName("summary")]
-    public object Summary { get; set; }
+    public Destiny.Definitions.DestinyItemSummaryBlockDefinition Summary { get; set; }
 
     /// <summary>
     ///     If the item has a Talent Grid, this will be non-null and the properties of the grid defined herein. Note that, while many items still have talent grids, the only ones with meaningful Nodes still on them will be Subclass/"Build" items.
     /// </summary>
     [JsonPropertyName("talentGrid")]
-    public object TalentGrid { get; set; }
+    public Destiny.Definitions.DestinyItemTalentGridBlockDefinition TalentGrid { get; set; }
 
     /// <summary>
     ///     If the item has stats, this block will be defined. It has the "raw" investment stats for the item. These investment stats don't take into account the ways that the items can spawn, nor do they take into account any Stat Group transformations. I have retained them for debugging purposes, but I do not know how useful people will find them.

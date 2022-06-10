@@ -91,7 +91,7 @@ public class DestinyVendorItemDefinition
     ///     The action to be performed when purchasing the item, if it's not just "buy".
     /// </summary>
     [JsonPropertyName("action")]
-    public object Action { get; set; }
+    public Destiny.Definitions.DestinyVendorSaleItemActionBlockDefinition Action { get; set; }
 
     /// <summary>
     ///     The string identifier for the category selling this item.

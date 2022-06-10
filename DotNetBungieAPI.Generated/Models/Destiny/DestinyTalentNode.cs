@@ -63,5 +63,5 @@ public class DestinyTalentNode
     ///     This property has some history. A talent grid can provide stats on both the item it's related to and the character equipping the item. This returns data about those stat bonuses.
     /// </summary>
     [JsonPropertyName("nodeStatsBlock")]
-    public object NodeStatsBlock { get; set; }
+    public Destiny.DestinyTalentNodeStatBlock NodeStatsBlock { get; set; }
 }

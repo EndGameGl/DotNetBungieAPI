@@ -9,7 +9,7 @@ public class DestinyPresentationNodeComponent
     ///     An optional property: presentation nodes MAY have objectives, which can be used to infer more human readable data about the progress. However, progressValue and completionValue ought to be considered the canonical values for progress on Progression Nodes.
     /// </summary>
     [JsonPropertyName("objective")]
-    public object Objective { get; set; }
+    public Destiny.Quests.DestinyObjectiveProgress Objective { get; set; }
 
     /// <summary>
     ///     How much of the presentation node is considered to be completed so far by the given character/profile.

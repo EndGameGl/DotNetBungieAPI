@@ -9,7 +9,7 @@ public class DestinyEnergyTypeDefinition
     ///     The description of the energy type, icon etc...
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public object DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
     /// <summary>
     ///     A variant of the icon that is transparent and colorless.

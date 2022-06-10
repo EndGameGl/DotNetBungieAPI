@@ -11,7 +11,7 @@ public class DestinyVendorsResponse
     ///     COMPONENT TYPE: Vendors
     /// </summary>
     [JsonPropertyName("vendorGroups")]
-    public object VendorGroups { get; set; }
+    public SingleComponentResponseOfDestinyVendorGroupComponent VendorGroups { get; set; }
 
     /// <summary>
     ///     The base properties of the vendor. These are keyed by the Vendor Hash, so you will get one Vendor Component per vendor returned.
@@ -19,7 +19,7 @@ public class DestinyVendorsResponse
     ///     COMPONENT TYPE: Vendors
     /// </summary>
     [JsonPropertyName("vendors")]
-    public object Vendors { get; set; }
+    public DictionaryComponentResponseOfuint32AndDestinyVendorComponent Vendors { get; set; }
 
     /// <summary>
     ///     Categories that the vendor has available, and references to the sales therein. These are keyed by the Vendor Hash, so you will get one Categories Component per vendor returned.
@@ -27,7 +27,7 @@ public class DestinyVendorsResponse
     ///     COMPONENT TYPE: VendorCategories
     /// </summary>
     [JsonPropertyName("categories")]
-    public object Categories { get; set; }
+    public DictionaryComponentResponseOfuint32AndDestinyVendorCategoriesComponent Categories { get; set; }
 
     /// <summary>
     ///     Sales, keyed by the vendorItemIndex of the item being sold. These are keyed by the Vendor Hash, so you will get one Sale Item Set Component per vendor returned.
@@ -37,7 +37,7 @@ public class DestinyVendorsResponse
     ///     COMPONENT TYPE: VendorSales
     /// </summary>
     [JsonPropertyName("sales")]
-    public object Sales { get; set; }
+    public DictionaryComponentResponseOfuint32AndPersonalDestinyVendorSaleItemSetComponent Sales { get; set; }
 
     /// <summary>
     ///     The set of item detail components, one set of item components per Vendor. These are keyed by the Vendor Hash, so you will get one Item Component Set per vendor returned.
@@ -53,7 +53,7 @@ public class DestinyVendorsResponse
     ///     COMPONENT TYPE: CurrencyLookups
     /// </summary>
     [JsonPropertyName("currencyLookups")]
-    public object CurrencyLookups { get; set; }
+    public SingleComponentResponseOfDestinyCurrenciesComponent CurrencyLookups { get; set; }
 
     /// <summary>
     ///     A map of string variable values by hash for this character context.
@@ -61,5 +61,5 @@ public class DestinyVendorsResponse
     ///     COMPONENT TYPE: StringVariables
     /// </summary>
     [JsonPropertyName("stringVariables")]
-    public object StringVariables { get; set; }
+    public SingleComponentResponseOfDestinyStringVariablesComponent StringVariables { get; set; }
 }

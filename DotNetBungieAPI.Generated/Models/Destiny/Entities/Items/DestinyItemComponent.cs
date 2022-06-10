@@ -97,7 +97,7 @@ public class DestinyItemComponent
     ///     The objective progress for the currently-selected metric definition, to be displayed on the emblem nameplate.
     /// </summary>
     [JsonPropertyName("metricObjective")]
-    public object MetricObjective { get; set; }
+    public Destiny.Quests.DestinyObjectiveProgress MetricObjective { get; set; }
 
     /// <summary>
     ///     The version of this item, used to index into the versions list in the item definition quality block.

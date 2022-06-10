@@ -24,11 +24,11 @@ public class TrendingEntryDestinyRitual
     ///     A destiny event does not necessarily have a related Milestone, but if it does the details will be returned here.
     /// </summary>
     [JsonPropertyName("milestoneDetails")]
-    public object MilestoneDetails { get; set; }
+    public Destiny.Milestones.DestinyPublicMilestone MilestoneDetails { get; set; }
 
     /// <summary>
     ///     A destiny event will not necessarily have milestone "custom content", but if it does the details will be here.
     /// </summary>
     [JsonPropertyName("eventContent")]
-    public object EventContent { get; set; }
+    public Destiny.Milestones.DestinyMilestoneContent EventContent { get; set; }
 }

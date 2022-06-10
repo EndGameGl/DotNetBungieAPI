@@ -15,7 +15,7 @@ public class DestinyVendorInventoryFlyoutDefinition
     ///     The title and other common properties of the flyout.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public object DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
     /// <summary>
     ///     A list of inventory buckets and other metadata to show on the screen.

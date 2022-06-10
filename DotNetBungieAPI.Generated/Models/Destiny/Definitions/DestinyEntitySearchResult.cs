@@ -15,5 +15,5 @@ public class DestinyEntitySearchResult
     ///     The items found that are matches/near matches for the searched-for term, sorted by something vaguely resembling "relevance". Hopefully this will get better in the future.
     /// </summary>
     [JsonPropertyName("results")]
-    public object Results { get; set; }
+    public SearchResultOfDestinyEntitySearchResultItem Results { get; set; }
 }

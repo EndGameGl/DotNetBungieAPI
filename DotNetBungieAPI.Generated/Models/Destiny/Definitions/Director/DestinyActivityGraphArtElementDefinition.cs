@@ -9,5 +9,5 @@ public class DestinyActivityGraphArtElementDefinition
     ///     The position on the map of the art element.
     /// </summary>
     [JsonPropertyName("position")]
-    public object Position { get; set; }
+    public Destiny.Definitions.Common.DestinyPositionDefinition Position { get; set; }
 }

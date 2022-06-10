@@ -15,7 +15,7 @@ public class DestinyVendorComponent
     ///     If the Vendor has a related Reputation, this is the Progression data that represents the character's Reputation level with this Vendor.
     /// </summary>
     [JsonPropertyName("progression")]
-    public object Progression { get; set; }
+    public Destiny.DestinyProgression Progression { get; set; }
 
     /// <summary>
     ///     An index into the vendor definition's "locations" property array, indicating which location they are at currently. If -1, then the vendor has no known location (and you may choose not to show them in your UI as a result. I mean, it's your bag honey)

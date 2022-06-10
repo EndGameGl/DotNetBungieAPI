@@ -19,7 +19,7 @@ public class DestinySandboxPerkDefinition
     ///     These display properties are by no means guaranteed to be populated. Usually when it is, it's only because we back-filled them with the displayProperties of some Talent Node or Plug item that happened to be uniquely providing that perk.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public object DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
     /// <summary>
     ///     The string identifier for the perk.
@@ -55,7 +55,7 @@ public class DestinySandboxPerkDefinition
     ///     It is as yet unpopulated, and there will be quite a bit of work needed to restore it to its former working order.
     /// </summary>
     [JsonPropertyName("perkGroups")]
-    public object PerkGroups { get; set; }
+    public Destiny.Definitions.DestinyTalentNodeStepGroups PerkGroups { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

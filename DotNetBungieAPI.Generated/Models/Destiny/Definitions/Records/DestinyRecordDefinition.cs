@@ -51,7 +51,7 @@ public class DestinyRecordDefinition
     ///     Some records have multiple 'interval' objectives, and the record may be claimed at each completed interval
     /// </summary>
     [JsonPropertyName("intervalInfo")]
-    public object IntervalInfo { get; set; }
+    public Destiny.Definitions.Records.DestinyRecordIntervalBlock IntervalInfo { get; set; }
 
     /// <summary>
     ///     If there is any publicly available information about rewards earned for achieving this record, this is the list of those items.

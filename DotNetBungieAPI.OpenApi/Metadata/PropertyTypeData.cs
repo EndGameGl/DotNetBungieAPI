@@ -32,6 +32,11 @@ public class PropertyTypeData
             TypeReference = openApiComponentSchema.TypeReference;
             IsClass = true;
         }
+        else if (openApiComponentSchema.Type is "object" && openApiComponentSchema.AllOf?.Count > 0)
+        {
+            TypeReference = openApiComponentSchema.AllOf[0].TypeReference;
+            IsClass = true;
+        }
         else if (openApiComponentSchema.EnumReference is not null)
         {
             IsValue = true;

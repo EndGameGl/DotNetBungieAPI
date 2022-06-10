@@ -17,13 +17,13 @@ public class DestinyProfileTransitoryComponent
     ///     If you are in an activity, this is some transitory info about the activity currently being played.
     /// </summary>
     [JsonPropertyName("currentActivity")]
-    public object CurrentActivity { get; set; }
+    public Destiny.Components.Profiles.DestinyProfileTransitoryCurrentActivity CurrentActivity { get; set; }
 
     /// <summary>
     ///     Information about whether and what might prevent you from joining this person on a fireteam.
     /// </summary>
     [JsonPropertyName("joinability")]
-    public object Joinability { get; set; }
+    public Destiny.Components.Profiles.DestinyProfileTransitoryJoinability Joinability { get; set; }
 
     /// <summary>
     ///     Information about tracked entities.

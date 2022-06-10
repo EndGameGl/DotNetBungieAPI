@@ -17,5 +17,5 @@ public class DestinyErrorProfile
     ///     Basic info about the account that failed. Don't expect anything other than membership ID, Membership Type, and displayName to be populated.
     /// </summary>
     [JsonPropertyName("infoCard")]
-    public object InfoCard { get; set; }
+    public User.UserInfoCard InfoCard { get; set; }
 }

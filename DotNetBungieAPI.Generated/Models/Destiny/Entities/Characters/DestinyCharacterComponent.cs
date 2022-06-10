@@ -119,13 +119,13 @@ public class DestinyCharacterComponent
     ///     A shortcut for getting the background color of the user's currently equipped emblem without having to do a DestinyInventoryItemDefinition lookup.
     /// </summary>
     [JsonPropertyName("emblemColor")]
-    public object EmblemColor { get; set; }
+    public Destiny.Misc.DestinyColor EmblemColor { get; set; }
 
     /// <summary>
     ///     The progression that indicates your character's level. Not their light level, but their character level: you know, the thing you max out a couple hours in and then ignore for the sake of light level.
     /// </summary>
     [JsonPropertyName("levelProgression")]
-    public object LevelProgression { get; set; }
+    public Destiny.DestinyProgression LevelProgression { get; set; }
 
     /// <summary>
     ///     The "base" level of your character, not accounting for any light level.

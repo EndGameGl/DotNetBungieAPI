@@ -19,19 +19,19 @@ public class DestinyActivityDefinition
     ///     The title, subtitle, and icon for the activity. We do a little post-processing on this to try and account for Activities where the designers have left this data too minimal to determine what activity is actually being played.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public object DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
     /// <summary>
     ///     The unadulterated form of the display properties, as they ought to be shown in the Director (if the activity appears in the director).
     /// </summary>
     [JsonPropertyName("originalDisplayProperties")]
-    public object OriginalDisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition OriginalDisplayProperties { get; set; }
 
     /// <summary>
     ///     The title, subtitle, and icon for the activity as determined by Selection Screen data, if there is any for this activity. There won't be data in this field if the activity is never shown in a selection/options screen.
     /// </summary>
     [JsonPropertyName("selectionScreenDisplayProperties")]
-    public object SelectionScreenDisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition SelectionScreenDisplayProperties { get; set; }
 
     /// <summary>
     ///     If the activity has an icon associated with a specific release (such as a DLC), this is the path to that release's icon.
@@ -127,13 +127,13 @@ public class DestinyActivityDefinition
     ///     This block of data provides information about the Activity's matchmaking attributes: how many people can join and such.
     /// </summary>
     [JsonPropertyName("matchmaking")]
-    public object Matchmaking { get; set; }
+    public Destiny.Definitions.DestinyActivityMatchmakingBlockDefinition Matchmaking { get; set; }
 
     /// <summary>
     ///     This block of data, if it exists, provides information about the guided game experience and restrictions for this activity. If it doesn't exist, the game is not able to be played as a guided game.
     /// </summary>
     [JsonPropertyName("guidedGame")]
-    public object GuidedGame { get; set; }
+    public Destiny.Definitions.DestinyActivityGuidedBlockDefinition GuidedGame { get; set; }
 
     /// <summary>
     ///     If this activity had an activity mode directly defined on it, this will be the hash of that mode.

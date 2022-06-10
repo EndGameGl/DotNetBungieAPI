@@ -21,7 +21,7 @@ public class DestinyEntitySearchResultItem
     ///     Basic display properties on the entity, so you don't have to look up the definition to show basic results for the item.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public object DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
     /// <summary>
     ///     The ranking value for sorting that we calculated using our relevance formula. This will hopefully get better with time and iteration.

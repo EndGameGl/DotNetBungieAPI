@@ -12,7 +12,7 @@ public class DestinyLeaderboardEntry
     ///     Identity details of the player
     /// </summary>
     [JsonPropertyName("player")]
-    public object Player { get; set; }
+    public Destiny.HistoricalStats.DestinyPlayer Player { get; set; }
 
     /// <summary>
     ///     ID of the player's best character for the reported stat.
@@ -24,5 +24,5 @@ public class DestinyLeaderboardEntry
     ///     Value of the stat for this player
     /// </summary>
     [JsonPropertyName("value")]
-    public object Value { get; set; }
+    public Destiny.HistoricalStats.DestinyHistoricalStatsValue Value { get; set; }
 }

@@ -21,7 +21,7 @@ public class DestinyObjectiveDefinition
     ///     Ideally, this should tell you what your task is. I'm not going to lie to you though. Sometimes this doesn't have useful information at all. Which sucks, but there's nothing either of us can do about it.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public object DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
     /// <summary>
     ///     The value that the unlock value defined in unlockValueHash must reach in order for the objective to be considered Completed. Used in calculating progress and completion status.
@@ -81,13 +81,13 @@ public class DestinyObjectiveDefinition
     ///     If this objective enables Perks intrinsically, the conditions for that enabling are defined here.
     /// </summary>
     [JsonPropertyName("perks")]
-    public object Perks { get; set; }
+    public Destiny.Definitions.DestinyObjectivePerkEntryDefinition Perks { get; set; }
 
     /// <summary>
     ///     If this objective enables modifications on a player's stats intrinsically, the conditions are defined here.
     /// </summary>
     [JsonPropertyName("stats")]
-    public object Stats { get; set; }
+    public Destiny.Definitions.DestinyObjectiveStatEntryDefinition Stats { get; set; }
 
     /// <summary>
     ///     If nonzero, this is the minimum value at which the objective's progression should be shown. Otherwise, don't show it yet.

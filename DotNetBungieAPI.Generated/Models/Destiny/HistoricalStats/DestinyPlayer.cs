@@ -6,7 +6,7 @@ public class DestinyPlayer
     ///     Details about the player as they are known in game (platform display name, Destiny emblem)
     /// </summary>
     [JsonPropertyName("destinyUserInfo")]
-    public object DestinyUserInfo { get; set; }
+    public User.UserInfoCard DestinyUserInfo { get; set; }
 
     /// <summary>
     ///     Class of the character if applicable and available.
@@ -39,7 +39,7 @@ public class DestinyPlayer
     ///     Details about the player as they are known on BungieNet. This will be undefined if the player has marked their credential private, or does not have a BungieNet account.
     /// </summary>
     [JsonPropertyName("bungieNetUserInfo")]
-    public object BungieNetUserInfo { get; set; }
+    public User.UserInfoCard BungieNetUserInfo { get; set; }
 
     /// <summary>
     ///     Current clan name for the player. This value may be null or an empty string if the user does not have a clan.

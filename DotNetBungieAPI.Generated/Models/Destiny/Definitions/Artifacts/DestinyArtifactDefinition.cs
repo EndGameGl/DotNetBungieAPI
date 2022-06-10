@@ -11,13 +11,13 @@ public class DestinyArtifactDefinition
     ///     Any basic display info we know about the Artifact. Currently sourced from a related inventory item, but the source of this data is subject to change.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public object DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
     /// <summary>
     ///     Any Geometry/3D info we know about the Artifact. Currently sourced from a related inventory item's gearset information, but the source of this data is subject to change.
     /// </summary>
     [JsonPropertyName("translationBlock")]
-    public object TranslationBlock { get; set; }
+    public Destiny.Definitions.DestinyItemTranslationBlockDefinition TranslationBlock { get; set; }
 
     /// <summary>
     ///     Any Tier/Rank data related to this artifact, listed in display order.  Currently sourced from a Vendor, but this source is subject to change.

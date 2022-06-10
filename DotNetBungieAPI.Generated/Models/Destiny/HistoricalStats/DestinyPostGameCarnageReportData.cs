@@ -24,7 +24,7 @@ public class DestinyPostGameCarnageReportData
     ///     Details about the activity.
     /// </summary>
     [JsonPropertyName("activityDetails")]
-    public object ActivityDetails { get; set; }
+    public Destiny.HistoricalStats.DestinyHistoricalStatsActivity ActivityDetails { get; set; }
 
     /// <summary>
     ///     Collection of players and their data for this activity.

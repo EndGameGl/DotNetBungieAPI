@@ -11,13 +11,13 @@ public class DestinySocketTypeDefinition
     ///     There are fields for this display data, but they appear to be unpopulated as of now. I am not sure where in the UI these would show if they even were populated, but I will continue to return this data in case it becomes useful.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public object DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
     /// <summary>
     ///     Defines what happens when a plug is inserted into sockets of this type.
     /// </summary>
     [JsonPropertyName("insertAction")]
-    public object InsertAction { get; set; }
+    public Destiny.Definitions.Sockets.DestinyInsertPlugActionDefinition InsertAction { get; set; }
 
     /// <summary>
     ///     A list of Plug "Categories" that are allowed to be plugged into sockets of this type.

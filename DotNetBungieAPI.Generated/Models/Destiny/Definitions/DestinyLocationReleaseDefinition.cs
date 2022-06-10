@@ -9,7 +9,7 @@ public class DestinyLocationReleaseDefinition
     ///     Sadly, these don't appear to be populated anymore (ever?)
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public object DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 
     [JsonPropertyName("smallTransparentIcon")]
     public string SmallTransparentIcon { get; set; }

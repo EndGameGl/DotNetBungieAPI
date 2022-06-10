@@ -12,19 +12,19 @@ public class DestinyHistoricalStatsValue
     ///     Basic stat value.
     /// </summary>
     [JsonPropertyName("basic")]
-    public object Basic { get; set; }
+    public Destiny.HistoricalStats.DestinyHistoricalStatsValuePair Basic { get; set; }
 
     /// <summary>
     ///     Per game average for the statistic, if applicable
     /// </summary>
     [JsonPropertyName("pga")]
-    public object Pga { get; set; }
+    public Destiny.HistoricalStats.DestinyHistoricalStatsValuePair Pga { get; set; }
 
     /// <summary>
     ///     Weighted value of the stat if a weight greater than 1 has been assigned.
     /// </summary>
     [JsonPropertyName("weighted")]
-    public object Weighted { get; set; }
+    public Destiny.HistoricalStats.DestinyHistoricalStatsValuePair Weighted { get; set; }
 
     /// <summary>
     ///     When a stat represents the best, most, longest, fastest or some other personal best, the actual activity ID where that personal best was established is available on this property.

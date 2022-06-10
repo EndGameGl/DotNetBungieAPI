@@ -39,7 +39,7 @@ public class DestinySeasonDefinition
     ///     Optional - Defines the promotional text, images, and links to preview this season.
     /// </summary>
     [JsonPropertyName("preview")]
-    public object Preview { get; set; }
+    public Destiny.Definitions.Seasons.DestinySeasonPreviewDefinition Preview { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

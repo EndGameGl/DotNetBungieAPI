@@ -12,7 +12,7 @@ public class DestinyHistoricalStatsPeriodGroup
     ///     If the period group is for a specific activity, this property will be set.
     /// </summary>
     [JsonPropertyName("activityDetails")]
-    public object ActivityDetails { get; set; }
+    public Destiny.HistoricalStats.DestinyHistoricalStatsActivity ActivityDetails { get; set; }
 
     /// <summary>
     ///     Collection of stats for the period.

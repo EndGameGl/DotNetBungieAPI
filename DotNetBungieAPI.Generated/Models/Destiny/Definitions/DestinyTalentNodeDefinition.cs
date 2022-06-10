@@ -77,7 +77,7 @@ public class DestinyTalentNodeDefinition
     ///     The system still exists to do this, as far as I know, so it may yet come back around!
     /// </summary>
     [JsonPropertyName("randomActivationRequirement")]
-    public object RandomActivationRequirement { get; set; }
+    public Destiny.Definitions.DestinyNodeActivationRequirement RandomActivationRequirement { get; set; }
 
     /// <summary>
     ///     If this is true, the node can be "re-rolled" to acquire a different random current step. This is not used, but still exists for a theoretical future of talent grids.

@@ -21,5 +21,5 @@ public class DestinyStatOverrideDefinition
     ///     The display properties to show instead of the base DestinyStatDefinition display properties.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public object DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
 }

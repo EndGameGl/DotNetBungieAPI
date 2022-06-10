@@ -53,7 +53,7 @@ public class DestinyPresentationNodeDefinition
     ///     The child entities contained by this presentation node.
     /// </summary>
     [JsonPropertyName("children")]
-    public object Children { get; set; }
+    public Destiny.Definitions.Presentation.DestinyPresentationNodeChildrenBlock Children { get; set; }
 
     /// <summary>
     ///     A hint for how to display this presentation node when it's shown in a list.
@@ -71,7 +71,7 @@ public class DestinyPresentationNodeDefinition
     ///     The requirements for being able to interact with this presentation node and its children.
     /// </summary>
     [JsonPropertyName("requirements")]
-    public object Requirements { get; set; }
+    public Destiny.Definitions.Presentation.DestinyPresentationNodeRequirementsBlock Requirements { get; set; }
 
     /// <summary>
     ///     If this presentation node has children, but the game doesn't let you inspect the details of those children, that is indicated here.

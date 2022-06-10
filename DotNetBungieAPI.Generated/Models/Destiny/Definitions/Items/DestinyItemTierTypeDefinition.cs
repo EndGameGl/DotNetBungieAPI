@@ -14,7 +14,7 @@ public class DestinyItemTierTypeDefinition
     ///     If this tier defines infusion properties, they will be contained here.
     /// </summary>
     [JsonPropertyName("infusionProcess")]
-    public object InfusionProcess { get; set; }
+    public Destiny.Definitions.Items.DestinyItemTierTypeInfusionBlock InfusionProcess { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

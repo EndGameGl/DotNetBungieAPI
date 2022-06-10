@@ -15,7 +15,7 @@ public class DestinyVendorReceipt
     ///     The item that was received, and its quantity.
     /// </summary>
     [JsonPropertyName("itemReceived")]
-    public object ItemReceived { get; set; }
+    public Destiny.DestinyItemQuantity ItemReceived { get; set; }
 
     /// <summary>
     ///     The unlock flag used to determine whether you still have the purchased item.

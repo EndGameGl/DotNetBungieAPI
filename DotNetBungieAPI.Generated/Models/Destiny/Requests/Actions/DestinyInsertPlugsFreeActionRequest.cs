@@ -6,7 +6,7 @@ public class DestinyInsertPlugsFreeActionRequest
     ///     The plugs being inserted.
     /// </summary>
     [JsonPropertyName("plug")]
-    public object Plug { get; set; }
+    public Destiny.Requests.Actions.DestinyInsertPlugsRequestEntry Plug { get; set; }
 
     /// <summary>
     ///     The instance ID of the item for this action request.
