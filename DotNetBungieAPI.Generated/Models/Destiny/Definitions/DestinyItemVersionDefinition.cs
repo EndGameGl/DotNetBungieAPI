@@ -9,5 +9,5 @@ public class DestinyItemVersionDefinition
     ///     A reference to the power cap for this item version.
     /// </summary>
     [JsonPropertyName("powerCapHash")]
-    public uint PowerCapHash { get; set; }
+    public uint? PowerCapHash { get; set; }
 }

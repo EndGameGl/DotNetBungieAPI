@@ -9,7 +9,7 @@ public class DestinyPublicMilestoneActivity
     ///     The hash identifier of the activity that's been chosen to be considered the canonical "conceptual" activity definition. This may have many variants, defined herein.
     /// </summary>
     [JsonPropertyName("activityHash")]
-    public uint ActivityHash { get; set; }
+    public uint? ActivityHash { get; set; }
 
     /// <summary>
     ///     The activity may have 0-to-many modifiers: if it does, this will contain the hashes to the DestinyActivityModifierDefinition that defines the modifier being applied.
@@ -27,11 +27,11 @@ public class DestinyPublicMilestoneActivity
     ///     The hash identifier of the most specific Activity Mode under which this activity is played. This is useful for situations where the activity in question is - for instance - a PVP map, but it's not clear what mode the PVP map is being played under. If it's a playlist, this will be less specific: but hopefully useful in some way.
     /// </summary>
     [JsonPropertyName("activityModeHash")]
-    public uint ActivityModeHash { get; set; }
+    public uint? ActivityModeHash { get; set; }
 
     /// <summary>
     ///     The enumeration equivalent of the most specific Activity Mode under which this activity is played.
     /// </summary>
     [JsonPropertyName("activityModeType")]
-    public int ActivityModeType { get; set; }
+    public int? ActivityModeType { get; set; }
 }

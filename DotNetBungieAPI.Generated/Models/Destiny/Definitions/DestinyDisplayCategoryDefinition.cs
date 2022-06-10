@@ -6,25 +6,25 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 public class DestinyDisplayCategoryDefinition
 {
     [JsonPropertyName("index")]
-    public int Index { get; set; }
+    public int? Index { get; set; }
 
     /// <summary>
     ///     A string identifier for the display category.
     /// </summary>
     [JsonPropertyName("identifier")]
-    public string Identifier { get; set; }
+    public string? Identifier { get; set; }
 
     [JsonPropertyName("displayCategoryHash")]
-    public uint DisplayCategoryHash { get; set; }
+    public uint? DisplayCategoryHash { get; set; }
 
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     /// <summary>
     ///     If true, this category should be displayed in the "Banner" section of the vendor's UI.
     /// </summary>
     [JsonPropertyName("displayInBanner")]
-    public bool DisplayInBanner { get; set; }
+    public bool? DisplayInBanner { get; set; }
 
     /// <summary>
     ///     If it exists, this is the hash identifier of a DestinyProgressionDefinition that represents the progression to show on this display category.
@@ -32,23 +32,23 @@ public class DestinyDisplayCategoryDefinition
     ///     Specific categories can now have thier own distinct progression, apparently. So that's cool.
     /// </summary>
     [JsonPropertyName("progressionHash")]
-    public uint ProgressionHash { get; set; }
+    public uint? ProgressionHash { get; set; }
 
     /// <summary>
     ///     If this category sorts items in a nonstandard way, this will be the way we sort.
     /// </summary>
     [JsonPropertyName("sortOrder")]
-    public Destiny.VendorDisplayCategorySortOrder SortOrder { get; set; }
+    public Destiny.VendorDisplayCategorySortOrder? SortOrder { get; set; }
 
     /// <summary>
     ///     An indicator of how the category will be displayed in the UI. It's up to you to do something cool or interesting in response to this, or just to treat it as a normal category.
     /// </summary>
     [JsonPropertyName("displayStyleHash")]
-    public uint DisplayStyleHash { get; set; }
+    public uint? DisplayStyleHash { get; set; }
 
     /// <summary>
     ///     An indicator of how the category will be displayed in the UI. It's up to you to do something cool or interesting in response to this, or just to treat it as a normal category.
     /// </summary>
     [JsonPropertyName("displayStyleIdentifier")]
-    public string DisplayStyleIdentifier { get; set; }
+    public string? DisplayStyleIdentifier { get; set; }
 }

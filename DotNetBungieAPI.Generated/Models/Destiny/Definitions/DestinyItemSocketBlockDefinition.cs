@@ -9,7 +9,7 @@ public class DestinyItemSocketBlockDefinition
     ///     This was supposed to be a string that would give per-item details about sockets. In practice, it turns out that all this ever has is the localized word "details". ... that's lame, but perhaps it will become something cool in the future.
     /// </summary>
     [JsonPropertyName("detail")]
-    public string Detail { get; set; }
+    public string? Detail { get; set; }
 
     /// <summary>
     ///     Each non-intrinsic (or mutable) socket on an item is defined here. Check inside for more info.

@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Records;
 public class DestinyRecordTitleBlock
 {
     [JsonPropertyName("hasTitle")]
-    public bool HasTitle { get; set; }
+    public bool? HasTitle { get; set; }
 
     [JsonPropertyName("titlesByGender")]
     public Dictionary<Destiny.DestinyGender, string> TitlesByGender { get; set; }
@@ -15,5 +15,5 @@ public class DestinyRecordTitleBlock
     public Dictionary<uint, string> TitlesByGenderHash { get; set; }
 
     [JsonPropertyName("gildingTrackingRecordHash")]
-    public uint GildingTrackingRecordHash { get; set; }
+    public uint? GildingTrackingRecordHash { get; set; }
 }

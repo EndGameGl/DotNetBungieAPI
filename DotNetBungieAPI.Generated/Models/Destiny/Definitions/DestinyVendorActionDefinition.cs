@@ -6,29 +6,29 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 public class DestinyVendorActionDefinition
 {
     [JsonPropertyName("description")]
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
     [JsonPropertyName("executeSeconds")]
-    public int ExecuteSeconds { get; set; }
+    public int? ExecuteSeconds { get; set; }
 
     [JsonPropertyName("icon")]
-    public string Icon { get; set; }
+    public string? Icon { get; set; }
 
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [JsonPropertyName("verb")]
-    public string Verb { get; set; }
+    public string? Verb { get; set; }
 
     [JsonPropertyName("isPositive")]
-    public bool IsPositive { get; set; }
+    public bool? IsPositive { get; set; }
 
     [JsonPropertyName("actionId")]
-    public string ActionId { get; set; }
+    public string? ActionId { get; set; }
 
     [JsonPropertyName("actionHash")]
-    public uint ActionHash { get; set; }
+    public uint? ActionHash { get; set; }
 
     [JsonPropertyName("autoPerformAction")]
-    public bool AutoPerformAction { get; set; }
+    public bool? AutoPerformAction { get; set; }
 }

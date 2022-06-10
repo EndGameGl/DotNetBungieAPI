@@ -9,13 +9,13 @@ public class DestinyTalentExclusiveGroup
     ///     The identifier for this exclusive group. Only guaranteed unique within the talent grid, not globally.
     /// </summary>
     [JsonPropertyName("groupHash")]
-    public uint GroupHash { get; set; }
+    public uint? GroupHash { get; set; }
 
     /// <summary>
     ///     If this group has an associated piece of lore to show next to it, this will be the identifier for that DestinyLoreDefinition.
     /// </summary>
     [JsonPropertyName("loreHash")]
-    public uint LoreHash { get; set; }
+    public uint? LoreHash { get; set; }
 
     /// <summary>
     ///     A quick reference of the talent nodes that are part of this group, by their Talent Node hashes. (See DestinyTalentNodeDefinition.nodeHash)

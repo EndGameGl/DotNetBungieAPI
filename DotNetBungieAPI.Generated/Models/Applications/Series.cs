@@ -12,5 +12,5 @@ public class Series
     ///     Target to which to datapoints apply.
     /// </summary>
     [JsonPropertyName("target")]
-    public string Target { get; set; }
+    public string? Target { get; set; }
 }

@@ -6,8 +6,8 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 public class DestinyVendorSaleItemActionBlockDefinition
 {
     [JsonPropertyName("executeSeconds")]
-    public float ExecuteSeconds { get; set; }
+    public float? ExecuteSeconds { get; set; }
 
     [JsonPropertyName("isPositive")]
-    public bool IsPositive { get; set; }
+    public bool? IsPositive { get; set; }
 }

@@ -9,8 +9,8 @@ public class DestinyReportReasonDefinition
     ///     The identifier for the reason: they are only guaranteed unique under the Category in which they are found.
     /// </summary>
     [JsonPropertyName("reasonHash")]
-    public uint ReasonHash { get; set; }
+    public uint? ReasonHash { get; set; }
 
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 }

@@ -6,5 +6,5 @@ public class DestinyMilestoneChallengeDefinition
     ///     The challenge related to this milestone.
     /// </summary>
     [JsonPropertyName("challengeObjectiveHash")]
-    public uint ChallengeObjectiveHash { get; set; }
+    public uint? ChallengeObjectiveHash { get; set; }
 }

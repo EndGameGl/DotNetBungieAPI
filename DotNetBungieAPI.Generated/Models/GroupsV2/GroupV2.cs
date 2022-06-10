@@ -3,86 +3,86 @@ namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 public class GroupV2
 {
     [JsonPropertyName("groupId")]
-    public long GroupId { get; set; }
+    public long? GroupId { get; set; }
 
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [JsonPropertyName("groupType")]
-    public GroupsV2.GroupType GroupType { get; set; }
+    public GroupsV2.GroupType? GroupType { get; set; }
 
     [JsonPropertyName("membershipIdCreated")]
-    public long MembershipIdCreated { get; set; }
+    public long? MembershipIdCreated { get; set; }
 
     [JsonPropertyName("creationDate")]
-    public DateTime CreationDate { get; set; }
+    public DateTime? CreationDate { get; set; }
 
     [JsonPropertyName("modificationDate")]
-    public DateTime ModificationDate { get; set; }
+    public DateTime? ModificationDate { get; set; }
 
     [JsonPropertyName("about")]
-    public string About { get; set; }
+    public string? About { get; set; }
 
     [JsonPropertyName("tags")]
     public List<string> Tags { get; set; }
 
     [JsonPropertyName("memberCount")]
-    public int MemberCount { get; set; }
+    public int? MemberCount { get; set; }
 
     [JsonPropertyName("isPublic")]
-    public bool IsPublic { get; set; }
+    public bool? IsPublic { get; set; }
 
     [JsonPropertyName("isPublicTopicAdminOnly")]
-    public bool IsPublicTopicAdminOnly { get; set; }
+    public bool? IsPublicTopicAdminOnly { get; set; }
 
     [JsonPropertyName("motto")]
-    public string Motto { get; set; }
+    public string? Motto { get; set; }
 
     [JsonPropertyName("allowChat")]
-    public bool AllowChat { get; set; }
+    public bool? AllowChat { get; set; }
 
     [JsonPropertyName("isDefaultPostPublic")]
-    public bool IsDefaultPostPublic { get; set; }
+    public bool? IsDefaultPostPublic { get; set; }
 
     [JsonPropertyName("chatSecurity")]
-    public GroupsV2.ChatSecuritySetting ChatSecurity { get; set; }
+    public GroupsV2.ChatSecuritySetting? ChatSecurity { get; set; }
 
     [JsonPropertyName("locale")]
-    public string Locale { get; set; }
+    public string? Locale { get; set; }
 
     [JsonPropertyName("avatarImageIndex")]
-    public int AvatarImageIndex { get; set; }
+    public int? AvatarImageIndex { get; set; }
 
     [JsonPropertyName("homepage")]
-    public GroupsV2.GroupHomepage Homepage { get; set; }
+    public GroupsV2.GroupHomepage? Homepage { get; set; }
 
     [JsonPropertyName("membershipOption")]
-    public GroupsV2.MembershipOption MembershipOption { get; set; }
+    public GroupsV2.MembershipOption? MembershipOption { get; set; }
 
     [JsonPropertyName("defaultPublicity")]
-    public GroupsV2.GroupPostPublicity DefaultPublicity { get; set; }
+    public GroupsV2.GroupPostPublicity? DefaultPublicity { get; set; }
 
     [JsonPropertyName("theme")]
-    public string Theme { get; set; }
+    public string? Theme { get; set; }
 
     [JsonPropertyName("bannerPath")]
-    public string BannerPath { get; set; }
+    public string? BannerPath { get; set; }
 
     [JsonPropertyName("avatarPath")]
-    public string AvatarPath { get; set; }
+    public string? AvatarPath { get; set; }
 
     [JsonPropertyName("conversationId")]
-    public long ConversationId { get; set; }
+    public long? ConversationId { get; set; }
 
     [JsonPropertyName("enableInvitationMessagingForAdmins")]
-    public bool EnableInvitationMessagingForAdmins { get; set; }
+    public bool? EnableInvitationMessagingForAdmins { get; set; }
 
     [JsonPropertyName("banExpireDate")]
-    public DateTime BanExpireDate { get; set; }
+    public DateTime? BanExpireDate { get; set; }
 
     [JsonPropertyName("features")]
-    public GroupsV2.GroupFeatures Features { get; set; }
+    public GroupsV2.GroupFeatures? Features { get; set; }
 
     [JsonPropertyName("clanInfo")]
-    public GroupsV2.GroupV2ClanInfoAndInvestment ClanInfo { get; set; }
+    public GroupsV2.GroupV2ClanInfoAndInvestment? ClanInfo { get; set; }
 }

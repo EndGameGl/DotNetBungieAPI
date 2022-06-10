@@ -17,7 +17,7 @@ public class DestinyCharacterRenderComponent
     ///     This is actually something that Spasm.js *doesn't* do right now, and that we don't return assets for yet. This is the data about what character customization options you picked. You can combine this with DestinyCharacterCustomizationOptionDefinition to show some cool info, and hopefully someday to actually render a user's face in 3D. We'll see if we ever end up with time for that.
     /// </summary>
     [JsonPropertyName("customization")]
-    public Destiny.Character.DestinyCharacterCustomization Customization { get; set; }
+    public Destiny.Character.DestinyCharacterCustomization? Customization { get; set; }
 
     /// <summary>
     ///     A minimal view of:
@@ -29,5 +29,5 @@ public class DestinyCharacterRenderComponent
     ///     Combined, that should be enough to render all of the items on the equipped character.
     /// </summary>
     [JsonPropertyName("peerView")]
-    public Destiny.Character.DestinyCharacterPeerView PeerView { get; set; }
+    public Destiny.Character.DestinyCharacterPeerView? PeerView { get; set; }
 }

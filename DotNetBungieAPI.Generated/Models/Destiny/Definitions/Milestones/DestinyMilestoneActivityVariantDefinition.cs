@@ -13,7 +13,7 @@ public class DestinyMilestoneActivityVariantDefinition
     ///     Frequently, that will be the only distinguishing characteristics in practice, which is somewhat of a bummer.
     /// </summary>
     [JsonPropertyName("activityHash")]
-    public uint ActivityHash { get; set; }
+    public uint? ActivityHash { get; set; }
 
     /// <summary>
     ///     If you care to do so, render the variants in the order prescribed by this value.
@@ -21,5 +21,5 @@ public class DestinyMilestoneActivityVariantDefinition
     ///     When you combine live Milestone data with the definition, the order becomes more useful because you'll be cross-referencing between the definition and live data.
     /// </summary>
     [JsonPropertyName("order")]
-    public int Order { get; set; }
+    public int? Order { get; set; }
 }

@@ -13,7 +13,7 @@ public class DestinyMilestoneActivityDefinition
     ///     If you care about the specific difficulty modes and variations, use the activities under "Variants".
     /// </summary>
     [JsonPropertyName("conceptualActivityHash")]
-    public uint ConceptualActivityHash { get; set; }
+    public uint? ConceptualActivityHash { get; set; }
 
     /// <summary>
     ///     A milestone-referenced activity can have many variants, such as Tiers or alternative modes of play.

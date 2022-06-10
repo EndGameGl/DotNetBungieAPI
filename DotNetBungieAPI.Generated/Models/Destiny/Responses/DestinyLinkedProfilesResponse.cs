@@ -19,7 +19,7 @@ public class DestinyLinkedProfilesResponse
     ///     I know, Tetron; I know this is mixing UserServices concerns with DestinyServices concerns. But it's so damn convenient! https://www.youtube.com/watch?v=X5R-bB-gKVI
     /// </summary>
     [JsonPropertyName("bnetMembership")]
-    public User.UserInfoCard BnetMembership { get; set; }
+    public User.UserInfoCard? BnetMembership { get; set; }
 
     /// <summary>
     ///     This is brief summary info for profiles that we believe have valid Destiny info, but who failed to return data for some other reason and thus we know that subsequent calls for their info will also fail.

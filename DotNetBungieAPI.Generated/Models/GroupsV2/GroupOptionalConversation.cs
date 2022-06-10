@@ -3,17 +3,17 @@ namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 public class GroupOptionalConversation
 {
     [JsonPropertyName("groupId")]
-    public long GroupId { get; set; }
+    public long? GroupId { get; set; }
 
     [JsonPropertyName("conversationId")]
-    public long ConversationId { get; set; }
+    public long? ConversationId { get; set; }
 
     [JsonPropertyName("chatEnabled")]
-    public bool ChatEnabled { get; set; }
+    public bool? ChatEnabled { get; set; }
 
     [JsonPropertyName("chatName")]
-    public string ChatName { get; set; }
+    public string? ChatName { get; set; }
 
     [JsonPropertyName("chatSecurity")]
-    public GroupsV2.ChatSecuritySetting ChatSecurity { get; set; }
+    public GroupsV2.ChatSecuritySetting? ChatSecurity { get; set; }
 }

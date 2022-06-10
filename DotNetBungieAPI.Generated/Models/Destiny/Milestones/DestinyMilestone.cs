@@ -9,7 +9,7 @@ public class DestinyMilestone
     ///     The unique identifier for the Milestone. Use it to look up the DestinyMilestoneDefinition, so you can combine the other data in this contract with static definition data.
     /// </summary>
     [JsonPropertyName("milestoneHash")]
-    public uint MilestoneHash { get; set; }
+    public uint? MilestoneHash { get; set; }
 
     /// <summary>
     ///     Indicates what quests are available for this Milestone. Usually this will be only a single Quest, but some quests have multiple available that you can choose from at any given time. All possible quests for a milestone can be found in the DestinyMilestoneDefinition, but they must be combined with this Live data to determine which one(s) are actually active right now. It is possible for Milestones to not have any quests.
@@ -55,17 +55,17 @@ public class DestinyMilestone
     ///     If known, this is the date when the event last began or refreshed. It will only be populated for events with fixed and repeating start and end dates.
     /// </summary>
     [JsonPropertyName("startDate")]
-    public DateTime StartDate { get; set; }
+    public DateTime? StartDate { get; set; }
 
     /// <summary>
     ///     If known, this is the date when the event will next end or repeat. It will only be populated for events with fixed and repeating start and end dates.
     /// </summary>
     [JsonPropertyName("endDate")]
-    public DateTime EndDate { get; set; }
+    public DateTime? EndDate { get; set; }
 
     /// <summary>
     ///     Used for ordering milestones in a display to match how we order them in BNet. May pull from static data, or possibly in the future from dynamic information.
     /// </summary>
     [JsonPropertyName("order")]
-    public int Order { get; set; }
+    public int? Order { get; set; }
 }

@@ -9,7 +9,7 @@ public class EmailSubscriptionDefinition
     ///     The unique identifier for this subscription.
     /// </summary>
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     /// <summary>
     ///     A dictionary of localized text for the EMail Opt-in setting, keyed by the locale.
@@ -21,5 +21,5 @@ public class EmailSubscriptionDefinition
     ///     The bitflag value for this subscription. Should be a unique power of two value.
     /// </summary>
     [JsonPropertyName("value")]
-    public long Value { get; set; }
+    public long? Value { get; set; }
 }

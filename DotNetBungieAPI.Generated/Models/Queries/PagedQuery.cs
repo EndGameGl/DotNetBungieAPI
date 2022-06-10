@@ -3,11 +3,11 @@ namespace DotNetBungieAPI.Generated.Models.Queries;
 public class PagedQuery
 {
     [JsonPropertyName("itemsPerPage")]
-    public int ItemsPerPage { get; set; }
+    public int? ItemsPerPage { get; set; }
 
     [JsonPropertyName("currentPage")]
-    public int CurrentPage { get; set; }
+    public int? CurrentPage { get; set; }
 
     [JsonPropertyName("requestContinuationToken")]
-    public string RequestContinuationToken { get; set; }
+    public string? RequestContinuationToken { get; set; }
 }

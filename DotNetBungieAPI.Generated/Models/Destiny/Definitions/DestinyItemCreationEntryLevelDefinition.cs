@@ -6,5 +6,5 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 public class DestinyItemCreationEntryLevelDefinition
 {
     [JsonPropertyName("level")]
-    public int Level { get; set; }
+    public int? Level { get; set; }
 }

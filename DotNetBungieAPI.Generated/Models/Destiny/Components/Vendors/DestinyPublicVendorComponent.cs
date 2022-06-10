@@ -9,7 +9,7 @@ public class DestinyPublicVendorComponent
     ///     The unique identifier for the vendor. Use it to look up their DestinyVendorDefinition.
     /// </summary>
     [JsonPropertyName("vendorHash")]
-    public uint VendorHash { get; set; }
+    public uint? VendorHash { get; set; }
 
     /// <summary>
     ///     The date when this vendor's inventory will next rotate/refresh.
@@ -19,7 +19,7 @@ public class DestinyPublicVendorComponent
     ///     Issue https://github.com/Bungie-net/api/issues/353 is tracking a fix to start providing visibility date ranges where possible in addition to this refresh date, so that all important dates for vendors are available for use.
     /// </summary>
     [JsonPropertyName("nextRefreshDate")]
-    public DateTime NextRefreshDate { get; set; }
+    public DateTime? NextRefreshDate { get; set; }
 
     /// <summary>
     ///     If True, the Vendor is currently accessible. 
@@ -27,5 +27,5 @@ public class DestinyPublicVendorComponent
     ///     If False, they may not actually be visible in the world at the moment.
     /// </summary>
     [JsonPropertyName("enabled")]
-    public bool Enabled { get; set; }
+    public bool? Enabled { get; set; }
 }

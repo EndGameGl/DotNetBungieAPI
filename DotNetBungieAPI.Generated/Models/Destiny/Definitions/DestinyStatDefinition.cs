@@ -24,13 +24,13 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 public class DestinyStatDefinition
 {
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     /// <summary>
     ///     Stats can exist on a character or an item, and they may potentially be aggregated in different ways. The DestinyStatAggregationType enum value indicates the way that this stat is being aggregated.
     /// </summary>
     [JsonPropertyName("aggregationType")]
-    public Destiny.DestinyStatAggregationType AggregationType { get; set; }
+    public Destiny.DestinyStatAggregationType? AggregationType { get; set; }
 
     /// <summary>
     ///     True if the stat is computed rather than being delivered as a raw value on items.
@@ -38,13 +38,13 @@ public class DestinyStatDefinition
     ///     For instance, the Light stat in Destiny 1 was a computed stat.
     /// </summary>
     [JsonPropertyName("hasComputedBlock")]
-    public bool HasComputedBlock { get; set; }
+    public bool? HasComputedBlock { get; set; }
 
     /// <summary>
     ///     The category of the stat, according to the game.
     /// </summary>
     [JsonPropertyName("statCategory")]
-    public Destiny.DestinyStatCategory StatCategory { get; set; }
+    public Destiny.DestinyStatCategory? StatCategory { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
@@ -52,17 +52,17 @@ public class DestinyStatDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint Hash { get; set; }
+    public uint? Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int Index { get; set; }
+    public int? Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool Redacted { get; set; }
+    public bool? Redacted { get; set; }
 }

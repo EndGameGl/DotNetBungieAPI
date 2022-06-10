@@ -6,20 +6,20 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Director;
 public class DestinyLinkedGraphDefinition
 {
     [JsonPropertyName("description")]
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [JsonPropertyName("unlockExpression")]
-    public Destiny.Definitions.DestinyUnlockExpressionDefinition UnlockExpression { get; set; }
+    public Destiny.Definitions.DestinyUnlockExpressionDefinition? UnlockExpression { get; set; }
 
     [JsonPropertyName("linkedGraphId")]
-    public uint LinkedGraphId { get; set; }
+    public uint? LinkedGraphId { get; set; }
 
     [JsonPropertyName("linkedGraphs")]
     public List<Destiny.Definitions.Director.DestinyLinkedGraphEntryDefinition> LinkedGraphs { get; set; }
 
     [JsonPropertyName("overview")]
-    public string Overview { get; set; }
+    public string? Overview { get; set; }
 }

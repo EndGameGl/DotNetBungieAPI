@@ -6,8 +6,8 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Director;
 public class DestinyActivityGraphDisplayProgressionDefinition
 {
     [JsonPropertyName("id")]
-    public uint Id { get; set; }
+    public uint? Id { get; set; }
 
     [JsonPropertyName("progressionHash")]
-    public uint ProgressionHash { get; set; }
+    public uint? ProgressionHash { get; set; }
 }

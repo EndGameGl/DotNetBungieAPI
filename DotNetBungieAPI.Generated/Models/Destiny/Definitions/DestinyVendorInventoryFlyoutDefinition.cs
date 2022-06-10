@@ -9,13 +9,13 @@ public class DestinyVendorInventoryFlyoutDefinition
     ///     If the flyout is locked, this is the reason why.
     /// </summary>
     [JsonPropertyName("lockedDescription")]
-    public string LockedDescription { get; set; }
+    public string? LockedDescription { get; set; }
 
     /// <summary>
     ///     The title and other common properties of the flyout.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     /// <summary>
     ///     A list of inventory buckets and other metadata to show on the screen.
@@ -27,17 +27,17 @@ public class DestinyVendorInventoryFlyoutDefinition
     ///     An identifier for the flyout, in case anything else needs to refer to them.
     /// </summary>
     [JsonPropertyName("flyoutId")]
-    public uint FlyoutId { get; set; }
+    public uint? FlyoutId { get; set; }
 
     /// <summary>
     ///     If this is true, don't show any of the glistening "this is a new item" UI elements, like we show on the inventory items themselves in in-game UI.
     /// </summary>
     [JsonPropertyName("suppressNewness")]
-    public bool SuppressNewness { get; set; }
+    public bool? SuppressNewness { get; set; }
 
     /// <summary>
     ///     If this flyout is meant to show you the contents of the player's equipment slot, this is the slot to show.
     /// </summary>
     [JsonPropertyName("equipmentSlotHash")]
-    public uint EquipmentSlotHash { get; set; }
+    public uint? EquipmentSlotHash { get; set; }
 }

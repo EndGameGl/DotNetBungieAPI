@@ -14,8 +14,8 @@ public class UserMembershipData
     ///      If null, this user has no cross save relationship, nor primary account.
     /// </summary>
     [JsonPropertyName("primaryMembershipId")]
-    public long PrimaryMembershipId { get; set; }
+    public long? PrimaryMembershipId { get; set; }
 
     [JsonPropertyName("bungieNetUser")]
-    public User.GeneralUser BungieNetUser { get; set; }
+    public User.GeneralUser? BungieNetUser { get; set; }
 }

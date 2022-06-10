@@ -23,7 +23,7 @@ public class DestinyItemTalentGridComponent
     ///     You can use this hash to lookup the DestinyTalentGridDefinition attached to this item, which will be crucial for understanding the node values on the item.
     /// </summary>
     [JsonPropertyName("talentGridHash")]
-    public uint TalentGridHash { get; set; }
+    public uint? TalentGridHash { get; set; }
 
     /// <summary>
     ///     Detailed information about the individual nodes in the talent grid.
@@ -39,11 +39,11 @@ public class DestinyItemTalentGridComponent
     ///     Only will be true if the item actually *has* a talent grid, and only then if it is completed (i.e. every exclusive set has an activated node, and every non-exclusive set node has been activated)
     /// </summary>
     [JsonPropertyName("isGridComplete")]
-    public bool IsGridComplete { get; set; }
+    public bool? IsGridComplete { get; set; }
 
     /// <summary>
     ///     If the item has a progression, it will be detailed here. A progression means that the item can gain experience. Thresholds of experience are what determines whether and when a talent node can be activated.
     /// </summary>
     [JsonPropertyName("gridProgression")]
-    public Destiny.DestinyProgression GridProgression { get; set; }
+    public Destiny.DestinyProgression? GridProgression { get; set; }
 }

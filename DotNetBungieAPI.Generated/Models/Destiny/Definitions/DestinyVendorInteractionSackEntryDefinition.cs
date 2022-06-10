@@ -6,5 +6,5 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 public class DestinyVendorInteractionSackEntryDefinition
 {
     [JsonPropertyName("sackType")]
-    public uint SackType { get; set; }
+    public uint? SackType { get; set; }
 }

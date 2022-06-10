@@ -13,7 +13,7 @@ public class DestinyNodeActivationRequirement
     ///     See DestinyTalentGridDefinition.progressionHash for the related Progression, and read DestinyProgressionDefinition's documentation to learn more about Progressions.
     /// </summary>
     [JsonPropertyName("gridLevel")]
-    public int GridLevel { get; set; }
+    public int? GridLevel { get; set; }
 
     /// <summary>
     ///     The list of hash identifiers for material requirement sets: materials that are required for the node to be activated. See DestinyMaterialRequirementSetDefinition for more information about material requirements.

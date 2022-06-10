@@ -9,17 +9,17 @@ public class DestinyProfileTransitoryJoinability
     ///     The number of slots still available on this person's fireteam.
     /// </summary>
     [JsonPropertyName("openSlots")]
-    public int OpenSlots { get; set; }
+    public int? OpenSlots { get; set; }
 
     /// <summary>
     ///     Who the person is currently allowing invites from.
     /// </summary>
     [JsonPropertyName("privacySetting")]
-    public Destiny.DestinyGamePrivacySetting PrivacySetting { get; set; }
+    public Destiny.DestinyGamePrivacySetting? PrivacySetting { get; set; }
 
     /// <summary>
     ///     Reasons why a person can't join this person's fireteam.
     /// </summary>
     [JsonPropertyName("closedReasons")]
-    public Destiny.DestinyJoinClosedReasons ClosedReasons { get; set; }
+    public Destiny.DestinyJoinClosedReasons? ClosedReasons { get; set; }
 }

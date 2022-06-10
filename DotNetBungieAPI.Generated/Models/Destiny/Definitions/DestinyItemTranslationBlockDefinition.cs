@@ -6,10 +6,10 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 public class DestinyItemTranslationBlockDefinition
 {
     [JsonPropertyName("weaponPatternIdentifier")]
-    public string WeaponPatternIdentifier { get; set; }
+    public string? WeaponPatternIdentifier { get; set; }
 
     [JsonPropertyName("weaponPatternHash")]
-    public uint WeaponPatternHash { get; set; }
+    public uint? WeaponPatternHash { get; set; }
 
     [JsonPropertyName("defaultDyes")]
     public List<Destiny.DyeReference> DefaultDyes { get; set; }
@@ -24,5 +24,5 @@ public class DestinyItemTranslationBlockDefinition
     public List<Destiny.Definitions.DestinyGearArtArrangementReference> Arrangements { get; set; }
 
     [JsonPropertyName("hasGeometry")]
-    public bool HasGeometry { get; set; }
+    public bool? HasGeometry { get; set; }
 }

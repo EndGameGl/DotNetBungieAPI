@@ -9,7 +9,7 @@ public class DestinyPlugItemCraftingRequirements
     ///     If the plug has a known level requirement, it'll be available here.
     /// </summary>
     [JsonPropertyName("requiredLevel")]
-    public int RequiredLevel { get; set; }
+    public int? RequiredLevel { get; set; }
 
     [JsonPropertyName("materialRequirementHashes")]
     public List<uint> MaterialRequirementHashes { get; set; }

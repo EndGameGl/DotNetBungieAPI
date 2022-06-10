@@ -3,37 +3,37 @@ namespace DotNetBungieAPI.Generated.Models.Content;
 public class ContentItemPublicContract
 {
     [JsonPropertyName("contentId")]
-    public long ContentId { get; set; }
+    public long? ContentId { get; set; }
 
     [JsonPropertyName("cType")]
-    public string CType { get; set; }
+    public string? CType { get; set; }
 
     [JsonPropertyName("cmsPath")]
-    public string CmsPath { get; set; }
+    public string? CmsPath { get; set; }
 
     [JsonPropertyName("creationDate")]
-    public DateTime CreationDate { get; set; }
+    public DateTime? CreationDate { get; set; }
 
     [JsonPropertyName("modifyDate")]
-    public DateTime ModifyDate { get; set; }
+    public DateTime? ModifyDate { get; set; }
 
     [JsonPropertyName("allowComments")]
-    public bool AllowComments { get; set; }
+    public bool? AllowComments { get; set; }
 
     [JsonPropertyName("hasAgeGate")]
-    public bool HasAgeGate { get; set; }
+    public bool? HasAgeGate { get; set; }
 
     [JsonPropertyName("minimumAge")]
-    public int MinimumAge { get; set; }
+    public int? MinimumAge { get; set; }
 
     [JsonPropertyName("ratingImagePath")]
-    public string RatingImagePath { get; set; }
+    public string? RatingImagePath { get; set; }
 
     [JsonPropertyName("author")]
-    public User.GeneralUser Author { get; set; }
+    public User.GeneralUser? Author { get; set; }
 
     [JsonPropertyName("autoEnglishPropertyFallback")]
-    public bool AutoEnglishPropertyFallback { get; set; }
+    public bool? AutoEnglishPropertyFallback { get; set; }
 
     /// <summary>
     ///     Firehose content is really a collection of metadata and "properties", which are the potentially-but-not-strictly localizable data that comprises the meat of whatever content is being shown.
@@ -53,5 +53,5 @@ public class ContentItemPublicContract
     public List<string> Tags { get; set; }
 
     [JsonPropertyName("commentSummary")]
-    public Content.CommentSummary CommentSummary { get; set; }
+    public Content.CommentSummary? CommentSummary { get; set; }
 }

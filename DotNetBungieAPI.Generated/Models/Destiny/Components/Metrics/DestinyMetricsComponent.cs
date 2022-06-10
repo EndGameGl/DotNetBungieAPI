@@ -6,5 +6,5 @@ public class DestinyMetricsComponent
     public Dictionary<uint, Destiny.Components.Metrics.DestinyMetricComponent> Metrics { get; set; }
 
     [JsonPropertyName("metricsRootNodeHash")]
-    public uint MetricsRootNodeHash { get; set; }
+    public uint? MetricsRootNodeHash { get; set; }
 }

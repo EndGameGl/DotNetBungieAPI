@@ -6,16 +6,16 @@ public class GroupSearchResponse
     public List<GroupsV2.GroupV2Card> Results { get; set; }
 
     [JsonPropertyName("totalResults")]
-    public int TotalResults { get; set; }
+    public int? TotalResults { get; set; }
 
     [JsonPropertyName("hasMore")]
-    public bool HasMore { get; set; }
+    public bool? HasMore { get; set; }
 
     [JsonPropertyName("query")]
-    public Queries.PagedQuery Query { get; set; }
+    public Queries.PagedQuery? Query { get; set; }
 
     [JsonPropertyName("replacementContinuationToken")]
-    public string ReplacementContinuationToken { get; set; }
+    public string? ReplacementContinuationToken { get; set; }
 
     /// <summary>
     ///     If useTotalResults is true, then totalResults represents an accurate count.
@@ -27,5 +27,5 @@ public class GroupSearchResponse
     ///     This is a long-held historical throwback to when we used to do paging with known total results. Those queries toasted our database, and we were left to hastily alter our endpoints and create backward- compatible shims, of which useTotalResults is one.
     /// </summary>
     [JsonPropertyName("useTotalResults")]
-    public bool UseTotalResults { get; set; }
+    public bool? UseTotalResults { get; set; }
 }

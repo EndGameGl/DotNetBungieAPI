@@ -11,13 +11,13 @@ public class DestinyArtifactDefinition
     ///     Any basic display info we know about the Artifact. Currently sourced from a related inventory item, but the source of this data is subject to change.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     /// <summary>
     ///     Any Geometry/3D info we know about the Artifact. Currently sourced from a related inventory item's gearset information, but the source of this data is subject to change.
     /// </summary>
     [JsonPropertyName("translationBlock")]
-    public Destiny.Definitions.DestinyItemTranslationBlockDefinition TranslationBlock { get; set; }
+    public Destiny.Definitions.DestinyItemTranslationBlockDefinition? TranslationBlock { get; set; }
 
     /// <summary>
     ///     Any Tier/Rank data related to this artifact, listed in display order.  Currently sourced from a Vendor, but this source is subject to change.
@@ -31,17 +31,17 @@ public class DestinyArtifactDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint Hash { get; set; }
+    public uint? Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int Index { get; set; }
+    public int? Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool Redacted { get; set; }
+    public bool? Redacted { get; set; }
 }

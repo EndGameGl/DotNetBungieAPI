@@ -12,5 +12,5 @@ public class DestinyCraftablesComponent
     ///     The hash for the root presentation node definition of craftable item categories.
     /// </summary>
     [JsonPropertyName("craftingRootNodeHash")]
-    public uint CraftingRootNodeHash { get; set; }
+    public uint? CraftingRootNodeHash { get; set; }
 }

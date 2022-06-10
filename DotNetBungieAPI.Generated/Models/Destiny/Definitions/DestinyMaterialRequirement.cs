@@ -9,29 +9,29 @@ public class DestinyMaterialRequirement
     ///     The hash identifier of the material required. Use it to look up the material's DestinyInventoryItemDefinition.
     /// </summary>
     [JsonPropertyName("itemHash")]
-    public uint ItemHash { get; set; }
+    public uint? ItemHash { get; set; }
 
     /// <summary>
     ///     If True, the material will be removed from the character's inventory when the action is performed.
     /// </summary>
     [JsonPropertyName("deleteOnAction")]
-    public bool DeleteOnAction { get; set; }
+    public bool? DeleteOnAction { get; set; }
 
     /// <summary>
     ///     The amount of the material required.
     /// </summary>
     [JsonPropertyName("count")]
-    public int Count { get; set; }
+    public int? Count { get; set; }
 
     /// <summary>
     ///     If true, the material requirement count value is constant. Since The Witch Queen expansion, some material requirement counts can be dynamic and will need to be returned with an API call.
     /// </summary>
     [JsonPropertyName("countIsConstant")]
-    public bool CountIsConstant { get; set; }
+    public bool? CountIsConstant { get; set; }
 
     /// <summary>
     ///     If True, this requirement is "silent": don't bother showing it in a material requirements display. I mean, I'm not your mom: I'm not going to tell you you *can't* show it. But we won't show it in our UI.
     /// </summary>
     [JsonPropertyName("omitFromRequirements")]
-    public bool OmitFromRequirements { get; set; }
+    public bool? OmitFromRequirements { get; set; }
 }

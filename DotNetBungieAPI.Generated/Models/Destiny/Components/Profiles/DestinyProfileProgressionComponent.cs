@@ -19,5 +19,5 @@ public class DestinyProfileProgressionComponent
     ///     Data related to your progress on the current season's artifact that is the same across characters.
     /// </summary>
     [JsonPropertyName("seasonalArtifact")]
-    public Destiny.Artifacts.DestinyArtifactProfileScoped SeasonalArtifact { get; set; }
+    public Destiny.Artifacts.DestinyArtifactProfileScoped? SeasonalArtifact { get; set; }
 }

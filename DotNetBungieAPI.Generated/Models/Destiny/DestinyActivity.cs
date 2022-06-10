@@ -11,55 +11,55 @@ public class DestinyActivity
     ///     The hash identifier of the Activity. Use this to look up the DestinyActivityDefinition of the activity.
     /// </summary>
     [JsonPropertyName("activityHash")]
-    public uint ActivityHash { get; set; }
+    public uint? ActivityHash { get; set; }
 
     /// <summary>
     ///     If true, then the activity should have a "new" indicator in the Director UI.
     /// </summary>
     [JsonPropertyName("isNew")]
-    public bool IsNew { get; set; }
+    public bool? IsNew { get; set; }
 
     /// <summary>
     ///     If true, the user is allowed to lead a Fireteam into this activity.
     /// </summary>
     [JsonPropertyName("canLead")]
-    public bool CanLead { get; set; }
+    public bool? CanLead { get; set; }
 
     /// <summary>
     ///     If true, the user is allowed to join with another Fireteam in this activity.
     /// </summary>
     [JsonPropertyName("canJoin")]
-    public bool CanJoin { get; set; }
+    public bool? CanJoin { get; set; }
 
     /// <summary>
     ///     If true, we both have the ability to know that the user has completed this activity and they have completed it. Unfortunately, we can't necessarily know this for all activities. As such, this should probably only be used if you already know in advance which specific activities you wish to check.
     /// </summary>
     [JsonPropertyName("isCompleted")]
-    public bool IsCompleted { get; set; }
+    public bool? IsCompleted { get; set; }
 
     /// <summary>
     ///     If true, the user should be able to see this activity.
     /// </summary>
     [JsonPropertyName("isVisible")]
-    public bool IsVisible { get; set; }
+    public bool? IsVisible { get; set; }
 
     /// <summary>
     ///     The difficulty level of the activity, if applicable.
     /// </summary>
     [JsonPropertyName("displayLevel")]
-    public int DisplayLevel { get; set; }
+    public int? DisplayLevel { get; set; }
 
     /// <summary>
     ///     The recommended light level for the activity, if applicable.
     /// </summary>
     [JsonPropertyName("recommendedLight")]
-    public int RecommendedLight { get; set; }
+    public int? RecommendedLight { get; set; }
 
     /// <summary>
     ///     A DestinyActivityDifficultyTier enum value indicating the difficulty of the activity.
     /// </summary>
     [JsonPropertyName("difficultyTier")]
-    public Destiny.DestinyActivityDifficultyTier DifficultyTier { get; set; }
+    public Destiny.DestinyActivityDifficultyTier? DifficultyTier { get; set; }
 
     [JsonPropertyName("challenges")]
     public List<Destiny.Challenges.DestinyChallengeStatus> Challenges { get; set; }
@@ -88,5 +88,5 @@ public class DestinyActivity
     ///     If returned, this is the index into the DestinyActivityDefinition's "loadouts" property, indicating the currently active loadout requirements.
     /// </summary>
     [JsonPropertyName("loadoutRequirementIndex")]
-    public int LoadoutRequirementIndex { get; set; }
+    public int? LoadoutRequirementIndex { get; set; }
 }

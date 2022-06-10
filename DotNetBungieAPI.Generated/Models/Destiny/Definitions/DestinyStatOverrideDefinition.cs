@@ -15,11 +15,11 @@ public class DestinyStatOverrideDefinition
     ///     The hash identifier of the stat whose display properties are being overridden.
     /// </summary>
     [JsonPropertyName("statHash")]
-    public uint StatHash { get; set; }
+    public uint? StatHash { get; set; }
 
     /// <summary>
     ///     The display properties to show instead of the base DestinyStatDefinition display properties.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 }

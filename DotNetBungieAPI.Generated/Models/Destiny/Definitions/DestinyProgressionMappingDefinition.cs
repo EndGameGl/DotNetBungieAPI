@@ -11,13 +11,13 @@ public class DestinyProgressionMappingDefinition
     ///     Infrequently defined in practice. Defer to the individual progressions' display properties.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     /// <summary>
     ///     The localized unit of measurement for progression across the progressions defined in this mapping. Unfortunately, this is very infrequently defined. Defer to the individual progressions' display units.
     /// </summary>
     [JsonPropertyName("displayUnits")]
-    public string DisplayUnits { get; set; }
+    public string? DisplayUnits { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
@@ -25,17 +25,17 @@ public class DestinyProgressionMappingDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint Hash { get; set; }
+    public uint? Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int Index { get; set; }
+    public int? Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool Redacted { get; set; }
+    public bool? Redacted { get; set; }
 }

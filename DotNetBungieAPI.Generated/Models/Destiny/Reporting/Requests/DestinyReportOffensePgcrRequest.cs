@@ -25,5 +25,5 @@ public class DestinyReportOffensePgcrRequest
     ///     Within the PGCR provided when calling the Reporting endpoint, this should be the character ID of the user that you thought was violating terms of use. They must exist in the PGCR provided.
     /// </summary>
     [JsonPropertyName("offendingCharacterId")]
-    public long OffendingCharacterId { get; set; }
+    public long? OffendingCharacterId { get; set; }
 }

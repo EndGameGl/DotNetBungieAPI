@@ -12,7 +12,7 @@ public class GroupOptionsEditAction
     ///     Default is false for clans, true for groups.
     /// </summary>
     [JsonPropertyName("InvitePermissionOverride")]
-    public bool InvitePermissionOverride { get; set; }
+    public bool? InvitePermissionOverride { get; set; }
 
     /// <summary>
     ///     Minimum Member Level allowed to update group culture
@@ -24,7 +24,7 @@ public class GroupOptionsEditAction
     ///     Default is false for clans, true for groups.
     /// </summary>
     [JsonPropertyName("UpdateCulturePermissionOverride")]
-    public bool UpdateCulturePermissionOverride { get; set; }
+    public bool? UpdateCulturePermissionOverride { get; set; }
 
     /// <summary>
     ///     Minimum Member Level allowed to host guided games
@@ -36,7 +36,7 @@ public class GroupOptionsEditAction
     ///     Default is Member for clans, None for groups, although this means nothing for groups.
     /// </summary>
     [JsonPropertyName("HostGuidedGamePermissionOverride")]
-    public int HostGuidedGamePermissionOverride { get; set; }
+    public int? HostGuidedGamePermissionOverride { get; set; }
 
     /// <summary>
     ///     Minimum Member Level allowed to update banner
@@ -48,7 +48,7 @@ public class GroupOptionsEditAction
     ///     Default is false for clans, true for groups.
     /// </summary>
     [JsonPropertyName("UpdateBannerPermissionOverride")]
-    public bool UpdateBannerPermissionOverride { get; set; }
+    public bool? UpdateBannerPermissionOverride { get; set; }
 
     /// <summary>
     ///     Level to join a member at when accepting an invite, application, or joining an open clan
@@ -56,5 +56,5 @@ public class GroupOptionsEditAction
     ///     Default is Beginner.
     /// </summary>
     [JsonPropertyName("JoinLevel")]
-    public int JoinLevel { get; set; }
+    public int? JoinLevel { get; set; }
 }

@@ -21,7 +21,7 @@ public class DestinyItemSourceBlockDefinition
     ///     If we found that this item is exclusive to a specific platform, this will be set to the BungieMembershipType enumeration that matches that platform.
     /// </summary>
     [JsonPropertyName("exclusive")]
-    public BungieMembershipType Exclusive { get; set; }
+    public BungieMembershipType? Exclusive { get; set; }
 
     /// <summary>
     ///     A denormalized reference back to vendors that potentially sell this item.

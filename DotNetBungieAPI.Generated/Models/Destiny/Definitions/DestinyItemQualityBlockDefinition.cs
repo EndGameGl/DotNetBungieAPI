@@ -19,7 +19,7 @@ public class DestinyItemQualityBlockDefinition
     ///     qualityLevel is used in combination with the item's level to calculate stats like Attack and Defense. It plays a role in that calculation, but not nearly as large as itemLevel does.
     /// </summary>
     [JsonPropertyName("qualityLevel")]
-    public int QualityLevel { get; set; }
+    public int? QualityLevel { get; set; }
 
     /// <summary>
     ///     The string identifier for this item's "infusability", if any. 
@@ -29,7 +29,7 @@ public class DestinyItemQualityBlockDefinition
     ///     DEPRECATED: Items can now have multiple infusion categories. Please use infusionCategoryHashes instead.
     /// </summary>
     [JsonPropertyName("infusionCategoryName")]
-    public string InfusionCategoryName { get; set; }
+    public string? InfusionCategoryName { get; set; }
 
     /// <summary>
     ///     The hash identifier for the infusion. It does not map to a Definition entity.
@@ -37,7 +37,7 @@ public class DestinyItemQualityBlockDefinition
     ///     DEPRECATED: Items can now have multiple infusion categories. Please use infusionCategoryHashes instead.
     /// </summary>
     [JsonPropertyName("infusionCategoryHash")]
-    public uint InfusionCategoryHash { get; set; }
+    public uint? InfusionCategoryHash { get; set; }
 
     /// <summary>
     ///     If any one of these hashes matches any value in another item's infusionCategoryHashes, the two can infuse with each other.
@@ -49,13 +49,13 @@ public class DestinyItemQualityBlockDefinition
     ///     An item can refer to pre-set level requirements. They are defined in DestinyProgressionLevelRequirementDefinition, and you can use this hash to find the appropriate definition.
     /// </summary>
     [JsonPropertyName("progressionLevelRequirementHash")]
-    public uint ProgressionLevelRequirementHash { get; set; }
+    public uint? ProgressionLevelRequirementHash { get; set; }
 
     /// <summary>
     ///     The latest version available for this item.
     /// </summary>
     [JsonPropertyName("currentVersion")]
-    public uint CurrentVersion { get; set; }
+    public uint? CurrentVersion { get; set; }
 
     /// <summary>
     ///     The list of versions available for this item.

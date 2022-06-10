@@ -11,17 +11,17 @@ public class DestinyProgressionRewardDefinition
     ///     The hash identifier of the DestinyProgressionMappingDefinition that contains the progressions for which experience should be applied.
     /// </summary>
     [JsonPropertyName("progressionMappingHash")]
-    public uint ProgressionMappingHash { get; set; }
+    public uint? ProgressionMappingHash { get; set; }
 
     /// <summary>
     ///     The amount of experience to give to each of the mapped progressions.
     /// </summary>
     [JsonPropertyName("amount")]
-    public int Amount { get; set; }
+    public int? Amount { get; set; }
 
     /// <summary>
     ///     If true, the game's internal mechanisms to throttle progression should be applied.
     /// </summary>
     [JsonPropertyName("applyThrottles")]
-    public bool ApplyThrottles { get; set; }
+    public bool? ApplyThrottles { get; set; }
 }

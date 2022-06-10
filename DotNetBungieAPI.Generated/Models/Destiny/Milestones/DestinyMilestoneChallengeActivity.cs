@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 public class DestinyMilestoneChallengeActivity
 {
     [JsonPropertyName("activityHash")]
-    public uint ActivityHash { get; set; }
+    public uint? ActivityHash { get; set; }
 
     [JsonPropertyName("challenges")]
     public List<Destiny.Challenges.DestinyChallengeStatus> Challenges { get; set; }
@@ -32,7 +32,7 @@ public class DestinyMilestoneChallengeActivity
     ///     If returned, this is the index into the DestinyActivityDefinition's "loadouts" property, indicating the currently active loadout requirements.
     /// </summary>
     [JsonPropertyName("loadoutRequirementIndex")]
-    public int LoadoutRequirementIndex { get; set; }
+    public int? LoadoutRequirementIndex { get; set; }
 
     /// <summary>
     ///     If the Activity has discrete "phases" that we can track, that info will be here. Otherwise, this value will be NULL. Note that this is a list and not a dictionary: the order implies the ascending order of phases or progression in this activity.

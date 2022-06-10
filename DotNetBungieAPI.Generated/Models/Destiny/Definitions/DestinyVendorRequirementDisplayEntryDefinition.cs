@@ -6,14 +6,14 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 public class DestinyVendorRequirementDisplayEntryDefinition
 {
     [JsonPropertyName("icon")]
-    public string Icon { get; set; }
+    public string? Icon { get; set; }
 
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [JsonPropertyName("source")]
-    public string Source { get; set; }
+    public string? Source { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; }
+    public string? Type { get; set; }
 }

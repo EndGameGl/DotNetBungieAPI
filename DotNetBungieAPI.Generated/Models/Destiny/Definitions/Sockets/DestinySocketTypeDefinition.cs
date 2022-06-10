@@ -11,13 +11,13 @@ public class DestinySocketTypeDefinition
     ///     There are fields for this display data, but they appear to be unpopulated as of now. I am not sure where in the UI these would show if they even were populated, but I will continue to return this data in case it becomes useful.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     /// <summary>
     ///     Defines what happens when a plug is inserted into sockets of this type.
     /// </summary>
     [JsonPropertyName("insertAction")]
-    public Destiny.Definitions.Sockets.DestinyInsertPlugActionDefinition InsertAction { get; set; }
+    public Destiny.Definitions.Sockets.DestinyInsertPlugActionDefinition? InsertAction { get; set; }
 
     /// <summary>
     ///     A list of Plug "Categories" that are allowed to be plugged into sockets of this type.
@@ -30,31 +30,31 @@ public class DestinySocketTypeDefinition
     public List<Destiny.Definitions.Sockets.DestinyPlugWhitelistEntryDefinition> PlugWhitelist { get; set; }
 
     [JsonPropertyName("socketCategoryHash")]
-    public uint SocketCategoryHash { get; set; }
+    public uint? SocketCategoryHash { get; set; }
 
     /// <summary>
     ///     Sometimes a socket isn't visible. These are some of the conditions under which sockets of this type are not visible. Unfortunately, the truth of visibility is much, much more complex. Best to rely on the live data for whether the socket is visible and enabled.
     /// </summary>
     [JsonPropertyName("visibility")]
-    public Destiny.DestinySocketVisibility Visibility { get; set; }
+    public Destiny.DestinySocketVisibility? Visibility { get; set; }
 
     [JsonPropertyName("alwaysRandomizeSockets")]
-    public bool AlwaysRandomizeSockets { get; set; }
+    public bool? AlwaysRandomizeSockets { get; set; }
 
     [JsonPropertyName("isPreviewEnabled")]
-    public bool IsPreviewEnabled { get; set; }
+    public bool? IsPreviewEnabled { get; set; }
 
     [JsonPropertyName("hideDuplicateReusablePlugs")]
-    public bool HideDuplicateReusablePlugs { get; set; }
+    public bool? HideDuplicateReusablePlugs { get; set; }
 
     /// <summary>
     ///     This property indicates if the socket type determines whether Emblem icons and nameplates should be overridden by the inserted plug item's icon and nameplate.
     /// </summary>
     [JsonPropertyName("overridesUiAppearance")]
-    public bool OverridesUiAppearance { get; set; }
+    public bool? OverridesUiAppearance { get; set; }
 
     [JsonPropertyName("avoidDuplicatesOnInitialization")]
-    public bool AvoidDuplicatesOnInitialization { get; set; }
+    public bool? AvoidDuplicatesOnInitialization { get; set; }
 
     [JsonPropertyName("currencyScalars")]
     public List<Destiny.Definitions.Sockets.DestinySocketTypeScalarMaterialRequirementEntry> CurrencyScalars { get; set; }
@@ -65,17 +65,17 @@ public class DestinySocketTypeDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint Hash { get; set; }
+    public uint? Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int Index { get; set; }
+    public int? Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool Redacted { get; set; }
+    public bool? Redacted { get; set; }
 }

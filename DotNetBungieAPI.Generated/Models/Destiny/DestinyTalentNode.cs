@@ -9,31 +9,31 @@ public class DestinyTalentNode
     ///     The index of the Talent Node being referred to (an index into DestinyTalentGridDefinition.nodes[]). CONTENT VERSION DEPENDENT.
     /// </summary>
     [JsonPropertyName("nodeIndex")]
-    public int NodeIndex { get; set; }
+    public int? NodeIndex { get; set; }
 
     /// <summary>
     ///     The hash of the Talent Node being referred to (in DestinyTalentGridDefinition.nodes). Deceptively CONTENT VERSION DEPENDENT. We have no guarantee of the hash's immutability between content versions.
     /// </summary>
     [JsonPropertyName("nodeHash")]
-    public uint NodeHash { get; set; }
+    public uint? NodeHash { get; set; }
 
     /// <summary>
     ///     An DestinyTalentNodeState enum value indicating the node's state: whether it can be activated or swapped, and why not if neither can be performed.
     /// </summary>
     [JsonPropertyName("state")]
-    public Destiny.DestinyTalentNodeState State { get; set; }
+    public Destiny.DestinyTalentNodeState? State { get; set; }
 
     /// <summary>
     ///     If true, the node is activated: it's current step then provides its benefits.
     /// </summary>
     [JsonPropertyName("isActivated")]
-    public bool IsActivated { get; set; }
+    public bool? IsActivated { get; set; }
 
     /// <summary>
     ///     The currently relevant Step for the node. It is this step that has rendering data for the node and the benefits that are provided if the node is activated. (the actual rules for benefits provided are extremely complicated in theory, but with how Talent Grids are being used in Destiny 2 you don't have to worry about a lot of those old Destiny 1 rules.) This is an index into: DestinyTalentGridDefinition.nodes[nodeIndex].steps[stepIndex]
     /// </summary>
     [JsonPropertyName("stepIndex")]
-    public int StepIndex { get; set; }
+    public int? StepIndex { get; set; }
 
     /// <summary>
     ///     If the node has material requirements to be activated, this is the list of those requirements.
@@ -45,23 +45,23 @@ public class DestinyTalentNode
     ///     The progression level required on the Talent Grid in order to be able to activate this talent node. Talent Grids have their own Progression - similar to Character Level, but in this case it is experience related to the item itself.
     /// </summary>
     [JsonPropertyName("activationGridLevel")]
-    public int ActivationGridLevel { get; set; }
+    public int? ActivationGridLevel { get; set; }
 
     /// <summary>
     ///     If you want to show a progress bar or circle for how close this talent node is to being activate-able, this is the percentage to show. It follows the node's underlying rules about when the progress bar should first show up, and when it should be filled.
     /// </summary>
     [JsonPropertyName("progressPercent")]
-    public float ProgressPercent { get; set; }
+    public float? ProgressPercent { get; set; }
 
     /// <summary>
     ///     Whether or not the talent node is actually visible in the game's UI. Whether you want to show it in your own UI is up to you! I'm not gonna tell you who to sock it to.
     /// </summary>
     [JsonPropertyName("hidden")]
-    public bool Hidden { get; set; }
+    public bool? Hidden { get; set; }
 
     /// <summary>
     ///     This property has some history. A talent grid can provide stats on both the item it's related to and the character equipping the item. This returns data about those stat bonuses.
     /// </summary>
     [JsonPropertyName("nodeStatsBlock")]
-    public Destiny.DestinyTalentNodeStatBlock NodeStatsBlock { get; set; }
+    public Destiny.DestinyTalentNodeStatBlock? NodeStatsBlock { get; set; }
 }

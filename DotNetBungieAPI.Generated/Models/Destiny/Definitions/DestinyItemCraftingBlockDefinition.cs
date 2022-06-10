@@ -9,7 +9,7 @@ public class DestinyItemCraftingBlockDefinition
     ///     A reference to the item definition that is created when crafting with this 'recipe' item.
     /// </summary>
     [JsonPropertyName("outputItemHash")]
-    public uint OutputItemHash { get; set; }
+    public uint? OutputItemHash { get; set; }
 
     /// <summary>
     ///     A list of socket type hashes that describes which sockets are required for crafting with this recipe.
@@ -24,7 +24,7 @@ public class DestinyItemCraftingBlockDefinition
     ///     A reference to the base material requirements for crafting with this recipe.
     /// </summary>
     [JsonPropertyName("baseMaterialRequirements")]
-    public uint BaseMaterialRequirements { get; set; }
+    public uint? BaseMaterialRequirements { get; set; }
 
     /// <summary>
     ///     A list of 'bonus' socket plugs that may be available if certain requirements are met.

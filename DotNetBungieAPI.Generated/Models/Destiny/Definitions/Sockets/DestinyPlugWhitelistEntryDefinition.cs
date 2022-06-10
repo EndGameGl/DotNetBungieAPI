@@ -13,13 +13,13 @@ public class DestinyPlugWhitelistEntryDefinition
     ///     Note that this does NOT relate to any Definition in itself, it is only used for comparison purposes.
     /// </summary>
     [JsonPropertyName("categoryHash")]
-    public uint CategoryHash { get; set; }
+    public uint? CategoryHash { get; set; }
 
     /// <summary>
     ///     The string identifier for the category, which is here mostly for debug purposes.
     /// </summary>
     [JsonPropertyName("categoryIdentifier")]
-    public string CategoryIdentifier { get; set; }
+    public string? CategoryIdentifier { get; set; }
 
     /// <summary>
     ///     The list of all plug items (DestinyInventoryItemDefinition) that the socket may randomly be populated with when reinitialized.

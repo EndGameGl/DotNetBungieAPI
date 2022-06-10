@@ -3,11 +3,11 @@ namespace DotNetBungieAPI.Generated.Models.Tokens;
 public class PartnerOfferClaimRequest
 {
     [JsonPropertyName("PartnerOfferId")]
-    public string PartnerOfferId { get; set; }
+    public string? PartnerOfferId { get; set; }
 
     [JsonPropertyName("BungieNetMembershipId")]
-    public long BungieNetMembershipId { get; set; }
+    public long? BungieNetMembershipId { get; set; }
 
     [JsonPropertyName("TransactionId")]
-    public string TransactionId { get; set; }
+    public string? TransactionId { get; set; }
 }

@@ -15,7 +15,7 @@ public class DestinyPublicVendorsResponse
     ///     COMPONENT TYPE: Vendors
     /// </summary>
     [JsonPropertyName("vendorGroups")]
-    public SingleComponentResponseOfDestinyVendorGroupComponent VendorGroups { get; set; }
+    public SingleComponentResponseOfDestinyVendorGroupComponent? VendorGroups { get; set; }
 
     /// <summary>
     ///     The base properties of the vendor. These are keyed by the Vendor Hash, so you will get one Vendor Component per vendor returned.
@@ -23,7 +23,7 @@ public class DestinyPublicVendorsResponse
     ///     COMPONENT TYPE: Vendors
     /// </summary>
     [JsonPropertyName("vendors")]
-    public DictionaryComponentResponseOfuint32AndDestinyPublicVendorComponent Vendors { get; set; }
+    public DictionaryComponentResponseOfuint32AndDestinyPublicVendorComponent? Vendors { get; set; }
 
     /// <summary>
     ///     Categories that the vendor has available, and references to the sales therein. These are keyed by the Vendor Hash, so you will get one Categories Component per vendor returned.
@@ -31,7 +31,7 @@ public class DestinyPublicVendorsResponse
     ///     COMPONENT TYPE: VendorCategories
     /// </summary>
     [JsonPropertyName("categories")]
-    public DictionaryComponentResponseOfuint32AndDestinyVendorCategoriesComponent Categories { get; set; }
+    public DictionaryComponentResponseOfuint32AndDestinyVendorCategoriesComponent? Categories { get; set; }
 
     /// <summary>
     ///     Sales, keyed by the vendorItemIndex of the item being sold. These are keyed by the Vendor Hash, so you will get one Sale Item Set Component per vendor returned.
@@ -41,7 +41,7 @@ public class DestinyPublicVendorsResponse
     ///     COMPONENT TYPE: VendorSales
     /// </summary>
     [JsonPropertyName("sales")]
-    public DictionaryComponentResponseOfuint32AndPublicDestinyVendorSaleItemSetComponent Sales { get; set; }
+    public DictionaryComponentResponseOfuint32AndPublicDestinyVendorSaleItemSetComponent? Sales { get; set; }
 
     /// <summary>
     ///     A set of string variable values by hash for a public vendors context.
@@ -49,5 +49,5 @@ public class DestinyPublicVendorsResponse
     ///     COMPONENT TYPE: StringVariables
     /// </summary>
     [JsonPropertyName("stringVariables")]
-    public SingleComponentResponseOfDestinyStringVariablesComponent StringVariables { get; set; }
+    public SingleComponentResponseOfDestinyStringVariablesComponent? StringVariables { get; set; }
 }

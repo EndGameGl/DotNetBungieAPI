@@ -6,11 +6,11 @@ public class Datapoint
     ///     Timestamp for the related count.
     /// </summary>
     [JsonPropertyName("time")]
-    public DateTime Time { get; set; }
+    public DateTime? Time { get; set; }
 
     /// <summary>
     ///     Count associated with timestamp
     /// </summary>
     [JsonPropertyName("count")]
-    public double Count { get; set; }
+    public double? Count { get; set; }
 }

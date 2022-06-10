@@ -11,17 +11,17 @@ public class DestinyVendorInteractionReplyDefinition
     ///     The rewards granted upon responding to the vendor.
     /// </summary>
     [JsonPropertyName("itemRewardsSelection")]
-    public Destiny.DestinyVendorInteractionRewardSelection ItemRewardsSelection { get; set; }
+    public Destiny.DestinyVendorInteractionRewardSelection? ItemRewardsSelection { get; set; }
 
     /// <summary>
     ///     The localized text for the reply.
     /// </summary>
     [JsonPropertyName("reply")]
-    public string Reply { get; set; }
+    public string? Reply { get; set; }
 
     /// <summary>
     ///     An enum indicating the type of reply being made.
     /// </summary>
     [JsonPropertyName("replyType")]
-    public Destiny.DestinyVendorReplyType ReplyType { get; set; }
+    public Destiny.DestinyVendorReplyType? ReplyType { get; set; }
 }

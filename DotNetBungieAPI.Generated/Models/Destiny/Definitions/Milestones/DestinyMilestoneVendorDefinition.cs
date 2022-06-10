@@ -11,5 +11,5 @@ public class DestinyMilestoneVendorDefinition
     ///     The hash of the vendor whose wares should be shown as associated with the Milestone.
     /// </summary>
     [JsonPropertyName("vendorHash")]
-    public uint VendorHash { get; set; }
+    public uint? VendorHash { get; set; }
 }

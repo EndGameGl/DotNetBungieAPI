@@ -6,7 +6,7 @@ public class DestinyHistoricalWeaponStats
     ///     The hash ID of the item definition that describes the weapon.
     /// </summary>
     [JsonPropertyName("referenceId")]
-    public uint ReferenceId { get; set; }
+    public uint? ReferenceId { get; set; }
 
     /// <summary>
     ///     Collection of stats for the period.

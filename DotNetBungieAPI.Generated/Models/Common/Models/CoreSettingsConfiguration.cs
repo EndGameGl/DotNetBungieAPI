@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Common.Models;
 public class CoreSettingsConfiguration
 {
     [JsonPropertyName("environment")]
-    public string Environment { get; set; }
+    public string? Environment { get; set; }
 
     [JsonPropertyName("systems")]
     public Dictionary<string, Common.Models.CoreSystem> Systems { get; set; }
@@ -57,10 +57,10 @@ public class CoreSettingsConfiguration
     public List<Common.Models.CoreSetting> ClanBannerStandards { get; set; }
 
     [JsonPropertyName("destiny2CoreSettings")]
-    public Common.Models.Destiny2CoreSettings Destiny2CoreSettings { get; set; }
+    public Common.Models.Destiny2CoreSettings? Destiny2CoreSettings { get; set; }
 
     [JsonPropertyName("emailSettings")]
-    public User.EmailSettings EmailSettings { get; set; }
+    public User.EmailSettings? EmailSettings { get; set; }
 
     [JsonPropertyName("fireteamActivities")]
     public List<Common.Models.CoreSetting> FireteamActivities { get; set; }

@@ -14,32 +14,32 @@ namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 public class GroupQuery
 {
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [JsonPropertyName("groupType")]
-    public GroupsV2.GroupType GroupType { get; set; }
+    public GroupsV2.GroupType? GroupType { get; set; }
 
     [JsonPropertyName("creationDate")]
-    public GroupsV2.GroupDateRange CreationDate { get; set; }
+    public GroupsV2.GroupDateRange? CreationDate { get; set; }
 
     [JsonPropertyName("sortBy")]
-    public GroupsV2.GroupSortBy SortBy { get; set; }
+    public GroupsV2.GroupSortBy? SortBy { get; set; }
 
     [JsonPropertyName("groupMemberCountFilter")]
-    public int GroupMemberCountFilter { get; set; }
+    public int? GroupMemberCountFilter { get; set; }
 
     [JsonPropertyName("localeFilter")]
-    public string LocaleFilter { get; set; }
+    public string? LocaleFilter { get; set; }
 
     [JsonPropertyName("tagText")]
-    public string TagText { get; set; }
+    public string? TagText { get; set; }
 
     [JsonPropertyName("itemsPerPage")]
-    public int ItemsPerPage { get; set; }
+    public int? ItemsPerPage { get; set; }
 
     [JsonPropertyName("currentPage")]
-    public int CurrentPage { get; set; }
+    public int? CurrentPage { get; set; }
 
     [JsonPropertyName("requestContinuationToken")]
-    public string RequestContinuationToken { get; set; }
+    public string? RequestContinuationToken { get; set; }
 }

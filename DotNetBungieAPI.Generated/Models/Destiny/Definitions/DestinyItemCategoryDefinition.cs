@@ -10,61 +10,61 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 public class DestinyItemCategoryDefinition
 {
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     /// <summary>
     ///     If True, this category should be visible in UI. Sometimes we make categories that we don't think are interesting externally. It's up to you if you want to skip on showing them.
     /// </summary>
     [JsonPropertyName("visible")]
-    public bool Visible { get; set; }
+    public bool? Visible { get; set; }
 
     /// <summary>
     ///     If True, this category has been deprecated: it may have no items left, or there may be only legacy items that remain in it which are no longer relevant to the game.
     /// </summary>
     [JsonPropertyName("deprecated")]
-    public bool Deprecated { get; set; }
+    public bool? Deprecated { get; set; }
 
     /// <summary>
     ///     A shortened version of the title. The reason why we have this is because the Armory in German had titles that were too long to display in our UI, so these were localized abbreviated versions of those categories. The property still exists today, even though the Armory doesn't exist for D2... yet.
     /// </summary>
     [JsonPropertyName("shortTitle")]
-    public string ShortTitle { get; set; }
+    public string? ShortTitle { get; set; }
 
     /// <summary>
     ///     The janky regular expression we used against the item type to try and discern whether the item belongs to this category.
     /// </summary>
     [JsonPropertyName("itemTypeRegex")]
-    public string ItemTypeRegex { get; set; }
+    public string? ItemTypeRegex { get; set; }
 
     /// <summary>
     ///     If the item in question has this category, it also should have this breaker type.
     /// </summary>
     [JsonPropertyName("grantDestinyBreakerType")]
-    public Destiny.DestinyBreakerType GrantDestinyBreakerType { get; set; }
+    public Destiny.DestinyBreakerType? GrantDestinyBreakerType { get; set; }
 
     /// <summary>
     ///     If the item is a plug, this is the identifier we expect to find associated with it if it is in this category.
     /// </summary>
     [JsonPropertyName("plugCategoryIdentifier")]
-    public string PlugCategoryIdentifier { get; set; }
+    public string? PlugCategoryIdentifier { get; set; }
 
     /// <summary>
     ///     If the item type matches this janky regex, it does *not* belong to this category.
     /// </summary>
     [JsonPropertyName("itemTypeRegexNot")]
-    public string ItemTypeRegexNot { get; set; }
+    public string? ItemTypeRegexNot { get; set; }
 
     /// <summary>
     ///     If the item belongs to this bucket, it does belong to this category.
     /// </summary>
     [JsonPropertyName("originBucketIdentifier")]
-    public string OriginBucketIdentifier { get; set; }
+    public string? OriginBucketIdentifier { get; set; }
 
     /// <summary>
     ///     If an item belongs to this category, it will also receive this item type. This is now how DestinyItemType is populated for items: it used to be an even jankier process, but that's a story that requires more alcohol.
     /// </summary>
     [JsonPropertyName("grantDestinyItemType")]
-    public Destiny.DestinyItemType GrantDestinyItemType { get; set; }
+    public Destiny.DestinyItemType? GrantDestinyItemType { get; set; }
 
     /// <summary>
     ///     If an item belongs to this category, it will also receive this subtype enum value.
@@ -74,7 +74,7 @@ public class DestinyItemCategoryDefinition
     ///     The last one processed wins, as is the case with all of these "grant" enums. Now you can see one reason why we moved away from these enums... but they're so convenient when they work, aren't they?
     /// </summary>
     [JsonPropertyName("grantDestinySubType")]
-    public Destiny.DestinyItemSubType GrantDestinySubType { get; set; }
+    public Destiny.DestinyItemSubType? GrantDestinySubType { get; set; }
 
     /// <summary>
     ///     If an item belongs to this category, it will also get this class restriction enum value.
@@ -82,13 +82,13 @@ public class DestinyItemCategoryDefinition
     ///     See the other "grant"-prefixed properties on this definition for my color commentary.
     /// </summary>
     [JsonPropertyName("grantDestinyClass")]
-    public Destiny.DestinyClass GrantDestinyClass { get; set; }
+    public Destiny.DestinyClass? GrantDestinyClass { get; set; }
 
     /// <summary>
     ///     The traitId that can be found on items that belong to this category.
     /// </summary>
     [JsonPropertyName("traitId")]
-    public string TraitId { get; set; }
+    public string? TraitId { get; set; }
 
     /// <summary>
     ///     If this category is a "parent" category of other categories, those children will have their hashes listed in rendering order here, and can be looked up using these hashes against DestinyItemCategoryDefinition.
@@ -110,7 +110,7 @@ public class DestinyItemCategoryDefinition
     ///     If true, this category is only used for grouping, and should not be evaluated with its own checks. Rather, the item only has this category if it has one of its child categories.
     /// </summary>
     [JsonPropertyName("groupCategoryOnly")]
-    public bool GroupCategoryOnly { get; set; }
+    public bool? GroupCategoryOnly { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
@@ -118,17 +118,17 @@ public class DestinyItemCategoryDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint Hash { get; set; }
+    public uint? Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int Index { get; set; }
+    public int? Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool Redacted { get; set; }
+    public bool? Redacted { get; set; }
 }

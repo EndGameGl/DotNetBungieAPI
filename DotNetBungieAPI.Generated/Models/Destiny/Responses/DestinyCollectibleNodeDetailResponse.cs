@@ -9,7 +9,7 @@ public class DestinyCollectibleNodeDetailResponse
     ///     COMPONENT TYPE: Collectibles
     /// </summary>
     [JsonPropertyName("collectibles")]
-    public SingleComponentResponseOfDestinyCollectiblesComponent Collectibles { get; set; }
+    public SingleComponentResponseOfDestinyCollectiblesComponent? Collectibles { get; set; }
 
     /// <summary>
     ///     Item components, keyed by the item hash of the items pointed at collectibles found under the requested Presentation Node.
@@ -21,5 +21,5 @@ public class DestinyCollectibleNodeDetailResponse
     ///     COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]
     /// </summary>
     [JsonPropertyName("collectibleItemComponents")]
-    public DestinyItemComponentSetOfuint32 CollectibleItemComponents { get; set; }
+    public DestinyItemComponentSetOfuint32? CollectibleItemComponents { get; set; }
 }

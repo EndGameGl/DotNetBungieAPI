@@ -11,11 +11,11 @@ public class DestinyObjectivePerkEntryDefinition
     ///     The hash identifier of the DestinySandboxPerkDefinition that will be applied to the character.
     /// </summary>
     [JsonPropertyName("perkHash")]
-    public uint PerkHash { get; set; }
+    public uint? PerkHash { get; set; }
 
     /// <summary>
     ///     An enumeration indicating whether it will be applied as long as the Objective is active, when it's completed, or until it's completed.
     /// </summary>
     [JsonPropertyName("style")]
-    public Destiny.DestinyObjectiveGrantStyle Style { get; set; }
+    public Destiny.DestinyObjectiveGrantStyle? Style { get; set; }
 }

@@ -6,10 +6,10 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Config;
 public class DestinyManifest
 {
     [JsonPropertyName("version")]
-    public string Version { get; set; }
+    public string? Version { get; set; }
 
     [JsonPropertyName("mobileAssetContentPath")]
-    public string MobileAssetContentPath { get; set; }
+    public string? MobileAssetContentPath { get; set; }
 
     [JsonPropertyName("mobileGearAssetDataBases")]
     public List<Destiny.Config.GearAssetDataBaseDefinition> MobileGearAssetDataBases { get; set; }
@@ -30,7 +30,7 @@ public class DestinyManifest
     public Dictionary<string, Dictionary<string, string>> JsonWorldComponentContentPaths { get; set; }
 
     [JsonPropertyName("mobileClanBannerDatabasePath")]
-    public string MobileClanBannerDatabasePath { get; set; }
+    public string? MobileClanBannerDatabasePath { get; set; }
 
     [JsonPropertyName("mobileGearCDN")]
     public Dictionary<string, string> MobileGearCDN { get; set; }

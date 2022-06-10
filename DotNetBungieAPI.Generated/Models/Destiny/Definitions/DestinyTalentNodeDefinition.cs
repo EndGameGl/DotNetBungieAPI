@@ -13,7 +13,7 @@ public class DestinyTalentNodeDefinition
     ///     The index into the DestinyTalentGridDefinition's "nodes" property where this node is located. Used to uniquely identify the node within the Talent Grid. Note that this is content version dependent: make sure you have the latest version of content before trying to use these properties.
     /// </summary>
     [JsonPropertyName("nodeIndex")]
-    public int NodeIndex { get; set; }
+    public int? NodeIndex { get; set; }
 
     /// <summary>
     ///     The hash identifier for the node, which unfortunately is also content version dependent but can be (and ideally, should be) used instead of the nodeIndex to uniquely identify the node.
@@ -21,19 +21,19 @@ public class DestinyTalentNodeDefinition
     ///     The two exist side-by-side for backcompat reasons due to the Great Talent Node Restructuring of Destiny 1, and I ran out of time to remove one of them and standardize on the other. Sorry!
     /// </summary>
     [JsonPropertyName("nodeHash")]
-    public uint NodeHash { get; set; }
+    public uint? NodeHash { get; set; }
 
     /// <summary>
     ///     The visual "row" where the node should be shown in the UI. If negative, then the node is hidden.
     /// </summary>
     [JsonPropertyName("row")]
-    public int Row { get; set; }
+    public int? Row { get; set; }
 
     /// <summary>
     ///     The visual "column" where the node should be shown in the UI. If negative, the node is hidden.
     /// </summary>
     [JsonPropertyName("column")]
-    public int Column { get; set; }
+    public int? Column { get; set; }
 
     /// <summary>
     ///     Indexes into the DestinyTalentGridDefinition.nodes property for any nodes that must be activated before this one is allowed to be activated.
@@ -49,13 +49,13 @@ public class DestinyTalentNodeDefinition
     ///     If this is ever used, this will be the index into the DestinyTalentGridDefinition.nodes property for the node that is the binary pair match to this node. Activating one deactivates the other.
     /// </summary>
     [JsonPropertyName("binaryPairNodeIndex")]
-    public int BinaryPairNodeIndex { get; set; }
+    public int? BinaryPairNodeIndex { get; set; }
 
     /// <summary>
     ///     If true, this node will automatically unlock when the Talent Grid's level reaches the required level of the current step of this node.
     /// </summary>
     [JsonPropertyName("autoUnlocks")]
-    public bool AutoUnlocks { get; set; }
+    public bool? AutoUnlocks { get; set; }
 
     /// <summary>
     ///     At one point, Nodes were going to be able to be activated multiple times, changing the current step and potentially piling on multiple effects from the previously activated steps. This property would indicate if the last step could be activated multiple times. 
@@ -63,13 +63,13 @@ public class DestinyTalentNodeDefinition
     ///     This is not currently used, but it isn't out of the question that this could end up being used again in a theoretical future.
     /// </summary>
     [JsonPropertyName("lastStepRepeats")]
-    public bool LastStepRepeats { get; set; }
+    public bool? LastStepRepeats { get; set; }
 
     /// <summary>
     ///     If this is true, the node's step is determined randomly rather than the first step being chosen.
     /// </summary>
     [JsonPropertyName("isRandom")]
-    public bool IsRandom { get; set; }
+    public bool? IsRandom { get; set; }
 
     /// <summary>
     ///     At one point, you were going to be able to repurchase talent nodes that had random steps, to "re-roll" the current step of the node (and thus change the properties of your item). This was to be the activation requirement for performing that re-roll.
@@ -77,13 +77,13 @@ public class DestinyTalentNodeDefinition
     ///     The system still exists to do this, as far as I know, so it may yet come back around!
     /// </summary>
     [JsonPropertyName("randomActivationRequirement")]
-    public Destiny.Definitions.DestinyNodeActivationRequirement RandomActivationRequirement { get; set; }
+    public Destiny.Definitions.DestinyNodeActivationRequirement? RandomActivationRequirement { get; set; }
 
     /// <summary>
     ///     If this is true, the node can be "re-rolled" to acquire a different random current step. This is not used, but still exists for a theoretical future of talent grids.
     /// </summary>
     [JsonPropertyName("isRandomRepurchasable")]
-    public bool IsRandomRepurchasable { get; set; }
+    public bool? IsRandomRepurchasable { get; set; }
 
     /// <summary>
     ///     At this point, "steps" have been obfuscated into conceptual entities, aggregating the underlying notions of "properties" and "true steps".
@@ -107,13 +107,13 @@ public class DestinyTalentNodeDefinition
     ///     If the node's step is randomly selected, this is the amount of the Talent Grid's progression experience at which the progression bar for the node should be shown.
     /// </summary>
     [JsonPropertyName("randomStartProgressionBarAtProgression")]
-    public int RandomStartProgressionBarAtProgression { get; set; }
+    public int? RandomStartProgressionBarAtProgression { get; set; }
 
     /// <summary>
     ///     A string identifier for a custom visual layout to apply to this talent node. Unfortunately, we do not have any data for rendering these custom layouts. It will be up to you to interpret these strings and change your UI if you want to have custom UI matching these layouts.
     /// </summary>
     [JsonPropertyName("layoutIdentifier")]
-    public string LayoutIdentifier { get; set; }
+    public string? LayoutIdentifier { get; set; }
 
     /// <summary>
     ///     As of Destiny 2, nodes can exist as part of "Exclusive Groups". These differ from exclusive sets in that, within the group, many nodes can be activated. But the act of activating any node in the group will cause "opposing" nodes (nodes in groups that are not allowed to be activated at the same time as this group) to deactivate.
@@ -121,23 +121,23 @@ public class DestinyTalentNodeDefinition
     ///     See DestinyTalentExclusiveGroup for more information on the details. This is an identifier for this node's group, if it is part of one.
     /// </summary>
     [JsonPropertyName("groupHash")]
-    public uint GroupHash { get; set; }
+    public uint? GroupHash { get; set; }
 
     /// <summary>
     ///     Talent nodes can be associated with a piece of Lore, generally rendered in a tooltip. This is the hash identifier of the lore element to show, if there is one to be show.
     /// </summary>
     [JsonPropertyName("loreHash")]
-    public uint LoreHash { get; set; }
+    public uint? LoreHash { get; set; }
 
     /// <summary>
     ///     Comes from the talent grid node style: this identifier should be used to determine how to render the node in the UI.
     /// </summary>
     [JsonPropertyName("nodeStyleIdentifier")]
-    public string NodeStyleIdentifier { get; set; }
+    public string? NodeStyleIdentifier { get; set; }
 
     /// <summary>
     ///     Comes from the talent grid node style: if true, then this node should be ignored for determining whether the grid is complete.
     /// </summary>
     [JsonPropertyName("ignoreForCompletion")]
-    public bool IgnoreForCompletion { get; set; }
+    public bool? IgnoreForCompletion { get; set; }
 }

@@ -9,8 +9,8 @@ public class GroupV2ClanInfoAndInvestment
     public Dictionary<uint, Destiny.DestinyProgression> D2ClanProgressions { get; set; }
 
     [JsonPropertyName("clanCallsign")]
-    public string ClanCallsign { get; set; }
+    public string? ClanCallsign { get; set; }
 
     [JsonPropertyName("clanBannerData")]
-    public GroupsV2.ClanBanner ClanBannerData { get; set; }
+    public GroupsV2.ClanBanner? ClanBannerData { get; set; }
 }

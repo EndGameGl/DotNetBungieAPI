@@ -9,5 +9,5 @@ public class DestinyRecordIntervalBlock
     public List<Destiny.Definitions.Records.DestinyRecordIntervalRewards> IntervalRewards { get; set; }
 
     [JsonPropertyName("originalObjectiveArrayInsertionIndex")]
-    public int OriginalObjectiveArrayInsertionIndex { get; set; }
+    public int? OriginalObjectiveArrayInsertionIndex { get; set; }
 }

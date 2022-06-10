@@ -11,11 +11,11 @@ public class DestinyErrorProfile
     ///     The error that we encountered. You should be able to look up localized text to show to the user for these failures.
     /// </summary>
     [JsonPropertyName("errorCode")]
-    public Exceptions.PlatformErrorCodes ErrorCode { get; set; }
+    public Exceptions.PlatformErrorCodes? ErrorCode { get; set; }
 
     /// <summary>
     ///     Basic info about the account that failed. Don't expect anything other than membership ID, Membership Type, and displayName to be populated.
     /// </summary>
     [JsonPropertyName("infoCard")]
-    public User.UserInfoCard InfoCard { get; set; }
+    public User.UserInfoCard? InfoCard { get; set; }
 }

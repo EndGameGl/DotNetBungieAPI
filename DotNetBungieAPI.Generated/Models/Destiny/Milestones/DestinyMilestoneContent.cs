@@ -9,13 +9,13 @@ public class DestinyMilestoneContent
     ///     The "About this Milestone" text from the Firehose.
     /// </summary>
     [JsonPropertyName("about")]
-    public string About { get; set; }
+    public string? About { get; set; }
 
     /// <summary>
     ///     The Current Status of the Milestone, as driven by the Firehose.
     /// </summary>
     [JsonPropertyName("status")]
-    public string Status { get; set; }
+    public string? Status { get; set; }
 
     /// <summary>
     ///     A list of tips, provided by the Firehose.

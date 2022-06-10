@@ -9,17 +9,17 @@ public class DestinyEnergyCapacityEntry
     ///     How much energy capacity this plug provides.
     /// </summary>
     [JsonPropertyName("capacityValue")]
-    public int CapacityValue { get; set; }
+    public int? CapacityValue { get; set; }
 
     /// <summary>
     ///     Energy provided by a plug is always of a specific type - this is the hash identifier for the energy type for which it provides Capacity.
     /// </summary>
     [JsonPropertyName("energyTypeHash")]
-    public uint EnergyTypeHash { get; set; }
+    public uint? EnergyTypeHash { get; set; }
 
     /// <summary>
     ///     The Energy Type for this energy capacity, in enum form for easy use.
     /// </summary>
     [JsonPropertyName("energyType")]
-    public Destiny.DestinyEnergyType EnergyType { get; set; }
+    public Destiny.DestinyEnergyType? EnergyType { get; set; }
 }

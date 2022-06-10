@@ -10,25 +10,25 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 public class DestinyEquipmentSlotDefinition
 {
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     /// <summary>
     ///     These technically point to "Equipment Category Definitions". But don't get excited. There's nothing of significant value in those definitions, so I didn't bother to expose them. You can use the hash here to group equipment slots by common functionality, which serves the same purpose as if we had the Equipment Category definitions exposed.
     /// </summary>
     [JsonPropertyName("equipmentCategoryHash")]
-    public uint EquipmentCategoryHash { get; set; }
+    public uint? EquipmentCategoryHash { get; set; }
 
     /// <summary>
     ///     The inventory bucket that owns this equipment slot.
     /// </summary>
     [JsonPropertyName("bucketTypeHash")]
-    public uint BucketTypeHash { get; set; }
+    public uint? BucketTypeHash { get; set; }
 
     /// <summary>
     ///     If True, equipped items should have their custom art dyes applied when rendering the item. Otherwise, custom art dyes on an item should be ignored if the item is equipped in this slot.
     /// </summary>
     [JsonPropertyName("applyCustomArtDyes")]
-    public bool ApplyCustomArtDyes { get; set; }
+    public bool? ApplyCustomArtDyes { get; set; }
 
     /// <summary>
     ///     The Art Dye Channels that apply to this equipment slot.
@@ -42,17 +42,17 @@ public class DestinyEquipmentSlotDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint Hash { get; set; }
+    public uint? Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int Index { get; set; }
+    public int? Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool Redacted { get; set; }
+    public bool? Redacted { get; set; }
 }

@@ -6,17 +6,17 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 public class DestinyTalentNodeStepGroups
 {
     [JsonPropertyName("weaponPerformance")]
-    public Destiny.Definitions.DestinyTalentNodeStepWeaponPerformances WeaponPerformance { get; set; }
+    public Destiny.Definitions.DestinyTalentNodeStepWeaponPerformances? WeaponPerformance { get; set; }
 
     [JsonPropertyName("impactEffects")]
-    public Destiny.Definitions.DestinyTalentNodeStepImpactEffects ImpactEffects { get; set; }
+    public Destiny.Definitions.DestinyTalentNodeStepImpactEffects? ImpactEffects { get; set; }
 
     [JsonPropertyName("guardianAttributes")]
-    public Destiny.Definitions.DestinyTalentNodeStepGuardianAttributes GuardianAttributes { get; set; }
+    public Destiny.Definitions.DestinyTalentNodeStepGuardianAttributes? GuardianAttributes { get; set; }
 
     [JsonPropertyName("lightAbilities")]
-    public Destiny.Definitions.DestinyTalentNodeStepLightAbilities LightAbilities { get; set; }
+    public Destiny.Definitions.DestinyTalentNodeStepLightAbilities? LightAbilities { get; set; }
 
     [JsonPropertyName("damageTypes")]
-    public Destiny.Definitions.DestinyTalentNodeStepDamageTypes DamageTypes { get; set; }
+    public Destiny.Definitions.DestinyTalentNodeStepDamageTypes? DamageTypes { get; set; }
 }

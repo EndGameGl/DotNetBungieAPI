@@ -9,17 +9,17 @@ public class DestinyEnergyCostEntry
     ///     The Energy cost for inserting this plug.
     /// </summary>
     [JsonPropertyName("energyCost")]
-    public int EnergyCost { get; set; }
+    public int? EnergyCost { get; set; }
 
     /// <summary>
     ///     The type of energy that this plug costs, as a reference to the DestinyEnergyTypeDefinition of the energy type.
     /// </summary>
     [JsonPropertyName("energyTypeHash")]
-    public uint EnergyTypeHash { get; set; }
+    public uint? EnergyTypeHash { get; set; }
 
     /// <summary>
     ///     The type of energy that this plug costs, in enum form.
     /// </summary>
     [JsonPropertyName("energyType")]
-    public Destiny.DestinyEnergyType EnergyType { get; set; }
+    public Destiny.DestinyEnergyType? EnergyType { get; set; }
 }

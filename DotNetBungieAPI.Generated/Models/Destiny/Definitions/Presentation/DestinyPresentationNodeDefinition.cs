@@ -14,76 +14,76 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Presentation;
 public class DestinyPresentationNodeDefinition
 {
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     /// <summary>
     ///     The original icon for this presentation node, before we futzed with it.
     /// </summary>
     [JsonPropertyName("originalIcon")]
-    public string OriginalIcon { get; set; }
+    public string? OriginalIcon { get; set; }
 
     /// <summary>
     ///     Some presentation nodes are meant to be explicitly shown on the "root" or "entry" screens for the feature to which they are related. You should use this icon when showing them on such a view, if you have a similar "entry point" view in your UI. If you don't have a UI, then I guess it doesn't matter either way does it?
     /// </summary>
     [JsonPropertyName("rootViewIcon")]
-    public string RootViewIcon { get; set; }
+    public string? RootViewIcon { get; set; }
 
     [JsonPropertyName("nodeType")]
-    public Destiny.DestinyPresentationNodeType NodeType { get; set; }
+    public Destiny.DestinyPresentationNodeType? NodeType { get; set; }
 
     /// <summary>
     ///     Indicates whether this presentation node's state is determined on a per-character or on an account-wide basis.
     /// </summary>
     [JsonPropertyName("scope")]
-    public Destiny.DestinyScope Scope { get; set; }
+    public Destiny.DestinyScope? Scope { get; set; }
 
     /// <summary>
     ///     If this presentation node shows a related objective (for instance, if it tracks the progress of its children), the objective being tracked is indicated here.
     /// </summary>
     [JsonPropertyName("objectiveHash")]
-    public uint ObjectiveHash { get; set; }
+    public uint? ObjectiveHash { get; set; }
 
     /// <summary>
     ///     If this presentation node has an associated "Record" that you can accomplish for completing its children, this is the identifier of that Record.
     /// </summary>
     [JsonPropertyName("completionRecordHash")]
-    public uint CompletionRecordHash { get; set; }
+    public uint? CompletionRecordHash { get; set; }
 
     /// <summary>
     ///     The child entities contained by this presentation node.
     /// </summary>
     [JsonPropertyName("children")]
-    public Destiny.Definitions.Presentation.DestinyPresentationNodeChildrenBlock Children { get; set; }
+    public Destiny.Definitions.Presentation.DestinyPresentationNodeChildrenBlock? Children { get; set; }
 
     /// <summary>
     ///     A hint for how to display this presentation node when it's shown in a list.
     /// </summary>
     [JsonPropertyName("displayStyle")]
-    public Destiny.DestinyPresentationDisplayStyle DisplayStyle { get; set; }
+    public Destiny.DestinyPresentationDisplayStyle? DisplayStyle { get; set; }
 
     /// <summary>
     ///     A hint for how to display this presentation node when it's shown in its own detail screen.
     /// </summary>
     [JsonPropertyName("screenStyle")]
-    public Destiny.DestinyPresentationScreenStyle ScreenStyle { get; set; }
+    public Destiny.DestinyPresentationScreenStyle? ScreenStyle { get; set; }
 
     /// <summary>
     ///     The requirements for being able to interact with this presentation node and its children.
     /// </summary>
     [JsonPropertyName("requirements")]
-    public Destiny.Definitions.Presentation.DestinyPresentationNodeRequirementsBlock Requirements { get; set; }
+    public Destiny.Definitions.Presentation.DestinyPresentationNodeRequirementsBlock? Requirements { get; set; }
 
     /// <summary>
     ///     If this presentation node has children, but the game doesn't let you inspect the details of those children, that is indicated here.
     /// </summary>
     [JsonPropertyName("disableChildSubscreenNavigation")]
-    public bool DisableChildSubscreenNavigation { get; set; }
+    public bool? DisableChildSubscreenNavigation { get; set; }
 
     [JsonPropertyName("maxCategoryRecordScore")]
-    public int MaxCategoryRecordScore { get; set; }
+    public int? MaxCategoryRecordScore { get; set; }
 
     [JsonPropertyName("presentationNodeType")]
-    public Destiny.DestinyPresentationNodeType PresentationNodeType { get; set; }
+    public Destiny.DestinyPresentationNodeType? PresentationNodeType { get; set; }
 
     [JsonPropertyName("traitIds")]
     public List<string> TraitIds { get; set; }
@@ -103,17 +103,17 @@ public class DestinyPresentationNodeDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint Hash { get; set; }
+    public uint? Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int Index { get; set; }
+    public int? Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool Redacted { get; set; }
+    public bool? Redacted { get; set; }
 }

@@ -9,11 +9,11 @@ public class DestinyStat
     ///     The hash identifier for the Stat. Use it to look up the DestinyStatDefinition for static data about the stat.
     /// </summary>
     [JsonPropertyName("statHash")]
-    public uint StatHash { get; set; }
+    public uint? StatHash { get; set; }
 
     /// <summary>
     ///     The current value of the Stat.
     /// </summary>
     [JsonPropertyName("value")]
-    public int Value { get; set; }
+    public int? Value { get; set; }
 }

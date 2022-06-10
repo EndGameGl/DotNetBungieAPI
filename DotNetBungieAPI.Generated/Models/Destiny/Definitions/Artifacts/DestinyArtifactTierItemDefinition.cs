@@ -6,5 +6,5 @@ public class DestinyArtifactTierItemDefinition
     ///     The identifier of the Plug Item unlocked by activating this item in the Artifact.
     /// </summary>
     [JsonPropertyName("itemHash")]
-    public uint ItemHash { get; set; }
+    public uint? ItemHash { get; set; }
 }

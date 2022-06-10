@@ -9,7 +9,7 @@ public class DestinyItemResponse
     ///     If the item is on a character, this will return the ID of the character that is holding the item.
     /// </summary>
     [JsonPropertyName("characterId")]
-    public long CharacterId { get; set; }
+    public long? CharacterId { get; set; }
 
     /// <summary>
     ///     Common data for the item relevant to its non-instanced properties.
@@ -17,7 +17,7 @@ public class DestinyItemResponse
     ///     COMPONENT TYPE: ItemCommonData
     /// </summary>
     [JsonPropertyName("item")]
-    public SingleComponentResponseOfDestinyItemComponent Item { get; set; }
+    public SingleComponentResponseOfDestinyItemComponent? Item { get; set; }
 
     /// <summary>
     ///     Basic instance data for the item.
@@ -25,7 +25,7 @@ public class DestinyItemResponse
     ///     COMPONENT TYPE: ItemInstances
     /// </summary>
     [JsonPropertyName("instance")]
-    public SingleComponentResponseOfDestinyItemInstanceComponent Instance { get; set; }
+    public SingleComponentResponseOfDestinyItemInstanceComponent? Instance { get; set; }
 
     /// <summary>
     ///     Information specifically about the item's objectives.
@@ -33,7 +33,7 @@ public class DestinyItemResponse
     ///     COMPONENT TYPE: ItemObjectives
     /// </summary>
     [JsonPropertyName("objectives")]
-    public SingleComponentResponseOfDestinyItemObjectivesComponent Objectives { get; set; }
+    public SingleComponentResponseOfDestinyItemObjectivesComponent? Objectives { get; set; }
 
     /// <summary>
     ///     Information specifically about the perks currently active on the item.
@@ -41,7 +41,7 @@ public class DestinyItemResponse
     ///     COMPONENT TYPE: ItemPerks
     /// </summary>
     [JsonPropertyName("perks")]
-    public SingleComponentResponseOfDestinyItemPerksComponent Perks { get; set; }
+    public SingleComponentResponseOfDestinyItemPerksComponent? Perks { get; set; }
 
     /// <summary>
     ///     Information about how to render the item in 3D.
@@ -49,7 +49,7 @@ public class DestinyItemResponse
     ///     COMPONENT TYPE: ItemRenderData
     /// </summary>
     [JsonPropertyName("renderData")]
-    public SingleComponentResponseOfDestinyItemRenderComponent RenderData { get; set; }
+    public SingleComponentResponseOfDestinyItemRenderComponent? RenderData { get; set; }
 
     /// <summary>
     ///     Information about the computed stats of the item: power, defense, etc...
@@ -57,7 +57,7 @@ public class DestinyItemResponse
     ///     COMPONENT TYPE: ItemStats
     /// </summary>
     [JsonPropertyName("stats")]
-    public SingleComponentResponseOfDestinyItemStatsComponent Stats { get; set; }
+    public SingleComponentResponseOfDestinyItemStatsComponent? Stats { get; set; }
 
     /// <summary>
     ///     Information about the talent grid attached to the item. Talent nodes can provide a variety of benefits and abilities, and in Destiny 2 are used almost exclusively for the character's "Builds".
@@ -65,7 +65,7 @@ public class DestinyItemResponse
     ///     COMPONENT TYPE: ItemTalentGrids
     /// </summary>
     [JsonPropertyName("talentGrid")]
-    public SingleComponentResponseOfDestinyItemTalentGridComponent TalentGrid { get; set; }
+    public SingleComponentResponseOfDestinyItemTalentGridComponent? TalentGrid { get; set; }
 
     /// <summary>
     ///     Information about the sockets of the item: which are currently active, what potential sockets you could have and the stats/abilities/perks you can gain from them.
@@ -73,7 +73,7 @@ public class DestinyItemResponse
     ///     COMPONENT TYPE: ItemSockets
     /// </summary>
     [JsonPropertyName("sockets")]
-    public SingleComponentResponseOfDestinyItemSocketsComponent Sockets { get; set; }
+    public SingleComponentResponseOfDestinyItemSocketsComponent? Sockets { get; set; }
 
     /// <summary>
     ///     Information about the Reusable Plugs for sockets on an item. These are plugs that you can insert into the given socket regardless of if you actually own an instance of that plug: they are logic-driven plugs rather than inventory-driven.
@@ -83,7 +83,7 @@ public class DestinyItemResponse
     ///      COMPONENT TYPE: ItemReusablePlugs
     /// </summary>
     [JsonPropertyName("reusablePlugs")]
-    public SingleComponentResponseOfDestinyItemReusablePlugsComponent ReusablePlugs { get; set; }
+    public SingleComponentResponseOfDestinyItemReusablePlugsComponent? ReusablePlugs { get; set; }
 
     /// <summary>
     ///     Information about objectives on Plugs for a given item. See the component's documentation for more info.
@@ -91,5 +91,5 @@ public class DestinyItemResponse
     ///     COMPONENT TYPE: ItemPlugObjectives
     /// </summary>
     [JsonPropertyName("plugObjectives")]
-    public SingleComponentResponseOfDestinyItemPlugObjectivesComponent PlugObjectives { get; set; }
+    public SingleComponentResponseOfDestinyItemPlugObjectivesComponent? PlugObjectives { get; set; }
 }

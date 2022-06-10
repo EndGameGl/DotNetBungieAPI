@@ -8,19 +8,19 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 public class DestinyDestinationDefinition
 {
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     /// <summary>
     ///     The place that "owns" this Destination. Use this hash to look up the DestinyPlaceDefinition.
     /// </summary>
     [JsonPropertyName("placeHash")]
-    public uint PlaceHash { get; set; }
+    public uint? PlaceHash { get; set; }
 
     /// <summary>
     ///     If this Destination has a default Free-Roam activity, this is the hash for that Activity. Use it to look up the DestinyActivityDefintion.
     /// </summary>
     [JsonPropertyName("defaultFreeroamActivityHash")]
-    public uint DefaultFreeroamActivityHash { get; set; }
+    public uint? DefaultFreeroamActivityHash { get; set; }
 
     /// <summary>
     ///     If the Destination has default Activity Graphs (i.e. "Map") that should be shown in the director, this is the list of those Graphs. At most, only one should be active at any given time for a Destination: these would represent, for example, different variants on a Map if the Destination is changing on a macro level based on game state.
@@ -52,17 +52,17 @@ public class DestinyDestinationDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint Hash { get; set; }
+    public uint? Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int Index { get; set; }
+    public int? Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool Redacted { get; set; }
+    public bool? Redacted { get; set; }
 }

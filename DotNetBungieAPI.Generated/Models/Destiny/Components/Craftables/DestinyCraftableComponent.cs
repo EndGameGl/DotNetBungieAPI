@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Craftables;
 public class DestinyCraftableComponent
 {
     [JsonPropertyName("visible")]
-    public bool Visible { get; set; }
+    public bool? Visible { get; set; }
 
     /// <summary>
     ///     If the requirements are not met for crafting this item, these will index into the list of failure strings.

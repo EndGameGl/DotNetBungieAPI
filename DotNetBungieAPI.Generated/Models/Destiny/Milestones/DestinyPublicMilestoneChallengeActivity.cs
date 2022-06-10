@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 public class DestinyPublicMilestoneChallengeActivity
 {
     [JsonPropertyName("activityHash")]
-    public uint ActivityHash { get; set; }
+    public uint? ActivityHash { get; set; }
 
     [JsonPropertyName("challengeObjectiveHashes")]
     public List<uint> ChallengeObjectiveHashes { get; set; }
@@ -20,7 +20,7 @@ public class DestinyPublicMilestoneChallengeActivity
     ///     If returned, this is the index into the DestinyActivityDefinition's "loadouts" property, indicating the currently active loadout requirements.
     /// </summary>
     [JsonPropertyName("loadoutRequirementIndex")]
-    public int LoadoutRequirementIndex { get; set; }
+    public int? LoadoutRequirementIndex { get; set; }
 
     /// <summary>
     ///     The ordered list of phases for this activity, if any. Note that we have no human readable info for phases, nor any entities to relate them to: relating these hashes to something human readable is up to you unfortunately.

@@ -13,19 +13,19 @@ public class DestinyStatDisplayDefinition
     ///     Use it to look up the DestinyStatDefinition, or key into a DestinyInventoryItemDefinition's stats property.
     /// </summary>
     [JsonPropertyName("statHash")]
-    public uint StatHash { get; set; }
+    public uint? StatHash { get; set; }
 
     /// <summary>
     ///     Regardless of the output of interpolation, this is the maximum possible value that the stat can be. It should also be used as the upper bound for displaying the stat as a progress bar (the minimum always being 0)
     /// </summary>
     [JsonPropertyName("maximumValue")]
-    public int MaximumValue { get; set; }
+    public int? MaximumValue { get; set; }
 
     /// <summary>
     ///     If this is true, the stat should be displayed as a number. Otherwise, display it as a progress bar. Or, you know, do whatever you want. There's no displayAsNumeric police.
     /// </summary>
     [JsonPropertyName("displayAsNumeric")]
-    public bool DisplayAsNumeric { get; set; }
+    public bool? DisplayAsNumeric { get; set; }
 
     /// <summary>
     ///     The interpolation table representing how the Investment Stat is transformed into a Display Stat. 

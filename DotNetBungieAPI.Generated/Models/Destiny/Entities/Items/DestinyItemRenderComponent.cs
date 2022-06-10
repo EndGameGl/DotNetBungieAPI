@@ -9,7 +9,7 @@ public class DestinyItemRenderComponent
     ///     If you should use custom dyes on this item, it will be indicated here.
     /// </summary>
     [JsonPropertyName("useCustomDyes")]
-    public bool UseCustomDyes { get; set; }
+    public bool? UseCustomDyes { get; set; }
 
     /// <summary>
     ///     A dictionary for rendering gear components, with:

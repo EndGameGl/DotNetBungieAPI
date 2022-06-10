@@ -32,7 +32,7 @@ public class CSharpClassGenerator : ModelGeneratorBase
             await WriteLineAsync($"{Indent}[JsonPropertyName(\"{propertyTypeData.OriginPropertyName}\")]");
 
             await WriteLineAsync(
-                $"{Indent}public {propertyTypeData.GetCSharpType()} {propertyTypeData.OriginPropertyName.GetCSharpPropertyName()} {{ get; set; }}");
+                $"{Indent}public {propertyTypeData.GetCSharpType()}{(propertyTypeData.IsNullable ? "?" : string.Empty)} {propertyTypeData.OriginPropertyName.GetCSharpPropertyName()} {{ get; set; }}");
 
             if (i != amountCheckValue)
             {

@@ -9,19 +9,19 @@ public class DestinyActivityPlaylistItemDefinition
     ///     The hash identifier of the Activity that can be played. Use it to look up the DestinyActivityDefinition.
     /// </summary>
     [JsonPropertyName("activityHash")]
-    public uint ActivityHash { get; set; }
+    public uint? ActivityHash { get; set; }
 
     /// <summary>
     ///     If this playlist entry had an activity mode directly defined on it, this will be the hash of that mode.
     /// </summary>
     [JsonPropertyName("directActivityModeHash")]
-    public uint DirectActivityModeHash { get; set; }
+    public uint? DirectActivityModeHash { get; set; }
 
     /// <summary>
     ///     If the playlist entry had an activity mode directly defined on it, this will be the enum value of that mode.
     /// </summary>
     [JsonPropertyName("directActivityModeType")]
-    public int DirectActivityModeType { get; set; }
+    public int? DirectActivityModeType { get; set; }
 
     /// <summary>
     ///     The hash identifiers for Activity Modes relevant to this entry.

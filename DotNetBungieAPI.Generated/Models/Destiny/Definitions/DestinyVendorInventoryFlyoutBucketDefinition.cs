@@ -9,17 +9,17 @@ public class DestinyVendorInventoryFlyoutBucketDefinition
     ///     If true, the inventory bucket should be able to be collapsed visually.
     /// </summary>
     [JsonPropertyName("collapsible")]
-    public bool Collapsible { get; set; }
+    public bool? Collapsible { get; set; }
 
     /// <summary>
     ///     The inventory bucket whose contents should be shown.
     /// </summary>
     [JsonPropertyName("inventoryBucketHash")]
-    public uint InventoryBucketHash { get; set; }
+    public uint? InventoryBucketHash { get; set; }
 
     /// <summary>
     ///     The methodology to use for sorting items from the flyout.
     /// </summary>
     [JsonPropertyName("sortItemsBy")]
-    public Destiny.DestinyItemSortType SortItemsBy { get; set; }
+    public Destiny.DestinyItemSortType? SortItemsBy { get; set; }
 }

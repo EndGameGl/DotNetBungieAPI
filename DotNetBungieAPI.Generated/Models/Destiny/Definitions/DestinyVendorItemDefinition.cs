@@ -9,7 +9,7 @@ public class DestinyVendorItemDefinition
     ///     The index into the DestinyVendorDefinition.saleList. This is what we use to refer to items being sold throughout live and definition data.
     /// </summary>
     [JsonPropertyName("vendorItemIndex")]
-    public int VendorItemIndex { get; set; }
+    public int? VendorItemIndex { get; set; }
 
     /// <summary>
     ///     The hash identifier of the item being sold (DestinyInventoryItemDefinition).
@@ -17,13 +17,13 @@ public class DestinyVendorItemDefinition
     ///     Note that a vendor can sell the same item in multiple ways, so don't assume that itemHash is a unique identifier for this entity.
     /// </summary>
     [JsonPropertyName("itemHash")]
-    public uint ItemHash { get; set; }
+    public uint? ItemHash { get; set; }
 
     /// <summary>
     ///     The amount you will recieve of the item described in itemHash if you make the purchase.
     /// </summary>
     [JsonPropertyName("quantity")]
-    public int Quantity { get; set; }
+    public int? Quantity { get; set; }
 
     /// <summary>
     ///     An list of indexes into the DestinyVendorDefinition.failureStrings array, indicating the possible failure strings that can be relevant for this item.
@@ -43,13 +43,13 @@ public class DestinyVendorItemDefinition
     ///     If this item can be refunded, this is the policy for what will be refundd, how, and in what time period.
     /// </summary>
     [JsonPropertyName("refundPolicy")]
-    public Destiny.DestinyVendorItemRefundPolicy RefundPolicy { get; set; }
+    public Destiny.DestinyVendorItemRefundPolicy? RefundPolicy { get; set; }
 
     /// <summary>
     ///     The amount of time before refundability of the newly purchased item will expire.
     /// </summary>
     [JsonPropertyName("refundTimeLimit")]
-    public int RefundTimeLimit { get; set; }
+    public int? RefundTimeLimit { get; set; }
 
     /// <summary>
     ///     The Default level at which the item will spawn. Almost always driven by an adjusto these days. Ideally should be singular. It's a long story how this ended up as a list, but there is always either going to be 0:1 of these entities.
@@ -61,49 +61,49 @@ public class DestinyVendorItemDefinition
     ///     This is an index specifically into the display category, as opposed to the server-side Categories (which do not need to match or pair with each other in any way: server side categories are really just structures for common validation. Display Category will let us more easily categorize items visually)
     /// </summary>
     [JsonPropertyName("displayCategoryIndex")]
-    public int DisplayCategoryIndex { get; set; }
+    public int? DisplayCategoryIndex { get; set; }
 
     /// <summary>
     ///     The index into the DestinyVendorDefinition.categories array, so you can find the category associated with this item.
     /// </summary>
     [JsonPropertyName("categoryIndex")]
-    public int CategoryIndex { get; set; }
+    public int? CategoryIndex { get; set; }
 
     /// <summary>
     ///     Same as above, but for the original category indexes.
     /// </summary>
     [JsonPropertyName("originalCategoryIndex")]
-    public int OriginalCategoryIndex { get; set; }
+    public int? OriginalCategoryIndex { get; set; }
 
     /// <summary>
     ///     The minimum character level at which this item is available for sale.
     /// </summary>
     [JsonPropertyName("minimumLevel")]
-    public int MinimumLevel { get; set; }
+    public int? MinimumLevel { get; set; }
 
     /// <summary>
     ///     The maximum character level at which this item is available for sale.
     /// </summary>
     [JsonPropertyName("maximumLevel")]
-    public int MaximumLevel { get; set; }
+    public int? MaximumLevel { get; set; }
 
     /// <summary>
     ///     The action to be performed when purchasing the item, if it's not just "buy".
     /// </summary>
     [JsonPropertyName("action")]
-    public Destiny.Definitions.DestinyVendorSaleItemActionBlockDefinition Action { get; set; }
+    public Destiny.Definitions.DestinyVendorSaleItemActionBlockDefinition? Action { get; set; }
 
     /// <summary>
     ///     The string identifier for the category selling this item.
     /// </summary>
     [JsonPropertyName("displayCategory")]
-    public string DisplayCategory { get; set; }
+    public string? DisplayCategory { get; set; }
 
     /// <summary>
     ///     The inventory bucket into which this item will be placed upon purchase.
     /// </summary>
     [JsonPropertyName("inventoryBucketHash")]
-    public uint InventoryBucketHash { get; set; }
+    public uint? InventoryBucketHash { get; set; }
 
     /// <summary>
     ///     The most restrictive scope that determines whether the item is available in the Vendor's inventory. See DestinyGatingScope's documentation for more information.
@@ -111,7 +111,7 @@ public class DestinyVendorItemDefinition
     ///     This can be determined by Unlock gating, or by whether or not the item has purchase level requirements (minimumLevel and maximumLevel properties).
     /// </summary>
     [JsonPropertyName("visibilityScope")]
-    public Destiny.DestinyGatingScope VisibilityScope { get; set; }
+    public Destiny.DestinyGatingScope? VisibilityScope { get; set; }
 
     /// <summary>
     ///     Similar to visibilityScope, it represents the most restrictive scope that determines whether the item can be purchased. It will at least be as restrictive as visibilityScope, but could be more restrictive if the item has additional purchase requirements beyond whether it is merely visible or not.
@@ -119,37 +119,37 @@ public class DestinyVendorItemDefinition
     ///     See DestinyGatingScope's documentation for more information.
     /// </summary>
     [JsonPropertyName("purchasableScope")]
-    public Destiny.DestinyGatingScope PurchasableScope { get; set; }
+    public Destiny.DestinyGatingScope? PurchasableScope { get; set; }
 
     /// <summary>
     ///     If this item can only be purchased by a given platform, this indicates the platform to which it is restricted.
     /// </summary>
     [JsonPropertyName("exclusivity")]
-    public BungieMembershipType Exclusivity { get; set; }
+    public BungieMembershipType? Exclusivity { get; set; }
 
     /// <summary>
     ///     If this sale can only be performed as the result of an offer check, this is true.
     /// </summary>
     [JsonPropertyName("isOffer")]
-    public bool IsOffer { get; set; }
+    public bool? IsOffer { get; set; }
 
     /// <summary>
     ///     If this sale can only be performed as the result of receiving a CRM offer, this is true.
     /// </summary>
     [JsonPropertyName("isCrm")]
-    public bool IsCrm { get; set; }
+    public bool? IsCrm { get; set; }
 
     /// <summary>
     ///     *if* the category this item is in supports non-default sorting, this value should represent the sorting value to use, pre-processed and ready to go.
     /// </summary>
     [JsonPropertyName("sortValue")]
-    public int SortValue { get; set; }
+    public int? SortValue { get; set; }
 
     /// <summary>
     ///     If this item can expire, this is the tooltip message to show with its expiration info.
     /// </summary>
     [JsonPropertyName("expirationTooltip")]
-    public string ExpirationTooltip { get; set; }
+    public string? ExpirationTooltip { get; set; }
 
     /// <summary>
     ///     If this is populated, the purchase of this item should redirect to purchasing these other items instead.
@@ -166,5 +166,5 @@ public class DestinyVendorItemDefinition
     ///     This is also only whether it's unpurchasable as a static property according to game content. There are other reasons why an item may or may not be purchasable at runtime, so even if this isn't set to True you should trust the runtime value for this sale item over the static definition if this is unset.
     /// </summary>
     [JsonPropertyName("unpurchasable")]
-    public bool Unpurchasable { get; set; }
+    public bool? Unpurchasable { get; set; }
 }

@@ -6,5 +6,5 @@ public class GroupApplicationListRequest
     public List<User.UserMembership> Memberships { get; set; }
 
     [JsonPropertyName("message")]
-    public string Message { get; set; }
+    public string? Message { get; set; }
 }

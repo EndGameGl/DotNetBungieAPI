@@ -9,5 +9,5 @@ public class DestinyItemSocketEntryPlugItemDefinition
     ///     The hash identifier of a DestinyInventoryItemDefinition representing the plug that can be inserted.
     /// </summary>
     [JsonPropertyName("plugItemHash")]
-    public uint PlugItemHash { get; set; }
+    public uint? PlugItemHash { get; set; }
 }

@@ -6,7 +6,7 @@ public class DestinyMilestoneChallengeActivityDefinition
     ///     The activity for which this challenge is active.
     /// </summary>
     [JsonPropertyName("activityHash")]
-    public uint ActivityHash { get; set; }
+    public uint? ActivityHash { get; set; }
 
     [JsonPropertyName("challenges")]
     public List<Destiny.Definitions.Milestones.DestinyMilestoneChallengeDefinition> Challenges { get; set; }

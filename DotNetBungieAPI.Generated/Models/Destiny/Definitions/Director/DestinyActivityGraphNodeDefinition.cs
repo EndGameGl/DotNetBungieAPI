@@ -9,19 +9,19 @@ public class DestinyActivityGraphNodeDefinition
     ///     An identifier for the Activity Graph Node, only guaranteed to be unique within its parent Activity Graph.
     /// </summary>
     [JsonPropertyName("nodeId")]
-    public uint NodeId { get; set; }
+    public uint? NodeId { get; set; }
 
     /// <summary>
     ///     The node *may* have display properties that override the active Activity's display properties.
     /// </summary>
     [JsonPropertyName("overrideDisplay")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition OverrideDisplay { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? OverrideDisplay { get; set; }
 
     /// <summary>
     ///     The position on the map for this node.
     /// </summary>
     [JsonPropertyName("position")]
-    public Destiny.Definitions.Common.DestinyPositionDefinition Position { get; set; }
+    public Destiny.Definitions.Common.DestinyPositionDefinition? Position { get; set; }
 
     /// <summary>
     ///     The node may have various visual accents placed on it, or styles applied. These are the list of possible styles that the Node can have. The game iterates through each, looking for the first one that passes a check of the required game/character/account state in order to show that style, and then renders the node in that style.

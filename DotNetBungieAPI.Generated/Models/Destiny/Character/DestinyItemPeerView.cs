@@ -9,7 +9,7 @@ public class DestinyItemPeerView
     ///     The hash identifier of the item in question. Use it to look up the DestinyInventoryItemDefinition of the item for static rendering data.
     /// </summary>
     [JsonPropertyName("itemHash")]
-    public uint ItemHash { get; set; }
+    public uint? ItemHash { get; set; }
 
     /// <summary>
     ///     The list of dyes that have been applied to this item.

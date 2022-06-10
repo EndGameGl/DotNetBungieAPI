@@ -23,11 +23,11 @@ public class DestinyProfileCollectiblesComponent
     ///     The hash for the root presentation node definition of Collection categories.
     /// </summary>
     [JsonPropertyName("collectionCategoriesRootNodeHash")]
-    public uint CollectionCategoriesRootNodeHash { get; set; }
+    public uint? CollectionCategoriesRootNodeHash { get; set; }
 
     /// <summary>
     ///     The hash for the root presentation node definition of Collection Badges.
     /// </summary>
     [JsonPropertyName("collectionBadgesRootNodeHash")]
-    public uint CollectionBadgesRootNodeHash { get; set; }
+    public uint? CollectionBadgesRootNodeHash { get; set; }
 }

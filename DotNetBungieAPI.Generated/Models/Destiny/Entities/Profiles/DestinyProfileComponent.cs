@@ -9,13 +9,13 @@ public class DestinyProfileComponent
     ///     If you need to render the Profile (their platform name, icon, etc...) somewhere, this property contains that information.
     /// </summary>
     [JsonPropertyName("userInfo")]
-    public User.UserInfoCard UserInfo { get; set; }
+    public User.UserInfoCard? UserInfo { get; set; }
 
     /// <summary>
     ///     The last time the user played with any character on this Profile.
     /// </summary>
     [JsonPropertyName("dateLastPlayed")]
-    public DateTime DateLastPlayed { get; set; }
+    public DateTime? DateLastPlayed { get; set; }
 
     /// <summary>
     ///     If you want to know what expansions they own, this will contain that data.
@@ -25,7 +25,7 @@ public class DestinyProfileComponent
     ///      If you don't care about per-platform ownership and only care about whatever platform it seems they are playing on most recently, then this should be "good enough." Otherwise, this should be considered deprecated. We do not have a good alternative to provide at this time with platform specific ownership data for DLC.
     /// </summary>
     [JsonPropertyName("versionsOwned")]
-    public Destiny.DestinyGameVersions VersionsOwned { get; set; }
+    public Destiny.DestinyGameVersions? VersionsOwned { get; set; }
 
     /// <summary>
     ///     A list of the character IDs, for further querying on your part.
@@ -45,11 +45,11 @@ public class DestinyProfileComponent
     ///     If populated, this is a reference to the season that is currently active.
     /// </summary>
     [JsonPropertyName("currentSeasonHash")]
-    public uint CurrentSeasonHash { get; set; }
+    public uint? CurrentSeasonHash { get; set; }
 
     /// <summary>
     ///     If populated, this is the reward power cap for the current season.
     /// </summary>
     [JsonPropertyName("currentSeasonRewardPowerCap")]
-    public int CurrentSeasonRewardPowerCap { get; set; }
+    public int? CurrentSeasonRewardPowerCap { get; set; }
 }

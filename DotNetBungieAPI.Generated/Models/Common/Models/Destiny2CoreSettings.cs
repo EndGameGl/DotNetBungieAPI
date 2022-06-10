@@ -3,43 +3,43 @@ namespace DotNetBungieAPI.Generated.Models.Common.Models;
 public class Destiny2CoreSettings
 {
     [JsonPropertyName("collectionRootNode")]
-    public uint CollectionRootNode { get; set; }
+    public uint? CollectionRootNode { get; set; }
 
     [JsonPropertyName("badgesRootNode")]
-    public uint BadgesRootNode { get; set; }
+    public uint? BadgesRootNode { get; set; }
 
     [JsonPropertyName("recordsRootNode")]
-    public uint RecordsRootNode { get; set; }
+    public uint? RecordsRootNode { get; set; }
 
     [JsonPropertyName("medalsRootNode")]
-    public uint MedalsRootNode { get; set; }
+    public uint? MedalsRootNode { get; set; }
 
     [JsonPropertyName("metricsRootNode")]
-    public uint MetricsRootNode { get; set; }
+    public uint? MetricsRootNode { get; set; }
 
     [JsonPropertyName("activeTriumphsRootNodeHash")]
-    public uint ActiveTriumphsRootNodeHash { get; set; }
+    public uint? ActiveTriumphsRootNodeHash { get; set; }
 
     [JsonPropertyName("activeSealsRootNodeHash")]
-    public uint ActiveSealsRootNodeHash { get; set; }
+    public uint? ActiveSealsRootNodeHash { get; set; }
 
     [JsonPropertyName("legacyTriumphsRootNodeHash")]
-    public uint LegacyTriumphsRootNodeHash { get; set; }
+    public uint? LegacyTriumphsRootNodeHash { get; set; }
 
     [JsonPropertyName("legacySealsRootNodeHash")]
-    public uint LegacySealsRootNodeHash { get; set; }
+    public uint? LegacySealsRootNodeHash { get; set; }
 
     [JsonPropertyName("medalsRootNodeHash")]
-    public uint MedalsRootNodeHash { get; set; }
+    public uint? MedalsRootNodeHash { get; set; }
 
     [JsonPropertyName("exoticCatalystsRootNodeHash")]
-    public uint ExoticCatalystsRootNodeHash { get; set; }
+    public uint? ExoticCatalystsRootNodeHash { get; set; }
 
     [JsonPropertyName("loreRootNodeHash")]
-    public uint LoreRootNodeHash { get; set; }
+    public uint? LoreRootNodeHash { get; set; }
 
     [JsonPropertyName("craftingRootNodeHash")]
-    public uint CraftingRootNodeHash { get; set; }
+    public uint? CraftingRootNodeHash { get; set; }
 
     [JsonPropertyName("currentRankProgressionHashes")]
     public List<uint> CurrentRankProgressionHashes { get; set; }
@@ -51,25 +51,25 @@ public class Destiny2CoreSettings
     public List<uint> InsertPlugFreeBlockedSocketTypeHashes { get; set; }
 
     [JsonPropertyName("undiscoveredCollectibleImage")]
-    public string UndiscoveredCollectibleImage { get; set; }
+    public string? UndiscoveredCollectibleImage { get; set; }
 
     [JsonPropertyName("ammoTypeHeavyIcon")]
-    public string AmmoTypeHeavyIcon { get; set; }
+    public string? AmmoTypeHeavyIcon { get; set; }
 
     [JsonPropertyName("ammoTypeSpecialIcon")]
-    public string AmmoTypeSpecialIcon { get; set; }
+    public string? AmmoTypeSpecialIcon { get; set; }
 
     [JsonPropertyName("ammoTypePrimaryIcon")]
-    public string AmmoTypePrimaryIcon { get; set; }
+    public string? AmmoTypePrimaryIcon { get; set; }
 
     [JsonPropertyName("currentSeasonalArtifactHash")]
-    public uint CurrentSeasonalArtifactHash { get; set; }
+    public uint? CurrentSeasonalArtifactHash { get; set; }
 
     [JsonPropertyName("currentSeasonHash")]
-    public uint CurrentSeasonHash { get; set; }
+    public uint? CurrentSeasonHash { get; set; }
 
     [JsonPropertyName("seasonalChallengesPresentationNodeHash")]
-    public uint SeasonalChallengesPresentationNodeHash { get; set; }
+    public uint? SeasonalChallengesPresentationNodeHash { get; set; }
 
     [JsonPropertyName("futureSeasonHashes")]
     public List<uint> FutureSeasonHashes { get; set; }

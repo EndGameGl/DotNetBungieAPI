@@ -6,7 +6,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 public class DestinyMilestoneContentItemCategory
 {
     [JsonPropertyName("title")]
-    public string Title { get; set; }
+    public string? Title { get; set; }
 
     [JsonPropertyName("itemHashes")]
     public List<uint> ItemHashes { get; set; }

@@ -6,10 +6,10 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Common;
 public class DestinyDisplayPropertiesDefinition
 {
     [JsonPropertyName("description")]
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     /// <summary>
     ///     Note that "icon" is sometimes misleading, and should be interpreted in the context of the entity. For instance, in Destiny 1 the DestinyRecordBookDefinition's icon was a big picture of a book.
@@ -19,7 +19,7 @@ public class DestinyDisplayPropertiesDefinition
     ///     They are currently represented as 96px x 96px images.
     /// </summary>
     [JsonPropertyName("icon")]
-    public string Icon { get; set; }
+    public string? Icon { get; set; }
 
     [JsonPropertyName("iconSequences")]
     public List<Destiny.Definitions.Common.DestinyIconSequenceDefinition> IconSequences { get; set; }
@@ -28,8 +28,8 @@ public class DestinyDisplayPropertiesDefinition
     ///     If this item has a high-res icon (at least for now, many things won't), then the path to that icon will be here.
     /// </summary>
     [JsonPropertyName("highResIcon")]
-    public string HighResIcon { get; set; }
+    public string? HighResIcon { get; set; }
 
     [JsonPropertyName("hasIcon")]
-    public bool HasIcon { get; set; }
+    public bool? HasIcon { get; set; }
 }

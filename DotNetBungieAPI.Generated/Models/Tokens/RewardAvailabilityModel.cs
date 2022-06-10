@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Tokens;
 public class RewardAvailabilityModel
 {
     [JsonPropertyName("HasExistingCode")]
-    public bool HasExistingCode { get; set; }
+    public bool? HasExistingCode { get; set; }
 
     [JsonPropertyName("RecordDefinitions")]
     public List<Destiny.Definitions.Records.DestinyRecordDefinition> RecordDefinitions { get; set; }
@@ -12,26 +12,26 @@ public class RewardAvailabilityModel
     public List<Tokens.CollectibleDefinitions> CollectibleDefinitions { get; set; }
 
     [JsonPropertyName("IsOffer")]
-    public bool IsOffer { get; set; }
+    public bool? IsOffer { get; set; }
 
     [JsonPropertyName("HasOffer")]
-    public bool HasOffer { get; set; }
+    public bool? HasOffer { get; set; }
 
     [JsonPropertyName("OfferApplied")]
-    public bool OfferApplied { get; set; }
+    public bool? OfferApplied { get; set; }
 
     [JsonPropertyName("DecryptedToken")]
-    public string DecryptedToken { get; set; }
+    public string? DecryptedToken { get; set; }
 
     [JsonPropertyName("IsLoyaltyReward")]
-    public bool IsLoyaltyReward { get; set; }
+    public bool? IsLoyaltyReward { get; set; }
 
     [JsonPropertyName("ShopifyEndDate")]
-    public DateTime ShopifyEndDate { get; set; }
+    public DateTime? ShopifyEndDate { get; set; }
 
     [JsonPropertyName("GameEarnByDate")]
-    public DateTime GameEarnByDate { get; set; }
+    public DateTime? GameEarnByDate { get; set; }
 
     [JsonPropertyName("RedemptionEndDate")]
-    public DateTime RedemptionEndDate { get; set; }
+    public DateTime? RedemptionEndDate { get; set; }
 }

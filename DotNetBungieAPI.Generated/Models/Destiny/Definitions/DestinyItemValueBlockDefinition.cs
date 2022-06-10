@@ -19,5 +19,5 @@ public class DestinyItemValueBlockDefinition
     ///     If there's a localized text description of the value provided, this will be said description.
     /// </summary>
     [JsonPropertyName("valueDescription")]
-    public string ValueDescription { get; set; }
+    public string? ValueDescription { get; set; }
 }

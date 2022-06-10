@@ -11,5 +11,5 @@ public class DestinyPlugRuleDefinition
     ///     The localized string to show if this rule fails.
     /// </summary>
     [JsonPropertyName("failureMessage")]
-    public string FailureMessage { get; set; }
+    public string? FailureMessage { get; set; }
 }

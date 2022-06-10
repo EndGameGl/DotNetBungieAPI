@@ -11,7 +11,7 @@ public class DestinyVendorResponse
     ///     COMPONENT TYPE: Vendors
     /// </summary>
     [JsonPropertyName("vendor")]
-    public SingleComponentResponseOfDestinyVendorComponent Vendor { get; set; }
+    public SingleComponentResponseOfDestinyVendorComponent? Vendor { get; set; }
 
     /// <summary>
     ///     Categories that the vendor has available, and references to the sales therein.
@@ -19,7 +19,7 @@ public class DestinyVendorResponse
     ///     COMPONENT TYPE: VendorCategories
     /// </summary>
     [JsonPropertyName("categories")]
-    public SingleComponentResponseOfDestinyVendorCategoriesComponent Categories { get; set; }
+    public SingleComponentResponseOfDestinyVendorCategoriesComponent? Categories { get; set; }
 
     /// <summary>
     ///     Sales, keyed by the vendorItemIndex of the item being sold.
@@ -27,7 +27,7 @@ public class DestinyVendorResponse
     ///     COMPONENT TYPE: VendorSales
     /// </summary>
     [JsonPropertyName("sales")]
-    public DictionaryComponentResponseOfint32AndDestinyVendorSaleItemComponent Sales { get; set; }
+    public DictionaryComponentResponseOfint32AndDestinyVendorSaleItemComponent? Sales { get; set; }
 
     /// <summary>
     ///     Item components, keyed by the vendorItemIndex of the active sale items.
@@ -35,7 +35,7 @@ public class DestinyVendorResponse
     ///     COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]
     /// </summary>
     [JsonPropertyName("itemComponents")]
-    public DestinyItemComponentSetOfint32 ItemComponents { get; set; }
+    public DestinyItemComponentSetOfint32? ItemComponents { get; set; }
 
     /// <summary>
     ///     A "lookup" convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.
@@ -43,7 +43,7 @@ public class DestinyVendorResponse
     ///     COMPONENT TYPE: CurrencyLookups
     /// </summary>
     [JsonPropertyName("currencyLookups")]
-    public SingleComponentResponseOfDestinyCurrenciesComponent CurrencyLookups { get; set; }
+    public SingleComponentResponseOfDestinyCurrenciesComponent? CurrencyLookups { get; set; }
 
     /// <summary>
     ///     A map of string variable values by hash for this character context.
@@ -51,5 +51,5 @@ public class DestinyVendorResponse
     ///     COMPONENT TYPE: StringVariables
     /// </summary>
     [JsonPropertyName("stringVariables")]
-    public SingleComponentResponseOfDestinyStringVariablesComponent StringVariables { get; set; }
+    public SingleComponentResponseOfDestinyStringVariablesComponent? StringVariables { get; set; }
 }

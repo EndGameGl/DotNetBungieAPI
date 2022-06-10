@@ -9,7 +9,7 @@ public class DestinyActivityRewardDefinition
     ///     The header for the reward set, if any.
     /// </summary>
     [JsonPropertyName("rewardText")]
-    public string RewardText { get; set; }
+    public string? RewardText { get; set; }
 
     /// <summary>
     ///     The "Items provided" in the reward. This is almost always a pointer to a DestinyInventoryItemDefintion for an item that you can't actually earn in-game, but that has name/description/icon information for the vague concept of the rewards you will receive. This is because the actual reward generation is non-deterministic and extremely complicated, so the best the game can do is tell you what you'll get in vague terms. And so too shall we.

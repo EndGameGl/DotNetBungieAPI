@@ -14,7 +14,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 public class DestinyProgressionDefinition
 {
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.DestinyProgressionDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public Destiny.Definitions.DestinyProgressionDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     /// <summary>
     ///     The "Scope" of the progression indicates the source of the progression's live data.
@@ -22,19 +22,19 @@ public class DestinyProgressionDefinition
     ///     See the DestinyProgressionScope enum for more info: but essentially, a Progression can either be backed by a stored value, or it can be a calculated derivative of other values.
     /// </summary>
     [JsonPropertyName("scope")]
-    public Destiny.DestinyProgressionScope Scope { get; set; }
+    public Destiny.DestinyProgressionScope? Scope { get; set; }
 
     /// <summary>
     ///     If this is True, then the progression doesn't have a maximum level.
     /// </summary>
     [JsonPropertyName("repeatLastStep")]
-    public bool RepeatLastStep { get; set; }
+    public bool? RepeatLastStep { get; set; }
 
     /// <summary>
     ///     If there's a description of how to earn this progression in the local config, this will be that localized description.
     /// </summary>
     [JsonPropertyName("source")]
-    public string Source { get; set; }
+    public string? Source { get; set; }
 
     /// <summary>
     ///     Progressions are divided into Steps, which roughly equate to "Levels" in the traditional sense of a Progression. Notably, the last step can be repeated indefinitely if repeatLastStep is true, meaning that the calculation for your level is not as simple as comparing your current progress to the max progress of the steps. 
@@ -50,7 +50,7 @@ public class DestinyProgressionDefinition
     ///     If false, BNet isn't going to show it. But that doesn't mean you can't. We're all friends here.
     /// </summary>
     [JsonPropertyName("visible")]
-    public bool Visible { get; set; }
+    public bool? Visible { get; set; }
 
     /// <summary>
     ///     If the value exists, this is the hash identifier for the Faction that owns this Progression.
@@ -58,19 +58,19 @@ public class DestinyProgressionDefinition
     ///     This is purely for convenience, if you're looking at a progression and want to know if and who it's related to in terms of Faction Reputation.
     /// </summary>
     [JsonPropertyName("factionHash")]
-    public uint FactionHash { get; set; }
+    public uint? FactionHash { get; set; }
 
     /// <summary>
     ///     The #RGB string value for the color related to this progression, if there is one.
     /// </summary>
     [JsonPropertyName("color")]
-    public Destiny.Misc.DestinyColor Color { get; set; }
+    public Destiny.Misc.DestinyColor? Color { get; set; }
 
     /// <summary>
     ///     For progressions that have it, this is the rank icon we use in the Companion, displayed above the progressions' rank value.
     /// </summary>
     [JsonPropertyName("rankIcon")]
-    public string RankIcon { get; set; }
+    public string? RankIcon { get; set; }
 
     [JsonPropertyName("rewardItems")]
     public List<Destiny.Definitions.DestinyProgressionRewardItemQuantity> RewardItems { get; set; }
@@ -81,17 +81,17 @@ public class DestinyProgressionDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint Hash { get; set; }
+    public uint? Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int Index { get; set; }
+    public int? Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool Redacted { get; set; }
+    public bool? Redacted { get; set; }
 }

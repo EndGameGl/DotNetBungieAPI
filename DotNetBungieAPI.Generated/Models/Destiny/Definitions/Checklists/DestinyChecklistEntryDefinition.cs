@@ -11,19 +11,19 @@ public class DestinyChecklistEntryDefinition
     ///     The identifier for this Checklist entry. Guaranteed unique only within this Checklist Definition, and not globally/for all checklists.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint Hash { get; set; }
+    public uint? Hash { get; set; }
 
     /// <summary>
     ///     Even if no other associations exist, we will give you *something* for display properties. In cases where we have no associated entities, it may be as simple as a numerical identifier.
     /// </summary>
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     [JsonPropertyName("destinationHash")]
-    public uint DestinationHash { get; set; }
+    public uint? DestinationHash { get; set; }
 
     [JsonPropertyName("locationHash")]
-    public uint LocationHash { get; set; }
+    public uint? LocationHash { get; set; }
 
     /// <summary>
     ///     Note that a Bubble's hash doesn't uniquely identify a "top level" entity in Destiny. Only the combination of location and bubble can uniquely identify a place in the world of Destiny: so if bubbleHash is populated, locationHash must too be populated for it to have any meaning.
@@ -31,23 +31,23 @@ public class DestinyChecklistEntryDefinition
     ///     You can use this property if it is populated to look up the DestinyLocationDefinition's associated .locationReleases[].activityBubbleName property.
     /// </summary>
     [JsonPropertyName("bubbleHash")]
-    public uint BubbleHash { get; set; }
+    public uint? BubbleHash { get; set; }
 
     [JsonPropertyName("activityHash")]
-    public uint ActivityHash { get; set; }
+    public uint? ActivityHash { get; set; }
 
     [JsonPropertyName("itemHash")]
-    public uint ItemHash { get; set; }
+    public uint? ItemHash { get; set; }
 
     [JsonPropertyName("vendorHash")]
-    public uint VendorHash { get; set; }
+    public uint? VendorHash { get; set; }
 
     [JsonPropertyName("vendorInteractionIndex")]
-    public int VendorInteractionIndex { get; set; }
+    public int? VendorInteractionIndex { get; set; }
 
     /// <summary>
     ///     The scope at which this specific entry can be computed.
     /// </summary>
     [JsonPropertyName("scope")]
-    public Destiny.DestinyScope Scope { get; set; }
+    public Destiny.DestinyScope? Scope { get; set; }
 }

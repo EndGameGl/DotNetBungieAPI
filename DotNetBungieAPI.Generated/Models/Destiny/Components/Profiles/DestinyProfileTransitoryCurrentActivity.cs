@@ -11,35 +11,35 @@ public class DestinyProfileTransitoryCurrentActivity
     ///     When the activity started.
     /// </summary>
     [JsonPropertyName("startTime")]
-    public DateTime StartTime { get; set; }
+    public DateTime? StartTime { get; set; }
 
     /// <summary>
     ///     If you're still in it but it "ended" (like when folks are dancing around the loot after they beat a boss), this is when the activity ended.
     /// </summary>
     [JsonPropertyName("endTime")]
-    public DateTime EndTime { get; set; }
+    public DateTime? EndTime { get; set; }
 
     /// <summary>
     ///     This is what our non-authoritative source thought the score was.
     /// </summary>
     [JsonPropertyName("score")]
-    public float Score { get; set; }
+    public float? Score { get; set; }
 
     /// <summary>
     ///     If you have human opponents, this is the highest opposing team's score.
     /// </summary>
     [JsonPropertyName("highestOpposingFactionScore")]
-    public float HighestOpposingFactionScore { get; set; }
+    public float? HighestOpposingFactionScore { get; set; }
 
     /// <summary>
     ///     This is how many human or poorly crafted aimbot opponents you have.
     /// </summary>
     [JsonPropertyName("numberOfOpponents")]
-    public int NumberOfOpponents { get; set; }
+    public int? NumberOfOpponents { get; set; }
 
     /// <summary>
     ///     This is how many human or poorly crafted aimbots are on your team.
     /// </summary>
     [JsonPropertyName("numberOfPlayers")]
-    public int NumberOfPlayers { get; set; }
+    public int? NumberOfPlayers { get; set; }
 }

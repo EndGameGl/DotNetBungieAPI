@@ -9,19 +9,19 @@ public class EmailOptInDefinition
     ///     The unique identifier for this opt-in category.
     /// </summary>
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     /// <summary>
     ///     The flag value for this opt-in category. For historical reasons, this is defined as a flags enum.
     /// </summary>
     [JsonPropertyName("value")]
-    public User.OptInFlags Value { get; set; }
+    public User.OptInFlags? Value { get; set; }
 
     /// <summary>
     ///     If true, this opt-in setting should be set by default in situations where accounts are created without explicit choices about what they're opting into.
     /// </summary>
     [JsonPropertyName("setByDefault")]
-    public bool SetByDefault { get; set; }
+    public bool? SetByDefault { get; set; }
 
     /// <summary>
     ///     Information about the dependent subscriptions for this opt-in.

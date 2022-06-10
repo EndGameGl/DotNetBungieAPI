@@ -9,5 +9,5 @@ public class DestinyActivityUnlockStringDefinition
     ///     The string to be displayed if the conditions are met.
     /// </summary>
     [JsonPropertyName("displayString")]
-    public string DisplayString { get; set; }
+    public string? DisplayString { get; set; }
 }

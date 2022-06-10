@@ -25,37 +25,37 @@ public class DestinyItemObjectiveBlockDefinition
     ///     If True, all objectives must be completed for the step to be completed. If False, any one objective can be completed for the step to be completed.
     /// </summary>
     [JsonPropertyName("requireFullObjectiveCompletion")]
-    public bool RequireFullObjectiveCompletion { get; set; }
+    public bool? RequireFullObjectiveCompletion { get; set; }
 
     /// <summary>
     ///     The hash for the DestinyInventoryItemDefinition representing the Quest to which this Quest Step belongs.
     /// </summary>
     [JsonPropertyName("questlineItemHash")]
-    public uint QuestlineItemHash { get; set; }
+    public uint? QuestlineItemHash { get; set; }
 
     /// <summary>
     ///     The localized string for narrative text related to this quest step, if any.
     /// </summary>
     [JsonPropertyName("narrative")]
-    public string Narrative { get; set; }
+    public string? Narrative { get; set; }
 
     /// <summary>
     ///     The localized string describing an action to be performed associated with the objectives, if any.
     /// </summary>
     [JsonPropertyName("objectiveVerbName")]
-    public string ObjectiveVerbName { get; set; }
+    public string? ObjectiveVerbName { get; set; }
 
     /// <summary>
     ///     The identifier for the type of quest being performed, if any. Not associated with any fixed definition, yet.
     /// </summary>
     [JsonPropertyName("questTypeIdentifier")]
-    public string QuestTypeIdentifier { get; set; }
+    public string? QuestTypeIdentifier { get; set; }
 
     /// <summary>
     ///     A hashed value for the questTypeIdentifier, because apparently I like to be redundant.
     /// </summary>
     [JsonPropertyName("questTypeHash")]
-    public uint QuestTypeHash { get; set; }
+    public uint? QuestTypeHash { get; set; }
 
     /// <summary>
     ///     One entry per Objective on the item, it will have related display information.
@@ -64,5 +64,5 @@ public class DestinyItemObjectiveBlockDefinition
     public List<Destiny.Definitions.DestinyObjectiveDisplayProperties> PerObjectiveDisplayProperties { get; set; }
 
     [JsonPropertyName("displayAsStatTracker")]
-    public bool DisplayAsStatTracker { get; set; }
+    public bool? DisplayAsStatTracker { get; set; }
 }

@@ -28,61 +28,61 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 public class DestinyMilestoneDefinition
 {
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     /// <summary>
     ///     A hint to the UI to indicate what to show as the display properties for this Milestone when showing "Live" milestone data. Feel free to show more than this if desired: this hint is meant to simplify our own UI, but it may prove useful to you as well.
     /// </summary>
     [JsonPropertyName("displayPreference")]
-    public Destiny.Definitions.Milestones.DestinyMilestoneDisplayPreference DisplayPreference { get; set; }
+    public Destiny.Definitions.Milestones.DestinyMilestoneDisplayPreference? DisplayPreference { get; set; }
 
     /// <summary>
     ///     A custom image someone made just for the milestone. Isn't that special?
     /// </summary>
     [JsonPropertyName("image")]
-    public string Image { get; set; }
+    public string? Image { get; set; }
 
     /// <summary>
     ///     An enumeration listing one of the possible types of milestones. Check out the DestinyMilestoneType enum for more info!
     /// </summary>
     [JsonPropertyName("milestoneType")]
-    public Destiny.Definitions.Milestones.DestinyMilestoneType MilestoneType { get; set; }
+    public Destiny.Definitions.Milestones.DestinyMilestoneType? MilestoneType { get; set; }
 
     /// <summary>
     ///     If True, then the Milestone has been integrated with BNet's recruiting feature.
     /// </summary>
     [JsonPropertyName("recruitable")]
-    public bool Recruitable { get; set; }
+    public bool? Recruitable { get; set; }
 
     /// <summary>
     ///     If the milestone has a friendly identifier for association with other features - such as Recruiting - that identifier can be found here. This is "friendly" in that it looks better in a URL than whatever the identifier for the Milestone actually is.
     /// </summary>
     [JsonPropertyName("friendlyName")]
-    public string FriendlyName { get; set; }
+    public string? FriendlyName { get; set; }
 
     /// <summary>
     ///     If TRUE, this entry should be returned in the list of milestones for the "Explore Destiny" (i.e. new BNet homepage) features of Bungie.net (as long as the underlying event is active) Note that this is a property specifically used by BNet and the companion app for the "Live Events" feature of the front page/welcome view: it's not a reflection of what you see in-game.
     /// </summary>
     [JsonPropertyName("showInExplorer")]
-    public bool ShowInExplorer { get; set; }
+    public bool? ShowInExplorer { get; set; }
 
     /// <summary>
     ///     Determines whether we'll show this Milestone in the user's personal Milestones list.
     /// </summary>
     [JsonPropertyName("showInMilestones")]
-    public bool ShowInMilestones { get; set; }
+    public bool? ShowInMilestones { get; set; }
 
     /// <summary>
     ///     If TRUE, "Explore Destiny" (the front page of BNet and the companion app) prioritize using the activity image over any overriding Quest or Milestone image provided. This unfortunate hack is brought to you by Trials of The Nine.
     /// </summary>
     [JsonPropertyName("explorePrioritizesActivityImage")]
-    public bool ExplorePrioritizesActivityImage { get; set; }
+    public bool? ExplorePrioritizesActivityImage { get; set; }
 
     /// <summary>
     ///     A shortcut for clients - and the server - to understand whether we can predict the start and end dates for this event. In practice, there are multiple ways that an event could have predictable date ranges, but not all events will be able to be predicted via any mechanism (for instance, events that are manually triggered on and off)
     /// </summary>
     [JsonPropertyName("hasPredictableDates")]
-    public bool HasPredictableDates { get; set; }
+    public bool? HasPredictableDates { get; set; }
 
     /// <summary>
     ///     The full set of possible Quests that give the overview of the Milestone event/activity in question. Only one of these can be active at a time for a given Conceptual Milestone, but many of them may be "available" for the user to choose from. (for instance, with Milestones you can choose from the three available Quests, but only one can be active at a time) Keyed by the quest item.
@@ -104,7 +104,7 @@ public class DestinyMilestoneDefinition
     ///     If you're going to show Vendors for the Milestone, you can use this as a localized "header" for the section where you show that vendor data. It'll provide a more context-relevant clue about what the vendor's role is in the Milestone.
     /// </summary>
     [JsonPropertyName("vendorsDisplayTitle")]
-    public string VendorsDisplayTitle { get; set; }
+    public string? VendorsDisplayTitle { get; set; }
 
     /// <summary>
     ///     Sometimes, milestones will have rewards provided by Vendors. This definition gives the information needed to understand which vendors are relevant, the order in which they should be returned if order matters, and the conditions under which the Vendor is relevant to the user.
@@ -122,7 +122,7 @@ public class DestinyMilestoneDefinition
     ///     Some milestones are explicit objectives that you can see and interact with in the game. Some milestones are more conceptual, built by BNet to help advise you on activities and events that happen in-game but that aren't explicitly shown in game as Milestones. If this is TRUE, you can see this as a milestone in the game. If this is FALSE, it's an event or activity you can participate in, but you won't see it as a Milestone in the game's UI.
     /// </summary>
     [JsonPropertyName("isInGameMilestone")]
-    public bool IsInGameMilestone { get; set; }
+    public bool? IsInGameMilestone { get; set; }
 
     /// <summary>
     ///     A Milestone can now be represented by one or more activities directly (without a backing Quest), and that activity can have many challenges, modifiers, and related to it.
@@ -131,7 +131,7 @@ public class DestinyMilestoneDefinition
     public List<Destiny.Definitions.Milestones.DestinyMilestoneChallengeActivityDefinition> Activities { get; set; }
 
     [JsonPropertyName("defaultOrder")]
-    public int DefaultOrder { get; set; }
+    public int? DefaultOrder { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
@@ -139,17 +139,17 @@ public class DestinyMilestoneDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint Hash { get; set; }
+    public uint? Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int Index { get; set; }
+    public int? Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool Redacted { get; set; }
+    public bool? Redacted { get; set; }
 }

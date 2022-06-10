@@ -6,8 +6,8 @@ public class UserSearchResponse
     public List<User.UserSearchResponseDetail> SearchResults { get; set; }
 
     [JsonPropertyName("page")]
-    public int Page { get; set; }
+    public int? Page { get; set; }
 
     [JsonPropertyName("hasMore")]
-    public bool HasMore { get; set; }
+    public bool? HasMore { get; set; }
 }

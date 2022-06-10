@@ -6,11 +6,11 @@ public class DictionaryComponentResponseOfint64AndDestinyItemPerksComponent
     public Dictionary<long, Destiny.Entities.Items.DestinyItemPerksComponent> Data { get; set; }
 
     [JsonPropertyName("privacy")]
-    public Components.ComponentPrivacySetting Privacy { get; set; }
+    public Components.ComponentPrivacySetting? Privacy { get; set; }
 
     /// <summary>
     ///     If true, this component is disabled.
     /// </summary>
     [JsonPropertyName("disabled")]
-    public bool Disabled { get; set; }
+    public bool? Disabled { get; set; }
 }

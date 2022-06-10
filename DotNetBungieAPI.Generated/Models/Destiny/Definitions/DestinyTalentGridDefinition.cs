@@ -19,19 +19,19 @@ public class DestinyTalentGridDefinition
     ///     The maximum possible level of the Talent Grid: at this level, any nodes are allowed to be activated.
     /// </summary>
     [JsonPropertyName("maxGridLevel")]
-    public int MaxGridLevel { get; set; }
+    public int? MaxGridLevel { get; set; }
 
     /// <summary>
     ///     The meaning of this has been lost in the sands of time: it still exists as a property, but appears to be unused in the modern UI of talent grids. It used to imply that each visual "column" of talent nodes required identical progression levels in order to be activated. Returning this value in case it is still useful to someone? Perhaps it's just a bit of interesting history.
     /// </summary>
     [JsonPropertyName("gridLevelPerColumn")]
-    public int GridLevelPerColumn { get; set; }
+    public int? GridLevelPerColumn { get; set; }
 
     /// <summary>
     ///     The hash identifier of the Progression (DestinyProgressionDefinition) that drives whether and when Talent Nodes can be activated on the Grid. Items will have instances of this Progression, and will gain experience that will eventually cause the grid to increase in level. As the grid's level increases, it will cross the threshold where nodes can be activated. See DestinyTalentGridStepDefinition's activation requirements for more information.
     /// </summary>
     [JsonPropertyName("progressionHash")]
-    public uint ProgressionHash { get; set; }
+    public uint? ProgressionHash { get; set; }
 
     /// <summary>
     ///     The list of Talent Nodes on the Grid (recall that Nodes themselves are really just locations in the UI to show whatever their current Step is. You will only know the current step for a node by retrieving instanced data through platform calls to the API that return DestinyItemTalentGridComponent).
@@ -77,17 +77,17 @@ public class DestinyTalentGridDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint Hash { get; set; }
+    public uint? Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int Index { get; set; }
+    public int? Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool Redacted { get; set; }
+    public bool? Redacted { get; set; }
 }

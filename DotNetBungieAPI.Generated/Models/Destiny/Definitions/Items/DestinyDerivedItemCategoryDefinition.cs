@@ -11,7 +11,7 @@ public class DestinyDerivedItemCategoryDefinition
     ///     The localized string for the category title. This will be something describing the items you can get as a group, or your likelihood/the quantity you'll get.
     /// </summary>
     [JsonPropertyName("categoryDescription")]
-    public string CategoryDescription { get; set; }
+    public string? CategoryDescription { get; set; }
 
     /// <summary>
     ///     This is the list of all of the items for this category and the basic properties we'll know about them.

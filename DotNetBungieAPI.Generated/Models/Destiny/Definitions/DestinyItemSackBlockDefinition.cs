@@ -9,20 +9,20 @@ public class DestinyItemSackBlockDefinition
     ///     A description of what will happen when you open the sack. As far as I can tell, this is blank currently. Unknown whether it will eventually be populated with useful info.
     /// </summary>
     [JsonPropertyName("detailAction")]
-    public string DetailAction { get; set; }
+    public string? DetailAction { get; set; }
 
     /// <summary>
     ///     The localized name of the action being performed when you open the sack.
     /// </summary>
     [JsonPropertyName("openAction")]
-    public string OpenAction { get; set; }
+    public string? OpenAction { get; set; }
 
     [JsonPropertyName("selectItemCount")]
-    public int SelectItemCount { get; set; }
+    public int? SelectItemCount { get; set; }
 
     [JsonPropertyName("vendorSackType")]
-    public string VendorSackType { get; set; }
+    public string? VendorSackType { get; set; }
 
     [JsonPropertyName("openOnAcquire")]
-    public bool OpenOnAcquire { get; set; }
+    public bool? OpenOnAcquire { get; set; }
 }

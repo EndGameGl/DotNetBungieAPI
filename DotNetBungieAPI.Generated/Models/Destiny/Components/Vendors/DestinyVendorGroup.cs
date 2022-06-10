@@ -8,7 +8,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Vendors;
 public class DestinyVendorGroup
 {
     [JsonPropertyName("vendorGroupHash")]
-    public uint VendorGroupHash { get; set; }
+    public uint? VendorGroupHash { get; set; }
 
     /// <summary>
     ///     The ordered list of vendors within a particular group.

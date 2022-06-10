@@ -22,25 +22,25 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 public class DestinyVendorDefinition
 {
     [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.DestinyVendorDisplayPropertiesDefinition DisplayProperties { get; set; }
+    public Destiny.Definitions.DestinyVendorDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     /// <summary>
     ///     The type of reward progression that this vendor has. Default - The original rank progression from token redemption. Ritual - Progression from ranks in ritual content. For example: Crucible (Shaxx), Gambit (Drifter), and Battlegrounds (War Table).
     /// </summary>
     [JsonPropertyName("vendorProgressionType")]
-    public Destiny.DestinyVendorProgressionType VendorProgressionType { get; set; }
+    public Destiny.DestinyVendorProgressionType? VendorProgressionType { get; set; }
 
     /// <summary>
     ///     If the vendor has a custom localized string describing the "buy" action, that is returned here.
     /// </summary>
     [JsonPropertyName("buyString")]
-    public string BuyString { get; set; }
+    public string? BuyString { get; set; }
 
     /// <summary>
     ///     Ditto for selling. Not that you can sell items to a vendor anymore. Will it come back? Who knows. The string's still there.
     /// </summary>
     [JsonPropertyName("sellString")]
-    public string SellString { get; set; }
+    public string? SellString { get; set; }
 
     /// <summary>
     ///     If the vendor has an item that should be displayed as the "featured" item, this is the hash identifier for that DestinyVendorItemDefinition.
@@ -48,19 +48,19 @@ public class DestinyVendorDefinition
     ///     Apparently this is usually a related currency, like a reputation token. But it need not be restricted to that.
     /// </summary>
     [JsonPropertyName("displayItemHash")]
-    public uint DisplayItemHash { get; set; }
+    public uint? DisplayItemHash { get; set; }
 
     /// <summary>
     ///     If this is true, you aren't allowed to buy whatever the vendor is selling.
     /// </summary>
     [JsonPropertyName("inhibitBuying")]
-    public bool InhibitBuying { get; set; }
+    public bool? InhibitBuying { get; set; }
 
     /// <summary>
     ///     If this is true, you're not allowed to sell whatever the vendor is buying.
     /// </summary>
     [JsonPropertyName("inhibitSelling")]
-    public bool InhibitSelling { get; set; }
+    public bool? InhibitSelling { get; set; }
 
     /// <summary>
     ///     If the Vendor has a faction, this hash will be valid and point to a DestinyFactionDefinition.
@@ -68,7 +68,7 @@ public class DestinyVendorDefinition
     ///     The game UI and BNet often mine the faction definition for additional elements and details to place on the screen, such as the faction's Progression status (aka "Reputation").
     /// </summary>
     [JsonPropertyName("factionHash")]
-    public uint FactionHash { get; set; }
+    public uint? FactionHash { get; set; }
 
     /// <summary>
     ///     A number used for calculating the frequency of a vendor's inventory resetting/refreshing.
@@ -76,13 +76,13 @@ public class DestinyVendorDefinition
     ///     Don't worry about calculating this - we do it on the server side and send you the next refresh date with the live data.
     /// </summary>
     [JsonPropertyName("resetIntervalMinutes")]
-    public int ResetIntervalMinutes { get; set; }
+    public int? ResetIntervalMinutes { get; set; }
 
     /// <summary>
     ///     Again, used for reset/refreshing of inventory. Don't worry too much about it. Unless you want to.
     /// </summary>
     [JsonPropertyName("resetOffsetMinutes")]
-    public int ResetOffsetMinutes { get; set; }
+    public int? ResetOffsetMinutes { get; set; }
 
     /// <summary>
     ///     If an item can't be purchased from the vendor, there may be many "custom"/game state specific reasons why not.
@@ -102,43 +102,43 @@ public class DestinyVendorDefinition
     ///     The internal identifier for the Vendor. A holdover from the old days of Vendors, but we don't have time to refactor it away.
     /// </summary>
     [JsonPropertyName("vendorIdentifier")]
-    public string VendorIdentifier { get; set; }
+    public string? VendorIdentifier { get; set; }
 
     /// <summary>
     ///     A portrait of the Vendor's smiling mug. Or frothing tentacles.
     /// </summary>
     [JsonPropertyName("vendorPortrait")]
-    public string VendorPortrait { get; set; }
+    public string? VendorPortrait { get; set; }
 
     /// <summary>
     ///     If the vendor has a custom banner image, that can be found here.
     /// </summary>
     [JsonPropertyName("vendorBanner")]
-    public string VendorBanner { get; set; }
+    public string? VendorBanner { get; set; }
 
     /// <summary>
     ///     If a vendor is not enabled, we won't even save the vendor's definition, and we won't return any items or info about them. It's as if they don't exist.
     /// </summary>
     [JsonPropertyName("enabled")]
-    public bool Enabled { get; set; }
+    public bool? Enabled { get; set; }
 
     /// <summary>
     ///     If a vendor is not visible, we still have and will give vendor definition info, but we won't use them for things like Advisors or UI.
     /// </summary>
     [JsonPropertyName("visible")]
-    public bool Visible { get; set; }
+    public bool? Visible { get; set; }
 
     /// <summary>
     ///     The identifier of the VendorCategoryDefinition for this vendor's subcategory.
     /// </summary>
     [JsonPropertyName("vendorSubcategoryIdentifier")]
-    public string VendorSubcategoryIdentifier { get; set; }
+    public string? VendorSubcategoryIdentifier { get; set; }
 
     /// <summary>
     ///     If TRUE, consolidate categories that only differ by trivial properties (such as having minor differences in name)
     /// </summary>
     [JsonPropertyName("consolidateCategories")]
-    public bool ConsolidateCategories { get; set; }
+    public bool? ConsolidateCategories { get; set; }
 
     /// <summary>
     ///     Describes "actions" that can be performed on a vendor. Currently, none of these exist. But theoretically a Vendor could let you interact with it by performing actions. We'll see what these end up looking like if they ever get used.
@@ -206,7 +206,7 @@ public class DestinyVendorDefinition
     ///     As many of you know, Vendor data has historically been pretty brutal on the BNet servers. In an effort to reduce this workload, only Vendors with this flag set will be returned on Vendor requests. This allows us to filter out Vendors that don't dynamic data that's particularly useful: things like "Preview/Sack" vendors, for example, that you can usually suss out the details for using just the definitions themselves.
     /// </summary>
     [JsonPropertyName("returnWithVendorRequest")]
-    public bool ReturnWithVendorRequest { get; set; }
+    public bool? ReturnWithVendorRequest { get; set; }
 
     /// <summary>
     ///     A vendor can be at different places in the world depending on the game/character/account state. This is the list of possible locations for the vendor, along with conditions we use to determine which one is currently active.
@@ -232,17 +232,17 @@ public class DestinyVendorDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint Hash { get; set; }
+    public uint? Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int Index { get; set; }
+    public int? Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool Redacted { get; set; }
+    public bool? Redacted { get; set; }
 }

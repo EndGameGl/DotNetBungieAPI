@@ -9,11 +9,11 @@ public class DestinyActivityGraphDisplayObjectiveDefinition
     ///     $NOTE $amola 2017-01-19 This field is apparently something that CUI uses to manually wire up objectives to display info. I am unsure how it works.
     /// </summary>
     [JsonPropertyName("id")]
-    public uint Id { get; set; }
+    public uint? Id { get; set; }
 
     /// <summary>
     ///     The objective being shown on the map.
     /// </summary>
     [JsonPropertyName("objectiveHash")]
-    public uint ObjectiveHash { get; set; }
+    public uint? ObjectiveHash { get; set; }
 }
