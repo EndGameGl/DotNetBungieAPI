@@ -8,8 +8,6 @@ public class PropertyTypeData
 {
     public string OriginPropertyName { get; }
     public string Description { get; }
-
-    public string EnumTypeReference { get; set; }
     public string TypeReference { get; set; }
     public string Format { get; set; }
     
@@ -70,11 +68,6 @@ public class PropertyTypeData
             case { Type: "object", AllOf.Count: > 0 }:
                 IsClass = true;
                 return;
-
-            // // simple object ref 
-            // case { Type: "object", TypeReference: not null }:
-            //     IsClassObject = true;
-            //     return schema.TypeReference.GetFullTypeName();
 
             // dictionary with key specified
             case { Type: "object", AdditionalProperties: not null, DictionaryKey: not null }:

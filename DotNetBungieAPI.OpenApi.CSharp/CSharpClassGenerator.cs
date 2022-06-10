@@ -1,4 +1,5 @@
-﻿using DotNetBungieAPI.OpenApi.CodeGeneration;
+﻿using System.Text;
+using DotNetBungieAPI.OpenApi.CodeGeneration;
 using DotNetBungieAPI.OpenApi.Metadata;
 
 namespace DotNetBungieAPI.OpenApi.CSharp;
@@ -6,11 +7,33 @@ namespace DotNetBungieAPI.OpenApi.CSharp;
 public class CSharpClassGenerator : ModelGeneratorBase
 {
     private const string Indent = "    ";
+    private const string NameSpace = "namespace DotNetBungieAPI.Generated.Models;";
+    private const string NamespaceBase = "namespace DotNetBungieAPI.Generated.Models";
 
     public override string FileExtension => "cs";
 
     public override async Task GenerateDataForObjectType(ObjectTypeData typeData)
     {
+        if (typeData.FullTypeName.Any(x => x == '.'))
+        {
+            var pathData = typeData.FullTypeName.Split('.')[0..^1];
+            var stringBuilder = new StringBuilder();
+            stringBuilder.Append(NamespaceBase);
+            foreach (var pathDataEntry in pathData)
+            {
+                stringBuilder.Append($".{pathDataEntry}");
+            }
+
+            stringBuilder.Append(';');
+            await WriteLineAsync(stringBuilder.ToString());
+        }
+        else
+        {
+            await WriteLineAsync(NameSpace);
+        }
+
+        await WriteLineAsync();
+        
         if (typeData.Description is not null)
         {
             await WriteComment(false, typeData.Description);
@@ -45,6 +68,26 @@ public class CSharpClassGenerator : ModelGeneratorBase
 
     public override async Task GenerateDataForEnumType(EnumTypeData typeData)
     {
+        if (typeData.FullTypeName.Any(x => x == '.'))
+        {
+            var pathData = typeData.FullTypeName.Split('.')[0..^1];
+            var stringBuilder = new StringBuilder();
+            stringBuilder.Append(NamespaceBase);
+            foreach (var pathDataEntry in pathData)
+            {
+                stringBuilder.Append($".{pathDataEntry}");
+            }
+
+            stringBuilder.Append(';');
+            await WriteLineAsync(stringBuilder.ToString());
+        }
+        else
+        {
+            await WriteLineAsync(NameSpace);
+        }
+
+        await WriteLineAsync();
+        
         if (typeData.Description is not null)
         {
             await WriteComment(false, typeData.Description);

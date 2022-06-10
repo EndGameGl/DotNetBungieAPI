@@ -9,15 +9,6 @@ namespace DotNetBungieAPI.OpenApi;
 
 public class CodeBuilder
 {
-    private const string GlobalUsingsText = @"
-global using System.Text.Json.Serialization;
-
-namespace DotNetBungieAPI.Generated.Models;
-";
-
-    private const string NameSpace = "namespace DotNetBungieAPI.Generated.Models;";
-    private const string NamespaceBase = "namespace DotNetBungieAPI.Generated.Models";
-    
     private readonly string _destinationFolder;
 
     public CodeBuilder(string destinationFolder)
@@ -29,35 +20,23 @@ namespace DotNetBungieAPI.Generated.Models;
         }
     }
 
-    public async Task BuildBareDefinitions(Models.OpenApi openApiModel, ModelGeneratorBase modelGenerator)
+    public async Task BuildBareDefinitions(
+        Models.OpenApi openApiModel,
+        ModelGeneratorBase modelGenerator,
+        params AdditionalFileGenerator[] additionalFileGenerators)
     {
         var typeTree = new TypeTree();
         typeTree.CreateSchemasTypeTree(openApiModel);
 
-        await using (var streamWriter = new StreamWriter(Path.Combine(
-                         _destinationFolder,
-                         "GlobalUsings.cs"), append: false))
+        foreach (var additionalFileGenerator in additionalFileGenerators)
         {
-            await streamWriter.WriteAsync(GlobalUsingsText);
+            await using var streamWriter = new StreamWriter(Path.Combine(
+                _destinationFolder,
+                additionalFileGenerator.FileNameAndExtension), append: false);
+            additionalFileGenerator.Writer = streamWriter;
+            await additionalFileGenerator.WriteFile(openApiModel);
         }
-        
-        await using (var streamWriter = new StreamWriter(Path.Combine(
-                         _destinationFolder,
-                         "DotNetBungieAPIJsonSerializationContext.cs"), append: false))
-        {
-            await streamWriter.WriteLineAsync("namespace DotNetBungieAPI.Generated.Models;");
-            await streamWriter.WriteLineAsync();
-            
-            foreach (var (typeName, typeSchema) in openApiModel.Components.Schemas)
-            {
-                if (typeSchema.Type is "object" && (typeSchema.Properties is null || !typeSchema.Properties.Any()))
-                    continue;
-                await streamWriter.WriteLineAsync($"[JsonSerializable(typeof({typeName}))]");
-            }
-            
-            await streamWriter.WriteLineAsync("public partial class DotNetBungieAPIJsonSerializationContext : JsonSerializerContext { }");
-        }
-        
+
         foreach (var treeNode in typeTree.Nodes.Values)
         {
             await IterateThroughTypeTreeBare(openApiModel, treeNode, _destinationFolder, modelGenerator);
@@ -101,35 +80,14 @@ namespace DotNetBungieAPI.Generated.Models;
 
             if (typeSchema.Type is "array")
                 return;
-            
+
             if (typeSchema.Type is "object" && (typeSchema.Properties is null || !typeSchema.Properties.Any()))
                 return;
 
-            await using var streamWriter = new StreamWriter(currentFile, append: false);
-
-            if (fullTypeName.Any(x => x == '.'))
-            {
-                var pathData = fullTypeName.Split('.')[0..^1];
-                var stringBuilder = new StringBuilder();
-                stringBuilder.Append(NamespaceBase);
-                foreach (var pathDataEntry in pathData)
-                {
-                    stringBuilder.Append($".{pathDataEntry}");
-                }
-
-                stringBuilder.Append(';');
-                await streamWriter.WriteLineAsync(stringBuilder.ToString());
-            }
-            else
-            {
-                await streamWriter.WriteLineAsync(NameSpace);
-            }
-
-            await streamWriter.WriteLineAsync();
-            
             try
             {
                 var typeData = TypeData.CreateTypeData(fullTypeName, typeSchema);
+                await using var streamWriter = new StreamWriter(currentFile, append: false);
                 modelGenerator.Writer = streamWriter;
                 switch (typeData)
                 {

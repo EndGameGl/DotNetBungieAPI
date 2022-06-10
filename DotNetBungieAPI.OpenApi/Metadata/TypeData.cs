@@ -7,11 +7,13 @@ public abstract class TypeData
 {
     protected const string Indent = "    ";
     
+    public string FullTypeName { get; }
     public string TypeName { get; }
     public string Description { get; }
 
     public TypeData(string typeName, OpenApiComponentSchema openApiComponentSchema)
     {
+        FullTypeName = typeName;
         TypeName = typeName.GetTypeName();
         Description = openApiComponentSchema.Description;
         AnalyzeSchema(openApiComponentSchema);
