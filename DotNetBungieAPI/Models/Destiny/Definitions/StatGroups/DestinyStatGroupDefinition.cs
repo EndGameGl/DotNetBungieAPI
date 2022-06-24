@@ -75,23 +75,4 @@ public sealed record DestinyStatGroupDefinition : IDestinyDefinition, IDeepEquat
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        foreach (var stat in ScaledStats) stat.Stat.TryMapValue();
-
-        foreach (var value in Overrides.Values) value.Stat.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        foreach (var stat in ScaledStats) stat.Stat.SetLocale(locale);
-
-        foreach (var value in Overrides.Values) value.Stat.SetLocale(locale);
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {MaximumValue}";
-    }
 }

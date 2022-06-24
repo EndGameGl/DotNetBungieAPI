@@ -133,18 +133,4 @@ public sealed record DestinyActivityModeDefinition : IDestinyDefinition,
     [JsonPropertyName("index")] public int Index { get; init; }
 
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        foreach (var actMode in ActivityModeMappings.Keys) actMode.TryMapValue();
-
-        foreach (var parentMode in ParentModes) parentMode.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        foreach (var actMode in ActivityModeMappings.Keys) actMode.SetLocale(locale);
-
-        foreach (var parentMode in ParentModes) parentMode.SetLocale(locale);
-    }
 }

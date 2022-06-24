@@ -21,7 +21,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DotNetBungieAPI.Services.Default;
 
-internal sealed class SqliteDefinitionProvider : IDefinitionProvider
+public sealed class SqliteDefinitionProvider : IDefinitionProvider
 {
     private const string SelectDefinitionQuery = "SELECT json FROM {0} WHERE id = {1}";
     private const string SelectHistoricalDefinitionQuery = "SELECT json FROM {0} WHERE key = '{1}'";
@@ -109,31 +109,39 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
         _assemblyData = assemblyData;
     }
 
-    public async ValueTask<T> LoadDefinition<T>(uint hash, BungieLocales locale) where T : IDestinyDefinition
+    /// <summary>
+    ///     <inheritdoc/>
+    /// </summary>
+    /// <param name="hash"><inheritdoc/></param>
+    /// <param name="locale"><inheritdoc/></param>
+    /// <typeparam name="T"><inheritdoc/></typeparam>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public ValueTask<T> LoadDefinition<T>(uint hash, BungieLocales locale) where T : IDestinyDefinition
     {
         T result;
         var connection = _sqliteConnections[locale];
         var commandObj = new SQLiteCommand
         {
             Connection = connection,
-            CommandText = string.Format(SelectDefinitionQuery, DefinitionHashPointer<T>.EnumValue, hash.ToInt32())
+            CommandText = string.Format(SelectDefinitionQuery, DefinitionHashPointer<T>.EnumValue, hash.ToInt32()),
         };
-        var reader = commandObj.ExecuteReader();
+        using var reader = commandObj.ExecuteReader();
+
         if (reader.Read())
         {
-            var byteArray = (byte[])reader[0];
-            result = await _serializer.DeserializeAsync<T>(byteArray);
-            result!.SetPointerLocales(locale);
+            var data = (reader.GetFieldValue<byte[]>(0)).AsSpan();
+            result = _serializer.Deserialize<T>(data);
         }
         else
         {
             reader.Close();
-            connection.Close();
             throw new Exception($"Definition with hash {hash} wasn't found in database.");
         }
 
+
         reader.Close();
-        return result;
+        return ValueTask.FromResult(result);
     }
 
     public async ValueTask<DestinyHistoricalStatsDefinition> LoadHistoricalStatsDefinition(string id,
@@ -429,7 +437,6 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
                         (IDestinyDefinition)_serializer.Deserialize(
                             (byte[])reader[0],
                             runtimeType);
-                    parsedDefinition.SetPointerLocales(locale);
                     repository.AddDefinition(definitionType, locale, parsedDefinition);
                 }
             });
@@ -451,7 +458,6 @@ internal sealed class SqliteDefinitionProvider : IDefinitionProvider
                     var parsedDefinition = (IDestinyDefinition)await _serializer.DeserializeAsync(
                         (byte[])reader[0],
                         runtimeType);
-                    parsedDefinition.SetPointerLocales(locale);
                     repository.AddDefinition(definitionType, locale, parsedDefinition);
                 }
             });

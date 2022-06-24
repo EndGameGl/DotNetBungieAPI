@@ -57,24 +57,4 @@ public sealed record DestinyPlugSetDefinition : IDestinyDefinition, IDeepEquatab
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        foreach (var item in ReusablePlugItems) item.PlugItem.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        foreach (var item in ReusablePlugItems)
-        {
-            item.PlugItem.SetLocale(locale);
-            if (item.CraftingRequirements is not null)
-            {
-                foreach (var materialRequirement in item.CraftingRequirements.MaterialRequirements)
-                {
-                    materialRequirement.SetLocale(locale);
-                }
-            }
-        }
-    }
 }

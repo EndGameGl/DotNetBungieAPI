@@ -43,19 +43,4 @@ public sealed record DestinyTraitDefinition : IDestinyDefinition, IDeepEquatable
     [JsonPropertyName("index")] public int Index { get; init; }
 
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        TraitCategory.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        TraitCategory.SetLocale(locale);
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

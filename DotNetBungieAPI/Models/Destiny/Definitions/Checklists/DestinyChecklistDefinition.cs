@@ -65,28 +65,4 @@ public sealed record DestinyChecklistDefinition : IDestinyDefinition, IDeepEquat
     [JsonPropertyName("index")] public int Index { get; init; }
 
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        foreach (var entry in Entries)
-        {
-            entry.Activity.TryMapValue();
-            entry.Destination.TryMapValue();
-            entry.Item.TryMapValue();
-            entry.Location.TryMapValue();
-            entry.Vendor.TryMapValue();
-        }
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        foreach (var entry in Entries)
-        {
-            entry.Activity.SetLocale(locale);
-            entry.Destination.SetLocale(locale);
-            entry.Item.SetLocale(locale);
-            entry.Location.SetLocale(locale);
-            entry.Vendor.SetLocale(locale);
-        }
-    }
 }

@@ -11,7 +11,7 @@ namespace DotNetBungieAPI.Models;
 /// </summary>
 /// <typeparam name="TDefinition">Destiny definition type</typeparam>
 [DebuggerDisplay("{DebuggerDisplay}")]
-public class DefinitionHashPointer<TDefinition> :
+public readonly struct DefinitionHashPointer<TDefinition> :
     IDeepEquatable<DefinitionHashPointer<TDefinition>>,
     IEquatable<DefinitionHashPointer<TDefinition>> where TDefinition : IDestinyDefinition
 {
@@ -28,8 +28,7 @@ public class DefinitionHashPointer<TDefinition> :
     /// <returns></returns>
     public bool Equals(DefinitionHashPointer<TDefinition> other)
     {
-        return other is not null &&
-               Hash == other.Hash;
+        return Hash == other.Hash;
     }
 
     /// <summary>
@@ -71,7 +70,7 @@ public class DefinitionHashPointer<TDefinition> :
             }
         }
 #endif
-    private static readonly IBungieClient _client = ServiceProviderInstance.Instance.GetService<IBungieClient>();
+    private static readonly IBungieClient Client = ServiceProviderInstance.Instance.GetService<IBungieClient>();
 
     /// <summary>
     ///     Definition enum value
@@ -83,9 +82,6 @@ public class DefinitionHashPointer<TDefinition> :
     /// </summary>
     public static DefinitionHashPointer<TDefinition> Empty { get; } = new(null);
 
-    private bool _isMapped;
-    private TDefinition _value;
-
     /// <summary>
     ///     Definition hash, guaranteed to be unique across it's type.
     /// </summary>
@@ -95,11 +91,6 @@ public class DefinitionHashPointer<TDefinition> :
     ///     Definition type enum value
     /// </summary>
     public DefinitionsEnum DefinitionEnumType => EnumValue;
-
-    /// <summary>
-    ///     Definition locale
-    /// </summary>
-    public BungieLocales Locale { get; internal set; }
 
     /// <summary>
     ///     Whether this hash isn't empty.
@@ -113,132 +104,64 @@ public class DefinitionHashPointer<TDefinition> :
     /// <param name="hash">Definition hash</param>
     internal DefinitionHashPointer(uint? hash)
     {
-        _value = default;
-        _isMapped = false;
         Hash = hash;
-        Locale = BungieLocales.EN;
     }
 
     /// <summary>
     ///     Default constructor
     /// </summary>
     /// <param name="hash"></param>
-    /// <param name="locale"></param>
-    public DefinitionHashPointer(uint hash, BungieLocales locale)
+    public DefinitionHashPointer(uint hash)
     {
-        _value = default;
-        _isMapped = false;
         Hash = hash;
-        Locale = locale;
     }
 
     /// <summary>
     ///     Tries to get definition from local cache/given provider
     /// </summary>
     /// <param name="definition">Found definition</param>
-    /// <returns>True, if found, False otherwise</returns>
-    public bool TryGetDefinition(out TDefinition definition)
-    {
-        return TryGetDefinitionFromOtherLocale(Locale, out definition);
-    }
-
-    /// <summary>
-    ///     Tries to get definition from local cache/given provider with specified locale
-    /// </summary>
     /// <param name="locale"></param>
-    /// <param name="definition"></param>
-    /// <returns></returns>
-    public bool TryGetDefinitionFromOtherLocale(BungieLocales locale, out TDefinition definition)
+    /// <returns>True, if found, False otherwise</returns>
+    public bool TryGetDefinition(out TDefinition definition, BungieLocales locale = BungieLocales.EN)
     {
         definition = default;
-        if (_isMapped)
-        {
-            definition = _value;
-            return true;
-        }
-
-        if (HasValidHash && _client.TryGetDefinition(Hash!.Value, locale, out definition))
-        {
-            _value = definition;
-            _isMapped = true;
-            return true;
-        }
-
-        return false;
+        return HasValidHash && Client.TryGetDefinition(Hash!.Value, locale, out definition);
     }
 
     /// <summary>
     ///     Returns a value if could be fetched or null if none was found
     /// </summary>
     /// <returns></returns>
-    public TDefinition GetValueOrNull()
+    public TDefinition GetValueOrNull(
+        BungieLocales locale = BungieLocales.EN)
     {
-        return TryGetDefinition(out var definition) ? definition : default(TDefinition);
-    }
-
-    /// <summary>
-    ///     Returns a value from other locale if could be fetched or null if none was found
-    /// </summary>
-    /// <param name="locale"></param>
-    /// <returns></returns>
-    public TDefinition GetValueOrNullFromOtherLocale(BungieLocales locale)
-    {
-        return TryGetDefinitionFromOtherLocale(locale, out var definition) ? definition : default(TDefinition);
+        return TryGetDefinition(out var definition, locale) ? definition : default;
     }
 
     /// <summary>
     ///     Returns a value async if could be fetched or null if none was found
     /// </summary>
     /// <returns></returns>
-    public async ValueTask<TDefinition> GetValueOrNullAsync()
+    public async ValueTask<TDefinition> GetValueOrNullAsync(
+        BungieLocales locale = BungieLocales.EN)
     {
         TDefinition definition = default;
+        
         if (HasValidHash)
-            await _client.TryGetDefinitionAsync<TDefinition>(Hash.Value, Locale, def => definition = def);
+            await Client.TryGetDefinitionAsync<TDefinition>(Hash.Value, locale, def => definition = def);
         return definition;
-    }
-
-    /// <summary>
-    ///     Returns a value from other locale async if could be fetched or null if none was found
-    /// </summary>
-    /// <param name="locale"></param>
-    /// <returns></returns>
-    public async ValueTask<TDefinition> GetValueOrNullFromOtherLocaleAsync(BungieLocales locale)
-    {
-        TDefinition definition = default;
-        if (HasValidHash)
-            await _client.TryGetDefinitionAsync<TDefinition>(Hash.Value, locale, def => definition = def);
-        return definition;
-    }
-
-    /// <summary>
-    ///     Tries to map value from repository
-    /// </summary>
-    public void TryMapValue()
-    {
-        if (_value is not null && _isMapped)
-            return;
-        if (!HasValidHash)
-            return;
-        if (!_client.TryGetDefinition<TDefinition>(
-                Hash!.Value,
-                Locale,
-                out var definition))
-            return;
-
-        _value = definition;
-        _isMapped = true;
     }
 
     /// <summary>
     ///     Gets underlying definition and checks whether this expression is True or False
     /// </summary>
     /// <param name="predicate">Condition to check for</param>
+    /// <param name="locale"></param>
     /// <returns></returns>
-    public bool Is(Func<TDefinition, bool> predicate)
+    public bool Is(
+        Func<TDefinition, bool> predicate, 
+        BungieLocales locale = BungieLocales.EN)
     {
-        if (_isMapped)
-            return predicate(_value);
         return TryGetDefinition(out var definition) && predicate(definition);
     }
 
@@ -246,13 +169,14 @@ public class DefinitionHashPointer<TDefinition> :
     ///     Tries to execute expression and get value, returns null if nothing was found
     /// </summary>
     /// <param name="func">Method to execute</param>
+    /// <param name="locale"></param>
     /// <typeparam name="TValue">Return Type</typeparam>
     /// <returns></returns>
-    public TValue Select<TValue>(Func<TDefinition, TValue> func)
+    public TValue Select<TValue>(
+        Func<TDefinition, TValue> func,
+        BungieLocales locale = BungieLocales.EN)
     {
-        if (_isMapped)
-            return func(_value);
-        return TryGetDefinition(out var definition) ? func(definition) : default(TValue);
+        return TryGetDefinition(out var definition) ? func(definition) : default;
     }
 
     /// <summary>
@@ -263,8 +187,7 @@ public class DefinitionHashPointer<TDefinition> :
     public bool DeepEquals(DefinitionHashPointer<TDefinition> other)
     {
         return Hash == other.Hash &&
-               DefinitionEnumType == other.DefinitionEnumType &&
-               Locale == other.Locale;
+               DefinitionEnumType == other.DefinitionEnumType;
     }
 
     /// <summary>
@@ -275,7 +198,7 @@ public class DefinitionHashPointer<TDefinition> :
     /// <returns></returns>
     public static bool operator ==(DefinitionHashPointer<TDefinition> a, uint hash)
     {
-        return a is not null && a.Hash == hash;
+        return a.Hash == hash;
     }
 
     /// <summary>
@@ -288,6 +211,16 @@ public class DefinitionHashPointer<TDefinition> :
     {
         return !(a == hash);
     }
+    
+    public static bool operator ==(DefinitionHashPointer<TDefinition> a, DefinitionHashPointer<TDefinition> b)
+    {
+        return a.Hash == b.Hash;
+    }
+    
+    public static bool operator !=(DefinitionHashPointer<TDefinition> a, DefinitionHashPointer<TDefinition> b)
+    {
+        return !(a == b);
+    }
 
     /// <summary>
     ///     Constructs <see cref="DefinitionHashPointer{T}"/> from hash
@@ -299,17 +232,12 @@ public class DefinitionHashPointer<TDefinition> :
         return new DefinitionHashPointer<TDefinition>(hash);
     }
 
-    internal void SetLocale(BungieLocales locale)
-    {
-        Locale = locale;
-    }
-
     private string DebuggerDisplay => GetDebuggerDisplayString();
 
     private string GetDebuggerDisplayString()
     {
         var value = HasValidHash
-            ? $"{(_isMapped ? _value.ToString() : $"{DefinitionEnumType} - {Hash} - {Locale}")}"
+            ? $"{DefinitionEnumType} - {Hash}"
             : $"DefinitionHashPointer<{DefinitionEnumType}>.Empty";
         return value;
     }

@@ -72,25 +72,4 @@ public sealed record DestinyDestinationDefinition : IDestinyDefinition, IDeepEqu
 
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        foreach (var activityGraphEntry in ActivityGraphEntries) activityGraphEntry.ActivityGraph.TryMapValue();
-
-        DefaultFreeroamActivity.TryMapValue();
-        Place.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        foreach (var activityGraphEntry in ActivityGraphEntries) activityGraphEntry.ActivityGraph.SetLocale(locale);
-
-        DefaultFreeroamActivity.SetLocale(locale);
-        Place.SetLocale(locale);
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

@@ -58,25 +58,4 @@ public sealed record DestinyMetricDefinition : IDestinyDefinition, IDeepEquatabl
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        foreach (var node in ParentNodes) node.TryMapValue();
-
-        TrackingObjective.TryMapValue();
-        foreach (var trait in Traits) trait.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        foreach (var node in ParentNodes) node.SetLocale(locale);
-
-        TrackingObjective.SetLocale(locale);
-        foreach (var trait in Traits) trait.SetLocale(locale);
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

@@ -46,7 +46,9 @@ internal sealed class ReadOnlyDictionaryStringKeyConverterFactory : JsonConverte
 
         public override bool HandleNull => true;
 
-        public override ReadOnlyDictionary<TKey, TValue> Read(ref Utf8JsonReader reader, Type typeToConvert,
+        public override ReadOnlyDictionary<TKey, TValue> Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
             JsonSerializerOptions options)
         {
             if (reader.TokenType == JsonTokenType.Null)
@@ -67,7 +69,9 @@ internal sealed class ReadOnlyDictionaryStringKeyConverterFactory : JsonConverte
             throw new JsonException();
         }
 
-        public override void Write(Utf8JsonWriter writer, ReadOnlyDictionary<TKey, TValue> value,
+        public override void Write(
+            Utf8JsonWriter writer, 
+            ReadOnlyDictionary<TKey, TValue> value,
             JsonSerializerOptions options)
         {
             writer.WriteStartObject();

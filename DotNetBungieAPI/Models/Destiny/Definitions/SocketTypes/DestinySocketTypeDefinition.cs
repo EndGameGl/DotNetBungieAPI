@@ -98,29 +98,4 @@ public sealed record DestinySocketTypeDefinition : IDestinyDefinition, IDeepEqua
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        SocketCategory.TryMapValue();
-        foreach (var scalar in CurrencyScalars) scalar.CurrencyItem.TryMapValue();
-
-        foreach (var plugList in PlugWhitelist)
-        foreach (var plug in plugList.ReinitializationPossiblePlugs)
-            plug.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        SocketCategory.SetLocale(locale);
-        foreach (var scalar in CurrencyScalars) scalar.CurrencyItem.SetLocale(locale);
-
-        foreach (var plugList in PlugWhitelist)
-        foreach (var plug in plugList.ReinitializationPossiblePlugs)
-            plug.SetLocale(locale);
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

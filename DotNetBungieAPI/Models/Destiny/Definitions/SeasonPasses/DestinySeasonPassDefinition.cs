@@ -47,21 +47,4 @@ public sealed record DestinySeasonPassDefinition : IDestinyDefinition, IDeepEqua
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        RewardProgression.TryMapValue();
-        PrestigeProgression.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        RewardProgression.SetLocale(locale);
-        PrestigeProgression.SetLocale(locale);
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

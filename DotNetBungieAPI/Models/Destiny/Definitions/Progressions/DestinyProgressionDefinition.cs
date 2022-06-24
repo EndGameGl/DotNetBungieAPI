@@ -126,31 +126,4 @@ public sealed record DestinyProgressionDefinition : IDestinyDefinition, IDeepEqu
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        foreach (var item in RewardItems) item.Item.TryMapValue();
-
-        foreach (var step in Steps)
-        foreach (var item in step.RewardItems)
-            item.Item.TryMapValue();
-
-        Faction.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        foreach (var item in RewardItems) item.Item.SetLocale(locale);
-
-        foreach (var step in Steps)
-        foreach (var item in step.RewardItems)
-            item.Item.SetLocale(locale);
-
-        Faction.SetLocale(locale);
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

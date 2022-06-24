@@ -54,14 +54,4 @@ public sealed record DestinyClassDefinition : IDestinyDefinition, IDeepEquatable
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        foreach (var name in GenderedClassNamesByGender) name.Key.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        foreach (var name in GenderedClassNamesByGender) name.Key.SetLocale(locale);
-    }
 }

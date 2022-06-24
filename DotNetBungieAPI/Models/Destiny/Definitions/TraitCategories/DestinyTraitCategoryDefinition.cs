@@ -46,19 +46,4 @@ public sealed record DestinyTraitCategoryDefinition : IDestinyDefinition,
     [JsonPropertyName("index")] public int Index { get; init; }
 
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        foreach (var trait in Traits) trait.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        foreach (var trait in Traits) trait.SetLocale(locale);
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {TraitCategoryId}";
-    }
 }

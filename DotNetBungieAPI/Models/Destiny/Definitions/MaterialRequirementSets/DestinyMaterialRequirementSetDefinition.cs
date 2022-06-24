@@ -34,19 +34,4 @@ public sealed record DestinyMaterialRequirementSetDefinition : IDestinyDefinitio
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        foreach (var material in Materials) material.Item.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        foreach (var material in Materials) material.Item.SetLocale(locale);
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash}";
-    }
 }

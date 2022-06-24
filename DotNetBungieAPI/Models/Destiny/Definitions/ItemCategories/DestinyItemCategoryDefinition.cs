@@ -155,24 +155,4 @@ public sealed record DestinyItemCategoryDefinition : IDestinyDefinition,
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        foreach (var childCategories in GroupedCategories) childCategories.TryMapValue();
-
-        foreach (var parentCategory in ParentCategories) parentCategory.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        foreach (var childCategories in GroupedCategories) childCategories.SetLocale(locale);
-
-        foreach (var parentCategory in ParentCategories) parentCategory.SetLocale(locale);
-    }
-
-    public override string ToString()
-    {
-        return
-            $"{Hash} {DisplayProperties.Name} {(GroupCategoryOnly ? "(Group category only)" : string.Empty)}";
-    }
 }

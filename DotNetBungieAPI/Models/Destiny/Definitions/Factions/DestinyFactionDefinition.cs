@@ -81,37 +81,4 @@ public sealed record DestinyFactionDefinition : IDestinyDefinition, IDeepEquatab
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        Progression.TryMapValue();
-        RewardItem.TryMapValue();
-        RewardVendor.TryMapValue();
-        foreach (var item in TokenValues.Keys) item.TryMapValue();
-
-        foreach (var vendor in Vendors)
-        {
-            vendor.Destination.TryMapValue();
-            vendor.Vendor.TryMapValue();
-        }
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        Progression.SetLocale(locale);
-        RewardItem.SetLocale(locale);
-        RewardVendor.SetLocale(locale);
-        foreach (var item in TokenValues.Keys) item.SetLocale(locale);
-
-        foreach (var vendor in Vendors)
-        {
-            vendor.Destination.SetLocale(locale);
-            vendor.Vendor.SetLocale(locale);
-        }
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

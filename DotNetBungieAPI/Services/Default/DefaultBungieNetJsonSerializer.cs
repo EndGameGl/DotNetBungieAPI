@@ -55,6 +55,11 @@ internal sealed class DefaultBungieNetJsonSerializer : IBungieNetJsonSerializer
         return JsonSerializer.Deserialize(json, type, _serializerOptions);
     }
 
+    public T Deserialize<T>(ReadOnlySpan<byte> data)
+    {
+        return JsonSerializer.Deserialize<T>(data, _serializerOptions);
+    }
+    
     public object Deserialize(ReadOnlySpan<byte> data, Type type)
     {
         return JsonSerializer.Deserialize(data, type, _serializerOptions);

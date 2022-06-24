@@ -91,19 +91,4 @@ public sealed record DestinySandboxPerkDefinition : IDestinyDefinition, IDeepEqu
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        DamageType.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        DamageType.SetLocale(locale);
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

@@ -93,34 +93,4 @@ public sealed record DestinyActivityGraphDefinition : IDestinyDefinition,
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        foreach (var displayObjective in DisplayObjectives) displayObjective.Objective.TryMapValue();
-
-        foreach (var displayProgression in DisplayProgressions) displayProgression.Progression.TryMapValue();
-
-        foreach (var linkedGraph in LinkedGraphs)
-        foreach (var graph in linkedGraph.LinkedGraphs)
-            graph.ActivityGraph.TryMapValue();
-
-        foreach (var node in Nodes)
-        foreach (var activity in node.Activities)
-            activity.Activity.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        foreach (var displayObjective in DisplayObjectives) displayObjective.Objective.SetLocale(locale);
-
-        foreach (var displayProgression in DisplayProgressions) displayProgression.Progression.SetLocale(locale);
-
-        foreach (var linkedGraph in LinkedGraphs)
-        foreach (var graph in linkedGraph.LinkedGraphs)
-            graph.ActivityGraph.SetLocale(locale);
-
-        foreach (var node in Nodes)
-        foreach (var activity in node.Activities)
-            activity.Activity.SetLocale(locale);
-    }
 }

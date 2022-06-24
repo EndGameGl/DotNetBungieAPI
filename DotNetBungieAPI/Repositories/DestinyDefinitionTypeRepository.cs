@@ -59,11 +59,6 @@ public class DestinyDefinitionTypeRepository
         return false;
     }
 
-    public void MapValues()
-    {
-        foreach (var definition in EnumerateValues()) definition.MapValues();
-    }
-
     public void Clear()
     {
         _definitions.Clear();

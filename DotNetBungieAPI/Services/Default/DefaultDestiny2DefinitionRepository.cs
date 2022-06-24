@@ -112,9 +112,4 @@ internal sealed class DefaultDestiny2DefinitionRepository : IDestiny2DefinitionR
     {
         foreach (var repository in _localisedRepositories) repository.Value.Clear();
     }
-
-    public void PremapPointers()
-    {
-        foreach (var repository in _localisedRepositories) repository.Value.PremapPointers();
-    }
 }

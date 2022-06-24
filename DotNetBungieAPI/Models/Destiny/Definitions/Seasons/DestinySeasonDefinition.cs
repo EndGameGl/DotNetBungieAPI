@@ -85,29 +85,4 @@ public sealed record DestinySeasonDefinition : IDestinyDefinition, IDeepEquatabl
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        ArtifactItem.TryMapValue();
-        SealPresentationNode.TryMapValue();
-        SeasonalChallengesPresentationNode.TryMapValue();
-        SeasonPass.TryMapValue();
-        SeasonPassProgression.TryMapValue();
-        SeasonPassUnlock.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        ArtifactItem.SetLocale(locale);
-        SealPresentationNode.SetLocale(locale);
-        SeasonalChallengesPresentationNode.SetLocale(locale);
-        SeasonPass.SetLocale(locale);
-        SeasonPassProgression.SetLocale(locale);
-        SeasonPassUnlock.SetLocale(locale);
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}";
-    }
 }

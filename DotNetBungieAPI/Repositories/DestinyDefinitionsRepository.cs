@@ -162,9 +162,4 @@ internal sealed class DestinyDefinitionsRepository
         foreach (var repository in _definitionRepositories.Values) repository.Clear();
         _historicalStatsDefinitions.Clear();
     }
-
-    internal void PremapPointers()
-    {
-        foreach (var repository in _definitionRepositories.Select(x => x.Value)) repository.MapValues();
-    }
 }

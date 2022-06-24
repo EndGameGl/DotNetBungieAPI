@@ -44,6 +44,4 @@ public interface IDestiny2DefinitionRepository
         IDestinyDefinition definition);
 
     void Clear();
-
-    void PremapPointers();
 }

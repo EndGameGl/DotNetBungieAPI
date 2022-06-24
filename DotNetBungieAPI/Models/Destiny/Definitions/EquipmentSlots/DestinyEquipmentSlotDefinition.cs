@@ -68,20 +68,4 @@ public sealed record DestinyEquipmentSlotDefinition : IDestinyDefinition,
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        BucketType.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        BucketType.SetLocale(locale);
-    }
-
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

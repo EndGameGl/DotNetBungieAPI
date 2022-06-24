@@ -85,34 +85,4 @@ public sealed record DestinyCollectibleDefinition : IDestinyDefinition, IDeepEqu
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        AcquisitionInfo?.AcquireMaterialRequirement.TryMapValue();
-        AcquisitionInfo?.AcquireTimestampUnlockValue.TryMapValue();
-        if (PresentationInfo != null)
-            foreach (var node in PresentationInfo.ParentPresentationNodes)
-                node.TryMapValue();
-
-        Item.TryMapValue();
-        foreach (var node in ParentNodes) node.TryMapValue();
-
-        StateInfo?.ObscuredOverrideItem.TryMapValue();
-        foreach (var trait in Traits) trait.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        AcquisitionInfo?.AcquireMaterialRequirement.SetLocale(locale);
-        AcquisitionInfo?.AcquireTimestampUnlockValue.SetLocale(locale);
-        if (PresentationInfo != null)
-            foreach (var node in PresentationInfo.ParentPresentationNodes)
-                node.SetLocale(locale);
-
-        Item.SetLocale(locale);
-        foreach (var node in ParentNodes) node.SetLocale(locale);
-
-        StateInfo?.ObscuredOverrideItem.SetLocale(locale);
-        foreach (var trait in Traits) trait.SetLocale(locale);
-    }
 }

@@ -7,7 +7,7 @@ internal sealed class HistoricalStatDefinitionPointerConverter : JsonConverter<H
 {
     public override bool HandleNull => true;
 
-    public override HistoricalStatDefinitionPointer? Read(
+    public override HistoricalStatDefinitionPointer Read(
         ref Utf8JsonReader reader,
         Type typeToConvert,
         JsonSerializerOptions options)

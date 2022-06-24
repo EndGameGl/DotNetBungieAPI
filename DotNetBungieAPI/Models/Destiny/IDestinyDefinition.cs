@@ -22,11 +22,4 @@ public interface IDestinyDefinition
 
     int Index { get; init; }
     bool Redacted { get; init; }
-
-    /// <summary>
-    ///     Tries to map values so it wouldn't need to look up repository every time
-    /// </summary>
-    void MapValues();
-
-    void SetPointerLocales(BungieLocales locale);
 }

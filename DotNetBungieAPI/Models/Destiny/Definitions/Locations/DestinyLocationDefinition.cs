@@ -42,32 +42,4 @@ public sealed record DestinyLocationDefinition : IDestinyDefinition, IDeepEquata
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        Vendor.TryMapValue();
-        foreach (var locationRelease in LocationReleases)
-        {
-            locationRelease.Activity.TryMapValue();
-            locationRelease.ActivityGraph.TryMapValue();
-            locationRelease.Destination.TryMapValue();
-        }
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        Vendor.SetLocale(locale);
-        foreach (var locationRelease in LocationReleases)
-        {
-            locationRelease.Activity.SetLocale(locale);
-            locationRelease.ActivityGraph.SetLocale(locale);
-            locationRelease.Destination.SetLocale(locale);
-        }
-    }
-
-    public override string ToString()
-    {
-        return
-            $"{Hash} ({LocationReleases.Count} location releases.) {LocationReleases.LastOrDefault()?.DisplayProperties.Name}";
-    }
 }

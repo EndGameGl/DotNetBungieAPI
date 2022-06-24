@@ -56,18 +56,4 @@ public sealed record DestinyArtifactDefinition : IDestinyDefinition, IDeepEquata
     [JsonPropertyName("index")] public int Index { get; init; }
 
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        foreach (var tier in Tiers)
-        foreach (var tierItems in tier.Items)
-            tierItems.Item.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        foreach (var tier in Tiers)
-        foreach (var tierItems in tier.Items)
-            tierItems.Item.SetLocale(locale);
-    }
 }

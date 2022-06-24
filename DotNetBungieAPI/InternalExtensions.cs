@@ -1,4 +1,5 @@
-﻿using DotNetBungieAPI.Models.Destiny;
+﻿using System.Runtime.CompilerServices;
+using DotNetBungieAPI.Models.Destiny;
 
 namespace DotNetBungieAPI;
 
@@ -93,6 +94,7 @@ internal static class InternalExtensions
     /// </summary>
     /// <param name="hash"></param>
     /// <returns></returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static int ToInt32(this uint hash)
     {
         return unchecked((int)hash);
@@ -103,6 +105,7 @@ internal static class InternalExtensions
     /// </summary>
     /// <param name="hash"></param>
     /// <returns></returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint ToUInt32(this int hash)
     {
         return unchecked((uint)hash);

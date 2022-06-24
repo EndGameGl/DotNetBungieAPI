@@ -180,23 +180,4 @@ public sealed record DestinyObjectiveDefinition : IDestinyDefinition, IDeepEquat
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-        Location.TryMapValue();
-        Perks?.Perk.TryMapValue();
-        Stats?.Stat?.StatType.TryMapValue();
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-        Location.SetLocale(locale);
-        Perks?.Perk.SetLocale(locale);
-        Stats?.Stat?.StatType.SetLocale(locale);
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description} {ProgressDescription}";
-    }
 }
