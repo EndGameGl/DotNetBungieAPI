@@ -43,6 +43,8 @@ public class StringEnumConverterFactory : JsonConverterFactory
             {
                 case JsonTokenType.String:
                     var stringValue = reader.GetString();
+                    if (!char.IsDigit(stringValue[0]))
+                        return (TEnum)Enum.Parse(typeToConvert, stringValue);
                     return _underlyingTypeCode switch
                     {
                         TypeCode.Byte => ConvertToEnum<TEnum, byte>(byte.Parse(stringValue)),
@@ -55,18 +57,19 @@ public class StringEnumConverterFactory : JsonConverterFactory
                         TypeCode.UInt64 => ConvertToEnum<TEnum, ulong>(ulong.Parse(stringValue)),
                         _ => throw new ArgumentOutOfRangeException(nameof(stringValue))
                     };
-                default: return _underlyingTypeCode switch
-                {
-                    TypeCode.Byte => ConvertToEnum<TEnum, byte>(reader.GetByte()),
-                    TypeCode.SByte => ConvertToEnum<TEnum, sbyte>(reader.GetSByte()),
-                    TypeCode.Int16 => ConvertToEnum<TEnum, short>(reader.GetInt16()),
-                    TypeCode.Int32 => ConvertToEnum<TEnum, int>(reader.GetInt32()),
-                    TypeCode.Int64 => ConvertToEnum<TEnum, long>(reader.GetInt64()),
-                    TypeCode.UInt16 => ConvertToEnum<TEnum, ushort>(reader.GetUInt16()),
-                    TypeCode.UInt32 => ConvertToEnum<TEnum, uint>(reader.GetUInt32()),
-                    TypeCode.UInt64 => ConvertToEnum<TEnum, ulong>(reader.GetUInt64()),
-                    _ => throw new ArgumentOutOfRangeException(nameof(stringValue))
-                };
+                default:
+                    return _underlyingTypeCode switch
+                    {
+                        TypeCode.Byte => ConvertToEnum<TEnum, byte>(reader.GetByte()),
+                        TypeCode.SByte => ConvertToEnum<TEnum, sbyte>(reader.GetSByte()),
+                        TypeCode.Int16 => ConvertToEnum<TEnum, short>(reader.GetInt16()),
+                        TypeCode.Int32 => ConvertToEnum<TEnum, int>(reader.GetInt32()),
+                        TypeCode.Int64 => ConvertToEnum<TEnum, long>(reader.GetInt64()),
+                        TypeCode.UInt16 => ConvertToEnum<TEnum, ushort>(reader.GetUInt16()),
+                        TypeCode.UInt32 => ConvertToEnum<TEnum, uint>(reader.GetUInt32()),
+                        TypeCode.UInt64 => ConvertToEnum<TEnum, ulong>(reader.GetUInt64()),
+                        _ => throw new ArgumentOutOfRangeException(nameof(stringValue))
+                    };
             }
         }
 

@@ -20,7 +20,9 @@ internal sealed class DefinitionHashPointerConverterFactory : JsonConverterFacto
     {
         if (!typeToConvert.IsGenericType) return false;
 
-        return typeToConvert.GetGenericTypeDefinition() == _definitionHashPointerType;
+        var genericTypeDef = typeToConvert.GetGenericTypeDefinition();
+        
+        return genericTypeDef == _definitionHashPointerType;
     }
 
     /// <summary>
@@ -53,9 +55,15 @@ internal sealed class DefinitionHashPointerConverterFactory : JsonConverterFacto
             Type typeToConvert,
             JsonSerializerOptions options)
         {
-            return reader.TokenType == JsonTokenType.Null
-                ? DefinitionHashPointer<T>.Empty
-                : new DefinitionHashPointer<T>(reader.GetUInt32());
+            switch (reader.TokenType)
+            {
+                case JsonTokenType.String:
+                    return new DefinitionHashPointer<T>(uint.Parse(reader.GetString()));
+                case JsonTokenType.Null:
+                    return DefinitionHashPointer<T>.Empty;
+                default:
+                    return new DefinitionHashPointer<T>(reader.GetUInt32());
+            }
         }
 
         public override void Write(
