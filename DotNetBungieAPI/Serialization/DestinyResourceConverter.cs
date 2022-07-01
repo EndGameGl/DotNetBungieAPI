@@ -2,7 +2,7 @@
 
 namespace DotNetBungieAPI.Serialization;
 
-internal sealed class DestinyResourceConverter : JsonConverter<BungieNetResource>
+public sealed class DestinyResourceConverter : JsonConverter<BungieNetResource>
 {
     public override bool HandleNull => true;
 

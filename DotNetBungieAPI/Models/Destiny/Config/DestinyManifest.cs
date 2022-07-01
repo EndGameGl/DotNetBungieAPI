@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using DotNetBungieAPI.Models.Config;
 
 namespace DotNetBungieAPI.Models.Destiny.Config;
 
@@ -50,7 +51,15 @@ public sealed record DestinyManifest
     [JsonPropertyName("mobileClanBannerDatabasePath")]
     public string MobileClanBannerDatabasePath { get; init; }
 
-    [JsonPropertyName("mobileGearCDN")] public ReadOnlyDictionary<string, string> MobileGearCDN { get; init; }
+    [JsonPropertyName("mobileGearCDN")]
+    public ReadOnlyDictionary<string, string> MobileGearCDN { get; init; } = ReadOnlyDictionaries<string, string>.Empty;
+
+    /// <summary>
+    ///     Information about the "Image Pyramid" for Destiny icons. Where possible, we create smaller versions of Destiny icons. These are found as subfolders under the location of the "original/full size" Destiny images, with the same file name and extension as the original image itself. (this lets us avoid sending largely redundant path info with every entity, at the expense of the smaller versions of the image being less discoverable)
+    /// </summary>
+    [JsonPropertyName("iconImagePyramidInfo")]
+    public ReadOnlyCollection<ImagePyramidEntry> IconImagePyramidInfo { get; init; } =
+        ReadOnlyCollections<ImagePyramidEntry>.Empty;
 
     [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
     public DateTime VersionDate

@@ -72,22 +72,7 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
 
     private DestinyManifest _latestManifest;
 
-    private readonly Dictionary<BungieLocales, SQLiteConnection> _sqliteConnections = new()
-    {
-        [BungieLocales.EN] = new SQLiteConnection(),
-        [BungieLocales.RU] = new SQLiteConnection(),
-        [BungieLocales.DE] = new SQLiteConnection(),
-        [BungieLocales.ES] = new SQLiteConnection(),
-        [BungieLocales.ES_MX] = new SQLiteConnection(),
-        [BungieLocales.FR] = new SQLiteConnection(),
-        [BungieLocales.IT] = new SQLiteConnection(),
-        [BungieLocales.JA] = new SQLiteConnection(),
-        [BungieLocales.KO] = new SQLiteConnection(),
-        [BungieLocales.PL] = new SQLiteConnection(),
-        [BungieLocales.PT_BR] = new SQLiteConnection(),
-        [BungieLocales.ZH_CHS] = new SQLiteConnection(),
-        [BungieLocales.ZH_CHT] = new SQLiteConnection()
-    };
+    private Dictionary<BungieLocales, SQLiteConnection> _sqliteConnections;
 
     private readonly SQLiteConnection _mobileGearAssetDataBaseConnection = new();
 
@@ -339,6 +324,23 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
 
     public async Task Initialize()
     {
+        _sqliteConnections = new Dictionary<BungieLocales, SQLiteConnection>
+        {
+            [BungieLocales.EN] = new(),
+            [BungieLocales.RU] = new(),
+            [BungieLocales.DE] = new(),
+            [BungieLocales.ES] = new(),
+            [BungieLocales.ES_MX] = new(),
+            [BungieLocales.FR] = new(),
+            [BungieLocales.IT] = new(),
+            [BungieLocales.JA] = new(),
+            [BungieLocales.KO] = new(),
+            [BungieLocales.PL] = new(),
+            [BungieLocales.PT_BR] = new(),
+            [BungieLocales.ZH_CHS] = new(),
+            [BungieLocales.ZH_CHT] = new()
+        };
+        
         if (_configuration.FetchLatestManifestOnInitialize)
         {
             await UpdateLatestManifest();

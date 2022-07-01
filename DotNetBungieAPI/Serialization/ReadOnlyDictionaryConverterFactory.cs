@@ -5,7 +5,7 @@ using DotNetBungieAPI.Models.Destiny;
 
 namespace DotNetBungieAPI.Serialization;
 
-internal sealed class ReadOnlyDictionaryConverterFactory : JsonConverterFactory
+public sealed class ReadOnlyDictionaryConverterFactory : JsonConverterFactory
 {
     private readonly Type _genericReadOnlyDictType = typeof(ReadOnlyDictionary<,>);
 
@@ -43,6 +43,7 @@ internal sealed class ReadOnlyDictionaryConverterFactory : JsonConverterFactory
 
     private class ReadOnlyDictionaryConverter<TKey, TValue> : JsonConverter<ReadOnlyDictionary<TKey, TValue>>
     {
+        private readonly Type _stringType = typeof(string);
         public ReadOnlyDictionaryConverter(JsonSerializerOptions options)
         {
         }
@@ -68,7 +69,8 @@ internal sealed class ReadOnlyDictionaryConverterFactory : JsonConverterFactory
                     case JsonTokenType.EndObject:
                         return new ReadOnlyDictionary<TKey, TValue>(values);
                     case JsonTokenType.PropertyName:
-                        currentPropertyName = JsonSerializer.Deserialize<TKey>($"\"{reader.GetString()}\"", options);
+                        var propertyValue = reader.GetString();
+                        currentPropertyName = JsonSerializer.Deserialize<TKey>($"\"{propertyValue}\"", options);
                         break;
                     default:
                         var value = JsonSerializer.Deserialize<TValue>(ref reader, options);
@@ -87,9 +89,16 @@ internal sealed class ReadOnlyDictionaryConverterFactory : JsonConverterFactory
 
             foreach (var (key, val) in value)
             {
-                var serializedKey = JsonSerializer.Serialize(key, options);
-                writer.WritePropertyName(serializedKey);
-
+                if (key is string stringKey)
+                {
+                    writer.WritePropertyName(stringKey);
+                }
+                else
+                {
+                    var serializedKey = JsonSerializer.Serialize(key, options);
+                    writer.WritePropertyName(serializedKey);
+                }
+                
                 JsonSerializer.Serialize(writer, val, options);
             }
 

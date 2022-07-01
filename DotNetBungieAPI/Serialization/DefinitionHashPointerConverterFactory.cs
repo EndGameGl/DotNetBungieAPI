@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Serialization;
 /// <summary>
 ///     Definition hash pointer converter factory
 /// </summary>
-internal sealed class DefinitionHashPointerConverterFactory : JsonConverterFactory
+public sealed class DefinitionHashPointerConverterFactory : JsonConverterFactory
 {
     private readonly Type _definitionHashPointerType = typeof(DefinitionHashPointer<>);
 

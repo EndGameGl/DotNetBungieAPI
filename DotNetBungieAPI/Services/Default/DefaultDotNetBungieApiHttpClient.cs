@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
@@ -294,7 +295,8 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         CancellationToken cancellationToken)
     {
         await _rateTimeLimiter;
-        return await _httpClient.SendAsync(requestMessage, httpCompletionOption, cancellationToken);
+        var result = await _httpClient.SendAsync(requestMessage, httpCompletionOption, cancellationToken);
+        return result;
     }
 
     private HttpRequestMessage CreateGetMessage(string uri, bool omitApiKey = false, string authToken = null)

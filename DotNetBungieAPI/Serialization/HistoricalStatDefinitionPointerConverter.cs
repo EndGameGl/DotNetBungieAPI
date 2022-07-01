@@ -3,7 +3,7 @@ using DotNetBungieAPI.Models;
 
 namespace DotNetBungieAPI.Serialization;
 
-internal sealed class HistoricalStatDefinitionPointerConverter : JsonConverter<HistoricalStatDefinitionPointer>
+public sealed class HistoricalStatDefinitionPointerConverter : JsonConverter<HistoricalStatDefinitionPointer>
 {
     public override bool HandleNull => true;
 

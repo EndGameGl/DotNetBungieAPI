@@ -57,20 +57,20 @@ public readonly struct DefinitionHashPointer<TDefinition> :
         return Hash.HasValue ? Hash.Value.ToInt32() : 0;
     }
 #if DEBUG
-        private TDefinition DebugValueGetter
+    private TDefinition DebugValueGetter
+    {
+        get
         {
-            get
+            if (TryGetDefinition(out var def))
             {
-                if (TryGetDefinition(out var def))
-                {
-                    return def;
-                }
-
-                throw new Exception("Failed to get definition");
+                return def;
             }
+
+            throw new Exception("Failed to get definition");
         }
+    }
 #endif
-    private static readonly IBungieClient Client = ServiceProviderInstance.Instance.GetService<IBungieClient>();
+    private static IBungieClient Client { get; } = ServiceProviderInstance.Instance.GetService<IBungieClient>();
 
     /// <summary>
     ///     Definition enum value
@@ -146,7 +146,7 @@ public readonly struct DefinitionHashPointer<TDefinition> :
         BungieLocales locale = BungieLocales.EN)
     {
         TDefinition definition = default;
-        
+
         if (HasValidHash)
             await Client.TryGetDefinitionAsync<TDefinition>(Hash.Value, locale, def => definition = def);
         return definition;
@@ -159,7 +159,7 @@ public readonly struct DefinitionHashPointer<TDefinition> :
     /// <param name="locale"></param>
     /// <returns></returns>
     public bool Is(
-        Func<TDefinition, bool> predicate, 
+        Func<TDefinition, bool> predicate,
         BungieLocales locale = BungieLocales.EN)
     {
         return TryGetDefinition(out var definition) && predicate(definition);
@@ -211,12 +211,12 @@ public readonly struct DefinitionHashPointer<TDefinition> :
     {
         return !(a == hash);
     }
-    
+
     public static bool operator ==(DefinitionHashPointer<TDefinition> a, DefinitionHashPointer<TDefinition> b)
     {
         return a.Hash == b.Hash;
     }
-    
+
     public static bool operator !=(DefinitionHashPointer<TDefinition> a, DefinitionHashPointer<TDefinition> b)
     {
         return !(a == b);

@@ -2,7 +2,7 @@
 
 namespace DotNetBungieAPI.Serialization;
 
-internal sealed class ReadOnlyCollectionConverterFactory : JsonConverterFactory
+public sealed class ReadOnlyCollectionConverterFactory : JsonConverterFactory
 {
     public override bool CanConvert(Type typeToConvert)
     {

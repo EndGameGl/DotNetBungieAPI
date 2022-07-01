@@ -342,4 +342,3 @@ healthchecksdb
 BungieNetCoreTestingApp/
 /ConsoleTestApp
 /DotNetBungieAPI.Benchmark
-/DotNetBungieAPI.Tests
