@@ -20,12 +20,12 @@ namespace DotNetBungieAPI.Services.ApiAccess;
 internal sealed class UserMethodsAccess : IUserMethodsAccess
 {
     private readonly IBungieNetJsonSerializer _bungieNetJsonSerializer;
-    private readonly BungieClientConfiguration _configuration;
+    private readonly IBungieClientConfiguration _configuration;
     private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
     public UserMethodsAccess(
         IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
-        BungieClientConfiguration configuration,
+        IBungieClientConfiguration configuration,
         IBungieNetJsonSerializer bungieNetJsonSerializer)
     {
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;

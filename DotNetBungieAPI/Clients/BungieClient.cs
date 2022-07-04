@@ -13,7 +13,7 @@ namespace DotNetBungieAPI.Clients;
 internal sealed class BungieClient : IBungieClient
 {
     internal static IBungieClient Instance { get; set; }
-    private readonly BungieClientConfiguration _configuration;
+    private readonly IBungieClientConfiguration _configuration;
     private IDestiny2ResetService _resetService;
 
     public BungieClient(
@@ -22,7 +22,7 @@ internal sealed class BungieClient : IBungieClient
         IDestiny2DefinitionRepository repository,
         IDefinitionProvider definitionProvider,
         IDestiny2ResetService destiny2ResetService,
-        BungieClientConfiguration configuration,
+        IBungieClientConfiguration configuration,
         IServiceProvider serviceProvider)
     {
         ResetService = destiny2ResetService;

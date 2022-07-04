@@ -32,7 +32,7 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
     private readonly SqliteDefinitionProviderConfiguration _configuration;
     private readonly IDestiny2MethodsAccess _destiny2MethodsAccess;
     private readonly IDotNetBungieApiHttpClient _httpClient;
-    private readonly ILogger _logger;
+    private readonly ILogger<SqliteDefinitionProvider> _logger;
 
     private readonly DefinitionsEnum[] _sqliteDefinitionsBlacklist =
     {
@@ -72,7 +72,7 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
     public SqliteDefinitionProvider(
         IBungieClientConfiguration bungieClientConfiguration,
         SqliteDefinitionProviderConfiguration configuration,
-        ILogger logger,
+        ILogger<SqliteDefinitionProvider> logger,
         IBungieNetJsonSerializer serializer,
         IDestiny2MethodsAccess destiny2MethodsAccess,
         IDotNetBungieApiHttpClient httpClient,

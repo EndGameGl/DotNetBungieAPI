@@ -11,4 +11,5 @@ public interface IBungieClientConfiguration
     ApplicationScopes ApplicationScopes { get; set; }
     bool CacheDefinitions { get; set; }
     List<BungieLocales> UsedLocales { get; }
+    bool HasSufficientRights(ApplicationScopes scopes);
 }

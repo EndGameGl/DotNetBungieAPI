@@ -16,12 +16,12 @@ internal sealed class DefaultDestiny2DefinitionRepository : IDestiny2DefinitionR
     private readonly DefaultDestiny2DefinitionRepositoryConfiguration _configuration;
     private readonly ConcurrentDictionary<BungieLocales, DestinyDefinitionsRepository> _localisedRepositories;
     private readonly IBungieClientConfiguration _bungieClientConfiguration;
-    private readonly ILogger _logger;
+    private readonly ILogger<DefaultDestiny2DefinitionRepository> _logger;
 
     public DefaultDestiny2DefinitionRepository(
-        BungieClientConfiguration bungieClientConfiguration,
+        IBungieClientConfiguration bungieClientConfiguration,
         IDefinitionAssemblyData assemblyData,
-        ILogger logger,
+        ILogger<DefaultDestiny2DefinitionRepository> logger,
         DefaultDestiny2DefinitionRepositoryConfiguration configuration)
     {
         _bungieClientConfiguration = bungieClientConfiguration;

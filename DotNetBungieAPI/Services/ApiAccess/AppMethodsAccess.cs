@@ -13,12 +13,12 @@ namespace DotNetBungieAPI.Services.ApiAccess;
 
 internal sealed class AppMethodsAccess : IAppMethodsAccess
 {
-    private readonly BungieClientConfiguration _configuration;
+    private readonly IBungieClientConfiguration _configuration;
     private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
     public AppMethodsAccess(
         IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
-        BungieClientConfiguration configuration)
+        IBungieClientConfiguration configuration)
     {
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _configuration = configuration;

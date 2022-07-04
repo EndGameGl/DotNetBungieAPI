@@ -1,6 +1,8 @@
-﻿using DotNetBungieAPI.Service.Abstractions;
+﻿using DotNetBungieAPI.ApiBuilder;
+using DotNetBungieAPI.Service.Abstractions;
 using DotNetBungieAPI.Services.Implementations;
 using DotNetBungieAPI.Services.Implementations.ServiceConfigurations;
+using Microsoft.Extensions.Logging;
 
 namespace DotNetBungieAPI.Extensions;
 
@@ -26,7 +28,7 @@ public static class BungieClientBuilderExtensions
             IBungieNetJsonSerializer,
             DotNetBungieApiJsonSerializerConfiguration>(configure);
     }
-    
+
     public static void ConfigureDefaultHttpClient(
         this IServiceConfigurator<IDotNetBungieApiHttpClient> serviceConfigurator,
         Action<DotNetBungieApiHttpClientConfiguration> configure)
@@ -34,5 +36,11 @@ public static class BungieClientBuilderExtensions
         serviceConfigurator.Use<
             DefaultDotNetBungieApiHttpClient,
             DotNetBungieApiHttpClientConfiguration>(configure);
+    }
+
+    public static void UseExternalLogger(
+        this IServiceConfigurator<ILoggerFactory> serviceConfigurator)
+    {
+        (serviceConfigurator as ServiceConfigurator<ILoggerFactory>)!.IsConfigured = true;
     }
 }

@@ -17,13 +17,13 @@ namespace DotNetBungieAPI.Services.ApiAccess;
 
 internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
 {
-    private readonly BungieClientConfiguration _configuration;
+    private readonly IBungieClientConfiguration _configuration;
     private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
     private readonly IBungieNetJsonSerializer _serializer;
 
     public GroupV2MethodsAccess(
         IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
-        BungieClientConfiguration configuration,
+        IBungieClientConfiguration configuration,
         IBungieNetJsonSerializer serializer)
     {
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;

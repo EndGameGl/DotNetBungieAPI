@@ -16,12 +16,12 @@ namespace DotNetBungieAPI.Services.ApiAccess;
 /// </summary>
 internal sealed class TokensMethodsAccess : ITokensMethodsAccess
 {
-    private readonly BungieClientConfiguration _configuration;
+    private readonly IBungieClientConfiguration _configuration;
     private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
     public TokensMethodsAccess(
         IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
-        BungieClientConfiguration configuration)
+        IBungieClientConfiguration configuration)
     {
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _configuration = configuration;

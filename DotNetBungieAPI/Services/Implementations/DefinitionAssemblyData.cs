@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Attributes;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Service.Abstractions;
@@ -14,7 +15,7 @@ internal sealed class DefinitionAssemblyData : IDefinitionAssemblyData
         var tempTypeToEnumMapping = new Dictionary<Type, DefinitionsEnum>();
         var mappedTypes =
             Assembly
-                .GetAssembly(typeof(DefinitionAssemblyData))
+                .GetAssembly(typeof(DefinitionHashPointer<>))
                 !.GetTypes()
                 .Where(x => x.GetCustomAttributes<DestinyDefinitionAttribute>().Any());
 

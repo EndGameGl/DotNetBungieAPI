@@ -25,14 +25,14 @@ namespace DotNetBungieAPI.Services.ApiAccess;
 
 internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
 {
-    private readonly BungieClientConfiguration _configuration;
+    private readonly IBungieClientConfiguration _configuration;
     private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
     private readonly IBungieNetJsonSerializer _serializer;
 
     public Destiny2MethodsAccess(
         IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
         IBungieNetJsonSerializer serializer,
-        BungieClientConfiguration configurationService)
+        IBungieClientConfiguration configurationService)
     {
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _serializer = serializer;

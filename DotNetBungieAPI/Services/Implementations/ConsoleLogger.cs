@@ -3,11 +3,11 @@ using Microsoft.Extensions.Logging;
 
 namespace DotNetBungieAPI.Services.Implementations;
 
-internal sealed class DefaultDotNetBungieApiLogger : ILogger
+internal sealed class ConsoleLogger : ILogger
 {
     private readonly DotNetBungieApiLoggerConfiguration _configuration;
 
-    public DefaultDotNetBungieApiLogger(DotNetBungieApiLoggerConfiguration configuration)
+    public ConsoleLogger(DotNetBungieApiLoggerConfiguration configuration)
     {
         _configuration = configuration;
     }

@@ -27,10 +27,12 @@ internal class ServiceConfigurator<TServiceInterface> : IServiceConfigurator<TSe
         configure(options);
         _serviceCollection.AddSingleton<TServiceInterface, TServiceImplementation>();
         _serviceCollection.AddSingleton(options);
+        IsConfigured = true;
     }
 
     public void Use<TServiceImplementation>() where TServiceImplementation : class, TServiceInterface
     {
         _serviceCollection.AddSingleton<TServiceInterface, TServiceImplementation>();
+        IsConfigured = true;
     }
 }

@@ -27,21 +27,21 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
     private const string PlatformEndpoint = "https://www.bungie.net/Platform";
     private const string CdnEndpoint = "https://www.bungie.net";
     private const string StatsEndpoint = "https://stats.bungie.net/Platform";
-    private readonly BungieClientConfiguration _configuration;
+    private readonly IBungieClientConfiguration _configuration;
 
     private readonly HttpClient _httpClient;
 
     private readonly MediaTypeWithQualityHeaderValue _jsonHeaderValue =
         new("application/json");
 
-    private readonly ILogger _logger;
+    private readonly ILogger<DefaultDotNetBungieApiHttpClient> _logger;
     private readonly TimeLimiter _rateTimeLimiter;
     private readonly IBungieNetJsonSerializer _serializer;
 
     public DefaultDotNetBungieApiHttpClient(
-        BungieClientConfiguration configuration,
+        IBungieClientConfiguration configuration,
         DotNetBungieApiHttpClientConfiguration httpClientConfiguration,
-        ILogger logger,
+        ILogger<DefaultDotNetBungieApiHttpClient> logger,
         IBungieNetJsonSerializer serializer)
     {
         _configuration = configuration;

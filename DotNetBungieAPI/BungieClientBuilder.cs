@@ -1,9 +1,11 @@
 ﻿using DotNetBungieAPI.ApiBuilder;
 using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Service.Abstractions;
+using DotNetBungieAPI.Services;
 using DotNetBungieAPI.Services.Implementations;
 using DotNetBungieAPI.Services.Implementations.ServiceConfigurations;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace DotNetBungieAPI;
 
@@ -17,6 +19,7 @@ public class BungieClientBuilder : IBungieClientBuilder
     public IServiceConfigurator<IDestiny2ResetService> Destiny2ResetService { get; }
     public IServiceConfigurator<IBungieNetJsonSerializer> BungieNetJsonSerializer { get; }
     public IServiceConfigurator<IDotNetBungieApiHttpClient> DotNetBungieApiHttpClient { get; }
+    public IServiceConfigurator<ILoggerFactory> Logger { get; }
 
     public BungieClientBuilder(IServiceCollection serviceCollection)
     {
@@ -29,6 +32,7 @@ public class BungieClientBuilder : IBungieClientBuilder
         Destiny2ResetService = new ServiceConfigurator<IDestiny2ResetService>(serviceCollection);
         BungieNetJsonSerializer = new ServiceConfigurator<IBungieNetJsonSerializer>(serviceCollection);
         DotNetBungieApiHttpClient = new ServiceConfigurator<IDotNetBungieApiHttpClient>(serviceCollection);
+        Logger = new ServiceConfigurator<ILoggerFactory>(serviceCollection);
     }
 
     public void ValidateAndRegisterServices()
@@ -67,6 +71,13 @@ public class BungieClientBuilder : IBungieClientBuilder
             DotNetBungieApiHttpClient.Use<
                 DefaultDotNetBungieApiHttpClient,
                 DotNetBungieApiHttpClientConfiguration>((_) => { });
+        }
+        
+        if ((Logger as ServiceConfigurator<ILoggerFactory>)!.IsConfigured is false)
+        {
+            Logger.Use<
+                ILoggerFactory,
+                ConsoleLoggerFactory>((_) => { });
         }
     }
 }

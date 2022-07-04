@@ -10,13 +10,13 @@ namespace DotNetBungieAPI.Services.Implementations;
 internal sealed class DefaultAuthorizationHandler : IAuthorizationHandler
 {
     private readonly IDotNetBungieApiHttpClient _client;
-    private readonly BungieClientConfiguration _configuration;
-    private readonly ILogger _logger;
+    private readonly IBungieClientConfiguration _configuration;
+    private readonly ILogger<DefaultAuthorizationHandler> _logger;
 
     public DefaultAuthorizationHandler(
-        ILogger logger,
+        ILogger<DefaultAuthorizationHandler> logger,
         IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
-        BungieClientConfiguration configuration)
+        IBungieClientConfiguration configuration)
     {
         _logger = logger;
         _client = dotNetBungieApiHttpClient;

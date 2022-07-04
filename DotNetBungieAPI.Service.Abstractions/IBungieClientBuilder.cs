@@ -1,4 +1,6 @@
-﻿namespace DotNetBungieAPI.Service.Abstractions;
+﻿using Microsoft.Extensions.Logging;
+
+namespace DotNetBungieAPI.Service.Abstractions;
 
 public interface IBungieClientBuilder
 {
@@ -9,4 +11,5 @@ public interface IBungieClientBuilder
     IServiceConfigurator<IDestiny2ResetService> Destiny2ResetService { get; }
     IServiceConfigurator<IBungieNetJsonSerializer> BungieNetJsonSerializer { get; }
     IServiceConfigurator<IDotNetBungieApiHttpClient> DotNetBungieApiHttpClient { get; }
+    IServiceConfigurator<ILoggerFactory> Logger { get; }
 }
