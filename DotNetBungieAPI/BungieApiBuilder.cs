@@ -1,8 +1,8 @@
 ﻿using DotNetBungieAPI.Clients;
-using DotNetBungieAPI.Services;
+using DotNetBungieAPI.Service.Abstractions;
+using DotNetBungieAPI.Service.Abstractions.ApiAccess;
 using DotNetBungieAPI.Services.ApiAccess;
-using DotNetBungieAPI.Services.ApiAccess.Interfaces;
-using DotNetBungieAPI.Services.Interfaces;
+using DotNetBungieAPI.Services.Implementations;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DotNetBungieAPI;
@@ -13,15 +13,17 @@ namespace DotNetBungieAPI;
 public static class BungieApiBuilder
 {
     public static IBungieClient GetApiClient(
-        Action<BungieClientConfiguration> configure,
+        Action<IBungieClientBuilder> configure,
         IServiceCollection serviceCollection = null)
     {
         serviceCollection ??= new ServiceCollection();
 
-        var configuration = new BungieClientConfiguration(serviceCollection);
-        configure.Invoke(configuration);
+        var builder = new BungieClientBuilder(serviceCollection);
+        configure.Invoke(builder);
 
-        RegisterServices(serviceCollection, configuration);
+        builder.ValidateAndRegisterServices();
+        
+        RegisterServices(serviceCollection, builder);
 
         return serviceCollection.BuildServiceProvider().GetService<IBungieClient>();
     }
@@ -34,36 +36,22 @@ public static class BungieApiBuilder
     /// <returns></returns>
     public static IServiceCollection UseBungieApiClient(
         this IServiceCollection serviceCollection,
-        Action<BungieClientConfiguration> configure)
+        Action<IBungieClientBuilder> configure)
     {
-        var configuration = new BungieClientConfiguration(serviceCollection);
-        configure.Invoke(configuration);
+        var builder = new BungieClientBuilder(serviceCollection);
+        configure.Invoke(builder);
+        builder.ValidateAndRegisterServices();
 
-        RegisterServices(serviceCollection, configuration);
+        RegisterServices(serviceCollection, builder);
 
         return serviceCollection;
     }
 
     private static void RegisterServices(
         IServiceCollection serviceCollection,
-        BungieClientConfiguration configuration)
+        IBungieClientBuilder bungieClientBuilder)
     {
-        if (!configuration.LoggerConfigured)
-            configuration.UseDefaultLogger();
-        if (!configuration.RepositoryConfigured)
-            configuration.UseDefaultDefinitionRepository();
-        if (!configuration.SerializerConfigured)
-            configuration.UseDefaultBungieNetJsonSerializer();
-        if (!configuration.AuthHandlerConfigured)
-            configuration.UseDefaultAuthorizationHandler();
-        if (!configuration.DefinitionProviderConfigured)
-            configuration.UseDefaultDefinitionProvider();
-        if (!configuration.HttpClientConfigured)
-            configuration.UseDefaultHttpClient();
-        if (!configuration.ResetServiceConfigured)
-            configuration.UseDefaultDestiny2ResetService();
-
-        serviceCollection.AddSingleton(configuration);
+        serviceCollection.AddSingleton(bungieClientBuilder.ClientConfiguration);
         serviceCollection.AddSingleton<IBungieClient, BungieClient>();
         serviceCollection.AddSingleton<IDefinitionAssemblyData, DefinitionAssemblyData>();
 

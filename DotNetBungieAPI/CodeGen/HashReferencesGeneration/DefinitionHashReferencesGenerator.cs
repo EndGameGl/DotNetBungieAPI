@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using DotNetBungieAPI.Clients;
+using DotNetBungieAPI.Extensions;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes;
@@ -43,6 +43,7 @@ using DotNetBungieAPI.Models.Destiny.Definitions.TraitCategories;
 using DotNetBungieAPI.Models.Destiny.Definitions.Traits;
 using DotNetBungieAPI.Models.Destiny.Definitions.VendorGroups;
 using DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
+using DotNetBungieAPI.Service.Abstractions;
 
 namespace DotNetBungieAPI.CodeGen.HashReferencesGeneration;
 

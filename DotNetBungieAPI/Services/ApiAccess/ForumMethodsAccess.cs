@@ -3,11 +3,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using DotNetBungieAPI.Extensions;
 using DotNetBungieAPI.Models;
+using DotNetBungieAPI.Models.Extensions;
 using DotNetBungieAPI.Models.Forum;
 using DotNetBungieAPI.Models.Queries;
 using DotNetBungieAPI.Models.Tags;
-using DotNetBungieAPI.Services.ApiAccess.Interfaces;
-using DotNetBungieAPI.Services.Interfaces;
+using DotNetBungieAPI.Service.Abstractions;
+using DotNetBungieAPI.Service.Abstractions.ApiAccess;
 
 namespace DotNetBungieAPI.Services.ApiAccess;
 

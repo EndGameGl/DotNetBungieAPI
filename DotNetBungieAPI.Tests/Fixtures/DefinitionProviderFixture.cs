@@ -1,6 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
-using DotNetBungieAPI.Services.Interfaces;
+﻿using System.Threading.Tasks;
+using DotNetBungieAPI.Service.Abstractions;
 using Xunit;
 
 namespace DotNetBungieAPI.Tests.Fixtures

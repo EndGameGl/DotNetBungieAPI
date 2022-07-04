@@ -7,7 +7,7 @@
 
         <LangVersion>9</LangVersion>
 
-        <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+        <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
@@ -26,6 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\DotNetBungieAPI.DefinitionProvider.Sqlite\DotNetBungieAPI.DefinitionProvider.Sqlite.csproj" />
       <ProjectReference Include="..\DotNetBungieAPI\DotNetBungieAPI.csproj" />
     </ItemGroup>
 

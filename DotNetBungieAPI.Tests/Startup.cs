@@ -1,9 +1,8 @@
-﻿using DotNetBungieAPI.Clients;
+﻿using DotNetBungieAPI.DefinitionProvider.Sqlite;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Applications;
+using DotNetBungieAPI.Service.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace DotNetBungieAPI.Tests
 {
@@ -12,34 +11,25 @@ namespace DotNetBungieAPI.Tests
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .UseBungieApiClient(settings =>
+                .UseBungieApiClient(builder =>
                 {
-                    settings.ApiKey = "";
-                    settings.CacheDefinitions = true;
-                    settings.ClientId = 0;
-                    settings.ClientSecret = "";
-                    settings.ApplicationScopes = ApplicationScopes.ReadUserData |
-                                                 ApplicationScopes.ReadBasicUserProfile |
-                                                 ApplicationScopes.MoveEquipDestinyItems |
-                                                 ApplicationScopes.AdminGroups;
-                    settings.UsedLocales.Add(BungieLocales.EN);
-                    settings
-                        .UseDefaultLogger(loggerConfig =>
-                        {
-                            loggerConfig.IsEnabled = false;
-                            loggerConfig.LogEventLevels(new[]
-                                { LogLevel.Debug, LogLevel.Error, LogLevel.Information });
-                        })
-                        .UseDefaultBungieNetJsonSerializer(c => { })
-                        .UseDefaultAuthorizationHandler()
-                        .UseDefaultDefinitionProvider(c =>
-                        {
-                            c.ManifestFolderPath = @"";
-                            c.AutoUpdateManifestOnStartup = true;
-                            c.DeleteOldManifestDataAfterUpdates = false;
-                        })
-                        .UseDefaultHttpClient(c => { })
-                        .UseDefaultDefinitionRepository(c => { });
+                    builder.ClientConfiguration.ApiKey = "";
+                    builder.ClientConfiguration.CacheDefinitions = true;
+                    builder.ClientConfiguration.ClientId = 0;
+                    builder.ClientConfiguration.ClientSecret = "";
+
+                    builder.ClientConfiguration.ApplicationScopes = ApplicationScopes.ReadUserData |
+                                                                    ApplicationScopes.ReadBasicUserProfile |
+                                                                    ApplicationScopes.MoveEquipDestinyItems |
+                                                                    ApplicationScopes.AdminGroups;
+                    builder.ClientConfiguration.UsedLocales.Add(BungieLocales.EN);
+                    builder.DefinitionProvider.UseSqliteDefinitionProvider(options =>
+                    {
+                        options.ManifestFolderPath =
+                            @"F:\ProgrammingStuff\Projects\BungieNetCoreAPIRepository\Manifests";
+                        options.AutoUpdateManifestOnStartup = true;
+                        options.DeleteOldManifestDataAfterUpdates = false;
+                    });
                 });
 
             services.BuildServiceProvider().GetRequiredService<IBungieClient>();

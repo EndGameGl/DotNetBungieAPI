@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using DotNetBungieAPI.Models.Destiny.Config;
 using DotNetBungieAPI.Models.Destiny.Rendering;
-using DotNetBungieAPI.Services.ApiAccess.Interfaces;
-using DotNetBungieAPI.Services.Interfaces;
+using DotNetBungieAPI.Service.Abstractions;
+using DotNetBungieAPI.Service.Abstractions.ApiAccess;
 
 namespace DotNetBungieAPI.Services.ApiAccess;
 

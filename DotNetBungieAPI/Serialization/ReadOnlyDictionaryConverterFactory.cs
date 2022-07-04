@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Reflection;
 using DotNetBungieAPI.Models;
+using DotNetBungieAPI.Models.Defaults;
 using DotNetBungieAPI.Models.Destiny;
 
 namespace DotNetBungieAPI.Serialization;

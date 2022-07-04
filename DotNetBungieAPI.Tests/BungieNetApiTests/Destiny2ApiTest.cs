@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
+using DotNetBungieAPI.Service.Abstractions;
 using Xunit;
 
 namespace DotNetBungieAPI.Tests.BungieNetApiTests

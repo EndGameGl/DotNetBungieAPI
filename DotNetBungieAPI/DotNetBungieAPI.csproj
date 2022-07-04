@@ -13,11 +13,11 @@
         <PackageVersion>2.1.1</PackageVersion>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
         <LangVersion>10</LangVersion>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <AssemblyVersion>2.1.1</AssemblyVersion>
         <FileVersion>2.1.1</FileVersion>
+        <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -29,13 +29,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.6" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
         <PackageReference Include="RateLimiter" Version="2.2.0" />
-        <PackageReference Include="System.Data.SQLite" Version="1.0.115.5" />
         <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
         <PackageReference Include="System.ObjectModel" Version="4.3.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DotNetBungieAPI.Models\DotNetBungieAPI.Models.csproj" />
+      <ProjectReference Include="..\DotNetBungieAPI.Service.Abstractions\DotNetBungieAPI.Service.Abstractions.csproj" />
     </ItemGroup>
 
 </Project>

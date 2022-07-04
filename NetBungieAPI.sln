@@ -21,7 +21,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBungieAPI.OpenApi.CSh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBungieAPI.AspNet.Security.OAuth.Providers", "DotNetBungieAPI.AspNet.Security.OAuth.Providers\DotNetBungieAPI.AspNet.Security.OAuth.Providers.csproj", "{F04C2D77-7D62-488E-9490-8F3476A9C049}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBungieAPI.OpenApi.JavaScript", "DotNetBungieAPI.OpenApi.JavaScript\DotNetBungieAPI.OpenApi.JavaScript.csproj", "{190A1F7D-14C0-4084-990E-22FF6DAA6E4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBungieAPI.DefinitionProvider.Sqlite", "DotNetBungieAPI.DefinitionProvider.Sqlite\DotNetBungieAPI.DefinitionProvider.Sqlite.csproj", "{F766F65A-83EF-4D58-9921-526B90FF9644}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBungieAPI.Service.Abstractions", "DotNetBungieAPI.Service.Abstractions\DotNetBungieAPI.Service.Abstractions.csproj", "{D3B8A4C3-3700-43D7-AA5E-085D02B9E425}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBungieAPI.Models", "DotNetBungieAPI.Models\DotNetBungieAPI.Models.csproj", "{E035B7A8-C23D-4098-B889-F6FC8A842D8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,10 +77,18 @@ Global
 		{F04C2D77-7D62-488E-9490-8F3476A9C049}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F04C2D77-7D62-488E-9490-8F3476A9C049}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F04C2D77-7D62-488E-9490-8F3476A9C049}.Release|Any CPU.Build.0 = Release|Any CPU
-		{190A1F7D-14C0-4084-990E-22FF6DAA6E4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{190A1F7D-14C0-4084-990E-22FF6DAA6E4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{190A1F7D-14C0-4084-990E-22FF6DAA6E4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{190A1F7D-14C0-4084-990E-22FF6DAA6E4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F766F65A-83EF-4D58-9921-526B90FF9644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F766F65A-83EF-4D58-9921-526B90FF9644}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F766F65A-83EF-4D58-9921-526B90FF9644}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F766F65A-83EF-4D58-9921-526B90FF9644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3B8A4C3-3700-43D7-AA5E-085D02B9E425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3B8A4C3-3700-43D7-AA5E-085D02B9E425}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3B8A4C3-3700-43D7-AA5E-085D02B9E425}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3B8A4C3-3700-43D7-AA5E-085D02B9E425}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E035B7A8-C23D-4098-B889-F6FC8A842D8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E035B7A8-C23D-4098-B889-F6FC8A842D8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E035B7A8-C23D-4098-B889-F6FC8A842D8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E035B7A8-C23D-4098-B889-F6FC8A842D8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

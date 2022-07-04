@@ -1,15 +1,16 @@
 ﻿using System.Collections.Concurrent;
 using DotNetBungieAPI.Models;
+using DotNetBungieAPI.Models.Attributes;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
-using DotNetBungieAPI.Services.Default.ServiceConfigurations;
-using DotNetBungieAPI.Services.Interfaces;
+using DotNetBungieAPI.Service.Abstractions;
+using DotNetBungieAPI.Services.Implementations.ServiceConfigurations;
 using Microsoft.Extensions.Logging;
 
 namespace DotNetBungieAPI.Repositories;
 
 /// <summary>
-///     Repository class for storing and accessing all classes with <see cref="Attributes.DestinyDefinitionAttribute" />
+///     Repository class for storing and accessing all classes with <see cref="DestinyDefinitionAttribute" />
 ///     attribute
 /// </summary>
 internal sealed class DestinyDefinitionsRepository

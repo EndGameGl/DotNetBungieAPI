@@ -1,8 +1,8 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Threading;
-using DotNetBungieAPI.Authorization;
+using DotNetBungieAPI.Models.Authorization;
 using DotNetBungieAPI.Models.Social;
-using DotNetBungieAPI.Services.ApiAccess.Interfaces;
+using DotNetBungieAPI.Service.Abstractions.ApiAccess;
 
 namespace DotNetBungieAPI.Extensions;
 

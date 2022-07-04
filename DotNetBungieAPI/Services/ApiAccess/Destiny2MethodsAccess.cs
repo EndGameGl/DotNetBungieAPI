@@ -1,11 +1,11 @@
 ﻿using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using DotNetBungieAPI.Authorization;
 using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Exceptions;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Applications;
+using DotNetBungieAPI.Models.Authorization;
 using DotNetBungieAPI.Models.Config;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Config;
@@ -18,8 +18,8 @@ using DotNetBungieAPI.Models.Queries;
 using DotNetBungieAPI.Models.Requests;
 using DotNetBungieAPI.Models.Responses;
 using DotNetBungieAPI.Models.User;
-using DotNetBungieAPI.Services.ApiAccess.Interfaces;
-using DotNetBungieAPI.Services.Interfaces;
+using DotNetBungieAPI.Service.Abstractions;
+using DotNetBungieAPI.Service.Abstractions.ApiAccess;
 
 namespace DotNetBungieAPI.Services.ApiAccess;
 

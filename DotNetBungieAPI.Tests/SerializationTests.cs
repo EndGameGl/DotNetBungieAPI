@@ -6,7 +6,6 @@ using DotNetBungieAPI.Models.Destiny.Config;
 using DotNetBungieAPI.Models.Destiny.Definitions.Checklists;
 using DotNetBungieAPI.Serialization;
 using Xunit;
-using Xunit.Abstractions;
 using Xunit.Priority;
 
 namespace DotNetBungieAPI.Tests

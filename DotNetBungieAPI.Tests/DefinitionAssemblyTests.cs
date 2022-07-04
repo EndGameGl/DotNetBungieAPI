@@ -1,4 +1,4 @@
-﻿using DotNetBungieAPI.Services.Interfaces;
+﻿using DotNetBungieAPI.Service.Abstractions;
 using Xunit;
 
 namespace DotNetBungieAPI.Tests

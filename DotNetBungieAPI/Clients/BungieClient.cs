@@ -1,9 +1,8 @@
 ﻿using System.Threading.Tasks;
-using DotNetBungieAPI.Authorization;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
-using DotNetBungieAPI.Services.Interfaces;
+using DotNetBungieAPI.Service.Abstractions;
 using Microsoft.Extensions.Logging;
 
 namespace DotNetBungieAPI.Clients;
@@ -13,12 +12,11 @@ namespace DotNetBungieAPI.Clients;
 /// </summary>
 internal sealed class BungieClient : IBungieClient
 {
+    internal static IBungieClient Instance { get; set; }
     private readonly BungieClientConfiguration _configuration;
-    private readonly ILogger _logger;
     private IDestiny2ResetService _resetService;
 
     public BungieClient(
-        ILogger logger,
         IBungieApiAccess apiAccess,
         IAuthorizationHandler authorizationHandler,
         IDestiny2DefinitionRepository repository,
@@ -27,14 +25,13 @@ internal sealed class BungieClient : IBungieClient
         BungieClientConfiguration configuration,
         IServiceProvider serviceProvider)
     {
-        _logger = logger;
         ResetService = destiny2ResetService;
         _configuration = configuration;
         Authentication = authorizationHandler;
         Repository = repository;
         ApiAccess = apiAccess;
         DefinitionProvider = definitionProvider;
-        ServiceProviderInstance.Instance = serviceProvider;
+        Instance = this;
     }
 
     /// <summary>

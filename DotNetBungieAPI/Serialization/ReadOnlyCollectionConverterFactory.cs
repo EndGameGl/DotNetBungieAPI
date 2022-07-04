@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using DotNetBungieAPI.Models.Defaults;
 
 namespace DotNetBungieAPI.Serialization;
 
