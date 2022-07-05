@@ -49,7 +49,7 @@ internal sealed class DefaultDestiny2DefinitionRepository : IDestiny2DefinitionR
     {
         definition = default;
         return _localisedRepositories.TryGetValue(locale, out var repository) &&
-               repository.TryGetDefinition(DefinitionHashPointer<T>.EnumValue, key, out definition);
+               repository.TryGetDefinition(key, out definition);
     }
 
     public bool TryGetDestinyHistoricalDefinition(
@@ -70,7 +70,8 @@ internal sealed class DefaultDestiny2DefinitionRepository : IDestiny2DefinitionR
             : null;
     }
 
-    public bool AddDestinyHistoricalDefinition(BungieLocales locale,
+    public bool AddDestinyHistoricalDefinition(
+        BungieLocales locale,
         DestinyHistoricalStatsDefinition statsDefinition)
     {
         return _localisedRepositories.TryGetValue(locale, out var repository) &&
@@ -78,32 +79,31 @@ internal sealed class DefaultDestiny2DefinitionRepository : IDestiny2DefinitionR
     }
 
     public IEnumerable<T> Search<T>(
-        DefinitionsEnum definitionType,
         BungieLocales locale,
         Func<IDestinyDefinition, bool> predicate) where T : IDestinyDefinition
     {
         return _localisedRepositories.TryGetValue(locale, out var repository)
-            ? repository.Search<T>(definitionType, predicate)
+            ? repository.Search<T>(predicate)
             : null;
     }
 
     public IEnumerable<T> GetAll<T>(BungieLocales locale = BungieLocales.EN) where T : IDestinyDefinition
     {
         return _localisedRepositories.TryGetValue(locale, out var repository)
-            ? repository.GetAll<T>(DefinitionHashPointer<T>.EnumValue)
+            ? repository.GetAll<T>()
             : null;
     }
 
     public bool AddDefinition<T>(BungieLocales locale, T definition) where T : IDestinyDefinition
     {
         return _localisedRepositories.TryGetValue(locale, out var repository) &&
-               repository.AddDefinition(DefinitionHashPointer<T>.EnumValue, definition);
+               repository.AddDefinition(definition);
     }
 
-    public bool AddDefinition(DefinitionsEnum enumValue, BungieLocales locale, IDestinyDefinition definition)
+    public bool AddDefinition(BungieLocales locale, IDestinyDefinition definition)
     {
         return _localisedRepositories.TryGetValue(locale, out var repository) &&
-               repository.AddDefinition(enumValue, definition);
+               repository.AddDefinition(definition);
     }
 
     public IEnumerable<BungieLocales> AvailableLocales => _localisedRepositories.Select(x => x.Key);

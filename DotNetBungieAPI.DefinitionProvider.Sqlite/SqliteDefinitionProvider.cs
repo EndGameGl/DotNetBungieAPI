@@ -437,7 +437,7 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
                     var parsedDefinition = (IDestinyDefinition)_serializer.Deserialize(
                         reader.GetFieldValue<byte[]>(0),
                         runtimeType);
-                    repository.AddDefinition(definitionType, locale, parsedDefinition);
+                    repository.AddDefinition(locale, parsedDefinition);
                 }
             });
 

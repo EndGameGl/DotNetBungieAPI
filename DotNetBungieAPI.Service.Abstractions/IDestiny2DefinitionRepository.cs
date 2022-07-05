@@ -27,7 +27,6 @@ public interface IDestiny2DefinitionRepository
         DestinyHistoricalStatsDefinition statsDefinition);
 
     IEnumerable<T> Search<T>(
-        DefinitionsEnum definitionType,
         BungieLocales locale,
         Func<IDestinyDefinition, bool> predicate) where T : IDestinyDefinition;
 
@@ -39,7 +38,6 @@ public interface IDestiny2DefinitionRepository
         T definition) where T : IDestinyDefinition;
 
     bool AddDefinition(
-        DefinitionsEnum enumValue,
         BungieLocales locale,
         IDestinyDefinition definition);
 

@@ -1,4 +1,6 @@
 ﻿using System.Collections.Concurrent;
+using System.Runtime.CompilerServices;
+using DotNetBungieAPI.Extensions;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Attributes;
 using DotNetBungieAPI.Models.Destiny;
@@ -62,12 +64,11 @@ internal sealed class DestinyDefinitionsRepository
     /// <summary>
     ///     Adds definition from repository, if possible
     /// </summary>
-    /// <param name="definitionType"></param>
     /// <param name="definition"></param>
     /// <returns></returns>
-    public bool AddDefinition(DefinitionsEnum definitionType, IDestinyDefinition definition)
+    public bool AddDefinition(IDestinyDefinition definition)
     {
-        return _definitionRepositories.TryGetValue(definitionType, out var repository) &&
+        return _definitionRepositories.TryGetValue(definition.DefinitionEnumValue, out var repository) &&
                repository.Add(definition);
     }
 
@@ -99,11 +100,13 @@ internal sealed class DestinyDefinitionsRepository
     /// <param name="hash"></param>
     /// <param name="definition"></param>
     /// <returns></returns>
-    public bool TryGetDefinition<T>(DefinitionsEnum enumValue, uint hash, out T definition)
+    public bool TryGetDefinition<T>(
+        uint hash,
+        out T definition)
         where T : IDestinyDefinition
     {
         definition = default;
-        if (_definitionRepositories.TryGetValue(enumValue, out var repository))
+        if (_definitionRepositories.TryGetValue(DefinitionHashPointer<T>.EnumValue, out var repository))
         {
             if (repository.TryGetDefinition<T>(hash, out var value))
             {
@@ -143,19 +146,19 @@ internal sealed class DestinyDefinitionsRepository
     /// <typeparam name="T"></typeparam>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public IEnumerable<T> Search<T>(DefinitionsEnum definitionType, Func<IDestinyDefinition, bool> predicate)
+    public IEnumerable<T> Search<T>(Func<IDestinyDefinition, bool> predicate)
         where T : IDestinyDefinition
     {
-        return _definitionRepositories.TryGetValue(definitionType, out var repository)
-            ? repository.Where(predicate).Cast<T>()
-            : null;
+        return _definitionRepositories.TryGetValue(DefinitionHashPointer<T>.EnumValue, out var repository)
+            ? repository.Where(predicate).UnsafeCast<IDestinyDefinition, T>()
+            : Enumerable.Empty<T>();
     }
 
-    public IEnumerable<T> GetAll<T>(DefinitionsEnum definitionType)
+    public IEnumerable<T> GetAll<T>() where T : IDestinyDefinition
     {
-        return _definitionRepositories.TryGetValue(definitionType, out var repository)
-            ? repository.EnumerateValues().Cast<T>()
-            : null;
+        return _definitionRepositories.TryGetValue(DefinitionHashPointer<T>.EnumValue, out var repository)
+            ? repository.EnumerateValues().UnsafeCast<IDestinyDefinition, T>()
+            : Enumerable.Empty<T>();
     }
 
     public void Clear()

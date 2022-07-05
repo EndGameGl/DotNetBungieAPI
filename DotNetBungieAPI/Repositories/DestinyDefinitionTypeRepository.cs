@@ -1,5 +1,6 @@
 ﻿using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using DotNetBungieAPI.Models.Destiny;
 
 namespace DotNetBungieAPI.Repositories;
@@ -52,7 +53,7 @@ public class DestinyDefinitionTypeRepository
         definition = default;
         if (_definitions.TryGetValue(hash, out var item))
         {
-            definition = (T)item;
+            definition = Unsafe.As<IDestinyDefinition, T>(ref item);
             return true;
         }
 
