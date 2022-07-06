@@ -1,9 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>DotNetBungieAPI.Models</Title>
+        <RepositoryUrl>https://github.com/EndGameGl/DotNetBungieAPI</RepositoryUrl>
+        <PackageId>DotNetBungieAPI.Models</PackageId>
+        <Description>Bungie.net API models.</Description>
+        <Authors>MeGl</Authors>
+        <Copyright>Copyright (c) MeGl 2022</Copyright>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <PackageVersion>2.2.0</PackageVersion>
+        <AssemblyVersion>2.2.0</AssemblyVersion>
+        <FileVersion>2.2.0</FileVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <DocumentationFile>bin\Release\DotNetBungieAPI.Models.xml</DocumentationFile>
     </PropertyGroup>
 
 </Project>
