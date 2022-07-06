@@ -3,19 +3,25 @@
 C# Wrapper for interacting with Bungie.net API, based of https://github.com/Bungie-net/api
 
 ### Features:
- - Can be easily plugged into any default DI container
+ - Can be easily plugged into any default DI container (e.g. `IServiceCollection`)
  - All library services can be fully customised to the point of your own implementation
- - All hashes are converted to `DefinitionHashPointer{T}` class for strong typing
- - Implemented default services for handling most stuff
+ - All hashes references are converted to `DefinitionHashPointer{T}` class for strong typing
+ - Implemented default services for handling most stuff, but `IDefinitionProvider` is up to you to choose.
 
 ### Default services
- This library has 6 separate services to work with
- - `IAuthorizationHandler` - Handles work related to getting tokens from users
- - `IBungieNetJsonSerializer` - Custom object serialization (like hash pointers)
- - `IDefinitionProvider` - Handles definition access from external source (such as default provider: SqliteDefinitionProvider)
- - `IDestiny2DefinitionRepository` - Stores definitions in-memory for quick access
- - `IDotNetBungieApiHttpClient` - Handles HTTP API calls
- - `Microsoft.Extensions.Logging.ILogger` implementation - default logging solution for this library
+ This library has multiple services to work with:
+
+| Service name                    | Service description                                                                         | Path                               |
+|:--------------------------------|---------------------------------------------------------------------------------------------|------------------------------------|
+| `IAuthorizationHandler`         | This service is used to handle OAuth2-related stuff                                         | `IBungieClient.Authorization`      |
+| `IBungieApiAccess `             | This service is used to access https://www.bungie.net endpoints                             | `IBungieClient.ApiAccess`          |
+| `IDefinitionProvider`           | This service is used to load Destiny 2 definitions and handle manifest updates              | `IBungieClient.DefinitionProvider` |
+| `IDestiny2DefinitionRepository` | This service is used to store and use Destiny 2 definitions                                 | `IBungieClient.Repository`         |
+| `IDestiny2ResetService`         | This service is used to calculate `DateTime` values for Destiny 2 weekly/daily resets       | `IBungieClient.ResetService`       |
+| `IBungieNetJsonSerializer`      | This service is used to (de)serialize any json data related to this library                 | `IBungieClient.Serializer`         |
+| `IDotNetBungieApiHttpClient`    | This service is used to access https://www.bungie.net directly, used by `IBungieApiAccess`  | `IBungieClient.ApiHttpClient`      |
+
+Logging is supported and **SHOULD** be configured within default Microsoft approach with `IServiceCollection.AddLogging(...)`
 
 ### Where to start:
 https://github.com/EndGameGl/DotNetBungieAPI/wiki/Basic-client-setup

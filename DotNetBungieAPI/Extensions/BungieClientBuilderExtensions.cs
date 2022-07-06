@@ -37,10 +37,4 @@ public static class BungieClientBuilderExtensions
             DefaultDotNetBungieApiHttpClient,
             DotNetBungieApiHttpClientConfiguration>(configure);
     }
-
-    public static void UseExternalLogger(
-        this IServiceConfigurator<ILoggerFactory> serviceConfigurator)
-    {
-        (serviceConfigurator as ServiceConfigurator<ILoggerFactory>)!.IsConfigured = true;
-    }
 }

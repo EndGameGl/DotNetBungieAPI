@@ -22,7 +22,17 @@ public interface IBungieClient : IDisposable, IAsyncDisposable
     /// <summary>
     ///     Access to OAuth2 methods
     /// </summary>
-    IAuthorizationHandler Authentication { get; }
+    IAuthorizationHandler Authorization { get; }
+    
+    /// <summary>
+    ///     Access to internal serializer with custom converters
+    /// </summary>
+    IBungieNetJsonSerializer Serializer { get; }
+    
+    /// <summary>
+    ///     Access to internal api http client
+    /// </summary>
+    IDotNetBungieApiHttpClient ApiHttpClient { get; }
 
     /// <summary>
     ///     Access to <see cref="IDefinitionProvider"/>, which helps to retrieve definitions from external source

@@ -3,7 +3,6 @@ using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using DotNetBungieAPI.Service.Abstractions;
-using Microsoft.Extensions.Logging;
 
 namespace DotNetBungieAPI.Clients;
 
@@ -14,7 +13,6 @@ internal sealed class BungieClient : IBungieClient
 {
     internal static IBungieClient Instance { get; set; }
     private readonly IBungieClientConfiguration _configuration;
-    private IDestiny2ResetService _resetService;
 
     public BungieClient(
         IBungieApiAccess apiAccess,
@@ -23,21 +21,34 @@ internal sealed class BungieClient : IBungieClient
         IDefinitionProvider definitionProvider,
         IDestiny2ResetService destiny2ResetService,
         IBungieClientConfiguration configuration,
-        IServiceProvider serviceProvider)
+        IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
+        IBungieNetJsonSerializer bungieNetJsonSerializer)
     {
         ResetService = destiny2ResetService;
         _configuration = configuration;
-        Authentication = authorizationHandler;
+        Authorization = authorizationHandler;
         Repository = repository;
         ApiAccess = apiAccess;
         DefinitionProvider = definitionProvider;
         Instance = this;
+        ApiHttpClient = dotNetBungieApiHttpClient;
+        Serializer = bungieNetJsonSerializer;
     }
 
     /// <summary>
-    ///     <inheritdoc cref="IBungieClient.Authentication" />
+    ///     <inheritdoc cref="IBungieClient.Authorization" />
     /// </summary>
-    public IAuthorizationHandler Authentication { get; }
+    public IAuthorizationHandler Authorization { get; }
+
+    /// <summary>
+    ///     <inheritdoc />
+    /// </summary>
+    public IBungieNetJsonSerializer Serializer { get; }
+
+    /// <summary>
+    ///     <inheritdoc />
+    /// </summary>
+    public IDotNetBungieApiHttpClient ApiHttpClient { get; }
 
     /// <summary>
     ///     <inheritdoc cref="IBungieClient.Repository" />
@@ -52,6 +63,7 @@ internal sealed class BungieClient : IBungieClient
     public IDefinitionProvider DefinitionProvider { get; }
 
     public IDestiny2ResetService ResetService { get; }
+
 
     /// <summary>
     ///     <inheritdoc cref="IBungieClient.TryGetDefinitionAsync{T}" />

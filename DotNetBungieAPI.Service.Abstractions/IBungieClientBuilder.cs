@@ -11,5 +11,4 @@ public interface IBungieClientBuilder
     IServiceConfigurator<IDestiny2ResetService> Destiny2ResetService { get; }
     IServiceConfigurator<IBungieNetJsonSerializer> BungieNetJsonSerializer { get; }
     IServiceConfigurator<IDotNetBungieApiHttpClient> DotNetBungieApiHttpClient { get; }
-    IServiceConfigurator<ILoggerFactory> Logger { get; }
 }
