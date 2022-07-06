@@ -29,16 +29,13 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="DotNetBungieAPI.Models" Version="2.2.0" />
+        <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="2.2.0" />
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
         <PackageReference Include="RateLimiter" Version="2.2.0" />
         <PackageReference Include="System.ObjectModel" Version="4.3.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\DotNetBungieAPI.Models\DotNetBungieAPI.Models.csproj" />
-      <ProjectReference Include="..\DotNetBungieAPI.Service.Abstractions\DotNetBungieAPI.Service.Abstractions.csproj" />
     </ItemGroup>
 
 </Project>
