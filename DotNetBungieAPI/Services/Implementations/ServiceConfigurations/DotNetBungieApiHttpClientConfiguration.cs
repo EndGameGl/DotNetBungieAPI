@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using DotNetBungieAPI.Service.Abstractions;
 
 namespace DotNetBungieAPI.Services.Implementations.ServiceConfigurations;
 
@@ -12,25 +13,51 @@ public sealed class DotNetBungieApiHttpClientConfiguration
         var httpClientHandler = new HttpClientHandler();
         HttpClient = new HttpClient(httpClientHandler);
     }
-    
+
     /// <summary>
     ///     HttpClient that is used for this lib
     /// </summary>
     public HttpClient HttpClient { get; internal set; }
-    
+
     /// <summary>
     ///     Ratelimit that is used for interval
     ///     <para/>
     ///     Default is 250.
     /// </summary>
-    public int RatelimitPerInterval { get; internal set; } = 250;
-    
+    public int RateLimitPerInterval { get; internal set; } = 220;
+
     /// <summary>
     ///     Ratelimit interval
     ///     <para/>
     ///     Default is 10 seconds.
     /// </summary>
-    public TimeSpan RatelimitInterval { get; internal set; } = TimeSpan.FromSeconds(10);
+    public TimeSpan RateLimitInterval { get; internal set; } = TimeSpan.FromSeconds(10);
+
+    private int _maxConcurrentRequestsAtOnce = 25;
+
+    /// <summary>
+    ///     Maximum allowed amount of concurrent requests
+    /// <para/>
+    ///     Default is 25
+    /// </summary>
+    public int MaxConcurrentRequestsAtOnce
+    {
+        get => _maxConcurrentRequestsAtOnce;
+        set => _maxConcurrentRequestsAtOnce = Conditions.Int32MoreThan(value, 0);
+    }
+
+    private int _maxRequestsPerSecond = 25;
+
+    /// <summary>
+    ///     Maximum allowed amount of requests that can be made per second
+    /// <para/>
+    ///     Default is 25
+    /// </summary>
+    public int MaxRequestsPerSecond
+    {
+        get => _maxRequestsPerSecond;
+        set => _maxRequestsPerSecond = Conditions.Int32MoreThan(value, 0);
+    }
 
     /// <summary>
     ///     Uses external <see cref="HttpClient"/> for this app
@@ -44,13 +71,13 @@ public sealed class DotNetBungieApiHttpClientConfiguration
     /// <summary>
     ///     Sets settings for api ratelimiting
     /// </summary>
-    /// <param name="ratelimitPerInterval"></param>
+    /// <param name="rateLimitPerInterval"></param>
     /// <param name="interval"></param>
-    public void SetRatelimitSettings(
-        int ratelimitPerInterval,
+    public void SetRateLimitSettings(
+        int rateLimitPerInterval,
         TimeSpan interval)
     {
-        RatelimitPerInterval = Conditions.Int32MoreThan(ratelimitPerInterval, 0);
-        RatelimitInterval = interval;
+        RateLimitPerInterval = Conditions.Int32MoreThan(rateLimitPerInterval, 0);
+        RateLimitInterval = interval;
     }
 }

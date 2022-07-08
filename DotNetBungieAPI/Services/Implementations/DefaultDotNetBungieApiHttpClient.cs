@@ -1,20 +1,16 @@
-﻿using System.Drawing;
-using System.Drawing.Imaging;
+﻿using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
-using ComposableAsync;
-using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Exceptions;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Authorization;
+using DotNetBungieAPI.RateLimiting;
 using DotNetBungieAPI.Service.Abstractions;
-using DotNetBungieAPI.Services.Default.ServiceConfigurations;
 using DotNetBungieAPI.Services.Implementations.ServiceConfigurations;
 using Microsoft.Extensions.Logging;
-using RateLimiter;
 
 namespace DotNetBungieAPI.Services.Implementations;
 
@@ -35,8 +31,8 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         new("application/json");
 
     private readonly ILogger<DefaultDotNetBungieApiHttpClient> _logger;
-    private readonly TimeLimiter _rateTimeLimiter;
     private readonly IBungieNetJsonSerializer _serializer;
+    private readonly ApiRateLimiter _apiRateLimiter;
 
     public DefaultDotNetBungieApiHttpClient(
         IBungieClientConfiguration configuration,
@@ -51,9 +47,12 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         _httpClient.DefaultRequestHeaders.Accept.Add(_jsonHeaderValue);
         _httpClient.DefaultRequestHeaders.Add("User-Agent", "DotNetBungieApi Client");
 
-        _rateTimeLimiter = TimeLimiter.GetFromMaxCountByInterval(
-            httpClientConfiguration.RatelimitPerInterval,
-            httpClientConfiguration.RatelimitInterval);
+        _apiRateLimiter = new ApiRateLimiter(
+            _logger,
+            httpClientConfiguration.RateLimitPerInterval,
+            httpClientConfiguration.RateLimitInterval,
+            httpClientConfiguration.MaxRequestsPerSecond,
+            httpClientConfiguration.MaxConcurrentRequestsAtOnce);
     }
 
     public async ValueTask<AuthorizationTokenData> GetAuthorizationToken(string code)
@@ -217,8 +216,9 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
     private async Task<HttpResponseMessage> SendAsyncInternal(
         HttpRequestMessage requestMessage)
     {
-        await _rateTimeLimiter;
-        return await _httpClient.SendAsync(requestMessage);
+        return await _apiRateLimiter.WaitAndRunAsync(
+            async (ct) => await _httpClient.SendAsync(requestMessage, ct),
+            default);
     }
 
     private async Task<HttpResponseMessage> SendAsyncInternal(
@@ -226,9 +226,16 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         HttpCompletionOption httpCompletionOption,
         CancellationToken cancellationToken)
     {
-        await _rateTimeLimiter;
-        var result = await _httpClient.SendAsync(requestMessage, httpCompletionOption, cancellationToken);
-        return result;
+        return await _apiRateLimiter.WaitAndRunAsync(
+            async (ct) =>
+            {
+                var localRequestSw = Stopwatch.StartNew();
+                var resp = await _httpClient.SendAsync(requestMessage, httpCompletionOption, ct);
+                localRequestSw.Stop();
+                _logger.LogDebug("Executed request in {Time}s", (double)localRequestSw.ElapsedMilliseconds / 1000);
+                return resp;
+            },
+            cancellationToken);
     }
 
     private HttpRequestMessage CreateGetMessage(string uri, bool omitApiKey = false, string authToken = null)
