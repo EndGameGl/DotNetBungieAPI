@@ -1,4 +1,5 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.Seasons;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.EventCards;
+using DotNetBungieAPI.Models.Destiny.Definitions.Seasons;
 using DotNetBungieAPI.Models.User;
 
 namespace DotNetBungieAPI.Models.Destiny.Components;
@@ -54,6 +55,13 @@ public sealed record DestinyProfileComponent
         ReadOnlyCollections<DefinitionHashPointer<DestinySeasonDefinition>>.Empty;
 
     /// <summary>
+    ///     A list of hashes for event cards that a profile owns. Unlike most values in versionsOwned, these stay with the profile across all platforms.
+    /// </summary>
+    [JsonPropertyName("eventCardHashesOwned")]
+    public ReadOnlyCollection<DefinitionHashPointer<DestinyEventCardDefinition>> EventCardsOwned { get; init; }
+        = ReadOnlyCollections<DefinitionHashPointer<DestinyEventCardDefinition>>.Empty;
+
+    /// <summary>
     ///     If populated, this is a reference to the season that is currently active.
     /// </summary>
     [JsonPropertyName("currentSeasonHash")]
@@ -65,4 +73,11 @@ public sealed record DestinyProfileComponent
     /// </summary>
     [JsonPropertyName("currentSeasonRewardPowerCap")]
     public int? CurrentSeasonRewardPowerCap { get; init; }
+
+    /// <summary>
+    ///     If populated, this is a reference to the event card that is currently active.
+    /// </summary>
+    [JsonPropertyName("activeEventCardHash")]
+    public DefinitionHashPointer<DestinyEventCardDefinition> ActiveEventCard { get; init; }
+        = DefinitionHashPointer<DestinyEventCardDefinition>.Empty;
 }

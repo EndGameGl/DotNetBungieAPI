@@ -150,6 +150,12 @@ public enum PlatformErrorCodes
     ContentBabelCallFailed = 173,
     ContentEnglishPostLiveForbidden = 174,
     ContentLocaleEditPermissionDenied = 175,
+    ContentStackUnknownError = 176,
+    ContentStackNotFound = 177,
+    ContentStackRateLimited = 178,
+    ContentStackTimeout = 179,
+    ContentStackServiceError = 180,
+    ContentStackDeserializationFailure = 181,
     UserNonUniqueName = 200,
     UserManualLinkingStepRequired = 201,
     UserCreateUnknownSqlResult = 202,
@@ -688,7 +694,7 @@ public enum PlatformErrorCodes
     AuthorizationRecordRevoked = 2124,
     AuthorizationRecordInactiveApiKey = 2125,
     AuthorizationRecordApiKeyMatching = 2126,
-    
+
     PartnershipInvalidType = 2200,
     PartnershipValidationError = 2201,
     PartnershipValidationTimeout = 2202,
@@ -697,9 +703,9 @@ public enum PlatformErrorCodes
     PartnershipGetAccountInfoFailure = 2205,
     PartnershipDisabled = 2206,
     PartnershipAlreadyExists = 2207,
-    
+
     CommunityStreamingUnavailable = 2300,
-    
+
     TwitchNotLinked = 2500,
     TwitchAccountNotFound = 2501,
     TwitchCouldNotLoadDestinyInfo = 2502,
@@ -707,15 +713,15 @@ public enum PlatformErrorCodes
     TwitchCouldNotUnregisterUser = 2504,
     TwitchRequiresRelinking = 2505,
     TwitchNoPlatformChosen = 2506,
-    
+
     TrendingCategoryNotFound = 2600,
     TrendingEntryTypeNotSupported = 2601,
-    
+
     ReportOffenderNotInPgcr = 2700,
     ReportRequestorNotInPgcr = 2701,
     ReportSubmissionFailed = 2702,
     ReportCannotReportSelf = 2703,
-    
+
     AwaTypeDisabled = 2800,
     AwaTooManyPendingRequests = 2801,
     AwaTheFeatureRequiresARegisteredDevice = 2802,
@@ -723,12 +729,12 @@ public enum PlatformErrorCodes
     AwaWriteRequestMissingOrInvalidToken = 2804,
     AwaWriteRequestTokenExpired = 2805,
     AwaWriteRequestTokenUsageLimitReached = 2806,
-    
+
     SteamWebApiError = 2900,
     SteamWebNullResponseError = 2901,
     SteamAccountRequired = 2902,
     SteamNotAuthorized = 2903,
-    
+
     ClanFireteamNotFound = 3000,
     ClanFireteamAddNoAlternatesForImmediate = 3001,
     ClanFireteamFull = 3002,
@@ -791,9 +797,9 @@ public enum PlatformErrorCodes
     CrossSaveSteamAlreadyPaired = 3220,
     CrossSaveCannotPairJustSteamAndBlizzard = 3221,
     CrossSaveCannotPairSteamAloneBeforeShadowkeep = 3222,
-    
+
     AuthVerificationNotLinkedToAccount = 3300,
-    
+
     PCMigrationMissingBlizzard = 3400,
     PCMigrationMissingSteam = 3401,
     PCMigrationInvalidBlizzard = 3402,
@@ -809,11 +815,11 @@ public enum PlatformErrorCodes
     PCMigrationSilverTransferFailed = 3412,
     PCMigrationEntitlementTransferFailed = 3413,
     PCMigrationCannotStompClanFounder = 3414,
-    
+
     UnsupportedBrowser = 3500,
-    
+
     StadiaAccountRequired = 3600,
-    
+
     ErrorPhoneValidationTooManyUses = 3702,
     ErrorPhoneValidationNoAssociatedPhone = 3703,
     ErrorPhoneValidationCodeInvalid = 3705,
@@ -822,7 +828,7 @@ public enum PlatformErrorCodes
     ErrorPhoneValidationCodeExpired = 3708,
     ErrorPhoneValidationInvalidNumberType = 3709,
     ErrorPhoneValidationCodeTooRecentlyChecked = 3710,
-    
+
     ApplePushErrorUnknown = 3800,
     ApplePushErrorNull = 3801,
     ApplePushErrorTimeout = 3802,
@@ -831,7 +837,7 @@ public enum PlatformErrorCodes
     ApplePushThrottled = 3805,
     ApplePushServiceUnavailable = 3806,
     NotAnImageOrVideo = 3807,
-    
+
     ErrorBungieFriendsBlockFailed = 3900,
     ErrorBungieFriendsAutoReject = 3901,
     ErrorBungieFriendsNoRequestFound = 3902,

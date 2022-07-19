@@ -88,5 +88,7 @@ public enum DefinitionsEnum
     //DestinyUnlockExpressionMappingDefinition,
     DestinyUnlockValueDefinition,
     DestinyVendorDefinition,
-    DestinyVendorGroupDefinition
+    DestinyVendorGroupDefinition,
+    
+    DestinyEventCardDefinition
 }
