@@ -31,23 +31,23 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         _serializer = serializer;
     }
 
-    public async ValueTask<BungieResponse<Dictionary<int, string>>> GetAvailableAvatars(
+    public async Task<BungieResponse<ReadOnlyDictionary<int, string>>> GetAvailableAvatars(
         CancellationToken cancellationToken = default)
     {
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<Dictionary<int, string>>("/GroupV2/GetAvailableAvatars/", cancellationToken)
+            .GetFromBungieNetPlatform<ReadOnlyDictionary<int, string>>("/GroupV2/GetAvailableAvatars/", cancellationToken)
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<GroupTheme[]>> GetAvailableThemes(
+    public async Task<BungieResponse<ReadOnlyCollection<GroupTheme>>> GetAvailableThemes(
         CancellationToken cancellationToken = default)
     {
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<GroupTheme[]>("/GroupV2/GetAvailableThemes/", cancellationToken)
+            .GetFromBungieNetPlatform<ReadOnlyCollection<GroupTheme>>("/GroupV2/GetAvailableThemes/", cancellationToken)
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<bool>> GetUserClanInviteSetting(
+    public async Task<BungieResponse<bool>> GetUserClanInviteSetting(
         AuthorizationTokenData authorizationToken,
         BungieMembershipType mType,
         CancellationToken cancellationToken = default)
@@ -66,7 +66,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<GroupV2Card[]>> GetRecommendedGroups(
+    public async Task<BungieResponse<ReadOnlyCollection<GroupV2Card>>> GetRecommendedGroups(
         AuthorizationTokenData authorizationToken,
         GroupType groupType,
         GroupDateRange createDateRange,
@@ -83,12 +83,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<GroupV2Card[]>(url, cancellationToken,
+            .PostToBungieNetPlatform<ReadOnlyCollection<GroupV2Card>>(url, cancellationToken,
                 authToken: authorizationToken.AccessToken)
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<GroupSearchResponse>> GroupSearch(
+    public async Task<BungieResponse<GroupSearchResponse>> GroupSearch(
         GroupQuery query,
         CancellationToken cancellationToken = default)
     {
@@ -99,7 +99,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<GroupResponse>> GetGroup(
+    public async Task<BungieResponse<GroupResponse>> GetGroup(
         long groupId,
         CancellationToken cancellationToken = default)
     {
@@ -114,7 +114,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<GroupResponse>> GetGroupByName(
+    public async Task<BungieResponse<GroupResponse>> GetGroupByName(
         string groupName,
         GroupType groupType,
         CancellationToken cancellationToken = default)
@@ -131,7 +131,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<GroupResponse>> GetGroupByNameV2(
+    public async Task<BungieResponse<GroupResponse>> GetGroupByNameV2(
         GroupNameSearchRequest request,
         CancellationToken cancellationToken = default)
     {
@@ -142,7 +142,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<GroupOptionalConversation[]>> GetGroupOptionalConversations(
+    public async Task<BungieResponse<ReadOnlyCollection<GroupOptionalConversation>>> GetGroupOptionalConversations(
         long groupId,
         CancellationToken cancellationToken = default)
     {
@@ -152,11 +152,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Append("OptionalConversations/")
             .Build();
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<GroupOptionalConversation[]>(url, cancellationToken)
+            .GetFromBungieNetPlatform<ReadOnlyCollection<GroupOptionalConversation>>(url, cancellationToken)
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<int>> EditGroup(
+    public async Task<BungieResponse<int>> EditGroup(
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupEditAction request,
@@ -177,7 +177,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<int>> EditClanBanner(
+    public async Task<BungieResponse<int>> EditClanBanner(
         AuthorizationTokenData authorizationToken,
         long groupId,
         ClanBanner request,
@@ -198,7 +198,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<int>> EditFounderOptions(
+    public async Task<BungieResponse<int>> EditFounderOptions(
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupOptionsEditAction request,
@@ -219,7 +219,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<long>> AddOptionalConversation(
+    public async Task<BungieResponse<long>> AddOptionalConversation(
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupOptionalConversationAddRequest request,
@@ -240,7 +240,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<long>> EditOptionalConversation(
+    public async Task<BungieResponse<long>> EditOptionalConversation(
         AuthorizationTokenData authorizationToken,
         long groupId,
         long conversationId,
@@ -264,7 +264,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<SearchResultOfGroupMember>> GetMembersOfGroup(
+    public async Task<BungieResponse<SearchResultOfGroupMember>> GetMembersOfGroup(
         long groupId,
         int currentpage = 1,
         RuntimeGroupMemberType memberType = RuntimeGroupMemberType.None,
@@ -284,7 +284,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<SearchResultOfGroupMember>> GetAdminsAndFounderOfGroup(
+    public async Task<BungieResponse<SearchResultOfGroupMember>> GetAdminsAndFounderOfGroup(
         long groupId,
         int currentpage = 1,
         CancellationToken cancellationToken = default)
@@ -300,7 +300,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<int>> EditGroupMembership(
+    public async Task<BungieResponse<int>> EditGroupMembership(
         AuthorizationTokenData authorizationToken,
         long groupId,
         long membershipId,
@@ -325,7 +325,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<GroupMemberLeaveResult>> KickMember(
+    public async Task<BungieResponse<GroupMemberLeaveResult>> KickMember(
         AuthorizationTokenData authorizationToken,
         long groupId,
         long membershipId,
@@ -349,7 +349,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<int>> BanMember(
+    public async Task<BungieResponse<int>> BanMember(
         AuthorizationTokenData authorizationToken,
         long groupId,
         long membershipId,
@@ -376,7 +376,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<int>> UnbanMember(
+    public async Task<BungieResponse<int>> UnbanMember(
         AuthorizationTokenData authorizationToken,
         long groupId,
         long membershipId,
@@ -400,7 +400,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<SearchResultOfGroupBan>> GetBannedMembersOfGroup(
+    public async Task<BungieResponse<SearchResultOfGroupBan>> GetBannedMembersOfGroup(
         AuthorizationTokenData authorizationToken,
         long groupId,
         int currentpage = 1,
@@ -421,7 +421,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<bool>> AbdicateFoundership(
+    public async Task<BungieResponse<bool>> AbdicateFoundership(
         AuthorizationTokenData authorizationToken,
         long groupId,
         long founderIdNew,
@@ -444,7 +444,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<SearchResultOfGroupMemberApplication>> GetPendingMemberships(
+    public async Task<BungieResponse<SearchResultOfGroupMemberApplication>> GetPendingMemberships(
         AuthorizationTokenData authorizationToken,
         long groupId,
         int currentpage = 1,
@@ -465,7 +465,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<SearchResultOfGroupMemberApplication>> GetInvitedIndividuals(
+    public async Task<BungieResponse<SearchResultOfGroupMemberApplication>> GetInvitedIndividuals(
         AuthorizationTokenData authorizationToken,
         long groupId,
         int currentpage = 1,
@@ -486,7 +486,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<EntityActionResult[]>> ApproveAllPending(
+    public async Task<BungieResponse<ReadOnlyCollection<EntityActionResult>>> ApproveAllPending(
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupApplicationRequest request,
@@ -504,12 +504,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<EntityActionResult[]>(url, cancellationToken, stream,
+            .PostToBungieNetPlatform<ReadOnlyCollection<EntityActionResult>>(url, cancellationToken, stream,
                 authorizationToken.AccessToken)
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<EntityActionResult[]>> DenyAllPending(
+    public async Task<BungieResponse<ReadOnlyCollection<EntityActionResult>>> DenyAllPending(
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupApplicationRequest request,
@@ -528,12 +528,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         await _serializer.SerializeAsync(stream, request);
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<EntityActionResult[]>(url, cancellationToken, stream,
+            .PostToBungieNetPlatform<ReadOnlyCollection<EntityActionResult>>(url, cancellationToken, stream,
                 authorizationToken.AccessToken)
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<EntityActionResult[]>> ApprovePendingForList(
+    public async Task<BungieResponse<ReadOnlyCollection<EntityActionResult>>> ApprovePendingForList(
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupApplicationListRequest request,
@@ -551,12 +551,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<EntityActionResult[]>(url, cancellationToken, stream,
+            .PostToBungieNetPlatform<ReadOnlyCollection<EntityActionResult>>(url, cancellationToken, stream,
                 authorizationToken.AccessToken)
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<bool>> ApprovePending(
+    public async Task<BungieResponse<bool>> ApprovePending(
         AuthorizationTokenData authorizationToken,
         long groupId,
         long membershipId,
@@ -582,7 +582,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<EntityActionResult[]>> DenyPendingForList(
+    public async Task<BungieResponse<ReadOnlyCollection<EntityActionResult>>> DenyPendingForList(
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupApplicationListRequest request,
@@ -600,12 +600,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<EntityActionResult[]>(url, cancellationToken, stream,
+            .PostToBungieNetPlatform<ReadOnlyCollection<EntityActionResult>>(url, cancellationToken, stream,
                 authorizationToken.AccessToken)
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<GetGroupsForMemberResponse>> GetGroupsForMember(
+    public async Task<BungieResponse<GetGroupsForMemberResponse>> GetGroupsForMember(
         BungieMembershipType membershipType,
         long membershipId,
         GroupsForMemberFilter filter,
@@ -625,7 +625,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<GroupMembershipSearchResponse>> RecoverGroupForFounder(
+    public async Task<BungieResponse<GroupMembershipSearchResponse>> RecoverGroupForFounder(
         BungieMembershipType membershipType,
         long membershipId,
         GroupType groupType,
@@ -643,7 +643,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<GroupPotentialMembershipSearchResponse>> GetPotentialGroupsForMember(
+    public async Task<BungieResponse<GroupPotentialMembershipSearchResponse>> GetPotentialGroupsForMember(
         BungieMembershipType membershipType,
         long membershipId,
         GroupType groupType,
@@ -663,7 +663,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<GroupApplicationResponse>> IndividualGroupInvite(
+    public async Task<BungieResponse<GroupApplicationResponse>> IndividualGroupInvite(
         AuthorizationTokenData authorizationToken,
         long groupId,
         BungieMembershipType membershipType,
@@ -691,7 +691,7 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<GroupApplicationResponse>> IndividualGroupInviteCancel(
+    public async Task<BungieResponse<GroupApplicationResponse>> IndividualGroupInviteCancel(
         AuthorizationTokenData authorizationToken,
         long groupId,
         BungieMembershipType membershipType,

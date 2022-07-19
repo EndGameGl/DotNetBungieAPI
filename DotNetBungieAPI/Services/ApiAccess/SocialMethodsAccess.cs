@@ -28,7 +28,7 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
     }
 
 
-    public async ValueTask<BungieResponse<BungieFriendListResponse>> GetFriendList(
+    public async Task<BungieResponse<BungieFriendListResponse>> GetFriendList(
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
     {
@@ -42,7 +42,7 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<BungieFriendRequestListResponse>> GetFriendRequestList(
+    public async Task<BungieResponse<BungieFriendRequestListResponse>> GetFriendRequestList(
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
     {
@@ -52,7 +52,7 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             "/Social/Friends/Requests/", cancellationToken, authorizationToken.AccessToken);
     }
 
-    public async ValueTask<BungieResponse<bool>> IssueFriendRequest(
+    public async Task<BungieResponse<bool>> IssueFriendRequest(
         string membershipId,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
@@ -71,7 +71,7 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<bool>> AcceptFriendRequest(
+    public async Task<BungieResponse<bool>> AcceptFriendRequest(
         string membershipId,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
@@ -90,7 +90,7 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<bool>> DeclineFriendRequest(
+    public async Task<BungieResponse<bool>> DeclineFriendRequest(
         string membershipId,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
@@ -109,7 +109,7 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<bool>> RemoveFriend(
+    public async Task<BungieResponse<bool>> RemoveFriend(
         string membershipId,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
@@ -128,7 +128,7 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<bool>> RemoveFriendRequest(
+    public async Task<BungieResponse<bool>> RemoveFriendRequest(
         string membershipId,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
@@ -147,7 +147,7 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<PlatformFriendResponse>> GetPlatformFriendList(
+    public async Task<BungieResponse<PlatformFriendResponse>> GetPlatformFriendList(
         PlatformFriendType friendPlatform,
         AuthorizationTokenData authorizationToken,
         int page = 0,

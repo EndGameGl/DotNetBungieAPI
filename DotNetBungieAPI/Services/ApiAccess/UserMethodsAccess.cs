@@ -33,7 +33,7 @@ internal sealed class UserMethodsAccess : IUserMethodsAccess
         _bungieNetJsonSerializer = bungieNetJsonSerializer;
     }
 
-    public async ValueTask<BungieResponse<GeneralUser>> GetBungieNetUserById(
+    public async Task<BungieResponse<GeneralUser>> GetBungieNetUserById(
         long id,
         CancellationToken cancellationToken = default)
     {
@@ -47,7 +47,21 @@ internal sealed class UserMethodsAccess : IUserMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<CredentialTypeForAccount[]>> GetCredentialTypesForTargetAccount(
+    public async Task<BungieResponse<ReadOnlyDictionary<BungieCredentialType, string>>> GetSanitizedPlatformDisplayNames(
+        long membershipId, 
+        CancellationToken cancellationToken = default)
+    {
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
+            .Append("/User/GetSanitizedPlatformDisplayNames/")
+            .AddUrlParam(membershipId.ToString())
+            .Build();
+        return await _dotNetBungieApiHttpClient
+            .GetFromBungieNetPlatform<ReadOnlyDictionary<BungieCredentialType, string>>(url, cancellationToken)
+            .ConfigureAwait(false);
+    }
+
+    public async Task<BungieResponse<ReadOnlyCollection<CredentialTypeForAccount>>> GetCredentialTypesForTargetAccount(
         long id,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
@@ -58,22 +72,22 @@ internal sealed class UserMethodsAccess : IUserMethodsAccess
             .AddUrlParam(id.ToString())
             .Build();
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<CredentialTypeForAccount[]>(
+            .GetFromBungieNetPlatform<ReadOnlyCollection<CredentialTypeForAccount>>(
                 url,
                 cancellationToken,
                 authorizationToken.AccessToken)
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<UserTheme[]>> GetAvailableThemes(
+    public async Task<BungieResponse<ReadOnlyCollection<UserTheme>>> GetAvailableThemes(
         CancellationToken cancellationToken = default)
     {
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<UserTheme[]>("/User/GetAvailableThemes", cancellationToken)
+            .GetFromBungieNetPlatform<ReadOnlyCollection<UserTheme>>("/User/GetAvailableThemes", cancellationToken)
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<UserMembershipData>> GetMembershipDataById(long id,
+    public async Task<BungieResponse<UserMembershipData>> GetMembershipDataById(long id,
         BungieMembershipType membershipType, CancellationToken cancellationToken = default)
     {
         var url = StringBuilderPool
@@ -87,7 +101,7 @@ internal sealed class UserMethodsAccess : IUserMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser(
+    public async Task<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser(
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
     {
@@ -102,7 +116,7 @@ internal sealed class UserMethodsAccess : IUserMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<HardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(
+    public async Task<BungieResponse<HardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(
         long credential,
         BungieCredentialType credentialType = BungieCredentialType.SteamId,
         CancellationToken cancellationToken = default)
@@ -118,23 +132,7 @@ internal sealed class UserMethodsAccess : IUserMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<UserSearchResponse>> SearchByGlobalNamePrefix(
-        string displayNamePrefix,
-        int page = 0,
-        CancellationToken cancellationToken = default)
-    {
-        var url = StringBuilderPool
-            .GetBuilder(cancellationToken)
-            .Append("/User/Search/Prefix/")
-            .AddUrlParam(displayNamePrefix)
-            .AddUrlParam(page.ToString())
-            .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<UserSearchResponse>(url, cancellationToken)
-            .ConfigureAwait(false);
-    }
-
-    public async ValueTask<BungieResponse<UserSearchResponse>> SearchByGlobalNamePost(
+    public async Task<BungieResponse<UserSearchResponse>> SearchByGlobalNamePost(
         UserSearchPrefixRequest request,
         int page = 0,
         CancellationToken cancellationToken = default)

@@ -24,15 +24,15 @@ internal sealed class AppMethodsAccess : IAppMethodsAccess
         _configuration = configuration;
     }
 
-    public async ValueTask<BungieResponse<Application[]>> GetBungieApplications(
+    public async Task<BungieResponse<ReadOnlyCollection<Application>>> GetBungieApplications(
         CancellationToken cancellationToken = default)
     {
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<Application[]>("/App/FirstParty/", cancellationToken)
+            .GetFromBungieNetPlatform<ReadOnlyCollection<Application>>("/App/FirstParty/", cancellationToken)
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<ApiUsage>> GetApplicationApiUsage(
+    public async Task<BungieResponse<ApiUsage>> GetApplicationApiUsage(
         AuthorizationTokenData authorizationToken,
         int applicationId,
         DateTime? start = null,

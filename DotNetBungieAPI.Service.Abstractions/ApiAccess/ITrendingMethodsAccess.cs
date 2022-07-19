@@ -15,7 +15,7 @@ public interface ITrendingMethodsAccess
     /// </summary>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<TrendingCategories>> GetTrendingCategories(
+    Task<BungieResponse<TrendingCategories>> GetTrendingCategories(
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -25,7 +25,7 @@ public interface ITrendingMethodsAccess
     /// <param name="pageNumber">The page # of results to return.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<SearchResultOfTrendingEntry>> GetTrendingCategory(
+    Task<BungieResponse<SearchResultOfTrendingEntry>> GetTrendingCategory(
         string categoryId,
         int pageNumber = 0,
         CancellationToken cancellationToken = default);
@@ -39,7 +39,7 @@ public interface ITrendingMethodsAccess
     /// <param name="identifier">The identifier for the entity to be returned.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<TrendingDetail>> GetTrendingEntryDetail(
+    Task<BungieResponse<TrendingDetail>> GetTrendingEntryDetail(
         TrendingEntryType trendingEntryType,
         string identifier,
         CancellationToken cancellationToken = default);

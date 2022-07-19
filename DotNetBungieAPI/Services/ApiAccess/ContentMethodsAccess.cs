@@ -20,7 +20,7 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
     }
 
-    public async ValueTask<BungieResponse<ContentTypeDescription>> GetContentType(
+    public async Task<BungieResponse<ContentTypeDescription>> GetContentType(
         string type,
         CancellationToken cancellationToken = default)
     {
@@ -34,7 +34,7 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<ContentItemPublicContract>> GetContentById(
+    public async Task<BungieResponse<ContentItemPublicContract>> GetContentById(
         long id,
         string locale,
         bool head = false,
@@ -52,7 +52,7 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<ContentItemPublicContract>> GetContentByTagAndType(
+    public async Task<BungieResponse<ContentItemPublicContract>> GetContentByTagAndType(
         string tag,
         string type,
         string locale,
@@ -70,7 +70,7 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentWithText(
+    public async Task<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentWithText(
         string locale,
         string[] types,
         string searchtext,
@@ -94,7 +94,7 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentByTagAndType(
+    public async Task<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentByTagAndType(
         string locale,
         string tag,
         string type,
@@ -111,6 +111,21 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
             .Build();
         return await _dotNetBungieApiHttpClient
             .GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(url, cancellationToken)
+            .ConfigureAwait(false);
+    }
+
+    public async Task<BungieResponse<NewsArticleRssResponse>> RssNewsArticles(
+        string pageToken,
+        CancellationToken cancellationToken = default)
+    {
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
+            .Append("/Content/SearchContentByTagAndType/")
+            .AddUrlParam(pageToken)
+            .Build();
+        
+        return await _dotNetBungieApiHttpClient
+            .GetFromBungieNetPlatform<NewsArticleRssResponse>(url, cancellationToken)
             .ConfigureAwait(false);
     }
 }

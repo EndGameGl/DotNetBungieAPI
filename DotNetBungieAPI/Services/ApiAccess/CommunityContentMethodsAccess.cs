@@ -20,7 +20,7 @@ internal sealed class CommunityContentMethodsAccess : ICommunityContentMethodsAc
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
     }
 
-    public async ValueTask<BungieResponse<PostSearchResponse>> GetCommunityContent(
+    public async Task<BungieResponse<PostSearchResponse>> GetCommunityContent(
         ForumTopicsSortEnum sort,
         ForumMediaType mediaFilter,
         int page = 0,

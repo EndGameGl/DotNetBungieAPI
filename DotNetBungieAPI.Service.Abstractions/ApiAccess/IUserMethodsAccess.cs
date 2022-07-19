@@ -1,4 +1,5 @@
-﻿using DotNetBungieAPI.Models;
+﻿using System.Collections.ObjectModel;
+using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Authorization;
 using DotNetBungieAPI.Models.Config;
 using DotNetBungieAPI.Models.Requests;
@@ -17,20 +18,29 @@ public interface IUserMethodsAccess
     /// <param name="id">The requested Bungie.net membership id.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<GeneralUser>> GetBungieNetUserById(
+    Task<BungieResponse<GeneralUser>> GetBungieNetUserById(
         long id,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    ///     Gets a list of all display names linked to this membership id but sanitized (profanity filtered). Obeys all visibility rules of calling user and is heavily cached.
+    /// </summary>
+    /// <param name="membershipId">The requested membership id to load.</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns></returns>
+    Task<BungieResponse<ReadOnlyDictionary<BungieCredentialType, string>>> GetSanitizedPlatformDisplayNames(
+        long membershipId,
         CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Returns a list of credential types attached to the requested account
     /// </summary>
-    /// <param name="id">The user's membership id</param>
-    /// ///
-    /// <param name="authorizationToken">Authorization token</param>
+    /// <param name="membershipId">The user's membership id</param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<CredentialTypeForAccount[]>> GetCredentialTypesForTargetAccount(
-        long id,
+    Task<BungieResponse<ReadOnlyCollection<CredentialTypeForAccount>>> GetCredentialTypesForTargetAccount(
+        long membershipId,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
 
@@ -39,19 +49,19 @@ public interface IUserMethodsAccess
     /// </summary>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<UserTheme[]>> GetAvailableThemes(
+    Task<BungieResponse<ReadOnlyCollection<UserTheme>>> GetAvailableThemes(
         CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Returns a list of accounts associated with the supplied membership ID and membership type. This will include all
     ///     linked accounts (even when hidden) if supplied credentials permit it.
     /// </summary>
-    /// <param name="id">The membership ID of the target user.</param>
+    /// <param name="membershipId">The membership ID of the target user.</param>
     /// <param name="membershipType">Type of the supplied membership ID.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<UserMembershipData>> GetMembershipDataById(
-        long id,
+    Task<BungieResponse<UserMembershipData>> GetMembershipDataById(
+        long membershipId,
         BungieMembershipType membershipType,
         CancellationToken cancellationToken = default);
 
@@ -63,8 +73,7 @@ public interface IUserMethodsAccess
     /// <param name="authorizationToken">Authorization token</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<UserMembershipData>>
-        GetMembershipDataForCurrentUser(
+    Task<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser(
             AuthorizationTokenData authorizationToken,
             CancellationToken cancellationToken = default);
 
@@ -76,22 +85,9 @@ public interface IUserMethodsAccess
     /// <param name="credentialType">The credential type. 'SteamId' is the only valid value at present.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<HardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(
+    Task<BungieResponse<HardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(
         long credential,
         BungieCredentialType credentialType = BungieCredentialType.SteamId,
-        CancellationToken cancellationToken = default);
-
-    /// <summary>
-    ///     Given the prefix of a global display name, returns all users who share that name.
-    /// </summary>
-    /// <param name="displayNamePrefix">The display name prefix you're looking for.</param>
-    /// <param name="page">The zero-based page of results you desire.</param>
-    /// <param name="cancellationToken">Cancellation token</param>
-    /// <returns></returns>
-    [Obsolete("Do not use this to search users, use SearchByGlobalNamePost instead.")]
-    ValueTask<BungieResponse<UserSearchResponse>> SearchByGlobalNamePrefix(
-        string displayNamePrefix,
-        int page = 0,
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -101,7 +97,7 @@ public interface IUserMethodsAccess
     /// <param name="page">The zero-based page of results you desire.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<UserSearchResponse>> SearchByGlobalNamePost(
+    Task<BungieResponse<UserSearchResponse>> SearchByGlobalNamePost(
         UserSearchPrefixRequest request,
         int page = 0,
         CancellationToken cancellationToken = default);

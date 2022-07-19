@@ -10,7 +10,7 @@ public interface IMiscMethodsAccess
     /// </summary>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<Dictionary<string, string>>> GetAvailableLocales(
+    Task<BungieResponse<Dictionary<string, string>>> GetAvailableLocales(
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -18,7 +18,7 @@ public interface IMiscMethodsAccess
     /// </summary>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<CoreSettingsConfiguration>> GetCommonSettings(
+    Task<BungieResponse<CoreSettingsConfiguration>> GetCommonSettings(
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -26,7 +26,7 @@ public interface IMiscMethodsAccess
     /// </summary>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<Dictionary<string, CoreSystem>>> GetUserSystemOverrides(
+    Task<BungieResponse<Dictionary<string, CoreSystem>>> GetUserSystemOverrides(
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -35,7 +35,7 @@ public interface IMiscMethodsAccess
     /// <param name="includestreaming">Determines whether Streaming Alerts are included in results</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<GlobalAlert[]>> GetGlobalAlerts(
+    Task<BungieResponse<GlobalAlert[]>> GetGlobalAlerts(
         bool includestreaming = false,
         CancellationToken cancellationToken = default);
 }

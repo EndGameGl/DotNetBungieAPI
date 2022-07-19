@@ -26,7 +26,7 @@ public interface IDestiny2MethodsAccess
     /// </summary>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyManifest>> GetDestinyManifest(
+    Task<BungieResponse<DestinyManifest>> GetDestinyManifest(
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -46,7 +46,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="cancellationToken">Cancellation token</param>
     /// <typeparam name="T"><see cref="IDestinyDefinition" /> entity</typeparam>
     /// <returns></returns>
-    ValueTask<BungieResponse<T>> GetDestinyEntityDefinition<T>(
+    Task<BungieResponse<T>> GetDestinyEntityDefinition<T>(
         DefinitionsEnum entityType,
         uint hash,
         CancellationToken cancellationToken = default) where T : IDestinyDefinition;
@@ -62,7 +62,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="request">Request body</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayerByBungieName(
+    Task<BungieResponse<ReadOnlyCollection<UserInfoCard>>> SearchDestinyPlayerByBungieName(
         BungieMembershipType membershipType,
         ExactSearchRequest request,
         CancellationToken cancellationToken = default);
@@ -86,7 +86,7 @@ public interface IDestiny2MethodsAccess
     /// </param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyLinkedProfilesResponse>> GetLinkedProfiles(
+    Task<BungieResponse<DestinyLinkedProfilesResponse>> GetLinkedProfiles(
         BungieMembershipType membershipType,
         long membershipId,
         bool getAllMemberships = false,
@@ -104,7 +104,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken"></param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyProfileResponse>> GetProfile(
+    Task<BungieResponse<DestinyProfileResponse>> GetProfile(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         DestinyComponentType[] componentTypes,
@@ -124,7 +124,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken"></param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyCharacterResponse>> GetCharacter(
+    Task<BungieResponse<DestinyCharacterResponse>> GetCharacter(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
@@ -139,7 +139,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="groupId">A valid group id of clan.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(
+    Task<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(
         long groupId,
         CancellationToken cancellationToken = default);
 
@@ -148,7 +148,7 @@ public interface IDestiny2MethodsAccess
     /// </summary>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<ClanBannerSource>> GetClanBannerSource(
+    Task<BungieResponse<ClanBannerSource>> GetClanBannerSource(
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -165,7 +165,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken"></param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyItemResponse>> GetItem(
+    Task<BungieResponse<DestinyItemResponse>> GetItem(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long itemInstanceId,
@@ -188,7 +188,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken"></param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyVendorsResponse>> GetVendors(
+    Task<BungieResponse<DestinyVendorsResponse>> GetVendors(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
@@ -210,7 +210,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken"></param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyVendorResponse>> GetVendor(
+    Task<BungieResponse<DestinyVendorResponse>> GetVendor(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
@@ -228,7 +228,7 @@ public interface IDestiny2MethodsAccess
     /// </param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyPublicVendorsResponse>> GetPublicVendors(
+    Task<BungieResponse<DestinyPublicVendorsResponse>> GetPublicVendors(
         DestinyComponentType[] componentTypes,
         CancellationToken cancellationToken = default);
 
@@ -250,7 +250,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken"></param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyCollectibleNodeDetailResponse>> GetCollectibleNodeDetails(
+    Task<BungieResponse<DestinyCollectibleNodeDetailResponse>> GetCollectibleNodeDetails(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
@@ -266,7 +266,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken"></param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<int>> TransferItem(
+    Task<BungieResponse<int>> TransferItem(
         DestinyItemTransferRequest request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
@@ -278,7 +278,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken"></param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<int>> PullFromPostmaster(
+    Task<BungieResponse<int>> PullFromPostmaster(
         DestinyPostmasterTransferRequest request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
@@ -290,7 +290,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken"></param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<int>> EquipItem(
+    Task<BungieResponse<int>> EquipItem(
         DestinyItemActionRequest request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
@@ -302,7 +302,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken"></param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyEquipItemResults>> EquipItems(
+    Task<BungieResponse<DestinyEquipItemResults>> EquipItems(
         DestinyItemSetActionRequest request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
@@ -314,7 +314,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken"></param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<int>> SetItemLockState(
+    Task<BungieResponse<int>> SetItemLockState(
         DestinyItemStateRequest request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
@@ -326,7 +326,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken"></param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<int>> SetQuestTrackedState(
+    Task<BungieResponse<int>> SetQuestTrackedState(
         DestinyItemStateRequest request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
@@ -338,7 +338,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken">Authorization token</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlug(
+    Task<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlug(
         DestinyInsertPlugsActionRequest request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
@@ -353,7 +353,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken">Authorization token</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlugFree(
+    Task<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlugFree(
         DestinyInsertPlugsFreeActionRequest request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
@@ -364,7 +364,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="activityId">The ID of the activity whose PGCR is requested.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyPostGameCarnageReportData>> GetPostGameCarnageReport(
+    Task<BungieResponse<DestinyPostGameCarnageReportData>> GetPostGameCarnageReport(
         long activityId,
         CancellationToken cancellationToken = default);
 
@@ -378,7 +378,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken"></param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<int>> ReportOffensivePostGameCarnageReportPlayer(
+    Task<BungieResponse<int>> ReportOffensivePostGameCarnageReportPlayer(
         long activityId,
         DestinyReportOffensePgcrRequest request,
         AuthorizationTokenData authorizationToken,
@@ -389,7 +389,7 @@ public interface IDestiny2MethodsAccess
     /// </summary>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>>>
+    Task<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>>>
         GetHistoricalStatsDefinition(
             CancellationToken cancellationToken = default);
 
@@ -402,8 +402,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="statid">ID of stat to return rather than returning all Leaderboard stats.</param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    ValueTask<BungieResponse<
-            ReadOnlyDictionary<string, ReadOnlyDictionary<string, DestinyClanLeaderboardsResponse>>>>
+    Task<BungieResponse<ReadOnlyDictionary<string, ReadOnlyDictionary<string, DestinyClanLeaderboardsResponse>>>>
         GetClanLeaderboards(
             long groupId,
             int maxtop,
@@ -418,7 +417,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="modes">List of game modes for which to get leaderboards.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyClanAggregateStat[]>> GetClanAggregateStats(
+    Task<BungieResponse<ReadOnlyCollection<DestinyClanAggregateStat>>> GetClanAggregateStats(
         long groupId,
         DestinyActivityModeType[] modes,
         CancellationToken cancellationToken = default);
@@ -433,7 +432,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="statid">ID of stat to return rather than returning all Leaderboard stats.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<Dictionary<string, object>>> GetLeaderboards(
+    Task<BungieResponse<Dictionary<string, object>>> GetLeaderboards(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         int maxtop,
@@ -449,7 +448,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="page">Page number to return, starting with 0.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyEntitySearchResult>> SearchDestinyEntities(
+    Task<BungieResponse<DestinyEntitySearchResult>> SearchDestinyEntities(
         DefinitionsEnum type,
         string searchTerm,
         int page = 0,
@@ -480,7 +479,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="periodType">Indicates a specific period type to return. Optional. May be: Daily, AllTime, or Activity</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>>> GetHistoricalStats(
+    Task<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>>> GetHistoricalStats(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
@@ -502,7 +501,7 @@ public interface IDestiny2MethodsAccess
     /// </param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyHistoricalStatsAccountResult>> GetHistoricalStatsForAccount(
+    Task<BungieResponse<DestinyHistoricalStatsAccountResult>> GetHistoricalStatsForAccount(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         DestinyStatsGroupType[] groups = null,
@@ -519,7 +518,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="page">Page number to return, starting with 0.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyActivityHistoryResults>> GetActivityHistory(
+    Task<BungieResponse<DestinyActivityHistoryResults>> GetActivityHistory(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
@@ -536,7 +535,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="characterId">The id of the character to retrieve.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyHistoricalWeaponStatsData>> GetUniqueWeaponHistory(
+    Task<BungieResponse<DestinyHistoricalWeaponStatsData>> GetUniqueWeaponHistory(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
@@ -550,7 +549,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="characterId">The specific character whose activities should be returned.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyAggregateActivityResults>> GetDestinyAggregateActivityStats(
+    Task<BungieResponse<DestinyAggregateActivityResults>> GetDestinyAggregateActivityStats(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
@@ -561,7 +560,7 @@ public interface IDestiny2MethodsAccess
     /// </summary>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<Dictionary<uint, DestinyPublicMilestone>>> GetPublicMilestones(
+    Task<BungieResponse<Dictionary<uint, DestinyPublicMilestone>>> GetPublicMilestones(
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -570,7 +569,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="milestoneHash">The identifier for the milestone to be returned.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<DestinyMilestoneContent>> GetPublicMilestoneContent(
+    Task<BungieResponse<DestinyMilestoneContent>> GetPublicMilestoneContent(
         uint milestoneHash,
         CancellationToken cancellationToken = default);
 
@@ -581,7 +580,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken"></param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<AwaInitializeResponse>> AwaInitializeRequest(
+    Task<BungieResponse<AwaInitializeResponse>> AwaInitializeRequest(
         AwaPermissionRequested request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
@@ -593,7 +592,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken"></param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<int>> AwaProvideAuthorizationResult(
+    Task<BungieResponse<int>> AwaProvideAuthorizationResult(
         AwaUserResponse request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
@@ -605,7 +604,7 @@ public interface IDestiny2MethodsAccess
     /// <param name="authorizationToken"></param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<AwaAuthorizationResult>> AwaGetActionToken(
+    Task<BungieResponse<AwaAuthorizationResult>> AwaGetActionToken(
         string correlationId,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);

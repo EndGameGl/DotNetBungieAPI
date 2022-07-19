@@ -15,9 +15,9 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PackageVersion>2.3.0</PackageVersion>
-        <AssemblyVersion>2.3.0</AssemblyVersion>
-        <FileVersion>2.3.0</FileVersion>
+        <PackageVersion>2.4.0</PackageVersion>
+        <AssemblyVersion>2.4.0</AssemblyVersion>
+        <FileVersion>2.4.0</FileVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">

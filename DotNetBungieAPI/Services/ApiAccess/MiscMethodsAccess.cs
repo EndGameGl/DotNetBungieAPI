@@ -16,7 +16,7 @@ internal sealed class MiscMethodsAccess : IMiscMethodsAccess
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
     }
 
-    public async ValueTask<BungieResponse<Dictionary<string, string>>> GetAvailableLocales(
+    public async Task<BungieResponse<Dictionary<string, string>>> GetAvailableLocales(
         CancellationToken cancellationToken = default)
     {
         return await _dotNetBungieApiHttpClient
@@ -24,7 +24,7 @@ internal sealed class MiscMethodsAccess : IMiscMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<CoreSettingsConfiguration>> GetCommonSettings(
+    public async Task<BungieResponse<CoreSettingsConfiguration>> GetCommonSettings(
         CancellationToken cancellationToken = default)
     {
         return await _dotNetBungieApiHttpClient
@@ -32,7 +32,7 @@ internal sealed class MiscMethodsAccess : IMiscMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<Dictionary<string, CoreSystem>>> GetUserSystemOverrides(
+    public async Task<BungieResponse<Dictionary<string, CoreSystem>>> GetUserSystemOverrides(
         CancellationToken cancellationToken = default)
     {
         return await _dotNetBungieApiHttpClient
@@ -40,7 +40,7 @@ internal sealed class MiscMethodsAccess : IMiscMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<GlobalAlert[]>> GetGlobalAlerts(
+    public async Task<BungieResponse<GlobalAlert[]>> GetGlobalAlerts(
         bool includestreaming = false,
         CancellationToken cancellationToken = default)
     {

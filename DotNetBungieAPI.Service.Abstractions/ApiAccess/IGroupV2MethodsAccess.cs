@@ -1,4 +1,5 @@
-﻿using DotNetBungieAPI.Models;
+﻿using System.Collections.ObjectModel;
+using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Authorization;
 using DotNetBungieAPI.Models.Config;
 using DotNetBungieAPI.Models.Entities;
@@ -17,7 +18,7 @@ public interface IGroupV2MethodsAccess
     /// </summary>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<Dictionary<int, string>>> GetAvailableAvatars(
+    Task<BungieResponse<ReadOnlyDictionary<int, string>>> GetAvailableAvatars(
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -25,7 +26,7 @@ public interface IGroupV2MethodsAccess
     /// </summary>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<GroupTheme[]>> GetAvailableThemes(
+    Task<BungieResponse<ReadOnlyCollection<GroupTheme>>> GetAvailableThemes(
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -34,11 +35,11 @@ public interface IGroupV2MethodsAccess
     ///     <para />
     ///     Requires ReadUserData scope.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="mType">The Destiny membership type of the account we wish to access settings.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<bool>> GetUserClanInviteSetting(
+    Task<BungieResponse<bool>> GetUserClanInviteSetting(
         AuthorizationTokenData authorizationToken,
         BungieMembershipType mType,
         CancellationToken cancellationToken = default);
@@ -48,12 +49,12 @@ public interface IGroupV2MethodsAccess
     ///     <para />
     ///     Requires ReadGroups scope.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupType">Type of groups requested</param>
     /// <param name="createDateRange">Requested range in which to pull recommended groups</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<GroupV2Card[]>> GetRecommendedGroups(
+    Task<BungieResponse<ReadOnlyCollection<GroupV2Card>>> GetRecommendedGroups(
         AuthorizationTokenData authorizationToken,
         GroupType groupType,
         GroupDateRange createDateRange,
@@ -65,7 +66,7 @@ public interface IGroupV2MethodsAccess
     /// <param name="query">Request body</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<GroupSearchResponse>> GroupSearch(
+    Task<BungieResponse<GroupSearchResponse>> GroupSearch(
         GroupQuery query,
         CancellationToken cancellationToken = default);
 
@@ -75,7 +76,7 @@ public interface IGroupV2MethodsAccess
     /// <param name="groupId">Requested group's id.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<GroupResponse>> GetGroup(
+    Task<BungieResponse<GroupResponse>> GetGroup(
         long groupId,
         CancellationToken cancellationToken = default);
 
@@ -86,7 +87,7 @@ public interface IGroupV2MethodsAccess
     /// <param name="groupType">Type of group to find.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<GroupResponse>> GetGroupByName(
+    Task<BungieResponse<GroupResponse>> GetGroupByName(
         string groupName,
         GroupType groupType,
         CancellationToken cancellationToken = default);
@@ -97,7 +98,7 @@ public interface IGroupV2MethodsAccess
     /// <param name="request">Request params</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<GroupResponse>> GetGroupByNameV2(
+    Task<BungieResponse<GroupResponse>> GetGroupByNameV2(
         GroupNameSearchRequest request,
         CancellationToken cancellationToken = default);
 
@@ -107,7 +108,7 @@ public interface IGroupV2MethodsAccess
     /// <param name="groupId">Requested group's id.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<GroupOptionalConversation[]>> GetGroupOptionalConversations(
+    Task<BungieResponse<ReadOnlyCollection<GroupOptionalConversation>>> GetGroupOptionalConversations(
         long groupId,
         CancellationToken cancellationToken = default);
 
@@ -117,12 +118,12 @@ public interface IGroupV2MethodsAccess
     ///     <para />
     ///     Requires AdminGroups scope.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">Group ID of the group to edit.</param>
     /// <param name="request">Request body</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<int>> EditGroup(
+    Task<BungieResponse<int>> EditGroup(
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupEditAction request,
@@ -134,12 +135,12 @@ public interface IGroupV2MethodsAccess
     ///     <para />
     ///     Requires AdminGroups scope.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">Group ID of the group to edit.</param>
     /// <param name="request">Request body</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<int>> EditClanBanner(
+    Task<BungieResponse<int>> EditClanBanner(
         AuthorizationTokenData authorizationToken,
         long groupId,
         ClanBanner request,
@@ -151,12 +152,12 @@ public interface IGroupV2MethodsAccess
     ///     <para />
     ///     Requires AdminGroups scope.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">Group ID of the group to edit.</param>
     /// <param name="request">Request body</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<int>> EditFounderOptions(
+    Task<BungieResponse<int>> EditFounderOptions(
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupOptionsEditAction request,
@@ -167,12 +168,12 @@ public interface IGroupV2MethodsAccess
     ///     <para />
     ///     Requires AdminGroups scope.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">Group ID of the group to edit.</param>
     /// <param name="request">Request body</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<long>> AddOptionalConversation(
+    Task<BungieResponse<long>> AddOptionalConversation(
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupOptionalConversationAddRequest request,
@@ -183,13 +184,13 @@ public interface IGroupV2MethodsAccess
     ///     <para />
     ///     Requires AdminGroups scope.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">Group ID of the group to edit.</param>
     /// <param name="conversationId">Conversation Id of the channel being edited.</param>
     /// <param name="request">Request body</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<long>> EditOptionalConversation(
+    Task<BungieResponse<long>> EditOptionalConversation(
         AuthorizationTokenData authorizationToken,
         long groupId,
         long conversationId,
@@ -208,7 +209,7 @@ public interface IGroupV2MethodsAccess
     /// </param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<SearchResultOfGroupMember>> GetMembersOfGroup(
+    Task<BungieResponse<SearchResultOfGroupMember>> GetMembersOfGroup(
         long groupId,
         int currentpage = 1,
         RuntimeGroupMemberType memberType = RuntimeGroupMemberType.None,
@@ -222,7 +223,7 @@ public interface IGroupV2MethodsAccess
     /// <param name="currentpage">Page number (starting with 1). Each page has a fixed size of 50 items per page.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<SearchResultOfGroupMember>> GetAdminsAndFounderOfGroup(
+    Task<BungieResponse<SearchResultOfGroupMember>> GetAdminsAndFounderOfGroup(
         long groupId,
         int currentpage = 1,
         CancellationToken cancellationToken = default);
@@ -233,14 +234,14 @@ public interface IGroupV2MethodsAccess
     ///     <para />
     ///     Requires AdminGroups scope.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">ID of the group to which the member belongs.</param>
     /// <param name="membershipId">Membership ID to modify.</param>
     /// <param name="membershipType">Membership type of the provide membership ID.</param>
     /// <param name="memberType">New membertype for the specified member.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<int>> EditGroupMembership(
+    Task<BungieResponse<int>> EditGroupMembership(
         AuthorizationTokenData authorizationToken,
         long groupId,
         long membershipId,
@@ -254,13 +255,13 @@ public interface IGroupV2MethodsAccess
     ///     <para />
     ///     Requires AdminGroups scope.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">Group ID to kick the user from.</param>
     /// <param name="membershipId">Membership ID to kick.</param>
     /// <param name="membershipType">Membership type of the provided membership ID.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<GroupMemberLeaveResult>> KickMember(
+    Task<BungieResponse<GroupMemberLeaveResult>> KickMember(
         AuthorizationTokenData authorizationToken,
         long groupId,
         long membershipId,
@@ -272,14 +273,14 @@ public interface IGroupV2MethodsAccess
     ///     <para />
     ///     Requires AdminGroups scope.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">Group ID that has the member to ban.</param>
     /// <param name="membershipId">Membership ID of the member to ban from the group.</param>
     /// <param name="membershipType">Membership type of the provided membership ID.</param>
     /// <param name="request">Request body</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<int>> BanMember(
+    Task<BungieResponse<int>> BanMember(
         AuthorizationTokenData authorizationToken,
         long groupId,
         long membershipId,
@@ -292,13 +293,13 @@ public interface IGroupV2MethodsAccess
     ///     <para />
     ///     Requires AdminGroups scope.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">Group ID that has the member to unban.</param>
     /// <param name="membershipId">Membership ID of the member to unban from the group</param>
     /// <param name="membershipType">Membership type of the provided membership ID.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<int>> UnbanMember(
+    Task<BungieResponse<int>> UnbanMember(
         AuthorizationTokenData authorizationToken,
         long groupId,
         long membershipId,
@@ -309,12 +310,12 @@ public interface IGroupV2MethodsAccess
     ///     Get the list of banned members in a given group. Only accessible to group Admins and above. Not applicable to all
     ///     groups. Check group features.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">Group ID whose banned members you are fetching</param>
     /// <param name="currentpage">Page number (starting with 1). Each page has a fixed size of 50 entries.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<SearchResultOfGroupBan>> GetBannedMembersOfGroup(
+    Task<BungieResponse<SearchResultOfGroupBan>> GetBannedMembersOfGroup(
         AuthorizationTokenData authorizationToken,
         long groupId,
         int currentpage = 1,
@@ -324,13 +325,13 @@ public interface IGroupV2MethodsAccess
     ///     An administrative method to allow the founder of a group or clan to give up their position to another admin
     ///     permanently.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">The target group id</param>
     /// <param name="founderIdNew">The new founder for this group. Must already be a group admin.</param>
     /// <param name="membershipType">Membership type of the provided founderIdNew.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<bool>> AbdicateFoundership(
+    Task<BungieResponse<bool>> AbdicateFoundership(
         AuthorizationTokenData authorizationToken,
         long groupId,
         long founderIdNew,
@@ -341,12 +342,12 @@ public interface IGroupV2MethodsAccess
     ///     Get the list of users who are awaiting a decision on their application to join a given group. Modified to include
     ///     application info.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">ID of the group.</param>
     /// <param name="currentpage">Page number (starting with 1). Each page has a fixed size of 50 items per page.</param>
     /// <param name="token">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<SearchResultOfGroupMemberApplication>> GetPendingMemberships(
+    Task<BungieResponse<SearchResultOfGroupMemberApplication>> GetPendingMemberships(
         AuthorizationTokenData authorizationToken,
         long groupId,
         int currentpage = 1,
@@ -355,12 +356,12 @@ public interface IGroupV2MethodsAccess
     /// <summary>
     ///     Get the list of users who have been invited into the group.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">ID of the group.</param>
     /// <param name="currentpage">Page number (starting with 1). Each page has a fixed size of 50 items per page.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<SearchResultOfGroupMemberApplication>> GetInvitedIndividuals(
+    Task<BungieResponse<SearchResultOfGroupMemberApplication>> GetInvitedIndividuals(
         AuthorizationTokenData authorizationToken,
         long groupId,
         int currentpage = 1,
@@ -369,12 +370,12 @@ public interface IGroupV2MethodsAccess
     /// <summary>
     ///     Approve all of the pending users for the given group.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">ID of the group.</param>
     /// <param name="request">Request body</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<EntityActionResult[]>> ApproveAllPending(
+    Task<BungieResponse<ReadOnlyCollection<EntityActionResult>>> ApproveAllPending(
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupApplicationRequest request,
@@ -383,12 +384,12 @@ public interface IGroupV2MethodsAccess
     /// <summary>
     ///     Deny all of the pending users for the given group.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">ID of the group.</param>
     /// <param name="request">Request body</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<EntityActionResult[]>> DenyAllPending(
+    Task<BungieResponse<ReadOnlyCollection<EntityActionResult>>> DenyAllPending(
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupApplicationRequest request,
@@ -397,12 +398,12 @@ public interface IGroupV2MethodsAccess
     /// <summary>
     ///     Approve all of the pending users for the given group.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">ID of the group.</param>
     /// <param name="request">Request body</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<EntityActionResult[]>> ApprovePendingForList(
+    Task<BungieResponse<ReadOnlyCollection<EntityActionResult>>> ApprovePendingForList(
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupApplicationListRequest request,
@@ -411,14 +412,14 @@ public interface IGroupV2MethodsAccess
     /// <summary>
     ///     Approve the given membershipId to join the group/clan as long as they have applied.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">ID of the group.</param>
     /// <param name="membershipId">The membership id being approved.</param>
     /// <param name="membershipType">Membership type of the supplied membership ID.</param>
     /// <param name="request">Request body</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<bool>> ApprovePending(
+    Task<BungieResponse<bool>> ApprovePending(
         AuthorizationTokenData authorizationToken,
         long groupId,
         long membershipId,
@@ -429,12 +430,12 @@ public interface IGroupV2MethodsAccess
     /// <summary>
     ///     Deny all of the pending users for the given group that match the passed-in.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">ID of the group.</param>
     /// <param name="request">Request body</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<EntityActionResult[]>> DenyPendingForList(
+    Task<BungieResponse<ReadOnlyCollection<EntityActionResult>>> DenyPendingForList(
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupApplicationListRequest request,
@@ -449,7 +450,7 @@ public interface IGroupV2MethodsAccess
     /// <param name="groupType">Type of group the supplied member founded.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<GetGroupsForMemberResponse>> GetGroupsForMember(
+    Task<BungieResponse<GetGroupsForMemberResponse>> GetGroupsForMember(
         BungieMembershipType membershipType,
         long membershipId,
         GroupsForMemberFilter filter,
@@ -464,7 +465,7 @@ public interface IGroupV2MethodsAccess
     /// <param name="groupType">Type of group the supplied member founded.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<GroupMembershipSearchResponse>> RecoverGroupForFounder(
+    Task<BungieResponse<GroupMembershipSearchResponse>> RecoverGroupForFounder(
         BungieMembershipType membershipType,
         long membershipId,
         GroupType groupType,
@@ -479,7 +480,7 @@ public interface IGroupV2MethodsAccess
     /// <param name="filter">Filter apply to list of potential joined groups.</param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    ValueTask<BungieResponse<GroupPotentialMembershipSearchResponse>> GetPotentialGroupsForMember(
+    Task<BungieResponse<GroupPotentialMembershipSearchResponse>> GetPotentialGroupsForMember(
         BungieMembershipType membershipType,
         long membershipId,
         GroupType groupType,
@@ -489,14 +490,14 @@ public interface IGroupV2MethodsAccess
     /// <summary>
     ///     Invite a user to join this group.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">ID of the group you would like to join.</param>
     /// <param name="membershipType">MembershipType of the account being invited.</param>
     /// <param name="membershipId">Membership id of the account being invited.</param>
     /// <param name="request">Request body</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<GroupApplicationResponse>> IndividualGroupInvite(
+    Task<BungieResponse<GroupApplicationResponse>> IndividualGroupInvite(
         AuthorizationTokenData authorizationToken,
         long groupId,
         BungieMembershipType membershipType,
@@ -507,13 +508,13 @@ public interface IGroupV2MethodsAccess
     /// <summary>
     ///     Cancels a pending invitation to join a group.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">ID of the group you would like to join.</param>
     /// <param name="membershipType">MembershipType of the account being cancelled.</param>
     /// <param name="membershipId">Membership id of the account being cancelled.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<GroupApplicationResponse>> IndividualGroupInviteCancel(
+    Task<BungieResponse<GroupApplicationResponse>> IndividualGroupInviteCancel(
         AuthorizationTokenData authorizationToken,
         long groupId,
         BungieMembershipType membershipType,

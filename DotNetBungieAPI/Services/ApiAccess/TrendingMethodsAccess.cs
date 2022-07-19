@@ -20,7 +20,7 @@ internal sealed class TrendingMethodsAccess : ITrendingMethodsAccess
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
     }
 
-    public async ValueTask<BungieResponse<TrendingCategories>> GetTrendingCategories(
+    public async Task<BungieResponse<TrendingCategories>> GetTrendingCategories(
         CancellationToken cancellationToken = default)
     {
         return await _dotNetBungieApiHttpClient
@@ -28,7 +28,7 @@ internal sealed class TrendingMethodsAccess : ITrendingMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<SearchResultOfTrendingEntry>> GetTrendingCategory(
+    public async Task<BungieResponse<SearchResultOfTrendingEntry>> GetTrendingCategory(
         string categoryId,
         int pageNumber = 0,
         CancellationToken cancellationToken = default)
@@ -44,7 +44,7 @@ internal sealed class TrendingMethodsAccess : ITrendingMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<TrendingDetail>> GetTrendingEntryDetail(
+    public async Task<BungieResponse<TrendingDetail>> GetTrendingEntryDetail(
         TrendingEntryType trendingEntryType,
         string identifier,
         CancellationToken cancellationToken = default)

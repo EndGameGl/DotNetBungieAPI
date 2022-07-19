@@ -1,4 +1,5 @@
-﻿using DotNetBungieAPI.Models;
+﻿using System.Collections.ObjectModel;
+using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Applications;
 using DotNetBungieAPI.Models.Authorization;
 
@@ -14,7 +15,7 @@ public interface IAppMethodsAccess
     /// </summary>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<Application[]>> GetBungieApplications(
+    Task<BungieResponse<ReadOnlyCollection<Application>>> GetBungieApplications(
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -23,11 +24,11 @@ public interface IAppMethodsAccess
     ///     <para />
     ///     You must be authenticated with at least the ReadUserData permission to access this endpoint.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="applicationId">ID of the application to get usage statistics.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<ApiUsage>> GetApplicationApiUsage(
+    Task<BungieResponse<ApiUsage>> GetApplicationApiUsage(
         AuthorizationTokenData authorizationToken,
         int applicationId,
         DateTime? start = null,

@@ -14,11 +14,11 @@ public interface IFireteamMethodsAccess
     /// <summary>
     ///     Gets a count of all active non-public fireteams for the specified clan. Maximum value returned is 25.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">Group ID</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<int>> GetActivePrivateClanFireteamCount(
+    Task<BungieResponse<int>> GetActivePrivateClanFireteamCount(
         AuthorizationTokenData authorizationToken,
         long groupId,
         CancellationToken cancellationToken = default);
@@ -27,7 +27,7 @@ public interface IFireteamMethodsAccess
     ///     Gets a listing of all of this clan's fireteams that are have available slots. Caller is not checked for join
     ///     criteria so caching is maximized.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">The group id of the clan.</param>
     /// <param name="platform">The platform filter.</param>
     /// <param name="activityType">The activity type to filter by.</param>
@@ -38,7 +38,7 @@ public interface IFireteamMethodsAccess
     /// <param name="langFilter">An optional language filter.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<SearchResultOfFireteamSummary>> GetAvailableClanFireteams(
+    Task<BungieResponse<SearchResultOfFireteamSummary>> GetAvailableClanFireteams(
         AuthorizationTokenData authorizationToken,
         long groupId,
         FireteamPlatform platform,
@@ -54,7 +54,7 @@ public interface IFireteamMethodsAccess
     ///     Gets a listing of all public fireteams starting now with open slots. Caller is not checked for join criteria so
     ///     caching is maximized.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="platform">The platform filter.</param>
     /// <param name="activityType">The activity type to filter by.</param>
     /// <param name="dateRange">The date range to grab available fireteams.</param>
@@ -63,7 +63,7 @@ public interface IFireteamMethodsAccess
     /// <param name="langFilter">An optional language filter.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<SearchResultOfFireteamSummary>> SearchPublicAvailableClanFireteams(
+    Task<BungieResponse<SearchResultOfFireteamSummary>> SearchPublicAvailableClanFireteams(
         AuthorizationTokenData authorizationToken,
         FireteamPlatform platform,
         DestinyActivityModeType activityType,
@@ -76,7 +76,7 @@ public interface IFireteamMethodsAccess
     /// <summary>
     ///     Gets a listing of all fireteams that caller is an applicant, a member, or an alternate of.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">
     ///     The group id of the clan. (This parameter is ignored unless the optional query parameter
     ///     groupFilter is true).
@@ -101,7 +101,7 @@ public interface IFireteamMethodsAccess
     /// <summary>
     ///     Gets a specific fireteam.
     /// </summary>
-    /// <param name="authorizationToken"></param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="groupId">The group id of the clan.</param>
     /// <param name="fireteamId">The unique id of the fireteam.</param>
     /// <param name="cancellationToken">Cancellation token</param>

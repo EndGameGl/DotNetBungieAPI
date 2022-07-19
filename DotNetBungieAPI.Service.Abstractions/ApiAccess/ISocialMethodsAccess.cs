@@ -15,7 +15,7 @@ public interface ISocialMethodsAccess
     /// <param name="authorizationToken">Authorization token</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<BungieFriendListResponse>> GetFriendList(
+    Task<BungieResponse<BungieFriendListResponse>> GetFriendList(
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
 
@@ -25,7 +25,7 @@ public interface ISocialMethodsAccess
     /// <param name="authorizationToken">Authorization token</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<BungieFriendRequestListResponse>> GetFriendRequestList(
+    Task<BungieResponse<BungieFriendRequestListResponse>> GetFriendRequestList(
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
 
@@ -37,7 +37,7 @@ public interface ISocialMethodsAccess
     /// <param name="authorizationToken">Authorization token</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<bool>> IssueFriendRequest(
+    Task<BungieResponse<bool>> IssueFriendRequest(
         string membershipId,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
@@ -50,7 +50,7 @@ public interface ISocialMethodsAccess
     /// <param name="authorizationToken">Authorization token</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<bool>> AcceptFriendRequest(
+    Task<BungieResponse<bool>> AcceptFriendRequest(
         string membershipId,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
@@ -63,7 +63,7 @@ public interface ISocialMethodsAccess
     /// <param name="authorizationToken">Authorization token</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<bool>> DeclineFriendRequest(
+    Task<BungieResponse<bool>> DeclineFriendRequest(
         string membershipId,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
@@ -76,7 +76,7 @@ public interface ISocialMethodsAccess
     /// <param name="authorizationToken">Authorization token</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<bool>> RemoveFriend(
+    Task<BungieResponse<bool>> RemoveFriend(
         string membershipId,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
@@ -89,7 +89,7 @@ public interface ISocialMethodsAccess
     /// <param name="authorizationToken">Authorization token</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<bool>> RemoveFriendRequest(
+    Task<BungieResponse<bool>> RemoveFriendRequest(
         string membershipId,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
@@ -103,7 +103,7 @@ public interface ISocialMethodsAccess
     /// <param name="page">The zero based page to return. Page size is 100.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<PlatformFriendResponse>> GetPlatformFriendList(
+    Task<BungieResponse<PlatformFriendResponse>> GetPlatformFriendList(
         PlatformFriendType friendPlatform,
         AuthorizationTokenData authorizationToken,
         int page = 0,

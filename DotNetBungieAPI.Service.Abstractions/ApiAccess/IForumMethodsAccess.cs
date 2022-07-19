@@ -1,4 +1,5 @@
-﻿using DotNetBungieAPI.Models;
+﻿using System.Collections.ObjectModel;
+using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Forum;
 using DotNetBungieAPI.Models.Queries;
 using DotNetBungieAPI.Models.Tags;
@@ -23,7 +24,7 @@ public interface IForumMethodsAccess
     /// <param name="locales">Comma seperated list of locales posts must match to return in the result list. Default 'en'</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<PostSearchResponse>> GetTopicsPaged(
+    Task<BungieResponse<PostSearchResponse>> GetTopicsPaged(
         ForumPostCategoryEnums categoryFilter,
         ForumTopicsQuickDateEnum quickDate,
         ForumTopicsSortEnum sort,
@@ -44,7 +45,7 @@ public interface IForumMethodsAccess
     /// <param name="locales">Comma seperated list of locales posts must match to return in the result list. Default 'en'</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<PostSearchResponse>> GetCoreTopicsPaged(
+    Task<BungieResponse<PostSearchResponse>> GetCoreTopicsPaged(
         ForumPostCategoryEnums categoryFilter,
         ForumTopicsQuickDateEnum quickDate,
         ForumTopicsSortEnum sort,
@@ -66,7 +67,7 @@ public interface IForumMethodsAccess
     /// <param name="showbanned">If this value is not null or empty, banned posts are requested to be returned</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<PostSearchResponse>> GetPostsThreadedPaged(
+    Task<BungieResponse<PostSearchResponse>> GetPostsThreadedPaged(
         bool getParentPost,
         int page,
         int pageSize,
@@ -90,7 +91,7 @@ public interface IForumMethodsAccess
     /// <param name="showbanned">If this value is not null or empty, banned posts are requested to be returned</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<PostSearchResponse>> GetPostsThreadedPagedFromChild(
+    Task<BungieResponse<PostSearchResponse>> GetPostsThreadedPagedFromChild(
         int page,
         int pageSize,
         long childPostId,
@@ -107,7 +108,7 @@ public interface IForumMethodsAccess
     /// <param name="showbanned">If this value is not null or empty, banned posts are requested to be returned</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<PostSearchResponse>> GetPostAndParent(
+    Task<BungieResponse<PostSearchResponse>> GetPostAndParent(
         long childPostId,
         bool? showbanned = null,
         CancellationToken cancellationToken = default);
@@ -119,7 +120,7 @@ public interface IForumMethodsAccess
     /// <param name="showbanned">If this value is not null or empty, banned posts are requested to be returned</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<PostSearchResponse>> GetPostAndParentAwaitingApproval(
+    Task<BungieResponse<PostSearchResponse>> GetPostAndParentAwaitingApproval(
         long childPostId,
         bool? showbanned = null,
         CancellationToken cancellationToken = default);
@@ -130,7 +131,7 @@ public interface IForumMethodsAccess
     /// <param name="contentId"></param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<long>> GetTopicForContent(
+    Task<BungieResponse<long>> GetTopicForContent(
         long contentId,
         CancellationToken cancellationToken = default);
 
@@ -140,7 +141,7 @@ public interface IForumMethodsAccess
     /// <param name="partialtag">The partial tag input to generate suggestions from.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<TagResponse[]>> GetForumTagSuggestions(
+    Task<BungieResponse<ReadOnlyCollection<TagResponse>>> GetForumTagSuggestions(
         string partialtag,
         CancellationToken cancellationToken = default);
 
@@ -150,7 +151,7 @@ public interface IForumMethodsAccess
     /// <param name="topicId">The post id of the topic that has the poll.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<PostSearchResponse>> GetPoll(
+    Task<BungieResponse<PostSearchResponse>> GetPoll(
         long topicId,
         CancellationToken cancellationToken = default);
 
@@ -160,7 +161,7 @@ public interface IForumMethodsAccess
     /// <param name="request">Request body</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    ValueTask<BungieResponse<ForumRecruitmentDetail[]>> GetRecruitmentThreadSummaries(
+    Task<BungieResponse<ReadOnlyCollection<ForumRecruitmentDetail>>> GetRecruitmentThreadSummaries(
         long[] request,
         CancellationToken cancellationToken = default);
 }

@@ -23,7 +23,7 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
         _serializer = serializer;
     }
 
-    public async ValueTask<BungieResponse<PostSearchResponse>> GetTopicsPaged(
+    public async Task<BungieResponse<PostSearchResponse>> GetTopicsPaged(
         ForumPostCategoryEnums categoryFilter,
         ForumTopicsQuickDateEnum quickDate,
         ForumTopicsSortEnum sort, long group,
@@ -51,7 +51,7 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<PostSearchResponse>> GetCoreTopicsPaged(
+    public async Task<BungieResponse<PostSearchResponse>> GetCoreTopicsPaged(
         ForumPostCategoryEnums categoryFilter,
         ForumTopicsQuickDateEnum quickDate,
         ForumTopicsSortEnum sort,
@@ -74,7 +74,7 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<PostSearchResponse>> GetPostsThreadedPaged(
+    public async Task<BungieResponse<PostSearchResponse>> GetPostsThreadedPaged(
         bool getParentPost,
         int page,
         int pageSize,
@@ -103,7 +103,7 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<PostSearchResponse>> GetPostsThreadedPagedFromChild(
+    public async Task<BungieResponse<PostSearchResponse>> GetPostsThreadedPagedFromChild(
         int page,
         int pageSize,
         long childPostId,
@@ -130,7 +130,7 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<PostSearchResponse>> GetPostAndParent(
+    public async Task<BungieResponse<PostSearchResponse>> GetPostAndParent(
         long childPostId,
         bool? showbanned = null,
         CancellationToken cancellationToken = default)
@@ -147,7 +147,7 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<PostSearchResponse>> GetPostAndParentAwaitingApproval(
+    public async Task<BungieResponse<PostSearchResponse>> GetPostAndParentAwaitingApproval(
         long childPostId,
         bool? showbanned = null,
         CancellationToken cancellationToken = default)
@@ -164,7 +164,7 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<long>> GetTopicForContent(
+    public async Task<BungieResponse<long>> GetTopicForContent(
         long contentId,
         CancellationToken cancellationToken = default)
     {
@@ -179,7 +179,7 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<TagResponse[]>> GetForumTagSuggestions(
+    public async Task<BungieResponse<ReadOnlyCollection<TagResponse>>> GetForumTagSuggestions(
         string partialtag,
         CancellationToken cancellationToken = default)
     {
@@ -190,11 +190,11 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<TagResponse[]>(url, cancellationToken)
+            .GetFromBungieNetPlatform<ReadOnlyCollection<TagResponse>>(url, cancellationToken)
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<PostSearchResponse>> GetPoll(
+    public async Task<BungieResponse<PostSearchResponse>> GetPoll(
         long topicId,
         CancellationToken cancellationToken = default)
     {
@@ -209,14 +209,14 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<ForumRecruitmentDetail[]>> GetRecruitmentThreadSummaries(
+    public async Task<BungieResponse<ReadOnlyCollection<ForumRecruitmentDetail>>> GetRecruitmentThreadSummaries(
         long[] request,
         CancellationToken cancellationToken = default)
     {
         await using var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<ForumRecruitmentDetail[]>("/Forum/Recruit/Summaries/", cancellationToken,
+            .PostToBungieNetPlatform<ReadOnlyCollection<ForumRecruitmentDetail>>("/Forum/Recruit/Summaries/", cancellationToken,
                 stream)
             .ConfigureAwait(false);
     }

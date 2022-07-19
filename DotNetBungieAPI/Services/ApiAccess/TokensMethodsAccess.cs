@@ -1,10 +1,12 @@
-﻿using System.Threading;
+﻿using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Exceptions;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Applications;
 using DotNetBungieAPI.Models.Authorization;
+using DotNetBungieAPI.Models.Requests;
 using DotNetBungieAPI.Models.Tokens;
 using DotNetBungieAPI.Service.Abstractions;
 using DotNetBungieAPI.Service.Abstractions.ApiAccess;
@@ -12,22 +14,74 @@ using DotNetBungieAPI.Service.Abstractions.ApiAccess;
 namespace DotNetBungieAPI.Services.ApiAccess;
 
 /// <summary>
-///     <see cref="ITokenMethodsAccess" />
+///     <inheritdoc />
 /// </summary>
 internal sealed class TokensMethodsAccess : ITokensMethodsAccess
 {
     private readonly IBungieClientConfiguration _configuration;
+    private readonly IBungieNetJsonSerializer _serializer;
     private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
 
     public TokensMethodsAccess(
         IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
-        IBungieClientConfiguration configuration)
+        IBungieClientConfiguration configuration,
+        IBungieNetJsonSerializer serializer)
     {
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _configuration = configuration;
+        _serializer = serializer;
     }
 
-    public async ValueTask<BungieResponse<PartnerOfferSkuHistoryResponse[]>> GetPartnerOfferSkuHistory(
+    public async Task<BungieResponse<bool>> ClaimPartnerOffer(
+        PartnerOfferClaimRequest request,
+        AuthorizationTokenData authorizationToken,
+        CancellationToken cancellationToken = default)
+    {
+        if (!_configuration.HasSufficientRights(ApplicationScopes.PartnerOfferGrant))
+            throw new InsufficientScopeException(ApplicationScopes.PartnerOfferGrant);
+
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
+            .Append("/Tokens/Partner/ClaimOffer/")
+            .Build();
+
+        var stream = new MemoryStream();
+        await _serializer.SerializeAsync(stream, request);
+
+        return await _dotNetBungieApiHttpClient
+            .PostToBungieNetPlatform<bool>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken)
+            .ConfigureAwait(false);
+    }
+
+    public async Task<BungieResponse<bool>> ApplyMissingPartnerOffersWithoutClaim(
+        int partnerApplicationId,
+        long targetBnetMembershipId,
+        AuthorizationTokenData authorizationToken,
+        CancellationToken cancellationToken = default)
+    {
+        if (!_configuration.HasSufficientRights(ApplicationScopes.PartnerOfferGrant))
+            throw new InsufficientScopeException(ApplicationScopes.PartnerOfferGrant);
+
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
+            .Append("/Tokens/Partner/ApplyMissingOffers/")
+            .AddUrlParam(partnerApplicationId.ToString())
+            .AddUrlParam(targetBnetMembershipId.ToString())
+            .Build();
+        
+        return await _dotNetBungieApiHttpClient
+            .PostToBungieNetPlatform<bool>(
+                url,
+                cancellationToken,
+                authToken: authorizationToken.AccessToken)
+            .ConfigureAwait(false);
+    }
+
+    public async Task<BungieResponse<ReadOnlyCollection<PartnerOfferSkuHistoryResponse>>> GetPartnerOfferSkuHistory(
         AuthorizationTokenData authorizationToken,
         int partnerApplicationId,
         long targetBnetMembershipId,
@@ -44,27 +98,27 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<PartnerOfferSkuHistoryResponse[]>(
+            .GetFromBungieNetPlatform<ReadOnlyCollection<PartnerOfferSkuHistoryResponse>>(
                 url,
                 cancellationToken,
                 authorizationToken.AccessToken)
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>> GetBungieRewardsForUser(
-        long membershipId, 
-        AuthorizationTokenData authorizationToken, 
+    public async Task<BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>> GetBungieRewardsForUser(
+        long membershipId,
+        AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.ReadAndApplyTokens))
             throw new InsufficientScopeException(ApplicationScopes.ReadAndApplyTokens);
-        
+
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
             .Append("/Tokens/Rewards/GetRewardsForUser/")
             .AddUrlParam(membershipId.ToString())
             .Build();
-        
+
         return await _dotNetBungieApiHttpClient
             .GetFromBungieNetPlatform<ReadOnlyDictionary<string, BungieRewardDisplay>>(
                 url,
@@ -73,14 +127,38 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>> GetBungieRewardsList(
+    public async Task<BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>> GetBungieRewardsForPlatformUser(
+        long membershipId,
+        BungieMembershipType membershipType,
+        AuthorizationTokenData authorizationToken,
+        CancellationToken cancellationToken = default)
+    {
+        if (!_configuration.HasSufficientRights(ApplicationScopes.ReadAndApplyTokens))
+            throw new InsufficientScopeException(ApplicationScopes.ReadAndApplyTokens);
+
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
+            .Append("/Tokens/Rewards/GetRewardsForPlatformUser/")
+            .AddUrlParam(membershipId.ToString())
+            .AddUrlParam(((byte)membershipType).ToString())
+            .Build();
+
+        return await _dotNetBungieApiHttpClient
+            .GetFromBungieNetPlatform<ReadOnlyDictionary<string, BungieRewardDisplay>>(
+                url,
+                cancellationToken,
+                authorizationToken.AccessToken)
+            .ConfigureAwait(false);
+    }
+
+    public async Task<BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>> GetBungieRewardsList(
         CancellationToken cancellationToken = default)
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
             .Append("/Tokens/Rewards/BungieRewards/")
             .Build();
-        
+
         return await _dotNetBungieApiHttpClient
             .GetFromBungieNetPlatform<ReadOnlyDictionary<string, BungieRewardDisplay>>(
                 url,

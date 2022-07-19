@@ -39,7 +39,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         _configuration = configurationService;
     }
 
-    public async ValueTask<BungieResponse<DestinyManifest>> GetDestinyManifest(
+    public async Task<BungieResponse<DestinyManifest>> GetDestinyManifest(
         CancellationToken cancellationToken = default)
     {
         return await _dotNetBungieApiHttpClient
@@ -47,7 +47,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<T>> GetDestinyEntityDefinition<T>(
+    public async Task<BungieResponse<T>> GetDestinyEntityDefinition<T>(
         DefinitionsEnum entityType,
         uint hash,
         CancellationToken cancellationToken = default) where T : IDestinyDefinition
@@ -63,7 +63,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<UserInfoCard[]>> SearchDestinyPlayerByBungieName(
+    public async Task<BungieResponse<ReadOnlyCollection<UserInfoCard>>> SearchDestinyPlayerByBungieName(
         BungieMembershipType membershipType,
         ExactSearchRequest request,
         CancellationToken cancellationToken = default)
@@ -79,11 +79,11 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         await _serializer.SerializeAsync(stream, request).ConfigureAwait(false);
         stream.Position = 0;
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<UserInfoCard[]>(url, cancellationToken, stream)
+            .PostToBungieNetPlatform<ReadOnlyCollection<UserInfoCard>>(url, cancellationToken, stream)
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyLinkedProfilesResponse>> GetLinkedProfiles(
+    public async Task<BungieResponse<DestinyLinkedProfilesResponse>> GetLinkedProfiles(
         BungieMembershipType membershipType,
         long membershipId,
         bool getAllMemberships = false,
@@ -103,7 +103,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyProfileResponse>> GetProfile(
+    public async Task<BungieResponse<DestinyProfileResponse>> GetProfile(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         DestinyComponentType[] componentTypes,
@@ -127,7 +127,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyCharacterResponse>> GetCharacter(
+    public async Task<BungieResponse<DestinyCharacterResponse>> GetCharacter(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
@@ -155,7 +155,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(
+    public async Task<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(
         long groupId,
         CancellationToken cancellationToken = default)
     {
@@ -170,7 +170,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<ClanBannerSource>> GetClanBannerSource(
+    public async Task<BungieResponse<ClanBannerSource>> GetClanBannerSource(
         CancellationToken cancellationToken = default)
     {
         return await _dotNetBungieApiHttpClient
@@ -178,7 +178,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyItemResponse>> GetItem(
+    public async Task<BungieResponse<DestinyItemResponse>> GetItem(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long itemInstanceId,
@@ -201,7 +201,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyVendorsResponse>> GetVendors(
+    public async Task<BungieResponse<DestinyVendorsResponse>> GetVendors(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
@@ -226,7 +226,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyVendorResponse>> GetVendor(
+    public async Task<BungieResponse<DestinyVendorResponse>> GetVendor(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
@@ -253,7 +253,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyPublicVendorsResponse>> GetPublicVendors(
+    public async Task<BungieResponse<DestinyPublicVendorsResponse>> GetPublicVendors(
         DestinyComponentType[] componentTypes,
         CancellationToken cancellationToken = default)
     {
@@ -267,7 +267,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyCollectibleNodeDetailResponse>> GetCollectibleNodeDetails(
+    public async Task<BungieResponse<DestinyCollectibleNodeDetailResponse>> GetCollectibleNodeDetails(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
@@ -295,7 +295,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<int>> TransferItem(
+    public async Task<BungieResponse<int>> TransferItem(
         DestinyItemTransferRequest request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
@@ -310,7 +310,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<int>> PullFromPostmaster(
+    public async Task<BungieResponse<int>> PullFromPostmaster(
         DestinyPostmasterTransferRequest request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
@@ -326,7 +326,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<int>> EquipItem(
+    public async Task<BungieResponse<int>> EquipItem(
         DestinyItemActionRequest request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
@@ -342,7 +342,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyEquipItemResults>> EquipItems(
+    public async Task<BungieResponse<DestinyEquipItemResults>> EquipItems(
         DestinyItemSetActionRequest request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
@@ -358,7 +358,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<int>> SetItemLockState(
+    public async Task<BungieResponse<int>> SetItemLockState(
         DestinyItemStateRequest request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
@@ -374,7 +374,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<int>> SetQuestTrackedState(
+    public async Task<BungieResponse<int>> SetQuestTrackedState(
         DestinyItemStateRequest request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
@@ -390,7 +390,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlug(
+    public async Task<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlug(
         DestinyInsertPlugsActionRequest request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
@@ -406,7 +406,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyPostGameCarnageReportData>> GetPostGameCarnageReport(
+    public async Task<BungieResponse<DestinyPostGameCarnageReportData>> GetPostGameCarnageReport(
         long activityId,
         CancellationToken cancellationToken = default)
     {
@@ -421,7 +421,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<int>> ReportOffensivePostGameCarnageReportPlayer(
+    public async Task<BungieResponse<int>> ReportOffensivePostGameCarnageReportPlayer(
         long activityId,
         DestinyReportOffensePgcrRequest request,
         AuthorizationTokenData authorizationToken,
@@ -442,7 +442,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>>>
+    public async Task<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>>>
         GetHistoricalStatsDefinition(
             CancellationToken cancellationToken = default)
     {
@@ -452,7 +452,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<
+    public async Task<BungieResponse<
             ReadOnlyDictionary<string, ReadOnlyDictionary<string, DestinyClanLeaderboardsResponse>>>>
         GetClanLeaderboards(
             long groupId,
@@ -476,7 +476,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyClanAggregateStat[]>> GetClanAggregateStats(
+    public async Task<BungieResponse<ReadOnlyCollection<DestinyClanAggregateStat>>> GetClanAggregateStats(
         long groupId,
         DestinyActivityModeType[] modes,
         CancellationToken cancellationToken = default)
@@ -488,11 +488,11 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyClanAggregateStat[]>(url, cancellationToken)
+            .GetFromBungieNetPlatform<ReadOnlyCollection<DestinyClanAggregateStat>>(url, cancellationToken)
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<Dictionary<string, object>>> GetLeaderboards(
+    public async Task<BungieResponse<Dictionary<string, object>>> GetLeaderboards(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         int maxtop,
@@ -516,7 +516,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyEntitySearchResult>> SearchDestinyEntities(
+    public async Task<BungieResponse<DestinyEntitySearchResult>> SearchDestinyEntities(
         DefinitionsEnum type,
         string searchTerm,
         int page = 0,
@@ -534,7 +534,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>>>
+    public async Task<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>>>
         GetHistoricalStats(
             BungieMembershipType membershipType,
             long destinyMembershipId,
@@ -579,7 +579,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyHistoricalStatsAccountResult>> GetHistoricalStatsForAccount(
+    public async Task<BungieResponse<DestinyHistoricalStatsAccountResult>> GetHistoricalStatsForAccount(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         DestinyStatsGroupType[] groups = null,
@@ -599,7 +599,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyActivityHistoryResults>> GetActivityHistory(
+    public async Task<BungieResponse<DestinyActivityHistoryResults>> GetActivityHistory(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
@@ -626,7 +626,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyHistoricalWeaponStatsData>> GetUniqueWeaponHistory(
+    public async Task<BungieResponse<DestinyHistoricalWeaponStatsData>> GetUniqueWeaponHistory(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
@@ -647,7 +647,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyAggregateActivityResults>> GetDestinyAggregateActivityStats(
+    public async Task<BungieResponse<DestinyAggregateActivityResults>> GetDestinyAggregateActivityStats(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
@@ -669,7 +669,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<Dictionary<uint, DestinyPublicMilestone>>> GetPublicMilestones(
+    public async Task<BungieResponse<Dictionary<uint, DestinyPublicMilestone>>> GetPublicMilestones(
         CancellationToken cancellationToken = default)
     {
         return await _dotNetBungieApiHttpClient
@@ -678,7 +678,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyMilestoneContent>> GetPublicMilestoneContent(
+    public async Task<BungieResponse<DestinyMilestoneContent>> GetPublicMilestoneContent(
         uint milestoneHash,
         CancellationToken cancellationToken = default)
     {
@@ -693,7 +693,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<AwaInitializeResponse>> AwaInitializeRequest(
+    public async Task<BungieResponse<AwaInitializeResponse>> AwaInitializeRequest(
         AwaPermissionRequested request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
@@ -709,7 +709,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<int>> AwaProvideAuthorizationResult(
+    public async Task<BungieResponse<int>> AwaProvideAuthorizationResult(
         AwaUserResponse request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
@@ -722,7 +722,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<AwaAuthorizationResult>> AwaGetActionToken(
+    public async Task<BungieResponse<AwaAuthorizationResult>> AwaGetActionToken(
         string correlationId,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)
@@ -742,7 +742,7 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlugFree(
+    public async Task<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlugFree(
         DestinyInsertPlugsFreeActionRequest request,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default)

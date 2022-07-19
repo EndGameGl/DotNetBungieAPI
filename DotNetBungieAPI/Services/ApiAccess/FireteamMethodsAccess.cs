@@ -26,7 +26,7 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
         _configuration = configuration;
     }
 
-    public async ValueTask<BungieResponse<int>> GetActivePrivateClanFireteamCount(
+    public async Task<BungieResponse<int>> GetActivePrivateClanFireteamCount(
         AuthorizationTokenData authorizationToken,
         long groupId,
         CancellationToken cancellationToken = default)
@@ -46,7 +46,7 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<SearchResultOfFireteamSummary>> GetAvailableClanFireteams(
+    public async Task<BungieResponse<SearchResultOfFireteamSummary>> GetAvailableClanFireteams(
         AuthorizationTokenData authorizationToken,
         long groupId,
         FireteamPlatform platform,
@@ -81,7 +81,7 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async ValueTask<BungieResponse<SearchResultOfFireteamSummary>> SearchPublicAvailableClanFireteams(
+    public async Task<BungieResponse<SearchResultOfFireteamSummary>> SearchPublicAvailableClanFireteams(
         AuthorizationTokenData authorizationToken,
         FireteamPlatform platform,
         DestinyActivityModeType activityType,

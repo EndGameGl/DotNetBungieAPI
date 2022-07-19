@@ -17,7 +17,7 @@ public interface ICommunityContentMethodsAccess
     /// <param name="page">Zero based page</param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    ValueTask<BungieResponse<PostSearchResponse>> GetCommunityContent(
+    Task<BungieResponse<PostSearchResponse>> GetCommunityContent(
         ForumTopicsSortEnum sort,
         ForumMediaType mediaFilter,
         int page = 0,
