@@ -42,6 +42,12 @@ public class DestinyProfileComponent
     public List<uint> SeasonHashes { get; set; }
 
     /// <summary>
+    ///     A list of hashes for event cards that a profile owns. Unlike most values in versionsOwned, these stay with the profile across all platforms.
+    /// </summary>
+    [JsonPropertyName("eventCardHashesOwned")]
+    public List<uint> EventCardHashesOwned { get; set; }
+
+    /// <summary>
     ///     If populated, this is a reference to the season that is currently active.
     /// </summary>
     [JsonPropertyName("currentSeasonHash")]
@@ -52,4 +58,10 @@ public class DestinyProfileComponent
     /// </summary>
     [JsonPropertyName("currentSeasonRewardPowerCap")]
     public int? CurrentSeasonRewardPowerCap { get; set; }
+
+    /// <summary>
+    ///     If populated, this is a reference to the event card that is currently active.
+    /// </summary>
+    [JsonPropertyName("activeEventCardHash")]
+    public uint? ActiveEventCardHash { get; set; }
 }

@@ -65,8 +65,6 @@ public class DestinyObjectiveDefinition
 
     /// <summary>
     ///     The UI style applied to the objective. It's an enum, take a look at DestinyUnlockValueUIStyle for details of the possible styles. Use this info as you wish to customize your UI.
-    /// <para />
-    ///     DEPRECATED: This is no longer populated by Destiny 2 game content. Please use inProgressValueStyle and completedValueStyle instead.
     /// </summary>
     [JsonPropertyName("valueStyle")]
     public Destiny.DestinyUnlockValueUIStyle? ValueStyle { get; set; }
