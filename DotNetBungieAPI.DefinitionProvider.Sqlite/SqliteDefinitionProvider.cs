@@ -1,5 +1,6 @@
 ﻿using System.Collections.Concurrent;
 using System.Data;
+using System.Diagnostics;
 using System.IO.Compression;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -416,7 +417,8 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
 
         definitionsToLoad.Remove(DefinitionsEnum.DestinyHistoricalStatsDefinition);
 
-        _logger.LogInformation("Reading all definitions into repository");
+        var definitionLoaderStopwatch = Stopwatch.StartNew();
+        _logger.LogInformation("Started reading all definitions into repository");
         foreach (var locale in repository.AvailableLocales)
         {
             _logger.LogInformation("Reading locale: {Locale}", locale);
@@ -454,7 +456,9 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
                 repository.AddDestinyHistoricalDefinition(locale, parsedDefinition);
             }
         }
-
+        definitionLoaderStopwatch.Stop();
+        _logger.LogInformation("Finished reading definitions ({Time} ms)", definitionLoaderStopwatch.ElapsedMilliseconds);
+        
         return ValueTask.CompletedTask;
     }
 
