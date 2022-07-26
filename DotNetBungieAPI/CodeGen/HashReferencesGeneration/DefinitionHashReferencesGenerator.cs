@@ -16,6 +16,7 @@ using DotNetBungieAPI.Models.Destiny.Definitions.DamageTypes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Destinations;
 using DotNetBungieAPI.Models.Destiny.Definitions.EnergyTypes;
 using DotNetBungieAPI.Models.Destiny.Definitions.EquipmentSlots;
+using DotNetBungieAPI.Models.Destiny.Definitions.EventCards;
 using DotNetBungieAPI.Models.Destiny.Definitions.Factions;
 using DotNetBungieAPI.Models.Destiny.Definitions.Genders;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryBuckets;
@@ -654,6 +655,19 @@ public class DefinitionHashReferencesGenerator
         await textWriter.WriteAsync(GetIndentedString(indentationLevel, $"{CloseCurvyBrackets}{NewLine}"));
         await textWriter.FlushAsync();
 
+        #endregion
+        
+        #region EventCards
+        
+        await textWriter.WriteAsync(GetIndentedString(indentationLevel, GetClassNameString("EventCards")));
+        await textWriter.WriteAsync(GetIndentedString(indentationLevel, $"{OpenCurvyBrackets}{NewLine}"));
+
+        indentationLevel++;
+        await AddEventCardsInfo(textWriter, definitionCacheLookup, indentationLevel);
+        indentationLevel--;
+        await textWriter.WriteAsync(GetIndentedString(indentationLevel, $"{CloseCurvyBrackets}{NewLine}"));
+        await textWriter.FlushAsync();
+        
         #endregion
 
         #region closing
@@ -2149,6 +2163,41 @@ public class DefinitionHashReferencesGenerator
                 await textWriter.WriteLineAsync(GetIndentedString(
                     indentationLevel,
                     $"public const uint {key} = {value};"));
+
+        definitionCacheLookup.Clear();
+    }
+
+    private async Task AddEventCardsInfo(
+        TextWriter textWriter,
+        Dictionary<string, uint> definitionCacheLookup,
+        int indentationLevel)
+    {
+        foreach (var definition in _bungieClient.Repository.GetAll<DestinyEventCardDefinition>())
+            if (definition.DisplayProperties is not null)
+                ValidateAndAddValue(
+                    definitionCacheLookup,
+                    definition.DisplayProperties.Name,
+                    definition.Hash,
+                    ForbiddenSymbols);
+            else
+                definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
+        
+        foreach (var (key, value) in definitionCacheLookup)
+        {
+            if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyEventCardDefinition>(
+                    value, BungieLocales.EN, out var definition))
+                await WriteCommentaryAsync(textWriter, indentationLevel, definition.DisplayProperties?.Description);
+
+            if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
+                !key.Contains(value.ToString()))
+                await textWriter.WriteLineAsync(GetIndentedString(
+                    indentationLevel,
+                    $"public const uint {key}_{value} = {value};"));
+            else
+                await textWriter.WriteLineAsync(GetIndentedString(
+                    indentationLevel,
+                    $"public const uint {key} = {value};"));
+        }
 
         definitionCacheLookup.Clear();
     }
