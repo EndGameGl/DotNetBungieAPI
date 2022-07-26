@@ -10,13 +10,13 @@
         <Copyright>Copyright (c) MeGl 2022</Copyright>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <PackageVersion>2.4.0</PackageVersion>
+        <PackageVersion>2.4.1</PackageVersion>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <LangVersion>10</LangVersion>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <AssemblyVersion>2.4.0</AssemblyVersion>
-        <FileVersion>2.4.0</FileVersion>
+        <AssemblyVersion>2.4.1</AssemblyVersion>
+        <FileVersion>2.4.1</FileVersion>
         <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
@@ -36,6 +36,10 @@
         <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
         <PackageReference Include="RateLimiter" Version="2.2.0" />
         <PackageReference Include="System.ObjectModel" Version="4.3.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DotNetBungieAPI.Generated\DotNetBungieAPI.Generated.csproj" />
     </ItemGroup>
 
 </Project>
