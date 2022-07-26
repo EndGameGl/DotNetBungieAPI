@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using DotNetBungieAPI.Generated.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Definitions.Objectives;
 
