@@ -2,6 +2,7 @@
 using System.Data;
 using System.Diagnostics;
 using System.IO.Compression;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Text;
 using DotNetBungieAPI.Models;
@@ -456,9 +457,11 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
                 repository.AddDestinyHistoricalDefinition(locale, parsedDefinition);
             }
         }
+
         definitionLoaderStopwatch.Stop();
-        _logger.LogInformation("Finished reading definitions ({Time} ms)", definitionLoaderStopwatch.ElapsedMilliseconds);
-        
+        _logger.LogInformation("Finished reading definitions ({Time} ms)",
+            definitionLoaderStopwatch.ElapsedMilliseconds);
+
         return ValueTask.CompletedTask;
     }
 
@@ -676,5 +679,79 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
                 string.Format(ConnectionStringTemplate, mobileGearAssetDataBasePath);
             _mobileGearAssetDataBaseConnection.Open();
         }
+    }
+
+    public async Task<List<DefinitionHashPointer<TDefinition>>> SearchDefinitionHashes<TDefinition>(
+        BungieLocales locale,
+        Expression<Func<TDefinition, bool>> expression) where TDefinition : IDestinyDefinition
+    {
+        var connection = _sqliteConnections[locale];
+        var queryBuilder = new StringBuilder();
+        queryBuilder.AppendLine($"SELECT id FROM {DefinitionHashPointer<TDefinition>.EnumValue} WHERE ");
+
+        if (expression.Body is BinaryExpression binaryExpression)
+        {
+            queryBuilder.Append(SqlValueConverter.ConvertBinaryExpression(binaryExpression));
+        }
+        else if (expression.Body is MethodCallExpression methodCallExpression)
+        {
+            queryBuilder.Append(SqlValueConverter.ConvertMethodCallExpression(methodCallExpression));
+        }
+        else
+        {
+            throw new Exception("Something went wrong?..");
+        }
+        await using var commandObj = new SqliteCommand
+        {
+            Connection = connection,
+            CommandText = queryBuilder.ToString()
+        };
+        await using var reader = await commandObj.ExecuteReaderAsync();
+        var definitions = new List<DefinitionHashPointer<TDefinition>>();
+        
+        while (reader.Read())
+        {
+            var hash = reader.GetInt32(0).ToUInt32();
+            definitions.Add(new DefinitionHashPointer<TDefinition>(hash));
+        }
+
+        return definitions;
+    }
+
+    public async Task<List<TDefinition>> SearchDefinitions<TDefinition>(
+        BungieLocales locale,
+        Expression<Func<TDefinition, bool>> expression) where TDefinition : IDestinyDefinition
+    {
+        var connection = _sqliteConnections[locale];
+        var queryBuilder = new StringBuilder();
+        queryBuilder.AppendLine($"SELECT json FROM {DefinitionHashPointer<TDefinition>.EnumValue} WHERE ");
+
+        if (expression.Body is BinaryExpression binaryExpression)
+        {
+            queryBuilder.Append(SqlValueConverter.ConvertBinaryExpression(binaryExpression));
+        }
+        else if (expression.Body is MethodCallExpression methodCallExpression)
+        {
+            queryBuilder.Append(SqlValueConverter.ConvertMethodCallExpression(methodCallExpression));
+        }
+        else
+        {
+            throw new Exception("Something went wrong?..");
+        }
+        await using var commandObj = new SqliteCommand
+        {
+            Connection = connection,
+            CommandText = queryBuilder.ToString()
+        };
+        await using var reader = await commandObj.ExecuteReaderAsync();
+        var definitions = new List<TDefinition>();
+        
+        while (reader.Read())
+        {
+            var byteArray = reader.GetFieldValue<byte[]>(0);
+            definitions.Add(_serializer.Deserialize<TDefinition>(ref byteArray));
+        }
+
+        return definitions;
     }
 }
