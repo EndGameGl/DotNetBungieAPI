@@ -29,5 +29,6 @@ https://github.com/EndGameGl/DotNetBungieAPI/wiki/Basic-client-setup
 ### Is this getting used? 
 Yes, this library is used by some public projects, such as:
  - https://tryfelicity.one/
+ - https://marvin.gg/
 
 This list will get updated as new projects use this library and I get to know that
