@@ -12,6 +12,16 @@ namespace DotNetBungieAPI.Service.Abstractions.ApiAccess;
 public interface ITokensMethodsAccess
 {
     /// <summary>
+    ///     Twitch Drops self-repair function - scans twitch for drops not marked as fulfilled and resyncs them.
+    /// </summary>
+    /// <param name="authorizationToken">Auth token for respective user</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns></returns>
+    Task<BungieResponse<bool>> ForceDropsRepair(
+        AuthorizationTokenData authorizationToken,
+        CancellationToken cancellationToken = default);
+    
+    /// <summary>
     ///     Claim a partner offer as the authenticated user.
     /// </summary>
     /// <param name="request">Request body</param>
@@ -53,6 +63,20 @@ public interface ITokensMethodsAccess
         AuthorizationTokenData authorizationToken,
         int partnerApplicationId,
         long targetBnetMembershipId,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    ///     Returns the partner rewards history of the targeted user, both partner offers and Twitch drops.
+    /// </summary>
+    /// <param name="targetBnetMembershipId">The bungie.net user to return reward history for.</param>
+    /// <param name="partnerApplicationId">The partner application identifier.</param>
+    /// <param name="authorizationToken">Auth token for respective user</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns></returns>
+    Task<BungieResponse<PartnerRewardHistoryResponse>> GetPartnerRewardHistory(
+        long targetBnetMembershipId,
+        int partnerApplicationId,
+        AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
 
     /// <summary>
