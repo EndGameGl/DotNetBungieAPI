@@ -17,6 +17,8 @@ public enum BungieMembershipType : int
 
     TigerStadia = 5,
 
+    TigerEgs = 6,
+
     TigerDemon = 10,
 
     BungieNext = 254,

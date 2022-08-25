@@ -17,6 +17,9 @@ public class CoreSettingsConfiguration
     [JsonPropertyName("groupAvatars")]
     public List<Common.Models.CoreSetting> GroupAvatars { get; set; }
 
+    [JsonPropertyName("defaultGroupTheme")]
+    public Common.Models.CoreSetting? DefaultGroupTheme { get; set; }
+
     [JsonPropertyName("destinyMembershipTypes")]
     public List<Common.Models.CoreSetting> DestinyMembershipTypes { get; set; }
 

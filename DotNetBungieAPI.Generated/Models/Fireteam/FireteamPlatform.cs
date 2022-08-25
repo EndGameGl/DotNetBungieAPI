@@ -12,5 +12,7 @@ public enum FireteamPlatform : byte
 
     Steam = 4,
 
-    Stadia = 5
+    Stadia = 5,
+
+    Egs = 6
 }

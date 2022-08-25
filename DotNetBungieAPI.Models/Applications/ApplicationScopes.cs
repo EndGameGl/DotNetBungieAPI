@@ -69,7 +69,7 @@ public enum ApplicationScopes : long
     AdvancedWriteActions = 2048,
 
     /// <summary>
-    ///     Can user the partner offer api to claim rewards defined for a partner
+    ///     Can use the partner offer api to claim rewards defined for a partner
     /// </summary>
     PartnerOfferGrant = 4096,
 

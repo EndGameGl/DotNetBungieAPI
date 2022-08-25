@@ -8,5 +8,7 @@ public enum PlatformFriendType : int
 
     PSN = 2,
 
-    Steam = 3
+    Steam = 3,
+
+    Egs = 4
 }

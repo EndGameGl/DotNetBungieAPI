@@ -106,4 +106,7 @@ public class GeneralUser
 
     [JsonPropertyName("cachedBungieGlobalDisplayNameCode")]
     public short? CachedBungieGlobalDisplayNameCode { get; set; }
+
+    [JsonPropertyName("egsDisplayName")]
+    public string? EgsDisplayName { get; set; }
 }
