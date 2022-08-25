@@ -84,4 +84,7 @@ public sealed record GeneralUser
 
     [JsonPropertyName("cachedBungieGlobalDisplayNameCode")]
     public short? CachedBungieGlobalDisplayNameCode { get; init; }
+    
+    [JsonPropertyName("egsDisplayName")]
+    public string? EgsDisplayName { get; init; }
 }

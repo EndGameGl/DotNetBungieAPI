@@ -7,5 +7,6 @@ public enum FireteamPlatform : byte
     XboxOne = 2,
     Blizzard = 3,
     Steam = 4,
-    Stadia = 5
+    Stadia = 5,
+    Egs = 6
 }

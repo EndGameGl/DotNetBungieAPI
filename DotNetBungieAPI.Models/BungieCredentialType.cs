@@ -18,5 +18,6 @@ public enum BungieCredentialType : byte
     SteamId = 12,
     BattleNetId = 14,
     StadiaId = 16,
-    TwitchId = 18
+    TwitchId = 18,
+    EgsId = 20
 }

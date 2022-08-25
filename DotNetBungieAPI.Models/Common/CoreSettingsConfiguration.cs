@@ -18,6 +18,9 @@ public sealed record CoreSettingsConfiguration
 
     [JsonPropertyName("groupAvatars")]
     public ReadOnlyCollection<CoreSetting> GroupAvatars { get; init; } = ReadOnlyCollections<CoreSetting>.Empty;
+    
+    [JsonPropertyName("defaultGroupTheme")]
+    public CoreSetting? DefaultGroupTheme { get; init; }
 
     [JsonPropertyName("destinyMembershipTypes")]
     public ReadOnlyCollection<CoreSetting> DestinyMembershipTypes { get; init; } =
