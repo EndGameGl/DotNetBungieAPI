@@ -32,6 +32,27 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
         _serializer = serializer;
     }
 
+    public async Task<BungieResponse<bool>> ForceDropsRepair(
+        AuthorizationTokenData authorizationToken,
+        CancellationToken cancellationToken = default)
+    {
+        if (!_configuration.HasSufficientRights(ApplicationScopes.PartnerOfferGrant))
+            throw new InsufficientScopeException(ApplicationScopes.PartnerOfferGrant);
+
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
+            .Append("/Tokens/Partner/ForceDropsRepair/")
+            .Build();
+
+        return await _dotNetBungieApiHttpClient
+            .PostToBungieNetPlatform<bool>(
+                url,
+                cancellationToken,
+                null,
+                authorizationToken.AccessToken)
+            .ConfigureAwait(false);
+    }
+
     public async Task<BungieResponse<bool>> ClaimPartnerOffer(
         PartnerOfferClaimRequest request,
         AuthorizationTokenData authorizationToken,
@@ -72,7 +93,7 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
             .AddUrlParam(partnerApplicationId.ToString())
             .AddUrlParam(targetBnetMembershipId.ToString())
             .Build();
-        
+
         return await _dotNetBungieApiHttpClient
             .PostToBungieNetPlatform<bool>(
                 url,
@@ -99,6 +120,31 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
 
         return await _dotNetBungieApiHttpClient
             .GetFromBungieNetPlatform<ReadOnlyCollection<PartnerOfferSkuHistoryResponse>>(
+                url,
+                cancellationToken,
+                authorizationToken.AccessToken)
+            .ConfigureAwait(false);
+    }
+
+    public async Task<BungieResponse<PartnerRewardHistoryResponse>> GetPartnerRewardHistory(
+        long targetBnetMembershipId,
+        int partnerApplicationId,
+        AuthorizationTokenData authorizationToken,
+        CancellationToken cancellationToken = default)
+    {
+        if (!_configuration.HasSufficientRights(ApplicationScopes.PartnerOfferGrant))
+            throw new InsufficientScopeException(ApplicationScopes.PartnerOfferGrant);
+
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
+            .Append("/Tokens/Partner/History/")
+            .AddUrlParam(targetBnetMembershipId.ToString())
+            .Append("Application/")
+            .AddUrlParam(partnerApplicationId.ToString())
+            .Build();
+
+        return await _dotNetBungieApiHttpClient
+            .GetFromBungieNetPlatform<PartnerRewardHistoryResponse>(
                 url,
                 cancellationToken,
                 authorizationToken.AccessToken)
