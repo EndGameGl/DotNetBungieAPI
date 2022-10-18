@@ -25,7 +25,7 @@ public static class BungieClientBuilderExtensions
         Action<DotNetBungieApiJsonSerializerConfiguration> configure)
     {
         serviceConfigurator.Use<
-            IBungieNetJsonSerializer,
+            DefaultBungieNetJsonSerializer,
             DotNetBungieApiJsonSerializerConfiguration>(configure);
     }
 

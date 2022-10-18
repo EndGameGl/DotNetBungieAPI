@@ -25,8 +25,8 @@ internal sealed class DefaultAuthorizationHandler : IAuthorizationHandler
         _authorizationTokenDatas = new ConcurrentDictionary<long, AuthorizationTokenData>();
     }
 
-    private ConcurrentDictionary<string, AuthorizationState> _authorizationStates { get; }
-    private ConcurrentDictionary<long, AuthorizationTokenData> _authorizationTokenDatas { get; }
+    private readonly ConcurrentDictionary<string, AuthorizationState> _authorizationStates;
+    private readonly ConcurrentDictionary<long, AuthorizationTokenData> _authorizationTokenDatas;
 
     public string GetAuthorizationLink(AuthorizationState authData)
     {
@@ -38,6 +38,7 @@ internal sealed class DefaultAuthorizationHandler : IAuthorizationHandler
     public AuthorizationState CreateNewAuthenticationAwaiter()
     {
         var authAwaiter = AuthorizationState.GetNewAuth();
+        
         if (_authorizationStates.TryAdd(authAwaiter.State, authAwaiter)) return authAwaiter;
 
         throw new Exception("Couldn't create new authentication state.");

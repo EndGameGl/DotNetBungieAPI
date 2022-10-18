@@ -13,32 +13,37 @@ internal static class SqlValueConverter
     private static readonly Type Int32 = typeof(int);
     private static readonly Type UInt32 = typeof(uint);
 
-    internal static string ConvertConstantExpression(ConstantExpression expression)
+    internal static string ConvertValue(object? value, Type type)
     {
-        if (expression.Value is null)
+        if (value is null)
             return "NULL";
 
-        if (expression.Type == Boolean)
+        if (type == Boolean)
         {
-            return expression.Value!.ToString()!.ToLowerInvariant();
+            return value.ToString()!.ToLowerInvariant();
         }
 
-        if (expression.Type == String)
+        if (type == String)
         {
-            return $"'{expression.Value}'";
+            return $"'{value}'";
         }
 
-        if (expression.Type == Int32)
+        if (type == Int32)
         {
-            return expression.Value!.ToString()!;
+            return value.ToString()!;
         }
         
-        if (expression.Type == UInt32)
+        if (type == UInt32)
         {
-            return expression.Value!.ToString()!;
+            return value.ToString()!;
         }
 
         return string.Empty;
+    }
+    
+    internal static string ConvertConstantExpression(ConstantExpression expression)
+    {
+        return ConvertValue(expression.Value, expression.Type);
     }
 
     internal static string ConvertBinaryExpression(BinaryExpression binaryExpression)
@@ -90,8 +95,26 @@ internal static class SqlValueConverter
             var member = methodCallExpression.Arguments[0];
             var value = methodCallExpression.Arguments[1];
 
-            return
-                $"{ConvertMemberExpression(member as MemberExpression)} LIKE '%{((ConstantExpression)value).Value}%'";
+            if (value is MemberExpression memberExpression)
+            {
+                var classInstance = (ConstantExpression)memberExpression.Expression;
+
+                if (classInstance is null)
+                {
+                    var stringValue = (memberExpression.Member as FieldInfo).GetValue(null);
+                    return $"{ConvertMemberExpression(member as MemberExpression)} LIKE '%{stringValue}%'";
+                }
+                else
+                {
+                    var stringValue = (memberExpression.Member as FieldInfo).GetValue(classInstance.Value);
+                    return $"{ConvertMemberExpression(member as MemberExpression)} LIKE '%{stringValue}%'";
+                }
+            }
+            else
+            {
+                return
+                    $"{ConvertMemberExpression(member as MemberExpression)} LIKE '%{((ConstantExpression)value).Value}%'";
+            }
         }
 
         if (IsListIndexerExpression(methodCallExpression, out var index))
@@ -190,6 +213,17 @@ internal static class SqlValueConverter
         }
         else
         {
+            if (memberExpression.Expression is null)
+            {
+                return ConvertValue((memberExpression.Member as FieldInfo).GetValue(null), memberExpression.Type);
+            }
+            if (memberExpression.Expression is ConstantExpression constantExpression && constantExpression.Type.FullName.Contains("_Display"))
+            {
+                
+                var classInstance = (ConstantExpression)memberExpression.Expression;
+                var value = (memberExpression.Member as FieldInfo).GetValue(classInstance.Value);
+                return ConvertValue(value, memberExpression.Type);
+            }
             var propertyPath = CreateMemberPath(memberExpression);
             return $"json_extract(json, '$.{propertyPath}')";
         }

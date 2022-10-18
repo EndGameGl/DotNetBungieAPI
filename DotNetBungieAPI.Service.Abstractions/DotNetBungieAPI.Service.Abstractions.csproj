@@ -16,9 +16,9 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <RootNamespace>DotNetBungieAPI.Service.Abstractions</RootNamespace>
-        <PackageVersion>2.5.0</PackageVersion>
-        <AssemblyVersion>2.5.0</AssemblyVersion>
-        <FileVersion>2.5.0</FileVersion>
+        <PackageVersion>2.5.1</PackageVersion>
+        <AssemblyVersion>2.5.1</AssemblyVersion>
+        <FileVersion>2.5.1</FileVersion>
     </PropertyGroup>
 
     <ItemGroup>
