@@ -10,13 +10,13 @@
         <Copyright>Copyright (c) MeGl 2022</Copyright>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <PackageVersion>2.5.1</PackageVersion>
+        <PackageVersion>2.5.2</PackageVersion>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <LangVersion>10</LangVersion>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <AssemblyVersion>2.5.1</AssemblyVersion>
-        <FileVersion>2.5.1</FileVersion>
+        <AssemblyVersion>2.5.2</AssemblyVersion>
+        <FileVersion>2.5.2</FileVersion>
         <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
@@ -29,8 +29,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="DotNetBungieAPI.Models" Version="2.5.0" />
-        <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="2.5.0" />
+        <PackageReference Include="DotNetBungieAPI.Models" Version="2.5.1" />
+        <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="2.5.2" />
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />

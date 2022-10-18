@@ -35,9 +35,11 @@ internal sealed class DefaultAuthorizationHandler : IAuthorizationHandler
         throw new NullReferenceException("Client ID is missing.");
     }
 
-    public AuthorizationState CreateNewAuthenticationAwaiter()
+    public AuthorizationState CreateNewAuthenticationAwaiter(string? state = null)
     {
-        var authAwaiter = AuthorizationState.GetNewAuth();
+        state ??= RandomInstance.GetRandomString(20);
+        
+        var authAwaiter = AuthorizationState.GetNewAuth(state);
         
         if (_authorizationStates.TryAdd(authAwaiter.State, authAwaiter)) return authAwaiter;
 
