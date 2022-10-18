@@ -39,11 +39,11 @@ public class AuthorizationState
     ///     Creates new authorization code awaiter
     /// </summary>
     /// <returns></returns>
-    public static AuthorizationState GetNewAuth()
+    public static AuthorizationState GetNewAuth(string state)
     {
         return new AuthorizationState
         {
-            State = "",
+            State = state,
             DidReceiveCallback = false,
             LinkHandoutTime = DateTime.UtcNow,
             CallbackReceiveTime = null,
