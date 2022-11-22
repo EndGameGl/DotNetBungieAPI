@@ -120,7 +120,7 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
-            .Append("/Content/SearchContentByTagAndType/")
+            .Append("/Content/Rss/NewsArticles/")
             .AddUrlParam(pageToken)
             .Build();
         
