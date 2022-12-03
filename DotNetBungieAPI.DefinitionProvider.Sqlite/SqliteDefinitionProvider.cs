@@ -722,7 +722,6 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         BungieLocales locale,
         Expression<Func<TDefinition, bool>> expression) where TDefinition : IDestinyDefinition
     {
-        var connection = _sqliteConnections[locale];
         var queryBuilder = new StringBuilder();
         queryBuilder.AppendLine($"SELECT json FROM {DefinitionHashPointer<TDefinition>.EnumValue} WHERE ");
 
@@ -738,20 +737,42 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         {
             throw new Exception("Something went wrong?..");
         }
+
+        return await GetObjectFromSqliteJson<TDefinition>(queryBuilder.ToString(), locale);
+    }
+
+    public async Task<List<TData>> SelectDefinitions<TDefinition, TData>(
+        BungieLocales locale,
+        Expression<Func<TDefinition, TData>> selectClause,
+        Expression<Func<TDefinition, bool>> whereClause) where TDefinition : IDestinyDefinition
+    {
+        var select = SqlValueConverter.ConvertExpression(selectClause);
+        var where = SqlValueConverter.ConvertExpression(whereClause);
+
+        var query = $"SELECT {select} FROM {DefinitionHashPointer<TDefinition>.EnumValue} WHERE {where}";
+
+        return await GetObjectFromSqliteJson<TData>(query, locale);
+    }
+
+    private async Task<List<TResult>> GetObjectFromSqliteJson<TResult>(
+        string query, 
+        BungieLocales locale)
+    {
+        var connection = _sqliteConnections[locale];
         await using var commandObj = new SqliteCommand
         {
             Connection = connection,
-            CommandText = queryBuilder.ToString()
+            CommandText = query
         };
         await using var reader = await commandObj.ExecuteReaderAsync();
-        var definitions = new List<TDefinition>();
+        var results = new List<TResult>();
         
         while (reader.Read())
         {
             var byteArray = reader.GetFieldValue<byte[]>(0);
-            definitions.Add(_serializer.Deserialize<TDefinition>(ref byteArray));
+            results.Add(_serializer.Deserialize<TResult>(ref byteArray));
         }
 
-        return definitions;
+        return results;
     }
 }

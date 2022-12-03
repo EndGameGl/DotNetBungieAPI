@@ -4,9 +4,9 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
-using DotNetBungieAPI.Exceptions;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Authorization;
+using DotNetBungieAPI.Models.Exceptions;
 using DotNetBungieAPI.RateLimiting;
 using DotNetBungieAPI.Service.Abstractions;
 using DotNetBungieAPI.Services.Implementations.ServiceConfigurations;
@@ -61,7 +61,7 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         {
             new("grant_type", "authorization_code"),
             new("code", code),
-            new("client_id", _configuration.ClientId!.ToString())
+            new("client_id", _configuration.ClientId.ToString())
         };
 
         if (!string.IsNullOrEmpty(_configuration.ClientSecret))
@@ -76,18 +76,20 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
             Content = new FormUrlEncodedContent(encodedContentPairs)
         };
 
-        requestMessage.Headers.TryAddWithoutValidation(ApiKeyHeader,
-            _configuration.ApiKey);
+        requestMessage.Headers.TryAddWithoutValidation(ApiKeyHeader, _configuration.ApiKey);
         requestMessage.Content.Headers.ContentType!.MediaType = "application/x-www-form-urlencoded";
         requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         var response = await SendAsyncInternal(requestMessage).ConfigureAwait(false);
 
-        if (!response.IsSuccessStatusCode)
-            throw new Exception("Failed to fetch token.");
-        var token = await _serializer.DeserializeAsync<AuthorizationTokenData>(
-            await response.Content.ReadAsStreamAsync());
-
-        return token;
+        if (response.IsSuccessStatusCode)
+        {
+            var responseContentStream = await response.Content.ReadAsStreamAsync();
+            return await _serializer.DeserializeAsync<AuthorizationTokenData>(responseContentStream);
+        }
+        
+        var responseBody = await response.Content.ReadAsStringAsync();
+        var parsedResponse = _serializer.Deserialize<AuthorizationResponseError>(responseBody);
+        throw new BungieNetAuthorizationErrorException(parsedResponse, responseBody);
     }
 
     public async ValueTask<AuthorizationTokenData> RenewAuthorizationToken(AuthorizationTokenData oldToken)
@@ -114,19 +116,20 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
             Content = new FormUrlEncodedContent(encodedContentPairs)
         };
 
-        requestMessage.Headers.TryAddWithoutValidation(ApiKeyHeader,
-            _configuration.ApiKey);
-
+        requestMessage.Headers.TryAddWithoutValidation(ApiKeyHeader, _configuration.ApiKey);
         requestMessage.Content.Headers.ContentType!.MediaType = "application/x-www-form-urlencoded";
         requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
         var response = await SendAsyncInternal(requestMessage).ConfigureAwait(false);
 
         if (response.IsSuccessStatusCode)
-            return await _serializer.DeserializeAsync<AuthorizationTokenData>(
-                await response.Content.ReadAsStreamAsync()).ConfigureAwait(false);
+        {
+            var responseContentStream = await response.Content.ReadAsStreamAsync();
+            return await _serializer.DeserializeAsync<AuthorizationTokenData>(responseContentStream);
+        }
 
-        throw new Exception("Failed to fetch token.");
+        var responseBody = await response.Content.ReadAsStringAsync();
+        var parsedResponse = _serializer.Deserialize<AuthorizationResponseError>(responseBody);
+        throw new BungieNetAuthorizationErrorException(parsedResponse, responseBody);
     }
 
     public string GetAuthLink(int clientId, string state)

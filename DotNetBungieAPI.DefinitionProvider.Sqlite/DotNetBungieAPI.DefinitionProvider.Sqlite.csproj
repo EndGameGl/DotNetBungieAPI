@@ -21,9 +21,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="2.4.0" />
-      <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.8" />
-      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
+      <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="2.6.0" />
+      <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
     </ItemGroup>
 
 </Project>

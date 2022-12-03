@@ -46,6 +46,18 @@ internal static class SqlValueConverter
         return ConvertValue(expression.Value, expression.Type);
     }
 
+    internal static string ConvertExpression<TInput, TOutput>(Expression<Func<TInput, TOutput>> expression)
+    {
+        return expression.Body switch
+        {
+            BinaryExpression binaryExpression => ConvertBinaryExpression(binaryExpression),
+            ConstantExpression leftConstExpr => ConvertConstantExpression(leftConstExpr),
+            MemberExpression leftMemberExpr => ConvertMemberExpression(leftMemberExpr),
+            MethodCallExpression methodCallExpression => ConvertMethodCallExpression(methodCallExpression),
+            _ => throw new Exception("Something went wrong?..")
+        };
+    }
+    
     internal static string ConvertBinaryExpression(BinaryExpression binaryExpression)
     {
         var left = binaryExpression.Left;

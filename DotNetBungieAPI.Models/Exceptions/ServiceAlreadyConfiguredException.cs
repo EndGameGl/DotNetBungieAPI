@@ -1,4 +1,4 @@
-﻿namespace DotNetBungieAPI.Exceptions;
+﻿namespace DotNetBungieAPI.Models.Exceptions;
 
 /// <summary>
 ///     This exception is thrown when already registered service is readded again

@@ -1,11 +1,10 @@
 ﻿using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using DotNetBungieAPI.Clients;
-using DotNetBungieAPI.Exceptions;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Applications;
 using DotNetBungieAPI.Models.Authorization;
+using DotNetBungieAPI.Models.Exceptions;
 using DotNetBungieAPI.Models.Requests;
 using DotNetBungieAPI.Models.Tokens;
 using DotNetBungieAPI.Service.Abstractions;

@@ -1,6 +1,4 @@
-﻿using DotNetBungieAPI.Models;
-
-namespace DotNetBungieAPI.Exceptions;
+﻿namespace DotNetBungieAPI.Models.Exceptions;
 
 /// <summary>
 ///     Exception, based of <see cref="BungieResponse{T}" />

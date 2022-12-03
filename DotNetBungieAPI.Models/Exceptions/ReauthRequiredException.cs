@@ -1,4 +1,4 @@
-﻿namespace DotNetBungieAPI.Exceptions;
+﻿namespace DotNetBungieAPI.Models.Exceptions;
 
 public class ReauthRequiredException : Exception
 {

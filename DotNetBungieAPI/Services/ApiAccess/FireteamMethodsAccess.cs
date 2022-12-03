@@ -1,11 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using DotNetBungieAPI.Clients;
-using DotNetBungieAPI.Exceptions;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Applications;
 using DotNetBungieAPI.Models.Authorization;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes;
+using DotNetBungieAPI.Models.Exceptions;
 using DotNetBungieAPI.Models.Fireteam;
 using DotNetBungieAPI.Models.Queries;
 using DotNetBungieAPI.Service.Abstractions;

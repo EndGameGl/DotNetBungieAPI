@@ -1,6 +1,6 @@
 ﻿using DotNetBungieAPI.Models.Applications;
 
-namespace DotNetBungieAPI.Exceptions;
+namespace DotNetBungieAPI.Models.Exceptions;
 
 /// <summary>
 ///     Exception for handling insufficient api scope on calls

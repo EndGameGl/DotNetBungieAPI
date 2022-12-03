@@ -1,8 +1,6 @@
 ﻿using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using DotNetBungieAPI.Clients;
-using DotNetBungieAPI.Exceptions;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Applications;
 using DotNetBungieAPI.Models.Authorization;
@@ -14,6 +12,7 @@ using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
 using DotNetBungieAPI.Models.Destiny.HistoricalStats;
 using DotNetBungieAPI.Models.Destiny.Milestones;
 using DotNetBungieAPI.Models.Destiny.Responses;
+using DotNetBungieAPI.Models.Exceptions;
 using DotNetBungieAPI.Models.Queries;
 using DotNetBungieAPI.Models.Requests;
 using DotNetBungieAPI.Models.Responses;
