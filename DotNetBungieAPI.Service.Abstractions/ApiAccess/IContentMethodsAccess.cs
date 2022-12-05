@@ -90,6 +90,6 @@ public interface IContentMethodsAccess
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
     Task<BungieResponse<NewsArticleRssResponse>> RssNewsArticles(
-        string pageToken,
+        int pageToken,
         CancellationToken cancellationToken = default);
 }

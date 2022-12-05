@@ -115,13 +115,13 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
     }
 
     public async Task<BungieResponse<NewsArticleRssResponse>> RssNewsArticles(
-        string pageToken,
+        int pageToken,
         CancellationToken cancellationToken = default)
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
-            .Append("/Content/SearchContentByTagAndType/")
-            .AddUrlParam(pageToken)
+            .Append("/Content/Rss/NewsArticles/")
+            .AddUrlParam(pageToken.ToString())
             .Build();
         
         return await _dotNetBungieApiHttpClient

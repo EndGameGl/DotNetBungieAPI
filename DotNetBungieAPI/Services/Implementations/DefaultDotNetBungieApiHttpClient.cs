@@ -170,8 +170,8 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
             .Append(query)
             .Build();
         _logger.LogDebug("Calling api: {FinalQuery}", finalQuery);
-        var request = CreateGetMessage(finalQuery, false, authToken);
-        var response = await SendAsyncInternal(request, HttpCompletionOption.ResponseHeadersRead, token);
+        using var request = CreateGetMessage(finalQuery, false, authToken);
+        using var response = await SendAsyncInternal(request, HttpCompletionOption.ResponseHeadersRead, token);
         await using var stream = await response.Content.ReadAsStreamAsync(token);
         var bungieResponse = await _serializer.DeserializeAsync<BungieResponse<T>>(stream);
         return bungieResponse;
@@ -186,8 +186,8 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
             .Append(query)
             .Build();
         _logger.LogDebug("Calling api: {FinalQuery}", finalQuery);
-        var request = CreatePostMessage(finalQuery, authToken, content);
-        var response = await SendAsyncInternal(request, HttpCompletionOption.ResponseHeadersRead, token);
+        using var request = CreatePostMessage(finalQuery, authToken, content);
+        using var response = await SendAsyncInternal(request, HttpCompletionOption.ResponseHeadersRead, token);
         await using var stream = await response.Content.ReadAsStreamAsync(token);
         var bungieResponse = await _serializer.DeserializeAsync<BungieResponse<T>>(stream);
         return bungieResponse;
@@ -202,8 +202,8 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
             .Append(query)
             .Build();
         _logger.LogDebug("Calling api: {FinalQuery}", finalQuery);
-        var request = CreateGetMessage(finalQuery, false, authToken);
-        var response = await SendAsyncInternal(request, HttpCompletionOption.ResponseHeadersRead, token);
+        using var request = CreateGetMessage(finalQuery, false, authToken);
+        using var response = await SendAsyncInternal(request, HttpCompletionOption.ResponseHeadersRead, token);
         await using var stream = await response.Content.ReadAsStreamAsync(token);
         var bungieResponse = await _serializer.DeserializeAsync<BungieResponse<T>>(stream);
         return bungieResponse;
