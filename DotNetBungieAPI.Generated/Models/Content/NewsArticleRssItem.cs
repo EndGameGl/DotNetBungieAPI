@@ -16,4 +16,13 @@ public class NewsArticleRssItem
 
     [JsonPropertyName("Description")]
     public string? Description { get; set; }
+
+    [JsonPropertyName("HtmlContent")]
+    public string? HtmlContent { get; set; }
+
+    [JsonPropertyName("ImagePath")]
+    public string? ImagePath { get; set; }
+
+    [JsonPropertyName("OptionalMobileImagePath")]
+    public string? OptionalMobileImagePath { get; set; }
 }

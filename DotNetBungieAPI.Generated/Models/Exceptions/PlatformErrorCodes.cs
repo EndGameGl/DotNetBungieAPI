@@ -30,9 +30,6 @@ public enum PlatformErrorCodes : int
 
     Duplicate = 13,
 
-    /// <summary>
-    ///     Deprecated, please do not check for this value anywhere.
-    /// </summary>
     UnknownSqlResult = 14,
 
     ValidationError = 15,
@@ -392,6 +389,12 @@ public enum PlatformErrorCodes : int
     ErrorNoAvailableNameChanges = 240,
 
     ErrorNameAlreadySetToInput = 241,
+
+    UserDisplayNameLessThanMinLength = 242,
+
+    UserDisplayNameGreaterThanMaxLength = 243,
+
+    UserDisplayNameContainsUnacceptableOrInvalidContent = 244,
 
     MessagingUnknownError = 300,
 
@@ -812,6 +815,10 @@ public enum PlatformErrorCodes : int
     ClanCreationBan = 752,
 
     ClanCreationTenureRequirementsNotMet = 753,
+
+    ClanFieldContainsReservedTerms = 754,
+
+    ClanFieldContainsInappropriateContent = 755,
 
     ItemAlreadyFollowed = 801,
 
@@ -1415,6 +1422,10 @@ public enum PlatformErrorCodes : int
     TwitchDropHistoryPermissionFailure = 2507,
 
     TwitchDropsRepairPartialFailure = 2508,
+
+    TwitchNotAuthorized = 2509,
+
+    TwitchUnknownAuthorizationFailure = 2510,
 
     TrendingCategoryNotFound = 2600,
 

@@ -24,5 +24,7 @@ public enum DestinyGameVersions : int
 
     Anniversary30th = 128,
 
-    TheWitchQueen = 256
+    TheWitchQueen = 256,
+
+    Lightfall = 512
 }

@@ -104,5 +104,12 @@ public enum DestinyVendorItemState : int
     /// <summary>
     ///     This indicates that the sale item is locked.
     /// </summary>
-    Locked = 262144
+    Locked = 262144,
+
+    /// <summary>
+    ///     This indicates that the sale item is paracausal.
+    /// </summary>
+    Paracausal = 524288,
+
+    Cryptarch = 1048576
 }

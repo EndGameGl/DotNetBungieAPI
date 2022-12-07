@@ -12,16 +12,17 @@
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PackageVersion>1.2.0</PackageVersion>
-        <AssemblyVersion>1.2.0</AssemblyVersion>
-        <FileVersion>1.2.0</FileVersion>
+        <PackageVersion>1.3.0</PackageVersion>
+        <AssemblyVersion>1.3.0</AssemblyVersion>
+        <FileVersion>1.3.0</FileVersion>
+        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+        <LangVersion>11</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="2.6.0" />
+      <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="2.7.0" />
       <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.0" />
       <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
     </ItemGroup>

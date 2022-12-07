@@ -172,5 +172,7 @@ public enum DestinyActivityModeType : int
 
     ZoneControl = 89,
 
-    IronBannerRift = 90
+    IronBannerRift = 90,
+
+    IronBannerZoneControl = 91
 }

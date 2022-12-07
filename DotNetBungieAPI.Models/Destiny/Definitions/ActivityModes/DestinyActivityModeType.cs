@@ -87,5 +87,6 @@ public enum DestinyActivityModeType
     LostSector = 87,
     Rift = 88,
     ZoneControl = 89,
-    IronBannerRift = 90
+    IronBannerRift = 90,
+    IronBannerZoneControl = 91
 }

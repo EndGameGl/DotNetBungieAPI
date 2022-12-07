@@ -13,4 +13,7 @@ public class NewsArticleRssResponse
 
     [JsonPropertyName("ResultCountThisPage")]
     public int? ResultCountThisPage { get; set; }
+
+    [JsonPropertyName("CategoryFilter")]
+    public string? CategoryFilter { get; set; }
 }

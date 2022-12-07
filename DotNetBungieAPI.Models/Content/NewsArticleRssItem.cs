@@ -16,4 +16,13 @@ public sealed record NewsArticleRssItem
 
     [JsonPropertyName("Description")]
     public string Description { get; init; }
+    
+    [JsonPropertyName("HtmlContent")]
+    public string? HtmlContent { get; init; }
+
+    [JsonPropertyName("ImagePath")]
+    public string? ImagePath { get; init; }
+
+    [JsonPropertyName("OptionalMobileImagePath")]
+    public string? OptionalMobileImagePath { get; init; }
 }

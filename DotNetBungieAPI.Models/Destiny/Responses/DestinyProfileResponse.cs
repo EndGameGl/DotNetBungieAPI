@@ -206,4 +206,20 @@ public sealed record DestinyProfileResponse
     /// </summary>
     [JsonPropertyName("characterCurrencyLookups")]
     public DictionaryComponentResponseOfint64AndDestinyCurrenciesComponent CharacterCurrencyLookups { get; init; }
+    
+    /// <summary>
+    ///     Records the timestamp of when most components were last generated from the world server source. Unless the component type is specified in the documentation for secondaryComponentsMintedTimestamp, this value is sufficient to do data freshness.
+    /// </summary>
+    [JsonPropertyName("responseMintedTimestamp")]
+    public DateTime? ResponseMintedTimestamp { get; init; }
+
+    /// <summary>
+    ///     Some secondary components are not tracked in the primary response timestamp and have their timestamp tracked here. If your component is any of the following, this field is where you will find your timestamp value:
+    /// <para />
+    ///      PresentationNodes, Records, Collectibles, Metrics, StringVariables, Craftables, Transitory
+    /// <para />
+    ///      All other component types may use the primary timestamp property.
+    /// </summary>
+    [JsonPropertyName("secondaryComponentsMintedTimestamp")]
+    public DateTime? SecondaryComponentsMintedTimestamp { get; init; }
 }

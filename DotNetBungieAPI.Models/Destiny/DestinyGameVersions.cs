@@ -15,5 +15,6 @@ public enum DestinyGameVersions
     Shadowkeep = 32,
     BeyondLight = 64,
     Anniversary30th = 128,
-    TheWitchQueen = 256
+    TheWitchQueen = 256,
+    Lightfall = 512
 }

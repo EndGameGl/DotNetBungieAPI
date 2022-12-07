@@ -87,9 +87,13 @@ public interface IContentMethodsAccess
     ///     Returns a JSON string response that is the RSS feed for news articles.
     /// </summary>
     /// <param name="pageToken">Zero-based pagination token for paging through result sets.</param>
+    /// <param name="includeBody">Optionally include full content body for each news item.</param>
     /// <param name="cancellationToken">Cancellation token</param>
+    /// <param name="categoryFilter">Optionally filter response to only include news items in a certain category.</param>
     /// <returns></returns>
     Task<BungieResponse<NewsArticleRssResponse>> RssNewsArticles(
         int pageToken,
+        string? categoryFilter = null,
+        bool? includeBody = null,
         CancellationToken cancellationToken = default);
 }

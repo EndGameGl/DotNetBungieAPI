@@ -14,4 +14,7 @@ public sealed record NewsArticleRssResponse
 
     [JsonPropertyName("ResultCountThisPage")]
     public int ResultCountThisPage { get; init; }
+    
+    [JsonPropertyName("CategoryFilter")]
+    public string? CategoryFilter { get; init; }
 }

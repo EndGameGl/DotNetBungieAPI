@@ -656,9 +656,9 @@ public class DefinitionHashReferencesGenerator
         await textWriter.FlushAsync();
 
         #endregion
-        
+
         #region EventCards
-        
+
         await textWriter.WriteAsync(GetIndentedString(indentationLevel, GetClassNameString("EventCards")));
         await textWriter.WriteAsync(GetIndentedString(indentationLevel, $"{OpenCurvyBrackets}{NewLine}"));
 
@@ -667,7 +667,7 @@ public class DefinitionHashReferencesGenerator
         indentationLevel--;
         await textWriter.WriteAsync(GetIndentedString(indentationLevel, $"{CloseCurvyBrackets}{NewLine}"));
         await textWriter.FlushAsync();
-        
+
         #endregion
 
         #region closing
@@ -716,7 +716,33 @@ public class DefinitionHashReferencesGenerator
 
         if (char.IsDigit(key[0])) key = $"H{key}";
 
-        var sameEntriesAmount = definitionCacheLookup.Keys.Count(x => x.Split("_")[0] == key);
+        var sameEntriesAmount = definitionCacheLookup.Keys.Count(x =>
+        {
+            if (x.Count(ch => ch == '_') > 1)
+            {
+                var indexOfLastUnderscore = x.LastIndexOf('_');
+                if (indexOfLastUnderscore == x.Length)
+                {
+                    return x.Split("_")[0] == key;
+                }
+                else
+                {
+                    if (char.IsDigit(x[indexOfLastUnderscore + 1]))
+                    {
+                        var foundKey = x[..(indexOfLastUnderscore - 1)];
+                        return foundKey == key;
+                    }
+                    else
+                    {
+                        return x == key;
+                    }
+                }
+            }
+            else
+            {
+                return x.Split("_")[0] == key;
+            }
+        });
 
         definitionCacheLookup.Add(
             sameEntriesAmount > 0 ? $"{key}_{value}" : key, value);
@@ -2181,7 +2207,7 @@ public class DefinitionHashReferencesGenerator
                     ForbiddenSymbols);
             else
                 definitionCacheLookup.Add($"H{definition.Hash.ToString()}", definition.Hash);
-        
+
         foreach (var (key, value) in definitionCacheLookup)
         {
             if (_bungieClient.Repository.TryGetDestinyDefinition<DestinyEventCardDefinition>(
