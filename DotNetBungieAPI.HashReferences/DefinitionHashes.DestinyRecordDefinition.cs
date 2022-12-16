@@ -2350,9 +2350,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MunitionsVarietyPack = 2790931445;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	In the Heist Battlegrounds playlist, complete heists and defeat Deathtongue Choristers.
 			/// </summary>
-			public const uint Classified_2273484264 = 2273484264;
+			public const uint HeistBattlegroundsII = 2273484264;
 			/// <summary>
 			/// 	Purchase all 12 Dawning upgrades from Eva with Dawning Spirit.
 			/// </summary>
@@ -2362,9 +2362,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Classified_2273484265 = 2273484265;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	In the Heist Battlegrounds playlist or Legend Heist Battlegrounds, open Seraph Chests and defeat powerful Hive combatants.
 			/// </summary>
-			public const uint Classified_2273484267 = 2273484267;
+			public const uint HeistBattlegroundsI = 2273484267;
 			/// <summary>
 			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
@@ -3048,9 +3048,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DivisionDebut = 193233095;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete Week 2 of "More Than a Weapon."
 			/// </summary>
-			public const uint Classified_2766545544 = 2766545544;
+			public const uint MoreThanaWeaponII = 2766545544;
 			/// <summary>
 			/// 	Clear all three Seraph Bunkers in a day.
 			/// </summary>
@@ -3060,9 +3060,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Classified_2766545545 = 2766545545;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete Week 1 of "More Than a Weapon."
 			/// </summary>
-			public const uint Classified_2766545547 = 2766545547;
+			public const uint MoreThanaWeaponI = 2766545547;
 			/// <summary>
 			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
@@ -7581,9 +7581,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WatchtheThrone = 451978683;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	In the Cosmodrome, earn progress by completing bounties, patrols, public events, and Lost Sectors.
 			/// </summary>
-			public const uint Classified_3206851386 = 3206851386;
+			public const uint CosmodromeActivities = 3206851386;
 			/// <summary>
 			/// 	Complete the flawless version of the "Scourge of the Past" raid.
 			/// </summary>
@@ -8380,9 +8380,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ThroneWorldCollector_268771181 = 268771181;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	On the Moon, earn progress by completing bounties, patrols, public events, and Lost Sectors.
 			/// </summary>
-			public const uint Classified_3218617235 = 3218617235;
+			public const uint MoonActivities = 3218617235;
 			/// <summary>
 			/// 	Acquire a piece of the Reverie Dawn armor set.
 			/// </summary>
