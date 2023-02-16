@@ -324,8 +324,44 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         return (await GetAvailableManifests()).Any(x => x.Version == version);
     }
 
+    private async Task ClearAllConnections()
+    {
+        if (_sqliteConnections?.Count > 0)
+        {
+            foreach (var (_, connection) in _sqliteConnections)
+            {
+                if (connection is null)
+                    continue;
+                try
+                {
+                    await connection.CloseAsync();
+                    await connection.DisposeAsync();
+                }
+                catch (Exception exception)
+                {
+                    _logger.LogError(exception, "Error in {DisposeAsyncName}", nameof(DisposeAsync));
+                }
+            }
+
+            if (_mobileGearAssetDataBaseConnection is not null)
+            {
+                try
+                {
+                    await _mobileGearAssetDataBaseConnection.CloseAsync();
+                    await _mobileGearAssetDataBaseConnection.DisposeAsync();
+                }
+                catch (Exception exception)
+                {
+                    _logger.LogError(exception, "Error in {DisposeAsyncName}", nameof(DisposeAsync));
+                }
+            }
+        }
+    }
+
     public async Task Initialize()
     {
+        await ClearAllConnections();
+
         _sqliteConnections = new Dictionary<BungieLocales, SqliteConnection>
         {
             [BungieLocales.EN] = new(),
@@ -669,14 +705,16 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         var assetsEntry = _currentManifest.MobileGearAssetDataBases.FirstOrDefault(x => x.Version == 2);
         if (assetsEntry is not null)
         {
+            if (_mobileGearAssetDataBaseConnection is not null && _mobileGearAssetDataBaseConnection.State != ConnectionState.Closed)
+                _mobileGearAssetDataBaseConnection.Close();
+
             var mobileGearAssetDataBasePath = Path.Combine(
                 _configuration.ManifestFolderPath,
                 manifestData.Version,
                 "MobileGearAssetDataBases",
                 "2",
                 Path.GetFileName(assetsEntry.Path));
-            _mobileGearAssetDataBaseConnection.ConnectionString =
-                string.Format(ConnectionStringTemplate, mobileGearAssetDataBasePath);
+            _mobileGearAssetDataBaseConnection.ConnectionString = string.Format(ConnectionStringTemplate, mobileGearAssetDataBasePath);
             _mobileGearAssetDataBaseConnection.Open();
         }
     }
@@ -708,7 +746,7 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         };
         await using var reader = await commandObj.ExecuteReaderAsync();
         var definitions = new List<DefinitionHashPointer<TDefinition>>();
-        
+
         while (reader.Read())
         {
             var hash = reader.GetInt32(0).ToUInt32();
@@ -755,7 +793,7 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
     }
 
     private async Task<List<TResult>> GetObjectFromSqliteJson<TResult>(
-        string query, 
+        string query,
         BungieLocales locale)
     {
         var connection = _sqliteConnections[locale];
@@ -766,7 +804,7 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         };
         await using var reader = await commandObj.ExecuteReaderAsync();
         var results = new List<TResult>();
-        
+
         while (reader.Read())
         {
             var byteArray = reader.GetFieldValue<byte[]>(0);
