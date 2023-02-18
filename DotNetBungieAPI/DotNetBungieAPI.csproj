@@ -18,6 +18,7 @@
         <AssemblyVersion>2.7.0</AssemblyVersion>
         <FileVersion>2.7.0</FileVersion>
         <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -34,7 +35,6 @@
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
         <PackageReference Include="RateLimiter" Version="2.2.0" />
-        <PackageReference Include="System.ObjectModel" Version="4.3.0" />
     </ItemGroup>
 
 </Project>

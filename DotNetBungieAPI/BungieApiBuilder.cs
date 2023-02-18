@@ -4,6 +4,7 @@ using DotNetBungieAPI.Service.Abstractions.ApiAccess;
 using DotNetBungieAPI.Services.ApiAccess;
 using DotNetBungieAPI.Services.Implementations;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace DotNetBungieAPI;
 
@@ -14,9 +15,22 @@ public static class BungieApiBuilder
 {
     public static IBungieClient GetApiClient(
         Action<IBungieClientBuilder> configure,
-        IServiceCollection serviceCollection = null)
+        Action<ILoggingBuilder>? loggerConfigurer = null,
+        IServiceCollection? serviceCollection = null)
     {
         serviceCollection ??= new ServiceCollection();
+
+        if (loggerConfigurer != null)
+        {
+            serviceCollection.AddLogging(loggerConfigurer);
+        }
+        else
+        {
+            serviceCollection.AddLogging((builder) =>
+            {
+                builder.Services.AddSingleton<ILoggerProvider, NullLoggerProvider>();
+            });
+        }
 
         var builder = new BungieClientBuilder(serviceCollection);
         configure.Invoke(builder);
@@ -25,7 +39,7 @@ public static class BungieApiBuilder
         
         RegisterServices(serviceCollection, builder);
 
-        return serviceCollection.BuildServiceProvider().GetService<IBungieClient>();
+        return serviceCollection.BuildServiceProvider().GetRequiredService<IBungieClient>();
     }
 
     /// <summary>
