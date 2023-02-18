@@ -48,7 +48,7 @@ public class BungieClientBuilder : IBungieClientBuilder
 
         if ((DefinitionProvider as ServiceConfigurator<IDefinitionProvider>)!.IsConfigured is false)
         {
-            throw new Exception("Definition provider wasn't configured, please view available packages.");
+            DefinitionProvider.Use<NullDefinitionProvider, NullDefinitionProviderConfig>((_) => { });
         }
 
         if ((Destiny2ResetService as ServiceConfigurator<IDestiny2ResetService>)!.IsConfigured is false)

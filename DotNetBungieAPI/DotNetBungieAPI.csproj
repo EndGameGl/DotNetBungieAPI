@@ -10,13 +10,13 @@
         <Copyright>Copyright (c) MeGl 2022</Copyright>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <PackageVersion>2.7.0</PackageVersion>
+        <PackageVersion>2.7.1</PackageVersion>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <LangVersion>11</LangVersion>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <AssemblyVersion>2.7.0</AssemblyVersion>
-        <FileVersion>2.7.0</FileVersion>
+        <AssemblyVersion>2.7.1</AssemblyVersion>
+        <FileVersion>2.7.1</FileVersion>
         <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
         <Nullable>enable</Nullable>
     </PropertyGroup>
