@@ -462,21 +462,28 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
             var connection = _sqliteConnections[locale];
             Parallel.ForEach(definitionsToLoad, (definitionType, _) =>
             {
-                _logger.LogInformation("Reading definitions: {DefinitionType}", definitionType);
-                var runtimeType = _assemblyData.DefinitionsToTypeMapping[definitionType].DefinitionType;
-                var commandObj = new SqliteCommand
+                try
                 {
-                    Connection = connection,
-                    CommandText = string.Format(SelectAllDefinitionsQuery, definitionType)
-                };
+                    _logger.LogInformation("Reading definitions: {DefinitionType}", definitionType);
+                    var runtimeType = _assemblyData.DefinitionsToTypeMapping[definitionType].DefinitionType;
+                    var commandObj = new SqliteCommand
+                    {
+                        Connection = connection,
+                        CommandText = string.Format(SelectAllDefinitionsQuery, definitionType)
+                    };
 
-                var reader = commandObj.ExecuteReader();
-                while (reader.Read())
+                    var reader = commandObj.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var parsedDefinition = (IDestinyDefinition)_serializer.Deserialize(
+                            reader.GetFieldValue<byte[]>(0),
+                            runtimeType);
+                        repository.AddDefinition(locale, parsedDefinition);
+                    }
+                }
+                catch (Exception ex)
                 {
-                    var parsedDefinition = (IDestinyDefinition)_serializer.Deserialize(
-                        reader.GetFieldValue<byte[]>(0),
-                        runtimeType);
-                    repository.AddDefinition(locale, parsedDefinition);
+                    _logger.LogError(ex, "Encountered an error while reading definitions of type: {DefinitionType}", definitionType);
                 }
             });
 

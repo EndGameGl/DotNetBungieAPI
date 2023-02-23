@@ -762,4 +762,89 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
                 authorizationToken.AccessToken)
             .ConfigureAwait(false);
     }
+
+    public async Task<BungieResponse<int>> EquipLoadout(
+        DestinyLoadoutActionRequest request,
+        AuthorizationTokenData authorizationToken,
+        CancellationToken cancellationToken = default)
+    {
+        if (!_configuration.HasSufficientRights(ApplicationScopes.MoveEquipDestinyItems))
+            throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
+
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
+            .Append("/Destiny2/Actions/Loadouts/EquipLoadout/")
+            .Build();
+
+        var stream = new MemoryStream();
+        await _serializer.SerializeAsync(stream, request).ConfigureAwait(false);
+
+        return await _dotNetBungieApiHttpClient
+            .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
+            .ConfigureAwait(false);
+
+    }
+
+    public async Task<BungieResponse<int>> SnapshotLoadout(
+        DestinyLoadoutUpdateActionRequest request,
+        AuthorizationTokenData authorizationToken,
+        CancellationToken cancellationToken = default)
+    {
+        if (!_configuration.HasSufficientRights(ApplicationScopes.MoveEquipDestinyItems))
+            throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
+
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
+            .Append("/Destiny2/Actions/Loadouts/SnapshotLoadout/")
+            .Build();
+
+        var stream = new MemoryStream();
+        await _serializer.SerializeAsync(stream, request).ConfigureAwait(false);
+
+        return await _dotNetBungieApiHttpClient
+            .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
+            .ConfigureAwait(false);
+    }
+
+    public async Task<BungieResponse<int>> UpdateLoadoutIdentifiers(
+        DestinyLoadoutUpdateActionRequest request,
+        AuthorizationTokenData authorizationToken,
+        CancellationToken cancellationToken = default)
+    {
+        if (!_configuration.HasSufficientRights(ApplicationScopes.MoveEquipDestinyItems))
+            throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
+
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
+            .Append("/Destiny2/Actions/Loadouts/UpdateLoadoutIdentifiers/")
+            .Build();
+
+        var stream = new MemoryStream();
+        await _serializer.SerializeAsync(stream, request).ConfigureAwait(false);
+
+        return await _dotNetBungieApiHttpClient
+            .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
+            .ConfigureAwait(false);
+    }
+
+    public async Task<BungieResponse<int>> ClearLoadout(
+        DestinyLoadoutActionRequest request,
+        AuthorizationTokenData authorizationToken,
+        CancellationToken cancellationToken = default)
+    {
+        if (!_configuration.HasSufficientRights(ApplicationScopes.MoveEquipDestinyItems))
+            throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
+
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
+            .Append("/Destiny2/Actions/Loadouts/ClearLoadout/")
+            .Build();
+
+        var stream = new MemoryStream();
+        await _serializer.SerializeAsync(stream, request).ConfigureAwait(false);
+
+        return await _dotNetBungieApiHttpClient
+            .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
+            .ConfigureAwait(false);
+    }
 }

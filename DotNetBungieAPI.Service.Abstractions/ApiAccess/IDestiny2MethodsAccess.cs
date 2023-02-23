@@ -608,4 +608,48 @@ public interface IDestiny2MethodsAccess
         string correlationId,
         AuthorizationTokenData authorizationToken,
         CancellationToken cancellationToken = default);
+
+    /// <summary>
+    ///     Equip a loadout. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline.
+    /// </summary>
+    /// <param name="request">Request body</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns></returns>
+    Task<BungieResponse<int>> EquipLoadout(
+        DestinyLoadoutActionRequest request,
+        AuthorizationTokenData authorizationToken,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    ///     Snapshot a loadout with the currently equipped items. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline.
+    /// </summary>
+    /// <param name="request">Request body</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns></returns>
+    Task<BungieResponse<int>> SnapshotLoadout(
+        DestinyLoadoutUpdateActionRequest request,
+        AuthorizationTokenData authorizationToken,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    ///     Update the color, icon, and name of a loadout. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline.
+    /// </summary>
+    /// <param name="request">Request body</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns></returns>
+    Task<BungieResponse<int>> UpdateLoadoutIdentifiers(
+        DestinyLoadoutUpdateActionRequest request,
+        AuthorizationTokenData authorizationToken,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    ///     Clear the identifiers and items of a loadout. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline.
+    /// </summary>
+    /// <param name="request">Request body</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns></returns>
+    Task<BungieResponse<int>> ClearLoadout(
+        DestinyLoadoutActionRequest request,
+        AuthorizationTokenData authorizationToken,
+        CancellationToken cancellationToken = default);
 }

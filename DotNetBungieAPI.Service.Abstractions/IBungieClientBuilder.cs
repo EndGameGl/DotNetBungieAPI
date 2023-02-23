@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-
-namespace DotNetBungieAPI.Service.Abstractions;
+﻿namespace DotNetBungieAPI.Service.Abstractions;
 
 public interface IBungieClientBuilder
 {
