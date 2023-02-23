@@ -17,7 +17,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Bundle price will be reduced for each item already owned.
 			/// <para/>
 			/// </summary>
-			public const uint ArcAdornmentsTitanBundle = 447701421;
+			public const uint ThunderousImpactTitanBundle = 447701421;
 			/// <summary>
 			/// 	These shaders and mods—in the colors of roses, love, and other bonds—capture the spirit of this year's Crimson Days celebrations.
 			/// </summary>
@@ -2080,7 +2080,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Bundle price will be reduced for each item already owned.
 			/// <para/>
 			/// </summary>
-			public const uint ArcAdornmentsWarlockBundle = 1356679820;
+			public const uint ArclightWarlockBundle = 1356679820;
 			/// <summary>
 			/// 	Contains 4 items honoring Cayde-6.
 			/// <para/>
@@ -2519,7 +2519,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Bundle price will be reduced for each item already owned.
 			/// <para/>
 			/// </summary>
-			public const uint ArcAdornmentsHunterBundle = 648959945;
+			public const uint DynamoCurrentHunterBundle = 648959945;
 			/// <summary>
 			/// 	Contains a full set of Celestial Hunter universal ornaments.
 			/// <para/>

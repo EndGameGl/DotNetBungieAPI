@@ -264,9 +264,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint QuickplayPvP = 3425110680;
 			/// <summary>
-			/// 	###ActivityModes.ironBannerZoneControl_DESCRIPTION###
+			/// 	Stats for the Iron Banner Zone Control mode.
 			/// </summary>
-			public const uint ActivityModesironBannerZoneControl_NAME = 1639772990;
+			public const uint IronBannerZoneControl = 1639772990;
 			/// <summary>
 			/// 	Just how many times did we wipe in last week's Nightfall?  (Hint, no more than once)
 			/// </summary>

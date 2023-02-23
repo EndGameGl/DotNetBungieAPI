@@ -319,6 +319,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Arcstriderdefeats = 2387491484;
 			/// <summary>
+			/// 	The score for the sum total of collected gear.
+			/// </summary>
+			public const uint CollectionsScore = 3526455111;
+			/// <summary>
 			/// 	Total number of Warmind bunkers successfully infiltrated during Season of the Seraph.
 			/// </summary>
 			public const uint Infiltrator = 1461985859;

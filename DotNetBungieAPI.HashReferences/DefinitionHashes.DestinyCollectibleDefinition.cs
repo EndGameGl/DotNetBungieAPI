@@ -13540,10 +13540,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Modifications for your ship's transmat systems, so you'll always arrive in style.
 			/// </summary>
 			public const uint TaegeukForm = 1608551413;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified = 1822059425;
+			public const uint H162116RUF = 1822059425;
 			public const uint AGoodSport = 4098597416;
 			public const uint GildedRemembrance = 1822059426;
 			public const uint LifeforLife = 4098597417;

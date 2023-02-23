@@ -1275,7 +1275,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint FirstSnowflakeBundle = 2371013927;
 			public const uint PrecisionFrame_3489809232 = 3489809232;
 			public const uint LiminalVoyagerGloves_4089147221 = 4089147221;
-			public const uint Classified_3528226498 = 3528226498;
+			public const uint MoreThanaWeapon_3528226498 = 3528226498;
 			public const uint CrucialVexComponents = 3937126668;
 			public const uint GrandSlam = 130305507;
 			public const uint StainedShrapnel = 1473368760;
@@ -1554,7 +1554,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint EuropeanDeadZoneArmor_246238708 = 246238708;
 			public const uint CustomDrive_1950431413 = 1950431413;
 			public const uint CrucibleArmorScrounger_930761253 = 930761253;
-			public const uint Classified_3427560880 = 3427560880;
+			public const uint MoreThanaWeapon_3427560880 = 3427560880;
 			public const uint Syncopation53_393313765 = 393313765;
 			public const uint MoonfangX7Bond = 2295111683;
 			public const uint ViperidaxVest_2677528310 = 2677528310;
@@ -1703,7 +1703,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DrinkattheWell = 3118323620;
 			public const uint Transcendent = 3118323621;
 			public const uint MightyRivalryMark = 967781090;
-			public const uint Classified_1353136352 = 1353136352;
+			public const uint MoreThanaWeapon_1353136352 = 1353136352;
 			public const uint SoaringSwordOrnament_2646135315 = 2646135315;
 			public const uint TraitorsVessel = 2585427437;
 			public const uint H4912578 = 4912578;
@@ -2353,7 +2353,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H44155234 = 44155234;
 			public const uint OpulenceCorrupted = 1868330209;
 			public const uint ForceSquadDisplay = 2790810426;
-			public const uint Classified_3895414282 = 3895414282;
+			public const uint MoreThanaWeapon_3895414282 = 3895414282;
 			public const uint WeBeginintheStars = 1868330216;
 			public const uint LegendaryEngram_2523860620 = 2523860620;
 			public const uint TerminalVelocity = 1868330217;
@@ -2423,7 +2423,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint FruitionOrnament = 2056295388;
 			public const uint FinaleOrnament = 2056295389;
 			public const uint GrenadeStriker = 3209637560;
-			public const uint FestivaloftheLostEventCardUpgrade = 639049550;
 			public const uint ProlongedEngagement = 2349907931;
 			public const uint FulfillmentOrnament = 2056295391;
 			public const uint SkulkingWolf = 3989629871;
@@ -2633,7 +2632,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint BlastOff = 2548337781;
 			public const uint Snakebite = 1075867128;
 			public const uint FusionRifleScavenger_2347686425 = 2347686425;
-			public const uint Classified_3794748664 = 3794748664;
+			public const uint MoreThanaWeapon_3794748664 = 3794748664;
 			public const uint AuthorofDevastation = 2752106987;
 			public const uint FortheKing = 1532753063;
 			public const uint VanguardKillTracker = 4138317986;
@@ -2803,7 +2802,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint GauntletsoftheExile_3921970316 = 3921970316;
 			public const uint BeyondLight_431984071 = 431984071;
 			public const uint MeleeStriker = 3560267478;
-			public const uint Classified_2382090272 = 2382090272;
+			public const uint MoreThanaWeapon_2382090272 = 2382090272;
 			public const uint SolsticeGraspsDrained_2720534902 = 2720534902;
 			public const uint TheLongGoodbye = 2154059444;
 			public const uint BeThyGuide_2159363321 = 2159363321;
@@ -3188,7 +3187,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint BerengersMemory_1983332562 = 1983332562;
 			public const uint GuardianGames_3415629942 = 3415629942;
 			public const uint AwkwardFive = 3516475261;
-			public const uint Classified_2370551349 = 2370551349;
+			public const uint MoreThanaWeapon_2370551349 = 2370551349;
 			public const uint AboveAllElse = 4283566249;
 			public const uint WishMakerShell = 3862768196;
 			public const uint PieceofMind_1975161734 = 1975161734;
@@ -3386,7 +3385,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SmallXPBoost_3423657814 = 3423657814;
 			public const uint SmallXPBoost_3423657815 = 3423657815;
 			public const uint H1665207901 = 1665207901;
-			public const uint Classified_2269885603 = 2269885603;
+			public const uint MoreThanaWeapon_2269885603 = 2269885603;
 			public const uint RedMoonPhantomGrips_1291141296 = 1291141296;
 			public const uint TwistingEchoCloak_286271818 = 286271818;
 			public const uint TangledShoreResourceDetector = 1143206163;
@@ -4301,7 +4300,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Seraphite = 31293053;
 			public const uint SunsApexVest = 1672448469;
 			public const uint OutofOptions = 2700862858;
-			public const uint Classified_2761857433 = 2761857433;
+			public const uint MoreThanaWeapon_2761857433 = 2761857433;
 			public const uint RedMamba = 2700862859;
 			public const uint VanguardShatteredCipherScrounger = 44301888;
 			public const uint AncientApocalypseHelm_3825427923 = 3825427923;
@@ -4989,7 +4988,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SolsticeMaskMajestic_817808889 = 817808889;
 			public const uint RighteousBoots_977534402 = 977534402;
 			public const uint FirebreakField_3123203109 = 3123203109;
-			public const uint Classified_3444338467 = 3444338467;
+			public const uint MoreThanaWeapon_3444338467 = 3444338467;
 			public const uint AirAssault_2898218424 = 2898218424;
 			public const uint H289069803 = 289069803;
 			public const uint PremiumTitanRewards_1115291847 = 1115291847;
@@ -5801,7 +5800,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint EmpireHuntII_890416151 = 890416151;
 			public const uint VanguardOperationsExperienceLog = 2207103371;
 			public const uint CalloftheCryptolith = 7284963;
-			public const uint Classified_3912191997 = 3912191997;
+			public const uint MoreThanaWeapon_3912191997 = 3912191997;
 			public const uint ShipsandSparrows_2975341146 = 2975341146;
 			public const uint IronCompanionGauntlets_3583853408 = 3583853408;
 			public const uint RecurrentImpact_2557589242 = 2557589242;
@@ -6058,7 +6057,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3420580409 = 3420580409;
 			public const uint MachinedSkirmisherStrides = 3758415809;
 			public const uint SuperDestructive = 685751430;
-			public const uint Classified_3811526251 = 3811526251;
+			public const uint MoreThanaWeapon_3811526251 = 3811526251;
 			public const uint RestlessSlumber_3236557427 = 3236557427;
 			public const uint H1554977878 = 1554977878;
 			public const uint LargeTreasureBeacon = 3127003720;
@@ -6250,7 +6249,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SeasonoftheLost_3735946323 = 3735946323;
 			public const uint TheWizenedRebuke_930590127 = 930590127;
 			public const uint FizzledScavengersBoon = 2638689062;
-			public const uint Classified_2398867859 = 2398867859;
+			public const uint MoreThanaWeapon_2398867859 = 2398867859;
 			public const uint SeventhSeraphMark = 2369445684;
 			public const uint EntanglementBond_2657180960 = 2657180960;
 			public const uint SolsticeHelmScorched_677939288 = 677939288;
@@ -6451,7 +6450,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint PardonOurDust_2912878255 = 2912878255;
 			public const uint TrialsArcDefeats = 4235693605;
 			public const uint LegendaryEngram_1641273992 = 1641273992;
-			public const uint Classified_2656822900 = 2656822900;
+			public const uint MoreThanaWeapon_2656822900 = 2656822900;
 			public const uint PunctuationMarks = 2414564781;
 			public const uint LegacyPR55Frame_916649862 = 916649862;
 			public const uint DefeatopponentswithArcdamage_1786879738 = 1786879738;
@@ -6834,7 +6833,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint NewLight = 1488322334;
 			public const uint ScornedBaronPlate_3214769810 = 3214769810;
 			public const uint WarSimulatorOrnament_3399222854 = 3399222854;
-			public const uint Classified_2286663190 = 2286663190;
+			public const uint MoreThanaWeapon_2286663190 = 2286663190;
 			public const uint CompleteBounties_100140310 = 100140310;
 			public const uint SovereignLionOrnament_784268641 = 784268641;
 			public const uint BoonofFriendship = 469906478;
@@ -8425,7 +8424,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint BittersweetBiscotti_1179123401 = 1179123401;
 			public const uint BurdenofGuiltAdept_821541816 = 821541816;
 			public const uint TransmatEffects_2460152806 = 2460152806;
-			public const uint Classified_3461116054 = 3461116054;
+			public const uint MoreThanaWeapon_3461116054 = 3461116054;
 			public const uint Armor_149024678 = 149024678;
 			public const uint SolsticeGauntletsRekindled_87994267 = 87994267;
 			public const uint HighVelocityRounds = 2822142346;
@@ -9419,7 +9418,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint WingContender_693067797 = 693067797;
 			public const uint BreatheIn = 4114677048;
 			public const uint SubstitutionalAlloyBond_2761292744 = 2761292744;
-			public const uint DawningEventCardUpgrade = 2258858004;
 			public const uint EnhancedBattery = 2680121939;
 			public const uint DeepExplorerStrides_2364756343 = 2364756343;
 			public const uint H1970836044 = 1970836044;
@@ -9732,7 +9730,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint BeyondLight_3752723910 = 3752723910;
 			public const uint FinnalasIronMark = 1101861022;
 			public const uint OpulentScholarHood_2245491369 = 2245491369;
-			public const uint Classified_2415645446 = 2415645446;
+			public const uint MoreThanaWeapon_2415645446 = 2415645446;
 			public const uint EgregoreEntrance = 467976170;
 			public const uint ArcCharge = 390568252;
 			public const uint UnixûrsalVoyager = 4039670779;
@@ -9958,7 +9956,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ShatteringBlade = 818211479;
 			public const uint SolsticeRobesDrained_942888402 = 942888402;
 			public const uint SolsticeRobesRenewed_942888403 = 942888403;
-			public const uint Classified_2673600487 = 2673600487;
+			public const uint MoreThanaWeapon_2673600487 = 2673600487;
 			public const uint EtherDoctor = 1839565992;
 			public const uint MisthiosCloak = 3756917166;
 			public const uint GiftHotCrossfireBuns = 1620924456;
@@ -10337,7 +10335,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Demolitionist_3523296417 = 3523296417;
 			public const uint WardensLaw = 233423981;
 			public const uint CelestialHunterBundle = 1853865612;
-			public const uint Classified_2303440777 = 2303440777;
+			public const uint MoreThanaWeapon_2303440777 = 2303440777;
 			public const uint SuperconductorWafer = 361684609;
 			public const uint MasterworkWeapon_1280545291 = 1280545291;
 			public const uint H892824789 = 892824789;
@@ -11915,7 +11913,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint AdequateDawningPresents = 4269317944;
 			public const uint RobesofSekris_2329031091 = 2329031091;
 			public const uint H1244639311 = 1244639311;
-			public const uint Classified_3477893641 = 3477893641;
+			public const uint MoreThanaWeapon_3477893641 = 3477893641;
 			public const uint VeritasBoots = 872328719;
 			public const uint Overflow_3643424744 = 3643424744;
 			public const uint MoteGamble = 3191735197;
@@ -13222,7 +13220,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint IllicitReaperHelm_223681334 = 223681334;
 			public const uint TrialsofOsirisWeapon = 1744460267;
 			public const uint OutlawedReaperHelm_223681335 = 223681335;
-			public const uint Classified_2432423161 = 2432423161;
+			public const uint MoreThanaWeapon_2432423161 = 2432423161;
 			public const uint LegendaryEngram_4184529931 = 4184529931;
 			public const uint BrayTechResearchersRobes_3188870561 = 3188870561;
 			public const uint TroublingEvidence = 4006885924;
@@ -13323,10 +13321,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint UmbralContender = 558219919;
 			public const uint ShouldYouChoosetoAcceptItPartII_2835482086 = 2835482086;
 			public const uint TrialsMelee = 2940269474;
-			public const uint Classified_2690378074 = 2690378074;
+			public const uint MoreThanaWeapon_2690378074 = 2690378074;
 			public const uint StridesoftheGreatHunt_3494130310 = 3494130310;
 			public const uint H1807139373 = 1807139373;
-			public const uint Classified_2690378079 = 2690378079;
+			public const uint MoreThanaWeapon_2690378079 = 2690378079;
 			public const uint SolsticeMaskRekindled_4154821248 = 4154821248;
 			public const uint ThoriumHoltBond_737010724 = 737010724;
 			public const uint Disparity_854520247 = 854520247;
@@ -13595,7 +13593,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint GreavesoftheGreatHunt_4968701 = 4968701;
 			public const uint LegacySailsoftheShipstealer_207841958 = 207841958;
 			public const uint DutyBound_1457979868 = 1457979868;
-			public const uint Classified_2589712328 = 2589712328;
+			public const uint MoreThanaWeapon_2589712328 = 2589712328;
 			public const uint SolsticeGauntletsDrained_574167778 = 574167778;
 			public const uint EuropanExplorerII_1350397202 = 1350397202;
 			public const uint EmpyreanCartographerBond = 195800736;
@@ -13781,7 +13779,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint GripsoftheGreatHunt_3119383537 = 3119383537;
 			public const uint AdditionalBounties_2177336318 = 2177336318;
 			public const uint SolsticeHelmMajestic_4108914784 = 4108914784;
-			public const uint ArcAdornmentsHunterBundle = 648959945;
+			public const uint DynamoCurrentHunterBundle = 648959945;
 			public const uint ClassAbilities_2190201809 = 2190201809;
 			public const uint FondMemoriesEngram_2740801478 = 2740801478;
 			public const uint LegendaryEngram_1851936368 = 1851936368;
@@ -14358,7 +14356,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint UnflinchingSniperAim_1203395203 = 1203395203;
 			public const uint FluidDance = 4015309571;
 			public const uint ColdFront_1506719573 = 1506719573;
-			public const uint Classified_1473821207 = 1473821207;
+			public const uint RevisionZero_1473821207 = 1473821207;
 			public const uint VestofTranscendence_210208587 = 210208587;
 			public const uint HunterSit = 181754010;
 			public const uint CalmingDown = 2442710343;
@@ -14966,7 +14964,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint WeaponTelemetry = 685157381;
 			public const uint Thorn = 3973202132;
 			public const uint GunsmithMaterials = 685157383;
-			public const uint ArcAdornmentsTitanBundle = 447701421;
+			public const uint ThunderousImpactTitanBundle = 447701421;
 			public const uint RetroGradeMark_2070329108 = 2070329108;
 			public const uint Masterworkobjectivecomplete_1427664187 = 1427664187;
 			public const uint EdgeofConcurrence_542203595 = 542203595;
@@ -15313,7 +15311,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SnareBomb = 1139822081;
 			public const uint ShadowsStrides_1107067065 = 1107067065;
 			public const uint AnnealedShaperBoots_3416654206 = 3416654206;
-			public const uint Classified_3494671356 = 3494671356;
+			public const uint MoreThanaWeapon_3494671356 = 3494671356;
 			public const uint WastelanderBoots_3643144047 = 3643144047;
 			public const uint BrokenBlade_3685790083 = 3685790083;
 			public const uint ShotgunDexterity_1036754881 = 1036754881;
@@ -16240,7 +16238,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Snowshoes = 4090391256;
 			public const uint PruinaLusterBond = 3234030313;
 			public const uint Disparity_3977648066 = 3977648066;
-			public const uint Classified_261064471 = 261064471;
+			public const uint MoreThanaWeapon_261064471 = 261064471;
 			public const uint NouveauFiligree = 2316352266;
 			public const uint MasterworkPulseBonus = 3382825552;
 			public const uint ArcadianValley = 1599898966;
@@ -16466,7 +16464,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint GensymKnightBoots_2160569198 = 2160569198;
 			public const uint WinterhartGreaves_1936516278 = 1936516278;
 			public const uint SuperAwesome = 1104345304;
-			public const uint Classified_3861859108 = 3861859108;
+			public const uint MoreThanaWeapon_3861859108 = 3861859108;
 			public const uint LargeXPBoost_131729126 = 131729126;
 			public const uint RoadComplexAA1_2020589887 = 2020589887;
 			public const uint HauntedWeaponFocusing = 398356408;
@@ -16670,7 +16668,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint MaskofFeltroc_1256688732 = 1256688732;
 			public const uint H165882127 = 165882127;
 			public const uint FusionRifleLoader_546936951 = 546936951;
-			public const uint Classified_2449200748 = 2449200748;
+			public const uint MoreThanaWeapon_2449200748 = 2449200748;
 			public const uint WolfswoodBond_2218948028 = 2218948028;
 			public const uint FlyDance = 2114877381;
 			public const uint PurificationRitual_1123124244 = 1123124244;
@@ -16788,7 +16786,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ShouldYouChoosetoAcceptItPartII_2852259673 = 2852259673;
 			public const uint Ingredient = 2415693339;
 			public const uint SleeplessFlight = 1430140003;
-			public const uint Classified_2707155661 = 2707155661;
+			public const uint MoreThanaWeapon_2707155661 = 2707155661;
 			public const uint LegendaryEngram_3748650556 = 3748650556;
 			public const uint RiteofDawning_45685024 = 45685024;
 			public const uint ResistantTether = 2887845822;
@@ -17024,7 +17022,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint UnflinchingSniperAim_1757762246 = 1757762246;
 			public const uint SneakAttack = 4252160794;
 			public const uint MarkoftheFire_1441321537 = 1441321537;
-			public const uint SurgingLightUniversalOrnaments = 1312236666;
+			public const uint CoulombicAllurementUniversalOrnaments = 1312236666;
 			public const uint SmallFireteamXPBoost_3315739988 = 3315739988;
 			public const uint SmallFireteamXPBoost_3315739989 = 3315739989;
 			public const uint ShadowsMind_3349283422 = 3349283422;
@@ -17112,7 +17110,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint PrimalSiegeType1_3382396922 = 3382396922;
 			public const uint DefeatopponentswithArcdamage_1342877418 = 1342877418;
 			public const uint NightmareFuel = 2805134531;
-			public const uint Classified_2606490043 = 2606490043;
+			public const uint MoreThanaWeapon_2606490043 = 2606490043;
 			public const uint PhobosWardenRobes = 1512386434;
 			public const uint H690823209 = 690823209;
 			public const uint TuskedAllegianceBoots_316469908 = 316469908;
@@ -17231,7 +17229,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TheHuckleberry = 2286143274;
 			public const uint AcriusCatalyst_456628588 = 456628588;
 			public const uint TractorCannonCatalyst_456628589 = 456628589;
-			public const uint Classified_2658740569 = 2658740569;
+			public const uint RevisionZero_2658740569 = 2658740569;
 			public const uint H2114949933 = 2114949933;
 			public const uint TraceRifleTargeting = 3330325954;
 			public const uint SolsticeGreavesRenewed_638752234 = 638752234;
@@ -19082,7 +19080,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint EquitisShadeBoots_2722103686 = 2722103686;
 			public const uint CrystocreneBond = 3852725203;
 			public const uint DeepsightIKELOSWeapons_1377786146 = 1377786146;
-			public const uint Classified_2660356539 = 2660356539;
+			public const uint TheHiddenShape_2660356539 = 2660356539;
 			public const uint CinderPinionPlate = 3601794530;
 			public const uint PolePosition = 2760449282;
 			public const uint TheHiddenShape_2660356543 = 2660356543;
@@ -19348,7 +19346,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint XP_1858002338 = 1858002338;
 			public const uint H638469228 = 638469228;
 			public const uint Tier6Weapon_2203506855 = 2203506855;
-			public const uint Classified_1265365870 = 1265365870;
+			public const uint MoreThanaWeapon_1265365870 = 1265365870;
 			public const uint Tier9Weapon_2203506856 = 2203506856;
 			public const uint Tier8Weapon_2203506857 = 2203506857;
 			public const uint ShieldbreakerRobes_2229560362 = 2229560362;
@@ -19927,7 +19925,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DiscJockey = 3581655471;
 			public const uint BlackPlague = 3925009772;
 			public const uint EuropaShotgun_1339800266 = 1339800266;
-			public const uint Classified_3878636695 = 3878636695;
+			public const uint MoreThanaWeapon_3878636695 = 3878636695;
 			public const uint H30thExoticWeaponOrnaments = 679360195;
 			public const uint ModularityGambit = 1251927947;
 			public const uint BlastfromthePast_183125260 = 183125260;
@@ -20125,7 +20123,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint IKELOS_HC_v102 = 1200824700;
 			public const uint SolsticePlateScorched_3943394479 = 3943394479;
 			public const uint MasterworkArmor_1532101935 = 1532101935;
-			public const uint ArcAdornmentsWarlockBundle = 1356679820;
+			public const uint ArclightWarlockBundle = 1356679820;
 			public const uint DamagedWarlockRobe_2422973919 = 2422973919;
 			public const uint ValkyrianMark = 4048361056;
 			public const uint ShadersandMods_2754932056 = 2754932056;
@@ -20134,7 +20132,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SidearmReserves_2433223313 = 2433223313;
 			public const uint AggressiveFrame_3615521782 = 3615521782;
 			public const uint TakenPredator = 2130042297;
-			public const uint Classified_2465978335 = 2465978335;
+			public const uint MoreThanaWeapon_2465978335 = 2465978335;
 			public const uint RocketHousing = 1554894285;
 			public const uint Classified_3487332836 = 3487332836;
 			public const uint VestofFeltroc_845536715 = 845536715;
@@ -20526,7 +20524,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint RPCValiant_1484009400 = 1484009400;
 			public const uint HerodC_3375952141 = 3375952141;
 			public const uint PyrrhicVictory = 2480779718;
-			public const uint Classified_2623267630 = 2623267630;
+			public const uint MoreThanaWeapon_2623267630 = 2623267630;
 			public const uint ShotgunReserves_1068909436 = 1068909436;
 			public const uint EnhancedNightmareCrusher = 1565861116;
 			public const uint OpulentDuelistGreaves_935022405 = 935022405;
@@ -20733,7 +20731,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TwilightOath = 3297863558;
 			public const uint ThunderousSword = 1086362290;
 			public const uint RiteofDawning_247310610 = 247310610;
-			public const uint Classified_2353773634 = 2353773634;
+			public const uint MoreThanaWeapon_2353773634 = 2353773634;
 			public const uint Resonance42 = 566976652;
 			public const uint AntiopeD_566976653 = 566976653;
 			public const uint PhosphorusMG4 = 566976654;
@@ -21001,7 +20999,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ArtificeArmor_1923658473 = 1923658473;
 			public const uint CrucibleArmorScrounger_1102202760 = 1102202760;
 			public const uint BootsofSekris_3331120813 = 3331120813;
-			public const uint Classified_2253108016 = 2253108016;
+			public const uint MoreThanaWeapon_2253108016 = 2253108016;
 			public const uint BladeCarnival = 4012203003;
 			public const uint HarmonicSeraphite = 685095924;
 			public const uint TheHerosBurden_1865351684 = 1865351684;

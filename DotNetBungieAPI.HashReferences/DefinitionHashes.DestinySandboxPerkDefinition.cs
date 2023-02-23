@@ -5166,7 +5166,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SilverSpotlight = 3489483296;
 			/// <summary>
-			/// 	Sustained damage with this weapon envelops the target in a field that increases vulnerability to Arc damage and stuns them. Strong against [Disruption] Overload Champions.
+			/// 	Sustained damage with this weapon envelops the target in a field that weakens and stuns them. Strong against [Disruption] Overload Champions.
 			/// </summary>
 			public const uint Judgment = 3068403538;
 			public const uint H625380752 = 625380752;
@@ -8370,6 +8370,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Draw time substantially decreases after every precision hit for a longer duration.
 			/// </summary>
 			public const uint ArchersTempo_4111707040 = 4111707040;
+			public const uint H2518365127 = 2518365127;
 			/// <summary>
 			/// 	Overflows the magazine based on the number of rapid final blows before reloading. Improves reload.
 			/// </summary>

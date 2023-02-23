@@ -281,9 +281,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint BoundinMemory = 952432579;
 			public const uint BoxingDay = 2056321993;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Open hidden chests in the Exotic mission "Operation: Seraph's Shield."
 			/// </summary>
-			public const uint Classified_1924214678 = 1924214678;
+			public const uint SeraphsSecrets = 1924214678;
 			/// <summary>
 			/// 	Complete Triumphs during Moments of Triumph to earn the 2020 Sparrow.
 			/// </summary>
@@ -768,21 +768,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MasterDifficultyVowoftheDisciple = 610864524;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the quest "Should You Choose to Accept It, Part III" and unlock the third catalyst for Revision Zero.
 			/// </summary>
-			public const uint Classified_1214055212 = 1214055212;
+			public const uint ExoticCatalystIII = 1214055212;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the quest "Should You Choose to Accept It, Part IV" and unlock the fourth catalyst for Revision Zero.
 			/// </summary>
-			public const uint Classified_1214055213 = 1214055213;
+			public const uint ExoticCatalystIV = 1214055213;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the quest "Should You Choose to Accept It, Part I" and unlock the first catalyst for Revision Zero.
 			/// </summary>
-			public const uint Classified_1214055214 = 1214055214;
+			public const uint ExoticCatalystI = 1214055214;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the quest "Should You Choose to Accept It, Part II" and unlock the second catalyst for Revision Zero.
 			/// </summary>
-			public const uint Classified_1214055215 = 1214055215;
+			public const uint ExoticCatalystII = 1214055215;
 			/// <summary>
 			/// 	Complete bounties from Zavala.
 			/// </summary>
@@ -1665,9 +1665,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SoloLostSectorMastery = 860708386;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Calibrate Pulse Rifles, Fusion Rifles, and Power Grenade Launchers. Rapidly defeating combatants and defeating Guardians will award bonus progress.
 			/// </summary>
-			public const uint Classified_2717333718 = 2717333718;
+			public const uint SeraphsCalibration = 2717333718;
 			/// <summary>
 			/// 	Eliminate an opponent on a streak of 3 or more.
 			/// </summary>
@@ -2358,29 +2358,29 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ShoppingSpree = 4037726701;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	In the Heist Battlegrounds playlist, complete heists and breach submind vaults without alerting Wrathborn reinforcements.
 			/// </summary>
-			public const uint Classified_2273484265 = 2273484265;
+			public const uint HeistBattlegroundsIII = 2273484265;
 			/// <summary>
 			/// 	In the Heist Battlegrounds playlist or Legend Heist Battlegrounds, open Seraph Chests and defeat powerful Hive combatants.
 			/// </summary>
 			public const uint HeistBattlegroundsI = 2273484267;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	In the Heist Battlegrounds playlist, complete heists and defeat combatants with Season of the Seraph or IKELOS weapons.
 			/// </summary>
-			public const uint Classified_2273484268 = 2273484268;
+			public const uint HeistBattlegroundsVI = 2273484268;
 			/// <summary>
 			/// 	Rapidly defeat 6 opposing Guardians.
 			/// </summary>
 			public const uint SixFronts = 2535088810;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	In the Heist Battlegrounds playlist, complete Heists and defeat Champions.
 			/// </summary>
-			public const uint Classified_2273484270 = 2273484270;
+			public const uint HeistBattlegroundsIV = 2273484270;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	In the Heist Battlegrounds playlist or Legend Heist Battlegrounds, open Seraph Chests and defeat Deathtongue Choristers before they can channel Xivu Arath's battlesong.
 			/// </summary>
-			public const uint Classified_2273484271 = 2273484271;
+			public const uint HeistBattlegroundsV = 2273484271;
 			/// <summary>
 			/// 	Deliver cookies to Vanguard leaders during the Dawning 2021.
 			/// </summary>
@@ -3056,33 +3056,48 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AlgorithmEfficiency = 2895711472;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete Week 3 of "More Than a Weapon."
+			/// <para/>
+			/// 	Defeat Hive and Fallen combatants anywhere in the system.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_2766545545 = 2766545545;
+			public const uint MoreThanaWeaponIII = 2766545545;
 			/// <summary>
 			/// 	Complete Week 1 of "More Than a Weapon."
 			/// </summary>
 			public const uint MoreThanaWeaponI = 2766545547;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete Week 6 of "More Than a Weapon."
+			/// <para/>
+			/// 	Defeat powerful Hive and Fallen combatants anywhere in the system. Bonus progress for defeating them in Heist Battlegrounds and the Exotic mission "Operation: Seraph's Shield."
+			/// <para/>
 			/// </summary>
-			public const uint Classified_2766545548 = 2766545548;
+			public const uint MoreThanaWeaponVI = 2766545548;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete Week 7 of "More Than a Weapon."
+			/// <para/>
+			/// 	Defeat Hive and Fallen bosses anywhere in the system. Bonus progress for defeating them in Heist Battlegrounds and the Exotic mission "Operation: Seraph's Shield."
+			/// <para/>
 			/// </summary>
-			public const uint Classified_2766545549 = 2766545549;
+			public const uint MoreThanaWeaponVII = 2766545549;
 			/// <summary>
 			/// 	Complete any Nightfall strike on Grandmaster.
 			/// </summary>
 			public const uint Grandmaster_1374713405 = 1374713405;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete Week 4 of "More Than a Weapon."
+			/// <para/>
+			/// 	Defeat Hive and Scorn combatants anywhere in the system.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_2766545550 = 2766545550;
+			public const uint MoreThanaWeaponIV = 2766545550;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete Week 5 of "More Than a Weapon."
+			/// <para/>
+			/// 	Defeat Hive and Taken combatants anywhere in the system.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_2766545551 = 2766545551;
+			public const uint MoreThanaWeaponV = 2766545551;
 			/// <summary>
 			/// 	Earn Vanguard Medals of any kind during Guardian Games playlist activities.
 			/// </summary>
@@ -3198,9 +3213,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheSumofAllTears = 3454861973;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the mission "Operation: Son of Saturn."
 			/// </summary>
-			public const uint Classified_1751596279 = 1751596279;
+			public const uint OperationSonofSaturn = 1751596279;
 			/// <summary>
 			/// 	Complete this lore book.
 			/// </summary>
@@ -3610,9 +3625,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AntiquarianI = 2080015688;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the Exotic mission "Operation: Seraph's Shield" on Legend difficulty.
+			/// <para/>
+			/// 	Defeat combatants with precision damage anywhere in the system using Pulse Rifles.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_1207143952 = 1207143952;
+			public const uint SeraphsShieldIII = 1207143952;
 			/// <summary>
 			/// 	Complete playlist or Seasonal activities using each Light subclass.
 			/// </summary>
@@ -3633,9 +3651,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AntiquarianIII = 2080015690;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the Exotic mission "Operation: Seraph's Shield" to earn the Revision Zero Exotic Pulse Rifle.
+			/// <para/>
+			/// 	Defeat combatants anywhere in the system using Pulse Rifles.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_1207143954 = 1207143954;
+			public const uint SeraphsShieldI = 1207143954;
 			/// <summary>
 			/// 	Defeat enemies using the Wardcliff Coil.
 			/// </summary>
@@ -3689,9 +3710,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AntiquarianVI = 2080015695;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Locate all Warmind nodes and destroy all security drones in the Exotic mission "Operation: Seraph's Shield."
 			/// </summary>
-			public const uint Classified_1207143959 = 1207143959;
+			public const uint SeraphsShieldIV = 1207143959;
 			/// <summary>
 			/// 	Eliminate the Fanatic.
 			/// </summary>
@@ -3810,9 +3831,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheEmptyTankSoloLegend = 2425653583;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	In the EDZ, earn progress by completing bounties, patrols, public events, and Lost Sectors.
 			/// </summary>
-			public const uint Classified_974402696 = 974402696;
+			public const uint EDZActivities = 974402696;
 			/// <summary>
 			/// 	Complete "The Scarlet Keep" Nightfall on Grandmaster difficulty during Season of the Seraph.
 			/// </summary>
@@ -3957,9 +3978,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DevoidoftheRest = 3875695735;
 			/// <summary>
-			/// 	Complete the following raid and dungeon objectives to earn a special Sparrow and emblem.
+			/// 	Complete the following raid and dungeon objectives to earn a special Sparrow and emblem. 
 			/// <para/>
-			/// 	Additionally, completing this Triumph unlocks an additional customization option for the Bungie Rewards T-shirt that can be earned during Moments of Triumph!
+			/// 	Additionally, completing this Triumph unlocks the Bungie rewards Moments of Triumph patch.
 			/// <para/>
 			/// </summary>
 			public const uint RaidRunnerDungeonDiver = 2773485199;
@@ -4702,9 +4723,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint IIThePigeonandtheSplicer = 1015148250;
 			public const uint IIIRisenfromBones = 1015148251;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all Season of the Seraph Seasonal Challenges.
 			/// </summary>
-			public const uint Classified_3912917840 = 3912917840;
+			public const uint MasteryofWrath = 3912917840;
 			public const uint IVArt = 1015148252;
 			/// <summary>
 			/// 	Survival: Win a match where no one on your team is defeated across all rounds.
@@ -4899,9 +4920,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GrandmasterTheScarletKeep_3426594834 = 3426594834;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all Season of the Seraph Triumphs.
 			/// </summary>
-			public const uint Classified_4250626982 = 4250626982;
+			public const uint Seraph = 4250626982;
 			/// <summary>
 			/// 	Speak with Banshee-44 to begin the "Salvager's Salvo Armament" quest.
 			/// </summary>
@@ -5146,9 +5167,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheManTheyCalledCayde = 4133231184;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	On Europa, earn progress by completing bounties, patrols, public events, and Lost Sectors.
 			/// </summary>
-			public const uint Classified_1598232907 = 1598232907;
+			public const uint EuropaActivities = 1598232907;
 			/// <summary>
 			/// 	Complete the following objective to discover this Prismatic Lens and gain access to this Focused Umbral Engram.
 			/// </summary>
@@ -5319,9 +5340,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TyrannocideI = 2217863222;
 			public const uint TelicII = 2217863223;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Reshape Revision Zero with the catalyst inserted.
 			/// </summary>
-			public const uint Classified_1439993428 = 1439993428;
+			public const uint RevisionZeroCatalyst = 1439993428;
 			/// <summary>
 			/// 	Complete the associated badge on the Collections screen in order to claim this Triumph.
 			/// </summary>
@@ -5500,17 +5521,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheyWillKnowYoubyYourCollateral = 426530504;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Focus IKELOS weapon engrams at the Exo Frame in the H.E.L.M.
 			/// </summary>
-			public const uint Classified_3096729712 = 3096729712;
+			public const uint UmbralFocusingIII = 3096729712;
 			/// <summary>
 			/// 	Complete the Metamorphosis Lost Sector on Master difficulty, without a fireteam.
 			/// </summary>
 			public const uint MetamorphosisSoloMastery = 360449991;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Focus Season of the Seraph weapon or armor engrams at the Exo Frame in the H.E.L.M.
 			/// </summary>
-			public const uint Classified_3096729713 = 3096729713;
+			public const uint UmbralFocusingII = 3096729713;
 			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
@@ -5520,9 +5541,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint InSPIREdPosse = 3006836031;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Focus a Season of the Seraph engram at the Exo Frame in the H.E.L.M.
 			/// </summary>
-			public const uint Classified_3096729714 = 3096729714;
+			public const uint UmbralFocusingI = 3096729714;
 			/// <summary>
 			/// 	[Pulse Rifle] Final blows in Gambit.
 			/// </summary>
@@ -6081,9 +6102,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SplicerRegalia = 2828383034;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Destroy all security drones with Revision Zero across the system.
 			/// </summary>
-			public const uint Classified_886658888 = 886658888;
+			public const uint DronesDestroyed = 886658888;
 			/// <summary>
 			/// 	Hunt down the Nightmare of Phogoth, the Untamed.
 			/// </summary>
@@ -6824,7 +6845,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ProphecyDungeonFlawless = 2010041484;
 			/// <summary>
-			/// 	Gambit matches won.
+			/// 	Gilded Title Triumph
+			/// <para/>
+			/// 	Tracks completions in Gambit. Wins provide bonus progress.
+			/// <para/>
 			/// </summary>
 			public const uint GoldCoins = 3337964454;
 			/// <summary>
@@ -8033,9 +8057,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RememberingtheForgotten8 = 2802224773;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Find all Warmind Nodes across the system.
 			/// </summary>
-			public const uint Classified_268471101 = 268471101;
+			public const uint NodesFound = 268471101;
 			/// <summary>
 			/// 	Complete the Bonfire Bash activity.
 			/// </summary>
@@ -8404,9 +8428,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Shipwrecked = 783903767;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete Battleground: Europa on Legend difficulty without any BrayTech frames being destroyed.
 			/// </summary>
-			public const uint Classified_69244736 = 69244736;
+			public const uint NoCollateral = 69244736;
 			/// <summary>
 			/// 	Complete the "Vow of the Disciple" raid within the first 24 hours of release.
 			/// </summary>
@@ -9452,9 +9476,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BashingSuccess_3202603383 = 3202603383;
 			/// <summary>
-			/// 	Complete Triumphs to earn a bungie.net token that unlocks the 2022 T-shirt for purchase in the Bungie Store.
+			/// 	Complete Triumphs to unlock the 2022 T-shirt for purchase in the Bungie Store.
 			/// <para/>
-			/// 	Additionally, complete the "Raid Runner, Dungeon Diver" Triumph to unlock an additional customization option for your T-shirt!
+			/// 	Visit bungiestore.com/rewards
 			/// <para/>
 			/// </summary>
 			public const uint TShirtUnlockedatBungieStore_1329166918 = 1329166918;
@@ -9689,9 +9713,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IllBuildItMyself = 1634238708;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Defeat targets using The Manticore.
 			/// </summary>
-			public const uint Classified_1144463862 = 1144463862;
+			public const uint TheManticoreCatalyst = 1144463862;
 			/// <summary>
 			/// 	Defeat combatants using No Time to Explain.
 			/// </summary>
