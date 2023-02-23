@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="DotNetBungieAPI" Version="2.7.0" />
+      <PackageReference Include="DotNetBungieAPI" Version="2.7.1" />
     </ItemGroup>
 
 </Project>

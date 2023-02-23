@@ -72,6 +72,11 @@ public enum DestinyComponentType : int
     CharacterEquipment = 205,
 
     /// <summary>
+    ///     This will return info about the loadouts of the character(s).
+    /// </summary>
+    CharacterLoadouts = 206,
+
+    /// <summary>
     ///     This will return basic info about instanced items - whether they can be equipped, their tracked status, and some info commonly needed in many places (current damage type, primary stat value, etc)
     /// </summary>
     ItemInstances = 300,
@@ -190,5 +195,10 @@ public enum DestinyComponentType : int
     /// <summary>
     ///     Returns summary status information about all "Craftables" aka crafting recipe items.
     /// </summary>
-    Craftables = 1300
+    Craftables = 1300,
+
+    /// <summary>
+    ///     Returns score values for all commendations and commendation nodes.
+    /// </summary>
+    SocialCommendations = 1400
 }

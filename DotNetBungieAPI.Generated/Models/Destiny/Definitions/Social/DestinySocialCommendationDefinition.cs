@@ -1,15 +1,30 @@
-namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Traits;
+namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Social;
 
-public class DestinyTraitDefinition
+public class DestinySocialCommendationDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
+    [JsonPropertyName("cardImagePath")]
+    public string? CardImagePath { get; set; }
+
+    [JsonPropertyName("color")]
+    public Destiny.Misc.DestinyColor? Color { get; set; }
+
+    [JsonPropertyName("displayPriority")]
+    public int? DisplayPriority { get; set; }
+
+    [JsonPropertyName("activityGivingLimit")]
+    public int? ActivityGivingLimit { get; set; }
+
+    [JsonPropertyName("parentCommendationNodeHash")]
+    public uint? ParentCommendationNodeHash { get; set; }
+
     /// <summary>
-    ///     An identifier for how this trait can be displayed. For example: a 'keyword' hint to show an explanation for certain related terms.
+    ///     The display properties for the the activities that this commendation is available in.
     /// </summary>
-    [JsonPropertyName("displayHint")]
-    public string? DisplayHint { get; set; }
+    [JsonPropertyName("displayActivities")]
+    public List<Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition> DisplayActivities { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

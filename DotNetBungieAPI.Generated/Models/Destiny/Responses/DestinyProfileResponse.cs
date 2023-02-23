@@ -126,6 +126,12 @@ public class DestinyProfileResponse
     public SingleComponentResponseOfDestinyStringVariablesComponent? ProfileStringVariables { get; set; }
 
     /// <summary>
+    ///     COMPONENT TYPE: SocialCommendations
+    /// </summary>
+    [JsonPropertyName("profileCommendations")]
+    public SingleComponentResponseOfDestinySocialCommendationsComponent? ProfileCommendations { get; set; }
+
+    /// <summary>
     ///     Basic information about each character, keyed by the CharacterId.
     /// <para />
     ///     COMPONENT TYPE: Characters
@@ -140,6 +146,14 @@ public class DestinyProfileResponse
     /// </summary>
     [JsonPropertyName("characterInventories")]
     public DictionaryComponentResponseOfint64AndDestinyInventoryComponent? CharacterInventories { get; set; }
+
+    /// <summary>
+    ///     The character loadouts, keyed by the Character's Id.
+    /// <para />
+    ///     COMPONENT TYPE: CharacterLoadouts
+    /// </summary>
+    [JsonPropertyName("characterLoadouts")]
+    public DictionaryComponentResponseOfint64AndDestinyLoadoutsComponent? CharacterLoadouts { get; set; }
 
     /// <summary>
     ///     Character-level progression data, keyed by the Character's Id.

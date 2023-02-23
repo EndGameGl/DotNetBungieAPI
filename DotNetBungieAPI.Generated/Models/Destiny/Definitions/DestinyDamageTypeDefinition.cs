@@ -30,6 +30,12 @@ public class DestinyDamageTypeDefinition
     public Destiny.DamageType? EnumValue { get; set; }
 
     /// <summary>
+    ///     A color associated with the damage type. The displayProperties icon is tinted with a color close to this.
+    /// </summary>
+    [JsonPropertyName("color")]
+    public Destiny.Misc.DestinyColor? Color { get; set; }
+
+    /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
     /// <para />
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.

@@ -54,6 +54,14 @@ public class DestinyCharacterResponse
     public SingleComponentResponseOfDestinyInventoryComponent? Equipment { get; set; }
 
     /// <summary>
+    ///     The loadouts available to the character.
+    /// <para />
+    ///     COMPONENT TYPE: CharacterLoadouts
+    /// </summary>
+    [JsonPropertyName("loadouts")]
+    public SingleComponentResponseOfDestinyLoadoutsComponent? Loadouts { get; set; }
+
+    /// <summary>
     ///     Items available from Kiosks that are available to this specific character. 
     /// <para />
     ///     COMPONENT TYPE: Kiosks

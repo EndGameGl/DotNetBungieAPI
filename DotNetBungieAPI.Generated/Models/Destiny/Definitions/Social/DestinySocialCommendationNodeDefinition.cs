@@ -1,15 +1,30 @@
-namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Traits;
+namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Social;
 
-public class DestinyTraitDefinition
+public class DestinySocialCommendationNodeDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     /// <summary>
-    ///     An identifier for how this trait can be displayed. For example: a 'keyword' hint to show an explanation for certain related terms.
+    ///     The color associated with this group of commendations.
     /// </summary>
-    [JsonPropertyName("displayHint")]
-    public string? DisplayHint { get; set; }
+    [JsonPropertyName("color")]
+    public Destiny.Misc.DestinyColor? Color { get; set; }
+
+    [JsonPropertyName("parentCommendationNodeHash")]
+    public uint? ParentCommendationNodeHash { get; set; }
+
+    /// <summary>
+    ///     A list of hashes that map to child commendation nodes. Only the root commendations node is expected to have child nodes.
+    /// </summary>
+    [JsonPropertyName("childCommendationNodeHashes")]
+    public List<uint> ChildCommendationNodeHashes { get; set; }
+
+    /// <summary>
+    ///     A list of hashes that map to child commendations.
+    /// </summary>
+    [JsonPropertyName("childCommendationHashes")]
+    public List<uint> ChildCommendationHashes { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

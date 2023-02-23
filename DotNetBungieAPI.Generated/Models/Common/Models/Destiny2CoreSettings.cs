@@ -41,6 +41,9 @@ public class Destiny2CoreSettings
     [JsonPropertyName("craftingRootNodeHash")]
     public uint? CraftingRootNodeHash { get; set; }
 
+    [JsonPropertyName("guardianRanksRootNodeHash")]
+    public uint? GuardianRanksRootNodeHash { get; set; }
+
     [JsonPropertyName("currentRankProgressionHashes")]
     public List<uint> CurrentRankProgressionHashes { get; set; }
 

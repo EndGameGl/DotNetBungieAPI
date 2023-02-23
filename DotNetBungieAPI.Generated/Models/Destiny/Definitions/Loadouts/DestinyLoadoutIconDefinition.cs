@@ -1,15 +1,9 @@
-namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Traits;
+namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Loadouts;
 
-public class DestinyTraitDefinition
+public class DestinyLoadoutIconDefinition
 {
-    [JsonPropertyName("displayProperties")]
-    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
-
-    /// <summary>
-    ///     An identifier for how this trait can be displayed. For example: a 'keyword' hint to show an explanation for certain related terms.
-    /// </summary>
-    [JsonPropertyName("displayHint")]
-    public string? DisplayHint { get; set; }
+    [JsonPropertyName("iconImagePath")]
+    public string? IconImagePath { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

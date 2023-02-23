@@ -64,4 +64,16 @@ public class DestinyProfileComponent
     /// </summary>
     [JsonPropertyName("activeEventCardHash")]
     public uint? ActiveEventCardHash { get; set; }
+
+    /// <summary>
+    ///     The 'current' Guardian Rank value, which starts at rank 1.
+    /// </summary>
+    [JsonPropertyName("currentGuardianRank")]
+    public int? CurrentGuardianRank { get; set; }
+
+    /// <summary>
+    ///     The 'lifetime highest' Guardian Rank value, which starts at rank 1.
+    /// </summary>
+    [JsonPropertyName("lifetimeHighestGuardianRank")]
+    public int? LifetimeHighestGuardianRank { get; set; }
 }

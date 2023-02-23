@@ -14,5 +14,7 @@ public enum DamageType : int
 
     Raid = 5,
 
-    Stasis = 6
+    Stasis = 6,
+
+    Strand = 7
 }

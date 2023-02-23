@@ -16,5 +16,9 @@ public enum DestinyPresentationDisplayStyle : int
 
     Collectible = 3,
 
-    Record = 4
+    Record = 4,
+
+    SeasonalTriumph = 5,
+
+    GuardianRank = 6
 }
