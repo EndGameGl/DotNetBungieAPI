@@ -80,4 +80,10 @@ public sealed record DestinyProfileComponent
     [JsonPropertyName("activeEventCardHash")]
     public DefinitionHashPointer<DestinyEventCardDefinition> ActiveEventCard { get; init; }
         = DefinitionHashPointer<DestinyEventCardDefinition>.Empty;
+
+    [JsonPropertyName("currentGuardianRank")]
+    public int CurrentGuardianRank { get; init; }
+
+    [JsonPropertyName("lifetimeHighestGuardianRank")]
+    public int LifetimeHighestGuardianRank { get; init; }
 }

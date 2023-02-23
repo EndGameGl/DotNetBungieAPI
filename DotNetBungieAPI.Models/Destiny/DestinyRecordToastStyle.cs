@@ -10,5 +10,6 @@ public enum DestinyRecordToastStyle
     MedalComplete = 5,
     SeasonChallengeComplete = 6,
     GildedTitleComplete = 7,
-    CraftingRecipeUnlocked = 8
+    CraftingRecipeUnlocked = 8,
+    ToastGuardianRankDetails = 9
 }

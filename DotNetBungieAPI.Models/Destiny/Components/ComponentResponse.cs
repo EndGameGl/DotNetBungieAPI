@@ -6,7 +6,8 @@
 /// </summary>
 public abstract record ComponentResponse
 {
-    [JsonPropertyName("privacy")] public ComponentPrivacySetting Privacy { get; init; }
+    [JsonPropertyName("privacy")] 
+    public ComponentPrivacySetting Privacy { get; init; }
 
     /// <summary>
     ///     If true, this component is disabled.

@@ -45,6 +45,14 @@ public sealed record DestinyCharacterResponse
     public SingleComponentResponseOfDestinyInventoryComponent Equipment { get; init; }
 
     /// <summary>
+    ///     The loadouts available to the character.
+    /// <para />
+    ///     COMPONENT TYPE: CharacterLoadouts
+    /// </summary>
+    [JsonPropertyName("loadouts")]
+    public SingleComponentResponseOfDestinyLoadoutsComponent Loadouts { get; init; }
+
+    /// <summary>
     ///     Items available from Kiosks that are available to this specific character.
     /// </summary>
     [JsonPropertyName("kiosks")]

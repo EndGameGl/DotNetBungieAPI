@@ -13,5 +13,7 @@ public enum DestinyPresentationDisplayStyle
     Badge = 1,
     Medals = 2,
     Collectible = 3,
-    Record = 4
+    Record = 4,
+    SeasonalTriumph = 5,
+    GuardianRank = 6
 }

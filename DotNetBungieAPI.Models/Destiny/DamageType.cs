@@ -8,5 +8,6 @@ public enum DamageType
     Solar = 3,
     Void = 4,
     Raid = 5,
-    Stasis = 6
+    Stasis = 6,
+    Strand = 7
 }

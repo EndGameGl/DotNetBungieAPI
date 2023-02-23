@@ -23,6 +23,12 @@ public sealed record DestinyDamageTypeDefinition : IDestinyDefinition, IDeepEqua
     public DamageType EnumValue { get; init; }
 
     /// <summary>
+    ///     A color associated with the damage type. The displayProperties icon is tinted with a color close to this.
+    /// </summary>
+    [JsonPropertyName("color")]
+    public DestinyColor Color { get; init; }
+
+    /// <summary>
     ///     If TRUE, the game shows this damage type's icon. Otherwise, it doesn't. Whether you show it or not is up to you.
     /// </summary>
     [JsonPropertyName("showIcon")]

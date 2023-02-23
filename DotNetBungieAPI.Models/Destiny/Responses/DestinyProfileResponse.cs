@@ -81,6 +81,12 @@ public sealed record DestinyProfileResponse
     public SingleComponentResponseOfDestinyStringVariablesComponent ProfileStringVariables { get; init; }
 
     /// <summary>
+    ///     COMPONENT TYPE: SocialCommendations
+    /// </summary>
+    [JsonPropertyName("profileCommendations")]
+    public SingleComponentResponseOfDestinySocialCommendationsComponent ProfileCommendations { get; init; }
+
+    /// <summary>
     ///     Basic information about each character, keyed by the CharacterId.
     /// </summary>
     [JsonPropertyName("characters")]
@@ -93,14 +99,18 @@ public sealed record DestinyProfileResponse
     public DictionaryComponentResponseOfint64AndDestinyInventoryComponent CharacterInventories { get; init; }
 
     /// <summary>
+    ///     The character loadouts, keyed by the Character's Id.
+    /// <para />
+    ///     COMPONENT TYPE: CharacterLoadouts
+    /// </summary>
+    [JsonPropertyName("characterLoadouts")]
+    public DictionaryComponentResponseOfint64AndDestinyLoadoutsComponent CharacterLoadouts { get; init; }
+
+    /// <summary>
     ///     Character-level progression data, keyed by the Character's Id.
     /// </summary>
     [JsonPropertyName("characterProgressions")]
-    public DictionaryComponentResponseOfint64AndDestinyCharacterProgressionComponent CharacterProgressions
-    {
-        get;
-        init;
-    }
+    public DictionaryComponentResponseOfint64AndDestinyCharacterProgressionComponent CharacterProgressions { get; init; }
 
     /// <summary>
     ///     Character rendering data - a minimal set of info needed to render a character in 3D - keyed by the Character's Id.
@@ -166,18 +176,11 @@ public sealed record DestinyProfileResponse
     ///     item, like a mod or a currency. This returns that data for the characters who have the bounty in their inventory.
     /// </summary>
     [JsonPropertyName("characterUninstancedItemComponents")]
-    public ReadOnlyDictionary<long, DestinyBaseItemComponentSetOfuint32> CharacterUninstancedItemComponents
-    {
-        get;
-        init;
-    } = ReadOnlyDictionaries<long, DestinyBaseItemComponentSetOfuint32>.Empty;
+    public ReadOnlyDictionary<long, DestinyBaseItemComponentSetOfuint32> CharacterUninstancedItemComponents { get; init; } 
+        = ReadOnlyDictionaries<long, DestinyBaseItemComponentSetOfuint32>.Empty;
 
     [JsonPropertyName("characterPresentationNodes")]
-    public DictionaryComponentResponseOfint64AndDestinyPresentationNodesComponent CharacterPresentationNodes
-    {
-        get;
-        init;
-    }
+    public DictionaryComponentResponseOfint64AndDestinyPresentationNodesComponent CharacterPresentationNodes { get; init; }
 
     [JsonPropertyName("characterRecords")]
     public DictionaryComponentResponseOfint64AndDestinyCharacterRecordsComponent CharacterRecords { get; init; }

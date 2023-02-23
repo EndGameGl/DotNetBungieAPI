@@ -61,6 +61,10 @@ public sealed record Destiny2CoreSettings
     public DefinitionHashPointer<DestinyPresentationNodeDefinition> CraftingRootNode { get; init; } =
         DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
 
+    [JsonPropertyName("guardianRanksRootNodeHash")]
+    public DefinitionHashPointer<DestinyPresentationNodeDefinition> GuardianRanksRootNode { get; init; }
+        = DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
+
     [JsonPropertyName("currentRankProgressionHashes")]
     public ReadOnlyCollection<DefinitionHashPointer<DestinyProgressionDefinition>> CurrentRankProgressions
     {
@@ -104,7 +108,7 @@ public sealed record Destiny2CoreSettings
     [JsonPropertyName("currentSeasonHash")]
     public DefinitionHashPointer<DestinySeasonDefinition> СurrentSeason { get; init; } =
         DefinitionHashPointer<DestinySeasonDefinition>.Empty;
-    
+
     [JsonPropertyName("seasonalChallengesPresentationNodeHash")]
     public DefinitionHashPointer<DestinyPresentationNodeDefinition> SeasonalChallengesPresentationNode { get; init; } =
         DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;

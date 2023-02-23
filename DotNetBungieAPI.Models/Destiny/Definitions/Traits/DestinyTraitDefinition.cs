@@ -1,6 +1,5 @@
 ﻿using DotNetBungieAPI.Models.Attributes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Common;
-using DotNetBungieAPI.Models.Destiny.Definitions.TraitCategories;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Traits;
 
@@ -9,12 +8,6 @@ public sealed record DestinyTraitDefinition : IDestinyDefinition, IDeepEquatable
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
-
-    [JsonPropertyName("traitCategoryId")] public string TraitCategoryId { get; init; }
-
-    [JsonPropertyName("traitCategoryHash")]
-    public DefinitionHashPointer<DestinyTraitCategoryDefinition> TraitCategory { get; init; }
-        = DefinitionHashPointer<DestinyTraitCategoryDefinition>.Empty;
     
     /// <summary>
     ///     An identifier for how this trait can be displayed. For example: a 'keyword' hint to show an explanation for certain related terms.
@@ -26,8 +19,6 @@ public sealed record DestinyTraitDefinition : IDestinyDefinition, IDeepEquatable
     {
         return other != null &&
                DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               TraitCategoryId == other.TraitCategoryId &&
-               TraitCategory.DeepEquals(other.TraitCategory) &&
                DisplayHint == other.DisplayHint &&
                Blacklisted == other.Blacklisted &&
                Hash == other.Hash &&
