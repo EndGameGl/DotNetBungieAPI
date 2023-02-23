@@ -1,4 +1,6 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.GuardianRanks;
+using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
+using DotNetBungieAPI.Models.Destiny.Definitions.Loadouts;
 using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 using DotNetBungieAPI.Models.Destiny.Definitions.Progressions;
 using DotNetBungieAPI.Models.Destiny.Definitions.Seasons;
@@ -61,32 +63,28 @@ public sealed record Destiny2CoreSettings
     public DefinitionHashPointer<DestinyPresentationNodeDefinition> CraftingRootNode { get; init; } =
         DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
 
+    [JsonPropertyName("loadoutConstantsHash")]
+    public DefinitionHashPointer<DestinyLoadoutConstantsDefinition> LoadoutConstants { get; init; } =
+        DefinitionHashPointer<DestinyLoadoutConstantsDefinition>.Empty;
+
+    [JsonPropertyName("guardianRankConstantsHash")]
+    public DefinitionHashPointer<DestinyGuardianRankConstantsDefinition> GuardianRankConstants { get; init; } =
+        DefinitionHashPointer<DestinyGuardianRankConstantsDefinition>.Empty;
+
     [JsonPropertyName("guardianRanksRootNodeHash")]
     public DefinitionHashPointer<DestinyPresentationNodeDefinition> GuardianRanksRootNode { get; init; }
         = DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
 
     [JsonPropertyName("currentRankProgressionHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyProgressionDefinition>> CurrentRankProgressions
-    {
-        get;
-        init;
-    }
+    public ReadOnlyCollection<DefinitionHashPointer<DestinyProgressionDefinition>> CurrentRankProgressions { get; init;}
         = ReadOnlyCollections<DefinitionHashPointer<DestinyProgressionDefinition>>.Empty;
 
     [JsonPropertyName("insertPlugFreeProtectedPlugItemHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> InsertPlugFreeProtectedPlugItems
-    {
-        get;
-        init;
-    }
+    public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> InsertPlugFreeProtectedPlugItems { get; init; }
         = ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 
     [JsonPropertyName("insertPlugFreeBlockedSocketTypeHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinySocketTypeDefinition>> InsertPlugFreeBlockedSocketTypes
-    {
-        get;
-        init;
-    }
+    public ReadOnlyCollection<DefinitionHashPointer<DestinySocketTypeDefinition>> InsertPlugFreeBlockedSocketTypes { get; init; }
         = ReadOnlyCollections<DefinitionHashPointer<DestinySocketTypeDefinition>>.Empty;
 
     [JsonPropertyName("undiscoveredCollectibleImage")]

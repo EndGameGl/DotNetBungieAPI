@@ -91,9 +91,15 @@ public enum DefinitionsEnum
     DestinyVendorGroupDefinition,
     
     DestinyEventCardDefinition,
+
     DestinyLoadoutColorDefinition,
     DestinyLoadoutIconDefinition,
     DestinyLoadoutNameDefinition,
+    DestinyLoadoutConstantsDefinition,
+
     DestinySocialCommendationNodeDefinition,
-    DestinySocialCommendationDefinition
+    DestinySocialCommendationDefinition,
+
+    DestinyGuardianRankDefinition,
+    DestinyGuardianRankConstantsDefinition
 }
