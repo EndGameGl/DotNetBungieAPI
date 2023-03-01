@@ -5,6 +5,10 @@ namespace DotNetBungieAPI.HashReferences
 		public static class DamageTypes
 		{
 			/// <summary>
+			/// 	This deals Strand damage.
+			/// </summary>
+			public const uint Strand = 3949783978;
+			/// <summary>
 			/// 	This deals Void damage.
 			/// </summary>
 			public const uint Void = 3454344768;

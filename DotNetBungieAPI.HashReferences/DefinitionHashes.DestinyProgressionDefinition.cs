@@ -16,6 +16,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H477676543 = 477676543;
 			public const uint H1627914615 = 1627914615;
 			public const uint H2996146975 = 2996146975;
+			public const uint H1924974128 = 1924974128;
 			public const uint Prestige_1484834427 = 1484834427;
 			public const uint XP_2026300734 = 2026300734;
 			public const uint H540048094 = 540048094;
@@ -24,7 +25,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Your Nightfall rank based on personal high scores set in different Nightfall strikes.
 			/// </summary>
 			public const uint NightfallRank = 689153319;
-			public const uint Prestige_1402321127 = 1402321127;
 			/// <summary>
 			/// 	Gift subs for any Twitch streamer live streaming Destiny 2 with the official Twitch Destiny Extension active.
 			/// </summary>
@@ -65,38 +65,39 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Earn XP to advance progression. Once progress is complete, the destination will unlock.
 			/// </summary>
-			public const uint NessusUnlockProgress = 412212898;
+			public const uint DreamingCityUnlockProgress = 412212898;
 			public const uint Prestige_1467048566 = 1467048566;
 			public const uint XP_3298204156 = 3298204156;
 			/// <summary>
 			/// 	Countless unclear futures reverberate through your mind as you approach the obelisk. Strengthen the obelisk's bond to the Sundial by increasing its Resonance Rank.
 			/// </summary>
 			public const uint ResonanceRank_3258748553 = 3258748553;
-			/// <summary>
-			/// 	Complete Heist Battlegrounds in the playlist to increase your Exo Frame reputation.
-			/// </summary>
-			public const uint ReputationReward = 4099528869;
 			public const uint H2770852111 = 2770852111;
 			/// <summary>
 			/// 	Earn XP to advance progression. Once progress is complete, the destination will unlock.
 			/// </summary>
-			public const uint LunaUnlockProgress = 412212900;
+			public const uint EuropaUnlockProgress = 412212900;
 			/// <summary>
 			/// 	Earn XP to advance progression. Once progress is complete, the destination will unlock.
 			/// </summary>
-			public const uint DreamingCityUnlockProgress = 412212901;
+			public const uint LunaUnlockProgress = 412212901;
 			/// <summary>
 			/// 	Earn XP to advance progression. Once progress is complete, the destination will unlock.
 			/// </summary>
-			public const uint H412212902 = 412212902;
+			public const uint NeomunaUnlockProgress = 412212902;
 			/// <summary>
 			/// 	Earn XP to advance progression. Once progress is complete, the destination will unlock.
 			/// </summary>
-			public const uint EuropaUnlockProgress = 412212903;
+			public const uint ThroneWorldUnlockProgress = 412212903;
+			public const uint Prestige_3661731483 = 3661731483;
 			public const uint H4030656982 = 4030656982;
 			public const uint H26079066 = 26079066;
 			public const uint H70699614 = 70699614;
 			public const uint H1943323491 = 1943323491;
+			/// <summary>
+			/// 	Complete bounties, patrols, public events, Lost Sectors, Terminal Overload runs, replayable campaign missions, Partition activities, secrets, and open chests in Neomuna to increase your Neomuna rank and earn rewards.
+			/// </summary>
+			public const uint NeomunaRank = 1807348350;
 			public const uint H3745703222 = 3745703222;
 			public const uint H3184735011 = 3184735011;
 			public const uint H3468066401 = 3468066401;
@@ -121,13 +122,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DevrimKay = 4235119312;
 			/// <summary>
-			/// 	Complete Ketchcrash and Expedition missions to increase your Savvy.
-			/// </summary>
-			public const uint Savvy = 1310763003;
-			/// <summary>
 			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
 			public const uint Classified_1149018548 = 1149018548;
+			public const uint H325445472 = 325445472;
 			/// <summary>
 			/// 	Commander Zavala oversees the Vanguard's tactical operations and conducts regular strikes against the City's enemies.
 			/// </summary>
@@ -148,10 +146,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3902035969 = 3902035969;
 			public const uint XP_3094108685 = 3094108685;
 			public const uint H3556521410 = 3556521410;
-			/// <summary>
-			/// 	Complete Seasonal Challenges and Nightmare Containment Tiers, and open chests in Sever to gain influence with the Crown of Sorrow.
-			/// </summary>
-			public const uint CrownInfluence = 3666230035;
 			/// <summary>
 			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
@@ -179,7 +173,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CompetitiveDivision = 3696598664;
 			public const uint H2926321498 = 2926321498;
-			public const uint Prestige_2197123984 = 2197123984;
 			public const uint H2093709363 = 2093709363;
 			public const uint H2726092061 = 2726092061;
 			/// <summary>
@@ -192,7 +185,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GunsmithRank = 1471185389;
 			public const uint H3253296191 = 3253296191;
-			public const uint Prestige_1545931903 = 1545931903;
 			/// <summary>
 			/// 	"Your legend, forged in iron. I can think of no better prize for a Lightbearer." —Saladin 
 			/// <para/>
@@ -219,10 +211,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ResonanceRank_2468902004 = 2468902004;
 			public const uint H3759191272 = 3759191272;
-			/// <summary>
-			/// 	Increase your Reputation by defeating bosses in the PsiOps Battlegrounds playlist and by using Psychogenic Intel to decode Runic Chests.
-			/// </summary>
-			public const uint Reputation = 520102300;
 			/// <summary>
 			/// 	Brother Vance leads the Followers of Osiris on Mercury, studying the life and teachings of Osiris and standing watch over the Infinite Forest.
 			/// </summary>
@@ -268,15 +256,19 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2140885848 = 2140885848;
 			public const uint H1628407317 = 1628407317;
 			public const uint H1735777505 = 1735777505;
+			public const uint XP_1589343395 = 1589343395;
 			public const uint Prestige_3604626148 = 3604626148;
 			public const uint H4095505052 = 4095505052;
 			public const uint H2098519537 = 2098519537;
 			public const uint H2939151659 = 2939151659;
+			/// <summary>
+			/// 	Complete Defiant Battleground activities to increase your War Table reputation.
+			/// </summary>
+			public const uint WarTableReputation = 47964159;
 			public const uint H1062449239 = 1062449239;
 			public const uint H1531004716 = 1531004716;
 			public const uint XP_2779402444 = 2779402444;
 			public const uint H2304468497 = 2304468497;
-			public const uint Prestige_3328649129 = 3328649129;
 			public const uint H420462694 = 420462694;
 			public const uint H1942109569 = 1942109569;
 			/// <summary>
@@ -288,6 +280,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint CrucibleRank = 2083746873;
+			public const uint XP_3254053314 = 3254053314;
 			public const uint Prestige_3348812525 = 3348812525;
 			public const uint XP_3320783176 = 3320783176;
 			public const uint H2203850209 = 2203850209;

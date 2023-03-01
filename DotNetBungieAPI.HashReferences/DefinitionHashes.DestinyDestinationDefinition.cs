@@ -15,10 +15,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Back from the abyss, Mars has been altered by an unknown force.
 			/// </summary>
 			public const uint Mars_1615213322 = 1615213322;
-			/// <summary>
-			/// 	The transfigured remains of Calus's Leviathan.
-			/// </summary>
-			public const uint DerelictLeviathan_1446501763 = 1446501763;
+			public const uint H1446501763 = 1446501763;
 			/// <summary>
 			/// 	Earth
 			/// </summary>
@@ -26,7 +23,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	The transfigured remains of Calus's Leviathan.
 			/// </summary>
-			public const uint DerelictLeviathan_4081978654 = 4081978654;
+			public const uint DerelictLeviathan = 4081978654;
 			/// <summary>
 			/// 	Hunt hostiles in active warzones. Reckon with greater powers. Be notorious.
 			/// </summary>
@@ -104,6 +101,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint NewPacificArcology_1455639803 = 1455639803;
 			public const uint H3507009564 = 3507009564;
 			public const uint H3989677910 = 3989677910;
+			/// <summary>
+			/// 	In orbit above Neptune, the Shadow Legion fleet prepares for their invasion.
+			/// </summary>
+			public const uint NeptuneOrbit = 115307718;
 			public const uint H1017151023 = 1017151023;
 			/// <summary>
 			/// 	Io, Moon of Jupiter
@@ -216,6 +217,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ArcadianValley_126924919 = 126924919;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified = 927343845;
+			/// <summary>
 			/// 	European Dead Zone, Earth
 			/// </summary>
 			public const uint EmeraldCoast = 1229692670;
@@ -303,6 +308,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Join a fireteam to overcome challenges and crush your foes.
 			/// </summary>
 			public const uint SeasonalActivity = 969538215;
+			/// <summary>
+			/// 	A hidden tech-metropolis, untouched by the Collapse.
+			/// </summary>
+			public const uint Neomuna = 2481646875;
 			/// <summary>
 			/// 	Arcadian Valley, Nessus
 			/// </summary>

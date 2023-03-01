@@ -33,6 +33,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NewArcadia = 3004560036;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified = 927343845;
+			/// <summary>
 			/// 	An unstable Centaur planetoid.
 			/// </summary>
 			public const uint Nessus_3526908984 = 3526908984;
@@ -150,6 +154,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Venture into the mysterious Haul that the Drifter tows behind his ship to reckon with greater powers.
 			/// </summary>
 			public const uint TheReckoning = 4148998934;
+			/// <summary>
+			/// 	On the far reaches of the solar system, the secret to our survival rests on the 8th planet.
+			/// </summary>
+			public const uint Neptune = 2012786160;
 			/// <summary>
 			/// 	The Emperor's Flagship
 			/// </summary>

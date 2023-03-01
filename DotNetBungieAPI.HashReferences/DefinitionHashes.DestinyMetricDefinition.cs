@@ -9,12 +9,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ArcFinalBlows_3968623329 = 3968623329;
 			/// <summary>
+			/// 	The fastest completion time for "Headlong: Time Trial."
+			/// </summary>
+			public const uint HeadlongTimeTrial_478976556 = 478976556;
+			/// <summary>
 			/// 	In a single life, defeat 20 opponents.
 			/// <para/>
 			/// 	Tracks from Season 4 onward.
 			/// <para/>
 			/// </summary>
 			public const uint WeRanOutofMedals = 2799217987;
+			/// <summary>
+			/// 	Total number of Favors gathered during Defiant Battlegrounds.
+			/// </summary>
+			public const uint FavoredofMaraSov = 326202600;
 			/// <summary>
 			/// 	The number of successful runs through the Menagerie.
 			/// <para/>
@@ -26,6 +34,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Targets defeated this week.
 			/// </summary>
 			public const uint TotalFinalBlows_3460220472 = 3460220472;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3096385845 = 3096385845;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3688179966 = 3688179966;
 			/// <summary>
 			/// 	The number of times the Exotic quest "Vox Obscura" has been completed on Master difficulty.
 			/// </summary>
@@ -61,6 +77,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WinRate = 2941499201;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_230501113 = 230501113;
+			/// <summary>
 			/// 	The total number of final blows with Heavy Machine Guns.
 			/// <para/>
 			/// 	Tracks from Season 12 onward.
@@ -71,10 +91,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The fastest completion time for "Garden of Salvation" this Season.
 			/// </summary>
 			public const uint GardenofSalvationTimeTrial_158484919 = 158484919;
-			/// <summary>
-			/// 	Number of Containment bosses defeated.
-			/// </summary>
-			public const uint SeasonoftheHauntedNightmareContainmentBossesDefeated = 3151143989;
 			/// <summary>
 			/// 	The number of Guardians carried to their first ever completion of "King's Fall" this week.
 			/// </summary>
@@ -205,10 +221,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallStrangeTerrainScore = 40546883;
 			/// <summary>
-			/// 	Total number of combatants defeated in Seasonal activities during Season of the Seraph.
-			/// </summary>
-			public const uint Assassin = 3475018909;
-			/// <summary>
 			/// 	The number of tickets with seven wins and zero losses.
 			/// <para/>
 			/// 	Tracks from Season 10 onward.
@@ -227,17 +239,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ForgesIgnited = 2114794836;
 			/// <summary>
-			/// 	The fastest completion time of the "Vox Obscura" Exotic quest.
-			/// </summary>
-			public const uint Season16VoxObscuraFastestTime = 4259169645;
-			/// <summary>
 			/// 	The number of Gambit matches won this Season.
 			/// </summary>
 			public const uint Wins_3483580010 = 3483580010;
-			/// <summary>
-			/// 	Total number of times positive reinforcement was given to the visitor in the H.E.L.M.
-			/// </summary>
-			public const uint GoodBoyProtocol = 1430225690;
 			/// <summary>
 			/// 	The number of opponents defeated in Crucible matches this week.
 			/// </summary>
@@ -253,6 +257,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint RocketLauncherFinalBlows = 1200426430;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3238120140 = 3238120140;
 			/// <summary>
 			/// 	The total number of final blows with Auto Rifles.
 			/// <para/>
@@ -323,10 +331,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CollectionsScore = 3526455111;
 			/// <summary>
-			/// 	Total number of Warmind bunkers successfully infiltrated during Season of the Seraph.
-			/// </summary>
-			public const uint Infiltrator = 1461985859;
-			/// <summary>
 			/// 	The number of Tier III encounters completed in the Reckoning.
 			/// <para/>
 			/// 	Tracks from Season 6 onward.
@@ -366,12 +370,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrucibleRankResets = 3626149776;
 			/// <summary>
-			/// 	The number of times the Deadeye seal has been gilded.
+			/// 	The number of times the Deadeye Title has been gilded.
 			/// <para/>
 			/// 	Tracks from Season 14 onward.
 			/// <para/>
 			/// </summary>
-			public const uint DeadeyeSealGildings = 3103683778;
+			public const uint DeadeyeTitleGildings = 3103683778;
 			/// <summary>
 			/// 	The total number of completions of "Last Wish."
 			/// <para/>
@@ -395,12 +399,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeepStoneCryptTimeTrial_1482973648 = 1482973648;
 			/// <summary>
-			/// 	The number of times the Gambit seal has been gilded.
+			/// 	The number of times the Gambit Title has been gilded.
 			/// <para/>
 			/// 	Tracks from Season 13 onward.
 			/// <para/>
 			/// </summary>
-			public const uint GambitSealGildings = 2365336843;
+			public const uint GambitTitleGildings = 2365336843;
 			/// <summary>
 			/// 	The total number of final blows with Fusion Rifles.
 			/// <para/>
@@ -475,6 +479,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LinearFusionRifleFinalBlows = 2707112071;
 			/// <summary>
+			/// 	Targets defeated with Strand this week.
+			/// </summary>
+			public const uint StrandFinalBlows_4105725703 = 4105725703;
+			/// <summary>
 			/// 	The lifetime high score for "The Pyramidion" in Nightfall.
 			/// <para/>
 			/// 	Tracks from Season 8 onward.
@@ -482,12 +490,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallThePyramidionScore = 2457392818;
 			/// <summary>
-			/// 	The number of times the Crucible seal has been gilded.
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1863140102 = 1863140102;
+			/// <summary>
+			/// 	The number of times the Crucible Title has been gilded.
 			/// <para/>
 			/// 	Tracks from Season 13 onward.
 			/// <para/>
 			/// </summary>
-			public const uint CrucibleSealGildings = 1250683514;
+			public const uint CrucibleTitleGildings = 1250683514;
 			/// <summary>
 			/// 	The fastest completion time for "Vow of the Disciple" this Season.
 			/// </summary>
@@ -499,14 +511,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint NightfallTheArmsDealerScore = 3036740778;
-			/// <summary>
-			/// 	The fastest completion time of any PsiOps Battleground this Season.
-			/// </summary>
-			public const uint Season16PsiOpsBattlegroundFastestTime = 2869800083;
-			/// <summary>
-			/// 	Total amount of Plundered Umbral Energy collected during the Season of Plunder.
-			/// </summary>
-			public const uint UmbralCollector = 2389736825;
 			/// <summary>
 			/// 	The total number of Guardians carried to their first completion of "Kings Fall."
 			/// <para/>
@@ -528,10 +532,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint SpireofStarsCarries = 3069033980;
-			/// <summary>
-			/// 	Number of Containment waves completed.
-			/// </summary>
-			public const uint SeasonoftheHauntedNightmareContainmentTierCompletions = 1864866268;
 			/// <summary>
 			/// 	The total number of completions of "Spire of Stars."
 			/// <para/>
@@ -558,6 +558,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The fastest completion time for "Last Wish" this week.
 			/// </summary>
 			public const uint LastWishTimeTrial_4264455694 = 4264455694;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2499684194 = 2499684194;
 			/// <summary>
 			/// 	The total number of completions of "Garden of Salvation."
 			/// <para/>
@@ -595,10 +599,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The number of players guided through the Exotic quest "Presage" who had not completed it before.
 			/// </summary>
 			public const uint ExoticQuestPresageCarries = 1902642032;
-			/// <summary>
-			/// 	Number of Haunted Alcove chests unlocked.
-			/// </summary>
-			public const uint SeasonoftheHauntedHauntedAlcoveChestsUnlocked = 2536355414;
 			/// <summary>
 			/// 	The total number of Guardians carried to their first completion of "Vow of the Disciple."
 			/// <para/>
@@ -668,10 +668,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrownofSorrowTimeTrial = 996516677;
 			/// <summary>
-			/// 	Total number of combatants defeated during the Season of Plunder in Ketchcrash, Expedition, and Pirate Hideout activities.
-			/// </summary>
-			public const uint Swashbuckler = 266594914;
-			/// <summary>
 			/// 	The total of active and legacy Triumph Scores.
 			/// <para/>
 			/// 	Tracks from Season 1 onward.
@@ -679,9 +675,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TotalTriumphScore = 3329916678;
 			/// <summary>
-			/// 	Total number of Captain's Coins donated to the Eliksni Quarter during "A Rising Tide" in the Season of Plunder.
+			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
-			public const uint CaptainsCoinCollector = 2405586877;
+			public const uint Classified_58319253 = 58319253;
 			/// <summary>
 			/// 	Current 3v3 Rank.
 			/// </summary>
@@ -715,7 +711,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	The number of opponents defeated in Trials of Osiris this week.
 			/// </summary>
-			public const uint OpponentsDefeated_2091173752 = 2091173752;
+			public const uint Opponentsdefeated_2091173752 = 2091173752;
 			/// <summary>
 			/// 	The total number of "Scourge of the Past" completions using Guided Games.
 			/// <para/>
@@ -762,6 +758,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PrimevalsDefeated_2781393679 = 2781393679;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2500984290 = 2500984290;
+			/// <summary>
 			/// 	The lifetime high score for "Birthplace Of The Vile" in Nightfall.
 			/// </summary>
 			public const uint NightfallBirthplaceoftheVileScore = 1065851514;
@@ -799,12 +799,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VaultofGlassCompletions = 2506886274;
 			/// <summary>
-			/// 	The number of times the Conqueror seal has been gilded.
+			/// 	The number of times the Conqueror Title has been gilded.
 			/// <para/>
 			/// 	Tracks from Season 13 onward.
 			/// <para/>
 			/// </summary>
-			public const uint ConquerorSealGildings = 3266682176;
+			public const uint ConquerorTitleGildings = 3266682176;
 			/// <summary>
 			/// 	[Arc] Arc
 			/// </summary>
@@ -820,10 +820,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint SeventhColumn = 455493708;
-			/// <summary>
-			/// 	Number of Opulent Chests unlocked.
-			/// </summary>
-			public const uint SeasonoftheHauntedOpulentChestsUnlocked = 2203898888;
 			/// <summary>
 			/// 	Complete a match in which you are never defeated by an opponent.
 			/// <para/>
@@ -910,10 +906,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GuidedGameCompletions_3399368522 = 3399368522;
 			/// <summary>
-			/// 	Total number of Treasure Chests opened via completed Treasure Maps during Expedition activities in Season of Plunder.
-			/// </summary>
-			public const uint Cartographer = 3858757059;
-			/// <summary>
 			/// 	The number of Guardians carried to their first-ever completion of the "Deep Stone Crypt" during this week.
 			/// </summary>
 			public const uint DeepStoneCryptCarries_3343955936 = 3343955936;
@@ -955,6 +947,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	You are in the top {var:2829645461}% of scoring for all players during the 2022 Guardian Games!
 			/// </summary>
 			public const uint Ranking = 2850716853;
+			/// <summary>
+			/// 	Highest Rank achieved for the Season of Defiance.
+			/// <para/>
+			/// 	Tracks from Season 20 onward.
+			/// <para/>
+			/// </summary>
+			public const uint SeasonofDefianceRank = 2245851615;
 			/// <summary>
 			/// 	The number of tickets with seven wins and zero losses this Season.
 			/// </summary>
@@ -1075,10 +1074,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallSavathûnsSongScore = 2894079898;
 			/// <summary>
-			/// 	Total number of bosses defeated during the Season of Plunder in Ketchcrash, Expedition, and Pirate Hideout activities.
-			/// </summary>
-			public const uint PirateScourge = 731645490;
-			/// <summary>
 			/// 	Highest score achieved in Dares of Eternity on Normal difficulty.
 			/// <para/>
 			/// 	Tracks from Season 15 onward.
@@ -1102,7 +1097,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	The number of opponents defeated in Trials of Osiris this Season.
 			/// </summary>
-			public const uint OpponentsDefeated_3481560625 = 3481560625;
+			public const uint Opponentsdefeated_3481560625 = 3481560625;
 			/// <summary>
 			/// 	The fastest completion time for "Leviathan."
 			/// <para/>
@@ -1141,6 +1136,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The number of chests opened within Dares of Eternity this Season.
 			/// </summary>
 			public const uint DaresofEternityOpenedChests = 403017184;
+			/// <summary>
+			/// 	Tracks the number of combatants eliminated as a Berserker.
+			/// <para/>
+			/// 	Tracks from Season 20 onward.
+			/// <para/>
+			/// </summary>
+			public const uint BerserkerFinalBlows = 3133144330;
 			/// <summary>
 			/// 	Flawless solo completions of the "Spire of the Watcher" dungeon.
 			/// <para/>
@@ -1258,19 +1260,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DualityFlawlessCompletions = 1034442994;
 			/// <summary>
-			/// 	The number of Guardians carried to their first flawless ticket this Season while the player has the Light for the Lost emblem equipped.
-			/// <para/>
-			/// 	Tracks from Season 10 onward.
-			/// <para/>
-			/// </summary>
-			public const uint LighthouseCarries_301249970 = 301249970;
-			/// <summary>
 			/// 	The number of targets eliminated as a Dawnblade.
 			/// <para/>
 			/// 	Tracks from Season 1 onward.
 			/// <para/>
 			/// </summary>
 			public const uint Dawnbladedefeats = 30426544;
+			/// <summary>
+			/// 	The number of Guardians carried to their first flawless ticket this Season while the player has the Light for the Lost emblem equipped.
+			/// <para/>
+			/// 	Tracks from Season 10 onward.
+			/// <para/>
+			/// </summary>
+			public const uint LighthouseCarries_301249970 = 301249970;
 			/// <summary>
 			/// 	The number of times your Gambit Rank resets.
 			/// <para/>
@@ -1306,7 +1308,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Tracks from Season 10 onward.
 			/// <para/>
 			/// </summary>
-			public const uint OpponentsDefeated_2082314848 = 2082314848;
+			public const uint Opponentsdefeated_2082314848 = 2082314848;
 			/// <summary>
 			/// 	The total number of "Last Wish" completions using Guided Games.
 			/// <para/>
@@ -1456,10 +1458,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Sentineldefeats = 1045301756;
 			/// <summary>
-			/// 	Collection of dignified effigies obtained.
-			/// </summary>
-			public const uint SeasonoftheHauntedDignifiedEffigiesRecovered = 1793853502;
-			/// <summary>
 			/// 	The number of matches won in Trials of Osiris.
 			/// <para/>
 			/// 	Tracks from Season 10 onward.
@@ -1488,6 +1486,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SubmachineGunFinalBlows = 1165153680;
 			/// <summary>
+			/// 	Total number of combatants defeated in the Defiant Battlegrounds playlist or in Legend Defiant Battlegrounds.
+			/// </summary>
+			public const uint ShadowLegionsBane = 4055734702;
+			/// <summary>
 			/// 	Crucible Rank
 			/// </summary>
 			public const uint CrucibleRank = 2872213304;
@@ -1498,6 +1500,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint BranchesCleared = 2588152220;
+			/// <summary>
+			/// 	Total number of activity completions in the Defiant Battlegrounds playlist or in Legend Defiant Battlegrounds.
+			/// </summary>
+			public const uint ProlificEmancipator = 279504192;
 			/// <summary>
 			/// 	The number of targets eliminated as a Stormcaller.
 			/// <para/>
@@ -1528,6 +1534,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GraspofAvariceCompletions = 451157118;
 			/// <summary>
+			/// 	Tracks the number of combatants eliminated as a Broodweaver.
+			/// <para/>
+			/// 	Tracks from Season 20 onward.
+			/// <para/>
+			/// </summary>
+			public const uint BroodweaverFinalBlows = 2445590309;
+			/// <summary>
 			/// 	The number of "Spire of Stars" Prestige completions.
 			/// <para/>
 			/// 	Tracks from Season 3 onward.
@@ -1542,12 +1555,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallTheHollowedLairScore = 449969041;
 			/// <summary>
-			/// 	The number of times the Flawless seal has been gilded.
+			/// 	The number of times the Flawless Title has been gilded.
 			/// <para/>
 			/// 	Tracks from Season 13 onward.
 			/// <para/>
 			/// </summary>
-			public const uint FlawlessSealGildings = 4112712479;
+			public const uint FlawlessTitleGildings = 4112712479;
 			/// <summary>
 			/// 	The KDA ratio in Crucible matches this Season.
 			/// </summary>
@@ -1613,6 +1626,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint EaterofWorldsCompletions = 2659534585;
+			/// <summary>
+			/// 	Strand final blows
+			/// </summary>
+			public const uint StrandFinalBlows_2889561660 = 2889561660;
 			/// <summary>
 			/// 	The total number of Guardians carried to their first completion of "Crown of Sorrow."
 			/// <para/>
@@ -1685,10 +1702,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TraceRifleFinalBlows = 3124958797;
 			/// <summary>
-			/// 	Number of Nightmares defeated on the Derelict Leviathan.
-			/// </summary>
-			public const uint SeasonoftheHauntedNightmaresDefeated = 412897948;
-			/// <summary>
 			/// 	The total number of Guardians carried to their first completion of "Eater of Worlds."
 			/// <para/>
 			/// 	Tracks from Season 10 onward.
@@ -1724,10 +1737,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The number of Guardians carried to their first ever completion of "Vault of Glass" during this week.
 			/// </summary>
 			public const uint VaultofGlassCarries_1586921946 = 1586921946;
-			/// <summary>
-			/// 	The number of combatants defeated in the PsiOps Battlegrounds and "Vox Obscura" Exotic quest.
-			/// </summary>
-			public const uint Season16CombatantsDefeated = 3095956376;
 			/// <summary>
 			/// 	The number of Heroic public events completions this week.
 			/// </summary>
@@ -1775,6 +1784,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IronBurdenOpponentsDefeated = 2346526808;
 			/// <summary>
+			/// 	Tracks the number of combatants eliminated as a Threadrunner.
+			/// <para/>
+			/// 	Tracks from Season 20 onward.
+			/// <para/>
+			/// </summary>
+			public const uint ThreadrunnerFinalBlows = 115661044;
+			/// <summary>
 			/// 	The total number of final blows with Hand Cannons.
 			/// <para/>
 			/// 	Tracks from Season 12 onward.
@@ -1788,6 +1804,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint NightfallChallengeCompletions = 2959623395;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_321051454 = 321051454;
+			/// <summary>
+			/// 	The fastest completion time for "Headlong: Time Trial" achieved this Season.
+			/// </summary>
+			public const uint HeadlongTimeTrial_3689100117 = 3689100117;
 			/// <summary>
 			/// 	The number of Guardians carried to their first ever completion of "Last Wish" during this Season.
 			/// </summary>
@@ -1821,10 +1845,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint NightfallTheFesteringCoreScore = 326550718;
-			/// <summary>
-			/// 	Number of Containment bosses bound.
-			/// </summary>
-			public const uint SeasonoftheHauntedNightmareContainmentBindings = 2651517177;
 		}
 	}
 }

@@ -4,6 +4,7 @@ namespace DotNetBungieAPI.HashReferences
 	{
 		public static class VendorGroups
 		{
+			public const uint LIGHTFALL = 1767960256;
 			public const uint Seasonal = 427939601;
 			public const uint TheWitchQueen = 3667761105;
 			public const uint Tower = 679769104;

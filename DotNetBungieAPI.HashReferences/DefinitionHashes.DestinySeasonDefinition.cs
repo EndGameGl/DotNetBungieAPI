@@ -40,11 +40,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	As the Last City is consumed by an Endless Night, Guardians must hack their way through the Vex Network with help from Mithrax, the Sacred Splicer.
 			/// </summary>
 			public const uint SeasonoftheSplicer = 2809059429;
+			public const uint H965757574 = 965757574;
 			/// <summary>
 			/// 	The prison ship of the exiled Cabal Emperor Calus has returned. But its reappearance heralds the beginning of the end as the once-dormant lunar Pyramid stirs to life once more. With the aid of Eris Morn's witchcraft, the Guardian must work with Empress Caiatl, Commander Zavala, and Crow to unravel the mysteries of the Leviathan and the lunar Pyramid and stop Calus before it is too late.
 			/// </summary>
 			public const uint SeasonoftheHaunted = 2809059430;
-			public const uint H965757574 = 965757574;
 			/// <summary>
 			/// 	When Savathûn's Lucent Hive threaten the source of the Guardians' power, survival depends on the fragile alliance between the Vanguard and Empress Caiatl. Wielding a spear imbued with Light-suppressing technology, the Guardian must work with Lord Saladin and Caiatl's most trusted Psion to search for secrets in the minds of the Lucent Hive and stop their ghoulish plans.
 			/// </summary>
@@ -52,15 +52,27 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Assist Ana Bray and Osiris in finding a way to restore the Warmind, Rasputin, in order to combat the enemies of Sol.
 			/// </summary>
-			public const uint SeasonoftheSeraph_2809059432 = 2809059432;
+			public const uint SeasonoftheSeraph = 2809059432;
 			/// <summary>
 			/// 	Eramis, Kell of House Salvation, has broken free from her icy prison on Europa. As she rallies the old Pirate Lords of Eliksni legend, the Guardian must assemble a motley crew of their own and retrieve powerful relics of Darkness before they fall into Eramis's hands.
 			/// </summary>
 			public const uint SeasonofPlunder = 2809059433;
 			/// <summary>
-			/// 	Assist Ana Bray and Osiris in finding a way to restore the Warmind, Rasputin, in order to combat the enemies of Sol.
+			/// 	In the aftermath of the Witness's attack, the Vanguard calls upon its closest allies. The Guardian must master the righteous powers of the Awoken to stand against the encroaching Shadow Legion and prove themselves as Queensguard.
 			/// </summary>
-			public const uint SeasonoftheSeraph_2758726568 = 2758726568;
+			public const uint SeasonofDefiance = 2758726568;
+			/// <summary>
+			/// 	When Savathûn's Lucent Hive threaten the source of the Guardians' power, survival depends on the fragile alliance between the Vanguard and Empress Caiatl. Wielding a spear imbued with Light-suppressing technology, the Guardian must work with Lord Saladin and Caiatl's most trusted Psion to search for secrets in the minds of the Lucent Hive and stop their ghoulish plans.
+			/// </summary>
+			public const uint SeasonofRedacted_2758726569 = 2758726569;
+			/// <summary>
+			/// 	When Savathûn's Lucent Hive threaten the source of the Guardians' power, survival depends on the fragile alliance between the Vanguard and Empress Caiatl. Wielding a spear imbued with Light-suppressing technology, the Guardian must work with Lord Saladin and Caiatl's most trusted Psion to search for secrets in the minds of the Lucent Hive and stop their ghoulish plans.
+			/// </summary>
+			public const uint SeasonofRedacted_2758726570 = 2758726570;
+			/// <summary>
+			/// 	When Savathûn's Lucent Hive threaten the source of the Guardians' power, survival depends on the fragile alliance between the Vanguard and Empress Caiatl. Wielding a spear imbued with Light-suppressing technology, the Guardian must work with Lord Saladin and Caiatl's most trusted Psion to search for secrets in the minds of the Lucent Hive and stop their ghoulish plans.
+			/// </summary>
+			public const uint SeasonofRedacted_2758726571 = 2758726571;
 			/// <summary>
 			/// 	A new season has begun! Choose what kind of Guardian you will become. Reckon with the path that lies ahead.
 			/// </summary>

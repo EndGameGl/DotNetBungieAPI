@@ -4,6 +4,10 @@ namespace DotNetBungieAPI.HashReferences
 	{
 		public static class Records
 		{
+			/// <summary>
+			/// 	Complete any Nightfall strike on Hero difficulty or higher.
+			/// </summary>
+			public const uint DarkestNightfall = 2195426783;
 			public const uint FindingsofEido22 = 3722410604;
 			/// <summary>
 			/// 	Earn points by completing objectives in the Competitive 3v3 playlist.
@@ -69,13 +73,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LetsSeeWhatYoullBeTakingHome = 1044381150;
 			/// <summary>
-			/// 	Complete Triumphs to earn the 2020 Ghost.
-			/// </summary>
-			public const uint RewardGhost = 2756788881;
-			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
 			public const uint Forbearance = 422252754;
+			/// <summary>
+			/// 	Complete Triumphs to earn the 2020 Ghost.
+			/// </summary>
+			public const uint RewardGhost = 2756788881;
 			/// <summary>
 			/// 	Complete the Pit of Heresy.
 			/// </summary>
@@ -117,6 +121,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Tarnation = 1507884969;
 			/// <summary>
+			/// 	Complete secret events in Neomuna.
+			/// </summary>
+			public const uint EartotheGround = 1222914965;
+			/// <summary>
 			/// 	As a Voidwalker running the Feed the Void Aspect, defeat targets with abilities.
 			/// </summary>
 			public const uint FeastMode = 823320330;
@@ -146,6 +154,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DroneDestructionIII = 500197335;
 			/// <summary>
+			/// 	Collect Strand Fragments for a single character.
+			/// <para/>
+			/// 	Strand Fragments can be purchased from the Strand vendor in Neomuna once you've completed the Lightfall campaign.
+			/// <para/>
+			/// </summary>
+			public const uint StrandCollector = 1252785514;
+			/// <summary>
 			/// 	Complete the "Red Rover" challenge.
 			/// </summary>
 			public const uint RedRover = 22094034;
@@ -158,6 +173,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BunkerE15SoloMastery = 631767421;
 			/// <summary>
+			/// 	Complete the "Downfall" mission on any difficulty.
+			/// </summary>
+			public const uint Downfall_2809254865 = 2809254865;
+			/// <summary>
 			/// 	Defeat targets with Super abilities.
 			/// </summary>
 			public const uint Superlative_1281227904 = 1281227904;
@@ -169,6 +188,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the Extraction Lost Sector on Legend difficulty, without a fireteam.
 			/// </summary>
 			public const uint ExtractionSoloLegend = 2027297570;
+			/// <summary>
+			/// 	Complete all Season of Defiance Triumphs.
+			/// </summary>
+			public const uint Queensguard = 1722592950;
 			/// <summary>
 			/// 	As a Nightstalker, defeat tethered targets.
 			/// </summary>
@@ -186,9 +209,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TripmineFantasy = 1553156416;
 			/// <summary>
+			/// 	Calibrate Swords, Bows, and Glaives. Bonus progress for defeating Guardians.
+			/// </summary>
+			public const uint DefiantCalibration = 4289946518;
+			/// <summary>
 			/// 	Investigate the Derelict Shipyard.
 			/// </summary>
 			public const uint ShipyardSecrets = 1234886489;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_4293716153 = 4293716153;
 			/// <summary>
 			/// 	Investigate the floating islands near the Shattered Enclave.
 			/// </summary>
@@ -210,17 +241,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VelesLabyrinthFlawlessSoloMastery = 3965319255;
 			/// <summary>
-			/// 	Complete Heist Battlegrounds in the playlist or Legend Heist Battlegrounds without dying.
-			/// </summary>
-			public const uint FlawlessHeists = 1085538253;
-			/// <summary>
 			/// 	Control: Recapture a zone within 15 seconds of it being captured by your opponents.
 			/// </summary>
 			public const uint Reclaimer = 1229563344;
-			/// <summary>
-			/// 	Complete a Heist Battleground in under 12 minutes.
-			/// </summary>
-			public const uint QuickHeists = 1085538254;
 			/// <summary>
 			/// 	Control: Defeat two opponents with Zone Advantage within 10 seconds of capturing a zone.
 			/// </summary>
@@ -281,10 +304,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint BoundinMemory = 952432579;
 			public const uint BoxingDay = 2056321993;
 			/// <summary>
-			/// 	Open hidden chests in the Exotic mission "Operation: Seraph's Shield."
-			/// </summary>
-			public const uint SeraphsSecrets = 1924214678;
-			/// <summary>
 			/// 	Complete Triumphs during Moments of Triumph to earn the 2020 Sparrow.
 			/// </summary>
 			public const uint RewardSparrow_1066376708 = 1066376708;
@@ -305,10 +324,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete "The Hidden Shape" and craft Revision Zero.
 			/// </summary>
 			public const uint ShaperoftheHidden = 2495538096;
-			/// <summary>
-			/// 	Defeat Fallen and Hive bosses in strikes or Vanguard playlists.
-			/// </summary>
-			public const uint FellandFallen = 3709163256;
 			/// <summary>
 			/// 	Showdown: Win a Final Showdown in which your entire team survives.
 			/// </summary>
@@ -342,6 +357,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AggroNo = 3457815539;
 			/// <summary>
+			/// 	Complete Defiant Battlegrounds on Legend difficulty in the EDZ, Cosmodrome, and the Orbital Prison.
+			/// </summary>
+			public const uint LegendaryTrifecta = 3524455685;
+			/// <summary>
 			/// 	Complete Triumphs to earn a bungie.net token that unlocks the 2022 Moments of Triumph emblem for redemption on bungie.net.
 			/// </summary>
 			public const uint RewardEmblem_2658563592 = 2658563592;
@@ -362,6 +381,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BungieRewardsTriumphShirtAvailable_1962699008 = 1962699008;
 			/// <summary>
+			/// 	Defeat combatants in Vanguard playlists with a Strand, Solar, or Void subclass equipped. Bonus progress awarded for ability final blows.
+			/// </summary>
+			public const uint WeavingSunlight = 4013290365;
+			/// <summary>
 			/// 	Unlock the Nightstalker Hunter subclass.
 			/// </summary>
 			public const uint Nightstalker = 2838167408;
@@ -373,10 +396,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Activate Cannon Accelerators aboard the deck of your ship in Ketchcrash.
 			/// </summary>
 			public const uint PowderRunner = 2467239009;
-			/// <summary>
-			/// 	Stun Champions.
-			/// </summary>
-			public const uint AbsolutelyStunning = 1661132775;
 			/// <summary>
 			/// 	In Season 8, defeat combatants on the Moon with finishers. Challenging combatants grant the most efficient progress.
 			/// </summary>
@@ -394,6 +413,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint StealthCheck = 2467239011;
 			/// <summary>
+			/// 	Complete the "Garden of Salvation" raid.
+			/// </summary>
+			public const uint GardenofSalvation_1711561705 = 1711561705;
+			/// <summary>
 			/// 	In Ketchcrash, destroy storage tanks in Ether Storage.
 			/// </summary>
 			public const uint EtherWay = 2467239014;
@@ -409,6 +432,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Listen to all the War Table briefings and debriefings.
 			/// </summary>
 			public const uint FromHighCommand = 2049221527;
+			/// <summary>
+			/// 	Complete all Season of Defiance Challenges.
+			/// </summary>
+			public const uint TotalDefiance = 1243133200;
 			/// <summary>
 			/// 	Pet the mechanical dog in the H.E.L.M. during the final weeks of Season of the Seraph.
 			/// </summary>
@@ -430,21 +457,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeceptivelyPeaceful = 290266431;
 			/// <summary>
+			/// 	Increase the number of Legendary weapons in your collection.
+			/// </summary>
+			public const uint CollectWeapons = 1011873769;
+			/// <summary>
 			/// 	Defeat 80 enemies in a single match without dying.
 			/// </summary>
 			public const uint Overkillmonger = 433799052;
 			/// <summary>
-			/// 	Defeat combatants with Auto Rifle or Trace Rifle final blows on the Derelict Leviathan, and defeat combatants with Solar damage in any Sever activity.
-			/// </summary>
-			public const uint SustainedFire = 2635959245;
-			/// <summary>
 			/// 	Complete all raid encounters with a fireteam made entirely of Solar subclasses.
 			/// </summary>
 			public const uint Sunburn = 623283604;
-			/// <summary>
-			/// 	Defeat combatants with Glaive or Sword final blows on the Derelict Leviathan and defeat powerful Cabal in any Sever activity.
-			/// </summary>
-			public const uint GleanCut = 2635959247;
 			/// <summary>
 			/// 	Defeat enemies using Trinity Ghoul.
 			/// </summary>
@@ -462,9 +485,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SolarDance_2314855381 = 2314855381;
 			/// <summary>
+			/// 	Complete a Defiant Battleground on Legend difficulty, without anyone in your fireteam dying.
+			/// </summary>
+			public const uint DeathDefyingFireteam = 570271454;
+			/// <summary>
 			/// 	Rapidly defeat 9 combatants with precision damage.
 			/// </summary>
 			public const uint PrecisionFrenzy = 2079320414;
+			/// <summary>
+			/// 	Win rounds in the Trials of Osiris.
+			/// </summary>
+			public const uint TrialsWins_458494198 = 458494198;
 			/// <summary>
 			/// 	Complete public events on any destination to earn Silver Leaves.
 			/// </summary>
@@ -477,10 +508,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	[Special Grenade Launcher] Final blows in Gambit.
 			/// </summary>
 			public const uint BangforYourBuck = 2369658343;
-			/// <summary>
-			/// 	Win rounds in the Trials of Osiris.
-			/// </summary>
-			public const uint TrialsWins_458494198 = 458494198;
 			/// <summary>
 			/// 	With any Grenade Launcher, defeat Guardians in the Crucible and land direct hit final blows. Earn the medal "Direct Hit!"
 			/// </summary>
@@ -505,6 +532,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the "Leviathan, Spire of Stars" raid lair on Prestige difficulty.
 			/// </summary>
 			public const uint ASuperiorRetainer = 3569082466;
+			/// <summary>
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
+			/// </summary>
+			public const uint PhyllotacticSpiral = 1167176444;
 			/// <summary>
 			/// 	Complete the Strength of Memory challenge.
 			/// </summary>
@@ -546,6 +577,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint StrangersinTime = 2464700601;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3413963390 = 3413963390;
+			/// <summary>
 			/// 	Eliminate all of Eramis's Council to unlock the pages of this lore book.
 			/// </summary>
 			public const uint TheOnceShipstealer = 3058677629;
@@ -558,6 +593,23 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint FuelfortheFire_1468147272 = 1468147272;
 			/// <summary>
+			/// 	Stun Barrier Champions.
+			/// <para/>
+			/// 	[Shield-Piercing] Barrier Champions have nearly unbreakable shields that activate when they have been damaged. 
+			/// <para/>
+			/// 	You can damage Barrier Champion shields and stun them, preventing their health regeneration:
+			/// <para/>
+			/// 	[Solar] when you are radiant;
+			/// <para/>
+			/// 	[Void] when you have volatile rounds on your weapon;
+			/// <para/>
+			/// 	 when you have infested rounds on your weapon;
+			/// <para/>
+			/// 	[Headshot] when you damage them with a weapon granted the [Shield-Piercing] Pierce trait by a Seasonal Artifact perk.
+			/// <para/>
+			/// </summary>
+			public const uint BarrierChampions = 1857238866;
+			/// <summary>
 			/// 	Stoke more flames in the Bonfire Bash.
 			/// </summary>
 			public const uint FuelfortheFireII_1468147273 = 1468147273;
@@ -565,6 +617,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Stoke even more flames in the Bonfire Bash.
 			/// </summary>
 			public const uint FuelfortheFireIII_1468147274 = 1468147274;
+			/// <summary>
+			/// 	Collect Terminal Overload Keys from any source in Neomuna.
+			/// </summary>
+			public const uint KeyedUp = 2746729227;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1967189514 = 1967189514;
 			/// <summary>
 			/// 	Deposit Medallions at the Tower's podium during Guardian Games. 
 			/// <para/>
@@ -596,13 +656,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SniperRifleAptitude = 1935170022;
 			/// <summary>
-			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
-			/// </summary>
-			public const uint BloodFeud = 2158979729;
-			/// <summary>
 			/// 	A cache of data awaits you near the Well.
 			/// </summary>
 			public const uint TheIntruder = 409359175;
+			/// <summary>
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
+			/// </summary>
+			public const uint BloodFeud = 2158979729;
 			public const uint AHerosRequiem = 4287282851;
 			public const uint FromFallenGround = 4287282852;
 			/// <summary>
@@ -621,6 +681,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DifferenceofOpinion = 4287282854;
 			public const uint IIIJustaKindness = 1704613480;
 			public const uint ProtectorofGhosts = 4287282855;
+			/// <summary>
+			/// 	Defeat 2 opponents in a single Gathering Storm Super.
+			/// </summary>
+			public const uint DoubleStruck = 254226652;
 			/// <summary>
 			/// 	Defeat Ignition Carriers in the Bonfire Bash.
 			/// </summary>
@@ -642,7 +706,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ClanNightDeepStoneCrypt = 518342793;
 			/// <summary>
-			/// 	Complete a Rift match with 2 or more carries and a 100% capture rate.
+			/// 	Rift: Complete a Rift match with 2 or more carries and a 100% capture rate.
 			/// </summary>
 			public const uint SaladinsRun_2443801999 = 2443801999;
 			public const uint VIIBrokenWing = 1704613484;
@@ -658,11 +722,15 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint VTheraphosa = 1704613486;
 			public const uint IVSaturno = 1704613487;
 			/// <summary>
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
+			/// </summary>
+			public const uint Perpetualis = 2514059564;
+			/// <summary>
 			/// 	Investigate the reappearance of Mars and the mysterious presence of Savathûn's ship in its sky.
 			/// </summary>
 			public const uint TheWitchQueenChapter1 = 2016548463;
 			/// <summary>
-			/// 	Complete "The Arms Dealer" Nightfall on Grandmaster difficulty during Season of the Haunted.
+			/// 	Complete "The Arms Dealer" Nightfall on Grandmaster difficulty during Season of Defiance.
 			/// </summary>
 			public const uint GrandmasterTheArmsDealer_3176422761 = 3176422761;
 			public const uint H3342944780 = 3342944780;
@@ -679,6 +747,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WayfindingWrath = 4078726305;
 			/// <summary>
+			/// 	Complete all of The Witch Queen missions on Legendary difficulty.
+			/// </summary>
+			public const uint TheWitchQueenLegendary = 487894732;
+			/// <summary>
 			/// 	In Sever activities, find and listen to each of Calus's automatons.
 			/// </summary>
 			public const uint HearDontHeed = 3670253780;
@@ -686,10 +758,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Focus each Season of the Seraph armor engram at the Exo Frame in the H.E.L.M.
 			/// </summary>
 			public const uint SeraphicArmorFocus = 2468174803;
-			/// <summary>
-			/// 	Complete all of The Witch Queen missions on Legendary difficulty.
-			/// </summary>
-			public const uint TheWitchQueenLegendary = 487894732;
 			/// <summary>
 			/// 	Earn Psychogenic Intel.
 			/// </summary>
@@ -708,6 +776,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GoodCompany = 2757330809;
 			/// <summary>
+			/// 	Complete the Gilded Precept Lost Sector on Legend difficulty, without a fireteam.
+			/// </summary>
+			public const uint GildedPreceptSoloLegend = 3951548177;
+			/// <summary>
 			/// 	Trophies from the Moon.
 			/// </summary>
 			public const uint LunarRover_2691823351 = 2691823351;
@@ -724,6 +796,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BeaHero = 2460107264;
 			/// <summary>
+			/// 	Complete Vanguard bounties in Vanguard Ops.
+			/// <para/>
+			/// 	Vanguard bounties are a good source of Vanguard Ops reputation.
+			/// <para/>
+			/// </summary>
+			public const uint CompleteVanguardBounties = 923676974;
+			/// <summary>
 			/// 	Bind Nightmares after completing Tier III Nightmare Containment activities.
 			/// </summary>
 			public const uint HarvesterofSorrows = 256362216;
@@ -735,6 +814,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat Atheon without destroying any Supplicants.
 			/// </summary>
 			public const uint EyesonAtheon = 1024875083;
+			/// <summary>
+			/// 	Defeat combatants with Season of Defiance weapons: Perpetualis, Prodigal Return, Regnant, Caretaker, Raconteur, and Royal Executioner.
+			/// </summary>
+			public const uint ScourgeofLight = 3721430389;
 			/// <summary>
 			/// 	Defeat combatants with snowballs during the Dawning 2021.
 			/// </summary>
@@ -748,9 +831,23 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ExtractionFlawlessSoloMastery = 2691903949;
 			/// <summary>
+			/// 	Give or receive commendations in raids, dungeons, or non-matchmade Nightfalls. 
+			/// <para/>
+			/// 	Receiving commendations awards bonus progress.
+			/// <para/>
+			/// </summary>
+			public const uint RaidsDungeonsandNightfalls = 3634496009;
+			/// <summary>
 			/// 	In a single life, defeat two opponents with precision Hand Cannon final blows.
 			/// </summary>
 			public const uint Hawkeye = 3899252358;
+			/// <summary>
+			/// 	Acquire a commendation score of 1250.
+			/// <para/>
+			/// 	Receiving commendations from lower-ranked Guardians gives you a commendation score bonus.
+			/// <para/>
+			/// </summary>
+			public const uint Appreciated = 3634496010;
 			/// <summary>
 			/// 	Complete "The Technocrat" Empire Hunt on a higher difficulty.
 			/// </summary>
@@ -767,6 +864,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the "Vow of the Disciple" raid on Master Difficulty.
 			/// </summary>
 			public const uint MasterDifficultyVowoftheDisciple = 610864524;
+			/// <summary>
+			/// 	Complete all Lightfall missions on Legendary difficulty.
+			/// </summary>
+			public const uint LightfallLegendary = 2024002713;
 			/// <summary>
 			/// 	Complete the quest "Should You Choose to Accept It, Part III" and unlock the third catalyst for Revision Zero.
 			/// </summary>
@@ -787,6 +888,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete bounties from Zavala.
 			/// </summary>
 			public const uint VanguardAgent = 2867612781;
+			/// <summary>
+			/// 	Complete the "No Time Left" mission on any difficulty.
+			/// </summary>
+			public const uint NoTimeLeft = 32601779;
 			/// <summary>
 			/// 	Defeat enemies using the Huckleberry.
 			/// </summary>
@@ -903,7 +1008,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
-			public const uint Beloved = 662547074;
+			public const uint Beloved_662547074 = 662547074;
+			/// <summary>
+			/// 	Complete the "Spire of the Watcher" dungeon.
+			/// </summary>
+			public const uint SpireoftheWatcher_2401440736 = 2401440736;
 			/// <summary>
 			/// 	Complete all Heroic public events from Destiny 2: Beyond Light.
 			/// </summary>
@@ -921,12 +1030,35 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LightVersusLight = 572729504;
 			public const uint FynchI = 741597468;
 			/// <summary>
+			/// 	Complete the "King's Fall" raid.
+			/// </summary>
+			public const uint KingsFall_2401440741 = 2401440741;
+			/// <summary>
 			/// 	Purchase bounties from the Spider to search Nessus for powerful wanted escapees from the Prison of Elders. This Triumph can no longer be completed after the end of Season of Arrivals.
 			/// </summary>
 			public const uint WANTEDLostSectorsBounties_3586122096 = 3586122096;
 			public const uint Euloch = 741597469;
+			/// <summary>
+			/// 	Land in Earth's European Dead Zone, otherwise known as the EDZ, and speak with Devrim Kay, located in the belfry of Trostland Church.
+			/// <para/>
+			/// 	You can add a waypoint to Devrim Kay on the destination's map. Waypoints show the closest landing zone and will guide you to Devrim when you land.
+			/// <para/>
+			/// </summary>
+			public const uint DiscoverEDZ = 3344167109;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2401440742 = 2401440742;
 			public const uint Specter = 741597470;
+			/// <summary>
+			/// 	Complete the "Duality" dungeon.
+			/// </summary>
+			public const uint Duality_2401440743 = 2401440743;
 			public const uint FynchII = 741597471;
+			/// <summary>
+			/// 	A structured core progression system to the Destiny experience.
+			/// </summary>
+			public const uint GuardianRanks = 18302305;
 			/// <summary>
 			/// 	Complete strike Proving Grounds in Nightfall without dying.
 			/// </summary>
@@ -955,6 +1087,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Land final blows on seven opponents without taking any damage from any source.
 			/// </summary>
 			public const uint GhostintheNight = 3354992513;
+			/// <summary>
+			/// 	Complete Defiant Battlegrounds on Legend difficulty.
+			/// </summary>
+			public const uint LegendaryDefiance_2266015988 = 2266015988;
 			/// <summary>
 			/// 	On the Derelict Leviathan, defeat a Loyalist force defending their territory, and bring down their commander.
 			/// </summary>
@@ -1081,6 +1217,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheEmptyTankSoloMastery = 797277988;
 			/// <summary>
+			/// 	Complete mission "Headlong: Time Trial" in under 2 minutes 30 seconds.
+			/// </summary>
+			public const uint MissionHeadlongTimeTrialGold = 4165374340;
+			public const uint H368112774 = 368112774;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_4149006431 = 4149006431;
+			/// <summary>
 			/// 	Complete all raid encounters with a fireteam made entirely of the same Guardian class.
 			/// </summary>
 			public const uint TheNewMeta = 342038729;
@@ -1093,6 +1238,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheGoldStandard = 1868261462;
 			/// <summary>
+			/// 	Complete the Hydroponics Delta Lost Sector on Master difficulty, solo, flawlessly.
+			/// </summary>
+			public const uint HydroponicsDeltaFlawlessSoloMastery = 3999944721;
+			/// <summary>
 			/// 	Defeat all Override bosses.
 			/// </summary>
 			public const uint ForceDelete = 785987009;
@@ -1100,6 +1249,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat Aspects of Savathûn with the Synaptic Spear in PsiOps Battlegrounds.
 			/// </summary>
 			public const uint ThisHouseIsClean = 3694890899;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1160810407 = 1160810407;
 			/// <summary>
 			/// 	Complete the Exodus Garden 2A Lost Sector on Master difficulty, without a fireteam.
 			/// </summary>
@@ -1120,6 +1273,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Acquire an Offering to the Oracle.
 			/// </summary>
 			public const uint Supplicant = 4072158747;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1177648416 = 1177648416;
 			/// <summary>
 			/// 	Complete Nightfall strikes in Season of the Hunt.
 			/// </summary>
@@ -1165,10 +1322,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EnergyFrenzy = 2619672223;
 			/// <summary>
-			/// 	Defeat combatants with Scythe final blows on the Derelict Leviathan, and defeat combatants with Solar Power weapon final blows in Sever activities.
-			/// </summary>
-			public const uint HarvestatDawn = 3481772297;
-			/// <summary>
 			/// 	Complete the dungeon "The Shattered Throne."
 			/// </summary>
 			public const uint NeverAgain = 1025573696;
@@ -1193,37 +1346,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Severance = 1593928852;
 			/// <summary>
-			/// 	Calibrate close-range weapons—Sidearms, Submachine Guns, Shotguns, Glaives, and Swords—on Europa. Bonus progress for rapidly defeating combatants.
+			/// 	Complete Defiant Battleground: EDZ.
 			/// </summary>
-			public const uint CloseRangeCalibration = 749239835;
-			/// <summary>
-			/// 	Defeat targets with Bows or Linear Fusion Rifles. Bonus progress for defeating Guardians.
-			/// <para/>
-			/// 	Defeat combatants in Heist Battlegrounds with precision final blows.
-			/// <para/>
-			/// </summary>
-			public const uint PrecisionLoadout = 2561269769;
-			/// <summary>
-			/// 	Defeat targets with Pulse Rifles or Trace Rifles. Bonus progress for defeating Guardians.
-			/// <para/>
-			/// 	Rapidly defeat combatants in Heist Battlegrounds.
-			/// <para/>
-			/// </summary>
-			public const uint RapidLoadout = 2561269770;
-			/// <summary>
-			/// 	Defeat targets with Glaives. Bonus progress for defeating Guardians.
-			/// <para/>
-			/// 	Defeat combatants in Heist Battlegrounds with melee final blows.
-			/// <para/>
-			/// </summary>
-			public const uint CQCLoadout = 2561269771;
-			/// <summary>
-			/// 	Defeat targets with Machine Guns. Bonus progress for defeating Guardians.
-			/// <para/>
-			/// 	Defeat powerful combatants in Heist Battlegrounds.
-			/// <para/>
-			/// </summary>
-			public const uint HeavyLoadout = 2561269772;
+			public const uint PrisonBreaker = 3711979646;
 			/// <summary>
 			/// 	With any Pulse Rifle, defeat Guardians in the Crucible.
 			/// </summary>
@@ -1233,9 +1358,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HiveGodOptometrist = 863439158;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2656634354 = 2656634354;
+			/// <summary>
 			/// 	Complete these feats of strength before the end of the season to claim unique rewards.
 			/// </summary>
 			public const uint MomentsofTriumph2020 = 1109459264;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1164396532 = 1164396532;
 			/// <summary>
 			/// 	Complete all encounters in the "King's Fall" raid with a full fireteam of Void subclasses.
 			/// </summary>
@@ -1342,6 +1475,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint K1CommunionSoloMastery = 2317819527;
 			/// <summary>
+			/// 	Increase the Masterwork level of a weapon. 
+			/// <para/>
+			/// 	Increasing the Masterwork level of a weapon grants it an increase to the value of a specific stat. Fully Masterworking it grants additional bonuses.
+			/// <para/>
+			/// </summary>
+			public const uint MasterworkWeapons = 2893696037;
+			/// <summary>
 			/// 	Complete the Perdition Lost Sector on Legend difficulty, without a fireteam.
 			/// </summary>
 			public const uint PerditionSoloLegend = 430920723;
@@ -1368,6 +1508,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint HighSeasHighSpirits = 1152134093;
+			/// <summary>
+			/// 	Win multiple rounds in the Trials of Osiris.
+			/// </summary>
+			public const uint TrialbyFiringSquad = 1352524614;
 			/// <summary>
 			/// 	Defeat each of the Psion Flayers found within the Sundial.
 			/// </summary>
@@ -1405,6 +1549,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TriumphMaster_218258772 = 218258772;
 			/// <summary>
+			/// 	Focus each of the Season of Defiance armor engrams at the War Table in the H.E.L.M.
+			/// </summary>
+			public const uint DefiantBulwark = 1614661936;
+			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
 			public const uint Insidious = 3868889639;
@@ -1417,6 +1565,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete a journey through each branch of the Shattered Realm.
 			/// </summary>
 			public const uint AscendantExplorer = 3540465881;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3778413954 = 3778413954;
 			/// <summary>
 			/// 	Complete the "Warden of Nothing" Nightfall on Grandmaster difficulty during Season of the Seraph.
 			/// </summary>
@@ -1524,11 +1676,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Syncopation53 = 953028525;
 			public const uint WHITE = 4039163412;
+			/// <summary>
+			/// 	Exalted to all and a respected leader, their stories are of myth and legend. One would be lucky to meet one.
+			/// </summary>
+			public const uint Paragon = 650947428;
 			public const uint EGGSHELL = 4039163413;
 			/// <summary>
 			/// 	Complete all encounters in the "Spire of the Watcher" dungeon with a full fireteam of Solar subclasses.
 			/// </summary>
 			public const uint ThreeSunsatHighNoon = 1990962776;
+			/// <summary>
+			/// 	A force of nature on the battlefield and a shrewd tactical genius, one of the Vanguard's most trusted and capable agents.
+			/// </summary>
+			public const uint Exemplar = 650947429;
 			public const uint PROTECTED = 4039163414;
 			/// <summary>
 			/// 	Defeat combatants using the Fourth Horseman.
@@ -1556,10 +1716,21 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint WayfindersAccuracy = 891939870;
 			public const uint PURITY = 4039163422;
 			/// <summary>
+			/// 	Talk to Banshee-44.
+			/// <para/>
+			/// 	Banshee-44 can be found in the Courtyard in the Tower.
+			/// <para/>
+			/// </summary>
+			public const uint MeetBanshee44 = 348042572;
+			/// <summary>
 			/// 	Earn the high score in a Nightfall strike.
 			/// </summary>
 			public const uint Lightbearer = 2250745187;
 			public const uint UNBORN = 4039163423;
+			/// <summary>
+			/// 	Defeat combatants with Tangles.
+			/// </summary>
+			public const uint TangledUp = 2424963170;
 			/// <summary>
 			/// 	Increase the Resonance Rank of the Nessus Obelisk.
 			/// </summary>
@@ -1589,6 +1760,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Vaporizer = 3363051385;
 			/// <summary>
+			/// 	Complete all Lost Sectors in Neomuna.
+			/// </summary>
+			public const uint Cartographer = 14913506;
+			/// <summary>
 			/// 	Shut down an opponent's streak of 20 or more
 			/// </summary>
 			public const uint Usurper_4123151973 = 4123151973;
@@ -1596,6 +1771,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Trophies from the "Duality" dungeon.
 			/// </summary>
 			public const uint DungeonDuality = 230606415;
+			/// <summary>
+			/// 	Equip slot-specific mods on armor. 
+			/// <para/>
+			/// 	Mods add stats or minor gameplay elements when they're equipped to an active piece of gear.
+			/// <para/>
+			/// 	Each armor piece has sockets for general mods, like stat boosts, as well as slot-specific sockets and combat style mods.
+			/// <para/>
+			/// </summary>
+			public const uint ModifyArmor = 1208772718;
 			/// <summary>
 			/// 	Eliminate 3 opponents without being eliminated.
 			/// </summary>
@@ -1664,10 +1848,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete any Europa Lost Sector on Master difficulty without a fireteam.
 			/// </summary>
 			public const uint SoloLostSectorMastery = 860708386;
-			/// <summary>
-			/// 	Calibrate Pulse Rifles, Fusion Rifles, and Power Grenade Launchers. Rapidly defeating combatants and defeating Guardians will award bonus progress.
-			/// </summary>
-			public const uint SeraphsCalibration = 2717333718;
 			/// <summary>
 			/// 	Eliminate an opponent on a streak of 3 or more.
 			/// </summary>
@@ -1769,6 +1949,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BarricadeBreaker = 2117657525;
 			/// <summary>
+			/// 	Earn a score of 1400 or more in the Neomuna destination Triumphs.
+			/// </summary>
+			public const uint NeomuniSightseeing = 3703554189;
+			/// <summary>
 			/// 	In strike "Warden of Nothing," survive 10 seconds of the Warden's burn attack without dying.
 			/// </summary>
 			public const uint Crispy_3455595544 = 3455595544;
@@ -1806,11 +1990,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete all Beyond Light Triumphs.
 			/// </summary>
 			public const uint BeyondLight = 2482004751;
-			public const uint VIIIGILDEDKNIVES = 3500943094;
 			/// <summary>
-			/// 	Defeat targets with Trace Rifles, Glaives, and Linear Fusion Rifles in Gambit. Bonus progress for defeating invading Guardians.
+			/// 	Collect Legendary Shards.
+			/// <para/>
+			/// 	Legendary Shards are found when dismantling Legendary gear. You can exchange Legendary Shards at vendors to receive a variety of goods.
+			/// <para/>
 			/// </summary>
-			public const uint DowntoSize = 3253065036;
+			public const uint LegendaryShards = 192650510;
+			/// <summary>
+			/// 	Purchase weapons from Banshee-44.
+			/// <para/>
+			/// 	Banshee-44's inventory of weapons rotates weekly.
+			/// <para/>
+			/// </summary>
+			public const uint ArmingUp = 2509417424;
+			public const uint VIIIGILDEDKNIVES = 3500943094;
 			/// <summary>
 			/// 	Defeat combatants with Dawning weapons.
 			/// </summary>
@@ -1848,6 +2042,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint AltarsofSorrowSorrowsBane = 2508342955;
 			public const uint IACCEPTANCE = 3500943103;
 			/// <summary>
+			/// 	Defeat Champions or bosses in the Defiant Battlegrounds playlist.
+			/// </summary>
+			public const uint BigGameBanisher = 3719111793;
+			/// <summary>
 			/// 	Defeat the Sanctified Mind after destroying 20 combatants with Vex Instantiation.
 			/// </summary>
 			public const uint StopHittingYourself = 3949104239;
@@ -1855,6 +2053,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Earn any of the 3 ornaments for Veles-X.
 			/// </summary>
 			public const uint VersatileVeles = 291542986;
+			/// <summary>
+			/// 	Focus each of the Season of Defiance weapon engrams at the War Table in the H.E.L.M.
+			/// </summary>
+			public const uint DefiantFocusing = 3145755846;
 			public const uint ACautionaryTale = 4125448802;
 			public const uint SayItwithaDawningGift = 4125448803;
 			/// <summary>
@@ -1906,13 +2108,17 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LightningStrike = 2829128988;
 			public const uint ExtendedFamily = 4125448815;
 			/// <summary>
+			/// 	Defeat powerful combatants in Gambit. Earn bonus progress for defeating high-value targets.
+			/// </summary>
+			public const uint HighValueHunter = 2011561637;
+			/// <summary>
 			/// 	Trophies hidden in the depths of the Dreaming City.
 			/// </summary>
 			public const uint DestinationsDreamingCity_2845546152 = 2845546152;
 			/// <summary>
-			/// 	Calibrate mid-range weapons—Hand Cannons, Glaives, Auto Rifles, Fusion Rifles, Machine Guns—in the Cosmodrome. Bonus progress for rapidly defeating combatants.
+			/// 	Neutralize all Apogee Repeaters in Límíng Harbor.
 			/// </summary>
-			public const uint MidRangeCalibration = 2643414079;
+			public const uint HarborRepeaters = 3460027838;
 			/// <summary>
 			/// 	Earn Trials rewards from Saint-14.
 			/// </summary>
@@ -1921,6 +2127,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	In a single life, defeat two opponents with a Fusion Rifle.
 			/// </summary>
 			public const uint ColdFusion = 1463572369;
+			/// <summary>
+			/// 	Complete the "HyperNet Current" Nightfall on Grandmaster difficulty during Season of Defiance.
+			/// </summary>
+			public const uint GrandmasterHyperNetCurrent = 3233500595;
 			/// <summary>
 			/// 	Complete the activity "Harbinger" 3/5/10 times.
 			/// </summary>
@@ -1949,6 +2159,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	As a fireteam, deposit 60 Motes at once during any match of Gambit.
 			/// </summary>
 			public const uint InSync = 3581224713;
+			/// <summary>
+			/// 	On Europa, earn progress by completing bounties, patrols, public events, and Lost Sectors.
+			/// </summary>
+			public const uint EuropaActivities = 3806440203;
 			/// <summary>
 			/// 	During Season 11, reach the "Legend" Crucible Rank and reset it.
 			/// </summary>
@@ -1998,6 +2212,18 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HandtoHand = 1114617101;
 			/// <summary>
+			/// 	Earn any of the 3 ornaments for Ecliptic Distaff.
+			/// </summary>
+			public const uint Handspun = 1733477289;
+			/// <summary>
+			/// 	Complete any campaign mission on Master difficulty, solo, flawlessly.
+			/// </summary>
+			public const uint LoneWolf = 379668307;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3828113377 = 3828113377;
+			/// <summary>
 			/// 	Trophies from the "King's Fall" raid.
 			/// </summary>
 			public const uint KingsFall_4268824781 = 4268824781;
@@ -2023,17 +2249,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PathofLeastResistance = 1506999309;
 			/// <summary>
+			/// 	Calibrate close-range weapons—Sidearms, Submachine Guns, Shotguns, Glaives, and Swords—in the Cosmodrome. Bonus progress for rapidly defeating combatants.
+			/// </summary>
+			public const uint CloseRangeCalibration = 2908761450;
+			/// <summary>
 			/// 	Complete all raid encounters with a fireteam made entirely of Void subclasses.
 			/// </summary>
 			public const uint NightOwl = 2826160801;
 			/// <summary>
-			/// 	Defeat targets with Void or Stasis effects. Bonus progress for defeating invading Guardians.
-			/// </summary>
-			public const uint IcySingularity = 2539637278;
-			/// <summary>
 			/// 	Elimination: In a single round, eliminate all opponents without any assistance from your teammates.
 			/// </summary>
 			public const uint ProcessofElimination = 1758082913;
+			/// <summary>
+			/// 	Acquire Favors of Zeal in a Season of Defiance activity.
+			/// </summary>
+			public const uint ZealAppeal = 2089076478;
 			/// <summary>
 			/// 	Elimination: As a team, win a round in which each player eliminates a different opponent and no opponent is revived.
 			/// </summary>
@@ -2043,6 +2273,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IKELOS_SR_v103 = 622035212;
 			public const uint H493710961 = 493710961;
+			/// <summary>
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
+			/// </summary>
+			public const uint RoundRobin_2839479882 = 2839479882;
 			/// <summary>
 			/// 	Open the chest upon defeating Savathûn's Executioners.
 			/// </summary>
@@ -2085,6 +2319,15 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Entries92939495 = 1707591320;
 			public const uint Entries99100101 = 1707591321;
 			/// <summary>
+			/// 	Commend other players in a Nightfall activity.
+			/// <para/>
+			/// 	You can give other players commendations during the Mission Summary.
+			/// <para/>
+			/// 	You can bring up the Mission Summary early by pressing  [Back] during the end-of-mission countdown.
+			/// <para/>
+			/// </summary>
+			public const uint GivingGratitude_1559344422 = 1559344422;
+			/// <summary>
 			/// 	Reset your vendor rank with the Exo Frame.
 			/// </summary>
 			public const uint FrameReboot = 862888875;
@@ -2092,14 +2335,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	In Season 8, defeat combatants on Earth's Moon using Arc abilities.
 			/// </summary>
 			public const uint CraterSpark = 321789703;
-			/// <summary>
-			/// 	Unlock the Pattern for any Seasonal or IKELOS v1.0.3 weapon.
-			/// </summary>
-			public const uint SeasonalShapingI = 1737340997;
-			/// <summary>
-			/// 	Earn levels with Shaped Seasonal or IKELOS v1.0.3 weapons.
-			/// </summary>
-			public const uint SeasonalShapingII = 1737340998;
 			/// <summary>
 			/// 	Defeat opposing Guardians in any activity.
 			/// </summary>
@@ -2116,13 +2351,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TreasureTrove = 628370196;
 			/// <summary>
-			/// 	Calibrate long-range weapons—Pulse Rifles, Bows, Trace Rifles—on the Moon. Bonus progress in Lost Sectors.
-			/// </summary>
-			public const uint LongRangeCalibration = 2197522881;
-			/// <summary>
 			/// 	Travel to Twilight Gap and collect the materials required to repair Devil's Ruin.
 			/// </summary>
 			public const uint DevilsRuin = 1387544045;
+			/// <summary>
+			/// 	Earn the Crucible ornament for Ecliptic Distaff.
+			/// </summary>
+			public const uint CrucibleDecorEclipticDistaff = 1383447590;
 			/// <summary>
 			/// 	With any Bow, land final blows, precision final blows, and long-range final blows against Guardians in the Crucible. Earn the medal "My Bowfriend's Back."
 			/// </summary>
@@ -2141,6 +2376,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat combatants while using Grand Overture.
 			/// </summary>
 			public const uint GrandOvertureCatalyst = 263158944;
+			/// <summary>
+			/// 	Increase your commendation score to 1750 or higher.
+			/// <para/>
+			/// 	Activities that require building your own fireteam or are designed to be longer grant more for your score per commendation.
+			/// <para/>
+			/// </summary>
+			public const uint Respected = 671994114;
 			/// <summary>
 			/// 	Witness the final events of the Season of the Splicer.
 			/// </summary>
@@ -2177,6 +2419,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Rapidly defeat 2 opposing Guardians.
 			/// </summary>
 			public const uint DoubleQuick = 2467978494;
+			/// <summary>
+			/// 	Complete the "Desperate Measures" mission on any difficulty.
+			/// </summary>
+			public const uint DesperateMeasures = 2053976875;
 			/// <summary>
 			/// 	Earn the Crucible ornament for Chain of Command.
 			/// </summary>
@@ -2227,6 +2473,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LegendaryAlignment = 1196094162;
 			/// <summary>
+			/// 	Increase the number of Exotic weapons in your collection.
+			/// </summary>
+			public const uint ExoticArsenal_3087438628 = 3087438628;
+			/// <summary>
 			/// 	Complete "A Garden World" Nightfall on Grandmaster difficulty during Season of Arrivals.
 			/// </summary>
 			public const uint GrandmasterAGardenWorld = 2252813903;
@@ -2235,6 +2485,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BankTHIS = 4283831816;
 			/// <summary>
+			/// 	Collect Exotic armor.
+			/// </summary>
+			public const uint ExoticArmorer = 3087438629;
+			/// <summary>
 			/// 	Number of Gambit Rank resets this Season.
 			/// </summary>
 			public const uint Infamous = 1535898464;
@@ -2242,6 +2496,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the "Lake of Shadows" Nightfall on Grandmaster difficulty during Season of Arrivals.
 			/// </summary>
 			public const uint GrandmasterLakeofShadows_349314384 = 349314384;
+			/// <summary>
+			/// 	Claim a Title.
+			/// <para/>
+			/// 	Titles represent collections of completed Triumphs that symbolize your expertise as a Guardian. Equip Titles to display your exploits for all to see!
+			/// <para/>
+			/// 	Learn more about the requirements of specific Titles from the Titles subscreen found in the Journey screen.
+			/// <para/>
+			/// </summary>
+			public const uint Titles_3087438630 = 3087438630;
 			/// <summary>
 			/// 	Complete the Dead Man's Tale catalyst quest.
 			/// </summary>
@@ -2252,9 +2515,20 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint JoldersVictory = 2096302465;
 			public const uint Liberated = 1315012242;
 			/// <summary>
-			/// 	Complete Crucible matches in the Competitive playlist. Earn bonus progress for wins.
+			/// 	In Neomuna, collect and place four action figures.
 			/// </summary>
-			public const uint FleetingGlory = 3440042683;
+			public const uint TheFullSet = 2338136579;
+			/// <summary>
+			/// 	Collect Exotic weapons.
+			/// </summary>
+			public const uint ExoticWeapons = 3643061202;
+			/// <summary>
+			/// 	Complete the New Light quest, "A Guardian Rises."
+			/// <para/>
+			/// 	"A Guardian Rises" teaches you the basics of playing Destiny 2.
+			/// <para/>
+			/// </summary>
+			public const uint TheVanguard = 3548721858;
 			/// <summary>
 			/// 	Defeat combatants with Solar abilities.
 			/// </summary>
@@ -2271,6 +2545,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Control: As a team, defeat all opposing Guardians at least once during a single Power Play.
 			/// </summary>
 			public const uint PowerOverwhelming = 1158326207;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_154855905 = 154855905;
 			public const uint Tainted = 258126864;
 			public const uint Isolated = 258126865;
 			public const uint Defiant = 258126866;
@@ -2308,9 +2586,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OutbreakPerfectedCatalyst = 591600693;
 			/// <summary>
+			/// 	Complete "First Contact."
+			/// <para/>
+			/// 	"First Contact" can be found on Neptune in the Destinations tab of the Director.
+			/// <para/>
+			/// </summary>
+			public const uint FirstContact_197490384 = 197490384;
+			/// <summary>
 			/// 	Complete the exotic quest "As the Crow Flies".
 			/// </summary>
 			public const uint MigratoryPatterns = 4205323169;
+			/// <summary>
+			/// 	Complete mission "Headlong: Time Trial" in under 1 minute 30 seconds.
+			/// </summary>
+			public const uint MissionHeadlongTimeTrialPlatinum = 2781511814;
 			/// <summary>
 			/// 	With any Hand Cannon, defeat Guardians in the Crucible and land precision final blows. Earn the medal "Hawkeye."
 			/// </summary>
@@ -2334,6 +2623,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PowerSpree = 2187328865;
 			/// <summary>
+			/// 	Complete the "Unfinished Business" quest from Nimbus in Striders' Gate in Neomuna.
+			/// </summary>
+			public const uint UnfinishedBusiness = 1014798089;
+			/// <summary>
 			/// 	Complete all encounters in the "Spire of the Watcher" dungeon with a full fireteam of the same class.
 			/// </summary>
 			public const uint OneClassTown = 395235013;
@@ -2341,6 +2634,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Present gifts to the visitors in the missions "Broken Courier," "The Oracle Engine," and "Dark Monastery."
 			/// </summary>
 			public const uint RememberYourManners = 722270911;
+			/// <summary>
+			/// 	Complete public events in the EDZ.
+			/// <para/>
+			/// 	Public events can be found on the destination's map. You can add a waypoint to a public event to find the closest landing zone.
+			/// <para/>
+			/// 	When the public event is completed, a chest of rewards will spawn.
+			/// <para/>
+			/// </summary>
+			public const uint EDZPublicEvents = 2454534137;
 			/// <summary>
 			/// 	Complete a time trial run of Tier III in the Reckoning.
 			/// </summary>
@@ -2350,37 +2652,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MunitionsVarietyPack = 2790931445;
 			/// <summary>
-			/// 	In the Heist Battlegrounds playlist, complete heists and defeat Deathtongue Choristers.
+			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
-			public const uint HeistBattlegroundsII = 2273484264;
+			public const uint Classified_2084487708 = 2084487708;
 			/// <summary>
 			/// 	Purchase all 12 Dawning upgrades from Eva with Dawning Spirit.
 			/// </summary>
 			public const uint ShoppingSpree = 4037726701;
 			/// <summary>
-			/// 	In the Heist Battlegrounds playlist, complete heists and breach submind vaults without alerting Wrathborn reinforcements.
-			/// </summary>
-			public const uint HeistBattlegroundsIII = 2273484265;
-			/// <summary>
-			/// 	In the Heist Battlegrounds playlist or Legend Heist Battlegrounds, open Seraph Chests and defeat powerful Hive combatants.
-			/// </summary>
-			public const uint HeistBattlegroundsI = 2273484267;
-			/// <summary>
-			/// 	In the Heist Battlegrounds playlist, complete heists and defeat combatants with Season of the Seraph or IKELOS weapons.
-			/// </summary>
-			public const uint HeistBattlegroundsVI = 2273484268;
-			/// <summary>
 			/// 	Rapidly defeat 6 opposing Guardians.
 			/// </summary>
 			public const uint SixFronts = 2535088810;
 			/// <summary>
-			/// 	In the Heist Battlegrounds playlist, complete Heists and defeat Champions.
+			/// 	Calibrate marksman weapons—Scout Rifles, Sniper Rifles, and Linear Fusion Rifles—by landing precision final blows. Bonus progress against Guardians.
 			/// </summary>
-			public const uint HeistBattlegroundsIV = 2273484270;
-			/// <summary>
-			/// 	In the Heist Battlegrounds playlist or Legend Heist Battlegrounds, open Seraph Chests and defeat Deathtongue Choristers before they can channel Xivu Arath's battlesong.
-			/// </summary>
-			public const uint HeistBattlegroundsV = 2273484271;
+			public const uint PrecisionCalibration = 1223493460;
 			/// <summary>
 			/// 	Deliver cookies to Vanguard leaders during the Dawning 2021.
 			/// </summary>
@@ -2434,10 +2720,18 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete all Guardian Games Triumphs.
 			/// </summary>
 			public const uint ConsummateCompetitor = 2994375311;
+			public const uint Gwinnith = 1699761222;
+			public const uint Hazeema = 1699761223;
+			public const uint Magnolia = 1699761224;
+			public const uint Rihk = 1699761225;
+			public const uint Cais = 1699761226;
+			public const uint Adinew = 1699761227;
+			public const uint Sehrish = 1699761228;
 			/// <summary>
 			/// 	Finish a Guardian Games playlist activity without anyone in your fireteam dying.
 			/// </summary>
 			public const uint FlawlessFireteam = 220470888;
+			public const uint Tino = 1699761229;
 			/// <summary>
 			/// 	In the Vex Offensive, land precision final blows with Hand Cannons and Bows.
 			/// </summary>
@@ -2446,6 +2740,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat targets using Ticuu's Divination.
 			/// </summary>
 			public const uint TicuusDivinationCatalyst = 1833569807;
+			public const uint MrChe = 1699761231;
 			/// <summary>
 			/// 	Complete all Season of Opulence Triumphs.
 			/// </summary>
@@ -2454,6 +2749,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Deliver cookies to competitive allies during the Dawning 2021.
 			/// </summary>
 			public const uint CookieDeliveryCompetitive = 3175138681;
+			/// <summary>
+			/// 	Complete a Legend Lost Sector solo without dying.
+			/// </summary>
+			public const uint FlawlessSoloLegendary = 3940929532;
 			/// <summary>
 			/// 	Defeat an opponent with Shadowshot at a distance greater than 30 meters.
 			/// </summary>
@@ -2508,6 +2807,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GuardianoftheLighthouse_955580899 = 955580899;
 			/// <summary>
+			/// 	Defeat Hive combatants in Vanguard playlists or strikes. Earn bonus progress for defeating tougher combatants.
+			/// </summary>
+			public const uint HiveSlayer_183764007 = 183764007;
+			/// <summary>
 			/// 	Complete the weekly missions for Path of the Splicer VIII.
 			/// </summary>
 			public const uint PathoftheSplicerVIII = 3391413630;
@@ -2524,6 +2827,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AgersScepterClaimed = 4174857293;
 			/// <summary>
+			/// 	Neutralize all Apogee Repeaters in Zephyr Concourse.
+			/// </summary>
+			public const uint ConcourseRepeaters = 1903079754;
+			/// <summary>
 			/// 	Increase your Season Rank during Season of the Lost.
 			/// </summary>
 			public const uint LostandWayfinding = 1193340946;
@@ -2535,6 +2842,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Win an Iron Banner match after having trailed by a significant margin.
 			/// </summary>
 			public const uint AboutFace = 2928272465;
+			/// <summary>
+			/// 	Defeat targets while using Quicksilver Storm.
+			/// </summary>
+			public const uint QuicksilverStormCatalyst = 2618920720;
 			/// <summary>
 			/// 	Forge all Black Armory weapon types in the EDZ forges.
 			/// </summary>
@@ -2572,6 +2883,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VaultofGlass_3114569402 = 3114569402;
 			/// <summary>
+			/// 	Complete all Partitions.
+			/// </summary>
+			public const uint DiskCleanup = 145839363;
+			/// <summary>
+			/// 	Complete Vanguard Ops.
+			/// <para/>
+			/// 	Navigate to the Vanguard destination in the Director and find the Vanguard Ops playlist and launch.
+			/// <para/>
+			/// </summary>
+			public const uint VanguardOps = 3566925483;
+			/// <summary>
+			/// 	Complete the "Prophecy" dungeon.
+			/// </summary>
+			public const uint Prophecy = 2693744836;
+			/// <summary>
 			/// 	Complete all encounter challenges in "Vault of Glass" on Master difficulty.
 			/// </summary>
 			public const uint MaestroGlasser = 3790077074;
@@ -2588,6 +2914,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TripwireCanary = 204031420;
 			/// <summary>
+			/// 	Purchase Aspects from Ikora Rey.
+			/// <para/>
+			/// 	Aspects are powerful ingredients in your Guardian's build. You can purchase Aspects for Light subclasses from Ikora Rey.
+			/// <para/>
+			/// 	You can find Ikora Rey at the Bazaar in the Tower.
+			/// <para/>
+			/// </summary>
+			public const uint PurchaseAspects = 314196961;
+			/// <summary>
 			/// 	Trophies from the battlefields of the Red War.
 			/// </summary>
 			public const uint DestinationsRedWar_131593566 = 131593566;
@@ -2600,13 +2935,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ImNotSuperstitious = 3308790635;
 			/// <summary>
-			/// 	Complete the With Both Hands challenge.
-			/// </summary>
-			public const uint WithBothHands = 3308790636;
-			/// <summary>
 			/// 	Collect the DSC Repository in Nexus.
 			/// </summary>
 			public const uint AugmentNexus = 547802351;
+			/// <summary>
+			/// 	Complete the With Both Hands challenge.
+			/// </summary>
+			public const uint WithBothHands = 3308790636;
 			/// <summary>
 			/// 	Complete the Total Victory challenge.
 			/// </summary>
@@ -2620,9 +2955,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ExodusEvacuation = 3628900617;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_569417312 = 569417312;
+			/// <summary>
 			/// 	Complete the Exotic quest "Exodus: Preparation."
 			/// </summary>
 			public const uint ExodusPreparation = 3628900618;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_569417313 = 569417313;
 			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
@@ -2632,10 +2975,26 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BorealisCatalyst = 663317912;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_569417315 = 569417315;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_569417316 = 569417316;
+			/// <summary>
 			/// 	Complete each Heist Battleground in under 12 minutes.
 			/// </summary>
 			public const uint TheyllNeverKnowWeWereThere = 2103438983;
 			public const uint H1202782985 = 1202782985;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_569417318 = 569417318;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_569417319 = 569417319;
 			/// <summary>
 			/// 	Defeat Guardians in the Crucible with final blows from Trace Rifles.
 			/// </summary>
@@ -2697,6 +3056,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GazeAmaze = 2840536766;
 			/// <summary>
+			/// 	Score points in Rift. Bonus progress is awarded for igniting the Rift.
+			/// </summary>
+			public const uint SparkDefender = 505629050;
+			/// <summary>
 			/// 	Complete the "Looping Catalyst" challenge.
 			/// </summary>
 			public const uint LoopingCatalyst = 990479197;
@@ -2744,6 +3107,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the Bay of Drowned Wishes Lost Sector on Master difficulty, solo, flawlessly.
 			/// </summary>
 			public const uint BayofDrownedWishesFlawlessSoloMastery = 3847481245;
+			/// <summary>
+			/// 	Complete a Grandmaster Nightfall with a score of {var:3329253883} or more.
+			/// </summary>
+			public const uint ScoringGrandmaster = 2654136898;
 			/// <summary>
 			/// 	Defeat two opponents with long range, precision Sniper Rifle final blows without switching weapons or reloading.
 			/// </summary>
@@ -2821,6 +3188,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MeltedGlass = 2592913942;
 			/// <summary>
+			/// 	Increase your reputation level with the War Table.
+			/// <para/>
+			/// 	The War Table can be found in the HE.L.M. Rank up the War Table by completing Seasonal bounties, activities, and quests.
+			/// <para/>
+			/// </summary>
+			public const uint WarTableRanks = 3726481390;
+			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
 			public const uint UnderYourSkin = 930979915;
@@ -2832,6 +3206,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint OurSmallSteps = 2990296945;
 			public const uint TheFirstDisappearance = 2990296946;
 			public const uint AGrimAssessment = 2990296947;
+			/// <summary>
+			/// 	Complete any Neomuna Lost Sector on Master difficulty.
+			/// </summary>
+			public const uint MasteroftheDigitalFrontier = 3779113009;
 			public const uint TimeLapse = 2990296948;
 			/// <summary>
 			/// 	Complete activities in the Haunted Sector playlist.
@@ -2844,16 +3222,16 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SeasonPassRank = 4169722307;
 			public const uint TheExpedition = 2990296950;
 			public const uint Suspicions = 2990296951;
-			public const uint Uprising = 2990296952;
 			/// <summary>
 			/// 	Complete The Quarry Lost Sector on Legend difficulty, without a fireteam.
 			/// </summary>
 			public const uint TheQuarrySoloLegend = 549937976;
+			public const uint Uprising = 2990296952;
 			/// <summary>
 			/// 	Defeat targets using Dead Messenger.
 			/// </summary>
 			public const uint DeadMessengerCatalyst = 1163649614;
-			public const uint Downfall = 2990296953;
+			public const uint Downfall_2990296953 = 2990296953;
 			/// <summary>
 			/// 	Loot hidden chests in the "Scourge of the Past" raid 5 times.
 			/// </summary>
@@ -2892,6 +3270,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Collect Vestiges of Dread.
 			/// </summary>
 			public const uint NightmareRemains = 4188570492;
+			/// <summary>
+			/// 	Complete the "Deep Stone Crypt" raid.
+			/// </summary>
+			public const uint DeepStoneCrypt_88999500 = 88999500;
 			/// <summary>
 			/// 	Defeat combatants using Cryosthesia 77K.
 			/// </summary>
@@ -2933,6 +3315,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PlunderedWeaponFocus = 1247414319;
 			/// <summary>
+			/// 	Reach Rank 12 with Nimbus in Neomuna.
+			/// </summary>
+			public const uint SilverLining = 808672798;
+			/// <summary>
 			/// 	Without dying, defeat 10 combatants with long-range weapons: Scout Rifles, Bows, Sniper Rifles, or Linear Fusion Rifles.
 			/// </summary>
 			public const uint EagleEye = 4230752814;
@@ -2945,9 +3331,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ScoutRifleAptitude = 2406724529;
 			/// <summary>
+			/// 	Defeat combatants in Vanguard playlists or strikes while using a Sword, Bow, or Glaive.
+			/// </summary>
+			public const uint ElegantWeaponry = 1378438216;
+			/// <summary>
 			/// 	In the "Ambush" step of the Warrior Empire Hunt, while in a fireteam of 3, defeat Elenax, Salvation Elite.
 			/// </summary>
 			public const uint PlatoonAmbush = 3013438617;
+			/// <summary>
+			/// 	Access the hidden cannonball data.
+			/// </summary>
+			public const uint DataRetrievalCannonball = 3023802873;
 			/// <summary>
 			/// 	Forge weapons from research frames and Black Armory frames
 			/// </summary>
@@ -2968,6 +3362,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ProphecyDungeonSoloFlawless = 3191784400;
 			public const uint Nessus3 = 2791992778;
 			public const uint Nessus2 = 2791992779;
+			/// <summary>
+			/// 	Complete Crucible matches in the Competitive playlist. Earn bonus progress for wins.
+			/// </summary>
+			public const uint FleetingGlory = 2232045435;
 			/// <summary>
 			/// 	Steal Calus's repressed memories.
 			/// </summary>
@@ -3020,6 +3418,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SidearmMastery_1002450834 = 1002450834;
 			/// <summary>
+			/// 	Complete a Defiant Battleground on Legend difficulty.
+			/// </summary>
+			public const uint LegendaryDefiance_941769578 = 941769578;
+			/// <summary>
 			/// 	Complete Sever - Grief.
 			/// </summary>
 			public const uint SeverGrief = 229989259;
@@ -3048,56 +3450,22 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DivisionDebut = 193233095;
 			/// <summary>
-			/// 	Complete Week 2 of "More Than a Weapon."
+			/// 	Increase your Power to the soft cap of {var:2579032523}.
+			/// <para/>
+			/// 	There are three different Power caps: soft, powerful, and pinnacle.
+			/// <para/>
+			/// 	Before you reach the soft cap, any new gear you acquire may increase your Power.
+			/// <para/>
 			/// </summary>
-			public const uint MoreThanaWeaponII = 2766545544;
+			public const uint SoftCap = 427930870;
 			/// <summary>
 			/// 	Clear all three Seraph Bunkers in a day.
 			/// </summary>
 			public const uint AlgorithmEfficiency = 2895711472;
 			/// <summary>
-			/// 	Complete Week 3 of "More Than a Weapon."
-			/// <para/>
-			/// 	Defeat Hive and Fallen combatants anywhere in the system.
-			/// <para/>
+			/// 	Reset your Reputation Rank at the War Table in the H.E.L.M.
 			/// </summary>
-			public const uint MoreThanaWeaponIII = 2766545545;
-			/// <summary>
-			/// 	Complete Week 1 of "More Than a Weapon."
-			/// </summary>
-			public const uint MoreThanaWeaponI = 2766545547;
-			/// <summary>
-			/// 	Complete Week 6 of "More Than a Weapon."
-			/// <para/>
-			/// 	Defeat powerful Hive and Fallen combatants anywhere in the system. Bonus progress for defeating them in Heist Battlegrounds and the Exotic mission "Operation: Seraph's Shield."
-			/// <para/>
-			/// </summary>
-			public const uint MoreThanaWeaponVI = 2766545548;
-			/// <summary>
-			/// 	Complete Week 7 of "More Than a Weapon."
-			/// <para/>
-			/// 	Defeat Hive and Fallen bosses anywhere in the system. Bonus progress for defeating them in Heist Battlegrounds and the Exotic mission "Operation: Seraph's Shield."
-			/// <para/>
-			/// </summary>
-			public const uint MoreThanaWeaponVII = 2766545549;
-			/// <summary>
-			/// 	Complete any Nightfall strike on Grandmaster.
-			/// </summary>
-			public const uint Grandmaster_1374713405 = 1374713405;
-			/// <summary>
-			/// 	Complete Week 4 of "More Than a Weapon."
-			/// <para/>
-			/// 	Defeat Hive and Scorn combatants anywhere in the system.
-			/// <para/>
-			/// </summary>
-			public const uint MoreThanaWeaponIV = 2766545550;
-			/// <summary>
-			/// 	Complete Week 5 of "More Than a Weapon."
-			/// <para/>
-			/// 	Defeat Hive and Taken combatants anywhere in the system.
-			/// <para/>
-			/// </summary>
-			public const uint MoreThanaWeaponV = 2766545551;
+			public const uint CleartheTable = 3465499266;
 			/// <summary>
 			/// 	Earn Vanguard Medals of any kind during Guardian Games playlist activities.
 			/// </summary>
@@ -3118,6 +3486,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Win matches in any playlist with a full fireteam.
 			/// </summary>
 			public const uint FullHouse = 3857411382;
+			/// <summary>
+			/// 	Complete a Defiant Battlegrounds playlist activity without dying.
+			/// </summary>
+			public const uint DeathDefying = 797937034;
 			public const uint H2077723304 = 2077723304;
 			/// <summary>
 			/// 	Defeat two or more opponents with a single rocket.
@@ -3140,9 +3512,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Slayer = 2480662264;
 			/// <summary>
+			/// 	Defeat Guardians in Crucible. Bonus progress is granted for opponents defeated with Strand, Solar, and Void ability final blows.
+			/// </summary>
+			public const uint UnravelingtheSun = 1910108909;
+			/// <summary>
 			/// 	Rumble: In a single life, defeat each opposing player at least once.
 			/// </summary>
-			public const uint RoundRobin = 1830798855;
+			public const uint RoundRobin_1830798855 = 1830798855;
 			/// <summary>
 			/// 	Forge all Black Armory weapon types in the Nessus forges.
 			/// </summary>
@@ -3151,6 +3527,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Exotic trophies from the Red War.
 			/// </summary>
 			public const uint ExoticsRedWar = 1082441448;
+			/// <summary>
+			/// 	Achieve a commendation score of 5000.
+			/// <para/>
+			/// 	Leadership commendations from difficult activities provide the most progress to your commendation score.
+			/// <para/>
+			/// </summary>
+			public const uint Cherished = 906490873;
 			/// <summary>
 			/// 	A cache of data awaits discovery in the Overlook.
 			/// </summary>
@@ -3180,6 +3563,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PlancksStride = 3257403871;
 			/// <summary>
+			/// 	Complete all side quests from Nimbus in Striders' Gate in Neomuna.
+			/// </summary>
+			public const uint CitizenoftheYear = 272417846;
+			/// <summary>
 			/// 	Rapidly defeat multiple enemies tethered from a single Shadowshot Super.
 			/// </summary>
 			public const uint Ensnarement = 147433438;
@@ -3205,10 +3592,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AMysteriousDisturbance = 2636815577;
 			/// <summary>
-			/// 	Reach Power Level {var:4112892655} by earning powerful rewards and Prime Engrams.
-			/// </summary>
-			public const uint PowerBroker = 1167746230;
-			/// <summary>
 			/// 	Rumble: Win a match with a score greater than or equal to the sum of all opponents' scores.
 			/// </summary>
 			public const uint TheSumofAllTears = 3454861973;
@@ -3220,6 +3603,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete this lore book.
 			/// </summary>
 			public const uint GhostStories = 927774556;
+			/// <summary>
+			/// 	Complete the "Learning Light" quest.
+			/// <para/>
+			/// 	The "Learning Light" quest allows you to increase the customizability of your Light subclasses.
+			/// <para/>
+			/// 	Continue the "Learning Light" quest in the Cosmodrome.
+			/// <para/>
+			/// </summary>
+			public const uint LearningLight = 1321267041;
+			/// <summary>
+			/// 	Resurrect your fellow Guardians in the midst of Terminal Overload.
+			/// </summary>
+			public const uint EmergencyRezcue = 674461421;
 			/// <summary>
 			/// 	Complete all raid encounters with a fireteam made entirely of Arc subclasses.
 			/// </summary>
@@ -3286,9 +3682,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SunshotCatalyst = 2940589008;
 			/// <summary>
+			/// 	Complete patrols in Neomuna.
+			/// <para/>
+			/// 	Heroic patrols grant additional progress.
+			/// <para/>
+			/// </summary>
+			public const uint NeighborhoodWatch = 2742763809;
+			/// <summary>
 			/// 	Complete a mission in the Battlegrounds playlist in under 10 minutes.
 			/// </summary>
 			public const uint ProvenCelerity = 4051928151;
+			/// <summary>
+			/// 	Complete a Partition within 7 minutes.
+			/// </summary>
+			public const uint Overclocked = 3071787496;
 			public const uint Moment = 160810758;
 			public const uint Dues = 160810760;
 			public const uint Death = 160810761;
@@ -3323,6 +3730,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint RememberingtheForgotten14 = 2068997712;
+			/// <summary>
+			/// 	Complete Seasonal Challenges.
+			/// </summary>
+			public const uint SeasonalChallenges_2791854132 = 2791854132;
 			/// <summary>
 			/// 	Rapidly eliminate 3 opponents.
 			/// </summary>
@@ -3440,13 +3851,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint StrikerSpecial = 320469561;
 			public const uint Europa3 = 2825548050;
-			/// <summary>
-			/// 	Complete Gambit matches. Earn bonus progress for wins.
-			/// </summary>
-			public const uint DredginUpVictory = 4222573516;
 			public const uint Europa2 = 2825548051;
 			/// <summary>
-			/// 	Earn the Dawning 2022 Seal.
+			/// 	Earn the Dawning 2022 Title.
 			/// </summary>
 			public const uint StarBaker = 2907042883;
 			public const uint Europa5 = 2825548052;
@@ -3492,6 +3899,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HeavyMachineGunAptitude = 3679329876;
 			/// <summary>
+			/// 	Increase your Power to the powerful cap of {var:4112892655}.
+			/// <para/>
+			/// 	Tracks the Power granted from your gear and excludes the Artifact Power bonus. The Power tooltip in the Character screen will display your current gear Power.
+			/// <para/>
+			/// </summary>
+			public const uint PowerfulCap = 1563745913;
+			/// <summary>
 			/// 	Complete the "Rift Generator" public event with the Generator Core at 100% integrity.
 			/// </summary>
 			public const uint GoodasNew = 125012719;
@@ -3528,6 +3942,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PowerRampage = 413340486;
 			/// <summary>
+			/// 	Acquire every weapon from the Season of Defiance.
+			/// </summary>
+			public const uint DefiantArsenal = 2522562634;
+			/// <summary>
 			/// 	Complete the "Inverted Spire" Nightfall on Grandmaster difficulty during Season of the Hunt.
 			/// </summary>
 			public const uint GrandmasterInvertedSpire = 3716806862;
@@ -3536,10 +3954,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GoldTierAchieved = 2940732344;
 			public const uint TheWager = 375908292;
-			/// <summary>
-			/// 	Complete a Lost Sector on Legend or higher.
-			/// </summary>
-			public const uint LostintheLegend = 325506226;
 			public const uint Patternfall = 375908293;
 			public const uint H1464034190 = 1464034190;
 			/// <summary>
@@ -3556,9 +3970,24 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IntheHotSeat_606549906 = 606549906;
 			public const uint TheFirstKnife = 375908297;
+			/// <summary>
+			/// 	Complete the "Last Wish" raid.
+			/// </summary>
+			public const uint LastWish = 2899839432;
 			public const uint TheCambrianExplosion = 375908298;
+			/// <summary>
+			/// 	Spend Defiant Engrams at the War Table in exchange for gear rewards.
+			/// </summary>
+			public const uint EngrammaticallyCorrect = 4284826245;
 			public const uint T0 = 375908299;
 			public const uint GardenerandWinnower = 375908300;
+			/// <summary>
+			/// 	Complete the quest "Unfinished Business."
+			/// <para/>
+			/// 	Also, defeat combatants throughout Neomuna with precision final blows. Bonus progress awarded for using Machine Guns.
+			/// <para/>
+			/// </summary>
+			public const uint RohansLegacy = 2401168790;
 			/// <summary>
 			/// 	Stoke even more flames in the Bonfire Bash.
 			/// </summary>
@@ -3595,13 +4024,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TriplePlay = 2581327754;
 			/// <summary>
-			/// 	Return the eighth relic to the H.E.L.M.
-			/// <para/>
-			/// 	Also, defeat Champions across the system. Champions defeated in Ketchcrash and Expedition will award bonus progress.
-			/// <para/>
-			/// </summary>
-			public const uint AntiquarianVIII = 2080015681;
-			/// <summary>
 			/// 	Reset your Crucible Rank across all Seasons.
 			/// </summary>
 			public const uint Prestigious = 3270584291;
@@ -3618,20 +4040,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ConfluxInflux = 1096875440;
 			/// <summary>
-			/// 	Return the first relic to the H.E.L.M.
-			/// <para/>
-			/// 	Also, defeat combatants on Europa. Defeating combatants with a Fusion Rifle will award bonus progress.
-			/// <para/>
-			/// </summary>
-			public const uint AntiquarianI = 2080015688;
-			/// <summary>
-			/// 	Complete the Exotic mission "Operation: Seraph's Shield" on Legend difficulty.
-			/// <para/>
-			/// 	Defeat combatants with precision damage anywhere in the system using Pulse Rifles.
-			/// <para/>
-			/// </summary>
-			public const uint SeraphsShieldIII = 1207143952;
-			/// <summary>
 			/// 	Complete playlist or Seasonal activities using each Light subclass.
 			/// </summary>
 			public const uint Buildcrafter = 1191832612;
@@ -3644,75 +4052,22 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PeakOperator = 3006924815;
 			/// <summary>
-			/// 	Return the third relic to the H.E.L.M.
-			/// <para/>
-			/// 	Also, defeat Cabal. Defeating them with finishers will award bonus progress.
-			/// <para/>
-			/// </summary>
-			public const uint AntiquarianIII = 2080015690;
-			/// <summary>
-			/// 	Complete the Exotic mission "Operation: Seraph's Shield" to earn the Revision Zero Exotic Pulse Rifle.
-			/// <para/>
-			/// 	Defeat combatants anywhere in the system using Pulse Rifles.
-			/// <para/>
-			/// </summary>
-			public const uint SeraphsShieldI = 1207143954;
-			/// <summary>
 			/// 	Defeat enemies using the Wardcliff Coil.
 			/// </summary>
 			public const uint WardcliffCoilCatalyst = 2387948227;
-			/// <summary>
-			/// 	Return the second relic to the H.E.L.M.
-			/// <para/>
-			/// 	Also, defeat Fallen. Defeating them with precision final blows will award bonus progress.
-			/// <para/>
-			/// </summary>
-			public const uint AntiquarianII = 2080015691;
-			/// <summary>
-			/// 	Return the fifth relic to the H.E.L.M.
-			/// <para/>
-			/// 	Also, defeat powerful Fallen throughout the system. Defeating more powerful combatants will award bonus progress.
-			/// <para/>
-			/// </summary>
-			public const uint AntiquarianV = 2080015692;
 			/// <summary>
 			/// 	Complete PsiOps Battleground: Cosmodrome.
 			/// </summary>
 			public const uint PsiOpsBattlegroundCosmodrome = 208029774;
 			/// <summary>
-			/// 	Return the fourth relic to the H.E.L.M.
-			/// <para/>
-			/// 	Also, defeat Vex. Defeating them with melee abilities will award bonus progress.
-			/// <para/>
-			/// </summary>
-			public const uint AntiquarianIV = 2080015693;
-			/// <summary>
 			/// 	Complete the Excavation Site XII Lost Sector on Master difficulty, solo, flawlessly.
 			/// </summary>
 			public const uint ExcavationSiteXIIFlawlessSoloMastery = 984829568;
-			/// <summary>
-			/// 	Return the seventh relic to the H.E.L.M.
-			/// <para/>
-			/// 	Also, defeat powerful Vex throughout the system. Defeating more powerful combatants will award bonus progress.
-			/// <para/>
-			/// </summary>
-			public const uint AntiquarianVII = 2080015694;
 			/// <summary>
 			/// 	Hunt the surface of Nessus for wanted escapees from the Prison of Elders.
 			/// </summary>
 			public const uint WANTEDFreeRoam_1485416370 = 1485416370;
 			public const uint H2215592685 = 2215592685;
-			/// <summary>
-			/// 	Return the sixth relic to the H.E.L.M.
-			/// <para/>
-			/// 	Also, defeat powerful Cabal throughout the system. Defeating more powerful combatants will award bonus progress.
-			/// <para/>
-			/// </summary>
-			public const uint AntiquarianVI = 2080015695;
-			/// <summary>
-			/// 	Locate all Warmind nodes and destroy all security drones in the Exotic mission "Operation: Seraph's Shield."
-			/// </summary>
-			public const uint SeraphsShieldIV = 1207143959;
 			/// <summary>
 			/// 	Eliminate the Fanatic.
 			/// </summary>
@@ -3738,6 +4093,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TrialsofOsirisVeteranDisciple_3334547211 = 3334547211;
 			/// <summary>
+			/// 	Defeat Guardians in Momentum Control. Earn bonus progress with Zone Advantage.
+			/// </summary>
+			public const uint MomentumCrash = 4139131269;
+			/// <summary>
 			/// 	Guard at least two teammates with Banner Shield.
 			/// </summary>
 			public const uint FortifiedAssault = 3883136412;
@@ -3755,6 +4114,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint NightmareHuntAnguish = 477594442;
 			public const uint H3971055749 = 3971055749;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1268635581 = 1268635581;
+			/// <summary>
 			/// 	Earn weapon rewards from the "Fabled" Glory Rank in multiple Seasons.
 			/// </summary>
 			public const uint FabledWarrior = 45143115;
@@ -3771,25 +4134,50 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IronLegend = 874511848;
 			/// <summary>
-			/// 	Defeat Guardians in Trials matches.
+			/// 	Defeat targets with Two-Tailed Fox.
 			/// </summary>
-			public const uint LighthouseWarrior = 4170407620;
+			public const uint TwoTailedFoxCatalyst = 310266584;
 			/// <summary>
 			/// 	Reach Crucible Rank Legend, and reset your Crucible Rank in Season 13.
 			/// </summary>
 			public const uint SeasonoftheChosenCrucibleLegend = 415990943;
 			/// <summary>
+			/// 	Defeat Guardians in Trials matches.
+			/// </summary>
+			public const uint LighthouseWarrior = 4170407620;
+			/// <summary>
+			/// 	Complete Nightfalls while using a subclass that matches the current surge.
+			/// <para/>
+			/// 	A Nightfall is an advanced version of a Vanguard strike that includes Champions and other difficulty modifiers indicated when launching the activity.
+			/// <para/>
+			/// 	Each day, there are different threat and surge modifiers to the Nightfall. Threats increase damage to you from a damage type. Surges boost damage you deal with a damage type.
+			/// <para/>
+			/// </summary>
+			public const uint ThreatsandSurges = 413470394;
+			/// <summary>
 			/// 	Complete The Conflux Lost Sector on Master difficulty, solo, flawlessly.
 			/// </summary>
 			public const uint TheConfluxFlawlessSoloMastery = 2763188030;
+			/// <summary>
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
+			/// </summary>
+			public const uint Raconteur = 3845305795;
 			/// <summary>
 			/// 	Complete the Aphelion's Rest Lost Sector on Master difficulty, without a fireteam.
 			/// </summary>
 			public const uint AphelionsRestSoloMastery = 2287130716;
 			/// <summary>
+			/// 	Complete a flawless run in any Defiant Battlegrounds playlist location.
+			/// </summary>
+			public const uint EternalQueensguard = 3769075917;
+			/// <summary>
 			/// 	Increase the Resonance Rank of the Mars Obelisk.
 			/// </summary>
 			public const uint MarsResonance = 763938915;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2778920213 = 2778920213;
 			/// <summary>
 			/// 	During Season of the Hunt, complete weekly bounties and earn ranks in Gambit.
 			/// </summary>
@@ -3831,10 +4219,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheEmptyTankSoloLegend = 2425653583;
 			/// <summary>
-			/// 	In the EDZ, earn progress by completing bounties, patrols, public events, and Lost Sectors.
-			/// </summary>
-			public const uint EDZActivities = 974402696;
-			/// <summary>
 			/// 	Complete "The Scarlet Keep" Nightfall on Grandmaster difficulty during Season of the Seraph.
 			/// </summary>
 			public const uint GrandmasterTheScarletKeep_1081080653 = 1081080653;
@@ -3842,10 +4226,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete a timed Deepsight puzzle.
 			/// </summary>
 			public const uint ElementaryMyDear = 2042673099;
-			/// <summary>
-			/// 	Defeat Taken in Gambit. Earn bonus progress for defeating tougher combatants.
-			/// </summary>
-			public const uint PrimevalEntourage = 1132848206;
 			/// <summary>
 			/// 	Reset your rank with the War Table.
 			/// </summary>
@@ -3925,6 +4305,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint UpgradeGiftRanks = 4209066563;
 			/// <summary>
+			/// 	Purchase upgrades from the War Table.
+			/// <para/>
+			/// 	War Table upgrades are purchased via Seasonal upgrade currencies at the War Table. These are often earned by completing Seasonal Challenges.
+			/// <para/>
+			/// </summary>
+			public const uint WarTableUpgrades_2982865515 = 2982865515;
+			/// <summary>
 			/// 	Complete the All for One, One for All challenge.
 			/// </summary>
 			public const uint AllforOneOneforAll = 223175561;
@@ -3946,13 +4333,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SeriouslyNeverAgain = 3205009787;
 			/// <summary>
-			/// 	Complete each of the three encounter types in the mission "Interference": disperse rituals, carry relics, and destroy crystal disruptors.
-			/// </summary>
-			public const uint InterferenceLoop = 4169857014;
-			/// <summary>
 			/// 	Complete public events on Nessus.
 			/// </summary>
 			public const uint PublicEvents_447544904 = 447544904;
+			/// <summary>
+			/// 	Complete each of the three encounter types in the mission "Interference": disperse rituals, carry relics, and destroy crystal disruptors.
+			/// </summary>
+			public const uint InterferenceLoop = 4169857014;
 			/// <summary>
 			/// 	Stoke even more flames in the Bonfire Bash.
 			/// </summary>
@@ -3996,6 +4383,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Metamorphosis = 533149631;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_417302779 = 417302779;
+			/// <summary>
+			/// 	Acquire Vexcalibur
+			/// </summary>
+			public const uint LegendoftheLake = 2819571443;
+			/// <summary>
 			/// 	Complete strike "The Hollowed Lair."
 			/// </summary>
 			public const uint TheHollowedLair_2156859042 = 2156859042;
@@ -4003,6 +4398,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete all Nightmare Hunt time-trial Triumphs.
 			/// </summary>
 			public const uint NightmareHuntsTimeTrialMaster = 655286676;
+			/// <summary>
+			/// 	Acquire a full set of Season of Defiance armor.
+			/// </summary>
+			public const uint UnyieldingFavorEnsemble = 2852240116;
 			/// <summary>
 			/// 	Land a final blow on an opponent who has damaged an ally.
 			/// </summary>
@@ -4039,10 +4438,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GettingPasttheGuards = 461835521;
 			/// <summary>
-			/// 	Complete a Heist Battleground on Legend difficulty.
-			/// </summary>
-			public const uint LegendaryHeists = 477039415;
-			/// <summary>
 			/// 	Defeat combatants with Solar abilities.
 			/// </summary>
 			public const uint Pyromania_4137712189 = 4137712189;
@@ -4059,6 +4454,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LakeofShadows_3484204503 = 3484204503;
 			/// <summary>
+			/// 	Access the hidden accurate prediction data.
+			/// </summary>
+			public const uint DataRetrievalAccuratePrediction = 1700334902;
+			/// <summary>
 			/// 	Complete the Bonfire Bash activity.
 			/// </summary>
 			public const uint BashingSuccess_1604298776 = 1604298776;
@@ -4070,10 +4469,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete strike "Broodhold."
 			/// </summary>
 			public const uint Broodhold_238218337 = 238218337;
-			/// <summary>
-			/// 	Complete Iron Banner matches. Earn bonus progress for wins.
-			/// </summary>
-			public const uint IronSharpensIron = 3859771089;
 			/// <summary>
 			/// 	Acquire a full set of Season of Plunder armor.
 			/// </summary>
@@ -4087,6 +4482,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HunterMastery = 1676011372;
 			/// <summary>
+			/// 	Collect Exotic armor.
+			/// </summary>
+			public const uint ArmorCollector = 3892403946;
+			/// <summary>
 			/// 	Investigate the area around the Shattered Enclave.
 			/// </summary>
 			public const uint ThePerilousPath = 1931249620;
@@ -4095,9 +4494,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SealedStash = 1931249621;
 			/// <summary>
-			/// 	Defeat Guardians in Team Scorched. Charged detonations in midair or on surfaces earn bonus progress.
+			/// 	In Neomuna, complete bounties, patrols, public events, and Lost Sectors.
 			/// </summary>
-			public const uint ScorchedEarth = 2901214056;
+			public const uint NeptuneActivities = 1282666631;
 			/// <summary>
 			/// 	Defeat combatants while using Thunderlord.
 			/// </summary>
@@ -4118,6 +4517,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Investigate the area around the Industrial Facility.
 			/// </summary>
 			public const uint TheEnvisionedAscent = 1931249626;
+			/// <summary>
+			/// 	Complete the Triumphs to gild the Conqueror Title.
+			/// </summary>
+			public const uint GildedConqueror = 520220105;
 			public const uint ITheHopefulLegion = 2034368368;
 			/// <summary>
 			/// 	Investigate the area around the Derelict Shipyard.
@@ -4141,6 +4544,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Investigate the Derelict Shipyard.
 			/// </summary>
 			public const uint SecretStash = 1931249630;
+			/// <summary>
+			/// 	Listen to radio messages in the Farm.
+			/// </summary>
+			public const uint CountryRadio = 1143646836;
 			/// <summary>
 			/// 	Earn points by completing encounters in the raid "Crown of Sorrow" using Calus-themed armor and weapons earned from the Menagerie or any Leviathan raid.
 			/// <para/>
@@ -4185,13 +4592,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MasterBlaster_2748342441 = 2748342441;
 			/// <summary>
-			/// 	Defeat Guardians. Bonus progress is granted for opponents defeated with Void or Stasis effects.
-			/// </summary>
-			public const uint FreezingVoid = 125608394;
-			/// <summary>
 			/// 	Complete "The Lightblade" strike on any difficulty.
 			/// </summary>
 			public const uint TheLightblade = 1891852050;
+			/// <summary>
+			/// 	Reach Power Level {var:1131227462} by earning pinnacle rewards.
+			/// </summary>
+			public const uint Pinnacle = 1689469266;
 			/// <summary>
 			/// 	The first exotic Glaive must be unlocked from "Report: REVERSE-LURE."
 			/// <para/>
@@ -4212,6 +4619,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BurnThemDown_1854034838 = 1854034838;
 			/// <summary>
+			/// 	Complete Week 5 of the "We Stand Unbroken" quest.
+			/// </summary>
+			public const uint StillStanding = 2971359728;
+			/// <summary>
 			/// 	Complete the "Birthplace of the Vile" strike on any difficulty.
 			/// </summary>
 			public const uint BirthplaceoftheVile = 1004971789;
@@ -4224,9 +4635,24 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheyWillSingofYou = 3865828514;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2971359731 = 2971359731;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1982000933 = 1982000933;
+			/// <summary>
 			/// 	Collect all six Seasonal Legendary weapons.
 			/// </summary>
 			public const uint PsiOpsArsenal = 2733613128;
+			/// <summary>
+			/// 	Increase your vendor reputation with Nimbus in Neomuna.
+			/// <para/>
+			/// 	You can increase this vendor's reputation by completing their bounties and quests, participating in public events, and gathering planetary materials in Neomuna.
+			/// <para/>
+			/// </summary>
+			public const uint EarntheRespectofNimbus = 332992004;
 			/// <summary>
 			/// 	Defeat a large number of enemies while inside the aura from a single Well of Radiance Super.
 			/// </summary>
@@ -4248,6 +4674,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MintCondition = 2997979985;
 			/// <summary>
+			/// 	Complete the Hydroponics Delta Lost Sector on Legend difficulty, without a fireteam.
+			/// </summary>
+			public const uint HydroponicsDeltaSoloLegend = 987583142;
+			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
 			public const uint CALUSMiniTool = 2258742229;
@@ -4256,6 +4686,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint FallenSlayer = 1056716977;
 			public const uint Risen_824821808 = 824821808;
+			/// <summary>
+			/// 	Defeat 2 or more opponents in less than 1 second with Winter's Wrath.
+			/// </summary>
+			public const uint ColdasIce = 2845565005;
 			public const uint ChordsofMeaning = 824821809;
 			public const uint SeedsandCuttings = 824821810;
 			public const uint Debt = 824821812;
@@ -4266,6 +4700,17 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Proven = 2819177571;
 			public const uint Queenslaw = 824821813;
 			public const uint QuestionAfterQuestion = 824821814;
+			/// <summary>
+			/// 	Complete Seasonal Challenges from the current Season.
+			/// <para/>
+			/// 	Seasonal Challenges grant XP, Seasonal vendor upgrade currencies, Bright Dust, and other rewards. Seasonal Challenges are revealed weekly though the first 10 weeks of the Season.
+			/// <para/>
+			/// </summary>
+			public const uint SeasonalChallenges_2206401629 = 2206401629;
+			/// <summary>
+			/// 	Acquire upgrades from the War Table in the H.E.L.M.
+			/// </summary>
+			public const uint StandontheTable = 2722783286;
 			public const uint WarHammer = 824821815;
 			/// <summary>
 			/// 	Defeat targets while using Traveler's Chosen.
@@ -4322,6 +4767,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint YouHaveMySword = 804966342;
 			/// <summary>
+			/// 	Defeat Guardians in the Mayhem playlist with Super abilities.
+			/// </summary>
+			public const uint FlourishofPower = 109768828;
+			/// <summary>
 			/// 	Focus Season of the Chosen Umbral Engrams.
 			/// </summary>
 			public const uint FocusingEngrams = 446394459;
@@ -4342,6 +4791,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint FollowingInstructions = 4126515325;
 			/// <summary>
+			/// 	Claim Titles.
+			/// </summary>
+			public const uint Titles_3177212245 = 3177212245;
+			/// <summary>
 			/// 	Defeat targets using Jötunn.
 			/// </summary>
 			public const uint JötunnCatalyst = 1060652297;
@@ -4350,9 +4803,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Denied = 2789598066;
 			/// <summary>
+			/// 	In the EDZ, earn progress by completing bounties, patrols, public events, and Lost Sectors.
+			/// </summary>
+			public const uint EDZActivities = 1936384840;
+			/// <summary>
 			/// 	Bank Data Motes in Override.
 			/// </summary>
 			public const uint DataMiner = 966648736;
+			/// <summary>
+			/// 	Restore all the damaged memorials in the Hall of Heroes in Neomuna.
+			/// </summary>
+			public const uint RestoredandRemembered = 3472604716;
 			/// <summary>
 			/// 	Complete the following objective to discover this Prismatic Lens and gain access to this Focused Umbral Engram.
 			/// </summary>
@@ -4405,6 +4866,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Deliver cookies during the Dawning 2021.
 			/// </summary>
 			public const uint CookieConnoisseur = 837442532;
+			/// <summary>
+			/// 	Complete a Lost Sector on Legend or higher.
+			/// </summary>
+			public const uint LostintheLegend = 705809778;
 			public const uint AsherConclusion = 4038842261;
 			public const uint Bamberga = 2006812548;
 			/// <summary>
@@ -4472,6 +4937,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint FlyingFortress = 749935109;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_397062446 = 397062446;
+			/// <summary>
 			/// 	Complete the associated badge on the Collections screen in order to claim this Triumph.
 			/// </summary>
 			public const uint DestinationsRedWar_2259051223 = 2259051223;
@@ -4479,6 +4948,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the "Fallen S.A.B.E.R." strike in Nightfall during Season of the Chosen.
 			/// </summary>
 			public const uint GrandmasterFallenSABER_8651357 = 8651357;
+			/// <summary>
+			/// 	Neutralize all Apogee Repeaters in Esi Terminal.
+			/// </summary>
+			public const uint TerminalRepeaters = 3059570163;
 			/// <summary>
 			/// 	While in the Reckoning, defeat powerful enemies, land precision final blows, and defeat Shadow Thrall.
 			/// </summary>
@@ -4521,6 +4994,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SplicerRecovery = 1958819146;
 			/// <summary>
+			/// 	Complete Iron Banner matches. Earn bonus progress for wins.
+			/// </summary>
+			public const uint IronSharpensIron = 26559377;
+			/// <summary>
 			/// 	Defeat Scorn, Taken, and Hive combatants with at least 4 pieces of the Pathfinder armor set equipped.
 			/// </summary>
 			public const uint SlayerfortheLost = 20985512;
@@ -4554,6 +5031,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint FireintheHole = 168901130;
 			/// <summary>
 			/// 	Complete all Crucible Triumphs.
+			/// <para/>
+			/// 	Complete this Title to unlock Seasonal gilding.
+			/// <para/>
 			/// </summary>
 			public const uint Crucible_969142496 = 969142496;
 			/// <summary>
@@ -4572,6 +5052,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	In Nightfall strike "The Inverted Spire," as a fireteam, do not get hit by Protheon's fiery ground attack.
 			/// </summary>
 			public const uint TheFloorIsLava_3809122973 = 3809122973;
+			/// <summary>
+			/// 	Unlock Patterns for Season of Defiance weapons: Perpetualis, Prodigal Return, Regnant, Caretaker, Raconteur, and Royal Executioner.
+			/// </summary>
+			public const uint DefiantShaper = 3883468036;
 			/// <summary>
 			/// 	Earn a score of at least 100,000 in a Nightfall strike using Calus-themed armor and weapons earned from the Menagerie or any Leviathan raid.
 			/// </summary>
@@ -4598,19 +5082,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the quest "A Sacred Fusion."
 			/// </summary>
 			public const uint SplicersArmament = 356245692;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_700218081 = 700218081;
 			public const uint H2BurdenPartII = 288920568;
 			public const uint H3BurdenPartIII = 288920569;
 			/// <summary>
 			/// 	Reach the Brave division in Gambit.
 			/// </summary>
 			public const uint Brave = 84979789;
+			public const uint GuidingLight = 1703930145;
 			public const uint H1BurdenPartI = 288920571;
 			public const uint ErisII = 2136112864;
 			public const uint H6FoundationsPartI = 288920572;
-			/// <summary>
-			/// 	Complete any Nightfall strike on Hero difficulty or higher.
-			/// </summary>
-			public const uint DarkestNightfall = 2604398111;
 			public const uint H7FoundationsPartII = 288920573;
 			public const uint H4MothstoFlamePartI = 288920574;
 			public const uint RegardingSkolas = 148777044;
@@ -4652,6 +5137,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	As a Sunbreaker, get kills with Thermite Grenades.
 			/// </summary>
 			public const uint Pyrotechnics_1489983287 = 1489983287;
+			/// <summary>
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
+			/// </summary>
+			public const uint ProdigalReturn = 2324218515;
 			/// <summary>
 			/// 	Complete all 30th Anniversary Triumphs.
 			/// </summary>
@@ -4705,6 +5194,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CallMeReaper = 2209929702;
 			/// <summary>
+			/// 	Complete the "First Contact" mission on any difficulty.
+			/// </summary>
+			public const uint FirstContact_3695031188 = 3695031188;
+			/// <summary>
 			/// 	Collect all Seasonal weapons and armor from Season of the Lost, available as rewards from Astral Alignment, Shattered Realm, and focused Umbral Engrams.
 			/// </summary>
 			public const uint InstrumentsoftheLost = 4206770197;
@@ -4719,13 +5212,14 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TheBestOffense = 2780814366;
 			public const uint Itsjustme = 2119382388;
 			public const uint asudeM = 2119382389;
+			public const uint TheThreatsWeFace = 2367349989;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3271224950 = 3271224950;
 			public const uint IAmbush = 1015148249;
 			public const uint IIThePigeonandtheSplicer = 1015148250;
 			public const uint IIIRisenfromBones = 1015148251;
-			/// <summary>
-			/// 	Complete all Season of the Seraph Seasonal Challenges.
-			/// </summary>
-			public const uint MasteryofWrath = 3912917840;
 			public const uint IVArt = 1015148252;
 			/// <summary>
 			/// 	Survival: Win a match where no one on your team is defeated across all rounds.
@@ -4767,9 +5261,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrashPlan = 2486263598;
 			/// <summary>
-			/// 	Calibrate marksman weapons—Scout Rifles, Sniper Rifles, and Linear Fusion Rifles—by landing precision final blows. Bonus progress against Guardians.
+			/// 	Trophies from Neomuna, Neptune.
 			/// </summary>
-			public const uint PrecisionCalibration = 941353876;
+			public const uint NeomuniSouvenirs_2400233569 = 2400233569;
 			/// <summary>
 			/// 	Complete any Nightmare Hunt on Master difficulty without dying.
 			/// </summary>
@@ -4823,6 +5317,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HeroicallyAdventurous_3397216718 = 3397216718;
 			/// <summary>
+			/// 	Calibrate long-range weapons—Pulse Rifles, Bows, and Trace Rifles—in Neomuna. Bonus progress awarded in Lost Sectors.
+			/// </summary>
+			public const uint DeadlyHorizons = 1836395733;
+			/// <summary>
 			/// 	Complete the weekly missions for Path of the Splicer VII.
 			/// </summary>
 			public const uint PathoftheSplicerVII = 248945551;
@@ -4838,6 +5336,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Claim all Rank rewards from Fynch.
 			/// </summary>
 			public const uint BuddyUp = 326379752;
+			/// <summary>
+			/// 	Unlock all Strand upgrades on a single class.
+			/// </summary>
+			public const uint FilamentalMastery = 3825267179;
 			/// <summary>
 			/// 	Complete weekly challenges throughout the system.
 			/// </summary>
@@ -4867,10 +5369,21 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ArcAvoidance = 2732955297;
 			public const uint XITheTechnocrat = 2517710091;
 			/// <summary>
+			/// 	Obtain the current Seasonal Artifact.
+			/// <para/>
+			/// 	Each Season provides a new Artifact. Learn where to acquire it from the locked Seasonal Artifact gear slot in the Character screen.
+			/// <para/>
+			/// </summary>
+			public const uint SeasonalArtifact = 3585676058;
+			/// <summary>
 			/// 	Increase the Resonance Rank of any obelisks.
 			/// </summary>
 			public const uint GlobalResonance = 2871657237;
 			public const uint XIVTheScarred = 2517710094;
+			/// <summary>
+			/// 	Neutralize all Apogee Repeaters in Radiosonde.
+			/// </summary>
+			public const uint RadiosondeRepeaters = 439934396;
 			/// <summary>
 			/// 	Defeat combatants using Leviathan's Breath.
 			/// <para/>
@@ -4897,17 +5410,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WithoutRemorse = 2126241222;
 			public const uint DCII = 419008904;
+			/// <summary>
+			/// 	Defeat Cabal combatants in Vanguard playlists or strikes. Earn bonus progress for defeating tougher combatants.
+			/// </summary>
+			public const uint AntiCabalSweep = 2389972338;
 			public const uint DCV = 419008905;
 			/// <summary>
 			/// 	Complete Heroic adventures in the EDZ.
 			/// </summary>
 			public const uint HeroicallyAdventurous_2224529281 = 2224529281;
 			public const uint DCCII = 419008906;
+			public const uint DCCLXXXIX = 419008907;
 			/// <summary>
 			/// 	Defeat combatants in Vanguard playlists with any Seasonal Quest weapon: Adored, Salvager's Salvo, Null Composure, or Ascendancy.
 			/// </summary>
 			public const uint StrikeSpelunker_3811218376 = 3811218376;
-			public const uint DCCLXXXIX = 419008907;
 			/// <summary>
 			/// 	Earn the Gambit ornament for Chain of Command.
 			/// </summary>
@@ -4928,6 +5445,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SalvagersSalvoArmament = 3157074963;
 			/// <summary>
+			/// 	Earn progress for giving commendations in Vanguard, Crucible, and Gambit activities.
+			/// </summary>
+			public const uint CommendationAppreciation = 1340290456;
+			/// <summary>
 			/// 	Complete the Empyrean Restoration effort and light the beacon.
 			/// </summary>
 			public const uint TorchBearer = 819234811;
@@ -4936,17 +5457,28 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WANTEDLostSectorsAlpha_397058189 = 397058189;
 			/// <summary>
-			/// 	With any Rocket Launcher, defeat Guardians in the Crucible and earn the medal "Splash Damage."
-			/// </summary>
-			public const uint RocketLauncherMastery = 3285170890;
-			/// <summary>
 			/// 	Hunt Lost Sectors in the EDZ for wanted escapees from the Prison of Elders.
 			/// </summary>
 			public const uint WANTEDLostSectorsBravo_397058190 = 397058190;
 			/// <summary>
+			/// 	With any Rocket Launcher, defeat Guardians in the Crucible and earn the medal "Splash Damage."
+			/// </summary>
+			public const uint RocketLauncherMastery = 3285170890;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_31076871 = 31076871;
+			/// <summary>
 			/// 	Hunt Lost Sectors in the EDZ for wanted escapees from the Prison of Elders.
 			/// </summary>
 			public const uint WANTEDLostSectorsCharlie_397058191 = 397058191;
+			/// <summary>
+			/// 	Complete Neomuna bounties. 
+			/// <para/>
+			/// 	Terminal Overload bounties grant additional progress.
+			/// <para/>
+			/// </summary>
+			public const uint TroubleShooter = 3359753237;
 			/// <summary>
 			/// 	Complete matches in the Survival playlist and earn Glory Rank points during Season 12.
 			/// </summary>
@@ -4968,6 +5500,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LocalMaxima = 3440773513;
 			/// <summary>
+			/// 	Complete the "Awaken, Queensguard" mission.
+			/// </summary>
+			public const uint FortheQueen = 2222765371;
+			/// <summary>
 			/// 	Showdown: As a team, collect three consecutive ammo crates in a single match.
 			/// </summary>
 			public const uint DenialofService = 3440773514;
@@ -4981,12 +5517,16 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ClawingBack = 3440773515;
 			public const uint Emissary = 2184307944;
 			/// <summary>
-			/// 	Access hidden chests in "Operation: Seraph's Shield"
+			/// 	Access hidden chests in "Operation: Seraph's Shield."
 			/// </summary>
 			public const uint MultiToolinAround = 3619338662;
 			public const uint KingsWrath = 2184307945;
 			public const uint Exegesis = 2184307946;
 			public const uint GensymScribe = 2184307947;
+			/// <summary>
+			/// 	Earn points by banking Motes, defeating Blockers, and defeating Guardians in Gambit.
+			/// </summary>
+			public const uint BankKillRepeat = 3879935882;
 			/// <summary>
 			/// 	Defeat all of the Scorned Barons.
 			/// </summary>
@@ -5048,6 +5588,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TorchtheTaken_3115174757 = 3115174757;
 			/// <summary>
+			/// 	Complete the "Pit of Heresy" dungeon.
+			/// </summary>
+			public const uint PitofHeresy = 469433408;
+			/// <summary>
 			/// 	Rapidly revive 2 Guardians.
 			/// </summary>
 			public const uint GuardianAngel = 664863414;
@@ -5060,6 +5604,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightmaresTakeShape = 4290552912;
 			/// <summary>
+			/// 	Complete the "Heist Battleground: Mars" Nightfall on Grandmaster difficulty during Season of Defiance.
+			/// </summary>
+			public const uint GrandmasterHeistBattlegroundMars = 2117130587;
+			/// <summary>
 			/// 	Save Saint-14 from the Infinite Forest.
 			/// </summary>
 			public const uint SaintlySavior = 1747321434;
@@ -5067,6 +5615,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the Exodus Garden 2A Lost Sector on Legend difficulty, without a fireteam.
 			/// </summary>
 			public const uint ExodusGarden2ASoloLegend = 411957691;
+			/// <summary>
+			/// 	Freeze opponents 3 or more times in a single use of Winter's Wrath.
+			/// </summary>
+			public const uint SilverThaw = 2110813544;
 			/// <summary>
 			/// 	Loot hidden chests in the "Deep Stone Crypt" raid.
 			/// </summary>
@@ -5089,6 +5641,13 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TimeandaHalf = 1113570756;
 			public const uint ITheLongDrift = 1578529593;
 			public const uint IITheWhisperingDark = 1578529594;
+			/// <summary>
+			/// 	Complete Lost Sectors on Nessus.
+			/// <para/>
+			/// 	Lost Sectors contain powerful combatants and guard a chest of loot. Defeat the Lost Sector's boss to unlock the chest. Whenever you see the Lost Sector symbol [Lost Sector], look nearby for a Lost Sector entrance.
+			/// <para/>
+			/// </summary>
+			public const uint LostSectors_2396199920 = 2396199920;
 			public const uint IIIChosen = 1578529595;
 			public const uint H3173572770 = 3173572770;
 			public const uint IVPromise = 1578529596;
@@ -5108,6 +5667,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Unlock Seasonal Artifact mods during Season of the Risen.
 			/// </summary>
 			public const uint SynapticFanatic = 61771244;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2889189256 = 2889189256;
 			/// <summary>
 			/// 	Win an Iron Banner match in overtime.
 			/// </summary>
@@ -5132,7 +5695,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	As an Arcstrider, defeat 10 targets with a single Super using Arc Staff.
 			/// </summary>
 			public const uint DodgeDipDuckDiveandDodge = 1631295529;
-			public const uint Caretaker = 133277898;
+			public const uint Caretaker_133277898 = 133277898;
 			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
@@ -5149,6 +5712,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat enemies using Prometheus Lens.
 			/// </summary>
 			public const uint PrometheusCatalyst = 1182982189;
+			/// <summary>
+			/// 	Earn Ecliptic Distaff.
+			/// </summary>
+			public const uint SkeiningStars = 2756741706;
+			/// <summary>
+			/// 	Complete a Nightfall on Master difficulty or higher.
+			/// <para/>
+			/// 	Master Nightfalls include many difficulty modifiers but also grant higher chances for rare enhancement materials.
+			/// <para/>
+			/// </summary>
+			public const uint MasterNightfall = 2080338642;
 			public const uint H618920486 = 618920486;
 			/// <summary>
 			/// 	Spread cheer in the Tower by delivering cookies to Banshee-44, Lord Shaxx, and Commander Zavala.
@@ -5166,10 +5740,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete this lore book.
 			/// </summary>
 			public const uint TheManTheyCalledCayde = 4133231184;
-			/// <summary>
-			/// 	On Europa, earn progress by completing bounties, patrols, public events, and Lost Sectors.
-			/// </summary>
-			public const uint EuropaActivities = 1598232907;
 			/// <summary>
 			/// 	Complete the following objective to discover this Prismatic Lens and gain access to this Focused Umbral Engram.
 			/// </summary>
@@ -5191,17 +5761,24 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SeasonoftheHuntRankUp = 1223982590;
 			/// <summary>
+			/// 	Increase your Seasonal Artifact Power bonus to +12.
+			/// <para/>
+			/// 	You gain additional Seasonal Artifact power by earning XP.
+			/// <para/>
+			/// </summary>
+			public const uint SeasonalArtifactPower = 2512946706;
+			/// <summary>
 			/// 	Defeat combatants with Solar abilities.
 			/// </summary>
 			public const uint Pyromania_1675197036 = 1675197036;
 			/// <summary>
-			/// 	Complete patrols on any destination to earn Silver Leaves.
-			/// </summary>
-			public const uint Lamplighter_3441897345 = 3441897345;
-			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
 			public const uint ZaoulisBane = 437884069;
+			/// <summary>
+			/// 	Complete patrols on any destination to earn Silver Leaves.
+			/// </summary>
+			public const uint Lamplighter_3441897345 = 3441897345;
 			/// <summary>
 			/// 	Rapidly defeat 3 combatants with Stasis shatter damage.
 			/// </summary>
@@ -5235,13 +5812,31 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IntotheMindscape = 1033562368;
 			/// <summary>
+			/// 	Defeat combatants with Supers in the Defiant Battlegrounds playlist. 
+			/// <para/>
+			/// 	Bonus progress awarded if you also have the Strand subclass equipped.
+			/// <para/>
+			/// </summary>
+			public const uint UltimateDefiance = 1296183192;
+			/// <summary>
 			/// 	Defeat Cabal anywhere in the system.
 			/// </summary>
 			public const uint CabalSlayer = 2673612828;
 			/// <summary>
+			/// 	Defeat Champions or bosses in Defiant Battlegrounds playlist.
+			/// <para/>
+			/// 	Bonus progress awarded for those defeated on Legend difficulty.
+			/// <para/>
+			/// </summary>
+			public const uint SizeDefying = 1296183195;
+			/// <summary>
 			/// 	Win a Gambit Prime match while wearing a full set of Notorious armor.
 			/// </summary>
 			public const uint PrimeFashion = 2887353766;
+			/// <summary>
+			/// 	Defeat combatants in the Defiant Battlegrounds playlist using Power weapons. Earn bonus progress if they also deal Solar damage.
+			/// </summary>
+			public const uint ForcefulLiberator = 1296183197;
 			/// <summary>
 			/// 	Defeat opposing Guardians in any activity.
 			/// </summary>
@@ -5250,6 +5845,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete all Seasonal storyline quests.
 			/// </summary>
 			public const uint PathoftheChosen = 2431277304;
+			/// <summary>
+			/// 	Claim all Rank rewards from Nimbus.
+			/// </summary>
+			public const uint HonoraryCloudStrider = 1222223162;
 			/// <summary>
 			/// 	Complete the Oryx encounter by detonating enough bombs to trigger the last stand in the same round.
 			/// </summary>
@@ -5274,6 +5873,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ImperialFootsoldier = 2993512400;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2763842302 = 2763842302;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_499953236 = 499953236;
+			/// <summary>
 			/// 	Defeat combatants or opposing Guardians with Power weapons.
 			/// </summary>
 			public const uint FirePower_2533388728 = 2533388728;
@@ -5282,10 +5889,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
 			public const uint RevisionZero = 929449757;
-			/// <summary>
-			/// 	Acquire the Gambit ornament for Veles-X.
-			/// </summary>
-			public const uint GambitOrnament = 2514030183;
 			public const uint PalingenesisIII = 1520149615;
 			/// <summary>
 			/// 	Eliminate an opponent with damage from your entire team.
@@ -5296,6 +5899,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SolsticeJubilee_1909191965 = 1909191965;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1247482413 = 1247482413;
+			/// <summary>
 			/// 	Total number of levels earned in the Season of the Hunt Season Pass.
 			/// </summary>
 			public const uint SeasonoftheHuntSeasonPassRank = 2805259041;
@@ -5303,6 +5910,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete all Witch Queen Triumphs.
 			/// </summary>
 			public const uint TheWitchQueen = 2489106733;
+			/// <summary>
+			/// 	Collect Exotic armor.
+			/// </summary>
+			public const uint ExoticArmor = 1587765756;
 			public const uint H1755912923 = 1755912923;
 			/// <summary>
 			/// 	Defeat five opponents while holding Zone Advantage before the opposing team recaptures a zone.
@@ -5317,10 +5928,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete an Iron Banner match with the most combined Advantage and Hunt kills.
 			/// </summary>
 			public const uint FieldGeneral = 1147833355;
-			/// <summary>
-			/// 	Defeat Guardians in Momentum Control. Earn bonus progress with Zone Advantage.
-			/// </summary>
-			public const uint MomentumCrash = 882803909;
 			public const uint RevancheIV = 2217863218;
 			/// <summary>
 			/// 	Hunt down the Nightmare of Skolas, Kell of Kells.
@@ -5394,7 +6001,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheresGoldinThatRealm = 1473812699;
 			/// <summary>
-			/// 	In Rift, defeat an opposing Spark Runner 3 times in a single match.
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
+			/// </summary>
+			public const uint MarsilionC = 2292557505;
+			/// <summary>
+			/// 	Rift: Defeat an opposing Spark Runner 3 times in a single match.
 			/// </summary>
 			public const uint SweeptheLeg = 2302411382;
 			public const uint MessagefromAunorI = 2482395736;
@@ -5425,6 +6036,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Taipan4fr = 4013775975;
 			public const uint LegionLost10 = 3705633019;
+			/// <summary>
+			/// 	Neutralize all Apogee Repeaters in Irkalla Complex.
+			/// </summary>
+			public const uint ComplexRepeaters = 1861655214;
 			public const uint MessagefromAunorIV = 2482395741;
 			/// <summary>
 			/// 	Complete the "Spire of Stars" raid.
@@ -5461,10 +6076,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PointsofConnection = 1825485537;
 			/// <summary>
-			/// 	Acquire Veles-X.
-			/// </summary>
-			public const uint TimelessIteration = 3744538157;
-			/// <summary>
 			/// 	Complete "The Grass Is Always Greener" challenge mode.
 			/// </summary>
 			public const uint TheGrassIsAlwaysGreener = 1937728407;
@@ -5477,10 +6088,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete Sever missions or rounds of Altars of Sorrow to earn Silver Leaves.
 			/// </summary>
 			public const uint ASparkintheDark_3835582434 = 3835582434;
-			/// <summary>
-			/// 	Win multiple rounds in the Trials of Osiris.
-			/// </summary>
-			public const uint TrialbyFiringSquad = 3210517126;
 			/// <summary>
 			/// 	On the Derelict Leviathan, clear the Haunted Alcove guarded by resting hounds.
 			/// </summary>
@@ -5498,20 +6105,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Drainage = 670894110;
 			/// <summary>
-			/// 	Earn points by completing objectives in Iron Banner playlist modes while using a Stasis or Void subclass.
+			/// 	Earn points by completing objectives in Iron Banner playlist modes while using a Strand, Solar, or Void subclass.
 			/// </summary>
 			public const uint OnPoint = 1711617531;
 			/// <summary>
 			/// 	On the Derelict Leviathan, clear the Haunted Alcove passageway containing a Nightmare ritual.
 			/// </summary>
 			public const uint RitualUnderShadow = 670894111;
-			/// <summary>
-			/// 	Collect Psychogenic Intel by playing strikes, Gambit, Crucible, public events, and more. 
-			/// <para/>
-			/// 	Collect Risen Umbral Energy by decoding Runic Chests in PsiOps Battlegrounds.
-			/// <para/>
-			/// </summary>
-			public const uint PsychogenicDecoder = 2062189020;
 			/// <summary>
 			/// 	Complete all encounters in the "Duality" dungeon without dying and without leaving the activity.
 			/// </summary>
@@ -5521,17 +6121,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheyWillKnowYoubyYourCollateral = 426530504;
 			/// <summary>
-			/// 	Focus IKELOS weapon engrams at the Exo Frame in the H.E.L.M.
-			/// </summary>
-			public const uint UmbralFocusingIII = 3096729712;
-			/// <summary>
 			/// 	Complete the Metamorphosis Lost Sector on Master difficulty, without a fireteam.
 			/// </summary>
 			public const uint MetamorphosisSoloMastery = 360449991;
-			/// <summary>
-			/// 	Focus Season of the Seraph weapon or armor engrams at the Exo Frame in the H.E.L.M.
-			/// </summary>
-			public const uint UmbralFocusingII = 3096729713;
 			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
@@ -5540,10 +6132,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete all encounters in the "Spire of the Watcher" dungeon with a full fireteam of clanmates.
 			/// </summary>
 			public const uint InSPIREdPosse = 3006836031;
-			/// <summary>
-			/// 	Focus a Season of the Seraph engram at the Exo Frame in the H.E.L.M.
-			/// </summary>
-			public const uint UmbralFocusingI = 3096729714;
 			/// <summary>
 			/// 	[Pulse Rifle] Final blows in Gambit.
 			/// </summary>
@@ -5569,6 +6157,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ConfidenceIsHigh_4186991151 = 4186991151;
 			/// <summary>
+			/// 	Meet the destination vendor on Neptune.
+			/// <para/>
+			/// 	Each freeroam destination has a destination vendor whom Guardians can speak with to gain local bounties, reputation, and rewards. Seek out these experts to gain more details about how you can help at their destination.
+			/// <para/>
+			/// </summary>
+			public const uint PointofContact = 3363214198;
+			/// <summary>
 			/// 	Complete the Empty Tank Lost Sector on Master difficulty, solo, flawlessly.
 			/// </summary>
 			public const uint TheEmptyTankFlawlessSoloMastery = 1085039026;
@@ -5576,6 +6171,28 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat combatants using Worldline Zero.
 			/// </summary>
 			public const uint WorldlineCatalyst = 3468043157;
+			/// <summary>
+			/// 	Gain bonus rewards using a Defiant Key at the end of Defiant Battlegrounds playlist activities on both Normal and Legend difficulties.
+			/// <para/>
+			/// 	Defiant Keys can be earned by completing Lightfall campaign missions, Terminal Overload in Neomuna, raids, Vanguard Ops playlist activities, Gambit matches, and Crucible matches.
+			/// <para/>
+			/// 	Rewards earned through the Vestian Ward upgrade at the War Table will provide additional progress.
+			/// <para/>
+			/// </summary>
+			public const uint RelentlessLiberator_794329516 = 794329516;
+			/// <summary>
+			/// 	Gain bonus rewards using a Defiant Key at the end of Defiant Battlegrounds playlist activities on both Normal and Legend difficulties.
+			/// <para/>
+			/// 	Defiant Keys can be earned by completing Lightfall campaign missions, Terminal Overload in Neomuna, raids, Vanguard Ops playlist activities, Gambit matches, and Crucible matches.
+			/// <para/>
+			/// 	Rewards earned through the Vestian Ward upgrade at the War Table will provide additional progress.
+			/// <para/>
+			/// </summary>
+			public const uint RelentlessLiberator_794329517 = 794329517;
+			/// <summary>
+			/// 	Defeat 2 opponents with Silence and Squall from a long distance.
+			/// </summary>
+			public const uint DistantRoar = 3704115374;
 			/// <summary>
 			/// 	Complete the Gambit Salvager quest during Season of the Chosen.
 			/// </summary>
@@ -5697,9 +6314,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint FasterthanLightning_1782506444 = 1782506444;
 			/// <summary>
+			/// 	Acquire Ecliptic Distaff.
+			/// </summary>
+			public const uint RighteousBlade = 1199659245;
+			/// <summary>
 			/// 	Complete all Season of the Splicer Triumphs.
 			/// </summary>
 			public const uint Splicer = 2796658869;
+			/// <summary>
+			/// 	Complete the "Shattered Throne" dungeon.
+			/// </summary>
+			public const uint ShatteredThrone = 633466487;
 			/// <summary>
 			/// 	Defeat three enemies with a single Golden Gun Super.
 			/// </summary>
@@ -5712,8 +6337,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the Templar encounter while never blocking the Templar's teleport.
 			/// </summary>
 			public const uint TemperedTeleport = 3903615031;
+			/// <summary>
+			/// 	Defeat 3 opponents in a single Glacial Quake Super.
+			/// </summary>
+			public const uint AgileAvalanche = 2854653932;
 			public const uint Chapter7Commandeered = 309779392;
 			public const uint Chapter6AMatterofTrust = 309779393;
+			/// <summary>
+			/// 	Complete the most recently released dungeon solo.
+			/// </summary>
+			public const uint SoloSpelunker = 4081369842;
 			public const uint Chapter5AlmightyOnce = 309779394;
 			public const uint Chapter4Unguarded = 309779395;
 			/// <summary>
@@ -5756,6 +6389,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrashCourse = 2450461428;
 			/// <summary>
+			/// 	Land on Nessus and meet the eccentric AI, Failsafe, located in the wreckage of the Exodus Black colony ship.
+			/// <para/>
+			/// 	You can add a waypoint to Failsafe on the destination's map. Waypoints show the closest landing zone and will guide you to Failsafe when you land.
+			/// <para/>
+			/// </summary>
+			public const uint ExploreNessus = 3021202819;
+			/// <summary>
 			/// 	Defeat combatants or Guardians with Arc weapons or abilities.
 			/// </summary>
 			public const uint Thundersnow = 1923012628;
@@ -5792,6 +6432,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	In Ketchcrash, finish the Maintenance Bay encounter within one minute of the second Spider Tank's appearance.
 			/// </summary>
 			public const uint DunkTanks = 2450461433;
+			/// <summary>
+			/// 	Acquire Vanguard bounties from Commander Zavala.
+			/// <para/>
+			/// 	You can find Commander Zavala at the Courtyard in the Tower.
+			/// <para/>
+			/// </summary>
+			public const uint AcquireVanguardBounties = 2797281193;
 			public const uint Chapter8Migration = 309779407;
 			/// <summary>
 			/// 	Complete 6 raid or dungeon rotator challenges.
@@ -5803,9 +6450,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GrandmasterBroodhold_2970755990 = 2970755990;
 			/// <summary>
-			/// 	Defeat Champions in any Nightfall strike on Hero difficulty or higher. Earn bonus progress at higher difficulty tiers.
+			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
-			public const uint UltimateChampion = 2039642963;
+			public const uint Classified_921507736 = 921507736;
 			/// <summary>
 			/// 	Gain ranks in the Season Pass.
 			/// </summary>
@@ -5823,6 +6470,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DoubleTrouble = 1081399319;
 			/// <summary>
+			/// 	Acquire Enhancement Prisms.
+			/// <para/>
+			/// 	Enhancement Prisms can be obtained through various methods, including the following:
+			/// <para/>
+			/// 	• Reputation rank-up rewards
+			/// <para/>
+			/// 	• Season Pass rewards
+			/// <para/>
+			/// 	• Nightfall activities
+			/// <para/>
+			/// 	• Rahool's material exchange
+			/// <para/>
+			/// </summary>
+			public const uint EnhancementMaterials = 456889159;
+			/// <summary>
 			/// 	Earn a Glory Rank win streak in Season 13.
 			/// </summary>
 			public const uint RushoftheArena = 2843940497;
@@ -5831,17 +6493,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint QuickAccess = 2399446029;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3424097019 = 3424097019;
+			/// <summary>
 			/// 	Earn the Vanguard ornament for Veles-X.
 			/// </summary>
 			public const uint ConfigurationVanguard = 1740574894;
 			/// <summary>
-			/// 	Complete all encounters in the "King's Fall" raid with a full fireteam of Solar subclasses.
-			/// </summary>
-			public const uint Sunburst = 3666607158;
-			/// <summary>
 			/// 	Get precision final blows and rapidly defeat combatants at point-blank range while using any weapon in Gambit.
 			/// </summary>
 			public const uint WeaponFlair = 427766278;
+			/// <summary>
+			/// 	Complete all encounters in the "King's Fall" raid with a full fireteam of Solar subclasses.
+			/// </summary>
+			public const uint Sunburst = 3666607158;
 			/// <summary>
 			/// 	Elimination: Win a match in which no one on your team is eliminated and no opponent is revived.
 			/// </summary>
@@ -5871,9 +6537,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PulseRifleAptitude = 2707477076;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_4270724598 = 4270724598;
+			/// <summary>
 			/// 	Reach the Mythic division in Gambit.
 			/// </summary>
 			public const uint Mythic = 2306002103;
+			/// <summary>
+			/// 	Halt the Minotaurs Supernumeros' blitz and open the chest in the Vex Incursion Zone in Neomuna.
+			/// </summary>
+			public const uint SupernumeraryBlitz = 4157989263;
 			public const uint TheWaterSunPartII = 3936467303;
 			public const uint TheWaterSunPartI = 3936467304;
 			/// <summary>
@@ -5939,6 +6613,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint K1CrewQuartersFlawlessSoloMastery = 114953849;
 			/// <summary>
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
+			/// </summary>
+			public const uint IterativeLoop = 777254375;
+			/// <summary>
 			/// 	Defeat two or more opponents with a Nova Bomb that was in the air for at least 5 seconds.
 			/// </summary>
 			public const uint FromDowntown = 2730873912;
@@ -5976,11 +6654,25 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint REAltarsofReflectionNewInput = 246756746;
 			public const uint AltarsofReflectionNewInput = 246756747;
 			public const uint AltarsofReflectionControl = 246756748;
+			/// <summary>
+			/// 	Generate Favors in Seasonal activities.
+			/// <para/>
+			/// 	All members of your current fireteam contribute to overall progress.
+			/// <para/>
+			/// </summary>
+			public const uint FavoredLiberator_3705158662 = 3705158662;
 			public const uint AltarsofReflectionAssessment = 246756749;
 			/// <summary>
 			/// 	Complete the activity "Harbinger" while in a fireteam with two other Guardians where you all have Hawkmoon equipped.
 			/// </summary>
 			public const uint BirdsofaFeather = 3745227813;
+			/// <summary>
+			/// 	Generate Favors in Seasonal activities.
+			/// <para/>
+			/// 	All members of your current fireteam contribute to overall progress.
+			/// <para/>
+			/// </summary>
+			public const uint FavoredLiberator_3705158663 = 3705158663;
 			public const uint AMatterofTrust_2762038320 = 2762038320;
 			public const uint AltarsofReflectionDispatch = 246756750;
 			/// <summary>
@@ -6035,15 +6727,11 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint EntryIII = 2768449403;
 			public const uint EntryIV = 2768449404;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the mission "Operation: Sancus."
 			/// </summary>
-			public const uint Classified_3944118559 = 3944118559;
+			public const uint OperationSancus = 3944118559;
 			public const uint EntryV = 2768449405;
 			public const uint EntryVI = 2768449406;
-			/// <summary>
-			/// 	Complete weekly playlist challenges.
-			/// </summary>
-			public const uint TakingAllChallenges = 3113993221;
 			public const uint EntryVII = 2768449407;
 			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
@@ -6058,9 +6746,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WeaponoftheLost = 2926196505;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_297678175 = 297678175;
+			/// <summary>
 			/// 	Complete matches in Crucible or Gambit playlists to earn Silver Leaves.
 			/// </summary>
 			public const uint FiresofCompetition_450455803 = 450455803;
+			/// <summary>
+			/// 	Purchase upgrades from the War Table.
+			/// <para/>
+			/// 	War Table upgrades are purchased via Seasonal upgrade currencies. These are often earned by completing Seasonal Challenges.
+			/// <para/>
+			/// </summary>
+			public const uint WarTableUpgrades_2079859955 = 2079859955;
 			/// <summary>
 			/// 	Complete strike "Exodus Crash."
 			/// </summary>
@@ -6069,6 +6768,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	As a Nightstalker, get kills with Vortex Grenades.
 			/// </summary>
 			public const uint CaughtintheVortex_219057585 = 219057585;
+			/// <summary>
+			/// 	Complete Master Lost Sectors solo.
+			/// <para/>
+			/// 	Master Lost Sectors include many difficulty modifiers but also grant higher chances for high-stat Exotics and enhancement materials.
+			/// <para/>
+			/// </summary>
+			public const uint MasterSoloLostSectors = 3106740494;
 			/// <summary>
 			/// 	As a Sunbreaker, incinerate combatants with Sunspots.
 			/// </summary>
@@ -6094,6 +6800,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint FliestoHoney = 3987299246;
 			/// <summary>
+			/// 	Acquire Favors of Grace in a Season of Defiance activity.
+			/// </summary>
+			public const uint GraceUnderFire = 3700444426;
+			/// <summary>
 			/// 	Complete all encounters in the "Duality" dungeon solo.
 			/// </summary>
 			public const uint SoloThoughtstealer = 755549938;
@@ -6113,6 +6823,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete this lore book.
 			/// </summary>
 			public const uint UldrenSov = 952099198;
+			/// <summary>
+			/// 	Defeat Calus on Legendary difficulty, solo.
+			/// </summary>
+			public const uint Apostate = 583588375;
 			/// <summary>
 			/// 	Complete strikes in any strike playlist.
 			/// </summary>
@@ -6154,13 +6868,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MomentsofTriumph2021 = 1284946259;
 			/// <summary>
-			/// 	Complete "The Insight Terminus" Nightfall on Grandmaster difficulty during Season of the Seraph.
+			/// 	Complete "The Insight Terminus" Nightfall on Grandmaster difficulty during Season of Defiance.
 			/// </summary>
 			public const uint GrandmasterTheInsightTerminus_2117601105 = 2117601105;
 			/// <summary>
 			/// 	Complete all Altar of Reflection activities.
 			/// </summary>
 			public const uint TwoLiesTwoTruths = 539964506;
+			/// <summary>
+			/// 	Complete each Defiant Battlegrounds playlist activity in under 12 minutes.
+			/// </summary>
+			public const uint RapidRedeemer = 2467062294;
 			/// <summary>
 			/// 	Complete all Tier I Sabotage quests from Variks.
 			/// </summary>
@@ -6173,16 +6891,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete all Tier III Sabotage quests from Variks.
 			/// </summary>
 			public const uint MasterfulSaboteur = 1726056119;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_139617739 = 139617739;
 			public const uint TESTNO167BonusAppendages = 2630087778;
 			public const uint TESTNO512IceWielding = 2630087779;
-			/// <summary>
-			/// 	Defeat a powerful combatant with a finisher.
-			/// </summary>
-			public const uint FinishingTouches = 2993848507;
 			/// <summary>
 			/// 	Complete Nightfall strikes. Challenging strikes grant the most efficient progress.
 			/// </summary>
 			public const uint OrdealorNoDeal = 522262456;
+			/// <summary>
+			/// 	Defeat a powerful combatant with a finisher.
+			/// </summary>
+			public const uint FinishingTouches = 2993848507;
 			/// <summary>
 			/// 	Complete Exotic quest "Presage."
 			/// </summary>
@@ -6196,6 +6918,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Investigate the Debris Field with multiple Compass powers.
 			/// </summary>
 			public const uint EclipsedCache = 730362372;
+			/// <summary>
+			/// 	Complete a weekly mission from Lightfall on Hero difficulty or higher.
+			/// </summary>
+			public const uint FriendlyNeighborhoodGuardian = 3245415616;
 			/// <summary>
 			/// 	Open all region chests in the EDZ.
 			/// </summary>
@@ -6237,14 +6963,14 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TESTNO312ExoArmAttachment = 2630087790;
 			public const uint TESTNO088NuclearPowerExo = 2630087791;
 			/// <summary>
+			/// 	As an invader, defeat four opposing Guardians in a single invasion.
+			/// </summary>
+			public const uint ArmyofOne = 511083400;
+			/// <summary>
 			/// 	Hunt Lost Sectors on Titan for wanted escapees from the Prison of Elders.
 			/// </summary>
 			public const uint WANTEDLostSectors_3446723932 = 3446723932;
 			public const uint VIHANDTOHAND = 2945102944;
-			/// <summary>
-			/// 	As an invader, defeat four opposing Guardians in a single invasion.
-			/// </summary>
-			public const uint ArmyofOne = 511083400;
 			public const uint VIISALVATION = 2945102945;
 			/// <summary>
 			/// 	Complete Expunge missions in under 10 minutes.
@@ -6276,6 +7002,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint K1RevelationSoloMastery = 3983292393;
 			/// <summary>
+			/// 	Gain ranks in the Season Pass.
+			/// </summary>
+			public const uint DefiantLevels = 425514511;
+			/// <summary>
 			/// 	Lockdown: Block a Lockdown by halting capture progress and recapturing a zone.
 			/// </summary>
 			public const uint LastLine = 3287450193;
@@ -6283,10 +7013,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Lockdown: Win a round with a Lockdown while trailing in total progress.
 			/// </summary>
 			public const uint StillCounts = 3287450194;
-			/// <summary>
-			/// 	Defeat Fallen combatants in Vanguard playlists or strikes. Earn bonus progress for defeating tougher combatants.
-			/// </summary>
-			public const uint TheFallenFall = 3747958891;
 			public const uint VIIIHEREALWAYS = 2945102958;
 			/// <summary>
 			/// 	Complete "The Core Four" challenge.
@@ -6313,9 +7039,30 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GrandmasterScarletKeep = 2363370539;
 			/// <summary>
+			/// 	Complete Defiant Battleground: Orbital Prison.
+			/// </summary>
+			public const uint StratosphericSavior = 3052980759;
+			/// <summary>
 			/// 	Defeat 3 opponents in a single Golden Gun activation.
 			/// </summary>
 			public const uint HandfulofBullets = 4075867812;
+			/// <summary>
+			/// 	Stun Overload Champions.
+			/// <para/>
+			/// 	[Disruption] Overload Champions move quickly and use their abilities frequently. 
+			/// <para/>
+			/// 	You can stun them, preventing their health regeneration:
+			/// <para/>
+			/// 	[Void] when you suppress them;
+			/// <para/>
+			/// 	[Stasis] when you slow them;
+			/// <para/>
+			/// 	[Arc] when you jolt them and trigger the chain lightning effect;
+			/// <para/>
+			/// 	[Headshot] when you damage them with a weapon granted the [Disruption] Overload trait by a Seasonal Artifact perk.
+			/// <para/>
+			/// </summary>
+			public const uint OverloadChampions = 1447730027;
 			/// <summary>
 			/// 	Fully upgrade the Chalice of Opulence.
 			/// </summary>
@@ -6368,6 +7115,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RelentlessInvader = 477058234;
 			/// <summary>
+			/// 	Increase your reputation with the Vanguard Ops, Crucible, or Gambit vendors.
+			/// <para/>
+			/// 	Vanguard Ops, Crucible, and Gambit reputation is earned by playing in the relevant playlist and completing playlist bounties. Each Season, there are new rewards for ranking up each vendor.
+			/// <para/>
+			/// </summary>
+			public const uint SeasonalPlaylistRewards = 2365018089;
+			/// <summary>
 			/// 	Defeat combatants with Linear Fusion Rifles.
 			/// </summary>
 			public const uint LinearFusionRifleAptitude = 1132038861;
@@ -6388,9 +7142,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RewardEmblem_3475985654 = 3475985654;
 			/// <summary>
+			/// 	Earn points by completing objectives in any Crucible playlist while using Strand, Void, or Solar.
+			/// </summary>
+			public const uint Powerlifter = 3155244420;
+			/// <summary>
 			/// 	Defeat enemies using Merciless.
 			/// </summary>
 			public const uint MercilessCatalyst = 4178028503;
+			/// <summary>
+			/// 	Calibrate Kinetic, Energy, and Power weapons. Bonus progress against Champions.
+			/// </summary>
+			public const uint ArmoryWideCalibration = 4103571516;
 			public const uint H1300208427 = 1300208427;
 			/// <summary>
 			/// 	Complete the Nightmare Hunt: Pride time trial on Master difficulty.
@@ -6413,6 +7175,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DrinkDeep = 12529218;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3025362184 = 3025362184;
+			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
 			public const uint Bequest = 399865831;
@@ -6428,6 +7194,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat an invader within 10 seconds of their appearance in your arena before they defeat anyone on your team.
 			/// </summary>
 			public const uint NotonMyWatch_1334533602 = 1334533602;
+			/// <summary>
+			/// 	Complete the Triumphs to acquire the Conqueror Title.
+			/// </summary>
+			public const uint Conqueror_817431149 = 817431149;
 			/// <summary>
 			/// 	Complete a Flawless Passage of Confidence.
 			/// </summary>
@@ -6457,9 +7227,23 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OnMyGo = 1673084356;
 			/// <summary>
+			/// 	Defeat combatants with precision final blows in Seasonal activities.
+			/// <para/>
+			/// 	Bonus progress awarded for using Season of Defiance weapons. These are Perpetualis, Prodigal Return, Regnant, Caretaker, Raconteur, and Royal Executioner.
+			/// <para/>
+			/// </summary>
+			public const uint DefiantSpecialist = 3462648704;
+			/// <summary>
 			/// 	As a Warlock: Win matches, defeat opponents, defeat rival Hunters and Titans, cast Supers, and generate orbs.
 			/// </summary>
 			public const uint WarlockLifetime = 401164180;
+			/// <summary>
+			/// 	Defeat Vex with Seasonal weapons. These are Perpetualis, Prodigal Return, Regnant, Caretaker, Raconteur, and Royal Executioner.
+			/// <para/>
+			/// 	Bonus progress awarded for Vex defeated in Seasonal activities.
+			/// <para/>
+			/// </summary>
+			public const uint VexingLiberator = 3462648705;
 			/// <summary>
 			/// 	Defeat 12 enemies with no more than 3 seconds between kills.
 			/// </summary>
@@ -6530,6 +7314,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint PolarisLanceCatalyst = 1390549867;
 			public const uint IIITheTraitor = 3756433948;
 			public const uint IITheWolf = 3756433949;
+			/// <summary>
+			/// 	Complete the "Vault of Glass" raid.
+			/// </summary>
+			public const uint VaultofGlass_426817418 = 426817418;
 			public const uint IThePrisoner = 3756433950;
 			public const uint H245212391 = 245212391;
 			public const uint LETTER3 = 3167963640;
@@ -6548,6 +7336,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GottaGoHalphas = 968937353;
 			public const uint LETTER7 = 3167963644;
+			/// <summary>
+			/// 	Purchase Fragments from Ikora Rey.
+			/// <para/>
+			/// 	Fragments let you further customize your Guardian's build. You can purchase Fragments for Light subclasses from Ikora Rey.
+			/// <para/>
+			/// 	You can find Ikora Rey at the Bazaar in the Tower.
+			/// <para/>
+			/// </summary>
+			public const uint PurchaseFragments = 711326297;
 			public const uint ITemperament = 546263784;
 			public const uint LETTER6 = 3167963645;
 			/// <summary>
@@ -6587,9 +7384,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MasteroftheHunt = 1363459558;
 			/// <summary>
-			/// 	Masterwork a piece of armor.
+			/// 	Complete the "Vow of Disciple" raid.
 			/// </summary>
-			public const uint ApexArmorer = 2798803670;
+			public const uint VowoftheDisciple_426817434 = 426817434;
 			/// <summary>
 			/// 	Complete Event Challenges during the Festival of the Lost. Progress resets at the end of the event.
 			/// </summary>
@@ -6645,6 +7442,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SavioroftheSevenSeas = 3013301237;
 			public const uint CHAPTER9TRUCE = 1765386735;
 			/// <summary>
+			/// 	Shatter 2 or more opponents within 5 seconds of casting Glacial Quake.
+			/// </summary>
+			public const uint H710Split = 3382376169;
+			/// <summary>
 			/// 	While you have the Sentry Aura in Gambit Prime, win matches, mark Invaders, defeat Blockers before your Primeval has spawned, defeat Taken when your Primeval has spawned, and earn Locksmith Medals.
 			/// </summary>
 			public const uint TriumphantSentry = 884787703;
@@ -6652,6 +7453,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Follow the Exo Stranger into Darkness to unlock pages of this lore book.
 			/// </summary>
 			public const uint TheDarkFuture = 626088741;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3787307395 = 3787307395;
 			/// <summary>
 			/// 	Complete the Scavenger's Den Lost Sector on Master difficulty, solo, flawlessly.
 			/// </summary>
@@ -6669,13 +7474,25 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ReasonfortheSeason = 3617221705;
 			/// <summary>
+			/// 	At the end of the Terminal Overload activity, open Terminal Overload chests. Terminal Overload Key Chests grant additional progress.
+			/// </summary>
+			public const uint TerminalTreasures = 1495499779;
+			/// <summary>
 			/// 	Complete the K1 Logistics Lost Sector on Legend difficulty, without a fireteam.
 			/// </summary>
 			public const uint K1LogisticsSoloLegend = 1887599917;
 			/// <summary>
+			/// 	Complete every step in the "We Stand Unbroken" quest line.
+			/// </summary>
+			public const uint UnbowedUnbent = 2261124988;
+			/// <summary>
 			/// 	Find dead Ghosts left behind on the Moon.
 			/// </summary>
 			public const uint LunasLostAreFound = 446350656;
+			/// <summary>
+			/// 	With any Glaive, defeat Guardians in the Crucible.
+			/// </summary>
+			public const uint GlaiveMastery = 1002967113;
 			/// <summary>
 			/// 	Complete "The Communion" mission on any difficulty.
 			/// </summary>
@@ -6684,18 +7501,30 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
 			public const uint BumpintheNight = 2330294643;
+			public const uint Weaving = 4168416534;
+			public const uint Spinning = 4168416536;
+			public const uint StrandLogIV = 4168416537;
 			public const uint Bluff = 1782077044;
 			/// <summary>
 			/// 	Complete the "Garden of Salvation" raid with a team made entirely of clanmates.
 			/// </summary>
 			public const uint ClanNightGardenofSalvation = 1221037312;
+			public const uint Roving = 4168416538;
 			public const uint BadBeat = 1782077045;
 			/// <summary>
 			/// 	Defeat each of the powerful Nightmares within Haunted Alcoves on the Derelict Leviathan and claim the associated Triumphs.
 			/// </summary>
 			public const uint FeverDream = 1279753168;
+			public const uint StrandLogIII = 4168416539;
 			public const uint Showdown = 1782077046;
+			public const uint Carding = 4168416540;
 			public const uint WinnerTakeAll = 1782077047;
+			public const uint StrandLogII = 4168416541;
+			public const uint StrandLogI = 4168416543;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_4008390657 = 4008390657;
 			/// <summary>
 			/// 	Complete The Conflux Lost Sector on Legend difficulty without a fireteam.
 			/// </summary>
@@ -6705,7 +7534,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AshTray_1500822963 = 1500822963;
 			/// <summary>
-			/// 	Complete "Lake of Shadows" Nightfall on Grandmaster difficulty during Season of the Lost.
+			/// 	Complete the "Lake of Shadows" Nightfall on Grandmaster difficulty during Season of Defiance.
 			/// </summary>
 			public const uint GrandmasterLakeofShadows_2542468646 = 2542468646;
 			/// <summary>
@@ -6721,25 +7550,35 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Challenger_70027490 = 70027490;
 			/// <summary>
-			/// 	Calibrate Kinetic, Energy, and Power weapons. Bonus progress against Champions.
-			/// </summary>
-			public const uint ArmoryWideCalibration = 1049344380;
-			/// <summary>
 			/// 	Trophies from the "Duality" dungeon.
 			/// </summary>
 			public const uint Duality_2105786548 = 2105786548;
+			/// <summary>
+			/// 	Generate Favors in Seasonal activities.
+			/// <para/>
+			/// 	All members of your current fireteam contribute to overall progress.
+			/// <para/>
+			/// </summary>
+			public const uint FavoredLiberator_219004145 = 219004145;
 			/// <summary>
 			/// 	Complete "Operation: Seraph's Shield" without dying.
 			/// </summary>
 			public const uint FlawlessSeraph = 1168356473;
 			/// <summary>
-			/// 	Complete Sever - Rage.
-			/// </summary>
-			public const uint SeverRage = 3331513040;
-			/// <summary>
-			/// 	Complete "Duality" dungeon Triumphs to unlock this dungeon Seal.
+			/// 	Complete "Duality" dungeon Triumphs to unlock this dungeon Title.
 			/// </summary>
 			public const uint Duality_3097916612 = 3097916612;
+			/// <summary>
+			/// 	Equip an Economic or Tracking mod on your Ghost.
+			/// <para/>
+			/// 	The Ghost's Economic mod socket can accept mods that boost your acquisition of Glimmer or loot.
+			/// <para/>
+			/// 	The Tracking mod socket can accept mods that track caches or resource nodes.
+			/// <para/>
+			/// 	Increase the energy of your Ghost to apply more powerful mods.
+			/// <para/>
+			/// </summary>
+			public const uint UpgradingYourGhost = 881855337;
 			/// <summary>
 			/// 	Defeat Wrathborn in the Dreaming City with specific weapons:
 			/// <para/>
@@ -6768,6 +7607,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrossedthePlatinumthreshold = 3597558778;
 			/// <summary>
+			/// 	Complete the Exotic weapon mission "Spark of Hope" to obtain Riskrunner.
+			/// <para/>
+			/// 	Exotic weapons provide unique effects and are a critical part of your Guardian's loadout. You can only equip one Exotic weapon at a time.
+			/// <para/>
+			/// 	There are many different ways that Exotic weapons can be acquired, including by completing Exotic quests.
+			/// <para/>
+			/// </summary>
+			public const uint AcquireRiskrunner = 448445933;
+			/// <summary>
 			/// 	Defeat combatants with Submachine Guns.
 			/// </summary>
 			public const uint SubmachineGunAptitude = 3962250723;
@@ -6787,6 +7635,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RatKingCatalyst = 209320411;
 			public const uint TheLongGoodbye = 3629524564;
+			/// <summary>
+			/// 	Complete all Lightfall Triumphs.
+			/// </summary>
+			public const uint Lightfall = 3906538939;
 			/// <summary>
 			/// 	Complete "Operation: Seraph's Shield" solo without dying.
 			/// </summary>
@@ -6812,7 +7664,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SeasonedinDarkness = 949292420;
 			/// <summary>
-			/// 	Complete "The Glassway" Nightfall on Grandmaster difficulty during Season of the Seraph.
+			/// 	Complete "The Glassway" Nightfall on Grandmaster difficulty during Season of Defiance.
 			/// </summary>
 			public const uint GrandmasterTheGlassway_2520907454 = 2520907454;
 			/// <summary>
@@ -6836,6 +7688,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete a strike within the class-specific Vanguard playlist.
 			/// </summary>
 			public const uint WorldClassStriker = 3574323179;
+			/// <summary>
+			/// 	Complete the "Grasp of Avarice" dungeon.
+			/// </summary>
+			public const uint GraspofAvarice = 1894646801;
 			/// <summary>
 			/// 	Complete the Nightmare Hunt: Fear time trial on Master difficulty.
 			/// </summary>
@@ -6866,6 +7722,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat the Odynom lurking in mission "Dark Monastery."
 			/// </summary>
 			public const uint OdynomNomNom = 706245072;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3743137436 = 3743137436;
 			/// <summary>
 			/// 	Rapidly defeat combatants with weapons to earn Vanguard Medals.
 			/// </summary>
@@ -6911,6 +7771,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Bake each of the cookies in the Dawning Oven.
 			/// </summary>
 			public const uint AdeptBaker = 3620145324;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3838502045 = 3838502045;
 			public const uint H725321602 = 725321602;
 			/// <summary>
 			/// 	Bake each of the cookies in the Dawning Oven.
@@ -6937,9 +7801,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TooFastTwoGorgons = 1803186219;
 			/// <summary>
+			/// 	Complete Gunsmith bounties to earn Enhancement Cores.
+			/// </summary>
+			public const uint EnhancementCores = 4161222123;
+			/// <summary>
 			/// 	Score or witness a perfect round of the Tire Game on the Moon.
 			/// </summary>
 			public const uint NoPressure = 1863907776;
+			/// <summary>
+			/// 	Defeat targets with Swords, Bows, and Glaives in Gambit. Bonus progress for defeating Guardians.
+			/// </summary>
+			public const uint RazorsEdge = 83695884;
 			/// <summary>
 			/// 	During Season of Arrivals, deposit Motes and defeat combatants with precision final blows in Gambit.
 			/// </summary>
@@ -6965,6 +7837,29 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OnceMoreintotheDarkness = 3859629029;
 			/// <summary>
+			/// 	Earn the Gambit ornament for Ecliptic Distaff.
+			/// </summary>
+			public const uint GambitDecorEclipticDistaff = 2480493659;
+			/// <summary>
+			/// 	Complete Legend Lost Sectors solo.
+			/// <para/>
+			/// 	Each day, one Lost Sector is available to play on Legend difficulty. Completing it solo grants an opportunity for much rarer rewards, at a greatly increased combat difficulty.
+			/// <para/>
+			/// 	You must complete the normal version of a Lost Sector to unlock the Legend version.
+			/// <para/>
+			/// 	The most recent Exotic armor pieces can only be acquired through completing Legend Lost Sectors solo.
+			/// <para/>
+			/// </summary>
+			public const uint SoloLegendLostSectors = 1459867496;
+			/// <summary>
+			/// 	Complete the Lightfall campaign.
+			/// </summary>
+			public const uint LightfallCampaign = 2593197663;
+			/// <summary>
+			/// 	Complete the Petra's Run version of the "Last Wish" raid.
+			/// </summary>
+			public const uint PetrasRun = 380332968;
+			/// <summary>
 			/// 	Earn Glory Ranks across all Seasons.
 			/// </summary>
 			public const uint FightforGlory = 4048343545;
@@ -6973,17 +7868,40 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RagnhildD = 220342896;
 			/// <summary>
-			/// 	Complete the Petra's Run version of the "Last Wish" raid.
-			/// </summary>
-			public const uint PetrasRun = 380332968;
-			/// <summary>
 			/// 	Complete the exotic quest "Let Loose Thy Talons".
 			/// </summary>
 			public const uint TalonofLight = 3599376556;
 			/// <summary>
+			/// 	Complete a Nightfall on Legend difficulty.
+			/// <para/>
+			/// 	Nightfalls on Legend have significantly increased difficulty and rewards.
+			/// <para/>
+			/// </summary>
+			public const uint LegendDifficulty = 796031376;
+			/// <summary>
+			/// 	Stun Champions.
+			/// </summary>
+			public const uint AbsolutelyStunning = 1354537127;
+			/// <summary>
 			/// 	Acquire a white glow for a piece of Magnificent Solstice Armor by completing its armor objective.
 			/// </summary>
 			public const uint FlashofDaylight = 990749538;
+			/// <summary>
+			/// 	Complete a Nightfall on Legend with Platinum rewards.
+			/// <para/>
+			/// 	Defeat all Champions within the Nightfall to earn Platinum rewards.
+			/// <para/>
+			/// </summary>
+			public const uint LegendaryPlatinumRewards = 796031377;
+			/// <summary>
+			/// 	Complete a Nightfall on Legend with a score of {var:1521543077} or better.
+			/// <para/>
+			/// 	Score is granted for defeating combatants and generating Orbs of Power.
+			/// <para/>
+			/// 	Your score will begin to decrease after 20 minutes.
+			/// <para/>
+			/// </summary>
+			public const uint LegendScore = 796031378;
 			/// <summary>
 			/// 	Complete a Heist Battleground in the playlist or Legend Heist Battleground without dying.
 			/// </summary>
@@ -6999,6 +7917,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
 			public const uint Heritage = 4170453731;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2627701916 = 2627701916;
 			public const uint IIIRitualisticCirclePit = 4251590403;
 			/// <summary>
 			/// 	Complete all encounters in the "Deep Stone Crypt" raid without any member of your fireteam dying.
@@ -7016,6 +7938,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat Cabal while wearing Season of the Chosen armor.
 			/// </summary>
 			public const uint GladiatorsRite = 3390815527;
+			/// <summary>
+			/// 	Complete the "HyperNet Current" strike on any difficulty.
+			/// </summary>
+			public const uint HyperNetCurrent = 983747524;
 			/// <summary>
 			/// 	Complete all encounters in the "Duality" dungeon as a fireteam without dying.
 			/// </summary>
@@ -7062,14 +7988,34 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat combatants using Deathbringer.
 			/// </summary>
 			public const uint DeathbringerCatalyst = 2254190310;
+			public const uint TheCave = 2356964322;
+			public const uint Meaning = 2356964323;
+			/// <summary>
+			/// 	Receive ally and leadership commendations.
+			/// <para/>
+			/// 	Leadership commendations provide bonus progress.
+			/// <para/>
+			/// </summary>
+			public const uint Shepherd = 1726396783;
 			/// <summary>
 			/// 	Spread cheer to those from the Red War by delivering cookies to Devrim Kay, Failsafe, and Xur.
 			/// </summary>
 			public const uint CookieDeliveryRedWar = 2692846776;
+			public const uint ASwordanEdge = 2356964328;
+			public const uint TheArtofSymbiosis = 2356964329;
 			/// <summary>
 			/// 	Loot the Executioner's Hoard chest.
 			/// </summary>
 			public const uint ExecutionersHoard = 395039959;
+			public const uint TheHabitableWorld = 2356964331;
+			/// <summary>
+			/// 	Complete the most recently released dungeon on Master difficulty.
+			/// </summary>
+			public const uint MasterSpelunker = 2736188617;
+			public const uint DarkGlass = 2356964332;
+			public const uint Irae = 2356964333;
+			public const uint TheDarkBelow = 2356964334;
+			public const uint BrassGardeners = 2356964335;
 			/// <summary>
 			/// 	Acquire all Season of the Seraph weapons.
 			/// </summary>
@@ -7080,11 +8026,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GambitRankRituals = 2963266545;
 			public const uint IIIPleaDeal = 2513153442;
-			public const uint IIWake = 2513153443;
 			/// <summary>
 			/// 	Save Osiris from the Hive… and himself.
 			/// </summary>
 			public const uint TrailofVengeance = 399794547;
+			public const uint IIWake = 2513153443;
 			/// <summary>
 			/// 	Listen to all four unique Psionic propaganda messages in the control room of the "Vox Obscura" Exotic quest.
 			/// </summary>
@@ -7094,6 +8040,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Thrifty = 81793239;
 			public const uint IVFewWordsBetweenThem = 2513153445;
+			/// <summary>
+			/// 	Neutralize all Apogee Repeaters in Maya's Retreat.
+			/// </summary>
+			public const uint RetreatRepeaters = 3876820785;
 			/// <summary>
 			/// 	Complete all encounters in the "Vault of Glass" raid with a full fireteam of clanmates.
 			/// </summary>
@@ -7165,6 +8115,14 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint AceofSpadesCatalyst = 836516980;
 			public const uint ENTRY2LustandReappropriationPtI = 1968777143;
 			/// <summary>
+			/// 	Calibrate mid-range weapons—Hand Cannons, Auto Rifles, Glaives, Fusion Rifles, and Machine Guns—in the EDZ. Bonus progress for rapidly defeating combatants.
+			/// </summary>
+			public const uint MidRangeCalibration = 3190868310;
+			/// <summary>
+			/// 	Complete mission "Headlong: Time Trial" in under 6 minutes.
+			/// </summary>
+			public const uint MissionHeadlongTimeTrialBronze = 1455560726;
+			/// <summary>
 			/// 	Complete the exotic quest "Of Queens And Worms"
 			/// </summary>
 			public const uint OfQueensAndWorms = 801645632;
@@ -7216,6 +8174,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IntotheUnknown = 2311966070;
 			/// <summary>
+			/// 	Complete public events and patrols in the Vex Incursion Zone in Neomuna. 
+			/// <para/>
+			/// 	Heroic public events and gold patrols grant additional progress.
+			/// <para/>
+			/// </summary>
+			public const uint Hotspot = 492580427;
+			/// <summary>
 			/// 	Complete the Sepulcher Lost Sector on Legend difficulty, without a fireteam.
 			/// </summary>
 			public const uint SepulcherSoloLegend = 3069389409;
@@ -7249,20 +8214,20 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Locksmith = 3976371416;
 			public const uint FALLING = 359349393;
 			public const uint CONVICTION = 359349394;
-			public const uint PETULANT = 359349395;
 			/// <summary>
 			/// 	In a single life, defeat 50 opposing Guardians.
 			/// </summary>
 			public const uint InsertMedalHere = 380324140;
+			public const uint PETULANT = 359349395;
 			/// <summary>
 			/// 	Instantly eliminate the entire opposing team without any assistance from your teammates.
 			/// </summary>
 			public const uint BringtheDawn = 1005367067;
-			public const uint CONTACT = 359349398;
 			/// <summary>
 			/// 	Shaxx made this for you. Awarded upon earning "[Insert Medal Here]."
 			/// </summary>
 			public const uint IMadeThisforYou = 380324143;
+			public const uint CONTACT = 359349398;
 			/// <summary>
 			/// 	Earn Reckless Endangerment.
 			/// </summary>
@@ -7272,9 +8237,32 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GoldenTicket = 3268633833;
 			/// <summary>
+			/// 	Stun Unstoppable Champions.
+			/// <para/>
+			/// 	[Stagger] Unstoppable Champions relentlessly attack and take drastically reduced damage. 
+			/// <para/>
+			/// 	You can stun them, removing their resistance to damage:
+			/// <para/>
+			/// 	[Arc] when you blind them;
+			/// <para/>
+			/// 	[Stasis] when you shatter them;
+			/// <para/>
+			/// 	 when you suspend them;
+			/// <para/>
+			/// 	[Solar] when you damage them with an ignition; 
+			/// <para/>
+			/// 	[Headshot] when you damage them with a weapon granted the [Stagger] Stagger trait by a Seasonal Artifact perk.
+			/// <para/>
+			/// </summary>
+			public const uint UnstoppableChampions = 3199822344;
+			/// <summary>
 			/// 	Complete the "Rift Generator" public event in the Dreaming City.
 			/// </summary>
 			public const uint TheRiftGenerator = 3486435407;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1164215508 = 1164215508;
 			public const uint ANGER = 726217168;
 			/// <summary>
 			/// 	Defeat an invader in Gambit while carrying 15 Motes.
@@ -7307,15 +8295,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint JadeRabbitCatalyst = 3368860448;
 			public const uint RevelationsandInvitations = 726217182;
+			/// <summary>
+			/// 	Access the hidden hard data deposit.
+			/// </summary>
+			public const uint DataRetrievalHardDataDeposit = 4010172791;
 			public const uint EMPTINESS = 726217183;
+			/// <summary>
+			/// 	Complete mission "Headlong: Time Trial" in under 4 minutes.
+			/// </summary>
+			public const uint MissionHeadlongTimeTrialSilver = 4128079065;
 			/// <summary>
 			/// 	Reset your Crucible Rank within a single Season.
 			/// </summary>
 			public const uint RightBackatItAgain = 2190303633;
-			/// <summary>
-			/// 	Acquire the Crucible ornament for Veles-X.
-			/// </summary>
-			public const uint CrucibleOrnament = 2071363180;
+			public const uint Winnowing = 316531393;
 			/// <summary>
 			/// 	Complete the Hold the Line challenge.
 			/// </summary>
@@ -7356,6 +8349,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ShotgunSolstice_3571955094 = 3571955094;
 			/// <summary>
+			/// 	Complete Defiant Battleground: Cosmodrome.
+			/// </summary>
+			public const uint Sacrosanctifier = 1589893179;
+			/// <summary>
 			/// 	The first exotic Glaive must be unlocked from "Report: REVERSE-LURE."
 			/// <para/>
 			/// 	Subsequent exotic Glaives can be acquired from "The Wellspring" activity.
@@ -7390,6 +8387,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ExoticArchivist = 2192475008;
 			/// <summary>
+			/// 	Collect Stasis Fragments.
+			/// <para/>
+			/// 	Stasis Fragments can be earned via quests from the Exo Stranger once the Beyond Light campaign has been completed.
+			/// <para/>
+			/// </summary>
+			public const uint StasisCollector = 1931439047;
+			/// <summary>
 			/// 	Eliminate the Mad Bomber.
 			/// </summary>
 			public const uint WANTEDTheMadBomber = 3466723227;
@@ -7397,6 +8401,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	As a Gunslinger, get kills with Swarm Grenades.
 			/// </summary>
 			public const uint NoEscape_946575159 = 946575159;
+			public const uint TheTower = 2756765047;
 			/// <summary>
 			/// 	Complete the following objective to discover this Prismatic Lens and gain access to this Focused Umbral Engram.
 			/// </summary>
@@ -7424,7 +8429,8 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Acquire catalysts for Exotic weapons.
 			/// </summary>
-			public const uint CatalystCollector = 4279903136;
+			public const uint CatalystCollector_4279903136 = 4279903136;
+			public const uint Phot0n = 3429376109;
 			/// <summary>
 			/// 	Defeat Dûl Incaru, the Eternal Return, without allowing any of her Fatesmiths to respawn.
 			/// </summary>
@@ -7441,10 +8447,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Land the first elimination of a match.
 			/// </summary>
 			public const uint TheBeginning = 976378567;
-			/// <summary>
-			/// 	In Ketchcrash, destroy shield generators in the Maintenance Bay, hack terminals in the Treasure Hoard, and destroy storage tanks in Ether Storage.
-			/// </summary>
-			public const uint KetchcrasherI = 4064751954;
 			/// <summary>
 			/// 	Complete the "Deep Stone Crypt" raid within the first 24 hours of release.
 			/// </summary>
@@ -7484,9 +8486,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Longshot = 1928887199;
 			/// <summary>
-			/// 	Defeat combatants with Void or Stasis effects in Vanguard playlists.
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
-			public const uint CosmicChill = 1939690206;
+			public const uint DimensionalHypotrochoid = 170523067;
 			/// <summary>
 			/// 	Fully Masterwork Legendary weapons.
 			/// </summary>
@@ -7520,10 +8522,18 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionsRite = 755076020;
 			/// <summary>
+			/// 	Access the hidden disposal subject data.
+			/// </summary>
+			public const uint DataRetrievalDisposalSubject = 644646338;
+			/// <summary>
 			/// 	Defeat combatants with Solar abilities.
 			/// </summary>
 			public const uint Pyromania_4212340776 = 4212340776;
 			public const uint FinalEntry = 1724368907;
+			/// <summary>
+			/// 	Acquire Seasonal ranks.
+			/// </summary>
+			public const uint SeasonalRanks_793609563 = 793609563;
 			/// <summary>
 			/// 	Masterwork any piece of Majestic Solstice armor.
 			/// </summary>
@@ -7540,6 +8550,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete Presage Solo without dying.
 			/// </summary>
 			public const uint LoneGuninaDarkPlace = 4206923617;
+			/// <summary>
+			/// 	Increase your Power bonus from the Seasonal Artifact.
+			/// <para/>
+			/// 	The Power bonus is increased by earning XP.
+			/// <para/>
+			/// </summary>
+			public const uint ArtifactPowerBonus = 26202524;
 			/// <summary>
 			/// 	Earn the Machine Gun, Chain of Command.
 			/// </summary>
@@ -7569,6 +8586,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint BackintheFight = 1774860532;
 			public const uint TheSpark = 4134575307;
 			/// <summary>
+			/// 	Complete a Master Lost Sector solo without dying.
+			/// </summary>
+			public const uint MasterStayingAlive = 3278854958;
+			/// <summary>
 			/// 	Elimination: Eliminate both an opponent who was just revived and the opponent who revived them.
 			/// </summary>
 			public const uint OldestTrickintheBook = 1774860533;
@@ -7594,6 +8615,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Steamroller = 1159590910;
 			/// <summary>
+			/// 	Acquire the Gambit ornament for Ecliptic Distaff.
+			/// </summary>
+			public const uint DefiantGambitOrnament = 2886920487;
+			/// <summary>
 			/// 	Defeat targets anywhere in the system. Defeating Guardians awards bonus progress.
 			/// </summary>
 			public const uint LikeWildfire_1511429394 = 1511429394;
@@ -7605,9 +8630,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WatchtheThrone = 451978683;
 			/// <summary>
-			/// 	In the Cosmodrome, earn progress by completing bounties, patrols, public events, and Lost Sectors.
+			/// 	Defeat targets with the Exotic bow Verglas Curve.
+			/// <para/>
+			/// 	Each Season there is a new Exotic weapon earned via the Season Pass.
+			/// <para/>
 			/// </summary>
-			public const uint CosmodromeActivities = 3206851386;
+			public const uint VerglasCurve = 781235172;
 			/// <summary>
 			/// 	Complete the flawless version of the "Scourge of the Past" raid.
 			/// </summary>
@@ -7645,16 +8673,30 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AugmentEternity = 1744273699;
 			/// <summary>
+			/// 	Spend a Defiant Key to earn bonus rewards at the end of a Defiant Battlegrounds playlist activity.
+			/// <para/>
+			/// 	Defiant Keys can be earned by completing Lightfall campaign missions, Terminal Overload in Neomuna, raids, Vanguard Ops playlist activities, Gambit matches, and Crucible matches.
+			/// <para/>
+			/// </summary>
+			public const uint LegionsBounty = 3351530130;
+			/// <summary>
 			/// 	Complete all encounters in the "Garden of Salvation" raid without any member of your fireteam dying.
 			/// </summary>
 			public const uint InherentPerfection = 1522774125;
-			/// <summary>
-			/// 	Acquire the Vanguard ornament for Veles-X.
-			/// </summary>
-			public const uint VanguardOrnament = 3768410463;
 			public const uint H2794533131 = 2794533131;
 			public const uint GhostFragmentErisMornsGhost = 4292949216;
+			/// <summary>
+			/// 	Defeat combatants with Season of Defiance weapons. These are Perpetualis, Prodigal Return, Regnant, Caretaker, Raconteur, and Royal Executioner.
+			/// <para/>
+			/// 	Bonus progress awarded for combatant defeated in Seasonal activities.
+			/// <para/>
+			/// </summary>
+			public const uint DefiantlyDefeated = 421678363;
 			public const uint GhostFragmentGimble4sGhost = 4292949217;
+			/// <summary>
+			/// 	Claim Titles.
+			/// </summary>
+			public const uint Titles_2309499430 = 2309499430;
 			public const uint GhostFragmentSaiMotasGhost = 4292949218;
 			/// <summary>
 			/// 	While wearing a Festival mask, complete dungeons, raids, Master or Grandmaster Nightfalls, or win rounds in the Trials of Osiris.
@@ -7705,17 +8747,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Vantage = 3320397091;
 			/// <summary>
+			/// 	Complete the Thrilladrome Lost Sector on Legend difficulty, without a fireteam.
+			/// </summary>
+			public const uint ThrilladromeSoloLegend = 3814890698;
+			/// <summary>
 			/// 	Collect all the "Call of the Cryptolith" lore book pages.
 			/// </summary>
 			public const uint CalloftheCryptolith = 2258833243;
 			/// <summary>
-			/// 	Complete "The Lightblade" Nightfall on Grandmaster difficulty during Season of Plunder.
-			/// </summary>
-			public const uint GrandmasterTheLightblade = 2742680542;
-			/// <summary>
 			/// 	While you have the Reaper Aura in Gambit Prime, win matches, defeat combatants, defeat high-value targets, defeat Blockers and envoys, and earn Massacre Medals.
 			/// </summary>
 			public const uint TriumphantReaper = 370877867;
+			/// <summary>
+			/// 	Complete "The Lightblade" Nightfall on Grandmaster difficulty during Season of Plunder.
+			/// </summary>
+			public const uint GrandmasterTheLightblade = 2742680542;
 			/// <summary>
 			/// 	Defeat combatants with Grenade Launchers.
 			/// </summary>
@@ -7724,31 +8770,43 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	As a Stormcaller, defeat targets with Chain Lightning.
 			/// </summary>
 			public const uint ChainedUp = 1096850281;
+			public const uint TheStargazer = 2376815632;
 			/// <summary>
 			/// 	As an invader in Gambit, heal the enemy team's Primeval by destroying an opposing Guardian.
 			/// </summary>
 			public const uint HealByDeath = 3804369761;
+			public const uint TheBluejay = 2376815634;
+			public const uint LaminakLi = 2376815635;
 			/// <summary>
 			/// 	Complete the Ascendant time trial in the Keep of Honed Edges.
 			/// </summary>
 			public const uint HonedforSpeed = 3136361071;
+			public const uint TheMaelstrom = 2376815636;
+			public const uint ConradJain = 2376815637;
 			public const uint H2126152885 = 2126152885;
 			/// <summary>
 			/// 	Defeat combatants or Guardians with Solar weapons or abilities.
 			/// </summary>
 			public const uint Snowmelt = 1976289787;
+			public const uint TheStrider = 2376815638;
 			/// <summary>
 			/// 	Complete the Coup de Grâce mission.
 			/// </summary>
 			public const uint Wrathender = 2399129006;
+			public const uint SedderikAssur = 2376815639;
 			/// <summary>
 			/// 	Investigate the Well.
 			/// </summary>
 			public const uint BornofDarkness = 195755550;
+			public const uint MikaelaJulaha = 2376815641;
 			/// <summary>
 			/// 	Investigate Hive activity at the shrine near the Abbey of Whispers.
 			/// </summary>
 			public const uint TheDarkRitual = 195755551;
+			/// <summary>
+			/// 	Acquire the Vanguard ornament for Ecliptic Distaff.
+			/// </summary>
+			public const uint DefiantVanguardOrnament = 494129695;
 			/// <summary>
 			/// 	Defeat challenging Fallen or Hive while wearing pieces of seasonal armor. More pieces of armor grant more efficient progress.
 			/// </summary>
@@ -7758,15 +8816,22 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BayofDrownedWishesSoloLegend = 2193406386;
 			public const uint ESTHESIA = 2483327952;
+			/// <summary>
+			/// 	Defeat Taken in Gambit. Earn bonus progress for defeating tougher combatants.
+			/// </summary>
+			public const uint PrimevalEntourage = 2681323278;
 			public const uint ALGIA = 2483327953;
 			public const uint RRHEXIS = 2483327954;
 			public const uint LYSIS = 2483327955;
+			public const uint WhatItMeans = 2002139996;
 			/// <summary>
 			/// 	Complete "The Arkborn" in the Menagerie with time left on the clock.
 			/// </summary>
 			public const uint FasterthanLightning_4249611904 = 4249611904;
 			public const uint CENTESIS = 2483327957;
+			public const uint TheTraveler = 2002139998;
 			public const uint RRHAPHY = 2483327958;
+			public const uint AGuardiansBestFriend = 2002139999;
 			public const uint TAXIA = 2483327959;
 			/// <summary>
 			/// 	Find and defeat powerful Nightmares unleashed to wander the Moon.
@@ -7776,6 +8841,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Rapidly defeat 5 opposing Guardians.
 			/// </summary>
 			public const uint GimmeFive = 2518311239;
+			/// <summary>
+			/// 	In Gambit, defeat targets with a Strand, Solar, or Void subclass equipped. Bonus progress is awarded for ability final blows and defeating Guardians.
+			/// </summary>
+			public const uint WarpandWeft = 1902293949;
 			/// <summary>
 			/// 	Unlock Artifact mods on your Seraph Cipher.
 			/// </summary>
@@ -7840,6 +8909,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	In the Vex Offensive, defeat the Undying Mind.
 			/// </summary>
 			public const uint FinalAssault = 2028348378;
+			/// <summary>
+			/// 	Complete the Thrilladrome Lost Sector on Master difficulty, solo, flawlessly.
+			/// </summary>
+			public const uint ThrilladromeFlawlessSoloMastery = 3100330213;
 			/// <summary>
 			/// 	Complete the following objective to discover this Prismatic Lens and gain access to this Focused Umbral Engram.
 			/// </summary>
@@ -7922,6 +8995,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GamblersGarb = 2956332015;
 			/// <summary>
+			/// 	Unlock artifact mods.
+			/// </summary>
+			public const uint ModCollector_1625955652 = 1625955652;
+			/// <summary>
+			/// 	Increase your commendation score to 750.
+			/// <para/>
+			/// 	Earn a commendation score by receiving commendations from other players.
+			/// <para/>
+			/// </summary>
+			public const uint Liked = 295409160;
+			/// <summary>
+			/// 	Trophies from Neomuna, Neptune.
+			/// </summary>
+			public const uint NeomuniSouvenirs_1418003 = 1418003;
+			/// <summary>
 			/// 	Complete the activity "Harbinger" in 15 minutes or less.
 			/// </summary>
 			public const uint HunterKiller = 792485998;
@@ -7949,9 +9037,28 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BastionCatalyst = 2660706768;
 			/// <summary>
+			/// 	Unlock Artifact mods on your Ascendant Scepter.
+			/// </summary>
+			public const uint AscendantScepterMods = 1282918976;
+			/// <summary>
 			/// 	Complete the Templar challenge mode.
 			/// </summary>
 			public const uint OutofItsWay = 154213552;
+			/// <summary>
+			/// 	Acquire Seasonal ranks.
+			/// </summary>
+			public const uint SeasonalRanks_2964686120 = 2964686120;
+			/// <summary>
+			/// 	Complete Seasonal Challenges.
+			/// </summary>
+			public const uint SeasonalChallenges_2964686122 = 2964686122;
+			/// <summary>
+			/// 	Complete the current Seasonal activity or Exotic quest on the highest difficulty.
+			/// <para/>
+			/// 	Each Season, at least one activity has selectable difficulty.
+			/// <para/>
+			/// </summary>
+			public const uint SeasonalDifficulty = 2964686123;
 			/// <summary>
 			/// 	Defeat Nightmares at the Altars of Sorrow.
 			/// </summary>
@@ -7977,9 +9084,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SafeHarbor_1734231927 = 1734231927;
 			/// <summary>
-			/// 	Unlock artifact mods.
+			/// 	Complete the "Final Strand" quest from the Pouka Pond in the Hall of Heroes in Neomuna.
 			/// </summary>
-			public const uint ModCollector_3446890372 = 3446890372;
+			public const uint TheFinalStrand = 293470650;
+			/// <summary>
+			/// 	Increase your Power to the pinnacle cap of {var:1131227462}.
+			/// <para/>
+			/// 	You must earn gear via pinnacle rewards to reach the pinnacle cap. Once you reach the pinnacle cap, you may only earn more Power via the Seasonal Artifact.
+			/// <para/>
+			/// </summary>
+			public const uint PinnacleCap = 3618780311;
+			/// <summary>
+			/// 	Complete the "Breakneck" mission on any difficulty.
+			/// </summary>
+			public const uint Breakneck = 4209283181;
 			public const uint AFriendlyFace = 2198689344;
 			public const uint NoSuchThingasCoincidence = 2198689345;
 			/// <summary>
@@ -7993,13 +9111,13 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint VoidBorne = 3292013040;
 			public const uint ATaleTwiceTold = 2198689347;
 			/// <summary>
-			/// 	Complete the "Crown of Sorrow" raid with a fireteam made entirely of Solar subclasses.
-			/// </summary>
-			public const uint SolarBorne = 3292013041;
-			/// <summary>
 			/// 	In strike "The Hollowed Lair," capture two Scorn sync plates within 3 seconds of each other.
 			/// </summary>
 			public const uint MineNow = 357361926;
+			/// <summary>
+			/// 	Complete the "Crown of Sorrow" raid with a fireteam made entirely of Solar subclasses.
+			/// </summary>
+			public const uint SolarBorne = 3292013041;
 			public const uint Rumors = 2198689348;
 			/// <summary>
 			/// 	Complete the flawless version of the "Crown of Sorrow" raid.
@@ -8027,6 +9145,14 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ATouchofStyle = 2198689352;
 			public const uint ANoteofWarning = 2198689353;
 			/// <summary>
+			/// 	Acquire each of the 3 Vexcalibur catalysts.
+			/// </summary>
+			public const uint FirmwareUpdate = 1121612694;
+			/// <summary>
+			/// 	Achieve a Glory Rank win streak during Season 12.
+			/// </summary>
+			public const uint Season12GloryStreak = 379209692;
+			/// <summary>
 			/// 	Complete the "Crown of Sorrow" raid.
 			/// </summary>
 			public const uint IntheShadowoftheKingdomofSorrow = 3292013047;
@@ -8035,13 +9161,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SidearmAptitude = 215660405;
 			/// <summary>
-			/// 	Achieve a Glory Rank win streak during Season 12.
-			/// </summary>
-			public const uint Season12GloryStreak = 379209692;
-			/// <summary>
 			/// 	With any Scout Rifle, defeat Guardians in the Crucible and earn the medal "Field Scout."
 			/// </summary>
 			public const uint ScoutRifleMastery_2604627899 = 2604627899;
+			/// <summary>
+			/// 	Defeat combatants with Strand abilities while in the Vex Incursion Zone in Neomuna.
+			/// </summary>
+			public const uint UnravelingtheVexNet = 1790292939;
 			/// <summary>
 			/// 	Unlock Chapter 9 of the "Tales of the Forgotten – Vol. 2."
 			/// <para/>
@@ -8060,6 +9186,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Find all Warmind Nodes across the system.
 			/// </summary>
 			public const uint NodesFound = 268471101;
+			/// <summary>
+			/// 	Complete a Partition solo.
+			/// </summary>
+			public const uint AdministrativeAccess = 2342083191;
 			/// <summary>
 			/// 	Complete the Bonfire Bash activity.
 			/// </summary>
@@ -8130,6 +9260,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AscendantChampion = 3067088581;
 			/// <summary>
+			/// 	Access the hidden substrate data.
+			/// </summary>
+			public const uint DataRetrievalSubstrate = 2689825224;
+			/// <summary>
 			/// 	Purchase Epic Mystery Grab Bags from Eva.
 			/// </summary>
 			public const uint MysteryMeet = 2260243645;
@@ -8150,6 +9284,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeerintheHeadlights = 3440716630;
 			/// <summary>
+			/// 	Acquire Favors of Justice in a Season of Defiance activity.
+			/// </summary>
+			public const uint BendTowardJustice = 1061191131;
+			/// <summary>
 			/// 	Inspire Dawning Spirit in the people of the Last City.
 			/// </summary>
 			public const uint GetintheSpirit = 3692735918;
@@ -8161,6 +9299,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Acquire the Weapon Pattern for 3 Season of the Seraph weapons.
 			/// </summary>
 			public const uint WeaponsManufacturer = 661672610;
+			/// <summary>
+			/// 	Complete Nightfalls and earn Platinum rewards.
+			/// <para/>
+			/// 	Defeat all Champions within the Nightfall to earn Platinum rewards.
+			/// <para/>
+			/// </summary>
+			public const uint PlatinumRewards = 3900943282;
+			/// <summary>
+			/// 	Complete the Thrilladrome Lost Sector on Master difficulty, without a fireteam.
+			/// </summary>
+			public const uint ThrilladromeSoloMastery = 1364118393;
 			/// <summary>
 			/// 	Defeat Guardians in Crucible with any of the following ritual weapons: Reckless Endangerment, Chain of Command, Cry Mutiny, or Veles-X.
 			/// </summary>
@@ -8181,6 +9330,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	A distress signal from a person of interest may be the key to uncovering what Darkness has in store for us on Europa.
 			/// </summary>
 			public const uint BeyondLightChapter1 = 1209487292;
+			/// <summary>
+			/// 	Activate perks from your Seasonal Artifact.
+			/// <para/>
+			/// 	Seasonal Artifact perks provide bonuses to your Guardian for the entire Season.
+			/// <para/>
+			/// </summary>
+			public const uint SeasonalArtifactPerks = 1631932536;
 			/// <summary>
 			/// 	Find and listen to Toland stories surrounding the Moon by completing scan patrols.
 			/// </summary>
@@ -8218,9 +9374,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OGraveRobberMine = 4175199845;
 			/// <summary>
+			/// 	Increase the number of Legendary armor pieces in your collection.
+			/// </summary>
+			public const uint CollectArmor = 2801866667;
+			/// <summary>
 			/// 	As a fireteam, defeat 10 combatants.
 			/// </summary>
 			public const uint FireteamSpree = 1382657670;
+			/// <summary>
+			/// 	Listen to all of Osiris's notes on the five damage types.
+			/// </summary>
+			public const uint ForcesoftheUniverse = 1168092968;
 			/// <summary>
 			/// 	Defeat bosses on either the Tangled Shore or Dreaming City with a seasonal weapon.
 			/// </summary>
@@ -8324,13 +9488,23 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Reckoner = 2472740040;
 			/// <summary>
-			/// 	Complete each Heist Battleground on Legend difficulty.
-			/// </summary>
-			public const uint LegendHeistBattlegroundsII = 1241475501;
-			/// <summary>
 			/// 	Complete Nightfall strike "The Corrupted" by defeating Sedia using no more than two relics.
 			/// </summary>
 			public const uint RelicRumble = 3243025800;
+			/// <summary>
+			/// 	Earn Favors of Justice, Grace, and Zeal during Season of Defiance activities.
+			/// <para/>
+			/// 	Bonus progress awarded for Favors earned during activities on Legend difficulty.
+			/// <para/>
+			/// </summary>
+			public const uint FavoredWarrior_1618224009 = 1618224009;
+			/// <summary>
+			/// 	Earn Favors of Justice, Grace, and Zeal during Season of Defiance activities.
+			/// <para/>
+			/// 	Bonus progress awarded for Favors earned during activities on Legend difficulty.
+			/// <para/>
+			/// </summary>
+			public const uint FavoredWarrior_1618224010 = 1618224010;
 			/// <summary>
 			/// 	Obsidian Accelerator obtained
 			/// </summary>
@@ -8364,6 +9538,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ExcavationSiteXIISoloMastery = 3685948858;
 			/// <summary>
+			/// 	Defeat targets while using Verglas Curve.
+			/// </summary>
+			public const uint VerglasCurveCatalyst = 788492661;
+			/// <summary>
 			/// 	Complete the Battleground: Behemoth introduction mission.
 			/// </summary>
 			public const uint ImperialCavalry = 2965559267;
@@ -8380,6 +9558,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DaretoDream_2900884529 = 2900884529;
 			/// <summary>
+			/// 	Defeat Taken and Vex bosses in Vanguard playlists or strikes.
+			/// </summary>
+			public const uint AdversariesofHumanity = 742263165;
+			/// <summary>
 			/// 	Rapidly defeat 3 combatants frozen by Stasis weapons or abilities.
 			/// </summary>
 			public const uint OnThinIce = 1593394595;
@@ -8387,6 +9569,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat Inomina, Plague of the Well, at the Blind Well in the Dreaming City.
 			/// </summary>
 			public const uint TheTakenChampion = 1948649025;
+			/// <summary>
+			/// 	Defeat Brakion in //node.ovrd.AVALON//.
+			/// </summary>
+			public const uint BringMeItsHead = 2050760442;
 			/// <summary>
 			/// 	Defeat Sikariis, Plague of the Well, at the Blind Well in the Dreaming City.
 			/// </summary>
@@ -8400,13 +9586,18 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheHiveChampion = 1948649027;
 			/// <summary>
+			/// 	Commend other players in Vanguard Ops.
+			/// <para/>
+			/// 	You can give other players commendations during the mission summary.
+			/// <para/>
+			/// 	You can bring up the mission summary early by pressing  [Back] during the end-of-mission countdown.
+			/// <para/>
+			/// </summary>
+			public const uint Commendations = 3071126945;
+			/// <summary>
 			/// 	Trophies from the Throne World.
 			/// </summary>
 			public const uint ThroneWorldCollector_268771181 = 268771181;
-			/// <summary>
-			/// 	On the Moon, earn progress by completing bounties, patrols, public events, and Lost Sectors.
-			/// </summary>
-			public const uint MoonActivities = 3218617235;
 			/// <summary>
 			/// 	Acquire a piece of the Reverie Dawn armor set.
 			/// </summary>
@@ -8463,6 +9654,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheEmperorsGladiator = 1589566794;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2742412203 = 2742412203;
+			/// <summary>
 			/// 	Earn the Exotic Sword Heartshadow.
 			/// </summary>
 			public const uint AssassinsLament = 3475888069;
@@ -8477,19 +9672,34 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Complete a match in which you are never defeated by an opponent.
 			/// </summary>
-			public const uint Undefeated = 1708014788;
+			public const uint Undefeated_1708014788 = 1708014788;
 			/// <summary>
 			/// 	Complete all Season 12 Grandmaster Triumphs.
 			/// </summary>
 			public const uint Conqueror_4167244320 = 4167244320;
 			/// <summary>
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
+			/// </summary>
+			public const uint VoltaBracket = 1517724383;
+			/// <summary>
 			/// 	Complete Sever - Resolve.
 			/// </summary>
 			public const uint SeverResolve = 191574306;
 			/// <summary>
+			/// 	Complete the featured Nightfall on Grandmaster difficulty.
+			/// <para/>
+			/// 	Grandmaster is the most difficult version of a strike. Completing Grandmaster Nightfalls gives the greatest reward with the highest degree of challenge.
+			/// <para/>
+			/// </summary>
+			public const uint GrandmasterNightfall = 2291721577;
+			/// <summary>
 			/// 	Complete "Hard Evidence."
 			/// </summary>
 			public const uint HardEvidence = 1869446461;
+			/// <summary>
+			/// 	Acquire Seasonal ranks.
+			/// </summary>
+			public const uint SeasonalRanks_842597265 = 842597265;
 			/// <summary>
 			/// 	Number of Guardians you defeated as an Invader in Gambit.
 			/// </summary>
@@ -8558,6 +9768,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat Ignition Carriers in the Bonfire Bash.
 			/// </summary>
 			public const uint GoodIgnite_4099905795 = 4099905795;
+			public const uint TheLeadersWhoGuideUs = 3241396275;
 			public const uint H3257285148 = 3257285148;
 			/// <summary>
 			/// 	Uncover the Dead Man's Tale.
@@ -8670,6 +9881,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Abandoned = 339807822;
 			/// <summary>
+			/// 	Complete "The Final Strand" quest.
+			/// <para/>
+			/// 	Also, rapidly defeat combatants throughout Neomuna. Bonus for Sidearm final blows.
+			/// <para/>
+			/// </summary>
+			public const uint Strandweaver = 3385407952;
+			/// <summary>
 			/// 	Complete all encounters in the "Duality" dungeon with a full fireteam of the same class.
 			/// </summary>
 			public const uint UnitedinClass = 3200960029;
@@ -8677,13 +9895,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Investigate the Harrowed Cliffs.
 			/// </summary>
 			public const uint InShadow = 339807823;
-			/// <summary>
-			/// 	Defeat targets with Arc or Stasis Supers.
-			/// <para/>
-			/// 	Combatants defeated in Ketchcrash and Expedition, and defeated Guardians will award bonus progress.
-			/// <para/>
-			/// </summary>
-			public const uint Thunderlight = 1409304923;
 			/// <summary>
 			/// 	Complete Nightfall strike "Exodus Crash" and get a great score.
 			/// </summary>
@@ -8739,7 +9950,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Complete the "Garden of Salvation" raid.
 			/// </summary>
-			public const uint GardenofSalvation = 3804486505;
+			public const uint GardenofSalvation_3804486505 = 3804486505;
 			/// <summary>
 			/// 	Complete Black Armory bounties.
 			/// </summary>
@@ -8768,13 +9979,25 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheScoundrelinUniform = 2801938470;
 			/// <summary>
+			/// 	Complete Seasonal Challenges.
+			/// </summary>
+			public const uint SeasonalChallenges_2682993534 = 2682993534;
+			/// <summary>
 			/// 	Complete Nightfall strike "Warden of Nothing" and get a great score.
 			/// </summary>
 			public const uint WardenofNothing_3897693176 = 3897693176;
 			/// <summary>
+			/// 	In the Cosmodrome, earn progress by completing bounties, patrols, public events, and Lost Sectors.
+			/// </summary>
+			public const uint CosmodromeActivities = 4034465530;
+			/// <summary>
 			/// 	Complete private matches in which all players are in the same clan.
 			/// </summary>
 			public const uint ClanUp = 857358007;
+			/// <summary>
+			/// 	Within replayable missions on any difficulty, accumulate a team score.
+			/// </summary>
+			public const uint NeomunaSpecialist = 2705526285;
 			/// <summary>
 			/// 	Complete the "Devious Thievery" challenge mode.
 			/// </summary>
@@ -8792,6 +10015,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TotalConquest = 3034652948;
 			/// <summary>
+			/// 	Earn the Vanguard ornament for Ecliptic Distaff.
+			/// </summary>
+			public const uint VanguardDecorEclipticDistaff = 2315588547;
+			/// <summary>
 			/// 	With any Sniper Rifle, defeat Guardians in the Crucible and land precision final blows. Earn the medal "Mission Control."
 			/// </summary>
 			public const uint SniperRifleMastery_4107780895 = 4107780895;
@@ -8800,6 +10027,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DARCICatalyst = 3589295049;
 			/// <summary>
+			/// 	Complete weekly vendor challenges to acquire powerful rewards.
+			/// <para/>
+			/// 	Powerful rewards increase your Power level beyond the soft cap. They are typically granted via weekly vendor challenges, which appear as blue glyphs on the Destinations screen.
+			/// <para/>
+			/// </summary>
+			public const uint VendorChallenges = 3201824130;
+			/// <summary>
 			/// 	Recover Wilhelm-7's messages.
 			/// </summary>
 			public const uint TheRichestDeadManAlive = 1770021330;
@@ -8807,10 +10041,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the A Link to the Chain challenge.
 			/// </summary>
 			public const uint ALinktotheChain = 637935773;
+			public const uint TheGoldenAge = 4060329176;
 			/// <summary>
 			/// 	Complete all encounters in "King's Fall" with a full fireteam of clanmates.
 			/// </summary>
 			public const uint CourtofJesters = 70932677;
+			public const uint TheCityAge = 4060329178;
+			public const uint TheCollapseandTheDarkAge = 4060329179;
 			/// <summary>
 			/// 	Focus each of the Season of Plunder armor engrams at the Star Chart in the H.E.L.M.
 			/// </summary>
@@ -8823,12 +10060,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
 			public const uint TarnishedMettle = 146759633;
+			/// <summary>
+			/// 	Prepare for the final confrontation with Calus and stop him from reaching the Veil.
+			/// </summary>
+			public const uint LightfallChapter3 = 1194314956;
 			public const uint TotheDrifter = 1078145760;
 			public const uint VancePasseri = 2494852117;
 			/// <summary>
 			/// 	Complete the Scavenger's Den Lost Sector on Master difficulty, without a fireteam.
 			/// </summary>
 			public const uint ScavengersDenSoloMastery = 1282520811;
+			/// <summary>
+			/// 	Master the power of Strand and wield it to protect the city of Neomuna.
+			/// </summary>
+			public const uint LightfallChapter2 = 1194314957;
 			public const uint TotheStranger = 1078145761;
 			public const uint AnaBlackBox = 2494852118;
 			/// <summary>
@@ -8839,9 +10084,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Find all golden region chests on Europa.
 			/// </summary>
 			public const uint RegionChests_2466848483 = 2466848483;
+			/// <summary>
+			/// 	Race against the Shadow Legion to find an ancient artifact and uncover a secret civilization on Neptune.
+			/// </summary>
+			public const uint LightfallChapter1 = 1194314958;
 			public const uint ToAsherMir = 1078145762;
 			public const uint SloaneRiastrad = 2494852119;
 			public const uint ToOsiris = 1078145763;
+			/// <summary>
+			/// 	Shatter 2 or more opponents within 5 seconds of casting Silence and Squall.
+			/// </summary>
+			public const uint SilentBurst = 4293979340;
 			public const uint ToIkoraRey = 1078145764;
 			public const uint ToMyQueen = 1078145766;
 			/// <summary>
@@ -8854,6 +10107,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HandCannonAptitude = 3757110937;
 			/// <summary>
+			/// 	Complete a Light subclass quest from Ikora Rey.
+			/// <para/>
+			/// 	Fragments let you further customize your Guardian's build. You can purchase Fragments for Light subclasses from Ikora Rey.
+			/// <para/>
+			/// 	You can find Ikora Rey at the Bazaar in the Tower.
+			/// <para/>
+			/// </summary>
+			public const uint LightSubclasses = 954226887;
+			/// <summary>
 			/// 	Complete Triumphs to earn the Fractic Spiral Sparrow.
 			/// </summary>
 			public const uint RewardFracticSpiralSparrow = 438409333;
@@ -8862,19 +10124,19 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint VIIISecrets = 358687396;
 			public const uint IXEmbrace = 358687397;
 			public const uint IVWhispers = 358687400;
+			public const uint VPurpose = 358687401;
 			/// <summary>
 			/// 	Collect and mount all unique Lucent Moths in the Throne World.
 			/// </summary>
 			public const uint Lepidopterist = 284821378;
-			public const uint VPurpose = 358687401;
 			public const uint VIFocus = 358687402;
 			public const uint VIIJoining = 358687403;
 			public const uint ICages = 358687405;
+			public const uint IIFreedom = 358687406;
 			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
 			public const uint MidhasReckoning = 2546821156;
-			public const uint IIFreedom = 358687406;
 			/// <summary>
 			/// 	Complete the Bunker E15 Lost Sector on Master difficulty, solo, flawlessly.
 			/// </summary>
@@ -8884,10 +10146,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete "Operation: Seraph's Shield" in under 30 minutes.
 			/// </summary>
 			public const uint SpaceRace = 2659395324;
-			/// <summary>
-			/// 	Score points in Rift. Bonus progress is awarded for igniting the Rift.
-			/// </summary>
-			public const uint SparkDefender = 572808890;
 			/// <summary>
 			/// 	Rapidly defeat 4 opposing Guardians.
 			/// </summary>
@@ -8916,6 +10174,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the "Share the Dawning Spirit" quest.
 			/// </summary>
 			public const uint GiftUnwrapping = 3398830089;
+			public const uint AHumbleThankYou = 183417353;
 			/// <summary>
 			/// 	Rapidly eliminate 2 opponents.
 			/// </summary>
@@ -8978,6 +10237,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GambitPinnacleArsenal = 1581660581;
 			/// <summary>
+			/// 	[Glaive] Final blows in Gambit.
+			/// </summary>
+			public const uint NearorFar = 3819497990;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1589025252 = 1589025252;
+			/// <summary>
 			/// 	Defeat Wrathborn on the Tangled Shore with specific weapons:
 			/// <para/>
 			/// 	Defeat Savek with a Power Grenade Launcher and HKD-1 with a Sword.
@@ -9020,10 +10287,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
 			public const uint TheEpicurean = 1968204778;
-			/// <summary>
-			/// 	Defeat powerful combatants in Gambit. Earn bonus progress for defeating high-value targets.
-			/// </summary>
-			public const uint HighValueHunter = 4081644261;
 			/// <summary>
 			/// 	Acquire the Weapon Pattern for 2 IKELOS v1.0.3 weapons.
 			/// </summary>
@@ -9079,6 +10342,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ThisIstheWay_25634498 = 25634498;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_210713679 = 210713679;
+			/// <summary>
 			/// 	Defeat both Scorn and Taken bosses in the Astral Alignment activity.
 			/// </summary>
 			public const uint BlindWellJustice = 4070362244;
@@ -9113,6 +10380,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AbsoluteForce = 2607171202;
 			public const uint TheStacks = 992371027;
+			/// <summary>
+			/// 	Complete the "King's Fall" raid.
+			/// </summary>
+			public const uint KingsFall_3990841777 = 3990841777;
 			public const uint TheLeviathan = 992371028;
 			/// <summary>
 			/// 	Complete any encounter at the Blind Well in the Dreaming City.
@@ -9136,6 +10407,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TheWitch = 992371032;
 			public const uint TheNine = 992371033;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_4162933187 = 4162933187;
+			/// <summary>
 			/// 	Defeat combatants or Guardians with Stasis weapons or abilities.
 			/// </summary>
 			public const uint DeepFreeze = 3965918325;
@@ -9156,6 +10431,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint UnstoppableGlory = 2990442706;
 			/// <summary>
+			/// 	Once the Riskrunner catalyst has been obtained, open Riskrunner's weapon details and apply the catalyst to the weapon.
+			/// <para/>
+			/// 	Upon completing the catalyst objectives, you will be able to upgrade Riskrunner to Masterwork.
+			/// <para/>
+			/// 	Many Exotic weapons have catalysts, which grant new powers to the weapon when completed and applied.
+			/// <para/>
+			/// </summary>
+			public const uint MasterworkRiskrunner = 1087296870;
+			/// <summary>
 			/// 	As a Dawnblade, get kills with Solar Grenades.
 			/// </summary>
 			public const uint ConsumedbyFire = 2768808826;
@@ -9171,6 +10455,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete a run through the Menagerie in a complete set of Opulent gear.
 			/// </summary>
 			public const uint ImperialFinery = 4289905395;
+			/// <summary>
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
+			/// </summary>
+			public const uint Caretaker_3171877617 = 3171877617;
+			/// <summary>
+			/// 	Complete the Gilded Precept Lost Sector on Master difficulty, without a fireteam.
+			/// </summary>
+			public const uint GildedPreceptSoloMastery = 1478134502;
 			/// <summary>
 			/// 	Complete Werner 99-40's weekly bounties.
 			/// </summary>
@@ -9194,6 +10486,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
+			public const uint RoyalExecutioner = 3393054854;
+			/// <summary>
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
+			/// </summary>
 			public const uint Thoughtless = 3842442685;
 			/// <summary>
 			/// 	As a fireteam, light one lamp each during "The Lamplighting" in the Menagerie.
@@ -9207,6 +10503,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete a Flawless Passage during 4 different weeks throughout the current Season.
 			/// </summary>
 			public const uint ThisIstheWay_3610417687 = 3610417687;
+			/// <summary>
+			/// 	Gain bonus power from your Ascendant Scepter.
+			/// </summary>
+			public const uint AscendantScepterPower = 3422656786;
 			/// <summary>
 			/// 	Rapidly defeat 3 combatants with Kinetic or Stasis weapons.
 			/// </summary>
@@ -9228,9 +10528,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LostSectorMastery = 1794685284;
 			/// <summary>
+			/// 	Decode or focus Defiant Engrams at the War Table during Season of Defiance.
+			/// </summary>
+			public const uint FocusedDefiance = 1850392596;
+			/// <summary>
 			/// 	Complete the "Pit of Heresy" dungeon as a fireteam without dying.
 			/// </summary>
 			public const uint EternalHeretic = 245952203;
+			/// <summary>
+			/// 	Complete Defiant Battleground: EDZ.
+			/// </summary>
+			public const uint RighteousDefiance = 1486278192;
 			/// <summary>
 			/// 	Investigate the Debris Field.
 			/// </summary>
@@ -9244,13 +10552,30 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SpiresReach = 1359171687;
 			/// <summary>
+			/// 	Use abilities to defeat combatants in the Defiant Battlegrounds playlist. Defeating combatants with the Strand subclass will grant bonus progress.
+			/// </summary>
+			public const uint BaneoftheShadowLegion = 1486278195;
+			/// <summary>
 			/// 	Investigate the area below the Warbringer's Tower.
 			/// </summary>
 			public const uint TheDeep = 1359171688;
 			/// <summary>
+			/// 	Apply shaders to your gear.
+			/// <para/>
+			/// 	Shaders allow you to recolor your armor and weapons. You can change the shaders on a piece of gear by looking at the gear's details and then navigating to the appearance screen.
+			/// <para/>
+			/// 	You can find new shaders in the world and at the Eververse Bright Dust store.
+			/// <para/>
+			/// </summary>
+			public const uint Shaders = 3585127134;
+			/// <summary>
 			/// 	Investigate the Debris Field.
 			/// </summary>
 			public const uint PallasiteCache = 1359171689;
+			/// <summary>
+			/// 	Defeat combatants in the Defiant Battlegrounds playlist using Energy weapons. Earn bonus progress if they also deal Void or Arc damage.
+			/// </summary>
+			public const uint CunningLiberator = 1486278197;
 			/// <summary>
 			/// 	Investigate the Debris Field.
 			/// </summary>
@@ -9308,7 +10633,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TimeTrialDespair = 2771763709;
 			/// <summary>
-			/// 	Complete "Proving Grounds" Nightfall on Grandmaster difficulty during Season of the Haunted.
+			/// 	Complete the "Proving Grounds" Nightfall on Grandmaster difficulty during Season of Defiance.
 			/// </summary>
 			public const uint GrandmasterProvingGrounds_2483704578 = 2483704578;
 			/// <summary>
@@ -9356,13 +10681,29 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GiantSlayer = 358929345;
 			/// <summary>
+			/// 	A dependable and battle-proven fighter for the Vanguard who shows flashes of creative brilliance in any firefight.
+			/// </summary>
+			public const uint Veteran = 3694809200;
+			/// <summary>
+			/// 	An accomplished warrior who has bested many of the emerging threats to humanity and is now assembling their fireteam for the Vanguard's most difficult challenges.
+			/// </summary>
+			public const uint Defender = 3694809201;
+			/// <summary>
 			/// 	Complete the bounty "Spoils of War," available from Werner 99-40.
 			/// </summary>
 			public const uint SpoilsofWar = 1719547848;
 			/// <summary>
+			/// 	A student of tactical combat, gathering power, weapons, mods, and armor to earn their place as a Guardian of the Vanguard.
+			/// </summary>
+			public const uint Aspirant = 3694809202;
+			/// <summary>
 			/// 	Complete the "Eater of Worlds" raid.
 			/// </summary>
 			public const uint EaterofWorldsRaid = 1627755918;
+			/// <summary>
+			/// 	A brave soldier in the defense of humanity's last remnants, learning to stand against varied and challenging foes.
+			/// </summary>
+			public const uint Guardian = 3694809203;
 			/// <summary>
 			/// 	Trophies from the "Vault of Glass" raid on Venus.
 			/// </summary>
@@ -9372,9 +10713,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SalvagedGoods = 1719547850;
 			/// <summary>
+			/// 	Eager Guardians expanding their knowledge.
+			/// </summary>
+			public const uint Explorer = 3694809204;
+			/// <summary>
 			/// 	Complete the bounty "Revered Treasures," available from Werner 99-40.
 			/// </summary>
 			public const uint ReveredTreasures = 1719547851;
+			/// <summary>
+			/// 	A well-versed explorer of the Sol System who is growing in strength, discovering abilities, and learning the options in their arsenal.
+			/// </summary>
+			public const uint Initiate = 3694809205;
+			/// <summary>
+			/// 	New Guardians taking their first steps after rising from the grave.
+			/// </summary>
+			public const uint NewLight = 3694809207;
 			/// <summary>
 			/// 	Complete any Empire Hunt on Master difficulty without dying.
 			/// </summary>
@@ -9391,6 +10744,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	As a fireteam, win a Gambit match where a single player deposits 75 Motes, never losing any.
 			/// </summary>
 			public const uint ProtecttheRunner = 2467484432;
+			/// <summary>
+			/// 	Neutralize all Apogee Repeaters in Ahimsa Park.
+			/// </summary>
+			public const uint ParkRepeaters = 3425146071;
+			/// <summary>
+			/// 	These elite Vanguard forces have proven they can defeat humanity's most difficult challenges and are now taking them down, one by one.
+			/// </summary>
+			public const uint Elite = 3694809214;
+			/// <summary>
+			/// 	Leader and mentor to Guardians of all ranks, guiding through actions that inspire others.
+			/// </summary>
+			public const uint Vanquisher = 3694809215;
+			public const uint UnansweredQuestions = 332183763;
 			/// <summary>
 			/// 	Complete the following objective to discover this Prismatic Lens and gain access to this Focused Umbral Engram.
 			/// </summary>
@@ -9412,6 +10778,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PointedInquiry = 689439417;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2764233436 = 2764233436;
+			/// <summary>
 			/// 	Unlock the Stormcaller Warlock subclass.
 			/// </summary>
 			public const uint Stormcaller = 4200405790;
@@ -9420,41 +10790,26 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WANTEDLostSectors_3044914475 = 3044914475;
 			/// <summary>
-			/// 	Complete "Sever - Shame" using only a Solar subclass and Solar, Kinetic, or Stasis weapons.
+			/// 	Complete a Grandmaster Nightfall with a Darkness subclass equipped.
 			/// </summary>
-			public const uint BurningShame = 543484744;
-			/// <summary>
-			/// 	Complete "Sever - Grief" using only a Void subclass and Void, Kinetic, or Stasis weapons.
-			/// </summary>
-			public const uint EmptyGrief = 543484745;
-			/// <summary>
-			/// 	Complete "Sever - Rage" using only an Arc subclass and Arc, Kinetic, or Stasis weapons.
-			/// </summary>
-			public const uint SparkingRage = 543484746;
+			public const uint DarknessMastery = 3467471643;
+			public const uint TheFriendsWeMade = 524009794;
 			/// <summary>
 			/// 	Charge the Wellspring in Defend in under 3 minutes.
 			/// </summary>
 			public const uint SpeedySpring = 984867700;
 			/// <summary>
-			/// 	Complete "Sever - Reconciliation" using only a Void subclass and Void, Kinetic, or Stasis weapons.
+			/// 	Complete a Nightfall at Master difficulty or higher, with a score of {var:3822762186} or more.
 			/// </summary>
-			public const uint NullifyingReconciliation = 543484747;
+			public const uint NightfallScore = 2702956743;
 			/// <summary>
 			/// 	Complete the "And to All a Good Flight" quest.
 			/// </summary>
 			public const uint HungintheHangar = 2261569313;
 			/// <summary>
-			/// 	Complete "Sever - Forgiveness" using only an Arc subclass and Arc, Kinetic, or Stasis weapons.
-			/// </summary>
-			public const uint ShockingForgiveness = 543484748;
-			/// <summary>
 			/// 	Complete this lore book.
 			/// </summary>
 			public const uint Marasenna = 1422763072;
-			/// <summary>
-			/// 	Complete "Sever - Resolve" using only a Solar subclass and Solar, Kinetic, or Stasis weapons.
-			/// </summary>
-			public const uint WarmResolve = 543484749;
 			/// <summary>
 			/// 	Deliver cookies to crafty allies during the Dawning 2021.
 			/// </summary>
@@ -9499,17 +10854,33 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MusicTheoryII = 3257786888;
 			/// <summary>
+			/// 	Complete Week 2 of the "We Stand Unbroken" quest.
+			/// </summary>
+			public const uint AgainsttheShadows = 2688455752;
+			/// <summary>
 			/// 	Find all Warmind Nodes in the mission "Operation: Seraph's Shield."
 			/// </summary>
 			public const uint MusicTheoryIII = 3257786889;
+			/// <summary>
+			/// 	Complete Week 3 of the "We Stand Unbroken" quest.
+			/// </summary>
+			public const uint TheLongestPath = 2688455753;
 			/// <summary>
 			/// 	Find all Warmind Nodes on Europa.
 			/// </summary>
 			public const uint MusicTheoryI = 3257786891;
 			/// <summary>
+			/// 	Complete Week 1 of the "We Stand Unbroken" quest.
+			/// </summary>
+			public const uint AwakenQueensguard = 2688455755;
+			/// <summary>
 			/// 	Complete patrols on any destination to earn Silver Leaves.
 			/// </summary>
 			public const uint Lamplighter_78078228 = 78078228;
+			/// <summary>
+			/// 	Complete Week 4 of the "We Stand Unbroken" quest.
+			/// </summary>
+			public const uint AllThatMatters = 2688455758;
 			/// <summary>
 			/// 	Get kills with Izanagi's Burden at the Izanami Forge.
 			/// </summary>
@@ -9555,6 +10926,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OMurdererMine = 3448775736;
 			/// <summary>
+			/// 	Unlock all Darkness subclasses.
+			/// <para/>
+			/// 	Stasis is unlocked during the Beyond Light campaign and Strand is unlocked during the Lightfall campaign.
+			/// <para/>
+			/// </summary>
+			public const uint DarkWielder = 176988613;
+			/// <summary>
 			/// 	Complete Wayfinder's Voyage, Parts I - VII.
 			/// </summary>
 			public const uint SeekeroftheLost = 2834253762;
@@ -9570,6 +10948,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Unlock any upgrade for the Chalice.
 			/// </summary>
 			public const uint PurchaseMakesPerfect = 1889799275;
+			/// <summary>
+			/// 	Complete the Gilded Precept Lost Sector on Master difficulty, solo, flawlessly.
+			/// </summary>
+			public const uint GildedPreceptFlawlessSoloMastery = 3965949828;
 			/// <summary>
 			/// 	Complete a run through the Heroic Menagerie with a fireteam of three or fewer.
 			/// </summary>
@@ -9587,6 +10969,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SaltySmith = 271695081;
 			/// <summary>
+			/// 	Complete any campaign mission on Master difficulty.
+			/// </summary>
+			public const uint MasterofSurvival = 2537258547;
+			/// <summary>
 			/// 	Defeat Pagouri after luring it to each Vex plate only once.
 			/// </summary>
 			public const uint ComeOutandPlay = 11715692;
@@ -9598,13 +10984,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Earn the complete Menagerie weapon set.
 			/// </summary>
 			public const uint FireIstheTestofGold = 11715693;
-			/// <summary>
-			/// 	Summon crewmates in Expedition and Ketchcrash.
-			/// <para/>
-			/// 	Also, decipher the Medium Treasure Beacon, available from the Star Chart in the H.E.L.M.
-			/// <para/>
-			/// </summary>
-			public const uint SeekersCacheII = 609431010;
 			/// <summary>
 			/// 	Defeat Arunak without defeating any Hive Knights.
 			/// </summary>
@@ -9628,23 +11007,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RememberingtheForgotten24 = 2119330601;
 			/// <summary>
-			/// 	Summon First Mates in Expedition and Ketchcrash.
-			/// <para/>
-			/// 	Also, decipher the Large Treasure Beacon, available from the Star Chart in the H.E.L.M.
-			/// <para/>
-			/// </summary>
-			public const uint SeekersCacheIII = 609431012;
-			/// <summary>
 			/// 	Unlock Chapter 27 of the "Tales of the Forgotten – Vol. 2."
 			/// <para/>
 			/// 	Redeem Manifested Pages at the Book of the Forgotten in the Tower Courtyard to unlock new lore chapters.
 			/// <para/>
 			/// </summary>
 			public const uint RememberingtheForgotten27 = 2119330602;
-			/// <summary>
-			/// 	Level Seasonal Shaped weapons to Level 10.
-			/// </summary>
-			public const uint ShaperII = 609431013;
 			/// <summary>
 			/// 	Complete Contender Cards while Vanguard playlists are the daily focus.
 			/// </summary>
@@ -9663,10 +11031,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint RememberingtheForgotten21 = 2119330604;
-			/// <summary>
-			/// 	Level Seasonal Shaped weapons to Level 20.
-			/// </summary>
-			public const uint ShaperIII = 609431015;
 			/// <summary>
 			/// 	Unlock Chapter 20 of the "Tales of the Forgotten – Vol. 2."
 			/// <para/>
@@ -9700,6 +11064,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete a Legendary Lost Sector without dying.
 			/// </summary>
 			public const uint ObjectOriented = 748164296;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_391307104 = 391307104;
 			/// <summary>
 			/// 	Defeat combatants with Bows.
 			/// </summary>
@@ -9761,6 +11129,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrossedtheSilverthreshold = 1944973870;
 			/// <summary>
+			/// 	Inflict the Unraveled, Severed, and Suspended debuffs upon targets.
+			/// </summary>
+			public const uint TakeaStrand = 3511203074;
+			/// <summary>
 			/// 	As an invader in Gambit, collect 3 Motes in the opposing arena and return safely.
 			/// </summary>
 			public const uint MoteThief = 1472453385;
@@ -9817,9 +11189,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheCycle = 927808447;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Foil Eramis's plans aboard Seraph Station.
 			/// </summary>
-			public const uint Classified_2597536937 = 2597536937;
+			public const uint Finale = 2597536937;
 			/// <summary>
 			/// 	As a Gunslinger running Weighted Throwing Knife, get precision final blows with your knife against combatants.
 			/// </summary>
@@ -9828,6 +11200,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Collect the penguin souvenirs scattered across Europa to unlock pages of this lore book.
 			/// </summary>
 			public const uint YourFriendMicahAbram = 350253065;
+			/// <summary>
+			/// 	Access the hidden aberrant subject data.
+			/// </summary>
+			public const uint DataRetrievalAberrantSubject = 1892727309;
 			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
@@ -9849,6 +11225,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CaptainsCache = 2946689224;
 			/// <summary>
+			/// 	Collect Glimmer.
+			/// <para/>
+			/// 	Glimmer is the currency of the Last City. Spend Glimmer at vendors across the system in exchange for a variety of goods, bounties, and more.
+			/// <para/>
+			/// 	Glimmer can be found by defeating combatants, completing bounties, finishing public events, and looting combatant caches.
+			/// <para/>
+			/// </summary>
+			public const uint Glimmer = 1761058746;
+			/// <summary>
 			/// 	Complete Nightfall strikes during Season of the Chosen.
 			/// </summary>
 			public const uint Nightfall = 94652195;
@@ -9865,6 +11250,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint Ordeal_3314125579 = 3314125579;
+			/// <summary>
+			/// 	Win matches of different gametypes. Each unique gametype increments progress.
+			/// </summary>
+			public const uint Undefeated_2824023915 = 2824023915;
 			/// <summary>
 			/// 	Defeat two opponents at close range with a Shotgun without switching weapons or reloading.
 			/// </summary>
@@ -9889,6 +11278,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Retrieve all of the data caches within all branches of the Shattered Realm.
 			/// </summary>
 			public const uint ShatteredScholar = 1009025745;
+			public const uint RaidsandDungeons = 2490679949;
 			/// <summary>
 			/// 	Complete the quest "Vanguard Vestments."
 			/// </summary>
@@ -9941,10 +11331,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OfAllTrades = 337542929;
 			/// <summary>
-			/// 	Defeat Hive combatants in Vanguard playlists or strikes. Earn bonus progress for defeating tougher combatants.
-			/// </summary>
-			public const uint HiveSlayer_630822247 = 630822247;
-			/// <summary>
 			/// 	As a Striker, defeat 10 combatants with a single cast of Fists of Havoc.
 			/// </summary>
 			public const uint RuinedTheirDay = 1346864677;
@@ -9976,6 +11362,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Rapidly defeat 2 opposing Guardians.
 			/// </summary>
 			public const uint DoublePlay = 2598105597;
+			/// <summary>
+			/// 	Increase your Season Rank.
+			/// <para/>
+			/// 	Your Season Rank is increased by earning XP. There is a free track of rewards as well as a paid track of rewards for owners of the Season Pass.
+			/// <para/>
+			/// </summary>
+			public const uint SeasonRank = 2351002061;
 			public const uint Willyousmile = 2102604672;
 			public const uint Medusa = 2102604673;
 			/// <summary>
@@ -9989,9 +11382,17 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Isityou = 2102604675;
 			public const uint Injection = 2102604676;
 			public const uint Thankyou = 2102604677;
+			/// <summary>
+			/// 	Complete weekly playlist challenges.
+			/// </summary>
+			public const uint TakingAllChallenges = 344755397;
 			public const uint ThetisBrave = 2102604678;
 			public const uint SavinWhoWasChaoMu = 1990034990;
 			public const uint actchoosereact = 2102604679;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2216324956 = 2216324956;
 			public const uint YOUMUST = 2102604682;
 			public const uint reactchooseact = 2102604683;
 			/// <summary>
@@ -10002,6 +11403,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
 			public const uint SmiteofMerain = 2069837521;
+			/// <summary>
+			/// 	Receive ally and leadership commendations. Leadership commendations provide bonus progress.
+			/// <para/>
+			/// 	You can see which activities grant ally and leadership commendations via the Commendation Score profile. When hovering over a commendation card, the list of relevant activities is shown.
+			/// <para/>
+			/// </summary>
+			public const uint Coach = 1504737154;
 			/// <summary>
 			/// 	Defeat combatants while using this weapon to unlock this upgrade.
 			/// </summary>
@@ -10047,6 +11455,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PsiOpsArmorer = 1060408350;
 			/// <summary>
+			/// 	Gain bonus rewards by using a Defiant Key at the end of Season of Defiance Battlegrounds.
+			/// <para/>
+			/// 	Defiant Keys can be earned by completing Lightfall campaign missions, Terminal Overload in Neomuna, raids, Vanguard Ops playlist activities, Gambit matches, and Crucible matches.
+			/// <para/>
+			/// </summary>
+			public const uint DefiantKeyholder = 1621488376;
+			/// <summary>
 			/// 	Complete the Gatekeepers encounter while only using Relic Super damage to defeat Praetorians.
 			/// </summary>
 			public const uint RabidRelic = 3106039192;
@@ -10067,17 +11482,18 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AnnualPassJokersWild_4065625952 = 4065625952;
 			/// <summary>
-			/// 	Complete Expeditions and gather treasure in the treasure haul.
+			/// 	Fully Masterwork Exotic weapons using catalysts.
+			/// <para/>
+			/// 	You can discover where Exotic catalysts are found via the Patterns & Catalysts section of Collections.
+			/// <para/>
+			/// 	When you find a new catalyst, complete its objective and socket the catalyst to Masterwork the Exotic weapon.
+			/// <para/>
 			/// </summary>
-			public const uint ExpertExpeditionI = 3763804522;
+			public const uint CatalystCollector_3959847875 = 3959847875;
 			/// <summary>
 			/// 	Deal the most total damage to opponents in a match.
 			/// </summary>
 			public const uint SkullBreaker = 2244695745;
-			/// <summary>
-			/// 	In Expedition, gather treasure and defeat Ruffians.
-			/// </summary>
-			public const uint ExpertExpeditionIII = 3763804527;
 			/// <summary>
 			/// 	Complete bounties.
 			/// </summary>
@@ -10115,19 +11531,28 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RunningThroughtheDeep = 2534003978;
 			/// <summary>
+			/// 	Increase the energy level of a piece of armor. 
+			/// <para/>
+			/// 	Mods have an energy cost to slot into armor. Increasing the energy of a piece of armor enables it to hold additional mods and more effective mods.
+			/// <para/>
+			/// 	Fully increasing the energy level of a piece of armor grants it additional stats.
+			/// <para/>
+			/// </summary>
+			public const uint ArmorEnergy = 3828327065;
+			/// <summary>
 			/// 	Complete all raid encounters with a fireteam made entirely of Solar subclasses.
 			/// </summary>
 			public const uint Photosynthesis = 2571794337;
 			public const uint NighII = 4097367904;
 			public const uint NighI = 4097367905;
 			/// <summary>
-			/// 	Defeat combatants with precision final blows in Europa's Lost Sectors.
-			/// </summary>
-			public const uint DomeSector = 4146006034;
-			/// <summary>
 			/// 	As a fireteam, destroy Oracles in the Vex Offensive.
 			/// </summary>
 			public const uint Operative = 445693902;
+			/// <summary>
+			/// 	Defeat combatants with precision final blows in Europa's Lost Sectors.
+			/// </summary>
+			public const uint DomeSector = 4146006034;
 			public const uint Katabasis = 4097367906;
 			/// <summary>
 			/// 	Rapidly defeat 6 combatants with Kinetic or Stasis weapons.
@@ -10145,6 +11570,13 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint PalingenesisII = 4097367910;
 			public const uint PalingenesisI = 4097367911;
 			/// <summary>
+			/// 	Earn pinnacle rewards from Gambit, Nightfall, or Crucible weekly challenges.
+			/// <para/>
+			/// 	You must earn pinnacle rewards to acquire gear with Power above the powerful cap. Pinnacle reward sources can found on the Director screen.
+			/// <para/>
+			/// </summary>
+			public const uint PinnacleRewards = 3653330097;
+			/// <summary>
 			/// 	Number of Crucible Rank resets this Season.
 			/// </summary>
 			public const uint ValorUnbound = 2668040891;
@@ -10161,6 +11593,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Win a match with a large margin of victory.
 			/// </summary>
 			public const uint CrushedThem = 2929994651;
+			/// <summary>
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
+			/// </summary>
+			public const uint Regnant = 752104278;
 			/// <summary>
 			/// 	Gain the ability to see hidden messages, bridges, or waypoints in the Ascendant Plane by rescuing a lost Techeun.
 			/// </summary>
@@ -10188,25 +11624,29 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H11Breathe = 386987024;
 			public const uint H10WarStories = 386987025;
 			public const uint H13MarginsPartII = 386987026;
+			public const uint H12MarginsPartI = 386987027;
 			/// <summary>
 			/// 	After reviving, defeat the invader who destroyed you before they escape.
 			/// </summary>
 			public const uint RapidPayback = 353633377;
-			public const uint H12MarginsPartI = 386987027;
 			public const uint H15Shepherd = 386987028;
+			/// <summary>
+			/// 	Complete Gambit matches. Earn bonus progress for wins.
+			/// </summary>
+			public const uint DredginUpVictory = 3106531724;
 			public const uint H14Patron = 386987029;
 			/// <summary>
 			/// 	Complete the Metamorphosis Lost Sector on Legend difficulty, without a fireteam.
 			/// </summary>
 			public const uint MetamorphosisSoloLegend = 3139513784;
-			public const uint H9SIDDHARTHAGOLEM = 3779415872;
 			public const uint H17Transient = 386987030;
+			public const uint H9SIDDHARTHAGOLEM = 3779415872;
 			/// <summary>
 			/// 	In a single Iron Banner match, land at least one final blow with each class of weapon (Kinetic, Energy, Power) and ability (melee, grenade, Super).
 			/// </summary>
 			public const uint TheArmory = 3033690936;
-			public const uint H8THESEARCH = 3779415873;
 			public const uint H16Politics = 386987031;
+			public const uint H8THESEARCH = 3779415873;
 			/// <summary>
 			/// 	Complete ritual activities, including strikes, Crucible matches, and Gambit matches.
 			/// </summary>
@@ -10231,13 +11671,17 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SweetBusinessCatalyst = 1385469960;
 			public const uint H1THEBEGINNINGPARTI = 3779415880;
 			/// <summary>
+			/// 	Neutralize all Apogee Repeaters in Neomuna.
+			/// </summary>
+			public const uint StrangeNewHeights = 2890941799;
+			/// <summary>
 			/// 	Complete the weekly missions for Path of the Splicer III.
 			/// </summary>
 			public const uint PathoftheSplicerIII = 3377340987;
 			/// <summary>
 			/// 	Complete patrols on the Tangled Shore.
 			/// </summary>
-			public const uint Patrols = 2255230184;
+			public const uint Patrols_2255230184 = 2255230184;
 			public const uint H3THENAME = 3779415882;
 			public const uint H2THEBEGINNINGPARTII = 3779415883;
 			public const uint H5THEBUNKER = 3779415884;
@@ -10257,6 +11701,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CookieDeliveryBeyond = 3116904950;
 			/// <summary>
+			/// 	Complete patrols on Nessus.
+			/// <para/>
+			/// 	Every freeroam destination contains patrol missions. Start a patrol mission at a patrol beacon.
+			/// <para/>
+			/// 	You can see patrol beacons at a greater distance when you bring out your Ghost by pressing [Back].
+			/// <para/>
+			/// </summary>
+			public const uint Patrols_162456543 = 162456543;
+			/// <summary>
 			/// 	Complete the Resonant Destruction public event in under 3 minutes and 45 seconds.
 			/// </summary>
 			public const uint HastyDemolition = 587892423;
@@ -10275,6 +11728,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OffensiveTactician = 800778259;
 			/// <summary>
+			/// 	Learn about Gambit from the Drifter.
+			/// <para/>
+			/// 	You can find Drifter at the Annex in the Tower.
+			/// <para/>
+			/// 	Gambit is a 4v4 competitive co-op game mode. Collect Motes and bank them to summon a Primeval. First team to destroy their Primeval wins.
+			/// <para/>
+			/// </summary>
+			public const uint MeetDrifter = 3782030468;
+			/// <summary>
 			/// 	Find and feed all the rabbits on the Moon.
 			/// </summary>
 			public const uint LetThemEatRiceCakes = 2202038969;
@@ -10289,7 +11751,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint HeroicallyAdventurous_3249594292 = 3249594292;
 			public const uint TrustandHope = 294774292;
 			/// <summary>
-			/// 	Complete all Season of the Haunted Seal Triumphs and earn the title of Reaper.
+			/// 	Complete all Season of the Haunted Title Triumphs and earn the Title of Reaper.
 			/// </summary>
 			public const uint Haunted_3947410852 = 3947410852;
 			public const uint BrephosII = 4130923082;
@@ -10311,6 +11773,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete all Season of the Worthy flawless Triumphs.
 			/// </summary>
 			public const uint Flawless_2072890963 = 2072890963;
+			/// <summary>
+			/// 	Use Strand Tangles to defeat combatants in Terminal Overload.
+			/// </summary>
+			public const uint AllTangledUp = 865824608;
 			public const uint VIIIUNMADE = 2993263670;
 			/// <summary>
 			/// 	Complete encounters within the Menagerie.
@@ -10356,6 +11822,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint FoundryWeaponsFocus = 3190260640;
 			/// <summary>
+			/// 	Complete any Nightfall strike on Grandmaster.
+			/// </summary>
+			public const uint Grandmaster_3934521597 = 3934521597;
+			/// <summary>
 			/// 	Spread cheer across the system by delivering cookies to Petra Venj, Spider, and Eris Morn.
 			/// </summary>
 			public const uint CookieDeliveryOutskirts = 487683777;
@@ -10376,6 +11846,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Spelunking = 3130291241;
 			/// <summary>
+			/// 	Achieve a commendation score of 6000.
+			/// </summary>
+			public const uint Beloved_1832283586 = 1832283586;
+			/// <summary>
 			/// 	Complete the "Leviathan" raid on Prestige difficulty.
 			/// </summary>
 			public const uint CalusHasSpoken = 3369371997;
@@ -10392,25 +11866,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AllBattlegroundMissions = 273687671;
 			/// <summary>
-			/// 	Defeat Lighthoarders in PsiOps Battleground: Cosmodrome.
-			/// </summary>
-			public const uint LightReclaimerII = 3334187256;
-			/// <summary>
 			/// 	In Iron Banner: Rift, defeat opponent Spark Runners across all events and Seasons.
 			/// </summary>
 			public const uint DeidrissRejection = 3258270768;
 			/// <summary>
-			/// 	Defeat Lighthoarders in PsiOps Battleground: Moon.
-			/// </summary>
-			public const uint LightReclaimerIII = 3334187257;
-			/// <summary>
 			/// 	Complete a PsiOps Battleground without dying on Legend difficulty or higher.
 			/// </summary>
 			public const uint FlawlessPsiOpsLegend = 2834482426;
-			/// <summary>
-			/// 	Defeat Lighthoarders in PsiOps Battleground: EDZ.
-			/// </summary>
-			public const uint LightReclaimerI = 3334187259;
 			/// <summary>
 			/// 	Complete all Triumphs for Shadowkeep.
 			/// </summary>
@@ -10424,6 +11886,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LunarFashion = 2244422782;
 			/// <summary>
+			/// 	Acquire all 3 Terminal Overload weapons.
+			/// </summary>
+			public const uint FullyOverloaded = 1334606844;
+			/// <summary>
 			/// 	Earn the Intended Mischief ornament for Cry Mutiny.
 			/// </summary>
 			public const uint IntendedMischief = 3166966835;
@@ -10432,13 +11898,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WarlockMastery = 2129704137;
 			/// <summary>
+			/// 	Claim Titles.
+			/// </summary>
+			public const uint Titles_2333577763 = 2333577763;
+			/// <summary>
 			/// 	As a Voidwalker, get final blows with Nova Warp.
 			/// </summary>
 			public const uint Radioactive = 3288732286;
-			/// <summary>
-			/// 	Earn points by banking Motes, defeating Blockers, and defeating Guardians in Gambit.
-			/// </summary>
-			public const uint BankKillRepeat = 2371157706;
 			/// <summary>
 			/// 	With any Auto Rifle, defeat Guardians in the Crucible and earn the medal "Assault Specialist."
 			/// </summary>
@@ -10448,9 +11914,22 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ShadebinderAspects = 3560266818;
 			/// <summary>
+			/// 	Learn about the Crucible from Lord Shaxx.
+			/// <para/>
+			/// 	You can find Lord Shaxx at the Courtyard in the Tower.
+			/// <para/>
+			/// 	The Crucible is where Guardians hone their skills by engaging in player vs. player combat.
+			/// <para/>
+			/// </summary>
+			public const uint MeetLordShaxx = 4041951726;
+			/// <summary>
 			/// 	Complete the following objective to discover this Prismatic Lens and gain access to this Focused Umbral Engram.
 			/// </summary>
 			public const uint RecoveryoftheLost = 2222024365;
+			/// <summary>
+			/// 	Complete a Defiant Battleground on Legend difficulty.
+			/// </summary>
+			public const uint LegendaryLiberator = 739318083;
 			/// <summary>
 			/// 	Acquire Thorn.
 			/// </summary>
@@ -10464,9 +11943,22 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DivisionPromotion = 3270112463;
 			/// <summary>
+			/// 	Talk to Saint-14 to learn about Trials of Osiris.
+			/// <para/>
+			/// 	Saint-14 can be found at the Tower in the Hangar.
+			/// <para/>
+			/// 	Trials of Osiris is a weekly tournament where teams of three compete for prestige and rewards. Purchase a Trials Passage from Saint-14 and turn in completed Passages for extra rewards.
+			/// <para/>
+			/// </summary>
+			public const uint TrialsIntroduction = 3493729662;
+			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
 			public const uint Firefright = 2511032639;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_369432828 = 369432828;
 			/// <summary>
 			/// 	Complete Nightfall strike "Warden of Nothing" without taking any Solar damage during the final encounter.
 			/// </summary>
@@ -10525,6 +12017,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheArmsDealer_712362102 = 712362102;
 			/// <summary>
+			/// 	Discover all of Neomuna's secrets.
+			/// </summary>
+			public const uint TheCityandtheMystery = 1668609015;
+			/// <summary>
 			/// 	Defeat Guardians in the Crucible using SUROS Regime.
 			/// </summary>
 			public const uint SUROSRegimeCatalyst = 4137195476;
@@ -10557,6 +12053,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GimmeThatBow = 3484341438;
 			/// <summary>
+			/// 	Complete the Lightfall campaign on Legendary difficulty.
+			/// </summary>
+			public const uint LightfallLegendaryPart2 = 1183687248;
+			/// <summary>
 			/// 	Acquire a white glow for all Magnificent Solstice Armor sets for all classes by completing all armor objectives.
 			/// </summary>
 			public const uint CosmicallyResplendent = 3284935859;
@@ -10569,9 +12069,27 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GrandmasterTheInvertedSpire_164162423 = 164162423;
 			/// <summary>
+			/// 	Complete weekly campaign missions from the Lightfall campaign on Legend difficulty and acquire a team score of 100k.
+			/// <para/>
+			/// 	Weekly missions are available in the Director on Neptune and have selectable difficulty.
+			/// <para/>
+			/// </summary>
+			public const uint WeeklyCampaignMissions_1183687249 = 1183687249;
+			/// <summary>
+			/// 	Claim reputation rewards from Nimbus.
+			/// </summary>
+			public const uint DeepContacts = 1183687250;
+			/// <summary>
 			/// 	Solve all the Trivial Mysteries in the Ruins of Wrath.
 			/// </summary>
 			public const uint TrivialWayfindingWrath = 3430706981;
+			/// <summary>
+			/// 	Complete the Lightfall campaign on Legendary difficulty.
+			/// <para/>
+			/// 	On Legendary difficulty, the missions will have a fixed set of modifiers that increase the difficulty of combat but provide better rewards.
+			/// <para/>
+			/// </summary>
+			public const uint LightfallLegendaryPart1 = 1183687251;
 			/// <summary>
 			/// 	Defeat three powerful enemies within a short time period.
 			/// </summary>
@@ -10589,15 +12107,31 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint QuickStrike = 1354623597;
 			/// <summary>
+			/// 	Defeat Champions in Neomuna Lost Sectors on any difficulty.
+			/// </summary>
+			public const uint NeptunianChampions = 2113842213;
+			/// <summary>
 			/// 	Complete this lore book.
 			/// </summary>
 			public const uint TheDreamingCity_706886762 = 706886762;
 			/// <summary>
+			/// 	Defeat Champions in any Nightfall strike on Hero difficulty or higher. Earn bonus progress at higher difficulty tiers.
+			/// </summary>
+			public const uint UltimateChampion = 783810579;
+			/// <summary>
 			/// 	Acquire all IKELOS v1.0.3 weapons.
 			/// </summary>
 			public const uint IKELOSDeclared = 929245926;
+			/// <summary>
+			/// 	Commend other players in a raid or dungeon.
+			/// </summary>
+			public const uint GivingGratitude_1668515029 = 1668515029;
 			public const uint TheDrownedCaptain8 = 3688855296;
 			public const uint TheDrownedCaptain9 = 3688855297;
+			/// <summary>
+			/// 	Complete the Hydroponics Delta Lost Sector on Master difficulty, without a fireteam.
+			/// </summary>
+			public const uint HydroponicsDeltaSoloMastery = 2950526365;
 			/// <summary>
 			/// 	Complete Nightfall strike "The Insight Terminus" and get a great score.
 			/// </summary>
@@ -10639,22 +12173,46 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat enemies using Cerberus+1.
 			/// </summary>
 			public const uint Cerberus1Catalyst = 2761319400;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1470555531 = 1470555531;
 			public const uint TheDrownedCaptain3 = 3688855307;
 			public const uint OfEarthandtheReef = 2201085529;
 			public const uint TheDrownedCaptain4 = 3688855308;
 			public const uint Nitrogen = 2201085530;
 			public const uint TheDrownedCaptain5 = 3688855309;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3354387593 = 3354387593;
 			public const uint Refusal = 2201085531;
 			public const uint TheDrownedCaptain6 = 3688855310;
 			public const uint Regent_2201085532 = 2201085532;
 			public const uint TheDrownedCaptain7 = 3688855311;
 			public const uint Illyn = 2201085533;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3354387596 = 3354387596;
 			public const uint TyrannocideIV = 2201085534;
+			/// <summary>
+			/// 	Acquire the Crucible ornament for Ecliptic Distaff.
+			/// </summary>
+			public const uint DefiantCrucibleOrnament = 1060207148;
 			/// <summary>
 			/// 	Complete the Coliseum Champion challenge.
 			/// </summary>
 			public const uint ColiseumChampion = 3533973498;
 			public const uint TyrannocideV = 2201085535;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3354387598 = 3354387598;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3354387599 = 3354387599;
 			/// <summary>
 			/// 	In Season of the Hunt, increase your Power bonus with the seasonal artifact, the Fang of Xivu Arath.
 			/// </summary>
@@ -10668,41 +12226,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RakingtheCoals_4117787742 = 4117787742;
 			/// <summary>
-			/// 	Throughout Season of the Haunted, bind Nightmares after completing Tier III of the Nightmare Containment and open Opulent Chests on the Derelict Leviathan.
-			/// </summary>
-			public const uint BindingI = 3287259474;
-			/// <summary>
 			/// 	Complete the K1 Revelation Lost Sector on Legend difficulty, without a fireteam.
 			/// </summary>
 			public const uint K1RevelationSoloLegend = 1511640986;
 			/// <summary>
-			/// 	Defeat combatants with Arc or Void damage in Heist Battlegrounds.
+			/// 	Collect all of the unique action figures in Neomuna and place them where they belong in Striders' Gate.
 			/// </summary>
-			public const uint EntropicShock = 3005790491;
-			/// <summary>
-			/// 	Defeat combatants with Solar or Stasis damage in Heist Battlegrounds.
-			/// </summary>
-			public const uint IntheColdLightoftheSun = 3005790492;
+			public const uint TheyreNotDolls = 327519256;
 			/// <summary>
 			/// 	Complete the "Leviathan, Eater of Worlds" raid lair on Prestige difficulty.
 			/// </summary>
 			public const uint FineDining = 2295263731;
 			/// <summary>
-			/// 	Defeat combatants with Void or Solar damage in Heist Battlegrounds.
-			/// </summary>
-			public const uint FireintheVoid = 3005790493;
-			/// <summary>
 			/// 	Defeat combatants using Bad Juju.
 			/// </summary>
 			public const uint BadJujuCatalyst = 748675128;
-			/// <summary>
-			/// 	Defeat combatants with Stasis or Arc damage in Heist Battlegrounds.
-			/// </summary>
-			public const uint FrozenLightning = 3005790494;
-			/// <summary>
-			/// 	Reach Power Level {var:1131227462} by earning pinnacle rewards.
-			/// </summary>
-			public const uint Pinnacle = 4181531282;
 			/// <summary>
 			/// 	Complete all raid encounters with a fireteam made entirely of Arc subclasses.
 			/// </summary>
@@ -10735,6 +12273,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete any badge within your Collections.
 			/// </summary>
 			public const uint Completionist = 3484748920;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_674616608 = 674616608;
 			/// <summary>
 			/// 	Achieve a Glory Rank of "Legend" in multiple Seasons.
 			/// </summary>
@@ -10772,6 +12314,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Attain an impressive Triumph score.
 			/// </summary>
 			public const uint TriumphantAchiever = 92911057;
+			/// <summary>
+			/// 	Use keys to unlock Terminal Overload Key Chests in Neomuna. 
+			/// <para/>
+			/// 	After completing the quest "Stargazer," Terminal Overload Keys can be earned in Neomuna by completing public events, looting chests, and completing patrols.
+			/// <para/>
+			/// </summary>
+			public const uint KeycardOperated = 2375316996;
 			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
@@ -10821,6 +12370,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WANTEDTheTrickster = 889279836;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_865292073 = 865292073;
+			/// <summary>
 			/// 	Mayhem: In a single life, cast three Supers.
 			/// </summary>
 			public const uint Superstar = 219234112;
@@ -10829,13 +12382,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SixforSix = 1651426413;
 			/// <summary>
-			/// 	Mayhem: As a team, rapidly cast all of your Supers.
-			/// </summary>
-			public const uint ByOurPowersCombined = 219234115;
-			/// <summary>
 			/// 	Purify a piece of the Reverie Dawn armor set.
 			/// </summary>
 			public const uint Benediction = 425332810;
+			/// <summary>
+			/// 	Mayhem: As a team, rapidly cast all of your Supers.
+			/// </summary>
+			public const uint ByOurPowersCombined = 219234115;
 			/// <summary>
 			/// 	Deliver cookies to Reef allies during the Dawning 2021.
 			/// </summary>
@@ -10864,7 +12417,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DevoteesRemnant = 771892910;
 			/// <summary>
-			/// 	Complete a Rift match with 2 or more carries and a 100% capture rate.
+			/// 	Rift: Complete a Rift match with 2 or more carries and a 100% capture rate.
 			/// </summary>
 			public const uint SaladinsRun_2285633765 = 2285633765;
 			/// <summary>
@@ -10879,6 +12432,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Acquire Captain's Coins during the Season of Plunder Community Event.
 			/// </summary>
 			public const uint CommunityContributor = 322648346;
+			/// <summary>
+			/// 	Decode or focus Defiant Engrams at the War Table during Season of Defiance.
+			/// </summary>
+			public const uint DefiantFocus = 1981645468;
 			/// <summary>
 			/// 	Investigate each of the Eliksni Quarter improvements.
 			/// </summary>
@@ -10926,74 +12483,38 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ShotgunSolstice_571426303 = 571426303;
 			/// <summary>
-			/// 	Complete Week 2 of Operation Elbrus. 
-			/// <para/>
-			/// 	Also, defeat combatants in PsiOps Battlegrounds. Defeated Champions grant bonus progress.
-			/// <para/>
+			/// 	Collect all region chests in Neomuna.
 			/// </summary>
-			public const uint OperationElbrusWeek2 = 3714325074;
-			/// <summary>
-			/// 	Complete Week 3 of Operation Elbrus and use Psychogenic Intel to decode 3 Runic Chests at the end of PsiOps Battlegrounds. 
-			/// <para/>
-			/// 	Collect Psychogenic Intel by playing strikes, Gambit, Crucible, public events, and more.
-			/// <para/>
-			/// </summary>
-			public const uint OperationElbrusWeek3 = 3714325075;
-			/// <summary>
-			/// 	Complete Week 4 of Operation Elbrus and focus Umbral Engrams at the War Table in the H.E.L.M. using Risen Umbral Energy. 
-			/// <para/>
-			/// 	Collect Risen Umbral Energy by decoding Runic Chests at the end of PsiOps Battlegrounds.
-			/// <para/>
-			/// </summary>
-			public const uint OperationElbrusWeek4 = 3714325076;
-			/// <summary>
-			/// 	Obtain Plundered Umbral Energy from bonus chests in Expedition.
-			/// </summary>
-			public const uint SuccessfulExpedition = 28554240;
+			public const uint NeptunesBounty = 209536962;
 			public const uint District125 = 2465618146;
 			/// <summary>
-			/// 	Use Treasure Maps to reveal additional rewards at the end of Expedition. Using advanced Treasure Maps will award additional progress.
+			/// 	Complete the weekly Lightfall campaign mission in Neomuna.
 			/// <para/>
-			/// 	Also, spend Plundered Umbral Energy at the Star Chart to focus engrams throughout the Season.
+			/// 	The Lightfall weekly mission is unlocked by completing the Lightfall campaign on any difficulty.
 			/// <para/>
 			/// </summary>
-			public const uint FreebooterI = 28554242;
+			public const uint WeeklyCampaignMissions_2567411695 = 2567411695;
 			public const uint CivilianAtriumSouth = 2465618147;
 			public const uint MessagefromAunorX = 2465618148;
-			/// <summary>
-			/// 	Collect Map Fragments and Treasure Coordinates throughout the Season. 
-			/// <para/>
-			/// 	Map Fragments can be obtained by completing Ketchcrash. Treasure Coordinates can be acquired from ritual activities.
-			/// <para/>
-			/// </summary>
-			public const uint SextantNavigationII = 28554244;
 			/// <summary>
 			/// 	Complete the "Leviathan, Eater of Worlds" raid lair.
 			/// </summary>
 			public const uint AWholeBuffet = 1418680653;
-			public const uint TheSaltMines = 2465618149;
 			/// <summary>
-			/// 	Perform emotes at the end of Ketchcrash or Expedition for additional rewards.
-			/// <para/>
-			/// 	Doing so on Master difficulty will award bonus progress.
-			/// <para/>
-			/// 	This interaction requires the purchase of the first Swashbuckler upgrade.
-			/// <para/>
+			/// 	Neutralize all Apogee Repeaters in Typhon Imperator.
 			/// </summary>
-			public const uint RaiseaGlass = 28554245;
+			public const uint ImperatorRepeaters = 3368418630;
+			public const uint TheSaltMines = 2465618149;
 			public const uint SurveillanceTranscript = 2465618150;
 			public const uint MessagefromAunorIX = 2465618151;
-			/// <summary>
-			/// 	Open Expedition bonus chests and chests from Master Ketchcrash.
-			/// <para/>
-			/// 	Also, spend Plundered Umbral Energy at the Star Chart to focus engrams throughout the Season.
-			/// <para/>
-			/// </summary>
-			public const uint FreebooterII = 28554247;
 			/// <summary>
 			/// 	Complete the Bonfire Bash activity against all combatant races.
 			/// </summary>
 			public const uint AllAroundtheBonfire_422539204 = 422539204;
+			/// <summary>
+			/// 	Complete all Heroic public events in Neomuna.
+			/// </summary>
+			public const uint ActionHero = 124487406;
 			/// <summary>
 			/// 	Capture a zone with your entire team present.
 			/// </summary>
@@ -11067,7 +12588,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HeirApparentCatalyst = 1514331782;
 			/// <summary>
-			/// 	In Rift, defeat an opposing Spark Runner near the Rift.
+			/// 	Rift: Defeat an opposing Spark Runner near the Rift.
 			/// </summary>
 			public const uint SparkDenied = 2319188936;
 			/// <summary>
@@ -11083,7 +12604,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ViolentDelights = 3444384395;
 			/// <summary>
-			/// 	In Rift in a single Spark run, defeat 2 opponents who damage your team's Runner.
+			/// 	Rift: In a single Spark run, defeat 2 opponents who damage your team's Runner.
 			/// </summary>
 			public const uint ClearaPath = 2319188939;
 			/// <summary>
@@ -11131,6 +12652,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RaceThroughTime = 3930591080;
 			/// <summary>
+			/// 	Access the hidden quarantine subject data.
+			/// </summary>
+			public const uint DataRetrievalQuarantineSubject = 2417866511;
+			/// <summary>
 			/// 	Achieve a Glory Rank win streak while at rank "Legend" during Season 12.
 			/// </summary>
 			public const uint Season12Dominance = 91071118;
@@ -11138,10 +12663,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete a Nightfall strike on Hero difficulty.
 			/// </summary>
 			public const uint Hero = 1063506858;
-			/// <summary>
-			/// 	Complete a Nightfall strike on Adept difficulty.
-			/// </summary>
-			public const uint Adept = 1063506859;
 			/// <summary>
 			/// 	Complete a Nightfall strike on Master difficulty.
 			/// </summary>
@@ -11155,25 +12676,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Legend_1063506861 = 1063506861;
 			/// <summary>
-			/// 	Complete PsiOps Battleground: EDZ on Legend difficulty. (Accessed via the H.E.L.M. Director node.)
-			/// </summary>
-			public const uint LegendaryPsiOperativeI = 420206732;
-			/// <summary>
 			/// 	Complete PsiOps Battleground: Moon without letting any Cabal allies die.
 			/// </summary>
 			public const uint ImpresstheEmpress = 891115502;
 			/// <summary>
-			/// 	Complete PsiOps Battleground: Moon on Legend difficulty. (Accessed via the H.E.L.M. Director node.)
-			/// </summary>
-			public const uint LegendaryPsiOperativeIII = 420206734;
-			/// <summary>
 			/// 	Prevent any Ether from being harvested by the Scorn during the Astral Alignment activity.
 			/// </summary>
 			public const uint EtherDenier = 1916285825;
-			/// <summary>
-			/// 	Complete PsiOps Battleground: Cosmodrome on Legend difficulty. (Accessed via the H.E.L.M. Director node.)
-			/// </summary>
-			public const uint LegendaryPsiOperativeII = 420206735;
 			/// <summary>
 			/// 	Within the Guardian Games playlists, finish an activity with a Silver Tier score.
 			/// </summary>

@@ -9,10 +9,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ARMORMODS = 590099826;
 			/// <summary>
-			/// 	An ornate compartment hidden within the Captain's Atlas.
-			/// </summary>
-			public const uint SecretCompartment = 135233934;
-			/// <summary>
 			/// 	Perks are built into a given piece of armor. They are exclusive to each other while in the same column and can be swapped freely.
 			/// </summary>
 			public const uint ARMORPERKS_2518356196 = 2518356196;
@@ -40,9 +36,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VEHICLEMODS_4243480345 = 4243480345;
 			/// <summary>
-			/// 	Restore Treasure Maps to find buried treasures in Expedition missions.
+			/// 	Abilities that grow your build and provide energy to Fragments.
+			/// <para/>
+			/// 	Visit the Exo Stranger on Europa to unlock more of these abilities.
+			/// <para/>
 			/// </summary>
-			public const uint TreasureMap = 819416197;
+			public const uint ASPECTS_3400923910 = 3400923910;
 			public const uint H3745560291 = 3745560291;
 			/// <summary>
 			/// 	Improve this aspect of your Chalice to obtain and use new types of runes.
@@ -74,10 +73,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ARMORCOSMETICS = 1926152773;
 			public const uint H1085237186 = 1085237186;
-			/// <summary>
-			/// 	Promote one of your crewmates to gain their First Mate buffs.
-			/// </summary>
-			public const uint FirstMate = 32507403;
 			public const uint H1717595896 = 1717595896;
 			/// <summary>
 			/// 	Attach a mod to a Ghost shell to improve it.
@@ -95,6 +90,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Attach a mod to a Ghost Shell to improve or add to its perks. Doing so consumes the mod.
 			/// </summary>
 			public const uint GHOSTSHELLMODS = 3379164649;
+			/// <summary>
+			/// 	Abilities that grow your build and provide energy to Fragments.
+			/// <para/>
+			/// 	Visit the Pouka Pond in Neomuna to unlock more of these abilities.
+			/// <para/>
+			/// </summary>
+			public const uint FRAGMENTS_193371309 = 193371309;
+			/// <summary>
+			/// 	Abilities that grow your build and provide energy to Fragments.
+			/// <para/>
+			/// 	Visit the Exo Stranger on Europa to unlock more of these abilities.
+			/// <para/>
+			/// </summary>
+			public const uint FRAGMENTS_2819965312 = 2819965312;
 			public const uint H4102879893 = 4102879893;
 			/// <summary>
 			/// 	Clan Perks are enabled when you belong to a clan that has reached the indicated clan level for that season.
@@ -124,14 +133,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Perks that modify your character's abilities and consume Aspect energy.
 			/// <para/>
-			/// 	Purchase more Fragments from Ikora Rey in the Tower Bazaar.
+			/// 	Visit Ikora Rey in the Tower Bazaar to unlock more of these perks.
 			/// <para/>
 			/// </summary>
-			public const uint FRAGMENTS = 1313488945;
+			public const uint FRAGMENTS_1313488945 = 1313488945;
 			/// <summary>
 			/// 	Perks are built into a given Sparrow or Jumpship. They cannot be swapped out.
 			/// </summary>
 			public const uint VehiclePerks = 2278110604;
+			public const uint H2418195437 = 2418195437;
 			/// <summary>
 			/// 	Bonuses enabled when this emblem is equipped.
 			/// </summary>
@@ -153,9 +163,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The base qualities of a weapon.
 			/// </summary>
 			public const uint INTRINSICTRAITS = 3956125808;
+			/// <summary>
+			/// 	Abilities that grow your build and provide energy to Fragments.
+			/// <para/>
+			/// 	Visit the Pouka Pond in Neomuna to unlock more of these abilities.
+			/// <para/>
+			/// </summary>
+			public const uint ASPECTS_764703411 = 764703411;
 			public const uint H3619438173 = 3619438173;
 			/// <summary>
-			/// 	The energy type and tier of a piece of armor determines which armor mods you can attach to it. Upgrade its armor tier to increase its capacity for more expensive armor mods.
+			/// 	The tier of a piece of armor determines which armor mods you can attach to it. Upgrade its armor tier to increase its capacity for more expensive armor mods.
 			/// </summary>
 			public const uint ARMORTIER = 760375309;
 			/// <summary>
@@ -180,10 +197,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Abilities that grow your build and provide energy to Fragments.
 			/// <para/>
-			/// 	Purchase more abilities from Ikora Rey in the Tower Bazaar.
+			/// 	Visit Ikora Rey in the Tower Bazaar to unlock more of these perks.
 			/// <para/>
 			/// </summary>
-			public const uint ASPECTS = 2140934067;
+			public const uint ASPECTS_2140934067 = 2140934067;
 			public const uint ForgeMaterials = 3970188346;
 			/// <summary>
 			/// 	Once you've successfully baked a recipe, it will show up here for easy access.

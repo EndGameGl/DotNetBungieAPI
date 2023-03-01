@@ -52,6 +52,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	How fast this weapon recharges its energy.
 			/// </summary>
 			public const uint ChargeRate = 3022301683;
+			public const uint H2755327046 = 2755327046;
 			/// <summary>
 			/// 	How much or little recoil you will experience while firing the weapon.
 			/// </summary>
@@ -65,9 +66,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Accuracy = 1591432999;
 			/// <summary>
-			/// 	This armor cannot accept mods that require Void or Solar energy.
+			/// 	This armor can accept armor mods up to a total cost equal to or below its energy capacity.
 			/// </summary>
-			public const uint ArcEnergyCapacity = 3625423501;
+			public const uint ArmorEnergyCapacity_3625423501 = 3625423501;
 			/// <summary>
 			/// 	Arc Armor Mod
 			/// </summary>
@@ -138,9 +139,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ModCost = 514071887;
 			/// <summary>
-			/// 	This armor cannot accept mods that require Arc or Solar energy.
+			/// 	This armor can accept armor mods up to a total cost equal to or below its energy capacity.
 			/// </summary>
-			public const uint VoidEnergyCapacity = 16120457;
+			public const uint ArmorEnergyCapacity_16120457 = 16120457;
 			/// <summary>
 			/// 	The speed at which you can launch attacks.
 			/// </summary>
@@ -183,7 +184,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Stasis Armor Mod
 			/// </summary>
-			public const uint StasisCost_998798867 = 998798867;
+			public const uint StasisCost = 998798867;
 			/// <summary>
 			/// 	Higher Durability allows your vehicle to take more damage before failing.
 			/// </summary>
@@ -201,9 +202,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GuardResistance = 209426660;
 			/// <summary>
-			/// 	Stasis Armor Mod
+			/// 	This armor can accept armor mods up to a total cost equal to or below its energy capacity.
 			/// </summary>
-			public const uint StasisCost_3950461274 = 3950461274;
+			public const uint ArmorEnergyCapacity_3950461274 = 3950461274;
 			/// <summary>
 			/// 	The weapon's ability to augment your aim.
 			/// </summary>
@@ -234,6 +235,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint BlastRadius = 3614673599;
 			public const uint H2299076437 = 2299076437;
 			/// <summary>
+			/// 	This armor can accept armor mods up to a total cost equal to or below its energy capacity.
+			/// </summary>
+			public const uint ArmorEnergyCapacity_2441327376 = 2441327376;
+			/// <summary>
 			/// 	The time in milliseconds before a weapon fires.
 			/// </summary>
 			public const uint ChargeTime = 2961396640;
@@ -242,9 +247,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Speed = 1501155019;
 			/// <summary>
-			/// 	This armor cannot accept mods that require Void or Arc energy.
+			/// 	This armor can accept armor mods up to a total cost equal to or below its energy capacity.
 			/// </summary>
-			public const uint SolarEnergyCapacity = 2018193158;
+			public const uint ArmorEnergyCapacity_2018193158 = 2018193158;
 			/// <summary>
 			/// 	Damage when striking a target's weak points.
 			/// </summary>
