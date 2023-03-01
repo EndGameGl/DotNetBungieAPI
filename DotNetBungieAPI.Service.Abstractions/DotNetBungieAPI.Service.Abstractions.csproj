@@ -1,29 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Title>DotNetBungieAPI.Service.Abstractions</Title>
-        <RepositoryUrl>https://github.com/EndGameGl/DotNetBungieAPI</RepositoryUrl>
-        <PackageId>DotNetBungieAPI.Service.Abstractions</PackageId>
-        <Description>Bungie.net API service abstractions.</Description>
-        <Authors>MeGl</Authors>
-        <Copyright>Copyright (c) MeGl 2022</Copyright>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <IncludeSymbols>true</IncludeSymbols>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <RootNamespace>DotNetBungieAPI.Service.Abstractions</RootNamespace>
-        <PackageVersion>2.8.1</PackageVersion>
-        <AssemblyVersion>2.8.1</AssemblyVersion>
-        <FileVersion>2.8.1</FileVersion>
-        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
-        <LangVersion>11</LangVersion>
-    </PropertyGroup>
+  <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Title>DotNetBungieAPI.Service.Abstractions</Title>
+    <RepositoryUrl>https://github.com/EndGameGl/DotNetBungieAPI</RepositoryUrl>
+    <PackageId>DotNetBungieAPI.Service.Abstractions</PackageId>
+    <Description>Bungie.net API service abstractions.</Description>
+    <Authors>MeGl</Authors>
+    <Copyright>Copyright (c) MeGl 2022</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>DotNetBungieAPI.Service.Abstractions</RootNamespace>
+    <PackageVersion>2.8.2</PackageVersion>
+    <AssemblyVersion>2.8.2</AssemblyVersion>
+    <FileVersion>2.8.2</FileVersion>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+    <LangVersion>11</LangVersion>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <PackageReference Include="DotNetBungieAPI.Models" Version="2.8.0" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DotNetBungieAPI.Models" Version="2.8.1" />
+  </ItemGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DocumentationFile>bin\Release\DotNetBungieAPI.Service.Abstractions.xml</DocumentationFile>
+  </PropertyGroup>
 </Project>

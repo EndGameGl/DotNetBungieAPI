@@ -14,15 +14,15 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PackageVersion>1.4.2</PackageVersion>
-        <AssemblyVersion>1.4.2</AssemblyVersion>
-        <FileVersion>1.4.2</FileVersion>
+        <PackageVersion>1.4.3</PackageVersion>
+        <AssemblyVersion>1.4.3</AssemblyVersion>
+        <FileVersion>1.4.3</FileVersion>
         <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
         <LangVersion>11</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="2.8.1" />
+      <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="2.8.2" />
       <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.3" />
       <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
     </ItemGroup>

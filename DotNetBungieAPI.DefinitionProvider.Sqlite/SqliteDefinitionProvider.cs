@@ -481,6 +481,10 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
                         repository.AddDefinition(locale, parsedDefinition);
                     }
                 }
+                catch (SqliteException sqliteException) when (sqliteException.ErrorCode is 1)
+                {
+                    _logger.LogError(sqliteException, "Couldn't find definition type in manifest: {DefinitionType}", definitionType);
+                }
                 catch (Exception ex)
                 {
                     _logger.LogError(ex, "Encountered an error while reading definitions of type: {DefinitionType}", definitionType);
