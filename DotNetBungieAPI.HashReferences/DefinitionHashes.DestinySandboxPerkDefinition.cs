@@ -2014,9 +2014,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ArcDexterity = 3642044674;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Deal additional melee damage while protected by an overshield. Defeating targets with melee final blows while the overshield is active will refresh it.
 			/// </summary>
-			public const uint Classified_896958695 = 896958695;
+			public const uint PerpetualLoophole = 896958695;
 			/// <summary>
 			/// 	Generate Gunsmith telemetry data on Void weapon kills.
 			/// </summary>
@@ -2593,7 +2593,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Evolution = 1669774183;
 			public const uint H3222594773 = 3222594773;
 			/// <summary>
-			/// 	This weapon gains charges after assisting allies with revives, healing, overshields, or subclass buffs. Defeating targets consumes charges. While charged, this weapon gains bonus handling and reload speed, or charge rate for Swords.
+			/// 	Gain charges by assisting your allies via revives, healing, overshields, and subclass buffs. Consume charges by defeating foes. While charged, this weapon is granted bonus handling, reload speed, and sword charge rate.
 			/// </summary>
 			public const uint NobleDeeds = 2485667143;
 			/// <summary>
@@ -9159,30 +9159,18 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ArchersTempo_4111707040 = 4111707040;
 			public const uint H2518365127 = 2518365127;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2981067554 = 2981067554;
+			public const uint H2981067554 = 2981067554;
 			/// <summary>
 			/// 	Overflows the magazine based on the number of rapid final blows before reloading. Improves reload.
 			/// </summary>
 			public const uint AmbitiousAssassin_2213597830 = 2213597830;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2981067555 = 2981067555;
+			public const uint H2981067555 = 2981067555;
 			/// <summary>
 			/// 	Damaging a Warmind Cell creates a burst of suppressing Void energy. Additionally, you deal less damage to Warmind Cells.
 			/// </summary>
 			public const uint CellularSuppression_1141383193 = 1141383193;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2981067556 = 2981067556;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2981067557 = 2981067557;
+			public const uint H2981067556 = 2981067556;
+			public const uint H2981067557 = 2981067557;
 			/// <summary>
 			/// 	Dealing precision damage to combatants affected by Arc debuffs spawns an Ionic Trace.
 			/// </summary>
@@ -9196,9 +9184,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AmpedUp = 325570825;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Guarding grants overshields to allies.
 			/// </summary>
-			public const uint Classified_2981067559 = 2981067559;
+			public const uint M1RDistributionMatrix = 2981067559;
 			/// <summary>
 			/// 	Grants bonus Arc Super damage if cast while critically wounded or while amplified. Lasts until the end of the Super activation.
 			/// </summary>

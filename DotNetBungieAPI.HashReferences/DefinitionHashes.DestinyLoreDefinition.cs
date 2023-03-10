@@ -366,7 +366,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LegacyHammerofProving = 3624870834;
 			public const uint RecurrentImpact = 1572896086;
 			public const uint Winterbite = 3118061004;
-			public const uint Classified_3118061005 = 3118061005;
+			public const uint Vexcalibur = 3118061005;
 			public const uint Classified_3030405822 = 3030405822;
 			public const uint CandescentGloves = 516735972;
 			public const uint LightkinGreaves = 3973929105;
@@ -2125,7 +2125,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint VIUNDERSTANDING = 2920704747;
 			public const uint IFromGreatDistance = 4033010921;
 			public const uint IACCEPTANCE = 2920704748;
-			public const uint Classified_4033010922 = 4033010922;
+			public const uint IICountback = 4033010922;
 			public const uint Classified_4033010923 = 4033010923;
 			public const uint IIIGiftsfromtheShore = 2920704750;
 			public const uint Classified_4033010924 = 4033010924;

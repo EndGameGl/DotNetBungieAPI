@@ -1028,9 +1028,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1177523193 = 1177523193;
 			public const uint H3516897269 = 3516897269;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	A socket used for Vex network access.
 			/// </summary>
-			public const uint Classified = 1403449020;
+			public const uint AuthorizationProtocol = 1403449020;
 			public const uint H3243339017 = 3243339017;
 			public const uint H3497623282 = 3497623282;
 			public const uint H836452291 = 836452291;

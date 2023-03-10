@@ -258,9 +258,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RocketLauncherFinalBlows = 1200426430;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Fastest completion time for the //node.ovrd.AVALON// Exotic mission.
 			/// </summary>
-			public const uint Classified_3238120140 = 3238120140;
+			public const uint Netsprinter = 3238120140;
 			/// <summary>
 			/// 	The total number of final blows with Auto Rifles.
 			/// <para/>

@@ -622,9 +622,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint KeyedUp = 2746729227;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete //node.ovrd.AVALON// solo.
 			/// </summary>
-			public const uint Classified_1967189514 = 1967189514;
+			public const uint AloneintheLake = 1967189514;
 			/// <summary>
 			/// 	Deposit Medallions at the Tower's podium during Guardian Games. 
 			/// <para/>
@@ -2546,9 +2546,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PowerOverwhelming = 1158326207;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete //node.ovrd.AVALON// in under 30 minutes.
 			/// </summary>
-			public const uint Classified_154855905 = 154855905;
+			public const uint OverclocksTicking = 154855905;
 			public const uint Tainted = 258126864;
 			public const uint Isolated = 258126865;
 			public const uint Defiant = 258126866;
@@ -4114,9 +4114,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint NightmareHuntAnguish = 477594442;
 			public const uint H3971055749 = 3971055749;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete each of the 3 //node.ovrd.AVALON// quests.
 			/// </summary>
-			public const uint Classified_1268635581 = 1268635581;
+			public const uint CtrlAltComplete = 1268635581;
 			/// <summary>
 			/// 	Earn weapon rewards from the "Fabled" Glory Rank in multiple Seasons.
 			/// </summary>
@@ -5214,9 +5214,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint asudeM = 2119382389;
 			public const uint TheThreatsWeFace = 2367349989;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete a flawless run of //node.ovrd.AVALON//.
 			/// </summary>
-			public const uint Classified_3271224950 = 3271224950;
+			public const uint OverwriteProtected = 3271224950;
 			public const uint IAmbush = 1015148249;
 			public const uint IIThePigeonandtheSplicer = 1015148250;
 			public const uint IIIRisenfromBones = 1015148251;
@@ -6493,9 +6493,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint QuickAccess = 2399446029;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete //node.ovrd.AVALON// on Legend difficulty or higher.
 			/// </summary>
-			public const uint Classified_3424097019 = 3424097019;
+			public const uint DisableSafetyRoutines = 3424097019;
 			/// <summary>
 			/// 	Earn the Vanguard ornament for Veles-X.
 			/// </summary>
@@ -6746,9 +6746,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WeaponoftheLost = 2926196505;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete each of the 3 //node.ovrd.AVALON// quests, uncover all secrets, and acquire each of the Vexcalibur catalysts.
 			/// </summary>
-			public const uint Classified_297678175 = 297678175;
+			public const uint TrulySatisfactory = 297678175;
 			/// <summary>
 			/// 	Complete matches in Crucible or Gambit playlists to earn Silver Leaves.
 			/// </summary>
@@ -7454,9 +7454,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheDarkFuture = 626088741;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Shape or reshape Vexcalibur with any catalyst inserted.
 			/// </summary>
-			public const uint Classified_3787307395 = 3787307395;
+			public const uint ImmovableRefit = 3787307395;
 			/// <summary>
 			/// 	Complete the Scavenger's Den Lost Sector on Master difficulty, solo, flawlessly.
 			/// </summary>
@@ -7918,9 +7918,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Heritage = 4170453731;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
-			public const uint Classified_2627701916 = 2627701916;
+			public const uint Vexcalibur = 2627701916;
 			public const uint IIIRitualisticCirclePit = 4251590403;
 			/// <summary>
 			/// 	Complete all encounters in the "Deep Stone Crypt" raid without any member of your fireteam dying.
@@ -10241,9 +10241,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NearorFar = 3819497990;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete //node.ovrd.AVALON// on Legend difficulty or higher without anyone in the fireteam dying.
 			/// </summary>
-			public const uint Classified_1589025252 = 1589025252;
+			public const uint FullAdminAccess = 1589025252;
 			/// <summary>
 			/// 	Defeat Wrathborn on the Tangled Shore with specific weapons:
 			/// <para/>
@@ -12370,9 +12370,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WANTEDTheTrickster = 889279836;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Uncover the secret entrance to //node.ovrd.AVALON//.
 			/// </summary>
-			public const uint Classified_865292073 = 865292073;
+			public const uint AssistantsAssistance = 865292073;
 			/// <summary>
 			/// 	Mayhem: In a single life, cast three Supers.
 			/// </summary>

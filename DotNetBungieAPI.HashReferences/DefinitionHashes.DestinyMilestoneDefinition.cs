@@ -88,9 +88,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LastWishRaid = 3181387331;
 			/// <summary>
-			/// 	###DestinyMilestones.MILESTONE-MILESTONE_WEEKLY_SEASON_20_EXOTIC_MISSION_AVALON-DESCRIPTION###
+			/// 	Complete the "//node.ovrd.AVALON//" mission.
 			/// </summary>
-			public const uint DestinyMilestonesMILESTONEMILESTONE_WEEKLY_SEASON_20_EXOTIC_MISSION_AVALONNAME = 4103768192;
+			public const uint NodeRunner = 4103768192;
 			/// <summary>
 			/// 	Complete bounties for Zavala to earn Powerful Rewards.
 			/// </summary>

@@ -863,13 +863,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VoidSinge = 2620827383;
 			/// <summary>
-			/// 	This playlist contains Control, Clash, and Zone Control. When you launch, it will randomly select one of the modes for you to play.
+			/// 	This playlist contains Control and Clash. When you launch, it will randomly select one of the modes for you to play.
 			/// <para/>
 			/// 	Control: Capture the zones and defeat your opponents for points. The more zones you control, the more points you get for each opponent defeated. The team with the most points wins!
 			/// <para/>
 			/// 	Clash: To win, defeat your opponents to score more points than them!
-			/// <para/>
-			/// 	Zone Control: Capture and control the zones for points. Your team gains more points based on the number of zones owned at each score tick. Defeating your opponents won't award points in this mode.
 			/// <para/>
 			/// </summary>
 			public const uint Quickplay6v6Rules = 3192928767;

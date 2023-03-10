@@ -2055,9 +2055,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ZeroHour = 3232506937;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Investigate a Vex network node in the EDZ that has been overwritten with a single word: AVALON.
 			/// </summary>
-			public const uint Classified_3083261666 = 3083261666;
+			public const uint nodeovrdAVALONLegendary = 3083261666;
 			public const uint H1934561961 = 1934561961;
 			public const uint Surveymission_3489692681 = 3489692681;
 			/// <summary>
@@ -5104,9 +5104,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HeroicThiefofThieves = 1275562432;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Investigate a Vex network node in the EDZ that has been overwritten with a single word: AVALON.
 			/// </summary>
-			public const uint Classified_3755529435 = 3755529435;
+			public const uint nodeovrdAVALON = 3755529435;
 			public const uint H3667596680 = 3667596680;
 			public const uint FieldAssignmentPilgrimage_3467071851 = 3467071851;
 			public const uint Salvagemission_3376869257 = 3376869257;
