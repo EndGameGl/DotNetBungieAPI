@@ -100,9 +100,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MetropolitanDefense = 213479068;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	###DestinyMilestones.MILESTONE_WEEKLY_ROOT_OF_NIGHTMARES_RAID_DESCRIPTION###
 			/// </summary>
-			public const uint Classified = 3699252268;
+			public const uint DestinyMilestonesMILESTONE_WEEKLY_ROOT_OF_NIGHTMARES_RAID_NAME = 3699252268;
 			/// <summary>
 			/// 	Complete a Nightfall strike with a team score above 100,000.
 			/// </summary>

@@ -517,9 +517,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ClusterBomb_1216817444 = 1216817444;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Defeating powerful combatants with a Void weapon gives your Void weapons Volatile Rounds. Must have a Void subclass equipped.
 			/// </summary>
-			public const uint Classified_2872000161 = 2872000161;
+			public const uint VolatileVolleys = 2872000161;
 			/// <summary>
 			/// 	Periodically generates Ionic Traces while in its high-damage state.
 			/// </summary>
@@ -2492,9 +2492,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AeonEnergy_2524330445 = 2524330445;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Equipping multiple weapons from this set grants this weapon increased reload speed and handling. It also deals increased damage versus Tormentors, Lucent Hive, and Guardians using their Supers.
 			/// </summary>
-			public const uint Classified_2552580315 = 2552580315;
+			public const uint HarmonicResonance = 2552580315;
 			public const uint H1523819442 = 1523819442;
 			/// <summary>
 			/// 	Threadlings travel farther and deal additional damage.
@@ -5610,9 +5610,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EDZScoutReports_883761826 = 883761826;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Rapid precision hits with Arc weapons jolt the target. Must have an Arc subclass equipped.
 			/// </summary>
-			public const uint Classified_2289450287 = 2289450287;
+			public const uint PreciseJolts = 2289450287;
 			/// <summary>
 			/// 	Gain extra damage resistance against powerful combatants.
 			/// </summary>
@@ -7987,9 +7987,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ArcologyScoutReports_3382877842 = 3382877842;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Defeating a combatant with a Stasis weapon spawns a Stasis crystal. Must have a Stasis subclass equipped.
 			/// </summary>
-			public const uint Classified_2123233600 = 2123233600;
+			public const uint ChillOut = 2123233600;
 			/// <summary>
 			/// 	Increases reload speed of Stasis weapons.
 			/// </summary>
@@ -9616,9 +9616,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint FusionRifleReserves = 2411920125;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Defeating a combatant with a Strand weapon spawns a Tangle. Must have a Strand subclass equipped.
 			/// </summary>
-			public const uint Classified_2690268647 = 2690268647;
+			public const uint TangledUp = 2690268647;
 			/// <summary>
 			/// 	Slightly reduces flinching from incoming fire while aiming your Energy weapon.
 			/// </summary>
@@ -9750,26 +9750,26 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TimedPayload_749072835 = 749072835;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	When you have Field of Light, gain increased weapon damage and resilience.
 			/// </summary>
-			public const uint Classified_1993387832 = 1993387832;
+			public const uint FocusedLight = 1993387832;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	When you have Flux of Darkness, gain increased ability damage and mobility.
 			/// </summary>
-			public const uint Classified_1993387833 = 1993387833;
+			public const uint FocusedDarkness = 1993387833;
 			/// <summary>
 			/// 	With no augment, grenades temporarily stun your targets.
 			/// </summary>
 			public const uint StopStunnertime = 2586124725;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	When you lose Flux of Darkness or Field of Light, begin recovering health.
 			/// </summary>
-			public const uint Classified_1993387834 = 1993387834;
+			public const uint ReleaseRecover = 1993387834;
 			public const uint H3732285973 = 3732285973;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	When an ally gains Flux of Darkness or Field of Light, deal increased weapon damage to Cabal combatants for a short time.
 			/// </summary>
-			public const uint Classified_1993387835 = 1993387835;
+			public const uint CabalExtinguisher = 1993387835;
 			/// <summary>
 			/// 	Increases reload speed of Rocket Launchers.
 			/// </summary>
@@ -10016,9 +10016,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SchwarzschildCondenser = 579336404;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Fires Stasis and Solar pellets quickly.
 			/// </summary>
-			public const uint Classified_1312472018 = 1312472018;
+			public const uint SplitDecision = 1312472018;
 			/// <summary>
 			/// 	Solar and Stasis grenades disrupt combatants, stunning them, delaying ability regeneration and lowering combatant damage output.
 			/// <para/>
@@ -10159,9 +10159,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ElementalArmaments_1882667267 = 1882667267;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Powerful combatant final blows with Solar weapons grants Radiant. Must have a Solar subclass equipped.
 			/// </summary>
-			public const uint Classified_364798618 = 364798618;
+			public const uint RadiantHeat = 364798618;
 			/// <summary>
 			/// 	Kills with Drang reload this weapon and overflow a bonus damage round into the magazine.
 			/// </summary>

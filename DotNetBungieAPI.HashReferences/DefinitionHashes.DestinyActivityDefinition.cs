@@ -65,9 +65,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GardenofSalvation_2659723068 = 2659723068;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	A sinister threat has taken root.
 			/// </summary>
-			public const uint Classified_1191701339 = 1191701339;
+			public const uint RootofNightmaresNormal_1191701339 = 1191701339;
 			/// <summary>
 			/// 	"Grow fat from strength."
 			/// </summary>
@@ -1117,9 +1117,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ShardoftheTraveler_2468202005 = 2468202005;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	A sinister threat has taken root.
 			/// </summary>
-			public const uint Classified_2918919505 = 2918919505;
+			public const uint RootofNightmaresMaster = 2918919505;
 			/// <summary>
 			/// 	Legend Difficulty: Locked Equipment, Match Game, Extra Shields
 			/// <para/>
@@ -7058,9 +7058,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Unbreakable_3140524926 = 3140524926;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	A sinister threat has taken root.
 			/// </summary>
-			public const uint Classified_2381413764 = 2381413764;
+			public const uint RootofNightmaresNormal_2381413764 = 2381413764;
 			/// <summary>
 			/// 	Infiltrate the heart of Calus's lair and destroy the Darkness relay.
 			/// </summary>

@@ -1152,9 +1152,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CandescentPrismTitanBundle = 1801388483;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The scythe of infinite nightmares lies before you awaiting your cooperation.
 			/// </summary>
-			public const uint Classified = 2672439609;
+			public const uint NightTerror = 2672439609;
 			/// <summary>
 			/// 	Possible shaders found with each Bright Engram opened.
 			/// </summary>

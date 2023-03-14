@@ -324,9 +324,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint UnderConstruction = 2936050162;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	All challenges are active.
 			/// </summary>
-			public const uint Classified_3303073618 = 3303073618;
+			public const uint RaidChallenges_3303073618 = 3303073618;
 			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
@@ -532,9 +532,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HotStep = 1073070726;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	All challenges are active.
 			/// </summary>
-			public const uint Classified_824516719 = 824516719;
+			public const uint RaidChallenges_824516719 = 824516719;
 			/// <summary>
 			/// 	You've been challenged to wield the following:
 			/// <para/>
@@ -749,13 +749,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LegendModifiers_1174869237 = 1174869237;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	A challenge awaits…
 			/// </summary>
-			public const uint Classified_766975360 = 766975360;
+			public const uint IlluminatedTormentChallenge = 766975360;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	A challenge awaits…
 			/// </summary>
-			public const uint Classified_2070303007 = 2070303007;
+			public const uint CosmicEquilibriumChallenge = 2070303007;
 			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
@@ -811,9 +811,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint KeepItLoaded = 1931480264;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	A challenge awaits…
 			/// </summary>
-			public const uint Classified_138641527 = 138641527;
+			public const uint CrossfireChallenge = 138641527;
 			/// <summary>
 			/// 	Limited fireteam revives. Gain additional revives by defeating Champions.
 			/// </summary>
@@ -904,9 +904,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TotheTop = 2626004713;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	All challenges are active.
 			/// </summary>
-			public const uint Classified_1789323317 = 1789323317;
+			public const uint RaidChallenges_1789323317 = 1789323317;
 			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
@@ -1107,9 +1107,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ShieldedFoes_3230561446 = 3230561446;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	A challenge awaits…
 			/// </summary>
-			public const uint Classified_1616571513 = 1616571513;
+			public const uint AllHandsChallenge = 1616571513;
 			/// <summary>
 			/// 	Melee abilities deal more damage and recharge much faster.
 			/// </summary>

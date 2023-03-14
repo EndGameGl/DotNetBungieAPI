@@ -217,9 +217,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ShipyardSecrets = 1234886489;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in "Root of Nightmares" with a full fireteam of clanmates.
 			/// </summary>
-			public const uint Classified_4293716153 = 4293716153;
+			public const uint CollectiveConsciousness = 4293716153;
 			/// <summary>
 			/// 	Investigate the floating islands near the Shattered Enclave.
 			/// </summary>
@@ -577,9 +577,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint StrangersinTime = 2464700601;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in "Root of Nightmares" with a full fireteam of Stasis subclasses.
 			/// </summary>
-			public const uint Classified_3413963390 = 3413963390;
+			public const uint CrystallizedFear = 3413963390;
 			/// <summary>
 			/// 	Eliminate all of Eramis's Council to unlock the pages of this lore book.
 			/// </summary>
@@ -1046,9 +1046,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DiscoverEDZ = 3344167109;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Root of Nightmares" raid.
 			/// </summary>
-			public const uint Classified_2401440742 = 2401440742;
+			public const uint RootofNightmares_2401440742 = 2401440742;
 			public const uint Specter = 741597470;
 			/// <summary>
 			/// 	Complete the "Duality" dungeon.
@@ -1222,9 +1222,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint MissionHeadlongTimeTrialGold = 4165374340;
 			public const uint H368112774 = 368112774;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounter challenges on Master difficulty.
 			/// </summary>
-			public const uint Classified_4149006431 = 4149006431;
+			public const uint FinalNightmare = 4149006431;
 			/// <summary>
 			/// 	Complete all raid encounters with a fireteam made entirely of the same Guardian class.
 			/// </summary>
@@ -1250,9 +1250,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ThisHouseIsClean = 3694890899;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in "Root of Nightmares" with a fireteam made entirely of the same Guardian class.
 			/// </summary>
-			public const uint Classified_1160810407 = 1160810407;
+			public const uint ClassicHorror = 1160810407;
 			/// <summary>
 			/// 	Complete the Exodus Garden 2A Lost Sector on Master difficulty, without a fireteam.
 			/// </summary>
@@ -1358,17 +1358,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HiveGodOptometrist = 863439158;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in "Root of Nightmares" with a full fireteam of Solar subclasses.
 			/// </summary>
-			public const uint Classified_2656634354 = 2656634354;
+			public const uint InfernalPain = 2656634354;
 			/// <summary>
 			/// 	Complete these feats of strength before the end of the season to claim unique rewards.
 			/// </summary>
 			public const uint MomentsofTriumph2020 = 1109459264;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
-			public const uint Classified_1164396532 = 1164396532;
+			public const uint MykelsReverence = 1164396532;
 			/// <summary>
 			/// 	Complete all encounters in the "King's Fall" raid with a full fireteam of Void subclasses.
 			/// </summary>
@@ -1566,9 +1566,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AscendantExplorer = 3540465881;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	During the final battle with Nezarec, activate both sets of nodes within 5 seconds of each other, for every activation, and complete the encounter.
 			/// </summary>
-			public const uint Classified_3778413954 = 3778413954;
+			public const uint Synchronicity = 3778413954;
 			/// <summary>
 			/// 	Complete the "Warden of Nothing" Nightfall on Grandmaster difficulty during Season of the Seraph.
 			/// </summary>
@@ -2220,9 +2220,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LoneWolf = 379668307;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the most recently released raid on Master difficulty.
 			/// </summary>
-			public const uint Classified_3828113377 = 3828113377;
+			public const uint RootofNightmaresMastery = 3828113377;
 			/// <summary>
 			/// 	Trophies from the "King's Fall" raid.
 			/// </summary>
@@ -2652,9 +2652,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MunitionsVarietyPack = 2790931445;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Illuminated Torment" challenge.
 			/// </summary>
-			public const uint Classified_2084487708 = 2084487708;
+			public const uint IlluminatedTorment = 2084487708;
 			/// <summary>
 			/// 	Purchase all 12 Dawning upgrades from Eva with Dawning Spirit.
 			/// </summary>
@@ -4175,9 +4175,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MarsResonance = 763938915;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Crossfire" challenge.
 			/// </summary>
-			public const uint Classified_2778920213 = 2778920213;
+			public const uint Crossfire = 2778920213;
 			/// <summary>
 			/// 	During Season of the Hunt, complete weekly bounties and earn ranks in Gambit.
 			/// </summary>
@@ -4383,9 +4383,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Metamorphosis = 533149631;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
-			public const uint Classified_417302779 = 417302779;
+			public const uint BriarsContempt = 417302779;
 			/// <summary>
 			/// 	Acquire Vexcalibur
 			/// </summary>
@@ -4639,9 +4639,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Classified_2971359731 = 2971359731;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in "Root of Nightmares" with a full fireteam of Strand subclasses.
 			/// </summary>
-			public const uint Classified_1982000933 = 1982000933;
+			public const uint DreamWeavers = 1982000933;
 			/// <summary>
 			/// 	Collect all six Seasonal Legendary weapons.
 			/// </summary>
@@ -4937,9 +4937,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint FlyingFortress = 749935109;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in "Root of Nightmares" without any member of your fireteam dying.
 			/// </summary>
-			public const uint Classified_397062446 = 397062446;
+			public const uint LivingNightmares = 397062446;
 			/// <summary>
 			/// 	Complete the associated badge on the Collections screen in order to claim this Triumph.
 			/// </summary>
@@ -5083,9 +5083,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SplicersArmament = 356245692;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
-			public const uint Classified_700218081 = 700218081;
+			public const uint NessasOblation = 700218081;
 			public const uint H2BurdenPartII = 288920568;
 			public const uint H3BurdenPartIII = 288920569;
 			/// <summary>
@@ -5465,9 +5465,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RocketLauncherMastery = 3285170890;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in "Root of Nightmares" with a full fireteam of Void subclasses.
 			/// </summary>
-			public const uint Classified_31076871 = 31076871;
+			public const uint HarbingersofNothingness = 31076871;
 			/// <summary>
 			/// 	Hunt Lost Sectors in the EDZ for wanted escapees from the Prison of Elders.
 			/// </summary>
@@ -5668,9 +5668,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SynapticFanatic = 61771244;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Triumphs for "Vow of the Disciple."
 			/// </summary>
-			public const uint Classified_2889189256 = 2889189256;
+			public const uint VowoftheDisciple_2889189256 = 2889189256;
 			/// <summary>
 			/// 	Win an Iron Banner match in overtime.
 			/// </summary>
@@ -5872,14 +5872,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint ImperialFootsoldier = 2993512400;
+			public const uint H2763842302 = 2763842302;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	In Macrocosm, a player cannot gain Planetary Insight twice in the same Planetary Shift.
 			/// </summary>
-			public const uint Classified_2763842302 = 2763842302;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_499953236 = 499953236;
+			public const uint SingularOrbit = 499953236;
 			/// <summary>
 			/// 	Defeat combatants or opposing Guardians with Power weapons.
 			/// </summary>
@@ -5899,9 +5896,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SolsticeJubilee_1909191965 = 1909191965;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Cosmic Equilibrium" challenge.
 			/// </summary>
-			public const uint Classified_1247482413 = 1247482413;
+			public const uint CosmicEquilibrium = 1247482413;
 			/// <summary>
 			/// 	Total number of levels earned in the Season of the Hunt Season Pass.
 			/// </summary>
@@ -6450,9 +6447,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GrandmasterBroodhold_2970755990 = 2970755990;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Loot all hidden chests in the "Root of Nightmares" raid.
 			/// </summary>
-			public const uint Classified_921507736 = 921507736;
+			public const uint TerraformedSecrets = 921507736;
 			/// <summary>
 			/// 	Gain ranks in the Season Pass.
 			/// </summary>
@@ -6537,9 +6534,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PulseRifleAptitude = 2707477076;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete any version of the "Root of Nightmares" raid.
 			/// </summary>
-			public const uint Classified_4270724598 = 4270724598;
+			public const uint RootofNightmares_4270724598 = 4270724598;
 			/// <summary>
 			/// 	Reach the Mythic division in Gambit.
 			/// </summary>
@@ -6892,9 +6889,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MasterfulSaboteur = 1726056119;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Unlock the "Root of Nightmares" lore book.
 			/// </summary>
-			public const uint Classified_139617739 = 139617739;
+			public const uint RootofNightmaresLoreBookUnlocks = 139617739;
 			public const uint TESTNO167BonusAppendages = 2630087778;
 			public const uint TESTNO512IceWielding = 2630087779;
 			/// <summary>
@@ -7175,9 +7172,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DrinkDeep = 12529218;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete "Root of Nightmares" within the first 48 hours of release.
 			/// </summary>
-			public const uint Classified_3025362184 = 3025362184;
+			public const uint Horticulturist = 3025362184;
 			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
@@ -7522,9 +7519,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint StrandLogII = 4168416541;
 			public const uint StrandLogI = 4168416543;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Trophies from the "Root of Nightmares" raid.
 			/// </summary>
-			public const uint Classified_4008390657 = 4008390657;
+			public const uint RaidRootofNightmares_4008390657 = 4008390657;
 			/// <summary>
 			/// 	Complete The Conflux Lost Sector on Legend difficulty without a fireteam.
 			/// </summary>
@@ -7723,9 +7720,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OdynomNomNom = 706245072;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
-			public const uint Classified_3743137436 = 3743137436;
+			public const uint RufussFury = 3743137436;
 			/// <summary>
 			/// 	Rapidly defeat combatants with weapons to earn Vanguard Medals.
 			/// </summary>
@@ -7772,9 +7769,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AdeptBaker = 3620145324;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
-			public const uint Classified_3838502045 = 3838502045;
+			public const uint AcasiasDejection = 3838502045;
 			public const uint H725321602 = 725321602;
 			/// <summary>
 			/// 	Bake each of the cookies in the Dawning Oven.
@@ -8260,9 +8257,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheRiftGenerator = 3486435407;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete each encounter in the "Root of Nightmares" raid.
 			/// </summary>
-			public const uint Classified_1164215508 = 1164215508;
+			public const uint UprootedNightmare = 1164215508;
 			public const uint ANGER = 726217168;
 			/// <summary>
 			/// 	Defeat an invader in Gambit while carrying 15 Motes.
@@ -9654,9 +9651,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheEmperorsGladiator = 1589566794;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
-			public const uint Classified_2742412203 = 2742412203;
+			public const uint KoraxissDistress = 2742412203;
 			/// <summary>
 			/// 	Earn the Exotic Sword Heartshadow.
 			/// </summary>
@@ -10342,9 +10339,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ThisIstheWay_25634498 = 25634498;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "All Hands" challenge.
 			/// </summary>
-			public const uint Classified_210713679 = 210713679;
+			public const uint AllHands = 210713679;
 			/// <summary>
 			/// 	Defeat both Scorn and Taken bosses in the Astral Alignment activity.
 			/// </summary>
@@ -10407,9 +10404,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TheWitch = 992371032;
 			public const uint TheNine = 992371033;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in "Root of Nightmares" with a full fireteam of Arc subclasses.
 			/// </summary>
-			public const uint Classified_4162933187 = 4162933187;
+			public const uint SystemShock = 4162933187;
 			/// <summary>
 			/// 	Defeat combatants or Guardians with Stasis weapons or abilities.
 			/// </summary>
@@ -10778,9 +10775,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PointedInquiry = 689439417;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	In Scission, do not defeat any attuned shielded combatants on a floor until both node chains are complete on that same floor.
 			/// </summary>
-			public const uint Classified_2764233436 = 2764233436;
+			public const uint ShieldsUp = 2764233436;
 			/// <summary>
 			/// 	Unlock the Stormcaller Warlock subclass.
 			/// </summary>
@@ -11065,9 +11062,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ObjectOriented = 748164296;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Root of Nightmares" raid on Master difficulty.
 			/// </summary>
-			public const uint Classified_391307104 = 391307104;
+			public const uint MasterDifficultyRootofNightmares = 391307104;
 			/// <summary>
 			/// 	Defeat combatants with Bows.
 			/// </summary>
@@ -11390,9 +11387,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SavinWhoWasChaoMu = 1990034990;
 			public const uint actchoosereact = 2102604679;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Root of Nightmares" raid.
 			/// </summary>
-			public const uint Classified_2216324956 = 2216324956;
+			public const uint RootofNightmares_2216324956 = 2216324956;
 			public const uint YOUMUST = 2102604682;
 			public const uint reactchooseact = 2102604683;
 			/// <summary>
@@ -12174,9 +12171,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Cerberus1Catalyst = 2761319400;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	In Cataclysm, defeat all Psions within 1 second of each other.
 			/// </summary>
-			public const uint Classified_1470555531 = 1470555531;
+			public const uint PsionicPurge = 1470555531;
 			public const uint TheDrownedCaptain3 = 3688855307;
 			public const uint OfEarthandtheReef = 2201085529;
 			public const uint TheDrownedCaptain4 = 3688855308;
@@ -12274,9 +12271,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Completionist = 3484748920;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Trophies from the "Root of Nightmares" raid.
 			/// </summary>
-			public const uint Classified_674616608 = 674616608;
+			public const uint RaidRootofNightmares_674616608 = 674616608;
 			/// <summary>
 			/// 	Achieve a Glory Rank of "Legend" in multiple Seasons.
 			/// </summary>

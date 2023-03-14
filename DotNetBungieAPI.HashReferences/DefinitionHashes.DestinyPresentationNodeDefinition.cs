@@ -208,10 +208,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Triumphs related to each of the classes.
 			/// </summary>
 			public const uint Classes = 1804547828;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3319513576 = 3319513576;
+			public const uint PalateofAgonySuit = 3319513576;
 			public const uint Raids_329982304 = 329982304;
 			public const uint TheTributeHall_1519064131 = 1519064131;
 			public const uint Gear_823209491 = 823209491;
@@ -575,10 +572,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SeasonofPlunder = 1073993173;
 			public const uint H3669416503 = 3669416503;
 			public const uint General_3839307707 = 3839307707;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_335984516 = 335984516;
+			public const uint BiteofTrepidationSuit = 335984516;
 			public const uint Exploration_4294103237 = 4294103237;
 			public const uint RegardingStasis = 2576543594;
 			public const uint Commendations_198006370 = 198006370;
@@ -691,9 +685,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Raids_3486230922 = 3486230922;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Triumphs for "Root of Nightmares."
 			/// </summary>
-			public const uint Classified_1976056830 = 1976056830;
+			public const uint RootofNightmares_1976056830 = 1976056830;
 			public const uint SunbreakSet = 3946104435;
 			public const uint OptimacySet_3946104436 = 3946104436;
 			public const uint HardysSet = 3946104438;
@@ -729,10 +723,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Shaders = 1516796296;
 			public const uint Collections_21319293 = 21319293;
 			public const uint BetweenStolenStars = 2348374202;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3758301615 = 3758301615;
+			public const uint Activities_3758301615 = 3758301615;
 			public const uint EternalVengeanceSet = 956723088;
 			public const uint DynamoCurrentSet = 956723089;
 			/// <summary>
@@ -1261,10 +1252,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TwistingEchoSuit = 3397185398;
 			public const uint Hunter_2946188302 = 2946188302;
 			public const uint TheBeatenPath = 1177466224;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_4114450368 = 4114450368;
+			public const uint RootofNightmares_4114450368 = 4114450368;
 			public const uint Nightfall_3022015892 = 3022015892;
 			public const uint ArachsChosenOrnaments_235622115 = 235622115;
 			/// <summary>
@@ -1353,9 +1341,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint RadiantBreakerSet = 3088345259;
 			public const uint OutlawedInvaderSuit_2934766261 = 2934766261;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Raid Metrics
 			/// </summary>
-			public const uint Classified_993788472 = 993788472;
+			public const uint Raids_993788472 = 993788472;
 			public const uint LuxeSet_3088345260 = 3088345260;
 			public const uint NotoriousInvaderSuit_2934766262 = 2934766262;
 			public const uint OpulentDuelistSuit = 3760158863;
@@ -1729,10 +1717,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Initiate = 2334031483;
 			public const uint GuardianGames_1965217294 = 1965217294;
 			public const uint VernalGrowthSet_1940059992 = 1940059992;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1915833282 = 1915833282;
+			public const uint Titan_1915833282 = 1915833282;
 			public const uint FeltrocSuit = 464179109;
 			public const uint NezarecsSin = 1953110651;
 			public const uint CompetitiveSpiritSet_1940059993 = 1940059993;
@@ -1766,10 +1751,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Seasonal_2451657441 = 2451657441;
 			public const uint Factions_3707983485 = 3707983485;
 			public const uint ClutchExtolSuit_476334991 = 476334991;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2209770635 = 2209770635;
+			public const uint BreathofDetestationSuit = 2209770635;
 			public const uint DeepStoneCrypt_1726708384 = 1726708384;
 			public const uint SolAHistory = 397961704;
 			/// <summary>
@@ -2022,9 +2004,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint WildHuntSuit_286120869 = 286120869;
 			public const uint PathfinderSuit_286120870 = 286120870;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Trophies from the "Root of Nightmares" raid.
 			/// </summary>
-			public const uint Classified_1968454484 = 1968454484;
+			public const uint RaidRootofNightmares = 1968454484;
 			public const uint LightkinSuit_286120871 = 286120871;
 			public const uint EidolonPursuantSuit_286120872 = 286120872;
 			/// <summary>
@@ -2216,9 +2198,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint GardenofSalvation_1827854727 = 1827854727;
 			public const uint Inspiral = 3269408847;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The Witness's terraformed Pyramid ship.
 			/// </summary>
-			public const uint Classified_1400207448 = 1400207448;
+			public const uint Essence = 1400207448;
 			public const uint Events_1356225792 = 1356225792;
 			public const uint AstralAlignment = 3735727166;
 			public const uint AltarsofSorrow = 1325869705;
@@ -2279,10 +2261,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Titan_4108787242 = 4108787242;
 			public const uint EmperorsMinisterSuit = 1375933823;
 			public const uint Seasons_2526020266 = 2526020266;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1181328254 = 1181328254;
+			public const uint Hunter_1181328254 = 1181328254;
 			public const uint Sidearms_2643617127 = 2643617127;
 			public const uint Hunter_2092820752 = 2092820752;
 			public const uint Titan_1893032045 = 1893032045;
@@ -2335,10 +2314,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Triumphs related to Cosmodrome exploration.
 			/// </summary>
 			public const uint Cosmodrome_3177164055 = 3177164055;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_889909851 = 889909851;
+			public const uint Warlock_889909851 = 889909851;
 			/// <summary>
 			/// 	Trials of Osiris Metrics
 			/// </summary>

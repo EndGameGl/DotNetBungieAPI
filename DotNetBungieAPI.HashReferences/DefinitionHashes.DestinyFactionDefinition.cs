@@ -96,9 +96,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ArmorSynthesis = 18889211;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The scythe of infinite nightmares lies before you awaiting your cooperation.
 			/// </summary>
-			public const uint Classified_2672439609 = 2672439609;
+			public const uint ResiduumoftheDisciple = 2672439609;
 			/// <summary>
 			/// 	Countless unclear futures reverberate through your mind as you approach the obelisk. Strengthen the obelisk's bond to the Sundial by increasing its Resonance Rank.
 			/// </summary>

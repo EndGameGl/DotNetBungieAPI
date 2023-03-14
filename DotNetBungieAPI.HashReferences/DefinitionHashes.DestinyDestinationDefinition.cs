@@ -216,10 +216,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Nessus, Unstable Centaur
 			/// </summary>
 			public const uint ArcadianValley_126924919 = 126924919;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified = 927343845;
+			public const uint H927343845 = 927343845;
 			/// <summary>
 			/// 	European Dead Zone, Earth
 			/// </summary>

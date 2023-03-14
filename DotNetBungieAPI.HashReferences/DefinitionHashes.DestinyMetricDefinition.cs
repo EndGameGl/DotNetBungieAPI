@@ -35,13 +35,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TotalFinalBlows_3460220472 = 3460220472;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The number of Guardians carried to their first-ever completion of "Root of Nightmares" during this Season.
 			/// </summary>
-			public const uint Classified_3096385845 = 3096385845;
+			public const uint RootofNightmaresCarries_3096385845 = 3096385845;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The fastest completion time for "Root of Nightmares" this Season.
 			/// </summary>
-			public const uint Classified_3688179966 = 3688179966;
+			public const uint RootofNightmaresTimeTrial_3688179966 = 3688179966;
 			/// <summary>
 			/// 	The number of times the Exotic quest "Vox Obscura" has been completed on Master difficulty.
 			/// </summary>
@@ -77,9 +77,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WinRate = 2941499201;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The fastest completion time for "Root of Nightmares" this week.
 			/// </summary>
-			public const uint Classified_230501113 = 230501113;
+			public const uint RootofNightmaresTimeTrial_230501113 = 230501113;
 			/// <summary>
 			/// 	The total number of final blows with Heavy Machine Guns.
 			/// <para/>
@@ -490,9 +490,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallThePyramidionScore = 2457392818;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The number of Guardians carried to their first-ever completion of "Root of Nightmares" this week.
 			/// </summary>
-			public const uint Classified_1863140102 = 1863140102;
+			public const uint RootofNightmaresCarries_1863140102 = 1863140102;
 			/// <summary>
 			/// 	The number of times the Crucible Title has been gilded.
 			/// <para/>
@@ -559,9 +559,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LastWishTimeTrial_4264455694 = 4264455694;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The total number of Guardians carried to their first completion of "Root of Nightmares."
+			/// <para/>
+			/// 	Tracks from Season 20 onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_2499684194 = 2499684194;
+			public const uint RootofNightmaresCarries_2499684194 = 2499684194;
 			/// <summary>
 			/// 	The total number of completions of "Garden of Salvation."
 			/// <para/>
@@ -675,9 +678,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TotalTriumphScore = 3329916678;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The fastest completion time for "Root of Nightmares."
+			/// <para/>
+			/// 	Tracks from Season 20 onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_58319253 = 58319253;
+			public const uint RootofNightmaresTimeTrial_58319253 = 58319253;
 			/// <summary>
 			/// 	Current 3v3 Rank.
 			/// </summary>
@@ -758,9 +764,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PrimevalsDefeated_2781393679 = 2781393679;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The total number of "Root of Nightmares" completions using Guided Games.
+			/// <para/>
+			/// 	Tracks from Season 20 onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_2500984290 = 2500984290;
+			public const uint RootofNightmaresGuidedGames = 2500984290;
 			/// <summary>
 			/// 	The lifetime high score for "Birthplace Of The Vile" in Nightfall.
 			/// </summary>
@@ -1805,9 +1814,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallChallengeCompletions = 2959623395;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The total number of completions of "Root of Nightmares."
+			/// <para/>
+			/// 	Tracks from Season 20 onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_321051454 = 321051454;
+			public const uint RootofNightmaresCompletions = 321051454;
 			/// <summary>
 			/// 	The fastest completion time for "Headlong: Time Trial" achieved this Season.
 			/// </summary>

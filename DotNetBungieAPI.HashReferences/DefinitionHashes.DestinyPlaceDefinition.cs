@@ -33,9 +33,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NewArcadia = 3004560036;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The Witness's terraformed Pyramid ship resides just out of Earth's orbit. Something sinister has taken root within.
 			/// </summary>
-			public const uint Classified = 927343845;
+			public const uint Essence = 927343845;
 			/// <summary>
 			/// 	An unstable Centaur planetoid.
 			/// </summary>
