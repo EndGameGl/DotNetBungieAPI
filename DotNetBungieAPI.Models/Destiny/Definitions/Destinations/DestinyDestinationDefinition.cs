@@ -14,7 +14,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Destinations;
 ///     Earth).
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyDestinationDefinition)]
-public sealed record DestinyDestinationDefinition : IDestinyDefinition, IDeepEquatable<DestinyDestinationDefinition>
+public sealed record DestinyDestinationDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyDestinationDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -57,7 +57,6 @@ public sealed record DestinyDestinationDefinition : IDestinyDefinition, IDeepEqu
                DisplayProperties.DeepEquals(other.DisplayProperties) &&
                DefaultFreeroamActivity.DeepEquals(other.DefaultFreeroamActivity) &&
                Bubbles.DeepEqualsReadOnlyCollections(other.Bubbles) &&
-               //EqualityComparer<ReadOnlyCollection<DestinationBubbleSettingsEntry>>.Default.Equals(BubbleSettings, other.BubbleSettings) &&
                Place.DeepEquals(other.Place) &&
                Blacklisted == other.Blacklisted &&
                Hash == other.Hash &&
@@ -66,10 +65,12 @@ public sealed record DestinyDestinationDefinition : IDestinyDefinition, IDeepEqu
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyDestinationDefinition;
+
     [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
     [JsonPropertyName("hash")] public uint Hash { get; init; }
 
     [JsonPropertyName("index")] public int Index { get; init; }
+
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 }

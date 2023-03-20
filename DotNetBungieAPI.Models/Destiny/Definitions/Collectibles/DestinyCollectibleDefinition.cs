@@ -7,7 +7,7 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Traits;
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Collectibles;
 
 [DestinyDefinition(DefinitionsEnum.DestinyCollectibleDefinition)]
-public sealed record DestinyCollectibleDefinition : IDestinyDefinition, IDeepEquatable<DestinyCollectibleDefinition>
+public sealed record DestinyCollectibleDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyCollectibleDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }

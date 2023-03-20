@@ -5,7 +5,7 @@ using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 namespace DotNetBungieAPI.Models.Destiny.Definitions.GuardianRanks;
 
 [DestinyDefinition(DefinitionsEnum.DestinyGuardianRankDefinition)]
-public sealed record DestinyGuardianRankDefinition : IDestinyDefinition, IDeepEquatable<DestinyGuardianRankDefinition>
+public sealed record DestinyGuardianRankDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyGuardianRankDefinition>
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyGuardianRankDefinition;
 

@@ -20,7 +20,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Checklists;
 ///     Forsaken.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyChecklistDefinition)]
-public sealed record DestinyChecklistDefinition : IDestinyDefinition, IDeepEquatable<DestinyChecklistDefinition>
+public sealed record DestinyChecklistDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyChecklistDefinition>
 {
     /// <summary>
     ///     <inheritdoc />

@@ -1,5 +1,6 @@
 ﻿using DotNetBungieAPI.Models.Attributes;
 using DotNetBungieAPI.Models.Dates;
+using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 using DotNetBungieAPI.Models.Destiny.Definitions.Factions;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
@@ -37,8 +38,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 ///     want to combine this data with live Vendor information from the API when it is available.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyVendorDefinition)]
-public sealed record DestinyVendorDefinition : IDestinyDefinition, IDeepEquatable<DestinyVendorDefinition>
+public sealed record DestinyVendorDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyVendorDefinition>
 {
+    DestinyDisplayPropertiesDefinition IDisplayProperties.DisplayProperties => DisplayProperties;
+
     /// <summary>
     ///     Display properties of this vendor
     /// </summary>
@@ -293,8 +296,7 @@ public sealed record DestinyVendorDefinition : IDestinyDefinition, IDeepEquatabl
     ///     workaround.
     /// </summary>
     [JsonPropertyName("ignoreSaleItemHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>
-        IgnoreSaleItems { get; init; } =
+    public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> IgnoreSaleItems { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 
     [JsonPropertyName("unlockValueHash")] public uint UnlockValueHash { get; init; }

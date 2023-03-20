@@ -8,7 +8,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Places;
 ///     part of larger locations known as Places
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyPlaceDefinition)]
-public sealed record DestinyPlaceDefinition : IDestinyDefinition, IDeepEquatable<DestinyPlaceDefinition>
+public sealed record DestinyPlaceDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyPlaceDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }

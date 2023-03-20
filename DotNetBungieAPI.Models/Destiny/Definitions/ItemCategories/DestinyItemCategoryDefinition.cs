@@ -17,8 +17,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ItemCategories;
 ///     added!
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyItemCategoryDefinition)]
-public sealed record DestinyItemCategoryDefinition : IDestinyDefinition,
-    IDeepEquatable<DestinyItemCategoryDefinition>
+public sealed record DestinyItemCategoryDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyItemCategoryDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }

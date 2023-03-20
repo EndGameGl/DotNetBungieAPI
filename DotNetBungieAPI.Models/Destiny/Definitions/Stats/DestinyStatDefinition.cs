@@ -46,7 +46,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Stats;
 ///     back to the UI for display in-game, but not to BNet.)
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyStatDefinition)]
-public sealed record DestinyStatDefinition : IDestinyDefinition, IDeepEquatable<DestinyStatDefinition>
+public sealed record DestinyStatDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyStatDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -94,16 +94,4 @@ public sealed record DestinyStatDefinition : IDestinyDefinition, IDeepEquatable<
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
-    public void MapValues()
-    {
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

@@ -29,7 +29,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 ///     DestinyActivityTypeDefinition for more information.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyActivityDefinition)]
-public sealed record DestinyActivityDefinition : IDestinyDefinition, IDeepEquatable<DestinyActivityDefinition>
+public sealed record DestinyActivityDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyActivityDefinition>
 {
     /// <summary>
     ///     The title, subtitle, and icon for the activity. We do a little post-processing on this to try and account for

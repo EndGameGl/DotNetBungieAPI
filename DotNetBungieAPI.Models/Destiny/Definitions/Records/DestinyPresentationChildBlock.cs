@@ -8,8 +8,7 @@ public sealed record DestinyPresentationChildBlock : IDeepEquatable<DestinyPrese
     public DestinyPresentationNodeType PresentationNodeType { get; init; }
 
     [JsonPropertyName("parentPresentationNodeHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>
-        ParentPresentationNodes { get; init; } =
+    public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentPresentationNodes { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
 
     [JsonPropertyName("displayStyle")] public DestinyPresentationNodeType DisplayStyle { get; init; }

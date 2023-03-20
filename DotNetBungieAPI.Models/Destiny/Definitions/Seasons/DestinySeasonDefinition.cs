@@ -13,7 +13,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Seasons;
 ///     provides new loot, has new Clan-related rewards and celebrates various seasonal events.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinySeasonDefinition)]
-public sealed record DestinySeasonDefinition : IDestinyDefinition, IDeepEquatable<DestinySeasonDefinition>
+public sealed record DestinySeasonDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinySeasonDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }

@@ -10,7 +10,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Races;
 ///     Players will choose one for their character.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyRaceDefinition)]
-public sealed record DestinyRaceDefinition : IDestinyDefinition, IDeepEquatable<DestinyRaceDefinition>
+public sealed record DestinyRaceDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyRaceDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -31,8 +31,7 @@ public sealed record DestinyRaceDefinition : IDestinyDefinition, IDeepEquatable<
         ReadOnlyDictionaries<string, string>.Empty;
 
     [JsonPropertyName("genderedRaceNamesByGenderHash")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>
-        GenderedRaceNamesByGender { get; init; } =
+    public ReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string> GenderedRaceNamesByGender { get; init; } =
         ReadOnlyDictionaries<DefinitionHashPointer<DestinyGenderDefinition>, string>.Empty;
 
     public bool DeepEquals(DestinyRaceDefinition other)

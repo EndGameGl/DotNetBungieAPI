@@ -7,8 +7,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityModifiers;
 ///     Modifiers - in Destiny 1, these were referred to as "Skulls" - are changes that can be applied to an Activity.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyActivityModifierDefinition)]
-public sealed record DestinyActivityModifierDefinition : IDestinyDefinition,
-    IDeepEquatable<DestinyActivityModifierDefinition>
+public sealed record DestinyActivityModifierDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyActivityModifierDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -39,17 +38,4 @@ public sealed record DestinyActivityModifierDefinition : IDestinyDefinition,
     [JsonPropertyName("index")] public int Index { get; init; }
 
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

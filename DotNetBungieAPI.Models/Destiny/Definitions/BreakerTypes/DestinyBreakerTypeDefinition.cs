@@ -4,7 +4,7 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 namespace DotNetBungieAPI.Models.Destiny.Definitions.BreakerTypes;
 
 [DestinyDefinition(DefinitionsEnum.DestinyBreakerTypeDefinition)]
-public sealed record DestinyBreakerTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyBreakerTypeDefinition>
+public sealed record DestinyBreakerTypeDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyBreakerTypeDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -38,17 +38,4 @@ public sealed record DestinyBreakerTypeDefinition : IDestinyDefinition, IDeepEqu
     [JsonPropertyName("index")] public int Index { get; init; }
 
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

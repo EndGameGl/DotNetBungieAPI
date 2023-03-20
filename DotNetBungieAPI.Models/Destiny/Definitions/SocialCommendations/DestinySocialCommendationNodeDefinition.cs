@@ -4,7 +4,7 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 namespace DotNetBungieAPI.Models.Destiny.Definitions.SocialCommendations;
 
 [DestinyDefinition(DefinitionsEnum.DestinySocialCommendationNodeDefinition)]
-public sealed record DestinySocialCommendationNodeDefinition : IDestinyDefinition, IDeepEquatable<DestinySocialCommendationNodeDefinition>
+public sealed record DestinySocialCommendationNodeDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinySocialCommendationNodeDefinition>
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinySocialCommendationNodeDefinition;
 

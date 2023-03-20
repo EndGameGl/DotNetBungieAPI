@@ -8,7 +8,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.EnergyTypes;
 ///     Represents types of Energy that can be used for costs and payments related to Armor 2.0 mods.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyEnergyTypeDefinition)]
-public sealed record DestinyEnergyTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyEnergyTypeDefinition>
+public sealed record DestinyEnergyTypeDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyEnergyTypeDefinition>
 {
     /// <summary>
     ///     The description of the energy type, icon etc...
@@ -73,17 +73,4 @@ public sealed record DestinyEnergyTypeDefinition : IDestinyDefinition, IDeepEqua
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

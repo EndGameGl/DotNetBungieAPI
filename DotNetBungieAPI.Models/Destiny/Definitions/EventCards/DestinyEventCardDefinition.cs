@@ -10,7 +10,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.EventCards;
 ///     Defines the properties of an 'Event Card' in Destiny 2, to coincide with a seasonal event for additional challenges, premium rewards, a new seal, and a special title. For example: Solstice of Heroes 2022.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyEventCardDefinition)]
-public sealed record DestinyEventCardDefinition : IDestinyDefinition
+public sealed record DestinyEventCardDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyEventCardDefinition;
 

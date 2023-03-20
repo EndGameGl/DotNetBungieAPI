@@ -22,8 +22,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.SocketCategories;
 ///     consistency of plugSources is the best I have time to provide.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinySocketCategoryDefinition)]
-public sealed record DestinySocketCategoryDefinition : IDestinyDefinition,
-    IDeepEquatable<DestinySocketCategoryDefinition>
+public sealed record DestinySocketCategoryDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinySocketCategoryDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -60,17 +59,4 @@ public sealed record DestinySocketCategoryDefinition : IDestinyDefinition,
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

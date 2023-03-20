@@ -30,8 +30,7 @@ public sealed record DestinyNodeActivationRequirement : IDeepEquatable<DestinyNo
     ///     know which one will be chosen until an instance of the item is created.
     /// </summary>
     [JsonPropertyName("materialRequirementHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>>
-        MaterialRequirements { get; init; } =
+    public ReadOnlyCollection<DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>> MaterialRequirements { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>>.Empty;
 
     public bool DeepEquals(DestinyNodeActivationRequirement other)

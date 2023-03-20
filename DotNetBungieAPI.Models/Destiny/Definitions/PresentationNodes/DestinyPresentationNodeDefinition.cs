@@ -16,8 +16,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 ///     tree of Presentation Nodes to be created
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyPresentationNodeDefinition)]
-public sealed record DestinyPresentationNodeDefinition : IDestinyDefinition,
-    IDeepEquatable<DestinyPresentationNodeDefinition>
+public sealed record DestinyPresentationNodeDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyPresentationNodeDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }

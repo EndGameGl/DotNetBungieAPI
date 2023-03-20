@@ -4,7 +4,7 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 namespace DotNetBungieAPI.Models.Destiny.Definitions.EnemyRaces;
 
 [DestinyDefinition(DefinitionsEnum.DestinyEnemyRaceDefinition)]
-public sealed record DestinyEnemyRaceDefinition : IDestinyDefinition, IDeepEquatable<DestinyEnemyRaceDefinition>
+public sealed record DestinyEnemyRaceDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyEnemyRaceDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -27,17 +27,4 @@ public sealed record DestinyEnemyRaceDefinition : IDestinyDefinition, IDeepEquat
     [JsonPropertyName("index")] public int Index { get; init; }
 
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

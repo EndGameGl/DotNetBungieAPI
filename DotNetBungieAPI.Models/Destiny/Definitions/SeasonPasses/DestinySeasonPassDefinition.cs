@@ -5,7 +5,7 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Progressions;
 namespace DotNetBungieAPI.Models.Destiny.Definitions.SeasonPasses;
 
 [DestinyDefinition(DefinitionsEnum.DestinySeasonPassDefinition)]
-public sealed record DestinySeasonPassDefinition : IDestinyDefinition, IDeepEquatable<DestinySeasonPassDefinition>
+public sealed record DestinySeasonPassDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinySeasonPassDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }

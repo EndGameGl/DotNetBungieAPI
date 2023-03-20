@@ -8,7 +8,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Unlocks;
 ///     wide range of state checks, progress storage, and other interesting tidbits of information.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyUnlockDefinition)]
-public sealed record DestinyUnlockDefinition : IDestinyDefinition, IDeepEquatable<DestinyUnlockDefinition>
+public sealed record DestinyUnlockDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyUnlockDefinition>
 {
     /// <summary>
     ///     Sometimes, but not frequently, these unlock flags also have human readable information: usually when they are being
@@ -47,17 +47,4 @@ public sealed record DestinyUnlockDefinition : IDestinyDefinition, IDeepEquatabl
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

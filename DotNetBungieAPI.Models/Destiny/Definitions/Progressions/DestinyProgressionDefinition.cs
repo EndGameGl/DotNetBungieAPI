@@ -26,7 +26,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Progressions;
 ///     DestinyCharacterProgressionComponent.progressions, so you don't have to worry about those.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyProgressionDefinition)]
-public sealed record DestinyProgressionDefinition : IDestinyDefinition, IDeepEquatable<DestinyProgressionDefinition>
+public sealed record DestinyProgressionDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyProgressionDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }

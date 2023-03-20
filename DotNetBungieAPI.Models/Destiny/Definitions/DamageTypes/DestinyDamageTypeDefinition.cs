@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.DamageTypes;
 ///     All damage types that are possible in the game are defined here, along with localized info and icons as needed.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyDamageTypeDefinition)]
-public sealed record DestinyDamageTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinyDamageTypeDefinition>
+public sealed record DestinyDamageTypeDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyDamageTypeDefinition>
 {
     /// <summary>
     ///     The description of the damage type, icon etc...
@@ -58,17 +58,4 @@ public sealed record DestinyDamageTypeDefinition : IDestinyDefinition, IDeepEqua
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

@@ -16,6 +16,7 @@ public sealed record DestinySackRewardItemListDefinition : IDestinyDefinition,
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinySackRewardItemListDefinition;
+
     [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
     [JsonPropertyName("hash")] public uint Hash { get; init; }
@@ -23,17 +24,4 @@ public sealed record DestinySackRewardItemListDefinition : IDestinyDefinition,
     [JsonPropertyName("index")] public int Index { get; init; }
 
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash}";
-    }
 }

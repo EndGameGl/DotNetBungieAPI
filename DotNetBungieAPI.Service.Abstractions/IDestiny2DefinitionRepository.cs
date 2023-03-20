@@ -28,7 +28,7 @@ public interface IDestiny2DefinitionRepository
 
     IEnumerable<T> Search<T>(
         BungieLocales locale,
-        Func<IDestinyDefinition, bool> predicate) where T : IDestinyDefinition;
+        Func<T, bool> predicate) where T : IDestinyDefinition;
 
     public IEnumerable<T> GetAll<T>(
         BungieLocales locale = BungieLocales.EN) where T : IDestinyDefinition;

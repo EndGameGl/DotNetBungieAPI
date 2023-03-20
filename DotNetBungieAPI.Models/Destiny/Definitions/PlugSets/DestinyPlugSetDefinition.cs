@@ -9,7 +9,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.PlugSets;
 ///     reusable sets of plugs.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyPlugSetDefinition)]
-public sealed record DestinyPlugSetDefinition : IDestinyDefinition, IDeepEquatable<DestinyPlugSetDefinition>
+public sealed record DestinyPlugSetDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyPlugSetDefinition>
 {
     /// <summary>
     ///     If you want to show these plugs in isolation, these are the display properties for them.

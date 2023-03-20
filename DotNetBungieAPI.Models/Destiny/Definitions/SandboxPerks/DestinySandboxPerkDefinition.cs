@@ -22,7 +22,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.SandboxPerks;
 ///     left as a mystery, their true purpose mostly unknown and undocumented.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinySandboxPerkDefinition)]
-public sealed record DestinySandboxPerkDefinition : IDestinyDefinition, IDeepEquatable<DestinySandboxPerkDefinition>
+public sealed record DestinySandboxPerkDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinySandboxPerkDefinition>
 {
     /// <summary>
     ///     These display properties are by no means guaranteed to be populated. Usually when it is, it's only because we

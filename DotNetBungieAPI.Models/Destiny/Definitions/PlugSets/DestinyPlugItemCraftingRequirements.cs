@@ -9,11 +9,8 @@ public sealed record DestinyPlugItemCraftingRequirements : IDeepEquatable<Destin
         = ReadOnlyCollections<DestinyPlugItemCraftingUnlockRequirement>.Empty;
 
     [JsonPropertyName("materialRequirementHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>> MaterialRequirements
-    {
-        get;
-        init;
-    } = ReadOnlyCollections<DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>>.Empty;
+    public ReadOnlyCollection<DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>> MaterialRequirements { get; init; } 
+        = ReadOnlyCollections<DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>>.Empty;
 
     public bool DeepEquals(DestinyPlugItemCraftingRequirements other)
     {

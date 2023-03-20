@@ -14,8 +14,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 ///     will get any PVP activities that the user has played, regardless of what specific PVP mode was being played.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyActivityModeDefinition)]
-public sealed record DestinyActivityModeDefinition : IDestinyDefinition,
-    IDeepEquatable<DestinyActivityModeDefinition>
+public sealed record DestinyActivityModeDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyActivityModeDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }

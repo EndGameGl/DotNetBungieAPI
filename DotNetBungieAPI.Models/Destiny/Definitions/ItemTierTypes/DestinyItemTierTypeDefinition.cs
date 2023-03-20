@@ -10,8 +10,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ItemTierTypes;
 ///     It also provides some base data for infusion that could be useful.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyItemTierTypeDefinition)]
-public sealed record DestinyItemTierTypeDefinition : IDestinyDefinition,
-    IDeepEquatable<DestinyItemTierTypeDefinition>
+public sealed record DestinyItemTierTypeDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyItemTierTypeDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -38,17 +37,4 @@ public sealed record DestinyItemTierTypeDefinition : IDestinyDefinition,
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

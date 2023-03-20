@@ -146,11 +146,11 @@ internal sealed class DestinyDefinitionsRepository
     /// <typeparam name="T"></typeparam>
     /// <param name="predicate"></param>
     /// <returns></returns>
-    public IEnumerable<T> Search<T>(Func<IDestinyDefinition, bool> predicate)
+    public IEnumerable<T> Search<T>(Func<T, bool> predicate)
         where T : IDestinyDefinition
     {
         return _definitionRepositories.TryGetValue(DefinitionHashPointer<T>.EnumValue, out var repository)
-            ? repository.Where(predicate).UnsafeCast<IDestinyDefinition, T>()
+            ? GetAll<T>().Where(predicate)
             : Enumerable.Empty<T>();
     }
 

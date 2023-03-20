@@ -21,5 +21,6 @@ public interface IDestinyDefinition
     uint Hash { get; init; }
 
     int Index { get; init; }
+
     bool Redacted { get; init; }
 }

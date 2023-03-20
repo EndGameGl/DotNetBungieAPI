@@ -22,8 +22,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 ///     from these generic definitions.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyInventoryItemDefinition)]
-public sealed record DestinyInventoryItemDefinition : IDestinyDefinition,
-    IDeepEquatable<DestinyInventoryItemDefinition>
+public sealed record DestinyInventoryItemDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyInventoryItemDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }

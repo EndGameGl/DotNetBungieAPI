@@ -10,8 +10,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ProgressionMappings;
 ///     well, but only extremely sporadically.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyProgressionMappingDefinition)]
-public sealed record DestinyProgressionMappingDefinition : IDestinyDefinition,
-    IDeepEquatable<DestinyProgressionMappingDefinition>
+public sealed record DestinyProgressionMappingDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyProgressionMappingDefinition>
 {
     /// <summary>
     ///     Infrequently defined in practice. Defer to the individual progressions' display properties.
@@ -42,17 +41,4 @@ public sealed record DestinyProgressionMappingDefinition : IDestinyDefinition,
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

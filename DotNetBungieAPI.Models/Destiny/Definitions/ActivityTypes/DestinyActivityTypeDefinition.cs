@@ -18,8 +18,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityTypes;
 ///     for the time being, it is still referred to in many places across our codebase.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyActivityTypeDefinition)]
-public sealed record DestinyActivityTypeDefinition : IDestinyDefinition,
-    IDeepEquatable<DestinyActivityTypeDefinition>
+public sealed record DestinyActivityTypeDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyActivityTypeDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -42,17 +41,4 @@ public sealed record DestinyActivityTypeDefinition : IDestinyDefinition,
     [JsonPropertyName("index")] public int Index { get; init; }
 
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

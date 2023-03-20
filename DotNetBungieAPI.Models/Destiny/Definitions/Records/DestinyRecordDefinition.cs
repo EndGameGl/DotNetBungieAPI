@@ -8,7 +8,7 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Traits;
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Records;
 
 [DestinyDefinition(DefinitionsEnum.DestinyRecordDefinition)]
-public sealed record DestinyRecordDefinition : IDestinyDefinition, IDeepEquatable<DestinyRecordDefinition>
+public sealed record DestinyRecordDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyRecordDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }

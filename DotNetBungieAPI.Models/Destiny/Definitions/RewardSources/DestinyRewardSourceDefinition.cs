@@ -19,7 +19,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.RewardSources;
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyRewardSourceDefinition)]
 public sealed record DestinyRewardSourceDefinition
-    : IDestinyDefinition, IDeepEquatable<DestinyRewardSourceDefinition>
+    : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyRewardSourceDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -45,17 +45,4 @@ public sealed record DestinyRewardSourceDefinition
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash}";
-    }
 }

@@ -41,8 +41,7 @@ public sealed record DestinyPlugWhitelistEntryDefinition : IDeepEquatable<Destin
     ///     means we know what it will roll if you try to insert this plug into this socket.
     /// </summary>
     [JsonPropertyName("reinitializationPossiblePlugHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>
-        ReinitializationPossiblePlugs { get; init; } =
+    public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> ReinitializationPossiblePlugs { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 
     public bool DeepEquals(DestinyPlugWhitelistEntryDefinition other)

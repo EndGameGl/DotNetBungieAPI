@@ -80,7 +80,7 @@ internal sealed class DefaultDestiny2DefinitionRepository : IDestiny2DefinitionR
 
     public IEnumerable<T> Search<T>(
         BungieLocales locale,
-        Func<IDestinyDefinition, bool> predicate) where T : IDestinyDefinition
+        Func<T, bool> predicate) where T : IDestinyDefinition
     {
         return _localisedRepositories.TryGetValue(locale, out var repository)
             ? repository.Search<T>(predicate)

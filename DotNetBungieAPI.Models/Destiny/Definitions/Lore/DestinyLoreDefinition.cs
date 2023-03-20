@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Lore;
 ///     These are definitions for in-game "Lore," meant to be narrative enhancements of the game experience.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyLoreDefinition)]
-public sealed record DestinyLoreDefinition : IDestinyDefinition, IDeepEquatable<DestinyLoreDefinition>
+public sealed record DestinyLoreDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyLoreDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -30,17 +30,4 @@ public sealed record DestinyLoreDefinition : IDestinyDefinition, IDeepEquatable<
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}";
-    }
 }

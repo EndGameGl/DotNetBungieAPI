@@ -12,7 +12,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ReportReasonCategories;
 ///     associated ReasonCategory's hash: there are some reasons defined under multiple categories.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyReportReasonCategoryDefinition)]
-public sealed record DestinyReportReasonCategoryDefinition : IDestinyDefinition,
+public sealed record DestinyReportReasonCategoryDefinition : IDestinyDefinition, IDisplayProperties,
     IDeepEquatable<DestinyReportReasonCategoryDefinition>
 {
     [JsonPropertyName("displayProperties")]
@@ -41,18 +41,4 @@ public sealed record DestinyReportReasonCategoryDefinition : IDestinyDefinition,
     [JsonPropertyName("hash")] public uint Hash { get; init; }
     [JsonPropertyName("index")] public int Index { get; init; }
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-    }
-
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}: {DisplayProperties.Description}";
-    }
 }

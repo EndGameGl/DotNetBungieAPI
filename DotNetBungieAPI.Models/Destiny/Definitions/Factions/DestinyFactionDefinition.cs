@@ -16,7 +16,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Factions;
 ///     without the Vendor that provides rewards.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyFactionDefinition)]
-public sealed record DestinyFactionDefinition : IDestinyDefinition, IDeepEquatable<DestinyFactionDefinition>
+public sealed record DestinyFactionDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyFactionDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }

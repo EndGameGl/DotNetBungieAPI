@@ -7,7 +7,7 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Traits;
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Metrics;
 
 [DestinyDefinition(DefinitionsEnum.DestinyMetricDefinition)]
-public sealed record DestinyMetricDefinition : IDestinyDefinition, IDeepEquatable<DestinyMetricDefinition>
+public sealed record DestinyMetricDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyMetricDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }

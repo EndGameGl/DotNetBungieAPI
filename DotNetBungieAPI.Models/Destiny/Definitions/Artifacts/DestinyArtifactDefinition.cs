@@ -12,7 +12,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Artifacts;
 ///     more easily.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyArtifactDefinition)]
-public sealed record DestinyArtifactDefinition : IDestinyDefinition, IDeepEquatable<DestinyArtifactDefinition>
+public sealed record DestinyArtifactDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyArtifactDefinition>
 {
     /// <summary>
     ///     Any basic display info we know about the Artifact. Currently sourced from a related inventory item, but the source

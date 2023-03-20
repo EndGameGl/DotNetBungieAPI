@@ -12,7 +12,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.SocketTypes;
 ///     See DestinyInventoryItemDefinition for more information about Socketed items and Plugs.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinySocketTypeDefinition)]
-public sealed record DestinySocketTypeDefinition : IDestinyDefinition, IDeepEquatable<DestinySocketTypeDefinition>
+public sealed record DestinySocketTypeDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinySocketTypeDefinition>
 {
     /// <summary>
     ///     There are fields for this display data, but they appear to be unpopulated as of now. I am not sure where in the UI

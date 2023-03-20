@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Achievements;
 ///     Represents account achievements, such as Steam ones
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyAchievementDefinition)]
-public sealed record DestinyAchievementDefinition : IDestinyDefinition, IDeepEquatable<DestinyAchievementDefinition>
+public sealed record DestinyAchievementDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyAchievementDefinition>
 {
     [JsonPropertyName("acccumulatorThreshold")]
     public int AcccumulatorThreshold { get; init; }
@@ -37,17 +37,4 @@ public sealed record DestinyAchievementDefinition : IDestinyDefinition, IDeepEqu
     [JsonPropertyName("index")] public int Index { get; init; }
 
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-    }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}";
-    }
 }

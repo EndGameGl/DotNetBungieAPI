@@ -77,9 +77,4 @@ public sealed record DestinyChecklistEntryDefinition : IDeepEquatable<DestinyChe
                Vendor.DeepEquals(other.Vendor) &&
                VendorInteractionIndex == other.VendorInteractionIndex;
     }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}";
-    }
 }

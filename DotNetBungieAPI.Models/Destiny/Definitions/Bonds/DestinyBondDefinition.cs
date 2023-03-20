@@ -4,7 +4,7 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Bonds;
 
 [DestinyDefinition(DefinitionsEnum.DestinyBondDefinition)]
-public sealed record DestinyBondDefinition : IDestinyDefinition, IDeepEquatable<DestinyBondDefinition>
+public sealed record DestinyBondDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyBondDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -35,12 +35,4 @@ public sealed record DestinyBondDefinition : IDestinyDefinition, IDeepEquatable<
     [JsonPropertyName("index")] public int Index { get; init; }
 
     [JsonPropertyName("redacted")] public bool Redacted { get; init; }
-
-    public void MapValues()
-    {
-    }
-
-    public void SetPointerLocales(BungieLocales locale)
-    {
-    }
 }

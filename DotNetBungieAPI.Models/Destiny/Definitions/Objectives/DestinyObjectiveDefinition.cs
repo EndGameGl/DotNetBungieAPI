@@ -21,7 +21,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Objectives;
 ///     accomplished, and a lot of optional tack-on data that can enhance the information provided about the task.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyObjectiveDefinition)]
-public sealed record DestinyObjectiveDefinition : IDestinyDefinition, IDeepEquatable<DestinyObjectiveDefinition>
+public sealed record DestinyObjectiveDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyObjectiveDefinition>
 {
     /// <summary>
     ///     Ideally, this should tell you what your task is. I'm not going to lie to you though. Sometimes this doesn't have useful information at all. Which sucks, but there's nothing either of us can do about it.

@@ -47,7 +47,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
 ///     milestone-level names and descriptions.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyMilestoneDefinition)]
-public sealed record DestinyMilestoneDefinition : IDestinyDefinition, IDeepEquatable<DestinyMilestoneDefinition>
+public sealed record DestinyMilestoneDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyMilestoneDefinition>
 {
     /// <summary>
     ///     A hint to the UI to indicate what to show as the display properties for this Milestone when showing "Live"

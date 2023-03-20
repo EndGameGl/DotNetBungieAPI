@@ -26,9 +26,4 @@ public sealed record DestinyBubbleDefinition : IDeepEquatable<DestinyBubbleDefin
                DisplayProperties.DeepEquals(other.DisplayProperties) &&
                Hash == other.Hash;
     }
-
-    public override string ToString()
-    {
-        return $"{Hash} {DisplayProperties.Name}";
-    }
 }

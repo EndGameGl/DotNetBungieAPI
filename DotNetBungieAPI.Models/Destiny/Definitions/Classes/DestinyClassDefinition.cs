@@ -9,7 +9,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Classes;
 ///     Hunter.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyClassDefinition)]
-public sealed record DestinyClassDefinition : IDestinyDefinition, IDeepEquatable<DestinyClassDefinition>
+public sealed record DestinyClassDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyClassDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
