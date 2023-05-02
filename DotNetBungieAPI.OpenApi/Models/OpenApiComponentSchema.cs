@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.OpenApi.Extensions;
+﻿using System.Text.Json.Serialization;
 
 namespace DotNetBungieAPI.OpenApi.Models;
 

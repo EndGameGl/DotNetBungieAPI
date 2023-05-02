@@ -23,6 +23,7 @@ public class CodeBuilder
     public async Task BuildBareDefinitions(
         Models.OpenApi openApiModel,
         ModelGeneratorBase modelGenerator,
+        MethodGroupGeneratorBase methodGroupGenerator,
         params AdditionalFileGenerator[] additionalFileGenerators)
     {
         var typeTree = new TypeTree();
@@ -41,6 +42,8 @@ public class CodeBuilder
         {
             await IterateThroughTypeTreeBare(openApiModel, treeNode, _destinationFolder, modelGenerator);
         }
+
+        await CreateApiInterfaces(openApiModel, methodGroupGenerator);
 
         foreach (var (responseName, openApiComponentResponse) in openApiModel.Components.Responses)
         {
@@ -81,8 +84,8 @@ public class CodeBuilder
             if (typeSchema.Type is "array")
                 return;
 
-            if (typeSchema.Type is "object" && (typeSchema.Properties is null || !typeSchema.Properties.Any()))
-                return;
+            //if (typeSchema.Type is "object" && (typeSchema.Properties is null || !typeSchema.Properties.Any()))
+            //    return;
 
             try
             {
@@ -103,6 +106,23 @@ public class CodeBuilder
             {
                 Console.WriteLine(e.Message);
             }
+        }
+    }
+
+    private async Task CreateApiInterfaces(Models.OpenApi openApiModel, MethodGroupGeneratorBase methodGroupGenerator)
+    {
+        var methods = openApiModel.Paths.Select(x => new MethodData(x.Key, x.Value, openApiModel)).ToList();
+
+        var groups = methods.GroupBy(x => x.MethodGroup).ToDictionary(x => x.Key, x => x.ToList());
+
+        foreach (var (groupName, groupMethods) in groups)
+        {
+            var fixedGroupName = string.IsNullOrWhiteSpace(groupName) ? "Misc" : groupName;
+            var fileName = Path.Combine(_destinationFolder, $"{fixedGroupName}.ApiMethods.{methodGroupGenerator.FileExtension}");
+            await using var streamWriter = new StreamWriter(fileName, append: false);
+            methodGroupGenerator.Writer = streamWriter;
+
+            await methodGroupGenerator.GenerateMethodGroupAsync(fixedGroupName, groupMethods);
         }
     }
 }
