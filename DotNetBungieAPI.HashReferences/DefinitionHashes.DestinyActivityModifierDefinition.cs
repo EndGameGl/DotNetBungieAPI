@@ -170,6 +170,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Armsmaster_2718382297 = 2718382297;
 			/// <summary>
+			/// 	You will face combatants with [Void] Void shields.
+			/// <para/>
+			/// 	Activity modifiers may add more shield types.
+			/// <para/>
+			/// </summary>
+			public const uint ShieldedFoes_3538098588 = 3538098588;
+			/// <summary>
 			/// 	Dealing damage with a Solar weapon now applies scorch to your targets, but your foes also now apply scorch to you when they deal Solar or explosive damage.
 			/// </summary>
 			public const uint AshestoAshes = 158678773;
@@ -221,6 +228,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	To win, defeat your opponents to score more points than them! Your abilities recharge much faster in this mode, and final blows made with Power weapons or Supers grant additional points.
 			/// </summary>
 			public const uint MayhemRules = 1792878913;
+			/// <summary>
+			/// 	You will face combatants with [Solar] Solar shields.
+			/// <para/>
+			/// 	Activity modifiers may add more shield types.
+			/// <para/>
+			/// </summary>
+			public const uint ShieldedFoes_1553093202 = 1553093202;
 			/// <summary>
 			/// 	The activity is at a fixed difficulty.
 			/// <para/>
@@ -463,6 +477,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IronBannerEruption = 372037179;
 			/// <summary>
+			/// 	[Solar] Solar Shields
+			/// </summary>
+			public const uint ShieldedFoes_2965677044 = 2965677044;
+			/// <summary>
 			/// 	Enemies throw grenades significantly more often.
 			/// </summary>
 			public const uint ScorchedEarth = 703904464;
@@ -616,13 +634,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ContestantsTheWayoftheHoof_2229025674 = 2229025674;
 			/// <summary>
-			/// 	A challenge awaits…
-			/// </summary>
-			public const uint SwiftDestruction = 2672226122;
-			/// <summary>
 			/// 	Guardians deal increased damage with Auto Rifles and Grenade Launchers.
 			/// </summary>
 			public const uint MA75Multipurpose = 1926594730;
+			/// <summary>
+			/// 	A challenge awaits…
+			/// </summary>
+			public const uint SwiftDestruction = 2672226122;
 			/// <summary>
 			/// 	This mode contains Overload Champions, which cannot be stopped without an Overload mod.
 			/// </summary>
@@ -772,6 +790,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IncreasedTrialsRank = 1361609633;
 			/// <summary>
+			/// 	Defeated Guardians drop a crest. Secure opposing crests to score points. Secure allied crests to deny your opponents points.
+			/// </summary>
+			public const uint SupremacyRules = 3296644900;
+			/// <summary>
 			/// 	{var:4005007457}% increase to incoming Arc damage.
 			/// </summary>
 			public const uint ArcThreat = 186409259;
@@ -843,6 +865,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IncreasedVanguardRank = 745014575;
 			/// <summary>
+			/// 	You will face combatants with [Arc] Arc shields.
+			/// <para/>
+			/// 	Activity modifiers may add more shield types.
+			/// <para/>
+			/// </summary>
+			public const uint ShieldedFoes_3139381566 = 3139381566;
+			/// <summary>
 			/// 	Enemy melee attacks are significantly more powerful, and radar is disabled.
 			/// </summary>
 			public const uint Blackout = 1427917745;
@@ -850,10 +879,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	{var:1027206613}% bonus to Sword damage.
 			/// </summary>
 			public const uint OverchargedSword = 1326581064;
-			/// <summary>
-			/// 	+25% Arc damage dealt and +50% Arc damage received.
-			/// </summary>
-			public const uint AcuteArcBurn = 258452800;
 			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
@@ -895,10 +920,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	All Crucible Rank point gains are increased!
 			/// </summary>
 			public const uint IncreasedCrucibleRank = 3874605433;
-			/// <summary>
-			/// 	+25% Void damage dealt and +50% Void damage received.
-			/// </summary>
-			public const uint AcuteVoidBurn = 1691458972;
 			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
@@ -1004,10 +1025,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeated Guardians will respawn after a short time.
 			/// </summary>
 			public const uint RespawnsEnabled = 3450476141;
-			/// <summary>
-			/// 	All Nightfall loot drops are doubled.
-			/// </summary>
-			public const uint DoubleNightfallDrops = 1171597537;
 			/// <summary>
 			/// 	Enhanced radar. Take increased damage from melee.
 			/// </summary>
@@ -1208,6 +1225,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint StrengthofMemory = 1498263100;
 			/// <summary>
+			/// 	[Arc] Arc Shields
+			/// </summary>
+			public const uint ShieldedFoes_3171609188 = 3171609188;
+			/// <summary>
 			/// 	Round 1: Hive
 			/// <para/>
 			/// 	Round 2: Fallen
@@ -1288,6 +1309,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	This mode contains Unstoppable Champions, which cannot be stopped without an Unstoppable mod.
 			/// </summary>
 			public const uint ChampionsUnstoppable = 4218937993;
+			/// <summary>
+			/// 	[Void] Void Shields
+			/// </summary>
+			public const uint ShieldedFoes_720259466 = 720259466;
 			/// <summary>
 			/// 	Your current character has not yet completed this mission on Legendary difficulty.
 			/// <para/>

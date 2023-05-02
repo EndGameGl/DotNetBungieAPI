@@ -617,6 +617,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LeviathanPrestigeCompletions = 1130423918;
 			/// <summary>
+			/// 	Highest score achieved by your fireteam during this year's Guardian Games.
+			/// </summary>
+			public const uint TopFireteamScore_4196647092 = 4196647092;
+			/// <summary>
 			/// 	The fastest completion time for "Vault of Glass" this week.
 			/// </summary>
 			public const uint VaultofGlassTimeTrial_1515372749 = 1515372749;
@@ -685,9 +689,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RootofNightmaresTimeTrial_58319253 = 58319253;
 			/// <summary>
-			/// 	Current 3v3 Rank.
+			/// 	Current Competitive Division
 			/// </summary>
-			public const uint H3v3Rank = 268448617;
+			public const uint CompetitiveDivision = 268448617;
 			/// <summary>
 			/// 	The total number of Heroic public event completions.
 			/// <para/>
@@ -858,6 +862,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint InvadersDefeated_3227312321 = 3227312321;
 			/// <summary>
+			/// 	Tally of all the Medallions you deposited during this year's Guardian Games.
+			/// </summary>
+			public const uint TotalMedallionScore_3412338256 = 3412338256;
+			/// <summary>
 			/// 	The number of combatants defeated in the Shattered Realm and Astral Alignment activities.
 			/// </summary>
 			public const uint CombatantsDefeatedinSeasonoftheLostActivities = 4017051991;
@@ -955,7 +963,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	You are in the top {var:2829645461}% of scoring for all players during the 2022 Guardian Games!
 			/// </summary>
-			public const uint Ranking = 2850716853;
+			public const uint Ranking_2850716853 = 2850716853;
 			/// <summary>
 			/// 	Highest Rank achieved for the Season of Defiance.
 			/// <para/>
@@ -1083,6 +1091,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallSavathûnsSongScore = 2894079898;
 			/// <summary>
+			/// 	You are in the top {var:2829645461}% of scoring for all players during the 2022 Guardian Games!
+			/// </summary>
+			public const uint Ranking_753959468 = 753959468;
+			/// <summary>
 			/// 	Highest score achieved in Dares of Eternity on Normal difficulty.
 			/// <para/>
 			/// 	Tracks from Season 15 onward.
@@ -1140,7 +1152,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Highest score achieved by your fireteam during this year's Guardian Games.
 			/// </summary>
-			public const uint TopFireteamScore = 2539150057;
+			public const uint TopFireteamScore_2539150057 = 2539150057;
 			/// <summary>
 			/// 	The number of chests opened within Dares of Eternity this Season.
 			/// </summary>
@@ -1191,7 +1203,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Tally of all the Medallions you deposited during this year's Guardian Games.
 			/// </summary>
-			public const uint TotalMedallionScore = 4017597957;
+			public const uint TotalMedallionScore_4017597957 = 4017597957;
 			/// <summary>
 			/// 	The total number of Gambit matches won.
 			/// <para/>

@@ -1462,6 +1462,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this weapon ornament to change the appearance of Hammerhead. Once you get an ornament, it's unlocked for all characters on your account.
 			/// </summary>
 			public const uint GreatWhite = 2545759382;
+			public const uint PhoenixsAscentBond = 876022315;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
@@ -8065,6 +8066,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
 			public const uint HardysJourney_3559167325 = 3559167325;
+			public const uint Taraxippos = 1729117871;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
@@ -8154,6 +8156,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	A reminder of our mortality, streaking through the cosmos.
 			/// </summary>
 			public const uint AerialShroud = 2521445207;
+			/// <summary>
+			/// 	Apply this shader to change the color of your gear.
+			/// </summary>
+			public const uint BurnishedAcclaim = 263358641;
 			/// <summary>
 			/// 	Equip this shader to change the color of your gear.
 			/// </summary>
@@ -8718,6 +8724,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Avalanche_889740011 = 889740011;
 			public const uint OutlawedSentryPlate = 743302018;
 			public const uint SeventhSeraphBond = 3404758133;
+			public const uint LionsReignMark = 757848195;
 			/// <summary>
 			/// 	Equip this weapon ornament to change the appearance of Cloudstrike. Once you get an ornament, it's unlocked for all characters on your account.
 			/// </summary>
@@ -13268,6 +13275,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Apply this shader to change the color of your gear.
 			/// </summary>
 			public const uint VanguardMetallic = 2333638028;
+			public const uint SerpentsGloryMantle = 2406977947;
 			/// <summary>
 			/// 	Apply this shader to change the color of your gear.
 			/// </summary>
@@ -14126,6 +14134,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this weapon ornament to change the appearance of Reckless Endangerment. Once you get an ornament, it's unlocked for all characters on your account.
 			/// </summary>
 			public const uint StalwartSkin = 641105881;
+			public const uint CrucibleAscendantDivision = 2836000817;
 			/// <summary>
 			/// 	Equip this weapon ornament to change the appearance of Reckless Endangerment. Once you get an ornament, it's unlocked for all characters on your account.
 			/// </summary>

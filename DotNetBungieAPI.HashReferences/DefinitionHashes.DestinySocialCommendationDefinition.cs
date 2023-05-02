@@ -61,6 +61,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PrimevalInstinct = 363818544;
 			/// <summary>
+			/// 	Dress for the job you want, not the job you have.
+			/// </summary>
+			public const uint BestDressed = 357212819;
+			/// <summary>
 			/// 	Considerate, Kind, and Helpful
 			/// </summary>
 			public const uint Thoughtful = 3513056018;

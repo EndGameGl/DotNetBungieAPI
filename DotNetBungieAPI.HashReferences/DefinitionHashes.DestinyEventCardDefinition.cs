@@ -8,7 +8,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete limited-time Event Card challenges to earn various rewards and make progress toward event Seal completion.
 			/// </summary>
 			public const uint Solstice = 3841872876;
-			public const uint H3461628897 = 3461628897;
+			/// <summary>
+			/// 	Complete limited-time Event Card challenges to earn various rewards and make progress toward event Title completion.
+			/// </summary>
+			public const uint GuardianGames = 3461628897;
 			/// <summary>
 			/// 	Complete limited-time Event Card challenges to earn various rewards and make progress toward event Seal completion.
 			/// </summary>

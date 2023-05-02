@@ -5,9 +5,9 @@ namespace DotNetBungieAPI.HashReferences
 		public static class Artifacts
 		{
 			/// <summary>
-			/// 	Hear the seventh strike, calling blades to meet.
+			/// 	An empowered symbol of Awoken royalty.
 			/// </summary>
-			public const uint BellofConquests = 2894222926;
+			public const uint AscendantScepter = 2894222926;
 		}
 	}
 }

@@ -25,6 +25,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint JadeRabbits = 1912364094;
 			/// <summary>
+			/// 	Find and collect all Apogee Repeaters in Neomuna.
+			/// </summary>
+			public const uint ApogeeRepeaters = 703136805;
+			/// <summary>
 			/// 	Don't put them all in one basket.
 			/// </summary>
 			public const uint CorruptedEggs = 2609997025;
@@ -44,6 +48,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Close all Darkness Rifts in the Throne World.
 			/// </summary>
 			public const uint DarknessRifts = 3089927156;
+			/// <summary>
+			/// 	Collect and place all Nimbus Action Figures found in Neomuna.
+			/// </summary>
+			public const uint NimbusActionFigures = 1793940260;
 			/// <summary>
 			/// 	Collect and mount all unique Lucent Moths in the Throne World.
 			/// </summary>

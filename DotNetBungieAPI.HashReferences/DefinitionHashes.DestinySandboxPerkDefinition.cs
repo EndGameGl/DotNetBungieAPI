@@ -21,6 +21,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BatWingEntrance = 3086904934;
 			public const uint H3693037010 = 3693037010;
+			public const uint H1107945579 = 1107945579;
 			/// <summary>
 			/// 	Targets killed with Sunshot explode in Solar energy.
 			/// </summary>
@@ -1397,19 +1398,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3629361166 = 3629361166;
 			public const uint H3629361167 = 3629361167;
 			/// <summary>
-			/// 	This buff commemorates your Gold Tier score in the Guardian Games: Training or Competitive modes.
-			/// <para/>
-			/// 	Defeating combatants with abilities grants increased weapon damage, while defeating combatants with weapons grants increased ability recharge speed.
-			/// <para/>
-			/// 	Empowerment stacks 5 times.
-			/// <para/>
-			/// 	While at maximum empowerment, defeat combatants to gain a boost to mobility, accuracy, handling, and reload.
-			/// <para/>
-			/// 	This is active only in Guardian Games playlist activities and will expire on weekly reset.
-			/// <para/>
-			/// </summary>
-			public const uint GoldContendersBoon = 3224837355;
-			/// <summary>
 			/// 	Significantly increased rate of fire.
 			/// </summary>
 			public const uint Thunderer = 1407914061;
@@ -1478,7 +1466,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint EmberofCombustion = 3237901259;
 			public const uint H2268147245 = 2268147245;
 			/// <summary>
-			/// 	 Strand weapon final blows have a chance to create a Threadling.
+			/// 	[Strand] Strand weapon final blows have a chance to create a Threadling.
 			/// </summary>
 			public const uint ThreadofRebirth = 501809574;
 			/// <summary>
@@ -2051,6 +2039,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Breaking a combatant's shield with this weapon fills its magazine from reserves. Energy weapons regenerate ammo on hit when matching the damage type to the combatant's shield.
 			/// </summary>
 			public const uint Genesis_863260328 = 863260328;
+			public const uint H625370460 = 625370460;
 			/// <summary>
 			/// 	Power Bonus: +9[Light Level]
 			/// <para/>
@@ -3499,19 +3488,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Increases the amount of ammo you can carry for Void weapons.
 			/// </summary>
 			public const uint VoidReserves = 4161224995;
-			/// <summary>
-			/// 	This buff commemorates your Silver Tier score in the Guardian Games: Training or Competitive modes.
-			/// <para/>
-			/// 	Defeating combatants with abilities grants increased weapon damage, while defeating combatants with weapons grants increased ability recharge speed.
-			/// <para/>
-			/// 	Empowerment stacks 3 times.
-			/// <para/>
-			/// 	While at maximum empowerment, defeat combatants to gain a boost to mobility.
-			/// <para/>
-			/// 	This is active only in Guardian Games playlist activities and will expire on weekly reset.
-			/// <para/>
-			/// </summary>
-			public const uint SilverContendersBoon = 487165992;
 			/// <summary>
 			/// 	Bows charges can be held indefinitely.
 			/// </summary>
@@ -5561,7 +5537,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3935974454 = 3935974454;
 			public const uint H2900296613 = 2900296613;
 			public const uint H2900296614 = 2900296614;
-			public const uint H919980728 = 919980728;
 			/// <summary>
 			/// 	Gain 10% more XP while on the Moon.
 			/// </summary>
@@ -5821,7 +5796,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// 	• [Stasis] moderately controls recoil and increases movement speed when aiming down sights.
 			/// <para/>
-			/// 	•  increases airborne effectiveness.
+			/// 	• [Strand] increases airborne effectiveness.
 			/// <para/>
 			/// </summary>
 			public const uint ElementalCapacitor_251493092 = 251493092;
@@ -6179,7 +6154,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint ExplosiveFinisher = 4114436845;
-			public const uint H758070245 = 758070245;
 			/// <summary>
 			/// 	Submachine Guns you are wielding fire shield-piercing rounds and stun [Shield-Piercing] Barrier Champions.
 			/// <para/>
@@ -6852,15 +6826,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Quickdraw_1012681949 = 1012681949;
 			/// <summary>
-			/// 	This buff commemorates your Bronze Tier score in the Guardian Games: Training or Competitive modes.
-			/// <para/>
-			/// 	Defeating combatants with abilities grants increased weapon damage, while defeating combatants with weapons grants increased ability recharge speed. 
-			/// <para/>
-			/// 	This is active only in Guardian Games playlist activities and will expire on weekly reset.
-			/// <para/>
-			/// </summary>
-			public const uint BronzeContendersBoon = 902261221;
-			/// <summary>
 			/// 	Gain a small amount of resistance to all damage dealt to you by combatants. Additional copies of this mod will increase this effect.
 			/// </summary>
 			public const uint EnergyDiffusionSubstrate = 2339816967;
@@ -7293,6 +7258,19 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1134022266 = 1134022266;
 			public const uint H202255598 = 202255598;
 			/// <summary>
+			/// 	This buff commemorates your Gold Tier score in the Guardian Games: Training or Competitive modes.
+			/// <para/>
+			/// 	Defeating combatants with abilities grants increased weapon damage, while defeating combatants with weapons grants increased ability recharge speed.
+			/// <para/>
+			/// 	Empowerment stacks 5 times.
+			/// <para/>
+			/// 	While at maximum empowerment, defeat combatants to gain a boost to mobility, accuracy, handling, and reload.
+			/// <para/>
+			/// 	This is active only in Guardian Games playlist activities and will expire on weekly reset.
+			/// <para/>
+			/// </summary>
+			public const uint GoldContendersBoon = 2323959622;
+			/// <summary>
 			/// 	Chance to obtain additional resources in the Tangled Shore.
 			/// </summary>
 			public const uint TangledShoreScanner = 2287660107;
@@ -7305,6 +7283,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Your empowering rifts grant you Devour. Damage dealt from within them will disrupt combatants.
 			/// </summary>
 			public const uint DevouringRift = 2227431032;
+			/// <summary>
+			/// 	This buff commemorates your Bronze Tier score in the Guardian Games: Training or Competitive modes.
+			/// <para/>
+			/// 	Defeating combatants with abilities grants increased weapon damage, while defeating combatants with weapons grants increased ability recharge speed. 
+			/// <para/>
+			/// 	This is active only in Guardian Games playlist activities and will expire on weekly reset.
+			/// <para/>
+			/// </summary>
+			public const uint BronzeContendersBoon = 3293149548;
 			/// <summary>
 			/// 	Faster ready and stow speed for Grenade Launchers.
 			/// </summary>
@@ -7367,7 +7354,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	This perk has been deprecated and no longer functions.
 			/// </summary>
 			public const uint DeprecatedPerk_1066728522 = 1066728522;
-			public const uint H71603351 = 71603351;
 			/// <summary>
 			/// 	Gain two Remnants per final blow instead of one.
 			/// </summary>
@@ -7602,7 +7588,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeprecatedPerk_3387941196 = 3387941196;
 			/// <summary>
-			/// 	Powered melee final blows grant your  Strand weapons Unraveling Rounds.
+			/// 	Powered melee final blows grant your [Strand] Strand weapons Unraveling Rounds.
 			/// </summary>
 			public const uint ThreadofPropagation = 3636302772;
 			/// <summary>
@@ -8358,7 +8344,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	This perk has been deprecated and no longer functions.
 			/// </summary>
 			public const uint DeprecatedPerk_1885285654 = 1885285654;
-			public const uint H3648789386 = 3648789386;
 			/// <summary>
 			/// 	Increases the amount of ammo you can carry for Rocket Launchers, Grenade Launchers, Machine Guns, and Shotguns.
 			/// </summary>
@@ -8392,6 +8377,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Increases your chance of finding Special ammo while you have a Trace Rifle equipped.
 			/// </summary>
 			public const uint TraceRifleAmmoFinder_2000957916 = 2000957916;
+			public const uint H1181877335 = 1181877335;
 			/// <summary>
 			/// 	Increased Trials Rank points from reaching 3, 5, and 7 match wins on a ticket.
 			/// </summary>
@@ -8572,7 +8558,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// 	• [Stasis] moderately controls recoil and increases movement speed when aiming down sights.
 			/// <para/>
-			/// 	•  increases airborne effectiveness.
+			/// 	• [Strand] increases airborne effectiveness.
 			/// <para/>
 			/// </summary>
 			public const uint ElementalCapacitor_319132642 = 319132642;
@@ -9478,6 +9464,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Vault into the air and unleash a volley of Solar-charged explosive knives.
 			/// </summary>
 			public const uint BladeBarrage_2041340886 = 2041340886;
+			public const uint H3795639906 = 3795639906;
 			/// <summary>
 			/// 	Sustained damage from this weapon lowers the target's damage output for a short duration.
 			/// </summary>
@@ -9688,7 +9675,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Fires high-powered explosive ammunition.
 			/// </summary>
 			public const uint PyrotoxinRounds = 3029531248;
-			public const uint H4262228429 = 4262228429;
 			/// <summary>
 			/// 	Detect resources within a 30-meter range while on Nessus.
 			/// </summary>
@@ -10793,9 +10779,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3799920400 = 3799920400;
 			public const uint H3799920401 = 3799920401;
 			public const uint H3799920402 = 3799920402;
-			public const uint H317302396 = 317302396;
 			public const uint H2317200681 = 2317200681;
 			public const uint H2944782064 = 2944782064;
+			public const uint H317302396 = 317302396;
 			/// <summary>
 			/// 	The Void rocket suppresses enemies. The Solar rocket causes damage over time.
 			/// </summary>
@@ -10879,6 +10865,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	This perk has been deprecated and no longer functions.
 			/// </summary>
 			public const uint DeprecatedPerk_797818833 = 797818833;
+			public const uint H1463772586 = 1463772586;
 			/// <summary>
 			/// 	The holstered weapon is automatically reloaded after an improved short period of time.
 			/// </summary>
@@ -11152,7 +11139,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Creates tracking cluster missiles on impact.
 			/// </summary>
 			public const uint WolfpackRounds = 2447763556;
-			public const uint H3286802606 = 3286802606;
 			/// <summary>
 			/// 	Fists of Havoc's ground slam attack leaves a damage-dealing field in its wake and deals more damage the longer it's in the air.
 			/// </summary>
@@ -11631,6 +11617,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ShotgunDexterity_2572031835 = 2572031835;
 			public const uint H2407654303 = 2407654303;
+			/// <summary>
+			/// 	This buff commemorates your Silver Tier score in the Guardian Games: Training or Competitive modes.
+			/// <para/>
+			/// 	Defeating combatants with abilities grants increased weapon damage, while defeating combatants with weapons grants increased ability recharge speed.
+			/// <para/>
+			/// 	Empowerment stacks 3 times.
+			/// <para/>
+			/// 	While at maximum empowerment, defeat combatants to gain a boost to mobility.
+			/// <para/>
+			/// 	This is active only in Guardian Games playlist activities and will expire on weekly reset.
+			/// <para/>
+			/// </summary>
+			public const uint SilverContendersBoon = 94464513;
 			/// <summary>
 			/// 	Activate Quickfall to spend your melee charge and dive to the ground, creating a large smoke cloud on impact, which then dissipates. Targets caught in the cloud are weakened, and allies are made invisible.
 			/// <para/>

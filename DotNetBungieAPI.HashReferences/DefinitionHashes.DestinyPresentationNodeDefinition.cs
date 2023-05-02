@@ -220,7 +220,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ExtinctionOrbitOrnaments_4124408557 = 4124408557;
 			public const uint PublicEvents_1876261587 = 1876261587;
 			public const uint ArachsChosenOrnaments_4124408558 = 4124408558;
-			public const uint VanguardMedals = 3856185547;
+			public const uint VanguardMedals_3856185547 = 3856185547;
 			public const uint LegacysLament = 2032352737;
 			/// <summary>
 			/// 	Triumphs related to the "King's Fall" raid.
@@ -961,6 +961,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H303324652 = 303324652;
 			public const uint Champions = 1635301565;
 			public const uint Armor_615947643 = 615947643;
+			public const uint VanguardMedals_3147052745 = 3147052745;
 			public const uint Nightmares_2272665373 = 2272665373;
 			/// <summary>
 			/// 	Triumphs related to your collaboration with your fireteam.
@@ -1037,6 +1038,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Aspect = 3199877339;
 			public const uint XenosShoreOrnaments = 2389993859;
 			public const uint PhotosuedeSuit_2389993860 = 2389993860;
+			public const uint VanguardMedals_3674532950 = 3674532950;
 			public const uint VigilofHeroesSuit_2389993862 = 2389993862;
 			public const uint PhobosWardenSuit_2389993863 = 2389993863;
 			/// <summary>
@@ -1492,6 +1494,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Lightfall_3352340500 = 3352340500;
 			public const uint InauguralRevelrySuit_639454544 = 639454544;
 			public const uint DrainedSolsticeSuit_639454547 = 639454547;
+			public const uint PhoenixsAscentBond = 2240694673;
 			public const uint FusionRifles_2737711334 = 2737711334;
 			public const uint Hunter_3149147086 = 3149147086;
 			public const uint Activities_1218812945 = 1218812945;
@@ -1564,6 +1567,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DreambaneSuit_226719142 = 226719142;
 			public const uint CrystocreneSuit_226719143 = 226719143;
 			public const uint Activities_2178633627 = 2178633627;
+			/// <summary>
+			/// 	Complete Event Challenges during Guardian Games. Progress resets at the end of the event.
+			/// </summary>
+			public const uint Champ = 1317417718;
 			public const uint Warlock_508124809 = 508124809;
 			public const uint Trials_3813527194 = 3813527194;
 			public const uint ExecutorsWillOrnaments_3219151821 = 3219151821;
@@ -1633,6 +1640,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Team up with other Guardians to take on Vanguard Ops and collect the rewards from those dangerous quests and missions.
 			/// </summary>
 			public const uint Adventurer = 3111288225;
+			public const uint LostSectors_2427983160 = 2427983160;
 			public const uint VirtuousSet_3143378010 = 3143378010;
 			public const uint PhenotypePlasticitySet_3143378011 = 3143378011;
 			/// <summary>
@@ -1707,6 +1715,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SeasonofArrivals = 3459575786;
 			public const uint GreatHuntSuit_464179105 = 464179105;
+			public const uint LostSectors_2360492953 = 2360492953;
 			public const uint PraetorianOrnament_464179106 = 464179106;
 			public const uint H4013222110 = 4013222110;
 			public const uint EquitisShadeSuit = 464179107;
@@ -1775,6 +1784,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint WarmWinterCloak_2865196013 = 2865196013;
 			public const uint RekindledSolsticeSuit_2865196015 = 2865196015;
 			public const uint CaptainsLog = 1428811610;
+			public const uint LionsReignMark = 673009850;
 			public const uint Strikes_2675905563 = 2675905563;
 			public const uint Events_2131583069 = 2131583069;
 			public const uint ExploreNessus = 149091036;
@@ -1955,6 +1965,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TheVanguard_1310980015 = 1310980015;
 			public const uint Strikes_1990811028 = 1990811028;
 			public const uint Strand = 842301675;
+			public const uint H543107399 = 543107399;
 			/// <summary>
 			/// 	Complete all Triumphs for Shadowkeep.
 			/// </summary>
@@ -2026,9 +2037,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DreambaneSuit_1469373077 = 1469373077;
 			public const uint MachineGuns_2522335688 = 2522335688;
 			public const uint ThunderheadSuit_1469373078 = 1469373078;
+			public const uint SerpentsGloryMantle = 3253657966;
 			public const uint RocketLaunchers_1501717862 = 1501717862;
 			public const uint VeritasSuit_1469373079 = 1469373079;
-			public const uint LostSectors_2064198093 = 2064198093;
 			public const uint General_1808459779 = 1808459779;
 			public const uint Raids_4025982223 = 4025982223;
 			public const uint SolsticeSet_3291541569 = 3291541569;
@@ -2203,6 +2214,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Essence = 1400207448;
 			public const uint Events_1356225792 = 1356225792;
 			public const uint AstralAlignment = 3735727166;
+			public const uint H1405381633 = 1405381633;
 			public const uint AltarsofSorrow = 1325869705;
 			public const uint Collectibles = 3149360255;
 			public const uint IllicitReaperSuit_39044404 = 39044404;
@@ -2340,7 +2352,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Disciplined and proud, Titans are capable of both aggressive assaults and stalwart defenses.
 			/// </summary>
 			public const uint Titan_811225638 = 811225638;
-			public const uint LostSectors_1680595431 = 1680595431;
 			public const uint Titan_604768449 = 604768449;
 			public const uint Hunter_543101070 = 543101070;
 			public const uint Endgame_3041894943 = 3041894943;

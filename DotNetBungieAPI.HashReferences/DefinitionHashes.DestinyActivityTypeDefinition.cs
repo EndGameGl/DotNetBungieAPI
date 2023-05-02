@@ -214,6 +214,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Armsweek = 1522227381;
 			/// <summary>
+			/// 	Join a fireteam of three and face the most feared minions of the Darkness.
+			/// </summary>
+			public const uint Nightfall_272800122 = 272800122;
+			/// <summary>
 			/// 	Defeat opponents and claim their crests.
 			/// </summary>
 			public const uint Supremacy = 96396597;

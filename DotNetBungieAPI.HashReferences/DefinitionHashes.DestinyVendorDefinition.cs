@@ -1782,7 +1782,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Bundle price will be reduced for each item already owned.
 			/// <para/>
 			/// </summary>
-			public const uint AspiringChallengerSet = 1062658481;
+			public const uint AspiringChallengerBundle = 1062658481;
 			/// <summary>
 			/// 	This package contains a random Arc, Solar, or Void glow you can use to adorn your Solstice armor. Once obtained, glows become permanently unlocked and can be reused as many times as desired.
 			/// </summary>
@@ -2576,7 +2576,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Bundle price will be reduced for each item already owned.
 			/// <para/>
 			/// </summary>
-			public const uint EnduringConquerorSet = 577175925;
+			public const uint EnduringConquerorBundle = 577175925;
 			/// <summary>
 			/// 	Ever the gentleman sniper, Devrim Kay holds fast in the wilds of the EDZ.
 			/// </summary>
@@ -3456,7 +3456,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Bundle price will be reduced for each item already owned.
 			/// <para/>
 			/// </summary>
-			public const uint ResoluteChampionSet = 3139294928;
+			public const uint ResoluteChampionBundle = 3139294928;
 			/// <summary>
 			/// 	This pack contains a small stack of shaders that remind Guardians of the Festival of the Lost. It is likely to award shaders that have not yet been obtained.
 			/// </summary>

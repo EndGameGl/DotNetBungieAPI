@@ -13,6 +13,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NewArcadia_854211606 = 854211606;
 			/// <summary>
+			/// 	The Scarlet Keep
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_2969267285 = 2969267285;
+			/// <summary>
 			/// 	The Lucent Hive are using stolen Guardian Light for some wicked purpose. Breach their stronghold and uncover their plot.
 			/// </summary>
 			public const uint LegendPsiOpsBattlegroundCosmodrome_1859320492 = 1859320492;
@@ -216,6 +220,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Surveymission_4231544111 = 4231544111;
 			public const uint SalvageMission_2573702057 = 2573702057;
 			/// <summary>
+			/// 	Compete in the Capture Zone version of Trials of Osiris. Defeat your opponents or capture the zone to win.
+			/// </summary>
+			public const uint TrialsofOsiris_1114325415 = 1114325415;
+			/// <summary>
 			/// 	Stop the Vex incursion of the Neomuni CloudArk.
 			/// </summary>
 			public const uint BreakneckLegendary = 1338085878;
@@ -302,6 +310,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3091400008 = 3091400008;
 			public const uint H3091400011 = 3091400011;
 			/// <summary>
+			/// 	Earn Medallions and Vanguard Medals as you compete for individual distinction and class supremacy.
+			/// </summary>
+			public const uint GuardianGamesRecreationalPlaylistNormal_769914342 = 769914342;
+			/// <summary>
 			/// 	Ikora's worried about some Taken emanations from beneath the moon's surface.
 			/// </summary>
 			public const uint UnexpectedGuests_3836086286 = 3836086286;
@@ -351,9 +363,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint FirstContact_3377887753 = 3377887753;
 			/// <summary>
+			/// 	Fallen S.A.B.E.R.
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_3629401141 = 3629401141;
+			/// <summary>
 			/// 	Fight for Valor in large-scale combat scenarios.
 			/// </summary>
 			public const uint Control_2274172949 = 2274172949;
+			/// <summary>
+			/// 	The Glassway
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_1542129726 = 1542129726;
+			/// <summary>
+			/// 	Warden of Nothing
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_3196282738 = 3196282738;
 			/// <summary>
 			/// 	The Devils' Lair
 			/// </summary>
@@ -521,6 +545,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheOrdealGrandmasterTheInsightTerminus = 2694576755;
 			/// <summary>
+			/// 	Heist Battleground: Moon
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_2841928257 = 2841928257;
+			/// <summary>
 			/// 	The Hidden's base of operations on Mars.
 			/// </summary>
 			public const uint TheEnclave_3272105279 = 3272105279;
@@ -579,7 +607,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Earn Laurels, Medallions, and Vanguard Medals as you compete for individual distinction and class supremacy.
 			/// </summary>
-			public const uint GuardianGamesRecreationalPlaylistNormal = 1230973847;
+			public const uint GuardianGamesRecreationalPlaylistNormal_1230973847 = 1230973847;
 			/// <summary>
 			/// 	Pleasure and delight await you.
 			/// </summary>
@@ -622,6 +650,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_4189303825 = 4189303825;
 			/// <summary>
+			/// 	"Grow fat from strength."
+			/// </summary>
+			public const uint Leviathan_1699948563 = 1699948563;
+			/// <summary>
 			/// 	Pleasure and delight await you.
 			/// </summary>
 			public const uint TheMenagerie_228586990 = 228586990;
@@ -629,10 +661,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Infiltrate the heart of Calus's lair and destroy the Darkness relay.
 			/// </summary>
 			public const uint DownfallClassic = 2314609324;
-			/// <summary>
-			/// 	"Grow fat from strength."
-			/// </summary>
-			public const uint Leviathan_1699948563 = 1699948563;
 			/// <summary>
 			/// 	Pleasure and delight await you.
 			/// </summary>
@@ -781,6 +809,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ScavengersDenMaster_1905792146 = 1905792146;
 			/// <summary>
+			/// 	Birthplace of the Vile
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_1180379359 = 1180379359;
+			/// <summary>
 			/// 	A refugee camp set up during the Red War for Guardians and non Guardians alike, on the outskirts of the EDZ.
 			/// </summary>
 			public const uint TheFarm_1568750156 = 1568750156;
@@ -865,13 +897,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallLegend_2599001913 = 2599001913;
 			/// <summary>
-			/// 	The Inverted Spire
-			/// </summary>
-			public const uint NightfallAdept_2599001915 = 2599001915;
-			/// <summary>
 			/// 	Amanda asked you to put on your mask and "show the bad guys they can't keep us down." What better place during this holiday season than the Sanctum of Bones?
 			/// </summary>
 			public const uint FestivaloftheLostSector = 1612844171;
+			/// <summary>
+			/// 	The Inverted Spire
+			/// </summary>
+			public const uint NightfallAdept_2599001915 = 2599001915;
 			/// <summary>
 			/// 	"There will come a day when the Tower falls again. Our ability to hold territory is paramount." —Lord Saladin
 			/// <para/>
@@ -892,6 +924,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PrivateMatch_1887396202 = 1887396202;
 			public const uint AnalysisMission_849242583 = 849242583;
+			/// <summary>
+			/// 	Heist Battleground: Mars
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_1460814215 = 1460814215;
 			/// <summary>
 			/// 	Attend the meeting between the Vanguard and Empress Caiatl in the Tower Hangar.
 			/// </summary>
@@ -918,13 +954,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallTheFesteringCore_629542775 = 629542775;
 			/// <summary>
-			/// 	Warden of Nothing
-			/// </summary>
-			public const uint TheOrdealGrandmasterWardenofNothing = 3597372938;
-			/// <summary>
 			/// 	European Dead Zone, Earth
 			/// </summary>
 			public const uint LegionsGulch_1733006874 = 1733006874;
+			/// <summary>
+			/// 	Warden of Nothing
+			/// </summary>
+			public const uint TheOrdealGrandmasterWardenofNothing = 3597372938;
 			public const uint SalvageMission_387171436 = 387171436;
 			/// <summary>
 			/// 	Defeat Hive to collect Hive Tablets.
@@ -1167,6 +1203,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallLegend_507866984 = 507866984;
 			/// <summary>
+			/// 	Fallen S.A.B.E.R.
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_1078706869 = 1078706869;
+			/// <summary>
 			/// 	Heist Battleground: Mars
 			/// </summary>
 			public const uint NightfallHero_507866985 = 507866985;
@@ -1188,13 +1228,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallMaster_507866991 = 507866991;
 			/// <summary>
-			/// 	Last City Perimeter, Earth
-			/// </summary>
-			public const uint TwilightGap_3945952280 = 3945952280;
-			/// <summary>
 			/// 	Prevent the Vex from completing a simulation of Fallen combat tactics.
 			/// </summary>
 			public const uint TheUpandUp_1725302079 = 1725302079;
+			/// <summary>
+			/// 	Last City Perimeter, Earth
+			/// </summary>
+			public const uint TwilightGap_3945952280 = 3945952280;
 			public const uint H612270634 = 612270634;
 			/// <summary>
 			/// 	Legend Difficulty: Locked Equipment, Match Game, Extra Shields
@@ -1209,6 +1249,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint ExcavationSiteXIILegend_548616650 = 548616650;
+			/// <summary>
+			/// 	Heist Battleground: Mars
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_136826667 = 136826667;
 			/// <summary>
 			/// 	Master Difficulty: Locked Equipment, Match Game, Extra Shields, Extra Champions
 			/// <para/>
@@ -1354,13 +1398,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheBurnout_247771251 = 247771251;
 			/// <summary>
-			/// 	A friendly Guardian has requested assistance on Mars. Help her investigate falling Warsats and battle a new threat.
-			/// </summary>
-			public const uint IceandShadow_1021495354 = 1021495354;
-			/// <summary>
 			/// 	European Dead Zone, Earth
 			/// </summary>
 			public const uint LegionsGulch_1711620427 = 1711620427;
+			/// <summary>
+			/// 	A friendly Guardian has requested assistance on Mars. Help her investigate falling Warsats and battle a new threat.
+			/// </summary>
+			public const uint IceandShadow_1021495354 = 1021495354;
 			/// <summary>
 			/// 	Machinations run wild in this dust-ridden ruin. Bring them to heel.
 			/// </summary>
@@ -1470,13 +1514,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Hope = 3272002712;
 			/// <summary>
-			/// 	Following a lead from Fynch, search the dark corners of Savathûn's throne world for another clue to how she stole the Light.
-			/// </summary>
-			public const uint TheCunningMaster_2263710682 = 2263710682;
-			/// <summary>
 			/// 	Hidden agents have found ingress into the engineering bay, but Caiatl has rushed ahead with her own assault! Track her down and make sure she makes it out alive.
 			/// </summary>
 			public const uint SeverRage = 1632646193;
+			/// <summary>
+			/// 	Following a lead from Fynch, search the dark corners of Savathûn's throne world for another clue to how she stole the Light.
+			/// </summary>
+			public const uint TheCunningMaster_2263710682 = 2263710682;
 			/// <summary>
 			/// 	Following a lead from Fynch, search the dark corners of Savathûn's throne world for another clue to how she stole the Light.
 			/// </summary>
@@ -1518,13 +1562,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallTheOrdealGrandmaster_2533203708 = 2533203708;
 			/// <summary>
-			/// 	Defeat Nokris before he completes his ritual.
-			/// </summary>
-			public const uint StrangeTerrain_861639650 = 861639650;
-			/// <summary>
 			/// 	Investigate the strange Hive signals.
 			/// </summary>
 			public const uint DeathlyTremorsHeroic = 1682036469;
+			/// <summary>
+			/// 	Defeat Nokris before he completes his ritual.
+			/// </summary>
+			public const uint StrangeTerrain_861639650 = 861639650;
 			/// <summary>
 			/// 	A Garden World
 			/// </summary>
@@ -1607,6 +1651,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AGardenWorld_2230236212 = 2230236212;
 			/// <summary>
+			/// 	The Scarlet Keep
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_1923266232 = 1923266232;
+			/// <summary>
 			/// 	Help Osiris cut back an out-of-control Vex Mind.
 			/// </summary>
 			public const uint AGardenWorld_2230236214 = 2230236214;
@@ -1634,6 +1682,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat a more challenging Zeerik, Lightflayer at the Wellspring for better rewards.
 			/// </summary>
 			public const uint TheWellspringDefendLegend_2207022981 = 2207022981;
+			/// <summary>
+			/// 	Battleground: Hailstone
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_1229917732 = 1229917732;
 			public const uint SalvageMission_837763871 = 837763871;
 			/// <summary>
 			/// 	Master Difficulty: Locked Equipment, Extra Shields, Extra Champions
@@ -1728,6 +1780,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheUpandUp_1823921651 = 1823921651;
 			/// <summary>
+			/// 	The Devils' Lair
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_3966918288 = 3966918288;
+			/// <summary>
 			/// 	Now that the igniter is fully repaired, use it to reignite the Izanami Forge.
 			/// </summary>
 			public const uint ReignitetheIzanamiForge = 855989781;
@@ -1785,6 +1841,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint CathedralofScars_3923970483 = 3923970483;
 			public const uint SalvageMission_1498466193 = 1498466193;
 			public const uint FieldAssignmentActiveDuty_282844296 = 282844296;
+			/// <summary>
+			/// 	Proving Grounds
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_406073726 = 406073726;
 			/// <summary>
 			/// 	Failsafe has caught wind of Vex tech that could result in unstoppable barriers.
 			/// </summary>
@@ -2004,6 +2064,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Mayhem_903584917 = 903584917;
 			/// <summary>
+			/// 	Warden of Nothing
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_3487279531 = 3487279531;
+			/// <summary>
 			/// 	The Last City, Earth
 			/// </summary>
 			public const uint Midtown_279800038 = 279800038;
@@ -2033,6 +2097,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DailyHeroicStoryMissionSix = 1602328239;
 			/// <summary>
+			/// 	The Devils' Lair
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_1207998557 = 1207998557;
+			/// <summary>
 			/// 	Destroy the dark liquid that the Cabal use to power their technology or contaminate it, for a subtler approach.
 			/// </summary>
 			public const uint RedLegionBlackOil_122988657 = 122988657;
@@ -2059,11 +2127,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint nodeovrdAVALONLegendary = 3083261666;
 			public const uint H1934561961 = 1934561961;
-			public const uint Surveymission_3489692681 = 3489692681;
 			/// <summary>
 			/// 	The Arms Dealer
 			/// </summary>
 			public const uint NightfallAdept_1753547897 = 1753547897;
+			public const uint Surveymission_3489692681 = 3489692681;
 			/// <summary>
 			/// 	The Arms Dealer
 			/// </summary>
@@ -2096,6 +2164,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EndlessVale_399506119 = 399506119;
 			public const uint H3538818813 = 3538818813;
+			/// <summary>
+			/// 	The Inverted Spire
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_3481213257 = 3481213257;
 			/// <summary>
 			/// 	Investigate a mysterious broadcast that only you and your Ghost can hear.
 			/// </summary>
@@ -2181,11 +2253,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Restart the dormant array to balance the Cosmodrome power grid.
 			/// </summary>
 			public const uint ColdBoot = 69981056;
-			public const uint SalvageMission_3211303924 = 3211303924;
 			/// <summary>
 			/// 	Beneath Venus, evil stirs…
 			/// </summary>
 			public const uint VaultofGlassMaster_1681562271 = 1681562271;
+			public const uint SalvageMission_3211303924 = 3211303924;
 			/// <summary>
 			/// 	Stop the Cabal from rewriting history and laying claim to the future.
 			/// </summary>
@@ -2213,6 +2285,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint ShatteredRealmDebrisofDreamsNormal = 1643315284;
+			/// <summary>
+			/// 	Warden of Nothing
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_3451803911 = 3451803911;
 			/// <summary>
 			/// 	Stem the tide of Taken flowing into the European Dead Zone from beneath the waves.
 			/// </summary>
@@ -2325,9 +2401,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheMenagerieTheMenagerieHeroicMatchmaking_3107795800 = 3107795800;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	A distress signal has been detected coming from a secret Shadow Legion prison in the EDZ. Amanda Holliday and Mithrax request your assistance in liberating the civilian captives.
 			/// </summary>
-			public const uint Classified_3562636616 = 3562636616;
+			public const uint MissionJailbreak = 3562636616;
 			public const uint H3558517776 = 3558517776;
 			/// <summary>
 			/// 	Beneath Venus, evil stirs…
@@ -2439,6 +2515,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeepSix_1575864965 = 1575864965;
 			/// <summary>
+			/// 	Your visions have led you to Io. Follow where they lead you.
+			/// </summary>
+			public const uint VisionsofLight = 1694456220;
+			/// <summary>
 			/// 	Machinations run wild in this dust-ridden ruin. Bring them to heel.
 			/// </summary>
 			public const uint SpireoftheWatcherMaster_2296818662 = 2296818662;
@@ -2456,10 +2536,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheQuarryMaster_1344654779 = 1344654779;
 			/// <summary>
-			/// 	Your visions have led you to Io. Follow where they lead you.
-			/// </summary>
-			public const uint VisionsofLight = 1694456220;
-			/// <summary>
 			/// 	Legend Difficulty: Locked Equipment, Extra Shields
 			/// <para/>
 			/// 	Champions: [Shield-Piercing] Barrier, [Stagger] Unstoppable
@@ -2472,12 +2548,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint TheQuarryLegend_1344654780 = 1344654780;
+			/// <summary>
+			/// 	Exodus Crash
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_4191946195 = 4191946195;
 			public const uint Surveymission_2908287325 = 2908287325;
 			/// <summary>
 			/// 	Earth
 			/// </summary>
 			public const uint EuropeanDeadZone_1075152813 = 1075152813;
 			public const uint CombatMission_293858112 = 293858112;
+			/// <summary>
+			/// 	Battleground: Behemoth
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_1505065694 = 1505065694;
 			public const uint SalvageMission_175598161 = 175598161;
 			public const uint SalvageMission_1679453803 = 1679453803;
 			public const uint SalvageMission_3978357488 = 3978357488;
@@ -2664,13 +2748,13 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DaresofEternityMaster = 1030714178;
 			public const uint FieldAssignmentActiveDuty_1962592775 = 1962592775;
 			/// <summary>
-			/// 	Vex Future, Infinite Forest
-			/// </summary>
-			public const uint TheBurnout_4012915511 = 4012915511;
-			/// <summary>
 			/// 	Felwinter Peak, Earth
 			/// </summary>
 			public const uint Vostok_1702649201 = 1702649201;
+			/// <summary>
+			/// 	Vex Future, Infinite Forest
+			/// </summary>
+			public const uint TheBurnout_4012915511 = 4012915511;
 			/// <summary>
 			/// 	Caloris Basin, Mercury
 			/// </summary>
@@ -2922,6 +3006,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CalculatedAction = 3410530777;
 			/// <summary>
+			/// 	Heist Battleground: Europa
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_2736415457 = 2736415457;
+			/// <summary>
 			/// 	Launches a random Destiny 2 strike.
 			/// </summary>
 			public const uint VanguardStrikes_1984315274 = 1984315274;
@@ -3066,6 +3154,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Seek vengeance against the Vex Mind that corrupted Asher's arm.
 			/// </summary>
 			public const uint ThePyramidion_1332567115 = 1332567115;
+			/// <summary>
+			/// 	HyperNet Current
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_390283971 = 390283971;
 			public const uint Surveymission_2969403085 = 2969403085;
 			/// <summary>
 			/// 	In a bid to earn Empress Caiatl's favor, a Cabal force has descended on Europa to scour the icy moon for relics of the Golden Age including the secrets of the Exo contained in the Deep Stone Crypt. Travel to Europa and put a stop to this operation.
@@ -3083,6 +3175,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Locate the stolen supplies.
 			/// </summary>
 			public const uint PsionicPotentialHeroic_3909841711 = 3909841711;
+			/// <summary>
+			/// 	The Lightblade
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_2314252344 = 2314252344;
 			/// <summary>
 			/// 	"I hope the remaining Red Legion can see this: weapons they brought to destroy us, used as mere toys in training exercises. Do be mindful of the blast radius, though." —Lord Shaxx
 			/// <para/>
@@ -3116,6 +3212,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	European Dead Zone, Earth
 			/// </summary>
 			public const uint EmeraldCoast_1899006128 = 1899006128;
+			/// <summary>
+			/// 	Battleground: Foothold
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_2574289947 = 2574289947;
 			/// <summary>
 			/// 	Break Savathûn's assault and help Eris secure the Cradle.
 			/// </summary>
@@ -3163,6 +3263,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Purge the Fallen infestation of the Exodus Black.
 			/// </summary>
 			public const uint ExodusCrash_1930116823 = 1930116823;
+			public const uint SalvageMission_1756055546 = 1756055546;
 			/// <summary>
 			/// 	A long-hidden stronghold sacred to the Awoken of the Reef.
 			/// </summary>
@@ -3171,7 +3272,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Purge the European Dead Zone of the Taken and Shadow Legion forces threatening to overtake the Reservoir and poison the precious water it holds.
 			/// </summary>
 			public const uint LakeofShadows_3725993747 = 3725993747;
-			public const uint SalvageMission_1756055546 = 1756055546;
 			public const uint SalvageMission_993152361 = 993152361;
 			/// <summary>
 			/// 	New Pacific Archology, Titan
@@ -3263,6 +3363,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DaresofEternityLegend_1699058902 = 1699058902;
 			/// <summary>
+			/// 	The Corrupted
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_1742038104 = 1742038104;
+			/// <summary>
 			/// 	Shut down the operations of an ironmonger providing weapons to the Red Legion.
 			/// </summary>
 			public const uint TheArmsDealer_2080275457 = 2080275457;
@@ -3278,6 +3382,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The Dreaming City, The Vestian Web
 			/// </summary>
 			public const uint CathedralofScars_3653399243 = 3653399243;
+			/// <summary>
+			/// 	The Glassway
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_1671556700 = 1671556700;
 			/// <summary>
 			/// 	Defeat Xol before everything is destroyed.
 			/// </summary>
@@ -3295,6 +3403,22 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LakeofShadows_3121231695 = 3121231695;
 			public const uint SalvageMission_498220076 = 498220076;
+			/// <summary>
+			/// 	Battleground: Oracle
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_3309431351 = 3309431351;
+			/// <summary>
+			/// 	The Insight Terminus
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_3103471445 = 3103471445;
+			/// <summary>
+			/// 	The Arms Dealer
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_3365908709 = 3365908709;
+			/// <summary>
+			/// 	Proving Grounds
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_3728438261 = 3728438261;
 			/// <summary>
 			/// 	Stop a Cabal simulation carrying heavily encrypted data.
 			/// </summary>
@@ -3536,17 +3660,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LeviathanNormal_2693136600 = 2693136600;
 			/// <summary>
-			/// 	"Grow fat from strength."
-			/// </summary>
-			public const uint LeviathanNormal_2693136601 = 2693136601;
-			/// <summary>
 			/// 	Defeat the Nightmare of Zydron, Gate Lord.
 			/// </summary>
 			public const uint NightmareHuntServitudeAdept_1743972308 = 1743972308;
 			/// <summary>
 			/// 	"Grow fat from strength."
 			/// </summary>
+			public const uint LeviathanNormal_2693136601 = 2693136601;
+			/// <summary>
+			/// 	"Grow fat from strength."
+			/// </summary>
 			public const uint LeviathanNormal_2693136602 = 2693136602;
+			/// <summary>
+			/// 	Defeat the Nightmare of Zydron, Gate Lord.
+			/// </summary>
+			public const uint NightmareHuntServitudeLegend_1743972310 = 1743972310;
 			/// <summary>
 			/// 	A patchwork wasteland on the edge of the Reef, in the Asteroid Belt.
 			/// </summary>
@@ -3558,27 +3686,23 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Defeat the Nightmare of Zydron, Gate Lord.
 			/// </summary>
-			public const uint NightmareHuntServitudeLegend_1743972310 = 1743972310;
+			public const uint NightmareHuntServitudeHero_1743972311 = 1743972311;
 			/// <summary>
 			/// 	"Grow fat from strength."
 			/// </summary>
 			public const uint LeviathanNormal_2693136604 = 2693136604;
 			/// <summary>
-			/// 	Defeat the Nightmare of Zydron, Gate Lord.
-			/// </summary>
-			public const uint NightmareHuntServitudeHero_1743972311 = 1743972311;
-			/// <summary>
 			/// 	"Grow fat from strength."
 			/// </summary>
 			public const uint LeviathanNormal_2693136605 = 2693136605;
 			/// <summary>
-			/// 	Survey mission
-			/// </summary>
-			public const uint Surveymission_2735529319 = 2735529319;
-			/// <summary>
 			/// 	Battleground: Foothold
 			/// </summary>
 			public const uint NightfallLegend_1593674946 = 1593674946;
+			/// <summary>
+			/// 	Survey mission
+			/// </summary>
+			public const uint Surveymission_2735529319 = 2735529319;
 			/// <summary>
 			/// 	Battleground: Foothold
 			/// </summary>
@@ -3755,13 +3879,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheUpandUpHeroic_1987624188 = 1987624188;
 			/// <summary>
-			/// 	Disrupt a Hive Ritual to keep the Rig from sinking.
+			/// 	The Lightblade
 			/// </summary>
-			public const uint HeroicSirenSong = 3033151437;
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_4220438402 = 4220438402;
 			/// <summary>
 			/// 	Respond to a distress call in the Strand.
 			/// </summary>
 			public const uint BrokenCourier = 1640956655;
+			/// <summary>
+			/// 	Disrupt a Hive Ritual to keep the Rig from sinking.
+			/// </summary>
+			public const uint HeroicSirenSong = 3033151437;
 			public const uint CombatMission_2629975203 = 2629975203;
 			public const uint CombatMission_3479544154 = 3479544154;
 			/// <summary>
@@ -3815,6 +3943,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Break into the ancient Vex installation.
 			/// </summary>
 			public const uint NightfallTheInsightTerminus_927394522 = 927394522;
+			/// <summary>
+			/// 	Lake of Shadows
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_2929052270 = 2929052270;
 			/// <summary>
 			/// 	Investigate the recently erected Scarlet Keep and discover its dark purpose.
 			/// </summary>
@@ -3888,6 +4020,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AGardenWorld_117447065 = 117447065;
 			/// <summary>
+			/// 	Lake of Shadows
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_865271715 = 865271715;
+			/// <summary>
+			/// 	The Disgraced
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_1380937053 = 1380937053;
+			/// <summary>
 			/// 	The Fallen prepare to attack Failsafe's mainframe aboard the Exodus Black.
 			/// </summary>
 			public const uint ExodusSiege_1981289329 = 1981289329;
@@ -3958,6 +4098,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint UnknownSpace = 2278374121;
 			/// <summary>
+			/// 	The Insight Terminus
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_1374740920 = 1374740920;
+			/// <summary>
 			/// 	Continue the Beyond Light campaign and unlock the power of Stasis.
 			/// </summary>
 			public const uint Destiny2BeyondLight_3076941090 = 3076941090;
@@ -3969,6 +4113,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Find Osiris in the Shadow Legion fleet and sow chaos through their ranks.
 			/// </summary>
 			public const uint FirstContactClassic_1688654730 = 1688654730;
+			/// <summary>
+			/// 	The Lightblade
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_1633336919 = 1633336919;
+			/// <summary>
+			/// 	Exodus Crash
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_4246552874 = 4246552874;
 			/// <summary>
 			/// 	Complete the Daily Heroic story mission.
 			/// </summary>
@@ -4023,6 +4175,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Purge the Fallen infestation of the Exodus Black.
 			/// </summary>
 			public const uint ExodusCrash_4260306233 = 4260306233;
+			/// <summary>
+			/// 	Legend PsiOps Battleground: Cosmodrome
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_3170810379 = 3170810379;
 			/// <summary>
 			/// 	Defeat Eramis's technology expert, Praksis, the Technocrat.
 			/// </summary>
@@ -4130,6 +4286,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NewArcadia_2130440698 = 2130440698;
 			/// <summary>
+			/// 	Heist Battleground: Moon
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_2039230778 = 2039230778;
+			/// <summary>
 			/// 	Locate the stolen supplies.
 			/// </summary>
 			public const uint PsionicPotentialHeroic_1657356109 = 1657356109;
@@ -4137,6 +4297,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Participate in experimental, work-in-progress Crucible experiences. For more information on Crucible Labs, visit bungie.net.
 			/// </summary>
 			public const uint CrucibleLabs_3135101885 = 3135101885;
+			/// <summary>
+			/// 	The Corrupted
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_3056897650 = 3056897650;
 			/// <summary>
 			/// 	Stem the tide of Taken flowing into the European Dead Zone from beneath the waves.
 			/// </summary>
@@ -4207,6 +4371,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Runoff, Savathûn's Throne World
 			/// </summary>
 			public const uint Disjunction_3814374754 = 3814374754;
+			/// <summary>
+			/// 	PsiOps Battleground: EDZ
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_3732024818 = 3732024818;
 			/// <summary>
 			/// 	Seek vengeance against the Vex Mind that corrupted Asher's arm.
 			/// </summary>
@@ -4708,6 +4876,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheMenagerieTheMenagerieHeroic_2509539867 = 2509539867;
 			/// <summary>
+			/// 	The Inverted Spire
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_3575406120 = 3575406120;
+			/// <summary>
 			/// 	Traverse the Shattered Realms of the Ascendant Plane in search of the lost Awoken Techeuns.
 			/// <para/>
 			/// 	Matchmaking: OFF
@@ -4797,13 +4969,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PirateHideoutTheSharpshooter = 84447503;
 			/// <summary>
-			/// 	Seize upon the Taken invasion of the EDZ, direct their assault against the Red Legion, and end it before it gets out of control.
-			/// </summary>
-			public const uint HeroicGettingYourHandsDirty = 1018040791;
-			/// <summary>
 			/// 	Dig up buried pirate riches in the Cosmodrome, fight off raiders, and deliver the treasure haul to your Ketch!
 			/// </summary>
 			public const uint ExpeditionCosmodrome = 1516872608;
+			/// <summary>
+			/// 	Seize upon the Taken invasion of the EDZ, direct their assault against the Red Legion, and end it before it gets out of control.
+			/// </summary>
+			public const uint HeroicGettingYourHandsDirty = 1018040791;
 			/// <summary>
 			/// 	Dig up buried pirate riches on Europa, fight off raiders, and deliver the treasure haul to your Ketch!
 			/// </summary>
@@ -4875,11 +5047,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Infiltrate the heart of Calus's lair and destroy the Darkness relay.
 			/// </summary>
 			public const uint DownfallLegendary = 765784278;
+			public const uint H1533124171 = 1533124171;
 			/// <summary>
 			/// 	"In the belly of the beast."
 			/// </summary>
 			public const uint LeviathanEaterofWorldsPrestige = 809170886;
-			public const uint H1533124171 = 1533124171;
 			/// <summary>
 			/// 	Master Difficulty: Locked Equipment, Match Game, Extra Shields, Extra Champions
 			/// <para/>
@@ -4958,13 +5130,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IronBanner_3753505781 = 3753505781;
 			/// <summary>
-			/// 	A long-hidden stronghold sacred to the Awoken of the Reef.
-			/// </summary>
-			public const uint TheDreamingCity_2856932809 = 2856932809;
-			/// <summary>
 			/// 	Unknown Space
 			/// </summary>
 			public const uint Eternity_1639645463 = 1639645463;
+			/// <summary>
+			/// 	A long-hidden stronghold sacred to the Awoken of the Reef.
+			/// </summary>
+			public const uint TheDreamingCity_2856932809 = 2856932809;
 			/// <summary>
 			/// 	Delve deep into the Hive-infested Arcology in search of missing fireteams.
 			/// </summary>
@@ -5103,6 +5275,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Recover the supplies that the Fallen have taken.
 			/// </summary>
 			public const uint HeroicThiefofThieves = 1275562432;
+			/// <summary>
+			/// 	Battleground: Foothold
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_918642562 = 918642562;
 			/// <summary>
 			/// 	Investigate a Vex network node in the EDZ that has been overwritten with a single word: AVALON.
 			/// </summary>
@@ -5309,9 +5485,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VexOffensive_2237396749 = 2237396749;
 			/// <summary>
+			/// 	HyperNet Current
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_1664895903 = 1664895903;
+			/// <summary>
 			/// 	Long live the King…
 			/// </summary>
 			public const uint KingsFallLegend = 1063970578;
+			/// <summary>
+			/// 	Aided by the Witness, the Scorn have gained the power to break into the Throne World through areas the Light cannot touch.
+			/// <para/>
+			/// 	Beat them back.
+			/// <para/>
+			/// </summary>
+			public const uint BirthplaceoftheVile_1682266665 = 1682266665;
 			/// <summary>
 			/// 	Seek vengeance against the Vex Mind that corrupted Asher's arm.
 			/// </summary>
@@ -5320,13 +5507,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the Daily Heroic story mission.
 			/// </summary>
 			public const uint DailyHeroicStoryMissionAceintheHole = 2962137994;
-			/// <summary>
-			/// 	Aided by the Witness, the Scorn have gained the power to break into the Throne World through areas the Light cannot touch.
-			/// <para/>
-			/// 	Beat them back.
-			/// <para/>
-			/// </summary>
-			public const uint BirthplaceoftheVile_1682266665 = 1682266665;
 			/// <summary>
 			/// 	Contain a rampant army of Red Legion within the Infinite Forest.
 			/// </summary>
@@ -5354,21 +5534,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallGrandmaster_1639515809 = 1639515809;
 			/// <summary>
-			/// 	The Corrupted
-			/// </summary>
-			public const uint NightfallTheOrdealLegend_245243704 = 245243704;
-			/// <summary>
 			/// 	Heist Battleground: Moon
 			/// </summary>
 			public const uint NightfallHero_1639515814 = 1639515814;
 			/// <summary>
 			/// 	The Corrupted
 			/// </summary>
-			public const uint NightfallTheOrdealHero_245243705 = 245243705;
+			public const uint NightfallTheOrdealLegend_245243704 = 245243704;
 			/// <summary>
 			/// 	Heist Battleground: Moon
 			/// </summary>
 			public const uint NightfallLegend_1639515815 = 1639515815;
+			/// <summary>
+			/// 	The Corrupted
+			/// </summary>
+			public const uint NightfallTheOrdealHero_245243705 = 245243705;
 			/// <summary>
 			/// 	The Corrupted
 			/// </summary>
@@ -5401,6 +5581,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Achieve victory by eliminating all opponents in this round-based mode.
 			/// </summary>
 			public const uint Elimination_1957660400 = 1957660400;
+			/// <summary>
+			/// 	Legend PsiOps Battleground: Cosmodrome
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_551743614 = 551743614;
 			/// <summary>
 			/// 	Proving Grounds
 			/// </summary>
@@ -5438,6 +5622,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Hellas Basin, Mars
 			/// </summary>
 			public const uint NewArcadia_74956570 = 74956570;
+			/// <summary>
+			/// 	Battleground: Behemoth
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_3541864787 = 3541864787;
 			/// <summary>
 			/// 	Fight alongside Cayde-6 to help Petra Venj regain control of the dangerous Prison of Elders.
 			/// </summary>
@@ -5546,6 +5734,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NoTimeLeftHero = 1267275763;
 			/// <summary>
+			/// 	The Disgraced
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_378618125 = 378618125;
+			/// <summary>
 			/// 	Stop the Darkness relay from activating and creating a link between the Witness and the Veil.
 			/// </summary>
 			public const uint NoTimeLeftMaster = 1267275765;
@@ -5596,6 +5788,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Broodhold_1666283939 = 1666283939;
 			/// <summary>
+			/// 	Battleground: Oracle
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_2277125819 = 2277125819;
+			/// <summary>
 			/// 	Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.
 			/// </summary>
 			public const uint PrivateMatch_1694936744 = 1694936744;
@@ -5609,9 +5805,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint NightmareHuntIsolationLegend_1344110073 = 1344110073;
 			public const uint Surveymission_581323290 = 581323290;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	With Queen Mara's power, you are able to traverse the Ascendant Plane and breach the Shadow Legion flagship. Mithrax, Devrim, and Crow will join you in your assault.
 			/// </summary>
-			public const uint Classified_4059764257 = 4059764257;
+			public const uint MissionRetribution = 4059764257;
 			/// <summary>
 			/// 	Defeat the Nightmare of Taniks, the Scarred.
 			/// </summary>
@@ -5897,6 +6093,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheQuarryLegendary = 3792818799;
 			/// <summary>
+			/// 	Fallen S.A.B.E.R.
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_3822084952 = 3822084952;
+			/// <summary>
 			/// 	Charge your Wayfinder's Compass and reawaken ancient Ley Lines throughout the Dreaming City. Seal your accomplishments by defending the Blind Well from Xivu Arath's encroaching forces.
 			/// </summary>
 			public const uint AstralAlignmentLegend = 2394302500;
@@ -5904,13 +6104,13 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H383713146 = 383713146;
 			public const uint H3875128460 = 3875128460;
 			/// <summary>
-			/// 	Long live the King…
-			/// </summary>
-			public const uint KingsFallNormal_1374392663 = 1374392663;
-			/// <summary>
 			/// 	Shut down the operations of an ironmonger providing weapons to the Red Legion.
 			/// </summary>
 			public const uint TheArmsDealer_1679518121 = 1679518121;
+			/// <summary>
+			/// 	Long live the King…
+			/// </summary>
+			public const uint KingsFallNormal_1374392663 = 1374392663;
 			/// <summary>
 			/// 	Arcadian Strand, Nessus
 			/// </summary>
@@ -5952,6 +6152,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LeviathanPrestige_1685065161 = 1685065161;
 			/// <summary>
+			/// 	Birthplace of the Vile
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_972277514 = 972277514;
+			/// <summary>
 			/// 	The disciple beckons…
 			/// </summary>
 			public const uint VowoftheDiscipleLegend = 4156879541;
@@ -5972,6 +6176,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Venture into Savathûn's Light-blessed throne world to investigate how she acquired the Light.
 			/// </summary>
 			public const uint TheInvestigationClassic = 675103223;
+			/// <summary>
+			/// 	HyperNet Current
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_2836827150 = 2836827150;
 			/// <summary>
 			/// 	Enter the Vex network to reactivate the city's defenses.
 			/// </summary>
@@ -6043,13 +6251,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallTheOrdealHero_3883876606 = 3883876606;
 			/// <summary>
-			/// 	Strange Terrain
-			/// </summary>
-			public const uint NightfallTheOrdealLegend_3883876607 = 3883876607;
-			/// <summary>
 			/// 	Purge the Fallen infestation of the Exodus Black.
 			/// </summary>
 			public const uint ExodusCrash_1563393783 = 1563393783;
+			/// <summary>
+			/// 	Strange Terrain
+			/// </summary>
+			public const uint NightfallTheOrdealLegend_3883876607 = 3883876607;
 			public const uint H2167139627 = 2167139627;
 			/// <summary>
 			/// 	Destroy the dark liquid that the Cabal use to power their technology or contaminate it, for a subtler approach.
@@ -6172,6 +6380,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightmareHuntPrideLegend_3975373118 = 3975373118;
 			/// <summary>
+			/// 	The Arms Dealer
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_3573781742 = 3573781742;
+			/// <summary>
 			/// 	Defeat the Nightmare of Skolas, Kell of Kells.
 			/// </summary>
 			public const uint NightmareHuntPrideHero_3975373119 = 3975373119;
@@ -6201,6 +6413,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Recover an artifact from a monument to Oryx, located deep in the swamps of Savathûn's throne world.
 			/// </summary>
 			public const uint TheLightblade_2955960227 = 2955960227;
+			/// <summary>
+			/// 	Legend PsiOps Battleground: Cosmodrome
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_1509960860 = 1509960860;
 			/// <summary>
 			/// 	Head to K1 Communion and defeat the Nighmare of Rizaahn, the Lost to retrieve Warmind Bits.
 			/// <para/>
@@ -6348,6 +6564,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EmeraldCoast_1164220121 = 1164220121;
 			/// <summary>
+			/// 	PsiOps Battleground: EDZ
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_2026673880 = 2026673880;
+			/// <summary>
 			/// 	Destroy dangerous information before it falls into the wrong hands.
 			/// </summary>
 			public const uint Hephaestus_340004423 = 340004423;
@@ -6404,6 +6624,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Clash_540869524 = 540869524;
 			public const uint CombatMission_715306877 = 715306877;
+			/// <summary>
+			/// 	Lake of Shadows
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_4212188607 = 4212188607;
 			/// <summary>
 			/// 	The Vanguard seeks Guardians to undertake high-priority missions against the City's enemies.
 			/// </summary>
@@ -6465,6 +6689,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	European Dead Zone, Earth
 			/// </summary>
 			public const uint WidowsCourt_427041827 = 427041827;
+			/// <summary>
+			/// 	PsiOps Battleground: Moon
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_3101923972 = 3101923972;
 			public const uint H1223222559 = 1223222559;
 			public const uint SalvageMission_743100125 = 743100125;
 			/// <summary>
@@ -6497,6 +6725,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallGrandmaster_968118631 = 968118631;
 			/// <summary>
+			/// 	Birthplace of the Vile
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_1111369203 = 1111369203;
+			/// <summary>
 			/// 	Purge the Fallen infestation of the Exodus Black.
 			/// </summary>
 			public const uint ExodusCrash_2479262829 = 2479262829;
@@ -6504,6 +6736,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Disrupt Savathûn's ritual to steal the Traveler by revealing a lost secret from her past.
 			/// </summary>
 			public const uint TheRitualLegendary = 1779709198;
+			/// <summary>
+			/// 	Battleground: Hailstone
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_1822281005 = 1822281005;
 			/// <summary>
 			/// 	Achieve victory by defeating opponents. No teams. No allegiance. A free-for-all where the leader had better watch their back.
 			/// </summary>
@@ -6613,6 +6849,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Recover the supplies that the Fallen have taken.
 			/// </summary>
 			public const uint ThiefofThieves_78673128 = 78673128;
+			/// <summary>
+			/// 	The Glassway
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_3952992821 = 3952992821;
 			public const uint H2177866802 = 2177866802;
 			public const uint H2078790793 = 2078790793;
 			/// <summary>
@@ -6627,6 +6867,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Stem the tide of Taken flowing into the European Dead Zone from beneath the waves.
 			/// </summary>
 			public const uint NightfallLakeofShadows_3372160277 = 3372160277;
+			/// <summary>
+			/// 	Proving Grounds
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_2916764316 = 2916764316;
 			/// <summary>
 			/// 	The Fanatic has returned. Take him down and finish the job you started.
 			/// </summary>
@@ -6684,6 +6928,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The Vex appear to be capturing the Fallen, and Failsafe wants it stopped.
 			/// </summary>
 			public const uint Release_3700722865 = 3700722865;
+			/// <summary>
+			/// 	Battleground: Oracle
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_1043963618 = 1043963618;
 			/// <summary>
 			/// 	The Devils' Lair
 			/// </summary>
@@ -6827,6 +7075,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Spark_234065414 = 234065414;
 			/// <summary>
+			/// 	Heist Battleground: Mars
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_4156472562 = 4156472562;
+			/// <summary>
 			/// 	Infiltrate a legendary Seraph bunker tucked under the dust of the Moon to reclaim fragments of the submind Malahayati's code.
 			/// </summary>
 			public const uint LegendHeistBattlegroundMoon = 296609104;
@@ -6906,11 +7158,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Seek vengeance against the Vex Mind that corrupted Asher's arm.
 			/// </summary>
 			public const uint ThePyramidion_1035135049 = 1035135049;
+			public const uint SalvageMission_1557641249 = 1557641249;
 			/// <summary>
 			/// 	Infiltrate the Vex network and confront the Subjugated Mind that rules their digital domain.
 			/// </summary>
 			public const uint OverrideTangledShore = 3933916447;
-			public const uint SalvageMission_1557641249 = 1557641249;
 			/// <summary>
 			/// 	Avenge Cayde's death by crossing the Scorned Baron known as the Rider off your list.
 			/// </summary>
@@ -6949,6 +7201,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HighPlainsBlues_530720427 = 530720427;
 			public const uint H2465702212 = 2465702212;
+			/// <summary>
+			/// 	Battleground: Behemoth
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_408892303 = 408892303;
 			/// <summary>
 			/// 	Defeat the shamed Hive Wizard Navôta in the Cosmodrome.
 			/// </summary>
@@ -6996,10 +7252,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint BattlegroundBehemoth_2439292398 = 2439292398;
 			public const uint H1904953501 = 1904953501;
 			/// <summary>
-			/// 	Search the Cosmodrome for a secret stash. Find it to claim your reward.
-			/// </summary>
-			public const uint RiskReward_603986551 = 603986551;
-			/// <summary>
 			/// 	Legend Difficulty: Locked Equipment, Match Game, Extra Shields
 			/// <para/>
 			/// 	Champions: [Shield-Piercing] Barrier, [Disruption] Overload
@@ -7012,6 +7264,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint TheRiftLegend_1551471969 = 1551471969;
+			/// <summary>
+			/// 	Search the Cosmodrome for a secret stash. Find it to claim your reward.
+			/// </summary>
+			public const uint RiskReward_603986551 = 603986551;
 			/// <summary>
 			/// 	Defeat the shamed Hive Wizard Navôta in the Cosmodrome.
 			/// </summary>
@@ -7061,6 +7317,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	A sinister threat has taken root.
 			/// </summary>
 			public const uint RootofNightmaresNormal_2381413764 = 2381413764;
+			/// <summary>
+			/// 	The Insight Terminus
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_1651698581 = 1651698581;
 			/// <summary>
 			/// 	Infiltrate the heart of Calus's lair and destroy the Darkness relay.
 			/// </summary>
@@ -7186,13 +7446,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TerminalOverloadAP = 508116160;
 			/// <summary>
-			/// 	"The Garden calls out to you."
-			/// </summary>
-			public const uint GardenofSalvation_3845997235 = 3845997235;
-			/// <summary>
 			/// 	Complete the Daily Heroic story mission.
 			/// </summary>
 			public const uint DailyHeroicStoryMissionUnbroken = 1534123682;
+			/// <summary>
+			/// 	"The Garden calls out to you."
+			/// </summary>
+			public const uint GardenofSalvation_3845997235 = 3845997235;
 			public const uint AssassinationMission_2288260902 = 2288260902;
 			/// <summary>
 			/// 	PsiOps Battleground: EDZ
@@ -7584,9 +7844,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EuropeanAerialZoneArcDay_706456362 = 706456362;
 			/// <summary>
+			/// 	Achieve victory by defeating opponents and securing the crests they drop. Recover friendly crests to deny them from opponents.
+			/// </summary>
+			public const uint SupremacySupremacyGuardianGames = 3432224095;
+			/// <summary>
 			/// 	The Fanatic has returned. Take him down and finish the job you started.
 			/// </summary>
 			public const uint NightfallTheHollowedLair_1465939129 = 1465939129;
+			/// <summary>
+			/// 	Battleground: Foothold
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_727417687 = 727417687;
 			/// <summary>
 			/// 	Complete a forge ignition at the Izanami Forge
 			/// </summary>
@@ -7672,6 +7940,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint AphelionsRestLegend_2571435841 = 2571435841;
 			public const uint H2658786588 = 2658786588;
 			/// <summary>
+			/// 	The Inverted Spire
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_21385890 = 21385890;
+			/// <summary>
 			/// 	Find Thumos the Unbroken and take the key codes he carries—by any means necessary.
 			/// </summary>
 			public const uint Unbroken = 938512773;
@@ -7696,6 +7968,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Stem the tide of Taken flowing into the European Dead Zone from beneath the waves.
 			/// </summary>
 			public const uint LakeofShadows_1495993294 = 1495993294;
+			/// <summary>
+			/// 	The Arms Dealer
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_717738476 = 717738476;
 			/// <summary>
 			/// 	Join Osiris on the Moon in his hunt for vengeance.
 			/// </summary>
@@ -7852,6 +8128,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Venture into the mysterious Haul that the Drifter tows behind his ship to reckon with greater powers.
 			/// </summary>
 			public const uint TheReckoningTierI = 3143659188;
+			public const uint SalvageMission_1614692057 = 1614692057;
 			/// <summary>
 			/// 	Revisit the memory linked to Sagira's shell. The entry point is located deep within the Extraction Lost Sector.
 			/// </summary>
@@ -7860,7 +8137,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Infiltrate Savathûn's fortress to recover an artifact linked to her acquisition of the Light.
 			/// </summary>
 			public const uint TheLastChanceMaster_3959144739 = 3959144739;
-			public const uint SalvageMission_1614692057 = 1614692057;
 			/// <summary>
 			/// 	Infiltrate Savathûn's fortress to recover an artifact linked to her acquisition of the Light.
 			/// </summary>
@@ -7907,6 +8183,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallAdept_2103025319 = 2103025319;
 			/// <summary>
+			/// 	Heist Battleground: Europa
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_3907923396 = 3907923396;
+			/// <summary>
 			/// 	Hellas Basin, Mars
 			/// </summary>
 			public const uint NewArcadia_2205768006 = 2205768006;
@@ -7950,6 +8230,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheArmsDealer_2378719026 = 2378719026;
 			/// <summary>
+			/// 	Exodus Crash
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_231746815 = 231746815;
+			/// <summary>
 			/// 	Hunt down the wanted Gravetide Summoner who escaped from the Prison of Elders.
 			/// </summary>
 			public const uint WANTEDGravetideSummoner_386959931 = 386959931;
@@ -7986,6 +8270,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint ThrilladromeLegend = 584726932;
+			/// <summary>
+			/// 	Achieve victory by defeating opponents and securing the crests they drop. Recover friendly crests to deny them from opponents.
+			/// </summary>
+			public const uint Supremacy_1921003985 = 1921003985;
 			/// <summary>
 			/// 	New Pacific Archology, Titan
 			/// </summary>
@@ -8144,6 +8432,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Arcadian Strand, Nessus
 			/// </summary>
 			public const uint DistantShore_3423042035 = 3423042035;
+			/// <summary>
+			/// 	PsiOps Battleground: Moon
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_2430316534 = 2430316534;
 			/// <summary>
 			/// 	Purge the European Dead Zone of the Taken and Shadow Legion forces threatening to overtake the Reservoir and poison the precious water it holds.
 			/// </summary>
@@ -8444,13 +8736,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WANTEDTheEyeintheDark_4199058482 = 4199058482;
 			/// <summary>
-			/// 	Defeat the Nightmare of the Fanatic.
-			/// </summary>
-			public const uint NightmareHuntInsanityMaster_66809868 = 66809868;
-			/// <summary>
 			/// 	End the Red Legion expedition that's ripped open the planet's surface.
 			/// </summary>
 			public const uint TheInvertedSpire_1743518000 = 1743518000;
+			/// <summary>
+			/// 	Defeat the Nightmare of the Fanatic.
+			/// </summary>
+			public const uint NightmareHuntInsanityMaster_66809868 = 66809868;
 			/// <summary>
 			/// 	End the Red Legion expedition that's ripped open the planet's surface.
 			/// </summary>
@@ -8626,6 +8918,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DefeattheTarget = 722882932;
 			/// <summary>
+			/// 	Earn Medallions and Vanguard Medals as you compete for individual distinction and class supremacy.
+			/// </summary>
+			public const uint GuardianGamesRecreationalPlaylist = 532216457;
+			/// <summary>
 			/// 	Defeat the Nightmare of Omnigul.
 			/// </summary>
 			public const uint NightmareHuntAnguishHero_571058910 = 571058910;
@@ -8633,6 +8929,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat the Nightmare of Omnigul.
 			/// </summary>
 			public const uint NightmareHuntAnguishAdept_571058911 = 571058911;
+			/// <summary>
+			/// 	The Corrupted
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_2773998105 = 2773998105;
 			/// <summary>
 			/// 	Locate the stolen supplies.
 			/// </summary>
@@ -8693,13 +8993,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RadiantCliffs_4091391202 = 4091391202;
 			/// <summary>
-			/// 	Achieve victory by capturing and holding zones. Win rounds instantly by capturing all three.
-			/// </summary>
-			public const uint Lockdown_4271742672 = 4271742672;
-			/// <summary>
 			/// 	Hunt down one of Queen Mara's most trusted advisors and free her from Taken possession.
 			/// </summary>
 			public const uint TheCorrupted_1711185200 = 1711185200;
+			/// <summary>
+			/// 	Achieve victory by capturing and holding zones. Win rounds instantly by capturing all three.
+			/// </summary>
+			public const uint Lockdown_4271742672 = 4271742672;
 			/// <summary>
 			/// 	Stop a Cabal simulation carrying heavily encrypted data.
 			/// </summary>
@@ -8744,6 +9044,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DailyHeroicStoryMissionDeepStorage = 1872813880;
 			/// <summary>
+			/// 	PsiOps Battleground: Moon
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_2555811571 = 2555811571;
+			/// <summary>
 			/// 	Fallen S.A.B.E.R.
 			/// </summary>
 			public const uint NightfallAdept_3293630128 = 3293630128;
@@ -8763,6 +9067,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Fallen S.A.B.E.R.
 			/// </summary>
 			public const uint NightfallGrandmaster_3293630132 = 3293630132;
+			/// <summary>
+			/// 	Heist Battleground: Moon
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_772667248 = 772667248;
 			/// <summary>
 			/// 	Power generators in the Red Legion base are open to attack—but only for a short time. Speed into the subterranean complex and shut them down.
 			/// </summary>
@@ -8833,12 +9141,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The Derelict is vast. The Haul is unknowable. Take time to examine your surroundings.
 			/// </summary>
 			public const uint MysteryandPotential = 2062544704;
+			/// <summary>
+			/// 	The Scarlet Keep
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_679254677 = 679254677;
 			public const uint H3659906967 = 3659906967;
 			public const uint H834311101 = 834311101;
 			/// <summary>
 			/// 	Investigate a mysterious broadcast that only you and your Ghost can hear.
 			/// </summary>
 			public const uint HeroicArecibo = 2219006909;
+			/// <summary>
+			/// 	The Disgraced
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_916902800 = 916902800;
 			/// <summary>
 			/// 	Hunt down the wanted Blood Cleaver that escaped from the Prison of Elders.
 			/// </summary>
@@ -9023,6 +9339,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BugintheSystem_1279862229 = 1279862229;
 			/// <summary>
+			/// 	Heist Battleground: Europa
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_3301312793 = 3301312793;
+			/// <summary>
 			/// 	Relive the Homecoming experience.
 			/// </summary>
 			public const uint Homecoming_3679941640 = 3679941640;
@@ -9131,6 +9451,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Battleground: Oracle
 			/// </summary>
 			public const uint NightfallGrandmasterBattlegroundOracle = 284866935;
+			/// <summary>
+			/// 	Battleground: Hailstone
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_491126806 = 491126806;
 			/// <summary>
 			/// 	Defeat the new leader of the Fallen, Kridis, the Dark Priestess.
 			/// </summary>
@@ -9243,6 +9567,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheShatteredThrone_1893059148 = 1893059148;
 			/// <summary>
+			/// 	PsiOps Battleground: EDZ
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylist_863165593 = 863165593;
+			/// <summary>
 			/// 	Master Difficulty: Locked Equipment, Extra Shields, Extra Champions
 			/// <para/>
 			/// 	Champions: [Shield-Piercing] Barrier, [Stagger] Unstoppable
@@ -9259,6 +9587,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Purge the Fallen infestation of the Exodus Black.
 			/// </summary>
 			public const uint ExodusCrash_2971335647 = 2971335647;
+			/// <summary>
+			/// 	The Devils' Lair
+			/// </summary>
+			public const uint GuardianGamesCompetitivePlaylistCompetitiveMatchmade_3455693325 = 3455693325;
 			/// <summary>
 			/// 	Embody the will of the Traveler and hunt those who would serve the Darkness.
 			/// </summary>

@@ -17,19 +17,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SweetnessandLight = 4043054273;
 			/// <summary>
+			/// 	Speak with Zavala about the Closing Ceremony.
+			/// </summary>
+			public const uint GuardianGames_351448987 = 351448987;
+			/// <summary>
 			/// 	Find Eris Morn at the encampment in Sanctuary.
 			/// </summary>
 			public const uint LegacyShadowkeep_3742917278 = 3742917278;
 			/// <summary>
-			/// 	Complete Nightfall strikes. Higher difficulties grant the most efficient progress.
+			/// 	Complete Vanguard playlists using the same subclass element as the currently active elemental surge. Higher difficulties grant the most efficient progress.
 			/// </summary>
-			public const uint NightfallWeeklyCompletions = 1942283261;
+			public const uint VanguardPlaylistChallenge = 1942283261;
 			/// <summary>
 			/// 	Complete the "Darkness's Doorstep" mission.
 			/// </summary>
 			public const uint BeyondLight_2099432263 = 2099432263;
-			public const uint GuardianGames_907826408 = 907826408;
-			public const uint GuardianGames_907826411 = 907826411;
 			/// <summary>
 			/// 	({var:3575677317} of 4) Complete Iron Banner matches as either Strand, Solar, or Void subclasses.
 			/// </summary>
@@ -78,15 +80,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the "Darkness's Doorstep" mission.
 			/// </summary>
 			public const uint BeyondLight_3765298039 = 3765298039;
-			public const uint DailyFocus_3044632693 = 3044632693;
 			/// <summary>
 			/// 	Help your clan earn rewards by completing activities as a group.
 			/// </summary>
 			public const uint WeeklyClanEngrams = 4253138191;
 			/// <summary>
-			/// 	Complete this Raid weekly for awesome loot and bragging rights.
+			/// 	"The opportunity of a lifetime."
 			/// </summary>
-			public const uint LastWishRaid = 3181387331;
+			public const uint LastWish = 3181387331;
 			/// <summary>
 			/// 	Complete the "//node.ovrd.AVALON//" mission.
 			/// </summary>
@@ -100,9 +101,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MetropolitanDefense = 213479068;
 			/// <summary>
-			/// 	###DestinyMilestones.MILESTONE_WEEKLY_ROOT_OF_NIGHTMARES_RAID_DESCRIPTION###
+			/// 	A sinister threat has taken root.
 			/// </summary>
-			public const uint DestinyMilestonesMILESTONE_WEEKLY_ROOT_OF_NIGHTMARES_RAID_NAME = 3699252268;
+			public const uint RootofNightmares = 3699252268;
 			/// <summary>
 			/// 	Complete a Nightfall strike with a team score above 100,000.
 			/// </summary>
@@ -110,8 +111,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Rotating Weekly Dungeon Challenge.
 			/// </summary>
-			public const uint ShatteredThrone = 422102671;
-			public const uint DailyFocus_1960571846 = 1960571846;
+			public const uint PitofHeresy = 422102671;
 			/// <summary>
 			/// 	Complete bounties for Lord Shaxx to earn Powerful Rewards.
 			/// </summary>
@@ -133,10 +133,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DaresofEternityPowerfulChallenge = 295129163;
 			/// <summary>
-			/// 	Speak with Eva Levante in the Tower Courtyard.
-			/// </summary>
-			public const uint BestinClass = 2679459765;
-			/// <summary>
 			/// 	Investigate the strange Hive behavior near the Scarlet Keep.
 			/// </summary>
 			public const uint LegacyShadowkeep_1002733485 = 1002733485;
@@ -148,19 +144,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Give commendations to your fellow Guardians.
 			/// </summary>
 			public const uint ItsintheCards = 3603098564;
-			/// <summary>
-			/// 	Redeem Guardian Games Medallions for powerful rewards. 
-			/// <para/>
-			/// 	Platinum Medallions = 15 points
-			/// <para/>
-			/// 	Gold Medallions = 5 points
-			/// <para/>
-			/// 	Silver Medallions = 2 points
-			/// <para/>
-			/// 	Bronze Medallions = 1 point
-			/// <para/>
-			/// </summary>
-			public const uint MasterClass = 3581618338;
 			/// <summary>
 			/// 	Complete Dawning bounties.
 			/// </summary>
@@ -174,14 +157,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WeeklyGambitChallenge = 3448738070;
 			/// <summary>
-			/// 	Speak with Zavala about the Closing Ceremony.
-			/// </summary>
-			public const uint GuardianGames_4107158154 = 4107158154;
-			/// <summary>
-			/// 	Earn points in Guardian Games playlists.
-			/// </summary>
-			public const uint GuardianGamesPinnacleChallenge = 1335536775;
-			/// <summary>
 			/// 	Complete a round of Dares of Eternity.
 			/// </summary>
 			public const uint StrangeXûrinaStrangeLand = 3782558990;
@@ -189,7 +164,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Long live the King…
 			/// </summary>
 			public const uint KingsFall = 292102995;
-			public const uint DailyFocus_2441610527 = 2441610527;
 			/// <summary>
 			/// 	Speak with Saint-14 in the Tower Hangar.
 			/// </summary>
@@ -242,11 +216,27 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The chains of legacy must be broken.
 			/// </summary>
 			public const uint DeepStoneCrypt = 541780856;
-			public const uint DailyFocus_2092845811 = 2092845811;
 			/// <summary>
 			/// 	The disciple beckons…
 			/// </summary>
 			public const uint VowoftheDisciple = 2136320298;
+			/// <summary>
+			/// 	Speak with Eva Levante in the Tower Courtyard.
+			/// </summary>
+			public const uint BestinClass = 3461102764;
+			/// <summary>
+			/// 	Redeem Guardian Games Medallions for powerful rewards. 
+			/// <para/>
+			/// 	Platinum Medallions = 15 points
+			/// <para/>
+			/// 	Gold Medallions = 5 points
+			/// <para/>
+			/// 	Silver Medallions = 2 points
+			/// <para/>
+			/// 	Bronze Medallions = 1 point
+			/// <para/>
+			/// </summary>
+			public const uint MasterClass = 1864411879;
 			/// <summary>
 			/// 	Complete your Placement Series matches.
 			/// </summary>
@@ -263,16 +253,18 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete bounties for the Gunsmith to earn Powerful Rewards.
 			/// </summary>
 			public const uint SpareParts = 3899487295;
+			public const uint GuardianGames_3156887289 = 3156887289;
+			public const uint GuardianGames_3156887290 = 3156887290;
 			/// <summary>
 			/// 	Rotating Weekly Dungeon Challenge.
 			/// </summary>
-			public const uint PitofHeresy = 1742973996;
+			public const uint ShatteredThrone = 1742973996;
 			/// <summary>
 			/// 	Rotating Weekly Dungeon Challenge.
 			/// </summary>
 			public const uint GraspofAvarice = 1092691445;
 			/// <summary>
-			/// 	Play where power matters. Get special rewards while the Iron Banner is unfurled!
+			/// 	Earn special rewards while the Iron Banner is unfurled!
 			/// </summary>
 			public const uint IronBanner = 3427325023;
 			/// <summary>

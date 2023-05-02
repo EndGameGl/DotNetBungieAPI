@@ -12,9 +12,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IonicTrace = 795149285;
 			/// <summary>
-			/// 	The target is permeated with destructive  Strand matter. As they take additional damage, they create unraveled projectiles that seek out nearby targets.
+			/// 	The target is permeated with destructive [Strand] Strand matter. As they take additional damage, they create unraveled projectiles that seek out nearby targets.
 			/// <para/>
-			/// 	Unraveling Rounds from your  Strand weapons pierce the shields of [Shield-Piercing] Barrier Champions and stun them.
+			/// 	Unraveling Rounds from your [Strand] Strand weapons pierce the shields of [Shield-Piercing] Barrier Champions and stun them.
 			/// <para/>
 			/// 	Unraveled targets unwind into a Tangle when defeated.
 			/// <para/>
@@ -42,9 +42,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Overshield = 3068716550;
 			public const uint H201433599 = 201433599;
 			/// <summary>
-			/// 	A knot of  Strand matter, swirling with potential. Tangles can be shot and destroyed, or picked up and thrown, dealing damage.
+			/// 	A knot of [Strand] Strand matter, swirling with potential. Tangles can be shot and destroyed, or picked up and thrown, dealing damage.
 			/// <para/>
-			/// 	Defeating targets afflicted by any  Strand debuff will unwind them and create a Tangle.
+			/// 	Defeating targets afflicted by any [Strand] Strand debuff will unwind them and create a Tangle.
 			/// <para/>
 			/// </summary>
 			public const uint Tangle = 3214358168;
@@ -227,7 +227,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Volatile = 2650036230;
 			/// <summary>
-			/// 	The target is immobilized by a web of  Strand matter, lifting them into the air. While suspended, Guardians are unable to move freely, combatants are unable to move or fire their weapon, and [Stagger] Unstoppable Champions are stunned.
+			/// 	The target is immobilized by a web of [Strand] Strand matter, lifting them into the air. While suspended, Guardians are unable to move freely, combatants are unable to move or fire their weapon, and [Stagger] Unstoppable Champions are stunned.
 			/// <para/>
 			/// 	Suspended targets unwind into a Tangle when defeated.
 			/// <para/>
@@ -260,7 +260,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Exotics = 829505015;
 			public const uint H2839453028 = 2839453028;
 			/// <summary>
-			/// 	Your body is encased in a protective mesh of tightly woven  Strand matter, greatly reducing any incoming non-precision damage.
+			/// 	Your body is encased in a protective mesh of tightly woven [Strand] Strand matter, greatly reducing any incoming non-precision damage.
 			/// </summary>
 			public const uint WovenMail = 2596812665;
 			/// <summary>
