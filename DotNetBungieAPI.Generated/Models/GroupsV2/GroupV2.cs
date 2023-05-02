@@ -83,6 +83,9 @@ public class GroupV2
     [JsonPropertyName("features")]
     public GroupsV2.GroupFeatures? Features { get; set; }
 
+    [JsonPropertyName("remoteGroupId")]
+    public long? RemoteGroupId { get; set; }
+
     [JsonPropertyName("clanInfo")]
     public GroupsV2.GroupV2ClanInfoAndInvestment? ClanInfo { get; set; }
 }

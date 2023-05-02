@@ -55,27 +55,31 @@ public class MethodData
         Response = (ObjectTypeData)TypeData.CreateTypeData(responseTypeReference, response.Content.Schema);
 
         PathParameters = new List<MethodParameterData>();
-        foreach (var parameter in method.Parameters.Where(x => x.In == "path"))
-        {
-            var paramMetadata = new MethodParameterData()
-            {
-                Name = parameter.Name,
-                Description = parameter.Description,
-                Type = new PropertyTypeData(parameter.Name, parameter.Schema)
-            };
-            PathParameters.Add(paramMetadata);
-        }
-
         QueryParameters = new List<MethodParameterData>();
-        foreach (var parameter in method.Parameters.Where(x => x.In == "query"))
+
+        if (method.Parameters is not null)
         {
-            var paramMetadata = new MethodParameterData()
+            foreach (var parameter in method.Parameters.Where(x => x.In == "path"))
             {
-                Name = parameter.Name,
-                Description = parameter.Description,
-                Type = new PropertyTypeData(parameter.Name, parameter.Schema)
-            };
-            QueryParameters.Add(paramMetadata);
+                var paramMetadata = new MethodParameterData()
+                {
+                    Name = parameter.Name,
+                    Description = parameter.Description,
+                    Type = new PropertyTypeData(parameter.Name, parameter.Schema)
+                };
+                PathParameters.Add(paramMetadata);
+            }
+            
+            foreach (var parameter in method.Parameters.Where(x => x.In == "query"))
+            {
+                var paramMetadata = new MethodParameterData()
+                {
+                    Name = parameter.Name,
+                    Description = parameter.Description,
+                    Type = new PropertyTypeData(parameter.Name, parameter.Schema)
+                };
+                QueryParameters.Add(paramMetadata);
+            }
         }
 
         if (Method == "POST" && method.RequestBody is not null && method.RequestBody.Content.TryGetValue("application/json", out var bodyTypeRef))

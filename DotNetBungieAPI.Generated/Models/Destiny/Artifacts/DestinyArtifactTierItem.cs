@@ -7,4 +7,7 @@ public class DestinyArtifactTierItem
 
     [JsonPropertyName("isActive")]
     public bool? IsActive { get; set; }
+
+    [JsonPropertyName("isVisible")]
+    public bool? IsVisible { get; set; }
 }

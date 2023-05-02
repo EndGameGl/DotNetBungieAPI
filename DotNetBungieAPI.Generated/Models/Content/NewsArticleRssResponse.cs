@@ -2,9 +2,6 @@ namespace DotNetBungieAPI.Generated.Models.Content;
 
 public class NewsArticleRssResponse
 {
-    [JsonPropertyName("NewsArticles")]
-    public List<Content.NewsArticleRssItem> NewsArticles { get; set; }
-
     [JsonPropertyName("CurrentPaginationToken")]
     public int? CurrentPaginationToken { get; set; }
 
@@ -14,6 +11,12 @@ public class NewsArticleRssResponse
     [JsonPropertyName("ResultCountThisPage")]
     public int? ResultCountThisPage { get; set; }
 
+    [JsonPropertyName("NewsArticles")]
+    public List<Content.NewsArticleRssItem> NewsArticles { get; set; }
+
     [JsonPropertyName("CategoryFilter")]
     public string? CategoryFilter { get; set; }
+
+    [JsonPropertyName("PagerAction")]
+    public string? PagerAction { get; set; }
 }

@@ -11,6 +11,12 @@ public class DestinySocialCommendationNodeDefinition
     [JsonPropertyName("color")]
     public Destiny.Misc.DestinyColor? Color { get; set; }
 
+    /// <summary>
+    ///     A version of the displayProperties icon tinted with the color of this node.
+    /// </summary>
+    [JsonPropertyName("tintedIcon")]
+    public string? TintedIcon { get; set; }
+
     [JsonPropertyName("parentCommendationNodeHash")]
     public uint? ParentCommendationNodeHash { get; set; }
 

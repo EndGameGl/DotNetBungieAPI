@@ -35,6 +35,9 @@ public class GroupV2Card
     [JsonPropertyName("capabilities")]
     public GroupsV2.Capabilities? Capabilities { get; set; }
 
+    [JsonPropertyName("remoteGroupId")]
+    public long? RemoteGroupId { get; set; }
+
     [JsonPropertyName("clanInfo")]
     public GroupsV2.GroupV2ClanInfo? ClanInfo { get; set; }
 

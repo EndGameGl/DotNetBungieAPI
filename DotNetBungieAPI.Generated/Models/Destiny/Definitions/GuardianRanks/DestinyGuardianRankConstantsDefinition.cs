@@ -8,6 +8,9 @@ public class DestinyGuardianRankConstantsDefinition
     [JsonPropertyName("rankCount")]
     public int? RankCount { get; set; }
 
+    [JsonPropertyName("guardianRankHashes")]
+    public List<uint> GuardianRankHashes { get; set; }
+
     [JsonPropertyName("rootNodeHash")]
     public uint? RootNodeHash { get; set; }
 

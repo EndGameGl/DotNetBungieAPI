@@ -424,6 +424,8 @@ public enum PlatformErrorCodes : int
 
     PrivateMessagingRequiresDestinyMembership = 313,
 
+    MessagingSendDailyThrottle = 314,
+
     AddSurveyAnswersUnknownSqlException = 400,
 
     ForumBodyCannotBeEmpty = 500,

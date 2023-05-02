@@ -61,6 +61,12 @@ public class DestinyRecordDefinition
     [JsonPropertyName("rewardItems")]
     public List<Destiny.DestinyItemQuantity> RewardItems { get; set; }
 
+    /// <summary>
+    ///     A display name for the type of record this is (Triumphs, Lore, Medals, Seasonal Challenge, etc.).
+    /// </summary>
+    [JsonPropertyName("recordTypeName")]
+    public string? RecordTypeName { get; set; }
+
     [JsonPropertyName("presentationNodeType")]
     public Destiny.DestinyPresentationNodeType? PresentationNodeType { get; set; }
 
