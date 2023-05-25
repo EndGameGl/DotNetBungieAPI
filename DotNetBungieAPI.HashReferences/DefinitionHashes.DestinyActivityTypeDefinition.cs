@@ -44,7 +44,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PrivateMatch_146907730 = 146907730;
 			/// <summary>
-			/// 	Compete in an event version of Elimination. Earn as many round and match wins on a ticket as you can.
+			/// 	Eliminate your opponents or capture the zone to win. Earn as many round and match wins on a ticket as you can.
 			/// </summary>
 			public const uint TrialsofOsiris = 2112637710;
 			/// <summary>

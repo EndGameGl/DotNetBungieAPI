@@ -13,7 +13,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SniperRifleHolster = 1332270138;
 			/// <summary>
-			/// 	Shooting an ammo brick picks it up and automatically reloads all of your equipped weapons from reserves. Increases range.
+			/// 	Shooting an Orb of Power picks it up. Shooting an ammo brick picks it up and automatically reloads all of your equipped weapons from reserves. Increases range.
 			/// </summary>
 			public const uint ShoottoLoot_2647129222 = 2647129222;
 			/// <summary>
@@ -144,7 +144,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Strong against [Stagger] Unstoppable Champions.
 			/// <para/>
 			/// </summary>
-			public const uint UnstoppableGlaive = 3982161708;
+			public const uint UnstoppableGlaive_3982161708 = 3982161708;
 			/// <summary>
 			/// 	Breaking a combatant's shield with a matching weapon type creates an elemental well.
 			/// </summary>
@@ -275,6 +275,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SupremeShardmaker = 2249177738;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2988907973 = 2988907973;
+			/// <summary>
 			/// 	Finishers generate Heavy ammo. Requires one-half of your Super energy.
 			/// </summary>
 			public const uint HeavyFinisher = 491686626;
@@ -289,6 +293,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Hold fire to load; release for a burst.
 			/// </summary>
 			public const uint AllatOnce = 2304491085;
+			public const uint H3369229133 = 3369229133;
 			/// <summary>
 			/// 	Improves weapon handling for equipped Power weapon.
 			/// </summary>
@@ -347,6 +352,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Aiming down sights loads a high-impact burst that stuns unshielded combatants. Strong against [Stagger]  Unstoppable Champions.
 			/// </summary>
 			public const uint UnstoppableBurst = 4235595813;
+			/// <summary>
+			/// 	Sprinting, sliding, and firing build a charge.
+			/// </summary>
+			public const uint OverchargeCapacitor = 1806106994;
 			public const uint H1667991545 = 1667991545;
 			/// <summary>
 			/// 	Adds a silver beam to your transmat effects.
@@ -397,6 +406,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Increases the amount of Auto Rifle ammo you can carry.
 			/// </summary>
 			public const uint AutoRifleReserves = 3795081406;
+			/// <summary>
+			/// 	Improves Trace Rifles.
+			/// </summary>
+			public const uint HighPriority = 4085593937;
 			/// <summary>
 			/// 	Summon a flaming hammer and wreak destruction down upon your enemies.
 			/// </summary>
@@ -702,7 +715,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RocketLauncherScavenger_2028421517 = 2028421517;
 			/// <summary>
-			/// 	Shooting an ammo brick picks it up and automatically reloads all of your equipped weapons from reserves.
+			/// 	Shooting an Orb of Power picks it up. Shooting an ammo brick picks it up and automatically reloads all of your equipped weapons from reserves.
 			/// </summary>
 			public const uint ShoottoLoot_4030961232 = 4030961232;
 			public const uint H2786252262 = 2786252262;
@@ -721,6 +734,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Machine Guns get bonus reserves when you pick up ammo.
 			/// </summary>
 			public const uint MachineGunScavenger_3201059750 = 3201059750;
+			/// <summary>
+			/// 	Fire at your allies to grant Woven Mail.
+			/// </summary>
+			public const uint ProtectiveWeave = 3035580880;
 			/// <summary>
 			/// 	Defeating a Champion spawns multiple Solar and Stasis wells.
 			/// </summary>
@@ -877,6 +894,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Gambit wins have a chance to drop an additional piece of Legendary gear.
 			/// </summary>
 			public const uint ProsperityGambit = 1103665893;
+			public const uint H541591976 = 541591976;
 			public const uint H2441420357 = 2441420357;
 			/// <summary>
 			/// 	Hipfire precision hits grant a massive draw-speed bonus for a short duration.
@@ -1061,6 +1079,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ImpactInduction = 1230566498;
 			/// <summary>
+			/// 	Landing every shot in a burst grants this weapon increased damage and reduced charge time for a short duration.
+			/// </summary>
+			public const uint ControlledBurst_771047218 = 771047218;
+			/// <summary>
 			/// 	Grenades stick to surfaces and chain Arc bolts.
 			/// </summary>
 			public const uint ArcTraps = 2696394500;
@@ -1086,6 +1108,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip multiple pieces from this set to unlock Gambit Prime set perks.
 			/// </summary>
 			public const uint Invader1 = 624734399;
+			/// <summary>
+			/// 	Using your class ability grants a Barricade grenade.
+			/// </summary>
+			public const uint Barrinade = 1890198747;
 			public const uint H990066560 = 990066560;
 			public const uint H1165645548 = 1165645548;
 			/// <summary>
@@ -1103,6 +1129,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Linear Fusion Rifles get bonus reserves when picking up ammo used by that Linear Fusion Rifle.
 			/// </summary>
 			public const uint LinearFusionRifleScavenger = 2692754728;
+			/// <summary>
+			/// 	Tangles that you throw attach to targets and detonate into a suspending burst.
+			/// <para/>
+			/// 	Threadling final blows create a Tangle.
+			/// <para/>
+			/// </summary>
+			public const uint TheWanderer = 726366789;
 			public const uint H3921767339 = 3921767339;
 			/// <summary>
 			/// 	This weapon gains a boost to reload speed as your health gets lower.
@@ -1191,6 +1224,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	High damage, high recoil.
 			/// </summary>
 			public const uint AggressiveFrame_988051950 = 988051950;
+			public const uint H2171206648 = 2171206648;
 			/// <summary>
 			/// 	After using your class ability, your next weapon final blow spawns an Orb of Power.
 			/// </summary>
@@ -1223,7 +1257,27 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Missing 2 shots returns a bullet to the magazine after a short duration.
 			/// </summary>
 			public const uint ReversalofFortune = 472834336;
+			/// <summary>
+			/// 	Your Strand weapons gain Unraveling Rounds whenever you gain Woven Mail while your Strand subclass is equipped.
+			/// </summary>
+			public const uint StrandSoldier = 1602976880;
+			/// <summary>
+			/// 	Picking up a Void Breach gives you an overshield or refreshes your existing overshield.
+			/// </summary>
+			public const uint ProtectiveBreach = 1602976882;
+			/// <summary>
+			/// 	Weapons with the Unsated Hunger, Nanotech Tracer Rockets, Harmonic Resonance, and Noble Deeds traits are always overcharged weapons for you when that modifier is active.
+			/// </summary>
+			public const uint OriginHones_1602976883 = 1602976883;
+			/// <summary>
+			/// 	Gain damage resistance while amplified.
+			/// </summary>
+			public const uint AmplifiedShielding = 1602976884;
 			public const uint H564948618 = 564948618;
+			/// <summary>
+			/// 	Gain a stack of Armor Charge when you stun a Champion.
+			/// </summary>
+			public const uint CounterCharge_1602976885 = 1602976885;
 			/// <summary>
 			/// 	[Aim Down Sights]  : Raise shield
 			/// </summary>
@@ -1710,7 +1764,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint PassiveGuard = 783251763;
 			public const uint H501876791 = 501876791;
 			/// <summary>
-			/// 	Melee hits reload equipped weapon.
+			/// 	Melee damage reloads weapons and boosts movement speed and jump height.
 			/// </summary>
 			public const uint NightmareFuel = 2364971387;
 			/// <summary>
@@ -1763,7 +1817,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ArcSiphon = 3406124625;
 			/// <summary>
-			/// 	Sword Kills boost movement speed and damage.
+			/// 	Sword final blows boost movement speed and damage.
 			/// </summary>
 			public const uint AssassinsBlade_2794494793 = 2794494793;
 			/// <summary>
@@ -1910,7 +1964,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LeadfromGold_4283092849 = 4283092849;
 			/// <summary>
-			/// 	This weapon gains bonus range until the wielder takes damage. The bonus returns when no damage is taken for a short duration.
+			/// 	This weapon gains bonus range until your shield is destroyed. The bonus returns once your shield has regenerated to full strength.
 			/// </summary>
 			public const uint FragileFocus_1167548551 = 1167548551;
 			public const uint H3587147678 = 3587147678;
@@ -2014,6 +2068,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeprecatedPerk_3225473258 = 3225473258;
 			/// <summary>
+			/// 	Repeatedly missing targets increases this weapon's stability for a short time. This buff lasts for a short duration after a target is hit.
+			/// </summary>
+			public const uint InvisibleHand_3695894033 = 3695894033;
+			/// <summary>
 			/// 	Reduces flinching from incoming fire while aiming Hand Cannons.
 			/// </summary>
 			public const uint UnflinchingHandCannonAim_4087604672 = 4087604672;
@@ -2040,21 +2098,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Genesis_863260328 = 863260328;
 			public const uint H625370460 = 625370460;
-			/// <summary>
-			/// 	Power Bonus: +9[Light Level]
-			/// <para/>
-			/// 	Bonus Damage Against Non-Matching Shields: 58%
-			/// <para/>
-			/// </summary>
-			public const uint CurrentSynergyBonuses_2081053584 = 2081053584;
 			public const uint H1650151288 = 1650151288;
-			/// <summary>
-			/// 	Power Bonus: +8[Light Level]
-			/// <para/>
-			/// 	Bonus Damage Against Non-Matching Shields: 52%
-			/// <para/>
-			/// </summary>
-			public const uint CurrentSynergyBonuses_2081053585 = 2081053585;
 			public const uint H1650151289 = 1650151289;
 			/// <summary>
 			/// 	This perk has been deprecated and no longer functions.
@@ -2081,62 +2125,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint UnstoppableArrows = 3170267398;
 			/// <summary>
-			/// 	Power Bonus: +1[Light Level]
-			/// <para/>
-			/// 	Bonus Damage Against Non-Matching Shields: 10%
-			/// <para/>
-			/// </summary>
-			public const uint CurrentSynergyBonuses_2081053592 = 2081053592;
-			/// <summary>
 			/// 	Adds tracking capability to rockets. Locks onto targets when aiming down sights. Increases blast radius.
 			/// </summary>
 			public const uint TrackingModule_3867466132 = 3867466132;
 			/// <summary>
-			/// 	Power Bonus: +3[Light Level]
-			/// <para/>
-			/// 	Bonus Damage Against Non-Matching Shields: 22%
-			/// <para/>
-			/// </summary>
-			public const uint CurrentSynergyBonuses_2081053594 = 2081053594;
-			/// <summary>
-			/// 	Power Bonus: +2[Light Level]
-			/// <para/>
-			/// 	Bonus Damage Against Non-Matching Shields: 16%
-			/// <para/>
-			/// </summary>
-			public const uint CurrentSynergyBonuses_2081053595 = 2081053595;
-			/// <summary>
-			/// 	Power Bonus: +5[Light Level]
-			/// <para/>
-			/// 	Bonus Damage Against Non-Matching Shields: 34%
-			/// <para/>
-			/// </summary>
-			public const uint CurrentSynergyBonuses_2081053596 = 2081053596;
-			/// <summary>
-			/// 	Power Bonus: +4[Light Level]
-			/// <para/>
-			/// 	Bonus Damage Against Non-Matching Shields: 28%
-			/// <para/>
-			/// </summary>
-			public const uint CurrentSynergyBonuses_2081053597 = 2081053597;
-			/// <summary>
-			/// 	Power Bonus: +7[Light Level]
-			/// <para/>
-			/// 	Bonus Damage Against Non-Matching Shields: 46%
-			/// <para/>
-			/// </summary>
-			public const uint CurrentSynergyBonuses_2081053598 = 2081053598;
-			/// <summary>
 			/// 	This perk has been deprecated and no longer functions.
 			/// </summary>
 			public const uint DeprecatedPerk_827936821 = 827936821;
-			/// <summary>
-			/// 	Power Bonus: +6[Light Level]
-			/// <para/>
-			/// 	Bonus Damage Against Non-Matching Shields: 40%
-			/// <para/>
-			/// </summary>
-			public const uint CurrentSynergyBonuses_2081053599 = 2081053599;
 			/// <summary>
 			/// 	Improved charging for Void grenades.
 			/// </summary>
@@ -2161,6 +2156,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	This armor piece adds +2 to your overall Power and +20% damage with Arc weapons against combatant shields when you have an Arc subclass equipped.
 			/// </summary>
 			public const uint ArcSynergy_2067282362 = 2067282362;
+			/// <summary>
+			/// 	Repeatedly missing targets increases this weapon's stability for a short time. This buff lasts for a longer duration after a target is hit.
+			/// </summary>
+			public const uint InvisibleHand_906982749 = 906982749;
 			public const uint H402424849 = 402424849;
 			/// <summary>
 			/// 	These codes are only activated for a limited time. Find the terminal in the Riis-Reborn Approach.
@@ -2198,6 +2197,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Adds fire and smoke to your transmat effects.
 			/// </summary>
 			public const uint UpinSmoke = 1355900513;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2726708666 = 2726708666;
 			public const uint H2075224581 = 2075224581;
 			/// <summary>
 			/// 	Adds a Cabal shield to your transmat effects.
@@ -2296,6 +2299,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint OathBreaker = 416948284;
+			/// <summary>
+			/// 	Collecting elemental pickups or throwing a Strand Tangle grants a stacking period of increased damage.
+			/// <para/>
+			/// 	Elemental pickups include Firesprites, Void Breaches, Stasis Shards, Ionic Traces, and Strand Tangles.
+			/// <para/>
+			/// </summary>
+			public const uint CollectiveAction_286264656 = 286264656;
 			/// <summary>
 			/// 	Highlights nearby loot caches on Io for you and your fireteam.
 			/// </summary>
@@ -2814,14 +2824,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TraceRifleTargeting = 732939633;
 			/// <summary>
-			/// 	Unleash a long-range channeled beam of concentrated Arc energy.
+			/// 	Unleash a long-range channeled beam of concentrated Arc energy. Sustained damage on a single target creates a jolting lightning strike at their position.
 			/// <para/>
 			/// 	 [Super]  while active to deactivate your Super early, saving Super energy.
 			/// <para/>
 			/// </summary>
 			public const uint ChaosReach_1330059512 = 1330059512;
 			/// <summary>
-			/// 	Chain Arc Lightning from your hands to electrify targets with devastating streams of Arc Light that intensify over time. Casting Stormtrance creates a shockwave underneath you.
+			/// 	Chain Arc Lightning from your hands to electrify targets with devastating streams of Arc Light that intensify over time. Casting Stormtrance creates a jolting shockwave underneath you.
 			/// <para/>
 			/// 	[Sprint]  : Teleport forward, consuming a small amount of Super energy.
 			/// <para/>
@@ -2968,7 +2978,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1693851625 = 1693851625;
 			public const uint H1717552865 = 1717552865;
 			/// <summary>
-			/// 	[Heavy Attack]  : Use while sprinting with full energy to launch a heavy Blink attack.
+			/// 	[Heavy Attack]  : Use while sprinting with full energy to launch a repeatable heavy blink attack.
 			/// </summary>
 			public const uint Tesseract = 3703952997;
 			/// <summary>
@@ -3053,7 +3063,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	You have an additional grenade charge.
 			/// <para/>
-			/// 	Your grapple creates a Grapple Tangle at the grapple point.
+			/// 	Your Grappling Hook creates a Grapple Tangle at the grapple point.
 			/// <para/>
 			/// </summary>
 			public const uint WidowsSilk = 186109978;
@@ -3067,7 +3077,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint CompoundingForce = 591985846;
 			public const uint H4143124338 = 4143124338;
 			/// <summary>
-			/// 	Precision kills have a chance to create a shower of Glimmer.
+			/// 	Precision final blows have a chance to create a shower of Glimmer.
 			/// </summary>
 			public const uint Rainmaker = 4025092710;
 			/// <summary>
@@ -3151,6 +3161,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Reduces incoming Stasis damage from combatants.
 			/// </summary>
 			public const uint StasisResistance = 501183345;
+			public const uint H1322690461 = 1322690461;
 			/// <summary>
 			/// 	Aiming down Fusion Rifle and Linear Fusion Rifle sights loads a high-impact burst that stuns unshielded combatants. Strong against [Stagger] Unstoppable Champions.
 			/// </summary>
@@ -3168,6 +3179,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Increased Vanguard token drops for you and your fireteam in this strike.
 			/// </summary>
 			public const uint InspiringPresence_1356227672 = 1356227672;
+			/// <summary>
+			/// 	When you redeem a Salvage Key or a Deep Dive Key, you have a chance to earn an additional Deep Engram.
+			/// </summary>
+			public const uint ForgottenTreasures = 2557165014;
 			/// <summary>
 			/// 	Chance to obtain additional faction consumables on the moon Titan.
 			/// </summary>
@@ -3227,6 +3242,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LucentShriekerEntrance = 1705666488;
 			/// <summary>
+			/// 	Landing every shot in a burst grants this weapon increased damage and reduced charge time for an improved duration.
+			/// </summary>
+			public const uint ControlledBurst_3290220052 = 3290220052;
+			/// <summary>
 			/// 	Reloading after a precision final blow increases your rate of fire.
 			/// </summary>
 			public const uint Desperado_2708308547 = 2708308547;
@@ -3250,6 +3269,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	This perk has been deprecated and no longer functions.
 			/// </summary>
 			public const uint DeprecatedPerk_3341701079 = 3341701079;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3779036825 = 3779036825;
 			public const uint H4154482524 = 4154482524;
 			/// <summary>
 			/// 	Fires full auto. Nearby Rat Kings increase strength.
@@ -3289,6 +3312,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ImproveSideBoost = 1997025201;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2467329576 = 2467329576;
+			/// <summary>
 			/// 	Your Solar Super projectiles have stronger target acquisition.
 			/// </summary>
 			public const uint EmberofBeams = 3462817390;
@@ -3300,6 +3327,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Grants a chance of receiving a Legendary engram when completing strikes with a clan member.
 			/// </summary>
 			public const uint HawthornesHeroes = 3343397892;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2467329579 = 2467329579;
 			/// <summary>
 			/// 	This perk has been deprecated and no longer functions.
 			/// </summary>
@@ -3447,7 +3478,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Auto Rifles deal bonus damage against [Shield-Piercing] Barrier Champions.
 			/// <para/>
 			/// </summary>
-			public const uint AntiBarrierAutoRifle = 3042861421;
+			public const uint AntiBarrierAutoRifle_3042861421 = 3042861421;
 			/// <summary>
 			/// 	Switching to this weapon while you are damaged strongly increases its handling for a short duration.
 			/// <para/>
@@ -3489,7 +3520,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VoidReserves = 4161224995;
 			/// <summary>
-			/// 	Bows charges can be held indefinitely.
+			/// 	Bow charges can be held indefinitely for increased damage.
 			/// </summary>
 			public const uint AdamantineBrace = 2049097276;
 			/// <summary>
@@ -3509,7 +3540,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Gain bonus damage and charge rate during a slide after sprinting for an improved duration.
 			/// </summary>
 			public const uint Kickstart_906128146 = 906128146;
-			public const uint H2708492240 = 2708492240;
 			/// <summary>
 			/// 	Massively improves weapon stability at the cost of reload speed.
 			/// </summary>
@@ -3553,7 +3583,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Gain an additional Shield Throw charge while Sentinel Shield is active.
 			/// </summary>
 			public const uint SecondShield = 3471252175;
+			/// <summary>
+			/// 	Sprinting gradually reloads this weapon.
+			/// </summary>
+			public const uint RegenerativeMotion = 3156460875;
 			public const uint H4075239770 = 4075239770;
+			public const uint H3387380059 = 3387380059;
 			/// <summary>
 			/// 	Final blows with this weapon slow nearby targets.
 			/// </summary>
@@ -3653,7 +3688,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	The armor energy costs of all armor mods affecting your Strand weapons are significantly discounted.
 			/// </summary>
-			public const uint AuthorizedModsStrand = 301549632;
+			public const uint AuthorizedModsStrand_301549632 = 301549632;
 			/// <summary>
 			/// 	Melee kills increase melee damage.
 			/// </summary>
@@ -3665,7 +3700,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	The armor energy costs of all armor mods affecting your Void weapons are significantly discounted.
 			/// </summary>
-			public const uint AuthorizedModsVoid = 301549633;
+			public const uint AuthorizedModsVoid_301549633 = 301549633;
 			/// <summary>
 			/// 	The armor energy costs of all armor mods affecting your Solar weapons are significantly discounted.
 			/// </summary>
@@ -3689,8 +3724,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Grants access to armor mods in your helmet that combine the effects of the Strand Siphon mod with the Solar Siphon and Void Siphon mods.
 			/// </summary>
-			public const uint MultiSiphonMods = 301549639;
+			public const uint MultiSiphonMods_301549639 = 301549639;
+			/// <summary>
+			/// 	Automatically collects nearby Orbs of Power when you activate your class ability.
+			/// </summary>
+			public const uint PowerfulAttraction = 2602830610;
 			public const uint H1901678688 = 1901678688;
+			/// <summary>
+			/// 	Adds a methane burst appearance to your transmat effects.
+			/// </summary>
+			public const uint MethaneBurst = 3042583938;
 			/// <summary>
 			/// 	When aiming down sights, weapon rate of fire slows while weapon damage increases.
 			/// </summary>
@@ -3835,11 +3878,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeprecatedPerk_3023771631 = 3023771631;
 			/// <summary>
-			/// 	Summon a flaming maul and crush your enemies with the force of an earthquake.
+			/// 	Summon a flaming maul and crush targets with the force of an earthquake.
 			/// <para/>
 			/// 	[Light Attack]  : Spin the maul in a circle around you, damaging nearby targets.
 			/// <para/>
-			/// 	[Heavy Attack]  : Slam the maul to the ground and create a cyclone of flames that seeks targets.
+			/// 	[Heavy Attack]  : Slam the maul to the ground and create a cyclone of flames that seeks targets, dealing damage and scorching them.
 			/// <para/>
 			/// </summary>
 			public const uint BurningMaul_886120534 = 886120534;
@@ -3959,6 +4002,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint Celerity_948391157 = 948391157;
+			public const uint H1242637506 = 1242637506;
 			/// <summary>
 			/// 	Become Charged with Light by picking up an elemental well. If the elemental well's element type matches your subclass element, you gain 2 stacks of Charged with Light.
 			/// </summary>
@@ -3976,6 +4020,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SleightofHand_744741393 = 744741393;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2756333602 = 2756333602;
+			/// <summary>
 			/// 	Increases your chance of finding Primary ammo while you have a Submachine Gun equipped.
 			/// </summary>
 			public const uint SubmachineGunAmmoFinder = 3460462731;
@@ -3987,6 +4035,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DeprecatedPerk_256851367 = 256851367;
 			public const uint H515259333 = 515259333;
 			public const uint H3755729841 = 3755729841;
+			/// <summary>
+			/// 	Increases Rocket Launcher ammo and reserves, but reduces damage, blast radius, and reload speed.
+			/// </summary>
+			public const uint Bipod_240787896 = 240787896;
 			/// <summary>
 			/// 	Final blows grant increased mobility, weapon range, and handling for an improved duration.
 			/// </summary>
@@ -4090,10 +4142,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Strong against [Disruption] Overload Champions.
 			/// <para/>
 			/// </summary>
-			public const uint OverloadTraceRifles = 2903076278;
+			public const uint OverloadTraceRifles_2903076278 = 2903076278;
 			public const uint H2015255840 = 2015255840;
 			/// <summary>
-			/// 	Improves scorch effects and Daybreak projectiles.
+			/// 	Daybreak projectiles deal more damage. Gain improved scorch.
 			/// </summary>
 			public const uint RitesofEmber = 1362392838;
 			/// <summary>
@@ -4113,7 +4165,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EchoofStarvation = 1338467759;
 			/// <summary>
-			/// 	Forgives one loss per run.
+			/// 	Forgives one loss per run. Forgives a second loss if you have not yet been flawless this week.
 			/// </summary>
 			public const uint Mercy_989028955 = 989028955;
 			/// <summary>
@@ -4368,6 +4420,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DangerZone_3245781764 = 3245781764;
 			/// <summary>
+			/// 	Collecting a Firesprite, Ionic Trace, Stasis shard, or Void Breach, or destroying a Strand Tangle has an escalating chance to give you Armor Charge.
+			/// </summary>
+			public const uint ElementalCharge_1037519425 = 1037519425;
+			/// <summary>
 			/// 	Defeating targets with your Stasis Super refunds Super energy.
 			/// </summary>
 			public const uint GlacialInheritance_333967829 = 333967829;
@@ -4432,7 +4488,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint FontofMight_3356363681 = 3356363681;
 			/// <summary>
-			/// 	This weapon gains bonus range until the wielder takes damage. The bonus returns when no damage is taken for a shorter duration.
+			/// 	This weapon gains bonus range until your shield is destroyed. The bonus returns more quickly once your shield has regenerated to full strength.
 			/// </summary>
 			public const uint FragileFocus_2157167895 = 2157167895;
 			/// <summary>
@@ -4736,6 +4792,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3203577237 = 3203577237;
 			public const uint H187964054 = 187964054;
 			public const uint H187964055 = 187964055;
+			public const uint H1611887337 = 1611887337;
 			/// <summary>
 			/// 	Gain greater bonus Super energy from Power weapon kills.
 			/// </summary>
@@ -4761,6 +4818,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint UnstoppableHandCannon_2375985883 = 2375985883;
+			/// <summary>
+			/// 	Increased handling, reload speed, and stability when no abilities are fully charged.
+			/// <para/>
+			/// 	Swords gain increased guard resistance and charge rate instead.
+			/// <para/>
+			/// </summary>
+			public const uint UnsatedHunger = 1302307267;
 			public const uint H2546376027 = 2546376027;
 			/// <summary>
 			/// 	Defeating a powerful combatant with a Void weapon has a chance to generate Heavy ammo for you and your teammates.
@@ -4779,7 +4843,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Weapons with the Noble Deeds, Nanotracing Rockets, Tex Balanced Stock, and Ambush Origin traits are always overcharged when that modifier is active.
 			/// </summary>
-			public const uint OriginHones = 3013157003;
+			public const uint OriginHones_3013157003 = 3013157003;
 			public const uint H1811055642 = 1811055642;
 			public const uint H2546376030 = 2546376030;
 			/// <summary>
@@ -4808,7 +4872,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint FourthTimestheCharm_4136687020 = 4136687020;
 			public const uint H3382428925 = 3382428925;
 			public const uint H3382428926 = 3382428926;
-			public const uint Threadrunner = 2444676506;
+			public const uint Silkstrike = 2444676506;
 			public const uint H3382428927 = 3382428927;
 			public const uint H2252751995 = 2252751995;
 			/// <summary>
@@ -4836,9 +4900,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint UnflinchingMachineGun = 719648124;
 			/// <summary>
-			/// 	Charging this weapon increases the freeze radius and amount of Stasis crystals created.
+			/// 	This weapon's uncharged projectiles deal bonus damage to Stasis crystals and frozen targets. Rapidly destroying multiple Stasis crystals reloads this weapon from reserves.
 			/// </summary>
-			public const uint FlashFreeze = 74745228;
+			public const uint ShatterShot = 74745228;
 			/// <summary>
 			/// 	Faster ready and stow speed for Sidearms.
 			/// </summary>
@@ -4931,6 +4995,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeprecatedPerk_3101627057 = 3101627057;
 			/// <summary>
+			/// 	While amplified, this weapon gradually gains overcharge.
+			/// </summary>
+			public const uint StaticBuildup = 2921365132;
+			/// <summary>
 			/// 	Reduces recoil deviation for the weapon.
 			/// </summary>
 			public const uint CounterbalanceStock = 319695372;
@@ -4984,7 +5052,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ArcAbilityModule_1721900746 = 1721900746;
 			/// <summary>
-			/// 	Loss has been forgiven.
+			/// 	Final loss has been forgiven.
 			/// </summary>
 			public const uint Mercy_1349727737 = 1349727737;
 			public const uint H4230153440 = 4230153440;
@@ -5030,11 +5098,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint AntiBarrierScoutRifle_2748682815 = 2748682815;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_656925452 = 656925452;
 			public const uint H161751346 = 161751346;
 			/// <summary>
 			/// 	+3 Recovery ▲
 			/// </summary>
 			public const uint StatIncrease_964593849 = 964593849;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_656925455 = 656925455;
 			public const uint H380739326 = 380739326;
 			/// <summary>
 			/// 	Fires a stable burst of four lightweight rounds.
@@ -5397,7 +5473,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Recombination_1638503362 = 1638503362;
 			public const uint H3966225495 = 3966225495;
 			/// <summary>
-			/// 	Shotgun final blows consume melee energy to grant an Overshield.
+			/// 	Shotgun final blows grant an overshield.
 			/// </summary>
 			public const uint ForceMultiplier = 1324352273;
 			/// <summary>
@@ -5682,6 +5758,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint StatIncrease_86466353 = 86466353;
 			public const uint H625380752 = 625380752;
 			/// <summary>
+			/// 	Bait: {var:3758904843}/{var:1523938882}
+			/// </summary>
+			public const uint BaitCount = 3056678280;
+			/// <summary>
 			/// 	Faster time to aim down sights.
 			/// </summary>
 			public const uint SnapshotSights_3458972548 = 3458972548;
@@ -5699,13 +5779,13 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint RapidFireFrame_2215194796 = 2215194796;
 			public const uint H1176857621 = 1176857621;
 			/// <summary>
-			/// 	Dealing half of the magazine as precision damage grants this weapon bonus damage. The shot count is reset whenever the weapon is reloaded or stowed.
-			/// </summary>
-			public const uint FocusedFury_3504933437 = 3504933437;
-			/// <summary>
 			/// 	Precision hits build up Dynamic Charge. Swapping to Arc Seeker mode increases damage and partially reloads the magazine based on the number of charges.
 			/// </summary>
 			public const uint DynamicCharge = 300001355;
+			/// <summary>
+			/// 	Dealing half of the magazine as precision damage grants this weapon bonus damage. The shot count is reset whenever the weapon is reloaded or stowed.
+			/// </summary>
+			public const uint FocusedFury_3504933437 = 3504933437;
 			/// <summary>
 			/// 	Adds the Jade Rabbit crest to your transmat effects.
 			/// </summary>
@@ -5765,7 +5845,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TexBalancedStock = 968242872;
 			/// <summary>
-			/// 	Rifts release an Arc shockwave when cast. Rift energy recharges faster when you are surrounded by enemies.
+			/// 	Rift periodically releases an Arc shockwave.
 			/// </summary>
 			public const uint PlanetaryTorrent = 2253303044;
 			public const uint H3267930035 = 3267930035;
@@ -6079,6 +6159,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Fires an arrow that splits when released.
 			/// </summary>
 			public const uint SplitElectron = 3581145538;
+			public const uint H3427096445 = 3427096445;
 			public const uint H549294277 = 549294277;
 			/// <summary>
 			/// 	Detonate multiple sticky flame grenades at once.
@@ -6194,6 +6275,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LightShift = 1423692705;
 			/// <summary>
+			/// 	Final blows with another weapon grant this weapon increased speed for aiming down sights, accuracy, and airborne effectiveness for a short time. When Discord is active, final blows refund ammo.
+			/// </summary>
+			public const uint Discord_2807542359 = 2807542359;
+			/// <summary>
 			/// 	Detects caches within a 50-meter range and increases Glimmer gain.
 			/// </summary>
 			public const uint TreasureHunter_1531695854 = 1531695854;
@@ -6217,16 +6302,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GuidingLight_2457096233 = 2457096233;
 			/// <summary>
-			/// 	Your [Kill] Strand armor pieces increase your overall Power and grant bonus damage with Strand weapons against combatant [Arc] Arc, [Solar] Solar, and [Void] Void shields.
-			/// </summary>
-			public const uint StrandSynergy = 4156014763;
-			/// <summary>
 			/// 	Customized frame with dramatically increased accuracy, stability, and targeting while hip firing.
 			/// </summary>
 			public const uint LegacyPR55Frame = 712440676;
 			public const uint H705962459 = 705962459;
 			/// <summary>
-			/// 	Guarding doesn't consume energy. Early deactivation for Arc Staff.
+			/// 	Allows for early deactivation of an Arc Staff.
 			/// </summary>
 			public const uint MobiusConduit = 43648511;
 			/// <summary>
@@ -6332,6 +6413,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Firefly_890589507 = 890589507;
 			public const uint H3197220495 = 3197220495;
 			/// <summary>
+			/// 	Final blows with another weapon grant this weapon increased speed aiming down sights, accuracy, and airborne effectiveness for a longer duration. When Discord is active, final blows refund ammo.
+			/// </summary>
+			public const uint Discord_3786433991 = 3786433991;
+			/// <summary>
 			/// 	ASPECT OF INTERFERENCE
 			/// <para/>
 			/// 	Unlock this Stasis Aspect by completing the quests "Aspect of Influence" and "Aspect of Interference," acquired from the Exo Stranger on Europa.
@@ -6351,10 +6436,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Damaging nearby combatants with melee abilities dramatically increases handling and damage. Expires after an improved short duration or the next shot.
 			/// </summary>
 			public const uint BluntExecutionRounds_1856708211 = 1856708211;
-			/// <summary>
-			/// 	Your [Solar] Solar armor pieces increase your overall Power and grant bonus damage with [Solar] Solar weapons against combatant [Arc] Arc and [Void] Void shields.
-			/// </summary>
-			public const uint SolarSynergy = 2244555198;
 			public const uint H2523584230 = 2523584230;
 			/// <summary>
 			/// 	Projectiles attached to targets explode after a short delay. Increases stability.
@@ -6427,13 +6508,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BeyondTheVeil = 167880884;
 			/// <summary>
-			/// 	Increases the Arc shield's durability and partially reloads the magazine if it is destroyed.
-			/// </summary>
-			public const uint LegionsBulwark = 2669879197;
-			/// <summary>
 			/// 	This perk has been deprecated and no longer functions.
 			/// </summary>
 			public const uint DeprecatedPerk_301340255 = 301340255;
+			/// <summary>
+			/// 	Increases the Arc shield's durability and partially reloads the magazine if it is destroyed.
+			/// </summary>
+			public const uint LegionsBulwark = 2669879197;
 			public const uint H3260887968 = 3260887968;
 			/// <summary>
 			/// 	Armor pieces with random stats you acquire will have a guaranteed minimum of 10 Resilience, and are more likely to drop with higher Resilience.
@@ -6506,6 +6587,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Gain extra damage resistance against rank-and-file combatants.
 			/// </summary>
 			public const uint MinorResist_606277696 = 606277696;
+			/// <summary>
+			/// 	Dealing sustained damage severs the target.
+			/// </summary>
+			public const uint WeftCutter = 3442766111;
 			/// <summary>
 			/// 	Uninterrupted fire from your equipped SMGs grants bullets that stun combatants, delaying ability energy regeneration and lowering combatant damage output.
 			/// <para/>
@@ -6752,6 +6837,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Greatly increases reload speed of Sniper Rifles.
 			/// </summary>
 			public const uint EnhancedSniperRifleLoader_2252278175 = 2252278175;
+			public const uint H1372207424 = 1372207424;
 			/// <summary>
 			/// 	Generate Laurels by defeating enemies with abilities during the Guardian Games.
 			/// </summary>
@@ -6906,6 +6992,26 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EnhancedScoutRifleTargeting = 2082819290;
 			public const uint H1462360815 = 1462360815;
+			/// <summary>
+			/// 	Grants access to Helmet armor mods that combine the effects of the Strand Siphon and Arc Siphon mods.
+			/// </summary>
+			public const uint MultiSiphonMods_189755658 = 189755658;
+			/// <summary>
+			/// 	The armor energy costs of all armor mods affecting your melee are significantly discounted.
+			/// </summary>
+			public const uint AuthorizedModsMelee = 189755659;
+			/// <summary>
+			/// 	The armor energy costs of all armor mods affecting your Strand weapons are significantly discounted.
+			/// </summary>
+			public const uint AuthorizedModsStrand_189755660 = 189755660;
+			/// <summary>
+			/// 	The armor energy costs of all armor mods affecting your Void weapons are significantly discounted.
+			/// </summary>
+			public const uint AuthorizedModsVoid_189755661 = 189755661;
+			/// <summary>
+			/// 	The armor energy costs of all armor mods affecting your Arc weapons are significantly discounted.
+			/// </summary>
+			public const uint AuthorizedModsArc = 189755662;
 			public const uint H2569513966 = 2569513966;
 			public const uint H2001230450 = 2001230450;
 			/// <summary>
@@ -6978,7 +7084,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SwordScavenger = 1924570797;
 			/// <summary>
-			/// 	Casting Fists of Havoc grants an overshield.
+			/// 	Casting Fists of Havoc grants an overshield. Arc final blows grant a weapon damage bonus.
 			/// </summary>
 			public const uint Resolute = 4197395956;
 			/// <summary>
@@ -7026,6 +7132,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint UniformedOfficer = 2537704923;
 			public const uint H2068537709 = 2068537709;
 			public const uint H3643134425 = 3643134425;
+			public const uint H3335524232 = 3335524232;
 			public const uint H3643134426 = 3643134426;
 			public const uint H4202535579 = 4202535579;
 			public const uint H3876708476 = 3876708476;
@@ -7080,6 +7187,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	[Alternate Weapon Action]  : When weapon energy is full, consume it before firing to make your next shot deploy a protective shield on impact.
 			/// </summary>
 			public const uint RemoteShield = 1876452061;
+			public const uint H1390648315 = 1390648315;
 			/// <summary>
 			/// 	Replenishes health each time you pick up an Orb of Power.
 			/// </summary>
@@ -7205,7 +7313,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeprecatedPerk_70860098 = 70860098;
 			/// <summary>
-			/// 	Defeating weakened targets with precision final blows creates an Orb of Power and a Void Breach.
+			/// 	Defeating weakened targets creates an Orb of Power and a Void Breach.
 			/// </summary>
 			public const uint EchoofHarvest = 1971709241;
 			/// <summary>
@@ -7434,6 +7542,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeprecatedPerk_2830191999 = 2830191999;
 			public const uint H3281343768 = 3281343768;
+			public const uint SonarAmplifier = 3920748909;
 			/// <summary>
 			/// 	While at full health, spinning up this weapon protects you with an Arc shield.
 			/// </summary>
@@ -7454,11 +7563,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BountifulUnity = 3601391075;
 			public const uint H3413782391 = 3413782391;
+			public const uint H299088722 = 299088722;
 			/// <summary>
 			/// 	Causing damage with this weapon reduces recoil and flinch over time.
 			/// </summary>
 			public const uint ZenMoment_2279082265 = 2279082265;
-			public const uint H299088722 = 299088722;
 			/// <summary>
 			/// 	Gain 10% more XP while in Vanguard Operations.
 			/// </summary>
@@ -7704,7 +7813,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// 	[Light Attack]  : Perform a quick melee attack.
 			/// <para/>
-			/// 	[Heavy Attack]  : Perform a heavy attack and once again vanish from sight.
+			/// 	[Heavy Attack]  : Perform a heavy attack that weakens your target, and once again vanish from sight.
 			/// <para/>
 			/// </summary>
 			public const uint SpectralBlades_1950766035 = 1950766035;
@@ -8171,6 +8280,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Rounds at the end of the magazine deal more damage.
 			/// </summary>
 			public const uint HighImpactReserves_1312726537 = 1312726537;
+			public const uint H3787074898 = 3787074898;
+			/// <summary>
+			/// 	Adds a division computed appearance to your transmat effects.
+			/// <para/>
+			/// 	This effect will change to reflect your current Competitive Division in Crucible.
+			/// <para/>
+			/// </summary>
+			public const uint DivisionComputed = 2448228049;
 			public const uint H2761353906 = 2761353906;
 			public const uint H4269820856 = 4269820856;
 			/// <summary>
@@ -8209,6 +8326,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Dealing damage while airborne increases this weapon's damage output.
 			/// </summary>
 			public const uint SwoopingTalons = 2112923143;
+			/// <summary>
+			/// 	Adds a resurrected shadow appearance to your transmat effects.
+			/// </summary>
+			public const uint ResurrectedShadow = 381528460;
+			/// <summary>
+			/// 	Adds an unspun fate appearance to your transmat effects.
+			/// </summary>
+			public const uint UnspunFate = 381528461;
 			/// <summary>
 			/// 	Increases the amount of Sword ammo you can carry.
 			/// </summary>
@@ -8279,9 +8404,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Solar weapon final blows grant you and your allies increased recovery for a short duration. Stacks 3 times.
 			/// <para/>
-			/// 	While Tempered Metal is active, your weapons have increased airborne effectiveness.
-			/// <para/>
-			/// 	While Ember of Tempering is active, Solar weapon final blows create a Firesprite.
+			/// 	While Ember of Tempering is active, your weapons have increased airborne effectiveness, and your Solar weapon final blows create a Firesprite.
 			/// <para/>
 			/// </summary>
 			public const uint EmberofTempering = 194233190;
@@ -8305,7 +8428,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// 	[Super Secondary]  : Teleport a short distance.
 			/// <para/>
-			/// 	[Super Primary]  : Unleash a deadly Void eruption.
+			/// 	[Super Primary]  : Unleash a deadly Void eruption. A fully charged attack makes targets volatile.
 			/// <para/>
 			/// </summary>
 			public const uint NovaWarp_1327164913 = 1327164913;
@@ -8357,6 +8480,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Vortex = 3959434990;
 			/// <summary>
+			/// 	This weapon gains bonus stability and reload speed when activating a grenade ability. Healing grenades and grenade final blows grant additional stacks of the bonus.
+			/// </summary>
+			public const uint ExplosivePact = 2120462471;
+			/// <summary>
 			/// 	Detect caches within a 30-meter range while on the Moon.
 			/// </summary>
 			public const uint MoonCacheDetector = 1739975673;
@@ -8379,7 +8506,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TraceRifleAmmoFinder_2000957916 = 2000957916;
 			public const uint H1181877335 = 1181877335;
 			/// <summary>
-			/// 	Increased Trials Rank points from reaching 3, 5, and 7 match wins on a ticket.
+			/// 	Increased reputation from match wins on a ticket.
 			/// </summary>
 			public const uint Wealth = 1551708877;
 			/// <summary>
@@ -8405,6 +8532,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	This weapon gains bonus stability, handling, and reload speed while the wielder is in motion for a short duration.
 			/// </summary>
 			public const uint PerpetualMotionEnhanced = 939129928;
+			/// <summary>
+			/// 	Collecting elemental pickups or throwing a Strand Tangle grants a longer initial period of increased damage, and an improved stacking period of increased damage.
+			/// <para/>
+			/// 	Elemental pickups include Firesprites, Void Breaches, Stasis Shards, Ionic Traces, and Strand Tangles.
+			/// <para/>
+			/// </summary>
+			public const uint CollectiveAction_4018643334 = 4018643334;
 			/// <summary>
 			/// 	Increases reload speed of Auto Rifles.
 			/// </summary>
@@ -8479,7 +8613,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	When Arc Conductor is active, shots fired have the chance to become chain lightning and return ammo.
 			/// </summary>
 			public const uint Superconductor = 3273164663;
-			public const uint Berserker_2808684870 = 2808684870;
+			public const uint Bladefury = 2808684870;
 			/// <summary>
 			/// 	Final blows of energy types matching this weapon's alignment grant increased damage for a short period of time. Light final blows boost Arc, Solar, and Void weapons. Darkness final blows boost Stasis and Strand weapons.
 			/// </summary>
@@ -8505,6 +8639,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Kills increase this weapon's damage until it is stowed or reloaded.
 			/// </summary>
 			public const uint KillingTally_4265500682 = 4265500682;
+			public const uint H1668151225 = 1668151225;
 			/// <summary>
 			/// 	Glaives get bonus reserves when picking up ammo used by that Glaive.
 			/// </summary>
@@ -8685,10 +8820,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Increased resilience when you're in a fireteam with clanmates.
 			/// </summary>
 			public const uint UnionofStrength = 2499145160;
-			/// <summary>
-			/// 	Your [Void] Void armor pieces increase your overall Power and grant bonus damage with [Void] Void weapons against combatant [Arc] Arc and [Solar] Solar shields.
-			/// </summary>
-			public const uint VoidSynergy = 1773329445;
 			public const uint H2007525796 = 2007525796;
 			/// <summary>
 			/// 	Kills reload partial mag.
@@ -8705,6 +8836,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Generate gunsmith telemetry data on Void weapon final blows.
 			/// </summary>
 			public const uint VoidAnalyzer = 461917659;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3255691015 = 3255691015;
 			/// <summary>
 			/// 	Increase XP gains by 8%.
 			/// </summary>
@@ -8782,7 +8917,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MinorModifications = 3568955685;
 			/// <summary>
-			/// 	Precision final blows from non-elemental Kinetic weapons create an explosion in the element of your subclass.
+			/// 	Precision final blows with Kinetic weapons create an explosion in the element of your subclass.
 			/// </summary>
 			public const uint CrystallineTransistor = 649172688;
 			/// <summary>
@@ -8832,6 +8967,18 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint EDZResourceDetector = 3523930524;
 			public const uint H1338903817 = 1338903817;
 			/// <summary>
+			/// 	Aiming down the sights of a Hand Cannon for a short time loads a powerful explosive payload that stuns unshielded combatants. Strong against [Stagger] Unstoppable Champions. Additionally, Hand Cannons are always overcharged when the modifier is active.
+			/// </summary>
+			public const uint UnstoppableHandCannon_2711735576 = 2711735576;
+			/// <summary>
+			/// 	Landing consecutive hits on combatants with any Scout Rifle you are wielding causes disruption, delaying ability energy regeneration and lowering their damage output. Strong against [Disruption] Overload Champions. Additionally, Scout Rifles are always overcharged when the modifier is active.
+			/// </summary>
+			public const uint OverloadScoutRifle_2711735577 = 2711735577;
+			/// <summary>
+			/// 	Your equipped Auto Rifles fire shield-piercing rounds and stun [Shield-Piercing] Barrier Champions. Additionally, Auto Rifles are always overcharged when the modifier is active.
+			/// </summary>
+			public const uint AntiBarrierAutoRifle_2711735579 = 2711735579;
+			/// <summary>
 			/// 	Generate gunsmith telemetry data on Solar weapon final blows.
 			/// </summary>
 			public const uint SolarAnalyzer = 1775402370;
@@ -8844,7 +8991,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	After a successful melee hit, this weapon gains increased damage, improved handling, and improved reload speed for a short duration—or until three shots are fired.
 			/// </summary>
 			public const uint TrenchBarrel_2701125091 = 2701125091;
+			/// <summary>
+			/// 	Uninterrupted fire from your equipped Trace Rifles causes the beam to stun combatants, delaying ability energy regeneration and lowering their damage output. Strong against [Disruption] Overload Champions. Additionally, Trace Rifles are always overcharged when the modifier is active.
+			/// </summary>
+			public const uint OverloadTraceRifles_2711735582 = 2711735582;
 			public const uint H1731666559 = 1731666559;
+			/// <summary>
+			/// 	Glaives you wield fire a powerful explosive payload that stuns unshielded combatants. Strong against [Stagger] Unstoppable Champions. Additionally, Glaives are always overcharged when the modifier is active.
+			/// </summary>
+			public const uint UnstoppableGlaive_2711735583 = 2711735583;
 			/// <summary>
 			/// 	Weapon impact causes blight.
 			/// </summary>
@@ -8990,6 +9145,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Nanoentanglement = 1213485196;
 			/// <summary>
+			/// 	Activating your class ability leaves behind a decoy woven from [Strand] Strand matter that draws the attention of nearby combatants.
+			/// <para/>
+			/// 	After taking significant damage or when combatants approach, the decoy detonates, dealing damage and releasing Threadlings that seek out and attack nearby foes.
+			/// <para/>
+			/// </summary>
+			public const uint ThreadedSpecter = 1131457603;
+			/// <summary>
 			/// 	Overpenetrating ricocheting rounds. Bonus damage on bounce.
 			/// </summary>
 			public const uint VolatileLight = 2824018793;
@@ -9021,12 +9183,41 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Gain Super energy on Sword final blows.
 			/// </summary>
 			public const uint BleedingEdge = 1056620086;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_4268710891 = 4268710891;
 			public const uint H251404775 = 251404775;
+			/// <summary>
+			/// 	Performing a finisher while you are amplified grants Amplified to nearby allies when your Arc subclass is equipped. 
+			/// <para/>
+			/// 	Performing a finisher while you have Woven Mail grants Woven Mail to nearby allies when your Strand subclass is equipped. 
+			/// <para/>
+			/// 	Performing a finisher while you have Devour grants Devour to nearby allies when your Void subclass is equipped.
+			/// <para/>
+			/// </summary>
+			public const uint SquadGoals = 4187005642;
+			/// <summary>
+			/// 	After throwing an Arc grenade, gain increased grenade recharge for a short time. Arc final blows extend the duration of this benefit.
+			/// </summary>
+			public const uint LightningStrikesTwice_4187005643 = 4187005643;
 			public const uint H2965563642 = 2965563642;
+			/// <summary>
+			/// 	Arc final blows while you are amplified summon a burst of lightning that damages and jolts targets.
+			/// </summary>
+			public const uint ShockandAwe = 4187005644;
+			/// <summary>
+			/// 	Picking up a Void Breach causes your next source of Void damage to create a large weakening pulse.
+			/// </summary>
+			public const uint Supernova = 4187005645;
 			/// <summary>
 			/// 	Adds a Black Armory theme to your transmat effects.
 			/// </summary>
 			public const uint OnlytheFinest = 3848481768;
+			/// <summary>
+			/// 	Targets affected by Strand debuffs take increased damage from Arc and Void abilities.
+			/// </summary>
+			public const uint ConductiveCosmicNeedle = 4187005647;
 			/// <summary>
 			/// 	Adds a firing synapse to your transmat effects.
 			/// </summary>
@@ -9040,9 +9231,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ThePastUnearthed = 3848481771;
 			/// <summary>
+			/// 	Stay amplified longer while your Arc subclass is equipped.
+			/// </summary>
+			public const uint AmpedUp_2482799784 = 2482799784;
+			/// <summary>
 			/// 	Greatly reduces flinching from incoming fire while aiming any Rifle-class weapon.
 			/// </summary>
 			public const uint EnhancedUnflinchingRifleAim = 2266605455;
+			/// <summary>
+			/// 	Grants bonus Arc Super damage if cast while critically wounded or while Amplified. Lasts until the end of the Super activation.
+			/// </summary>
+			public const uint ThunderousRetort_2482799785 = 2482799785;
 			/// <summary>
 			/// 	+5 Discipline ▲
 			/// </summary>
@@ -9057,6 +9256,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint StatIncrease_4175356500 = 4175356500;
 			public const uint H3593704661 = 3593704661;
 			/// <summary>
+			/// 	Increases the amount of damage dealt by unraveling a target.
+			/// </summary>
+			public const uint ImprovedUnraveling = 2482799789;
+			/// <summary>
 			/// 	Increases detonation damage as the projectile travels further before exploding.
 			/// </summary>
 			public const uint FullCourt_1552559776 = 1552559776;
@@ -9068,6 +9271,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	This perk has been deprecated and no longer functions.
 			/// </summary>
 			public const uint DeprecatedPerk_2917140422 = 2917140422;
+			/// <summary>
+			/// 	Greatly improves the benefits provided by the Unsated Hunger, Nanotech Tracer Rockets, Harmonic Resonance, and Noble Deeds traits.
+			/// </summary>
+			public const uint DeeperOrigins = 2482799790;
+			/// <summary>
+			/// 	Defeating a Void debuffed target creates a Void Breach while your Void subclass is equipped.
+			/// </summary>
+			public const uint UntotheBreach = 2482799791;
 			public const uint H858414360 = 858414360;
 			/// <summary>
 			/// 	Defeating a Taken combatant with a grenade grants Heavy ammo.
@@ -9087,7 +9298,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1880683594 = 1880683594;
 			public const uint H171400813 = 171400813;
 			/// <summary>
-			/// 	Non-lethal hits lessen charge time.
+			/// 	Hits decrease charge time.
 			/// </summary>
 			public const uint ConserveMomentum = 2070794926;
 			/// <summary>
@@ -9144,7 +9355,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Draw time substantially decreases after every precision hit for a longer duration.
 			/// </summary>
 			public const uint ArchersTempo_4111707040 = 4111707040;
-			public const uint H2518365127 = 2518365127;
 			public const uint H2981067554 = 2981067554;
 			/// <summary>
 			/// 	Overflows the magazine based on the number of rapid final blows before reloading. Improves reload.
@@ -9168,15 +9378,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Stay amplified longer.
 			/// </summary>
-			public const uint AmpedUp = 325570825;
+			public const uint AmpedUp_325570825 = 325570825;
 			/// <summary>
 			/// 	Guarding grants overshields to allies.
 			/// </summary>
 			public const uint M1RDistributionMatrix = 2981067559;
 			/// <summary>
-			/// 	Grants bonus Arc Super damage if cast while critically wounded or while amplified. Lasts until the end of the Super activation.
+			/// 	Grants bonus Arc Super damage if cast while critically wounded or while Amplified. Lasts until the end of the Super activation.
 			/// </summary>
-			public const uint ThunderousRetort = 325570826;
+			public const uint ThunderousRetort_325570826 = 325570826;
 			/// <summary>
 			/// 	[Alternate Weapon Action]  : When weapon energy is full, consume it before firing to make your next shot track targets across the ground and unleash chain lightning on impact.
 			/// </summary>
@@ -9190,7 +9400,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MedievalChampion_2300250173 = 2300250173;
 			/// <summary>
-			/// 	Overheat damage is reduced while not aiming down sights.
+			/// 	Overheat damage is reduced while not aiming down sights. While overheated, sustained fire scorches your target.
 			/// </summary>
 			public const uint HeatSink = 1208368075;
 			/// <summary>
@@ -9218,6 +9428,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Reduces melee cooldown when using your class ability.
 			/// </summary>
 			public const uint Outreach = 1430288496;
+			/// <summary>
+			/// 	Special reload and then fire to create a Grapple Tangle at the targeted point.
+			/// </summary>
+			public const uint GordianKnot = 3833900256;
 			/// <summary>
 			/// 	Gain health based on the number of hits before reloading.
 			/// </summary>
@@ -9286,6 +9500,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint ElectrostaticMind = 2395552111;
+			/// <summary>
+			/// 	Improves Glaive melee. Glaive projectile final blows cause detonations.
+			/// </summary>
+			public const uint HalberdiersReach = 226499337;
 			/// <summary>
 			/// 	Pellet final blows grant a stacking precision damage and reload speed buff. Precision hits with slugs extend the duration.
 			/// </summary>
@@ -9512,13 +9730,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Increased damage to Terrors.
 			/// </summary>
 			public const uint TerrorSlayerI = 2108957035;
-			/// <summary>
-			/// 	Power Bonus: +10[Light Level]
-			/// <para/>
-			/// 	Bonus Damage Against Non-Matching Shields: 60%
-			/// <para/>
-			/// </summary>
-			public const uint CurrentSynergyBonuses_3696111736 = 3696111736;
 			public const uint H2886665660 = 2886665660;
 			/// <summary>
 			/// 	Defeating Taken combantants has a chance to grant a small amout of Glimmer.
@@ -9852,6 +10063,13 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ColorfulMotesEffects = 3981739960;
 			public const uint H4039448491 = 4039448491;
 			/// <summary>
+			/// 	Picking up ammunition increases this weapon's flinch resistance and range, which lasts until it is fired again.
+			/// <para/>
+			/// 	Swords gain a large increase to charge rate instead.
+			/// <para/>
+			/// </summary>
+			public const uint DisasterPlan = 2029562020;
+			/// <summary>
 			/// 	Rapid Void weapon final blows create an Orb of Power.
 			/// </summary>
 			public const uint VoidSiphon = 527327057;
@@ -10020,6 +10238,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Increased XP gains and loot for you and members of your fireteam or match from strikes, public events, and the Crucible. This effect does not stack.
 			/// </summary>
 			public const uint BrightParagon_2775994369 = 2775994369;
+			/// <summary>
+			/// 	Temporarily increases reload speed after sprinting. This effect is improved when you are amplified.
+			/// </summary>
+			public const uint EddyCurrent_2202096694 = 2202096694;
 			public const uint H2761784378 = 2761784378;
 			public const uint H2761784379 = 2761784379;
 			public const uint H2474504248 = 2474504248;
@@ -10047,7 +10269,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// 	[Light Attack]  : Quickly charge forward, dealing damage to any impacted targets.
 			/// <para/>
-			/// 	[Heavy Attack] : Slam your fists to the ground, dealing damage in an area around you and leaving aftershocks in your wake. Performing a slam from the air deals additional damage.
+			/// 	[Heavy Attack] : Slam your fists to the ground, blinding targets and dealing damage in an area around you, leaving aftershocks in your wake. Performing a slam from the air deals additional damage.
 			/// <para/>
 			/// </summary>
 			public const uint FistsofHavoc_1692967798 = 1692967798;
@@ -10063,6 +10285,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Your health begins to regenerate immediately after picking up an Orb of Power.
 			/// </summary>
 			public const uint BetterAlready = 1063425490;
+			public const uint H692394115 = 692394115;
 			/// <summary>
 			/// 	Reduces incoming damage from combatants that are at long range.
 			/// </summary>
@@ -10130,6 +10353,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Picking up an Orb of Power grants your Void weapons Volatile rounds.
 			/// </summary>
 			public const uint VolatileFlow_3743286080 = 3743286080;
+			/// <summary>
+			/// 	When you redeem a Salvage Key, you have a chance to earn a Deep Dive Key.
+			/// </summary>
+			public const uint DeepSeaLocksmith = 4034340327;
 			public const uint H2004759533 = 2004759533;
 			/// <summary>
 			/// 	Second shot in burst does high damage.
@@ -10290,6 +10517,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeprecatedPerk_3875200939 = 3875200939;
 			/// <summary>
+			/// 	Temporarily increases reload speed after sprinting; increased reload speed has a longer duration. This effect is significantly improved when you are amplified.
+			/// </summary>
+			public const uint EddyCurrent_1134041288 = 1134041288;
+			/// <summary>
 			/// 	Bonus socket for stat adjustments.
 			/// </summary>
 			public const uint ArtificeArmor = 229248542;
@@ -10336,9 +10567,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IncreasedMobility = 1529763341;
 			/// <summary>
+			/// 	[Aim Down Sights]  : Raise shield
+			/// </summary>
+			public const uint RapidFireGlaive = 368160921;
+			/// <summary>
 			/// 	Generate Gunsmith telemetry data on Arc weapon kills.
 			/// </summary>
 			public const uint ImprovedArcAnalyzer = 852026130;
+			public const uint H894450189 = 894450189;
 			/// <summary>
 			/// 	A member of your fireteam has used a Scout Report, which highlights nearby loot caches on Mars for all members of the fireteam.
 			/// </summary>
@@ -10346,10 +10582,12 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3617965985 = 3617965985;
 			public const uint H3651856876 = 3651856876;
 			/// <summary>
-			/// 	Killing four or more combatants in a single volley increases the damage of the next volley.
+			/// 	Defeating 4 or more combatants in a single volley increases the damage of the next volley and refunds ammunition.
 			/// </summary>
 			public const uint AdaptiveOrdnance = 1431797640;
+			public const uint H1409009710 = 1409009710;
 			public const uint H3574046617 = 3574046617;
+			public const uint H2246450469 = 2246450469;
 			/// <summary>
 			/// 	Precision kills briefly grant bonus handling, range, and precision damage with this weapon.
 			/// </summary>
@@ -10450,6 +10688,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Each target you defeat with Stormtrance increases the damage you deal with it and refunds Super energy when Stormtrance ends.
 			/// </summary>
 			public const uint AscendingAmplitude = 3535992166;
+			/// <summary>
+			/// 	Increases Rocket Launcher ammo and reserves, but reduces damage. Blast radius and reload speed are slightly reduced.
+			/// </summary>
+			public const uint Bipod_2248062238 = 2248062238;
 			/// <summary>
 			/// 	Class abilities recharge faster when using a Solar subclass.
 			/// <para/>
@@ -10656,6 +10898,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint FontofWisdom_2506971705 = 2506971705;
 			/// <summary>
+			/// 	While sliding, activate your charged melee ability to leap into the air, knocking nearby targets away and dealing damage.
+			/// <para/>
+			/// 	While airborne, activate your charged melee again to launch a cluster of damaging, Unraveling projectiles. Repeatedly activating melee will chain additional throws.
+			/// <para/>
+			/// </summary>
+			public const uint FlechetteStorm = 3914115190;
+			/// <summary>
 			/// 	Moderately increases airborne effectiveness. Slightly increases handling.
 			/// </summary>
 			public const uint AdeptIcarusGrip = 3289622937;
@@ -10715,7 +10964,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	After any member of your fireteam disrupts a Champion, your Scout Rifles gain a temporary bonus to damage against Champions.
 			/// <para/>
 			/// </summary>
-			public const uint OverloadScoutRifle = 2391353204;
+			public const uint OverloadScoutRifle_2391353204 = 2391353204;
 			/// <summary>
 			/// 	You are in a supported Internet Game Room! While you are here, you may speak to Yuna to receive Exotic equipment.
 			/// </summary>
@@ -10779,9 +11028,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3799920400 = 3799920400;
 			public const uint H3799920401 = 3799920401;
 			public const uint H3799920402 = 3799920402;
+			public const uint H317302396 = 317302396;
 			public const uint H2317200681 = 2317200681;
 			public const uint H2944782064 = 2944782064;
-			public const uint H317302396 = 317302396;
 			/// <summary>
 			/// 	The Void rocket suppresses enemies. The Solar rocket causes damage over time.
 			/// </summary>
@@ -10827,14 +11076,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Combusts combatants with explosive slugs. Strong against  [Stagger] Unstoppable Champions.
 			/// </summary>
 			public const uint ExplosiveShadow = 1895950810;
-			/// <summary>
-			/// 	Your [Arc] Arc armor pieces increase your overall Power and grant bonus damage with [Arc] Arc weapons against combatant [Solar] Solar and [Void] Void shields.
-			/// </summary>
-			public const uint ArcSynergy_636476693 = 636476693;
-			/// <summary>
-			/// 	Your [Stasis] Stasis armor pieces increase your overall Power and grant bonus damage with Stasis weapons against combatant [Arc] Arc, [Solar] Solar, and [Void] Void shields.
-			/// </summary>
-			public const uint StasisSynergy = 41093894;
 			/// <summary>
 			/// 	+10 Range
 			/// </summary>
@@ -11038,7 +11279,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Rapidly improves accuracy and stability while continuously holding down the trigger.
 			/// </summary>
 			public const uint DynamicSwayReduction_3947648055 = 3947648055;
-			public const uint Broodweaver = 2130277063;
+			public const uint Needlestorm = 2130277063;
 			/// <summary>
 			/// 	Final blows with [Solar] Solar abilities or ignitions increase the damage of your Solar abilities. Stacks 3 times.
 			/// </summary>
@@ -11127,6 +11368,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint UNLOCKEDBYQUEST_312212167 = 312212167;
+			public const uint H101636472 = 101636472;
 			/// <summary>
 			/// 	This perk has been deprecated and no longer functions.
 			/// </summary>
@@ -11772,6 +12014,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Bastion = 357542031;
 			public const uint H2650164484 = 2650164484;
+			/// <summary>
+			/// 	First loss has been forgiven.
+			/// </summary>
+			public const uint Mercy_2493747060 = 2493747060;
 			public const uint H2650164486 = 2650164486;
 			/// <summary>
 			/// 	Fires small auto-tracking missiles.
@@ -11899,13 +12145,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WhisperofRefraction = 3852198730;
 			/// <summary>
-			/// 	Spending a Defiant Key at the end of a Season of Defiance Battleground in which you received Favors of Grace, Justice, and Zeal will award an additional Defiant Engram and War Table reputation.
-			/// </summary>
-			public const uint VestianWard = 293914947;
-			/// <summary>
 			/// 	Your Solar ignitions have increased area of effect.
 			/// </summary>
 			public const uint EmberofEruption = 295687839;
+			/// <summary>
+			/// 	Spending a Defiant Key at the end of a Season of Defiance Battleground in which you received Favors of Grace, Justice, and Zeal will award an additional Defiant Engram and War Table reputation.
+			/// </summary>
+			public const uint VestianWard = 293914947;
 			/// <summary>
 			/// 	This perk has been deprecated and no longer functions.
 			/// </summary>
@@ -12107,7 +12353,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	When your Super ends, you gain a temporary bonus to weapon damage. The duration and strength of this bonus increases based on the number of combatants you defeated with your Super.
 			/// </summary>
-			public const uint Berserker_3102055065 = 3102055065;
+			public const uint Berserker = 3102055065;
 			/// <summary>
 			/// 	This signal will draw out House Salvation techno squads hunting for Golden Age tech in the Europa Eclipsed Zone.
 			/// </summary>

@@ -17,10 +17,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SweetnessandLight = 4043054273;
 			/// <summary>
-			/// 	Speak with Zavala about the Closing Ceremony.
-			/// </summary>
-			public const uint GuardianGames_351448987 = 351448987;
-			/// <summary>
 			/// 	Find Eris Morn at the encampment in Sanctuary.
 			/// </summary>
 			public const uint LegacyShadowkeep_3742917278 = 3742917278;
@@ -33,7 +29,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BeyondLight_2099432263 = 2099432263;
 			/// <summary>
-			/// 	({var:3575677317} of 4) Complete Iron Banner matches as either Strand, Solar, or Void subclasses.
+			/// 	({var:3575677317} of 4) Complete Iron Banner matches as either Arc, Void, or Strand subclasses.
 			/// </summary>
 			public const uint IronBannerChallenge_4111516200 = 4111516200;
 			/// <summary>
@@ -48,8 +44,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Beneath Venus, evil stirs…
 			/// </summary>
 			public const uint VaultofGlass = 1888320892;
+			public const uint FishingRallyNessus = 3910722976;
 			/// <summary>
-			/// 	({var:3575677317} of 4) Complete Iron Banner matches as either Strand, Solar, or Void subclasses.
+			/// 	({var:3575677317} of 4) Complete Iron Banner matches as either Arc, Void, or Strand subclasses.
 			/// </summary>
 			public const uint IronBannerChallenge_4111516205 = 4111516205;
 			/// <summary>
@@ -57,11 +54,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Lightfall = 3947408975;
 			/// <summary>
-			/// 	({var:3575677317} of 4) Complete Iron Banner matches as either Strand, Solar, or Void subclasses.
+			/// 	({var:3575677317} of 4) Complete Iron Banner matches as either Arc, Void, or Strand subclasses.
 			/// </summary>
 			public const uint IronBannerChallenge_4111516206 = 4111516206;
 			/// <summary>
-			/// 	({var:3575677317} of 4) Complete Iron Banner matches as either Strand, Solar, or Void subclasses.
+			/// 	({var:3575677317} of 4) Complete Iron Banner matches as either Arc, Void, or Strand subclasses.
 			/// </summary>
 			public const uint IronBannerChallenge_4111516207 = 4111516207;
 			/// <summary>
@@ -80,6 +77,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the "Darkness's Doorstep" mission.
 			/// </summary>
 			public const uint BeyondLight_3765298039 = 3765298039;
+			/// <summary>
+			/// 	Increase your reward tier in Deep Dives by successfully completing encounters within the activity.
+			/// </summary>
+			public const uint Descent = 413772374;
 			/// <summary>
 			/// 	Help your clan earn rewards by completing activities as a group.
 			/// </summary>
@@ -128,6 +129,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete Bounties for the Drifter to earn Powerful Rewards.
 			/// </summary>
 			public const uint ShadySchemes = 3802603984;
+			public const uint LegacySeason20 = 937548193;
 			/// <summary>
 			/// 	Complete Dares of Eternity. Legend difficulty grants additional progress.
 			/// </summary>
@@ -145,9 +147,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ItsintheCards = 3603098564;
 			/// <summary>
+			/// 	Complete Salvage activities on Legend difficulty.
+			/// </summary>
+			public const uint SalvageLegend = 3790350713;
+			/// <summary>
 			/// 	Complete Dawning bounties.
 			/// </summary>
 			public const uint DawningDuty = 1719934518;
+			/// <summary>
+			/// 	Complete bounties from this vendor to earn powerful rewards.
+			/// </summary>
+			public const uint AquaticOperations = 3021174356;
 			/// <summary>
 			/// 	Gain reputation with Nimbus.
 			/// </summary>
@@ -157,6 +167,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WeeklyGambitChallenge = 3448738070;
 			/// <summary>
+			/// 	Answer the distress signal on Titan.
+			/// </summary>
+			public const uint BeneaththeWaves = 4142352494;
+			public const uint FishingRallyEDZ = 2727582952;
+			/// <summary>
 			/// 	Complete a round of Dares of Eternity.
 			/// </summary>
 			public const uint StrangeXûrinaStrangeLand = 3782558990;
@@ -164,6 +179,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Long live the King…
 			/// </summary>
 			public const uint KingsFall = 292102995;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified = 390471874;
 			/// <summary>
 			/// 	Speak with Saint-14 in the Tower Hangar.
 			/// </summary>
@@ -221,23 +240,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VowoftheDisciple = 2136320298;
 			/// <summary>
-			/// 	Speak with Eva Levante in the Tower Courtyard.
-			/// </summary>
-			public const uint BestinClass = 3461102764;
-			/// <summary>
-			/// 	Redeem Guardian Games Medallions for powerful rewards. 
-			/// <para/>
-			/// 	Platinum Medallions = 15 points
-			/// <para/>
-			/// 	Gold Medallions = 5 points
-			/// <para/>
-			/// 	Silver Medallions = 2 points
-			/// <para/>
-			/// 	Bronze Medallions = 1 point
-			/// <para/>
-			/// </summary>
-			public const uint MasterClass = 1864411879;
-			/// <summary>
 			/// 	Complete your Placement Series matches.
 			/// </summary>
 			public const uint Ranked3v3PlaylistChallenge_3161426499 = 3161426499;
@@ -246,6 +248,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DefyTyranny = 1610873105;
 			/// <summary>
+			/// 	Complete Salvage activities.
+			/// </summary>
+			public const uint BigHauler = 1437564680;
+			public const uint FishingRallyThroneWorld = 3146348009;
+			/// <summary>
 			/// 	Yuna from the Mugunghwa Legion wishes to meet you. Find her in the Bazaar.
 			/// </summary>
 			public const uint TheLegionsCalling = 67076417;
@@ -253,8 +260,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete bounties for the Gunsmith to earn Powerful Rewards.
 			/// </summary>
 			public const uint SpareParts = 3899487295;
-			public const uint GuardianGames_3156887289 = 3156887289;
-			public const uint GuardianGames_3156887290 = 3156887290;
 			/// <summary>
 			/// 	Rotating Weekly Dungeon Challenge.
 			/// </summary>

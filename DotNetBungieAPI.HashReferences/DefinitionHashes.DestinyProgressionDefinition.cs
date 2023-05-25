@@ -16,6 +16,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H477676543 = 477676543;
 			public const uint H1627914615 = 1627914615;
 			public const uint H2996146975 = 2996146975;
+			public const uint H2374067023 = 2374067023;
 			public const uint H1924974128 = 1924974128;
 			public const uint Prestige_1484834427 = 1484834427;
 			public const uint XP_2026300734 = 2026300734;
@@ -50,6 +51,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
 			public const uint Classified_695578353 = 695578353;
+			public const uint XP_2490545278 = 2490545278;
 			public const uint XP_243419342 = 243419342;
 			public const uint H1073478375 = 1073478375;
 			/// <summary>
@@ -109,6 +111,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ThroneWorldRank = 4203877294;
 			public const uint XP_978389300 = 978389300;
 			public const uint H4244567218 = 4244567218;
+			public const uint H3127357249 = 3127357249;
 			/// <summary>
 			/// 	Weekly Quests Available
 			/// </summary>
@@ -253,8 +256,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TrialsRank = 2755675426;
 			public const uint H2267011423 = 2267011423;
 			public const uint H3381682691 = 3381682691;
+			public const uint H1571628687 = 1571628687;
 			public const uint H2140885848 = 2140885848;
 			public const uint H1628407317 = 1628407317;
+			public const uint XP_490650039 = 490650039;
 			public const uint H1735777505 = 1735777505;
 			public const uint XP_1589343395 = 1589343395;
 			public const uint Prestige_3604626148 = 3604626148;
@@ -283,6 +288,11 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint XP_3254053314 = 3254053314;
 			public const uint Prestige_3348812525 = 3348812525;
 			public const uint XP_3320783176 = 3320783176;
+			public const uint Prestige_2197137662 = 2197137662;
+			/// <summary>
+			/// 	Complete Salvage and Deep Dive activities to increase your Sonar Station Reputation.
+			/// </summary>
+			public const uint SonarStationReputation = 495475418;
 			public const uint H2203850209 = 2203850209;
 			public const uint XP_3915124631 = 3915124631;
 			public const uint XP_1656313730 = 1656313730;

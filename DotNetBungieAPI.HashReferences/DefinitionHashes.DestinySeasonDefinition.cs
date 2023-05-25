@@ -62,16 +62,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SeasonofDefiance = 2758726568;
 			/// <summary>
-			/// 	When Savathûn's Lucent Hive threaten the source of the Guardians' power, survival depends on the fragile alliance between the Vanguard and Empress Caiatl. Wielding a spear imbued with Light-suppressing technology, the Guardian must work with Lord Saladin and Caiatl's most trusted Psion to search for secrets in the minds of the Lucent Hive and stop their ghoulish plans.
+			/// 	Delve into the depths of Titan's methane sea in search of lost technology and knowledge.
 			/// </summary>
-			public const uint SeasonofRedacted_2758726569 = 2758726569;
-			/// <summary>
-			/// 	When Savathûn's Lucent Hive threaten the source of the Guardians' power, survival depends on the fragile alliance between the Vanguard and Empress Caiatl. Wielding a spear imbued with Light-suppressing technology, the Guardian must work with Lord Saladin and Caiatl's most trusted Psion to search for secrets in the minds of the Lucent Hive and stop their ghoulish plans.
-			/// </summary>
+			public const uint SeasonoftheDeep = 2758726569;
 			public const uint SeasonofRedacted_2758726570 = 2758726570;
-			/// <summary>
-			/// 	When Savathûn's Lucent Hive threaten the source of the Guardians' power, survival depends on the fragile alliance between the Vanguard and Empress Caiatl. Wielding a spear imbued with Light-suppressing technology, the Guardian must work with Lord Saladin and Caiatl's most trusted Psion to search for secrets in the minds of the Lucent Hive and stop their ghoulish plans.
-			/// </summary>
 			public const uint SeasonofRedacted_2758726571 = 2758726571;
 			/// <summary>
 			/// 	A new season has begun! Choose what kind of Guardian you will become. Reckon with the path that lies ahead.

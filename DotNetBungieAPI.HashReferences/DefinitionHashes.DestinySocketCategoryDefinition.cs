@@ -91,16 +91,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GHOSTSHELLMODS = 3379164649;
 			/// <summary>
-			/// 	Abilities that grow your build and provide energy to Fragments.
+			/// 	Perks that modify your character's abilities and consume Aspect energy.
 			/// <para/>
-			/// 	Visit the Pouka Pond in Neomuna to unlock more of these abilities.
+			/// 	Visit the Pouka Pond in Neomuna to unlock more of these perks.
 			/// <para/>
 			/// </summary>
 			public const uint FRAGMENTS_193371309 = 193371309;
 			/// <summary>
-			/// 	Abilities that grow your build and provide energy to Fragments.
+			/// 	Perks that modify your character's abilities and consume Aspect energy.
 			/// <para/>
-			/// 	Visit the Exo Stranger on Europa to unlock more of these abilities.
+			/// 	Visit the Exo Stranger on Europa to unlock more of these perks.
 			/// <para/>
 			/// </summary>
 			public const uint FRAGMENTS_2819965312 = 2819965312;
@@ -197,7 +197,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Abilities that grow your build and provide energy to Fragments.
 			/// <para/>
-			/// 	Visit Ikora Rey in the Tower Bazaar to unlock more of these perks.
+			/// 	Visit Ikora Rey in the Tower Bazaar to unlock more of these abilities.
 			/// <para/>
 			/// </summary>
 			public const uint ASPECTS_2140934067 = 2140934067;

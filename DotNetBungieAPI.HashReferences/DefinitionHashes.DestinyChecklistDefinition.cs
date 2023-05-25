@@ -60,6 +60,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	I guess they won't be needing these anymore.
 			/// </summary>
 			public const uint AhamkaraBones = 1297424116;
+			/// <summary>
+			/// 	Find and collect all Ancient Skulls in Eternity.
+			/// </summary>
+			public const uint EternityAncientSkulls = 3595926713;
 		}
 	}
 }

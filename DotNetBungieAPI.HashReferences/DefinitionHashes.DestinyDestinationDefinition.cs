@@ -130,6 +130,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Cosmodrome = 3990611421;
 			public const uint H1585231233 = 1585231233;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified = 733383939;
 			public const uint H2039972170 = 2039972170;
 			/// <summary>
 			/// 	Dominus Ghaul's Flagship

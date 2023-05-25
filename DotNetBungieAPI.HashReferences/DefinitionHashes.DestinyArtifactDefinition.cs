@@ -5,9 +5,9 @@ namespace DotNetBungieAPI.HashReferences
 		public static class Artifacts
 		{
 			/// <summary>
-			/// 	An empowered symbol of Awoken royalty.
+			/// 	"Should be reliable, but if it stops working, you'll know almost immediately." —Deputy Commander Sloane
 			/// </summary>
-			public const uint AscendantScepter = 2894222926;
+			public const uint NPARepulsionRegulator = 2894222926;
 		}
 	}
 }

@@ -62,6 +62,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VaultofGlassTimeTrial_657921174 = 657921174;
 			/// <summary>
+			/// 	The total number of fish caught at a Season of the Deep Fishing Hole.
+			/// </summary>
+			public const uint TotalFishCaught = 24768693;
+			/// <summary>
 			/// 	Completions of the dungeon "Prophecy."
 			/// <para/>
 			/// 	Tracks from Season 11 onward.
@@ -239,6 +243,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ForgesIgnited = 2114794836;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3251969937 = 3251969937;
+			/// <summary>
 			/// 	The number of Gambit matches won this Season.
 			/// </summary>
 			public const uint Wins_3483580010 = 3483580010;
@@ -308,6 +316,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The number of Gambit matches won this week.
 			/// </summary>
 			public const uint Wins_2354466953 = 2354466953;
+			/// <summary>
+			/// 	The weight in kilograms of the largest fish caught at a Season of the Deep Fishing Pond.
+			/// </summary>
+			public const uint LargestFishCaught = 2691615711;
 			/// <summary>
 			/// 	The highest consecutive Win Streak in Trials of Osiris this week.
 			/// </summary>
@@ -460,6 +472,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint DeepStoneCryptGuidedGames = 2466440160;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2521923488 = 2521923488;
 			/// <summary>
 			/// 	The total number Flashpoint challenge completions.
 			/// <para/>
@@ -647,7 +663,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrownofSorrowCompletions = 1815425870;
 			/// <summary>
-			/// 	Flawless completions of the "Spire of the Watcher" dungeon
+			/// 	Flawless completions of the "Spire of the Watcher" dungeon.
 			/// <para/>
 			/// 	Tracks from Season 19 onward.
 			/// <para/>
@@ -946,6 +962,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SeasonoftheLostChampionsDefeated = 3523358957;
 			/// <summary>
+			/// 	The number of Deep Dive activities completed with a maximum reward tier during Season of the Deep.
+			/// </summary>
+			public const uint Season21RewardTier7DeepDives = 1547568560;
+			/// <summary>
 			/// 	The lifetime high score for "The Lightblade" in Nightfall.
 			/// </summary>
 			public const uint NightfallTheLightbladeScore = 3181525833;
@@ -960,6 +980,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Legendary Astral Alignment Completions
 			/// </summary>
 			public const uint LegendaryAstralAlignmentCompletions = 479416348;
+			/// <summary>
+			/// 	Highest Rank achieved for Season of the Deep.
+			/// <para/>
+			/// 	Tracks from Season of the Deep onward.
+			/// <para/>
+			/// </summary>
+			public const uint SeasonoftheDeepRank = 2245851614;
 			/// <summary>
 			/// 	You are in the top {var:2829645461}% of scoring for all players during the 2022 Guardian Games!
 			/// </summary>
@@ -1349,6 +1376,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VaultofGlassCarries_3269320845 = 3269320845;
 			/// <summary>
+			/// 	The total number of times positive reinforcement was given to the best boy.
+			/// </summary>
+			public const uint GoodBoyProtocol = 3131994725;
+			/// <summary>
 			/// 	Defeat an opponent who is on a streak of 20 or more.
 			/// <para/>
 			/// 	Tracks from Season 4 onward.
@@ -1388,7 +1419,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OpponentsDefeated_811894228 = 811894228;
 			/// <summary>
-			/// 	Completions of the "Spire of the Watcher" dungeon
+			/// 	Completions of the "Spire of the Watcher" dungeon.
 			/// <para/>
 			/// 	 Tracks from Season 19 onward.
 			/// <para/>
@@ -1659,12 +1690,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrownofSorrowCarries = 4154960946;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3846201365 = 3846201365;
+			/// <summary>
 			/// 	The fastest completion time for "Eater of Worlds."
 			/// <para/>
 			/// 	Tracks from Season 10 onward.
 			/// <para/>
 			/// </summary>
 			public const uint EaterofWorldsTimeTrial = 1275208010;
+			/// <summary>
+			/// 	The total number of fish caught in Fishing Ponds during Season of the Deep.
+			/// </summary>
+			public const uint Season21TotalFishCaught = 1629825403;
 			/// <summary>
 			/// 	The average number of opponents defeated per Crucible match this Season.
 			/// </summary>
@@ -1680,6 +1719,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	[Void] Void
 			/// </summary>
 			public const uint VoidFinalBlows_2327589890 = 2327589890;
+			/// <summary>
+			/// 	The weight, in kilograms, of the largest fish caught at a Fishing Pond during Season of the Deep.
+			/// </summary>
+			public const uint Season21LargestFishCaught = 600253797;
 			/// <summary>
 			/// 	Shaxx made this for you. Awarded upon earning "[Insert Medal Here]."
 			/// <para/>

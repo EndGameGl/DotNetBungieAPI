@@ -157,6 +157,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BaneoftheSwarm = 258170974;
 			/// <summary>
+			/// 	Complete Salvage and Deep Dive activities to increase your Sonar Station Reputation.
+			/// </summary>
+			public const uint NewPacificArcology = 2447662779;
+			/// <summary>
 			/// 	An elite Golden Age weaponsmith
 			/// </summary>
 			public const uint TheBlackArmory = 918027507;
