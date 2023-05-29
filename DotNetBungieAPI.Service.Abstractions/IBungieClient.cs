@@ -23,12 +23,12 @@ public interface IBungieClient : IDisposable, IAsyncDisposable
     ///     Access to OAuth2 methods
     /// </summary>
     IAuthorizationHandler Authorization { get; }
-    
+
     /// <summary>
     ///     Access to internal serializer with custom converters
     /// </summary>
     IBungieNetJsonSerializer Serializer { get; }
-    
+
     /// <summary>
     ///     Access to internal api http client
     /// </summary>
@@ -38,28 +38,61 @@ public interface IBungieClient : IDisposable, IAsyncDisposable
     ///     Access to <see cref="IDefinitionProvider"/>, which helps to retrieve definitions from external source
     /// </summary>
     IDefinitionProvider DefinitionProvider { get; }
-    
+
     /// <summary>
     ///     Access to service, which resolves when next Destiny 2 reset will occur
     /// </summary>
     IDestiny2ResetService ResetService { get; }
 
     /// <summary>
-    ///     Tries to get definition async from all available sources
+    ///     Tries to get definition from all available sources async
     /// </summary>
     /// <param name="hash"></param>
     /// <param name="locale"></param>
     /// <param name="success"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    ValueTask<bool> TryGetDefinitionAsync<T>(uint hash, BungieLocales locale, Action<T> success)
+    ValueTask<bool> TryGetDefinitionAsync<T>(
+        uint hash,
+        Action<T> success,
+        BungieLocales locale = BungieLocales.EN
+    )
         where T : IDestinyDefinition;
 
-    bool TryGetDefinition<T>(uint hash, BungieLocales locale, out T definition) where T : IDestinyDefinition;
+    /// <summary>
+    ///     Tries to get definition from all available sources
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="hash"></param>
+    /// <param name="definition"></param>
+    /// <param name="locale"></param>
+    /// <returns></returns>
+    bool TryGetDefinition<T>(uint hash, out T definition, BungieLocales locale = BungieLocales.EN)
+        where T : IDestinyDefinition;
 
-    ValueTask<bool> TryGetHistoricalStatDefinitionAsync(string key, BungieLocales locale,
-        Action<DestinyHistoricalStatsDefinition> success);
+    /// <summary>
+    ///     Tries to get DestinyHistoricalStatsDefinition from all available sources async
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="locale"></param>
+    /// <param name="success"></param>
+    /// <returns></returns>
+    ValueTask<bool> TryGetHistoricalStatDefinitionAsync(
+        string key,
+        Action<DestinyHistoricalStatsDefinition> success,
+        BungieLocales locale = BungieLocales.EN
+    );
 
-    bool TryGetHistoricalStatDefinition(string key, BungieLocales locale,
-        out DestinyHistoricalStatsDefinition definition);
+    /// <summary>
+    ///     Tries to get DestinyHistoricalStatsDefinition from all available sources
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="locale"></param>
+    /// <param name="definition"></param>
+    /// <returns></returns>
+    bool TryGetHistoricalStatDefinition(
+        string key,
+        out DestinyHistoricalStatsDefinition definition,
+        BungieLocales locale = BungieLocales.EN
+    );
 }

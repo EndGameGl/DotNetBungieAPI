@@ -17,7 +17,8 @@ public interface ISocialMethodsAccess
     /// <returns></returns>
     Task<BungieResponse<BungieFriendListResponse>> GetFriendList(
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns your friend request queue.
@@ -27,7 +28,8 @@ public interface ISocialMethodsAccess
     /// <returns></returns>
     Task<BungieResponse<BungieFriendRequestListResponse>> GetFriendRequestList(
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Requests a friend relationship with the target user. Any of the target user's linked membership ids are valid
@@ -40,7 +42,8 @@ public interface ISocialMethodsAccess
     Task<BungieResponse<bool>> IssueFriendRequest(
         string membershipId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Accepts a friend relationship with the target user. The user must be on your incoming friend request list, though
@@ -53,7 +56,8 @@ public interface ISocialMethodsAccess
     Task<BungieResponse<bool>> AcceptFriendRequest(
         string membershipId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Declines a friend relationship with the target user. The user must be on your incoming friend request list, though
@@ -66,7 +70,8 @@ public interface ISocialMethodsAccess
     Task<BungieResponse<bool>> DeclineFriendRequest(
         string membershipId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Remove a friend relationship with the target user. The user must be on your friend list, though no error will occur
@@ -79,7 +84,8 @@ public interface ISocialMethodsAccess
     Task<BungieResponse<bool>> RemoveFriend(
         string membershipId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Remove a friend relationship with the target user. The user must be on your outgoing request friend list, though no
@@ -92,7 +98,8 @@ public interface ISocialMethodsAccess
     Task<BungieResponse<bool>> RemoveFriendRequest(
         string membershipId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets the platform friend of the requested type, with additional information if they have Bungie accounts. Must have
@@ -107,5 +114,6 @@ public interface ISocialMethodsAccess
         PlatformFriendType friendPlatform,
         AuthorizationTokenData authorizationToken,
         int page = 0,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 }

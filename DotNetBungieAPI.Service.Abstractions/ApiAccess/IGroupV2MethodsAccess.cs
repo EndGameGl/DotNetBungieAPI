@@ -19,7 +19,8 @@ public interface IGroupV2MethodsAccess
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
     Task<BungieResponse<ReadOnlyDictionary<int, string>>> GetAvailableAvatars(
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns a list of all available group themes.
@@ -27,7 +28,8 @@ public interface IGroupV2MethodsAccess
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
     Task<BungieResponse<ReadOnlyCollection<GroupTheme>>> GetAvailableThemes(
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets the state of the user's clan invite preferences for a particular membership type - true if they wish to be
@@ -42,7 +44,8 @@ public interface IGroupV2MethodsAccess
     Task<BungieResponse<bool>> GetUserClanInviteSetting(
         AuthorizationTokenData authorizationToken,
         BungieMembershipType mType,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets groups recommended for you based on the groups to whom those you follow belong.
@@ -58,7 +61,8 @@ public interface IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         GroupType groupType,
         GroupDateRange createDateRange,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Search for Groups.
@@ -68,7 +72,8 @@ public interface IGroupV2MethodsAccess
     /// <returns></returns>
     Task<BungieResponse<GroupSearchResponse>> GroupSearch(
         GroupQuery query,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Get information about a specific group of the given ID.
@@ -78,7 +83,8 @@ public interface IGroupV2MethodsAccess
     /// <returns></returns>
     Task<BungieResponse<GroupResponse>> GetGroup(
         long groupId,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Get information about a specific group with the given name and type.
@@ -90,7 +96,8 @@ public interface IGroupV2MethodsAccess
     Task<BungieResponse<GroupResponse>> GetGroupByName(
         string groupName,
         GroupType groupType,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Get information about a specific group with the given name and type. The POST version.
@@ -100,7 +107,8 @@ public interface IGroupV2MethodsAccess
     /// <returns></returns>
     Task<BungieResponse<GroupResponse>> GetGroupByNameV2(
         GroupNameSearchRequest request,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets a list of available optional conversation channels and their settings.
@@ -108,9 +116,9 @@ public interface IGroupV2MethodsAccess
     /// <param name="groupId">Requested group's id.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    Task<BungieResponse<ReadOnlyCollection<GroupOptionalConversation>>> GetGroupOptionalConversations(
-        long groupId,
-        CancellationToken cancellationToken = default);
+    Task<
+        BungieResponse<ReadOnlyCollection<GroupOptionalConversation>>
+    > GetGroupOptionalConversations(long groupId, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Edit an existing group. You must have suitable permissions in the group to perform this operation. This latest
@@ -127,7 +135,8 @@ public interface IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupEditAction request,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Edit an existing group's clan banner. You must have suitable permissions in the group to perform this operation.
@@ -144,7 +153,8 @@ public interface IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         ClanBanner request,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Edit group options only available to a founder. You must have suitable permissions in the group to perform this
@@ -161,7 +171,8 @@ public interface IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupOptionsEditAction request,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Add a new optional conversation/chat channel. Requires admin permissions to the group.
@@ -177,7 +188,8 @@ public interface IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupOptionalConversationAddRequest request,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Edit the settings of an optional conversation/chat channel. Requires admin permissions to the group.
@@ -195,7 +207,8 @@ public interface IGroupV2MethodsAccess
         long groupId,
         long conversationId,
         GroupOptionalConversationEditRequest request,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Get the list of members in a given group.
@@ -214,7 +227,8 @@ public interface IGroupV2MethodsAccess
         int currentpage = 1,
         RuntimeGroupMemberType memberType = RuntimeGroupMemberType.None,
         string nameSearch = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Get the list of members in a given group who are of admin level or higher.
@@ -226,7 +240,8 @@ public interface IGroupV2MethodsAccess
     Task<BungieResponse<SearchResultOfGroupMember>> GetAdminsAndFounderOfGroup(
         long groupId,
         int currentpage = 1,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Edit the membership type of a given member. You must have suitable permissions in the group to perform this
@@ -247,7 +262,8 @@ public interface IGroupV2MethodsAccess
         long membershipId,
         BungieMembershipType membershipType,
         RuntimeGroupMemberType memberType,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Kick a member from the given group, forcing them to reapply if they wish to re-join the group. You must have
@@ -266,7 +282,8 @@ public interface IGroupV2MethodsAccess
         long groupId,
         long membershipId,
         BungieMembershipType membershipType,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Bans the requested member from the requested group for the specified period of time.
@@ -286,7 +303,8 @@ public interface IGroupV2MethodsAccess
         long membershipId,
         BungieMembershipType membershipType,
         GroupBanRequest request,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Unbans the requested member, allowing them to re-apply for membership.
@@ -304,7 +322,8 @@ public interface IGroupV2MethodsAccess
         long groupId,
         long membershipId,
         BungieMembershipType membershipType,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Get the list of banned members in a given group. Only accessible to group Admins and above. Not applicable to all
@@ -319,7 +338,8 @@ public interface IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         int currentpage = 1,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     An administrative method to allow the founder of a group or clan to give up their position to another admin
@@ -336,7 +356,8 @@ public interface IGroupV2MethodsAccess
         long groupId,
         long founderIdNew,
         BungieMembershipType membershipType,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Get the list of users who are awaiting a decision on their application to join a given group. Modified to include
@@ -351,7 +372,8 @@ public interface IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         int currentpage = 1,
-        CancellationToken token = default);
+        CancellationToken token = default
+    );
 
     /// <summary>
     ///     Get the list of users who have been invited into the group.
@@ -365,7 +387,8 @@ public interface IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         int currentpage = 1,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Approve all of the pending users for the given group.
@@ -379,7 +402,8 @@ public interface IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupApplicationRequest request,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Deny all of the pending users for the given group.
@@ -393,7 +417,8 @@ public interface IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupApplicationRequest request,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Approve all of the pending users for the given group.
@@ -407,7 +432,8 @@ public interface IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupApplicationListRequest request,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Approve the given membershipId to join the group/clan as long as they have applied.
@@ -425,7 +451,8 @@ public interface IGroupV2MethodsAccess
         long membershipId,
         BungieMembershipType membershipType,
         GroupApplicationRequest request,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Deny all of the pending users for the given group that match the passed-in.
@@ -439,7 +466,8 @@ public interface IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupApplicationListRequest request,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Get information about the groups that a given member has joined.
@@ -455,7 +483,8 @@ public interface IGroupV2MethodsAccess
         long membershipId,
         GroupsForMemberFilter filter,
         GroupType groupType,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Allows a founder to manually recover a group they can see in game but not on bungie.net
@@ -469,7 +498,8 @@ public interface IGroupV2MethodsAccess
         BungieMembershipType membershipType,
         long membershipId,
         GroupType groupType,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Get information about the groups that a given member has applied to or been invited to.
@@ -485,7 +515,8 @@ public interface IGroupV2MethodsAccess
         long membershipId,
         GroupType groupType,
         GroupsForMemberFilter filter,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Invite a user to join this group.
@@ -503,7 +534,8 @@ public interface IGroupV2MethodsAccess
         BungieMembershipType membershipType,
         long membershipId,
         GroupApplicationRequest request,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Cancels a pending invitation to join a group.
@@ -519,5 +551,6 @@ public interface IGroupV2MethodsAccess
         long groupId,
         BungieMembershipType membershipType,
         long membershipId,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 }

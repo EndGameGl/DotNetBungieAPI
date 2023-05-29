@@ -15,15 +15,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>DotNetBungieAPI.Service.Abstractions</RootNamespace>
-    <PackageVersion>2.9.1</PackageVersion>
-    <AssemblyVersion>2.9.1</AssemblyVersion>
-    <FileVersion>2.9.1</FileVersion>
+    <PackageVersion>2.10.0</PackageVersion>
+    <AssemblyVersion>2.10.0</AssemblyVersion>
+    <FileVersion>2.10.0</FileVersion>
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <LangVersion>11</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DotNetBungieAPI.Models" Version="2.9.1" />
+    <PackageReference Include="DotNetBungieAPI.Models" Version="2.10.0" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">

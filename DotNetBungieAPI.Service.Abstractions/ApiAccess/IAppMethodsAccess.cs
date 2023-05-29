@@ -16,7 +16,8 @@ public interface IAppMethodsAccess
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
     Task<BungieResponse<ReadOnlyCollection<Application>>> GetBungieApplications(
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Get API usage by application for time frame specified. You can go as far back as 30 days ago, and can ask for up to
@@ -26,6 +27,8 @@ public interface IAppMethodsAccess
     /// </summary>
     /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="applicationId">ID of the application to get usage statistics.</param>
+    /// <param name="start">Start time for query. Goes to 24 hours ago if not specified.</param>
+    /// <param name="end">End time for query. Goes to now if not specified.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
     Task<BungieResponse<ApiUsage>> GetApplicationApiUsage(
@@ -33,5 +36,6 @@ public interface IAppMethodsAccess
         int applicationId,
         DateTime? start = null,
         DateTime? end = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 }

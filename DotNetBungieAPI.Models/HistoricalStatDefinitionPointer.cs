@@ -21,7 +21,7 @@ public readonly struct HistoricalStatDefinitionPointer
     /// <summary>
     ///     Empty default <see cref="HistoricalStatDefinitionPointer" />
     /// </summary>
-    public static HistoricalStatDefinitionPointer Empty { get; } = new(null);
+    public static HistoricalStatDefinitionPointer Empty { get; } = new(null!);
 
     /// <summary>
     ///     ID of this stat definition

@@ -20,7 +20,8 @@ public interface IUserMethodsAccess
     /// <returns></returns>
     Task<BungieResponse<GeneralUser>> GetBungieNetUserById(
         long id,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets a list of all display names linked to this membership id but sanitized (profanity filtered). Obeys all visibility rules of calling user and is heavily cached.
@@ -28,9 +29,12 @@ public interface IUserMethodsAccess
     /// <param name="membershipId">The requested membership id to load.</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    Task<BungieResponse<ReadOnlyDictionary<BungieCredentialType, string>>> GetSanitizedPlatformDisplayNames(
+    Task<
+        BungieResponse<ReadOnlyDictionary<BungieCredentialType, string>>
+    > GetSanitizedPlatformDisplayNames(
         long membershipId,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns a list of credential types attached to the requested account
@@ -39,10 +43,13 @@ public interface IUserMethodsAccess
     /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    Task<BungieResponse<ReadOnlyCollection<CredentialTypeForAccount>>> GetCredentialTypesForTargetAccount(
+    Task<
+        BungieResponse<ReadOnlyCollection<CredentialTypeForAccount>>
+    > GetCredentialTypesForTargetAccount(
         long membershipId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns a list of all available user themes.
@@ -50,7 +57,8 @@ public interface IUserMethodsAccess
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
     Task<BungieResponse<ReadOnlyCollection<UserTheme>>> GetAvailableThemes(
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns a list of accounts associated with the supplied membership ID and membership type. This will include all
@@ -63,7 +71,8 @@ public interface IUserMethodsAccess
     Task<BungieResponse<UserMembershipData>> GetMembershipDataById(
         long membershipId,
         BungieMembershipType membershipType,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns a list of accounts associated with signed in user. This is useful for OAuth implementations that do not
@@ -74,8 +83,9 @@ public interface IUserMethodsAccess
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
     Task<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser(
-            AuthorizationTokenData authorizationToken,
-            CancellationToken cancellationToken = default);
+        AuthorizationTokenData authorizationToken,
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets any hard linked membership given a credential. Only works for credentials that are public (just SteamID64
@@ -88,7 +98,8 @@ public interface IUserMethodsAccess
     Task<BungieResponse<HardLinkedUserMembership>> GetMembershipFromHardLinkedCredential(
         long credential,
         BungieCredentialType credentialType = BungieCredentialType.SteamId,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Given the prefix of a global display name, returns all users who share that name.
@@ -100,5 +111,6 @@ public interface IUserMethodsAccess
     Task<BungieResponse<UserSearchResponse>> SearchByGlobalNamePost(
         UserSearchPrefixRequest request,
         int page = 0,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 }

@@ -17,7 +17,8 @@ public interface IContentMethodsAccess
     /// <returns></returns>
     Task<BungieResponse<ContentTypeDescription>> GetContentType(
         string type,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns a content item referenced by id
@@ -31,7 +32,8 @@ public interface IContentMethodsAccess
         long id,
         string locale,
         bool head = false,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns the newest item that matches a given tag and Content Type.
@@ -45,7 +47,8 @@ public interface IContentMethodsAccess
         string tag,
         string type,
         string locale,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets content based on querystring information passed in. Provides basic search and text search capabilities.
@@ -65,7 +68,8 @@ public interface IContentMethodsAccess
         string source,
         string tag,
         int currentpage = 1,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Searches for Content Items that match the given Tag and Content Type.
@@ -81,7 +85,8 @@ public interface IContentMethodsAccess
         string tag,
         string type,
         int currentpage = 1,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns a JSON string response that is the RSS feed for news articles.
@@ -95,5 +100,6 @@ public interface IContentMethodsAccess
         int pageToken,
         string? categoryFilter = null,
         bool? includeBody = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 }

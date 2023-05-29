@@ -15,8 +15,13 @@ public sealed record DestinyGuardianRankConstantsDefinition : IDestinyDefinition
     [JsonPropertyName("rankCount")]
     public int RankCount { get; init; }
 
+    [JsonPropertyName("guardianRankHashes")]
+    public ReadOnlyCollection<DefinitionHashPointer<DestinyGuardianRankDefinition>> GuardianRanks { get; init; }
+        = ReadOnlyCollections<DefinitionHashPointer<DestinyGuardianRankDefinition>>.Empty;
+
     [JsonPropertyName("rootNodeHash")]
-    public DefinitionHashPointer<DestinyPresentationNodeDefinition> RootNode { get; init; } = DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
+    public DefinitionHashPointer<DestinyPresentationNodeDefinition> RootNode { get; init; } 
+        = DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
 
     [JsonPropertyName("iconBackgrounds")]
     public DestinyGuardianRankIconBackgroundsDefinition IconBackgrounds { get; init; }
@@ -38,6 +43,7 @@ public sealed record DestinyGuardianRankConstantsDefinition : IDestinyDefinition
         return other is not null &&
                DisplayProperties.DeepEquals(other.DisplayProperties) &&
                RankCount == other.RankCount &&
+               GuardianRanks.DeepEqualsReadOnlyCollections(other.GuardianRanks) &&
                RootNode.DeepEquals(other.RootNode) &&
                IconBackgrounds.DeepEquals(other.IconBackgrounds) &&
                Blacklisted == other.Blacklisted &&

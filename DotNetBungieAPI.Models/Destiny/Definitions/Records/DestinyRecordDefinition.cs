@@ -8,7 +8,10 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Traits;
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Records;
 
 [DestinyDefinition(DefinitionsEnum.DestinyRecordDefinition)]
-public sealed record DestinyRecordDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyRecordDefinition>
+public sealed record DestinyRecordDefinition : 
+    IDestinyDefinition,
+    IDisplayProperties,
+    IDeepEquatable<DestinyRecordDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -19,7 +22,8 @@ public sealed record DestinyRecordDefinition : IDestinyDefinition, IDisplayPrope
     [JsonPropertyName("scope")]
     public DestinyScope Scope { get; init; }
 
-    [JsonPropertyName("presentationInfo")] public DestinyPresentationChildBlock PresentationInfo { get; init; }
+    [JsonPropertyName("presentationInfo")]
+    public DestinyPresentationChildBlock PresentationInfo { get; init; }
 
     [JsonPropertyName("loreHash")]
     public DefinitionHashPointer<DestinyLoreDefinition> Lore { get; init; } =
@@ -29,16 +33,29 @@ public sealed record DestinyRecordDefinition : IDestinyDefinition, IDisplayPrope
     public ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>> Objectives { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyObjectiveDefinition>>.Empty;
 
-    [JsonPropertyName("recordValueStyle")] public DestinyRecordValueStyle RecordValueStyle { get; init; }
-    [JsonPropertyName("forTitleGilding")] public bool ForTitleGilding { get; init; }
-    
+    [JsonPropertyName("recordValueStyle")]
+    public DestinyRecordValueStyle RecordValueStyle { get; init; }
+
+    [JsonPropertyName("forTitleGilding")]
+    public bool ForTitleGilding { get; init; }
+
     [JsonPropertyName("shouldShowLargeIcons")]
     public bool ShouldShowLargeIcons { get; init; }
-    [JsonPropertyName("titleInfo")] public DestinyRecordTitleBlock TitleInfo { get; init; }
-    [JsonPropertyName("completionInfo")] public DestinyRecordCompletionBlock CompletionInfo { get; init; }
-    [JsonPropertyName("stateInfo")] public SchemaRecordStateBlock StateInfo { get; init; }
-    [JsonPropertyName("requirements")] public DestinyPresentationNodeRequirementsBlock Requirements { get; init; }
-    [JsonPropertyName("expirationInfo")] public DestinyRecordExpirationBlock ExpirationInfo { get; init; }
+
+    [JsonPropertyName("titleInfo")]
+    public DestinyRecordTitleBlock TitleInfo { get; init; }
+
+    [JsonPropertyName("completionInfo")]
+    public DestinyRecordCompletionBlock CompletionInfo { get; init; }
+
+    [JsonPropertyName("stateInfo")]
+    public SchemaRecordStateBlock StateInfo { get; init; }
+
+    [JsonPropertyName("requirements")]
+    public DestinyPresentationNodeRequirementsBlock Requirements { get; init; }
+
+    [JsonPropertyName("expirationInfo")]
+    public DestinyRecordExpirationBlock ExpirationInfo { get; init; }
 
     /// <summary>
     ///     Some records have multiple 'interval' objectives, and the record may be claimed at each completed interval
@@ -55,6 +72,9 @@ public sealed record DestinyRecordDefinition : IDestinyDefinition, IDisplayPrope
     [JsonPropertyName("rewardItems")]
     public ReadOnlyCollection<DestinyItemQuantity> RewardItems { get; init; } =
         ReadOnlyCollections<DestinyItemQuantity>.Empty;
+
+    [JsonPropertyName("recordTypeName")]
+    public string RecordTypeName { get; init; }
 
     [JsonPropertyName("presentationNodeType")]
     public DestinyPresentationNodeType PresentationNodeType { get; init; }
@@ -76,34 +96,43 @@ public sealed record DestinyRecordDefinition : IDestinyDefinition, IDisplayPrope
 
     public bool DeepEquals(DestinyRecordDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               CompletionInfo.DeepEquals(other.CompletionInfo) &&
-               ExpirationInfo.DeepEquals(other.ExpirationInfo) &&
-               IntervalInfo.DeepEquals(other.IntervalInfo) &&
-               StateInfo.DeepEquals(other.StateInfo) &&
-               TitleInfo.DeepEquals(other.TitleInfo) &&
-               Objectives.DeepEqualsReadOnlyCollections(other.Objectives) &&
-               ParentNodes.DeepEqualsReadOnlyCollections(other.ParentNodes) &&
-               PresentationNodeType == other.PresentationNodeType &&
-               RecordValueStyle == other.RecordValueStyle &&
-               Requirements.DeepEquals(other.Requirements) &&
-               RewardItems.DeepEqualsReadOnlyCollections(other.RewardItems) &&
-               Scope == other.Scope &&
-               Traits.DeepEqualsReadOnlyCollections(other.Traits) &&
-               TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds) &&
-               Lore.DeepEquals(other.Lore) &&
-               PresentationInfo.DeepEquals(other.PresentationInfo) &&
-               ForTitleGilding == other.ForTitleGilding &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && CompletionInfo.DeepEquals(other.CompletionInfo)
+            && ExpirationInfo.DeepEquals(other.ExpirationInfo)
+            && IntervalInfo.DeepEquals(other.IntervalInfo)
+            && StateInfo.DeepEquals(other.StateInfo)
+            && TitleInfo.DeepEquals(other.TitleInfo)
+            && Objectives.DeepEqualsReadOnlyCollections(other.Objectives)
+            && ParentNodes.DeepEqualsReadOnlyCollections(other.ParentNodes)
+            && PresentationNodeType == other.PresentationNodeType
+            && RecordValueStyle == other.RecordValueStyle
+            && Requirements.DeepEquals(other.Requirements)
+            && RewardItems.DeepEqualsReadOnlyCollections(other.RewardItems)
+            && RecordTypeName == other.RecordTypeName
+            && Scope == other.Scope
+            && Traits.DeepEqualsReadOnlyCollections(other.Traits)
+            && TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds)
+            && Lore.DeepEquals(other.Lore)
+            && PresentationInfo.DeepEquals(other.PresentationInfo)
+            && ForTitleGilding == other.ForTitleGilding
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyRecordDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

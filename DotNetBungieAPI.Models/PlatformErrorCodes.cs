@@ -215,6 +215,7 @@ public enum PlatformErrorCodes
     MessagingSenderIsBanned = 311,
     MessagingGroupOptionalChatExceededMaximum = 312,
     PrivateMessagingRequiresDestinyMembership = 313,
+    MessagingSendDailyThrottle = 314,
     AddSurveyAnswersUnknownSqlException = 400,
     ForumBodyCannotBeEmpty = 500,
     ForumSubjectCannotBeEmptyOnTopicPost = 501,
@@ -859,7 +860,7 @@ public enum PlatformErrorCodes
     ErrorBungieBlockSelf = 3908,
     ErrorBungieFriendsListFull = 3910,
     ErrorBungieBlockListFull = 3911,
-    
+
     ErrorEgsUnknown = 4000,
     ErrorEgsBadRequest = 4001,
     ErrorEgsNotAuthorized = 4002,

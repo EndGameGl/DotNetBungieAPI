@@ -5,7 +5,8 @@ namespace DotNetBungieAPI.Models.User;
 
 public sealed record DestinyProfileUserInfoCard : UserInfoCard
 {
-    [JsonPropertyName("dateLastPlayed")] public DateTime DateLastPlayed { get; init; }
+    [JsonPropertyName("dateLastPlayed")]
+    public DateTime DateLastPlayed { get; init; }
 
     /// <summary>
     ///     If this profile is being overridden/obscured by Cross Save, this will be set to true. We will still return the

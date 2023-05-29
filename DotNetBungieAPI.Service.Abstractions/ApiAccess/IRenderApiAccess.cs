@@ -9,5 +9,6 @@ public interface IRenderApiAccess
         string gearPath,
         DestinyManifest manifest,
         string game = "destiny2",
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 }

@@ -17,4 +17,7 @@ public sealed record NewsArticleRssResponse
     
     [JsonPropertyName("CategoryFilter")]
     public string? CategoryFilter { get; init; }
+
+    [JsonPropertyName("PagerAction")]
+    public string PagerAction { get; init; }
 }

@@ -33,7 +33,8 @@ public interface IForumMethodsAccess
         int page = 0,
         string tagstring = null,
         BungieLocales[] locales = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets a listing of all topics marked as part of the core group.
@@ -51,7 +52,8 @@ public interface IForumMethodsAccess
         ForumTopicsSortEnum sort,
         int page = 0,
         BungieLocales[] locales = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns a thread of posts at the given parent, optionally returning replies to those posts as well as the original
@@ -76,7 +78,8 @@ public interface IForumMethodsAccess
         bool rootThreadMode,
         ForumTopicsSortEnum sortMode,
         bool? showbanned = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns a thread of posts starting at the topicId of the input childPostId, optionally returning replies to those
@@ -99,7 +102,8 @@ public interface IForumMethodsAccess
         bool rootThreadMode,
         ForumTopicsSortEnum sortMode,
         bool? showbanned = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns the post specified and its immediate parent.
@@ -111,7 +115,8 @@ public interface IForumMethodsAccess
     Task<BungieResponse<PostSearchResponse>> GetPostAndParent(
         long childPostId,
         bool? showbanned = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns the post specified and its immediate parent of posts that are awaiting approval.
@@ -123,7 +128,8 @@ public interface IForumMethodsAccess
     Task<BungieResponse<PostSearchResponse>> GetPostAndParentAwaitingApproval(
         long childPostId,
         bool? showbanned = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets the post Id for the given content item's comments, if it exists.
@@ -133,7 +139,8 @@ public interface IForumMethodsAccess
     /// <returns></returns>
     Task<BungieResponse<long>> GetTopicForContent(
         long contentId,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets tag suggestions based on partial text entry, matching them with other tags previously used in the forums.
@@ -143,7 +150,8 @@ public interface IForumMethodsAccess
     /// <returns></returns>
     Task<BungieResponse<ReadOnlyCollection<TagResponse>>> GetForumTagSuggestions(
         string partialtag,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets the specified forum poll.
@@ -153,7 +161,8 @@ public interface IForumMethodsAccess
     /// <returns></returns>
     Task<BungieResponse<PostSearchResponse>> GetPoll(
         long topicId,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Allows the caller to get a list of to 25 recruitment thread summary information objects.
@@ -163,5 +172,6 @@ public interface IForumMethodsAccess
     /// <returns></returns>
     Task<BungieResponse<ReadOnlyCollection<ForumRecruitmentDetail>>> GetRecruitmentThreadSummaries(
         long[] request,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 }

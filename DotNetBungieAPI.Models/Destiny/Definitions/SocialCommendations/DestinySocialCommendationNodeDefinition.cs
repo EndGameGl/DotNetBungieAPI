@@ -4,7 +4,10 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 namespace DotNetBungieAPI.Models.Destiny.Definitions.SocialCommendations;
 
 [DestinyDefinition(DefinitionsEnum.DestinySocialCommendationNodeDefinition)]
-public sealed record DestinySocialCommendationNodeDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinySocialCommendationNodeDefinition>
+public sealed record DestinySocialCommendationNodeDefinition : 
+    IDestinyDefinition,
+    IDisplayProperties,
+    IDeepEquatable<DestinySocialCommendationNodeDefinition>
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinySocialCommendationNodeDefinition;
 
@@ -17,23 +20,29 @@ public sealed record DestinySocialCommendationNodeDefinition : IDestinyDefinitio
     [JsonPropertyName("color")]
     public DestinyColor Color { get; init; }
 
+    /// <summary>
+    ///     A version of the displayProperties icon tinted with the color of this node.
+    /// </summary>
+    [JsonPropertyName("tintedIcon")]
+    public string TintedIcon { get; set; }
+
     [JsonPropertyName("parentCommendationNodeHash")]
-    public DefinitionHashPointer<DestinySocialCommendationNodeDefinition> ParentCommendationNode { get; init; }
-        = DefinitionHashPointer<DestinySocialCommendationNodeDefinition>.Empty;
+    public DefinitionHashPointer<DestinySocialCommendationNodeDefinition> ParentCommendationNode { get; init; } =
+        DefinitionHashPointer<DestinySocialCommendationNodeDefinition>.Empty;
 
     /// <summary>
     ///     A list of hashes that map to child commendation nodes. Only the root commendations node is expected to have child nodes.
     /// </summary>
     [JsonPropertyName("childCommendationNodeHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinySocialCommendationNodeDefinition>> ChildCommendationNodes { get; init; }
-        = ReadOnlyCollections<DefinitionHashPointer<DestinySocialCommendationNodeDefinition>>.Empty;
+    public ReadOnlyCollection<DefinitionHashPointer<DestinySocialCommendationNodeDefinition>> ChildCommendationNodes { get; init; } =
+        ReadOnlyCollections<DefinitionHashPointer<DestinySocialCommendationNodeDefinition>>.Empty;
 
     /// <summary>
     ///     A list of hashes that map to child commendations.
     /// </summary>
     [JsonPropertyName("childCommendationHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinySocialCommendationDefinition>> ChildCommendations { get; init; }
-        = ReadOnlyCollections<DefinitionHashPointer<DestinySocialCommendationDefinition>>.Empty;
+    public ReadOnlyCollection<DefinitionHashPointer<DestinySocialCommendationDefinition>> ChildCommendations { get; init; } =
+        ReadOnlyCollections<DefinitionHashPointer<DestinySocialCommendationDefinition>>.Empty;
 
     [JsonPropertyName("blacklisted")]
     public bool Blacklisted { get; init; }
@@ -49,15 +58,15 @@ public sealed record DestinySocialCommendationNodeDefinition : IDestinyDefinitio
 
     public bool DeepEquals(DestinySocialCommendationNodeDefinition other)
     {
-        return other is not null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               Color.DeepEquals(other.Color) &&
-               ParentCommendationNode.DeepEquals(other.ParentCommendationNode) &&
-               ChildCommendationNodes.DeepEqualsReadOnlyCollections(other.ChildCommendationNodes) &&
-               ChildCommendations.DeepEqualsReadOnlyCollections(other.ChildCommendations) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other is not null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && Color.DeepEquals(other.Color)
+            && ParentCommendationNode.DeepEquals(other.ParentCommendationNode)
+            && ChildCommendationNodes.DeepEqualsReadOnlyCollections(other.ChildCommendationNodes)
+            && ChildCommendations.DeepEqualsReadOnlyCollections(other.ChildCommendations)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 }

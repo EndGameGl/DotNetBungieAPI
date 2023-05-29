@@ -19,8 +19,9 @@ public interface ITokensMethodsAccess
     /// <returns></returns>
     Task<BungieResponse<bool>> ForceDropsRepair(
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
-    
+        CancellationToken cancellationToken = default
+    );
+
     /// <summary>
     ///     Claim a partner offer as the authenticated user.
     /// </summary>
@@ -31,7 +32,8 @@ public interface ITokensMethodsAccess
     Task<BungieResponse<bool>> ClaimPartnerOffer(
         PartnerOfferClaimRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Apply a partner offer to the targeted user. This endpoint does not claim a new offer, but any already claimed offers will be applied to the game if not already.
@@ -45,7 +47,8 @@ public interface ITokensMethodsAccess
         int partnerApplicationId,
         long targetBnetMembershipId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns the partner sku and offer history of the targeted user. Elevated permissions are required to see users that
@@ -59,11 +62,14 @@ public interface ITokensMethodsAccess
     /// <param name="cancellationToken">Cancellation token</param>
     /// <param name="authorizationToken">Auth token for respective user</param>
     /// <returns></returns>
-    Task<BungieResponse<ReadOnlyCollection<PartnerOfferSkuHistoryResponse>>> GetPartnerOfferSkuHistory(
+    Task<
+        BungieResponse<ReadOnlyCollection<PartnerOfferSkuHistoryResponse>>
+    > GetPartnerOfferSkuHistory(
         AuthorizationTokenData authorizationToken,
         int partnerApplicationId,
         long targetBnetMembershipId,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns the partner rewards history of the targeted user, both partner offers and Twitch drops.
@@ -77,7 +83,8 @@ public interface ITokensMethodsAccess
         long targetBnetMembershipId,
         int partnerApplicationId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns the bungie rewards for the targeted user.
@@ -89,7 +96,8 @@ public interface ITokensMethodsAccess
     Task<BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>> GetBungieRewardsForUser(
         long membershipId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns the bungie rewards for the targeted user when a platform membership Id and Type are used.
@@ -99,11 +107,14 @@ public interface ITokensMethodsAccess
     /// <param name="authorizationToken">Auth token for respective user</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    Task<BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>> GetBungieRewardsForPlatformUser(
+    Task<
+        BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>
+    > GetBungieRewardsForPlatformUser(
         long membershipId,
         BungieMembershipType membershipType,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns a list of the current bungie rewards
@@ -111,5 +122,6 @@ public interface ITokensMethodsAccess
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
     Task<BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>> GetBungieRewardsList(
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 }

@@ -21,7 +21,9 @@ public sealed record EmailSettingSubscriptionLocalization
     [JsonPropertyName("knownUserActionText")]
     public string KnownUserActionText { get; init; }
 
-    [JsonPropertyName("title")] public string Title { get; init; }
+    [JsonPropertyName("title")]
+    public string Title { get; init; }
 
-    [JsonPropertyName("description")] public string Description { get; init; }
+    [JsonPropertyName("description")]
+    public string Description { get; init; }
 }

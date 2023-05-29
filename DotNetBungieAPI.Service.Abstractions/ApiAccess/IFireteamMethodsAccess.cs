@@ -21,7 +21,8 @@ public interface IFireteamMethodsAccess
     Task<BungieResponse<int>> GetActivePrivateClanFireteamCount(
         AuthorizationTokenData authorizationToken,
         long groupId,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets a listing of all of this clan's fireteams that are have available slots. Caller is not checked for join
@@ -48,7 +49,8 @@ public interface IFireteamMethodsAccess
         FireteamPublicSearchOption publicOnly,
         int page = 0,
         string langFilter = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets a listing of all public fireteams starting now with open slots. Caller is not checked for join criteria so
@@ -71,7 +73,8 @@ public interface IFireteamMethodsAccess
         FireteamSlotSearch slotFilter,
         int page = 0,
         string langFilter = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets a listing of all fireteams that caller is an applicant, a member, or an alternate of.
@@ -96,7 +99,8 @@ public interface IFireteamMethodsAccess
         int page = 0,
         string langFilter = null,
         bool groupFilter = false,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets a specific fireteam.
@@ -110,5 +114,6 @@ public interface IFireteamMethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         long fireteamId,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 }

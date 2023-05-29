@@ -9,6 +9,13 @@ namespace DotNetBungieAPI.Service.Abstractions;
 /// </summary>
 public interface IDefinitionAssemblyData
 {
+    /// <summary>
+    ///     Definition use rules, keyed by definition types
+    /// </summary>
     ReadOnlyDictionary<DefinitionsEnum, DefinitionUseRule> DefinitionsToTypeMapping { get; }
+
+    /// <summary>
+    ///     Type to enum definitions mapping
+    /// </summary>
     ReadOnlyDictionary<Type, DefinitionsEnum> TypeToEnumMapping { get; }
 }

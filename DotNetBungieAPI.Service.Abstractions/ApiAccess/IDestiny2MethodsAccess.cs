@@ -27,7 +27,8 @@ public interface IDestiny2MethodsAccess
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
     Task<BungieResponse<DestinyManifest>> GetDestinyManifest(
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns the static definition of an entity of the given Type and hash identifier. Examine the API Documentation for
@@ -49,7 +50,9 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<T>> GetDestinyEntityDefinition<T>(
         DefinitionsEnum entityType,
         uint hash,
-        CancellationToken cancellationToken = default) where T : IDestinyDefinition;
+        CancellationToken cancellationToken = default
+    )
+        where T : IDestinyDefinition;
 
     /// <summary>
     ///     Returns a list of Destiny memberships given a global Bungie Display Name. This method will hide overridden
@@ -65,7 +68,8 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<ReadOnlyCollection<UserInfoCard>>> SearchDestinyPlayerByBungieName(
         BungieMembershipType membershipType,
         ExactSearchRequest request,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns a summary information about all profiles linked to the requesting membership type/membership ID that have
@@ -90,7 +94,8 @@ public interface IDestiny2MethodsAccess
         BungieMembershipType membershipType,
         long membershipId,
         bool getAllMemberships = false,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns Destiny Profile information for the supplied membership.
@@ -109,7 +114,8 @@ public interface IDestiny2MethodsAccess
         long destinyMembershipId,
         DestinyComponentType[] componentTypes,
         AuthorizationTokenData authorizationToken = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns character information for the supplied character.
@@ -130,7 +136,8 @@ public interface IDestiny2MethodsAccess
         long characterId,
         DestinyComponentType[] componentTypes,
         AuthorizationTokenData authorizationToken = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns information on the weekly clan rewards and if the clan has earned them or not. Note that this will always
@@ -141,7 +148,8 @@ public interface IDestiny2MethodsAccess
     /// <returns></returns>
     Task<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(
         long groupId,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns the dictionary of values for the Clan Banner
@@ -149,7 +157,8 @@ public interface IDestiny2MethodsAccess
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
     Task<BungieResponse<ClanBannerSource>> GetClanBannerSource(
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Retrieve the details of an instanced Destiny Item. An instanced Destiny item is one with an ItemInstanceId.
@@ -171,7 +180,8 @@ public interface IDestiny2MethodsAccess
         long itemInstanceId,
         DestinyComponentType[] componentTypes,
         AuthorizationTokenData authorizationToken = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Get currently available vendors from the list of vendors that can possibly have rotating inventory. Note that this
@@ -194,7 +204,8 @@ public interface IDestiny2MethodsAccess
         long characterId,
         DestinyComponentType[] componentTypes,
         AuthorizationTokenData authorizationToken = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Get the details of a specific Vendor.
@@ -217,7 +228,8 @@ public interface IDestiny2MethodsAccess
         uint vendorHash,
         DestinyComponentType[] componentTypes,
         AuthorizationTokenData authorizationToken = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Get items available from vendors where the vendors have items for sale that are common for everyone.
@@ -230,7 +242,8 @@ public interface IDestiny2MethodsAccess
     /// <returns></returns>
     Task<BungieResponse<DestinyPublicVendorsResponse>> GetPublicVendors(
         DestinyComponentType[] componentTypes,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Given a Presentation Node that has Collectibles as direct descendants, this will return item details about those
@@ -257,7 +270,8 @@ public interface IDestiny2MethodsAccess
         uint collectiblePresentationNodeHash,
         DestinyComponentType[] componentTypes,
         AuthorizationTokenData authorizationToken = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Transfer an item to/from your vault.
@@ -269,7 +283,8 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<int>> TransferItem(
         DestinyItemTransferRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Extract an item from the Postmaster, with whatever implications that may entail.
@@ -281,7 +296,8 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<int>> PullFromPostmaster(
         DestinyPostmasterTransferRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Equip an item.
@@ -293,7 +309,8 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<int>> EquipItem(
         DestinyItemActionRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Equip a list of items by itemInstanceIds.
@@ -305,7 +322,8 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<DestinyEquipItemResults>> EquipItems(
         DestinyItemSetActionRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Set the Lock State for an instanced item.
@@ -317,7 +335,8 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<int>> SetItemLockState(
         DestinyItemStateRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Set the Tracking State for an instanced item, if that item is a Quest or Bounty.
@@ -329,7 +348,8 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<int>> SetQuestTrackedState(
         DestinyItemStateRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Insert a plug into a socketed item.
@@ -341,7 +361,8 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlug(
         DestinyInsertPlugsActionRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Insert a 'free' plug into an item's socket. This does not require 'Advanced Write Action' authorization and is
@@ -356,7 +377,8 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlugFree(
         DestinyInsertPlugsFreeActionRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets the available post game carnage report for the activity ID.
@@ -366,7 +388,8 @@ public interface IDestiny2MethodsAccess
     /// <returns></returns>
     Task<BungieResponse<DestinyPostGameCarnageReportData>> GetPostGameCarnageReport(
         long activityId,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Report a player that you met in an activity that was engaging in ToS-violating activities. Both you and the
@@ -382,16 +405,17 @@ public interface IDestiny2MethodsAccess
         long activityId,
         DestinyReportOffensePgcrRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets historical stats definitions.
     /// </summary>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    Task<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>>>
-        GetHistoricalStatsDefinition(
-            CancellationToken cancellationToken = default);
+    Task<
+        BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>>
+    > GetHistoricalStatsDefinition(CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Gets leaderboards with the signed in user's friends and the supplied destinyMembershipId as the focus.
@@ -402,13 +426,17 @@ public interface IDestiny2MethodsAccess
     /// <param name="statid">ID of stat to return rather than returning all Leaderboard stats.</param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<BungieResponse<ReadOnlyDictionary<string, ReadOnlyDictionary<string, DestinyClanLeaderboardsResponse>>>>
-        GetClanLeaderboards(
-            long groupId,
-            int maxtop,
-            DestinyActivityModeType[] modes,
-            string statid = null,
-            CancellationToken cancellationToken = default);
+    Task<
+        BungieResponse<
+            ReadOnlyDictionary<string, ReadOnlyDictionary<string, DestinyClanLeaderboardsResponse>>
+        >
+    > GetClanLeaderboards(
+        long groupId,
+        int maxtop,
+        DestinyActivityModeType[] modes,
+        string statid = null,
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets aggregated stats for a clan using the same categories as the clan leaderboards.
@@ -420,7 +448,8 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<ReadOnlyCollection<DestinyClanAggregateStat>>> GetClanAggregateStats(
         long groupId,
         DestinyActivityModeType[] modes,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets leaderboards with the signed in user's friends and the supplied destinyMembershipId as the focus.
@@ -438,7 +467,8 @@ public interface IDestiny2MethodsAccess
         int maxtop,
         DestinyActivityModeType[] modes,
         string statid = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets a page list of Destiny items.
@@ -452,7 +482,8 @@ public interface IDestiny2MethodsAccess
         DefinitionsEnum type,
         string searchTerm,
         int page = 0,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets historical stats for indicated character.
@@ -479,7 +510,9 @@ public interface IDestiny2MethodsAccess
     /// <param name="periodType">Indicates a specific period type to return. Optional. May be: Daily, AllTime, or Activity</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
-    Task<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>>> GetHistoricalStats(
+    Task<
+        BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>>
+    > GetHistoricalStats(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
@@ -488,7 +521,8 @@ public interface IDestiny2MethodsAccess
         DestinyStatsGroupType[] groups = null,
         DestinyActivityModeType[] modes = null,
         PeriodType periodType = PeriodType.None,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets aggregate historical stats organized around each character for a given account.
@@ -505,7 +539,8 @@ public interface IDestiny2MethodsAccess
         BungieMembershipType membershipType,
         long destinyMembershipId,
         DestinyStatsGroupType[] groups = null,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets activity history stats for indicated character.
@@ -525,7 +560,8 @@ public interface IDestiny2MethodsAccess
         int count = 25,
         DestinyActivityModeType mode = DestinyActivityModeType.None,
         int page = 0,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets details about unique weapon usage, including all exotic weapons.
@@ -539,7 +575,8 @@ public interface IDestiny2MethodsAccess
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets all activities the character has participated in together with aggregate statistics for those activities.
@@ -553,7 +590,8 @@ public interface IDestiny2MethodsAccess
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets public information about currently available Milestones.
@@ -561,7 +599,8 @@ public interface IDestiny2MethodsAccess
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
     Task<BungieResponse<Dictionary<uint, DestinyPublicMilestone>>> GetPublicMilestones(
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets custom localized content for the milestone of the given hash, if it exists.
@@ -571,7 +610,8 @@ public interface IDestiny2MethodsAccess
     /// <returns></returns>
     Task<BungieResponse<DestinyMilestoneContent>> GetPublicMilestoneContent(
         uint milestoneHash,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Initialize a request to perform an advanced write action.
@@ -583,7 +623,8 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<AwaInitializeResponse>> AwaInitializeRequest(
         AwaPermissionRequested request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Provide the result of the user interaction. Called by the Bungie Destiny App to approve or reject a request.
@@ -595,7 +636,8 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<int>> AwaProvideAuthorizationResult(
         AwaUserResponse request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns the action token if user approves the request.
@@ -607,7 +649,8 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<AwaAuthorizationResult>> AwaGetActionToken(
         string correlationId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Equip a loadout. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline.
@@ -618,7 +661,8 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<int>> EquipLoadout(
         DestinyLoadoutActionRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Snapshot a loadout with the currently equipped items. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline.
@@ -629,7 +673,8 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<int>> SnapshotLoadout(
         DestinyLoadoutUpdateActionRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Update the color, icon, and name of a loadout. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline.
@@ -640,7 +685,8 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<int>> UpdateLoadoutIdentifiers(
         DestinyLoadoutUpdateActionRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Clear the identifiers and items of a loadout. You must have a valid Destiny Account, and either be in a social space, in orbit, or offline.
@@ -651,5 +697,6 @@ public interface IDestiny2MethodsAccess
     Task<BungieResponse<int>> ClearLoadout(
         DestinyLoadoutActionRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 }

@@ -29,7 +29,7 @@ public interface IAuthorizationHandler
     /// <returns>Auth token</returns>
     /// <exception cref="BungieNetAuthorizationErrorException">Thrown when failed to properly receive token from bungie.net auth endpoint</exception>
     ValueTask<AuthorizationTokenData> GetAuthTokenAsync(AuthorizationState authData);
-    
+
     /// <summary>
     ///     Renews token for given <see cref="AuthorizationTokenData"/>
     /// </summary>

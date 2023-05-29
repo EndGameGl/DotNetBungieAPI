@@ -8,5 +8,9 @@ public sealed record DestinyArtifactTierItem
     public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; init; } =
         DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
 
-    [JsonPropertyName("isActive")] public bool IsActive { get; init; }
+    [JsonPropertyName("isActive")]
+    public bool IsActive { get; init; }
+
+    [JsonPropertyName("isVisible")]
+    public bool IsVisible { get; set; }
 }

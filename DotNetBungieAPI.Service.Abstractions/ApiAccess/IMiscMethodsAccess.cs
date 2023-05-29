@@ -11,7 +11,8 @@ public interface IMiscMethodsAccess
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
     Task<BungieResponse<Dictionary<string, string>>> GetAvailableLocales(
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Get the common settings used by the Bungie.Net environment.
@@ -19,7 +20,8 @@ public interface IMiscMethodsAccess
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
     Task<BungieResponse<CoreSettingsConfiguration>> GetCommonSettings(
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Get the user-specific system overrides that should be respected alongside common systems.
@@ -27,7 +29,8 @@ public interface IMiscMethodsAccess
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
     Task<BungieResponse<Dictionary<string, CoreSystem>>> GetUserSystemOverrides(
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Gets any active global alert for display in the forum banners, help pages, etc. Usually used for DOC alerts.
@@ -37,5 +40,6 @@ public interface IMiscMethodsAccess
     /// <returns></returns>
     Task<BungieResponse<GlobalAlert[]>> GetGlobalAlerts(
         bool includestreaming = false,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 }

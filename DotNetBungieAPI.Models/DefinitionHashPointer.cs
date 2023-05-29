@@ -7,8 +7,10 @@ namespace DotNetBungieAPI.Models;
 ///     Class that points to a certain definition in database
 /// </summary>
 /// <typeparam name="TDefinition">Destiny definition type</typeparam>
+#if DEBUG
 [DebuggerDisplay("{DebuggerDisplay}")]
-public readonly struct DefinitionHashPointer<TDefinition> :
+#endif
+public readonly struct DefinitionHashPointer<TDefinition> : 
     IDeepEquatable<DefinitionHashPointer<TDefinition>>,
     IEquatable<DefinitionHashPointer<TDefinition>> where TDefinition : IDestinyDefinition
 {
@@ -41,8 +43,7 @@ public readonly struct DefinitionHashPointer<TDefinition> :
     /// <returns></returns>
     public override bool Equals(object obj)
     {
-        return obj is DefinitionHashPointer<TDefinition> objPointer &&
-               Equals(objPointer);
+        return obj is DefinitionHashPointer<TDefinition> objPointer && Equals(objPointer);
     }
 
     /// <summary>
@@ -57,7 +58,8 @@ public readonly struct DefinitionHashPointer<TDefinition> :
     /// <summary>
     ///     Definition enum value
     /// </summary>
-    public static DefinitionsEnum EnumValue { get; } = Enum.Parse<DefinitionsEnum>(typeof(TDefinition).Name);
+    public static DefinitionsEnum EnumValue { get; } =
+        Enum.Parse<DefinitionsEnum>(typeof(TDefinition).Name);
 
     /// <summary>
     ///     Empty pointer
@@ -105,8 +107,7 @@ public readonly struct DefinitionHashPointer<TDefinition> :
     /// <returns></returns>
     public bool DeepEquals(DefinitionHashPointer<TDefinition> other)
     {
-        return Hash == other.Hash &&
-               DefinitionEnumType == other.DefinitionEnumType;
+        return Hash == other.Hash && DefinitionEnumType == other.DefinitionEnumType;
     }
 
     /// <summary>
@@ -131,12 +132,18 @@ public readonly struct DefinitionHashPointer<TDefinition> :
         return !(a == hash);
     }
 
-    public static bool operator ==(DefinitionHashPointer<TDefinition> a, DefinitionHashPointer<TDefinition> b)
+    public static bool operator ==(
+        DefinitionHashPointer<TDefinition> a,
+        DefinitionHashPointer<TDefinition> b
+    )
     {
         return a.Hash == b.Hash;
     }
 
-    public static bool operator !=(DefinitionHashPointer<TDefinition> a, DefinitionHashPointer<TDefinition> b)
+    public static bool operator !=(
+        DefinitionHashPointer<TDefinition> a,
+        DefinitionHashPointer<TDefinition> b
+    )
     {
         return !(a == b);
     }

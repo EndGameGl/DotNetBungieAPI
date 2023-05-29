@@ -66,6 +66,9 @@ public interface IBungieApiAccess
     ///     Access to unclassified endpoints
     /// </summary>
     IMiscMethodsAccess Misc { get; }
-    
+
+    /// <summary>
+    ///     Unfinished api to get data related to rendering
+    /// </summary>
     IRenderApiAccess RenderApi { get; }
 }

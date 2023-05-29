@@ -16,7 +16,8 @@ public interface ITrendingMethodsAccess
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
     Task<BungieResponse<TrendingCategories>> GetTrendingCategories(
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns paginated lists of trending items for a category.
@@ -28,7 +29,8 @@ public interface ITrendingMethodsAccess
     Task<BungieResponse<SearchResultOfTrendingEntry>> GetTrendingCategory(
         string categoryId,
         int pageNumber = 0,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 
     /// <summary>
     ///     Returns the detailed results for a specific trending entry. Note that trending entries are uniquely identified by a
@@ -42,5 +44,6 @@ public interface ITrendingMethodsAccess
     Task<BungieResponse<TrendingDetail>> GetTrendingEntryDetail(
         TrendingEntryType trendingEntryType,
         string identifier,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 }

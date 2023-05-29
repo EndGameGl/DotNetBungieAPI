@@ -15,11 +15,12 @@ public interface ICommunityContentMethodsAccess
     /// <param name="sort">The sort mode.</param>
     /// <param name="mediaFilter">The type of media to get</param>
     /// <param name="page">Zero based page</param>
-    /// <param name="cancellationToken"></param>
+    /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
     Task<BungieResponse<PostSearchResponse>> GetCommunityContent(
         ForumTopicsSortEnum sort,
         ForumMediaType mediaFilter,
         int page = 0,
-        CancellationToken cancellationToken = default);
+        CancellationToken cancellationToken = default
+    );
 }
