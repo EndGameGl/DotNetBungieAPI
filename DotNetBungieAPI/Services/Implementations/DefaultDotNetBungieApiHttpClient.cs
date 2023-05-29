@@ -27,8 +27,7 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
 
     private readonly HttpClient _httpClient;
 
-    private readonly MediaTypeWithQualityHeaderValue _jsonHeaderValue =
-        new("application/json");
+    private readonly MediaTypeWithQualityHeaderValue _jsonHeaderValue = new("application/json");
 
     private readonly ILogger<DefaultDotNetBungieApiHttpClient> _logger;
     private readonly IBungieNetJsonSerializer _serializer;
@@ -38,7 +37,8 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         IBungieClientConfiguration configuration,
         DotNetBungieApiHttpClientConfiguration httpClientConfiguration,
         ILogger<DefaultDotNetBungieApiHttpClient> logger,
-        IBungieNetJsonSerializer serializer)
+        IBungieNetJsonSerializer serializer
+    )
     {
         _configuration = configuration;
         _logger = logger;
@@ -52,10 +52,11 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
             httpClientConfiguration.RateLimitPerInterval,
             httpClientConfiguration.RateLimitInterval,
             httpClientConfiguration.MaxRequestsPerSecond,
-            httpClientConfiguration.MaxConcurrentRequestsAtOnce);
+            httpClientConfiguration.MaxConcurrentRequestsAtOnce
+        );
     }
 
-    public async ValueTask<AuthorizationTokenData> GetAuthorizationToken(string code)
+    public async Task<AuthorizationTokenData> GetAuthorizationToken(string code)
     {
         var encodedContentPairs = new List<KeyValuePair<string, string>>
         {
@@ -65,9 +66,9 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         };
 
         if (!string.IsNullOrEmpty(_configuration.ClientSecret))
-            encodedContentPairs.Add(new KeyValuePair<string, string>(
-                "client_secret",
-                _configuration.ClientSecret));
+            encodedContentPairs.Add(
+                new KeyValuePair<string, string>("client_secret", _configuration.ClientSecret)
+            );
 
         var requestMessage = new HttpRequestMessage
         {
@@ -84,15 +85,19 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         if (response.IsSuccessStatusCode)
         {
             var responseContentStream = await response.Content.ReadAsStreamAsync();
-            return await _serializer.DeserializeAsync<AuthorizationTokenData>(responseContentStream);
+            return await _serializer.DeserializeAsync<AuthorizationTokenData>(
+                responseContentStream
+            );
         }
-        
+
         var responseBody = await response.Content.ReadAsStringAsync();
         var parsedResponse = _serializer.Deserialize<AuthorizationResponseError>(responseBody);
         throw new BungieNetAuthorizationErrorException(parsedResponse, responseBody);
     }
 
-    public async ValueTask<AuthorizationTokenData> RenewAuthorizationToken(AuthorizationTokenData oldToken)
+    public async Task<AuthorizationTokenData> RenewAuthorizationToken(
+        AuthorizationTokenData oldToken
+    )
     {
         if (oldToken.DidRefreshExpired)
             throw new ReauthRequiredException(oldToken.MembershipId);
@@ -105,9 +110,9 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         };
 
         if (!string.IsNullOrEmpty(_configuration.ClientSecret))
-            encodedContentPairs.Add(new KeyValuePair<string, string>(
-                "client_secret",
-                _configuration.ClientSecret));
+            encodedContentPairs.Add(
+                new KeyValuePair<string, string>("client_secret", _configuration.ClientSecret)
+            );
 
         var requestMessage = new HttpRequestMessage
         {
@@ -124,7 +129,9 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         if (response.IsSuccessStatusCode)
         {
             var responseContentStream = await response.Content.ReadAsStreamAsync();
-            return await _serializer.DeserializeAsync<AuthorizationTokenData>(responseContentStream);
+            return await _serializer.DeserializeAsync<AuthorizationTokenData>(
+                responseContentStream
+            );
         }
 
         var responseBody = await response.Content.ReadAsStringAsync();
@@ -143,7 +150,7 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
     /// </summary>
     /// <param name="url"></param>
     /// <returns></returns>
-    public async ValueTask<string> DownloadJsonDataFromCdnAsync(string url)
+    public async Task<string> DownloadJsonDataFromCdnAsync(string url)
     {
         var message = CreateGetMessage(CdnEndpoint + url, true);
         var response = await SendAsyncInternal(message);
@@ -152,17 +159,22 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         throw new Exception(response.ReasonPhrase);
     }
 
-    public async Task DownloadFileStreamFromCdnAsync(string query, string savePath)
+    public async Task DownloadFileFromCdnAsync(string query, string savePath)
     {
-        using var response =
-            await _httpClient.GetAsync(CdnEndpoint + query, HttpCompletionOption.ResponseHeadersRead);
+        using var response = await _httpClient.GetAsync(
+            CdnEndpoint + query,
+            HttpCompletionOption.ResponseHeadersRead
+        );
         await using var stream = await response.Content.ReadAsStreamAsync();
         await using Stream streamToWriteTo = File.Open(savePath, FileMode.Create);
         await stream.CopyToAsync(streamToWriteTo);
     }
 
-    public async ValueTask<BungieResponse<T>> GetFromBungieNetPlatform<T>(string query, CancellationToken token,
-        string authToken = null)
+    public async Task<BungieResponse<T>> GetFromBungieNetPlatform<T>(
+        string query,
+        CancellationToken token,
+        string? authToken = null
+    )
     {
         var finalQuery = StringBuilderPool
             .GetBuilder(token)
@@ -171,14 +183,22 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
             .Build();
         _logger.LogDebug("Calling api: {FinalQuery}", finalQuery);
         using var request = CreateGetMessage(finalQuery, false, authToken);
-        using var response = await SendAsyncInternal(request, HttpCompletionOption.ResponseHeadersRead, token);
+        using var response = await SendAsyncInternal(
+            request,
+            HttpCompletionOption.ResponseHeadersRead,
+            token
+        );
         await using var stream = await response.Content.ReadAsStreamAsync(token);
         var bungieResponse = await _serializer.DeserializeAsync<BungieResponse<T>>(stream);
         return bungieResponse;
     }
 
-    public async ValueTask<BungieResponse<T>> PostToBungieNetPlatform<T>(string query, CancellationToken token,
-        Stream content = null, string authToken = null)
+    public async Task<BungieResponse<T>> PostToBungieNetPlatform<T>(
+        string query,
+        CancellationToken token,
+        Stream? content = null,
+        string? authToken = null
+    )
     {
         var finalQuery = StringBuilderPool
             .GetBuilder(token)
@@ -187,14 +207,21 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
             .Build();
         _logger.LogDebug("Calling api: {FinalQuery}", finalQuery);
         using var request = CreatePostMessage(finalQuery, authToken, content);
-        using var response = await SendAsyncInternal(request, HttpCompletionOption.ResponseHeadersRead, token);
+        using var response = await SendAsyncInternal(
+            request,
+            HttpCompletionOption.ResponseHeadersRead,
+            token
+        );
         await using var stream = await response.Content.ReadAsStreamAsync(token);
         var bungieResponse = await _serializer.DeserializeAsync<BungieResponse<T>>(stream);
         return bungieResponse;
     }
 
-    public async ValueTask<BungieResponse<T>> GetFromBungieNetStatsPlatform<T>(string query,
-        CancellationToken token, string authToken = null)
+    public async Task<BungieResponse<T>> GetFromBungieNetStatsPlatform<T>(
+        string query,
+        CancellationToken token,
+        string? authToken = null
+    )
     {
         var finalQuery = StringBuilderPool
             .GetBuilder(token)
@@ -203,31 +230,41 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
             .Build();
         _logger.LogDebug("Calling api: {FinalQuery}", finalQuery);
         using var request = CreateGetMessage(finalQuery, false, authToken);
-        using var response = await SendAsyncInternal(request, HttpCompletionOption.ResponseHeadersRead, token);
+        using var response = await SendAsyncInternal(
+            request,
+            HttpCompletionOption.ResponseHeadersRead,
+            token
+        );
         await using var stream = await response.Content.ReadAsStreamAsync(token);
         var bungieResponse = await _serializer.DeserializeAsync<BungieResponse<T>>(stream);
         return bungieResponse;
     }
 
-    public async ValueTask<(Stream ContentStream, long? TotalLength)> GetStreamFromWebSourceAsync(string path)
+    public async Task<(Stream ContentStream, long? TotalLength)> GetStreamFromWebSourceAsync(
+        string path
+    )
     {
         var request = new HttpRequestMessage(HttpMethod.Get, CdnEndpoint + path);
-        var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
+        var response = await _httpClient.SendAsync(
+            request,
+            HttpCompletionOption.ResponseHeadersRead
+        );
         return (await response.Content.ReadAsStreamAsync(), response.Content.Headers.ContentLength);
     }
 
-    private async Task<HttpResponseMessage> SendAsyncInternal(
-        HttpRequestMessage requestMessage)
+    private async Task<HttpResponseMessage> SendAsyncInternal(HttpRequestMessage requestMessage)
     {
         return await _apiRateLimiter.WaitAndRunAsync(
             async (ct) => await _httpClient.SendAsync(requestMessage, ct),
-            default);
+            default
+        );
     }
 
     private async Task<HttpResponseMessage> SendAsyncInternal(
         HttpRequestMessage requestMessage,
         HttpCompletionOption httpCompletionOption,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken
+    )
     {
         return await _apiRateLimiter.WaitAndRunAsync(
             async (ct) =>
@@ -235,13 +272,21 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
                 var localRequestSw = Stopwatch.StartNew();
                 var resp = await _httpClient.SendAsync(requestMessage, httpCompletionOption, ct);
                 localRequestSw.Stop();
-                _logger.LogDebug("Executed request in {Time}s", (double)localRequestSw.ElapsedMilliseconds / 1000);
+                _logger.LogDebug(
+                    "Executed request in {Time}s",
+                    (double)localRequestSw.ElapsedMilliseconds / 1000
+                );
                 return resp;
             },
-            cancellationToken);
+            cancellationToken
+        );
     }
 
-    private HttpRequestMessage CreateGetMessage(string uri, bool omitApiKey = false, string authToken = null)
+    private HttpRequestMessage CreateGetMessage(
+        string uri,
+        bool omitApiKey = false,
+        string? authToken = null
+    )
     {
         var requestMessage = new HttpRequestMessage
         {
@@ -251,14 +296,20 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
 
         requestMessage.Headers.Accept.Add(_jsonHeaderValue);
         if (omitApiKey == false)
-            requestMessage.Headers.TryAddWithoutValidation(ApiKeyHeader,
-                _configuration.ApiKey);
+            requestMessage.Headers.TryAddWithoutValidation(ApiKeyHeader, _configuration.ApiKey);
         if (!string.IsNullOrEmpty(authToken))
-            requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+            requestMessage.Headers.Authorization = new AuthenticationHeaderValue(
+                "Bearer",
+                authToken
+            );
         return requestMessage;
     }
 
-    private HttpRequestMessage CreatePostMessage(string uri, string authToken = null, Stream content = null)
+    private HttpRequestMessage CreatePostMessage(
+        string uri,
+        string? authToken = null,
+        Stream? content = null
+    )
     {
         var requestMessage = new HttpRequestMessage
         {
@@ -270,7 +321,10 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         requestMessage.Headers.TryAddWithoutValidation(ApiKeyHeader, _configuration.ApiKey);
 
         if (!string.IsNullOrEmpty(authToken))
-            requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+            requestMessage.Headers.Authorization = new AuthenticationHeaderValue(
+                "Bearer",
+                authToken
+            );
 
         if (content is null)
             return requestMessage;

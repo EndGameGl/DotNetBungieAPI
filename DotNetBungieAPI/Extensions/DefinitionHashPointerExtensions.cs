@@ -20,35 +20,35 @@ public static class DefinitionHashPointerExtensions
     /// <returns></returns>
     public static bool TryGetDefinition<TDefinition>(
         this DefinitionHashPointer<TDefinition> pointer,
-        out TDefinition definition,
+        out TDefinition? definition,
         BungieLocales locale = BungieLocales.EN) where TDefinition : IDestinyDefinition
     {
-        return BungieClient.Instance.TryGetDefinition(pointer.Hash.GetValueOrDefault(), locale, out definition);
+        return BungieClient.Instance.TryGetDefinition(pointer.Hash.GetValueOrDefault(), out definition, locale);
     }
 
     public static async ValueTask<bool> TryGetDefinitionAsync<TDefinition>(
         this DefinitionHashPointer<TDefinition> pointer,
-        Action<TDefinition> onSuccess,
+        Action<TDefinition?> onSuccess,
         BungieLocales locale = BungieLocales.EN) where TDefinition : IDestinyDefinition
     {
         return await BungieClient.Instance.TryGetDefinitionAsync(
             pointer.Hash.GetValueOrDefault(),
-            locale,
-            onSuccess);
+            onSuccess,
+            locale);
     }
 
-    public static TDefinition GetValueOrNull<TDefinition>(
+    public static TDefinition? GetValueOrNull<TDefinition>(
         this DefinitionHashPointer<TDefinition> pointer,
         BungieLocales locale = BungieLocales.EN) where TDefinition : IDestinyDefinition
     {
         return pointer.TryGetDefinition(out var definition, locale) ? definition : default;
     }
 
-    public static async ValueTask<TDefinition> GetValueOrNullAsync<TDefinition>(
+    public static async ValueTask<TDefinition?> GetValueOrNullAsync<TDefinition>(
         this DefinitionHashPointer<TDefinition> pointer,
         BungieLocales locale = BungieLocales.EN) where TDefinition : IDestinyDefinition
     {
-        TDefinition definition = default;
+        TDefinition? definition = default;
 
         if (await pointer.TryGetDefinitionAsync(def => definition = def, locale))
         {
@@ -60,7 +60,7 @@ public static class DefinitionHashPointerExtensions
 
     public static bool Is<TDefinition>(
         this DefinitionHashPointer<TDefinition> pointer,
-        Func<TDefinition, bool> predicate,
+        Func<TDefinition?, bool> predicate,
         BungieLocales locale = BungieLocales.EN) where TDefinition : IDestinyDefinition
     {
         return pointer.TryGetDefinition(out var definition, locale) && predicate(definition);

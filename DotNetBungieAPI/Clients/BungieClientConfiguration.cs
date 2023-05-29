@@ -67,4 +67,6 @@ public sealed class BungieClientConfiguration : IBungieClientConfiguration
     {
         return ApplicationScopes.HasFlag(applicationScope);
     }
+
+    public bool TryFetchDefinitionsFromProvider { get; set; }
 }

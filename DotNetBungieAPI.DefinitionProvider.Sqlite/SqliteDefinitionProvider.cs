@@ -23,18 +23,16 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
     private const string SelectDefinitionQuery = "SELECT json FROM {0} WHERE id = {1}";
     private const string SelectHistoricalDefinitionQuery = "SELECT json FROM {0} WHERE key = '{1}'";
     private const string SelectAllDefinitionsQuery = "SELECT json FROM {0}";
-
-    private const string SelectDestinyGearAssetDefinition =
-        "SELECT json FROM DestinyGearAssetsDefinition WHERE id = {0}";
-
+    private const string SelectDestinyGearAssetDefinition =  "SELECT json FROM DestinyGearAssetsDefinition WHERE id = {0}";
     private const string ConnectionStringTemplate = "Data Source={0};";
-    private readonly IDefinitionAssemblyData _assemblyData;
 
+    private readonly IDefinitionAssemblyData _assemblyData;
     private readonly IBungieClientConfiguration _bungieClientConfiguration;
     private readonly SqliteDefinitionProviderConfiguration _configuration;
     private readonly IDestiny2MethodsAccess _destiny2MethodsAccess;
     private readonly IDotNetBungieApiHttpClient _httpClient;
     private readonly ILogger<SqliteDefinitionProvider> _logger;
+    private readonly IBungieNetJsonSerializer _serializer;
 
     private readonly DefinitionsEnum[] _sqliteDefinitionsBlacklist =
     {
@@ -43,8 +41,6 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         DefinitionsEnum.DestinyHistoricalStatsDefinition,
         DefinitionsEnum.DestinyEnemyRaceDefinition
     };
-
-    private readonly IBungieNetJsonSerializer _serializer;
 
     private DestinyManifest _currentManifest;
 
@@ -98,7 +94,7 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public ValueTask<T> LoadDefinition<T>(
+    public ValueTask<T?> LoadDefinition<T>(
         uint hash,
         BungieLocales locale) where T : IDestinyDefinition
     {
@@ -109,8 +105,7 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         {
             CommandType = CommandType.Text,
             Connection = connection,
-            CommandText =
-                $"SELECT json FROM {DefinitionHashPointer<T>.EnumValue.ToStringFast()} WHERE id = {hash.ToInt32()}"
+            CommandText = $"SELECT json FROM {DefinitionHashPointer<T>.EnumValue.ToStringFast()} WHERE id = {hash.ToInt32()}"
         };
 
         using var reader = commandObj.ExecuteReader();
@@ -122,13 +117,14 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         }
         else
         {
-            throw new Exception($"Definition with hash {hash} wasn't found in database.");
+            _logger.LogDebug("Definition {Type} with hash {Hash} wasn't found in database", DefinitionHashPointer<T>.EnumValue.ToStringFast(), hash);
+            return ValueTask.FromResult<T?>(default);
         }
 
-        return ValueTask.FromResult(result);
+        return ValueTask.FromResult<T?>(result);
     }
 
-    public ValueTask<DestinyHistoricalStatsDefinition> LoadHistoricalStatsDefinition(
+    public ValueTask<DestinyHistoricalStatsDefinition?> LoadHistoricalStatsDefinition(
         string id,
         BungieLocales locale)
     {
@@ -147,10 +143,11 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         }
         else
         {
-            throw new Exception($"Historical definition with key {id} wasn't found in database.");
+            _logger.LogDebug("Definition {Type} with id {Id} wasn't found in database", nameof(DestinyHistoricalStatsDefinition), id);
+            return ValueTask.FromResult<DestinyHistoricalStatsDefinition?>(null);
         }
 
-        return ValueTask.FromResult(result);
+        return ValueTask.FromResult<DestinyHistoricalStatsDefinition?>(result);
     }
 
     public ValueTask<string> ReadDefinitionRaw(
@@ -217,24 +214,7 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
 
         var versions = Directory.EnumerateDirectories(_configuration.ManifestFolderPath);
         var values = new ConcurrentDictionary<string, DestinyManifest>();
-#if NET5_0
-        Parallel.ForEach(versions, version =>
-        {
-            var files = Directory.EnumerateFiles(
-                version,
-                "Manifest.json",
-                SearchOption.TopDirectoryOnly);
-            var manifestPath = files.FirstOrDefault();
-            if (manifestPath == null)
-                return;
-            _logger.LogInformation("Found manifest at: {ManifestPath}", manifestPath);
-            var json = File.ReadAllText(manifestPath);
-            var folderManifest = _serializer.Deserialize<DestinyManifest>(json);
-            values.TryAdd(version, folderManifest);
-        });
-#endif
 
-#if NET6_0_OR_GREATER
         await Parallel.ForEachAsync(versions, async (version, cancellationToken) =>
         {
             var files = Directory.EnumerateFiles(
@@ -251,7 +231,7 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
             var folderManifest = await _serializer.DeserializeAsync<DestinyManifest>(fileStream);
             values.TryAdd(version, folderManifest);
         });
-#endif
+
         return values.Select(x => x.Value);
     }
 
@@ -478,7 +458,7 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
                         var parsedDefinition = (IDestinyDefinition)_serializer.Deserialize(
                             reader.GetFieldValue<byte[]>(0),
                             runtimeType);
-                        repository.AddDefinition(locale, parsedDefinition);
+                        repository.AddDefinition(parsedDefinition, locale);
                     }
                 }
                 catch (SqliteException sqliteException) when (sqliteException.ErrorCode is 1)
@@ -501,7 +481,7 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
             {
                 var parsedDefinition = _serializer.Deserialize<DestinyHistoricalStatsDefinition>(
                     histReader.GetFieldValue<byte[]>(0));
-                repository.AddDestinyHistoricalDefinition(locale, parsedDefinition);
+                repository.AddDestinyHistoricalDefinition(parsedDefinition, locale);
             }
         }
 

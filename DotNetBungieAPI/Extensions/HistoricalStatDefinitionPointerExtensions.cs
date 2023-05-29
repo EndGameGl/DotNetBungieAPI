@@ -11,6 +11,6 @@ public static class HistoricalStatDefinitionPointerExtensions
         BungieLocales locale = BungieLocales.EN)
     {
         definition = default;
-        return BungieClient.Instance.TryGetHistoricalStatDefinition(definition!.StatId, locale, out definition);
+        return BungieClient.Instance.TryGetHistoricalStatDefinition(definition!.StatId, out definition, locale);
     }
 }
