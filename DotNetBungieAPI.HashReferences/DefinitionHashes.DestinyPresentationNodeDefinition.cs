@@ -128,10 +128,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint HardysChosenSuit = 2678302050;
 			public const uint Badges = 498211331;
 			public const uint WinterhartSuit_2678302051 = 2678302051;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_963851831 = 963851831;
+			public const uint Titan_963851831 = 963851831;
 			public const uint TheWitchQueen_882064875 = 882064875;
 			public const uint Warlock_1584294968 = 1584294968;
 			public const uint DragonflyRegaliaSuit_2678302056 = 2678302056;
@@ -811,9 +808,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LastWish_1486062207 = 1486062207;
 			public const uint OptimacySuit_2946324357 = 2946324357;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Trophies from the "Ghosts of the Deep" dungeon.
 			/// </summary>
-			public const uint Classified_164858691 = 164858691;
+			public const uint DungeonGhostsoftheDeep = 164858691;
 			public const uint IntrepidExploitSuit = 2946324358;
 			public const uint LightSubclasses = 2125973956;
 			public const uint Dust = 1826415049;
@@ -890,10 +887,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Exploration_2832559544 = 2832559544;
 			public const uint SimulatorSuit_1368351332 = 1368351332;
 			public const uint WarSimulatorOrnament_1368351333 = 1368351333;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1662923968 = 1662923968;
+			public const uint TakenKingSuit_1662923968 = 1662923968;
 			public const uint SuperiorsVisionOrnament_1368351334 = 1368351334;
 			/// <summary>
 			/// 	Trials of Osiris Metrics
@@ -932,9 +926,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint FrostveilSuit = 2557471214;
 			public const uint VanguardDareSuit = 2557471215;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Drown in the deep, or rise from it.
 			/// </summary>
-			public const uint Classified_1705744655 = 1705744655;
+			public const uint GhostsoftheDeep_1705744655 = 1705744655;
 			public const uint Lightfall_1705890062 = 1705890062;
 			public const uint Exploration_1192509750 = 1192509750;
 			public const uint Seasons_2063273188 = 2063273188;
@@ -1609,9 +1603,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint CrystocreneSuit_226719143 = 226719143;
 			public const uint Activities_2178633627 = 2178633627;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Triumphs related to the "Ghosts of the Deep" dungeon.
 			/// </summary>
-			public const uint Classified_2279316529 = 2279316529;
+			public const uint GhostsoftheDeep_2279316529 = 2279316529;
 			/// <summary>
 			/// 	Complete Event Challenges during Guardian Games. Progress resets at the end of the event.
 			/// </summary>
@@ -1751,10 +1745,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ExoticsCurseofOsirisandWarmind = 1419883649;
 			public const uint LegacyandRaid = 2154827630;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2870508805 = 2870508805;
+			public const uint Hunter_2870508805 = 2870508805;
 			public const uint ExploreNeptune = 1634098773;
 			public const uint ScoutRifles_2771358255 = 2771358255;
 			public const uint PruinaLusterSet_3995777970 = 3995777970;
@@ -1768,10 +1759,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Trophies taken from the pressing Darkness.
 			/// </summary>
 			public const uint SeasonofArrivals = 3459575786;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_424476827 = 424476827;
+			public const uint TakenKingSuit_424476827 = 424476827;
 			public const uint GreatHuntSuit_464179105 = 464179105;
 			public const uint LostSectors_2360492953 = 2360492953;
 			public const uint PraetorianOrnament_464179106 = 464179106;
@@ -1916,10 +1904,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Raid Metrics
 			/// </summary>
 			public const uint Raids_2890100608 = 2890100608;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1675707130 = 1675707130;
+			public const uint Warlock_1675707130 = 1675707130;
 			public const uint FlamingTigerSet_2326338581 = 2326338581;
 			public const uint MarathonSet_2326338582 = 2326338582;
 			public const uint BungieStreetwearSet_2326338583 = 2326338583;
@@ -2120,10 +2105,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Activities_3764537332 = 3764537332;
 			public const uint GensymKnightSuit_4139791846 = 4139791846;
 			public const uint WildwoodSuit_4139791847 = 4139791847;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2254772612 = 2254772612;
+			public const uint TakenKingSuit_2254772612 = 2254772612;
 			public const uint Glaives_3866582567 = 3866582567;
 			public const uint AboveAllElse = 725731666;
 			public const uint ScatterhornSuit_4139791854 = 4139791854;

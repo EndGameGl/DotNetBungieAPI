@@ -243,7 +243,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Being hit by a melee attack slows you.
 			/// </summary>
-			public const uint ChillTouch = 1572913484;
+			public const uint ChillTouch_1572913484 = 1572913484;
 			/// <summary>
 			/// 	Weapons have no reserve ammo. Emptying the clip of a weapon refills the clips of your holstered weapons.
 			/// </summary>
@@ -381,9 +381,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OutofItsWay = 2814846409;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Exploder units have more health.
+			/// <para/>
+			/// 	Activates at the Midnight depth.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_3364538570 = 3364538570;
+			public const uint Martyr_3364538570 = 3364538570;
 			/// <summary>
 			/// 	Combatant difficulty is set at a fixed level.
 			/// </summary>
@@ -470,9 +473,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RankandFileDamageIncrease = 77928345;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Initial Exotic drop rate boosts: {var:219516062}
 			/// </summary>
-			public const uint Classified_2835296134 = 2835296134;
+			public const uint ExoticDropRateBoostsGained_2835296134 = 2835296134;
 			/// <summary>
 			/// 	Ability recharge rate is increased.
 			/// </summary>
@@ -532,9 +535,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ScorchedEarth = 703904464;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Initial Exotic drop rate boosts: {var:219516062}
 			/// </summary>
-			public const uint Classified_792361634 = 792361634;
+			public const uint ExoticDropRateBoostsGained_792361634 = 792361634;
 			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
@@ -680,9 +683,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Attrition_3346897368 = 3346897368;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Combatant splash damage is increased.
+			/// <para/>
+			/// 	Activates at the Midnight Depth.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_1001677275 = 1001677275;
+			public const uint Blasts_1001677275 = 1001677275;
 			/// <summary>
 			/// 	You've been challenged to wield the following:
 			/// <para/>
@@ -725,9 +731,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionFoes_2006149364 = 2006149364;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Defeating Champions creates a pool of fire.
+			/// <para/>
+			/// 	Activates at the Midnight Depth.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_160666887 = 160666887;
+			public const uint HotChampions = 160666887;
 			/// <summary>
 			/// 	Round 1: Fallen
 			/// <para/>
@@ -770,7 +779,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Activates Immediately.
 			/// <para/>
 			/// </summary>
-			public const uint Blasts = 1410027362;
+			public const uint Blasts_1410027362 = 1410027362;
 			/// <summary>
 			/// 	{var:2189146210}% bonus to outgoing Stasis damage.
 			/// </summary>
@@ -791,9 +800,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionFoes_197794292 = 197794292;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	All ammunition drops are significantly reduced.
+			/// <para/>
+			/// 	Activates at the Midnight depth.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_2736800812 = 2736800812;
+			public const uint Famine_2736800812 = 2736800812;
 			/// <summary>
 			/// 	Power Level: All combatants in this activity will be at least {var:1161168407} points over the player's current Power.
 			/// </summary>
@@ -947,7 +959,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	All ammunition drops are significantly reduced.
 			/// </summary>
-			public const uint Famine = 965929096;
+			public const uint Famine_965929096 = 965929096;
 			/// <summary>
 			/// 	The activity is at a fixed difficulty.
 			/// <para/>
@@ -1035,11 +1047,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VoidSinge = 2620827383;
 			/// <summary>
-			/// 	This playlist contains Control and Clash. When you launch, it will randomly select one of the modes for you to play.
+			/// 	This playlist contains Control, Clash, and Zone Control. When you launch, it will randomly select one of the modes for you to play.
 			/// <para/>
 			/// 	Control: Capture the zones and defeat your opponents for points. The more zones you control, the more points you get for each opponent defeated. The team with the most points wins!
 			/// <para/>
 			/// 	Clash: To win, defeat your opponents to score more points than them!
+			/// <para/>
+			/// 	Zone Control: Capture and control the zones for points. Your team gains more points based on the number of zones owned at each score tick. Defeating your opponents won't award points in this mode.
 			/// <para/>
 			/// </summary>
 			public const uint Quickplay6v6Rules = 3192928767;
@@ -1050,7 +1064,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	{var:4005007457}% increase to incoming Void damage.
 			/// </summary>
-			public const uint VoidThreat = 3652821947;
+			public const uint VoidThreat_3652821947 = 3652821947;
 			/// <summary>
 			/// 	If your fireteam falls in a Restricted Zone, everyone is returned to orbit.
 			/// </summary>
@@ -1105,9 +1119,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheCoreFour = 191124900;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Flying units do increased damage.
+			/// <para/>
+			/// 	Activates at the Midnight depth.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_1696123305 = 1696123305;
+			public const uint AirSuperiority_1696123305 = 1696123305;
 			/// <summary>
 			/// 	Radar is disabled.
 			/// </summary>
@@ -1258,9 +1275,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SurvivalRules = 636485977;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	{var:4005007457}% increase to incoming Void damage.
+			/// <para/>
+			/// 	Activates at the Midnight depth.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_1436323507 = 1436323507;
+			public const uint VoidThreat_1436323507 = 1436323507;
 			/// <summary>
 			/// 	All Encounter Challenges Enabled and Required
 			/// </summary>
@@ -1328,7 +1348,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Flying units do increased damage.
 			/// </summary>
-			public const uint AirSuperiority = 68890788;
+			public const uint AirSuperiority_68890788 = 68890788;
 			/// <summary>
 			/// 	Shanks now have Solar shields
 			/// </summary>
@@ -1342,9 +1362,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SolarThreat = 3517267764;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Being hit by a melee attack slows you.
+			/// <para/>
+			/// 	Activates at the Midnight depth.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_3729078713 = 3729078713;
+			public const uint ChillTouch_3729078713 = 3729078713;
 			/// <summary>
 			/// 	The activity is at a fixed difficulty.
 			/// <para/>

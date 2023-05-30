@@ -940,9 +940,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ExoticCatalystI = 1214055214;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Ghosts of the Deep" dungeon solo without dying or leaving the activity.
 			/// </summary>
-			public const uint Classified_2105117002 = 2105117002;
+			public const uint KingoftheDeep = 2105117002;
 			/// <summary>
 			/// 	Complete the quest "Should You Choose to Accept It, Part II" and unlock the second catalyst for Revision Zero.
 			/// </summary>
@@ -1096,7 +1096,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Complete the "Ghosts of the Deep" dungeon.
 			/// </summary>
-			public const uint GhostsoftheDeep = 2401440737;
+			public const uint GhostsoftheDeep_2401440737 = 2401440737;
 			/// <summary>
 			/// 	Earn a Vanguard pinnacle weapon from any Season.
 			/// </summary>
@@ -2424,9 +2424,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WaitforIt = 706596766;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Triumphs to unlock the "Ghosts of the Deep" dungeon Title.
 			/// </summary>
-			public const uint Classified_3974717227 = 3974717227;
+			public const uint GhostsoftheDeep_3974717227 = 3974717227;
 			/// <summary>
 			/// 	Complete the weekly missions for Path of the Splicer IV.
 			/// </summary>
@@ -3297,10 +3297,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete playlist activities to earn Silver Leaves.
 			/// </summary>
 			public const uint RakingtheCoals_1876132775 = 1876132775;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2407516859 = 2407516859;
+			public const uint H2407516859 = 2407516859;
 			/// <summary>
 			/// 	Win matches in the Trials of Osiris.
 			/// </summary>
@@ -3521,9 +3518,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Cryosthesia77KCatalyst = 250211794;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Find and listen to each memory of Darkness throughout the "Ghosts of the Deep" dungeon.
 			/// </summary>
-			public const uint Classified_2238420633 = 2238420633;
+			public const uint InMemoriam = 2238420633;
 			/// <summary>
 			/// 	Successfully complete the Reckoning at Tier III twice, once with each boss.
 			/// </summary>
@@ -4072,9 +4069,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RememberingtheForgotten11 = 2068997717;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Ghosts of the Deep" dungeon without dying or leaving the activity.
 			/// </summary>
-			public const uint Classified_4050558210 = 4050558210;
+			public const uint DenyDeath = 4050558210;
 			/// <summary>
 			/// 	Defeat an opponent with Hammer of Sol at a distance greater than 30 meters.
 			/// </summary>
@@ -4803,9 +4800,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ThunderlordCatalyst = 2571854597;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Trophies from the "Ghosts of the Deep" dungeon.
 			/// </summary>
-			public const uint Classified_2519881105 = 2519881105;
+			public const uint GhostsoftheDeep_2519881105 = 2519881105;
 			/// <summary>
 			/// 	Complete the following objective to discover this Prismatic Lens and gain access to this Focused Umbral Engram.
 			/// </summary>
@@ -4967,9 +4964,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Berserker_2861207630 = 2861207630;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Ghosts of the Deep" dungeon with a full fireteam of Void subclasses.
 			/// </summary>
-			public const uint Classified_646449162 = 646449162;
+			public const uint AbyssalVoid = 646449162;
 			/// <summary>
 			/// 	Complete "The Inverted Spire" Nightfall on Grandmaster difficulty during Season of the Haunted.
 			/// </summary>
@@ -6257,9 +6254,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NoTurningJack = 307419853;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Ghosts of the Deep" dungeon with a full fireteam of Arc subclasses.
 			/// </summary>
-			public const uint Classified_3202440564 = 3202440564;
+			public const uint ShockRisk = 3202440564;
 			public const uint RevancheI = 1520149614;
 			/// <summary>
 			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
@@ -6552,9 +6549,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheEmptyTankFlawlessSoloMastery = 1085039026;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Defeat targets while using The Navigator, and complete the secret encounter again.
 			/// </summary>
-			public const uint Classified_1169793114 = 1169793114;
+			public const uint TheNavigatorCatalyst = 1169793114;
 			/// <summary>
 			/// 	Defeat combatants using Worldline Zero.
 			/// </summary>
@@ -7533,9 +7530,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint StratosphericSavior = 3052980759;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the quest "Mayday, Mayday."
 			/// </summary>
-			public const uint Classified_2417842200 = 2417842200;
+			public const uint MidnightDiver = 2417842200;
 			/// <summary>
 			/// 	Defeat 3 opponents in a single Golden Gun activation.
 			/// </summary>
@@ -8288,9 +8285,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SeedyUnderbelly = 1433126335;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Ghosts of the Deep" dungeon with a full fireteam of the same class.
 			/// </summary>
-			public const uint Classified_3187362676 = 3187362676;
+			public const uint OneofaKind = 3187362676;
 			/// <summary>
 			/// 	Defeat a Champion.
 			/// </summary>
@@ -8424,9 +8421,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TalonofLight = 3599376556;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Obtain The Navigator Exotic Trace Rifle from the "Ghosts of the Deep" dungeon.
 			/// </summary>
-			public const uint Classified_3845383229 = 3845383229;
+			public const uint NavigatorsCompanion = 3845383229;
 			/// <summary>
 			/// 	Complete a Nightfall on Legend difficulty.
 			/// <para/>
@@ -8779,9 +8776,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IDontCarryMotes = 583127756;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Ghosts of the Deep" dungeon solo without leaving the activity.
 			/// </summary>
-			public const uint Classified_3584441401 = 3584441401;
+			public const uint AloneintheDeep = 3584441401;
 			/// <summary>
 			/// 	The first exotic Glaive must be unlocked from "Report: REVERSE-LURE."
 			/// <para/>
@@ -9426,9 +9423,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ALGIA = 2483327953;
 			public const uint RRHEXIS = 2483327954;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Ghosts of the Deep" dungeon.
 			/// </summary>
-			public const uint Classified_4136119953 = 4136119953;
+			public const uint Arise = 4136119953;
 			public const uint LYSIS = 2483327955;
 			public const uint WhatItMeans = 2002139996;
 			/// <summary>
@@ -9564,9 +9561,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint FWCFavoredArms = 2980185447;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Ghosts of the Deep" dungeon on Master difficulty.
 			/// </summary>
-			public const uint Classified_470621007 = 470621007;
+			public const uint Sovereign = 470621007;
 			/// <summary>
 			/// 	Complete "The Arrival" mission on any difficulty.
 			/// </summary>
@@ -9703,9 +9700,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SafeHarbor_1734231927 = 1734231927;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Ghosts of the Deep" dungeon.
 			/// </summary>
-			public const uint Classified_4038749769 = 4038749769;
+			public const uint GhostsoftheDeep_4038749769 = 4038749769;
 			/// <summary>
 			/// 	Complete the "Final Strand" quest from the Pouka Pond in the Hall of Heroes in Neomuna.
 			/// </summary>
@@ -9899,7 +9896,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MysteryMeet = 2260243645;
 			/// <summary>
-			/// 	Complete all of Season of the Deep Challenges
+			/// 	Complete all Season of the Deep challenges.
 			/// </summary>
 			public const uint GillsAcquired = 1771359723;
 			/// <summary>
@@ -10809,9 +10806,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint VIFocus = 358687402;
 			public const uint VIIJoining = 358687403;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Ghosts of the Deep" dungeon with a full fireteam of clanmates.
 			/// </summary>
-			public const uint Classified_3817062456 = 3817062456;
+			public const uint TheTrinity = 3817062456;
 			public const uint ICages = 358687405;
 			public const uint IIFreedom = 358687406;
 			/// <summary>
@@ -11886,9 +11883,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TakeaStrand = 3511203074;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Trophies from the "Ghosts of the Deep" dungeon.
 			/// </summary>
-			public const uint Classified_865157288 = 865157288;
+			public const uint DungeonGhostsoftheDeep = 865157288;
 			/// <summary>
 			/// 	As an invader in Gambit, collect 3 Motes in the opposing arena and return safely.
 			/// </summary>
@@ -13353,9 +13350,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TrialbyFiringSquad = 566358349;
 			public const uint MessagefromAunorIX = 2465618151;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Ghosts of the Deep" dungeon with a full fireteam of Solar subclasses.
 			/// </summary>
-			public const uint Classified_3358913961 = 3358913961;
+			public const uint FireHazard = 3358913961;
 			/// <summary>
 			/// 	Complete the Bonfire Bash activity against all combatant races.
 			/// </summary>

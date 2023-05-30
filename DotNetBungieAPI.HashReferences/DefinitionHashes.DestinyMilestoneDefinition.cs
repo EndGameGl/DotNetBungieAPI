@@ -180,9 +180,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint KingsFall = 292102995;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Weekly Dungeon Challenge.
 			/// </summary>
-			public const uint Classified = 390471874;
+			public const uint GhostsoftheDeep = 390471874;
 			/// <summary>
 			/// 	Speak with Saint-14 in the Tower Hangar.
 			/// </summary>

@@ -34,7 +34,7 @@ public class SeasonPassDefinitionGeneratorHandler : BaseDefinitionHandler, IDefi
         foreach (var (key, value) in definitionCacheLookup)
         {
             if (bungieClient.Repository.TryGetDestinyDefinition<DestinySeasonPassDefinition>(
-                    value, BungieLocales.EN, out var definition))
+                    value, out var definition))
             {
                 await WriteCommentaryAsync(textWriter, indentation, definition.DisplayProperties?.Description);
             }

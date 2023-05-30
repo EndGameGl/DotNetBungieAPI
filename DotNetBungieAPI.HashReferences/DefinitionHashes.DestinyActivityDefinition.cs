@@ -688,9 +688,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PirateHideoutTheScrapworker = 1474509247;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The call hits the Tower, 'mayday!'. A fireteam has gone missing beneath the waves of Titan's methane sea.
+			/// <para/>
+			/// 	Dive to the Midnight depth of Titan's ocean, find the missing fireteam, and assist them in completing their mission to recover as much egregore coral as they can before extracting safely.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_542921658 = 542921658;
+			public const uint MaydayMaydayMidnight = 542921658;
 			/// <summary>
 			/// 	The Last City, Earth
 			/// </summary>
@@ -1832,9 +1835,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrimsonDays_2444890541 = 2444890541;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Drown in the deep, or rise from it.
 			/// </summary>
-			public const uint Classified_2716998124 = 2716998124;
+			public const uint GhostsoftheDeepMaster = 2716998124;
 			public const uint Surveymission_461203479 = 461203479;
 			/// <summary>
 			/// 	Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.
@@ -8992,7 +8995,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Fallen S.A.B.E.R.
 			/// </summary>
 			public const uint NightfallAdept_3293630128 = 3293630128;
-			public const uint Normal = 313828469;
+			/// <summary>
+			/// 	Drown in the deep, or rise from it.
+			/// </summary>
+			public const uint GhostsoftheDeepNormal = 313828469;
 			/// <summary>
 			/// 	Fallen S.A.B.E.R.
 			/// </summary>

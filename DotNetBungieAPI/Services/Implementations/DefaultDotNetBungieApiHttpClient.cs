@@ -181,7 +181,7 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
             .Append(PlatformEndpoint)
             .Append(query)
             .Build();
-        _logger.LogDebug("Calling api: {FinalQuery}", finalQuery);
+        _logger.LogDebug("Calling api: {Method} {FinalQuery}", "GET", finalQuery);
         using var request = CreateGetMessage(finalQuery, false, authToken);
         using var response = await SendAsyncInternal(
             request,
@@ -205,7 +205,7 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
             .Append(PlatformEndpoint)
             .Append(query)
             .Build();
-        _logger.LogDebug("Calling api: {FinalQuery}", finalQuery);
+        _logger.LogDebug("Calling api: {Method} {FinalQuery}", "POST", finalQuery);
         using var request = CreatePostMessage(finalQuery, authToken, content);
         using var response = await SendAsyncInternal(
             request,
@@ -228,7 +228,8 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
             .Append(StatsEndpoint)
             .Append(query)
             .Build();
-        _logger.LogDebug("Calling api: {FinalQuery}", finalQuery);
+
+        _logger.LogDebug("Calling api: {Method} {FinalQuery}", "GET", finalQuery);
         using var request = CreateGetMessage(finalQuery, false, authToken);
         using var response = await SendAsyncInternal(
             request,
@@ -269,13 +270,12 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         return await _apiRateLimiter.WaitAndRunAsync(
             async (ct) =>
             {
-                var localRequestSw = Stopwatch.StartNew();
+                var start = Stopwatch.GetTimestamp();
                 var resp = await _httpClient.SendAsync(requestMessage, httpCompletionOption, ct);
-                localRequestSw.Stop();
+                var end = Stopwatch.GetTimestamp();
                 _logger.LogDebug(
                     "Executed request in {Time}s",
-                    (double)localRequestSw.ElapsedMilliseconds / 1000
-                );
+                    (double)(end - start) / 10_000_000);
                 return resp;
             },
             cancellationToken

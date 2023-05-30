@@ -293,7 +293,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Hold fire to load; release for a burst.
 			/// </summary>
 			public const uint AllatOnce = 2304491085;
-			public const uint H3369229133 = 3369229133;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3369229133 = 3369229133;
 			/// <summary>
 			/// 	Improves weapon handling for equipped Power weapon.
 			/// </summary>
@@ -407,7 +410,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AutoRifleReserves = 3795081406;
 			/// <summary>
-			/// 	Improves Trace Rifles.
+			/// 	Trace Rifles mark bosses, which provide Heavy ammo for allies when defeated.
 			/// </summary>
 			public const uint HighPriority = 4085593937;
 			/// <summary>
@@ -2592,7 +2595,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Evolution = 1669774183;
 			public const uint H3222594773 = 3222594773;
 			/// <summary>
-			/// 	Gain charges by assisting your allies via revives, healing, overshields, and subclass buffs. Consume charges by defeating foes. While charged, this weapon is granted bonus handling, reload speed, and sword charge rate.
+			/// 	This weapon gains charges after assisting allies with revives, healing, overshields, or subclass buffs. Defeating targets consumes charges. While charged, this weapon gains bonus handling and reload speed, or charge rate for Swords.
 			/// </summary>
 			public const uint NobleDeeds = 2485667143;
 			/// <summary>
@@ -4145,7 +4148,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint OverloadTraceRifles_2903076278 = 2903076278;
 			public const uint H2015255840 = 2015255840;
 			/// <summary>
-			/// 	Daybreak projectiles deal more damage. Gain improved scorch.
+			/// 	Improves scorch effects and Daybreak projectiles.
 			/// </summary>
 			public const uint RitesofEmber = 1362392838;
 			/// <summary>
@@ -9184,9 +9187,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BleedingEdge = 1056620086;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Reviving allies or defeating combatants with finishers reloads this weapon and readies an emergency reload for the next time this weapon runs out of ammo.
 			/// </summary>
-			public const uint Classified_4268710891 = 4268710891;
+			public const uint RestorationRitual = 4268710891;
 			public const uint H251404775 = 251404775;
 			/// <summary>
 			/// 	Performing a finisher while you are amplified grants Amplified to nearby allies when your Arc subclass is equipped. 
@@ -9239,7 +9242,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EnhancedUnflinchingRifleAim = 2266605455;
 			/// <summary>
-			/// 	Grants bonus Arc Super damage if cast while critically wounded or while Amplified. Lasts until the end of the Super activation.
+			/// 	Grants bonus Arc Super damage if cast while critically wounded or while amplified. Lasts until the end of the Super activation.
 			/// </summary>
 			public const uint ThunderousRetort_2482799785 = 2482799785;
 			/// <summary>
@@ -9384,7 +9387,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint M1RDistributionMatrix = 2981067559;
 			/// <summary>
-			/// 	Grants bonus Arc Super damage if cast while critically wounded or while Amplified. Lasts until the end of the Super activation.
+			/// 	Grants bonus Arc Super damage if cast while critically wounded or while amplified. Lasts until the end of the Super activation.
 			/// </summary>
 			public const uint ThunderousRetort_325570826 = 325570826;
 			/// <summary>

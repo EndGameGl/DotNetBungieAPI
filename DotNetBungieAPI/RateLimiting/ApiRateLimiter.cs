@@ -62,7 +62,7 @@ internal sealed class ApiRateLimiter
         }
         finally
         {
-            _concurrentCallsSemaphore.Release();
+           _concurrentCallsSemaphore.Release();
         }
     }
 }

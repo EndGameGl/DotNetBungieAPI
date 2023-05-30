@@ -10,7 +10,14 @@ public sealed class DotNetBungieApiHttpClientConfiguration
 {
     public DotNetBungieApiHttpClientConfiguration()
     {
-        var httpClientHandler = new HttpClientHandler();
+        var httpClientHandler = new SocketsHttpHandler() 
+        {
+            MaxConnectionsPerServer = 1000,
+            EnableMultipleHttp2Connections = true,
+            UseCookies = true,
+            PooledConnectionLifetime = TimeSpan.FromMinutes(1),
+            PooledConnectionIdleTimeout = TimeSpan.FromMinutes(20)
+        };
         HttpClient = new HttpClient(httpClientHandler);
     }
 

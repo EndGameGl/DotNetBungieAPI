@@ -34,7 +34,7 @@ public class GenderDefinitionGeneratorHandler : BaseDefinitionHandler, IDefiniti
         foreach (var (key, value) in definitionCacheLookup)
         {
             if (bungieClient.Repository.TryGetDestinyDefinition<DestinyGenderDefinition>(
-                    value, BungieLocales.EN, out var definition))
+                    value, out var definition))
             {
                 await WriteCommentaryAsync(textWriter, indentation, definition.DisplayProperties?.Description);
             }

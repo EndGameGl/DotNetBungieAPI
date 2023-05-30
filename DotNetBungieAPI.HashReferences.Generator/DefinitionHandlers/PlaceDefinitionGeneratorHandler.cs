@@ -34,7 +34,7 @@ public class PlaceDefinitionGeneratorHandler : BaseDefinitionHandler, IDefinitio
         foreach (var (key, value) in definitionCacheLookup)
         {
             if (bungieClient.Repository.TryGetDestinyDefinition<DestinyPlaceDefinition>(
-                    value, BungieLocales.EN, out var definition))
+                    value, out var definition))
             {
                 await WriteCommentaryAsync(textWriter, indentation, definition.DisplayProperties?.Description);
             }

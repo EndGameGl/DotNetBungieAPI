@@ -126,7 +126,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Shaders_3381543693 = 3381543693;
 			public const uint RoaroftheWyrm = 3855774718;
 			public const uint RingwalkerPlate = 611486946;
-			public const uint Classified_767306222 = 767306222;
+			public const uint GraspsoftheTakenKing_767306222 = 767306222;
 			public const uint PfhorianPlate = 611486947;
 			public const uint RenegadePlate_2676379051 = 2676379051;
 			public const uint ValkyrianGrips = 2409536749;
@@ -187,8 +187,8 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SolarStrandDualSiphon = 2831374162;
 			public const uint SmallFireteamXPBoost_3785605962 = 3785605962;
 			public const uint SmallFireteamXPBoost_3785605963 = 3785605963;
-			public const uint ScoutZeppelin = 3469344438;
-			public const uint WellTraveled = 3469344439;
+			public const uint Classified_3469344438 = 3469344438;
+			public const uint Classified_3469344439 = 3469344439;
 			public const uint TrueNorthShell = 4031340274;
 			public const uint StellaIncognitaCloak_3940923523 = 3940923523;
 			public const uint HardPackedShell = 4031340275;
@@ -200,7 +200,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Masterworkobjectivecomplete_459394821 = 459394821;
 			public const uint LegendaryEngram_1349765088 = 1349765088;
 			public const uint IronTruageHelm_2914695209 = 2914695209;
-			public const uint Classified_587762963 = 587762963;
+			public const uint GlovesoftheTakenKing_587762963 = 587762963;
 			public const uint NobleRounds = 2144092201;
 			public const uint AeonEnergy_3777829357 = 3777829357;
 			public const uint Evolution = 798520364;
@@ -252,7 +252,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint RunedTablet_3741419030 = 3741419030;
 			public const uint OfferingtotheOracle_3366241478 = 3366241478;
 			public const uint DusklightShard = 950899352;
-			public const uint class0name_3386596901 = 3386596901;
+			public const uint Classified_3386596901 = 3386596901;
 			public const uint EgoTalonIV_2612983587 = 2612983587;
 			public const uint LegendaryEngram_1624814150 = 1624814150;
 			public const uint ShadowSpecter_4052950089 = 4052950089;
@@ -295,10 +295,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TecheunsRegaliaHelmet_2140114448 = 2140114448;
 			public const uint CorsairDown_814073777 = 814073777;
 			public const uint ExodusDownGauntlets_56157064 = 56157064;
-			public const uint RefulgentRevelryHelm = 3273280393;
+			public const uint Classified_3273280393 = 3273280393;
 			public const uint SimulatorGauntlets_1162875302 = 1162875302;
 			public const uint GambitEngram_564863284 = 564863284;
-			public const uint Classified_3541090298 = 3541090298;
+			public const uint IntotheDepths_3541090298 = 3541090298;
 			public const uint H385821637 = 385821637;
 			public const uint PenumbralBond_2194479195 = 2194479195;
 			public const uint MeleeGamble = 3155878395;
@@ -463,8 +463,8 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SolsticeHelmMajestic_3209634107 = 3209634107;
 			public const uint CommonGear_3847819403 = 3847819403;
 			public const uint WovenFiresmithGrips_3363625697 = 3363625697;
-			public const uint H986987532 = 986987532;
-			public const uint H986987533 = 986987533;
+			public const uint Classified_986987532 = 986987532;
+			public const uint Classified_986987533 = 986987533;
 			public const uint RighteousHelm_3491384606 = 3491384606;
 			public const uint ServiceRevolver_2171006181 = 2171006181;
 			public const uint H1534361879 = 1534361879;
@@ -497,13 +497,13 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint CanaansHarvestShell = 4283023980;
 			public const uint RiggsVortexShell = 4283023981;
 			public const uint ScatterProjectileTargeting = 3813989326;
-			public const uint OffMyLawn = 3983534173;
+			public const uint Classified_3983534173 = 3983534173;
 			public const uint RestorationVIII = 705774642;
 			public const uint QuondamShell = 4283023982;
-			public const uint Sandrail = 3983534174;
+			public const uint Classified_3983534174 = 3983534174;
 			public const uint AngoraRaiderShell = 4283023983;
 			public const uint ShadersandMods_2340300214 = 2340300214;
-			public const uint BumperBoat = 3983534175;
+			public const uint Classified_3983534175 = 3983534175;
 			public const uint MachinedSkirmisherVest = 1773000505;
 			public const uint GuardianGamesBronzeRewards_15697373 = 15697373;
 			public const uint CollectiveAction_2562668800 = 2562668800;
@@ -637,7 +637,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint OutlawedandUnsanctioned = 2399682325;
 			public const uint PsionicStranglerGauntlets = 3356351041;
 			public const uint AFlarefortheDramatic = 2399682327;
-			public const uint Classified_3722748537 = 3722748537;
+			public const uint MarkoftheTakenKing_3722748537 = 3722748537;
 			public const uint RighteousVest_344824592 = 344824592;
 			public const uint RighteousVest_344824594 = 344824594;
 			public const uint RighteousVest_344824595 = 344824595;
@@ -677,7 +677,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint VanguardStratosphere = 2058800852;
 			public const uint VanguardAngelos = 2058800853;
 			public const uint BurdenofGuilt_901480775 = 901480775;
-			public const uint Classified_2324998093 = 2324998093;
+			public const uint HelmoftheTakenKing_2324998093 = 2324998093;
 			public const uint ResurrectionsGuide = 3224184260;
 			public const uint VanguardMarshal = 1514974385;
 			public const uint NessusRewards_3922324861 = 3922324861;
@@ -827,7 +827,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint PolarisLanceCatalyst_2408641879 = 2408641879;
 			public const uint UnwaveringDutyAdept_1282930036 = 1282930036;
 			public const uint DefenselesstoBeArmed = 403561732;
-			public const uint H1476198980 = 1476198980;
+			public const uint Classified_1476198980 = 1476198980;
 			public const uint RetroGradeMark_2845530750 = 2845530750;
 			public const uint CommonGear_3037832096 = 3037832096;
 			public const uint Giving_215596672 = 215596672;
@@ -945,7 +945,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LegendaryShardDismantler_4162648235 = 4162648235;
 			public const uint UpgradeArmor_17059913 = 17059913;
 			public const uint BadlandsMk24_1995011456 = 1995011456;
-			public const uint RefulgentRevelryRobes = 346473619;
+			public const uint Classified_346473619 = 346473619;
 			public const uint BotherationMk28_1995011457 = 1995011457;
 			public const uint WatcherfromBeyond = 4040838276;
 			public const uint LongviewSLR10 = 2193118393;
@@ -1290,7 +1290,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TheGreatPigeonProjection = 3390110525;
 			public const uint SeashoreSet = 3733428985;
 			public const uint NewSolsticeItems_3733428986 = 3733428986;
-			public const uint BeattheHeat_3733428987 = 3733428987;
+			public const uint BeattheHeat = 3733428987;
 			public const uint VernalGrowthVest_1165027035 = 1165027035;
 			public const uint LegendaryEngram_244123646 = 244123646;
 			public const uint RapidCooldown = 897181301;
@@ -1321,7 +1321,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LightfallDungeonKey = 3202647208;
 			public const uint ReclaimerIS = 4063523623;
 			public const uint DreambaneGreaves_310888006 = 310888006;
-			public const uint Classified_51786498 = 51786498;
+			public const uint VestoftheTakenKing_51786498 = 51786498;
 			public const uint DSVHuygensIX = 4063523630;
 			public const uint SCRAPMS12388 = 4063523631;
 			public const uint Symbiosis = 20859173;
@@ -1488,7 +1488,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ViperidaxBoots_4155947523 = 4155947523;
 			public const uint RaidenFlux_419976110 = 419976110;
 			public const uint LuckyRaspberry_419976111 = 419976111;
-			public const uint H297306061 = 297306061;
+			public const uint Classified_297306061 = 297306061;
 			public const uint Mnemosyne = 1190865820;
 			public const uint FindingsofEido18 = 3334778510;
 			public const uint SolsticePlateRenewed_829700536 = 829700536;
@@ -1598,7 +1598,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint IronSymmachyHood_3106353652 = 3106353652;
 			public const uint IronRemembranceVest_4079614900 = 4079614900;
 			public const uint WingDiscipline_185853176 = 185853176;
-			public const uint Classified_1961182320 = 1961182320;
+			public const uint BondoftheTakenKing_1961182320 = 1961182320;
 			public const uint LegionLost13 = 862527413;
 			public const uint CelestineRobesMajestic = 1044615214;
 			public const uint ScoutRifleGamble = 3697234118;
@@ -2216,7 +2216,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SolariumYellow = 3785035697;
 			public const uint CargoBayCross = 3785035698;
 			public const uint IronFellowshipCasque_3624199242 = 3624199242;
-			public const uint Classified_2977663932 = 2977663932;
+			public const uint GauntletsoftheTakenKing_2977663932 = 2977663932;
 			public const uint Firepower_2485657760 = 2485657760;
 			public const uint RenegadeHelm_868799838 = 868799838;
 			public const uint SolsticePlateRekindled_4245469491 = 4245469491;
@@ -2335,7 +2335,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SeaShell = 3626242165;
 			public const uint SweetSprinklesShell = 3626242166;
 			public const uint BrayTechThermalGrips_3979487476 = 3979487476;
-			public const uint Classified_2978918436 = 2978918436;
+			public const uint PlateoftheTakenKing_2978918436 = 2978918436;
 			public const uint TrialsOrnament_4275895304 = 4275895304;
 			public const uint Stargazer_153780217 = 153780217;
 			public const uint VoidofInformation = 1409078654;
@@ -2437,7 +2437,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LegacyAwakenQueensguard_1972651436 = 1972651436;
 			public const uint VirtuousPlate = 474951532;
 			public const uint CelestialGrips = 2250029820;
-			public const uint SolsticeEventCardUpgrade_1060169755 = 1060169755;
+			public const uint SolsticeEventCardUpgrade = 1060169755;
 			public const uint Redback5si = 1687353095;
 			public const uint UnyieldingFavorMark = 2494402335;
 			public const uint ScatterhornGauntlets_3066181671 = 3066181671;
@@ -2795,7 +2795,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint WildwoodHelm_3080875433 = 3080875433;
 			public const uint ForbiddenVisageCloak = 3712932604;
 			public const uint InsightViktiBoots_3018268196 = 3018268196;
-			public const uint H968105103 = 968105103;
+			public const uint Classified_968105103 = 968105103;
 			public const uint LucentNightVest = 2655812783;
 			public const uint CoronationBond_2165598463 = 2165598463;
 			public const uint ErianasVow_2614062688 = 2614062688;
@@ -2805,7 +2805,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint GunsmithWeapon = 2502860484;
 			public const uint GuardingGlaive = 3491209107;
 			public const uint Transfiguration_3799980700 = 3799980700;
-			public const uint ColdComfort = 1291068170;
+			public const uint ColdComfort_1291068170 = 1291068170;
 			public const uint DataMine = 1291068171;
 			public const uint SpecteroftheGun = 1291068172;
 			public const uint TechnologicalSingularity = 1291068173;
@@ -3070,7 +3070,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LegendaryEngram_2026228823 = 2026228823;
 			public const uint SamplingCutlery = 22044598;
 			public const uint VesperofRadius_1799380614 = 1799380614;
-			public const uint Classified_322717029 = 322717029;
+			public const uint BootsoftheTakenKing_322717029 = 322717029;
 			public const uint OpulentScholarRobes_2652946280 = 2652946280;
 			public const uint FrumiousGrips_4224076198 = 4224076198;
 			public const uint LegendaryGear_3189820379 = 3189820379;
@@ -3152,7 +3152,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint MasterworkArmor_2396210138 = 2396210138;
 			public const uint MidnightCoup = 1128225405;
 			public const uint UnflinchingMachineGun = 1772682177;
-			public const uint Classified_3116569677 = 3116569677;
+			public const uint TheNavigatorCatalyst = 3116569677;
 			public const uint LoquitorIV = 1650442173;
 			public const uint EuropaPulseRifle_4084168684 = 4084168684;
 			public const uint EuropaPulseRifle_4084168685 = 4084168685;
@@ -3230,7 +3230,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LegionLost14 = 1648148682;
 			public const uint BondofSekris_588627781 = 588627781;
 			public const uint SeraphCipher_1631448645 = 1631448645;
-			public const uint RefulgentRevelryStrides = 1352815976;
+			public const uint Classified_1352815976 = 1352815976;
 			public const uint Confused_1471723144 = 1471723144;
 			public const uint MobileTitanArmor_3979417222 = 3979417222;
 			public const uint Gjallarfoam_3273571676 = 3273571676;
@@ -3349,7 +3349,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ValkyrianGreaves = 2257449557;
 			public const uint SwaddledEtherdipsRecipe = 1231364575;
 			public const uint StressBall = 1408399356;
-			public const uint RefulgentRevelryMask = 1323035623;
+			public const uint Classified_1323035623 = 1323035623;
 			public const uint UmbralIncursions = 2880619157;
 			public const uint LostinRheasilvia = 973983247;
 			public const uint RecoveryForged = 539459624;
@@ -3653,11 +3653,11 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LegendaryEngram_9144189 = 9144189;
 			public const uint H1229931596 = 1229931596;
 			public const uint LegendaryEngram_3153195875 = 3153195875;
-			public const uint FinnedShell = 510898033;
+			public const uint Classified_510898033 = 510898033;
 			public const uint FroststrikeMark_471764029 = 471764029;
 			public const uint LegendaryEngram_3838757690 = 3838757690;
-			public const uint FlotationShell = 510898034;
-			public const uint FestiveNestShell = 510898035;
+			public const uint Classified_510898034 = 510898034;
+			public const uint Classified_510898035 = 510898035;
 			public const uint SolsticeRobesRenewed_1389298745 = 1389298745;
 			public const uint DefaultShader_2325217837 = 2325217837;
 			public const uint H354469535 = 354469535;
@@ -3786,7 +3786,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint IronFellowshipGreaves_1395498705 = 1395498705;
 			public const uint RaijusHarness_2268523867 = 2268523867;
 			public const uint OrdnanceMod = 817770433;
-			public const uint Classified_638836294 = 638836294;
+			public const uint PlateoftheTakenKing_638836294 = 638836294;
 			public const uint TropicalStorm = 3679104028;
 			public const uint BoxBreathing_23371658 = 23371658;
 			public const uint DeepSeaAngler = 3679104030;
@@ -4004,7 +4004,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DreambaneHood_1721938300 = 1721938300;
 			public const uint LegendaryEngram_1374713609 = 1374713609;
 			public const uint ShinobusVow_1339772536 = 1339772536;
-			public const uint Classified_858302442 = 858302442;
+			public const uint IntotheDepths_858302442 = 858302442;
 			public const uint CrushingGreaves_3426704396 = 3426704396;
 			public const uint AnnihilatingGreaves_3426704397 = 3426704397;
 			public const uint Psychohack_82180537 = 82180537;
@@ -4168,7 +4168,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint FishingRallyNessus_2908465802 = 2908465802;
 			public const uint AncientApocalypseCloak_3184912423 = 3184912423;
 			public const uint H1469431071 = 1469431071;
-			public const uint solstice_set_nameHunterBundle = 3199605594;
+			public const uint Classified_3199605594 = 3199605594;
 			public const uint LockedArmorMod_3641619156 = 3641619156;
 			public const uint LockedArmorMod_3641619157 = 3641619157;
 			public const uint LockedArmorMod_3641619159 = 3641619159;
@@ -4296,7 +4296,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint IllicitInvaderGauntlets_2976484619 = 2976484619;
 			public const uint WastelanderVest_397654099 = 397654099;
 			public const uint MasterworkWeapon_353359567 = 353359567;
-			public const uint Classified_3457202139 = 3457202139;
+			public const uint IntotheDepths_3457202139 = 3457202139;
 			public const uint ClutchExtolStrides_1310207471 = 1310207471;
 			public const uint GBIron = 87986588;
 			public const uint GAPost = 87986589;
@@ -4496,7 +4496,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2217600581 = 2217600581;
 			public const uint IronTruageGloves_267960270 = 267960270;
 			public const uint LightMag = 679225683;
-			public const uint H1911265907 = 1911265907;
+			public const uint Classified_1911265907 = 1911265907;
 			public const uint Reload = 3558549449;
 			public const uint BeastlyVisage = 2548770303;
 			public const uint FishingRallyThroneWorld_1729787348 = 1729787348;
@@ -4705,7 +4705,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint CoolDude_530968313 = 530968313;
 			public const uint SynthesisBountiesExhausted_2376000422 = 2376000422;
 			public const uint RefugeeBoots_2311027942 = 2311027942;
-			public const uint H3626030823 = 3626030823;
+			public const uint Classified_3626030823 = 3626030823;
 			public const uint HiveRepurposing_3302924434 = 3302924434;
 			public const uint PacificDeception = 3969205939;
 			public const uint KoraxissDistress_351138256 = 351138256;
@@ -4714,7 +4714,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint HeadSlam = 3969779337;
 			public const uint Masterworkobjectivecomplete_479685581 = 479685581;
 			public const uint GlovesoftheCormorantBlade_4060841154 = 4060841154;
-			public const uint Classified_1757202961 = 1757202961;
+			public const uint GreasyLuck = 1757202961;
 			public const uint ClutchExtolRobes_3261819408 = 3261819408;
 			public const uint PerkUpgradeAvailable_2666423491 = 2666423491;
 			public const uint NezarecsSin_609164671 = 609164671;
@@ -4806,7 +4806,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint WhisperoftheVictorStrides = 3249133238;
 			public const uint ExecutorsWillCover = 84296096;
 			public const uint Trust_1359914114 = 1359914114;
-			public const uint H4254826974 = 4254826974;
+			public const uint Classified_4254826974 = 4254826974;
 			public const uint FangsofShunGath = 1809130913;
 			public const uint BossResist = 2127327637;
 			public const uint WarMantis_3665810048 = 3665810048;
@@ -5043,11 +5043,11 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint GofannonsFire = 2944769992;
 			public const uint FractalRolls_3741999895 = 3741999895;
 			public const uint TongerenLR3_4157959956 = 4157959956;
-			public const uint Classified_1125217994 = 1125217994;
+			public const uint NewPacificEpitaph = 1125217994;
 			public const uint VanguardMagnus = 223308216;
 			public const uint AachenLR2_4157959958 = 4157959958;
 			public const uint DamiettaLR2_4157959959 = 4157959959;
-			public const uint H261510460 = 261510460;
+			public const uint Classified_261510460 = 261510460;
 			public const uint OphidiaSpathe_978537162 = 978537162;
 			public const uint CorrectiveMeasureTimelost_795875974 = 795875974;
 			public const uint RowYourBoat = 1799025280;
@@ -5162,7 +5162,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint MechanizedAutoloader = 1178686995;
 			public const uint GoodIdea_333041308 = 333041308;
 			public const uint ChemfleshGauntlets = 1972548224;
-			public const uint Classified_2733403573 = 2733403573;
+			public const uint CloakoftheTakenKing_2733403573 = 2733403573;
 			public const uint AscendantAppleTart_2989064733 = 2989064733;
 			public const uint EnhancedHandCannonTargeting = 1356474366;
 			public const uint BreakersBlaze = 3828080585;
@@ -5767,7 +5767,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ShellofGilgamesh = 1249788648;
 			public const uint InterlacedVest = 4233075550;
 			public const uint VigilofHeroes_3761819011 = 3761819011;
-			public const uint Classified_42941848 = 42941848;
+			public const uint VestoftheTakenKing_42941848 = 42941848;
 			public const uint HardcaseHelm_549246985 = 549246985;
 			public const uint ChallengerXP_2174060729 = 2174060729;
 			public const uint H503913184 = 503913184;
@@ -5819,7 +5819,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint WindChill = 2579162237;
 			public const uint ClosingCeremony = 4243719215;
 			public const uint SweeptheField = 3051422226;
-			public const uint Classified_2126433420 = 2126433420;
+			public const uint IncreasesTheNavigatordroprate = 2126433420;
 			public const uint UnwaveringDutyAdept_507891152 = 507891152;
 			public const uint GraylightShell = 2833999148;
 			public const uint PhantasmagoricBond = 3508236467;
@@ -6020,7 +6020,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TitanCacheDetector = 932058162;
 			public const uint WendigoGL3_1854753404 = 1854753404;
 			public const uint TheMilitiasBirthright_1854753405 = 1854753405;
-			public const uint arms0name_1240184693 = 1240184693;
+			public const uint Classified_1240184693 = 1240184693;
 			public const uint LuminousReagent = 1869482416;
 			public const uint LegacyLastWillandTestament_2197856849 = 2197856849;
 			public const uint ShadowLegionOrders = 2946312594;
@@ -6032,7 +6032,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint EmptyModSocket_1803434835 = 1803434835;
 			public const uint RenegadeHood_746458358 = 746458358;
 			public const uint WinterdriftEngram_1378336344 = 1378336344;
-			public const uint legs0name_1122245142 = 1122245142;
+			public const uint Classified_1122245142 = 1122245142;
 			public const uint SteadyHands_509074078 = 509074078;
 			public const uint TelestoCatalyst_640058316 = 640058316;
 			public const uint HardysTitanBundle = 386798240;
@@ -6142,7 +6142,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint EmptyGuardsSocket = 1779961758;
 			public const uint BrayTechData = 3223511955;
 			public const uint VigilofHeroes_865222334 = 865222334;
-			public const uint RefulgentRevelryMark = 1405321765;
+			public const uint Classified_1405321765 = 1405321765;
 			public const uint AssassinsBlade_354401740 = 354401740;
 			public const uint GambitFragmentQuest = 4005690325;
 			public const uint DendriteShimmerGauntlets = 2179902689;
@@ -6189,7 +6189,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint CabalorNothing = 1329813266;
 			public const uint MadeShaxxProud = 2420153991;
 			public const uint DefeatopponentswithArcdamage_780682916 = 780682916;
-			public const uint RefulgentRevelryGauntlets = 681808640;
+			public const uint Classified_681808640 = 681808640;
 			public const uint MeagerDawningPresent = 2987489546;
 			public const uint ScatterhornStrides_1467355683 = 1467355683;
 			public const uint TheDawning_2037737376 = 2037737376;
@@ -6492,7 +6492,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint OssifiedEntrance = 3182550857;
 			public const uint MIDAMultiToolCatalyst_3466057365 = 3466057365;
 			public const uint AggressiveFrame_2097693203 = 2097693203;
-			public const uint Classified_398661035 = 398661035;
+			public const uint RestorationRitual = 398661035;
 			public const uint SunbreakPlate_729400710 = 729400710;
 			public const uint AncientApocalypseGloves_4122447870 = 4122447870;
 			public const uint H2080061410 = 2080061410;
@@ -7020,7 +7020,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint EmpoweredDecryptionCore = 2479465568;
 			public const uint AimTwiceShootOnce = 437043265;
 			public const uint BronzeRage = 437043266;
-			public const uint H1246923630 = 1246923630;
+			public const uint Classified_1246923630 = 1246923630;
 			public const uint WallofBullets = 437043267;
 			public const uint OnewiththeElements = 437043268;
 			public const uint MastertheOldWays = 437043269;
@@ -7045,7 +7045,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TerrorsEnd = 2176571298;
 			public const uint DeepintheWoods = 2176571299;
 			public const uint Trust_2703446873 = 2703446873;
-			public const uint SolsticeEventCardUpgrade_2772504773 = 2772504773;
+			public const uint Classified_2772504773 = 2772504773;
 			public const uint IronTruageGloves_4085321596 = 4085321596;
 			public const uint QuitclaimShotgunIII = 2478247171;
 			public const uint ReverieDawnBond_1394177923 = 1394177923;
@@ -7143,7 +7143,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint WildHuntShell = 3287805174;
 			public const uint AnkaaSeekerIV_852430165 = 852430165;
 			public const uint UnconventionalResearch = 4238775806;
-			public const uint Classified_1441805468 = 1441805468;
+			public const uint TheNavigator = 1441805468;
 			public const uint ReshapingtheEnigma_1232302366 = 1232302366;
 			public const uint DulcineaShell = 3287805175;
 			public const uint AMindForeverChanging = 4238775807;
@@ -7409,14 +7409,14 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint MemoryInterdict_3329842376 = 3329842376;
 			public const uint ChironsCure_467612864 = 467612864;
 			public const uint GuardianGamesMedallionCode_598776284 = 598776284;
-			public const uint Classified_2643850526 = 2643850526;
+			public const uint HoodoftheTakenKing_2643850526 = 2643850526;
 			public const uint WarmheartedGift = 3282680891;
 			public const uint GuardianGamesTankardCode_598776287 = 598776287;
 			public const uint FireteamMedallion = 1909657913;
 			public const uint MarkoftheUnassailable_3207244009 = 3207244009;
 			public const uint DefeatopponentswithArcdamage_513376719 = 513376719;
 			public const uint LegendaryEngram_2035589136 = 2035589136;
-			public const uint Classified_2274944459 = 2274944459;
+			public const uint RecalcitrantHost = 2274944459;
 			public const uint SpinningJuggle = 3582457406;
 			public const uint ThePastUnearthed = 1866581848;
 			public const uint ShiftingLoyalties = 440770966;
@@ -7658,7 +7658,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Cheer_2834933816 = 2834933816;
 			public const uint TheHollowedLair = 1639160638;
 			public const uint SeasonoftheSeraphStarterPack = 722701037;
-			public const uint H1095370002 = 1095370002;
+			public const uint Classified_1095370002 = 1095370002;
 			public const uint VoidSiphon_1210012576 = 1210012576;
 			public const uint CosmodromeSupers = 28251664;
 			public const uint CosmodromeAbilities = 28251665;
@@ -7976,7 +7976,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint RemembranceofDaysGoneBy = 616552363;
 			public const uint SimulationSeed = 49145143;
 			public const uint LightweightFrame_4080055066 = 4080055066;
-			public const uint Classified_3473979726 = 3473979726;
+			public const uint IntotheDepths_3473979726 = 3473979726;
 			public const uint HaakonsIronStrides = 3853099349;
 			public const uint LegacysOathMask_893751566 = 893751566;
 			public const uint ResilienceMod_2568808786 = 2568808786;
@@ -8064,7 +8064,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Excavation = 2977709078;
 			public const uint FishingRallyNessus_2996057623 = 2996057623;
 			public const uint NessasOblationAdept_670738046 = 670738046;
-			public const uint ship0name = 3110986887;
+			public const uint Classified_3110986887 = 3110986887;
 			public const uint SwordScavenger = 2034622599;
 			public const uint PyrrhicAscentMark_3506304844 = 3506304844;
 			public const uint EuropaVoid = 3486486983;
@@ -8258,7 +8258,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint UnfocusedSolarEnergy_3399976694 = 3399976694;
 			public const uint MarkFragment = 1718289635;
 			public const uint IKELOS_SR_v101 = 847450546;
-			public const uint chest0name_1260041928 = 1260041928;
+			public const uint Classified_1260041928 = 1260041928;
 			public const uint TravelersChosen_53159280 = 53159280;
 			public const uint TravelersChosenDamaged = 53159281;
 			public const uint OmegaMechanosCloak_3947566073 = 3947566073;
@@ -8277,7 +8277,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ThyFearfulSymmetry_925503557 = 925503557;
 			public const uint PfhorianHelm = 925503558;
 			public const uint RingwalkerHelm = 925503559;
-			public const uint SomethingNew_1856262127 = 1856262127;
+			public const uint SomethingNew = 1856262127;
 			public const uint MasterworkWeapon_1773371146 = 1773371146;
 			public const uint HomefortheLost = 3216383791;
 			public const uint HeavyWarlockArmor_1097521167 = 1097521167;
@@ -8474,7 +8474,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint CloseEnough = 1939153390;
 			public const uint ArmsofOptimacy_1445212020 = 1445212020;
 			public const uint Ensemble_2621346526 = 2621346526;
-			public const uint head0name_2013981053 = 2013981053;
+			public const uint Classified_2013981053 = 2013981053;
 			public const uint SpringtimeScales = 114225848;
 			public const uint IAmtheBossNow = 1429730445;
 			public const uint UnflinchingStasisAim_2959504464 = 2959504464;
@@ -8963,7 +8963,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ChironsCure_2943629439 = 2943629439;
 			public const uint WinterdriftEngram_3151770741 = 3151770741;
 			public const uint MarkofOptimacy_1197579132 = 1197579132;
-			public const uint NoSurvivors = 515493511;
+			public const uint NoSurvivors_515493511 = 515493511;
 			public const uint CelestialGloves = 3154888563;
 			public const uint AtonementTau_3399906133 = 3399906133;
 			public const uint GreavesofAgony_3846650177 = 3846650177;
@@ -9614,7 +9614,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DeprecatedArmorMod_3138762878 = 3138762878;
 			public const uint VolatileBattery = 185041502;
 			public const uint UnaryAccoladeBundle = 1194032238;
-			public const uint Classified_457617725 = 457617725;
+			public const uint VestmentoftheTakenKing_457617725 = 457617725;
 			public const uint EmptyFragmentSocket_4205702044 = 4205702044;
 			public const uint TernaryAccoladeBundle = 1194032239;
 			public const uint LegionBane_643145875 = 643145875;
@@ -9901,7 +9901,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint WarNumensCrown_2366153444 = 2366153444;
 			public const uint CandescentPrismCover = 2260326783;
 			public const uint BrayTechCombatVest_2656719840 = 2656719840;
-			public const uint class0name_4119622018 = 4119622018;
+			public const uint Classified_4119622018 = 4119622018;
 			public const uint PolarisLanceCatalyst_669988236 = 669988236;
 			public const uint FlashyMoves = 2077271390;
 			public const uint DreamingCityCacheDetector = 2536988426;
@@ -9973,7 +9973,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint EDZCacheDetector = 4051388481;
 			public const uint ShotgunLoader = 1023341166;
 			public const uint TelestoMask = 1844904392;
-			public const uint Classified_956827695 = 956827695;
+			public const uint MarkoftheTakenKing_956827695 = 956827695;
 			public const uint BlueberryMask = 1844904393;
 			public const uint Masterworkobjectivecomplete_2815728723 = 2815728723;
 			public const uint PsychicWarfare_2987746325 = 2987746325;
@@ -10081,7 +10081,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SimulatorPlate_2005525978 = 2005525978;
 			public const uint SkipGrenade = 146194908;
 			public const uint H1247752615 = 1247752615;
-			public const uint RefulgentRevelryVest = 4269600130;
+			public const uint Classified_4269600130 = 4269600130;
 			public const uint SolsticeGreavesRenewed_640136282 = 640136282;
 			public const uint OneTwoPunch_788178929 = 788178929;
 			public const uint OutofBounds_2477965153 = 2477965153;
@@ -10109,7 +10109,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint MoonfangX7Gauntlets = 1581574297;
 			public const uint ValkyrianVest = 4015910035;
 			public const uint CodeDuello = 2496242052;
-			public const uint RefulgentRevelryHood = 1640597844;
+			public const uint Classified_1640597844 = 1640597844;
 			public const uint TheVariable_356880670 = 356880670;
 			public const uint Parasite = 2812324400;
 			public const uint DeadMessenger = 2812324401;
@@ -10469,7 +10469,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SandWasp3au_2351747818 = 2351747818;
 			public const uint RosLysisII_2351747819 = 2351747819;
 			public const uint DeepseekerShell = 4017272394;
-			public const uint solstice_nameTitanBundle = 3397973200;
+			public const uint Classified_3397973200 = 3397973200;
 			public const uint PhoenixStrifeType0_449878234 = 449878234;
 			public const uint LostPacificGauntlets_1598597433 = 1598597433;
 			public const uint H2921126083 = 2921126083;
@@ -10487,8 +10487,8 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2568740879 = 2568740879;
 			public const uint ProdigalHood_2012084760 = 2012084760;
 			public const uint BuoyTrap = 3116258568;
-			public const uint H1930161380 = 1930161380;
-			public const uint H1930161381 = 1930161381;
+			public const uint Classified_1930161380 = 1930161380;
+			public const uint Classified_1930161381 = 1930161381;
 			public const uint Ghoyster = 3116258570;
 			public const uint Tropicausal = 3116258571;
 			public const uint LegionBane_3968319087 = 3968319087;
@@ -10790,7 +10790,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SolsticeRobesRenewed_3192591867 = 3192591867;
 			public const uint ActsofMercy = 3512329584;
 			public const uint IronSymmachyCloak_4058198769 = 4058198769;
-			public const uint Classified_2850384360 = 2850384360;
+			public const uint StridesoftheTakenKing_2850384360 = 2850384360;
 			public const uint TheDance = 117669763;
 			public const uint AlliterativeDance = 2427328578;
 			public const uint EmptyModSocket_1844045567 = 1844045567;
@@ -10909,7 +10909,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DeprecatedArmorMod_1360604625 = 1360604625;
 			public const uint DeprecatedArmorMod_1360604626 = 1360604626;
 			public const uint DeprecatedArmorMod_1360604627 = 1360604627;
-			public const uint Classified_2820604007 = 2820604007;
+			public const uint MaskoftheTakenKing_2820604007 = 2820604007;
 			public const uint DeprecatedArmorMod_1360604628 = 1360604628;
 			public const uint DeprecatedArmorMod_1360604629 = 1360604629;
 			public const uint GreavesoftheExile_791799769 = 791799769;
@@ -10968,7 +10968,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint AdvancedGlaiveProjectileCalibration = 511160301;
 			public const uint EaterofWorldsOrnament_2899660517 = 2899660517;
 			public const uint PrecisionFrame_2563509458 = 2563509458;
-			public const uint solsticerocket_launcher0name = 3256453690;
+			public const uint Classified_3256453690 = 3256453690;
 			public const uint AdditionalBounties_1066777154 = 1066777154;
 			public const uint OntheMark = 4004837762;
 			public const uint MindbreakerBoots_2164070257 = 2164070257;
@@ -10999,7 +10999,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SonarStationVendorUpgrade = 1406261120;
 			public const uint Grenades_2038031594 = 2038031594;
 			public const uint H154761408 = 154761408;
-			public const uint SomethingNew_3240434620 = 3240434620;
+			public const uint Classified_3240434620 = 3240434620;
 			public const uint SolsticeGauntletsMagnificent_3884067141 = 3884067141;
 			public const uint H87Ennui = 1125119861;
 			public const uint GardenProgeny1 = 472169727;
@@ -11035,7 +11035,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TooHot = 88498859;
 			public const uint LorentzDriver_3761898871 = 3761898871;
 			public const uint CollapseoftheElders = 1582507554;
-			public const uint Classified_2488323569 = 2488323569;
+			public const uint BootsoftheTakenKing_2488323569 = 2488323569;
 			public const uint LegendaryEngram_769831912 = 769831912;
 			public const uint LegendaryEngram_2411847415 = 2411847415;
 			public const uint UnflinchingVoidAim_3437323171 = 3437323171;
@@ -11064,7 +11064,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SteeplechaseMask = 3228751873;
 			public const uint SolsticeVestResplendent_222565136 = 222565136;
 			public const uint GhostsandEmotes_219088948 = 219088948;
-			public const uint TriphibianBundle = 540582675;
+			public const uint Classified_540582675 = 540582675;
 			public const uint CrystallineFormations = 4198644453;
 			public const uint ClastofItsOwn = 4294938474;
 			public const uint Classified_1081255500 = 1081255500;
@@ -11380,7 +11380,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint PoisonWingsSpread = 296103153;
 			public const uint Represent_2201628119 = 2201628119;
 			public const uint Classified_1266604956 = 1266604956;
-			public const uint Classified_839786290 = 839786290;
+			public const uint ColdComfort_839786290 = 839786290;
 			public const uint TransmatterComponents = 2654070253;
 			public const uint Armor_3862458056 = 3862458056;
 			public const uint Jian7Rifle_1162247618 = 1162247618;
@@ -11413,7 +11413,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LegendaryEngram_1942885032 = 1942885032;
 			public const uint Stronghold_2240152949 = 2240152949;
 			public const uint TrialsoftheNineArsenal = 3518207880;
-			public const uint chest0name_1540650548 = 1540650548;
+			public const uint Classified_1540650548 = 1540650548;
 			public const uint OdderDance_2923026987 = 2923026987;
 			public const uint AllIn = 2598666301;
 			public const uint LightweightFrame_3048420653 = 3048420653;
@@ -11802,7 +11802,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Premonition_208088207 = 208088207;
 			public const uint LoadedQuestion_1467113692 = 1467113692;
 			public const uint OmegaMechanosBoots_2964562738 = 2964562738;
-			public const uint Classified_3490757409 = 3490757409;
+			public const uint IntotheDepths_3490757409 = 3490757409;
 			public const uint SolsticeHoodDrained_627596132 = 627596132;
 			public const uint VanguardArmorScrounger_960701048 = 960701048;
 			public const uint StarfarersHood = 3138802235;
@@ -11810,7 +11810,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SeventhSeraphSAW = 2582755344;
 			public const uint FancyHatRoll = 3577052913;
 			public const uint OmegaMechanosRobes_2127159568 = 2127159568;
-			public const uint GyroscopicForce = 1905328541;
+			public const uint Classified_1905328541 = 1905328541;
 			public const uint BootsofFeltroc_75025442 = 75025442;
 			public const uint H3486349474 = 3486349474;
 			public const uint ReverieDawnHauberk_1593474975 = 1593474975;
@@ -12186,7 +12186,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint IronSymmachyVest_2772262012 = 2772262012;
 			public const uint Cataloguer = 3899944893;
 			public const uint TMCogburnCustomCover_2599025960 = 2599025960;
-			public const uint SolsticeArmorSkins = 1660669954;
+			public const uint Classified_1660669954 = 1660669954;
 			public const uint PenumbralCloak_2149271612 = 2149271612;
 			public const uint ChasmofYul_3921733799 = 3921733799;
 			public const uint RapidFireFrame_1027896051 = 1027896051;
@@ -12517,7 +12517,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint FrostveilBoots_2311506225 = 2311506225;
 			public const uint KineticReserves_2305736470 = 2305736470;
 			public const uint H4084541802 = 4084541802;
-			public const uint H2013378225 = 2013378225;
+			public const uint Classified_2013378225 = 2013378225;
 			public const uint H3419442924 = 3419442924;
 			public const uint TreadoftheHezenLords_170603856 = 170603856;
 			public const uint TangledStrands = 3550749697;
@@ -12678,7 +12678,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint HuddleUp_3199368173 = 3199368173;
 			public const uint SpyGoggles = 1382109741;
 			public const uint TerraConcordFists_3852389988 = 3852389988;
-			public const uint Classified_1913823311 = 1913823311;
+			public const uint GlovesoftheTakenKing_1913823311 = 1913823311;
 			public const uint CatalystQuestBoostAlpha_1960053042 = 1960053042;
 			public const uint FrostreachHood_671247011 = 671247011;
 			public const uint CatalystQuestBoostOmega_1960053043 = 1960053043;
@@ -12859,7 +12859,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2851176171 = 2851176171;
 			public const uint DeepsightResonance_2373253941 = 2373253941;
 			public const uint ReconfigureFlair = 3070068572;
-			public const uint legs0name_2816306775 = 2816306775;
+			public const uint Classified_2816306775 = 2816306775;
 			public const uint PardonOurDust_3849810018 = 3849810018;
 			public const uint IronForerunnerBond_1045743955 = 1045743955;
 			public const uint AdequateDawningPresents = 4269317944;
@@ -12890,7 +12890,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Adagio_3673922083 = 3673922083;
 			public const uint LargeXPBoost_556282271 = 556282271;
 			public const uint RobesoftheGreatHunt_4241329310 = 4241329310;
-			public const uint SolsticeUpgradedEventCard_1184003167 = 1184003167;
+			public const uint Classified_1184003167 = 1184003167;
 			public const uint TheWarmindResurgent_2412280506 = 2412280506;
 			public const uint AdditionalBounties_3428617830 = 3428617830;
 			public const uint MomentumTransfer_2031584061 = 2031584061;
@@ -13200,7 +13200,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2325555449 = 2325555449;
 			public const uint CloakofRemembrance_3329206472 = 3329206472;
 			public const uint H3378410678 = 3378410678;
-			public const uint Classified_2870922921 = 2870922921;
+			public const uint Rise_2870922921 = 2870922921;
 			public const uint DeepExplorerBond_3742442925 = 3742442925;
 			public const uint AutoRifleDexterity = 3177615969;
 			public const uint CatalystQuestBoostOmega_4097981808 = 4097981808;
@@ -13264,7 +13264,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint VaultKey_1862183121 = 1862183121;
 			public const uint RitualGlimmerBoost_809686268 = 809686268;
 			public const uint CeruleanFlash = 317465074;
-			public const uint Classified_1664757090 = 1664757090;
+			public const uint GauntletsoftheTakenKing_1664757090 = 1664757090;
 			public const uint AHistoryofStarlight = 317465075;
 			public const uint ApexPredator_1308286454 = 1308286454;
 			public const uint CrabCycle = 2683352144;
@@ -13841,7 +13841,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint NoBackupPlans_740593432 = 740593432;
 			public const uint PhoenixProtocol_221852859 = 221852859;
 			public const uint Triumphalism = 1320113564;
-			public const uint Classified_3262192268 = 3262192268;
+			public const uint NoSurvivors_3262192268 = 3262192268;
 			public const uint HarmonicDexterity_2479297167 = 2479297167;
 			public const uint ClandestineManeuvers_1992809894 = 1992809894;
 			public const uint AGuardianRises_2818924418 = 2818924418;
@@ -13878,9 +13878,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LubraesRuinAdept_1466006054 = 1466006054;
 			public const uint IntellectForged = 3160845295;
 			public const uint TelemachusC = 541053086;
-			public const uint BeattheHeat_299690892 = 299690892;
+			public const uint Classified_299690892 = 299690892;
 			public const uint SolSure = 756469295;
-			public const uint NewSolsticeItems_299690895 = 299690895;
+			public const uint Classified_299690895 = 299690895;
 			public const uint WishEnder_2411744491 = 2411744491;
 			public const uint PowerLift = 2624974641;
 			public const uint NeverSawItComing = 2893357936;
@@ -13969,7 +13969,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint CyrtarachnesFacade_192896783 = 192896783;
 			public const uint H15SynthweaveTemplates = 3135401181;
 			public const uint H10SynthweaveTemplates = 3135401182;
-			public const uint H3611244868 = 3611244868;
+			public const uint Classified_3611244868 = 3611244868;
 			public const uint H5SynthweaveTemplates = 3135401183;
 			public const uint WarNumensCrown_26254737 = 26254737;
 			public const uint CanisLunaHunter = 3914103358;
@@ -14154,7 +14154,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint MidnightTalons = 1284563767;
 			public const uint EquitisShadeGrips_2710517999 = 2710517999;
 			public const uint GrantsVicksburg = 933468683;
-			public const uint legs0name_3633213242 = 3633213242;
+			public const uint Classified_3633213242 = 3633213242;
 			public const uint TarnishedCopper = 1284563774;
 			public const uint H2849673075 = 2849673075;
 			public const uint SiphonedGlyphkeeper = 2779468392;
@@ -14209,7 +14209,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint AncientApocalypseCloak_3368700430 = 3368700430;
 			public const uint Countermass = 3809316345;
 			public const uint H2701881372 = 2701881372;
-			public const uint Classified_2363472582 = 2363472582;
+			public const uint GreavesoftheTakenKing_2363472582 = 2363472582;
 			public const uint RadegastsIronGauntlets = 3380383295;
 			public const uint FontofFocus_1781551382 = 1781551382;
 			public const uint ExtinctionOrbitOrnament_2296027354 = 2296027354;
@@ -14272,7 +14272,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Grenades_4161594163 = 4161594163;
 			public const uint CloudstrikeCatalyst = 1409312565;
 			public const uint ChainReaction_598607952 = 598607952;
-			public const uint RefulgentRevelryBond = 2976357066;
+			public const uint Classified_2976357066 = 2976357066;
 			public const uint IronTruageHelm_1105558158 = 1105558158;
 			public const uint LegendaryEngram_3999682606 = 3999682606;
 			public const uint InauguralRevelryHelm_438524081 = 438524081;
@@ -14401,7 +14401,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Melees_3925966117 = 3925966117;
 			public const uint UnderOver_183938251 = 183938251;
 			public const uint WildwoodHelm_2747681397 = 2747681397;
-			public const uint Classified_3570749779 = 3570749779;
+			public const uint CloakoftheTakenKing_3570749779 = 3570749779;
 			public const uint SolarArmorGlow_60802325 = 60802325;
 			public const uint RadiolarianPudding_2404147919 = 2404147919;
 			public const uint MasterworkArmor_1966900685 = 1966900685;
@@ -14420,12 +14420,12 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint IronRemembranceVestments_2768502727 = 2768502727;
 			public const uint ExodusDownGrips_137386025 = 137386025;
 			public const uint BeyondLight_2943602311 = 2943602311;
-			public const uint SolsticeEventPack = 892256595;
+			public const uint Classified_892256595 = 892256595;
 			public const uint TrialsMelee = 2940269474;
 			public const uint StridesoftheGreatHunt_3494130310 = 3494130310;
 			public const uint H2008579150 = 2008579150;
 			public const uint H1807139373 = 1807139373;
-			public const uint solstice_set_nameWarlockBundle = 16256973;
+			public const uint Classified_16256973 = 16256973;
 			public const uint SolsticeMaskRekindled_4154821248 = 4154821248;
 			public const uint ThoriumHoltBond_737010724 = 737010724;
 			public const uint CommonGear_362514080 = 362514080;
@@ -15078,7 +15078,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ThoriumHoltGloves_417345678 = 417345678;
 			public const uint AssemblyRider = 3725889193;
 			public const uint SerpentsReach = 3725889194;
-			public const uint CompassRose_233896077 = 233896077;
+			public const uint Classified_233896077 = 233896077;
 			public const uint SweetSorrow_2575449820 = 2575449820;
 			public const uint ProtoTypeA = 3725889195;
 			public const uint TheStasisPrototype_1299795970 = 1299795970;
@@ -15163,7 +15163,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LineintheSand = 946443267;
 			public const uint WolfswoodMark_4050536705 = 4050536705;
 			public const uint FinalWeekofSolstice = 169783816;
-			public const uint Classified_540625098 = 540625098;
+			public const uint HoodoftheTakenKing_540625098 = 540625098;
 			public const uint KineticDiver = 2859924064;
 			public const uint EnergeticDiver = 2859924065;
 			public const uint NotoriousCollectorMark_2799932928 = 2799932928;
@@ -15214,7 +15214,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SolsticeVestDrained_1519942861 = 1519942861;
 			public const uint FiringLine_1771339417 = 1771339417;
 			public const uint QuidProQuo_4176002117 = 4176002117;
-			public const uint H4116691882 = 4116691882;
+			public const uint Classified_4116691882 = 4116691882;
 			public const uint IllicitReaperBond_1182214975 = 1182214975;
 			public const uint SolsticeRobesResplendent_2407661191 = 2407661191;
 			public const uint RiskrunnerCatalyst_3815768596 = 3815768596;
@@ -15324,10 +15324,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SovereignBoots_600401425 = 600401425;
 			public const uint PyrrhicAscentPlate_2671565007 = 2671565007;
 			public const uint AppendedMag = 1087426260;
-			public const uint Classified_3708902812 = 3708902812;
+			public const uint GreavesoftheTakenKing_3708902812 = 3708902812;
 			public const uint H1410819353 = 1410819353;
 			public const uint TheShelterinPlace_3984883553 = 3984883553;
-			public const uint Classified_409820272 = 409820272;
+			public const uint GraspsoftheTakenKing_409820272 = 409820272;
 			public const uint PhenotypePlasticityMark = 1491954330;
 			public const uint LegendaryEngram_34786075 = 34786075;
 			public const uint SillySalute = 1372151242;
@@ -15360,7 +15360,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SentinelsRespite = 430068245;
 			public const uint SteeplechaseVest = 29159728;
 			public const uint FortressField_226227391 = 226227391;
-			public const uint arms0name_476513004 = 476513004;
+			public const uint Classified_476513004 = 476513004;
 			public const uint Destiny2BeyondLight_2919807991 = 2919807991;
 			public const uint Essence = 1083520111;
 			public const uint BulletsmithsIreMark_388999052 = 388999052;
@@ -15469,7 +15469,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LegendaryEngram_1777432092 = 1777432092;
 			public const uint WeightedEdge = 75282108;
 			public const uint Posterity_535966746 = 535966746;
-			public const uint RefulgentRevelryBoots = 717767855;
+			public const uint Classified_717767855 = 717767855;
 			public const uint DarkhollowTreads_2725249086 = 2725249086;
 			public const uint ExoticEngram_685908770 = 685908770;
 			public const uint WayfindersEntrance = 528225971;
@@ -15489,7 +15489,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ForgedMachinistGauntlets_2819858798 = 2819858798;
 			public const uint ImprovedMoonCacheDetector = 4212305433;
 			public const uint SilenceandSquall = 2625980631;
-			public const uint Classified_3507534996 = 3507534996;
+			public const uint IntotheDepths_3507534996 = 3507534996;
 			public const uint ChironsCure_1486292360 = 1486292360;
 			public const uint VictorianSilverhawk_1702676167 = 1702676167;
 			public const uint ExoticGear_3003989311 = 3003989311;
@@ -15593,7 +15593,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint UrbanHypnagogicSet = 2745963050;
 			public const uint RoadsNotRequiredSet = 2745963052;
 			public const uint PulseRifleScavenger = 3081361536;
-			public const uint head0name_2851897225 = 2851897225;
+			public const uint Classified_2851897225 = 2851897225;
 			public const uint ArrangedFacsimileSet = 2745963053;
 			public const uint LavishExcessSet = 2745963055;
 			public const uint FiniteImpactor_3813153080 = 3813153080;
@@ -15770,7 +15770,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SuperSlayer = 3312152065;
 			public const uint SolsticeGraspsRekindled_3853434114 = 3853434114;
 			public const uint LostPacificGrips_1511235307 = 1511235307;
-			public const uint CompassRose_2591111628 = 2591111628;
+			public const uint CompassRose = 2591111628;
 			public const uint H325317309 = 325317309;
 			public const uint GreavesofAscendancy_275145509 = 275145509;
 			public const uint EfrideetsIronCloak = 2749869546;
@@ -15979,7 +15979,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint RighteousCloak_940065569 = 940065569;
 			public const uint IcarusDrifterMask_2567710435 = 2567710435;
 			public const uint RighteousCloak_940065570 = 940065570;
-			public const uint Classified_2618168932 = 2618168932;
+			public const uint BondoftheTakenKing_2618168932 = 2618168932;
 			public const uint RighteousCloak_940065571 = 940065571;
 			public const uint ChocolateShipCookies_1117745417 = 1117745417;
 			public const uint Hailstorm = 2041229079;
@@ -16010,7 +16010,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint MasterworkedChargeTime_1431498388 = 1431498388;
 			public const uint VirtuousMask = 90191153;
 			public const uint KairosFunctionMask_952071004 = 952071004;
-			public const uint chest0name_1084954603 = 1084954603;
+			public const uint Classified_1084954603 = 1084954603;
 			public const uint LegendaryEngram_3291904575 = 3291904575;
 			public const uint SolsticeGauntletsMajestic_3971839985 = 3971839985;
 			public const uint UpPeriscope = 362444856;
@@ -16089,7 +16089,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DescendantVexChrome = 2395477998;
 			public const uint MercuryVexChrome = 2395477999;
 			public const uint GambitAutoRifleScrounger_3434213444 = 3434213444;
-			public const uint SolsticeUpgradedEventCard_3352182552 = 3352182552;
+			public const uint SolsticeUpgradedEventCard = 3352182552;
 			public const uint Ships_3797313931 = 3797313931;
 			public const uint IronBone = 1448664466;
 			public const uint IronGold = 1448664467;
@@ -16580,7 +16580,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SymphonyofDeath_1325063399 = 1325063399;
 			public const uint ChainBowstring = 265542500;
 			public const uint BeyondLight_523748088 = 523748088;
-			public const uint RefulgentRevelryCloak = 3493596115;
+			public const uint Classified_3493596115 = 3493596115;
 			public const uint CalamityRigGauntlets_3663176799 = 3663176799;
 			public const uint LightweightEmitter = 594346985;
 			public const uint DynamicDuo = 2818140350;
@@ -16593,7 +16593,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint AlbrunaD_676270382 = 676270382;
 			public const uint ThreeCandlesBundle = 3260691475;
 			public const uint VesperofRadius_2924540416 = 2924540416;
-			public const uint head0name_4138697980 = 4138697980;
+			public const uint Classified_4138697980 = 4138697980;
 			public const uint GazingIntoTheAbyss_1763600808 = 1763600808;
 			public const uint ReportREVERSELURE_3858918530 = 3858918530;
 			public const uint Masterworkobjectivecomplete_3459335981 = 3459335981;
@@ -16705,7 +16705,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LuxeHunterBundle = 1397382690;
 			public const uint OutlawedSentryHelm_2187982747 = 2187982747;
 			public const uint AnInsurmountableSkullfort_3216110440 = 3216110440;
-			public const uint RefulgentRevelryGloves = 471426285;
+			public const uint Classified_471426285 = 471426285;
 			public const uint ThunderousImpactGauntlets = 329905973;
 			public const uint RefugeeBoots_3065200837 = 3065200837;
 			public const uint BrayTechSurvivalMitts_2408846184 = 2408846184;
@@ -17028,7 +17028,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Foetracer_4122177783 = 4122177783;
 			public const uint PraedythsRevenge_3653573172 = 3653573172;
 			public const uint SweetDreams = 298334048;
-			public const uint Classified_4130276947 = 4130276947;
+			public const uint HelmoftheTakenKing_4130276947 = 4130276947;
 			public const uint CompressedWaveFrame_2571259936 = 2571259936;
 			public const uint TimelessVigil_298334049 = 298334049;
 			public const uint Homesteader = 3205431489;
@@ -17276,7 +17276,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint MeridianConstellationTunic = 411041775;
 			public const uint LegendaryEngram_2116237911 = 2116237911;
 			public const uint ArcstridersPatience = 3325808341;
-			public const uint H640434421 = 640434421;
+			public const uint Classified_640434421 = 640434421;
 			public const uint ProdigalRobes_2454861732 = 2454861732;
 			public const uint FoundVerdictTimelost_631439337 = 631439337;
 			public const uint StarfireProtocol_673296954 = 673296954;
@@ -17417,7 +17417,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Glimmer_3546241902 = 3546241902;
 			public const uint ParacausalPellets = 1105347996;
 			public const uint Classified_4025346759 = 4025346759;
-			public const uint H1891038388 = 1891038388;
+			public const uint Classified_1891038388 = 1891038388;
 			public const uint CourtyardCelebration = 4130815052;
 			public const uint WinterhartHunterBundle = 3338817352;
 			public const uint SealedAhamkaraGrasps_2166230715 = 2166230715;
@@ -18193,7 +18193,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TrinaryVision = 2733244971;
 			public const uint Classified_1331767413 = 1331767413;
 			public const uint LegendaryEngram_2344485205 = 2344485205;
-			public const uint Classified_1264358026 = 1264358026;
+			public const uint Rise_1264358026 = 1264358026;
 			public const uint WhisperCatalyst_2732814938 = 2732814938;
 			public const uint GoldenTricornEnhanced = 4290541820;
 			public const uint MarsToken = 3135658658;
@@ -18605,7 +18605,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint HighStatVeritasArmorRare = 4125943099;
 			public const uint CrimsonEngram_191363032 = 191363032;
 			public const uint ParaversalDefender = 3522663041;
-			public const uint class0name_2750411529 = 2750411529;
+			public const uint Classified_2750411529 = 2750411529;
 			public const uint ParaversalSunsinger = 3522663042;
 			public const uint ParaversalBladedancer = 3522663043;
 			public const uint InsightRoverMask_3688229984 = 3688229984;
@@ -19215,7 +19215,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint RapidFireFrame_2984571381 = 2984571381;
 			public const uint WinterhartRobes_270671209 = 270671209;
 			public const uint LargeXPBoost_2234610483 = 2234610483;
-			public const uint H1360689403 = 1360689403;
+			public const uint Classified_1360689403 = 1360689403;
 			public const uint ProdigalMask_4104298449 = 4104298449;
 			public const uint IllicitInvaderHood_3731378629 = 3731378629;
 			public const uint ColdCheer = 89300158;
@@ -19306,7 +19306,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint PolarisLance_3413074534 = 3413074534;
 			public const uint SmallFireteamXPBoost_4200341750 = 4200341750;
 			public const uint SmallFireteamXPBoost_4200341751 = 4200341751;
-			public const uint Classified_3524312583 = 3524312583;
+			public const uint IntotheDepths_3524312583 = 3524312583;
 			public const uint ArmsProduction = 689964254;
 			public const uint OpulentDuelistGauntlets_1322451469 = 1322451469;
 			public const uint Emotes_3183180185 = 3183180185;
@@ -20186,7 +20186,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint MidaMultiAccessoriesBundle = 1604812628;
 			public const uint IronSymmachyMark_808693674 = 808693674;
 			public const uint ThoriumHoltBond_554000115 = 554000115;
-			public const uint Classified_896458489 = 896458489;
+			public const uint MaskoftheTakenKing_896458489 = 896458489;
 			public const uint NouveauParapet = 4197082027;
 			public const uint BootsofTrepidation_807905267 = 807905267;
 			public const uint H795935713 = 795935713;
@@ -20586,7 +20586,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint OpulentDuelistGreaves_1993250511 = 1993250511;
 			public const uint WarMantis_1965476837 = 1965476837;
 			public const uint TheLastBreath_1503609584 = 1503609584;
-			public const uint Classified_837865641 = 837865641;
+			public const uint VestmentoftheTakenKing_837865641 = 837865641;
 			public const uint WiseWarlockBoots_1634414641 = 1634414641;
 			public const uint LuxeWarlockBundle = 1157495845;
 			public const uint LightkinGloves = 3862902650;
@@ -20693,7 +20693,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint RevelersWings_1685769251 = 1685769251;
 			public const uint DreamofaNewWorld = 1321987864;
 			public const uint ShirosWatch = 3184365082;
-			public const uint RefulgentRevelryPlate = 3573734088;
+			public const uint Classified_3573734088 = 3573734088;
 			public const uint TripleTap_3400784728 = 3400784728;
 			public const uint RareGear_1275292259 = 1275292259;
 			public const uint H3258619352 = 3258619352;
@@ -20820,7 +20820,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint EthericColdsnaps_4186152725 = 4186152725;
 			public const uint TesseractTraceIV_1028913028 = 1028913028;
 			public const uint GeodesicKnot = 3734248160;
-			public const uint Classified_726878794 = 726878794;
+			public const uint StridesoftheTakenKing_726878794 = 726878794;
 			public const uint TheStag_2177524718 = 2177524718;
 			public const uint HiveBarrier_3888848980 = 3888848980;
 			public const uint ZavalasGazeProjection = 3624264409;
@@ -21299,7 +21299,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Osmosis_1774574192 = 1774574192;
 			public const uint HeavyHanded_2447449706 = 2447449706;
 			public const uint ChironsCure_2959022889 = 2959022889;
-			public const uint H2819867818 = 2819867818;
+			public const uint Classified_2819867818 = 2819867818;
 			public const uint GlimmerReplicator_2251779699 = 2251779699;
 			public const uint MasterworkWeapon_1441827671 = 1441827671;
 			public const uint VoltaicMirror = 3556461530;
@@ -21562,7 +21562,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SharpAim = 655492558;
 			public const uint BetterFailsafeThanSorry = 769740914;
 			public const uint OperationPiccolo = 769740915;
-			public const uint arms0name_260425472 = 260425472;
+			public const uint Classified_260425472 = 260425472;
 			public const uint ShadowsCloak_3984534842 = 3984534842;
 			public const uint H3131184199 = 3131184199;
 			public const uint CloakoftheEmperorsAgent_3984534843 = 3984534843;
@@ -21650,16 +21650,16 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SabrageSaluteEmote = 3099504414;
 			public const uint PrimalSiegeType1_417821705 = 417821705;
 			public const uint CombinationBlow = 2716335211;
-			public const uint NebulaS20WarlockThemed = 4183788693;
+			public const uint H4183788693 = 4183788693;
 			public const uint ShadowsGauntlets_3082625196 = 3082625196;
-			public const uint NebulaTwitchDrop = 4183788696;
+			public const uint H4183788696 = 4183788696;
 			public const uint H4183788697 = 4183788697;
-			public const uint NebulaS20HunterThemed = 4183788698;
-			public const uint NebulaS20TitanThemed = 4183788699;
+			public const uint H4183788698 = 4183788698;
+			public const uint H4183788699 = 4183788699;
 			public const uint H4183788700 = 4183788700;
 			public const uint HarmonicWaves = 4183788701;
-			public const uint NebulaINTLChinaExclusive = 4183788702;
-			public const uint NebulaINTLGenericEmblem = 4183788703;
+			public const uint H4183788702 = 4183788702;
+			public const uint H4183788703 = 4183788703;
 			public const uint CrimsonShell = 2716406907;
 			public const uint IncreasedHerealwaysPiecescollection = 2932504025;
 			public const uint SeasonofArrivalsEndsSoon = 2282815055;
@@ -21714,7 +21714,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Voltshot_2173046394 = 2173046394;
 			public const uint PraetorianOrnament_3439095932 = 3439095932;
 			public const uint ResidualDarknessEnergy_3366741029 = 3366741029;
-			public const uint RefulgentRevelryGreaves = 4054596410;
+			public const uint Classified_4054596410 = 4054596410;
 			public const uint VernalGrowthBoots_3333986015 = 3333986015;
 			public const uint SimulatorGreaves_680327840 = 680327840;
 			public const uint CrucibleArmorScrounger_2604918091 = 2604918091;
@@ -22028,7 +22028,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint AndOutFlytheWolves_4267361189 = 4267361189;
 			public const uint LegendaryEngram_2887493342 = 2887493342;
 			public const uint DecrepitTotem_2119721457 = 2119721457;
-			public const uint RefulgentRevelryGrips = 3564705134;
+			public const uint Classified_3564705134 = 3564705134;
 			public const uint TMEarpCustomCloakedStetson_3006077984 = 3006077984;
 			public const uint SidearmTargeting = 1134884869;
 			public const uint SolsticeMaskRekindled_721146704 = 721146704;

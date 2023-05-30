@@ -243,9 +243,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ForgesIgnited = 2114794836;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Flawless completions of the "Ghosts of the Deep" dungeon.
+			/// <para/>
+			/// 	Tracks from Season 21 onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_3251969937 = 3251969937;
+			public const uint GhostsoftheDeepFlawlessCompletions = 3251969937;
 			/// <summary>
 			/// 	The number of Gambit matches won this Season.
 			/// </summary>
@@ -473,9 +476,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeepStoneCryptGuidedGames = 2466440160;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Flawless solo completions of the "Ghosts of the Deep" dungeon.
+			/// <para/>
+			/// 	Tracks from Season 21 onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_2521923488 = 2521923488;
+			public const uint GhostsoftheDeepSoloFlawlessCompletions = 2521923488;
 			/// <summary>
 			/// 	The total number Flashpoint challenge completions.
 			/// <para/>
@@ -1690,9 +1696,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrownofSorrowCarries = 4154960946;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Completions of the "Ghosts of the Deep" dungeon.
+			/// <para/>
+			/// 	Tracks from Season 21 onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_3846201365 = 3846201365;
+			public const uint GhostsoftheDeepCompletions = 3846201365;
 			/// <summary>
 			/// 	The fastest completion time for "Eater of Worlds."
 			/// <para/>
