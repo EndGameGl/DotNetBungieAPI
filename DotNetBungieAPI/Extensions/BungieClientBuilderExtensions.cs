@@ -1,8 +1,6 @@
-﻿using DotNetBungieAPI.ApiBuilder;
-using DotNetBungieAPI.Service.Abstractions;
+﻿using DotNetBungieAPI.Service.Abstractions;
 using DotNetBungieAPI.Services.Implementations;
 using DotNetBungieAPI.Services.Implementations.ServiceConfigurations;
-using Microsoft.Extensions.Logging;
 
 namespace DotNetBungieAPI.Extensions;
 

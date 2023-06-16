@@ -1,4 +1,9 @@
-﻿using System.Net.Http;
+﻿using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Net.Sockets;
+using System.Threading;
+using System.Threading.Tasks;
 using DotNetBungieAPI.Service.Abstractions;
 
 namespace DotNetBungieAPI.Services.Implementations.ServiceConfigurations;
@@ -8,23 +13,43 @@ namespace DotNetBungieAPI.Services.Implementations.ServiceConfigurations;
 /// </summary>
 public sealed class DotNetBungieApiHttpClientConfiguration
 {
-    public DotNetBungieApiHttpClientConfiguration()
-    {
-        var httpClientHandler = new SocketsHttpHandler() 
+    /// <summary>
+    ///     Use this on SocketsHttpHandler to get IPv4 only
+    /// </summary>
+    public static Func<
+        SocketsHttpConnectionContext,
+        CancellationToken,
+        ValueTask<Stream>
+    > DefaultConnectCallback
+    { get; } =
+        async (context, cancellationToken) =>
         {
-            MaxConnectionsPerServer = 1000,
-            EnableMultipleHttp2Connections = true,
-            UseCookies = true,
-            PooledConnectionLifetime = TimeSpan.FromMinutes(1),
-            PooledConnectionIdleTimeout = TimeSpan.FromMinutes(20)
+            IPHostEntry ipHostEntry = await Dns.GetHostEntryAsync(
+                context.DnsEndPoint.Host,
+                cancellationToken
+            );
+            IPAddress? ipAddress =
+                ipHostEntry.AddressList.FirstOrDefault(
+                    i => i.AddressFamily is AddressFamily.InterNetwork
+                ) ?? throw new Exception($"No IP4 address for {context.DnsEndPoint.Host}");
+            TcpClient tcp = new();
+            await tcp.ConnectAsync(ipAddress, context.DnsEndPoint.Port, cancellationToken);
+            return tcp.GetStream();
         };
-        HttpClient = new HttpClient(httpClientHandler);
-    }
+
+    public DotNetBungieApiHttpClientConfiguration() { }
+
+    internal HttpClient? _overrideHttpClient;
+
+    /// <summary>
+    ///     Additional configs for http handler
+    /// </summary>
+    public Action<SocketsHttpHandler>? ConfigureHttpHandler { get; set; }
 
     /// <summary>
     ///     HttpClient that is used for this lib
     /// </summary>
-    public HttpClient HttpClient { get; internal set; }
+    public Action<HttpClient>? ConfigureHttpClient { get; set; }
 
     /// <summary>
     ///     Ratelimit that is used for interval
@@ -72,7 +97,7 @@ public sealed class DotNetBungieApiHttpClientConfiguration
     /// <param name="httpClient"></param>
     public void UseExternalHttpClient(HttpClient httpClient)
     {
-        HttpClient = Conditions.NotNull(httpClient);
+        _overrideHttpClient = Conditions.NotNull(httpClient);
     }
 
     /// <summary>
@@ -80,9 +105,7 @@ public sealed class DotNetBungieApiHttpClientConfiguration
     /// </summary>
     /// <param name="rateLimitPerInterval"></param>
     /// <param name="interval"></param>
-    public void SetRateLimitSettings(
-        int rateLimitPerInterval,
-        TimeSpan interval)
+    public void SetRateLimitSettings(int rateLimitPerInterval, TimeSpan interval)
     {
         RateLimitPerInterval = Conditions.Int32MoreThan(rateLimitPerInterval, 0);
         RateLimitInterval = interval;

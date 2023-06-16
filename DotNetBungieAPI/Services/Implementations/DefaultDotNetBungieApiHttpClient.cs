@@ -1,16 +1,16 @@
-﻿using System.Diagnostics;
-using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading;
-using System.Threading.Tasks;
-using DotNetBungieAPI.Models;
+﻿using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Authorization;
 using DotNetBungieAPI.Models.Exceptions;
 using DotNetBungieAPI.RateLimiting;
 using DotNetBungieAPI.Service.Abstractions;
 using DotNetBungieAPI.Services.Implementations.ServiceConfigurations;
 using Microsoft.Extensions.Logging;
+using System.Diagnostics;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.Implementations;
 
@@ -43,7 +43,25 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         _configuration = configuration;
         _logger = logger;
         _serializer = serializer;
-        _httpClient = httpClientConfiguration.HttpClient;
+
+        if (httpClientConfiguration._overrideHttpClient is null)
+        {
+            var httpHandler = new SocketsHttpHandler();
+            if (httpClientConfiguration.ConfigureHttpHandler is not null)
+            {
+                httpClientConfiguration.ConfigureHttpHandler(httpHandler);
+            }
+            _httpClient = new HttpClient(httpHandler);
+            if (httpClientConfiguration.ConfigureHttpClient is not null)
+            {
+                httpClientConfiguration.ConfigureHttpClient(_httpClient);
+            }
+        }
+        else
+        {
+            _httpClient = httpClientConfiguration._overrideHttpClient;
+        }
+
         _httpClient.DefaultRequestHeaders.Accept.Add(_jsonHeaderValue);
         _httpClient.DefaultRequestHeaders.Add("User-Agent", "DotNetBungieApi Client");
 
@@ -273,9 +291,7 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
                 var start = Stopwatch.GetTimestamp();
                 var resp = await _httpClient.SendAsync(requestMessage, httpCompletionOption, ct);
                 var end = Stopwatch.GetTimestamp();
-                _logger.LogDebug(
-                    "Executed request in {Time}s",
-                    (double)(end - start) / 10_000_000);
+                _logger.LogDebug("Executed request in {Time}s", (double)(end - start) / 10_000_000);
                 return resp;
             },
             cancellationToken
@@ -296,12 +312,16 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
 
         requestMessage.Headers.Accept.Add(_jsonHeaderValue);
         if (omitApiKey == false)
+        {
             requestMessage.Headers.TryAddWithoutValidation(ApiKeyHeader, _configuration.ApiKey);
+        }
         if (!string.IsNullOrEmpty(authToken))
+        {
             requestMessage.Headers.Authorization = new AuthenticationHeaderValue(
                 "Bearer",
                 authToken
             );
+        }
         return requestMessage;
     }
 
@@ -321,10 +341,12 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         requestMessage.Headers.TryAddWithoutValidation(ApiKeyHeader, _configuration.ApiKey);
 
         if (!string.IsNullOrEmpty(authToken))
+        {
             requestMessage.Headers.Authorization = new AuthenticationHeaderValue(
                 "Bearer",
                 authToken
             );
+        }
 
         if (content is null)
             return requestMessage;

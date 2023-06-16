@@ -1,7 +1,7 @@
-﻿using System.Diagnostics;
+﻿using DotNetBungieAPI.Models.Destiny;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using DotNetBungieAPI.Models.Destiny;
 
 namespace DotNetBungieAPI;
 
