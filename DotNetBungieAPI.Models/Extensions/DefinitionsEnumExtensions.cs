@@ -73,6 +73,15 @@ public static class DefinitionsEnumExtensions
         DefinitionsEnum.DestinyUnlockValueDefinition => nameof(DefinitionsEnum.DestinyUnlockValueDefinition),
         DefinitionsEnum.DestinyVendorDefinition => nameof(DefinitionsEnum.DestinyVendorDefinition),
         DefinitionsEnum.DestinyVendorGroupDefinition => nameof(DefinitionsEnum.DestinyVendorGroupDefinition),
+        DefinitionsEnum.DestinyEventCardDefinition => nameof(DefinitionsEnum.DestinyEventCardDefinition),
+        DefinitionsEnum.DestinyLoadoutColorDefinition => nameof(DefinitionsEnum.DestinyLoadoutColorDefinition),
+        DefinitionsEnum.DestinyLoadoutIconDefinition => nameof(DefinitionsEnum.DestinyLoadoutIconDefinition),
+        DefinitionsEnum.DestinyLoadoutNameDefinition => nameof(DefinitionsEnum.DestinyLoadoutNameDefinition),
+        DefinitionsEnum.DestinyLoadoutConstantsDefinition => nameof(DefinitionsEnum.DestinyLoadoutConstantsDefinition),
+        DefinitionsEnum.DestinySocialCommendationNodeDefinition => nameof(DefinitionsEnum.DestinySocialCommendationNodeDefinition),
+        DefinitionsEnum.DestinySocialCommendationDefinition => nameof(DefinitionsEnum.DestinySocialCommendationDefinition),
+        DefinitionsEnum.DestinyGuardianRankDefinition => nameof(DefinitionsEnum.DestinyGuardianRankDefinition),
+        DefinitionsEnum.DestinyGuardianRankConstantsDefinition => nameof(DefinitionsEnum.DestinyGuardianRankConstantsDefinition),
         _ => throw new ArgumentOutOfRangeException(nameof(definitionsEnum), definitionsEnum, null)
     };
 }
