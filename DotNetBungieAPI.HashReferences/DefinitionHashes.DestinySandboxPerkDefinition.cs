@@ -275,9 +275,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SupremeShardmaker = 2249177738;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Collecting Stasis shards gradually overflows the magazine.
 			/// </summary>
-			public const uint Classified_2988907973 = 2988907973;
+			public const uint HadopelagicTribute = 2988907973;
 			/// <summary>
 			/// 	Finishers generate Heavy ammo. Requires one-half of your Super energy.
 			/// </summary>
@@ -294,9 +294,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AllatOnce = 2304491085;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Adds a hallowed geometry appearance to your transmat effects.
 			/// </summary>
-			public const uint Classified_3369229133 = 3369229133;
+			public const uint HallowedGeometry = 3369229133;
 			/// <summary>
 			/// 	Improves weapon handling for equipped Power weapon.
 			/// </summary>
@@ -410,7 +410,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AutoRifleReserves = 3795081406;
 			/// <summary>
-			/// 	Trace Rifles mark bosses, which provide Heavy ammo for allies when defeated.
+			/// 	Improves Trace Rifles.
 			/// </summary>
 			public const uint HighPriority = 4085593937;
 			/// <summary>
@@ -2201,9 +2201,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint UpinSmoke = 1355900513;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	A Broken Blade has been claimed from the EDZ.
 			/// </summary>
-			public const uint Classified_2726708666 = 2726708666;
+			public const uint BrokenBlade_2726708666 = 2726708666;
 			public const uint H2075224581 = 2075224581;
 			/// <summary>
 			/// 	Adds a Cabal shield to your transmat effects.
@@ -2627,6 +2627,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Gain [Stasis] Stasis ability energy whenever you or a member of your fireteam stuns a Champion.
 			/// </summary>
 			public const uint ResonanceSiphon = 2438622839;
+			/// <summary>
+			/// 	Spark of Intellect
+			/// </summary>
+			public const uint SparkofIntellect_3799577115 = 3799577115;
 			public const uint H391720533 = 391720533;
 			public const uint H3631197147 = 3631197147;
 			/// <summary>
@@ -2682,6 +2686,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SpectralBlades_4099200371 = 4099200371;
 			/// <summary>
+			/// 	Glowing Embers
+			/// </summary>
+			public const uint GlowingEmbers_2067184090 = 2067184090;
+			/// <summary>
 			/// 	While you're on the Leviathan, your Arc abilities deal 25% more damage.
 			/// <para/>
 			/// 	This mod's abilities cannot stack across multiple copies.
@@ -2693,6 +2701,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	This weapon does more damage to enemies based on the number of SIVA nanites that attach to them.
 			/// </summary>
 			public const uint Parasitism = 481188932;
+			/// <summary>
+			/// 	Shining Embers
+			/// </summary>
+			public const uint ShiningEmbers_2067184091 = 2067184091;
 			/// <summary>
 			/// 	Final blows grant additional weapon range, stability, and accuracy when firing from the hip for an improved duration.
 			/// </summary>
@@ -2789,6 +2801,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeating a combatant with your Super spawns an elemental well that matches your subclass energy type.
 			/// </summary>
 			public const uint ElementalLight = 215599886;
+			public const uint H897751423 = 897751423;
 			public const uint H3507918532 = 3507918532;
 			/// <summary>
 			/// 	+3 Intellect ▲
@@ -2981,6 +2994,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1693851625 = 1693851625;
 			public const uint H1717552865 = 1717552865;
 			/// <summary>
+			/// 	Spark of Discipline
+			/// </summary>
+			public const uint SparkofDiscipline_1909790769 = 1909790769;
+			/// <summary>
 			/// 	[Heavy Attack]  : Use while sprinting with full energy to launch a repeatable heavy blink attack.
 			/// </summary>
 			public const uint Tesseract = 3703952997;
@@ -3023,13 +3040,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WhisperofRending = 279392736;
 			/// <summary>
-			/// 	Detect caches or resources within a 30-meter range while on the Tangled Shore.
-			/// </summary>
-			public const uint TangledShoreComboDetector = 157703400;
-			/// <summary>
 			/// 	Nearby [Stasis] Stasis shards track to your position.
 			/// </summary>
 			public const uint WhisperofConduction = 279392737;
+			/// <summary>
+			/// 	Detect caches or resources within a 30-meter range while on the Tangled Shore.
+			/// </summary>
+			public const uint TangledShoreComboDetector = 157703400;
 			/// <summary>
 			/// 	Collecting a [Stasis] Stasis shard grants a small amount of overshield, which falls off after 10 seconds. Collecting additional shards adds to the overshield and refreshes the timer.
 			/// </summary>
@@ -3273,9 +3290,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeprecatedPerk_3341701079 = 3341701079;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	A Broken Blade has been claimed from Savathûn's throne world.
 			/// </summary>
-			public const uint Classified_3779036825 = 3779036825;
+			public const uint BrokenBlade_3779036825 = 3779036825;
 			public const uint H4154482524 = 4154482524;
 			/// <summary>
 			/// 	Fires full auto. Nearby Rat Kings increase strength.
@@ -3315,9 +3332,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ImproveSideBoost = 1997025201;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Precision final blows while Creeping Attrition is active create a Stasis shard that returns to you. Collecting Stasis shards refills the magazine.
 			/// </summary>
-			public const uint Classified_2467329576 = 2467329576;
+			public const uint TithingHarvest = 2467329576;
 			/// <summary>
 			/// 	Your Solar Super projectiles have stronger target acquisition.
 			/// </summary>
@@ -3330,10 +3347,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Grants a chance of receiving a Legendary engram when completing strikes with a clan member.
 			/// </summary>
 			public const uint HawthornesHeroes = 3343397892;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2467329579 = 2467329579;
+			public const uint H2467329579 = 2467329579;
 			/// <summary>
 			/// 	This perk has been deprecated and no longer functions.
 			/// </summary>
@@ -3390,11 +3404,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Staggering Unstoppable Champions temporarily boosts weapon damage for allied players.
 			/// </summary>
 			public const uint Tenderizer = 3113172668;
-			public const uint H3277496477 = 3277496477;
 			/// <summary>
 			/// 	This weapon adapts its damage output and effectiveness against energy shields that don't match the weapon's damage type.
 			/// </summary>
 			public const uint AdaptiveMunitions_292864134 = 292864134;
+			public const uint H3277496477 = 3277496477;
 			/// <summary>
 			/// 	Chain precision shots to increase body shot damage.
 			/// </summary>
@@ -3547,6 +3561,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Massively improves weapon stability at the cost of reload speed.
 			/// </summary>
 			public const uint IronGrip_48746833 = 48746833;
+			/// <summary>
+			/// 	Spark of Discipline
+			/// </summary>
+			public const uint SparkofDiscipline_58417154 = 58417154;
 			public const uint H553524109 = 553524109;
 			/// <summary>
 			/// 	Grants a chance to receive additional Etheric and Baryon resources when collecting them in the Reef.
@@ -4023,9 +4041,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SleightofHand_744741393 = 744741393;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	A Broken Blade has been claimed from Nessus.
 			/// </summary>
-			public const uint Classified_2756333602 = 2756333602;
+			public const uint BrokenBlade_2756333602 = 2756333602;
 			/// <summary>
 			/// 	Increases your chance of finding Primary ammo while you have a Submachine Gun equipped.
 			/// </summary>
@@ -4115,6 +4133,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EnGarde_4061038884 = 4061038884;
 			public const uint H1616941615 = 1616941615;
+			/// <summary>
+			/// 	Spark of Resilience
+			/// </summary>
+			public const uint SparkofResilience_3379205219 = 3379205219;
 			/// <summary>
 			/// 	Grants melee and grenade energy on final blows with [Shield-Piercing] shield-piercing weapons or when a member of your fireteam stuns a Barrier Champion.
 			/// </summary>
@@ -4625,6 +4647,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Blocking damage partially reloads this weapon from reserves.
 			/// </summary>
 			public const uint ReplenishingAegis_3995195835 = 3995195835;
+			public const uint H389988615 = 389988615;
 			/// <summary>
 			/// 	Increases the damage bonus of Honed Edge when four bullets are consumed.
 			/// </summary>
@@ -5101,19 +5124,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint AntiBarrierScoutRifle_2748682815 = 2748682815;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_656925452 = 656925452;
+			public const uint H656925452 = 656925452;
 			public const uint H161751346 = 161751346;
 			/// <summary>
 			/// 	+3 Recovery ▲
 			/// </summary>
 			public const uint StatIncrease_964593849 = 964593849;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Rapid precision hits slow targets.
 			/// </summary>
-			public const uint Classified_656925455 = 656925455;
+			public const uint CreepingAttrition = 656925455;
 			public const uint H380739326 = 380739326;
 			/// <summary>
 			/// 	Fires a stable burst of four lightweight rounds.
@@ -6118,6 +6138,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Knockout_2711909103 = 2711909103;
 			public const uint H3052725208 = 3052725208;
 			/// <summary>
+			/// 	Spark of Intellect
+			/// </summary>
+			public const uint SparkofIntellect_4254674354 = 4254674354;
+			/// <summary>
 			/// 	Armor glow packages rotate daily. This package is available only on Solar days.
 			/// </summary>
 			public const uint SolarGlowPack = 3835936068;
@@ -6400,16 +6424,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Collector3 = 1227103211;
 			/// <summary>
-			/// 	+5 Resilience ▲
-			/// </summary>
-			public const uint StatIncrease_3337820677 = 3337820677;
-			/// <summary>
 			/// 	Defeating Cabal Centurions grants Gunsmith Materials.
 			/// <para/>
 			/// 	Mod does not stack.
 			/// <para/>
 			/// </summary>
 			public const uint SplinteredGladius = 279564069;
+			/// <summary>
+			/// 	+5 Resilience ▲
+			/// </summary>
+			public const uint StatIncrease_3337820677 = 3337820677;
 			/// <summary>
 			/// 	Precision kills with this weapon increase reload speed and cause the target to explode, dealing Solar damage to nearby enemies.
 			/// </summary>
@@ -7486,6 +7510,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PureMatterglassLens = 2971606971;
 			/// <summary>
+			/// 	Spark of Recovery
+			/// </summary>
+			public const uint SparkofRecovery_150120988 = 150120988;
+			/// <summary>
 			/// 	Aiming this weapon reduces the spread of its projectiles.
 			/// </summary>
 			public const uint SpreadShotPackage = 2749838780;
@@ -7546,6 +7574,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DeprecatedPerk_2830191999 = 2830191999;
 			public const uint H3281343768 = 3281343768;
 			public const uint SonarAmplifier = 3920748909;
+			/// <summary>
+			/// 	Spark of Strength
+			/// </summary>
+			public const uint SparkofStrength_355203433 = 355203433;
 			/// <summary>
 			/// 	While at full health, spinning up this weapon protects you with an Arc shield.
 			/// </summary>
@@ -8398,12 +8430,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Dodge multiple times in rapid succession.
 			/// </summary>
 			public const uint TheDance = 1446499335;
-			public const uint H3233122295 = 3233122295;
-			public const uint H2247707733 = 2247707733;
 			/// <summary>
 			/// 	Greatly increases reload speed of Hand Cannons, Sidearms, Submachine Guns, and Bows.
 			/// </summary>
 			public const uint EnhancedSmallArmsLoader = 271125664;
+			public const uint H3233122295 = 3233122295;
+			public const uint H2247707733 = 2247707733;
 			/// <summary>
 			/// 	Solar weapon final blows grant you and your allies increased recovery for a short duration. Stacks 3 times.
 			/// <para/>
@@ -8714,6 +8746,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ImmovableObject_3850590245 = 3850590245;
 			public const uint H129527218 = 129527218;
 			/// <summary>
+			/// 	Rapidly defeat combatants to gain Flare. Flare deals damage to combatants near you for a short period of time.
+			/// </summary>
+			public const uint Flare = 1657616861;
+			/// <summary>
 			/// 	Weighted Knife bounces twice and deals bonus damage.
 			/// </summary>
 			public const uint SkitteringStinger = 2220035512;
@@ -8840,9 +8876,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VoidAnalyzer = 461917659;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Broken Blades have been claimed from the EDZ, Throne World, and Nessus.
 			/// </summary>
-			public const uint Classified_3255691015 = 3255691015;
+			public const uint BrokenBlade_3255691015 = 3255691015;
 			/// <summary>
 			/// 	Increase XP gains by 8%.
 			/// </summary>
@@ -9913,6 +9949,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeprecatedPerk_337511166 = 337511166;
 			/// <summary>
+			/// 	Spark of Mobility
+			/// </summary>
+			public const uint SparkofMobility_3836532901 = 3836532901;
+			/// <summary>
 			/// 	Shatter or defeat targets with [Stasis] Stasis abilities or weapons to create a Stasis lance.
 			/// <para/>
 			/// 	[Shoot]  : Throw the lance to freeze targets on impact.
@@ -10962,6 +11002,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WillofLightArc = 1268418630;
 			/// <summary>
+			/// 	Spark of Mobility
+			/// </summary>
+			public const uint SparkofMobility_2325783062 = 2325783062;
+			/// <summary>
 			/// 	Landing consecutive hits on combatants with any Scout Rifle you are wielding disrupts combatants, stunning them, delaying ability energy regeneration and lowering combatant damage output. Strong against [Disruption] Overload Champions. 
 			/// <para/>
 			/// 	After any member of your fireteam disrupts a Champion, your Scout Rifles gain a temporary bonus to damage against Champions.
@@ -11397,9 +11441,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HandsOn_3006775211 = 3006775211;
 			/// <summary>
+			/// 	Shining Embers
+			/// </summary>
+			public const uint ShiningEmbers_3596266278 = 3596266278;
+			/// <summary>
 			/// 	Damaging targets with a Tangle grants melee energy.
 			/// </summary>
 			public const uint ThreadofFury = 3626472598;
+			/// <summary>
+			/// 	Glowing Embers
+			/// </summary>
+			public const uint GlowingEmbers_3596266279 = 3596266279;
 			public const uint H819518955 = 819518955;
 			/// <summary>
 			/// 	Sustained damage from this weapon lowers the target's damage output for a short duration.
@@ -11640,13 +11692,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WarmindsProtection = 2922182405;
 			/// <summary>
-			/// 	You gain a bonus to weapon damage against enemies that are near Warmind Cells.
-			/// </summary>
-			public const uint PowerofRasputin = 2922182406;
-			/// <summary>
 			/// 	Gain a powerful overshield while performing your finisher.
 			/// </summary>
 			public const uint ProximityWard_270858236 = 270858236;
+			/// <summary>
+			/// 	You gain a bonus to weapon damage against enemies that are near Warmind Cells.
+			/// </summary>
+			public const uint PowerofRasputin = 2922182406;
 			/// <summary>
 			/// 	Damaging a Warmind Cell creates a burst of suppressing Void energy. Additionally, you deal less damage to Warmind Cells.
 			/// </summary>
@@ -12181,6 +12233,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CabalArrival = 3794132046;
 			/// <summary>
+			/// 	Spark of Strength
+			/// </summary>
+			public const uint SparkofStrength_1388474298 = 1388474298;
+			/// <summary>
 			/// 	Effect lasts for 4 hours.
 			/// </summary>
 			public const uint H4Hours = 2785128172;
@@ -12268,6 +12324,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GunpowderGamble_528482921 = 528482921;
 			/// <summary>
+			/// 	Spark of Recovery
+			/// </summary>
+			public const uint SparkofRecovery_1606280379 = 1606280379;
+			/// <summary>
 			/// 	Chance to receive a powerful Prime Engram by defeating challenging enemies or completing Crucible matches.
 			/// </summary>
 			public const uint PrimeAttunement = 718603205;
@@ -12328,6 +12388,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Sustained kinetic damage to a target emits a shockwave that damages any nearby targets. Perk activates more quickly.
 			/// </summary>
 			public const uint KineticTremors_1394630221 = 1394630221;
+			/// <summary>
+			/// 	Spark of Resilience
+			/// </summary>
+			public const uint SparkofResilience_3823183348 = 3823183348;
 			/// <summary>
 			/// 	While you are standing on a sync plate or are near a conflux, weapon attacks that hit powerful Vex combatants have a high chance to stun those combatants.
 			/// </summary>

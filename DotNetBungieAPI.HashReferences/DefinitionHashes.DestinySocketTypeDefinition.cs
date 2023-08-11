@@ -29,6 +29,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2681002046 = 2681002046;
 			public const uint H1048457342 = 1048457342;
 			public const uint H3591138922 = 3591138922;
+			/// <summary>
+			/// 	Forge Challenger Medallions out of Cabal Gold to challenge Caiatl's commanders.
+			/// </summary>
+			public const uint HammerMods = 2490827969;
 			public const uint H3578367899 = 3578367899;
 			public const uint H863068219 = 863068219;
 			public const uint H1302305410 = 1302305410;
@@ -50,10 +54,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2969257429 = 2969257429;
 			public const uint H2433502642 = 2433502642;
 			public const uint H425522229 = 425522229;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_247618100 = 247618100;
+			public const uint H247618100 = 247618100;
 			public const uint H527189413 = 527189413;
 			public const uint H3293154908 = 3293154908;
 			public const uint H1478077715 = 1478077715;
@@ -113,6 +114,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3532509538 = 3532509538;
 			public const uint H346838107 = 346838107;
 			public const uint H3536113350 = 3536113350;
+			/// <summary>
+			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
+			/// </summary>
+			public const uint ForgeaCabalRune_1353861688 = 1353861688;
 			public const uint H1760132207 = 1760132207;
 			public const uint H382334831 = 382334831;
 			public const uint H3285609629 = 3285609629;
@@ -287,6 +292,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3137185038 = 3137185038;
 			public const uint H1423690021 = 1423690021;
 			public const uint H4140038855 = 4140038855;
+			/// <summary>
+			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
+			/// </summary>
+			public const uint ForgeaCabalRune_2280754071 = 2280754071;
 			public const uint H2059201594 = 2059201594;
 			public const uint H626181632 = 626181632;
 			public const uint H3419823292 = 3419823292;
@@ -304,6 +313,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3969713707 = 3969713707;
 			public const uint H3598087613 = 3598087613;
 			public const uint H123055755 = 123055755;
+			/// <summary>
+			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
+			/// </summary>
+			public const uint ForgeaCabalRune_2011817492 = 2011817492;
 			public const uint H397001014 = 397001014;
 			public const uint H635688920 = 635688920;
 			public const uint H3925369673 = 3925369673;
@@ -362,6 +375,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1679086229 = 1679086229;
 			public const uint H803202302 = 803202302;
 			public const uint H2199792720 = 2199792720;
+			/// <summary>
+			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
+			/// </summary>
+			public const uint ForgeaCabalRune_3214824759 = 3214824759;
 			public const uint H2199792721 = 2199792721;
 			public const uint H2071818427 = 2071818427;
 			public const uint H1339444764 = 1339444764;
@@ -370,6 +387,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3201856887 = 3201856887;
 			public const uint H1134387937 = 1134387937;
 			public const uint H922324817 = 922324817;
+			/// <summary>
+			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
+			/// </summary>
+			public const uint ForgeaCabalRune_863860824 = 863860824;
 			public const uint H1222554828 = 1222554828;
 			public const uint H1666149691 = 1666149691;
 			public const uint H1956816524 = 1956816524;
@@ -380,6 +401,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2951767025 = 2951767025;
 			public const uint H693938322 = 693938322;
 			public const uint H1538940465 = 1538940465;
+			/// <summary>
+			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
+			/// </summary>
+			public const uint ForgeaCabalRune_2985653107 = 2985653107;
 			public const uint H1656112293 = 1656112293;
 			public const uint H1689020801 = 1689020801;
 			public const uint H712731365 = 712731365;
@@ -479,6 +504,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1800347516 = 1800347516;
 			public const uint H3874540895 = 3874540895;
 			public const uint H3598049934 = 3598049934;
+			/// <summary>
+			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
+			/// </summary>
+			public const uint ForgeaCabalRune_3630866725 = 3630866725;
 			public const uint H2662554432 = 2662554432;
 			public const uint H1981824150 = 1981824150;
 			public const uint H3405240673 = 3405240673;
@@ -490,6 +519,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1114856913 = 1114856913;
 			public const uint H3036227398 = 3036227398;
 			public const uint H3036227399 = 3036227399;
+			/// <summary>
+			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
+			/// </summary>
+			public const uint ForgeaCabalRune_1005825536 = 1005825536;
 			public const uint H492342320 = 492342320;
 			public const uint H98261217 = 98261217;
 			public const uint H442106013 = 442106013;
@@ -513,6 +546,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H155944534 = 155944534;
 			public const uint H200433993 = 200433993;
 			public const uint H1218454666 = 1218454666;
+			/// <summary>
+			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
+			/// </summary>
+			public const uint ForgeaCabalRune_1010769350 = 1010769350;
 			public const uint H3125347289 = 3125347289;
 			public const uint H1044194607 = 1044194607;
 			public const uint H1234136044 = 1234136044;
@@ -592,6 +629,14 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1880758965 = 1880758965;
 			public const uint H2855860556 = 2855860556;
 			public const uint H703886689 = 703886689;
+			/// <summary>
+			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
+			/// </summary>
+			public const uint ForgeaCabalRune_473876112 = 473876112;
+			/// <summary>
+			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
+			/// </summary>
+			public const uint ForgeaCabalRune_3201271253 = 3201271253;
 			public const uint H3219375296 = 3219375296;
 			public const uint H1634230386 = 1634230386;
 			public const uint H547748568 = 547748568;
@@ -630,6 +675,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3615087219 = 3615087219;
 			public const uint H1629139019 = 1629139019;
 			public const uint H1543457446 = 1543457446;
+			/// <summary>
+			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
+			/// </summary>
+			public const uint ForgeaCabalRune_1466920730 = 1466920730;
 			public const uint H2870823902 = 2870823902;
 			public const uint H626374692 = 626374692;
 			public const uint H1074626990 = 1074626990;
@@ -778,6 +827,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1231208388 = 1231208388;
 			public const uint H3842136360 = 3842136360;
 			public const uint H1057435992 = 1057435992;
+			/// <summary>
+			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
+			/// </summary>
+			public const uint ForgeaCabalRune_1886434638 = 1886434638;
 			public const uint H2524125046 = 2524125046;
 			public const uint H2873296139 = 2873296139;
 			public const uint H2575784089 = 2575784089;
@@ -901,6 +954,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2203142669 = 2203142669;
 			public const uint H3333552458 = 3333552458;
 			public const uint H2025605402 = 2025605402;
+			/// <summary>
+			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
+			/// </summary>
+			public const uint ForgeaCabalRune_850670367 = 850670367;
 			public const uint H2421283727 = 2421283727;
 			public const uint H3106555125 = 3106555125;
 			public const uint H1215804696 = 1215804696;
@@ -958,6 +1015,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2218962841 = 2218962841;
 			public const uint H931739353 = 931739353;
 			public const uint H1952547326 = 1952547326;
+			/// <summary>
+			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
+			/// </summary>
+			public const uint ForgeaCabalRune_2132659382 = 2132659382;
 			public const uint H499094612 = 499094612;
 			public const uint H1501908160 = 1501908160;
 			public const uint H4034377832 = 4034377832;
@@ -1030,6 +1091,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3672192017 = 3672192017;
 			public const uint H1540673283 = 1540673283;
 			public const uint H3749518401 = 3749518401;
+			/// <summary>
+			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
+			/// </summary>
+			public const uint ForgeaCabalRune_231115588 = 231115588;
 			public const uint H747544935 = 747544935;
 			public const uint H785911724 = 785911724;
 			public const uint H773811792 = 773811792;
@@ -1058,10 +1123,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3558017824 = 3558017824;
 			public const uint H38362293 = 38362293;
 			public const uint H3372624220 = 3372624220;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3428200249 = 3428200249;
+			public const uint H3428200249 = 3428200249;
 			public const uint H322450115 = 322450115;
 			public const uint H2272968711 = 2272968711;
 			public const uint H1662536152 = 1662536152;

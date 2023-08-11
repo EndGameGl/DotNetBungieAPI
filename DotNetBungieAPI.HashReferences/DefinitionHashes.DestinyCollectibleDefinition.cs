@@ -19,6 +19,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint MaskofOptimacy_3677815862 = 3677815862;
 			public const uint HunterShell = 1943265942;
 			public const uint WarlockShell = 1943265943;
+			public const uint SunlitBoots = 878233860;
 			public const uint ThroneCleaver_1692129580 = 1692129580;
 			public const uint QiaosPassing_1622462036 = 1622462036;
 			/// <summary>
@@ -255,13 +256,13 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint MoonriderZero = 4256590448;
 			public const uint THESWARM_1159035925 = 1159035925;
 			/// <summary>
-			/// 	Claim New Monarchy reward engrams during Season 2 to earn this ornament. It is unlocked to the Coronation Cloak, Mark, and Bond.
-			/// </summary>
-			public const uint SovereignLionOrnament_3250602909 = 3250602909;
-			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
 			public const uint HardenedBasiliskLegguards = 309195765;
+			/// <summary>
+			/// 	Claim New Monarchy reward engrams during Season 2 to earn this ornament. It is unlocked to the Coronation Cloak, Mark, and Bond.
+			/// </summary>
+			public const uint SovereignLionOrnament_3250602909 = 3250602909;
 			public const uint IKELOS_HC_v102 = 3182852161;
 			public const uint UnixûrsalVoyager = 418462209;
 			public const uint GrandOverture = 1256729926;
@@ -419,9 +420,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EnduringConquerorHelmet = 390946400;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
-			public const uint Classified_2291541187 = 2291541187;
+			public const uint RefulgentRevelryPlate = 2291541187;
 			public const uint MakeshiftSuit_1875112350 = 1875112350;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
@@ -628,9 +629,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PruinaLusterBond = 3026705038;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
-			public const uint Classified_1307534290 = 1307534290;
+			public const uint RefulgentRevelryCloak = 1307534290;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
@@ -1794,6 +1795,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MisthiosStrides = 1755465580;
 			public const uint AncientApocalypseCloak = 3998414821;
+			public const uint SunlitMask = 338163643;
 			public const uint MindbendersAmbitionAdept = 1560041758;
 			/// <summary>
 			/// 	Equip this shader to change the color of your gear.
@@ -2213,9 +2215,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint RedMoonPhantomGrips = 3063402758;
 			public const uint GoFigure = 4274523513;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
-			public const uint Classified_866429799 = 866429799;
+			public const uint RefulgentRevelryStrides = 866429799;
 			public const uint ChatteringBone = 4274523514;
 			public const uint Bygones = 4274523515;
 			public const uint FrostveilMask_135010138 = 135010138;
@@ -2892,9 +2894,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SurvivorsJourney = 3258531396;
 			public const uint KitFox15 = 3227737237;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
-			public const uint Classified_1573244986 = 1573244986;
+			public const uint RefulgentRevelryMark = 1573244986;
 			/// <summary>
 			/// 	Equip this ornament to change the appearance of Falling Guillotine. Once you get an ornament, it's unlocked for all characters on your account.
 			/// </summary>
@@ -3062,6 +3064,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	[Finisher]  : Finish critically wounded combatants.
 			/// </summary>
 			public const uint SecurityBreach = 4041122482;
+			public const uint CrowningDuologue = 2962789260;
 			public const uint RecurrentImpact = 940862954;
 			/// <summary>
 			/// 	Complete the Pleasure Gardens challenge to unlock and equip this ornament.
@@ -3109,6 +3112,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint OmegaMechanosGauntlets_537968164 = 537968164;
 			public const uint UzumeRR4 = 1940697066;
 			public const uint KairosFunctionBoots_1154953200 = 1154953200;
+			public const uint SunlitGrips = 3376952018;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
@@ -3436,10 +3440,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint StalwartShell = 1729249365;
 			public const uint SilverwingKestrel = 2934861565;
 			public const uint LilacBellShell = 1729249366;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_845354692 = 845354692;
+			public const uint FinnedShell = 845354692;
 			public const uint IronCompanionGauntlets = 68102060;
 			public const uint ChallengerShell = 2605790343;
 			public const uint Centerfire = 1402999599;
@@ -3451,18 +3452,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Modifications for your ship's transmat systems, so you'll always arrive in style.
 			/// </summary>
 			public const uint GhostBlue = 1610157096;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_845354694 = 845354694;
+			public const uint FestiveNestShell = 845354694;
 			/// <summary>
 			/// 	Modifications for your ship's transmat systems, so you'll always arrive in style.
 			/// </summary>
 			public const uint CrucibleWhite = 1610157097;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_845354695 = 845354695;
+			public const uint FlotationShell = 845354695;
 			public const uint PhyllotacticSpiral = 3056237876;
 			/// <summary>
 			/// 	Modifications for your ship's transmat systems, so you'll always arrive in style.
@@ -3542,6 +3537,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
 			public const uint BloodLineageRobes = 2664100444;
+			public const uint SunlitHood = 2239413251;
 			public const uint AntiExtinctionHelm = 1363382824;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
@@ -3820,6 +3816,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
 			public const uint NeotericKiyotVest_2666590631 = 2666590631;
+			public const uint Sunkissed = 3653705777;
 			public const uint Dynamo = 537243028;
 			public const uint YellowspearShell = 525581014;
 			public const uint PondPals = 3653705780;
@@ -3967,9 +3964,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Reaper = 4115251101;
 			public const uint OneofUs = 1989835616;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
-			public const uint Classified_2316192868 = 2316192868;
+			public const uint RefulgentRevelryHelm = 2316192868;
 			public const uint ArchiveofTwilight = 1989835617;
 			public const uint CerisianLenses = 1989835618;
 			/// <summary>
@@ -4356,6 +4353,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	For Ghosts who can imagine a greater future.
 			/// </summary>
 			public const uint AgeofTomorrowShell = 1423610111;
+			public const uint SunlitStrides = 3778190444;
 			/// <summary>
 			/// 	Equip this Weapon Ornament to change the appearance of Sweet Business.
 			/// </summary>
@@ -4987,6 +4985,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this weapon ornament to change the appearance of Prometheus Lens. Once you get an ornament, it's unlocked on all characters on your account.
 			/// </summary>
 			public const uint Prism = 2777487976;
+			public const uint SunlitVest = 628820118;
 			/// <summary>
 			/// 	Equip this weapon ornament to change the appearance of Prometheus Lens. Once you get an ornament, it's unlocked on all characters on your account.
 			/// </summary>
@@ -5372,6 +5371,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint MeagerGlimmerBooster = 1868970713;
 			public const uint NotoriousReaperVest = 2517054448;
 			public const uint ProdigiousGlimmerBooster = 1868970714;
+			public const uint EphemeralSpark = 2740728653;
 			public const uint SaladinsPride = 2588450696;
 			public const uint ConsiderableGlimmerBooster = 1868970715;
 			public const uint YoungWolf = 2588450697;
@@ -5532,6 +5532,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint GiveThemWar = 689172690;
 			public const uint FightForever = 689172691;
 			public const uint IronCompanionPlate = 1226117972;
+			public const uint SunlitGreaves = 2960479796;
 			/// <summary>
 			/// 	Equip this weapon ornament to change the appearance of the Witherhoard. Once you get an ornament, it's unlocked for all characters on your account.
 			/// </summary>
@@ -5715,13 +5716,13 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint IronTruageGauntlets_2490058271 = 2490058271;
 			public const uint TheUnderdog = 2342294643;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Apply this shader to change the color of your gear.
 			/// </summary>
-			public const uint Classified_8924490 = 8924490;
+			public const uint ArborealRefuge = 8924490;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Apply this shader to change the color of your gear.
 			/// </summary>
-			public const uint Classified_8924491 = 8924491;
+			public const uint RefinedRevels = 8924491;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
@@ -5831,9 +5832,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint IronRemembranceVestments = 3806620913;
 			public const uint FireVictoriousShell = 542358705;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Modifications for your ship's transmat systems, so you'll always arrive in style.
 			/// </summary>
-			public const uint Classified_3378064292 = 3378064292;
+			public const uint HallowedGeometry = 3378064292;
 			public const uint StarMapShell = 542358706;
 			public const uint CosmosShell = 542358707;
 			public const uint TangledWebHood = 3996572015;
@@ -5900,9 +5901,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint AngelLazuli = 1350262225;
 			public const uint AvalonCourser = 1350262226;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
-			public const uint Classified_334045791 = 334045791;
+			public const uint RefulgentRevelryGreaves = 334045791;
 			public const uint LeonineCourser = 1350262227;
 			/// <summary>
 			/// 	Complete "Spire of Stars" on Prestige difficulty in Season 3 to unlock and equip this ornament.
@@ -6840,6 +6841,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SpringFountainEffects = 3615111897;
 			public const uint VoidHolster = 3628887764;
 			public const uint AbsolutelyCursed = 1044596212;
+			public const uint SunlitCloak = 4253414591;
 			public const uint DazzlingIridescence = 182117726;
 			public const uint PiraticalAmbitions = 1044596215;
 			/// <summary>
@@ -6956,8 +6958,8 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Antiquity = 3928759267;
 			public const uint GripsofTrepidation = 3241936507;
-			public const uint AgronaPR2_2284504867 = 2284504867;
 			public const uint RobeoftheExile = 314242534;
+			public const uint AgronaPR2_2284504867 = 2284504867;
 			public const uint ProphetSnow_670856535 = 670856535;
 			public const uint InauguralRevelryWraps = 2667470362;
 			public const uint HonorableDuelistShell = 2210618577;
@@ -7025,18 +7027,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Claim Vanguard Tactician reward engrams during Season 2 to earn this ornament. It's unlocked for all Crucible armor sets.
 			/// </summary>
 			public const uint SoaringSwordOrnament_3178834489 = 3178834489;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1356765724 = 1356765724;
+			public const uint ScoutZeppelin = 1356765724;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
 			public const uint VirtuousGauntlets = 359135064;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1356765725 = 1356765725;
+			public const uint WellTraveled = 1356765725;
 			/// <summary>
 			/// 	Equip this weapon ornament to change the appearance of Duality. Once you get an ornament, it's unlocked for all characters on your account.
 			/// </summary>
@@ -7801,9 +7797,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint IntrepidInquiryBond_313615996 = 313615996;
 			public const uint DreambaneVest = 317834747;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Finish critically wounded combatants.
 			/// </summary>
-			public const uint Classified_2563220295 = 2563220295;
+			public const uint GyroscopicForce = 2563220295;
 			public const uint NatureoftheBeast_188603154 = 188603154;
 			public const uint ResilienceMod = 2192839390;
 			public const uint IronFellowshipBoots = 2990128832;
@@ -8052,7 +8048,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SolsticeGreavesMagnificent = 3288728455;
 			public const uint H1670619536 = 1670619536;
 			public const uint H1670619537 = 1670619537;
-			public const uint H1670619538 = 1670619538;
+			public const uint MSTART = 1670619538;
 			public const uint HarmonicWaves = 1670619539;
 			public const uint H1670619540 = 1670619540;
 			/// <summary>
@@ -8236,9 +8232,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint EpochalIntegration = 4126754457;
 			public const uint MoonfangX7Gauntlets = 925567444;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
-			public const uint Classified_395357829 = 395357829;
+			public const uint RefulgentRevelryGloves = 395357829;
 			/// <summary>
 			/// 	Win Iron Banner matches during Season 2 to earn this ornament. It is unlocked to the Iron Truage Casque, Helm, and Hood.
 			/// </summary>
@@ -8325,10 +8321,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
 			public const uint ValkyrianRobes = 830157523;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1832123372 = 1832123372;
+			public const uint WickedImplement = 1832123372;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
@@ -8511,13 +8504,13 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LunarGloom = 1552790513;
 			public const uint HoldfastVest = 875023280;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
-			public const uint Classified_1241060044 = 1241060044;
+			public const uint RefulgentRevelryHood = 1241060044;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
-			public const uint Classified_943660773 = 943660773;
+			public const uint RefulgentRevelryGrips = 943660773;
 			/// <summary>
 			/// 	Collecting an Orb of Power causes you to gain 1 temporary Armor Charge.
 			/// </summary>
@@ -8885,6 +8878,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Modifications for your ship's transmat systems, so you'll always arrive in style.
 			/// </summary>
 			public const uint WormGodIncarnation = 2466440635;
+			public const uint SunlitHelm = 2957293195;
 			public const uint KineticSiphon = 2431194845;
 			public const uint TecheunsRegaliaRobes = 2030494495;
 			public const uint PathfindersGreaves = 3550210774;
@@ -9547,9 +9541,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint GraspofEir = 1720564805;
 			public const uint DisciplineMod = 2145798388;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
-			public const uint Classified_318230023 = 318230023;
+			public const uint RefulgentRevelryBoots = 318230023;
+			public const uint SunlitPlate = 2585022798;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
@@ -9588,21 +9583,21 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Warminded = 2691646946;
 			public const uint CorruptingEchoCover = 2581341491;
 			public const uint SecretSignal = 2040168509;
-			public const uint ColdComfort_2691646947 = 2691646947;
 			/// <summary>
 			/// 	Equip this shader to change the color of your gear.
 			/// </summary>
 			public const uint AncientBeliever = 304436264;
+			public const uint ColdComfort_2691646947 = 2691646947;
 			public const uint TabulaRasa = 2040168510;
+			/// <summary>
+			/// 	Equip this shader to change the color of your gear.
+			/// </summary>
+			public const uint AncientDefender = 304436265;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
 			public const uint ForbiddenVisageBoots = 2184985286;
 			public const uint ArcticArsenalist = 2691646948;
-			/// <summary>
-			/// 	Equip this shader to change the color of your gear.
-			/// </summary>
-			public const uint AncientDefender = 304436265;
 			public const uint JadesBurrow = 2040168511;
 			public const uint IKELOSImperative = 2691646949;
 			public const uint ApparatusBelli = 2691646950;
@@ -10334,19 +10329,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this Weapon Ornament to change the appearance of Riskrunner.
 			/// </summary>
 			public const uint SummerStorm = 1138396119;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2734927629 = 2734927629;
+			public const uint OffMyLawn = 2734927629;
 			public const uint BrayTechResearchersBond = 540417845;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2734927630 = 2734927630;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2734927631 = 2734927631;
+			public const uint Sandrail = 2734927630;
+			public const uint BumperBoat = 2734927631;
 			/// <summary>
 			/// 	Spend Renown by looting a Lost Sector cache while pledged to Dead Orbit.
 			/// </summary>
@@ -10859,9 +10845,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DreambaneHood = 2885181587;
 			public const uint Witherhoard = 1250332035;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Equip this weapon ornament to change the appearance of Wicked Implement. Once you get an ornament, it's unlocked for all characters on your account.
 			/// </summary>
-			public const uint Classified_76597798 = 76597798;
+			public const uint Agkistrodon5sr = 76597798;
 			public const uint DutyBoundAdept = 1018453227;
 			public const uint AnnealedShaperBoots = 2743329589;
 			public const uint WovenFiresmithMask = 3011708183;
@@ -10920,14 +10906,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat enemies with Pulse Rifles in the Crucible during Season 3 to unlock and equip this ornament.
 			/// </summary>
 			public const uint FireForgedTitanArmOrnament = 2016925863;
+			public const uint SunlitGloves = 1839021930;
 			public const uint IllicitInvaderGrips = 196451442;
 			public const uint CoffinNail = 2372599378;
 			public const uint DreambaneGrips = 3722517805;
 			public const uint TheEpicurean_2352965634 = 2352965634;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
-			public const uint Classified_757544795 = 757544795;
+			public const uint RefulgentRevelryRobes = 757544795;
 			public const uint Riiswalker = 2426968370;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
@@ -10937,6 +10924,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
 			public const uint ContenderHelm = 2014516437;
+			public const uint SunlitRobes = 147420830;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
@@ -11099,9 +11087,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint MultibandShell = 2662815247;
 			public const uint VerglasCurve = 1184569884;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
-			public const uint Classified_3792212338 = 3792212338;
+			public const uint RefulgentRevelryBond = 3792212338;
 			public const uint PenumbralMark = 3762215346;
 			public const uint SolsticeStridesRenewed_3901057803 = 3901057803;
 			public const uint MoonfangX7Cloak = 2035484887;
@@ -11510,9 +11498,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint FleetSkaIX = 3214020311;
 			public const uint EyeofMidnight = 2056946095;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
-			public const uint Classified_1747786284 = 1747786284;
+			public const uint RefulgentRevelryMask = 1747786284;
 			public const uint KollaMaulerIX = 3214020314;
 			public const uint PitfallSouterE5D = 3214020315;
 			public const uint NotoriousCollectorBond = 3919867743;
@@ -12149,6 +12137,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat enemies in Trials of the Nine and complete a flawless ticket during Season 2 to unlock and equip this ornament.
 			/// </summary>
 			public const uint TrialsPrestigeOrnament_870188686 = 870188686;
+			public const uint SunlitGauntlets = 1279550458;
 			public const uint OutlawedInvaderBond = 2462402921;
 			public const uint AcanthaD = 2287445840;
 			/// <summary>
@@ -12344,9 +12333,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint H3Connections = 242571790;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
-			public const uint Classified_2526257467 = 2526257467;
+			public const uint RefulgentRevelryVest = 2526257467;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
@@ -12383,9 +12372,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Austringer_2857012626 = 2857012626;
 			public const uint Rose_2857012627 = 2857012627;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
-			public const uint Classified_2263387453 = 2263387453;
+			public const uint RefulgentRevelryGauntlets = 2263387453;
 			public const uint PyrrhicAscentBond = 976212812;
 			public const uint PhotosuedeHood = 2471995984;
 			public const uint WildwoodGrips = 3309618801;
@@ -12894,14 +12883,15 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint PlateofOptimacy_1311590065 = 1311590065;
 			public const uint CrushingGuardCODA_3978492031 = 3978492031;
 			public const uint OutlawedInvaderVest = 2878115626;
+			public const uint SunlitBond = 3772015271;
 			public const uint SolsticeGraspsMajestic_3419199044 = 3419199044;
 			public const uint AspirantGloves = 1617391017;
 			public const uint SunsteadGreavesMagnificent = 228052833;
 			public const uint Tropopause = 272381026;
 			public const uint ParsecTSu_2163821760 = 2163821760;
 			public const uint TyrannyofHeaven = 301231525;
-			public const uint IgneousHammer = 3256611590;
 			public const uint SubtleCalamity = 301231526;
+			public const uint IgneousHammer = 3256611590;
 			public const uint VernalGrowthGauntlets_327385967 = 327385967;
 			public const uint ArsenicBite4b = 301231527;
 			/// <summary>
@@ -14986,6 +14976,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint PribinaD_1296095694 = 1296095694;
 			public const uint JustinCase_2618435518 = 2618435518;
 			public const uint BetterDevils_1296095695 = 1296095695;
+			public const uint SunlitMark = 3327471639;
 			public const uint TwoSides = 1956280338;
 			public const uint NatureofTruth = 1956280339;
 			/// <summary>

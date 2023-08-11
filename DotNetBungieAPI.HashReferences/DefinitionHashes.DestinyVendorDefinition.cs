@@ -534,9 +534,12 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SleepersBundle = 3002413496;
 			public const uint FocusedDecoding_502095006 = 502095006;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Contains a full set of Refulgent Revelry Warlock universal ornaments.
+			/// <para/>
+			/// 	Bundle price reduced for each item you already own.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_16256973 = 16256973;
+			public const uint RefulgentRevelryWarlockBundle = 16256973;
 			/// <summary>
 			/// 	This bundle contains Season 3 shaders, Bright Engrams, and Bright Dust.
 			/// </summary>
@@ -1192,9 +1195,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Melees_2747252909 = 2747252909;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Contains 3 Solstice accessories.
 			/// </summary>
-			public const uint Classified_892256595 = 892256595;
+			public const uint SolsticeEventPack = 892256595;
 			/// <summary>
 			/// 	Sparrows awarded from Bright Engrams.
 			/// </summary>
@@ -1397,9 +1400,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TrialsClanEngram = 2853812547;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Contains a full set of Refulgent Revelry Hunter universal ornaments.
+			/// <para/>
+			/// 	Bundle price reduced for each item you already own.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_3199605594 = 3199605594;
+			public const uint RefulgentRevelryHunterBundle = 3199605594;
 			/// <summary>
 			/// 	This engram will contain a powerful weapon and piece of armor, with a high chance of Exotics.
 			/// </summary>
@@ -1656,9 +1662,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Melees_2091720363 = 2091720363;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Contains 3 Solstice accessories.
+			/// <para/>
+			/// 	Bundle price will be reduced for each item already owned.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_540582675 = 540582675;
+			public const uint TriphibianBundle = 540582675;
 			/// <summary>
 			/// 	This bundle contains Bright Engrams and random shaders.
 			/// </summary>
@@ -3814,9 +3823,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Abilities_1429791273 = 1429791273;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Contains a full set of Refulgent Revelry Titan universal ornaments.
+			/// <para/>
+			/// 	Bundle price reduced for each item you already own.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_3397973200 = 3397973200;
+			public const uint RefulgentRevelryTitanBundle = 3397973200;
 			/// <summary>
 			/// 	Contains a full set of Nemean Titan universal ornaments.
 			/// <para/>

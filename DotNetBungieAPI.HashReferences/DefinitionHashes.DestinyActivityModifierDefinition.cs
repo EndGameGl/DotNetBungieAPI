@@ -253,6 +253,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MayhemRules = 1792878913;
 			/// <summary>
+			/// 	Rapidly defeat combatants to unleash waves of paracausal fire around you dealing damage to nearby combatants.
+			/// </summary>
+			public const uint Flare_2023659610 = 2023659610;
+			/// <summary>
 			/// 	Ability recharge time: Slowed
 			/// <para/>
 			/// 	Special ammo is earned by engaging in combat.
@@ -309,9 +313,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IronBannerFortress = 3666600199;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	{var:4005007457}% increase to incoming Arc damage.
+			/// <para/>
+			/// 	Activates at the Abyss depth.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_2335472130 = 2335472130;
+			public const uint ArcThreat_2335472130 = 2335472130;
 			/// <summary>
 			/// 	You've been challenged to wield the following:
 			/// <para/>
@@ -359,7 +366,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Enemies have more health and are not staggered by damage.
 			/// </summary>
-			public const uint Iron = 1463769380;
+			public const uint Iron_1463769380 = 1463769380;
 			/// <summary>
 			/// 	+50% Stasis effectiveness.
 			/// </summary>
@@ -407,9 +414,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OverchargedMachineGun = 795009574;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Combatants are more resistant to stunning from damage.
+			/// <para/>
+			/// 	Activates at the Abyss Depth.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_608792222 = 608792222;
+			public const uint Iron_608792222 = 608792222;
 			/// <summary>
 			/// 	You've been challenged to wield the following:
 			/// <para/>
@@ -494,7 +504,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	{var:4005007457}% increase to incoming Stasis damage.
 			/// </summary>
-			public const uint StasisThreat = 512042454;
+			public const uint StasisThreat_512042454 = 512042454;
 			/// <summary>
 			/// 	You will face combatants with [Solar] Solar and [Void] Void shields.
 			/// <para/>
@@ -533,7 +543,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Enemies throw grenades significantly more often.
 			/// </summary>
-			public const uint ScorchedEarth = 703904464;
+			public const uint ScorchedEarth_703904464 = 703904464;
 			/// <summary>
 			/// 	Initial Exotic drop rate boosts: {var:219516062}
 			/// </summary>
@@ -708,9 +718,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionFoes_1990363418 = 1990363418;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Being hit by a melee attack slows you.
+			/// <para/>
+			/// 	Activates at the Abyss depth.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_2218138543 = 2218138543;
+			public const uint ChillTouch_2218138543 = 2218138543;
 			/// <summary>
 			/// 	Power Level: All combatants in this activity will be at least {var:3112783658} points over your current Power level.
 			/// </summary>
@@ -736,7 +749,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Activates at the Midnight Depth.
 			/// <para/>
 			/// </summary>
-			public const uint HotChampions = 160666887;
+			public const uint HotChampions_160666887 = 160666887;
 			/// <summary>
 			/// 	Round 1: Fallen
 			/// <para/>
@@ -934,11 +947,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	{var:4005007457}% increase to incoming Arc damage.
 			/// </summary>
-			public const uint ArcThreat = 186409259;
+			public const uint ArcThreat_186409259 = 186409259;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Grenades are thrown significantly more often by combatants.
+			/// <para/>
+			/// 	Activates at the Abyss depth.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_3508356703 = 3508356703;
+			public const uint ScorchedEarth_3508356703 = 3508356703;
 			/// <summary>
 			/// 	Combatants: Fallen
 			/// <para/>
@@ -953,9 +969,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OfAllTrades = 201968501;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Exploder units have more health.
+			/// <para/>
+			/// 	Activates at the Abyss depth.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_2878853690 = 2878853690;
+			public const uint Martyr_2878853690 = 2878853690;
 			/// <summary>
 			/// 	All ammunition drops are significantly reduced.
 			/// </summary>
@@ -1039,9 +1058,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LoopingCatalyst = 2098788044;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Defeating Champions creates a pool of fire.
+			/// <para/>
+			/// 	Activates at the Abyss Depth.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_1277060983 = 1277060983;
+			public const uint HotChampions_1277060983 = 1277060983;
 			/// <summary>
 			/// 	Void damage increases slightly from all sources.
 			/// </summary>
@@ -1217,9 +1239,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SaboteursInbound = 536144090;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	{var:4005007457}% increase to incoming Solar damage.
+			/// <para/>
+			/// 	Activates at the Abyss depth.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_535530834 = 535530834;
+			public const uint SolarThreat_535530834 = 535530834;
 			/// <summary>
 			/// 	Extra Champions
 			/// <para/>
@@ -1297,9 +1322,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Epitaph = 998275325;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	{var:4005007457}% increase to incoming Stasis damage.
+			/// <para/>
+			/// 	Activates at the Abyss depth.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_1825276066 = 1825276066;
+			public const uint StasisThreat_1825276066 = 1825276066;
 			/// <summary>
 			/// 	This playlist contains Rift, Showdown, and Survival. When you launch, it will randomly select one of the modes for you to play.
 			/// <para/>
@@ -1335,6 +1363,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Glass = 317879233;
 			/// <summary>
+			/// 	When close to a fireteam member, gain increased Recovery and Super regeneration.
+			/// </summary>
+			public const uint Firebound = 4246169082;
+			/// <summary>
 			/// 	To win, defeat your opponents to score more points than them! Every player is equipped with a Scorch Cannon.
 			/// <para/>
 			/// 	Scorch Cannon: A heavy-impact weapon borrowed from the Eliksni. Shots can detonate on impact or can be charged by holding and releasing the actuator for a larger explosion.
@@ -1360,7 +1392,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	{var:4005007457}% increase to incoming Solar damage.
 			/// </summary>
-			public const uint SolarThreat = 3517267764;
+			public const uint SolarThreat_3517267764 = 3517267764;
 			/// <summary>
 			/// 	Being hit by a melee attack slows you.
 			/// <para/>
@@ -1422,6 +1454,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint ContestantsDisciplesoftheNeigh_1456687498 = 1456687498;
+			/// <summary>
+			/// 	When close to a fireteam member, gain increased Recovery and Super regeneration.
+			/// </summary>
+			public const uint Flare_880073302 = 880073302;
 			/// <summary>
 			/// 	Attacks matching the periodically rotating focused element do more damage. Other elemental damage is reduced. Incoming damage is unaffected.
 			/// </summary>
@@ -1530,6 +1566,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint AChallengeAwaits_22073894 = 22073894;
+			/// <summary>
+			/// 	Stoke the bonfire!
+			/// <para/>
+			/// 	Ignition Carriers: Glowing combatants that drop Igniters when defeated.
+			/// <para/>
+			/// 	Igniters: Objects that can be picked up and thrown into the bonfire to stoke the flames.
+			/// <para/>
+			/// 	Bonfire: Stoke the bonfire with Igniters to make the flames grow. The more the bonfire is stoked, the more Silver Leaves can be transformed into Silver Ash. Equipping Sunlit armor and transforming Silver Leaves increases rewards at the end of the activity.
+			/// <para/>
+			/// 	Taken Interference: Taken will disrupt the bonfire throughout the activity. Defeat them to reignite the bonfire!
+			/// <para/>
+			/// </summary>
+			public const uint BonfireBashRules = 529965434;
 			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>

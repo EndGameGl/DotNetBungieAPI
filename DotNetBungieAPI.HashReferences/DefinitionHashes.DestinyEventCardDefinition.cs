@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.HashReferences
 		public static class EventCards
 		{
 			/// <summary>
-			/// 	Complete limited-time Event Card challenges to earn various rewards and make progress toward event Seal completion.
+			/// 	Complete limited-time Event Card challenges to earn various rewards and make progress toward event Title completion.
 			/// </summary>
 			public const uint Solstice = 3841872876;
 			/// <summary>

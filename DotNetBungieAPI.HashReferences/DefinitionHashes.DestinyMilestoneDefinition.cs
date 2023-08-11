@@ -135,6 +135,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DaresofEternityPowerfulChallenge = 295129163;
 			/// <summary>
+			/// 	Complete Solstice bounties.
+			/// </summary>
+			public const uint TheTreasureHunt = 127888611;
+			/// <summary>
 			/// 	Investigate the strange Hive behavior near the Scarlet Keep.
 			/// </summary>
 			public const uint LegacyShadowkeep_1002733485 = 1002733485;

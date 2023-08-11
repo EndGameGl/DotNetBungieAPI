@@ -256,10 +256,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	"Grow fat from strength."
 			/// </summary>
 			public const uint LeviathanPrestige_4206123728 = 4206123728;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2065029818 = 2065029818;
+			public const uint H2065029818 = 2065029818;
 			/// <summary>
 			/// 	The Dreaming City, The Vestian Web
 			/// </summary>
@@ -1060,9 +1057,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AMysteriousDisturbance_845208861 = 845208861;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	A high-value concentration of egregore coral has been detected fathoms beneath the ocean.
+			/// <para/>
+			/// 	Dive to the Abyss depth of Titan's methane sea, fight back the horrors that lurk there, and recover all the egregore coral you can.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_1821570930 = 1821570930;
+			public const uint OperationFulguriteAbyss = 1821570930;
 			/// <summary>
 			/// 	PsiOps Battleground: EDZ
 			/// </summary>
@@ -6266,9 +6266,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LegendaryPsiOpsBattlegroundCosmodrome_1791255194 = 1791255194;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Ahsa's signature has been detected deep beneath Kraken Mare, behind enemy lines. The Vanguard fears she has been captured by Xivu Arath.
+			/// <para/>
+			/// 	Prepare your armaments and venture once more into Titan's methane sea to find and rescue Ahsa.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_831332675 = 831332675;
+			public const uint BarotraumaOperationFulguriteAbyss = 831332675;
 			/// <summary>
 			/// 	You've saved Saint-14, but you've left the Corridors of Time largely unexplored. See what you can find.
 			/// </summary>
@@ -6834,10 +6837,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Stem the tide of Taken flowing into the European Dead Zone from beneath the waves.
 			/// </summary>
 			public const uint NightfallLakeofShadows_3372160277 = 3372160277;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3201461223 = 3201461223;
+			public const uint H3201461223 = 3201461223;
 			/// <summary>
 			/// 	The Fanatic has returned. Take him down and finish the job you started.
 			/// </summary>
@@ -8881,6 +8881,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Simulated Skill-Set Training: Survive the harsh weather as you take down the Vex.
 			/// </summary>
 			public const uint SimulationSurvival = 2361093350;
+			/// <summary>
+			/// 	Celebrate Solstice by building a bonfire in the EAZ.
+			/// <para/>
+			/// 	Burn Silver Leaves on the fire and transform them into Silver Ash to upgrade your Sunlit armor!
+			/// <para/>
+			/// </summary>
+			public const uint BonfireBash = 1677410683;
 			/// <summary>
 			/// 	Lake of Shadows
 			/// </summary>

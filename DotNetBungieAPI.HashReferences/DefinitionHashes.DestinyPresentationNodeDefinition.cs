@@ -481,7 +481,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ForestofEchoes = 2619080017;
 			public const uint Strikes_245634203 = 245634203;
 			public const uint Titan_1115203081 = 1115203081;
-			public const uint H899815774 = 899815774;
 			/// <summary>
 			/// 	Legacy Guardian honors.
 			/// </summary>
@@ -576,7 +575,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Claim rewards during the Season of Plunder.
 			/// </summary>
 			public const uint SeasonofPlunder = 1073993173;
-			public const uint H3669416503 = 3669416503;
 			public const uint General_3839307707 = 3839307707;
 			public const uint BiteofTrepidationSuit = 335984516;
 			public const uint Exploration_4294103237 = 4294103237;
@@ -751,7 +749,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint AbyssWalkerSet = 956723102;
 			public const uint SunsApexSet = 956723103;
 			public const uint Nightmares_3580665945 = 3580665945;
-			public const uint H2639586890 = 2639586890;
 			/// <summary>
 			/// 	Complete all Season of Arrivals flawless Triumphs.
 			/// </summary>
@@ -1526,6 +1523,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint MarkoftheFallingStar = 1083613128;
 			public const uint Lightfall_3352340500 = 3352340500;
 			public const uint InauguralRevelrySuit_639454544 = 639454544;
+			public const uint SunlitBond = 2240694672;
 			public const uint DrainedSolsticeSuit_639454547 = 639454547;
 			public const uint PhoenixsAscentBond = 2240694673;
 			public const uint FusionRifles_2737711334 = 2737711334;
@@ -1834,6 +1832,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint CaptainsLog = 1428811610;
 			public const uint LionsReignMark = 673009850;
 			public const uint Strikes_2675905563 = 2675905563;
+			public const uint SunlitMark = 673009851;
 			public const uint Events_2131583069 = 2131583069;
 			public const uint ExploreNessus = 149091036;
 			public const uint ExoticQuest_1460167656 = 1460167656;
@@ -1846,6 +1845,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DebrisofDreams = 1926009491;
 			public const uint Kentarch3Suit_3793629341 = 3793629341;
 			public const uint Hunter_1813275880 = 1813275880;
+			public const uint H859884376 = 859884376;
 			/// <summary>
 			/// 	Perks that are active while in the Gambit Prime playlist.
 			/// <para/>
@@ -2091,6 +2091,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SerpentsGloryMantle = 3253657966;
 			public const uint RocketLaunchers_1501717862 = 1501717862;
 			public const uint VeritasSuit_1469373079 = 1469373079;
+			public const uint SunlitCloak = 3253657967;
 			public const uint General_1808459779 = 1808459779;
 			public const uint Raids_4025982223 = 4025982223;
 			public const uint SolsticeSet_3291541569 = 3291541569;
