@@ -1,8 +1,11 @@
-﻿namespace DotNetBungieAPI.Models.Authorization;
+﻿using DotNetBungieAPI.Models.Exceptions;
+
+namespace DotNetBungieAPI.Models.Authorization;
 
 /// <summary>
 ///     Class for tracking state of authorization code
 /// </summary>
+[Obsolete("Use AsyncAuthenticationState insted, this class may be deleted later")]
 public class AuthorizationState
 {
     /// <summary>
@@ -60,7 +63,7 @@ public class AuthorizationState
     public void ReceiveCode(string code, string state)
     {
         if (State != state)
-            throw new Exception("State you provided doesn't match awaiter state.");
+            throw new AuthenticationStateMismatchException(State, state);
         CallbackReceiveTime = DateTime.UtcNow;
         DidReceiveCallback = true;
         Code = code;
