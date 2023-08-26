@@ -11,7 +11,7 @@ internal static class Helpers
     internal static readonly string[] ForbiddenSymbols =
     {
         " ", ":", "-", "\\", "/", "(", ")", "'", ".", "[", "]", "\"", "?", ",", "", "…", "!", "%", "+", "#",
-        "{", "}", " ", "—", "~", "|", ";", "–", "=", "&", ">"
+        "{", "}", " ", "—", "~", "|", ";", "–", "=", "&", ">", "¡"
     };
 
     internal static readonly string NewLine = Environment.NewLine;

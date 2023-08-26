@@ -5,6 +5,14 @@ namespace DotNetBungieAPI.HashReferences
 		public static class Milestones
 		{
 			/// <summary>
+			/// 	({var:3624160918} of 3) Complete ritual activities.
+			/// </summary>
+			public const uint WeeklyRitualChallenge_1049998277 = 1049998277;
+			/// <summary>
+			/// 	({var:3624160918} of 3) Complete ritual activities.
+			/// </summary>
+			public const uint WeeklyRitualChallenge_1049998279 = 1049998279;
+			/// <summary>
 			/// 	Complete matches in the Ranked 3v3 playlist.
 			/// </summary>
 			public const uint Ranked3v3PlaylistChallenge_3129232757 = 3129232757;
@@ -13,23 +21,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EternityBeckons = 2351139753;
 			/// <summary>
-			/// 	Collect Candy by defeating combatants anywhere in the system while wearing a Festival of the Lost mask.
-			/// </summary>
-			public const uint SweetnessandLight = 4043054273;
-			/// <summary>
 			/// 	Find Eris Morn at the encampment in Sanctuary.
 			/// </summary>
 			public const uint LegacyShadowkeep_3742917278 = 3742917278;
-			/// <summary>
-			/// 	Complete Vanguard playlists using the same subclass element as the currently active elemental surge. Higher difficulties grant the most efficient progress.
-			/// </summary>
-			public const uint VanguardPlaylistChallenge = 1942283261;
 			/// <summary>
 			/// 	Complete the "Darkness's Doorstep" mission.
 			/// </summary>
 			public const uint BeyondLight_2099432263 = 2099432263;
 			/// <summary>
-			/// 	({var:3575677317} of 4) Complete Iron Banner matches as either Arc, Void, or Strand subclasses.
+			/// 	({var:3575677317} of 4) Complete Iron Banner matches.
 			/// </summary>
 			public const uint IronBannerChallenge_4111516200 = 4111516200;
 			/// <summary>
@@ -46,7 +46,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint VaultofGlass = 1888320892;
 			public const uint FishingRallyNessus = 3910722976;
 			/// <summary>
-			/// 	({var:3575677317} of 4) Complete Iron Banner matches as either Arc, Void, or Strand subclasses.
+			/// 	({var:3575677317} of 4) Complete Iron Banner matches.
 			/// </summary>
 			public const uint IronBannerChallenge_4111516205 = 4111516205;
 			/// <summary>
@@ -54,11 +54,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Lightfall = 3947408975;
 			/// <summary>
-			/// 	({var:3575677317} of 4) Complete Iron Banner matches as either Arc, Void, or Strand subclasses.
+			/// 	({var:3575677317} of 4) Complete Iron Banner matches.
 			/// </summary>
 			public const uint IronBannerChallenge_4111516206 = 4111516206;
 			/// <summary>
-			/// 	({var:3575677317} of 4) Complete Iron Banner matches as either Arc, Void, or Strand subclasses.
+			/// 	({var:3575677317} of 4) Complete Iron Banner matches.
 			/// </summary>
 			public const uint IronBannerChallenge_4111516207 = 4111516207;
 			/// <summary>
@@ -70,9 +70,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Gambit = 1863840101;
 			/// <summary>
+			/// 	Defeat combatants in Savathûn's Spire.
+			/// </summary>
+			public const uint ArxArcanusI = 2870173601;
+			/// <summary>
 			/// 	Complete Dares of Eternity with a score of {var:3648290880} or higher.
 			/// </summary>
 			public const uint DaresofEternityPinnacleChallenge = 475790763;
+			/// <summary>
+			/// 	Defeat combatants in Savathûn's Spire.
+			/// </summary>
+			public const uint ArxArcanusII = 2870173602;
+			/// <summary>
+			/// 	Defeat combatants in Savathûn's Spire.
+			/// </summary>
+			public const uint ArxArcanusIII = 2870173603;
 			/// <summary>
 			/// 	Complete the "Darkness's Doorstep" mission.
 			/// </summary>
@@ -118,13 +130,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LiveFireExercises = 2594202463;
 			/// <summary>
+			/// 	Complete this Exotic mission. Higher difficulty versions grant bonus progress.
+			/// </summary>
+			public const uint WeeklyExoticRotatorChallenge_1027301269 = 1027301269;
+			/// <summary>
 			/// 	Get a team score of 100,000 or better.
 			/// </summary>
 			public const uint LightfallWeeklyCampaignMission = 793110320;
 			/// <summary>
-			/// 	Complete matches in any Crucible playlists.
+			/// 	Complete this Exotic mission. Higher difficulty versions grant bonus progress.
 			/// </summary>
-			public const uint CruciblePlaylistChallenge = 3312774044;
+			public const uint WeeklyExoticRotatorChallenge_3557475774 = 3557475774;
 			/// <summary>
 			/// 	Complete Bounties for the Drifter to earn Powerful Rewards.
 			/// </summary>
@@ -135,9 +151,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DaresofEternityPowerfulChallenge = 295129163;
 			/// <summary>
-			/// 	Complete Solstice bounties.
+			/// 	Open reward chests in the Altars of Summoning.
 			/// </summary>
-			public const uint TheTreasureHunt = 127888611;
+			public const uint VictorsTributeI_3031368925 = 3031368925;
+			/// <summary>
+			/// 	Open reward chests in the Altars of Summoning.
+			/// </summary>
+			public const uint VictorsTributeII = 3031368926;
+			/// <summary>
+			/// 	Open reward chests in the Altars of Summoning.
+			/// </summary>
+			public const uint VictorsTributeI_3031368927 = 3031368927;
 			/// <summary>
 			/// 	Investigate the strange Hive behavior near the Scarlet Keep.
 			/// </summary>
@@ -151,13 +175,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ItsintheCards = 3603098564;
 			/// <summary>
-			/// 	Complete Salvage activities on Legend difficulty.
+			/// 	Complete Savathûn's Spire on Legend difficulty.
 			/// </summary>
-			public const uint SalvageLegend = 3790350713;
-			/// <summary>
-			/// 	Complete Dawning bounties.
-			/// </summary>
-			public const uint DawningDuty = 1719934518;
+			public const uint LegendSavathûnsSpire = 2705676777;
 			/// <summary>
 			/// 	Complete bounties from this vendor to earn powerful rewards.
 			/// </summary>
@@ -167,14 +187,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NimbussChallenge = 2450931861;
 			/// <summary>
-			/// 	Complete Gambit matches.
-			/// </summary>
-			public const uint WeeklyGambitChallenge = 3448738070;
-			/// <summary>
 			/// 	Answer the distress signal on Titan.
 			/// </summary>
-			public const uint BeneaththeWaves = 4142352494;
+			public const uint LegacyBeneaththeWaves = 4142352494;
 			public const uint FishingRallyEDZ = 2727582952;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified = 540415767;
 			/// <summary>
 			/// 	Complete a round of Dares of Eternity.
 			/// </summary>
@@ -183,6 +203,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Long live the King…
 			/// </summary>
 			public const uint KingsFall = 292102995;
+			/// <summary>
+			/// 	Complete this Exotic mission. Higher difficulty versions grant bonus progress.
+			/// </summary>
+			public const uint WeeklyExoticRotatorChallenge_4244749316 = 4244749316;
 			/// <summary>
 			/// 	Weekly Dungeon Challenge.
 			/// </summary>
@@ -196,6 +220,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TrialsofOsirisChallenge = 3007559996;
 			/// <summary>
+			/// 	Complete the "Way of the Witch" mission.
+			/// </summary>
+			public const uint ToilandTrouble = 2842215657;
+			/// <summary>
 			/// 	Complete "The Arrival" mission.
 			/// </summary>
 			public const uint TheWitchQueen = 1538430224;
@@ -203,6 +231,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the mission "A Guardian Rises."
 			/// </summary>
 			public const uint AGuardianRises = 3862169973;
+			/// <summary>
+			/// 	Open reward chests in Season of the Witch activities and complete daily bounties to earn powerful rewards.
+			/// </summary>
+			public const uint RiteofCulling = 644555645;
 			/// <summary>
 			/// 	Complete matches in the Crucible Labs playlist.
 			/// </summary>
@@ -251,10 +283,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete Defiant Battlegrounds on Legend difficulty.
 			/// </summary>
 			public const uint DefyTyranny = 1610873105;
-			/// <summary>
-			/// 	Complete Salvage activities.
-			/// </summary>
-			public const uint BigHauler = 1437564680;
 			public const uint FishingRallyThroneWorld = 3146348009;
 			/// <summary>
 			/// 	Yuna from the Mugunghwa Legion wishes to meet you. Find her in the Bazaar.
@@ -276,6 +304,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Earn special rewards while the Iron Banner is unfurled!
 			/// </summary>
 			public const uint IronBanner = 3427325023;
+			/// <summary>
+			/// 	({var:3624160918} of 3) Complete ritual activities.
+			/// </summary>
+			public const uint WeeklyRitualChallenge_1049998276 = 1049998276;
 			/// <summary>
 			/// 	Complete the Partition while in possession of a Polymorphic Shellcode.
 			/// </summary>

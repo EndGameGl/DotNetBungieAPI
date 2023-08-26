@@ -371,6 +371,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HeroicMenagerieCompletions = 3281994512;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2858709048 = 2858709048;
+			/// <summary>
 			/// 	The lifetime high score for "Proving Grounds" in Nightfall.
 			/// <para/>
 			/// 	Tracks from Season 13 onward.
@@ -391,6 +395,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint DeadeyeTitleGildings = 3103683778;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3617877772 = 3617877772;
 			/// <summary>
 			/// 	The total number of completions of "Last Wish."
 			/// <para/>
@@ -464,6 +472,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint ChampionsDefeated_41075005 = 41075005;
+			/// <summary>
+			/// 	Highest score earned in Savathûn's Spire as a fireteam.
+			/// </summary>
+			public const uint TheWitchQueensFavorite = 4251961586;
 			/// <summary>
 			/// 	The number of times the Exotic quest "Presage" has been completed.
 			/// </summary>
@@ -548,6 +560,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Nightstalkerdefeats = 451582922;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_4247075612 = 4247075612;
+			/// <summary>
 			/// 	The total number of Guardians carried to their first completion of "Spire of Stars."
 			/// <para/>
 			/// 	Tracks from Season 10 onward.
@@ -580,6 +596,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The fastest completion time for "Last Wish" this week.
 			/// </summary>
 			public const uint LastWishTimeTrial_4264455694 = 4264455694;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_4172195891 = 4172195891;
 			/// <summary>
 			/// 	The total number of Guardians carried to their first completion of "Root of Nightmares."
 			/// <para/>
@@ -790,12 +810,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PrimevalsDefeated_2781393679 = 2781393679;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_124026888 = 124026888;
+			/// <summary>
 			/// 	The total number of "Root of Nightmares" completions using Guided Games.
 			/// <para/>
 			/// 	Tracks from Season 20 onward.
 			/// <para/>
 			/// </summary>
 			public const uint RootofNightmaresGuidedGames = 2500984290;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2552956848 = 2552956848;
 			/// <summary>
 			/// 	The lifetime high score for "Birthplace Of The Vile" in Nightfall.
 			/// </summary>
@@ -862,6 +890,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint Undefeated = 3212106215;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_510466839 = 510466839;
 			/// <summary>
 			/// 	The total number of final blows with Swords.
 			/// <para/>
@@ -983,6 +1015,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PitofHeresyCompletions = 1451729471;
 			/// <summary>
+			/// 	Highest rank achieved for Season of the Witch.
+			/// <para/>
+			/// 	Tracks from Season 22 onward.
+			/// <para/>
+			/// </summary>
+			public const uint SeasonoftheWitchRank = 2245851613;
+			/// <summary>
 			/// 	Legendary Astral Alignment Completions
 			/// </summary>
 			public const uint LegendaryAstralAlignmentCompletions = 479416348;
@@ -1098,6 +1137,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint NightfallAGardenWorldScore = 3543375894;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2864676971 = 2864676971;
 			/// <summary>
 			/// 	The total number of final blows with Grenade Launchers.
 			/// <para/>
@@ -1314,19 +1357,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DualityFlawlessCompletions = 1034442994;
 			/// <summary>
-			/// 	The number of targets eliminated as a Dawnblade.
-			/// <para/>
-			/// 	Tracks from Season 1 onward.
-			/// <para/>
-			/// </summary>
-			public const uint Dawnbladedefeats = 30426544;
-			/// <summary>
 			/// 	The number of Guardians carried to their first flawless ticket this Season while the player has the Light for the Lost emblem equipped.
 			/// <para/>
 			/// 	Tracks from Season 10 onward.
 			/// <para/>
 			/// </summary>
 			public const uint LighthouseCarries_301249970 = 301249970;
+			/// <summary>
+			/// 	The number of targets eliminated as a Dawnblade.
+			/// <para/>
+			/// 	Tracks from Season 1 onward.
+			/// <para/>
+			/// </summary>
+			public const uint Dawnbladedefeats = 30426544;
 			/// <summary>
 			/// 	The number of times your Gambit Rank resets.
 			/// <para/>
@@ -1747,6 +1790,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BowFinalBlows = 3522276357;
 			/// <summary>
+			/// 	Total Altars of Summoning encounters completed.
+			/// <para/>
+			/// 	Higher difficulty encounters grant more progress.
+			/// <para/>
+			/// </summary>
+			public const uint AthameBearer = 2433669988;
+			/// <summary>
 			/// 	The total number of Guardians carried to their first completion of "Last Wish."
 			/// <para/>
 			/// 	Tracks from Season 10 onward.
@@ -1871,19 +1921,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HandCannonFinalBlows = 2117204340;
 			/// <summary>
-			/// 	The total number of Nightfall challenge completions.
-			/// <para/>
-			/// 	Tracked from Season 4 onward.
-			/// <para/>
-			/// </summary>
-			public const uint NightfallChallengeCompletions = 2959623395;
-			/// <summary>
 			/// 	The total number of completions of "Root of Nightmares."
 			/// <para/>
 			/// 	Tracks from Season 20 onward.
 			/// <para/>
 			/// </summary>
 			public const uint RootofNightmaresCompletions = 321051454;
+			/// <summary>
+			/// 	The total number of Nightfall challenge completions.
+			/// <para/>
+			/// 	Tracked from Season 4 onward.
+			/// <para/>
+			/// </summary>
+			public const uint NightfallChallengeCompletions = 2959623395;
 			/// <summary>
 			/// 	The fastest completion time for "Headlong: Time Trial" achieved this Season.
 			/// </summary>

@@ -5,9 +5,9 @@ namespace DotNetBungieAPI.HashReferences
 		public static class Artifacts
 		{
 			/// <summary>
-			/// 	"Should be reliable, but if it stops working, you'll know almost immediately." —Deputy Commander Sloane
+			/// 	A foreboding staff bearing engravings of Hive runes and bound with mystical charms.
 			/// </summary>
-			public const uint NPARepulsionRegulator = 2894222926;
+			public const uint AcolytesStaff = 2894222926;
 		}
 	}
 }

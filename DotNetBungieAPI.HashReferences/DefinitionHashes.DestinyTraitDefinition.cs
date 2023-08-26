@@ -62,13 +62,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The metric data from the current week.
 			/// </summary>
 			public const uint Weekly = 2356777566;
+			public const uint H2774395792 = 2774395792;
+			public const uint H856705125 = 856705125;
 			/// <summary>
 			/// 	Feast on the energy of your defeated foes. Final blows restore you to full health, grant grenade energy, and extend Devour.
 			/// </summary>
 			public const uint Devour = 3078132110;
 			public const uint H2652561225 = 2652561225;
 			public const uint H4034468802 = 4034468802;
+			public const uint H929402123 = 929402123;
 			public const uint H2100142349 = 2100142349;
+			public const uint H170945933 = 170945933;
 			public const uint H1861210184 = 1861210184;
 			public const uint H374319058 = 374319058;
 			public const uint H1866367371 = 1866367371;
@@ -81,6 +85,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint StasisCrystal = 3385340084;
 			public const uint H3300229618 = 3300229618;
+			public const uint H1056186694 = 1056186694;
 			/// <summary>
 			/// 	A creature woven from pure Strand matter that seeks nearby targets and attacks, dealing damage.
 			/// </summary>
@@ -128,6 +133,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Jolted = 3221118171;
 			public const uint H2729780558 = 2729780558;
 			public const uint H569207711 = 569207711;
+			public const uint H2976021378 = 2976021378;
 			public const uint H3359893241 = 3359893241;
 			public const uint H1531673855 = 1531673855;
 			/// <summary>
@@ -136,6 +142,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Cure = 3263723277;
 			public const uint H3607584152 = 3607584152;
 			public const uint H1030789163 = 1030789163;
+			/// <summary>
+			/// 	Quests from the current Season.
+			/// </summary>
+			public const uint Seasonal_4105527943 = 4105527943;
 			public const uint H192828432 = 192828432;
 			/// <summary>
 			/// 	The metric data from the current Season.
@@ -147,6 +157,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3439101959 = 3439101959;
 			public const uint H2893978702 = 2893978702;
 			public const uint H1221030001 = 1221030001;
+			public const uint H2973844452 = 2973844452;
 			public const uint H151064318 = 151064318;
 			/// <summary>
 			/// 	Your weapons are enhanced by the power of the Traveler and deal increased damage to combatants. 
@@ -208,6 +219,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3090596947 = 3090596947;
 			public const uint H2455696884 = 2455696884;
 			public const uint H195373008 = 195373008;
+			public const uint H2908763903 = 2908763903;
 			public const uint H764811604 = 764811604;
 			/// <summary>
 			/// 	No Time Filters
@@ -236,7 +248,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1823621418 = 1823621418;
 			public const uint H2971373688 = 2971373688;
 			public const uint H3906525419 = 3906525419;
+			public const uint H3904180892 = 3904180892;
+			public const uint H3904180893 = 3904180893;
 			public const uint H3367459877 = 3367459877;
+			public const uint H3904180895 = 3904180895;
 			public const uint H2716563063 = 2716563063;
 			/// <summary>
 			/// 	Quests from past expansions
@@ -244,16 +259,16 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ThePast = 2387836362;
 			public const uint H2582082890 = 2582082890;
 			/// <summary>
-			/// 	Quests from the current season
-			/// </summary>
-			public const uint Seasonal_3671004794 = 3671004794;
-			/// <summary>
 			/// 	The target is taken out of any active abilities and cannot activate any abilities or movement modes while suppression persists. Afflicted combatants cannot fire their weapons.
 			/// <para/>
 			/// 	When suppressed, [Disruption] Overload Champions are stunned.
 			/// <para/>
 			/// </summary>
 			public const uint Suppression = 2578642829;
+			/// <summary>
+			/// 	Quests from the current Season.
+			/// </summary>
+			public const uint Seasonal_3671004794 = 3671004794;
 			public const uint H482679394 = 482679394;
 			public const uint H1250893192 = 1250893192;
 			public const uint H3602983853 = 3602983853;

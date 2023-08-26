@@ -70,6 +70,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HeroicAdventure = 175275639;
 			/// <summary>
+			/// 	Stats for Relic Crucible modes.
+			/// </summary>
+			public const uint Relic = 3416859494;
+			/// <summary>
 			/// 	Stats related to the Iron Banner Supremacy PVP mode
 			/// </summary>
 			public const uint IronBannerSupremacy = 4212882650;

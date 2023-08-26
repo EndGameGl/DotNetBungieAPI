@@ -79,6 +79,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TrialsEngram_3496337357 = 3496337357;
 			/// <summary>
+			/// 	Contains 3 Season of the Witch accessories.
+			/// <para/>
+			/// 	Bundle price will be reduced for each item already owned.
+			/// <para/>
+			/// </summary>
+			public const uint WitheredHoarderBundle = 3200418367;
+			/// <summary>
 			/// 	Ships awarded from Bright Engrams.
 			/// </summary>
 			public const uint Ships_1700209178 = 1700209178;
@@ -152,6 +159,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Supers_2840194832 = 2840194832;
 			/// <summary>
+			/// 	Fine-tune your subclass builds.
+			/// </summary>
+			public const uint Fragments_998725389 = 998725389;
+			/// <summary>
 			/// 	Contains a full set of Dawning 2017 Titan universal ornaments.
 			/// <para/>
 			/// 	Bundle price reduced for each item you already own.
@@ -180,6 +191,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint SeashorePack = 900229448;
+			/// <summary>
+			/// 	Embrace the unique abilities of your class.
+			/// </summary>
+			public const uint ClassAbilities_667903501 = 667903501;
 			/// <summary>
 			/// 	A bundle of 15 Synthweave Templates.
 			/// </summary>
@@ -260,6 +275,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ArcGlowPack = 1255668925;
 			/// <summary>
+			/// 	Fine-tune your subclass builds.
+			/// </summary>
+			public const uint Fragments_1820924542 = 1820924542;
+			/// <summary>
 			/// 	Contains missing unowned class armor from the Revelry Jubilant Bright Engram.
 			/// <para/>
 			/// 	Acquisition of these items also unlocks their appearance as universal ornaments.
@@ -289,6 +308,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Emotes_3835871914 = 3835871914;
 			/// <summary>
+			/// 	Make things go boom.
+			/// </summary>
+			public const uint Grenades_1626995479 = 1626995479;
+			/// <summary>
 			/// 	A one-time bundle to kick off Season of Dawn.
 			/// <para/>
 			/// 	Contains Bright Engrams, Gleaming Boons, and Bright Dust.
@@ -299,6 +322,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Stay mobile, stay lethal.
 			/// </summary>
 			public const uint Movement_527609457 = 527609457;
+			/// <summary>
+			/// 	Power up your subclass with unique attributes.
+			/// </summary>
+			public const uint Aspects_84023067 = 84023067;
 			/// <summary>
 			/// 	Armor for your current class that may be awarded from Bright Engrams.
 			/// </summary>
@@ -353,6 +380,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Ships awarded from Bright Engrams.
 			/// </summary>
 			public const uint Ships_29827358 = 29827358;
+			/// <summary>
+			/// 	Fine-tune your subclass builds.
+			/// </summary>
+			public const uint Fragments_1806740915 = 1806740915;
 			/// <summary>
 			/// 	Contains a full set of Intrepid Hunter universal ornaments.
 			/// <para/>
@@ -417,6 +448,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HardysTitanBundle = 386798240;
 			/// <summary>
+			/// 	Get back in the fight with this selection of top-selling accessories you may have missed!
+			/// </summary>
+			public const uint ForgottenFortunesPack = 820060201;
+			/// <summary>
+			/// 	An engram with a predestined outcome.
+			/// <para/>
+			/// 	Contains a new Exotic if any of the possible rewards remain to be collected. Preview contents for possible rewards.
+			/// <para/>
+			/// </summary>
+			public const uint ExoticEngram_4157267485 = 4157267485;
+			/// <summary>
 			/// 	Contains missing unowned class armor from the Revelry Jubilant Bright Engram.
 			/// <para/>
 			/// 	Acquisition of these items also unlocks their appearance as universal ornaments.
@@ -447,6 +489,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	This bundle contains Bright Engrams, Fireteam Medallions, and Bright Dust. One-time purchase.
 			/// </summary>
 			public const uint OpulentStarterPack_2740148581 = 2740148581;
+			/// <summary>
+			/// 	Contains a full set of Biosphere Explorer Titan universal ornaments.
+			/// <para/>
+			/// 	Bundle price will be reduced for each item already owned.
+			/// <para/>
+			/// </summary>
+			public const uint BiosphereExplorerTitanBundle = 3699104251;
 			/// <summary>
 			/// 	This bundle contains a complete seasonal armor set for Warlocks. One-time purchase.
 			/// </summary>
@@ -528,6 +577,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Show your love for Crimson Days with these exclusive Ghost shells and emotes.
 			/// </summary>
 			public const uint GhostsandEmotes_208334058 = 208334058;
+			/// <summary>
+			/// 	Power up your subclass with unique attributes.
+			/// </summary>
+			public const uint Aspects_2634769701 = 2634769701;
 			/// <summary>
 			/// 	This bundle contains a weapon ornament for Sleeper Simulant, a Legendary Sparrow, a Legendary transmat effect, and a Fireteam Medallion.
 			/// </summary>
@@ -626,16 +679,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Year1ShaderBundle = 2983128512;
 			/// <summary>
-			/// 	This bundle contains an exclusive weapon ornament, a transmat effect, and Bright Dust.
-			/// </summary>
-			public const uint ExfiltrationBundle = 3550590206;
-			/// <summary>
 			/// 	Contains a full set of Festival of the Lost 2019 Hunter universal ornaments.
 			/// <para/>
 			/// 	Bundle price reduced for each item you already own.
 			/// <para/>
 			/// </summary>
 			public const uint SkeletalHunterBundle = 381390892;
+			/// <summary>
+			/// 	This bundle contains an exclusive weapon ornament, a transmat effect, and Bright Dust.
+			/// </summary>
+			public const uint ExfiltrationBundle = 3550590206;
 			/// <summary>
 			/// 	This bundle contains an exclusive weapon ornament, a transmat effect, and Bright Dust.
 			/// </summary>
@@ -725,6 +778,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Strand_732837095 = 732837095;
 			/// <summary>
+			/// 	Contains 3 Le Monarque themed accessories.
+			/// <para/>
+			/// 	Bundle price will be reduced for each item already owned.
+			/// <para/>
+			/// </summary>
+			public const uint VolatileThroneBundle = 551138056;
+			/// <summary>
 			/// 	Sparrows awarded from Bright Engrams.
 			/// </summary>
 			public const uint Sparrows_209252281 = 209252281;
@@ -758,6 +818,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint PiscesWhatYouDidThereEmotePack = 3646176398;
+			/// <summary>
+			/// 	Stay mobile, stay lethal.
+			/// </summary>
+			public const uint Movement_3194559894 = 3194559894;
 			/// <summary>
 			/// 	An engram containing Season of Defiance weapons.
 			/// </summary>
@@ -805,6 +869,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RoadtoRedemptionBundle = 329984368;
 			/// <summary>
+			/// 	Contains a full set of Festival of the Lost 2023 Titan universal ornaments.
+			/// <para/>
+			/// 	Bundle price reduced for each item you already own.
+			/// <para/>
+			/// </summary>
+			public const uint CrawlingChaosTitanBundle = 2045619296;
+			/// <summary>
+			/// 	Contains a full set of Hinterland Hunter universal ornaments.
+			/// <para/>
+			/// 	Bundle price will be reduced for each item already owned.
+			/// <para/>
+			/// </summary>
+			public const uint HinterlandHunterBundle = 1623673663;
+			/// <summary>
 			/// 	This bundle contains Bright Engrams, a weapon ornament, and a transmat effect.
 			/// </summary>
 			public const uint MasterArcherBundle = 329984369;
@@ -832,6 +910,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	This bundle contains an exclusive Ghost Shell, Sparrow, and jumpship, as well as shaders.
 			/// </summary>
 			public const uint AwakenedBundle = 329984373;
+			/// <summary>
+			/// 	Unleash the concentrated potential of your subclass.
+			/// </summary>
+			public const uint Supers_183427272 = 183427272;
 			/// <summary>
 			/// 	Banshee-44 has lived many lives. As master weaponsmith for the Tower, he supplies Guardians with only the best.
 			/// </summary>
@@ -916,6 +998,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Aspects_2047883483 = 2047883483;
 			public const uint H1454626912 = 1454626912;
+			/// <summary>
+			/// 	Stay mobile, stay lethal.
+			/// </summary>
+			public const uint Movement_1594205003 = 1594205003;
 			/// <summary>
 			/// 	Postmaster Frames dutifully oversee deliveries, messages, and lost items.
 			/// </summary>
@@ -1012,6 +1098,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrucibleEngram_2155163551 = 2155163551;
 			/// <summary>
+			/// 	Contains 4 holiday accessories fit for a feast.
+			/// <para/>
+			/// 	Bundle price will be reduced for each item already owned.
+			/// <para/>
+			/// </summary>
+			public const uint ThankfulFeastingBundle = 715438795;
+			/// <summary>
 			/// 	Stay mobile, stay lethal.
 			/// </summary>
 			public const uint Movement_560549990 = 560549990;
@@ -1047,6 +1140,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Grenades_895431068 = 895431068;
 			/// <summary>
+			/// 	The Lucent magic here allows you to manipulate your ritual offerings.
+			/// </summary>
+			public const uint OfferingShrine = 2065679576;
+			/// <summary>
 			/// 	Armor for your current class that may be awarded from Bright Engrams.
 			/// </summary>
 			public const uint Armor_1179555661 = 1179555661;
@@ -1078,6 +1175,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint CompetitiveSpiritHunterBundle = 676852051;
+			/// <summary>
+			/// 	Contains a full set of Valkyrian Hunter universal ornaments.
+			/// <para/>
+			/// 	Bundle price will be reduced for each item already owned.
+			/// <para/>
+			/// </summary>
+			public const uint ValkyrianHunterBundle = 1928284119;
 			/// <summary>
 			/// 	Contains a full set of Festival of the Lost 2022 Warlock universal ornaments.
 			/// <para/>
@@ -1207,6 +1311,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MasterRahool_1944611339 = 1944611339;
 			/// <summary>
+			/// 	Contains a full set of Ossuary Warlock universal ornaments.
+			/// <para/>
+			/// 	Bundle price will be reduced for each item already owned.
+			/// <para/>
+			/// </summary>
+			public const uint OssuaryWarlockBundle = 1183705354;
+			/// <summary>
 			/// 	Contains a full set of Solstice 2022 Titan universal ornaments.
 			/// <para/>
 			/// 	Bundle price will be reduced for each item already owned.
@@ -1232,6 +1343,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint PruinaLusterHunterBundle = 270832645;
+			/// <summary>
+			/// 	Secure Vanguard comms.
+			/// </summary>
+			public const uint Holoprojector_2531168156 = 2531168156;
 			/// <summary>
 			/// 	Contains a full set of Forbidden Visage Hunter universal ornaments.
 			/// <para/>
@@ -1309,6 +1424,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SeasonoftheHuntStarterPack = 112820731;
 			/// <summary>
+			/// 	An engram with a manipulated outcome.
+			/// <para/>
+			/// 	Contains a random Exotic armor item first discovered after the Lucent Hive's appearance.
+			/// <para/>
+			/// </summary>
+			public const uint WitchQueenArmorDecryption = 818953505;
+			/// <summary>
 			/// 	This engram will contain one foundry weapon, as well as multiple mods and shaders.
 			/// </summary>
 			public const uint GunsmithEngram_2189764947 = 2189764947;
@@ -1384,6 +1506,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint LavishExcessBundle = 3930530166;
+			/// <summary>
+			/// 	An occult archive to collect and interpret the Deck of Whispers.
+			/// </summary>
+			public const uint LecternofDivination = 3715641710;
 			/// <summary>
 			/// 	Contains a full set of Guardian Games 2022 Warlock universal ornaments.
 			/// <para/>
@@ -1556,6 +1682,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ExoticEngram_1092685591 = 1092685591;
 			/// <summary>
+			/// 	Contains a full set of Valkyrian Titan universal ornaments.
+			/// <para/>
+			/// 	Bundle price will be reduced for each item already owned.
+			/// <para/>
+			/// </summary>
+			public const uint ValkyrianTitanBundle = 2144686245;
+			/// <summary>
 			/// 	Armor for your current class that may be awarded from Bright Engrams.
 			/// </summary>
 			public const uint Armor_822293402 = 822293402;
@@ -1574,6 +1707,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint UrbanHypnagogicBundle = 2410356877;
+			/// <summary>
+			/// 	An engram with a manipulated outcome.
+			/// <para/>
+			/// 	Contains a random Exotic armor item first discovered after Cayde-6's final mission.
+			/// <para/>
+			/// </summary>
+			public const uint ForsakenArmorDecryption = 2768450324;
 			/// <summary>
 			/// 	Ships awarded from Bright Engrams.
 			/// </summary>
@@ -1721,6 +1861,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Campaigns = 4030123077;
 			/// <summary>
+			/// 	Embrace the unique abilities of your class.
+			/// </summary>
+			public const uint ClassAbilities_3409789310 = 3409789310;
+			/// <summary>
 			/// 	Contains 3 Guardian Games accessories.
 			/// </summary>
 			public const uint GuardianGamesEventPack = 3570607152;
@@ -1739,9 +1883,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ArrangedFacsimileBundle = 3214107667;
 			/// <summary>
+			/// 	Reality is chaotic and unruly; bind it and bring order.
+			/// </summary>
+			public const uint Shadebinder = 2223896103;
+			/// <summary>
 			/// 	This engram will contain one faction item.
 			/// </summary>
 			public const uint EDZEngram_1045341587 = 1045341587;
+			/// <summary>
+			/// 	A one-time bundle to kick off the Season of the Witch.
+			/// <para/>
+			/// 	Contains 3 exclusive items and 3 Armor Synthesis tokens.
+			/// <para/>
+			/// </summary>
+			public const uint SeasonoftheWitchStarterPack = 2754356055;
 			/// <summary>
 			/// 	Contains a full set of Streetwear Hunter universal ornaments.
 			/// </summary>
@@ -1768,6 +1923,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	This engram will contain one faction item.
 			/// </summary>
 			public const uint IronEngram_3264823944 = 3264823944;
+			/// <summary>
+			/// 	Open your Witch's Engrams or focus them into the weapons and armor of your choice using focused decoding.
+			/// </summary>
+			public const uint WitchsEngramDecoding = 3657342213;
+			/// <summary>
+			/// 	An engram with a manipulated outcome.
+			/// <para/>
+			/// 	Contains a random Exotic helmet piece first discovered during the Red War.
+			/// <para/>
+			/// </summary>
+			public const uint RedWarHelmDecryption = 816277290;
 			/// <summary>
 			/// 	Contains a set of Guardian mishap emotes.
 			/// <para/>
@@ -1830,6 +1996,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Melees_1192173495 = 1192173495;
 			/// <summary>
+			/// 	Contains a full set of Festival of the Lost 2023 Hunter universal ornaments.
+			/// <para/>
+			/// 	Bundle price reduced for each item you already own.
+			/// <para/>
+			/// </summary>
+			public const uint MygalomorphHunterBundle = 968906420;
+			/// <summary>
 			/// 	This bundle contains an exclusive class-locked emote, a Fireteam Medallion, and Bright Dust.
 			/// </summary>
 			public const uint RestingStormBundle = 3009759248;
@@ -1849,6 +2022,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	This bundle contains an exclusive emote, a Fireteam Medallion, and a transmat effect.
 			/// </summary>
 			public const uint AGuardiansBestFriendBundle = 3009759251;
+			/// <summary>
+			/// 	Make things go boom.
+			/// </summary>
+			public const uint Grenades_1712713373 = 1712713373;
 			/// <summary>
 			/// 	Burdened with the knowledge one can only gain from time travel, the Stranger is here to divert us from an inescapable dark future.
 			/// </summary>
@@ -1887,6 +2064,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AspiringChallengerBundle = 1062658481;
 			/// <summary>
+			/// 	Receive special gifts and rewards from various sources.
+			/// </summary>
+			public const uint SpecialDeliveries = 296729347;
+			/// <summary>
 			/// 	This package contains a random Arc, Solar, or Void glow you can use to adorn your Solstice armor. Once obtained, glows become permanently unlocked and can be reused as many times as desired.
 			/// </summary>
 			public const uint OmniElementalGlowPack = 3503353753;
@@ -1897,6 +2078,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint DendriteShimmerWarlockBundle = 2176234884;
+			/// <summary>
+			/// 	Particle or planet, it all shatters with enough force.
+			/// </summary>
+			public const uint Behemoth = 3529215660;
 			public const uint LegacyGear_3444362755 = 3444362755;
 			/// <summary>
 			/// 	Contains a full set of Neoteric Kiyot Hunter universal ornaments.
@@ -2059,6 +2244,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SolsticeShaderBundle = 2580727437;
 			/// <summary>
+			/// 	Exotics released during Destiny 2 Year 7.
+			/// </summary>
+			public const uint TheFinalShapeExotics = 2996039207;
+			/// <summary>
 			/// 	An engram containing Season of Defiance armor.
 			/// </summary>
 			public const uint DefiantArmor = 4264351379;
@@ -2069,6 +2258,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint OmegaMechanosTitanBundle = 1207046425;
+			/// <summary>
+			/// 	Contains a full set of Valkyrian Warlock universal ornaments.
+			/// <para/>
+			/// 	Bundle price will be reduced for each item already owned.
+			/// <para/>
+			/// </summary>
+			public const uint ValkyrianWarlockBundle = 2144098846;
 			/// <summary>
 			/// 	Contains 3 Bad Juju themed accessories.
 			/// <para/>
@@ -2083,6 +2279,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint OptimacyHunterBundle = 1310936368;
+			/// <summary>
+			/// 	An engram containing Season of the Witch weapons and armor.
+			/// </summary>
+			public const uint WitchsEngram = 981993273;
 			/// <summary>
 			/// 	Embrace the space between, opening doors to distort time and gravity.
 			/// </summary>
@@ -2187,6 +2387,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Solar_2727390699 = 2727390699;
 			/// <summary>
+			/// 	Contains 3 Festival of the Lost accessories.
+			/// </summary>
+			public const uint FestivaloftheLostEventPack = 11037709;
+			/// <summary>
 			/// 	Contains 3 Season of Plunder accessories.
 			/// <para/>
 			/// 	Bundle price will be reduced for each item already owned.
@@ -2201,6 +2405,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	A bundle of rewards for Guardians who activate the Season Pass.
 			/// </summary>
 			public const uint PremiumHunterRewards_3259015686 = 3259015686;
+			/// <summary>
+			/// 	Contains 3 Festival of the Lost accessories.
+			/// <para/>
+			/// 	Bundle price will be reduced for each item already owned.
+			/// <para/>
+			/// </summary>
+			public const uint TripleTerrorBundle = 2719864361;
 			/// <summary>
 			/// 	Fine-tune your subclass builds.
 			/// </summary>
@@ -2313,6 +2524,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ExoticWeapons = 864211278;
 			/// <summary>
+			/// 	An engram with a manipulated outcome.
+			/// <para/>
+			/// 	Contains a random Exotic armor item first discovered after unearthing the Pyramid on Luna.
+			/// <para/>
+			/// </summary>
+			public const uint ShadowkeepArmorDecryption = 1810629742;
+			/// <summary>
 			/// 	This engram will contain a powerful weapon and piece of armor, with a high chance of Exotics.
 			/// </summary>
 			public const uint LuminousEngram_2481239683 = 2481239683;
@@ -2338,6 +2556,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Quests related to Exotic gear.
 			/// </summary>
 			public const uint Exotic = 2776510816;
+			/// <summary>
+			/// 	Take down your targets manually.
+			/// </summary>
+			public const uint Melees_875061823 = 875061823;
 			/// <summary>
 			/// 	This engram will contain one faction item.
 			/// </summary>
@@ -2365,6 +2587,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The disciple's Glaive, harbinger of ruin for eons, now lies still, ready for your communion.
 			/// </summary>
 			public const uint LubraesRuin = 1244708409;
+			/// <summary>
+			/// 	An engram with a manipulated outcome.
+			/// <para/>
+			/// 	Contains random Exotic chest piece first discovered during the Red War.
+			/// <para/>
+			/// </summary>
+			public const uint RedWarChestDecryption = 3996033555;
 			/// <summary>
 			/// 	This engram holds Revelry vanity rewards.
 			/// <para/>
@@ -2408,6 +2637,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TexMechanicaBundle = 2058347979;
 			/// <summary>
+			/// 	Contains a full set of Festival of the Lost 2023 Warlock universal ornaments.
+			/// <para/>
+			/// 	Bundle price reduced for each item you already own.
+			/// <para/>
+			/// </summary>
+			public const uint CarapaceWarlockBundle = 705864273;
+			/// <summary>
+			/// 	Unleash the concentrated potential of your subclass.
+			/// </summary>
+			public const uint Supers_3053846308 = 3053846308;
+			/// <summary>
 			/// 	Take down your targets manually.
 			/// </summary>
 			public const uint Melees_1677356040 = 1677356040;
@@ -2422,6 +2662,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint SolarGateBundle = 3269081043;
+			/// <summary>
+			/// 	An engram with a manipulated outcome.
+			/// <para/>
+			/// 	Contains random Exotic leg piece first discovered during the Red War.
+			/// <para/>
+			/// </summary>
+			public const uint RedWarLegDecryption = 1616746507;
 			/// <summary>
 			/// 	Ornaments used to alter the appearance of your gear, found in Bright Engrams.
 			/// </summary>
@@ -2503,6 +2750,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PremiumWarlockRewards_156406410 = 156406410;
 			/// <summary>
+			/// 	An engram with a manipulated outcome.
+			/// <para/>
+			/// 	Contains a random Exotic armor item first discovered after contact with Neomuna.
+			/// <para/>
+			/// </summary>
+			public const uint LightfallArmorDecryption = 1142796720;
+			/// <summary>
 			/// 	Contains a set of Season of the Risen Exotic emotes.
 			/// <para/>
 			/// 	Bundle price will be reduced for each item already owned.
@@ -2557,13 +2811,32 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DragonflyRegaliaHunterBundle = 3478400178;
 			/// <summary>
+			/// 	Take down your targets manually.
+			/// </summary>
+			public const uint Melees_3743143700 = 3743143700;
+			/// <summary>
+			/// 	Take down your targets manually.
+			/// </summary>
+			public const uint Melees_3360654976 = 3360654976;
+			/// <summary>
 			/// 	Embrace the unique abilities of your class.
 			/// </summary>
 			public const uint ClassAbilities_2856424422 = 2856424422;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified = 753288796;
+			/// <summary>
 			/// 	Ghost Shells awarded from Bright Engrams.
 			/// </summary>
 			public const uint GhostShells_568891086 = 568891086;
+			/// <summary>
+			/// 	Contains 3 Season of the Witch accessories.
+			/// <para/>
+			/// 	Bundle price will be reduced for each item already owned.
+			/// <para/>
+			/// </summary>
+			public const uint BattleReadyBundle = 2612091849;
 			/// <summary>
 			/// 	Contains a full set of Festival of the Lost 2018 Warlock universal ornaments.
 			/// <para/>
@@ -2598,6 +2871,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	This package contains a random Solar glow you can use to adorn your Solstice armor. Once obtained, glows become permanently unlocked and can be reused as many times as desired.
 			/// </summary>
 			public const uint SolarGlowPack = 2815660636;
+			/// <summary>
+			/// 	From a whisper to a roar, be the calm and the storm.
+			/// </summary>
+			public const uint Revenant = 1942263816;
 			/// <summary>
 			/// 	Contains a full set of Dawning 2017 Warlock universal ornaments.
 			/// <para/>
@@ -2667,6 +2944,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Abilities_2862400409 = 2862400409;
 			/// <summary>
+			/// 	Contains 3 Season of the Witch accessories.
+			/// <para/>
+			/// 	Bundle price will be reduced for each item already owned.
+			/// <para/>
+			/// </summary>
+			public const uint LuwucentAccessoriesBundle = 1515640212;
+			/// <summary>
 			/// 	This engram will contain a powerful weapon and piece of armor, with a high chance of Exotics.
 			/// </summary>
 			public const uint LuminousEngram_1204101093 = 1204101093;
@@ -2678,6 +2962,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint ToolsoftheTradeBundle = 571463571;
+			/// <summary>
+			/// 	Power up your subclass with unique attributes.
+			/// </summary>
+			public const uint Aspects_2630013030 = 2630013030;
 			/// <summary>
 			/// 	Oryx, the Taken King, sovereign of the Osmium Throne, God-King of the Hive, and master of the Taken, now rests in the void of space.
 			/// </summary>
@@ -2917,6 +3205,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Supers_3369299559 = 3369299559;
 			/// <summary>
+			/// 	Unleash the concentrated potential of your subclass.
+			/// </summary>
+			public const uint Supers_1890828307 = 1890828307;
+			/// <summary>
 			/// 	Explore Strand and the power it has to offer.
 			/// </summary>
 			public const uint ThePoukaPond = 1413212512;
@@ -2932,6 +3224,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Ornaments used to alter the appearance of your gear, found in Bright Engrams.
 			/// </summary>
 			public const uint Ornaments_2107783226 = 2107783226;
+			/// <summary>
+			/// 	An engram containing Season of the Witch weapons.
+			/// </summary>
+			public const uint WitchsWeapons = 1861499247;
 			/// <summary>
 			/// 	Kiosk to acquire old or abandoned quests.
 			/// </summary>
@@ -3172,6 +3468,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Sparrows_3769773171 = 3769773171;
 			/// <summary>
+			/// 	A desk used by Eris Morn to study the rituals of the Hive. Cluttered with scattered notes and arcane oddities.
+			/// </summary>
+			public const uint RitualTable = 3699882481;
+			/// <summary>
+			/// 	Embrace the unique abilities of your class.
+			/// </summary>
+			public const uint ClassAbilities_1629506227 = 1629506227;
+			/// <summary>
 			/// 	An engram with complex markers.
 			/// <para/>
 			/// 	Contains a random Legendary Iron Banner weapon or armor piece.
@@ -3189,6 +3493,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Contains an updated set of Legendary Solstice Warlock armor.
 			/// </summary>
 			public const uint SolsticeWarlockArmorUpgrade = 2370303981;
+			/// <summary>
+			/// 	Etched with runes and channeling Hive magic, the ritual circle allows Eris Morn to transform into a terrible visage of vengeance.
+			/// </summary>
+			public const uint RitualCircle = 1875948825;
 			/// <summary>
 			/// 	Contains 3 Season of the Seraph accessories.
 			/// <para/>
@@ -3344,6 +3652,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Ships awarded from Bright Engrams.
 			/// </summary>
 			public const uint Ships_4261722351 = 4261722351;
+			/// <summary>
+			/// 	An engram containing weapons recovered from the Red War.
+			/// </summary>
+			public const uint RecoveredRedWarWeapons = 3156688774;
 			/// <summary>
 			/// 	Possible shaders found with each Bright Engram opened.
 			/// </summary>
@@ -3553,6 +3865,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Ghost Shells awarded from Bright Engrams.
 			/// </summary>
 			public const uint GhostShells_1537291264 = 1537291264;
+			/// <summary>
+			/// 	Contains 3 Season of the Witch accessories.
+			/// <para/>
+			/// 	Bundle price will be reduced for each item already owned.
+			/// <para/>
+			/// </summary>
+			public const uint SpaceAgeAgricultureBundle = 1256200448;
 			public const uint H1036902072 = 1036902072;
 			/// <summary>
 			/// 	An engram containing various Eververse ornaments, emotes, and accessories from previous Destiny 2 seasons.
@@ -3562,6 +3881,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Once a Lightbearer, Eris Morn descended into the Hellmouth of the Moon where she lost her fireteam, her Ghost, and her Light to the Hive.
 			/// </summary>
 			public const uint ErisMorn = 1616085565;
+			/// <summary>
+			/// 	Contains 3 Season of the Witch accessories.
+			/// <para/>
+			/// 	Bundle price will be reduced for each item already owned.
+			/// <para/>
+			/// </summary>
+			public const uint CollaborativeDestructionBundle = 1329608577;
 			public const uint FocusedDecoding_654952868 = 654952868;
 			/// <summary>
 			/// 	Contains a set of Season of Plunder Exotic emotes.
@@ -3612,6 +3938,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RollingStartBundle = 3539260230;
 			/// <summary>
+			/// 	An engram with a manipulated outcome.
+			/// <para/>
+			/// 	Contains random Exotic arm piece first discovered during the Red War.
+			/// <para/>
+			/// </summary>
+			public const uint RedWarArmsDecryption = 3794466805;
+			/// <summary>
 			/// 	This bundle contains the exclusive Nothing Gold jumpship, Golden Trace shaders, Gleaming Boons of the Vanguard, and a Gleaming Boon of the Crucible.
 			/// </summary>
 			public const uint SolidGoldBundle = 3539260231;
@@ -3639,6 +3972,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BoundHammerBundle = 2514786932;
 			/// <summary>
+			/// 	Make things go boom.
+			/// </summary>
+			public const uint Grenades_639852168 = 639852168;
+			/// <summary>
 			/// 	This bundle contains a weapon ornament for Whisper of the Worm, a transmat effect, and Bright Dust.
 			/// </summary>
 			public const uint BetweenBreathsBundle = 2514786933;
@@ -3653,6 +3990,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	This engram will contain one faction item.
 			/// </summary>
 			public const uint LighthouseEngram_3531644535 = 3531644535;
+			/// <summary>
+			/// 	An engram with a manipulated outcome.
+			/// <para/>
+			/// 	Contains a random Exotic armor item first discovered after Eramis arrived on Europa.
+			/// <para/>
+			/// </summary>
+			public const uint BeyondLightArmorDecryption = 5961373;
 			/// <summary>
 			/// 	A one-time bundle to kick off the Season of the Risen.
 			/// <para/>
@@ -3674,6 +4018,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ShadersandMods_1601631622 = 1601631622;
 			/// <summary>
+			/// 	An engram containing Season of the Witch armor.
+			/// </summary>
+			public const uint WitchsArmor = 3319692677;
+			/// <summary>
 			/// 	This engram holds Season 4 shaders, mods, vanity rewards, and a bounty note.
 			/// <para/>
 			/// 	It may also include ornaments for Exotic weapons released in Forsaken.
@@ -3687,6 +4035,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint CouturierTitanBundle = 81485105;
+			/// <summary>
+			/// 	Contains 3 unvaulted Season of the Worthy accessories.
+			/// <para/>
+			/// 	Bundle price will be reduced for each item already owned.
+			/// <para/>
+			/// </summary>
+			public const uint WorthyWarriorBundle = 1542163666;
 			/// <summary>
 			/// 	This engram will contain one faction item.
 			/// </summary>
@@ -3785,6 +4140,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	A scholar and devout acolyte of the mysterious Osiris.
 			/// </summary>
 			public const uint BrotherVance = 2398407866;
+			/// <summary>
+			/// 	Stay mobile, stay lethal.
+			/// </summary>
+			public const uint Movement_46764309 = 46764309;
 			/// <summary>
 			/// 	Contains 3 Guardian Games accessories.
 			/// <para/>

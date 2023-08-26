@@ -38,6 +38,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VanguardOperative = 1816541247;
 			/// <summary>
+			/// 	Receive special gifts and rewards from various sources.
+			/// </summary>
+			public const uint SpecialDeliveries = 1148069064;
+			/// <summary>
 			/// 	Enigmatic and reclusive, the Nine appear to take an interest in the affairs of Guardians.
 			/// </summary>
 			public const uint TheNine_469305170 = 469305170;
@@ -60,6 +64,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VanguardTactical = 611314723;
 			/// <summary>
+			/// 	Complete Season of the Witch activities to increase your Ritual Table reputation.
+			/// </summary>
+			public const uint FieldResearchDesk = 1176887168;
+			/// <summary>
 			/// 	Complete Defiant Battleground activities to increase your War Table reputation.
 			/// </summary>
 			public const uint VanguardOperations = 1755921369;
@@ -67,6 +75,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	A Hive Ghost who no longer believes the Hive deserve the Light, Fynch has defected from Savathûn's followers in order to help humanity.
 			/// </summary>
 			public const uint ConscientiousObjector = 2384113223;
+			/// <summary>
+			/// 	The Lucent magic here allows you to manipulate your ritual offerings.
+			/// </summary>
+			public const uint H1895373266 = 1895373266;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_753288796 = 753288796;
 			/// <summary>
 			/// 	No longer an outfitter for heroes of the Tower, Eva now devotes her time to making sure Guardians enjoy seasonal events.
 			/// </summary>

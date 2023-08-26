@@ -122,7 +122,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Strength decreases the cooldown time of your melee ability, allowing you to use it more often.
 			/// <para/>
-			/// 	Stasis abilities have longer cooldowns than Arc, Solar, and Void abilities.
+			/// 	Stasis abilities have longer cooldowns than Arc, Solar, Strand, and Void abilities.
 			/// <para/>
 			/// </summary>
 			public const uint Strength = 4244567218;
@@ -157,7 +157,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Intellect decreases the cooldown of your Super ability, allowing you to use it more often.
 			/// <para/>
-			/// 	Stasis abilities have longer cooldowns than Arc, Solar, and Void abilities.
+			/// 	Stasis abilities have longer cooldowns than Arc, Solar, Strand, and Void abilities.
 			/// <para/>
 			/// </summary>
 			public const uint Intellect = 144602215;
@@ -217,7 +217,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Discipline decreases the cooldown time of your grenades, allowing you to use them more often.
 			/// <para/>
-			/// 	Stasis abilities have longer cooldowns than Arc, Solar, and Void abilities.
+			/// 	Stasis abilities have longer cooldowns than Arc, Solar, Strand, and Void abilities.
 			/// <para/>
 			/// </summary>
 			public const uint Discipline = 1735777505;

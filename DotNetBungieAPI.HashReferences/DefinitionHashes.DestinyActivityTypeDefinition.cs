@@ -181,7 +181,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	The Darkness grows stronger. Form a fireteam of three and face our enemies with new challenges.
 			/// </summary>
-			public const uint Nightfall_103143560 = 103143560;
+			public const uint LostSector = 103143560;
 			/// <summary>
 			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
@@ -241,6 +241,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint H517828061 = 517828061;
+			public const uint Cinematic = 1838596016;
 			public const uint TheSundial = 2319502047;
 			/// <summary>
 			/// 	Embark on adventures alone or with a fireteam to push back the Darkness and reclaim our lost worlds.

@@ -5,6 +5,7 @@ namespace DotNetBungieAPI.HashReferences
 		public static class SeasonPasses
 		{
 			public const uint SeasonoftheRisen = 971660532;
+			public const uint SeasonoftheWitch = 3530720173;
 			public const uint SeasonoftheDeep = 655248278;
 			public const uint SeasonoftheUndying = 155514181;
 			public const uint SeasonoftheLost = 3261333423;

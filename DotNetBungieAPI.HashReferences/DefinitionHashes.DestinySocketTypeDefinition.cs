@@ -13,6 +13,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2060196479 = 2060196479;
 			public const uint H2831858578 = 2831858578;
 			public const uint H2240966217 = 2240966217;
+			public const uint H2781456735 = 2781456735;
 			public const uint H3131128919 = 3131128919;
 			public const uint H469957932 = 469957932;
 			public const uint H910774442 = 910774442;
@@ -33,6 +34,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Forge Challenger Medallions out of Cabal Gold to challenge Caiatl's commanders.
 			/// </summary>
 			public const uint HammerMods = 2490827969;
+			public const uint H482196593 = 482196593;
 			public const uint H3578367899 = 3578367899;
 			public const uint H863068219 = 863068219;
 			public const uint H1302305410 = 1302305410;
@@ -125,9 +127,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3299190463 = 3299190463;
 			public const uint H1231956397 = 1231956397;
 			public const uint H3115579747 = 3115579747;
+			public const uint H1989901217 = 1989901217;
 			public const uint H1797769761 = 1797769761;
 			public const uint H3993098925 = 3993098925;
-			public const uint H1989901217 = 1989901217;
 			public const uint H4019887002 = 4019887002;
 			public const uint H1936582325 = 1936582325;
 			public const uint H847132009 = 847132009;
@@ -150,12 +152,14 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1368028673 = 1368028673;
 			public const uint H3515011793 = 3515011793;
 			public const uint H3382512046 = 3382512046;
+			public const uint H1946948615 = 1946948615;
 			public const uint H3627586584 = 3627586584;
 			public const uint H3471978630 = 3471978630;
 			public const uint H4143168112 = 4143168112;
 			public const uint H930997177 = 930997177;
 			public const uint H1411014879 = 1411014879;
 			public const uint H2629336531 = 2629336531;
+			public const uint H935855953 = 935855953;
 			public const uint H1002755676 = 1002755676;
 			public const uint H1013318800 = 1013318800;
 			public const uint H2824646782 = 2824646782;
@@ -195,6 +199,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3464368460 = 3464368460;
 			public const uint H4105772287 = 4105772287;
 			public const uint H968742181 = 968742181;
+			public const uint H2132601832 = 2132601832;
 			public const uint H4261726982 = 4261726982;
 			public const uint H3818783091 = 3818783091;
 			public const uint H2048195356 = 2048195356;
@@ -272,9 +277,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3839370346 = 3839370346;
 			public const uint H3970246034 = 3970246034;
 			public const uint H4129263180 = 4129263180;
+			public const uint H2016989353 = 2016989353;
 			public const uint H1007297033 = 1007297033;
 			public const uint H3428326075 = 3428326075;
-			public const uint H2016989353 = 2016989353;
 			public const uint H980553700 = 980553700;
 			public const uint H2035621329 = 2035621329;
 			public const uint H3812783610 = 3812783610;
@@ -347,6 +352,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H4002101069 = 4002101069;
 			public const uint H2394328904 = 2394328904;
 			public const uint H1288183855 = 1288183855;
+			public const uint H1620857074 = 1620857074;
 			public const uint H2616071531 = 2616071531;
 			public const uint H1760926831 = 1760926831;
 			public const uint H3509048378 = 3509048378;
@@ -381,6 +387,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ForgeaCabalRune_3214824759 = 3214824759;
 			public const uint H2199792721 = 2199792721;
 			public const uint H2071818427 = 2071818427;
+			public const uint H1060253738 = 1060253738;
 			public const uint H1339444764 = 1339444764;
 			public const uint H551944706 = 551944706;
 			public const uint H4288578056 = 4288578056;
@@ -428,6 +435,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H4076485920 = 4076485920;
 			public const uint H3583996951 = 3583996951;
 			public const uint H2836765131 = 2836765131;
+			public const uint H4160650813 = 4160650813;
 			public const uint H3313988826 = 3313988826;
 			public const uint H436504413 = 436504413;
 			public const uint H1415543122 = 1415543122;
@@ -586,6 +594,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1158395763 = 1158395763;
 			public const uint H4007624637 = 4007624637;
 			public const uint H1664557282 = 1664557282;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified = 2804745000;
 			public const uint H1738358154 = 1738358154;
 			public const uint H4003365396 = 4003365396;
 			public const uint H1931019788 = 1931019788;
@@ -609,6 +621,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1417847558 = 1417847558;
 			public const uint H3964007672 = 3964007672;
 			public const uint H193067693 = 193067693;
+			public const uint H1017782484 = 1017782484;
 			public const uint H4062556478 = 4062556478;
 			public const uint H1679907648 = 1679907648;
 			public const uint H3387403043 = 3387403043;
@@ -727,8 +740,8 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2656221898 = 2656221898;
 			public const uint H412857635 = 412857635;
 			public const uint H2753602985 = 2753602985;
-			public const uint H4202091804 = 4202091804;
 			public const uint H2033195032 = 2033195032;
+			public const uint H4202091804 = 4202091804;
 			public const uint H1194237265 = 1194237265;
 			public const uint H1260745516 = 1260745516;
 			public const uint H1260745517 = 1260745517;
@@ -780,6 +793,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3254505443 = 3254505443;
 			public const uint H2321980680 = 2321980680;
 			public const uint H1494628468 = 1494628468;
+			public const uint H3468789916 = 3468789916;
 			public const uint H1494628469 = 1494628469;
 			public const uint H323288292 = 323288292;
 			public const uint H3694988647 = 3694988647;
@@ -871,6 +885,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H873087141 = 873087141;
 			public const uint H1683579090 = 1683579090;
 			public const uint H732008507 = 732008507;
+			public const uint H2479488037 = 2479488037;
 			public const uint H119828853 = 119828853;
 			public const uint H1674570701 = 1674570701;
 			public const uint H2847666933 = 2847666933;
@@ -879,6 +894,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2629700376 = 2629700376;
 			public const uint H2186805694 = 2186805694;
 			public const uint H2579692242 = 2579692242;
+			public const uint H315899694 = 315899694;
 			public const uint H755528356 = 755528356;
 			public const uint H206930951 = 206930951;
 			public const uint H755528357 = 755528357;
@@ -898,8 +914,8 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2440389816 = 2440389816;
 			public const uint H1764679361 = 1764679361;
 			public const uint H3666359773 = 3666359773;
-			public const uint H4259388482 = 4259388482;
 			public const uint H2024459944 = 2024459944;
+			public const uint H4259388482 = 4259388482;
 			public const uint H1044535384 = 1044535384;
 			public const uint H1898246169 = 1898246169;
 			public const uint H930927103 = 930927103;
@@ -952,8 +968,8 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H4242787800 = 4242787800;
 			public const uint H3790441799 = 3790441799;
 			public const uint H2203142669 = 2203142669;
-			public const uint H3333552458 = 3333552458;
 			public const uint H2025605402 = 2025605402;
+			public const uint H3333552458 = 3333552458;
 			/// <summary>
 			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
 			/// </summary>
@@ -1020,6 +1036,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ForgeaCabalRune_2132659382 = 2132659382;
 			public const uint H499094612 = 499094612;
+			public const uint H2377805509 = 2377805509;
 			public const uint H1501908160 = 1501908160;
 			public const uint H4034377832 = 4034377832;
 			public const uint H2469569491 = 2469569491;

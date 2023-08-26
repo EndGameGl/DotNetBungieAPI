@@ -71,9 +71,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EliminationRules = 3244996239;
 			/// <summary>
+			/// 	Score points by defeating your opponents with a relic.
+			/// <para/>
+			/// 	Relics: Mysterious weapons that hold immense power. Defeat your opponents with a relic to score points for your team.
+			/// <para/>
+			/// 	Relic Depot: Each depot can equip you with one of the following relics: Aegis Shield, Synaptic Spear, Solar Scythe.
+			/// <para/>
+			/// 	Relic Energy: Players without an equipped relic must earn energy to gain access to the Relic Depot. Relic energy can be built up by your own actions, your team's actions, and even the opponent's actions throughout the match.
+			/// <para/>
+			/// </summary>
+			public const uint RelicRules = 4258252763;
+			/// <summary>
 			/// 	Heavily shielded and highly aggressive combatants appear in great numbers.
 			/// </summary>
-			public const uint Legendary = 36103086;
+			public const uint Legend = 36103086;
 			/// <summary>
 			/// 	You've been challenged to wield the following:
 			/// <para/>
@@ -209,6 +220,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ContestMode_1009404927 = 1009404927;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_732074628 = 732074628;
+			/// <summary>
 			/// 	Round 1: Taken
 			/// <para/>
 			/// 	Round 2: Cabal
@@ -252,6 +267,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	To win, defeat your opponents to score more points than them! Your abilities recharge much faster in this mode, and final blows made with Power weapons or Supers grant additional points.
 			/// </summary>
 			public const uint MayhemRules = 1792878913;
+			/// <summary>
+			/// 	{var:1027206613}% bonus to Scout Rifle damage.
+			/// </summary>
+			public const uint OverchargedScoutRifle = 214700178;
 			/// <summary>
 			/// 	Rapidly defeat combatants to unleash waves of paracausal fire around you dealing damage to nearby combatants.
 			/// </summary>
@@ -453,13 +472,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ShieldedFoes_2524382624 = 2524382624;
 			/// <summary>
-			/// 	The activity is at a fixed difficulty.
-			/// <para/>
-			/// 	Your effective Power is capped at 1580.
-			/// <para/>
-			/// </summary>
-			public const uint Mettle_3147642230 = 3147642230;
-			/// <summary>
 			/// 	Taken Vandals summon their shields significantly more often.
 			/// </summary>
 			public const uint Denial = 1535174577;
@@ -486,6 +498,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Initial Exotic drop rate boosts: {var:219516062}
 			/// </summary>
 			public const uint ExoticDropRateBoostsGained_2835296134 = 2835296134;
+			/// <summary>
+			/// 	All challenges are active.
+			/// </summary>
+			public const uint RaidChallenges_2596648371 = 2596648371;
 			/// <summary>
 			/// 	Ability recharge rate is increased.
 			/// </summary>
@@ -604,7 +620,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// 	Power Level: Player Power levels are fixed. Each depth activates a new modifier for the remainder of the activity and increases all combatant Power levels over player Power levels.
 			/// <para/>
-			/// 	Asha's Gifts: Choose one of two random gifts from Asha at each depth to enhance yourself for the remainder of the activity before taking on the Darkness.
+			/// 	Ahsa's Gifts: Choose one of two random gifts from Ahsa at each depth to enhance yourself for the remainder of the activity before taking on the Darkness.
 			/// <para/>
 			/// 	Wrathful Predator: Final blows on these unique combatants will reward your fireteam additional time on the objective timer.
 			/// <para/>
@@ -631,6 +647,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Base health regen is reduced. If near another player, health regen is increased.
 			/// </summary>
 			public const uint Togetherness_3629079662 = 3629079662;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2768385440 = 2768385440;
 			/// <summary>
 			/// 	All Encounter Challenges Enabled and Required
 			/// </summary>
@@ -670,6 +690,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CopiesofCopies = 3361897360;
 			/// <summary>
+			/// 	{var:1027206613}% bonus to Pulse Rifle damage.
+			/// </summary>
+			public const uint OverchargedPulseRifle = 2984170047;
+			/// <summary>
 			/// 	Initial Exotic drop rate boosts: {var:1968703538}
 			/// </summary>
 			public const uint BoostsGained_1834872958 = 1834872958;
@@ -689,16 +713,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionFoes_3307318061 = 3307318061;
 			/// <summary>
-			/// 	Regeneration is greatly impaired. Defeating enemies may create wells of Light.
-			/// </summary>
-			public const uint Attrition_3346897368 = 3346897368;
-			/// <summary>
 			/// 	Combatant splash damage is increased.
 			/// <para/>
 			/// 	Activates at the Midnight Depth.
 			/// <para/>
 			/// </summary>
 			public const uint Blasts_1001677275 = 1001677275;
+			/// <summary>
+			/// 	Regeneration is greatly impaired. Defeating enemies may create wells of Light.
+			/// </summary>
+			public const uint Attrition_3346897368 = 3346897368;
 			/// <summary>
 			/// 	You've been challenged to wield the following:
 			/// <para/>
@@ -743,6 +767,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint ChampionFoes_2006149364 = 2006149364;
+			/// <summary>
+			/// 	You will face [Stagger] Unstoppable Champions.
+			/// </summary>
+			public const uint ChampionFoes_1598783516 = 1598783516;
 			/// <summary>
 			/// 	Defeating Champions creates a pool of fire.
 			/// <para/>
@@ -880,6 +908,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Mettle_2967597120 = 2967597120;
 			/// <summary>
+			/// 	You will face [Stagger] Unstoppable Champions.
+			/// <para/>
+			/// 	Visit the Character or Mod Customization screen to view your active anti-Champion perks.
+			/// <para/>
+			/// </summary>
+			public const uint ChampionFoes_2475764450 = 2475764450;
+			/// <summary>
 			/// 	You've been challenged to wield the following:
 			/// <para/>
 			/// 	Kinetic: Shotgun 
@@ -911,13 +946,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LegendModifiers_1174869237 = 1174869237;
 			/// <summary>
-			/// 	A challenge awaits…
+			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
-			public const uint IlluminatedTormentChallenge = 766975360;
-			/// <summary>
-			/// 	A challenge awaits…
-			/// </summary>
-			public const uint CosmicEquilibriumChallenge = 2070303007;
+			public const uint Classified_3523029182 = 3523029182;
 			/// <summary>
 			/// 	Radar is disabled.
 			/// <para/>
@@ -1007,10 +1038,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint KeepItLoaded = 1931480264;
 			/// <summary>
-			/// 	A challenge awaits…
-			/// </summary>
-			public const uint CrossfireChallenge = 138641527;
-			/// <summary>
 			/// 	Limited fireteam revives. Gain additional revives by defeating Champions.
 			/// </summary>
 			public const uint LimitedRevives_4239965093 = 4239965093;
@@ -1091,6 +1118,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	If your fireteam falls in a Restricted Zone, everyone is returned to orbit.
 			/// </summary>
 			public const uint Extinguish = 4265630562;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3636591526 = 3636591526;
 			/// <summary>
 			/// 	Grenade abilities deal more damage and recharge much faster.
 			/// </summary>
@@ -1191,19 +1222,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ArachNO = 3021161702;
 			/// <summary>
-			/// 	The activity is at a fixed difficulty.
-			/// <para/>
-			/// 	Your effective Power is capped at {var:1311088063}.
-			/// <para/>
-			/// </summary>
-			public const uint Mettle_4047923249 = 4047923249;
-			/// <summary>
 			/// 	Base health regeneration is reduced. If a player is near another ally, health regeneration is improved above normal.
 			/// <para/>
 			/// 	Activates immediately.
 			/// <para/>
 			/// </summary>
 			public const uint Togetherness_825646500 = 825646500;
+			/// <summary>
+			/// 	The activity is at a fixed difficulty.
+			/// <para/>
+			/// 	Your effective Power is capped at {var:1311088063}.
+			/// <para/>
+			/// </summary>
+			public const uint Mettle_4047923249 = 4047923249;
 			/// <summary>
 			/// 	[Arc] Arc and [Solar] Solar Shields
 			/// </summary>
@@ -1346,10 +1377,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint ShieldedFoes_3230561446 = 3230561446;
-			/// <summary>
-			/// 	A challenge awaits…
-			/// </summary>
-			public const uint AllHandsChallenge = 1616571513;
 			/// <summary>
 			/// 	Melee abilities deal more damage and recharge much faster.
 			/// </summary>

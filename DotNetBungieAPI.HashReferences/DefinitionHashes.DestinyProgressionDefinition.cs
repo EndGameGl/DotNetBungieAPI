@@ -8,6 +8,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3122728759 = 3122728759;
 			public const uint XP_2557524386 = 2557524386;
 			public const uint H2318284751 = 2318284751;
+			public const uint Prestige_2733287262 = 2733287262;
 			/// <summary>
 			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
@@ -110,6 +111,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ThroneWorldRank = 4203877294;
 			public const uint XP_978389300 = 978389300;
+			public const uint XP_1687787132 = 1687787132;
 			public const uint H4244567218 = 4244567218;
 			public const uint H3127357249 = 3127357249;
 			/// <summary>
@@ -168,6 +170,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Prestige_2841991057 = 2841991057;
 			public const uint H1716568313 = 1716568313;
 			public const uint XP_2587634425 = 2587634425;
+			public const uint XP_2812154837 = 2812154837;
 			/// <summary>
 			/// 	"Guardians do not grow from the battlefield alone. Seek improvement with your peers! Glory in the joy of the fight, and make each other stronger by it!"—Lord Shaxx
 			/// <para/>
@@ -219,6 +222,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint FollowerofOsiris = 2677528157;
 			public const uint Prestige_3903030450 = 3903030450;
+			public const uint H3613421690 = 3613421690;
 			public const uint H1317877542 = 1317877542;
 			public const uint H144602215 = 144602215;
 			public const uint H2572719399 = 2572719399;
@@ -244,6 +248,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Commander Zavala oversees the Vanguard's tactical operations and conducts regular strikes against the City's enemies.
 			/// </summary>
 			public const uint VanguardTactical = 1021210278;
+			public const uint H1366927886 = 1366927886;
 			public const uint H392767087 = 392767087;
 			public const uint H255193376 = 255193376;
 			public const uint H2241197230 = 2241197230;
@@ -259,6 +264,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1571628687 = 1571628687;
 			public const uint H2140885848 = 2140885848;
 			public const uint H1628407317 = 1628407317;
+			/// <summary>
+			/// 	Complete Season of the Witch activities to increase your Ritual Table reputation.
+			/// </summary>
+			public const uint RitualTableReputation = 1748945530;
 			public const uint XP_490650039 = 490650039;
 			public const uint H1735777505 = 1735777505;
 			public const uint XP_1589343395 = 1589343395;

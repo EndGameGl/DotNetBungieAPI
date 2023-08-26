@@ -65,8 +65,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Delve into the depths of Titan's methane sea in search of lost technology and knowledge.
 			/// </summary>
 			public const uint SeasonoftheDeep = 2758726569;
-			public const uint SeasonofRedacted_2758726570 = 2758726570;
-			public const uint SeasonofRedacted_2758726571 = 2758726571;
+			/// <summary>
+			/// 	Savathûn's Ghost Immaru has approached the Vanguard with a dire bargain: the Witch Queen holds the information we need to pursue the Witness and will share it with us if we first contend with her sister, Xivu Arath. 
+			/// <para/>
+			/// 	Through the power of arcane rituals, the Guardians must gather tithes for Eris Morn so she can fulfill this dangerous pact with the Hive god of lies.
+			/// <para/>
+			/// </summary>
+			public const uint SeasonoftheWitch = 2758726570;
+			public const uint SeasonofRedacted = 2758726571;
 			/// <summary>
 			/// 	A new season has begun! Choose what kind of Guardian you will become. Reckon with the path that lies ahead.
 			/// </summary>
