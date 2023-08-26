@@ -13,7 +13,7 @@ public class DefinitionHashReferencesGenerator
     private readonly ILogger _logger;
     private readonly IBungieClient _bungieClient;
 
-    private IDefinitionHandler[] _handlers;
+    private readonly IDefinitionHandler[] _handlers;
 
     public DefinitionHashReferencesGenerator(IBungieClient bungieClient, string path, ILogger logger)
     {
@@ -24,8 +24,8 @@ public class DefinitionHashReferencesGenerator
             .GetAssembly(typeof(DefinitionHashReferencesGenerator))!
             .DefinedTypes
             .Where(x => x.ImplementedInterfaces.Contains(typeof(IDefinitionHandler)))
-            .Select(x => (IDefinitionHandler)Activator.CreateInstance(x))
-            .ToArray();
+            .Select(x => (IDefinitionHandler)Activator.CreateInstance(x)!)
+            .ToArray()!;
     }
 
     public async Task Generate()

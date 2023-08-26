@@ -65,6 +65,7 @@ internal static class SqlValueConverter
 
         var leftExpr = left switch
         {
+            UnaryExpression unaryExpression => ConvertUnaryExpression(unaryExpression),
             BinaryExpression leftBinExpr => ConvertBinaryExpression(leftBinExpr),
             ConstantExpression leftConstExpr => ConvertConstantExpression(leftConstExpr),
             MemberExpression leftMemberExpr => ConvertMemberExpression(leftMemberExpr),
@@ -74,6 +75,7 @@ internal static class SqlValueConverter
 
         var rightExpr = right switch
         {
+            UnaryExpression unaryExpression => ConvertUnaryExpression(unaryExpression),
             BinaryExpression rightBinExpr => ConvertBinaryExpression(rightBinExpr),
             ConstantExpression rightConstExpr => ConvertConstantExpression(rightConstExpr),
             MemberExpression rightMemberExpr => ConvertMemberExpression(rightMemberExpr),
@@ -255,5 +257,16 @@ internal static class SqlValueConverter
             ExpressionType.GreaterThanOrEqual => ">=",
             _ => "ERROR"
         };
+    }
+
+    private static string ConvertUnaryExpression(UnaryExpression unaryExpression)
+    {
+        if (unaryExpression.NodeType == ExpressionType.Convert)
+        {
+            var operand = unaryExpression.Operand as MemberExpression;
+            return ConvertMemberExpression(operand);
+        }
+
+        return string.Empty;
     }
 }
