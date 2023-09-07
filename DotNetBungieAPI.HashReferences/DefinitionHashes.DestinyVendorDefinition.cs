@@ -2823,9 +2823,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ClassAbilities_2856424422 = 2856424422;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Crota, the God-Knight, Eater of Hope and Light-Destroyer, is no more. The final deaths of countless Guardians are finally avenged.
 			/// </summary>
-			public const uint Classified = 753288796;
+			public const uint ThroneWorldsRiches = 753288796;
 			/// <summary>
 			/// 	Ghost Shells awarded from Bright Engrams.
 			/// </summary>

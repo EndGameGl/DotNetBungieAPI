@@ -220,9 +220,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ContestMode_1009404927 = 1009404927;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	A challenge awaits…
 			/// </summary>
-			public const uint Classified_732074628 = 732074628;
+			public const uint EqualVessels = 732074628;
 			/// <summary>
 			/// 	Round 1: Taken
 			/// <para/>
@@ -648,9 +648,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Togetherness_3629079662 = 3629079662;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	A challenge awaits…
 			/// </summary>
-			public const uint Classified_2768385440 = 2768385440;
+			public const uint PrecariousBalance = 2768385440;
 			/// <summary>
 			/// 	All Encounter Challenges Enabled and Required
 			/// </summary>
@@ -946,9 +946,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LegendModifiers_1174869237 = 1174869237;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	A challenge awaits…
 			/// </summary>
-			public const uint Classified_3523029182 = 3523029182;
+			public const uint AllforOne = 3523029182;
 			/// <summary>
 			/// 	Radar is disabled.
 			/// <para/>
@@ -1119,9 +1119,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Extinguish = 4265630562;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	A challenge awaits…
 			/// </summary>
-			public const uint Classified_3636591526 = 3636591526;
+			public const uint ConservationofEnergy = 3636591526;
 			/// <summary>
 			/// 	Grenade abilities deal more damage and recharge much faster.
 			/// </summary>

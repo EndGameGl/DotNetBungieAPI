@@ -118,7 +118,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RootofNightmares = 3699252268;
 			/// <summary>
-			/// 	Complete a Nightfall strike with a team score above 100,000.
+			/// 	Earn points by completing Nightfalls.
 			/// </summary>
 			public const uint NightfallWeeklyScore = 2029743966;
 			/// <summary>
@@ -192,9 +192,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LegacyBeneaththeWaves = 4142352494;
 			public const uint FishingRallyEDZ = 2727582952;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	He waits in the dark below.
 			/// </summary>
-			public const uint Classified = 540415767;
+			public const uint CrotasEnd = 540415767;
 			/// <summary>
 			/// 	Complete a round of Dares of Eternity.
 			/// </summary>

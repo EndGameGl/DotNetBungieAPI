@@ -554,10 +554,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ShadowofSilenceSuit = 3847915640;
 			public const uint Season11_3006680606 = 3006680606;
 			public const uint Season10_3006680607 = 3006680607;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2851452941 = 2851452941;
+			public const uint WillbreakerSuit = 2851452941;
 			/// <summary>
 			/// 	Perks that are active while in the Gambit Prime playlist.
 			/// <para/>
@@ -773,10 +770,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint AbyssWalkerSet = 956723102;
 			public const uint SunsApexSet = 956723103;
 			public const uint Nightmares_3580665945 = 3580665945;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2574371628 = 2574371628;
+			public const uint Warlock_2574371628 = 2574371628;
 			public const uint UpgradeMaterials = 512862043;
 			/// <summary>
 			/// 	Complete all Season of Arrivals flawless Triumphs.
@@ -973,9 +967,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DungeonDuality = 3487512928;
 			public const uint TrialsFloatingSuit = 1810187960;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Triumphs for "Crota's End."
 			/// </summary>
-			public const uint Classified_238107129 = 238107129;
+			public const uint CrotasEnd_238107129 = 238107129;
 			public const uint TrialsPrestigeOrnament_1810187961 = 1810187961;
 			public const uint TrialsFlowingSuit = 1810187962;
 			/// <summary>
@@ -983,10 +977,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SeasonofDawn = 4257248973;
 			public const uint TrialsOrnament_1810187963 = 1810187963;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_266689281 = 266689281;
+			public const uint Titan_266689281 = 266689281;
 			public const uint BeneaththeEndlessNight = 2175373739;
 			public const uint AtavisticIdolSuit_1810187964 = 1810187964;
 			public const uint PhotonicSuit = 1810187965;
@@ -1536,9 +1527,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Gear_529389631 = 529389631;
 			public const uint Titan_1882524088 = 1882524088;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Triumphs related to the "Crota's End" raid.
 			/// </summary>
-			public const uint Classified_2782956855 = 2782956855;
+			public const uint CrotasEnd_2782956855 = 2782956855;
 			public const uint ScorchedSolsticeSuit_3107744648 = 3107744648;
 			public const uint ContenderSet_720223630 = 720223630;
 			public const uint QuiltedWinterMark = 3107744649;
@@ -1870,9 +1861,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Flawless_1733555826 = 1733555826;
 			public const uint FireForgedOrnaments_476334984 = 476334984;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Trophies from the "Crota's End" raid.
 			/// </summary>
-			public const uint Classified_48971793 = 48971793;
+			public const uint CrotasEnd_48971793 = 48971793;
 			public const uint WingDisciplineSuit = 476334985;
 			public const uint BinaryPhoenixSuit = 476334986;
 			public const uint PhoenixBattleOrnaments = 476334987;
@@ -1899,10 +1890,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Destination_3637752902 = 3637752902;
 			public const uint Power_1136207523 = 1136207523;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1348700154 = 1348700154;
+			public const uint DeathsingerSuit = 1348700154;
 			public const uint Hunter_907398217 = 907398217;
 			public const uint ScorchedSolsticeSuit_2865196012 = 2865196012;
 			public const uint WarmWinterCloak_2865196013 = 2865196013;
@@ -2043,10 +2031,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete all Season of Plunder Triumphs.
 			/// </summary>
 			public const uint Scallywag = 1321008453;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1318771455 = 1318771455;
+			public const uint Hunter_1318771455 = 1318771455;
 			/// <summary>
 			/// 	Before a weapon can be shaped by the Relic, its Pattern must be unlocked through extraction.
 			/// <para/>
@@ -2211,10 +2196,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Social = 2509121759;
 			public const uint Secrets_2322553724 = 2322553724;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2483984601 = 2483984601;
+			public const uint GodKnightSuit = 2483984601;
 			public const uint Ketchcrash = 155343661;
 			public const uint CompetitiveSpiritSet_2078597704 = 2078597704;
 			public const uint VernalGrowthSet_2078597705 = 2078597705;

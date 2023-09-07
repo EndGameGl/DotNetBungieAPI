@@ -80,9 +80,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint H1895373266 = 1895373266;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Crota, the God-Knight, Eater of Hope and Light-Destroyer, is no more. The final deaths of countless Guardians are finally avenged.
 			/// </summary>
-			public const uint Classified_753288796 = 753288796;
+			public const uint SwordofCrota = 753288796;
 			/// <summary>
 			/// 	No longer an outfitter for heroes of the Tower, Eva now devotes her time to making sure Guardians enjoy seasonal events.
 			/// </summary>

@@ -671,9 +671,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HeistBattlegroundMoon_1698990487 = 1698990487;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	He waits in the dark below.
 			/// </summary>
-			public const uint Classified_1507509200 = 1507509200;
+			public const uint CrotasEndMaster = 1507509200;
 			public const uint H2801706931 = 2801706931;
 			/// <summary>
 			/// 	Peer into the past with Ikora to relive the moment when Guardians first wielded the Darkness.
@@ -2589,9 +2589,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SalvageMission_175598161 = 175598161;
 			public const uint SalvageMission_1679453803 = 1679453803;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	He waits in the dark below.
 			/// </summary>
-			public const uint Classified_4179289725 = 4179289725;
+			public const uint CrotasEndNormal_4179289725 = 4179289725;
 			public const uint SalvageMission_3978357488 = 3978357488;
 			public const uint H1239982531 = 1239982531;
 			/// <summary>
@@ -3877,9 +3877,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Scorned = 2345788617;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	He waits in the dark below.
 			/// </summary>
-			public const uint Classified_156253568 = 156253568;
+			public const uint CrotasEndLegend = 156253568;
 			/// <summary>
 			/// 	Stop the Cabal scavengers.
 			/// </summary>
@@ -3889,9 +3889,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightmareHuntIsolation_3459379696 = 3459379696;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	He waits in the dark below.
 			/// </summary>
-			public const uint Classified_4103176774 = 4103176774;
+			public const uint CrotasEndNormal_4103176774 = 4103176774;
 			public const uint AssassinationMission_1090267699 = 1090267699;
 			public const uint H1745875110 = 1745875110;
 			/// <summary>

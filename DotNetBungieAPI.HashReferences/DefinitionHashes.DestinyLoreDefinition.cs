@@ -823,7 +823,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ANewLegendtoGuideThem = 889429099;
 			public const uint ReverieDawnGloves = 2761343386;
 			public const uint ElegyforCallumSolandCallumsRefrain = 889429100;
-			public const uint Classified_1934481780 = 1934481780;
+			public const uint WarsLament = 1934481780;
 			public const uint TheLiarsTrap = 889429101;
 			public const uint CandescentGauntlets = 1068450901;
 			public const uint TheEternalChainandtheOthersPrize = 889429103;
@@ -1440,7 +1440,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint EidolonPursuantGauntlets = 2388383505;
 			public const uint StarfireProtocol = 2782999717;
 			public const uint EtherDoctor = 1839565992;
-			public const uint Classified_1034055198 = 1034055198;
+			public const uint Necrochasm = 1034055198;
 			public const uint H1768175752 = 1768175752;
 			public const uint BrayTechSn0Treads = 3510185410;
 			public const uint AncientApocalypseHood = 1236746902;
@@ -1529,7 +1529,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Kings = 837600127;
 			public const uint ScatterhornMark = 1347463276;
 			public const uint VesperofRadius = 1799380614;
-			public const uint Classified_2091889892 = 2091889892;
+			public const uint CrotasExile = 2091889892;
 			public const uint DeterministicChaos = 449318888;
 			public const uint VancePasseri = 1833840096;
 			public const uint SerpentsGloryMantle = 366019830;

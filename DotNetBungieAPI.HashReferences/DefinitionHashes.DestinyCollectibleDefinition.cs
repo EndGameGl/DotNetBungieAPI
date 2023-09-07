@@ -341,9 +341,12 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint WayfindersCompass = 455006813;
 			public const uint OutofBounds = 2026387068;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	This mod's perks are only active in the "Crota's End" raid.
+			/// <para/>
+			/// 	Multiple copies of this mod stack and improve its effects.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_1355194274 = 1355194274;
+			public const uint BrimmingwithExhaustion = 1355194274;
 			/// <summary>
 			/// 	Complete a Nightfall strike wearing full Dead Orbit armor and while pledged to that faction to earn this ornament. It is unlocked to the Anti-Extinction Mask, Helm, and Hood.
 			/// </summary>
@@ -908,9 +911,12 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DescendingEchoMark = 3713339816;
 			public const uint YugaSundownHelmet = 3512022284;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	This mod's perks are only active in the "Crota's End" raid.
+			/// <para/>
+			/// 	Multiple copies of this mod stack and improve its effects.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_1370367757 = 1370367757;
+			public const uint ChompingattheStem = 1370367757;
 			public const uint RoadComplexAA1_2588089821 = 2588089821;
 			public const uint Gjallarhorn = 4027219968;
 			public const uint AbhorrentImperativeCloak = 1805588391;
@@ -1324,10 +1330,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CunningoftheContenderHood = 3343577176;
 			public const uint EmpathicShell = 3380945781;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2978830223 = 2978830223;
+			public const uint CrotasExile = 2978830223;
 			public const uint KairosFunctionWraps = 1730627489;
 			/// <summary>
 			/// 	Equip this weapon ornament to change the appearance of Whisper of the Worm. Once you get an ornament, it's unlocked for all characters on your account.
@@ -1711,10 +1714,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat Iron Banner enemies with Power weapons during Season 3 to earn this ornament. It is unlocked to the Iron Truage Vest, Plate, and Vestments.
 			/// </summary>
 			public const uint SilimarsIronPlate = 1647542559;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1860871431 = 1860871431;
+			public const uint OversoulEdictAdept = 1860871431;
 			public const uint LeonineCarrack = 181872824;
 			public const uint StarScion = 181872825;
 			public const uint GalacticHum = 181872826;
@@ -2809,10 +2809,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint IKELOS_SR_v103 = 4265244308;
 			public const uint Vaultstrider = 958866288;
 			public const uint WinterhartMark_3682734773 = 3682734773;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2043326107 = 2043326107;
+			public const uint WillbreakersGreaves = 2043326107;
 			public const uint IKELOS_SG_v102 = 3460224980;
 			/// <summary>
 			/// 	[Finisher]  : Finish critically wounded combatants.
@@ -4137,7 +4134,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Retrofuturist_1058083670 = 1058083670;
 			public const uint SolsticeMaskRenewed_201776556 = 201776556;
 			public const uint HelmofAgony = 1908076100;
-			public const uint DeadpanDelivery = 1058083671;
+			public const uint DeadpanDelivery_1058083671 = 1058083671;
 			/// <summary>
 			/// 	Defeat enemies in strikes during Season 3 to earn this ornament. It is unlocked to the Took Offense, Shelter in Place, and Xenos Vale IV leg armor.
 			/// </summary>
@@ -4146,10 +4143,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Required for purchasing Upgrade Modules and forging Masterwork gear. Chance to obtain from Legendary gear, some activities, and bounties, or purchasable from the Cryptarch in the Tower.
 			/// </summary>
 			public const uint EnhancementCore = 2394763654;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2103267047 = 2103267047;
+			public const uint BoneCirclet = 2103267047;
 			/// <summary>
 			/// 	Equip this weapon ornament to change the appearance of Arbalest. Once you get an ornament, it's unlocked for all characters on your account.
 			/// </summary>
@@ -4672,10 +4666,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ReefRegalia = 3502404460;
 			public const uint Zephyr_1657781967 = 1657781967;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_812312823 = 812312823;
+			public const uint FangofIrYûtAdept = 812312823;
 			/// <summary>
 			/// 	Modifications for your ship's transmat systems, so you'll always arrive in style.
 			/// </summary>
@@ -4693,10 +4684,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this shader to change the color of your gear.
 			/// </summary>
 			public const uint LionsPride_3502404462 = 3502404462;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_834794895 = 834794895;
+			public const uint AbyssDefiantAdept = 834794895;
 			/// <summary>
 			/// 	Equip this shader to change the color of your gear.
 			/// </summary>
@@ -4715,10 +4703,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RoyalDye = 694770117;
 			public const uint InauguralRevelryGreaves = 2652116469;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2773044926 = 2773044926;
+			public const uint DeathsingersHerald = 2773044926;
 			/// <summary>
 			/// 	Apply this shader to change the color of your gear.
 			/// </summary>
@@ -4746,10 +4731,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Fractethyst = 833397635;
 			public const uint Atgeir2T1_2426847935 = 2426847935;
 			public const uint InsightUnyieldingGauntlets = 2202913979;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_4226165925 = 4226165925;
+			public const uint WillbreakersFists = 4226165925;
 			public const uint TractorCannon = 2094776121;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
@@ -4764,10 +4746,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SuddenSquall = 3892508723;
 			public const uint OutlawedReaperHelm = 2627753453;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3573514131 = 3573514131;
+			public const uint DeathsingersGaze = 3573514131;
 			public const uint KairosFunctionVest = 1644319646;
 			public const uint WarMantis_3938108821 = 3938108821;
 			/// <summary>
@@ -4870,10 +4849,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint BasaltToxic = 2902769245;
 			public const uint ConfectionShell = 1482762294;
 			public const uint SpinneretShell = 1482762295;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2938946571 = 2938946571;
+			public const uint WordofCrotaAdept = 2938946571;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
@@ -4892,10 +4868,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint AgronaPR4 = 1099984910;
 			public const uint RightSideofWrong = 1099984911;
 			public const uint PyrrhicAscentHelm = 3859833665;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_4017656006 = 4017656006;
+			public const uint WordofCrota = 4017656006;
 			public const uint LittleLight = 1111835024;
 			public const uint FlickeringLight = 1111835025;
 			public const uint BurningLight = 1111835026;
@@ -5107,10 +5080,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint CrownSplitter_741454304 = 741454304;
 			public const uint Quickfang_741454306 = 741454306;
 			public const uint Deliverance = 4133398550;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2950205721 = 2950205721;
+			public const uint WarsLament = 2950205721;
 			public const uint EternitysEdge_741454307 = 741454307;
 			public const uint IllicitCollectorBoots = 281109292;
 			/// <summary>
@@ -5213,10 +5183,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this shader to change the color of your gear.
 			/// </summary>
 			public const uint ByzantiumLotus = 1261766482;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3990731500 = 3990731500;
+			public const uint SongofIrYûtAdept = 3990731500;
 			public const uint DeathsRazor_1880041322 = 1880041322;
 			/// <summary>
 			/// 	Equip this shader to change the color of your gear.
@@ -5347,9 +5314,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DistortedGlyphkeeper = 2687147700;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	This mod's perks are only active in the "Crota's End" raid.
+			/// <para/>
+			/// 	Multiple copies of this mod stack and improve its effects.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_1524385790 = 1524385790;
+			public const uint RefreshingThirst = 1524385790;
 			public const uint IllicitCollectorMask = 713230915;
 			/// <summary>
 			/// 	While pledged to New Monarchy, complete the Drain Lost Sector in the EDZ's Outskirts.
@@ -5930,10 +5900,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RivalryWhitesand = 3553415309;
 			public const uint OutlawedSentryHood = 3000051853;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2188941763 = 2188941763;
+			public const uint Swordbreaker = 2188941763;
 			public const uint BrayTechOsprey_4209855933 = 4209855933;
 			public const uint NeomunaNights_2753179024 = 2753179024;
 			public const uint CuboidARu_2377155207 = 2377155207;
@@ -5954,10 +5921,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TesseractTraceIV_245111550 = 245111550;
 			public const uint TuskedAllegianceGloves = 2299354716;
 			public const uint VeiledTithesGrips = 2637857660;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3138034456 = 3138034456;
+			public const uint DeathsingersMantle = 3138034456;
 			public const uint NoxCordisII_90522691 = 90522691;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
@@ -6114,10 +6078,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ReverieDawnCloak = 152639570;
 			public const uint PlancksStride = 332827543;
 			public const uint LikelySuspect = 3257565710;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1401048321 = 1401048321;
+			public const uint DoggedGage = 1401048321;
 			public const uint IronSymmachyMask = 935651559;
 			public const uint OpulentScholarGloves = 4090468185;
 			public const uint FracticSpiral = 1998972858;
@@ -6208,10 +6169,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SignalIntercept = 3530852793;
 			public const uint FusedAurumMark = 2112180435;
 			public const uint Glacioclasm_4237998987 = 4237998987;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2564679119 = 2564679119;
+			public const uint RelentlessHarness = 2564679119;
 			/// <summary>
 			/// 	Earned from completing activities while wearing Sunlit armor.
 			/// <para/>
@@ -6355,6 +6313,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TorturedIvy = 473595868;
 			public const uint DigitalPetShell = 2734100829;
+			public const uint ParacausalPath = 2572095570;
 			/// <summary>
 			/// 	Apply this shader to change the color of your gear.
 			/// </summary>
@@ -7187,10 +7146,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Classified_735382582 = 735382582;
 			public const uint FestiveWinterBond = 1634522074;
 			public const uint InsigneShadeGloves = 3173361545;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_4084378016 = 4084378016;
+			public const uint DeathsingersGrip = 4084378016;
 			public const uint IronWillGreaves = 3283890928;
 			public const uint RenegadeGreaves = 246527448;
 			public const uint NotoriousCollectorBoots = 2902457088;
@@ -7277,10 +7233,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Applause = 1007827702;
 			public const uint AirQuotes = 1007827703;
 			public const uint InauguralRevelryPlate = 1003322337;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2352900398 = 2352900398;
+			public const uint UnyieldingCasque = 2352900398;
 			public const uint TheMilitiasBirthright_1602518767 = 1602518767;
 			public const uint CanDoAttitude = 1007827710;
 			public const uint ResonantFuryCowl = 3133932886;
@@ -7385,14 +7338,8 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TrialsOrnament_2773816766 = 2773816766;
 			public const uint LorentzDriver = 3602500492;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_794866144 = 794866144;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_794866145 = 794866145;
+			public const uint HuskofthePit = 794866144;
+			public const uint EidolonAlly = 794866145;
 			public const uint Enneagon = 1333146022;
 			public const uint IronTruageCasque_2671393478 = 2671393478;
 			/// <summary>
@@ -8122,10 +8069,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint StormdancersCover = 3180241028;
 			public const uint PathfindersHood = 1605940795;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2021241058 = 2021241058;
+			public const uint FangofIrYût = 2021241058;
 			public const uint QuarantineRunner = 2934129541;
 			public const uint CandescentGreaves = 2608193268;
 			public const uint UnauthorizedDeparture = 3552941801;
@@ -8299,10 +8243,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint FelwintersLie = 3371544734;
 			public const uint PathofLeastResistance = 2946320117;
 			public const uint OutlawedSentryHelm = 1979304485;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_891647018 = 891647018;
+			public const uint AbyssDefiant = 891647018;
 			public const uint CrystocreneHelm = 2896107177;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
@@ -8313,10 +8254,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this weapon ornament to change the appearance of Malediction. Once you get an ornament, it's unlocked for all characters on your account.
 			/// </summary>
 			public const uint SeasonedTemper = 3882219136;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1480104006 = 1480104006;
+			public const uint SwordbreakerAdept = 1480104006;
 			/// <summary>
 			/// 	Equip this weapon ornament to change the appearance of Malediction. Once you get an ornament, it's unlocked for all characters on your account.
 			/// </summary>
@@ -8640,7 +8578,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint CinderPinionPlate = 2677878979;
 			public const uint GoodIdea = 2243088286;
 			public const uint MotiontoVacate = 4004455465;
-			public const uint H1670619546 = 1670619546;
+			public const uint KūlikeKākou = 1670619546;
 			public const uint Gallop = 2243088287;
 			public const uint H1670619547 = 1670619547;
 			/// <summary>
@@ -9043,10 +8981,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this weapon ornament to change the appearance of Bug-Out Bag. Once you get an ornament, it's unlocked for all characters on your account.
 			/// </summary>
 			public const uint TheBunker = 568774437;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2643081286 = 2643081286;
+			public const uint DeadpanDelivery_2643081286 = 2643081286;
 			public const uint SolsticeGraspsMagnificent_2024098845 = 2024098845;
 			/// <summary>
 			/// 	Equip this weapon ornament to change the appearance of Ticuu's Divination. Once you get an ornament, it's unlocked for all characters on your account.
@@ -9622,10 +9557,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ThyFearfulSymmetry_1412658602 = 1412658602;
 			public const uint TheOutlandersCloak = 328539151;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_4200981660 = 4200981660;
+			public const uint MarkofthePit = 4200981660;
 			public const uint Vinegaroon2si_1616672196 = 1616672196;
 			public const uint RivensCurse = 737130625;
 			public const uint SecondMarkoftheCollector = 3015791426;
@@ -10169,10 +10101,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
 			public const uint LiminalVoyagerBond_3475921821 = 3475921821;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_993130992 = 993130992;
+			public const uint ShroudofFlies = 993130992;
 			/// <summary>
 			/// 	You can find this rare emblem only in chests hidden on Io.
 			/// </summary>
@@ -11249,10 +11178,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ValkyrianMask = 2769985418;
 			public const uint OutlawedCollectorGrips = 2733736440;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2877281325 = 2877281325;
+			public const uint SongofIrYût = 2877281325;
 			/// <summary>
 			/// 	A mask to celebrate Festival of the Lost 2020.
 			/// </summary>
@@ -13874,14 +13800,14 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint OutlawedInvaderGreaves = 3737441294;
 			public const uint VestoftheTakenKing = 4027495825;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Apply this shader to change the color of your gear.
 			/// </summary>
-			public const uint Classified_1294858438 = 1294858438;
+			public const uint WarpedRachis = 1294858438;
 			public const uint PromiseofPayback = 2726742372;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Apply this shader to change the color of your gear.
 			/// </summary>
-			public const uint Classified_1294858439 = 1294858439;
+			public const uint ShedCarapace = 1294858439;
 			/// <summary>
 			/// 	[Finisher]  : Finish critically wounded combatants.
 			/// </summary>
@@ -13909,9 +13835,12 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint StardevilPredator = 4187835103;
 			public const uint DreambaneHelm = 2823630262;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	This mod's perks are only active in the "Crota's End" raid.
+			/// <para/>
+			/// 	Multiple copies of this mod stack and improve its effects.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_3375139625 = 3375139625;
+			public const uint BenevolentOverflow = 3375139625;
 			public const uint GetawayArtist = 3746353540;
 			public const uint StrikeattheHeart = 783628742;
 			public const uint MantleofEfrideet_3789159050 = 3789159050;
@@ -14301,10 +14230,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint PowerfulFriends = 347942551;
 			public const uint BloodofIzanami = 2684277474;
 			public const uint DeadManWalkingXX7463 = 2822054049;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_169089178 = 169089178;
+			public const uint WillbreakersWatch = 169089178;
 			public const uint WolftoneDraw = 3402127285;
 			public const uint WisteriaOrbitShell = 726232493;
 			/// <summary>
@@ -14750,10 +14676,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint AbacusShell = 2583538364;
 			public const uint SymphonicShell = 2583538365;
 			public const uint NotoriousCollectorRobes = 697642018;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3785585682 = 3785585682;
+			public const uint OversoulEdict = 3785585682;
 			/// <summary>
 			/// 	Claim high-value targets' chests with full Dead Orbit Anti-Extinction armor equipped and while pledged to Dead Orbit.
 			/// </summary>
@@ -14800,15 +14723,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DreamingSpectrum = 1687023295;
 			public const uint ArcDexterity = 349116207;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1485320615 = 1485320615;
+			public const uint TirelessStriders = 1485320615;
 			public const uint ReverieDawnGloves = 2858831780;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	This mod's perks are only active in the "Crota's End" raid.
+			/// <para/>
+			/// 	Multiple copies of this mod stack and improve its effects.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_502970598 = 502970598;
+			public const uint ViolentPour = 502970598;
 			public const uint FiniteImpactor_4089290699 = 4089290699;
 			public const uint AkashicRevelation = 2546554933;
 			/// <summary>
@@ -15018,9 +14941,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint KabutoShell = 24595234;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	This mod's perks are only active in the "Crota's End" raid.
+			/// <para/>
+			/// 	Multiple copies of this mod stack and improve its effects.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_3089071559 = 3089071559;
+			public const uint StoicWhenPanicked = 3089071559;
 			/// <summary>
 			/// 	For Ghosts who brave the center of the storm.
 			/// </summary>
@@ -15630,16 +15556,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint GildedRemembrance = 1822059426;
 			public const uint LifeforLife = 4098597417;
 			public const uint FullyOperational = 1822059427;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2606379132 = 2606379132;
+			public const uint ABrokenThrone = 2606379132;
 			public const uint InVinoMendacium = 1822059428;
 			public const uint DeadMessenger_360554695 = 360554695;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2606379133 = 2606379133;
+			public const uint IlluminatedPeril = 2606379133;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
@@ -16250,10 +16170,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint AdeptTargeting = 739830278;
 			public const uint TheMachinoform = 2187505404;
 			public const uint RefashionedShapes = 2187505407;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3166317411 = 3166317411;
+			public const uint WillbreakersResolve = 3166317411;
 			/// <summary>
 			/// 	[Finisher]  : Finish critically wounded combatants.
 			/// </summary>

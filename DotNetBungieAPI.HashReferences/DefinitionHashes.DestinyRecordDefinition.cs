@@ -1002,9 +1002,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SlowandSteady = 3304227749;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Conservation of Energy" challenge mode.
 			/// </summary>
-			public const uint Classified_3702810582 = 3702810582;
+			public const uint ConservationofEnergy = 3702810582;
 			/// <summary>
 			/// 	Use Manifested Pages to unlock chapters in the "Tales of the Forgotten – Vol. 2."
 			/// </summary>
@@ -1101,9 +1101,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VanguardPinnacleWeapons = 2046101248;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Crota's End" raid.
 			/// </summary>
-			public const uint Classified_2401440738 = 2401440738;
+			public const uint CrotasEnd_2401440738 = 2401440738;
 			public const uint Krill = 741597466;
 			public const uint ThreeOhThree = 741597467;
 			/// <summary>
@@ -1420,9 +1420,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ImperialDecree = 1388873285;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Equal Vessels" challenge mode.
 			/// </summary>
-			public const uint Classified_680822308 = 680822308;
+			public const uint EqualVessels = 680822308;
 			/// <summary>
 			/// 	Complete all Triumphs for Season of the Undying.
 			/// </summary>
@@ -2017,9 +2017,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ColonyCatalyst = 299659704;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Trophies from the "Crota's End" raid.
 			/// </summary>
-			public const uint Classified_550568693 = 550568693;
+			public const uint CrotasEnd_550568693 = 550568693;
 			/// <summary>
 			/// 	Defeat Guardians in the Mayhem playlist with Super abilities.
 			/// </summary>
@@ -3798,9 +3798,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AlgorithmEfficiency = 2895711472;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Precarious Balance" challenge mode.
 			/// </summary>
-			public const uint Classified_1334890488 = 1334890488;
+			public const uint PrecariousBalance = 1334890488;
 			/// <summary>
 			/// 	Reset your Reputation Rank at the War Table in the H.E.L.M.
 			/// </summary>
@@ -4020,9 +4020,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WeeklyWetwork = 3251955396;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete any version of the "Crota's End" raid.
 			/// </summary>
-			public const uint Classified_2045739672 = 2045739672;
+			public const uint CrotasEnd_2045739672 = 2045739672;
 			/// <summary>
 			/// 	Defeat an opponent who just defeated an ally.
 			/// </summary>
@@ -4107,9 +4107,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RememberingtheForgotten14 = 2068997712;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Collect Essence of the Oversoul from the "Crota's End" raid and its related Triumphs.
 			/// </summary>
-			public const uint Classified_503301272 = 503301272;
+			public const uint NecrochasmCatalyst = 503301272;
 			/// <summary>
 			/// 	Rapidly eliminate 3 opponents.
 			/// </summary>
@@ -4597,9 +4597,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ElementaryMyDear = 2042673099;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in "Crota's End" with a full fireteam of the same class.
 			/// </summary>
-			public const uint Classified_942933865 = 942933865;
+			public const uint InUnison = 942933865;
 			/// <summary>
 			/// 	Reset your rank with the War Table.
 			/// </summary>
@@ -4613,9 +4613,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint StylishSplicer = 3377826429;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
-			public const uint Classified_1741156110 = 1741156110;
+			public const uint WordofCrota = 1741156110;
 			/// <summary>
 			/// 	Acquire the Exotic Trace Rifle Divinity.
 			/// </summary>
@@ -4991,9 +4991,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AccordingtoPlan = 859173792;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in "Crota's End" with a full fireteam of clanmates.
 			/// </summary>
-			public const uint Classified_116345475 = 116345475;
+			public const uint Unbowed = 116345475;
 			/// <summary>
 			/// 	Survival: Land all knockout blows on the opposing team in a single round.
 			/// </summary>
@@ -5607,9 +5607,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Chapter8Idolatry = 1240932262;
 			public const uint Chapter9Inspire = 1240932263;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounter challenges in the Master tier of "Crota's End."
 			/// </summary>
-			public const uint Classified_295018272 = 295018272;
+			public const uint ConquestByVirtue = 295018272;
 			public const uint Chapter6Beguiled = 1240932264;
 			public const uint Chapter7Nyctalopia = 1240932265;
 			/// <summary>
@@ -6435,9 +6435,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DemolitionExpert_4183243824 = 4183243824;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Trophies from the "Crota's End" raid.
 			/// </summary>
-			public const uint Classified_3922046691 = 3922046691;
+			public const uint CrotasEnd_3922046691 = 3922046691;
 			/// <summary>
 			/// 	Total number of levels earned in the Season of the Hunt Season Pass.
 			/// </summary>
@@ -6513,9 +6513,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CabalGold = 4069407164;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Crota's End" raid with a full fireteam of Void subclasses.
 			/// </summary>
-			public const uint Classified_1510515137 = 1510515137;
+			public const uint HiddenDepths = 1510515137;
 			/// <summary>
 			/// 	Complete the Forever Fight challenge.
 			/// </summary>
@@ -6562,9 +6562,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LegionLost12 = 3705633017;
 			public const uint MessagefromAunorII = 2482395739;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Crota's End" raid with a full fireteam of Arc subclasses.
 			/// </summary>
-			public const uint Classified_2487544289 = 2487544289;
+			public const uint RetributiveCharge = 2487544289;
 			/// <summary>
 			/// 	Acquire a full set of Reverie Dawn armor in the Dreaming City.
 			/// </summary>
@@ -6723,9 +6723,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WorldlineCatalyst = 3468043157;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Crota's End" raid without dying and without leaving the activity.
 			/// </summary>
-			public const uint Classified_2572383496 = 2572383496;
+			public const uint PerfectedTruth = 2572383496;
 			/// <summary>
 			/// 	Defeat 2 opponents with Silence and Squall from a long distance.
 			/// </summary>
@@ -7071,9 +7071,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint CopiesofCopies = 64856166;
 			public const uint Chapter9TheReturn = 309779406;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Defeat all Swordbearers in the Oversoul Throne Bridge encounter from the opposite side of the chasm.
 			/// </summary>
-			public const uint Classified_4259447007 = 4259447007;
+			public const uint ThreateningReach = 4259447007;
 			/// <summary>
 			/// 	Catch a Madrugadan Mackerel.
 			/// </summary>
@@ -7622,9 +7622,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TESTNO312ExoArmAttachment = 2630087790;
 			public const uint TESTNO088NuclearPowerExo = 2630087791;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
-			public const uint Classified_3250738778 = 3250738778;
+			public const uint OversoulEdict = 3250738778;
 			/// <summary>
 			/// 	As an invader, defeat four opposing Guardians in a single invasion.
 			/// </summary>
@@ -8054,9 +8054,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DecoratedWayfinder = 1419856322;
 			public const uint IVToForgiveorForget = 546263789;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
-			public const uint Classified_411909019 = 411909019;
+			public const uint Swordbreaker = 411909019;
 			public const uint VIILegacy = 546263790;
 			/// <summary>
 			/// 	Complete Gambit Contender Cards while Gambit is the Daily Focus.
@@ -8080,9 +8080,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GhostWriter_1089543274 = 1089543274;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Loot all hidden chests in the "Crota's End" raid.
 			/// </summary>
-			public const uint Classified_710681626 = 710681626;
+			public const uint SpoilsofConquest = 710681626;
 			/// <summary>
 			/// 	Trophies from the Throne World.
 			/// </summary>
@@ -9812,10 +9812,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete Season of the Risen Legend Battlegrounds.
 			/// </summary>
 			public const uint LegendBattlegroundsCompleted = 3023379542;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2729433153 = 2729433153;
+			public const uint H2729433153 = 2729433153;
 			/// <summary>
 			/// 	As a Striker, get kills with Flashbang Grenades.
 			/// </summary>
@@ -10168,9 +10165,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MysteryMeet = 2260243645;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Crota's End" raid and all encounter challenges within the first 48 hours.
 			/// </summary>
-			public const uint Classified_1417273794 = 1417273794;
+			public const uint SuperiorSwordplay = 1417273794;
 			/// <summary>
 			/// 	As an Invader, defeat seven Guardians in a single invasion before Drifter brings you back to your side.
 			/// </summary>
@@ -10653,9 +10650,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GreetingsfromtheVoid = 2873664434;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Triumphs for "Crota's End."
 			/// </summary>
-			public const uint Classified_865076293 = 865076293;
+			public const uint CrotasEnd_865076293 = 865076293;
 			/// <summary>
 			/// 	Earn points by banking Motes, defeating Blockers, and defeating Guardians in Gambit.
 			/// </summary>
@@ -10901,9 +10898,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EuropanTour = 1961610045;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Crota's End" raid.
 			/// </summary>
-			public const uint Classified_1880348018 = 1880348018;
+			public const uint CrotasEnd_1880348018 = 1880348018;
 			/// <summary>
 			/// 	As a fireteam, rapidly defeat 30 combatants.
 			/// </summary>
@@ -11156,9 +11153,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DoubleKell = 50745936;
 			public const uint GottaDoMorethanShoot = 3181829904;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the Abyss encounter in the Stills without letting any player reach 10 stacks of Weight of Darkness.
 			/// </summary>
-			public const uint Classified_1447905713 = 1447905713;
+			public const uint FeatherLight = 1447905713;
 			/// <summary>
 			/// 	Complete the Ascendant time trial in the Forfeit Shrine.
 			/// </summary>
@@ -12131,9 +12128,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RememberingtheForgotten22 = 2119330607;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
-			public const uint Classified_3859670341 = 3859670341;
+			public const uint SongofIrYût = 3859670341;
 			/// <summary>
 			/// 	Complete the "Spire of the Watcher" dungeon.
 			/// </summary>
@@ -12175,9 +12172,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Conqueror_2226626398 = 2226626398;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the Master tier of "Crota's End."
 			/// </summary>
-			public const uint Classified_1732432755 = 1732432755;
+			public const uint BrokenThrone = 1732432755;
 			/// <summary>
 			/// 	Defeat an invader.
 			/// </summary>
@@ -12670,9 +12667,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Takedown = 985373860;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
-			public const uint Classified_1294327154 = 1294327154;
+			public const uint AbyssDefiant = 1294327154;
 			/// <summary>
 			/// 	Venture into the depths of the Moon and extract the Cryptoglyph from the claws of the Hive.
 			/// </summary>
@@ -12711,9 +12708,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LetsGototheMaul = 1449123915;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the Crota, Son of Oryx encounter with only one player Enlightened at a time.
 			/// </summary>
-			public const uint Classified_1896685129 = 1896685129;
+			public const uint SingularSensation = 1896685129;
 			/// <summary>
 			/// 	Defeat an opponent within 2 seconds of activating Golden Gun.
 			/// </summary>
@@ -12964,9 +12961,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SkydockIVSoloMastery = 3797565680;
 			public const uint IIIWORTH = 2993263677;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	During each round of the Ir Yût encounter, at least one player must expunge Ir Yût.
 			/// </summary>
-			public const uint Classified_2237801267 = 2237801267;
+			public const uint CommunalRites = 2237801267;
 			public const uint IKETCH = 2993263679;
 			/// <summary>
 			/// 	Complete all Destination Triumphs.
@@ -13017,9 +13014,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SecretsoftheSpireVI = 1254352123;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Completing Deepsight Resonance extractions on this weapon will unlock its Pattern.
 			/// </summary>
-			public const uint Classified_583710954 = 583710954;
+			public const uint FangofIrYût = 583710954;
 			/// <summary>
 			/// 	Activate the first set of elemental runes in the Ascent.
 			/// </summary>
@@ -13678,9 +13675,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WeeklyCampaignMissions_2567411695 = 2567411695;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "All For One" challenge mode.
 			/// </summary>
-			public const uint Classified_752641838 = 752641838;
+			public const uint AllForOne = 752641838;
 			public const uint CivilianAtriumSouth = 2465618147;
 			public const uint MessagefromAunorX = 2465618148;
 			/// <summary>
@@ -13790,9 +13787,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SeasonalArtifact = 4079518472;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Crota's End" raid with a full fireteam of Solar subclasses.
 			/// </summary>
-			public const uint Classified_2259810484 = 2259810484;
+			public const uint EnlightenedEmanation = 2259810484;
 			/// <summary>
 			/// 	Rift: Defeat an opposing Spark Runner near the Rift.
 			/// </summary>

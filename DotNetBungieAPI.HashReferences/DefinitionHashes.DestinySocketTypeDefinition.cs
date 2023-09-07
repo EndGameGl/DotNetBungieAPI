@@ -594,10 +594,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1158395763 = 1158395763;
 			public const uint H4007624637 = 4007624637;
 			public const uint H1664557282 = 1664557282;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified = 2804745000;
+			public const uint H2804745000 = 2804745000;
 			public const uint H1738358154 = 1738358154;
 			public const uint H4003365396 = 4003365396;
 			public const uint H1931019788 = 1931019788;

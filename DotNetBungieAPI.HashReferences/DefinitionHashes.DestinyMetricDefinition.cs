@@ -371,9 +371,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HeroicMenagerieCompletions = 3281994512;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The fastest completion time for "Crota's End" this Season.
 			/// </summary>
-			public const uint Classified_2858709048 = 2858709048;
+			public const uint CrotasEndTimeTrial_2858709048 = 2858709048;
 			/// <summary>
 			/// 	The lifetime high score for "Proving Grounds" in Nightfall.
 			/// <para/>
@@ -396,9 +396,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeadeyeTitleGildings = 3103683778;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The total number of "Crota's End" completions using Guided Games.
+			/// <para/>
+			/// 	Tracks from Season 22 onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_3617877772 = 3617877772;
+			public const uint CrotasEndGuidedGames = 3617877772;
 			/// <summary>
 			/// 	The total number of completions of "Last Wish."
 			/// <para/>
@@ -560,9 +563,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Nightstalkerdefeats = 451582922;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The number of Guardians carried to their first-ever completion of "Crota's End" this week.
 			/// </summary>
-			public const uint Classified_4247075612 = 4247075612;
+			public const uint CrotasEndCarries_4247075612 = 4247075612;
 			/// <summary>
 			/// 	The total number of Guardians carried to their first completion of "Spire of Stars."
 			/// <para/>
@@ -597,9 +600,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LastWishTimeTrial_4264455694 = 4264455694;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The number of Guardians carried to their first-ever completion of "Crota's End" during this Season.
 			/// </summary>
-			public const uint Classified_4172195891 = 4172195891;
+			public const uint CrotasEndCarries_4172195891 = 4172195891;
 			/// <summary>
 			/// 	The total number of Guardians carried to their first completion of "Root of Nightmares."
 			/// <para/>
@@ -810,9 +813,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PrimevalsDefeated_2781393679 = 2781393679;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The total number of Guardians carried to their first completion of "Crota's End."
+			/// <para/>
+			/// 	Tracks from Season 22 onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_124026888 = 124026888;
+			public const uint CrotasEndCarries_124026888 = 124026888;
 			/// <summary>
 			/// 	The total number of "Root of Nightmares" completions using Guided Games.
 			/// <para/>
@@ -821,9 +827,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RootofNightmaresGuidedGames = 2500984290;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The total number of "Crota's End" completions.
+			/// <para/>
+			/// 	Tracks from Season 22 onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_2552956848 = 2552956848;
+			public const uint CrotasEndCompletions = 2552956848;
 			/// <summary>
 			/// 	The lifetime high score for "Birthplace Of The Vile" in Nightfall.
 			/// </summary>
@@ -891,9 +900,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Undefeated = 3212106215;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The fastest completion time for "Crota's End."
+			/// <para/>
+			/// 	Tracks from Season 22 onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_510466839 = 510466839;
+			public const uint CrotasEndTimeTrial_510466839 = 510466839;
 			/// <summary>
 			/// 	The total number of final blows with Swords.
 			/// <para/>
@@ -1138,9 +1150,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallAGardenWorldScore = 3543375894;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The fastest completion time for "Crota's End" this week.
 			/// </summary>
-			public const uint Classified_2864676971 = 2864676971;
+			public const uint CrotasEndTimeTrial_2864676971 = 2864676971;
 			/// <summary>
 			/// 	The total number of final blows with Grenade Launchers.
 			/// <para/>

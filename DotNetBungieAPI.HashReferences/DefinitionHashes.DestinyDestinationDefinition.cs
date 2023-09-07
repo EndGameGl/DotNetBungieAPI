@@ -71,10 +71,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2616293043 = 2616293043;
 			public const uint H1756262061 = 1756262061;
 			public const uint H1749218505 = 1749218505;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified = 2087192301;
+			public const uint TheMoon_2087192301 = 2087192301;
 			public const uint H2239137327 = 2239137327;
 			public const uint Mercury_1993421442 = 1993421442;
 			public const uint H2961497387 = 2961497387;

@@ -2302,14 +2302,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Bows gain shield-piercing arrows, which bypass combatant defenses.
 			/// <para/>
-			/// 	Strong against [Shield-Piercing] Barrier Champions.
+			/// 	Strong against [Shield-Piercing] Barrier Champions. Additionally, Bows are always overcharged when that modifier is active.
 			/// <para/>
 			/// </summary>
 			public const uint PiercingBowstring_2638928131 = 2638928131;
 			/// <summary>
 			/// 	Aiming down sights for a brief period with any Fusion Rifle you are wielding loads a powerful explosive payload that stuns unshielded combatants.
 			/// <para/>
-			/// 	Strong against [Stagger] Unstoppable Champions.
+			/// 	Strong against [Stagger] Unstoppable Champions. Additionally, Fusion Rifles are always overcharged when that modifier is active.
 			/// <para/>
 			/// </summary>
 			public const uint UnstoppableFusion_2638928132 = 2638928132;
@@ -2528,9 +2528,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint UltimateGlimmerBooster = 1364585957;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	While Engulfed in Light, dying or having the Chalice of Light taken from you creates a burst of healing around you. Multiple copies of this mod stack to increase the radius and potency of healing.
 			/// </summary>
-			public const uint Classified_1537859289 = 1537859289;
+			public const uint BenevolentOverflow = 1537859289;
 			/// <summary>
 			/// 	Crucible wins have a chance to award destination materials.
 			/// </summary>
@@ -3927,9 +3927,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint PowerfulAttraction = 2602830610;
 			public const uint H1901678688 = 1901678688;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	After defeating a target with a melee attack, final blows with this weapon cause targets to explode for a short duration.
 			/// </summary>
-			public const uint Classified_1994003383 = 1994003383;
+			public const uint CursedThrall = 1994003383;
 			/// <summary>
 			/// 	Adds a methane burst appearance to your transmat effects.
 			/// </summary>
@@ -4610,7 +4610,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AntiBarrierPulseRifle_3137962166 = 3137962166;
 			/// <summary>
-			/// 	[###DestinyNamedSubstitutions.ui_player_action_air_dodge_button###] [###DestinyNamedSubstitutions.ui_player_action_air_dodge_verb###] : Dodge quickly while airborne.
+			/// 	[Air Dodge]  : Dodge quickly while airborne.
 			/// <para/>
 			/// 	While Heat Rises is active, you have an additional dodge.
 			/// <para/>
@@ -4720,10 +4720,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint SilenceandSquall = 2115357203;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2208183322 = 2208183322;
+			public const uint H2208183322 = 2208183322;
 			/// <summary>
 			/// 	Final blows with this weapon increase accuracy and stability while improving vertical recoil.
 			/// </summary>
@@ -4825,9 +4822,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H154686442 = 154686442;
 			public const uint H2026681315 = 2026681315;
 			/// <summary>
-			/// 	[###DestinyNamedSubstitutions.ui_player_action_air_dodge_button###] [###DestinyNamedSubstitutions.ui_player_action_air_dodge_verb###] : Dodge while airborne to enter the weave, gaining damage resistance from combatants and players. Reactivate your air dodge or cast your Rift to exit the weave.
+			/// 	[Air Dodge]  : Dodge while airborne to consume your melee energy and enter the weave, gaining damage resistance from combatants and players. Reactivate your air dodge or cast your Rift to exit the weave.
 			/// <para/>
-			/// 	While in the weave, you generate perched Threadlings over time.
+			/// 	While in the weave, your melee energy is drained and you generate perched Threadlings over time.
 			/// <para/>
 			/// </summary>
 			public const uint Weavewalk = 1000136554;
@@ -6796,9 +6793,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Dragonfly_624870651 = 624870651;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Weapon final blows against challenging combatants spawn an Orb of Power. Multiple copies of this mod stack to increase the potency of the Orb of Power.
 			/// </summary>
-			public const uint Classified_3543261302 = 3543261302;
+			public const uint ViolentPour = 3543261302;
 			/// <summary>
 			/// 	Subclass elemental buffs grant you bonus recovery and damage resistance against combatant attacks of the matching element type.
 			/// </summary>
@@ -8188,9 +8185,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EmberofWonder = 891758557;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Gain damage resistance while you are standing on a plate, near a lantern or totem, or while you carry the relic Sword. Multiple copies of this mod stack to increase this benefit.
 			/// </summary>
-			public const uint Classified_4040902743 = 4040902743;
+			public const uint StoicWhenPanicked = 4040902743;
 			public const uint H2084279142 = 2084279142;
 			/// <summary>
 			/// 	Each successive shot has more damage and more spread.
@@ -10733,9 +10730,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EnhancedSubmachineGunLoader = 3986055876;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Becoming Drained of Light grants you an armor charge. Multiple copies of this mod stack to increase this benefit.
 			/// </summary>
-			public const uint Classified_3855099150 = 3855099150;
+			public const uint RefreshingThirst = 3855099150;
 			/// <summary>
 			/// 	Defeating frozen targets generates an Orb of Power.
 			/// </summary>
@@ -11387,9 +11384,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Bounteous = 470326231;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	After you have been Drained of Light, gain a bonus to mobility, weapon handling, and reload speed. Multiple copies of this mod stack to increase this benefit.
 			/// </summary>
-			public const uint Classified_2931879325 = 2931879325;
+			public const uint ChompingattheStem = 2931879325;
 			public const uint H511210196 = 511210196;
 			public const uint H128516240 = 128516240;
 			/// <summary>
@@ -11686,9 +11683,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DynamicSwayReduction_3947648055 = 3947648055;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Reduce duration of the Drained of Light debuff by 2 seconds. Multiple copies of this mod stack to increase this benefit.
 			/// </summary>
-			public const uint Classified_602921650 = 602921650;
+			public const uint BrimmingwithExhaustion = 602921650;
 			public const uint Needlestorm = 2130277063;
 			/// <summary>
 			/// 	Final blows with [Solar] Solar abilities or ignitions increase the damage of your Solar abilities. Stacks 3 times.
@@ -12541,7 +12538,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Aiming down sights for a brief period with any Fusion Rifle you are wielding loads a powerful explosive payload that stuns unshielded combatants.
 			/// <para/>
-			/// 	Strong against [Stagger] Unstoppable Champions.
+			/// 	Strong against [Stagger] Unstoppable Champions. Additionally, Fusion Rifles are always overcharged when that modifier is active.
 			/// <para/>
 			/// </summary>
 			public const uint UnstoppableFusion_2475557021 = 2475557021;
