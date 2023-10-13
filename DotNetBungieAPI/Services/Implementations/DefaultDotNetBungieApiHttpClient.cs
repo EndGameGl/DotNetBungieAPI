@@ -288,10 +288,11 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         return await _apiRateLimiter.WaitAndRunAsync(
             async (ct) =>
             {
-                var start = Stopwatch.GetTimestamp();
+                var start = Stopwatch.GetTimestamp();               
                 var resp = await _httpClient.SendAsync(requestMessage, httpCompletionOption, ct);
                 var end = Stopwatch.GetTimestamp();
-                _logger.LogDebug("Executed request in {Time}s", (double)(end - start) / 10_000_000);
+                var elapsedTime = (double)(end - start) / Stopwatch.Frequency;
+                _logger.LogDebug("Executed request in {Time}s", elapsedTime);
                 return resp;
             },
             cancellationToken

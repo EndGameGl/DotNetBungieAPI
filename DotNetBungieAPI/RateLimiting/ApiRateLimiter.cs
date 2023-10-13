@@ -16,6 +16,14 @@ internal sealed class ApiRateLimiter
 
     private readonly TimeLimiter _rateLimiter;
 
+    /// <summary>
+    ///     .ctor
+    /// </summary>
+    /// <param name="logger">Logger</param>
+    /// <param name="requestsLimit">Global requests limit per time frame</param>
+    /// <param name="requestsLimitTimeFrame">Global requests limit time interval</param>
+    /// <param name="perSecondMaxLimit">Limit per second for requests</param>
+    /// <param name="maxConcurrentRequestsLimit">Maximum amount of concurrent requests</param>
     internal ApiRateLimiter(
         ILogger logger,
         int requestsLimit,
