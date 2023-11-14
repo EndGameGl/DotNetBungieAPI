@@ -5,17 +5,17 @@ namespace DotNetBungieAPI.HashReferences
 		public static class Seasons
 		{
 			/// <summary>
-			/// 	A new season has begun! Rediscover the glories of the past and acquire beautiful new instruments of destruction.
-			/// </summary>
-			public const uint SeasonoftheForge = 2236269318;
-			/// <summary>
 			/// 	A new season has begun! Lavish yourself in gifts from the mighty Emperor Calus. Seek lost treasures throughout the system.
 			/// </summary>
 			public const uint SeasonofOpulence = 4275747712;
 			/// <summary>
-			/// 	A new season has begun! Roam the Tangled Shore, avenge the fall of a legend, and walk the right side of wrong in Gambit.
+			/// 	A new season has begun! Venture into the Infinite Forest, uncover the mysteries of Osiris, and seek new challenges on Mercury.
 			/// </summary>
-			public const uint SeasonoftheOutlaw = 2026773320;
+			public const uint CurseofOsiris = 2973407602;
+			/// <summary>
+			/// 	A new season has begun! Search for relics of the past, learn the secrets of Rasputin, and unearth things long forgotten beneath the frozen surface of Mars.
+			/// </summary>
+			public const uint Resurgence = 4033618594;
 			/// <summary>
 			/// 	The Almighty bears down on the Last City. Join forces with unlikely allies to avert this crisis and destroy the last vestige of Cabal power in the system.
 			/// </summary>
@@ -40,7 +40,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	As the Last City is consumed by an Endless Night, Guardians must hack their way through the Vex Network with help from Mithrax, the Sacred Splicer.
 			/// </summary>
 			public const uint SeasonoftheSplicer = 2809059429;
-			public const uint H965757574 = 965757574;
 			/// <summary>
 			/// 	The prison ship of the exiled Cabal Emperor Calus has returned. But its reappearance heralds the beginning of the end as the once-dormant lunar Pyramid stirs to life once more. With the aid of Eris Morn's witchcraft, the Guardian must work with Empress Caiatl, Commander Zavala, and Crow to unravel the mysteries of the Leviathan and the lunar Pyramid and stop Calus before it is too late.
 			/// </summary>
@@ -58,6 +57,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SeasonofPlunder = 2809059433;
 			/// <summary>
+			/// 	A new season has begun! Rediscover the glories of the past and acquire beautiful new instruments of destruction.
+			/// </summary>
+			public const uint SeasonoftheForge = 2236269318;
+			public const uint H965757574 = 965757574;
+			/// <summary>
 			/// 	In the aftermath of the Witness's attack, the Vanguard calls upon its closest allies. The Guardian must master the righteous powers of the Awoken to stand against the encroaching Shadow Legion and prove themselves as Queensguard.
 			/// </summary>
 			public const uint SeasonofDefiance = 2758726568;
@@ -74,14 +78,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SeasonoftheWitch = 2758726570;
 			public const uint SeasonofRedacted = 2758726571;
 			/// <summary>
-			/// 	A new season has begun! Choose what kind of Guardian you will become. Reckon with the path that lies ahead.
-			/// </summary>
-			public const uint SeasonoftheDrifter = 2891088360;
-			/// <summary>
-			/// 	A new season has begun! Search for relics of the past, learn the secrets of Rasputin, and unearth things long forgotten beneath the frozen surface of Mars.
-			/// </summary>
-			public const uint Resurgence = 4033618594;
-			/// <summary>
 			/// 	…in circles. Ancient enemies return to plague old battlegrounds. Time moves…
 			/// </summary>
 			public const uint SeasonoftheUndying = 1743682818;
@@ -90,9 +86,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SeasonofDawn = 1743682819;
 			/// <summary>
-			/// 	A new season has begun! Venture into the Infinite Forest, uncover the mysteries of Osiris, and seek new challenges on Mercury.
+			/// 	A new season has begun! Choose what kind of Guardian you will become. Reckon with the path that lies ahead.
 			/// </summary>
-			public const uint CurseofOsiris = 2973407602;
+			public const uint SeasonoftheDrifter = 2891088360;
+			/// <summary>
+			/// 	A new season has begun! Roam the Tangled Shore, avenge the fall of a legend, and walk the right side of wrong in Gambit.
+			/// </summary>
+			public const uint SeasonoftheOutlaw = 2026773320;
 		}
 	}
 }

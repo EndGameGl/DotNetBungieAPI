@@ -14,11 +14,11 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PackageVersion>2.11.2</PackageVersion>
-        <AssemblyVersion>2.11.2</AssemblyVersion>
-        <FileVersion>2.11.2</FileVersion>
-        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
-        <LangVersion>11</LangVersion>
+        <PackageVersion>2.11.3</PackageVersion>
+        <AssemblyVersion>2.11.3</AssemblyVersion>
+        <FileVersion>2.11.3</FileVersion>
+        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+        <LangVersion>12</LangVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">

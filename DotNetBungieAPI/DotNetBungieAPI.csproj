@@ -12,12 +12,12 @@
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <LangVersion>11</LangVersion>
+        <LangVersion>12</LangVersion>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <PackageVersion>2.12.1</PackageVersion>
-        <AssemblyVersion>2.12.1</AssemblyVersion>
-        <FileVersion>2.12.1</FileVersion>
-        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+        <PackageVersion>2.12.2</PackageVersion>
+        <AssemblyVersion>2.12.2</AssemblyVersion>
+        <FileVersion>2.12.2</FileVersion>
+        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
@@ -30,10 +30,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="2.11.0" />
-        <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+        <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="2.11.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
         <PackageReference Include="RateLimiter" Version="2.2.0" />
     </ItemGroup>
 

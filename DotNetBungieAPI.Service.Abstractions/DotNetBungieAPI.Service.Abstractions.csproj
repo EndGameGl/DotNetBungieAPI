@@ -7,7 +7,7 @@
     <PackageId>DotNetBungieAPI.Service.Abstractions</PackageId>
     <Description>Bungie.net API service abstractions.</Description>
     <Authors>MeGl</Authors>
-    <Copyright>Copyright (c) MeGl 2022</Copyright>
+    <Copyright>Copyright (c) MeGl 2023</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <IncludeSymbols>true</IncludeSymbols>
@@ -15,15 +15,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>DotNetBungieAPI.Service.Abstractions</RootNamespace>
-    <PackageVersion>2.11.0</PackageVersion>
-    <AssemblyVersion>2.11.0</AssemblyVersion>
-    <FileVersion>2.11.0</FileVersion>
-    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
-    <LangVersion>11</LangVersion>
+    <PackageVersion>2.11.1</PackageVersion>
+    <AssemblyVersion>2.11.1</AssemblyVersion>
+    <FileVersion>2.11.1</FileVersion>
+    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+    <LangVersion>12</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DotNetBungieAPI.Models" Version="2.11.2" />
+    <PackageReference Include="DotNetBungieAPI.Models" Version="2.11.3" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">

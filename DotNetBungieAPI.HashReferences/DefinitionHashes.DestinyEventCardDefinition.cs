@@ -11,15 +11,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Complete limited-time Event Card challenges to earn various rewards and make progress toward event Title completion.
 			/// </summary>
-			public const uint GuardianGames = 3461628897;
-			/// <summary>
-			/// 	Complete limited-time Event Card challenges to earn various rewards and make progress toward event Seal completion.
-			/// </summary>
 			public const uint TheDawning = 2302439334;
 			/// <summary>
-			/// 	Complete limited-time Event Challenges to earn various rewards and make progress toward completing an Event Seal.
+			/// 	Complete limited-time Event Card challenges to earn various rewards and make progress toward event Title completion.
 			/// </summary>
 			public const uint FestivaloftheLost = 3265920761;
+			/// <summary>
+			/// 	Complete limited-time Event Card challenges to earn various rewards and make progress toward event Title completion.
+			/// </summary>
+			public const uint GuardianGames = 3461628897;
 		}
 	}
 }
