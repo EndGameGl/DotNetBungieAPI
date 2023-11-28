@@ -23,6 +23,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3976684064 = 3976684064;
 			public const uint H2993594586 = 2993594586;
 			public const uint H3189558259 = 3189558259;
+			public const uint H1642191961 = 1642191961;
 			public const uint H863068219 = 863068219;
 			public const uint H3925369673 = 3925369673;
 			public const uint H922324817 = 922324817;
@@ -127,6 +128,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H542369862 = 542369862;
 			public const uint H1288183855 = 1288183855;
 			public const uint H3036227398 = 3036227398;
+			public const uint H2701465377 = 2701465377;
 			public const uint H3036227399 = 3036227399;
 			public const uint H576961799 = 576961799;
 			public const uint H3750751469 = 3750751469;
@@ -197,6 +199,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H199731397 = 199731397;
 			public const uint H1238899049 = 1238899049;
 			public const uint H1843767421 = 1843767421;
+			public const uint H1826792002 = 1826792002;
 			public const uint H98261217 = 98261217;
 			public const uint H1865813654 = 1865813654;
 			public const uint H1411014879 = 1411014879;
@@ -228,6 +231,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3388001703 = 3388001703;
 			public const uint H1472216056 = 1472216056;
 			public const uint H1718047805 = 1718047805;
+			/// <summary>
+			/// 	Once you've successfully baked a recipe, it will show up here for easy access.
+			/// </summary>
+			public const uint Recipes_2333716261 = 2333716261;
 			public const uint H1585936512 = 1585936512;
 			public const uint H2309094081 = 2309094081;
 			public const uint H3509048378 = 3509048378;
@@ -488,6 +495,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2753602985 = 2753602985;
 			public const uint H2046231342 = 2046231342;
 			public const uint H3306481113 = 3306481113;
+			/// <summary>
+			/// 	Add two ingredients to the oven, then add Essence of Dawning to complete the recipe.
+			/// </summary>
+			public const uint Essence = 629232646;
 			public const uint H3949368943 = 3949368943;
 			public const uint H751988248 = 751988248;
 			public const uint H123055755 = 123055755;
@@ -496,10 +507,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2629700376 = 2629700376;
 			public const uint H1231208388 = 1231208388;
 			public const uint H35712775 = 35712775;
-			/// <summary>
-			/// 	Once you've successfully baked a recipe, it will show up here for easy access.
-			/// </summary>
-			public const uint Recipes_823985597 = 823985597;
 			public const uint H3452820039 = 3452820039;
 			/// <summary>
 			/// 	Unlocked from Masterworking your Ghost shell.
@@ -545,6 +552,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3118477092 = 3118477092;
 			public const uint H4154949066 = 4154949066;
 			public const uint H3237005734 = 3237005734;
+			public const uint H4162526311 = 4162526311;
 			public const uint H803202302 = 803202302;
 			public const uint H3507919244 = 3507919244;
 			public const uint H298095187 = 298095187;
@@ -576,13 +584,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1199796924 = 1199796924;
 			public const uint H1332259665 = 1332259665;
 			public const uint H2915588910 = 2915588910;
-			/// <summary>
-			/// 	Add two ingredients to the oven, then add Essence of Dawning to complete the recipe.
-			/// </summary>
-			public const uint Essence = 3699970766;
 			public const uint H354911055 = 354911055;
 			public const uint H3874540895 = 3874540895;
 			public const uint H1595080360 = 1595080360;
+			public const uint H4026452667 = 4026452667;
 			public const uint H741748290 = 741748290;
 			public const uint H2787982646 = 2787982646;
 			public const uint H1956816524 = 1956816524;
@@ -643,6 +648,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2898028479 = 2898028479;
 			public const uint H2208937614 = 2208937614;
 			public const uint H4221651741 = 4221651741;
+			/// <summary>
+			/// 	Once you've successfully baked a recipe, it will show up here for easy access.
+			/// </summary>
+			public const uint Recipes_971695710 = 971695710;
 			public const uint H3689282772 = 3689282772;
 			public const uint H3471574109 = 3471574109;
 			public const uint H2377805509 = 2377805509;
@@ -720,6 +729,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H495001471 = 495001471;
 			public const uint H1462291512 = 1462291512;
 			public const uint H2969257429 = 2969257429;
+			public const uint H1418604569 = 1418604569;
 			public const uint H3573957805 = 3573957805;
 			public const uint H3873071636 = 3873071636;
 			public const uint H4245941945 = 4245941945;
@@ -755,10 +765,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Runes grant chances of gaining additional rewards from Tribute Chests in the Battlegrounds Playlist.
 			/// </summary>
 			public const uint ForgeaCabalRune_2011817492 = 2011817492;
-			/// <summary>
-			/// 	View the different types of ingredients available during the Dawning.
-			/// </summary>
-			public const uint Ingredients_690368539 = 690368539;
 			public const uint H1120962237 = 1120962237;
 			public const uint H2692309625 = 2692309625;
 			public const uint H1545334249 = 1545334249;
@@ -780,6 +786,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3362409147 = 3362409147;
 			public const uint H3884848922 = 3884848922;
 			public const uint H3428200249 = 3428200249;
+			/// <summary>
+			/// 	View the different types of ingredients available during the Dawning.
+			/// </summary>
+			public const uint Ingredients_3399940067 = 3399940067;
 			public const uint H667669689 = 667669689;
 			public const uint H3137185038 = 3137185038;
 			/// <summary>
@@ -822,6 +832,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2543707692 = 2543707692;
 			public const uint H1563680780 = 1563680780;
 			public const uint H3113184697 = 3113184697;
+			public const uint H3846418227 = 3846418227;
 			public const uint H2813147853 = 2813147853;
 			public const uint H3993098925 = 3993098925;
 			public const uint H1750379527 = 1750379527;
@@ -841,7 +852,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1543457446 = 1543457446;
 			public const uint H2816838017 = 2816838017;
 			public const uint H2240928854 = 2240928854;
-			public const uint H362631639 = 362631639;
 			public const uint H2630552520 = 2630552520;
 			public const uint H777508926 = 777508926;
 			public const uint H2476466451 = 2476466451;
@@ -851,10 +861,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3784377168 = 3784377168;
 			public const uint H2781664868 = 2781664868;
 			public const uint H1013318800 = 1013318800;
-			/// <summary>
-			/// 	Once you've successfully baked a recipe, it will show up here for easy access.
-			/// </summary>
-			public const uint Recipes_3193832966 = 3193832966;
 			public const uint H1829212646 = 1829212646;
 			public const uint H2333977978 = 2333977978;
 			public const uint H3397227130 = 3397227130;
@@ -864,6 +870,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H957209747 = 957209747;
 			public const uint H1501908160 = 1501908160;
 			public const uint H1326704669 = 1326704669;
+			public const uint H2911134583 = 2911134583;
 			public const uint H1318704543 = 1318704543;
 			public const uint H1474385627 = 1474385627;
 			public const uint H1216765125 = 1216765125;
@@ -888,15 +895,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H425626734 = 425626734;
 			public const uint H2009958168 = 2009958168;
 			public const uint H2438313829 = 2438313829;
-			/// <summary>
-			/// 	View the different types of ingredients available during the Dawning.
-			/// </summary>
-			public const uint Ingredients_177732685 = 177732685;
 			public const uint H1520920838 = 1520920838;
-			/// <summary>
-			/// 	View the different types of ingredients available during the Dawning.
-			/// </summary>
-			public const uint Ingredients_177732686 = 177732686;
 			public const uint H2582771945 = 2582771945;
 			public const uint H664920129 = 664920129;
 			public const uint H3338206184 = 3338206184;
@@ -955,7 +954,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2145794478 = 2145794478;
 			public const uint H2702922739 = 2702922739;
 			public const uint H1950591625 = 1950591625;
-			public const uint H624645373 = 624645373;
 			public const uint H1430586844 = 1430586844;
 			public const uint H442106013 = 442106013;
 			/// <summary>
@@ -1113,7 +1111,15 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H981428773 = 981428773;
 			public const uint H4140038855 = 4140038855;
 			public const uint H2410278020 = 2410278020;
+			/// <summary>
+			/// 	View the different types of ingredients available during the Dawning.
+			/// </summary>
+			public const uint Ingredients_1442763989 = 1442763989;
 			public const uint H3199973989 = 3199973989;
+			/// <summary>
+			/// 	View the different types of ingredients available during the Dawning.
+			/// </summary>
+			public const uint Ingredients_1442763990 = 1442763990;
 			public const uint H3474537087 = 3474537087;
 			public const uint H1086679867 = 1086679867;
 			public const uint H1036139807 = 1036139807;

@@ -45,6 +45,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BountyCompletions = 3264536674;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1327262791 = 1327262791;
+			/// <summary>
 			/// 	The lifetime high score for "The Corrupted" in Nightfall.
 			/// <para/>
 			/// 	Tracks from Season 11 onward.
@@ -294,19 +298,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ScourgeofthePastCarries = 870430854;
 			/// <summary>
-			/// 	Highest score achieved in Dares of Eternity on Legend difficulty.
-			/// <para/>
-			/// 	Tracks from Season 15 onward.
-			/// <para/>
-			/// </summary>
-			public const uint DaresofEternityLegendScore = 3638166317;
-			/// <summary>
 			/// 	Flawless completions of the "Spire of the Watcher" dungeon.
 			/// <para/>
 			/// 	Tracks from Season 19 onward.
 			/// <para/>
 			/// </summary>
 			public const uint SpireoftheWatcherFlawlessCompletions = 4002846192;
+			/// <summary>
+			/// 	Highest score achieved in Dares of Eternity on Legend difficulty.
+			/// <para/>
+			/// 	Tracks from Season 15 onward.
+			/// <para/>
+			/// </summary>
+			public const uint DaresofEternityLegendScore = 3638166317;
 			/// <summary>
 			/// 	The number of Guardians carried to their first flawless ticket this week while the player has the "Light For The Lost" emblem equipped.
 			/// </summary>
@@ -576,6 +580,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The number of Guardians carried to their first ever completion of "Last Wish" during this Season.
 			/// </summary>
 			public const uint LastWishCarries_3707622038 = 3707622038;
+			/// <summary>
+			/// 	The highest score obtained during a successful run of The Coil during Season of the Wish.
+			/// </summary>
+			public const uint Wishrunner = 1199216264;
 			/// <summary>
 			/// 	The total number of Lost Sector completions.
 			/// <para/>
@@ -946,6 +954,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Revenantdefeats = 673324377;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3253584750 = 3253584750;
+			/// <summary>
+			/// 	The total number of pots broken in The Coil during Season of the Wish.
+			/// </summary>
+			public const uint Bullish = 4239089094;
+			/// <summary>
 			/// 	The total number of "King's Fall" completions using Guided Games.
 			/// <para/>
 			/// 	Tracks from Season 18 onward.
@@ -1094,6 +1110,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint GhostsoftheDeepSoloFlawlessCompletions = 2521923488;
+			/// <summary>
+			/// 	Highest rank achieved for Season of the Wish.
+			/// <para/>
+			/// 	Tracks from Season of the Wish onward.
+			/// <para/>
+			/// </summary>
+			public const uint SeasonoftheWishRank = 2245851612;
 			/// <summary>
 			/// 	The number of Primevals defeated in Gambit matches this week.
 			/// </summary>
@@ -1354,6 +1377,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint KingsFallCarries_563823293 = 563823293;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3932004679 = 3932004679;
+			/// <summary>
 			/// 	The lifetime high score for "The Hollowed Lair" in Nightfall.
 			/// <para/>
 			/// 	Tracks from Season 15 onward.
@@ -1392,6 +1419,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint CrimsonDaysOpponentsDefeated = 4074575609;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3808047795 = 3808047795;
 			/// <summary>
 			/// 	The number of Nightfall completions this Season using Guided Games.
 			/// </summary>
@@ -1784,6 +1815,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BlockersDefeated_622922979 = 622922979;
 			/// <summary>
+			/// 	The number of Nightfall completions this week using Guided Games.
+			/// </summary>
+			public const uint GuidedGameCompletions_4002363378 = 4002363378;
+			/// <summary>
 			/// 	The highest consecutive Win Streak with no ally deaths in Trials of Osiris this Season.
 			/// </summary>
 			public const uint ShutoutStreak = 3364207969;
@@ -1794,10 +1829,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint BowFinalBlows = 3522276357;
-			/// <summary>
-			/// 	The number of Nightfall completions this week using Guided Games.
-			/// </summary>
-			public const uint GuidedGameCompletions_4002363378 = 4002363378;
 			/// <summary>
 			/// 	The fastest completion time for "Scourge of the Past."
 			/// <para/>

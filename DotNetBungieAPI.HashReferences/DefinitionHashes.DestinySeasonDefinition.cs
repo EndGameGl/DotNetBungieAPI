@@ -76,11 +76,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint SeasonoftheWitch = 2758726570;
-			public const uint SeasonofRedacted = 2758726571;
+			/// <summary>
+			/// 	Return to the Dreaming City and aid Queen Mara in making one last wish.
+			/// </summary>
+			public const uint SeasonoftheWish = 2758726571;
 			/// <summary>
 			/// 	…in circles. Ancient enemies return to plague old battlegrounds. Time moves…
 			/// </summary>
 			public const uint SeasonoftheUndying = 1743682818;
+			public const uint SeasonofRedacted = 2758726572;
 			/// <summary>
 			/// 	Re-entwine the strands of time on Mercury and ignite the flames of hope.
 			/// </summary>

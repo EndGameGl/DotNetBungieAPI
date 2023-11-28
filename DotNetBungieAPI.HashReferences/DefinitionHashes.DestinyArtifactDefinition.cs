@@ -5,9 +5,9 @@ namespace DotNetBungieAPI.HashReferences
 		public static class Artifacts
 		{
 			/// <summary>
-			/// 	A foreboding staff bearing engravings of Hive runes and bound with mystical charms.
+			/// 	Awoken and Ahamkara magics mingle in the mist rising from this censer as it swings back and forth, back and forth…
 			/// </summary>
-			public const uint AcolytesStaff = 2894222926;
+			public const uint QueensfoilCenser = 2894222926;
 		}
 	}
 }

@@ -16,8 +16,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CompetitiveDivision = 3696598664;
 			public const uint XP_243419342 = 243419342;
-			public const uint H1273404180 = 1273404180;
+			public const uint H340305559 = 340305559;
 			public const uint H1627914615 = 1627914615;
+			public const uint Prestige_3845755281 = 3845755281;
 			/// <summary>
 			/// 	Use Bits to Cheer any Twitch streamer live streaming Destiny 2 with the official Twitch Destiny Extension active.
 			/// </summary>
@@ -71,6 +72,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Leviathan = 1482334108;
 			public const uint H26079066 = 26079066;
+			public const uint XP_1135646761 = 1135646761;
 			public const uint H1924974128 = 1924974128;
 			/// <summary>
 			/// 	"Only those who forge their light in the fires of the Crucible can obtain true Glory. The opportunity is yours Guardian, take it." —Lord Shaxx
@@ -182,7 +184,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	When a Twitch streamer completes a Trials match, react to the match results using the options that appear shortly after the match ends to gain progress.
 			/// </summary>
 			public const uint MatchReactions = 1345591265;
-			public const uint H3759191272 = 3759191272;
 			/// <summary>
 			/// 	Countless unclear futures reverberate through your mind as you approach the obelisk. Strengthen the obelisk's bond to the Sundial by increasing its Resonance Rank.
 			/// </summary>
@@ -197,7 +198,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint CrucibleRank = 2083746873;
-			public const uint H3381682691 = 3381682691;
 			/// <summary>
 			/// 	"I don't care if you win or lose. I just want you to get paid. Heh." —The Drifter 
 			/// <para/>
@@ -273,8 +273,13 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3468066401 = 3468066401;
 			public const uint XP_978389300 = 978389300;
 			public const uint H2565871344 = 2565871344;
+			/// <summary>
+			/// 	Complete activities within Riven's Lair, The Coil, or the Dreaming City to increase your reputation with the Spirit of Riven.
+			/// </summary>
+			public const uint SpiritofRivenReputation = 2172242925;
 			public const uint Prestige_2733287262 = 2733287262;
 			public const uint H4244567218 = 4244567218;
+			public const uint XP_2421325160 = 2421325160;
 			public const uint XP_2026300734 = 2026300734;
 			public const uint H3556521410 = 3556521410;
 			public const uint H3497267100 = 3497267100;
@@ -296,8 +301,8 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2098519537 = 2098519537;
 			public const uint H2911992817 = 2911992817;
 			public const uint XP_3915124631 = 3915124631;
-			public const uint H1470619782 = 1470619782;
 			public const uint H765647305 = 765647305;
+			public const uint H1470619782 = 1470619782;
 			/// <summary>
 			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
@@ -326,6 +331,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete Salvage and Deep Dive activities to increase your Sonar Station Reputation.
 			/// </summary>
 			public const uint SonarStationReputation = 495475418;
+			public const uint H2081138649 = 2081138649;
 			public const uint H144602215 = 144602215;
 			public const uint Prestige_1467048566 = 1467048566;
 			public const uint H1735777505 = 1735777505;

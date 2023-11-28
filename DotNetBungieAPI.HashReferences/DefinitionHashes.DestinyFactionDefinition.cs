@@ -143,6 +143,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ExodusBlackAI = 1660497607;
 			/// <summary>
+			/// 	Complete activities within Riven's Lair, The Coil, or the Dreaming City to increase your reputation with the Spirit of Riven.
+			/// </summary>
+			public const uint ParacausalApparition = 3326812746;
+			/// <summary>
 			/// 	Devrim Kay stands watch in the EDZ, protecting the small group of people who now call the Farm their home.
 			/// </summary>
 			public const uint ClanSteward = 2550874616;

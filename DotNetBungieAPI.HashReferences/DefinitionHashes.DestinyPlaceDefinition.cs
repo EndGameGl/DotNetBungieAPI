@@ -9,6 +9,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TitanMoonofSaturn_3655393761 = 3655393761;
 			/// <summary>
+			/// 	Once home to the Black Heart, many other mysteries lurk in its overgrown corridors.
+			/// </summary>
+			public const uint TheBlackGarden = 2239755578;
+			/// <summary>
 			/// 	The Nine have sent an Emissary to test Guardians.
 			/// </summary>
 			public const uint UnknownSpace_1134775813 = 1134775813;

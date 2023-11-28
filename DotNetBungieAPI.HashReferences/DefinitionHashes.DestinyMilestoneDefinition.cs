@@ -137,6 +137,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint KingsFall = 292102995;
 			/// <summary>
+			/// 	Complete bounties from this vendor to earn powerful rewards.
+			/// </summary>
+			public const uint BastionoftheAnthemAnatheme = 3799684454;
+			/// <summary>
 			/// 	Win matches in Trials of Osiris to earn powerful rewards.
 			/// </summary>
 			public const uint TrialsofOsirisWeekly = 3842941126;
@@ -217,6 +221,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Prophecy = 478604913;
 			/// <summary>
+			/// 	Conjure Riven in the Dreaming City.
+			/// </summary>
+			public const uint FinalWish = 2962896464;
+			/// <summary>
 			/// 	Complete Dares of Eternity. Legend difficulty grants additional progress.
 			/// </summary>
 			public const uint DaresofEternityPowerfulChallenge = 295129163;
@@ -243,7 +251,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Complete the "Way of the Witch" mission.
 			/// </summary>
-			public const uint ToilandTrouble = 2842215657;
+			public const uint LegacyToilandTrouble = 2842215657;
 			/// <summary>
 			/// 	({var:3575677317} of 4) Complete Iron Banner matches.
 			/// </summary>
@@ -252,6 +260,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete this Exotic mission. Higher difficulty versions grant bonus progress.
 			/// </summary>
 			public const uint WeeklyExoticRotatorChallenge_3557475774 = 3557475774;
+			/// <summary>
+			/// 	Weekly Dungeon Challenge.
+			/// </summary>
+			public const uint WarlordsRuin = 3921784328;
 			public const uint FishingRallyNessus = 3910722976;
 			/// <summary>
 			/// 	Speak with Saint-14 in the Tower Hangar.
@@ -291,6 +303,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the Partition while in possession of a Polymorphic Shellcode.
 			/// </summary>
 			public const uint LightfallWeeklyPartition_1271434219 = 1271434219;
+			/// <summary>
+			/// 	Complete pathways in Riven's Lair or The Coil.
+			/// </summary>
+			public const uint WishFulfillment = 541127642;
 			/// <summary>
 			/// 	Complete Defiant Battlegrounds on Legend difficulty.
 			/// </summary>

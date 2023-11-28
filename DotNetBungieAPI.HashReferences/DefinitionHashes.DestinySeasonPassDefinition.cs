@@ -11,6 +11,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SeasonoftheRisen = 971660532;
 			public const uint SeasonoftheChosen = 2698636901;
 			public const uint SeasonoftheWitch = 3530720173;
+			public const uint SeasonoftheWish = 3624844992;
 			public const uint SeasonoftheLost = 3261333423;
 			public const uint SeasonoftheWorthy = 297907150;
 			public const uint SeasonofDefiance = 3548438811;

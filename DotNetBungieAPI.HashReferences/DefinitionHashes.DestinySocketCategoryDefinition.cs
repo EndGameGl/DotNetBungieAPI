@@ -18,13 +18,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Ingredients_3792382831 = 3792382831;
 			/// <summary>
+			/// 	Once you've successfully baked a recipe, it will show up here for easy access.
+			/// </summary>
+			public const uint Recipes_3187525214 = 3187525214;
+			/// <summary>
 			/// 	Attach a cosmetic to a weapon to customize its appearance.
 			/// </summary>
 			public const uint WEAPONCOSMETICS = 2048875504;
-			/// <summary>
-			/// 	Once you've successfully baked a recipe, it will show up here for easy access.
-			/// </summary>
-			public const uint Recipes_809913446 = 809913446;
 			public const uint H4102879893 = 4102879893;
 			public const uint H3201856887 = 3201856887;
 			public const uint H3745560291 = 3745560291;
@@ -105,10 +105,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Customize the appearance of this emblem.
 			/// </summary>
 			public const uint EmblemCustomization = 279738248;
-			/// <summary>
-			/// 	View the different types of ingredients available during the Dawning.
-			/// </summary>
-			public const uint Ingredients_4084329384 = 4084329384;
 			/// <summary>
 			/// 	Clan Perks are enabled when you belong to a clan that has reached the indicated clan level for that season.
 			/// </summary>
@@ -194,6 +190,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint ASPECTS_2140934067 = 2140934067;
+			/// <summary>
+			/// 	View the different types of ingredients available during the Dawning.
+			/// </summary>
+			public const uint Ingredients_663582928 = 663582928;
 			/// <summary>
 			/// 	Attach a cosmetic to a piece of armor to customize its appearance.
 			/// </summary>

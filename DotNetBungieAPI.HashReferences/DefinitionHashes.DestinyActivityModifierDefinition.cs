@@ -16,6 +16,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeviousThievery = 2159250954;
 			/// <summary>
+			/// 	Power Level: All combatants in this activity will be at least 5 points over the player's current Power level.
+			/// </summary>
+			public const uint Mettle_3171484625 = 3171484625;
+			/// <summary>
 			/// 	Enemies throw grenades significantly more often.
 			/// </summary>
 			public const uint ScorchedEarth_703904464 = 703904464;
@@ -117,11 +121,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Epitaph = 998275325;
 			/// <summary>
-			/// 	This playlist contains Rift, Showdown, and Survival. When you launch, it will randomly select one of the modes for you to play.
+			/// 	This playlist contains Countdown Rush and Survival. When you launch, it will randomly select one of the modes for you to play.
 			/// <para/>
-			/// 	Rift: To win, score more points than your opponents by collecting the Spark and igniting your opponents' Rift.
-			/// <para/>
-			/// 	Showdown: Win the match by winning more rounds than your opponents. Defeat them to score points; the team with the most points wins a round.
+			/// 	Countdown Rush: To win, score more points than your opponents. Your team must detonate, defuse, or defend the charges to win points.
 			/// <para/>
 			/// 	Survival: To win, your team must become the last Guardian(s) standing by defeating the opposing team to exhaust their revives.
 			/// <para/>
@@ -169,6 +171,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint PrecariousBalance = 2768385440;
+			/// <summary>
+			/// 	To win, defeat your opponents, collect their crests, and deposit them at Cabal beacons.
+			/// <para/>
+			/// 	Cabal Beacons: Beacons appear at various locations on the map, two at a time. They have limited duration before they switch to another position. Collect crests and deposit them at beacons for points.
+			/// <para/>
+			/// 	The Hunt: Activates when a maximum deposit is acheived at a Cabal beacon. This is a limited, special state when Caiatl sends a high-value beacon protected with turrets. The high-value beacon awards a bonus score for each crest deposited.
+			/// <para/>
+			/// </summary>
+			public const uint IronBannerTribute = 3456379103;
 			/// <summary>
 			/// 	Defeated Guardians drop a crest. Secure opposing crests to score points. Secure allied crests to deny your opponents points.
 			/// </summary>
@@ -270,6 +281,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionFoes_40182179 = 40182179;
 			/// <summary>
+			/// 	{var:1027206613}% bonus to Bow damage.
+			/// </summary>
+			public const uint OverchargedBow = 929044687;
+			/// <summary>
 			/// 	Regeneration is greatly impaired. Defeating enemies may create wells of Light.
 			/// </summary>
 			public const uint Attrition_3346897368 = 3346897368;
@@ -328,6 +343,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint ForeverFight = 3632655552;
+			/// <summary>
+			/// 	Defeat combatants to generate snowballs.
+			/// </summary>
+			public const uint Snowstorm = 2483219497;
 			/// <summary>
 			/// 	When defeated, Goblins spawn Arc pools that causes damage over time.
 			/// </summary>
@@ -460,6 +479,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RaidChallenges_1789323317 = 1789323317;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified = 582228082;
+			/// <summary>
 			/// 	Rank-and-file combatants deal increased damage.
 			/// </summary>
 			public const uint RankandFileDamageIncrease = 77928345;
@@ -524,6 +547,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	{var:1027206613}% bonus to Scout Rifle damage.
 			/// </summary>
 			public const uint OverchargedScoutRifle = 214700178;
+			/// <summary>
+			/// 	Riven's wish magic stirs. The following are the pathways and their order in The Coil:
+			/// <para/>
+			/// 	-Divining Hall
+			/// <para/>
+			/// 	-First Steps (Temple of the Queen's Wrath)
+			/// <para/>
+			/// 	-Sensorium (Reaver's Orison)
+			/// <para/>
+			/// 	-First Steps (Cell of the Sycophant)
+			/// <para/>
+			/// </summary>
+			public const uint ThePathways_2500966831 = 2500966831;
 			/// <summary>
 			/// 	{var:4005007457}% increase to incoming Stasis damage.
 			/// <para/>
@@ -681,6 +717,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheGrassIsAlwaysGreener = 3577304467;
 			/// <summary>
+			/// 	Riven's wish magic stirs weekly. The following are the pathways and their order in The Coil:
+			/// <para/>
+			/// 	-First Steps (Temple of the Queen's Wrath)
+			/// <para/>
+			/// 	-Divining Hall
+			/// <para/>
+			/// 	-Sensorium (Pavilion)
+			/// <para/>
+			/// 	-Observatory
+			/// <para/>
+			/// </summary>
+			public const uint ThePathways_614347129 = 614347129;
+			/// <summary>
 			/// 	+50% Stasis effectiveness.
 			/// </summary>
 			public const uint StasisBurn = 838742970;
@@ -710,13 +759,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LightningCrystals = 275219094;
 			/// <summary>
-			/// 	This playlist contains Control, Clash, and Zone Control. When you launch, it will randomly select one of the modes for you to play.
+			/// 	This playlist contains Control and Clash. When you launch, it will randomly select one of the modes for you to play.
 			/// <para/>
 			/// 	Control: Capture the zones and defeat your opponents for points. The more zones you control, the more points you get for each opponent defeated. The team with the most points wins!
 			/// <para/>
 			/// 	Clash: To win, defeat your opponents to score more points than them!
-			/// <para/>
-			/// 	Zone Control: Capture and control the zones for points. Your team gains more points based on the number of zones owned at each score tick. Defeating your opponents won't award points in this mode.
 			/// <para/>
 			/// </summary>
 			public const uint Quickplay6v6Rules = 3192928767;
@@ -752,6 +799,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	All Gambit Rank point gains are increased!
 			/// </summary>
 			public const uint IncreasedGambitRank = 3228023383;
+			/// <summary>
+			/// 	If all your fireteam members fall with 0 Revive Tokens, everyone is returned to orbit.
+			/// </summary>
+			public const uint FullExtinguish = 1852184322;
 			/// <summary>
 			/// 	When close to a fireteam member, gain increased Recovery and Super regeneration.
 			/// </summary>
@@ -924,6 +975,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HotChampions_1277060983 = 1277060983;
 			/// <summary>
+			/// 	Riven's wish magic stirs. The following are the pathways and their order in The Coil:
+			/// <para/>
+			/// 	-Sensorium (Pavilion)
+			/// <para/>
+			/// 	-First Steps (Cell of the Sycophant)
+			/// <para/>
+			/// 	-Divining Hall
+			/// <para/>
+			/// 	-Sensorium (Reaver's Orison)
+			/// <para/>
+			/// </summary>
+			public const uint ThePathways_3317700736 = 3317700736;
+			/// <summary>
 			/// 	Damage taken while you are airborne is greatly increased.
 			/// </summary>
 			public const uint Grounded_261995644 = 261995644;
@@ -936,16 +1000,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionFoes_1806568190 = 1806568190;
 			/// <summary>
-			/// 	Arc damage increases slightly from all sources.
-			/// </summary>
-			public const uint ArcSinge = 4162874069;
-			/// <summary>
 			/// 	Your current character has not yet completed this mission on Legendary difficulty.
 			/// <para/>
 			/// 	Completing all Legendary missions provides additional rewards per class.
 			/// <para/>
 			/// </summary>
 			public const uint AChallengeAwaits_22073894 = 22073894;
+			/// <summary>
+			/// 	Arc damage increases slightly from all sources.
+			/// </summary>
+			public const uint ArcSinge = 4162874069;
 			/// <summary>
 			/// 	{var:4005007457}% increase to incoming Stasis damage.
 			/// </summary>
@@ -957,6 +1021,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint Mettle_154686562 = 154686562;
+			/// <summary>
+			/// 	Power Level: All combatants in this activity will be at least {var:3583233765} points over your current Power level.
+			/// </summary>
+			public const uint Mettle_2823462701 = 2823462701;
 			/// <summary>
 			/// 	{var:1027206613}% bonus to Fusion Rifle damage.
 			/// </summary>
@@ -988,6 +1056,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionFoes_1990363418 = 1990363418;
 			/// <summary>
+			/// 	The activity is at a fixed difficulty.
+			/// <para/>
+			/// 	Your effective Power is capped at {var:3583233765}.
+			/// <para/>
+			/// </summary>
+			public const uint Mettle_3298276018 = 3298276018;
+			/// <summary>
 			/// 	{var:2189146210}% bonus to outgoing Strand damage.
 			/// </summary>
 			public const uint StrandSurge = 3810297122;
@@ -1006,6 +1081,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Shanks now have Solar shields
 			/// </summary>
 			public const uint HotKnife = 112345143;
+			/// <summary>
+			/// 	All Crucible loot drops are doubled on wins.
+			/// </summary>
+			public const uint DoubleCrucibleDrops = 3619879173;
 			/// <summary>
 			/// 	To win, your team must become the last Guardian(s) standing by defeating the entire opposing team.
 			/// <para/>
@@ -1178,6 +1257,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PrestigeGladiator = 2674660865;
 			/// <summary>
+			/// 	Successfully complete four pathways inside Riven's Lair.
+			/// <para/>
+			/// 	Escalating Difficulty: Player's Power levels are fixed. Starting at 0 each subsequent pathway increases all combatants' Power level over the player's by 5.
+			/// <para/>
+			/// 	Wishing Glass: Wishing Glass is an in-activity currency. They drop from combatants, Glass Collectors, and pots. Wishing Glass comes in multiple rarities equating to their worth. Wishing Glass is used to purchase Dragon's Gifts from Riven.
+			/// <para/>
+			/// 	Dragon's Gifts: A set of buffs are randomly chosen, once per run. Between pathways, players can purchase buffs from Riven via Wishing Glass. Buffs are separated into three price point tiers.
+			/// <para/>
+			/// 	Rewards: After each pathway, players will return to Riven for their rewards. Subsequent pathways pay out better rewards. Breaking through score thresholds unlock secret chests. Finishing The Coil with a platinum score rewards players with access to the lustrous and lucrative Chamber of Wishes.
+			/// <para/>
+			/// </summary>
+			public const uint TheCoilRules = 2160381322;
+			/// <summary>
 			/// 	If your fireteam falls in a Restricted Zone, everyone is returned to orbit.
 			/// </summary>
 			public const uint Extinguish = 4265630562;
@@ -1290,7 +1382,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Greater fireteam size scales combatant difficulty and adds limitations on revives.
 			/// </summary>
-			public const uint Multiplicity = 3398421092;
+			public const uint Multiplicity_3398421092 = 3398421092;
 			/// <summary>
 			/// 	Initial Exotic drop rate boosts: {var:2223847550}
 			/// </summary>
@@ -1330,6 +1422,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint MasterModifiers_85104725 = 85104725;
+			/// <summary>
+			/// 	Limited fireteam revives. Purchase additional revives from Riven with Wishing Glass. Small chance to drop from destroying pots.
+			/// </summary>
+			public const uint LimitedRevives_3079709968 = 3079709968;
 			/// <summary>
 			/// 	Radar is disabled.
 			/// </summary>
@@ -1385,13 +1481,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SaboteursInbound = 536144090;
 			/// <summary>
-			/// 	Extra Shields
-			/// <para/>
-			/// 	Maximum Effective Level {var:1693239810}
-			/// <para/>
-			/// </summary>
-			public const uint LegendModifiers_2567927655 = 2567927655;
-			/// <summary>
 			/// 	Score points by defeating your opponents with a relic.
 			/// <para/>
 			/// 	Relics: Mysterious weapons that hold immense power. Defeat your opponents with a relic to score points for your team.
@@ -1402,6 +1491,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint RelicRules = 4258252763;
+			/// <summary>
+			/// 	Extra Shields
+			/// <para/>
+			/// 	Maximum Effective Level {var:1693239810}
+			/// <para/>
+			/// </summary>
+			public const uint LegendModifiers_2567927655 = 2567927655;
 			/// <summary>
 			/// 	All collected Elemental Orbs contribute toward the elemental buff counter. Subclass choice determines which elemental buff is applied.
 			/// <para/>
@@ -1417,6 +1513,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Solar final blows grant melee and grenade energy. Stasis subclasses receive a lot; other subclasses receive a little.
 			/// </summary>
 			public const uint SolarThermalSwap = 1575279060;
+			/// <summary>
+			/// 	Combatant difficulty scales with fireteam size.
+			/// </summary>
+			public const uint Multiplicity_1446571688 = 1446571688;
 			/// <summary>
 			/// 	Health and shields are reduced by half, but recovery is twice as fast.
 			/// </summary>
@@ -1508,6 +1608,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	{var:1027206613}% bonus to Trace Rifle damage.
 			/// </summary>
 			public const uint OverchargedTraceRifle = 2178457119;
+			/// <summary>
+			/// 	Power Level: All combatants in this activity will be at least {var:3112783658} points over your current Power level.
+			/// </summary>
+			public const uint ExoticModifiers = 3674616727;
 			/// <summary>
 			/// 	All ammunition drops are significantly reduced.
 			/// <para/>

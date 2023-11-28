@@ -91,6 +91,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Venus was once the site of great discovery—a paradise. Now, it is a monument to all that we have lost. The old stories say we built an academy dedicated to learning and research on the shore of a wondrous sea, and that the waters themselves boiled and rose up to shatter the coast, washing away all that we had built.
 			/// </summary>
 			public const uint IshtarSinkVenus = 3871070152;
+			/// <summary>
+			/// 	Once home to the Black Heart, many other mysteries lurk in its overgrown corridors.
+			/// </summary>
+			public const uint TheBlackGarden = 1057138507;
 			public const uint TheMoon_677774031 = 677774031;
 			/// <summary>
 			/// 	A strange pocket dimension where multiple realities from across the paraverse converge and overlap.
@@ -144,6 +148,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	A patchwork wasteland on the edge of the Reef, in the Asteroid Belt.
 			/// </summary>
 			public const uint TheTangledShore_359854275 = 359854275;
+			public const uint H2840790126 = 2840790126;
 			/// <summary>
 			/// 	A desolate and frozen moon, testament to humanity's ambition and hubris.
 			/// </summary>
