@@ -91,10 +91,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint CandescentPrismSet_3291541575 = 3291541575;
 			public const uint VeiledTithesSuit_2026945748 = 2026945748;
 			public const uint WyrmguardSuit_2026945749 = 2026945749;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2845609010 = 2845609010;
+			public const uint DarkAgeTitanSuit = 2845609010;
 			public const uint Quests_1346478920 = 1346478920;
 			public const uint ShatteredThrone = 1347078175;
 			public const uint Weapons_3937826784 = 3937826784;
@@ -145,9 +142,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Dust = 1826415049;
 			public const uint FusionRifles_2737711334 = 2737711334;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Nestled deep in the mountains of the EDZ, Scorn lay claim to a Dark Age castle containing dangerous relics, and a blighted vengeance festers in the dirt.
 			/// </summary>
-			public const uint Classified_1021469803 = 1021469803;
+			public const uint WarlordsRuin_1021469803 = 1021469803;
 			public const uint TheCurse = 302201398;
 			public const uint Hunter_1521772351 = 1521772351;
 			public const uint Lightfall_2255054350 = 2255054350;
@@ -171,7 +168,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ViperidaxSuit_4233756177 = 4233756177;
 			public const uint CalamityRigSuit_4233756178 = 4233756178;
 			public const uint AncientApocalypseSuit_4233756179 = 4233756179;
-			public const uint LostSectors_2427983160 = 2427983160;
 			public const uint Swords_3021177861 = 3021177861;
 			/// <summary>
 			/// 	Destination Metrics
@@ -392,10 +388,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint HighYieldSavings = 2475607888;
 			public const uint Warlock_3711698756 = 3711698756;
 			public const uint ScoutRifles_4190521352 = 4190521352;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3911427835 = 3911427835;
+			public const uint DarkAgeWarlockSuit = 3911427835;
 			public const uint Warlock_2552737299 = 2552737299;
 			public const uint RoboraptorSet = 3353159816;
 			public const uint CanisLunaSet = 3353159817;
@@ -815,10 +808,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Your Triumph score earned in Destiny 2 from 2017-2020.
 			/// </summary>
 			public const uint Triumphs20172020 = 2657809508;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3295073523 = 3295073523;
+			public const uint Titan_3295073523 = 3295073523;
 			public const uint PublicEvents_3593914021 = 3593914021;
 			public const uint WillbreakerSuit = 2851452941;
 			public const uint TheStrongSet = 4016224723;
@@ -927,10 +917,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint KetchkillersSuit_1488134545 = 1488134545;
 			public const uint MihaylovasSet = 60165617;
 			public const uint NPAWeirWalkerSuit_1488134546 = 1488134546;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1641474225 = 1641474225;
+			public const uint Hunter_1641474225 = 1641474225;
 			public const uint TecheunsRegaliaSuit_1488134547 = 1488134547;
 			public const uint OptimacySet_60165619 = 60165619;
 			public const uint WyrmguardSuit_1488134548 = 1488134548;
@@ -983,7 +970,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
-			public const uint Classified_2612647205 = 2612647205;
+			public const uint Classified = 2612647205;
 			public const uint PulseRifles_1585233703 = 1585233703;
 			public const uint Armor_615947643 = 615947643;
 			public const uint Strikes_245634203 = 245634203;
@@ -1761,9 +1748,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ExtinctionOrbitOrnaments_235622112 = 235622112;
 			public const uint AntiExtinctionSuit_235622113 = 235622113;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Uncover buried histories and lingering grudges within a ruined Dark Age castle.
 			/// </summary>
-			public const uint Classified_3754709239 = 3754709239;
+			public const uint WarlordsRuin_3754709239 = 3754709239;
 			public const uint ArachsChosenOrnaments_235622115 = 235622115;
 			public const uint Endgame_3041894943 = 3041894943;
 			public const uint Titan_1369220652 = 1369220652;
@@ -1853,9 +1840,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TrialsofOsiris_1476754118 = 1476754118;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Triumphs associated with the "Warlord's Ruin" dungeon.
 			/// </summary>
-			public const uint Classified_3022435577 = 3022435577;
+			public const uint WarlordsRuin_3022435577 = 3022435577;
 			public const uint Gear_3802714325 = 3802714325;
 			public const uint MachineGuns_2904326260 = 2904326260;
 			public const uint Secrets_2379774266 = 2379774266;
@@ -2027,10 +2014,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DefiantBattlegrounds = 2363027913;
 			public const uint Warlock_3609836485 = 3609836485;
 			public const uint ForgedMachinistSuit = 2402400391;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3057901102 = 3057901102;
+			public const uint DarkAgeHunterSuit = 3057901102;
 			/// <summary>
 			/// 	Trophies from the "Crota's End" raid.
 			/// </summary>
@@ -2313,10 +2297,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Gametypes = 4115678464;
 			public const uint ADriftersGambit = 2637550529;
 			public const uint LegacysOathSuit_1745474850 = 1745474850;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2769709894 = 2769709894;
+			public const uint Warlock_2769709894 = 2769709894;
 			public const uint Champions = 1635301565;
 			public const uint DuressandEgress = 1834253235;
 			public const uint Warlock_3083337344 = 3083337344;

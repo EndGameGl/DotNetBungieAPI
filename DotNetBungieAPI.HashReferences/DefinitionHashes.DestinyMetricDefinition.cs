@@ -47,7 +47,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
-			public const uint Classified_1327262791 = 1327262791;
+			public const uint Classified = 1327262791;
 			/// <summary>
 			/// 	The lifetime high score for "The Corrupted" in Nightfall.
 			/// <para/>
@@ -954,9 +954,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Revenantdefeats = 673324377;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Flawless solo completions of the "Ridgeline" dungeon.
+			/// <para/>
+			/// 	Tracks from Season of the Wish onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_3253584750 = 3253584750;
+			public const uint WarlordsRuinFlawlessSoloCompletions = 3253584750;
 			/// <summary>
 			/// 	The total number of pots broken in The Coil during Season of the Wish.
 			/// </summary>
@@ -1377,9 +1380,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint KingsFallCarries_563823293 = 563823293;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Completions of the "Warlord's Ruin" dungeon.
+			/// <para/>
+			/// 	Tracks from Season of the Wish onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_3932004679 = 3932004679;
+			public const uint WarlordsRuinCompletions = 3932004679;
 			/// <summary>
 			/// 	The lifetime high score for "The Hollowed Lair" in Nightfall.
 			/// <para/>
@@ -1420,9 +1426,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrimsonDaysOpponentsDefeated = 4074575609;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Flawless completions of the "Warlord's Ruin" dungeon.
+			/// <para/>
+			/// 	Tracks from Season of the WIsh onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_3808047795 = 3808047795;
+			public const uint WarlordsRuinFlawlessCompletions = 3808047795;
 			/// <summary>
 			/// 	The number of Nightfall completions this Season using Guided Games.
 			/// </summary>

@@ -146,10 +146,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EaterofWorldsOrnament_2010060117 = 2010060117;
 			public const uint SolsticeGlovesMajestic_938265217 = 938265217;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3722717564 = 3722717564;
+			public const uint DarkAgeLegbraces = 3722717564;
 			public const uint Ocularia = 3232115488;
 			public const uint M3D1Shell = 2734453256;
 			public const uint AurelianPrize = 3232115489;
@@ -390,10 +387,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LightningRider = 3783140844;
 			public const uint GlovesoftheEmperorsAgent = 1171303213;
 			public const uint RedMoonPhantomVest = 1341693010;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1122775589 = 1122775589;
+			public const uint DarkAgeGrips = 1122775589;
 			public const uint HungJurySR4 = 3805565173;
 			public const uint CrystocrenePlate = 2161231834;
 			/// <summary>
@@ -456,10 +450,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ExtinctionOrbitOrnament_1411874171 = 1411874171;
 			public const uint IronSymmachyStrides = 1803231114;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1360666138 = 1360666138;
+			public const uint DarkAgeMask = 1360666138;
 			public const uint ChivalricFire = 2587153814;
 			public const uint MoonfangX7Helm = 242848831;
 			/// <summary>
@@ -719,10 +710,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SolarSnap = 796905018;
 			public const uint BrayTechOspreyAdept = 2920190300;
 			public const uint MarkRelentless = 327010402;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2576590154 = 2576590154;
+			public const uint IndebtedKindness = 2576590154;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
@@ -1376,10 +1364,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ShatteredSky = 4268663426;
 			public const uint FirstInLastOut_1729827465 = 1729827465;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2006995565 = 2006995565;
+			public const uint DarkAgeBond = 2006995565;
 			public const uint IronTruageLegs_2710155668 = 2710155668;
 			/// <summary>
 			/// 	Equip this shader to change the color of your gear.
@@ -2159,10 +2144,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
 			public const uint CandescentPrismMark = 1895557994;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3234903067 = 3234903067;
+			public const uint DarkAgeStrides = 3234903067;
 			public const uint VeiledTithesRobes = 2258586717;
 			public const uint CosmicTune = 2273442829;
 			public const uint FusedAurumMark = 2112180435;
@@ -2554,10 +2536,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete Heroic strikes during Season 2 to earn this ornament. It's unlocked for all Crucible armor sets.
 			/// </summary>
 			public const uint PhoenixBattleOrnament_4158960665 = 4158960665;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1868912023 = 1868912023;
+			public const uint DarkAgeSabatons = 1868912023;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
@@ -3440,10 +3419,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SpicyRamen = 1076703826;
 			public const uint ShatteredFortress = 1556339008;
 			public const uint SixShooter = 1076703827;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1556339009 = 1556339009;
+			public const uint TatteredRegalia = 1556339009;
 			public const uint ThoriumHoltGloves = 904474539;
 			public const uint EquitisShadeCloak = 2433077365;
 			/// <summary>
@@ -4088,10 +4064,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint AspiringChallengerGrips = 115261753;
 			public const uint QiaosGrin_898886626 = 898886626;
 			public const uint CloakJudgmentCODA_487698178 = 487698178;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3275654322 = 3275654322;
+			public const uint BuriedBloodline = 3275654322;
 			public const uint HeirApparent = 2842076592;
 			public const uint CandescentPlate = 3462739726;
 			public const uint AtgeirMark = 886430624;
@@ -4872,10 +4845,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint StarCrossedHelm_2697300385 = 2697300385;
 			public const uint BerengersMemory_623401167 = 623401167;
 			public const uint MidnightExigentHelm = 1045451399;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2829603881 = 2829603881;
+			public const uint DarkAgeVisor = 2829603881;
 			/// <summary>
 			/// 	Equip this weapon ornament to change the appearance of Worldline Zero. Once you get an ornament, it's unlocked for all characters on your account.
 			/// </summary>
@@ -6176,10 +6146,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
 			public const uint RefulgentRevelryGloves = 395357829;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3263568511 = 3263568511;
+			public const uint DarkAgeChestrig = 3263568511;
 			public const uint FixedOdds_832124045 = 832124045;
 			public const uint SmiteofMerainHarrowed = 1423950904;
 			/// <summary>
@@ -6329,10 +6296,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Cadenza11 = 523089075;
 			public const uint RuinousEffigy = 1392294260;
 			public const uint TMEarpCustomCloakedStetson = 3072821856;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_701625206 = 701625206;
+			public const uint DragoncultSickle = 701625206;
 			public const uint PhotonicVest = 67998016;
 			public const uint ProdigalSteps = 4030900931;
 			public const uint IronCore = 2954025521;
@@ -6556,10 +6520,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
 			public const uint NorthlightGloves = 2277599602;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2531379838 = 2531379838;
+			public const uint DarkAgeGloves = 2531379838;
 			public const uint AtavisticIdolStrides = 2323219081;
 			public const uint ArcLoader = 2255455591;
 			/// <summary>
@@ -6760,10 +6721,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SkerrenCorvusGrasps_2534358306 = 2534358306;
 			public const uint HeliosCrown = 3316003530;
 			public const uint BrokenBarriers = 3316003531;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1222675740 = 1222675740;
+			public const uint DarkAgeCloak = 1222675740;
 			public const uint AtavisticIdolHood = 707266763;
 			/// <summary>
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
@@ -6884,10 +6842,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SolsticeBondRenewed_2804098453 = 2804098453;
 			public const uint DarkhollowChiton = 1480905902;
 			public const uint ThoriumHoltHood = 1013341312;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1256522551 = 1256522551;
+			public const uint VengefulWhisper = 1256522551;
 			/// <summary>
 			/// 	A ritual blade inlaid with digitized enigma.
 			/// </summary>
@@ -8155,10 +8110,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint HaetaesJudgment = 216718729;
 			public const uint WildHuntHood = 1105124739;
 			public const uint HonorsEdge_2288901089 = 2288901089;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3277690970 = 3277690970;
+			public const uint DarkAgeOvercoat = 3277690970;
 			public const uint Outlast_4214712209 = 4214712209;
 			public const uint DFAAdept = 788608986;
 			/// <summary>
@@ -9109,10 +9061,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Modifications for your ship's transmat systems, so you'll always arrive in style.
 			/// </summary>
 			public const uint TigerEffects = 4134213398;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2863630417 = 2863630417;
+			public const uint DarkAgeGauntlets = 2863630417;
 			public const uint SolsticeGauntletsRenewed_4227817429 = 4227817429;
 			public const uint WayfindersShell = 2481138094;
 			public const uint CalamityRigSleeves = 1433922353;
@@ -12084,10 +12033,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint BlackPlague = 2519630427;
 			public const uint H752313707 = 752313707;
 			public const uint ScatterhornPlate = 663702606;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3465971770 = 3465971770;
+			public const uint NaeemsLance = 3465971770;
 			public const uint CloakofRemembrance = 1563425889;
 			public const uint WarMantis_3938108821 = 3938108821;
 			public const uint PathfindersGrips = 4128908252;
@@ -12378,10 +12324,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint HomeRun = 1866399779;
 			public const uint Giving = 1866399780;
 			public const uint CurtainCall_1866399781 = 1866399781;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_3768682878 = 3768682878;
+			public const uint DarkAgeHelm = 3768682878;
 			public const uint Selfie = 1866399782;
 			public const uint HeartSign = 1866399783;
 			public const uint MicDrop = 1866399784;
@@ -12525,10 +12468,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BloodLineageGloves = 1747918948;
 			public const uint OutlawedCollectorCloak = 2746449391;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_1681574496 = 1681574496;
+			public const uint DarkAgeMark = 1681574496;
 			public const uint PenumbralBond = 2785499244;
 			public const uint WarmindsAvatarBond = 1011385155;
 			public const uint PhyllotacticSpiral = 3056237876;
@@ -14329,10 +14269,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Equip this ornament on any eligible Legendary armor item to change its appearance. Once you get a universal ornament, it's unlocked for all characters of the relevant class on your account.
 			/// </summary>
 			public const uint CrawlingChaosGauntlets = 3399612089;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_188011491 = 188011491;
+			public const uint DarkAgeHarness = 188011491;
 			public const uint TangledWebHood = 3996572015;
 			public const uint GumshoeGumptionVest = 4179207605;
 			/// <summary>
@@ -14738,10 +14675,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint RefugeeHelm_1891559482 = 1891559482;
 			public const uint WingTheorem_1614846884 = 1614846884;
 			public const uint AGoodNightsSleep = 237240320;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2167115842 = 2167115842;
+			public const uint ZirasShell = 2167115842;
 			public const uint TerrorsUprooted = 237240321;
 			/// <summary>
 			/// 	[Finisher]  : Finish critically wounded combatants.

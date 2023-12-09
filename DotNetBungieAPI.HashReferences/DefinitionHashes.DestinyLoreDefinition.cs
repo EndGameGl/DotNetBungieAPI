@@ -2136,7 +2136,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TMMossCustomHat_2014814166 = 2014814166;
 			public const uint Fr0stEE5 = 574694189;
 			public const uint TMMossCustomHat_2014814167 = 2014814167;
-			public const uint Classified_3886719505 = 3886719505;
+			public const uint BuriedBloodline = 3886719505;
 			public const uint ErisII = 1250196960;
 			public const uint H1250196961 = 1250196961;
 			public const uint HardysCalm = 2881907522;
@@ -2413,7 +2413,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SunsteadPlateMajestic = 1770862261;
 			public const uint AstrocyteVerse = 866590993;
 			public const uint ShadowsGauntlets = 1901223867;
-			public const uint Classified_4141762315 = 4141762315;
+			public const uint ZirasShell = 4141762315;
 			public const uint TMCogburnCustomPlate_3088058654 = 3088058654;
 			public const uint TMCogburnCustomPlate_3088058655 = 3088058655;
 			public const uint WithoutRemorse = 1478986057;

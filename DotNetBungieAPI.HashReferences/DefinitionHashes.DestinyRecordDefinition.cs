@@ -352,9 +352,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ShatteredScholar = 1009025745;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Warlord's Ruin" dungeon with a fireteam using only Swords, Bows, and Glaives. Final blows with any other weapon will fail this challenge.
 			/// </summary>
-			public const uint Classified_4191407745 = 4191407745;
+			public const uint CutwithDarkAgeSteelOVengeanceMine = 4191407745;
 			/// <summary>
 			/// 	Complete the "Leviathan, Eater of Worlds" raid lair on Prestige difficulty.
 			/// </summary>
@@ -457,9 +457,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Sniperstition = 101289229;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Find Ahamkara bones strewn throughout the "Warlord's Ruin" dungeon, and hear their accompanying story.
 			/// </summary>
-			public const uint Classified_2438176321 = 2438176321;
+			public const uint HeedtheWhispersOVengeanceMine = 2438176321;
 			/// <summary>
 			/// 	Shut down Crypt security while only using 2 of the 3 augmentation terminals.
 			/// </summary>
@@ -592,9 +592,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VanguardAgent = 2867612781;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Warlord's Ruin" dungeon with a full fireteam of Arc subclasses.
 			/// </summary>
-			public const uint Classified_2093999292 = 2093999292;
+			public const uint CarryMyRoarLikeThunderOVengeanceMine = 2093999292;
 			/// <summary>
 			/// 	Rapidly defeat 3 combatants with weapons using Special ammo.
 			/// </summary>
@@ -2142,9 +2142,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheRiftGenerator = 3486435407;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Warlord's Ruin" dungeon solo without leaving the activity.
 			/// </summary>
-			public const uint Classified_2905044529 = 2905044529;
+			public const uint SheStoodAloneOVengeanceMine = 2905044529;
 			public const uint Enthymeme = 1930259037;
 			/// <summary>
 			/// 	Complete a flawless Passage and get final blows with at least one of this Season's Exotic weapons equipped.
@@ -2230,9 +2230,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BigBetter = 3816696004;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Warlord's Ruin" dungeon with a full fireteam of clanmates.
 			/// </summary>
-			public const uint Classified_1631738192 = 1631738192;
+			public const uint BeforeYourClansMineThrivedOVengeanceMine = 1631738192;
 			/// <summary>
 			/// 	Collect Exotic armor.
 			/// </summary>
@@ -2314,9 +2314,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RocketLauncherMastery = 3285170890;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Warlord's Ruin" dungeon with a full fireteam of Solar subclasses.
 			/// </summary>
-			public const uint Classified_588582033 = 588582033;
+			public const uint YourFuryBurnsBrightOVengeanceMine = 588582033;
 			/// <summary>
 			/// 	Finish 3 Throne World Contender Cards.
 			/// </summary>
@@ -2397,9 +2397,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LakeofShadows_3484204503 = 3484204503;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Warlord's Ruin" dungeon with a full fireteam of the same class.
 			/// </summary>
-			public const uint Classified_822588172 = 822588172;
+			public const uint ShowMeYourProwessOVengeanceMine = 822588172;
 			/// <summary>
 			/// 	Acquire 1 Weapon Pattern from a raid or dungeon.
 			/// </summary>
@@ -3578,10 +3578,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the "Proving Grounds" strike in Nightfall during Season of the Chosen.
 			/// </summary>
 			public const uint GrandmasterProvingGrounds_2867134615 = 2867134615;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified_2033089543 = 2033089543;
+			public const uint H2033089543 = 2033089543;
 			/// <summary>
 			/// 	Control: Defeat two opponents with Zone Advantage within 10 seconds of capturing a zone.
 			/// </summary>
@@ -4371,9 +4368,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LightfallCampaign = 2593197663;
 			public const uint H1202782985 = 1202782985;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Warlord's Ruin" dungeon.
 			/// </summary>
-			public const uint Classified_859220433 = 859220433;
+			public const uint WarlordsRuin_859220433 = 859220433;
 			public const uint ENTRY10BloodintheBarrel = 1868136556;
 			public const uint ENTRY11Sullen = 1868136557;
 			public const uint ENTRY12DebtorsKnife = 1868136558;
@@ -5639,9 +5636,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OrbitalFestivities = 3742257215;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Uncover buried histories and lingering grudges within a ruined Dark Age castle.
 			/// </summary>
-			public const uint Classified_1342446533 = 1342446533;
+			public const uint WarlordsRuin_1342446533 = 1342446533;
 			/// <summary>
 			/// 	A dragon's message for posterity.
 			/// </summary>
@@ -7889,9 +7886,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DimensionalHypotrochoid = 170523067;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Warlord's Ruin" dungeon with a full fireteam of Void subclasses.
 			/// </summary>
-			public const uint Classified_4010412130 = 4010412130;
+			public const uint FeastUpontheGulfOVengeanceMine = 4010412130;
 			/// <summary>
 			/// 	Unlock the Nightstalker Hunter subclass.
 			/// </summary>
@@ -8164,9 +8161,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DodgeDipDuckDiveandDodge = 1631295529;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Warlord's Ruin" dungeon.
 			/// </summary>
-			public const uint Classified_131896889 = 131896889;
+			public const uint CollecttheDebtsofKingsOVengeanceMine = 131896889;
 			/// <summary>
 			/// 	Complete the mission "Salvage and Salvation."
 			/// </summary>
@@ -8791,7 +8788,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Complete the "Warlord's Ruin" dungeon.
 			/// </summary>
-			public const uint WarlordsRuin = 2401440739;
+			public const uint WarlordsRuin_2401440739 = 2401440739;
 			/// <summary>
 			/// 	Complete the "Root of Nightmares" raid.
 			/// </summary>
@@ -9176,9 +9173,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AugmentCreation = 3520208172;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete the "Warlord's Ruin" dungeon on Master difficulty.
 			/// </summary>
-			public const uint Classified_4288088327 = 4288088327;
+			public const uint WithstandtheSiegeOVengeanceMine = 4288088327;
 			/// <summary>
 			/// 	Investigate the Well.
 			/// </summary>
@@ -10201,9 +10198,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint IVShutdown = 1726220868;
 			public const uint VRiteProven = 1726220869;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Warlord's Ruin" dungeon without dying.
 			/// </summary>
-			public const uint Classified_982579018 = 982579018;
+			public const uint TheirBloodNotYoursOVengeanceMine = 982579018;
 			/// <summary>
 			/// 	Earn points by completing encounters in the raid "Crown of Sorrow" using Calus-themed armor and weapons earned from the Menagerie or any Leviathan raid.
 			/// <para/>
@@ -11296,9 +11293,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Lepidopterist = 284821378;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Earn the Buried Bloodline Exotic weapon from the "Warlord's Ruin" dungeon.
 			/// </summary>
-			public const uint Classified_3525041909 = 3525041909;
+			public const uint DoYouDesireThisTrinketOVengeanceMine = 3525041909;
 			public const uint CHAPTER6BATTLESONG = 1765386720;
 			public const uint CHAPTER7CORONATION = 1765386721;
 			/// <summary>
@@ -11355,9 +11352,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OsteoStriga = 403175710;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Warlord's Ruin" dungeon solo without dying or leaving the activity.
 			/// </summary>
-			public const uint Classified_238037026 = 238037026;
+			public const uint BecomeNaeemsAvatarOVengeanceMine = 238037026;
 			/// <summary>
 			/// 	Destroy the scanner drones around each Crux of Darkness and complete the "Crux Convergence" public event.
 			/// </summary>
@@ -12528,9 +12525,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MarsResonance = 763938915;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Warlord's Ruin" dungeon with a full fireteam of Strand subclasses.
 			/// </summary>
-			public const uint Classified_1436869588 = 1436869588;
+			public const uint OurFatesAreWovenOVengeanceMine = 1436869588;
 			/// <summary>
 			/// 	Win matches where you banked the most Motes across both teams, didn't die, or dealt the most damage to all combatant types.
 			/// </summary>
@@ -13758,9 +13755,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheSightsIveSeen = 1622888137;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Nestled deep in the mountains of the EDZ, Scorn lay claim to a Dark Age castle containing dangerous relics, and a blighted vengeance festers in the dirt.
 			/// </summary>
-			public const uint Classified_1142693639 = 1142693639;
+			public const uint WarlordsRuin_1142693639 = 1142693639;
 			/// <summary>
 			/// 	Complete any encounter at the Blind Well in the Dreaming City.
 			/// </summary>
@@ -13943,9 +13940,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint StruckbyWonder = 4287282849;
 			public const uint ConfessionofHopePartTwo = 4287282850;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Defeat targets while using Buried Bloodline, and assist players in completing their Buried Bloodline catalyst puzzle.
 			/// </summary>
-			public const uint Classified_3891168900 = 3891168900;
+			public const uint BuriedBloodlineCatalyst = 3891168900;
 			public const uint AHerosRequiem = 4287282851;
 			public const uint FromFallenGround = 4287282852;
 			/// <summary>
@@ -14206,9 +14203,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ATitanCanFly = 1161965014;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete all encounters in the "Warlord's Ruin" dungeon with a full fireteam of Stasis subclasses.
 			/// </summary>
-			public const uint Classified_1565033067 = 1565033067;
+			public const uint DelivertheChillofGriefOVengeanceMine = 1565033067;
 			/// <summary>
 			/// 	Complete the activity "Harbinger" solo without dying.
 			/// </summary>

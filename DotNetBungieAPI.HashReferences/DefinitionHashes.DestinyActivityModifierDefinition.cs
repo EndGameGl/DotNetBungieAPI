@@ -479,9 +479,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RaidChallenges_1789323317 = 1789323317;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Initial Exotic drop rate boosts: {var:1510191578}
 			/// </summary>
-			public const uint Classified = 582228082;
+			public const uint ExoticDropRateBoostsGained_582228082 = 582228082;
 			/// <summary>
 			/// 	Rank-and-file combatants deal increased damage.
 			/// </summary>

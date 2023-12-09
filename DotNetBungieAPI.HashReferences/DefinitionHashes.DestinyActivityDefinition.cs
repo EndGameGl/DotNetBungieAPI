@@ -1850,7 +1850,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Achieve victory by defeating opponents. Abilities and Supers regenerate faster. Heavy ammo spawns more frequently.
 			/// </summary>
 			public const uint Mayhem_3847433434 = 3847433434;
-			public const uint Normal = 2004855007;
+			/// <summary>
+			/// 	Nestled deep in the mountains of the EDZ, Scorn lay claim to a Dark Age castle containing dangerous relics, and a blighted vengeance festers in the dirt.
+			/// </summary>
+			public const uint WarlordsRuinNormal = 2004855007;
 			/// <summary>
 			/// 	Light ripples through the EAZ, filling the air with power.
 			/// <para/>
@@ -2945,9 +2948,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EmpireHuntTheDarkPriestessHero_2205920675 = 2205920675;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Nestled deep in the mountains of the EDZ, Scorn lay claim to a Dark Age castle containing dangerous relics, and a blighted vengeance festers in the dirt.
 			/// </summary>
-			public const uint Classified_2534833093 = 2534833093;
+			public const uint WarlordsRuinMaster = 2534833093;
 			/// <summary>
 			/// 	Track Variks's distress signal.
 			/// </summary>

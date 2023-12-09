@@ -542,7 +542,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EnGarde_2449441002 = 2449441002;
 			/// <summary>
-			/// 	Dealing sustained damage grants bonus damage against constructs for an improved duration and partially refills the magazine from reserves. Damage with Primary ammo or against constructs provides additional progress.
+			/// 	Dealing sustained damage grants bonus damage against vehicles and constructs for an improved duration and partially refills the magazine from reserves. Damage with Primary ammo or against constructs provides additional progress.
 			/// <para/>
 			/// 	Constructs include barricades, turrets, Stasis crystals, and other objects created in the field.
 			/// <para/>
@@ -4131,9 +4131,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ClusterBomb_1216817444 = 1216817444;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Destroying vehicles and constructs grants this weapon bonus reload speed and charge rate.
+			/// <para/>
+			/// 	Constructs include barricades, turrets, Stasis crystals, and other objects created in the field.
+			/// <para/>
 			/// </summary>
-			public const uint Classified = 2145980383;
+			public const uint Sundering = 2145980383;
 			/// <summary>
 			/// 	Gain bonus Super energy from Power weapon kills.
 			/// </summary>
@@ -11079,7 +11082,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ImprovedTangledShoreCacheDetector = 2426842826;
 			/// <summary>
-			/// 	Dealing sustained damage grants bonus damage against vehicles and constructs and partially refills the magazine. Damage with Primary ammo or against constructs provides additional progress.
+			/// 	Dealing sustained damage grants bonus damage against vehicles and constructs and partially refills the magazine from reserves. Damage with Primary ammo or against constructs provides additional progress.
 			/// <para/>
 			/// 	Constructs include barricades, turrets, Stasis crystals, and other objects created in the field.
 			/// <para/>
