@@ -14,9 +14,9 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PackageVersion>2.11.3</PackageVersion>
-        <AssemblyVersion>2.11.3</AssemblyVersion>
-        <FileVersion>2.11.3</FileVersion>
+        <PackageVersion>2.11.4</PackageVersion>
+        <AssemblyVersion>2.11.4</AssemblyVersion>
+        <FileVersion>2.11.4</FileVersion>
         <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
         <LangVersion>12</LangVersion>
     </PropertyGroup>

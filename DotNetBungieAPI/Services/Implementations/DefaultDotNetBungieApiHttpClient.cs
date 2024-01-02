@@ -204,8 +204,18 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         using var response = await SendAsyncInternal(
             request,
             HttpCompletionOption.ResponseHeadersRead,
-            token
-        );
+            token);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            var responseContentType = response.Content.Headers.ContentType;
+            if (responseContentType?.MediaType is "text/html")
+            {
+                var responseText = await response.Content.ReadAsStringAsync(token);
+                throw new BungieHtmlResponseErrorException(response.StatusCode, responseText);
+            }
+        }
+
         await using var stream = await response.Content.ReadAsStreamAsync(token);
         var bungieResponse = await _serializer.DeserializeAsync<BungieResponse<T>>(stream);
         return bungieResponse;
@@ -230,6 +240,17 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
             HttpCompletionOption.ResponseHeadersRead,
             token
         );
+
+        if (!response.IsSuccessStatusCode)
+        {
+            var responseContentType = response.Content.Headers.ContentType;
+            if (responseContentType?.MediaType is "text/html")
+            {
+                var responseText = await response.Content.ReadAsStringAsync(token);
+                throw new BungieHtmlResponseErrorException(response.StatusCode, responseText);
+            }
+        }
+
         await using var stream = await response.Content.ReadAsStreamAsync(token);
         var bungieResponse = await _serializer.DeserializeAsync<BungieResponse<T>>(stream);
         return bungieResponse;
@@ -254,6 +275,17 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
             HttpCompletionOption.ResponseHeadersRead,
             token
         );
+
+        if (!response.IsSuccessStatusCode)
+        {
+            var responseContentType = response.Content.Headers.ContentType;
+            if (responseContentType?.MediaType is "text/html")
+            {
+                var responseText = await response.Content.ReadAsStringAsync(token);
+                throw new BungieHtmlResponseErrorException(response.StatusCode, responseText);
+            }
+        }
+
         await using var stream = await response.Content.ReadAsStreamAsync(token);
         var bungieResponse = await _serializer.DeserializeAsync<BungieResponse<T>>(stream);
         return bungieResponse;
