@@ -59,6 +59,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Express yourself through Emotes.
 			/// </summary>
 			public const uint Emotes_3054419239 = 3054419239;
+			public const uint H1753109658 = 1753109658;
 			public const uint H3621873013 = 3621873013;
 			/// <summary>
 			/// 	Configure the emotes currently assigned to shortcuts.
@@ -114,6 +115,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Spacecraft at your disposal.
 			/// </summary>
 			public const uint Ships = 284967655;
+			/// <summary>
+			/// 	Equipment and currencies relevant to Seasonal activities and limited-time events.
+			/// </summary>
+			public const uint SeasonalEquipment = 4178487412;
 			public const uint H766235248 = 766235248;
 			/// <summary>
 			/// 	Used to convert an unlocked Warlock armor item to a universal ornament.

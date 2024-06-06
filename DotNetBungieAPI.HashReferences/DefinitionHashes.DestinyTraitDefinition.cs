@@ -15,7 +15,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Quests related to New Light, tutorials and introductions
 			/// </summary>
 			public const uint NewLight = 520867389;
+			public const uint H1429525298 = 1429525298;
 			public const uint H299829906 = 299829906;
+			/// <summary>
+			/// 	You are fortified by layers of durable [Stasis] Stasis matter, reducing incoming damage. Frost Armor damage resistance grows stronger as you gain additional stacks.
+			/// </summary>
+			public const uint FrostArmor = 106947924;
 			public const uint H2146550262 = 2146550262;
 			public const uint H567594262 = 567594262;
 			/// <summary>
@@ -35,6 +40,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1938141081 = 1938141081;
 			public const uint H76377537 = 76377537;
 			public const uint H853784306 = 853784306;
+			public const uint H3368363296 = 3368363296;
 			public const uint H3045653339 = 3045653339;
 			public const uint H2100142349 = 2100142349;
 			public const uint H2951764300 = 2951764300;
@@ -70,6 +76,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Blind = 500183315;
 			public const uint H2140607679 = 2140607679;
 			public const uint H472950587 = 472950587;
+			public const uint H3820193993 = 3820193993;
 			public const uint H4282889736 = 4282889736;
 			public const uint H1172274382 = 1172274382;
 			public const uint H3396834334 = 3396834334;
@@ -92,7 +99,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint Sever = 2519102437;
+			public const uint H3936371807 = 3936371807;
 			public const uint H1221030001 = 1221030001;
+			public const uint H2058756944 = 2058756944;
 			public const uint H1831680715 = 1831680715;
 			public const uint H3138052491 = 3138052491;
 			/// <summary>
@@ -102,7 +111,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Quests from the latest expansion
 			/// </summary>
-			public const uint Lightfall = 2878306895;
+			public const uint TheFinalShape = 2878306895;
 			public const uint H151064318 = 151064318;
 			/// <summary>
 			/// 	You are armored with a protective barrier of [Void] Void Light. Reduces damage taken from combatants.
@@ -130,6 +139,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2443101659 = 2443101659;
 			public const uint H875772746 = 875772746;
 			public const uint H3477257717 = 3477257717;
+			public const uint H3904180889 = 3904180889;
 			public const uint H201433599 = 201433599;
 			public const uint H847948254 = 847948254;
 			public const uint H4185800602 = 4185800602;
@@ -163,6 +173,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Suspend = 2679722414;
 			public const uint H2652561225 = 2652561225;
 			public const uint H3224025418 = 3224025418;
+			public const uint H124084641 = 124084641;
 			public const uint H791394185 = 791394185;
 			/// <summary>
 			/// 	The metric data from the current week.
@@ -176,6 +187,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Restoration = 3488482714;
 			public const uint H2217328812 = 2217328812;
+			public const uint H3011401061 = 3011401061;
 			public const uint H3594746632 = 3594746632;
 			public const uint H3594746633 = 3594746633;
 			public const uint H109880187 = 109880187;
@@ -225,9 +237,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Seasonal_2230116619 = 2230116619;
 			public const uint H3024825882 = 3024825882;
+			/// <summary>
+			/// 	Darkness buffs include [Stasis] Frost Armor and [Strand] Woven Mail.
+			/// </summary>
+			public const uint DarknessBuffs = 1891050213;
 			public const uint H3034243664 = 3034243664;
 			public const uint H1143070403 = 1143070403;
 			public const uint H1586813352 = 1586813352;
+			public const uint H621715997 = 621715997;
 			public const uint H3265951855 = 3265951855;
 			/// <summary>
 			/// 	Quests from the current Season.
@@ -305,6 +322,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Firesprite = 37177486;
 			public const uint H1198684128 = 1198684128;
+			public const uint H39669538 = 39669538;
 			public const uint H374319058 = 374319058;
 			public const uint H2424289530 = 2424289530;
 			public const uint H2588343649 = 2588343649;
@@ -333,6 +351,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H617430242 = 617430242;
 			public const uint H3344674546 = 3344674546;
 			public const uint H3344674547 = 3344674547;
+			public const uint H700104665 = 700104665;
 			public const uint H3344674548 = 3344674548;
 			public const uint H1172047080 = 1172047080;
 			public const uint H3344674549 = 3344674549;
@@ -341,6 +360,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H482679394 = 482679394;
 			public const uint H3925016055 = 3925016055;
 			public const uint H2658426873 = 2658426873;
+			/// <summary>
+			/// 	Light buffs include [Arc] Amplified, [Solar] Cure, [Solar] Radiant, [Solar] Restoration, [Void] Devour, [Void] Invisibility, and [Void] Overshield.
+			/// </summary>
+			public const uint LightBuffs = 2713325501;
 			public const uint H2612874486 = 2612874486;
 			public const uint H980358978 = 980358978;
 			/// <summary>
@@ -350,9 +373,20 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H4062681771 = 4062681771;
 			public const uint H98187750 = 98187750;
 			/// <summary>
+			/// 	Light debuffs include [Arc] Blind, [Arc] Jolt, [Solar] Scorch, [Solar] Ignitions, [Void] Suppression, [Void] Volatile, and [Void] Weaken.
+			/// </summary>
+			public const uint LightDebuffs = 3023190802;
+			/// <summary>
 			/// 	Exotic Gear and Catalyst quests
 			/// </summary>
 			public const uint Exotics = 370766376;
+			/// <summary>
+			/// 	You resonate in perfect harmony with Light and Darkness. You gain increased ability regeneration, increased weapon damage, and damage resistance against combatants.
+			/// <para/>
+			/// 	Your grenade is replaced with a unique Prismatic grenade that combines multiple damage types. Defeating targets while Transcendent extends its duration.
+			/// <para/>
+			/// </summary>
+			public const uint Transcendence = 345967499;
 			public const uint H1642830122 = 1642830122;
 			/// <summary>
 			/// 	A knot of [Strand] Strand matter, swirling with potential. Tangles can be shot and destroyed, or picked up and thrown, dealing damage.
@@ -406,13 +440,20 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2570676179 = 2570676179;
 			public const uint H3439101959 = 3439101959;
 			public const uint H888940472 = 888940472;
+			public const uint H2610856156 = 2610856156;
 			public const uint H1345630660 = 1345630660;
+			public const uint H3131123585 = 3131123585;
 			public const uint H2730300482 = 2730300482;
 			public const uint H856705125 = 856705125;
 			public const uint H174549790 = 174549790;
 			public const uint H3640833242 = 3640833242;
 			public const uint H808443044 = 808443044;
+			public const uint H2716347296 = 2716347296;
 			public const uint H4033669920 = 4033669920;
+			/// <summary>
+			/// 	Darkness debuffs include [Stasis] Slow, [Stasis] Freeze, [Strand] Sever, [Strand] Suspend, and [Strand] Unravel.
+			/// </summary>
+			public const uint DarknessDebuffs = 1514833946;
 			public const uint H1654692157 = 1654692157;
 			/// <summary>
 			/// 	You vanish from sight and do not appear on radar. While invisible, your radar range is reduced. Performing offensive actions will end invisibility.

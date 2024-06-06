@@ -19,6 +19,8 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Join a fireteam of three and face the forces of Empress Caiatl.
 			/// </summary>
 			public const uint BattlegroundsPlaylist = 2004354453;
+			public const uint Earth = 1700061161;
+			public const uint H3789736692 = 3789736692;
 			/// <summary>
 			/// 	Titan, Moon of Saturn
 			/// </summary>
@@ -71,6 +73,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	A long-hidden stronghold sacred to the Awoken of the Reef.
 			/// </summary>
 			public const uint TheDreamingCity_2779202173 = 2779202173;
+			public const uint H1823718684 = 1823718684;
 			/// <summary>
 			/// 	Home of the Guardians. Gather beneath the Traveler to regroup, rearm, and form new alliances.
 			/// </summary>
@@ -110,11 +113,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Choose your role in this intense single-round evolution of Gambit. Send Blockers to drain Motes from the enemy's bank. Create a Well of Light by defeating envoys. Stand in the Well to burn down the Primeval and win.
 			/// </summary>
 			public const uint GambitPrime = 897844116;
+			public const uint TheMoon_290444260 = 290444260;
 			/// <summary>
 			/// 	An infamous orbiting fortress where the Reef keeps its most dangerous enemies.
 			/// </summary>
 			public const uint PrisonofElders_251989860 = 251989860;
-			public const uint TheMoon_290444260 = 290444260;
 			public const uint H2616293043 = 2616293043;
 			public const uint H3670157546 = 3670157546;
 			public const uint H3669933163 = 3669933163;
@@ -141,9 +144,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Mars_1615213322 = 1615213322;
 			/// <summary>
+			/// 	A surreal domain of memory within the Traveler, corrupted by the Witness.
+			/// </summary>
+			public const uint ThePaleHeart = 3998251206;
+			/// <summary>
 			/// 	The ruins of an old Russian spaceport.
 			/// </summary>
 			public const uint TheCosmodrome = 2073151843;
+			public const uint H3353199138 = 3353199138;
 			/// <summary>
 			/// 	A patchwork wasteland on the edge of the Reef, in the Asteroid Belt.
 			/// </summary>
@@ -231,6 +239,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2961497387 = 2961497387;
 			public const uint H2039972170 = 2039972170;
 			public const uint HELM = 3929841832;
+			public const uint H1647745970 = 1647745970;
 			public const uint H1749218505 = 1749218505;
 			/// <summary>
 			/// 	The inner workings of Savathûn's mind, brought to life within a mysterious throne world of her own making.
@@ -244,18 +253,22 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	European Dead Zone, Earth
 			/// </summary>
 			public const uint EmeraldCoast = 1229692670;
+			public const uint H329262012 = 329262012;
 			public const uint H4067383504 = 4067383504;
 			/// <summary>
 			/// 	The Emperor's Flagship
 			/// </summary>
 			public const uint NessusOrbit_3862550981 = 3862550981;
-			public const uint H329262012 = 329262012;
 			public const uint TheMoon_2087192301 = 2087192301;
 			public const uint H2201105581 = 2201105581;
 			/// <summary>
 			/// 	Join a fireteam to overcome challenges and crush your foes.
 			/// </summary>
 			public const uint SeasonalActivity = 969538215;
+			/// <summary>
+			/// 	Last City, Earth
+			/// </summary>
+			public const uint TheLastCity_4069851916 = 4069851916;
 			/// <summary>
 			/// 	Hellas Basin, Mars
 			/// </summary>

@@ -4,8 +4,8 @@ namespace DotNetBungieAPI.HashReferences
 	{
 		public static class Genders
 		{
-			public const uint Feminine = 2204441813;
-			public const uint Masculine = 3111576190;
+			public const uint BodyType2 = 2204441813;
+			public const uint BodyType1 = 3111576190;
 		}
 	}
 }

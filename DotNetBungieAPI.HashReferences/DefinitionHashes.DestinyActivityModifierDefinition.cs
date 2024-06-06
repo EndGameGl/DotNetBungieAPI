@@ -5,31 +5,13 @@ namespace DotNetBungieAPI.HashReferences
 		public static class ActivityModifiers
 		{
 			/// <summary>
-			/// 	Defeating Champions creates a pool of fire.
-			/// <para/>
-			/// 	Activates at the Midnight Depth.
-			/// <para/>
-			/// </summary>
-			public const uint HotChampions_160666887 = 160666887;
-			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint DeviousThievery = 2159250954;
 			/// <summary>
-			/// 	Power Level: All combatants in this activity will be at least 5 points over the player's current Power level.
-			/// </summary>
-			public const uint Mettle_3171484625 = 3171484625;
-			/// <summary>
 			/// 	Enemies throw grenades significantly more often.
 			/// </summary>
-			public const uint ScorchedEarth_703904464 = 703904464;
-			/// <summary>
-			/// 	The activity is at a fixed difficulty.
-			/// <para/>
-			/// 	Your effective Power is capped at 1675.
-			/// <para/>
-			/// </summary>
-			public const uint Mettle_3260128830 = 3260128830;
+			public const uint ScorchedEarth = 703904464;
 			/// <summary>
 			/// 	[Arc] Arc Shields
 			/// </summary>
@@ -54,13 +36,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LimitedRevives_4239965093 = 4239965093;
 			/// <summary>
-			/// 	A challenge awaits…
-			/// </summary>
-			public const uint EqualVessels = 732074628;
-			/// <summary>
 			/// 	When defeated, Psions spawn Void grenades at their feet.
 			/// </summary>
 			public const uint Pestilence = 4230548176;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1553052482 = 1553052482;
 			/// <summary>
 			/// 	Round 1: Cabal
 			/// <para/>
@@ -71,16 +53,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ContestantsTheWayoftheHoof_2675177792 = 2675177792;
 			/// <summary>
-			/// 	Attacks matching the periodically rotating focused element do more damage. Other elemental damage is reduced. Incoming damage is unaffected.
+			/// 	{var:4005007457}% increase to incoming Strand damage.
 			/// </summary>
-			public const uint Prism = 3274384593;
-			/// <summary>
-			/// 	Radar is disabled.
-			/// <para/>
-			/// 	Activates immediately.
-			/// <para/>
-			/// </summary>
-			public const uint Chaff_2647753264 = 2647753264;
+			public const uint StrandThreat = 1598472557;
 			/// <summary>
 			/// 	Complete placement matches to determine your starting position on the current Season's Ranked ladder.
 			/// <para/>
@@ -106,24 +81,24 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ShieldedFoes_1444852954 = 1444852954;
 			/// <summary>
-			/// 	You've been challenged to wield the following:
+			/// 	Power is disabled in this activity. Combatant difficulty increases with each set.
+			/// </summary>
+			public const uint EscalatingDifficulty_1545596619 = 1545596619;
+			/// <summary>
+			/// 	When you and your ally are reunited, your weapon handling and reload speed are greatly increased, and you gain increased flinch resistance.
 			/// <para/>
-			/// 	Kinetic: Scout Rifle 
-			/// <para/>
-			/// 	Energy: Sniper Rifle  
-			/// <para/>
-			/// 	Power: Anything
+			/// 	When you and your ally are drifting apart, your sprint and slide abilities are enhanced.
 			/// <para/>
 			/// </summary>
-			public const uint Armsmaster_4242441199 = 4242441199;
+			public const uint DoublesRules = 4093484583;
 			/// <summary>
 			/// 	Taken combatants generate blight geysers when defeated.
 			/// </summary>
 			public const uint Epitaph = 998275325;
 			/// <summary>
-			/// 	This playlist contains Countdown Rush and Survival. When you launch, it will randomly select one of the modes for you to play.
+			/// 	This playlist contains Collision and Survival. When you launch, it will randomly select one of the modes for you to play.
 			/// <para/>
-			/// 	Countdown Rush: To win, score more points than your opponents. Your team must detonate, defuse, or defend the charges to win points.
+			/// 	Collision: To win, score more points than your opponents by capturing and controlling the zone. There will be one zone active at a time. Defeating your opponents does not directly grant points.
 			/// <para/>
 			/// 	Survival: To win, your team must become the last Guardian(s) standing by defeating the opposing team to exhaust their revives.
 			/// <para/>
@@ -133,6 +108,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	{var:2189146210}% bonus to outgoing Arc damage.
 			/// </summary>
 			public const uint ArcSurge = 2691200658;
+			/// <summary>
+			/// 	Matchmaking prefers to avoid players with widely disparate skills.
+			/// </summary>
+			public const uint Matchmaking_1345228604 = 1345228604;
 			/// <summary>
 			/// 	Stasis damage increases slightly from all sources.
 			/// </summary>
@@ -149,13 +128,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionFoes_2475764450 = 2475764450;
 			/// <summary>
-			/// 	Initial Exotic drop rate boosts: {var:219516062}
+			/// 	Initial Exotic drop rate boosts: X
 			/// </summary>
 			public const uint ExoticDropRateBoostsGained_792361634 = 792361634;
 			/// <summary>
+			/// 	A Siegehook Ogre awaits you on wave 50.
+			/// </summary>
+			public const uint BossRotation_1894842396 = 1894842396;
+			/// <summary>
 			/// 	{var:4005007457}% increase to incoming Solar damage.
 			/// </summary>
-			public const uint SolarThreat_3517267764 = 3517267764;
+			public const uint SolarThreat = 3517267764;
 			/// <summary>
 			/// 	To win, your team must become the last Guardian(s) standing by defeating the entire opposing team or capturing the zone.
 			/// <para/>
@@ -168,15 +151,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DominionRules_4263658911 = 4263658911;
 			/// <summary>
-			/// 	A challenge awaits…
+			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
-			public const uint PrecariousBalance = 2768385440;
+			public const uint Classified_2821522136 = 2821522136;
 			/// <summary>
 			/// 	To win, defeat your opponents, collect their crests, and deposit them at Cabal beacons.
 			/// <para/>
 			/// 	Cabal Beacons: Beacons appear at various locations on the map, two at a time. They have limited duration before they switch to another position. Collect crests and deposit them at beacons for points.
 			/// <para/>
-			/// 	The Hunt: Activates when a maximum deposit is acheived at a Cabal beacon. This is a limited, special state when Caiatl sends a high-value beacon protected with turrets. The high-value beacon awards a bonus score for each crest deposited.
+			/// 	The Hunt: Activates when the score threshold is met. This is a limited, special state when Caiatl sends a high-value beacon protected with turrets. The high-value beacon awards a bonus score for each crest deposited.
 			/// <para/>
 			/// </summary>
 			public const uint IronBannerTribute = 3456379103;
@@ -185,28 +168,29 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SupremacyRules = 3296644900;
 			/// <summary>
+			/// 	This activity does not scale combatant difficulty according to fireteam size.
+			/// </summary>
+			public const uint BalancedScales = 1264329482;
+			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint CrossfireChallenge = 138641527;
 			/// <summary>
 			/// 	{var:4005007457}% increase to incoming Arc damage.
 			/// </summary>
-			public const uint ArcThreat_186409259 = 186409259;
+			public const uint ArcThreat = 186409259;
 			/// <summary>
 			/// 	All Trials Rank point gains are increased!
 			/// </summary>
 			public const uint IncreasedTrialsRank = 1361609633;
 			/// <summary>
-			/// 	You've been challenged to wield the following:
-			/// <para/>
-			/// 	Kinetic: Hand Cannon 
-			/// <para/>
-			/// 	Energy: Bow  
-			/// <para/>
-			/// 	Power: Rocket Launcher
-			/// <para/>
+			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
-			public const uint Armsmaster_3013956746 = 3013956746;
+			public const uint Classified_4134002479 = 4134002479;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2323293470 = 2323293470;
 			/// <summary>
 			/// 	The activity is at a fixed difficulty.
 			/// <para/>
@@ -214,6 +198,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint Mettle_3283187796 = 3283187796;
+			/// <summary>
+			/// 	Activates on wave 31.
+			/// <para/>
+			/// 	If your fireteam falls, everyone is returned to orbit.
+			/// <para/>
+			/// </summary>
+			public const uint DelayedExtinguish = 2787320573;
 			/// <summary>
 			/// 	All Vanguard Rank point gains are increased!
 			/// </summary>
@@ -231,6 +222,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint MasterModifiers_501815068 = 501815068;
+			/// <summary>
+			/// 	Matchmaking does not utilize skill.
+			/// </summary>
+			public const uint Matchmaking_3206202148 = 3206202148;
 			/// <summary>
 			/// 	Round 1: Taken
 			/// <para/>
@@ -253,8 +248,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// 	Extra Shields
 			/// <para/>
-			/// 	Maximum Effective Level {var:3875023991}
-			/// <para/>
 			/// </summary>
 			public const uint MasterModifiers_4087563963 = 4087563963;
 			/// <summary>
@@ -266,16 +259,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Martyr_3398790191 = 3398790191;
 			/// <summary>
-			/// 	You've been challenged to wield the following:
+			/// 	Potential Data buffs:
 			/// <para/>
-			/// 	Kinetic: Pulse Rifle 
+			/// 	• Chance to spawn an Orb of Power on combatant final blows
 			/// <para/>
-			/// 	Energy: Fusion Rifle  
+			/// 	• Chance to spawn a Stasis Crystal on combatant final blows
 			/// <para/>
-			/// 	Power: Rocket Launcher
+			/// 	• Chance to gain class ability energy combatant final blows
 			/// <para/>
 			/// </summary>
-			public const uint Armsmaster_4081758395 = 4081758395;
+			public const uint DataBuffs_2587905069 = 2587905069;
 			/// <summary>
 			/// 	You will face [Disruption] Overload and [Stagger] Unstoppable Champions.
 			/// </summary>
@@ -285,20 +278,24 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OverchargedBow = 929044687;
 			/// <summary>
+			/// 	Defend and repair the ADU against waves of combatants. If the ADU is destroyed, the activity will end.
+			/// <para/>
+			/// 	Scraps: Activity currency used to purchase and upgrade defenses at the start of every set and after waves 3 and 6.
+			/// <para/>
+			/// 	Rewards: Received after defeating the boss wave.
+			/// <para/>
+			/// 	Bonus Objectives: These reward resources and armaments.
+			/// <para/>
+			/// </summary>
+			public const uint OnslaughtRules_612342440 = 612342440;
+			/// <summary>
 			/// 	Regeneration is greatly impaired. Defeating enemies may create wells of Light.
 			/// </summary>
-			public const uint Attrition_3346897368 = 3346897368;
+			public const uint Attrition = 3346897368;
 			/// <summary>
 			/// 	Enhanced radar. Take increased damage from melee.
 			/// </summary>
 			public const uint Empath_2208550513 = 2208550513;
-			/// <summary>
-			/// 	Base health regeneration is reduced. If a player is near another ally, health regeneration is improved above normal.
-			/// <para/>
-			/// 	Activates immediately.
-			/// <para/>
-			/// </summary>
-			public const uint Togetherness_825646500 = 825646500;
 			/// <summary>
 			/// 	Capture the zones and defeat your opponents for points. The team with the most points wins. This is a faster version of Control.
 			/// <para/>
@@ -311,30 +308,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MomentumControlRules = 2327064309;
 			/// <summary>
-			/// 	{var:4005007457}% increase to incoming Void damage.
-			/// <para/>
-			/// 	Activates at the Midnight depth.
-			/// <para/>
+			/// 	Matchmaking prefers players with similar Glory Rank.
 			/// </summary>
-			public const uint VoidThreat_1436323507 = 1436323507;
-			/// <summary>
-			/// 	Being hit by a melee attack slows you.
-			/// <para/>
-			/// 	Activates at the Abyss depth.
-			/// <para/>
-			/// </summary>
-			public const uint ChillTouch_2218138543 = 2218138543;
+			public const uint Matchmaking_2266489848 = 2266489848;
 			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint OutofItsWay = 2814846409;
-			/// <summary>
-			/// 	The activity is at a fixed difficulty.
-			/// <para/>
-			/// 	Your effective Power is capped at 1725.
-			/// <para/>
-			/// </summary>
-			public const uint Mettle_2967597120 = 2967597120;
 			/// <summary>
 			/// 	Your Power is significantly below the recommended level for this activity.
 			/// </summary>
@@ -355,15 +335,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Melee abilities deal more damage and recharge much faster.
 			/// </summary>
 			public const uint DaodanSurge = 3787716856;
-			/// <summary>
-			/// 	Combatants: Hive
-			/// <para/>
-			/// 	Jobs: Site Security, Site Reliability, Ordnance Disposal
-			/// <para/>
-			/// 	Boss: Uorgotha, Taken Ogre
-			/// <para/>
-			/// </summary>
-			public const uint WrathbornReinforcements = 28684414;
 			/// <summary>
 			/// 	Stoke the bonfire!
 			/// <para/>
@@ -419,14 +390,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Activates Immediately.
 			/// <para/>
 			/// </summary>
-			public const uint Blasts_1410027362 = 1410027362;
+			public const uint Blasts = 1410027362;
 			/// <summary>
-			/// 	Combatant splash damage is increased.
+			/// 	All weapons are disabled! Abilities are your only defense.
 			/// <para/>
-			/// 	Activates at the Midnight Depth.
+			/// 	Your abilities recharge much faster, and your camera is set to third person.
 			/// <para/>
 			/// </summary>
-			public const uint Blasts_1001677275 = 1001677275;
+			public const uint ParacausalFocus = 1345530799;
 			/// <summary>
 			/// 	Dealing damage with a Solar weapon now applies scorch to your targets, but your foes also now apply scorch to you when they deal Solar or explosive damage.
 			/// </summary>
@@ -448,17 +419,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Enemy melee attacks are significantly more powerful, and radar is disabled.
 			/// </summary>
 			public const uint Blackout = 1427917745;
-			/// <summary>
-			/// 	You've been challenged to wield the following:
-			/// <para/>
-			/// 	Kinetic: Bow 
-			/// <para/>
-			/// 	Energy: Shotgun  
-			/// <para/>
-			/// 	Power: Fusion Rifle
-			/// <para/>
-			/// </summary>
-			public const uint Armsmaster_4215654192 = 4215654192;
 			/// <summary>
 			/// 	The activity is at a fixed difficulty.
 			/// <para/>
@@ -487,17 +447,31 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RankandFileDamageIncrease = 77928345;
 			/// <summary>
-			/// 	Weapons have no reserve ammo. Emptying the clip of a weapon refills the clips of your holstered weapons.
+			/// 	Potential Data buffs:
+			/// <para/>
+			/// 	• Spawn an ammo crate
+			/// <para/>
+			/// 	• Chance to spawn Threadlings on combatant final blows
+			/// <para/>
+			/// 	• Chance to gain grenade energy on combatant final blows
+			/// <para/>
 			/// </summary>
-			public const uint PrestigeArsenal = 2562492496;
+			public const uint DataBuffs_3620773775 = 3620773775;
+			/// <summary>
+			/// 	Depositing data will award one of the following buffs:
+			/// <para/>
+			/// 	• Chance to spawn an Orb of Power on combatant final blows
+			/// <para/>
+			/// 	• Chance to Jolt on Arc Damage
+			/// <para/>
+			/// 	• Chance to gain melee energy on combatant final blows
+			/// <para/>
+			/// </summary>
+			public const uint DataBuffs_4269081391 = 4269081391;
 			/// <summary>
 			/// 	Being hit by a melee attack slows you.
 			/// </summary>
-			public const uint ChillTouch_1572913484 = 1572913484;
-			/// <summary>
-			/// 	This mode contains Unstoppable Champions, which cannot be stopped without an Unstoppable mod.
-			/// </summary>
-			public const uint ChampionsUnstoppable = 4218937993;
+			public const uint ChillTouch = 1572913484;
 			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
@@ -519,6 +493,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Martyr_1553444357 = 1553444357;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1204802854 = 1204802854;
+			/// <summary>
 			/// 	[Void] Void and Strand Shields
 			/// </summary>
 			public const uint ShieldedFoes_2524382624 = 2524382624;
@@ -535,10 +513,8 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// 	Extra Shields
 			/// <para/>
-			/// 	Maximum Effective Level {var:1693239810}
-			/// <para/>
 			/// </summary>
-			public const uint LegendModifiers_1139702033 = 1139702033;
+			public const uint ExpertModifiers_1139702033 = 1139702033;
 			/// <summary>
 			/// 	When defeated, challenging combatants drop fire at their location.
 			/// </summary>
@@ -547,33 +523,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	{var:1027206613}% bonus to Scout Rifle damage.
 			/// </summary>
 			public const uint OverchargedScoutRifle = 214700178;
-			/// <summary>
-			/// 	Riven's wish magic stirs. The following are the pathways and their order in The Coil:
-			/// <para/>
-			/// 	-Divining Hall
-			/// <para/>
-			/// 	-First Steps (Temple of the Queen's Wrath)
-			/// <para/>
-			/// 	-Sensorium (Reaver's Orison)
-			/// <para/>
-			/// 	-First Steps (Cell of the Sycophant)
-			/// <para/>
-			/// </summary>
-			public const uint ThePathways_2500966831 = 2500966831;
-			/// <summary>
-			/// 	{var:4005007457}% increase to incoming Stasis damage.
-			/// <para/>
-			/// 	Activates at the Abyss depth.
-			/// <para/>
-			/// </summary>
-			public const uint StasisThreat_1825276066 = 1825276066;
-			/// <summary>
-			/// 	The activity is at a fixed difficulty.
-			/// <para/>
-			/// 	Your effective Power is capped at 1635.
-			/// <para/>
-			/// </summary>
-			public const uint Mettle_1440774070 = 1440774070;
 			/// <summary>
 			/// 	{var:1027206613}% bonus to Linear Fusion Rifle damage.
 			/// </summary>
@@ -618,7 +567,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OverchargedSword = 1326581064;
 			/// <summary>
-			/// 	Initial Exotic drop rate boosts: {var:219516062}
+			/// 	Initial Exotic drop rate boosts: X
 			/// </summary>
 			public const uint ExoticDropRateBoostsGained_2835296134 = 2835296134;
 			/// <summary>
@@ -650,7 +599,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Weapon overcharges from the Seasonal Artifact are active in this activity.
 			/// <para/>
-			/// 	Kinetic weapons do increased damage when your subclass element matches an active surge.
+			/// 	Kinetic weapons do increased damage when your Super element matches an active surge.
 			/// <para/>
 			/// </summary>
 			public const uint OverchargedWeapons = 4226469317;
@@ -659,13 +608,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ContestMode_3620565640 = 3620565640;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3897480986 = 3897480986;
+			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint ZerotoOneHundred = 4073197101;
-			/// <summary>
-			/// 	Base weapon damage is reduced. Consecutive precision shots grant a stacking damage buff.
-			/// </summary>
-			public const uint PrestigeMarksman = 2668314242;
 			/// <summary>
 			/// 	You will face [Shield-Piercing] Barrier, [Disruption] Overload, and [Stagger] Unstoppable Champions.
 			/// </summary>
@@ -675,16 +624,23 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OverchargedShotgun = 3132780533;
 			/// <summary>
+			/// 	Depositing data will award one of the following buffs:
+			/// <para/>
+			/// 	• Chance to create Threadlings on Strand damage
+			/// <para/>
+			/// 	• Chance to apply Suppressed on Void damage
+			/// <para/>
+			/// 	• Chance to gain grenade energy on combatant final blows
+			/// <para/>
+			/// </summary>
+			public const uint DataBuffs_3507208337 = 3507208337;
+			/// <summary>
 			/// 	The activity is at a fixed difficulty.
 			/// <para/>
 			/// 	Your effective Power is capped at {var:1311088063}.
 			/// <para/>
 			/// </summary>
 			public const uint Mettle_2768123075 = 2768123075;
-			/// <summary>
-			/// 	A challenge awaits…
-			/// </summary>
-			public const uint ConservationofEnergy = 3636591526;
 			/// <summary>
 			/// 	Combatant difficulty is set at a fixed level.
 			/// </summary>
@@ -693,13 +649,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint UnderConstruction = 2936050162;
-			/// <summary>
-			/// 	Combatant melee attacks are significantly more powerful.
-			/// <para/>
-			/// 	Activates immediately.
-			/// <para/>
-			/// </summary>
-			public const uint Scrapper = 3525563345;
 			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
@@ -717,18 +666,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheGrassIsAlwaysGreener = 3577304467;
 			/// <summary>
-			/// 	Riven's wish magic stirs weekly. The following are the pathways and their order in The Coil:
-			/// <para/>
-			/// 	-First Steps (Temple of the Queen's Wrath)
-			/// <para/>
-			/// 	-Divining Hall
-			/// <para/>
-			/// 	-Sensorium (Pavilion)
-			/// <para/>
-			/// 	-Observatory
-			/// <para/>
+			/// 	Players do not respawn with Special ammo.
 			/// </summary>
-			public const uint ThePathways_614347129 = 614347129;
+			public const uint SpecialAmmoRulesAlpha = 3492492287;
 			/// <summary>
 			/// 	+50% Stasis effectiveness.
 			/// </summary>
@@ -790,7 +730,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Flying units do increased damage.
 			/// </summary>
-			public const uint AirSuperiority_68890788 = 68890788;
+			public const uint AirSuperiority = 68890788;
 			/// <summary>
 			/// 	{var:1027206613}% bonus to Pulse Rifle damage.
 			/// </summary>
@@ -800,24 +740,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IncreasedGambitRank = 3228023383;
 			/// <summary>
-			/// 	If all your fireteam members fall with 0 Revive Tokens, everyone is returned to orbit.
-			/// </summary>
-			public const uint FullExtinguish = 1852184322;
-			/// <summary>
 			/// 	When close to a fireteam member, gain increased Recovery and Super regeneration.
 			/// </summary>
 			public const uint Firebound = 4246169082;
 			/// <summary>
-			/// 	You've been challenged to wield the following:
-			/// <para/>
-			/// 	Kinetic: Sniper Rifle 
-			/// <para/>
-			/// 	Energy: Scout Rifle  
-			/// <para/>
-			/// 	Power: Grenade Launcher
-			/// <para/>
+			/// 	{var:1027206613}% bonus to Auto Rifle damage.
 			/// </summary>
-			public const uint Armsmaster_3878686414 = 3878686414;
+			public const uint OverchargedAutoRifle = 3406250074;
 			/// <summary>
 			/// 	Extra Champions
 			/// <para/>
@@ -825,25 +754,29 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// 	Extra Shields
 			/// <para/>
-			/// 	Maximum Effective Level {var:3875023991}
-			/// <para/>
 			/// </summary>
 			public const uint MasterModifiers_3623371497 = 3623371497;
 			/// <summary>
+			/// 	To win, your team must detonate or defuse both charges.
+			/// <para/>
+			/// 	Attackers: Arm the charge at one of two sites and guard it until it detonates. 
+			/// <para/>
+			/// 	Defenders (Arming Phase): Prevent the attacking team from arming any charges until the round ends.  
+			/// <para/>
+			/// 	Defenders (Defusing Phase): Defuse the armed charge.
+			/// <para/>
+			/// 	Respawns Enabled: Defeated Guardians will respawn after a short time.
+			/// <para/>
+			/// </summary>
+			public const uint CountdownRules_2960104736 = 2960104736;
+			/// <summary>
 			/// 	Base health regen is reduced. If near another player, health regen is increased.
 			/// </summary>
-			public const uint Togetherness_3629079662 = 3629079662;
+			public const uint Togetherness = 3629079662;
 			/// <summary>
-			/// 	You've been challenged to wield the following:
-			/// <para/>
-			/// 	Kinetic: Sidearm 
-			/// <para/>
-			/// 	Energy: Sniper Rifle  
-			/// <para/>
-			/// 	Power: Rocket Launcher
-			/// <para/>
+			/// 	Power is disabled in this activity. Combatant difficulty increases with each set.
 			/// </summary>
-			public const uint Armsmaster_627468951 = 627468951;
+			public const uint EscalatingDifficulty_3114697541 = 3114697541;
 			/// <summary>
 			/// 	Swapping Exotic armor drains all ability energy.
 			/// </summary>
@@ -856,9 +789,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Mettle_1396678533 = 1396678533;
 			/// <summary>
-			/// 	Power Level: All combatants in this activity will be at least {var:1161168407} points over the player's current Power.
+			/// 	Fireteam revives are limited in Restricted Zones.
 			/// </summary>
-			public const uint ContestMode_3154192663 = 3154192663;
+			public const uint Restricted = 1909158654;
 			/// <summary>
 			/// 	You will face combatants with [Void] Void shields.
 			/// <para/>
@@ -866,10 +799,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint ShieldedFoes_3538098588 = 3538098588;
-			/// <summary>
-			/// 	The activity has a fixed difficulty.
-			/// </summary>
-			public const uint Mettle_2563663188 = 2563663188;
 			/// <summary>
 			/// 	When defeated, Acolytes spawn fire pools that cause damage over time.
 			/// </summary>
@@ -883,27 +812,24 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ShieldedFoes_1651706850 = 1651706850;
 			/// <summary>
+			/// 	Depositing data will award one of the following buffs:
+			/// <para/>
+			/// 	• Chance to spawn an Orb of Power on combatant final blows
+			/// <para/>
+			/// 	• Chance to spawn a Stasis Crystal on combatant final blows
+			/// <para/>
+			/// 	• Chance to gain class ability energy on combatant final blows
+			/// <para/>
+			/// </summary>
+			public const uint DataBuffs_1471048891 = 1471048891;
+			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint GazeAmaze = 2890753840;
 			/// <summary>
-			/// 	The activity is at a fixed difficulty.
-			/// <para/>
-			/// 	Your effective Power is capped at 1735.
-			/// <para/>
+			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
-			public const uint Mettle_3045178556 = 3045178556;
-			/// <summary>
-			/// 	You've been challenged to wield the following:
-			/// <para/>
-			/// 	Kinetic: Shotgun 
-			/// <para/>
-			/// 	Energy: Sniper Rifle  
-			/// <para/>
-			/// 	Power: Fusion Rifle
-			/// <para/>
-			/// </summary>
-			public const uint Armsmaster_2355402709 = 2355402709;
+			public const uint Classified_3621023005 = 3621023005;
 			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
@@ -912,28 +838,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Combatants have more health and are more difficult to stun.
 			/// </summary>
 			public const uint Galvanized = 941999846;
-			/// <summary>
-			/// 	You've been challenged to wield the following:
-			/// <para/>
-			/// 	Kinetic: Bow 
-			/// <para/>
-			/// 	Energy: Shotgun  
-			/// <para/>
-			/// 	Power: Sword
-			/// <para/>
-			/// </summary>
-			public const uint Armsmaster_3496535125 = 3496535125;
-			/// <summary>
-			/// 	You've been challenged to wield the following:
-			/// <para/>
-			/// 	Kinetic: Anything 
-			/// <para/>
-			/// 	Energy: Submachine Gun  
-			/// <para/>
-			/// 	Power: Sword
-			/// <para/>
-			/// </summary>
-			public const uint Armsmaster_2718382297 = 2718382297;
 			/// <summary>
 			/// 	You will face combatants with [Solar] Solar and [Void] Void shields.
 			/// <para/>
@@ -968,29 +872,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionFoes_1598783516 = 1598783516;
 			/// <summary>
-			/// 	Defeating Champions creates a pool of fire.
-			/// <para/>
-			/// 	Activates at the Abyss Depth.
-			/// <para/>
-			/// </summary>
-			public const uint HotChampions_1277060983 = 1277060983;
-			/// <summary>
-			/// 	Riven's wish magic stirs. The following are the pathways and their order in The Coil:
-			/// <para/>
-			/// 	-Sensorium (Pavilion)
-			/// <para/>
-			/// 	-First Steps (Cell of the Sycophant)
-			/// <para/>
-			/// 	-Divining Hall
-			/// <para/>
-			/// 	-Sensorium (Reaver's Orison)
-			/// <para/>
-			/// </summary>
-			public const uint ThePathways_3317700736 = 3317700736;
-			/// <summary>
 			/// 	Damage taken while you are airborne is greatly increased.
 			/// </summary>
-			public const uint Grounded_261995644 = 261995644;
+			public const uint Grounded = 261995644;
 			/// <summary>
 			/// 	Initial Exotic drop rate boosts: {var:3027371367}
 			/// </summary>
@@ -1000,6 +884,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionFoes_1806568190 = 1806568190;
 			/// <summary>
+			/// 	A Fieldrazer Tormentor awaits you on wave 50.
+			/// </summary>
+			public const uint BossRotation_1743397814 = 1743397814;
+			/// <summary>
+			/// 	Arc damage increases slightly from all sources.
+			/// </summary>
+			public const uint ArcSinge = 4162874069;
+			/// <summary>
 			/// 	Your current character has not yet completed this mission on Legendary difficulty.
 			/// <para/>
 			/// 	Completing all Legendary missions provides additional rewards per class.
@@ -1007,28 +899,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AChallengeAwaits_22073894 = 22073894;
 			/// <summary>
-			/// 	Arc damage increases slightly from all sources.
+			/// 	A Fallen Warpriest awaits you on wave 50.
 			/// </summary>
-			public const uint ArcSinge = 4162874069;
+			public const uint BossRotation_2160690722 = 2160690722;
 			/// <summary>
 			/// 	{var:4005007457}% increase to incoming Stasis damage.
 			/// </summary>
-			public const uint StasisThreat_512042454 = 512042454;
-			/// <summary>
-			/// 	The activity is at a fixed difficulty.
-			/// <para/>
-			/// 	Your effective Power is capped at 1655.
-			/// <para/>
-			/// </summary>
-			public const uint Mettle_154686562 = 154686562;
-			/// <summary>
-			/// 	Power Level: All combatants in this activity will be at least {var:3583233765} points over your current Power level.
-			/// </summary>
-			public const uint Mettle_2823462701 = 2823462701;
+			public const uint StasisThreat = 512042454;
 			/// <summary>
 			/// 	{var:1027206613}% bonus to Fusion Rifle damage.
 			/// </summary>
 			public const uint OverchargedFusionRifle = 2626834038;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3076996298 = 3076996298;
 			/// <summary>
 			/// 	You will face [Shield-Piercing] Barrier Champions.
 			/// </summary>
@@ -1042,12 +927,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EnsemblesRefrain = 1572570117;
 			/// <summary>
-			/// 	The activity is at a fixed difficulty.
+			/// 	Defend and repair the ADU against waves of combatants. There are 10 waves to a set. If the ADU is destroyed, the activity is over.
 			/// <para/>
-			/// 	Your effective Power is capped at 1685.
+			/// 	Scraps: Activity currency used to purchase and upgrade defenses at the start of every set and after waves 3 and 6.
+			/// <para/>
+			/// 	Rewards: Received after every set upon defeating the boss wave. Subsequent sets provide better rewards. Expert mode increases rewards.
+			/// <para/>
+			/// 	Bonus Objectives: These reward resources and armaments.
 			/// <para/>
 			/// </summary>
-			public const uint Mettle_2927745316 = 2927745316;
+			public const uint OnslaughtRules_2543520884 = 2543520884;
 			/// <summary>
 			/// 	You will face [Shield-Piercing] Barrier and [Disruption] Overload Champions.
 			/// <para/>
@@ -1055,13 +944,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint ChampionFoes_1990363418 = 1990363418;
-			/// <summary>
-			/// 	The activity is at a fixed difficulty.
-			/// <para/>
-			/// 	Your effective Power is capped at {var:3583233765}.
-			/// <para/>
-			/// </summary>
-			public const uint Mettle_3298276018 = 3298276018;
 			/// <summary>
 			/// 	{var:2189146210}% bonus to outgoing Strand damage.
 			/// </summary>
@@ -1071,12 +953,27 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionFoes_3461252634 = 3461252634;
 			/// <summary>
+			/// 	If your fireteam falls in a Restricted Zone, everyone is returned to orbit.
+			/// </summary>
+			public const uint Extinguish_2889256157 = 2889256157;
+			/// <summary>
 			/// 	Win 2 of the next 3 matches to avoid relegation.
 			/// <para/>
 			/// 	Match results (W-L): {var:1550688411}-{var:3875673079}
 			/// <para/>
 			/// </summary>
 			public const uint RelegationSeries = 3993408768;
+			/// <summary>
+			/// 	You will not be able to change your equipped subclass during this activity.
+			/// </summary>
+			public const uint SubclassLocked = 3037208116;
+			/// <summary>
+			/// 	When on an Unflawed Card, matchmaking does not utilize skill.
+			/// <para/>
+			/// 	When on a Flawed Card, matchmaking prefers players with similar weekly performance in Trials of Osiris.
+			/// <para/>
+			/// </summary>
+			public const uint Matchmaking_1870323889 = 1870323889;
 			/// <summary>
 			/// 	Shanks now have Solar shields
 			/// </summary>
@@ -1097,6 +994,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HeavyAmmoRulesBravo = 707305737;
 			/// <summary>
+			/// 	Combatants may vary each time you play this activity. You may face combatants with [Arc] Arc, [Solar] Solar, or [Void] Void shields.
+			/// </summary>
+			public const uint ShieldedFoes_4068824296 = 4068824296;
+			/// <summary>
 			/// 	The activity is at a fixed difficulty. Test your might.
 			/// </summary>
 			public const uint ContestMode_678087389 = 678087389;
@@ -1112,25 +1013,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SwiftDestruction = 2672226122;
 			/// <summary>
-			/// 	Combatants: Hive
+			/// 	Potential Data buffs:
 			/// <para/>
-			/// 	Jobs: Engineering, Ordnance Disposal, Site Reliability
+			/// 	• Chance to create Threadlings on Strand damage
 			/// <para/>
-			/// 	Boss: Azshradat, Hive Knight
+			/// 	• Chance to apply Suppressed on Void damage
 			/// <para/>
-			/// </summary>
-			public const uint HiveIncursion = 3971240298;
-			/// <summary>
-			/// 	You've been challenged to wield the following:
-			/// <para/>
-			/// 	Kinetic: Rat King 
-			/// <para/>
-			/// 	Energy: Anything  
-			/// <para/>
-			/// 	Power: Anything
+			/// 	• Chance to gain grenade energy on combatant final blows
 			/// <para/>
 			/// </summary>
-			public const uint Armsmaster_463699805 = 463699805;
+			public const uint DataBuffs_324020031 = 324020031;
 			/// <summary>
 			/// 	Extinguish
 			/// <para/>
@@ -1146,17 +1038,8 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// 	Extra Shields
 			/// <para/>
-			/// 	Maximum Effective Level {var:1607961440}
-			/// <para/>
 			/// </summary>
 			public const uint GrandmasterModifiers = 791047754;
-			/// <summary>
-			/// 	The activity is at a fixed difficulty.
-			/// <para/>
-			/// 	Your effective Power is capped at 1600.
-			/// <para/>
-			/// </summary>
-			public const uint Mettle_647676897 = 647676897;
 			/// <summary>
 			/// 	You will face [Shield-Piercing] Barrier and [Stagger] Unstoppable Champions.
 			/// <para/>
@@ -1165,41 +1048,28 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionFoes_438106166 = 438106166;
 			/// <summary>
-			/// 	A challenge awaits…
+			/// 	Heavily shielded and highly aggressive combatants appear more frequently and in greater numbers.
 			/// </summary>
-			public const uint AllforOne = 3523029182;
+			public const uint CooperativeFocusCampaign = 4047266548;
 			/// <summary>
 			/// 	[Arc] Arc and [Void] Void Shields
 			/// </summary>
 			public const uint ShieldedFoes_2650740350 = 2650740350;
 			/// <summary>
-			/// 	To win, your team must detonate or defuse both charges.
+			/// 	Potential Data buffs:
 			/// <para/>
-			/// 	Attackers: Arm the charge at one of two sites and guard it until it detonates. 
+			/// 	• Chance to spawn an Orb of Power on combatant final blows
 			/// <para/>
-			/// 	Defenders (Arming Phase): Prevent the attacking team from arming any charges until the round ends.  
+			/// 	• Chance to Jolt on Arc Damage
 			/// <para/>
-			/// 	Defenders (Defusing Phase): Defuse the armed charge.
-			/// <para/>
-			/// 	Respawns Enabled: Defeated Guardians will respawn after a short time.
+			/// 	• Chance to gain melee energy on combatant final blows
 			/// <para/>
 			/// </summary>
-			public const uint CountdownRushRules = 2202470181;
+			public const uint DataBuffs_3398572761 = 3398572761;
 			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint HandsOff = 4152669757;
-			/// <summary>
-			/// 	You've been challenged to wield the following:
-			/// <para/>
-			/// 	Kinetic: Auto Rifle 
-			/// <para/>
-			/// 	Energy: Hand Cannon  
-			/// <para/>
-			/// 	Power: Rocket Launcher
-			/// <para/>
-			/// </summary>
-			public const uint Armsmaster_4185617123 = 4185617123;
 			/// <summary>
 			/// 	The activity is at a fixed difficulty.
 			/// <para/>
@@ -1241,9 +1111,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionFoes_1262171714 = 1262171714;
 			/// <summary>
-			/// 	Power Level: All combatants in this activity will be at least {var:3112783658} points over your current Power level.
+			/// 	Depositing data will award one of the following buffs:
+			/// <para/>
+			/// 	• Spawn an ammo crate
+			/// <para/>
+			/// 	• Chance to spawn Threadlings on combatant final blows
+			/// <para/>
+			/// 	• Chance to gain grenade energy on combatant final blows
+			/// <para/>
 			/// </summary>
-			public const uint HeroModifiers_2205734154 = 2205734154;
+			public const uint DataBuffs_521652513 = 521652513;
 			/// <summary>
 			/// 	This mode contains Barrier Champions, which cannot be stopped without an Anti-Barrier mod.
 			/// </summary>
@@ -1251,81 +1128,26 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Enemies have more health and are not staggered by damage.
 			/// </summary>
-			public const uint Iron_1463769380 = 1463769380;
-			/// <summary>
-			/// 	Melee kills buff weapon damage, and weapon kills buff melee damage.
-			/// </summary>
-			public const uint PrestigeGladiator = 2674660865;
-			/// <summary>
-			/// 	Successfully complete four pathways inside Riven's Lair.
-			/// <para/>
-			/// 	Escalating Difficulty: Player's Power levels are fixed. Starting at 0 each subsequent pathway increases all combatants' Power level over the player's by 5.
-			/// <para/>
-			/// 	Wishing Glass: Wishing Glass is an in-activity currency. They drop from combatants, Glass Collectors, and pots. Wishing Glass comes in multiple rarities equating to their worth. Wishing Glass is used to purchase Dragon's Gifts from Riven.
-			/// <para/>
-			/// 	Dragon's Gifts: A set of buffs are randomly chosen, once per run. Between pathways, players can purchase buffs from Riven via Wishing Glass. Buffs are separated into three price point tiers.
-			/// <para/>
-			/// 	Rewards: After each pathway, players will return to Riven for their rewards. Subsequent pathways pay out better rewards. Breaking through score thresholds unlock secret chests. Finishing The Coil with a platinum score rewards players with access to the lustrous and lucrative Chamber of Wishes.
-			/// <para/>
-			/// </summary>
-			public const uint TheCoilRules = 2160381322;
+			public const uint Iron = 1463769380;
 			/// <summary>
 			/// 	If your fireteam falls in a Restricted Zone, everyone is returned to orbit.
 			/// </summary>
-			public const uint Extinguish = 4265630562;
-			/// <summary>
-			/// 	Successfully complete as many randomly chosen timed encounters as you can before being caught by the foes hunting you! Reach the sea floor to turn the tables, turning the hunters into the hunted!
-			/// <para/>
-			/// 	Power Level: Player Power levels are fixed. Each depth activates a new modifier for the remainder of the activity and increases all combatant Power levels over player Power levels.
-			/// <para/>
-			/// 	Ahsa's Gifts: Choose one of two random gifts from Ahsa at each depth to enhance yourself for the remainder of the activity before taking on the Darkness.
-			/// <para/>
-			/// 	Wrathful Predator: Final blows on these unique combatants will reward your fireteam additional time on the objective timer.
-			/// <para/>
-			/// 	Rewards: Victory at each depth increases the rewards and challenges of the next. Opt in with your entire fireteam to trigger Pressure Trial versions of activities for even greater rewards!
-			/// <para/>
-			/// </summary>
-			public const uint DeepDiveRules = 2935223644;
+			public const uint Extinguish_4265630562 = 4265630562;
 			/// <summary>
 			/// 	Your fireteam cannot be joined while in an activity. Return to orbit to add fireteam members.
 			/// </summary>
 			public const uint JoinInProgressDisabled = 517221851;
-			/// <summary>
-			/// 	You've been challenged to wield the following:
-			/// <para/>
-			/// 	Kinetic: Anything 
-			/// <para/>
-			/// 	Energy: Anything  
-			/// <para/>
-			/// 	Power: Sword
-			/// <para/>
-			/// </summary>
-			public const uint Armsmaster_3892010899 = 3892010899;
 			/// <summary>
 			/// 	Locked Loadout
 			/// <para/>
 			/// 	Extra Shields
 			/// <para/>
 			/// </summary>
-			public const uint LegendModifiers_1174869237 = 1174869237;
+			public const uint ExpertModifiers_1174869237 = 1174869237;
 			/// <summary>
-			/// 	You've been challenged to wield the following:
-			/// <para/>
-			/// 	Kinetic: Bow 
-			/// <para/>
-			/// 	Energy: Sniper Rifle  
-			/// <para/>
-			/// 	Power: Fusion Rifle
-			/// <para/>
+			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
-			public const uint Armsmaster_1284339361 = 1284339361;
-			/// <summary>
-			/// 	Health and shield regeneration are significantly impaired, but defeating combatants may create wells of Light that restore health.
-			/// <para/>
-			/// 	Activates immediately.
-			/// <para/>
-			/// </summary>
-			public const uint Attrition_145332644 = 145332644;
+			public const uint Classified_1315424373 = 1315424373;
 			/// <summary>
 			/// 	To win, your team must detonate or defuse charges. Defeating the entire opposing team and being the last Guardian(s) standing will also grant victory.
 			/// <para/>
@@ -1336,37 +1158,23 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defenders (Defusing Phase): Defuse the armed charge. Eliminating the attacking team will not end the round.
 			/// <para/>
 			/// </summary>
-			public const uint CountdownRules = 1895965859;
+			public const uint CountdownRules_1895965859 = 1895965859;
 			/// <summary>
-			/// 	Damage taken while airborne is greatly increased.
-			/// <para/>
-			/// 	Activates immediately.
-			/// <para/>
+			/// 	Fireteam power boosting is disabled for this activity.
 			/// </summary>
-			public const uint Grounded_4122412729 = 4122412729;
-			/// <summary>
-			/// 	You've been challenged to wield the following:
-			/// <para/>
-			/// 	Kinetic: Ace of Spades 
-			/// <para/>
-			/// 	Energy: Anything  
-			/// <para/>
-			/// 	Power: Anything
-			/// <para/>
-			/// </summary>
-			public const uint Armsmaster_2375661101 = 2375661101;
+			public const uint FireteamPowerBoostingDisabled = 1806775150;
 			/// <summary>
 			/// 	All Encounter Challenges Enabled and Required
 			/// </summary>
 			public const uint ChallengeMode_4066301271 = 4066301271;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3119075764 = 3119075764;
+			/// <summary>
 			/// 	Guardians deal increased damage with Sidearms.
 			/// </summary>
 			public const uint KeepItLoaded = 1931480264;
-			/// <summary>
-			/// 	Awoken Favors you've acquired are active in this activity.
-			/// </summary>
-			public const uint ConsecratedGround = 1637736524;
 			/// <summary>
 			/// 	Enemy shields are highly resistant to all unmatched elemental damage.
 			/// </summary>
@@ -1380,9 +1188,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ShieldedFoes_3119632620 = 3119632620;
 			/// <summary>
+			/// 	This activity's difficulty has been tuned to approximate the experience of its original release.
+			/// <para/>
+			/// 	Combatants deal significantly more damage and have moderately increased health.
+			/// <para/>
+			/// </summary>
+			public const uint LegacyTheWhisper = 1602614337;
+			/// <summary>
 			/// 	Greater fireteam size scales combatant difficulty and adds limitations on revives.
 			/// </summary>
-			public const uint Multiplicity_3398421092 = 3398421092;
+			public const uint Multiplicity = 3398421092;
 			/// <summary>
 			/// 	Initial Exotic drop rate boosts: {var:2223847550}
 			/// </summary>
@@ -1392,19 +1207,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MeleeHealthIncrease = 2533375223;
 			/// <summary>
+			/// 	All Nightfall loot drops are doubled.
+			/// </summary>
+			public const uint DoubleNightfallDrops = 1171597537;
+			/// <summary>
 			/// 	Win 2 of the next 3 matches to be promoted to the next Rank.
 			/// <para/>
 			/// 	Match results (W-L): {var:3036110002}-{var:2130373872}
 			/// <para/>
 			/// </summary>
 			public const uint PromotionSeries = 2975928611;
-			/// <summary>
-			/// 	Grenades are thrown significantly more often by combatants.
-			/// <para/>
-			/// 	Activates at the Abyss depth.
-			/// <para/>
-			/// </summary>
-			public const uint ScorchedEarth_3508356703 = 3508356703;
 			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
@@ -1418,40 +1230,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// 	Extra Shields
 			/// <para/>
-			/// 	Maximum Effective Level {var:3875023991}
-			/// <para/>
 			/// </summary>
 			public const uint MasterModifiers_85104725 = 85104725;
 			/// <summary>
-			/// 	Limited fireteam revives. Purchase additional revives from Riven with Wishing Glass. Small chance to drop from destroying pots.
-			/// </summary>
-			public const uint LimitedRevives_3079709968 = 3079709968;
-			/// <summary>
 			/// 	Radar is disabled.
 			/// </summary>
-			public const uint Chaff_3101164718 = 3101164718;
-			/// <summary>
-			/// 	You've been challenged to wield the following:
-			/// <para/>
-			/// 	Kinetic: Wish-Ender 
-			/// <para/>
-			/// 	Energy: Bow 
-			/// <para/>
-			/// 	Power: Anything
-			/// <para/>
-			/// </summary>
-			public const uint Armsmaster_1569679491 = 1569679491;
+			public const uint Chaff = 3101164718;
 			/// <summary>
 			/// 	{var:1027206613}% bonus to Machine Gun damage.
 			/// </summary>
 			public const uint OverchargedMachineGun = 795009574;
 			/// <summary>
-			/// 	Being hit by a melee attack slows you.
-			/// <para/>
-			/// 	Activates at the Midnight depth.
-			/// <para/>
+			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
-			public const uint ChillTouch_3729078713 = 3729078713;
+			public const uint Classified_1060852100 = 1060852100;
 			/// <summary>
 			/// 	All Crucible Rank point gains are increased!
 			/// </summary>
@@ -1470,16 +1262,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	All ammunition drops are significantly reduced.
 			/// </summary>
-			public const uint Famine_965929096 = 965929096;
+			public const uint Famine = 965929096;
 			/// <summary>
-			/// 	Combatants: Fallen
-			/// <para/>
-			/// 	Jobs: Engineering, Ordnance Disposal, Site Security
-			/// <para/>
-			/// 	Boss: Azshradat, Hive Knight
-			/// <para/>
+			/// 	Extra Shields
 			/// </summary>
-			public const uint SaboteursInbound = 536144090;
+			public const uint ExpertModifiers_2567927655 = 2567927655;
 			/// <summary>
 			/// 	Score points by defeating your opponents with a relic.
 			/// <para/>
@@ -1492,13 +1279,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RelicRules = 4258252763;
 			/// <summary>
-			/// 	Extra Shields
-			/// <para/>
-			/// 	Maximum Effective Level {var:1693239810}
-			/// <para/>
-			/// </summary>
-			public const uint LegendModifiers_2567927655 = 2567927655;
-			/// <summary>
 			/// 	All collected Elemental Orbs contribute toward the elemental buff counter. Subclass choice determines which elemental buff is applied.
 			/// <para/>
 			/// 	Prismatic orbs from Taken combatants grant a random empowerment buff.
@@ -1510,13 +1290,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SummoningRitual = 2834033523;
 			/// <summary>
+			/// 	A fireteam member needs to be equipped with a Light subclass. The other fireteam member needs to be equipped with a Darkness subclass. The Prismatic subclass fulfills either requirement.
+			/// </summary>
+			public const uint SubclassRequirements = 3924377323;
+			/// <summary>
 			/// 	Solar final blows grant melee and grenade energy. Stasis subclasses receive a lot; other subclasses receive a little.
 			/// </summary>
 			public const uint SolarThermalSwap = 1575279060;
-			/// <summary>
-			/// 	Combatant difficulty scales with fireteam size.
-			/// </summary>
-			public const uint Multiplicity_1446571688 = 1446571688;
 			/// <summary>
 			/// 	Health and shields are reduced by half, but recovery is twice as fast.
 			/// </summary>
@@ -1530,20 +1310,25 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RaidChallenges_824516719 = 824516719;
 			/// <summary>
+			/// 	Fireteam communication and coordination is vital for success.
+			/// </summary>
+			public const uint Synergy = 1149526926;
+			/// <summary>
 			/// 	Initial Exotic drop rate boosts: {var:2864503325}
 			/// </summary>
 			public const uint BoostsGained_4232900926 = 4232900926;
 			/// <summary>
-			/// 	{var:4005007457}% increase to incoming Arc damage.
-			/// <para/>
-			/// 	Activates at the Abyss depth.
-			/// <para/>
+			/// 	This activity is timed. If your fireteam fails to complete the activity in the allotted time, everyone is returned to orbit.
 			/// </summary>
-			public const uint ArcThreat_2335472130 = 2335472130;
+			public const uint OntheClock = 2290945089;
 			/// <summary>
 			/// 	Initial Exotic drop rate boosts: {var:1968703538}
 			/// </summary>
 			public const uint BoostsGained_1834872958 = 1834872958;
+			/// <summary>
+			/// 	Ammo crates spawn much more frequently, and players drop more ammo when defeated.
+			/// </summary>
+			public const uint HavocRules = 474395167;
 			/// <summary>
 			/// 	To win, score more points than your opponent by collecting the Spark and igniting your opponent's Rift.
 			/// <para/>
@@ -1566,33 +1351,27 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WhichWitch = 217815700;
 			/// <summary>
-			/// 	Combatants: Fallen
+			/// 	All abilities are disabled! Weapons are your only defense.
 			/// <para/>
-			/// 	Jobs: Site Security, Site Reliability, Engineering
-			/// <para/>
-			/// 	Boss: Uorgotha, Taken Ogre
+			/// 	Collect Special ammo and Heavy ammo from crates around the map.
 			/// <para/>
 			/// </summary>
-			public const uint RepairJob = 1501272930;
+			public const uint HardwareFocus = 433047189;
 			/// <summary>
 			/// 	Enhanced radar. Take increased damage from melee.
 			/// </summary>
 			public const uint Empath_166293531 = 166293531;
 			/// <summary>
-			/// 	You've been challenged to wield the following:
+			/// 	This activity's difficulty has been tuned to approximate the experience of its original release.
 			/// <para/>
-			/// 	Kinetic: Shotgun 
-			/// <para/>
-			/// 	Energy: Fusion Rifle 
-			/// <para/>
-			/// 	Power: Fusion Rifle
+			/// 	Combatants deal significantly more damage and have moderately increased health.
 			/// <para/>
 			/// </summary>
-			public const uint Armsmaster_1075003588 = 1075003588;
+			public const uint LegacyZeroHour = 2432579025;
 			/// <summary>
 			/// 	Heavily shielded and highly aggressive combatants appear in great numbers.
 			/// </summary>
-			public const uint Legend = 36103086;
+			public const uint Legendary = 36103086;
 			/// <summary>
 			/// 	To win, defeat your opponents to score more points than them! Your abilities recharge much faster in this mode, and final blows made with Power weapons or Supers grant additional points.
 			/// </summary>
@@ -1613,13 +1392,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ExoticModifiers = 3674616727;
 			/// <summary>
-			/// 	All ammunition drops are significantly reduced.
-			/// <para/>
-			/// 	Activates at the Midnight depth.
-			/// <para/>
-			/// </summary>
-			public const uint Famine_2736800812 = 2736800812;
-			/// <summary>
 			/// 	Limited fireteam revives. Gain additional revives by defeating Champions.
 			/// </summary>
 			public const uint LimitedRevives_203094476 = 203094476;
@@ -1633,12 +1405,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ContestantsTheWayoftheHoof_377122366 = 377122366;
 			/// <summary>
-			/// 	Flying units do increased damage.
-			/// <para/>
-			/// 	Activates at the Midnight depth.
-			/// <para/>
+			/// 	This activity is currently Focused. Your score will contribute to your class's standing in the fight for glory in the Focus Activity Event.
 			/// </summary>
-			public const uint AirSuperiority_1696123305 = 1696123305;
+			public const uint FocusedActivity = 344764180;
 			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
@@ -1655,12 +1424,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionFoes_2006149364 = 2006149364;
 			/// <summary>
-			/// 	The activity is at a fixed difficulty.
+			/// 	This playlist features three new Crucible maps: Dissonance, Eventide Labs, and Cirrus Plaza.
 			/// <para/>
-			/// 	Your effective Power is capped at 1605.
+			/// 	It features four randomized modes: Collision, Clash, Survival, and Elimination.
 			/// <para/>
 			/// </summary>
-			public const uint Mettle_1405912042 = 1405912042;
+			public const uint NewTerritory = 915150015;
 			/// <summary>
 			/// 	Initial Exotic drop rate boosts: {var:3104627285}
 			/// </summary>
@@ -1673,6 +1442,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AChallengeAwaits_384012338 = 384012338;
 			/// <summary>
+			/// 	When the timer reaches zero, the fireteam will be returned to orbit.
+			/// </summary>
+			public const uint MissionIsTimed = 4115568531;
+			/// <summary>
 			/// 	Solar damage increases slightly from all sources.
 			/// </summary>
 			public const uint SolarSinge = 1879607770;
@@ -1682,22 +1455,23 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ALinktotheChain = 787678752;
 			/// <summary>
 			/// 	Extra Shields
+			/// </summary>
+			public const uint AdvancedModifiers = 3240131679;
+			/// <summary>
+			/// 	Complete objectives and defeat high-value targets to generate data Motes.
 			/// <para/>
-			/// 	Maximum Effective Level {var:608648777}
+			/// 	Upon death, some collected data will drop to the ground to be reacquired.
+			/// <para/>
+			/// 	Pick up data and deposit it to earn power-ups during encounters.
+			/// <para/>
+			/// 	Successfully completing encounters in Expert difficulty will provide additional rewards at the end of the activity.
 			/// <para/>
 			/// </summary>
-			public const uint HeroModifiers_3240131679 = 3240131679;
+			public const uint ArenaBreachExecutableModeRules = 2431130026;
 			/// <summary>
 			/// 	Rapidly defeat combatants to unleash waves of paracausal fire around you dealing damage to nearby combatants.
 			/// </summary>
 			public const uint Flare_2023659610 = 2023659610;
-			/// <summary>
-			/// 	Exploder units have more health.
-			/// <para/>
-			/// 	Activates at the Abyss depth.
-			/// <para/>
-			/// </summary>
-			public const uint Martyr_2878853690 = 2878853690;
 			/// <summary>
 			/// 	To win, defeat your opponents to score more points than them! Every player is equipped with a Scorch Cannon.
 			/// <para/>
@@ -1710,20 +1484,28 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ArachNO = 3021161702;
 			/// <summary>
+			/// 	Depositing data will award one of the following buffs:
+			/// <para/>
+			/// 	• Chance to create Stasis Crystals on Stasis damage
+			/// <para/>
+			/// 	• Chance to apply Scorched on Solar damage
+			/// <para/>
+			/// 	• Chance to gain class ability energy on combatant final blows
+			/// <para/>
+			/// </summary>
+			public const uint DataBuffs_2263762817 = 2263762817;
+			/// <summary>
 			/// 	{var:4005007457}% increase to incoming Void damage.
 			/// </summary>
-			public const uint VoidThreat_3652821947 = 3652821947;
-			/// <summary>
-			/// 	{var:4005007457}% increase to incoming Solar damage.
-			/// <para/>
-			/// 	Activates at the Abyss depth.
-			/// <para/>
-			/// </summary>
-			public const uint SolarThreat_535530834 = 535530834;
+			public const uint VoidThreat = 3652821947;
 			/// <summary>
 			/// 	When you're holding a Sword, damage from nearby combatants is reduced.
 			/// </summary>
 			public const uint DurandalsEdge = 3805176141;
+			/// <summary>
+			/// 	You may face combatants with [Arc] Arc, [Solar] Solar, or [Void] Void shields.
+			/// </summary>
+			public const uint ShieldedFoes_93790318 = 93790318;
 			/// <summary>
 			/// 	You will face combatants with [Arc] Arc shields.
 			/// <para/>
@@ -1731,13 +1513,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint ShieldedFoes_3139381566 = 3139381566;
-			/// <summary>
-			/// 	Combatants are more resistant to stunning from damage.
-			/// <para/>
-			/// 	Activates at the Abyss Depth.
-			/// <para/>
-			/// </summary>
-			public const uint Iron_608792222 = 608792222;
 			/// <summary>
 			/// 	All Encounter Challenges Enabled and Required
 			/// </summary>
@@ -1760,6 +1535,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionsOverload = 1201462052;
 			/// <summary>
+			/// 	Abilities recharge at a reduced rate.
+			/// </summary>
+			public const uint Trickle = 3388957297;
+			/// <summary>
 			/// 	The activity is at a fixed difficulty.
 			/// <para/>
 			/// 	Your effective Power is capped at {var:1311088063}.
@@ -1775,20 +1554,33 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OverchargedRocketLauncher = 95459596;
 			/// <summary>
+			/// 	Capture and control active zones to score points. There are multiple zone locations, but only one active at a time. 
+			/// <para/>
+			/// 	The team with the most points at the end of the match wins! Defeating your opponents does not grant points. 
+			/// <para/>
+			/// 	Zones: Score +1 point when your team captures an active zone. Score +1 point for each time interval your team controls that zone. Captured zones will deactivate after a set amount of time and a new zone will activate elsewhere on the map.
+			/// <para/>
+			/// </summary>
+			public const uint CollisionRules = 1514862847;
+			/// <summary>
 			/// 	Supers recharge more quickly.
 			/// </summary>
 			public const uint AvatarasPsyche = 2471054449;
 			/// <summary>
-			/// 	Exploder units have more health.
-			/// <para/>
-			/// 	Activates at the Midnight depth.
-			/// <para/>
-			/// </summary>
-			public const uint Martyr_3364538570 = 3364538570;
-			/// <summary>
 			/// 	Void damage increases slightly from all sources.
 			/// </summary>
 			public const uint VoidSinge = 2620827383;
+			/// <summary>
+			/// 	Potential Data buffs:
+			/// <para/>
+			/// 	• Chance to create Stasis Crystals on Stasis damage
+			/// <para/>
+			/// 	• Chance to apply Scorched on Solar damage
+			/// <para/>
+			/// 	• Defeated combatants have a chance to refund a portion of class ability energy
+			/// <para/>
+			/// </summary>
+			public const uint DataBuffs_1332265391 = 1332265391;
 		}
 	}
 }

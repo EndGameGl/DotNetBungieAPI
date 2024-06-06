@@ -6,6 +6,8 @@ namespace DotNetBungieAPI.HashReferences
 		{
 			public const uint H1693821594 = 1693821594;
 			public const uint H1693821595 = 1693821595;
+			public const uint H1677044030 = 1677044030;
+			public const uint H1677044031 = 1677044031;
 			public const uint H3871954960 = 3871954960;
 			public const uint H3871954961 = 3871954961;
 			public const uint H3871954962 = 3871954962;

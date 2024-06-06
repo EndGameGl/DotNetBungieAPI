@@ -191,6 +191,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Nessus_3526908984 = 3526908984;
 			/// <summary>
+			/// 	A willful entity with inscrutable purpose.
+			/// </summary>
+			public const uint TheTraveler = 3998251206;
+			/// <summary>
 			/// 	An unstable Centaur planetoid.
 			/// </summary>
 			public const uint Nessus_3607432451 = 3607432451;

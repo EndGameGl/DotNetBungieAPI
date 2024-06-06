@@ -10,6 +10,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LimitedTime = 3227191227;
 			public const uint Destination = 2537374699;
 			public const uint LIGHTFALL = 1767960256;
+			public const uint ThePaleHeart = 3350514087;
 			public const uint Tower = 679769104;
 		}
 	}

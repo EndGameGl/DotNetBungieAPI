@@ -84,11 +84,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	…in circles. Ancient enemies return to plague old battlegrounds. Time moves…
 			/// </summary>
 			public const uint SeasonoftheUndying = 1743682818;
-			public const uint SeasonofRedacted = 2758726572;
+			/// <summary>
+			/// 	As the system reels in the wake of the events of the Final Shape, an unknown object impacts Nessus. 
+			/// <para/>
+			/// 	Guardians must venture deep into the mysterious core of Nessus and deal with an awakening threat wielding an incredible and terrifying new power.
+			/// <para/>
+			/// </summary>
+			public const uint EpisodeEchoes = 2758726572;
 			/// <summary>
 			/// 	Re-entwine the strands of time on Mercury and ignite the flames of hope.
 			/// </summary>
 			public const uint SeasonofDawn = 1743682819;
+			public const uint EpisodeRedacted_2758726573 = 2758726573;
+			public const uint EpisodeRedacted_2758726574 = 2758726574;
 			/// <summary>
 			/// 	A new season has begun! Choose what kind of Guardian you will become. Reckon with the path that lies ahead.
 			/// </summary>

@@ -5,6 +5,10 @@ namespace DotNetBungieAPI.HashReferences
 		public static class Metrics
 		{
 			/// <summary>
+			/// 	Total Seasonal Artifact Power earned during Episode: Echoes.
+			/// </summary>
+			public const uint ExplorersNotes = 4016327807;
+			/// <summary>
 			/// 	The number of targets eliminated as a Stormcaller.
 			/// <para/>
 			/// 	Tracks from Season 1 onward.
@@ -45,10 +49,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BountyCompletions = 3264536674;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified = 1327262791;
-			/// <summary>
 			/// 	The lifetime high score for "The Corrupted" in Nightfall.
 			/// <para/>
 			/// 	Tracks from Season 11 onward.
@@ -62,6 +62,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint TheCrownIsMine = 690772341;
+			/// <summary>
+			/// 	Highest score achieved by your fireteam during this year's Guardian Games.
+			/// </summary>
+			public const uint TopFireteamScore = 1757812403;
 			/// <summary>
 			/// 	The total number of final blows with Hand Cannons.
 			/// <para/>
@@ -92,6 +96,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LastWishTimeTrial_4164362538 = 4164362538;
 			/// <summary>
+			/// 	Tally of your daily Medallion points, used to determine class standings.
+			/// </summary>
+			public const uint DailyMedallionScore_3738124663 = 3738124663;
+			/// <summary>
 			/// 	The number of Motes banked in Gambit matches this Season.
 			/// </summary>
 			public const uint MotesBanked_2920575849 = 2920575849;
@@ -113,6 +121,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The number of tickets with seven wins and zero losses this week.
 			/// </summary>
 			public const uint FlawlessTickets_122451876 = 122451876;
+			/// <summary>
+			/// 	Tally of your daily Medallion points, used to determine class standings.
+			/// </summary>
+			public const uint DailyMedallionScore_3290789770 = 3290789770;
 			/// <summary>
 			/// 	The number of Primevals defeated in Gambit matches this Season.
 			/// </summary>
@@ -154,19 +166,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Sentineldefeats = 1045301756;
 			/// <summary>
-			/// 	Total Altars of Summoning encounters completed.
-			/// <para/>
-			/// 	Higher difficulty encounters grant more progress.
-			/// <para/>
-			/// </summary>
-			public const uint AthameBearer = 2433669988;
-			/// <summary>
 			/// 	The fastest completion time for "Vow of the Disciple."
 			/// <para/>
 			/// 	Tracks from Season 16 onward.
 			/// <para/>
 			/// </summary>
 			public const uint VowoftheDiscipleTimeTrial_3775579868 = 3775579868;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3085488098 = 3085488098;
 			/// <summary>
 			/// 	The total number of "Garden of Salvation" completions using Guided Games.
 			/// <para/>
@@ -185,10 +194,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint NightfallTheGlasswayScore = 2883115929;
-			/// <summary>
-			/// 	Highest score earned in Savathûn's Spire as a fireteam.
-			/// </summary>
-			public const uint TheWitchQueensFavorite = 4251961586;
 			/// <summary>
 			/// 	The total number of times positive reinforcement was given to the best boy.
 			/// </summary>
@@ -266,10 +271,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RocketLauncherFinalBlows = 1200426430;
 			/// <summary>
-			/// 	Tally of all the Medallions you deposited during this year's Guardian Games.
-			/// </summary>
-			public const uint TotalMedallionScore_3412338256 = 3412338256;
-			/// <summary>
 			/// 	The total number of final blows with Sniper Rifles.
 			/// <para/>
 			/// 	Tracks from Season 12 onward.
@@ -305,12 +306,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SpireoftheWatcherFlawlessCompletions = 4002846192;
 			/// <summary>
-			/// 	Highest score achieved in Dares of Eternity on Legend difficulty.
+			/// 	Highest score achieved in Dares of Eternity on Expert difficulty.
 			/// <para/>
 			/// 	Tracks from Season 15 onward.
 			/// <para/>
 			/// </summary>
-			public const uint DaresofEternityLegendScore = 3638166317;
+			public const uint DaresofEternityExpertScore = 3638166317;
 			/// <summary>
 			/// 	The number of Guardians carried to their first flawless ticket this week while the player has the "Light For The Lost" emblem equipped.
 			/// </summary>
@@ -330,6 +331,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LastWishCarries_1139173585 = 1139173585;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1816192265 = 1816192265;
+			/// <summary>
 			/// 	The number of successful recipes you've baked in Eva's holiday oven.
 			/// <para/>
 			/// 	Tracks from Season 5 onward.
@@ -340,6 +345,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The fastest Nightfall completion time this week.
 			/// </summary>
 			public const uint NightfallCompletionTime = 1970407090;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3725941205 = 3725941205;
 			/// <summary>
 			/// 	The highest consecutive Win Streak in the Crucible this Season.
 			/// </summary>
@@ -363,10 +372,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ScourgeofthePastCompletions = 1201631538;
 			/// <summary>
-			/// 	Highest score achieved by your fireteam during this year's Guardian Games.
-			/// </summary>
-			public const uint TopFireteamScore_4196647092 = 4196647092;
-			/// <summary>
 			/// 	The total number of Heroic public event completions.
 			/// <para/>
 			/// 	Tracks from Season 10 onward.
@@ -380,10 +385,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint LeviathanCompletions = 2486745106;
-			/// <summary>
-			/// 	The weight, in kilograms, of the largest fish caught at a Fishing Pond during Season of the Deep.
-			/// </summary>
-			public const uint Season21LargestFishCaught = 600253797;
 			/// <summary>
 			/// 	The number of opponents defeated in Crucible matches this week.
 			/// </summary>
@@ -406,10 +407,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint Dawnbladedefeats = 30426544;
-			/// <summary>
-			/// 	You are in the top {var:2829645461}% of scoring for all players during the 2022 Guardian Games!
-			/// </summary>
-			public const uint Ranking_2850716853 = 2850716853;
 			/// <summary>
 			/// 	The fastest completion time for "Vault of Glass" this Season.
 			/// </summary>
@@ -472,6 +469,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint EncounterCompletions = 69139408;
+			/// <summary>
+			/// 	Final blows with Red Death Reformed during Episode: Echoes.
+			/// </summary>
+			public const uint RedandRehabilitated = 831493503;
 			/// <summary>
 			/// 	The lifetime high score for "Fallen S.A.B.E.R." in Nightfall.
 			/// <para/>
@@ -562,10 +563,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RootofNightmaresCarries_2499684194 = 2499684194;
 			/// <summary>
-			/// 	The number of Deep Dive activities completed with a maximum reward tier during Season of the Deep.
-			/// </summary>
-			public const uint Season21RewardTier7DeepDives = 1547568560;
-			/// <summary>
 			/// 	The number of Leviathan raid Prestige completions.
 			/// <para/>
 			/// 	Tracked from Season 1 onward.
@@ -573,17 +570,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LeviathanPrestigeCompletions = 1130423918;
 			/// <summary>
-			/// 	Total number of combatants defeated in the Defiant Battlegrounds playlist or in Legend Defiant Battlegrounds.
-			/// </summary>
-			public const uint ShadowLegionsBane = 4055734702;
-			/// <summary>
 			/// 	The number of Guardians carried to their first ever completion of "Last Wish" during this Season.
 			/// </summary>
 			public const uint LastWishCarries_3707622038 = 3707622038;
-			/// <summary>
-			/// 	The highest score obtained during a successful run of The Coil during Season of the Wish.
-			/// </summary>
-			public const uint Wishrunner = 1199216264;
 			/// <summary>
 			/// 	The total number of Lost Sector completions.
 			/// <para/>
@@ -680,6 +669,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RootofNightmaresTimeTrial_230501113 = 230501113;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_369734373 = 369734373;
+			/// <summary>
+			/// 	Tally of all the Medallions you deposited during this year's Guardian Games.
+			/// </summary>
+			public const uint TotalMedallionScore = 2330926603;
+			/// <summary>
 			/// 	The number of Guardians carried to their first ever completion of "Garden of Salvation" during this week.
 			/// </summary>
 			public const uint GardenofSalvationCarries_2213234727 = 2213234727;
@@ -742,6 +739,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SuperEfficiency = 303387541;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_31271381 = 31271381;
+			/// <summary>
 			/// 	The total number of "Scourge of the Past" completions using Guided Games.
 			/// <para/>
 			/// 	Tracks from Season 10 onward.
@@ -758,7 +759,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Tracks from Season 10 onward.
 			/// <para/>
 			/// </summary>
-			public const uint NightfallExodusCrashScore = 1118387860;
+			public const uint NightfallExodusCrashScore_1118387860 = 1118387860;
 			/// <summary>
 			/// 	The fastest completion time for "Garden of Salvation" this week.
 			/// </summary>
@@ -767,6 +768,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The fastest completion time for "Garden of Salvation" this Season.
 			/// </summary>
 			public const uint GardenofSalvationTimeTrial_158484919 = 158484919;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_4007611017 = 4007611017;
 			/// <summary>
 			/// 	Targets defeated with Solar this week.
 			/// </summary>
@@ -778,10 +783,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint PitofHeresyFlawlessSoloRuns = 3741172422;
-			/// <summary>
-			/// 	Highest score achieved by your fireteam during this year's Guardian Games.
-			/// </summary>
-			public const uint TopFireteamScore_2539150057 = 2539150057;
 			/// <summary>
 			/// 	The total number of final blows with Trace Rifles.
 			/// <para/>
@@ -801,9 +802,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Laurelsearned = 473272243;
 			/// <summary>
-			/// 	The total number of fish caught in Fishing Ponds during Season of the Deep.
+			/// 	Tally of your daily Medallion points, used to determine class standings.
 			/// </summary>
-			public const uint Season21TotalFishCaught = 1629825403;
+			public const uint DailyMedallionScore_2871558814 = 2871558814;
 			/// <summary>
 			/// 	The number of times the Deadeye Title has been gilded.
 			/// <para/>
@@ -843,6 +844,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint SpireoftheWatcherCompletions = 3702217360;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_4060528349 = 4060528349;
 			/// <summary>
 			/// 	The lifetime high score for "The Pyramidion" in Nightfall.
 			/// <para/>
@@ -954,16 +959,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Revenantdefeats = 673324377;
 			/// <summary>
-			/// 	Flawless solo completions of the "Ridgeline" dungeon.
+			/// 	Flawless solo completions of the "Warlord's Ruin" dungeon.
 			/// <para/>
 			/// 	Tracks from Season of the Wish onward.
 			/// <para/>
 			/// </summary>
 			public const uint WarlordsRuinFlawlessSoloCompletions = 3253584750;
-			/// <summary>
-			/// 	The total number of pots broken in The Coil during Season of the Wish.
-			/// </summary>
-			public const uint Bullish = 4239089094;
 			/// <summary>
 			/// 	The total number of "King's Fall" completions using Guided Games.
 			/// <para/>
@@ -971,6 +972,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint KingsFallGuidedGames = 2496111733;
+			/// <summary>
+			/// 	The lifetime high score for "Exodus Crash" in Nightfall.
+			/// <para/>
+			/// 	Tracks from Season 10 onward.
+			/// <para/>
+			/// </summary>
+			public const uint NightfallExodusCrashScore_3207420772 = 3207420772;
 			/// <summary>
 			/// 	Highest rank achieved for Season of Dawn.
 			/// <para/>
@@ -1070,9 +1078,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Season12HawkmoonsAcquired = 2881588237;
 			/// <summary>
-			/// 	Total number of Favors gathered during Defiant Battlegrounds.
+			/// 	Highest score achieved in a single run of The Pantheon: Atraks Sovereign.
 			/// </summary>
-			public const uint FavoredofMaraSov = 326202600;
+			public const uint AtraksSovereignHighScore = 3558562093;
 			/// <summary>
 			/// 	The fastest completion time for "Leviathan."
 			/// <para/>
@@ -1107,12 +1115,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DualityFlawlessSoloCompletions = 1084707005;
 			/// <summary>
+			/// 	You are in the top {var:3455510503}% of scoring for all players during the 2024 Guardian Games!
+			/// </summary>
+			public const uint Ranking = 1067433819;
+			/// <summary>
 			/// 	Flawless solo completions of the "Ghosts of the Deep" dungeon.
 			/// <para/>
 			/// 	Tracks from Season 21 onward.
 			/// <para/>
 			/// </summary>
 			public const uint GhostsoftheDeepSoloFlawlessCompletions = 2521923488;
+			/// <summary>
+			/// 	Highest Rank achieved for Episode: Echoes.
+			/// </summary>
+			public const uint EpisodeEchoes = 2245851611;
 			/// <summary>
 			/// 	Highest rank achieved for Season of the Wish.
 			/// <para/>
@@ -1131,10 +1147,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint ShatteredThroneCompletions = 1339818929;
-			/// <summary>
-			/// 	Total number of activity completions in the Defiant Battlegrounds playlist or in Legend Defiant Battlegrounds.
-			/// </summary>
-			public const uint ProlificEmancipator = 279504192;
 			/// <summary>
 			/// 	Highest rank achieved for Season of the Witch.
 			/// <para/>
@@ -1250,12 +1262,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ProphecyCompletions = 352659556;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3903626749 = 3903626749;
+			/// <summary>
 			/// 	The total number of flawless strike completions.
 			/// <para/>
 			/// 	Tracks from Season 10 onward.
 			/// <para/>
 			/// </summary>
 			public const uint FlawlessCompletions_2326329668 = 2326329668;
+			/// <summary>
+			/// 	Highest score achieved in a single run of The Pantheon: Oryx Exalted.
+			/// </summary>
+			public const uint OryxExaltedHighScore = 3456282800;
 			/// <summary>
 			/// 	Complete a match in which you are never defeated by an opponent.
 			/// <para/>
@@ -1340,6 +1360,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Season12FastestHarbingerCompletion = 1470603756;
 			/// <summary>
+			/// 	Highest score achieved in a single run of The Pantheon: Nezarec Sublime.
+			/// </summary>
+			public const uint NezarecSublimeHighScore = 994637526;
+			/// <summary>
 			/// 	The fastest Dares of Eternity completion time achieved this Season.
 			/// </summary>
 			public const uint DaresofEternityFastestTime = 4036641132;
@@ -1408,6 +1432,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeepStoneCryptCompletions = 954805812;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3136690730 = 3136690730;
+			/// <summary>
 			/// 	The total number of completions of "Vow of the Disciple."
 			/// <para/>
 			/// 	Tracks from Season 16 onward.
@@ -1452,6 +1480,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint FlawlessTickets_2590760275 = 2590760275;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_948973527 = 948973527;
+			/// <summary>
 			/// 	The total amount of fractaline donated in the Empyrean Restoration Event.
 			/// <para/>
 			/// 	Tracks from Season 9 onward.
@@ -1466,12 +1498,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GraspofAvariceFlawlessSoloCompletions = 3765286137;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1247054854 = 1247054854;
+			/// <summary>
 			/// 	Shaxx made this for you. Awarded upon earning "[Insert Medal Here]."
 			/// <para/>
 			/// 	Tracks from Season 4 onward.
 			/// <para/>
 			/// </summary>
 			public const uint IMadeThisforYou = 1122573866;
+			/// <summary>
+			/// 	Highest score achieved in a single run of any mode of The Pantheon.
+			/// </summary>
+			public const uint ThePantheonHighScore = 293051010;
 			/// <summary>
 			/// 	The total number of final blows with Swords.
 			/// <para/>
@@ -1557,10 +1597,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The number of Champions defeated during Season of the Lost.
 			/// </summary>
 			public const uint SeasonoftheLostChampionsDefeated = 3523358957;
-			/// <summary>
-			/// 	Fastest completion time for the //node.ovrd.AVALON// Exotic mission.
-			/// </summary>
-			public const uint Netsprinter = 3238120140;
 			/// <summary>
 			/// 	The fastest completion time achieved in the Shattered Realm activity.
 			/// </summary>
@@ -1649,6 +1685,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint CrotasEndTimeTrial_510466839 = 510466839;
+			/// <summary>
+			/// 	Cumulative score for The Pantheon.
+			/// </summary>
+			public const uint TotalPantheonScore = 1593276329;
 			/// <summary>
 			/// 	The number of targets eliminated as a Gunslinger.
 			/// <para/>
@@ -1776,6 +1816,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ActiveTriumphScore = 3981543480;
 			/// <summary>
+			/// 	Highest score achieved in a single run of The Pantheon: Rhulk Indomitable.
+			/// </summary>
+			public const uint RhulkIndomitableHighScore = 3941004051;
+			/// <summary>
 			/// 	The KDA ratio in Crucible matches this Season.
 			/// </summary>
 			public const uint KDA = 871184140;
@@ -1783,10 +1827,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The number of matches won in Trials of Osiris this week.
 			/// </summary>
 			public const uint Wins_3046315288 = 3046315288;
-			/// <summary>
-			/// 	You are in the top {var:2829645461}% of scoring for all players during the 2022 Guardian Games!
-			/// </summary>
-			public const uint Ranking_753959468 = 753959468;
 			/// <summary>
 			/// 	Legendary Astral Alignment Completions
 			/// </summary>
@@ -1813,6 +1853,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SpireofStarsCompletions = 700051716;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1971980130 = 1971980130;
+			/// <summary>
 			/// 	The total number of "Last Wish" completions using Guided Games.
 			/// <para/>
 			/// 	Tracks from Season 10 onward.
@@ -1823,6 +1867,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The number of Blockers defeated in Gambit matches this week.
 			/// </summary>
 			public const uint BlockersDefeated_622922979 = 622922979;
+			/// <summary>
+			/// 	Highest score earned in Breach Executable as a fireteam.
+			/// </summary>
+			public const uint ThePerfectHeist = 604579619;
 			/// <summary>
 			/// 	The number of Nightfall completions this week using Guided Games.
 			/// </summary>
@@ -1838,6 +1886,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint BowFinalBlows = 3522276357;
+			/// <summary>
+			/// 	The total of all earned Seals.
+			/// </summary>
+			public const uint TotalSeals = 1069213998;
 			/// <summary>
 			/// 	The fastest completion time for "Scourge of the Past."
 			/// <para/>
@@ -1983,10 +2035,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint VaultofGlassCarries_619234070 = 619234070;
-			/// <summary>
-			/// 	Tally of all the Medallions you deposited during this year's Guardian Games.
-			/// </summary>
-			public const uint TotalMedallionScore_4017597957 = 4017597957;
 			/// <summary>
 			/// 	The total number of completions of "Crown of Sorrow."
 			/// <para/>

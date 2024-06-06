@@ -4,6 +4,8 @@ namespace DotNetBungieAPI.HashReferences
 	{
 		public static class LoadoutNames
 		{
+			public const uint Support = 2738852078;
+			public const uint Prismatic = 2738852079;
 			public const uint Gambit = 752612096;
 			public const uint Crucible = 752612097;
 			public const uint Vanguard = 752612098;

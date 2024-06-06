@@ -131,6 +131,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrimsonDays = 2505748283;
 			/// <summary>
+			/// 	Embark on adventures alone or with a fireteam to push back the Darkness and reclaim our lost worlds.
+			/// </summary>
+			public const uint Story_2962101345 = 2962101345;
+			/// <summary>
 			/// 	"I've ensured the Crucible has new offerings in anticipation of Osiris's return. Fight without hesitation or mercy. Crush your opponents." —Lord Shaxx 
 			/// <para/>
 			/// 	Focus on new expansion maps and win glory and honor.
@@ -198,6 +202,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Embark on adventures alone or with a fireteam to push back the Darkness and reclaim our lost worlds.
 			/// </summary>
 			public const uint Story_2201105581 = 2201105581;
+			/// <summary>
+			/// 	Embark on adventures alone or with a fireteam to push back the Darkness and reclaim our lost worlds.
+			/// </summary>
+			public const uint Story_2694988718 = 2694988718;
 			public const uint TheCrucible_4088006058 = 4088006058;
 			/// <summary>
 			/// 	"To novices, the Crucible is filled with tough lessons. For veterans like you, it is a litany of lessons yet to be taught. Teach well, my friend." —Lord Shaxx

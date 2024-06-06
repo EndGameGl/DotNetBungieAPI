@@ -18,7 +18,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint XP_243419342 = 243419342;
 			public const uint H340305559 = 340305559;
 			public const uint H1627914615 = 1627914615;
-			public const uint Prestige_3845755281 = 3845755281;
+			public const uint Prestige_3725990721 = 3725990721;
 			/// <summary>
 			/// 	Use Bits to Cheer any Twitch streamer live streaming Destiny 2 with the official Twitch Destiny Extension active.
 			/// </summary>
@@ -47,7 +47,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GunsmithRank = 1471185389;
 			public const uint H2068785426 = 2068785426;
-			public const uint Prestige_2197137662 = 2197137662;
 			public const uint XP_2812154837 = 2812154837;
 			/// <summary>
 			/// 	Countless unclear futures reverberate through your mind as you approach the obelisk. Strengthen the obelisk's bond to the Sundial by increasing its Resonance Rank.
@@ -56,14 +55,11 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1943323491 = 1943323491;
 			public const uint H2770852111 = 2770852111;
 			public const uint XP_2214434133 = 2214434133;
+			public const uint H1941119796 = 1941119796;
 			public const uint H70699614 = 70699614;
 			public const uint H1628407317 = 1628407317;
 			public const uint H4021269753 = 4021269753;
 			public const uint H477676543 = 477676543;
-			/// <summary>
-			/// 	Complete Season of the Witch activities to increase your Ritual Table reputation.
-			/// </summary>
-			public const uint RitualTableReputation = 1748945530;
 			public const uint XP_2668790903 = 2668790903;
 			public const uint H1571628687 = 1571628687;
 			public const uint H2069932355 = 2069932355;
@@ -111,7 +107,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1228093266 = 1228093266;
 			public const uint H1999336308 = 1999336308;
 			public const uint H2093709363 = 2093709363;
-			public const uint H3122728759 = 3122728759;
 			public const uint H4030656982 = 4030656982;
 			public const uint XP_3320783176 = 3320783176;
 			/// <summary>
@@ -123,11 +118,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Weekly Quests Available
 			/// </summary>
 			public const uint WeeklyQuestsAvailable = 477569712;
+			public const uint Prestige_1495002538 = 1495002538;
 			/// <summary>
 			/// 	Commander Zavala oversees the Vanguard's tactical operations and conducts regular strikes against the City's enemies.
 			/// </summary>
 			public const uint VanguardTactical = 1021210278;
 			public const uint H2939151659 = 2939151659;
+			public const uint Prestige_1772598440 = 1772598440;
 			/// <summary>
 			/// 	The clan's level this season.
 			/// <para/>
@@ -137,30 +134,11 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ClanLevel = 584850370;
 			public const uint H1366927886 = 1366927886;
 			public const uint XP_1687787132 = 1687787132;
-			/// <summary>
-			/// 	Earn XP to advance progression. Once progress is complete, the destination will unlock.
-			/// </summary>
-			public const uint DreamingCityUnlockProgress = 412212898;
 			public const uint XP_4027620195 = 4027620195;
 			public const uint H1062449239 = 1062449239;
-			/// <summary>
-			/// 	Earn XP to advance progression. Once progress is complete, the destination will unlock.
-			/// </summary>
-			public const uint EuropaUnlockProgress = 412212900;
-			/// <summary>
-			/// 	Earn XP to advance progression. Once progress is complete, the destination will unlock.
-			/// </summary>
-			public const uint LunaUnlockProgress = 412212901;
-			/// <summary>
-			/// 	Earn XP to advance progression. Once progress is complete, the destination will unlock.
-			/// </summary>
-			public const uint NeomunaUnlockProgress = 412212902;
-			/// <summary>
-			/// 	Earn XP to advance progression. Once progress is complete, the destination will unlock.
-			/// </summary>
-			public const uint ThroneWorldUnlockProgress = 412212903;
 			public const uint H600547406 = 600547406;
 			public const uint XP_3094108685 = 3094108685;
+			public const uint H1445018644 = 1445018644;
 			public const uint H4271189086 = 4271189086;
 			public const uint Prestige_1484834427 = 1484834427;
 			/// <summary>
@@ -170,6 +148,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint TrialsRank = 2755675426;
+			/// <summary>
+			/// 	Complete Pathfinder objectives, Overthrow, Lost Sectors, and Cysts, and open chests in the Pale Heart to increase your Ghost reputation and earn rewards.
+			/// </summary>
+			public const uint GhostRank = 3011295063;
 			/// <summary>
 			/// 	"A Guardian's word is only as strong as their reputation. And the Vanguard doesn't forget." —Commander Zavala
 			/// <para/>
@@ -184,6 +166,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	When a Twitch streamer completes a Trials match, react to the match results using the options that appear shortly after the match ends to gain progress.
 			/// </summary>
 			public const uint MatchReactions = 1345591265;
+			public const uint XP_3440452543 = 3440452543;
 			/// <summary>
 			/// 	Countless unclear futures reverberate through your mind as you approach the obelisk. Strengthen the obelisk's bond to the Sundial by increasing its Resonance Rank.
 			/// </summary>
@@ -228,6 +211,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint StrangeFavor = 527867935;
+			/// <summary>
+			/// 	Complete activities while in a clan to earn clan reputation. More difficult activities grant more progress. Playing with clanmates grants a large bonus to progression.
+			/// </summary>
+			public const uint ReputationMaxRank = 198624022;
+			public const uint Prestige_1159794538 = 1159794538;
 			public const uint H3621413977 = 3621413977;
 			/// <summary>
 			/// 	Your Nightfall rank based on personal high scores set in different Nightfall strikes.
@@ -237,6 +225,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete bounties, patrols, public events, Lost Sectors, Wellsprings runs, replayable campaign missions, Altars of Reflection, secrets, and open chests in the Throne World to increase your Throne World Rank and earn rewards.
 			/// </summary>
 			public const uint ThroneWorldRank = 4203877294;
+			/// <summary>
+			/// 	"I bring gifts, not answers. It must suffice." — Xûr 
+			/// <para/>
+			/// 	Spend Strange Coins to increase your reputation with Xûr.
+			/// <para/>
+			/// </summary>
+			public const uint XûrRank = 2411069437;
 			public const uint H1787069365 = 1787069365;
 			/// <summary>
 			/// 	Complete bounties, patrols, public events, Lost Sectors, Terminal Overload runs, replayable campaign missions, Partition activities, secrets, and open chests in Neomuna to increase your Neomuna rank and earn rewards.
@@ -260,24 +255,27 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Countless unclear futures reverberate through your mind as you approach the obelisk. Strengthen the obelisk's bond to the Sundial by increasing its Resonance Rank.
 			/// </summary>
 			public const uint ResonanceRank_2126988316 = 2126988316;
-			public const uint Prestige_3661731483 = 3661731483;
+			/// <summary>
+			/// 	"Ah, Guardian, I have a little something for you. A token of my appreciation." —Rahool
+			/// <para/>
+			/// 	Decrypt or focus gear to earn a place in the Engram Ensiders Club.
+			/// <para/>
+			/// </summary>
+			public const uint EngramEnsiders = 784742260;
+			public const uint Prestige_2829669171 = 2829669171;
 			public const uint H3902035969 = 3902035969;
+			public const uint H3996938723 = 3996938723;
 			public const uint H3745703222 = 3745703222;
 			public const uint Prestige_3604626148 = 3604626148;
 			public const uint H181878872 = 181878872;
-			/// <summary>
-			/// 	Complete Defiant Battleground activities to increase your War Table reputation.
-			/// </summary>
-			public const uint WarTableReputation = 47964159;
 			public const uint Prestige_2841991057 = 2841991057;
 			public const uint H3468066401 = 3468066401;
 			public const uint XP_978389300 = 978389300;
 			public const uint H2565871344 = 2565871344;
 			/// <summary>
-			/// 	Complete activities within Riven's Lair, The Coil, or the Dreaming City to increase your reputation with the Spirit of Riven.
+			/// 	Earn XP to advance progression. Once progress is complete, the destination will unlock.
 			/// </summary>
-			public const uint SpiritofRivenReputation = 2172242925;
-			public const uint Prestige_2733287262 = 2733287262;
+			public const uint NeomunaUnlockProgress = 530792356;
 			public const uint H4244567218 = 4244567218;
 			public const uint XP_2421325160 = 2421325160;
 			public const uint XP_2026300734 = 2026300734;
@@ -304,9 +302,14 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H765647305 = 765647305;
 			public const uint H1470619782 = 1470619782;
 			/// <summary>
+			/// 	Complete Episode: Echoes activities to increase your reputation with Failsafe.
+			/// </summary>
+			public const uint FailsafeReputation = 1800684758;
+			/// <summary>
 			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
 			public const uint Classified_695578353 = 695578353;
+			public const uint XP_2331668150 = 2331668150;
 			public const uint H325445472 = 325445472;
 			/// <summary>
 			/// 	Devrim Kay stands watch in the EDZ, protecting the small group of people who now call the Farm their home.
@@ -327,10 +330,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ResonanceRank_2468902004 = 2468902004;
 			public const uint H2318284751 = 2318284751;
 			public const uint XP_1793560787 = 1793560787;
-			/// <summary>
-			/// 	Complete Salvage and Deep Dive activities to increase your Sonar Station Reputation.
-			/// </summary>
-			public const uint SonarStationReputation = 495475418;
 			public const uint H2081138649 = 2081138649;
 			public const uint H144602215 = 144602215;
 			public const uint Prestige_1467048566 = 1467048566;
