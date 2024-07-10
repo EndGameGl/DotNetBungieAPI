@@ -34,22 +34,24 @@ public sealed record DestinyTalentExclusiveGroup : IDeepEquatable<DestinyTalentE
     ///     A quick reference of Groups whose nodes will be deactivated if any node in this group is activated.
     /// </summary>
     [JsonPropertyName("opposingGroupHashes")]
-    public ReadOnlyCollection<uint> OpposingGroupHashes { get; init; } = ReadOnlyCollections<uint>.Empty;
+    public ReadOnlyCollection<uint> OpposingGroupHashes { get; init; } =
+        ReadOnlyCollections<uint>.Empty;
 
     /// <summary>
     ///     A quick reference of Nodes that will be deactivated if any node in this group is activated, by their Talent Node
     ///     hashes. (See DestinyTalentNodeDefinition.nodeHash)
     /// </summary>
     [JsonPropertyName("opposingNodeHashes")]
-    public ReadOnlyCollection<uint> OpposingNodeHashes { get; init; } = ReadOnlyCollections<uint>.Empty;
+    public ReadOnlyCollection<uint> OpposingNodeHashes { get; init; } =
+        ReadOnlyCollections<uint>.Empty;
 
     public bool DeepEquals(DestinyTalentExclusiveGroup other)
     {
-        return other != null &&
-               GroupHash == other.GroupHash &&
-               Lore.DeepEquals(other.Lore) &&
-               NodeHashes.DeepEqualsReadOnlySimpleCollection(other.NodeHashes) &&
-               OpposingGroupHashes.DeepEqualsReadOnlySimpleCollection(other.OpposingGroupHashes) &&
-               OpposingNodeHashes.DeepEqualsReadOnlySimpleCollection(other.OpposingNodeHashes);
+        return other != null
+            && GroupHash == other.GroupHash
+            && Lore.DeepEquals(other.Lore)
+            && NodeHashes.DeepEqualsReadOnlySimpleCollection(other.NodeHashes)
+            && OpposingGroupHashes.DeepEqualsReadOnlySimpleCollection(other.OpposingGroupHashes)
+            && OpposingNodeHashes.DeepEqualsReadOnlySimpleCollection(other.OpposingNodeHashes);
     }
 }

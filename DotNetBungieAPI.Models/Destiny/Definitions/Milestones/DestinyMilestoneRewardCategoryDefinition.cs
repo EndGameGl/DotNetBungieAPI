@@ -5,8 +5,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
 /// <summary>
 ///     The definition of a category of rewards, that contains many individual rewards.
 /// </summary>
-public sealed record
-    DestinyMilestoneRewardCategoryDefinition : IDeepEquatable<DestinyMilestoneRewardCategoryDefinition>
+public sealed record DestinyMilestoneRewardCategoryDefinition
+    : IDeepEquatable<DestinyMilestoneRewardCategoryDefinition>
 {
     /// <summary>
     ///     Identifies the reward category. Only guaranteed unique within this specific component!
@@ -30,7 +30,10 @@ public sealed record
     ///     earned or redeemed this set of rewards, and the category that this reward should be placed under.
     /// </summary>
     [JsonPropertyName("rewardEntries")]
-    public ReadOnlyDictionary<uint, DestinyMilestoneRewardEntryDefinition> RewardEntries { get; init; } =
+    public ReadOnlyDictionary<
+        uint,
+        DestinyMilestoneRewardEntryDefinition
+    > RewardEntries { get; init; } =
         ReadOnlyDictionaries<uint, DestinyMilestoneRewardEntryDefinition>.Empty;
 
     /// <summary>
@@ -43,11 +46,13 @@ public sealed record
 
     public bool DeepEquals(DestinyMilestoneRewardCategoryDefinition other)
     {
-        return other != null &&
-               CategoryHash == other.CategoryHash &&
-               CategoryIdentifier == other.CategoryIdentifier &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               Order == other.Order &&
-               RewardEntries.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue(other.RewardEntries);
+        return other != null
+            && CategoryHash == other.CategoryHash
+            && CategoryIdentifier == other.CategoryIdentifier
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && Order == other.Order
+            && RewardEntries.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue(
+                other.RewardEntries
+            );
     }
 }

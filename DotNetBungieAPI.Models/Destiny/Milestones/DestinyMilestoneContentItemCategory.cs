@@ -8,9 +8,12 @@ namespace DotNetBungieAPI.Models.Destiny.Milestones;
 /// </summary>
 public sealed record DestinyMilestoneContentItemCategory
 {
-    [JsonPropertyName("title")] public string Title { get; init; }
+    [JsonPropertyName("title")]
+    public string Title { get; init; }
 
     [JsonPropertyName("itemHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> Items { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyInventoryItemDefinition>
+    > Items { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 }

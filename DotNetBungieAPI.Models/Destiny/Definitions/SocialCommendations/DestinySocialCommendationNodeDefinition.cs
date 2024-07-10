@@ -4,12 +4,13 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 namespace DotNetBungieAPI.Models.Destiny.Definitions.SocialCommendations;
 
 [DestinyDefinition(DefinitionsEnum.DestinySocialCommendationNodeDefinition)]
-public sealed record DestinySocialCommendationNodeDefinition : 
-    IDestinyDefinition,
-    IDisplayProperties,
-    IDeepEquatable<DestinySocialCommendationNodeDefinition>
+public sealed record DestinySocialCommendationNodeDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinySocialCommendationNodeDefinition>
 {
-    public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinySocialCommendationNodeDefinition;
+    public DefinitionsEnum DefinitionEnumValue =>
+        DefinitionsEnum.DestinySocialCommendationNodeDefinition;
 
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -34,14 +35,18 @@ public sealed record DestinySocialCommendationNodeDefinition :
     ///     A list of hashes that map to child commendation nodes. Only the root commendations node is expected to have child nodes.
     /// </summary>
     [JsonPropertyName("childCommendationNodeHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinySocialCommendationNodeDefinition>> ChildCommendationNodes { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinySocialCommendationNodeDefinition>
+    > ChildCommendationNodes { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinySocialCommendationNodeDefinition>>.Empty;
 
     /// <summary>
     ///     A list of hashes that map to child commendations.
     /// </summary>
     [JsonPropertyName("childCommendationHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinySocialCommendationDefinition>> ChildCommendations { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinySocialCommendationDefinition>
+    > ChildCommendations { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinySocialCommendationDefinition>>.Empty;
 
     [JsonPropertyName("blacklisted")]

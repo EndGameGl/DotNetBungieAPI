@@ -12,11 +12,18 @@ public class HistoricalStatDefinitionGeneratorHandler : BaseDefinitionHandler, I
 
     public string ClassName => "HistoricalStats";
 
-    public async Task Generate(IBungieClient bungieClient, TextWriter textWriter, StringBuilder stringBuilder,
-        int indentation)
+    public async Task Generate(
+        IBungieClient bungieClient,
+        TextWriter textWriter,
+        StringBuilder stringBuilder,
+        int indentation
+    )
     {
-        foreach (var statsDefinition in bungieClient.Repository.GetAllHistoricalStatsDefinitions(BungieLocales.EN)
-                     .OrderBy(x => x.StatId))
+        foreach (
+            var statsDefinition in bungieClient
+                .Repository.GetAllHistoricalStatsDefinitions(BungieLocales.EN)
+                .OrderBy(x => x.StatId)
+        )
         {
             var key = char.ToUpper(statsDefinition.StatId.First()) + statsDefinition.StatId[1..];
             if (key.Contains('_'))
@@ -32,9 +39,12 @@ public class HistoricalStatDefinitionGeneratorHandler : BaseDefinitionHandler, I
 
             await WriteCommentaryAsync(textWriter, indentation, statsDefinition.StatDescription);
 
-            await textWriter.WriteLineAsync(StringExtensions.GetIndentedString(
-                indentation,
-                $"public const string {key} = \"{statsDefinition.StatId}\";"));
+            await textWriter.WriteLineAsync(
+                StringExtensions.GetIndentedString(
+                    indentation,
+                    $"public const string {key} = \"{statsDefinition.StatId}\";"
+                )
+            );
         }
     }
 }

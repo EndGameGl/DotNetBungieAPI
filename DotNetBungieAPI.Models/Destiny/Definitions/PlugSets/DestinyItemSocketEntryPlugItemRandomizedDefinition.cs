@@ -5,8 +5,11 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.PlugSets;
 public sealed record DestinyItemSocketEntryPlugItemRandomizedDefinition
     : IDeepEquatable<DestinyItemSocketEntryPlugItemRandomizedDefinition>
 {
-    [JsonPropertyName("weight")] public double Weight { get; init; }
-    [JsonPropertyName("alternateWeight")] public double AlternateWeight { get; init; }
+    [JsonPropertyName("weight")]
+    public double Weight { get; init; }
+
+    [JsonPropertyName("alternateWeight")]
+    public double AlternateWeight { get; init; }
 
     /// <summary>
     ///     DestinyInventoryItemDefinition representing the plug that can be inserted.
@@ -27,11 +30,15 @@ public sealed record DestinyItemSocketEntryPlugItemRandomizedDefinition
 
     public bool DeepEquals(DestinyItemSocketEntryPlugItemRandomizedDefinition other)
     {
-        return other != null &&
-               Weight == other.Weight &&
-               AlternateWeight == other.AlternateWeight &&
-               PlugItem.DeepEquals(other.PlugItem) &&
-               CurrentlyCanRoll == other.CurrentlyCanRoll &&
-               (CraftingRequirements is not null ? CraftingRequirements.DeepEquals(other.CraftingRequirements) : other.CraftingRequirements is null);
+        return other != null
+            && Weight == other.Weight
+            && AlternateWeight == other.AlternateWeight
+            && PlugItem.DeepEquals(other.PlugItem)
+            && CurrentlyCanRoll == other.CurrentlyCanRoll
+            && (
+                CraftingRequirements is not null
+                    ? CraftingRequirements.DeepEquals(other.CraftingRequirements)
+                    : other.CraftingRequirements is null
+            );
     }
 }

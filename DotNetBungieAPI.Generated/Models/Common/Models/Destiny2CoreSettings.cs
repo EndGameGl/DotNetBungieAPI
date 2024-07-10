@@ -47,6 +47,9 @@ public class Destiny2CoreSettings
     [JsonPropertyName("guardianRankConstantsHash")]
     public uint? GuardianRankConstantsHash { get; set; }
 
+    [JsonPropertyName("fireteamFinderConstantsHash")]
+    public uint? FireteamFinderConstantsHash { get; set; }
+
     [JsonPropertyName("guardianRanksRootNodeHash")]
     public uint? GuardianRanksRootNodeHash { get; set; }
 
@@ -58,6 +61,9 @@ public class Destiny2CoreSettings
 
     [JsonPropertyName("insertPlugFreeBlockedSocketTypeHashes")]
     public List<uint> InsertPlugFreeBlockedSocketTypeHashes { get; set; }
+
+    [JsonPropertyName("enabledFireteamFinderActivityGraphHashes")]
+    public List<uint> EnabledFireteamFinderActivityGraphHashes { get; set; }
 
     [JsonPropertyName("undiscoveredCollectibleImage")]
     public string? UndiscoveredCollectibleImage { get; set; }

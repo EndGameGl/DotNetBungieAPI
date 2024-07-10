@@ -5,5 +5,6 @@ namespace DotNetBungieAPI.Models.Queries;
 public sealed record SearchResultOfGroupBan : SearchResultBase
 {
     [JsonPropertyName("results")]
-    public ReadOnlyCollection<GroupBan> Results { get; init; } = ReadOnlyCollections<GroupBan>.Empty;
+    public ReadOnlyCollection<GroupBan> Results { get; init; } =
+        ReadOnlyCollections<GroupBan>.Empty;
 }

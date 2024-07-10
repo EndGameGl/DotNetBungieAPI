@@ -46,7 +46,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Stats;
 ///     back to the UI for display in-game, but not to BNet.)
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyStatDefinition)]
-public sealed record DestinyStatDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyStatDefinition>
+public sealed record DestinyStatDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyStatDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -72,26 +75,34 @@ public sealed record DestinyStatDefinition : IDestinyDefinition, IDisplayPropert
     [JsonPropertyName("statCategory")]
     public DestinyStatCategory StatCategory { get; init; }
 
-    [JsonPropertyName("interpolate")] public bool Interpolate { get; init; }
+    [JsonPropertyName("interpolate")]
+    public bool Interpolate { get; init; }
 
     public bool DeepEquals(DestinyStatDefinition other)
     {
-        return other != null &&
-               AggregationType == other.AggregationType &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               HasComputedBlock == other.HasComputedBlock &&
-               Interpolate == other.Interpolate &&
-               StatCategory == other.StatCategory &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && AggregationType == other.AggregationType
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && HasComputedBlock == other.HasComputedBlock
+            && Interpolate == other.Interpolate
+            && StatCategory == other.StatCategory
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyStatDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

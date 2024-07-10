@@ -3,8 +3,8 @@
 /// <summary>
 ///     The definition of an item and quantity required in a character's inventory in order to perform an action.
 /// </summary>
-public sealed record
-    DestinyItemActionRequiredItemDefinition : IDeepEquatable<DestinyItemActionRequiredItemDefinition>
+public sealed record DestinyItemActionRequiredItemDefinition
+    : IDeepEquatable<DestinyItemActionRequiredItemDefinition>
 {
     /// <summary>
     ///     The minimum quantity of the item you have to have.
@@ -28,9 +28,9 @@ public sealed record
 
     public bool DeepEquals(DestinyItemActionRequiredItemDefinition other)
     {
-        return other != null &&
-               Count == other.Count &&
-               Item.DeepEquals(other.Item) &&
-               DeleteOnAction == other.DeleteOnAction;
+        return other != null
+            && Count == other.Count
+            && Item.DeepEquals(other.Item)
+            && DeleteOnAction == other.DeleteOnAction;
     }
 }

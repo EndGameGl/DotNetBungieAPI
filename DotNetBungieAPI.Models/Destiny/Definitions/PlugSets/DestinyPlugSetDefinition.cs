@@ -9,7 +9,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.PlugSets;
 ///     reusable sets of plugs.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyPlugSetDefinition)]
-public sealed record DestinyPlugSetDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyPlugSetDefinition>
+public sealed record DestinyPlugSetDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyPlugSetDefinition>
 {
     /// <summary>
     ///     If you want to show these plugs in isolation, these are the display properties for them.
@@ -40,21 +43,31 @@ public sealed record DestinyPlugSetDefinition : IDestinyDefinition, IDisplayProp
 
     public bool DeepEquals(DestinyPlugSetDefinition other)
     {
-        return other != null &&
-               (DisplayProperties != null
-                   ? DisplayProperties.DeepEquals(other.DisplayProperties)
-                   : other.DisplayProperties == null) &&
-               IsFakePlugSet == other.IsFakePlugSet &&
-               ReusablePlugItems.DeepEqualsReadOnlyCollections(other.ReusablePlugItems) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && (
+                DisplayProperties != null
+                    ? DisplayProperties.DeepEquals(other.DisplayProperties)
+                    : other.DisplayProperties == null
+            )
+            && IsFakePlugSet == other.IsFakePlugSet
+            && ReusablePlugItems.DeepEqualsReadOnlyCollections(other.ReusablePlugItems)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyPlugSetDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

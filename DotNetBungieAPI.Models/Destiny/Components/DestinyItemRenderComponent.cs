@@ -21,5 +21,6 @@ public sealed record DestinyItemRenderComponent
     ///     choice.
     /// </summary>
     [JsonPropertyName("artRegions")]
-    public ReadOnlyDictionary<int, int> ArtRegions { get; init; } = ReadOnlyDictionaries<int, int>.Empty;
+    public ReadOnlyDictionary<int, int> ArtRegions { get; init; } =
+        ReadOnlyDictionaries<int, int>.Empty;
 }

@@ -21,9 +21,12 @@ public sealed record DestinyItemPlugObjectivesComponent
     ///     like to display even more data.
     /// </summary>
     [JsonPropertyName("objectivesPerPlug")]
-    public
-        ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>,
-            ReadOnlyCollection<DestinyObjectiveProgress>> ObjectivesPerPlug { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>,
-            ReadOnlyCollection<DestinyObjectiveProgress>>.Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyInventoryItemDefinition>,
+        ReadOnlyCollection<DestinyObjectiveProgress>
+    > ObjectivesPerPlug { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyInventoryItemDefinition>,
+            ReadOnlyCollection<DestinyObjectiveProgress>
+        >.Empty;
 }

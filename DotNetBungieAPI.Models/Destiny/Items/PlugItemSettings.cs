@@ -8,7 +8,9 @@ public sealed record PlugItemSettings
     public DefinitionHashPointer<DestinyInventoryItemDefinition> PlugItem { get; init; } =
         DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
 
-    [JsonPropertyName("canInsert")] public bool CanInsert { get; init; }
+    [JsonPropertyName("canInsert")]
+    public bool CanInsert { get; init; }
 
-    [JsonPropertyName("enabled")] public bool IsEnabled { get; init; }
+    [JsonPropertyName("enabled")]
+    public bool IsEnabled { get; init; }
 }

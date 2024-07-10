@@ -57,18 +57,22 @@ public sealed record DestinyItemStatBlockDefinition : IDeepEquatable<DestinyItem
     ///     in-game.
     /// </summary>
     [JsonPropertyName("stats")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, DestinyInventoryItemStatDefinition>
-        Stats { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyStatDefinition>, DestinyInventoryItemStatDefinition>
-            .Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyStatDefinition>,
+        DestinyInventoryItemStatDefinition
+    > Stats { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyStatDefinition>,
+            DestinyInventoryItemStatDefinition
+        >.Empty;
 
     public bool DeepEquals(DestinyItemStatBlockDefinition other)
     {
-        return other != null &&
-               DisablePrimaryStatDisplay == other.DisablePrimaryStatDisplay &&
-               HasDisplayableStats == other.HasDisplayableStats &&
-               PrimaryBaseStat.DeepEquals(other.PrimaryBaseStat) &&
-               StatGroup.DeepEquals(other.StatGroup) &&
-               Stats.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(other.Stats);
+        return other != null
+            && DisablePrimaryStatDisplay == other.DisablePrimaryStatDisplay
+            && HasDisplayableStats == other.HasDisplayableStats
+            && PrimaryBaseStat.DeepEquals(other.PrimaryBaseStat)
+            && StatGroup.DeepEquals(other.StatGroup)
+            && Stats.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(other.Stats);
     }
 }

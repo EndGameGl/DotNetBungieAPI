@@ -9,7 +9,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 ///     <para />
 ///     This defines those categories, and gives some insights into that data's source.
 /// </summary>
-public sealed record DestinyItemPreviewBlockDefinition : IDeepEquatable<DestinyItemPreviewBlockDefinition>
+public sealed record DestinyItemPreviewBlockDefinition
+    : IDeepEquatable<DestinyItemPreviewBlockDefinition>
 {
     /// <summary>
     ///     If the preview has an associated action (like "Open"), this will be the localized string for that action.
@@ -50,11 +51,11 @@ public sealed record DestinyItemPreviewBlockDefinition : IDeepEquatable<DestinyI
 
     public bool DeepEquals(DestinyItemPreviewBlockDefinition other)
     {
-        return other != null &&
-               PreviewActionString == other.PreviewActionString &&
-               PreviewVendor.DeepEquals(other.PreviewVendor) &&
-               ScreenStyle == other.ScreenStyle &&
-               Artifact.DeepEquals(other.Artifact) &&
-               DerivedItemCategories.DeepEqualsReadOnlyCollections(other.DerivedItemCategories);
+        return other != null
+            && PreviewActionString == other.PreviewActionString
+            && PreviewVendor.DeepEquals(other.PreviewVendor)
+            && ScreenStyle == other.ScreenStyle
+            && Artifact.DeepEquals(other.Artifact)
+            && DerivedItemCategories.DeepEqualsReadOnlyCollections(other.DerivedItemCategories);
     }
 }

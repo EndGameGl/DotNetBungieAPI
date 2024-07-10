@@ -28,8 +28,8 @@ public sealed record DestinyActivityGraphNodeActivityDefinition
 
     public bool DeepEquals(DestinyActivityGraphNodeActivityDefinition other)
     {
-        return other != null &&
-               Activity.DeepEquals(other.Activity) &&
-               NodeActivityId == other.NodeActivityId;
+        return other != null
+            && Activity.DeepEquals(other.Activity)
+            && NodeActivityId == other.NodeActivityId;
     }
 }

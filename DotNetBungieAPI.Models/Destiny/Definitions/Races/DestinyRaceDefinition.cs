@@ -10,7 +10,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Races;
 ///     Players will choose one for their character.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyRaceDefinition)]
-public sealed record DestinyRaceDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyRaceDefinition>
+public sealed record DestinyRaceDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyRaceDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -31,26 +34,40 @@ public sealed record DestinyRaceDefinition : IDestinyDefinition, IDisplayPropert
         ReadOnlyDictionaries<string, string>.Empty;
 
     [JsonPropertyName("genderedRaceNamesByGenderHash")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string> GenderedRaceNamesByGender { get; init; } =
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyGenderDefinition>,
+        string
+    > GenderedRaceNamesByGender { get; init; } =
         ReadOnlyDictionaries<DefinitionHashPointer<DestinyGenderDefinition>, string>.Empty;
 
     public bool DeepEquals(DestinyRaceDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               RaceType == other.RaceType &&
-               GenderedRaceNames.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndSimpleValue(other.GenderedRaceNames) &&
-               GenderedRaceNamesByGender.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(
-                   other.GenderedRaceNamesByGender) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && RaceType == other.RaceType
+            && GenderedRaceNames.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndSimpleValue(
+                other.GenderedRaceNames
+            )
+            && GenderedRaceNamesByGender.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(
+                other.GenderedRaceNamesByGender
+            )
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyRaceDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

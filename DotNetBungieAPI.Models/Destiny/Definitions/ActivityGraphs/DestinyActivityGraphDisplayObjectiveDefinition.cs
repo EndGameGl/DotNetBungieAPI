@@ -23,8 +23,6 @@ public sealed record DestinyActivityGraphDisplayObjectiveDefinition
 
     public bool DeepEquals(DestinyActivityGraphDisplayObjectiveDefinition other)
     {
-        return other != null &&
-               Id == other.Id &&
-               Objective.DeepEquals(other.Objective);
+        return other != null && Id == other.Id && Objective.DeepEquals(other.Objective);
     }
 }

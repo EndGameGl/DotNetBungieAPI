@@ -6,12 +6,12 @@ public abstract class AdditionalFileGenerator
     public StreamWriter Writer { get; internal set; }
 
     public abstract Task WriteFile(Models.OpenApi openApiModel);
-    
+
     protected async Task WriteAsync(string text)
     {
         await Writer.WriteAsync(text);
     }
-    
+
     protected async Task WriteAsync(char text)
     {
         await Writer.WriteAsync(text);
@@ -26,7 +26,7 @@ public abstract class AdditionalFileGenerator
     {
         await Writer.WriteLineAsync(text);
     }
-    
+
     protected async Task WriteLineAsync(char text)
     {
         await Writer.WriteLineAsync(text);

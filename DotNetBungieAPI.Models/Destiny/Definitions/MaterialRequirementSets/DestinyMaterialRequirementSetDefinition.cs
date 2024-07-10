@@ -9,8 +9,9 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets;
 ///     A variety of other entities refer to these as gatekeepers and payments for actions that can be performed in game.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyMaterialRequirementSetDefinition)]
-public sealed record DestinyMaterialRequirementSetDefinition : IDestinyDefinition,
-    IDeepEquatable<DestinyMaterialRequirementSetDefinition>
+public sealed record DestinyMaterialRequirementSetDefinition
+    : IDestinyDefinition,
+        IDeepEquatable<DestinyMaterialRequirementSetDefinition>
 {
     /// <summary>
     ///     The list of all materials that are required.
@@ -21,17 +22,26 @@ public sealed record DestinyMaterialRequirementSetDefinition : IDestinyDefinitio
 
     public bool DeepEquals(DestinyMaterialRequirementSetDefinition other)
     {
-        return other != null &&
-               Materials.DeepEqualsReadOnlyCollections(other.Materials) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && Materials.DeepEqualsReadOnlyCollections(other.Materials)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
-    public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyMaterialRequirementSetDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+    public DefinitionsEnum DefinitionEnumValue =>
+        DefinitionsEnum.DestinyMaterialRequirementSetDefinition;
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

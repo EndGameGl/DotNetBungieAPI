@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-namespace DotNetBungieAPI.Models.Defaults;
+﻿namespace DotNetBungieAPI.Models.Defaults;
 
 public class ReadOnlyCollections<T>
 {

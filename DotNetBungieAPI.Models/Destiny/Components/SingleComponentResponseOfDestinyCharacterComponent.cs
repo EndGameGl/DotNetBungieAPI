@@ -2,5 +2,6 @@
 
 public sealed record SingleComponentResponseOfDestinyCharacterComponent : ComponentResponse
 {
-    [JsonPropertyName("data")] public DestinyCharacterComponent Data { get; init; }
+    [JsonPropertyName("data")]
+    public DestinyCharacterComponent Data { get; init; }
 }

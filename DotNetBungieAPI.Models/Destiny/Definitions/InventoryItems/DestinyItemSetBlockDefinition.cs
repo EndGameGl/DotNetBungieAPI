@@ -53,13 +53,13 @@ public sealed record DestinyItemSetBlockDefinition : IDeepEquatable<DestinyItemS
 
     public bool DeepEquals(DestinyItemSetBlockDefinition other)
     {
-        return other != null &&
-               ItemList.DeepEqualsReadOnlyCollections(other.ItemList) &&
-               QuestLineDescription == other.QuestLineDescription &&
-               QuestLineName == other.QuestLineName &&
-               QuestStepSummary == other.QuestStepSummary &&
-               RequireOrderedSetItemAdd == other.RequireOrderedSetItemAdd &&
-               SetIsFeatured == other.SetIsFeatured &&
-               SetType == other.SetType;
+        return other != null
+            && ItemList.DeepEqualsReadOnlyCollections(other.ItemList)
+            && QuestLineDescription == other.QuestLineDescription
+            && QuestLineName == other.QuestLineName
+            && QuestStepSummary == other.QuestStepSummary
+            && RequireOrderedSetItemAdd == other.RequireOrderedSetItemAdd
+            && SetIsFeatured == other.SetIsFeatured
+            && SetType == other.SetType;
     }
 }

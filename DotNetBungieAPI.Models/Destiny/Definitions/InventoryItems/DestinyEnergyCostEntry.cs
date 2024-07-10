@@ -30,9 +30,9 @@ public sealed record DestinyEnergyCostEntry : IDeepEquatable<DestinyEnergyCostEn
 
     public bool DeepEquals(DestinyEnergyCostEntry other)
     {
-        return other != null &&
-               EnergyCost == other.EnergyCost &&
-               EnergyType.DeepEquals(other.EnergyType) &&
-               EnergyTypeEnumValue == other.EnergyTypeEnumValue;
+        return other != null
+            && EnergyCost == other.EnergyCost
+            && EnergyType.DeepEquals(other.EnergyType)
+            && EnergyTypeEnumValue == other.EnergyTypeEnumValue;
     }
 }

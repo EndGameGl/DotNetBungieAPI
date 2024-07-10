@@ -3,7 +3,8 @@
 /// <summary>
 ///     Defines the thumbnail icon, high-res image, and video link for promotional images
 /// </summary>
-public sealed record DestinySeasonPreviewImageDefinition : IDeepEquatable<DestinySeasonPreviewImageDefinition>
+public sealed record DestinySeasonPreviewImageDefinition
+    : IDeepEquatable<DestinySeasonPreviewImageDefinition>
 {
     /// <summary>
     ///     A thumbnail icon path to preview seasonal content, probably 480x270.
@@ -19,8 +20,8 @@ public sealed record DestinySeasonPreviewImageDefinition : IDeepEquatable<Destin
 
     public bool DeepEquals(DestinySeasonPreviewImageDefinition other)
     {
-        return other != null &&
-               ThumbnailImage == other.ThumbnailImage &&
-               HighResImage == other.HighResImage;
+        return other != null
+            && ThumbnailImage == other.ThumbnailImage
+            && HighResImage == other.HighResImage;
     }
 }

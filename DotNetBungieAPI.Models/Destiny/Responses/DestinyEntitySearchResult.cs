@@ -10,7 +10,8 @@ public sealed record DestinyEntitySearchResult
     ///     A list of suggested words that might make for better search results, based on the text searched for.
     /// </summary>
     [JsonPropertyName("suggestedWords")]
-    public ReadOnlyCollection<string> SuggestedWords { get; init; } = ReadOnlyCollections<string>.Empty;
+    public ReadOnlyCollection<string> SuggestedWords { get; init; } =
+        ReadOnlyCollections<string>.Empty;
 
     /// <summary>
     ///     The items found that are matches/near matches for the searched-for term, sorted by something vaguely resembling

@@ -14,12 +14,11 @@ public sealed record DestinyActivityInsertionPointDefinition
     [JsonPropertyName("phaseHash")]
     public uint PhaseHash { get; init; }
 
-    [JsonPropertyName("unlockHash")] public uint UnlockHash { get; init; }
+    [JsonPropertyName("unlockHash")]
+    public uint UnlockHash { get; init; }
 
     public bool DeepEquals(DestinyActivityInsertionPointDefinition other)
     {
-        return other != null &&
-               PhaseHash == other.PhaseHash &&
-               UnlockHash == other.UnlockHash;
+        return other != null && PhaseHash == other.PhaseHash && UnlockHash == other.UnlockHash;
     }
 }

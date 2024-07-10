@@ -18,8 +18,9 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs;
 ///     providing that content in this definition.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyActivityGraphDefinition)]
-public sealed record DestinyActivityGraphDefinition : IDestinyDefinition,
-    IDeepEquatable<DestinyActivityGraphDefinition>
+public sealed record DestinyActivityGraphDefinition
+    : IDestinyDefinition,
+        IDeepEquatable<DestinyActivityGraphDefinition>
 {
     /// <summary>
     ///     These represent the visual "nodes" on the map's view. These are the activities you can click on in the map.
@@ -69,28 +70,37 @@ public sealed record DestinyActivityGraphDefinition : IDestinyDefinition,
     public ReadOnlyCollection<DestinyLinkedGraphDefinition> LinkedGraphs { get; init; } =
         ReadOnlyCollections<DestinyLinkedGraphDefinition>.Empty;
 
-    [JsonPropertyName("uiScreen")] public int UIScreen { get; init; }
+    [JsonPropertyName("uiScreen")]
+    public int UIScreen { get; init; }
 
     public bool DeepEquals(DestinyActivityGraphDefinition other)
     {
-        return other != null &&
-               ArtElements.DeepEqualsReadOnlyCollections(other.ArtElements) &&
-               Connections.DeepEqualsReadOnlyCollections(other.Connections) &&
-               DisplayObjectives.DeepEqualsReadOnlyCollections(other.DisplayObjectives) &&
-               DisplayProgressions.DeepEqualsReadOnlyCollections(other.DisplayProgressions) &&
-               IgnoreForMilestones == other.IgnoreForMilestones &&
-               LinkedGraphs.DeepEqualsReadOnlyCollections(other.LinkedGraphs) &&
-               Nodes.DeepEqualsReadOnlyCollections(other.Nodes) &&
-               UIScreen == other.UIScreen &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && ArtElements.DeepEqualsReadOnlyCollections(other.ArtElements)
+            && Connections.DeepEqualsReadOnlyCollections(other.Connections)
+            && DisplayObjectives.DeepEqualsReadOnlyCollections(other.DisplayObjectives)
+            && DisplayProgressions.DeepEqualsReadOnlyCollections(other.DisplayProgressions)
+            && IgnoreForMilestones == other.IgnoreForMilestones
+            && LinkedGraphs.DeepEqualsReadOnlyCollections(other.LinkedGraphs)
+            && Nodes.DeepEqualsReadOnlyCollections(other.Nodes)
+            && UIScreen == other.UIScreen
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyActivityGraphDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

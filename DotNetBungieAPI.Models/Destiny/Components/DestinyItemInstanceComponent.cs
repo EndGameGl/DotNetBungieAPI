@@ -76,8 +76,9 @@ public sealed record DestinyItemInstanceComponent
     ///     up the descriptions to show in your UI by looking up the relevant DestinyUnlockDefinitions for the hashes.
     /// </summary>
     [JsonPropertyName("unlockHashesRequiredToEquip")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyUnlockDefinition>>
-        UnlocksRequiredToEquip { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyUnlockDefinition>
+    > UnlocksRequiredToEquip { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyUnlockDefinition>>.Empty;
 
     /// <summary>

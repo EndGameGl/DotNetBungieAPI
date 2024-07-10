@@ -2,8 +2,9 @@
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 
-public sealed record DestinyVendorDisplayPropertiesDefinition : DestinyDisplayPropertiesDefinition,
-    IDeepEquatable<DestinyVendorDisplayPropertiesDefinition>
+public sealed record DestinyVendorDisplayPropertiesDefinition
+    : DestinyDisplayPropertiesDefinition,
+        IDeepEquatable<DestinyVendorDisplayPropertiesDefinition>
 {
     /// <summary>
     ///     I regret calling this a "large icon". It's more like a medium-sized image with a picture of the vendor's mug on it,
@@ -47,23 +48,24 @@ public sealed record DestinyVendorDisplayPropertiesDefinition : DestinyDisplayPr
     [JsonPropertyName("smallTransparentIcon")]
     public BungieNetResource SmallTransparentIcon { get; init; }
 
-    [JsonPropertyName("subtitle")] public string Subtitle { get; init; }
+    [JsonPropertyName("subtitle")]
+    public string Subtitle { get; init; }
 
     public bool DeepEquals(DestinyVendorDisplayPropertiesDefinition other)
     {
-        return other != null &&
-               Description == other.Description &&
-               HasIcon == other.HasIcon &&
-               Icon == other.Icon &&
-               Name == other.Name &&
-               HighResolutionIcon == other.HighResolutionIcon &&
-               IconSequences.DeepEqualsReadOnlyCollections(other.IconSequences) &&
-               LargeIcon == other.LargeIcon &&
-               LargeTransparentIcon == other.LargeTransparentIcon &&
-               MapIcon == other.MapIcon &&
-               OriginalIcon == other.OriginalIcon &&
-               RequirementsDisplay.DeepEqualsReadOnlyCollections(other.RequirementsDisplay) &&
-               SmallTransparentIcon == other.SmallTransparentIcon &&
-               Subtitle == other.Subtitle;
+        return other != null
+            && Description == other.Description
+            && HasIcon == other.HasIcon
+            && Icon == other.Icon
+            && Name == other.Name
+            && HighResolutionIcon == other.HighResolutionIcon
+            && IconSequences.DeepEqualsReadOnlyCollections(other.IconSequences)
+            && LargeIcon == other.LargeIcon
+            && LargeTransparentIcon == other.LargeTransparentIcon
+            && MapIcon == other.MapIcon
+            && OriginalIcon == other.OriginalIcon
+            && RequirementsDisplay.DeepEqualsReadOnlyCollections(other.RequirementsDisplay)
+            && SmallTransparentIcon == other.SmallTransparentIcon
+            && Subtitle == other.Subtitle;
     }
 }

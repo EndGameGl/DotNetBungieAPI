@@ -122,6 +122,8 @@ public enum PlatformErrorCodes : int
 
     InvalidServiceAuthContext = 59,
 
+    FailedMinimumAgeCheck = 60,
+
     ObsoleteCredentialType = 89,
 
     UnableToUnPairMobileApp = 90,
@@ -395,6 +397,16 @@ public enum PlatformErrorCodes : int
     UserDisplayNameGreaterThanMaxLength = 243,
 
     UserDisplayNameContainsUnacceptableOrInvalidContent = 244,
+
+    EmailValidationOffline = 245,
+
+    EmailValidationFailOldCode = 246,
+
+    EmailValidationFailBadLink = 247,
+
+    EmailUnsubscribeFail = 248,
+
+    EmailUnsubscribeFailNew = 249,
 
     MessagingUnknownError = 300,
 
@@ -1541,6 +1553,96 @@ public enum PlatformErrorCodes : int
 
     ClanFireteamPurchaseRequiredJoin = 3038,
 
+    FireteamFinderInvalidMembershipType = 3100,
+
+    FireteamFinderInvalidMembershipId = 3101,
+
+    FireteamFinderInvalidCharacterId = 3102,
+
+    FireteamFinderInvalidListingOptions = 3103,
+
+    FireteamFinderInvalidRequestData = 3104,
+
+    FireteamFinderListingApplicationFailed = 3105,
+
+    FireteamFinderListingAutoJoinFailed = 3106,
+
+    FireteamFinderPlayerApplicationsParsingFailed = 3107,
+
+    FireteamFinderJoinLobbyHostFailed = 3108,
+
+    FireteamFinderPlayerNotInGame = 3109,
+
+    FireteamFinderActivationFailed = 3110,
+
+    FireteamFinderApplicationNotFound = 3111,
+
+    FireteamFinderUserAlreadyAppliedToListing = 3112,
+
+    FireteamFinderApplicationClosedForUpdates = 3113,
+
+    FireteamFinderListingAtMaxOpenApplicationsLimit = 3114,
+
+    FireteamFinderUserNotInApplication = 3115,
+
+    FireteamFinderApplicationUserAlreadyListingOwner = 3116,
+
+    FireteamFinderOfferNotFound = 3117,
+
+    FireteamFinderOfferClosedForUpdates = 3118,
+
+    FireteamFinderOfferUserNotTarget = 3119,
+
+    FireteamFinderLobbyNotFound = 3120,
+
+    FireteamFinderListingNotFound = 3121,
+
+    FireteamFinderLobbyFull = 3122,
+
+    FireteamFinderUserNotListingOwner = 3123,
+
+    FireteamFinderUserNotLobbyOwner = 3124,
+
+    FireteamFinderLobbyClosedForUpdates = 3125,
+
+    FireteamFinderUserNotInLobby = 3126,
+
+    FireteamFinderDisabledSettingsValue = 3127,
+
+    FireteamFinderOwnerInActiveLobby = 3128,
+
+    FireteamFinderApplicationClosedToOfflinePlayers = 3129,
+
+    FireteamFinderUserNotApplicationOwner = 3130,
+
+    FireteamFinderInviteValidationFailed = 3131,
+
+    FireteamFinderOwnerNotInGame = 3132,
+
+    FireteamFinderPlayerAtMaxLobbyLimit = 3133,
+
+    FireteamFinderLobbyTooFarInTheFuture = 3134,
+
+    FireteamFinderResponseUndefined = 3150,
+
+    FireteamFinderResponseMoved = 3151,
+
+    FireteamFinderResponseLoggingIn = 3152,
+
+    FireteamFinderResponseBadRequest = 3153,
+
+    FireteamFinderResponseUnauthorized = 3154,
+
+    FireteamFinderResponseForbidden = 3155,
+
+    FireteamFinderResponseNotFound = 3156,
+
+    FireteamFinderInternalServerError = 3157,
+
+    FireteamFinderServiceUnavailable = 3158,
+
+    FireteamFinderInternalServerErrorNonFatal = 3159,
+
     CrossSaveOverriddenAccountNotFound = 3200,
 
     CrossSaveTooManyOverriddenPlatforms = 3201,
@@ -1637,6 +1739,8 @@ public enum PlatformErrorCodes : int
 
     ErrorPhoneValidationCodeTooRecentlyChecked = 3710,
 
+    ErrorPhoneValidationRecentlyPlayedDestiny2AccountRequired = 3711,
+
     ApplePushErrorUnknown = 3800,
 
     ApplePushErrorNull = 3801,
@@ -1674,6 +1778,10 @@ public enum PlatformErrorCodes : int
     ErrorBungieFriendsListFull = 3910,
 
     ErrorBungieBlockListFull = 3911,
+
+    ErrorBungieFriendNotFound = 3912,
+
+    ErrorBungieFriendInvalidMembershipType = 3913,
 
     ErrorEgsUnknown = 4000,
 

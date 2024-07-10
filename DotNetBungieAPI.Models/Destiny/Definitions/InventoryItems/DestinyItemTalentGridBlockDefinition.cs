@@ -8,7 +8,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 ///     <para />
 ///     Builds/Subclasses are the only items left that still have talent grids with meaningful Nodes.
 /// </summary>
-public sealed record DestinyItemTalentGridBlockDefinition : IDeepEquatable<DestinyItemTalentGridBlockDefinition>
+public sealed record DestinyItemTalentGridBlockDefinition
+    : IDeepEquatable<DestinyItemTalentGridBlockDefinition>
 {
     /// <summary>
     ///     If the talent grid implies a damage type, this is the enum value for that damage type.
@@ -48,11 +49,11 @@ public sealed record DestinyItemTalentGridBlockDefinition : IDeepEquatable<Desti
 
     public bool DeepEquals(DestinyItemTalentGridBlockDefinition other)
     {
-        return other != null &&
-               HudDamageType == other.HudDamageType &&
-               ItemDetailString == other.ItemDetailString &&
-               TalentGrid.DeepEquals(other.TalentGrid) &&
-               BuildName == other.BuildName &&
-               HudIcon == other.HudIcon;
+        return other != null
+            && HudDamageType == other.HudDamageType
+            && ItemDetailString == other.ItemDetailString
+            && TalentGrid.DeepEquals(other.TalentGrid)
+            && BuildName == other.BuildName
+            && HudIcon == other.HudIcon;
     }
 }

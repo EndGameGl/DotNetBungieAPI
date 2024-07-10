@@ -49,12 +49,12 @@ public sealed record DestinyDerivedItemDefinition : IDeepEquatable<DestinyDerive
 
     public bool DeepEquals(DestinyDerivedItemDefinition other)
     {
-        return other != null &&
-               Item.DeepEquals(other.Item) &&
-               ItemName == other.ItemName &&
-               ItemDetail == other.ItemDetail &&
-               ItemDescription == other.ItemDescription &&
-               IconPath == other.IconPath &&
-               VendorItemIndex == other.VendorItemIndex;
+        return other != null
+            && Item.DeepEquals(other.Item)
+            && ItemName == other.ItemName
+            && ItemDetail == other.ItemDetail
+            && ItemDescription == other.ItemDescription
+            && IconPath == other.IconPath
+            && VendorItemIndex == other.VendorItemIndex;
     }
 }

@@ -4,7 +4,9 @@ namespace DotNetBungieAPI.Models.Queries;
 
 public sealed record GroupMemberLeaveResult
 {
-    [JsonPropertyName("group")] public GroupV2 Group { get; init; }
+    [JsonPropertyName("group")]
+    public GroupV2 Group { get; init; }
 
-    [JsonPropertyName("groupDeleted")] public bool GroupDeleted { get; init; }
+    [JsonPropertyName("groupDeleted")]
+    public bool GroupDeleted { get; init; }
 }

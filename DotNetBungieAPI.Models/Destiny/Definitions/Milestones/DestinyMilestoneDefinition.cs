@@ -47,7 +47,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
 ///     milestone-level names and descriptions.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyMilestoneDefinition)]
-public sealed record DestinyMilestoneDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyMilestoneDefinition>
+public sealed record DestinyMilestoneDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyMilestoneDefinition>
 {
     /// <summary>
     ///     A hint to the UI to indicate what to show as the display properties for this Milestone when showing "Live"
@@ -126,18 +129,24 @@ public sealed record DestinyMilestoneDefinition : IDestinyDefinition, IDisplayPr
     ///     likely be further revisions to the Milestone concept in the future.
     /// </summary>
     [JsonPropertyName("quests")]
-    public
-        ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, DestinyMilestoneQuestDefinition>
-        Quests { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>, DestinyMilestoneQuestDefinition>
-            .Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyInventoryItemDefinition>,
+        DestinyMilestoneQuestDefinition
+    > Quests { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyInventoryItemDefinition>,
+            DestinyMilestoneQuestDefinition
+        >.Empty;
 
     /// <summary>
     ///     If this milestone can provide rewards, this will define the categories into which the individual reward entries are
     ///     placed.
     /// </summary>
     [JsonPropertyName("rewards")]
-    public ReadOnlyDictionary<uint, DestinyMilestoneRewardCategoryDefinition> Rewards { get; init; } =
+    public ReadOnlyDictionary<
+        uint,
+        DestinyMilestoneRewardCategoryDefinition
+    > Rewards { get; init; } =
         ReadOnlyDictionaries<uint, DestinyMilestoneRewardCategoryDefinition>.Empty;
 
     /// <summary>
@@ -183,38 +192,47 @@ public sealed record DestinyMilestoneDefinition : IDestinyDefinition, IDisplayPr
     public ReadOnlyCollection<DestinyMilestoneChallengeActivityDefinition> Activities { get; init; } =
         ReadOnlyCollections<DestinyMilestoneChallengeActivityDefinition>.Empty;
 
-    [JsonPropertyName("defaultOrder")] public int DefaultOrder { get; init; }
+    [JsonPropertyName("defaultOrder")]
+    public int DefaultOrder { get; init; }
 
     public bool DeepEquals(DestinyMilestoneDefinition other)
     {
-        return other != null &&
-               Activities.DeepEqualsReadOnlyCollections(other.Activities) &&
-               DefaultOrder == other.DefaultOrder &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               ExplorePrioritizesActivityImage == other.ExplorePrioritizesActivityImage &&
-               FriendlyName == other.FriendlyName &&
-               HasPredictableDates == other.HasPredictableDates &&
-               Image == other.Image &&
-               IsInGameMilestone == other.IsInGameMilestone &&
-               MilestoneType == other.MilestoneType &&
-               Quests.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(other.Quests) &&
-               Recruitable == other.Recruitable &&
-               Rewards.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue(other.Rewards) &&
-               ShowInExplorer == other.ShowInExplorer &&
-               ShowInMilestones == other.ShowInMilestones &&
-               Vendors.DeepEqualsReadOnlyCollections(other.Vendors) &&
-               VendorsDisplayTitle == other.VendorsDisplayTitle &&
-               Values.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue(other.Values) &&
-               DisplayPreference == other.DisplayPreference &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && Activities.DeepEqualsReadOnlyCollections(other.Activities)
+            && DefaultOrder == other.DefaultOrder
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && ExplorePrioritizesActivityImage == other.ExplorePrioritizesActivityImage
+            && FriendlyName == other.FriendlyName
+            && HasPredictableDates == other.HasPredictableDates
+            && Image == other.Image
+            && IsInGameMilestone == other.IsInGameMilestone
+            && MilestoneType == other.MilestoneType
+            && Quests.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(other.Quests)
+            && Recruitable == other.Recruitable
+            && Rewards.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue(other.Rewards)
+            && ShowInExplorer == other.ShowInExplorer
+            && ShowInMilestones == other.ShowInMilestones
+            && Vendors.DeepEqualsReadOnlyCollections(other.Vendors)
+            && VendorsDisplayTitle == other.VendorsDisplayTitle
+            && Values.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue(other.Values)
+            && DisplayPreference == other.DisplayPreference
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyMilestoneDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

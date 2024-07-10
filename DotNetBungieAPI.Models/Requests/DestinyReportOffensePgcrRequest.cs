@@ -16,7 +16,8 @@ public sealed class DestinyReportOffensePgcrRequest
     public DestinyReportOffensePgcrRequest(
         uint[] reasonCategoryHashes,
         uint[] reasonHashes,
-        long offendingCharacterId)
+        long offendingCharacterId
+    )
     {
         ReasonCategoryHashes = reasonCategoryHashes;
         ReasonHashes = reasonHashes;

@@ -12,7 +12,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.SocketTypes;
 ///     See DestinyInventoryItemDefinition for more information about Socketed items and Plugs.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinySocketTypeDefinition)]
-public sealed record DestinySocketTypeDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinySocketTypeDefinition>
+public sealed record DestinySocketTypeDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinySocketTypeDefinition>
 {
     /// <summary>
     ///     There are fields for this display data, but they appear to be unpopulated as of now. I am not sure where in the UI
@@ -54,7 +57,8 @@ public sealed record DestinySocketTypeDefinition : IDestinyDefinition, IDisplayP
     [JsonPropertyName("alwaysRandomizeSockets")]
     public bool AlwaysRandomizeSockets { get; init; }
 
-    [JsonPropertyName("isPreviewEnabled")] public bool IsPreviewEnabled { get; init; }
+    [JsonPropertyName("isPreviewEnabled")]
+    public bool IsPreviewEnabled { get; init; }
 
     [JsonPropertyName("hideDuplicateReusablePlugs")]
     public bool HideDuplicateReusablePlugs { get; init; }
@@ -75,27 +79,35 @@ public sealed record DestinySocketTypeDefinition : IDestinyDefinition, IDisplayP
 
     public bool DeepEquals(DestinySocketTypeDefinition other)
     {
-        return other != null &&
-               AlwaysRandomizeSockets == other.AlwaysRandomizeSockets &&
-               AvoidDuplicatesOnInitialization == other.AvoidDuplicatesOnInitialization &&
-               HideDuplicateReusablePlugs == other.HideDuplicateReusablePlugs &&
-               IsPreviewEnabled == other.IsPreviewEnabled &&
-               OverridesUiAppearance == other.OverridesUiAppearance &&
-               SocketCategory.DeepEquals(other.SocketCategory) &&
-               Visibility == other.Visibility &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               InsertAction.DeepEquals(other.InsertAction) &&
-               CurrencyScalars.DeepEqualsReadOnlyCollections(other.CurrencyScalars) &&
-               PlugWhitelist.DeepEqualsReadOnlyCollections(other.PlugWhitelist) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && AlwaysRandomizeSockets == other.AlwaysRandomizeSockets
+            && AvoidDuplicatesOnInitialization == other.AvoidDuplicatesOnInitialization
+            && HideDuplicateReusablePlugs == other.HideDuplicateReusablePlugs
+            && IsPreviewEnabled == other.IsPreviewEnabled
+            && OverridesUiAppearance == other.OverridesUiAppearance
+            && SocketCategory.DeepEquals(other.SocketCategory)
+            && Visibility == other.Visibility
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && InsertAction.DeepEquals(other.InsertAction)
+            && CurrencyScalars.DeepEqualsReadOnlyCollections(other.CurrencyScalars)
+            && PlugWhitelist.DeepEqualsReadOnlyCollections(other.PlugWhitelist)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinySocketTypeDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

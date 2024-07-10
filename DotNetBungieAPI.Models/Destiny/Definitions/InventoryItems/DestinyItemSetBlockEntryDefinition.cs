@@ -3,7 +3,8 @@
 /// <summary>
 ///     Defines a particular entry in an ItemSet (AKA a particular Quest Step in a Quest)
 /// </summary>
-public sealed record DestinyItemSetBlockEntryDefinition : IDeepEquatable<DestinyItemSetBlockEntryDefinition>
+public sealed record DestinyItemSetBlockEntryDefinition
+    : IDeepEquatable<DestinyItemSetBlockEntryDefinition>
 {
     /// <summary>
     ///     DestinyInventoryItemDefinition representing this quest step.

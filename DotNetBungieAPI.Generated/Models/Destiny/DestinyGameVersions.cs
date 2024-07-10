@@ -26,5 +26,7 @@ public enum DestinyGameVersions : int
 
     TheWitchQueen = 256,
 
-    Lightfall = 512
+    Lightfall = 512,
+
+    TheFinalShape = 1024
 }

@@ -5,6 +5,7 @@ using DotNetBungieAPI.Service.Abstractions;
 
 namespace DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers;
 
+
 //public class TraitCategoryDefinitionGeneratorHandler : BaseDefinitionHandler, IDefinitionHandler
 //{
 //    public string FileSubName => nameof(DestinyTraitCategoryDefinition);

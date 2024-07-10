@@ -46,7 +46,8 @@ public sealed record DestinyTalentNodeDefinition : IDeepEquatable<DestinyTalentN
     ///     allowed to be activated.
     /// </summary>
     [JsonPropertyName("prerequisiteNodeIndexes")]
-    public ReadOnlyCollection<int> PrerequisiteNodeIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
+    public ReadOnlyCollection<int> PrerequisiteNodeIndexes { get; init; } =
+        ReadOnlyCollections<int>.Empty;
 
     /// <summary>
     ///     At one point, Talent Nodes supported the idea of "Binary Pairs": nodes that overlapped each other visually, and
@@ -170,41 +171,52 @@ public sealed record DestinyTalentNodeDefinition : IDeepEquatable<DestinyTalentN
     [JsonPropertyName("ignoreForCompletion")]
     public bool IgnoreForCompletion { get; init; }
 
-    [JsonPropertyName("exclusiveSetHash")] public uint ExclusiveSetHash { get; init; }
-    [JsonPropertyName("groupScopeIndex")] public int GroupScopeIndex { get; init; }
+    [JsonPropertyName("exclusiveSetHash")]
+    public uint ExclusiveSetHash { get; init; }
+
+    [JsonPropertyName("groupScopeIndex")]
+    public int GroupScopeIndex { get; init; }
 
     [JsonPropertyName("isRealStepSelectionRandom")]
     public bool IsRealStepSelectionRandom { get; init; }
 
-    [JsonPropertyName("originalNodeHash")] public uint OriginalNodeHash { get; init; }
-    [JsonPropertyName("talentNodeTypes")] public int TalentNodeTypes { get; init; }
+    [JsonPropertyName("originalNodeHash")]
+    public uint OriginalNodeHash { get; init; }
+
+    [JsonPropertyName("talentNodeTypes")]
+    public int TalentNodeTypes { get; init; }
 
     public bool DeepEquals(DestinyTalentNodeDefinition other)
     {
-        return other != null &&
-               NodeIndex == other.NodeIndex &&
-               NodeHash == other.NodeHash &&
-               Row == other.Row &&
-               Column == other.Column &&
-               PrerequisiteNodeIndexes.DeepEqualsReadOnlySimpleCollection(other.PrerequisiteNodeIndexes) &&
-               BinaryPairNodeIndex == other.BinaryPairNodeIndex &&
-               AutoUnlocks == other.AutoUnlocks &&
-               LastStepRepeats == other.LastStepRepeats &&
-               IsRandom == other.IsRandom &&
-               RandomActivationRequirement.DeepEquals(other.RandomActivationRequirement) &&
-               IsRandomRepurchasable == other.IsRandomRepurchasable &&
-               Steps.DeepEqualsReadOnlyCollections(other.Steps) &&
-               ExclusiveWithNodeHashes.DeepEqualsReadOnlySimpleCollection(other.ExclusiveWithNodeHashes) &&
-               RandomStartProgressionBarAtProgression == other.RandomStartProgressionBarAtProgression &&
-               LayoutIdentifier == other.LayoutIdentifier &&
-               GroupHash == other.GroupHash &&
-               Lore.DeepEquals(other.Lore) &&
-               NodeStyleIdentifier == other.NodeStyleIdentifier &&
-               IgnoreForCompletion == other.IgnoreForCompletion &&
-               ExclusiveSetHash == other.ExclusiveSetHash &&
-               GroupScopeIndex == other.GroupScopeIndex &&
-               IsRealStepSelectionRandom == other.IsRealStepSelectionRandom &&
-               OriginalNodeHash == other.OriginalNodeHash &&
-               TalentNodeTypes == other.TalentNodeTypes;
+        return other != null
+            && NodeIndex == other.NodeIndex
+            && NodeHash == other.NodeHash
+            && Row == other.Row
+            && Column == other.Column
+            && PrerequisiteNodeIndexes.DeepEqualsReadOnlySimpleCollection(
+                other.PrerequisiteNodeIndexes
+            )
+            && BinaryPairNodeIndex == other.BinaryPairNodeIndex
+            && AutoUnlocks == other.AutoUnlocks
+            && LastStepRepeats == other.LastStepRepeats
+            && IsRandom == other.IsRandom
+            && RandomActivationRequirement.DeepEquals(other.RandomActivationRequirement)
+            && IsRandomRepurchasable == other.IsRandomRepurchasable
+            && Steps.DeepEqualsReadOnlyCollections(other.Steps)
+            && ExclusiveWithNodeHashes.DeepEqualsReadOnlySimpleCollection(
+                other.ExclusiveWithNodeHashes
+            )
+            && RandomStartProgressionBarAtProgression
+                == other.RandomStartProgressionBarAtProgression
+            && LayoutIdentifier == other.LayoutIdentifier
+            && GroupHash == other.GroupHash
+            && Lore.DeepEquals(other.Lore)
+            && NodeStyleIdentifier == other.NodeStyleIdentifier
+            && IgnoreForCompletion == other.IgnoreForCompletion
+            && ExclusiveSetHash == other.ExclusiveSetHash
+            && GroupScopeIndex == other.GroupScopeIndex
+            && IsRealStepSelectionRandom == other.IsRealStepSelectionRandom
+            && OriginalNodeHash == other.OriginalNodeHash
+            && TalentNodeTypes == other.TalentNodeTypes;
     }
 }

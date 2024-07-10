@@ -4,7 +4,8 @@ namespace DotNetBungieAPI.Models.Destiny.Components;
 
 public sealed record DestinyRecordComponent
 {
-    [JsonPropertyName("state")] public DestinyRecordState State { get; init; }
+    [JsonPropertyName("state")]
+    public DestinyRecordState State { get; init; }
 
     [JsonPropertyName("objectives")]
     public ReadOnlyCollection<DestinyObjectiveProgress> Objectives { get; init; } =
@@ -29,5 +30,6 @@ public sealed record DestinyRecordComponent
     ///     for regular record rewards, and not for interval objective rewards.
     /// </summary>
     [JsonPropertyName("rewardVisibilty")]
-    public ReadOnlyCollection<bool> RewardVisibilty { get; init; } = ReadOnlyCollections<bool>.Empty;
+    public ReadOnlyCollection<bool> RewardVisibilty { get; init; } =
+        ReadOnlyCollections<bool>.Empty;
 }

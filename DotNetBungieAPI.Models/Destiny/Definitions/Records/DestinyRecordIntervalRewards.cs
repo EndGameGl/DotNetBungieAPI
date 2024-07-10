@@ -8,7 +8,7 @@ public sealed record DestinyRecordIntervalRewards : IDeepEquatable<DestinyRecord
 
     public bool DeepEquals(DestinyRecordIntervalRewards other)
     {
-        return other != null &&
-               IntervalRewardItems.DeepEqualsReadOnlyCollections(other.IntervalRewardItems);
+        return other != null
+            && IntervalRewardItems.DeepEqualsReadOnlyCollections(other.IntervalRewardItems);
     }
 }

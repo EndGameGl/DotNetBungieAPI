@@ -26,7 +26,8 @@ namespace DotNetBungieAPI.Tests
             var witheringBladeDefinition =
                 await _definitionProviderFixture.DefinitionProvider.LoadDefinition<DestinyInventoryItemDefinition>(
                     1341767667,
-                    BungieLocales.EN);
+                    BungieLocales.EN
+                );
             Assert.NotNull(witheringBladeDefinition);
             Assert.Equal("Withering Blade", witheringBladeDefinition.DisplayProperties.Name);
         }
@@ -34,9 +35,11 @@ namespace DotNetBungieAPI.Tests
         [Fact]
         public async Task AssertHistoricalStatDefinitionLoads()
         {
-            var activitiesClearedDefinition = await _definitionProviderFixture.DefinitionProvider.LoadHistoricalStatsDefinition(
-                "activitiesCleared",
-                BungieLocales.EN);
+            var activitiesClearedDefinition =
+                await _definitionProviderFixture.DefinitionProvider.LoadHistoricalStatsDefinition(
+                    "activitiesCleared",
+                    BungieLocales.EN
+                );
             Assert.NotNull(activitiesClearedDefinition);
             Assert.Equal("Activities Cleared", activitiesClearedDefinition.StatName);
         }

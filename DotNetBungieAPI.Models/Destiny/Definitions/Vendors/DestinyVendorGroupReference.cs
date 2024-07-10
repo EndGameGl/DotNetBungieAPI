@@ -13,7 +13,6 @@ public sealed record DestinyVendorGroupReference : IDeepEquatable<DestinyVendorG
 
     public bool DeepEquals(DestinyVendorGroupReference other)
     {
-        return other != null &&
-               Group.DeepEquals(other.Group);
+        return other != null && Group.DeepEquals(other.Group);
     }
 }

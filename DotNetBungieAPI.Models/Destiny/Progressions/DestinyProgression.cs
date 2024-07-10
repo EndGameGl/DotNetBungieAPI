@@ -99,5 +99,6 @@ public record DestinyProgression
     ///     Information about historical rewards for this progression, if there is any data for it.
     /// </summary>
     [JsonPropertyName("rewardItemStates")]
-    public ReadOnlyCollection<DestinyProgressionRewardItemState> RewardItemStates { get; init; } = ReadOnlyCollections<DestinyProgressionRewardItemState>.Empty;
+    public ReadOnlyCollection<DestinyProgressionRewardItemState> RewardItemStates { get; init; } =
+        ReadOnlyCollections<DestinyProgressionRewardItemState>.Empty;
 }

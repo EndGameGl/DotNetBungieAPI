@@ -4,9 +4,12 @@ namespace DotNetBungieAPI.OpenApi.Models;
 
 public class Contact
 {
-    [JsonPropertyName("name")] public string Name { get; init; }
+    [JsonPropertyName("name")]
+    public string Name { get; init; }
 
-    [JsonPropertyName("url")] public string Url { get; init; }
+    [JsonPropertyName("url")]
+    public string Url { get; init; }
 
-    [JsonPropertyName("email")] public string Email { get; init; }
+    [JsonPropertyName("email")]
+    public string Email { get; init; }
 }

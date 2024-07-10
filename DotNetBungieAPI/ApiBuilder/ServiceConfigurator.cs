@@ -18,8 +18,7 @@ internal class ServiceConfigurator<TServiceInterface> : IServiceConfigurator<TSe
         _serviceCollection = serviceCollection;
     }
 
-    public void Use<TServiceImplementation, TOptions>(
-        Action<TOptions> configure)
+    public void Use<TServiceImplementation, TOptions>(Action<TOptions> configure)
         where TServiceImplementation : class, TServiceInterface
         where TOptions : class, new()
     {
@@ -30,7 +29,8 @@ internal class ServiceConfigurator<TServiceInterface> : IServiceConfigurator<TSe
         IsConfigured = true;
     }
 
-    public void Use<TServiceImplementation>() where TServiceImplementation : class, TServiceInterface
+    public void Use<TServiceImplementation>()
+        where TServiceImplementation : class, TServiceInterface
     {
         _serviceCollection.AddSingleton<TServiceInterface, TServiceImplementation>();
         IsConfigured = true;

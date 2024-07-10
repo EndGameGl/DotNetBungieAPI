@@ -29,7 +29,8 @@ public sealed record DestinyItemPlugDefinition : IDeepEquatable<DestinyItemPlugD
     [JsonPropertyName("plugCategoryIdentifier")]
     public string PlugCategoryIdentifier { get; init; }
 
-    [JsonPropertyName("plugCategoryHash")] public uint PlugCategory { get; init; }
+    [JsonPropertyName("plugCategoryHash")]
+    public uint PlugCategory { get; init; }
 
     /// <summary>
     ///     If you successfully socket the item, this will determine whether or not you get "refunded" on the plug.
@@ -42,8 +43,7 @@ public sealed record DestinyItemPlugDefinition : IDeepEquatable<DestinyItemPlugD
     ///     requirements.
     /// </summary>
     [JsonPropertyName("insertionMaterialRequirementHash")]
-    public DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>
-        InsertionMaterialRequirement { get; init; } =
+    public DefinitionHashPointer<DestinyMaterialRequirementSetDefinition> InsertionMaterialRequirement { get; init; } =
         DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>.Empty;
 
     /// <summary>
@@ -59,8 +59,7 @@ public sealed record DestinyItemPlugDefinition : IDeepEquatable<DestinyItemPlugD
     ///     there is one.
     /// </summary>
     [JsonPropertyName("enabledMaterialRequirementHash")]
-    public DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>
-        EnabledMaterialRequirement { get; init; } =
+    public DefinitionHashPointer<DestinyMaterialRequirementSetDefinition> EnabledMaterialRequirement { get; init; } =
         DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>.Empty;
 
     /// <summary>
@@ -83,7 +82,8 @@ public sealed record DestinyItemPlugDefinition : IDeepEquatable<DestinyItemPlugD
     [JsonPropertyName("uiPlugLabel")]
     public string UiPlugLabel { get; init; }
 
-    [JsonPropertyName("plugStyle")] public PlugUiStyles PlugStyle { get; init; }
+    [JsonPropertyName("plugStyle")]
+    public PlugUiStyles PlugStyle { get; init; }
 
     /// <summary>
     ///     Indicates the rules about when this plug can be used.
@@ -133,27 +133,35 @@ public sealed record DestinyItemPlugDefinition : IDeepEquatable<DestinyItemPlugD
 
     public bool DeepEquals(DestinyItemPlugDefinition other)
     {
-        return other != null &&
-               AlternatePlugStyle == other.AlternatePlugStyle &&
-               AlternateUiPlugLabel == other.AlternateUiPlugLabel &&
-               EnabledMaterialRequirement.DeepEquals(other.EnabledMaterialRequirement) &&
-               EnabledRules.DeepEqualsReadOnlyCollections(other.EnabledRules) &&
-               InsertionMaterialRequirement.DeepEquals(other.InsertionMaterialRequirement) &&
-               InsertionRules.DeepEqualsReadOnlyCollections(other.InsertionRules) &&
-               IsDummyPlug == other.IsDummyPlug &&
-               OnActionRecreateSelf == other.OnActionRecreateSelf &&
-               PlugAvailability == other.PlugAvailability &&
-               PlugCategory.Equals(other.PlugCategory) &&
-               PlugCategoryIdentifier == other.PlugCategoryIdentifier &&
-               PlugStyle == other.PlugStyle &&
-               PreviewItemOverride.DeepEquals(other.PreviewItemOverride) &&
-               UiPlugLabel == other.UiPlugLabel &&
-               (ParentItemOverride != null
-                   ? ParentItemOverride.DeepEquals(other.ParentItemOverride)
-                   : other.ParentItemOverride == null) &&
-               (EnergyCapacity != null
-                   ? EnergyCapacity.DeepEquals(other.EnergyCapacity)
-                   : other.EnergyCapacity == null) &&
-               (EnergyCost != null ? EnergyCost.DeepEquals(other.EnergyCost) : other.EnergyCost == null);
+        return other != null
+            && AlternatePlugStyle == other.AlternatePlugStyle
+            && AlternateUiPlugLabel == other.AlternateUiPlugLabel
+            && EnabledMaterialRequirement.DeepEquals(other.EnabledMaterialRequirement)
+            && EnabledRules.DeepEqualsReadOnlyCollections(other.EnabledRules)
+            && InsertionMaterialRequirement.DeepEquals(other.InsertionMaterialRequirement)
+            && InsertionRules.DeepEqualsReadOnlyCollections(other.InsertionRules)
+            && IsDummyPlug == other.IsDummyPlug
+            && OnActionRecreateSelf == other.OnActionRecreateSelf
+            && PlugAvailability == other.PlugAvailability
+            && PlugCategory.Equals(other.PlugCategory)
+            && PlugCategoryIdentifier == other.PlugCategoryIdentifier
+            && PlugStyle == other.PlugStyle
+            && PreviewItemOverride.DeepEquals(other.PreviewItemOverride)
+            && UiPlugLabel == other.UiPlugLabel
+            && (
+                ParentItemOverride != null
+                    ? ParentItemOverride.DeepEquals(other.ParentItemOverride)
+                    : other.ParentItemOverride == null
+            )
+            && (
+                EnergyCapacity != null
+                    ? EnergyCapacity.DeepEquals(other.EnergyCapacity)
+                    : other.EnergyCapacity == null
+            )
+            && (
+                EnergyCost != null
+                    ? EnergyCost.DeepEquals(other.EnergyCost)
+                    : other.EnergyCost == null
+            );
     }
 }

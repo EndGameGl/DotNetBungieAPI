@@ -6,7 +6,8 @@ public sealed class DefaultDestiny2DefinitionRepositoryConfiguration
 {
     private int _appConcurrencyLevel = Environment.ProcessorCount;
 
-    internal List<DefinitionsEnum> AllowedDefinitions { get; } = Enum.GetValues<DefinitionsEnum>().ToList();
+    internal List<DefinitionsEnum> AllowedDefinitions { get; } =
+        Enum.GetValues<DefinitionsEnum>().ToList();
 
     public int AppConcurrencyLevel
     {

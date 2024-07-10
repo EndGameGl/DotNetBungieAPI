@@ -6,8 +6,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 ///     Represents a socket that has a plug associated with it intrinsically. This is useful for situations where the
 ///     weapon needs to have a visual plug/Mod on it, but that plug/Mod should never change.
 /// </summary>
-public sealed record
-    DestinyItemIntrinsicSocketEntryDefinition : IDeepEquatable<DestinyItemIntrinsicSocketEntryDefinition>
+public sealed record DestinyItemIntrinsicSocketEntryDefinition
+    : IDeepEquatable<DestinyItemIntrinsicSocketEntryDefinition>
 {
     /// <summary>
     ///     If true, then this socket is visible in the item's "default" state. If you have an instance, you should always
@@ -34,9 +34,9 @@ public sealed record
 
     public bool DeepEquals(DestinyItemIntrinsicSocketEntryDefinition other)
     {
-        return other != null &&
-               DefaultVisible == other.DefaultVisible &&
-               PlugItem.DeepEquals(other.PlugItem) &&
-               SocketType.DeepEquals(other.SocketType);
+        return other != null
+            && DefaultVisible == other.DefaultVisible
+            && PlugItem.DeepEquals(other.PlugItem)
+            && SocketType.DeepEquals(other.SocketType);
     }
 }

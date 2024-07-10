@@ -8,8 +8,11 @@ public sealed record DestinyArtifactCharacterScoped
     public DefinitionHashPointer<DestinyArtifactDefinition> Artifact { get; init; } =
         DefinitionHashPointer<DestinyArtifactDefinition>.Empty;
 
-    [JsonPropertyName("pointsUsed")] public int PointsUsed { get; init; }
-    [JsonPropertyName("resetCount")] public int ResetCount { get; init; }
+    [JsonPropertyName("pointsUsed")]
+    public int PointsUsed { get; init; }
+
+    [JsonPropertyName("resetCount")]
+    public int ResetCount { get; init; }
 
     [JsonPropertyName("tiers")]
     public ReadOnlyCollection<DestinyArtifactTier> Tiers { get; init; } =

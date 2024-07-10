@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.Implementations.ServiceConfigurations
 {
-    internal class NullDefinitionProviderConfig
-    {
-    }
+    internal class NullDefinitionProviderConfig { }
 }

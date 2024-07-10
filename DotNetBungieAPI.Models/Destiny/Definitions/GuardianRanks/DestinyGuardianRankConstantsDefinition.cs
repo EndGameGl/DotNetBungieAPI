@@ -5,9 +5,13 @@ using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 namespace DotNetBungieAPI.Models.Destiny.Definitions.GuardianRanks;
 
 [DestinyDefinition(DefinitionsEnum.DestinyGuardianRankConstantsDefinition)]
-public sealed record DestinyGuardianRankConstantsDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyGuardianRankConstantsDefinition>
+public sealed record DestinyGuardianRankConstantsDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyGuardianRankConstantsDefinition>
 {
-    public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyGuardianRankConstantsDefinition;
+    public DefinitionsEnum DefinitionEnumValue =>
+        DefinitionsEnum.DestinyGuardianRankConstantsDefinition;
 
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -16,12 +20,14 @@ public sealed record DestinyGuardianRankConstantsDefinition : IDestinyDefinition
     public int RankCount { get; init; }
 
     [JsonPropertyName("guardianRankHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyGuardianRankDefinition>> GuardianRanks { get; init; }
-        = ReadOnlyCollections<DefinitionHashPointer<DestinyGuardianRankDefinition>>.Empty;
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyGuardianRankDefinition>
+    > GuardianRanks { get; init; } =
+        ReadOnlyCollections<DefinitionHashPointer<DestinyGuardianRankDefinition>>.Empty;
 
     [JsonPropertyName("rootNodeHash")]
-    public DefinitionHashPointer<DestinyPresentationNodeDefinition> RootNode { get; init; } 
-        = DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
+    public DefinitionHashPointer<DestinyPresentationNodeDefinition> RootNode { get; init; } =
+        DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
 
     [JsonPropertyName("iconBackgrounds")]
     public DestinyGuardianRankIconBackgroundsDefinition IconBackgrounds { get; init; }
@@ -40,15 +46,15 @@ public sealed record DestinyGuardianRankConstantsDefinition : IDestinyDefinition
 
     public bool DeepEquals(DestinyGuardianRankConstantsDefinition other)
     {
-        return other is not null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               RankCount == other.RankCount &&
-               GuardianRanks.DeepEqualsReadOnlyCollections(other.GuardianRanks) &&
-               RootNode.DeepEquals(other.RootNode) &&
-               IconBackgrounds.DeepEquals(other.IconBackgrounds) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other is not null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && RankCount == other.RankCount
+            && GuardianRanks.DeepEqualsReadOnlyCollections(other.GuardianRanks)
+            && RootNode.DeepEquals(other.RootNode)
+            && IconBackgrounds.DeepEquals(other.IconBackgrounds)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 }

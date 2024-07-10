@@ -13,7 +13,6 @@ public sealed record DestinyVendorServiceDefinition : IDeepEquatable<DestinyVend
 
     public bool DeepEquals(DestinyVendorServiceDefinition other)
     {
-        return other != null &&
-               Name == other.Name;
+        return other != null && Name == other.Name;
     }
 }

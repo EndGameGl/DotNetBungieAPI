@@ -1,8 +1,8 @@
-﻿using DotNetBungieAPI.Models.Authorization;
+﻿using System.Collections.Concurrent;
+using System.Threading.Tasks;
+using DotNetBungieAPI.Models.Authorization;
 using DotNetBungieAPI.Service.Abstractions;
 using Microsoft.Extensions.Logging;
-using System.Collections.Concurrent;
-using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.Implementations;
 
@@ -105,7 +105,7 @@ internal sealed class DefaultAuthorizationHandler : IAuthorizationHandler
             {
                 _logger.LogWarning("Error while disposing of auth awaiter {State}", state);
             }
-            
+
             return true;
         }
 

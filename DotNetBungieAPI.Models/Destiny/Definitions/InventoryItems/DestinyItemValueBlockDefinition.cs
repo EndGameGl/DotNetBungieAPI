@@ -12,7 +12,8 @@
 ///     It will likely be used in a number of other ways in the future, it appears to be a bucket where they put arbitrary
 ///     items and quantities into the item.
 /// </summary>
-public sealed record DestinyItemValueBlockDefinition : IDeepEquatable<DestinyItemValueBlockDefinition>
+public sealed record DestinyItemValueBlockDefinition
+    : IDeepEquatable<DestinyItemValueBlockDefinition>
 {
     /// <summary>
     ///     References to the items that make up this item's "value", and the quantity.
@@ -29,8 +30,8 @@ public sealed record DestinyItemValueBlockDefinition : IDeepEquatable<DestinyIte
 
     public bool DeepEquals(DestinyItemValueBlockDefinition other)
     {
-        return other != null &&
-               ItemValue.DeepEqualsReadOnlyCollections(other.ItemValue) &&
-               ValueDescription == other.ValueDescription;
+        return other != null
+            && ItemValue.DeepEqualsReadOnlyCollections(other.ItemValue)
+            && ValueDescription == other.ValueDescription;
     }
 }

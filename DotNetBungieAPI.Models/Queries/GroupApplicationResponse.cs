@@ -4,5 +4,6 @@ namespace DotNetBungieAPI.Models.Queries;
 
 public sealed record GroupApplicationResponse
 {
-    [JsonPropertyName("resolution")] public GroupApplicationResolveState Resolution { get; init; }
+    [JsonPropertyName("resolution")]
+    public GroupApplicationResolveState Resolution { get; init; }
 }

@@ -8,7 +8,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs;
 public sealed record DestinyActivityGraphDisplayProgressionDefinition
     : IDeepEquatable<DestinyActivityGraphDisplayProgressionDefinition>
 {
-    [JsonPropertyName("id")] public uint Id { get; init; }
+    [JsonPropertyName("id")]
+    public uint Id { get; init; }
 
     [JsonPropertyName("progressionHash")]
     public DefinitionHashPointer<DestinyProgressionDefinition> Progression { get; init; } =
@@ -16,8 +17,6 @@ public sealed record DestinyActivityGraphDisplayProgressionDefinition
 
     public bool DeepEquals(DestinyActivityGraphDisplayProgressionDefinition other)
     {
-        return other != null &&
-               Id == other.Id &&
-               Progression.DeepEquals(other.Progression);
+        return other != null && Id == other.Id && Progression.DeepEquals(other.Progression);
     }
 }

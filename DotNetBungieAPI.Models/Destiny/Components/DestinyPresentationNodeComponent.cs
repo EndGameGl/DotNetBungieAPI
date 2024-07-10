@@ -4,7 +4,8 @@ namespace DotNetBungieAPI.Models.Destiny.Components;
 
 public sealed record DestinyPresentationNodeComponent
 {
-    [JsonPropertyName("state")] public DestinyPresentationNodeState State { get; init; }
+    [JsonPropertyName("state")]
+    public DestinyPresentationNodeState State { get; init; }
 
     /// <summary>
     ///     An optional property: presentation nodes MAY have objectives, which can be used to infer more human readable data

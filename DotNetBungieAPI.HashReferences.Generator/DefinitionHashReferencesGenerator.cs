@@ -15,15 +15,18 @@ public class DefinitionHashReferencesGenerator
 
     private readonly IDefinitionHandler[] _handlers;
 
-    public DefinitionHashReferencesGenerator(IBungieClient bungieClient, string path, ILogger logger)
+    public DefinitionHashReferencesGenerator(
+        IBungieClient bungieClient,
+        string path,
+        ILogger logger
+    )
     {
         _bungieClient = bungieClient;
         _path = path;
         _logger = logger;
         _handlers = Assembly
             .GetAssembly(typeof(DefinitionHashReferencesGenerator))!
-            .DefinedTypes
-            .Where(x => x.ImplementedInterfaces.Contains(typeof(IDefinitionHandler)))
+            .DefinedTypes.Where(x => x.ImplementedInterfaces.Contains(typeof(IDefinitionHandler)))
             .Select(x => (IDefinitionHandler)Activator.CreateInstance(x)!)
             .ToArray()!;
     }
@@ -42,9 +45,12 @@ public class DefinitionHashReferencesGenerator
             stringBuilder.Clear();
             await CreateDefinitions(handler, stringBuilder);
         }
-        
+
         sw.Stop();
-        _logger.LogInformation("Generated all hash references in {time} ms", sw.ElapsedMilliseconds);
+        _logger.LogInformation(
+            "Generated all hash references in {time} ms",
+            sw.ElapsedMilliseconds
+        );
     }
 
     private void RunInitialValidation()
@@ -68,12 +74,15 @@ public class DefinitionHashReferencesGenerator
         await textWriter.WriteAsyncAndClear(stringBuilder);
         indentLevel++;
 
-        stringBuilder.AppendLineIndented(indentLevel, $"public static partial class {Helpers.ClassName}");
+        stringBuilder.AppendLineIndented(
+            indentLevel,
+            $"public static partial class {Helpers.ClassName}"
+        );
         stringBuilder.AppendLineIndented(indentLevel, $"{Helpers.OpenCurvyBrackets}");
-        
+
         await textWriter.WriteAsyncAndClear(stringBuilder);
         indentLevel++;
-        
+
         stringBuilder.AppendLineIndented(indentLevel, $"public static class {handler.ClassName}");
         stringBuilder.AppendLineIndented(indentLevel, $"{Helpers.OpenCurvyBrackets}");
         await textWriter.WriteAsyncAndClear(stringBuilder);
@@ -87,10 +96,14 @@ public class DefinitionHashReferencesGenerator
         stringBuilder.AppendLineIndented(indentLevel, $"{Helpers.CloseCurvyBrackets}");
         indentLevel--;
         stringBuilder.AppendLineIndented(indentLevel, $"{Helpers.CloseCurvyBrackets}");
-        
+
         await textWriter.WriteAsyncAndClear(stringBuilder);
         sw.Stop();
-        
-        _logger.LogInformation("Finished generating for {DefinitionType} in {Ms} ms", handler.FileSubName, sw.ElapsedMilliseconds);
+
+        _logger.LogInformation(
+            "Finished generating for {DefinitionType} in {Ms} ms",
+            handler.FileSubName,
+            sw.ElapsedMilliseconds
+        );
     }
 }

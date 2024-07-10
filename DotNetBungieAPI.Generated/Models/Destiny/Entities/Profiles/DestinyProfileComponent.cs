@@ -66,14 +66,20 @@ public class DestinyProfileComponent
     public uint? ActiveEventCardHash { get; set; }
 
     /// <summary>
-    ///     The 'current' Guardian Rank value, which starts at rank 1.
+    ///     The 'current' Guardian Rank value, which starts at rank 1. This rank value will drop at the start of a new season to your 'renewed' rank from the previous season.
     /// </summary>
     [JsonPropertyName("currentGuardianRank")]
     public int? CurrentGuardianRank { get; set; }
 
     /// <summary>
-    ///     The 'lifetime highest' Guardian Rank value, which starts at rank 1.
+    ///     The 'lifetime highest' Guardian Rank value, which starts at rank 1. This rank value should never go down.
     /// </summary>
     [JsonPropertyName("lifetimeHighestGuardianRank")]
     public int? LifetimeHighestGuardianRank { get; set; }
+
+    /// <summary>
+    ///     The seasonal 'renewed' Guardian Rank value. This rank value resets at the start of each new season to the highest-earned non-advanced rank.
+    /// </summary>
+    [JsonPropertyName("renewedGuardianRank")]
+    public int? RenewedGuardianRank { get; set; }
 }

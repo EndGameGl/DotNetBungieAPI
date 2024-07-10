@@ -50,7 +50,8 @@ public sealed record DestinyItemPlugComponent
     ///     This list will be empty if the plug can be inserted.
     /// </summary>
     [JsonPropertyName("insertFailIndexes")]
-    public ReadOnlyCollection<int> InsertFailIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
+    public ReadOnlyCollection<int> InsertFailIndexes { get; init; } =
+        ReadOnlyCollections<int>.Empty;
 
     /// <summary>
     ///     If a plug is not enabled, this will be populated with indexes into the plug item definition's plug.enabledRules
@@ -59,5 +60,6 @@ public sealed record DestinyItemPlugComponent
     ///     This list will be empty if the plug is enabled.
     /// </summary>
     [JsonPropertyName("enableFailIndexes")]
-    public ReadOnlyCollection<int> EnableFailIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
+    public ReadOnlyCollection<int> EnableFailIndexes { get; init; } =
+        ReadOnlyCollections<int>.Empty;
 }

@@ -1,7 +1,7 @@
-﻿using DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers.Interfaces;
+﻿using System.Text;
+using DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers.Interfaces;
 using DotNetBungieAPI.Models.Destiny.Definitions.Loadouts;
 using DotNetBungieAPI.Service.Abstractions;
-using System.Text;
 
 namespace DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers;
 
@@ -14,7 +14,8 @@ internal class LoadoutColorDefinitionGeneratorHandler : BaseDefinitionHandler, I
         IBungieClient bungieClient,
         TextWriter textWriter,
         StringBuilder stringBuilder,
-        int indentation)
+        int indentation
+    )
     {
         var definitionCacheLookup = new Dictionary<string, uint>();
 
@@ -25,9 +26,12 @@ internal class LoadoutColorDefinitionGeneratorHandler : BaseDefinitionHandler, I
 
         foreach (var (key, value) in definitionCacheLookup)
         {
-            await textWriter.WriteLineAsync(StringExtensions.GetIndentedString(
-                indentation,
-                $"public const uint {key} = {value};"));
+            await textWriter.WriteLineAsync(
+                StringExtensions.GetIndentedString(
+                    indentation,
+                    $"public const uint {key} = {value};"
+                )
+            );
         }
     }
 }

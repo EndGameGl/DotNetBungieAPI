@@ -26,10 +26,7 @@ public class MethodData
     public ObjectTypeData? RequestBody { get; }
     public bool RequestBodyIsPlain { get; }
 
-    public MethodData(
-        string template,
-        OpenApiPath openApiPath,
-        Models.OpenApi openApi)
+    public MethodData(string template, OpenApiPath openApiPath, Models.OpenApi openApi)
     {
         Path = template;
         OpenApiPathMethodInfo? method = null;
@@ -52,7 +49,8 @@ public class MethodData
 
         var responseTypeReference = method.Responses["200"].TypeReference.GetFullTypeName();
         var response = openApi.Components.Responses[responseTypeReference];
-        Response = (ObjectTypeData)TypeData.CreateTypeData(responseTypeReference, response.Content.Schema);
+        Response = (ObjectTypeData)
+            TypeData.CreateTypeData(responseTypeReference, response.Content.Schema);
 
         PathParameters = new List<MethodParameterData>();
         QueryParameters = new List<MethodParameterData>();
@@ -69,7 +67,7 @@ public class MethodData
                 };
                 PathParameters.Add(paramMetadata);
             }
-            
+
             foreach (var parameter in method.Parameters.Where(x => x.In == "query"))
             {
                 var paramMetadata = new MethodParameterData()
@@ -82,14 +80,24 @@ public class MethodData
             }
         }
 
-        if (Method == "POST" && method.RequestBody is not null && method.RequestBody.Content.TryGetValue("application/json", out var bodyTypeRef))
+        if (
+            Method == "POST"
+            && method.RequestBody is not null
+            && method.RequestBody.Content.TryGetValue("application/json", out var bodyTypeRef)
+        )
         {
             if (bodyTypeRef.Schema.Type is "array")
             {
-                RequestBody = new ObjectTypeData("", new OpenApiComponentSchema()
-                {
-                    Properties = new Dictionary<string, OpenApiComponentSchema>() { { "", bodyTypeRef.Schema } }
-                });
+                RequestBody = new ObjectTypeData(
+                    "",
+                    new OpenApiComponentSchema()
+                    {
+                        Properties = new Dictionary<string, OpenApiComponentSchema>()
+                        {
+                            { "", bodyTypeRef.Schema }
+                        }
+                    }
+                );
                 RequestBodyIsPlain = true;
             }
             else

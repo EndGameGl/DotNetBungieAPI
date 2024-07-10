@@ -2,9 +2,11 @@
 
 public sealed record InterpolationPoint : IDeepEquatable<InterpolationPoint>
 {
-    [JsonPropertyName("value")] public int Value { get; init; }
+    [JsonPropertyName("value")]
+    public int Value { get; init; }
 
-    [JsonPropertyName("weight")] public int Weight { get; init; }
+    [JsonPropertyName("weight")]
+    public int Weight { get; init; }
 
     public bool DeepEquals(InterpolationPoint other)
     {

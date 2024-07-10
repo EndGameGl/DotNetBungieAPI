@@ -4,7 +4,8 @@ public static class ReadOnlyCollectionExtensions
 {
     public static bool DeepEqualsReadOnlySimpleCollection<T>(
         this ReadOnlyCollection<T> compared,
-        ReadOnlyCollection<T> comparedWith)
+        ReadOnlyCollection<T> comparedWith
+    )
     {
         if (compared.Count != comparedWith.Count)
             return false;
@@ -17,7 +18,9 @@ public static class ReadOnlyCollectionExtensions
 
     public static bool DeepEqualsReadOnlyCollections<T>(
         this ReadOnlyCollection<T> compared,
-        ReadOnlyCollection<T> comparedWith) where T : IDeepEquatable<T>
+        ReadOnlyCollection<T> comparedWith
+    )
+        where T : IDeepEquatable<T>
     {
         if (compared.Count != comparedWith.Count)
             return false;

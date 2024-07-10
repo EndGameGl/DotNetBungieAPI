@@ -45,10 +45,10 @@ public sealed record DestinyStatDisplayDefinition : IDeepEquatable<DestinyStatDi
 
     public bool DeepEquals(DestinyStatDisplayDefinition other)
     {
-        return other != null &&
-               DisplayAsNumeric == other.DisplayAsNumeric &&
-               DisplayInterpolation.DeepEqualsReadOnlyCollections(other.DisplayInterpolation) &&
-               MaximumValue == other.MaximumValue &&
-               Stat.DeepEquals(other.Stat);
+        return other != null
+            && DisplayAsNumeric == other.DisplayAsNumeric
+            && DisplayInterpolation.DeepEqualsReadOnlyCollections(other.DisplayInterpolation)
+            && MaximumValue == other.MaximumValue
+            && Stat.DeepEquals(other.Stat);
     }
 }

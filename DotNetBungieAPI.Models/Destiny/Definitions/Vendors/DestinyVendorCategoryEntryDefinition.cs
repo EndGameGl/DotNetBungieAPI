@@ -3,7 +3,8 @@
 /// <summary>
 ///     This is the definition for a single Vendor Category, into which Sale Items are grouped.
 /// </summary>
-public sealed record DestinyVendorCategoryEntryDefinition : IDeepEquatable<DestinyVendorCategoryEntryDefinition>
+public sealed record DestinyVendorCategoryEntryDefinition
+    : IDeepEquatable<DestinyVendorCategoryEntryDefinition>
 {
     /// <summary>
     ///     The localized string for making purchases from this category, if it is different from the vendor's string for
@@ -86,7 +87,8 @@ public sealed record DestinyVendorCategoryEntryDefinition : IDeepEquatable<Desti
     ///     runtime.
     /// </summary>
     [JsonPropertyName("vendorItemIndexes")]
-    public ReadOnlyCollection<int> VendorItemIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
+    public ReadOnlyCollection<int> VendorItemIndexes { get; init; } =
+        ReadOnlyCollections<int>.Empty;
 
     /// <summary>
     ///     The localized title of the category.
@@ -102,22 +104,22 @@ public sealed record DestinyVendorCategoryEntryDefinition : IDeepEquatable<Desti
 
     public bool DeepEquals(DestinyVendorCategoryEntryDefinition other)
     {
-        return other != null &&
-               BuyStringOverride == other.BuyStringOverride &&
-               CategoryHash == other.CategoryHash &&
-               CategoryIndex == other.CategoryIndex &&
-               DisabledDescription == other.DisabledDescription &&
-               HideFromRegularPurchase == other.HideFromRegularPurchase &&
-               HideIfNoCurrency == other.HideIfNoCurrency &&
-               IsDisplayOnly == other.IsDisplayOnly &&
-               IsPreview == other.IsPreview &&
-               QuantityAvailable == other.QuantityAvailable &&
-               ResetIntervalMinutesOverride == other.ResetIntervalMinutesOverride &&
-               ResetOffsetMinutesOverride == other.ResetOffsetMinutesOverride &&
-               ShowUnavailableItems == other.ShowUnavailableItems &&
-               SortValue == other.SortValue &&
-               VendorItemIndexes.DeepEqualsReadOnlySimpleCollection(other.VendorItemIndexes) &&
-               DisplayTitle == other.DisplayTitle &&
-               Overlay.DeepEquals(other.Overlay);
+        return other != null
+            && BuyStringOverride == other.BuyStringOverride
+            && CategoryHash == other.CategoryHash
+            && CategoryIndex == other.CategoryIndex
+            && DisabledDescription == other.DisabledDescription
+            && HideFromRegularPurchase == other.HideFromRegularPurchase
+            && HideIfNoCurrency == other.HideIfNoCurrency
+            && IsDisplayOnly == other.IsDisplayOnly
+            && IsPreview == other.IsPreview
+            && QuantityAvailable == other.QuantityAvailable
+            && ResetIntervalMinutesOverride == other.ResetIntervalMinutesOverride
+            && ResetOffsetMinutesOverride == other.ResetOffsetMinutesOverride
+            && ShowUnavailableItems == other.ShowUnavailableItems
+            && SortValue == other.SortValue
+            && VendorItemIndexes.DeepEqualsReadOnlySimpleCollection(other.VendorItemIndexes)
+            && DisplayTitle == other.DisplayTitle
+            && Overlay.DeepEquals(other.Overlay);
     }
 }

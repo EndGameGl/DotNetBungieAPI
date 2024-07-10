@@ -6,7 +6,8 @@ public sealed record Series
     ///     Collection of samples with time and value.
     /// </summary>
     [JsonPropertyName("datapoints")]
-    public ReadOnlyCollection<Datapoint> Datapoints { get; init; } = ReadOnlyCollections<Datapoint>.Empty;
+    public ReadOnlyCollection<Datapoint> Datapoints { get; init; } =
+        ReadOnlyCollections<Datapoint>.Empty;
 
     /// <summary>
     ///     Target to which to datapoints apply.

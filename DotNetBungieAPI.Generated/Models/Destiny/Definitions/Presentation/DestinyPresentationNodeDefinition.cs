@@ -32,6 +32,12 @@ public class DestinyPresentationNodeDefinition
     public Destiny.DestinyPresentationNodeType? NodeType { get; set; }
 
     /// <summary>
+    ///     Primarily for Guardian Ranks, this property if the contents of this node are tied to the current season. These nodes are shown with a different color for the in-game Guardian Ranks display.
+    /// </summary>
+    [JsonPropertyName("isSeasonal")]
+    public bool? IsSeasonal { get; set; }
+
+    /// <summary>
     ///     Indicates whether this presentation node's state is determined on a per-character or on an account-wide basis.
     /// </summary>
     [JsonPropertyName("scope")]

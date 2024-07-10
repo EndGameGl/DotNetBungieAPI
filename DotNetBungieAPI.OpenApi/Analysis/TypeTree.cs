@@ -24,12 +24,28 @@ public class TypeTree
         var elements = path.Split('.');
         if (elements.Length == 1)
         {
-            Nodes.TryAdd(elements[0], new TreeNode() { IsType = true, Name = elements[0], IsFolder = false });
+            Nodes.TryAdd(
+                elements[0],
+                new TreeNode()
+                {
+                    IsType = true,
+                    Name = elements[0],
+                    IsFolder = false
+                }
+            );
         }
         else
         {
             var leftovers = elements[1..];
-            Nodes.TryAdd(elements[0], new TreeNode() { IsType = false, Name = elements[0], IsFolder = true });
+            Nodes.TryAdd(
+                elements[0],
+                new TreeNode()
+                {
+                    IsType = false,
+                    Name = elements[0],
+                    IsFolder = true
+                }
+            );
             Nodes[elements[0]].AddKey(string.Join('.', leftovers));
         }
     }

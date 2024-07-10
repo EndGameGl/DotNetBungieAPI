@@ -6,7 +6,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 ///     Items that can be equipped define this block. It contains information we need to understand how and when the item
 ///     can be equipped.
 /// </summary>
-public sealed record DestinyEquippingBlockDefinition : IDeepEquatable<DestinyEquippingBlockDefinition>
+public sealed record DestinyEquippingBlockDefinition
+    : IDeepEquatable<DestinyEquippingBlockDefinition>
 {
     /// <summary>
     ///     If the item is part of a gearset, this is a reference to that gearset item.
@@ -33,7 +34,8 @@ public sealed record DestinyEquippingBlockDefinition : IDeepEquatable<DestinyEqu
     ///     trying to equip the item. They match up one-to-one with requiredUnlockExpressions.
     /// </summary>
     [JsonPropertyName("displayStrings")]
-    public ReadOnlyCollection<string> DisplayStrings { get; init; } = ReadOnlyCollections<string>.Empty;
+    public ReadOnlyCollection<string> DisplayStrings { get; init; } =
+        ReadOnlyCollections<string>.Empty;
 
     /// <summary>
     ///     An equipped item *must* be equipped in an Equipment Slot.
@@ -45,7 +47,8 @@ public sealed record DestinyEquippingBlockDefinition : IDeepEquatable<DestinyEqu
     [JsonPropertyName("equippingSoundHash")]
     public uint EquippingSoundHash { get; init; }
 
-    [JsonPropertyName("hornSoundHash")] public uint HornSoundHash { get; init; }
+    [JsonPropertyName("hornSoundHash")]
+    public uint HornSoundHash { get; init; }
 
     /// <summary>
     ///     If defined, this is the label used to check if the item has other items of matching types already equipped.
@@ -65,15 +68,15 @@ public sealed record DestinyEquippingBlockDefinition : IDeepEquatable<DestinyEqu
 
     public bool DeepEquals(DestinyEquippingBlockDefinition other)
     {
-        return other != null &&
-               GearsetItem.DeepEquals(other.GearsetItem) &&
-               AmmoType == other.AmmoType &&
-               Attributes == other.Attributes &&
-               DisplayStrings.DeepEqualsReadOnlySimpleCollection(other.DisplayStrings) &&
-               EquipmentSlotType.DeepEquals(other.EquipmentSlotType) &&
-               EquippingSoundHash == other.EquippingSoundHash &&
-               HornSoundHash == other.HornSoundHash &&
-               UniqueLabel == other.UniqueLabel &&
-               UniqueLabelHash == other.UniqueLabelHash;
+        return other != null
+            && GearsetItem.DeepEquals(other.GearsetItem)
+            && AmmoType == other.AmmoType
+            && Attributes == other.Attributes
+            && DisplayStrings.DeepEqualsReadOnlySimpleCollection(other.DisplayStrings)
+            && EquipmentSlotType.DeepEquals(other.EquipmentSlotType)
+            && EquippingSoundHash == other.EquippingSoundHash
+            && HornSoundHash == other.HornSoundHash
+            && UniqueLabel == other.UniqueLabel
+            && UniqueLabelHash == other.UniqueLabelHash;
     }
 }

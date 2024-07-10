@@ -12,7 +12,10 @@ namespace DotNetBungieAPI.Services.Implementations;
 internal sealed class DefaultDestiny2DefinitionRepository : IDestiny2DefinitionRepository
 {
     private readonly DefaultDestiny2DefinitionRepositoryConfiguration _configuration;
-    private readonly ConcurrentDictionary<BungieLocales,DestinyDefinitionsRepository> _localisedRepositories;
+    private readonly ConcurrentDictionary<
+        BungieLocales,
+        DestinyDefinitionsRepository
+    > _localisedRepositories;
     private readonly IBungieClientConfiguration _bungieClientConfiguration;
     private readonly ILogger<DefaultDestiny2DefinitionRepository> _logger;
 

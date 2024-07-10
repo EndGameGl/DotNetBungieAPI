@@ -5,23 +5,28 @@
 /// </summary>
 public sealed record DestinyColor : IDeepEquatable<DestinyColor>
 {
-    [JsonPropertyName("colorHash")] public uint ColorHash { get; init; }
+    [JsonPropertyName("colorHash")]
+    public uint ColorHash { get; init; }
 
-    [JsonPropertyName("alpha")] public byte Alpha { get; init; }
+    [JsonPropertyName("alpha")]
+    public byte Alpha { get; init; }
 
-    [JsonPropertyName("blue")] public byte Blue { get; init; }
+    [JsonPropertyName("blue")]
+    public byte Blue { get; init; }
 
-    [JsonPropertyName("green")] public byte Green { get; init; }
+    [JsonPropertyName("green")]
+    public byte Green { get; init; }
 
-    [JsonPropertyName("red")] public byte Red { get; init; }
+    [JsonPropertyName("red")]
+    public byte Red { get; init; }
 
     public bool DeepEquals(DestinyColor other)
     {
-        return other != null &&
-               ColorHash == other.ColorHash &&
-               Alpha == other.Alpha &&
-               Blue == other.Blue &&
-               Green == other.Green &&
-               Red == other.Red;
+        return other != null
+            && ColorHash == other.ColorHash
+            && Alpha == other.Alpha
+            && Blue == other.Blue
+            && Green == other.Green
+            && Red == other.Red;
     }
 }

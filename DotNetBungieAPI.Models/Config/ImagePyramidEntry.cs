@@ -7,7 +7,7 @@ public sealed record ImagePyramidEntry
     /// </summary>
     [JsonPropertyName("name")]
     public string Name { get; init; }
-    
+
     /// <summary>
     ///     The factor by which the original image size has been reduced.
     /// </summary>

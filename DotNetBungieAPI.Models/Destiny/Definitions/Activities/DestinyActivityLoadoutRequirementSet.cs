@@ -1,6 +1,7 @@
 ﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 
-public sealed record DestinyActivityLoadoutRequirementSet : IDeepEquatable<DestinyActivityLoadoutRequirementSet>
+public sealed record DestinyActivityLoadoutRequirementSet
+    : IDeepEquatable<DestinyActivityLoadoutRequirementSet>
 {
     /// <summary>
     ///     The set of requirements that will be applied on the activity if this requirement set is active.

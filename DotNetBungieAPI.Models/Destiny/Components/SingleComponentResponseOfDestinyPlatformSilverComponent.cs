@@ -2,5 +2,6 @@
 
 public sealed record SingleComponentResponseOfDestinyPlatformSilverComponent : ComponentResponse
 {
-    [JsonPropertyName("data")] public DestinyPlatformSilverComponent Data { get; init; }
+    [JsonPropertyName("data")]
+    public DestinyPlatformSilverComponent Data { get; init; }
 }

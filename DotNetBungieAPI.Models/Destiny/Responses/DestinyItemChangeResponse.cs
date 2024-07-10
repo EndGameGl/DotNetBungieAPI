@@ -4,7 +4,8 @@ namespace DotNetBungieAPI.Models.Destiny.Responses;
 
 public sealed record DestinyItemChangeResponse
 {
-    [JsonPropertyName("item")] public DestinyItemResponse Item { get; init; }
+    [JsonPropertyName("item")]
+    public DestinyItemResponse Item { get; init; }
 
     /// <summary>
     ///     Items that appeared in the inventory possibly as a result of an action.

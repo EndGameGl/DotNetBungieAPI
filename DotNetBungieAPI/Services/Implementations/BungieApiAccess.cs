@@ -18,7 +18,8 @@ internal sealed class BungieApiAccess : IBungieApiAccess
         ITrendingMethodsAccess trendingMethodsAccess,
         IMiscMethodsAccess miscMethodsAccess,
         ISocialMethodsAccess socialMethodsAccess,
-        IRenderApiAccess renderApiAccess)
+        IRenderApiAccess renderApiAccess
+    )
     {
         App = appMethodsAccess;
         User = userMethodsAccess;

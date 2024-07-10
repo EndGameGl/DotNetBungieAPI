@@ -6,15 +6,11 @@ namespace DotNetBungieAPI.Clients;
 
 public sealed class BungieClientConfiguration : IBungieClientConfiguration
 {
-
     private string _apiKey;
     private int _clientId;
     private string _clientSecret;
 
-    public BungieClientConfiguration()
-    {
-        
-    }
+    public BungieClientConfiguration() { }
 
     /// <summary>
     ///     Application API key. You can find one at https://www.bungie.net/en/Application.
@@ -52,7 +48,7 @@ public sealed class BungieClientConfiguration : IBungieClientConfiguration
     ///     Caches definitions to repository if not present currently after fetching from provider.
     /// </summary>
     public bool CacheDefinitions { get; set; }
-    
+
     /// <summary>
     ///     Locales that'll be used in this app
     /// </summary>

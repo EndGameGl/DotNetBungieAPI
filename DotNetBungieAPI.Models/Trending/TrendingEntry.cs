@@ -11,7 +11,8 @@ public sealed record TrendingEntry
     [JsonPropertyName("weight")]
     public double Weight { get; init; }
 
-    [JsonPropertyName("isFeatured")] public bool IsFeatured { get; init; }
+    [JsonPropertyName("isFeatured")]
+    public bool IsFeatured { get; init; }
 
     /// <summary>
     ///     We don't know whether the identifier will be a string, a uint, or a long... so we're going to cast it all to a
@@ -39,13 +40,17 @@ public sealed record TrendingEntry
     [JsonPropertyName("tagline")]
     public string Tagline { get; init; }
 
-    [JsonPropertyName("image")] public string Image { get; init; }
+    [JsonPropertyName("image")]
+    public string Image { get; init; }
 
-    [JsonPropertyName("startDate")] public DateTime? StartDate { get; init; }
+    [JsonPropertyName("startDate")]
+    public DateTime? StartDate { get; init; }
 
-    [JsonPropertyName("endDate")] public DateTime? EndDate { get; init; }
+    [JsonPropertyName("endDate")]
+    public DateTime? EndDate { get; init; }
 
-    [JsonPropertyName("link")] public string Link { get; init; }
+    [JsonPropertyName("link")]
+    public string Link { get; init; }
 
     /// <summary>
     ///     If this is populated, the entry has a related WebM video to show. I am 100% certain I am going to regret putting
@@ -73,7 +78,8 @@ public sealed record TrendingEntry
     ///     within it. This is the ordered list of those to display under the Container's header.
     /// </summary>
     [JsonPropertyName("items")]
-    public ReadOnlyCollection<TrendingEntry> Items { get; init; } = ReadOnlyCollections<TrendingEntry>.Empty;
+    public ReadOnlyCollection<TrendingEntry> Items { get; init; } =
+        ReadOnlyCollections<TrendingEntry>.Empty;
 
     /// <summary>
     ///     If the entry has a date at which it was created, this is that date.

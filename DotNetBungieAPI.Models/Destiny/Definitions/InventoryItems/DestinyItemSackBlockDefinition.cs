@@ -19,17 +19,22 @@ public sealed record DestinyItemSackBlockDefinition : IDeepEquatable<DestinyItem
     [JsonPropertyName("openAction")]
     public string OpenAction { get; init; }
 
-    [JsonPropertyName("selectItemCount")] public int SelectItemCount { get; init; }
-    [JsonPropertyName("vendorSackType")] public string VendorSackType { get; init; }
-    [JsonPropertyName("openOnAcquire")] public bool OpenOnAcquire { get; init; }
+    [JsonPropertyName("selectItemCount")]
+    public int SelectItemCount { get; init; }
+
+    [JsonPropertyName("vendorSackType")]
+    public string VendorSackType { get; init; }
+
+    [JsonPropertyName("openOnAcquire")]
+    public bool OpenOnAcquire { get; init; }
 
     public bool DeepEquals(DestinyItemSackBlockDefinition other)
     {
-        return other != null &&
-               DetailAction == other.DetailAction &&
-               OpenAction == other.OpenAction &&
-               SelectItemCount == other.SelectItemCount &&
-               VendorSackType == other.VendorSackType &&
-               OpenOnAcquire == other.OpenOnAcquire;
+        return other != null
+            && DetailAction == other.DetailAction
+            && OpenAction == other.OpenAction
+            && SelectItemCount == other.SelectItemCount
+            && VendorSackType == other.VendorSackType
+            && OpenOnAcquire == other.OpenOnAcquire;
     }
 }

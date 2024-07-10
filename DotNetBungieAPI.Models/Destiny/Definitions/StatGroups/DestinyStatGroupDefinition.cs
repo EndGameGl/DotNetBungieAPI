@@ -16,7 +16,9 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.StatGroups;
 ///     stat modifiers on Talent Grids and Socket Plugs)
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyStatGroupDefinition)]
-public sealed record DestinyStatGroupDefinition : IDestinyDefinition, IDeepEquatable<DestinyStatGroupDefinition>
+public sealed record DestinyStatGroupDefinition
+    : IDestinyDefinition,
+        IDeepEquatable<DestinyStatGroupDefinition>
 {
     /// <summary>
     ///     The maximum possible value that any stat in this group can be transformed into.
@@ -59,20 +61,28 @@ public sealed record DestinyStatGroupDefinition : IDestinyDefinition, IDeepEquat
 
     public bool DeepEquals(DestinyStatGroupDefinition other)
     {
-        return other != null &&
-               MaximumValue == other.MaximumValue &&
-               UiPosition == other.UiPosition &&
-               ScaledStats.DeepEqualsReadOnlyCollections(other.ScaledStats) &&
-               Overrides.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue(other.Overrides) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && MaximumValue == other.MaximumValue
+            && UiPosition == other.UiPosition
+            && ScaledStats.DeepEqualsReadOnlyCollections(other.ScaledStats)
+            && Overrides.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue(other.Overrides)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyStatGroupDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

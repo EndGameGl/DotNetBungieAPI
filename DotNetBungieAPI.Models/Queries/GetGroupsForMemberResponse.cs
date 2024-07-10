@@ -9,5 +9,6 @@ public sealed record GetGroupsForMemberResponse : SearchResultBase
         ReadOnlyDictionaries<long, bool>.Empty;
 
     [JsonPropertyName("results")]
-    public ReadOnlyCollection<GroupMembership> Results { get; init; } = ReadOnlyCollections<GroupMembership>.Empty;
+    public ReadOnlyCollection<GroupMembership> Results { get; init; } =
+        ReadOnlyCollections<GroupMembership>.Empty;
 }

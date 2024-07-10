@@ -29,7 +29,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 ///     DestinyActivityTypeDefinition for more information.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyActivityDefinition)]
-public sealed record DestinyActivityDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyActivityDefinition>
+public sealed record DestinyActivityDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyActivityDefinition>
 {
     /// <summary>
     ///     The title, subtitle, and icon for the activity. We do a little post-processing on this to try and account for
@@ -214,7 +217,9 @@ public sealed record DestinyActivityDefinition : IDestinyDefinition, IDisplayPro
     ///     The activity modes
     /// </summary>
     [JsonPropertyName("activityModeHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>> ActivityModes { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyActivityModeDefinition>
+    > ActivityModes { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModeDefinition>>.Empty;
 
     /// <summary>
@@ -262,50 +267,72 @@ public sealed record DestinyActivityDefinition : IDestinyDefinition, IDisplayPro
 
     public bool DeepEquals(DestinyActivityDefinition other)
     {
-        return other != null &&
-               ActivityGraphList.DeepEqualsReadOnlyCollections(other.ActivityGraphList) &&
-               ActivityLevel == other.ActivityLevel &&
-               ActivityLightLevel == other.ActivityLightLevel &&
-               ActivityLocationMappings.DeepEqualsReadOnlyCollections(other.ActivityLocationMappings) &&
-               ActivityModes.DeepEqualsReadOnlyCollections(other.ActivityModes) &&
-               ActivityModeTypes.DeepEqualsReadOnlySimpleCollection(other.ActivityModeTypes) &&
-               ActivityType.DeepEquals(other.ActivityType) &&
-               Challenges.DeepEqualsReadOnlyCollections(other.Challenges) &&
-               CompletionUnlockHash == other.CompletionUnlockHash &&
-               Destination.DeepEquals(other.Destination) &&
-               DirectActivityMode.DeepEquals(other.DirectActivityMode) &&
-               DirectActivityModeType == other.DirectActivityModeType &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               (GuidedGame != null ? GuidedGame.DeepEquals(other.GuidedGame) : other.GuidedGame == null) &&
-               InheritFromFreeRoam == other.InheritFromFreeRoam &&
-               InsertionPoints.DeepEqualsReadOnlyCollections(other.InsertionPoints) &&
-               IsPlaylist == other.IsPlaylist &&
-               IsPvP == other.IsPvP &&
-               (Matchmaking != null ? Matchmaking.DeepEquals(other.Matchmaking) : other.Matchmaking == null) &&
-               Modifiers.DeepEqualsReadOnlyCollections(other.Modifiers) &&
-               OptionalUnlockStrings.DeepEqualsReadOnlyCollections(other.OptionalUnlockStrings) &&
-               OriginalDisplayProperties.DeepEquals(other.OriginalDisplayProperties) &&
-               PgcrImage == other.PgcrImage &&
-               Place.DeepEquals(other.Place) &&
-               PlaylistItems.DeepEqualsReadOnlyCollections(other.PlaylistItems) &&
-               ReleaseIcon == other.ReleaseIcon &&
-               ReleaseTime == other.ReleaseTime &&
-               Rewards.DeepEqualsReadOnlyCollections(other.Rewards) &&
-               (SelectionScreenDisplayProperties != null
-                   ? SelectionScreenDisplayProperties.DeepEquals(other.SelectionScreenDisplayProperties)
-                   : other.SelectionScreenDisplayProperties == null) &&
-               SuppressOtherRewards == other.SuppressOtherRewards &&
-               Tier == other.Tier &&
-               Loadouts.DeepEqualsReadOnlyCollections(other.Loadouts) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && ActivityGraphList.DeepEqualsReadOnlyCollections(other.ActivityGraphList)
+            && ActivityLevel == other.ActivityLevel
+            && ActivityLightLevel == other.ActivityLightLevel
+            && ActivityLocationMappings.DeepEqualsReadOnlyCollections(
+                other.ActivityLocationMappings
+            )
+            && ActivityModes.DeepEqualsReadOnlyCollections(other.ActivityModes)
+            && ActivityModeTypes.DeepEqualsReadOnlySimpleCollection(other.ActivityModeTypes)
+            && ActivityType.DeepEquals(other.ActivityType)
+            && Challenges.DeepEqualsReadOnlyCollections(other.Challenges)
+            && CompletionUnlockHash == other.CompletionUnlockHash
+            && Destination.DeepEquals(other.Destination)
+            && DirectActivityMode.DeepEquals(other.DirectActivityMode)
+            && DirectActivityModeType == other.DirectActivityModeType
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && (
+                GuidedGame != null
+                    ? GuidedGame.DeepEquals(other.GuidedGame)
+                    : other.GuidedGame == null
+            )
+            && InheritFromFreeRoam == other.InheritFromFreeRoam
+            && InsertionPoints.DeepEqualsReadOnlyCollections(other.InsertionPoints)
+            && IsPlaylist == other.IsPlaylist
+            && IsPvP == other.IsPvP
+            && (
+                Matchmaking != null
+                    ? Matchmaking.DeepEquals(other.Matchmaking)
+                    : other.Matchmaking == null
+            )
+            && Modifiers.DeepEqualsReadOnlyCollections(other.Modifiers)
+            && OptionalUnlockStrings.DeepEqualsReadOnlyCollections(other.OptionalUnlockStrings)
+            && OriginalDisplayProperties.DeepEquals(other.OriginalDisplayProperties)
+            && PgcrImage == other.PgcrImage
+            && Place.DeepEquals(other.Place)
+            && PlaylistItems.DeepEqualsReadOnlyCollections(other.PlaylistItems)
+            && ReleaseIcon == other.ReleaseIcon
+            && ReleaseTime == other.ReleaseTime
+            && Rewards.DeepEqualsReadOnlyCollections(other.Rewards)
+            && (
+                SelectionScreenDisplayProperties != null
+                    ? SelectionScreenDisplayProperties.DeepEquals(
+                        other.SelectionScreenDisplayProperties
+                    )
+                    : other.SelectionScreenDisplayProperties == null
+            )
+            && SuppressOtherRewards == other.SuppressOtherRewards
+            && Tier == other.Tier
+            && Loadouts.DeepEqualsReadOnlyCollections(other.Loadouts)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyActivityDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

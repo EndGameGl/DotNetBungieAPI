@@ -1,7 +1,7 @@
 ﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 
-public sealed record
-    DestinyVendorInteractionSackEntryDefinition : IDeepEquatable<DestinyVendorInteractionSackEntryDefinition>
+public sealed record DestinyVendorInteractionSackEntryDefinition
+    : IDeepEquatable<DestinyVendorInteractionSackEntryDefinition>
 {
     /// <summary>
     ///     Compare this sackType to the sack identifier in the DestinyInventoryItemDefinition.vendorSackType property of
@@ -12,7 +12,6 @@ public sealed record
 
     public bool DeepEquals(DestinyVendorInteractionSackEntryDefinition other)
     {
-        return other != null &&
-               SackType == other.SackType;
+        return other != null && SackType == other.SackType;
     }
 }

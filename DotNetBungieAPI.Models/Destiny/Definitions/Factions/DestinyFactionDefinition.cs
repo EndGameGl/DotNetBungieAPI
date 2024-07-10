@@ -16,7 +16,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Factions;
 ///     without the Vendor that provides rewards.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyFactionDefinition)]
-public sealed record DestinyFactionDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyFactionDefinition>
+public sealed record DestinyFactionDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyFactionDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -33,11 +36,14 @@ public sealed record DestinyFactionDefinition : IDestinyDefinition, IDisplayProp
     ///     The faction token items, and their respective progression values.
     /// </summary>
     [JsonPropertyName("tokenValues")]
-    public
-        ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>,
-            DefinitionHashPointer<DestinyProgressionDefinition>> TokenValues { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>,
-            DefinitionHashPointer<DestinyProgressionDefinition>>.Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyInventoryItemDefinition>,
+        DefinitionHashPointer<DestinyProgressionDefinition>
+    > TokenValues { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyInventoryItemDefinition>,
+            DefinitionHashPointer<DestinyProgressionDefinition>
+        >.Empty;
 
     /// <summary>
     ///     The faction reward item hash, usually an engram.
@@ -63,22 +69,32 @@ public sealed record DestinyFactionDefinition : IDestinyDefinition, IDisplayProp
 
     public bool DeepEquals(DestinyFactionDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               Progression.DeepEquals(other.Progression) &&
-               RewardItem.DeepEquals(other.RewardItem) &&
-               RewardVendor.DeepEquals(other.RewardVendor) &&
-               TokenValues.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(other.TokenValues) &&
-               Vendors.DeepEqualsReadOnlyCollections(other.Vendors) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && Progression.DeepEquals(other.Progression)
+            && RewardItem.DeepEquals(other.RewardItem)
+            && RewardVendor.DeepEquals(other.RewardVendor)
+            && TokenValues.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(
+                other.TokenValues
+            )
+            && Vendors.DeepEqualsReadOnlyCollections(other.Vendors)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyFactionDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

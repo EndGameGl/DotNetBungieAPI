@@ -4,7 +4,9 @@ namespace DotNetBungieAPI.OpenApi.Models;
 
 public sealed class OpenApiComponentResponse
 {
-    [JsonPropertyName("description")] public string Description { get; init; }
-    
-    [JsonPropertyName("content")] public OpenApiComponentResponseContent Content { get; init; }
+    [JsonPropertyName("description")]
+    public string Description { get; init; }
+
+    [JsonPropertyName("content")]
+    public OpenApiComponentResponseContent Content { get; init; }
 }

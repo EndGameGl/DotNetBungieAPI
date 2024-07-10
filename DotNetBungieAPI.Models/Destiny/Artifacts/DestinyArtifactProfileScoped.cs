@@ -15,11 +15,15 @@ public sealed record DestinyArtifactProfileScoped
     public DefinitionHashPointer<DestinyArtifactDefinition> Artifact { get; init; } =
         DefinitionHashPointer<DestinyArtifactDefinition>.Empty;
 
-    [JsonPropertyName("pointProgression")] public DestinyProgression PointProgression { get; init; }
-    [JsonPropertyName("pointsAcquired")] public int PointsAcquired { get; init; }
+    [JsonPropertyName("pointProgression")]
+    public DestinyProgression PointProgression { get; init; }
+
+    [JsonPropertyName("pointsAcquired")]
+    public int PointsAcquired { get; init; }
 
     [JsonPropertyName("powerBonusProgression")]
     public DestinyProgression PowerBonusProgression { get; init; }
 
-    [JsonPropertyName("powerBonus")] public int PowerBonus { get; init; }
+    [JsonPropertyName("powerBonus")]
+    public int PowerBonus { get; init; }
 }

@@ -2,7 +2,8 @@
 
 public sealed record GroupFeatures
 {
-    [JsonPropertyName("maximumMembers")] public int MaximumMembers { get; init; }
+    [JsonPropertyName("maximumMembers")]
+    public int MaximumMembers { get; init; }
 
     /// <summary>
     ///     Maximum number of groups of this type a typical membership may join. For example, a user may join about 50 General
@@ -11,7 +12,8 @@ public sealed record GroupFeatures
     [JsonPropertyName("maximumMembershipsOfGroupType")]
     public int MaximumMembershipsOfGroupType { get; init; }
 
-    [JsonPropertyName("capabilities")] public Capabilities Capabilities { get; init; }
+    [JsonPropertyName("capabilities")]
+    public Capabilities Capabilities { get; init; }
 
     [JsonPropertyName("membershipTypes")]
     public ReadOnlyCollection<BungieMembershipType> MembershipTypes { get; init; } =

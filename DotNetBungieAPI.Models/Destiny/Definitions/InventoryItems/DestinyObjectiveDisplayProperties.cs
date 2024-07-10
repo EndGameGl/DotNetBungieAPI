@@ -2,7 +2,8 @@
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 
-public sealed record DestinyObjectiveDisplayProperties : IDeepEquatable<DestinyObjectiveDisplayProperties>
+public sealed record DestinyObjectiveDisplayProperties
+    : IDeepEquatable<DestinyObjectiveDisplayProperties>
 {
     /// <summary>
     ///     The activity associated with this objective in the context of this item, if any.
@@ -19,8 +20,8 @@ public sealed record DestinyObjectiveDisplayProperties : IDeepEquatable<DestinyO
 
     public bool DeepEquals(DestinyObjectiveDisplayProperties other)
     {
-        return other != null &&
-               Activity.DeepEquals(other.Activity) &&
-               DisplayOnItemPreviewScreen == other.DisplayOnItemPreviewScreen;
+        return other != null
+            && Activity.DeepEquals(other.Activity)
+            && DisplayOnItemPreviewScreen == other.DisplayOnItemPreviewScreen;
     }
 }

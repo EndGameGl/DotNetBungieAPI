@@ -16,7 +16,8 @@ public static class BungieApiBuilder
     public static IBungieClient GetApiClient(
         Action<IBungieClientBuilder> configure,
         Action<ILoggingBuilder>? loggerConfigurer = null,
-        IServiceCollection? serviceCollection = null)
+        IServiceCollection? serviceCollection = null
+    )
     {
         serviceCollection ??= new ServiceCollection();
 
@@ -26,17 +27,19 @@ public static class BungieApiBuilder
         }
         else
         {
-            serviceCollection.AddLogging((builder) =>
-            {
-                builder.Services.AddSingleton<ILoggerProvider, NullLoggerProvider>();
-            });
+            serviceCollection.AddLogging(
+                (builder) =>
+                {
+                    builder.Services.AddSingleton<ILoggerProvider, NullLoggerProvider>();
+                }
+            );
         }
 
         var builder = new BungieClientBuilder(serviceCollection);
         configure.Invoke(builder);
 
         builder.ValidateAndRegisterServices();
-        
+
         RegisterServices(serviceCollection, builder);
 
         return serviceCollection.BuildServiceProvider().GetRequiredService<IBungieClient>();
@@ -50,7 +53,8 @@ public static class BungieApiBuilder
     /// <returns></returns>
     public static IServiceCollection UseBungieApiClient(
         this IServiceCollection serviceCollection,
-        Action<IBungieClientBuilder> configure)
+        Action<IBungieClientBuilder> configure
+    )
     {
         var builder = new BungieClientBuilder(serviceCollection);
         configure.Invoke(builder);
@@ -63,7 +67,8 @@ public static class BungieApiBuilder
 
     private static void RegisterServices(
         IServiceCollection serviceCollection,
-        IBungieClientBuilder bungieClientBuilder)
+        IBungieClientBuilder bungieClientBuilder
+    )
     {
         serviceCollection.AddSingleton(bungieClientBuilder.ClientConfiguration);
         serviceCollection.AddSingleton<IBungieClient, BungieClient>();
@@ -79,7 +84,10 @@ public static class BungieApiBuilder
         serviceCollection.AddSingleton<IUserMethodsAccess, UserMethodsAccess>();
         serviceCollection.AddSingleton<ITokensMethodsAccess, TokensMethodsAccess>();
         serviceCollection.AddSingleton<IDestiny2MethodsAccess, Destiny2MethodsAccess>();
-        serviceCollection.AddSingleton<ICommunityContentMethodsAccess, CommunityContentMethodsAccess>();
+        serviceCollection.AddSingleton<
+            ICommunityContentMethodsAccess,
+            CommunityContentMethodsAccess
+        >();
         serviceCollection.AddSingleton<ISocialMethodsAccess, SocialMethodsAccess>();
         serviceCollection.AddSingleton<ITrendingMethodsAccess, TrendingMethodsAccess>();
         serviceCollection.AddSingleton<IMiscMethodsAccess, MiscMethodsAccess>();

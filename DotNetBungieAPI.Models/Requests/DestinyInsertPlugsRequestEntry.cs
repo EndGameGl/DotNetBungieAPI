@@ -8,8 +8,11 @@
 /// </summary>
 public sealed class DestinyInsertPlugsRequestEntry
 {
-    public DestinyInsertPlugsRequestEntry(int socketIndex, DestinySocketArrayType socketArrayType,
-        uint plugItemHash)
+    public DestinyInsertPlugsRequestEntry(
+        int socketIndex,
+        DestinySocketArrayType socketArrayType,
+        uint plugItemHash
+    )
     {
         SocketIndex = socketIndex;
         SocketArrayType = socketArrayType;

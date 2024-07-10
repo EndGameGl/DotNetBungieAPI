@@ -11,7 +11,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 ///     are still provided here in case they are still useful for people. This also contains some information about
 ///     Infusion.
 /// </summary>
-public sealed record DestinyItemQualityBlockDefinition : IDeepEquatable<DestinyItemQualityBlockDefinition>
+public sealed record DestinyItemQualityBlockDefinition
+    : IDeepEquatable<DestinyItemQualityBlockDefinition>
 {
     /// <summary>
     ///     The latest version available for this item.
@@ -49,8 +50,7 @@ public sealed record DestinyItemQualityBlockDefinition : IDeepEquatable<DestinyI
     ///     An item can refer to pre-set level requirements. They are defined in DestinyProgressionLevelRequirementDefinition
     /// </summary>
     [JsonPropertyName("progressionLevelRequirementHash")]
-    public DefinitionHashPointer<DestinyProgressionLevelRequirementDefinition>
-        ProgressionLevelRequirement { get; init; } =
+    public DefinitionHashPointer<DestinyProgressionLevelRequirementDefinition> ProgressionLevelRequirement { get; init; } =
         DefinitionHashPointer<DestinyProgressionLevelRequirementDefinition>.Empty;
 
     /// <summary>
@@ -69,14 +69,17 @@ public sealed record DestinyItemQualityBlockDefinition : IDeepEquatable<DestinyI
 
     public bool DeepEquals(DestinyItemQualityBlockDefinition other)
     {
-        return other != null &&
-               CurrentVersion == other.CurrentVersion &&
-               DisplayVersionWatermarkIcons.DeepEqualsReadOnlySimpleCollection(other
-                   .DisplayVersionWatermarkIcons) &&
-               InfusionCategoryHashes.DeepEqualsReadOnlySimpleCollection(other.InfusionCategoryHashes) &&
-               ItemLevels.DeepEqualsReadOnlySimpleCollection(other.ItemLevels) &&
-               ProgressionLevelRequirement.DeepEquals(other.ProgressionLevelRequirement) &&
-               QualityLevel == other.QualityLevel &&
-               Versions.DeepEqualsReadOnlyCollections(other.Versions);
+        return other != null
+            && CurrentVersion == other.CurrentVersion
+            && DisplayVersionWatermarkIcons.DeepEqualsReadOnlySimpleCollection(
+                other.DisplayVersionWatermarkIcons
+            )
+            && InfusionCategoryHashes.DeepEqualsReadOnlySimpleCollection(
+                other.InfusionCategoryHashes
+            )
+            && ItemLevels.DeepEqualsReadOnlySimpleCollection(other.ItemLevels)
+            && ProgressionLevelRequirement.DeepEquals(other.ProgressionLevelRequirement)
+            && QualityLevel == other.QualityLevel
+            && Versions.DeepEqualsReadOnlyCollections(other.Versions);
     }
 }

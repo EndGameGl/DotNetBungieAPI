@@ -18,10 +18,10 @@ public sealed record DestinyRecordIntervalBlock : IDeepEquatable<DestinyRecordIn
 
     public bool DeepEquals(DestinyRecordIntervalBlock other)
     {
-        return other != null &&
-               IntervalObjectives.DeepEqualsReadOnlyCollections(other.IntervalObjectives) &&
-               IntervalRewards.DeepEqualsReadOnlyCollections(other.IntervalRewards) &&
-               IsIntervalVersionedFromNormalRecord == other.IsIntervalVersionedFromNormalRecord &&
-               OriginalObjectiveArrayInsertionIndex == other.OriginalObjectiveArrayInsertionIndex;
+        return other != null
+            && IntervalObjectives.DeepEqualsReadOnlyCollections(other.IntervalObjectives)
+            && IntervalRewards.DeepEqualsReadOnlyCollections(other.IntervalRewards)
+            && IsIntervalVersionedFromNormalRecord == other.IsIntervalVersionedFromNormalRecord
+            && OriginalObjectiveArrayInsertionIndex == other.OriginalObjectiveArrayInsertionIndex;
     }
 }

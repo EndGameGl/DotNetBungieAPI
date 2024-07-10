@@ -16,8 +16,11 @@ public class BungieNetAuthorizationErrorException : Exception
 
     public BungieNetAuthorizationErrorException(
         AuthorizationResponseError? error,
-        string? rawErrorBody) :
-        base($"{(error is null ? "Failed to authenticate" : $"Failed to authenticate with error: {error.Error}")}")
+        string? rawErrorBody
+    )
+        : base(
+            $"{(error is null ? "Failed to authenticate" : $"Failed to authenticate with error: {error.Error}")}"
+        )
     {
         Error = error;
         RawErrorBody = rawErrorBody;

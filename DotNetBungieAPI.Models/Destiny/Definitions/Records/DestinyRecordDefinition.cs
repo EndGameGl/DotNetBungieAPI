@@ -8,10 +8,10 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Traits;
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Records;
 
 [DestinyDefinition(DefinitionsEnum.DestinyRecordDefinition)]
-public sealed record DestinyRecordDefinition : 
-    IDestinyDefinition,
-    IDisplayProperties,
-    IDeepEquatable<DestinyRecordDefinition>
+public sealed record DestinyRecordDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyRecordDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -30,7 +30,9 @@ public sealed record DestinyRecordDefinition :
         DefinitionHashPointer<DestinyLoreDefinition>.Empty;
 
     [JsonPropertyName("objectiveHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>> Objectives { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyObjectiveDefinition>
+    > Objectives { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyObjectiveDefinition>>.Empty;
 
     [JsonPropertyName("recordValueStyle")]
@@ -91,7 +93,9 @@ public sealed record DestinyRecordDefinition :
     ///     multiple parents.
     /// </summary>
     [JsonPropertyName("parentNodeHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentNodes { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyPresentationNodeDefinition>
+    > ParentNodes { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
 
     public bool DeepEquals(DestinyRecordDefinition other)

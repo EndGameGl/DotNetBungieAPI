@@ -18,27 +18,35 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityTypes;
 ///     for the time being, it is still referred to in many places across our codebase.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyActivityTypeDefinition)]
-public sealed record DestinyActivityTypeDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyActivityTypeDefinition>
+public sealed record DestinyActivityTypeDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyActivityTypeDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
     public bool DeepEquals(DestinyActivityTypeDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyActivityTypeDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
 
-    [JsonPropertyName("index")] public int Index { get; init; }
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
 
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

@@ -6,7 +6,7 @@ public static class StringExtensions
     {
         return $"{GetIndent(level)}{text}";
     }
-    
+
     internal static string GetIndent(int level)
     {
         return new string(Helpers.Tabulation, level);

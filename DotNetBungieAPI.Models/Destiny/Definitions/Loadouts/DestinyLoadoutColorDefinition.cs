@@ -3,7 +3,9 @@
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Loadouts;
 
 [DestinyDefinition(DefinitionsEnum.DestinyLoadoutColorDefinition)]
-public sealed record DestinyLoadoutColorDefinition : IDestinyDefinition, IDeepEquatable<DestinyLoadoutColorDefinition>
+public sealed record DestinyLoadoutColorDefinition
+    : IDestinyDefinition,
+        IDeepEquatable<DestinyLoadoutColorDefinition>
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyLoadoutColorDefinition;
 
@@ -24,11 +26,11 @@ public sealed record DestinyLoadoutColorDefinition : IDestinyDefinition, IDeepEq
 
     public bool DeepEquals(DestinyLoadoutColorDefinition other)
     {
-        return other is not null &&
-               ColorImagePath == other.ColorImagePath &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other is not null
+            && ColorImagePath == other.ColorImagePath
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 }

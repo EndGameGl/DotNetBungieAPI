@@ -22,7 +22,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.SandboxPerks;
 ///     left as a mystery, their true purpose mostly unknown and undocumented.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinySandboxPerkDefinition)]
-public sealed record DestinySandboxPerkDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinySandboxPerkDefinition>
+public sealed record DestinySandboxPerkDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinySandboxPerkDefinition>
 {
     /// <summary>
     ///     These display properties are by no means guaranteed to be populated. Usually when it is, it's only because we
@@ -73,22 +76,30 @@ public sealed record DestinySandboxPerkDefinition : IDestinyDefinition, IDisplay
 
     public bool DeepEquals(DestinySandboxPerkDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               DamageTypeEnumValue == other.DamageTypeEnumValue &&
-               DamageType.DeepEquals(other.DamageType) &&
-               IsDisplayable == other.IsDisplayable &&
-               PerkIdentifier == other.PerkIdentifier &&
-               PerkGroups.DeepEquals(other.PerkGroups) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && DamageTypeEnumValue == other.DamageTypeEnumValue
+            && DamageType.DeepEquals(other.DamageType)
+            && IsDisplayable == other.IsDisplayable
+            && PerkIdentifier == other.PerkIdentifier
+            && PerkGroups.DeepEquals(other.PerkGroups)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinySandboxPerkDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

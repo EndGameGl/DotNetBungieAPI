@@ -1,13 +1,14 @@
 ﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 
-public sealed record
-    DestinyPresentationNodeRequirementsBlock : IDeepEquatable<DestinyPresentationNodeRequirementsBlock>
+public sealed record DestinyPresentationNodeRequirementsBlock
+    : IDeepEquatable<DestinyPresentationNodeRequirementsBlock>
 {
     [JsonPropertyName("entitlementUnavailableMessage")]
     public string EntitlementUnavailableMessage { get; init; }
 
     public bool DeepEquals(DestinyPresentationNodeRequirementsBlock other)
     {
-        return other != null && EntitlementUnavailableMessage == other.EntitlementUnavailableMessage;
+        return other != null
+            && EntitlementUnavailableMessage == other.EntitlementUnavailableMessage;
     }
 }

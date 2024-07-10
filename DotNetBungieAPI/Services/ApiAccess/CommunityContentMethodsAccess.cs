@@ -24,7 +24,8 @@ internal sealed class CommunityContentMethodsAccess : ICommunityContentMethodsAc
         ForumTopicsSortEnum sort,
         ForumMediaType mediaFilter,
         int page = 0,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)

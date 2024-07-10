@@ -27,9 +27,12 @@ namespace DotNetBungieAPI.Tests.BungieNetApiTests
         [Fact]
         public async Task Assert_GetDestinyEntityDefinition()
         {
-            var itemDefinition = await _bungieClient.ApiAccess.Destiny2.GetDestinyEntityDefinition<DestinyInventoryItemDefinition>(
-                DefinitionsEnum.DestinyInventoryItemDefinition, 892360677);
-            
+            var itemDefinition =
+                await _bungieClient.ApiAccess.Destiny2.GetDestinyEntityDefinition<DestinyInventoryItemDefinition>(
+                    DefinitionsEnum.DestinyInventoryItemDefinition,
+                    892360677
+                );
+
             Assert.NotNull(itemDefinition);
             Assert.True(itemDefinition.IsSuccessfulResponseCode);
             Assert.NotNull(itemDefinition.Response);

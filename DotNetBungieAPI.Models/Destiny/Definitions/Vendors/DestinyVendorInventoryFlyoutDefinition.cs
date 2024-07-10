@@ -7,7 +7,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 ///     The definition for an "inventory flyout": a UI screen where we show you part of an otherwise hidden vendor
 ///     inventory: like the Vault inventory buckets.
 /// </summary>
-public sealed record DestinyVendorInventoryFlyoutDefinition : IDeepEquatable<DestinyVendorInventoryFlyoutDefinition>
+public sealed record DestinyVendorInventoryFlyoutDefinition
+    : IDeepEquatable<DestinyVendorInventoryFlyoutDefinition>
 {
     /// <summary>
     ///     If the flyout is locked, this is the reason why.
@@ -50,12 +51,12 @@ public sealed record DestinyVendorInventoryFlyoutDefinition : IDeepEquatable<Des
 
     public bool DeepEquals(DestinyVendorInventoryFlyoutDefinition other)
     {
-        return other != null &&
-               LockedDescription == other.LockedDescription &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               Buckets.DeepEqualsReadOnlyCollections(other.Buckets) &&
-               SuppressNewness == other.SuppressNewness &&
-               FlyoutId == other.FlyoutId &&
-               EquipmentSlot.DeepEquals(other.EquipmentSlot);
+        return other != null
+            && LockedDescription == other.LockedDescription
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && Buckets.DeepEqualsReadOnlyCollections(other.Buckets)
+            && SuppressNewness == other.SuppressNewness
+            && FlyoutId == other.FlyoutId
+            && EquipmentSlot.DeepEquals(other.EquipmentSlot);
     }
 }

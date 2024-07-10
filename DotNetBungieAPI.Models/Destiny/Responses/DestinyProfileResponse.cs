@@ -75,7 +75,8 @@ public sealed record DestinyProfileResponse
     [JsonPropertyName("profileTransitoryData")]
     public SingleComponentResponseOfDestinyProfileTransitoryComponent ProfileTransitoryData { get; init; }
 
-    [JsonPropertyName("metrics")] public SingleComponentResponseOfDestinyMetricsComponent Metrics { get; init; }
+    [JsonPropertyName("metrics")]
+    public SingleComponentResponseOfDestinyMetricsComponent Metrics { get; init; }
 
     [JsonPropertyName("profileStringVariables")]
     public SingleComponentResponseOfDestinyStringVariablesComponent ProfileStringVariables { get; init; }
@@ -176,8 +177,11 @@ public sealed record DestinyProfileResponse
     ///     item, like a mod or a currency. This returns that data for the characters who have the bounty in their inventory.
     /// </summary>
     [JsonPropertyName("characterUninstancedItemComponents")]
-    public ReadOnlyDictionary<long, DestinyBaseItemComponentSetOfuint32> CharacterUninstancedItemComponents { get; init; } 
-        = ReadOnlyDictionaries<long, DestinyBaseItemComponentSetOfuint32>.Empty;
+    public ReadOnlyDictionary<
+        long,
+        DestinyBaseItemComponentSetOfuint32
+    > CharacterUninstancedItemComponents { get; init; } =
+        ReadOnlyDictionaries<long, DestinyBaseItemComponentSetOfuint32>.Empty;
 
     [JsonPropertyName("characterPresentationNodes")]
     public DictionaryComponentResponseOfint64AndDestinyPresentationNodesComponent CharacterPresentationNodes { get; init; }
@@ -190,7 +194,7 @@ public sealed record DestinyProfileResponse
 
     [JsonPropertyName("characterStringVariables")]
     public DictionaryComponentResponseOfint64AndDestinyStringVariablesComponent CharacterStringVariables { get; init; }
-    
+
     /// <summary>
     ///     COMPONENT TYPE: Craftables
     /// </summary>
@@ -209,7 +213,7 @@ public sealed record DestinyProfileResponse
     /// </summary>
     [JsonPropertyName("characterCurrencyLookups")]
     public DictionaryComponentResponseOfint64AndDestinyCurrenciesComponent CharacterCurrencyLookups { get; init; }
-    
+
     /// <summary>
     ///     Records the timestamp of when most components were last generated from the world server source. Unless the component type is specified in the documentation for secondaryComponentsMintedTimestamp, this value is sufficient to do data freshness.
     /// </summary>

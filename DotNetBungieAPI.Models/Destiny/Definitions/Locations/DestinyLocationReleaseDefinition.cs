@@ -8,7 +8,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Locations;
 /// <summary>
 ///     A specific "spot" referred to by a location. Only one of these can be active at a time for a given Location.
 /// </summary>
-public sealed record DestinyLocationReleaseDefinition : IDeepEquatable<DestinyLocationReleaseDefinition>
+public sealed record DestinyLocationReleaseDefinition
+    : IDeepEquatable<DestinyLocationReleaseDefinition>
 {
     /// <summary>
     ///     Sadly, these don't appear to be populated anymore (ever?)
@@ -19,7 +20,8 @@ public sealed record DestinyLocationReleaseDefinition : IDeepEquatable<DestinyLo
     [JsonPropertyName("smallTransparentIcon")]
     public BungieNetResource SmallTransparentIcon { get; init; }
 
-    [JsonPropertyName("mapIcon")] public BungieNetResource MapIcon { get; init; }
+    [JsonPropertyName("mapIcon")]
+    public BungieNetResource MapIcon { get; init; }
 
     [JsonPropertyName("largeTransparentIcon")]
     public BungieNetResource LargeTransparentIcon { get; init; }
@@ -93,20 +95,20 @@ public sealed record DestinyLocationReleaseDefinition : IDeepEquatable<DestinyLo
 
     public bool DeepEquals(DestinyLocationReleaseDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               SmallTransparentIcon == other.SmallTransparentIcon &&
-               MapIcon == other.MapIcon &&
-               LargeTransparentIcon == other.LargeTransparentIcon &&
-               SpawnPoint == other.SpawnPoint &&
-               Destination.DeepEquals(other.Destination) &&
-               Activity.DeepEquals(other.Activity) &&
-               ActivityGraph.DeepEquals(other.ActivityGraph) &&
-               ActivityGraphNodeHash == other.ActivityGraphNodeHash &&
-               ActivityBubbleName == other.ActivityBubbleName &&
-               ActivityPathBundle == other.ActivityPathBundle &&
-               ActivityPathDestination == other.ActivityPathDestination &&
-               NavPointType == other.NavPointType &&
-               WorldPosition.DeepEqualsReadOnlySimpleCollection(other.WorldPosition);
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && SmallTransparentIcon == other.SmallTransparentIcon
+            && MapIcon == other.MapIcon
+            && LargeTransparentIcon == other.LargeTransparentIcon
+            && SpawnPoint == other.SpawnPoint
+            && Destination.DeepEquals(other.Destination)
+            && Activity.DeepEquals(other.Activity)
+            && ActivityGraph.DeepEquals(other.ActivityGraph)
+            && ActivityGraphNodeHash == other.ActivityGraphNodeHash
+            && ActivityBubbleName == other.ActivityBubbleName
+            && ActivityPathBundle == other.ActivityPathBundle
+            && ActivityPathDestination == other.ActivityPathDestination
+            && NavPointType == other.NavPointType
+            && WorldPosition.DeepEqualsReadOnlySimpleCollection(other.WorldPosition);
     }
 }

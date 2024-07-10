@@ -64,7 +64,10 @@ public sealed record DestinyCharacterComponent
     ///     Your character's stats, such as Agility, Resilience, etc... *not* historical stats.
     /// </summary>
     [JsonPropertyName("stats")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, int> Stats { get; init; } =
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyStatDefinition>,
+        int
+    > Stats { get; init; } =
         ReadOnlyDictionaries<DefinitionHashPointer<DestinyStatDefinition>, int>.Empty;
 
     /// <summary>

@@ -9,7 +9,8 @@ public class BungieResponseErrorException : Exception
         PlatformErrorCodes errorCode,
         string errorStatus,
         string responseMessage,
-        Dictionary<string, string> messageData)
+        Dictionary<string, string> messageData
+    )
     {
         ErrorCode = errorCode;
         ErrorStatus = errorStatus;

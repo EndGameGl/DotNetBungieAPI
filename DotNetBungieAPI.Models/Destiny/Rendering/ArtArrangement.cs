@@ -2,8 +2,10 @@
 
 public sealed record ArtArrangement
 {
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
 
     [JsonPropertyName("geometry_hashes")]
-    public ReadOnlyCollection<string> GeometryHashes { get; init; } = ReadOnlyCollections<string>.Empty;
+    public ReadOnlyCollection<string> GeometryHashes { get; init; } =
+        ReadOnlyCollections<string>.Empty;
 }

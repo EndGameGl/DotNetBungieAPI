@@ -19,7 +19,9 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.RewardSources;
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyRewardSourceDefinition)]
 public sealed record DestinyRewardSourceDefinition
-    : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyRewardSourceDefinition>
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyRewardSourceDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -33,16 +35,24 @@ public sealed record DestinyRewardSourceDefinition
 
     public bool DeepEquals(DestinyRewardSourceDefinition other)
     {
-        return other != null &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyRewardSourceDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

@@ -2,5 +2,6 @@
 
 public sealed record GroupMembership : GroupMembershipBase
 {
-    [JsonPropertyName("member")] public GroupMember Member { get; init; }
+    [JsonPropertyName("member")]
+    public GroupMember Member { get; init; }
 }

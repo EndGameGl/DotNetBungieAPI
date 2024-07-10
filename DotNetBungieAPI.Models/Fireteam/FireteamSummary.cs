@@ -63,12 +63,12 @@ public sealed record FireteamSummary
     public string TitleBeforeModeration { get; init; }
 
     [JsonPropertyName("ownerCurrentGuardianRankSnapshot")]
-    public DefinitionHashPointer<DestinyGuardianRankDefinition> OwnerCurrentGuardianRankSnapshot { get; init; } 
-        = DefinitionHashPointer<DestinyGuardianRankDefinition>.Empty;
+    public DefinitionHashPointer<DestinyGuardianRankDefinition> OwnerCurrentGuardianRankSnapshot { get; init; } =
+        DefinitionHashPointer<DestinyGuardianRankDefinition>.Empty;
 
     [JsonPropertyName("ownerHighestLifetimeGuardianRankSnapshot")]
-    public DefinitionHashPointer<DestinyGuardianRankDefinition> OwnerHighestLifetimeGuardianRankSnapshot { get; init; }
-        = DefinitionHashPointer<DestinyGuardianRankDefinition>.Empty;
+    public DefinitionHashPointer<DestinyGuardianRankDefinition> OwnerHighestLifetimeGuardianRankSnapshot { get; init; } =
+        DefinitionHashPointer<DestinyGuardianRankDefinition>.Empty;
 
     [JsonPropertyName("ownerTotalCommendationScoreSnapshot")]
     public int OwnerTotalCommendationScoreSnapshot { get; init; }

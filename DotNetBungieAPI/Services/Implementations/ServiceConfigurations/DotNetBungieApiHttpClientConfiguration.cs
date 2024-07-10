@@ -20,8 +20,7 @@ public sealed class DotNetBungieApiHttpClientConfiguration
         SocketsHttpConnectionContext,
         CancellationToken,
         ValueTask<Stream>
-    > DefaultConnectCallback
-    { get; } =
+    > DefaultConnectCallback { get; } =
         async (context, cancellationToken) =>
         {
             IPHostEntry ipHostEntry = await Dns.GetHostEntryAsync(
@@ -29,8 +28,8 @@ public sealed class DotNetBungieApiHttpClientConfiguration
                 cancellationToken
             );
             IPAddress? ipAddress =
-                ipHostEntry.AddressList.FirstOrDefault(
-                    i => i.AddressFamily is AddressFamily.InterNetwork
+                ipHostEntry.AddressList.FirstOrDefault(i =>
+                    i.AddressFamily is AddressFamily.InterNetwork
                 ) ?? throw new Exception($"No IP4 address for {context.DnsEndPoint.Host}");
             TcpClient tcp = new();
             await tcp.ConnectAsync(ipAddress, context.DnsEndPoint.Port, cancellationToken);

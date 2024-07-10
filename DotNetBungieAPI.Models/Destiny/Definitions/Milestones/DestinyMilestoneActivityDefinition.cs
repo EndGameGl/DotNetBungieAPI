@@ -9,7 +9,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
 ///     Information we need to be able to return that data is defined here, along with Tier data to establish a
 ///     relationship between a conceptual Activity and its difficulty levels and variants.
 /// </summary>
-public sealed record DestinyMilestoneActivityDefinition : IDeepEquatable<DestinyMilestoneActivityDefinition>
+public sealed record DestinyMilestoneActivityDefinition
+    : IDeepEquatable<DestinyMilestoneActivityDefinition>
 {
     /// <summary>
     ///     The "Conceptual" activity hash. Basically, we picked the lowest level activity and are treating it as the canonical
@@ -33,16 +34,19 @@ public sealed record DestinyMilestoneActivityDefinition : IDeepEquatable<Destiny
     ///     processing and use.
     /// </summary>
     [JsonPropertyName("variants")]
-    public
-        ReadOnlyDictionary<DefinitionHashPointer<DestinyActivityDefinition>,
-            DestinyMilestoneActivityVariantDefinition> Variants { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyActivityDefinition>,
-            DestinyMilestoneActivityVariantDefinition>.Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyActivityDefinition>,
+        DestinyMilestoneActivityVariantDefinition
+    > Variants { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyActivityDefinition>,
+            DestinyMilestoneActivityVariantDefinition
+        >.Empty;
 
     public bool DeepEquals(DestinyMilestoneActivityDefinition other)
     {
-        return other != null &&
-               ConceptualActivity.DeepEquals(other.ConceptualActivity) &&
-               Variants.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(other.Variants);
+        return other != null
+            && ConceptualActivity.DeepEquals(other.ConceptualActivity)
+            && Variants.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(other.Variants);
     }
 }

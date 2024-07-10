@@ -12,5 +12,6 @@ public interface IDefinitionHandler
         IBungieClient bungieClient,
         TextWriter textWriter,
         StringBuilder stringBuilder,
-        int indentation);
+        int indentation
+    );
 }

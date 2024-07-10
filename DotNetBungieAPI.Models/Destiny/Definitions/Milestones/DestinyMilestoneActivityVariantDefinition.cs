@@ -9,8 +9,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
 ///     These will often have more specific details, such as an associated Guided Game, progression steps, tier-specific
 ///     rewards, and custom values.
 /// </summary>
-public sealed record
-    DestinyMilestoneActivityVariantDefinition : IDeepEquatable<DestinyMilestoneActivityVariantDefinition>
+public sealed record DestinyMilestoneActivityVariantDefinition
+    : IDeepEquatable<DestinyMilestoneActivityVariantDefinition>
 {
     /// <summary>
     ///     The hash to use for looking up the variant Activity's definition (DestinyActivityDefinition), where you can find
@@ -31,8 +31,6 @@ public sealed record
 
     public bool DeepEquals(DestinyMilestoneActivityVariantDefinition other)
     {
-        return other != null &&
-               Activity.DeepEquals(other.Activity) &&
-               Order == other.Order;
+        return other != null && Activity.DeepEquals(other.Activity) && Order == other.Order;
     }
 }

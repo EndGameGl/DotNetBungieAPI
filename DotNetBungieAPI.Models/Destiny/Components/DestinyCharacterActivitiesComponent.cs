@@ -51,8 +51,9 @@ public sealed record DestinyCharacterActivitiesComponent
     ///     with currentActivityHash to give a person a full picture of what they're doing right now.
     /// </summary>
     [JsonPropertyName("currentActivityModeHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>>
-        CurrentActivityModes { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyActivityModeDefinition>
+    > CurrentActivityModes { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModeDefinition>>.Empty;
 
     /// <summary>

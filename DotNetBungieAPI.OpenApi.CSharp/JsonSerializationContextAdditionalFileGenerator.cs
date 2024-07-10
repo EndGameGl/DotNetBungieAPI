@@ -10,14 +10,19 @@ public class JsonSerializationContextAdditionalFileGenerator : AdditionalFileGen
     {
         await WriteLineAsync("namespace DotNetBungieAPI.Generated.Models;");
         await WriteLineAsync();
-        
+
         foreach (var (typeName, typeSchema) in openApiModel.Components.Schemas)
         {
-            if (typeSchema.Type is "object" && (typeSchema.Properties is null || !typeSchema.Properties.Any()))
+            if (
+                typeSchema.Type is "object"
+                && (typeSchema.Properties is null || !typeSchema.Properties.Any())
+            )
                 continue;
             await WriteLineAsync($"[JsonSerializable(typeof({typeName}))]");
         }
-            
-        await WriteLineAsync("public partial class DotNetBungieAPIJsonSerializationContext : JsonSerializerContext { }");
+
+        await WriteLineAsync(
+            "public partial class DotNetBungieAPIJsonSerializationContext : JsonSerializerContext { }"
+        );
     }
 }

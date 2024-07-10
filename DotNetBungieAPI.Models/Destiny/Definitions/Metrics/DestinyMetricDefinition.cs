@@ -7,7 +7,10 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Traits;
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Metrics;
 
 [DestinyDefinition(DefinitionsEnum.DestinyMetricDefinition)]
-public sealed record DestinyMetricDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyMetricDefinition>
+public sealed record DestinyMetricDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyMetricDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -34,28 +37,38 @@ public sealed record DestinyMetricDefinition : IDestinyDefinition, IDisplayPrope
     ///     multiple parents.
     /// </summary>
     [JsonPropertyName("parentNodeHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentNodes { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyPresentationNodeDefinition>
+    > ParentNodes { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
 
     public bool DeepEquals(DestinyMetricDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               LowerValueIsBetter == other.LowerValueIsBetter &&
-               ParentNodes.DeepEqualsReadOnlyCollections(other.ParentNodes) &&
-               PresentationNodeType == other.PresentationNodeType &&
-               TrackingObjective.DeepEquals(other.TrackingObjective) &&
-               Traits.DeepEqualsReadOnlyCollections(other.Traits) &&
-               TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && LowerValueIsBetter == other.LowerValueIsBetter
+            && ParentNodes.DeepEqualsReadOnlyCollections(other.ParentNodes)
+            && PresentationNodeType == other.PresentationNodeType
+            && TrackingObjective.DeepEquals(other.TrackingObjective)
+            && Traits.DeepEqualsReadOnlyCollections(other.Traits)
+            && TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyMetricDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

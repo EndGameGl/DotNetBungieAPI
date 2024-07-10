@@ -5,8 +5,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 /// <summary>
 ///     Information about a single inventory bucket in a vendor flyout UI and how it is shown.
 /// </summary>
-public sealed record DestinyVendorInventoryFlyoutBucketDefinition :
-    IDeepEquatable<DestinyVendorInventoryFlyoutBucketDefinition>
+public sealed record DestinyVendorInventoryFlyoutBucketDefinition
+    : IDeepEquatable<DestinyVendorInventoryFlyoutBucketDefinition>
 {
     /// <summary>
     ///     If true, the inventory bucket should be able to be collapsed visually.
@@ -29,9 +29,9 @@ public sealed record DestinyVendorInventoryFlyoutBucketDefinition :
 
     public bool DeepEquals(DestinyVendorInventoryFlyoutBucketDefinition other)
     {
-        return other != null &&
-               Collapsible == other.Collapsible &&
-               SortItemsBy == other.SortItemsBy &&
-               InventoryBucket.DeepEquals(other.InventoryBucket);
+        return other != null
+            && Collapsible == other.Collapsible
+            && SortItemsBy == other.SortItemsBy
+            && InventoryBucket.DeepEquals(other.InventoryBucket);
     }
 }

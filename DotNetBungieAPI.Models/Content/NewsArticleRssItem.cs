@@ -16,7 +16,7 @@ public sealed record NewsArticleRssItem
 
     [JsonPropertyName("Description")]
     public string Description { get; init; }
-    
+
     [JsonPropertyName("HtmlContent")]
     public string? HtmlContent { get; init; }
 

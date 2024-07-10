@@ -3,7 +3,8 @@
 /// <summary>
 ///     If an item can have an action performed on it (like "Dismantle"), it will be defined here if you care.
 /// </summary>
-public sealed record DestinyItemActionBlockDefinition : IDeepEquatable<DestinyItemActionBlockDefinition>
+public sealed record DestinyItemActionBlockDefinition
+    : IDeepEquatable<DestinyItemActionBlockDefinition>
 {
     /// <summary>
     ///     If the action has an overlay screen associated with it, this is the name of that screen. Unfortunately, we cannot
@@ -96,20 +97,20 @@ public sealed record DestinyItemActionBlockDefinition : IDeepEquatable<DestinyIt
 
     public bool DeepEquals(DestinyItemActionBlockDefinition other)
     {
-        return other != null &&
-               OverlayScreenName == other.OverlayScreenName &&
-               OverlayIcon == other.OverlayIcon &&
-               ActionTypeLabel == other.ActionTypeLabel &&
-               ConsumeEntireStack == other.ConsumeEntireStack &&
-               DeleteOnAction == other.DeleteOnAction &&
-               IsPositive == other.IsPositive &&
-               ProgressionRewards.DeepEqualsReadOnlyCollections(other.ProgressionRewards) &&
-               RequiredCooldownHash == other.RequiredCooldownHash &&
-               RequiredCooldownSeconds == other.RequiredCooldownSeconds &&
-               RequiredLocation == other.RequiredLocation &&
-               RequiredItems.DeepEqualsReadOnlyCollections(other.RequiredItems) &&
-               UseOnAcquire == other.UseOnAcquire &&
-               VerbDescription == other.VerbDescription &&
-               VerbName == other.VerbName;
+        return other != null
+            && OverlayScreenName == other.OverlayScreenName
+            && OverlayIcon == other.OverlayIcon
+            && ActionTypeLabel == other.ActionTypeLabel
+            && ConsumeEntireStack == other.ConsumeEntireStack
+            && DeleteOnAction == other.DeleteOnAction
+            && IsPositive == other.IsPositive
+            && ProgressionRewards.DeepEqualsReadOnlyCollections(other.ProgressionRewards)
+            && RequiredCooldownHash == other.RequiredCooldownHash
+            && RequiredCooldownSeconds == other.RequiredCooldownSeconds
+            && RequiredLocation == other.RequiredLocation
+            && RequiredItems.DeepEqualsReadOnlyCollections(other.RequiredItems)
+            && UseOnAcquire == other.UseOnAcquire
+            && VerbDescription == other.VerbDescription
+            && VerbName == other.VerbName;
     }
 }

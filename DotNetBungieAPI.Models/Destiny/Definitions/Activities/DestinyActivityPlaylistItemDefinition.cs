@@ -6,7 +6,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 ///     If the activity is a playlist, this is the definition for a specific entry in the playlist: a single possible
 ///     combination of Activity and Activity Mode that can be chosen.
 /// </summary>
-public sealed record DestinyActivityPlaylistItemDefinition : IDeepEquatable<DestinyActivityPlaylistItemDefinition>
+public sealed record DestinyActivityPlaylistItemDefinition
+    : IDeepEquatable<DestinyActivityPlaylistItemDefinition>
 {
     /// <summary>
     ///     DestinyActivityDefinition that can be played.
@@ -32,7 +33,9 @@ public sealed record DestinyActivityPlaylistItemDefinition : IDeepEquatable<Dest
     ///     Activity Modes relevant to this entry.
     /// </summary>
     [JsonPropertyName("activityModeHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>> ActivityModes { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyActivityModeDefinition>
+    > ActivityModes { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModeDefinition>>.Empty;
 
     /// <summary>
@@ -42,16 +45,17 @@ public sealed record DestinyActivityPlaylistItemDefinition : IDeepEquatable<Dest
     public ReadOnlyCollection<DestinyActivityModeType> ActivityModeTypes { get; init; } =
         ReadOnlyCollections<DestinyActivityModeType>.Empty;
 
-    [JsonPropertyName("weight")] public int Weight { get; init; }
+    [JsonPropertyName("weight")]
+    public int Weight { get; init; }
 
     public bool DeepEquals(DestinyActivityPlaylistItemDefinition other)
     {
-        return other != null &&
-               Activity.DeepEquals(other.Activity) &&
-               ActivityModes.DeepEqualsReadOnlyCollections(other.ActivityModes) &&
-               ActivityModeTypes.DeepEqualsReadOnlySimpleCollection(other.ActivityModeTypes) &&
-               DirectActivityMode.DeepEquals(other.DirectActivityMode) &&
-               DirectActivityModeType == other.DirectActivityModeType &&
-               Weight == other.Weight;
+        return other != null
+            && Activity.DeepEquals(other.Activity)
+            && ActivityModes.DeepEqualsReadOnlyCollections(other.ActivityModes)
+            && ActivityModeTypes.DeepEqualsReadOnlySimpleCollection(other.ActivityModeTypes)
+            && DirectActivityMode.DeepEquals(other.DirectActivityMode)
+            && DirectActivityModeType == other.DirectActivityModeType
+            && Weight == other.Weight;
     }
 }

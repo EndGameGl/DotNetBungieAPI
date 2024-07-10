@@ -12,7 +12,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Artifacts;
 ///     more easily.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyArtifactDefinition)]
-public sealed record DestinyArtifactDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyArtifactDefinition>
+public sealed record DestinyArtifactDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyArtifactDefinition>
 {
     /// <summary>
     ///     Any basic display info we know about the Artifact. Currently sourced from a related inventory item, but the source
@@ -38,22 +41,27 @@ public sealed record DestinyArtifactDefinition : IDestinyDefinition, IDisplayPro
 
     public bool DeepEquals(DestinyArtifactDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               Tiers.DeepEqualsReadOnlyCollections(other.Tiers) &&
-               TranslationBlock.DeepEquals(other.TranslationBlock) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && Tiers.DeepEqualsReadOnlyCollections(other.Tiers)
+            && TranslationBlock.DeepEquals(other.TranslationBlock)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyArtifactDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
 
-    [JsonPropertyName("index")] public int Index { get; init; }
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
 
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

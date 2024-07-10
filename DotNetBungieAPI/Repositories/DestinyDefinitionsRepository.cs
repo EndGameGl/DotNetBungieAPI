@@ -19,8 +19,14 @@ internal sealed class DestinyDefinitionsRepository
 {
     private readonly IDefinitionAssemblyData _assemblyData;
 
-    private readonly ConcurrentDictionary<DefinitionsEnum, DestinyDefinitionTypeRepository> _definitionRepositories;
-    private readonly ConcurrentDictionary<string, DestinyHistoricalStatsDefinition> _historicalStatsDefinitions;
+    private readonly ConcurrentDictionary<
+        DefinitionsEnum,
+        DestinyDefinitionTypeRepository
+    > _definitionRepositories;
+    private readonly ConcurrentDictionary<
+        string,
+        DestinyHistoricalStatsDefinition
+    > _historicalStatsDefinitions;
     private readonly ILogger _logger;
 
     internal DestinyDefinitionsRepository(
@@ -44,7 +50,10 @@ internal sealed class DestinyDefinitionsRepository
             definitionsLoaded
         );
 
-        _definitionRepositories = new ConcurrentDictionary<DefinitionsEnum, DestinyDefinitionTypeRepository>(concurrencyLevel, definitionsLoaded);
+        _definitionRepositories = new ConcurrentDictionary<
+            DefinitionsEnum,
+            DestinyDefinitionTypeRepository
+        >(concurrencyLevel, definitionsLoaded);
         foreach (var definition in configuration.AllowedDefinitions)
             _definitionRepositories.TryAdd(
                 definition,
@@ -54,7 +63,10 @@ internal sealed class DestinyDefinitionsRepository
                 )
             );
 
-        _historicalStatsDefinitions = new ConcurrentDictionary<string, DestinyHistoricalStatsDefinition>(concurrencyLevel, 31);
+        _historicalStatsDefinitions = new ConcurrentDictionary<
+            string,
+            DestinyHistoricalStatsDefinition
+        >(concurrencyLevel, 31);
     }
 
     /// <summary>

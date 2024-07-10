@@ -40,7 +40,7 @@ public enum EquipFailureReason
     ///     This item is 'wrapped' and must be unwrapped before being equipped. NOTE: This value used to be called ItemNotOnCharacter but that is no longer accurate.
     /// </summary>
     ItemWrapped = 16,
-    
+
     /// <summary>
     ///     This item is block-listed and cannot be equipped.
     /// </summary>

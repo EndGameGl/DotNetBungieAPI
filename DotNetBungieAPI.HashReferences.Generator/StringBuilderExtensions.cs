@@ -4,7 +4,11 @@ namespace DotNetBungieAPI.HashReferences.Generator;
 
 internal static class StringBuilderExtensions
 {
-    internal static void AppendLineIndented(this StringBuilder stringBuilder, int level, string text)
+    internal static void AppendLineIndented(
+        this StringBuilder stringBuilder,
+        int level,
+        string text
+    )
     {
         stringBuilder.AppendLine(StringExtensions.GetIndentedString(level, text));
     }

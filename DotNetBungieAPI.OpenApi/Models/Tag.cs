@@ -8,9 +8,11 @@ namespace DotNetBungieAPI.OpenApi.Models;
 #endif
 public class Tag
 {
-    [JsonPropertyName("name")] public string Name { get; init; }
+    [JsonPropertyName("name")]
+    public string Name { get; init; }
 
-    [JsonPropertyName("description")] public string Description { get; init; }
+    [JsonPropertyName("description")]
+    public string Description { get; init; }
 
 #if DEBUG
     private string DebuggerDisplay => $"{Name} - {Description}";

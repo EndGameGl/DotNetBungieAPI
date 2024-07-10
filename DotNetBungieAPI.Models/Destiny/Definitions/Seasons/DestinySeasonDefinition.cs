@@ -13,17 +13,29 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Seasons;
 ///     provides new loot, has new Clan-related rewards and celebrates various seasonal events.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinySeasonDefinition)]
-public sealed record DestinySeasonDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinySeasonDefinition>
+public sealed record DestinySeasonDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinySeasonDefinition>
 {
+    [JsonPropertyName("acts")]
+    public ReadOnlyCollection<DestinySeasonActDefinition> Acts { get; init; } =
+        ReadOnlyCollections<DestinySeasonActDefinition>.Empty;
+
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
     [JsonPropertyName("backgroundImagePath")]
     public BungieNetResource BackgroundImagePath { get; init; }
 
-    [JsonPropertyName("seasonNumber")] public int SeasonNumber { get; init; }
-    [JsonPropertyName("startDate")] public DateTime? StartDate { get; init; }
-    [JsonPropertyName("endDate")] public DateTime? EndDate { get; init; }
+    [JsonPropertyName("seasonNumber")]
+    public int SeasonNumber { get; init; }
+
+    [JsonPropertyName("startDate")]
+    public DateTime? StartDate { get; init; }
+
+    [JsonPropertyName("endDate")]
+    public DateTime? EndDate { get; init; }
 
     [JsonPropertyName("seasonPassHash")]
     public DefinitionHashPointer<DestinySeasonPassDefinition> SeasonPass { get; init; } =
@@ -60,29 +72,39 @@ public sealed record DestinySeasonDefinition : IDestinyDefinition, IDisplayPrope
 
     public bool DeepEquals(DestinySeasonDefinition other)
     {
-        return other != null &&
-               ArtifactItem.DeepEquals(other.ArtifactItem) &&
-               BackgroundImagePath == other.BackgroundImagePath &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               SeasonNumber == other.SeasonNumber &&
-               SealPresentationNode.DeepEquals(other.SealPresentationNode) &&
-               SeasonalChallengesPresentationNode.DeepEquals(other.SeasonalChallengesPresentationNode) &&
-               SeasonPass.DeepEquals(other.SeasonPass) &&
-               SeasonPassProgression.DeepEquals(other.SeasonPassProgression) &&
-               SeasonPassUnlock.DeepEquals(other.SeasonPassUnlock) &&
-               StartTimeInSeconds == other.StartTimeInSeconds &&
-               StartDate == other.StartDate &&
-               EndDate == other.EndDate &&
-               Preview.DeepEquals(other.Preview) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && ArtifactItem.DeepEquals(other.ArtifactItem)
+            && BackgroundImagePath == other.BackgroundImagePath
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && SeasonNumber == other.SeasonNumber
+            && SealPresentationNode.DeepEquals(other.SealPresentationNode)
+            && SeasonalChallengesPresentationNode.DeepEquals(
+                other.SeasonalChallengesPresentationNode
+            )
+            && SeasonPass.DeepEquals(other.SeasonPass)
+            && SeasonPassProgression.DeepEquals(other.SeasonPassProgression)
+            && SeasonPassUnlock.DeepEquals(other.SeasonPassUnlock)
+            && StartTimeInSeconds == other.StartTimeInSeconds
+            && StartDate == other.StartDate
+            && EndDate == other.EndDate
+            && Preview.DeepEquals(other.Preview)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinySeasonDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

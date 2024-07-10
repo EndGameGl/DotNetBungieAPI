@@ -1,6 +1,7 @@
 ﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.GuardianRanks;
 
-public sealed record DestinyGuardianRankIconBackgroundsDefinition : IDeepEquatable<DestinyGuardianRankIconBackgroundsDefinition>
+public sealed record DestinyGuardianRankIconBackgroundsDefinition
+    : IDeepEquatable<DestinyGuardianRankIconBackgroundsDefinition>
 {
     [JsonPropertyName("backgroundEmptyBorderedImagePath")]
     public string BackgroundEmptyBorderedImagePath { get; init; }
@@ -43,19 +44,25 @@ public sealed record DestinyGuardianRankIconBackgroundsDefinition : IDeepEquatab
 
     public bool DeepEquals(DestinyGuardianRankIconBackgroundsDefinition other)
     {
-        return other is not null &&
-               BackgroundEmptyBorderedImagePath == other.BackgroundEmptyBorderedImagePath &&
-               BackgroundEmptyBlueGradientBorderedImagePath == other.BackgroundEmptyBlueGradientBorderedImagePath &&
-               BackgroundFilledBlueBorderedImagePath == other.BackgroundFilledBlueBorderedImagePath &&
-               BackgroundFilledBlueGradientBorderedImagePath == other.BackgroundFilledBlueGradientBorderedImagePath &&
-               BackgroundFilledBlueLowAlphaImagePath == other.BackgroundFilledBlueLowAlphaImagePath &&
-               BackgroundFilledBlueMediumAlphaImagePath == other.BackgroundFilledBlueMediumAlphaImagePath &&
-               BackgroundFilledGrayMediumAlphaBorderedImagePath == other.BackgroundFilledGrayMediumAlphaBorderedImagePath &&
-               BackgroundFilledGrayHeavyAlphaBorderedImagePath == other.BackgroundFilledGrayHeavyAlphaBorderedImagePath &&
-               BackgroundFilledWhiteMediumAlphaImagePath == other.BackgroundFilledWhiteMediumAlphaImagePath &&
-               BackgroundFilledWhiteImagePath == other.BackgroundFilledWhiteImagePath &&
-               BackgroundPlateWhiteImagePath == other.BackgroundPlateWhiteImagePath &&
-               BackgroundPlateBlackImagePath == other.BackgroundPlateBlackImagePath &&
-               BackgroundPlateBlackAlphaImagePath == other.BackgroundPlateBlackAlphaImagePath;
+        return other is not null
+            && BackgroundEmptyBorderedImagePath == other.BackgroundEmptyBorderedImagePath
+            && BackgroundEmptyBlueGradientBorderedImagePath
+                == other.BackgroundEmptyBlueGradientBorderedImagePath
+            && BackgroundFilledBlueBorderedImagePath == other.BackgroundFilledBlueBorderedImagePath
+            && BackgroundFilledBlueGradientBorderedImagePath
+                == other.BackgroundFilledBlueGradientBorderedImagePath
+            && BackgroundFilledBlueLowAlphaImagePath == other.BackgroundFilledBlueLowAlphaImagePath
+            && BackgroundFilledBlueMediumAlphaImagePath
+                == other.BackgroundFilledBlueMediumAlphaImagePath
+            && BackgroundFilledGrayMediumAlphaBorderedImagePath
+                == other.BackgroundFilledGrayMediumAlphaBorderedImagePath
+            && BackgroundFilledGrayHeavyAlphaBorderedImagePath
+                == other.BackgroundFilledGrayHeavyAlphaBorderedImagePath
+            && BackgroundFilledWhiteMediumAlphaImagePath
+                == other.BackgroundFilledWhiteMediumAlphaImagePath
+            && BackgroundFilledWhiteImagePath == other.BackgroundFilledWhiteImagePath
+            && BackgroundPlateWhiteImagePath == other.BackgroundPlateWhiteImagePath
+            && BackgroundPlateBlackImagePath == other.BackgroundPlateBlackImagePath
+            && BackgroundPlateBlackAlphaImagePath == other.BackgroundPlateBlackAlphaImagePath;
     }
 }

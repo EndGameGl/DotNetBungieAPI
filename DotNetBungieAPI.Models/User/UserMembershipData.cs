@@ -34,6 +34,8 @@ public sealed record UserMembershipData
     {
         if (PrimaryMembershipId.HasValue)
             return DestinyMemberships.Single(x => x.MembershipId == PrimaryMembershipId.Value);
-        return DestinyMemberships.Count > 1 ? DestinyMemberships.FirstOrDefault() : DestinyMemberships.Single();
+        return DestinyMemberships.Count > 1
+            ? DestinyMemberships.FirstOrDefault()
+            : DestinyMemberships.Single();
     }
 }

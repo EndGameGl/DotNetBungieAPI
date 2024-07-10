@@ -6,13 +6,15 @@ public sealed record DestinyParentItemOverride : IDeepEquatable<DestinyParentIte
     public ReadOnlyCollection<string> AdditionalEquipRequirementsDisplayStrings { get; init; } =
         ReadOnlyCollections<string>.Empty;
 
-    [JsonPropertyName("pipIcon")] public BungieNetResource PipIcon { get; init; }
+    [JsonPropertyName("pipIcon")]
+    public BungieNetResource PipIcon { get; init; }
 
     public bool DeepEquals(DestinyParentItemOverride other)
     {
-        return other != null &&
-               AdditionalEquipRequirementsDisplayStrings.DeepEqualsReadOnlySimpleCollection(
-                   other.AdditionalEquipRequirementsDisplayStrings) &&
-               PipIcon == other.PipIcon;
+        return other != null
+            && AdditionalEquipRequirementsDisplayStrings.DeepEqualsReadOnlySimpleCollection(
+                other.AdditionalEquipRequirementsDisplayStrings
+            )
+            && PipIcon == other.PipIcon;
     }
 }

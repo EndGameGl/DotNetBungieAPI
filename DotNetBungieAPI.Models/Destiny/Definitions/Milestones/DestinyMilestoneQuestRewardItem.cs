@@ -6,8 +6,9 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
 ///     A subclass of DestinyItemQuantity, that provides not just the item and its quantity but also information that BNet
 ///     can - at some point - use internally to provide more robust runtime information about the item's qualities.
 /// </summary>
-public sealed record DestinyMilestoneQuestRewardItem : DestinyItemQuantity,
-    IDeepEquatable<DestinyMilestoneQuestRewardItem>
+public sealed record DestinyMilestoneQuestRewardItem
+    : DestinyItemQuantity,
+        IDeepEquatable<DestinyMilestoneQuestRewardItem>
 {
     /// <summary>
     ///     The quest reward item *may* be associated with a vendor. If so, this is that vendor. Use this hash to look up the
@@ -26,11 +27,11 @@ public sealed record DestinyMilestoneQuestRewardItem : DestinyItemQuantity,
 
     public bool DeepEquals(DestinyMilestoneQuestRewardItem other)
     {
-        return other != null &&
-               Item.DeepEquals(other.Item) &&
-               Quantity == other.Quantity &&
-               ItemInstanceId == other.ItemInstanceId &&
-               Vendor.DeepEquals(other.Vendor) &&
-               VendorItemIndex == other.VendorItemIndex;
+        return other != null
+            && Item.DeepEquals(other.Item)
+            && Quantity == other.Quantity
+            && ItemInstanceId == other.ItemInstanceId
+            && Vendor.DeepEquals(other.Vendor)
+            && VendorItemIndex == other.VendorItemIndex;
     }
 }

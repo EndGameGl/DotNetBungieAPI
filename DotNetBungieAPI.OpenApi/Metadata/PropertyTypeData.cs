@@ -10,7 +10,7 @@ public class PropertyTypeData
     public string Description { get; }
     public string TypeReference { get; set; }
     public string Format { get; set; }
-    
+
     public bool IsEnum { get; set; }
     public bool IsClass { get; private set; } = false;
     public bool IsValue { get; private set; } = false;
@@ -20,9 +20,7 @@ public class PropertyTypeData
 
     public List<PropertyTypeData> GenericProperties { get; } = new();
 
-    public PropertyTypeData(
-        string typeName,
-        OpenApiComponentSchema openApiComponentSchema)
+    public PropertyTypeData(string typeName, OpenApiComponentSchema openApiComponentSchema)
     {
         OriginPropertyName = typeName;
         if (openApiComponentSchema.TypeReference is not null)
@@ -64,7 +62,7 @@ public class PropertyTypeData
                 IsClass = true;
                 return;
 
-            // simple object ref 
+            // simple object ref
             case { Type: "object", AllOf.Count: > 0 }:
                 IsClass = true;
                 return;
@@ -99,10 +97,9 @@ public class PropertyTypeData
                         return;
                     // T is enum
                     case { EnumReference: not null }:
-                        GenericProperties.Add(new PropertyTypeData("", schema.Items.EnumReference)
-                        {
-                            IsValue = true
-                        });
+                        GenericProperties.Add(
+                            new PropertyTypeData("", schema.Items.EnumReference) { IsValue = true }
+                        );
                         return;
                     // T is value type
                     default:

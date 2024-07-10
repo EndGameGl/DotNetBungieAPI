@@ -8,7 +8,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 ///     If the item can exist in an inventory - the overwhelming majority of them can and do - then this is the basic
 ///     properties regarding the item's relationship with the inventory.
 /// </summary>
-public sealed record DestinyItemInventoryBlockDefinition : IDeepEquatable<DestinyItemInventoryBlockDefinition>
+public sealed record DestinyItemInventoryBlockDefinition
+    : IDeepEquatable<DestinyItemInventoryBlockDefinition>
 {
     /// <summary>
     ///     If this string is populated, you can't have more than one stack with this label in a given inventory. Note that
@@ -68,13 +69,13 @@ public sealed record DestinyItemInventoryBlockDefinition : IDeepEquatable<Destin
 
     [JsonPropertyName("suppressExpirationWhenObjectivesComplete")]
     public bool SuppressExpirationWhenObjectivesComplete { get; init; }
-    
+
     /// <summary>
     ///     A reference to the associated crafting 'recipe' item definition, if this item can be crafted.
     /// </summary>
     [JsonPropertyName("recipeItemHash")]
-    public DefinitionHashPointer<DestinyInventoryItemDefinition> RecipeItem { get; init; } 
-        = DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
+    public DefinitionHashPointer<DestinyInventoryItemDefinition> RecipeItem { get; init; } =
+        DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
 
     /// <summary>
     ///     The enumeration matching the tier type of the item to known values, again for convenience sake.
@@ -87,8 +88,8 @@ public sealed record DestinyItemInventoryBlockDefinition : IDeepEquatable<Destin
     ///     item's tier.
     /// </summary>
     [JsonPropertyName("tierTypeHash")]
-    public DefinitionHashPointer<DestinyItemTierTypeDefinition> TierType { get; init; }
-        = DefinitionHashPointer<DestinyItemTierTypeDefinition>.Empty;
+    public DefinitionHashPointer<DestinyItemTierTypeDefinition> TierType { get; init; } =
+        DefinitionHashPointer<DestinyItemTierTypeDefinition>.Empty;
 
     /// <summary>
     ///     The localized name of the tier type, which is a useful shortcut so you don't have to look up the definition every
@@ -99,20 +100,21 @@ public sealed record DestinyItemInventoryBlockDefinition : IDeepEquatable<Destin
 
     public bool DeepEquals(DestinyItemInventoryBlockDefinition other)
     {
-        return other != null &&
-               StackUniqueLabel == other.StackUniqueLabel &&
-               BucketType.DeepEquals(other.BucketType) &&
-               ExpirationTooltip == other.ExpirationTooltip &&
-               ExpiredInActivityMessage == other.ExpiredInActivityMessage &&
-               ExpiredInOrbitMessage == other.ExpiredInOrbitMessage &&
-               IsInstanceItem == other.IsInstanceItem &&
-               MaxStackSize == other.MaxStackSize &&
-               NonTransferrableOriginal == other.NonTransferrableOriginal &&
-               RecoveryBucketType.DeepEquals(other.RecoveryBucketType) &&
-               SuppressExpirationWhenObjectivesComplete == other.SuppressExpirationWhenObjectivesComplete &&
-               TierTypeEnumValue == other.TierTypeEnumValue &&
-               TierType.DeepEquals(other.TierType) &&
-               TierTypeName == other.TierTypeName &&
-               RecipeItem.DeepEquals(other.RecipeItem);
+        return other != null
+            && StackUniqueLabel == other.StackUniqueLabel
+            && BucketType.DeepEquals(other.BucketType)
+            && ExpirationTooltip == other.ExpirationTooltip
+            && ExpiredInActivityMessage == other.ExpiredInActivityMessage
+            && ExpiredInOrbitMessage == other.ExpiredInOrbitMessage
+            && IsInstanceItem == other.IsInstanceItem
+            && MaxStackSize == other.MaxStackSize
+            && NonTransferrableOriginal == other.NonTransferrableOriginal
+            && RecoveryBucketType.DeepEquals(other.RecoveryBucketType)
+            && SuppressExpirationWhenObjectivesComplete
+                == other.SuppressExpirationWhenObjectivesComplete
+            && TierTypeEnumValue == other.TierTypeEnumValue
+            && TierType.DeepEquals(other.TierType)
+            && TierTypeName == other.TierTypeName
+            && RecipeItem.DeepEquals(other.RecipeItem);
     }
 }

@@ -8,16 +8,19 @@ public sealed record DestinyPresentationChildBlock : IDeepEquatable<DestinyPrese
     public DestinyPresentationNodeType PresentationNodeType { get; init; }
 
     [JsonPropertyName("parentPresentationNodeHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentPresentationNodes { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyPresentationNodeDefinition>
+    > ParentPresentationNodes { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
 
-    [JsonPropertyName("displayStyle")] public DestinyPresentationNodeType DisplayStyle { get; init; }
+    [JsonPropertyName("displayStyle")]
+    public DestinyPresentationNodeType DisplayStyle { get; init; }
 
     public bool DeepEquals(DestinyPresentationChildBlock other)
     {
-        return other != null &&
-               PresentationNodeType == other.PresentationNodeType &&
-               ParentPresentationNodes.DeepEqualsReadOnlyCollections(other.ParentPresentationNodes) &&
-               DisplayStyle == other.DisplayStyle;
+        return other != null
+            && PresentationNodeType == other.PresentationNodeType
+            && ParentPresentationNodes.DeepEqualsReadOnlyCollections(other.ParentPresentationNodes)
+            && DisplayStyle == other.DisplayStyle;
     }
 }

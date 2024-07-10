@@ -9,16 +9,13 @@ public class ObjectTypeData : TypeData
 {
     public ReadOnlyCollection<PropertyTypeData> Properties { get; private set; }
 
-    public ObjectTypeData(string typeName, OpenApiComponentSchema openApiComponentSchema) :
-        base(typeName, openApiComponentSchema)
-    {
-    }
+    public ObjectTypeData(string typeName, OpenApiComponentSchema openApiComponentSchema)
+        : base(typeName, openApiComponentSchema) { }
 
     protected override void AnalyzeSchema(OpenApiComponentSchema openApiComponentSchema)
     {
         var properties = openApiComponentSchema
-            .Properties?
-            .Select(x => new PropertyTypeData(x.Key, x.Value))
+            .Properties?.Select(x => new PropertyTypeData(x.Key, x.Value))
             .ToList();
 
         if (properties is null)

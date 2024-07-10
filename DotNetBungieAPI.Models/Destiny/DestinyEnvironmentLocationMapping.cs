@@ -46,11 +46,11 @@ public class DestinyEnvironmentLocationMapping : IDeepEquatable<DestinyEnvironme
 
     public bool DeepEquals(DestinyEnvironmentLocationMapping other)
     {
-        return other != null &&
-               ActivationSource == other.ActivationSource &&
-               Activity.DeepEquals(other.Activity) &&
-               Location.DeepEquals(other.Location) &&
-               Item.DeepEquals(other.Item) &&
-               Objective.DeepEquals(other.Objective);
+        return other != null
+            && ActivationSource == other.ActivationSource
+            && Activity.DeepEquals(other.Activity)
+            && Location.DeepEquals(other.Location)
+            && Item.DeepEquals(other.Item)
+            && Objective.DeepEquals(other.Objective);
     }
 }

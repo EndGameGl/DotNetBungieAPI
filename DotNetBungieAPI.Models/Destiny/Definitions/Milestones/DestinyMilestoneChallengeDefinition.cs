@@ -2,7 +2,8 @@
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
 
-public sealed record DestinyMilestoneChallengeDefinition : IDeepEquatable<DestinyMilestoneChallengeDefinition>
+public sealed record DestinyMilestoneChallengeDefinition
+    : IDeepEquatable<DestinyMilestoneChallengeDefinition>
 {
     /// <summary>
     ///     The challenge related to this milestone.

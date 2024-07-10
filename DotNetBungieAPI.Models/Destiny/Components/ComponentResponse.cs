@@ -6,7 +6,7 @@
 /// </summary>
 public abstract record ComponentResponse
 {
-    [JsonPropertyName("privacy")] 
+    [JsonPropertyName("privacy")]
     public ComponentPrivacySetting Privacy { get; init; }
 
     /// <summary>

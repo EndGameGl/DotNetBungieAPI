@@ -14,8 +14,8 @@ public sealed record DestinyMilestoneChallengeActivityGraphNodeEntry
 
     public bool DeepEquals(DestinyMilestoneChallengeActivityGraphNodeEntry other)
     {
-        return other != null &&
-               ActivityGraph.DeepEquals(other.ActivityGraph) &&
-               ActivityGraphNodeHash == other.ActivityGraphNodeHash;
+        return other != null
+            && ActivityGraph.DeepEquals(other.ActivityGraph)
+            && ActivityGraphNodeHash == other.ActivityGraphNodeHash;
     }
 }

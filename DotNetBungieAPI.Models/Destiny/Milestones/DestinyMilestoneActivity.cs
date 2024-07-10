@@ -44,7 +44,9 @@ public sealed record DestinyMilestoneActivity
     ///     live.
     /// </summary>
     [JsonPropertyName("modifierHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>> Modifiers { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyActivityModifierDefinition>
+    > Modifiers { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModifierDefinition>>.Empty;
 
     /// <summary>

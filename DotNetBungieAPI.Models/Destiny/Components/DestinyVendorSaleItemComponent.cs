@@ -29,7 +29,9 @@ public sealed record DestinyVendorSaleItemComponent
     ///     supplanted by failureIndexes.
     /// </summary>
     [JsonPropertyName("requiredUnlocks")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyUnlockDefinition>> RequiredUnlocks { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyUnlockDefinition>
+    > RequiredUnlocks { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyUnlockDefinition>>.Empty;
 
     /// <summary>
@@ -68,7 +70,8 @@ public sealed record DestinyVendorSaleItemComponent
     ///     If available, a list that describes which item values (rewards) should be shown (true) or hidden (false).
     /// </summary>
     [JsonPropertyName("itemValueVisibility")]
-    public ReadOnlyCollection<bool> ItemValueVisibility { get; init; } = ReadOnlyCollections<bool>.Empty;
+    public ReadOnlyCollection<bool> ItemValueVisibility { get; init; } =
+        ReadOnlyCollections<bool>.Empty;
 
     /// <summary>
     ///     The index into the DestinyVendorDefinition.itemList property. Note that this means Vendor data *is* Content Version

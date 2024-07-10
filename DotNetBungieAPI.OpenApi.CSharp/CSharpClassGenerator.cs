@@ -33,7 +33,7 @@ public class CSharpClassGenerator : ModelGeneratorBase
         }
 
         await WriteLineAsync();
-        
+
         if (typeData.Description is not null)
         {
             await WriteComment(false, typeData.Description);
@@ -52,17 +52,20 @@ public class CSharpClassGenerator : ModelGeneratorBase
                 await WriteComment(true, propertyTypeData.Description);
             }
 
-            await WriteLineAsync($"{Indent}[JsonPropertyName(\"{propertyTypeData.OriginPropertyName}\")]");
+            await WriteLineAsync(
+                $"{Indent}[JsonPropertyName(\"{propertyTypeData.OriginPropertyName}\")]"
+            );
 
             await WriteLineAsync(
-                $"{Indent}public {propertyTypeData.GetCSharpType()}{(propertyTypeData.IsNullable ? "?" : string.Empty)} {propertyTypeData.OriginPropertyName.GetCSharpPropertyName()} {{ get; set; }}");
+                $"{Indent}public {propertyTypeData.GetCSharpType()}{(propertyTypeData.IsNullable ? "?" : string.Empty)} {propertyTypeData.OriginPropertyName.GetCSharpPropertyName()} {{ get; set; }}"
+            );
 
             if (i != amountCheckValue)
             {
                 await WriteLineAsync();
             }
         }
-        
+
         await WriteLineAsync('}');
     }
 
@@ -87,7 +90,7 @@ public class CSharpClassGenerator : ModelGeneratorBase
         }
 
         await WriteLineAsync();
-        
+
         if (typeData.Description is not null)
         {
             await WriteComment(false, typeData.Description);
@@ -98,7 +101,10 @@ public class CSharpClassGenerator : ModelGeneratorBase
             await WriteLineAsync("[System.Flags]");
         }
 
-        await WriteLineAsync($"public enum {typeData.TypeName} : {Resources.TypeMappings[typeData.Format]}");
+        await WriteLineAsync(
+            $"public enum {typeData.TypeName} : {Resources.TypeMappings[typeData.Format]}"
+        );
+
         await WriteLineAsync('{');
 
         var totalValues = typeData.Values.Count;
@@ -112,7 +118,8 @@ public class CSharpClassGenerator : ModelGeneratorBase
             }
 
             await WriteLineAsync(
-                $"{Indent}{enumValueData.Name} = {enumValueData.Value}{(i != amountCheckValue ? "," : string.Empty)}");
+                $"{Indent}{enumValueData.Name} = {enumValueData.Value}{(i != amountCheckValue ? "," : string.Empty)}"
+            );
             if (i != amountCheckValue)
             {
                 await WriteLineAsync();

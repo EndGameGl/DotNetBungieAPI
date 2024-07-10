@@ -6,7 +6,9 @@ namespace DotNetBungieAPI.Models.Destiny.Components;
 public sealed record DestinyCharacterRecordsComponent
 {
     [JsonPropertyName("featuredRecordHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyRecordDefinition>> FeaturedRecords { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyRecordDefinition>
+    > FeaturedRecords { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyRecordDefinition>>.Empty;
 
     [JsonPropertyName("records")]

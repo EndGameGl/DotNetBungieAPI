@@ -16,9 +16,17 @@ public sealed record GroupQuery : PagedQuery
     /// <param name="itemsPerPage"></param>
     /// <param name="currentPage"></param>
     /// <param name="requestContinuationToken"></param>
-    public GroupQuery(string name, GroupDateRange creationDate, GroupSortBy sortBy,
-        GroupMemberCountFilter? groupMemberCountFilter, string localeFilter, string tagText, int itemsPerPage,
-        int currentPage, string requestContinuationToken)
+    public GroupQuery(
+        string name,
+        GroupDateRange creationDate,
+        GroupSortBy sortBy,
+        GroupMemberCountFilter? groupMemberCountFilter,
+        string localeFilter,
+        string tagText,
+        int itemsPerPage,
+        int currentPage,
+        string requestContinuationToken
+    )
     {
         Name = name;
         GroupType = GroupType.General;
@@ -41,8 +49,14 @@ public sealed record GroupQuery : PagedQuery
     /// <param name="itemsPerPage"></param>
     /// <param name="currentPage"></param>
     /// <param name="requestContinuationToken"></param>
-    public GroupQuery(string name, GroupDateRange creationDate, GroupSortBy sortBy, int itemsPerPage,
-        int currentPage, string requestContinuationToken)
+    public GroupQuery(
+        string name,
+        GroupDateRange creationDate,
+        GroupSortBy sortBy,
+        int itemsPerPage,
+        int currentPage,
+        string requestContinuationToken
+    )
     {
         Name = name;
         GroupType = GroupType.Clan;
@@ -53,18 +67,24 @@ public sealed record GroupQuery : PagedQuery
         RequestContinuationToken = requestContinuationToken;
     }
 
-    [JsonPropertyName("name")] public string Name { get; }
+    [JsonPropertyName("name")]
+    public string Name { get; }
 
-    [JsonPropertyName("groupType")] public GroupType GroupType { get; }
+    [JsonPropertyName("groupType")]
+    public GroupType GroupType { get; }
 
-    [JsonPropertyName("creationDate")] public GroupDateRange CreationDate { get; }
+    [JsonPropertyName("creationDate")]
+    public GroupDateRange CreationDate { get; }
 
-    [JsonPropertyName("sortBy")] public GroupSortBy SortBy { get; }
+    [JsonPropertyName("sortBy")]
+    public GroupSortBy SortBy { get; }
 
     [JsonPropertyName("groupMemberCountFilter")]
     public GroupMemberCountFilter? GroupMemberCountFilter { get; }
 
-    [JsonPropertyName("localeFilter")] public string LocaleFilter { get; }
+    [JsonPropertyName("localeFilter")]
+    public string LocaleFilter { get; }
 
-    [JsonPropertyName("tagText")] public string TagText { get; }
+    [JsonPropertyName("tagText")]
+    public string TagText { get; }
 }

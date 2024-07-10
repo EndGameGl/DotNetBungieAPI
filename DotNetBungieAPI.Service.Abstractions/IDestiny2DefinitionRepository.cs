@@ -116,7 +116,7 @@ public interface IDestiny2DefinitionRepository
     void Clear(DefinitionsEnum definitionType);
 
     /// <summary>
-    ///     Clears repository of certain locale definition type 
+    ///     Clears repository of certain locale definition type
     /// </summary>
     /// <param name="definitionType"></param>
     /// <param name="locale"></param>

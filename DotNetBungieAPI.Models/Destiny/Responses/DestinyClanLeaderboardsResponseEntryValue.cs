@@ -4,5 +4,6 @@ namespace DotNetBungieAPI.Models.Destiny.Responses;
 
 public sealed record DestinyClanLeaderboardsResponseEntryValue
 {
-    [JsonPropertyName("basic")] public DestinyHistoricalStatsValuePair Basic { get; init; }
+    [JsonPropertyName("basic")]
+    public DestinyHistoricalStatsValuePair Basic { get; init; }
 }

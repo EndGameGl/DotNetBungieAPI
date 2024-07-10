@@ -16,7 +16,10 @@ public class DestinyDefinitionTypeRepository
     public DestinyDefinitionTypeRepository(Type storedType, int concurrencyLevel, int capacity = 31)
     {
         Type = storedType;
-        _definitions = new ConcurrentDictionary<uint, IDestinyDefinition>(concurrencyLevel, capacity);
+        _definitions = new ConcurrentDictionary<uint, IDestinyDefinition>(
+            concurrencyLevel,
+            capacity
+        );
     }
 
     public Type Type { get; }
@@ -48,7 +51,8 @@ public class DestinyDefinitionTypeRepository
         return _definitions.TryGetValue(hash, out definition);
     }
 
-    public bool TryGetDefinition<T>(uint hash, out T definition) where T : IDestinyDefinition
+    public bool TryGetDefinition<T>(uint hash, out T definition)
+        where T : IDestinyDefinition
     {
         definition = default;
         if (_definitions.TryGetValue(hash, out var item))

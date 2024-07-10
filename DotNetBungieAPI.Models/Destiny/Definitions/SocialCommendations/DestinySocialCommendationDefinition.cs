@@ -4,9 +4,13 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Common;
 namespace DotNetBungieAPI.Models.Destiny.Definitions.SocialCommendations;
 
 [DestinyDefinition(DefinitionsEnum.DestinySocialCommendationDefinition)]
-public sealed record DestinySocialCommendationDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinySocialCommendationDefinition>
+public sealed record DestinySocialCommendationDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinySocialCommendationDefinition>
 {
-    public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinySocialCommendationDefinition;
+    public DefinitionsEnum DefinitionEnumValue =>
+        DefinitionsEnum.DestinySocialCommendationDefinition;
 
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -24,11 +28,12 @@ public sealed record DestinySocialCommendationDefinition : IDestinyDefinition, I
     public int ActivityGivingLimit { get; init; }
 
     [JsonPropertyName("parentCommendationNodeHash")]
-    public DefinitionHashPointer<DestinySocialCommendationNodeDefinition> ParentCommendationNode { get; init; } = DefinitionHashPointer<DestinySocialCommendationNodeDefinition>.Empty;
+    public DefinitionHashPointer<DestinySocialCommendationNodeDefinition> ParentCommendationNode { get; init; } =
+        DefinitionHashPointer<DestinySocialCommendationNodeDefinition>.Empty;
 
     [JsonPropertyName("displayActivities")]
-    public ReadOnlyCollection<DestinyDisplayPropertiesDefinition> DisplayActivities { get; init; }
-        = ReadOnlyCollections<DestinyDisplayPropertiesDefinition>.Empty;
+    public ReadOnlyCollection<DestinyDisplayPropertiesDefinition> DisplayActivities { get; init; } =
+        ReadOnlyCollections<DestinyDisplayPropertiesDefinition>.Empty;
 
     [JsonPropertyName("blacklisted")]
     public bool Blacklisted { get; init; }
@@ -44,17 +49,17 @@ public sealed record DestinySocialCommendationDefinition : IDestinyDefinition, I
 
     public bool DeepEquals(DestinySocialCommendationDefinition other)
     {
-        return other is not null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               CardImagePath == other.CardImagePath &&
-               Color.DeepEquals(other.Color) &&
-               DisplayPriority == other.DisplayPriority &&
-               ActivityGivingLimit == other.ActivityGivingLimit &&
-               ParentCommendationNode.DeepEquals(other.ParentCommendationNode) &&
-               DisplayActivities.DeepEqualsReadOnlyCollections(other.DisplayActivities) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other is not null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && CardImagePath == other.CardImagePath
+            && Color.DeepEquals(other.Color)
+            && DisplayPriority == other.DisplayPriority
+            && ActivityGivingLimit == other.ActivityGivingLimit
+            && ParentCommendationNode.DeepEquals(other.ParentCommendationNode)
+            && DisplayActivities.DeepEqualsReadOnlyCollections(other.DisplayActivities)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 }

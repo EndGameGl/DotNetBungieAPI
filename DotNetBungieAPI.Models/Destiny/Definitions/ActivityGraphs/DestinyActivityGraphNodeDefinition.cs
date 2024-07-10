@@ -8,7 +8,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs;
 ///     launched (and, unless overrideDisplay information is provided, will also determine the tooltip and other UI related
 ///     to the node)
 /// </summary>
-public sealed record DestinyActivityGraphNodeDefinition : IDeepEquatable<DestinyActivityGraphNodeDefinition>
+public sealed record DestinyActivityGraphNodeDefinition
+    : IDeepEquatable<DestinyActivityGraphNodeDefinition>
 {
     /// <summary>
     ///     An identifier for the Activity Graph Node, only guaranteed to be unique within its parent Activity Graph.
@@ -56,18 +57,19 @@ public sealed record DestinyActivityGraphNodeDefinition : IDeepEquatable<Destiny
     [JsonPropertyName("uiActivityTypeOverrideHash")]
     public uint UIActivityTypeOverrideHash { get; init; }
 
-    [JsonPropertyName("uiStyleHash")] public uint UIStyleHash { get; init; }
+    [JsonPropertyName("uiStyleHash")]
+    public uint UIStyleHash { get; init; }
 
     public bool DeepEquals(DestinyActivityGraphNodeDefinition other)
     {
-        return other != null &&
-               Activities.DeepEqualsReadOnlyCollections(other.Activities) &&
-               FeaturingStates.DeepEqualsReadOnlyCollections(other.FeaturingStates) &&
-               NodeId == other.NodeId &&
-               OverrideDisplay.DeepEquals(other.OverrideDisplay) &&
-               Position.DeepEquals(other.Position) &&
-               States.DeepEqualsReadOnlyCollections(other.States) &&
-               UIActivityTypeOverrideHash == other.UIActivityTypeOverrideHash &&
-               UIStyleHash == other.UIStyleHash;
+        return other != null
+            && Activities.DeepEqualsReadOnlyCollections(other.Activities)
+            && FeaturingStates.DeepEqualsReadOnlyCollections(other.FeaturingStates)
+            && NodeId == other.NodeId
+            && OverrideDisplay.DeepEquals(other.OverrideDisplay)
+            && Position.DeepEquals(other.Position)
+            && States.DeepEqualsReadOnlyCollections(other.States)
+            && UIActivityTypeOverrideHash == other.UIActivityTypeOverrideHash
+            && UIStyleHash == other.UIStyleHash;
     }
 }

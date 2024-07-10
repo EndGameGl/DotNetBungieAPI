@@ -238,7 +238,7 @@ public enum DestinyComponentType
     ///     Returns a mapping of localized string variable hashes to values, on a per-account or per-character basis.
     /// </summary>
     StringVariables = 1200,
-    
+
     /// <summary>
     ///     Returns summary status information about all "Craftables" aka crafting recipe items.
     /// </summary>

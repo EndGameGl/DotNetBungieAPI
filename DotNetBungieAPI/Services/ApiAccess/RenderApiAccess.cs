@@ -14,7 +14,8 @@ internal sealed class RenderApiAccess : IRenderApiAccess
 
     public RenderApiAccess(
         IDotNetBungieApiHttpClient httpClient,
-        IBungieNetJsonSerializer bungieNetJsonSerializer)
+        IBungieNetJsonSerializer bungieNetJsonSerializer
+    )
     {
         _httpClient = httpClient;
         _bungieNetJsonSerializer = bungieNetJsonSerializer;
@@ -24,7 +25,8 @@ internal sealed class RenderApiAccess : IRenderApiAccess
         string gearPath,
         DestinyManifest manifest,
         string game = "destiny2",
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var gearContentPath = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -33,6 +35,8 @@ internal sealed class RenderApiAccess : IRenderApiAccess
             .Build();
 
         var stream = await _httpClient.GetStreamFromWebSourceAsync(gearContentPath);
-        return await _bungieNetJsonSerializer.DeserializeAsync<DestinyGearAssetDefinitionGear>(stream.ContentStream);
+        return await _bungieNetJsonSerializer.DeserializeAsync<DestinyGearAssetDefinitionGear>(
+            stream.ContentStream
+        );
     }
 }

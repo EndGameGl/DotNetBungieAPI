@@ -1,6 +1,7 @@
 ﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
 
-public sealed record DestinyMilestoneChallengeActivityPhase : IDeepEquatable<DestinyMilestoneChallengeActivityPhase>
+public sealed record DestinyMilestoneChallengeActivityPhase
+    : IDeepEquatable<DestinyMilestoneChallengeActivityPhase>
 {
     [JsonPropertyName("phaseCompleteUnlockHash")]
     public uint PhaseCompleteUnlockHash { get; init; }
@@ -13,8 +14,8 @@ public sealed record DestinyMilestoneChallengeActivityPhase : IDeepEquatable<Des
 
     public bool DeepEquals(DestinyMilestoneChallengeActivityPhase other)
     {
-        return other != null &&
-               PhaseCompleteUnlockHash == other.PhaseCompleteUnlockHash &&
-               PhaseHash == other.PhaseHash;
+        return other != null
+            && PhaseCompleteUnlockHash == other.PhaseCompleteUnlockHash
+            && PhaseHash == other.PhaseHash;
     }
 }

@@ -4,7 +4,8 @@
 ///     Defines the conditions under which stat modifications will be applied to a Character while participating in an
 ///     objective.
 /// </summary>
-public class DestinyObjectiveStatEntryDefinition : IDeepEquatable<DestinyObjectiveStatEntryDefinition>
+public class DestinyObjectiveStatEntryDefinition
+    : IDeepEquatable<DestinyObjectiveStatEntryDefinition>
 {
     /// <summary>
     ///     The stat being modified, and the value used.
@@ -20,8 +21,8 @@ public class DestinyObjectiveStatEntryDefinition : IDeepEquatable<DestinyObjecti
 
     public bool DeepEquals(DestinyObjectiveStatEntryDefinition other)
     {
-        return other != null &&
-               (Stat != null ? Stat.DeepEquals(other.Stat) : other.Stat == null) &&
-               Style == other.Style;
+        return other != null
+            && (Stat != null ? Stat.DeepEquals(other.Stat) : other.Stat == null)
+            && Style == other.Style;
     }
 }

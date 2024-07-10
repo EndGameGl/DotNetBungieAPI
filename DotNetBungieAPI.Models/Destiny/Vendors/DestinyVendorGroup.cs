@@ -18,6 +18,8 @@ public sealed record DestinyVendorGroup
     ///     The ordered list of vendors within a particular group.
     /// </summary>
     [JsonPropertyName("vendorHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyVendorDefinition>> Vendors { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyVendorDefinition>
+    > Vendors { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyVendorDefinition>>.Empty;
 }

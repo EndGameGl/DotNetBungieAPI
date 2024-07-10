@@ -2,8 +2,13 @@
 
 public sealed class DestinyInsertPlugsActionRequest
 {
-    public DestinyInsertPlugsActionRequest(string actionToken, long itemInstanceId,
-        DestinyInsertPlugsRequestEntry plug, long characterId, BungieMembershipType membershipType)
+    public DestinyInsertPlugsActionRequest(
+        string actionToken,
+        long itemInstanceId,
+        DestinyInsertPlugsRequestEntry plug,
+        long characterId,
+        BungieMembershipType membershipType
+    )
     {
         ActionToken = actionToken;
         ItemInstanceId = itemInstanceId;
@@ -30,7 +35,9 @@ public sealed class DestinyInsertPlugsActionRequest
     [JsonPropertyName("plug")]
     public DestinyInsertPlugsRequestEntry Plug { get; }
 
-    [JsonPropertyName("characterId")] public long CharacterId { get; }
+    [JsonPropertyName("characterId")]
+    public long CharacterId { get; }
 
-    [JsonPropertyName("membershipType")] public BungieMembershipType MembershipType { get; }
+    [JsonPropertyName("membershipType")]
+    public BungieMembershipType MembershipType { get; }
 }

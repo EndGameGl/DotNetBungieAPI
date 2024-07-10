@@ -5,5 +5,6 @@ namespace DotNetBungieAPI.Models.Queries;
 public sealed record SearchResultOfGroupMember : SearchResultBase
 {
     [JsonPropertyName("results")]
-    public ReadOnlyCollection<GroupMember> Results { get; init; } = ReadOnlyCollections<GroupMember>.Empty;
+    public ReadOnlyCollection<GroupMember> Results { get; init; } =
+        ReadOnlyCollections<GroupMember>.Empty;
 }

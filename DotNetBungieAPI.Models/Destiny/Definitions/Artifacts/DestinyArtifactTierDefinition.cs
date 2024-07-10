@@ -35,11 +35,11 @@ public sealed record DestinyArtifactTierDefinition : IDeepEquatable<DestinyArtif
 
     public bool DeepEquals(DestinyArtifactTierDefinition other)
     {
-        return other != null &&
-               DisplayTitle == other.DisplayTitle &&
-               Items.DeepEqualsReadOnlyCollections(other.Items) &&
-               MinimumUnlockPointsUsedRequirement == other.MinimumUnlockPointsUsedRequirement &&
-               TierHash == other.TierHash &&
-               ProgressRequirementMessage == other.ProgressRequirementMessage;
+        return other != null
+            && DisplayTitle == other.DisplayTitle
+            && Items.DeepEqualsReadOnlyCollections(other.Items)
+            && MinimumUnlockPointsUsedRequirement == other.MinimumUnlockPointsUsedRequirement
+            && TierHash == other.TierHash
+            && ProgressRequirementMessage == other.ProgressRequirementMessage;
     }
 }

@@ -8,7 +8,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids;
 ///     activation and alter the first Socket it finds on the item that has a type matching the given socket type,
 ///     inserting the indicated plug item.
 /// </summary>
-public sealed record DestinyNodeSocketReplaceResponse : IDeepEquatable<DestinyNodeSocketReplaceResponse>
+public sealed record DestinyNodeSocketReplaceResponse
+    : IDeepEquatable<DestinyNodeSocketReplaceResponse>
 {
     /// <summary>
     ///     The hash identifier of the socket type to find amidst the item's sockets (the item to which this talent grid is
@@ -28,8 +29,8 @@ public sealed record DestinyNodeSocketReplaceResponse : IDeepEquatable<DestinyNo
 
     public bool DeepEquals(DestinyNodeSocketReplaceResponse other)
     {
-        return other != null &&
-               SocketType.DeepEquals(other.SocketType) &&
-               PlugItem.DeepEquals(other.PlugItem);
+        return other != null
+            && SocketType.DeepEquals(other.SocketType)
+            && PlugItem.DeepEquals(other.PlugItem);
     }
 }

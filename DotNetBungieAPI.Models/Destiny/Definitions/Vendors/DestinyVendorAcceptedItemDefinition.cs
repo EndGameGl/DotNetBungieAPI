@@ -12,7 +12,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 ///     <para />
 ///     The mechanics for Postmaster works similarly, which is also a vendor. All driven by Accepted Items.
 /// </summary>
-public sealed record DestinyVendorAcceptedItemDefinition : IDeepEquatable<DestinyVendorAcceptedItemDefinition>
+public sealed record DestinyVendorAcceptedItemDefinition
+    : IDeepEquatable<DestinyVendorAcceptedItemDefinition>
 {
     /// <summary>
     ///     The "source" bucket for a transfer. When a user wants to transfer an item, the appropriate
@@ -34,8 +35,8 @@ public sealed record DestinyVendorAcceptedItemDefinition : IDeepEquatable<Destin
 
     public bool DeepEquals(DestinyVendorAcceptedItemDefinition other)
     {
-        return other != null &&
-               AcceptedInventoryBucket.DeepEquals(other.AcceptedInventoryBucket) &&
-               DestinationInventoryBucket.DeepEquals(other.DestinationInventoryBucket);
+        return other != null
+            && AcceptedInventoryBucket.DeepEquals(other.AcceptedInventoryBucket)
+            && DestinationInventoryBucket.DeepEquals(other.DestinationInventoryBucket);
     }
 }

@@ -42,11 +42,11 @@ public sealed record ProgressionStep : IDeepEquatable<ProgressionStep>
 
     public bool DeepEquals(ProgressionStep other)
     {
-        return other != null &&
-               DisplayEffectType == other.DisplayEffectType &&
-               Icon == other.Icon &&
-               ProgressTotal == other.ProgressTotal &&
-               StepName == other.StepName &&
-               RewardItems.DeepEqualsReadOnlyCollections(other.RewardItems);
+        return other != null
+            && DisplayEffectType == other.DisplayEffectType
+            && Icon == other.Icon
+            && ProgressTotal == other.ProgressTotal
+            && StepName == other.StepName
+            && RewardItems.DeepEqualsReadOnlyCollections(other.RewardItems);
     }
 }

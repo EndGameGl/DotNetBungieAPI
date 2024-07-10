@@ -23,8 +23,12 @@ public sealed record DestinyKiosksComponent
     ///     other interesting metadata.
     /// </summary>
     [JsonPropertyName("kioskItems")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyVendorDefinition>, ReadOnlyCollection<DestinyKioskItem>>
-        KioskItems { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyVendorDefinition>, ReadOnlyCollection<DestinyKioskItem>>
-            .Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyVendorDefinition>,
+        ReadOnlyCollection<DestinyKioskItem>
+    > KioskItems { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyVendorDefinition>,
+            ReadOnlyCollection<DestinyKioskItem>
+        >.Empty;
 }

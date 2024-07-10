@@ -14,7 +14,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Checklists;
 ///     Whatever UI you build, do it with the knowledge that any given entry might not actually be able to be associated
 ///     with some other Destiny entity.
 /// </summary>
-public sealed record DestinyChecklistEntryDefinition : IDeepEquatable<DestinyChecklistEntryDefinition>
+public sealed record DestinyChecklistEntryDefinition
+    : IDeepEquatable<DestinyChecklistEntryDefinition>
 {
     /// <summary>
     ///     The identifier for this Checklist entry. Guaranteed unique only within this Checklist Definition, and not
@@ -61,20 +62,21 @@ public sealed record DestinyChecklistEntryDefinition : IDeepEquatable<DestinyChe
     [JsonPropertyName("vendorInteractionIndex")]
     public int? VendorInteractionIndex { get; init; }
 
-    [JsonPropertyName("scope")] public DestinyScope Scope { get; init; }
+    [JsonPropertyName("scope")]
+    public DestinyScope Scope { get; init; }
 
     public bool DeepEquals(DestinyChecklistEntryDefinition other)
     {
-        return other != null &&
-               BubbleHash == other.BubbleHash &&
-               Destination.DeepEquals(other.Destination) &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               Hash == other.Hash &&
-               Scope == other.Scope &&
-               Location.DeepEquals(other.Location) &&
-               Activity.DeepEquals(other.Activity) &&
-               Item.DeepEquals(other.Item) &&
-               Vendor.DeepEquals(other.Vendor) &&
-               VendorInteractionIndex == other.VendorInteractionIndex;
+        return other != null
+            && BubbleHash == other.BubbleHash
+            && Destination.DeepEquals(other.Destination)
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && Hash == other.Hash
+            && Scope == other.Scope
+            && Location.DeepEquals(other.Location)
+            && Activity.DeepEquals(other.Activity)
+            && Item.DeepEquals(other.Item)
+            && Vendor.DeepEquals(other.Vendor)
+            && VendorInteractionIndex == other.VendorInteractionIndex;
     }
 }

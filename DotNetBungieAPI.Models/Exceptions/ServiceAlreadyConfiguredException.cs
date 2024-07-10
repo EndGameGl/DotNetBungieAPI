@@ -14,8 +14,8 @@ public class ServiceAlreadyConfiguredException : Exception
     /// .ctor
     /// </summary>
     /// <param name="serviceType"></param>
-    internal ServiceAlreadyConfiguredException(Type serviceType) :
-        base($"Service is already configured: {serviceType.FullName}")
+    internal ServiceAlreadyConfiguredException(Type serviceType)
+        : base($"Service is already configured: {serviceType.FullName}")
     {
         ServiceType = serviceType;
     }

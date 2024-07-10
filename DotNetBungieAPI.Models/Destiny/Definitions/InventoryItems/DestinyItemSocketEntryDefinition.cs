@@ -6,7 +6,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 /// <summary>
 ///     The definition information for a specific socket on an item. This will determine how the socket behaves in-game.
 /// </summary>
-public sealed record DestinyItemSocketEntryDefinition : IDeepEquatable<DestinyItemSocketEntryDefinition>
+public sealed record DestinyItemSocketEntryDefinition
+    : IDeepEquatable<DestinyItemSocketEntryDefinition>
 {
     /// <summary>
     ///     If true, then this socket is visible in the item's "default" state. If you have an instance, you should always
@@ -99,18 +100,18 @@ public sealed record DestinyItemSocketEntryDefinition : IDeepEquatable<DestinyIt
 
     public bool DeepEquals(DestinyItemSocketEntryDefinition other)
     {
-        return other != null &&
-               DefaultVisible == other.DefaultVisible &&
-               HidePerksInItemTooltip == other.HidePerksInItemTooltip &&
-               OverridesUiAppearance == other.OverridesUiAppearance &&
-               PlugSources == other.PlugSources &&
-               PreventInitializationOnVendorPurchase == other.PreventInitializationOnVendorPurchase &&
-               PreventInitializationWhenVersioning == other.PreventInitializationWhenVersioning &&
-               ReusablePlugItems.DeepEqualsReadOnlyCollections(other.ReusablePlugItems) &&
-               ReusablePlugSet.DeepEquals(other.ReusablePlugSet) &&
-               SingleInitialItem.DeepEquals(other.SingleInitialItem) &&
-               SocketType.DeepEquals(other.SocketType) &&
-               RandomizedPlugSet.DeepEquals(other.RandomizedPlugSet);
+        return other != null
+            && DefaultVisible == other.DefaultVisible
+            && HidePerksInItemTooltip == other.HidePerksInItemTooltip
+            && OverridesUiAppearance == other.OverridesUiAppearance
+            && PlugSources == other.PlugSources
+            && PreventInitializationOnVendorPurchase == other.PreventInitializationOnVendorPurchase
+            && PreventInitializationWhenVersioning == other.PreventInitializationWhenVersioning
+            && ReusablePlugItems.DeepEqualsReadOnlyCollections(other.ReusablePlugItems)
+            && ReusablePlugSet.DeepEquals(other.ReusablePlugSet)
+            && SingleInitialItem.DeepEquals(other.SingleInitialItem)
+            && SocketType.DeepEquals(other.SocketType)
+            && RandomizedPlugSet.DeepEquals(other.RandomizedPlugSet);
     }
 
     public override string ToString()

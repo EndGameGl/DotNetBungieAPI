@@ -1,16 +1,16 @@
-﻿using DotNetBungieAPI.Models;
+﻿using System.Diagnostics;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading;
+using System.Threading.Tasks;
+using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Authorization;
 using DotNetBungieAPI.Models.Exceptions;
 using DotNetBungieAPI.RateLimiting;
 using DotNetBungieAPI.Service.Abstractions;
 using DotNetBungieAPI.Services.Implementations.ServiceConfigurations;
 using Microsoft.Extensions.Logging;
-using System.Diagnostics;
-using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace DotNetBungieAPI.Services.Implementations;
 
@@ -19,7 +19,8 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
     private const string ApiKeyHeader = "X-API-Key";
 
     private const string AuthorizationEndpoint = "https://www.bungie.net/en/oauth/authorize";
-    private const string AuthorizationTokenEndpoint = "https://www.bungie.net/platform/app/oauth/token/";
+    private const string AuthorizationTokenEndpoint =
+        "https://www.bungie.net/platform/app/oauth/token/";
     private const string PlatformEndpoint = "https://www.bungie.net/Platform";
     private const string CdnEndpoint = "https://www.bungie.net";
     private const string StatsEndpoint = "https://stats.bungie.net/Platform";
@@ -204,7 +205,8 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         using var response = await SendAsyncInternal(
             request,
             HttpCompletionOption.ResponseHeadersRead,
-            token);
+            token
+        );
 
         if (!response.IsSuccessStatusCode)
         {
@@ -320,7 +322,7 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         return await _apiRateLimiter.WaitAndRunAsync(
             async (ct) =>
             {
-                var start = Stopwatch.GetTimestamp();               
+                var start = Stopwatch.GetTimestamp();
                 var resp = await _httpClient.SendAsync(requestMessage, httpCompletionOption, ct);
                 var end = Stopwatch.GetTimestamp();
                 var elapsedTime = (double)(end - start) / Stopwatch.Frequency;

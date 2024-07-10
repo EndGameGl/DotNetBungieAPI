@@ -19,5 +19,6 @@ public sealed record DestinyItemPeerView
     ///     The list of dyes that have been applied to this item.
     /// </summary>
     [JsonPropertyName("dyes")]
-    public ReadOnlyCollection<DyeReference> Dyes { get; init; } = ReadOnlyCollections<DyeReference>.Empty;
+    public ReadOnlyCollection<DyeReference> Dyes { get; init; } =
+        ReadOnlyCollections<DyeReference>.Empty;
 }

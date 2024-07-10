@@ -4,8 +4,9 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Traits;
 namespace DotNetBungieAPI.Models.Destiny.Definitions.TraitCategories;
 
 [DestinyDefinition(DefinitionsEnum.DestinyTraitCategoryDefinition)]
-public sealed record DestinyTraitCategoryDefinition : IDestinyDefinition,
-    IDeepEquatable<DestinyTraitCategoryDefinition>
+public sealed record DestinyTraitCategoryDefinition
+    : IDestinyDefinition,
+        IDeepEquatable<DestinyTraitCategoryDefinition>
 {
     /// <summary>
     ///     String for this trait category
@@ -28,23 +29,27 @@ public sealed record DestinyTraitCategoryDefinition : IDestinyDefinition,
 
     public bool DeepEquals(DestinyTraitCategoryDefinition other)
     {
-        return other != null &&
-               TraitCategoryId == other.TraitCategoryId &&
-               Traits.DeepEqualsReadOnlyCollections(other.Traits) &&
-               TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && TraitCategoryId == other.TraitCategoryId
+            && Traits.DeepEqualsReadOnlyCollections(other.Traits)
+            && TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyTraitCategoryDefinition;
 
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
 
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
 
-    [JsonPropertyName("index")] public int Index { get; init; }
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
 
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

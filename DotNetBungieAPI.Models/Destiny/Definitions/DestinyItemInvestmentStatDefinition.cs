@@ -9,7 +9,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions;
 ///     Because these won't match what you see in-game, consider carefully whether you really want to use these stats. I
 ///     have left them in case someone can do something useful or interesting with the pre-processed statistics.
 /// </summary>
-public sealed record DestinyItemInvestmentStatDefinition : IDeepEquatable<DestinyItemInvestmentStatDefinition>
+public sealed record DestinyItemInvestmentStatDefinition
+    : IDeepEquatable<DestinyItemInvestmentStatDefinition>
 {
     /// <summary>
     ///     DestinyStatDefinition defining this stat.
@@ -37,9 +38,9 @@ public sealed record DestinyItemInvestmentStatDefinition : IDeepEquatable<Destin
 
     public bool DeepEquals(DestinyItemInvestmentStatDefinition other)
     {
-        return other != null &&
-               StatType.DeepEquals(other.StatType) &&
-               Value == other.Value &&
-               IsConditionallyActive == other.IsConditionallyActive;
+        return other != null
+            && StatType.DeepEquals(other.StatType)
+            && Value == other.Value
+            && IsConditionallyActive == other.IsConditionallyActive;
     }
 }

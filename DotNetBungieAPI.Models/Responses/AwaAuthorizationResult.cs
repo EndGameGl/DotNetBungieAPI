@@ -11,7 +11,8 @@ public sealed record AwaAuthorizationResult
     [JsonPropertyName("userSelection")]
     public AwaUserSelection UserSelection { get; init; }
 
-    [JsonPropertyName("responseReason")] public AwaResponseReason ResponseReason { get; init; }
+    [JsonPropertyName("responseReason")]
+    public AwaResponseReason ResponseReason { get; init; }
 
     /// <summary>
     ///     Message to the app developer to help understand the response.

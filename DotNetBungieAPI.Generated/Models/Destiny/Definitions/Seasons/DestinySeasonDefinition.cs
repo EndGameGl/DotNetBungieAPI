@@ -32,6 +32,12 @@ public class DestinySeasonDefinition
     [JsonPropertyName("sealPresentationNodeHash")]
     public uint? SealPresentationNodeHash { get; set; }
 
+    /// <summary>
+    ///     A list of Acts for the Episode
+    /// </summary>
+    [JsonPropertyName("acts")]
+    public List<Destiny.Definitions.Seasons.DestinySeasonActDefinition> Acts { get; set; }
+
     [JsonPropertyName("seasonalChallengesPresentationNodeHash")]
     public uint? SeasonalChallengesPresentationNodeHash { get; set; }
 

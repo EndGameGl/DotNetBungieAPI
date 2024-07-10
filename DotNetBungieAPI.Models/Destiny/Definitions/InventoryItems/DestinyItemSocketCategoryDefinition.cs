@@ -6,7 +6,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 ///     Sockets are grouped into categories in the UI. These define which category and which sockets are under that
 ///     category.
 /// </summary>
-public sealed record DestinyItemSocketCategoryDefinition : IDeepEquatable<DestinyItemSocketCategoryDefinition>
+public sealed record DestinyItemSocketCategoryDefinition
+    : IDeepEquatable<DestinyItemSocketCategoryDefinition>
 {
     /// <summary>
     ///     DestinySocketCategoryDefinition for the Socket Category: a quick way to go get the header display information for
@@ -25,8 +26,8 @@ public sealed record DestinyItemSocketCategoryDefinition : IDeepEquatable<Destin
 
     public bool DeepEquals(DestinyItemSocketCategoryDefinition other)
     {
-        return other != null &&
-               SocketCategory.DeepEquals(other.SocketCategory) &&
-               SocketIndexes.DeepEqualsReadOnlySimpleCollection(other.SocketIndexes);
+        return other != null
+            && SocketCategory.DeepEquals(other.SocketCategory)
+            && SocketIndexes.DeepEqualsReadOnlySimpleCollection(other.SocketIndexes);
     }
 }

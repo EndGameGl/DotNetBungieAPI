@@ -5,13 +5,16 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 /// <summary>
 ///     Data about an item's "sources": ways that the item can be obtained.
 /// </summary>
-public sealed record DestinyItemSourceBlockDefinition : IDeepEquatable<DestinyItemSourceBlockDefinition>
+public sealed record DestinyItemSourceBlockDefinition
+    : IDeepEquatable<DestinyItemSourceBlockDefinition>
 {
     /// <summary>
     ///     DestinyRewardSourceDefinitions for Reward Sources that hint where the item can be found
     /// </summary>
     [JsonPropertyName("sourceHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyRewardSourceDefinition>> RewardSources { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyRewardSourceDefinition>
+    > RewardSources { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyRewardSourceDefinition>>.Empty;
 
     /// <summary>
@@ -37,10 +40,10 @@ public sealed record DestinyItemSourceBlockDefinition : IDeepEquatable<DestinyIt
 
     public bool DeepEquals(DestinyItemSourceBlockDefinition other)
     {
-        return other != null &&
-               RewardSources.DeepEqualsReadOnlyCollections(other.RewardSources) &&
-               Sources.DeepEqualsReadOnlyCollections(other.Sources) &&
-               ExclusiveTo == other.ExclusiveTo &&
-               VendorSources.DeepEqualsReadOnlyCollections(other.VendorSources);
+        return other != null
+            && RewardSources.DeepEqualsReadOnlyCollections(other.RewardSources)
+            && Sources.DeepEqualsReadOnlyCollections(other.Sources)
+            && ExclusiveTo == other.ExclusiveTo
+            && VendorSources.DeepEqualsReadOnlyCollections(other.VendorSources);
     }
 }

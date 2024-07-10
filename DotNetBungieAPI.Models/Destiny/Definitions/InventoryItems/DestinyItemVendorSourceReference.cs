@@ -11,7 +11,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 ///     Note also that a vendor may sell the same item in multiple "ways", which means there may be multiple
 ///     vendorItemIndexes for a single Vendor hash.
 /// </summary>
-public sealed record DestinyItemVendorSourceReference : IDeepEquatable<DestinyItemVendorSourceReference>
+public sealed record DestinyItemVendorSourceReference
+    : IDeepEquatable<DestinyItemVendorSourceReference>
 {
     /// <summary>
     ///     The vendor that may sell this item.
@@ -27,12 +28,13 @@ public sealed record DestinyItemVendorSourceReference : IDeepEquatable<DestinyIt
     ///     different index)
     /// </summary>
     [JsonPropertyName("vendorItemIndexes")]
-    public ReadOnlyCollection<int> VendorItemIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
+    public ReadOnlyCollection<int> VendorItemIndexes { get; init; } =
+        ReadOnlyCollections<int>.Empty;
 
     public bool DeepEquals(DestinyItemVendorSourceReference other)
     {
-        return other != null &&
-               Vendor.DeepEquals(other.Vendor) &&
-               VendorItemIndexes.DeepEqualsReadOnlySimpleCollection(other.VendorItemIndexes);
+        return other != null
+            && Vendor.DeepEquals(other.Vendor)
+            && VendorItemIndexes.DeepEqualsReadOnlySimpleCollection(other.VendorItemIndexes);
     }
 }

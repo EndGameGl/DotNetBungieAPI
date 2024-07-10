@@ -2,5 +2,6 @@
 
 public sealed record GroupPotentialMember : GroupUserBase
 {
-    [JsonPropertyName("potentialStatus")] public GroupPotentialMemberStatus PotentialStatus { get; init; }
+    [JsonPropertyName("potentialStatus")]
+    public GroupPotentialMemberStatus PotentialStatus { get; init; }
 }

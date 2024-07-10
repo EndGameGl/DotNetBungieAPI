@@ -14,5 +14,6 @@ public sealed record ApiUsage
     ///     Instances of blocked requests or requests that crossed the warn threshold during the time range.
     /// </summary>
     [JsonPropertyName("throttledRequests")]
-    public ReadOnlyCollection<Series> ThrottledRequests { get; init; } = ReadOnlyCollections<Series>.Empty;
+    public ReadOnlyCollection<Series> ThrottledRequests { get; init; } =
+        ReadOnlyCollections<Series>.Empty;
 }

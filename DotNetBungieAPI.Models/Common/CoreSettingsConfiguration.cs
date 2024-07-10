@@ -4,21 +4,25 @@ namespace DotNetBungieAPI.Models.Common;
 
 public sealed record CoreSettingsConfiguration
 {
-    [JsonPropertyName("environment")] public string Environment { get; init; }
+    [JsonPropertyName("environment")]
+    public string Environment { get; init; }
 
     [JsonPropertyName("systems")]
     public ReadOnlyDictionary<string, CoreSystem> Systems { get; init; } =
         ReadOnlyDictionaries<string, CoreSystem>.Empty;
 
     [JsonPropertyName("ignoreReasons")]
-    public ReadOnlyCollection<CoreSetting> IgnoreReasons { get; init; } = ReadOnlyCollections<CoreSetting>.Empty;
+    public ReadOnlyCollection<CoreSetting> IgnoreReasons { get; init; } =
+        ReadOnlyCollections<CoreSetting>.Empty;
 
     [JsonPropertyName("forumCategories")]
-    public ReadOnlyCollection<CoreSetting> ForumCategories { get; init; } = ReadOnlyCollections<CoreSetting>.Empty;
+    public ReadOnlyCollection<CoreSetting> ForumCategories { get; init; } =
+        ReadOnlyCollections<CoreSetting>.Empty;
 
     [JsonPropertyName("groupAvatars")]
-    public ReadOnlyCollection<CoreSetting> GroupAvatars { get; init; } = ReadOnlyCollections<CoreSetting>.Empty;
-    
+    public ReadOnlyCollection<CoreSetting> GroupAvatars { get; init; } =
+        ReadOnlyCollections<CoreSetting>.Empty;
+
     [JsonPropertyName("defaultGroupTheme")]
     public CoreSetting? DefaultGroupTheme { get; init; }
 
@@ -47,7 +51,8 @@ public sealed record CoreSettingsConfiguration
         ReadOnlyCollections<CoreSetting>.Empty;
 
     [JsonPropertyName("clanBannerDecals")]
-    public ReadOnlyCollection<CoreSetting> ClanBannerDecals { get; init; } = ReadOnlyCollections<CoreSetting>.Empty;
+    public ReadOnlyCollection<CoreSetting> ClanBannerDecals { get; init; } =
+        ReadOnlyCollections<CoreSetting>.Empty;
 
     [JsonPropertyName("clanBannerDecalColors")]
     public ReadOnlyCollection<CoreSetting> ClanBannerDecalColors { get; init; } =
@@ -76,7 +81,8 @@ public sealed record CoreSettingsConfiguration
     [JsonPropertyName("destiny2CoreSettings")]
     public Destiny2CoreSettings Destiny2CoreSettings { get; init; }
 
-    [JsonPropertyName("emailSettings")] public EmailSettings EmailSettings { get; init; }
+    [JsonPropertyName("emailSettings")]
+    public EmailSettings EmailSettings { get; init; }
 
     [JsonPropertyName("fireteamActivities")]
     public ReadOnlyCollection<CoreSetting> FireteamActivities { get; init; } =

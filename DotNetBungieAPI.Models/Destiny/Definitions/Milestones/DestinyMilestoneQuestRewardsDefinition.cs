@@ -6,7 +6,8 @@
 ///     than just item information into the reward data if we're able to mine it out in the future. Remember this if you
 ///     come back and ask "why are quest reward items nested inside of their own class?"
 /// </summary>
-public sealed record DestinyMilestoneQuestRewardsDefinition : IDeepEquatable<DestinyMilestoneQuestRewardsDefinition>
+public sealed record DestinyMilestoneQuestRewardsDefinition
+    : IDeepEquatable<DestinyMilestoneQuestRewardsDefinition>
 {
     /// <summary>
     ///     The items that represent your reward for completing the quest.

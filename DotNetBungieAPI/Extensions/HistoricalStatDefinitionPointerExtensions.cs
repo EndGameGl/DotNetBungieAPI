@@ -7,10 +7,15 @@ namespace DotNetBungieAPI.Extensions;
 public static class HistoricalStatDefinitionPointerExtensions
 {
     public static bool TryGetDefinition(
-        out DestinyHistoricalStatsDefinition definition, 
-        BungieLocales locale = BungieLocales.EN)
+        out DestinyHistoricalStatsDefinition definition,
+        BungieLocales locale = BungieLocales.EN
+    )
     {
         definition = default;
-        return BungieClient.Instance.TryGetHistoricalStatDefinition(definition!.StatId, out definition, locale);
+        return BungieClient.Instance.TryGetHistoricalStatDefinition(
+            definition!.StatId,
+            out definition,
+            locale
+        );
     }
 }

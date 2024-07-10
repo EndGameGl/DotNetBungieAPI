@@ -31,7 +31,8 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
     public Destiny2MethodsAccess(
         IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
         IBungieNetJsonSerializer serializer,
-        IBungieClientConfiguration configurationService)
+        IBungieClientConfiguration configurationService
+    )
     {
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _serializer = serializer;
@@ -39,7 +40,8 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
     }
 
     public async Task<BungieResponse<DestinyManifest>> GetDestinyManifest(
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         return await _dotNetBungieApiHttpClient
             .GetFromBungieNetPlatform<DestinyManifest>("/Destiny2/Manifest/", cancellationToken)
@@ -49,7 +51,9 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
     public async Task<BungieResponse<T>> GetDestinyEntityDefinition<T>(
         DefinitionsEnum entityType,
         uint hash,
-        CancellationToken cancellationToken = default) where T : IDestinyDefinition
+        CancellationToken cancellationToken = default
+    )
+        where T : IDestinyDefinition
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -62,10 +66,13 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<ReadOnlyCollection<UserInfoCard>>> SearchDestinyPlayerByBungieName(
+    public async Task<
+        BungieResponse<ReadOnlyCollection<UserInfoCard>>
+    > SearchDestinyPlayerByBungieName(
         BungieMembershipType membershipType,
         ExactSearchRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -78,7 +85,11 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         await _serializer.SerializeAsync(stream, request).ConfigureAwait(false);
         stream.Position = 0;
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<ReadOnlyCollection<UserInfoCard>>(url, cancellationToken, stream)
+            .PostToBungieNetPlatform<ReadOnlyCollection<UserInfoCard>>(
+                url,
+                cancellationToken,
+                stream
+            )
             .ConfigureAwait(false);
     }
 
@@ -86,7 +97,8 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         BungieMembershipType membershipType,
         long membershipId,
         bool getAllMemberships = false,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -95,7 +107,11 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .Append("Profile/")
             .AddUrlParam(membershipId.ToString())
             .Append("LinkedProfiles/")
-            .AddQueryParam("getAllMemberships", getAllMemberships.ToString(), () => getAllMemberships)
+            .AddQueryParam(
+                "getAllMemberships",
+                getAllMemberships.ToString(),
+                () => getAllMemberships
+            )
             .Build();
         return await _dotNetBungieApiHttpClient
             .GetFromBungieNetPlatform<DestinyLinkedProfilesResponse>(url, cancellationToken)
@@ -107,7 +123,8 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         long destinyMembershipId,
         DestinyComponentType[] componentTypes,
         AuthorizationTokenData authorizationToken = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (componentTypes == null || componentTypes.Length == 0)
             throw new ArgumentException("Specify some components before making a profile call.");
@@ -121,8 +138,11 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .AddQueryParam("components", componentTypes.ComponentsToIntString())
             .Build();
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyProfileResponse>(url, cancellationToken,
-                authorizationToken?.AccessToken)
+            .GetFromBungieNetPlatform<DestinyProfileResponse>(
+                url,
+                cancellationToken,
+                authorizationToken?.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -132,7 +152,8 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         long characterId,
         DestinyComponentType[] componentTypes,
         AuthorizationTokenData authorizationToken = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (componentTypes == null || componentTypes.Length == 0)
             throw new ArgumentException("Specify some components before making a profile call.");
@@ -149,14 +170,18 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyCharacterResponse>(url, cancellationToken,
-                authorizationToken?.AccessToken)
+            .GetFromBungieNetPlatform<DestinyCharacterResponse>(
+                url,
+                cancellationToken,
+                authorizationToken?.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<DestinyMilestone>> GetClanWeeklyRewardState(
         long groupId,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -170,10 +195,14 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
     }
 
     public async Task<BungieResponse<ClanBannerSource>> GetClanBannerSource(
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ClanBannerSource>("/Destiny2/Clan/ClanBannerDictionary/", cancellationToken)
+            .GetFromBungieNetPlatform<ClanBannerSource>(
+                "/Destiny2/Clan/ClanBannerDictionary/",
+                cancellationToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -183,7 +212,8 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         long itemInstanceId,
         DestinyComponentType[] componentTypes,
         AuthorizationTokenData authorizationToken = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -196,7 +226,11 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .AddQueryParam("components", componentTypes.ComponentsToIntString())
             .Build();
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyItemResponse>(url, cancellationToken, authorizationToken?.AccessToken)
+            .GetFromBungieNetPlatform<DestinyItemResponse>(
+                url,
+                cancellationToken,
+                authorizationToken?.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -206,7 +240,8 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         long characterId,
         DestinyComponentType[] componentTypes,
         AuthorizationTokenData authorizationToken = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -220,8 +255,11 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .AddQueryParam("components", componentTypes.ComponentsToIntString())
             .Build();
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyVendorsResponse>(url, cancellationToken,
-                authorizationToken?.AccessToken)
+            .GetFromBungieNetPlatform<DestinyVendorsResponse>(
+                url,
+                cancellationToken,
+                authorizationToken?.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -232,7 +270,8 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         uint vendorHash,
         DestinyComponentType[] componentTypes,
         AuthorizationTokenData authorizationToken = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -247,14 +286,18 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .AddQueryParam("components", componentTypes.ComponentsToIntString())
             .Build();
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyVendorResponse>(url, cancellationToken,
-                authorizationToken?.AccessToken)
+            .GetFromBungieNetPlatform<DestinyVendorResponse>(
+                url,
+                cancellationToken,
+                authorizationToken?.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<DestinyPublicVendorsResponse>> GetPublicVendors(
         DestinyComponentType[] componentTypes,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -266,14 +309,17 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<DestinyCollectibleNodeDetailResponse>> GetCollectibleNodeDetails(
+    public async Task<
+        BungieResponse<DestinyCollectibleNodeDetailResponse>
+    > GetCollectibleNodeDetails(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
         uint collectiblePresentationNodeHash,
         DestinyComponentType[] componentTypes,
         AuthorizationTokenData authorizationToken = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -289,30 +335,39 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .AddQueryParam("components", componentTypes.ComponentsToIntString())
             .Build();
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyCollectibleNodeDetailResponse>(url, cancellationToken,
-                authorizationToken?.AccessToken)
+            .GetFromBungieNetPlatform<DestinyCollectibleNodeDetailResponse>(
+                url,
+                cancellationToken,
+                authorizationToken?.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<int>> TransferItem(
         DestinyItemTransferRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.MoveEquipDestinyItems))
             throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>("/Destiny2/Actions/Items/TransferItem/", cancellationToken, stream,
-                authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<int>(
+                "/Destiny2/Actions/Items/TransferItem/",
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<int>> PullFromPostmaster(
         DestinyPostmasterTransferRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.MoveEquipDestinyItems))
             throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
@@ -320,15 +375,20 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>("/Destiny2/Actions/Items/PullFromPostmaster/", cancellationToken, stream,
-                authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<int>(
+                "/Destiny2/Actions/Items/PullFromPostmaster/",
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<int>> EquipItem(
         DestinyItemActionRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.MoveEquipDestinyItems))
             throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
@@ -336,15 +396,20 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>("/Destiny2/Actions/Items/EquipItem/", cancellationToken, stream,
-                authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<int>(
+                "/Destiny2/Actions/Items/EquipItem/",
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<DestinyEquipItemResults>> EquipItems(
         DestinyItemSetActionRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.MoveEquipDestinyItems))
             throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
@@ -352,15 +417,20 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<DestinyEquipItemResults>("/Destiny2/Actions/Items/EquipItems/",
-                cancellationToken, stream, authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<DestinyEquipItemResults>(
+                "/Destiny2/Actions/Items/EquipItems/",
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<int>> SetItemLockState(
         DestinyItemStateRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.MoveEquipDestinyItems))
             throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
@@ -368,15 +438,20 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>("/Destiny2/Actions/Items/SetLockState/", cancellationToken, stream,
-                authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<int>(
+                "/Destiny2/Actions/Items/SetLockState/",
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<int>> SetQuestTrackedState(
         DestinyItemStateRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.MoveEquipDestinyItems))
             throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
@@ -384,15 +459,20 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>("/Destiny2/Actions/Items/SetTrackedState/", cancellationToken, stream,
-                authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<int>(
+                "/Destiny2/Actions/Items/SetTrackedState/",
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlug(
         DestinyInsertPlugsActionRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdvancedWriteActions))
             throw new InsufficientScopeException(ApplicationScopes.AdvancedWriteActions);
@@ -400,14 +480,19 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<DestinyItemChangeResponse>("/Destiny2/Actions/Items/InsertSocketPlug/",
-                cancellationToken, stream, authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<DestinyItemChangeResponse>(
+                "/Destiny2/Actions/Items/InsertSocketPlug/",
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<DestinyPostGameCarnageReportData>> GetPostGameCarnageReport(
         long activityId,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -424,12 +509,14 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         long activityId,
         DestinyReportOffensePgcrRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.BnetWrite))
             throw new InsufficientScopeException(ApplicationScopes.BnetWrite);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/Destiny2/Stats/PostGameCarnageReport/")
             .AddUrlParam(activityId.ToString())
             .Append("Report/")
@@ -437,30 +524,41 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<int>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>>>
-        GetHistoricalStatsDefinition(
-            CancellationToken cancellationToken = default)
+    public async Task<
+        BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>>
+    > GetHistoricalStatsDefinition(CancellationToken cancellationToken = default)
     {
         return await _dotNetBungieApiHttpClient
             .GetFromBungieNetPlatform<ReadOnlyDictionary<string, DestinyHistoricalStatsDefinition>>(
-                "/Destiny2/Stats/Definition/", cancellationToken)
+                "/Destiny2/Stats/Definition/",
+                cancellationToken
+            )
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<
-            ReadOnlyDictionary<string, ReadOnlyDictionary<string, DestinyClanLeaderboardsResponse>>>>
-        GetClanLeaderboards(
-            long groupId,
-            int maxtop,
-            DestinyActivityModeType[] modes,
-            string statid = null,
-            CancellationToken cancellationToken = default)
+    public async Task<
+        BungieResponse<
+            ReadOnlyDictionary<string, ReadOnlyDictionary<string, DestinyClanLeaderboardsResponse>>
+        >
+    > GetClanLeaderboards(
+        long groupId,
+        int maxtop,
+        DestinyActivityModeType[] modes,
+        string statid = null,
+        CancellationToken cancellationToken = default
+    )
     {
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/Destiny2/Stats/Leaderboards/Clans/")
             .AddUrlParam(groupId.ToString())
             .AddQueryParam("maxtop", maxtop.ToString())
@@ -470,24 +568,34 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
 
         return await _dotNetBungieApiHttpClient
             .GetFromBungieNetPlatform<
-                ReadOnlyDictionary<string, ReadOnlyDictionary<string, DestinyClanLeaderboardsResponse>>>(url,
-                cancellationToken)
+                ReadOnlyDictionary<
+                    string,
+                    ReadOnlyDictionary<string, DestinyClanLeaderboardsResponse>
+                >
+            >(url, cancellationToken)
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<ReadOnlyCollection<DestinyClanAggregateStat>>> GetClanAggregateStats(
+    public async Task<
+        BungieResponse<ReadOnlyCollection<DestinyClanAggregateStat>>
+    > GetClanAggregateStats(
         long groupId,
         DestinyActivityModeType[] modes,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/Destiny2/Stats/AggregateClanStats/")
             .AddUrlParam(groupId.ToString())
             .AddQueryParam("modes", string.Join(',', modes))
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyCollection<DestinyClanAggregateStat>>(url, cancellationToken)
+            .GetFromBungieNetPlatform<ReadOnlyCollection<DestinyClanAggregateStat>>(
+                url,
+                cancellationToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -497,9 +605,11 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         int maxtop,
         DestinyActivityModeType[] modes,
         string statid = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/Destiny2/")
             .AddUrlParam(((int)membershipType).ToString())
             .Append("Account/")
@@ -519,7 +629,8 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         DefinitionsEnum type,
         string searchTerm,
         int page = 0,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -533,20 +644,26 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>>>
-        GetHistoricalStats(
-            BungieMembershipType membershipType,
-            long destinyMembershipId,
-            long characterId,
-            DateTime? daystart = null,
-            DateTime? dayend = null,
-            DestinyStatsGroupType[] groups = null,
-            DestinyActivityModeType[] modes = null,
-            PeriodType periodType = PeriodType.None,
-            CancellationToken cancellationToken = default)
+    public async Task<
+        BungieResponse<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>>
+    > GetHistoricalStats(
+        BungieMembershipType membershipType,
+        long destinyMembershipId,
+        long characterId,
+        DateTime? daystart = null,
+        DateTime? dayend = null,
+        DestinyStatsGroupType[] groups = null,
+        DestinyActivityModeType[] modes = null,
+        PeriodType periodType = PeriodType.None,
+        CancellationToken cancellationToken = default
+    )
     {
-        var hasParams = daystart != null || dayend != null || groups != null || modes != null ||
-                        periodType != PeriodType.None;
+        var hasParams =
+            daystart != null
+            || dayend != null
+            || groups != null
+            || modes != null
+            || periodType != PeriodType.None;
         var builder = StringBuilderPool
             .GetBuilder(cancellationToken)
             .Append("/Destiny2/")
@@ -558,8 +675,9 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .Append("Stats/");
         if (!hasParams)
             return await _dotNetBungieApiHttpClient
-                .GetFromBungieNetPlatform<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>>(
-                    builder.Build(), cancellationToken)
+                .GetFromBungieNetPlatform<
+                    ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>
+                >(builder.Build(), cancellationToken)
                 .ConfigureAwait(false);
         if (daystart.HasValue)
             builder.AddQueryParam("daystart", daystart.Value.ToString("yyyy-MM-dd"));
@@ -573,16 +691,21 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             builder.AddQueryParam("periodType", ((int)periodType).ToString());
 
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>>(builder.Build(),
-                cancellationToken)
+            .GetFromBungieNetPlatform<ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod>>(
+                builder.Build(),
+                cancellationToken
+            )
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<DestinyHistoricalStatsAccountResult>> GetHistoricalStatsForAccount(
+    public async Task<
+        BungieResponse<DestinyHistoricalStatsAccountResult>
+    > GetHistoricalStatsForAccount(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         DestinyStatsGroupType[] groups = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var builder = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -594,7 +717,10 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         if (groups is { Length: > 0 })
             builder.AddQueryParam("groups", string.Join(',', groups.Select(x => (int)x)));
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyHistoricalStatsAccountResult>(builder.Build(), cancellationToken)
+            .GetFromBungieNetPlatform<DestinyHistoricalStatsAccountResult>(
+                builder.Build(),
+                cancellationToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -605,7 +731,8 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         int count = 25,
         DestinyActivityModeType mode = DestinyActivityModeType.None,
         int page = 0,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -629,7 +756,8 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -646,11 +774,14 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<DestinyAggregateActivityResults>> GetDestinyAggregateActivityStats(
+    public async Task<
+        BungieResponse<DestinyAggregateActivityResults>
+    > GetDestinyAggregateActivityStats(
         BungieMembershipType membershipType,
         long destinyMembershipId,
         long characterId,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -669,17 +800,21 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
     }
 
     public async Task<BungieResponse<Dictionary<uint, DestinyPublicMilestone>>> GetPublicMilestones(
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<Dictionary<uint, DestinyPublicMilestone>>("/Destiny2/Milestones",
-                cancellationToken)
+            .GetFromBungieNetPlatform<Dictionary<uint, DestinyPublicMilestone>>(
+                "/Destiny2/Milestones",
+                cancellationToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<DestinyMilestoneContent>> GetPublicMilestoneContent(
         uint milestoneHash,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -695,7 +830,8 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
     public async Task<BungieResponse<AwaInitializeResponse>> AwaInitializeRequest(
         AwaPermissionRequested request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdvancedWriteActions))
             throw new InsufficientScopeException(ApplicationScopes.AdvancedWriteActions);
@@ -703,28 +839,38 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<AwaInitializeResponse>("/Destiny2/Awa/Initialize/", cancellationToken, stream,
-                authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<AwaInitializeResponse>(
+                "/Destiny2/Awa/Initialize/",
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<int>> AwaProvideAuthorizationResult(
         AwaUserResponse request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>("/Destiny2/Awa/AwaProvideAuthorizationResult/", cancellationToken, stream,
-                authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<int>(
+                "/Destiny2/Awa/AwaProvideAuthorizationResult/",
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<AwaAuthorizationResult>> AwaGetActionToken(
         string correlationId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdvancedWriteActions))
             throw new InsufficientScopeException(ApplicationScopes.AdvancedWriteActions);
@@ -736,15 +882,19 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<AwaAuthorizationResult>(url, cancellationToken,
-                authToken: authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<AwaAuthorizationResult>(
+                url,
+                cancellationToken,
+                authToken: authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<DestinyItemChangeResponse>> InsertSocketPlugFree(
         DestinyInsertPlugsFreeActionRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.MoveEquipDestinyItems))
             throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
@@ -758,15 +908,20 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         await _serializer.SerializeAsync(stream, request).ConfigureAwait(false);
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<DestinyItemChangeResponse>(url, cancellationToken, stream,
-                authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<DestinyItemChangeResponse>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<int>> EquipLoadout(
         DestinyLoadoutActionRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.MoveEquipDestinyItems))
             throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
@@ -780,15 +935,20 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         await _serializer.SerializeAsync(stream, request).ConfigureAwait(false);
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<int>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
-
     }
 
     public async Task<BungieResponse<int>> SnapshotLoadout(
         DestinyLoadoutUpdateActionRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.MoveEquipDestinyItems))
             throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
@@ -802,14 +962,20 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         await _serializer.SerializeAsync(stream, request).ConfigureAwait(false);
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<int>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<int>> UpdateLoadoutIdentifiers(
         DestinyLoadoutUpdateActionRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.MoveEquipDestinyItems))
             throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
@@ -823,14 +989,20 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         await _serializer.SerializeAsync(stream, request).ConfigureAwait(false);
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<int>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<int>> ClearLoadout(
         DestinyLoadoutActionRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.MoveEquipDestinyItems))
             throw new InsufficientScopeException(ApplicationScopes.MoveEquipDestinyItems);
@@ -844,7 +1016,12 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
         await _serializer.SerializeAsync(stream, request).ConfigureAwait(false);
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<int>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 }

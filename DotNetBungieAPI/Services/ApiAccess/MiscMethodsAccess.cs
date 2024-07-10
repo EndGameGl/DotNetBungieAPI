@@ -17,15 +17,20 @@ internal sealed class MiscMethodsAccess : IMiscMethodsAccess
     }
 
     public async Task<BungieResponse<Dictionary<string, string>>> GetAvailableLocales(
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<Dictionary<string, string>>("/GetAvailableLocales/", cancellationToken)
+            .GetFromBungieNetPlatform<Dictionary<string, string>>(
+                "/GetAvailableLocales/",
+                cancellationToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<CoreSettingsConfiguration>> GetCommonSettings(
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         return await _dotNetBungieApiHttpClient
             .GetFromBungieNetPlatform<CoreSettingsConfiguration>("/Settings/", cancellationToken)
@@ -33,16 +38,21 @@ internal sealed class MiscMethodsAccess : IMiscMethodsAccess
     }
 
     public async Task<BungieResponse<Dictionary<string, CoreSystem>>> GetUserSystemOverrides(
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<Dictionary<string, CoreSystem>>("/UserSystemOverrides/", cancellationToken)
+            .GetFromBungieNetPlatform<Dictionary<string, CoreSystem>>(
+                "/UserSystemOverrides/",
+                cancellationToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<GlobalAlert[]>> GetGlobalAlerts(
         bool includestreaming = false,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)

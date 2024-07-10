@@ -2,7 +2,8 @@
 
 public sealed record HardLinkedUserMembership
 {
-    [JsonPropertyName("membershipType")] public BungieMembershipType MembershipType { get; init; }
+    [JsonPropertyName("membershipType")]
+    public BungieMembershipType MembershipType { get; init; }
 
     [JsonPropertyName("membershipId")]
     [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]

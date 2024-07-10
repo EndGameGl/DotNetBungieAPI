@@ -10,9 +10,10 @@ namespace DotNetBungieAPI.Models;
 #if DEBUG
 [DebuggerDisplay("{DebuggerDisplay}")]
 #endif
-public readonly struct DefinitionHashPointer<TDefinition> : 
-    IDeepEquatable<DefinitionHashPointer<TDefinition>>,
-    IEquatable<DefinitionHashPointer<TDefinition>> where TDefinition : IDestinyDefinition
+public readonly struct DefinitionHashPointer<TDefinition>
+    : IDeepEquatable<DefinitionHashPointer<TDefinition>>,
+        IEquatable<DefinitionHashPointer<TDefinition>>
+    where TDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     <inheritdoc>

@@ -6,7 +6,9 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.PowerCaps;
 ///     Defines a 'power cap' (limit) for gear items, based on the rarity tier and season of release.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyPowerCapDefinition)]
-public sealed record DestinyPowerCapDefinition : IDestinyDefinition, IDeepEquatable<DestinyPowerCapDefinition>
+public sealed record DestinyPowerCapDefinition
+    : IDestinyDefinition,
+        IDeepEquatable<DestinyPowerCapDefinition>
 {
     /// <summary>
     ///     The raw value for a power cap.
@@ -16,17 +18,25 @@ public sealed record DestinyPowerCapDefinition : IDestinyDefinition, IDeepEquata
 
     public bool DeepEquals(DestinyPowerCapDefinition other)
     {
-        return other != null &&
-               PowerCap == other.PowerCap &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && PowerCap == other.PowerCap
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyPowerCapDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

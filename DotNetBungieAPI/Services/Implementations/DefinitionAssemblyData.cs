@@ -13,11 +13,10 @@ internal sealed class DefinitionAssemblyData : IDefinitionAssemblyData
     {
         var tempDefinitionsToTypeMapping = new Dictionary<DefinitionsEnum, DefinitionUseRule>();
         var tempTypeToEnumMapping = new Dictionary<Type, DefinitionsEnum>();
-        var mappedTypes =
-            Assembly
-                .GetAssembly(typeof(DefinitionHashPointer<>))
-                !.GetTypes()
-                .Where(x => x.GetCustomAttributes<DestinyDefinitionAttribute>().Any());
+        var mappedTypes = Assembly
+            .GetAssembly(typeof(DefinitionHashPointer<>))!
+            .GetTypes()
+            .Where(x => x.GetCustomAttributes<DestinyDefinitionAttribute>().Any());
 
         foreach (var type in mappedTypes)
         {
@@ -28,8 +27,9 @@ internal sealed class DefinitionAssemblyData : IDefinitionAssemblyData
             tempTypeToEnumMapping.Add(useRule.DefinitionType, enumValue);
         }
 
-        DefinitionsToTypeMapping =
-            new ReadOnlyDictionary<DefinitionsEnum, DefinitionUseRule>(tempDefinitionsToTypeMapping);
+        DefinitionsToTypeMapping = new ReadOnlyDictionary<DefinitionsEnum, DefinitionUseRule>(
+            tempDefinitionsToTypeMapping
+        );
         TypeToEnumMapping = new ReadOnlyDictionary<Type, DefinitionsEnum>(tempTypeToEnumMapping);
     }
 

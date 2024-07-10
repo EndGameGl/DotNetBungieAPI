@@ -6,5 +6,6 @@ public class DestinyHistoricalStatsWithMerged
     public ReadOnlyDictionary<string, DestinyHistoricalStatsByPeriod> Results { get; init; } =
         ReadOnlyDictionaries<string, DestinyHistoricalStatsByPeriod>.Empty;
 
-    [JsonPropertyName("merged")] public DestinyHistoricalStatsByPeriod Merged { get; init; }
+    [JsonPropertyName("merged")]
+    public DestinyHistoricalStatsByPeriod Merged { get; init; }
 }

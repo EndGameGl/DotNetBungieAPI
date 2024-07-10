@@ -30,9 +30,9 @@ public sealed record DestinyEnergyCapacityEntry : IDeepEquatable<DestinyEnergyCa
 
     public bool DeepEquals(DestinyEnergyCapacityEntry other)
     {
-        return other != null &&
-               CapacityValue == other.CapacityValue &&
-               EnergyType.DeepEquals(other.EnergyType) &&
-               EnergyTypeEnumValue == other.EnergyTypeEnumValue;
+        return other != null
+            && CapacityValue == other.CapacityValue
+            && EnergyType.DeepEquals(other.EnergyType)
+            && EnergyTypeEnumValue == other.EnergyTypeEnumValue;
     }
 }

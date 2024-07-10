@@ -5,7 +5,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 /// <summary>
 ///     Represents a reference to a Challenge, which for now is just an Objective.
 /// </summary>
-public sealed record DestinyActivityChallengeDefinition : IDeepEquatable<DestinyActivityChallengeDefinition>
+public sealed record DestinyActivityChallengeDefinition
+    : IDeepEquatable<DestinyActivityChallengeDefinition>
 {
     /// <summary>
     ///     The rewards as they're represented in the UI. Note that they generally link to "dummy" items that give a summary of
@@ -27,14 +28,15 @@ public sealed record DestinyActivityChallengeDefinition : IDeepEquatable<Destiny
     public DefinitionHashPointer<DestinyObjectiveDefinition> Objective { get; init; } =
         DefinitionHashPointer<DestinyObjectiveDefinition>.Empty;
 
-    [JsonPropertyName("rewardSiteHash")] public uint RewardSiteHash { get; init; }
+    [JsonPropertyName("rewardSiteHash")]
+    public uint RewardSiteHash { get; init; }
 
     public bool DeepEquals(DestinyActivityChallengeDefinition other)
     {
-        return other != null &&
-               DummyRewards.DeepEqualsReadOnlyCollections(other.DummyRewards) &&
-               InhibitRewardsUnlockHash == other.InhibitRewardsUnlockHash &&
-               Objective.DeepEquals(other.Objective) &&
-               RewardSiteHash == other.RewardSiteHash;
+        return other != null
+            && DummyRewards.DeepEqualsReadOnlyCollections(other.DummyRewards)
+            && InhibitRewardsUnlockHash == other.InhibitRewardsUnlockHash
+            && Objective.DeepEquals(other.Objective)
+            && RewardSiteHash == other.RewardSiteHash;
     }
 }

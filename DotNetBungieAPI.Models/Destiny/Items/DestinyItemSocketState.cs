@@ -45,5 +45,6 @@ public sealed record DestinyItemSocketState
     ///     plug.enabledRules property, so that you can show the reasons why it is not enabled.
     /// </summary>
     [JsonPropertyName("enableFailIndexes")]
-    public ReadOnlyCollection<int> EnableFailIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
+    public ReadOnlyCollection<int> EnableFailIndexes { get; init; } =
+        ReadOnlyCollections<int>.Empty;
 }

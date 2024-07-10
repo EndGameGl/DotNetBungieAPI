@@ -29,18 +29,24 @@ internal sealed class ApiRateLimiter
         int requestsLimit,
         TimeSpan requestsLimitTimeFrame,
         int perSecondMaxLimit,
-        int maxConcurrentRequestsLimit)
+        int maxConcurrentRequestsLimit
+    )
     {
         _logger = logger;
-        _concurrentCallsSemaphore = new SemaphoreSlim(maxConcurrentRequestsLimit, maxConcurrentRequestsLimit);
+        _concurrentCallsSemaphore = new SemaphoreSlim(
+            maxConcurrentRequestsLimit,
+            maxConcurrentRequestsLimit
+        );
 
         var localSecondConstraint = new CountByIntervalAwaitableConstraint(
             perSecondMaxLimit,
-            TimeSpan.FromSeconds(1));
+            TimeSpan.FromSeconds(1)
+        );
 
         var globalRequestConstraint = new CountByIntervalAwaitableConstraint(
             requestsLimit,
-            requestsLimitTimeFrame);
+            requestsLimitTimeFrame
+        );
 
         _rateLimiter = TimeLimiter.Compose(globalRequestConstraint, localSecondConstraint);
     }
@@ -54,7 +60,8 @@ internal sealed class ApiRateLimiter
     /// <returns></returns>
     public async Task<T> WaitAndRunAsync<T>(
         Func<CancellationToken, Task<T>> func,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken
+    )
     {
         await _concurrentCallsSemaphore.WaitAsync(cancellationToken);
         await _rateLimiter;
@@ -64,13 +71,16 @@ internal sealed class ApiRateLimiter
         }
         catch (Exception exception)
         {
-            _logger.LogError(exception, "Failed to execute task within rate limiter: {ErrorMessage}",
-                exception.Message);
+            _logger.LogError(
+                exception,
+                "Failed to execute task within rate limiter: {ErrorMessage}",
+                exception.Message
+            );
             throw;
         }
         finally
         {
-           _concurrentCallsSemaphore.Release();
+            _concurrentCallsSemaphore.Release();
         }
     }
 }

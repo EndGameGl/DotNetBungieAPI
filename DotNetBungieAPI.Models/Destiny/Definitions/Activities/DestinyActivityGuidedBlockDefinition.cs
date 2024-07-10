@@ -3,7 +3,8 @@
 /// <summary>
 ///     Guided Game information for activity.
 /// </summary>
-public sealed record DestinyActivityGuidedBlockDefinition : IDeepEquatable<DestinyActivityGuidedBlockDefinition>
+public sealed record DestinyActivityGuidedBlockDefinition
+    : IDeepEquatable<DestinyActivityGuidedBlockDefinition>
 {
     /// <summary>
     ///     If -1, the guided group cannot be disbanded. Otherwise, take the total # of players in the activity and subtract
@@ -26,10 +27,9 @@ public sealed record DestinyActivityGuidedBlockDefinition : IDeepEquatable<Desti
 
     public bool DeepEquals(DestinyActivityGuidedBlockDefinition other)
     {
-        return
-            other != null &&
-            GuidedDisbandCount == other.GuidedDisbandCount &&
-            GuidedMaxLobbySize == other.GuidedMaxLobbySize &&
-            GuidedMinLobbySize == other.GuidedMinLobbySize;
+        return other != null
+            && GuidedDisbandCount == other.GuidedDisbandCount
+            && GuidedMaxLobbySize == other.GuidedMaxLobbySize
+            && GuidedMinLobbySize == other.GuidedMinLobbySize;
     }
 }

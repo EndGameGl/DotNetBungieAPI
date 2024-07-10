@@ -8,7 +8,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.EnergyTypes;
 ///     Represents types of Energy that can be used for costs and payments related to Armor 2.0 mods.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyEnergyTypeDefinition)]
-public sealed record DestinyEnergyTypeDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyEnergyTypeDefinition>
+public sealed record DestinyEnergyTypeDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyEnergyTypeDefinition>
 {
     /// <summary>
     ///     The description of the energy type, icon etc...
@@ -42,35 +45,43 @@ public sealed record DestinyEnergyTypeDefinition : IDestinyDefinition, IDisplayP
     ///     Energy Type for determining the energy type that the Armor is restricted to use)
     /// </summary>
     [JsonPropertyName("capacityStatHash")]
-    public DefinitionHashPointer<DestinyStatDefinition> CapacityStat { get; init; }
-        = DefinitionHashPointer<DestinyStatDefinition>.Empty;
+    public DefinitionHashPointer<DestinyStatDefinition> CapacityStat { get; init; } =
+        DefinitionHashPointer<DestinyStatDefinition>.Empty;
 
     /// <summary>
     ///     If this Energy Type can be used as a cost to pay for socketing Armor 2.0 items, this is the hash for the
     ///     DestinyInvestmentStatDefinition that stores the plug's raw cost.
     /// </summary>
     [JsonPropertyName("costStatHash")]
-    public DefinitionHashPointer<DestinyStatDefinition> CostStat { get; init; }
-        = DefinitionHashPointer<DestinyStatDefinition>.Empty;
+    public DefinitionHashPointer<DestinyStatDefinition> CostStat { get; init; } =
+        DefinitionHashPointer<DestinyStatDefinition>.Empty;
 
     public bool DeepEquals(DestinyEnergyTypeDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               CapacityStat.DeepEquals(other.CapacityStat) &&
-               CostStat.DeepEquals(other.CostStat) &&
-               EnumValue == other.EnumValue &&
-               ShowIcon == other.ShowIcon &&
-               TransparentIconPath == other.TransparentIconPath &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && CapacityStat.DeepEquals(other.CapacityStat)
+            && CostStat.DeepEquals(other.CostStat)
+            && EnumValue == other.EnumValue
+            && ShowIcon == other.ShowIcon
+            && TransparentIconPath == other.TransparentIconPath
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyEnergyTypeDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

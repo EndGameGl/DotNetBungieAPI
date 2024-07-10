@@ -117,6 +117,12 @@ public interface IGroupV2Api
         string authToken
     );
 
+    Task<ApiResponse<SearchResultOfGroupEditHistory>> GetGroupEditHistory(
+        int currentpage,
+        long groupId,
+        string authToken
+    );
+
     Task<ApiResponse<bool>> AbdicateFoundership(
         long founderIdNew,
         long groupId,

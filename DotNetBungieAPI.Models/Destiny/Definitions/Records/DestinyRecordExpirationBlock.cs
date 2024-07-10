@@ -5,15 +5,20 @@
 /// </summary>
 public sealed record DestinyRecordExpirationBlock : IDeepEquatable<DestinyRecordExpirationBlock>
 {
-    [JsonPropertyName("description")] public string Description { get; init; }
-    [JsonPropertyName("hasExpiration")] public bool HasExpiration { get; init; }
-    [JsonPropertyName("icon")] public BungieNetResource Icon { get; init; }
+    [JsonPropertyName("description")]
+    public string Description { get; init; }
+
+    [JsonPropertyName("hasExpiration")]
+    public bool HasExpiration { get; init; }
+
+    [JsonPropertyName("icon")]
+    public BungieNetResource Icon { get; init; }
 
     public bool DeepEquals(DestinyRecordExpirationBlock other)
     {
-        return other != null &&
-               Description == other.Description &&
-               HasExpiration == other.HasExpiration &&
-               Icon == other.Icon;
+        return other != null
+            && Description == other.Description
+            && HasExpiration == other.HasExpiration
+            && Icon == other.Icon;
     }
 }

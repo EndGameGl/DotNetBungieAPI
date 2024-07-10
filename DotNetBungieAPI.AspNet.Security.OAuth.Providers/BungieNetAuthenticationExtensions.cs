@@ -11,12 +11,14 @@ public static class BungieNetAuthenticationExtensions
     /// </summary>
     /// <param name="builder">The authentication builder.</param>
     /// <returns>A reference to this instance after the operation has completed.</returns>
-    public static AuthenticationBuilder AddBungieNet(
-        this AuthenticationBuilder builder)
+    public static AuthenticationBuilder AddBungieNet(this AuthenticationBuilder builder)
     {
-        return builder.AddBungieNet(BungieNetAuthenticationDefaults.AuthenticationScheme, options => { });
+        return builder.AddBungieNet(
+            BungieNetAuthenticationDefaults.AuthenticationScheme,
+            options => { }
+        );
     }
-    
+
     /// <summary>
     /// Adds <see cref="BungieNetAuthenticationHandler"/> to the specified
     /// <see cref="AuthenticationBuilder"/>, which enables AddBungieNet authentication capabilities.
@@ -26,11 +28,15 @@ public static class BungieNetAuthenticationExtensions
     /// <returns>A reference to this instance after the operation has completed.</returns>
     public static AuthenticationBuilder AddBungieNet(
         this AuthenticationBuilder builder,
-        Action<BungieNetAuthenticationOptions> configuration)
+        Action<BungieNetAuthenticationOptions> configuration
+    )
     {
-        return builder.AddBungieNet(BungieNetAuthenticationDefaults.AuthenticationScheme, configuration);
+        return builder.AddBungieNet(
+            BungieNetAuthenticationDefaults.AuthenticationScheme,
+            configuration
+        );
     }
-    
+
     /// <summary>
     /// Adds <see cref="BungieNetAuthenticationHandler"/> to the specified
     /// <see cref="AuthenticationBuilder"/>, which enables BungieNet authentication capabilities.
@@ -42,11 +48,16 @@ public static class BungieNetAuthenticationExtensions
     public static AuthenticationBuilder AddBungieNet(
         this AuthenticationBuilder builder,
         string scheme,
-        Action<BungieNetAuthenticationOptions> configuration)
+        Action<BungieNetAuthenticationOptions> configuration
+    )
     {
-        return builder.AddBungieNet(scheme, BungieNetAuthenticationDefaults.DisplayName, configuration);
+        return builder.AddBungieNet(
+            scheme,
+            BungieNetAuthenticationDefaults.DisplayName,
+            configuration
+        );
     }
-    
+
     /// <summary>
     /// Adds <see cref="BungieNetAuthenticationHandler"/> to the specified
     /// <see cref="AuthenticationBuilder"/>, which enables BungieNet authentication capabilities.
@@ -60,11 +71,13 @@ public static class BungieNetAuthenticationExtensions
         this AuthenticationBuilder builder,
         string scheme,
         string? caption,
-        Action<BungieNetAuthenticationOptions> configuration)
+        Action<BungieNetAuthenticationOptions> configuration
+    )
     {
         return builder.AddOAuth<BungieNetAuthenticationOptions, BungieNetAuthenticationHandler>(
             scheme,
             caption,
-            configuration);
+            configuration
+        );
     }
 }

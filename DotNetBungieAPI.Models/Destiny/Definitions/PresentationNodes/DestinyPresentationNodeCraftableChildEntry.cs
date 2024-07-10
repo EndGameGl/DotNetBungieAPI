@@ -2,7 +2,8 @@
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 
-public sealed record DestinyPresentationNodeCraftableChildEntry : IDeepEquatable<DestinyPresentationNodeCraftableChildEntry>
+public sealed record DestinyPresentationNodeCraftableChildEntry
+    : IDeepEquatable<DestinyPresentationNodeCraftableChildEntry>
 {
     [JsonPropertyName("craftableItemHash")]
     public DefinitionHashPointer<DestinyInventoryItemDefinition> CraftableItem { get; init; } =
@@ -16,8 +17,8 @@ public sealed record DestinyPresentationNodeCraftableChildEntry : IDeepEquatable
 
     public bool DeepEquals(DestinyPresentationNodeCraftableChildEntry other)
     {
-        return other is not null &&
-               CraftableItem.DeepEquals(other.CraftableItem) &&
-               NodeDisplayPriority == other.NodeDisplayPriority;
+        return other is not null
+            && CraftableItem.DeepEquals(other.CraftableItem)
+            && NodeDisplayPriority == other.NodeDisplayPriority;
     }
 }

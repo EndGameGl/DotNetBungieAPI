@@ -7,6 +7,9 @@ public sealed record DestinyPlatformSilverComponent
     ///     Type.
     /// </summary>
     [JsonPropertyName("platformSilver")]
-    public ReadOnlyDictionary<BungieMembershipType, DestinyItemComponent> PlatformSilver { get; init; } =
+    public ReadOnlyDictionary<
+        BungieMembershipType,
+        DestinyItemComponent
+    > PlatformSilver { get; init; } =
         ReadOnlyDictionaries<BungieMembershipType, DestinyItemComponent>.Empty;
 }

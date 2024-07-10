@@ -2,8 +2,8 @@
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
 
-public sealed record
-    DestinyMilestoneChallengeActivityDefinition : IDeepEquatable<DestinyMilestoneChallengeActivityDefinition>
+public sealed record DestinyMilestoneChallengeActivityDefinition
+    : IDeepEquatable<DestinyMilestoneChallengeActivityDefinition>
 {
     /// <summary>
     ///     The activity for which this challenge is active.
@@ -34,10 +34,10 @@ public sealed record
 
     public bool DeepEquals(DestinyMilestoneChallengeActivityDefinition other)
     {
-        return other != null &&
-               ActivityGraphNodes.DeepEqualsReadOnlyCollections(other.ActivityGraphNodes) &&
-               Activity.DeepEquals(other.Activity) &&
-               Challenges.DeepEqualsReadOnlyCollections(other.Challenges) &&
-               Phases.DeepEqualsReadOnlyCollections(other.Phases);
+        return other != null
+            && ActivityGraphNodes.DeepEqualsReadOnlyCollections(other.ActivityGraphNodes)
+            && Activity.DeepEquals(other.Activity)
+            && Challenges.DeepEqualsReadOnlyCollections(other.Challenges)
+            && Phases.DeepEqualsReadOnlyCollections(other.Phases);
     }
 }

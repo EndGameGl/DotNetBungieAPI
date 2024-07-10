@@ -24,7 +24,8 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
     public TokensMethodsAccess(
         IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
         IBungieClientConfiguration configuration,
-        IBungieNetJsonSerializer serializer)
+        IBungieNetJsonSerializer serializer
+    )
     {
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _configuration = configuration;
@@ -33,7 +34,8 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
 
     public async Task<BungieResponse<bool>> ForceDropsRepair(
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.PartnerOfferGrant))
             throw new InsufficientScopeException(ApplicationScopes.PartnerOfferGrant);
@@ -48,14 +50,16 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
                 url,
                 cancellationToken,
                 null,
-                authorizationToken.AccessToken)
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<bool>> ClaimPartnerOffer(
         PartnerOfferClaimRequest request,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.PartnerOfferGrant))
             throw new InsufficientScopeException(ApplicationScopes.PartnerOfferGrant);
@@ -73,7 +77,8 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
                 url,
                 cancellationToken,
                 stream,
-                authorizationToken.AccessToken)
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -81,7 +86,8 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
         int partnerApplicationId,
         long targetBnetMembershipId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.PartnerOfferGrant))
             throw new InsufficientScopeException(ApplicationScopes.PartnerOfferGrant);
@@ -97,15 +103,19 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
             .PostToBungieNetPlatform<bool>(
                 url,
                 cancellationToken,
-                authToken: authorizationToken.AccessToken)
+                authToken: authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<ReadOnlyCollection<PartnerOfferSkuHistoryResponse>>> GetPartnerOfferSkuHistory(
+    public async Task<
+        BungieResponse<ReadOnlyCollection<PartnerOfferSkuHistoryResponse>>
+    > GetPartnerOfferSkuHistory(
         AuthorizationTokenData authorizationToken,
         int partnerApplicationId,
         long targetBnetMembershipId,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.PartnerOfferGrant))
             throw new InsufficientScopeException(ApplicationScopes.PartnerOfferGrant);
@@ -121,7 +131,8 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
             .GetFromBungieNetPlatform<ReadOnlyCollection<PartnerOfferSkuHistoryResponse>>(
                 url,
                 cancellationToken,
-                authorizationToken.AccessToken)
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -129,7 +140,8 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
         long targetBnetMembershipId,
         int partnerApplicationId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.PartnerOfferGrant))
             throw new InsufficientScopeException(ApplicationScopes.PartnerOfferGrant);
@@ -146,14 +158,18 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
             .GetFromBungieNetPlatform<PartnerRewardHistoryResponse>(
                 url,
                 cancellationToken,
-                authorizationToken.AccessToken)
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>> GetBungieRewardsForUser(
+    public async Task<
+        BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>
+    > GetBungieRewardsForUser(
         long membershipId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.ReadAndApplyTokens))
             throw new InsufficientScopeException(ApplicationScopes.ReadAndApplyTokens);
@@ -168,15 +184,19 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
             .GetFromBungieNetPlatform<ReadOnlyDictionary<string, BungieRewardDisplay>>(
                 url,
                 cancellationToken,
-                authorizationToken.AccessToken)
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>> GetBungieRewardsForPlatformUser(
+    public async Task<
+        BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>
+    > GetBungieRewardsForPlatformUser(
         long membershipId,
         BungieMembershipType membershipType,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.ReadAndApplyTokens))
             throw new InsufficientScopeException(ApplicationScopes.ReadAndApplyTokens);
@@ -192,12 +212,14 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
             .GetFromBungieNetPlatform<ReadOnlyDictionary<string, BungieRewardDisplay>>(
                 url,
                 cancellationToken,
-                authorizationToken.AccessToken)
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>> GetBungieRewardsList(
-        CancellationToken cancellationToken = default)
+    public async Task<
+        BungieResponse<ReadOnlyDictionary<string, BungieRewardDisplay>>
+    > GetBungieRewardsList(CancellationToken cancellationToken = default)
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -207,7 +229,8 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
         return await _dotNetBungieApiHttpClient
             .GetFromBungieNetPlatform<ReadOnlyDictionary<string, BungieRewardDisplay>>(
                 url,
-                cancellationToken)
+                cancellationToken
+            )
             .ConfigureAwait(false);
     }
 }

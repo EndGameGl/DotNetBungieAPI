@@ -15,7 +15,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.EquipmentSlots;
 ///     An Equipment Slot must have a related Inventory Bucket, but not all inventory buckets must have Equipment Slots.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyEquipmentSlotDefinition)]
-public sealed record DestinyEquipmentSlotDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyEquipmentSlotDefinition>
+public sealed record DestinyEquipmentSlotDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyEquipmentSlotDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -50,21 +53,29 @@ public sealed record DestinyEquipmentSlotDefinition : IDestinyDefinition, IDispl
 
     public bool DeepEquals(DestinyEquipmentSlotDefinition other)
     {
-        return other != null &&
-               ApplyCustomArtDyes == other.ApplyCustomArtDyes &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               ArtDyeChannels.DeepEqualsReadOnlyCollections(other.ArtDyeChannels) &&
-               BucketType.DeepEquals(other.BucketType) &&
-               EquipmentCategoryHash == other.EquipmentCategoryHash &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && ApplyCustomArtDyes == other.ApplyCustomArtDyes
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && ArtDyeChannels.DeepEqualsReadOnlyCollections(other.ArtDyeChannels)
+            && BucketType.DeepEquals(other.BucketType)
+            && EquipmentCategoryHash == other.EquipmentCategoryHash
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyEquipmentSlotDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

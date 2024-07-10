@@ -5,7 +5,8 @@
 ///     only see the strings themselves. Internally we combine this information with server state to determine which
 ///     strings should be shown.
 /// </summary>
-public sealed record DestinyActivityUnlockStringDefinition : IDeepEquatable<DestinyActivityUnlockStringDefinition>
+public sealed record DestinyActivityUnlockStringDefinition
+    : IDeepEquatable<DestinyActivityUnlockStringDefinition>
 {
     /// <summary>
     ///     The string to be displayed if the conditions are met.

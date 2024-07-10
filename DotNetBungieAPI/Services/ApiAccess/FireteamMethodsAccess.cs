@@ -19,7 +19,8 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
 
     public FireteamMethodsAccess(
         IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
-        IBungieClientConfiguration configuration)
+        IBungieClientConfiguration configuration
+    )
     {
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _configuration = configuration;
@@ -28,7 +29,8 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
     public async Task<BungieResponse<int>> GetActivePrivateClanFireteamCount(
         AuthorizationTokenData authorizationToken,
         long groupId,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.ReadGroups))
             throw new InsufficientScopeException(ApplicationScopes.ReadGroups);
@@ -55,7 +57,8 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
         FireteamPublicSearchOption publicOnly,
         int page = 0,
         string langFilter = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.ReadGroups))
             throw new InsufficientScopeException(ApplicationScopes.ReadGroups);
@@ -75,12 +78,17 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, cancellationToken,
-                authorizationToken.AccessToken)
+            .GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(
+                url,
+                cancellationToken,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<SearchResultOfFireteamSummary>> SearchPublicAvailableClanFireteams(
+    public async Task<
+        BungieResponse<SearchResultOfFireteamSummary>
+    > SearchPublicAvailableClanFireteams(
         AuthorizationTokenData authorizationToken,
         FireteamPlatform platform,
         DestinyActivityModeType activityType,
@@ -88,7 +96,8 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
         FireteamSlotSearch slotFilter,
         int page = 0,
         string langFilter = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.ReadGroups))
             throw new InsufficientScopeException(ApplicationScopes.ReadGroups);
@@ -105,8 +114,11 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, cancellationToken,
-                authorizationToken.AccessToken)
+            .GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(
+                url,
+                cancellationToken,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -118,7 +130,8 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
         int page = 0,
         string langFilter = null,
         bool groupFilter = false,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.ReadGroups))
             throw new InsufficientScopeException(ApplicationScopes.ReadGroups);
@@ -136,8 +149,11 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(url, cancellationToken,
-                authorizationToken.AccessToken)
+            .GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(
+                url,
+                cancellationToken,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -145,7 +161,8 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         long fireteamId,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.ReadGroups))
             throw new InsufficientScopeException(ApplicationScopes.ReadGroups);
@@ -159,7 +176,11 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<FireteamResponse>(url, cancellationToken, authorizationToken.AccessToken)
+            .GetFromBungieNetPlatform<FireteamResponse>(
+                url,
+                cancellationToken,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 }

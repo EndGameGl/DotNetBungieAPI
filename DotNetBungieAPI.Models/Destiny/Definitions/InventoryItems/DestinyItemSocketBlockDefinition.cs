@@ -3,7 +3,8 @@
 /// <summary>
 ///     If defined, the item has at least one socket.
 /// </summary>
-public sealed record DestinyItemSocketBlockDefinition : IDeepEquatable<DestinyItemSocketBlockDefinition>
+public sealed record DestinyItemSocketBlockDefinition
+    : IDeepEquatable<DestinyItemSocketBlockDefinition>
 {
     /// <summary>
     ///     This was supposed to be a string that would give per-item details about sockets. In practice, it turns out that all
@@ -37,11 +38,11 @@ public sealed record DestinyItemSocketBlockDefinition : IDeepEquatable<DestinyIt
 
     public bool DeepEquals(DestinyItemSocketBlockDefinition other)
     {
-        return other != null &&
-               Detail == other.Detail &&
-               IntrinsicSockets.DeepEqualsReadOnlyCollections(other.IntrinsicSockets) &&
-               SocketCategories.DeepEqualsReadOnlyCollections(other.SocketCategories) &&
-               SocketEntries.DeepEqualsReadOnlyCollections(other.SocketEntries);
+        return other != null
+            && Detail == other.Detail
+            && IntrinsicSockets.DeepEqualsReadOnlyCollections(other.IntrinsicSockets)
+            && SocketCategories.DeepEqualsReadOnlyCollections(other.SocketCategories)
+            && SocketEntries.DeepEqualsReadOnlyCollections(other.SocketEntries);
     }
 
     public override string ToString()

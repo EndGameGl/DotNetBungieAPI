@@ -3,7 +3,8 @@
 /// <summary>
 ///     The definition of a known, reusable plug that can be applied to a socket.
 /// </summary>
-public class DestinyItemSocketEntryPlugItemDefinition : IDeepEquatable<DestinyItemSocketEntryPlugItemDefinition>
+public class DestinyItemSocketEntryPlugItemDefinition
+    : IDeepEquatable<DestinyItemSocketEntryPlugItemDefinition>
 {
     /// <summary>
     ///     DestinyInventoryItemDefinition representing the plug that can be inserted.

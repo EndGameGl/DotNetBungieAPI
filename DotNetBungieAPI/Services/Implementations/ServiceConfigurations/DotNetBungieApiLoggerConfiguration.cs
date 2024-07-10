@@ -9,7 +9,8 @@ public sealed class DotNetBungieApiLoggerConfiguration
 
     public void LogEventLevels(IEnumerable<LogLevel> logLevels)
     {
-        foreach (var logLevel in logLevels) _loggedLevels.Add(logLevel);
+        foreach (var logLevel in logLevels)
+            _loggedLevels.Add(logLevel);
     }
 
     public bool ShouldLogLevel(LogLevel logLevel)

@@ -37,10 +37,10 @@ public record DestinyItemQuantity : IDeepEquatable<DestinyItemQuantity>
 
     public bool DeepEquals(DestinyItemQuantity other)
     {
-        return other is not null &&
-               Item.DeepEquals(other.Item) &&
-               Quantity == other.Quantity &&
-               ItemInstanceId == other.ItemInstanceId &&
-               HasConditionalVisibility == other.HasConditionalVisibility;
+        return other is not null
+            && Item.DeepEquals(other.Item)
+            && Quantity == other.Quantity
+            && ItemInstanceId == other.ItemInstanceId
+            && HasConditionalVisibility == other.HasConditionalVisibility;
     }
 }

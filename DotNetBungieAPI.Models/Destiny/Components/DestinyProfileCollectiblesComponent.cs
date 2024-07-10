@@ -9,8 +9,9 @@ public sealed record DestinyProfileCollectiblesComponent
     ///     The list of collectibles determined by the game as having been "recently" acquired.
     /// </summary>
     [JsonPropertyName("recentCollectibleHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyCollectibleDefinition>>
-        RecentCollectibles { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyCollectibleDefinition>
+    > RecentCollectibles { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyCollectibleDefinition>>.Empty;
 
     /// <summary>
@@ -20,13 +21,16 @@ public sealed record DestinyProfileCollectiblesComponent
     ///     of this: because we can't edit this value through the API. But in case anyone finds it useful, here it is.
     /// </summary>
     [JsonPropertyName("newnessFlaggedCollectibleHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyCollectibleDefinition>>
-        NewnessFlaggedCollectibles { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyCollectibleDefinition>
+    > NewnessFlaggedCollectibles { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyCollectibleDefinition>>.Empty;
 
     [JsonPropertyName("collectibles")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyCollectibleDefinition>, DestinyCollectibleComponent>
-        Collectibles { get; init; }
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyCollectibleDefinition>,
+        DestinyCollectibleComponent
+    > Collectibles { get; init; }
 
     /// <summary>
     ///     The hash for the root presentation node definition of Collection categories.

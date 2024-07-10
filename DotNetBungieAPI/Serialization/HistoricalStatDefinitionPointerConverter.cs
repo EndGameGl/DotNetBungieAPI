@@ -3,14 +3,16 @@ using DotNetBungieAPI.Models;
 
 namespace DotNetBungieAPI.Serialization;
 
-public sealed class HistoricalStatDefinitionPointerConverter : JsonConverter<HistoricalStatDefinitionPointer>
+public sealed class HistoricalStatDefinitionPointerConverter
+    : JsonConverter<HistoricalStatDefinitionPointer>
 {
     public override bool HandleNull => true;
 
     public override HistoricalStatDefinitionPointer Read(
         ref Utf8JsonReader reader,
         Type typeToConvert,
-        JsonSerializerOptions options)
+        JsonSerializerOptions options
+    )
     {
         var statId = reader.GetString();
         return new HistoricalStatDefinitionPointer(statId);
@@ -19,7 +21,8 @@ public sealed class HistoricalStatDefinitionPointerConverter : JsonConverter<His
     public override void Write(
         Utf8JsonWriter writer,
         HistoricalStatDefinitionPointer value,
-        JsonSerializerOptions options)
+        JsonSerializerOptions options
+    )
     {
         JsonSerializer.Serialize(writer, value.StatId, options);
     }

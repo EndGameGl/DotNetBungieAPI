@@ -46,7 +46,8 @@ public static class StringVariableHelpers
     public static bool TryGetStringVariableHashReplaced(
         this string unformattedString,
         IReadOnlyDictionary<uint, int> hashes,
-        out string formattedString)
+        out string formattedString
+    )
     {
         formattedString = null;
         if (!unformattedString.TryGetStringVariableHash(out var hash))

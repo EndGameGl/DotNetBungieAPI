@@ -16,7 +16,10 @@ public sealed record EmailSettings
     ///     Keyed by the name identifier of the Subscription definition.
     /// </summary>
     [JsonPropertyName("subscriptionDefinitions")]
-    public ReadOnlyDictionary<string, EmailSubscriptionDefinition> SubscriptionDefinitions { get; init; } =
+    public ReadOnlyDictionary<
+        string,
+        EmailSubscriptionDefinition
+    > SubscriptionDefinitions { get; init; } =
         ReadOnlyDictionaries<string, EmailSubscriptionDefinition>.Empty;
 
     /// <summary>

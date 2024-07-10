@@ -13,7 +13,7 @@ public abstract class ModelGeneratorBase
     {
         await Writer.WriteAsync(text);
     }
-    
+
     protected async Task WriteAsync(char text)
     {
         await Writer.WriteAsync(text);
@@ -28,7 +28,7 @@ public abstract class ModelGeneratorBase
     {
         await Writer.WriteLineAsync(text);
     }
-    
+
     protected async Task WriteLineAsync(char text)
     {
         await Writer.WriteLineAsync(text);

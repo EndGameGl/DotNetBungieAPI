@@ -14,7 +14,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Destinations;
 ///     Earth).
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyDestinationDefinition)]
-public sealed record DestinyDestinationDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyDestinationDefinition>
+public sealed record DestinyDestinationDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyDestinationDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -52,25 +55,29 @@ public sealed record DestinyDestinationDefinition : IDestinyDefinition, IDisplay
 
     public bool DeepEquals(DestinyDestinationDefinition other)
     {
-        return other != null &&
-               ActivityGraphEntries.DeepEqualsReadOnlyCollections(other.ActivityGraphEntries) &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               DefaultFreeroamActivity.DeepEquals(other.DefaultFreeroamActivity) &&
-               Bubbles.DeepEqualsReadOnlyCollections(other.Bubbles) &&
-               Place.DeepEquals(other.Place) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && ActivityGraphEntries.DeepEqualsReadOnlyCollections(other.ActivityGraphEntries)
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && DefaultFreeroamActivity.DeepEquals(other.DefaultFreeroamActivity)
+            && Bubbles.DeepEqualsReadOnlyCollections(other.Bubbles)
+            && Place.DeepEquals(other.Place)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyDestinationDefinition;
 
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
 
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
 
-    [JsonPropertyName("index")] public int Index { get; init; }
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
 
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

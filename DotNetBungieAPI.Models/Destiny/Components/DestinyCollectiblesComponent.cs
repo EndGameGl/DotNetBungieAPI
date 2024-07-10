@@ -6,10 +6,14 @@ namespace DotNetBungieAPI.Models.Destiny.Components;
 public sealed record DestinyCollectiblesComponent
 {
     [JsonPropertyName("collectibles")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyCollectibleDefinition>, DestinyCollectibleComponent>
-        Collectibles { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyCollectibleDefinition>, DestinyCollectibleComponent>
-            .Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyCollectibleDefinition>,
+        DestinyCollectibleComponent
+    > Collectibles { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyCollectibleDefinition>,
+            DestinyCollectibleComponent
+        >.Empty;
 
     /// <summary>
     ///     The hash for the root presentation node definition of Collection categories.

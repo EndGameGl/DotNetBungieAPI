@@ -17,6 +17,9 @@ public sealed record DestinyItemStatsComponent
     ///     If the item has stats that it provides (damage, defense, etc...), it will be given here.
     /// </summary>
     [JsonPropertyName("stats")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, DestinyStat> Stats { get; init; } =
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyStatDefinition>,
+        DestinyStat
+    > Stats { get; init; } =
         ReadOnlyDictionaries<DefinitionHashPointer<DestinyStatDefinition>, DestinyStat>.Empty;
 }

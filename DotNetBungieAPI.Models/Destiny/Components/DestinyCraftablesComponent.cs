@@ -9,14 +9,19 @@ public sealed record DestinyCraftablesComponent
     ///     A map of craftable item hashes to craftable item state components.
     /// </summary>
     [JsonPropertyName("craftables")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, DestinyCraftableComponent>
-        Craftables { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>, DestinyCraftableComponent>.Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyInventoryItemDefinition>,
+        DestinyCraftableComponent
+    > Craftables { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyInventoryItemDefinition>,
+            DestinyCraftableComponent
+        >.Empty;
 
     /// <summary>
     ///     The hash for the root presentation node definition of craftable item categories.
     /// </summary>
     [JsonPropertyName("craftingRootNodeHash")]
-    public DefinitionHashPointer<DestinyPresentationNodeDefinition> CraftingRootNode { get; init; }
-        = DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
+    public DefinitionHashPointer<DestinyPresentationNodeDefinition> CraftingRootNode { get; init; } =
+        DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
 }

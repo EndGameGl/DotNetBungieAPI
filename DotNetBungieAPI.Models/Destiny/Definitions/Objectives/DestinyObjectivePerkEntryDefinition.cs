@@ -8,7 +8,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Objectives;
 ///     These perks will generally not be benefit-granting perks, but rather a perk that modifies gameplay in some
 ///     interesting way.
 /// </summary>
-public class DestinyObjectivePerkEntryDefinition : IDeepEquatable<DestinyObjectivePerkEntryDefinition>
+public class DestinyObjectivePerkEntryDefinition
+    : IDeepEquatable<DestinyObjectivePerkEntryDefinition>
 {
     /// <summary>
     ///     DestinySandboxPerkDefinition that will be applied to the character.

@@ -23,7 +23,8 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
     private const string SelectDefinitionQuery = "SELECT json FROM {0} WHERE id = {1}";
     private const string SelectHistoricalDefinitionQuery = "SELECT json FROM {0} WHERE key = '{1}'";
     private const string SelectAllDefinitionsQuery = "SELECT json FROM {0}";
-    private const string SelectDestinyGearAssetDefinition =  "SELECT json FROM DestinyGearAssetsDefinition WHERE id = {0}";
+    private const string SelectDestinyGearAssetDefinition =
+        "SELECT json FROM DestinyGearAssetsDefinition WHERE id = {0}";
     private const string ConnectionStringTemplate = "Data Source={0};";
 
     private readonly IDefinitionAssemblyData _assemblyData;
@@ -44,22 +45,23 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
 
     private DestinyManifest _currentManifest;
 
-    private readonly Dictionary<BungieLocales, string> _databasePaths = new()
-    {
-        [BungieLocales.EN] = string.Empty,
-        [BungieLocales.RU] = string.Empty,
-        [BungieLocales.DE] = string.Empty,
-        [BungieLocales.ES] = string.Empty,
-        [BungieLocales.ES_MX] = string.Empty,
-        [BungieLocales.FR] = string.Empty,
-        [BungieLocales.IT] = string.Empty,
-        [BungieLocales.JA] = string.Empty,
-        [BungieLocales.KO] = string.Empty,
-        [BungieLocales.PL] = string.Empty,
-        [BungieLocales.PT_BR] = string.Empty,
-        [BungieLocales.ZH_CHS] = string.Empty,
-        [BungieLocales.ZH_CHT] = string.Empty
-    };
+    private readonly Dictionary<BungieLocales, string> _databasePaths =
+        new()
+        {
+            [BungieLocales.EN] = string.Empty,
+            [BungieLocales.RU] = string.Empty,
+            [BungieLocales.DE] = string.Empty,
+            [BungieLocales.ES] = string.Empty,
+            [BungieLocales.ES_MX] = string.Empty,
+            [BungieLocales.FR] = string.Empty,
+            [BungieLocales.IT] = string.Empty,
+            [BungieLocales.JA] = string.Empty,
+            [BungieLocales.KO] = string.Empty,
+            [BungieLocales.PL] = string.Empty,
+            [BungieLocales.PT_BR] = string.Empty,
+            [BungieLocales.ZH_CHS] = string.Empty,
+            [BungieLocales.ZH_CHT] = string.Empty
+        };
 
     private DestinyManifest _latestManifest;
 
@@ -74,7 +76,8 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         IBungieNetJsonSerializer serializer,
         IDestiny2MethodsAccess destiny2MethodsAccess,
         IDotNetBungieApiHttpClient httpClient,
-        IDefinitionAssemblyData assemblyData)
+        IDefinitionAssemblyData assemblyData
+    )
     {
         _bungieClientConfiguration = bungieClientConfiguration;
         _configuration = configuration;
@@ -94,9 +97,8 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public ValueTask<T?> LoadDefinition<T>(
-        uint hash,
-        BungieLocales locale) where T : IDestinyDefinition
+    public ValueTask<T?> LoadDefinition<T>(uint hash, BungieLocales locale)
+        where T : IDestinyDefinition
     {
         T result;
         var connection = _sqliteConnections[locale];
@@ -105,7 +107,8 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         {
             CommandType = CommandType.Text,
             Connection = connection,
-            CommandText = $"SELECT json FROM {DefinitionHashPointer<T>.EnumValue.ToStringFast()} WHERE id = {hash.ToInt32()}"
+            CommandText =
+                $"SELECT json FROM {DefinitionHashPointer<T>.EnumValue.ToStringFast()} WHERE id = {hash.ToInt32()}"
         };
 
         using var reader = commandObj.ExecuteReader();
@@ -117,7 +120,11 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         }
         else
         {
-            _logger.LogDebug("Definition {Type} with hash {Hash} wasn't found in database", DefinitionHashPointer<T>.EnumValue.ToStringFast(), hash);
+            _logger.LogDebug(
+                "Definition {Type} with hash {Hash} wasn't found in database",
+                DefinitionHashPointer<T>.EnumValue.ToStringFast(),
+                hash
+            );
             return ValueTask.FromResult<T?>(default);
         }
 
@@ -126,14 +133,19 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
 
     public ValueTask<DestinyHistoricalStatsDefinition?> LoadHistoricalStatsDefinition(
         string id,
-        BungieLocales locale)
+        BungieLocales locale
+    )
     {
         DestinyHistoricalStatsDefinition result;
         var connection = _sqliteConnections[locale];
         using var commandObj = new SqliteCommand
         {
             Connection = connection,
-            CommandText = string.Format(SelectHistoricalDefinitionQuery, "DestinyHistoricalStatsDefinition", id)
+            CommandText = string.Format(
+                SelectHistoricalDefinitionQuery,
+                "DestinyHistoricalStatsDefinition",
+                id
+            )
         };
         using var reader = commandObj.ExecuteReader();
         if (reader.Read())
@@ -143,7 +155,11 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         }
         else
         {
-            _logger.LogDebug("Definition {Type} with id {Id} wasn't found in database", nameof(DestinyHistoricalStatsDefinition), id);
+            _logger.LogDebug(
+                "Definition {Type} with id {Id} wasn't found in database",
+                nameof(DestinyHistoricalStatsDefinition),
+                id
+            );
             return ValueTask.FromResult<DestinyHistoricalStatsDefinition?>(null);
         }
 
@@ -153,7 +169,8 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
     public ValueTask<string> ReadDefinitionRaw(
         DefinitionsEnum enumValue,
         uint hash,
-        BungieLocales locale)
+        BungieLocales locale
+    )
     {
         string result;
         var connection = _sqliteConnections[locale];
@@ -179,16 +196,18 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         return ValueTask.FromResult(result);
     }
 
-    public ValueTask<string> ReadHistoricalStatsDefinitionRaw(
-        string id,
-        BungieLocales locale)
+    public ValueTask<string> ReadHistoricalStatsDefinitionRaw(string id, BungieLocales locale)
     {
         string result;
         var connection = _sqliteConnections[locale];
         var commandObj = new SqliteCommand
         {
             Connection = connection,
-            CommandText = string.Format(SelectHistoricalDefinitionQuery, "DestinyHistoricalStatsDefinition", id)
+            CommandText = string.Format(
+                SelectHistoricalDefinitionQuery,
+                "DestinyHistoricalStatsDefinition",
+                id
+            )
         };
         var reader = commandObj.ExecuteReader();
         if (reader.Read())
@@ -210,27 +229,35 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
     public async ValueTask<IEnumerable<DestinyManifest>> GetAvailableManifests()
     {
         if (!Directory.Exists(_configuration.ManifestFolderPath))
-            throw new Exception($"No manifest folder found at: {_configuration.ManifestFolderPath}");
+            throw new Exception(
+                $"No manifest folder found at: {_configuration.ManifestFolderPath}"
+            );
 
         var versions = Directory.EnumerateDirectories(_configuration.ManifestFolderPath);
         var values = new ConcurrentDictionary<string, DestinyManifest>();
 
-        await Parallel.ForEachAsync(versions, async (version, cancellationToken) =>
-        {
-            var files = Directory.EnumerateFiles(
-                version,
-                "Manifest.json",
-                SearchOption.TopDirectoryOnly);
+        await Parallel.ForEachAsync(
+            versions,
+            async (version, cancellationToken) =>
+            {
+                var files = Directory.EnumerateFiles(
+                    version,
+                    "Manifest.json",
+                    SearchOption.TopDirectoryOnly
+                );
 
-            var manifestPath = files.FirstOrDefault();
-            if (manifestPath == null)
-                return;
-            _logger.LogInformation("Found manifest at: {ManifestPath}", manifestPath);
+                var manifestPath = files.FirstOrDefault();
+                if (manifestPath == null)
+                    return;
+                _logger.LogInformation("Found manifest at: {ManifestPath}", manifestPath);
 
-            await using var fileStream = File.OpenRead(manifestPath);
-            var folderManifest = await _serializer.DeserializeAsync<DestinyManifest>(fileStream);
-            values.TryAdd(version, folderManifest);
-        });
+                await using var fileStream = File.OpenRead(manifestPath);
+                var folderManifest = await _serializer.DeserializeAsync<DestinyManifest>(
+                    fileStream
+                );
+                values.TryAdd(version, folderManifest);
+            }
+        );
 
         return values.Select(x => x.Value);
     }
@@ -267,7 +294,9 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         var latestManifestResponse = await _destiny2MethodsAccess.GetDestinyManifest();
 
         if (!latestManifestResponse.IsSuccessfulResponseCode)
-            throw new Exception($"{latestManifestResponse.ErrorCode}: {latestManifestResponse.Message}");
+            throw new Exception(
+                $"{latestManifestResponse.ErrorCode}: {latestManifestResponse.Message}"
+            );
 
         _latestManifest = latestManifestResponse.Response;
 
@@ -289,7 +318,8 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         if (!Directory.Exists(manifestPath))
             return Task.CompletedTask;
 
-        foreach (var file in Directory.EnumerateFiles(manifestPath)) File.Delete(file);
+        foreach (var file in Directory.EnumerateFiles(manifestPath))
+            File.Delete(file);
 
         foreach (var directory in Directory.EnumerateDirectories(manifestPath))
             Directory.Delete(directory, true);
@@ -319,7 +349,11 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
                 }
                 catch (Exception exception)
                 {
-                    _logger.LogError(exception, "Error in {DisposeAsyncName}", nameof(DisposeAsync));
+                    _logger.LogError(
+                        exception,
+                        "Error in {DisposeAsyncName}",
+                        nameof(DisposeAsync)
+                    );
                 }
             }
 
@@ -332,7 +366,11 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
                 }
                 catch (Exception exception)
                 {
-                    _logger.LogError(exception, "Error in {DisposeAsyncName}", nameof(DisposeAsync));
+                    _logger.LogError(
+                        exception,
+                        "Error in {DisposeAsyncName}",
+                        nameof(DisposeAsync)
+                    );
                 }
             }
         }
@@ -372,9 +410,11 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
                 var filePath = Path.Combine(
                     _configuration.ManifestFolderPath,
                     _configuration.PreferredManifestVersion,
-                    "Manifest.json");
-                _currentManifest = await _serializer
-                    .DeserializeAsync<DestinyManifest>(await File.ReadAllBytesAsync(filePath));
+                    "Manifest.json"
+                );
+                _currentManifest = await _serializer.DeserializeAsync<DestinyManifest>(
+                    await File.ReadAllBytesAsync(filePath)
+                );
 
                 try
                 {
@@ -386,7 +426,8 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
                     _logger.LogError(
                         ex,
                         "Couldn't load exact version of manifest: {Version}",
-                        _currentManifest.Version);
+                        _currentManifest.Version
+                    );
                 }
             }
         }
@@ -440,54 +481,78 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         {
             _logger.LogInformation("Reading locale: {Locale}", locale);
             var connection = _sqliteConnections[locale];
-            Parallel.ForEach(definitionsToLoad, (definitionType, _) =>
-            {
-                try
+            Parallel.ForEach(
+                definitionsToLoad,
+                (definitionType, _) =>
                 {
-                    _logger.LogInformation("Reading definitions: {DefinitionType}", definitionType);
-                    var runtimeType = _assemblyData.DefinitionsToTypeMapping[definitionType].DefinitionType;
-                    var commandObj = new SqliteCommand
+                    try
                     {
-                        Connection = connection,
-                        CommandText = string.Format(SelectAllDefinitionsQuery, definitionType)
-                    };
+                        _logger.LogInformation(
+                            "Reading definitions: {DefinitionType}",
+                            definitionType
+                        );
+                        var runtimeType = _assemblyData
+                            .DefinitionsToTypeMapping[definitionType]
+                            .DefinitionType;
+                        var commandObj = new SqliteCommand
+                        {
+                            Connection = connection,
+                            CommandText = string.Format(SelectAllDefinitionsQuery, definitionType)
+                        };
 
-                    var reader = commandObj.ExecuteReader();
-                    while (reader.Read())
+                        var reader = commandObj.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            var parsedDefinition = (IDestinyDefinition)
+                                _serializer.Deserialize(
+                                    reader.GetFieldValue<byte[]>(0),
+                                    runtimeType
+                                );
+                            repository.AddDefinition(parsedDefinition, locale);
+                        }
+                    }
+                    catch (SqliteException sqliteException) when (sqliteException.ErrorCode is 1)
                     {
-                        var parsedDefinition = (IDestinyDefinition)_serializer.Deserialize(
-                            reader.GetFieldValue<byte[]>(0),
-                            runtimeType);
-                        repository.AddDefinition(parsedDefinition, locale);
+                        _logger.LogError(
+                            sqliteException,
+                            "Couldn't find definition type in manifest: {DefinitionType}",
+                            definitionType
+                        );
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(
+                            ex,
+                            "Encountered an error while reading definitions of type: {DefinitionType}",
+                            definitionType
+                        );
                     }
                 }
-                catch (SqliteException sqliteException) when (sqliteException.ErrorCode is 1)
-                {
-                    _logger.LogError(sqliteException, "Couldn't find definition type in manifest: {DefinitionType}", definitionType);
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "Encountered an error while reading definitions of type: {DefinitionType}", definitionType);
-                }
-            });
+            );
 
             var historicalFetchCommand = new SqliteCommand
             {
                 Connection = connection,
-                CommandText = string.Format(SelectAllDefinitionsQuery, DefinitionsEnum.DestinyHistoricalStatsDefinition)
+                CommandText = string.Format(
+                    SelectAllDefinitionsQuery,
+                    DefinitionsEnum.DestinyHistoricalStatsDefinition
+                )
             };
             var histReader = historicalFetchCommand.ExecuteReader();
             while (histReader.Read())
             {
                 var parsedDefinition = _serializer.Deserialize<DestinyHistoricalStatsDefinition>(
-                    histReader.GetFieldValue<byte[]>(0));
+                    histReader.GetFieldValue<byte[]>(0)
+                );
                 repository.AddDestinyHistoricalDefinition(parsedDefinition, locale);
             }
         }
 
         definitionLoaderStopwatch.Stop();
-        _logger.LogInformation("Finished reading definitions ({Time} ms)",
-            definitionLoaderStopwatch.ElapsedMilliseconds);
+        _logger.LogInformation(
+            "Finished reading definitions ({Time} ms)",
+            definitionLoaderStopwatch.ElapsedMilliseconds
+        );
 
         return ValueTask.CompletedTask;
     }
@@ -501,7 +566,9 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         };
         var reader = destinyGearAssetDefinitionFetchCommand.ExecuteReader();
         if (reader.Read())
-            return await _serializer.DeserializeAsync<DestinyGearAssetDefinition>((byte[])reader[0]);
+            return await _serializer.DeserializeAsync<DestinyGearAssetDefinition>(
+                (byte[])reader[0]
+            );
         return null;
     }
 
@@ -514,30 +581,34 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
             "MobileWorldContent",
             folderPath,
             manifestData
-                .MobileWorldContentPaths
-                .Where(x => _bungieClientConfiguration.UsedLocales.Contains(x.Key.ParseLocale()))
-                .ToDictionary(x => x.Key, x => x.Value));
+                .MobileWorldContentPaths.Where(x =>
+                    _bungieClientConfiguration.UsedLocales.Contains(x.Key.ParseLocale())
+                )
+                .ToDictionary(x => x.Key, x => x.Value)
+        );
 
-        var mobileGearAssetDataBasesDictionary = manifestData
-            .MobileGearAssetDataBases
-            .ToDictionary(
-                x => x.Version.ToString(),
-                x => x.Path);
+        var mobileGearAssetDataBasesDictionary = manifestData.MobileGearAssetDataBases.ToDictionary(
+            x => x.Version.ToString(),
+            x => x.Path
+        );
 
         await DownloadSqliteDatabases(
             "MobileGearAssetDataBases",
             folderPath,
-            mobileGearAssetDataBasesDictionary);
+            mobileGearAssetDataBasesDictionary
+        );
 
         await DownloadSqliteDatabase(
             "MobileAssetContent",
             folderPath,
-            manifestData.MobileAssetContentPath);
+            manifestData.MobileAssetContentPath
+        );
 
         await DownloadSqliteDatabase(
             "MobileClanBannerDatabase",
             folderPath,
-            manifestData.MobileClanBannerDatabasePath);
+            manifestData.MobileClanBannerDatabasePath
+        );
 
         if (!File.Exists(manifestFilePath))
         {
@@ -588,7 +659,11 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         }
     }
 
-    private async Task DownloadSqliteDatabases(string propertyName, string path, IDictionary<string, string> values)
+    private async Task DownloadSqliteDatabases(
+        string propertyName,
+        string path,
+        IDictionary<string, string> values
+    )
     {
         _logger.LogInformation("Started loading {PropertyName}", propertyName);
         var rootDirectoryPath = Path.Combine(path, propertyName);
@@ -629,15 +704,20 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         else
             _logger.LogInformation("File already exists, skipping");
 
-
         _logger.LogInformation("Finished loading {PropertyName}", propertyName);
     }
 
     private async Task DownloadAndUnpackSqliteFile(string filePath, string dbSourcePath)
     {
         _logger.LogInformation("Downloading and writing db file: {FilePath}", filePath);
-        await using var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
-        var (httpContentStream, contentLength) = await _httpClient.GetStreamFromWebSourceAsync(dbSourcePath);
+        await using var fileStream = new FileStream(
+            filePath,
+            FileMode.OpenOrCreate,
+            FileAccess.Write
+        );
+        var (httpContentStream, contentLength) = await _httpClient.GetStreamFromWebSourceAsync(
+            dbSourcePath
+        );
 
         using var archive = new ZipArchive(httpContentStream);
         foreach (var zipArchiveEntry in archive.Entries)
@@ -653,7 +733,9 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
     {
         var latestManifestResponse = await _destiny2MethodsAccess.GetDestinyManifest();
         if (!latestManifestResponse.IsSuccessfulResponseCode)
-            throw new Exception($"{latestManifestResponse.ErrorCode}: {latestManifestResponse.Message}");
+            throw new Exception(
+                $"{latestManifestResponse.ErrorCode}: {latestManifestResponse.Message}"
+            );
 
         _latestManifest = latestManifestResponse.Response;
     }
@@ -678,25 +760,32 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
                 manifestData.Version,
                 "MobileWorldContent",
                 localeStr,
-                Path.GetFileName(path));
+                Path.GetFileName(path)
+            );
 
             _databasePaths[locale] = newPath;
             var connection = _sqliteConnections[locale];
 
-            connection.ConnectionString =
-                new SqliteConnectionStringBuilder(string.Format(ConnectionStringTemplate, newPath))
-                {
-                    Mode = SqliteOpenMode.ReadOnly,
-                    Cache = SqliteCacheMode.Shared
-                }.ToString();
+            connection.ConnectionString = new SqliteConnectionStringBuilder(
+                string.Format(ConnectionStringTemplate, newPath)
+            )
+            {
+                Mode = SqliteOpenMode.ReadOnly,
+                Cache = SqliteCacheMode.Shared
+            }.ToString();
 
             connection.Open();
         }
 
-        var assetsEntry = _currentManifest.MobileGearAssetDataBases.FirstOrDefault(x => x.Version == 2);
+        var assetsEntry = _currentManifest.MobileGearAssetDataBases.FirstOrDefault(x =>
+            x.Version == 2
+        );
         if (assetsEntry is not null)
         {
-            if (_mobileGearAssetDataBaseConnection is not null && _mobileGearAssetDataBaseConnection.State != ConnectionState.Closed)
+            if (
+                _mobileGearAssetDataBaseConnection is not null
+                && _mobileGearAssetDataBaseConnection.State != ConnectionState.Closed
+            )
                 _mobileGearAssetDataBaseConnection.Close();
 
             var mobileGearAssetDataBasePath = Path.Combine(
@@ -704,19 +793,27 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
                 manifestData.Version,
                 "MobileGearAssetDataBases",
                 "2",
-                Path.GetFileName(assetsEntry.Path));
-            _mobileGearAssetDataBaseConnection.ConnectionString = string.Format(ConnectionStringTemplate, mobileGearAssetDataBasePath);
+                Path.GetFileName(assetsEntry.Path)
+            );
+            _mobileGearAssetDataBaseConnection.ConnectionString = string.Format(
+                ConnectionStringTemplate,
+                mobileGearAssetDataBasePath
+            );
             _mobileGearAssetDataBaseConnection.Open();
         }
     }
 
     public async Task<List<DefinitionHashPointer<TDefinition>>> SearchDefinitionHashes<TDefinition>(
         BungieLocales locale,
-        Expression<Func<TDefinition, bool>> expression) where TDefinition : IDestinyDefinition
+        Expression<Func<TDefinition, bool>> expression
+    )
+        where TDefinition : IDestinyDefinition
     {
         var connection = _sqliteConnections[locale];
         var queryBuilder = new StringBuilder();
-        queryBuilder.AppendLine($"SELECT id FROM {DefinitionHashPointer<TDefinition>.EnumValue} WHERE ");
+        queryBuilder.AppendLine(
+            $"SELECT id FROM {DefinitionHashPointer<TDefinition>.EnumValue} WHERE "
+        );
 
         if (expression.Body is BinaryExpression binaryExpression)
         {
@@ -724,7 +821,9 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         }
         else if (expression.Body is MethodCallExpression methodCallExpression)
         {
-            queryBuilder.Append(SqlValueConverter.ConvertMethodCallExpression(methodCallExpression));
+            queryBuilder.Append(
+                SqlValueConverter.ConvertMethodCallExpression(methodCallExpression)
+            );
         }
         else
         {
@@ -749,10 +848,14 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
 
     public async Task<List<TDefinition>> SearchDefinitions<TDefinition>(
         BungieLocales locale,
-        Expression<Func<TDefinition, bool>> expression) where TDefinition : IDestinyDefinition
+        Expression<Func<TDefinition, bool>> expression
+    )
+        where TDefinition : IDestinyDefinition
     {
         var queryBuilder = new StringBuilder();
-        queryBuilder.AppendLine($"SELECT json FROM {DefinitionHashPointer<TDefinition>.EnumValue} WHERE ");
+        queryBuilder.AppendLine(
+            $"SELECT json FROM {DefinitionHashPointer<TDefinition>.EnumValue} WHERE "
+        );
 
         if (expression.Body is BinaryExpression binaryExpression)
         {
@@ -760,7 +863,9 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         }
         else if (expression.Body is MethodCallExpression methodCallExpression)
         {
-            queryBuilder.Append(SqlValueConverter.ConvertMethodCallExpression(methodCallExpression));
+            queryBuilder.Append(
+                SqlValueConverter.ConvertMethodCallExpression(methodCallExpression)
+            );
         }
         else
         {
@@ -773,19 +878,23 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
     public async Task<List<TData>> SelectDefinitions<TDefinition, TData>(
         BungieLocales locale,
         Expression<Func<TDefinition, TData>> selectClause,
-        Expression<Func<TDefinition, bool>> whereClause) where TDefinition : IDestinyDefinition
+        Expression<Func<TDefinition, bool>> whereClause
+    )
+        where TDefinition : IDestinyDefinition
     {
         var select = SqlValueConverter.ConvertExpression(selectClause);
         var where = SqlValueConverter.ConvertExpression(whereClause);
 
-        var query = $"SELECT {select} FROM {DefinitionHashPointer<TDefinition>.EnumValue} WHERE {where}";
+        var query =
+            $"SELECT {select} FROM {DefinitionHashPointer<TDefinition>.EnumValue} WHERE {where}";
 
         return await GetObjectFromSqliteJson<TData>(query, locale);
     }
 
     private async Task<List<TResult>> GetObjectFromSqliteJson<TResult>(
         string query,
-        BungieLocales locale)
+        BungieLocales locale
+    )
     {
         var connection = _sqliteConnections[locale];
         await using var commandObj = new SqliteCommand

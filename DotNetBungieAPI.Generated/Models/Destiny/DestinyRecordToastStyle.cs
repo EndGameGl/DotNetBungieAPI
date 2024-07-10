@@ -20,5 +20,9 @@ public enum DestinyRecordToastStyle : int
 
     CraftingRecipeUnlocked = 8,
 
-    ToastGuardianRankDetails = 9
+    ToastGuardianRankDetails = 9,
+
+    PathfinderObjectiveCompleteRituals = 10,
+
+    PathfinderObjectiveCompleteSchism = 11
 }

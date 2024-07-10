@@ -17,7 +17,10 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
     private readonly IDotNetBungieApiHttpClient _dotNetBungieApiHttpClient;
     private readonly IBungieNetJsonSerializer _serializer;
 
-    public ForumMethodsAccess(IDotNetBungieApiHttpClient dotNetBungieApiHttpClient, IBungieNetJsonSerializer serializer)
+    public ForumMethodsAccess(
+        IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
+        IBungieNetJsonSerializer serializer
+    )
     {
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _serializer = serializer;
@@ -26,12 +29,14 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
     public async Task<BungieResponse<PostSearchResponse>> GetTopicsPaged(
         ForumPostCategoryEnums categoryFilter,
         ForumTopicsQuickDateEnum quickDate,
-        ForumTopicsSortEnum sort, long group,
+        ForumTopicsSortEnum sort,
+        long group,
         int pageSize = 0,
         int page = 0,
         string tagstring = null,
         BungieLocales[] locales = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -57,7 +62,8 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
         ForumTopicsSortEnum sort,
         int page = 0,
         BungieLocales[] locales = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -83,7 +89,8 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
         bool rootThreadMode,
         ForumTopicsSortEnum sortMode,
         bool? showbanned = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -111,7 +118,8 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
         bool rootThreadMode,
         ForumTopicsSortEnum sortMode,
         bool? showbanned = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -133,7 +141,8 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
     public async Task<BungieResponse<PostSearchResponse>> GetPostAndParent(
         long childPostId,
         bool? showbanned = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -150,7 +159,8 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
     public async Task<BungieResponse<PostSearchResponse>> GetPostAndParentAwaitingApproval(
         long childPostId,
         bool? showbanned = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -166,7 +176,8 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
 
     public async Task<BungieResponse<long>> GetTopicForContent(
         long contentId,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -181,7 +192,8 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
 
     public async Task<BungieResponse<ReadOnlyCollection<TagResponse>>> GetForumTagSuggestions(
         string partialtag,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -196,7 +208,8 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
 
     public async Task<BungieResponse<PostSearchResponse>> GetPoll(
         long topicId,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -209,15 +222,18 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<ReadOnlyCollection<ForumRecruitmentDetail>>> GetRecruitmentThreadSummaries(
-        long[] request,
-        CancellationToken cancellationToken = default)
+    public async Task<
+        BungieResponse<ReadOnlyCollection<ForumRecruitmentDetail>>
+    > GetRecruitmentThreadSummaries(long[] request, CancellationToken cancellationToken = default)
     {
         await using var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<ReadOnlyCollection<ForumRecruitmentDetail>>("/Forum/Recruit/Summaries/", cancellationToken,
-                stream)
+            .PostToBungieNetPlatform<ReadOnlyCollection<ForumRecruitmentDetail>>(
+                "/Forum/Recruit/Summaries/",
+                cancellationToken,
+                stream
+            )
             .ConfigureAwait(false);
     }
 }

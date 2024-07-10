@@ -1,6 +1,7 @@
 ﻿namespace DotNetBungieAPI.Models.Destiny.Components;
 
-public sealed record DictionaryComponentResponseOfint64AndDestinyCharacterComponent : ComponentResponse
+public sealed record DictionaryComponentResponseOfint64AndDestinyCharacterComponent
+    : ComponentResponse
 {
     [JsonPropertyName("data")]
     public ReadOnlyDictionary<long, DestinyCharacterComponent> Data { get; init; } =

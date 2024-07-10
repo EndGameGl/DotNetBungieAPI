@@ -34,8 +34,8 @@ public sealed record DestinyStatOverrideDefinition : IDeepEquatable<DestinyStatO
 
     public bool DeepEquals(DestinyStatOverrideDefinition other)
     {
-        return other != null &&
-               Stat.DeepEquals(other.Stat) &&
-               DisplayProperties.DeepEquals(other.DisplayProperties);
+        return other != null
+            && Stat.DeepEquals(other.Stat)
+            && DisplayProperties.DeepEquals(other.DisplayProperties);
     }
 }

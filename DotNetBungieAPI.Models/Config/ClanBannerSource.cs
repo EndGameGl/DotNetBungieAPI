@@ -37,6 +37,9 @@ public sealed record ClanBannerSource
         ReadOnlyDictionaries<uint, ClanBannerDecals>.Empty;
 
     [JsonPropertyName("clanBannerGonfalonDetailsSquare")]
-    public ReadOnlyDictionary<uint, BungieNetResource> ClanBannerGonfalonDetailsSquare { get; init; } =
+    public ReadOnlyDictionary<
+        uint,
+        BungieNetResource
+    > ClanBannerGonfalonDetailsSquare { get; init; } =
         ReadOnlyDictionaries<uint, BungieNetResource>.Empty;
 }

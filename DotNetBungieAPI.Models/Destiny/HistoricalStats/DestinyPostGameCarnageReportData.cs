@@ -19,7 +19,7 @@ public sealed record DestinyPostGameCarnageReportData
     /// </summary>
     [JsonPropertyName("activityWasStartedFromBeginning")]
     public bool? ActivityWasStartedFromBeginning { get; set; }
-    
+
     /// <summary>
     ///     Details about the activity.
     /// </summary>

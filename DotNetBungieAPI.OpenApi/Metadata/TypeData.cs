@@ -6,7 +6,7 @@ namespace DotNetBungieAPI.OpenApi.Metadata;
 public abstract class TypeData
 {
     protected const string Indent = "    ";
-    
+
     public string FullTypeName { get; }
     public string TypeName { get; }
     public string? Description { get; }
@@ -20,10 +20,11 @@ public abstract class TypeData
     }
 
     protected abstract void AnalyzeSchema(OpenApiComponentSchema openApiComponentSchema);
-    
+
     public static TypeData CreateTypeData(
         string typeName,
-        OpenApiComponentSchema openApiComponentSchema)
+        OpenApiComponentSchema openApiComponentSchema
+    )
     {
         switch (openApiComponentSchema)
         {

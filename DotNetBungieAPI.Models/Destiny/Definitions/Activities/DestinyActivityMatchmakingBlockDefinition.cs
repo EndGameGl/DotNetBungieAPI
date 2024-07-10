@@ -3,8 +3,8 @@
 /// <summary>
 ///     Information about matchmaking and party size for the activity.
 /// </summary>
-public sealed record
-    DestinyActivityMatchmakingBlockDefinition : IDeepEquatable<DestinyActivityMatchmakingBlockDefinition>
+public sealed record DestinyActivityMatchmakingBlockDefinition
+    : IDeepEquatable<DestinyActivityMatchmakingBlockDefinition>
 {
     /// <summary>
     ///     If TRUE, the activity is matchmade. Otherwise, it requires explicit forming of a party.
@@ -38,11 +38,11 @@ public sealed record
 
     public bool DeepEquals(DestinyActivityMatchmakingBlockDefinition other)
     {
-        return other != null &&
-               IsMatchmade == other.IsMatchmade &&
-               MaxParty == other.MaxParty &&
-               MaxPlayers == other.MaxPlayers &&
-               MinParty == other.MinParty &&
-               RequiresGuardianOath == other.RequiresGuardianOath;
+        return other != null
+            && IsMatchmade == other.IsMatchmade
+            && MaxParty == other.MaxParty
+            && MaxPlayers == other.MaxPlayers
+            && MinParty == other.MinParty
+            && RequiresGuardianOath == other.RequiresGuardianOath;
     }
 }

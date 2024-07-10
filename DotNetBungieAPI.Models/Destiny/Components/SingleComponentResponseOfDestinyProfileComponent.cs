@@ -2,5 +2,6 @@
 
 public sealed record SingleComponentResponseOfDestinyProfileComponent : ComponentResponse
 {
-    [JsonPropertyName("data")] public DestinyProfileComponent Data { get; init; }
+    [JsonPropertyName("data")]
+    public DestinyProfileComponent Data { get; init; }
 }

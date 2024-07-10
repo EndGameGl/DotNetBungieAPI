@@ -19,8 +19,12 @@ public sealed record DestinyPlugSetsComponent
     ///     (DestinyPlugSetDefinition).
     /// </summary>
     [JsonPropertyName("plugs")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyPlugSetDefinition>, ReadOnlyCollection<DestinyItemPlug>>
-        Plugs { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyPlugSetDefinition>, ReadOnlyCollection<DestinyItemPlug>>
-            .Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyPlugSetDefinition>,
+        ReadOnlyCollection<DestinyItemPlug>
+    > Plugs { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyPlugSetDefinition>,
+            ReadOnlyCollection<DestinyItemPlug>
+        >.Empty;
 }

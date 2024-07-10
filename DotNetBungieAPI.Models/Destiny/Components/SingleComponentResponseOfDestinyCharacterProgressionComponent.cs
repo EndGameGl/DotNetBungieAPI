@@ -1,6 +1,8 @@
 ﻿namespace DotNetBungieAPI.Models.Destiny.Components;
 
-public sealed record SingleComponentResponseOfDestinyCharacterProgressionComponent : ComponentResponse
+public sealed record SingleComponentResponseOfDestinyCharacterProgressionComponent
+    : ComponentResponse
 {
-    [JsonPropertyName("data")] public DestinyCharacterProgressionComponent Data { get; init; }
+    [JsonPropertyName("data")]
+    public DestinyCharacterProgressionComponent Data { get; init; }
 }

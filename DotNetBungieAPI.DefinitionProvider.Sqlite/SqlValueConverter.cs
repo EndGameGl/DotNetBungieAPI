@@ -46,14 +46,17 @@ internal static class SqlValueConverter
         return ConvertValue(expression.Value, expression.Type);
     }
 
-    internal static string ConvertExpression<TInput, TOutput>(Expression<Func<TInput, TOutput>> expression)
+    internal static string ConvertExpression<TInput, TOutput>(
+        Expression<Func<TInput, TOutput>> expression
+    )
     {
         return expression.Body switch
         {
             BinaryExpression binaryExpression => ConvertBinaryExpression(binaryExpression),
             ConstantExpression leftConstExpr => ConvertConstantExpression(leftConstExpr),
             MemberExpression leftMemberExpr => ConvertMemberExpression(leftMemberExpr),
-            MethodCallExpression methodCallExpression => ConvertMethodCallExpression(methodCallExpression),
+            MethodCallExpression methodCallExpression
+                => ConvertMethodCallExpression(methodCallExpression),
             _ => throw new Exception("Something went wrong?..")
         };
     }
@@ -69,7 +72,8 @@ internal static class SqlValueConverter
             BinaryExpression leftBinExpr => ConvertBinaryExpression(leftBinExpr),
             ConstantExpression leftConstExpr => ConvertConstantExpression(leftConstExpr),
             MemberExpression leftMemberExpr => ConvertMemberExpression(leftMemberExpr),
-            MethodCallExpression leftMethodCallExpr => ConvertMethodCallExpression(leftMethodCallExpr),
+            MethodCallExpression leftMethodCallExpr
+                => ConvertMethodCallExpression(leftMethodCallExpr),
             _ => string.Empty
         };
 
@@ -79,7 +83,8 @@ internal static class SqlValueConverter
             BinaryExpression rightBinExpr => ConvertBinaryExpression(rightBinExpr),
             ConstantExpression rightConstExpr => ConvertConstantExpression(rightConstExpr),
             MemberExpression rightMemberExpr => ConvertMemberExpression(rightMemberExpr),
-            MethodCallExpression rightMethodCallExpr => ConvertMethodCallExpression(rightMethodCallExpr),
+            MethodCallExpression rightMethodCallExpr
+                => ConvertMethodCallExpression(rightMethodCallExpr),
             _ => string.Empty
         };
 
@@ -93,7 +98,9 @@ internal static class SqlValueConverter
                 case "!=":
                     return $"({leftExpr} IS NOT NULL)";
                 default:
-                    throw new Exception($"Can't use {operation} ({binaryExpression.NodeType}) with NULL");
+                    throw new Exception(
+                        $"Can't use {operation} ({binaryExpression.NodeType}) with NULL"
+                    );
             }
         }
         else
@@ -113,7 +120,9 @@ internal static class SqlValueConverter
             {
                 if (memberExpression.Expression is ConstantExpression classInstance)
                 {
-                    var stringValue = (memberExpression.Member as FieldInfo).GetValue(classInstance.Value);
+                    var stringValue = (memberExpression.Member as FieldInfo).GetValue(
+                        classInstance.Value
+                    );
                     return $"{ConvertMemberExpression(member as MemberExpression)} LIKE '%{stringValue}%'";
                 }
                 else if (memberExpression.Expression is MemberExpression internalMemberExpression)
@@ -126,8 +135,7 @@ internal static class SqlValueConverter
             }
             else
             {
-                return
-                    $"{ConvertMemberExpression(member as MemberExpression)} LIKE '%{((ConstantExpression)value).Value}%'";
+                return $"{ConvertMemberExpression(member as MemberExpression)} LIKE '%{((ConstantExpression)value).Value}%'";
             }
         }
 
@@ -144,17 +152,27 @@ internal static class SqlValueConverter
     {
         index = 0;
 
-        if (expr is not MethodCallExpression { Object: MemberExpression memberExpression } methodCallExpression)
+        if (
+            expr
+            is not MethodCallExpression
+            {
+                Object: MemberExpression memberExpression
+            } methodCallExpression
+        )
             return false;
 
         var memberInfo = ((PropertyInfo)memberExpression.Member).PropertyType;
 
-        var isList = memberInfo.IsGenericType &&
-                     (memberInfo
-                         .GetTypeInfo()
-                         .ImplementedInterfaces
-                         .Any(x =>
-                             x.GetTypeInfo().IsGenericType && x.GetGenericTypeDefinition() == typeof(IList<>)));
+        var isList =
+            memberInfo.IsGenericType
+            && (
+                memberInfo
+                    .GetTypeInfo()
+                    .ImplementedInterfaces.Any(x =>
+                        x.GetTypeInfo().IsGenericType
+                        && x.GetGenericTypeDefinition() == typeof(IList<>)
+                    )
+            );
 
         if (!isList)
             return false;
@@ -196,10 +214,12 @@ internal static class SqlValueConverter
             }
             else if (IsListIndexerExpression(currentExpr!, out var index))
             {
-                var methodExpr = (MethodCallExpression)((MemberExpression)memberExpression).Expression;
+                var methodExpr = (MethodCallExpression)
+                    ((MemberExpression)memberExpression).Expression;
                 var methodMemberExpr = (MemberExpression)methodExpr.Object;
 
-                var jsonName = methodMemberExpr.Member.GetCustomAttribute<JsonPropertyNameAttribute>();
+                var jsonName =
+                    methodMemberExpr.Member.GetCustomAttribute<JsonPropertyNameAttribute>();
                 if (propertyPath == string.Empty)
                 {
                     propertyPath = $"{jsonName!.Name}[{index}]";
@@ -212,7 +232,8 @@ internal static class SqlValueConverter
                 currentExpr = methodMemberExpr.Expression;
             }
 
-            shouldContinue = IsListIndexerExpression(currentExpr, out _) || currentExpr is MemberExpression;
+            shouldContinue =
+                IsListIndexerExpression(currentExpr, out _) || currentExpr is MemberExpression;
         }
 
         return propertyPath;
@@ -229,11 +250,16 @@ internal static class SqlValueConverter
         {
             if (memberExpression.Expression is null)
             {
-                return ConvertValue((memberExpression.Member as FieldInfo).GetValue(null), memberExpression.Type);
+                return ConvertValue(
+                    (memberExpression.Member as FieldInfo).GetValue(null),
+                    memberExpression.Type
+                );
             }
-            if (memberExpression.Expression is ConstantExpression constantExpression && constantExpression.Type.FullName.Contains("_Display"))
+            if (
+                memberExpression.Expression is ConstantExpression constantExpression
+                && constantExpression.Type.FullName.Contains("_Display")
+            )
             {
-
                 var classInstance = (ConstantExpression)memberExpression.Expression;
                 var value = (memberExpression.Member as FieldInfo).GetValue(classInstance.Value);
                 return ConvertValue(value, memberExpression.Type);

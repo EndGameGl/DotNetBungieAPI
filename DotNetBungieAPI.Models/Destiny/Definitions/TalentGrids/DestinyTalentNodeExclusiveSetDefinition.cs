@@ -15,7 +15,6 @@ public sealed record DestinyTalentNodeExclusiveSetDefinition
 
     public bool DeepEquals(DestinyTalentNodeExclusiveSetDefinition other)
     {
-        return other != null &&
-               NodeIndexes.DeepEqualsReadOnlySimpleCollection(other.NodeIndexes);
+        return other != null && NodeIndexes.DeepEqualsReadOnlySimpleCollection(other.NodeIndexes);
     }
 }

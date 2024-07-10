@@ -13,15 +13,18 @@ public sealed record DestinyPublicActivityStatus
     ///     Active Challenges for the activity, if any - represented as hashes for DestinyObjectiveDefinitions.
     /// </summary>
     [JsonPropertyName("challengeObjectiveHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>>
-        ChallengeObjectives { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyObjectiveDefinition>
+    > ChallengeObjectives { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyObjectiveDefinition>>.Empty;
 
     /// <summary>
     ///     The active modifiers on this activity, if any - represented as hashes for DestinyActivityModifierDefinitions.
     /// </summary>
     [JsonPropertyName("modifierHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>> Modifiers { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyActivityModifierDefinition>
+    > Modifiers { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModifierDefinition>>.Empty;
 
     /// <summary>

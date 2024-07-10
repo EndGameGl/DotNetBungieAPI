@@ -12,7 +12,12 @@ public class FactionDefinitionGeneratorHandler : BaseDefinitionHandler, IDefinit
 
     public string ClassName => "Factions";
 
-    public async Task Generate(IBungieClient bungieClient, TextWriter textWriter, StringBuilder stringBuilder, int indentation)
+    public async Task Generate(
+        IBungieClient bungieClient,
+        TextWriter textWriter,
+        StringBuilder stringBuilder,
+        int indentation
+    )
     {
         var definitionCacheLookup = new Dictionary<string, uint>();
 
@@ -23,7 +28,8 @@ public class FactionDefinitionGeneratorHandler : BaseDefinitionHandler, IDefinit
                 ValidateAndAddValue(
                     definitionCacheLookup,
                     definition.DisplayProperties.Name,
-                    definition.Hash);
+                    definition.Hash
+                );
             }
             else
             {
@@ -33,24 +39,40 @@ public class FactionDefinitionGeneratorHandler : BaseDefinitionHandler, IDefinit
 
         foreach (var (key, value) in definitionCacheLookup)
         {
-            if (bungieClient.Repository.TryGetDestinyDefinition<DestinyFactionDefinition>(
-                    value, out var definition))
+            if (
+                bungieClient.Repository.TryGetDestinyDefinition<DestinyFactionDefinition>(
+                    value,
+                    out var definition
+                )
+            )
             {
-                await WriteCommentaryAsync(textWriter, indentation, definition.DisplayProperties?.Description);
+                await WriteCommentaryAsync(
+                    textWriter,
+                    indentation,
+                    definition.DisplayProperties?.Description
+                );
             }
 
-            if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
-                !key.Contains(value.ToString()))
+            if (
+                definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1
+                && !key.Contains(value.ToString())
+            )
             {
-                await textWriter.WriteLineAsync(StringExtensions.GetIndentedString(
-                    indentation,
-                    $"public const uint {key}_{value} = {value};"));
+                await textWriter.WriteLineAsync(
+                    StringExtensions.GetIndentedString(
+                        indentation,
+                        $"public const uint {key}_{value} = {value};"
+                    )
+                );
             }
             else
             {
-                await textWriter.WriteLineAsync(StringExtensions.GetIndentedString(
-                    indentation,
-                    $"public const uint {key} = {value};"));
+                await textWriter.WriteLineAsync(
+                    StringExtensions.GetIndentedString(
+                        indentation,
+                        $"public const uint {key} = {value};"
+                    )
+                );
             }
         }
     }

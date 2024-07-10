@@ -5,7 +5,9 @@
 /// </summary>
 public record GroupV2ClanInfo
 {
-    [JsonPropertyName("clanCallsign")] public string ClanCallSign { get; init; }
+    [JsonPropertyName("clanCallsign")]
+    public string ClanCallSign { get; init; }
 
-    [JsonPropertyName("clanBannerData")] public ClanBanner ClanBannerData { get; init; }
+    [JsonPropertyName("clanBannerData")]
+    public ClanBanner ClanBannerData { get; init; }
 }

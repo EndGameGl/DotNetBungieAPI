@@ -8,7 +8,7 @@ public sealed record DestinyPresentationNodeRecordChildEntry
     [JsonPropertyName("recordHash")]
     public DefinitionHashPointer<DestinyRecordDefinition> Record { get; init; } =
         DefinitionHashPointer<DestinyRecordDefinition>.Empty;
-    
+
     /// <summary>
     ///     Use this value to sort the presentation node children in ascending order.
     /// </summary>
@@ -17,8 +17,8 @@ public sealed record DestinyPresentationNodeRecordChildEntry
 
     public bool DeepEquals(DestinyPresentationNodeRecordChildEntry other)
     {
-        return other != null && 
-               Record.DeepEquals(other.Record) &&
-               NodeDisplayPriority == other.NodeDisplayPriority;
+        return other != null
+            && Record.DeepEquals(other.Record)
+            && NodeDisplayPriority == other.NodeDisplayPriority;
     }
 }

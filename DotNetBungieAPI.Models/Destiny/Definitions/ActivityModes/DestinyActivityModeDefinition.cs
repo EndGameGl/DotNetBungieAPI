@@ -14,7 +14,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes;
 ///     will get any PVP activities that the user has played, regardless of what specific PVP mode was being played.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyActivityModeDefinition)]
-public sealed record DestinyActivityModeDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyActivityModeDefinition>
+public sealed record DestinyActivityModeDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyActivityModeDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -64,7 +67,9 @@ public sealed record DestinyActivityModeDefinition : IDestinyDefinition, IDispla
     ///     Mode is also a member of AllStrikes and AllPvE.
     /// </summary>
     [JsonPropertyName("parentHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>> ParentModes { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyActivityModeDefinition>
+    > ParentModes { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModeDefinition>>.Empty;
 
     /// <summary>
@@ -79,9 +84,14 @@ public sealed record DestinyActivityModeDefinition : IDestinyDefinition, IDispla
     ///     Modes when they are played.
     /// </summary>
     [JsonPropertyName("activityModeMappings")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyActivityDefinition>, DestinyActivityModeType>
-        ActivityModeMappings { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyActivityDefinition>, DestinyActivityModeType>.Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyActivityDefinition>,
+        DestinyActivityModeType
+    > ActivityModeMappings { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyActivityDefinition>,
+            DestinyActivityModeType
+        >.Empty;
 
     /// <summary>
     ///     If FALSE, we want to ignore this type when we're showing activity modes in BNet UI. It will still be returned in
@@ -99,37 +109,44 @@ public sealed record DestinyActivityModeDefinition : IDestinyDefinition, IDispla
     [JsonPropertyName("supportsFeedFiltering")]
     public bool SupportsFeedFiltering { get; init; }
 
-    [JsonPropertyName("tier")] public int Tier { get; init; }
+    [JsonPropertyName("tier")]
+    public int Tier { get; init; }
 
     public bool DeepEquals(DestinyActivityModeDefinition other)
     {
-        return other != null &&
-               ActivityModeCategory == other.ActivityModeCategory &&
-               ActivityModeMappings.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(
-                   other.ActivityModeMappings) &&
-               Display == other.Display &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               FriendlyName == other.FriendlyName &&
-               IsAggregateMode == other.IsAggregateMode &&
-               IsTeamBased == other.IsTeamBased &&
-               ModeType == other.ModeType &&
-               Order == other.Order &&
-               ParentModes.DeepEqualsReadOnlyCollections(other.ParentModes) &&
-               PgcrImage == other.PgcrImage &&
-               SupportsFeedFiltering == other.SupportsFeedFiltering &&
-               Tier == other.Tier &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && ActivityModeCategory == other.ActivityModeCategory
+            && ActivityModeMappings.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(
+                other.ActivityModeMappings
+            )
+            && Display == other.Display
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && FriendlyName == other.FriendlyName
+            && IsAggregateMode == other.IsAggregateMode
+            && IsTeamBased == other.IsTeamBased
+            && ModeType == other.ModeType
+            && Order == other.Order
+            && ParentModes.DeepEqualsReadOnlyCollections(other.ParentModes)
+            && PgcrImage == other.PgcrImage
+            && SupportsFeedFiltering == other.SupportsFeedFiltering
+            && Tier == other.Tier
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyActivityModeDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
 
-    [JsonPropertyName("index")] public int Index { get; init; }
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
 
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

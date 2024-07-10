@@ -6,10 +6,11 @@ public static class BungieClientBuilderExtensions
 {
     public static void UseSqliteDefinitionProvider(
         this IServiceConfigurator<IDefinitionProvider> repositoryConfig,
-        Action<SqliteDefinitionProviderConfiguration> configure)
+        Action<SqliteDefinitionProviderConfiguration> configure
+    )
     {
-        repositoryConfig.Use<
-            SqliteDefinitionProvider,
-            SqliteDefinitionProviderConfiguration>(configure);
+        repositoryConfig.Use<SqliteDefinitionProvider, SqliteDefinitionProviderConfiguration>(
+            configure
+        );
     }
 }

@@ -11,10 +11,7 @@ internal sealed class DefaultDestiny2ResetService : IDestiny2ResetService
 
     private const int DailyResetHour = 17;
 
-    public DefaultDestiny2ResetService()
-    {
-    }
-
+    public DefaultDestiny2ResetService() { }
 
     private static int ConvertDayOfWeekToInt(DayOfWeek dayOfWeek)
     {
@@ -38,7 +35,10 @@ internal sealed class DefaultDestiny2ResetService : IDestiny2ResetService
             currentDate.Year,
             currentDate.Month,
             currentDate.Day,
-            DailyResetHour, 0, 0);
+            DailyResetHour,
+            0,
+            0
+        );
         return dateInQuestion < currentDate ? dateInQuestion.AddDays(1) : dateInQuestion;
     }
 
@@ -46,7 +46,14 @@ internal sealed class DefaultDestiny2ResetService : IDestiny2ResetService
     {
         var currentDate = DateTime.UtcNow;
 
-        var dateInQuestion = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, DailyResetHour, 0, 0);
+        var dateInQuestion = new DateTime(
+            currentDate.Year,
+            currentDate.Month,
+            currentDate.Day,
+            DailyResetHour,
+            0,
+            0
+        );
 
         var currentDay = ConvertDayOfWeekToInt(dateInQuestion.DayOfWeek);
 
@@ -85,30 +92,33 @@ internal sealed class DefaultDestiny2ResetService : IDestiny2ResetService
 
     public Task WaitForNextDailyReset(
         TimeSpan delay = default,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
-        return Task.Delay(
-            (GetNextDailyReset() - DateTime.UtcNow).Add(delay),
-            cancellationToken);
+        return Task.Delay((GetNextDailyReset() - DateTime.UtcNow).Add(delay), cancellationToken);
     }
 
     public Task WaitForNextWeeklyReset(
         int day,
         TimeSpan delay = default,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         return Task.Delay(
             (GetNextWeeklyReset(day) - DateTime.UtcNow).Add(delay),
-            cancellationToken);
+            cancellationToken
+        );
     }
 
     public Task WaitForNextWeeklyReset(
         DayOfWeek day,
         TimeSpan delay = default,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         return Task.Delay(
             (GetNextWeeklyReset(day) - DateTime.UtcNow).Add(delay),
-            cancellationToken);
+            cancellationToken
+        );
     }
 }

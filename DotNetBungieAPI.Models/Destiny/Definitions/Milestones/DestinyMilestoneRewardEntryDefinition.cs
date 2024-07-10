@@ -3,7 +3,8 @@ using DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
 
-public sealed record DestinyMilestoneRewardEntryDefinition : IDeepEquatable<DestinyMilestoneRewardEntryDefinition>
+public sealed record DestinyMilestoneRewardEntryDefinition
+    : IDeepEquatable<DestinyMilestoneRewardEntryDefinition>
 {
     /// <summary>
     ///     The identifier for this reward entry. Runtime data will refer to reward entries by this hash. Only guaranteed
@@ -50,12 +51,12 @@ public sealed record DestinyMilestoneRewardEntryDefinition : IDeepEquatable<Dest
 
     public bool DeepEquals(DestinyMilestoneRewardEntryDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               Items.DeepEqualsReadOnlyCollections(other.Items) &&
-               Order == other.Order &&
-               RewardEntryHash == other.RewardEntryHash &&
-               RewardEntryIdentifier == other.RewardEntryIdentifier &&
-               Vendor.DeepEquals(other.Vendor);
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && Items.DeepEqualsReadOnlyCollections(other.Items)
+            && Order == other.Order
+            && RewardEntryHash == other.RewardEntryHash
+            && RewardEntryIdentifier == other.RewardEntryIdentifier
+            && Vendor.DeepEquals(other.Vendor);
     }
 }

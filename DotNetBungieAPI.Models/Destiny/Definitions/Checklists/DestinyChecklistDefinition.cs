@@ -20,7 +20,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Checklists;
 ///     Forsaken.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyChecklistDefinition)]
-public sealed record DestinyChecklistDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyChecklistDefinition>
+public sealed record DestinyChecklistDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyChecklistDefinition>
 {
     /// <summary>
     ///     <inheritdoc />
@@ -52,23 +55,25 @@ public sealed record DestinyChecklistDefinition : IDestinyDefinition, IDisplayPr
 
     public bool DeepEquals(DestinyChecklistDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               Entries.DeepEqualsReadOnlyCollections(other.Entries) &&
-               Scope == other.Scope &&
-               ViewActionString == other.ViewActionString &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && Entries.DeepEqualsReadOnlyCollections(other.Entries)
+            && Scope == other.Scope
+            && ViewActionString == other.ViewActionString
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyChecklistDefinition;
 
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
 
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
 
-    [JsonPropertyName("index")] public int Index { get; init; }
-
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

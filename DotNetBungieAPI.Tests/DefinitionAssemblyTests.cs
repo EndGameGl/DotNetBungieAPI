@@ -16,8 +16,9 @@ namespace DotNetBungieAPI.Tests
         public void AssertDefinitionTypeCountEquality()
         {
             Assert.Equal(
-                _definitionAssemblyData.DefinitionsToTypeMapping.Count, 
-                _definitionAssemblyData.TypeToEnumMapping.Count);
+                _definitionAssemblyData.DefinitionsToTypeMapping.Count,
+                _definitionAssemblyData.TypeToEnumMapping.Count
+            );
         }
 
         [Fact]

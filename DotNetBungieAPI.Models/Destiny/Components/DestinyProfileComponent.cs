@@ -51,15 +51,19 @@ public sealed record DestinyProfileComponent
     ///     these as available: it will be whatever seasons are available for the platform on which they last played.
     /// </summary>
     [JsonPropertyName("seasonHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinySeasonDefinition>> Seasons { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinySeasonDefinition>
+    > Seasons { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinySeasonDefinition>>.Empty;
 
     /// <summary>
     ///     A list of hashes for event cards that a profile owns. Unlike most values in versionsOwned, these stay with the profile across all platforms.
     /// </summary>
     [JsonPropertyName("eventCardHashesOwned")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyEventCardDefinition>> EventCardsOwned { get; init; }
-        = ReadOnlyCollections<DefinitionHashPointer<DestinyEventCardDefinition>>.Empty;
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyEventCardDefinition>
+    > EventCardsOwned { get; init; } =
+        ReadOnlyCollections<DefinitionHashPointer<DestinyEventCardDefinition>>.Empty;
 
     /// <summary>
     ///     If populated, this is a reference to the season that is currently active.
@@ -78,8 +82,8 @@ public sealed record DestinyProfileComponent
     ///     If populated, this is a reference to the event card that is currently active.
     /// </summary>
     [JsonPropertyName("activeEventCardHash")]
-    public DefinitionHashPointer<DestinyEventCardDefinition> ActiveEventCard { get; init; }
-        = DefinitionHashPointer<DestinyEventCardDefinition>.Empty;
+    public DefinitionHashPointer<DestinyEventCardDefinition> ActiveEventCard { get; init; } =
+        DefinitionHashPointer<DestinyEventCardDefinition>.Empty;
 
     [JsonPropertyName("currentGuardianRank")]
     public int CurrentGuardianRank { get; init; }

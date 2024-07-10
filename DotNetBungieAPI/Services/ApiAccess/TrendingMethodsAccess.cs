@@ -21,17 +21,22 @@ internal sealed class TrendingMethodsAccess : ITrendingMethodsAccess
     }
 
     public async Task<BungieResponse<TrendingCategories>> GetTrendingCategories(
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<TrendingCategories>("/Trending/Categories/", cancellationToken)
+            .GetFromBungieNetPlatform<TrendingCategories>(
+                "/Trending/Categories/",
+                cancellationToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<SearchResultOfTrendingEntry>> GetTrendingCategory(
         string categoryId,
         int pageNumber = 0,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -47,7 +52,8 @@ internal sealed class TrendingMethodsAccess : ITrendingMethodsAccess
     public async Task<BungieResponse<TrendingDetail>> GetTrendingEntryDetail(
         TrendingEntryType trendingEntryType,
         string identifier,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)

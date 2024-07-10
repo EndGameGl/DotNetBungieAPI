@@ -39,10 +39,10 @@ public sealed record DestinyTalentNodeCategory : IDeepEquatable<DestinyTalentNod
 
     public bool DeepEquals(DestinyTalentNodeCategory other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               Identifier == other.Identifier &&
-               IsLoreDriven == other.IsLoreDriven &&
-               NodeHashes.DeepEqualsReadOnlySimpleCollection(other.NodeHashes);
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && Identifier == other.Identifier
+            && IsLoreDriven == other.IsLoreDriven
+            && NodeHashes.DeepEqualsReadOnlySimpleCollection(other.NodeHashes);
     }
 }

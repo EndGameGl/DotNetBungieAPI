@@ -51,27 +51,35 @@ public class DestinyItemSourceDefinition : IDeepEquatable<DestinyItemSourceDefin
     ///     The stats computed for this level/quality range.
     /// </summary>
     [JsonPropertyName("computedStats")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, DestinyInventoryItemStatDefinition>
-        ComputedStats { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyStatDefinition>, DestinyInventoryItemStatDefinition>
-            .Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyStatDefinition>,
+        DestinyInventoryItemStatDefinition
+    > ComputedStats { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyStatDefinition>,
+            DestinyInventoryItemStatDefinition
+        >.Empty;
 
     /// <summary>
     ///     The DestinyRewardSourceDefinitions found that can spawn the item at this level.
     /// </summary>
     [JsonPropertyName("sourceHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyRewardSourceDefinition>> Sources { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyRewardSourceDefinition>
+    > Sources { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyRewardSourceDefinition>>.Empty;
 
     public bool DeepEquals(DestinyItemSourceDefinition other)
     {
-        return other != null &&
-               Level == other.Level &&
-               MinQuality == other.MinQuality &&
-               MaxQuality == other.MaxQuality &&
-               MinLevelRequired == other.MinLevelRequired &&
-               MaxLevelRequired == other.MaxLevelRequired &&
-               ComputedStats.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(other.ComputedStats) &&
-               Sources.DeepEqualsReadOnlyCollections(other.Sources);
+        return other != null
+            && Level == other.Level
+            && MinQuality == other.MinQuality
+            && MaxQuality == other.MaxQuality
+            && MinLevelRequired == other.MinLevelRequired
+            && MaxLevelRequired == other.MaxLevelRequired
+            && ComputedStats.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(
+                other.ComputedStats
+            )
+            && Sources.DeepEqualsReadOnlyCollections(other.Sources);
     }
 }

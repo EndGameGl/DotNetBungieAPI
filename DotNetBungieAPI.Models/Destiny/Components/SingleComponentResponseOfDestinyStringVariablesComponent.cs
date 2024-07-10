@@ -2,5 +2,6 @@
 
 public sealed record SingleComponentResponseOfDestinyStringVariablesComponent : ComponentResponse
 {
-    [JsonPropertyName("data")] public DestinyStringVariablesComponent Data { get; init; }
+    [JsonPropertyName("data")]
+    public DestinyStringVariablesComponent Data { get; init; }
 }

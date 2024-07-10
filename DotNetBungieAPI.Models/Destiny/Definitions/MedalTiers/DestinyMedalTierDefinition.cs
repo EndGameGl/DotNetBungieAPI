@@ -8,7 +8,9 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.MedalTiers;
 ///     Unfortunately, we haven't had time to do this evaluation yet in Destiny 2, so we're short on Medal Tiers. This will hopefully be updated over time, if Medals continue to exist.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyMedalTierDefinition)]
-public sealed record DestinyMedalTierDefinition : IDestinyDefinition, IDeepEquatable<DestinyMedalTierDefinition>
+public sealed record DestinyMedalTierDefinition
+    : IDestinyDefinition,
+        IDeepEquatable<DestinyMedalTierDefinition>
 {
     /// <summary>
     ///     If you're rendering medals by tier, render them in this order (ascending)
@@ -24,21 +26,26 @@ public sealed record DestinyMedalTierDefinition : IDestinyDefinition, IDeepEquat
 
     public bool DeepEquals(DestinyMedalTierDefinition other)
     {
-        return other != null &&
-               Order == other.Order &&
-               TierName == other.TierName &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && Order == other.Order
+            && TierName == other.TierName
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyMedalTierDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
 
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
 
-    [JsonPropertyName("index")] public int Index { get; init; }
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
 
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

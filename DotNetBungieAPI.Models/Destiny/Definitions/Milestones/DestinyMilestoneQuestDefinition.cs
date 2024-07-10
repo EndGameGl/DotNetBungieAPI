@@ -9,7 +9,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
 ///     Any data we need to figure out whether this Quest Item is the currently active one for the conceptual Milestone.
 ///     Even just typing this description, I already regret it.
 /// </summary>
-public sealed record DestinyMilestoneQuestDefinition : IDeepEquatable<DestinyMilestoneQuestDefinition>
+public sealed record DestinyMilestoneQuestDefinition
+    : IDeepEquatable<DestinyMilestoneQuestDefinition>
 {
     /// <summary>
     ///     The item representing this Milestone quest.
@@ -45,10 +46,14 @@ public sealed record DestinyMilestoneQuestDefinition : IDeepEquatable<DestinyMil
     ///     Use the key to look up DestinyActivityDefinition
     /// </summary>
     [JsonPropertyName("activities")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyActivityDefinition>, DestinyMilestoneActivityDefinition>
-        Activities { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyActivityDefinition>, DestinyMilestoneActivityDefinition>
-            .Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyActivityDefinition>,
+        DestinyMilestoneActivityDefinition
+    > Activities { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyActivityDefinition>,
+            DestinyMilestoneActivityDefinition
+        >.Empty;
 
     /// <summary>
     ///     Sometimes, a Milestone's quest is related to an entire Destination rather than a specific activity. In that
@@ -59,15 +64,16 @@ public sealed record DestinyMilestoneQuestDefinition : IDeepEquatable<DestinyMil
     public DefinitionHashPointer<DestinyDestinationDefinition> Destination { get; init; } =
         DefinitionHashPointer<DestinyDestinationDefinition>.Empty;
 
-
     public bool DeepEquals(DestinyMilestoneQuestDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               QuestItem.DeepEquals(other.QuestItem) &&
-               QuestRewards.DeepEquals(other.QuestRewards) &&
-               OverrideImage == other.OverrideImage &&
-               Destination.DeepEquals(other.Destination) &&
-               Activities.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(other.Activities);
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && QuestItem.DeepEquals(other.QuestItem)
+            && QuestRewards.DeepEquals(other.QuestRewards)
+            && OverrideImage == other.OverrideImage
+            && Destination.DeepEquals(other.Destination)
+            && Activities.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(
+                other.Activities
+            );
     }
 }

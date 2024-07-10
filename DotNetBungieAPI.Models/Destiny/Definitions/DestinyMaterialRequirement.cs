@@ -34,7 +34,7 @@ public sealed record DestinyMaterialRequirement : IDeepEquatable<DestinyMaterial
     /// </summary>
     [JsonPropertyName("countIsConstant")]
     public bool CountIsConstant { get; init; }
-    
+
     /// <summary>
     ///     If True, this requirement is "silent": don't bother showing it in a material requirements display. I mean, I'm not
     ///     your mom: I'm not going to tell you you *can't* show it. But we won't show it in our UI.
@@ -44,11 +44,11 @@ public sealed record DestinyMaterialRequirement : IDeepEquatable<DestinyMaterial
 
     public bool DeepEquals(DestinyMaterialRequirement other)
     {
-        return other != null &&
-               Count == other.Count &&
-               DeleteOnAction == other.DeleteOnAction &&
-               Item.DeepEquals(other.Item) &&
-               OmitFromRequirements == other.OmitFromRequirements &&
-               CountIsConstant == other.CountIsConstant;
+        return other != null
+            && Count == other.Count
+            && DeleteOnAction == other.DeleteOnAction
+            && Item.DeepEquals(other.Item)
+            && OmitFromRequirements == other.OmitFromRequirements
+            && CountIsConstant == other.CountIsConstant;
     }
 }

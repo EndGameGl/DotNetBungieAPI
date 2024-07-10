@@ -33,9 +33,9 @@ public sealed record DestinyFactionVendorDefinition : IDeepEquatable<DestinyFact
 
     public bool DeepEquals(DestinyFactionVendorDefinition other)
     {
-        return other != null &&
-               BackgroundImagePath == other.BackgroundImagePath &&
-               Destination.DeepEquals(other.Destination) &&
-               Vendor.DeepEquals(other.Vendor);
+        return other != null
+            && BackgroundImagePath == other.BackgroundImagePath
+            && Destination.DeepEquals(other.Destination)
+            && Vendor.DeepEquals(other.Vendor);
     }
 }

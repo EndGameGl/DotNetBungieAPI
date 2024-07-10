@@ -99,7 +99,11 @@ internal sealed class BungieClient : IBungieClient
         return false;
     }
 
-    public bool TryGetDefinition<T>(uint hash, out T definition, BungieLocales locale = BungieLocales.EN)
+    public bool TryGetDefinition<T>(
+        uint hash,
+        out T definition,
+        BungieLocales locale = BungieLocales.EN
+    )
         where T : IDestinyDefinition
     {
         if (Repository.TryGetDestinyDefinition(hash, out definition, locale))
@@ -144,7 +148,7 @@ internal sealed class BungieClient : IBungieClient
             success(definition);
             return true;
         }
-        
+
         return false;
     }
 

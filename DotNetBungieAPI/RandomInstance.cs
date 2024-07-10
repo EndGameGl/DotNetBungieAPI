@@ -15,7 +15,8 @@ internal static class RandomInstance
             throw new Exception("Invalid string length.");
 
         var sb = new StringBuilder();
-        for (var i = 0; i < length; i++) sb.Append(Symbols[Rnd.Next(Symbols.Length)]);
+        for (var i = 0; i < length; i++)
+            sb.Append(Symbols[Rnd.Next(Symbols.Length)]);
 
         return sb.ToString();
     }

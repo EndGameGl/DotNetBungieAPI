@@ -6,13 +6,17 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Common;
 ///     Represents common properties for displaying <see cref="IDestinyDefinition" />
 /// </summary>
 [DebuggerDisplay("{Name}: {Description}")]
-public record DestinyDisplayPropertiesDefinition : IDeepEquatable<DestinyDisplayPropertiesDefinition>
+public record DestinyDisplayPropertiesDefinition
+    : IDeepEquatable<DestinyDisplayPropertiesDefinition>
 {
-    [JsonPropertyName("description")] public string Description { get; init; }
+    [JsonPropertyName("description")]
+    public string Description { get; init; }
 
-    [JsonPropertyName("name")] public string Name { get; init; }
+    [JsonPropertyName("name")]
+    public string Name { get; init; }
 
-    [JsonPropertyName("hasIcon")] public bool HasIcon { get; init; }
+    [JsonPropertyName("hasIcon")]
+    public bool HasIcon { get; init; }
 
     /// <summary>
     ///     Note that "icon" is sometimes misleading, and should be interpreted in the context of the entity. For instance, in
@@ -37,12 +41,12 @@ public record DestinyDisplayPropertiesDefinition : IDeepEquatable<DestinyDisplay
 
     public bool DeepEquals(DestinyDisplayPropertiesDefinition other)
     {
-        return other != null &&
-               Description == other.Description &&
-               HasIcon == other.HasIcon &&
-               Icon == other.Icon &&
-               Name == other.Name &&
-               HighResolutionIcon == other.HighResolutionIcon &&
-               IconSequences.DeepEqualsReadOnlyCollections(other.IconSequences);
+        return other != null
+            && Description == other.Description
+            && HasIcon == other.HasIcon
+            && Icon == other.Icon
+            && Name == other.Name
+            && HighResolutionIcon == other.HighResolutionIcon
+            && IconSequences.DeepEqualsReadOnlyCollections(other.IconSequences);
     }
 }

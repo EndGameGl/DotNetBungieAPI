@@ -38,7 +38,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 ///     want to combine this data with live Vendor information from the API when it is available.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyVendorDefinition)]
-public sealed record DestinyVendorDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyVendorDefinition>
+public sealed record DestinyVendorDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyVendorDefinition>
 {
     DestinyDisplayPropertiesDefinition IDisplayProperties.DisplayProperties => DisplayProperties;
 
@@ -124,7 +127,8 @@ public sealed record DestinyVendorDefinition : IDestinyDefinition, IDisplayPrope
     ///     show the user the appropriate failure message for the item that can't be bought.
     /// </summary>
     [JsonPropertyName("failureStrings")]
-    public ReadOnlyCollection<string> FailureStrings { get; init; } = ReadOnlyCollections<string>.Empty;
+    public ReadOnlyCollection<string> FailureStrings { get; init; } =
+        ReadOnlyCollections<string>.Empty;
 
     /// <summary>
     ///     If we were able to predict the dates when this Vendor will be visible/available, this will be the list of those
@@ -296,56 +300,67 @@ public sealed record DestinyVendorDefinition : IDestinyDefinition, IDisplayPrope
     ///     workaround.
     /// </summary>
     [JsonPropertyName("ignoreSaleItemHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> IgnoreSaleItems { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyInventoryItemDefinition>
+    > IgnoreSaleItems { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 
-    [JsonPropertyName("unlockValueHash")] public uint UnlockValueHash { get; init; }
+    [JsonPropertyName("unlockValueHash")]
+    public uint UnlockValueHash { get; init; }
 
     public bool DeepEquals(DestinyVendorDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               VendorProgressionType == other.VendorProgressionType &&
-               BuyString == other.BuyString &&
-               SellString == other.SellString &&
-               DisplayItem.DeepEquals(other.DisplayItem) &&
-               InhibitBuying == other.InhibitBuying &&
-               InhibitSelling == other.InhibitSelling &&
-               Faction.DeepEquals(other.Faction) &&
-               ResetIntervalMinutes == other.ResetIntervalMinutes &&
-               ResetOffsetMinutes == other.ResetOffsetMinutes &&
-               FailureStrings.DeepEqualsReadOnlySimpleCollection(other.FailureStrings) &&
-               UnlockRanges.DeepEqualsReadOnlyCollections(other.UnlockRanges) &&
-               VendorIdentifier == other.VendorIdentifier &&
-               VendorPortrait == other.VendorPortrait &&
-               VendorBanner == other.VendorBanner &&
-               Enabled == other.Enabled &&
-               Visible == other.Visible &&
-               VendorSubcategoryIdentifier == other.VendorSubcategoryIdentifier &&
-               ConsolidateCategories == other.ConsolidateCategories &&
-               Actions.DeepEqualsReadOnlyCollections(other.Actions) &&
-               Categories.DeepEqualsReadOnlyCollections(other.Categories) &&
-               OriginalCategories.DeepEqualsReadOnlyCollections(other.OriginalCategories) &&
-               DisplayCategories.DeepEqualsReadOnlyCollections(other.DisplayCategories) &&
-               Interactions.DeepEqualsReadOnlyCollections(other.Interactions) &&
-               InventoryFlyouts.DeepEqualsReadOnlyCollections(other.InventoryFlyouts) &&
-               ItemList.DeepEqualsReadOnlyCollections(other.ItemList) &&
-               Services.DeepEqualsReadOnlyCollections(other.Services) &&
-               AcceptedItems.DeepEqualsReadOnlyCollections(other.AcceptedItems) &&
-               ReturnWithVendorRequest == other.ReturnWithVendorRequest &&
-               Locations.DeepEqualsReadOnlyCollections(other.Locations) &&
-               Groups.DeepEqualsReadOnlyCollections(other.Groups) &&
-               IgnoreSaleItems.DeepEqualsReadOnlyCollections(other.IgnoreSaleItems) &&
-               UnlockValueHash == other.UnlockValueHash &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && VendorProgressionType == other.VendorProgressionType
+            && BuyString == other.BuyString
+            && SellString == other.SellString
+            && DisplayItem.DeepEquals(other.DisplayItem)
+            && InhibitBuying == other.InhibitBuying
+            && InhibitSelling == other.InhibitSelling
+            && Faction.DeepEquals(other.Faction)
+            && ResetIntervalMinutes == other.ResetIntervalMinutes
+            && ResetOffsetMinutes == other.ResetOffsetMinutes
+            && FailureStrings.DeepEqualsReadOnlySimpleCollection(other.FailureStrings)
+            && UnlockRanges.DeepEqualsReadOnlyCollections(other.UnlockRanges)
+            && VendorIdentifier == other.VendorIdentifier
+            && VendorPortrait == other.VendorPortrait
+            && VendorBanner == other.VendorBanner
+            && Enabled == other.Enabled
+            && Visible == other.Visible
+            && VendorSubcategoryIdentifier == other.VendorSubcategoryIdentifier
+            && ConsolidateCategories == other.ConsolidateCategories
+            && Actions.DeepEqualsReadOnlyCollections(other.Actions)
+            && Categories.DeepEqualsReadOnlyCollections(other.Categories)
+            && OriginalCategories.DeepEqualsReadOnlyCollections(other.OriginalCategories)
+            && DisplayCategories.DeepEqualsReadOnlyCollections(other.DisplayCategories)
+            && Interactions.DeepEqualsReadOnlyCollections(other.Interactions)
+            && InventoryFlyouts.DeepEqualsReadOnlyCollections(other.InventoryFlyouts)
+            && ItemList.DeepEqualsReadOnlyCollections(other.ItemList)
+            && Services.DeepEqualsReadOnlyCollections(other.Services)
+            && AcceptedItems.DeepEqualsReadOnlyCollections(other.AcceptedItems)
+            && ReturnWithVendorRequest == other.ReturnWithVendorRequest
+            && Locations.DeepEqualsReadOnlyCollections(other.Locations)
+            && Groups.DeepEqualsReadOnlyCollections(other.Groups)
+            && IgnoreSaleItems.DeepEqualsReadOnlyCollections(other.IgnoreSaleItems)
+            && UnlockValueHash == other.UnlockValueHash
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyVendorDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

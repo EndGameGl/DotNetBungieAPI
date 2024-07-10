@@ -10,7 +10,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 ///     Quest steps have 1:M objectives that we end up processing and returning in live data as DestinyQuestStatus data,
 ///     and other useful information.
 /// </summary>
-public sealed record DestinyItemObjectiveBlockDefinition : IDeepEquatable<DestinyItemObjectiveBlockDefinition>
+public sealed record DestinyItemObjectiveBlockDefinition
+    : IDeepEquatable<DestinyItemObjectiveBlockDefinition>
 {
     /// <summary>
     ///     For every entry in objectiveHashes, there is a corresponding entry in this array at the same index. If the
@@ -18,7 +19,9 @@ public sealed record DestinyItemObjectiveBlockDefinition : IDeepEquatable<Destin
     ///     index. Otherwise, it will be invalid (0).
     /// </summary>
     [JsonPropertyName("displayActivityHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityDefinition>> DisplayActivities { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyActivityDefinition>
+    > DisplayActivities { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyActivityDefinition>>.Empty;
 
     /// <summary>
@@ -32,7 +35,9 @@ public sealed record DestinyItemObjectiveBlockDefinition : IDeepEquatable<Destin
     ///     rendered.
     /// </summary>
     [JsonPropertyName("objectiveHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>> Objectives { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyObjectiveDefinition>
+    > Objectives { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyObjectiveDefinition>>.Empty;
 
     /// <summary>
@@ -79,16 +84,18 @@ public sealed record DestinyItemObjectiveBlockDefinition : IDeepEquatable<Destin
 
     public bool DeepEquals(DestinyItemObjectiveBlockDefinition other)
     {
-        return other != null &&
-               DisplayActivities.DeepEqualsReadOnlyCollections(other.DisplayActivities) &&
-               Narrative == other.Narrative &&
-               Objectives.DeepEqualsReadOnlyCollections(other.Objectives) &&
-               ObjectiveVerbName == other.ObjectiveVerbName &&
-               PerObjectiveDisplayProperties.DeepEqualsReadOnlyCollections(other.PerObjectiveDisplayProperties) &&
-               QuestTypeHash == other.QuestTypeHash &&
-               QuestTypeIdentifier == other.QuestTypeIdentifier &&
-               QuestlineItem.DeepEquals(other.QuestlineItem) &&
-               RequireFullObjectiveCompletion == other.RequireFullObjectiveCompletion &&
-               DisplayAsStatTracker == other.DisplayAsStatTracker;
+        return other != null
+            && DisplayActivities.DeepEqualsReadOnlyCollections(other.DisplayActivities)
+            && Narrative == other.Narrative
+            && Objectives.DeepEqualsReadOnlyCollections(other.Objectives)
+            && ObjectiveVerbName == other.ObjectiveVerbName
+            && PerObjectiveDisplayProperties.DeepEqualsReadOnlyCollections(
+                other.PerObjectiveDisplayProperties
+            )
+            && QuestTypeHash == other.QuestTypeHash
+            && QuestTypeIdentifier == other.QuestTypeIdentifier
+            && QuestlineItem.DeepEquals(other.QuestlineItem)
+            && RequireFullObjectiveCompletion == other.RequireFullObjectiveCompletion
+            && DisplayAsStatTracker == other.DisplayAsStatTracker;
     }
 }

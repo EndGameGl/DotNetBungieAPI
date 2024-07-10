@@ -3,7 +3,9 @@
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Loadouts;
 
 [DestinyDefinition(DefinitionsEnum.DestinyLoadoutNameDefinition)]
-public sealed record DestinyLoadoutNameDefinition : IDestinyDefinition, IDeepEquatable<DestinyLoadoutNameDefinition>
+public sealed record DestinyLoadoutNameDefinition
+    : IDestinyDefinition,
+        IDeepEquatable<DestinyLoadoutNameDefinition>
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyLoadoutNameDefinition;
 
@@ -24,11 +26,11 @@ public sealed record DestinyLoadoutNameDefinition : IDestinyDefinition, IDeepEqu
 
     public bool DeepEquals(DestinyLoadoutNameDefinition other)
     {
-        return other is not null &&
-               Name == other.Name &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other is not null
+            && Name == other.Name
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 }

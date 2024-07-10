@@ -18,10 +18,14 @@ public sealed record DestinyProfileProgressionComponent
     ///     value being a boolean indicating if it's been discovered yet.
     /// </summary>
     [JsonPropertyName("checklists")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyChecklistDefinition>, ReadOnlyDictionary<uint, bool>>
-        Checklists { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyChecklistDefinition>, ReadOnlyDictionary<uint, bool>>
-            .Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyChecklistDefinition>,
+        ReadOnlyDictionary<uint, bool>
+    > Checklists { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyChecklistDefinition>,
+            ReadOnlyDictionary<uint, bool>
+        >.Empty;
 
     /// <summary>
     ///     Data related to your progress on the current season's artifact that is the same across characters.

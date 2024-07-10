@@ -20,7 +20,6 @@ public sealed record DestinyActivityGraphListEntryDefinition
 
     public bool DeepEquals(DestinyActivityGraphListEntryDefinition other)
     {
-        return other != null &&
-               ActivityGraph.DeepEquals(other.ActivityGraph);
+        return other != null && ActivityGraph.DeepEquals(other.ActivityGraph);
     }
 }

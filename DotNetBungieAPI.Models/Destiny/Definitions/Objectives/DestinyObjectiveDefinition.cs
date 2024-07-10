@@ -21,7 +21,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Objectives;
 ///     accomplished, and a lot of optional tack-on data that can enhance the information provided about the task.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyObjectiveDefinition)]
-public sealed record DestinyObjectiveDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyObjectiveDefinition>
+public sealed record DestinyObjectiveDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyObjectiveDefinition>
 {
     /// <summary>
     ///     Ideally, this should tell you what your task is. I'm not going to lie to you though. Sometimes this doesn't have useful information at all. Which sucks, but there's nothing either of us can do about it.
@@ -77,7 +80,9 @@ public sealed record DestinyObjectiveDefinition : IDestinyDefinition, IDisplayPr
     ///     The UI style applied to the objective. It's an enum, take a look at DestinyUnlockValueUIStyle for details of the
     ///     possible styles. Use this info as you wish to customize your UI.
     /// </summary>
-    [Obsolete("This is no longer populated by Destiny 2 game content. Please use InProgressValueStyle and CompletedValueStyle instead.")]
+    [Obsolete(
+        "This is no longer populated by Destiny 2 game content. Please use InProgressValueStyle and CompletedValueStyle instead."
+    )]
     [JsonPropertyName("valueStyle")]
     public DestinyUnlockValueUiStyle ValueStyle { get; init; }
 
@@ -149,35 +154,43 @@ public sealed record DestinyObjectiveDefinition : IDestinyDefinition, IDisplayPr
 
     public bool DeepEquals(DestinyObjectiveDefinition other)
     {
-        return other != null &&
-               AllowNegativeValue == other.AllowNegativeValue &&
-               AllowOvercompletion == other.AllowOvercompletion &&
-               AllowValueChangeWhenCompleted == other.AllowValueChangeWhenCompleted &&
-               CompletionValue == other.CompletionValue &&
-               IsCountingDownward == other.IsCountingDownward &&
-               IsDisplayOnlyObjective == other.IsDisplayOnlyObjective &&
-               Location.DeepEquals(other.Location) &&
-               MinimumVisibilityThreshold == other.MinimumVisibilityThreshold &&
-               ProgressDescription == other.ProgressDescription &&
-               Scope == other.Scope &&
-               ShowValueOnComplete == other.ShowValueOnComplete &&
-               (Perks is not null ? Perks.DeepEquals(other.Perks) : other is null) &&
-               (Stats is not null ? Stats.DeepEquals(other.Stats) : other is null) &&
-               ValueStyle == other.ValueStyle &&
-               CompletedValueStyle == other.CompletedValueStyle &&
-               InProgressValueStyle == other.InProgressValueStyle &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               UiLabel == other.UiLabel &&
-               UiStyle == other.UiStyle &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && AllowNegativeValue == other.AllowNegativeValue
+            && AllowOvercompletion == other.AllowOvercompletion
+            && AllowValueChangeWhenCompleted == other.AllowValueChangeWhenCompleted
+            && CompletionValue == other.CompletionValue
+            && IsCountingDownward == other.IsCountingDownward
+            && IsDisplayOnlyObjective == other.IsDisplayOnlyObjective
+            && Location.DeepEquals(other.Location)
+            && MinimumVisibilityThreshold == other.MinimumVisibilityThreshold
+            && ProgressDescription == other.ProgressDescription
+            && Scope == other.Scope
+            && ShowValueOnComplete == other.ShowValueOnComplete
+            && (Perks is not null ? Perks.DeepEquals(other.Perks) : other is null)
+            && (Stats is not null ? Stats.DeepEquals(other.Stats) : other is null)
+            && ValueStyle == other.ValueStyle
+            && CompletedValueStyle == other.CompletedValueStyle
+            && InProgressValueStyle == other.InProgressValueStyle
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && UiLabel == other.UiLabel
+            && UiStyle == other.UiStyle
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyObjectiveDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

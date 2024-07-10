@@ -16,11 +16,15 @@ public sealed record BungieFriend
     [JsonPropertyName("bungieGlobalDisplayNameCode")]
     public short? BungieGlobalDisplayNameCode { get; init; }
 
-    [JsonPropertyName("onlineStatus")] public PresenceStatus OnlineStatus { get; init; }
+    [JsonPropertyName("onlineStatus")]
+    public PresenceStatus OnlineStatus { get; init; }
 
-    [JsonPropertyName("onlineTitle")] public PresenceOnlineStateFlags OnlineTitle { get; init; }
+    [JsonPropertyName("onlineTitle")]
+    public PresenceOnlineStateFlags OnlineTitle { get; init; }
 
-    [JsonPropertyName("relationship")] public FriendRelationshipState Relationship { get; init; }
+    [JsonPropertyName("relationship")]
+    public FriendRelationshipState Relationship { get; init; }
 
-    [JsonPropertyName("bungieNetUser")] public GeneralUser BungieNetUser { get; init; }
+    [JsonPropertyName("bungieNetUser")]
+    public GeneralUser BungieNetUser { get; init; }
 }

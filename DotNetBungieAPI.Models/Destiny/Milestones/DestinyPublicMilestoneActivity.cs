@@ -25,7 +25,9 @@ public sealed record DestinyPublicMilestoneActivity
     ///     DestinyActivityModifierDefinition that defines the modifier being applied.
     /// </summary>
     [JsonPropertyName("modifierHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>> Modifiers { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyActivityModifierDefinition>
+    > Modifiers { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModifierDefinition>>.Empty;
 
     /// <summary>

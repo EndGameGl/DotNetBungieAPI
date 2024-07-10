@@ -19,8 +19,16 @@ public class BungieNetAuthenticationOptions : OAuthOptions
 
         ClaimActions.MapJsonSubKey(ClaimTypes.NameIdentifier, "Response", "membershipId");
         ClaimActions.MapJsonSubKey(ClaimTypes.Name, "Response", "displayName");
-        ClaimActions.MapJsonSubKey(BungieNetAuthenticationConstants.Claims.UniqueName, "Response", "uniqueName");
-        ClaimActions.MapJsonSubKey(BungieNetAuthenticationConstants.Claims.ProfilePicturePath, "Response", "profilePicturePath");
+        ClaimActions.MapJsonSubKey(
+            BungieNetAuthenticationConstants.Claims.UniqueName,
+            "Response",
+            "uniqueName"
+        );
+        ClaimActions.MapJsonSubKey(
+            BungieNetAuthenticationConstants.Claims.ProfilePicturePath,
+            "Response",
+            "profilePicturePath"
+        );
     }
 
     public override void Validate()

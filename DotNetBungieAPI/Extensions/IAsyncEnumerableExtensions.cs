@@ -13,7 +13,8 @@ public static class IAsyncEnumerableExtensions
         int maxPages,
         PlatformFriendType friendPlatform,
         AuthorizationTokenData authorizationToken,
-        [EnumeratorCancellation] CancellationToken cancellationToken = default)
+        [EnumeratorCancellation] CancellationToken cancellationToken = default
+    )
     {
         var currentPage = 0;
         var hasMoreToGet = true;
@@ -23,7 +24,8 @@ public static class IAsyncEnumerableExtensions
                 friendPlatform,
                 authorizationToken,
                 currentPage,
-                cancellationToken);
+                cancellationToken
+            );
 
             if (!response.IsSuccessfulResponseCode || response.Response is null)
                 throw response.ToException();

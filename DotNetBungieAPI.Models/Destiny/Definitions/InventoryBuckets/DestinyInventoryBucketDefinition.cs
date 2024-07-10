@@ -18,8 +18,9 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryBuckets;
 ///     feature of a Vendor. See the vendor's acceptedItems property for more details.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyInventoryBucketDefinition)]
-public sealed record DestinyInventoryBucketDefinition : IDestinyDefinition,
-    IDeepEquatable<DestinyInventoryBucketDefinition>
+public sealed record DestinyInventoryBucketDefinition
+    : IDestinyDefinition,
+        IDeepEquatable<DestinyInventoryBucketDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -84,25 +85,33 @@ public sealed record DestinyInventoryBucketDefinition : IDestinyDefinition,
 
     public bool DeepEquals(DestinyInventoryBucketDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               BucketOrder == other.BucketOrder &&
-               Category == other.Category &&
-               Enabled == other.Enabled &&
-               FirstInFirstOut == other.FirstInFirstOut &&
-               HasTransferDestination == other.HasTransferDestination &&
-               ItemCount == other.ItemCount &&
-               Location == other.Location &&
-               Scope == other.Scope &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && BucketOrder == other.BucketOrder
+            && Category == other.Category
+            && Enabled == other.Enabled
+            && FirstInFirstOut == other.FirstInFirstOut
+            && HasTransferDestination == other.HasTransferDestination
+            && ItemCount == other.ItemCount
+            && Location == other.Location
+            && Scope == other.Scope
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyInventoryBucketDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

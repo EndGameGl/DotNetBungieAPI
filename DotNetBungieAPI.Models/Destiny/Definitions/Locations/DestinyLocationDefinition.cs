@@ -8,7 +8,9 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Locations;
 ///     even Bubble or NavPoint within a space.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyLocationDefinition)]
-public sealed record DestinyLocationDefinition : IDestinyDefinition, IDeepEquatable<DestinyLocationDefinition>
+public sealed record DestinyLocationDefinition
+    : IDestinyDefinition,
+        IDeepEquatable<DestinyLocationDefinition>
 {
     /// <summary>
     ///     If the location has a Vendor on it, this is the Vendor.
@@ -28,18 +30,26 @@ public sealed record DestinyLocationDefinition : IDestinyDefinition, IDeepEquata
 
     public bool DeepEquals(DestinyLocationDefinition other)
     {
-        return other != null &&
-               LocationReleases.DeepEqualsReadOnlyCollections(other.LocationReleases) &&
-               Vendor.DeepEquals(other.Vendor) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && LocationReleases.DeepEqualsReadOnlyCollections(other.LocationReleases)
+            && Vendor.DeepEquals(other.Vendor)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyLocationDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

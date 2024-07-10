@@ -2,6 +2,9 @@ namespace DotNetBungieAPI.Generated.Models.Applications;
 
 public class Application
 {
+    [JsonPropertyName("applicationType")]
+    public Applications.OAuthApplicationType? ApplicationType { get; set; }
+
     /// <summary>
     ///     Unique ID assigned to the application
     /// </summary>

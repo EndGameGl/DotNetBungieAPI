@@ -10,8 +10,6 @@ namespace DotNetBungieAPI.Services.Implementations
             return new NullLogger(categoryName);
         }
 
-        public void Dispose()
-        {        
-        }
+        public void Dispose() { }
     }
 }

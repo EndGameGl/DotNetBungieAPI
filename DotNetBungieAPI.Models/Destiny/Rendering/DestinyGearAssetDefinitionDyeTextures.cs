@@ -2,13 +2,13 @@
 
 public sealed record DestinyGearAssetDefinitionDyeTextures
 {
-    [JsonPropertyName("diffuse")] 
+    [JsonPropertyName("diffuse")]
     public TextureReference Diffuse { get; init; }
-    
-    [JsonPropertyName("normal")] 
+
+    [JsonPropertyName("normal")]
     public TextureReference Normal { get; init; }
-    
-    [JsonPropertyName("primary_diffuse")] 
+
+    [JsonPropertyName("primary_diffuse")]
     public TextureReference PrimaryDiffuse { get; init; }
 
     [JsonPropertyName("secondary_diffuse")]

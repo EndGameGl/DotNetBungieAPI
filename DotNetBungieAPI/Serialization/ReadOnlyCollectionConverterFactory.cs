@@ -7,9 +7,11 @@ public sealed class ReadOnlyCollectionConverterFactory : JsonConverterFactory
 {
     public override bool CanConvert(Type typeToConvert)
     {
-        if (!typeToConvert.IsGenericType) return false;
+        if (!typeToConvert.IsGenericType)
+            return false;
 
-        if (typeToConvert.GetGenericTypeDefinition() != typeof(ReadOnlyCollection<>)) return false;
+        if (typeToConvert.GetGenericTypeDefinition() != typeof(ReadOnlyCollection<>))
+            return false;
 
         return true;
     }
@@ -18,12 +20,14 @@ public sealed class ReadOnlyCollectionConverterFactory : JsonConverterFactory
     {
         var collectionType = typeToConvert.GetGenericArguments()[0];
 
-        var converter = (JsonConverter)Activator.CreateInstance(
-            typeof(ReadOnlyCollectionConverter<>).MakeGenericType(collectionType),
-            BindingFlags.Instance | BindingFlags.Public,
-            null,
-            new object[] { options },
-            null);
+        var converter = (JsonConverter)
+            Activator.CreateInstance(
+                typeof(ReadOnlyCollectionConverter<>).MakeGenericType(collectionType),
+                BindingFlags.Instance | BindingFlags.Public,
+                null,
+                new object[] { options },
+                null
+            );
 
         return converter;
     }
@@ -42,7 +46,8 @@ public sealed class ReadOnlyCollectionConverterFactory : JsonConverterFactory
         public override ReadOnlyCollection<T> Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
-            JsonSerializerOptions options)
+            JsonSerializerOptions options
+        )
         {
             if (reader.TokenType == JsonTokenType.Null)
                 return ReadOnlyCollections<T>.Empty;
@@ -61,11 +66,13 @@ public sealed class ReadOnlyCollectionConverterFactory : JsonConverterFactory
         public override void Write(
             Utf8JsonWriter writer,
             ReadOnlyCollection<T> value,
-            JsonSerializerOptions options)
+            JsonSerializerOptions options
+        )
         {
             writer.WriteStartArray();
 
-            foreach (var item in value) JsonSerializer.Serialize(writer, item, options);
+            foreach (var item in value)
+                JsonSerializer.Serialize(writer, item, options);
 
             writer.WriteEndArray();
         }

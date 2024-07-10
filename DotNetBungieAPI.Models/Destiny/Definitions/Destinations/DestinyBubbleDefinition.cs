@@ -22,8 +22,8 @@ public sealed record DestinyBubbleDefinition : IDeepEquatable<DestinyBubbleDefin
 
     public bool DeepEquals(DestinyBubbleDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               Hash == other.Hash;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && Hash == other.Hash;
     }
 }

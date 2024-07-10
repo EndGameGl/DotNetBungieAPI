@@ -25,29 +25,36 @@ internal sealed class DefaultBungieNetJsonSerializer : IBungieNetJsonSerializer
         _serializerOptions.Converters.Add(new StringEnumConverterFactory());
     }
 
-
     public async ValueTask<object> DeserializeAsync(byte[] data, Type type)
     {
         await using Stream readStream = new MemoryStream(data);
-        return await JsonSerializer.DeserializeAsync(readStream, type, _serializerOptions).ConfigureAwait(false);
+        return await JsonSerializer
+            .DeserializeAsync(readStream, type, _serializerOptions)
+            .ConfigureAwait(false);
     }
 
     public async ValueTask<T> DeserializeAsync<T>(byte[] data)
     {
         await using Stream readStream = new MemoryStream(data);
-        return await JsonSerializer.DeserializeAsync<T>(readStream, _serializerOptions).ConfigureAwait(false);
+        return await JsonSerializer
+            .DeserializeAsync<T>(readStream, _serializerOptions)
+            .ConfigureAwait(false);
     }
 
     public async ValueTask<object> DeserializeAsync(Stream data, Type type)
     {
-        return await JsonSerializer.DeserializeAsync(data, type, _serializerOptions).ConfigureAwait(false);
+        return await JsonSerializer
+            .DeserializeAsync(data, type, _serializerOptions)
+            .ConfigureAwait(false);
     }
 
     public async ValueTask<T> DeserializeAsync<T>(Stream data)
     {
-        return await JsonSerializer.DeserializeAsync<T>(data, _serializerOptions).ConfigureAwait(false);
+        return await JsonSerializer
+            .DeserializeAsync<T>(data, _serializerOptions)
+            .ConfigureAwait(false);
     }
-    
+
     public T Deserialize<T>(Stream data)
     {
         return JsonSerializer.Deserialize<T>(data, _serializerOptions);
@@ -62,7 +69,7 @@ internal sealed class DefaultBungieNetJsonSerializer : IBungieNetJsonSerializer
     {
         return JsonSerializer.Deserialize<T>(data, _serializerOptions);
     }
-    
+
     public object Deserialize(ReadOnlySpan<byte> data, Type type)
     {
         return JsonSerializer.Deserialize(data, type, _serializerOptions);

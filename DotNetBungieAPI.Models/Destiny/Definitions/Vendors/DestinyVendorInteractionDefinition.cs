@@ -7,7 +7,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 ///     A Vendor Interaction is a dialog shown by the vendor other than sale items or transfer screens. The vendor is
 ///     showing you something, and asking you to reply to it by choosing an option or reward.
 /// </summary>
-public sealed record DestinyVendorInteractionDefinition : IDeepEquatable<DestinyVendorInteractionDefinition>
+public sealed record DestinyVendorInteractionDefinition
+    : IDeepEquatable<DestinyVendorInteractionDefinition>
 {
     /// <summary>
     ///     The position of this interaction in its parent array. Note that this is NOT content agnostic, and should not be
@@ -101,19 +102,19 @@ public sealed record DestinyVendorInteractionDefinition : IDeepEquatable<Destiny
 
     public bool DeepEquals(DestinyVendorInteractionDefinition other)
     {
-        return other != null &&
-               InteractionIndex == other.InteractionIndex &&
-               Replies.DeepEqualsReadOnlyCollections(other.Replies) &&
-               VendorCategoryIndex == other.VendorCategoryIndex &&
-               QuestlineItem.DeepEquals(other.QuestlineItem) &&
-               SackInteractionList.DeepEqualsReadOnlyCollections(other.SackInteractionList) &&
-               UiInteractionType == other.UiInteractionType &&
-               InteractionType == other.InteractionType &&
-               RewardBlockLabel == other.RewardBlockLabel &&
-               RewardVendorCategoryIndex == other.RewardVendorCategoryIndex &&
-               FlavorLineOne == other.FlavorLineOne &&
-               FlavorLineTwo == other.FlavorLineTwo &&
-               HeaderDisplayProperties.DeepEquals(other.HeaderDisplayProperties) &&
-               Instructions == other.Instructions;
+        return other != null
+            && InteractionIndex == other.InteractionIndex
+            && Replies.DeepEqualsReadOnlyCollections(other.Replies)
+            && VendorCategoryIndex == other.VendorCategoryIndex
+            && QuestlineItem.DeepEquals(other.QuestlineItem)
+            && SackInteractionList.DeepEqualsReadOnlyCollections(other.SackInteractionList)
+            && UiInteractionType == other.UiInteractionType
+            && InteractionType == other.InteractionType
+            && RewardBlockLabel == other.RewardBlockLabel
+            && RewardVendorCategoryIndex == other.RewardVendorCategoryIndex
+            && FlavorLineOne == other.FlavorLineOne
+            && FlavorLineTwo == other.FlavorLineTwo
+            && HeaderDisplayProperties.DeepEquals(other.HeaderDisplayProperties)
+            && Instructions == other.Instructions;
     }
 }

@@ -16,5 +16,6 @@ public class GroupOptionsEditAction
     [JsonPropertyName("UpdateBannerPermissionOverride")]
     public bool? UpdateBannerPermissionOverride { get; init; } = null;
 
-    [JsonPropertyName("JoinLevel")] public RuntimeGroupMemberType? JoinLevel { get; init; } = null;
+    [JsonPropertyName("JoinLevel")]
+    public RuntimeGroupMemberType? JoinLevel { get; init; } = null;
 }

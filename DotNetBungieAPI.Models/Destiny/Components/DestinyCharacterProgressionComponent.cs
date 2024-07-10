@@ -20,27 +20,42 @@ public sealed record DestinyCharacterProgressionComponent
     ///     A Dictionary of all known progressions for the Character, keyed by the Progression's hash.
     /// </summary>
     [JsonPropertyName("progressions")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyProgressionDefinition>, DestinyProgression>
-        Progressions { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyProgressionDefinition>, DestinyProgression>.Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyProgressionDefinition>,
+        DestinyProgression
+    > Progressions { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyProgressionDefinition>,
+            DestinyProgression
+        >.Empty;
 
     /// <summary>
     ///     A dictionary of all known Factions, keyed by the Faction's hash. It contains data about this character's status
     ///     with the faction.
     /// </summary>
     [JsonPropertyName("factions")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyFactionDefinition>, DestinyFactionProgression>
-        Factions { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyFactionDefinition>, DestinyFactionProgression>.Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyFactionDefinition>,
+        DestinyFactionProgression
+    > Factions { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyFactionDefinition>,
+            DestinyFactionProgression
+        >.Empty;
 
     /// <summary>
     ///     Milestones are related to the simple progressions shown in the game, but return additional and hopefully helpful
     ///     information for users about the specifics of the Milestone's status.
     /// </summary>
     [JsonPropertyName("milestones")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyMilestoneDefinition>, DestinyMilestone>
-        Milestones { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyMilestoneDefinition>, DestinyMilestone>.Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyMilestoneDefinition>,
+        DestinyMilestone
+    > Milestones { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyMilestoneDefinition>,
+            DestinyMilestone
+        >.Empty;
 
     /// <summary>
     ///     If the user has any active quests, the quests' statuses will be returned here.
@@ -60,11 +75,14 @@ public sealed record DestinyCharacterProgressionComponent
     ///     task(s) implied by the objective. The value is the list of objectives for this item, and their statuses.
     /// </summary>
     [JsonPropertyName("uninstancedItemObjectives")]
-    public
-        ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>,
-            ReadOnlyCollection<UninstancedItemObjective>> UninstancedItemObjectives { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>,
-            ReadOnlyCollection<UninstancedItemObjective>>.Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyInventoryItemDefinition>,
+        ReadOnlyCollection<UninstancedItemObjective>
+    > UninstancedItemObjectives { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyInventoryItemDefinition>,
+            ReadOnlyCollection<UninstancedItemObjective>
+        >.Empty;
 
     /// <summary>
     ///     Sometimes, you have items in your inventory that don't have instances, but still have perks (for example: Trials passage cards). This gives you the perk information for uninstanced items.
@@ -72,10 +90,14 @@ public sealed record DestinyCharacterProgressionComponent
     ///     This dictionary is keyed by item hash, which you can use to look up the corresponding item definition. The value is the list of perks states for the item.
     /// </summary>
     [JsonPropertyName("uninstancedItemPerks")]
-    public
-        ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, DestinyItemPerksComponent>
-        UninstancedItemPerks { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>, DestinyItemPerksComponent>.Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyInventoryItemDefinition>,
+        DestinyItemPerksComponent
+    > UninstancedItemPerks { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyInventoryItemDefinition>,
+            DestinyItemPerksComponent
+        >.Empty;
 
     /// <summary>
     ///     The set of checklists that can be examined for this specific character, keyed by the hash identifier of the
@@ -85,10 +107,14 @@ public sealed record DestinyCharacterProgressionComponent
     ///     value being a boolean indicating if it's been discovered yet.
     /// </summary>
     [JsonPropertyName("checklists")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyChecklistDefinition>, ReadOnlyDictionary<uint, bool>>
-        Checklists { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyChecklistDefinition>, ReadOnlyDictionary<uint, bool>>
-            .Empty;
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyChecklistDefinition>,
+        ReadOnlyDictionary<uint, bool>
+    > Checklists { get; init; } =
+        ReadOnlyDictionaries<
+            DefinitionHashPointer<DestinyChecklistDefinition>,
+            ReadOnlyDictionary<uint, bool>
+        >.Empty;
 
     /// <summary>
     ///     Data related to your progress on the current season's artifact that can vary per character.

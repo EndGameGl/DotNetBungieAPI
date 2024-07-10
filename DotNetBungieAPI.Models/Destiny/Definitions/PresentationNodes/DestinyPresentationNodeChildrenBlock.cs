@@ -5,7 +5,8 @@
 ///     exists per type of entity that can be treated as a child of this presentation node, and each holds the identifier
 ///     of the entity and any associated information needed to display the UI for that entity (if anything)
 /// </summary>
-public sealed record DestinyPresentationNodeChildrenBlock : IDeepEquatable<DestinyPresentationNodeChildrenBlock>
+public sealed record DestinyPresentationNodeChildrenBlock
+    : IDeepEquatable<DestinyPresentationNodeChildrenBlock>
 {
     [JsonPropertyName("presentationNodes")]
     public ReadOnlyCollection<DestinyPresentationNodeChildEntry> PresentationNodes { get; init; } =
@@ -24,16 +25,16 @@ public sealed record DestinyPresentationNodeChildrenBlock : IDeepEquatable<Desti
         ReadOnlyCollections<DestinyPresentationNodeMetricChildEntry>.Empty;
 
     [JsonPropertyName("craftables")]
-    public ReadOnlyCollection<DestinyPresentationNodeCraftableChildEntry> Craftables { get; init; }
-        = ReadOnlyCollections<DestinyPresentationNodeCraftableChildEntry>.Empty;
+    public ReadOnlyCollection<DestinyPresentationNodeCraftableChildEntry> Craftables { get; init; } =
+        ReadOnlyCollections<DestinyPresentationNodeCraftableChildEntry>.Empty;
 
     public bool DeepEquals(DestinyPresentationNodeChildrenBlock other)
     {
-        return other != null &&
-               Collectibles.DeepEqualsReadOnlyCollections(other.Collectibles) &&
-               Metrics.DeepEqualsReadOnlyCollections(other.Metrics) &&
-               PresentationNodes.DeepEqualsReadOnlyCollections(other.PresentationNodes) &&
-               Records.DeepEqualsReadOnlyCollections(other.Records) &&
-               Craftables.DeepEqualsReadOnlyCollections(other.Craftables);
+        return other != null
+            && Collectibles.DeepEqualsReadOnlyCollections(other.Collectibles)
+            && Metrics.DeepEqualsReadOnlyCollections(other.Metrics)
+            && PresentationNodes.DeepEqualsReadOnlyCollections(other.PresentationNodes)
+            && Records.DeepEqualsReadOnlyCollections(other.Records)
+            && Craftables.DeepEqualsReadOnlyCollections(other.Craftables);
     }
 }

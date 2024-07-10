@@ -12,7 +12,12 @@ public class InventoryItemDefinitionGeneratorHandler : BaseDefinitionHandler, ID
 
     public string ClassName => "InventoryItems";
 
-    public async Task Generate(IBungieClient bungieClient, TextWriter textWriter, StringBuilder stringBuilder, int indentation)
+    public async Task Generate(
+        IBungieClient bungieClient,
+        TextWriter textWriter,
+        StringBuilder stringBuilder,
+        int indentation
+    )
     {
         var definitionCacheLookup = new Dictionary<string, uint>();
 
@@ -23,7 +28,8 @@ public class InventoryItemDefinitionGeneratorHandler : BaseDefinitionHandler, ID
                 ValidateAndAddValue(
                     definitionCacheLookup,
                     definition.DisplayProperties.Name,
-                    definition.Hash);
+                    definition.Hash
+                );
             }
             else
             {
@@ -33,18 +39,26 @@ public class InventoryItemDefinitionGeneratorHandler : BaseDefinitionHandler, ID
 
         foreach (var (key, value) in definitionCacheLookup)
         {
-            if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
-                !key.Contains(value.ToString()))
+            if (
+                definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1
+                && !key.Contains(value.ToString())
+            )
             {
-                await textWriter.WriteLineAsync(StringExtensions.GetIndentedString(
-                    indentation,
-                    $"public const uint {key}_{value} = {value};"));
+                await textWriter.WriteLineAsync(
+                    StringExtensions.GetIndentedString(
+                        indentation,
+                        $"public const uint {key}_{value} = {value};"
+                    )
+                );
             }
             else
             {
-                await textWriter.WriteLineAsync(StringExtensions.GetIndentedString(
-                    indentation,
-                    $"public const uint {key} = {value};"));
+                await textWriter.WriteLineAsync(
+                    StringExtensions.GetIndentedString(
+                        indentation,
+                        $"public const uint {key} = {value};"
+                    )
+                );
             }
         }
     }

@@ -14,7 +14,8 @@ public class DestinyLoadoutActionRequest
     public DestinyLoadoutActionRequest(
         int loadoutIndex,
         long characterId,
-        BungieMembershipType membershipType)
+        BungieMembershipType membershipType
+    )
     {
         LoadoutIndex = loadoutIndex;
         CharacterId = characterId;

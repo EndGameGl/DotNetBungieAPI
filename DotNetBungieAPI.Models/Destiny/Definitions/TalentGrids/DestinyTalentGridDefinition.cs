@@ -35,7 +35,9 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids;
 ///     grid.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyTalentGridDefinition)]
-public sealed record DestinyTalentGridDefinition : IDestinyDefinition, IDeepEquatable<DestinyTalentGridDefinition>
+public sealed record DestinyTalentGridDefinition
+    : IDestinyDefinition,
+        IDeepEquatable<DestinyTalentGridDefinition>
 {
     /// <summary>
     ///     The maximum possible level of the Talent Grid: at this level, any nodes are allowed to be activated.
@@ -92,7 +94,8 @@ public sealed record DestinyTalentGridDefinition : IDestinyDefinition, IDeepEqua
     ///     talent nodes can only be activated directly, rather than via swapping.
     /// </summary>
     [JsonPropertyName("independentNodeIndexes")]
-    public ReadOnlyCollection<int> IndependentNodeIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
+    public ReadOnlyCollection<int> IndependentNodeIndexes { get; init; } =
+        ReadOnlyCollections<int>.Empty;
 
     /// <summary>
     ///     Talent Nodes can have "Exclusive Groups". These are not to be confused with Exclusive Sets (see exclusiveSets
@@ -119,7 +122,8 @@ public sealed record DestinyTalentGridDefinition : IDestinyDefinition, IDeepEqua
     public ReadOnlyCollection<DestinyTalentNodeCategory> NodeCategories { get; init; } =
         ReadOnlyCollections<DestinyTalentNodeCategory>.Empty;
 
-    [JsonPropertyName("calcMaxGridLevel")] public int CalcMaxGridLevel { get; init; }
+    [JsonPropertyName("calcMaxGridLevel")]
+    public int CalcMaxGridLevel { get; init; }
 
     [JsonPropertyName("calcProgressToMaxLevel")]
     public int CalcProgressToMaxLevel { get; init; }
@@ -129,28 +133,37 @@ public sealed record DestinyTalentGridDefinition : IDestinyDefinition, IDeepEqua
 
     public bool DeepEquals(DestinyTalentGridDefinition other)
     {
-        return other != null &&
-               ExclusiveSets.DeepEqualsReadOnlyCollections(other.ExclusiveSets) &&
-               CalcMaxGridLevel == other.CalcMaxGridLevel &&
-               CalcProgressToMaxLevel == other.CalcProgressToMaxLevel &&
-               GridLevelPerColumn == other.GridLevelPerColumn &&
-               Groups.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue(other.Groups) &&
-               IndependentNodeIndexes.DeepEqualsReadOnlySimpleCollection(other.IndependentNodeIndexes) &&
-               MaxGridLevel == other.MaxGridLevel &&
-               MaximumRandomMaterialRequirements == other.MaximumRandomMaterialRequirements &&
-               NodeCategories.DeepEqualsReadOnlyCollections(other.NodeCategories) &&
-               Nodes.DeepEqualsReadOnlyCollections(other.Nodes) &&
-               Progression.DeepEquals(other.Progression) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && ExclusiveSets.DeepEqualsReadOnlyCollections(other.ExclusiveSets)
+            && CalcMaxGridLevel == other.CalcMaxGridLevel
+            && CalcProgressToMaxLevel == other.CalcProgressToMaxLevel
+            && GridLevelPerColumn == other.GridLevelPerColumn
+            && Groups.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue(other.Groups)
+            && IndependentNodeIndexes.DeepEqualsReadOnlySimpleCollection(
+                other.IndependentNodeIndexes
+            )
+            && MaxGridLevel == other.MaxGridLevel
+            && MaximumRandomMaterialRequirements == other.MaximumRandomMaterialRequirements
+            && NodeCategories.DeepEqualsReadOnlyCollections(other.NodeCategories)
+            && Nodes.DeepEqualsReadOnlyCollections(other.Nodes)
+            && Progression.DeepEquals(other.Progression)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyTalentGridDefinition;
 
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

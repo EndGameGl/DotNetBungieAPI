@@ -12,9 +12,11 @@ public sealed class ReadOnlyDictionaryConverterFactory : JsonConverterFactory
 
     public override bool CanConvert(Type typeToConvert)
     {
-        if (!typeToConvert.IsGenericType) return false;
+        if (!typeToConvert.IsGenericType)
+            return false;
 
-        if (typeToConvert.GetGenericTypeDefinition() != _genericReadOnlyDictType) return false;
+        if (typeToConvert.GetGenericTypeDefinition() != _genericReadOnlyDictType)
+            return false;
 
         return true;
     }
@@ -26,13 +28,14 @@ public sealed class ReadOnlyDictionaryConverterFactory : JsonConverterFactory
             var keyType = typeToConvert.GetGenericArguments()[0];
             var valueType = typeToConvert.GetGenericArguments()[1];
 
-
-            var converter = (JsonConverter)Activator.CreateInstance(
-                typeof(ReadOnlyDictionaryConverter<,>).MakeGenericType(keyType, valueType),
-                BindingFlags.Instance | BindingFlags.Public,
-                null,
-                new object[] { options },
-                null);
+            var converter = (JsonConverter)
+                Activator.CreateInstance(
+                    typeof(ReadOnlyDictionaryConverter<,>).MakeGenericType(keyType, valueType),
+                    BindingFlags.Instance | BindingFlags.Public,
+                    null,
+                    new object[] { options },
+                    null
+                );
 
             return converter;
         }
@@ -42,19 +45,20 @@ public sealed class ReadOnlyDictionaryConverterFactory : JsonConverterFactory
         }
     }
 
-    private class ReadOnlyDictionaryConverter<TKey, TValue> : JsonConverter<ReadOnlyDictionary<TKey, TValue>>
+    private class ReadOnlyDictionaryConverter<TKey, TValue>
+        : JsonConverter<ReadOnlyDictionary<TKey, TValue>>
     {
         private readonly Type _stringType = typeof(string);
-        public ReadOnlyDictionaryConverter(JsonSerializerOptions options)
-        {
-        }
+
+        public ReadOnlyDictionaryConverter(JsonSerializerOptions options) { }
 
         public override bool HandleNull => true;
 
         public override ReadOnlyDictionary<TKey, TValue> Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
-            JsonSerializerOptions options)
+            JsonSerializerOptions options
+        )
         {
             if (reader.TokenType == JsonTokenType.Null)
                 return ReadOnlyDictionaries<TKey, TValue>.Empty;
@@ -71,7 +75,10 @@ public sealed class ReadOnlyDictionaryConverterFactory : JsonConverterFactory
                         return new ReadOnlyDictionary<TKey, TValue>(values);
                     case JsonTokenType.PropertyName:
                         var propertyValue = reader.GetString();
-                        currentPropertyName = JsonSerializer.Deserialize<TKey>($"\"{propertyValue}\"", options);
+                        currentPropertyName = JsonSerializer.Deserialize<TKey>(
+                            $"\"{propertyValue}\"",
+                            options
+                        );
                         break;
                     default:
                         var value = JsonSerializer.Deserialize<TValue>(ref reader, options);
@@ -83,8 +90,11 @@ public sealed class ReadOnlyDictionaryConverterFactory : JsonConverterFactory
             throw new JsonException();
         }
 
-        public override void Write(Utf8JsonWriter writer,
-            ReadOnlyDictionary<TKey, TValue> value, JsonSerializerOptions options)
+        public override void Write(
+            Utf8JsonWriter writer,
+            ReadOnlyDictionary<TKey, TValue> value,
+            JsonSerializerOptions options
+        )
         {
             writer.WriteStartObject();
 
@@ -99,7 +109,7 @@ public sealed class ReadOnlyDictionaryConverterFactory : JsonConverterFactory
                     var serializedKey = JsonSerializer.Serialize(key, options);
                     writer.WritePropertyName(serializedKey);
                 }
-                
+
                 JsonSerializer.Serialize(writer, val, options);
             }
 

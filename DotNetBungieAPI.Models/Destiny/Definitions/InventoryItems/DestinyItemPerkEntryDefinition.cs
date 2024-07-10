@@ -28,9 +28,9 @@ public sealed record DestinyItemPerkEntryDefinition : IDeepEquatable<DestinyItem
 
     public bool DeepEquals(DestinyItemPerkEntryDefinition other)
     {
-        return other != null &&
-               Perk.DeepEquals(other.Perk) &&
-               PerkVisibility == other.PerkVisibility &&
-               RequirementDisplayString == other.RequirementDisplayString;
+        return other != null
+            && Perk.DeepEquals(other.Perk)
+            && PerkVisibility == other.PerkVisibility
+            && RequirementDisplayString == other.RequirementDisplayString;
     }
 }

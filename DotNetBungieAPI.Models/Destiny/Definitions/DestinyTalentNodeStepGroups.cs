@@ -9,21 +9,25 @@ public sealed record DestinyTalentNodeStepGroups : IDeepEquatable<DestinyTalentN
     [JsonPropertyName("weaponPerformance")]
     public DestinyTalentNodeStepWeaponPerformances WeaponPerformance { get; init; }
 
-    [JsonPropertyName("impactEffects")] public DestinyTalentNodeStepImpactEffects ImpactEffects { get; init; }
+    [JsonPropertyName("impactEffects")]
+    public DestinyTalentNodeStepImpactEffects ImpactEffects { get; init; }
 
     [JsonPropertyName("guardianAttributes")]
     public DestinyTalentNodeStepGuardianAttributes GuardianAttributes { get; init; }
 
-    [JsonPropertyName("lightAbilities")] public DestinyTalentNodeStepLightAbilities LightAbilities { get; init; }
-    [JsonPropertyName("damageTypes")] public DestinyTalentNodeStepDamageTypes DamageTypes { get; init; }
+    [JsonPropertyName("lightAbilities")]
+    public DestinyTalentNodeStepLightAbilities LightAbilities { get; init; }
+
+    [JsonPropertyName("damageTypes")]
+    public DestinyTalentNodeStepDamageTypes DamageTypes { get; init; }
 
     public bool DeepEquals(DestinyTalentNodeStepGroups other)
     {
-        return other != null &&
-               WeaponPerformance == other.WeaponPerformance &&
-               ImpactEffects == other.ImpactEffects &&
-               GuardianAttributes == other.GuardianAttributes &&
-               LightAbilities == other.LightAbilities &&
-               DamageTypes == other.DamageTypes;
+        return other != null
+            && WeaponPerformance == other.WeaponPerformance
+            && ImpactEffects == other.ImpactEffects
+            && GuardianAttributes == other.GuardianAttributes
+            && LightAbilities == other.LightAbilities
+            && DamageTypes == other.DamageTypes;
     }
 }

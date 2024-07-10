@@ -12,7 +12,8 @@ public sealed record DestinyTalentNodeStatBlock
     ///     The stat benefits conferred when this talent node is activated for the current Step that is active on the node.
     /// </summary>
     [JsonPropertyName("currentStepStats")]
-    public ReadOnlyCollection<DestinyStat> CurrentStepStats { get; init; } = ReadOnlyCollections<DestinyStat>.Empty;
+    public ReadOnlyCollection<DestinyStat> CurrentStepStats { get; init; } =
+        ReadOnlyCollections<DestinyStat>.Empty;
 
     /// <summary>
     ///     This is a holdover from the old days of Destiny 1, when a node could be activated multiple times, conferring
@@ -22,5 +23,6 @@ public sealed record DestinyTalentNodeStatBlock
     ///     designers to make such a talent grid still exists. Whether you want to show it is up to you.
     /// </summary>
     [JsonPropertyName("nextStepStats")]
-    public ReadOnlyCollection<DestinyStat> NextStepStats { get; init; } = ReadOnlyCollections<DestinyStat>.Empty;
+    public ReadOnlyCollection<DestinyStat> NextStepStats { get; init; } =
+        ReadOnlyCollections<DestinyStat>.Empty;
 }

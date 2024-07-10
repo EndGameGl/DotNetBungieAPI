@@ -2,7 +2,8 @@
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions;
 
-public sealed record DestinyGearArtArrangementReference : IDeepEquatable<DestinyGearArtArrangementReference>
+public sealed record DestinyGearArtArrangementReference
+    : IDeepEquatable<DestinyGearArtArrangementReference>
 {
     [JsonPropertyName("artArrangementHash")]
     public uint ArtArrangementHash { get; init; }
@@ -13,8 +14,8 @@ public sealed record DestinyGearArtArrangementReference : IDeepEquatable<Destiny
 
     public bool DeepEquals(DestinyGearArtArrangementReference other)
     {
-        return other != null &&
-               ArtArrangementHash == other.ArtArrangementHash &&
-               ClassHash == other.ClassHash;
+        return other != null
+            && ArtArrangementHash == other.ArtArrangementHash
+            && ClassHash == other.ClassHash;
     }
 }

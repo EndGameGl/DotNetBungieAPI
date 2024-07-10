@@ -2,8 +2,12 @@
 
 public sealed class AwaPermissionRequested
 {
-    public AwaPermissionRequested(AwaType type, long? affectedItemId, BungieMembershipType membershipType,
-        long? characterId)
+    public AwaPermissionRequested(
+        AwaType type,
+        long? affectedItemId,
+        BungieMembershipType membershipType,
+        long? characterId
+    )
     {
         Type = type;
         AffectedItemId = affectedItemId;

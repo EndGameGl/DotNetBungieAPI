@@ -9,7 +9,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Classes;
 ///     Hunter.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyClassDefinition)]
-public sealed record DestinyClassDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyClassDefinition>
+public sealed record DestinyClassDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyClassDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -30,28 +33,40 @@ public sealed record DestinyClassDefinition : IDestinyDefinition, IDisplayProper
         ReadOnlyDictionaries<string, string>.Empty;
 
     [JsonPropertyName("genderedClassNamesByGenderHash")]
-    public ReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>
-        GenderedClassNamesByGender { get; init; } =
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyGenderDefinition>,
+        string
+    > GenderedClassNamesByGender { get; init; } =
         ReadOnlyDictionaries<DefinitionHashPointer<DestinyGenderDefinition>, string>.Empty;
 
     public bool DeepEquals(DestinyClassDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               ClassType == other.ClassType &&
-               GenderedClassNames
-                   .DeepEqualsReadOnlyDictionaryWithSimpleKeyAndSimpleValue(other.GenderedClassNames) &&
-               GenderedClassNamesByGender.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(
-                   other.GenderedClassNamesByGender) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && ClassType == other.ClassType
+            && GenderedClassNames.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndSimpleValue(
+                other.GenderedClassNames
+            )
+            && GenderedClassNamesByGender.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(
+                other.GenderedClassNamesByGender
+            )
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyClassDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

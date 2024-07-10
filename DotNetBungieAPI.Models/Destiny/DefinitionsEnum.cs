@@ -30,6 +30,15 @@ public enum DefinitionsEnum
     //DestinyEntitlementOfferDefinition,
     DestinyEquipmentSlotDefinition,
     DestinyFactionDefinition,
+
+    DestinyFireteamFinderActivityGraphDefinition,
+    DestinyFireteamFinderActivitySetDefinition,
+    DestinyFireteamFinderConstantsDefinition,
+    DestinyFireteamFinderLabelDefinition,
+    DestinyFireteamFinderLabelGroupDefinition,
+    DestinyFireteamFinderOptionDefinition,
+    DestinyFireteamFinderOptionGroupDefinition,
+
     DestinyGenderDefinition,
     DestinyHistoricalStatsDefinition,
     DestinyInventoryBucketDefinition,
@@ -89,7 +98,7 @@ public enum DefinitionsEnum
     DestinyUnlockValueDefinition,
     DestinyVendorDefinition,
     DestinyVendorGroupDefinition,
-    
+
     DestinyEventCardDefinition,
 
     DestinyLoadoutColorDefinition,

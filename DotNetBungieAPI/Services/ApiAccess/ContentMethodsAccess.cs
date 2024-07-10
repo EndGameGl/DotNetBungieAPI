@@ -22,7 +22,8 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
 
     public async Task<BungieResponse<ContentTypeDescription>> GetContentType(
         string type,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -38,7 +39,8 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
         long id,
         string locale,
         bool head = false,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -56,7 +58,8 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
         string tag,
         string type,
         string locale,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -70,14 +73,17 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentWithText(
+    public async Task<
+        BungieResponse<SearchResultOfContentItemPublicContract>
+    > SearchContentWithText(
         string locale,
         string[] types,
         string searchtext,
         string source,
         string tag,
         int currentpage = 1,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -90,16 +96,22 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
             .AddQueryParam("tag", tag)
             .Build();
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(url, cancellationToken)
+            .GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(
+                url,
+                cancellationToken
+            )
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<SearchResultOfContentItemPublicContract>> SearchContentByTagAndType(
+    public async Task<
+        BungieResponse<SearchResultOfContentItemPublicContract>
+    > SearchContentByTagAndType(
         string locale,
         string tag,
         string type,
         int currentpage = 1,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -110,7 +122,10 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
             .AddQueryParam("currentpage", currentpage.ToString())
             .Build();
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(url, cancellationToken)
+            .GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(
+                url,
+                cancellationToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -118,13 +133,18 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
         int pageToken,
         string? categoryFilter = null,
         bool? includeBody = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
             .Append("/Content/Rss/NewsArticles/")
             .AddUrlParam(pageToken.ToString())
-            .AddQueryParam("categoryFilter", categoryFilter, () => !string.IsNullOrWhiteSpace(categoryFilter))
+            .AddQueryParam(
+                "categoryFilter",
+                categoryFilter,
+                () => !string.IsNullOrWhiteSpace(categoryFilter)
+            )
             .AddQueryParam("includebody", includeBody.ToString(), () => includeBody.HasValue)
             .Build();
 

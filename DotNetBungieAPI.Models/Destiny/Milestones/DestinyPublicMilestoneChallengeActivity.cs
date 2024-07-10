@@ -11,8 +11,9 @@ public sealed record DestinyPublicMilestoneChallengeActivity
         DefinitionHashPointer<DestinyActivityDefinition>.Empty;
 
     [JsonPropertyName("challengeObjectiveHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>>
-        ChallengeObjectives { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyObjectiveDefinition>
+    > ChallengeObjectives { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyObjectiveDefinition>>.Empty;
 
     /// <summary>
@@ -24,7 +25,9 @@ public sealed record DestinyPublicMilestoneChallengeActivity
     ///     live.
     /// </summary>
     [JsonPropertyName("modifierHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>> Modifiers { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyActivityModifierDefinition>
+    > Modifiers { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModifierDefinition>>.Empty;
 
     /// <summary>

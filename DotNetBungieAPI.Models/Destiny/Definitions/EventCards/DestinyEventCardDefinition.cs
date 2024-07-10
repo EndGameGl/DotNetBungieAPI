@@ -14,41 +14,49 @@ public sealed record DestinyEventCardDefinition : IDestinyDefinition, IDisplayPr
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyEventCardDefinition;
 
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
 
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
 
-    [JsonPropertyName("index")] public int Index { get; init; }
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
 
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
-    [JsonPropertyName("linkRedirectPath")] public string LinkRedirectPath { get; init; }
+    [JsonPropertyName("linkRedirectPath")]
+    public string LinkRedirectPath { get; init; }
 
-    [JsonPropertyName("color")] public DestinyColor Color { get; init; }
+    [JsonPropertyName("color")]
+    public DestinyColor Color { get; init; }
 
-    [JsonPropertyName("images")] public DestinyEventCardImages Images { get; init; }
+    [JsonPropertyName("images")]
+    public DestinyEventCardImages Images { get; init; }
 
     [JsonPropertyName("triumphsPresentationNodeHash")]
-    public DefinitionHashPointer<DestinyPresentationNodeDefinition> TriumphsPresentationNode { get; init; }
-        = DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
+    public DefinitionHashPointer<DestinyPresentationNodeDefinition> TriumphsPresentationNode { get; init; } =
+        DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
 
     [JsonPropertyName("sealPresentationNodeHash")]
-    public DefinitionHashPointer<DestinyPresentationNodeDefinition> SealPresentationNode { get; init; }
-        = DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
+    public DefinitionHashPointer<DestinyPresentationNodeDefinition> SealPresentationNode { get; init; } =
+        DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
 
     [JsonPropertyName("ticketCurrencyItemHash")]
-    public DefinitionHashPointer<DestinyInventoryItemDefinition> TicketCurrencyItem { get; init; }
-        = DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
+    public DefinitionHashPointer<DestinyInventoryItemDefinition> TicketCurrencyItem { get; init; } =
+        DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
 
     [JsonPropertyName("ticketVendorHash")]
-    public DefinitionHashPointer<DestinyVendorDefinition> TicketVendor { get; init; }
-        = DefinitionHashPointer<DestinyVendorDefinition>.Empty;
+    public DefinitionHashPointer<DestinyVendorDefinition> TicketVendor { get; init; } =
+        DefinitionHashPointer<DestinyVendorDefinition>.Empty;
 
     [JsonPropertyName("ticketVendorCategoryHash")]
     public uint TicketVendorCategoryHash { get; init; }
 
-    [JsonPropertyName("endTime")] public long EndTime { get; init; }
+    [JsonPropertyName("endTime")]
+    public long EndTime { get; init; }
 }

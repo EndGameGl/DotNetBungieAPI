@@ -12,8 +12,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ReportReasonCategories;
 ///     associated ReasonCategory's hash: there are some reasons defined under multiple categories.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyReportReasonCategoryDefinition)]
-public sealed record DestinyReportReasonCategoryDefinition : IDestinyDefinition, IDisplayProperties,
-    IDeepEquatable<DestinyReportReasonCategoryDefinition>
+public sealed record DestinyReportReasonCategoryDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyReportReasonCategoryDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -27,18 +29,27 @@ public sealed record DestinyReportReasonCategoryDefinition : IDestinyDefinition,
 
     public bool DeepEquals(DestinyReportReasonCategoryDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               Reasons.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue(other.Reasons) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && Reasons.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue(other.Reasons)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
-    public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyReportReasonCategoryDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+    public DefinitionsEnum DefinitionEnumValue =>
+        DefinitionsEnum.DestinyReportReasonCategoryDefinition;
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

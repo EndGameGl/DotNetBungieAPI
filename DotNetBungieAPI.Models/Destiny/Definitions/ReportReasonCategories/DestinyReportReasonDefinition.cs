@@ -20,8 +20,8 @@ public sealed record DestinyReportReasonDefinition : IDeepEquatable<DestinyRepor
 
     public bool DeepEquals(DestinyReportReasonDefinition other)
     {
-        return other != null &&
-               ReasonHash == other.ReasonHash &&
-               DisplayProperties.DeepEquals(other.DisplayProperties);
+        return other != null
+            && ReasonHash == other.ReasonHash
+            && DisplayProperties.DeepEquals(other.DisplayProperties);
     }
 }

@@ -9,7 +9,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 ///     Not guaranteed to match real-world instances of the item, but should hopefully at least be close.If it's not close,
 ///     let us know on the Bungie API forums.
 /// </summary>
-public sealed record DestinyInventoryItemStatDefinition : IDeepEquatable<DestinyInventoryItemStatDefinition>
+public sealed record DestinyInventoryItemStatDefinition
+    : IDeepEquatable<DestinyInventoryItemStatDefinition>
 {
     /// <summary>
     ///     The maximum possible value for the stat as shown in the UI, if it is being shown somewhere that reveals maximum in
@@ -57,11 +58,11 @@ public sealed record DestinyInventoryItemStatDefinition : IDeepEquatable<Destiny
 
     public bool DeepEquals(DestinyInventoryItemStatDefinition other)
     {
-        return other != null &&
-               DisplayMaximum == other.DisplayMaximum &&
-               Maximum == other.Maximum &&
-               Minimum == other.Minimum &&
-               Stat.DeepEquals(other.Stat) &&
-               Value == other.Value;
+        return other != null
+            && DisplayMaximum == other.DisplayMaximum
+            && Maximum == other.Maximum
+            && Minimum == other.Minimum
+            && Stat.DeepEquals(other.Stat)
+            && Value == other.Value;
     }
 }

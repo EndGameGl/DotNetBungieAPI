@@ -17,17 +17,22 @@ internal sealed class AppMethodsAccess : IAppMethodsAccess
 
     public AppMethodsAccess(
         IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
-        IBungieClientConfiguration configuration)
+        IBungieClientConfiguration configuration
+    )
     {
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _configuration = configuration;
     }
 
     public async Task<BungieResponse<ReadOnlyCollection<Application>>> GetBungieApplications(
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyCollection<Application>>("/App/FirstParty/", cancellationToken)
+            .GetFromBungieNetPlatform<ReadOnlyCollection<Application>>(
+                "/App/FirstParty/",
+                cancellationToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -36,7 +41,8 @@ internal sealed class AppMethodsAccess : IAppMethodsAccess
         int applicationId,
         DateTime? start = null,
         DateTime? end = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.ReadUserData))
             throw new InsufficientScopeException(ApplicationScopes.ReadUserData);
@@ -47,14 +53,22 @@ internal sealed class AppMethodsAccess : IAppMethodsAccess
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
             .Append("/App/ApiUsage/")
-            .AddQueryParam("start",
-                start.Value.ToString("yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture))
-            .AddQueryParam("end",
-                end.Value.ToString("yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture))
+            .AddQueryParam(
+                "start",
+                start.Value.ToString("yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture)
+            )
+            .AddQueryParam(
+                "end",
+                end.Value.ToString("yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture)
+            )
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ApiUsage>(url, cancellationToken, authorizationToken.AccessToken)
+            .GetFromBungieNetPlatform<ApiUsage>(
+                url,
+                cancellationToken,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 }

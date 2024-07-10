@@ -4,7 +4,8 @@
 ///     Activities can refer to one or more sets of tooltip-friendly reward data. These are the definitions for those
 ///     tooltip friendly rewards.
 /// </summary>
-public sealed record DestinyActivityRewardDefinition : IDeepEquatable<DestinyActivityRewardDefinition>
+public sealed record DestinyActivityRewardDefinition
+    : IDeepEquatable<DestinyActivityRewardDefinition>
 {
     /// <summary>
     ///     The header for the reward set, if any.
@@ -29,8 +30,8 @@ public sealed record DestinyActivityRewardDefinition : IDeepEquatable<DestinyAct
 
     public bool DeepEquals(DestinyActivityRewardDefinition other)
     {
-        return other != null &&
-               RewardText == other.RewardText &&
-               RewardItems.DeepEqualsReadOnlyCollections(other.RewardItems);
+        return other != null
+            && RewardText == other.RewardText
+            && RewardItems.DeepEqualsReadOnlyCollections(other.RewardItems);
     }
 }

@@ -26,7 +26,8 @@ public class DestinyLoadoutUpdateActionRequest
         BungieMembershipType membershipType,
         uint? colorHash = null,
         uint? iconHash = null,
-        uint? nameHash = null)
+        uint? nameHash = null
+    )
     {
         LoadoutIndex = loadoutIndex;
         CharacterId = characterId;

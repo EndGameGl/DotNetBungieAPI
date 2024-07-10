@@ -15,8 +15,9 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ProgressionLevelRequirement
 ///     requirementCurve property. The value picked up from that interpolation will be the required level for the item.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyProgressionLevelRequirementDefinition)]
-public sealed record DestinyProgressionLevelRequirementDefinition : IDestinyDefinition,
-    IDeepEquatable<DestinyProgressionLevelRequirementDefinition>
+public sealed record DestinyProgressionLevelRequirementDefinition
+    : IDestinyDefinition,
+        IDeepEquatable<DestinyProgressionLevelRequirementDefinition>
 {
     /// <summary>
     ///     The progression whose level should be used to determine the level requirement.
@@ -37,18 +38,27 @@ public sealed record DestinyProgressionLevelRequirementDefinition : IDestinyDefi
 
     public bool DeepEquals(DestinyProgressionLevelRequirementDefinition other)
     {
-        return other != null &&
-               Progression.DeepEquals(other.Progression) &&
-               RequirementCurve.DeepEqualsReadOnlyCollections(other.RequirementCurve) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && Progression.DeepEquals(other.Progression)
+            && RequirementCurve.DeepEqualsReadOnlyCollections(other.RequirementCurve)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
-    public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyProgressionLevelRequirementDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+    public DefinitionsEnum DefinitionEnumValue =>
+        DefinitionsEnum.DestinyProgressionLevelRequirementDefinition;
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

@@ -22,7 +22,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 ///     from these generic definitions.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyInventoryItemDefinition)]
-public sealed record DestinyInventoryItemDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyInventoryItemDefinition>
+public sealed record DestinyInventoryItemDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyInventoryItemDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -147,7 +150,7 @@ public sealed record DestinyInventoryItemDefinition : IDestinyDefinition, IDispl
     /// </summary>
     [JsonPropertyName("action")]
     public DestinyItemActionBlockDefinition Action { get; init; }
-    
+
     /// <summary>
     ///     Recipe items will have relevant crafting information available here.
     /// </summary>
@@ -366,7 +369,9 @@ public sealed record DestinyInventoryItemDefinition : IDestinyDefinition, IDispl
     ///     instance, that it's a "Weapon", that it's an "Auto Rifle", etc...)
     /// </summary>
     [JsonPropertyName("itemCategoryHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>> ItemCategories { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyItemCategoryDefinition>
+    > ItemCategories { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyItemCategoryDefinition>>.Empty;
 
     /// <summary>
@@ -428,7 +433,9 @@ public sealed record DestinyInventoryItemDefinition : IDestinyDefinition, IDispl
     ///     This field will return all of the possible damage types that are available to the weapon by default.
     /// </summary>
     [JsonPropertyName("damageTypeHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyDamageTypeDefinition>> DamageTypes { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyDamageTypeDefinition>
+    > DamageTypes { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyDamageTypeDefinition>>.Empty;
 
     /// <summary>
@@ -492,83 +499,108 @@ public sealed record DestinyInventoryItemDefinition : IDestinyDefinition, IDispl
 
     public bool DeepEquals(DestinyInventoryItemDefinition other)
     {
-        return other != null &&
-               Collectible.DeepEquals(other.Collectible) &&
-               SummaryItem.DeepEquals(other.SummaryItem) &&
-               ItemCategories.DeepEqualsReadOnlyCollections(other.ItemCategories) &&
-               AllowActions == other.AllowActions &&
-               (BackgroundColor != null
-                   ? BackgroundColor.DeepEquals(other.BackgroundColor)
-                   : other.BackgroundColor == null) &&
-               BreakerTypeEnumValue == other.BreakerTypeEnumValue &&
-               BreakerType.DeepEquals(other.BreakerType) &&
-               ClassType == other.ClassType &&
-               DefaultDamageTypeEnumValue == other.DefaultDamageTypeEnumValue &&
-               DefaultDamageType.DeepEquals(other.DefaultDamageType) &&
-               ItemSubType == other.ItemSubType &&
-               ItemType == other.ItemType &&
-               SpecialItemType == other.SpecialItemType &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               DisplaySource == other.DisplaySource &&
-               DoesPostmasterPullHaveSideEffects == other.DoesPostmasterPullHaveSideEffects &&
-               Equippable == other.Equippable &&
-               IconWatermark == other.IconWatermark &&
-               IconWatermarkShelved == other.IconWatermarkShelved &&
-               IsWrapper == other.IsWrapper &&
-               ItemTypeAndTierDisplayName == other.ItemTypeAndTierDisplayName &&
-               ItemTypeDisplayName == other.ItemTypeDisplayName &&
-               UiItemDisplayStyle == other.UiItemDisplayStyle &&
-               NonTransferrable == other.NonTransferrable &&
-               SecondaryIcon == other.SecondaryIcon &&
-               SecondaryOverlay == other.SecondaryOverlay &&
-               SecondarySpecial == other.SecondarySpecial &&
-               Screenshot == other.Screenshot &&
-               TooltipStyle == other.TooltipStyle &&
-               TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds) &&
-               (Stats != null ? Stats.DeepEquals(other.Stats) : other.Stats == null) &&
-               (TalentGrid != null ? TalentGrid.DeepEquals(other.TalentGrid) : other.TalentGrid == null) &&
-               (TranslationBlock != null
-                   ? TranslationBlock.DeepEquals(other.TranslationBlock)
-                   : other.TranslationBlock == null) &&
-               (Value != null ? Value.DeepEquals(other.Value) : other.Value == null) &&
-               (SetData != null ? SetData.DeepEquals(other.SetData) : other.SetData == null) &&
-               (Plug != null ? Plug.DeepEquals(other.Plug) : other.Plug == null) &&
-               (Preview != null ? Preview.DeepEquals(other.Preview) : other.Preview == null) &&
-               (Quality != null ? Quality.DeepEquals(other.Quality) : other.Quality == null) &&
-               (Objectives != null ? Objectives.DeepEquals(other.Objectives) : other.Objectives == null) &&
-               Inventory.DeepEquals(other.Inventory) &&
-               (Action != null ? Action.DeepEquals(other.Action) : other.Action == null) &&
-               (EquippingBlock != null
-                   ? EquippingBlock.DeepEquals(other.EquippingBlock)
-                   : other.EquippingBlock == null) &&
-               (Sockets is not null ? Sockets.DeepEquals(other.Sockets) : other.Sockets == null) &&
-               InvestmentStats.DeepEqualsReadOnlyCollections(other.InvestmentStats) &&
-               Perks.DeepEqualsReadOnlyCollections(other.Perks) &&
-               TooltipNotifications.DeepEqualsReadOnlyCollections(other.TooltipNotifications) &&
-               (Sack != null ? Sack.DeepEquals(other.Sack) : other.Sack == null) &&
-               (Gearset != null ? Gearset.DeepEquals(other.Gearset) : other.Gearset == null) &&
-               EmblemObjective.DeepEquals(other.EmblemObjective) &&
-               (SourceData != null ? SourceData.DeepEquals(other.SourceData) : other.SourceData == null) &&
-               (Metrics != null ? Metrics.DeepEquals(other.Metrics) : other.Metrics == null) &&
-               (Summary != null ? Summary.DeepEquals(other.Summary) : other.Summary == null) &&
-               Lore.DeepEquals(other.Lore) &&
-               Animations.DeepEqualsReadOnlyCollections(other.Animations) &&
-               Links.DeepEqualsReadOnlyCollections(other.Links) &&
-               DamageTypes.DeepEqualsReadOnlyCollections(other.DamageTypes) &&
-               DamageTypeEnumValues.DeepEqualsReadOnlySimpleCollection(other.DamageTypeEnumValues) &&
-               Season.DeepEquals(other.Season) &&
-               FlavorText.Equals(other.FlavorText) &&
-               (Crafting is not null ? Crafting.DeepEquals(other.Crafting) : other.Crafting is null) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && Collectible.DeepEquals(other.Collectible)
+            && SummaryItem.DeepEquals(other.SummaryItem)
+            && ItemCategories.DeepEqualsReadOnlyCollections(other.ItemCategories)
+            && AllowActions == other.AllowActions
+            && (
+                BackgroundColor != null
+                    ? BackgroundColor.DeepEquals(other.BackgroundColor)
+                    : other.BackgroundColor == null
+            )
+            && BreakerTypeEnumValue == other.BreakerTypeEnumValue
+            && BreakerType.DeepEquals(other.BreakerType)
+            && ClassType == other.ClassType
+            && DefaultDamageTypeEnumValue == other.DefaultDamageTypeEnumValue
+            && DefaultDamageType.DeepEquals(other.DefaultDamageType)
+            && ItemSubType == other.ItemSubType
+            && ItemType == other.ItemType
+            && SpecialItemType == other.SpecialItemType
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && DisplaySource == other.DisplaySource
+            && DoesPostmasterPullHaveSideEffects == other.DoesPostmasterPullHaveSideEffects
+            && Equippable == other.Equippable
+            && IconWatermark == other.IconWatermark
+            && IconWatermarkShelved == other.IconWatermarkShelved
+            && IsWrapper == other.IsWrapper
+            && ItemTypeAndTierDisplayName == other.ItemTypeAndTierDisplayName
+            && ItemTypeDisplayName == other.ItemTypeDisplayName
+            && UiItemDisplayStyle == other.UiItemDisplayStyle
+            && NonTransferrable == other.NonTransferrable
+            && SecondaryIcon == other.SecondaryIcon
+            && SecondaryOverlay == other.SecondaryOverlay
+            && SecondarySpecial == other.SecondarySpecial
+            && Screenshot == other.Screenshot
+            && TooltipStyle == other.TooltipStyle
+            && TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds)
+            && (Stats != null ? Stats.DeepEquals(other.Stats) : other.Stats == null)
+            && (
+                TalentGrid != null
+                    ? TalentGrid.DeepEquals(other.TalentGrid)
+                    : other.TalentGrid == null
+            )
+            && (
+                TranslationBlock != null
+                    ? TranslationBlock.DeepEquals(other.TranslationBlock)
+                    : other.TranslationBlock == null
+            )
+            && (Value != null ? Value.DeepEquals(other.Value) : other.Value == null)
+            && (SetData != null ? SetData.DeepEquals(other.SetData) : other.SetData == null)
+            && (Plug != null ? Plug.DeepEquals(other.Plug) : other.Plug == null)
+            && (Preview != null ? Preview.DeepEquals(other.Preview) : other.Preview == null)
+            && (Quality != null ? Quality.DeepEquals(other.Quality) : other.Quality == null)
+            && (
+                Objectives != null
+                    ? Objectives.DeepEquals(other.Objectives)
+                    : other.Objectives == null
+            )
+            && Inventory.DeepEquals(other.Inventory)
+            && (Action != null ? Action.DeepEquals(other.Action) : other.Action == null)
+            && (
+                EquippingBlock != null
+                    ? EquippingBlock.DeepEquals(other.EquippingBlock)
+                    : other.EquippingBlock == null
+            )
+            && (Sockets is not null ? Sockets.DeepEquals(other.Sockets) : other.Sockets == null)
+            && InvestmentStats.DeepEqualsReadOnlyCollections(other.InvestmentStats)
+            && Perks.DeepEqualsReadOnlyCollections(other.Perks)
+            && TooltipNotifications.DeepEqualsReadOnlyCollections(other.TooltipNotifications)
+            && (Sack != null ? Sack.DeepEquals(other.Sack) : other.Sack == null)
+            && (Gearset != null ? Gearset.DeepEquals(other.Gearset) : other.Gearset == null)
+            && EmblemObjective.DeepEquals(other.EmblemObjective)
+            && (
+                SourceData != null
+                    ? SourceData.DeepEquals(other.SourceData)
+                    : other.SourceData == null
+            )
+            && (Metrics != null ? Metrics.DeepEquals(other.Metrics) : other.Metrics == null)
+            && (Summary != null ? Summary.DeepEquals(other.Summary) : other.Summary == null)
+            && Lore.DeepEquals(other.Lore)
+            && Animations.DeepEqualsReadOnlyCollections(other.Animations)
+            && Links.DeepEqualsReadOnlyCollections(other.Links)
+            && DamageTypes.DeepEqualsReadOnlyCollections(other.DamageTypes)
+            && DamageTypeEnumValues.DeepEqualsReadOnlySimpleCollection(other.DamageTypeEnumValues)
+            && Season.DeepEquals(other.Season)
+            && FlavorText.Equals(other.FlavorText)
+            && (Crafting is not null ? Crafting.DeepEquals(other.Crafting) : other.Crafting is null)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyInventoryItemDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
 
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

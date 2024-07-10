@@ -17,7 +17,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ItemCategories;
 ///     added!
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyItemCategoryDefinition)]
-public sealed record DestinyItemCategoryDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyItemCategoryDefinition>
+public sealed record DestinyItemCategoryDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyItemCategoryDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -94,15 +97,17 @@ public sealed record DestinyItemCategoryDefinition : IDestinyDefinition, IDispla
     [JsonPropertyName("grantDestinyClass")]
     public DestinyClass GrantDestinyClass { get; init; }
 
-    [JsonPropertyName("traitId")] public string TraitId { get; init; }
+    [JsonPropertyName("traitId")]
+    public string TraitId { get; init; }
 
     /// <summary>
     ///     If this category is a "parent" category of other categories, those children will have their hashes listed in
     ///     rendering order here, and can be looked up using these hashes against DestinyItemCategoryDefinition.
     /// </summary>
     [JsonPropertyName("groupedCategoryHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>>
-        GroupedCategories { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyItemCategoryDefinition>
+    > GroupedCategories { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyItemCategoryDefinition>>.Empty;
 
     /// <summary>
@@ -110,8 +115,9 @@ public sealed record DestinyItemCategoryDefinition : IDestinyDefinition, IDispla
     ///     groupedCategoryHashes. It's a bit redundant, but having this child-centric list speeds up some calculations.
     /// </summary>
     [JsonPropertyName("parentCategoryHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>>
-        ParentCategories { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyItemCategoryDefinition>
+    > ParentCategories { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyItemCategoryDefinition>>.Empty;
 
     /// <summary>
@@ -121,37 +127,46 @@ public sealed record DestinyItemCategoryDefinition : IDestinyDefinition, IDispla
     [JsonPropertyName("groupCategoryOnly")]
     public bool GroupCategoryOnly { get; init; }
 
-    [JsonPropertyName("isPlug")] public bool IsPlug { get; init; }
+    [JsonPropertyName("isPlug")]
+    public bool IsPlug { get; init; }
 
     public bool DeepEquals(DestinyItemCategoryDefinition other)
     {
-        return other != null &&
-               Deprecated == other.Deprecated &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               GrantDestinyBreakerType == other.GrantDestinyBreakerType &&
-               GrantDestinyClass == other.GrantDestinyClass &&
-               GrantDestinyItemType == other.GrantDestinyItemType &&
-               GrantDestinySubType == other.GrantDestinySubType &&
-               GroupCategoryOnly == other.GroupCategoryOnly &&
-               GroupedCategories.DeepEqualsReadOnlyCollections(other.GroupedCategories) &&
-               IsPlug == other.IsPlug &&
-               ItemTypeRegex == other.ItemTypeRegex &&
-               ParentCategories.DeepEqualsReadOnlyCollections(other.ParentCategories) &&
-               ShortTitle == other.ShortTitle &&
-               Visible == other.Visible &&
-               PlugCategoryIdentifier == other.PlugCategoryIdentifier &&
-               ItemTypeRegexNot == other.ItemTypeRegexNot &&
-               OriginBucketIdentifier == other.OriginBucketIdentifier &&
-               TraitId == other.TraitId &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && Deprecated == other.Deprecated
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && GrantDestinyBreakerType == other.GrantDestinyBreakerType
+            && GrantDestinyClass == other.GrantDestinyClass
+            && GrantDestinyItemType == other.GrantDestinyItemType
+            && GrantDestinySubType == other.GrantDestinySubType
+            && GroupCategoryOnly == other.GroupCategoryOnly
+            && GroupedCategories.DeepEqualsReadOnlyCollections(other.GroupedCategories)
+            && IsPlug == other.IsPlug
+            && ItemTypeRegex == other.ItemTypeRegex
+            && ParentCategories.DeepEqualsReadOnlyCollections(other.ParentCategories)
+            && ShortTitle == other.ShortTitle
+            && Visible == other.Visible
+            && PlugCategoryIdentifier == other.PlugCategoryIdentifier
+            && ItemTypeRegexNot == other.ItemTypeRegexNot
+            && OriginBucketIdentifier == other.OriginBucketIdentifier
+            && TraitId == other.TraitId
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyItemCategoryDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

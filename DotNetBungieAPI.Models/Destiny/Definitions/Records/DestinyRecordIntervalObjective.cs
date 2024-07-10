@@ -13,8 +13,8 @@ public class DestinyRecordIntervalObjective : IDeepEquatable<DestinyRecordInterv
 
     public bool DeepEquals(DestinyRecordIntervalObjective other)
     {
-        return other != null &&
-               IntervalObjective.DeepEquals(other.IntervalObjective) &&
-               IntervalScoreValue == other.IntervalScoreValue;
+        return other != null
+            && IntervalObjective.DeepEquals(other.IntervalObjective)
+            && IntervalScoreValue == other.IntervalScoreValue;
     }
 }

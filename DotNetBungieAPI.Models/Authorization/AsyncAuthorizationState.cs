@@ -19,7 +19,7 @@ public class AsyncAuthorizationState
 
     private readonly TaskCompletionSource _tcs;
 
-    private AsyncAuthorizationState() 
+    private AsyncAuthorizationState()
     {
         _tcs = new TaskCompletionSource();
     }
@@ -58,9 +58,6 @@ public class AsyncAuthorizationState
     /// <returns></returns>
     public static AsyncAuthorizationState CreateAsyncAuthorizationAwaiter(string state)
     {
-        return new AsyncAuthorizationState()
-        {
-            State = state,
-        };
+        return new AsyncAuthorizationState() { State = state, };
     }
 }

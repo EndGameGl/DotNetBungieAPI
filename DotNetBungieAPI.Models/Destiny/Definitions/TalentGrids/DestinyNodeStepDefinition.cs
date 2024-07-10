@@ -105,7 +105,9 @@ public sealed record DestinyNodeStepDefinition : IDeepEquatable<DestinyNodeStepD
     ///     Perks provide a variety of benefits and modifications - examine DestinySandboxPerkDefinition to learn more.
     /// </summary>
     [JsonPropertyName("perkHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinySandboxPerkDefinition>> Perks { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinySandboxPerkDefinition>
+    > Perks { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinySandboxPerkDefinition>>.Empty;
 
     /// <summary>
@@ -161,29 +163,30 @@ public sealed record DestinyNodeStepDefinition : IDeepEquatable<DestinyNodeStepD
     [JsonPropertyName("truePropertyIndex")]
     public int TruePropertyIndex { get; init; }
 
-    [JsonPropertyName("trueStepIndex")] public int TrueStepIndex { get; init; }
+    [JsonPropertyName("trueStepIndex")]
+    public int TrueStepIndex { get; init; }
 
     public bool DeepEquals(DestinyNodeStepDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               StepIndex == other.StepIndex &&
-               NodeStepHash == other.NodeStepHash &&
-               InteractionDescription == other.InteractionDescription &&
-               DamageTypeEnumValue == other.DamageTypeEnumValue &&
-               DamageType.DeepEquals(other.DamageType) &&
-               ActivationRequirement.DeepEquals(other.ActivationRequirement) &&
-               CanActivateNextStep == other.CanActivateNextStep &&
-               NextStepIndex == other.NextStepIndex &&
-               IsNextStepRandom == other.IsNextStepRandom &&
-               Perks.DeepEqualsReadOnlyCollections(other.Perks) &&
-               StartProgressionBarAtProgress == other.StartProgressionBarAtProgress &&
-               Stats.DeepEqualsReadOnlyCollections(other.Stats) &&
-               AffectsQuality == other.AffectsQuality &&
-               StepGroups.DeepEquals(other.StepGroups) &&
-               AffectsLevel == other.AffectsLevel &&
-               SocketReplacements.DeepEqualsReadOnlyCollections(other.SocketReplacements) &&
-               TruePropertyIndex == other.TruePropertyIndex &&
-               TrueStepIndex == other.TrueStepIndex;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && StepIndex == other.StepIndex
+            && NodeStepHash == other.NodeStepHash
+            && InteractionDescription == other.InteractionDescription
+            && DamageTypeEnumValue == other.DamageTypeEnumValue
+            && DamageType.DeepEquals(other.DamageType)
+            && ActivationRequirement.DeepEquals(other.ActivationRequirement)
+            && CanActivateNextStep == other.CanActivateNextStep
+            && NextStepIndex == other.NextStepIndex
+            && IsNextStepRandom == other.IsNextStepRandom
+            && Perks.DeepEqualsReadOnlyCollections(other.Perks)
+            && StartProgressionBarAtProgress == other.StartProgressionBarAtProgress
+            && Stats.DeepEqualsReadOnlyCollections(other.Stats)
+            && AffectsQuality == other.AffectsQuality
+            && StepGroups.DeepEquals(other.StepGroups)
+            && AffectsLevel == other.AffectsLevel
+            && SocketReplacements.DeepEqualsReadOnlyCollections(other.SocketReplacements)
+            && TruePropertyIndex == other.TruePropertyIndex
+            && TrueStepIndex == other.TrueStepIndex;
     }
 }

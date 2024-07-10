@@ -33,10 +33,10 @@ public sealed record DestinySeasonPreviewDefinition : IDeepEquatable<DestinySeas
 
     public bool DeepEquals(DestinySeasonPreviewDefinition other)
     {
-        return other != null &&
-               Description == other.Description &&
-               LinkPath == other.LinkPath &&
-               VideoLink == other.VideoLink &&
-               Images.DeepEqualsReadOnlyCollections(other.Images);
+        return other != null
+            && Description == other.Description
+            && LinkPath == other.LinkPath
+            && VideoLink == other.VideoLink
+            && Images.DeepEqualsReadOnlyCollections(other.Images);
     }
 }

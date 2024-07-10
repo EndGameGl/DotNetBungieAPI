@@ -9,9 +9,11 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 ///     categorized entirely separately from "Display Categories", there need be and often will be no meaningful
 ///     relationship between the two.
 /// </summary>
-public sealed record DestinyDisplayCategoryDefinition : IDeepEquatable<DestinyDisplayCategoryDefinition>
+public sealed record DestinyDisplayCategoryDefinition
+    : IDeepEquatable<DestinyDisplayCategoryDefinition>
 {
-    [JsonPropertyName("index")] public int Index { get; init; }
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
 
     /// <summary>
     ///     A string identifier for the display category.
@@ -63,15 +65,15 @@ public sealed record DestinyDisplayCategoryDefinition : IDeepEquatable<DestinyDi
 
     public bool DeepEquals(DestinyDisplayCategoryDefinition other)
     {
-        return other != null &&
-               Index == other.Index &&
-               Identifier == other.Identifier &&
-               DisplayCategoryHash == other.DisplayCategoryHash &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               DisplayInBanner == other.DisplayInBanner &&
-               Progression.DeepEquals(other.Progression) &&
-               SortOrder == other.SortOrder &&
-               DisplayStyleHash == other.DisplayStyleHash &&
-               DisplayStyleIdentifier == other.DisplayStyleIdentifier;
+        return other != null
+            && Index == other.Index
+            && Identifier == other.Identifier
+            && DisplayCategoryHash == other.DisplayCategoryHash
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && DisplayInBanner == other.DisplayInBanner
+            && Progression.DeepEquals(other.Progression)
+            && SortOrder == other.SortOrder
+            && DisplayStyleHash == other.DisplayStyleHash
+            && DisplayStyleIdentifier == other.DisplayStyleIdentifier;
     }
 }

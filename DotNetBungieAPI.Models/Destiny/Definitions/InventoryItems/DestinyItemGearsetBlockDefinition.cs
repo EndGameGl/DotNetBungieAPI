@@ -4,7 +4,8 @@
 ///     If an item has a related gearset, this is the list of items in that set, and an unlock expression that evaluates to
 ///     a number representing the progress toward gearset completion (a very rare use for unlock expressions!)
 /// </summary>
-public sealed record DestinyItemGearsetBlockDefinition : IDeepEquatable<DestinyItemGearsetBlockDefinition>
+public sealed record DestinyItemGearsetBlockDefinition
+    : IDeepEquatable<DestinyItemGearsetBlockDefinition>
 {
     /// <summary>
     ///     The maximum possible number of items that can be collected.
@@ -16,13 +17,15 @@ public sealed record DestinyItemGearsetBlockDefinition : IDeepEquatable<DestinyI
     ///     The list of DestinyInventoryItemDefinition for items in the gearset.
     /// </summary>
     [JsonPropertyName("itemList")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> Items { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyInventoryItemDefinition>
+    > Items { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 
     public bool DeepEquals(DestinyItemGearsetBlockDefinition other)
     {
-        return other != null &&
-               TrackingValueMax == other.TrackingValueMax &&
-               Items.DeepEqualsReadOnlyCollections(other.Items);
+        return other != null
+            && TrackingValueMax == other.TrackingValueMax
+            && Items.DeepEqualsReadOnlyCollections(other.Items);
     }
 }

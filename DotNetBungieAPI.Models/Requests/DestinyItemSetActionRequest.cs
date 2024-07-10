@@ -2,16 +2,23 @@
 
 public sealed class DestinyItemSetActionRequest
 {
-    public DestinyItemSetActionRequest(long[] itemIds, long characterId, BungieMembershipType membershipType)
+    public DestinyItemSetActionRequest(
+        long[] itemIds,
+        long characterId,
+        BungieMembershipType membershipType
+    )
     {
         ItemIds = itemIds;
         CharacterId = characterId;
         MembershipType = membershipType;
     }
 
-    [JsonPropertyName("itemIds")] public long[] ItemIds { get; }
+    [JsonPropertyName("itemIds")]
+    public long[] ItemIds { get; }
 
-    [JsonPropertyName("characterId")] public long CharacterId { get; }
+    [JsonPropertyName("characterId")]
+    public long CharacterId { get; }
 
-    [JsonPropertyName("membershipType")] public BungieMembershipType MembershipType { get; }
+    [JsonPropertyName("membershipType")]
+    public BungieMembershipType MembershipType { get; }
 }

@@ -2,9 +2,11 @@
 
 public sealed record HyperlinkReference : IDeepEquatable<HyperlinkReference>
 {
-    [JsonPropertyName("title")] public string Title { get; init; }
+    [JsonPropertyName("title")]
+    public string Title { get; init; }
 
-    [JsonPropertyName("url")] public string Url { get; init; }
+    [JsonPropertyName("url")]
+    public string Url { get; init; }
 
     public bool DeepEquals(HyperlinkReference other)
     {

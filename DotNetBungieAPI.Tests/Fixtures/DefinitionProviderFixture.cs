@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Tests.Fixtures
     public class DefinitionProviderFixture : IAsyncLifetime
     {
         public IDefinitionProvider DefinitionProvider { get; private set; }
-        
+
         public DefinitionProviderFixture(IDefinitionProvider definitionProvider)
         {
             DefinitionProvider = definitionProvider;

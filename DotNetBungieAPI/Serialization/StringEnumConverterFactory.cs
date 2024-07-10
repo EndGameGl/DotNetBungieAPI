@@ -14,17 +14,20 @@ public class StringEnumConverterFactory : JsonConverterFactory
 
     public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
     {
-        var converter = (JsonConverter)Activator.CreateInstance(
-            typeof(StringEnumJsonConverter<>).MakeGenericType(typeToConvert),
-            BindingFlags.Instance | BindingFlags.Public,
-            null,
-            new object[] { typeToConvert },
-            null);
+        var converter = (JsonConverter)
+            Activator.CreateInstance(
+                typeof(StringEnumJsonConverter<>).MakeGenericType(typeToConvert),
+                BindingFlags.Instance | BindingFlags.Public,
+                null,
+                new object[] { typeToConvert },
+                null
+            );
 
         return converter;
     }
 
-    private class StringEnumJsonConverter<TEnum> : JsonConverter<TEnum> where TEnum : unmanaged, Enum
+    private class StringEnumJsonConverter<TEnum> : JsonConverter<TEnum>
+        where TEnum : unmanaged, Enum
     {
         private readonly Type _enumType;
         private readonly Type _underlyingType;
@@ -37,7 +40,11 @@ public class StringEnumConverterFactory : JsonConverterFactory
             _underlyingTypeCode = Type.GetTypeCode(_underlyingType);
         }
 
-        public override TEnum Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override TEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
         {
             switch (reader.TokenType)
             {
@@ -73,7 +80,11 @@ public class StringEnumConverterFactory : JsonConverterFactory
             }
         }
 
-        public override void Write(Utf8JsonWriter writer, TEnum value, JsonSerializerOptions options)
+        public override void Write(
+            Utf8JsonWriter writer,
+            TEnum value,
+            JsonSerializerOptions options
+        )
         {
             switch (_underlyingTypeCode)
             {

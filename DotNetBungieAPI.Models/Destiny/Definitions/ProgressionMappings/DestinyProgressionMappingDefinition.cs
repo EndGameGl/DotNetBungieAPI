@@ -10,7 +10,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ProgressionMappings;
 ///     well, but only extremely sporadically.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyProgressionMappingDefinition)]
-public sealed record DestinyProgressionMappingDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyProgressionMappingDefinition>
+public sealed record DestinyProgressionMappingDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyProgressionMappingDefinition>
 {
     /// <summary>
     ///     Infrequently defined in practice. Defer to the individual progressions' display properties.
@@ -27,18 +30,27 @@ public sealed record DestinyProgressionMappingDefinition : IDestinyDefinition, I
 
     public bool DeepEquals(DestinyProgressionMappingDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               DisplayUnits.Equals(other.DisplayUnits) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && DisplayUnits.Equals(other.DisplayUnits)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
-    public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyProgressionMappingDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+    public DefinitionsEnum DefinitionEnumValue =>
+        DefinitionsEnum.DestinyProgressionMappingDefinition;
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

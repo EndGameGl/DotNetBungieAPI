@@ -34,7 +34,9 @@ public sealed record DestinyPublicMilestone
     ///     are currently relevant.
     /// </summary>
     [JsonPropertyName("vendorHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyVendorDefinition>> VendorPointers { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyVendorDefinition>
+    > VendorPointers { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyVendorDefinition>>.Empty;
 
     /// <summary>

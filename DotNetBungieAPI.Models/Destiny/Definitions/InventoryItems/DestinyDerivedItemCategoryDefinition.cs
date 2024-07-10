@@ -10,7 +10,8 @@
 ///     possible items you could get from the Box so that the game can show them to you. We summarize that info here so
 ///     that you don't have to do that Vendor lookup and aggregation manually.
 /// </summary>
-public sealed record DestinyDerivedItemCategoryDefinition : IDeepEquatable<DestinyDerivedItemCategoryDefinition>
+public sealed record DestinyDerivedItemCategoryDefinition
+    : IDeepEquatable<DestinyDerivedItemCategoryDefinition>
 {
     /// <summary>
     ///     The localized string for the category title. This will be something describing the items you can get as a group, or
@@ -28,8 +29,8 @@ public sealed record DestinyDerivedItemCategoryDefinition : IDeepEquatable<Desti
 
     public bool DeepEquals(DestinyDerivedItemCategoryDefinition other)
     {
-        return other != null &&
-               CategoryDescription == other.CategoryDescription &&
-               Items.DeepEqualsReadOnlyCollections(other.Items);
+        return other != null
+            && CategoryDescription == other.CategoryDescription
+            && Items.DeepEqualsReadOnlyCollections(other.Items);
     }
 }

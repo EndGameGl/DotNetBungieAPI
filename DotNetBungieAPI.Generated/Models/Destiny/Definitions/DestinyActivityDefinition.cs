@@ -111,6 +111,9 @@ public class DestinyActivityDefinition
     [JsonPropertyName("optionalUnlockStrings")]
     public List<Destiny.Definitions.DestinyActivityUnlockStringDefinition> OptionalUnlockStrings { get; set; }
 
+    [JsonPropertyName("requirements")]
+    public Destiny.Definitions.DestinyActivityRequirementsBlock? Requirements { get; set; }
+
     /// <summary>
     ///     Represents all of the possible activities that could be played in the Playlist, along with information that we can use to determine if they are active at the present time.
     /// </summary>

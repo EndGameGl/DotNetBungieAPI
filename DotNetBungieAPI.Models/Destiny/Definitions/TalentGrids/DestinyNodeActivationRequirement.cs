@@ -8,7 +8,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.TalentGrids;
 ///     This describes the material costs, the Level of the Talent Grid's progression required, and other conditional
 ///     information that limits whether a talent node can be activated.
 /// </summary>
-public sealed record DestinyNodeActivationRequirement : IDeepEquatable<DestinyNodeActivationRequirement>
+public sealed record DestinyNodeActivationRequirement
+    : IDeepEquatable<DestinyNodeActivationRequirement>
 {
     [JsonPropertyName("exclusiveSetRequiredHash")]
     public uint ExclusiveSetRequiredHash { get; init; }
@@ -30,14 +31,16 @@ public sealed record DestinyNodeActivationRequirement : IDeepEquatable<DestinyNo
     ///     know which one will be chosen until an instance of the item is created.
     /// </summary>
     [JsonPropertyName("materialRequirementHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>> MaterialRequirements { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>
+    > MaterialRequirements { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>>.Empty;
 
     public bool DeepEquals(DestinyNodeActivationRequirement other)
     {
-        return other != null &&
-               ExclusiveSetRequiredHash == other.ExclusiveSetRequiredHash &&
-               GridLevel == other.GridLevel &&
-               MaterialRequirements.DeepEqualsReadOnlyCollections(other.MaterialRequirements);
+        return other != null
+            && ExclusiveSetRequiredHash == other.ExclusiveSetRequiredHash
+            && GridLevel == other.GridLevel
+            && MaterialRequirements.DeepEqualsReadOnlyCollections(other.MaterialRequirements);
     }
 }

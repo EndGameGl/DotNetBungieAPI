@@ -24,23 +24,30 @@ public class CodeBuilder
         Models.OpenApi openApiModel,
         ModelGeneratorBase modelGenerator,
         MethodGroupGeneratorBase methodGroupGenerator,
-        params AdditionalFileGenerator[] additionalFileGenerators)
+        params AdditionalFileGenerator[] additionalFileGenerators
+    )
     {
         var typeTree = new TypeTree();
         typeTree.CreateSchemasTypeTree(openApiModel);
 
         foreach (var additionalFileGenerator in additionalFileGenerators)
         {
-            await using var streamWriter = new StreamWriter(Path.Combine(
-                _destinationFolder,
-                additionalFileGenerator.FileNameAndExtension), append: false);
+            await using var streamWriter = new StreamWriter(
+                Path.Combine(_destinationFolder, additionalFileGenerator.FileNameAndExtension),
+                append: false
+            );
             additionalFileGenerator.Writer = streamWriter;
             await additionalFileGenerator.WriteFile(openApiModel);
         }
 
         foreach (var treeNode in typeTree.Nodes.Values)
         {
-            await IterateThroughTypeTreeBare(openApiModel, treeNode, _destinationFolder, modelGenerator);
+            await IterateThroughTypeTreeBare(
+                openApiModel,
+                treeNode,
+                _destinationFolder,
+                modelGenerator
+            );
         }
 
         await CreateApiInterfaces(openApiModel, methodGroupGenerator);
@@ -55,7 +62,8 @@ public class CodeBuilder
         Models.OpenApi openApiModel,
         TreeNode treeNode,
         string previousPath,
-        ModelGeneratorBase modelGenerator)
+        ModelGeneratorBase modelGenerator
+    )
     {
         if (treeNode.IsFolder)
         {
@@ -63,21 +71,24 @@ public class CodeBuilder
             Directory.CreateDirectory(currentFolder);
             foreach (var childNode in treeNode.Nodes.Values)
             {
-                await IterateThroughTypeTreeBare(openApiModel, childNode, currentFolder, modelGenerator);
+                await IterateThroughTypeTreeBare(
+                    openApiModel,
+                    childNode,
+                    currentFolder,
+                    modelGenerator
+                );
             }
         }
 
         if (treeNode.IsType)
         {
-            var currentFile = Path.Combine(previousPath, $"{treeNode.Name}.{modelGenerator.FileExtension}");
+            var currentFile = Path.Combine(
+                previousPath,
+                $"{treeNode.Name}.{modelGenerator.FileExtension}"
+            );
             var fullTypeName = currentFile
-                .Replace(
-                    _destinationFolder,
-                    string.Empty)
-                .Replace(
-                    '\\',
-                    '.')
-                [1..^3];
+                .Replace(_destinationFolder, string.Empty)
+                .Replace('\\', '.')[1..^3];
 
             var typeSchema = openApiModel.Components.Schemas[fullTypeName];
 
@@ -109,16 +120,24 @@ public class CodeBuilder
         }
     }
 
-    private async Task CreateApiInterfaces(Models.OpenApi openApiModel, MethodGroupGeneratorBase methodGroupGenerator)
+    private async Task CreateApiInterfaces(
+        Models.OpenApi openApiModel,
+        MethodGroupGeneratorBase methodGroupGenerator
+    )
     {
-        var methods = openApiModel.Paths.Select(x => new MethodData(x.Key, x.Value, openApiModel)).ToList();
+        var methods = openApiModel
+            .Paths.Select(x => new MethodData(x.Key, x.Value, openApiModel))
+            .ToList();
 
         var groups = methods.GroupBy(x => x.MethodGroup).ToDictionary(x => x.Key, x => x.ToList());
 
         foreach (var (groupName, groupMethods) in groups)
         {
             var fixedGroupName = string.IsNullOrWhiteSpace(groupName) ? "Misc" : groupName;
-            var fileName = Path.Combine(_destinationFolder, $"{fixedGroupName}.ApiMethods.{methodGroupGenerator.FileExtension}");
+            var fileName = Path.Combine(
+                _destinationFolder,
+                $"{fixedGroupName}.ApiMethods.{methodGroupGenerator.FileExtension}"
+            );
             await using var streamWriter = new StreamWriter(fileName, append: false);
             methodGroupGenerator.Writer = streamWriter;
 

@@ -23,7 +23,8 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
     public GroupV2MethodsAccess(
         IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
         IBungieClientConfiguration configuration,
-        IBungieNetJsonSerializer serializer)
+        IBungieNetJsonSerializer serializer
+    )
     {
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _configuration = configuration;
@@ -31,25 +32,34 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
     }
 
     public async Task<BungieResponse<ReadOnlyDictionary<int, string>>> GetAvailableAvatars(
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyDictionary<int, string>>("/GroupV2/GetAvailableAvatars/", cancellationToken)
+            .GetFromBungieNetPlatform<ReadOnlyDictionary<int, string>>(
+                "/GroupV2/GetAvailableAvatars/",
+                cancellationToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<ReadOnlyCollection<GroupTheme>>> GetAvailableThemes(
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyCollection<GroupTheme>>("/GroupV2/GetAvailableThemes/", cancellationToken)
+            .GetFromBungieNetPlatform<ReadOnlyCollection<GroupTheme>>(
+                "/GroupV2/GetAvailableThemes/",
+                cancellationToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<bool>> GetUserClanInviteSetting(
         AuthorizationTokenData authorizationToken,
         BungieMembershipType mType,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.ReadUserData))
             throw new InsufficientScopeException(ApplicationScopes.ReadUserData);
@@ -69,7 +79,8 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         GroupType groupType,
         GroupDateRange createDateRange,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.ReadGroups))
             throw new InsufficientScopeException(ApplicationScopes.ReadGroups);
@@ -82,25 +93,34 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<ReadOnlyCollection<GroupV2Card>>(url, cancellationToken,
-                authToken: authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<ReadOnlyCollection<GroupV2Card>>(
+                url,
+                cancellationToken,
+                authToken: authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<GroupSearchResponse>> GroupSearch(
         GroupQuery query,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, query);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<GroupSearchResponse>("/GroupV2/Search/", cancellationToken, stream)
+            .PostToBungieNetPlatform<GroupSearchResponse>(
+                "/GroupV2/Search/",
+                cancellationToken,
+                stream
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<GroupResponse>> GetGroup(
         long groupId,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -116,7 +136,8 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
     public async Task<BungieResponse<GroupResponse>> GetGroupByName(
         string groupName,
         GroupType groupType,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -132,7 +153,8 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
 
     public async Task<BungieResponse<GroupResponse>> GetGroupByNameV2(
         GroupNameSearchRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
@@ -141,17 +163,21 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<ReadOnlyCollection<GroupOptionalConversation>>> GetGroupOptionalConversations(
-        long groupId,
-        CancellationToken cancellationToken = default)
+    public async Task<
+        BungieResponse<ReadOnlyCollection<GroupOptionalConversation>>
+    > GetGroupOptionalConversations(long groupId, CancellationToken cancellationToken = default)
     {
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("OptionalConversations/")
             .Build();
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyCollection<GroupOptionalConversation>>(url, cancellationToken)
+            .GetFromBungieNetPlatform<ReadOnlyCollection<GroupOptionalConversation>>(
+                url,
+                cancellationToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -159,12 +185,14 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupEditAction request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("Edit/")
@@ -172,7 +200,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<int>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -180,12 +213,14 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         ClanBanner request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("EditClanBanner/")
@@ -193,7 +228,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<int>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -201,12 +241,14 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupOptionsEditAction request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("EditFounderOptions/")
@@ -214,7 +256,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<int>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -222,12 +269,14 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupOptionalConversationAddRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("OptionalConversations/Add/")
@@ -235,7 +284,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<long>(url, cancellationToken, stream, authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<long>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -244,12 +298,14 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         long groupId,
         long conversationId,
         GroupOptionalConversationEditRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("OptionalConversations/Edit/")
@@ -259,7 +315,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<long>(url, cancellationToken, stream, authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<long>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -268,9 +329,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         int currentpage = 1,
         RuntimeGroupMemberType memberType = RuntimeGroupMemberType.None,
         string nameSearch = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("Members/")
@@ -286,9 +349,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
     public async Task<BungieResponse<SearchResultOfGroupMember>> GetAdminsAndFounderOfGroup(
         long groupId,
         int currentpage = 1,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("AdminsAndFounder/")
@@ -305,12 +370,14 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         long membershipId,
         BungieMembershipType membershipType,
         RuntimeGroupMemberType memberType,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("Members/")
@@ -320,7 +387,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .AddUrlParam(((int)memberType).ToString())
             .Build();
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>(url, cancellationToken, authToken: authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<int>(
+                url,
+                cancellationToken,
+                authToken: authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -329,12 +400,14 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         long groupId,
         long membershipId,
         BungieMembershipType membershipType,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("Members/")
@@ -343,8 +416,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Append("Kick/")
             .Build();
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<GroupMemberLeaveResult>(url, cancellationToken,
-                authToken: authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<GroupMemberLeaveResult>(
+                url,
+                cancellationToken,
+                authToken: authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -354,12 +430,14 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         long membershipId,
         BungieMembershipType membershipType,
         GroupBanRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("Members/")
@@ -371,7 +449,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>(url, cancellationToken, stream, authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<int>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -380,12 +463,14 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         long groupId,
         long membershipId,
         BungieMembershipType membershipType,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("Members/")
@@ -395,7 +480,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>(url, cancellationToken, authToken: authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<int>(
+                url,
+                cancellationToken,
+                authToken: authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -403,20 +492,25 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         int currentpage = 1,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("Banned/")
             .AddQueryParam("currentpage", currentpage.ToString())
             .Build();
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfGroupBan>(url, cancellationToken,
-                authorizationToken.AccessToken)
+            .GetFromBungieNetPlatform<SearchResultOfGroupBan>(
+                url,
+                cancellationToken,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -425,12 +519,14 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         long groupId,
         long founderIdNew,
         BungieMembershipType membershipType,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("Admin/AbdicateFoundership/")
@@ -439,7 +535,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(url, cancellationToken, authToken: authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<bool>(
+                url,
+                cancellationToken,
+                authToken: authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -447,20 +547,25 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         int currentpage = 1,
-        CancellationToken token = default)
+        CancellationToken token = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(token)
+        var url = StringBuilderPool
+            .GetBuilder(token)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("Members/Pending/")
             .AddQueryParam("currentpage", currentpage.ToString())
             .Build();
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfGroupMemberApplication>(url, token,
-                authorizationToken.AccessToken)
+            .GetFromBungieNetPlatform<SearchResultOfGroupMemberApplication>(
+                url,
+                token,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -468,20 +573,25 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         int currentpage = 1,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("Members/InvitedIndividuals/")
             .AddQueryParam("currentpage", currentpage.ToString())
             .Build();
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfGroupMemberApplication>(url, cancellationToken,
-                authorizationToken.AccessToken)
+            .GetFromBungieNetPlatform<SearchResultOfGroupMemberApplication>(
+                url,
+                cancellationToken,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -489,12 +599,14 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupApplicationRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("Members/ApproveAll/")
@@ -503,8 +615,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<ReadOnlyCollection<EntityActionResult>>(url, cancellationToken, stream,
-                authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<ReadOnlyCollection<EntityActionResult>>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -512,12 +628,14 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupApplicationRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("Members/DenyAll/")
@@ -527,8 +645,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         await _serializer.SerializeAsync(stream, request);
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<ReadOnlyCollection<EntityActionResult>>(url, cancellationToken, stream,
-                authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<ReadOnlyCollection<EntityActionResult>>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -536,12 +658,14 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupApplicationListRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("Members/ApproveList/")
@@ -550,8 +674,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<ReadOnlyCollection<EntityActionResult>>(url, cancellationToken, stream,
-                authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<ReadOnlyCollection<EntityActionResult>>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -561,12 +689,14 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         long membershipId,
         BungieMembershipType membershipType,
         GroupApplicationRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("Members/Approve/")
@@ -577,7 +707,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(url, cancellationToken, stream, authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<bool>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -585,12 +720,14 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         AuthorizationTokenData authorizationToken,
         long groupId,
         GroupApplicationListRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("Members/DenyList/")
@@ -599,8 +736,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<ReadOnlyCollection<EntityActionResult>>(url, cancellationToken, stream,
-                authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<ReadOnlyCollection<EntityActionResult>>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -609,9 +750,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         long membershipId,
         GroupsForMemberFilter filter,
         GroupType groupType,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/User/")
             .AddUrlParam(((int)membershipType).ToString())
             .AddUrlParam(membershipId.ToString())
@@ -628,9 +771,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         BungieMembershipType membershipType,
         long membershipId,
         GroupType groupType,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/Recover/")
             .AddUrlParam(((int)membershipType).ToString())
             .AddUrlParam(membershipId.ToString())
@@ -642,14 +787,18 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .ConfigureAwait(false);
     }
 
-    public async Task<BungieResponse<GroupPotentialMembershipSearchResponse>> GetPotentialGroupsForMember(
+    public async Task<
+        BungieResponse<GroupPotentialMembershipSearchResponse>
+    > GetPotentialGroupsForMember(
         BungieMembershipType membershipType,
         long membershipId,
         GroupType groupType,
         GroupsForMemberFilter filter,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/User/Potential/")
             .AddUrlParam(((int)membershipType).ToString())
             .AddUrlParam(membershipId.ToString())
@@ -658,7 +807,10 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<GroupPotentialMembershipSearchResponse>(url, cancellationToken)
+            .GetFromBungieNetPlatform<GroupPotentialMembershipSearchResponse>(
+                url,
+                cancellationToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -668,12 +820,14 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         BungieMembershipType membershipType,
         long membershipId,
         GroupApplicationRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("Members/IndividualInvite/")
@@ -685,8 +839,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         await _serializer.SerializeAsync(stream, request);
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<GroupApplicationResponse>(url, cancellationToken, stream,
-                authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<GroupApplicationResponse>(
+                url,
+                cancellationToken,
+                stream,
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -695,12 +853,14 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         long groupId,
         BungieMembershipType membershipType,
         long membershipId,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
             throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
 
-        var url = StringBuilderPool.GetBuilder(cancellationToken)
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
             .Append("/GroupV2/")
             .AddUrlParam(groupId.ToString())
             .Append("Members/IndividualInviteCancel/")
@@ -709,8 +869,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<GroupApplicationResponse>(url, cancellationToken,
-                authToken: authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<GroupApplicationResponse>(
+                url,
+                cancellationToken,
+                authToken: authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 }

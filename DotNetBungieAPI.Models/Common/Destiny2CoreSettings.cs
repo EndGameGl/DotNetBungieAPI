@@ -72,20 +72,26 @@ public sealed record Destiny2CoreSettings
         DefinitionHashPointer<DestinyGuardianRankConstantsDefinition>.Empty;
 
     [JsonPropertyName("guardianRanksRootNodeHash")]
-    public DefinitionHashPointer<DestinyPresentationNodeDefinition> GuardianRanksRootNode { get; init; }
-        = DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
+    public DefinitionHashPointer<DestinyPresentationNodeDefinition> GuardianRanksRootNode { get; init; } =
+        DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
 
     [JsonPropertyName("currentRankProgressionHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyProgressionDefinition>> CurrentRankProgressions { get; init;}
-        = ReadOnlyCollections<DefinitionHashPointer<DestinyProgressionDefinition>>.Empty;
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyProgressionDefinition>
+    > CurrentRankProgressions { get; init; } =
+        ReadOnlyCollections<DefinitionHashPointer<DestinyProgressionDefinition>>.Empty;
 
     [JsonPropertyName("insertPlugFreeProtectedPlugItemHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>> InsertPlugFreeProtectedPlugItems { get; init; }
-        = ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyInventoryItemDefinition>
+    > InsertPlugFreeProtectedPlugItems { get; init; } =
+        ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 
     [JsonPropertyName("insertPlugFreeBlockedSocketTypeHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinySocketTypeDefinition>> InsertPlugFreeBlockedSocketTypes { get; init; }
-        = ReadOnlyCollections<DefinitionHashPointer<DestinySocketTypeDefinition>>.Empty;
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinySocketTypeDefinition>
+    > InsertPlugFreeBlockedSocketTypes { get; init; } =
+        ReadOnlyCollections<DefinitionHashPointer<DestinySocketTypeDefinition>>.Empty;
 
     [JsonPropertyName("undiscoveredCollectibleImage")]
     public BungieNetResource UndiscoveredCollectibleImage { get; init; }
@@ -112,10 +118,14 @@ public sealed record Destiny2CoreSettings
         DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
 
     [JsonPropertyName("futureSeasonHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinySeasonDefinition>> FutureSeasons { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinySeasonDefinition>
+    > FutureSeasons { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinySeasonDefinition>>.Empty;
 
     [JsonPropertyName("pastSeasonHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinySeasonDefinition>> PastSeasons { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinySeasonDefinition>
+    > PastSeasons { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinySeasonDefinition>>.Empty;
 }

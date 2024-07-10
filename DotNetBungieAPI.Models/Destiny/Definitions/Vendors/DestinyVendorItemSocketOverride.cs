@@ -6,7 +6,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 /// <summary>
 ///     The information for how the vendor purchase should override a given socket with custom plug data.
 /// </summary>
-public sealed record DestinyVendorItemSocketOverride : IDeepEquatable<DestinyVendorItemSocketOverride>
+public sealed record DestinyVendorItemSocketOverride
+    : IDeepEquatable<DestinyVendorItemSocketOverride>
 {
     /// <summary>
     ///     If this is populated, the socket will be overridden with a specific plug.
@@ -34,9 +35,9 @@ public sealed record DestinyVendorItemSocketOverride : IDeepEquatable<DestinyVen
 
     public bool DeepEquals(DestinyVendorItemSocketOverride other)
     {
-        return other != null &&
-               SingleItem.DeepEquals(other.SingleItem) &&
-               RandomizedOptionsCount == other.RandomizedOptionsCount &&
-               SocketType.DeepEquals(other.SocketType);
+        return other != null
+            && SingleItem.DeepEquals(other.SingleItem)
+            && RandomizedOptionsCount == other.RandomizedOptionsCount
+            && SocketType.DeepEquals(other.SocketType);
     }
 }

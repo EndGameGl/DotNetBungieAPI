@@ -1,12 +1,14 @@
-﻿using DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers.Interfaces;
+﻿using System.Text;
+using DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers.Interfaces;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny.Definitions.SocialCommendations;
 using DotNetBungieAPI.Service.Abstractions;
-using System.Text;
 
 namespace DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers;
 
-internal class SocialCommendationNodeDefinitionGeneratorHandler : BaseDefinitionHandler, IDefinitionHandler
+internal class SocialCommendationNodeDefinitionGeneratorHandler
+    : BaseDefinitionHandler,
+        IDefinitionHandler
 {
     public string FileSubName => nameof(DestinySocialCommendationNodeDefinition);
     public string ClassName => "SocialCommendationNode";
@@ -15,18 +17,22 @@ internal class SocialCommendationNodeDefinitionGeneratorHandler : BaseDefinition
         IBungieClient bungieClient,
         TextWriter textWriter,
         StringBuilder stringBuilder,
-        int indentation)
+        int indentation
+    )
     {
         var definitionCacheLookup = new Dictionary<string, uint>();
 
-        foreach (var definition in bungieClient.Repository.GetAll<DestinySocialCommendationNodeDefinition>())
+        foreach (
+            var definition in bungieClient.Repository.GetAll<DestinySocialCommendationNodeDefinition>()
+        )
         {
             if (definition.DisplayProperties is not null)
             {
                 ValidateAndAddValue(
                     definitionCacheLookup,
                     definition.DisplayProperties.Name,
-                    definition.Hash);
+                    definition.Hash
+                );
             }
             else
             {
@@ -36,24 +42,40 @@ internal class SocialCommendationNodeDefinitionGeneratorHandler : BaseDefinition
 
         foreach (var (key, value) in definitionCacheLookup)
         {
-            if (bungieClient.Repository.TryGetDestinyDefinition<DestinySocialCommendationNodeDefinition>(
-                    value, out var definition))
+            if (
+                bungieClient.Repository.TryGetDestinyDefinition<DestinySocialCommendationNodeDefinition>(
+                    value,
+                    out var definition
+                )
+            )
             {
-                await WriteCommentaryAsync(textWriter, indentation, definition.DisplayProperties?.Description);
+                await WriteCommentaryAsync(
+                    textWriter,
+                    indentation,
+                    definition.DisplayProperties?.Description
+                );
             }
 
-            if (definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1 &&
-                !key.Contains(value.ToString()))
+            if (
+                definitionCacheLookup.Count(x => x.Key.Split("_")[0] == key) > 1
+                && !key.Contains(value.ToString())
+            )
             {
-                await textWriter.WriteLineAsync(StringExtensions.GetIndentedString(
-                    indentation,
-                    $"public const uint {key}_{value} = {value};"));
+                await textWriter.WriteLineAsync(
+                    StringExtensions.GetIndentedString(
+                        indentation,
+                        $"public const uint {key}_{value} = {value};"
+                    )
+                );
             }
             else
             {
-                await textWriter.WriteLineAsync(StringExtensions.GetIndentedString(
-                    indentation,
-                    $"public const uint {key} = {value};"));
+                await textWriter.WriteLineAsync(
+                    StringExtensions.GetIndentedString(
+                        indentation,
+                        $"public const uint {key} = {value};"
+                    )
+                );
             }
         }
     }

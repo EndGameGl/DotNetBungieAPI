@@ -20,20 +20,22 @@ public partial class BungieNetAuthenticationHandler : OAuthHandler<BungieNetAuth
         IOptionsMonitor<BungieNetAuthenticationOptions> options,
         ILoggerFactory logger,
         UrlEncoder encoder,
-        ISystemClock clock) : base(options, logger, encoder, clock)
-    {
-    }
+        ISystemClock clock
+    )
+        : base(options, logger, encoder, clock) { }
 
     protected override async Task<AuthenticationTicket> CreateTicketAsync(
         ClaimsIdentity identity,
         AuthenticationProperties properties,
-        OAuthTokenResponse tokens)
+        OAuthTokenResponse tokens
+    )
     {
         var membershipId = tokens.Response?.RootElement.GetString("membership_id");
         var userInfoEndpoint = string.Format(
             CultureInfo.InvariantCulture,
             Options.UserInformationEndpoint,
-            membershipId);
+            membershipId
+        );
 
         using var request = new HttpRequestMessage(HttpMethod.Get, userInfoEndpoint);
         request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -43,7 +45,8 @@ public partial class BungieNetAuthenticationHandler : OAuthHandler<BungieNetAuth
         using var response = await Backchannel.SendAsync(
             request,
             HttpCompletionOption.ResponseHeadersRead,
-            Context.RequestAborted);
+            Context.RequestAborted
+        );
 
         if (!response.IsSuccessStatusCode)
         {
@@ -51,11 +54,21 @@ public partial class BungieNetAuthenticationHandler : OAuthHandler<BungieNetAuth
             throw new HttpRequestException("An error occurred while retrieving the user profile.");
         }
 
-        using var payload = JsonDocument.Parse(await response.Content.ReadAsStringAsync(Context.RequestAborted));
+        using var payload = JsonDocument.Parse(
+            await response.Content.ReadAsStringAsync(Context.RequestAborted)
+        );
 
         var principal = new ClaimsPrincipal(identity);
-        var context = new OAuthCreatingTicketContext(principal, properties, Context, Scheme, Options, Backchannel,
-            tokens, payload.RootElement);
+        var context = new OAuthCreatingTicketContext(
+            principal,
+            properties,
+            Context,
+            Scheme,
+            Options,
+            Backchannel,
+            tokens,
+            payload.RootElement
+        );
         context.RunClaimActions();
 
         await Events.CreatingTicket(context);
@@ -63,7 +76,8 @@ public partial class BungieNetAuthenticationHandler : OAuthHandler<BungieNetAuth
     }
 
     protected override async Task<OAuthTokenResponse> ExchangeCodeAsync(
-        OAuthCodeExchangeContext context)
+        OAuthCodeExchangeContext context
+    )
     {
         var tokenRequestParameters = new List<KeyValuePair<string, string>>()
         {
@@ -73,7 +87,12 @@ public partial class BungieNetAuthenticationHandler : OAuthHandler<BungieNetAuth
             new("client_secret", Options.ClientSecret)
         };
 
-        if (context.Properties.Items.TryGetValue(OAuthConstants.CodeVerifierKey, out var codeVerifier))
+        if (
+            context.Properties.Items.TryGetValue(
+                OAuthConstants.CodeVerifierKey,
+                out var codeVerifier
+            )
+        )
         {
             tokenRequestParameters.Add(new(OAuthConstants.CodeVerifierKey, codeVerifier!));
             context.Properties.Items.Remove(OAuthConstants.CodeVerifierKey);
@@ -88,17 +107,22 @@ public partial class BungieNetAuthenticationHandler : OAuthHandler<BungieNetAuth
         if (!response.IsSuccessStatusCode)
         {
             await Log.ExchangeCodeErrorAsync(Logger, response, Context.RequestAborted);
-            return OAuthTokenResponse.Failed(new Exception("An error occurred while retrieving an access token."));
+            return OAuthTokenResponse.Failed(
+                new Exception("An error occurred while retrieving an access token.")
+            );
         }
 
-        var payload = JsonDocument.Parse(await response.Content.ReadAsStringAsync(Context.RequestAborted));
+        var payload = JsonDocument.Parse(
+            await response.Content.ReadAsStringAsync(Context.RequestAborted)
+        );
 
         return OAuthTokenResponse.Success(payload);
     }
 
     protected override string BuildChallengeUrl(
-        AuthenticationProperties properties, 
-        string redirectUri)
+        AuthenticationProperties properties,
+        string redirectUri
+    )
     {
         var parameters = new Dictionary<string, string>
         {
@@ -119,7 +143,8 @@ public partial class BungieNetAuthenticationHandler : OAuthHandler<BungieNetAuth
             var codeChallenge = WebEncoders.Base64UrlEncode(challengeBytes);
 
             parameters[OAuthConstants.CodeChallengeKey] = codeChallenge;
-            parameters[OAuthConstants.CodeChallengeMethodKey] = OAuthConstants.CodeChallengeMethodS256;
+            parameters[OAuthConstants.CodeChallengeMethodKey] =
+                OAuthConstants.CodeChallengeMethodS256;
         }
 
         parameters["state"] = Options.StateDataFormat.Protect(properties);
@@ -132,45 +157,53 @@ public partial class BungieNetAuthenticationHandler : OAuthHandler<BungieNetAuth
         internal static async Task UserProfileErrorAsync(
             ILogger logger,
             HttpResponseMessage response,
-            CancellationToken cancellationToken)
+            CancellationToken cancellationToken
+        )
         {
             UserProfileError(
                 logger,
                 response.StatusCode,
                 response.Headers.ToString(),
-                await response.Content.ReadAsStringAsync(cancellationToken));
+                await response.Content.ReadAsStringAsync(cancellationToken)
+            );
         }
 
         internal static async Task ExchangeCodeErrorAsync(
             ILogger logger,
             HttpResponseMessage response,
-            CancellationToken cancellationToken)
+            CancellationToken cancellationToken
+        )
         {
             ExchangeCodeError(
                 logger,
                 response.StatusCode,
                 response.Headers.ToString(),
-                await response.Content.ReadAsStringAsync(cancellationToken));
+                await response.Content.ReadAsStringAsync(cancellationToken)
+            );
         }
 
         [LoggerMessage(
             1,
             LogLevel.Error,
-            "An error occurred while retrieving the user profile: the remote server returned a {Status} response with the following payload: {Headers} {Body}.")]
+            "An error occurred while retrieving the user profile: the remote server returned a {Status} response with the following payload: {Headers} {Body}."
+        )]
         private static partial void UserProfileError(
             ILogger logger,
             System.Net.HttpStatusCode status,
             string headers,
-            string body);
+            string body
+        );
 
         [LoggerMessage(
             2,
             LogLevel.Error,
-            "An error occurred while retrieving an access token: the remote server returned a {Status} response with the following payload: {Headers} {Body}.")]
+            "An error occurred while retrieving an access token: the remote server returned a {Status} response with the following payload: {Headers} {Body}."
+        )]
         private static partial void ExchangeCodeError(
             ILogger logger,
             HttpStatusCode status,
             string headers,
-            string body);
+            string body
+        );
     }
 }

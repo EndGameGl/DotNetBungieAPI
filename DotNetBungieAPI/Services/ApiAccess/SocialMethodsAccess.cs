@@ -20,16 +20,17 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
 
     public SocialMethodsAccess(
         IDotNetBungieApiHttpClient dotNetBungieApiHttpClient,
-        IBungieClientConfiguration configuration)
+        IBungieClientConfiguration configuration
+    )
     {
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _configuration = configuration;
     }
 
-
     public async Task<BungieResponse<BungieFriendListResponse>> GetFriendList(
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.ReadUserData))
             throw new InsufficientScopeException(ApplicationScopes.ReadUserData);
@@ -37,24 +38,30 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .GetFromBungieNetPlatform<BungieFriendListResponse>(
                 "/Social/Friends/",
                 cancellationToken,
-                authorizationToken.AccessToken)
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<BungieFriendRequestListResponse>> GetFriendRequestList(
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.ReadUserData))
             throw new InsufficientScopeException(ApplicationScopes.ReadUserData);
         return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<BungieFriendRequestListResponse>(
-            "/Social/Friends/Requests/", cancellationToken, authorizationToken.AccessToken);
+            "/Social/Friends/Requests/",
+            cancellationToken,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<bool>> IssueFriendRequest(
         string membershipId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.BnetWrite))
             throw new InsufficientScopeException(ApplicationScopes.BnetWrite);
@@ -66,14 +73,19 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(url, cancellationToken, authToken: authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<bool>(
+                url,
+                cancellationToken,
+                authToken: authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<bool>> AcceptFriendRequest(
         string membershipId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.BnetWrite))
             throw new InsufficientScopeException(ApplicationScopes.BnetWrite);
@@ -85,14 +97,19 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(url, cancellationToken, authToken: authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<bool>(
+                url,
+                cancellationToken,
+                authToken: authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<bool>> DeclineFriendRequest(
         string membershipId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.BnetWrite))
             throw new InsufficientScopeException(ApplicationScopes.BnetWrite);
@@ -104,14 +121,19 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(url, cancellationToken, authToken: authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<bool>(
+                url,
+                cancellationToken,
+                authToken: authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<bool>> RemoveFriend(
         string membershipId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.BnetWrite))
             throw new InsufficientScopeException(ApplicationScopes.BnetWrite);
@@ -123,14 +145,19 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(url, cancellationToken, authToken: authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<bool>(
+                url,
+                cancellationToken,
+                authToken: authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
     public async Task<BungieResponse<bool>> RemoveFriendRequest(
         string membershipId,
         AuthorizationTokenData authorizationToken,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.BnetWrite))
             throw new InsufficientScopeException(ApplicationScopes.BnetWrite);
@@ -142,7 +169,11 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .Build();
 
         return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(url, cancellationToken, authToken: authorizationToken.AccessToken)
+            .PostToBungieNetPlatform<bool>(
+                url,
+                cancellationToken,
+                authToken: authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 
@@ -150,7 +181,8 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
         PlatformFriendType friendPlatform,
         AuthorizationTokenData authorizationToken,
         int page = 0,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         var url = StringBuilderPool
             .GetBuilder(cancellationToken)
@@ -163,7 +195,8 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .GetFromBungieNetPlatform<PlatformFriendResponse>(
                 url,
                 cancellationToken,
-                authorizationToken.AccessToken)
+                authorizationToken.AccessToken
+            )
             .ConfigureAwait(false);
     }
 }

@@ -8,11 +8,11 @@ public sealed record DestinyCollectibleStateBlock : IDeepEquatable<DestinyCollec
     public DefinitionHashPointer<DestinyInventoryItemDefinition> ObscuredOverrideItem { get; init; } =
         DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
 
-    [JsonPropertyName("requirements")] public DestinyPresentationNodeRequirementsBlock Requirements { get; init; }
+    [JsonPropertyName("requirements")]
+    public DestinyPresentationNodeRequirementsBlock Requirements { get; init; }
 
     public bool DeepEquals(DestinyCollectibleStateBlock other)
     {
-        return other != null &&
-               Requirements.DeepEquals(other.Requirements);
+        return other != null && Requirements.DeepEquals(other.Requirements);
     }
 }

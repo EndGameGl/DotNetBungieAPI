@@ -5,10 +5,10 @@ namespace DotNetBungieAPI.Models.Destiny.Components;
 public sealed record DestinyCraftableSocketPlugComponent
 {
     [JsonPropertyName("plugItemHash")]
-    public DefinitionHashPointer<DestinyInventoryItemDefinition> PlugItem { get; init; }
-        = DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
+    public DefinitionHashPointer<DestinyInventoryItemDefinition> PlugItem { get; init; } =
+        DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
 
     [JsonPropertyName("failedRequirementIndexes")]
-    public ReadOnlyCollection<int> FailedRequirementIndexes { get; init; }
-        = ReadOnlyCollections<int>.Empty;
+    public ReadOnlyCollection<int> FailedRequirementIndexes { get; init; } =
+        ReadOnlyCollections<int>.Empty;
 }

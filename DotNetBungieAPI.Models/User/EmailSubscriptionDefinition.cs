@@ -16,7 +16,10 @@ public sealed record EmailSubscriptionDefinition
     ///     A dictionary of localized text for the EMail Opt-in setting, keyed by the locale.
     /// </summary>
     [JsonPropertyName("localization")]
-    public ReadOnlyDictionary<string, EmailSettingSubscriptionLocalization> Localization { get; init; } =
+    public ReadOnlyDictionary<
+        string,
+        EmailSettingSubscriptionLocalization
+    > Localization { get; init; } =
         ReadOnlyDictionaries<string, EmailSettingSubscriptionLocalization>.Empty;
 
     /// <summary>

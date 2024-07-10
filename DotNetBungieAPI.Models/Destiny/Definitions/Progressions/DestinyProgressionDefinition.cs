@@ -26,7 +26,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Progressions;
 ///     DestinyCharacterProgressionComponent.progressions, so you don't have to worry about those.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyProgressionDefinition)]
-public sealed record DestinyProgressionDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyProgressionDefinition>
+public sealed record DestinyProgressionDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyProgressionDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -102,28 +105,36 @@ public sealed record DestinyProgressionDefinition : IDestinyDefinition, IDisplay
 
     public bool DeepEquals(DestinyProgressionDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               (Color != null ? Color.DeepEquals(other.Color) : other.Color == null) &&
-               ProgressToNextStepScaling == other.ProgressToNextStepScaling &&
-               RankIcon == other.RankIcon &&
-               RepeatLastStep == other.RepeatLastStep &&
-               RewardItems.DeepEqualsReadOnlyCollections(other.RewardItems) &&
-               Scope == other.Scope &&
-               StorageMappingIndex == other.StorageMappingIndex &&
-               Visible == other.Visible &&
-               Steps.DeepEqualsReadOnlyCollections(other.Steps) &&
-               Source == other.Source &&
-               Faction.DeepEquals(other.Faction) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && (Color != null ? Color.DeepEquals(other.Color) : other.Color == null)
+            && ProgressToNextStepScaling == other.ProgressToNextStepScaling
+            && RankIcon == other.RankIcon
+            && RepeatLastStep == other.RepeatLastStep
+            && RewardItems.DeepEqualsReadOnlyCollections(other.RewardItems)
+            && Scope == other.Scope
+            && StorageMappingIndex == other.StorageMappingIndex
+            && Visible == other.Visible
+            && Steps.DeepEqualsReadOnlyCollections(other.Steps)
+            && Source == other.Source
+            && Faction.DeepEquals(other.Faction)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyProgressionDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

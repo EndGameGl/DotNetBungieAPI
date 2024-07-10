@@ -5,7 +5,8 @@ public sealed record PlatformFriend
     [JsonPropertyName("platformDisplayName")]
     public string PlatformDisplayName { get; init; }
 
-    [JsonPropertyName("friendPlatform")] public PlatformFriendType FriendPlatform { get; init; }
+    [JsonPropertyName("friendPlatform")]
+    public PlatformFriendType FriendPlatform { get; init; }
 
     [JsonPropertyName("destinyMembershipId")]
     public long? DestinyMembershipId { get; init; }

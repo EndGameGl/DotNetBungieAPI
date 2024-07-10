@@ -177,7 +177,8 @@ public sealed record DestinyVendorItemDefinition : IDeepEquatable<DestinyVendorI
     ///     If this is populated, the purchase of this item should redirect to purchasing these other items instead.
     /// </summary>
     [JsonPropertyName("redirectToSaleIndexes")]
-    public ReadOnlyCollection<int> RedirectToSaleIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
+    public ReadOnlyCollection<int> RedirectToSaleIndexes { get; init; } =
+        ReadOnlyCollections<int>.Empty;
 
     [JsonPropertyName("socketOverrides")]
     public ReadOnlyCollection<DestinyVendorItemSocketOverride> SocketOverrides { get; init; } =
@@ -197,32 +198,32 @@ public sealed record DestinyVendorItemDefinition : IDeepEquatable<DestinyVendorI
 
     public bool DeepEquals(DestinyVendorItemDefinition other)
     {
-        return other != null &&
-               VendorItemIndex == other.VendorItemIndex &&
-               Item.DeepEquals(other.Item) &&
-               Quantity == other.Quantity &&
-               FailureIndexes.DeepEqualsReadOnlySimpleCollection(other.FailureIndexes) &&
-               Currencies.DeepEqualsReadOnlyCollections(other.Currencies) &&
-               RefundPolicy == other.RefundPolicy &&
-               RefundTimeLimit == other.RefundTimeLimit &&
-               CreationLevels.DeepEqualsReadOnlyCollections(other.CreationLevels) &&
-               DisplayCategoryIndex == other.DisplayCategoryIndex &&
-               CategoryIndex == other.CategoryIndex &&
-               OriginalCategoryIndex == other.OriginalCategoryIndex &&
-               MinimumLevel == other.MinimumLevel &&
-               MaximumLevel == other.MaximumLevel &&
-               Action.DeepEquals(other.Action) &&
-               DisplayCategory == other.DisplayCategory &&
-               InventoryBucket.DeepEquals(other.InventoryBucket) &&
-               VisibilityScope == other.VisibilityScope &&
-               PurchasableScope == other.PurchasableScope &&
-               Exclusivity == other.Exclusivity &&
-               IsOffer == other.IsOffer &&
-               IsCRM == other.IsCRM &&
-               SortValue == other.SortValue &&
-               ExpirationTooltip == other.ExpirationTooltip &&
-               RedirectToSaleIndexes.DeepEqualsReadOnlySimpleCollection(other.RedirectToSaleIndexes) &&
-               SocketOverrides.DeepEqualsReadOnlyCollections(other.SocketOverrides) &&
-               IsUnpurchasable == other.IsUnpurchasable;
+        return other != null
+            && VendorItemIndex == other.VendorItemIndex
+            && Item.DeepEquals(other.Item)
+            && Quantity == other.Quantity
+            && FailureIndexes.DeepEqualsReadOnlySimpleCollection(other.FailureIndexes)
+            && Currencies.DeepEqualsReadOnlyCollections(other.Currencies)
+            && RefundPolicy == other.RefundPolicy
+            && RefundTimeLimit == other.RefundTimeLimit
+            && CreationLevels.DeepEqualsReadOnlyCollections(other.CreationLevels)
+            && DisplayCategoryIndex == other.DisplayCategoryIndex
+            && CategoryIndex == other.CategoryIndex
+            && OriginalCategoryIndex == other.OriginalCategoryIndex
+            && MinimumLevel == other.MinimumLevel
+            && MaximumLevel == other.MaximumLevel
+            && Action.DeepEquals(other.Action)
+            && DisplayCategory == other.DisplayCategory
+            && InventoryBucket.DeepEquals(other.InventoryBucket)
+            && VisibilityScope == other.VisibilityScope
+            && PurchasableScope == other.PurchasableScope
+            && Exclusivity == other.Exclusivity
+            && IsOffer == other.IsOffer
+            && IsCRM == other.IsCRM
+            && SortValue == other.SortValue
+            && ExpirationTooltip == other.ExpirationTooltip
+            && RedirectToSaleIndexes.DeepEqualsReadOnlySimpleCollection(other.RedirectToSaleIndexes)
+            && SocketOverrides.DeepEqualsReadOnlyCollections(other.SocketOverrides)
+            && IsUnpurchasable == other.IsUnpurchasable;
     }
 }

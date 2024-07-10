@@ -46,13 +46,17 @@ public sealed record DestinyManifest
     ///     WARNING: This is unsafe and subject to change - do not depend on data in these files staying around long-term.
     /// </summary>
     [JsonPropertyName("jsonWorldComponentContentPaths")]
-    public ReadOnlyDictionary<string, ReadOnlyDictionary<string, string>> JsonWorldComponentContentPaths { get; init; }
+    public ReadOnlyDictionary<
+        string,
+        ReadOnlyDictionary<string, string>
+    > JsonWorldComponentContentPaths { get; init; }
 
     [JsonPropertyName("mobileClanBannerDatabasePath")]
     public string MobileClanBannerDatabasePath { get; init; }
 
     [JsonPropertyName("mobileGearCDN")]
-    public ReadOnlyDictionary<string, string> MobileGearCDN { get; init; } = ReadOnlyDictionaries<string, string>.Empty;
+    public ReadOnlyDictionary<string, string> MobileGearCDN { get; init; } =
+        ReadOnlyDictionaries<string, string>.Empty;
 
     /// <summary>
     ///     Information about the "Image Pyramid" for Destiny icons. Where possible, we create smaller versions of Destiny icons. These are found as subfolders under the location of the "original/full size" Destiny images, with the same file name and extension as the original image itself. (this lets us avoid sending largely redundant path info with every entity, at the expense of the smaller versions of the image being less discoverable)

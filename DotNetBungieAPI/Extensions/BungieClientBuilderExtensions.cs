@@ -11,28 +11,34 @@ public static class BungieClientBuilderExtensions
 {
     public static void ConfigureDefaultRepository(
         this IServiceConfigurator<IDestiny2DefinitionRepository> repositoryConfig,
-        Action<DefaultDestiny2DefinitionRepositoryConfiguration> configure)
+        Action<DefaultDestiny2DefinitionRepositoryConfiguration> configure
+    )
     {
         repositoryConfig.Use<
             DefaultDestiny2DefinitionRepository,
-            DefaultDestiny2DefinitionRepositoryConfiguration>(configure);
+            DefaultDestiny2DefinitionRepositoryConfiguration
+        >(configure);
     }
 
     public static void ConfigureDefaultJsonSerializer(
         this IServiceConfigurator<IBungieNetJsonSerializer> serviceConfigurator,
-        Action<DotNetBungieApiJsonSerializerConfiguration> configure)
+        Action<DotNetBungieApiJsonSerializerConfiguration> configure
+    )
     {
         serviceConfigurator.Use<
             DefaultBungieNetJsonSerializer,
-            DotNetBungieApiJsonSerializerConfiguration>(configure);
+            DotNetBungieApiJsonSerializerConfiguration
+        >(configure);
     }
 
     public static void ConfigureDefaultHttpClient(
         this IServiceConfigurator<IDotNetBungieApiHttpClient> serviceConfigurator,
-        Action<DotNetBungieApiHttpClientConfiguration> configure)
+        Action<DotNetBungieApiHttpClientConfiguration> configure
+    )
     {
         serviceConfigurator.Use<
             DefaultDotNetBungieApiHttpClient,
-            DotNetBungieApiHttpClientConfiguration>(configure);
+            DotNetBungieApiHttpClientConfiguration
+        >(configure);
     }
 }

@@ -6,5 +6,6 @@ public sealed record GearSetRegion
     public int RegionIndex { get; init; }
 
     [JsonPropertyName("pattern_list")]
-    public ReadOnlyCollection<ArtArrangement> PatternList { get; init; } = ReadOnlyCollections<ArtArrangement>.Empty;
+    public ReadOnlyCollection<ArtArrangement> PatternList { get; init; } =
+        ReadOnlyCollections<ArtArrangement>.Empty;
 }

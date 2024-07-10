@@ -16,7 +16,10 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
 ///     tree of Presentation Nodes to be created
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyPresentationNodeDefinition)]
-public sealed record DestinyPresentationNodeDefinition : IDestinyDefinition, IDisplayProperties, IDeepEquatable<DestinyPresentationNodeDefinition>
+public sealed record DestinyPresentationNodeDefinition
+    : IDestinyDefinition,
+        IDisplayProperties,
+        IDeepEquatable<DestinyPresentationNodeDefinition>
 {
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
@@ -35,7 +38,8 @@ public sealed record DestinyPresentationNodeDefinition : IDestinyDefinition, IDi
     [JsonPropertyName("rootViewIcon")]
     public BungieNetResource RootViewIcon { get; init; }
 
-    [JsonPropertyName("nodeType")] public DestinyPresentationNodeType NodeType { get; init; }
+    [JsonPropertyName("nodeType")]
+    public DestinyPresentationNodeType NodeType { get; init; }
 
     /// <summary>
     ///     Indicates whether this presentation node's state is determined on a per-character or on an account-wide basis.
@@ -108,38 +112,52 @@ public sealed record DestinyPresentationNodeDefinition : IDestinyDefinition, IDi
     ///     multiple parents.
     /// </summary>
     [JsonPropertyName("parentNodeHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>> ParentNodes { get; init; } =
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyPresentationNodeDefinition>
+    > ParentNodes { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
 
     public bool DeepEquals(DestinyPresentationNodeDefinition other)
     {
-        return other != null &&
-               DisplayProperties.DeepEquals(other.DisplayProperties) &&
-               (Children != null ? Children.DeepEquals(other.Children) : other.Children == null) &&
-               DisableChildSubscreenNavigation == other.DisableChildSubscreenNavigation &&
-               DisplayStyle == other.DisplayStyle &&
-               MaxCategoryRecordScore == other.MaxCategoryRecordScore &&
-               NodeType == other.NodeType &&
-               Objective.DeepEquals(other.Objective) &&
-               ParentNodes.DeepEqualsReadOnlyCollections(other.ParentNodes) &&
-               PresentationNodeType == other.PresentationNodeType &&
-               (Requirements != null ? Requirements.DeepEquals(other.Requirements) : other.Requirements == null) &&
-               Scope == other.Scope &&
-               ScreenStyle == other.ScreenStyle &&
-               Traits.DeepEqualsReadOnlyCollections(other.Traits) &&
-               TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds) &&
-               OriginalIcon == other.OriginalIcon &&
-               RootViewIcon == other.RootViewIcon &&
-               CompletionRecord.DeepEquals(other.CompletionRecord) &&
-               Blacklisted == other.Blacklisted &&
-               Hash == other.Hash &&
-               Index == other.Index &&
-               Redacted == other.Redacted;
+        return other != null
+            && DisplayProperties.DeepEquals(other.DisplayProperties)
+            && (Children != null ? Children.DeepEquals(other.Children) : other.Children == null)
+            && DisableChildSubscreenNavigation == other.DisableChildSubscreenNavigation
+            && DisplayStyle == other.DisplayStyle
+            && MaxCategoryRecordScore == other.MaxCategoryRecordScore
+            && NodeType == other.NodeType
+            && Objective.DeepEquals(other.Objective)
+            && ParentNodes.DeepEqualsReadOnlyCollections(other.ParentNodes)
+            && PresentationNodeType == other.PresentationNodeType
+            && (
+                Requirements != null
+                    ? Requirements.DeepEquals(other.Requirements)
+                    : other.Requirements == null
+            )
+            && Scope == other.Scope
+            && ScreenStyle == other.ScreenStyle
+            && Traits.DeepEqualsReadOnlyCollections(other.Traits)
+            && TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds)
+            && OriginalIcon == other.OriginalIcon
+            && RootViewIcon == other.RootViewIcon
+            && CompletionRecord.DeepEquals(other.CompletionRecord)
+            && Blacklisted == other.Blacklisted
+            && Hash == other.Hash
+            && Index == other.Index
+            && Redacted == other.Redacted;
     }
 
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyPresentationNodeDefinition;
-    [JsonPropertyName("blacklisted")] public bool Blacklisted { get; init; }
-    [JsonPropertyName("hash")] public uint Hash { get; init; }
-    [JsonPropertyName("index")] public int Index { get; init; }
-    [JsonPropertyName("redacted")] public bool Redacted { get; init; }
+
+    [JsonPropertyName("blacklisted")]
+    public bool Blacklisted { get; init; }
+
+    [JsonPropertyName("hash")]
+    public uint Hash { get; init; }
+
+    [JsonPropertyName("index")]
+    public int Index { get; init; }
+
+    [JsonPropertyName("redacted")]
+    public bool Redacted { get; init; }
 }

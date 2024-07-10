@@ -16,7 +16,6 @@ public sealed record DestinyItemVersionDefinition : IDeepEquatable<DestinyItemVe
 
     public bool DeepEquals(DestinyItemVersionDefinition other)
     {
-        return other != null &&
-               PowerCap.DeepEquals(other.PowerCap);
+        return other != null && PowerCap.DeepEquals(other.PowerCap);
     }
 }

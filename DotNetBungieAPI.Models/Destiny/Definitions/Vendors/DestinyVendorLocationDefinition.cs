@@ -5,7 +5,8 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Vendors;
 /// <summary>
 ///     These definitions represent vendors' locations and relevant display information at different times in the game.
 /// </summary>
-public sealed record DestinyVendorLocationDefinition : IDeepEquatable<DestinyVendorLocationDefinition>
+public sealed record DestinyVendorLocationDefinition
+    : IDeepEquatable<DestinyVendorLocationDefinition>
 {
     /// <summary>
     ///     The relative path to the background image representing this Vendor at this location, for use in a banner.
@@ -23,8 +24,8 @@ public sealed record DestinyVendorLocationDefinition : IDeepEquatable<DestinyVen
 
     public bool DeepEquals(DestinyVendorLocationDefinition other)
     {
-        return other != null &&
-               BackgroundImagePath == other.BackgroundImagePath &&
-               Destination.DeepEquals(other.Destination);
+        return other != null
+            && BackgroundImagePath == other.BackgroundImagePath
+            && Destination.DeepEquals(other.Destination);
     }
 }

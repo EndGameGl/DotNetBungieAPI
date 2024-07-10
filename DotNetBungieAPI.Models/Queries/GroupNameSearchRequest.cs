@@ -4,7 +4,9 @@ namespace DotNetBungieAPI.Models.Queries;
 
 public class GroupNameSearchRequest
 {
-    [JsonPropertyName("groupName")] public string GroupName { get; init; }
+    [JsonPropertyName("groupName")]
+    public string GroupName { get; init; }
 
-    [JsonPropertyName("groupType")] public GroupType GroupType { get; init; }
+    [JsonPropertyName("groupType")]
+    public GroupType GroupType { get; init; }
 }
