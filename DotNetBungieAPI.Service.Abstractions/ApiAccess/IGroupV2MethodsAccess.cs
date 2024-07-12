@@ -342,6 +342,23 @@ public interface IGroupV2MethodsAccess
     );
 
     /// <summary>
+    ///     Get the list of edits made to a given group. Only accessible to group Admins and above.
+    ///     <para />
+    ///     Required scopes: AdminGroups
+    /// </summary>
+    /// <param name="authorizationToken">Auth token for respective user</param>
+    /// <param name="currentpage">Page number (starting with 1). Each page has a fixed size of 50 entries.</param>
+    /// <param name="groupId">Group ID whose edit history you are fetching</param>
+    /// <param name="cancellationToken">Cancellation token</param>
+    /// <returns></returns>
+    Task<BungieResponse<SearchResultOfGroupEditHistory>> GetGroupEditHistory(
+        AuthorizationTokenData authorizationToken,
+        int currentpage,
+        long groupId,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
     ///     An administrative method to allow the founder of a group or clan to give up their position to another admin
     ///     permanently.
     /// </summary>

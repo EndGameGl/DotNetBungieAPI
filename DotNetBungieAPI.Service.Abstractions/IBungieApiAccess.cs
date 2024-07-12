@@ -58,6 +58,11 @@ public interface IBungieApiAccess
     IFireteamMethodsAccess Fireteam { get; }
 
     /// <summary>
+    ///     Access to https://bungie.net/Platform/FireteamFinder endpoint
+    /// </summary>
+    IFireteamFinderMethodsAccess FireteamFinder { get; }
+
+    /// <summary>
     ///     Access to https://bungie.net/Platform/Social endpoint
     /// </summary>
     ISocialMethodsAccess Social { get; }

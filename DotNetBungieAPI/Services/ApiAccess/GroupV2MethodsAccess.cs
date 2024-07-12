@@ -876,4 +876,30 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             )
             .ConfigureAwait(false);
     }
+
+    public async Task<BungieResponse<SearchResultOfGroupEditHistory>> GetGroupEditHistory(
+        AuthorizationTokenData authorizationToken,
+        int currentpage,
+        long groupId,
+        CancellationToken cancellationToken = default
+    )
+    {
+        if (!_configuration.HasSufficientRights(ApplicationScopes.AdminGroups))
+            throw new InsufficientScopeException(ApplicationScopes.AdminGroups);
+
+        var url = StringBuilderPool
+            .GetBuilder(cancellationToken)
+            .Append("/GroupV2/")
+            .AddUrlParam(groupId.ToString())
+            .Append("EditHistory/")
+            .Build();
+
+        return await _dotNetBungieApiHttpClient
+            .GetFromBungieNetPlatform<SearchResultOfGroupEditHistory>(
+                url,
+                cancellationToken,
+                authToken: authorizationToken.AccessToken
+            )
+            .ConfigureAwait(false);
+    }
 }

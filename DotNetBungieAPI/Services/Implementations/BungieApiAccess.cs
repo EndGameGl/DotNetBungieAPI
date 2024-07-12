@@ -17,6 +17,7 @@ internal sealed class BungieApiAccess : IBungieApiAccess
         ICommunityContentMethodsAccess communityContentMethodsAccess,
         ITrendingMethodsAccess trendingMethodsAccess,
         IMiscMethodsAccess miscMethodsAccess,
+        IFireteamFinderMethodsAccess fireteamFinderMethodsAccess,
         ISocialMethodsAccess socialMethodsAccess,
         IRenderApiAccess renderApiAccess
     )
@@ -31,6 +32,7 @@ internal sealed class BungieApiAccess : IBungieApiAccess
         Community = communityContentMethodsAccess;
         Trending = trendingMethodsAccess;
         Fireteam = fireteamMethodsAccess;
+        FireteamFinder = fireteamFinderMethodsAccess;
         Misc = miscMethodsAccess;
         Social = socialMethodsAccess;
         RenderApi = renderApiAccess;
@@ -46,6 +48,7 @@ internal sealed class BungieApiAccess : IBungieApiAccess
     public ICommunityContentMethodsAccess Community { get; }
     public ITrendingMethodsAccess Trending { get; }
     public IFireteamMethodsAccess Fireteam { get; }
+    public IFireteamFinderMethodsAccess FireteamFinder { get; }
     public ISocialMethodsAccess Social { get; }
     public IMiscMethodsAccess Misc { get; }
     public IRenderApiAccess RenderApi { get; }
