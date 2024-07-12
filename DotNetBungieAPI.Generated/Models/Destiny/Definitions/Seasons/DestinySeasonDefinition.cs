@@ -20,15 +20,19 @@ public class DestinySeasonDefinition
     [JsonPropertyName("endDate")]
     public DateTime? EndDate { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.Seasons.DestinySeasonPassDefinition>("Destiny.Definitions.Seasons.DestinySeasonPassDefinition")]
     [JsonPropertyName("seasonPassHash")]
     public uint? SeasonPassHash { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.DestinyProgressionDefinition>("Destiny.Definitions.DestinyProgressionDefinition")]
     [JsonPropertyName("seasonPassProgressionHash")]
     public uint? SeasonPassProgressionHash { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("artifactItemHash")]
     public uint? ArtifactItemHash { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
     [JsonPropertyName("sealPresentationNodeHash")]
     public uint? SealPresentationNodeHash { get; set; }
 
@@ -38,6 +42,7 @@ public class DestinySeasonDefinition
     [JsonPropertyName("acts")]
     public List<Destiny.Definitions.Seasons.DestinySeasonActDefinition> Acts { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
     [JsonPropertyName("seasonalChallengesPresentationNodeHash")]
     public uint? SeasonalChallengesPresentationNodeHash { get; set; }
 

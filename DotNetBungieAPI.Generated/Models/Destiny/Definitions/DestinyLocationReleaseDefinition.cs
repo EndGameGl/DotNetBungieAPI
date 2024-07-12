@@ -29,12 +29,14 @@ public class DestinyLocationReleaseDefinition
     /// <summary>
     ///     The Destination being pointed to by this location.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyDestinationDefinition>("Destiny.Definitions.DestinyDestinationDefinition")]
     [JsonPropertyName("destinationHash")]
     public uint? DestinationHash { get; set; }
 
     /// <summary>
     ///     The Activity being pointed to by this location.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
     public uint? ActivityHash { get; set; }
 

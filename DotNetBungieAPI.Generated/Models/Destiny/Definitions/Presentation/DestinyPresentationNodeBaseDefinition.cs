@@ -11,12 +11,14 @@ public class DestinyPresentationNodeBaseDefinition
     [JsonPropertyName("traitIds")]
     public List<string> TraitIds { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.Traits.DestinyTraitDefinition>("Destiny.Definitions.Traits.DestinyTraitDefinition")]
     [JsonPropertyName("traitHashes")]
     public List<uint> TraitHashes { get; set; }
 
     /// <summary>
     ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under multiple parents.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
     [JsonPropertyName("parentNodeHashes")]
     public List<uint> ParentNodeHashes { get; set; }
 

@@ -19,6 +19,7 @@ public class DestinyInventoryItemDefinition
     /// <summary>
     ///     If this item has a collectible related to it, this is the hash identifier of that collectible entry.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Collectibles.DestinyCollectibleDefinition>("Destiny.Definitions.Collectibles.DestinyCollectibleDefinition")]
     [JsonPropertyName("collectibleHash")]
     public uint? CollectibleHash { get; set; }
 
@@ -232,6 +233,7 @@ public class DestinyInventoryItemDefinition
     /// <summary>
     ///     If the item has any related Lore (DestinyLoreDefinition), this will be the hash identifier you can use to look up the lore definition.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Lore.DestinyLoreDefinition>("Destiny.Definitions.Lore.DestinyLoreDefinition")]
     [JsonPropertyName("loreHash")]
     public uint? LoreHash { get; set; }
 
@@ -240,6 +242,7 @@ public class DestinyInventoryItemDefinition
     /// <para />
     ///     This happens sometimes when summarizing possible rewards in a tooltip. This is the item displayed instead, if it exists.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("summaryItemHash")]
     public uint? SummaryItemHash { get; set; }
 
@@ -284,6 +287,7 @@ public class DestinyInventoryItemDefinition
     /// <para />
     ///     The algorithm for these is, unfortunately, volatile. If you believe you see a miscategorized item, please let us know on the Bungie API forums.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyItemCategoryDefinition>("Destiny.Definitions.DestinyItemCategoryDefinition")]
     [JsonPropertyName("itemCategoryHashes")]
     public List<uint> ItemCategoryHashes { get; set; }
 
@@ -326,6 +330,7 @@ public class DestinyInventoryItemDefinition
     /// <summary>
     ///     Since we also have a breaker type definition, this is the hash for that breaker type for your convenience. Whether you use the enum or hash and look up the definition depends on what's cleanest for your code.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.BreakerTypes.DestinyBreakerTypeDefinition>("Destiny.Definitions.BreakerTypes.DestinyBreakerTypeDefinition")]
     [JsonPropertyName("breakerTypeHash")]
     public uint? BreakerTypeHash { get; set; }
 
@@ -340,6 +345,7 @@ public class DestinyInventoryItemDefinition
     /// <summary>
     ///     Theoretically, an item can have many possible damage types. In *practice*, this is not true, but just in case weapons start being made that have multiple (for instance, an item where a socket has reusable plugs for every possible damage type that you can choose from freely), this field will return all of the possible damage types that are available to the weapon by default.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyDamageTypeDefinition>("Destiny.Definitions.DestinyDamageTypeDefinition")]
     [JsonPropertyName("damageTypeHashes")]
     public List<uint> DamageTypeHashes { get; set; }
 
@@ -370,12 +376,14 @@ public class DestinyInventoryItemDefinition
     /// <para />
     ///     I will likely regret leaving in the enumeration versions of these properties, but for now they're very convenient.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyDamageTypeDefinition>("Destiny.Definitions.DestinyDamageTypeDefinition")]
     [JsonPropertyName("defaultDamageTypeHash")]
     public uint? DefaultDamageTypeHash { get; set; }
 
     /// <summary>
     ///     If this item is related directly to a Season of Destiny, this is the hash identifier for that season.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Seasons.DestinySeasonDefinition>("Destiny.Definitions.Seasons.DestinySeasonDefinition")]
     [JsonPropertyName("seasonHash")]
     public uint? SeasonHash { get; set; }
 

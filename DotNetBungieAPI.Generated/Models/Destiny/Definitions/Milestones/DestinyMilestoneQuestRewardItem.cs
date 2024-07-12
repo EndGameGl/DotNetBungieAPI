@@ -10,6 +10,7 @@ public class DestinyMilestoneQuestRewardItem
     /// <summary>
     ///     The quest reward item *may* be associated with a vendor. If so, this is that vendor. Use this hash to look up the DestinyVendorDefinition.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyVendorDefinition>("Destiny.Definitions.DestinyVendorDefinition")]
     [JsonPropertyName("vendorHash")]
     public uint? VendorHash { get; set; }
 
@@ -22,6 +23,7 @@ public class DestinyMilestoneQuestRewardItem
     /// <summary>
     ///     The hash identifier for the item in question. Use it to look up the item's DestinyInventoryItemDefinition.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemHash")]
     public uint? ItemHash { get; set; }
 

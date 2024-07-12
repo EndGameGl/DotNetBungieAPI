@@ -32,6 +32,7 @@ public class DestinyVendorComponent
     /// <summary>
     ///     The unique identifier for the vendor. Use it to look up their DestinyVendorDefinition.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyVendorDefinition>("Destiny.Definitions.DestinyVendorDefinition")]
     [JsonPropertyName("vendorHash")]
     public uint? VendorHash { get; set; }
 

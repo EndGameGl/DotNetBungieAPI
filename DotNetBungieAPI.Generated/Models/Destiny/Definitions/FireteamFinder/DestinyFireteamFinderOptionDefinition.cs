@@ -8,6 +8,7 @@ public class DestinyFireteamFinderOptionDefinition
     [JsonPropertyName("descendingSortPriority")]
     public int? DescendingSortPriority { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionGroupDefinition>("Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionGroupDefinition")]
     [JsonPropertyName("groupHash")]
     public uint? GroupHash { get; set; }
 

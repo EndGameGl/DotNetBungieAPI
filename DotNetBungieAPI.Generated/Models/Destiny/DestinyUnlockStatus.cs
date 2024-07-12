@@ -10,6 +10,7 @@ public class DestinyUnlockStatus
     /// <summary>
     ///     The hash identifier for the Unlock Flag. Use to lookup DestinyUnlockDefinition for static data. Not all unlocks have human readable data - in fact, most don't. But when they do, it can be very useful to show. Even if they don't have human readable data, you might be able to infer the meaning of an unlock flag with a bit of experimentation...
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyUnlockDefinition>("Destiny.Definitions.DestinyUnlockDefinition")]
     [JsonPropertyName("unlockHash")]
     public uint? UnlockHash { get; set; }
 

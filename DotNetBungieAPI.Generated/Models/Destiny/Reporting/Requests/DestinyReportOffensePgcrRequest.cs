@@ -12,6 +12,7 @@ public class DestinyReportOffensePgcrRequest
     /// <summary>
     ///     So you've decided to report someone instead of cursing them and their descendants. Well, okay then. This is the category or categorie(s) of infractions for which you are reporting the user. These are hash identifiers that map to DestinyReportReasonCategoryDefinition entries.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.Reporting.DestinyReportReasonCategoryDefinition>("Destiny.Definitions.Reporting.DestinyReportReasonCategoryDefinition")]
     [JsonPropertyName("reasonCategoryHashes")]
     public List<uint> ReasonCategoryHashes { get; set; }
 

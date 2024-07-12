@@ -14,6 +14,7 @@ public class DestinyItemActionRequiredItemDefinition
     /// <summary>
     ///     The hash identifier of the item you need to have. Use it to look up the DestinyInventoryItemDefinition for more info.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemHash")]
     public uint? ItemHash { get; set; }
 

@@ -5,6 +5,7 @@ public class DestinyFireteamFinderGetCharacterActivityAccessResponse
     /// <summary>
     ///     A map of fireteam finder activity graph hashes to visibility and availability states.
     /// </summary>
+    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition>("Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition")]
     [JsonPropertyName("fireteamFinderActivityGraphStates")]
     public Dictionary<uint, FireteamFinder.DestinyFireteamFinderActivityGraphState> FireteamFinderActivityGraphStates { get; set; }
 }

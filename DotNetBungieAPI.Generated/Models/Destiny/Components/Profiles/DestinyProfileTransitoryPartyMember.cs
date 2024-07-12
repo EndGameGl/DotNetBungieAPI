@@ -16,6 +16,7 @@ public class DestinyProfileTransitoryPartyMember
     /// <summary>
     ///     The identifier for the DestinyInventoryItemDefinition of the player's emblem.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("emblemHash")]
     public uint? EmblemHash { get; set; }
 

@@ -10,6 +10,7 @@ public class DestinyObjectivePerkEntryDefinition
     /// <summary>
     ///     The hash identifier of the DestinySandboxPerkDefinition that will be applied to the character.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinySandboxPerkDefinition>("Destiny.Definitions.DestinySandboxPerkDefinition")]
     [JsonPropertyName("perkHash")]
     public uint? PerkHash { get; set; }
 

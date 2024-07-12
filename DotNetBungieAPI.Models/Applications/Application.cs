@@ -2,6 +2,9 @@
 
 public sealed record Application
 {
+    [JsonPropertyName("applicationType")]
+    public OAuthApplicationType ApplicationType { get; init; }
+
     /// <summary>
     ///     Unique ID assigned to the application
     /// </summary>

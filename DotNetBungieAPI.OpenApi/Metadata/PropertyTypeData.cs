@@ -18,6 +18,12 @@ public class PropertyTypeData
     public bool IsHashMap { get; private set; } = false;
     public bool IsNullable { get; private set; } = true;
 
+    public bool MappedToDefinition { get; private set; } = false;
+    public string? MappedDefinitionTypeReference { get; private set; } = null;
+
+    public bool HashMapValueMappedToDefinition { get; private set; } = false;
+    public string? HashMapValueMappedDefinitionTypeReference { get; private set; } = null;
+
     public List<PropertyTypeData> GenericProperties { get; } = new();
 
     public PropertyTypeData(string typeName, OpenApiComponentSchema openApiComponentSchema)
@@ -41,6 +47,14 @@ public class PropertyTypeData
         }
         else if (openApiComponentSchema.Type is not ("object" or "array"))
         {
+            if (openApiComponentSchema.MappedDefinition is not null)
+            {
+                MappedToDefinition = true;
+                MappedDefinitionTypeReference = openApiComponentSchema
+                    .MappedDefinition
+                    .TypeReference;
+            }
+
             IsValue = true;
             TypeReference = openApiComponentSchema.Type;
             Format = openApiComponentSchema.Format;
@@ -58,26 +72,15 @@ public class PropertyTypeData
         IsNullable = schema.Nullable;
         switch (schema)
         {
-            case { TypeReference: not null }:
-                IsClass = true;
-                return;
-
-            // simple object ref
-            case { Type: "object", AllOf.Count: > 0 }:
-                IsClass = true;
-                return;
-
             // dictionary with key specified
             case { Type: "object", AdditionalProperties: not null, DictionaryKey: not null }:
+                if (schema.MappedDefinition is not null)
+                {
+                    MappedToDefinition = true;
+                    MappedDefinitionTypeReference = schema.MappedDefinition.TypeReference;
+                }
                 IsHashMap = true;
                 GenericProperties.Add(new PropertyTypeData("", schema.DictionaryKey));
-                GenericProperties.Add(new PropertyTypeData("", schema.AdditionalProperties));
-                return;
-
-            // dictionary with key unspecified
-            case { Type: "object", AdditionalProperties: not null, DictionaryKey: null }:
-                IsHashMap = true;
-                GenericProperties.Add(new PropertyTypeData("", schema.AdditionalProperties));
                 GenericProperties.Add(new PropertyTypeData("", schema.AdditionalProperties));
                 return;
 
@@ -89,6 +92,11 @@ public class PropertyTypeData
             // list
             case { Type: "array", Items: not null }:
                 IsCollection = true;
+                if (schema.MappedDefinition is not null)
+                {
+                    MappedToDefinition = true;
+                    MappedDefinitionTypeReference = schema.MappedDefinition.TypeReference;
+                }
                 switch (schema.Items)
                 {
                     // T is object
@@ -106,36 +114,6 @@ public class PropertyTypeData
                         GenericProperties.Add(new PropertyTypeData("", schema.Items));
                         return;
                 }
-            // DateTime
-            case { Type: "string", Format: "date-time" }:
-                IsValue = true;
-                return;
-
-            // string
-            case { Type: "string" }:
-                IsValue = true;
-                return;
-
-            // float or double
-            case { Type: "number" }:
-                IsValue = true;
-                return;
-
-            // enum
-            case { Type: "integer", EnumReference: not null }:
-                IsValue = true;
-                IsEnum = true;
-                return;
-
-            // int variable
-            case { Type: "integer" }:
-                IsValue = true;
-                return;
-
-            // bool
-            case { Type: "boolean" }:
-                IsValue = true;
-                return;
 
             default:
                 throw new Exception("Type couldn't be processed");

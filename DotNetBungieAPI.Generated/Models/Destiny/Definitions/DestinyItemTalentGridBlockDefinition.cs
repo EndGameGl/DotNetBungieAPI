@@ -10,6 +10,7 @@ public class DestinyItemTalentGridBlockDefinition
     /// <summary>
     ///     The hash identifier of the DestinyTalentGridDefinition attached to this item.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyTalentGridDefinition>("Destiny.Definitions.DestinyTalentGridDefinition")]
     [JsonPropertyName("talentGridHash")]
     public uint? TalentGridHash { get; set; }
 

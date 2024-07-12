@@ -26,30 +26,35 @@ public class DestinyLoadoutConstantsDefinition
     /// <summary>
     ///     A list of the socket category hashes to be filtered out of loadout item preview displays.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.Sockets.DestinySocketCategoryDefinition>("Destiny.Definitions.Sockets.DestinySocketCategoryDefinition")]
     [JsonPropertyName("loadoutPreviewFilterOutSocketCategoryHashes")]
     public List<uint> LoadoutPreviewFilterOutSocketCategoryHashes { get; set; }
 
     /// <summary>
     ///     A list of the socket type hashes to be filtered out of loadout item preview displays.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.Sockets.DestinySocketTypeDefinition>("Destiny.Definitions.Sockets.DestinySocketTypeDefinition")]
     [JsonPropertyName("loadoutPreviewFilterOutSocketTypeHashes")]
     public List<uint> LoadoutPreviewFilterOutSocketTypeHashes { get; set; }
 
     /// <summary>
     ///     A list of the loadout name hashes in index order, for convenience.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.Loadouts.DestinyLoadoutNameDefinition>("Destiny.Definitions.Loadouts.DestinyLoadoutNameDefinition")]
     [JsonPropertyName("loadoutNameHashes")]
     public List<uint> LoadoutNameHashes { get; set; }
 
     /// <summary>
     ///     A list of the loadout icon hashes in index order, for convenience.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.Loadouts.DestinyLoadoutIconDefinition>("Destiny.Definitions.Loadouts.DestinyLoadoutIconDefinition")]
     [JsonPropertyName("loadoutIconHashes")]
     public List<uint> LoadoutIconHashes { get; set; }
 
     /// <summary>
     ///     A list of the loadout color hashes in index order, for convenience.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.Loadouts.DestinyLoadoutColorDefinition>("Destiny.Definitions.Loadouts.DestinyLoadoutColorDefinition")]
     [JsonPropertyName("loadoutColorHashes")]
     public List<uint> LoadoutColorHashes { get; set; }
 

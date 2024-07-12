@@ -8,18 +8,21 @@ public class DestinyObjectiveProgress
     /// <summary>
     ///     The unique identifier of the Objective being referred to. Use to look up the DestinyObjectiveDefinition in static data.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyObjectiveDefinition>("Destiny.Definitions.DestinyObjectiveDefinition")]
     [JsonPropertyName("objectiveHash")]
     public uint? ObjectiveHash { get; set; }
 
     /// <summary>
     ///     If the Objective has a Destination associated with it, this is the unique identifier of the Destination being referred to. Use to look up the DestinyDestinationDefinition in static data. This will give localized data about *where* in the universe the objective should be achieved.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyDestinationDefinition>("Destiny.Definitions.DestinyDestinationDefinition")]
     [JsonPropertyName("destinationHash")]
     public uint? DestinationHash { get; set; }
 
     /// <summary>
     ///     If the Objective has an Activity associated with it, this is the unique identifier of the Activity being referred to. Use to look up the DestinyActivityDefinition in static data. This will give localized data about *what* you should be playing for the objective to be achieved.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
     public uint? ActivityHash { get; set; }
 

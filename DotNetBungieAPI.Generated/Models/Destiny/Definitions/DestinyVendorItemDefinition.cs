@@ -16,6 +16,7 @@ public class DestinyVendorItemDefinition
     /// <para />
     ///     Note that a vendor can sell the same item in multiple ways, so don't assume that itemHash is a unique identifier for this entity.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemHash")]
     public uint? ItemHash { get; set; }
 
@@ -102,6 +103,7 @@ public class DestinyVendorItemDefinition
     /// <summary>
     ///     The inventory bucket into which this item will be placed upon purchase.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryBucketDefinition>("Destiny.Definitions.DestinyInventoryBucketDefinition")]
     [JsonPropertyName("inventoryBucketHash")]
     public uint? InventoryBucketHash { get; set; }
 

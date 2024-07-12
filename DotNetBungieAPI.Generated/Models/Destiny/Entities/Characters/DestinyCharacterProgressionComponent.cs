@@ -10,18 +10,21 @@ public class DestinyCharacterProgressionComponent
     /// <para />
     ///     Not all progressions have user-facing data, but those who do will have that data contained in the DestinyProgressionDefinition.
     /// </summary>
+    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.DestinyProgressionDefinition>("Destiny.Definitions.DestinyProgressionDefinition")]
     [JsonPropertyName("progressions")]
     public Dictionary<uint, Destiny.DestinyProgression> Progressions { get; set; }
 
     /// <summary>
     ///     A dictionary of all known Factions, keyed by the Faction's hash. It contains data about this character's status with the faction.
     /// </summary>
+    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.DestinyFactionDefinition>("Destiny.Definitions.DestinyFactionDefinition")]
     [JsonPropertyName("factions")]
     public Dictionary<uint, Destiny.Progression.DestinyFactionProgression> Factions { get; set; }
 
     /// <summary>
     ///     Milestones are related to the simple progressions shown in the game, but return additional and hopefully helpful information for users about the specifics of the Milestone's status.
     /// </summary>
+    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.Milestones.DestinyMilestoneDefinition>("Destiny.Definitions.Milestones.DestinyMilestoneDefinition")]
     [JsonPropertyName("milestones")]
     public Dictionary<uint, Destiny.Milestones.DestinyMilestone> Milestones { get; set; }
 
@@ -40,6 +43,7 @@ public class DestinyCharacterProgressionComponent
     /// <para />
     ///     This dictionary is keyed by the item's hash: which you can use to look up the name and description for the overall task(s) implied by the objective. The value is the list of objectives for this item, and their statuses.
     /// </summary>
+    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("uninstancedItemObjectives")]
     public Dictionary<uint, List<Destiny.Quests.DestinyObjectiveProgress>> UninstancedItemObjectives { get; set; }
 
@@ -48,6 +52,7 @@ public class DestinyCharacterProgressionComponent
     /// <para />
     ///     This dictionary is keyed by item hash, which you can use to look up the corresponding item definition. The value is the list of perks states for the item.
     /// </summary>
+    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("uninstancedItemPerks")]
     public Dictionary<uint, Destiny.Entities.Items.DestinyItemPerksComponent> UninstancedItemPerks { get; set; }
 
@@ -56,6 +61,7 @@ public class DestinyCharacterProgressionComponent
     /// <para />
     ///     For each checklist returned, its value is itself a Dictionary keyed by the checklist's hash identifier with the value being a boolean indicating if it's been discovered yet.
     /// </summary>
+    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.Checklists.DestinyChecklistDefinition>("Destiny.Definitions.Checklists.DestinyChecklistDefinition")]
     [JsonPropertyName("checklists")]
     public Dictionary<uint, Dictionary<uint, bool>> Checklists { get; set; }
 

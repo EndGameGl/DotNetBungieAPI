@@ -19,9 +19,11 @@ public class DestinyChecklistEntryDefinition
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.DestinyDestinationDefinition>("Destiny.Definitions.DestinyDestinationDefinition")]
     [JsonPropertyName("destinationHash")]
     public uint? DestinationHash { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.DestinyLocationDefinition>("Destiny.Definitions.DestinyLocationDefinition")]
     [JsonPropertyName("locationHash")]
     public uint? LocationHash { get; set; }
 
@@ -33,12 +35,15 @@ public class DestinyChecklistEntryDefinition
     [JsonPropertyName("bubbleHash")]
     public uint? BubbleHash { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
     public uint? ActivityHash { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemHash")]
     public uint? ItemHash { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.DestinyVendorDefinition>("Destiny.Definitions.DestinyVendorDefinition")]
     [JsonPropertyName("vendorHash")]
     public uint? VendorHash { get; set; }
 

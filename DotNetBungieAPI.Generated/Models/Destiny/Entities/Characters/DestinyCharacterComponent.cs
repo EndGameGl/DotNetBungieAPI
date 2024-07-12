@@ -58,18 +58,21 @@ public class DestinyCharacterComponent
     /// <summary>
     ///     Use this hash to look up the character's DestinyRaceDefinition.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyRaceDefinition>("Destiny.Definitions.DestinyRaceDefinition")]
     [JsonPropertyName("raceHash")]
     public uint? RaceHash { get; set; }
 
     /// <summary>
     ///     Use this hash to look up the character's DestinyGenderDefinition.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyGenderDefinition>("Destiny.Definitions.DestinyGenderDefinition")]
     [JsonPropertyName("genderHash")]
     public uint? GenderHash { get; set; }
 
     /// <summary>
     ///     Use this hash to look up the character's DestinyClassDefinition.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyClassDefinition>("Destiny.Definitions.DestinyClassDefinition")]
     [JsonPropertyName("classHash")]
     public uint? ClassHash { get; set; }
 
@@ -112,6 +115,7 @@ public class DestinyCharacterComponent
     /// <summary>
     ///     The hash of the currently equipped emblem for the user. Can be used to look up the DestinyInventoryItemDefinition.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("emblemHash")]
     public uint? EmblemHash { get; set; }
 
@@ -142,6 +146,7 @@ public class DestinyCharacterComponent
     /// <summary>
     ///     If this Character has a title assigned to it, this is the identifier of the DestinyRecordDefinition that has that title information.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Records.DestinyRecordDefinition>("Destiny.Definitions.Records.DestinyRecordDefinition")]
     [JsonPropertyName("titleRecordHash")]
     public uint? TitleRecordHash { get; set; }
 }

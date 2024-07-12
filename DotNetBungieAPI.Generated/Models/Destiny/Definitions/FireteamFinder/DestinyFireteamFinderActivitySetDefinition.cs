@@ -5,15 +5,19 @@ public class DestinyFireteamFinderActivitySetDefinition
     [JsonPropertyName("maximumPartySize")]
     public int? MaximumPartySize { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionDefinition>("Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionDefinition")]
     [JsonPropertyName("optionHashes")]
     public List<uint> OptionHashes { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderLabelDefinition>("Destiny.Definitions.FireteamFinder.DestinyFireteamFinderLabelDefinition")]
     [JsonPropertyName("labelHashes")]
     public List<uint> LabelHashes { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition>("Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition")]
     [JsonPropertyName("activityGraphHashes")]
     public List<uint> ActivityGraphHashes { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHashes")]
     public List<uint> ActivityHashes { get; set; }
 

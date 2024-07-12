@@ -12,6 +12,7 @@ public class DestinyMilestoneActivityVariantDefinition
     /// <para />
     ///     Frequently, that will be the only distinguishing characteristics in practice, which is somewhat of a bummer.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
     public uint? ActivityHash { get; set; }
 

@@ -12,6 +12,7 @@ public class DestinyMilestoneActivityDefinition
     /// <para />
     ///     If you care about the specific difficulty modes and variations, use the activities under "Variants".
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("conceptualActivityHash")]
     public uint? ConceptualActivityHash { get; set; }
 
@@ -24,6 +25,7 @@ public class DestinyMilestoneActivityDefinition
     /// <para />
     ///     If a Milestone could ever split the variants' active status conditionally, they should all have their own DestinyMilestoneActivityDefinition instead! The potential duplication will be worth it for the obviousness of processing and use.
     /// </summary>
+    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("variants")]
     public Dictionary<uint, Destiny.Definitions.Milestones.DestinyMilestoneActivityVariantDefinition> Variants { get; set; }
 }

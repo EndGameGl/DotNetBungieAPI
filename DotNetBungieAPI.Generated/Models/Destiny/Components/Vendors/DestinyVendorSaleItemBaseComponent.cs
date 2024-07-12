@@ -18,6 +18,7 @@ public class DestinyVendorSaleItemBaseComponent
     /// <summary>
     ///     The hash of the item being sold, as a quick shortcut for looking up the DestinyInventoryItemDefinition of the sale item.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemHash")]
     public uint? ItemHash { get; set; }
 
@@ -26,6 +27,7 @@ public class DestinyVendorSaleItemBaseComponent
     /// <para />
     ///     If you don't do this, certain items whose styles are being overridden by socketed items - such as the "Recycle Shader" item - would show whatever their default icon/style is, and it wouldn't be pretty or look accurate.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("overrideStyleItemHash")]
     public uint? OverrideStyleItemHash { get; set; }
 

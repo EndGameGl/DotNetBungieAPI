@@ -5,6 +5,7 @@ public class DestinyItemInstanceEnergy
     /// <summary>
     ///     The type of energy for this item. Plugs that require Energy can only be inserted if they have the "Any" Energy Type or the matching energy type of this item. This is a reference to the DestinyEnergyTypeDefinition for the energy type, where you can find extended info about it.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.EnergyTypes.DestinyEnergyTypeDefinition>("Destiny.Definitions.EnergyTypes.DestinyEnergyTypeDefinition")]
     [JsonPropertyName("energyTypeHash")]
     public uint? EnergyTypeHash { get; set; }
 

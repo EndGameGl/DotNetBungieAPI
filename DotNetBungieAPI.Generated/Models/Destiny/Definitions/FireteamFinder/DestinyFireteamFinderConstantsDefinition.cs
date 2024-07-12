@@ -5,9 +5,11 @@ public class DestinyFireteamFinderConstantsDefinition
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition>("Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition")]
     [JsonPropertyName("fireteamFinderActivityGraphRootCategoryHashes")]
     public List<uint> FireteamFinderActivityGraphRootCategoryHashes { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("allFireteamFinderActivityHashes")]
     public List<uint> AllFireteamFinderActivityHashes { get; set; }
 

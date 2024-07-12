@@ -20,9 +20,11 @@ public class DestinyFireteamFinderHostLobbyRequest
     [JsonPropertyName("listingValues")]
     public List<FireteamFinder.DestinyFireteamFinderListingValue> ListingValues { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition>("Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition")]
     [JsonPropertyName("activityGraphHash")]
     public uint? ActivityGraphHash { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
     public uint? ActivityHash { get; set; }
 }

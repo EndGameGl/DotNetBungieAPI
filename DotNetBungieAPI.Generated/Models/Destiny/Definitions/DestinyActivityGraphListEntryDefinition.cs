@@ -10,6 +10,7 @@ public class DestinyActivityGraphListEntryDefinition
     /// <summary>
     ///     The hash identifier of the DestinyActivityGraphDefinition that should be shown when opening the director.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Director.DestinyActivityGraphDefinition>("Destiny.Definitions.Director.DestinyActivityGraphDefinition")]
     [JsonPropertyName("activityGraphHash")]
     public uint? ActivityGraphHash { get; set; }
 }

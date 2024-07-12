@@ -8,6 +8,7 @@ public class DestinyItemTranslationBlockDefinition
     [JsonPropertyName("weaponPatternIdentifier")]
     public string? WeaponPatternIdentifier { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.DestinySandboxPatternDefinition>("Destiny.Definitions.DestinySandboxPatternDefinition")]
     [JsonPropertyName("weaponPatternHash")]
     public uint? WeaponPatternHash { get; set; }
 

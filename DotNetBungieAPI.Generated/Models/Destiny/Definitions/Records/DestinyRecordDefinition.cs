@@ -14,9 +14,11 @@ public class DestinyRecordDefinition
     [JsonPropertyName("presentationInfo")]
     public Destiny.Definitions.Presentation.DestinyPresentationChildBlock? PresentationInfo { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.Lore.DestinyLoreDefinition>("Destiny.Definitions.Lore.DestinyLoreDefinition")]
     [JsonPropertyName("loreHash")]
     public uint? LoreHash { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyObjectiveDefinition>("Destiny.Definitions.DestinyObjectiveDefinition")]
     [JsonPropertyName("objectiveHashes")]
     public List<uint> ObjectiveHashes { get; set; }
 
@@ -73,12 +75,14 @@ public class DestinyRecordDefinition
     [JsonPropertyName("traitIds")]
     public List<string> TraitIds { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.Traits.DestinyTraitDefinition>("Destiny.Definitions.Traits.DestinyTraitDefinition")]
     [JsonPropertyName("traitHashes")]
     public List<uint> TraitHashes { get; set; }
 
     /// <summary>
     ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under multiple parents.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
     [JsonPropertyName("parentNodeHashes")]
     public List<uint> ParentNodeHashes { get; set; }
 

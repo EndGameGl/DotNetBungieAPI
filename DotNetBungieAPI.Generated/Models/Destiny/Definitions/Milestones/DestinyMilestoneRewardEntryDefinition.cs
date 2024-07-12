@@ -26,6 +26,7 @@ public class DestinyMilestoneRewardEntryDefinition
     /// <summary>
     ///     If this reward is redeemed at a Vendor, this is the hash of the Vendor to go to in order to redeem the reward. Use this hash to look up the DestinyVendorDefinition.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyVendorDefinition>("Destiny.Definitions.DestinyVendorDefinition")]
     [JsonPropertyName("vendorHash")]
     public uint? VendorHash { get; set; }
 

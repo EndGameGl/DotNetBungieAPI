@@ -11,21 +11,27 @@ public class DestinyFireteamFinderActivityGraphDefinition
     [JsonPropertyName("isPlayerElectedDifficultyNode")]
     public bool? IsPlayerElectedDifficultyNode { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition>("Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition")]
     [JsonPropertyName("parentHash")]
     public uint? ParentHash { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition>("Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition")]
     [JsonPropertyName("children")]
     public List<uint> Children { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition>("Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition")]
     [JsonPropertyName("selfAndAllDescendantHashes")]
     public List<uint> SelfAndAllDescendantHashes { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivitySetDefinition>("Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivitySetDefinition")]
     [JsonPropertyName("relatedActivitySetHashes")]
     public List<uint> RelatedActivitySetHashes { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivitySetDefinition>("Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivitySetDefinition")]
     [JsonPropertyName("specificActivitySetHash")]
     public uint? SpecificActivitySetHash { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("relatedActivityHashes")]
     public List<uint> RelatedActivityHashes { get; set; }
 
@@ -35,6 +41,7 @@ public class DestinyFireteamFinderActivityGraphDefinition
     [JsonPropertyName("relatedInteractableActivities")]
     public List<Destiny.Definitions.FireteamFinder.DestinyActivityInteractableReference> RelatedInteractableActivities { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyLocationDefinition>("Destiny.Definitions.DestinyLocationDefinition")]
     [JsonPropertyName("relatedLocationHashes")]
     public List<uint> RelatedLocationHashes { get; set; }
 

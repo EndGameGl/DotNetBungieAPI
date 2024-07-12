@@ -14,6 +14,7 @@ public class DestinyItemPerkEntryDefinition
     /// <summary>
     ///     A hash identifier for the DestinySandboxPerkDefinition being provided on the item.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinySandboxPerkDefinition>("Destiny.Definitions.DestinySandboxPerkDefinition")]
     [JsonPropertyName("perkHash")]
     public uint? PerkHash { get; set; }
 

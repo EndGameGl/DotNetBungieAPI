@@ -17,6 +17,7 @@ public class DestinySocialCommendationDefinition
     [JsonPropertyName("activityGivingLimit")]
     public int? ActivityGivingLimit { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition>("Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition")]
     [JsonPropertyName("parentCommendationNodeHash")]
     public uint? ParentCommendationNodeHash { get; set; }
 

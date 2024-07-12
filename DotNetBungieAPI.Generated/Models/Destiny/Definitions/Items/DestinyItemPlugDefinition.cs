@@ -36,18 +36,21 @@ public class DestinyItemPlugDefinition
     /// <summary>
     ///     If inserting this plug requires materials, this is the hash identifier for looking up the DestinyMaterialRequirementSetDefinition for those requirements.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyMaterialRequirementSetDefinition>("Destiny.Definitions.DestinyMaterialRequirementSetDefinition")]
     [JsonPropertyName("insertionMaterialRequirementHash")]
     public uint? InsertionMaterialRequirementHash { get; set; }
 
     /// <summary>
     ///     In the game, if you're inspecting a plug item directly, this will be the item shown with the plug attached. Look up the DestinyInventoryItemDefinition for this hash for the item.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("previewItemOverrideHash")]
     public uint? PreviewItemOverrideHash { get; set; }
 
     /// <summary>
     ///     It's not enough for the plug to be inserted. It has to be enabled as well. For it to be enabled, it may require materials. This is the hash identifier for the DestinyMaterialRequirementSetDefinition for those requirements, if there is one.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyMaterialRequirementSetDefinition>("Destiny.Definitions.DestinyMaterialRequirementSetDefinition")]
     [JsonPropertyName("enabledMaterialRequirementHash")]
     public uint? EnabledMaterialRequirementHash { get; set; }
 

@@ -26,6 +26,7 @@ public class DestinyVendorInteractionDefinition
     /// <summary>
     ///     If this interaction dialog is about a quest, this is the questline related to the interaction. You can use this to show the quest overview, or even the character's status with the quest if you use it to find the character's current Quest Step by checking their inventory against this questlineItemHash's DestinyInventoryItemDefinition.setData.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("questlineItemHash")]
     public uint? QuestlineItemHash { get; set; }
 

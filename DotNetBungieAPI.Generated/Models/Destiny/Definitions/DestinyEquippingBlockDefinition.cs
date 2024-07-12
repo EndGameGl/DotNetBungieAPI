@@ -8,6 +8,7 @@ public class DestinyEquippingBlockDefinition
     /// <summary>
     ///     If the item is part of a gearset, this is a reference to that gearset item.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("gearsetItemHash")]
     public uint? GearsetItemHash { get; set; }
 
@@ -28,6 +29,7 @@ public class DestinyEquippingBlockDefinition
     /// <summary>
     ///     An equipped item *must* be equipped in an Equipment Slot. This is the hash identifier of the DestinyEquipmentSlotDefinition into which it must be equipped.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyEquipmentSlotDefinition>("Destiny.Definitions.DestinyEquipmentSlotDefinition")]
     [JsonPropertyName("equipmentSlotTypeHash")]
     public uint? EquipmentSlotTypeHash { get; set; }
 

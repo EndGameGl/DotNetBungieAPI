@@ -29,6 +29,7 @@ public class DestinySocketTypeDefinition
     [JsonPropertyName("plugWhitelist")]
     public List<Destiny.Definitions.Sockets.DestinyPlugWhitelistEntryDefinition> PlugWhitelist { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.Sockets.DestinySocketCategoryDefinition>("Destiny.Definitions.Sockets.DestinySocketCategoryDefinition")]
     [JsonPropertyName("socketCategoryHash")]
     public uint? SocketCategoryHash { get; set; }
 

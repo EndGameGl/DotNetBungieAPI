@@ -10,12 +10,14 @@ public class DestinyFactionVendorDefinition
     /// <summary>
     ///     The faction vendor hash.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyVendorDefinition>("Destiny.Definitions.DestinyVendorDefinition")]
     [JsonPropertyName("vendorHash")]
     public uint? VendorHash { get; set; }
 
     /// <summary>
     ///     The hash identifier for a Destination at which this vendor may be located. Each destination where a Vendor may exist will only ever have a single entry.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyDestinationDefinition>("Destiny.Definitions.DestinyDestinationDefinition")]
     [JsonPropertyName("destinationHash")]
     public uint? DestinationHash { get; set; }
 

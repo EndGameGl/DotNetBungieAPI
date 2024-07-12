@@ -22,6 +22,7 @@ public class DestinyItemTalentGridComponent
     /// <para />
     ///     You can use this hash to lookup the DestinyTalentGridDefinition attached to this item, which will be crucial for understanding the node values on the item.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyTalentGridDefinition>("Destiny.Definitions.DestinyTalentGridDefinition")]
     [JsonPropertyName("talentGridHash")]
     public uint? TalentGridHash { get; set; }
 

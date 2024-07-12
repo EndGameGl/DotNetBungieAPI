@@ -8,6 +8,7 @@ public class DestinyItemSourceBlockDefinition
     /// <summary>
     ///     The list of hash identifiers for Reward Sources that hint where the item can be found (DestinyRewardSourceDefinition).
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyRewardSourceDefinition>("Destiny.Definitions.DestinyRewardSourceDefinition")]
     [JsonPropertyName("sourceHashes")]
     public List<uint> SourceHashes { get; set; }
 

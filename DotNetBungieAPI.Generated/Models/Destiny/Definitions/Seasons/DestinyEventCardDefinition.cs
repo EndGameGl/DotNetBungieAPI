@@ -17,15 +17,19 @@ public class DestinyEventCardDefinition
     [JsonPropertyName("images")]
     public Destiny.Definitions.Seasons.DestinyEventCardImages? Images { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
     [JsonPropertyName("triumphsPresentationNodeHash")]
     public uint? TriumphsPresentationNodeHash { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
     [JsonPropertyName("sealPresentationNodeHash")]
     public uint? SealPresentationNodeHash { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("ticketCurrencyItemHash")]
     public uint? TicketCurrencyItemHash { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.DestinyVendorDefinition>("Destiny.Definitions.DestinyVendorDefinition")]
     [JsonPropertyName("ticketVendorHash")]
     public uint? TicketVendorHash { get; set; }
 

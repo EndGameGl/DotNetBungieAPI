@@ -8,12 +8,14 @@ public class DestinyItemSocketEntryDefinition
     /// <summary>
     ///     All sockets have a type, and this is the hash identifier for this particular type. Use it to look up the DestinySocketTypeDefinition: read there for more information on how socket types affect the behavior of the socket.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Sockets.DestinySocketTypeDefinition>("Destiny.Definitions.Sockets.DestinySocketTypeDefinition")]
     [JsonPropertyName("socketTypeHash")]
     public uint? SocketTypeHash { get; set; }
 
     /// <summary>
     ///     If a valid hash, this is the hash identifier for the DestinyInventoryItemDefinition representing the Plug that will be initially inserted into the item on item creation. Otherwise, this Socket will either start without a plug inserted, or will have one randomly inserted.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("singleInitialItemHash")]
     public uint? SingleInitialItemHash { get; set; }
 
@@ -50,6 +52,7 @@ public class DestinyItemSocketEntryDefinition
     /// <para />
     ///      As of Shadowkeep, these will come up much more frequently and be driven by game content rather than custom curation.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Sockets.DestinyPlugSetDefinition>("Destiny.Definitions.Sockets.DestinyPlugSetDefinition")]
     [JsonPropertyName("reusablePlugSetHash")]
     public uint? ReusablePlugSetHash { get; set; }
 
@@ -58,6 +61,7 @@ public class DestinyItemSocketEntryDefinition
     /// <para />
     ///      If null, the item has no randomized plugs.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Sockets.DestinyPlugSetDefinition>("Destiny.Definitions.Sockets.DestinyPlugSetDefinition")]
     [JsonPropertyName("randomizedPlugSetHash")]
     public uint? RandomizedPlugSetHash { get; set; }
 

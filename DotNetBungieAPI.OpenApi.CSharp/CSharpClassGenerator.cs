@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using DotNetBungieAPI.OpenApi.CodeGeneration;
+using DotNetBungieAPI.OpenApi.Extensions;
 using DotNetBungieAPI.OpenApi.Metadata;
 
 namespace DotNetBungieAPI.OpenApi.CSharp;
@@ -50,6 +51,32 @@ public class CSharpClassGenerator : ModelGeneratorBase
             if (propertyTypeData.Description is not null)
             {
                 await WriteComment(true, propertyTypeData.Description);
+            }
+
+            if (propertyTypeData.IsHashMap)
+            {
+                if (propertyTypeData.MappedToDefinition)
+                {
+                    await WriteLineAsync(
+                        $"{Indent}[Destiny2DefinitionDictionaryKey<{propertyTypeData.MappedDefinitionTypeReference!.GetFullTypeName()}>(\"{propertyTypeData.MappedDefinitionTypeReference!.GetFullTypeName()}\")]"
+                    );
+                }
+            }
+
+            if (propertyTypeData.MappedToDefinition)
+            {
+                if (propertyTypeData.IsValue)
+                {
+                    await WriteLineAsync(
+                        $"{Indent}[Destiny2Definition<{propertyTypeData.MappedDefinitionTypeReference!.GetFullTypeName()}>(\"{propertyTypeData.MappedDefinitionTypeReference!.GetFullTypeName()}\")]"
+                    );
+                }
+                else if (propertyTypeData.IsCollection)
+                {
+                    await WriteLineAsync(
+                        $"{Indent}[Destiny2DefinitionList<{propertyTypeData.MappedDefinitionTypeReference!.GetFullTypeName()}>(\"{propertyTypeData.MappedDefinitionTypeReference!.GetFullTypeName()}\")]"
+                    );
+                }
             }
 
             await WriteLineAsync(

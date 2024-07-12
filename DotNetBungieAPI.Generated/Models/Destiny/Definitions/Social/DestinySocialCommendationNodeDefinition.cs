@@ -17,18 +17,21 @@ public class DestinySocialCommendationNodeDefinition
     [JsonPropertyName("tintedIcon")]
     public string? TintedIcon { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition>("Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition")]
     [JsonPropertyName("parentCommendationNodeHash")]
     public uint? ParentCommendationNodeHash { get; set; }
 
     /// <summary>
     ///     A list of hashes that map to child commendation nodes. Only the root commendations node is expected to have child nodes.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition>("Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition")]
     [JsonPropertyName("childCommendationNodeHashes")]
     public List<uint> ChildCommendationNodeHashes { get; set; }
 
     /// <summary>
     ///     A list of hashes that map to child commendations.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.Social.DestinySocialCommendationDefinition>("Destiny.Definitions.Social.DestinySocialCommendationDefinition")]
     [JsonPropertyName("childCommendationHashes")]
     public List<uint> ChildCommendationHashes { get; set; }
 

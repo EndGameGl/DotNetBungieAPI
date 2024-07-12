@@ -20,6 +20,7 @@ public class DestinyNodeActivationRequirement
     /// <para />
     ///     In this case, only a single DestinyMaterialRequirementSetDefinition will be chosen from this list, and we won't know which one will be chosen until an instance of the item is created.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyMaterialRequirementSetDefinition>("Destiny.Definitions.DestinyMaterialRequirementSetDefinition")]
     [JsonPropertyName("materialRequirementHashes")]
     public List<uint> MaterialRequirementHashes { get; set; }
 }

@@ -31,6 +31,7 @@ public class DestinyDisplayCategoryDefinition
     /// <para />
     ///     Specific categories can now have thier own distinct progression, apparently. So that's cool.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyProgressionDefinition>("Destiny.Definitions.DestinyProgressionDefinition")]
     [JsonPropertyName("progressionHash")]
     public uint? ProgressionHash { get; set; }
 

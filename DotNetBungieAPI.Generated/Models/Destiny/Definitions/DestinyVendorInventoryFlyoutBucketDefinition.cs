@@ -14,6 +14,7 @@ public class DestinyVendorInventoryFlyoutBucketDefinition
     /// <summary>
     ///     The inventory bucket whose contents should be shown.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryBucketDefinition>("Destiny.Definitions.DestinyInventoryBucketDefinition")]
     [JsonPropertyName("inventoryBucketHash")]
     public uint? InventoryBucketHash { get; set; }
 

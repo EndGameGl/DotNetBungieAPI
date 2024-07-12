@@ -126,6 +126,7 @@ public class DestinyTalentNodeDefinition
     /// <summary>
     ///     Talent nodes can be associated with a piece of Lore, generally rendered in a tooltip. This is the hash identifier of the lore element to show, if there is one to be show.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Lore.DestinyLoreDefinition>("Destiny.Definitions.Lore.DestinyLoreDefinition")]
     [JsonPropertyName("loreHash")]
     public uint? LoreHash { get; set; }
 

@@ -2,6 +2,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Craftables;
 
 public class DestinyCraftableSocketComponent
 {
+    [Destiny2Definition<Destiny.Definitions.Sockets.DestinyPlugSetDefinition>("Destiny.Definitions.Sockets.DestinyPlugSetDefinition")]
     [JsonPropertyName("plugSetHash")]
     public uint? PlugSetHash { get; set; }
 

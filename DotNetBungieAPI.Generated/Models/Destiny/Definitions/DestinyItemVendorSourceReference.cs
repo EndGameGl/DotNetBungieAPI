@@ -12,6 +12,7 @@ public class DestinyItemVendorSourceReference
     /// <summary>
     ///     The identifier for the vendor that may sell this item.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyVendorDefinition>("Destiny.Definitions.DestinyVendorDefinition")]
     [JsonPropertyName("vendorHash")]
     public uint? VendorHash { get; set; }
 

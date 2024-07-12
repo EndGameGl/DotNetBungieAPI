@@ -14,6 +14,7 @@ public class DestinyCurrenciesComponent
     /// <para />
     ///     This allows you to see whether the requesting character can afford any given purchase/action without having to re-create this list itself.
     /// </summary>
+    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemQuantities")]
     public Dictionary<uint, int> ItemQuantities { get; set; }
 }

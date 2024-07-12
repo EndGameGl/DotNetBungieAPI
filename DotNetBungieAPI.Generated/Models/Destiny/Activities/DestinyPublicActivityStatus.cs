@@ -8,12 +8,14 @@ public class DestinyPublicActivityStatus
     /// <summary>
     ///     Active Challenges for the activity, if any - represented as hashes for DestinyObjectiveDefinitions.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyObjectiveDefinition>("Destiny.Definitions.DestinyObjectiveDefinition")]
     [JsonPropertyName("challengeObjectiveHashes")]
     public List<uint> ChallengeObjectiveHashes { get; set; }
 
     /// <summary>
     ///     The active modifiers on this activity, if any - represented as hashes for DestinyActivityModifierDefinitions.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition>("Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition")]
     [JsonPropertyName("modifierHashes")]
     public List<uint> ModifierHashes { get; set; }
 

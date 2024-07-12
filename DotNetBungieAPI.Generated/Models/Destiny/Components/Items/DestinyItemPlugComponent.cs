@@ -16,6 +16,7 @@ public class DestinyItemPlugComponent
     /// <summary>
     ///     The hash identifier of the DestinyInventoryItemDefinition that represents this plug.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("plugItemHash")]
     public uint? PlugItemHash { get; set; }
 

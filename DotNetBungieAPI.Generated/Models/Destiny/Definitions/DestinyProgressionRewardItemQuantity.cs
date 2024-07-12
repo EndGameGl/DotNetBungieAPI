@@ -17,6 +17,7 @@ public class DestinyProgressionRewardItemQuantity
     /// <summary>
     ///     The hash identifier for the item in question. Use it to look up the item's DestinyInventoryItemDefinition.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemHash")]
     public uint? ItemHash { get; set; }
 

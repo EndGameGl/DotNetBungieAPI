@@ -38,18 +38,21 @@ public class DestinyProfileComponent
     /// <para />
     ///      It turns out that Stadia Pro subscriptions will give access to seasons but only while playing on Stadia and with an active subscription. So some users (users who have Stadia Pro but choose to play on some other platform) won't see these as available: it will be whatever seasons are available for the platform on which they last played.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.Seasons.DestinySeasonDefinition>("Destiny.Definitions.Seasons.DestinySeasonDefinition")]
     [JsonPropertyName("seasonHashes")]
     public List<uint> SeasonHashes { get; set; }
 
     /// <summary>
     ///     A list of hashes for event cards that a profile owns. Unlike most values in versionsOwned, these stay with the profile across all platforms.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.Seasons.DestinyEventCardDefinition>("Destiny.Definitions.Seasons.DestinyEventCardDefinition")]
     [JsonPropertyName("eventCardHashesOwned")]
     public List<uint> EventCardHashesOwned { get; set; }
 
     /// <summary>
     ///     If populated, this is a reference to the season that is currently active.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Seasons.DestinySeasonDefinition>("Destiny.Definitions.Seasons.DestinySeasonDefinition")]
     [JsonPropertyName("currentSeasonHash")]
     public uint? CurrentSeasonHash { get; set; }
 
@@ -62,24 +65,28 @@ public class DestinyProfileComponent
     /// <summary>
     ///     If populated, this is a reference to the event card that is currently active.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Seasons.DestinyEventCardDefinition>("Destiny.Definitions.Seasons.DestinyEventCardDefinition")]
     [JsonPropertyName("activeEventCardHash")]
     public uint? ActiveEventCardHash { get; set; }
 
     /// <summary>
     ///     The 'current' Guardian Rank value, which starts at rank 1. This rank value will drop at the start of a new season to your 'renewed' rank from the previous season.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition>("Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition")]
     [JsonPropertyName("currentGuardianRank")]
     public int? CurrentGuardianRank { get; set; }
 
     /// <summary>
     ///     The 'lifetime highest' Guardian Rank value, which starts at rank 1. This rank value should never go down.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition>("Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition")]
     [JsonPropertyName("lifetimeHighestGuardianRank")]
     public int? LifetimeHighestGuardianRank { get; set; }
 
     /// <summary>
     ///     The seasonal 'renewed' Guardian Rank value. This rank value resets at the start of each new season to the highest-earned non-advanced rank.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition>("Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition")]
     [JsonPropertyName("renewedGuardianRank")]
     public int? RenewedGuardianRank { get; set; }
 }

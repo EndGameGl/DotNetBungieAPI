@@ -29,6 +29,7 @@ public class DestinyProfileRecordsComponent
     /// <summary>
     ///     If this profile is tracking a record, this is the hash identifier of the record it is tracking.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Records.DestinyRecordDefinition>("Destiny.Definitions.Records.DestinyRecordDefinition")]
     [JsonPropertyName("trackedRecordHash")]
     public uint? TrackedRecordHash { get; set; }
 
@@ -38,12 +39,14 @@ public class DestinyProfileRecordsComponent
     /// <summary>
     ///     The hash for the root presentation node definition of Triumph categories.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
     [JsonPropertyName("recordCategoriesRootNodeHash")]
     public uint? RecordCategoriesRootNodeHash { get; set; }
 
     /// <summary>
     ///     The hash for the root presentation node definition of Triumph Seals.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
     [JsonPropertyName("recordSealsRootNodeHash")]
     public uint? RecordSealsRootNodeHash { get; set; }
 }

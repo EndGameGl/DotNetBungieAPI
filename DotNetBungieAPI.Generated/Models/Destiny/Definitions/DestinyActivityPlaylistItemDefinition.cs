@@ -8,12 +8,14 @@ public class DestinyActivityPlaylistItemDefinition
     /// <summary>
     ///     The hash identifier of the Activity that can be played. Use it to look up the DestinyActivityDefinition.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
     public uint? ActivityHash { get; set; }
 
     /// <summary>
     ///     If this playlist entry had an activity mode directly defined on it, this will be the hash of that mode.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityModeDefinition>("Destiny.Definitions.DestinyActivityModeDefinition")]
     [JsonPropertyName("directActivityModeHash")]
     public uint? DirectActivityModeHash { get; set; }
 
@@ -26,6 +28,7 @@ public class DestinyActivityPlaylistItemDefinition
     /// <summary>
     ///     The hash identifiers for Activity Modes relevant to this entry.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyActivityModeDefinition>("Destiny.Definitions.DestinyActivityModeDefinition")]
     [JsonPropertyName("activityModeHashes")]
     public List<uint> ActivityModeHashes { get; set; }
 

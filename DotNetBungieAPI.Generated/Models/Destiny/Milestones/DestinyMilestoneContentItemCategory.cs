@@ -8,6 +8,7 @@ public class DestinyMilestoneContentItemCategory
     [JsonPropertyName("title")]
     public string? Title { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemHashes")]
     public List<uint> ItemHashes { get; set; }
 }

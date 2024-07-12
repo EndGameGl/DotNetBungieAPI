@@ -5,6 +5,7 @@ public class DestinyObjectiveDisplayProperties
     /// <summary>
     ///     The activity associated with this objective in the context of this item, if any.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
     public uint? ActivityHash { get; set; }
 

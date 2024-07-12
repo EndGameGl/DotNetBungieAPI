@@ -46,12 +46,14 @@ public class DestinyPresentationNodeDefinition
     /// <summary>
     ///     If this presentation node shows a related objective (for instance, if it tracks the progress of its children), the objective being tracked is indicated here.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyObjectiveDefinition>("Destiny.Definitions.DestinyObjectiveDefinition")]
     [JsonPropertyName("objectiveHash")]
     public uint? ObjectiveHash { get; set; }
 
     /// <summary>
     ///     If this presentation node has an associated "Record" that you can accomplish for completing its children, this is the identifier of that Record.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Records.DestinyRecordDefinition>("Destiny.Definitions.Records.DestinyRecordDefinition")]
     [JsonPropertyName("completionRecordHash")]
     public uint? CompletionRecordHash { get; set; }
 
@@ -94,12 +96,14 @@ public class DestinyPresentationNodeDefinition
     [JsonPropertyName("traitIds")]
     public List<string> TraitIds { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.Traits.DestinyTraitDefinition>("Destiny.Definitions.Traits.DestinyTraitDefinition")]
     [JsonPropertyName("traitHashes")]
     public List<uint> TraitHashes { get; set; }
 
     /// <summary>
     ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under multiple parents.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
     [JsonPropertyName("parentNodeHashes")]
     public List<uint> ParentNodeHashes { get; set; }
 

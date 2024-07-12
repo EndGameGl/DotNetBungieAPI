@@ -8,6 +8,7 @@ public class DestinyMilestone
     /// <summary>
     ///     The unique identifier for the Milestone. Use it to look up the DestinyMilestoneDefinition, so you can combine the other data in this contract with static definition data.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Milestones.DestinyMilestoneDefinition>("Destiny.Definitions.Milestones.DestinyMilestoneDefinition")]
     [JsonPropertyName("milestoneHash")]
     public uint? MilestoneHash { get; set; }
 
@@ -36,6 +37,7 @@ public class DestinyMilestone
     /// <para />
     ///     Before we even use it, it's already deprecated! How much of a bummer is that? We need more data.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyVendorDefinition>("Destiny.Definitions.DestinyVendorDefinition")]
     [JsonPropertyName("vendorHashes")]
     public List<uint> VendorHashes { get; set; }
 

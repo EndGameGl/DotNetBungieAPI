@@ -20,6 +20,7 @@ public class DestinyProgressionLevelRequirementDefinition
     /// <para />
     ///     Look up the DestinyProgressionDefinition with this hash for more information about the progression in question.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyProgressionDefinition>("Destiny.Definitions.DestinyProgressionDefinition")]
     [JsonPropertyName("progressionHash")]
     public uint? ProgressionHash { get; set; }
 

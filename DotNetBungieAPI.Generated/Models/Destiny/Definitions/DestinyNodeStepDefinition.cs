@@ -46,6 +46,7 @@ public class DestinyNodeStepDefinition
     /// <summary>
     ///     If the step provides a damage type, this will be the hash identifier used to look up the damage type's DestinyDamageTypeDefinition.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyDamageTypeDefinition>("Destiny.Definitions.DestinyDamageTypeDefinition")]
     [JsonPropertyName("damageTypeHash")]
     public uint? DamageTypeHash { get; set; }
 
@@ -80,6 +81,7 @@ public class DestinyNodeStepDefinition
     /// <summary>
     ///     The list of hash identifiers for Perks (DestinySandboxPerkDefinition) that are applied when this step is active. Perks provide a variety of benefits and modifications - examine DestinySandboxPerkDefinition to learn more.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.DestinySandboxPerkDefinition>("Destiny.Definitions.DestinySandboxPerkDefinition")]
     [JsonPropertyName("perkHashes")]
     public List<uint> PerkHashes { get; set; }
 
@@ -94,6 +96,7 @@ public class DestinyNodeStepDefinition
     /// <summary>
     ///     When the step provides stat benefits on the item or character, this is the list of hash identifiers for stats (DestinyStatDefinition) that are provided.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyStatDefinition>("Destiny.Definitions.DestinyStatDefinition")]
     [JsonPropertyName("statHashes")]
     public List<uint> StatHashes { get; set; }
 

@@ -10,6 +10,7 @@ public class DestinyActivity
     /// <summary>
     ///     The hash identifier of the Activity. Use this to look up the DestinyActivityDefinition of the activity.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
     public uint? ActivityHash { get; set; }
 
@@ -69,6 +70,7 @@ public class DestinyActivity
     /// <para />
     ///     Note that, in the DestiyActivityDefinition, you will see many more modifiers than this being referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the active ones to match what's really live.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition>("Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition")]
     [JsonPropertyName("modifierHashes")]
     public List<uint> ModifierHashes { get; set; }
 

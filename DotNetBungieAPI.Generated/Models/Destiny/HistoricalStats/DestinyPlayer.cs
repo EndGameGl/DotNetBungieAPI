@@ -14,12 +14,15 @@ public class DestinyPlayer
     [JsonPropertyName("characterClass")]
     public string? CharacterClass { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.DestinyClassDefinition>("Destiny.Definitions.DestinyClassDefinition")]
     [JsonPropertyName("classHash")]
     public uint? ClassHash { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.DestinyRaceDefinition>("Destiny.Definitions.DestinyRaceDefinition")]
     [JsonPropertyName("raceHash")]
     public uint? RaceHash { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.DestinyGenderDefinition>("Destiny.Definitions.DestinyGenderDefinition")]
     [JsonPropertyName("genderHash")]
     public uint? GenderHash { get; set; }
 
@@ -56,6 +59,7 @@ public class DestinyPlayer
     /// <summary>
     ///     If we know the emblem's hash, this can be used to look up the player's emblem at the time of a match when receiving PGCR data, or otherwise their currently equipped emblem (if we are able to obtain it).
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("emblemHash")]
     public uint? EmblemHash { get; set; }
 }

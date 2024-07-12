@@ -59,9 +59,11 @@ public class FireteamSummary
     [JsonPropertyName("titleBeforeModeration")]
     public string? TitleBeforeModeration { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition>("Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition")]
     [JsonPropertyName("ownerCurrentGuardianRankSnapshot")]
     public int? OwnerCurrentGuardianRankSnapshot { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition>("Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition")]
     [JsonPropertyName("ownerHighestLifetimeGuardianRankSnapshot")]
     public int? OwnerHighestLifetimeGuardianRankSnapshot { get; set; }
 

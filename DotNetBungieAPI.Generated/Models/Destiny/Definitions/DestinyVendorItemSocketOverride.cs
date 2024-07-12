@@ -10,6 +10,7 @@ public class DestinyVendorItemSocketOverride
     /// <para />
     ///     If this isn't populated, it's being overridden by something more complicated that is only known by the Game Server and God, which means we can't tell you in advance what it'll be.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("singleItemHash")]
     public uint? SingleItemHash { get; set; }
 
@@ -22,6 +23,7 @@ public class DestinyVendorItemSocketOverride
     /// <summary>
     ///     This appears to be used to select which socket ultimately gets the override defined here.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Sockets.DestinySocketTypeDefinition>("Destiny.Definitions.Sockets.DestinySocketTypeDefinition")]
     [JsonPropertyName("socketTypeHash")]
     public uint? SocketTypeHash { get; set; }
 }

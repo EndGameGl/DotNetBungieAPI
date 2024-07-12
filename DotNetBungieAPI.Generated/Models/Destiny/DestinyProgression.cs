@@ -8,6 +8,7 @@ public class DestinyProgression
     /// <summary>
     ///     The hash identifier of the Progression in question. Use it to look up the DestinyProgressionDefinition in static data.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyProgressionDefinition>("Destiny.Definitions.DestinyProgressionDefinition")]
     [JsonPropertyName("progressionHash")]
     public uint? ProgressionHash { get; set; }
 

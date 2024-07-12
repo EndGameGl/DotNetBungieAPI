@@ -8,12 +8,14 @@ public class DestinyItemCraftingBlockDefinition
     /// <summary>
     ///     A reference to the item definition that is created when crafting with this 'recipe' item.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("outputItemHash")]
     public uint? OutputItemHash { get; set; }
 
     /// <summary>
     ///     A list of socket type hashes that describes which sockets are required for crafting with this recipe.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.Sockets.DestinySocketTypeDefinition>("Destiny.Definitions.Sockets.DestinySocketTypeDefinition")]
     [JsonPropertyName("requiredSocketTypeHashes")]
     public List<uint> RequiredSocketTypeHashes { get; set; }
 
@@ -23,6 +25,7 @@ public class DestinyItemCraftingBlockDefinition
     /// <summary>
     ///     A reference to the base material requirements for crafting with this recipe.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyMaterialRequirementSetDefinition>("Destiny.Definitions.DestinyMaterialRequirementSetDefinition")]
     [JsonPropertyName("baseMaterialRequirements")]
     public uint? BaseMaterialRequirements { get; set; }
 

@@ -20,12 +20,14 @@ public class DestinyClassDefinition
     [JsonPropertyName("genderedClassNames")]
     public Dictionary<Destiny.DestinyGender, string> GenderedClassNames { get; set; }
 
+    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.DestinyGenderDefinition>("Destiny.Definitions.DestinyGenderDefinition")]
     [JsonPropertyName("genderedClassNamesByGenderHash")]
     public Dictionary<uint, string> GenderedClassNamesByGenderHash { get; set; }
 
     /// <summary>
     ///     Mentors don't really mean anything anymore. Don't expect this to be populated.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyVendorDefinition>("Destiny.Definitions.DestinyVendorDefinition")]
     [JsonPropertyName("mentorVendorHash")]
     public uint? MentorVendorHash { get; set; }
 

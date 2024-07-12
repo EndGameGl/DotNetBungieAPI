@@ -46,6 +46,7 @@ public class DestinyItemSourceDefinition
     /// <summary>
     ///     The DestinyRewardSourceDefinitions found that can spawn the item at this level.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyRewardSourceDefinition>("Destiny.Definitions.DestinyRewardSourceDefinition")]
     [JsonPropertyName("sourceHashes")]
     public List<uint> SourceHashes { get; set; }
 }

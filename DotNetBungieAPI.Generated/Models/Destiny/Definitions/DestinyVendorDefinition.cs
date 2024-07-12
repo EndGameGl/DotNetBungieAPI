@@ -47,6 +47,7 @@ public class DestinyVendorDefinition
     /// <para />
     ///     Apparently this is usually a related currency, like a reputation token. But it need not be restricted to that.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("displayItemHash")]
     public uint? DisplayItemHash { get; set; }
 
@@ -67,6 +68,7 @@ public class DestinyVendorDefinition
     /// <para />
     ///     The game UI and BNet often mine the faction definition for additional elements and details to place on the screen, such as the faction's Progression status (aka "Reputation").
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyFactionDefinition>("Destiny.Definitions.DestinyFactionDefinition")]
     [JsonPropertyName("factionHash")]
     public uint? FactionHash { get; set; }
 

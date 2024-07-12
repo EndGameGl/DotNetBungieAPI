@@ -8,6 +8,7 @@ public class DestinyFactionProgression
     /// <summary>
     ///     The hash identifier of the Faction related to this progression. Use it to look up the DestinyFactionDefinition for more rendering info.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyFactionDefinition>("Destiny.Definitions.DestinyFactionDefinition")]
     [JsonPropertyName("factionHash")]
     public uint? FactionHash { get; set; }
 
@@ -20,6 +21,7 @@ public class DestinyFactionProgression
     /// <summary>
     ///     The hash identifier of the Progression in question. Use it to look up the DestinyProgressionDefinition in static data.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyProgressionDefinition>("Destiny.Definitions.DestinyProgressionDefinition")]
     [JsonPropertyName("progressionHash")]
     public uint? ProgressionHash { get; set; }
 

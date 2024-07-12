@@ -8,6 +8,7 @@ public class DestinyStat
     /// <summary>
     ///     The hash identifier for the Stat. Use it to look up the DestinyStatDefinition for static data about the stat.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyStatDefinition>("Destiny.Definitions.DestinyStatDefinition")]
     [JsonPropertyName("statHash")]
     public uint? StatHash { get; set; }
 

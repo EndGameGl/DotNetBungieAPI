@@ -10,6 +10,7 @@ public class DestinyProgressionRewardDefinition
     /// <summary>
     ///     The hash identifier of the DestinyProgressionMappingDefinition that contains the progressions for which experience should be applied.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyProgressionMappingDefinition>("Destiny.Definitions.DestinyProgressionMappingDefinition")]
     [JsonPropertyName("progressionMappingHash")]
     public uint? ProgressionMappingHash { get; set; }
 

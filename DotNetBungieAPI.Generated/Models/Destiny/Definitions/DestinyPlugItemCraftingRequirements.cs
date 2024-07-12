@@ -11,6 +11,7 @@ public class DestinyPlugItemCraftingRequirements
     [JsonPropertyName("requiredLevel")]
     public int? RequiredLevel { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyMaterialRequirementSetDefinition>("Destiny.Definitions.DestinyMaterialRequirementSetDefinition")]
     [JsonPropertyName("materialRequirementHashes")]
     public List<uint> MaterialRequirementHashes { get; set; }
 }

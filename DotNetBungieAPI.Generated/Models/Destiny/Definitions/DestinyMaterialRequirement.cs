@@ -8,6 +8,7 @@ public class DestinyMaterialRequirement
     /// <summary>
     ///     The hash identifier of the material required. Use it to look up the material's DestinyInventoryItemDefinition.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemHash")]
     public uint? ItemHash { get; set; }
 

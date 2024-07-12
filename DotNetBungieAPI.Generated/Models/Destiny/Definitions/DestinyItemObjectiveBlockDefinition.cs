@@ -10,6 +10,7 @@ public class DestinyItemObjectiveBlockDefinition
     /// <summary>
     ///     The hashes to Objectives (DestinyObjectiveDefinition) that are part of this Quest Step, in the order that they should be rendered.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyObjectiveDefinition>("Destiny.Definitions.DestinyObjectiveDefinition")]
     [JsonPropertyName("objectiveHashes")]
     public List<uint> ObjectiveHashes { get; set; }
 
@@ -18,6 +19,7 @@ public class DestinyItemObjectiveBlockDefinition
     /// <para />
     ///     Rendered somewhat obsolete by perObjectiveDisplayProperties, which currently has much the same information but may end up with more info in the future.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("displayActivityHashes")]
     public List<uint> DisplayActivityHashes { get; set; }
 
@@ -30,6 +32,7 @@ public class DestinyItemObjectiveBlockDefinition
     /// <summary>
     ///     The hash for the DestinyInventoryItemDefinition representing the Quest to which this Quest Step belongs.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("questlineItemHash")]
     public uint? QuestlineItemHash { get; set; }
 

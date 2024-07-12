@@ -7,12 +7,14 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Components.Vendors;
 /// </summary>
 public class DestinyVendorGroup
 {
+    [Destiny2Definition<Destiny.Definitions.DestinyVendorGroupDefinition>("Destiny.Definitions.DestinyVendorGroupDefinition")]
     [JsonPropertyName("vendorGroupHash")]
     public uint? VendorGroupHash { get; set; }
 
     /// <summary>
     ///     The ordered list of vendors within a particular group.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyVendorDefinition>("Destiny.Definitions.DestinyVendorDefinition")]
     [JsonPropertyName("vendorHashes")]
     public List<uint> VendorHashes { get; set; }
 }

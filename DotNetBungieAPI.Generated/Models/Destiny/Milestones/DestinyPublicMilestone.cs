@@ -8,6 +8,7 @@ public class DestinyPublicMilestone
     /// <summary>
     ///     The hash identifier for the milestone. Use it to look up the DestinyMilestoneDefinition for static data about the Milestone.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Milestones.DestinyMilestoneDefinition>("Destiny.Definitions.Milestones.DestinyMilestoneDefinition")]
     [JsonPropertyName("milestoneHash")]
     public uint? MilestoneHash { get; set; }
 

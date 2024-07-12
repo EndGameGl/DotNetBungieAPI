@@ -14,6 +14,7 @@ public class DestinyEnergyCapacityEntry
     /// <summary>
     ///     Energy provided by a plug is always of a specific type - this is the hash identifier for the energy type for which it provides Capacity.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.EnergyTypes.DestinyEnergyTypeDefinition>("Destiny.Definitions.EnergyTypes.DestinyEnergyTypeDefinition")]
     [JsonPropertyName("energyTypeHash")]
     public uint? EnergyTypeHash { get; set; }
 

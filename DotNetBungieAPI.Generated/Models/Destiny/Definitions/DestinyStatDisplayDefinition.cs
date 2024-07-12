@@ -12,6 +12,7 @@ public class DestinyStatDisplayDefinition
     /// <para />
     ///     Use it to look up the DestinyStatDefinition, or key into a DestinyInventoryItemDefinition's stats property.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyStatDefinition>("Destiny.Definitions.DestinyStatDefinition")]
     [JsonPropertyName("statHash")]
     public uint? StatHash { get; set; }
 

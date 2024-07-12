@@ -8,6 +8,7 @@ public class DestinyActivityChallengeDefinition
     /// <summary>
     ///     The hash for the Objective that matches this challenge. Use it to look up the DestinyObjectiveDefinition.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyObjectiveDefinition>("Destiny.Definitions.DestinyObjectiveDefinition")]
     [JsonPropertyName("objectiveHash")]
     public uint? ObjectiveHash { get; set; }
 

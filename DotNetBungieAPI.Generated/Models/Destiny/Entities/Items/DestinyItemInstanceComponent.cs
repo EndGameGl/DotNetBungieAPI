@@ -18,6 +18,7 @@ public class DestinyItemInstanceComponent
     /// <summary>
     ///     The current damage type's hash, so you can look up localized info and icons for it.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyDamageTypeDefinition>("Destiny.Definitions.DestinyDamageTypeDefinition")]
     [JsonPropertyName("damageTypeHash")]
     public uint? DamageTypeHash { get; set; }
 
@@ -62,6 +63,7 @@ public class DestinyItemInstanceComponent
     /// <para />
     ///     This is a list of flags that they need in order to equip the item that the character has not met. Use these to look up the descriptions to show in your UI by looking up the relevant DestinyUnlockDefinitions for the hashes.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyUnlockDefinition>("Destiny.Definitions.DestinyUnlockDefinition")]
     [JsonPropertyName("unlockHashesRequiredToEquip")]
     public List<uint> UnlockHashesRequiredToEquip { get; set; }
 
@@ -80,6 +82,7 @@ public class DestinyItemInstanceComponent
     /// <summary>
     ///     If populated, this is the hash identifier for the item's breaker type. See DestinyBreakerTypeDefinition for more details.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.BreakerTypes.DestinyBreakerTypeDefinition>("Destiny.Definitions.BreakerTypes.DestinyBreakerTypeDefinition")]
     [JsonPropertyName("breakerTypeHash")]
     public uint? BreakerTypeHash { get; set; }
 

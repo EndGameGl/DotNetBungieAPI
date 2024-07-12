@@ -8,12 +8,14 @@ public class DestinyItemIntrinsicSocketEntryDefinition
     /// <summary>
     ///     Indicates the plug that is intrinsically inserted into this socket.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("plugItemHash")]
     public uint? PlugItemHash { get; set; }
 
     /// <summary>
     ///     Indicates the type of this intrinsic socket.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Sockets.DestinySocketTypeDefinition>("Destiny.Definitions.Sockets.DestinySocketTypeDefinition")]
     [JsonPropertyName("socketTypeHash")]
     public uint? SocketTypeHash { get; set; }
 

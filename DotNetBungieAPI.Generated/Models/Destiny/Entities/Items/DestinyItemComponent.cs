@@ -8,6 +8,7 @@ public class DestinyItemComponent
     /// <summary>
     ///     The identifier for the item's definition, which is where most of the useful static information for the item can be found.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemHash")]
     public uint? ItemHash { get; set; }
 
@@ -38,6 +39,7 @@ public class DestinyItemComponent
     /// <summary>
     ///     The hash identifier for the specific inventory bucket in which the item is located.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryBucketDefinition>("Destiny.Definitions.DestinyInventoryBucketDefinition")]
     [JsonPropertyName("bucketHash")]
     public uint? BucketHash { get; set; }
 
@@ -64,6 +66,7 @@ public class DestinyItemComponent
     /// <para />
     ///     If you don't do this, certain items whose styles are being overridden by socketed items - such as the "Recycle Shader" item - would show whatever their default icon/style is, and it wouldn't be pretty or look accurate.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("overrideStyleItemHash")]
     public uint? OverrideStyleItemHash { get; set; }
 
@@ -90,6 +93,7 @@ public class DestinyItemComponent
     /// <summary>
     ///     The identifier for the currently-selected metric definition, to be displayed on the emblem nameplate.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Metrics.DestinyMetricDefinition>("Destiny.Definitions.Metrics.DestinyMetricDefinition")]
     [JsonPropertyName("metricHash")]
     public uint? MetricHash { get; set; }
 

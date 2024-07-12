@@ -14,6 +14,7 @@ public class DestinyEnergyCostEntry
     /// <summary>
     ///     The type of energy that this plug costs, as a reference to the DestinyEnergyTypeDefinition of the energy type.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.EnergyTypes.DestinyEnergyTypeDefinition>("Destiny.Definitions.EnergyTypes.DestinyEnergyTypeDefinition")]
     [JsonPropertyName("energyTypeHash")]
     public uint? EnergyTypeHash { get; set; }
 

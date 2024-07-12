@@ -10,6 +10,7 @@ public class DestinyActivityModifierReferenceDefinition
     /// <summary>
     ///     The hash identifier for the DestinyActivityModifierDefinition referenced by this activity.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition>("Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition")]
     [JsonPropertyName("activityModifierHash")]
     public uint? ActivityModifierHash { get; set; }
 }

@@ -22,6 +22,7 @@ public class DestinyItemStatBlockDefinition
     /// <para />
     ///     If you are using live data or precomputed stats data on the DestinyInventoryItemDefinition.stats.stats property, you don't have to worry about statGroupHash and how it alters stats: the already altered stats are provided to you. But if you want to see how the sausage gets made, or perform computations yourself, this is valuable information.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyStatGroupDefinition>("Destiny.Definitions.DestinyStatGroupDefinition")]
     [JsonPropertyName("statGroupHash")]
     public uint? StatGroupHash { get; set; }
 
@@ -30,6 +31,7 @@ public class DestinyItemStatBlockDefinition
     /// <para />
     ///     These stats are keyed by the DestinyStatDefinition's hash identifier for the stat that's found on the item.
     /// </summary>
+    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.DestinyStatDefinition>("Destiny.Definitions.DestinyStatDefinition")]
     [JsonPropertyName("stats")]
     public Dictionary<uint, Destiny.Definitions.DestinyInventoryItemStatDefinition> Stats { get; set; }
 
@@ -44,6 +46,7 @@ public class DestinyItemStatBlockDefinition
     /// <para />
     ///     Use this hash to look up the stat's value using DestinyInventoryItemDefinition.stats.stats, and the renderable data for the primary stat in the related DestinyStatDefinition.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyStatDefinition>("Destiny.Definitions.DestinyStatDefinition")]
     [JsonPropertyName("primaryBaseStatHash")]
     public uint? PrimaryBaseStatHash { get; set; }
 }

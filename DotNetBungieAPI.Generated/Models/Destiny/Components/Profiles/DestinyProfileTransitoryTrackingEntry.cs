@@ -12,30 +12,35 @@ public class DestinyProfileTransitoryTrackingEntry
     /// <summary>
     ///     OPTIONAL - If this is tracking a DestinyLocationDefinition, this is the identifier for that location.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyLocationDefinition>("Destiny.Definitions.DestinyLocationDefinition")]
     [JsonPropertyName("locationHash")]
     public uint? LocationHash { get; set; }
 
     /// <summary>
     ///     OPTIONAL - If this is tracking the status of a DestinyInventoryItemDefinition, this is the identifier for that item.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemHash")]
     public uint? ItemHash { get; set; }
 
     /// <summary>
     ///     OPTIONAL - If this is tracking the status of a DestinyObjectiveDefinition, this is the identifier for that objective.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyObjectiveDefinition>("Destiny.Definitions.DestinyObjectiveDefinition")]
     [JsonPropertyName("objectiveHash")]
     public uint? ObjectiveHash { get; set; }
 
     /// <summary>
     ///     OPTIONAL - If this is tracking the status of a DestinyActivityDefinition, this is the identifier for that activity.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
     public uint? ActivityHash { get; set; }
 
     /// <summary>
     ///     OPTIONAL - If this is tracking the status of a quest, this is the identifier for the DestinyInventoryItemDefinition that containst that questline data.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("questlineItemHash")]
     public uint? QuestlineItemHash { get; set; }
 

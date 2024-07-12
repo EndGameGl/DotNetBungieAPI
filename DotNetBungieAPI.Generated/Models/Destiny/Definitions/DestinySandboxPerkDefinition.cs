@@ -46,6 +46,7 @@ public class DestinySandboxPerkDefinition
     /// <para />
     ///     This is preferred over using the damageType enumeration value, which has been left purely because it is occasionally convenient.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyDamageTypeDefinition>("Destiny.Definitions.DestinyDamageTypeDefinition")]
     [JsonPropertyName("damageTypeHash")]
     public uint? DamageTypeHash { get; set; }
 

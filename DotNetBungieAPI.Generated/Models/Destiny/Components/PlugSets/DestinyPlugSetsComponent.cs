@@ -10,6 +10,7 @@ public class DestinyPlugSetsComponent
     /// <summary>
     ///     The shared list of plugs for each relevant PlugSet, keyed by the hash identifier of the PlugSet (DestinyPlugSetDefinition).
     /// </summary>
+    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.Sockets.DestinyPlugSetDefinition>("Destiny.Definitions.Sockets.DestinyPlugSetDefinition")]
     [JsonPropertyName("plugs")]
     public Dictionary<uint, List<Destiny.Sockets.DestinyItemPlug>> Plugs { get; set; }
 }

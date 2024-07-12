@@ -13,6 +13,7 @@ public class DestinyFactionDefinition
     /// <summary>
     ///     The hash identifier for the DestinyProgressionDefinition that indicates the character's relationship with this faction in terms of experience and levels.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyProgressionDefinition>("Destiny.Definitions.DestinyProgressionDefinition")]
     [JsonPropertyName("progressionHash")]
     public uint? ProgressionHash { get; set; }
 
@@ -25,12 +26,14 @@ public class DestinyFactionDefinition
     /// <summary>
     ///     The faction reward item hash, usually an engram.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("rewardItemHash")]
     public uint? RewardItemHash { get; set; }
 
     /// <summary>
     ///     The faction reward vendor hash, used for faction engram previews.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyVendorDefinition>("Destiny.Definitions.DestinyVendorDefinition")]
     [JsonPropertyName("rewardVendorHash")]
     public uint? RewardVendorHash { get; set; }
 

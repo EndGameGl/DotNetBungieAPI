@@ -2,6 +2,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Requests;
 
 public class DestinyItemTransferRequest
 {
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemReferenceHash")]
     public uint? ItemReferenceHash { get; set; }
 

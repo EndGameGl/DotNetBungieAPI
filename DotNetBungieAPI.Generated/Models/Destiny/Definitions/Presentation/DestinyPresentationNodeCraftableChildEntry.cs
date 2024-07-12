@@ -2,6 +2,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Presentation;
 
 public class DestinyPresentationNodeCraftableChildEntry
 {
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("craftableItemHash")]
     public uint? CraftableItemHash { get; set; }
 

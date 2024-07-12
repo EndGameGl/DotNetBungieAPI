@@ -20,6 +20,7 @@ public class DestinyRaceDefinition
     [JsonPropertyName("genderedRaceNames")]
     public Dictionary<Destiny.DestinyGender, string> GenderedRaceNames { get; set; }
 
+    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.DestinyGenderDefinition>("Destiny.Definitions.DestinyGenderDefinition")]
     [JsonPropertyName("genderedRaceNamesByGenderHash")]
     public Dictionary<uint, string> GenderedRaceNamesByGenderHash { get; set; }
 

@@ -13,12 +13,14 @@ public class DestinyDestinationDefinition
     /// <summary>
     ///     The place that "owns" this Destination. Use this hash to look up the DestinyPlaceDefinition.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyPlaceDefinition>("Destiny.Definitions.DestinyPlaceDefinition")]
     [JsonPropertyName("placeHash")]
     public uint? PlaceHash { get; set; }
 
     /// <summary>
     ///     If this Destination has a default Free-Roam activity, this is the hash for that Activity. Use it to look up the DestinyActivityDefintion.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("defaultFreeroamActivityHash")]
     public uint? DefaultFreeroamActivityHash { get; set; }
 

@@ -8,6 +8,7 @@ public class DestinyGuardianRankDefinition
     [JsonPropertyName("rankNumber")]
     public int? RankNumber { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
     [JsonPropertyName("presentationNodeHash")]
     public uint? PresentationNodeHash { get; set; }
 

@@ -14,6 +14,7 @@ public class DestinyActivityGraphDisplayObjectiveDefinition
     /// <summary>
     ///     The objective being shown on the map.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyObjectiveDefinition>("Destiny.Definitions.DestinyObjectiveDefinition")]
     [JsonPropertyName("objectiveHash")]
     public uint? ObjectiveHash { get; set; }
 }

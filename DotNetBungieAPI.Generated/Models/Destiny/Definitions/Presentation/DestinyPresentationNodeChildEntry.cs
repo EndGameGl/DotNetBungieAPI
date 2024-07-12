@@ -2,6 +2,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Presentation;
 
 public class DestinyPresentationNodeChildEntry
 {
+    [Destiny2Definition<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
     [JsonPropertyName("presentationNodeHash")]
     public uint? PresentationNodeHash { get; set; }
 

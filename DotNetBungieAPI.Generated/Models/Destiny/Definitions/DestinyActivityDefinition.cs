@@ -54,18 +54,21 @@ public class DestinyActivityDefinition
     /// <summary>
     ///     The hash identifier for the Destination on which this Activity is played. Use it to look up the DestinyDestinationDefinition for human readable info about the destination. A Destination can be thought of as a more specific location than a "Place". For instance, if the "Place" is Earth, the "Destination" would be a specific city or region on Earth.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyDestinationDefinition>("Destiny.Definitions.DestinyDestinationDefinition")]
     [JsonPropertyName("destinationHash")]
     public uint? DestinationHash { get; set; }
 
     /// <summary>
     ///     The hash identifier for the "Place" on which this Activity is played. Use it to look up the DestinyPlaceDefinition for human readable info about the Place. A Place is the largest-scoped concept for location information. For instance, if the "Place" is Earth, the "Destination" would be a specific city or region on Earth.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyPlaceDefinition>("Destiny.Definitions.DestinyPlaceDefinition")]
     [JsonPropertyName("placeHash")]
     public uint? PlaceHash { get; set; }
 
     /// <summary>
     ///     The hash identifier for the Activity Type of this Activity. You may use it to look up the DestinyActivityTypeDefinition for human readable info, but be forewarned: Playlists and many PVP Map Activities will map to generic Activity Types. You'll have to use your knowledge of the Activity Mode being played to get more specific information about what the user is playing.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityTypeDefinition>("Destiny.Definitions.DestinyActivityTypeDefinition")]
     [JsonPropertyName("activityTypeHash")]
     public uint? ActivityTypeHash { get; set; }
 
@@ -141,6 +144,7 @@ public class DestinyActivityDefinition
     /// <summary>
     ///     If this activity had an activity mode directly defined on it, this will be the hash of that mode.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityModeDefinition>("Destiny.Definitions.DestinyActivityModeDefinition")]
     [JsonPropertyName("directActivityModeHash")]
     public uint? DirectActivityModeHash { get; set; }
 
@@ -159,6 +163,7 @@ public class DestinyActivityDefinition
     /// <summary>
     ///     The hash identifiers for Activity Modes relevant to this activity.  Note that if this is a playlist, the specific playlist entry chosen will determine the actual activity modes that end up being relevant.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyActivityModeDefinition>("Destiny.Definitions.DestinyActivityModeDefinition")]
     [JsonPropertyName("activityModeHashes")]
     public List<uint> ActivityModeHashes { get; set; }
 

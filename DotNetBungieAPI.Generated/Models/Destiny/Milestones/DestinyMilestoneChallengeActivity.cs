@@ -2,6 +2,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Milestones;
 
 public class DestinyMilestoneChallengeActivity
 {
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
     public uint? ActivityHash { get; set; }
 
@@ -13,6 +14,7 @@ public class DestinyMilestoneChallengeActivity
     /// <para />
     ///     Note that, in the DestiyActivityDefinition, you will see many more modifiers than this being referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the active ones to match what's really live.
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition>("Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition")]
     [JsonPropertyName("modifierHashes")]
     public List<uint> ModifierHashes { get; set; }
 

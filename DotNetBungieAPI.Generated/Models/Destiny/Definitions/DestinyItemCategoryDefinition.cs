@@ -97,6 +97,7 @@ public class DestinyItemCategoryDefinition
     /// <para />
     ///     (I hope someone named Carl reads this someday)
     /// </summary>
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyItemCategoryDefinition>("Destiny.Definitions.DestinyItemCategoryDefinition")]
     [JsonPropertyName("groupedCategoryHashes")]
     public List<uint> GroupedCategoryHashes { get; set; }
 

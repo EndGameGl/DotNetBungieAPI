@@ -16,12 +16,14 @@ public class DestinyItemPreviewBlockDefinition
     /// <summary>
     ///     If the preview data is derived from a fake "Preview" Vendor, this will be the hash identifier for the DestinyVendorDefinition of that fake vendor.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyVendorDefinition>("Destiny.Definitions.DestinyVendorDefinition")]
     [JsonPropertyName("previewVendorHash")]
     public uint? PreviewVendorHash { get; set; }
 
     /// <summary>
     ///     If this item should show you Artifact information when you preview it, this is the hash identifier of the DestinyArtifactDefinition for the artifact whose data should be shown.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Artifacts.DestinyArtifactDefinition>("Destiny.Definitions.Artifacts.DestinyArtifactDefinition")]
     [JsonPropertyName("artifactHash")]
     public uint? ArtifactHash { get; set; }
 

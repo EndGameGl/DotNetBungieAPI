@@ -20,18 +20,21 @@ public class DestinyItemInventoryBlockDefinition
     /// <summary>
     ///     The hash identifier for the DestinyInventoryBucketDefinition to which this item belongs. I should have named this "bucketHash", but too many things refer to it now. Sigh.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryBucketDefinition>("Destiny.Definitions.DestinyInventoryBucketDefinition")]
     [JsonPropertyName("bucketTypeHash")]
     public uint? BucketTypeHash { get; set; }
 
     /// <summary>
     ///     If the item is picked up by the lost loot queue, this is the hash identifier for the DestinyInventoryBucketDefinition into which it will be placed. Again, I should have named this recoveryBucketHash instead.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryBucketDefinition>("Destiny.Definitions.DestinyInventoryBucketDefinition")]
     [JsonPropertyName("recoveryBucketTypeHash")]
     public uint? RecoveryBucketTypeHash { get; set; }
 
     /// <summary>
     ///     The hash identifier for the Tier Type of the item, use to look up its DestinyItemTierTypeDefinition if you need to show localized data for the item's tier.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Items.DestinyItemTierTypeDefinition>("Destiny.Definitions.Items.DestinyItemTierTypeDefinition")]
     [JsonPropertyName("tierTypeHash")]
     public uint? TierTypeHash { get; set; }
 
@@ -77,6 +80,7 @@ public class DestinyItemInventoryBlockDefinition
     /// <summary>
     ///     A reference to the associated crafting 'recipe' item definition, if this item can be crafted.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("recipeItemHash")]
     public uint? RecipeItemHash { get; set; }
 }

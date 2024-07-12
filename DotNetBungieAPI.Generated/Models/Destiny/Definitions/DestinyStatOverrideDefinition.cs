@@ -14,6 +14,7 @@ public class DestinyStatOverrideDefinition
     /// <summary>
     ///     The hash identifier of the stat whose display properties are being overridden.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyStatDefinition>("Destiny.Definitions.DestinyStatDefinition")]
     [JsonPropertyName("statHash")]
     public uint? StatHash { get; set; }
 

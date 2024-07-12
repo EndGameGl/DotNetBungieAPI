@@ -8,12 +8,14 @@ public class DestinyHistoricalStatsActivity
     /// <summary>
     ///     The unique hash identifier of the DestinyActivityDefinition that was played. If I had this to do over, it'd be named activityHash. Too late now.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("referenceId")]
     public uint? ReferenceId { get; set; }
 
     /// <summary>
     ///     The unique hash identifier of the DestinyActivityDefinition that was played.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("directorActivityHash")]
     public uint? DirectorActivityHash { get; set; }
 

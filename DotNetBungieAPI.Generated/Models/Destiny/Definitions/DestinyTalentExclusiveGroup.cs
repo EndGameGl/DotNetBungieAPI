@@ -14,6 +14,7 @@ public class DestinyTalentExclusiveGroup
     /// <summary>
     ///     If this group has an associated piece of lore to show next to it, this will be the identifier for that DestinyLoreDefinition.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Lore.DestinyLoreDefinition>("Destiny.Definitions.Lore.DestinyLoreDefinition")]
     [JsonPropertyName("loreHash")]
     public uint? LoreHash { get; set; }
 

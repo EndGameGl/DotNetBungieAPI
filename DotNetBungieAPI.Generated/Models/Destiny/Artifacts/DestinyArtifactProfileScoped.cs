@@ -7,6 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Artifacts;
 /// </summary>
 public class DestinyArtifactProfileScoped
 {
+    [Destiny2Definition<Destiny.Definitions.Artifacts.DestinyArtifactDefinition>("Destiny.Definitions.Artifacts.DestinyArtifactDefinition")]
     [JsonPropertyName("artifactHash")]
     public uint? ArtifactHash { get; set; }
 

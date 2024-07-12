@@ -38,6 +38,7 @@ public class DestinyObjectiveDefinition
     /// <summary>
     ///     OPTIONAL: a hash identifier for the location at which this objective must be accomplished, if there is a location defined. Look up the DestinyLocationDefinition for this hash for that additional location info.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyLocationDefinition>("Destiny.Definitions.DestinyLocationDefinition")]
     [JsonPropertyName("locationHash")]
     public uint? LocationHash { get; set; }
 

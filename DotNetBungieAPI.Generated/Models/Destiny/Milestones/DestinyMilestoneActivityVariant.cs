@@ -8,6 +8,7 @@ public class DestinyMilestoneActivityVariant
     /// <summary>
     ///     The hash for the specific variant of the activity related to this milestone. You can pull more detailed static info from the DestinyActivityDefinition, such as difficulty level.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
     public uint? ActivityHash { get; set; }
 
@@ -20,6 +21,7 @@ public class DestinyMilestoneActivityVariant
     /// <summary>
     ///     The hash identifier of the most specific Activity Mode under which this activity is played. This is useful for situations where the activity in question is - for instance - a PVP map, but it's not clear what mode the PVP map is being played under. If it's a playlist, this will be less specific: but hopefully useful in some way.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityModeDefinition>("Destiny.Definitions.DestinyActivityModeDefinition")]
     [JsonPropertyName("activityModeHash")]
     public uint? ActivityModeHash { get; set; }
 

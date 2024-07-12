@@ -8,6 +8,7 @@ public class DestinyItemSocketCategoryDefinition
     /// <summary>
     ///     The hash for the Socket Category: a quick way to go get the header display information for the category. Use it to look up DestinySocketCategoryDefinition info.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Sockets.DestinySocketCategoryDefinition>("Destiny.Definitions.Sockets.DestinySocketCategoryDefinition")]
     [JsonPropertyName("socketCategoryHash")]
     public uint? SocketCategoryHash { get; set; }
 

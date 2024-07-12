@@ -57,6 +57,7 @@ public class DestinyProgressionDefinition
     /// <para />
     ///     This is purely for convenience, if you're looking at a progression and want to know if and who it's related to in terms of Faction Reputation.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyFactionDefinition>("Destiny.Definitions.DestinyFactionDefinition")]
     [JsonPropertyName("factionHash")]
     public uint? FactionHash { get; set; }
 

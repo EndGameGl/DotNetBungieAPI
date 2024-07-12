@@ -2,6 +2,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Presentation;
 
 public class DestinyPresentationNodeCollectibleChildEntry
 {
+    [Destiny2Definition<Destiny.Definitions.Collectibles.DestinyCollectibleDefinition>("Destiny.Definitions.Collectibles.DestinyCollectibleDefinition")]
     [JsonPropertyName("collectibleHash")]
     public uint? CollectibleHash { get; set; }
 

@@ -10,6 +10,7 @@ public class DestinyInventoryItemStatDefinition
     /// <summary>
     ///     The hash for the DestinyStatDefinition representing this stat.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyStatDefinition>("Destiny.Definitions.DestinyStatDefinition")]
     [JsonPropertyName("statHash")]
     public uint? StatHash { get; set; }
 

@@ -21,6 +21,7 @@ public class DestinyEquipmentSlotDefinition
     /// <summary>
     ///     The inventory bucket that owns this equipment slot.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryBucketDefinition>("Destiny.Definitions.DestinyInventoryBucketDefinition")]
     [JsonPropertyName("bucketTypeHash")]
     public uint? BucketTypeHash { get; set; }
 

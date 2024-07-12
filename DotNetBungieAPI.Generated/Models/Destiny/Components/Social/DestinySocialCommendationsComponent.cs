@@ -14,9 +14,11 @@ public class DestinySocialCommendationsComponent
     [JsonPropertyName("scoreDetailValues")]
     public List<int> ScoreDetailValues { get; set; }
 
+    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition>("Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition")]
     [JsonPropertyName("commendationNodeScoresByHash")]
     public Dictionary<uint, int> CommendationNodeScoresByHash { get; set; }
 
+    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.Social.DestinySocialCommendationDefinition>("Destiny.Definitions.Social.DestinySocialCommendationDefinition")]
     [JsonPropertyName("commendationScoresByHash")]
     public Dictionary<uint, int> CommendationScoresByHash { get; set; }
 }
