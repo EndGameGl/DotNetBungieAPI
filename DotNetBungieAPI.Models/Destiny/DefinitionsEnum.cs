@@ -6,7 +6,7 @@ public enum DefinitionsEnum
     DestinyActivityDefinition,
     DestinyActivityGraphDefinition,
 
-    //DestinyActivityInteractableDefinition,
+    DestinyActivityInteractableDefinition,
     DestinyActivityModeDefinition,
     DestinyActivityModifierDefinition,
     DestinyActivityTypeDefinition,

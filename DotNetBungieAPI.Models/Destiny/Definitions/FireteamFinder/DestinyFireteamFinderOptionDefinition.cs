@@ -6,30 +6,36 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.FireteamFinder;
 [DestinyDefinition(DefinitionsEnum.DestinyFireteamFinderOptionDefinition)]
 public sealed record DestinyFireteamFinderOptionDefinition : IDestinyDefinition, IDisplayProperties
 {
-    [JsonPropertyName("availability")]
-    public int Availability { get; init; }
-
-    [JsonPropertyName("codeOptionType")]
-    public int CodeOptionType { get; init; }
+    [JsonPropertyName("displayProperties")]
+    public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
     [JsonPropertyName("descendingSortPriority")]
     public int DescendingSortPriority { get; init; }
-
-    [JsonPropertyName("displayProperties")]
-    public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
     [JsonPropertyName("groupHash")]
     public DefinitionHashPointer<DestinyFireteamFinderOptionGroupDefinition> Group { get; init; } =
         DefinitionHashPointer<DestinyFireteamFinderOptionGroupDefinition>.Empty;
 
+    [JsonPropertyName("codeOptionType")]
+    public FireteamFinderCodeOptionType CodeOptionType { get; init; }
+
+    [JsonPropertyName("availability")]
+    public FireteamFinderOptionAvailability Availability { get; init; }
+
+    [JsonPropertyName("visibility")]
+    public FireteamFinderOptionVisibility Visibility { get; init; }
+
     [JsonPropertyName("uiDisplayStyle")]
     public string UiDisplayStyle { get; init; }
 
-    [JsonPropertyName("values")]
-    public DestinyFireteamFinderOptionValuesDefinition Values { get; init; }
+    [JsonPropertyName("creatorSettings")]
+    public DestinyFireteamFinderOptionCreatorSettings CreatorSettings { get; init; }
 
-    [JsonPropertyName("visibility")]
-    public int Visibility { get; init; }
+    [JsonPropertyName("searcherSettings")]
+    public DestinyFireteamFinderOptionSearcherSettings SearcherSettings { get; init; }
+
+    [JsonPropertyName("values")]
+    public DestinyFireteamFinderOptionValues Values { get; init; }
 
     public DefinitionsEnum DefinitionEnumValue =>
         DefinitionsEnum.DestinyFireteamFinderOptionDefinition;

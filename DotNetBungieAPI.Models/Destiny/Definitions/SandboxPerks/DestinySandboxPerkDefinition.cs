@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.SandboxPerks;
 /// <summary>
 ///     Perks are modifiers to a character or item that can be applied situationally.
 ///     <para />
-///     - Perks determine a weapons' damage type.
+///     - Perks determine a weapon's damage type.
 ///     <para />
 ///     - Perks put the Mods in Modifiers (they are literally the entity that bestows the Sandbox benefit for whatever
 ///     fluff text about the modifier in the Socket, Plug or Talent Node)
@@ -66,14 +66,6 @@ public sealed record DestinySandboxPerkDefinition
     public DefinitionHashPointer<DestinyDamageTypeDefinition> DamageType { get; init; } =
         DefinitionHashPointer<DestinyDamageTypeDefinition>.Empty;
 
-    /// <summary>
-    ///     An old holdover from the original Armory, this was an attempt to group perks by functionality.
-    ///     <para />
-    ///     It is as yet unpopulated, and there will be quite a bit of work needed to restore it to its former working order.
-    /// </summary>
-    [JsonPropertyName("perkGroups")]
-    public DestinyTalentNodeStepGroups PerkGroups { get; init; }
-
     public bool DeepEquals(DestinySandboxPerkDefinition other)
     {
         return other != null
@@ -82,7 +74,6 @@ public sealed record DestinySandboxPerkDefinition
             && DamageType.DeepEquals(other.DamageType)
             && IsDisplayable == other.IsDisplayable
             && PerkIdentifier == other.PerkIdentifier
-            && PerkGroups.DeepEquals(other.PerkGroups)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash
             && Index == other.Index

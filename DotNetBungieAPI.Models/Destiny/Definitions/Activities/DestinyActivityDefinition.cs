@@ -161,6 +161,9 @@ public sealed record DestinyActivityDefinition
     public ReadOnlyCollection<DestinyActivityUnlockStringDefinition> OptionalUnlockStrings { get; init; } =
         ReadOnlyCollections<DestinyActivityUnlockStringDefinition>.Empty;
 
+    [JsonPropertyName("requirements")]
+    public DestinyActivityRequirementsBlock Requirements { get; init; }
+
     /// <summary>
     ///     Represents all of the possible activities that could be played in the Playlist, along with information that we can
     ///     use to determine if they are active at the present time.

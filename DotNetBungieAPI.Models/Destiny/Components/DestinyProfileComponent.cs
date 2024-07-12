@@ -1,4 +1,5 @@
 ﻿using DotNetBungieAPI.Models.Destiny.Definitions.EventCards;
+using DotNetBungieAPI.Models.Destiny.Definitions.GuardianRanks;
 using DotNetBungieAPI.Models.Destiny.Definitions.Seasons;
 using DotNetBungieAPI.Models.User;
 
@@ -85,9 +86,24 @@ public sealed record DestinyProfileComponent
     public DefinitionHashPointer<DestinyEventCardDefinition> ActiveEventCard { get; init; } =
         DefinitionHashPointer<DestinyEventCardDefinition>.Empty;
 
+    /// <summary>
+    ///     The 'current' Guardian Rank value, which starts at rank 1. This rank value will drop at the start of a new season to your 'renewed' rank from the previous season.
+    /// </summary>
     [JsonPropertyName("currentGuardianRank")]
-    public int CurrentGuardianRank { get; init; }
+    public DefinitionHashPointer<DestinyGuardianRankDefinition> CurrentGuardianRank { get; init; } =
+        DefinitionHashPointer<DestinyGuardianRankDefinition>.Empty;
 
+    /// <summary>
+    ///     The 'lifetime highest' Guardian Rank value, which starts at rank 1. This rank value should never go down.
+    /// </summary>
     [JsonPropertyName("lifetimeHighestGuardianRank")]
-    public int LifetimeHighestGuardianRank { get; init; }
+    public DefinitionHashPointer<DestinyGuardianRankDefinition> LifetimeHighestGuardianRank { get; init; } =
+        DefinitionHashPointer<DestinyGuardianRankDefinition>.Empty;
+
+    /// <summary>
+    ///     The seasonal 'renewed' Guardian Rank value. This rank value resets at the start of each new season to the highest-earned non-advanced rank.
+    /// </summary>
+    [JsonPropertyName("renewedGuardianRank")]
+    public DefinitionHashPointer<DestinyGuardianRankDefinition> RenewedGuardianRank { get; init; } =
+        DefinitionHashPointer<DestinyGuardianRankDefinition>.Empty;
 }

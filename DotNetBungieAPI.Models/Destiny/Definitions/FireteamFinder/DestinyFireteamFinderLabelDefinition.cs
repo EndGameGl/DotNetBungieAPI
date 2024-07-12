@@ -9,18 +9,18 @@ public sealed record DestinyFireteamFinderLabelDefinition
         IDisplayProperties,
         IDeepEquatable<DestinyFireteamFinderLabelDefinition>
 {
-    [JsonPropertyName("allowInFields")]
-    public int AllowInFields { get; init; }
+    [JsonPropertyName("displayProperties")]
+    public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
 
     [JsonPropertyName("descendingSortPriority")]
     public int DescendingSortPriority { get; init; }
 
-    [JsonPropertyName("displayProperties")]
-    public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
-
     [JsonPropertyName("groupHash")]
     public DefinitionHashPointer<DestinyFireteamFinderLabelGroupDefinition> Group { get; init; } =
         DefinitionHashPointer<DestinyFireteamFinderLabelGroupDefinition>.Empty;
+
+    [JsonPropertyName("allowInFields")]
+    public FireteamFinderLabelFieldType AllowInFields { get; init; }
 
     public DefinitionsEnum DefinitionEnumValue =>
         DefinitionsEnum.DestinyFireteamFinderLabelDefinition;

@@ -1,10 +1,41 @@
-﻿using DotNetBungieAPI.Models.Attributes;
+﻿using System.Collections.ObjectModel;
+using DotNetBungieAPI.Models.Attributes;
+using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 
 namespace DotNetBungieAPI.Models.Destiny.Definitions.FireteamFinder;
 
 [DestinyDefinition(DefinitionsEnum.DestinyFireteamFinderActivitySetDefinition)]
 public sealed record DestinyFireteamFinderActivitySetDefinition : IDestinyDefinition
 {
+    [JsonPropertyName("maximumPartySize")]
+    public int MaximumPartySize { get; init; }
+
+    [JsonPropertyName("optionHashes")]
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyFireteamFinderOptionDefinition>
+    > Options { get; init; } =
+        ReadOnlyCollections<DefinitionHashPointer<DestinyFireteamFinderOptionDefinition>>.Empty;
+
+    [JsonPropertyName("labelHashes")]
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyFireteamFinderLabelDefinition>
+    > Labels { get; init; } =
+        ReadOnlyCollections<DefinitionHashPointer<DestinyFireteamFinderLabelDefinition>>.Empty;
+
+    [JsonPropertyName("activityGraphHashes")]
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
+    > ActivityGraphs { get; init; } =
+        ReadOnlyCollections<
+            DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
+        >.Empty;
+
+    [JsonPropertyName("activityHashes")]
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyActivityDefinition>
+    > Activities { get; init; } =
+        ReadOnlyCollections<DefinitionHashPointer<DestinyActivityDefinition>>.Empty;
+
     public DefinitionsEnum DefinitionEnumValue =>
         DefinitionsEnum.DestinyFireteamFinderActivitySetDefinition;
 

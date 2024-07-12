@@ -1,4 +1,5 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.GuardianRanks;
+﻿using DotNetBungieAPI.Models.Destiny.Definitions.FireteamFinder;
+using DotNetBungieAPI.Models.Destiny.Definitions.GuardianRanks;
 using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
 using DotNetBungieAPI.Models.Destiny.Definitions.Loadouts;
 using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
@@ -71,6 +72,10 @@ public sealed record Destiny2CoreSettings
     public DefinitionHashPointer<DestinyGuardianRankConstantsDefinition> GuardianRankConstants { get; init; } =
         DefinitionHashPointer<DestinyGuardianRankConstantsDefinition>.Empty;
 
+    [JsonPropertyName("fireteamFinderConstantsHash")]
+    public DefinitionHashPointer<DestinyFireteamFinderConstantsDefinition> FireteamFinderConstants { get; init; } =
+        DefinitionHashPointer<DestinyFireteamFinderConstantsDefinition>.Empty;
+
     [JsonPropertyName("guardianRanksRootNodeHash")]
     public DefinitionHashPointer<DestinyPresentationNodeDefinition> GuardianRanksRootNode { get; init; } =
         DefinitionHashPointer<DestinyPresentationNodeDefinition>.Empty;
@@ -92,6 +97,14 @@ public sealed record Destiny2CoreSettings
         DefinitionHashPointer<DestinySocketTypeDefinition>
     > InsertPlugFreeBlockedSocketTypes { get; init; } =
         ReadOnlyCollections<DefinitionHashPointer<DestinySocketTypeDefinition>>.Empty;
+
+    [JsonPropertyName("enabledFireteamFinderActivityGraphHashes")]
+    public ReadOnlyCollection<
+        DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
+    > EnabledFireteamFinderActivityGraphs { get; init; } =
+        ReadOnlyCollections<
+            DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
+        >.Empty;
 
     [JsonPropertyName("undiscoveredCollectibleImage")]
     public BungieNetResource UndiscoveredCollectibleImage { get; init; }

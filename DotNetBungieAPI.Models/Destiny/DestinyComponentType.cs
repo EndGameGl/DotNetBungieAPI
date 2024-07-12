@@ -105,7 +105,7 @@ public enum DestinyComponentType
     ItemObjectives = 301,
 
     /// <summary>
-    ///     Items can have perks (DestinyPerkDefinition). If they do, this will return info for what perks are active on items.
+    ///     Items can have perks (DestinySandboxPerkDefinition). If they do, this will return info for what perks are active on items.
     /// </summary>
     ItemPerks = 302,
 

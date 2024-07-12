@@ -114,5 +114,11 @@ public enum DestinyVendorItemState
     /// </summary>
     Paracausal = 524288,
 
-    Cryptarch = 1048576
+    Cryptarch = 1048576,
+
+    ArtifactPerkOwned = 2097152,
+
+    Savings = 4194304,
+
+    Ineligible = 8388608
 }

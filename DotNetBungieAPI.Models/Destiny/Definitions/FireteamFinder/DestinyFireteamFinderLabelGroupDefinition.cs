@@ -9,11 +9,11 @@ public sealed record DestinyFireteamFinderLabelGroupDefinition
         IDisplayProperties,
         IDeepEquatable<DestinyFireteamFinderLabelGroupDefinition>
 {
-    [JsonPropertyName("descendingSortPriority")]
-    public int DescendingSortPriority { get; init; }
-
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+
+    [JsonPropertyName("descendingSortPriority")]
+    public int DescendingSortPriority { get; init; }
 
     public DefinitionsEnum DefinitionEnumValue =>
         DefinitionsEnum.DestinyFireteamFinderLabelGroupDefinition;

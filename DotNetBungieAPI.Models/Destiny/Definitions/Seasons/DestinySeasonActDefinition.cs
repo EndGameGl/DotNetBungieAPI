@@ -5,11 +5,11 @@ public sealed record DestinySeasonActDefinition : IDeepEquatable<DestinySeasonAc
     [JsonPropertyName("displayName")]
     public string DisplayName { get; init; }
 
-    [JsonPropertyName("rankCount")]
-    public int RankCount { get; init; }
-
     [JsonPropertyName("startTime")]
     public DateTime StartTime { get; init; }
+
+    [JsonPropertyName("rankCount")]
+    public int RankCount { get; init; }
 
     public bool DeepEquals(DestinySeasonActDefinition other)
     {
