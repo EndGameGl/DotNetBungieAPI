@@ -1,6 +1,7 @@
 ﻿using DotNetBungieAPI.Models.Destiny.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes;
+using DotNetBungieAPI.Models.Destiny.Definitions.FireteamFinder;
 
 namespace DotNetBungieAPI.Models.Destiny.Components;
 
@@ -22,6 +23,13 @@ public sealed record DestinyCharacterActivitiesComponent
     [JsonPropertyName("availableActivities")]
     public ReadOnlyCollection<DestinyActivity> AvailableActivities { get; init; } =
         ReadOnlyCollections<DestinyActivity>.Empty;
+
+    /// <summary>
+    ///     The list of activity interactables that the player can interact with.
+    /// </summary>
+    [JsonPropertyName("availableActivityInteractables")]
+    public ReadOnlyCollection<DestinyActivityInteractableReference> AvailableActivityInteractables { get; init; } =
+        ReadOnlyCollections<DestinyActivityInteractableReference>.Empty;
 
     /// <summary>
     ///     If the user is in an activity, this will be the hash of the Activity being played. Note that you must combine this
