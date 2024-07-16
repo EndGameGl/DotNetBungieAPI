@@ -81,7 +81,6 @@ internal sealed class Destiny2MethodsAccess : IDestiny2MethodsAccess
             .Build();
 
         var stream = new MemoryStream();
-
         await _serializer.SerializeAsync(stream, request).ConfigureAwait(false);
         stream.Position = 0;
         return await _dotNetBungieApiHttpClient

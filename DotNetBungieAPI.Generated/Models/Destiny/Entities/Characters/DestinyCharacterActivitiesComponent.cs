@@ -18,6 +18,12 @@ public class DestinyCharacterActivitiesComponent
     public List<Destiny.DestinyActivity> AvailableActivities { get; set; }
 
     /// <summary>
+    ///     The list of activity interactables that the player can interact with.
+    /// </summary>
+    [JsonPropertyName("availableActivityInteractables")]
+    public List<Destiny.Definitions.FireteamFinder.DestinyActivityInteractableReference> AvailableActivityInteractables { get; set; }
+
+    /// <summary>
     ///     If the user is in an activity, this will be the hash of the Activity being played. Note that you must combine this info with currentActivityModeHash to get a real picture of what the user is doing right now. For instance, PVP "Activities" are just maps: it's the ActivityMode that determines what type of PVP game they're playing.
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]

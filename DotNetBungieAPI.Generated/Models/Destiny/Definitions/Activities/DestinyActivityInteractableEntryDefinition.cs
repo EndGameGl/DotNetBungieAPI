@@ -8,6 +8,7 @@ public class DestinyActivityInteractableEntryDefinition
     /// <summary>
     ///     The activity that will trigger when you interact with this interactable.
     /// </summary>
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
     public uint? ActivityHash { get; set; }
 }

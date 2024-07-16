@@ -14,9 +14,9 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <LangVersion>12</LangVersion>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <PackageVersion>2.12.3</PackageVersion>
-        <AssemblyVersion>2.12.3</AssemblyVersion>
-        <FileVersion>2.12.3</FileVersion>
+        <PackageVersion>2.13.0</PackageVersion>
+        <AssemblyVersion>2.13.0</AssemblyVersion>
+        <FileVersion>2.13.0</FileVersion>
         <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
         <Nullable>enable</Nullable>
     </PropertyGroup>

@@ -1,9 +1,35 @@
-﻿using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using System.Threading.Tasks;
 using DotNetBungieAPI.Clients;
+using DotNetBungieAPI.Extensions;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
+using DotNetBungieAPI.Models.Destiny.Definitions;
+
+[assembly: DebuggerDisplay(
+    @"{DotNetBungieAPI.Extensions.DefinitionHashPointerExtensions.GetDebuggerDisplayString(this)}",
+    Target = typeof(DefinitionHashPointer<>)
+)]
+[assembly: DebuggerTypeProxy(
+    typeof(DefinitionHashPointerDebugView<>),
+    Target = typeof(DefinitionHashPointer<>)
+)]
 
 namespace DotNetBungieAPI.Extensions;
+
+internal class DefinitionHashPointerDebugView<TDefinition>
+    where TDefinition : IDestinyDefinition
+{
+    private readonly DefinitionHashPointer<TDefinition> _definition;
+
+    public DefinitionHashPointerDebugView(DefinitionHashPointer<TDefinition> definition)
+    {
+        _definition = definition;
+    }
+
+    public TDefinition? Definition => _definition.GetValueOrNull();
+    public uint? Hash => _definition.Hash;
+}
 
 /// <summary>
 ///     Extension class
@@ -111,5 +137,23 @@ public static class DefinitionHashPointerExtensions
     {
         var definition = await pointer.GetValueOrNullAsync(locale);
         return definition is not null ? func(definition) : default;
+    }
+
+    private static string GetDebuggerDisplayString<TDefinition>(
+        DefinitionHashPointer<TDefinition> pointer
+    )
+        where TDefinition : IDestinyDefinition
+    {
+        if (pointer.TryGetDefinition(out var definition))
+        {
+            if (definition is IDisplayProperties displayProperties)
+            {
+                return $"{pointer.Hash} {displayProperties.DisplayProperties.Name}";
+            }
+
+            return $"{pointer.Hash} {typeof(TDefinition).Name}";
+        }
+
+        return $"{pointer.Hash} {typeof(TDefinition).Name}";
     }
 }
