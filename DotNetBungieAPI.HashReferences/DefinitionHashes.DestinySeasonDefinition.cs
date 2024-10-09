@@ -95,8 +95,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Re-entwine the strands of time on Mercury and ignite the flames of hope.
 			/// </summary>
 			public const uint SeasonofDawn = 1743682819;
-			public const uint EpisodeRedacted_2758726573 = 2758726573;
-			public const uint EpisodeRedacted_2758726574 = 2758726574;
+			/// <summary>
+			/// 	All is not well for the Eliksni. A paracausal curse is slowly corrupting Mithrax, the leader of House Light, while an old threat has re-emerged to plague the system with a new breed of Revenant Scorn.
+			/// <para/>
+			/// 	 
+			/// <para/>
+			/// 	With Eido's help, Guardians face a kinetic battle against the renewed Scorn, and a metaphysical one for the fate of Mithrax's soul.
+			/// <para/>
+			/// </summary>
+			public const uint EpisodeRevenant = 2758726573;
+			public const uint EpisodeRedacted = 2758726574;
 			/// <summary>
 			/// 	A new season has begun! Choose what kind of Guardian you will become. Reckon with the path that lies ahead.
 			/// </summary>

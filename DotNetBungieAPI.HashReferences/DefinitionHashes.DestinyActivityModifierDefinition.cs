@@ -112,6 +112,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OverchargedGlaive = 2743796883;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_4292382471 = 4292382471;
+			/// <summary>
 			/// 	You will face [Stagger] Unstoppable Champions.
 			/// <para/>
 			/// 	Visit the Character or Mod Customization screen to view your active anti-Champion perks.
@@ -119,7 +123,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionFoes_2475764450 = 2475764450;
 			/// <summary>
-			/// 	Initial Exotic drop rate boosts: X
+			/// 	Initial Exotic drop rate boosts: {var:219516062}
 			/// </summary>
 			public const uint ExoticDropRateBoostsGained_792361634 = 792361634;
 			/// <summary>
@@ -140,7 +144,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Revives: Teammate revives are enabled.
 			/// <para/>
 			/// </summary>
-			public const uint DominionRules_4263658911 = 4263658911;
+			public const uint DominionRules = 4263658911;
 			/// <summary>
 			/// 	"Salvation's Edge" raid challenge modes.
 			/// </summary>
@@ -175,6 +179,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IncreasedTrialsRank = 1361609633;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1305687814 = 1305687814;
+			/// <summary>
 			/// 	If the timer reaches 0:00, the activity will restart.
 			/// </summary>
 			public const uint ForcedRebootTimer = 4134002479;
@@ -195,7 +203,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	If your fireteam falls, everyone is returned to orbit.
 			/// <para/>
 			/// </summary>
-			public const uint DelayedExtinguish = 2787320573;
+			public const uint DelayedExtinguish_2787320573 = 2787320573;
 			/// <summary>
 			/// 	All Vanguard Rank point gains are increased!
 			/// </summary>
@@ -250,6 +258,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Martyr_3398790191 = 3398790191;
 			/// <summary>
+			/// 	You will face [Disruption] Overload and [Stagger] Unstoppable Champions.
+			/// </summary>
+			public const uint ChampionFoes_40182179 = 40182179;
+			/// <summary>
 			/// 	Potential Data buffs:
 			/// <para/>
 			/// 	• Chance to spawn an Orb of Power on combatant final blows
@@ -260,10 +272,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint DataBuffs_2587905069 = 2587905069;
-			/// <summary>
-			/// 	You will face [Disruption] Overload and [Stagger] Unstoppable Champions.
-			/// </summary>
-			public const uint ChampionFoes_40182179 = 40182179;
 			/// <summary>
 			/// 	{var:1027206613}% bonus to Bow damage.
 			/// </summary>
@@ -299,7 +307,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MomentumControlRules = 2327064309;
 			/// <summary>
-			/// 	Matchmaking prefers players with similar Glory Rank.
+			/// 	Matchmaking prefers players with similar Competitive Rank.
 			/// </summary>
 			public const uint Matchmaking_2266489848 = 2266489848;
 			/// <summary>
@@ -327,18 +335,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DaodanSurge = 3787716856;
 			/// <summary>
-			/// 	Stoke the bonfire!
-			/// <para/>
-			/// 	Ignition Carriers: Glowing combatants that drop Igniters when defeated.
-			/// <para/>
-			/// 	Igniters: Objects that can be picked up and thrown into the bonfire to stoke the flames.
-			/// <para/>
-			/// 	Bonfire: Stoke the bonfire with Igniters to make the flames grow. The more the bonfire is stoked, the more Silver Leaves can be transformed into Silver Ash. Equipping Sunlit armor and transforming Silver Leaves increases rewards at the end of the activity.
-			/// <para/>
-			/// 	Taken Interference: Taken will disrupt the bonfire throughout the activity. Defeat them to reignite the bonfire!
-			/// <para/>
+			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
-			public const uint BonfireBashRules = 529965434;
+			public const uint Classified_1555213579 = 1555213579;
 			/// <summary>
 			/// 	Ability recharge time: Slowed
 			/// <para/>
@@ -352,6 +351,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Win the match by winning more rounds than your opponents. Defeat them to score points; the team with the most points wins a round.
 			/// </summary>
 			public const uint ShowdownRules = 3388053151;
+			/// <summary>
+			/// 	Dealing damage with Scout Rifles, Pulse Rifles, and Grenade Launchers gradually reduces their damage while increasing the damage of Submachine Guns and Shotguns, and vice versa. 
+			/// <para/>
+			/// 	Other weapon types deal significantly less damage.
+			/// <para/>
+			/// </summary>
+			public const uint Oscillation = 38299602;
 			/// <summary>
 			/// 	Super recharge rate is increased.
 			/// </summary>
@@ -468,6 +474,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TheCoreFour = 191124900;
 			/// <summary>
+			/// 	This week, a Subjugator Omen awaits you on wave 50.
+			/// </summary>
+			public const uint WeeklyBoss_65390994 = 65390994;
+			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint WaitForIt = 3135466059;
@@ -528,6 +538,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OverchargedLinearFusionRifle = 3320777106;
 			/// <summary>
+			/// 	This week, an Elder Revenant awaits you on wave 50.
+			/// </summary>
+			public const uint WeeklyBoss_2759838796 = 2759838796;
+			/// <summary>
 			/// 	Increased respawn times.
 			/// </summary>
 			public const uint LongerRespawns = 3224024504;
@@ -563,11 +577,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ContestantsDisciplesoftheNeigh_3899751486 = 3899751486;
 			/// <summary>
+			/// 	Combatants are granted random Banes.
+			/// </summary>
+			public const uint RandomizedBanes = 3912996116;
+			/// <summary>
 			/// 	{var:1027206613}% bonus to Sword damage.
 			/// </summary>
 			public const uint OverchargedSword = 1326581064;
 			/// <summary>
-			/// 	Initial Exotic drop rate boosts: X
+			/// 	Initial Exotic drop rate boosts: {var:219516062}
 			/// </summary>
 			public const uint ExoticDropRateBoostsGained_2835296134 = 2835296134;
 			/// <summary>
@@ -612,6 +630,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ExpertModifiers_3897480986 = 3897480986;
 			/// <summary>
+			/// 	Matchmaking selects players based on character class. Each team has one of each class.
+			/// </summary>
+			public const uint Matchmaking_302322071 = 302322071;
+			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint ZerotoOneHundred = 4073197101;
@@ -635,6 +657,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DataBuffs_3507208337 = 3507208337;
 			/// <summary>
+			/// 	Using class abilities increases your fireteam's damage output. Reduces incoming damage while active.
+			/// </summary>
+			public const uint ClassWarfare = 2117382464;
+			/// <summary>
 			/// 	The activity is at a fixed difficulty.
 			/// <para/>
 			/// 	Your effective Power is capped at {var:1311088063}.
@@ -650,6 +676,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint UnderConstruction = 2936050162;
 			/// <summary>
+			/// 	Matchmaking selects players based on character class. Each team is formed entirely of one class type.
+			/// </summary>
+			public const uint Matchmaking_100355054 = 100355054;
+			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint TotheTop = 2626004713;
@@ -657,10 +687,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Melee abilities deal more damage and recharge much faster.
 			/// </summary>
 			public const uint Brawler = 1376889134;
-			/// <summary>
-			/// 	Certain foes are stealthy when at a distance. They become visible when near a Guardian.
-			/// </summary>
-			public const uint SubtleFoes = 2613685873;
 			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
@@ -670,13 +696,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SpecialAmmoRulesAlpha = 3492492287;
 			/// <summary>
+			/// 	Savathûn has loaned you a worm. When it hungers, deal damage of the focused type to satiate it. When the worm is full, your ability regeneration is increased. If the worm starves, your ability regeneration is reduced and you take increased damage from the focused damage type.
+			/// </summary>
+			public const uint ArcHunger = 2081001771;
+			/// <summary>
 			/// 	+50% Stasis effectiveness.
 			/// </summary>
 			public const uint StasisBurn = 838742970;
-			/// <summary>
-			/// 	To win, your team must become the last Guardian(s) standing by defeating the entire opposing team or be the first team to secure the capture zone.
-			/// </summary>
-			public const uint DominionRules_22487155 = 22487155;
 			/// <summary>
 			/// 	Guardians deal increased damage with Auto Rifles and Grenade Launchers.
 			/// </summary>
@@ -695,9 +721,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BoostsGained_3901838854 = 3901838854;
 			/// <summary>
-			/// 	Arc and Stasis abilities recharge faster, but you receive more damage from both elements.
+			/// 	This week, an Elder Revenant awaits you on wave 50.
 			/// </summary>
-			public const uint LightningCrystals = 275219094;
+			public const uint WeeklyBoss_4105691942 = 4105691942;
 			/// <summary>
 			/// 	This playlist contains Control and Clash. When you launch, it will randomly select one of the modes for you to play.
 			/// <para/>
@@ -724,10 +750,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OfAllTrades = 201968501;
 			/// <summary>
-			/// 	When close to a fireteam member, gain increased Recovery and Super regeneration.
-			/// </summary>
-			public const uint Flare_880073302 = 880073302;
-			/// <summary>
 			/// 	Flying units do increased damage.
 			/// </summary>
 			public const uint AirSuperiority = 68890788;
@@ -740,9 +762,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IncreasedGambitRank = 3228023383;
 			/// <summary>
-			/// 	When close to a fireteam member, gain increased Recovery and Super regeneration.
+			/// 	If all your fireteam members fall with 0 Revive Tokens, everyone is returned to orbit.
 			/// </summary>
-			public const uint Firebound = 4246169082;
+			public const uint FullExtinguish = 1852184322;
 			/// <summary>
 			/// 	{var:1027206613}% bonus to Auto Rifle damage.
 			/// </summary>
@@ -756,6 +778,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint MasterModifiers_3623371497 = 3623371497;
+			/// <summary>
+			/// 	When defeated, combatants can drop explosives disguised as familiar items.
+			/// </summary>
+			public const uint Counterfeit = 1279873648;
 			/// <summary>
 			/// 	To win, your team must detonate or defuse both charges.
 			/// <para/>
@@ -793,6 +819,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Restricted = 1909158654;
 			/// <summary>
+			/// 	When close to a fireteam member, gain increased Recovery and Super regeneration.
+			/// </summary>
+			public const uint Flare_874265159 = 874265159;
+			/// <summary>
 			/// 	You will face combatants with [Void] Void shields.
 			/// <para/>
 			/// 	Activity modifiers may add more shield types.
@@ -803,6 +833,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	When defeated, Acolytes spawn fire pools that cause damage over time.
 			/// </summary>
 			public const uint FirePit = 2139004924;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1897835427 = 1897835427;
 			/// <summary>
 			/// 	You will face [Shield-Piercing] Barrier and [Disruption] Overload Champions.
 			/// </summary>
@@ -826,6 +860,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint GazeAmaze = 2890753840;
+			/// <summary>
+			/// 	Rapidly defeat combatants to unleash waves of paracausal fire around you dealing damage to nearby combatants.
+			/// </summary>
+			public const uint Flare_1969121547 = 1969121547;
 			/// <summary>
 			/// 	"Salvation's Edge" raid challenge modes.
 			/// </summary>
@@ -888,16 +926,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BossRotation_1743397814 = 1743397814;
 			/// <summary>
-			/// 	Arc damage increases slightly from all sources.
-			/// </summary>
-			public const uint ArcSinge = 4162874069;
-			/// <summary>
 			/// 	Your current character has not yet completed this mission on Legendary difficulty.
 			/// <para/>
 			/// 	Completing all Legendary missions provides additional rewards per class.
 			/// <para/>
 			/// </summary>
 			public const uint AChallengeAwaits_22073894 = 22073894;
+			/// <summary>
+			/// 	Arc damage increases slightly from all sources.
+			/// </summary>
+			public const uint ArcSinge = 4162874069;
 			/// <summary>
 			/// 	A Fallen Warpriest awaits you on wave 50.
 			/// </summary>
@@ -982,6 +1020,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	All Crucible loot drops are doubled on wins.
 			/// </summary>
 			public const uint DoubleCrucibleDrops = 3619879173;
+			/// <summary>
+			/// 	Your health is massively increased but does not regenerate. Defeating challenging combatants will recover health for you and nearby allies.
+			/// </summary>
+			public const uint Brawn = 2042632950;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3193240035 = 3193240035;
 			/// <summary>
 			/// 	To win, your team must become the last Guardian(s) standing by defeating the entire opposing team.
 			/// <para/>
@@ -1134,6 +1180,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Iron = 1463769380;
 			/// <summary>
+			/// 	Moving quickly slowly regenerates your health. Standing still slowly deals damage.
+			/// </summary>
+			public const uint Haste = 858319113;
+			/// <summary>
 			/// 	If your fireteam falls in a Restricted Zone, everyone is returned to orbit.
 			/// </summary>
 			public const uint Extinguish_4265630562 = 4265630562;
@@ -1180,9 +1230,33 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint KeepItLoaded = 1931480264;
 			/// <summary>
+			/// 	Defend and repair the ADU against waves of combatants. There are 10 waves to a set.
+			/// <para/>
+			/// 	ADU: If the ADU is destroyed, the activity ends with the set.
+			/// <para/>
+			/// 	Scraps: In-activity currency earned by scoring. Used to purchase and upgrade defenses at the start of every set and after the third and sixth waves.
+			/// <para/>
+			/// 	Rewards: Granted on defeating a set's boss wave. Subsequent sets grant better rewards. Expert difficulty increases rewards.
+			/// <para/>
+			/// 	Bonus Objectives: Reward resources, vendor reputation, and armaments.
+			/// <para/>
+			/// </summary>
+			public const uint OnslaughtRules_1096446210 = 1096446210;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_848207019 = 848207019;
+			/// <summary>
 			/// 	Enemy shields are highly resistant to all unmatched elemental damage.
 			/// </summary>
 			public const uint MatchGame = 2751349583;
+			/// <summary>
+			/// 	Activates on wave 31.
+			/// <para/>
+			/// 	If your fireteam falls, you will be returned to orbit.
+			/// <para/>
+			/// </summary>
+			public const uint DelayedExtinguish_2081148033 = 2081148033;
 			/// <summary>
 			/// 	{var:2189146210}% bonus to outgoing Solar damage.
 			/// </summary>
@@ -1260,6 +1334,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EnigmaProtocolRules = 1060852100;
 			/// <summary>
+			/// 	Combatant power increases after each set.
+			/// </summary>
+			public const uint EscalatingDifficulty_3320264005 = 3320264005;
+			/// <summary>
 			/// 	All Crucible Rank point gains are increased!
 			/// </summary>
 			public const uint IncreasedCrucibleRank = 3874605433;
@@ -1279,10 +1357,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Famine = 965929096;
 			/// <summary>
-			/// 	Extra Shields
-			/// </summary>
-			public const uint ExpertModifiers_2567927655 = 2567927655;
-			/// <summary>
 			/// 	Score points by defeating your opponents with a relic.
 			/// <para/>
 			/// 	Relics: Mysterious weapons that hold immense power. Defeat your opponents with a relic to score points for your team.
@@ -1293,6 +1367,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint RelicRules = 4258252763;
+			/// <summary>
+			/// 	Extra Shields
+			/// </summary>
+			public const uint ExpertModifiers_2567927655 = 2567927655;
 			/// <summary>
 			/// 	All collected Elemental Orbs contribute toward the elemental buff counter. Subclass choice determines which elemental buff is applied.
 			/// <para/>
@@ -1366,6 +1444,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WhichWitch = 217815700;
 			/// <summary>
+			/// 	Savathûn has loaned you a worm. When it hungers, deal damage of the focused type to satiate it. When the worm is full, your ability regeneration is increased. If the worm starves, your ability regeneration is reduced and you take increased damage from the focused damage type.
+			/// </summary>
+			public const uint VoidHunger = 976277003;
+			/// <summary>
 			/// 	All abilities are disabled! Weapons are your only defense.
 			/// <para/>
 			/// 	Collect Special ammo and Heavy ammo from crates around the map.
@@ -1377,16 +1459,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Empath_166293531 = 166293531;
 			/// <summary>
+			/// 	Heavily shielded and highly aggressive combatants appear in great numbers.
+			/// </summary>
+			public const uint Legendary = 36103086;
+			/// <summary>
 			/// 	This activity's difficulty has been tuned to approximate the experience of its original release.
 			/// <para/>
 			/// 	Combatants deal significantly more damage and have moderately increased health.
 			/// <para/>
 			/// </summary>
 			public const uint LegacyZeroHour = 2432579025;
-			/// <summary>
-			/// 	Heavily shielded and highly aggressive combatants appear in great numbers.
-			/// </summary>
-			public const uint Legendary = 36103086;
 			/// <summary>
 			/// 	To win, defeat your opponents to score more points than them! Your abilities recharge much faster in this mode, and final blows made with Power weapons or Supers grant additional points.
 			/// </summary>
@@ -1443,6 +1525,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ChampionFoes_2006149364 = 2006149364;
 			/// <summary>
+			/// 	When close to a fireteam member, gain increased Recovery and Super regeneration.
+			/// </summary>
+			public const uint Firebound = 998963135;
+			/// <summary>
 			/// 	This playlist features three new Crucible maps: Dissonance, Eventide Labs, and Cirrus Plaza.
 			/// <para/>
 			/// 	It features four randomized modes: Collision, Clash, Survival, and Elimination.
@@ -1487,10 +1573,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint ArenaBreachExecutableModeRules = 2431130026;
-			/// <summary>
-			/// 	Rapidly defeat combatants to unleash waves of paracausal fire around you dealing damage to nearby combatants.
-			/// </summary>
-			public const uint Flare_2023659610 = 2023659610;
 			/// <summary>
 			/// 	To win, defeat your opponents to score more points than them! Every player is equipped with a Scorch Cannon.
 			/// <para/>
@@ -1542,6 +1624,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint BoostsGained_1172122584 = 1172122584;
 			public const uint H1783825372 = 1783825372;
 			/// <summary>
+			/// 	Landing multiple precision hits with a Primary ammo weapon empowers Special and Heavy ammo weapons. Reduces incoming damage while active.
+			/// </summary>
+			public const uint ShotCaller = 1499411920;
+			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint AllHandsChallenge = 1616571513;
@@ -1564,6 +1650,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint Mettle_1593143649 = 1593143649;
+			/// <summary>
+			/// 	Stoke the bonfire!
+			/// <para/>
+			/// 	Ignition Carriers: Glowing combatants that drop Igniters when dealt final blows.
+			/// <para/>
+			/// 	Igniters: Objects that can be picked up and thrown into the bonfire to stoke the flames.
+			/// <para/>
+			/// 	Bonfire: Stoke the bonfire with Igniters to make the flames grow.
+			/// <para/>
+			/// 	Taken Interference: Taken will disrupt the bonfire throughout the activity. Defeat them to reignite the bonfire!
+			/// <para/>
+			/// </summary>
+			public const uint BonfireBashRules = 3186900190;
 			/// <summary>
 			/// 	The activity is at a fixed difficulty. Test your might.
 			/// </summary>

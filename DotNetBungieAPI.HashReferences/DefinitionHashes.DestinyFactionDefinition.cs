@@ -9,13 +9,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ResonanceRank_2126988316 = 2126988316;
 			/// <summary>
-			/// 	No longer an outfitter for heroes of the Tower, Eva now devotes her time to making sure Guardians enjoy seasonal events.
-			/// </summary>
-			public const uint EventVendor = 976973631;
-			/// <summary>
 			/// 	Skilled historians and cryptographers, the Cryptarchs are always happy to decrypt a challenging engram for Guardians.
 			/// </summary>
 			public const uint Cryptarchs = 1647279527;
+			/// <summary>
+			/// 	No longer an outfitter for heroes of the Tower, Eva now devotes her time to making sure Guardians enjoy seasonal events.
+			/// </summary>
+			public const uint EventVendor = 976973631;
 			public const uint H4213149368 = 4213149368;
 			/// <summary>
 			/// 	The Hidden's hub for intel on any and all Enclave investigations.
@@ -169,6 +169,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CourtyardtheLastCity = 367138581;
 			/// <summary>
+			/// 	Help Eido complete fieldwork to create more powerful tonics and a potential cure for Mithrax's paracausal curse.
+			/// <para/>
+			/// 	Tonic Recipes Discovered: {var:1285843804} / {var:2471929889}
+			/// <para/>
+			/// </summary>
+			public const uint ActIFieldwork = 958291857;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_958291858 = 958291858;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_958291859 = 958291859;
+			/// <summary>
 			/// 	Countless unclear futures reverberate through your mind as you approach the obelisk. Strengthen the obelisk's bond to the Sundial by increasing its Resonance Rank.
 			/// </summary>
 			public const uint ResonanceRank_185244751 = 185244751;
@@ -176,6 +191,38 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Your Ghost has been by your side all along. No matter what.
 			/// </summary>
 			public const uint YourLightinDarkTimes = 1660659508;
+			/// <summary>
+			/// 	Tonics that enable the acquisition of World Gear across the system.
+			/// </summary>
+			public const uint WorldGearTonics = 3853944824;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3853944825 = 3853944825;
+			/// <summary>
+			/// 	Tonics that enable the acquisition of resources, including Enhancement Cores, Ascendant Shards, Glimmer, and more.
+			/// </summary>
+			public const uint ResourceTonics = 3853944826;
+			/// <summary>
+			/// 	Tonics that enable the acquisition of Shadestalker armor pieces across the system.
+			/// </summary>
+			public const uint ShadestalkerTonics = 3853944827;
+			/// <summary>
+			/// 	Tonics that alter the probabilities of earning certain gear.
+			/// </summary>
+			public const uint EnrichingTonics = 3853944828;
+			/// <summary>
+			/// 	Tonics that enchance your combat effectiveness through physical and paracausal enhancement.
+			/// </summary>
+			public const uint VolatileTonics = 3853944829;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3853944830 = 3853944830;
+			/// <summary>
+			/// 	Tonics that enable the acquisition of Onslaught rewards across the system.
+			/// </summary>
+			public const uint OnslaughtTonics = 3853944831;
 			/// <summary>
 			/// 	Enigmatic and reclusive, the Nine appear to take an interest in the affairs of Guardians.
 			/// </summary>
@@ -233,6 +280,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Eververse = 1393733616;
 			/// <summary>
+			/// 	Complete Episode activities and earn rewards from tonics to increase your reputation with Eido.
+			/// </summary>
+			public const uint ApothecaryofHouseLight = 2483172379;
+			/// <summary>
 			/// 	Oryx, the Taken King, sovereign of the Osmium Throne, God-King of the Hive, and master of the Taken, now rests in the void of space.
 			/// </summary>
 			public const uint RemnantofOryx = 1547260251;
@@ -244,6 +295,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
 			public const uint Classified_4255583952 = 4255583952;
+			/// <summary>
+			/// 	Used to prepare reagents and ingredients for synthesis into tonics.
+			/// </summary>
+			public const uint TonicTable = 341291861;
 		}
 	}
 }

@@ -54,6 +54,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ResonanceRank_185244751 = 185244751;
 			public const uint H1943323491 = 1943323491;
 			public const uint H2770852111 = 2770852111;
+			/// <summary>
+			/// 	Complete Episode activities and earn rewards from tonics to increase your reputation with Eido.
+			/// </summary>
+			public const uint ApothecaryEidoReputation = 3739024656;
 			public const uint XP_2214434133 = 2214434133;
 			public const uint H1941119796 = 1941119796;
 			public const uint H70699614 = 70699614;
@@ -61,6 +65,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H4021269753 = 4021269753;
 			public const uint H477676543 = 477676543;
 			public const uint XP_2668790903 = 2668790903;
+			public const uint Prestige_1978620692 = 1978620692;
 			public const uint H1571628687 = 1571628687;
 			public const uint H2069932355 = 2069932355;
 			/// <summary>
@@ -105,6 +110,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint VanguardRank_4267260456 = 4267260456;
 			public const uint XP_2490545278 = 2490545278;
 			public const uint H1228093266 = 1228093266;
+			public const uint H2504796725 = 2504796725;
 			public const uint H1999336308 = 1999336308;
 			public const uint H2093709363 = 2093709363;
 			public const uint H4030656982 = 4030656982;
@@ -214,7 +220,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Complete activities while in a clan to earn clan reputation. More difficult activities grant more progress. Playing with clanmates grants a large bonus to progression.
 			/// </summary>
-			public const uint ReputationMaxRank = 198624022;
+			public const uint ClanReputation = 198624022;
 			public const uint Prestige_1159794538 = 1159794538;
 			public const uint H3621413977 = 3621413977;
 			/// <summary>
@@ -272,6 +278,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3468066401 = 3468066401;
 			public const uint XP_978389300 = 978389300;
 			public const uint H2565871344 = 2565871344;
+			public const uint XP_1612979050 = 1612979050;
 			/// <summary>
 			/// 	Earn XP to advance progression. Once progress is complete, the destination will unlock.
 			/// </summary>
@@ -330,9 +337,11 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ResonanceRank_2468902004 = 2468902004;
 			public const uint H2318284751 = 2318284751;
 			public const uint XP_1793560787 = 1793560787;
+			public const uint H517614595 = 517614595;
 			public const uint H2081138649 = 2081138649;
 			public const uint H144602215 = 144602215;
 			public const uint Prestige_1467048566 = 1467048566;
+			public const uint XP_4246308539 = 4246308539;
 			public const uint H1735777505 = 1735777505;
 		}
 	}

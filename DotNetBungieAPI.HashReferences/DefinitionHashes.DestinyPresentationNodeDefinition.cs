@@ -15,6 +15,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint OptimacySuit_2122728745 = 2122728745;
 			public const uint WinterhartSuit_2122728746 = 2122728746;
 			public const uint MihaylovasChosenSuit = 2122728747;
+			public const uint General_1995209541 = 1995209541;
 			public const uint Hunter_1318771455 = 1318771455;
 			/// <summary>
 			/// 	Trophies from the Tangled Shore and Dreaming City.
@@ -22,11 +23,11 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DestinationsForsaken = 2881240068;
 			public const uint ResoluteChampionSet = 669890868;
 			public const uint HandCannons_2174454731 = 2174454731;
-			public const uint HawksFurySet = 669890871;
 			/// <summary>
 			/// 	An ancient evil stirs beneath the shattered surface of our Moon.
 			/// </summary>
 			public const uint TheMoon = 1473265108;
+			public const uint Season23SilverGuardianGamesArmorWarlockSet = 669890871;
 			public const uint Glaives_2406434090 = 2406434090;
 			/// <summary>
 			/// 	Complete all Grandmaster Triumphs.
@@ -35,11 +36,11 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Events_2332062063 = 2332062063;
 			public const uint InauguralRevelrySuit_639454544 = 639454544;
 			public const uint DrainedSolsticeSuit_639454547 = 639454547;
-			public const uint IronRemembranceArmorWarlock = 23597600;
 			/// <summary>
 			/// 	Locate and destroy Fallen drones across Europa to unlock pages of this lore book and learn about the secret experiments Clovis Bray was performing within the walls of his laboratories.
 			/// </summary>
 			public const uint BrayLabRecordsCONFIDENTIAL = 1552617421;
+			public const uint IronRemembranceArmorWarlock = 23597600;
 			public const uint NamedLordsOrnaments_23597601 = 23597601;
 			public const uint IronPledgeOrnaments_23597602 = 23597602;
 			public const uint IronTruageSuit_23597603 = 23597603;
@@ -69,6 +70,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint RocketLaunchers_3106206619 = 3106206619;
 			public const uint TMCogburnCustomSuit = 4034290070;
 			public const uint Seasonal_2451657441 = 2451657441;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_97625532 = 97625532;
 			public const uint Factions_2665375817 = 2665375817;
 			public const uint TheAwokenoftheReef = 1960700009;
 			/// <summary>
@@ -98,6 +103,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DarkAgeTitanSuit = 2845609010;
 			public const uint ParadeSuit_2026945750 = 2026945750;
 			public const uint UntetheredEdgeSuit_2026945751 = 2026945751;
+			public const uint ShadestalkerSuit_2026945752 = 2026945752;
 			public const uint Quests_1346478920 = 1346478920;
 			public const uint ShatteredThrone = 1347078175;
 			public const uint Weapons_3937826784 = 3937826784;
@@ -161,27 +167,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Triumphs related to strikes.
 			/// </summary>
 			public const uint Strikes_1507864044 = 1507864044;
-			public const uint H3857737648 = 3857737648;
-			public const uint H3857737649 = 3857737649;
-			public const uint H3857737650 = 3857737650;
-			public const uint H3857737651 = 3857737651;
-			public const uint H3857737652 = 3857737652;
-			public const uint H3857737653 = 3857737653;
 			/// <summary>
 			/// 	Trophies earned by currying favor with Emperor Calus aboard his Leviathan.
 			/// </summary>
 			public const uint AnnualPassSeasonofOpulence = 2759158924;
-			public const uint H3857737654 = 3857737654;
-			public const uint H3857737655 = 3857737655;
 			public const uint TheWarlockAunor = 689443745;
-			public const uint H3857737658 = 3857737658;
-			public const uint H3857737659 = 3857737659;
 			public const uint Campaign_1309523808 = 1309523808;
 			/// <summary>
 			/// 	Trophies from the "Salvation's Edge" raid.
 			/// </summary>
 			public const uint RaidSalvationsEdge = 988425963;
 			public const uint SplicerMastery = 584254786;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3254829425 = 3254829425;
 			/// <summary>
 			/// 	Trophies from the "King's Fall" raid.
 			/// </summary>
@@ -195,13 +195,25 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Destination Metrics
 			/// </summary>
 			public const uint Destination_3906341901 = 3906341901;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_628899099 = 628899099;
+			public const uint Week15 = 2979797088;
+			public const uint Week14 = 2979797089;
 			public const uint PulseRifles_1627216493 = 1627216493;
+			public const uint Week11 = 2979797092;
+			public const uint Week10 = 2979797093;
 			public const uint Season15_1997938888 = 1997938888;
+			public const uint Week13 = 2979797094;
+			public const uint Week12 = 2979797095;
+			public const uint General_1083909531 = 1083909531;
 			public const uint Events_747664381 = 747664381;
 			public const uint Crucible_1667143694 = 1667143694;
 			public const uint Endgame_3490420542 = 3490420542;
 			public const uint SubmachineGuns_2081696512 = 2081696512;
 			public const uint EpisodeEchoes_2095782986 = 2095782986;
+			public const uint EpisodeRevenant_2095782987 = 2095782987;
 			public const uint Season22_2095782988 = 2095782988;
 			public const uint Season23_2095782989 = 2095782989;
 			public const uint Titan_1915833282 = 1915833282;
@@ -238,6 +250,8 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ExoticQuest_3108806378 = 3108806378;
 			public const uint ResplendentSolsticeSuit_2350327455 = 2350327455;
 			public const uint ChromacloakSet_4200360094 = 4200360094;
+			public const uint Secrets_4006267230 = 4006267230;
+			public const uint HereticalSet_4200360095 = 4200360095;
 			public const uint Season1_2293479497 = 2293479497;
 			public const uint Season2_2293479498 = 2293479498;
 			public const uint Season3_2293479499 = 2293479499;
@@ -278,10 +292,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint WildHuntSuit_478158974 = 478158974;
 			public const uint PraefectusSuit_478158975 = 478158975;
 			/// <summary>
-			/// 	Complete limited-time challenges for Season rank, Bright Dust, and other rewards.
-			/// </summary>
-			public const uint Weekly = 4127765625;
-			/// <summary>
 			/// 	Learn more about being a Guardian on The Steppes of the Cosmodrome by aiding Shaw Han and other Guardians to develop your skills before continuing to explore the solar system.
 			/// </summary>
 			public const uint Explorer = 2329774788;
@@ -310,13 +320,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint RocketLaunchers_1501717862 = 1501717862;
 			public const uint RighteousSuit_433530927 = 433530927;
 			public const uint Ritual_25970736 = 25970736;
-			public const uint H2943566768 = 2943566768;
 			public const uint GrenadeLaunchers_1391900891 = 1391900891;
-			public const uint H2943566769 = 2943566769;
-			public const uint H2943566770 = 2943566770;
-			public const uint H2943566771 = 2943566771;
-			public const uint H2943566774 = 2943566774;
-			public const uint H2943566775 = 2943566775;
 			public const uint ExecutorsWillOrnaments_4045591208 = 4045591208;
 			/// <summary>
 			/// 	Damaging an Invader marks them for your teammates.
@@ -325,8 +329,8 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SovereignSuit_4045591210 = 4045591210;
 			public const uint SovereignLionOrnaments_4045591211 = 4045591211;
 			public const uint ExoticMissions_1051254486 = 1051254486;
-			public const uint SeasonalArtifact_3870366694 = 3870366694;
 			public const uint FlamingTigerSet_1604343844 = 1604343844;
+			public const uint SeasonalArtifact_3870366694 = 3870366694;
 			public const uint BungieStreetwearSet_1604343846 = 1604343846;
 			public const uint MarathonSet_1604343847 = 1604343847;
 			public const uint SubmachineGuns_3391657476 = 3391657476;
@@ -367,6 +371,8 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	A Guardian's second skin.
 			/// </summary>
 			public const uint Armor_1789205056 = 1789205056;
+			public const uint StrandWarlockSet = 572043264;
+			public const uint AvianWarlockSet = 572043265;
 			public const uint SeasonalJourney_1605400712 = 1605400712;
 			public const uint Confessions = 79401448;
 			public const uint ForestofEchoes = 2619080017;
@@ -439,6 +445,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint CanisLunaSet = 3353159817;
 			public const uint ChthonicSet = 3353159818;
 			public const uint SkerrenCorvusSet = 3353159819;
+			public const uint CataclysmicSpellbinderSet = 3353159821;
 			public const uint DoomFangPauldron = 1079731350;
 			public const uint MygalomorphSet = 3353159822;
 			public const uint MachinedSkirmisherSet = 3353159823;
@@ -483,11 +490,11 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint IllicitSentrySuit_1746293999 = 1746293999;
 			public const uint FestivaloftheLost = 2330977699;
 			public const uint ScoutRifles_2174985928 = 2174985928;
+			public const uint TheTributeHall_1519064131 = 1519064131;
 			/// <summary>
 			/// 	A patchwork wasteland on the edge of the Reef, in the asteroid belt.
 			/// </summary>
 			public const uint TheTangledShore = 3252303365;
-			public const uint TheTributeHall_1519064131 = 1519064131;
 			/// <summary>
 			/// 	Weapons that consume white ammo.
 			/// </summary>
@@ -508,8 +515,18 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LimitlessSubversionSet = 1007055953;
 			public const uint GrenadeLaunchers_3041083254 = 3041083254;
 			public const uint TheBeatenPath = 1177466224;
+			public const uint H1247214304 = 1247214304;
 			public const uint DerelictLeviathan = 1321501307;
+			public const uint H1247214305 = 1247214305;
+			public const uint H1247214306 = 1247214306;
+			public const uint H1247214307 = 1247214307;
 			public const uint Trials_3813527194 = 3813527194;
+			public const uint H1247214308 = 1247214308;
+			public const uint H1247214309 = 1247214309;
+			public const uint H1247214310 = 1247214310;
+			public const uint H1247214311 = 1247214311;
+			public const uint H1247214314 = 1247214314;
+			public const uint H1247214315 = 1247214315;
 			public const uint AutoRifles_611448447 = 611448447;
 			/// <summary>
 			/// 	Complete all Season 12 Grandmaster Triumphs.
@@ -534,6 +551,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Trials_2739258696 = 2739258696;
 			public const uint TransmatEffects = 1194050975;
+			public const uint IronIntentSuit_1490324406 = 1490324406;
 			public const uint DescendingEchoSuit = 3327736314;
 			public const uint Hunter_2283697615 = 2283697615;
 			public const uint ExoticMission_4017297210 = 4017297210;
@@ -576,20 +594,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Destination Metrics
 			/// </summary>
 			public const uint Destination_3805676283 = 3805676283;
-			public const uint H2842901024 = 2842901024;
-			public const uint H2842901025 = 2842901025;
-			public const uint H2842901026 = 2842901026;
-			public const uint H2842901027 = 2842901027;
 			public const uint Raids_329982304 = 329982304;
 			public const uint Warlock_1840210717 = 1840210717;
-			public const uint H2842901028 = 2842901028;
-			public const uint H2842901029 = 2842901029;
-			public const uint H2842901030 = 2842901030;
-			public const uint H2842901031 = 2842901031;
-			public const uint H2842901032 = 2842901032;
-			public const uint H2842901033 = 2842901033;
 			public const uint Hunter_2765771634 = 2765771634;
 			public const uint PowerWeapons = 3788273704;
+			public const uint Quests_4125923863 = 4125923863;
 			public const uint Warlock_1367826044 = 1367826044;
 			public const uint Titan_1702172227 = 1702172227;
 			/// <summary>
@@ -623,6 +632,8 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Raid Metrics
 			/// </summary>
 			public const uint Raids_892975567 = 892975567;
+			public const uint AvianTitanSet = 102456906;
+			public const uint StrandTitanSet = 102456907;
 			public const uint Miscellaneous_681763537 = 681763537;
 			/// <summary>
 			/// 	While Invading, ammo slowly trickles to your Kinetic and Energy weapons over time.
@@ -640,6 +651,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Account-Wide Metrics
 			/// </summary>
 			public const uint Account_2875839731 = 2875839731;
+			public const uint ReinforcedMark = 1741143933;
 			public const uint Menagerie = 297242190;
 			/// <summary>
 			/// 	Complete all Season of Arrivals flawless Triumphs.
@@ -659,8 +671,8 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ForbiddenVisageSet_956723098 = 956723098;
 			public const uint CelestialSet_956723099 = 956723099;
 			public const uint CouturierSet_956723100 = 956723100;
-			public const uint NemeanSet_956723101 = 956723101;
 			public const uint Commendations_1614697748 = 1614697748;
+			public const uint NemeanSet_956723101 = 956723101;
 			public const uint AbyssWalkerSet = 956723102;
 			public const uint SunsApexSet = 956723103;
 			/// <summary>
@@ -734,7 +746,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TakeShelterOrnaments = 4235870590;
 			public const uint ShelterinPlaceSuit = 4235870591;
 			public const uint EnduringConquerorSet = 4066557609;
-			public const uint LionsMightSet = 4066557610;
+			public const uint Season23SilverGuardianGamesArmorTitanSet = 4066557610;
 			/// <summary>
 			/// 	Trophies earned through mastery of Gambit Prime and the Reckoning.
 			/// </summary>
@@ -753,10 +765,15 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Season16_537615233 = 537615233;
 			public const uint EpisodeEchoes_3023458294 = 3023458294;
 			public const uint DrainedSolsticeSuit_2207139404 = 2207139404;
+			public const uint EpisodeRevenant_3023458295 = 3023458295;
 			public const uint Crucible_339137305 = 339137305;
 			public const uint InauguralRevelrySuit_2207139407 = 2207139407;
 			public const uint Hunter_1481732726 = 1481732726;
-			public const uint WarriorsMemorialSet = 1516764675;
+			public const uint StarburstCosmeticPackArmorHunterSet = 1516764675;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1575985352 = 1575985352;
 			public const uint General_933409053 = 933409053;
 			/// <summary>
 			/// 	Become a paradigm of a leader among your fellow Guardians by earning their recognition and unlocking your full potential while defeating the most challenging foes.
@@ -787,9 +804,11 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint PlayingforKeeps = 1420354007;
 			public const uint Season8_996666654 = 996666654;
 			public const uint AllstarMark = 673009848;
+			public const uint SublimeSuit_673009849 = 673009849;
 			public const uint LionsReignMark = 673009850;
 			public const uint VerminRegnant = 1621475954;
 			public const uint SunlitMark = 673009851;
+			public const uint VeteranLegendSuit_673009854 = 673009854;
 			public const uint OutlawedInvaderSuit_1976484180 = 1976484180;
 			public const uint IllicitInvaderSuit_1976484181 = 1976484181;
 			public const uint NotoriousInvaderSuit_1976484183 = 1976484183;
@@ -837,6 +856,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Trophies from the Throne World.
 			/// </summary>
 			public const uint ThroneWorldCollector = 3016040694;
+			public const uint H2748288425 = 2748288425;
 			public const uint MajesticSolsticeSuit_2557471206 = 2557471206;
 			public const uint RenewedSolsticeSuit_2557471207 = 2557471207;
 			public const uint DrainedSolsticeSuit_2557471208 = 2557471208;
@@ -939,9 +959,17 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Neomuna = 1964693686;
 			public const uint Swords_4094317874 = 4094317874;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_524031146 = 524031146;
+			/// <summary>
 			/// 	Raid Metrics
 			/// </summary>
 			public const uint Raids_1061045979 = 1061045979;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3526700727 = 3526700727;
 			/// <summary>
 			/// 	Lore tells broader stories from the Destiny universe. Unlock and read lore pages by completing Triumphs.
 			/// </summary>
@@ -1007,6 +1035,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SymmetristsSet = 60165623;
 			public const uint TrialsOrnament_1810187963 = 1810187963;
 			public const uint AtavisticIdolSuit_1810187964 = 1810187964;
+			public const uint ShadestalkerSuit_1488134553 = 1488134553;
 			public const uint SolsticeSuitRenewed_3270435520 = 3270435520;
 			public const uint PhotonicSuit = 1810187965;
 			public const uint EmpyreanCartographerSet_60165626 = 60165626;
@@ -1015,6 +1044,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint WrathTrailSet = 60165627;
 			public const uint SolsticeSuitMagnificent_3270435522 = 3270435522;
 			public const uint PyrrhicAscentSuit_1810187967 = 1810187967;
+			/// <summary>
+			/// 	Triumphs for Episode: Revenant.
+			/// </summary>
+			public const uint EpisodeRevenant_711491817 = 711491817;
 			public const uint SolsticeSuitMajestic_3270435523 = 3270435523;
 			public const uint RenewedSolsticeArmor_3270435524 = 3270435524;
 			public const uint CobrasHood = 3270435525;
@@ -1035,6 +1068,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Gambit_3783427643 = 3783427643;
 			public const uint Ritual_1391513288 = 1391513288;
 			public const uint LegacysOathSuit_3167222499 = 3167222499;
+			public const uint AugmentedParacausalGrips = 4202065930;
 			public const uint Quests_713982002 = 713982002;
 			public const uint Ripples = 1362388863;
 			public const uint HouseSalvation = 135736218;
@@ -1046,6 +1080,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Leveling_3720660098 = 3720660098;
 			public const uint Starcrossed = 2612647205;
 			public const uint PulseRifles_1585233703 = 1585233703;
+			public const uint Ritual_3856957546 = 3856957546;
 			public const uint Armor_615947643 = 615947643;
 			public const uint Strikes_245634203 = 245634203;
 			public const uint General_854729322 = 854729322;
@@ -1163,6 +1198,8 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Destination Metrics
 			/// </summary>
 			public const uint Destination_3637752902 = 3637752902;
+			public const uint PlaguebreakerRobes = 1072270068;
+			public const uint JadeFilamentRobes = 1072270069;
 			public const uint GreatHuntSuit_464179105 = 464179105;
 			/// <summary>
 			/// 	Triumphs related to Nightfalls.
@@ -1184,7 +1221,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Season9_219546643 = 219546643;
 			public const uint ThanaticInstinct = 528890243;
 			public const uint Season2_219546648 = 219546648;
-			public const uint SeasonalBonuses_3458434875 = 3458434875;
 			public const uint Season3_219546649 = 219546649;
 			public const uint AdamantineRebirth = 1170450252;
 			public const uint Season1_219546651 = 219546651;
@@ -1252,6 +1288,11 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Warlock_1127243461 = 1127243461;
 			public const uint PruinaLusterSet_1130741797 = 1130741797;
 			public const uint SnowplumeSet = 1130741798;
+			public const uint AstralStasisDrakeSet_1130741799 = 1130741799;
+			/// <summary>
+			/// 	Become Legend.
+			/// </summary>
+			public const uint Legend = 1622359234;
 			/// <summary>
 			/// 	Medals awarded for achievement in combat.
 			/// </summary>
@@ -1304,14 +1345,15 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LustrousChromiteSuit = 2678302057;
 			public const uint TakenKingSuit_2254772612 = 2254772612;
 			public const uint CrimsonDays = 1582258007;
+			public const uint TalesoftheForgottenVol4 = 2126759431;
 			public const uint Events_2246852771 = 2246852771;
 			public const uint Quests_2555722644 = 2555722644;
 			public const uint Ephialophage = 2975122120;
+			public const uint Season21_1536427399 = 1536427399;
 			/// <summary>
 			/// 	Complete all Season of the Seraph Triumphs.
 			/// </summary>
 			public const uint Seraph = 1321008452;
-			public const uint Season21_1536427399 = 1536427399;
 			/// <summary>
 			/// 	Complete all Season of Plunder Triumphs.
 			/// </summary>
@@ -1360,6 +1402,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Warden = 1321008463;
 			public const uint Warlock_5678666 = 5678666;
+			public const uint IronIntentSuit_3209093607 = 3209093607;
 			public const uint Hunter_2092820752 = 2092820752;
 			/// <summary>
 			/// 	A frozen moon, shrouded in darkness.
@@ -1373,6 +1416,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Activities_1657213183 = 1657213183;
 			public const uint StormdancersCover = 3866189673;
 			public const uint ChromacloakSet_226373522 = 226373522;
+			public const uint HereticalSet_226373523 = 226373523;
 			public const uint TrophyTakerSet_226373524 = 226373524;
 			public const uint AnthemicInvocationSet_226373525 = 226373525;
 			public const uint Titan_272447096 = 272447096;
@@ -1380,6 +1424,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ExodusDownSuit_3952745158 = 3952745158;
 			public const uint AManwithNoName = 3747262457;
 			public const uint AbyssalPelagicSet_226373527 = 226373527;
+			public const uint ScornHelm_1296508032 = 1296508032;
 			public const uint ScatterhornSuit_3952745159 = 3952745159;
 			public const uint ReverieDawnSuit_3952745160 = 3952745160;
 			public const uint Gear_3821148611 = 3821148611;
@@ -1398,35 +1443,34 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Hunter_3577410962 = 3577410962;
 			public const uint LostPacificSuit_3952745165 = 3952745165;
 			public const uint WildwoodSuit_3952745166 = 3952745166;
+			public const uint H591273464 = 591273464;
 			public const uint GensymKnightSuit_3952745167 = 3952745167;
+			public const uint H591273465 = 591273465;
+			public const uint H591273466 = 591273466;
+			public const uint H591273467 = 591273467;
+			public const uint H591273468 = 591273468;
+			public const uint H591273469 = 591273469;
 			public const uint ToOldFriends = 2334497538;
+			public const uint H591273470 = 591273470;
 			/// <summary>
 			/// 	Trials of Osiris Metrics
 			/// </summary>
 			public const uint TrialsofOsiris_2259246873 = 2259246873;
+			public const uint H591273471 = 591273471;
 			/// <summary>
 			/// 	Hunt dangerous bosses to earn sterling rewards.
 			/// </summary>
 			public const uint SeasonoftheHunt = 2255100699;
-			public const uint H2876456192 = 2876456192;
-			public const uint H2876456193 = 2876456193;
-			public const uint H2876456194 = 2876456194;
 			public const uint LostSectors_936264472 = 936264472;
-			public const uint H2876456195 = 2876456195;
-			public const uint H2876456196 = 2876456196;
-			public const uint H2876456197 = 2876456197;
-			public const uint H2876456198 = 2876456198;
 			public const uint Finishers = 1208223659;
-			public const uint H2876456199 = 2876456199;
 			public const uint Ritual_4085932990 = 4085932990;
-			public const uint H2876456206 = 2876456206;
 			public const uint H3839020927 = 3839020927;
-			public const uint H2876456207 = 2876456207;
 			/// <summary>
 			/// 	Damaging a high-value target or non-Primeval boss marks it and weakens it for allies.
 			/// </summary>
 			public const uint HighValueTracker = 1764677740;
 			public const uint TheDreamingCity_4206435289 = 4206435289;
+			public const uint AstralStasisDrakeSet_3995777968 = 3995777968;
 			public const uint OpulentStrixSet = 3995777969;
 			public const uint PruinaLusterSet_3995777970 = 3995777970;
 			public const uint H1405381633 = 1405381633;
@@ -1456,8 +1500,16 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1279587310 = 1279587310;
 			public const uint H1279587311 = 1279587311;
 			public const uint SpectralDisplacerSet = 3398858206;
+			public const uint H745111216 = 745111216;
 			public const uint General_2953168583 = 2953168583;
+			public const uint H745111217 = 745111217;
+			public const uint H745111218 = 745111218;
+			public const uint H745111219 = 745111219;
+			public const uint H745111220 = 745111220;
+			public const uint H745111221 = 745111221;
 			public const uint Dungeons_3932467826 = 3932467826;
+			public const uint H745111222 = 745111222;
+			public const uint H745111223 = 745111223;
 			/// <summary>
 			/// 	Defeating powerful enemies grants a temporary surge in grenade recharge rate.
 			/// </summary>
@@ -1477,6 +1529,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Killmonger = 3766345486;
 			public const uint Weapons_958214174 = 958214174;
 			public const uint ResonantFurySuit_1232699936 = 1232699936;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1977724036 = 1977724036;
 			public const uint SeasonalJourney_1056236424 = 1056236424;
 			/// <summary>
 			/// 	Complete all Season of Opulence Triumphs.
@@ -1493,18 +1549,27 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint UniversalOrnaments_466446949 = 466446949;
 			public const uint Raids_2499789966 = 2499789966;
 			public const uint Activities_3032873208 = 3032873208;
+			public const uint Week6 = 1824870256;
+			public const uint Week7 = 1824870257;
 			public const uint LettersfromEris = 1737909884;
+			public const uint Week4 = 1824870258;
+			public const uint Week5 = 1824870259;
 			public const uint DreamerMark = 4204811724;
+			public const uint Week2 = 1824870260;
 			public const uint TMEarpCustomSuit = 446647346;
+			public const uint Week3 = 1824870261;
 			/// <summary>
 			/// 	Hunter Triumphs
 			/// </summary>
 			public const uint Hunter_264195358 = 264195358;
 			public const uint RefugeeSuit_4204811726 = 4204811726;
 			public const uint RenegadeSuit = 4204811727;
+			public const uint Week1 = 1824870263;
 			public const uint FusionRifles_763392524 = 763392524;
 			public const uint Nightmares_2272665373 = 2272665373;
 			public const uint Glaives_3866582567 = 3866582567;
+			public const uint Week8 = 1824870270;
+			public const uint Week9 = 1824870271;
 			public const uint Energy = 3919988882;
 			public const uint General_3929313731 = 3929313731;
 			public const uint Commendations_198006370 = 198006370;
@@ -1580,16 +1645,27 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint General_1808459779 = 1808459779;
 			public const uint Titan_1882524088 = 1882524088;
 			public const uint SniperRifles_3657601640 = 3657601640;
+			public const uint H3038108690 = 3038108690;
 			/// <summary>
 			/// 	Complete all Raid Triumphs.
 			/// </summary>
 			public const uint LastWish_1486062207 = 1486062207;
+			public const uint H3038108691 = 3038108691;
+			public const uint ActiumPlatedGauntlets = 1204118190;
 			/// <summary>
 			/// 	Complete Event Challenges during Solstice. Progress resets at the end of the event.
 			/// </summary>
 			public const uint Flamekeeper = 3598951881;
+			public const uint H3038108696 = 3038108696;
+			public const uint H3038108697 = 3038108697;
+			public const uint H3038108698 = 3038108698;
+			public const uint H3038108699 = 3038108699;
 			public const uint Hunter_2946188302 = 2946188302;
+			public const uint H3038108700 = 3038108700;
 			public const uint Hunter_2180056767 = 2180056767;
+			public const uint H3038108701 = 3038108701;
+			public const uint H3038108702 = 3038108702;
+			public const uint H3038108703 = 3038108703;
 			public const uint CrimsonPlumeSuit_3001720343 = 3001720343;
 			public const uint H859884376 = 859884376;
 			/// <summary>
@@ -1605,6 +1681,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Intrepid = 1270675696;
 			/// <summary>
+			/// 	Complete all Episode: Revenant Triumphs to earn the title of Slayer Baron.
+			/// </summary>
+			public const uint SlayerBaron = 1270675697;
+			/// <summary>
 			/// 	Complete all Season of Defiance Triumphs.
 			/// </summary>
 			public const uint Queensguard = 1270675700;
@@ -1612,8 +1692,8 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete all Season of the Deep Title Triumphs to earn the Title of Aquanaut.
 			/// </summary>
 			public const uint Aquanaut = 1270675701;
-			public const uint Activities_1476271775 = 1476271775;
 			public const uint Season3_1486718195 = 1486718195;
+			public const uint Activities_1476271775 = 1476271775;
 			/// <summary>
 			/// 	Complete all Season of the Witch Title Triumphs to earn the Title of Haruspex.
 			/// </summary>
@@ -1640,13 +1720,20 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint AstralAlignment = 3735727166;
 			public const uint Seasonal_1484033736 = 1484033736;
 			public const uint Metrics = 1074663644;
+			/// <summary>
+			/// 	The Pathfinder is an astronomical instrument, guiding Guardians to the treasures of the cosmos, while allowing them to define their own journey.
+			/// </summary>
+			public const uint Pathfinder_1190294990 = 1190294990;
 			public const uint Strikes_69244313 = 69244313;
 			public const uint SunlitBond = 2240694672;
 			public const uint PhoenixsAscentBond = 2240694673;
+			public const uint SublimeSuit_2240694674 = 2240694674;
 			public const uint AllstarBond = 2240694675;
 			public const uint Gear_121075568 = 121075568;
+			public const uint VeteranLegendSuit_2240694677 = 2240694677;
 			public const uint TheWitchQueen_882064875 = 882064875;
 			public const uint OpulentDuelistSuit = 3760158863;
+			public const uint MysticLightbaneSet = 1640009337;
 			public const uint CrawlingChaosSet = 1640009338;
 			public const uint MechanizedProtectorSet = 1640009339;
 			public const uint TechnosaurusSet = 1640009340;
@@ -1663,7 +1750,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Pursuits = 2800958885;
 			public const uint Warlock_51250598 = 51250598;
 			public const uint Factions_3707983485 = 3707983485;
-			public const uint FenrirsBaneSet = 4032684951;
+			public const uint StarburstCosmeticPackArmorTitanSet = 4032684951;
 			public const uint Gambit_22122108 = 22122108;
 			/// <summary>
 			/// 	Destination Metrics
@@ -1697,6 +1784,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TrialsChannelingSuit = 4025971739;
 			public const uint SkybreakerSuit = 4025971740;
 			public const uint AtavisticIdolSuit_4025971741 = 4025971741;
+			public const uint OnslaughtSalvation = 454365037;
 			public const uint PsionicWarfare = 3461533044;
 			public const uint PyrrhicAscentSuit_4025971742 = 4025971742;
 			public const uint ActsofMercy = 3486770461;
@@ -1718,7 +1806,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint IllicitInvaderSuit_2934766260 = 2934766260;
 			public const uint OutlawedInvaderSuit_2934766261 = 2934766261;
 			public const uint NotoriousInvaderSuit_2934766262 = 2934766262;
-			public const uint Seasonal_2236439284 = 2236439284;
+			public const uint ShadestalkerSuit_3702800837 = 3702800837;
 			public const uint WyrmguardSuit_3702800840 = 3702800840;
 			public const uint VeiledTithesSuit_3702800841 = 3702800841;
 			public const uint UntetheredEdgeSuit_3702800842 = 3702800842;
@@ -1731,6 +1819,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TheTributeHall_615993066 = 615993066;
 			public const uint Secrets_1952976919 = 1952976919;
 			public const uint PsiOpsBattlegrounds = 1541092394;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2157285411 = 2157285411;
 			/// <summary>
 			/// 	Raid Metrics
 			/// </summary>
@@ -1761,6 +1853,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Season13_3006680604 = 3006680604;
 			public const uint BinaryPhoenixSuit = 476334986;
 			public const uint Season12_3006680605 = 3006680605;
+			public const uint EpisodeRevenant_1814416115 = 1814416115;
 			public const uint PhoenixBattleOrnaments = 476334987;
 			public const uint Season11_3006680606 = 3006680606;
 			public const uint Season10_3006680607 = 3006680607;
@@ -1865,7 +1958,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Hunter_2870508805 = 2870508805;
 			public const uint Shotguns_2474099561 = 2474099561;
 			public const uint WallWatcherSuit = 1347501754;
-			public const uint SkaldicChantSet = 1411990180;
+			public const uint StarburstCosmeticPackArmorWarlockSet = 1411990180;
 			public const uint Gear_3120473830 = 3120473830;
 			public const uint RPCValiantSuit = 2699697720;
 			public const uint HardcaseSuit = 2699697721;
@@ -1876,6 +1969,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint AdventuresRewardsII_2699697725 = 2699697725;
 			public const uint MidnightOilSuit = 2699697726;
 			public const uint Glaives_622095092 = 622095092;
+			public const uint GhostsHolograms = 1754086170;
 			/// <summary>
 			/// 	Complete all Event Card challenges during Guardian Games. Progress resets at the end of the event.
 			/// </summary>
@@ -1909,18 +2003,13 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint NothingEnds = 2426835652;
 			public const uint Season4_4123540759 = 4123540759;
 			public const uint Glaives_504540513 = 504540513;
-			public const uint Week9 = 144928582;
-			public const uint Week8 = 144928583;
-			public const uint Week7 = 144928584;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_640522135 = 640522135;
 			public const uint Gambit_3496585510 = 3496585510;
-			public const uint Week6 = 144928585;
-			public const uint Week5 = 144928586;
 			public const uint Titan_1996848060 = 1996848060;
-			public const uint Week4 = 144928587;
-			public const uint Week3 = 144928588;
-			public const uint Week2 = 144928589;
 			public const uint ArclightSet = 2553804208;
-			public const uint Week1 = 144928590;
 			public const uint PaintedKitsuneSet = 2553804209;
 			public const uint Titan_1003644562 = 1003644562;
 			public const uint Companions = 2336445794;
@@ -1933,6 +2022,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint CouturierSet_2553804221 = 2553804221;
 			public const uint DawnSingerSet = 2553804222;
 			public const uint ElectoftheEmptySet = 2553804223;
+			public const uint H3293009910 = 3293009910;
 			public const uint GuardianGames_1965217294 = 1965217294;
 			public const uint Exploration_4161172201 = 4161172201;
 			public const uint Strikes_1990811028 = 1990811028;
@@ -1948,16 +2038,12 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint BulletsmithsIreSuit = 1672247878;
 			public const uint PhobosWardenSuit_2389993863 = 2389993863;
 			public const uint CommunityEvent = 3564406313;
-			/// <summary>
-			/// 	The Pathfinder is an astronomical instrument, guiding Guardians to the treasures of the cosmos, while allowing them to define their own journey.
-			/// </summary>
-			public const uint Pathfinder_622609416 = 622609416;
 			public const uint Secrets_2322553724 = 2322553724;
 			public const uint OpulentScholarSuit = 2551808106;
 			public const uint BetweenStolenStars = 2348374202;
 			public const uint FrumiousSuit = 1484949248;
-			public const uint PitofHeresy = 2828966211;
 			public const uint SteadfastOrnament_1484949249 = 1484949249;
+			public const uint PitofHeresy = 2828966211;
 			public const uint OntheOffenseOrnaments = 1484949250;
 			public const uint TookOffenseSuit = 1484949251;
 			public const uint PhotosuedeSuit_1484949253 = 1484949253;
@@ -1993,24 +2079,34 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint IronFellowshipArmorTitan = 3029715668;
 			public const uint ScatterhornSuit_3476818395 = 3476818395;
 			public const uint IronSymmachyArmorTitan = 3029715669;
+			public const uint H3907842544 = 3907842544;
 			public const uint IronTruageSuit_3029715670 = 3029715670;
+			public const uint H3907842545 = 3907842545;
 			public const uint IronWillArmorTitan = 3029715671;
 			/// <summary>
 			/// 	Triumphs related to Cosmodrome exploration.
 			/// </summary>
 			public const uint Cosmodrome_3177164055 = 3177164055;
+			public const uint H3907842546 = 3907842546;
 			public const uint IronForerunnerSuit_3029715672 = 3029715672;
 			public const uint Kentarch3Suit_2268151409 = 2268151409;
+			public const uint H3907842547 = 3907842547;
 			public const uint IronCompanionSuit_3029715673 = 3029715673;
+			public const uint H3907842548 = 3907842548;
+			public const uint H3907842549 = 3907842549;
+			public const uint H3907842550 = 3907842550;
 			/// <summary>
 			/// 	Trials of Osiris Metrics
 			/// </summary>
 			public const uint TrialsofOsiris_1476754118 = 1476754118;
+			public const uint H3907842551 = 3907842551;
 			/// <summary>
 			/// 	Triumphs associated with the "Warlord's Ruin" dungeon.
 			/// </summary>
 			public const uint WarlordsRuin_3022435577 = 3022435577;
 			public const uint Gear_3802714325 = 3802714325;
+			public const uint AvianHunterSet = 188965630;
+			public const uint StrandHunterSet = 188965631;
 			public const uint MachineGuns_2904326260 = 2904326260;
 			public const uint Secrets_2379774266 = 2379774266;
 			/// <summary>
@@ -2090,6 +2186,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Progression = 2748609922;
 			public const uint WarMantisSuit = 3741602878;
 			public const uint MythosHackSuit = 3741602879;
+			public const uint HereticalSet_1124936630 = 1124936630;
 			public const uint ChromacloakSet_1124936631 = 1124936631;
 			/// <summary>
 			/// 	Claim rewards hidden deep in the Vex network.
@@ -2099,6 +2196,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Dragonslayers = 1100359214;
 			public const uint VanguardMedals_3856185547 = 3856185547;
 			public const uint PulseRifles_1815606972 = 1815606972;
+			public const uint H1251941634 = 1251941634;
 			/// <summary>
 			/// 	Complete all Season of the Worthy flawless Triumphs.
 			/// </summary>
@@ -2125,22 +2223,18 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Weapons that consume green ammo.
 			/// </summary>
 			public const uint Special_3098463839 = 3098463839;
-			public const uint H2960344352 = 2960344352;
-			public const uint H2960344353 = 2960344353;
-			public const uint H2960344354 = 2960344354;
-			public const uint H2960344355 = 2960344355;
+			public const uint VeteranLegendSuit_3253657962 = 3253657962;
 			public const uint Gambit_3986292122 = 3986292122;
 			public const uint AllstarCloak = 3253657964;
-			public const uint H2960344356 = 2960344356;
-			public const uint H2960344357 = 2960344357;
+			public const uint SublimeSuit_3253657965 = 3253657965;
 			public const uint SerpentsGloryMantle = 3253657966;
-			public const uint H2960344358 = 2960344358;
 			public const uint SunlitCloak = 3253657967;
-			public const uint H2960344359 = 2960344359;
 			public const uint General_3598863561 = 3598863561;
+			/// <summary>
+			/// 	Complete limited-time challenges for Season rank, Bright Dust, and other rewards.
+			/// </summary>
+			public const uint Weekly = 4128731898;
 			public const uint MachineGuns_2522335688 = 2522335688;
-			public const uint H2960344364 = 2960344364;
-			public const uint H2960344365 = 2960344365;
 			public const uint WallwatcherSuit_1296877502 = 1296877502;
 			public const uint CompetitiveSpiritSet_2078597704 = 2078597704;
 			public const uint Titan_3111651466 = 3111651466;
@@ -2154,6 +2248,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint PruinaLusterSet_307042793 = 307042793;
 			public const uint Titan_1893032045 = 1893032045;
 			public const uint PolarPredatorSet = 307042794;
+			public const uint AstralStasisDrakeSet_307042795 = 307042795;
 			public const uint WinterhartSet_307042796 = 307042796;
 			public const uint FrostSet_307042797 = 307042797;
 			public const uint NorthlightSet_307042798 = 307042798;
@@ -2162,6 +2257,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Items = 3790247699;
 			public const uint Warlock_1172293868 = 1172293868;
 			public const uint Chest = 4163848934;
+			public const uint VoidInfiltratorBoots = 3628870760;
 			/// <summary>
 			/// 	Trophies from the Moon.
 			/// </summary>
@@ -2237,6 +2333,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete all Triumphs for the Season of Dawn.
 			/// </summary>
 			public const uint Dawn = 955166375;
+			public const uint IronBanner_1256829028 = 1256829028;
 			public const uint TrialsofOsiris_2220993106 = 2220993106;
 			public const uint UniversalOrnaments_3655910122 = 3655910122;
 			public const uint Seasonal_3340841237 = 3340841237;
@@ -2290,7 +2387,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Destinations = 1106177979;
 			public const uint HandCannons_3129576652 = 3129576652;
-			public const uint SeasonalBonuses_1812007759 = 1812007759;
 			public const uint HandCannons_414094560 = 414094560;
 			public const uint TraceRifles_4152738722 = 4152738722;
 			public const uint Lightfall_3352340500 = 3352340500;
@@ -2357,15 +2453,25 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Raids_3007543941 = 3007543941;
 			public const uint ShadowofJudgmentSuit = 714676221;
+			public const uint H1684350992 = 1684350992;
+			public const uint H1684350993 = 1684350993;
 			public const uint PhenotypePlasticitySet_389476744 = 389476744;
 			public const uint VirtuousSet_389476745 = 389476745;
 			public const uint Armor_1929360037 = 1929360037;
+			public const uint H1684351000 = 1684351000;
 			public const uint AspiringChallengerSet = 575171989;
-			public const uint VipersZealSet = 575171990;
+			public const uint H1684351001 = 1684351001;
+			public const uint Season23SilverGuardianGamesArmorHunterSet = 575171990;
+			public const uint H1684351002 = 1684351002;
+			public const uint H1684351003 = 1684351003;
+			public const uint H1684351004 = 1684351004;
 			public const uint EnergyWeapons = 185103480;
 			public const uint IronForerunnerSuit_3320568100 = 3320568100;
+			public const uint H1684351005 = 1684351005;
 			public const uint IronCompanionSuit_3320568101 = 3320568101;
 			public const uint AchillesWeavesaCocoon = 1777644015;
+			public const uint H1684351006 = 1684351006;
+			public const uint H1684351007 = 1684351007;
 			public const uint IronFellowshipArmorHunter = 3320568104;
 			public const uint IronSymmachyArmorHunter = 3320568105;
 			public const uint IronTruageSuit_3320568106 = 3320568106;
@@ -2383,12 +2489,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VowoftheDisciple_2886738008 = 2886738008;
 			public const uint VernalGrowthSuit_1432280523 = 1432280523;
+			public const uint IronIntentSuit_416171827 = 416171827;
 			public const uint IntrepidInquirySuit = 1432280525;
 			public const uint OptimacySuit_1432280526 = 1432280526;
 			/// <summary>
 			/// 	Weapons that consume purple ammo.
 			/// </summary>
 			public const uint Heavy_3253265639 = 3253265639;
+			public const uint EpisodeEchoes_2102357635 = 2102357635;
 			public const uint Power_280655854 = 280655854;
 			/// <summary>
 			/// 	The tools with which a Guardian defends the system.
@@ -2415,6 +2523,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ThunderheadSuit_226719141 = 226719141;
 			public const uint EpisodeEchoes_4188702082 = 4188702082;
 			public const uint DreambaneSuit_226719142 = 226719142;
+			public const uint EpisodeRevenant_4188702083 = 4188702083;
 			public const uint ClutchExtolSuit_2048927054 = 2048927054;
 			public const uint Power_1139971093 = 1139971093;
 			public const uint CrystocreneSuit_226719143 = 226719143;
@@ -2428,6 +2537,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint LegatusSet_209595936 = 209595936;
 			public const uint FailsafeResearch = 3407965821;
 			public const uint SteeplechaseSet_209595937 = 209595937;
+			public const uint Tonics = 1733169854;
 			public const uint SiegebreakSet_209595938 = 209595938;
 			public const uint Bows_1634479529 = 1634479529;
 			public const uint ValkyrianSet_209595939 = 209595939;
@@ -2444,36 +2554,26 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Collectibles = 3149360255;
 			public const uint OutlawedSentrySuit_590691881 = 590691881;
 			public const uint NotoriousSentrySuit_590691882 = 590691882;
-			public const uint H2859678608 = 2859678608;
-			public const uint H2859678609 = 2859678609;
 			/// <summary>
 			/// 	Legacy Guardian honors.
 			/// </summary>
 			public const uint LegacyTitles = 1881970629;
-			public const uint H2859678610 = 2859678610;
-			public const uint H2859678611 = 2859678611;
-			public const uint H2859678612 = 2859678612;
 			/// <summary>
 			/// 	Trophies from your explorations across Mercury and the icecaps of Mars.
 			/// </summary>
 			public const uint DestinationsCurseofOsirisandWarmind = 1331476689;
-			public const uint H2859678613 = 2859678613;
 			public const uint ScorchedSolsticeSuit_3107744648 = 3107744648;
-			public const uint H2859678614 = 2859678614;
 			/// <summary>
 			/// 	The surreal landscape created within the Traveler.
 			/// </summary>
 			public const uint ThePaleHeart = 2319703975;
 			public const uint QuiltedWinterMark = 3107744649;
-			public const uint H2859678615 = 2859678615;
 			public const uint ResplendentSolsticeSuit_3107744650 = 3107744650;
 			public const uint RekindledSolsticeSuit_3107744651 = 3107744651;
 			/// <summary>
 			/// 	Destination Metrics
 			/// </summary>
 			public const uint Destination_3707324621 = 3707324621;
-			public const uint H2859678618 = 2859678618;
-			public const uint H2859678619 = 2859678619;
 			public const uint ContingentCharge = 3103837370;
 			/// <summary>
 			/// 	Trials of Osiris Metrics
@@ -2516,6 +2616,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint RekindledSolsticeSuit_3687929982 = 3687929982;
 			public const uint ResplendentSolsticeSuit_3687929983 = 3687929983;
 			public const uint Sidearms_3779085124 = 3779085124;
+			public const uint ScornHelm_103775439 = 103775439;
 			public const uint Activities_3758301615 = 3758301615;
 			public const uint PromisedVictorySuit = 2074468283;
 			public const uint GearModification = 297184034;
@@ -2524,6 +2625,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SolsticeSet_4067284872 = 4067284872;
 			public const uint CelestineSet = 4067284877;
 			public const uint CandescentPrismSet_4067284878 = 4067284878;
+			public const uint ScornHelm_2194010980 = 2194010980;
 			public const uint Gear_342423529 = 342423529;
 			public const uint Warlock_508124809 = 508124809;
 			public const uint Shotguns_2214033295 = 2214033295;
@@ -2537,8 +2639,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Triumphs related to raids.
 			/// </summary>
 			public const uint Raids_3472409870 = 3472409870;
+			/// <summary>
+			/// 	The Pathfinder is an astronomical instrument, guiding Guardians to the treasures of the cosmos, while allowing them to define their own journey.
+			/// </summary>
+			public const uint Pathfinder_1289679000 = 1289679000;
 			public const uint Account_24961706 = 24961706;
 			public const uint SubmachineGuns_3422198227 = 3422198227;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3028376293 = 3028376293;
 			public const uint Season11_3030939312 = 3030939312;
 			public const uint Season10_3030939313 = 3030939313;
 			public const uint Season13_3030939314 = 3030939314;
@@ -2560,6 +2670,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H4253810213 = 4253810213;
 			public const uint H4253810214 = 4253810214;
 			public const uint H4253810215 = 4253810215;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2723381343 = 2723381343;
 			public const uint WhisperoftheVictorSet = 524839130;
 			public const uint CunningoftheContenderSet = 720223627;
 			public const uint ContenderSet_720223630 = 720223630;
@@ -2592,10 +2706,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ThePantheon_3492865493 = 3492865493;
 			public const uint SubmachineGuns_1196649252 = 1196649252;
-			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified = 1688234294;
+			public const uint ExoticMissionEncore = 1688234294;
 			/// <summary>
 			/// 	Weapons that consume purple ammo.
 			/// </summary>
@@ -2624,6 +2735,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Ketchcrash = 155343661;
 			public const uint Endgame_2204510172 = 2204510172;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_293244506 = 293244506;
+			/// <summary>
 			/// 	A mindscape of Darkness, now filled with the Light.
 			/// </summary>
 			public const uint ThroneWorld = 3324443328;
@@ -2636,10 +2751,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Activities_2533722226 = 2533722226;
 			public const uint ProdigalSuit_2983784774 = 2983784774;
 			public const uint SpoilsoftheShore_2983784775 = 2983784775;
-			public const uint Week12 = 3880269816;
-			public const uint Week13 = 3880269817;
-			public const uint Week10 = 3880269818;
-			public const uint Week11 = 3880269819;
 			public const uint CompetitiveSpiritSet_1674342228 = 1674342228;
 			/// <summary>
 			/// 	Claim rewards during Into the Light.
@@ -2647,8 +2758,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint IntotheLight = 3121766601;
 			public const uint VernalGrowthSet_1674342229 = 1674342229;
 			public const uint TraceRifles_2649709888 = 2649709888;
-			public const uint Week14 = 3880269822;
-			public const uint Week15 = 3880269823;
 			/// <summary>
 			/// 	Exotic catalysts expand the power of your Exotic weapons. Find them and finish their objectives to unlock your arsenal's full potential.
 			/// </summary>
@@ -2691,6 +2800,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint MajesticSolsticeArmor_689787435 = 689787435;
 			public const uint PhantasmagoricSet = 516911331;
 			public const uint SolsticeSuitRenewed_689787436 = 689787436;
+			public const uint CursedArcanaSet = 516911332;
 			public const uint MightyRivalryMark = 689787437;
 			public const uint SolsticeSuitMagnificent_689787438 = 689787438;
 			public const uint MobileExoskeletonSet = 516911334;
@@ -2721,6 +2831,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SolsticeSuitMagnificent_2574248769 = 2574248769;
 			public const uint CunningRivalryCloak_2574248770 = 2574248770;
 			public const uint SolsticeSuitRenewed_2574248771 = 2574248771;
+			/// <summary>
+			/// 	The Pathfinder is an astronomical instrument, guiding Guardians to the treasures of the cosmos, while allowing them to define their own journey.
+			/// </summary>
+			public const uint Pathfinder_2968370335 = 2968370335;
 			public const uint IronBanner_1118260767 = 1118260767;
 			public const uint Exploration_2074120351 = 2074120351;
 			/// <summary>
@@ -2741,6 +2855,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SimulatorSuit_1368351332 = 1368351332;
 			public const uint WarSimulatorOrnament_1368351333 = 1368351333;
 			public const uint SuperiorsVisionOrnament_1368351334 = 1368351334;
+			public const uint Seasonal_1753763501 = 1753763501;
 			public const uint VanguardMedals_3147052745 = 3147052745;
 			/// <summary>
 			/// 	Medals awarded for achievement with different player classes.
@@ -2751,6 +2866,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Season22_2980606458 = 2980606458;
 			public const uint Season23_2980606459 = 2980606459;
 			public const uint EpisodeEchoes_2980606460 = 2980606460;
+			public const uint EpisodeRevenant_2980606461 = 2980606461;
 			public const uint IllicitReaperSuit_39044404 = 39044404;
 			public const uint OutlawedReaperSuit_39044405 = 39044405;
 			public const uint NotoriousReaperSuit_39044406 = 39044406;
@@ -2790,6 +2906,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Trophies from discovering the secrets of Ada-1 and the Black Armory.
 			/// </summary>
 			public const uint AnnualPassBlackArmory = 2399267278;
+			public const uint PastChallenges = 3759694843;
 			/// <summary>
 			/// 	Modifications for various equipment.
 			/// </summary>

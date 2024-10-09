@@ -104,10 +104,18 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ASPECTS_2047681910 = 2047681910;
 			/// <summary>
+			/// 	Ingredients used in the brewing of tonics.
+			/// </summary>
+			public const uint Reagents = 4289795259;
+			/// <summary>
 			/// 	Staves are rewarded for reaching the maximum clan level each season.
 			/// </summary>
 			public const uint ClanStaves = 3954618873;
 			public const uint H4102879893 = 4102879893;
+			/// <summary>
+			/// 	Consuming these tonics enhances rewards for defeating combatants and completing activities.
+			/// </summary>
+			public const uint EnrichingTonics = 2144994609;
 			/// <summary>
 			/// 	Perks are built in to a given weapon. They can be swapped out an unlimited number of times.
 			/// </summary>
@@ -167,6 +175,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Emotes = 1093090108;
 			/// <summary>
+			/// 	Recipes listing the necessary reagents for brewing specific tonics.
+			/// </summary>
+			public const uint Formulae = 10159243;
+			/// <summary>
 			/// 	Clan Perks are enabled when you belong to a clan that has reached the indicated clan level for that season.
 			/// </summary>
 			public const uint ClanPerks_3898156960 = 3898156960;
@@ -191,6 +203,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GHOSTSHELLPERKS = 3301318876;
 			public const uint H3483578942 = 3483578942;
+			/// <summary>
+			/// 	Consuming these tonics enhances combat effectiveness with stat bonuses and boosts to certain Artifact perks.
+			/// </summary>
+			public const uint VolatileTonics = 25081419;
 			/// <summary>
 			/// 	Attach a mod to a vehicle to change its appearance.
 			/// </summary>

@@ -17,12 +17,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Shells used by your assistant and guide, the Ghost.
 			/// </summary>
 			public const uint Ghost = 4023194814;
-			/// <summary>
-			/// 	Apply new colors and materials to compatible gear.
-			/// </summary>
-			public const uint Shaders = 18606351;
 			public const uint H2422292810 = 2422292810;
-			public const uint H1626737477 = 1626737477;
 			/// <summary>
 			/// 	Strike the final blow against a damaged foe with a spectacular flourish.
 			/// </summary>
@@ -44,10 +39,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WrappedItems = 3350918817;
 			/// <summary>
-			/// 	Visual effects awarded on completion of challenging activities.
-			/// </summary>
-			public const uint Auras = 1269569095;
-			/// <summary>
 			/// 	Safe storage for general items. Accessible to all your characters.
 			/// </summary>
 			public const uint General = 138197802;
@@ -55,16 +46,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Cuirasses, jackets, and vestments.
 			/// </summary>
 			public const uint ChestArmor = 14239492;
-			/// <summary>
-			/// 	Express yourself through Emotes.
-			/// </summary>
-			public const uint Emotes_3054419239 = 3054419239;
 			public const uint H1753109658 = 1753109658;
 			public const uint H3621873013 = 3621873013;
 			/// <summary>
 			/// 	Configure the emotes currently assigned to shortcuts.
 			/// </summary>
-			public const uint Emotes_1107761855 = 1107761855;
+			public const uint Emotes = 1107761855;
 			/// <summary>
 			/// 	Useful for equipment upgrades and more.
 			/// </summary>
@@ -87,6 +74,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Messages = 3161908920;
 			public const uint H444348033 = 444348033;
 			/// <summary>
+			/// 	Items that include unique features or functionality.
+			/// </summary>
+			public const uint Accessories = 687325600;
+			/// <summary>
 			/// 	Weapons that deal Arc, Solar, or Void damage. Most effective when dealing with shielded enemies.
 			/// </summary>
 			public const uint EnergyWeapons = 2465295065;
@@ -106,7 +97,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Seasonal Artifacts.
 			/// </summary>
 			public const uint SeasonalArtifact = 1506418338;
-			public const uint H1116760585 = 1116760585;
 			/// <summary>
 			/// 	Items you may have missed, but that were recovered by your Ghost.
 			/// </summary>
@@ -115,10 +105,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Spacecraft at your disposal.
 			/// </summary>
 			public const uint Ships = 284967655;
-			/// <summary>
-			/// 	Equipment and currencies relevant to Seasonal activities and limited-time events.
-			/// </summary>
-			public const uint SeasonalEquipment = 4178487412;
 			public const uint H766235248 = 766235248;
 			/// <summary>
 			/// 	Used to convert an unlocked Warlock armor item to a universal ornament.
@@ -185,7 +171,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Obtained by completing certain bounties and from special reward sources.
 			/// </summary>
 			public const uint BrightDust = 2689798311;
-			public const uint H2401704334 = 2401704334;
 			/// <summary>
 			/// 	Special orders filled by suppliers in the City.
 			/// </summary>

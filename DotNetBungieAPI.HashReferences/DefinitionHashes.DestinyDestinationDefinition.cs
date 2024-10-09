@@ -19,7 +19,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Join a fireteam of three and face the forces of Empress Caiatl.
 			/// </summary>
 			public const uint BattlegroundsPlaylist = 2004354453;
-			public const uint Earth = 1700061161;
+			public const uint Earth_1700061161 = 1700061161;
 			public const uint H3789736692 = 3789736692;
 			/// <summary>
 			/// 	Titan, Moon of Saturn
@@ -238,7 +238,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint VanguardOpsPlaylist = 3129078390;
 			public const uint H2961497387 = 2961497387;
 			public const uint H2039972170 = 2039972170;
-			public const uint HELM = 3929841832;
+			public const uint Earth_3929841832 = 3929841832;
 			public const uint H1647745970 = 1647745970;
 			public const uint H1749218505 = 1749218505;
 			/// <summary>

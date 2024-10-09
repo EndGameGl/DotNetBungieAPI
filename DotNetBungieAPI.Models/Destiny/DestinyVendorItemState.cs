@@ -120,5 +120,7 @@ public enum DestinyVendorItemState
 
     Savings = 4194304,
 
-    Ineligible = 8388608
+    Ineligible = 8388608,
+
+    ArtifactPerkBoosted = 16777216
 }

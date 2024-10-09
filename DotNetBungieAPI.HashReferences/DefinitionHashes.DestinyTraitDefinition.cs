@@ -6,13 +6,13 @@ namespace DotNetBungieAPI.HashReferences
 		{
 			public const uint H2433647538 = 2433647538;
 			/// <summary>
-			/// 	Vanguard, Crucible and Gambit quests
+			/// 	Vanguard, Crucible, and Gambit quests.
 			/// </summary>
 			public const uint Playlists = 500105683;
 			public const uint H778733392 = 778733392;
 			public const uint H4118304139 = 4118304139;
 			/// <summary>
-			/// 	Quests related to New Light, tutorials and introductions
+			/// 	Quests related to New Light tutorials and introductions.
 			/// </summary>
 			public const uint NewLight = 520867389;
 			public const uint H1429525298 = 1429525298;
@@ -109,7 +109,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Ignition = 3268862716;
 			/// <summary>
-			/// 	Quests from the latest expansion
+			/// 	Quests from the latest expansion.
 			/// </summary>
 			public const uint TheFinalShape = 2878306895;
 			public const uint H151064318 = 151064318;
@@ -139,6 +139,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2443101659 = 2443101659;
 			public const uint H875772746 = 875772746;
 			public const uint H3477257717 = 3477257717;
+			public const uint H3904180888 = 3904180888;
 			public const uint H3904180889 = 3904180889;
 			public const uint H201433599 = 201433599;
 			public const uint H847948254 = 847948254;
@@ -266,6 +267,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3553898659 = 3553898659;
 			public const uint H2598526821 = 2598526821;
 			public const uint H522554985 = 522554985;
+			public const uint H2283789075 = 2283789075;
 			public const uint H2575891999 = 2575891999;
 			/// <summary>
 			/// 	The target is afflicted with unstable [Void] Void energy and will explode upon taking additional damage. 
@@ -280,7 +282,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WovenMail = 3173573497;
 			/// <summary>
-			/// 	Quests from past expansions
+			/// 	Quests from past expansions.
 			/// </summary>
 			public const uint ThePast = 2387836362;
 			public const uint H2582082890 = 2582082890;
@@ -377,7 +379,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LightDebuffs = 3023190802;
 			/// <summary>
-			/// 	Exotic Gear and Catalyst quests
+			/// 	Exotic gear and catalyst quests.
 			/// </summary>
 			public const uint Exotics = 370766376;
 			/// <summary>
@@ -404,6 +406,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H1276828373 = 1276828373;
 			public const uint H3690635686 = 3690635686;
 			public const uint H2918597027 = 2918597027;
+			public const uint H1337715751 = 1337715751;
 			public const uint H730562603 = 730562603;
 			public const uint H520916876 = 520916876;
 			/// <summary>

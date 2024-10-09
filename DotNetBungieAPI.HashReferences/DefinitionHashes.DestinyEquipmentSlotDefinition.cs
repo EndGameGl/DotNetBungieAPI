@@ -25,10 +25,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PowerWeapons = 953998645;
 			/// <summary>
-			/// 	Visual effects awarded on completion of challenging activities.
-			/// </summary>
-			public const uint Auras = 1269569095;
-			/// <summary>
 			/// 	Greaves and leggings.
 			/// </summary>
 			public const uint LegArmor = 20886954;

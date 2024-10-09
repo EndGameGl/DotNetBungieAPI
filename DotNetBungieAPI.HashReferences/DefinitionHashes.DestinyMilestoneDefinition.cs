@@ -17,9 +17,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Dissent_3328540770 = 3328540770;
 			/// <summary>
+			/// 	Complete Exotic mission "Encore" on any difficulty.
+			/// </summary>
+			public const uint CurtainCallII = 4041161676;
+			/// <summary>
+			/// 	Complete Exotic mission "Encore" on any difficulty.
+			/// </summary>
+			public const uint CurtainCallIII = 4041161677;
+			/// <summary>
 			/// 	Complete a round of Dares of Eternity.
 			/// </summary>
 			public const uint StrangeXûrinaStrangeLand = 3782558990;
+			/// <summary>
+			/// 	Complete Exotic mission "Encore" on any difficulty.
+			/// </summary>
+			public const uint CurtainCallI = 4041161679;
 			/// <summary>
 			/// 	Rotating Weekly Dungeon Challenge.
 			/// </summary>
@@ -37,7 +49,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PitofHeresy = 422102671;
 			/// <summary>
-			/// 	Complete Pale Heart Pathfinder objectives and claim the Path Completed Reward.
+			/// 	Complete Pale Heart Pathfinder objectives and claim the Path completion reward.
 			/// </summary>
 			public const uint ThePaleHeartPathfinder = 1816391649;
 			/// <summary>
@@ -45,21 +57,37 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AndOutFlytheWolves = 3196139068;
 			/// <summary>
+			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// </summary>
+			public const uint IronBannerScoreChallenge_1479700336 = 1479700336;
+			/// <summary>
 			/// 	Defeat Headless Ones within Haunted Sectors.
 			/// </summary>
 			public const uint SmashingPumpkinHeads = 1496428987;
+			/// <summary>
+			/// 	({var:3575677317} of 4) Complete Iron Banner matches.
+			/// </summary>
+			public const uint IronBannerChallenge_721650248 = 721650248;
 			/// <summary>
 			/// 	Beneath Venus, evil stirs…
 			/// </summary>
 			public const uint VaultofGlass = 1888320892;
 			/// <summary>
+			/// 	Join your fellow Guardians to unmake the Witness once and for all.
+			/// </summary>
+			public const uint Excision = 930637700;
+			/// <summary>
+			/// 	({var:3575677317} of 4) Complete Iron Banner matches.
+			/// </summary>
+			public const uint IronBannerChallenge_721650250 = 721650250;
+			/// <summary>
 			/// 	Complete matches in the Ranked 3v3 playlist.
 			/// </summary>
 			public const uint Ranked3v3PlaylistChallenge_3129232757 = 3129232757;
 			/// <summary>
-			/// 	Join your fellow Guardians to unmake the Witness once and for all.
+			/// 	({var:3575677317} of 4) Complete Iron Banner matches.
 			/// </summary>
-			public const uint Excision = 930637700;
+			public const uint IronBannerChallenge_721650251 = 721650251;
 			/// <summary>
 			/// 	He waits in the dark below.
 			/// </summary>
@@ -73,17 +101,65 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WeeklyExoticRotatorChallenge_1027301269 = 1027301269;
 			/// <summary>
+			/// 	({var:3575677317} of 4) Complete Iron Banner matches.
+			/// </summary>
+			public const uint IronBannerChallenge_721650253 = 721650253;
+			/// <summary>
 			/// 	Speak to the Drifter in the Tower.
 			/// </summary>
 			public const uint Gambit = 1863840101;
+			/// <summary>
+			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// </summary>
+			public const uint IronBannerScoreChallenge_1479700345 = 1479700345;
+			/// <summary>
+			/// 	Defeat combatants in the EAZ.
+			/// </summary>
+			public const uint SolsticeFighter = 2092627628;
+			/// <summary>
+			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// </summary>
+			public const uint IronBannerScoreChallenge_1479700346 = 1479700346;
 			/// <summary>
 			/// 	"The opportunity of a lifetime."
 			/// </summary>
 			public const uint LastWish = 3181387331;
 			/// <summary>
+			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// </summary>
+			public const uint IronBannerScoreChallenge_1479700347 = 1479700347;
+			/// <summary>
+			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// </summary>
+			public const uint IronBannerScoreChallenge_1479700348 = 1479700348;
+			/// <summary>
+			/// 	Complete waves in Onslaught: Salvation activities.
+			/// </summary>
+			public const uint WaveClear_2146955109 = 2146955109;
+			/// <summary>
+			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// </summary>
+			public const uint IronBannerScoreChallenge_1479700349 = 1479700349;
+			/// <summary>
+			/// 	Complete waves in Onslaught: Salvation activities.
+			/// </summary>
+			public const uint WaveClear_2146955110 = 2146955110;
+			/// <summary>
+			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// </summary>
+			public const uint IronBannerScoreChallenge_1479700350 = 1479700350;
+			/// <summary>
+			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// </summary>
+			public const uint IronBannerScoreChallenge_1479700351 = 1479700351;
+			/// <summary>
 			/// 	A sinister threat has taken root.
 			/// </summary>
 			public const uint RootofNightmares = 3699252268;
+			/// <summary>
+			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// </summary>
+			public const uint IronBannerScoreChallenge_2431956787 = 2431956787;
 			/// <summary>
 			/// 	Defeat the Sanctified Mind.
 			/// </summary>
@@ -91,19 +167,63 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Decrypt an Echo Engram at the War Table in the H.E.L.M.
 			/// </summary>
-			public const uint EchoesActIAFamiliarVoice = 3388857299;
+			public const uint LegacyEchoesActIAFamiliarVoice = 3388857299;
 			/// <summary>
 			/// 	Long live the King…
 			/// </summary>
 			public const uint KingsFall = 292102995;
 			/// <summary>
+			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// </summary>
+			public const uint IronBannerScoreChallenge_2431956792 = 2431956792;
+			/// <summary>
+			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// </summary>
+			public const uint IronBannerScoreChallenge_2431956793 = 2431956793;
+			/// <summary>
+			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// </summary>
+			public const uint IronBannerScoreChallenge_2431956794 = 2431956794;
+			/// <summary>
+			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// </summary>
+			public const uint IronBannerScoreChallenge_2431956796 = 2431956796;
+			/// <summary>
 			/// 	Win matches in Trials of Osiris to earn powerful rewards.
 			/// </summary>
 			public const uint TrialsofOsirisWeekly = 3842941126;
 			/// <summary>
+			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// </summary>
+			public const uint IronBannerScoreChallenge_2431956797 = 2431956797;
+			/// <summary>
+			/// 	Open chests within the Enigma Protocol activity.
+			/// </summary>
+			public const uint EnigmaProtocolChests = 3481223911;
+			/// <summary>
+			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// </summary>
+			public const uint IronBannerScoreChallenge_2431956798 = 2431956798;
+			/// <summary>
+			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// </summary>
+			public const uint IronBannerScoreChallenge_2431956799 = 2431956799;
+			/// <summary>
 			/// 	Earn reputation with Failsafe by depositing Radiolite samples in the H.E.L.M. and completing Seasonal activities, bounties, and pursuits.
 			/// </summary>
 			public const uint CaptainsLog = 3243997895;
+			/// <summary>
+			/// 	({var:3575677317} of 4) Complete Iron Banner matches.
+			/// </summary>
+			public const uint IronBannerChallenge_3418840322 = 3418840322;
+			/// <summary>
+			/// 	({var:3575677317} of 4) Complete Iron Banner matches.
+			/// </summary>
+			public const uint IronBannerChallenge_3418840324 = 3418840324;
+			/// <summary>
+			/// 	({var:3575677317} of 4) Complete Iron Banner matches.
+			/// </summary>
+			public const uint IronBannerChallenge_3418840325 = 3418840325;
 			/// <summary>
 			/// 	Complete matches in the Crucible Labs playlist.
 			/// </summary>
@@ -117,9 +237,25 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ItsintheCards = 3603098564;
 			/// <summary>
+			/// 	({var:3575677317} of 4) Complete Iron Banner matches.
+			/// </summary>
+			public const uint IronBannerChallenge_3418840327 = 3418840327;
+			/// <summary>
+			/// 	Complete Seasonal Battlegrounds on any difficulty.
+			/// </summary>
+			public const uint DiligentDelvingIII = 848617184;
+			/// <summary>
+			/// 	Complete Seasonal Battlegrounds on any difficulty.
+			/// </summary>
+			public const uint DiligentDelvingII = 848617185;
+			/// <summary>
 			/// 	Complete Cooperative Focus mission "Iconoclasm."
 			/// </summary>
 			public const uint Iconoclasm_3940691952 = 3940691952;
+			/// <summary>
+			/// 	Complete Seasonal Battlegrounds on any difficulty.
+			/// </summary>
+			public const uint DiligentDelvingI = 848617186;
 			/// <summary>
 			/// 	Cross the threshold and discover what lies within the Traveler.
 			/// </summary>
@@ -161,13 +297,25 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Prophecy = 478604913;
 			/// <summary>
-			/// 	Complete Seasonal activities on higher difficulties.
+			/// 	Complete waves in Onslaught activities.
 			/// </summary>
-			public const uint LeadResearcher = 3960281270;
+			public const uint WaveRunner_2756380380 = 2756380380;
+			/// <summary>
+			/// 	Complete waves in Onslaught activities.
+			/// </summary>
+			public const uint WaveRunner_2756380381 = 2756380381;
+			/// <summary>
+			/// 	Complete waves in Onslaught activities.
+			/// </summary>
+			public const uint WaveRunner_2756380383 = 2756380383;
 			/// <summary>
 			/// 	The chains of legacy must be broken.
 			/// </summary>
 			public const uint DeepStoneCrypt = 541780856;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified = 4034642472;
 			/// <summary>
 			/// 	Complete Cooperative Focus mission "Iconoclasm."
 			/// </summary>
@@ -224,6 +372,30 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Weekly Dungeon Challenge.
 			/// </summary>
 			public const uint SpireoftheWatcher = 526718853;
+			/// <summary>
+			/// 	Complete waves in Onslaught: Salvation activities.
+			/// </summary>
+			public const uint WaveClear_873083860 = 873083860;
+			/// <summary>
+			/// 	Complete waves in Onslaught: Salvation activities.
+			/// </summary>
+			public const uint WaveClear_873083861 = 873083861;
+			/// <summary>
+			/// 	Complete waves in Onslaught: Salvation activities.
+			/// </summary>
+			public const uint WaveClear_873083862 = 873083862;
+			/// <summary>
+			/// 	Complete waves within a single Onslaught activity.
+			/// </summary>
+			public const uint WaveBreaker_3733682453 = 3733682453;
+			/// <summary>
+			/// 	Complete waves within a single Onslaught activity.
+			/// </summary>
+			public const uint WaveBreaker_3733682454 = 3733682454;
+			/// <summary>
+			/// 	Complete waves within a single Onslaught activity.
+			/// </summary>
+			public const uint WaveBreaker_3733682455 = 3733682455;
 			/// <summary>
 			/// 	Gain reputation with Ghost.
 			/// </summary>

@@ -55,4 +55,16 @@ public sealed record DestinyItemPlug
     [JsonPropertyName("enableFailIndexes")]
     public ReadOnlyCollection<int> EnableFailIndexes { get; init; } =
         ReadOnlyCollections<int>.Empty;
+
+    /// <summary>
+    ///     If available, this is the stack size to display for the socket plug item.
+    /// </summary>
+    [JsonPropertyName("stackSize")]
+    public int? StackSize { get; init; }
+
+    /// <summary>
+    ///     If available, this is the maximum stack size to display for the socket plug item.
+    /// </summary>
+    [JsonPropertyName("maxStackSize")]
+    public int? MaxStackSize { get; init; }
 }

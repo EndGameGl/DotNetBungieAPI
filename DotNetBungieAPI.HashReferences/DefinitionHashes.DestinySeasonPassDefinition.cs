@@ -16,6 +16,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint EpisodeEchoes = 1489798103;
 			public const uint SeasonoftheWorthy = 297907150;
 			public const uint SeasonofDefiance = 3548438811;
+			public const uint EpisodeRevenant = 1436652898;
 			public const uint SeasonoftheSplicer = 3730318234;
 			public const uint SeasonoftheHunt = 348169624;
 			public const uint SeasonoftheDeep = 655248278;
