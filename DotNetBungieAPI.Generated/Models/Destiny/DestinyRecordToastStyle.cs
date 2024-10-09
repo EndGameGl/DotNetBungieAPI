@@ -24,5 +24,11 @@ public enum DestinyRecordToastStyle : int
 
     PathfinderObjectiveCompleteRituals = 10,
 
-    PathfinderObjectiveCompleteSchism = 11
+    PathfinderObjectiveCompleteSchism = 11,
+
+    PathfinderObjectiveCompletePvp = 12,
+
+    PathfinderObjectiveCompleteStrikes = 13,
+
+    PathfinderObjectiveCompleteGambit = 14
 }

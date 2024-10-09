@@ -615,6 +615,8 @@ namespace DotNetBungieAPI.Generated.Models;
 [JsonSerializable(typeof(DictionaryComponentResponseOfint32AndDestinyItemReusablePlugsComponent))]
 [JsonSerializable(typeof(DictionaryComponentResponseOfint32AndDestinyItemPlugObjectivesComponent))]
 [JsonSerializable(typeof(DictionaryComponentResponseOfint32AndDestinyItemTalentGridComponent))]
+[JsonSerializable(typeof(DestinyVendorItemComponentSetOfint32))]
+[JsonSerializable(typeof(DictionaryComponentResponseOfint32AndDestinyItemComponent))]
 [JsonSerializable(typeof(Destiny.Responses.DestinyVendorResponse))]
 [JsonSerializable(typeof(SingleComponentResponseOfDestinyVendorComponent))]
 [JsonSerializable(typeof(SingleComponentResponseOfDestinyVendorCategoriesComponent))]

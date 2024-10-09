@@ -32,10 +32,10 @@ public class DestinyVendorResponse
     /// <summary>
     ///     Item components, keyed by the vendorItemIndex of the active sale items.
     /// <para />
-    ///     COMPONENT TYPE: [See inside the DestinyItemComponentSet contract for component types.]
+    ///     COMPONENT TYPE: [See inside the DestinyVendorItemComponentSet contract for component types.]
     /// </summary>
     [JsonPropertyName("itemComponents")]
-    public DestinyItemComponentSetOfint32? ItemComponents { get; set; }
+    public DestinyVendorItemComponentSetOfint32? ItemComponents { get; set; }
 
     /// <summary>
     ///     A "lookup" convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.

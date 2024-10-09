@@ -42,4 +42,16 @@ public class DestinyItemPlug
     /// </summary>
     [JsonPropertyName("enableFailIndexes")]
     public List<int> EnableFailIndexes { get; set; }
+
+    /// <summary>
+    ///     If available, this is the stack size to display for the socket plug item.
+    /// </summary>
+    [JsonPropertyName("stackSize")]
+    public int? StackSize { get; set; }
+
+    /// <summary>
+    ///     If available, this is the maximum stack size to display for the socket plug item.
+    /// </summary>
+    [JsonPropertyName("maxStackSize")]
+    public int? MaxStackSize { get; set; }
 }

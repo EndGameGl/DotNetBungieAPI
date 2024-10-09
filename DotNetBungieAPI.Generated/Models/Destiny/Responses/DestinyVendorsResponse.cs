@@ -32,7 +32,7 @@ public class DestinyVendorsResponse
     /// <summary>
     ///     Sales, keyed by the vendorItemIndex of the item being sold. These are keyed by the Vendor Hash, so you will get one Sale Item Set Component per vendor returned.
     /// <para />
-    ///     Note that within the Sale Item Set component, the sales are themselves keyed by the vendorSaleIndex, so you can relate it to the corrent sale item definition within the Vendor's definition.
+    ///     Note that within the Sale Item Set component, the sales are themselves keyed by the vendorSaleIndex, so you can relate it to the current sale item definition within the Vendor's definition.
     /// <para />
     ///     COMPONENT TYPE: VendorSales
     /// </summary>
@@ -45,7 +45,7 @@ public class DestinyVendorsResponse
     ///     The components contained inside are themselves keyed by the vendorSaleIndex, and will have whatever item-level components you requested (Sockets, Stats, Instance data etc...) per item being sold by the vendor.
     /// </summary>
     [JsonPropertyName("itemComponents")]
-    public Dictionary<uint, DestinyItemComponentSetOfint32> ItemComponents { get; set; }
+    public Dictionary<uint, DestinyVendorItemComponentSetOfint32> ItemComponents { get; set; }
 
     /// <summary>
     ///     A "lookup" convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.
