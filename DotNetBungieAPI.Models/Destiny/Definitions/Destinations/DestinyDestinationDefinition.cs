@@ -43,7 +43,7 @@ public sealed record DestinyDestinationDefinition
     /// </summary>
     [JsonPropertyName("activityGraphEntries")]
     public ReadOnlyCollection<DestinyActivityGraphListEntryDefinition> ActivityGraphEntries { get; init; } =
-        ReadOnlyCollections<DestinyActivityGraphListEntryDefinition>.Empty;
+        ReadOnlyCollection<DestinyActivityGraphListEntryDefinition>.Empty;
 
     /// <summary>
     ///     This provides the unique identifiers for every bubble in the destination (only guaranteed unique within the
@@ -51,15 +51,15 @@ public sealed record DestinyDestinationDefinition
     /// </summary>
     [JsonPropertyName("bubbles")]
     public ReadOnlyCollection<DestinyBubbleDefinition> Bubbles { get; init; } =
-        ReadOnlyCollections<DestinyBubbleDefinition>.Empty;
+        ReadOnlyCollection<DestinyBubbleDefinition>.Empty;
 
     public bool DeepEquals(DestinyDestinationDefinition other)
     {
         return other != null
-            && ActivityGraphEntries.DeepEqualsReadOnlyCollections(other.ActivityGraphEntries)
+            && ActivityGraphEntries.DeepEqualsReadOnlyCollection(other.ActivityGraphEntries)
             && DisplayProperties.DeepEquals(other.DisplayProperties)
             && DefaultFreeroamActivity.DeepEquals(other.DefaultFreeroamActivity)
-            && Bubbles.DeepEqualsReadOnlyCollections(other.Bubbles)
+            && Bubbles.DeepEqualsReadOnlyCollection(other.Bubbles)
             && Place.DeepEquals(other.Place)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash

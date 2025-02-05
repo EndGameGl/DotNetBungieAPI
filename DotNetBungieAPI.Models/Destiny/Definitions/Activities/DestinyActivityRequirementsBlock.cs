@@ -7,12 +7,12 @@ public sealed record class DestinyActivityRequirementsBlock
     /// </summary>
     [JsonPropertyName("leaderRequirementLabels")]
     public ReadOnlyCollection<DestinyActivityRequirementLabel> LeaderRequirementLabels { get; init; } =
-        ReadOnlyCollections<DestinyActivityRequirementLabel>.Empty;
+        ReadOnlyCollection<DestinyActivityRequirementLabel>.Empty;
 
     /// <summary>
     ///     If being a fireteam member in this activity is gated, this is the gate being checked.
     /// </summary>
     [JsonPropertyName("fireteamRequirementLabels")]
     public ReadOnlyCollection<DestinyActivityRequirementLabel> FireteamRequirementLabels { get; init; } =
-        ReadOnlyCollections<DestinyActivityRequirementLabel>.Empty;
+        ReadOnlyCollection<DestinyActivityRequirementLabel>.Empty;
 }

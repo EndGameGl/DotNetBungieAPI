@@ -8,5 +8,5 @@ public sealed record DestinyCharacterPeerView
 {
     [JsonPropertyName("equipment")]
     public ReadOnlyCollection<DestinyItemPeerView> Equipment { get; init; } =
-        ReadOnlyCollections<DestinyItemPeerView>.Empty;
+        ReadOnlyCollection<DestinyItemPeerView>.Empty;
 }

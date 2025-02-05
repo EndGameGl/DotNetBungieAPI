@@ -26,12 +26,12 @@ public sealed record DestinyLocationDefinition
     /// </summary>
     [JsonPropertyName("locationReleases")]
     public ReadOnlyCollection<DestinyLocationReleaseDefinition> LocationReleases { get; init; } =
-        ReadOnlyCollections<DestinyLocationReleaseDefinition>.Empty;
+        ReadOnlyCollection<DestinyLocationReleaseDefinition>.Empty;
 
     public bool DeepEquals(DestinyLocationDefinition other)
     {
         return other != null
-            && LocationReleases.DeepEqualsReadOnlyCollections(other.LocationReleases)
+            && LocationReleases.DeepEqualsReadOnlyCollection(other.LocationReleases)
             && Vendor.DeepEquals(other.Vendor)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash

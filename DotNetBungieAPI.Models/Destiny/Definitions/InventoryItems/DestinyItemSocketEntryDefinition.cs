@@ -57,7 +57,7 @@ public sealed record DestinyItemSocketEntryDefinition
     /// </summary>
     [JsonPropertyName("reusablePlugItems")]
     public ReadOnlyCollection<DestinyItemSocketEntryPlugItemDefinition> ReusablePlugItems { get; init; } =
-        ReadOnlyCollections<DestinyItemSocketEntryPlugItemDefinition>.Empty;
+        ReadOnlyCollection<DestinyItemSocketEntryPlugItemDefinition>.Empty;
 
     /// <summary>
     ///     If this socket's plugs come from a reusable DestinyPlugSetDefinition, this is the identifier for that set. We added
@@ -107,7 +107,7 @@ public sealed record DestinyItemSocketEntryDefinition
             && PlugSources == other.PlugSources
             && PreventInitializationOnVendorPurchase == other.PreventInitializationOnVendorPurchase
             && PreventInitializationWhenVersioning == other.PreventInitializationWhenVersioning
-            && ReusablePlugItems.DeepEqualsReadOnlyCollections(other.ReusablePlugItems)
+            && ReusablePlugItems.DeepEqualsReadOnlyCollection(other.ReusablePlugItems)
             && ReusablePlugSet.DeepEquals(other.ReusablePlugSet)
             && SingleInitialItem.DeepEquals(other.SingleInitialItem)
             && SocketType.DeepEquals(other.SocketType)

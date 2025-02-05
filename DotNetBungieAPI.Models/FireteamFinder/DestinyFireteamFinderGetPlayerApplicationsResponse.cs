@@ -7,7 +7,7 @@ public sealed record DestinyFireteamFinderGetPlayerApplicationsResponse
     /// </summary>
     [JsonPropertyName("applications")]
     public ReadOnlyCollection<DestinyFireteamFinderApplication> Applications { get; init; } =
-        ReadOnlyCollections<DestinyFireteamFinderApplication>.Empty;
+        ReadOnlyCollection<DestinyFireteamFinderApplication>.Empty;
 
     /// <summary>
     ///     String token to request next page of results.

@@ -49,14 +49,14 @@ public sealed record DestinyEquipmentSlotDefinition
     /// </summary>
     [JsonPropertyName("artDyeChannels")]
     public ReadOnlyCollection<DestinyArtDyeReference> ArtDyeChannels { get; init; } =
-        ReadOnlyCollections<DestinyArtDyeReference>.Empty;
+        ReadOnlyCollection<DestinyArtDyeReference>.Empty;
 
     public bool DeepEquals(DestinyEquipmentSlotDefinition other)
     {
         return other != null
             && ApplyCustomArtDyes == other.ApplyCustomArtDyes
             && DisplayProperties.DeepEquals(other.DisplayProperties)
-            && ArtDyeChannels.DeepEqualsReadOnlyCollections(other.ArtDyeChannels)
+            && ArtDyeChannels.DeepEqualsReadOnlyCollection(other.ArtDyeChannels)
             && BucketType.DeepEquals(other.BucketType)
             && EquipmentCategoryHash == other.EquipmentCategoryHash
             && Blacklisted == other.Blacklisted

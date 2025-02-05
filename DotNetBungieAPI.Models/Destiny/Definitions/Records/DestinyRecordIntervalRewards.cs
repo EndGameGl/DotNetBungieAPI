@@ -4,11 +4,11 @@ public sealed record DestinyRecordIntervalRewards : IDeepEquatable<DestinyRecord
 {
     [JsonPropertyName("intervalRewardItems")]
     public ReadOnlyCollection<DestinyItemQuantity> IntervalRewardItems { get; init; } =
-        ReadOnlyCollections<DestinyItemQuantity>.Empty;
+        ReadOnlyCollection<DestinyItemQuantity>.Empty;
 
     public bool DeepEquals(DestinyRecordIntervalRewards other)
     {
         return other != null
-            && IntervalRewardItems.DeepEqualsReadOnlyCollections(other.IntervalRewardItems);
+            && IntervalRewardItems.DeepEqualsReadOnlyCollection(other.IntervalRewardItems);
     }
 }

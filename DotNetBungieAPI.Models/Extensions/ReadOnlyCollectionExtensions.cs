@@ -16,7 +16,7 @@ public static class ReadOnlyCollectionExtensions
         return true;
     }
 
-    public static bool DeepEqualsReadOnlyCollections<T>(
+    public static bool DeepEqualsReadOnlyCollection<T>(
         this ReadOnlyCollection<T> compared,
         ReadOnlyCollection<T> comparedWith
     )

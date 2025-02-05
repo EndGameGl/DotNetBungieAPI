@@ -99,7 +99,7 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         requestMessage.Headers.TryAddWithoutValidation(ApiKeyHeader, _configuration.ApiKey);
         requestMessage.Content.Headers.ContentType!.MediaType = "application/x-www-form-urlencoded";
         requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        var response = await SendAsyncInternal(requestMessage).ConfigureAwait(false);
+        var response = await SendAsyncInternal(requestMessage);
 
         if (response.IsSuccessStatusCode)
         {
@@ -143,7 +143,7 @@ internal sealed class DefaultDotNetBungieApiHttpClient : IDotNetBungieApiHttpCli
         requestMessage.Headers.TryAddWithoutValidation(ApiKeyHeader, _configuration.ApiKey);
         requestMessage.Content.Headers.ContentType!.MediaType = "application/x-www-form-urlencoded";
         requestMessage.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        var response = await SendAsyncInternal(requestMessage).ConfigureAwait(false);
+        var response = await SendAsyncInternal(requestMessage);
 
         if (response.IsSuccessStatusCode)
         {

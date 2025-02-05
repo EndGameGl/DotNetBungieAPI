@@ -10,31 +10,31 @@ public sealed record DestinyPresentationNodeChildrenBlock
 {
     [JsonPropertyName("presentationNodes")]
     public ReadOnlyCollection<DestinyPresentationNodeChildEntry> PresentationNodes { get; init; } =
-        ReadOnlyCollections<DestinyPresentationNodeChildEntry>.Empty;
+        ReadOnlyCollection<DestinyPresentationNodeChildEntry>.Empty;
 
     [JsonPropertyName("collectibles")]
     public ReadOnlyCollection<DestinyPresentationNodeCollectibleChildEntry> Collectibles { get; init; } =
-        ReadOnlyCollections<DestinyPresentationNodeCollectibleChildEntry>.Empty;
+        ReadOnlyCollection<DestinyPresentationNodeCollectibleChildEntry>.Empty;
 
     [JsonPropertyName("records")]
     public ReadOnlyCollection<DestinyPresentationNodeRecordChildEntry> Records { get; init; } =
-        ReadOnlyCollections<DestinyPresentationNodeRecordChildEntry>.Empty;
+        ReadOnlyCollection<DestinyPresentationNodeRecordChildEntry>.Empty;
 
     [JsonPropertyName("metrics")]
     public ReadOnlyCollection<DestinyPresentationNodeMetricChildEntry> Metrics { get; init; } =
-        ReadOnlyCollections<DestinyPresentationNodeMetricChildEntry>.Empty;
+        ReadOnlyCollection<DestinyPresentationNodeMetricChildEntry>.Empty;
 
     [JsonPropertyName("craftables")]
     public ReadOnlyCollection<DestinyPresentationNodeCraftableChildEntry> Craftables { get; init; } =
-        ReadOnlyCollections<DestinyPresentationNodeCraftableChildEntry>.Empty;
+        ReadOnlyCollection<DestinyPresentationNodeCraftableChildEntry>.Empty;
 
     public bool DeepEquals(DestinyPresentationNodeChildrenBlock other)
     {
         return other != null
-            && Collectibles.DeepEqualsReadOnlyCollections(other.Collectibles)
-            && Metrics.DeepEqualsReadOnlyCollections(other.Metrics)
-            && PresentationNodes.DeepEqualsReadOnlyCollections(other.PresentationNodes)
-            && Records.DeepEqualsReadOnlyCollections(other.Records)
-            && Craftables.DeepEqualsReadOnlyCollections(other.Craftables);
+            && Collectibles.DeepEqualsReadOnlyCollection(other.Collectibles)
+            && Metrics.DeepEqualsReadOnlyCollection(other.Metrics)
+            && PresentationNodes.DeepEqualsReadOnlyCollection(other.PresentationNodes)
+            && Records.DeepEqualsReadOnlyCollection(other.Records)
+            && Craftables.DeepEqualsReadOnlyCollection(other.Craftables);
     }
 }

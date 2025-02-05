@@ -18,5 +18,5 @@ public sealed record DestinyFireteamFinderOptionValues
 
     [JsonPropertyName("valueDefinitions")]
     public ReadOnlyCollection<DestinyFireteamFinderOptionValueDefinition> ValueDefinitions { get; init; } =
-        ReadOnlyCollections<DestinyFireteamFinderOptionValueDefinition>.Empty;
+        ReadOnlyCollection<DestinyFireteamFinderOptionValueDefinition>.Empty;
 }

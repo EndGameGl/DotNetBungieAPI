@@ -6,5 +6,5 @@ public sealed record GroupSearchResponse : SearchResultBase
 {
     [JsonPropertyName("results")]
     public ReadOnlyCollection<GroupV2Card> Results { get; init; } =
-        ReadOnlyCollections<GroupV2Card>.Empty;
+        ReadOnlyCollection<GroupV2Card>.Empty;
 }

@@ -34,13 +34,13 @@ public sealed record DestinyProgressionLevelRequirementDefinition
     /// </summary>
     [JsonPropertyName("requirementCurve")]
     public ReadOnlyCollection<InterpolationPointFloat> RequirementCurve { get; init; } =
-        ReadOnlyCollections<InterpolationPointFloat>.Empty;
+        ReadOnlyCollection<InterpolationPointFloat>.Empty;
 
     public bool DeepEquals(DestinyProgressionLevelRequirementDefinition other)
     {
         return other != null
             && Progression.DeepEquals(other.Progression)
-            && RequirementCurve.DeepEqualsReadOnlyCollections(other.RequirementCurve)
+            && RequirementCurve.DeepEqualsReadOnlyCollection(other.RequirementCurve)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash
             && Index == other.Index

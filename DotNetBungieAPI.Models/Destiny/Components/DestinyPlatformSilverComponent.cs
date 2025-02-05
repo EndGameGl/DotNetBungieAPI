@@ -11,5 +11,5 @@ public sealed record DestinyPlatformSilverComponent
         BungieMembershipType,
         DestinyItemComponent
     > PlatformSilver { get; init; } =
-        ReadOnlyDictionaries<BungieMembershipType, DestinyItemComponent>.Empty;
+        ReadOnlyDictionary<BungieMembershipType, DestinyItemComponent>.Empty;
 }

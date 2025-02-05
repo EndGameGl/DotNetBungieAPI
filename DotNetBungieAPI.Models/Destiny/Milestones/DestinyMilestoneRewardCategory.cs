@@ -18,5 +18,5 @@ public sealed record DestinyMilestoneRewardCategory
     /// </summary>
     [JsonPropertyName("entries")]
     public ReadOnlyCollection<DestinyMilestoneRewardEntry> Entries { get; init; } =
-        ReadOnlyCollections<DestinyMilestoneRewardEntry>.Empty;
+        ReadOnlyCollection<DestinyMilestoneRewardEntry>.Empty;
 }

@@ -4,5 +4,5 @@ public sealed record TrendingCategories
 {
     [JsonPropertyName("categories")]
     public ReadOnlyCollection<TrendingCategory> Categories { get; init; } =
-        ReadOnlyCollections<TrendingCategory>.Empty;
+        ReadOnlyCollection<TrendingCategory>.Empty;
 }

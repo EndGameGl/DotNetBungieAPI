@@ -16,12 +16,12 @@ public sealed record DestinyItemMetricBlockDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyPresentationNodeDefinition>
     > AvailableMetricCategoryNodes { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
 
     public bool DeepEquals(DestinyItemMetricBlockDefinition other)
     {
         return other != null
-            && AvailableMetricCategoryNodes.DeepEqualsReadOnlyCollections(
+            && AvailableMetricCategoryNodes.DeepEqualsReadOnlyCollection(
                 other.AvailableMetricCategoryNodes
             );
     }

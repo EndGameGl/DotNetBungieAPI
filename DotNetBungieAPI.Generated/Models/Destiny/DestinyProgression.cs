@@ -89,4 +89,10 @@ public class DestinyProgression
     /// </summary>
     [JsonPropertyName("rewardItemStates")]
     public List<Destiny.DestinyProgressionRewardItemState> RewardItemStates { get; set; }
+
+    /// <summary>
+    ///     Information about items stats and states that have socket overrides, if there is any data for it.
+    /// </summary>
+    [JsonPropertyName("rewardItemSocketOverrideStates")]
+    public Dictionary<int, Destiny.DestinyProgressionRewardItemSocketOverrideState> RewardItemSocketOverrideStates { get; set; }
 }

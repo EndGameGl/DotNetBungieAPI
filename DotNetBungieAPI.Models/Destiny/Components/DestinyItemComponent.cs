@@ -84,7 +84,7 @@ public sealed record DestinyItemComponent : DestinyItemQuantity
     /// </summary>
     [JsonPropertyName("tooltipNotificationIndexes")]
     public ReadOnlyCollection<int> TooltipNotificationIndexes { get; init; } =
-        ReadOnlyCollections<int>.Empty;
+        ReadOnlyCollection<int>.Empty;
 
     /// <summary>
     ///     The identifier for the currently-selected metric definition, to be displayed on the emblem nameplate.
@@ -110,5 +110,5 @@ public sealed record DestinyItemComponent : DestinyItemQuantity
     /// </summary>
     [JsonPropertyName("itemValueVisibility")]
     public ReadOnlyCollection<bool> ItemValueVisibility { get; init; } =
-        ReadOnlyCollections<bool>.Empty;
+        ReadOnlyCollection<bool>.Empty;
 }

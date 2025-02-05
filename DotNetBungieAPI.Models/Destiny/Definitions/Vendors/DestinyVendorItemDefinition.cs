@@ -36,7 +36,7 @@ public sealed record DestinyVendorItemDefinition : IDeepEquatable<DestinyVendorI
     ///     that can be relevant for this item.
     /// </summary>
     [JsonPropertyName("failureIndexes")]
-    public ReadOnlyCollection<int> FailureIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
+    public ReadOnlyCollection<int> FailureIndexes { get; init; } = ReadOnlyCollection<int>.Empty;
 
     /// <summary>
     ///     This is a pre-compiled aggregation of item value and priceOverrideList, so that we have one place to check for what
@@ -47,7 +47,7 @@ public sealed record DestinyVendorItemDefinition : IDeepEquatable<DestinyVendorI
     /// </summary>
     [JsonPropertyName("currencies")]
     public ReadOnlyCollection<DestinyItemQuantity> Currencies { get; init; } =
-        ReadOnlyCollections<DestinyItemQuantity>.Empty;
+        ReadOnlyCollection<DestinyItemQuantity>.Empty;
 
     /// <summary>
     ///     If this item can be refunded, this is the policy for what will be refunded, how, and in what time period.
@@ -68,7 +68,7 @@ public sealed record DestinyVendorItemDefinition : IDeepEquatable<DestinyVendorI
     /// </summary>
     [JsonPropertyName("creationLevels")]
     public ReadOnlyCollection<DestinyItemCreationEntryLevelDefinition> CreationLevels { get; init; } =
-        ReadOnlyCollections<DestinyItemCreationEntryLevelDefinition>.Empty;
+        ReadOnlyCollection<DestinyItemCreationEntryLevelDefinition>.Empty;
 
     /// <summary>
     ///     This is an index specifically into the display category, as opposed to the server-side Categories (which do not
@@ -178,11 +178,11 @@ public sealed record DestinyVendorItemDefinition : IDeepEquatable<DestinyVendorI
     /// </summary>
     [JsonPropertyName("redirectToSaleIndexes")]
     public ReadOnlyCollection<int> RedirectToSaleIndexes { get; init; } =
-        ReadOnlyCollections<int>.Empty;
+        ReadOnlyCollection<int>.Empty;
 
     [JsonPropertyName("socketOverrides")]
     public ReadOnlyCollection<DestinyVendorItemSocketOverride> SocketOverrides { get; init; } =
-        ReadOnlyCollections<DestinyVendorItemSocketOverride>.Empty;
+        ReadOnlyCollection<DestinyVendorItemSocketOverride>.Empty;
 
     /// <summary>
     ///     If true, this item is some sort of dummy sale item that cannot actually be purchased. It may be a display only
@@ -203,10 +203,10 @@ public sealed record DestinyVendorItemDefinition : IDeepEquatable<DestinyVendorI
             && Item.DeepEquals(other.Item)
             && Quantity == other.Quantity
             && FailureIndexes.DeepEqualsReadOnlySimpleCollection(other.FailureIndexes)
-            && Currencies.DeepEqualsReadOnlyCollections(other.Currencies)
+            && Currencies.DeepEqualsReadOnlyCollection(other.Currencies)
             && RefundPolicy == other.RefundPolicy
             && RefundTimeLimit == other.RefundTimeLimit
-            && CreationLevels.DeepEqualsReadOnlyCollections(other.CreationLevels)
+            && CreationLevels.DeepEqualsReadOnlyCollection(other.CreationLevels)
             && DisplayCategoryIndex == other.DisplayCategoryIndex
             && CategoryIndex == other.CategoryIndex
             && OriginalCategoryIndex == other.OriginalCategoryIndex
@@ -223,7 +223,7 @@ public sealed record DestinyVendorItemDefinition : IDeepEquatable<DestinyVendorI
             && SortValue == other.SortValue
             && ExpirationTooltip == other.ExpirationTooltip
             && RedirectToSaleIndexes.DeepEqualsReadOnlySimpleCollection(other.RedirectToSaleIndexes)
-            && SocketOverrides.DeepEqualsReadOnlyCollections(other.SocketOverrides)
+            && SocketOverrides.DeepEqualsReadOnlyCollection(other.SocketOverrides)
             && IsUnpurchasable == other.IsUnpurchasable;
     }
 }

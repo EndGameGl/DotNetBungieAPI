@@ -9,14 +9,14 @@ public sealed record DestinySocialCommendationsComponent
 
     [JsonPropertyName("scoreDetailValues")]
     public ReadOnlyCollection<int> ScoreDetailValues { get; init; } =
-        ReadOnlyCollections<int>.Empty;
+        ReadOnlyCollection<int>.Empty;
 
     [JsonPropertyName("commendationNodeScoresByHash")]
     public ReadOnlyDictionary<
         DefinitionHashPointer<DestinySocialCommendationNodeDefinition>,
         int
     > CommendationNodeScoresByHash { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinySocialCommendationNodeDefinition>,
             int
         >.Empty;
@@ -26,7 +26,7 @@ public sealed record DestinySocialCommendationsComponent
         DefinitionHashPointer<DestinySocialCommendationDefinition>,
         int
     > CommendationScoresByHash { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinySocialCommendationDefinition>, int>.Empty;
+        ReadOnlyDictionary<DefinitionHashPointer<DestinySocialCommendationDefinition>, int>.Empty;
 
     /// <summary>
     ///     The percentage for each commendation type out of total received
@@ -36,7 +36,7 @@ public sealed record DestinySocialCommendationsComponent
         DefinitionHashPointer<DestinySocialCommendationNodeDefinition>,
         uint
     > CommendationNodePercentagesByHash { get; set; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinySocialCommendationNodeDefinition>,
             uint
         >.Empty;

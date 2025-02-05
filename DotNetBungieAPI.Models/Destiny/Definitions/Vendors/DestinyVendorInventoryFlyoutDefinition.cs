@@ -27,7 +27,7 @@ public sealed record DestinyVendorInventoryFlyoutDefinition
     /// </summary>
     [JsonPropertyName("buckets")]
     public ReadOnlyCollection<DestinyVendorInventoryFlyoutBucketDefinition> Buckets { get; init; } =
-        ReadOnlyCollections<DestinyVendorInventoryFlyoutBucketDefinition>.Empty;
+        ReadOnlyCollection<DestinyVendorInventoryFlyoutBucketDefinition>.Empty;
 
     /// <summary>
     ///     If this is true, don't show any of the glistening "this is a new item" UI elements, like we show on the inventory
@@ -54,7 +54,7 @@ public sealed record DestinyVendorInventoryFlyoutDefinition
         return other != null
             && LockedDescription == other.LockedDescription
             && DisplayProperties.DeepEquals(other.DisplayProperties)
-            && Buckets.DeepEqualsReadOnlyCollections(other.Buckets)
+            && Buckets.DeepEqualsReadOnlyCollection(other.Buckets)
             && SuppressNewness == other.SuppressNewness
             && FlyoutId == other.FlyoutId
             && EquipmentSlot.DeepEquals(other.EquipmentSlot);

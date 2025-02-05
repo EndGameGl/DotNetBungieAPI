@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using System.Diagnostics.CodeAnalysis;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
@@ -17,7 +18,6 @@ internal sealed class DefaultDestiny2DefinitionRepository : IDestiny2DefinitionR
         DestinyDefinitionsRepository
     > _localisedRepositories;
     private readonly IBungieClientConfiguration _bungieClientConfiguration;
-    private readonly ILogger<DefaultDestiny2DefinitionRepository> _logger;
 
     public DefaultDestiny2DefinitionRepository(
         IBungieClientConfiguration bungieClientConfiguration,
@@ -27,7 +27,6 @@ internal sealed class DefaultDestiny2DefinitionRepository : IDestiny2DefinitionR
     )
     {
         _bungieClientConfiguration = bungieClientConfiguration;
-        _logger = logger;
         _configuration = configuration;
         _localisedRepositories = new ConcurrentDictionary<
             BungieLocales,
@@ -43,7 +42,7 @@ internal sealed class DefaultDestiny2DefinitionRepository : IDestiny2DefinitionR
 
     public bool TryGetDestinyDefinition<T>(
         uint key,
-        out T? definition,
+        [NotNullWhen(true)] out T? definition,
         BungieLocales locale = BungieLocales.EN
     )
         where T : IDestinyDefinition

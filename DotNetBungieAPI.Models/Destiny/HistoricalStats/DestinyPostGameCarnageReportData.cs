@@ -31,12 +31,12 @@ public sealed record DestinyPostGameCarnageReportData
     /// </summary>
     [JsonPropertyName("entries")]
     public ReadOnlyCollection<DestinyPostGameCarnageReportEntry> Entries { get; init; } =
-        ReadOnlyCollections<DestinyPostGameCarnageReportEntry>.Empty;
+        ReadOnlyCollection<DestinyPostGameCarnageReportEntry>.Empty;
 
     /// <summary>
     ///     Collection of stats for the player in this activity.
     /// </summary>
     [JsonPropertyName("teams")]
     public ReadOnlyCollection<DestinyPostGameCarnageReportTeamEntry> Teams { get; init; } =
-        ReadOnlyCollections<DestinyPostGameCarnageReportTeamEntry>.Empty;
+        ReadOnlyCollection<DestinyPostGameCarnageReportTeamEntry>.Empty;
 }

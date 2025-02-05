@@ -93,12 +93,22 @@ public record DestinyProgression
     /// </summary>
     [JsonPropertyName("seasonResets")]
     public ReadOnlyCollection<DestinyProgressionResetEntry> SeasonResets { get; init; } =
-        ReadOnlyCollections<DestinyProgressionResetEntry>.Empty;
+        ReadOnlyCollection<DestinyProgressionResetEntry>.Empty;
 
     /// <summary>
     ///     Information about historical rewards for this progression, if there is any data for it.
     /// </summary>
     [JsonPropertyName("rewardItemStates")]
     public ReadOnlyCollection<DestinyProgressionRewardItemState> RewardItemStates { get; init; } =
-        ReadOnlyCollections<DestinyProgressionRewardItemState>.Empty;
+        ReadOnlyCollection<DestinyProgressionRewardItemState>.Empty;
+
+    /// <summary>
+    ///     Information about items stats and states that have socket overrides, if there is any data for it.
+    /// </summary>
+    [JsonPropertyName("rewardItemSocketOverrideStates")]
+    public ReadOnlyDictionary<
+        int,
+        DestinyProgressionRewardItemSocketOverrideState
+    > RewardItemSocketOverrideStates { get; init; } =
+        ReadOnlyDictionary<int, DestinyProgressionRewardItemSocketOverrideState>.Empty;
 }

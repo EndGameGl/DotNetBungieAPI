@@ -5,5 +5,5 @@ public sealed record DictionaryComponentResponseOfint64AndDestinyCharacterProgre
 {
     [JsonPropertyName("data")]
     public ReadOnlyDictionary<long, DestinyCharacterProgressionComponent> Data { get; init; } =
-        ReadOnlyDictionaries<long, DestinyCharacterProgressionComponent>.Empty;
+        ReadOnlyDictionary<long, DestinyCharacterProgressionComponent>.Empty;
 }

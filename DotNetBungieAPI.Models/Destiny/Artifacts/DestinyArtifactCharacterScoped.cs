@@ -16,5 +16,5 @@ public sealed record DestinyArtifactCharacterScoped
 
     [JsonPropertyName("tiers")]
     public ReadOnlyCollection<DestinyArtifactTier> Tiers { get; init; } =
-        ReadOnlyCollections<DestinyArtifactTier>.Empty;
+        ReadOnlyCollection<DestinyArtifactTier>.Empty;
 }

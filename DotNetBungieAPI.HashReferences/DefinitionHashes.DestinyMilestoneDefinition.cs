@@ -9,6 +9,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TrialsofOsirisChallenge = 3007559996;
 			/// <summary>
+			/// 	Exchange Essence of Desire to cleanse corruption and earn additional rewards.
+			/// </summary>
+			public const uint DesiredWillintoBeing_2182430815 = 2182430815;
+			/// <summary>
 			/// 	Complete the "Darkness's Doorstep" mission.
 			/// </summary>
 			public const uint BeyondLight_3765298039 = 3765298039;
@@ -45,6 +49,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Duality = 3618845105;
 			/// <summary>
+			/// 	Complete the activity in the Nether on any higher level of difficulty. Additional progress granted for harder difficulties.
+			/// </summary>
+			public const uint TheNether_1569295917 = 1569295917;
+			/// <summary>
 			/// 	Rotating Weekly Dungeon Challenge.
 			/// </summary>
 			public const uint PitofHeresy = 422102671;
@@ -56,10 +64,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Xûr believes you should speak to Shaw Han in the Cosmodrome.
 			/// </summary>
 			public const uint AndOutFlytheWolves = 3196139068;
-			/// <summary>
-			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
-			/// </summary>
-			public const uint IronBannerScoreChallenge_1479700336 = 1479700336;
 			/// <summary>
 			/// 	Defeat Headless Ones within Haunted Sectors.
 			/// </summary>
@@ -109,7 +113,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Gambit = 1863840101;
 			/// <summary>
-			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// 	({var:4161792462} of 4) Earn points in Iron Banner with a Stasis, Arc, or Void Super equipped.
 			/// </summary>
 			public const uint IronBannerScoreChallenge_1479700345 = 1479700345;
 			/// <summary>
@@ -117,7 +121,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SolsticeFighter = 2092627628;
 			/// <summary>
-			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// 	({var:4161792462} of 4) Earn points in Iron Banner with a Stasis, Arc, or Void Super equipped.
 			/// </summary>
 			public const uint IronBannerScoreChallenge_1479700346 = 1479700346;
 			/// <summary>
@@ -125,11 +129,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LastWish = 3181387331;
 			/// <summary>
-			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// 	({var:4161792462} of 4) Earn points in Iron Banner with a Stasis, Arc, or Void Super equipped.
 			/// </summary>
 			public const uint IronBannerScoreChallenge_1479700347 = 1479700347;
 			/// <summary>
-			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// 	({var:4161792462} of 4) Earn points in Iron Banner with a Stasis, Arc, or Void Super equipped.
 			/// </summary>
 			public const uint IronBannerScoreChallenge_1479700348 = 1479700348;
 			/// <summary>
@@ -137,29 +141,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WaveClear_2146955109 = 2146955109;
 			/// <summary>
-			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
-			/// </summary>
-			public const uint IronBannerScoreChallenge_1479700349 = 1479700349;
-			/// <summary>
 			/// 	Complete waves in Onslaught: Salvation activities.
 			/// </summary>
 			public const uint WaveClear_2146955110 = 2146955110;
 			/// <summary>
-			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
-			/// </summary>
-			public const uint IronBannerScoreChallenge_1479700350 = 1479700350;
-			/// <summary>
-			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
-			/// </summary>
-			public const uint IronBannerScoreChallenge_1479700351 = 1479700351;
-			/// <summary>
 			/// 	A sinister threat has taken root.
 			/// </summary>
 			public const uint RootofNightmares = 3699252268;
-			/// <summary>
-			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
-			/// </summary>
-			public const uint IronBannerScoreChallenge_2431956787 = 2431956787;
 			/// <summary>
 			/// 	Defeat the Sanctified Mind.
 			/// </summary>
@@ -169,43 +157,51 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LegacyEchoesActIAFamiliarVoice = 3388857299;
 			/// <summary>
+			/// 	Complete encounters in the Nether. Additional progress on any higher level of difficulty.
+			/// </summary>
+			public const uint TheNether_2905883037 = 2905883037;
+			/// <summary>
 			/// 	Long live the King…
 			/// </summary>
 			public const uint KingsFall = 292102995;
 			/// <summary>
-			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// 	Complete encounters in the Nether. Additional progress on any higher level of difficulty.
+			/// </summary>
+			public const uint TheNether_2905883038 = 2905883038;
+			/// <summary>
+			/// 	({var:4161792462} of 4) Earn points in Iron Banner with a Stasis, Arc, or Void Super equipped.
 			/// </summary>
 			public const uint IronBannerScoreChallenge_2431956792 = 2431956792;
 			/// <summary>
-			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// 	Complete laps in Tomb of Elders activities.
+			/// </summary>
+			public const uint LapRunner_865132068 = 865132068;
+			/// <summary>
+			/// 	({var:4161792462} of 4) Earn points in Iron Banner with a Stasis, Arc, or Void Super equipped.
 			/// </summary>
 			public const uint IronBannerScoreChallenge_2431956793 = 2431956793;
 			/// <summary>
-			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// 	({var:4161792462} of 4) Earn points in Iron Banner with a Stasis, Arc, or Void Super equipped.
 			/// </summary>
 			public const uint IronBannerScoreChallenge_2431956794 = 2431956794;
 			/// <summary>
-			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// 	Complete laps in Tomb of Elders activities.
 			/// </summary>
-			public const uint IronBannerScoreChallenge_2431956796 = 2431956796;
+			public const uint LapRunner_865132070 = 865132070;
+			/// <summary>
+			/// 	Complete laps in Tomb of Elders activities.
+			/// </summary>
+			public const uint LapRunner_865132071 = 865132071;
 			/// <summary>
 			/// 	Win matches in Trials of Osiris to earn powerful rewards.
 			/// </summary>
 			public const uint TrialsofOsirisWeekly = 3842941126;
 			/// <summary>
-			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
-			/// </summary>
-			public const uint IronBannerScoreChallenge_2431956797 = 2431956797;
-			/// <summary>
 			/// 	Open chests within the Enigma Protocol activity.
 			/// </summary>
 			public const uint EnigmaProtocolChests = 3481223911;
 			/// <summary>
-			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
-			/// </summary>
-			public const uint IronBannerScoreChallenge_2431956798 = 2431956798;
-			/// <summary>
-			/// 	({var:4161792462} of 8) Earn points in Iron Banner with Stasis, Arc, or Void subclass abilities.
+			/// 	({var:4161792462} of 4) Earn points in Iron Banner with a Stasis, Arc, or Void Super equipped.
 			/// </summary>
 			public const uint IronBannerScoreChallenge_2431956799 = 2431956799;
 			/// <summary>
@@ -285,6 +281,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WeeklyRitualChallenge_1049998279 = 1049998279;
 			/// <summary>
+			/// 	Complete laps in Tomb of Elders activities.
+			/// </summary>
+			public const uint LapRunner_2637628972 = 2637628972;
+			/// <summary>
 			/// 	Complete a round of Dares of Eternity.
 			/// </summary>
 			public const uint EternityBeckons = 2351139753;
@@ -297,9 +297,25 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Prophecy = 478604913;
 			/// <summary>
+			/// 	Complete laps in Tomb of Elders activities.
+			/// </summary>
+			public const uint LapRunner_2637628975 = 2637628975;
+			/// <summary>
+			/// 	Complete encounters in the Nether. Additional progress on any higher level of difficulty.
+			/// </summary>
+			public const uint TheNether_2722902396 = 2722902396;
+			/// <summary>
+			/// 	Complete encounters in the Nether. Additional progress on any higher level of difficulty.
+			/// </summary>
+			public const uint TheNether_2722902397 = 2722902397;
+			/// <summary>
 			/// 	Complete waves in Onslaught activities.
 			/// </summary>
 			public const uint WaveRunner_2756380380 = 2756380380;
+			/// <summary>
+			/// 	Complete encounters in the Nether. Additional progress on any higher level of difficulty.
+			/// </summary>
+			public const uint TheNether_2722902398 = 2722902398;
 			/// <summary>
 			/// 	Complete waves in Onslaught activities.
 			/// </summary>
@@ -313,21 +329,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DeepStoneCrypt = 541780856;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
-			/// </summary>
-			public const uint Classified = 4034642472;
-			/// <summary>
 			/// 	Complete Cooperative Focus mission "Iconoclasm."
 			/// </summary>
 			public const uint Iconoclasm_1040553932 = 1040553932;
 			/// <summary>
-			/// 	Complete this Exotic mission. Higher difficulty versions grant bonus progress.
-			/// </summary>
-			public const uint WeeklyExoticRotatorChallenge_3557475774 = 3557475774;
-			/// <summary>
 			/// 	Weekly Dungeon Challenge.
 			/// </summary>
 			public const uint WarlordsRuin = 3921784328;
+			/// <summary>
+			/// 	Complete this Exotic mission. Higher difficulty versions grant bonus progress.
+			/// </summary>
+			public const uint WeeklyExoticRotatorChallenge_3557475774 = 3557475774;
 			/// <summary>
 			/// 	Speak with Saint-14 in the Tower Hangar.
 			/// </summary>
@@ -353,17 +365,21 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WeeklyPathfinderChallenge = 3480513797;
 			/// <summary>
-			/// 	Complete Breach Executable on any difficulty.
-			/// </summary>
-			public const uint EnterprisingExplorerI = 373284215;
-			/// <summary>
 			/// 	Weekly Dungeon Challenge.
 			/// </summary>
 			public const uint GhostsoftheDeep = 390471874;
 			/// <summary>
+			/// 	Complete Breach Executable on any difficulty.
+			/// </summary>
+			public const uint EnterprisingExplorerI = 373284215;
+			/// <summary>
 			/// 	Rotating Weekly Dungeon Challenge.
 			/// </summary>
 			public const uint ShatteredThrone = 1742973996;
+			/// <summary>
+			/// 	Complete the "Sundered Doctrine" dungeon.
+			/// </summary>
+			public const uint EnlightenedArchaeology = 2032830539;
 			/// <summary>
 			/// 	Complete bounties for the Gunsmith to earn Powerful Rewards.
 			/// </summary>
@@ -397,6 +413,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WaveBreaker_3733682455 = 3733682455;
 			/// <summary>
+			/// 	Complete Exotic mission "Kell's Fall" on Expert difficulty.
+			/// </summary>
+			public const uint ExpertGlazier = 2741093819;
+			/// <summary>
 			/// 	Gain reputation with Ghost.
 			/// </summary>
 			public const uint AGhostsDuty = 2603713309;
@@ -404,6 +424,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete this Exotic mission. Higher difficulty versions grant bonus progress.
 			/// </summary>
 			public const uint WeeklyExoticRotatorChallenge_4244749316 = 4244749316;
+			/// <summary>
+			/// 	Exchange Essence of Desire to cleanse corruption and earn additional rewards.
+			/// </summary>
+			public const uint DesiredWillintoBeing_2153728473 = 2153728473;
+			/// <summary>
+			/// 	Complete the mission on any difficulty.
+			/// </summary>
+			public const uint Glazier = 213339349;
 			/// <summary>
 			/// 	Free the Light.
 			/// </summary>
@@ -420,6 +448,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete Cooperative Focus mission "Dissent."
 			/// </summary>
 			public const uint Dissent_3353906074 = 3353906074;
+			/// <summary>
+			/// 	Complete bounties from this vendor to earn powerful rewards.
+			/// </summary>
+			public const uint EidosWeeklyChallenge = 3759987888;
 			/// <summary>
 			/// 	Earn special rewards while the Iron Banner is unfurled!
 			/// </summary>

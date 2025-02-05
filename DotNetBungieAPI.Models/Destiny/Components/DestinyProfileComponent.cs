@@ -41,7 +41,7 @@ public sealed record DestinyProfileComponent
     ///     A list of the character IDs, for further querying on your part.
     /// </summary>
     [JsonPropertyName("characterIds")]
-    public ReadOnlyCollection<long> CharacterIds { get; init; } = ReadOnlyCollections<long>.Empty;
+    public ReadOnlyCollection<long> CharacterIds { get; init; } = ReadOnlyCollection<long>.Empty;
 
     /// <summary>
     ///     A list of seasons that this profile owns. Unlike versionsOwned, these stay with the profile across Platforms, and
@@ -55,7 +55,7 @@ public sealed record DestinyProfileComponent
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinySeasonDefinition>
     > Seasons { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinySeasonDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinySeasonDefinition>>.Empty;
 
     /// <summary>
     ///     A list of hashes for event cards that a profile owns. Unlike most values in versionsOwned, these stay with the profile across all platforms.
@@ -64,7 +64,7 @@ public sealed record DestinyProfileComponent
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyEventCardDefinition>
     > EventCardsOwned { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyEventCardDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyEventCardDefinition>>.Empty;
 
     /// <summary>
     ///     If populated, this is a reference to the season that is currently active.

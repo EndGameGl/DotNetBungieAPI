@@ -53,5 +53,5 @@ internal static class InternalExtensions
         return end - start;
     }
 
-    internal static double TicksToSeconds(this long ticks) => ticks / 10_000_000;
+    internal static double TicksToSeconds(this long ticks) => ticks / 10_000_000.0d;
 }

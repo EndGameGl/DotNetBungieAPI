@@ -35,7 +35,7 @@ public sealed record DestinyTalentNodeCategory : IDeepEquatable<DestinyTalentNod
     ///     this Category.
     /// </summary>
     [JsonPropertyName("nodeHashes")]
-    public ReadOnlyCollection<uint> NodeHashes { get; init; } = ReadOnlyCollections<uint>.Empty;
+    public ReadOnlyCollection<uint> NodeHashes { get; init; } = ReadOnlyCollection<uint>.Empty;
 
     public bool DeepEquals(DestinyTalentNodeCategory other)
     {

@@ -25,7 +25,7 @@ public sealed record DestinyReportReasonCategoryDefinition
     /// </summary>
     [JsonPropertyName("reasons")]
     public ReadOnlyDictionary<uint, DestinyReportReasonDefinition> Reasons { get; init; } =
-        ReadOnlyDictionaries<uint, DestinyReportReasonDefinition>.Empty;
+        ReadOnlyDictionary<uint, DestinyReportReasonDefinition>.Empty;
 
     public bool DeepEquals(DestinyReportReasonCategoryDefinition other)
     {

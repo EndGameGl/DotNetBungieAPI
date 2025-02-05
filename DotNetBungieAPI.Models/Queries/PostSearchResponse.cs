@@ -9,32 +9,32 @@ public sealed record PostSearchResponse : SearchResultBase
 {
     [JsonPropertyName("relatedPosts")]
     public ReadOnlyCollection<PostResponse> RelatedPosts { get; init; } =
-        ReadOnlyCollections<PostResponse>.Empty;
+        ReadOnlyCollection<PostResponse>.Empty;
 
     [JsonPropertyName("authors")]
     public ReadOnlyCollection<GeneralUser> Authors { get; init; } =
-        ReadOnlyCollections<GeneralUser>.Empty;
+        ReadOnlyCollection<GeneralUser>.Empty;
 
     [JsonPropertyName("groups")]
     public ReadOnlyCollection<GroupResponse> Groups { get; init; } =
-        ReadOnlyCollections<GroupResponse>.Empty;
+        ReadOnlyCollection<GroupResponse>.Empty;
 
     [JsonPropertyName("searchedTags")]
     public ReadOnlyCollection<TagResponse> SearchedTags { get; init; } =
-        ReadOnlyCollections<TagResponse>.Empty;
+        ReadOnlyCollection<TagResponse>.Empty;
 
     [JsonPropertyName("polls")]
     public ReadOnlyCollection<PollResponse> Polls { get; init; } =
-        ReadOnlyCollections<PollResponse>.Empty;
+        ReadOnlyCollection<PollResponse>.Empty;
 
     [JsonPropertyName("recruitmentDetails")]
     public ReadOnlyCollection<ForumRecruitmentDetail> RecruitmentDetails { get; init; } =
-        ReadOnlyCollections<ForumRecruitmentDetail>.Empty;
+        ReadOnlyCollection<ForumRecruitmentDetail>.Empty;
 
     [JsonPropertyName("availablePages")]
     public int? AvailablePages { get; init; }
 
     [JsonPropertyName("results")]
     public ReadOnlyCollection<PostResponse> Results { get; init; } =
-        ReadOnlyCollections<PostResponse>.Empty;
+        ReadOnlyCollection<PostResponse>.Empty;
 }

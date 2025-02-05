@@ -435,6 +435,7 @@ public interface IFireteamFinderMethodsAccess
     /// <param name="destinyCharacterId">A valid Destiny character ID.</param>
     /// <param name="destinyMembershipId">A valid Destiny membership ID.</param>
     /// <param name="destinyMembershipType">A valid Destiny membership type.</param>
+    /// <param name="overrideOfflineFilter">Optional boolean to bypass the offline-only check, so the client can pull fireteam from the game.</param>
     /// <param name="body">Request body</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns></returns>
@@ -444,6 +445,7 @@ public interface IFireteamFinderMethodsAccess
         long destinyCharacterId,
         long destinyMembershipId,
         BungieMembershipType destinyMembershipType,
+        bool overrideOfflineFilter,
         DestinyFireteamFinderSearchListingsByFiltersRequest body,
         CancellationToken cancellationToken = default
     );

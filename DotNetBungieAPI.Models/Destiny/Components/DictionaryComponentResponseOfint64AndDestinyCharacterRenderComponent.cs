@@ -5,5 +5,5 @@ public sealed record DictionaryComponentResponseOfint64AndDestinyCharacterRender
 {
     [JsonPropertyName("data")]
     public ReadOnlyDictionary<long, DestinyCharacterRenderComponent> Data { get; init; } =
-        ReadOnlyDictionaries<long, DestinyCharacterRenderComponent>.Empty;
+        ReadOnlyDictionary<long, DestinyCharacterRenderComponent>.Empty;
 }

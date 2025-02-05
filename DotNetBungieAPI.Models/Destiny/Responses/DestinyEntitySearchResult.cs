@@ -11,7 +11,7 @@ public sealed record DestinyEntitySearchResult
     /// </summary>
     [JsonPropertyName("suggestedWords")]
     public ReadOnlyCollection<string> SuggestedWords { get; init; } =
-        ReadOnlyCollections<string>.Empty;
+        ReadOnlyCollection<string>.Empty;
 
     /// <summary>
     ///     The items found that are matches/near matches for the searched-for term, sorted by something vaguely resembling

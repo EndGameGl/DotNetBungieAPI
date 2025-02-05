@@ -5,5 +5,5 @@ public sealed record DictionaryComponentResponseOfuint32AndPublicDestinyVendorSa
 {
     [JsonPropertyName("data")]
     public ReadOnlyDictionary<uint, PublicDestinyVendorSaleItemSetComponent> Data { get; init; } =
-        ReadOnlyDictionaries<uint, PublicDestinyVendorSaleItemSetComponent>.Empty;
+        ReadOnlyDictionary<uint, PublicDestinyVendorSaleItemSetComponent>.Empty;
 }

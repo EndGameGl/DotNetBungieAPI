@@ -40,7 +40,7 @@ public sealed record DestinyFactionDefinition
         DefinitionHashPointer<DestinyInventoryItemDefinition>,
         DefinitionHashPointer<DestinyProgressionDefinition>
     > TokenValues { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyInventoryItemDefinition>,
             DefinitionHashPointer<DestinyProgressionDefinition>
         >.Empty;
@@ -65,7 +65,7 @@ public sealed record DestinyFactionDefinition
     /// </summary>
     [JsonPropertyName("vendors")]
     public ReadOnlyCollection<DestinyFactionVendorDefinition> Vendors { get; init; } =
-        ReadOnlyCollections<DestinyFactionVendorDefinition>.Empty;
+        ReadOnlyCollection<DestinyFactionVendorDefinition>.Empty;
 
     public bool DeepEquals(DestinyFactionDefinition other)
     {
@@ -77,7 +77,7 @@ public sealed record DestinyFactionDefinition
             && TokenValues.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(
                 other.TokenValues
             )
-            && Vendors.DeepEqualsReadOnlyCollections(other.Vendors)
+            && Vendors.DeepEqualsReadOnlyCollection(other.Vendors)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash
             && Index == other.Index

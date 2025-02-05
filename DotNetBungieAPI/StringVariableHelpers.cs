@@ -5,12 +5,15 @@ namespace DotNetBungieAPI;
 /// <summary>
 ///     Static class for working with string variables
 /// </summary>
-public static class StringVariableHelpers
+public static partial class StringVariableHelpers
 {
+    [GeneratedRegex(@"\{var\:\d+\}")]
+    private static partial Regex GetStringVariableRegex();
+
     /// <summary>
     ///     Regex for finding string variables
     /// </summary>
-    private static readonly Regex StringVariableRegex = new(@"\{var\:\d+\}");
+    private static readonly Regex StringVariableRegex = GetStringVariableRegex();
 
     /// <summary>
     ///     Tries to get string variable hash from a string
@@ -18,10 +21,13 @@ public static class StringVariableHelpers
     /// <param name="value"></param>
     /// <param name="hash"></param>
     /// <returns></returns>
-    public static bool TryGetStringVariableHash(this string value, out uint hash)
+    public static bool TryGetStringVariableHash(
+        this string value,
+        out uint hash
+    )
     {
-        hash = default;
-
+        hash = 0;
+        
         if (string.IsNullOrEmpty(value))
             return false;
 
@@ -46,7 +52,7 @@ public static class StringVariableHelpers
     public static bool TryGetStringVariableHashReplaced(
         this string unformattedString,
         IReadOnlyDictionary<uint, int> hashes,
-        out string formattedString
+        out string? formattedString
     )
     {
         formattedString = null;

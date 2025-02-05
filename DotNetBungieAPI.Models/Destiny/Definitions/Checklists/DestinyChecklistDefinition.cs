@@ -39,7 +39,7 @@ public sealed record DestinyChecklistDefinition
     /// </summary>
     [JsonPropertyName("entries")]
     public ReadOnlyCollection<DestinyChecklistEntryDefinition> Entries { get; init; } =
-        ReadOnlyCollections<DestinyChecklistEntryDefinition>.Empty;
+        ReadOnlyCollection<DestinyChecklistEntryDefinition>.Empty;
 
     /// <summary>
     ///     Indicates whether you will find this checklist on the Profile or Character components.
@@ -57,7 +57,7 @@ public sealed record DestinyChecklistDefinition
     {
         return other != null
             && DisplayProperties.DeepEquals(other.DisplayProperties)
-            && Entries.DeepEqualsReadOnlyCollections(other.Entries)
+            && Entries.DeepEqualsReadOnlyCollection(other.Entries)
             && Scope == other.Scope
             && ViewActionString == other.ViewActionString
             && Blacklisted == other.Blacklisted

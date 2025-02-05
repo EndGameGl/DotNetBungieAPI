@@ -6,5 +6,5 @@ public sealed record SearchResultOfTrendingEntry : SearchResultBase
 {
     [JsonPropertyName("results")]
     public ReadOnlyCollection<TrendingEntry> Results { get; init; } =
-        ReadOnlyCollections<TrendingEntry>.Empty;
+        ReadOnlyCollection<TrendingEntry>.Empty;
 }

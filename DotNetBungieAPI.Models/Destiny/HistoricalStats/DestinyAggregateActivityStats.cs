@@ -16,5 +16,5 @@ public sealed record DestinyAggregateActivityStats
     /// </summary>
     [JsonPropertyName("values")]
     public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> Values { get; init; } =
-        ReadOnlyDictionaries<string, DestinyHistoricalStatsValue>.Empty;
+        ReadOnlyDictionary<string, DestinyHistoricalStatsValue>.Empty;
 }

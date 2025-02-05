@@ -7,5 +7,5 @@ public sealed record CoreSystem
 
     [JsonPropertyName("parameters")]
     public ReadOnlyDictionary<string, string> Parameters { get; init; } =
-        ReadOnlyDictionaries<string, string>.Empty;
+        ReadOnlyDictionary<string, string>.Empty;
 }

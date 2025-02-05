@@ -34,8 +34,9 @@ internal sealed class CommunityContentMethodsAccess : ICommunityContentMethodsAc
             .AddUrlParam(((int)mediaFilter).ToString())
             .AddUrlParam(page.ToString())
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<PostSearchResponse>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<PostSearchResponse>(
+            url,
+            cancellationToken
+        );
     }
 }

@@ -13,5 +13,5 @@ public sealed record DestinyVendorReceiptsComponent
     /// </summary>
     [JsonPropertyName("receipts")]
     public ReadOnlyCollection<DestinyVendorReceipt> Receipts { get; init; } =
-        ReadOnlyCollections<DestinyVendorReceipt>.Empty;
+        ReadOnlyCollection<DestinyVendorReceipt>.Empty;
 }

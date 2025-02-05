@@ -15,7 +15,7 @@ public sealed record DestinyItemPlug
     /// </summary>
     [JsonPropertyName("plugObjectives")]
     public ReadOnlyCollection<DestinyObjectiveProgress> PlugObjectives { get; init; } =
-        ReadOnlyCollections<DestinyObjectiveProgress>.Empty;
+        ReadOnlyCollection<DestinyObjectiveProgress>.Empty;
 
     /// <summary>
     ///     The hash identifier of the DestinyInventoryItemDefinition that represents this plug.
@@ -44,7 +44,7 @@ public sealed record DestinyItemPlug
     /// </summary>
     [JsonPropertyName("insertFailIndexes")]
     public ReadOnlyCollection<int> InsertFailIndexes { get; init; } =
-        ReadOnlyCollections<int>.Empty;
+        ReadOnlyCollection<int>.Empty;
 
     /// <summary>
     ///     If a plug is not enabled, this will be populated with indexes into the plug item definition's plug.enabledRules
@@ -54,7 +54,7 @@ public sealed record DestinyItemPlug
     /// </summary>
     [JsonPropertyName("enableFailIndexes")]
     public ReadOnlyCollection<int> EnableFailIndexes { get; init; } =
-        ReadOnlyCollections<int>.Empty;
+        ReadOnlyCollection<int>.Empty;
 
     /// <summary>
     ///     If available, this is the stack size to display for the socket plug item.

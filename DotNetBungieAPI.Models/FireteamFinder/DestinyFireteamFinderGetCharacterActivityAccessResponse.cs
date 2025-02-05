@@ -12,7 +12,7 @@ public sealed record DestinyFireteamFinderGetCharacterActivityAccessResponse
         DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>,
         DestinyFireteamFinderActivityGraphState
     > FireteamFinderActivityGraphStates { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>,
             DestinyFireteamFinderActivityGraphState
         >.Empty;

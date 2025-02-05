@@ -9,11 +9,11 @@ public sealed record DestinyCharacterRecordsComponent
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyRecordDefinition>
     > FeaturedRecords { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyRecordDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyRecordDefinition>>.Empty;
 
     [JsonPropertyName("records")]
     public ReadOnlyDictionary<uint, DestinyRecordComponent> Records { get; init; } =
-        ReadOnlyDictionaries<uint, DestinyRecordComponent>.Empty;
+        ReadOnlyDictionary<uint, DestinyRecordComponent>.Empty;
 
     /// <summary>
     ///     The hash for the root presentation node definition of Triumph categories.

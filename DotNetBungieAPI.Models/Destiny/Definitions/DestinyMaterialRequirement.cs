@@ -41,6 +41,12 @@ public sealed record DestinyMaterialRequirement : IDeepEquatable<DestinyMaterial
     /// </summary>
     [JsonPropertyName("omitFromRequirements")]
     public bool OmitFromRequirements { get; init; }
+    
+    /// <summary>
+    ///     If true, this material requirement references a virtual item stack size value. You can get that value from a corresponding DestinyMaterialRequirementSetState.
+    /// </summary>
+    [JsonPropertyName("hasVirtualStackSize")]
+    public bool HasVirtualStackSize { get; init; }
 
     public bool DeepEquals(DestinyMaterialRequirement other)
     {
@@ -49,6 +55,7 @@ public sealed record DestinyMaterialRequirement : IDeepEquatable<DestinyMaterial
             && DeleteOnAction == other.DeleteOnAction
             && Item.DeepEquals(other.Item)
             && OmitFromRequirements == other.OmitFromRequirements
-            && CountIsConstant == other.CountIsConstant;
+            && CountIsConstant == other.CountIsConstant
+            && HasVirtualStackSize == other.HasVirtualStackSize;
     }
 }

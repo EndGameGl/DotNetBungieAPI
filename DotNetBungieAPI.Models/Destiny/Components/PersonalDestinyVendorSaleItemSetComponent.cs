@@ -4,5 +4,5 @@ public sealed record PersonalDestinyVendorSaleItemSetComponent
 {
     [JsonPropertyName("saleItems")]
     public ReadOnlyDictionary<uint, DestinyVendorSaleItemComponent> SaleItems { get; init; } =
-        ReadOnlyDictionaries<uint, DestinyVendorSaleItemComponent>.Empty;
+        ReadOnlyDictionary<uint, DestinyVendorSaleItemComponent>.Empty;
 }

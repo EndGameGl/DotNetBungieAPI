@@ -43,9 +43,10 @@ internal sealed class UserMethodsAccess : IUserMethodsAccess
             .Append("/User/GetBungieNetUserById/")
             .AddUrlParam(id.ToString())
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<GeneralUser>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<GeneralUser>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<
@@ -60,12 +61,9 @@ internal sealed class UserMethodsAccess : IUserMethodsAccess
             .Append("/User/GetSanitizedPlatformDisplayNames/")
             .AddUrlParam(membershipId.ToString())
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyDictionary<BungieCredentialType, string>>(
-                url,
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<
+            ReadOnlyDictionary<BungieCredentialType, string>
+        >(url, cancellationToken);
     }
 
     public async Task<
@@ -81,25 +79,18 @@ internal sealed class UserMethodsAccess : IUserMethodsAccess
             .Append("/User/GetCredentialTypesForTargetAccount/")
             .AddUrlParam(id.ToString())
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyCollection<CredentialTypeForAccount>>(
-                url,
-                cancellationToken,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<
+            ReadOnlyCollection<CredentialTypeForAccount>
+        >(url, cancellationToken, authorizationToken.AccessToken);
     }
 
     public async Task<BungieResponse<ReadOnlyCollection<UserTheme>>> GetAvailableThemes(
         CancellationToken cancellationToken = default
     )
     {
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyCollection<UserTheme>>(
-                "/User/GetAvailableThemes",
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<
+            ReadOnlyCollection<UserTheme>
+        >("/User/GetAvailableThemes", cancellationToken);
     }
 
     public async Task<BungieResponse<UserMembershipData>> GetMembershipDataById(
@@ -114,9 +105,10 @@ internal sealed class UserMethodsAccess : IUserMethodsAccess
             .AddUrlParam(id.ToString())
             .AddUrlParam(((int)membershipType).ToString())
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<UserMembershipData>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<UserMembershipData>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<UserMembershipData>> GetMembershipDataForCurrentUser(
@@ -127,13 +119,11 @@ internal sealed class UserMethodsAccess : IUserMethodsAccess
         if (!_configuration.HasSufficientRights(ApplicationScopes.ReadBasicUserProfile))
             throw new InsufficientScopeException(ApplicationScopes.ReadBasicUserProfile);
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<UserMembershipData>(
-                "/User/GetMembershipsForCurrentUser/",
-                cancellationToken,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<UserMembershipData>(
+            "/User/GetMembershipsForCurrentUser/",
+            cancellationToken,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<
@@ -150,9 +140,10 @@ internal sealed class UserMethodsAccess : IUserMethodsAccess
             .AddUrlParam(((byte)credentialType).ToString())
             .AddUrlParam(credential.ToString())
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<HardLinkedUserMembership>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<HardLinkedUserMembership>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<UserSearchResponse>> SearchByGlobalNamePost(
@@ -168,9 +159,11 @@ internal sealed class UserMethodsAccess : IUserMethodsAccess
             .Build();
 
         using var memoryStream = new MemoryStream();
-        await _bungieNetJsonSerializer.SerializeAsync(memoryStream, request).ConfigureAwait(false);
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<UserSearchResponse>(url, cancellationToken, memoryStream)
-            .ConfigureAwait(false);
+        await _bungieNetJsonSerializer.SerializeAsync(memoryStream, request);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<UserSearchResponse>(
+            url,
+            cancellationToken,
+            memoryStream
+        );
     }
 }

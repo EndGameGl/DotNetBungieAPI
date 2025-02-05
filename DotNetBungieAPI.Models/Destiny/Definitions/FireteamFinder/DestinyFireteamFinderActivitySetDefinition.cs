@@ -14,19 +14,19 @@ public sealed record DestinyFireteamFinderActivitySetDefinition : IDestinyDefini
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyFireteamFinderOptionDefinition>
     > Options { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyFireteamFinderOptionDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyFireteamFinderOptionDefinition>>.Empty;
 
     [JsonPropertyName("labelHashes")]
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyFireteamFinderLabelDefinition>
     > Labels { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyFireteamFinderLabelDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyFireteamFinderLabelDefinition>>.Empty;
 
     [JsonPropertyName("activityGraphHashes")]
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
     > ActivityGraphs { get; init; } =
-        ReadOnlyCollections<
+        ReadOnlyCollection<
             DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
         >.Empty;
 
@@ -34,7 +34,7 @@ public sealed record DestinyFireteamFinderActivitySetDefinition : IDestinyDefini
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyActivityDefinition>
     > Activities { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyActivityDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyActivityDefinition>>.Empty;
 
     public DefinitionsEnum DefinitionEnumValue =>
         DefinitionsEnum.DestinyFireteamFinderActivitySetDefinition;

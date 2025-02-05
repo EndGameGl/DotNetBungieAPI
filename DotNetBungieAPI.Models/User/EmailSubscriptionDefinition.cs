@@ -20,7 +20,7 @@ public sealed record EmailSubscriptionDefinition
         string,
         EmailSettingSubscriptionLocalization
     > Localization { get; init; } =
-        ReadOnlyDictionaries<string, EmailSettingSubscriptionLocalization>.Empty;
+        ReadOnlyDictionary<string, EmailSettingSubscriptionLocalization>.Empty;
 
     /// <summary>
     ///     The bitflag value for this subscription. Should be a unique power of two value.

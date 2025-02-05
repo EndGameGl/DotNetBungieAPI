@@ -88,7 +88,7 @@ public sealed record DestinyVendorCategoryEntryDefinition
     /// </summary>
     [JsonPropertyName("vendorItemIndexes")]
     public ReadOnlyCollection<int> VendorItemIndexes { get; init; } =
-        ReadOnlyCollections<int>.Empty;
+        ReadOnlyCollection<int>.Empty;
 
     /// <summary>
     ///     The localized title of the category.

@@ -23,7 +23,7 @@ public sealed record DestinyPlugSetsComponent
         DefinitionHashPointer<DestinyPlugSetDefinition>,
         ReadOnlyCollection<DestinyItemPlug>
     > Plugs { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyPlugSetDefinition>,
             ReadOnlyCollection<DestinyItemPlug>
         >.Empty;

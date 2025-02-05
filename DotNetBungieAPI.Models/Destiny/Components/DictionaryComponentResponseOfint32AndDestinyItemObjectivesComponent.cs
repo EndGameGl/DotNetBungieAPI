@@ -5,5 +5,5 @@ public sealed record DictionaryComponentResponseOfint32AndDestinyItemObjectivesC
 {
     [JsonPropertyName("data")]
     public ReadOnlyDictionary<int, DestinyItemObjectivesComponent> Data { get; init; } =
-        ReadOnlyDictionaries<int, DestinyItemObjectivesComponent>.Empty;
+        ReadOnlyDictionary<int, DestinyItemObjectivesComponent>.Empty;
 }

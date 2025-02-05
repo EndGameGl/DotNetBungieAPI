@@ -16,7 +16,7 @@ public sealed record DestinyLinkedProfilesResponse
     /// </summary>
     [JsonPropertyName("profiles")]
     public ReadOnlyCollection<DestinyProfileUserInfoCard> Profiles { get; init; } =
-        ReadOnlyCollections<DestinyProfileUserInfoCard>.Empty;
+        ReadOnlyCollection<DestinyProfileUserInfoCard>.Empty;
 
     /// <summary>
     ///     If the requested membership had a linked Bungie.Net membership ID, this is the basic information about that BNet
@@ -31,5 +31,5 @@ public sealed record DestinyLinkedProfilesResponse
     /// </summary>
     [JsonPropertyName("profilesWithErrors")]
     public ReadOnlyCollection<DestinyErrorProfile> ProfilesWithErrors { get; init; } =
-        ReadOnlyCollections<DestinyErrorProfile>.Empty;
+        ReadOnlyCollection<DestinyErrorProfile>.Empty;
 }

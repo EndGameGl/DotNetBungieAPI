@@ -28,31 +28,23 @@ internal sealed class DefaultBungieNetJsonSerializer : IBungieNetJsonSerializer
     public async ValueTask<object> DeserializeAsync(byte[] data, Type type)
     {
         await using Stream readStream = new MemoryStream(data);
-        return await JsonSerializer
-            .DeserializeAsync(readStream, type, _serializerOptions)
-            .ConfigureAwait(false);
+        return await JsonSerializer.DeserializeAsync(readStream, type, _serializerOptions);
     }
 
     public async ValueTask<T> DeserializeAsync<T>(byte[] data)
     {
         await using Stream readStream = new MemoryStream(data);
-        return await JsonSerializer
-            .DeserializeAsync<T>(readStream, _serializerOptions)
-            .ConfigureAwait(false);
+        return await JsonSerializer.DeserializeAsync<T>(readStream, _serializerOptions);
     }
 
     public async ValueTask<object> DeserializeAsync(Stream data, Type type)
     {
-        return await JsonSerializer
-            .DeserializeAsync(data, type, _serializerOptions)
-            .ConfigureAwait(false);
+        return await JsonSerializer.DeserializeAsync(data, type, _serializerOptions);
     }
 
     public async ValueTask<T> DeserializeAsync<T>(Stream data)
     {
-        return await JsonSerializer
-            .DeserializeAsync<T>(data, _serializerOptions)
-            .ConfigureAwait(false);
+        return await JsonSerializer.DeserializeAsync<T>(data, _serializerOptions);
     }
 
     public T Deserialize<T>(Stream data)
@@ -92,6 +84,6 @@ internal sealed class DefaultBungieNetJsonSerializer : IBungieNetJsonSerializer
 
     public async Task SerializeAsync<T>(Stream stream, T data)
     {
-        await JsonSerializer.SerializeAsync(stream, data, _serializerOptions).ConfigureAwait(false);
+        await JsonSerializer.SerializeAsync(stream, data, _serializerOptions);
     }
 }

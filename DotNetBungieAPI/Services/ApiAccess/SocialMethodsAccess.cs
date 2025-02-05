@@ -34,13 +34,11 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
     {
         if (!_configuration.HasSufficientRights(ApplicationScopes.ReadUserData))
             throw new InsufficientScopeException(ApplicationScopes.ReadUserData);
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<BungieFriendListResponse>(
-                "/Social/Friends/",
-                cancellationToken,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<BungieFriendListResponse>(
+            "/Social/Friends/",
+            cancellationToken,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<BungieFriendRequestListResponse>> GetFriendRequestList(
@@ -72,13 +70,11 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .AddUrlParam(membershipId)
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(
-                url,
-                cancellationToken,
-                authToken: authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<bool>(
+            url,
+            cancellationToken,
+            authToken: authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<bool>> AcceptFriendRequest(
@@ -96,13 +92,11 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .AddUrlParam(membershipId)
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(
-                url,
-                cancellationToken,
-                authToken: authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<bool>(
+            url,
+            cancellationToken,
+            authToken: authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<bool>> DeclineFriendRequest(
@@ -120,13 +114,11 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .AddUrlParam(membershipId)
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(
-                url,
-                cancellationToken,
-                authToken: authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<bool>(
+            url,
+            cancellationToken,
+            authToken: authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<bool>> RemoveFriend(
@@ -144,13 +136,11 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .AddUrlParam(membershipId)
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(
-                url,
-                cancellationToken,
-                authToken: authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<bool>(
+            url,
+            cancellationToken,
+            authToken: authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<bool>> RemoveFriendRequest(
@@ -168,13 +158,11 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .AddUrlParam(membershipId)
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(
-                url,
-                cancellationToken,
-                authToken: authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<bool>(
+            url,
+            cancellationToken,
+            authToken: authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<PlatformFriendResponse>> GetPlatformFriendList(
@@ -191,12 +179,10 @@ internal sealed class SocialMethodsAccess : ISocialMethodsAccess
             .AddUrlParam(page.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<PlatformFriendResponse>(
-                url,
-                cancellationToken,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<PlatformFriendResponse>(
+            url,
+            cancellationToken,
+            authorizationToken.AccessToken
+        );
     }
 }

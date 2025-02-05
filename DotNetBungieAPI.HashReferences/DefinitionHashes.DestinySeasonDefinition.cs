@@ -104,7 +104,8 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint EpisodeRevenant = 2758726573;
-			public const uint EpisodeRedacted = 2758726574;
+			public const uint EpisodeHeresy = 2758726574;
+			public const uint H2758726575 = 2758726575;
 			/// <summary>
 			/// 	A new season has begun! Choose what kind of Guardian you will become. Reckon with the path that lies ahead.
 			/// </summary>

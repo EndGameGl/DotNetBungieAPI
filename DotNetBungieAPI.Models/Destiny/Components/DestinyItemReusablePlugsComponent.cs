@@ -23,5 +23,5 @@ public sealed record DestinyItemReusablePlugsComponent
     /// </summary>
     [JsonPropertyName("plugs")]
     public ReadOnlyDictionary<int, ReadOnlyCollection<PlugItemSettings>> Plugs { get; init; } =
-        ReadOnlyDictionaries<int, ReadOnlyCollection<PlugItemSettings>>.Empty;
+        ReadOnlyDictionary<int, ReadOnlyCollection<PlugItemSettings>>.Empty;
 }

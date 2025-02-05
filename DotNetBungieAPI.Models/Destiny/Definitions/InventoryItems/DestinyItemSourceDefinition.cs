@@ -55,7 +55,7 @@ public class DestinyItemSourceDefinition : IDeepEquatable<DestinyItemSourceDefin
         DefinitionHashPointer<DestinyStatDefinition>,
         DestinyInventoryItemStatDefinition
     > ComputedStats { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyStatDefinition>,
             DestinyInventoryItemStatDefinition
         >.Empty;
@@ -67,7 +67,7 @@ public class DestinyItemSourceDefinition : IDeepEquatable<DestinyItemSourceDefin
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyRewardSourceDefinition>
     > Sources { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyRewardSourceDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyRewardSourceDefinition>>.Empty;
 
     public bool DeepEquals(DestinyItemSourceDefinition other)
     {
@@ -80,6 +80,6 @@ public class DestinyItemSourceDefinition : IDeepEquatable<DestinyItemSourceDefin
             && ComputedStats.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(
                 other.ComputedStats
             )
-            && Sources.DeepEqualsReadOnlyCollections(other.Sources);
+            && Sources.DeepEqualsReadOnlyCollection(other.Sources);
     }
 }

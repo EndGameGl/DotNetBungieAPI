@@ -27,7 +27,7 @@ public sealed record DestinySandboxPatternDefinition
 
     [JsonPropertyName("filters")]
     public ReadOnlyCollection<DestinyArrangementRegionFilterDefinition> Filters { get; init; } =
-        ReadOnlyCollections<DestinyArrangementRegionFilterDefinition>.Empty;
+        ReadOnlyCollection<DestinyArrangementRegionFilterDefinition>.Empty;
 
     public bool DeepEquals(DestinySandboxPatternDefinition other)
     {
@@ -38,7 +38,7 @@ public sealed record DestinySandboxPatternDefinition
             && WeaponTranslationGroupHash == other.WeaponTranslationGroupHash
             && WeaponType == other.WeaponType
             && WeaponTypeHash == other.WeaponTypeHash
-            && Filters.DeepEqualsReadOnlyCollections(other.Filters)
+            && Filters.DeepEqualsReadOnlyCollection(other.Filters)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash
             && Index == other.Index

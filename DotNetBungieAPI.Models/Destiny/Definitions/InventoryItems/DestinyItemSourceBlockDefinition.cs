@@ -15,14 +15,14 @@ public sealed record DestinyItemSourceBlockDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyRewardSourceDefinition>
     > RewardSources { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyRewardSourceDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyRewardSourceDefinition>>.Empty;
 
     /// <summary>
     ///     A collection of details about the stats that were computed for the ways we found that the item could be spawned.
     /// </summary>
     [JsonPropertyName("sources")]
     public ReadOnlyCollection<DestinyItemSourceDefinition> Sources { get; init; } =
-        ReadOnlyCollections<DestinyItemSourceDefinition>.Empty;
+        ReadOnlyCollection<DestinyItemSourceDefinition>.Empty;
 
     /// <summary>
     ///     If we found that this item is exclusive to a specific platform, this will be set to the BungieMembershipType
@@ -36,14 +36,14 @@ public sealed record DestinyItemSourceBlockDefinition
     /// </summary>
     [JsonPropertyName("vendorSources")]
     public ReadOnlyCollection<DestinyItemVendorSourceReference> VendorSources { get; init; } =
-        ReadOnlyCollections<DestinyItemVendorSourceReference>.Empty;
+        ReadOnlyCollection<DestinyItemVendorSourceReference>.Empty;
 
     public bool DeepEquals(DestinyItemSourceBlockDefinition other)
     {
         return other != null
-            && RewardSources.DeepEqualsReadOnlyCollections(other.RewardSources)
-            && Sources.DeepEqualsReadOnlyCollections(other.Sources)
+            && RewardSources.DeepEqualsReadOnlyCollection(other.RewardSources)
+            && Sources.DeepEqualsReadOnlyCollection(other.Sources)
             && ExclusiveTo == other.ExclusiveTo
-            && VendorSources.DeepEqualsReadOnlyCollections(other.VendorSources);
+            && VendorSources.DeepEqualsReadOnlyCollection(other.VendorSources);
     }
 }

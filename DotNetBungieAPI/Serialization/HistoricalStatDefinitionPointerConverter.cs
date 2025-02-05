@@ -1,5 +1,4 @@
-﻿#nullable enable
-using DotNetBungieAPI.Models;
+﻿using DotNetBungieAPI.Models;
 
 namespace DotNetBungieAPI.Serialization;
 
@@ -14,8 +13,7 @@ public sealed class HistoricalStatDefinitionPointerConverter
         JsonSerializerOptions options
     )
     {
-        var statId = reader.GetString();
-        return new HistoricalStatDefinitionPointer(statId);
+        return new HistoricalStatDefinitionPointer(reader.GetString());
     }
 
     public override void Write(

@@ -67,11 +67,11 @@ public sealed record ContentTypeProperty
 
     [JsonPropertyName("attributes")]
     public ReadOnlyDictionary<string, string> Attributes { get; init; } =
-        ReadOnlyDictionaries<string, string>.Empty;
+        ReadOnlyDictionary<string, string>.Empty;
 
     [JsonPropertyName("childProperties")]
     public ReadOnlyCollection<ContentTypeProperty> ChildProperties { get; init; } =
-        ReadOnlyCollections<ContentTypeProperty>.Empty;
+        ReadOnlyCollection<ContentTypeProperty>.Empty;
 
     [JsonPropertyName("contentTypeAllowed")]
     public string ContentTypeAllowed { get; init; }
@@ -84,11 +84,11 @@ public sealed record ContentTypeProperty
 
     [JsonPropertyName("representationSelection")]
     public ReadOnlyDictionary<string, string> RepresentationSelection { get; init; } =
-        ReadOnlyDictionaries<string, string>.Empty;
+        ReadOnlyDictionary<string, string>.Empty;
 
     [JsonPropertyName("defaultValues")]
     public ReadOnlyCollection<ContentTypeDefaultValue> DefaultValues { get; init; } =
-        ReadOnlyCollections<ContentTypeDefaultValue>.Empty;
+        ReadOnlyCollection<ContentTypeDefaultValue>.Empty;
 
     [JsonPropertyName("isExternalAllowed")]
     public bool IsExternalAllowed { get; init; }
@@ -110,7 +110,7 @@ public sealed record ContentTypeProperty
 
     [JsonPropertyName("legalContentTypes")]
     public ReadOnlyCollection<string> LegalContentTypes { get; init; } =
-        ReadOnlyCollections<string>.Empty;
+        ReadOnlyCollection<string>.Empty;
 
     [JsonPropertyName("representationValidationString")]
     public string RepresentationValidationString { get; init; }

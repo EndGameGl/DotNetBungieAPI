@@ -9,7 +9,7 @@ public sealed record TagMetadataItem
     public string TagText { get; init; }
 
     [JsonPropertyName("groups")]
-    public ReadOnlyCollection<string> Groups { get; init; } = ReadOnlyCollections<string>.Empty;
+    public ReadOnlyCollection<string> Groups { get; init; } = ReadOnlyCollection<string>.Empty;
 
     [JsonPropertyName("isDefault")]
     public bool IsDefault { get; init; }

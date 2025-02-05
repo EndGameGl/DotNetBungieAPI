@@ -12,14 +12,14 @@ public sealed record DestinyVendorReceipt
     /// </summary>
     [JsonPropertyName("currencyPaid")]
     public ReadOnlyCollection<DestinyItemQuantity> CurrencyPaid { get; init; } =
-        ReadOnlyCollections<DestinyItemQuantity>.Empty;
+        ReadOnlyCollection<DestinyItemQuantity>.Empty;
 
     /// <summary>
     ///     The item that was received, and its quantity.
     /// </summary>
     [JsonPropertyName("itemReceived")]
     public ReadOnlyCollection<DestinyItemQuantity> ItemReceived { get; init; } =
-        ReadOnlyCollections<DestinyItemQuantity>.Empty;
+        ReadOnlyCollection<DestinyItemQuantity>.Empty;
 
     /// <summary>
     ///     The unlock flag used to determine whether you still have the purchased item.

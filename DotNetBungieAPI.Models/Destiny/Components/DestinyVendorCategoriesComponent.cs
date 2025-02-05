@@ -20,5 +20,5 @@ public sealed record DestinyVendorCategoriesComponent
     /// </summary>
     [JsonPropertyName("categories")]
     public ReadOnlyCollection<DestinyVendorCategory> Categories { get; init; } =
-        ReadOnlyCollections<DestinyVendorCategory>.Empty;
+        ReadOnlyCollection<DestinyVendorCategory>.Empty;
 }

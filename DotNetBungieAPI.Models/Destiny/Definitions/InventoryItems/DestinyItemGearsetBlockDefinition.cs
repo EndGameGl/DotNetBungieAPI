@@ -20,12 +20,12 @@ public sealed record DestinyItemGearsetBlockDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyInventoryItemDefinition>
     > Items { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 
     public bool DeepEquals(DestinyItemGearsetBlockDefinition other)
     {
         return other != null
             && TrackingValueMax == other.TrackingValueMax
-            && Items.DeepEqualsReadOnlyCollections(other.Items);
+            && Items.DeepEqualsReadOnlyCollection(other.Items);
     }
 }

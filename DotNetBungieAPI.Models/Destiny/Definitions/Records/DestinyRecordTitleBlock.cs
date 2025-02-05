@@ -9,14 +9,14 @@ public sealed record DestinyRecordTitleBlock : IDeepEquatable<DestinyRecordTitle
 
     [JsonPropertyName("titlesByGender")]
     public ReadOnlyDictionary<DestinyGender, string> TitlesByGender { get; init; } =
-        ReadOnlyDictionaries<DestinyGender, string>.Empty;
+        ReadOnlyDictionary<DestinyGender, string>.Empty;
 
     [JsonPropertyName("titlesByGenderHash")]
     public ReadOnlyDictionary<
         DefinitionHashPointer<DestinyGenderDefinition>,
         string
     > TitlesByGenderHash { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyGenderDefinition>, string>.Empty;
+        ReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>.Empty;
 
     [JsonPropertyName("gildingTrackingRecordHash")]
     public DefinitionHashPointer<DestinyRecordDefinition> GildingTrackingRecord { get; init; } =

@@ -13,7 +13,7 @@ public sealed record EmailViewDefinitionSetting
     /// </summary>
     [JsonPropertyName("localization")]
     public ReadOnlyDictionary<string, EmailSettingLocalization> Localization { get; init; } =
-        ReadOnlyDictionaries<string, EmailSettingLocalization>.Empty;
+        ReadOnlyDictionary<string, EmailSettingLocalization>.Empty;
 
     /// <summary>
     ///     If true, this setting should be set by default if the user hasn't chosen whether it's set or cleared yet.
@@ -33,5 +33,5 @@ public sealed record EmailViewDefinitionSetting
     /// </summary>
     [JsonPropertyName("subscriptions")]
     public ReadOnlyCollection<EmailSubscriptionDefinition> Subscriptions { get; init; } =
-        ReadOnlyCollections<EmailSubscriptionDefinition>.Empty;
+        ReadOnlyCollection<EmailSubscriptionDefinition>.Empty;
 }

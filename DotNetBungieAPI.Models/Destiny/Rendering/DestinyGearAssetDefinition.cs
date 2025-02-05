@@ -4,8 +4,8 @@ public sealed record DestinyGearAssetDefinition
 {
     [JsonPropertyName("content")]
     public ReadOnlyCollection<DestinyGearAssetDefinitionContent> Content { get; init; } =
-        ReadOnlyCollections<DestinyGearAssetDefinitionContent>.Empty;
+        ReadOnlyCollection<DestinyGearAssetDefinitionContent>.Empty;
 
     [JsonPropertyName("gear")]
-    public ReadOnlyCollection<string> Gear { get; init; } = ReadOnlyCollections<string>.Empty;
+    public ReadOnlyCollection<string> Gear { get; init; } = ReadOnlyCollection<string>.Empty;
 }

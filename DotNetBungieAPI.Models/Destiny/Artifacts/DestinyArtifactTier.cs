@@ -13,5 +13,5 @@ public sealed record DestinyArtifactTier
 
     [JsonPropertyName("items")]
     public ReadOnlyCollection<DestinyArtifactTierItem> Items { get; init; } =
-        ReadOnlyCollections<DestinyArtifactTierItem>.Empty;
+        ReadOnlyCollection<DestinyArtifactTierItem>.Empty;
 }

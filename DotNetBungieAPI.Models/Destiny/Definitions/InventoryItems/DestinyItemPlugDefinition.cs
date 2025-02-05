@@ -20,7 +20,7 @@ public sealed record DestinyItemPlugDefinition : IDeepEquatable<DestinyItemPlugD
     /// </summary>
     [JsonPropertyName("insertionRules")]
     public ReadOnlyCollection<DestinyPlugRuleDefinition> InsertionRules { get; init; } =
-        ReadOnlyCollections<DestinyPlugRuleDefinition>.Empty;
+        ReadOnlyCollection<DestinyPlugRuleDefinition>.Empty;
 
     /// <summary>
     ///     The string identifier for the plug's category. Use the socket's DestinySocketTypeDefinition.plugWhitelist to
@@ -137,9 +137,9 @@ public sealed record DestinyItemPlugDefinition : IDeepEquatable<DestinyItemPlugD
             && AlternatePlugStyle == other.AlternatePlugStyle
             && AlternateUiPlugLabel == other.AlternateUiPlugLabel
             && EnabledMaterialRequirement.DeepEquals(other.EnabledMaterialRequirement)
-            && EnabledRules.DeepEqualsReadOnlyCollections(other.EnabledRules)
+            && EnabledRules.DeepEqualsReadOnlyCollection(other.EnabledRules)
             && InsertionMaterialRequirement.DeepEquals(other.InsertionMaterialRequirement)
-            && InsertionRules.DeepEqualsReadOnlyCollections(other.InsertionRules)
+            && InsertionRules.DeepEqualsReadOnlyCollection(other.InsertionRules)
             && IsDummyPlug == other.IsDummyPlug
             && OnActionRecreateSelf == other.OnActionRecreateSelf
             && PlugAvailability == other.PlugAvailability

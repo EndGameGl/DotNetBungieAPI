@@ -6,5 +6,5 @@ public sealed record SearchResultOfPostResponse : SearchResultBase
 {
     [JsonPropertyName("results")]
     public ReadOnlyCollection<PostResponse> Results { get; init; } =
-        ReadOnlyCollections<PostResponse>.Empty;
+        ReadOnlyCollection<PostResponse>.Empty;
 }

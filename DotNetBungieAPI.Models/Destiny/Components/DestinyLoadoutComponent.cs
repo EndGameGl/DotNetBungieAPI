@@ -18,5 +18,5 @@ public sealed record DestinyLoadoutComponent
 
     [JsonPropertyName("items")]
     public ReadOnlyCollection<DestinyLoadoutItemComponent> Items { get; init; } =
-        ReadOnlyCollections<DestinyLoadoutItemComponent>.Empty;
+        ReadOnlyCollection<DestinyLoadoutItemComponent>.Empty;
 }

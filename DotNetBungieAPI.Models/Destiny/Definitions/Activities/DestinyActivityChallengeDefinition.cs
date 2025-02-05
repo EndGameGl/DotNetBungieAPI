@@ -16,7 +16,7 @@ public sealed record DestinyActivityChallengeDefinition
     /// </summary>
     [JsonPropertyName("dummyRewards")]
     public ReadOnlyCollection<DestinyItemQuantity> DummyRewards { get; init; } =
-        ReadOnlyCollections<DestinyItemQuantity>.Empty;
+        ReadOnlyCollection<DestinyItemQuantity>.Empty;
 
     [JsonPropertyName("inhibitRewardsUnlockHash")]
     public int InhibitRewardsUnlockHash { get; init; }
@@ -34,7 +34,7 @@ public sealed record DestinyActivityChallengeDefinition
     public bool DeepEquals(DestinyActivityChallengeDefinition other)
     {
         return other != null
-            && DummyRewards.DeepEqualsReadOnlyCollections(other.DummyRewards)
+            && DummyRewards.DeepEqualsReadOnlyCollection(other.DummyRewards)
             && InhibitRewardsUnlockHash == other.InhibitRewardsUnlockHash
             && Objective.DeepEquals(other.Objective)
             && RewardSiteHash == other.RewardSiteHash;

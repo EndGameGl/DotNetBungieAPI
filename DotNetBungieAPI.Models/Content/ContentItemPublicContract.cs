@@ -40,14 +40,14 @@ public sealed record ContentItemPublicContract
 
     [JsonPropertyName("properties")]
     public ReadOnlyDictionary<string, object> Properties { get; init; } =
-        ReadOnlyDictionaries<string, object>.Empty;
+        ReadOnlyDictionary<string, object>.Empty;
 
     [JsonPropertyName("representations")]
     public ReadOnlyCollection<ContentRepresentation> Representations { get; init; } =
-        ReadOnlyCollections<ContentRepresentation>.Empty;
+        ReadOnlyCollection<ContentRepresentation>.Empty;
 
     [JsonPropertyName("tags")]
-    public ReadOnlyCollection<string> Tags { get; init; } = ReadOnlyCollections<string>.Empty;
+    public ReadOnlyCollection<string> Tags { get; init; } = ReadOnlyCollection<string>.Empty;
 
     [JsonPropertyName("commentSummary")]
     public CommentSummary CommentSummary { get; init; }

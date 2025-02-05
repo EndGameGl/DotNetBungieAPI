@@ -7,12 +7,12 @@ public sealed record DestinyPostGameCarnageReportExtendedData
     /// </summary>
     [JsonPropertyName("weapons")]
     public ReadOnlyCollection<DestinyHistoricalWeaponStats> Weapons { get; init; } =
-        ReadOnlyCollections<DestinyHistoricalWeaponStats>.Empty;
+        ReadOnlyCollection<DestinyHistoricalWeaponStats>.Empty;
 
     /// <summary>
     ///     Collection of stats for the player in this activity.
     /// </summary>
     [JsonPropertyName("values")]
     public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> Values { get; init; } =
-        ReadOnlyDictionaries<string, DestinyHistoricalStatsValue>.Empty;
+        ReadOnlyDictionary<string, DestinyHistoricalStatsValue>.Empty;
 }

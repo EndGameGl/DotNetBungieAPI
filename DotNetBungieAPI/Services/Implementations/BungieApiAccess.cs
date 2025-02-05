@@ -5,6 +5,21 @@ namespace DotNetBungieAPI.Services.Implementations;
 
 internal sealed class BungieApiAccess : IBungieApiAccess
 {
+    public IAppMethodsAccess App { get; }
+    public IUserMethodsAccess User { get; }
+    public IContentMethodsAccess Content { get; }
+    public IForumMethodsAccess Forum { get; }
+    public IGroupV2MethodsAccess GroupV2 { get; }
+    public ITokensMethodsAccess Tokens { get; }
+    public IDestiny2MethodsAccess Destiny2 { get; }
+    public ICommunityContentMethodsAccess Community { get; }
+    public ITrendingMethodsAccess Trending { get; }
+    public IFireteamMethodsAccess Fireteam { get; }
+    public IFireteamFinderMethodsAccess FireteamFinder { get; }
+    public ISocialMethodsAccess Social { get; }
+    public IMiscMethodsAccess Misc { get; }
+    public IRenderApiAccess RenderApi { get; }
+    
     public BungieApiAccess(
         IFireteamMethodsAccess fireteamMethodsAccess,
         IContentMethodsAccess contentMethodsAccess,
@@ -38,18 +53,5 @@ internal sealed class BungieApiAccess : IBungieApiAccess
         RenderApi = renderApiAccess;
     }
 
-    public IAppMethodsAccess App { get; }
-    public IUserMethodsAccess User { get; }
-    public IContentMethodsAccess Content { get; }
-    public IForumMethodsAccess Forum { get; }
-    public IGroupV2MethodsAccess GroupV2 { get; }
-    public ITokensMethodsAccess Tokens { get; }
-    public IDestiny2MethodsAccess Destiny2 { get; }
-    public ICommunityContentMethodsAccess Community { get; }
-    public ITrendingMethodsAccess Trending { get; }
-    public IFireteamMethodsAccess Fireteam { get; }
-    public IFireteamFinderMethodsAccess FireteamFinder { get; }
-    public ISocialMethodsAccess Social { get; }
-    public IMiscMethodsAccess Misc { get; }
-    public IRenderApiAccess RenderApi { get; }
+    
 }

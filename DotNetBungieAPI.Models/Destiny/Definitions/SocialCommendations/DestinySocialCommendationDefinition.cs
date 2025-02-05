@@ -33,7 +33,7 @@ public sealed record DestinySocialCommendationDefinition
 
     [JsonPropertyName("displayActivities")]
     public ReadOnlyCollection<DestinyDisplayPropertiesDefinition> DisplayActivities { get; init; } =
-        ReadOnlyCollections<DestinyDisplayPropertiesDefinition>.Empty;
+        ReadOnlyCollection<DestinyDisplayPropertiesDefinition>.Empty;
 
     [JsonPropertyName("blacklisted")]
     public bool Blacklisted { get; init; }
@@ -56,7 +56,7 @@ public sealed record DestinySocialCommendationDefinition
             && DisplayPriority == other.DisplayPriority
             && ActivityGivingLimit == other.ActivityGivingLimit
             && ParentCommendationNode.DeepEquals(other.ParentCommendationNode)
-            && DisplayActivities.DeepEqualsReadOnlyCollections(other.DisplayActivities)
+            && DisplayActivities.DeepEqualsReadOnlyCollection(other.DisplayActivities)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash
             && Index == other.Index

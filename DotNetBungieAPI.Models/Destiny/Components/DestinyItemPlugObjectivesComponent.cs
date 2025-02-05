@@ -25,7 +25,7 @@ public sealed record DestinyItemPlugObjectivesComponent
         DefinitionHashPointer<DestinyInventoryItemDefinition>,
         ReadOnlyCollection<DestinyObjectiveProgress>
     > ObjectivesPerPlug { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyInventoryItemDefinition>,
             ReadOnlyCollection<DestinyObjectiveProgress>
         >.Empty;

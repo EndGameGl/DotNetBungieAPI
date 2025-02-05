@@ -10,7 +10,7 @@ public sealed record TagMetadataDefinition
 
     [JsonPropertyName("items")]
     public ReadOnlyCollection<TagMetadataItem> Items { get; init; } =
-        ReadOnlyCollections<TagMetadataItem>.Empty;
+        ReadOnlyCollection<TagMetadataItem>.Empty;
 
     [JsonPropertyName("datatype")]
     public string Datatype { get; init; }

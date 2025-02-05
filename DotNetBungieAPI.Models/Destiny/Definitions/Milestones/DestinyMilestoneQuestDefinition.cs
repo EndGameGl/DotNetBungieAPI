@@ -50,7 +50,7 @@ public sealed record DestinyMilestoneQuestDefinition
         DefinitionHashPointer<DestinyActivityDefinition>,
         DestinyMilestoneActivityDefinition
     > Activities { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyActivityDefinition>,
             DestinyMilestoneActivityDefinition
         >.Empty;

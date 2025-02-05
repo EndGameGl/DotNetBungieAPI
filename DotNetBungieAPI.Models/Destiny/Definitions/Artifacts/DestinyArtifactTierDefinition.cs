@@ -13,7 +13,7 @@ public sealed record DestinyArtifactTierDefinition : IDeepEquatable<DestinyArtif
     /// </summary>
     [JsonPropertyName("items")]
     public ReadOnlyCollection<DestinyArtifactTierItemDefinition> Items { get; init; } =
-        ReadOnlyCollections<DestinyArtifactTierItemDefinition>.Empty;
+        ReadOnlyCollection<DestinyArtifactTierItemDefinition>.Empty;
 
     /// <summary>
     ///     The minimum number of "unlock points" that you must have used before you can unlock items from this tier.
@@ -37,7 +37,7 @@ public sealed record DestinyArtifactTierDefinition : IDeepEquatable<DestinyArtif
     {
         return other != null
             && DisplayTitle == other.DisplayTitle
-            && Items.DeepEqualsReadOnlyCollections(other.Items)
+            && Items.DeepEqualsReadOnlyCollection(other.Items)
             && MinimumUnlockPointsUsedRequirement == other.MinimumUnlockPointsUsedRequirement
             && TierHash == other.TierHash
             && ProgressRequirementMessage == other.ProgressRequirementMessage;

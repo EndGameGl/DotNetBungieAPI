@@ -5,5 +5,5 @@ public sealed record DictionaryComponentResponseOfint64AndDestinyItemStatsCompon
 {
     [JsonPropertyName("data")]
     public ReadOnlyDictionary<long, DestinyItemStatsComponent> Data { get; init; } =
-        ReadOnlyDictionaries<long, DestinyItemStatsComponent>.Empty;
+        ReadOnlyDictionary<long, DestinyItemStatsComponent>.Empty;
 }

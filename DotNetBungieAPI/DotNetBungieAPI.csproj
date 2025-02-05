@@ -7,17 +7,17 @@
         <RepositoryUrl>https://github.com/EndGameGl/DotNetBungieAPI</RepositoryUrl>
         <PackageId>DotNetBungieAPI</PackageId>
         <Description>Bungie.net API wrapper.</Description>
-        <Copyright>Copyright (c) MeGl 2024</Copyright>
+        <Copyright>Copyright (c) MeGl 2025</Copyright>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <LangVersion>12</LangVersion>
+        <LangVersion>latest</LangVersion>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <PackageVersion>2.14.2</PackageVersion>
-        <AssemblyVersion>2.14.2</AssemblyVersion>
-        <FileVersion>2.14.2</FileVersion>
-        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+        <PackageVersion>2.15.0</PackageVersion>
+        <AssemblyVersion>2.15.0</AssemblyVersion>
+        <FileVersion>2.15.0</FileVersion>
+        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
@@ -30,10 +30,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="2.14.0" />
-        <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.1" />
+        <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="2.15.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.1" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.1" />
         <PackageReference Include="RateLimiter" Version="2.2.0" />
     </ItemGroup>
 

@@ -25,12 +25,12 @@ public sealed record DestinyDerivedItemCategoryDefinition
     /// </summary>
     [JsonPropertyName("items")]
     public ReadOnlyCollection<DestinyDerivedItemDefinition> Items { get; init; } =
-        ReadOnlyCollections<DestinyDerivedItemDefinition>.Empty;
+        ReadOnlyCollection<DestinyDerivedItemDefinition>.Empty;
 
     public bool DeepEquals(DestinyDerivedItemCategoryDefinition other)
     {
         return other != null
             && CategoryDescription == other.CategoryDescription
-            && Items.DeepEqualsReadOnlyCollections(other.Items);
+            && Items.DeepEqualsReadOnlyCollection(other.Items);
     }
 }

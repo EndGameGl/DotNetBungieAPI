@@ -22,7 +22,7 @@ public sealed record DestinyVendorInteractionDefinition
     /// </summary>
     [JsonPropertyName("replies")]
     public ReadOnlyCollection<DestinyVendorInteractionReplyDefinition> Replies { get; init; } =
-        ReadOnlyCollections<DestinyVendorInteractionReplyDefinition>.Empty;
+        ReadOnlyCollection<DestinyVendorInteractionReplyDefinition>.Empty;
 
     /// <summary>
     ///     If >= 0, this is the category of sale items to show along with this interaction dialog.
@@ -45,7 +45,7 @@ public sealed record DestinyVendorInteractionDefinition
     /// </summary>
     [JsonPropertyName("sackInteractionList")]
     public ReadOnlyCollection<DestinyVendorInteractionSackEntryDefinition> SackInteractionList { get; init; } =
-        ReadOnlyCollections<DestinyVendorInteractionSackEntryDefinition>.Empty;
+        ReadOnlyCollection<DestinyVendorInteractionSackEntryDefinition>.Empty;
 
     /// <summary>
     ///     A UI hint for the behavior of the interaction screen. This is useful to determine what type of interaction is
@@ -104,10 +104,10 @@ public sealed record DestinyVendorInteractionDefinition
     {
         return other != null
             && InteractionIndex == other.InteractionIndex
-            && Replies.DeepEqualsReadOnlyCollections(other.Replies)
+            && Replies.DeepEqualsReadOnlyCollection(other.Replies)
             && VendorCategoryIndex == other.VendorCategoryIndex
             && QuestlineItem.DeepEquals(other.QuestlineItem)
-            && SackInteractionList.DeepEqualsReadOnlyCollections(other.SackInteractionList)
+            && SackInteractionList.DeepEqualsReadOnlyCollection(other.SackInteractionList)
             && UiInteractionType == other.UiInteractionType
             && InteractionType == other.InteractionType
             && RewardBlockLabel == other.RewardBlockLabel

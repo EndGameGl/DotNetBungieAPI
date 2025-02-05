@@ -15,5 +15,5 @@ public sealed record DestinyMilestoneContentItemCategory
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyInventoryItemDefinition>
     > Items { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 }

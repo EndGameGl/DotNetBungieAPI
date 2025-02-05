@@ -20,5 +20,5 @@ public sealed record DestinyMilestoneActivityCompletionStatus
     /// </summary>
     [JsonPropertyName("phases")]
     public ReadOnlyCollection<DestinyMilestoneActivityPhase> Phases { get; init; } =
-        ReadOnlyCollections<DestinyMilestoneActivityPhase>.Empty;
+        ReadOnlyCollection<DestinyMilestoneActivityPhase>.Empty;
 }

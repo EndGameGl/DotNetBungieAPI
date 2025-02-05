@@ -31,7 +31,7 @@ public sealed record DestinyPostGameCarnageReportEntry
     /// </summary>
     [JsonPropertyName("values")]
     public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> Values { get; init; } =
-        ReadOnlyDictionaries<string, DestinyHistoricalStatsValue>.Empty;
+        ReadOnlyDictionary<string, DestinyHistoricalStatsValue>.Empty;
 
     /// <summary>
     ///     Extended data extracted from the activity blob.

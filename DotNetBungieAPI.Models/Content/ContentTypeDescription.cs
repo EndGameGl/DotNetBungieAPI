@@ -22,19 +22,19 @@ public sealed record ContentTypeDescription
 
     [JsonPropertyName("properties")]
     public ReadOnlyCollection<ContentTypeProperty> Properties { get; init; } =
-        ReadOnlyCollections<ContentTypeProperty>.Empty;
+        ReadOnlyCollection<ContentTypeProperty>.Empty;
 
     [JsonPropertyName("tagMetadata")]
     public ReadOnlyCollection<TagMetadataDefinition> TagMetadata { get; init; } =
-        ReadOnlyCollections<TagMetadataDefinition>.Empty;
+        ReadOnlyCollection<TagMetadataDefinition>.Empty;
 
     [JsonPropertyName("tagMetadataItems")]
     public ReadOnlyDictionary<string, TagMetadataItem> TagMetadataItems { get; init; } =
-        ReadOnlyDictionaries<string, TagMetadataItem>.Empty;
+        ReadOnlyDictionary<string, TagMetadataItem>.Empty;
 
     [JsonPropertyName("usageExamples")]
     public ReadOnlyCollection<string> UsageExamples { get; init; } =
-        ReadOnlyCollections<string>.Empty;
+        ReadOnlyCollection<string>.Empty;
 
     [JsonPropertyName("showInContentEditor")]
     public bool ShowInContentEditor { get; init; }
@@ -62,12 +62,12 @@ public sealed record ContentTypeDescription
 
     [JsonPropertyName("previews")]
     public ReadOnlyCollection<ContentPreview> Previews { get; init; } =
-        ReadOnlyCollections<ContentPreview>.Empty;
+        ReadOnlyCollection<ContentPreview>.Empty;
 
     [JsonPropertyName("suppressCmsPath")]
     public bool SuppressCmsPath { get; init; }
 
     [JsonPropertyName("propertySections")]
     public ReadOnlyCollection<ContentTypePropertySection> PropertySections { get; init; } =
-        ReadOnlyCollections<ContentTypePropertySection>.Empty;
+        ReadOnlyCollection<ContentTypePropertySection>.Empty;
 }

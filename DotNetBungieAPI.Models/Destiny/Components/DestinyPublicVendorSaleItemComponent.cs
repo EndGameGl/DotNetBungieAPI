@@ -51,7 +51,7 @@ public sealed record DestinyPublicVendorSaleItemComponent
     /// </summary>
     [JsonPropertyName("costs")]
     public ReadOnlyCollection<DestinyItemQuantity> Costs { get; init; } =
-        ReadOnlyCollections<DestinyItemQuantity>.Empty;
+        ReadOnlyCollection<DestinyItemQuantity>.Empty;
 
     /// <summary>
     ///     If this item has its own custom date where it may be removed from the Vendor's rotation, this is that date.

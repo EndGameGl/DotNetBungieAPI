@@ -7,5 +7,5 @@ public sealed record DestinyActivityHistoryResults
     /// </summary>
     [JsonPropertyName("activities")]
     public ReadOnlyCollection<DestinyHistoricalStatsPeriodGroup> Activities { get; init; } =
-        ReadOnlyCollections<DestinyHistoricalStatsPeriodGroup>.Empty;
+        ReadOnlyCollection<DestinyHistoricalStatsPeriodGroup>.Empty;
 }

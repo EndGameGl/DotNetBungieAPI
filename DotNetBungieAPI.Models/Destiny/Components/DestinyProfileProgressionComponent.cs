@@ -22,7 +22,7 @@ public sealed record DestinyProfileProgressionComponent
         DefinitionHashPointer<DestinyChecklistDefinition>,
         ReadOnlyDictionary<uint, bool>
     > Checklists { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyChecklistDefinition>,
             ReadOnlyDictionary<uint, bool>
         >.Empty;

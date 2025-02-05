@@ -46,5 +46,5 @@ public sealed record DestinyItemSocketState
     /// </summary>
     [JsonPropertyName("enableFailIndexes")]
     public ReadOnlyCollection<int> EnableFailIndexes { get; init; } =
-        ReadOnlyCollections<int>.Empty;
+        ReadOnlyCollection<int>.Empty;
 }

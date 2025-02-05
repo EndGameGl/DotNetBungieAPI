@@ -15,7 +15,7 @@ public sealed record DestinyItemObjectivesComponent
     /// </summary>
     [JsonPropertyName("objectives")]
     public ReadOnlyCollection<DestinyObjectiveProgress> Objectives { get; init; } =
-        ReadOnlyCollections<DestinyObjectiveProgress>.Empty;
+        ReadOnlyCollection<DestinyObjectiveProgress>.Empty;
 
     /// <summary>
     ///     I may regret naming it this way - but this represents when an item has an objective that doesn't serve a beneficial

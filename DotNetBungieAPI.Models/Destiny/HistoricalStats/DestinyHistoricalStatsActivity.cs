@@ -44,7 +44,7 @@ public sealed record DestinyHistoricalStatsActivity
     /// </summary>
     [JsonPropertyName("modes")]
     public ReadOnlyCollection<DestinyActivityModeType> Modes { get; init; } =
-        ReadOnlyCollections<DestinyActivityModeType>.Empty;
+        ReadOnlyCollection<DestinyActivityModeType>.Empty;
 
     /// <summary>
     ///     Whether or not the match was a private match.

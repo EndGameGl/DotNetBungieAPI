@@ -15,5 +15,5 @@ public sealed record DestinyItemSocketsComponent
     /// </summary>
     [JsonPropertyName("sockets")]
     public ReadOnlyCollection<DestinyItemSocketState> Sockets { get; init; } =
-        ReadOnlyCollections<DestinyItemSocketState>.Empty;
+        ReadOnlyCollection<DestinyItemSocketState>.Empty;
 }

@@ -4,11 +4,11 @@ public sealed record DestinyRecordIntervalBlock : IDeepEquatable<DestinyRecordIn
 {
     [JsonPropertyName("intervalObjectives")]
     public ReadOnlyCollection<DestinyRecordIntervalObjective> IntervalObjectives { get; init; } =
-        ReadOnlyCollections<DestinyRecordIntervalObjective>.Empty;
+        ReadOnlyCollection<DestinyRecordIntervalObjective>.Empty;
 
     [JsonPropertyName("intervalRewards")]
     public ReadOnlyCollection<DestinyRecordIntervalRewards> IntervalRewards { get; init; } =
-        ReadOnlyCollections<DestinyRecordIntervalRewards>.Empty;
+        ReadOnlyCollection<DestinyRecordIntervalRewards>.Empty;
 
     [JsonPropertyName("isIntervalVersionedFromNormalRecord")]
     public bool IsIntervalVersionedFromNormalRecord { get; init; }
@@ -19,8 +19,8 @@ public sealed record DestinyRecordIntervalBlock : IDeepEquatable<DestinyRecordIn
     public bool DeepEquals(DestinyRecordIntervalBlock other)
     {
         return other != null
-            && IntervalObjectives.DeepEqualsReadOnlyCollections(other.IntervalObjectives)
-            && IntervalRewards.DeepEqualsReadOnlyCollections(other.IntervalRewards)
+            && IntervalObjectives.DeepEqualsReadOnlyCollection(other.IntervalObjectives)
+            && IntervalRewards.DeepEqualsReadOnlyCollection(other.IntervalRewards)
             && IsIntervalVersionedFromNormalRecord == other.IsIntervalVersionedFromNormalRecord
             && OriginalObjectiveArrayInsertionIndex == other.OriginalObjectiveArrayInsertionIndex;
     }

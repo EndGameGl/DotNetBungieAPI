@@ -5,7 +5,7 @@ public sealed record DictionaryComponentResponseOfint64AndDestinyCharacterCompon
 {
     [JsonPropertyName("data")]
     public ReadOnlyDictionary<long, DestinyCharacterComponent> Data { get; init; } =
-        ReadOnlyDictionaries<long, DestinyCharacterComponent>.Empty;
+        ReadOnlyDictionary<long, DestinyCharacterComponent>.Empty;
 
     /// <summary>
     ///     Returns last played character from this account

@@ -51,11 +51,11 @@ public sealed record DestinyCollectibleDefinition
     public DestinyPresentationNodeType PresentationNodeType { get; init; }
 
     [JsonPropertyName("traitIds")]
-    public ReadOnlyCollection<string> TraitIds { get; init; } = ReadOnlyCollections<string>.Empty;
+    public ReadOnlyCollection<string> TraitIds { get; init; } = ReadOnlyCollection<string>.Empty;
 
     [JsonPropertyName("traitHashes")]
     public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyTraitDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>.Empty;
 
     /// <summary>
     ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under
@@ -65,7 +65,7 @@ public sealed record DestinyCollectibleDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyPresentationNodeDefinition>
     > ParentNodes { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
 
     public bool DeepEquals(DestinyCollectibleDefinition other)
     {
@@ -78,13 +78,13 @@ public sealed record DestinyCollectibleDefinition
             )
             && DisplayProperties.DeepEquals(other.DisplayProperties)
             && Item.DeepEquals(other.Item)
-            && ParentNodes.DeepEqualsReadOnlyCollections(other.ParentNodes)
+            && ParentNodes.DeepEqualsReadOnlyCollection(other.ParentNodes)
             && PresentationNodeType == other.PresentationNodeType
             && Scope == other.Scope
             && SourceHash == other.SourceHash
             && SourceString == other.SourceString
             && StateInfo.DeepEquals(other.StateInfo)
-            && Traits.DeepEqualsReadOnlyCollections(other.Traits)
+            && Traits.DeepEqualsReadOnlyCollection(other.Traits)
             && TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash

@@ -7,5 +7,5 @@ public sealed record DestinyClanLeaderboardsResponse
 
     [JsonPropertyName("entries")]
     public ReadOnlyCollection<DestinyClanLeaderboardsResponseEntry> Entries { get; init; } =
-        ReadOnlyCollections<DestinyClanLeaderboardsResponseEntry>.Empty;
+        ReadOnlyCollection<DestinyClanLeaderboardsResponseEntry>.Empty;
 }

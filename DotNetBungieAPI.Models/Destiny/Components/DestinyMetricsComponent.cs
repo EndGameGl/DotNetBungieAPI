@@ -6,7 +6,7 @@ public sealed record DestinyMetricsComponent
 {
     [JsonPropertyName("metrics")]
     public ReadOnlyDictionary<uint, DestinyMetricComponent> Metrics { get; init; } =
-        ReadOnlyDictionaries<uint, DestinyMetricComponent>.Empty;
+        ReadOnlyDictionary<uint, DestinyMetricComponent>.Empty;
 
     [JsonPropertyName("metricsRootNodeHash")]
     public DefinitionHashPointer<DestinyPresentationNodeDefinition> MetricRootNode { get; init; } =

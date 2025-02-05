@@ -35,4 +35,10 @@ public class DestinyMaterialRequirement
     /// </summary>
     [JsonPropertyName("omitFromRequirements")]
     public bool? OmitFromRequirements { get; set; }
+
+    /// <summary>
+    ///     If true, this material requirement references a virtual item stack size value. You can get that value from a corresponding DestinyMaterialRequirementSetState.
+    /// </summary>
+    [JsonPropertyName("hasVirtualStackSize")]
+    public bool? HasVirtualStackSize { get; set; }
 }

@@ -91,7 +91,7 @@ public sealed record DestinyLocationReleaseDefinition
     ///     Looks like it should be the position on the map, but sadly it does not look populated... yet?
     /// </summary>
     [JsonPropertyName("worldPosition")]
-    public ReadOnlyCollection<int> WorldPosition { get; init; } = ReadOnlyCollections<int>.Empty;
+    public ReadOnlyCollection<int> WorldPosition { get; init; } = ReadOnlyCollection<int>.Empty;
 
     public bool DeepEquals(DestinyLocationReleaseDefinition other)
     {

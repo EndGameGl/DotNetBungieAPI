@@ -19,7 +19,7 @@ public record CrossSaveUserMembership : UserMembership
     /// </summary>
     [JsonPropertyName("applicableMembershipTypes")]
     public ReadOnlyCollection<BungieMembershipType> ApplicableMembershipTypes { get; init; } =
-        ReadOnlyCollections<BungieMembershipType>.Empty;
+        ReadOnlyCollection<BungieMembershipType>.Empty;
 
     /// <summary>
     ///     If True, this is a public user membership.

@@ -12,9 +12,6 @@ public sealed class DestinyResourceConverter : JsonConverter<BungieNetResource>
         JsonSerializerOptions options
     )
     {
-        if (reader.TokenType == JsonTokenType.Null)
-            return new BungieNetResource(null);
-
         return new BungieNetResource(reader.GetString());
     }
 

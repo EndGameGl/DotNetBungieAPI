@@ -34,7 +34,7 @@ public sealed record DestinyQuestStatus
     /// </summary>
     [JsonPropertyName("stepObjectives")]
     public ReadOnlyCollection<DestinyObjectiveProgress> StepObjectives { get; init; } =
-        ReadOnlyCollections<DestinyObjectiveProgress>.Empty;
+        ReadOnlyCollection<DestinyObjectiveProgress>.Empty;
 
     /// <summary>
     ///     Whether or not the quest is tracked

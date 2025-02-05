@@ -49,7 +49,7 @@ public sealed record DestinyItemActionBlockDefinition
     /// </summary>
     [JsonPropertyName("progressionRewards")]
     public ReadOnlyCollection<DestinyProgressionRewardDefinition> ProgressionRewards { get; init; } =
-        ReadOnlyCollections<DestinyProgressionRewardDefinition>.Empty;
+        ReadOnlyCollection<DestinyProgressionRewardDefinition>.Empty;
 
     /// <summary>
     ///     The identifier hash for the Cooldown associated with this action. We have not pulled this data yet for you to have
@@ -73,7 +73,7 @@ public sealed record DestinyItemActionBlockDefinition
 
     [JsonPropertyName("requiredItems")]
     public ReadOnlyCollection<DestinyItemActionRequiredItemDefinition> RequiredItems { get; init; } =
-        ReadOnlyCollections<DestinyItemActionRequiredItemDefinition>.Empty;
+        ReadOnlyCollection<DestinyItemActionRequiredItemDefinition>.Empty;
 
     /// <summary>
     ///     If true, this action will be performed as soon as you earn this item. Some rewards work this way, providing you a
@@ -104,11 +104,11 @@ public sealed record DestinyItemActionBlockDefinition
             && ConsumeEntireStack == other.ConsumeEntireStack
             && DeleteOnAction == other.DeleteOnAction
             && IsPositive == other.IsPositive
-            && ProgressionRewards.DeepEqualsReadOnlyCollections(other.ProgressionRewards)
+            && ProgressionRewards.DeepEqualsReadOnlyCollection(other.ProgressionRewards)
             && RequiredCooldownHash == other.RequiredCooldownHash
             && RequiredCooldownSeconds == other.RequiredCooldownSeconds
             && RequiredLocation == other.RequiredLocation
-            && RequiredItems.DeepEqualsReadOnlyCollections(other.RequiredItems)
+            && RequiredItems.DeepEqualsReadOnlyCollection(other.RequiredItems)
             && UseOnAcquire == other.UseOnAcquire
             && VerbDescription == other.VerbDescription
             && VerbName == other.VerbName;

@@ -20,5 +20,5 @@ public sealed record DestinyItemPeerView
     /// </summary>
     [JsonPropertyName("dyes")]
     public ReadOnlyCollection<DyeReference> Dyes { get; init; } =
-        ReadOnlyCollections<DyeReference>.Empty;
+        ReadOnlyCollection<DyeReference>.Empty;
 }

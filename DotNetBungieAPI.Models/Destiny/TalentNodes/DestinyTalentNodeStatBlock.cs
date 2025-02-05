@@ -13,7 +13,7 @@ public sealed record DestinyTalentNodeStatBlock
     /// </summary>
     [JsonPropertyName("currentStepStats")]
     public ReadOnlyCollection<DestinyStat> CurrentStepStats { get; init; } =
-        ReadOnlyCollections<DestinyStat>.Empty;
+        ReadOnlyCollection<DestinyStat>.Empty;
 
     /// <summary>
     ///     This is a holdover from the old days of Destiny 1, when a node could be activated multiple times, conferring
@@ -24,5 +24,5 @@ public sealed record DestinyTalentNodeStatBlock
     /// </summary>
     [JsonPropertyName("nextStepStats")]
     public ReadOnlyCollection<DestinyStat> NextStepStats { get; init; } =
-        ReadOnlyCollections<DestinyStat>.Empty;
+        ReadOnlyCollection<DestinyStat>.Empty;
 }

@@ -40,7 +40,7 @@ public sealed record DestinyVendorDisplayPropertiesDefinition
     /// </summary>
     [JsonPropertyName("requirementsDisplay")]
     public ReadOnlyCollection<DestinyVendorRequirementDisplayEntryDefinition> RequirementsDisplay { get; init; } =
-        ReadOnlyCollections<DestinyVendorRequirementDisplayEntryDefinition>.Empty;
+        ReadOnlyCollection<DestinyVendorRequirementDisplayEntryDefinition>.Empty;
 
     /// <summary>
     ///     This is the icon used in parts of the game UI such as the vendor's waypoint.
@@ -59,12 +59,12 @@ public sealed record DestinyVendorDisplayPropertiesDefinition
             && Icon == other.Icon
             && Name == other.Name
             && HighResolutionIcon == other.HighResolutionIcon
-            && IconSequences.DeepEqualsReadOnlyCollections(other.IconSequences)
+            && IconSequences.DeepEqualsReadOnlyCollection(other.IconSequences)
             && LargeIcon == other.LargeIcon
             && LargeTransparentIcon == other.LargeTransparentIcon
             && MapIcon == other.MapIcon
             && OriginalIcon == other.OriginalIcon
-            && RequirementsDisplay.DeepEqualsReadOnlyCollections(other.RequirementsDisplay)
+            && RequirementsDisplay.DeepEqualsReadOnlyCollection(other.RequirementsDisplay)
             && SmallTransparentIcon == other.SmallTransparentIcon
             && Subtitle == other.Subtitle;
     }

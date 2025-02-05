@@ -17,7 +17,7 @@ public sealed record DestinyActivityInteractableDefinition : IDestinyDefinition
     /// </summary>
     [JsonPropertyName("entries")]
     public ReadOnlyCollection<DestinyActivityInteractableEntryDefinition> Entries { get; init; } =
-        ReadOnlyCollections<DestinyActivityInteractableEntryDefinition>.Empty;
+        ReadOnlyCollection<DestinyActivityInteractableEntryDefinition>.Empty;
 
     public DefinitionsEnum DefinitionEnumValue =>
         DefinitionsEnum.DestinyActivityInteractableDefinition;

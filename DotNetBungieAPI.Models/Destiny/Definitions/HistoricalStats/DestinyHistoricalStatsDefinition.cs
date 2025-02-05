@@ -24,14 +24,14 @@ public sealed record DestinyHistoricalStatsDefinition
     /// </summary>
     [JsonPropertyName("periodTypes")]
     public ReadOnlyCollection<PeriodType> PeriodTypes { get; init; } =
-        ReadOnlyCollections<PeriodType>.Empty;
+        ReadOnlyCollection<PeriodType>.Empty;
 
     /// <summary>
     ///     Game modes where this statistic can be reported.
     /// </summary>
     [JsonPropertyName("modes")]
     public ReadOnlyCollection<DestinyActivityModeType> Modes { get; init; } =
-        ReadOnlyCollections<DestinyActivityModeType>.Empty;
+        ReadOnlyCollection<DestinyActivityModeType>.Empty;
 
     /// <summary>
     ///     Category for the stat.

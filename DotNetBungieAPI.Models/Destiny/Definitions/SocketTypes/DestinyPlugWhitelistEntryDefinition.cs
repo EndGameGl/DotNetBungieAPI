@@ -45,14 +45,14 @@ public sealed record DestinyPlugWhitelistEntryDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyInventoryItemDefinition>
     > ReinitializationPossiblePlugs { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 
     public bool DeepEquals(DestinyPlugWhitelistEntryDefinition other)
     {
         return other != null
             && CategoryHash == other.CategoryHash
             && CategoryIdentifier == other.CategoryIdentifier
-            && ReinitializationPossiblePlugs.DeepEqualsReadOnlyCollections(
+            && ReinitializationPossiblePlugs.DeepEqualsReadOnlyCollection(
                 other.ReinitializationPossiblePlugs
             );
     }

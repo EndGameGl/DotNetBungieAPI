@@ -28,7 +28,7 @@ public sealed record DestinyPublicMilestoneActivity
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyActivityModifierDefinition>
     > Modifiers { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModifierDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>>.Empty;
 
     /// <summary>
     ///     Every relevant variation of this conceptual activity, including the conceptual activity itself, have variants
@@ -36,7 +36,7 @@ public sealed record DestinyPublicMilestoneActivity
     /// </summary>
     [JsonPropertyName("variants")]
     public ReadOnlyCollection<DestinyPublicMilestoneActivityVariant> Variants { get; init; } =
-        ReadOnlyCollections<DestinyPublicMilestoneActivityVariant>.Empty;
+        ReadOnlyCollection<DestinyPublicMilestoneActivityVariant>.Empty;
 
     /// <summary>
     ///     The hash identifier of the most specific Activity Mode under which this activity is played. This is useful for

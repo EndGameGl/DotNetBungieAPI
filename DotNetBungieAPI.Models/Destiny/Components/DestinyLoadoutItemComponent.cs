@@ -11,5 +11,5 @@ public sealed record DestinyLoadoutItemComponent
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyInventoryItemDefinition>
     > PlugItems { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 }

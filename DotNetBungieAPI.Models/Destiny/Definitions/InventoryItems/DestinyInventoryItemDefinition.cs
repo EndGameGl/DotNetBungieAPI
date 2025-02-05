@@ -36,7 +36,7 @@ public sealed record DestinyInventoryItemDefinition
     /// </summary>
     [JsonPropertyName("tooltipNotifications")]
     public ReadOnlyCollection<DestinyItemTooltipNotification> TooltipNotifications { get; init; } =
-        ReadOnlyCollections<DestinyItemTooltipNotification>.Empty;
+        ReadOnlyCollection<DestinyItemTooltipNotification>.Empty;
 
     /// <summary>
     ///     If this item has a collectible related to it, this is that collectible entry.
@@ -293,7 +293,7 @@ public sealed record DestinyInventoryItemDefinition
     /// </summary>
     [JsonPropertyName("investmentStats")]
     public ReadOnlyCollection<DestinyItemInvestmentStatDefinition> InvestmentStats { get; init; } =
-        ReadOnlyCollections<DestinyItemInvestmentStatDefinition>.Empty;
+        ReadOnlyCollection<DestinyItemInvestmentStatDefinition>.Empty;
 
     /// <summary>
     ///     If the item has any *intrinsic* Perks (Perks that it will provide regardless of Sockets, Talent Grid, and other
@@ -301,7 +301,7 @@ public sealed record DestinyInventoryItemDefinition
     /// </summary>
     [JsonPropertyName("perks")]
     public ReadOnlyCollection<DestinyItemPerkEntryDefinition> Perks { get; init; } =
-        ReadOnlyCollections<DestinyItemPerkEntryDefinition>.Empty;
+        ReadOnlyCollection<DestinyItemPerkEntryDefinition>.Empty;
 
     /// <summary>
     ///     If the item has any related Lore (DestinyLoreDefinition), this will be it.
@@ -324,7 +324,7 @@ public sealed record DestinyInventoryItemDefinition
     /// </summary>
     [JsonPropertyName("animations")]
     public ReadOnlyCollection<DestinyAnimationReference> Animations { get; init; } =
-        ReadOnlyCollections<DestinyAnimationReference>.Empty;
+        ReadOnlyCollection<DestinyAnimationReference>.Empty;
 
     /// <summary>
     ///     BNet may forbid the execution of actions on this item via the API. If that is occurring, allowActions will be set
@@ -338,7 +338,7 @@ public sealed record DestinyInventoryItemDefinition
     /// </summary>
     [JsonPropertyName("links")]
     public ReadOnlyCollection<HyperlinkReference> Links { get; init; } =
-        ReadOnlyCollections<HyperlinkReference>.Empty;
+        ReadOnlyCollection<HyperlinkReference>.Empty;
 
     /// <summary>
     ///     The boolean will indicate to us (and you!) whether something *could* happen when you transfer this item from the
@@ -372,7 +372,7 @@ public sealed record DestinyInventoryItemDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyItemCategoryDefinition>
     > ItemCategories { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyItemCategoryDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>>.Empty;
 
     /// <summary>
     ///     In Destiny 1, we identified some items as having particular categories that we'd like to know about for various
@@ -436,7 +436,7 @@ public sealed record DestinyInventoryItemDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyDamageTypeDefinition>
     > DamageTypes { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyDamageTypeDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyDamageTypeDefinition>>.Empty;
 
     /// <summary>
     ///     This is the list of all damage types that we know ahead of time the item can take on. Unfortunately, this does not
@@ -454,7 +454,7 @@ public sealed record DestinyInventoryItemDefinition
     /// </summary>
     [JsonPropertyName("damageTypes")]
     public ReadOnlyCollection<DamageType> DamageTypeEnumValues { get; init; } =
-        ReadOnlyCollections<DamageType>.Empty;
+        ReadOnlyCollection<DamageType>.Empty;
 
     /// <summary>
     ///     If the item has a damage type that could be considered to be default, it will be populated here.
@@ -488,21 +488,21 @@ public sealed record DestinyInventoryItemDefinition
     ///     IDs come from the game and don't map to any content, but should still be useful.
     /// </summary>
     [JsonPropertyName("traitIds")]
-    public ReadOnlyCollection<string> TraitIds { get; init; } = ReadOnlyCollections<string>.Empty;
+    public ReadOnlyCollection<string> TraitIds { get; init; } = ReadOnlyCollection<string>.Empty;
 
     /// <summary>
     ///     These are the corresponding trait definitions for the entries in traitIds.
     /// </summary>
     [JsonPropertyName("traitHashes")]
     public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyTraitDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>.Empty;
 
     public bool DeepEquals(DestinyInventoryItemDefinition other)
     {
         return other != null
             && Collectible.DeepEquals(other.Collectible)
             && SummaryItem.DeepEquals(other.SummaryItem)
-            && ItemCategories.DeepEqualsReadOnlyCollections(other.ItemCategories)
+            && ItemCategories.DeepEqualsReadOnlyCollection(other.ItemCategories)
             && AllowActions == other.AllowActions
             && (
                 BackgroundColor != null
@@ -563,9 +563,9 @@ public sealed record DestinyInventoryItemDefinition
                     : other.EquippingBlock == null
             )
             && (Sockets is not null ? Sockets.DeepEquals(other.Sockets) : other.Sockets == null)
-            && InvestmentStats.DeepEqualsReadOnlyCollections(other.InvestmentStats)
-            && Perks.DeepEqualsReadOnlyCollections(other.Perks)
-            && TooltipNotifications.DeepEqualsReadOnlyCollections(other.TooltipNotifications)
+            && InvestmentStats.DeepEqualsReadOnlyCollection(other.InvestmentStats)
+            && Perks.DeepEqualsReadOnlyCollection(other.Perks)
+            && TooltipNotifications.DeepEqualsReadOnlyCollection(other.TooltipNotifications)
             && (Sack != null ? Sack.DeepEquals(other.Sack) : other.Sack == null)
             && (Gearset != null ? Gearset.DeepEquals(other.Gearset) : other.Gearset == null)
             && EmblemObjective.DeepEquals(other.EmblemObjective)
@@ -577,9 +577,9 @@ public sealed record DestinyInventoryItemDefinition
             && (Metrics != null ? Metrics.DeepEquals(other.Metrics) : other.Metrics == null)
             && (Summary != null ? Summary.DeepEquals(other.Summary) : other.Summary == null)
             && Lore.DeepEquals(other.Lore)
-            && Animations.DeepEqualsReadOnlyCollections(other.Animations)
-            && Links.DeepEqualsReadOnlyCollections(other.Links)
-            && DamageTypes.DeepEqualsReadOnlyCollections(other.DamageTypes)
+            && Animations.DeepEqualsReadOnlyCollection(other.Animations)
+            && Links.DeepEqualsReadOnlyCollection(other.Links)
+            && DamageTypes.DeepEqualsReadOnlyCollection(other.DamageTypes)
             && DamageTypeEnumValues.DeepEqualsReadOnlySimpleCollection(other.DamageTypeEnumValues)
             && Season.DeepEquals(other.Season)
             && FlavorText.Equals(other.FlavorText)

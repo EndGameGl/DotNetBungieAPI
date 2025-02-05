@@ -4,7 +4,7 @@ public sealed record NewsArticleRssResponse
 {
     [JsonPropertyName("NewsArticles")]
     public ReadOnlyCollection<NewsArticleRssItem> NewsArticles { get; init; } =
-        ReadOnlyCollections<NewsArticleRssItem>.Empty;
+        ReadOnlyCollection<NewsArticleRssItem>.Empty;
 
     [JsonPropertyName("CurrentPaginationToken")]
     public int CurrentPaginationToken { get; init; }

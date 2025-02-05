@@ -61,7 +61,7 @@ public sealed record DestinyItemStatBlockDefinition : IDeepEquatable<DestinyItem
         DefinitionHashPointer<DestinyStatDefinition>,
         DestinyInventoryItemStatDefinition
     > Stats { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyStatDefinition>,
             DestinyInventoryItemStatDefinition
         >.Empty;

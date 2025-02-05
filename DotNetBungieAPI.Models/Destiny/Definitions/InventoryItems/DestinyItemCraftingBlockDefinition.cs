@@ -20,11 +20,11 @@ public sealed record DestinyItemCraftingBlockDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinySocketTypeDefinition>
     > RequiredSocketTypes { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinySocketTypeDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinySocketTypeDefinition>>.Empty;
 
     [JsonPropertyName("failedRequirementStrings")]
     public ReadOnlyCollection<string> FailedRequirementStrings { get; init; } =
-        ReadOnlyCollections<string>.Empty;
+        ReadOnlyCollection<string>.Empty;
 
     /// <summary>
     ///     A reference to the base material requirements for crafting with this recipe.
@@ -38,17 +38,17 @@ public sealed record DestinyItemCraftingBlockDefinition
     /// </summary>
     [JsonPropertyName("bonusPlugs")]
     public ReadOnlyCollection<DestinyItemCraftingBlockBonusPlugDefinition> BonusPlugs { get; init; } =
-        ReadOnlyCollections<DestinyItemCraftingBlockBonusPlugDefinition>.Empty;
+        ReadOnlyCollection<DestinyItemCraftingBlockBonusPlugDefinition>.Empty;
 
     public bool DeepEquals(DestinyItemCraftingBlockDefinition other)
     {
         return other is not null
             && OutputItem.DeepEquals(other.OutputItem)
-            && RequiredSocketTypes.DeepEqualsReadOnlyCollections(other.RequiredSocketTypes)
+            && RequiredSocketTypes.DeepEqualsReadOnlyCollection(other.RequiredSocketTypes)
             && FailedRequirementStrings.DeepEqualsReadOnlySimpleCollection(
                 other.FailedRequirementStrings
             )
             && BaseMaterialRequirements.DeepEquals(other.BaseMaterialRequirements)
-            && BonusPlugs.DeepEqualsReadOnlyCollections(other.BonusPlugs);
+            && BonusPlugs.DeepEqualsReadOnlyCollection(other.BonusPlugs);
     }
 }

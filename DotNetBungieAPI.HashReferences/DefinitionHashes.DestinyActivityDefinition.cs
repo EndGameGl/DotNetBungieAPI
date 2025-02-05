@@ -51,9 +51,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Beyond_2294600711 = 2294600711;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Don't let the Prison of Elders become your tomb. Survive a series of grueling challenges. Escape with your life— the riches are just a bonus.
 			/// </summary>
-			public const uint Classified_2825473203 = 2825473203;
+			public const uint TombofElders = 2825473203;
 			/// <summary>
 			/// 	Defiant Battleground: Cosmodrome
 			/// </summary>
@@ -213,9 +213,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint AltarofReflectionPact = 998325559;
 			/// <summary>
-			/// 	Only the best of the best may step foot onto these hallowed grounds. You must be found worthy by achieving 7 wins with no losses to gain access.
+			/// 	Achieve victory by capturing zones and defeating opponents.
+			/// <para/>
+			/// 	Ability and Primary ammo damage is reduced. Special ammo is earned by engaging in combat and is not lost on death.
+			/// <para/>
+			/// </summary>
+			public const uint CheckmateControl_2465027225 = 2465027225;
+			/// <summary>
+			/// 	Only the best of the best may step foot onto these hallowed grounds. You must be found worthy by achieving 7 wins on a Lighthouse Passage to gain access.
 			/// </summary>
 			public const uint LighthouseSimulation_51616726 = 51616726;
+			/// <summary>
+			/// 	Journey aboard the Dreadnaught to discover secrets in the gloam.
+			/// </summary>
+			public const uint TheNetherExploreExplorationPrivate = 3644889630;
 			public const uint H528301448 = 528301448;
 			/// <summary>
 			/// 	The Inverted Spire
@@ -260,6 +271,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Midtown_64172690 = 64172690;
 			/// <summary>
+			/// 	Defeat the Nightmare of Omnigul.
+			/// </summary>
+			public const uint NightmareHuntAnguishMaster_571058904 = 571058904;
+			/// <summary>
 			/// 	Journey into the depths of the Pale Heart and commune with the Traveler.
 			/// </summary>
 			public const uint TheMessagePartIII = 466424646;
@@ -270,15 +285,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Defeat the Nightmare of Omnigul.
 			/// </summary>
-			public const uint NightmareHuntAnguishMaster_571058904 = 571058904;
+			public const uint NightmareHuntAnguishLegend_571058905 = 571058905;
 			/// <summary>
 			/// 	Defeat the Nightmare of the Fanatic.
 			/// </summary>
 			public const uint NightmareHuntInsanityMaster_2639701103 = 2639701103;
-			/// <summary>
-			/// 	Defeat the Nightmare of Omnigul.
-			/// </summary>
-			public const uint NightmareHuntAnguishLegend_571058905 = 571058905;
 			/// <summary>
 			/// 	Ahsa's signature has been detected deep beneath Kraken Mare, behind enemy lines. The Vanguard fears she has been captured by Xivu Arath.
 			/// <para/>
@@ -304,6 +315,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Long live the King…
 			/// </summary>
 			public const uint KingsFallStandard = 1374392663;
+			/// <summary>
+			/// 	Meridian Bay, Mars
+			/// </summary>
+			public const uint Bastion_2619958191 = 2619958191;
 			/// <summary>
 			/// 	Descend into Nessus and explore the Vex structures within.
 			/// </summary>
@@ -475,6 +490,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Vostok_1702649201 = 1702649201;
 			/// <summary>
+			/// 	Traverse the condensed space between Earth and Saturn to board the Dreadnaught. Then, find the source of its awakening.
+			/// </summary>
+			public const uint Recce = 2940436599;
+			/// <summary>
 			/// 	Eliminate your opponents or capture the zone to win. Earn as many round and match wins on a ticket as you can.
 			/// </summary>
 			public const uint TrialsofOsiris_4150051058 = 4150051058;
@@ -504,11 +523,11 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Supremacy_3124504147 = 3124504147;
 			public const uint Surveymission_880665770 = 880665770;
 			public const uint H1674751603 = 1674751603;
-			public const uint H281656712 = 281656712;
 			/// <summary>
 			/// 	The Insight Terminus
 			/// </summary>
 			public const uint NightfallGrandmasterTheInsightTerminus = 554830595;
+			public const uint H281656712 = 281656712;
 			/// <summary>
 			/// 	Defeat the Nightmare of Crota, Son of Oryx.
 			/// </summary>
@@ -1090,6 +1109,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint TheTricksterHeroic = 625165976;
 			public const uint FieldAssignmentActiveDuty_996637433 = 996637433;
 			/// <summary>
+			/// 	Journey aboard the Dreadnaught to discover secrets in the gloam.
+			/// </summary>
+			public const uint TheNetherExpertPrivate = 4064714547;
+			/// <summary>
 			/// 	Arcadian Valley, Nessus
 			/// </summary>
 			public const uint FirebaseEcho_2276121440 = 2276121440;
@@ -1109,6 +1132,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Hunt down the wanted Silent Fang who escaped from the Prison of Elders.
 			/// </summary>
 			public const uint WANTEDSilentFang_3679946187 = 3679946187;
+			/// <summary>
+			/// 	Journey aboard the Dreadnaught to discover secrets in the gloam.
+			/// </summary>
+			public const uint TheNetherAdvancedPrivate = 1995566237;
 			/// <summary>
 			/// 	Help the Drifter restore order at the Prison of Elders.
 			/// </summary>
@@ -1357,9 +1384,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WANTEDTheEyeintheDark_4150577752 = 4150577752;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Defy the algorithm. Cut through its web.
 			/// </summary>
-			public const uint Classified_300092127 = 300092127;
+			public const uint VespersHostNormal = 300092127;
 			/// <summary>
 			/// 	End the Red Legion expedition that has ripped open the planet's surface.
 			/// </summary>
@@ -1415,9 +1442,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Sacrilege = 2113712124;
 			/// <summary>
+			/// 	Defy the algorithm. Cut through its web.
+			/// </summary>
+			public const uint VespersHost_3492566689 = 3492566689;
+			/// <summary>
 			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
-			public const uint Classified_3492566689 = 3492566689;
+			public const uint Classified_754985153 = 754985153;
 			/// <summary>
 			/// 	Heist Battleground: Moon
 			/// </summary>
@@ -1546,6 +1577,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Prison Barge, Leviathan
 			/// </summary>
 			public const uint EmperorsRespite_778271008 = 778271008;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2354639837 = 2354639837;
 			public const uint H1191601029 = 1191601029;
 			/// <summary>
 			/// 	HyperNet Current
@@ -1728,6 +1763,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VoxObscuraMaster = 613120446;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2559717687 = 2559717687;
+			/// <summary>
 			/// 	Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.
 			/// </summary>
 			public const uint PrivateMatch_1795092381 = 1795092381;
@@ -1841,6 +1880,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Gambit_135431604 = 135431604;
 			/// <summary>
+			/// 	Achieve victory by defeating opponents and securing the crests they drop. Recover friendly crests to deny them from opponents.
+			/// </summary>
+			public const uint HardwareSupremacy_1787014656 = 1787014656;
+			/// <summary>
 			/// 	Hidden within a corrupted core of the Vex Nexus lies the domain of Quria, Blade Transform, the Dreaming Mind. This Taken agent of Savathûn, the Witch Queen, is the architect behind the Endless Night. Destroy Quria and save the Last City.
 			/// </summary>
 			public const uint ExpungeDelphi = 3867969864;
@@ -1870,6 +1913,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Pleasure and delight await you.
 			/// </summary>
 			public const uint TheMenagerieTheMenagerieHeroicMatchmaking_3115455134 = 3115455134;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_4187257826 = 4187257826;
 			/// <summary>
 			/// 	Complete the Daily Heroic story mission.
 			/// </summary>
@@ -2073,6 +2120,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DefiantBattlegroundEDZ_3225381482 = 3225381482;
 			/// <summary>
+			/// 	Fight for victory by defeating opponents.
+			/// </summary>
+			public const uint Clash_2498994931 = 2498994931;
+			/// <summary>
 			/// 	Seize upon the Taken invasion of the EDZ, direct their assault against the Red Legion, and end it before it gets out of control.
 			/// </summary>
 			public const uint HeroicGettingYourHandsDirty = 1018040791;
@@ -2176,6 +2227,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TowerApproach = 2791761949;
 			/// <summary>
+			/// 	Achieve victory by earning relics. Score points by using the relics to defeat opponents.
+			/// </summary>
+			public const uint Relic_2223699396 = 2223699396;
+			/// <summary>
 			/// 	Arcadian Strand, Nessus
 			/// </summary>
 			public const uint DistantShore_2666761222 = 2666761222;
@@ -2235,7 +2290,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Achieve victory by defeating opponents and securing the crests they drop. Recover friendly crests to deny them from opponents.
 			/// </summary>
-			public const uint HavocSupremacy = 3819426513;
+			public const uint HavocSupremacy_3819426513 = 3819426513;
 			/// <summary>
 			/// 	The Corrupted
 			/// </summary>
@@ -2293,9 +2348,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightmareHuntRageExpert = 109546468;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The prison's most infamous inmate returns, eager for one last shot at revenge.
 			/// </summary>
-			public const uint Classified_2396377129 = 2396377129;
+			public const uint KellsVengeanceMaster = 2396377129;
 			/// <summary>
 			/// 	Defeat the Nightmare of Dominus Ghaul.
 			/// </summary>
@@ -2360,6 +2415,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LegionsFolly_3585977417 = 3585977417;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1324574477 = 1324574477;
+			/// <summary>
 			/// 	Track Savathûn on Mars, where temporal abnormalities scar the planet's surface and the Cabal seek to claim new territory.
 			/// </summary>
 			public const uint TheArrivalNormal_890898234 = 890898234;
@@ -2419,6 +2478,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint TheQuarryLegend = 3253890607;
+			/// <summary>
+			/// 	Achieve victory by defeating opponents and securing the crests they drop. Recover friendly crests to deny them from opponents.
+			/// </summary>
+			public const uint Supremacy_2564993747 = 2564993747;
 			public const uint H2594604086 = 2594604086;
 			public const uint Surveymission_3958400416 = 3958400416;
 			public const uint AnalysisMission_459955094 = 459955094;
@@ -2478,6 +2541,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat Cabal to collect Red Legion supplies.
 			/// </summary>
 			public const uint CollectSupplies_3914655049 = 3914655049;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_23517464 = 23517464;
 			/// <summary>
 			/// 	Delve deep into the Hive-infested Arcology in search of missing fireteams.
 			/// </summary>
@@ -2559,13 +2626,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WardenofNothing_1493405720 = 1493405720;
 			/// <summary>
-			/// 	Blitz the legendary BrayTech Futurescape campus on Mars to repossess fragments of the submind Charlemagne's code.
-			/// </summary>
-			public const uint LegendHeistBattlegroundMars = 327058878;
-			/// <summary>
 			/// 	Locate the source of the memory somewhere in the Divide in the Pale Heart.
 			/// </summary>
 			public const uint MemoryDivisiveDarkness = 560273180;
+			/// <summary>
+			/// 	Blitz the legendary BrayTech Futurescape campus on Mars to repossess fragments of the submind Charlemagne's code.
+			/// </summary>
+			public const uint LegendHeistBattlegroundMars = 327058878;
 			/// <summary>
 			/// 	Locate the source of the memory somewhere in the Transgression in the Pale Heart.
 			/// </summary>
@@ -2833,10 +2900,18 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint PresageExpert = 4201846671;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_648675065 = 648675065;
+			/// <summary>
 			/// 	Asher's worked up about Vex interest in the Io Vault. He's got an unusual suggestion for how to deal with the problem.
 			/// </summary>
 			public const uint RoadRage_1824067376 = 1824067376;
 			public const uint EuropeanDeadZone_3143798436 = 3143798436;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2305452987 = 2305452987;
 			/// <summary>
 			/// 	Expert Difficulty: Locked Equipment, Extra Shields
 			/// <para/>
@@ -2983,6 +3058,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Shut down the operations of an ironmonger providing weapons to the Red Legion.
 			/// </summary>
 			public const uint TheArmsDealer_1679518121 = 1679518121;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_33789924 = 33789924;
 			/// <summary>
 			/// 	Shut down the operations of an ironmonger providing weapons to the Red Legion.
 			/// </summary>
@@ -3536,9 +3615,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HeroicPoorReception = 2340776707;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Enter Fikrul's Revenant Fortress in the Tangled Shore, where dark reflections make it difficult to discern illusion from reality.
 			/// </summary>
-			public const uint Classified_1583447699 = 1583447699;
+			public const uint KellsFallReflection = 1583447699;
 			public const uint SalvageMission_671904429 = 671904429;
 			/// <summary>
 			/// 	"Outlive your foes, and there can be no possible outcome but victory." —Lord Shaxx
@@ -3636,6 +3715,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The Festering Core
 			/// </summary>
 			public const uint NightfallTheOrdealAdept_766116580 = 766116580;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2991568450 = 2991568450;
 			/// <summary>
 			/// 	European Dead Zone, Earth
 			/// </summary>
@@ -3878,7 +3961,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Achieve victory by defeating opponents and securing the crests they drop. Recover friendly crests to deny them from opponents.
 			/// </summary>
-			public const uint HardwareSupremacy = 821288334;
+			public const uint HardwareSupremacy_821288334 = 821288334;
 			public const uint H897842778 = 897842778;
 			/// <summary>
 			/// 	Delve deep into the Hive-infested Arcology in search of missing fireteams.
@@ -3989,7 +4072,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Control the zones—and watch your head!
 			/// <para/>
 			/// </summary>
-			public const uint IronBanner_1698629738 = 1698629738;
+			public const uint IronBannerControl_1698629738 = 1698629738;
 			/// <summary>
 			/// 	Stop the Cabal scavengers.
 			/// </summary>
@@ -4085,6 +4168,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint BattlegroundFoothold_176258399 = 176258399;
 			public const uint H2801706931 = 2801706931;
+			/// <summary>
+			/// 	Achieve victory by controlling zones, earning points for your team over time.
+			/// </summary>
+			public const uint ZoneControl_1628144772 = 1628144772;
 			/// <summary>
 			/// 	Dive into the depths of the exiled emperor's mind in search of dark secrets.
 			/// </summary>
@@ -4255,6 +4342,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H4097856668 = 4097856668;
 			public const uint AssassinationMission_1949546348 = 1949546348;
 			/// <summary>
+			/// 	Meridian Bay, Mars
+			/// </summary>
+			public const uint Bastion_3723591404 = 3723591404;
+			/// <summary>
 			/// 	Hunt down the wanted Gravetide Summoner who escaped from the Prison of Elders.
 			/// </summary>
 			public const uint WANTEDGravetideSummoner_497583046 = 497583046;
@@ -4276,6 +4367,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Delve ever deeper into the myriad pathways of Riven's Lair in The Coil. Face greater challenges and retrieve greater rewards.
 			/// </summary>
 			public const uint TheCoilTheCoilMatchmade = 443581538;
+			/// <summary>
+			/// 	Achieve victory by defeating opponents. Abilities and Supers regenerate faster. Heavy ammo spawns more frequently.
+			/// </summary>
+			public const uint Mayhem_3830177287 = 3830177287;
 			/// <summary>
 			/// 	Legend Difficulty: Locked Equipment, Match Game, Extra Shields
 			/// <para/>
@@ -4347,15 +4442,31 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The Inverted Spire
 			/// </summary>
 			public const uint GuardianGamesCompetitiveNightfallAdvanced_3575406120 = 3575406120;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3089659738 = 3089659738;
 			public const uint H2167139627 = 2167139627;
 			/// <summary>
 			/// 	The Inverted Spire
 			/// </summary>
 			public const uint NightfallMaster_2599001918 = 2599001918;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3089659739 = 3089659739;
+			/// <summary>
 			/// 	The Inverted Spire
 			/// </summary>
 			public const uint NightfallGrandmaster_2599001919 = 2599001919;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3089659740 = 3089659740;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3089659741 = 3089659741;
 			/// <summary>
 			/// 	Search the Pyramidion on Io for a map of the Infinite Forest to guide you to Panoptes.
 			/// </summary>
@@ -4504,6 +4615,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint SeverGrief = 2268360624;
 			public const uint H4163770407 = 4163770407;
 			/// <summary>
+			/// 	Power lies in the deepest vault.
+			/// </summary>
+			public const uint SunderedDoctrine = 247869137;
+			/// <summary>
 			/// 	Infiltrate the Seraph bunker tucked under the dust of the Moon to reclaim fragments of the submind Malahayati's code.
 			/// </summary>
 			public const uint HeistBattlegroundMoon_1278918650 = 1278918650;
@@ -4516,6 +4631,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ExpertHauntedSector_1863428247 = 1863428247;
 			public const uint H644638757 = 644638757;
+			/// <summary>
+			/// 	Meridian Bay, Mars
+			/// </summary>
+			public const uint Bastion_2966011437 = 2966011437;
 			public const uint AnalysisMission_2773222353 = 2773222353;
 			/// <summary>
 			/// 	Felwinter Peak, Earth
@@ -4696,6 +4815,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ShatteredRealmDebrisofDreamsLegend = 20606942;
 			/// <summary>
+			/// 	Achieve victory by defeating opponents and securing the crests they drop. Recover friendly crests to deny them from opponents.
+			/// </summary>
+			public const uint HavocSupremacy_1780464303 = 1780464303;
+			/// <summary>
 			/// 	Lake of Shadows
 			/// </summary>
 			public const uint NightfallTheOrdealAdept_1302909047 = 1302909047;
@@ -4759,6 +4882,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat Eramis's technology expert, Praksis, the Technocrat.
 			/// </summary>
 			public const uint EmpireHuntTheTechnocrat_1787238303 = 1787238303;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_567460857 = 567460857;
 			public const uint H4063047587 = 4063047587;
 			/// <summary>
 			/// 	Ocean of Storms, Moon
@@ -5204,6 +5331,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Hope_3272002712 = 3272002712;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1025338134 = 1025338134;
+			/// <summary>
 			/// 	End the Red Legion expedition that has ripped open the planet's surface.
 			/// </summary>
 			public const uint NightfallTheInvertedSpirePrestige = 3050465729;
@@ -5242,7 +5373,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Explore the strange structures at the core of Nessus, converted by the Vex at the Conductor's command.
 			/// </summary>
-			public const uint Encore = 1550266704;
+			public const uint EncoreStandard = 1550266704;
 			public const uint H2682618144 = 2682618144;
 			/// <summary>
 			/// 	Follow the Hive Wrathborn's tracks to the lair of Xillox, Oppression of Xivu Arath.
@@ -5376,11 +5507,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Capture zones to increase points for every kill.
 			/// <para/>
 			/// </summary>
-			public const uint IronBanner_3753505781 = 3753505781;
+			public const uint IronBanner = 3753505781;
 			/// <summary>
 			/// 	Search the Tangled Shore for Cayde's killers.
 			/// </summary>
 			public const uint HighPlainsBlues_530720427 = 530720427;
+			/// <summary>
+			/// 	Rotating modes with Hardware Modifier.
+			/// </summary>
+			public const uint HardwareMix = 1982007550;
 			/// <summary>
 			/// 	Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.
 			/// </summary>
@@ -5502,6 +5637,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The Red Legion has overrun the Last City. The Light is gone. You are powerless. Live to fight another day.
 			/// </summary>
 			public const uint Adieu = 3105090879;
+			/// <summary>
+			/// 	Rotating modes with Checkmate Modifier.
+			/// </summary>
+			public const uint CheckmateMix = 1948599306;
 			public const uint Surveymission_549123191 = 549123191;
 			public const uint AnalysisMission_2187073261 = 2187073261;
 			public const uint TheMoon_2503939905 = 2503939905;
@@ -5555,6 +5694,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Liberate Rasputin by bringing an end to Xol's infestation of Mars.
 			/// </summary>
 			public const uint NightfallWilloftheThousandsNormal_958578340 = 958578340;
+			/// <summary>
+			/// 	Achieve victory by detonating a charge, defusing the opposing charge, or eliminating all opponents.
+			/// </summary>
+			public const uint Countdown_1910587321 = 1910587321;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_830747364 = 830747364;
 			/// <summary>
 			/// 	The Lucent Hive are using stolen Guardian Light for some wicked purpose. Breach their stronghold and uncover their plot.
 			/// </summary>
@@ -5611,9 +5758,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallGrandmasterDefiantBattlegroundEDZ = 952545351;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Defy the algorithm. Cut through its web.
 			/// </summary>
-			public const uint Classified_1915770060 = 1915770060;
+			public const uint VespersHost_1915770060 = 1915770060;
 			/// <summary>
 			/// 	Warmind Facility Hellas, Mars
 			/// </summary>
@@ -5660,6 +5807,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Supremacy_3780095688 = 3780095688;
 			/// <summary>
+			/// 	Achieve victory by capturing zones and defeating opponents. All weapons are more lethal; abilities replenish only with targets defeated, and tracker is disabled.
+			/// </summary>
+			public const uint MomentumControl_3950599078 = 3950599078;
+			/// <summary>
 			/// 	Proving Grounds
 			/// </summary>
 			public const uint GuardianGamesCompetitivePlaylistCompetitiveNonMatchmade_4189303825 = 4189303825;
@@ -5671,6 +5822,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Infiltrate the heart of Calus's lair and destroy the Darkness relay.
 			/// </summary>
 			public const uint DownfallMaster = 1257086859;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_632111562 = 632111562;
 			/// <summary>
 			/// 	Infiltrate the heart of Calus's lair and destroy the Darkness relay.
 			/// </summary>
@@ -5732,9 +5887,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint WidowsCourtOnslaughtSalvation = 1618784039;
 			public const uint CombatMission_293858112 = 293858112;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Enter Fikrul's Revenant Fortress in the Tangled Shore, where dark reflections make it difficult to discern illusion from reality.
 			/// </summary>
-			public const uint Classified_133833536 = 133833536;
+			public const uint KellsFallExpert = 133833536;
 			/// <summary>
 			/// 	Vex Network Compiler, Mars
 			/// </summary>
@@ -5851,9 +6006,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Enthymeme_646214289 = 646214289;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The Warden's sadistic game, enhanced. Survive multiple laps through the prison, each one harder than the last. To the victor, more spoils await.
 			/// </summary>
-			public const uint Classified_25887244 = 25887244;
+			public const uint ContestofEldersPrivate = 25887244;
 			/// <summary>
 			/// 	As Zavala struggles with the loss of his Light, join Caiatl on a mission to crush the Shadow Legion.
 			/// </summary>
@@ -5955,6 +6110,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint Beyond_1517708944 = 1517708944;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3416179771 = 3416179771;
 			/// <summary>
 			/// 	Warmind Facility Hellas, Mars
 			/// </summary>
@@ -6067,9 +6226,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Cauldron_4168439466 = 4168439466;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2438990097 = 2438990097;
+			/// <summary>
 			/// 	Disrupt the Conductor's violent experiments to gather data on her Vex Collective.
 			/// </summary>
-			public const uint EncoreConcerto = 3542111804;
+			public const uint EncoreConcertoStandard = 3542111804;
 			/// <summary>
 			/// 	Race against the clock to stop House Salvation agents from stealing a dangerous weapon from the Old Tower.
 			/// </summary>
@@ -6077,11 +6240,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Put an end to the Conductor's plans to convert Sol.
 			/// </summary>
-			public const uint EncoreCoda = 3542111805;
+			public const uint EncoreCodaStandard = 3542111805;
 			/// <summary>
 			/// 	Investigate Maya Sundaresh's domain deep within Nessus to gain a tactical advantage against her faction of Vex.
 			/// </summary>
-			public const uint EncoreOverture = 3542111807;
+			public const uint EncoreOvertureStandard = 3542111807;
 			/// <summary>
 			/// 	A lawless cantina overlooking the Tangled Shore and run by the Spider himself.
 			/// </summary>
@@ -6119,6 +6282,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The Pathfinder is an astronomical instrument, guiding Guardians to the treasures of the cosmos, while allowing them to define their own journey.
 			/// </summary>
 			public const uint Pathfinder_3285227070 = 3285227070;
+			/// <summary>
+			/// 	A strange Taken disturbance has manifested in the EDZ.
+			/// </summary>
+			public const uint Espial = 1133240260;
 			/// <summary>
 			/// 	Stem the tide of Taken flowing into the European Dead Zone from beneath the waves.
 			/// </summary>
@@ -6300,6 +6467,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Runoff, Savathûn's Throne World
 			/// </summary>
 			public const uint Disjunction_3814374754 = 3814374754;
+			/// <summary>
+			/// 	Power lies in the deepest vault.
+			/// </summary>
+			public const uint SunderedDoctrineMaster = 3521648250;
 			/// <summary>
 			/// 	The Insight Terminus
 			/// </summary>
@@ -6486,9 +6657,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrimsonDays_1358255449 = 1358255449;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Enter Fikrul's Revenant Fortress in the Tangled Shore, where dark reflections make it difficult to discern illusion from reality.
 			/// </summary>
-			public const uint Classified_3212612420 = 3212612420;
+			public const uint KellsFall = 3212612420;
 			/// <summary>
 			/// 	Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.
 			/// </summary>
@@ -6560,6 +6731,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The Pyramidion
 			/// </summary>
 			public const uint NightfallTheOrdealAdept_3265488360 = 3265488360;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1118238877 = 1118238877;
 			/// <summary>
 			/// 	The Pyramidion
 			/// </summary>
@@ -6761,7 +6936,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HackthePlanet_359488722 = 359488722;
 			/// <summary>
-			/// 	Only the best of the best may step foot onto these hallowed grounds. You must be found worthy by achieving 7 wins with no losses to gain access.
+			/// 	Only the best of the best may step foot onto these hallowed grounds. You must be found worthy by achieving 7 wins on a Lighthouse Passage to gain access.
 			/// </summary>
 			public const uint LighthouseSimulation_26292464 = 26292464;
 			/// <summary>
@@ -6860,13 +7035,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Pacifica_3689256790 = 3689256790;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The Warden's sadistic game, enhanced. Survive multiple laps through the prison, each one harder than the last. To the victor, more spoils await.
 			/// </summary>
-			public const uint Classified_241079808 = 241079808;
+			public const uint ContestofEldersMatchmade = 241079808;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Help Eido with tonic research by participating in major fieldwork on the Moon.
 			/// </summary>
-			public const uint Classified_439432223 = 439432223;
+			public const uint MajorFieldworkVII = 439432223;
 			/// <summary>
 			/// 	Your visions have led you to Io. Follow where they lead you.
 			/// </summary>
@@ -6875,6 +7050,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Ikora is reluctantly allowing Asher to explore a plan where he'd convert the Traveler's energy into a form of synthetic Light.
 			/// </summary>
 			public const uint PostmodernPrometheus_808931822 = 808931822;
+			/// <summary>
+			/// 	Celebrate Solstice by building a bonfire in the EAZ.
+			/// </summary>
+			public const uint BonfireBash_1133523960 = 1133523960;
 			/// <summary>
 			/// 	The Last City, Earth
 			/// </summary>
@@ -6942,9 +7121,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Competitive_701560468 = 701560468;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Help Eido with tonic research by participating in major fieldwork in the EDZ.
 			/// </summary>
-			public const uint Classified_4063817676 = 4063817676;
+			public const uint MajorFieldworkX = 4063817676;
 			public const uint Surveymission_3662124488 = 3662124488;
 			/// <summary>
 			/// 	Warmind Facility Hellas, Mars
@@ -7114,7 +7293,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Earn streaks to generate score multipliers. Max out your streak to erupt!
 			/// <para/>
 			/// </summary>
-			public const uint IronBanner_1813796524 = 1813796524;
+			public const uint IronBannerControl_1813796524 = 1813796524;
 			/// <summary>
 			/// 	Expert Difficulty: Locked Equipment, Extra Shields
 			/// <para/>
@@ -7190,6 +7369,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint AnotherLostForge = 2604307096;
+			/// <summary>
+			/// 	Achieve victory by defeating opponents. No teams. No allegiance. A free-for-all where the leader had better watch their back.
+			/// </summary>
+			public const uint Rumble_658183591 = 658183591;
 			/// <summary>
 			/// 	Cosmodrome, Earth
 			/// </summary>
@@ -7557,9 +7740,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GildedPreceptExpert = 2983905025;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Enter Fikrul's Revenant Fortress in the Tangled Shore, where dark reflections make it difficult to discern illusion from reality.
 			/// </summary>
-			public const uint Classified_3447248293 = 3447248293;
+			public const uint KellsFallReflectionExpert = 3447248293;
 			/// <summary>
 			/// 	Expert Difficulty: Locked Equipment, Extra Shields
 			/// <para/>
@@ -7748,6 +7931,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrotasEndLegend = 156253568;
 			/// <summary>
+			/// 	Collide with your opponents over a series of shifting zones in this high-intensity 3v3 shootout!
+			/// </summary>
+			public const uint CollisionSlowCaptureVariant = 2113260788;
+			/// <summary>
 			/// 	Legend Difficulty: Locked Equipment, Match Game, Extra Shields
 			/// <para/>
 			/// 	Champions: [Disruption] Overload, [Stagger] Unstoppable
@@ -7841,6 +8028,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Battleground: Foothold
 			/// </summary>
 			public const uint GuardianGamesCompetitiveNightfallAdvanced_727417687 = 727417687;
+			/// <summary>
+			/// 	Achieve victory by eliminating all opponents in this round-based mode.
+			/// </summary>
+			public const uint Dominion = 586293844;
 			public const uint Surveymission_474193231 = 474193231;
 			public const uint SalvageMission_4216926874 = 4216926874;
 			/// <summary>
@@ -7897,9 +8088,9 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint CorridorsofTimePart2 = 1657533742;
 			public const uint H1533124168 = 1533124168;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Locate Fikrul in the Tomb of Elders before he can bring his plans to fruition.
 			/// </summary>
-			public const uint Classified_3063974137 = 3063974137;
+			public const uint CaptiveMemories = 3063974137;
 			/// <summary>
 			/// 	Fight alongside your allies in a final stand against Calus, the Disciple.
 			/// </summary>
@@ -8058,9 +8249,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Vostok_1781384601 = 1781384601;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Help Eido with tonic research by participating in major fieldwork in Neomuna.
 			/// </summary>
-			public const uint Classified_1259990823 = 1259990823;
+			public const uint MajorFieldworkIX = 1259990823;
 			/// <summary>
 			/// 	The Fanatic has returned. Take him down and finish the job you started.
 			/// </summary>
@@ -8076,6 +8267,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Essence, Earth Orbit
 			/// </summary>
 			public const uint Dissonance_3086389452 = 3086389452;
+			/// <summary>
+			/// 	Everyone on both teams has a Scorch Cannon. Be brave.
+			/// </summary>
+			public const uint TeamScorched_333931889 = 333931889;
 			/// <summary>
 			/// 	Recon the Shadow Legion occupation of Neomuna and keep the Veil safe.
 			/// </summary>
@@ -8251,9 +8446,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HeroicStrikesPlaylist_2026037412 = 2026037412;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Enter Fikrul's Revenant Fortress in the Tangled Shore, where dark reflections make it difficult to discern illusion from reality.
 			/// </summary>
-			public const uint Classified_3296787721 = 3296787721;
+			public const uint KellsFallDiffraction = 3296787721;
+			/// <summary>
+			/// 	Collide with your opponents over a series of shifting zones in this high-intensity 3v3 shootout!
+			/// </summary>
+			public const uint Collision_1392073339 = 1392073339;
 			/// <summary>
 			/// 	The Vex are testing CloudArk defenses in this region. Reality fractures as the VexNet bleeds through into Neomuna.
 			/// <para/>
@@ -8304,9 +8503,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallGrandmasterTheDisgraced = 3381711459;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Help Eido with tonic research by participating in key fieldwork.
 			/// </summary>
-			public const uint Classified_2969656877 = 2969656877;
+			public const uint ActIIKeyFieldwork = 2969656877;
 			/// <summary>
 			/// 	Home of the Guardians, where you can regroup, rearm, and form new alliances before venturing beyond.
 			/// </summary>
@@ -8493,9 +8692,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MajorFieldworkI = 3678353395;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Help Eido with tonic research by participating in major fieldwork on Europa.
 			/// </summary>
-			public const uint Classified_216863296 = 216863296;
+			public const uint MajorFieldworkVIII = 216863296;
 			/// <summary>
 			/// 	Investigate the recently erected Scarlet Keep and discover its dark purpose.
 			/// </summary>
@@ -8548,6 +8747,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defeat Xol's necromancer, Nokris, and his army of Frozen Hive.
 			/// </summary>
 			public const uint NightfallStrangeTerrainNormal_4279557030 = 4279557030;
+			/// <summary>
+			/// 	Achieve victory by depleting your opponents' shared life pool, then eliminating them.
+			/// </summary>
+			public const uint Survival_2976471410 = 2976471410;
 			/// <summary>
 			/// 	Strange Terrain
 			/// </summary>
@@ -8707,6 +8910,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrownofSorrowNormal_3333172150 = 3333172150;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_145961310 = 145961310;
+			/// <summary>
 			/// 	Brother Vance says there's a Temple of Osiris in the EDZ where you can revive Sagira.
 			/// </summary>
 			public const uint ADeadlyTrial = 2279197206;
@@ -8722,6 +8929,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the Daily Heroic story mission.
 			/// </summary>
 			public const uint DailyHeroicStoryMissionAceintheHole = 2962137994;
+			/// <summary>
+			/// 	Achieve victory by detonating or defusing both opposing charges.
+			/// </summary>
+			public const uint Countdown_4209906178 = 4209906178;
 			public const uint H3372868559 = 3372868559;
 			/// <summary>
 			/// 	Create a custom PvP match with your fireteam, and best your comrades for personal glory… and bragging rights.
@@ -8756,6 +8967,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Hunt down the wanted Silent Fang who escaped from the Prison of Elders.
 			/// </summary>
 			public const uint WANTEDSilentFang_1646986367 = 1646986367;
+			/// <summary>
+			/// 	Journey aboard the Dreadnaught to discover secrets in the gloam.
+			/// </summary>
+			public const uint TheNetherAdvanced = 477222169;
 			/// <summary>
 			/// 	Complete a forge ignition at the Bergusia Forge
 			/// </summary>
@@ -8802,6 +9017,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Pacifica_3285572159 = 3285572159;
 			/// <summary>
+			/// 	Achieve victory by depleting your opponents' shared life pool, then eliminating them.
+			/// <para/>
+			/// 	Ability and Primary ammo damage is reduced. Special ammo is earned by engaging in combat and is not lost on death.
+			/// <para/>
+			/// </summary>
+			public const uint CheckmateSurvival_3189412460 = 3189412460;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_862176829 = 862176829;
+			/// <summary>
 			/// 	Ocean of Storms, Moon
 			/// </summary>
 			public const uint Cauldron_3259269858 = 3259269858;
@@ -8827,7 +9053,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Ability and Primary ammo damage is reduced. Special ammo is earned by engaging in combat and is not lost on death.
 			/// <para/>
 			/// </summary>
-			public const uint CheckmateSurvival = 3876264582;
+			public const uint CheckmateSurvival_3876264582 = 3876264582;
 			/// <summary>
 			/// 	Commune with the Europan Pyramid to strengthen your new Darkness power, Deepsight.
 			/// </summary>
@@ -9162,6 +9388,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Unbreakable_3140524926 = 3140524926;
 			/// <summary>
+			/// 	The Dread mean to take the Dreadnaught with an Eversion Anchor! Stop them before they free the Echo and Oryx escapes to Fundament through the Ascendant Plane.
+			/// </summary>
+			public const uint Resile = 2725316173;
+			/// <summary>
 			/// 	Defiant Battleground: EDZ
 			/// </summary>
 			public const uint NightfallExpert_2748682954 = 2748682954;
@@ -9234,6 +9464,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Countdown_4248902252 = 4248902252;
 			/// <summary>
+			/// 	Achieve victory by capturing and holding zones. Win rounds instantly by capturing all three.
+			/// </summary>
+			public const uint Lockdown_3491140001 = 3491140001;
+			/// <summary>
 			/// 	Commune with the Europan Pyramid to strengthen your new Darkness power, Deepsight.
 			/// </summary>
 			public const uint TheCommunionLegendary = 1725925815;
@@ -9288,13 +9522,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Wormhaven_1501360203 = 1501360203;
 			/// <summary>
-			/// 	New nightmares have emerged from the shadows of our Moon. Called forth by haunting visions, Eris Morn has returned. Join her to slay these nightmares before they reach out beyond the Moon to cast humanity back into an age of darkness.
-			/// </summary>
-			public const uint Destiny2Shadowkeep_466447952 = 466447952;
-			/// <summary>
 			/// 	A group of former Red Legion Psions are communing with Vex prediction engines deep within Nessus. They seek to gain tactical insights by analyzing simulations of future events against their own psychic foresight.  Eliminate this threat before they can deliver their intelligence to Empress Caiatl.
 			/// </summary>
 			public const uint BattlegroundOracle_598728782 = 598728782;
+			/// <summary>
+			/// 	New nightmares have emerged from the shadows of our Moon. Called forth by haunting visions, Eris Morn has returned. Join her to slay these nightmares before they reach out beyond the Moon to cast humanity back into an age of darkness.
+			/// </summary>
+			public const uint Destiny2Shadowkeep_466447952 = 466447952;
 			public const uint Surveymission_2079994698 = 2079994698;
 			/// <summary>
 			/// 	The disciple beckons…
@@ -9343,9 +9577,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightmareHuntIsolation_3459379696 = 3459379696;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Enter Fikrul's Revenant Fortress in the Tangled Shore, where dark reflections make it difficult to discern illusion from reality.
 			/// </summary>
-			public const uint Classified_264074906 = 264074906;
+			public const uint KellsFallDistortionExpert = 264074906;
 			/// <summary>
 			/// 	Neutralize the target.
 			/// </summary>
@@ -9373,6 +9607,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Fight alongside Cayde-6 to help Petra Venj regain control of the dangerous Prison of Elders.
 			/// </summary>
 			public const uint LastCall = 666063689;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1030704487 = 1030704487;
 			/// <summary>
 			/// 	He waits in the dark below.
 			/// </summary>
@@ -9594,13 +9832,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint StrangeTerrain_3801775390 = 3801775390;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Defy the algorithm. Cut through its web.
 			/// </summary>
-			public const uint Classified_4293676253 = 4293676253;
+			public const uint VespersHostMaster = 4293676253;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Help Eido with tonic research by participating in major fieldwork on Nessus.
 			/// </summary>
-			public const uint Classified_1034842656 = 1034842656;
+			public const uint MajorFieldworkVI = 1034842656;
 			public const uint Surveymission_4050886070 = 4050886070;
 			/// <summary>
 			/// 	Achieve victory by detonating or defusing both opposing charges.
@@ -9924,6 +10162,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallGrandmaster_4283638887 = 4283638887;
 			/// <summary>
+			/// 	Achieve victory by collecting the Spark and igniting the opponent's Rift.
+			/// </summary>
+			public const uint Rift_1923610405 = 1923610405;
+			/// <summary>
+			/// 	Achieve victory by capturing zones and defeating opponents.
+			/// </summary>
+			public const uint Control_962284679 = 962284679;
+			/// <summary>
 			/// 	Complete the Daily Heroic story mission.
 			/// </summary>
 			public const uint DailyHeroicStoryMissionFury = 2000185095;
@@ -10246,6 +10492,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Defiant Battleground: Orbital Prison
 			/// </summary>
 			public const uint GuardianGamesCompetitiveNightfallAdvanced_210672952 = 210672952;
+			public const uint H407166878 = 407166878;
 			/// <summary>
 			/// 	Traverse the Shattered Realms of the Ascendant Plane in search of the lost Awoken Techeuns.
 			/// <para/>
@@ -10491,9 +10738,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LastWishLevel55 = 2214608157;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Enter Fikrul's Revenant Fortress in the Tangled Shore, where dark reflections make it difficult to discern illusion from reality.
 			/// </summary>
-			public const uint Classified_1044034163 = 1044034163;
+			public const uint KellsFallDiffractionExpert = 1044034163;
 			/// <summary>
 			/// 	Proving Grounds
 			/// </summary>
@@ -10506,6 +10753,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Complete the Daily Heroic story mission.
 			/// </summary>
 			public const uint DailyHeroicStoryMissionNothingLefttoSay = 2146977720;
+			public const uint H281311893 = 281311893;
 			/// <summary>
 			/// 	The Hollowed Lair
 			/// </summary>
@@ -10546,6 +10794,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Find Osiris in the Shadow Legion fleet and sow chaos through their ranks.
 			/// </summary>
 			public const uint FirstContactAdvanced = 2489923989;
+			/// <summary>
+			/// 	Meet with Sloane in the place of the offering and reforge Willbreaker with Oryx's recovered hilt.
+			/// </summary>
+			public const uint Appellation = 3542951468;
 			/// <summary>
 			/// 	"Grow fat from strength."
 			/// </summary>
@@ -10650,6 +10902,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	PsiOps Battleground: EDZ
 			/// </summary>
 			public const uint GuardianGamesCompetitiveNightfallAdvanced_2026673880 = 2026673880;
+			/// <summary>
+			/// 	Achieve victory by defeating opponents and preventing revives. Win the most rounds or face off in an elimination showdown.
+			/// </summary>
+			public const uint Showdown_2249376979 = 2249376979;
 			/// <summary>
 			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
@@ -10871,12 +11127,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Classified_2934103434 = 2934103434;
 			public const uint Surveymission_2536491635 = 2536491635;
+			/// <summary>
+			/// 	Achieve victory by eliminating all opponents in this round-based mode.
+			/// </summary>
+			public const uint Elimination_2162076563 = 2162076563;
 			public const uint H585169220 = 585169220;
 			public const uint Salvagemission_1120584691 = 1120584691;
 			/// <summary>
 			/// 	The Insight Terminus
 			/// </summary>
 			public const uint TheOrdealGrandmasterTheInsightTerminus = 2694576755;
+			/// <summary>
+			/// 	Achieve victory by defeating opponents and securing the crests they drop. Recover friendly crests to deny them from opponents.
+			/// </summary>
+			public const uint Supremacy_2214806697 = 2214806697;
 			/// <summary>
 			/// 	Unknown, The Infinite Forest
 			/// </summary>
@@ -10941,11 +11205,11 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The Disgraced
 			/// </summary>
 			public const uint NightfallAdept_2136458564 = 2136458564;
+			public const uint H588829540 = 588829540;
 			/// <summary>
 			/// 	Crawl through the Observatory wing of Riven's Lair and retrieve her clutch.
 			/// </summary>
 			public const uint Chiasmus_275696076 = 275696076;
-			public const uint H588829540 = 588829540;
 			/// <summary>
 			/// 	The Disgraced
 			/// </summary>
@@ -11012,6 +11276,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TreeofProbabilities_2678510381 = 2678510381;
 			/// <summary>
+			/// 	Power lies in the deepest vault.
+			/// </summary>
+			public const uint SunderedDoctrineNormal = 3834447244;
+			/// <summary>
 			/// 	Fly directly to this Landing Zone.
 			/// </summary>
 			public const uint NessusUnstableCentaur_3966792859 = 3966792859;
@@ -11047,13 +11315,17 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint DeepSix_712032579 = 712032579;
 			public const uint AnalysisMission_3515770727 = 3515770727;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3613541931 = 3613541931;
+			/// <summary>
 			/// 	The Dreaming City, The Vestian Web
 			/// </summary>
 			public const uint CathedralofScars_1037070105 = 1037070105;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Enter Fikrul's Revenant Fortress in the Tangled Shore, where dark reflections make it difficult to discern illusion from reality.
 			/// </summary>
-			public const uint Classified_715393254 = 715393254;
+			public const uint KellsFallDistortion = 715393254;
 			/// <summary>
 			/// 	Essence, Earth Orbit
 			/// </summary>
@@ -11106,6 +11378,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint MetamorphosisMaster_283251609 = 283251609;
+			/// <summary>
+			/// 	Achieve victory by capturing zones and defeating opponents.
+			/// <para/>
+			/// 	Vehicles enabled.
+			/// <para/>
+			/// </summary>
+			public const uint SparrowControl_3687521241 = 3687521241;
 			public const uint AnalysisMission_3231065327 = 3231065327;
 			/// <summary>
 			/// 	The Last City, Earth

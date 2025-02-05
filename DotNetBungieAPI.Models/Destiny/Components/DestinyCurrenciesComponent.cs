@@ -1,4 +1,6 @@
 ﻿using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
+using DotNetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets;
+using DotNetBungieAPI.Models.Destiny.Inventory;
 
 namespace DotNetBungieAPI.Models.Destiny.Components;
 
@@ -10,7 +12,7 @@ namespace DotNetBungieAPI.Models.Destiny.Components;
 ///     have for the purpose of testing currency requirements on an item being purchased, or operations that have costs.
 ///     <para />
 ///     You *could* figure this out yourself by doing a GetCharacter or GetProfile request and forming your own lookup
-///     table, but that is inconvenient enough that this feels like a worthwhile (and optional) redundency. Don't bother
+///     table, but that is inconvenient enough that this feels like a worthwhile (and optional) redundancy. Don't bother
 ///     requesting it if you have already created your own lookup from prior GetCharacter/GetProfile calls.
 /// </summary>
 public sealed record DestinyCurrenciesComponent
@@ -27,5 +29,18 @@ public sealed record DestinyCurrenciesComponent
         DefinitionHashPointer<DestinyInventoryItemDefinition>,
         int
     > ItemQuantities { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyInventoryItemDefinition>, int>.Empty;
+        ReadOnlyDictionary<DefinitionHashPointer<DestinyInventoryItemDefinition>, int>.Empty;
+
+    /// <summary>
+    ///     A map of material requirement hashes and their status information.
+    /// </summary>
+    [JsonPropertyName("materialRequirementSetStates")]
+    public ReadOnlyDictionary<
+        DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>,
+        DestinyMaterialRequirementSetState
+    > MaterialRequirementSetStates { get; init; } =
+        ReadOnlyDictionary<
+            DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>,
+            DestinyMaterialRequirementSetState
+        >.Empty;
 }

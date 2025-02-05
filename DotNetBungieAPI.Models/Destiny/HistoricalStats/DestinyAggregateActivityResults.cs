@@ -7,5 +7,5 @@ public sealed record DestinyAggregateActivityResults
     /// </summary>
     [JsonPropertyName("activities")]
     public ReadOnlyCollection<DestinyAggregateActivityStats> Activities { get; init; } =
-        ReadOnlyCollections<DestinyAggregateActivityStats>.Empty;
+        ReadOnlyCollection<DestinyAggregateActivityStats>.Empty;
 }

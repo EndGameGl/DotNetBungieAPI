@@ -181,7 +181,7 @@ public sealed record DestinyProfileResponse
         long,
         DestinyBaseItemComponentSetOfuint32
     > CharacterUninstancedItemComponents { get; init; } =
-        ReadOnlyDictionaries<long, DestinyBaseItemComponentSetOfuint32>.Empty;
+        ReadOnlyDictionary<long, DestinyBaseItemComponentSetOfuint32>.Empty;
 
     [JsonPropertyName("characterPresentationNodes")]
     public DictionaryComponentResponseOfint64AndDestinyPresentationNodesComponent CharacterPresentationNodes { get; init; }

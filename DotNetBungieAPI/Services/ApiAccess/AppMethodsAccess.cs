@@ -28,12 +28,9 @@ internal sealed class AppMethodsAccess : IAppMethodsAccess
         CancellationToken cancellationToken = default
     )
     {
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyCollection<Application>>(
-                "/App/FirstParty/",
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<
+            ReadOnlyCollection<Application>
+        >("/App/FirstParty/", cancellationToken);
     }
 
     public async Task<BungieResponse<ApiUsage>> GetApplicationApiUsage(
@@ -63,12 +60,10 @@ internal sealed class AppMethodsAccess : IAppMethodsAccess
             )
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ApiUsage>(
-                url,
-                cancellationToken,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<ApiUsage>(
+            url,
+            cancellationToken,
+            authorizationToken.AccessToken
+        );
     }
 }

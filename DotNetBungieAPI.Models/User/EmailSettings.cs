@@ -10,7 +10,7 @@ public sealed record EmailSettings
     /// </summary>
     [JsonPropertyName("optInDefinitions")]
     public ReadOnlyDictionary<string, EmailOptInDefinition> OptInDefinitions { get; init; } =
-        ReadOnlyDictionaries<string, EmailOptInDefinition>.Empty;
+        ReadOnlyDictionary<string, EmailOptInDefinition>.Empty;
 
     /// <summary>
     ///     Keyed by the name identifier of the Subscription definition.
@@ -20,12 +20,12 @@ public sealed record EmailSettings
         string,
         EmailSubscriptionDefinition
     > SubscriptionDefinitions { get; init; } =
-        ReadOnlyDictionaries<string, EmailSubscriptionDefinition>.Empty;
+        ReadOnlyDictionary<string, EmailSubscriptionDefinition>.Empty;
 
     /// <summary>
     ///     Keyed by the name identifier of the View definition.
     /// </summary>
     [JsonPropertyName("views")]
     public ReadOnlyDictionary<string, EmailViewDefinition> Views { get; init; } =
-        ReadOnlyDictionaries<string, EmailViewDefinition>.Empty;
+        ReadOnlyDictionary<string, EmailViewDefinition>.Empty;
 }

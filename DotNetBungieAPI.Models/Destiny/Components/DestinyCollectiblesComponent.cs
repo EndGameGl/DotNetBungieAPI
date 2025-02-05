@@ -10,7 +10,7 @@ public sealed record DestinyCollectiblesComponent
         DefinitionHashPointer<DestinyCollectibleDefinition>,
         DestinyCollectibleComponent
     > Collectibles { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyCollectibleDefinition>,
             DestinyCollectibleComponent
         >.Empty;

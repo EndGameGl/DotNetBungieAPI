@@ -23,11 +23,11 @@ public sealed record DestinyPublicMilestone
     /// </summary>
     [JsonPropertyName("availableQuests")]
     public ReadOnlyCollection<DestinyPublicMilestoneQuest> AvailableQuests { get; init; } =
-        ReadOnlyCollections<DestinyPublicMilestoneQuest>.Empty;
+        ReadOnlyCollection<DestinyPublicMilestoneQuest>.Empty;
 
     [JsonPropertyName("activities")]
     public ReadOnlyCollection<DestinyPublicMilestoneChallengeActivity> Activities { get; init; } =
-        ReadOnlyCollections<DestinyPublicMilestoneChallengeActivity>.Empty;
+        ReadOnlyCollection<DestinyPublicMilestoneChallengeActivity>.Empty;
 
     /// <summary>
     ///     Sometimes milestones - or activities active in milestones - will have relevant vendors. These are the vendors that
@@ -37,7 +37,7 @@ public sealed record DestinyPublicMilestone
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyVendorDefinition>
     > VendorPointers { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyVendorDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyVendorDefinition>>.Empty;
 
     /// <summary>
     ///     This is why we can't have nice things. This is the ordered list of vendors to be shown that relate to this
@@ -45,7 +45,7 @@ public sealed record DestinyPublicMilestone
     /// </summary>
     [JsonPropertyName("vendors")]
     public ReadOnlyCollection<DestinyPublicMilestoneVendor> Vendors { get; init; } =
-        ReadOnlyCollections<DestinyPublicMilestoneVendor>.Empty;
+        ReadOnlyCollection<DestinyPublicMilestoneVendor>.Empty;
 
     /// <summary>
     ///     If known, this is the date when the Milestone started/became active.

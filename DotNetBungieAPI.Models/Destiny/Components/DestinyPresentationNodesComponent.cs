@@ -9,7 +9,7 @@ public sealed record DestinyPresentationNodesComponent
         DefinitionHashPointer<DestinyPresentationNodeDefinition>,
         DestinyPresentationNodeComponent
     > Nodes { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyPresentationNodeDefinition>,
             DestinyPresentationNodeComponent
         >.Empty;

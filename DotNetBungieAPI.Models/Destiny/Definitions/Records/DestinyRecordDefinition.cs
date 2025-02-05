@@ -33,7 +33,7 @@ public sealed record DestinyRecordDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyObjectiveDefinition>
     > Objectives { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyObjectiveDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>>.Empty;
 
     [JsonPropertyName("recordValueStyle")]
     public DestinyRecordValueStyle RecordValueStyle { get; init; }
@@ -73,7 +73,7 @@ public sealed record DestinyRecordDefinition
     /// </summary>
     [JsonPropertyName("rewardItems")]
     public ReadOnlyCollection<DestinyItemQuantity> RewardItems { get; init; } =
-        ReadOnlyCollections<DestinyItemQuantity>.Empty;
+        ReadOnlyCollection<DestinyItemQuantity>.Empty;
 
     [JsonPropertyName("recordTypeName")]
     public string RecordTypeName { get; init; }
@@ -82,11 +82,11 @@ public sealed record DestinyRecordDefinition
     public DestinyPresentationNodeType PresentationNodeType { get; init; }
 
     [JsonPropertyName("traitIds")]
-    public ReadOnlyCollection<string> TraitIds { get; init; } = ReadOnlyCollections<string>.Empty;
+    public ReadOnlyCollection<string> TraitIds { get; init; } = ReadOnlyCollection<string>.Empty;
 
     [JsonPropertyName("traitHashes")]
     public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyTraitDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>.Empty;
 
     /// <summary>
     ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under
@@ -96,7 +96,7 @@ public sealed record DestinyRecordDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyPresentationNodeDefinition>
     > ParentNodes { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
 
     public bool DeepEquals(DestinyRecordDefinition other)
     {
@@ -107,15 +107,15 @@ public sealed record DestinyRecordDefinition
             && IntervalInfo.DeepEquals(other.IntervalInfo)
             && StateInfo.DeepEquals(other.StateInfo)
             && TitleInfo.DeepEquals(other.TitleInfo)
-            && Objectives.DeepEqualsReadOnlyCollections(other.Objectives)
-            && ParentNodes.DeepEqualsReadOnlyCollections(other.ParentNodes)
+            && Objectives.DeepEqualsReadOnlyCollection(other.Objectives)
+            && ParentNodes.DeepEqualsReadOnlyCollection(other.ParentNodes)
             && PresentationNodeType == other.PresentationNodeType
             && RecordValueStyle == other.RecordValueStyle
             && Requirements.DeepEquals(other.Requirements)
-            && RewardItems.DeepEqualsReadOnlyCollections(other.RewardItems)
+            && RewardItems.DeepEqualsReadOnlyCollection(other.RewardItems)
             && RecordTypeName == other.RecordTypeName
             && Scope == other.Scope
-            && Traits.DeepEqualsReadOnlyCollections(other.Traits)
+            && Traits.DeepEqualsReadOnlyCollection(other.Traits)
             && TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds)
             && Lore.DeepEquals(other.Lore)
             && PresentationInfo.DeepEquals(other.PresentationInfo)

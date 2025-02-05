@@ -24,7 +24,7 @@ public sealed record DestinyMilestoneRewardEntryDefinition
     /// </summary>
     [JsonPropertyName("items")]
     public ReadOnlyCollection<DestinyItemQuantity> Items { get; init; } =
-        ReadOnlyCollections<DestinyItemQuantity>.Empty;
+        ReadOnlyCollection<DestinyItemQuantity>.Empty;
 
     /// <summary>
     ///     If this reward is redeemed at a Vendor, this is the hash of the Vendor to go to in order to redeem the reward. Use
@@ -53,7 +53,7 @@ public sealed record DestinyMilestoneRewardEntryDefinition
     {
         return other != null
             && DisplayProperties.DeepEquals(other.DisplayProperties)
-            && Items.DeepEqualsReadOnlyCollections(other.Items)
+            && Items.DeepEqualsReadOnlyCollection(other.Items)
             && Order == other.Order
             && RewardEntryHash == other.RewardEntryHash
             && RewardEntryIdentifier == other.RewardEntryIdentifier

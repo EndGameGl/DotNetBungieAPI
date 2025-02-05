@@ -36,14 +36,14 @@ public sealed record DestinyActivityPlaylistItemDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyActivityModeDefinition>
     > ActivityModes { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModeDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>>.Empty;
 
     /// <summary>
     ///     The activity modes - if any - in enum form. Because we can't seem to escape the enums.
     /// </summary>
     [JsonPropertyName("activityModeTypes")]
     public ReadOnlyCollection<DestinyActivityModeType> ActivityModeTypes { get; init; } =
-        ReadOnlyCollections<DestinyActivityModeType>.Empty;
+        ReadOnlyCollection<DestinyActivityModeType>.Empty;
 
     [JsonPropertyName("weight")]
     public int Weight { get; init; }
@@ -52,7 +52,7 @@ public sealed record DestinyActivityPlaylistItemDefinition
     {
         return other != null
             && Activity.DeepEquals(other.Activity)
-            && ActivityModes.DeepEqualsReadOnlyCollections(other.ActivityModes)
+            && ActivityModes.DeepEqualsReadOnlyCollection(other.ActivityModes)
             && ActivityModeTypes.DeepEqualsReadOnlySimpleCollection(other.ActivityModeTypes)
             && DirectActivityMode.DeepEquals(other.DirectActivityMode)
             && DirectActivityModeType == other.DirectActivityModeType

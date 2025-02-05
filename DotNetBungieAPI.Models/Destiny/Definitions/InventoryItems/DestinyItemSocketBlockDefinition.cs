@@ -19,7 +19,7 @@ public sealed record DestinyItemSocketBlockDefinition
     /// </summary>
     [JsonPropertyName("intrinsicSockets")]
     public ReadOnlyCollection<DestinyItemIntrinsicSocketEntryDefinition> IntrinsicSockets { get; init; } =
-        ReadOnlyCollections<DestinyItemIntrinsicSocketEntryDefinition>.Empty;
+        ReadOnlyCollection<DestinyItemIntrinsicSocketEntryDefinition>.Empty;
 
     /// <summary>
     ///     A convenience property, that refers to the sockets in the "sockets" property, pre-grouped by category and ordered
@@ -27,22 +27,22 @@ public sealed record DestinyItemSocketBlockDefinition
     /// </summary>
     [JsonPropertyName("socketCategories")]
     public ReadOnlyCollection<DestinyItemSocketCategoryDefinition> SocketCategories { get; init; } =
-        ReadOnlyCollections<DestinyItemSocketCategoryDefinition>.Empty;
+        ReadOnlyCollection<DestinyItemSocketCategoryDefinition>.Empty;
 
     /// <summary>
     ///     Each non-intrinsic (or mutable) socket on an item is defined here.
     /// </summary>
     [JsonPropertyName("socketEntries")]
     public ReadOnlyCollection<DestinyItemSocketEntryDefinition> SocketEntries { get; init; } =
-        ReadOnlyCollections<DestinyItemSocketEntryDefinition>.Empty;
+        ReadOnlyCollection<DestinyItemSocketEntryDefinition>.Empty;
 
     public bool DeepEquals(DestinyItemSocketBlockDefinition other)
     {
         return other != null
             && Detail == other.Detail
-            && IntrinsicSockets.DeepEqualsReadOnlyCollections(other.IntrinsicSockets)
-            && SocketCategories.DeepEqualsReadOnlyCollections(other.SocketCategories)
-            && SocketEntries.DeepEqualsReadOnlyCollections(other.SocketEntries);
+            && IntrinsicSockets.DeepEqualsReadOnlyCollection(other.IntrinsicSockets)
+            && SocketCategories.DeepEqualsReadOnlyCollection(other.SocketCategories)
+            && SocketEntries.DeepEqualsReadOnlyCollection(other.SocketEntries);
     }
 
     public override string ToString()

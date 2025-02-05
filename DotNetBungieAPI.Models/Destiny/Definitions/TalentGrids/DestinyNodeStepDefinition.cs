@@ -108,7 +108,7 @@ public sealed record DestinyNodeStepDefinition : IDeepEquatable<DestinyNodeStepD
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinySandboxPerkDefinition>
     > Perks { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinySandboxPerkDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinySandboxPerkDefinition>>.Empty;
 
     /// <summary>
     ///     When the Talent Grid's progression reaches this value, the circular "progress bar" that surrounds the talent node
@@ -127,7 +127,7 @@ public sealed record DestinyNodeStepDefinition : IDeepEquatable<DestinyNodeStepD
     /// </summary>
     [JsonPropertyName("statHashes")]
     public ReadOnlyCollection<DefinitionHashPointer<DestinyStatDefinition>> Stats { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyStatDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyStatDefinition>>.Empty;
 
     /// <summary>
     ///     If this is true, the step affects the item's Quality in some way. See DestinyInventoryItemDefinition for more
@@ -158,7 +158,7 @@ public sealed record DestinyNodeStepDefinition : IDeepEquatable<DestinyNodeStepD
     /// </summary>
     [JsonPropertyName("socketReplacements")]
     public ReadOnlyCollection<DestinyNodeSocketReplaceResponse> SocketReplacements { get; init; } =
-        ReadOnlyCollections<DestinyNodeSocketReplaceResponse>.Empty;
+        ReadOnlyCollection<DestinyNodeSocketReplaceResponse>.Empty;
 
     [JsonPropertyName("truePropertyIndex")]
     public int TruePropertyIndex { get; init; }
@@ -179,13 +179,13 @@ public sealed record DestinyNodeStepDefinition : IDeepEquatable<DestinyNodeStepD
             && CanActivateNextStep == other.CanActivateNextStep
             && NextStepIndex == other.NextStepIndex
             && IsNextStepRandom == other.IsNextStepRandom
-            && Perks.DeepEqualsReadOnlyCollections(other.Perks)
+            && Perks.DeepEqualsReadOnlyCollection(other.Perks)
             && StartProgressionBarAtProgress == other.StartProgressionBarAtProgress
-            && Stats.DeepEqualsReadOnlyCollections(other.Stats)
+            && Stats.DeepEqualsReadOnlyCollection(other.Stats)
             && AffectsQuality == other.AffectsQuality
             && StepGroups.DeepEquals(other.StepGroups)
             && AffectsLevel == other.AffectsLevel
-            && SocketReplacements.DeepEqualsReadOnlyCollections(other.SocketReplacements)
+            && SocketReplacements.DeepEqualsReadOnlyCollection(other.SocketReplacements)
             && TruePropertyIndex == other.TruePropertyIndex
             && TrueStepIndex == other.TrueStepIndex;
     }

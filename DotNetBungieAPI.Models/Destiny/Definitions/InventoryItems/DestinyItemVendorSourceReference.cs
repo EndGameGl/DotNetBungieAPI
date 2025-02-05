@@ -29,7 +29,7 @@ public sealed record DestinyItemVendorSourceReference
     /// </summary>
     [JsonPropertyName("vendorItemIndexes")]
     public ReadOnlyCollection<int> VendorItemIndexes { get; init; } =
-        ReadOnlyCollections<int>.Empty;
+        ReadOnlyCollection<int>.Empty;
 
     public bool DeepEquals(DestinyItemVendorSourceReference other)
     {

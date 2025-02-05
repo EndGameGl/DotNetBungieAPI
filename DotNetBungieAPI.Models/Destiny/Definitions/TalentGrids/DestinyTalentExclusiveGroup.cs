@@ -28,14 +28,14 @@ public sealed record DestinyTalentExclusiveGroup : IDeepEquatable<DestinyTalentE
     ///     DestinyTalentNodeDefinition.nodeHash)
     /// </summary>
     [JsonPropertyName("nodeHashes")]
-    public ReadOnlyCollection<uint> NodeHashes { get; init; } = ReadOnlyCollections<uint>.Empty;
+    public ReadOnlyCollection<uint> NodeHashes { get; init; } = ReadOnlyCollection<uint>.Empty;
 
     /// <summary>
     ///     A quick reference of Groups whose nodes will be deactivated if any node in this group is activated.
     /// </summary>
     [JsonPropertyName("opposingGroupHashes")]
     public ReadOnlyCollection<uint> OpposingGroupHashes { get; init; } =
-        ReadOnlyCollections<uint>.Empty;
+        ReadOnlyCollection<uint>.Empty;
 
     /// <summary>
     ///     A quick reference of Nodes that will be deactivated if any node in this group is activated, by their Talent Node
@@ -43,7 +43,7 @@ public sealed record DestinyTalentExclusiveGroup : IDeepEquatable<DestinyTalentE
     /// </summary>
     [JsonPropertyName("opposingNodeHashes")]
     public ReadOnlyCollection<uint> OpposingNodeHashes { get; init; } =
-        ReadOnlyCollections<uint>.Empty;
+        ReadOnlyCollection<uint>.Empty;
 
     public bool DeepEquals(DestinyTalentExclusiveGroup other)
     {

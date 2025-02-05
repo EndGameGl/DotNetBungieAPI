@@ -30,7 +30,7 @@ public sealed record DestinyArtifactDefinition
     /// </summary>
     [JsonPropertyName("tiers")]
     public ReadOnlyCollection<DestinyArtifactTierDefinition> Tiers { get; init; } =
-        ReadOnlyCollections<DestinyArtifactTierDefinition>.Empty;
+        ReadOnlyCollection<DestinyArtifactTierDefinition>.Empty;
 
     /// <summary>
     ///     Any Geometry/3D info we know about the Artifact. Currently sourced from a related inventory item's gearset
@@ -43,7 +43,7 @@ public sealed record DestinyArtifactDefinition
     {
         return other != null
             && DisplayProperties.DeepEquals(other.DisplayProperties)
-            && Tiers.DeepEqualsReadOnlyCollections(other.Tiers)
+            && Tiers.DeepEqualsReadOnlyCollection(other.Tiers)
             && TranslationBlock.DeepEquals(other.TranslationBlock)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash

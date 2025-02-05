@@ -16,7 +16,7 @@ public sealed record DestinyFireteamFinderConstantsDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
     > FireteamFinderActivityGraphRootCategories { get; init; } =
-        ReadOnlyCollections<
+        ReadOnlyCollection<
             DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
         >.Empty;
 
@@ -24,14 +24,14 @@ public sealed record DestinyFireteamFinderConstantsDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyActivityDefinition>
     > AllFireteamFinderActivities { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyActivityDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyActivityDefinition>>.Empty;
 
     [JsonPropertyName("guardianOathDisplayProperties")]
     public DestinyDisplayPropertiesDefinition? GuardianOathDisplayProperties { get; init; }
 
     [JsonPropertyName("guardianOathTenets")]
     public ReadOnlyCollection<DestinyDisplayPropertiesDefinition> GuardianOathTenets { get; init; } =
-        ReadOnlyCollections<DestinyDisplayPropertiesDefinition>.Empty;
+        ReadOnlyCollection<DestinyDisplayPropertiesDefinition>.Empty;
 
     public DefinitionsEnum DefinitionEnumValue =>
         DefinitionsEnum.DestinyFireteamFinderConstantsDefinition;

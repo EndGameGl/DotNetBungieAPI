@@ -37,7 +37,7 @@ public record DestinyDisplayPropertiesDefinition
 
     [JsonPropertyName("iconSequences")]
     public ReadOnlyCollection<DestinyIconSequenceDefinition> IconSequences { get; init; } =
-        ReadOnlyCollections<DestinyIconSequenceDefinition>.Empty;
+        ReadOnlyCollection<DestinyIconSequenceDefinition>.Empty;
 
     public bool DeepEquals(DestinyDisplayPropertiesDefinition other)
     {
@@ -47,6 +47,6 @@ public record DestinyDisplayPropertiesDefinition
             && Icon == other.Icon
             && Name == other.Name
             && HighResolutionIcon == other.HighResolutionIcon
-            && IconSequences.DeepEqualsReadOnlyCollections(other.IconSequences);
+            && IconSequences.DeepEqualsReadOnlyCollection(other.IconSequences);
     }
 }

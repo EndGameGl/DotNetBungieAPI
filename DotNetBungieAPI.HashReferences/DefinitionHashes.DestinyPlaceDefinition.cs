@@ -114,6 +114,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EuropeanAerialZone_1471216408 = 1471216408;
 			/// <summary>
+			/// 	Dreadnaught, Rings of Saturn
+			/// </summary>
+			public const uint Dreadnaught_1487993535 = 1487993535;
+			/// <summary>
 			/// 	Hellas Basin, Mars
 			/// </summary>
 			public const uint NewArcadia = 3004560036;
@@ -207,6 +211,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NessusOrbit_330251492 = 330251492;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified = 2221417565;
+			/// <summary>
 			/// 	Hunt hostiles in active warzones. Reckon with greater powers. Be notorious.
 			/// </summary>
 			public const uint Gambit_484311295 = 484311295;
@@ -217,7 +225,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	Dreadnaught, Rings of Saturn
 			/// </summary>
-			public const uint Dreadnaught = 4173149923;
+			public const uint Dreadnaught_4173149923 = 4173149923;
 		}
 	}
 }

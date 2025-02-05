@@ -31,14 +31,14 @@ public sealed record DestinyRaceDefinition
     /// </summary>
     [JsonPropertyName("genderedRaceNames")]
     public ReadOnlyDictionary<string, string> GenderedRaceNames { get; init; } =
-        ReadOnlyDictionaries<string, string>.Empty;
+        ReadOnlyDictionary<string, string>.Empty;
 
     [JsonPropertyName("genderedRaceNamesByGenderHash")]
     public ReadOnlyDictionary<
         DefinitionHashPointer<DestinyGenderDefinition>,
         string
     > GenderedRaceNamesByGender { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyGenderDefinition>, string>.Empty;
+        ReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>.Empty;
 
     public bool DeepEquals(DestinyRaceDefinition other)
     {

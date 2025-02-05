@@ -79,7 +79,7 @@ public sealed record DestinyItemInstanceComponent
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyUnlockDefinition>
     > UnlocksRequiredToEquip { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyUnlockDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyUnlockDefinition>>.Empty;
 
     /// <summary>
     ///     If you cannot equip the item, this is a flags enum that enumerates all of the reasons why you couldn't equip the

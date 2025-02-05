@@ -43,5 +43,5 @@ public sealed record DestinyMilestoneQuest
     /// </summary>
     [JsonPropertyName("challenges")]
     public ReadOnlyCollection<DestinyChallengeStatus> Challenges { get; init; } =
-        ReadOnlyCollections<DestinyChallengeStatus>.Empty;
+        ReadOnlyCollection<DestinyChallengeStatus>.Empty;
 }

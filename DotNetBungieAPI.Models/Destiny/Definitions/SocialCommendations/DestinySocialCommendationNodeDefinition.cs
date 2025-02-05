@@ -38,7 +38,7 @@ public sealed record DestinySocialCommendationNodeDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinySocialCommendationNodeDefinition>
     > ChildCommendationNodes { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinySocialCommendationNodeDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinySocialCommendationNodeDefinition>>.Empty;
 
     /// <summary>
     ///     A list of hashes that map to child commendations.
@@ -47,7 +47,7 @@ public sealed record DestinySocialCommendationNodeDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinySocialCommendationDefinition>
     > ChildCommendations { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinySocialCommendationDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinySocialCommendationDefinition>>.Empty;
 
     [JsonPropertyName("blacklisted")]
     public bool Blacklisted { get; init; }
@@ -67,8 +67,8 @@ public sealed record DestinySocialCommendationNodeDefinition
             && DisplayProperties.DeepEquals(other.DisplayProperties)
             && Color.DeepEquals(other.Color)
             && ParentCommendationNode.DeepEquals(other.ParentCommendationNode)
-            && ChildCommendationNodes.DeepEqualsReadOnlyCollections(other.ChildCommendationNodes)
-            && ChildCommendations.DeepEqualsReadOnlyCollections(other.ChildCommendations)
+            && ChildCommendationNodes.DeepEqualsReadOnlyCollection(other.ChildCommendationNodes)
+            && ChildCommendations.DeepEqualsReadOnlyCollection(other.ChildCommendations)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash
             && Index == other.Index

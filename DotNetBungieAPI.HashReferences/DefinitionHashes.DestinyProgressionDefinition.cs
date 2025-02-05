@@ -5,7 +5,6 @@ namespace DotNetBungieAPI.HashReferences
 		public static class Progressions
 		{
 			public const uint H255193376 = 255193376;
-			public const uint H3253296191 = 3253296191;
 			public const uint H3613421690 = 3613421690;
 			public const uint H2926321498 = 2926321498;
 			/// <summary>
@@ -60,7 +59,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ApothecaryEidoReputation = 3739024656;
 			public const uint XP_2214434133 = 2214434133;
 			public const uint H1941119796 = 1941119796;
-			public const uint H70699614 = 70699614;
 			public const uint H1628407317 = 1628407317;
 			public const uint H4021269753 = 4021269753;
 			public const uint H477676543 = 477676543;
@@ -75,15 +73,6 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H26079066 = 26079066;
 			public const uint XP_1135646761 = 1135646761;
 			public const uint H1924974128 = 1924974128;
-			/// <summary>
-			/// 	"Only those who forge their light in the fires of the Crucible can obtain true Glory. The opportunity is yours Guardian, take it." —Lord Shaxx
-			/// <para/>
-			/// 	A progression rank that goes up when you win and down when you lose. Performance is how you move up here.
-			/// <para/>
-			/// 	Complete 3 Survival matches each week to earn bonus Rank Points or prevent decay.
-			/// <para/>
-			/// </summary>
-			public const uint GloryRank = 1647151960;
 			public const uint XP_1656313730 = 1656313730;
 			public const uint XP_2557524386 = 2557524386;
 			public const uint H2267011423 = 2267011423;
@@ -119,12 +108,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Gift subs for any Twitch streamer live streaming Destiny 2 with the official Twitch Destiny Extension active.
 			/// </summary>
 			public const uint GiftedSubs = 2350534509;
+			public const uint XP_1957330625 = 1957330625;
 			public const uint H3184735011 = 3184735011;
 			/// <summary>
 			/// 	Weekly Quests Available
 			/// </summary>
 			public const uint WeeklyQuestsAvailable = 477569712;
 			public const uint Prestige_1495002538 = 1495002538;
+			public const uint XP_2495921168 = 2495921168;
 			/// <summary>
 			/// 	Commander Zavala oversees the Vanguard's tactical operations and conducts regular strikes against the City's enemies.
 			/// </summary>
@@ -140,8 +131,13 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint ClanLevel = 584850370;
 			public const uint H1366927886 = 1366927886;
 			public const uint XP_1687787132 = 1687787132;
+			public const uint H982440978 = 982440978;
 			public const uint XP_4027620195 = 4027620195;
 			public const uint H1062449239 = 1062449239;
+			/// <summary>
+			/// 	Complete Episodic activities, consume Sigil Shards, and turn in harvested materials to increase your Path of Resolve mastery.
+			/// </summary>
+			public const uint ThePathofResolve = 3681735803;
 			public const uint H600547406 = 600547406;
 			public const uint XP_3094108685 = 3094108685;
 			public const uint H1445018644 = 1445018644;
@@ -150,7 +146,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// <summary>
 			/// 	"The path to the Lighthouse is before you, Guardian. Well… a simulated version. It is close enough." —Saint-14 
 			/// <para/>
-			/// 	Compete in Trials of Osiris matches and win rounds. Earn Trials Rank Points based on the number of rounds won on your passage. Win 20 rounds to earn maximum rank.
+			/// 	Compete in Trials of Osiris matches and win rounds. Earn Trials Rank Points based on the number of rounds won on your passage.
 			/// <para/>
 			/// </summary>
 			public const uint TrialsRank = 2755675426;
@@ -196,7 +192,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint GambitRank = 3008065600;
-			public const uint H2572719399 = 2572719399;
 			public const uint H392767087 = 392767087;
 			public const uint H2140885848 = 2140885848;
 			public const uint H2203850209 = 2203850209;
@@ -204,7 +199,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Ana Bray oversees operations in the Hellas Basin, and serves as a liaison between the Vanguard and Rasputin.
 			/// </summary>
 			public const uint VoiceofRasputin = 3859807381;
-			public const uint H3379401853 = 3379401853;
 			public const uint XP_2779402444 = 2779402444;
 			public const uint H2241197230 = 2241197230;
 			public const uint H2726092061 = 2726092061;
@@ -262,6 +256,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ResonanceRank_2126988316 = 2126988316;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1111751008 = 1111751008;
+			/// <summary>
 			/// 	"Ah, Guardian, I have a little something for you. A token of my appreciation." —Rahool
 			/// <para/>
 			/// 	Decrypt or focus gear to earn a place in the Engram Ensiders Club.
@@ -283,6 +281,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Earn XP to advance progression. Once progress is complete, the destination will unlock.
 			/// </summary>
 			public const uint NeomunaUnlockProgress = 530792356;
+			public const uint H1567120654 = 1567120654;
 			public const uint H4244567218 = 4244567218;
 			public const uint XP_2421325160 = 2421325160;
 			public const uint XP_2026300734 = 2026300734;

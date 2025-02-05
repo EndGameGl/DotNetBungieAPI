@@ -4,7 +4,7 @@ public sealed record UserSearchResponseDetail
 {
     [JsonPropertyName("destinyMemberships")]
     public ReadOnlyCollection<UserInfoCard> DestinyMemberships { get; init; } =
-        ReadOnlyCollections<UserInfoCard>.Empty;
+        ReadOnlyCollection<UserInfoCard>.Empty;
 
     [JsonPropertyName("bungieGlobalDisplayName")]
     public string BungieGlobalDisplayName { get; init; }

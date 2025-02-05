@@ -5,5 +5,5 @@ public sealed record DictionaryComponentResponseOfint32AndDestinyItemTalentGridC
 {
     [JsonPropertyName("data")]
     public ReadOnlyDictionary<int, DestinyItemTalentGridComponent> Data { get; init; } =
-        ReadOnlyDictionaries<int, DestinyItemTalentGridComponent>.Empty;
+        ReadOnlyDictionary<int, DestinyItemTalentGridComponent>.Empty;
 }

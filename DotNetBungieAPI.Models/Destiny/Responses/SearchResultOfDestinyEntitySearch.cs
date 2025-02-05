@@ -6,5 +6,5 @@ public sealed record SearchResultOfDestinyEntitySearch : SearchResultBase
 {
     [JsonPropertyName("results")]
     public ReadOnlyCollection<DestinyEntitySearchResultItem> Results { get; init; } =
-        ReadOnlyCollections<DestinyEntitySearchResultItem>.Empty;
+        ReadOnlyCollection<DestinyEntitySearchResultItem>.Empty;
 }

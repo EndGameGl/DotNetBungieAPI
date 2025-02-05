@@ -10,5 +10,5 @@ public sealed record DestinyCraftableSocketPlugComponent
 
     [JsonPropertyName("failedRequirementIndexes")]
     public ReadOnlyCollection<int> FailedRequirementIndexes { get; init; } =
-        ReadOnlyCollections<int>.Empty;
+        ReadOnlyCollection<int>.Empty;
 }

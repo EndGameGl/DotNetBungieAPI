@@ -34,13 +34,13 @@ public sealed record DestinyNodeActivationRequirement
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>
     > MaterialRequirements { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>>.Empty;
 
     public bool DeepEquals(DestinyNodeActivationRequirement other)
     {
         return other != null
             && ExclusiveSetRequiredHash == other.ExclusiveSetRequiredHash
             && GridLevel == other.GridLevel
-            && MaterialRequirements.DeepEqualsReadOnlyCollections(other.MaterialRequirements);
+            && MaterialRequirements.DeepEqualsReadOnlyCollection(other.MaterialRequirements);
     }
 }

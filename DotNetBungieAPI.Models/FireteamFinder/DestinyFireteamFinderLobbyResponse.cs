@@ -19,7 +19,7 @@ public sealed record DestinyFireteamFinderLobbyResponse
 
     [JsonPropertyName("players")]
     public ReadOnlyCollection<DestinyFireteamFinderLobbyPlayer> Players { get; init; } =
-        ReadOnlyCollections<DestinyFireteamFinderLobbyPlayer>.Empty;
+        ReadOnlyCollection<DestinyFireteamFinderLobbyPlayer>.Empty;
 
     [JsonPropertyName("listingId")]
     public long ListingId { get; init; }

@@ -22,5 +22,5 @@ public sealed record PartnerOfferSkuHistoryResponse
 
     [JsonPropertyName("SkuOffers")]
     public ReadOnlyCollection<PartnerOfferHistoryResponse> SkuOffers { get; init; } =
-        ReadOnlyCollections<PartnerOfferHistoryResponse>.Empty;
+        ReadOnlyCollection<PartnerOfferHistoryResponse>.Empty;
 }

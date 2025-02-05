@@ -9,7 +9,7 @@ internal static class Helpers
     internal const char Tabulation = (char)9;
 
     internal static readonly string[] ForbiddenSymbols =
-    {
+    [
         " ",
         ":",
         "-",
@@ -41,8 +41,9 @@ internal static class Helpers
         "=",
         "&",
         ">",
-        "¡"
-    };
+        "¡",
+        "\u221e"
+    ];
 
     internal static readonly string NewLine = Environment.NewLine;
 }

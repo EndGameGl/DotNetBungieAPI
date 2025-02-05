@@ -18,12 +18,12 @@ public sealed record DestinyMaterialRequirementSetDefinition
     /// </summary>
     [JsonPropertyName("materials")]
     public ReadOnlyCollection<DestinyMaterialRequirement> Materials { get; init; } =
-        ReadOnlyCollections<DestinyMaterialRequirement>.Empty;
+        ReadOnlyCollection<DestinyMaterialRequirement>.Empty;
 
     public bool DeepEquals(DestinyMaterialRequirementSetDefinition other)
     {
         return other != null
-            && Materials.DeepEqualsReadOnlyCollections(other.Materials)
+            && Materials.DeepEqualsReadOnlyCollection(other.Materials)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash
             && Index == other.Index

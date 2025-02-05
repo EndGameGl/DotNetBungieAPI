@@ -9,11 +9,11 @@ public sealed record DestinyRecordComponent
 
     [JsonPropertyName("objectives")]
     public ReadOnlyCollection<DestinyObjectiveProgress> Objectives { get; init; } =
-        ReadOnlyCollections<DestinyObjectiveProgress>.Empty;
+        ReadOnlyCollection<DestinyObjectiveProgress>.Empty;
 
     [JsonPropertyName("intervalObjectives")]
     public ReadOnlyCollection<DestinyObjectiveProgress> IntervalObjectives { get; init; } =
-        ReadOnlyCollections<DestinyObjectiveProgress>.Empty;
+        ReadOnlyCollection<DestinyObjectiveProgress>.Empty;
 
     [JsonPropertyName("intervalsRedeemedCount")]
     public int IntervalsRedeemedCount { get; init; }
@@ -31,5 +31,5 @@ public sealed record DestinyRecordComponent
     /// </summary>
     [JsonPropertyName("rewardVisibilty")]
     public ReadOnlyCollection<bool> RewardVisibilty { get; init; } =
-        ReadOnlyCollections<bool>.Empty;
+        ReadOnlyCollection<bool>.Empty;
 }

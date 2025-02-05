@@ -6,5 +6,5 @@ public sealed record SearchResultOfGroupMember : SearchResultBase
 {
     [JsonPropertyName("results")]
     public ReadOnlyCollection<GroupMember> Results { get; init; } =
-        ReadOnlyCollections<GroupMember>.Empty;
+        ReadOnlyCollection<GroupMember>.Empty;
 }

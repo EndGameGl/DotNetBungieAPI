@@ -1,17 +1,14 @@
 ﻿using DotNetBungieAPI.ApiBuilder;
 using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Service.Abstractions;
-using DotNetBungieAPI.Services;
 using DotNetBungieAPI.Services.Implementations;
 using DotNetBungieAPI.Services.Implementations.ServiceConfigurations;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace DotNetBungieAPI;
 
 public class BungieClientBuilder : IBungieClientBuilder
 {
-    private readonly IServiceCollection _serviceCollection;
     public IBungieClientConfiguration ClientConfiguration { get; }
     public IServiceConfigurator<IAuthorizationHandler> Authorization { get; }
     public IServiceConfigurator<IDestiny2DefinitionRepository> DefinitionRepository { get; }
@@ -20,10 +17,10 @@ public class BungieClientBuilder : IBungieClientBuilder
     public IServiceConfigurator<IBungieNetJsonSerializer> BungieNetJsonSerializer { get; }
     public IServiceConfigurator<IDotNetBungieApiHttpClient> DotNetBungieApiHttpClient { get; }
 
-    public BungieClientBuilder(IServiceCollection serviceCollection)
+    public BungieClientBuilder(IServiceCollection? serviceCollection)
     {
-        _serviceCollection = serviceCollection;
         serviceCollection ??= new ServiceCollection();
+        ;
         ClientConfiguration = new BungieClientConfiguration();
         Authorization = new ServiceConfigurator<IAuthorizationHandler>(serviceCollection);
         DefinitionRepository = new ServiceConfigurator<IDestiny2DefinitionRepository>(

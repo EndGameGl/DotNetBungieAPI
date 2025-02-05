@@ -47,7 +47,7 @@ public sealed record DestinyTalentNodeDefinition : IDeepEquatable<DestinyTalentN
     /// </summary>
     [JsonPropertyName("prerequisiteNodeIndexes")]
     public ReadOnlyCollection<int> PrerequisiteNodeIndexes { get; init; } =
-        ReadOnlyCollections<int>.Empty;
+        ReadOnlyCollection<int>.Empty;
 
     /// <summary>
     ///     At one point, Talent Nodes supported the idea of "Binary Pairs": nodes that overlapped each other visually, and
@@ -110,7 +110,7 @@ public sealed record DestinyTalentNodeDefinition : IDeepEquatable<DestinyTalentN
     /// </summary>
     [JsonPropertyName("steps")]
     public ReadOnlyCollection<DestinyNodeStepDefinition> Steps { get; init; } =
-        ReadOnlyCollections<DestinyNodeStepDefinition>.Empty;
+        ReadOnlyCollection<DestinyNodeStepDefinition>.Empty;
 
     /// <summary>
     ///     The nodeHash values for nodes that are in an Exclusive Set with this node.
@@ -121,7 +121,7 @@ public sealed record DestinyTalentNodeDefinition : IDeepEquatable<DestinyTalentN
     /// </summary>
     [JsonPropertyName("exclusiveWithNodeHashes")]
     public ReadOnlyCollection<uint> ExclusiveWithNodeHashes { get; init; } =
-        ReadOnlyCollections<uint>.Empty;
+        ReadOnlyCollection<uint>.Empty;
 
     /// <summary>
     ///     If the node's step is randomly selected, this is the amount of the Talent Grid's progression experience at which
@@ -202,7 +202,7 @@ public sealed record DestinyTalentNodeDefinition : IDeepEquatable<DestinyTalentN
             && IsRandom == other.IsRandom
             && RandomActivationRequirement.DeepEquals(other.RandomActivationRequirement)
             && IsRandomRepurchasable == other.IsRandomRepurchasable
-            && Steps.DeepEqualsReadOnlyCollections(other.Steps)
+            && Steps.DeepEqualsReadOnlyCollection(other.Steps)
             && ExclusiveWithNodeHashes.DeepEqualsReadOnlySimpleCollection(
                 other.ExclusiveWithNodeHashes
             )

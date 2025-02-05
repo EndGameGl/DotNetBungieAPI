@@ -7,7 +7,7 @@ public sealed record DestinyFireteamFinderGetPlayerLobbiesResponse
     /// </summary>
     [JsonPropertyName("lobbies")]
     public ReadOnlyCollection<DestinyFireteamFinderLobbyResponse> Lobbies { get; init; } =
-        ReadOnlyCollections<DestinyFireteamFinderLobbyResponse>.Empty;
+        ReadOnlyCollection<DestinyFireteamFinderLobbyResponse>.Empty;
 
     /// <summary>
     ///     The number of results requested.

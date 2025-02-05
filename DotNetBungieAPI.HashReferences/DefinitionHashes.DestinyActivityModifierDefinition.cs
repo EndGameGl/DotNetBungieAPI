@@ -13,9 +13,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ScorchedEarth = 703904464;
 			/// <summary>
+			/// 	Ability Cooldowns Increased
+			/// </summary>
+			public const uint ShaxxsTrainingWeights = 3032884941;
+			/// <summary>
 			/// 	[Arc] Arc Shields
 			/// </summary>
 			public const uint ShieldedFoes_3171609188 = 3171609188;
+			/// <summary>
+			/// 	Limited fireteam revives. Gain additional revives by defeating Champions.
+			/// </summary>
+			public const uint LimitedRevives_4239965093 = 4239965093;
 			/// <summary>
 			/// 	Scorn Raiders now have Void shields.
 			/// </summary>
@@ -32,9 +40,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ControlRules = 2201679031;
 			/// <summary>
-			/// 	Limited fireteam revives. Gain additional revives by defeating Champions.
+			/// 	Keep it secret.  Keep it safe.
 			/// </summary>
-			public const uint LimitedRevives_4239965093 = 4239965093;
+			public const uint Classified_868171498 = 868171498;
 			/// <summary>
 			/// 	When defeated, Psions spawn Void grenades at their feet.
 			/// </summary>
@@ -96,6 +104,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Epitaph = 998275325;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_933981331 = 933981331;
+			/// <summary>
+			/// 	This playlist contains Collision and Survival. When you launch, it will randomly select one of the modes for you to play.
+			/// <para/>
+			/// 	Collision: To win, score more points than your opponents by capturing and controlling the zone. There will be one zone active at a time. Defeating your opponents does not directly grant points.
+			/// <para/>
+			/// 	Survival: To win, your team must become the last Guardian(s) standing by defeating the opposing team to exhaust their revives.
+			/// <para/>
+			/// </summary>
+			public const uint CompetitiveDivisionRules = 738174153;
+			/// <summary>
 			/// 	{var:2189146210}% bonus to outgoing Arc damage.
 			/// </summary>
 			public const uint ArcSurge = 2691200658;
@@ -112,9 +133,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OverchargedGlaive = 2743796883;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Complete a perfect lap of the Warden's twisted game.
+			/// <para/>
+			/// 	Warden's Punishment: Failing to successfully complete secondary objectives will result in the Warden inflicting its punishment on the entire fireteam.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_4292382471 = 4292382471;
+			public const uint KellsVengeanceRules = 4292382471;
 			/// <summary>
 			/// 	You will face [Stagger] Unstoppable Champions.
 			/// <para/>
@@ -179,9 +203,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint IncreasedTrialsRank = 1361609633;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Initial Exotic drop rate boosts: {var:2774921993}
 			/// </summary>
-			public const uint Classified_1305687814 = 1305687814;
+			public const uint BoostsGained_1305687814 = 1305687814;
 			/// <summary>
 			/// 	If the timer reaches 0:00, the activity will restart.
 			/// </summary>
@@ -311,6 +335,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Matchmaking_2266489848 = 2266489848;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_196389522 = 196389522;
+			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint OutofItsWay = 2814846409;
@@ -335,9 +363,18 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DaodanSurge = 3787716856;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Successfully complete four laps in the Contest of Elders.
+			/// <para/>
+			/// 	Warden's Judgment:  A dynamic range of values tied to the activity's difficulty. Stacks of positive Judgment are called Warden's Favor and increase encounter difficulty. Stacks of negative Judgment are called Warden's Punishment and slightly decrease difficulty. 
+			/// <para/>
+			/// 	Warden's Sentencing: Following every reward phase, the Warden will assess the fireteam's Judgment rating. Warden's Favor allows the fireteam to skip an encounter, while Warden's Punishment activates the Punishment Protocol.
+			/// <para/>
+			/// 	Secondary Objectives: Challenges and critical objectives appear in every encounter. Mastery of these objectives contributes toward Warden's Judgment.
+			/// <para/>
+			/// 	Rewards: Granted upon the defeat of a boss. Subsequent laps pay out better rewards. Stacks of Warden's Favor increase your rewards even further.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_1555213579 = 1555213579;
+			public const uint ContestofEldersRules = 1555213579;
 			/// <summary>
 			/// 	Ability recharge time: Slowed
 			/// <para/>
@@ -478,18 +515,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WeeklyBoss_65390994 = 65390994;
 			/// <summary>
+			/// 	Initial exotic drop rate boosts: {var:1611655700}
+			/// </summary>
+			public const uint ExoticDropRateBoostsGained_4087969162 = 4087969162;
+			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint WaitForIt = 3135466059;
-			/// <summary>
-			/// 	This playlist contains Collision and Clash. When you launch, it will randomly select one of the modes for you to play.
-			/// <para/>
-			/// 	Collision: To win, score more points than your opponents by capturing and controlling the zone. There will be one zone active at a time. Defeating your opponents does not directly grant points.
-			/// <para/>
-			/// 	Clash: To win, defeat your opponents to score more points than them!
-			/// <para/>
-			/// </summary>
-			public const uint CompetitiveDivisionRules = 732136790;
 			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
@@ -696,10 +728,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SpecialAmmoRulesAlpha = 3492492287;
 			/// <summary>
-			/// 	Savathûn has loaned you a worm. When it hungers, deal damage of the focused type to satiate it. When the worm is full, your ability regeneration is increased. If the worm starves, your ability regeneration is reduced and you take increased damage from the focused damage type.
-			/// </summary>
-			public const uint ArcHunger = 2081001771;
-			/// <summary>
 			/// 	+50% Stasis effectiveness.
 			/// </summary>
 			public const uint StasisBurn = 838742970;
@@ -804,7 +832,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EscalatingDifficulty_3114697541 = 3114697541;
 			/// <summary>
-			/// 	Swapping Exotic armor drains all ability energy.
+			/// 	Swapping Exotic armor, Kinetic weapons, and Energy weapons drains all ability energy.
 			/// </summary>
 			public const uint Notswap = 3792281695;
 			/// <summary>
@@ -834,9 +862,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint FirePit = 2139004924;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Limited fireteam revives. The Warden will grant additional revive tokens for each Model Prisoner defeated.
 			/// </summary>
-			public const uint Classified_1897835427 = 1897835427;
+			public const uint LimitedRevives_1897835427 = 1897835427;
+			/// <summary>
+			/// 	Health Recovery is disabled, and you have significantly greater health and overshields. Healing Orbs can be occasionally found throughout the activity.
+			/// </summary>
+			public const uint NetherRules = 3042462389;
 			/// <summary>
 			/// 	You will face [Shield-Piercing] Barrier and [Disruption] Overload Champions.
 			/// </summary>
@@ -1006,9 +1038,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SubclassLocked = 3037208116;
 			/// <summary>
-			/// 	When on an Unflawed Card, matchmaking does not utilize skill.
+			/// 	When on an active Lighthouse Passage, matchmaking does not utilize skill.
 			/// <para/>
-			/// 	When on a Flawed Card, matchmaking prefers players with similar weekly performance in Trials of Osiris.
+			/// 	When on a Trials Passage or a completed Lighthouse Passage, matchmaking prefers players with similar weekly performance in Trials of Osiris.
 			/// <para/>
 			/// </summary>
 			public const uint Matchmaking_1870323889 = 1870323889;
@@ -1025,9 +1057,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Brawn = 2042632950;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	• Combatants have higher aggression and shields.
+			/// <para/>
+			/// 	• Encounters feature resurrection tokens.
+			/// <para/>
+			/// 	• Encounters will enrage.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_3193240035 = 3193240035;
+			public const uint ContestModeRules_3193240035 = 3193240035;
 			/// <summary>
 			/// 	To win, your team must become the last Guardian(s) standing by defeating the entire opposing team.
 			/// <para/>
@@ -1098,9 +1135,17 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CooperativeFocusCampaign = 4047266548;
 			/// <summary>
+			/// 	To win the round, reach the scoring threshold by capture zones, or capture all zones completely.
+			/// </summary>
+			public const uint LockdownRules = 3207332887;
+			/// <summary>
 			/// 	[Arc] Arc and [Void] Void Shields
 			/// </summary>
 			public const uint ShieldedFoes_2650740350 = 2650740350;
+			/// <summary>
+			/// 	{var:1027206613}% bonus to Submachine Gun damage.
+			/// </summary>
+			public const uint OverchargedSubmachineGun = 2787412174;
 			/// <summary>
 			/// 	Potential Data buffs:
 			/// <para/>
@@ -1243,9 +1288,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint OnslaughtRules_1096446210 = 1096446210;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Additional modifiers are randomly selected at the start of each encounter.
+			/// <para/>
+			/// 	Combatant power increases after each lap.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_848207019 = 848207019;
+			public const uint DynamicDifficulty = 848207019;
 			/// <summary>
 			/// 	Enemy shields are highly resistant to all unmatched elemental damage.
 			/// </summary>
@@ -1372,6 +1420,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ExpertModifiers_2567927655 = 2567927655;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_240545758 = 240545758;
+			/// <summary>
 			/// 	All collected Elemental Orbs contribute toward the elemental buff counter. Subclass choice determines which elemental buff is applied.
 			/// <para/>
 			/// 	Prismatic orbs from Taken combatants grant a random empowerment buff.
@@ -1390,6 +1442,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Solar final blows grant melee and grenade energy. Stasis subclasses receive a lot; other subclasses receive a little.
 			/// </summary>
 			public const uint SolarThermalSwap = 1575279060;
+			/// <summary>
+			/// 	Zones capture slower, and capturing a zone immediately scores. Reduced score limits are in place for the slow capturing variant.
+			/// </summary>
+			public const uint SlowCapturingZones = 3893690555;
 			/// <summary>
 			/// 	Health and shields are reduced by half, but recovery is twice as fast.
 			/// </summary>
@@ -1432,9 +1488,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RiftRules = 4211958639;
 			/// <summary>
+			/// 	Within the Dreadnaught there are numerous secrets to be found.
+			/// </summary>
+			public const uint Secrets = 2592191680;
+			/// <summary>
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint KeepOut = 1741733430;
+			/// <summary>
+			/// 	The Fireteam has limited revives. 
+			/// <para/>
+			/// 	Pressure events will occur periodically. Complete them or die.
+			/// <para/>
+			/// </summary>
+			public const uint HighPressure = 1334220775;
 			/// <summary>
 			/// 	To win, defeat your opponents to get the most points! This is a free-for-all mode where no one is an ally.
 			/// </summary>
@@ -1443,10 +1510,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	A challenge awaits…
 			/// </summary>
 			public const uint WhichWitch = 217815700;
-			/// <summary>
-			/// 	Savathûn has loaned you a worm. When it hungers, deal damage of the focused type to satiate it. When the worm is full, your ability regeneration is increased. If the worm starves, your ability regeneration is reduced and you take increased damage from the focused damage type.
-			/// </summary>
-			public const uint VoidHunger = 976277003;
 			/// <summary>
 			/// 	All abilities are disabled! Weapons are your only defense.
 			/// <para/>
@@ -1574,6 +1637,15 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ArenaBreachExecutableModeRules = 2431130026;
 			/// <summary>
+			/// 	• Enemies have higher aggression and shields.
+			/// <para/>
+			/// 	• Encounters feature resurrection tokens.
+			/// <para/>
+			/// 	• Encounters will enrage.
+			/// <para/>
+			/// </summary>
+			public const uint ContestModeRules_3256101957 = 3256101957;
+			/// <summary>
 			/// 	To win, defeat your opponents to score more points than them! Every player is equipped with a Scorch Cannon.
 			/// <para/>
 			/// 	Scorch Cannon: A heavy-impact weapon borrowed from the Eliksni. Shots can detonate on impact or can be charged by holding and releasing the actuator for a larger explosion.
@@ -1622,6 +1694,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Initial Exotic drop rate boosts: {var:2935433793}
 			/// </summary>
 			public const uint BoostsGained_1172122584 = 1172122584;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3970568521 = 3970568521;
 			public const uint H1783825372 = 1783825372;
 			/// <summary>
 			/// 	Landing multiple precision hits with a Primary ammo weapon empowers Special and Heavy ammo weapons. Reduces incoming damage while active.

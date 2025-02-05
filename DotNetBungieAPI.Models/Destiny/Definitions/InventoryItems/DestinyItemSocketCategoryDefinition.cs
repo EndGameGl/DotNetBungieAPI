@@ -22,7 +22,7 @@ public sealed record DestinyItemSocketCategoryDefinition
     ///     the indexes under the category, in game-rendered order.
     /// </summary>
     [JsonPropertyName("socketIndexes")]
-    public ReadOnlyCollection<int> SocketIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
+    public ReadOnlyCollection<int> SocketIndexes { get; init; } = ReadOnlyCollection<int>.Empty;
 
     public bool DeepEquals(DestinyItemSocketCategoryDefinition other)
     {

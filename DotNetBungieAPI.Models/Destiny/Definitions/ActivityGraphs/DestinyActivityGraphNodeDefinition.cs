@@ -36,7 +36,7 @@ public sealed record DestinyActivityGraphNodeDefinition
     /// </summary>
     [JsonPropertyName("featuringStates")]
     public ReadOnlyCollection<DestinyActivityGraphNodeFeaturingStateDefinition> FeaturingStates { get; init; } =
-        ReadOnlyCollections<DestinyActivityGraphNodeFeaturingStateDefinition>.Empty;
+        ReadOnlyCollection<DestinyActivityGraphNodeFeaturingStateDefinition>.Empty;
 
     /// <summary>
     ///     The node may have various possible activities that could be active for it, however only one may be active at a
@@ -44,7 +44,7 @@ public sealed record DestinyActivityGraphNodeDefinition
     /// </summary>
     [JsonPropertyName("activities")]
     public ReadOnlyCollection<DestinyActivityGraphNodeActivityDefinition> Activities { get; init; } =
-        ReadOnlyCollections<DestinyActivityGraphNodeActivityDefinition>.Empty;
+        ReadOnlyCollection<DestinyActivityGraphNodeActivityDefinition>.Empty;
 
     /// <summary>
     ///     Represents possible states that the graph node can be in. These are combined with some checking that happens in the
@@ -52,7 +52,7 @@ public sealed record DestinyActivityGraphNodeDefinition
     /// </summary>
     [JsonPropertyName("states")]
     public ReadOnlyCollection<DestinyActivityGraphNodeStateEntry> States { get; init; } =
-        ReadOnlyCollections<DestinyActivityGraphNodeStateEntry>.Empty;
+        ReadOnlyCollection<DestinyActivityGraphNodeStateEntry>.Empty;
 
     [JsonPropertyName("uiActivityTypeOverrideHash")]
     public uint UIActivityTypeOverrideHash { get; init; }
@@ -63,12 +63,12 @@ public sealed record DestinyActivityGraphNodeDefinition
     public bool DeepEquals(DestinyActivityGraphNodeDefinition other)
     {
         return other != null
-            && Activities.DeepEqualsReadOnlyCollections(other.Activities)
-            && FeaturingStates.DeepEqualsReadOnlyCollections(other.FeaturingStates)
+            && Activities.DeepEqualsReadOnlyCollection(other.Activities)
+            && FeaturingStates.DeepEqualsReadOnlyCollection(other.FeaturingStates)
             && NodeId == other.NodeId
             && OverrideDisplay.DeepEquals(other.OverrideDisplay)
             && Position.DeepEquals(other.Position)
-            && States.DeepEqualsReadOnlyCollections(other.States)
+            && States.DeepEqualsReadOnlyCollection(other.States)
             && UIActivityTypeOverrideHash == other.UIActivityTypeOverrideHash
             && UIStyleHash == other.UIStyleHash;
     }

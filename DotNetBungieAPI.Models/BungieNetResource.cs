@@ -13,7 +13,7 @@ public readonly struct BungieNetResource
     /// <summary>
     ///     Relative path to resource
     /// </summary>
-    public string RelativePath { get; }
+    public string? RelativePath { get; }
 
     /// <summary>
     ///     Absolute path to resource
@@ -29,7 +29,7 @@ public readonly struct BungieNetResource
     ///     Default constructor
     /// </summary>
     /// <param name="path"></param>
-    public BungieNetResource(string path)
+    public BungieNetResource(string? path)
     {
         RelativePath = path;
     }
@@ -42,7 +42,7 @@ public readonly struct BungieNetResource
     /// <returns></returns>
     public static bool operator ==(BungieNetResource a, BungieNetResource b)
     {
-        return a.RelativePath.Equals(b.RelativePath);
+        return a.RelativePath == b.RelativePath;
     }
 
     /// <summary>

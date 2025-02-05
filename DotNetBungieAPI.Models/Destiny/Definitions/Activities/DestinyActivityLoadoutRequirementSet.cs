@@ -8,10 +8,10 @@ public sealed record DestinyActivityLoadoutRequirementSet
     /// </summary>
     [JsonPropertyName("requirements")]
     public ReadOnlyCollection<DestinyActivityLoadoutRequirement> Requirements { get; init; } =
-        ReadOnlyCollections<DestinyActivityLoadoutRequirement>.Empty;
+        ReadOnlyCollection<DestinyActivityLoadoutRequirement>.Empty;
 
     public bool DeepEquals(DestinyActivityLoadoutRequirementSet other)
     {
-        return other != null && Requirements.DeepEqualsReadOnlyCollections(other.Requirements);
+        return other != null && Requirements.DeepEqualsReadOnlyCollection(other.Requirements);
     }
 }

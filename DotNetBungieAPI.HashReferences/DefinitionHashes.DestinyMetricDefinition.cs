@@ -23,9 +23,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint FlawlessTitleGildings = 4112712479;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Flawless completions of the "Vesper's Host" dungeon.
+			/// <para/>
+			/// 	Tracks from Episode: Revenant onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_4059881008 = 4059881008;
+			public const uint VespersHostFlawlessCompletions = 4059881008;
 			/// <summary>
 			/// 	The total number of Guardians carried to their first completion of "Scourge of the Past."
 			/// <para/>
@@ -153,6 +156,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DualityFlawlessCompletions = 1034442994;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1000919712 = 1000919712;
+			/// <summary>
 			/// 	Land final blows on the entire opposing team before any of them respawn.
 			/// <para/>
 			/// 	Tracks from Season 4 onward.
@@ -160,16 +167,16 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Annihilation = 2573000632;
 			/// <summary>
-			/// 	The number of combatants defeated in the Shattered Realm and Astral Alignment activities.
-			/// </summary>
-			public const uint CombatantsDefeatedinSeasonoftheLostActivities = 4017051991;
-			/// <summary>
 			/// 	The number of Heroic story mission completions.
 			/// <para/>
 			/// 	Tracks from Season 4 onward.
 			/// <para/>
 			/// </summary>
 			public const uint HeroicMissionCompletions = 1745890531;
+			/// <summary>
+			/// 	The number of combatants defeated in the Shattered Realm and Astral Alignment activities.
+			/// </summary>
+			public const uint CombatantsDefeatedinSeasonoftheLostActivities = 4017051991;
 			/// <summary>
 			/// 	The number of Guardians carried to their first-ever completion of "Root of Nightmares" during this Season.
 			/// </summary>
@@ -188,6 +195,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint GardenofSalvationTimeTrial_1835852368 = 1835852368;
+			/// <summary>
+			/// 	The number of Guardians carried to their first win streak of 5 or more on a Lighthouse Passage this Episode.
+			/// </summary>
+			public const uint WinStreakCarries_2760294689 = 2760294689;
 			/// <summary>
 			/// 	Highest score achieved in Dares of Eternity on Normal difficulty.
 			/// <para/>
@@ -217,6 +228,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The number of Guardians carried to their first ever completion of "Vault of Glass" during this week.
 			/// </summary>
 			public const uint VaultofGlassCarries_1586921946 = 1586921946;
+			/// <summary>
+			/// 	Average player score in Control matches this Season or Episode.
+			/// </summary>
+			public const uint AveragePlayerScore = 2278872889;
 			/// <summary>
 			/// 	The number of targets eliminated as a Nightstalker.
 			/// <para/>
@@ -295,6 +310,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint IronBannerGoldMedals = 1196938828;
+			/// <summary>
+			/// 	Average player score in Iron Banner Control matches this Season or Episode.
+			/// </summary>
+			public const uint IronBannerPlayerScore = 3274907193;
 			/// <summary>
 			/// 	Highest score achieved in a single run of The Pantheon: Nezarec Sublime.
 			/// </summary>
@@ -401,19 +420,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WinStreak_3787323274 = 3787323274;
 			/// <summary>
-			/// 	The total number of "King's Fall" completions using Guided Games.
-			/// <para/>
-			/// 	Tracks from Season 18 onward.
-			/// <para/>
-			/// </summary>
-			public const uint KingsFallGuidedGames = 2496111733;
-			/// <summary>
 			/// 	The lifetime high score for "The Scarlet Keep" in Nightfall.
 			/// <para/>
 			/// 	Tracks from Season 8 onward.
 			/// <para/>
 			/// </summary>
 			public const uint NightfallTheScarletKeepScore = 1666283222;
+			/// <summary>
+			/// 	The total number of "King's Fall" completions using Guided Games.
+			/// <para/>
+			/// 	Tracks from Season 18 onward.
+			/// <para/>
+			/// </summary>
+			public const uint KingsFallGuidedGames = 2496111733;
 			/// <summary>
 			/// 	Flawless completions of the "Ghosts of the Deep" dungeon.
 			/// <para/>
@@ -422,9 +441,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GhostsoftheDeepFlawlessCompletions = 3251969937;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Completions of the "Vesper's Host" dungeon.
+			/// <para/>
+			/// 	Tracks from Episode: Revenant onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_2695240656 = 2695240656;
+			public const uint VespersHostCompletions = 2695240656;
 			/// <summary>
 			/// 	The number of power-ups collected within Dares of Eternity this Season.
 			/// </summary>
@@ -459,6 +481,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SpireofStarsTimeTrial = 2842037131;
 			/// <summary>
+			/// 	The number of matches won while on a 7-win completed Lighthouse Passage.
+			/// <para/>
+			/// 	Tracks from Episode 3 onward.
+			/// <para/>
+			/// </summary>
+			public const uint CompletedLighthousePassagewins_3669210657 = 3669210657;
+			/// <summary>
 			/// 	The total number of "Root of Nightmares" completions using Guided Games.
 			/// <para/>
 			/// 	Tracks from Season 20 onward.
@@ -484,10 +513,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The highest consecutive Win Streak in Trials of Osiris this Season.
 			/// </summary>
 			public const uint WinStreak_957196641 = 957196641;
-			/// <summary>
-			/// 	The number of Guardians carried to their first flawless ticket this Season while the player has the "Light For The Lost" emblem equipped.
-			/// </summary>
-			public const uint LighthouseCarries_610393611 = 610393611;
 			/// <summary>
 			/// 	Total candy collected during the Festival of the Lost.
 			/// <para/>
@@ -535,6 +560,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint Voidwalkerdefeats = 4114590251;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1174363710 = 1174363710;
 			/// <summary>
 			/// 	The number of Champions defeated during Season of the Lost.
 			/// </summary>
@@ -584,9 +613,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint MotesBanked_2920575849 = 2920575849;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The fastest time for completing the "Vesper's Host" dungeon.
+			/// <para/>
+			/// 	Tracks from Episode: Revenant onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_2053870629 = 2053870629;
+			public const uint VespersHostTimeTrial = 2053870629;
 			/// <summary>
 			/// 	Flawless solo completions of the "Spire of the Watcher" dungeon.
 			/// <para/>
@@ -635,9 +667,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ScourgeofthePastTimeTrial = 1245368441;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	The total number of Guardians carried to their first completion of the "Vesper's Host" dungeon.
+			/// <para/>
+			/// 	Tracks from Episode: Revenant onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_673890130 = 673890130;
+			public const uint VespersHostCarries = 673890130;
 			/// <summary>
 			/// 	The total number of Guardians carried to their first completion of "Vow of the Disciple."
 			/// <para/>
@@ -693,6 +728,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint LostSectorCompletions_740213466 = 740213466;
 			/// <summary>
+			/// 	The highest consecutive win streak on a gilded Lighthouse Passage in Trials of Osiris this Episode.
+			/// </summary>
+			public const uint FlawlessWinStreak_2473002671 = 2473002671;
+			/// <summary>
 			/// 	The number of opponents defeated in Crucible matches this Season.
 			/// </summary>
 			public const uint OpponentsDefeated_2935221077 = 2935221077;
@@ -707,6 +746,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The fastest Nightfall completion time this week.
 			/// </summary>
 			public const uint NightfallCompletionTime = 1970407090;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2781975991 = 2781975991;
+			/// <summary>
+			/// 	Highest Rank achieved for Episode: Heresy.
+			/// </summary>
+			public const uint EpisodeHeresyRank = 2245851609;
 			/// <summary>
 			/// 	Highest Rank achieved for Episode: Revenant.
 			/// </summary>
@@ -737,6 +784,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SeasonoftheDeepRank = 2245851614;
 			/// <summary>
+			/// 	The number of matches won while the player is on a completed (7-win) Lighthouse Passage this week.
+			/// </summary>
+			public const uint WinswithaCompleteTicket_3234148809 = 3234148809;
+			/// <summary>
 			/// 	Highest Rank achieved for the Season of Defiance.
 			/// <para/>
 			/// 	Tracks from Season 20 onward.
@@ -751,9 +802,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallTheDisgracedScore = 136014172;
 			/// <summary>
-			/// 	The number of tickets with seven wins and zero losses.
+			/// 	The number of tickets with 7 wins and 0 losses.
 			/// <para/>
-			/// 	Tracks from Season 10 onward.
+			/// 	Tracked from Season 10 through Episode 2.
 			/// <para/>
 			/// </summary>
 			public const uint FlawlessTickets_1765255052 = 1765255052;
@@ -761,6 +812,14 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Fastest time completion of Enigma Protocol.
 			/// </summary>
 			public const uint EnigmaProtocolBestTime = 948973527;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3160852135 = 3160852135;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_4032045755 = 4032045755;
 			/// <summary>
 			/// 	The fastest completion time for "Salvation's Edge."
 			/// <para/>
@@ -775,6 +834,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint WarlordsRuinFlawlessSoloCompletions = 3253584750;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_2724885891 = 2724885891;
 			/// <summary>
 			/// 	The lifetime high score for "Insight Terminus" in Nightfall.
 			/// <para/>
@@ -1020,9 +1083,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint GambitRank = 250859887;
 			/// <summary>
-			/// 	The number of matches won this Season while the "Flawless Empyrean" emblem is equipped and the player is holding a seven-win ticket.
+			/// 	The number of matches won while on a 7-win completed Lighthouse Passage this Episode.
 			/// </summary>
-			public const uint WinswithaCompleteTicket_128083325 = 128083325;
+			public const uint CompletedLighthousePassagewins_128083325 = 128083325;
 			/// <summary>
 			/// 	The fastest completion time for "Root of Nightmares" this Season.
 			/// </summary>
@@ -1116,6 +1179,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint RootofNightmaresCarries_2499684194 = 2499684194;
 			/// <summary>
+			/// 	The highest consecutive win streak on a flawless Lighthouse Passage in Trials of Osiris.
+			/// <para/>
+			/// 	Tracks from Episode 3 onward.
+			/// <para/>
+			/// </summary>
+			public const uint FlawlessWinStreak_1076064058 = 1076064058;
+			/// <summary>
 			/// 	The number of Strike completions this week.
 			/// </summary>
 			public const uint Completions_3212298862 = 3212298862;
@@ -1151,6 +1221,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint BountyCompletions = 3264536674;
+			/// <summary>
+			/// 	Total number of boons acquired in the Nether activity.
+			/// </summary>
+			public const uint BoonCollector = 1517766727;
 			/// <summary>
 			/// 	Rapidly defeat 7 opponents.
 			/// <para/>
@@ -1214,9 +1288,20 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallTheDevilsLairScore = 103014972;
 			/// <summary>
+			/// 	The total number of Guardians carried to their first Seasonal or Episodic win streak of 5 or more on a Lighthouse Passage.
+			/// <para/>
+			/// 	Tracks from Episode 3 onward.
+			/// <para/>
+			/// </summary>
+			public const uint WinStreakCarries_3151787370 = 3151787370;
+			/// <summary>
 			/// 	The number of Guardians carried to their first ever completion of "Garden of Salvation" during this week.
 			/// </summary>
 			public const uint GardenofSalvationCarries_2213234727 = 2213234727;
+			/// <summary>
+			/// 	The highest consecutive win streak on a flawless Lighthouse Passage in Trials of Osiris this week.
+			/// </summary>
+			public const uint FlawlessWinStreak_1876673954 = 1876673954;
 			/// <summary>
 			/// 	The number of targets eliminated as a Gunslinger.
 			/// <para/>
@@ -1322,10 +1407,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Strikerdefeats = 2839721658;
 			/// <summary>
-			/// 	The number of Guardians carried to their first flawless ticket this week while the player has the "Light For The Lost" emblem equipped.
-			/// </summary>
-			public const uint LighthouseCarries_1155098170 = 1155098170;
-			/// <summary>
 			/// 	The total number of flawless strike completions.
 			/// <para/>
 			/// 	Tracks from Season 10 onward.
@@ -1340,10 +1421,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallTheGlasswayScore = 2883115929;
 			/// <summary>
-			/// 	The number of tickets with seven wins and zero losses this week.
-			/// </summary>
-			public const uint FlawlessTickets_122451876 = 122451876;
-			/// <summary>
 			/// 	The total number of completions of "Root of Nightmares."
 			/// <para/>
 			/// 	Tracks from Season 20 onward.
@@ -1357,6 +1434,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint KingsFallTimeTrial_399420098 = 399420098;
+			/// <summary>
+			/// 	The total number of victories in Crucible matches this Season or Episode.
+			/// </summary>
+			public const uint Wins_1028121783 = 1028121783;
 			/// <summary>
 			/// 	The total number of final blows with Heavy Machine Guns.
 			/// <para/>
@@ -1437,6 +1518,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint TopFireteamScore = 1757812403;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3381760761 = 3381760761;
+			/// <summary>
 			/// 	The total number of Guardians carried to their first completion of "Vow of the Disciple" this week.
 			/// </summary>
 			public const uint VowoftheDiscipleCarries_3632833403 = 3632833403;
@@ -1445,9 +1530,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ArcFinalBlows_1513312460 = 1513312460;
 			/// <summary>
-			/// 	The number of matches won while the Flawless Empyrean emblem is equipped and the player is holding a seven-win ticket.
+			/// 	The number of matches won while the Flawless Empyrean emblem is equipped and the player is holding a 7-win ticket.
 			/// <para/>
-			/// 	Tracks from Season 10 onward.
+			/// 	Tracked from Season 10 through Episode 2.
 			/// <para/>
 			/// </summary>
 			public const uint WinswithaCompleteTicket_1082901574 = 1082901574;
@@ -1693,6 +1778,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ThePerfectHeist = 604579619;
 			/// <summary>
+			/// 	Fastest completion time of the Nether activity.
+			/// </summary>
+			public const uint NetherRunner = 553082536;
+			/// <summary>
 			/// 	The total number of final blows with Pulse Rifles.
 			/// <para/>
 			/// 	Tracks from Season 12 onward.
@@ -1717,6 +1806,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// <para/>
 			/// </summary>
 			public const uint CrownofSorrowGuidedGames = 1152035282;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_3188868289 = 3188868289;
 			/// <summary>
 			/// 	The average efficiency in Iron Banner matches this Season.
 			/// </summary>
@@ -1779,13 +1872,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Wins_1365664208 = 1365664208;
 			/// <summary>
-			/// 	The fastest completion time for "Vault of Glass" this Season.
-			/// </summary>
-			public const uint VaultofGlassTimeTrial_657921174 = 657921174;
-			/// <summary>
 			/// 	Total number of tonics brewed during Episode: Revenants.
 			/// </summary>
 			public const uint TonicMastery = 1749076525;
+			/// <summary>
+			/// 	The fastest completion time for "Vault of Glass" this Season.
+			/// </summary>
+			public const uint VaultofGlassTimeTrial_657921174 = 657921174;
 			/// <summary>
 			/// 	The highest consecutive Win Streak in Gambit this Season.
 			/// </summary>
@@ -1910,10 +2003,6 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrotasEndGuidedGames = 3617877772;
 			/// <summary>
-			/// 	The number of matches won this week while the "Flawless Empyrean" emblem is equipped and the player is holding a seven-win ticket.
-			/// </summary>
-			public const uint WinswithaCompleteTicket_2771330814 = 2771330814;
-			/// <summary>
 			/// 	The lifetime high score for "Fallen S.A.B.E.R." in Nightfall.
 			/// <para/>
 			/// 	Tracks from Season 13 onward.
@@ -1921,12 +2010,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallFallenSABERScore = 2894593528;
 			/// <summary>
-			/// 	The number of Guardians carried to their first flawless ticket this Season while the player has the Light for the Lost emblem equipped.
+			/// 	The number of Guardians carried to their first flawless ticket this release while the player has the Light for the Lost emblem equipped.
 			/// <para/>
-			/// 	Tracks from Season 10 onward.
+			/// 	Tracked from Season 10 through Episode 2.
 			/// <para/>
 			/// </summary>
-			public const uint LighthouseCarries_301249970 = 301249970;
+			public const uint LighthouseCarries = 301249970;
 			/// <summary>
 			/// 	The fastest completion time for "Eater of Worlds."
 			/// <para/>
@@ -1942,9 +2031,12 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightfallTheArmsDealerScore = 3036740778;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Flawless solo completions of the "Vesper's Host" dungeon.
+			/// <para/>
+			/// 	Tracks from Episode: Revenant onward.
+			/// <para/>
 			/// </summary>
-			public const uint Classified_2706420015 = 2706420015;
+			public const uint VespersHostSoloFlawlessCompletions = 2706420015;
 			/// <summary>
 			/// 	The total number of Guardians carried to their first completion of "Leviathan."
 			/// <para/>
@@ -1982,9 +2074,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint CrownofSorrowTimeTrial = 996516677;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Number of Tomb of Elders runs completed during Episode: Revenant.
 			/// </summary>
-			public const uint Classified_2336204551 = 2336204551;
+			public const uint Exhumation = 2336204551;
 			/// <summary>
 			/// 	The lifetime high score for "Warden of Nothing" in Nightfall.
 			/// <para/>
@@ -1997,6 +2089,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint DailyMedallionScore_2871558814 = 2871558814;
 			/// <summary>
+			/// 	The number of Guardians carried to their first win streak of 5 or more on a Lighthouse Passage this week.
+			/// </summary>
+			public const uint WinStreakCarries_3712949266 = 3712949266;
+			/// <summary>
 			/// 	Complete a match in which you are never defeated by an opponent.
 			/// <para/>
 			/// 	Tracks from Season 4 onward.
@@ -2007,6 +2103,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The number of Guardians carried to their first ever completion of "Deep Stone Crypt" during this Season.
 			/// </summary>
 			public const uint DeepStoneCryptCarries_2124794123 = 2124794123;
+			/// <summary>
+			/// 	The number of flawless Lighthouse Passages completed by earning a weekly win streak of 7 or higher.
+			/// <para/>
+			/// 	Tracks from Episode 3 onward.
+			/// <para/>
+			/// </summary>
+			public const uint FlawlessLighthousePassages_3273582723 = 3273582723;
 			/// <summary>
 			/// 	The number of Champions defeated in Nightfall strikes this week.
 			/// </summary>
@@ -2095,9 +2198,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SniperRifleFinalBlows = 633604541;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Completions of the "Vesper's Host" dungeon during its 48-hour launch period.
 			/// </summary>
-			public const uint Classified_1501169950 = 1501169950;
+			public const uint VespersHostCompletionsDuringLaunchEvent = 1501169950;
 			/// <summary>
 			/// 	[Void] Void
 			/// </summary>
@@ -2117,9 +2220,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint NightmareHuntCompletions = 9217563;
 			/// <summary>
-			/// 	The number of tickets with seven wins and zero losses this Season.
+			/// 	The number of flawless Lighthouse Passages completed by earning a weekly win streak of 7 or higher this Episode.
 			/// </summary>
-			public const uint FlawlessTickets_1114483243 = 1114483243;
+			public const uint FlawlessLighthousePassages_1114483243 = 1114483243;
 			/// <summary>
 			/// 	The number of opponents defeated while under the effects of the Iron Burden.
 			/// <para/>

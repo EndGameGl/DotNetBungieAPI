@@ -71,7 +71,7 @@ public sealed record DestinyTalentGridDefinition
     /// </summary>
     [JsonPropertyName("nodes")]
     public ReadOnlyCollection<DestinyTalentNodeDefinition> Nodes { get; init; } =
-        ReadOnlyCollections<DestinyTalentNodeDefinition>.Empty;
+        ReadOnlyCollection<DestinyTalentNodeDefinition>.Empty;
 
     /// <summary>
     ///     Talent Nodes can exist in "exclusive sets": these are sets of nodes in which only a single node in the set can be
@@ -87,7 +87,7 @@ public sealed record DestinyTalentGridDefinition
     /// </summary>
     [JsonPropertyName("exclusiveSets")]
     public ReadOnlyCollection<DestinyTalentNodeExclusiveSetDefinition> ExclusiveSets { get; init; } =
-        ReadOnlyCollections<DestinyTalentNodeExclusiveSetDefinition>.Empty;
+        ReadOnlyCollection<DestinyTalentNodeExclusiveSetDefinition>.Empty;
 
     /// <summary>
     ///     This is a quick reference to the indexes of nodes that are not part of exclusive sets. Handy for knowing which
@@ -95,7 +95,7 @@ public sealed record DestinyTalentGridDefinition
     /// </summary>
     [JsonPropertyName("independentNodeIndexes")]
     public ReadOnlyCollection<int> IndependentNodeIndexes { get; init; } =
-        ReadOnlyCollections<int>.Empty;
+        ReadOnlyCollection<int>.Empty;
 
     /// <summary>
     ///     Talent Nodes can have "Exclusive Groups". These are not to be confused with Exclusive Sets (see exclusiveSets
@@ -106,7 +106,7 @@ public sealed record DestinyTalentGridDefinition
     /// </summary>
     [JsonPropertyName("groups")]
     public ReadOnlyDictionary<uint, DestinyTalentExclusiveGroup> Groups { get; init; } =
-        ReadOnlyDictionaries<uint, DestinyTalentExclusiveGroup>.Empty;
+        ReadOnlyDictionary<uint, DestinyTalentExclusiveGroup>.Empty;
 
     /// <summary>
     ///     BNet wants to show talent nodes grouped by similar purpose with localized titles. This is the ordered list of those
@@ -120,7 +120,7 @@ public sealed record DestinyTalentGridDefinition
     /// </summary>
     [JsonPropertyName("nodeCategories")]
     public ReadOnlyCollection<DestinyTalentNodeCategory> NodeCategories { get; init; } =
-        ReadOnlyCollections<DestinyTalentNodeCategory>.Empty;
+        ReadOnlyCollection<DestinyTalentNodeCategory>.Empty;
 
     [JsonPropertyName("calcMaxGridLevel")]
     public int CalcMaxGridLevel { get; init; }
@@ -134,7 +134,7 @@ public sealed record DestinyTalentGridDefinition
     public bool DeepEquals(DestinyTalentGridDefinition other)
     {
         return other != null
-            && ExclusiveSets.DeepEqualsReadOnlyCollections(other.ExclusiveSets)
+            && ExclusiveSets.DeepEqualsReadOnlyCollection(other.ExclusiveSets)
             && CalcMaxGridLevel == other.CalcMaxGridLevel
             && CalcProgressToMaxLevel == other.CalcProgressToMaxLevel
             && GridLevelPerColumn == other.GridLevelPerColumn
@@ -144,8 +144,8 @@ public sealed record DestinyTalentGridDefinition
             )
             && MaxGridLevel == other.MaxGridLevel
             && MaximumRandomMaterialRequirements == other.MaximumRandomMaterialRequirements
-            && NodeCategories.DeepEqualsReadOnlyCollections(other.NodeCategories)
-            && Nodes.DeepEqualsReadOnlyCollections(other.Nodes)
+            && NodeCategories.DeepEqualsReadOnlyCollection(other.NodeCategories)
+            && Nodes.DeepEqualsReadOnlyCollection(other.Nodes)
             && Progression.DeepEquals(other.Progression)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash

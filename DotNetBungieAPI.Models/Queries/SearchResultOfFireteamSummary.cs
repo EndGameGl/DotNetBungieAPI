@@ -6,5 +6,5 @@ public sealed record SearchResultOfFireteamSummary : SearchResultBase
 {
     [JsonPropertyName("results")]
     public ReadOnlyCollection<FireteamSummary> Results { get; init; } =
-        ReadOnlyCollections<FireteamSummary>.Empty;
+        ReadOnlyCollection<FireteamSummary>.Empty;
 }

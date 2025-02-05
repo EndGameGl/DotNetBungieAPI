@@ -32,7 +32,7 @@ public sealed record DestinyVendorSaleItemComponent
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyUnlockDefinition>
     > RequiredUnlocks { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyUnlockDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyUnlockDefinition>>.Empty;
 
     /// <summary>
     ///     If any complex unlock states are checked in determining purchasability, these will be returned here along with the
@@ -43,7 +43,7 @@ public sealed record DestinyVendorSaleItemComponent
     /// </summary>
     [JsonPropertyName("unlockStatuses")]
     public ReadOnlyCollection<DestinyUnlockStatus> UnlockStatuses { get; init; } =
-        ReadOnlyCollections<DestinyUnlockStatus>.Empty;
+        ReadOnlyCollection<DestinyUnlockStatus>.Empty;
 
     /// <summary>
     ///     Indexes in to the "failureStrings" lookup table in DestinyVendorDefinition for the given Vendor. Gives some more
@@ -53,7 +53,7 @@ public sealed record DestinyVendorSaleItemComponent
     ///     someone can do something interesting with it that I didn't anticipate.
     /// </summary>
     [JsonPropertyName("failureIndexes")]
-    public ReadOnlyCollection<int> FailureIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
+    public ReadOnlyCollection<int> FailureIndexes { get; init; } = ReadOnlyCollection<int>.Empty;
 
     /// <summary>
     ///     A flags enumeration value representing the current state of any "state modifiers" on the item being sold. These are
@@ -71,7 +71,7 @@ public sealed record DestinyVendorSaleItemComponent
     /// </summary>
     [JsonPropertyName("itemValueVisibility")]
     public ReadOnlyCollection<bool> ItemValueVisibility { get; init; } =
-        ReadOnlyCollections<bool>.Empty;
+        ReadOnlyCollection<bool>.Empty;
 
     /// <summary>
     ///     The index into the DestinyVendorDefinition.itemList property. Note that this means Vendor data *is* Content Version
@@ -113,7 +113,7 @@ public sealed record DestinyVendorSaleItemComponent
     /// </summary>
     [JsonPropertyName("costs")]
     public ReadOnlyCollection<DestinyItemQuantity> Costs { get; init; } =
-        ReadOnlyCollections<DestinyItemQuantity>.Empty;
+        ReadOnlyCollection<DestinyItemQuantity>.Empty;
 
     /// <summary>
     ///     If this item has its own custom date where it may be removed from the Vendor's rotation, this is that date.

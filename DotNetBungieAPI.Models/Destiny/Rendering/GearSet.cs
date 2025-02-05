@@ -3,7 +3,7 @@
 public sealed record GearSet
 {
     [JsonPropertyName("regions")]
-    public ReadOnlyCollection<GearSetRegion> Regions = ReadOnlyCollections<GearSetRegion>.Empty;
+    public ReadOnlyCollection<GearSetRegion> Regions = ReadOnlyCollection<GearSetRegion>.Empty;
 
     [JsonPropertyName("base_art_arrangement")]
     public ArtArrangement BaseArtArrangement { get; init; }

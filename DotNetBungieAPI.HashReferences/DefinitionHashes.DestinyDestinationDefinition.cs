@@ -91,6 +91,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint HellasBasin_308080871 = 308080871;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified = 2221417565;
+			/// <summary>
 			/// 	Venus was once the site of great discovery—a paradise. Now, it is a monument to all that we have lost. The old stories say we built an academy dedicated to learning and research on the shore of a wondrous sea, and that the waters themselves boiled and rose up to shatter the coast, washing away all that we had built.
 			/// </summary>
 			public const uint IshtarSinkVenus = 3871070152;
@@ -237,6 +241,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VanguardOpsPlaylist = 3129078390;
 			public const uint H2961497387 = 2961497387;
+			public const uint H1487993535 = 1487993535;
 			public const uint H2039972170 = 2039972170;
 			public const uint Earth_3929841832 = 3929841832;
 			public const uint H1647745970 = 1647745970;

@@ -18,5 +18,5 @@ public sealed record DestinyVendorCategory
     ///     DestinyVendorSaleItemComponent data, if you asked for that data to be returned.
     /// </summary>
     [JsonPropertyName("itemIndexes")]
-    public ReadOnlyCollection<int> ItemIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
+    public ReadOnlyCollection<int> ItemIndexes { get; init; } = ReadOnlyCollection<int>.Empty;
 }

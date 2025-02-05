@@ -34,7 +34,7 @@ public sealed record DestinyMilestoneRewardCategoryDefinition
         uint,
         DestinyMilestoneRewardEntryDefinition
     > RewardEntries { get; init; } =
-        ReadOnlyDictionaries<uint, DestinyMilestoneRewardEntryDefinition>.Empty;
+        ReadOnlyDictionary<uint, DestinyMilestoneRewardEntryDefinition>.Empty;
 
     /// <summary>
     ///     If you want to use BNet's recommended order for rendering categories programmatically, use this value and compare

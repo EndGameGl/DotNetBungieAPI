@@ -22,7 +22,7 @@ public sealed record DestinyLinkedGraphDefinition : IDeepEquatable<DestinyLinked
 
     [JsonPropertyName("linkedGraphs")]
     public ReadOnlyCollection<DestinyLinkedGraphEntryDefinition> LinkedGraphs { get; init; } =
-        ReadOnlyCollections<DestinyLinkedGraphEntryDefinition>.Empty;
+        ReadOnlyCollection<DestinyLinkedGraphEntryDefinition>.Empty;
 
     public bool DeepEquals(DestinyLinkedGraphDefinition other)
     {
@@ -32,6 +32,6 @@ public sealed record DestinyLinkedGraphDefinition : IDeepEquatable<DestinyLinked
             && Overview == other.Overview
             && LinkedGraphId == other.LinkedGraphId
             && UnlockExpression.DeepEquals(other.UnlockExpression)
-            && LinkedGraphs.DeepEqualsReadOnlyCollections(other.LinkedGraphs);
+            && LinkedGraphs.DeepEqualsReadOnlyCollection(other.LinkedGraphs);
     }
 }

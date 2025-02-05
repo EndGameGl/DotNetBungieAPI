@@ -128,7 +128,7 @@ public sealed record DestinyVendorDefinition
     /// </summary>
     [JsonPropertyName("failureStrings")]
     public ReadOnlyCollection<string> FailureStrings { get; init; } =
-        ReadOnlyCollections<string>.Empty;
+        ReadOnlyCollection<string>.Empty;
 
     /// <summary>
     ///     If we were able to predict the dates when this Vendor will be visible/available, this will be the list of those
@@ -136,7 +136,7 @@ public sealed record DestinyVendorDefinition
     /// </summary>
     [JsonPropertyName("unlockRanges")]
     public ReadOnlyCollection<DateRange> UnlockRanges { get; init; } =
-        ReadOnlyCollections<DateRange>.Empty;
+        ReadOnlyCollection<DateRange>.Empty;
 
     /// <summary>
     ///     The internal identifier for the Vendor. A holdover from the old days of Vendors, but we don't have time to refactor
@@ -190,7 +190,7 @@ public sealed record DestinyVendorDefinition
     /// </summary>
     [JsonPropertyName("actions")]
     public ReadOnlyCollection<DestinyVendorActionDefinition> Actions { get; init; } =
-        ReadOnlyCollections<DestinyVendorActionDefinition>.Empty;
+        ReadOnlyCollection<DestinyVendorActionDefinition>.Empty;
 
     /// <summary>
     ///     These are the headers for sections of items that the vendor is selling. When you see items organized by category in
@@ -204,14 +204,14 @@ public sealed record DestinyVendorDefinition
     /// </summary>
     [JsonPropertyName("categories")]
     public ReadOnlyCollection<DestinyVendorCategoryEntryDefinition> Categories { get; init; } =
-        ReadOnlyCollections<DestinyVendorCategoryEntryDefinition>.Empty;
+        ReadOnlyCollection<DestinyVendorCategoryEntryDefinition>.Empty;
 
     /// <summary>
     ///     See the categories property for a description of categories and why OriginalCategories exists.
     /// </summary>
     [JsonPropertyName("originalCategories")]
     public ReadOnlyCollection<DestinyVendorCategoryEntryDefinition> OriginalCategories { get; init; } =
-        ReadOnlyCollections<DestinyVendorCategoryEntryDefinition>.Empty;
+        ReadOnlyCollection<DestinyVendorCategoryEntryDefinition>.Empty;
 
     /// <summary>
     ///     Display Categories are different from "categories" in that these are specifically for visual grouping and display
@@ -222,7 +222,7 @@ public sealed record DestinyVendorDefinition
     /// </summary>
     [JsonPropertyName("displayCategories")]
     public ReadOnlyCollection<DestinyDisplayCategoryDefinition> DisplayCategories { get; init; } =
-        ReadOnlyCollections<DestinyDisplayCategoryDefinition>.Empty;
+        ReadOnlyCollection<DestinyDisplayCategoryDefinition>.Empty;
 
     /// <summary>
     ///     In addition to selling items, vendors can have "interactions": UI where you "talk" with the vendor and they offer
@@ -230,7 +230,7 @@ public sealed record DestinyVendorDefinition
     /// </summary>
     [JsonPropertyName("interactions")]
     public ReadOnlyCollection<DestinyVendorInteractionDefinition> Interactions { get; init; } =
-        ReadOnlyCollections<DestinyVendorInteractionDefinition>.Empty;
+        ReadOnlyCollection<DestinyVendorInteractionDefinition>.Empty;
 
     /// <summary>
     ///     If the vendor shows you items from your own inventory - such as the Vault vendor does - this data describes the UI
@@ -238,7 +238,7 @@ public sealed record DestinyVendorDefinition
     /// </summary>
     [JsonPropertyName("inventoryFlyouts")]
     public ReadOnlyCollection<DestinyVendorInventoryFlyoutDefinition> InventoryFlyouts { get; init; } =
-        ReadOnlyCollections<DestinyVendorInventoryFlyoutDefinition>.Empty;
+        ReadOnlyCollection<DestinyVendorInventoryFlyoutDefinition>.Empty;
 
     /// <summary>
     ///     If the vendor sells items (or merely has a list of items to show like the "Sack" vendors do), this is the list of
@@ -250,7 +250,7 @@ public sealed record DestinyVendorDefinition
     /// </summary>
     [JsonPropertyName("itemList")]
     public ReadOnlyCollection<DestinyVendorItemDefinition> ItemList { get; init; } =
-        ReadOnlyCollections<DestinyVendorItemDefinition>.Empty;
+        ReadOnlyCollection<DestinyVendorItemDefinition>.Empty;
 
     /// <summary>
     ///     BNet doesn't use this data yet, but it appears to be an optional list of flavor text about services that the Vendor
@@ -258,7 +258,7 @@ public sealed record DestinyVendorDefinition
     /// </summary>
     [JsonPropertyName("services")]
     public ReadOnlyCollection<DestinyVendorServiceDefinition> Services { get; init; } =
-        ReadOnlyCollections<DestinyVendorServiceDefinition>.Empty;
+        ReadOnlyCollection<DestinyVendorServiceDefinition>.Empty;
 
     /// <summary>
     ///     If the Vendor is actually a vehicle for the transferring of items (like the Vault and Postmaster vendors), this
@@ -266,7 +266,7 @@ public sealed record DestinyVendorDefinition
     /// </summary>
     [JsonPropertyName("acceptedItems")]
     public ReadOnlyCollection<DestinyVendorAcceptedItemDefinition> AcceptedItems { get; init; } =
-        ReadOnlyCollections<DestinyVendorAcceptedItemDefinition>.Empty;
+        ReadOnlyCollection<DestinyVendorAcceptedItemDefinition>.Empty;
 
     /// <summary>
     ///     As many of you know, Vendor data has historically been pretty brutal on the BNet servers. In an effort to reduce
@@ -283,7 +283,7 @@ public sealed record DestinyVendorDefinition
     /// </summary>
     [JsonPropertyName("locations")]
     public ReadOnlyCollection<DestinyVendorLocationDefinition> Locations { get; init; } =
-        ReadOnlyCollections<DestinyVendorLocationDefinition>.Empty;
+        ReadOnlyCollection<DestinyVendorLocationDefinition>.Empty;
 
     /// <summary>
     ///     A vendor can be a part of 0 or 1 "groups" at a time: a group being a collection of Vendors related by either
@@ -292,7 +292,7 @@ public sealed record DestinyVendorDefinition
     /// </summary>
     [JsonPropertyName("groups")]
     public ReadOnlyCollection<DestinyVendorGroupReference> Groups { get; init; } =
-        ReadOnlyCollections<DestinyVendorGroupReference>.Empty;
+        ReadOnlyCollection<DestinyVendorGroupReference>.Empty;
 
     /// <summary>
     ///     Some items don't make sense to return in the API, for example because they represent an action to be performed
@@ -303,7 +303,7 @@ public sealed record DestinyVendorDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyInventoryItemDefinition>
     > IgnoreSaleItems { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 
     [JsonPropertyName("unlockValueHash")]
     public uint UnlockValueHash { get; init; }
@@ -322,7 +322,7 @@ public sealed record DestinyVendorDefinition
             && ResetIntervalMinutes == other.ResetIntervalMinutes
             && ResetOffsetMinutes == other.ResetOffsetMinutes
             && FailureStrings.DeepEqualsReadOnlySimpleCollection(other.FailureStrings)
-            && UnlockRanges.DeepEqualsReadOnlyCollections(other.UnlockRanges)
+            && UnlockRanges.DeepEqualsReadOnlyCollection(other.UnlockRanges)
             && VendorIdentifier == other.VendorIdentifier
             && VendorPortrait == other.VendorPortrait
             && VendorBanner == other.VendorBanner
@@ -330,19 +330,19 @@ public sealed record DestinyVendorDefinition
             && Visible == other.Visible
             && VendorSubcategoryIdentifier == other.VendorSubcategoryIdentifier
             && ConsolidateCategories == other.ConsolidateCategories
-            && Actions.DeepEqualsReadOnlyCollections(other.Actions)
-            && Categories.DeepEqualsReadOnlyCollections(other.Categories)
-            && OriginalCategories.DeepEqualsReadOnlyCollections(other.OriginalCategories)
-            && DisplayCategories.DeepEqualsReadOnlyCollections(other.DisplayCategories)
-            && Interactions.DeepEqualsReadOnlyCollections(other.Interactions)
-            && InventoryFlyouts.DeepEqualsReadOnlyCollections(other.InventoryFlyouts)
-            && ItemList.DeepEqualsReadOnlyCollections(other.ItemList)
-            && Services.DeepEqualsReadOnlyCollections(other.Services)
-            && AcceptedItems.DeepEqualsReadOnlyCollections(other.AcceptedItems)
+            && Actions.DeepEqualsReadOnlyCollection(other.Actions)
+            && Categories.DeepEqualsReadOnlyCollection(other.Categories)
+            && OriginalCategories.DeepEqualsReadOnlyCollection(other.OriginalCategories)
+            && DisplayCategories.DeepEqualsReadOnlyCollection(other.DisplayCategories)
+            && Interactions.DeepEqualsReadOnlyCollection(other.Interactions)
+            && InventoryFlyouts.DeepEqualsReadOnlyCollection(other.InventoryFlyouts)
+            && ItemList.DeepEqualsReadOnlyCollection(other.ItemList)
+            && Services.DeepEqualsReadOnlyCollection(other.Services)
+            && AcceptedItems.DeepEqualsReadOnlyCollection(other.AcceptedItems)
             && ReturnWithVendorRequest == other.ReturnWithVendorRequest
-            && Locations.DeepEqualsReadOnlyCollections(other.Locations)
-            && Groups.DeepEqualsReadOnlyCollections(other.Groups)
-            && IgnoreSaleItems.DeepEqualsReadOnlyCollections(other.IgnoreSaleItems)
+            && Locations.DeepEqualsReadOnlyCollection(other.Locations)
+            && Groups.DeepEqualsReadOnlyCollection(other.Groups)
+            && IgnoreSaleItems.DeepEqualsReadOnlyCollection(other.IgnoreSaleItems)
             && UnlockValueHash == other.UnlockValueHash
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash

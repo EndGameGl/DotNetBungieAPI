@@ -35,7 +35,7 @@ public sealed record DestinyEquippingBlockDefinition
     /// </summary>
     [JsonPropertyName("displayStrings")]
     public ReadOnlyCollection<string> DisplayStrings { get; init; } =
-        ReadOnlyCollections<string>.Empty;
+        ReadOnlyCollection<string>.Empty;
 
     /// <summary>
     ///     An equipped item *must* be equipped in an Equipment Slot.

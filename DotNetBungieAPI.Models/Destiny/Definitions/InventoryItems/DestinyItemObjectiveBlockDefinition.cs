@@ -22,7 +22,7 @@ public sealed record DestinyItemObjectiveBlockDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyActivityDefinition>
     > DisplayActivities { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyActivityDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyActivityDefinition>>.Empty;
 
     /// <summary>
     ///     The localized string for narrative text related to this quest step, if any.
@@ -38,7 +38,7 @@ public sealed record DestinyItemObjectiveBlockDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyObjectiveDefinition>
     > Objectives { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyObjectiveDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>>.Empty;
 
     /// <summary>
     ///     The localized string describing an action to be performed associated with the objectives, if any.
@@ -51,7 +51,7 @@ public sealed record DestinyItemObjectiveBlockDefinition
     /// </summary>
     [JsonPropertyName("perObjectiveDisplayProperties")]
     public ReadOnlyCollection<DestinyObjectiveDisplayProperties> PerObjectiveDisplayProperties { get; init; } =
-        ReadOnlyCollections<DestinyObjectiveDisplayProperties>.Empty;
+        ReadOnlyCollection<DestinyObjectiveDisplayProperties>.Empty;
 
     /// <summary>
     ///     A hashed value for the questTypeIdentifier, because apparently I like to be redundant.
@@ -85,11 +85,11 @@ public sealed record DestinyItemObjectiveBlockDefinition
     public bool DeepEquals(DestinyItemObjectiveBlockDefinition other)
     {
         return other != null
-            && DisplayActivities.DeepEqualsReadOnlyCollections(other.DisplayActivities)
+            && DisplayActivities.DeepEqualsReadOnlyCollection(other.DisplayActivities)
             && Narrative == other.Narrative
-            && Objectives.DeepEqualsReadOnlyCollections(other.Objectives)
+            && Objectives.DeepEqualsReadOnlyCollection(other.Objectives)
             && ObjectiveVerbName == other.ObjectiveVerbName
-            && PerObjectiveDisplayProperties.DeepEqualsReadOnlyCollections(
+            && PerObjectiveDisplayProperties.DeepEqualsReadOnlyCollection(
                 other.PerObjectiveDisplayProperties
             )
             && QuestTypeHash == other.QuestTypeHash

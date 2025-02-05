@@ -21,5 +21,5 @@ public sealed record DestinyItemStatsComponent
         DefinitionHashPointer<DestinyStatDefinition>,
         DestinyStat
     > Stats { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyStatDefinition>, DestinyStat>.Empty;
+        ReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, DestinyStat>.Empty;
 }

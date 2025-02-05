@@ -20,7 +20,7 @@ public sealed record DestinyProfileTransitoryComponent
     /// </summary>
     [JsonPropertyName("partyMembers")]
     public ReadOnlyCollection<DestinyProfileTransitoryPartyMember> PartyMembers { get; init; } =
-        ReadOnlyCollections<DestinyProfileTransitoryPartyMember>.Empty;
+        ReadOnlyCollection<DestinyProfileTransitoryPartyMember>.Empty;
 
     /// <summary>
     ///     If you are in an activity, this is some transitory info about the activity currently being played.
@@ -39,7 +39,7 @@ public sealed record DestinyProfileTransitoryComponent
     /// </summary>
     [JsonPropertyName("tracking")]
     public ReadOnlyCollection<DestinyProfileTransitoryTrackingEntry> TrackedEntities { get; init; } =
-        ReadOnlyCollections<DestinyProfileTransitoryTrackingEntry>.Empty;
+        ReadOnlyCollection<DestinyProfileTransitoryTrackingEntry>.Empty;
 
     /// <summary>
     ///     The hash identifier for the DestinyDestinationDefinition of the last location you were orbiting when in orbit.

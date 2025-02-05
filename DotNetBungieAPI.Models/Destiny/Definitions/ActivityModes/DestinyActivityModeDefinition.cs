@@ -70,7 +70,7 @@ public sealed record DestinyActivityModeDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyActivityModeDefinition>
     > ParentModes { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModeDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>>.Empty;
 
     /// <summary>
     ///     A Friendly identifier you can use for referring to this Activity Mode. We really only used this in our URLs, so...
@@ -88,7 +88,7 @@ public sealed record DestinyActivityModeDefinition
         DefinitionHashPointer<DestinyActivityDefinition>,
         DestinyActivityModeType
     > ActivityModeMappings { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyActivityDefinition>,
             DestinyActivityModeType
         >.Empty;
@@ -126,7 +126,7 @@ public sealed record DestinyActivityModeDefinition
             && IsTeamBased == other.IsTeamBased
             && ModeType == other.ModeType
             && Order == other.Order
-            && ParentModes.DeepEqualsReadOnlyCollections(other.ParentModes)
+            && ParentModes.DeepEqualsReadOnlyCollection(other.ParentModes)
             && PgcrImage == other.PgcrImage
             && SupportsFeedFiltering == other.SupportsFeedFiltering
             && Tier == other.Tier

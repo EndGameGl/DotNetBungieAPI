@@ -12,7 +12,7 @@ public sealed record DestinyProfileCollectiblesComponent
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyCollectibleDefinition>
     > RecentCollectibles { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyCollectibleDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyCollectibleDefinition>>.Empty;
 
     /// <summary>
     ///     The list of collectibles determined by the game as having been "recently" acquired.
@@ -24,7 +24,7 @@ public sealed record DestinyProfileCollectiblesComponent
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyCollectibleDefinition>
     > NewnessFlaggedCollectibles { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyCollectibleDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyCollectibleDefinition>>.Empty;
 
     [JsonPropertyName("collectibles")]
     public ReadOnlyDictionary<

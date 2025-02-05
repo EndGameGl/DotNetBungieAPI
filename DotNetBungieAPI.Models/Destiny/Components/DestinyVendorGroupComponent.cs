@@ -14,5 +14,5 @@ public sealed record DestinyVendorGroupComponent
     /// </summary>
     [JsonPropertyName("groups")]
     public ReadOnlyCollection<DestinyVendorGroup> Groups { get; init; } =
-        ReadOnlyCollections<DestinyVendorGroup>.Empty;
+        ReadOnlyCollection<DestinyVendorGroup>.Empty;
 }

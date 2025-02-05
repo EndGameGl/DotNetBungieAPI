@@ -19,5 +19,5 @@ public sealed record CoreSetting
 
     [JsonPropertyName("childSettings")]
     public ReadOnlyCollection<CoreSetting> ChildSettings { get; init; } =
-        ReadOnlyCollections<CoreSetting>.Empty;
+        ReadOnlyCollection<CoreSetting>.Empty;
 }

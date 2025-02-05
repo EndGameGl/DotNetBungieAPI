@@ -38,7 +38,7 @@ public sealed record DestinyMilestoneActivityDefinition
         DefinitionHashPointer<DestinyActivityDefinition>,
         DestinyMilestoneActivityVariantDefinition
     > Variants { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyActivityDefinition>,
             DestinyMilestoneActivityVariantDefinition
         >.Empty;

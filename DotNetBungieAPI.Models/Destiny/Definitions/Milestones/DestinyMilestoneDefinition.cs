@@ -133,7 +133,7 @@ public sealed record DestinyMilestoneDefinition
         DefinitionHashPointer<DestinyInventoryItemDefinition>,
         DestinyMilestoneQuestDefinition
     > Quests { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyInventoryItemDefinition>,
             DestinyMilestoneQuestDefinition
         >.Empty;
@@ -147,7 +147,7 @@ public sealed record DestinyMilestoneDefinition
         uint,
         DestinyMilestoneRewardCategoryDefinition
     > Rewards { get; init; } =
-        ReadOnlyDictionaries<uint, DestinyMilestoneRewardCategoryDefinition>.Empty;
+        ReadOnlyDictionary<uint, DestinyMilestoneRewardCategoryDefinition>.Empty;
 
     /// <summary>
     ///     If you're going to show Vendors for the Milestone, you can use this as a localized "header" for the section where
@@ -164,7 +164,7 @@ public sealed record DestinyMilestoneDefinition
     /// </summary>
     [JsonPropertyName("vendors")]
     public ReadOnlyCollection<DestinyMilestoneVendorDefinition> Vendors { get; init; } =
-        ReadOnlyCollections<DestinyMilestoneVendorDefinition>.Empty;
+        ReadOnlyCollection<DestinyMilestoneVendorDefinition>.Empty;
 
     /// <summary>
     ///     Sometimes, milestones will have arbitrary values associated with them that are of interest to us or to third party
@@ -173,7 +173,7 @@ public sealed record DestinyMilestoneDefinition
     /// </summary>
     [JsonPropertyName("values")]
     public ReadOnlyDictionary<string, DestinyMilestoneValueDefinition> Values { get; init; } =
-        ReadOnlyDictionaries<string, DestinyMilestoneValueDefinition>.Empty;
+        ReadOnlyDictionary<string, DestinyMilestoneValueDefinition>.Empty;
 
     /// <summary>
     ///     Some milestones are explicit objectives that you can see and interact with in the game. Some milestones are more
@@ -190,7 +190,7 @@ public sealed record DestinyMilestoneDefinition
     /// </summary>
     [JsonPropertyName("activities")]
     public ReadOnlyCollection<DestinyMilestoneChallengeActivityDefinition> Activities { get; init; } =
-        ReadOnlyCollections<DestinyMilestoneChallengeActivityDefinition>.Empty;
+        ReadOnlyCollection<DestinyMilestoneChallengeActivityDefinition>.Empty;
 
     [JsonPropertyName("defaultOrder")]
     public int DefaultOrder { get; init; }
@@ -198,7 +198,7 @@ public sealed record DestinyMilestoneDefinition
     public bool DeepEquals(DestinyMilestoneDefinition other)
     {
         return other != null
-            && Activities.DeepEqualsReadOnlyCollections(other.Activities)
+            && Activities.DeepEqualsReadOnlyCollection(other.Activities)
             && DefaultOrder == other.DefaultOrder
             && DisplayProperties.DeepEquals(other.DisplayProperties)
             && ExplorePrioritizesActivityImage == other.ExplorePrioritizesActivityImage
@@ -212,7 +212,7 @@ public sealed record DestinyMilestoneDefinition
             && Rewards.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue(other.Rewards)
             && ShowInExplorer == other.ShowInExplorer
             && ShowInMilestones == other.ShowInMilestones
-            && Vendors.DeepEqualsReadOnlyCollections(other.Vendors)
+            && Vendors.DeepEqualsReadOnlyCollection(other.Vendors)
             && VendorsDisplayTitle == other.VendorsDisplayTitle
             && Values.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue(other.Values)
             && DisplayPreference == other.DisplayPreference

@@ -14,7 +14,7 @@ public sealed record DestinyArrangementRegionFilterDefinition
 
     [JsonPropertyName("arrangementIndexByStatValue")]
     public ReadOnlyDictionary<int, int> ArrangementIndexByStatValue { get; init; } =
-        ReadOnlyDictionaries<int, int>.Empty;
+        ReadOnlyDictionary<int, int>.Empty;
 
     public bool DeepEquals(DestinyArrangementRegionFilterDefinition other)
     {

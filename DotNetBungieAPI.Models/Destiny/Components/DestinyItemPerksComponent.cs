@@ -17,5 +17,5 @@ public sealed record DestinyItemPerksComponent
     /// </summary>
     [JsonPropertyName("perks")]
     public ReadOnlyCollection<DestinyPerkReference> Perks { get; init; } =
-        ReadOnlyCollections<DestinyPerkReference>.Empty;
+        ReadOnlyCollection<DestinyPerkReference>.Empty;
 }

@@ -24,7 +24,7 @@ public sealed record DestinyMilestoneContent
     ///     A list of tips, provided by the Firehose.
     /// </summary>
     [JsonPropertyName("tips")]
-    public ReadOnlyCollection<string> Tips { get; init; } = ReadOnlyCollections<string>.Empty;
+    public ReadOnlyCollection<string> Tips { get; init; } = ReadOnlyCollection<string>.Empty;
 
     /// <summary>
     ///     If DPS has defined items related to this Milestone, they can categorize those items in the Firehose. That data will
@@ -32,5 +32,5 @@ public sealed record DestinyMilestoneContent
     /// </summary>
     [JsonPropertyName("itemCategories")]
     public ReadOnlyCollection<DestinyMilestoneContentItemCategory> ItemCategories { get; init; } =
-        ReadOnlyCollections<DestinyMilestoneContentItemCategory>.Empty;
+        ReadOnlyCollection<DestinyMilestoneContentItemCategory>.Empty;
 }

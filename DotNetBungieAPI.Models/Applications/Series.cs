@@ -7,7 +7,7 @@ public sealed record Series
     /// </summary>
     [JsonPropertyName("datapoints")]
     public ReadOnlyCollection<Datapoint> Datapoints { get; init; } =
-        ReadOnlyCollections<Datapoint>.Empty;
+        ReadOnlyCollection<Datapoint>.Empty;
 
     /// <summary>
     ///     Target to which to datapoints apply.

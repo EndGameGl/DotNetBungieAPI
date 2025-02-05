@@ -47,7 +47,7 @@ public sealed record DestinyItemPreviewBlockDefinition
     /// </summary>
     [JsonPropertyName("derivedItemCategories")]
     public ReadOnlyCollection<DestinyDerivedItemCategoryDefinition> DerivedItemCategories { get; init; } =
-        ReadOnlyCollections<DestinyDerivedItemCategoryDefinition>.Empty;
+        ReadOnlyCollection<DestinyDerivedItemCategoryDefinition>.Empty;
 
     public bool DeepEquals(DestinyItemPreviewBlockDefinition other)
     {
@@ -56,6 +56,6 @@ public sealed record DestinyItemPreviewBlockDefinition
             && PreviewVendor.DeepEquals(other.PreviewVendor)
             && ScreenStyle == other.ScreenStyle
             && Artifact.DeepEquals(other.Artifact)
-            && DerivedItemCategories.DeepEqualsReadOnlyCollections(other.DerivedItemCategories);
+            && DerivedItemCategories.DeepEqualsReadOnlyCollection(other.DerivedItemCategories);
     }
 }

@@ -4,7 +4,7 @@ public sealed record UserSearchResponse
 {
     [JsonPropertyName("searchResults")]
     public ReadOnlyCollection<UserSearchResponseDetail> SearchResults { get; init; } =
-        ReadOnlyCollections<UserSearchResponseDetail>.Empty;
+        ReadOnlyCollection<UserSearchResponseDetail>.Empty;
 
     [JsonPropertyName("page")]
     public int Page { get; init; }

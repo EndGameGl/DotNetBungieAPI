@@ -5,5 +5,5 @@ public sealed record DictionaryComponentResponseOfint64AndDestinyCurrenciesCompo
 {
     [JsonPropertyName("data")]
     public ReadOnlyDictionary<long, DestinyCurrenciesComponent> Data { get; init; } =
-        ReadOnlyDictionaries<long, DestinyCurrenciesComponent>.Empty;
+        ReadOnlyDictionary<long, DestinyCurrenciesComponent>.Empty;
 }

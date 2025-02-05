@@ -4,7 +4,7 @@ public sealed record DestinyFireteamFinderGetListingApplicationsResponse
 {
     [JsonPropertyName("applications")]
     public ReadOnlyCollection<DestinyFireteamFinderApplication> Applications { get; init; } =
-        ReadOnlyCollections<DestinyFireteamFinderApplication>.Empty;
+        ReadOnlyCollection<DestinyFireteamFinderApplication>.Empty;
 
     [JsonPropertyName("pageSize")]
     public int PageSize { get; init; }

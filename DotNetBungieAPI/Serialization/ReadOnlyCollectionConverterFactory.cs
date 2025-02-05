@@ -1,10 +1,17 @@
 ﻿using System.Reflection;
-using DotNetBungieAPI.Models.Defaults;
 
 namespace DotNetBungieAPI.Serialization;
 
+/// <summary>
+///     Json converter for <see cref="ReadOnlyCollection{T}"/>
+/// </summary>
 public sealed class ReadOnlyCollectionConverterFactory : JsonConverterFactory
 {
+    /// <summary>
+    ///     <inheritdoc />
+    /// </summary>
+    /// <param name="typeToConvert"><inheritdoc /></param>
+    /// <returns><inheritdoc /></returns>
     public override bool CanConvert(Type typeToConvert)
     {
         if (!typeToConvert.IsGenericType)
@@ -16,18 +23,24 @@ public sealed class ReadOnlyCollectionConverterFactory : JsonConverterFactory
         return true;
     }
 
+    /// <summary>
+    ///     <inheritdoc />
+    /// </summary>
+    /// <param name="typeToConvert"><inheritdoc /></param>
+    /// <param name="options"><inheritdoc /></param>
+    /// <returns><inheritdoc /></returns>
     public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
     {
         var collectionType = typeToConvert.GetGenericArguments()[0];
 
         var converter = (JsonConverter)
             Activator.CreateInstance(
-                typeof(ReadOnlyCollectionConverter<>).MakeGenericType(collectionType),
-                BindingFlags.Instance | BindingFlags.Public,
-                null,
-                new object[] { options },
-                null
-            );
+                type: typeof(ReadOnlyCollectionConverter<>).MakeGenericType(collectionType),
+                bindingAttr: BindingFlags.Instance | BindingFlags.Public,
+                binder: null,
+                args: [options],
+                culture: null
+            )!;
 
         return converter;
     }
@@ -50,17 +63,10 @@ public sealed class ReadOnlyCollectionConverterFactory : JsonConverterFactory
         )
         {
             if (reader.TokenType == JsonTokenType.Null)
-                return ReadOnlyCollections<T>.Empty;
+                return ReadOnlyCollection<T>.Empty;
 
-            IList<T> tempCollection = new List<T>();
-            while (reader.Read())
-            {
-                if (reader.TokenType == JsonTokenType.EndArray)
-                    return new ReadOnlyCollection<T>(tempCollection);
-                tempCollection.Add(JsonSerializer.Deserialize<T>(ref reader, _options));
-            }
-
-            throw new JsonException();
+            var content = JsonSerializer.Deserialize<T[]>(ref reader, options);
+            return new ReadOnlyCollection<T>(content);
         }
 
         public override void Write(

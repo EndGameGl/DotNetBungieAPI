@@ -2,6 +2,9 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 
 public class DestinyProgressionRewardItemQuantity
 {
+    [JsonPropertyName("rewardItemIndex")]
+    public int? RewardItemIndex { get; set; }
+
     [JsonPropertyName("rewardedAtProgressionLevel")]
     public int? RewardedAtProgressionLevel { get; set; }
 
@@ -13,6 +16,9 @@ public class DestinyProgressionRewardItemQuantity
 
     [JsonPropertyName("claimUnlockDisplayStrings")]
     public List<string> ClaimUnlockDisplayStrings { get; set; }
+
+    [JsonPropertyName("socketOverrides")]
+    public List<Destiny.Definitions.DestinyProgressionSocketPlugOverride> SocketOverrides { get; set; }
 
     /// <summary>
     ///     The hash identifier for the item in question. Use it to look up the item's DestinyInventoryItemDefinition.

@@ -27,7 +27,7 @@ public sealed record DestinyStatDisplayDefinition : IDeepEquatable<DestinyStatDi
     /// </summary>
     [JsonPropertyName("displayInterpolation")]
     public ReadOnlyCollection<InterpolationPoint> DisplayInterpolation { get; init; } =
-        ReadOnlyCollections<InterpolationPoint>.Empty;
+        ReadOnlyCollection<InterpolationPoint>.Empty;
 
     /// <summary>
     ///     Regardless of the output of interpolation, this is the maximum possible value that the stat can be. It should also
@@ -47,7 +47,7 @@ public sealed record DestinyStatDisplayDefinition : IDeepEquatable<DestinyStatDi
     {
         return other != null
             && DisplayAsNumeric == other.DisplayAsNumeric
-            && DisplayInterpolation.DeepEqualsReadOnlyCollections(other.DisplayInterpolation)
+            && DisplayInterpolation.DeepEqualsReadOnlyCollection(other.DisplayInterpolation)
             && MaximumValue == other.MaximumValue
             && Stat.DeepEquals(other.Stat);
     }

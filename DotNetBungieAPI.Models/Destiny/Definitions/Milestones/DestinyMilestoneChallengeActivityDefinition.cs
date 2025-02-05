@@ -17,11 +17,11 @@ public sealed record DestinyMilestoneChallengeActivityDefinition
     /// </summary>
     [JsonPropertyName("activityGraphNodes")]
     public ReadOnlyCollection<DestinyMilestoneChallengeActivityGraphNodeEntry> ActivityGraphNodes { get; init; } =
-        ReadOnlyCollections<DestinyMilestoneChallengeActivityGraphNodeEntry>.Empty;
+        ReadOnlyCollection<DestinyMilestoneChallengeActivityGraphNodeEntry>.Empty;
 
     [JsonPropertyName("challenges")]
     public ReadOnlyCollection<DestinyMilestoneChallengeDefinition> Challenges { get; init; } =
-        ReadOnlyCollections<DestinyMilestoneChallengeDefinition>.Empty;
+        ReadOnlyCollection<DestinyMilestoneChallengeDefinition>.Empty;
 
     /// <summary>
     ///     Phases related to this activity, if there are any.
@@ -30,14 +30,14 @@ public sealed record DestinyMilestoneChallengeActivityDefinition
     /// </summary>
     [JsonPropertyName("phases")]
     public ReadOnlyCollection<DestinyMilestoneChallengeActivityPhase> Phases { get; init; } =
-        ReadOnlyCollections<DestinyMilestoneChallengeActivityPhase>.Empty;
+        ReadOnlyCollection<DestinyMilestoneChallengeActivityPhase>.Empty;
 
     public bool DeepEquals(DestinyMilestoneChallengeActivityDefinition other)
     {
         return other != null
-            && ActivityGraphNodes.DeepEqualsReadOnlyCollections(other.ActivityGraphNodes)
+            && ActivityGraphNodes.DeepEqualsReadOnlyCollection(other.ActivityGraphNodes)
             && Activity.DeepEquals(other.Activity)
-            && Challenges.DeepEqualsReadOnlyCollections(other.Challenges)
-            && Phases.DeepEqualsReadOnlyCollections(other.Phases);
+            && Challenges.DeepEqualsReadOnlyCollection(other.Challenges)
+            && Phases.DeepEqualsReadOnlyCollection(other.Phases);
     }
 }

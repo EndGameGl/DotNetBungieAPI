@@ -8,7 +8,7 @@ public sealed record PollResponse
 
     [JsonPropertyName("results")]
     public ReadOnlyCollection<PollResult> Results { get; init; } =
-        ReadOnlyCollections<PollResult>.Empty;
+        ReadOnlyCollection<PollResult>.Empty;
 
     [JsonPropertyName("totalVotes")]
     public int TotalVotes { get; init; }

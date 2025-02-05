@@ -24,7 +24,7 @@ public sealed record GroupV2
     public string About { get; init; }
 
     [JsonPropertyName("tags")]
-    public ReadOnlyCollection<string> Tags { get; init; } = ReadOnlyCollections<string>.Empty;
+    public ReadOnlyCollection<string> Tags { get; init; } = ReadOnlyCollection<string>.Empty;
 
     [JsonPropertyName("memberCount")]
     public int MemberCount { get; init; }

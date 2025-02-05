@@ -17,7 +17,7 @@ public sealed record GroupFeatures
 
     [JsonPropertyName("membershipTypes")]
     public ReadOnlyCollection<BungieMembershipType> MembershipTypes { get; init; } =
-        ReadOnlyCollections<BungieMembershipType>.Empty;
+        ReadOnlyCollection<BungieMembershipType>.Empty;
 
     /// <summary>
     ///     Minimum Member Level allowed to invite new members to group

@@ -23,7 +23,7 @@ public sealed record DestinyGuardianRankConstantsDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyGuardianRankDefinition>
     > GuardianRanks { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyGuardianRankDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyGuardianRankDefinition>>.Empty;
 
     [JsonPropertyName("rootNodeHash")]
     public DefinitionHashPointer<DestinyPresentationNodeDefinition> RootNode { get; init; } =
@@ -49,7 +49,7 @@ public sealed record DestinyGuardianRankConstantsDefinition
         return other is not null
             && DisplayProperties.DeepEquals(other.DisplayProperties)
             && RankCount == other.RankCount
-            && GuardianRanks.DeepEqualsReadOnlyCollections(other.GuardianRanks)
+            && GuardianRanks.DeepEqualsReadOnlyCollection(other.GuardianRanks)
             && RootNode.DeepEquals(other.RootNode)
             && IconBackgrounds.DeepEquals(other.IconBackgrounds)
             && Blacklisted == other.Blacklisted

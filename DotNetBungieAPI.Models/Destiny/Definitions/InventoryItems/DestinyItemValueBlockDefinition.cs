@@ -20,7 +20,7 @@ public sealed record DestinyItemValueBlockDefinition
     /// </summary>
     [JsonPropertyName("itemValue")]
     public ReadOnlyCollection<DestinyItemQuantity> ItemValue { get; init; } =
-        ReadOnlyCollections<DestinyItemQuantity>.Empty;
+        ReadOnlyCollection<DestinyItemQuantity>.Empty;
 
     /// <summary>
     ///     If there's a localized text description of the value provided, this will be said description.
@@ -31,7 +31,7 @@ public sealed record DestinyItemValueBlockDefinition
     public bool DeepEquals(DestinyItemValueBlockDefinition other)
     {
         return other != null
-            && ItemValue.DeepEqualsReadOnlyCollections(other.ItemValue)
+            && ItemValue.DeepEqualsReadOnlyCollection(other.ItemValue)
             && ValueDescription == other.ValueDescription;
     }
 }

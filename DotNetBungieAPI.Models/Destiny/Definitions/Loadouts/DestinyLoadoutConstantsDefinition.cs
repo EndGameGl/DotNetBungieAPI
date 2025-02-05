@@ -40,7 +40,7 @@ public sealed record DestinyLoadoutConstantsDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinySocketCategoryDefinition>
     > LoadoutPreviewFilterOutSocketCategories { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinySocketCategoryDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinySocketCategoryDefinition>>.Empty;
 
     /// <summary>
     ///     A list of the socket type hashes to be filtered out of loadout item preview displays.
@@ -49,7 +49,7 @@ public sealed record DestinyLoadoutConstantsDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinySocketTypeDefinition>
     > LoadoutPreviewFilterOutSocketTypes { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinySocketTypeDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinySocketTypeDefinition>>.Empty;
 
     /// <summary>
     ///     A list of the loadout name hashes in index order, for convenience.
@@ -58,7 +58,7 @@ public sealed record DestinyLoadoutConstantsDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyLoadoutNameDefinition>
     > LoadoutNames { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyLoadoutNameDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyLoadoutNameDefinition>>.Empty;
 
     /// <summary>
     ///     A list of the loadout icon hashes in index order, for convenience.
@@ -67,7 +67,7 @@ public sealed record DestinyLoadoutConstantsDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyLoadoutIconDefinition>
     > LoadoutIcons { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyLoadoutIconDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyLoadoutIconDefinition>>.Empty;
 
     /// <summary>
     ///     A list of the loadout color hashes in index order, for convenience.
@@ -76,7 +76,7 @@ public sealed record DestinyLoadoutConstantsDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyLoadoutColorDefinition>
     > LoadoutColors { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyLoadoutColorDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyLoadoutColorDefinition>>.Empty;
 
     [JsonPropertyName("blacklisted")]
     public bool Blacklisted { get; init; }
@@ -97,15 +97,15 @@ public sealed record DestinyLoadoutConstantsDefinition
             && WhiteIconImagePath == other.WhiteIconImagePath
             && BlackIconImagePath == other.BlackIconImagePath
             && LoadoutCountPerCharacter == other.LoadoutCountPerCharacter
-            && LoadoutPreviewFilterOutSocketCategories.DeepEqualsReadOnlyCollections(
+            && LoadoutPreviewFilterOutSocketCategories.DeepEqualsReadOnlyCollection(
                 other.LoadoutPreviewFilterOutSocketCategories
             )
-            && LoadoutPreviewFilterOutSocketTypes.DeepEqualsReadOnlyCollections(
+            && LoadoutPreviewFilterOutSocketTypes.DeepEqualsReadOnlyCollection(
                 other.LoadoutPreviewFilterOutSocketTypes
             )
-            && LoadoutNames.DeepEqualsReadOnlyCollections(other.LoadoutNames)
-            && LoadoutIcons.DeepEqualsReadOnlyCollections(other.LoadoutIcons)
-            && LoadoutColors.DeepEqualsReadOnlyCollections(other.LoadoutColors)
+            && LoadoutNames.DeepEqualsReadOnlyCollection(other.LoadoutNames)
+            && LoadoutIcons.DeepEqualsReadOnlyCollection(other.LoadoutIcons)
+            && LoadoutColors.DeepEqualsReadOnlyCollection(other.LoadoutColors)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash
             && Index == other.Index

@@ -24,7 +24,7 @@ public sealed record DestinyCharacterProgressionComponent
         DefinitionHashPointer<DestinyProgressionDefinition>,
         DestinyProgression
     > Progressions { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyProgressionDefinition>,
             DestinyProgression
         >.Empty;
@@ -38,7 +38,7 @@ public sealed record DestinyCharacterProgressionComponent
         DefinitionHashPointer<DestinyFactionDefinition>,
         DestinyFactionProgression
     > Factions { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyFactionDefinition>,
             DestinyFactionProgression
         >.Empty;
@@ -52,7 +52,7 @@ public sealed record DestinyCharacterProgressionComponent
         DefinitionHashPointer<DestinyMilestoneDefinition>,
         DestinyMilestone
     > Milestones { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyMilestoneDefinition>,
             DestinyMilestone
         >.Empty;
@@ -65,7 +65,7 @@ public sealed record DestinyCharacterProgressionComponent
     /// </summary>
     [JsonPropertyName("quests")]
     public ReadOnlyCollection<DestinyQuestStatus> Quests { get; init; } =
-        ReadOnlyCollections<DestinyQuestStatus>.Empty;
+        ReadOnlyCollection<DestinyQuestStatus>.Empty;
 
     /// <summary>
     ///     Sometimes, you have items in your inventory that don't have instances, but still have Objective information. This
@@ -79,7 +79,7 @@ public sealed record DestinyCharacterProgressionComponent
         DefinitionHashPointer<DestinyInventoryItemDefinition>,
         ReadOnlyCollection<UninstancedItemObjective>
     > UninstancedItemObjectives { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyInventoryItemDefinition>,
             ReadOnlyCollection<UninstancedItemObjective>
         >.Empty;
@@ -94,7 +94,7 @@ public sealed record DestinyCharacterProgressionComponent
         DefinitionHashPointer<DestinyInventoryItemDefinition>,
         DestinyItemPerksComponent
     > UninstancedItemPerks { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyInventoryItemDefinition>,
             DestinyItemPerksComponent
         >.Empty;
@@ -111,7 +111,7 @@ public sealed record DestinyCharacterProgressionComponent
         DefinitionHashPointer<DestinyChecklistDefinition>,
         ReadOnlyDictionary<uint, bool>
     > Checklists { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyChecklistDefinition>,
             ReadOnlyDictionary<uint, bool>
         >.Empty;

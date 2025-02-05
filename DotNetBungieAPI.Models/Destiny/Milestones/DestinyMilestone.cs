@@ -27,7 +27,7 @@ public sealed record DestinyMilestone
     /// </summary>
     [JsonPropertyName("availableQuests")]
     public ReadOnlyCollection<DestinyMilestoneQuest> AvailableQuests { get; init; } =
-        ReadOnlyCollections<DestinyMilestoneQuest>.Empty;
+        ReadOnlyCollection<DestinyMilestoneQuest>.Empty;
 
     /// <summary>
     ///     The currently active Activities in this milestone, when the Milestone is driven by Challenges.
@@ -37,7 +37,7 @@ public sealed record DestinyMilestone
     /// </summary>
     [JsonPropertyName("activities")]
     public ReadOnlyCollection<DestinyMilestoneChallengeActivity> Activities { get; init; } =
-        ReadOnlyCollections<DestinyMilestoneChallengeActivity>.Empty;
+        ReadOnlyCollection<DestinyMilestoneChallengeActivity>.Empty;
 
     /// <summary>
     ///     Milestones may have arbitrary key/value pairs associated with them, for data that users will want to know about but
@@ -49,7 +49,7 @@ public sealed record DestinyMilestone
     /// </summary>
     [JsonPropertyName("values")]
     public ReadOnlyDictionary<string, double> Values { get; init; } =
-        ReadOnlyDictionaries<string, double>.Empty;
+        ReadOnlyDictionary<string, double>.Empty;
 
     /// <summary>
     ///     A milestone may have one or more active vendors that are "related" to it (that provide rewards, or that are the
@@ -63,7 +63,7 @@ public sealed record DestinyMilestone
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyVendorDefinition>
     > Vendors { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyVendorDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyVendorDefinition>>.Empty;
 
     /// <summary>
     ///     Replaces vendorHashes, which I knew was going to be trouble the day it walked in the door. This will return not
@@ -73,7 +73,7 @@ public sealed record DestinyMilestone
     /// </summary>
     [JsonPropertyName("vendors")]
     public ReadOnlyCollection<DestinyMilestoneVendor> VendorsData { get; init; } =
-        ReadOnlyCollections<DestinyMilestoneVendor>.Empty;
+        ReadOnlyCollection<DestinyMilestoneVendor>.Empty;
 
     /// <summary>
     ///     If the entity to which this component is attached has known active Rewards for the player, this will detail
@@ -84,7 +84,7 @@ public sealed record DestinyMilestone
     /// </summary>
     [JsonPropertyName("rewards")]
     public ReadOnlyCollection<DestinyMilestoneRewardCategory> Rewards { get; init; } =
-        ReadOnlyCollections<DestinyMilestoneRewardCategory>.Empty;
+        ReadOnlyCollection<DestinyMilestoneRewardCategory>.Empty;
 
     /// <summary>
     ///     If known, this is the date when the event last began or refreshed. It will only be populated for events with fixed

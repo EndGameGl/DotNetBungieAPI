@@ -30,9 +30,10 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
             .Append("/Content/GetContentType/")
             .AddUrlParam(type)
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ContentTypeDescription>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<ContentTypeDescription>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<ContentItemPublicContract>> GetContentById(
@@ -49,9 +50,10 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
             .AddUrlParam(locale)
             .AddQueryParam("head", head.ToString())
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ContentItemPublicContract>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<ContentItemPublicContract>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<ContentItemPublicContract>> GetContentByTagAndType(
@@ -68,9 +70,10 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
             .AddUrlParam(type)
             .AddUrlParam(locale)
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ContentItemPublicContract>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<ContentItemPublicContract>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<
@@ -95,12 +98,10 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
             .AddQueryParam("source", source, () => !string.IsNullOrEmpty(source))
             .AddQueryParam("tag", tag)
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(
-                url,
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<
@@ -121,12 +122,10 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
             .AddUrlParam(locale)
             .AddQueryParam("currentpage", currentpage.ToString())
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(
-                url,
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<SearchResultOfContentItemPublicContract>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<NewsArticleRssResponse>> RssNewsArticles(
@@ -148,8 +147,9 @@ internal sealed class ContentMethodsAccess : IContentMethodsAccess
             .AddQueryParam("includebody", includeBody.ToString(), () => includeBody.HasValue)
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<NewsArticleRssResponse>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<NewsArticleRssResponse>(
+            url,
+            cancellationToken
+        );
     }
 }

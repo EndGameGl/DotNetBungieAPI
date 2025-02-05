@@ -9,6 +9,13 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Vanguard, Crucible, and Gambit quests.
 			/// </summary>
 			public const uint Playlists = 500105683;
+			/// <summary>
+			/// 	Accumulate stacks of Arc Bolt Charge. While you have Bolt Charge, sustained weapon damage generates stacks of Bolt Charge. At maximum stacks, any ability damage generates a powerful bolt of Arc lightning at the target's location.
+			/// <para/>
+			/// 	Receiving a stack of Bolt Charge grants you melee energy.
+			/// <para/>
+			/// </summary>
+			public const uint BoltCharge = 2935077680;
 			public const uint H778733392 = 778733392;
 			public const uint H4118304139 = 4118304139;
 			/// <summary>
@@ -126,6 +133,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3773650793 = 3773650793;
 			public const uint H3300229618 = 3300229618;
 			public const uint H2675670106 = 2675670106;
+			public const uint H2924267458 = 2924267458;
 			public const uint H170945933 = 170945933;
 			public const uint H1374839702 = 1374839702;
 			/// <summary>
@@ -143,6 +151,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3904180889 = 3904180889;
 			public const uint H201433599 = 201433599;
 			public const uint H847948254 = 847948254;
+			public const uint H3904180891 = 3904180891;
 			public const uint H4185800602 = 4185800602;
 			public const uint H3904180892 = 3904180892;
 			public const uint H3904180893 = 3904180893;
@@ -211,7 +220,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint Scorch = 1096356879;
 			/// <summary>
-			/// 	The target has slowed movement and ability regeneration; their weapon performance is reduced. Slowed combatants have difficulty firing accurately and [Disruption] Overload Champions are stunned.
+			/// 	The target has slowed movement and ability regeneration; their weapon performance is reduced. [Disruption] Overload Champions are stunned.
 			/// <para/>
 			/// 	After accumulating enough Slow stacks, the target is frozen.
 			/// <para/>
@@ -293,7 +302,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2729780558 = 2729780558;
 			public const uint H2455696884 = 2455696884;
 			/// <summary>
-			/// 	The target takes increased damage and has their movement speed slowed. Afflicted combatants have difficulty firing accurately.
+			/// 	The target takes increased damage and has their movement speed slowed.
 			/// </summary>
 			public const uint Weaken = 3336638905;
 			public const uint H2515873973 = 2515873973;
@@ -350,8 +359,10 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H2893978702 = 2893978702;
 			public const uint H1075323345 = 1075323345;
 			public const uint H2639619744 = 2639619744;
+			public const uint H3344674544 = 3344674544;
 			public const uint H617430242 = 617430242;
 			public const uint H3344674546 = 3344674546;
+			public const uint H2583519926 = 2583519926;
 			public const uint H3344674547 = 3344674547;
 			public const uint H700104665 = 700104665;
 			public const uint H3344674548 = 3344674548;
@@ -363,7 +374,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint H3925016055 = 3925016055;
 			public const uint H2658426873 = 2658426873;
 			/// <summary>
-			/// 	Light buffs include [Arc] Amplified, [Solar] Cure, [Solar] Radiant, [Solar] Restoration, [Void] Devour, [Void] Invisibility, and [Void] Overshield.
+			/// 	Light buffs include [Arc] Amplified, [Arc] Bolt Charge, [Solar] Cure, [Solar] Radiant, [Solar] Restoration, [Void] Devour, [Void] Invisibility, and [Void] Overshield.
 			/// </summary>
 			public const uint LightBuffs = 2713325501;
 			public const uint H2612874486 = 2612874486;

@@ -84,25 +84,25 @@ public sealed record Destiny2CoreSettings
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyProgressionDefinition>
     > CurrentRankProgressions { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyProgressionDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyProgressionDefinition>>.Empty;
 
     [JsonPropertyName("insertPlugFreeProtectedPlugItemHashes")]
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyInventoryItemDefinition>
     > InsertPlugFreeProtectedPlugItems { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 
     [JsonPropertyName("insertPlugFreeBlockedSocketTypeHashes")]
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinySocketTypeDefinition>
     > InsertPlugFreeBlockedSocketTypes { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinySocketTypeDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinySocketTypeDefinition>>.Empty;
 
     [JsonPropertyName("enabledFireteamFinderActivityGraphHashes")]
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
     > EnabledFireteamFinderActivityGraphs { get; init; } =
-        ReadOnlyCollections<
+        ReadOnlyCollection<
             DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
         >.Empty;
 
@@ -134,11 +134,11 @@ public sealed record Destiny2CoreSettings
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinySeasonDefinition>
     > FutureSeasons { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinySeasonDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinySeasonDefinition>>.Empty;
 
     [JsonPropertyName("pastSeasonHashes")]
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinySeasonDefinition>
     > PastSeasons { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinySeasonDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinySeasonDefinition>>.Empty;
 }

@@ -22,14 +22,14 @@ public sealed record DestinyCharacterActivitiesComponent
     /// </summary>
     [JsonPropertyName("availableActivities")]
     public ReadOnlyCollection<DestinyActivity> AvailableActivities { get; init; } =
-        ReadOnlyCollections<DestinyActivity>.Empty;
+        ReadOnlyCollection<DestinyActivity>.Empty;
 
     /// <summary>
     ///     The list of activity interactables that the player can interact with.
     /// </summary>
     [JsonPropertyName("availableActivityInteractables")]
     public ReadOnlyCollection<DestinyActivityInteractableReference> AvailableActivityInteractables { get; init; } =
-        ReadOnlyCollections<DestinyActivityInteractableReference>.Empty;
+        ReadOnlyCollection<DestinyActivityInteractableReference>.Empty;
 
     /// <summary>
     ///     If the user is in an activity, this will be the hash of the Activity being played. Note that you must combine this
@@ -62,14 +62,14 @@ public sealed record DestinyCharacterActivitiesComponent
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyActivityModeDefinition>
     > CurrentActivityModes { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModeDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>>.Empty;
 
     /// <summary>
     ///     All Activity Modes that apply to the current activity being played, in enum form.
     /// </summary>
     [JsonPropertyName("currentActivityModeTypes")]
     public ReadOnlyCollection<DestinyActivityModeType> CurrentActivityModeTypes { get; init; } =
-        ReadOnlyCollections<DestinyActivityModeType>.Empty;
+        ReadOnlyCollection<DestinyActivityModeType>.Empty;
 
     /// <summary>
     ///     If the user is in a playlist, this is the hash identifier for the playlist that they chose.

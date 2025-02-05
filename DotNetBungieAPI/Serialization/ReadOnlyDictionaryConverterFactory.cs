@@ -1,15 +1,19 @@
-﻿using System.Collections;
-using System.Reflection;
-using DotNetBungieAPI.Models;
-using DotNetBungieAPI.Models.Defaults;
-using DotNetBungieAPI.Models.Destiny;
+﻿using System.Reflection;
 
 namespace DotNetBungieAPI.Serialization;
 
+/// <summary>
+///     Json converter for <see cref="ReadOnlyDictionary{TKey,TValue}"/>
+/// </summary>
 public sealed class ReadOnlyDictionaryConverterFactory : JsonConverterFactory
 {
     private readonly Type _genericReadOnlyDictType = typeof(ReadOnlyDictionary<,>);
 
+    /// <summary>
+    ///     <inheritdoc />
+    /// </summary>
+    /// <param name="typeToConvert"><inheritdoc /></param>
+    /// <returns><inheritdoc /></returns>
     public override bool CanConvert(Type typeToConvert)
     {
         if (!typeToConvert.IsGenericType)
@@ -21,35 +25,32 @@ public sealed class ReadOnlyDictionaryConverterFactory : JsonConverterFactory
         return true;
     }
 
+    /// <summary>
+    ///     <inheritdoc />
+    /// </summary>
+    /// <param name="typeToConvert"><inheritdoc /></param>
+    /// <param name="options"><inheritdoc /></param>
+    /// <returns><inheritdoc /></returns>
     public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
     {
-        try
-        {
-            var keyType = typeToConvert.GetGenericArguments()[0];
-            var valueType = typeToConvert.GetGenericArguments()[1];
+        var keyType = typeToConvert.GetGenericArguments()[0];
+        var valueType = typeToConvert.GetGenericArguments()[1];
 
-            var converter = (JsonConverter)
-                Activator.CreateInstance(
-                    typeof(ReadOnlyDictionaryConverter<,>).MakeGenericType(keyType, valueType),
-                    BindingFlags.Instance | BindingFlags.Public,
-                    null,
-                    new object[] { options },
-                    null
-                );
+        var converter = (JsonConverter)
+            Activator.CreateInstance(
+                type: typeof(ReadOnlyDictionaryConverter<,>).MakeGenericType(keyType, valueType),
+                bindingAttr: BindingFlags.Instance | BindingFlags.Public,
+                binder: null,
+                args: [options],
+                culture: null
+            )!;
 
-            return converter;
-        }
-        catch
-        {
-            return null;
-        }
+        return converter;
     }
 
     private class ReadOnlyDictionaryConverter<TKey, TValue>
-        : JsonConverter<ReadOnlyDictionary<TKey, TValue>>
+        : JsonConverter<ReadOnlyDictionary<TKey, TValue>> where TKey : notnull
     {
-        private readonly Type _stringType = typeof(string);
-
         public ReadOnlyDictionaryConverter(JsonSerializerOptions options) { }
 
         public override bool HandleNull => true;
@@ -61,9 +62,9 @@ public sealed class ReadOnlyDictionaryConverterFactory : JsonConverterFactory
         )
         {
             if (reader.TokenType == JsonTokenType.Null)
-                return ReadOnlyDictionaries<TKey, TValue>.Empty;
+                return ReadOnlyDictionary<TKey, TValue>.Empty;
 
-            IDictionary<TKey, TValue> values = new Dictionary<TKey, TValue>();
+            var values = new Dictionary<TKey, TValue>();
 
             TKey currentPropertyName = default;
 

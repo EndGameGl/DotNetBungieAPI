@@ -5,5 +5,5 @@ public sealed record DictionaryComponentResponseOfuint32AndDestinyItemSocketsCom
 {
     [JsonPropertyName("data")]
     public ReadOnlyDictionary<uint, DestinyItemSocketsComponent> Data { get; init; } =
-        ReadOnlyDictionaries<uint, DestinyItemSocketsComponent>.Empty;
+        ReadOnlyDictionary<uint, DestinyItemSocketsComponent>.Empty;
 }

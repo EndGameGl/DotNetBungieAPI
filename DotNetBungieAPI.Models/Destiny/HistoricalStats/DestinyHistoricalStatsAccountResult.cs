@@ -10,5 +10,5 @@ public sealed record DestinyHistoricalStatsAccountResult
 
     [JsonPropertyName("characters")]
     public ReadOnlyCollection<DestinyHistoricalStatsPerCharacter> Characters { get; init; } =
-        ReadOnlyCollections<DestinyHistoricalStatsPerCharacter>.Empty;
+        ReadOnlyCollection<DestinyHistoricalStatsPerCharacter>.Empty;
 }

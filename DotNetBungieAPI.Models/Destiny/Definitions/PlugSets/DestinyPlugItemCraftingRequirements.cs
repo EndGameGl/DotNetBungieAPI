@@ -7,18 +7,18 @@ public sealed record DestinyPlugItemCraftingRequirements
 {
     [JsonPropertyName("unlockRequirements")]
     public ReadOnlyCollection<DestinyPlugItemCraftingUnlockRequirement> UnlockRequirements { get; init; } =
-        ReadOnlyCollections<DestinyPlugItemCraftingUnlockRequirement>.Empty;
+        ReadOnlyCollection<DestinyPlugItemCraftingUnlockRequirement>.Empty;
 
     [JsonPropertyName("materialRequirementHashes")]
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>
     > MaterialRequirements { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>>.Empty;
 
     public bool DeepEquals(DestinyPlugItemCraftingRequirements other)
     {
         return other is not null
-            && UnlockRequirements.DeepEqualsReadOnlyCollections(other.UnlockRequirements)
-            && MaterialRequirements.DeepEqualsReadOnlyCollections(other.MaterialRequirements);
+            && UnlockRequirements.DeepEqualsReadOnlyCollection(other.UnlockRequirements)
+            && MaterialRequirements.DeepEqualsReadOnlyCollection(other.MaterialRequirements);
     }
 }

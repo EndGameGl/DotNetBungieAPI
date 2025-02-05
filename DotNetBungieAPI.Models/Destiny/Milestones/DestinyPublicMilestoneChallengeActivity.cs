@@ -14,7 +14,7 @@ public sealed record DestinyPublicMilestoneChallengeActivity
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyObjectiveDefinition>
     > ChallengeObjectives { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyObjectiveDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>>.Empty;
 
     /// <summary>
     ///     If the activity has modifiers, this will be the list of modifiers that all variants have in common. Perform lookups
@@ -28,7 +28,7 @@ public sealed record DestinyPublicMilestoneChallengeActivity
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyActivityModifierDefinition>
     > Modifiers { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModifierDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>>.Empty;
 
     /// <summary>
     ///     If returned, this is the index into the DestinyActivityDefinition's "loadouts" property, indicating the currently
@@ -42,7 +42,7 @@ public sealed record DestinyPublicMilestoneChallengeActivity
     ///     entities to relate them to: relating these hashes to something human readable is up to you unfortunately.
     /// </summary>
     [JsonPropertyName("phaseHashes")]
-    public ReadOnlyCollection<uint> PhaseHashes { get; init; } = ReadOnlyCollections<uint>.Empty;
+    public ReadOnlyCollection<uint> PhaseHashes { get; init; } = ReadOnlyCollection<uint>.Empty;
 
     /// <summary>
     ///     The set of activity options for this activity, keyed by an identifier that's unique for this activity (not
@@ -59,5 +59,5 @@ public sealed record DestinyPublicMilestoneChallengeActivity
     /// </summary>
     [JsonPropertyName("booleanActivityOptions")]
     public ReadOnlyDictionary<uint, bool> BooleanActivityOptions { get; init; } =
-        ReadOnlyDictionaries<uint, bool>.Empty;
+        ReadOnlyDictionary<uint, bool>.Empty;
 }

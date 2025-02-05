@@ -6,5 +6,5 @@ public sealed record SearchResultOfContentItemPublicContract : SearchResultBase
 {
     [JsonPropertyName("results")]
     public ReadOnlyCollection<ContentItemPublicContract> Results { get; init; } =
-        ReadOnlyCollections<ContentItemPublicContract>.Empty;
+        ReadOnlyCollection<ContentItemPublicContract>.Empty;
 }

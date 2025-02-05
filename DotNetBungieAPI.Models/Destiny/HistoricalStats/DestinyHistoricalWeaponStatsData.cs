@@ -7,5 +7,5 @@ public sealed record DestinyHistoricalWeaponStatsData
     /// </summary>
     [JsonPropertyName("weapons")]
     public ReadOnlyCollection<DestinyHistoricalWeaponStats> Weapons { get; init; } =
-        ReadOnlyCollections<DestinyHistoricalWeaponStats>.Empty;
+        ReadOnlyCollection<DestinyHistoricalWeaponStats>.Empty;
 }

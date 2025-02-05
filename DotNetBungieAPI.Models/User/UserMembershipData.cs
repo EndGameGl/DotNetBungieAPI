@@ -10,7 +10,7 @@ public sealed record UserMembershipData
     /// </summary>
     [JsonPropertyName("destinyMemberships")]
     public ReadOnlyCollection<GroupUserInfoCard> DestinyMemberships { get; init; } =
-        ReadOnlyCollections<GroupUserInfoCard>.Empty;
+        ReadOnlyCollection<GroupUserInfoCard>.Empty;
 
     /// <summary>
     ///     If this property is populated, it will have the membership ID of the account considered to be "primary" in this

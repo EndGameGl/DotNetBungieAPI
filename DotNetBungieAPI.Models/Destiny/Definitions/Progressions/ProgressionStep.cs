@@ -38,7 +38,7 @@ public sealed record ProgressionStep : IDeepEquatable<ProgressionStep>
     /// </summary>
     [JsonPropertyName("rewardItems")]
     public ReadOnlyCollection<DestinyItemQuantity> RewardItems { get; init; } =
-        ReadOnlyCollections<DestinyItemQuantity>.Empty;
+        ReadOnlyCollection<DestinyItemQuantity>.Empty;
 
     public bool DeepEquals(ProgressionStep other)
     {
@@ -47,6 +47,6 @@ public sealed record ProgressionStep : IDeepEquatable<ProgressionStep>
             && Icon == other.Icon
             && ProgressTotal == other.ProgressTotal
             && StepName == other.StepName
-            && RewardItems.DeepEqualsReadOnlyCollections(other.RewardItems);
+            && RewardItems.DeepEqualsReadOnlyCollection(other.RewardItems);
     }
 }

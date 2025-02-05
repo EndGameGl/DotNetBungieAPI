@@ -17,6 +17,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EventVendor = 976973631;
 			public const uint H4213149368 = 4213149368;
+			public const uint H701183878 = 701183878;
 			/// <summary>
 			/// 	The Hidden's hub for intel on any and all Enclave investigations.
 			/// </summary>
@@ -38,6 +39,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint SpoilsoftheMorningStar = 3307474199;
 			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1111751008 = 1111751008;
+			/// <summary>
 			/// 	Built in honor of those who sacrificed their Light to defend humanity. Created in collaboration with Cryptarchs to help Guardians manage armaments.
 			/// </summary>
 			public const uint Memorial = 1614177448;
@@ -50,6 +55,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Emperor Calus of the Cabal seeks champions.
 			/// </summary>
 			public const uint Leviathan = 24856709;
+			/// <summary>
+			/// 	Light wreathed in ravenous Taken Essentia.
+			/// </summary>
+			public const uint PathofResolve = 3681735803;
 			/// <summary>
 			/// 	Atheon has been destroyed. Thanks to you, Kabr's spirit lives on, and his spoils are yours to take… for a price.
 			/// </summary>
@@ -95,6 +104,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	The formerly two-faced Fallen now serves as a faithful guide on Europa for Guardians and Light-bound Eliksni alike.
 			/// </summary>
 			public const uint EliksniRebel = 2531198101;
+			public const uint H2680586945 = 2680586945;
 			/// <summary>
 			/// 	Compete in the Crucible. Earn armor and weapons at each rank, and powerful upgrades at major ranks.
 			/// </summary>
@@ -135,6 +145,7 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Countless unclear futures reverberate through your mind as you approach the obelisk. Strengthen the obelisk's bond to the Sundial by increasing its Resonance Rank.
 			/// </summary>
 			public const uint ResonanceRank_1687859061 = 1687859061;
+			public const uint H1806136486 = 1806136486;
 			/// <summary>
 			/// 	Dismantle weapons and complete Gunsmith bounties to increase your Reputation Rank with Banshee-44.
 			/// </summary>
@@ -176,13 +187,19 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint ActIFieldwork = 958291857;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Help Eido search for signs of the missing House Salvation Apothecary, Ixis.
+			/// <para/>
+			/// 	Tonic Recipes Discovered: {var:1285843804} / {var:2471929889}
+			/// <para/>
 			/// </summary>
-			public const uint Classified_958291858 = 958291858;
+			public const uint ActIIFieldwork = 958291858;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Help Eido search for signs of the missing House Salvation Apothecary, Ixis.
+			/// <para/>
+			/// 	Tonic Recipes Discovered: {var:1285843804} / {var:2471929889}
+			/// <para/>
 			/// </summary>
-			public const uint Classified_958291859 = 958291859;
+			public const uint ActIIIFieldwork = 958291859;
 			/// <summary>
 			/// 	Countless unclear futures reverberate through your mind as you approach the obelisk. Strengthen the obelisk's bond to the Sundial by increasing its Resonance Rank.
 			/// </summary>
@@ -196,9 +213,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint WorldGearTonics = 3853944824;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Tonics that enable the acquisition of rewards from the Exotic mission "Kell's Fall" across the system.
 			/// </summary>
-			public const uint Classified_3853944825 = 3853944825;
+			public const uint KellsFallTonics = 3853944825;
 			/// <summary>
 			/// 	Tonics that enable the acquisition of resources, including Enhancement Cores, Ascendant Shards, Glimmer, and more.
 			/// </summary>
@@ -216,9 +233,9 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint VolatileTonics = 3853944829;
 			/// <summary>
-			/// 	Keep it secret.  Keep it safe.
+			/// 	Tonics that enable the acquisition of Tomb of Elders rewards across the system.
 			/// </summary>
-			public const uint Classified_3853944830 = 3853944830;
+			public const uint TombofEldersTonics = 3853944830;
 			/// <summary>
 			/// 	Tonics that enable the acquisition of Onslaught rewards across the system.
 			/// </summary>
@@ -235,6 +252,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Kiosk to acquire old or abandoned quests.
 			/// </summary>
 			public const uint QuestArchive = 3820772794;
+			/// <summary>
+			/// 	Keep it secret.  Keep it safe.
+			/// </summary>
+			public const uint Classified_1721689534 = 1721689534;
 			/// <summary>
 			/// 	Eternal Equine
 			/// </summary>

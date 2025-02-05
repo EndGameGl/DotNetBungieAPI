@@ -4,7 +4,7 @@ public sealed record DestinyIconSequenceDefinition : IDeepEquatable<DestinyIconS
 {
     [JsonPropertyName("frames")]
     public ReadOnlyCollection<BungieNetResource> Frames { get; init; } =
-        ReadOnlyCollections<BungieNetResource>.Empty;
+        ReadOnlyCollection<BungieNetResource>.Empty;
 
     public bool DeepEquals(DestinyIconSequenceDefinition other)
     {

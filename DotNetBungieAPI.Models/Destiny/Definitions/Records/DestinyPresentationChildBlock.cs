@@ -11,7 +11,7 @@ public sealed record DestinyPresentationChildBlock : IDeepEquatable<DestinyPrese
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyPresentationNodeDefinition>
     > ParentPresentationNodes { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
 
     [JsonPropertyName("displayStyle")]
     public DestinyPresentationNodeType DisplayStyle { get; init; }
@@ -20,7 +20,7 @@ public sealed record DestinyPresentationChildBlock : IDeepEquatable<DestinyPrese
     {
         return other != null
             && PresentationNodeType == other.PresentationNodeType
-            && ParentPresentationNodes.DeepEqualsReadOnlyCollections(other.ParentPresentationNodes)
+            && ParentPresentationNodes.DeepEqualsReadOnlyCollection(other.ParentPresentationNodes)
             && DisplayStyle == other.DisplayStyle;
     }
 }

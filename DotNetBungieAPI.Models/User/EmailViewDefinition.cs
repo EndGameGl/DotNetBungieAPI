@@ -17,5 +17,5 @@ public sealed record EmailViewDefinition
     /// </summary>
     [JsonPropertyName("viewSettings")]
     public ReadOnlyCollection<EmailViewDefinitionSetting> ViewSettings { get; init; } =
-        ReadOnlyCollections<EmailViewDefinitionSetting>.Empty;
+        ReadOnlyCollection<EmailViewDefinitionSetting>.Empty;
 }

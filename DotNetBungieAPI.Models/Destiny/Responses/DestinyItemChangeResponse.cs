@@ -12,12 +12,12 @@ public sealed record DestinyItemChangeResponse
     /// </summary>
     [JsonPropertyName("addedInventoryItems")]
     public ReadOnlyCollection<DestinyItemComponent> AddedInventoryItems { get; init; } =
-        ReadOnlyCollections<DestinyItemComponent>.Empty;
+        ReadOnlyCollection<DestinyItemComponent>.Empty;
 
     /// <summary>
     ///     Items that disappeared from the inventory possibly as a result of an action.
     /// </summary>
     [JsonPropertyName("removedInventoryItems")]
     public ReadOnlyCollection<DestinyItemComponent> RemovedInventoryItems { get; init; } =
-        ReadOnlyCollections<DestinyItemComponent>.Empty;
+        ReadOnlyCollection<DestinyItemComponent>.Empty;
 }

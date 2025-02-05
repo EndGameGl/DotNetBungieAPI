@@ -9,11 +9,11 @@ public sealed record RewardAvailabilityModel
 
     [JsonPropertyName("RecordDefinitions")]
     public ReadOnlyCollection<DestinyRecordDefinition> RecordDefinitions { get; init; } =
-        ReadOnlyCollections<DestinyRecordDefinition>.Empty;
+        ReadOnlyCollection<DestinyRecordDefinition>.Empty;
 
     [JsonPropertyName("CollectibleDefinitions")]
     public ReadOnlyCollection<CollectibleDefinitions> CollectibleDefinitions { get; init; } =
-        ReadOnlyCollections<CollectibleDefinitions>.Empty;
+        ReadOnlyCollection<CollectibleDefinitions>.Empty;
 
     [JsonPropertyName("IsOffer")]
     public bool IsOffer { get; init; }

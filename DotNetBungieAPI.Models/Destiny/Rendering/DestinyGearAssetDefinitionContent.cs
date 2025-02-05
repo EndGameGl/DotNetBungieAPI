@@ -9,7 +9,7 @@ public sealed record DestinyGearAssetDefinitionContent
     public GeometryAndTexturesIndexSet FemaleIndexSet { get; init; }
 
     [JsonPropertyName("geometry")]
-    public ReadOnlyCollection<string> Geometry { get; init; } = ReadOnlyCollections<string>.Empty;
+    public ReadOnlyCollection<string> Geometry { get; init; } = ReadOnlyCollection<string>.Empty;
 
     [JsonPropertyName("male_index_set")]
     public GeometryAndTexturesIndexSet MaleIndexSet { get; init; }
@@ -22,8 +22,8 @@ public sealed record DestinyGearAssetDefinitionContent
         int,
         ReadOnlyCollection<GeometryAndTexturesIndexSet>
     > RegionIndexSets { get; init; } =
-        ReadOnlyDictionaries<int, ReadOnlyCollection<GeometryAndTexturesIndexSet>>.Empty;
+        ReadOnlyDictionary<int, ReadOnlyCollection<GeometryAndTexturesIndexSet>>.Empty;
 
     [JsonPropertyName("textures")]
-    public ReadOnlyCollection<string> Textures { get; init; } = ReadOnlyCollections<string>.Empty;
+    public ReadOnlyCollection<string> Textures { get; init; } = ReadOnlyCollection<string>.Empty;
 }

@@ -11,7 +11,7 @@ public sealed record DestinyTalentNodeExclusiveSetDefinition
     ///     The list of node indexes for the exclusive set. Historically, these were indexes.
     /// </summary>
     [JsonPropertyName("nodeIndexes")]
-    public ReadOnlyCollection<int> NodeIndexes { get; init; } = ReadOnlyCollections<int>.Empty;
+    public ReadOnlyCollection<int> NodeIndexes { get; init; } = ReadOnlyCollection<int>.Empty;
 
     public bool DeepEquals(DestinyTalentNodeExclusiveSetDefinition other)
     {

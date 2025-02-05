@@ -21,10 +21,10 @@ public sealed record DestinyMilestoneQuestRewardsDefinition
     /// </summary>
     [JsonPropertyName("items")]
     public ReadOnlyCollection<DestinyMilestoneQuestRewardItem> Items { get; init; } =
-        ReadOnlyCollections<DestinyMilestoneQuestRewardItem>.Empty;
+        ReadOnlyCollection<DestinyMilestoneQuestRewardItem>.Empty;
 
     public bool DeepEquals(DestinyMilestoneQuestRewardsDefinition other)
     {
-        return other != null && Items.DeepEqualsReadOnlyCollections(other.Items);
+        return other != null && Items.DeepEqualsReadOnlyCollection(other.Items);
     }
 }

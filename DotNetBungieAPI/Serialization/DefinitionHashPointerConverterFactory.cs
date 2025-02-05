@@ -41,7 +41,7 @@ public sealed class DefinitionHashPointerConverterFactory : JsonConverterFactory
                 typeof(DefinitionHashPointerConverter<>).MakeGenericType(definitionType),
                 BindingFlags.Instance | BindingFlags.Public,
                 null,
-                Array.Empty<object>(),
+                [],
                 null
             );
 
@@ -59,15 +59,12 @@ public sealed class DefinitionHashPointerConverterFactory : JsonConverterFactory
             JsonSerializerOptions options
         )
         {
-            switch (reader.TokenType)
+            return reader.TokenType switch
             {
-                case JsonTokenType.String:
-                    return new DefinitionHashPointer<T>(uint.Parse(reader.GetString()));
-                case JsonTokenType.Null:
-                    return DefinitionHashPointer<T>.Empty;
-                default:
-                    return new DefinitionHashPointer<T>(reader.GetUInt32());
-            }
+                JsonTokenType.String => new DefinitionHashPointer<T>(uint.Parse(reader.GetString()!)),
+                JsonTokenType.Null => DefinitionHashPointer<T>.Empty,
+                _ => new DefinitionHashPointer<T>(reader.GetUInt32())
+            };
         }
 
         public override void Write(

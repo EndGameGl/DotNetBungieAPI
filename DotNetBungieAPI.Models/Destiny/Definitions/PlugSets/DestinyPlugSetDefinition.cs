@@ -39,7 +39,7 @@ public sealed record DestinyPlugSetDefinition
     /// </summary>
     [JsonPropertyName("reusablePlugItems")]
     public ReadOnlyCollection<DestinyItemSocketEntryPlugItemRandomizedDefinition> ReusablePlugItems { get; init; } =
-        ReadOnlyCollections<DestinyItemSocketEntryPlugItemRandomizedDefinition>.Empty;
+        ReadOnlyCollection<DestinyItemSocketEntryPlugItemRandomizedDefinition>.Empty;
 
     public bool DeepEquals(DestinyPlugSetDefinition other)
     {
@@ -50,7 +50,7 @@ public sealed record DestinyPlugSetDefinition
                     : other.DisplayProperties == null
             )
             && IsFakePlugSet == other.IsFakePlugSet
-            && ReusablePlugItems.DeepEqualsReadOnlyCollections(other.ReusablePlugItems)
+            && ReusablePlugItems.DeepEqualsReadOnlyCollection(other.ReusablePlugItems)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash
             && Index == other.Index

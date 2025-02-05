@@ -42,9 +42,11 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
             .Append("ActiveCount/")
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<int>(url, cancellationToken, authorizationToken.AccessToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<int>(
+            url,
+            cancellationToken,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<SearchResultOfFireteamSummary>> GetAvailableClanFireteams(
@@ -77,13 +79,11 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
             .AddQueryParam("langFilter", langFilter, () => !string.IsNullOrWhiteSpace(langFilter))
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(
-                url,
-                cancellationToken,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(
+            url,
+            cancellationToken,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<
@@ -113,13 +113,11 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
             .AddQueryParam("langFilter", langFilter, () => !string.IsNullOrWhiteSpace(langFilter))
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(
-                url,
-                cancellationToken,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(
+            url,
+            cancellationToken,
+            authorizationToken.AccessToken
+        );
     }
 
     public async ValueTask<BungieResponse<SearchResultOfFireteamSummary>> GetMyClanFireteams(
@@ -148,13 +146,11 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
             .AddQueryParam("groupFilter", groupFilter.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(
-                url,
-                cancellationToken,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<SearchResultOfFireteamSummary>(
+            url,
+            cancellationToken,
+            authorizationToken.AccessToken
+        );
     }
 
     public async ValueTask<BungieResponse<FireteamResponse>> GetClanFireteam(
@@ -175,12 +171,10 @@ internal sealed class FireteamMethodsAccess : IFireteamMethodsAccess
             .AddUrlParam(fireteamId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<FireteamResponse>(
-                url,
-                cancellationToken,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<FireteamResponse>(
+            url,
+            cancellationToken,
+            authorizationToken.AccessToken
+        );
     }
 }

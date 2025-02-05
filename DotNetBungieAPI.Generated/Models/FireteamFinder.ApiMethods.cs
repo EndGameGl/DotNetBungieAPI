@@ -179,6 +179,7 @@ public interface IFireteamFinderApi
         long destinyCharacterId,
         long destinyMembershipId,
         BungieMembershipType destinyMembershipType,
+        bool overrideOfflineFilter,
         FireteamFinder.DestinyFireteamFinderSearchListingsByFiltersRequest body
     );
 

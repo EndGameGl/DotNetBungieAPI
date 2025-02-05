@@ -36,5 +36,5 @@ public sealed record GroupEditHistory
 
     [JsonPropertyName("groupEditors")]
     public ReadOnlyCollection<UserInfoCard> GroupEditors { get; init; } =
-        ReadOnlyCollections<UserInfoCard>.Empty;
+        ReadOnlyCollection<UserInfoCard>.Empty;
 }

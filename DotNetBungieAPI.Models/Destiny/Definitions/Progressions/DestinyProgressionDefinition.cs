@@ -60,7 +60,7 @@ public sealed record DestinyProgressionDefinition
     /// </summary>
     [JsonPropertyName("steps")]
     public ReadOnlyCollection<ProgressionStep> Steps { get; init; } =
-        ReadOnlyCollections<ProgressionStep>.Empty;
+        ReadOnlyCollection<ProgressionStep>.Empty;
 
     /// <summary>
     ///     If true, the Progression is something worth showing to users.
@@ -95,7 +95,7 @@ public sealed record DestinyProgressionDefinition
 
     [JsonPropertyName("rewardItems")]
     public ReadOnlyCollection<DestinyProgressionRewardItemQuantity> RewardItems { get; init; } =
-        ReadOnlyCollections<DestinyProgressionRewardItemQuantity>.Empty;
+        ReadOnlyCollection<DestinyProgressionRewardItemQuantity>.Empty;
 
     [JsonPropertyName("progressToNextStepScaling")]
     public int ProgressToNextStepScaling { get; init; }
@@ -111,11 +111,11 @@ public sealed record DestinyProgressionDefinition
             && ProgressToNextStepScaling == other.ProgressToNextStepScaling
             && RankIcon == other.RankIcon
             && RepeatLastStep == other.RepeatLastStep
-            && RewardItems.DeepEqualsReadOnlyCollections(other.RewardItems)
+            && RewardItems.DeepEqualsReadOnlyCollection(other.RewardItems)
             && Scope == other.Scope
             && StorageMappingIndex == other.StorageMappingIndex
             && Visible == other.Visible
-            && Steps.DeepEqualsReadOnlyCollections(other.Steps)
+            && Steps.DeepEqualsReadOnlyCollection(other.Steps)
             && Source == other.Source
             && Faction.DeepEquals(other.Faction)
             && Blacklisted == other.Blacklisted

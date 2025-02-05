@@ -10,9 +10,9 @@ public sealed record DestinyCraftableComponent
     /// </summary>
     [JsonPropertyName("failedRequirementIndexes")]
     public ReadOnlyCollection<int> FailedRequirementIndexes { get; init; } =
-        ReadOnlyCollections<int>.Empty;
+        ReadOnlyCollection<int>.Empty;
 
     [JsonPropertyName("sockets")]
     public ReadOnlyCollection<DestinyCraftableSocketComponent> Sockets { get; init; } =
-        ReadOnlyCollections<DestinyCraftableSocketComponent>.Empty;
+        ReadOnlyCollection<DestinyCraftableSocketComponent>.Empty;
 }

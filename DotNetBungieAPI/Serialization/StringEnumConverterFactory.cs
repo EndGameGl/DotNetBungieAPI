@@ -16,12 +16,12 @@ public class StringEnumConverterFactory : JsonConverterFactory
     {
         var converter = (JsonConverter)
             Activator.CreateInstance(
-                typeof(StringEnumJsonConverter<>).MakeGenericType(typeToConvert),
-                BindingFlags.Instance | BindingFlags.Public,
-                null,
-                new object[] { typeToConvert },
-                null
-            );
+                type: typeof(StringEnumJsonConverter<>).MakeGenericType(typeToConvert),
+                bindingAttr: BindingFlags.Instance | BindingFlags.Public,
+                binder: null,
+                args: [typeToConvert],
+                culture: null
+            )!;
 
         return converter;
     }
@@ -29,15 +29,12 @@ public class StringEnumConverterFactory : JsonConverterFactory
     private class StringEnumJsonConverter<TEnum> : JsonConverter<TEnum>
         where TEnum : unmanaged, Enum
     {
-        private readonly Type _enumType;
-        private readonly Type _underlyingType;
         private readonly TypeCode _underlyingTypeCode;
 
         public StringEnumJsonConverter(Type enumType)
         {
-            _enumType = enumType;
-            _underlyingType = _enumType.GetField("value__")!.FieldType;
-            _underlyingTypeCode = Type.GetTypeCode(_underlyingType);
+            var underlyingType = enumType.GetField("value__")!.FieldType;
+            _underlyingTypeCode = Type.GetTypeCode(underlyingType);
         }
 
         public override TEnum Read(
@@ -50,18 +47,19 @@ public class StringEnumConverterFactory : JsonConverterFactory
             {
                 case JsonTokenType.String:
                     var stringValue = reader.GetString();
-                    if (!char.IsDigit(stringValue[0]))
+                    if (!char.IsDigit(stringValue![0]))
                         return (TEnum)Enum.Parse(typeToConvert, stringValue);
+
                     return _underlyingTypeCode switch
                     {
-                        TypeCode.Byte => ConvertToEnum<TEnum, byte>(byte.Parse(stringValue)),
-                        TypeCode.SByte => ConvertToEnum<TEnum, sbyte>(sbyte.Parse(stringValue)),
-                        TypeCode.Int16 => ConvertToEnum<TEnum, short>(short.Parse(stringValue)),
-                        TypeCode.Int32 => ConvertToEnum<TEnum, int>(int.Parse(stringValue)),
-                        TypeCode.Int64 => ConvertToEnum<TEnum, long>(long.Parse(stringValue)),
-                        TypeCode.UInt16 => ConvertToEnum<TEnum, ushort>(ushort.Parse(stringValue)),
-                        TypeCode.UInt32 => ConvertToEnum<TEnum, uint>(uint.Parse(stringValue)),
-                        TypeCode.UInt64 => ConvertToEnum<TEnum, ulong>(ulong.Parse(stringValue)),
+                        TypeCode.Byte => ConvertToEnum<TEnum, byte>(stringValue),
+                        TypeCode.SByte => ConvertToEnum<TEnum, sbyte>(stringValue),
+                        TypeCode.Int16 => ConvertToEnum<TEnum, short>(stringValue),
+                        TypeCode.Int32 => ConvertToEnum<TEnum, int>(stringValue),
+                        TypeCode.Int64 => ConvertToEnum<TEnum, long>(stringValue),
+                        TypeCode.UInt16 => ConvertToEnum<TEnum, ushort>(stringValue),
+                        TypeCode.UInt32 => ConvertToEnum<TEnum, uint>(stringValue),
+                        TypeCode.UInt64 => ConvertToEnum<TEnum, ulong>(stringValue),
                         _ => throw new ArgumentOutOfRangeException(nameof(stringValue))
                     };
                 default:
@@ -116,8 +114,16 @@ public class StringEnumConverterFactory : JsonConverterFactory
         }
     }
 
-    public static TEnum ConvertToEnum<TEnum, TSource>(TSource value)
-        where TSource : unmanaged
+    private static TEnum ConvertToEnum<TEnum, TSource>(string sourceValue)
+        where TSource : unmanaged, IParsable<TSource>
+        where TEnum : unmanaged, Enum
+    {
+        var value = TSource.Parse(sourceValue, provider: null);
+        return ConvertToEnum<TEnum, TSource>(value);
+    }
+
+    private static TEnum ConvertToEnum<TEnum, TSource>(TSource value)
+        where TSource : unmanaged, IParsable<TSource>
         where TEnum : unmanaged, Enum
     {
         unsafe
@@ -128,10 +134,8 @@ public class StringEnumConverterFactory : JsonConverterFactory
                 *(TSource*)&o = value;
                 return o;
             }
-            else
-            {
-                return *(TEnum*)&value;
-            }
+
+            return *(TEnum*)&value;
         }
     }
 }

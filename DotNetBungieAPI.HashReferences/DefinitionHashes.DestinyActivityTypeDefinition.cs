@@ -274,7 +274,7 @@ namespace DotNetBungieAPI.HashReferences
 			public const uint Strike_2884569138 = 2884569138;
 			public const uint TheMenagerie = 400075666;
 			/// <summary>
-			/// 	Only the best of the best may step foot onto these hallowed grounds. You must be found worthy by achieving 7 wins with no losses to gain access.
+			/// 	Only the best of the best may step foot onto these hallowed grounds. You must be found worthy by achieving 7 wins on a Lighthouse Passage to gain access.
 			/// </summary>
 			public const uint LighthouseSimulation = 4276116472;
 			/// <summary>

@@ -25,7 +25,7 @@ public sealed record DestinyItemQualityBlockDefinition
     /// </summary>
     [JsonPropertyName("displayVersionWatermarkIcons")]
     public ReadOnlyCollection<BungieNetResource> DisplayVersionWatermarkIcons { get; init; } =
-        ReadOnlyCollections<BungieNetResource>.Empty;
+        ReadOnlyCollection<BungieNetResource>.Empty;
 
     /// <summary>
     ///     If any one of these hashes matches any value in another item's infusionCategoryHashes, the two can infuse with each
@@ -33,7 +33,7 @@ public sealed record DestinyItemQualityBlockDefinition
     /// </summary>
     [JsonPropertyName("infusionCategoryHashes")]
     public ReadOnlyCollection<uint> InfusionCategoryHashes { get; init; } =
-        ReadOnlyCollections<uint>.Empty;
+        ReadOnlyCollection<uint>.Empty;
 
     /// <summary>
     ///     The "base" defined level of an item. This is a list because, in theory, each Expansion could define its own base
@@ -44,7 +44,7 @@ public sealed record DestinyItemQualityBlockDefinition
     ///     imperfect view and will only be reliable on instanced data as a result.
     /// </summary>
     [JsonPropertyName("itemLevels")]
-    public ReadOnlyCollection<int> ItemLevels { get; init; } = ReadOnlyCollections<int>.Empty;
+    public ReadOnlyCollection<int> ItemLevels { get; init; } = ReadOnlyCollection<int>.Empty;
 
     /// <summary>
     ///     An item can refer to pre-set level requirements. They are defined in DestinyProgressionLevelRequirementDefinition
@@ -65,7 +65,7 @@ public sealed record DestinyItemQualityBlockDefinition
     /// </summary>
     [JsonPropertyName("versions")]
     public ReadOnlyCollection<DestinyItemVersionDefinition> Versions { get; init; } =
-        ReadOnlyCollections<DestinyItemVersionDefinition>.Empty;
+        ReadOnlyCollection<DestinyItemVersionDefinition>.Empty;
 
     public bool DeepEquals(DestinyItemQualityBlockDefinition other)
     {
@@ -80,6 +80,6 @@ public sealed record DestinyItemQualityBlockDefinition
             && ItemLevels.DeepEqualsReadOnlySimpleCollection(other.ItemLevels)
             && ProgressionLevelRequirement.DeepEquals(other.ProgressionLevelRequirement)
             && QualityLevel == other.QualityLevel
-            && Versions.DeepEqualsReadOnlyCollections(other.Versions);
+            && Versions.DeepEqualsReadOnlyCollection(other.Versions);
     }
 }

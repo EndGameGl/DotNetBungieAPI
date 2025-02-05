@@ -21,5 +21,5 @@ public sealed record DestinyVendorGroup
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyVendorDefinition>
     > Vendors { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyVendorDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyVendorDefinition>>.Empty;
 }

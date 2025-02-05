@@ -13,7 +13,7 @@ public sealed record DestinyCraftablesComponent
         DefinitionHashPointer<DestinyInventoryItemDefinition>,
         DestinyCraftableComponent
     > Craftables { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyInventoryItemDefinition>,
             DestinyCraftableComponent
         >.Empty;

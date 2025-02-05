@@ -27,7 +27,7 @@ public sealed record DestinyFireteamFinderActivityGraphDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
     > Children { get; init; } =
-        ReadOnlyCollections<
+        ReadOnlyCollection<
             DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
         >.Empty;
 
@@ -35,7 +35,7 @@ public sealed record DestinyFireteamFinderActivityGraphDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
     > SelfAndAllDescendants { get; init; } =
-        ReadOnlyCollections<
+        ReadOnlyCollection<
             DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
         >.Empty;
 
@@ -43,7 +43,7 @@ public sealed record DestinyFireteamFinderActivityGraphDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyFireteamFinderActivitySetDefinition>
     > RelatedActivitySets { get; init; } =
-        ReadOnlyCollections<
+        ReadOnlyCollection<
             DefinitionHashPointer<DestinyFireteamFinderActivitySetDefinition>
         >.Empty;
 
@@ -55,21 +55,21 @@ public sealed record DestinyFireteamFinderActivityGraphDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyActivityDefinition>
     > RelatedActivities { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyActivityDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyActivityDefinition>>.Empty;
 
     [JsonPropertyName("relatedDirectorNodes")]
     public ReadOnlyCollection<DestinyActivityGraphReference> RelatedDirectorNodes { get; init; } =
-        ReadOnlyCollections<DestinyActivityGraphReference>.Empty;
+        ReadOnlyCollection<DestinyActivityGraphReference>.Empty;
 
     [JsonPropertyName("relatedInteractableActivities")]
     public ReadOnlyCollection<DestinyActivityInteractableReference> RelatedInteractableActivities { get; init; } =
-        ReadOnlyCollections<DestinyActivityInteractableReference>.Empty;
+        ReadOnlyCollection<DestinyActivityInteractableReference>.Empty;
 
     [JsonPropertyName("relatedLocationHashes")]
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyLocationDefinition>
     > RelatedLocations { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyLocationDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyLocationDefinition>>.Empty;
 
     public DefinitionsEnum DefinitionEnumValue =>
         DefinitionsEnum.DestinyFireteamFinderActivityGraphDefinition;

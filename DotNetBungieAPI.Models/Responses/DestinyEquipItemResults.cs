@@ -7,5 +7,5 @@ public sealed record DestinyEquipItemResults
 {
     [JsonPropertyName("equipResults")]
     public ReadOnlyCollection<DestinyEquipItemResult> EquipResults { get; init; } =
-        ReadOnlyCollections<DestinyEquipItemResult>.Empty;
+        ReadOnlyCollection<DestinyEquipItemResult>.Empty;
 }

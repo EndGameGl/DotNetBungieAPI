@@ -40,9 +40,10 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .AddUrlParam(destinyCharacterId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<bool>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<bool>> ActivateLobbyForNewListingId(
@@ -63,9 +64,10 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .AddUrlParam(destinyCharacterId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<bool>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<DestinyFireteamFinderApplyToListingResponse>> ApplyToListing(
@@ -88,12 +90,10 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .AddUrlParam(destinyCharacterId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<DestinyFireteamFinderApplyToListingResponse>(
-                url,
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<DestinyFireteamFinderApplyToListingResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<
@@ -115,16 +115,14 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .Build();
 
         var stream = new MemoryStream();
-        await _serializer.SerializeAsync(stream, body).ConfigureAwait(false);
+        await _serializer.SerializeAsync(stream, body);
         stream.Position = 0;
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<DestinyFireteamFinderBulkGetListingStatusResponse>(
-                url,
-                cancellationToken,
-                content: stream
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<DestinyFireteamFinderBulkGetListingStatusResponse>(
+            url,
+            cancellationToken,
+            content: stream
+        );
     }
 
     public async Task<BungieResponse<DestinyFireteamFinderGetApplicationResponse>> GetApplication(
@@ -144,12 +142,10 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .AddUrlParam(destinyCharacterId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyFireteamFinderGetApplicationResponse>(
-                url,
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<DestinyFireteamFinderGetApplicationResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<DestinyFireteamFinderListing>> GetListing(
@@ -163,9 +159,10 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .AddUrlParam(listingId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyFireteamFinderListing>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<DestinyFireteamFinderListing>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<
@@ -197,12 +194,10 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .AddQueryParam(nameof(flags), flags.ToString(), () => flags > 0)
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyFireteamFinderGetListingApplicationsResponse>(
-                url,
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<DestinyFireteamFinderGetListingApplicationsResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<DestinyFireteamFinderLobbyResponse>> GetLobby(
@@ -222,9 +217,10 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .AddUrlParam(destinyCharacterId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyFireteamFinderLobbyResponse>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<DestinyFireteamFinderLobbyResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<DestinyFireteamFinderGetLobbyOffersResponse>> GetLobbyOffers(
@@ -247,12 +243,10 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .AddUrlParam(destinyCharacterId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyFireteamFinderGetLobbyOffersResponse>(
-                url,
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<DestinyFireteamFinderGetLobbyOffersResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<DestinyFireteamFinderOffer>> GetOffer(
@@ -272,9 +266,10 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .AddUrlParam(destinyCharacterId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyFireteamFinderOffer>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<DestinyFireteamFinderOffer>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<
@@ -296,12 +291,10 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .AddUrlParam(destinyCharacterId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyFireteamFinderGetPlayerApplicationsResponse>(
-                url,
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<DestinyFireteamFinderGetPlayerApplicationsResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<
@@ -323,12 +316,10 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .AddUrlParam(destinyCharacterId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyFireteamFinderGetPlayerLobbiesResponse>(
-                url,
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<DestinyFireteamFinderGetPlayerLobbiesResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<DestinyFireteamFinderGetPlayerOffersResponse>> GetPlayerOffers(
@@ -348,12 +339,10 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .AddUrlParam(destinyCharacterId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyFireteamFinderGetPlayerOffersResponse>(
-                url,
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<DestinyFireteamFinderGetPlayerOffersResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<
@@ -373,12 +362,10 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .AddUrlParam(destinyCharacterId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<DestinyFireteamFinderGetCharacterActivityAccessResponse>(
-                url,
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<DestinyFireteamFinderGetCharacterActivityAccessResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<DestinyFireteamFinderHostLobbyResponse>> HostLobby(
@@ -398,15 +385,13 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .Build();
 
         var stream = new MemoryStream();
-        await _serializer.SerializeAsync(stream, body).ConfigureAwait(false);
+        await _serializer.SerializeAsync(stream, body);
         stream.Position = 0;
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<DestinyFireteamFinderHostLobbyResponse>(
-                url,
-                cancellationToken,
-                stream
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<DestinyFireteamFinderHostLobbyResponse>(
+            url,
+            cancellationToken,
+            stream
+        );
     }
 
     public async Task<BungieResponse<DestinyFireteamFinderLobbyResponse>> JoinLobby(
@@ -426,15 +411,13 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .Build();
 
         var stream = new MemoryStream();
-        await _serializer.SerializeAsync(stream, body).ConfigureAwait(false);
+        await _serializer.SerializeAsync(stream, body);
         stream.Position = 0;
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<DestinyFireteamFinderLobbyResponse>(
-                url,
-                cancellationToken,
-                stream
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<DestinyFireteamFinderLobbyResponse>(
+            url,
+            cancellationToken,
+            stream
+        );
     }
 
     public async Task<BungieResponse<bool>> KickPlayer(
@@ -459,11 +442,13 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .Build();
 
         var stream = new MemoryStream();
-        await _serializer.SerializeAsync(stream, body).ConfigureAwait(false);
+        await _serializer.SerializeAsync(stream, body);
         stream.Position = 0;
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(url, cancellationToken, stream)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<bool>(
+            url,
+            cancellationToken,
+            stream
+        );
     }
 
     public async Task<BungieResponse<bool>> LeaveApplication(
@@ -483,9 +468,10 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .AddUrlParam(destinyCharacterId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<bool>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<bool>> LeaveLobby(
@@ -505,9 +491,10 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .AddUrlParam(destinyCharacterId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<bool>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<
@@ -531,15 +518,13 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .Build();
 
         var stream = new MemoryStream();
-        await _serializer.SerializeAsync(stream, body).ConfigureAwait(false);
+        await _serializer.SerializeAsync(stream, body);
         stream.Position = 0;
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<DestinyFireteamFinderRespondToApplicationResponse>(
-                url,
-                cancellationToken,
-                stream
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<DestinyFireteamFinderRespondToApplicationResponse>(
+            url,
+            cancellationToken,
+            stream
+        );
     }
 
     public async Task<
@@ -563,15 +548,13 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .Build();
 
         var stream = new MemoryStream();
-        await _serializer.SerializeAsync(stream, body).ConfigureAwait(false);
+        await _serializer.SerializeAsync(stream, body);
         stream.Position = 0;
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<DestinyFireteamFinderRespondToAuthenticationResponse>(
-                url,
-                cancellationToken,
-                stream
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<DestinyFireteamFinderRespondToAuthenticationResponse>(
+            url,
+            cancellationToken,
+            stream
+        );
     }
 
     public async Task<BungieResponse<DestinyFireteamFinderRespondToOfferResponse>> RespondToOffer(
@@ -593,15 +576,13 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .Build();
 
         var stream = new MemoryStream();
-        await _serializer.SerializeAsync(stream, body).ConfigureAwait(false);
+        await _serializer.SerializeAsync(stream, body);
         stream.Position = 0;
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<DestinyFireteamFinderRespondToOfferResponse>(
-                url,
-                cancellationToken,
-                stream
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<DestinyFireteamFinderRespondToOfferResponse>(
+            url,
+            cancellationToken,
+            stream
+        );
     }
 
     public async Task<
@@ -623,15 +604,13 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .Build();
 
         var stream = new MemoryStream();
-        await _serializer.SerializeAsync(stream, body).ConfigureAwait(false);
+        await _serializer.SerializeAsync(stream, body);
         stream.Position = 0;
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<DestinyFireteamFinderSearchListingsByClanResponse>(
-                url,
-                cancellationToken,
-                stream
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<DestinyFireteamFinderSearchListingsByClanResponse>(
+            url,
+            cancellationToken,
+            stream
+        );
     }
 
     public async Task<
@@ -640,6 +619,7 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
         long destinyCharacterId,
         long destinyMembershipId,
         BungieMembershipType destinyMembershipType,
+        bool overrideOfflineFilter,
         DestinyFireteamFinderSearchListingsByFiltersRequest body,
         CancellationToken cancellationToken = default
     )
@@ -650,18 +630,21 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .AddUrlParam(((int)destinyMembershipType).ToString())
             .AddUrlParam(destinyMembershipId.ToString())
             .AddUrlParam(destinyCharacterId.ToString())
+            .AddQueryParam(
+                "overrideOfflineFilter",
+                overrideOfflineFilter.ToString(),
+                () => overrideOfflineFilter
+            )
             .Build();
 
         var stream = new MemoryStream();
-        await _serializer.SerializeAsync(stream, body).ConfigureAwait(false);
+        await _serializer.SerializeAsync(stream, body);
         stream.Position = 0;
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<DestinyFireteamFinderSearchListingsByFiltersResponse>(
-                url,
-                cancellationToken,
-                stream
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<DestinyFireteamFinderSearchListingsByFiltersResponse>(
+            url,
+            cancellationToken,
+            stream
+        );
     }
 
     public async Task<
@@ -685,14 +668,12 @@ internal sealed class FireteamFinderMethodsAccess : IFireteamFinderMethodsAccess
             .Build();
 
         var stream = new MemoryStream();
-        await _serializer.SerializeAsync(stream, body).ConfigureAwait(false);
+        await _serializer.SerializeAsync(stream, body);
         stream.Position = 0;
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<DestinyFireteamFinderUpdateLobbySettingsResponse>(
-                url,
-                cancellationToken,
-                stream
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<DestinyFireteamFinderUpdateLobbySettingsResponse>(
+            url,
+            cancellationToken,
+            stream
+        );
     }
 }

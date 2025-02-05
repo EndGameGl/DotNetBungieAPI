@@ -40,7 +40,7 @@ public sealed record DestinySocketTypeDefinition
     /// </summary>
     [JsonPropertyName("plugWhitelist")]
     public ReadOnlyCollection<DestinyPlugWhitelistEntryDefinition> PlugWhitelist { get; init; } =
-        ReadOnlyCollections<DestinyPlugWhitelistEntryDefinition>.Empty;
+        ReadOnlyCollection<DestinyPlugWhitelistEntryDefinition>.Empty;
 
     [JsonPropertyName("socketCategoryHash")]
     public DefinitionHashPointer<DestinySocketCategoryDefinition> SocketCategory { get; init; } =
@@ -75,7 +75,7 @@ public sealed record DestinySocketTypeDefinition
 
     [JsonPropertyName("currencyScalars")]
     public ReadOnlyCollection<DestinySocketTypeScalarMaterialRequirementEntry> CurrencyScalars { get; init; } =
-        ReadOnlyCollections<DestinySocketTypeScalarMaterialRequirementEntry>.Empty;
+        ReadOnlyCollection<DestinySocketTypeScalarMaterialRequirementEntry>.Empty;
 
     public bool DeepEquals(DestinySocketTypeDefinition other)
     {
@@ -89,8 +89,8 @@ public sealed record DestinySocketTypeDefinition
             && Visibility == other.Visibility
             && DisplayProperties.DeepEquals(other.DisplayProperties)
             && InsertAction.DeepEquals(other.InsertAction)
-            && CurrencyScalars.DeepEqualsReadOnlyCollections(other.CurrencyScalars)
-            && PlugWhitelist.DeepEqualsReadOnlyCollections(other.PlugWhitelist)
+            && CurrencyScalars.DeepEqualsReadOnlyCollection(other.CurrencyScalars)
+            && PlugWhitelist.DeepEqualsReadOnlyCollection(other.PlugWhitelist)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash
             && Index == other.Index

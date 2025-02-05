@@ -4,7 +4,7 @@ public sealed record DestinyParentItemOverride : IDeepEquatable<DestinyParentIte
 {
     [JsonPropertyName("additionalEquipRequirementsDisplayStrings")]
     public ReadOnlyCollection<string> AdditionalEquipRequirementsDisplayStrings { get; init; } =
-        ReadOnlyCollections<string>.Empty;
+        ReadOnlyCollection<string>.Empty;
 
     [JsonPropertyName("pipIcon")]
     public BungieNetResource PipIcon { get; init; }

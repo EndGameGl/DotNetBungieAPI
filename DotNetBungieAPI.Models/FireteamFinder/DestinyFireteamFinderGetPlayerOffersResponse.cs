@@ -7,5 +7,5 @@ public sealed record DestinyFireteamFinderGetPlayerOffersResponse
     /// </summary>
     [JsonPropertyName("offers")]
     public ReadOnlyCollection<DestinyFireteamFinderOffer> Offers { get; init; } =
-        ReadOnlyCollections<DestinyFireteamFinderOffer>.Empty;
+        ReadOnlyCollection<DestinyFireteamFinderOffer>.Empty;
 }

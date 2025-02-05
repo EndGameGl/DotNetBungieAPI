@@ -7,5 +7,5 @@ public sealed record GearSetRegion
 
     [JsonPropertyName("pattern_list")]
     public ReadOnlyCollection<ArtArrangement> PatternList { get; init; } =
-        ReadOnlyCollections<ArtArrangement>.Empty;
+        ReadOnlyCollection<ArtArrangement>.Empty;
 }

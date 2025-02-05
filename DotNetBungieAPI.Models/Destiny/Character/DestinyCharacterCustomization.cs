@@ -26,10 +26,10 @@ public sealed record DestinyCharacterCustomization
     public uint EyeColor { get; init; }
 
     [JsonPropertyName("hairColors")]
-    public ReadOnlyCollection<uint> HairColors { get; init; } = ReadOnlyCollections<uint>.Empty;
+    public ReadOnlyCollection<uint> HairColors { get; init; } = ReadOnlyCollection<uint>.Empty;
 
     [JsonPropertyName("featureColors")]
-    public ReadOnlyCollection<uint> FeatureColors { get; init; } = ReadOnlyCollections<uint>.Empty;
+    public ReadOnlyCollection<uint> FeatureColors { get; init; } = ReadOnlyCollection<uint>.Empty;
 
     [JsonPropertyName("decalColor")]
     public uint DecalColor { get; init; }

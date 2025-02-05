@@ -18,7 +18,7 @@ public sealed record DestinyCharacterRenderComponent
     /// </summary>
     [JsonPropertyName("customDyes")]
     public ReadOnlyCollection<DyeReference> CustomDyes { get; init; } =
-        ReadOnlyCollections<DyeReference>.Empty;
+        ReadOnlyCollection<DyeReference>.Empty;
 
     /// <summary>
     ///     This is actually something that Spasm.js *doesn't* do right now, and that we don't return assets for yet. This is

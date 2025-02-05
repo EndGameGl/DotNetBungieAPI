@@ -9,9 +9,9 @@ public sealed record FireteamResponse
 
     [JsonPropertyName("Members")]
     public ReadOnlyCollection<FireteamMember> Members { get; init; } =
-        ReadOnlyCollections<FireteamMember>.Empty;
+        ReadOnlyCollection<FireteamMember>.Empty;
 
     [JsonPropertyName("Alternates")]
     public ReadOnlyCollection<FireteamMember> Alternates { get; init; } =
-        ReadOnlyCollections<FireteamMember>.Empty;
+        ReadOnlyCollection<FireteamMember>.Empty;
 }

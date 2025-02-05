@@ -45,14 +45,12 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
             .Append("/Tokens/Partner/ForceDropsRepair/")
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(
-                url,
-                cancellationToken,
-                null,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<bool>(
+            url,
+            cancellationToken,
+            null,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<bool>> ClaimPartnerOffer(
@@ -72,14 +70,12 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(
-                url,
-                cancellationToken,
-                stream,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<bool>(
+            url,
+            cancellationToken,
+            stream,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<bool>> ApplyMissingPartnerOffersWithoutClaim(
@@ -99,13 +95,11 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
             .AddUrlParam(targetBnetMembershipId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(
-                url,
-                cancellationToken,
-                authToken: authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<bool>(
+            url,
+            cancellationToken,
+            authToken: authorizationToken.AccessToken
+        );
     }
 
     public async Task<
@@ -127,13 +121,9 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
             .AddUrlParam(targetBnetMembershipId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyCollection<PartnerOfferSkuHistoryResponse>>(
-                url,
-                cancellationToken,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<
+            ReadOnlyCollection<PartnerOfferSkuHistoryResponse>
+        >(url, cancellationToken, authorizationToken.AccessToken);
     }
 
     public async Task<BungieResponse<PartnerRewardHistoryResponse>> GetPartnerRewardHistory(
@@ -154,13 +144,11 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
             .AddUrlParam(partnerApplicationId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<PartnerRewardHistoryResponse>(
-                url,
-                cancellationToken,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<PartnerRewardHistoryResponse>(
+            url,
+            cancellationToken,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<
@@ -180,13 +168,9 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
             .AddUrlParam(membershipId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyDictionary<string, BungieRewardDisplay>>(
-                url,
-                cancellationToken,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<
+            ReadOnlyDictionary<string, BungieRewardDisplay>
+        >(url, cancellationToken, authorizationToken.AccessToken);
     }
 
     public async Task<
@@ -208,13 +192,9 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
             .AddUrlParam(((byte)membershipType).ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyDictionary<string, BungieRewardDisplay>>(
-                url,
-                cancellationToken,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<
+            ReadOnlyDictionary<string, BungieRewardDisplay>
+        >(url, cancellationToken, authorizationToken.AccessToken);
     }
 
     public async Task<
@@ -226,11 +206,8 @@ internal sealed class TokensMethodsAccess : ITokensMethodsAccess
             .Append("/Tokens/Rewards/BungieRewards/")
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyDictionary<string, BungieRewardDisplay>>(
-                url,
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<
+            ReadOnlyDictionary<string, BungieRewardDisplay>
+        >(url, cancellationToken);
     }
 }

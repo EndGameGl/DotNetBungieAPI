@@ -13,5 +13,5 @@ public sealed record PlatformFriendResponse
 
     [JsonPropertyName("platformFriends")]
     public ReadOnlyCollection<PlatformFriend> PlatformFriends { get; init; } =
-        ReadOnlyCollections<PlatformFriend>.Empty;
+        ReadOnlyCollection<PlatformFriend>.Empty;
 }

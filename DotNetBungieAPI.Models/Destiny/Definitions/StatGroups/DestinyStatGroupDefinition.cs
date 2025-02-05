@@ -46,7 +46,7 @@ public sealed record DestinyStatGroupDefinition
     /// </summary>
     [JsonPropertyName("scaledStats")]
     public ReadOnlyCollection<DestinyStatDisplayDefinition> ScaledStats { get; init; } =
-        ReadOnlyCollections<DestinyStatDisplayDefinition>.Empty;
+        ReadOnlyCollection<DestinyStatDisplayDefinition>.Empty;
 
     /// <summary>
     ///     The game has the ability to override, based on the stat group, what the localized text is that is displayed for
@@ -57,14 +57,14 @@ public sealed record DestinyStatGroupDefinition
     /// </summary>
     [JsonPropertyName("overrides")]
     public ReadOnlyDictionary<uint, DestinyStatOverrideDefinition> Overrides { get; init; } =
-        ReadOnlyDictionaries<uint, DestinyStatOverrideDefinition>.Empty;
+        ReadOnlyDictionary<uint, DestinyStatOverrideDefinition>.Empty;
 
     public bool DeepEquals(DestinyStatGroupDefinition other)
     {
         return other != null
             && MaximumValue == other.MaximumValue
             && UiPosition == other.UiPosition
-            && ScaledStats.DeepEqualsReadOnlyCollections(other.ScaledStats)
+            && ScaledStats.DeepEqualsReadOnlyCollection(other.ScaledStats)
             && Overrides.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndEquatableValue(other.Overrides)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash

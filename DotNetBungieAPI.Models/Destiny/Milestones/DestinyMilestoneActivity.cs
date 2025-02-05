@@ -47,7 +47,7 @@ public sealed record DestinyMilestoneActivity
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyActivityModifierDefinition>
     > Modifiers { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModifierDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModifierDefinition>>.Empty;
 
     /// <summary>
     ///     If you want more than just name/location/etc... you're going to have to dig into and show the variants of the
@@ -56,5 +56,5 @@ public sealed record DestinyMilestoneActivity
     /// </summary>
     [JsonPropertyName("variants")]
     public ReadOnlyCollection<DestinyMilestoneActivityVariant> Variants { get; init; } =
-        ReadOnlyCollections<DestinyMilestoneActivityVariant>.Empty;
+        ReadOnlyCollection<DestinyMilestoneActivityVariant>.Empty;
 }

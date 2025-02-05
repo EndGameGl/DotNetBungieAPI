@@ -26,12 +26,12 @@ public sealed record DestinyActivityRewardDefinition
     /// </summary>
     [JsonPropertyName("rewardItems")]
     public ReadOnlyCollection<DestinyItemQuantity> RewardItems { get; init; } =
-        ReadOnlyCollections<DestinyItemQuantity>.Empty;
+        ReadOnlyCollection<DestinyItemQuantity>.Empty;
 
     public bool DeepEquals(DestinyActivityRewardDefinition other)
     {
         return other != null
             && RewardText == other.RewardText
-            && RewardItems.DeepEqualsReadOnlyCollections(other.RewardItems);
+            && RewardItems.DeepEqualsReadOnlyCollection(other.RewardItems);
     }
 }

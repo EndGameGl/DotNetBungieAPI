@@ -27,7 +27,7 @@ public sealed record DestinyKiosksComponent
         DefinitionHashPointer<DestinyVendorDefinition>,
         ReadOnlyCollection<DestinyKioskItem>
     > KioskItems { get; init; } =
-        ReadOnlyDictionaries<
+        ReadOnlyDictionary<
             DefinitionHashPointer<DestinyVendorDefinition>,
             ReadOnlyCollection<DestinyKioskItem>
         >.Empty;

@@ -29,5 +29,5 @@ public sealed record EmailOptInDefinition
     /// </summary>
     [JsonPropertyName("dependentSubscriptions")]
     public ReadOnlyCollection<EmailSubscriptionDefinition> DependentSubscriptions { get; init; } =
-        ReadOnlyCollections<EmailSubscriptionDefinition>.Empty;
+        ReadOnlyCollection<EmailSubscriptionDefinition>.Empty;
 }

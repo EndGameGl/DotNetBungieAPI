@@ -29,7 +29,7 @@ public sealed record DestinySeasonPreviewDefinition : IDeepEquatable<DestinySeas
     /// </summary>
     [JsonPropertyName("images")]
     public ReadOnlyCollection<DestinySeasonPreviewImageDefinition> Images { get; init; } =
-        ReadOnlyCollections<DestinySeasonPreviewImageDefinition>.Empty;
+        ReadOnlyCollection<DestinySeasonPreviewImageDefinition>.Empty;
 
     public bool DeepEquals(DestinySeasonPreviewDefinition other)
     {
@@ -37,6 +37,6 @@ public sealed record DestinySeasonPreviewDefinition : IDeepEquatable<DestinySeas
             && Description == other.Description
             && LinkPath == other.LinkPath
             && VideoLink == other.VideoLink
-            && Images.DeepEqualsReadOnlyCollections(other.Images);
+            && Images.DeepEqualsReadOnlyCollection(other.Images);
     }
 }

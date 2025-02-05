@@ -9,7 +9,7 @@ internal static class StringBuilderPool
 
     static StringBuilderPool()
     {
-        Builders = new List<ExtendedStringBuilder>();
+        Builders = [];
     }
 
     internal static ExtendedStringBuilder GetBuilder(CancellationToken ct)

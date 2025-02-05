@@ -60,7 +60,7 @@ public sealed record DestinyTalentNode
     /// </summary>
     [JsonPropertyName("materialsToUpgrade")]
     public ReadOnlyCollection<DestinyMaterialRequirement> MaterialsToUpgrade { get; init; } =
-        ReadOnlyCollections<DestinyMaterialRequirement>.Empty;
+        ReadOnlyCollection<DestinyMaterialRequirement>.Empty;
 
     /// <summary>
     ///     The progression level required on the Talent Grid in order to be able to activate this talent node. Talent Grids

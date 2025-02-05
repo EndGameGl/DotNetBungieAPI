@@ -43,7 +43,7 @@ public sealed record DestinyItemTalentGridComponent
     /// </summary>
     [JsonPropertyName("nodes")]
     public ReadOnlyCollection<DestinyTalentNode> Nodes { get; init; } =
-        ReadOnlyCollections<DestinyTalentNode>.Empty;
+        ReadOnlyCollection<DestinyTalentNode>.Empty;
 
     /// <summary>
     ///     Indicates whether the talent grid on this item is completed, and thus whether it should have a gold border around

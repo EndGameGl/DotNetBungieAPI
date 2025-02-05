@@ -15,7 +15,7 @@ public sealed record DestinyInventoryComponent
     /// </summary>
     [JsonPropertyName("items")]
     public ReadOnlyCollection<DestinyItemComponent> Items { get; init; } =
-        ReadOnlyCollections<DestinyItemComponent>.Empty;
+        ReadOnlyCollection<DestinyItemComponent>.Empty;
 
     /// <summary>
     ///     Gets all items with specified bucket hash

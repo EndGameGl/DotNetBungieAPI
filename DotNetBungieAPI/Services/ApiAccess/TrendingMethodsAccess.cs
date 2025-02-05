@@ -24,12 +24,10 @@ internal sealed class TrendingMethodsAccess : ITrendingMethodsAccess
         CancellationToken cancellationToken = default
     )
     {
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<TrendingCategories>(
-                "/Trending/Categories/",
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<TrendingCategories>(
+            "/Trending/Categories/",
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<SearchResultOfTrendingEntry>> GetTrendingCategory(
@@ -44,9 +42,10 @@ internal sealed class TrendingMethodsAccess : ITrendingMethodsAccess
             .AddUrlParam(categoryId)
             .AddUrlParam(pageNumber.ToString())
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfTrendingEntry>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<SearchResultOfTrendingEntry>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<TrendingDetail>> GetTrendingEntryDetail(
@@ -61,8 +60,9 @@ internal sealed class TrendingMethodsAccess : ITrendingMethodsAccess
             .AddUrlParam(((int)trendingEntryType).ToString())
             .AddUrlParam(identifier)
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<TrendingDetail>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<TrendingDetail>(
+            url,
+            cancellationToken
+        );
     }
 }

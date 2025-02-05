@@ -7,5 +7,5 @@ public sealed record ArtArrangement
 
     [JsonPropertyName("geometry_hashes")]
     public ReadOnlyCollection<string> GeometryHashes { get; init; } =
-        ReadOnlyCollections<string>.Empty;
+        ReadOnlyCollection<string>.Empty;
 }

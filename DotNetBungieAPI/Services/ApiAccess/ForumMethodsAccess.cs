@@ -51,9 +51,10 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .AddQueryParam("locales", string.Join(",", locales.Select(x => x.AsString())))
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<PostSearchResponse>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<PostSearchResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<PostSearchResponse>> GetCoreTopicsPaged(
@@ -75,9 +76,10 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .AddQueryParam("locales", string.Join(",", locales.Select(x => x.AsString())))
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<PostSearchResponse>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<PostSearchResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<PostSearchResponse>> GetPostsThreadedPaged(
@@ -105,9 +107,10 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .AddQueryParam("showbanned", showbanned.ToString(), () => showbanned.HasValue)
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<PostSearchResponse>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<PostSearchResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<PostSearchResponse>> GetPostsThreadedPagedFromChild(
@@ -133,9 +136,10 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .AddQueryParam("showbanned", showbanned.ToString(), () => showbanned.HasValue)
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<PostSearchResponse>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<PostSearchResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<PostSearchResponse>> GetPostAndParent(
@@ -151,9 +155,10 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .AddQueryParam("showbanned", showbanned.ToString(), () => showbanned.HasValue)
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<PostSearchResponse>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<PostSearchResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<PostSearchResponse>> GetPostAndParentAwaitingApproval(
@@ -169,9 +174,10 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .AddQueryParam("showbanned", showbanned.ToString(), () => showbanned.HasValue)
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<PostSearchResponse>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<PostSearchResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<long>> GetTopicForContent(
@@ -185,9 +191,10 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .AddUrlParam(contentId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<long>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<long>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<ReadOnlyCollection<TagResponse>>> GetForumTagSuggestions(
@@ -201,9 +208,9 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .AddQueryParam("partialtag", partialtag)
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyCollection<TagResponse>>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<
+            ReadOnlyCollection<TagResponse>
+        >(url, cancellationToken);
     }
 
     public async Task<BungieResponse<PostSearchResponse>> GetPoll(
@@ -217,9 +224,10 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
             .AddUrlParam(topicId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<PostSearchResponse>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<PostSearchResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<
@@ -228,12 +236,8 @@ internal sealed class ForumMethodsAccess : IForumMethodsAccess
     {
         await using var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<ReadOnlyCollection<ForumRecruitmentDetail>>(
-                "/Forum/Recruit/Summaries/",
-                cancellationToken,
-                stream
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<
+            ReadOnlyCollection<ForumRecruitmentDetail>
+        >("/Forum/Recruit/Summaries/", cancellationToken, stream);
     }
 }

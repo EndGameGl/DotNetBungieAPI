@@ -19,19 +19,19 @@ public sealed record DestinyTraitCategoryDefinition
     /// </summary>
     [JsonPropertyName("traitHashes")]
     public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyTraitDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>.Empty;
 
     /// <summary>
     ///     Possible trait strings for searching in this category
     /// </summary>
     [JsonPropertyName("traitIds")]
-    public ReadOnlyCollection<string> TraitIds { get; init; } = ReadOnlyCollections<string>.Empty;
+    public ReadOnlyCollection<string> TraitIds { get; init; } = ReadOnlyCollection<string>.Empty;
 
     public bool DeepEquals(DestinyTraitCategoryDefinition other)
     {
         return other != null
             && TraitCategoryId == other.TraitCategoryId
-            && Traits.DeepEqualsReadOnlyCollections(other.Traits)
+            && Traits.DeepEqualsReadOnlyCollection(other.Traits)
             && TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash

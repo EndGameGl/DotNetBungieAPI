@@ -71,5 +71,5 @@ public sealed record Application
     /// </summary>
     [JsonPropertyName("team")]
     public ReadOnlyCollection<ApplicationDeveloper> Team { get; init; } =
-        ReadOnlyCollections<ApplicationDeveloper>.Empty;
+        ReadOnlyCollection<ApplicationDeveloper>.Empty;
 }

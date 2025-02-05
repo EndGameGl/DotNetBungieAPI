@@ -14,17 +14,17 @@ public sealed record DestinyActivityLoadoutRequirement
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyInventoryItemDefinition>
     > AllowedEquippedItems { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
 
     [JsonPropertyName("allowedWeaponSubTypes")]
     public ReadOnlyCollection<DestinyItemSubType> AllowedWeaponSubTypes { get; init; } =
-        ReadOnlyCollections<DestinyItemSubType>.Empty;
+        ReadOnlyCollection<DestinyItemSubType>.Empty;
 
     public bool DeepEquals(DestinyActivityLoadoutRequirement other)
     {
         return other != null
             && EquipmentSlot.DeepEquals(other.EquipmentSlot)
-            && AllowedEquippedItems.DeepEqualsReadOnlyCollections(other.AllowedEquippedItems)
+            && AllowedEquippedItems.DeepEqualsReadOnlyCollection(other.AllowedEquippedItems)
             && AllowedWeaponSubTypes.DeepEqualsReadOnlySimpleCollection(
                 other.AllowedWeaponSubTypes
             );

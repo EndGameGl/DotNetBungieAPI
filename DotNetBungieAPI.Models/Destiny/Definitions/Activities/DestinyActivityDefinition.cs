@@ -121,7 +121,7 @@ public sealed record DestinyActivityDefinition
     /// </summary>
     [JsonPropertyName("rewards")]
     public ReadOnlyCollection<DestinyActivityRewardDefinition> Rewards { get; init; } =
-        ReadOnlyCollections<DestinyActivityRewardDefinition>.Empty;
+        ReadOnlyCollection<DestinyActivityRewardDefinition>.Empty;
 
     /// <summary>
     ///     Activities can have Modifiers, as defined in DestinyActivityModifierDefinition. These are references to the
@@ -130,7 +130,7 @@ public sealed record DestinyActivityDefinition
     /// </summary>
     [JsonPropertyName("modifiers")]
     public ReadOnlyCollection<DestinyActivityModifierReferenceDefinition> Modifiers { get; init; } =
-        ReadOnlyCollections<DestinyActivityModifierReferenceDefinition>.Empty;
+        ReadOnlyCollection<DestinyActivityModifierReferenceDefinition>.Empty;
 
     /// <summary>
     ///     If True, this Activity is actually a Playlist that refers to multiple possible specific Activities and Activity
@@ -151,7 +151,7 @@ public sealed record DestinyActivityDefinition
     /// </summary>
     [JsonPropertyName("challenges")]
     public ReadOnlyCollection<DestinyActivityChallengeDefinition> Challenges { get; init; } =
-        ReadOnlyCollections<DestinyActivityChallengeDefinition>.Empty;
+        ReadOnlyCollection<DestinyActivityChallengeDefinition>.Empty;
 
     /// <summary>
     ///     If there are status strings related to the activity and based on internal state of the game, account, or character,
@@ -159,7 +159,7 @@ public sealed record DestinyActivityDefinition
     /// </summary>
     [JsonPropertyName("optionalUnlockStrings")]
     public ReadOnlyCollection<DestinyActivityUnlockStringDefinition> OptionalUnlockStrings { get; init; } =
-        ReadOnlyCollections<DestinyActivityUnlockStringDefinition>.Empty;
+        ReadOnlyCollection<DestinyActivityUnlockStringDefinition>.Empty;
 
     [JsonPropertyName("requirements")]
     public DestinyActivityRequirementsBlock Requirements { get; init; }
@@ -170,7 +170,7 @@ public sealed record DestinyActivityDefinition
     /// </summary>
     [JsonPropertyName("playlistItems")]
     public ReadOnlyCollection<DestinyActivityPlaylistItemDefinition> PlaylistItems { get; init; } =
-        ReadOnlyCollections<DestinyActivityPlaylistItemDefinition>.Empty;
+        ReadOnlyCollection<DestinyActivityPlaylistItemDefinition>.Empty;
 
     /// <summary>
     ///     Unfortunately, in practice this is almost never populated. In theory, this is supposed to tell which Activity Graph
@@ -178,7 +178,7 @@ public sealed record DestinyActivityDefinition
     /// </summary>
     [JsonPropertyName("activityGraphList")]
     public ReadOnlyCollection<DestinyActivityGraphListEntryDefinition> ActivityGraphList { get; init; } =
-        ReadOnlyCollections<DestinyActivityGraphListEntryDefinition>.Empty;
+        ReadOnlyCollection<DestinyActivityGraphListEntryDefinition>.Empty;
 
     /// <summary>
     ///     This block of data provides information about the Activity's matchmaking attributes: how many people can join and
@@ -214,7 +214,7 @@ public sealed record DestinyActivityDefinition
     /// </summary>
     [JsonPropertyName("loadouts")]
     public ReadOnlyCollection<DestinyActivityLoadoutRequirementSet> Loadouts { get; init; } =
-        ReadOnlyCollections<DestinyActivityLoadoutRequirementSet>.Empty;
+        ReadOnlyCollection<DestinyActivityLoadoutRequirementSet>.Empty;
 
     /// <summary>
     ///     The activity modes
@@ -223,14 +223,14 @@ public sealed record DestinyActivityDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyActivityModeDefinition>
     > ActivityModes { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyActivityModeDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyActivityModeDefinition>>.Empty;
 
     /// <summary>
     ///     The activity modes - if any - in enum form.
     /// </summary>
     [JsonPropertyName("activityModeTypes")]
     public ReadOnlyCollection<DestinyActivityModeType> ActivityModeTypes { get; init; } =
-        ReadOnlyCollections<DestinyActivityModeType>.Empty;
+        ReadOnlyCollection<DestinyActivityModeType>.Empty;
 
     /// <summary>
     ///     If true, this activity is a PVP activity or playlist.
@@ -244,14 +244,14 @@ public sealed record DestinyActivityDefinition
     /// </summary>
     [JsonPropertyName("insertionPoints")]
     public ReadOnlyCollection<DestinyActivityInsertionPointDefinition> InsertionPoints { get; init; } =
-        ReadOnlyCollections<DestinyActivityInsertionPointDefinition>.Empty;
+        ReadOnlyCollection<DestinyActivityInsertionPointDefinition>.Empty;
 
     /// <summary>
     ///     A list of location mappings that are affected by this activity.
     /// </summary>
     [JsonPropertyName("activityLocationMappings")]
     public ReadOnlyCollection<DestinyEnvironmentLocationMapping> ActivityLocationMappings { get; init; } =
-        ReadOnlyCollections<DestinyEnvironmentLocationMapping>.Empty;
+        ReadOnlyCollection<DestinyEnvironmentLocationMapping>.Empty;
 
     /// <summary>
     ///     The difficulty level of the activity.
@@ -271,16 +271,16 @@ public sealed record DestinyActivityDefinition
     public bool DeepEquals(DestinyActivityDefinition other)
     {
         return other != null
-            && ActivityGraphList.DeepEqualsReadOnlyCollections(other.ActivityGraphList)
+            && ActivityGraphList.DeepEqualsReadOnlyCollection(other.ActivityGraphList)
             && ActivityLevel == other.ActivityLevel
             && ActivityLightLevel == other.ActivityLightLevel
-            && ActivityLocationMappings.DeepEqualsReadOnlyCollections(
+            && ActivityLocationMappings.DeepEqualsReadOnlyCollection(
                 other.ActivityLocationMappings
             )
-            && ActivityModes.DeepEqualsReadOnlyCollections(other.ActivityModes)
+            && ActivityModes.DeepEqualsReadOnlyCollection(other.ActivityModes)
             && ActivityModeTypes.DeepEqualsReadOnlySimpleCollection(other.ActivityModeTypes)
             && ActivityType.DeepEquals(other.ActivityType)
-            && Challenges.DeepEqualsReadOnlyCollections(other.Challenges)
+            && Challenges.DeepEqualsReadOnlyCollection(other.Challenges)
             && CompletionUnlockHash == other.CompletionUnlockHash
             && Destination.DeepEquals(other.Destination)
             && DirectActivityMode.DeepEquals(other.DirectActivityMode)
@@ -292,7 +292,7 @@ public sealed record DestinyActivityDefinition
                     : other.GuidedGame == null
             )
             && InheritFromFreeRoam == other.InheritFromFreeRoam
-            && InsertionPoints.DeepEqualsReadOnlyCollections(other.InsertionPoints)
+            && InsertionPoints.DeepEqualsReadOnlyCollection(other.InsertionPoints)
             && IsPlaylist == other.IsPlaylist
             && IsPvP == other.IsPvP
             && (
@@ -300,15 +300,15 @@ public sealed record DestinyActivityDefinition
                     ? Matchmaking.DeepEquals(other.Matchmaking)
                     : other.Matchmaking == null
             )
-            && Modifiers.DeepEqualsReadOnlyCollections(other.Modifiers)
-            && OptionalUnlockStrings.DeepEqualsReadOnlyCollections(other.OptionalUnlockStrings)
+            && Modifiers.DeepEqualsReadOnlyCollection(other.Modifiers)
+            && OptionalUnlockStrings.DeepEqualsReadOnlyCollection(other.OptionalUnlockStrings)
             && OriginalDisplayProperties.DeepEquals(other.OriginalDisplayProperties)
             && PgcrImage == other.PgcrImage
             && Place.DeepEquals(other.Place)
-            && PlaylistItems.DeepEqualsReadOnlyCollections(other.PlaylistItems)
+            && PlaylistItems.DeepEqualsReadOnlyCollection(other.PlaylistItems)
             && ReleaseIcon == other.ReleaseIcon
             && ReleaseTime == other.ReleaseTime
-            && Rewards.DeepEqualsReadOnlyCollections(other.Rewards)
+            && Rewards.DeepEqualsReadOnlyCollection(other.Rewards)
             && (
                 SelectionScreenDisplayProperties != null
                     ? SelectionScreenDisplayProperties.DeepEquals(
@@ -318,7 +318,7 @@ public sealed record DestinyActivityDefinition
             )
             && SuppressOtherRewards == other.SuppressOtherRewards
             && Tier == other.Tier
-            && Loadouts.DeepEqualsReadOnlyCollections(other.Loadouts)
+            && Loadouts.DeepEqualsReadOnlyCollection(other.Loadouts)
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash
             && Index == other.Index

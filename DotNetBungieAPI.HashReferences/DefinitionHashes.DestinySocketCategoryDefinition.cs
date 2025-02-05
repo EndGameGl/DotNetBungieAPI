@@ -28,6 +28,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// </summary>
 			public const uint EmblemCustomization = 279738248;
 			/// <summary>
+			/// 	Influence your rewards by selecting Scriptures for your ritual.
+			/// </summary>
+			public const uint RitualRites = 2638374927;
+			/// <summary>
 			/// 	The tier of a piece of armor determines which armor mods you can attach to it. Upgrade its armor tier to increase its capacity for more expensive armor mods.
 			/// </summary>
 			public const uint ARMORTIER = 760375309;
@@ -85,6 +89,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	View the different types of ingredients available during the Dawning.
 			/// </summary>
 			public const uint Ingredients_3792382831 = 3792382831;
+			/// <summary>
+			/// 	Select engravings to use while infusing the Tome of Want. Associated perks will activate during a ritual.
+			/// </summary>
+			public const uint TomeEngravings = 2099616010;
 			public const uint ForgeMaterials = 3970188346;
 			/// <summary>
 			/// 	Super ability that slots into your character's build.
@@ -182,6 +190,10 @@ namespace DotNetBungieAPI.HashReferences
 			/// 	Clan Perks are enabled when you belong to a clan that has reached the indicated clan level for that season.
 			/// </summary>
 			public const uint ClanPerks_3898156960 = 3898156960;
+			/// <summary>
+			/// 	Displays your active Scriptures and remaining reward charges.
+			/// </summary>
+			public const uint ActiveScriptureRewardsRemainingvar1701109840 = 726110240;
 			/// <summary>
 			/// 	Once you've successfully baked a recipe, it will show up here for easy access.
 			/// </summary>

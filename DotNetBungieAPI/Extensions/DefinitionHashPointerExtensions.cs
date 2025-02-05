@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Extensions;
@@ -46,7 +47,7 @@ public static class DefinitionHashPointerExtensions
     /// <returns></returns>
     public static bool TryGetDefinition<TDefinition>(
         this DefinitionHashPointer<TDefinition> pointer,
-        out TDefinition? definition,
+        [NotNullWhen(true)] out TDefinition? definition,
         BungieLocales locale = BungieLocales.EN
     )
         where TDefinition : IDestinyDefinition

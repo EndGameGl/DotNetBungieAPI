@@ -6,5 +6,5 @@ public sealed record SearchResultOfGroupBan : SearchResultBase
 {
     [JsonPropertyName("results")]
     public ReadOnlyCollection<GroupBan> Results { get; init; } =
-        ReadOnlyCollections<GroupBan>.Empty;
+        ReadOnlyCollection<GroupBan>.Empty;
 }

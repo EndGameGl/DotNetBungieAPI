@@ -68,7 +68,7 @@ public sealed record DestinyCharacterComponent
         DefinitionHashPointer<DestinyStatDefinition>,
         int
     > Stats { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyStatDefinition>, int>.Empty;
+        ReadOnlyDictionary<DefinitionHashPointer<DestinyStatDefinition>, int>.Empty;
 
     /// <summary>
     ///     Use this hash to look up the character's DestinyRaceDefinition.

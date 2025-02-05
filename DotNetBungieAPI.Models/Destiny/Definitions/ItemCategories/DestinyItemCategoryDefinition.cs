@@ -108,7 +108,7 @@ public sealed record DestinyItemCategoryDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyItemCategoryDefinition>
     > GroupedCategories { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyItemCategoryDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>>.Empty;
 
     /// <summary>
     ///     All item category hashes of "parent" categories: categories that contain this as a child through the hierarchy of
@@ -118,7 +118,7 @@ public sealed record DestinyItemCategoryDefinition
     public ReadOnlyCollection<
         DefinitionHashPointer<DestinyItemCategoryDefinition>
     > ParentCategories { get; init; } =
-        ReadOnlyCollections<DefinitionHashPointer<DestinyItemCategoryDefinition>>.Empty;
+        ReadOnlyCollection<DefinitionHashPointer<DestinyItemCategoryDefinition>>.Empty;
 
     /// <summary>
     ///     If true, this category is only used for grouping, and should not be evaluated with its own checks. Rather, the item
@@ -140,10 +140,10 @@ public sealed record DestinyItemCategoryDefinition
             && GrantDestinyItemType == other.GrantDestinyItemType
             && GrantDestinySubType == other.GrantDestinySubType
             && GroupCategoryOnly == other.GroupCategoryOnly
-            && GroupedCategories.DeepEqualsReadOnlyCollections(other.GroupedCategories)
+            && GroupedCategories.DeepEqualsReadOnlyCollection(other.GroupedCategories)
             && IsPlug == other.IsPlug
             && ItemTypeRegex == other.ItemTypeRegex
-            && ParentCategories.DeepEqualsReadOnlyCollections(other.ParentCategories)
+            && ParentCategories.DeepEqualsReadOnlyCollection(other.ParentCategories)
             && ShortTitle == other.ShortTitle
             && Visible == other.Visible
             && PlugCategoryIdentifier == other.PlugCategoryIdentifier

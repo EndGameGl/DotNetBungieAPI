@@ -79,7 +79,7 @@ public sealed record TrendingEntry
     /// </summary>
     [JsonPropertyName("items")]
     public ReadOnlyCollection<TrendingEntry> Items { get; init; } =
-        ReadOnlyCollections<TrendingEntry>.Empty;
+        ReadOnlyCollection<TrendingEntry>.Empty;
 
     /// <summary>
     ///     If the entry has a date at which it was created, this is that date.

@@ -30,14 +30,14 @@ public sealed record DestinyClassDefinition
     /// </summary>
     [JsonPropertyName("genderedClassNames")]
     public ReadOnlyDictionary<string, string> GenderedClassNames { get; init; } =
-        ReadOnlyDictionaries<string, string>.Empty;
+        ReadOnlyDictionary<string, string>.Empty;
 
     [JsonPropertyName("genderedClassNamesByGenderHash")]
     public ReadOnlyDictionary<
         DefinitionHashPointer<DestinyGenderDefinition>,
         string
     > GenderedClassNamesByGender { get; init; } =
-        ReadOnlyDictionaries<DefinitionHashPointer<DestinyGenderDefinition>, string>.Empty;
+        ReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>.Empty;
 
     public bool DeepEquals(DestinyClassDefinition other)
     {

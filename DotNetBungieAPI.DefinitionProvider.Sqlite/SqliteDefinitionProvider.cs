@@ -23,8 +23,7 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
     private const string SelectDefinitionQuery = "SELECT json FROM {0} WHERE id = {1}";
     private const string SelectHistoricalDefinitionQuery = "SELECT json FROM {0} WHERE key = '{1}'";
     private const string SelectAllDefinitionsQuery = "SELECT json FROM {0}";
-    private const string SelectDestinyGearAssetDefinition =
-        "SELECT json FROM DestinyGearAssetsDefinition WHERE id = {0}";
+    private const string SelectDestinyGearAssetDefinition = "SELECT json FROM DestinyGearAssetsDefinition WHERE id = {0}";
     private const string ConnectionStringTemplate = "Data Source={0};";
 
     private readonly IDefinitionAssemblyData _assemblyData;
@@ -36,12 +35,12 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
     private readonly IBungieNetJsonSerializer _serializer;
 
     private readonly DefinitionsEnum[] _sqliteDefinitionsBlacklist =
-    {
+    [
         DefinitionsEnum.DestinyUnlockValueDefinition,
         DefinitionsEnum.DestinyProgressionMappingDefinition,
         DefinitionsEnum.DestinyHistoricalStatsDefinition,
         DefinitionsEnum.DestinyEnemyRaceDefinition
-    };
+    ];
 
     private DestinyManifest _currentManifest;
 
@@ -103,13 +102,10 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         T result;
         var connection = _sqliteConnections[locale];
 
-        using var commandObj = new SqliteCommand
-        {
-            CommandType = CommandType.Text,
-            Connection = connection,
-            CommandText =
-                $"SELECT json FROM {DefinitionHashPointer<T>.EnumValue.ToStringFast()} WHERE id = {hash.ToInt32()}"
-        };
+        using var commandObj = new SqliteCommand();
+        commandObj.CommandType = CommandType.Text;
+        commandObj.Connection = connection;
+        commandObj.CommandText = $"SELECT json FROM {DefinitionHashPointer<T>.EnumValue.ToStringFast()} WHERE id = {hash.ToInt32()}";
 
         using var reader = commandObj.ExecuteReader();
 
@@ -829,11 +825,9 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         {
             throw new Exception("Something went wrong?..");
         }
-        await using var commandObj = new SqliteCommand
-        {
-            Connection = connection,
-            CommandText = queryBuilder.ToString()
-        };
+        await using var commandObj = new SqliteCommand();
+        commandObj.Connection = connection;
+        commandObj.CommandText = queryBuilder.ToString();
         await using var reader = await commandObj.ExecuteReaderAsync();
         var definitions = new List<DefinitionHashPointer<TDefinition>>();
 
@@ -897,11 +891,9 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
     )
     {
         var connection = _sqliteConnections[locale];
-        await using var commandObj = new SqliteCommand
-        {
-            Connection = connection,
-            CommandText = query
-        };
+        await using var commandObj = new SqliteCommand();
+        commandObj.Connection = connection;
+        commandObj.CommandText = query;
         await using var reader = await commandObj.ExecuteReaderAsync();
         var results = new List<TResult>();
 

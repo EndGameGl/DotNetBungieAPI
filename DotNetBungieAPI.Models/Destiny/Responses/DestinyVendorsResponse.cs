@@ -59,7 +59,7 @@ public sealed record DestinyVendorsResponse
         uint,
         DestinyVendorItemComponentSetOfint32
     > ItemComponents { get; init; } =
-        ReadOnlyDictionaries<uint, DestinyVendorItemComponentSetOfint32>.Empty;
+        ReadOnlyDictionary<uint, DestinyVendorItemComponentSetOfint32>.Empty;
 
     /// <summary>
     ///     A "lookup" convenience component that can be used to quickly check if the character has access to items that can be

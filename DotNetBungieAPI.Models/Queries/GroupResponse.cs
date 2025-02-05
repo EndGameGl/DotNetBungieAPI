@@ -9,7 +9,7 @@ public sealed record GroupResponse
     public GroupMember Founder { get; init; }
 
     [JsonPropertyName("alliedIds")]
-    public ReadOnlyCollection<long> AlliedIds { get; init; } = ReadOnlyCollections<long>.Empty;
+    public ReadOnlyCollection<long> AlliedIds { get; init; } = ReadOnlyCollection<long>.Empty;
 
     [JsonPropertyName("parentGroup")]
     public GroupV2 ParentGroup { get; init; }
@@ -34,7 +34,7 @@ public sealed record GroupResponse
     /// </summary>
     [JsonPropertyName("currentUserMemberMap")]
     public ReadOnlyDictionary<int, GroupMember> CurrentUserMemberMap { get; init; } =
-        ReadOnlyDictionaries<int, GroupMember>.Empty;
+        ReadOnlyDictionary<int, GroupMember>.Empty;
 
     /// <summary>
     ///     This property will be populated if the authenticated user is an applicant or has an outstanding invitation to join.
@@ -45,5 +45,5 @@ public sealed record GroupResponse
         int,
         GroupPotentialMember
     > CurrentUserPotentialMemberMap { get; init; } =
-        ReadOnlyDictionaries<int, GroupPotentialMember>.Empty;
+        ReadOnlyDictionary<int, GroupPotentialMember>.Empty;
 }

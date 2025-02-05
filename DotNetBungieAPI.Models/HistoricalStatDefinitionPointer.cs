@@ -13,7 +13,7 @@ public readonly struct HistoricalStatDefinitionPointer
     ///     Class constructor
     /// </summary>
     /// <param name="statId">Pointer key</param>
-    public HistoricalStatDefinitionPointer(string statId)
+    public HistoricalStatDefinitionPointer(string? statId)
     {
         StatId = statId;
     }
@@ -26,7 +26,7 @@ public readonly struct HistoricalStatDefinitionPointer
     /// <summary>
     ///     ID of this stat definition
     /// </summary>
-    public string StatId { get; }
+    public string? StatId { get; }
 
     /// <summary>
     ///     Checks whether stat id is present

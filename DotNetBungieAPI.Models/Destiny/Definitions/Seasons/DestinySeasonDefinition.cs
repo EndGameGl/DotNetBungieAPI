@@ -20,7 +20,7 @@ public sealed record DestinySeasonDefinition
 {
     [JsonPropertyName("acts")]
     public ReadOnlyCollection<DestinySeasonActDefinition> Acts { get; init; } =
-        ReadOnlyCollections<DestinySeasonActDefinition>.Empty;
+        ReadOnlyCollection<DestinySeasonActDefinition>.Empty;
 
     [JsonPropertyName("displayProperties")]
     public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }

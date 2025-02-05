@@ -10,5 +10,5 @@ public sealed record DestinyCraftableSocketComponent
 
     [JsonPropertyName("plugs")]
     public ReadOnlyCollection<DestinyCraftableSocketPlugComponent> Plugs { get; init; } =
-        ReadOnlyCollections<DestinyCraftableSocketPlugComponent>.Empty;
+        ReadOnlyCollection<DestinyCraftableSocketPlugComponent>.Empty;
 }

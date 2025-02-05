@@ -27,21 +27,21 @@ public sealed record DestinyActivityGraphDefinition
     /// </summary>
     [JsonPropertyName("nodes")]
     public ReadOnlyCollection<DestinyActivityGraphNodeDefinition> Nodes { get; init; } =
-        ReadOnlyCollections<DestinyActivityGraphNodeDefinition>.Empty;
+        ReadOnlyCollection<DestinyActivityGraphNodeDefinition>.Empty;
 
     /// <summary>
     ///     Represents one-off/special UI elements that appear on the map.
     /// </summary>
     [JsonPropertyName("artElements")]
     public ReadOnlyCollection<DestinyActivityGraphArtElementDefinition> ArtElements { get; init; } =
-        ReadOnlyCollections<DestinyActivityGraphArtElementDefinition>.Empty;
+        ReadOnlyCollection<DestinyActivityGraphArtElementDefinition>.Empty;
 
     /// <summary>
     ///     Represents connections between graph nodes. However, it lacks context that we'd need to make good use of it.
     /// </summary>
     [JsonPropertyName("connections")]
     public ReadOnlyCollection<DestinyActivityGraphConnectionDefinition> Connections { get; init; } =
-        ReadOnlyCollections<DestinyActivityGraphConnectionDefinition>.Empty;
+        ReadOnlyCollection<DestinyActivityGraphConnectionDefinition>.Empty;
 
     /// <summary>
     ///     Objectives can display on maps, and this is supposedly metadata for that. I have not had the time to analyze the
@@ -50,7 +50,7 @@ public sealed record DestinyActivityGraphDefinition
     /// </summary>
     [JsonPropertyName("displayObjectives")]
     public ReadOnlyCollection<DestinyActivityGraphDisplayObjectiveDefinition> DisplayObjectives { get; init; } =
-        ReadOnlyCollections<DestinyActivityGraphDisplayObjectiveDefinition>.Empty;
+        ReadOnlyCollection<DestinyActivityGraphDisplayObjectiveDefinition>.Empty;
 
     /// <summary>
     ///     Progressions can also display on maps, but similarly to displayObjectives we appear to lack some required
@@ -58,7 +58,7 @@ public sealed record DestinyActivityGraphDefinition
     /// </summary>
     [JsonPropertyName("displayProgressions")]
     public ReadOnlyCollection<DestinyActivityGraphDisplayProgressionDefinition> DisplayProgressions { get; init; } =
-        ReadOnlyCollections<DestinyActivityGraphDisplayProgressionDefinition>.Empty;
+        ReadOnlyCollection<DestinyActivityGraphDisplayProgressionDefinition>.Empty;
 
     [JsonPropertyName("ignoreForMilestones")]
     public bool IgnoreForMilestones { get; init; }
@@ -68,7 +68,7 @@ public sealed record DestinyActivityGraphDefinition
     /// </summary>
     [JsonPropertyName("linkedGraphs")]
     public ReadOnlyCollection<DestinyLinkedGraphDefinition> LinkedGraphs { get; init; } =
-        ReadOnlyCollections<DestinyLinkedGraphDefinition>.Empty;
+        ReadOnlyCollection<DestinyLinkedGraphDefinition>.Empty;
 
     [JsonPropertyName("uiScreen")]
     public int UIScreen { get; init; }
@@ -76,13 +76,13 @@ public sealed record DestinyActivityGraphDefinition
     public bool DeepEquals(DestinyActivityGraphDefinition other)
     {
         return other != null
-            && ArtElements.DeepEqualsReadOnlyCollections(other.ArtElements)
-            && Connections.DeepEqualsReadOnlyCollections(other.Connections)
-            && DisplayObjectives.DeepEqualsReadOnlyCollections(other.DisplayObjectives)
-            && DisplayProgressions.DeepEqualsReadOnlyCollections(other.DisplayProgressions)
+            && ArtElements.DeepEqualsReadOnlyCollection(other.ArtElements)
+            && Connections.DeepEqualsReadOnlyCollection(other.Connections)
+            && DisplayObjectives.DeepEqualsReadOnlyCollection(other.DisplayObjectives)
+            && DisplayProgressions.DeepEqualsReadOnlyCollection(other.DisplayProgressions)
             && IgnoreForMilestones == other.IgnoreForMilestones
-            && LinkedGraphs.DeepEqualsReadOnlyCollections(other.LinkedGraphs)
-            && Nodes.DeepEqualsReadOnlyCollections(other.Nodes)
+            && LinkedGraphs.DeepEqualsReadOnlyCollection(other.LinkedGraphs)
+            && Nodes.DeepEqualsReadOnlyCollection(other.Nodes)
             && UIScreen == other.UIScreen
             && Blacklisted == other.Blacklisted
             && Hash == other.Hash

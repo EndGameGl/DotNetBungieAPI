@@ -35,24 +35,18 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         CancellationToken cancellationToken = default
     )
     {
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyDictionary<int, string>>(
-                "/GroupV2/GetAvailableAvatars/",
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<
+            ReadOnlyDictionary<int, string>
+        >("/GroupV2/GetAvailableAvatars/", cancellationToken);
     }
 
     public async Task<BungieResponse<ReadOnlyCollection<GroupTheme>>> GetAvailableThemes(
         CancellationToken cancellationToken = default
     )
     {
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyCollection<GroupTheme>>(
-                "/GroupV2/GetAvailableThemes/",
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<
+            ReadOnlyCollection<GroupTheme>
+        >("/GroupV2/GetAvailableThemes/", cancellationToken);
     }
 
     public async Task<BungieResponse<bool>> GetUserClanInviteSetting(
@@ -70,9 +64,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .AddUrlParam(((int)mType).ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<bool>(url, cancellationToken, authorizationToken.AccessToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<bool>(
+            url,
+            cancellationToken,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<ReadOnlyCollection<GroupV2Card>>> GetRecommendedGroups(
@@ -92,13 +88,9 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .AddUrlParam(((int)createDateRange).ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<ReadOnlyCollection<GroupV2Card>>(
-                url,
-                cancellationToken,
-                authToken: authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<
+            ReadOnlyCollection<GroupV2Card>
+        >(url, cancellationToken, authToken: authorizationToken.AccessToken);
     }
 
     public async Task<BungieResponse<GroupSearchResponse>> GroupSearch(
@@ -108,13 +100,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
     {
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, query);
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<GroupSearchResponse>(
-                "/GroupV2/Search/",
-                cancellationToken,
-                stream
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<GroupSearchResponse>(
+            "/GroupV2/Search/",
+            cancellationToken,
+            stream
+        );
     }
 
     public async Task<BungieResponse<GroupResponse>> GetGroup(
@@ -128,9 +118,10 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .AddUrlParam(groupId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<GroupResponse>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<GroupResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<GroupResponse>> GetGroupByName(
@@ -146,9 +137,10 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .AddUrlParam(((int)groupType).ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<GroupResponse>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<GroupResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<GroupResponse>> GetGroupByNameV2(
@@ -158,9 +150,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
     {
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<GroupResponse>("/GroupV2/NameV2/", cancellationToken, stream)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<GroupResponse>(
+            "/GroupV2/NameV2/",
+            cancellationToken,
+            stream
+        );
     }
 
     public async Task<
@@ -173,12 +167,9 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .AddUrlParam(groupId.ToString())
             .Append("OptionalConversations/")
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<ReadOnlyCollection<GroupOptionalConversation>>(
-                url,
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<
+            ReadOnlyCollection<GroupOptionalConversation>
+        >(url, cancellationToken);
     }
 
     public async Task<BungieResponse<int>> EditGroup(
@@ -199,14 +190,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Build();
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>(
-                url,
-                cancellationToken,
-                stream,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<int>(
+            url,
+            cancellationToken,
+            stream,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<int>> EditClanBanner(
@@ -227,14 +216,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Build();
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>(
-                url,
-                cancellationToken,
-                stream,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<int>(
+            url,
+            cancellationToken,
+            stream,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<int>> EditFounderOptions(
@@ -255,14 +242,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Build();
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>(
-                url,
-                cancellationToken,
-                stream,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<int>(
+            url,
+            cancellationToken,
+            stream,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<long>> AddOptionalConversation(
@@ -283,14 +268,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Build();
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<long>(
-                url,
-                cancellationToken,
-                stream,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<long>(
+            url,
+            cancellationToken,
+            stream,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<long>> EditOptionalConversation(
@@ -314,14 +297,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
 
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<long>(
-                url,
-                cancellationToken,
-                stream,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<long>(
+            url,
+            cancellationToken,
+            stream,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<SearchResultOfGroupMember>> GetMembersOfGroup(
@@ -341,9 +322,10 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .AddQueryParam("memberType", ((int)memberType).ToString())
             .AddQueryParam("nameSearch", nameSearch, () => !string.IsNullOrWhiteSpace(nameSearch))
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfGroupMember>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<SearchResultOfGroupMember>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<SearchResultOfGroupMember>> GetAdminsAndFounderOfGroup(
@@ -359,9 +341,10 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Append("AdminsAndFounder/")
             .AddQueryParam("currentpage", currentpage.ToString())
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfGroupMember>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<SearchResultOfGroupMember>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<int>> EditGroupMembership(
@@ -386,13 +369,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Append("SetMembershipType/")
             .AddUrlParam(((int)memberType).ToString())
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>(
-                url,
-                cancellationToken,
-                authToken: authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<int>(
+            url,
+            cancellationToken,
+            authToken: authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<GroupMemberLeaveResult>> KickMember(
@@ -415,13 +396,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .AddUrlParam(membershipId.ToString())
             .Append("Kick/")
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<GroupMemberLeaveResult>(
-                url,
-                cancellationToken,
-                authToken: authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<GroupMemberLeaveResult>(
+            url,
+            cancellationToken,
+            authToken: authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<int>> BanMember(
@@ -448,14 +427,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
 
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>(
-                url,
-                cancellationToken,
-                stream,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<int>(
+            url,
+            cancellationToken,
+            stream,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<int>> UnbanMember(
@@ -479,13 +456,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Append("Unban/")
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<int>(
-                url,
-                cancellationToken,
-                authToken: authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<int>(
+            url,
+            cancellationToken,
+            authToken: authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<SearchResultOfGroupBan>> GetBannedMembersOfGroup(
@@ -505,13 +480,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Append("Banned/")
             .AddQueryParam("currentpage", currentpage.ToString())
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfGroupBan>(
-                url,
-                cancellationToken,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<SearchResultOfGroupBan>(
+            url,
+            cancellationToken,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<bool>> AbdicateFoundership(
@@ -534,13 +507,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .AddUrlParam(founderIdNew.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(
-                url,
-                cancellationToken,
-                authToken: authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<bool>(
+            url,
+            cancellationToken,
+            authToken: authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<SearchResultOfGroupMemberApplication>> GetPendingMemberships(
@@ -560,13 +531,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Append("Members/Pending/")
             .AddQueryParam("currentpage", currentpage.ToString())
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfGroupMemberApplication>(
-                url,
-                token,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<SearchResultOfGroupMemberApplication>(
+            url,
+            token,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<SearchResultOfGroupMemberApplication>> GetInvitedIndividuals(
@@ -586,13 +555,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Append("Members/InvitedIndividuals/")
             .AddQueryParam("currentpage", currentpage.ToString())
             .Build();
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfGroupMemberApplication>(
-                url,
-                cancellationToken,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<SearchResultOfGroupMemberApplication>(
+            url,
+            cancellationToken,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<ReadOnlyCollection<EntityActionResult>>> ApproveAllPending(
@@ -614,14 +581,9 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
 
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<ReadOnlyCollection<EntityActionResult>>(
-                url,
-                cancellationToken,
-                stream,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<
+            ReadOnlyCollection<EntityActionResult>
+        >(url, cancellationToken, stream, authorizationToken.AccessToken);
     }
 
     public async Task<BungieResponse<ReadOnlyCollection<EntityActionResult>>> DenyAllPending(
@@ -644,14 +606,9 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<ReadOnlyCollection<EntityActionResult>>(
-                url,
-                cancellationToken,
-                stream,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<
+            ReadOnlyCollection<EntityActionResult>
+        >(url, cancellationToken, stream, authorizationToken.AccessToken);
     }
 
     public async Task<BungieResponse<ReadOnlyCollection<EntityActionResult>>> ApprovePendingForList(
@@ -673,14 +630,9 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
 
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<ReadOnlyCollection<EntityActionResult>>(
-                url,
-                cancellationToken,
-                stream,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<
+            ReadOnlyCollection<EntityActionResult>
+        >(url, cancellationToken, stream, authorizationToken.AccessToken);
     }
 
     public async Task<BungieResponse<bool>> ApprovePending(
@@ -706,14 +658,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
 
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<bool>(
-                url,
-                cancellationToken,
-                stream,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<bool>(
+            url,
+            cancellationToken,
+            stream,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<ReadOnlyCollection<EntityActionResult>>> DenyPendingForList(
@@ -735,14 +685,9 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
 
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<ReadOnlyCollection<EntityActionResult>>(
-                url,
-                cancellationToken,
-                stream,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<
+            ReadOnlyCollection<EntityActionResult>
+        >(url, cancellationToken, stream, authorizationToken.AccessToken);
     }
 
     public async Task<BungieResponse<GetGroupsForMemberResponse>> GetGroupsForMember(
@@ -762,9 +707,10 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .AddUrlParam(((int)groupType).ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<GetGroupsForMemberResponse>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<GetGroupsForMemberResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<GroupMembershipSearchResponse>> RecoverGroupForFounder(
@@ -782,9 +728,10 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .AddUrlParam(((int)groupType).ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<GroupMembershipSearchResponse>(url, cancellationToken)
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<GroupMembershipSearchResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<
@@ -806,12 +753,10 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .AddUrlParam(((int)groupType).ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<GroupPotentialMembershipSearchResponse>(
-                url,
-                cancellationToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<GroupPotentialMembershipSearchResponse>(
+            url,
+            cancellationToken
+        );
     }
 
     public async Task<BungieResponse<GroupApplicationResponse>> IndividualGroupInvite(
@@ -838,14 +783,12 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
         var stream = new MemoryStream();
         await _serializer.SerializeAsync(stream, request);
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<GroupApplicationResponse>(
-                url,
-                cancellationToken,
-                stream,
-                authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<GroupApplicationResponse>(
+            url,
+            cancellationToken,
+            stream,
+            authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<GroupApplicationResponse>> IndividualGroupInviteCancel(
@@ -868,13 +811,11 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .AddUrlParam(membershipId.ToString())
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .PostToBungieNetPlatform<GroupApplicationResponse>(
-                url,
-                cancellationToken,
-                authToken: authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<GroupApplicationResponse>(
+            url,
+            cancellationToken,
+            authToken: authorizationToken.AccessToken
+        );
     }
 
     public async Task<BungieResponse<SearchResultOfGroupEditHistory>> GetGroupEditHistory(
@@ -894,12 +835,10 @@ internal sealed class GroupV2MethodsAccess : IGroupV2MethodsAccess
             .Append("EditHistory/")
             .Build();
 
-        return await _dotNetBungieApiHttpClient
-            .GetFromBungieNetPlatform<SearchResultOfGroupEditHistory>(
-                url,
-                cancellationToken,
-                authToken: authorizationToken.AccessToken
-            )
-            .ConfigureAwait(false);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<SearchResultOfGroupEditHistory>(
+            url,
+            cancellationToken,
+            authToken: authorizationToken.AccessToken
+        );
     }
 }
