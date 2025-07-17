@@ -114,8 +114,24 @@ public class DestinyActivityDefinition
     [JsonPropertyName("optionalUnlockStrings")]
     public List<Destiny.Definitions.DestinyActivityUnlockStringDefinition> OptionalUnlockStrings { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.Activities.DestinyActivityFamilyDefinition>("Destiny.Definitions.Activities.DestinyActivityFamilyDefinition")]
+    [JsonPropertyName("activityFamilyHashes")]
+    public List<uint> ActivityFamilyHashes { get; set; }
+
+    [Destiny2DefinitionList<Destiny.Definitions.Traits.DestinyTraitDefinition>("Destiny.Definitions.Traits.DestinyTraitDefinition")]
+    [JsonPropertyName("traitHashes")]
+    public List<uint> TraitHashes { get; set; }
+
     [JsonPropertyName("requirements")]
     public Destiny.Definitions.DestinyActivityRequirementsBlock? Requirements { get; set; }
+
+    [Destiny2Definition<Destiny.Definitions.Activities.DestinyActivityDifficultyTierCollectionDefinition>("Destiny.Definitions.Activities.DestinyActivityDifficultyTierCollectionDefinition")]
+    [JsonPropertyName("difficultyTierCollectionHash")]
+    public uint? DifficultyTierCollectionHash { get; set; }
+
+    [Destiny2DefinitionList<Destiny.Definitions.Activities.DestinyActivitySelectableSkullCollectionDefinition>("Destiny.Definitions.Activities.DestinyActivitySelectableSkullCollectionDefinition")]
+    [JsonPropertyName("selectableSkullCollectionHashes")]
+    public List<uint> SelectableSkullCollectionHashes { get; set; }
 
     /// <summary>
     ///     Represents all of the possible activities that could be played in the Playlist, along with information that we can use to determine if they are active at the present time.

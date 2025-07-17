@@ -30,5 +30,9 @@ public enum DestinyRecordToastStyle : int
 
     PathfinderObjectiveCompleteStrikes = 13,
 
-    PathfinderObjectiveCompleteGambit = 14
+    PathfinderObjectiveCompleteGambit = 14,
+
+    SeasonWeeklyComplete = 15,
+
+    SeasonDailyComplete = 16
 }

@@ -1,15 +1,9 @@
-namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Traits;
+namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Activities;
 
-public class DestinyTraitCategoryDefinition
+public class DestinyActivityDifficultyTierCollectionDefinition
 {
-    [JsonPropertyName("traitCategoryId")]
-    public string? TraitCategoryId { get; set; }
-
-    [JsonPropertyName("traitHashes")]
-    public List<uint> TraitHashes { get; set; }
-
-    [JsonPropertyName("traitIds")]
-    public List<string> TraitIds { get; set; }
+    [JsonPropertyName("difficultyTiers")]
+    public List<Destiny.Definitions.Activities.DestinyActivityDifficultyTierDefinition> DifficultyTiers { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

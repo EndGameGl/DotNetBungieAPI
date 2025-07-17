@@ -23,7 +23,7 @@ public class CodeBuilder
     public async Task BuildBareDefinitions(
         Models.OpenApi openApiModel,
         ModelGeneratorBase modelGenerator,
-        MethodGroupGeneratorBase methodGroupGenerator,
+        MethodGroupGeneratorBase? methodGroupGenerator,
         params AdditionalFileGenerator[] additionalFileGenerators
     )
     {
@@ -50,7 +50,10 @@ public class CodeBuilder
             );
         }
 
-        await CreateApiInterfaces(openApiModel, methodGroupGenerator);
+        if (methodGroupGenerator is not null)
+        {
+            await CreateApiInterfaces(openApiModel, methodGroupGenerator);
+        }
 
         foreach (var (responseName, openApiComponentResponse) in openApiModel.Components.Responses)
         {

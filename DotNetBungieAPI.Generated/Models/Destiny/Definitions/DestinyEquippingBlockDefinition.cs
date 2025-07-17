@@ -52,4 +52,11 @@ public class DestinyEquippingBlockDefinition
     /// </summary>
     [JsonPropertyName("displayStrings")]
     public List<string> DisplayStrings { get; set; }
+
+    /// <summary>
+    ///     If this item is part of an item set with bonus perks, this will the hash of that set.
+    /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Items.DestinyEquipableItemSetDefinition>("Destiny.Definitions.Items.DestinyEquipableItemSetDefinition")]
+    [JsonPropertyName("equipableItemSetHash")]
+    public uint? EquipableItemSetHash { get; set; }
 }

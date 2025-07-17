@@ -10,5 +10,7 @@ public enum FireteamFinderOptionValueProviderType : int
 
     FireteamFinderLabels = 3,
 
-    FireteamFinderActivityGraph = 4
+    FireteamFinderActivityGraph = 4,
+
+    FireteamFinderUIActivityTree = 5
 }

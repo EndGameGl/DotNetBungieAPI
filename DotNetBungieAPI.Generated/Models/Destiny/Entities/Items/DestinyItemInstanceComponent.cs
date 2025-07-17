@@ -91,4 +91,10 @@ public class DestinyItemInstanceComponent
     /// </summary>
     [JsonPropertyName("energy")]
     public Destiny.Entities.Items.DestinyItemInstanceEnergy? Energy { get; set; }
+
+    /// <summary>
+    ///     Gear Tier, if applicable, fished up from the unlock value items.gear_tier
+    /// </summary>
+    [JsonPropertyName("gearTier")]
+    public int? GearTier { get; set; }
 }

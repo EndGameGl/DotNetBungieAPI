@@ -36,6 +36,12 @@ public class DestinyInventoryItemDefinition
     public string? IconWatermarkShelved { get; set; }
 
     /// <summary>
+    ///     This is the active watermark for the item if it is currently Featured in-game. Clients should use the isFeaturedItem boolean to decide whether or not to show this as opposed to iconWatermark.
+    /// </summary>
+    [JsonPropertyName("iconWatermarkFeatured")]
+    public string? IconWatermarkFeatured { get; set; }
+
+    /// <summary>
     ///     A secondary icon associated with the item. Currently this is used in very context specific applications, such as Emblem Nameplates.
     /// </summary>
     [JsonPropertyName("secondaryIcon")]
@@ -58,6 +64,12 @@ public class DestinyInventoryItemDefinition
     /// </summary>
     [JsonPropertyName("backgroundColor")]
     public Destiny.Misc.DestinyColor? BackgroundColor { get; set; }
+
+    /// <summary>
+    ///     Whether or not this item is currently featured in the game, giving it a special watermark
+    /// </summary>
+    [JsonPropertyName("isFeaturedItem")]
+    public bool? IsFeaturedItem { get; set; }
 
     /// <summary>
     ///     If we were able to acquire an in-game screenshot for the item, the path to that screenshot will be returned here. Note that not all items have screenshots: particularly not any non-equippable items.

@@ -21,6 +21,8 @@ public enum BungieMembershipType : int
 
     TigerDemon = 10,
 
+    GoliathGame = 20,
+
     BungieNext = 254,
 
     /// <summary>

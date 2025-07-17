@@ -1,14 +1,15 @@
 ﻿using DotNetBungieAPI.OpenApi.CodeGeneration;
 
-namespace DotNetBungieAPI.OpenApi.CSharp;
+namespace DotNetBungieAPI.OpenApi.CSharp.AdditionalFileGenerators;
 
 public class GlobalUsingsAdditionalFileGenerator : AdditionalFileGenerator
 {
     private const string GlobalUsingsText =
-        @"
-global using System.Text.Json.Serialization;
+        """
+        global using System.Text.Json.Serialization;
 
-namespace DotNetBungieAPI.Generated.Models;";
+        namespace DotNetBungieAPI.Generated.Models;
+        """;
 
     public override string FileNameAndExtension => "GlobalUsings.cs";
 

@@ -1,6 +1,6 @@
 ﻿using DotNetBungieAPI.OpenApi.CodeGeneration;
 
-namespace DotNetBungieAPI.OpenApi.CSharp;
+namespace DotNetBungieAPI.OpenApi.CSharp.AdditionalFileGenerators;
 
 public class JsonSerializationContextAdditionalFileGenerator : AdditionalFileGenerator
 {

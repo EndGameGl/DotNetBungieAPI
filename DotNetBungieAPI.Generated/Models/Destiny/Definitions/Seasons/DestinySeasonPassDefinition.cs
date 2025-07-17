@@ -21,6 +21,15 @@ public class DestinySeasonPassDefinition
     [JsonPropertyName("prestigeProgressionHash")]
     public uint? PrestigeProgressionHash { get; set; }
 
+    [JsonPropertyName("linkRedirectPath")]
+    public string? LinkRedirectPath { get; set; }
+
+    [JsonPropertyName("color")]
+    public Destiny.Misc.DestinyColor? Color { get; set; }
+
+    [JsonPropertyName("images")]
+    public Destiny.Definitions.Seasons.DestinySeasonPassImages? Images { get; set; }
+
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
     /// <para />

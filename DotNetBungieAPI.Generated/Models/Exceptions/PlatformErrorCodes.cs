@@ -1623,6 +1623,8 @@ public enum PlatformErrorCodes : int
 
     FireteamFinderLobbyTooFarInTheFuture = 3134,
 
+    FireteamFinderApplicantNotInGame = 3135,
+
     FireteamFinderResponseUndefined = 3150,
 
     FireteamFinderResponseMoved = 3151,

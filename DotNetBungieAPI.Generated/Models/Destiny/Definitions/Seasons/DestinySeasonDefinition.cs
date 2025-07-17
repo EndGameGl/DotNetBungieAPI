@@ -24,6 +24,10 @@ public class DestinySeasonDefinition
     [JsonPropertyName("seasonPassHash")]
     public uint? SeasonPassHash { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.Seasons.DestinySeasonPassDefinition>("Destiny.Definitions.Seasons.DestinySeasonPassDefinition")]
+    [JsonPropertyName("seasonPassList")]
+    public List<Destiny.Definitions.Seasons.DestinySeasonPassReference> SeasonPassList { get; set; }
+
     [Destiny2Definition<Destiny.Definitions.DestinyProgressionDefinition>("Destiny.Definitions.DestinyProgressionDefinition")]
     [JsonPropertyName("seasonPassProgressionHash")]
     public uint? SeasonPassProgressionHash { get; set; }

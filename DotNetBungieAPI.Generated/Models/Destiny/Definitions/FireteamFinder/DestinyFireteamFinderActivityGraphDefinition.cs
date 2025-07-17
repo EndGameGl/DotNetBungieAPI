@@ -45,6 +45,18 @@ public class DestinyFireteamFinderActivityGraphDefinition
     [JsonPropertyName("relatedLocationHashes")]
     public List<uint> RelatedLocationHashes { get; set; }
 
+    [JsonPropertyName("sortMatchmadeActivitiesToFront")]
+    public bool? SortMatchmadeActivitiesToFront { get; set; }
+
+    [JsonPropertyName("enabledOnTreeTypesListEnum")]
+    public List<Destiny.DestinyActivityTreeType> EnabledOnTreeTypesListEnum { get; set; }
+
+    [JsonPropertyName("activityTreeChildSortMode")]
+    public Destiny.DestinyActivityTreeChildSortMode? ActivityTreeChildSortMode { get; set; }
+
+    [JsonPropertyName("sortPriority")]
+    public int? SortPriority { get; set; }
+
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
     /// <para />

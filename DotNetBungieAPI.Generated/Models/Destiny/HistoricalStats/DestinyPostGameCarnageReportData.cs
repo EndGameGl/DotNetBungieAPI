@@ -21,6 +21,18 @@ public class DestinyPostGameCarnageReportData
     public bool? ActivityWasStartedFromBeginning { get; set; }
 
     /// <summary>
+    ///     Difficulty tier index value for the activity.
+    /// </summary>
+    [JsonPropertyName("activityDifficultyTier")]
+    public int? ActivityDifficultyTier { get; set; }
+
+    /// <summary>
+    ///     Collection of player-selected skull hashes active for the activity.
+    /// </summary>
+    [JsonPropertyName("selectedSkullHashes")]
+    public List<uint> SelectedSkullHashes { get; set; }
+
+    /// <summary>
     ///     Details about the activity.
     /// </summary>
     [JsonPropertyName("activityDetails")]

@@ -34,8 +34,8 @@ public class OpenApiComponentSchema
     [JsonPropertyName("properties")]
     public Dictionary<string, OpenApiComponentSchema>? Properties { get; init; }
 
-    [JsonPropertyName("nullable")]
-    public bool Nullable { get; init; }
+    [JsonPropertyName("nullable")] 
+    public bool Nullable { get; init; } = false;
 
     [JsonPropertyName("additionalProperties")]
     public OpenApiComponentSchema? AdditionalProperties { get; init; }

@@ -16,6 +16,14 @@ public class UserMembershipData
     [JsonPropertyName("primaryMembershipId")]
     public long? PrimaryMembershipId { get; set; }
 
+    /// <summary>
+    ///     If this property is populated, it will have the membershipId for the Marathon Membership on this user's account
+    /// <para />
+    ///      If null, this user has no Marathon (i.e. "GoliathGame") membership.
+    /// </summary>
+    [JsonPropertyName("marathonMembershipId")]
+    public long? MarathonMembershipId { get; set; }
+
     [JsonPropertyName("bungieNetUser")]
     public User.GeneralUser? BungieNetUser { get; set; }
 }

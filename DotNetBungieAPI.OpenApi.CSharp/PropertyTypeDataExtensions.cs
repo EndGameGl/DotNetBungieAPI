@@ -13,23 +13,27 @@ public static class PropertyTypeDataExtensions
             var genericProperty = property.GenericProperties[0];
             return $"List<{genericProperty.GetCSharpType()}>";
         }
-        else if (property.IsHashMap)
+
+        if (property.IsHashMap)
         {
             var keyProperty = property.GenericProperties[0];
             var valueProperty = property.GenericProperties[1];
             return $"Dictionary<{keyProperty.GetCSharpType()}, {valueProperty.GetCSharpType()}>";
         }
-        else if (property.IsClass)
+
+        if (property.IsClass)
         {
             if (property.TypeReference is null)
                 return "object";
             return $"{property.TypeReference.GetFullTypeName()}";
         }
-        else if (property.IsEnum)
+
+        if (property.IsEnum)
         {
             return $"{property.TypeReference.GetFullTypeName()}";
         }
-        else if (property.IsValue)
+
+        if (property.IsValue)
         {
             return $"{property.FormatCSharpValueType()}";
         }

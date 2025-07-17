@@ -25,6 +25,10 @@ public class DestinyEventCardDefinition
     [JsonPropertyName("sealPresentationNodeHash")]
     public uint? SealPresentationNodeHash { get; set; }
 
+    [Destiny2DefinitionList<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
+    [JsonPropertyName("eventCardCurrencyList")]
+    public List<uint> EventCardCurrencyList { get; set; }
+
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("ticketCurrencyItemHash")]
     public uint? TicketCurrencyItemHash { get; set; }
@@ -38,6 +42,14 @@ public class DestinyEventCardDefinition
 
     [JsonPropertyName("endTime")]
     public long? EndTime { get; set; }
+
+    [Destiny2Definition<Destiny.Definitions.DestinyProgressionDefinition>("Destiny.Definitions.DestinyProgressionDefinition")]
+    [JsonPropertyName("rewardProgressionHash")]
+    public uint? RewardProgressionHash { get; set; }
+
+    [Destiny2Definition<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
+    [JsonPropertyName("weeklyChallengesPresentationNodeHash")]
+    public uint? WeeklyChallengesPresentationNodeHash { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

@@ -66,6 +66,22 @@ public class Destiny2CoreSettings
     [JsonPropertyName("fireteamFinderConstantsHash")]
     public uint? FireteamFinderConstantsHash { get; set; }
 
+    [Destiny2Definition<Destiny.Definitions.Items.DestinyInventoryItemConstantsDefinition>("Destiny.Definitions.Items.DestinyInventoryItemConstantsDefinition")]
+    [JsonPropertyName("inventoryItemConstantsHash")]
+    public uint? InventoryItemConstantsHash { get; set; }
+
+    [Destiny2Definition<Destiny.Definitions.Inventory.DestinyItemFilterDefinition>("Destiny.Definitions.Inventory.DestinyItemFilterDefinition")]
+    [JsonPropertyName("featuredItemsListHash")]
+    public uint? FeaturedItemsListHash { get; set; }
+
+    [Destiny2Definition<Destiny.Definitions.Sockets.DestinyPlugSetDefinition>("Destiny.Definitions.Sockets.DestinyPlugSetDefinition")]
+    [JsonPropertyName("armorArchetypePlugSetHash")]
+    public uint? ArmorArchetypePlugSetHash { get; set; }
+
+    [Destiny2Definition<Destiny.Definitions.Seasons.DestinyEventCardDefinition>("Destiny.Definitions.Seasons.DestinyEventCardDefinition")]
+    [JsonPropertyName("seasonalHubEventCardHash")]
+    public uint? SeasonalHubEventCardHash { get; set; }
+
     [Destiny2Definition<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
     [JsonPropertyName("guardianRanksRootNodeHash")]
     public uint? GuardianRanksRootNodeHash { get; set; }
