@@ -6,7 +6,7 @@ public class UserMembershipData
     ///     this allows you to see destiny memberships that are visible and linked to this account (regardless of whether or not they have characters on the world server)
     /// </summary>
     [JsonPropertyName("destinyMemberships")]
-    public List<GroupsV2.GroupUserInfoCard> DestinyMemberships { get; set; }
+    public GroupsV2.GroupUserInfoCard[]? DestinyMemberships { get; set; }
 
     /// <summary>
     ///     If this property is populated, it will have the membership ID of the account considered to be "primary" in this user's cross save relationship.

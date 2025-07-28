@@ -10,7 +10,7 @@ public class DestinySeasonPassDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyProgressionDefinition>("Destiny.Definitions.DestinyProgressionDefinition")]
     [JsonPropertyName("rewardProgressionHash")]
-    public uint? RewardProgressionHash { get; set; }
+    public uint RewardProgressionHash { get; set; }
 
     /// <summary>
     ///     I know what you're thinking, but I promise we're not going to duplicate and drown you. Instead, we're giving you sweet, sweet power bonuses.
@@ -19,10 +19,10 @@ public class DestinySeasonPassDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyProgressionDefinition>("Destiny.Definitions.DestinyProgressionDefinition")]
     [JsonPropertyName("prestigeProgressionHash")]
-    public uint? PrestigeProgressionHash { get; set; }
+    public uint PrestigeProgressionHash { get; set; }
 
     [JsonPropertyName("linkRedirectPath")]
-    public string? LinkRedirectPath { get; set; }
+    public string LinkRedirectPath { get; set; }
 
     [JsonPropertyName("color")]
     public Destiny.Misc.DestinyColor? Color { get; set; }
@@ -36,17 +36,17 @@ public class DestinySeasonPassDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint? Hash { get; set; }
+    public uint Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int? Index { get; set; }
+    public int Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool? Redacted { get; set; }
+    public bool Redacted { get; set; }
 }

@@ -6,17 +6,17 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Presentation;
 public class DestinyPresentationNodeChildrenBlock
 {
     [JsonPropertyName("presentationNodes")]
-    public List<Destiny.Definitions.Presentation.DestinyPresentationNodeChildEntry> PresentationNodes { get; set; }
+    public Destiny.Definitions.Presentation.DestinyPresentationNodeChildEntry[]? PresentationNodes { get; set; }
 
     [JsonPropertyName("collectibles")]
-    public List<Destiny.Definitions.Presentation.DestinyPresentationNodeCollectibleChildEntry> Collectibles { get; set; }
+    public Destiny.Definitions.Presentation.DestinyPresentationNodeCollectibleChildEntry[]? Collectibles { get; set; }
 
     [JsonPropertyName("records")]
-    public List<Destiny.Definitions.Presentation.DestinyPresentationNodeRecordChildEntry> Records { get; set; }
+    public Destiny.Definitions.Presentation.DestinyPresentationNodeRecordChildEntry[]? Records { get; set; }
 
     [JsonPropertyName("metrics")]
-    public List<Destiny.Definitions.Presentation.DestinyPresentationNodeMetricChildEntry> Metrics { get; set; }
+    public Destiny.Definitions.Presentation.DestinyPresentationNodeMetricChildEntry[]? Metrics { get; set; }
 
     [JsonPropertyName("craftables")]
-    public List<Destiny.Definitions.Presentation.DestinyPresentationNodeCraftableChildEntry> Craftables { get; set; }
+    public Destiny.Definitions.Presentation.DestinyPresentationNodeCraftableChildEntry[]? Craftables { get; set; }
 }

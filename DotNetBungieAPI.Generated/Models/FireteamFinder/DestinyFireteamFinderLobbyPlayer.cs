@@ -6,11 +6,11 @@ public class DestinyFireteamFinderLobbyPlayer
     public FireteamFinder.DestinyFireteamFinderPlayerId? PlayerId { get; set; }
 
     [JsonPropertyName("referralToken")]
-    public long? ReferralToken { get; set; }
+    public long ReferralToken { get; set; }
 
     [JsonPropertyName("state")]
-    public FireteamFinder.DestinyFireteamFinderPlayerReadinessState? State { get; set; }
+    public FireteamFinder.DestinyFireteamFinderPlayerReadinessState State { get; set; }
 
     [JsonPropertyName("offerId")]
-    public long? OfferId { get; set; }
+    public long OfferId { get; set; }
 }

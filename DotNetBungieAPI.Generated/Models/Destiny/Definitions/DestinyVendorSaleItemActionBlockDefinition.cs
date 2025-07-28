@@ -9,5 +9,5 @@ public class DestinyVendorSaleItemActionBlockDefinition
     public float? ExecuteSeconds { get; set; }
 
     [JsonPropertyName("isPositive")]
-    public bool? IsPositive { get; set; }
+    public bool IsPositive { get; set; }
 }

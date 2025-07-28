@@ -9,6 +9,6 @@ public interface IAppApi
         string authToken
     );
 
-    Task<ApiResponse<List<Applications.Application>>> GetBungieApplications();
+    Task<ApiResponse<Applications.Application[]>> GetBungieApplications();
 
 }

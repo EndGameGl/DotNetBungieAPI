@@ -13,11 +13,11 @@ public class DestinyItemValueBlockDefinition
     ///     References to the items that make up this item's "value", and the quantity.
     /// </summary>
     [JsonPropertyName("itemValue")]
-    public List<Destiny.DestinyItemQuantity> ItemValue { get; set; }
+    public Destiny.DestinyItemQuantity[]? ItemValue { get; set; }
 
     /// <summary>
     ///     If there's a localized text description of the value provided, this will be said description.
     /// </summary>
     [JsonPropertyName("valueDescription")]
-    public string? ValueDescription { get; set; }
+    public string ValueDescription { get; set; }
 }

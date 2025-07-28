@@ -4,17 +4,13 @@ using System.Text.Json.Serialization;
 namespace DotNetBungieAPI.OpenApi.Models;
 
 #if DEBUG
-[DebuggerDisplay("{DebuggerDisplay}")]
+[DebuggerDisplay("{Name} - {Description}")]
 #endif
 public class Tag
 {
     [JsonPropertyName("name")]
-    public string Name { get; init; }
+    public required string Name { get; init; }
 
     [JsonPropertyName("description")]
-    public string Description { get; init; }
-
-#if DEBUG
-    private string DebuggerDisplay => $"{Name} - {Description}";
-#endif
+    public required string Description { get; init; }
 }

@@ -5,8 +5,8 @@ namespace DotNetBungieAPI.OpenApi.Models;
 public class License
 {
     [JsonPropertyName("name")]
-    public string Name { get; init; }
+    public required string Name { get; init; }
 
     [JsonPropertyName("url")]
-    public string Url { get; init; }
+    public required string Url { get; init; }
 }

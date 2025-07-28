@@ -10,7 +10,7 @@ public class DestinyPublicMilestoneActivityVariant
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
-    public uint? ActivityHash { get; set; }
+    public uint ActivityHash { get; set; }
 
     /// <summary>
     ///     The hash identifier of the most specific Activity Mode under which this activity is played. This is useful for situations where the activity in question is - for instance - a PVP map, but it's not clear what mode the PVP map is being played under. If it's a playlist, this will be less specific: but hopefully useful in some way.
@@ -23,5 +23,5 @@ public class DestinyPublicMilestoneActivityVariant
     ///     The enumeration equivalent of the most specific Activity Mode under which this activity is played.
     /// </summary>
     [JsonPropertyName("activityModeType")]
-    public int? ActivityModeType { get; set; }
+    public Destiny.HistoricalStats.Definitions.DestinyActivityModeType? ActivityModeType { get; set; }
 }

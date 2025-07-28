@@ -1,56 +1,25 @@
-﻿using DotNetBungieAPI.OpenApi.Extensions;
-using DotNetBungieAPI.OpenApi.Metadata;
-using DotNetBungieAPI.OpenApi.Models;
+﻿using DotNetBungieAPI.OpenApi.Models.ComponentSchemas;
 
 namespace DotNetBungieAPI.OpenApi.CSharp;
 
 public static class PropertyTypeDataExtensions
 {
-    internal static string GetCSharpType(this PropertyTypeData property)
+    internal static string GetCSharpType(this IOpenApiComponentSchema property)
     {
-        if (property.IsCollection)
+        return property switch 
         {
-            var genericProperty = property.GenericProperties[0];
-            return $"List<{genericProperty.GetCSharpType()}>";
-        }
-
-        if (property.IsHashMap)
-        {
-            var keyProperty = property.GenericProperties[0];
-            var valueProperty = property.GenericProperties[1];
-            return $"Dictionary<{keyProperty.GetCSharpType()}, {valueProperty.GetCSharpType()}>";
-        }
-
-        if (property.IsClass)
-        {
-            if (property.TypeReference is null)
-                return "object";
-            return $"{property.TypeReference.GetFullTypeName()}";
-        }
-
-        if (property.IsEnum)
-        {
-            return $"{property.TypeReference.GetFullTypeName()}";
-        }
-
-        if (property.IsValue)
-        {
-            return $"{property.FormatCSharpValueType()}";
-        }
-
-        throw new Exception("Failed to format C# property");
-    }
-
-    private static string FormatCSharpValueType(this PropertyTypeData property)
-    {
-        return property switch
-        {
-            { TypeReference: "string", Format: "date-time" } => "DateTime",
-            { TypeReference: "string" } => "string",
-            { TypeReference: "boolean" } => "bool",
-            { TypeReference: "number" } => property.Format,
-            { TypeReference: "integer" } => Resources.TypeMappings[property.Format],
-            _ => throw new Exception("Failed to format C# property")
+            OpenApiArrayComponentSchema arrayComponent => $"{arrayComponent.Items.GetCSharpType()}[]",
+            OpenApiDictionaryComponentSchema dictionaryComponent => $"Dictionary<{dictionaryComponent.DictionaryKey.GetCSharpType()}, {dictionaryComponent.AdditionalProperties.GetCSharpType()}>",
+            OpenApiEmptyObjectComponentSchema => "object",
+            OpenApiEnumReferenceComponentSchema enumReference => $"{enumReference.EnumReference.GetCSharpType()}",
+            OpenApiIntegerComponentSchema integerComponent => $"{Resources.TypeMappings[integerComponent.Format]}",
+            OpenApiStringComponentSchema { Format: "date-time" } => "DateTime",
+            OpenApiStringComponentSchema => "string",
+            OpenApiNumberComponentSchema numberComponent => numberComponent.Format,
+            OpenApiObjectMultiTypeComponentSchema openApiObjectMultiTypeComponentSchema => $"{openApiObjectMultiTypeComponentSchema.AllOf[0].GetCSharpType()}",
+            OpenApiBooleanComponentSchema => "bool",
+            OpenApiComponentReference openApiComponentReference => openApiComponentReference.GetReferencedPath(),
+            _ => throw new NotImplementedException(),
         };
     }
 

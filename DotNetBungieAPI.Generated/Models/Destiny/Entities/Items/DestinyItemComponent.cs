@@ -10,7 +10,7 @@ public class DestinyItemComponent
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemHash")]
-    public uint? ItemHash { get; set; }
+    public uint ItemHash { get; set; }
 
     /// <summary>
     ///     If the item is instanced, it will have an instance ID. Lack of an instance ID implies that the item has no distinct local qualities aside from stack size.
@@ -22,44 +22,44 @@ public class DestinyItemComponent
     ///     The quantity of the item in this stack. Note that Instanced items cannot stack. If an instanced item, this value will always be 1 (as the stack has exactly one item in it)
     /// </summary>
     [JsonPropertyName("quantity")]
-    public int? Quantity { get; set; }
+    public int Quantity { get; set; }
 
     /// <summary>
     ///     If the item is bound to a location, it will be specified in this enum.
     /// </summary>
     [JsonPropertyName("bindStatus")]
-    public Destiny.ItemBindStatus? BindStatus { get; set; }
+    public Destiny.ItemBindStatus BindStatus { get; set; }
 
     /// <summary>
     ///     An easy reference for where the item is located. Redundant if you got the item from an Inventory, but useful when making detail calls on specific items.
     /// </summary>
     [JsonPropertyName("location")]
-    public Destiny.ItemLocation? Location { get; set; }
+    public Destiny.ItemLocation Location { get; set; }
 
     /// <summary>
     ///     The hash identifier for the specific inventory bucket in which the item is located.
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryBucketDefinition>("Destiny.Definitions.DestinyInventoryBucketDefinition")]
     [JsonPropertyName("bucketHash")]
-    public uint? BucketHash { get; set; }
+    public uint BucketHash { get; set; }
 
     /// <summary>
     ///     If there is a known error state that would cause this item to not be transferable, this Flags enum will indicate all of those error states. Otherwise, it will be 0 (CanTransfer).
     /// </summary>
     [JsonPropertyName("transferStatus")]
-    public Destiny.TransferStatuses? TransferStatus { get; set; }
+    public Destiny.TransferStatuses TransferStatus { get; set; }
 
     /// <summary>
     ///     If the item can be locked, this will indicate that state.
     /// </summary>
     [JsonPropertyName("lockable")]
-    public bool? Lockable { get; set; }
+    public bool Lockable { get; set; }
 
     /// <summary>
     ///     A flags enumeration indicating the transient/custom states of the item that affect how it is rendered: whether it's tracked or locked for example, or whether it has a masterwork plug inserted.
     /// </summary>
     [JsonPropertyName("state")]
-    public Destiny.ItemState? State { get; set; }
+    public Destiny.ItemState State { get; set; }
 
     /// <summary>
     ///     If populated, this is the hash of the item whose icon (and other secondary styles, but *not* the human readable strings) should override whatever icons/styles are on the item being sold.
@@ -82,13 +82,13 @@ public class DestinyItemComponent
     ///      Wrappers are an evolution of "bundles", which give an easy way to let you preview the contents of what you purchased while still letting you get a refund before you "open" it.
     /// </summary>
     [JsonPropertyName("isWrapper")]
-    public bool? IsWrapper { get; set; }
+    public bool IsWrapper { get; set; }
 
     /// <summary>
     ///     If this is populated, it is a list of indexes into DestinyInventoryItemDefinition.tooltipNotifications for any special tooltip messages that need to be shown for this item.
     /// </summary>
     [JsonPropertyName("tooltipNotificationIndexes")]
-    public List<int> TooltipNotificationIndexes { get; set; }
+    public int[]? TooltipNotificationIndexes { get; set; }
 
     /// <summary>
     ///     The identifier for the currently-selected metric definition, to be displayed on the emblem nameplate.
@@ -113,5 +113,5 @@ public class DestinyItemComponent
     ///     If available, a list that describes which item values (rewards) should be shown (true) or hidden (false).
     /// </summary>
     [JsonPropertyName("itemValueVisibility")]
-    public List<bool> ItemValueVisibility { get; set; }
+    public bool[]? ItemValueVisibility { get; set; }
 }

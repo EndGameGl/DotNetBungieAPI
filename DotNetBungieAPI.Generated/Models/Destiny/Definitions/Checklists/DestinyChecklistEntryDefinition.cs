@@ -11,7 +11,7 @@ public class DestinyChecklistEntryDefinition
     ///     The identifier for this Checklist entry. Guaranteed unique only within this Checklist Definition, and not globally/for all checklists.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint? Hash { get; set; }
+    public uint Hash { get; set; }
 
     /// <summary>
     ///     Even if no other associations exist, we will give you *something* for display properties. In cases where we have no associated entities, it may be as simple as a numerical identifier.
@@ -54,5 +54,5 @@ public class DestinyChecklistEntryDefinition
     ///     The scope at which this specific entry can be computed.
     /// </summary>
     [JsonPropertyName("scope")]
-    public Destiny.DestinyScope? Scope { get; set; }
+    public Destiny.DestinyScope Scope { get; set; }
 }

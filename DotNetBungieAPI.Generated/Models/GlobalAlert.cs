@@ -3,22 +3,22 @@ namespace DotNetBungieAPI.Generated.Models;
 public class GlobalAlert
 {
     [JsonPropertyName("AlertKey")]
-    public string? AlertKey { get; set; }
+    public string AlertKey { get; set; }
 
     [JsonPropertyName("AlertHtml")]
-    public string? AlertHtml { get; set; }
+    public string AlertHtml { get; set; }
 
     [JsonPropertyName("AlertTimestamp")]
-    public DateTime? AlertTimestamp { get; set; }
+    public DateTime AlertTimestamp { get; set; }
 
     [JsonPropertyName("AlertLink")]
-    public string? AlertLink { get; set; }
+    public string AlertLink { get; set; }
 
     [JsonPropertyName("AlertLevel")]
-    public GlobalAlertLevel? AlertLevel { get; set; }
+    public GlobalAlertLevel AlertLevel { get; set; }
 
     [JsonPropertyName("AlertType")]
-    public GlobalAlertType? AlertType { get; set; }
+    public GlobalAlertType AlertType { get; set; }
 
     [JsonPropertyName("StreamInfo")]
     public StreamInfo? StreamInfo { get; set; }

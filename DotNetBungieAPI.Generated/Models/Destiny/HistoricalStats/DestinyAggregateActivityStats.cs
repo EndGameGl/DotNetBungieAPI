@@ -7,11 +7,11 @@ public class DestinyAggregateActivityStats
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
-    public uint? ActivityHash { get; set; }
+    public uint ActivityHash { get; set; }
 
     /// <summary>
     ///     Collection of stats for the player in this activity.
     /// </summary>
     [JsonPropertyName("values")]
-    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue> Values { get; set; }
+    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue>? Values { get; set; }
 }

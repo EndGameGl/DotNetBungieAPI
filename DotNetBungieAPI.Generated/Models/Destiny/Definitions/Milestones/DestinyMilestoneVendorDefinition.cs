@@ -12,5 +12,5 @@ public class DestinyMilestoneVendorDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyVendorDefinition>("Destiny.Definitions.DestinyVendorDefinition")]
     [JsonPropertyName("vendorHash")]
-    public uint? VendorHash { get; set; }
+    public uint VendorHash { get; set; }
 }

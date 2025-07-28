@@ -10,11 +10,11 @@ public class DestinyItemSocketCategoryDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.Sockets.DestinySocketCategoryDefinition>("Destiny.Definitions.Sockets.DestinySocketCategoryDefinition")]
     [JsonPropertyName("socketCategoryHash")]
-    public uint? SocketCategoryHash { get; set; }
+    public uint SocketCategoryHash { get; set; }
 
     /// <summary>
     ///     Use these indexes to look up the sockets in the "sockets.socketEntries" property on the item definition. These are the indexes under the category, in game-rendered order.
     /// </summary>
     [JsonPropertyName("socketIndexes")]
-    public List<int> SocketIndexes { get; set; }
+    public int[]? SocketIndexes { get; set; }
 }

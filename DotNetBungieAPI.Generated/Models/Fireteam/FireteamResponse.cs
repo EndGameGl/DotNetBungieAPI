@@ -6,8 +6,8 @@ public class FireteamResponse
     public Fireteam.FireteamSummary? Summary { get; set; }
 
     [JsonPropertyName("Members")]
-    public List<Fireteam.FireteamMember> Members { get; set; }
+    public Fireteam.FireteamMember[]? Members { get; set; }
 
     [JsonPropertyName("Alternates")]
-    public List<Fireteam.FireteamMember> Alternates { get; set; }
+    public Fireteam.FireteamMember[]? Alternates { get; set; }
 }

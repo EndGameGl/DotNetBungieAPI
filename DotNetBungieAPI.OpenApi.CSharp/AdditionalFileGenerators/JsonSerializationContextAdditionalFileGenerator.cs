@@ -1,4 +1,5 @@
 ﻿using DotNetBungieAPI.OpenApi.CodeGeneration;
+using DotNetBungieAPI.OpenApi.Models.ComponentSchemas;
 
 namespace DotNetBungieAPI.OpenApi.CSharp.AdditionalFileGenerators;
 
@@ -14,11 +15,14 @@ public class JsonSerializationContextAdditionalFileGenerator : AdditionalFileGen
         foreach (var (typeName, typeSchema) in openApiModel.Components.Schemas)
         {
             if (
-                typeSchema.Type is "object"
-                && (typeSchema.Properties is null || !typeSchema.Properties.Any())
+                typeSchema
+                is OpenApiObjectMultiTypeComponentSchema
+                    or OpenApiObjectComponentSchema
+                    or OpenApiEnumComponentSchema
             )
-                continue;
-            await WriteLineAsync($"[JsonSerializable(typeof({typeName}))]");
+            {
+                await WriteLineAsync($"[JsonSerializable(typeof({typeName}))]");
+            }
         }
 
         await WriteLineAsync(

@@ -9,11 +9,11 @@ public class DestinyMilestoneRewardCategory
     ///     Look up the relevant DestinyMilestoneDefinition, and then use rewardCategoryHash to look up the category info in DestinyMilestoneDefinition.rewards.
     /// </summary>
     [JsonPropertyName("rewardCategoryHash")]
-    public uint? RewardCategoryHash { get; set; }
+    public uint RewardCategoryHash { get; set; }
 
     /// <summary>
     ///     The individual reward entries for this category, and their status.
     /// </summary>
     [JsonPropertyName("entries")]
-    public List<Destiny.Milestones.DestinyMilestoneRewardEntry> Entries { get; set; }
+    public Destiny.Milestones.DestinyMilestoneRewardEntry[]? Entries { get; set; }
 }

@@ -6,7 +6,7 @@ namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 public class GroupV2ClanInfo
 {
     [JsonPropertyName("clanCallsign")]
-    public string? ClanCallsign { get; set; }
+    public string ClanCallsign { get; set; }
 
     [JsonPropertyName("clanBannerData")]
     public GroupsV2.ClanBanner? ClanBannerData { get; set; }

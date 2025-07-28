@@ -10,7 +10,7 @@ public class DestinyActivityPlaylistItemDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
-    public uint? ActivityHash { get; set; }
+    public uint ActivityHash { get; set; }
 
     /// <summary>
     ///     If this playlist entry had an activity mode directly defined on it, this will be the hash of that mode.
@@ -23,18 +23,18 @@ public class DestinyActivityPlaylistItemDefinition
     ///     If the playlist entry had an activity mode directly defined on it, this will be the enum value of that mode.
     /// </summary>
     [JsonPropertyName("directActivityModeType")]
-    public int? DirectActivityModeType { get; set; }
+    public Destiny.HistoricalStats.Definitions.DestinyActivityModeType? DirectActivityModeType { get; set; }
 
     /// <summary>
     ///     The hash identifiers for Activity Modes relevant to this entry.
     /// </summary>
-    [Destiny2DefinitionList<Destiny.Definitions.DestinyActivityModeDefinition>("Destiny.Definitions.DestinyActivityModeDefinition")]
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityModeDefinition>("Destiny.Definitions.DestinyActivityModeDefinition")]
     [JsonPropertyName("activityModeHashes")]
-    public List<uint> ActivityModeHashes { get; set; }
+    public uint[]? ActivityModeHashes { get; set; }
 
     /// <summary>
     ///     The activity modes - if any - in enum form. Because we can't seem to escape the enums.
     /// </summary>
     [JsonPropertyName("activityModeTypes")]
-    public List<Destiny.HistoricalStats.Definitions.DestinyActivityModeType> ActivityModeTypes { get; set; }
+    public Destiny.HistoricalStats.Definitions.DestinyActivityModeType[]? ActivityModeTypes { get; set; }
 }

@@ -9,5 +9,5 @@ public class DestinyPresentationNodeRequirementsBlock
     ///     If this node is not accessible due to Entitlements (for instance, you don't own the required game expansion), this is the message to show.
     /// </summary>
     [JsonPropertyName("entitlementUnavailableMessage")]
-    public string? EntitlementUnavailableMessage { get; set; }
+    public string EntitlementUnavailableMessage { get; set; }
 }

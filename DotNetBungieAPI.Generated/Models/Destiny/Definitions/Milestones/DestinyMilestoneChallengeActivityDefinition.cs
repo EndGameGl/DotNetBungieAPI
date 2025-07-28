@@ -7,16 +7,16 @@ public class DestinyMilestoneChallengeActivityDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
-    public uint? ActivityHash { get; set; }
+    public uint ActivityHash { get; set; }
 
     [JsonPropertyName("challenges")]
-    public List<Destiny.Definitions.Milestones.DestinyMilestoneChallengeDefinition> Challenges { get; set; }
+    public Destiny.Definitions.Milestones.DestinyMilestoneChallengeDefinition[]? Challenges { get; set; }
 
     /// <summary>
     ///     If the activity and its challenge is visible on any of these nodes, it will be returned.
     /// </summary>
     [JsonPropertyName("activityGraphNodes")]
-    public List<Destiny.Definitions.Milestones.DestinyMilestoneChallengeActivityGraphNodeEntry> ActivityGraphNodes { get; set; }
+    public Destiny.Definitions.Milestones.DestinyMilestoneChallengeActivityGraphNodeEntry[]? ActivityGraphNodes { get; set; }
 
     /// <summary>
     ///     Phases related to this activity, if there are any.
@@ -24,5 +24,5 @@ public class DestinyMilestoneChallengeActivityDefinition
     ///     These will be listed in the order in which they will appear in the actual activity.
     /// </summary>
     [JsonPropertyName("phases")]
-    public List<Destiny.Definitions.Milestones.DestinyMilestoneChallengeActivityPhase> Phases { get; set; }
+    public Destiny.Definitions.Milestones.DestinyMilestoneChallengeActivityPhase[]? Phases { get; set; }
 }

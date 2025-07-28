@@ -13,5 +13,5 @@ public class DestinyVendorCategoriesComponent
     ///     These categories each point to a "display category" in the displayCategories property of the DestinyVendorDefinition, as opposed to the other categories.
     /// </summary>
     [JsonPropertyName("categories")]
-    public List<Destiny.Entities.Vendors.DestinyVendorCategory> Categories { get; set; }
+    public Destiny.Entities.Vendors.DestinyVendorCategory[]? Categories { get; set; }
 }

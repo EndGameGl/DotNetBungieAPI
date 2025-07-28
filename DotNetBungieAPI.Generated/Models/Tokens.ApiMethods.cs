@@ -17,7 +17,7 @@ public interface ITokensApi
         string authToken
     );
 
-    Task<ApiResponse<List<Tokens.PartnerOfferSkuHistoryResponse>>> GetPartnerOfferSkuHistory(
+    Task<ApiResponse<Tokens.PartnerOfferSkuHistoryResponse[]>> GetPartnerOfferSkuHistory(
         int partnerApplicationId,
         long targetBnetMembershipId,
         string authToken

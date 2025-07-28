@@ -4,11 +4,11 @@ public class DestinyPresentationNodeRecordChildEntry
 {
     [Destiny2Definition<Destiny.Definitions.Records.DestinyRecordDefinition>("Destiny.Definitions.Records.DestinyRecordDefinition")]
     [JsonPropertyName("recordHash")]
-    public uint? RecordHash { get; set; }
+    public uint RecordHash { get; set; }
 
     /// <summary>
     ///     Use this value to sort the presentation node children in ascending order.
     /// </summary>
     [JsonPropertyName("nodeDisplayPriority")]
-    public uint? NodeDisplayPriority { get; set; }
+    public uint NodeDisplayPriority { get; set; }
 }

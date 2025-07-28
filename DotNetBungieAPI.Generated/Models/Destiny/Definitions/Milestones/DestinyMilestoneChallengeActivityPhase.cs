@@ -6,5 +6,5 @@ public class DestinyMilestoneChallengeActivityPhase
     ///     The hash identifier of the activity's phase.
     /// </summary>
     [JsonPropertyName("phaseHash")]
-    public uint? PhaseHash { get; set; }
+    public uint PhaseHash { get; set; }
 }

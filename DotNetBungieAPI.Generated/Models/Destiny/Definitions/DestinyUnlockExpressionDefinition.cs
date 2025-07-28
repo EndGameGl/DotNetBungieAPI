@@ -11,5 +11,5 @@ public class DestinyUnlockExpressionDefinition
     ///     A shortcut for determining the most restrictive gating that this expression performs. See the DestinyGatingScope enum's documentation for more details.
     /// </summary>
     [JsonPropertyName("scope")]
-    public Destiny.DestinyGatingScope? Scope { get; set; }
+    public Destiny.DestinyGatingScope Scope { get; set; }
 }

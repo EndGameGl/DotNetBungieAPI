@@ -10,11 +10,11 @@ public class DestinyItemPeerView
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemHash")]
-    public uint? ItemHash { get; set; }
+    public uint ItemHash { get; set; }
 
     /// <summary>
     ///     The list of dyes that have been applied to this item.
     /// </summary>
     [JsonPropertyName("dyes")]
-    public List<Destiny.DyeReference> Dyes { get; set; }
+    public Destiny.DyeReference[]? Dyes { get; set; }
 }

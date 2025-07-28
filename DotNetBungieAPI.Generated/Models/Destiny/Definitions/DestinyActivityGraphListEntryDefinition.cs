@@ -12,5 +12,5 @@ public class DestinyActivityGraphListEntryDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.Director.DestinyActivityGraphDefinition>("Destiny.Definitions.Director.DestinyActivityGraphDefinition")]
     [JsonPropertyName("activityGraphHash")]
-    public uint? ActivityGraphHash { get; set; }
+    public uint ActivityGraphHash { get; set; }
 }

@@ -10,5 +10,5 @@ public class DestinyItemVersionDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.PowerCaps.DestinyPowerCapDefinition>("Destiny.Definitions.PowerCaps.DestinyPowerCapDefinition")]
     [JsonPropertyName("powerCapHash")]
-    public uint? PowerCapHash { get; set; }
+    public uint PowerCapHash { get; set; }
 }

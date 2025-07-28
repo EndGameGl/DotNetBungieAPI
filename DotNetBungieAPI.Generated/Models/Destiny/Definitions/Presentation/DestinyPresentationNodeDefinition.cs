@@ -20,28 +20,28 @@ public class DestinyPresentationNodeDefinition
     ///     The original icon for this presentation node, before we futzed with it.
     /// </summary>
     [JsonPropertyName("originalIcon")]
-    public string? OriginalIcon { get; set; }
+    public string OriginalIcon { get; set; }
 
     /// <summary>
     ///     Some presentation nodes are meant to be explicitly shown on the "root" or "entry" screens for the feature to which they are related. You should use this icon when showing them on such a view, if you have a similar "entry point" view in your UI. If you don't have a UI, then I guess it doesn't matter either way does it?
     /// </summary>
     [JsonPropertyName("rootViewIcon")]
-    public string? RootViewIcon { get; set; }
+    public string RootViewIcon { get; set; }
 
     [JsonPropertyName("nodeType")]
-    public Destiny.DestinyPresentationNodeType? NodeType { get; set; }
+    public Destiny.DestinyPresentationNodeType NodeType { get; set; }
 
     /// <summary>
     ///     Primarily for Guardian Ranks, this property if the contents of this node are tied to the current season. These nodes are shown with a different color for the in-game Guardian Ranks display.
     /// </summary>
     [JsonPropertyName("isSeasonal")]
-    public bool? IsSeasonal { get; set; }
+    public bool IsSeasonal { get; set; }
 
     /// <summary>
     ///     Indicates whether this presentation node's state is determined on a per-character or on an account-wide basis.
     /// </summary>
     [JsonPropertyName("scope")]
-    public Destiny.DestinyScope? Scope { get; set; }
+    public Destiny.DestinyScope Scope { get; set; }
 
     /// <summary>
     ///     If this presentation node shows a related objective (for instance, if it tracks the progress of its children), the objective being tracked is indicated here.
@@ -67,13 +67,13 @@ public class DestinyPresentationNodeDefinition
     ///     A hint for how to display this presentation node when it's shown in a list.
     /// </summary>
     [JsonPropertyName("displayStyle")]
-    public Destiny.DestinyPresentationDisplayStyle? DisplayStyle { get; set; }
+    public Destiny.DestinyPresentationDisplayStyle DisplayStyle { get; set; }
 
     /// <summary>
     ///     A hint for how to display this presentation node when it's shown in its own detail screen.
     /// </summary>
     [JsonPropertyName("screenStyle")]
-    public Destiny.DestinyPresentationScreenStyle? ScreenStyle { get; set; }
+    public Destiny.DestinyPresentationScreenStyle ScreenStyle { get; set; }
 
     /// <summary>
     ///     The requirements for being able to interact with this presentation node and its children.
@@ -85,27 +85,27 @@ public class DestinyPresentationNodeDefinition
     ///     If this presentation node has children, but the game doesn't let you inspect the details of those children, that is indicated here.
     /// </summary>
     [JsonPropertyName("disableChildSubscreenNavigation")]
-    public bool? DisableChildSubscreenNavigation { get; set; }
+    public bool DisableChildSubscreenNavigation { get; set; }
 
     [JsonPropertyName("maxCategoryRecordScore")]
-    public int? MaxCategoryRecordScore { get; set; }
+    public int MaxCategoryRecordScore { get; set; }
 
     [JsonPropertyName("presentationNodeType")]
-    public Destiny.DestinyPresentationNodeType? PresentationNodeType { get; set; }
+    public Destiny.DestinyPresentationNodeType PresentationNodeType { get; set; }
 
     [JsonPropertyName("traitIds")]
-    public List<string> TraitIds { get; set; }
+    public string[]? TraitIds { get; set; }
 
-    [Destiny2DefinitionList<Destiny.Definitions.Traits.DestinyTraitDefinition>("Destiny.Definitions.Traits.DestinyTraitDefinition")]
+    [Destiny2Definition<Destiny.Definitions.Traits.DestinyTraitDefinition>("Destiny.Definitions.Traits.DestinyTraitDefinition")]
     [JsonPropertyName("traitHashes")]
-    public List<uint> TraitHashes { get; set; }
+    public uint[]? TraitHashes { get; set; }
 
     /// <summary>
     ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under multiple parents.
     /// </summary>
-    [Destiny2DefinitionList<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
+    [Destiny2Definition<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
     [JsonPropertyName("parentNodeHashes")]
-    public List<uint> ParentNodeHashes { get; set; }
+    public uint[]? ParentNodeHashes { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
@@ -113,17 +113,17 @@ public class DestinyPresentationNodeDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint? Hash { get; set; }
+    public uint Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int? Index { get; set; }
+    public int Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool? Redacted { get; set; }
+    public bool Redacted { get; set; }
 }

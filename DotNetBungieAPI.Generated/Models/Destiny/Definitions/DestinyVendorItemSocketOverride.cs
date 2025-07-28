@@ -18,12 +18,12 @@ public class DestinyVendorItemSocketOverride
     ///     If this is greater than -1, the number of randomized plugs on this socket will be set to this quantity instead of whatever it's set to by default.
     /// </summary>
     [JsonPropertyName("randomizedOptionsCount")]
-    public int? RandomizedOptionsCount { get; set; }
+    public int RandomizedOptionsCount { get; set; }
 
     /// <summary>
     ///     This appears to be used to select which socket ultimately gets the override defined here.
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.Sockets.DestinySocketTypeDefinition>("Destiny.Definitions.Sockets.DestinySocketTypeDefinition")]
     [JsonPropertyName("socketTypeHash")]
-    public uint? SocketTypeHash { get; set; }
+    public uint SocketTypeHash { get; set; }
 }

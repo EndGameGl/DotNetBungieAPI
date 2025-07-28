@@ -23,25 +23,25 @@ public class DestinyNodeStepDefinition
     ///     Unfortunately, this is the closest thing we have to an identifier for the Step: steps are not provided a content version agnostic identifier. This means that, when you are dealing with talent nodes, you will need to first ensure that you have the latest version of content.
     /// </summary>
     [JsonPropertyName("stepIndex")]
-    public int? StepIndex { get; set; }
+    public int StepIndex { get; set; }
 
     /// <summary>
     ///     The hash of this node step. Unfortunately, while it can be used to uniquely identify the step within a node, it is also content version dependent and should not be relied on without ensuring you have the latest vesion of content.
     /// </summary>
     [JsonPropertyName("nodeStepHash")]
-    public uint? NodeStepHash { get; set; }
+    public uint NodeStepHash { get; set; }
 
     /// <summary>
     ///     If you can interact with this node in some way, this is the localized description of that interaction.
     /// </summary>
     [JsonPropertyName("interactionDescription")]
-    public string? InteractionDescription { get; set; }
+    public string InteractionDescription { get; set; }
 
     /// <summary>
     ///     An enum representing a damage type granted by activating this step, if any.
     /// </summary>
     [JsonPropertyName("damageType")]
-    public Destiny.DamageType? DamageType { get; set; }
+    public Destiny.DamageType DamageType { get; set; }
 
     /// <summary>
     ///     If the step provides a damage type, this will be the hash identifier used to look up the damage type's DestinyDamageTypeDefinition.
@@ -62,7 +62,7 @@ public class DestinyNodeStepDefinition
     ///     I continue to return this in case it is used in the future: if true and this step is the current step in the node, you are allowed to activate the node a second time to receive the benefits of the next step in the node, which will then become the active step.
     /// </summary>
     [JsonPropertyName("canActivateNextStep")]
-    public bool? CanActivateNextStep { get; set; }
+    public bool CanActivateNextStep { get; set; }
 
     /// <summary>
     ///     The stepIndex of the next step in the talent node, or -1 if this is the last step or if the next step to be chosen is random.
@@ -70,20 +70,20 @@ public class DestinyNodeStepDefinition
     ///     This doesn't really matter anymore unless canActivateNextStep begins to be used again.
     /// </summary>
     [JsonPropertyName("nextStepIndex")]
-    public int? NextStepIndex { get; set; }
+    public int NextStepIndex { get; set; }
 
     /// <summary>
     ///     If true, the next step to be chosen is random, and if you're allowed to activate the next step. (if canActivateNextStep = true)
     /// </summary>
     [JsonPropertyName("isNextStepRandom")]
-    public bool? IsNextStepRandom { get; set; }
+    public bool IsNextStepRandom { get; set; }
 
     /// <summary>
     ///     The list of hash identifiers for Perks (DestinySandboxPerkDefinition) that are applied when this step is active. Perks provide a variety of benefits and modifications - examine DestinySandboxPerkDefinition to learn more.
     /// </summary>
-    [Destiny2DefinitionList<Destiny.Definitions.DestinySandboxPerkDefinition>("Destiny.Definitions.DestinySandboxPerkDefinition")]
+    [Destiny2Definition<Destiny.Definitions.DestinySandboxPerkDefinition>("Destiny.Definitions.DestinySandboxPerkDefinition")]
     [JsonPropertyName("perkHashes")]
-    public List<uint> PerkHashes { get; set; }
+    public uint[]? PerkHashes { get; set; }
 
     /// <summary>
     ///     When the Talent Grid's progression reaches this value, the circular "progress bar" that surrounds the talent node should be shown.
@@ -91,20 +91,20 @@ public class DestinyNodeStepDefinition
     ///     This also indicates the lower bound of said progress bar, with the upper bound being the progress required to reach activationRequirement.gridLevel. (at some point I should precalculate the upper bound and put it in the definition to save people time)
     /// </summary>
     [JsonPropertyName("startProgressionBarAtProgress")]
-    public int? StartProgressionBarAtProgress { get; set; }
+    public int StartProgressionBarAtProgress { get; set; }
 
     /// <summary>
     ///     When the step provides stat benefits on the item or character, this is the list of hash identifiers for stats (DestinyStatDefinition) that are provided.
     /// </summary>
-    [Destiny2DefinitionList<Destiny.Definitions.DestinyStatDefinition>("Destiny.Definitions.DestinyStatDefinition")]
+    [Destiny2Definition<Destiny.Definitions.DestinyStatDefinition>("Destiny.Definitions.DestinyStatDefinition")]
     [JsonPropertyName("statHashes")]
-    public List<uint> StatHashes { get; set; }
+    public uint[]? StatHashes { get; set; }
 
     /// <summary>
     ///     If this is true, the step affects the item's Quality in some way. See DestinyInventoryItemDefinition for more information about the meaning of Quality. I already made a joke about Zen and the Art of Motorcycle Maintenance elsewhere in the documentation, so I will avoid doing it again. Oops too late
     /// </summary>
     [JsonPropertyName("affectsQuality")]
-    public bool? AffectsQuality { get; set; }
+    public bool AffectsQuality { get; set; }
 
     /// <summary>
     ///     In Destiny 1, the Armory's Perk Filtering was driven by a concept of TalentNodeStepGroups: categorizations of talent nodes based on their functionality. While the Armory isn't a BNet-facing thing for now, and the new Armory will need to account for Sockets rather than Talent Nodes, this categorization capability feels useful enough to still keep around.
@@ -116,11 +116,11 @@ public class DestinyNodeStepDefinition
     ///     If true, this step can affect the level of the item. See DestinyInventoryItemDefintion for more information about item levels and their effect on stats.
     /// </summary>
     [JsonPropertyName("affectsLevel")]
-    public bool? AffectsLevel { get; set; }
+    public bool AffectsLevel { get; set; }
 
     /// <summary>
     ///     If this step is activated, this will be a list of information used to replace socket items with new Plugs. See DestinyInventoryItemDefinition for more information about sockets and plugs.
     /// </summary>
     [JsonPropertyName("socketReplacements")]
-    public List<Destiny.Definitions.DestinyNodeSocketReplaceResponse> SocketReplacements { get; set; }
+    public Destiny.Definitions.DestinyNodeSocketReplaceResponse[]? SocketReplacements { get; set; }
 }

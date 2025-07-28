@@ -9,5 +9,5 @@ public class DestinyVendorReceiptsComponent
     ///     The receipts for refundable purchases made at a vendor.
     /// </summary>
     [JsonPropertyName("receipts")]
-    public List<Destiny.Vendors.DestinyVendorReceipt> Receipts { get; set; }
+    public Destiny.Vendors.DestinyVendorReceipt[]? Receipts { get; set; }
 }

@@ -6,11 +6,11 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Records;
 public class DestinyRecordExpirationBlock
 {
     [JsonPropertyName("hasExpiration")]
-    public bool? HasExpiration { get; set; }
+    public bool HasExpiration { get; set; }
 
     [JsonPropertyName("description")]
-    public string? Description { get; set; }
+    public string Description { get; set; }
 
     [JsonPropertyName("icon")]
-    public string? Icon { get; set; }
+    public string Icon { get; set; }
 }

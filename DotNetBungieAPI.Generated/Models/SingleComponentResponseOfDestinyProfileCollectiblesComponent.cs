@@ -6,7 +6,7 @@ public class SingleComponentResponseOfDestinyProfileCollectiblesComponent
     public Destiny.Components.Collectibles.DestinyProfileCollectiblesComponent? Data { get; set; }
 
     [JsonPropertyName("privacy")]
-    public Components.ComponentPrivacySetting? Privacy { get; set; }
+    public Components.ComponentPrivacySetting Privacy { get; set; }
 
     /// <summary>
     ///     If true, this component is disabled.

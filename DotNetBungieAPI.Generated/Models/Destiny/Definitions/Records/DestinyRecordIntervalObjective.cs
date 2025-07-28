@@ -4,8 +4,8 @@ public class DestinyRecordIntervalObjective
 {
     [Destiny2Definition<Destiny.Definitions.DestinyObjectiveDefinition>("Destiny.Definitions.DestinyObjectiveDefinition")]
     [JsonPropertyName("intervalObjectiveHash")]
-    public uint? IntervalObjectiveHash { get; set; }
+    public uint IntervalObjectiveHash { get; set; }
 
     [JsonPropertyName("intervalScoreValue")]
-    public int? IntervalScoreValue { get; set; }
+    public int IntervalScoreValue { get; set; }
 }

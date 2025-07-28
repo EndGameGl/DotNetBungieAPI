@@ -10,5 +10,5 @@ public class DestinyItemSocketEntryPlugItemDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("plugItemHash")]
-    public uint? PlugItemHash { get; set; }
+    public uint PlugItemHash { get; set; }
 }

@@ -6,34 +6,34 @@ namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 public class GroupV2Card
 {
     [JsonPropertyName("groupId")]
-    public long? GroupId { get; set; }
+    public long GroupId { get; set; }
 
     [JsonPropertyName("name")]
-    public string? Name { get; set; }
+    public string Name { get; set; }
 
     [JsonPropertyName("groupType")]
-    public GroupsV2.GroupType? GroupType { get; set; }
+    public GroupsV2.GroupType GroupType { get; set; }
 
     [JsonPropertyName("creationDate")]
-    public DateTime? CreationDate { get; set; }
+    public DateTime CreationDate { get; set; }
 
     [JsonPropertyName("about")]
-    public string? About { get; set; }
+    public string About { get; set; }
 
     [JsonPropertyName("motto")]
-    public string? Motto { get; set; }
+    public string Motto { get; set; }
 
     [JsonPropertyName("memberCount")]
-    public int? MemberCount { get; set; }
+    public int MemberCount { get; set; }
 
     [JsonPropertyName("locale")]
-    public string? Locale { get; set; }
+    public string Locale { get; set; }
 
     [JsonPropertyName("membershipOption")]
-    public GroupsV2.MembershipOption? MembershipOption { get; set; }
+    public GroupsV2.MembershipOption MembershipOption { get; set; }
 
     [JsonPropertyName("capabilities")]
-    public GroupsV2.Capabilities? Capabilities { get; set; }
+    public GroupsV2.Capabilities Capabilities { get; set; }
 
     [JsonPropertyName("remoteGroupId")]
     public long? RemoteGroupId { get; set; }
@@ -42,8 +42,8 @@ public class GroupV2Card
     public GroupsV2.GroupV2ClanInfo? ClanInfo { get; set; }
 
     [JsonPropertyName("avatarPath")]
-    public string? AvatarPath { get; set; }
+    public string AvatarPath { get; set; }
 
     [JsonPropertyName("theme")]
-    public string? Theme { get; set; }
+    public string Theme { get; set; }
 }

@@ -8,7 +8,7 @@ public interface IMiscApi
 
     Task<ApiResponse<Dictionary<string, Common.Models.CoreSystem>>> GetUserSystemOverrides();
 
-    Task<ApiResponse<List<GlobalAlert>>> GetGlobalAlerts(
+    Task<ApiResponse<GlobalAlert[]>> GetGlobalAlerts(
         bool includestreaming
     );
 

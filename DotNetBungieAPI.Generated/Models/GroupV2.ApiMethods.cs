@@ -4,14 +4,14 @@ public interface IGroupV2Api
 {
     Task<ApiResponse<Dictionary<int, string>>> GetAvailableAvatars();
 
-    Task<ApiResponse<List<Config.GroupTheme>>> GetAvailableThemes();
+    Task<ApiResponse<Config.GroupTheme[]>> GetAvailableThemes();
 
     Task<ApiResponse<bool>> GetUserClanInviteSetting(
         BungieMembershipType mType,
         string authToken
     );
 
-    Task<ApiResponse<List<GroupsV2.GroupV2Card>>> GetRecommendedGroups(
+    Task<ApiResponse<GroupsV2.GroupV2Card[]>> GetRecommendedGroups(
         GroupsV2.GroupDateRange createDateRange,
         GroupsV2.GroupType groupType,
         string authToken
@@ -34,7 +34,7 @@ public interface IGroupV2Api
         GroupsV2.GroupNameSearchRequest body
     );
 
-    Task<ApiResponse<List<GroupsV2.GroupOptionalConversation>>> GetGroupOptionalConversations(
+    Task<ApiResponse<GroupsV2.GroupOptionalConversation[]>> GetGroupOptionalConversations(
         long groupId
     );
 
@@ -141,19 +141,19 @@ public interface IGroupV2Api
         string authToken
     );
 
-    Task<ApiResponse<List<Entities.EntityActionResult>>> ApproveAllPending(
+    Task<ApiResponse<Entities.EntityActionResult[]>> ApproveAllPending(
         long groupId,
         GroupsV2.GroupApplicationRequest body,
         string authToken
     );
 
-    Task<ApiResponse<List<Entities.EntityActionResult>>> DenyAllPending(
+    Task<ApiResponse<Entities.EntityActionResult[]>> DenyAllPending(
         long groupId,
         GroupsV2.GroupApplicationRequest body,
         string authToken
     );
 
-    Task<ApiResponse<List<Entities.EntityActionResult>>> ApprovePendingForList(
+    Task<ApiResponse<Entities.EntityActionResult[]>> ApprovePendingForList(
         long groupId,
         GroupsV2.GroupApplicationListRequest body,
         string authToken
@@ -167,7 +167,7 @@ public interface IGroupV2Api
         string authToken
     );
 
-    Task<ApiResponse<List<Entities.EntityActionResult>>> DenyPendingForList(
+    Task<ApiResponse<Entities.EntityActionResult[]>> DenyPendingForList(
         long groupId,
         GroupsV2.GroupApplicationListRequest body,
         string authToken

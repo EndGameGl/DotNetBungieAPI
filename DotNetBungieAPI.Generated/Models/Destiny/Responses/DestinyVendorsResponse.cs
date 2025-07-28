@@ -45,7 +45,7 @@ public class DestinyVendorsResponse
     ///     The components contained inside are themselves keyed by the vendorSaleIndex, and will have whatever item-level components you requested (Sockets, Stats, Instance data etc...) per item being sold by the vendor.
     /// </summary>
     [JsonPropertyName("itemComponents")]
-    public Dictionary<uint, DestinyVendorItemComponentSetOfint32> ItemComponents { get; set; }
+    public Dictionary<uint, DestinyVendorItemComponentSetOfint32>? ItemComponents { get; set; }
 
     /// <summary>
     ///     A "lookup" convenience component that can be used to quickly check if the character has access to items that can be used for purchasing.

@@ -8,16 +8,16 @@ public class DestinyPublicActivityStatus
     /// <summary>
     ///     Active Challenges for the activity, if any - represented as hashes for DestinyObjectiveDefinitions.
     /// </summary>
-    [Destiny2DefinitionList<Destiny.Definitions.DestinyObjectiveDefinition>("Destiny.Definitions.DestinyObjectiveDefinition")]
+    [Destiny2Definition<Destiny.Definitions.DestinyObjectiveDefinition>("Destiny.Definitions.DestinyObjectiveDefinition")]
     [JsonPropertyName("challengeObjectiveHashes")]
-    public List<uint> ChallengeObjectiveHashes { get; set; }
+    public uint[]? ChallengeObjectiveHashes { get; set; }
 
     /// <summary>
     ///     The active modifiers on this activity, if any - represented as hashes for DestinyActivityModifierDefinitions.
     /// </summary>
-    [Destiny2DefinitionList<Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition>("Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition")]
+    [Destiny2Definition<Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition>("Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition")]
     [JsonPropertyName("modifierHashes")]
-    public List<uint> ModifierHashes { get; set; }
+    public uint[]? ModifierHashes { get; set; }
 
     /// <summary>
     ///     If the activity itself provides any specific "mock" rewards, this will be the items and their quantity.
@@ -27,5 +27,5 @@ public class DestinyPublicActivityStatus
     ///     These are often pointers to fake items that look good in a tooltip, but represent an abstract concept of what you will get for a reward rather than the specific items you may obtain.
     /// </summary>
     [JsonPropertyName("rewardTooltipItems")]
-    public List<Destiny.DestinyItemQuantity> RewardTooltipItems { get; set; }
+    public Destiny.DestinyItemQuantity[]? RewardTooltipItems { get; set; }
 }

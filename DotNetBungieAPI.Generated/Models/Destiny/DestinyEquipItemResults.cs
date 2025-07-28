@@ -6,5 +6,5 @@ namespace DotNetBungieAPI.Generated.Models.Destiny;
 public class DestinyEquipItemResults
 {
     [JsonPropertyName("equipResults")]
-    public List<Destiny.DestinyEquipItemResult> EquipResults { get; set; }
+    public Destiny.DestinyEquipItemResult[]? EquipResults { get; set; }
 }

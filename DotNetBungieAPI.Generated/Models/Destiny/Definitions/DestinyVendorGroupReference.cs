@@ -7,5 +7,5 @@ public class DestinyVendorGroupReference
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyVendorGroupDefinition>("Destiny.Definitions.DestinyVendorGroupDefinition")]
     [JsonPropertyName("vendorGroupHash")]
-    public uint? VendorGroupHash { get; set; }
+    public uint VendorGroupHash { get; set; }
 }

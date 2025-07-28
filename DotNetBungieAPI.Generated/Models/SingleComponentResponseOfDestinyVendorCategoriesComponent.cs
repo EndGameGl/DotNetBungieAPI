@@ -6,7 +6,7 @@ public class SingleComponentResponseOfDestinyVendorCategoriesComponent
     public Destiny.Entities.Vendors.DestinyVendorCategoriesComponent? Data { get; set; }
 
     [JsonPropertyName("privacy")]
-    public Components.ComponentPrivacySetting? Privacy { get; set; }
+    public Components.ComponentPrivacySetting Privacy { get; set; }
 
     /// <summary>
     ///     If true, this component is disabled.

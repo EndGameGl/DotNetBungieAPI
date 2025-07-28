@@ -22,7 +22,7 @@ public class DestinyItemSocketState
     ///     This flag indicates whether the plug is active and providing its benefits.
     /// </summary>
     [JsonPropertyName("isEnabled")]
-    public bool? IsEnabled { get; set; }
+    public bool IsEnabled { get; set; }
 
     /// <summary>
     ///     A plug may theoretically provide benefits but not be visible - for instance, some older items use a plug's damage type perk to modify their own damage type. These, though they are not visible, still affect the item. This field indicates that state.
@@ -30,11 +30,11 @@ public class DestinyItemSocketState
     ///     An invisible plug, while it provides benefits if it is Enabled, cannot be directly modified by the user.
     /// </summary>
     [JsonPropertyName("isVisible")]
-    public bool? IsVisible { get; set; }
+    public bool IsVisible { get; set; }
 
     /// <summary>
     ///     If a plug is inserted but not enabled, this will be populated with indexes into the plug item definition's plug.enabledRules property, so that you can show the reasons why it is not enabled.
     /// </summary>
     [JsonPropertyName("enableFailIndexes")]
-    public List<int> EnableFailIndexes { get; set; }
+    public int[]? EnableFailIndexes { get; set; }
 }

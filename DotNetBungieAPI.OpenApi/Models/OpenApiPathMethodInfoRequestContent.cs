@@ -1,9 +1,10 @@
 ﻿using System.Text.Json.Serialization;
+using DotNetBungieAPI.OpenApi.Models.ComponentSchemas;
 
 namespace DotNetBungieAPI.OpenApi.Models;
 
 public class OpenApiPathMethodInfoRequestContent
 {
     [JsonPropertyName("schema")]
-    public OpenApiComponentSchema Schema { get; set; }
+    public required IOpenApiComponentSchema Schema { get; init; }
 }

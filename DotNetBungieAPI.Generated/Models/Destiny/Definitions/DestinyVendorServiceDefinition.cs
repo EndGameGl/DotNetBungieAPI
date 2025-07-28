@@ -9,5 +9,5 @@ public class DestinyVendorServiceDefinition
     ///     The localized name of a service provided.
     /// </summary>
     [JsonPropertyName("name")]
-    public string? Name { get; set; }
+    public string Name { get; set; }
 }

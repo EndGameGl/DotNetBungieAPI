@@ -9,7 +9,7 @@ public class DestinyBubbleDefinition
     ///     The identifier for the bubble: only guaranteed to be unique within the Destination.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint? Hash { get; set; }
+    public uint Hash { get; set; }
 
     /// <summary>
     ///     The display properties of this bubble, so you don't have to look them up in a separate list anymore.

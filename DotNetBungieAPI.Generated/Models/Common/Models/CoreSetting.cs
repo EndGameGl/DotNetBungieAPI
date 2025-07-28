@@ -3,20 +3,20 @@ namespace DotNetBungieAPI.Generated.Models.Common.Models;
 public class CoreSetting
 {
     [JsonPropertyName("identifier")]
-    public string? Identifier { get; set; }
+    public string Identifier { get; set; }
 
     [JsonPropertyName("isDefault")]
-    public bool? IsDefault { get; set; }
+    public bool IsDefault { get; set; }
 
     [JsonPropertyName("displayName")]
-    public string? DisplayName { get; set; }
+    public string DisplayName { get; set; }
 
     [JsonPropertyName("summary")]
-    public string? Summary { get; set; }
+    public string Summary { get; set; }
 
     [JsonPropertyName("imagePath")]
-    public string? ImagePath { get; set; }
+    public string ImagePath { get; set; }
 
     [JsonPropertyName("childSettings")]
-    public List<Common.Models.CoreSetting> ChildSettings { get; set; }
+    public Common.Models.CoreSetting[]? ChildSettings { get; set; }
 }

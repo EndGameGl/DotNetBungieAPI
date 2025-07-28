@@ -7,10 +7,10 @@ public class DestinyActivitySelectableSkull
     public uint? RequiredTraitHash { get; set; }
 
     [JsonPropertyName("requiredTraitExistence")]
-    public bool? RequiredTraitExistence { get; set; }
+    public bool RequiredTraitExistence { get; set; }
 
     [JsonPropertyName("isEmptySkull")]
-    public bool? IsEmptySkull { get; set; }
+    public bool IsEmptySkull { get; set; }
 
     [Destiny2Definition<Destiny.Definitions.Activities.DestinyActivityLoadoutRestrictionDefinition>("Destiny.Definitions.Activities.DestinyActivityLoadoutRestrictionDefinition")]
     [JsonPropertyName("loadoutRestrictionHash")]

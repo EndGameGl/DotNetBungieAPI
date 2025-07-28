@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using DotNetBungieAPI.OpenApi.CodeGeneration;
 using DotNetBungieAPI.OpenApi.Extensions;
-using DotNetBungieAPI.OpenApi.Metadata;
+using DotNetBungieAPI.OpenApi.Models.ComponentSchemas;
 
 namespace DotNetBungieAPI.OpenApi.CSharp;
 
@@ -13,11 +13,40 @@ public class CSharpClassGenerator : ModelGeneratorBase
 
     public override string FileExtension => "cs";
 
-    public override async Task GenerateDataForObjectType(ObjectTypeData typeData)
+    public override async Task GenerateFromSchema(string typeName, IOpenApiComponentSchema schema)
     {
-        if (typeData.FullTypeName.Any(x => x == '.'))
+        if (schema.AsEnumType(out var enumType))
         {
-            var pathData = typeData.FullTypeName.Split('.')[0..^1];
+            await GenerateFromEnumSchema(typeName, enumType);
+            return;
+        }
+
+        if (schema.AsObjectType(out var objectType))
+        {
+            await GenerateFromObjectSchema(typeName, objectType);
+            return;
+        }
+
+        if (schema is OpenApiEmptyObjectComponentSchema)
+        {
+            await GenerateEmptyClass(typeName);
+            return;
+        }
+    }
+
+    public override bool CanHandle(IOpenApiComponentSchema schema)
+    {
+        return schema
+            is OpenApiObjectComponentSchema
+                or OpenApiEnumComponentSchema
+                or OpenApiEmptyObjectComponentSchema;
+    }
+
+    private async Task GenerateFromEnumSchema(string typeName, OpenApiEnumComponentSchema schema)
+    {
+        if (typeName.Contains('.'))
+        {
+            var pathData = typeName.Split('.')[0..^1];
             var stringBuilder = new StringBuilder();
             stringBuilder.Append(NamespaceBase);
             foreach (var pathDataEntry in pathData)
@@ -35,58 +64,35 @@ public class CSharpClassGenerator : ModelGeneratorBase
 
         await WriteLineAsync();
 
-        if (typeData.Description is not null)
+        if (schema.Description is not null)
         {
-            await WriteComment(false, typeData.Description);
+            await WriteComment(false, schema.Description);
         }
 
-        await WriteLineAsync($"public class {typeData.TypeName}");
+        if (schema.EnumIsBitmask)
+        {
+            await WriteLineAsync("[System.Flags]");
+        }
+
+        await WriteLineAsync(
+            $"public enum {typeName.Split('.').Last()} : {Resources.TypeMappings[schema.Format ?? schema.Type]}"
+        );
+
         await WriteLineAsync('{');
 
-        var totalValues = typeData.Properties.Count;
+        var totalValues = schema.Enum.Length;
         var amountCheckValue = totalValues - 1;
         for (var i = 0; i < totalValues; i++)
         {
-            var propertyTypeData = typeData.Properties[i];
-            if (propertyTypeData.Description is not null)
+            var enumValueData = schema.EnumValues[i];
+            if (enumValueData.Description is not null)
             {
-                await WriteComment(true, propertyTypeData.Description);
-            }
-
-            if (propertyTypeData.IsHashMap)
-            {
-                if (propertyTypeData.MappedToDefinition)
-                {
-                    await WriteLineAsync(
-                        $"{Indent}[Destiny2DefinitionDictionaryKey<{propertyTypeData.MappedDefinitionTypeReference!.GetFullTypeName()}>(\"{propertyTypeData.MappedDefinitionTypeReference!.GetFullTypeName()}\")]"
-                    );
-                }
-            }
-
-            if (propertyTypeData.MappedToDefinition)
-            {
-                if (propertyTypeData.IsValue)
-                {
-                    await WriteLineAsync(
-                        $"{Indent}[Destiny2Definition<{propertyTypeData.MappedDefinitionTypeReference!.GetFullTypeName()}>(\"{propertyTypeData.MappedDefinitionTypeReference!.GetFullTypeName()}\")]"
-                    );
-                }
-                else if (propertyTypeData.IsCollection)
-                {
-                    await WriteLineAsync(
-                        $"{Indent}[Destiny2DefinitionList<{propertyTypeData.MappedDefinitionTypeReference!.GetFullTypeName()}>(\"{propertyTypeData.MappedDefinitionTypeReference!.GetFullTypeName()}\")]"
-                    );
-                }
+                await WriteComment(true, enumValueData.Description);
             }
 
             await WriteLineAsync(
-                $"{Indent}[JsonPropertyName(\"{propertyTypeData.OriginPropertyName}\")]"
+                $"{Indent}{enumValueData.Identifier} = {enumValueData.NumericValue}{(i != amountCheckValue ? "," : string.Empty)}"
             );
-
-            await WriteLineAsync(
-                $"{Indent}public {propertyTypeData.GetCSharpType()}{(propertyTypeData.IsNullable ? "?" : string.Empty)} {propertyTypeData.OriginPropertyName.GetCSharpPropertyName()} {{ get; set; }}"
-            );
-
             if (i != amountCheckValue)
             {
                 await WriteLineAsync();
@@ -96,11 +102,14 @@ public class CSharpClassGenerator : ModelGeneratorBase
         await WriteLineAsync('}');
     }
 
-    public override async Task GenerateDataForEnumType(EnumTypeData typeData)
+    private async Task GenerateFromObjectSchema(
+        string typeName,
+        OpenApiObjectComponentSchema schema
+    )
     {
-        if (typeData.FullTypeName.Any(x => x == '.'))
+        if (typeName.Contains('.'))
         {
-            var pathData = typeData.FullTypeName.Split('.')[0..^1];
+            var pathData = typeName.Split('.')[0..^1];
             var stringBuilder = new StringBuilder();
             stringBuilder.Append(NamespaceBase);
             foreach (var pathDataEntry in pathData)
@@ -118,40 +127,93 @@ public class CSharpClassGenerator : ModelGeneratorBase
 
         await WriteLineAsync();
 
-        if (typeData.Description is not null)
+        if (schema.Description is not null)
         {
-            await WriteComment(false, typeData.Description);
+            await WriteComment(false, schema.Description);
         }
 
-        if (typeData.IsFlags)
-        {
-            await WriteLineAsync("[System.Flags]");
-        }
-
-        await WriteLineAsync(
-            $"public enum {typeData.TypeName} : {Resources.TypeMappings[typeData.Format]}"
-        );
-
+        await WriteLineAsync($"public class {typeName.Split('.').Last()}");
         await WriteLineAsync('{');
 
-        var totalValues = typeData.Values.Count;
+        var totalValues = schema.Properties.Count;
         var amountCheckValue = totalValues - 1;
-        for (var i = 0; i < totalValues; i++)
+
+        var i = 0;
+        foreach (var (propertyName, propertySchema) in schema.Properties)
         {
-            var enumValueData = typeData.Values[i];
-            if (enumValueData.Description is not null)
+            if (propertySchema is IHasDescription { Description: not null } description)
             {
-                await WriteComment(true, enumValueData.Description);
+                await WriteComment(true, description.Description);
             }
 
+            if (propertySchema is IMappedDefinition { MappedDefinition: not null } mappedDefinition)
+            {
+                await WriteLineAsync(
+                    $"{Indent}[Destiny2Definition<{mappedDefinition.MappedDefinition.GetReferencedPath()}>(\"{mappedDefinition.MappedDefinition.GetReferencedPath()}\")]"
+                );
+            }
+
+            await WriteLineAsync($"{Indent}[JsonPropertyName(\"{propertyName}\")]");
+
+            string propertyType;
+
+            if (
+                propertySchema.AsEnumType(out var fullEnumShema)
+                && TryFindMatchingSchema(fullEnumShema, out var enumPropertySchema)
+            )
+            {
+                propertyType = enumPropertySchema;
+            }
+            else
+            {
+                propertyType = propertySchema.GetCSharpType();
+            }
+
+            var nullableSymbol = propertySchema switch
+            {
+                ICanBeNullable { Nullable: true } or not ICanBeNullable => "?",
+                _ => string.Empty
+            };
+
             await WriteLineAsync(
-                $"{Indent}{enumValueData.Name} = {enumValueData.Value}{(i != amountCheckValue ? "," : string.Empty)}"
+                $"{Indent}public {propertyType}{nullableSymbol} {propertyName.GetCSharpPropertyName()} {{ get; set; }}"
             );
+
             if (i != amountCheckValue)
             {
                 await WriteLineAsync();
             }
+
+            i++;
         }
+
+        await WriteLineAsync('}');
+    }
+
+    private async Task GenerateEmptyClass(string typeName)
+    {
+        if (typeName.Contains('.'))
+        {
+            var pathData = typeName.Split('.')[0..^1];
+            var stringBuilder = new StringBuilder();
+            stringBuilder.Append(NamespaceBase);
+            foreach (var pathDataEntry in pathData)
+            {
+                stringBuilder.Append($".{pathDataEntry}");
+            }
+
+            stringBuilder.Append(';');
+            await WriteLineAsync(stringBuilder.ToString());
+        }
+        else
+        {
+            await WriteLineAsync(NameSpace);
+        }
+
+        await WriteLineAsync();
+
+        await WriteLineAsync($"public class {typeName.Split('.').Last()}");
+        await WriteLineAsync('{');
 
         await WriteLineAsync('}');
     }

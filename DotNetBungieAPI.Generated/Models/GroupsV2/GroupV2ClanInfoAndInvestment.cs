@@ -6,10 +6,10 @@ namespace DotNetBungieAPI.Generated.Models.GroupsV2;
 public class GroupV2ClanInfoAndInvestment
 {
     [JsonPropertyName("d2ClanProgressions")]
-    public Dictionary<uint, Destiny.DestinyProgression> D2ClanProgressions { get; set; }
+    public Dictionary<uint, Destiny.DestinyProgression>? D2ClanProgressions { get; set; }
 
     [JsonPropertyName("clanCallsign")]
-    public string? ClanCallsign { get; set; }
+    public string ClanCallsign { get; set; }
 
     [JsonPropertyName("clanBannerData")]
     public GroupsV2.ClanBanner? ClanBannerData { get; set; }

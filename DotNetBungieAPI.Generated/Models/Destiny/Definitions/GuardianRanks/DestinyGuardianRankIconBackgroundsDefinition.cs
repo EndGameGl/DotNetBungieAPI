@@ -3,41 +3,41 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.GuardianRanks;
 public class DestinyGuardianRankIconBackgroundsDefinition
 {
     [JsonPropertyName("backgroundEmptyBorderedImagePath")]
-    public string? BackgroundEmptyBorderedImagePath { get; set; }
+    public string BackgroundEmptyBorderedImagePath { get; set; }
 
     [JsonPropertyName("backgroundEmptyBlueGradientBorderedImagePath")]
-    public string? BackgroundEmptyBlueGradientBorderedImagePath { get; set; }
+    public string BackgroundEmptyBlueGradientBorderedImagePath { get; set; }
 
     [JsonPropertyName("backgroundFilledBlueBorderedImagePath")]
-    public string? BackgroundFilledBlueBorderedImagePath { get; set; }
+    public string BackgroundFilledBlueBorderedImagePath { get; set; }
 
     [JsonPropertyName("backgroundFilledBlueGradientBorderedImagePath")]
-    public string? BackgroundFilledBlueGradientBorderedImagePath { get; set; }
+    public string BackgroundFilledBlueGradientBorderedImagePath { get; set; }
 
     [JsonPropertyName("backgroundFilledBlueLowAlphaImagePath")]
-    public string? BackgroundFilledBlueLowAlphaImagePath { get; set; }
+    public string BackgroundFilledBlueLowAlphaImagePath { get; set; }
 
     [JsonPropertyName("backgroundFilledBlueMediumAlphaImagePath")]
-    public string? BackgroundFilledBlueMediumAlphaImagePath { get; set; }
+    public string BackgroundFilledBlueMediumAlphaImagePath { get; set; }
 
     [JsonPropertyName("backgroundFilledGrayMediumAlphaBorderedImagePath")]
-    public string? BackgroundFilledGrayMediumAlphaBorderedImagePath { get; set; }
+    public string BackgroundFilledGrayMediumAlphaBorderedImagePath { get; set; }
 
     [JsonPropertyName("backgroundFilledGrayHeavyAlphaBorderedImagePath")]
-    public string? BackgroundFilledGrayHeavyAlphaBorderedImagePath { get; set; }
+    public string BackgroundFilledGrayHeavyAlphaBorderedImagePath { get; set; }
 
     [JsonPropertyName("backgroundFilledWhiteMediumAlphaImagePath")]
-    public string? BackgroundFilledWhiteMediumAlphaImagePath { get; set; }
+    public string BackgroundFilledWhiteMediumAlphaImagePath { get; set; }
 
     [JsonPropertyName("backgroundFilledWhiteImagePath")]
-    public string? BackgroundFilledWhiteImagePath { get; set; }
+    public string BackgroundFilledWhiteImagePath { get; set; }
 
     [JsonPropertyName("backgroundPlateWhiteImagePath")]
-    public string? BackgroundPlateWhiteImagePath { get; set; }
+    public string BackgroundPlateWhiteImagePath { get; set; }
 
     [JsonPropertyName("backgroundPlateBlackImagePath")]
-    public string? BackgroundPlateBlackImagePath { get; set; }
+    public string BackgroundPlateBlackImagePath { get; set; }
 
     [JsonPropertyName("backgroundPlateBlackAlphaImagePath")]
-    public string? BackgroundPlateBlackAlphaImagePath { get; set; }
+    public string BackgroundPlateBlackAlphaImagePath { get; set; }
 }

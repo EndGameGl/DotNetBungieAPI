@@ -6,5 +6,5 @@ public class DestinyAggregateActivityResults
     ///     List of all activities the player has participated in.
     /// </summary>
     [JsonPropertyName("activities")]
-    public List<Destiny.HistoricalStats.DestinyAggregateActivityStats> Activities { get; set; }
+    public Destiny.HistoricalStats.DestinyAggregateActivityStats[]? Activities { get; set; }
 }

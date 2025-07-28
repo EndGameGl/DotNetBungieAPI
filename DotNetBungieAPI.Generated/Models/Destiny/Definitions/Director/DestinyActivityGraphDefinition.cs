@@ -17,37 +17,37 @@ public class DestinyActivityGraphDefinition
     ///     These represent the visual "nodes" on the map's view. These are the activities you can click on in the map.
     /// </summary>
     [JsonPropertyName("nodes")]
-    public List<Destiny.Definitions.Director.DestinyActivityGraphNodeDefinition> Nodes { get; set; }
+    public Destiny.Definitions.Director.DestinyActivityGraphNodeDefinition[]? Nodes { get; set; }
 
     /// <summary>
     ///     Represents one-off/special UI elements that appear on the map.
     /// </summary>
     [JsonPropertyName("artElements")]
-    public List<Destiny.Definitions.Director.DestinyActivityGraphArtElementDefinition> ArtElements { get; set; }
+    public Destiny.Definitions.Director.DestinyActivityGraphArtElementDefinition[]? ArtElements { get; set; }
 
     /// <summary>
     ///     Represents connections between graph nodes. However, it lacks context that we'd need to make good use of it.
     /// </summary>
     [JsonPropertyName("connections")]
-    public List<Destiny.Definitions.Director.DestinyActivityGraphConnectionDefinition> Connections { get; set; }
+    public Destiny.Definitions.Director.DestinyActivityGraphConnectionDefinition[]? Connections { get; set; }
 
     /// <summary>
     ///     Objectives can display on maps, and this is supposedly metadata for that. I have not had the time to analyze the details of what is useful within however: we could be missing important data to make this work. Expect this property to be expanded on later if possible.
     /// </summary>
     [JsonPropertyName("displayObjectives")]
-    public List<Destiny.Definitions.Director.DestinyActivityGraphDisplayObjectiveDefinition> DisplayObjectives { get; set; }
+    public Destiny.Definitions.Director.DestinyActivityGraphDisplayObjectiveDefinition[]? DisplayObjectives { get; set; }
 
     /// <summary>
     ///     Progressions can also display on maps, but similarly to displayObjectives we appear to lack some required information and context right now. We will have to look into it later and add more data if possible.
     /// </summary>
     [JsonPropertyName("displayProgressions")]
-    public List<Destiny.Definitions.Director.DestinyActivityGraphDisplayProgressionDefinition> DisplayProgressions { get; set; }
+    public Destiny.Definitions.Director.DestinyActivityGraphDisplayProgressionDefinition[]? DisplayProgressions { get; set; }
 
     /// <summary>
     ///     Represents links between this Activity Graph and other ones.
     /// </summary>
     [JsonPropertyName("linkedGraphs")]
-    public List<Destiny.Definitions.Director.DestinyLinkedGraphDefinition> LinkedGraphs { get; set; }
+    public Destiny.Definitions.Director.DestinyLinkedGraphDefinition[]? LinkedGraphs { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
@@ -55,17 +55,17 @@ public class DestinyActivityGraphDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint? Hash { get; set; }
+    public uint Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int? Index { get; set; }
+    public int Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool? Redacted { get; set; }
+    public bool Redacted { get; set; }
 }

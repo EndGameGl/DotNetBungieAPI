@@ -3,10 +3,10 @@ namespace DotNetBungieAPI.Generated.Models;
 public class DictionaryComponentResponseOfint32AndDestinyItemObjectivesComponent
 {
     [JsonPropertyName("data")]
-    public Dictionary<int, Destiny.Entities.Items.DestinyItemObjectivesComponent> Data { get; set; }
+    public Dictionary<int, Destiny.Entities.Items.DestinyItemObjectivesComponent>? Data { get; set; }
 
     [JsonPropertyName("privacy")]
-    public Components.ComponentPrivacySetting? Privacy { get; set; }
+    public Components.ComponentPrivacySetting Privacy { get; set; }
 
     /// <summary>
     ///     If true, this component is disabled.

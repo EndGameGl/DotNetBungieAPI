@@ -9,17 +9,17 @@ public class DestinyArtifactProfileScoped
 {
     [Destiny2Definition<Destiny.Definitions.Artifacts.DestinyArtifactDefinition>("Destiny.Definitions.Artifacts.DestinyArtifactDefinition")]
     [JsonPropertyName("artifactHash")]
-    public uint? ArtifactHash { get; set; }
+    public uint ArtifactHash { get; set; }
 
     [JsonPropertyName("pointProgression")]
     public Destiny.DestinyProgression? PointProgression { get; set; }
 
     [JsonPropertyName("pointsAcquired")]
-    public int? PointsAcquired { get; set; }
+    public int PointsAcquired { get; set; }
 
     [JsonPropertyName("powerBonusProgression")]
     public Destiny.DestinyProgression? PowerBonusProgression { get; set; }
 
     [JsonPropertyName("powerBonus")]
-    public int? PowerBonus { get; set; }
+    public int PowerBonus { get; set; }
 }

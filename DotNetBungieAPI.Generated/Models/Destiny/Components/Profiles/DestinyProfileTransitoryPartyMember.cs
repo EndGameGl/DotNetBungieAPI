@@ -11,24 +11,24 @@ public class DestinyProfileTransitoryPartyMember
     ///     The Membership ID that matches the party member.
     /// </summary>
     [JsonPropertyName("membershipId")]
-    public long? MembershipId { get; set; }
+    public long MembershipId { get; set; }
 
     /// <summary>
     ///     The identifier for the DestinyInventoryItemDefinition of the player's emblem.
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("emblemHash")]
-    public uint? EmblemHash { get; set; }
+    public uint EmblemHash { get; set; }
 
     /// <summary>
     ///     The player's last known display name.
     /// </summary>
     [JsonPropertyName("displayName")]
-    public string? DisplayName { get; set; }
+    public string DisplayName { get; set; }
 
     /// <summary>
     ///     A Flags Enumeration value indicating the states that the player is in relevant to being on a fireteam.
     /// </summary>
     [JsonPropertyName("status")]
-    public Destiny.DestinyPartyMemberStates? Status { get; set; }
+    public Destiny.DestinyPartyMemberStates Status { get; set; }
 }

@@ -11,5 +11,5 @@ public class DestinyInventoryComponent
     ///     The items in this inventory. If you care to bucket them, use the item's bucketHash property to group them.
     /// </summary>
     [JsonPropertyName("items")]
-    public List<Destiny.Entities.Items.DestinyItemComponent> Items { get; set; }
+    public Destiny.Entities.Items.DestinyItemComponent[]? Items { get; set; }
 }

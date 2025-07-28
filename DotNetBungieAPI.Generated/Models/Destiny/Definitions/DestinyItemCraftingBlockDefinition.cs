@@ -10,17 +10,17 @@ public class DestinyItemCraftingBlockDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("outputItemHash")]
-    public uint? OutputItemHash { get; set; }
+    public uint OutputItemHash { get; set; }
 
     /// <summary>
     ///     A list of socket type hashes that describes which sockets are required for crafting with this recipe.
     /// </summary>
-    [Destiny2DefinitionList<Destiny.Definitions.Sockets.DestinySocketTypeDefinition>("Destiny.Definitions.Sockets.DestinySocketTypeDefinition")]
+    [Destiny2Definition<Destiny.Definitions.Sockets.DestinySocketTypeDefinition>("Destiny.Definitions.Sockets.DestinySocketTypeDefinition")]
     [JsonPropertyName("requiredSocketTypeHashes")]
-    public List<uint> RequiredSocketTypeHashes { get; set; }
+    public uint[]? RequiredSocketTypeHashes { get; set; }
 
     [JsonPropertyName("failedRequirementStrings")]
-    public List<string> FailedRequirementStrings { get; set; }
+    public string[]? FailedRequirementStrings { get; set; }
 
     /// <summary>
     ///     A reference to the base material requirements for crafting with this recipe.
@@ -33,5 +33,5 @@ public class DestinyItemCraftingBlockDefinition
     ///     A list of 'bonus' socket plugs that may be available if certain requirements are met.
     /// </summary>
     [JsonPropertyName("bonusPlugs")]
-    public List<Destiny.Definitions.DestinyItemCraftingBlockBonusPlugDefinition> BonusPlugs { get; set; }
+    public Destiny.Definitions.DestinyItemCraftingBlockBonusPlugDefinition[]? BonusPlugs { get; set; }
 }

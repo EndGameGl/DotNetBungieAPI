@@ -6,8 +6,8 @@ public class GroupOptionalConversationEditRequest
     public bool? ChatEnabled { get; set; }
 
     [JsonPropertyName("chatName")]
-    public string? ChatName { get; set; }
+    public string ChatName { get; set; }
 
     [JsonPropertyName("chatSecurity")]
-    public int? ChatSecurity { get; set; }
+    public GroupsV2.ChatSecuritySetting? ChatSecurity { get; set; }
 }

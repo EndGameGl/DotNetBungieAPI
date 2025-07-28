@@ -6,7 +6,7 @@ public class SingleComponentResponseOfDestinyCharacterRenderComponent
     public Destiny.Entities.Characters.DestinyCharacterRenderComponent? Data { get; set; }
 
     [JsonPropertyName("privacy")]
-    public Components.ComponentPrivacySetting? Privacy { get; set; }
+    public Components.ComponentPrivacySetting Privacy { get; set; }
 
     /// <summary>
     ///     If true, this component is disabled.

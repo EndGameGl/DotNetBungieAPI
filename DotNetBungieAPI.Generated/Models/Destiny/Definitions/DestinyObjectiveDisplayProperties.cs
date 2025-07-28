@@ -13,5 +13,5 @@ public class DestinyObjectiveDisplayProperties
     ///     If true, the game shows this objective on item preview screens.
     /// </summary>
     [JsonPropertyName("displayOnItemPreviewScreen")]
-    public bool? DisplayOnItemPreviewScreen { get; set; }
+    public bool DisplayOnItemPreviewScreen { get; set; }
 }

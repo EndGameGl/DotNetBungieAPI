@@ -6,16 +6,16 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 public class DestinyVendorCategoryOverlayDefinition
 {
     [JsonPropertyName("choiceDescription")]
-    public string? ChoiceDescription { get; set; }
+    public string ChoiceDescription { get; set; }
 
     [JsonPropertyName("description")]
-    public string? Description { get; set; }
+    public string Description { get; set; }
 
     [JsonPropertyName("icon")]
-    public string? Icon { get; set; }
+    public string Icon { get; set; }
 
     [JsonPropertyName("title")]
-    public string? Title { get; set; }
+    public string Title { get; set; }
 
     /// <summary>
     ///     If this overlay has a currency item that it features, this is said featured item.

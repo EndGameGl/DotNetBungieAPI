@@ -12,7 +12,7 @@ public class DestinyItemStatsComponent
     /// <summary>
     ///     If the item has stats that it provides (damage, defense, etc...), it will be given here.
     /// </summary>
-    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.DestinyStatDefinition>("Destiny.Definitions.DestinyStatDefinition")]
+    [Destiny2Definition<Destiny.Definitions.DestinyStatDefinition>("Destiny.Definitions.DestinyStatDefinition")]
     [JsonPropertyName("stats")]
-    public Dictionary<uint, Destiny.DestinyStat> Stats { get; set; }
+    public Dictionary<uint, Destiny.DestinyStat>? Stats { get; set; }
 }

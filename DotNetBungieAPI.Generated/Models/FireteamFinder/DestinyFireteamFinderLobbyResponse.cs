@@ -3,13 +3,13 @@ namespace DotNetBungieAPI.Generated.Models.FireteamFinder;
 public class DestinyFireteamFinderLobbyResponse
 {
     [JsonPropertyName("lobbyId")]
-    public long? LobbyId { get; set; }
+    public long LobbyId { get; set; }
 
     [JsonPropertyName("revision")]
-    public int? Revision { get; set; }
+    public int Revision { get; set; }
 
     [JsonPropertyName("state")]
-    public FireteamFinder.DestinyFireteamFinderLobbyState? State { get; set; }
+    public FireteamFinder.DestinyFireteamFinderLobbyState State { get; set; }
 
     [JsonPropertyName("owner")]
     public FireteamFinder.DestinyFireteamFinderPlayerId? Owner { get; set; }
@@ -18,11 +18,11 @@ public class DestinyFireteamFinderLobbyResponse
     public FireteamFinder.DestinyFireteamFinderLobbySettings? Settings { get; set; }
 
     [JsonPropertyName("players")]
-    public List<FireteamFinder.DestinyFireteamFinderLobbyPlayer> Players { get; set; }
+    public FireteamFinder.DestinyFireteamFinderLobbyPlayer[]? Players { get; set; }
 
     [JsonPropertyName("listingId")]
-    public long? ListingId { get; set; }
+    public long ListingId { get; set; }
 
     [JsonPropertyName("createdDateTime")]
-    public DateTime? CreatedDateTime { get; set; }
+    public DateTime CreatedDateTime { get; set; }
 }

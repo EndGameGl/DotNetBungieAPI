@@ -6,7 +6,7 @@ public class DestinyHistoricalStatsValue
     ///     Unique ID for this stat
     /// </summary>
     [JsonPropertyName("statId")]
-    public string? StatId { get; set; }
+    public string StatId { get; set; }
 
     /// <summary>
     ///     Basic stat value.

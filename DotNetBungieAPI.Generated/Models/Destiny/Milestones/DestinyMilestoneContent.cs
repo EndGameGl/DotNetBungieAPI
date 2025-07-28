@@ -9,23 +9,23 @@ public class DestinyMilestoneContent
     ///     The "About this Milestone" text from the Firehose.
     /// </summary>
     [JsonPropertyName("about")]
-    public string? About { get; set; }
+    public string About { get; set; }
 
     /// <summary>
     ///     The Current Status of the Milestone, as driven by the Firehose.
     /// </summary>
     [JsonPropertyName("status")]
-    public string? Status { get; set; }
+    public string Status { get; set; }
 
     /// <summary>
     ///     A list of tips, provided by the Firehose.
     /// </summary>
     [JsonPropertyName("tips")]
-    public List<string> Tips { get; set; }
+    public string[]? Tips { get; set; }
 
     /// <summary>
     ///     If DPS has defined items related to this Milestone, they can categorize those items in the Firehose. That data will then be returned as item categories here.
     /// </summary>
     [JsonPropertyName("itemCategories")]
-    public List<Destiny.Milestones.DestinyMilestoneContentItemCategory> ItemCategories { get; set; }
+    public Destiny.Milestones.DestinyMilestoneContentItemCategory[]? ItemCategories { get; set; }
 }

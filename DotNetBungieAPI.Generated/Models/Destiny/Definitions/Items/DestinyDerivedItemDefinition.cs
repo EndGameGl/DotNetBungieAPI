@@ -15,29 +15,29 @@ public class DestinyDerivedItemDefinition
     ///     The name of the derived item.
     /// </summary>
     [JsonPropertyName("itemName")]
-    public string? ItemName { get; set; }
+    public string ItemName { get; set; }
 
     /// <summary>
     ///     Additional details about the derived item, in addition to the description.
     /// </summary>
     [JsonPropertyName("itemDetail")]
-    public string? ItemDetail { get; set; }
+    public string ItemDetail { get; set; }
 
     /// <summary>
     ///     A brief description of the item.
     /// </summary>
     [JsonPropertyName("itemDescription")]
-    public string? ItemDescription { get; set; }
+    public string ItemDescription { get; set; }
 
     /// <summary>
     ///     An icon for the item.
     /// </summary>
     [JsonPropertyName("iconPath")]
-    public string? IconPath { get; set; }
+    public string IconPath { get; set; }
 
     /// <summary>
     ///     If the item was derived from a "Preview Vendor", this will be an index into the DestinyVendorDefinition's itemList property. Otherwise, -1.
     /// </summary>
     [JsonPropertyName("vendorItemIndex")]
-    public int? VendorItemIndex { get; set; }
+    public int VendorItemIndex { get; set; }
 }

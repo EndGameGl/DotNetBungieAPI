@@ -15,7 +15,7 @@ public class DestinyItemStatBlockDefinition
     ///     NOTE: This is being manually mapped, because I happen to want it in a block that isn't going to directly create this derivative block.
     /// </summary>
     [JsonPropertyName("disablePrimaryStatDisplay")]
-    public bool? DisablePrimaryStatDisplay { get; set; }
+    public bool DisablePrimaryStatDisplay { get; set; }
 
     /// <summary>
     ///     If the item's stats are meant to be modified by a DestinyStatGroupDefinition, this will be the identifier for that definition.
@@ -31,15 +31,15 @@ public class DestinyItemStatBlockDefinition
     /// <para />
     ///     These stats are keyed by the DestinyStatDefinition's hash identifier for the stat that's found on the item.
     /// </summary>
-    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.DestinyStatDefinition>("Destiny.Definitions.DestinyStatDefinition")]
+    [Destiny2Definition<Destiny.Definitions.DestinyStatDefinition>("Destiny.Definitions.DestinyStatDefinition")]
     [JsonPropertyName("stats")]
-    public Dictionary<uint, Destiny.Definitions.DestinyInventoryItemStatDefinition> Stats { get; set; }
+    public Dictionary<uint, Destiny.Definitions.DestinyInventoryItemStatDefinition>? Stats { get; set; }
 
     /// <summary>
     ///     A quick and lazy way to determine whether any stat other than the "primary" stat is actually visible on the item. Items often have stats that we return in case people find them useful, but they're not part of the "Stat Group" and thus we wouldn't display them in our UI. If this is False, then we're not going to display any of these stats other than the primary one.
     /// </summary>
     [JsonPropertyName("hasDisplayableStats")]
-    public bool? HasDisplayableStats { get; set; }
+    public bool HasDisplayableStats { get; set; }
 
     /// <summary>
     ///     This stat is determined to be the "primary" stat, and can be looked up in the stats or any other stat collection related to the item.
@@ -48,5 +48,5 @@ public class DestinyItemStatBlockDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyStatDefinition>("Destiny.Definitions.DestinyStatDefinition")]
     [JsonPropertyName("primaryBaseStatHash")]
-    public uint? PrimaryBaseStatHash { get; set; }
+    public uint PrimaryBaseStatHash { get; set; }
 }

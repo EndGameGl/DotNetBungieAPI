@@ -6,8 +6,8 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Director;
 public class DestinyActivityGraphConnectionDefinition
 {
     [JsonPropertyName("sourceNodeHash")]
-    public uint? SourceNodeHash { get; set; }
+    public uint SourceNodeHash { get; set; }
 
     [JsonPropertyName("destNodeHash")]
-    public uint? DestNodeHash { get; set; }
+    public uint DestNodeHash { get; set; }
 }

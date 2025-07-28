@@ -9,11 +9,11 @@ public class DestinyMilestoneActivityPhase
     ///     Indicates if the phase has been completed.
     /// </summary>
     [JsonPropertyName("complete")]
-    public bool? Complete { get; set; }
+    public bool Complete { get; set; }
 
     /// <summary>
     ///     In DestinyActivityDefinition, if the activity has phases, there will be a set of phases defined in the "insertionPoints" property. This is the hash that maps to that phase.
     /// </summary>
     [JsonPropertyName("phaseHash")]
-    public uint? PhaseHash { get; set; }
+    public uint PhaseHash { get; set; }
 }

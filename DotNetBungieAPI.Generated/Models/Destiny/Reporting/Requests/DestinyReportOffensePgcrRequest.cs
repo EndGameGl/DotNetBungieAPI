@@ -12,19 +12,19 @@ public class DestinyReportOffensePgcrRequest
     /// <summary>
     ///     So you've decided to report someone instead of cursing them and their descendants. Well, okay then. This is the category or categorie(s) of infractions for which you are reporting the user. These are hash identifiers that map to DestinyReportReasonCategoryDefinition entries.
     /// </summary>
-    [Destiny2DefinitionList<Destiny.Definitions.Reporting.DestinyReportReasonCategoryDefinition>("Destiny.Definitions.Reporting.DestinyReportReasonCategoryDefinition")]
+    [Destiny2Definition<Destiny.Definitions.Reporting.DestinyReportReasonCategoryDefinition>("Destiny.Definitions.Reporting.DestinyReportReasonCategoryDefinition")]
     [JsonPropertyName("reasonCategoryHashes")]
-    public List<uint> ReasonCategoryHashes { get; set; }
+    public uint[]? ReasonCategoryHashes { get; set; }
 
     /// <summary>
     ///     If applicable, provide a more specific reason(s) within the general category of problems provided by the reasonHash. This is also an identifier for a reason. All reasonHashes provided must be children of at least one the reasonCategoryHashes provided.
     /// </summary>
     [JsonPropertyName("reasonHashes")]
-    public List<uint> ReasonHashes { get; set; }
+    public uint[]? ReasonHashes { get; set; }
 
     /// <summary>
     ///     Within the PGCR provided when calling the Reporting endpoint, this should be the character ID of the user that you thought was violating terms of use. They must exist in the PGCR provided.
     /// </summary>
     [JsonPropertyName("offendingCharacterId")]
-    public long? OffendingCharacterId { get; set; }
+    public long OffendingCharacterId { get; set; }
 }

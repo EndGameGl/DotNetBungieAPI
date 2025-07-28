@@ -15,25 +15,25 @@ public class DestinySocialCommendationNodeDefinition
     ///     A version of the displayProperties icon tinted with the color of this node.
     /// </summary>
     [JsonPropertyName("tintedIcon")]
-    public string? TintedIcon { get; set; }
+    public string TintedIcon { get; set; }
 
     [Destiny2Definition<Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition>("Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition")]
     [JsonPropertyName("parentCommendationNodeHash")]
-    public uint? ParentCommendationNodeHash { get; set; }
+    public uint ParentCommendationNodeHash { get; set; }
 
     /// <summary>
     ///     A list of hashes that map to child commendation nodes. Only the root commendations node is expected to have child nodes.
     /// </summary>
-    [Destiny2DefinitionList<Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition>("Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition")]
+    [Destiny2Definition<Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition>("Destiny.Definitions.Social.DestinySocialCommendationNodeDefinition")]
     [JsonPropertyName("childCommendationNodeHashes")]
-    public List<uint> ChildCommendationNodeHashes { get; set; }
+    public uint[]? ChildCommendationNodeHashes { get; set; }
 
     /// <summary>
     ///     A list of hashes that map to child commendations.
     /// </summary>
-    [Destiny2DefinitionList<Destiny.Definitions.Social.DestinySocialCommendationDefinition>("Destiny.Definitions.Social.DestinySocialCommendationDefinition")]
+    [Destiny2Definition<Destiny.Definitions.Social.DestinySocialCommendationDefinition>("Destiny.Definitions.Social.DestinySocialCommendationDefinition")]
     [JsonPropertyName("childCommendationHashes")]
-    public List<uint> ChildCommendationHashes { get; set; }
+    public uint[]? ChildCommendationHashes { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
@@ -41,17 +41,17 @@ public class DestinySocialCommendationNodeDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint? Hash { get; set; }
+    public uint Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int? Index { get; set; }
+    public int Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool? Redacted { get; set; }
+    public bool Redacted { get; set; }
 }

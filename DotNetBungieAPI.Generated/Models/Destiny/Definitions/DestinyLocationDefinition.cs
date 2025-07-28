@@ -12,13 +12,13 @@ public class DestinyLocationDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyVendorDefinition>("Destiny.Definitions.DestinyVendorDefinition")]
     [JsonPropertyName("vendorHash")]
-    public uint? VendorHash { get; set; }
+    public uint VendorHash { get; set; }
 
     /// <summary>
     ///     A Location may refer to different specific spots in the world based on the world's current state. This is a list of those potential spots, and the data we can use at runtime to determine which one of the spots is the currently valid one.
     /// </summary>
     [JsonPropertyName("locationReleases")]
-    public List<Destiny.Definitions.DestinyLocationReleaseDefinition> LocationReleases { get; set; }
+    public Destiny.Definitions.DestinyLocationReleaseDefinition[]? LocationReleases { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
@@ -26,17 +26,17 @@ public class DestinyLocationDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint? Hash { get; set; }
+    public uint Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int? Index { get; set; }
+    public int Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool? Redacted { get; set; }
+    public bool Redacted { get; set; }
 }

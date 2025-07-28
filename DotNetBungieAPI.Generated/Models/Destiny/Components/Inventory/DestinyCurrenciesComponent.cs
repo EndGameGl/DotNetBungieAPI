@@ -14,13 +14,13 @@ public class DestinyCurrenciesComponent
     /// <para />
     ///     This allows you to see whether the requesting character can afford any given purchase/action without having to re-create this list itself.
     /// </summary>
-    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemQuantities")]
-    public Dictionary<uint, int> ItemQuantities { get; set; }
+    public Dictionary<uint, int>? ItemQuantities { get; set; }
 
     /// <summary>
     ///     A map of material requirement hashes and their status information.
     /// </summary>
     [JsonPropertyName("materialRequirementSetStates")]
-    public Dictionary<uint, Destiny.Components.Inventory.DestinyMaterialRequirementSetState> MaterialRequirementSetStates { get; set; }
+    public Dictionary<uint, Destiny.Components.Inventory.DestinyMaterialRequirementSetState>? MaterialRequirementSetStates { get; set; }
 }

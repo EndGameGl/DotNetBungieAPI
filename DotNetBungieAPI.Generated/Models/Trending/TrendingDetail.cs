@@ -3,10 +3,10 @@ namespace DotNetBungieAPI.Generated.Models.Trending;
 public class TrendingDetail
 {
     [JsonPropertyName("identifier")]
-    public string? Identifier { get; set; }
+    public string Identifier { get; set; }
 
     [JsonPropertyName("entityType")]
-    public Trending.TrendingEntryType? EntityType { get; set; }
+    public Trending.TrendingEntryType EntityType { get; set; }
 
     [JsonPropertyName("news")]
     public Trending.TrendingEntryNews? News { get; set; }

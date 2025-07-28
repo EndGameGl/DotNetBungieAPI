@@ -14,19 +14,19 @@ public class DestinyActivityModeDefinition
     ///     If this activity mode has a related PGCR image, this will be the path to said image.
     /// </summary>
     [JsonPropertyName("pgcrImage")]
-    public string? PgcrImage { get; set; }
+    public string PgcrImage { get; set; }
 
     /// <summary>
     ///     The Enumeration value for this Activity Mode. Pass this identifier into Stats endpoints to get aggregate stats for this mode.
     /// </summary>
     [JsonPropertyName("modeType")]
-    public Destiny.HistoricalStats.Definitions.DestinyActivityModeType? ModeType { get; set; }
+    public Destiny.HistoricalStats.Definitions.DestinyActivityModeType ModeType { get; set; }
 
     /// <summary>
     ///     The type of play being performed in broad terms (PVP, PVE)
     /// </summary>
     [JsonPropertyName("activityModeCategory")]
-    public Destiny.DestinyActivityModeCategory? ActivityModeCategory { get; set; }
+    public Destiny.DestinyActivityModeCategory ActivityModeCategory { get; set; }
 
     /// <summary>
     ///     If True, this mode has oppositional teams fighting against each other rather than "Free-For-All" or Co-operative modes of play.
@@ -34,43 +34,43 @@ public class DestinyActivityModeDefinition
     ///     Note that Aggregate modes are never marked as team based, even if they happen to be team based at the moment. At any time, an aggregate whose subordinates are only team based could be changed so that one or more aren't team based, and then this boolean won't make much sense (the aggregation would become "sometimes team based"). Let's not deal with that right now.
     /// </summary>
     [JsonPropertyName("isTeamBased")]
-    public bool? IsTeamBased { get; set; }
+    public bool IsTeamBased { get; set; }
 
     /// <summary>
     ///     If true, this mode is an aggregation of other, more specific modes rather than being a mode in itself. This includes modes that group Features/Events rather than Gameplay, such as Trials of The Nine: Trials of the Nine being an Event that is interesting to see aggregate data for, but when you play the activities within Trials of the Nine they are more specific activity modes such as Clash.
     /// </summary>
     [JsonPropertyName("isAggregateMode")]
-    public bool? IsAggregateMode { get; set; }
+    public bool IsAggregateMode { get; set; }
 
     /// <summary>
     ///     The hash identifiers of the DestinyActivityModeDefinitions that represent all of the "parent" modes for this mode. For instance, the Nightfall Mode is also a member of AllStrikes and AllPvE.
     /// </summary>
     [JsonPropertyName("parentHashes")]
-    public List<uint> ParentHashes { get; set; }
+    public uint[]? ParentHashes { get; set; }
 
     /// <summary>
     ///     A Friendly identifier you can use for referring to this Activity Mode. We really only used this in our URLs, so... you know, take that for whatever it's worth.
     /// </summary>
     [JsonPropertyName("friendlyName")]
-    public string? FriendlyName { get; set; }
+    public string FriendlyName { get; set; }
 
     /// <summary>
     ///     If this exists, the mode has specific Activities (referred to by the Key) that should instead map to other Activity Modes when they are played. This was useful in D1 for Private Matches, where we wanted to have Private Matches as an activity mode while still referring to the specific mode being played.
     /// </summary>
     [JsonPropertyName("activityModeMappings")]
-    public Dictionary<uint, Destiny.HistoricalStats.Definitions.DestinyActivityModeType> ActivityModeMappings { get; set; }
+    public Dictionary<uint, Destiny.HistoricalStats.Definitions.DestinyActivityModeType>? ActivityModeMappings { get; set; }
 
     /// <summary>
     ///     If FALSE, we want to ignore this type when we're showing activity modes in BNet UI. It will still be returned in case 3rd parties want to use it for any purpose.
     /// </summary>
     [JsonPropertyName("display")]
-    public bool? Display { get; set; }
+    public bool Display { get; set; }
 
     /// <summary>
     ///     The relative ordering of activity modes.
     /// </summary>
     [JsonPropertyName("order")]
-    public int? Order { get; set; }
+    public int Order { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
@@ -78,17 +78,17 @@ public class DestinyActivityModeDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint? Hash { get; set; }
+    public uint Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int? Index { get; set; }
+    public int Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool? Redacted { get; set; }
+    public bool Redacted { get; set; }
 }

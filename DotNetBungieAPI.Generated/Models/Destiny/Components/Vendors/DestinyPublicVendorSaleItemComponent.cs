@@ -13,14 +13,14 @@ public class DestinyPublicVendorSaleItemComponent
     ///     Most systems avoid this problem, but Vendors is one area where we are unable to reasonably avoid content dependency at the moment.
     /// </summary>
     [JsonPropertyName("vendorItemIndex")]
-    public int? VendorItemIndex { get; set; }
+    public int VendorItemIndex { get; set; }
 
     /// <summary>
     ///     The hash of the item being sold, as a quick shortcut for looking up the DestinyInventoryItemDefinition of the sale item.
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemHash")]
-    public uint? ItemHash { get; set; }
+    public uint ItemHash { get; set; }
 
     /// <summary>
     ///     If populated, this is the hash of the item whose icon (and other secondary styles, but *not* the human readable strings) should override whatever icons/styles are on the item being sold.
@@ -35,13 +35,13 @@ public class DestinyPublicVendorSaleItemComponent
     ///     How much of the item you'll be getting.
     /// </summary>
     [JsonPropertyName("quantity")]
-    public int? Quantity { get; set; }
+    public int Quantity { get; set; }
 
     /// <summary>
     ///     A summary of the current costs of the item.
     /// </summary>
     [JsonPropertyName("costs")]
-    public List<Destiny.DestinyItemQuantity> Costs { get; set; }
+    public Destiny.DestinyItemQuantity[]? Costs { get; set; }
 
     /// <summary>
     ///     If this item has its own custom date where it may be removed from the Vendor's rotation, this is that date.

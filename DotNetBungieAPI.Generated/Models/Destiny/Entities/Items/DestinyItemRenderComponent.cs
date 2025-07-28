@@ -9,7 +9,7 @@ public class DestinyItemRenderComponent
     ///     If you should use custom dyes on this item, it will be indicated here.
     /// </summary>
     [JsonPropertyName("useCustomDyes")]
-    public bool? UseCustomDyes { get; set; }
+    public bool UseCustomDyes { get; set; }
 
     /// <summary>
     ///     A dictionary for rendering gear components, with:
@@ -19,5 +19,5 @@ public class DestinyItemRenderComponent
     ///     value = The chosen Arrangement Index for the Region, based on the value of a stat on the item used for making the choice.
     /// </summary>
     [JsonPropertyName("artRegions")]
-    public Dictionary<int, int> ArtRegions { get; set; }
+    public Dictionary<int, int>? ArtRegions { get; set; }
 }

@@ -10,7 +10,7 @@ public class DestinyPublicMilestoneChallenge
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyObjectiveDefinition>("Destiny.Definitions.DestinyObjectiveDefinition")]
     [JsonPropertyName("objectiveHash")]
-    public uint? ObjectiveHash { get; set; }
+    public uint ObjectiveHash { get; set; }
 
     /// <summary>
     ///     IF the Objective is related to a specific Activity, this will be that activity's hash. Use it to look up the DestinyActivityDefinition for additional data to show.

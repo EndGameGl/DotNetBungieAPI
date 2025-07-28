@@ -3,12 +3,12 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Presentation;
 public class DestinyPresentationChildBlock
 {
     [JsonPropertyName("presentationNodeType")]
-    public Destiny.DestinyPresentationNodeType? PresentationNodeType { get; set; }
+    public Destiny.DestinyPresentationNodeType PresentationNodeType { get; set; }
 
-    [Destiny2DefinitionList<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
+    [Destiny2Definition<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
     [JsonPropertyName("parentPresentationNodeHashes")]
-    public List<uint> ParentPresentationNodeHashes { get; set; }
+    public uint[]? ParentPresentationNodeHashes { get; set; }
 
     [JsonPropertyName("displayStyle")]
-    public Destiny.DestinyPresentationDisplayStyle? DisplayStyle { get; set; }
+    public Destiny.DestinyPresentationDisplayStyle DisplayStyle { get; set; }
 }

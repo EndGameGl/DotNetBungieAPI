@@ -3,16 +3,16 @@ namespace DotNetBungieAPI.Generated.Models.Trending;
 public class TrendingEntryDestinyRitual
 {
     [JsonPropertyName("image")]
-    public string? Image { get; set; }
+    public string Image { get; set; }
 
     [JsonPropertyName("icon")]
-    public string? Icon { get; set; }
+    public string Icon { get; set; }
 
     [JsonPropertyName("title")]
-    public string? Title { get; set; }
+    public string Title { get; set; }
 
     [JsonPropertyName("subtitle")]
-    public string? Subtitle { get; set; }
+    public string Subtitle { get; set; }
 
     [JsonPropertyName("dateStart")]
     public DateTime? DateStart { get; set; }

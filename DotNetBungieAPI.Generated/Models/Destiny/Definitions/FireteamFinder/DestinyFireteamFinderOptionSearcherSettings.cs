@@ -6,5 +6,5 @@ public class DestinyFireteamFinderOptionSearcherSettings
     public Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionSettingsControl? Control { get; set; }
 
     [JsonPropertyName("searchFilterType")]
-    public Destiny.FireteamFinderOptionSearchFilterType? SearchFilterType { get; set; }
+    public Destiny.FireteamFinderOptionSearchFilterType SearchFilterType { get; set; }
 }

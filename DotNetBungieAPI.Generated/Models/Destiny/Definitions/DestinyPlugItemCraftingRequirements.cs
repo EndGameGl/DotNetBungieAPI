@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 public class DestinyPlugItemCraftingRequirements
 {
     [JsonPropertyName("unlockRequirements")]
-    public List<Destiny.Definitions.DestinyPlugItemCraftingUnlockRequirement> UnlockRequirements { get; set; }
+    public Destiny.Definitions.DestinyPlugItemCraftingUnlockRequirement[]? UnlockRequirements { get; set; }
 
     /// <summary>
     ///     If the plug has a known level requirement, it'll be available here.
@@ -11,7 +11,7 @@ public class DestinyPlugItemCraftingRequirements
     [JsonPropertyName("requiredLevel")]
     public int? RequiredLevel { get; set; }
 
-    [Destiny2DefinitionList<Destiny.Definitions.DestinyMaterialRequirementSetDefinition>("Destiny.Definitions.DestinyMaterialRequirementSetDefinition")]
+    [Destiny2Definition<Destiny.Definitions.DestinyMaterialRequirementSetDefinition>("Destiny.Definitions.DestinyMaterialRequirementSetDefinition")]
     [JsonPropertyName("materialRequirementHashes")]
-    public List<uint> MaterialRequirementHashes { get; set; }
+    public uint[]? MaterialRequirementHashes { get; set; }
 }

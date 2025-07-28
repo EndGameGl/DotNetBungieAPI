@@ -10,16 +10,16 @@ public class DestinyPublicMilestone
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.Milestones.DestinyMilestoneDefinition>("Destiny.Definitions.Milestones.DestinyMilestoneDefinition")]
     [JsonPropertyName("milestoneHash")]
-    public uint? MilestoneHash { get; set; }
+    public uint MilestoneHash { get; set; }
 
     /// <summary>
     ///     A milestone not need have even a single quest, but if there are active quests they will be returned here.
     /// </summary>
     [JsonPropertyName("availableQuests")]
-    public List<Destiny.Milestones.DestinyPublicMilestoneQuest> AvailableQuests { get; set; }
+    public Destiny.Milestones.DestinyPublicMilestoneQuest[]? AvailableQuests { get; set; }
 
     [JsonPropertyName("activities")]
-    public List<Destiny.Milestones.DestinyPublicMilestoneChallengeActivity> Activities { get; set; }
+    public Destiny.Milestones.DestinyPublicMilestoneChallengeActivity[]? Activities { get; set; }
 
     /// <summary>
     ///     Sometimes milestones - or activities active in milestones - will have relevant vendors. These are the vendors that are currently relevant.
@@ -27,13 +27,13 @@ public class DestinyPublicMilestone
     ///     Deprecated, already, for the sake of the new "vendors" property that has more data. What was I thinking.
     /// </summary>
     [JsonPropertyName("vendorHashes")]
-    public List<uint> VendorHashes { get; set; }
+    public uint[]? VendorHashes { get; set; }
 
     /// <summary>
     ///     This is why we can't have nice things. This is the ordered list of vendors to be shown that relate to this milestone, potentially along with other interesting data.
     /// </summary>
     [JsonPropertyName("vendors")]
-    public List<Destiny.Milestones.DestinyPublicMilestoneVendor> Vendors { get; set; }
+    public Destiny.Milestones.DestinyPublicMilestoneVendor[]? Vendors { get; set; }
 
     /// <summary>
     ///     If known, this is the date when the Milestone started/became active.
@@ -51,5 +51,5 @@ public class DestinyPublicMilestone
     ///     Used for ordering milestones in a display to match how we order them in BNet. May pull from static data, or possibly in the future from dynamic information.
     /// </summary>
     [JsonPropertyName("order")]
-    public int? Order { get; set; }
+    public int Order { get; set; }
 }

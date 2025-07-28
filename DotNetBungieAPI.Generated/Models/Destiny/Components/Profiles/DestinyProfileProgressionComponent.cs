@@ -12,9 +12,9 @@ public class DestinyProfileProgressionComponent
     /// <para />
     ///     For each checklist returned, its value is itself a Dictionary keyed by the checklist's hash identifier with the value being a boolean indicating if it's been discovered yet.
     /// </summary>
-    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.Checklists.DestinyChecklistDefinition>("Destiny.Definitions.Checklists.DestinyChecklistDefinition")]
+    [Destiny2Definition<Destiny.Definitions.Checklists.DestinyChecklistDefinition>("Destiny.Definitions.Checklists.DestinyChecklistDefinition")]
     [JsonPropertyName("checklists")]
-    public Dictionary<uint, Dictionary<uint, bool>> Checklists { get; set; }
+    public Dictionary<uint, Dictionary<uint, bool>>? Checklists { get; set; }
 
     /// <summary>
     ///     Data related to your progress on the current season's artifact that is the same across characters.

@@ -6,8 +6,8 @@ public class DestinyFireteamFinderOptionValueDefinition
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     [JsonPropertyName("value")]
-    public uint? Value { get; set; }
+    public uint Value { get; set; }
 
     [JsonPropertyName("flags")]
-    public Destiny.FireteamFinderOptionValueFlags? Flags { get; set; }
+    public Destiny.FireteamFinderOptionValueFlags Flags { get; set; }
 }

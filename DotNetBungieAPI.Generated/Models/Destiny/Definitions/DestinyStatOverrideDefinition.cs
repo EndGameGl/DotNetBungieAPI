@@ -16,7 +16,7 @@ public class DestinyStatOverrideDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyStatDefinition>("Destiny.Definitions.DestinyStatDefinition")]
     [JsonPropertyName("statHash")]
-    public uint? StatHash { get; set; }
+    public uint StatHash { get; set; }
 
     /// <summary>
     ///     The display properties to show instead of the base DestinyStatDefinition display properties.

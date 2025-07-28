@@ -6,5 +6,5 @@ public class GroupMemberLeaveResult
     public GroupsV2.GroupV2? Group { get; set; }
 
     [JsonPropertyName("groupDeleted")]
-    public bool? GroupDeleted { get; set; }
+    public bool GroupDeleted { get; set; }
 }

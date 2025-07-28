@@ -6,7 +6,7 @@ public class ImagePyramidEntry
     ///     The name of the subfolder where these images are located.
     /// </summary>
     [JsonPropertyName("name")]
-    public string? Name { get; set; }
+    public string Name { get; set; }
 
     /// <summary>
     ///     The factor by which the original image size has been reduced.

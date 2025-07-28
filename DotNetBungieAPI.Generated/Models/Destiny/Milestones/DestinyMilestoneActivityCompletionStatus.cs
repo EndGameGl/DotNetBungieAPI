@@ -9,11 +9,11 @@ public class DestinyMilestoneActivityCompletionStatus
     ///     If the activity has been "completed", that information will be returned here.
     /// </summary>
     [JsonPropertyName("completed")]
-    public bool? Completed { get; set; }
+    public bool Completed { get; set; }
 
     /// <summary>
     ///     If the Activity has discrete "phases" that we can track, that info will be here. Otherwise, this value will be NULL. Note that this is a list and not a dictionary: the order implies the ascending order of phases or progression in this activity.
     /// </summary>
     [JsonPropertyName("phases")]
-    public List<Destiny.Milestones.DestinyMilestoneActivityPhase> Phases { get; set; }
+    public Destiny.Milestones.DestinyMilestoneActivityPhase[]? Phases { get; set; }
 }

@@ -12,11 +12,11 @@ public class DestinyObjectivePerkEntryDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinySandboxPerkDefinition>("Destiny.Definitions.DestinySandboxPerkDefinition")]
     [JsonPropertyName("perkHash")]
-    public uint? PerkHash { get; set; }
+    public uint PerkHash { get; set; }
 
     /// <summary>
     ///     An enumeration indicating whether it will be applied as long as the Objective is active, when it's completed, or until it's completed.
     /// </summary>
     [JsonPropertyName("style")]
-    public Destiny.DestinyObjectiveGrantStyle? Style { get; set; }
+    public Destiny.DestinyObjectiveGrantStyle Style { get; set; }
 }

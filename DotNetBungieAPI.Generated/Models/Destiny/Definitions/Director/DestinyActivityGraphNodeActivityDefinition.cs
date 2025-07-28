@@ -9,12 +9,12 @@ public class DestinyActivityGraphNodeActivityDefinition
     ///     An identifier for this node activity. It is only guaranteed to be unique within the Activity Graph.
     /// </summary>
     [JsonPropertyName("nodeActivityId")]
-    public uint? NodeActivityId { get; set; }
+    public uint NodeActivityId { get; set; }
 
     /// <summary>
     ///     The activity that will be activated if the user clicks on this node. Controls all activity-related information displayed on the node if it is active (the text shown in the tooltip etc)
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
-    public uint? ActivityHash { get; set; }
+    public uint ActivityHash { get; set; }
 }

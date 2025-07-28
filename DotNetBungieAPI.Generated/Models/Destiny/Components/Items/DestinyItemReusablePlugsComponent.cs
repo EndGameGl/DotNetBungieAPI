@@ -14,5 +14,5 @@ public class DestinyItemReusablePlugsComponent
     ///      If a socket doesn't have any reusable plugs defined at the item scope, there will be no entry for that socket.
     /// </summary>
     [JsonPropertyName("plugs")]
-    public Dictionary<int, List<Destiny.Sockets.DestinyItemPlugBase>> Plugs { get; set; }
+    public Dictionary<int, Destiny.Sockets.DestinyItemPlugBase[]>? Plugs { get; set; }
 }

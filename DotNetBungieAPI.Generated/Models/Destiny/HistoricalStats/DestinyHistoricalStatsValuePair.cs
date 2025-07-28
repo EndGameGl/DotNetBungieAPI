@@ -12,5 +12,5 @@ public class DestinyHistoricalStatsValuePair
     ///     Localized formated version of the value.
     /// </summary>
     [JsonPropertyName("displayValue")]
-    public string? DisplayValue { get; set; }
+    public string DisplayValue { get; set; }
 }

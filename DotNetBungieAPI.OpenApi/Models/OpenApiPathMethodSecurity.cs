@@ -7,5 +7,5 @@ namespace DotNetBungieAPI.OpenApi.Models;
 public class OpenApiPathMethodSecurity
 {
     [JsonPropertyName("oauth2")]
-    public List<string> Oauth2 { get; set; }
+    public required string[] Oauth2 { get; set; }
 }

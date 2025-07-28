@@ -13,13 +13,13 @@ public class DestinyPlugWhitelistEntryDefinition
     ///     Note that this does NOT relate to any Definition in itself, it is only used for comparison purposes.
     /// </summary>
     [JsonPropertyName("categoryHash")]
-    public uint? CategoryHash { get; set; }
+    public uint CategoryHash { get; set; }
 
     /// <summary>
     ///     The string identifier for the category, which is here mostly for debug purposes.
     /// </summary>
     [JsonPropertyName("categoryIdentifier")]
-    public string? CategoryIdentifier { get; set; }
+    public string CategoryIdentifier { get; set; }
 
     /// <summary>
     ///     The list of all plug items (DestinyInventoryItemDefinition) that the socket may randomly be populated with when reinitialized.
@@ -33,5 +33,5 @@ public class DestinyPlugWhitelistEntryDefinition
     ///     That whitelist entry will potentially have a new “reinitializationPossiblePlugHashes” property.If it does, that means we know what it will roll if you try to insert this plug into this socket.
     /// </summary>
     [JsonPropertyName("reinitializationPossiblePlugHashes")]
-    public List<uint> ReinitializationPossiblePlugHashes { get; set; }
+    public uint[]? ReinitializationPossiblePlugHashes { get; set; }
 }

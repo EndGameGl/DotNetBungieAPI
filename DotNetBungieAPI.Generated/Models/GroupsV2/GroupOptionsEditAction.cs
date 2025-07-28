@@ -36,7 +36,7 @@ public class GroupOptionsEditAction
     ///     Default is Member for clans, None for groups, although this means nothing for groups.
     /// </summary>
     [JsonPropertyName("HostGuidedGamePermissionOverride")]
-    public int? HostGuidedGamePermissionOverride { get; set; }
+    public GroupsV2.HostGuidedGamesPermissionLevel? HostGuidedGamePermissionOverride { get; set; }
 
     /// <summary>
     ///     Minimum Member Level allowed to update banner
@@ -56,5 +56,5 @@ public class GroupOptionsEditAction
     ///     Default is Beginner.
     /// </summary>
     [JsonPropertyName("JoinLevel")]
-    public int? JoinLevel { get; set; }
+    public GroupsV2.RuntimeGroupMemberType? JoinLevel { get; set; }
 }

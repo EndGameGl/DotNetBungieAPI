@@ -11,7 +11,7 @@ public class DestinyProfileTransitoryComponent
     ///     If you have any members currently in your party, this is some (very) bare-bones information about those members.
     /// </summary>
     [JsonPropertyName("partyMembers")]
-    public List<Destiny.Components.Profiles.DestinyProfileTransitoryPartyMember> PartyMembers { get; set; }
+    public Destiny.Components.Profiles.DestinyProfileTransitoryPartyMember[]? PartyMembers { get; set; }
 
     /// <summary>
     ///     If you are in an activity, this is some transitory info about the activity currently being played.
@@ -29,7 +29,7 @@ public class DestinyProfileTransitoryComponent
     ///     Information about tracked entities.
     /// </summary>
     [JsonPropertyName("tracking")]
-    public List<Destiny.Components.Profiles.DestinyProfileTransitoryTrackingEntry> Tracking { get; set; }
+    public Destiny.Components.Profiles.DestinyProfileTransitoryTrackingEntry[]? Tracking { get; set; }
 
     /// <summary>
     ///     The hash identifier for the DestinyDestinationDefinition of the last location you were orbiting when in orbit.

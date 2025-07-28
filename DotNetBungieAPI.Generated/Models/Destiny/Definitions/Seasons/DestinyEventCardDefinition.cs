@@ -9,7 +9,7 @@ public class DestinyEventCardDefinition
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     [JsonPropertyName("linkRedirectPath")]
-    public string? LinkRedirectPath { get; set; }
+    public string LinkRedirectPath { get; set; }
 
     [JsonPropertyName("color")]
     public Destiny.Misc.DestinyColor? Color { get; set; }
@@ -19,29 +19,29 @@ public class DestinyEventCardDefinition
 
     [Destiny2Definition<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
     [JsonPropertyName("triumphsPresentationNodeHash")]
-    public uint? TriumphsPresentationNodeHash { get; set; }
+    public uint TriumphsPresentationNodeHash { get; set; }
 
     [Destiny2Definition<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
     [JsonPropertyName("sealPresentationNodeHash")]
-    public uint? SealPresentationNodeHash { get; set; }
+    public uint SealPresentationNodeHash { get; set; }
 
-    [Destiny2DefinitionList<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("eventCardCurrencyList")]
-    public List<uint> EventCardCurrencyList { get; set; }
+    public uint[]? EventCardCurrencyList { get; set; }
 
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("ticketCurrencyItemHash")]
-    public uint? TicketCurrencyItemHash { get; set; }
+    public uint TicketCurrencyItemHash { get; set; }
 
     [Destiny2Definition<Destiny.Definitions.DestinyVendorDefinition>("Destiny.Definitions.DestinyVendorDefinition")]
     [JsonPropertyName("ticketVendorHash")]
-    public uint? TicketVendorHash { get; set; }
+    public uint TicketVendorHash { get; set; }
 
     [JsonPropertyName("ticketVendorCategoryHash")]
-    public uint? TicketVendorCategoryHash { get; set; }
+    public uint TicketVendorCategoryHash { get; set; }
 
     [JsonPropertyName("endTime")]
-    public long? EndTime { get; set; }
+    public long EndTime { get; set; }
 
     [Destiny2Definition<Destiny.Definitions.DestinyProgressionDefinition>("Destiny.Definitions.DestinyProgressionDefinition")]
     [JsonPropertyName("rewardProgressionHash")]
@@ -57,17 +57,17 @@ public class DestinyEventCardDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint? Hash { get; set; }
+    public uint Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int? Index { get; set; }
+    public int Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool? Redacted { get; set; }
+    public bool Redacted { get; set; }
 }

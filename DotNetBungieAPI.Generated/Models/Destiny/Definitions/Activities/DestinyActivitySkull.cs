@@ -3,22 +3,22 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Activities;
 public class DestinyActivitySkull
 {
     [JsonPropertyName("hash")]
-    public uint? Hash { get; set; }
+    public uint Hash { get; set; }
 
     [JsonPropertyName("skullIdentifierHash")]
-    public uint? SkullIdentifierHash { get; set; }
+    public uint SkullIdentifierHash { get; set; }
 
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     [JsonPropertyName("skullOptions")]
-    public List<Destiny.Definitions.Activities.DestinyActivitySkullOption> SkullOptions { get; set; }
+    public Destiny.Definitions.Activities.DestinyActivitySkullOption[]? SkullOptions { get; set; }
 
     [JsonPropertyName("dynamicUse")]
-    public Destiny.DestinyActivitySkullDynamicUse? DynamicUse { get; set; }
+    public Destiny.DestinyActivitySkullDynamicUse DynamicUse { get; set; }
 
     [JsonPropertyName("modifierPowerContribution")]
-    public int? ModifierPowerContribution { get; set; }
+    public int ModifierPowerContribution { get; set; }
 
     [JsonPropertyName("modifierMultiplierContribution")]
     public float? ModifierMultiplierContribution { get; set; }
@@ -28,20 +28,20 @@ public class DestinyActivitySkull
     public uint? SkullExclusionGroupHash { get; set; }
 
     [JsonPropertyName("hasUi")]
-    public bool? HasUi { get; set; }
+    public bool HasUi { get; set; }
 
     [JsonPropertyName("displayDescriptionOverrideForNavMode")]
-    public string? DisplayDescriptionOverrideForNavMode { get; set; }
+    public string DisplayDescriptionOverrideForNavMode { get; set; }
 
     [JsonPropertyName("activityModifierDisplayCategory")]
-    public Destiny.DestinyActivityModifierDisplayCategory? ActivityModifierDisplayCategory { get; set; }
+    public Destiny.DestinyActivityModifierDisplayCategory ActivityModifierDisplayCategory { get; set; }
 
     [JsonPropertyName("activityModifierConnotation")]
-    public Destiny.DestinyActivityModifierConnotation? ActivityModifierConnotation { get; set; }
+    public Destiny.DestinyActivityModifierConnotation ActivityModifierConnotation { get; set; }
 
     [JsonPropertyName("displayInNavMode")]
-    public bool? DisplayInNavMode { get; set; }
+    public bool DisplayInNavMode { get; set; }
 
     [JsonPropertyName("displayInActivitySelection")]
-    public bool? DisplayInActivitySelection { get; set; }
+    public bool DisplayInActivitySelection { get; set; }
 }

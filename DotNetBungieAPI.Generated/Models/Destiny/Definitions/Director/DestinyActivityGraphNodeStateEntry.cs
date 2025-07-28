@@ -6,5 +6,5 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Director;
 public class DestinyActivityGraphNodeStateEntry
 {
     [JsonPropertyName("state")]
-    public Destiny.DestinyGraphNodeState? State { get; set; }
+    public Destiny.DestinyGraphNodeState State { get; set; }
 }

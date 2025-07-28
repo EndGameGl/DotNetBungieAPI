@@ -10,7 +10,7 @@ public class DestinyObjectiveProgress
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyObjectiveDefinition>("Destiny.Definitions.DestinyObjectiveDefinition")]
     [JsonPropertyName("objectiveHash")]
-    public uint? ObjectiveHash { get; set; }
+    public uint ObjectiveHash { get; set; }
 
     /// <summary>
     ///     If the Objective has a Destination associated with it, this is the unique identifier of the Destination being referred to. Use to look up the DestinyDestinationDefinition in static data. This will give localized data about *where* in the universe the objective should be achieved.
@@ -40,17 +40,17 @@ public class DestinyObjectiveProgress
     ///     If you were using objective data, switch from using the DestinyObjectiveDefinition's "completionValue" to this value.
     /// </summary>
     [JsonPropertyName("completionValue")]
-    public int? CompletionValue { get; set; }
+    public int CompletionValue { get; set; }
 
     /// <summary>
     ///     Whether or not the Objective is completed.
     /// </summary>
     [JsonPropertyName("complete")]
-    public bool? Complete { get; set; }
+    public bool Complete { get; set; }
 
     /// <summary>
     ///     If this is true, the objective is visible in-game. Otherwise, it's not yet visible to the player. Up to you if you want to honor this property.
     /// </summary>
     [JsonPropertyName("visible")]
-    public bool? Visible { get; set; }
+    public bool Visible { get; set; }
 }

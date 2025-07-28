@@ -10,12 +10,12 @@ public class DestinyNodeSocketReplaceResponse
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.Sockets.DestinySocketTypeDefinition>("Destiny.Definitions.Sockets.DestinySocketTypeDefinition")]
     [JsonPropertyName("socketTypeHash")]
-    public uint? SocketTypeHash { get; set; }
+    public uint SocketTypeHash { get; set; }
 
     /// <summary>
     ///     The hash identifier of the plug item that will be inserted into the socket found.
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("plugItemHash")]
-    public uint? PlugItemHash { get; set; }
+    public uint PlugItemHash { get; set; }
 }

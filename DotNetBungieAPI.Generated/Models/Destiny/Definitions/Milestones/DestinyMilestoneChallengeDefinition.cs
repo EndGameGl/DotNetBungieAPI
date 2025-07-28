@@ -7,5 +7,5 @@ public class DestinyMilestoneChallengeDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyObjectiveDefinition>("Destiny.Definitions.DestinyObjectiveDefinition")]
     [JsonPropertyName("challengeObjectiveHash")]
-    public uint? ChallengeObjectiveHash { get; set; }
+    public uint ChallengeObjectiveHash { get; set; }
 }

@@ -3,10 +3,10 @@ namespace DotNetBungieAPI.Generated.Models;
 public class DictionaryComponentResponseOfuint32AndDestinyVendorCategoriesComponent
 {
     [JsonPropertyName("data")]
-    public Dictionary<uint, Destiny.Entities.Vendors.DestinyVendorCategoriesComponent> Data { get; set; }
+    public Dictionary<uint, Destiny.Entities.Vendors.DestinyVendorCategoriesComponent>? Data { get; set; }
 
     [JsonPropertyName("privacy")]
-    public Components.ComponentPrivacySetting? Privacy { get; set; }
+    public Components.ComponentPrivacySetting Privacy { get; set; }
 
     /// <summary>
     ///     If true, this component is disabled.

@@ -56,7 +56,7 @@ public interface IForumApi
         long contentId
     );
 
-    Task<ApiResponse<List<Tags.Models.Contracts.TagResponse>>> GetForumTagSuggestions(
+    Task<ApiResponse<Tags.Models.Contracts.TagResponse[]>> GetForumTagSuggestions(
         string partialtag
     );
 
@@ -64,8 +64,8 @@ public interface IForumApi
         long topicId
     );
 
-    Task<ApiResponse<List<Forum.ForumRecruitmentDetail>>> GetRecruitmentThreadSummaries(
-        List<long> body
+    Task<ApiResponse<Forum.ForumRecruitmentDetail[]>> GetRecruitmentThreadSummaries(
+        long[] body
     );
 
 }

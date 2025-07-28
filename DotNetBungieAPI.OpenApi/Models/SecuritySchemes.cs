@@ -5,8 +5,8 @@ namespace DotNetBungieAPI.OpenApi.Models;
 public class SecuritySchemes
 {
     [JsonPropertyName("apiKey")]
-    public ApiKey ApiKey { get; init; }
+    public required ApiKey ApiKey { get; init; }
 
     [JsonPropertyName("oauth2")]
-    public OAuth2 OAuth2 { get; init; }
+    public required OAuth2 OAuth2 { get; init; }
 }

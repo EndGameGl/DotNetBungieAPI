@@ -35,11 +35,11 @@ public class DestinyProfileTransitoryCurrentActivity
     ///     This is how many human or poorly crafted aimbot opponents you have.
     /// </summary>
     [JsonPropertyName("numberOfOpponents")]
-    public int? NumberOfOpponents { get; set; }
+    public int NumberOfOpponents { get; set; }
 
     /// <summary>
     ///     This is how many human or poorly crafted aimbots are on your team.
     /// </summary>
     [JsonPropertyName("numberOfPlayers")]
-    public int? NumberOfPlayers { get; set; }
+    public int NumberOfPlayers { get; set; }
 }

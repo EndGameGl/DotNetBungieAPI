@@ -9,7 +9,7 @@ public class DestinyEntitySearchResult
     ///     A list of suggested words that might make for better search results, based on the text searched for.
     /// </summary>
     [JsonPropertyName("suggestedWords")]
-    public List<string> SuggestedWords { get; set; }
+    public string[]? SuggestedWords { get; set; }
 
     /// <summary>
     ///     The items found that are matches/near matches for the searched-for term, sorted by something vaguely resembling "relevance". Hopefully this will get better in the future.

@@ -5,8 +5,8 @@ namespace DotNetBungieAPI.OpenApi.Models;
 public class UrlWithDescription
 {
     [JsonPropertyName("description")]
-    public string Description { get; init; }
+    public required string Description { get; init; }
 
     [JsonPropertyName("url")]
-    public string Url { get; init; }
+    public required string Url { get; init; }
 }

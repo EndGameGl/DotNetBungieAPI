@@ -13,46 +13,46 @@ public class DestinyItemPlugDefinition
     ///     The live data DestinyItemPlugComponent.insertFailIndexes will be an index into this array, so you can pull out the failure strings appropriate for the user.
     /// </summary>
     [JsonPropertyName("insertionRules")]
-    public List<Destiny.Definitions.Items.DestinyPlugRuleDefinition> InsertionRules { get; set; }
+    public Destiny.Definitions.Items.DestinyPlugRuleDefinition[]? InsertionRules { get; set; }
 
     /// <summary>
     ///     The string identifier for the plug's category. Use the socket's DestinySocketTypeDefinition.plugWhitelist to determine whether this plug can be inserted into the socket.
     /// </summary>
     [JsonPropertyName("plugCategoryIdentifier")]
-    public string? PlugCategoryIdentifier { get; set; }
+    public string PlugCategoryIdentifier { get; set; }
 
     /// <summary>
     ///     The hash for the plugCategoryIdentifier. You can use this instead if you wish: I put both in the definition for debugging purposes.
     /// </summary>
     [JsonPropertyName("plugCategoryHash")]
-    public uint? PlugCategoryHash { get; set; }
+    public uint PlugCategoryHash { get; set; }
 
     /// <summary>
     ///     If you successfully socket the item, this will determine whether or not you get "refunded" on the plug.
     /// </summary>
     [JsonPropertyName("onActionRecreateSelf")]
-    public bool? OnActionRecreateSelf { get; set; }
+    public bool OnActionRecreateSelf { get; set; }
 
     /// <summary>
     ///     If inserting this plug requires materials, this is the hash identifier for looking up the DestinyMaterialRequirementSetDefinition for those requirements.
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyMaterialRequirementSetDefinition>("Destiny.Definitions.DestinyMaterialRequirementSetDefinition")]
     [JsonPropertyName("insertionMaterialRequirementHash")]
-    public uint? InsertionMaterialRequirementHash { get; set; }
+    public uint InsertionMaterialRequirementHash { get; set; }
 
     /// <summary>
     ///     In the game, if you're inspecting a plug item directly, this will be the item shown with the plug attached. Look up the DestinyInventoryItemDefinition for this hash for the item.
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("previewItemOverrideHash")]
-    public uint? PreviewItemOverrideHash { get; set; }
+    public uint PreviewItemOverrideHash { get; set; }
 
     /// <summary>
     ///     It's not enough for the plug to be inserted. It has to be enabled as well. For it to be enabled, it may require materials. This is the hash identifier for the DestinyMaterialRequirementSetDefinition for those requirements, if there is one.
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyMaterialRequirementSetDefinition>("Destiny.Definitions.DestinyMaterialRequirementSetDefinition")]
     [JsonPropertyName("enabledMaterialRequirementHash")]
-    public uint? EnabledMaterialRequirementHash { get; set; }
+    public uint EnabledMaterialRequirementHash { get; set; }
 
     /// <summary>
     ///     The rules around whether the plug, once inserted, is enabled and providing its benefits.
@@ -60,40 +60,40 @@ public class DestinyItemPlugDefinition
     ///     The live data DestinyItemPlugComponent.enableFailIndexes will be an index into this array, so you can pull out the failure strings appropriate for the user.
     /// </summary>
     [JsonPropertyName("enabledRules")]
-    public List<Destiny.Definitions.Items.DestinyPlugRuleDefinition> EnabledRules { get; set; }
+    public Destiny.Definitions.Items.DestinyPlugRuleDefinition[]? EnabledRules { get; set; }
 
     /// <summary>
     ///     Plugs can have arbitrary, UI-defined identifiers that the UI designers use to determine the style applied to plugs. Unfortunately, we have neither a definitive list of these labels nor advance warning of when new labels might be applied or how that relates to how they get rendered. If you want to, you can refer to known labels to change your own styles: but know that new ones can be created arbitrarily, and we have no way of associating the labels with any specific UI style guidance... you'll have to piece that together on your end. Or do what we do, and just show plugs more generically, without specialized styles.
     /// </summary>
     [JsonPropertyName("uiPlugLabel")]
-    public string? UiPlugLabel { get; set; }
+    public string UiPlugLabel { get; set; }
 
     [JsonPropertyName("plugStyle")]
-    public Destiny.PlugUiStyles? PlugStyle { get; set; }
+    public Destiny.PlugUiStyles PlugStyle { get; set; }
 
     /// <summary>
     ///     Indicates the rules about when this plug can be used. See the PlugAvailabilityMode enumeration for more information!
     /// </summary>
     [JsonPropertyName("plugAvailability")]
-    public Destiny.PlugAvailabilityMode? PlugAvailability { get; set; }
+    public Destiny.PlugAvailabilityMode PlugAvailability { get; set; }
 
     /// <summary>
     ///     If the plug meets certain state requirements, it may have an alternative label applied to it. This is the alternative label that will be applied in such a situation.
     /// </summary>
     [JsonPropertyName("alternateUiPlugLabel")]
-    public string? AlternateUiPlugLabel { get; set; }
+    public string AlternateUiPlugLabel { get; set; }
 
     /// <summary>
     ///     The alternate plug of the plug: only applies when the item is in states that only the server can know about and control, unfortunately. See AlternateUiPlugLabel for the related label info.
     /// </summary>
     [JsonPropertyName("alternatePlugStyle")]
-    public Destiny.PlugUiStyles? AlternatePlugStyle { get; set; }
+    public Destiny.PlugUiStyles AlternatePlugStyle { get; set; }
 
     /// <summary>
     ///     If TRUE, this plug is used for UI display purposes only, and doesn't have any interesting effects of its own.
     /// </summary>
     [JsonPropertyName("isDummyPlug")]
-    public bool? IsDummyPlug { get; set; }
+    public bool IsDummyPlug { get; set; }
 
     /// <summary>
     ///     Do you ever get the feeling that a system has become so overburdened by edge cases that it probably should have become some other system entirely? So do I!

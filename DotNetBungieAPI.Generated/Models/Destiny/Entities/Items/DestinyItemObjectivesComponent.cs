@@ -11,7 +11,7 @@ public class DestinyItemObjectivesComponent
     ///     Objectives are our standard way to describe a series of tasks that have to be completed for a reward.
     /// </summary>
     [JsonPropertyName("objectives")]
-    public List<Destiny.Quests.DestinyObjectiveProgress> Objectives { get; set; }
+    public Destiny.Quests.DestinyObjectiveProgress[]? Objectives { get; set; }
 
     /// <summary>
     ///     I may regret naming it this way - but this represents when an item has an objective that doesn't serve a beneficial purpose, but rather is used for "flavor" or additional information. For instance, when Emblems track specific stats, those stats are represented as Objectives on the item.

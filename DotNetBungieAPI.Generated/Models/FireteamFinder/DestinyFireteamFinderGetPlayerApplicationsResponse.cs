@@ -6,11 +6,11 @@ public class DestinyFireteamFinderGetPlayerApplicationsResponse
     ///     All applications that this player has sent.
     /// </summary>
     [JsonPropertyName("applications")]
-    public List<FireteamFinder.DestinyFireteamFinderApplication> Applications { get; set; }
+    public FireteamFinder.DestinyFireteamFinderApplication[]? Applications { get; set; }
 
     /// <summary>
     ///     String token to request next page of results.
     /// </summary>
     [JsonPropertyName("nextPageToken")]
-    public string? NextPageToken { get; set; }
+    public string NextPageToken { get; set; }
 }

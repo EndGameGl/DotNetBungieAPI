@@ -9,17 +9,17 @@ public class DestinySeasonActDefinition
     ///     The name of the Act.
     /// </summary>
     [JsonPropertyName("displayName")]
-    public string? DisplayName { get; set; }
+    public string DisplayName { get; set; }
 
     /// <summary>
     ///     The start time of the Act.
     /// </summary>
     [JsonPropertyName("startTime")]
-    public DateTime? StartTime { get; set; }
+    public DateTime StartTime { get; set; }
 
     /// <summary>
     ///     The number of ranks included in the Act.
     /// </summary>
     [JsonPropertyName("rankCount")]
-    public int? RankCount { get; set; }
+    public int RankCount { get; set; }
 }

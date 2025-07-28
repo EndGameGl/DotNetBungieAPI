@@ -5,8 +5,8 @@ namespace DotNetBungieAPI.OpenApi.Models;
 public class OpenApiPathMethodInfoRequest
 {
     [JsonPropertyName("content")]
-    public Dictionary<string, OpenApiPathMethodInfoRequestContent> Content { get; set; }
+    public required Dictionary<string, OpenApiPathMethodInfoRequestContent> Content { get; init; }
 
     [JsonPropertyName("required")]
-    public bool Required { get; set; }
+    public required bool Required { get; init; }
 }

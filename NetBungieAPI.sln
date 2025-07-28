@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBungieAPI.Models", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBungieAPI.HashReferences.Generator", "DotNetBungieAPI.HashReferences.Generator\DotNetBungieAPI.HashReferences.Generator.csproj", "{383207CF-9B10-458A-B4D9-F246A1459E82}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBungieAPI.OpenApi.CSharp.Extended", "DotNetBungieAPI.OpenApi.CSharp.Extended\DotNetBungieAPI.OpenApi.CSharp.Extended.csproj", "{998D4508-F894-48C2-B799-6CC2202C82D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{383207CF-9B10-458A-B4D9-F246A1459E82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{383207CF-9B10-458A-B4D9-F246A1459E82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{383207CF-9B10-458A-B4D9-F246A1459E82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{998D4508-F894-48C2-B799-6CC2202C82D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{998D4508-F894-48C2-B799-6CC2202C82D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{998D4508-F894-48C2-B799-6CC2202C82D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{998D4508-F894-48C2-B799-6CC2202C82D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

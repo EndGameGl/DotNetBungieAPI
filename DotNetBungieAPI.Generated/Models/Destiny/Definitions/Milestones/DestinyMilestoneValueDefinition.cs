@@ -8,7 +8,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Milestones;
 public class DestinyMilestoneValueDefinition
 {
     [JsonPropertyName("key")]
-    public string? Key { get; set; }
+    public string Key { get; set; }
 
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }

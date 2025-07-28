@@ -9,17 +9,17 @@ public class FireteamMember
     public User.UserInfoCard? BungieNetUserInfo { get; set; }
 
     [JsonPropertyName("characterId")]
-    public long? CharacterId { get; set; }
+    public long CharacterId { get; set; }
 
     [JsonPropertyName("dateJoined")]
-    public DateTime? DateJoined { get; set; }
+    public DateTime DateJoined { get; set; }
 
     [JsonPropertyName("hasMicrophone")]
-    public bool? HasMicrophone { get; set; }
+    public bool HasMicrophone { get; set; }
 
     [JsonPropertyName("lastPlatformInviteAttemptDate")]
-    public DateTime? LastPlatformInviteAttemptDate { get; set; }
+    public DateTime LastPlatformInviteAttemptDate { get; set; }
 
     [JsonPropertyName("lastPlatformInviteAttemptResult")]
-    public Fireteam.FireteamPlatformInviteResult? LastPlatformInviteAttemptResult { get; set; }
+    public Fireteam.FireteamPlatformInviteResult LastPlatformInviteAttemptResult { get; set; }
 }

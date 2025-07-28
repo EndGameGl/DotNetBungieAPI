@@ -22,13 +22,13 @@ public class DestinySocketCategoryDefinition
     ///     BNet doesn't use it: it's up to you to find valid values and make your own special UI if you want to honor this category style.
     /// </summary>
     [JsonPropertyName("uiCategoryStyle")]
-    public uint? UiCategoryStyle { get; set; }
+    public uint UiCategoryStyle { get; set; }
 
     /// <summary>
     ///     Same as uiCategoryStyle, but in a more usable enumeration form.
     /// </summary>
     [JsonPropertyName("categoryStyle")]
-    public Destiny.DestinySocketCategoryStyle? CategoryStyle { get; set; }
+    public Destiny.DestinySocketCategoryStyle CategoryStyle { get; set; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
@@ -36,17 +36,17 @@ public class DestinySocketCategoryDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint? Hash { get; set; }
+    public uint Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int? Index { get; set; }
+    public int Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool? Redacted { get; set; }
+    public bool Redacted { get; set; }
 }

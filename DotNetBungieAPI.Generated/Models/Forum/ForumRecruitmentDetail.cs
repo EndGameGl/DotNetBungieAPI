@@ -3,32 +3,32 @@ namespace DotNetBungieAPI.Generated.Models.Forum;
 public class ForumRecruitmentDetail
 {
     [JsonPropertyName("topicId")]
-    public long? TopicId { get; set; }
+    public long TopicId { get; set; }
 
     [JsonPropertyName("microphoneRequired")]
-    public bool? MicrophoneRequired { get; set; }
+    public bool MicrophoneRequired { get; set; }
 
     [JsonPropertyName("intensity")]
-    public Forum.ForumRecruitmentIntensityLabel? Intensity { get; set; }
+    public Forum.ForumRecruitmentIntensityLabel Intensity { get; set; }
 
     [JsonPropertyName("tone")]
-    public Forum.ForumRecruitmentToneLabel? Tone { get; set; }
+    public Forum.ForumRecruitmentToneLabel Tone { get; set; }
 
     [JsonPropertyName("approved")]
-    public bool? Approved { get; set; }
+    public bool Approved { get; set; }
 
     [JsonPropertyName("conversationId")]
     public long? ConversationId { get; set; }
 
     [JsonPropertyName("playerSlotsTotal")]
-    public int? PlayerSlotsTotal { get; set; }
+    public int PlayerSlotsTotal { get; set; }
 
     [JsonPropertyName("playerSlotsRemaining")]
-    public int? PlayerSlotsRemaining { get; set; }
+    public int PlayerSlotsRemaining { get; set; }
 
     [JsonPropertyName("Fireteam")]
-    public List<User.GeneralUser> Fireteam { get; set; }
+    public User.GeneralUser[]? Fireteam { get; set; }
 
     [JsonPropertyName("kickedPlayerIds")]
-    public List<long> KickedPlayerIds { get; set; }
+    public long[]? KickedPlayerIds { get; set; }
 }

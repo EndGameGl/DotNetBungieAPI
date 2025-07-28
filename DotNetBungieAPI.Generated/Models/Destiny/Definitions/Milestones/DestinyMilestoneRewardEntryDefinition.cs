@@ -9,19 +9,19 @@ public class DestinyMilestoneRewardEntryDefinition
     ///     The identifier for this reward entry. Runtime data will refer to reward entries by this hash. Only guaranteed unique within the specific Milestone.
     /// </summary>
     [JsonPropertyName("rewardEntryHash")]
-    public uint? RewardEntryHash { get; set; }
+    public uint RewardEntryHash { get; set; }
 
     /// <summary>
     ///     The string identifier, if you care about it. Only guaranteed unique within the specific Milestone.
     /// </summary>
     [JsonPropertyName("rewardEntryIdentifier")]
-    public string? RewardEntryIdentifier { get; set; }
+    public string RewardEntryIdentifier { get; set; }
 
     /// <summary>
     ///     The items you will get as rewards, and how much of it you'll get.
     /// </summary>
     [JsonPropertyName("items")]
-    public List<Destiny.DestinyItemQuantity> Items { get; set; }
+    public Destiny.DestinyItemQuantity[]? Items { get; set; }
 
     /// <summary>
     ///     If this reward is redeemed at a Vendor, this is the hash of the Vendor to go to in order to redeem the reward. Use this hash to look up the DestinyVendorDefinition.
@@ -40,5 +40,5 @@ public class DestinyMilestoneRewardEntryDefinition
     ///     If you want to follow BNet's ordering of these rewards, use this number within a given category to order the rewards. Yeah, I know. I feel dirty too.
     /// </summary>
     [JsonPropertyName("order")]
-    public int? Order { get; set; }
+    public int Order { get; set; }
 }

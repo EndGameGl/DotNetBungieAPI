@@ -4,11 +4,11 @@ public class DestinyArtifactTierItem
 {
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemHash")]
-    public uint? ItemHash { get; set; }
+    public uint ItemHash { get; set; }
 
     [JsonPropertyName("isActive")]
-    public bool? IsActive { get; set; }
+    public bool IsActive { get; set; }
 
     [JsonPropertyName("isVisible")]
-    public bool? IsVisible { get; set; }
+    public bool IsVisible { get; set; }
 }

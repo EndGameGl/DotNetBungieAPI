@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.User;
 public class UserSearchResponseDetail
 {
     [JsonPropertyName("bungieGlobalDisplayName")]
-    public string? BungieGlobalDisplayName { get; set; }
+    public string BungieGlobalDisplayName { get; set; }
 
     [JsonPropertyName("bungieGlobalDisplayNameCode")]
     public short? BungieGlobalDisplayNameCode { get; set; }
@@ -12,5 +12,5 @@ public class UserSearchResponseDetail
     public long? BungieNetMembershipId { get; set; }
 
     [JsonPropertyName("destinyMemberships")]
-    public List<User.UserInfoCard> DestinyMemberships { get; set; }
+    public User.UserInfoCard[]? DestinyMemberships { get; set; }
 }

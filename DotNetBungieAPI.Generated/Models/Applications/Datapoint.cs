@@ -6,7 +6,7 @@ public class Datapoint
     ///     Timestamp for the related count.
     /// </summary>
     [JsonPropertyName("time")]
-    public DateTime? Time { get; set; }
+    public DateTime Time { get; set; }
 
     /// <summary>
     ///     Count associated with timestamp

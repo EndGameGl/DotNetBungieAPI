@@ -13,5 +13,5 @@ public class DestinyMilestoneQuestRewardsDefinition
     ///     For instance, when experience is given there's often a dummy item representing "experience", with quantity being the amount of experience you got. We don't have a programmatic association between those and whatever Progression is actually getting that experience... yet.
     /// </summary>
     [JsonPropertyName("items")]
-    public List<Destiny.Definitions.Milestones.DestinyMilestoneQuestRewardItem> Items { get; set; }
+    public Destiny.Definitions.Milestones.DestinyMilestoneQuestRewardItem[]? Items { get; set; }
 }

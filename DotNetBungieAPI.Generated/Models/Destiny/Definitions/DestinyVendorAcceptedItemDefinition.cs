@@ -14,12 +14,12 @@ public class DestinyVendorAcceptedItemDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryBucketDefinition>("Destiny.Definitions.DestinyInventoryBucketDefinition")]
     [JsonPropertyName("acceptedInventoryBucketHash")]
-    public uint? AcceptedInventoryBucketHash { get; set; }
+    public uint AcceptedInventoryBucketHash { get; set; }
 
     /// <summary>
     ///     This is the bucket where the item being transferred will be put, given that it was being transferred *from* the bucket defined in acceptedInventoryBucketHash.
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryBucketDefinition>("Destiny.Definitions.DestinyInventoryBucketDefinition")]
     [JsonPropertyName("destinationInventoryBucketHash")]
-    public uint? DestinationInventoryBucketHash { get; set; }
+    public uint DestinationInventoryBucketHash { get; set; }
 }

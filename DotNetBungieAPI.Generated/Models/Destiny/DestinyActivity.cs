@@ -12,37 +12,37 @@ public class DestinyActivity
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
-    public uint? ActivityHash { get; set; }
+    public uint ActivityHash { get; set; }
 
     /// <summary>
     ///     If true, then the activity should have a "new" indicator in the Director UI.
     /// </summary>
     [JsonPropertyName("isNew")]
-    public bool? IsNew { get; set; }
+    public bool IsNew { get; set; }
 
     /// <summary>
     ///     If true, the user is allowed to lead a Fireteam into this activity.
     /// </summary>
     [JsonPropertyName("canLead")]
-    public bool? CanLead { get; set; }
+    public bool CanLead { get; set; }
 
     /// <summary>
     ///     If true, the user is allowed to join with another Fireteam in this activity.
     /// </summary>
     [JsonPropertyName("canJoin")]
-    public bool? CanJoin { get; set; }
+    public bool CanJoin { get; set; }
 
     /// <summary>
     ///     If true, we both have the ability to know that the user has completed this activity and they have completed it. Unfortunately, we can't necessarily know this for all activities. As such, this should probably only be used if you already know in advance which specific activities you wish to check.
     /// </summary>
     [JsonPropertyName("isCompleted")]
-    public bool? IsCompleted { get; set; }
+    public bool IsCompleted { get; set; }
 
     /// <summary>
     ///     If true, the user should be able to see this activity.
     /// </summary>
     [JsonPropertyName("isVisible")]
-    public bool? IsVisible { get; set; }
+    public bool IsVisible { get; set; }
 
     /// <summary>
     ///     The difficulty level of the activity, if applicable.
@@ -60,19 +60,19 @@ public class DestinyActivity
     ///     A DestinyActivityDifficultyTier enum value indicating the difficulty of the activity.
     /// </summary>
     [JsonPropertyName("difficultyTier")]
-    public Destiny.DestinyActivityDifficultyTier? DifficultyTier { get; set; }
+    public Destiny.DestinyActivityDifficultyTier DifficultyTier { get; set; }
 
     [JsonPropertyName("challenges")]
-    public List<Destiny.Challenges.DestinyChallengeStatus> Challenges { get; set; }
+    public Destiny.Challenges.DestinyChallengeStatus[]? Challenges { get; set; }
 
     /// <summary>
     ///     If the activity has modifiers, this will be the list of modifiers that all variants have in common. Perform lookups against DestinyActivityModifierDefinition which defines the modifier being applied to get at the modifier data.
     /// <para />
     ///     Note that, in the DestiyActivityDefinition, you will see many more modifiers than this being referred to: those are all *possible* modifiers for the activity, not the active ones. Use only the active ones to match what's really live.
     /// </summary>
-    [Destiny2DefinitionList<Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition>("Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition")]
+    [Destiny2Definition<Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition>("Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition")]
     [JsonPropertyName("modifierHashes")]
-    public List<uint> ModifierHashes { get; set; }
+    public uint[]? ModifierHashes { get; set; }
 
     /// <summary>
     ///     The set of activity options for this activity, keyed by an identifier that's unique for this activity (not guaranteed to be unique between or across all activities, though should be unique for every *variant* of a given *conceptual* activity: for instance, the original D2 Raid has many variant DestinyActivityDefinitions. While other activities could potentially have the same option hashes, for any given D2 base Raid variant the hash will be unique).
@@ -84,7 +84,7 @@ public class DestinyActivity
     ///     On our side, we don't necessarily even know what these are used for (the game designers know, but we don't), and we have no human readable data for them. In order to use them, you will have to do some experimentation.
     /// </summary>
     [JsonPropertyName("booleanActivityOptions")]
-    public Dictionary<uint, bool> BooleanActivityOptions { get; set; }
+    public Dictionary<uint, bool>? BooleanActivityOptions { get; set; }
 
     /// <summary>
     ///     If returned, this is the index into the DestinyActivityDefinition's "loadouts" property, indicating the currently active loadout requirements.

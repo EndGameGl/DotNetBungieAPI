@@ -1,9 +1,5 @@
-﻿using System.Text;
-using System.Text.Json.Serialization;
-using DotNetBungieAPI.OpenApi.Analysis;
+﻿using DotNetBungieAPI.OpenApi.Analysis;
 using DotNetBungieAPI.OpenApi.CodeGeneration;
-using DotNetBungieAPI.OpenApi.Extensions;
-using DotNetBungieAPI.OpenApi.Metadata;
 
 namespace DotNetBungieAPI.OpenApi;
 
@@ -27,6 +23,12 @@ public class CodeBuilder
         params AdditionalFileGenerator[] additionalFileGenerators
     )
     {
+        modelGenerator.Spec = openApiModel;
+        if (methodGroupGenerator is not null)
+        {
+            methodGroupGenerator.Spec = openApiModel;
+        }
+
         var typeTree = new TypeTree();
         typeTree.CreateSchemasTypeTree(openApiModel);
 
@@ -53,11 +55,6 @@ public class CodeBuilder
         if (methodGroupGenerator is not null)
         {
             await CreateApiInterfaces(openApiModel, methodGroupGenerator);
-        }
-
-        foreach (var (responseName, openApiComponentResponse) in openApiModel.Components.Responses)
-        {
-            var schema = openApiComponentResponse.Content.Schema;
         }
     }
 
@@ -95,25 +92,13 @@ public class CodeBuilder
 
             var typeSchema = openApiModel.Components.Schemas[fullTypeName];
 
-            if (typeSchema.Type is "array")
-                return;
-
-            //if (typeSchema.Type is "object" && (typeSchema.Properties is null || !typeSchema.Properties.Any()))
-            //    return;
-
             try
             {
-                var typeData = TypeData.CreateTypeData(fullTypeName, typeSchema);
-                await using var streamWriter = new StreamWriter(currentFile, append: false);
-                modelGenerator.Writer = streamWriter;
-                switch (typeData)
+                if (modelGenerator.CanHandle(typeSchema))
                 {
-                    case ObjectTypeData objectTypeData:
-                        await modelGenerator.GenerateDataForObjectType(objectTypeData);
-                        break;
-                    case EnumTypeData enumTypeData:
-                        await modelGenerator.GenerateDataForEnumType(enumTypeData);
-                        break;
+                    await using var streamWriter = new StreamWriter(currentFile, append: false);
+                    modelGenerator.Writer = streamWriter;
+                    await modelGenerator.GenerateFromSchema(fullTypeName, typeSchema);
                 }
             }
             catch (Exception e)
@@ -128,11 +113,22 @@ public class CodeBuilder
         MethodGroupGeneratorBase methodGroupGenerator
     )
     {
-        var methods = openApiModel
-            .Paths.Select(x => new MethodData(x.Key, x.Value, openApiModel))
-            .ToList();
+        var groups = openApiModel
+            .Paths.GroupBy(x =>
+            {
+                if (x.Value.Get is not null)
+                {
+                    return x.Value.Get.OperationId.Split('.')[0];
+                }
 
-        var groups = methods.GroupBy(x => x.MethodGroup).ToDictionary(x => x.Key, x => x.ToList());
+                if (x.Value.Post is not null)
+                {
+                    return x.Value.Post.OperationId.Split('.')[0];
+                }
+
+                return string.Empty;
+            })
+            .ToDictionary(x => x.Key, x => x);
 
         foreach (var (groupName, groupMethods) in groups)
         {
@@ -144,7 +140,10 @@ public class CodeBuilder
             await using var streamWriter = new StreamWriter(fileName, append: false);
             methodGroupGenerator.Writer = streamWriter;
 
-            await methodGroupGenerator.GenerateMethodGroupAsync(fixedGroupName, groupMethods);
+            await methodGroupGenerator.GenerateMethodGroupAsync(
+                fixedGroupName,
+                groupMethods.Select(x => (x.Key, x.Value)).ToArray()
+            );
         }
     }
 }

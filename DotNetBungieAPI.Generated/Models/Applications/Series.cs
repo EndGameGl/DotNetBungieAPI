@@ -6,11 +6,11 @@ public class Series
     ///     Collection of samples with time and value.
     /// </summary>
     [JsonPropertyName("datapoints")]
-    public List<Applications.Datapoint> Datapoints { get; set; }
+    public Applications.Datapoint[]? Datapoints { get; set; }
 
     /// <summary>
     ///     Target to which to datapoints apply.
     /// </summary>
     [JsonPropertyName("target")]
-    public string? Target { get; set; }
+    public string Target { get; set; }
 }

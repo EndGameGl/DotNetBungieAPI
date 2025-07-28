@@ -7,11 +7,11 @@ public class DestinyHistoricalWeaponStats
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("referenceId")]
-    public uint? ReferenceId { get; set; }
+    public uint ReferenceId { get; set; }
 
     /// <summary>
     ///     Collection of stats for the period.
     /// </summary>
     [JsonPropertyName("values")]
-    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue> Values { get; set; }
+    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue>? Values { get; set; }
 }

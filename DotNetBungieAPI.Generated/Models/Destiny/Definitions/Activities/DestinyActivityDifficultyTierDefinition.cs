@@ -6,40 +6,40 @@ public class DestinyActivityDifficultyTierDefinition
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     [JsonPropertyName("recommendedActivityLevelOffset")]
-    public int? RecommendedActivityLevelOffset { get; set; }
+    public int RecommendedActivityLevelOffset { get; set; }
 
     [JsonPropertyName("fixedActivitySkulls")]
-    public List<Destiny.Definitions.Activities.DestinyActivitySkull> FixedActivitySkulls { get; set; }
+    public Destiny.Definitions.Activities.DestinyActivitySkull[]? FixedActivitySkulls { get; set; }
 
     [JsonPropertyName("tierEnabledUnlockExpression")]
     public Destiny.Definitions.DestinyUnlockExpressionDefinition? TierEnabledUnlockExpression { get; set; }
 
     [JsonPropertyName("tierType")]
-    public Destiny.DestinyActivityDifficultyTierType? TierType { get; set; }
+    public Destiny.DestinyActivityDifficultyTierType TierType { get; set; }
 
     [Destiny2Definition<Destiny.Definitions.Traits.DestinyTraitDefinition>("Destiny.Definitions.Traits.DestinyTraitDefinition")]
     [JsonPropertyName("optionalRequiredTrait")]
     public uint? OptionalRequiredTrait { get; set; }
 
     [JsonPropertyName("activityLevel")]
-    public int? ActivityLevel { get; set; }
+    public int ActivityLevel { get; set; }
 
     [JsonPropertyName("tierRank")]
-    public int? TierRank { get; set; }
+    public int TierRank { get; set; }
 
     [JsonPropertyName("minimumFireteamLeaderPower")]
-    public int? MinimumFireteamLeaderPower { get; set; }
+    public int MinimumFireteamLeaderPower { get; set; }
 
     [JsonPropertyName("maximumFireteamLeaderPower")]
-    public int? MaximumFireteamLeaderPower { get; set; }
+    public int MaximumFireteamLeaderPower { get; set; }
 
     [JsonPropertyName("scoreTimeLimitMultiplier")]
-    public int? ScoreTimeLimitMultiplier { get; set; }
+    public int ScoreTimeLimitMultiplier { get; set; }
 
-    [Destiny2DefinitionList<Destiny.Definitions.Activities.DestinyActivitySelectableSkullCollectionDefinition>("Destiny.Definitions.Activities.DestinyActivitySelectableSkullCollectionDefinition")]
+    [Destiny2Definition<Destiny.Definitions.Activities.DestinyActivitySelectableSkullCollectionDefinition>("Destiny.Definitions.Activities.DestinyActivitySelectableSkullCollectionDefinition")]
     [JsonPropertyName("selectableSkullCollectionHashes")]
-    public List<uint> SelectableSkullCollectionHashes { get; set; }
+    public uint[]? SelectableSkullCollectionHashes { get; set; }
 
     [JsonPropertyName("skullSubcategoryOverrides")]
-    public List<Destiny.Definitions.Activities.DestinyActivityDifficultyTierSubcategoryOverride> SkullSubcategoryOverrides { get; set; }
+    public Destiny.Definitions.Activities.DestinyActivityDifficultyTierSubcategoryOverride[]? SkullSubcategoryOverrides { get; set; }
 }

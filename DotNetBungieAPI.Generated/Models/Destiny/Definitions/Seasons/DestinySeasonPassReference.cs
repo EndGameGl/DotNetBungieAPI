@@ -10,7 +10,7 @@ public class DestinySeasonPassReference
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.Seasons.DestinySeasonPassDefinition>("Destiny.Definitions.Seasons.DestinySeasonPassDefinition")]
     [JsonPropertyName("seasonPassHash")]
-    public uint? SeasonPassHash { get; set; }
+    public uint SeasonPassHash { get; set; }
 
     /// <summary>
     ///     The Season Pass Start Date

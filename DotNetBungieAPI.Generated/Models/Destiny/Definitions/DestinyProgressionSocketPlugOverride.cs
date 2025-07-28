@@ -6,7 +6,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 public class DestinyProgressionSocketPlugOverride
 {
     [JsonPropertyName("socketTypeHash")]
-    public uint? SocketTypeHash { get; set; }
+    public uint SocketTypeHash { get; set; }
 
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("overrideSingleItemHash")]

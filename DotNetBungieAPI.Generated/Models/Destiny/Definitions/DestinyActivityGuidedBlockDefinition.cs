@@ -9,17 +9,17 @@ public class DestinyActivityGuidedBlockDefinition
     ///     The maximum amount of people that can be in the waiting lobby.
     /// </summary>
     [JsonPropertyName("guidedMaxLobbySize")]
-    public int? GuidedMaxLobbySize { get; set; }
+    public int GuidedMaxLobbySize { get; set; }
 
     /// <summary>
     ///     The minimum amount of people that can be in the waiting lobby.
     /// </summary>
     [JsonPropertyName("guidedMinLobbySize")]
-    public int? GuidedMinLobbySize { get; set; }
+    public int GuidedMinLobbySize { get; set; }
 
     /// <summary>
     ///     If -1, the guided group cannot be disbanded. Otherwise, take the total # of players in the activity and subtract this number: that is the total # of votes needed for the guided group to disband.
     /// </summary>
     [JsonPropertyName("guidedDisbandCount")]
-    public int? GuidedDisbandCount { get; set; }
+    public int GuidedDisbandCount { get; set; }
 }

@@ -10,11 +10,11 @@ public interface IUserApi
         long membershipId
     );
 
-    Task<ApiResponse<List<User.Models.GetCredentialTypesForAccountResponse>>> GetCredentialTypesForTargetAccount(
+    Task<ApiResponse<User.Models.GetCredentialTypesForAccountResponse[]>> GetCredentialTypesForTargetAccount(
         long membershipId
     );
 
-    Task<ApiResponse<List<Config.UserTheme>>> GetAvailableThemes();
+    Task<ApiResponse<Config.UserTheme[]>> GetAvailableThemes();
 
     Task<ApiResponse<User.UserMembershipData>> GetMembershipDataById(
         long membershipId,

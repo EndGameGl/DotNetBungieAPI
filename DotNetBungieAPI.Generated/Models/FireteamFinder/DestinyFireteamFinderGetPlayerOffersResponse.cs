@@ -6,5 +6,5 @@ public class DestinyFireteamFinderGetPlayerOffersResponse
     ///     All offers that this player has recieved.
     /// </summary>
     [JsonPropertyName("offers")]
-    public List<FireteamFinder.DestinyFireteamFinderOffer> Offers { get; set; }
+    public FireteamFinder.DestinyFireteamFinderOffer[]? Offers { get; set; }
 }

@@ -5,14 +5,14 @@ namespace DotNetBungieAPI.OpenApi.Models;
 public class OpenApiOAuth2Flow
 {
     [JsonPropertyName("authorizationUrl")]
-    public string AuthorizationUrl { get; init; }
+    public required string AuthorizationUrl { get; init; }
 
     [JsonPropertyName("tokenUrl")]
-    public string TokenUrl { get; init; }
+    public required string TokenUrl { get; init; }
 
     [JsonPropertyName("refreshUrl")]
-    public string RefreshUrl { get; init; }
+    public required string RefreshUrl { get; init; }
 
     [JsonPropertyName("scopes")]
-    public Dictionary<string, string> Scopes { get; init; }
+    public required Dictionary<string, string> Scopes { get; init; }
 }

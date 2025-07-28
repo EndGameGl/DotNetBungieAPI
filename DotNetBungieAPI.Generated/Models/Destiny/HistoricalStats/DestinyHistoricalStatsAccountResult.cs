@@ -9,5 +9,5 @@ public class DestinyHistoricalStatsAccountResult
     public Destiny.HistoricalStats.DestinyHistoricalStatsWithMerged? MergedAllCharacters { get; set; }
 
     [JsonPropertyName("characters")]
-    public List<Destiny.HistoricalStats.DestinyHistoricalStatsPerCharacter> Characters { get; set; }
+    public Destiny.HistoricalStats.DestinyHistoricalStatsPerCharacter[]? Characters { get; set; }
 }

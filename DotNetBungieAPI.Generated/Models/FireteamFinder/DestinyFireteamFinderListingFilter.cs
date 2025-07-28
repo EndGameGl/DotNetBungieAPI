@@ -6,8 +6,8 @@ public class DestinyFireteamFinderListingFilter
     public FireteamFinder.DestinyFireteamFinderListingValue? ListingValue { get; set; }
 
     [JsonPropertyName("rangeType")]
-    public FireteamFinder.DestinyFireteamFinderListingFilterRangeType? RangeType { get; set; }
+    public FireteamFinder.DestinyFireteamFinderListingFilterRangeType RangeType { get; set; }
 
     [JsonPropertyName("matchType")]
-    public FireteamFinder.DestinyFireteamFinderListingFilterMatchType? MatchType { get; set; }
+    public FireteamFinder.DestinyFireteamFinderListingFilterMatchType MatchType { get; set; }
 }

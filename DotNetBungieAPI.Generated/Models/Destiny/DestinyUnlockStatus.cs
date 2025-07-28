@@ -12,11 +12,11 @@ public class DestinyUnlockStatus
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyUnlockDefinition>("Destiny.Definitions.DestinyUnlockDefinition")]
     [JsonPropertyName("unlockHash")]
-    public uint? UnlockHash { get; set; }
+    public uint UnlockHash { get; set; }
 
     /// <summary>
     ///     Whether the unlock flag is set.
     /// </summary>
     [JsonPropertyName("isSet")]
-    public bool? IsSet { get; set; }
+    public bool IsSet { get; set; }
 }

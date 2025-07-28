@@ -6,5 +6,5 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Character;
 public class DestinyCharacterPeerView
 {
     [JsonPropertyName("equipment")]
-    public List<Destiny.Character.DestinyItemPeerView> Equipment { get; set; }
+    public Destiny.Character.DestinyItemPeerView[]? Equipment { get; set; }
 }

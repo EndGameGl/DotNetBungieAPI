@@ -13,5 +13,5 @@ public class DestinyItemPerksComponent
     ///     The list of perks to display in an item tooltip - and whether or not they have been activated.
     /// </summary>
     [JsonPropertyName("perks")]
-    public List<Destiny.Perks.DestinyPerkReference> Perks { get; set; }
+    public Destiny.Perks.DestinyPerkReference[]? Perks { get; set; }
 }

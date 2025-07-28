@@ -9,23 +9,23 @@ public class DestinySeasonPreviewDefinition
     ///     A localized description of the season.
     /// </summary>
     [JsonPropertyName("description")]
-    public string? Description { get; set; }
+    public string Description { get; set; }
 
     /// <summary>
     ///     A relative path to learn more about the season. Web browsers should be automatically redirected to the user's Bungie.net locale. For example: "/SeasonOfTheChosen" will redirect to "/7/en/Seasons/SeasonOfTheChosen" for English users.
     /// </summary>
     [JsonPropertyName("linkPath")]
-    public string? LinkPath { get; set; }
+    public string LinkPath { get; set; }
 
     /// <summary>
     ///     An optional link to a localized video, probably YouTube.
     /// </summary>
     [JsonPropertyName("videoLink")]
-    public string? VideoLink { get; set; }
+    public string VideoLink { get; set; }
 
     /// <summary>
     ///     A list of images to preview the seasonal content. Should have at least three to show.
     /// </summary>
     [JsonPropertyName("images")]
-    public List<Destiny.Definitions.Seasons.DestinySeasonPreviewImageDefinition> Images { get; set; }
+    public Destiny.Definitions.Seasons.DestinySeasonPreviewImageDefinition[]? Images { get; set; }
 }

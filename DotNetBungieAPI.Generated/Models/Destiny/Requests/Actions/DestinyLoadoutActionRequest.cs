@@ -6,11 +6,11 @@ public class DestinyLoadoutActionRequest
     ///     The index of the loadout for this action request.
     /// </summary>
     [JsonPropertyName("loadoutIndex")]
-    public int? LoadoutIndex { get; set; }
+    public int LoadoutIndex { get; set; }
 
     [JsonPropertyName("characterId")]
-    public long? CharacterId { get; set; }
+    public long CharacterId { get; set; }
 
     [JsonPropertyName("membershipType")]
-    public BungieMembershipType? MembershipType { get; set; }
+    public BungieMembershipType MembershipType { get; set; }
 }

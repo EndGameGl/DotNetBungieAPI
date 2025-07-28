@@ -9,5 +9,5 @@ public class DestinyVendorGroupComponent
     ///     The ordered list of groups being returned.
     /// </summary>
     [JsonPropertyName("groups")]
-    public List<Destiny.Components.Vendors.DestinyVendorGroup> Groups { get; set; }
+    public Destiny.Components.Vendors.DestinyVendorGroup[]? Groups { get; set; }
 }

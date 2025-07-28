@@ -6,12 +6,12 @@ public class DestinyItemSetPerkDefinition
     ///     The number of set pieces required to activate the perk.
     /// </summary>
     [JsonPropertyName("requiredSetCount")]
-    public int? RequiredSetCount { get; set; }
+    public int RequiredSetCount { get; set; }
 
     /// <summary>
     ///     The perk this set confers.
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinySandboxPerkDefinition>("Destiny.Definitions.DestinySandboxPerkDefinition")]
     [JsonPropertyName("sandboxPerkHash")]
-    public uint? SandboxPerkHash { get; set; }
+    public uint SandboxPerkHash { get; set; }
 }

@@ -6,23 +6,23 @@ namespace DotNetBungieAPI.Generated.Models.User;
 public class EMailSettingSubscriptionLocalization
 {
     [JsonPropertyName("unknownUserDescription")]
-    public string? UnknownUserDescription { get; set; }
+    public string UnknownUserDescription { get; set; }
 
     [JsonPropertyName("registeredUserDescription")]
-    public string? RegisteredUserDescription { get; set; }
+    public string RegisteredUserDescription { get; set; }
 
     [JsonPropertyName("unregisteredUserDescription")]
-    public string? UnregisteredUserDescription { get; set; }
+    public string UnregisteredUserDescription { get; set; }
 
     [JsonPropertyName("unknownUserActionText")]
-    public string? UnknownUserActionText { get; set; }
+    public string UnknownUserActionText { get; set; }
 
     [JsonPropertyName("knownUserActionText")]
-    public string? KnownUserActionText { get; set; }
+    public string KnownUserActionText { get; set; }
 
     [JsonPropertyName("title")]
-    public string? Title { get; set; }
+    public string Title { get; set; }
 
     [JsonPropertyName("description")]
-    public string? Description { get; set; }
+    public string Description { get; set; }
 }

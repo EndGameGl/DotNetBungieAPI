@@ -6,14 +6,14 @@ public class DestinyRecordCompletionBlock
     ///     The number of objectives that must be completed before the objective is considered "complete"
     /// </summary>
     [JsonPropertyName("partialCompletionObjectiveCountThreshold")]
-    public int? PartialCompletionObjectiveCountThreshold { get; set; }
+    public int PartialCompletionObjectiveCountThreshold { get; set; }
 
     [JsonPropertyName("ScoreValue")]
-    public int? ScoreValue { get; set; }
+    public int ScoreValue { get; set; }
 
     [JsonPropertyName("shouldFireToast")]
-    public bool? ShouldFireToast { get; set; }
+    public bool ShouldFireToast { get; set; }
 
     [JsonPropertyName("toastStyle")]
-    public Destiny.DestinyRecordToastStyle? ToastStyle { get; set; }
+    public Destiny.DestinyRecordToastStyle ToastStyle { get; set; }
 }

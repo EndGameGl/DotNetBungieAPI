@@ -10,50 +10,50 @@ public class DestinyQuestStatus
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("questHash")]
-    public uint? QuestHash { get; set; }
+    public uint QuestHash { get; set; }
 
     /// <summary>
     ///     The hash identifier of the current Quest Step, which is also a DestinyInventoryItemDefinition. You can use this to get human readable data about the current step and what to do in that step.
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("stepHash")]
-    public uint? StepHash { get; set; }
+    public uint StepHash { get; set; }
 
     /// <summary>
     ///     A step can have multiple objectives. This will give you the progress for each objective in the current step, in the order in which they are rendered in-game.
     /// </summary>
     [JsonPropertyName("stepObjectives")]
-    public List<Destiny.Quests.DestinyObjectiveProgress> StepObjectives { get; set; }
+    public Destiny.Quests.DestinyObjectiveProgress[]? StepObjectives { get; set; }
 
     /// <summary>
     ///     Whether or not the quest is tracked
     /// </summary>
     [JsonPropertyName("tracked")]
-    public bool? Tracked { get; set; }
+    public bool Tracked { get; set; }
 
     /// <summary>
     ///     The current Quest Step will be an instanced item in the player's inventory. If you care about that, this is the instance ID of that item.
     /// </summary>
     [JsonPropertyName("itemInstanceId")]
-    public long? ItemInstanceId { get; set; }
+    public long ItemInstanceId { get; set; }
 
     /// <summary>
     ///     Whether or not the whole quest has been completed, regardless of whether or not you have redeemed the rewards for the quest.
     /// </summary>
     [JsonPropertyName("completed")]
-    public bool? Completed { get; set; }
+    public bool Completed { get; set; }
 
     /// <summary>
     ///     Whether or not you have redeemed rewards for this quest.
     /// </summary>
     [JsonPropertyName("redeemed")]
-    public bool? Redeemed { get; set; }
+    public bool Redeemed { get; set; }
 
     /// <summary>
     ///     Whether or not you have started this quest.
     /// </summary>
     [JsonPropertyName("started")]
-    public bool? Started { get; set; }
+    public bool Started { get; set; }
 
     /// <summary>
     ///     If the quest has a related Vendor that you should talk to in order to initiate the quest/earn rewards/continue the quest, this will be the hash identifier of that Vendor. Look it up its DestinyVendorDefinition.

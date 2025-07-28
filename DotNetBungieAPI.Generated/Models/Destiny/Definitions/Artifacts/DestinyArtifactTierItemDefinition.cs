@@ -7,5 +7,5 @@ public class DestinyArtifactTierItemDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("itemHash")]
-    public uint? ItemHash { get; set; }
+    public uint ItemHash { get; set; }
 }

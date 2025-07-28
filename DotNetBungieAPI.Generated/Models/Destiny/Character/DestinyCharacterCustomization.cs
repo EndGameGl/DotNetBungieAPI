@@ -8,38 +8,38 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Character;
 public class DestinyCharacterCustomization
 {
     [JsonPropertyName("personality")]
-    public uint? Personality { get; set; }
+    public uint Personality { get; set; }
 
     [JsonPropertyName("face")]
-    public uint? Face { get; set; }
+    public uint Face { get; set; }
 
     [JsonPropertyName("skinColor")]
-    public uint? SkinColor { get; set; }
+    public uint SkinColor { get; set; }
 
     [JsonPropertyName("lipColor")]
-    public uint? LipColor { get; set; }
+    public uint LipColor { get; set; }
 
     [JsonPropertyName("eyeColor")]
-    public uint? EyeColor { get; set; }
+    public uint EyeColor { get; set; }
 
     [JsonPropertyName("hairColors")]
-    public List<uint> HairColors { get; set; }
+    public uint[]? HairColors { get; set; }
 
     [JsonPropertyName("featureColors")]
-    public List<uint> FeatureColors { get; set; }
+    public uint[]? FeatureColors { get; set; }
 
     [JsonPropertyName("decalColor")]
-    public uint? DecalColor { get; set; }
+    public uint DecalColor { get; set; }
 
     [JsonPropertyName("wearHelmet")]
-    public bool? WearHelmet { get; set; }
+    public bool WearHelmet { get; set; }
 
     [JsonPropertyName("hairIndex")]
-    public int? HairIndex { get; set; }
+    public int HairIndex { get; set; }
 
     [JsonPropertyName("featureIndex")]
-    public int? FeatureIndex { get; set; }
+    public int FeatureIndex { get; set; }
 
     [JsonPropertyName("decalIndex")]
-    public int? DecalIndex { get; set; }
+    public int DecalIndex { get; set; }
 }

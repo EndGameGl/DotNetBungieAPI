@@ -1,5 +1,6 @@
 ﻿using DotNetBungieAPI.OpenApi.CodeGeneration;
-using DotNetBungieAPI.OpenApi.Metadata;
+using DotNetBungieAPI.OpenApi.Models;
+using DotNetBungieAPI.OpenApi.Models.ComponentSchemas;
 
 namespace DotNetBungieAPI.OpenApi.CSharp;
 
@@ -11,7 +12,10 @@ public class CSharpMethodGroupGenerator : MethodGroupGeneratorBase
 
     private const string Indent = "    ";
 
-    public override async Task GenerateMethodGroupAsync(string groupName, List<MethodData> methods)
+    public override async Task GenerateMethodGroupAsync(
+        string groupName,
+        (string ApiPath, OpenApiPath ApiPathInfo)[] methods
+    )
     {
         await WriteLineAsync(NameSpace);
         await WriteLineAsync();
@@ -19,22 +23,19 @@ public class CSharpMethodGroupGenerator : MethodGroupGeneratorBase
         await WriteLineAsync($"public interface I{groupName}Api");
         await WriteLineAsync('{');
 
-        foreach (var method in methods)
+        foreach (var (path, methodData) in methods)
         {
-            var returnParam = method.Response.Properties.First(x =>
-                x.OriginPropertyName == "Response"
-            );
+            var (method, type) = methodData.GetMethod();
+
+            var responseTypeReference = (OpenApiComponentReference)method.Responses["200"];
+            var responseFullType = (OpenApiObjectComponentSchema)
+                Spec.Components.Responses[responseTypeReference.GetReferencedPath()].Schema;
 
             await WriteAsync(
-                $"{Indent}Task<ApiResponse<{returnParam.GetCSharpType()}>> {method.MethodName}"
+                $"{Indent}Task<ApiResponse<{responseFullType.Properties["Response"].GetCSharpType()}>> {method.OperationId.Split('.').Last()}"
             );
 
-            if (
-                method.PathParameters.Count is 0
-                && method.QueryParameters.Count is 0
-                && method.RequestBody is null
-                && !method.RequiresToken
-            )
+            if (method is { Parameters: [] } and { RequestBody: null } and { Security: null or [] })
             {
                 await WriteLineAsync("();");
             }
@@ -44,38 +45,33 @@ public class CSharpMethodGroupGenerator : MethodGroupGeneratorBase
 
                 var parameters = new List<string>();
 
-                foreach (var pathParam in method.PathParameters)
+                foreach (var pathParam in method.Parameters.Where(x => x is { In: "path" }))
                 {
                     parameters.Add(
-                        $"{Indent}{Indent}{pathParam.Type.GetCSharpType()} {pathParam.Name}"
+                        $"{Indent}{Indent}{pathParam.Schema.GetCSharpType()} {pathParam.Name}"
                     );
                 }
 
-                foreach (var queryParam in method.QueryParameters)
+                foreach (var queryParam in method.Parameters.Where(x => x is { In: "query" }))
                 {
+                    if (queryParam.Deprecated.HasValue && queryParam.Deprecated.Value)
+                    {
+                        continue;
+                    }
+
                     parameters.Add(
-                        $"{Indent}{Indent}{queryParam.Type.GetCSharpType()} {queryParam.Name}"
+                        $"{Indent}{Indent}{queryParam.Schema.GetCSharpType()} {queryParam.Name}"
                     );
                 }
 
                 if (method.RequestBody is not null)
                 {
-                    var body = method.RequestBody;
-                    if (method.RequestBodyIsPlain)
-                    {
-                        parameters.Add(
-                            $"{Indent}{Indent}{body.Properties[0].GetCSharpType()} body"
-                        );
-                    }
-                    else
-                    {
-                        parameters.Add(
-                            $"{Indent}{Indent}{body.FullTypeName.GetCSharpPropertyName()} body"
-                        );
-                    }
+                    parameters.Add(
+                        $"{Indent}{Indent}{method.RequestBody.Content["application/json"].Schema.GetCSharpType()} body"
+                    );
                 }
 
-                if (method.RequiresToken)
+                if (method.Security is { Length: > 0 })
                 {
                     parameters.Add($"{Indent}{Indent}string authToken");
                 }

@@ -1,27 +1,34 @@
 ﻿using System.Text.Json.Serialization;
+using DotNetBungieAPI.OpenApi.Models.ComponentSchemas;
 
 namespace DotNetBungieAPI.OpenApi.Models;
 
 public class OpenApiPathMethodInfo
 {
     [JsonPropertyName("tags")]
-    public List<string> Tags { get; set; }
+    public required string[] Tags { get; init; }
 
     [JsonPropertyName("description")]
-    public string Description { get; set; }
+    public required string Description { get; init; }
 
     [JsonPropertyName("operationId")]
-    public string OperationId { get; set; }
+    public required string OperationId { get; init; }
 
     [JsonPropertyName("parameters")]
-    public List<OpenApiPathMethodParameterInfo> Parameters { get; set; }
+    public required OpenApiPathMethodParameterInfo[] Parameters { get; init; }
 
     [JsonPropertyName("requestBody")]
-    public OpenApiPathMethodInfoRequest? RequestBody { get; set; }
+    public OpenApiPathMethodInfoRequest? RequestBody { get; init; }
 
     [JsonPropertyName("responses")]
-    public Dictionary<string, OpenApiComponentSchema> Responses { get; set; }
+    public required Dictionary<string, IOpenApiComponentSchema> Responses { get; init; }
 
     [JsonPropertyName("security")]
-    public List<OpenApiPathMethodSecurity> Security { get; set; }
+    public OpenApiPathMethodSecurity[]? Security { get; init; }
+    
+    [JsonPropertyName("deprecated")]
+    public required bool Deprecated { get; init; }
+    
+    [JsonPropertyName("x-preview")]
+    public bool? IsPreview { get; init; }
 }

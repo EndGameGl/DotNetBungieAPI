@@ -6,7 +6,7 @@ public class DestinyPostGameCarnageReportEntry
     ///     Standing of the player
     /// </summary>
     [JsonPropertyName("standing")]
-    public int? Standing { get; set; }
+    public int Standing { get; set; }
 
     /// <summary>
     ///     Score of the player if available
@@ -24,13 +24,13 @@ public class DestinyPostGameCarnageReportEntry
     ///     ID of the player's character used in the activity.
     /// </summary>
     [JsonPropertyName("characterId")]
-    public long? CharacterId { get; set; }
+    public long CharacterId { get; set; }
 
     /// <summary>
     ///     Collection of stats for the player in this activity.
     /// </summary>
     [JsonPropertyName("values")]
-    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue> Values { get; set; }
+    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue>? Values { get; set; }
 
     /// <summary>
     ///     Extended data extracted from the activity blob.

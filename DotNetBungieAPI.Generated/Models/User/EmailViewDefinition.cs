@@ -9,11 +9,11 @@ public class EmailViewDefinition
     ///     The identifier for this view.
     /// </summary>
     [JsonPropertyName("name")]
-    public string? Name { get; set; }
+    public string Name { get; set; }
 
     /// <summary>
     ///     The ordered list of settings to show in this view.
     /// </summary>
     [JsonPropertyName("viewSettings")]
-    public List<User.EmailViewDefinitionSetting> ViewSettings { get; set; }
+    public User.EmailViewDefinitionSetting[]? ViewSettings { get; set; }
 }

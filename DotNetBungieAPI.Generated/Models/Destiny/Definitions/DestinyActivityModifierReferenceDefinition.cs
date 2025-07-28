@@ -12,5 +12,5 @@ public class DestinyActivityModifierReferenceDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition>("Destiny.Definitions.ActivityModifiers.DestinyActivityModifierDefinition")]
     [JsonPropertyName("activityModifierHash")]
-    public uint? ActivityModifierHash { get; set; }
+    public uint ActivityModifierHash { get; set; }
 }

@@ -10,11 +10,11 @@ public class DestinyStat
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyStatDefinition>("Destiny.Definitions.DestinyStatDefinition")]
     [JsonPropertyName("statHash")]
-    public uint? StatHash { get; set; }
+    public uint StatHash { get; set; }
 
     /// <summary>
     ///     The current value of the Stat.
     /// </summary>
     [JsonPropertyName("value")]
-    public int? Value { get; set; }
+    public int Value { get; set; }
 }

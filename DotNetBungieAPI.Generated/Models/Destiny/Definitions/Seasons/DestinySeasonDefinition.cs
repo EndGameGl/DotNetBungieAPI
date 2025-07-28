@@ -9,10 +9,10 @@ public class DestinySeasonDefinition
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }
 
     [JsonPropertyName("backgroundImagePath")]
-    public string? BackgroundImagePath { get; set; }
+    public string BackgroundImagePath { get; set; }
 
     [JsonPropertyName("seasonNumber")]
-    public int? SeasonNumber { get; set; }
+    public int SeasonNumber { get; set; }
 
     [JsonPropertyName("startDate")]
     public DateTime? StartDate { get; set; }
@@ -24,9 +24,9 @@ public class DestinySeasonDefinition
     [JsonPropertyName("seasonPassHash")]
     public uint? SeasonPassHash { get; set; }
 
-    [Destiny2DefinitionList<Destiny.Definitions.Seasons.DestinySeasonPassDefinition>("Destiny.Definitions.Seasons.DestinySeasonPassDefinition")]
+    [Destiny2Definition<Destiny.Definitions.Seasons.DestinySeasonPassDefinition>("Destiny.Definitions.Seasons.DestinySeasonPassDefinition")]
     [JsonPropertyName("seasonPassList")]
-    public List<Destiny.Definitions.Seasons.DestinySeasonPassReference> SeasonPassList { get; set; }
+    public Destiny.Definitions.Seasons.DestinySeasonPassReference[]? SeasonPassList { get; set; }
 
     [Destiny2Definition<Destiny.Definitions.DestinyProgressionDefinition>("Destiny.Definitions.DestinyProgressionDefinition")]
     [JsonPropertyName("seasonPassProgressionHash")]
@@ -44,7 +44,7 @@ public class DestinySeasonDefinition
     ///     A list of Acts for the Episode
     /// </summary>
     [JsonPropertyName("acts")]
-    public List<Destiny.Definitions.Seasons.DestinySeasonActDefinition> Acts { get; set; }
+    public Destiny.Definitions.Seasons.DestinySeasonActDefinition[]? Acts { get; set; }
 
     [Destiny2Definition<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>("Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition")]
     [JsonPropertyName("seasonalChallengesPresentationNodeHash")]
@@ -62,17 +62,17 @@ public class DestinySeasonDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint? Hash { get; set; }
+    public uint Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int? Index { get; set; }
+    public int Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool? Redacted { get; set; }
+    public bool Redacted { get; set; }
 }

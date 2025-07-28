@@ -11,5 +11,5 @@ public class DestinyItemSocketsComponent
     ///     The list of all sockets on the item, and their status information.
     /// </summary>
     [JsonPropertyName("sockets")]
-    public List<Destiny.Entities.Items.DestinyItemSocketState> Sockets { get; set; }
+    public Destiny.Entities.Items.DestinyItemSocketState[]? Sockets { get; set; }
 }

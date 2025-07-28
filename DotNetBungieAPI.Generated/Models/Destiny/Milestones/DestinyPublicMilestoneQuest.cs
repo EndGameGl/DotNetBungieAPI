@@ -7,7 +7,7 @@ public class DestinyPublicMilestoneQuest
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.Milestones.DestinyMilestoneDefinition>("Destiny.Definitions.Milestones.DestinyMilestoneDefinition")]
     [JsonPropertyName("questItemHash")]
-    public uint? QuestItemHash { get; set; }
+    public uint QuestItemHash { get; set; }
 
     /// <summary>
     ///     A milestone need not have an active activity, but if there is one it will be returned here, along with any variant and additional information.
@@ -19,5 +19,5 @@ public class DestinyPublicMilestoneQuest
     ///     For the given quest there could be 0-to-Many challenges: mini quests that you can perform in the course of doing this quest, that may grant you rewards and benefits.
     /// </summary>
     [JsonPropertyName("challenges")]
-    public List<Destiny.Milestones.DestinyPublicMilestoneChallenge> Challenges { get; set; }
+    public Destiny.Milestones.DestinyPublicMilestoneChallenge[]? Challenges { get; set; }
 }

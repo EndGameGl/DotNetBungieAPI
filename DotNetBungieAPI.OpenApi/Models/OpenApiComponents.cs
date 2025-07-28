@@ -1,18 +1,19 @@
 ﻿using System.Text.Json.Serialization;
+using DotNetBungieAPI.OpenApi.Models.ComponentSchemas;
 
 namespace DotNetBungieAPI.OpenApi.Models;
 
 public class OpenApiComponents
 {
     [JsonPropertyName("schemas")]
-    public Dictionary<string, OpenApiComponentSchema> Schemas { get; init; }
+    public required Dictionary<string, IOpenApiComponentSchema> Schemas { get; init; }
 
     [JsonPropertyName("responses")]
-    public Dictionary<string, OpenApiComponentResponse> Responses { get; init; }
+    public required Dictionary<string, OpenApiComponentResponse> Responses { get; init; }
 
     [JsonPropertyName("headers")]
-    public Dictionary<string, HeaderEntry> Headers { get; init; }
+    public required Dictionary<string, HeaderEntry> Headers { get; init; }
 
     [JsonPropertyName("securitySchemes")]
-    public SecuritySchemes SecuritySchemes { get; init; }
+    public required SecuritySchemes SecuritySchemes { get; init; }
 }

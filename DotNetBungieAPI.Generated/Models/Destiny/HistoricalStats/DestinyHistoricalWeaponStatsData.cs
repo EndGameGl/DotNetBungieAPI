@@ -6,5 +6,5 @@ public class DestinyHistoricalWeaponStatsData
     ///     List of weapons and their perspective values.
     /// </summary>
     [JsonPropertyName("weapons")]
-    public List<Destiny.HistoricalStats.DestinyHistoricalWeaponStats> Weapons { get; set; }
+    public Destiny.HistoricalStats.DestinyHistoricalWeaponStats[]? Weapons { get; set; }
 }

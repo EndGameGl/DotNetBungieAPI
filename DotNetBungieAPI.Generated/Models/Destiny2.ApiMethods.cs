@@ -9,7 +9,7 @@ public interface IDestiny2Api
         uint hashIdentifier
     );
 
-    Task<ApiResponse<List<User.UserInfoCard>>> SearchDestinyPlayerByBungieName(
+    Task<ApiResponse<User.UserInfoCard[]>> SearchDestinyPlayerByBungieName(
         BungieMembershipType membershipType,
         User.ExactSearchRequest body
     );
@@ -23,14 +23,14 @@ public interface IDestiny2Api
     Task<ApiResponse<Destiny.Responses.DestinyProfileResponse>> GetProfile(
         long destinyMembershipId,
         BungieMembershipType membershipType,
-        List<Destiny.DestinyComponentType> components
+        Destiny.DestinyComponentType[] components
     );
 
     Task<ApiResponse<Destiny.Responses.DestinyCharacterResponse>> GetCharacter(
         long characterId,
         long destinyMembershipId,
         BungieMembershipType membershipType,
-        List<Destiny.DestinyComponentType> components
+        Destiny.DestinyComponentType[] components
     );
 
     Task<ApiResponse<Destiny.Milestones.DestinyMilestone>> GetClanWeeklyRewardState(
@@ -43,14 +43,14 @@ public interface IDestiny2Api
         long destinyMembershipId,
         long itemInstanceId,
         BungieMembershipType membershipType,
-        List<Destiny.DestinyComponentType> components
+        Destiny.DestinyComponentType[] components
     );
 
     Task<ApiResponse<Destiny.Responses.DestinyVendorsResponse>> GetVendors(
         long characterId,
         long destinyMembershipId,
         BungieMembershipType membershipType,
-        List<Destiny.DestinyComponentType> components,
+        Destiny.DestinyComponentType[] components,
         Destiny.DestinyVendorFilter filter
     );
 
@@ -59,11 +59,11 @@ public interface IDestiny2Api
         long destinyMembershipId,
         BungieMembershipType membershipType,
         uint vendorHash,
-        List<Destiny.DestinyComponentType> components
+        Destiny.DestinyComponentType[] components
     );
 
     Task<ApiResponse<Destiny.Responses.DestinyPublicVendorsResponse>> GetPublicVendors(
-        List<Destiny.DestinyComponentType> components
+        Destiny.DestinyComponentType[] components
     );
 
     Task<ApiResponse<Destiny.Responses.DestinyCollectibleNodeDetailResponse>> GetCollectibleNodeDetails(
@@ -71,7 +71,7 @@ public interface IDestiny2Api
         uint collectiblePresentationNodeHash,
         long destinyMembershipId,
         BungieMembershipType membershipType,
-        List<Destiny.DestinyComponentType> components
+        Destiny.DestinyComponentType[] components
     );
 
     Task<ApiResponse<int>> TransferItem(
@@ -153,7 +153,7 @@ public interface IDestiny2Api
         string statid
     );
 
-    Task<ApiResponse<List<Destiny.HistoricalStats.DestinyClanAggregateStat>>> GetClanAggregateStats(
+    Task<ApiResponse<Destiny.HistoricalStats.DestinyClanAggregateStat[]>> GetClanAggregateStats(
         long groupId,
         string modes
     );
@@ -187,15 +187,15 @@ public interface IDestiny2Api
         BungieMembershipType membershipType,
         DateTime dayend,
         DateTime daystart,
-        List<Destiny.HistoricalStats.Definitions.DestinyStatsGroupType> groups,
-        List<Destiny.HistoricalStats.Definitions.DestinyActivityModeType> modes,
+        Destiny.HistoricalStats.Definitions.DestinyStatsGroupType[] groups,
+        Destiny.HistoricalStats.Definitions.DestinyActivityModeType[] modes,
         Destiny.HistoricalStats.Definitions.PeriodType periodType
     );
 
     Task<ApiResponse<Destiny.HistoricalStats.DestinyHistoricalStatsAccountResult>> GetHistoricalStatsForAccount(
         long destinyMembershipId,
         BungieMembershipType membershipType,
-        List<Destiny.HistoricalStats.Definitions.DestinyStatsGroupType> groups
+        Destiny.HistoricalStats.Definitions.DestinyStatsGroupType[] groups
     );
 
     Task<ApiResponse<Destiny.HistoricalStats.DestinyActivityHistoryResults>> GetActivityHistory(

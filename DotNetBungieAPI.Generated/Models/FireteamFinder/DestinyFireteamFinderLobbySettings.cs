@@ -3,28 +3,28 @@ namespace DotNetBungieAPI.Generated.Models.FireteamFinder;
 public class DestinyFireteamFinderLobbySettings
 {
     [JsonPropertyName("maxPlayerCount")]
-    public int? MaxPlayerCount { get; set; }
+    public int MaxPlayerCount { get; set; }
 
     [JsonPropertyName("onlinePlayersOnly")]
-    public bool? OnlinePlayersOnly { get; set; }
+    public bool OnlinePlayersOnly { get; set; }
 
     [JsonPropertyName("privacyScope")]
-    public FireteamFinder.DestinyFireteamFinderLobbyPrivacyScope? PrivacyScope { get; set; }
+    public FireteamFinder.DestinyFireteamFinderLobbyPrivacyScope PrivacyScope { get; set; }
 
     [JsonPropertyName("scheduledDateTime")]
-    public DateTime? ScheduledDateTime { get; set; }
+    public DateTime ScheduledDateTime { get; set; }
 
     [JsonPropertyName("clanId")]
-    public long? ClanId { get; set; }
+    public long ClanId { get; set; }
 
     [JsonPropertyName("listingValues")]
-    public List<FireteamFinder.DestinyFireteamFinderListingValue> ListingValues { get; set; }
+    public FireteamFinder.DestinyFireteamFinderListingValue[]? ListingValues { get; set; }
 
     [Destiny2Definition<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition>("Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition")]
     [JsonPropertyName("activityGraphHash")]
-    public uint? ActivityGraphHash { get; set; }
+    public uint ActivityGraphHash { get; set; }
 
     [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
-    public uint? ActivityHash { get; set; }
+    public uint ActivityHash { get; set; }
 }

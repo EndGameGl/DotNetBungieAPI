@@ -10,7 +10,7 @@ public class DestinyMilestoneActivityVariant
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("activityHash")]
-    public uint? ActivityHash { get; set; }
+    public uint ActivityHash { get; set; }
 
     /// <summary>
     ///     An OPTIONAL component: if it makes sense to talk about this activity variant in terms of whether or not it has been completed or what progress you have made in it, this will be returned. Otherwise, this will be NULL.
@@ -29,5 +29,5 @@ public class DestinyMilestoneActivityVariant
     ///     The enumeration equivalent of the most specific Activity Mode under which this activity is played.
     /// </summary>
     [JsonPropertyName("activityModeType")]
-    public int? ActivityModeType { get; set; }
+    public Destiny.HistoricalStats.Definitions.DestinyActivityModeType? ActivityModeType { get; set; }
 }

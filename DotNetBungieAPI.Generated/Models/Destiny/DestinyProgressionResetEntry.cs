@@ -8,8 +8,8 @@ namespace DotNetBungieAPI.Generated.Models.Destiny;
 public class DestinyProgressionResetEntry
 {
     [JsonPropertyName("season")]
-    public int? Season { get; set; }
+    public int Season { get; set; }
 
     [JsonPropertyName("resets")]
-    public int? Resets { get; set; }
+    public int Resets { get; set; }
 }

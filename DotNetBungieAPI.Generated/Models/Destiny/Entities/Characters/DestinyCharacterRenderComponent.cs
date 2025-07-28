@@ -11,7 +11,7 @@ public class DestinyCharacterRenderComponent
     ///     Custom dyes, calculated by iterating over the character's equipped items. Useful for pre-fetching all of the dye data needed from our server.
     /// </summary>
     [JsonPropertyName("customDyes")]
-    public List<Destiny.DyeReference> CustomDyes { get; set; }
+    public Destiny.DyeReference[]? CustomDyes { get; set; }
 
     /// <summary>
     ///     This is actually something that Spasm.js *doesn't* do right now, and that we don't return assets for yet. This is the data about what character customization options you picked. You can combine this with DestinyCharacterCustomizationOptionDefinition to show some cool info, and hopefully someday to actually render a user's face in 3D. We'll see if we ever end up with time for that.

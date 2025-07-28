@@ -6,7 +6,7 @@ public class SingleComponentResponseOfDestinyItemPerksComponent
     public Destiny.Entities.Items.DestinyItemPerksComponent? Data { get; set; }
 
     [JsonPropertyName("privacy")]
-    public Components.ComponentPrivacySetting? Privacy { get; set; }
+    public Components.ComponentPrivacySetting Privacy { get; set; }
 
     /// <summary>
     ///     If true, this component is disabled.

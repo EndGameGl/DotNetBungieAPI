@@ -5,14 +5,19 @@ namespace DotNetBungieAPI.OpenApi.Models;
 public class OpenApiPath
 {
     [JsonPropertyName("summary")]
-    public string Summary { get; set; }
+    public required string Summary { get; set; }
 
     [JsonPropertyName("description")]
-    public string Description { get; set; }
+    public required string Description { get; set; }
 
     [JsonPropertyName("get")]
     public OpenApiPathMethodInfo? Get { get; set; }
 
     [JsonPropertyName("post")]
     public OpenApiPathMethodInfo? Post { get; set; }
+
+    public (OpenApiPathMethodInfo, string MethodType) GetMethod()
+    {
+        return Get is null ? (Post!, "POST") : (Get!, "GET");
+    }
 }

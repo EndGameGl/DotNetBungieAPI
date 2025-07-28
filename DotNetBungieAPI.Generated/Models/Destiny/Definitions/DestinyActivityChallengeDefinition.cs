@@ -10,7 +10,7 @@ public class DestinyActivityChallengeDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyObjectiveDefinition>("Destiny.Definitions.DestinyObjectiveDefinition")]
     [JsonPropertyName("objectiveHash")]
-    public uint? ObjectiveHash { get; set; }
+    public uint ObjectiveHash { get; set; }
 
     /// <summary>
     ///     The rewards as they're represented in the UI. Note that they generally link to "dummy" items that give a summary of rewards rather than direct, real items themselves.
@@ -18,5 +18,5 @@ public class DestinyActivityChallengeDefinition
     ///     If the quantity is 0, don't show the quantity.
     /// </summary>
     [JsonPropertyName("dummyRewards")]
-    public List<Destiny.DestinyItemQuantity> DummyRewards { get; set; }
+    public Destiny.DestinyItemQuantity[]? DummyRewards { get; set; }
 }

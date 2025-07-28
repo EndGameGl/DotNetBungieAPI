@@ -14,7 +14,7 @@ public class DestinyMilestoneActivityDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("conceptualActivityHash")]
-    public uint? ConceptualActivityHash { get; set; }
+    public uint ConceptualActivityHash { get; set; }
 
     /// <summary>
     ///     A milestone-referenced activity can have many variants, such as Tiers or alternative modes of play.
@@ -25,7 +25,7 @@ public class DestinyMilestoneActivityDefinition
     /// <para />
     ///     If a Milestone could ever split the variants' active status conditionally, they should all have their own DestinyMilestoneActivityDefinition instead! The potential duplication will be worth it for the obviousness of processing and use.
     /// </summary>
-    [Destiny2DefinitionDictionaryKey<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
+    [Destiny2Definition<Destiny.Definitions.DestinyActivityDefinition>("Destiny.Definitions.DestinyActivityDefinition")]
     [JsonPropertyName("variants")]
-    public Dictionary<uint, Destiny.Definitions.Milestones.DestinyMilestoneActivityVariantDefinition> Variants { get; set; }
+    public Dictionary<uint, Destiny.Definitions.Milestones.DestinyMilestoneActivityVariantDefinition>? Variants { get; set; }
 }

@@ -6,8 +6,8 @@ namespace DotNetBungieAPI.Generated.Models.User;
 public class EMailSettingLocalization
 {
     [JsonPropertyName("title")]
-    public string? Title { get; set; }
+    public string Title { get; set; }
 
     [JsonPropertyName("description")]
-    public string? Description { get; set; }
+    public string Description { get; set; }
 }

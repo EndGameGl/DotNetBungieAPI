@@ -6,28 +6,28 @@ public class AwaAuthorizationResult
     ///     Indication of how the user responded to the request. If the value is "Approved" the actionToken will contain the token that can be presented when performing the advanced write action.
     /// </summary>
     [JsonPropertyName("userSelection")]
-    public Destiny.Advanced.AwaUserSelection? UserSelection { get; set; }
+    public Destiny.Advanced.AwaUserSelection UserSelection { get; set; }
 
     [JsonPropertyName("responseReason")]
-    public Destiny.Advanced.AwaResponseReason? ResponseReason { get; set; }
+    public Destiny.Advanced.AwaResponseReason ResponseReason { get; set; }
 
     /// <summary>
     ///     Message to the app developer to help understand the response.
     /// </summary>
     [JsonPropertyName("developerNote")]
-    public string? DeveloperNote { get; set; }
+    public string DeveloperNote { get; set; }
 
     /// <summary>
     ///     Credential used to prove the user authorized an advanced write action.
     /// </summary>
     [JsonPropertyName("actionToken")]
-    public string? ActionToken { get; set; }
+    public string ActionToken { get; set; }
 
     /// <summary>
     ///     This token may be used to perform the requested action this number of times, at a maximum. If this value is 0, then there is no limit.
     /// </summary>
     [JsonPropertyName("maximumNumberOfUses")]
-    public int? MaximumNumberOfUses { get; set; }
+    public int MaximumNumberOfUses { get; set; }
 
     /// <summary>
     ///     Time, UTC, when token expires.
@@ -39,11 +39,11 @@ public class AwaAuthorizationResult
     ///     Advanced Write Action Type from the permission request.
     /// </summary>
     [JsonPropertyName("type")]
-    public Destiny.Advanced.AwaType? Type { get; set; }
+    public Destiny.Advanced.AwaType Type { get; set; }
 
     /// <summary>
     ///     MembershipType from the permission request.
     /// </summary>
     [JsonPropertyName("membershipType")]
-    public BungieMembershipType? MembershipType { get; set; }
+    public BungieMembershipType MembershipType { get; set; }
 }

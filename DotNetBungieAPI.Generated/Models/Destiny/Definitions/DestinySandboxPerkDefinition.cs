@@ -25,13 +25,13 @@ public class DestinySandboxPerkDefinition
     ///     The string identifier for the perk.
     /// </summary>
     [JsonPropertyName("perkIdentifier")]
-    public string? PerkIdentifier { get; set; }
+    public string PerkIdentifier { get; set; }
 
     /// <summary>
     ///     If true, you can actually show the perk in the UI. Otherwise, it doesn't have useful player-facing information.
     /// </summary>
     [JsonPropertyName("isDisplayable")]
-    public bool? IsDisplayable { get; set; }
+    public bool IsDisplayable { get; set; }
 
     /// <summary>
     ///     If this perk grants a damage type to a weapon, the damage type will be defined here.
@@ -39,7 +39,7 @@ public class DestinySandboxPerkDefinition
     ///     Unless you have a compelling reason to use this enum value, use the damageTypeHash instead to look up the actual DestinyDamageTypeDefinition.
     /// </summary>
     [JsonPropertyName("damageType")]
-    public Destiny.DamageType? DamageType { get; set; }
+    public Destiny.DamageType DamageType { get; set; }
 
     /// <summary>
     ///     The hash identifier for looking up the DestinyDamageTypeDefinition, if this perk has a damage type.
@@ -56,17 +56,17 @@ public class DestinySandboxPerkDefinition
     ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
     /// </summary>
     [JsonPropertyName("hash")]
-    public uint? Hash { get; set; }
+    public uint Hash { get; set; }
 
     /// <summary>
     ///     The index of the entity as it was found in the investment tables.
     /// </summary>
     [JsonPropertyName("index")]
-    public int? Index { get; set; }
+    public int Index { get; set; }
 
     /// <summary>
     ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
     /// </summary>
     [JsonPropertyName("redacted")]
-    public bool? Redacted { get; set; }
+    public bool Redacted { get; set; }
 }

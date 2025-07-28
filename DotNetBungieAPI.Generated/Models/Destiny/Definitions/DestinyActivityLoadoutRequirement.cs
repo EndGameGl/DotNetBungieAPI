@@ -4,12 +4,12 @@ public class DestinyActivityLoadoutRequirement
 {
     [Destiny2Definition<Destiny.Definitions.DestinyEquipmentSlotDefinition>("Destiny.Definitions.DestinyEquipmentSlotDefinition")]
     [JsonPropertyName("equipmentSlotHash")]
-    public uint? EquipmentSlotHash { get; set; }
+    public uint EquipmentSlotHash { get; set; }
 
-    [Destiny2DefinitionList<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
+    [Destiny2Definition<Destiny.Definitions.DestinyInventoryItemDefinition>("Destiny.Definitions.DestinyInventoryItemDefinition")]
     [JsonPropertyName("allowedEquippedItemHashes")]
-    public List<uint> AllowedEquippedItemHashes { get; set; }
+    public uint[]? AllowedEquippedItemHashes { get; set; }
 
     [JsonPropertyName("allowedWeaponSubTypes")]
-    public List<Destiny.DestinyItemSubType> AllowedWeaponSubTypes { get; set; }
+    public Destiny.DestinyItemSubType[]? AllowedWeaponSubTypes { get; set; }
 }

@@ -6,7 +6,7 @@ public class DestinyPostGameCarnageReportTeamEntry
     ///     Integer ID for the team.
     /// </summary>
     [JsonPropertyName("teamId")]
-    public int? TeamId { get; set; }
+    public int TeamId { get; set; }
 
     /// <summary>
     ///     Team's standing relative to other teams.
@@ -24,5 +24,5 @@ public class DestinyPostGameCarnageReportTeamEntry
     ///     Alpha or Bravo
     /// </summary>
     [JsonPropertyName("teamName")]
-    public string? TeamName { get; set; }
+    public string TeamName { get; set; }
 }

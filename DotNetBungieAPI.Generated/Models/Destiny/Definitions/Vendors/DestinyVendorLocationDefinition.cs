@@ -10,11 +10,11 @@ public class DestinyVendorLocationDefinition
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.DestinyDestinationDefinition>("Destiny.Definitions.DestinyDestinationDefinition")]
     [JsonPropertyName("destinationHash")]
-    public uint? DestinationHash { get; set; }
+    public uint DestinationHash { get; set; }
 
     /// <summary>
     ///     The relative path to the background image representing this Vendor at this location, for use in a banner.
     /// </summary>
     [JsonPropertyName("backgroundImagePath")]
-    public string? BackgroundImagePath { get; set; }
+    public string BackgroundImagePath { get; set; }
 }

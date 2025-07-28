@@ -6,5 +6,5 @@ public class DestinyActivityLoadoutRequirementSet
     ///     The set of requirements that will be applied on the activity if this requirement set is active.
     /// </summary>
     [JsonPropertyName("requirements")]
-    public List<Destiny.Definitions.DestinyActivityLoadoutRequirement> Requirements { get; set; }
+    public Destiny.Definitions.DestinyActivityLoadoutRequirement[]? Requirements { get; set; }
 }
