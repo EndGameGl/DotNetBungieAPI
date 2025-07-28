@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.BreakerTypes;
 
-public class DestinyBreakerTypeDefinition
+public class DestinyBreakerTypeDefinition : IDestinyDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }

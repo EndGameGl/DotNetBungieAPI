@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Progression;
 /// <para />
 ///     For instance, say a character receives a new Auto Rifle, and that Auto Rifle's DestinyInventoryItemDefinition.quality.progressionLevelRequirementHash property is pointing at one of these DestinyProgressionLevelRequirementDefinitions. Let's pretend also that the progressionHash it is pointing at is the Character Level progression. In that situation, the character's level will be used to interpolate a value in the requirementCurve property. The value picked up from that interpolation will be the required level for the item.
 /// </summary>
-public class DestinyProgressionLevelRequirementDefinition
+public class DestinyProgressionLevelRequirementDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     A curve of level requirements, weighted by the related progressions' level.

@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Activities;
 
-public class DestinyActivityDifficultyTierCollectionDefinition
+public class DestinyActivityDifficultyTierCollectionDefinition : IDestinyDefinition
 {
     [JsonPropertyName("difficultyTiers")]
     public Destiny.Definitions.Activities.DestinyActivityDifficultyTierDefinition[]? DifficultyTiers { get; set; }

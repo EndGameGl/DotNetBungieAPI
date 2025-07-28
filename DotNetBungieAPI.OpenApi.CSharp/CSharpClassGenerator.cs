@@ -132,7 +132,15 @@ public class CSharpClassGenerator : ModelGeneratorBase
             await WriteComment(false, schema.Description);
         }
 
-        await WriteLineAsync($"public class {typeName.Split('.').Last()}");
+        if (schema.MobileManifestName is not null && schema.Properties.ContainsKey("hash"))
+        {
+            await WriteLineAsync($"public class {typeName.Split('.').Last()} : IDestinyDefinition");
+        }
+        else
+        {
+            await WriteLineAsync($"public class {typeName.Split('.').Last()}");
+        }
+        
         await WriteLineAsync('{');
 
         var totalValues = schema.Properties.Count;

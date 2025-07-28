@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     A variety of other entities refer to these as gatekeepers and payments for actions that can be performed in game.
 /// </summary>
-public class DestinyMaterialRequirementSetDefinition
+public class DestinyMaterialRequirementSetDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     The list of all materials that are required.

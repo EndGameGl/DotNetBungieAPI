@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Activities;
 
-public class DestinyActivityLoadoutRestrictionDefinition
+public class DestinyActivityLoadoutRestrictionDefinition : IDestinyDefinition
 {
     [JsonPropertyName("restrictedItemFilterHash")]
     public uint RestrictedItemFilterHash { get; set; }

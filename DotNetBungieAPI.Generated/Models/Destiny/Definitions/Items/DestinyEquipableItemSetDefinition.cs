@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Items;
 /// <summary>
 ///     Perks that are active only when you have a certain number of set items equipped.
 /// </summary>
-public class DestinyEquipableItemSetDefinition
+public class DestinyEquipableItemSetDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     Display Properties, including name and icon, for this item set

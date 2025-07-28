@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     If you don't want to do these calculations on your own, fear not: pulling live data from the BNet endpoints will return display stat values pre-computed and ready for you to use. I highly recommend this approach, saves a lot of time and also accounts for certain stat modifiers that can't easily be accounted for without live data (such as stat modifiers on Talent Grids and Socket Plugs)
 /// </summary>
-public class DestinyStatGroupDefinition
+public class DestinyStatGroupDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     The maximum possible value that any stat in this group can be transformed into.

@@ -9,7 +9,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Sockets;
 /// <para />
 ///      DisplayProperties, in particular, will no longer be guaranteed to contain valid information. We will make a best effort to guess what ought to be populated there where possible, but it will be invalid for many/most plug sets.
 /// </summary>
-public class DestinyPlugSetDefinition
+public class DestinyPlugSetDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     If you want to show these plugs in isolation, these are the display properties for them.

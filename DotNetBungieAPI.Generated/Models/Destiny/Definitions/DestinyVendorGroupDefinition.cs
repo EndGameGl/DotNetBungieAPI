@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Using this will let you group your vendors in your UI in a similar manner to how we will do grouping in the Companion.
 /// </summary>
-public class DestinyVendorGroupDefinition
+public class DestinyVendorGroupDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     The recommended order in which to render the groups, Ascending order.

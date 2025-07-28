@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Activities;
 
-public class DestinyActivitySkullSubcategoryDefinition
+public class DestinyActivitySkullSubcategoryDefinition : IDestinyDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }

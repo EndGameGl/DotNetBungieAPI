@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <summary>
 ///     All damage types that are possible in the game are defined here, along with localized info and icons as needed.
 /// </summary>
-public class DestinyDamageTypeDefinition
+public class DestinyDamageTypeDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     The description of the damage type, icon etc...

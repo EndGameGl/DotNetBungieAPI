@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.ActivityModifiers
 /// <summary>
 ///     Modifiers - in Destiny 1, these were referred to as "Skulls" - are changes that can be applied to an Activity.
 /// </summary>
-public class DestinyActivityModifierDefinition
+public class DestinyActivityModifierDefinition : IDestinyDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }

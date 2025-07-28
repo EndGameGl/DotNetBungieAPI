@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.EnergyTypes;
 /// <summary>
 ///     Represents types of Energy that can be used for costs and payments related to Armor 2.0 mods.
 /// </summary>
-public class DestinyEnergyTypeDefinition
+public class DestinyEnergyTypeDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     The description of the energy type, icon etc...

@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Sockets;
 /// <para />
 ///     See DestinyInventoryItemDefinition for more information about Socketed items and Plugs.
 /// </summary>
-public class DestinySocketTypeDefinition
+public class DestinySocketTypeDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     There are fields for this display data, but they appear to be unpopulated as of now. I am not sure where in the UI these would show if they even were populated, but I will continue to return this data in case it becomes useful.

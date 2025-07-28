@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.FireteamFinder;
 
-public class DestinyFireteamFinderActivitySetDefinition
+public class DestinyFireteamFinderActivitySetDefinition : IDestinyDefinition
 {
     [JsonPropertyName("maximumPartySize")]
     public int MaximumPartySize { get; set; }

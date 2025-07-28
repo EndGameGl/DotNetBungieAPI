@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Loadouts;
 
-public class DestinyLoadoutColorDefinition
+public class DestinyLoadoutColorDefinition : IDestinyDefinition
 {
     [JsonPropertyName("colorImagePath")]
     public string ColorImagePath { get; set; }

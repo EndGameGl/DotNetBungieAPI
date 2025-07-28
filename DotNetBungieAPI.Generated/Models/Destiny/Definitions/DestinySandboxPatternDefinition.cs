@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 
-public class DestinySandboxPatternDefinition
+public class DestinySandboxPatternDefinition : IDestinyDefinition
 {
     [JsonPropertyName("patternHash")]
     public uint PatternHash { get; set; }

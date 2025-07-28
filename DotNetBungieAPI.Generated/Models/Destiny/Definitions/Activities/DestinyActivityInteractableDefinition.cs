@@ -7,7 +7,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Activities;
 /// <para />
 ///     Sadly, we don't get any *really* good data for them, like positional data... yet. I have hopes for future data that we could put on this.
 /// </summary>
-public class DestinyActivityInteractableDefinition
+public class DestinyActivityInteractableDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     The possible interactables in this activity interactable definition.

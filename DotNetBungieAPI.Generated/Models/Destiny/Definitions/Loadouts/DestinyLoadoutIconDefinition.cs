@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Loadouts;
 
-public class DestinyLoadoutIconDefinition
+public class DestinyLoadoutIconDefinition : IDestinyDefinition
 {
     [JsonPropertyName("iconImagePath")]
     public string IconImagePath { get; set; }

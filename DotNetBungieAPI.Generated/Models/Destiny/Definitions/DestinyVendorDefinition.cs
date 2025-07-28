@@ -19,7 +19,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Since Vendors are so many things to so many parts of the game, the definition is understandably complex. You will want to combine this data with live Vendor information from the API when it is available.
 /// </summary>
-public class DestinyVendorDefinition
+public class DestinyVendorDefinition : IDestinyDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.DestinyVendorDisplayPropertiesDefinition? DisplayProperties { get; set; }

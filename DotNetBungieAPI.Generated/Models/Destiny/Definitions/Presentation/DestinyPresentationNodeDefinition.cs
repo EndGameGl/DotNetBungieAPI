@@ -11,7 +11,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Presentation;
 /// <para />
 ///     We'll see if I come to regret this as well.
 /// </summary>
-public class DestinyPresentationNodeDefinition
+public class DestinyPresentationNodeDefinition : IDestinyDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }

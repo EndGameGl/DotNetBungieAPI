@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Activities;
 
-public class DestinyActivityFamilyDefinition
+public class DestinyActivityFamilyDefinition : IDestinyDefinition
 {
     [Destiny2Definition<Destiny.Definitions.Traits.DestinyTraitDefinition>("Destiny.Definitions.Traits.DestinyTraitDefinition")]
     [JsonPropertyName("traits")]

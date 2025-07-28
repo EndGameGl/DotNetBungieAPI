@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Items;
 
-public class DestinyInventoryItemConstantsDefinition
+public class DestinyInventoryItemConstantsDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     Gear tier overlay images

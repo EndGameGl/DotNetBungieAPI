@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Collectibles;
 /// <summary>
 ///     Defines a
 /// </summary>
-public class DestinyCollectibleDefinition
+public class DestinyCollectibleDefinition : IDestinyDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }

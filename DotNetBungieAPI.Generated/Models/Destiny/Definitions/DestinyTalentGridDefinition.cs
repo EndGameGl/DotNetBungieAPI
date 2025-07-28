@@ -13,7 +13,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     DestinyInventoryItem.talentGrid.talentGridHash defines an item's linked Talent Grid, which brings you to this definition that contains enough satic data about talent grids to make your head spin. These *must* be combined with instanced data - found when live data returns DestinyItemTalentGridComponent - in order to derive meaning. The instanced data will reference nodes and steps within these definitions, which you will then have to look up in the definition and combine with the instanced data to give the user the visual representation of their item's talent grid.
 /// </summary>
-public class DestinyTalentGridDefinition
+public class DestinyTalentGridDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     The maximum possible level of the Talent Grid: at this level, any nodes are allowed to be activated.

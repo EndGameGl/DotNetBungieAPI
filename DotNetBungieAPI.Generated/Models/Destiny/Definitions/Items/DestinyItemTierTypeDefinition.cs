@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Items;
 /// <para />
 ///     It also provides some base data for infusion that could be useful.
 /// </summary>
-public class DestinyItemTierTypeDefinition
+public class DestinyItemTierTypeDefinition : IDestinyDefinition
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; set; }

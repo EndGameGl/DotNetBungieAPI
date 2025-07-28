@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Inventory;
 /// <summary>
 ///     Lists of items that can be used for a variety of purposes, including featuring them as new gear
 /// </summary>
-public class DestinyItemFilterDefinition
+public class DestinyItemFilterDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     The items in this set

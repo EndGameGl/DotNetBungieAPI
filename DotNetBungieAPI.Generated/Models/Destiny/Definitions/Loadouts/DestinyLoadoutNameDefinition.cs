@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Loadouts;
 
-public class DestinyLoadoutNameDefinition
+public class DestinyLoadoutNameDefinition : IDestinyDefinition
 {
     [JsonPropertyName("name")]
     public string Name { get; set; }

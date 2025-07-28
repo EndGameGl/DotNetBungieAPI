@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions.Activities;
 
-public class DestinyActivitySelectableSkullExclusionGroupDefinition
+public class DestinyActivitySelectableSkullExclusionGroupDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

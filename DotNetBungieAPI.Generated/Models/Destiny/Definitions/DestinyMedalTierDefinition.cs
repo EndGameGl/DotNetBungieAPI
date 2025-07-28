@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     Unfortunately, we haven't had time to do this evaluation yet in Destiny 2, so we're short on Medal Tiers. This will hopefully be updated over time, if Medals continue to exist.
 /// </summary>
-public class DestinyMedalTierDefinition
+public class DestinyMedalTierDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     The name of the tier.
