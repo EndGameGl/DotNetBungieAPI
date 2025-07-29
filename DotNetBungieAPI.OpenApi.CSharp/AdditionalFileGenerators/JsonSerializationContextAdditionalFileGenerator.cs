@@ -12,7 +12,7 @@ public class JsonSerializationContextAdditionalFileGenerator : AdditionalFileGen
         await WriteLineAsync("namespace DotNetBungieAPI.Generated.Models;");
         await WriteLineAsync();
 
-        foreach (var (typeName, typeSchema) in openApiModel.Components.Schemas)
+        foreach (var (typeName, typeSchema) in openApiModel.Components.Schemas.OrderBy(x => x.Key))
         {
             if (
                 typeSchema
