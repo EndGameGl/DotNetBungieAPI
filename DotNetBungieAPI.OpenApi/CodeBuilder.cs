@@ -1,11 +1,19 @@
-﻿using DotNetBungieAPI.OpenApi.Analysis;
+﻿using System.Net.Http.Json;
+using System.Text.Json;
+using DotNetBungieAPI.OpenApi.Analysis;
 using DotNetBungieAPI.OpenApi.CodeGeneration;
+using DotNetBungieAPI.OpenApi.Serialization;
 
 namespace DotNetBungieAPI.OpenApi;
 
 public class CodeBuilder
 {
+    private const string OpenApiSpecLink =
+        "https://raw.githubusercontent.com/Bungie-net/api/master/openapi.json";
+
     private readonly string _destinationFolder;
+
+    private Models.OpenApi _spec = null!;
 
     public CodeBuilder(string destinationFolder)
     {
@@ -16,21 +24,44 @@ public class CodeBuilder
         }
     }
 
-    public async Task BuildBareDefinitions(
-        Models.OpenApi openApiModel,
+    public async Task<bool> LoadSpecAsync()
+    {
+        try
+        {
+            var httpClient = new HttpClient();
+            _spec = await httpClient.GetFromJsonAsync<Models.OpenApi>(
+                OpenApiSpecLink,
+                new JsonSerializerOptions()
+                {
+                    Converters = { new IOpenApiComponentSchemaSerializer() }
+                }
+            );
+
+            ArgumentNullException.ThrowIfNull(_spec);
+
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return false;
+        }
+    }
+
+    public async Task BuildDefinitions(
         ModelGeneratorBase modelGenerator,
         MethodGroupGeneratorBase? methodGroupGenerator,
         params AdditionalFileGenerator[] additionalFileGenerators
     )
     {
-        modelGenerator.Spec = openApiModel;
+        modelGenerator.Spec = _spec;
         if (methodGroupGenerator is not null)
         {
-            methodGroupGenerator.Spec = openApiModel;
+            methodGroupGenerator.Spec = _spec;
         }
 
         var typeTree = new TypeTree();
-        typeTree.CreateSchemasTypeTree(openApiModel);
+        typeTree.CreateSchemasTypeTree(_spec);
 
         foreach (var additionalFileGenerator in additionalFileGenerators)
         {
@@ -39,22 +70,17 @@ public class CodeBuilder
                 append: false
             );
             additionalFileGenerator.Writer = streamWriter;
-            await additionalFileGenerator.WriteFile(openApiModel);
+            await additionalFileGenerator.WriteFile(_spec);
         }
 
         foreach (var treeNode in typeTree.Nodes.Values)
         {
-            await IterateThroughTypeTreeBare(
-                openApiModel,
-                treeNode,
-                _destinationFolder,
-                modelGenerator
-            );
+            await IterateThroughTypeTreeBare(_spec, treeNode, _destinationFolder, modelGenerator);
         }
 
         if (methodGroupGenerator is not null)
         {
-            await CreateApiInterfaces(openApiModel, methodGroupGenerator);
+            await CreateApiInterfaces(_spec, methodGroupGenerator);
         }
     }
 
