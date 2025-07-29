@@ -30,7 +30,7 @@ public enum DestinyGameVersions : int
 
     TheFinalShape = 1024,
 
-    EdgeOfFate = 28535,
+    EdgeOfFate = 2048,
 
-    Renegades = 28536
+    Renegades = 4096
 }

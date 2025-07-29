@@ -43,6 +43,13 @@ public class DestinyProfileComponent
     public uint[]? SeasonHashes { get; set; }
 
     /// <summary>
+    ///     A list of season passes aka reward passes that this profile owns. Unlike versionsOwned, these stay with the profile across Platforms, and thus will be valid.
+    /// </summary>
+    [Destiny2Definition<Destiny.Definitions.Seasons.DestinySeasonPassDefinition>("Destiny.Definitions.Seasons.DestinySeasonPassDefinition")]
+    [JsonPropertyName("seasonPassHashes")]
+    public uint[]? SeasonPassHashes { get; set; }
+
+    /// <summary>
     ///     A list of hashes for event cards that a profile owns. Unlike most values in versionsOwned, these stay with the profile across all platforms.
     /// </summary>
     [Destiny2Definition<Destiny.Definitions.Seasons.DestinyEventCardDefinition>("Destiny.Definitions.Seasons.DestinyEventCardDefinition")]
