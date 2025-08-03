@@ -8,7 +8,7 @@ public class CSharpMethodGroupGenerator : MethodGroupGeneratorBase
 {
     public override string FileExtension => "cs";
 
-    private const string NameSpace = "namespace DotNetBungieAPI.Generated.Models;";
+    private const string NameSpace = "namespace DotNetBungieAPI.Generated.Methods;";
 
     private const string Indent = "    ";
 
@@ -17,6 +17,9 @@ public class CSharpMethodGroupGenerator : MethodGroupGeneratorBase
         (string ApiPath, OpenApiPath ApiPathInfo)[] methods
     )
     {
+        await WriteLineAsync("using DotNetBungieAPI.Generated.Models;");
+        await WriteLineAsync();
+
         await WriteLineAsync(NameSpace);
         await WriteLineAsync();
 
@@ -32,7 +35,7 @@ public class CSharpMethodGroupGenerator : MethodGroupGeneratorBase
                 Spec.Components.Responses[responseTypeReference.GetReferencedPath()].Schema;
 
             await WriteAsync(
-                $"{Indent}Task<ApiResponse<{responseFullType.Properties["Response"].GetCSharpType()}>> {method.OperationId.Split('.').Last()}"
+                $"{Indent}Task<ApiResponse<{responseFullType.Properties["Response"].GetCSharpType("Models")}>> {method.OperationId.Split('.').Last()}"
             );
 
             if (method is { Parameters: [] } and { RequestBody: null } and { Security: null or [] })
@@ -45,14 +48,14 @@ public class CSharpMethodGroupGenerator : MethodGroupGeneratorBase
 
                 var parameters = new List<string>();
 
-                foreach (var pathParam in method.Parameters.Where(x => x is { In: "path" }))
+                foreach (var pathParam in method.GetPathParameters())
                 {
                     parameters.Add(
-                        $"{Indent}{Indent}{pathParam.Schema.GetCSharpType()} {pathParam.Name}"
+                        $"{Indent}{Indent}{pathParam.Schema.GetCSharpType("Models")} {pathParam.Name}"
                     );
                 }
 
-                foreach (var queryParam in method.Parameters.Where(x => x is { In: "query" }))
+                foreach (var queryParam in method.GetQueryParameters())
                 {
                     if (queryParam.Deprecated.HasValue && queryParam.Deprecated.Value)
                     {
@@ -60,14 +63,14 @@ public class CSharpMethodGroupGenerator : MethodGroupGeneratorBase
                     }
 
                     parameters.Add(
-                        $"{Indent}{Indent}{queryParam.Schema.GetCSharpType()} {queryParam.Name}"
+                        $"{Indent}{Indent}{queryParam.Schema.GetCSharpType("Models")} {queryParam.Name}"
                     );
                 }
 
                 if (method.RequestBody is not null)
                 {
                     parameters.Add(
-                        $"{Indent}{Indent}{method.RequestBody.Content["application/json"].Schema.GetCSharpType()} body"
+                        $"{Indent}{Indent}{method.RequestBody.Content["application/json"].Schema.GetCSharpType("Models")} body"
                     );
                 }
 

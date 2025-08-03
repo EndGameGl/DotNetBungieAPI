@@ -6,6 +6,7 @@ namespace DotNetBungieAPI.OpenApi.CSharp.AdditionalFileGenerators;
 public class JsonSerializationContextAdditionalFileGenerator : AdditionalFileGenerator
 {
     public override string FileNameAndExtension => "DotNetBungieAPIJsonSerializationContext.cs";
+    public override string Location => "Models";
 
     public override async Task WriteFile(Models.OpenApi openApiModel)
     {

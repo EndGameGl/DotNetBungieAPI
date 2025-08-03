@@ -69,6 +69,8 @@ public class BungieResponseAdditionalFileGenerator : AdditionalFileGenerator
     
     
     public override string FileNameAndExtension => "BungieResponse.cs";
+    public override string Location => "Models";
+
     public override async Task WriteFile(Models.OpenApi openApiModel)
     {
         await WriteAsync(FileContent);

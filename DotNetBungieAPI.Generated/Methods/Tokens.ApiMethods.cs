@@ -1,4 +1,6 @@
-namespace DotNetBungieAPI.Generated.Models;
+using DotNetBungieAPI.Generated.Models;
+
+namespace DotNetBungieAPI.Generated.Methods;
 
 public interface ITokensApi
 {
@@ -7,7 +9,7 @@ public interface ITokensApi
     );
 
     Task<ApiResponse<bool>> ClaimPartnerOffer(
-        Tokens.PartnerOfferClaimRequest body,
+        Models.Tokens.PartnerOfferClaimRequest body,
         string authToken
     );
 
@@ -17,29 +19,29 @@ public interface ITokensApi
         string authToken
     );
 
-    Task<ApiResponse<Tokens.PartnerOfferSkuHistoryResponse[]>> GetPartnerOfferSkuHistory(
+    Task<ApiResponse<Models.Tokens.PartnerOfferSkuHistoryResponse[]>> GetPartnerOfferSkuHistory(
         int partnerApplicationId,
         long targetBnetMembershipId,
         string authToken
     );
 
-    Task<ApiResponse<Tokens.PartnerRewardHistoryResponse>> GetPartnerRewardHistory(
+    Task<ApiResponse<Models.Tokens.PartnerRewardHistoryResponse>> GetPartnerRewardHistory(
         int partnerApplicationId,
         long targetBnetMembershipId,
         string authToken
     );
 
-    Task<ApiResponse<Dictionary<string, Tokens.BungieRewardDisplay>>> GetBungieRewardsForUser(
+    Task<ApiResponse<Dictionary<string, Models.Tokens.BungieRewardDisplay>>> GetBungieRewardsForUser(
         long membershipId,
         string authToken
     );
 
-    Task<ApiResponse<Dictionary<string, Tokens.BungieRewardDisplay>>> GetBungieRewardsForPlatformUser(
+    Task<ApiResponse<Dictionary<string, Models.Tokens.BungieRewardDisplay>>> GetBungieRewardsForPlatformUser(
         long membershipId,
-        BungieMembershipType membershipType,
+        Models.BungieMembershipType membershipType,
         string authToken
     );
 
-    Task<ApiResponse<Dictionary<string, Tokens.BungieRewardDisplay>>> GetBungieRewardsList();
+    Task<ApiResponse<Dictionary<string, Models.Tokens.BungieRewardDisplay>>> GetBungieRewardsList();
 
 }

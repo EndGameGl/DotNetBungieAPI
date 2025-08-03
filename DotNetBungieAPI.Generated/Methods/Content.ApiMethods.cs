@@ -1,25 +1,27 @@
-namespace DotNetBungieAPI.Generated.Models;
+using DotNetBungieAPI.Generated.Models;
+
+namespace DotNetBungieAPI.Generated.Methods;
 
 public interface IContentApi
 {
-    Task<ApiResponse<Content.Models.ContentTypeDescription>> GetContentType(
+    Task<ApiResponse<Models.Content.Models.ContentTypeDescription>> GetContentType(
         string type
     );
 
-    Task<ApiResponse<Content.ContentItemPublicContract>> GetContentById(
+    Task<ApiResponse<Models.Content.ContentItemPublicContract>> GetContentById(
         long id,
         string locale,
         bool head
     );
 
-    Task<ApiResponse<Content.ContentItemPublicContract>> GetContentByTagAndType(
+    Task<ApiResponse<Models.Content.ContentItemPublicContract>> GetContentByTagAndType(
         string locale,
         string tag,
         string type,
         bool head
     );
 
-    Task<ApiResponse<SearchResultOfContentItemPublicContract>> SearchContentWithText(
+    Task<ApiResponse<Models.SearchResultOfContentItemPublicContract>> SearchContentWithText(
         string locale,
         string ctype,
         int currentpage,
@@ -29,7 +31,7 @@ public interface IContentApi
         string tag
     );
 
-    Task<ApiResponse<SearchResultOfContentItemPublicContract>> SearchContentByTagAndType(
+    Task<ApiResponse<Models.SearchResultOfContentItemPublicContract>> SearchContentByTagAndType(
         string locale,
         string tag,
         string type,
@@ -43,7 +45,7 @@ public interface IContentApi
         string size
     );
 
-    Task<ApiResponse<Content.NewsArticleRssResponse>> RssNewsArticles(
+    Task<ApiResponse<Models.Content.NewsArticleRssResponse>> RssNewsArticles(
         string pageToken,
         string categoryfilter,
         bool includebody

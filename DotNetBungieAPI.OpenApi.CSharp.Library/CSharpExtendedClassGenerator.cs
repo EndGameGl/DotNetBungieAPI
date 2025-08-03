@@ -131,7 +131,7 @@ public class CSharpExtendedClassGenerator : ModelGeneratorBase
             await WriteComment(false, schema.Description);
         }
 
-        if (schema.MobileManifestName is not null && schema.Properties.ContainsKey("hash"))
+        if (MayBeDestinyDefinitionSchema(typeName, schema))
         {
             await WriteLineAsync($"public sealed class {typeName.Split('.').Last()} : IDestinyDefinition");
         }
@@ -142,7 +142,7 @@ public class CSharpExtendedClassGenerator : ModelGeneratorBase
         
         await WriteLineAsync('{');
 
-        if (schema.MobileManifestName is not null && schema.Properties.ContainsKey("hash"))
+        if (MayBeDestinyDefinitionSchema(typeName, schema))
         {
             await WriteLineAsync($"{Indent}public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.{typeName.Split('.').Last()};\n");
         }
@@ -249,5 +249,40 @@ public class CSharpExtendedClassGenerator : ModelGeneratorBase
         }
 
         await WriteLineAsync($"{(indent ? Indent : string.Empty)}/// </summary>");
+    }
+    
+    private bool MayBeDestinyDefinitionSchema(
+        string schemaName,
+        OpenApiObjectComponentSchema schema
+    )
+    {
+        if (schema.MobileManifestName is not null && schema.Properties.ContainsKey("hash"))
+        {
+            return true;
+        }
+
+        if (
+            schema.Properties.ContainsKey("hash")
+            && schema.Properties.ContainsKey("index")
+            && schema.Properties.ContainsKey("redacted")
+            && SchemaNameIsMentionedAsDefinition(schemaName)
+        )
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool SchemaNameIsMentionedAsDefinition(string schemaName)
+    {
+        return Spec
+            .Components.Schemas.Values.OfType<OpenApiObjectComponentSchema>()
+            .SelectMany(x => x.Properties.Values)
+            .OfType<IMappedDefinition>()
+            .Where(x => x.MappedDefinition is not null)
+            .Select(x => x.MappedDefinition!.GetReferencedPath())
+            .Distinct()
+            .Contains(schemaName);
     }
 }

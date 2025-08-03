@@ -1,0 +1,2 @@
+[*.{cs,csx}]
+max_line_length = 175

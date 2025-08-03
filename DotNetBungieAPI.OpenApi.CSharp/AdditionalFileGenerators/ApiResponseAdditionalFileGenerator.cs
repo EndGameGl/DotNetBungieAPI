@@ -62,6 +62,8 @@ public class ApiResponseAdditionalFileGenerator : AdditionalFileGenerator
     
     
     public override string FileNameAndExtension => "ApiResponse.cs";
+    public override string Location => "Models";
+
     public override async Task WriteFile(Models.OpenApi openApiModel)
     {
         await WriteAsync(FileContent);

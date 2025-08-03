@@ -6,6 +6,7 @@ namespace DotNetBungieAPI.OpenApi.CSharp.Library.AdditionalFileGenerators;
 public class DefinitionsEnumFileGenerator : AdditionalFileGenerator
 {
     public override string FileNameAndExtension => "DefinitionsEnum.cs";
+    public override string Location => "Models";
 
     public override async Task WriteFile(Models.OpenApi openApiModel)
     {
@@ -18,17 +19,13 @@ public class DefinitionsEnumFileGenerator : AdditionalFileGenerator
         await WriteLineAsync('{');
 
         var definitions = openApiModel
-            .Components.Schemas.Where(x =>
-            {
-                if (x.Value is OpenApiObjectComponentSchema { MobileManifestName: not null })
-                {
-                    return true;
-                }
-
-                return false;
-            })
-            .Select(x => x.Key.Split('.').Last())
+            .Components.Schemas.Values.OfType<OpenApiObjectComponentSchema>()
+            .SelectMany(x => x.Properties.Values)
+            .OfType<IMappedDefinition>()
+            .Where(x => x.MappedDefinition is not null)
+            .Select(x => x.MappedDefinition!.GetReferencedPath())
             .Distinct()
+            .Select(x => x.Split('.').Last())
             .Order()
             .ToArray();
 

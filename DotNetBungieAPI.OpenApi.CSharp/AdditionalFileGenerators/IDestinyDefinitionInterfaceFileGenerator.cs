@@ -30,6 +30,8 @@ public class IDestinyDefinitionInterfaceFileGenerator : AdditionalFileGenerator
         """;
     
     public override string FileNameAndExtension => "IDestinyDefinitions.cs";
+    public override string Location => "Models";
+
     public override async Task WriteFile(Models.OpenApi openApiModel)
     {
         await WriteAsync(Code);

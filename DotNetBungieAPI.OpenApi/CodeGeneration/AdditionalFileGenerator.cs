@@ -3,6 +3,7 @@
 public abstract class AdditionalFileGenerator
 {
     public abstract string FileNameAndExtension { get; }
+    public abstract string Location { get; }
     public StreamWriter Writer { get; internal set; }
 
     public abstract Task WriteFile(Models.OpenApi openApiModel);

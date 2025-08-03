@@ -25,10 +25,16 @@ public class OpenApiPathMethodInfo
 
     [JsonPropertyName("security")]
     public OpenApiPathMethodSecurity[]? Security { get; init; }
-    
+
     [JsonPropertyName("deprecated")]
     public required bool Deprecated { get; init; }
-    
+
     [JsonPropertyName("x-preview")]
     public bool? IsPreview { get; init; }
+
+    public IEnumerable<OpenApiPathMethodParameterInfo> GetPathParameters() =>
+        Parameters.Where(x => x is { In: "path" });
+
+    public IEnumerable<OpenApiPathMethodParameterInfo> GetQueryParameters() =>
+        Parameters.Where(x => x is { In: "query" });
 }

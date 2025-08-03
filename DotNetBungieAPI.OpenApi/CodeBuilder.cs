@@ -65,28 +65,39 @@ public class CodeBuilder
 
         foreach (var additionalFileGenerator in additionalFileGenerators)
         {
+            var filePath = Path.Combine(_destinationFolder, additionalFileGenerator.Location);
+            Directory.CreateDirectory(filePath);
             await using var streamWriter = new StreamWriter(
-                Path.Combine(_destinationFolder, additionalFileGenerator.FileNameAndExtension),
+                Path.Combine(filePath, additionalFileGenerator.FileNameAndExtension),
                 append: false
             );
             additionalFileGenerator.Writer = streamWriter;
             await additionalFileGenerator.WriteFile(_spec);
         }
 
+        Directory.CreateDirectory(Path.Combine(_destinationFolder, "Models"));
         foreach (var treeNode in typeTree.Nodes.Values)
         {
-            await IterateThroughTypeTreeBare(_spec, treeNode, _destinationFolder, modelGenerator);
+            await IterateThroughTypeTreeBare(
+                _spec,
+                treeNode,
+                Path.Combine(_destinationFolder, "Models"),
+                Path.Combine(_destinationFolder, "Models"),
+                modelGenerator
+            );
         }
 
+        Directory.CreateDirectory(Path.Combine(_destinationFolder, "Methods"));
         if (methodGroupGenerator is not null)
         {
-            await CreateApiInterfaces(_spec, methodGroupGenerator);
+            await CreateApiInterfaces(_spec, methodGroupGenerator, Path.Combine(_destinationFolder, "Methods"));
         }
     }
 
     private async Task IterateThroughTypeTreeBare(
         Models.OpenApi openApiModel,
         TreeNode treeNode,
+        string initialDirectory,
         string previousPath,
         ModelGeneratorBase modelGenerator
     )
@@ -100,6 +111,7 @@ public class CodeBuilder
                 await IterateThroughTypeTreeBare(
                     openApiModel,
                     childNode,
+                    initialDirectory,
                     currentFolder,
                     modelGenerator
                 );
@@ -113,7 +125,7 @@ public class CodeBuilder
                 $"{treeNode.Name}.{modelGenerator.FileExtension}"
             );
             var fullTypeName = currentFile
-                .Replace(_destinationFolder, string.Empty)
+                .Replace(initialDirectory, string.Empty)
                 .Replace('\\', '.')[1..^3];
 
             var typeSchema = openApiModel.Components.Schemas[fullTypeName];
@@ -136,7 +148,8 @@ public class CodeBuilder
 
     private async Task CreateApiInterfaces(
         Models.OpenApi openApiModel,
-        MethodGroupGeneratorBase methodGroupGenerator
+        MethodGroupGeneratorBase methodGroupGenerator,
+        string path
     )
     {
         var groups = openApiModel
@@ -160,7 +173,7 @@ public class CodeBuilder
         {
             var fixedGroupName = string.IsNullOrWhiteSpace(groupName) ? "Misc" : groupName;
             var fileName = Path.Combine(
-                _destinationFolder,
+                path,
                 $"{fixedGroupName}.ApiMethods.{methodGroupGenerator.FileExtension}"
             );
             await using var streamWriter = new StreamWriter(fileName, append: false);

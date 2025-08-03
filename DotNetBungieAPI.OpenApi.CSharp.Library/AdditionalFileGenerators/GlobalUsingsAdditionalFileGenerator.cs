@@ -12,6 +12,7 @@ public class GlobalUsingsAdditionalFileGenerator : AdditionalFileGenerator
         """;
 
     public override string FileNameAndExtension => "GlobalUsings.cs";
+    public override string Location => string.Empty;
 
     public override async Task WriteFile(Models.OpenApi openApiModel)
     {
