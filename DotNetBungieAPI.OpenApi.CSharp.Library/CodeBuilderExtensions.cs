@@ -15,7 +15,12 @@ public static class CodeBuilderExtensions
             new IDestinyDefinitionInterfaceFileGenerator(),
             new DefinitionHashPointerFileGenerator(),
             new JsonSerializationContextAdditionalFileGenerator(),
-            new DefinitionHashPointerFileGenerator()
+            new DefinitionHashPointerFileGenerator(),
+            new DefinitionHashPointerConverterFactoryFileGenerator(),
+            new DestinyDefinitionAttributeFileGenerator(),
+            new DefinitionsEnumExtensionsFileGenerator(),
+            new BungieLocaleExtensionsFileGenerator(),
+            new BungieLocaleFileGenerator()
         );
     }
 }

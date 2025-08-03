@@ -10,7 +10,7 @@ public class DefinitionHashPointerConverterFactoryFileGenerator : AdditionalFile
         using DotNetBungieAPI.Models;
         using DotNetBungieAPI.Models.Destiny;
         
-        namespace DotNetBungieAPI.Serialization;
+        namespace DotNetBungieAPI.Models.Serialization;
         
         /// <summary>
         ///     Definition hash pointer converter factory
@@ -88,7 +88,7 @@ public class DefinitionHashPointerConverterFactoryFileGenerator : AdditionalFile
         """;
     
     public override string FileNameAndExtension => "DefinitionHashPointerConverterFactory.cs";
-    public override string Location => "Serialization";
+    public override string Location => "Models\\Serialization";
     public override async Task WriteFile(Models.OpenApi openApiModel)
     {
         await WriteAsync(Content);

@@ -147,10 +147,6 @@ public static class DefinitionsEnumExtensions
             DefinitionsEnum.DestinyGuardianRankConstantsDefinition
                 => nameof(DefinitionsEnum.DestinyGuardianRankConstantsDefinition),
             _
-                => throw new ArgumentOutOfRangeException(
-                    nameof(definitionsEnum),
-                    definitionsEnum,
-                    null
-                )
+                => throw new ArgumentOutOfRangeException(nameof(definitionsEnum), definitionsEnum, null)
         };
 }
