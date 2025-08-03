@@ -43,7 +43,7 @@ public sealed class DefinitionHashPointerConverterFactory : JsonConverterFactory
                 null,
                 [],
                 null
-            );
+            )!;
 
         return converter;
     }

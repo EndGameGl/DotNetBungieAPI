@@ -42,7 +42,7 @@ public readonly struct DefinitionHashPointer<TDefinition>
     ///     </inheritdoc>
     /// </param>
     /// <returns></returns>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         return obj is DefinitionHashPointer<TDefinition> objPointer && Equals(objPointer);
     }
@@ -159,13 +159,8 @@ public readonly struct DefinitionHashPointer<TDefinition>
         return new DefinitionHashPointer<TDefinition>(hash);
     }
 
-    private string DebuggerDisplay => GetDebuggerDisplayString();
-
-    private string GetDebuggerDisplayString()
-    {
-        var value = HasValidHash
+    private string DebuggerDisplay =>
+        HasValidHash
             ? $"{DefinitionEnumType} - {Hash}"
             : $"DefinitionHashPointer<{DefinitionEnumType}>.Empty";
-        return value;
-    }
 }

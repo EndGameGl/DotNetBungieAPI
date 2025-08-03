@@ -12,7 +12,10 @@ public static class CodeBuilderExtensions
             new GlobalUsingsAdditionalFileGenerator(),
             new DefinitionsEnumFileGenerator(),
             new BungieResponseAdditionalFileGenerator(),
-            new IDestinyDefinitionInterfaceFileGenerator()
+            new IDestinyDefinitionInterfaceFileGenerator(),
+            new DefinitionHashPointerFileGenerator(),
+            new JsonSerializationContextAdditionalFileGenerator(),
+            new DefinitionHashPointerFileGenerator()
         );
     }
 }
