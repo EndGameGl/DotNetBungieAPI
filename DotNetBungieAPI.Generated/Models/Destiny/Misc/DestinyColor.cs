@@ -6,14 +6,14 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Misc;
 public class DestinyColor
 {
     [JsonPropertyName("red")]
-    public string Red { get; set; }
+    public byte Red { get; set; }
 
     [JsonPropertyName("green")]
-    public string Green { get; set; }
+    public byte Green { get; set; }
 
     [JsonPropertyName("blue")]
-    public string Blue { get; set; }
+    public byte Blue { get; set; }
 
     [JsonPropertyName("alpha")]
-    public string Alpha { get; set; }
+    public byte Alpha { get; set; }
 }

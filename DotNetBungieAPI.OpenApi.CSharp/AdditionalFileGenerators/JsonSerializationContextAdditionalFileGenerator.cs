@@ -25,6 +25,22 @@ public class JsonSerializationContextAdditionalFileGenerator : AdditionalFileGen
             }
         }
 
+        foreach (var (typeName, responseType) in openApiModel.Components.Responses)
+        {
+            var type = ((OpenApiObjectComponentSchema)responseType.Schema).Properties["Response"].GetCSharpType();
+            await WriteLineAsync($"[JsonSerializable(typeof(ApiResponse<{type}>))]");
+        }
+        
+        await WriteLineAsync(
+            """
+            [JsonSourceGenerationOptions(
+                NumberHandling = JsonNumberHandling.AllowReadingFromString,
+                AllowTrailingCommas = false, 
+                DictionaryKeyPolicy = JsonKnownNamingPolicy.Unspecified,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            )]
+            """);
+        
         await WriteLineAsync(
             "public partial class DotNetBungieAPIJsonSerializationContext : JsonSerializerContext { }"
         );

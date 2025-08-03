@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Generated.Models.Destiny.Definitions;
 /// <para />
 ///     These are used to apply rewards to multiple progressions at once. They can sometimes have human readable data as well, but only extremely sporadically.
 /// </summary>
-public class DestinyProgressionMappingDefinition
+public class DestinyProgressionMappingDefinition : IDestinyDefinition
 {
     /// <summary>
     ///     Infrequently defined in practice. Defer to the individual progressions' display properties.

@@ -18,5 +18,5 @@ public class AwaUserResponse
     ///     Secret nonce received via the PUSH notification.
     /// </summary>
     [JsonPropertyName("nonce")]
-    public string[]? Nonce { get; set; }
+    public byte[]? Nonce { get; set; }
 }

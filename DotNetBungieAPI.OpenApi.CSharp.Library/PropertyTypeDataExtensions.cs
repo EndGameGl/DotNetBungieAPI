@@ -17,6 +17,7 @@ public static class PropertyTypeDataExtensions
             OpenApiIntegerComponentSchema integerComponent
                 => GetIntTypeFromSchema(integerComponent),
             OpenApiStringComponentSchema { Format: "date-time" } => "DateTime",
+            OpenApiStringComponentSchema { Format: "byte" } => "byte",
             OpenApiStringComponentSchema => "string",
             OpenApiNumberComponentSchema numberComponent => numberComponent.Format,
             OpenApiObjectMultiTypeComponentSchema openApiObjectMultiTypeComponentSchema
