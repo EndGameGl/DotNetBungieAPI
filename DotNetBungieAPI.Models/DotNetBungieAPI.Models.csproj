@@ -14,7 +14,7 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PackageVersion>3.0.0</PackageVersion>
+        <PackageVersion>3.0.0-rc1</PackageVersion>
         <AssemblyVersion>3.0.0</AssemblyVersion>
         <FileVersion>3.0.0</FileVersion>
         <TargetFrameworks>net8.0;net9.0</TargetFrameworks>

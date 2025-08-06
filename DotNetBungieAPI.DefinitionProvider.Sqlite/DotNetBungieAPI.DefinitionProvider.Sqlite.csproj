@@ -14,20 +14,21 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PackageVersion>2.0.0</PackageVersion>
+        <PackageVersion>2.0.0-rc1</PackageVersion>
         <AssemblyVersion>2.0.0</AssemblyVersion>
         <FileVersion>2.0.0</FileVersion>
         <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <DocumentationFile>bin\Release\DotNetBungieAPI.DefinitionProvider.Sqlite.xml</DocumentationFile>
+    </PropertyGroup>
+    
     <ItemGroup>
-      <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.1" />
-      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.1" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\DotNetBungieAPI.Service.Abstractions\DotNetBungieAPI.Service.Abstractions.csproj" />
+        <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.8" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.8" />
+        <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="3.0.0-rc1"/>
     </ItemGroup>
 
 </Project>
