@@ -1,7 +1,7 @@
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Traits;
 
 [DestinyDefinition(DefinitionsEnum.DestinyTraitDefinition)]
-public sealed class DestinyTraitDefinition : IDestinyDefinition
+public sealed class DestinyTraitDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyTraitDefinition;
 

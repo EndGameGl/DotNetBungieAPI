@@ -8,7 +8,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions;
 ///     We then populate all of the categories that we think an item belongs to in its DestinyInventoryItemDefinition.itemCategoryHashes property. You can use that to provide your own custom item filtering, sorting, aggregating... go nuts on it! And let us know if you see more categories that you wish would be added!
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyItemCategoryDefinition)]
-public sealed class DestinyItemCategoryDefinition : IDestinyDefinition
+public sealed class DestinyItemCategoryDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyItemCategoryDefinition;
 

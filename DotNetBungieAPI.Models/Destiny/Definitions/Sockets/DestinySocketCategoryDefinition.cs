@@ -12,7 +12,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Sockets;
 ///     As a result, I will try to compile these rules into the individual sockets on items, and provide the best hint possible there through the plugSources property. In the future, I may attempt to use this information in conjunction with the item to provide a more usable UI hint on the socket layer, but for now improving the consistency of plugSources is the best I have time to provide. (See https://github.com/Bungie-net/api/issues/522 for more info)
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinySocketCategoryDefinition)]
-public sealed class DestinySocketCategoryDefinition : IDestinyDefinition
+public sealed class DestinySocketCategoryDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinySocketCategoryDefinition;
 

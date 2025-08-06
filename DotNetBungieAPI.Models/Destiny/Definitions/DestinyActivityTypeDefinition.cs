@@ -12,7 +12,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions;
 ///     For this reason, BNet will eventually migrate toward Activity Modes as a better indicator of activity category. But for the time being, it is still referred to in many places across our codebase.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyActivityTypeDefinition)]
-public sealed class DestinyActivityTypeDefinition : IDestinyDefinition
+public sealed class DestinyActivityTypeDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyActivityTypeDefinition;
 

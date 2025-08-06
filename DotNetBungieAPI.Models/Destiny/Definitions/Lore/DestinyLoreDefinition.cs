@@ -6,7 +6,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Lore;
 ///     DestinyInventoryItemDefinitions for interesting items point to these definitions, but nothing's stopping you from scraping all of these and doing something cool with them. If they end up having cool data.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyLoreDefinition)]
-public sealed class DestinyLoreDefinition : IDestinyDefinition
+public sealed class DestinyLoreDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyLoreDefinition;
 

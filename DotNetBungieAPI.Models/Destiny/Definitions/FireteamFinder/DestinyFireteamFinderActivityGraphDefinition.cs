@@ -1,7 +1,7 @@
 namespace DotNetBungieAPI.Models.Destiny.Definitions.FireteamFinder;
 
 [DestinyDefinition(DefinitionsEnum.DestinyFireteamFinderActivityGraphDefinition)]
-public sealed class DestinyFireteamFinderActivityGraphDefinition : IDestinyDefinition
+public sealed class DestinyFireteamFinderActivityGraphDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyFireteamFinderActivityGraphDefinition;
 

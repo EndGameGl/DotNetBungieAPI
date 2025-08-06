@@ -6,7 +6,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions;
 ///     A Faction is really just an entity that has a related progression for which a character can gain experience. In Destiny 1, Dead Orbit was an example of a Faction: there happens to be a Vendor that represents Dead Orbit (and indeed, DestinyVendorDefinition.factionHash defines to this relationship), but Dead Orbit could theoretically exist without the Vendor that provides rewards.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyFactionDefinition)]
-public sealed class DestinyFactionDefinition : IDestinyDefinition
+public sealed class DestinyFactionDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyFactionDefinition;
 

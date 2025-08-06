@@ -6,7 +6,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Items;
 ///     It also provides some base data for infusion that could be useful.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyItemTierTypeDefinition)]
-public sealed class DestinyItemTierTypeDefinition : IDestinyDefinition
+public sealed class DestinyItemTierTypeDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyItemTierTypeDefinition;
 

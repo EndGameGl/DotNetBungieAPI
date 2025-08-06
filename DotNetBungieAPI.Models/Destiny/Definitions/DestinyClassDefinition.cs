@@ -4,7 +4,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions;
 ///     Defines a Character Class in Destiny 2. These are types of characters you can play, like Titan, Warlock, and Hunter.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyClassDefinition)]
-public sealed class DestinyClassDefinition : IDestinyDefinition
+public sealed class DestinyClassDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyClassDefinition;
 

@@ -26,7 +26,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
 ///     This approach will let you avoid, whenever possible, the even less useful (and sometimes nonexistant) milestone-level names and descriptions.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyMilestoneDefinition)]
-public sealed class DestinyMilestoneDefinition : IDestinyDefinition
+public sealed class DestinyMilestoneDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyMilestoneDefinition;
 

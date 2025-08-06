@@ -1,7 +1,7 @@
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Metrics;
 
 [DestinyDefinition(DefinitionsEnum.DestinyMetricDefinition)]
-public sealed class DestinyMetricDefinition : IDestinyDefinition
+public sealed class DestinyMetricDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyMetricDefinition;
 

@@ -10,7 +10,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Checklists;
 ///     Note that, in the future, there will be something resembling the old D1 Record Books in at least some vague form. When that is created, it may be that it will supercede much or all of this Checklist data. It remains to be seen if that will be the case, so for now assume that the Checklists will still exist even after the release of D2: Forsaken.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyChecklistDefinition)]
-public sealed class DestinyChecklistDefinition : IDestinyDefinition
+public sealed class DestinyChecklistDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyChecklistDefinition;
 

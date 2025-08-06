@@ -4,7 +4,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions;
 ///     Gender is a social construct, and as such we have definitions for Genders. Right now there happens to only be two, but we'll see what the future holds.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyGenderDefinition)]
-public sealed class DestinyGenderDefinition : IDestinyDefinition
+public sealed class DestinyGenderDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyGenderDefinition;
 

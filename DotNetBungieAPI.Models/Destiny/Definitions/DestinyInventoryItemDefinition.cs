@@ -6,7 +6,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions;
 ///     In practice, you will want to associate this data with "live" item data from a Bungie.Net Platform call: these definitions describe the item in generic, non-instanced terms: but an actual instance of an item can vary widely from these generic definitions.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyInventoryItemDefinition)]
-public sealed class DestinyInventoryItemDefinition : IDestinyDefinition
+public sealed class DestinyInventoryItemDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyInventoryItemDefinition;
 
@@ -72,6 +72,18 @@ public sealed class DestinyInventoryItemDefinition : IDestinyDefinition
     /// </summary>
     [JsonPropertyName("isFeaturedItem")]
     public bool IsFeaturedItem { get; init; }
+
+    /// <summary>
+    ///     Whether or not this item is holofoil, which has special icon treatment and in-game appearance.
+    /// </summary>
+    [JsonPropertyName("isHolofoil")]
+    public bool IsHolofoil { get; init; }
+
+    /// <summary>
+    ///     Whether or not this item is adept, which has increased stats and/or perks.
+    /// </summary>
+    [JsonPropertyName("isAdept")]
+    public bool IsAdept { get; init; }
 
     /// <summary>
     ///     If we were able to acquire an in-game screenshot for the item, the path to that screenshot will be returned here. Note that not all items have screenshots: particularly not any non-equippable items.

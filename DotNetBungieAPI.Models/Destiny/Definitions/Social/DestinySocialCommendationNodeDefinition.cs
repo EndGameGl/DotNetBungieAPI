@@ -1,7 +1,7 @@
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Social;
 
 [DestinyDefinition(DefinitionsEnum.DestinySocialCommendationNodeDefinition)]
-public sealed class DestinySocialCommendationNodeDefinition : IDestinyDefinition
+public sealed class DestinySocialCommendationNodeDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinySocialCommendationNodeDefinition;
 

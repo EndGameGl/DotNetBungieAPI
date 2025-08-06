@@ -59,6 +59,24 @@ public class DefinitionHashPointerConverterFactoryFileGenerator : AdditionalFile
             {
                 public override bool HandleNull => true;
 
+                public override DefinitionHashPointer<T> ReadAsPropertyName(
+                    ref Utf8JsonReader reader,
+                    Type typeToConvert,
+                    JsonSerializerOptions options
+                )
+                {
+                    return Read(ref reader, typeToConvert, options);
+                }
+        
+                public override void WriteAsPropertyName(
+                    Utf8JsonWriter writer,
+                    DefinitionHashPointer<T> value,
+                    JsonSerializerOptions options
+                )
+                {
+                    Write(writer, value, options);
+                }
+                
                 public override DefinitionHashPointer<T> Read(
                     ref Utf8JsonReader reader,
                     Type typeToConvert,
@@ -67,9 +85,9 @@ public class DefinitionHashPointerConverterFactoryFileGenerator : AdditionalFile
                 {
                     return reader.TokenType switch
                     {
-                        JsonTokenType.String
-                            => new DefinitionHashPointer<T>(uint.Parse(reader.GetString()!)),
+                        JsonTokenType.String => new DefinitionHashPointer<T>(uint.Parse(reader.GetString()!)),
                         JsonTokenType.Null => DefinitionHashPointer<T>.Empty,
+                        JsonTokenType.PropertyName => new DefinitionHashPointer<T>(uint.Parse(reader.GetString()!)),
                         _ => new DefinitionHashPointer<T>(reader.GetUInt32())
                     };
                 }

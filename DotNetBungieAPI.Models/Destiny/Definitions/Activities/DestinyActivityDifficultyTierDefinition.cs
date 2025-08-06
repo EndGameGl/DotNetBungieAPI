@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 
-public sealed class DestinyActivityDifficultyTierDefinition
+public sealed class DestinyActivityDifficultyTierDefinition : IDisplayProperties
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; init; }

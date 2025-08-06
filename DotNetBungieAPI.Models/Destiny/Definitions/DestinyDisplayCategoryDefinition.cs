@@ -3,7 +3,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions;
 /// <summary>
 ///     Display Categories are different from "categories" in that these are specifically for visual grouping and display of categories in Vendor UI. The "categories" structure is for validation of the contained items, and can be categorized entirely separately from "Display Categories", there need be and often will be no meaningful relationship between the two.
 /// </summary>
-public sealed class DestinyDisplayCategoryDefinition
+public sealed class DestinyDisplayCategoryDefinition : IDisplayProperties
 {
     [JsonPropertyName("index")]
     public int Index { get; init; }

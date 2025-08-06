@@ -1,7 +1,7 @@
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 
 [DestinyDefinition(DefinitionsEnum.DestinyActivitySelectableSkullCollectionDefinition)]
-public sealed class DestinyActivitySelectableSkullCollectionDefinition : IDestinyDefinition
+public sealed class DestinyActivitySelectableSkullCollectionDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyActivitySelectableSkullCollectionDefinition;
 

@@ -4,7 +4,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Collectibles;
 ///     Defines a
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyCollectibleDefinition)]
-public sealed class DestinyCollectibleDefinition : IDestinyDefinition
+public sealed class DestinyCollectibleDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyCollectibleDefinition;
 

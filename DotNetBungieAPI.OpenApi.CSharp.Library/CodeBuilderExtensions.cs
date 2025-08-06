@@ -22,6 +22,7 @@ public static class CodeBuilderExtensions
                 new DefinitionsEnumExtensionsFileGenerator(),
                 new BungieLocaleExtensionsFileGenerator(),
                 new BungieLocaleFileGenerator(),
+                new IDisplayPropertiesFileGenerator(),
             ]
         );
     }

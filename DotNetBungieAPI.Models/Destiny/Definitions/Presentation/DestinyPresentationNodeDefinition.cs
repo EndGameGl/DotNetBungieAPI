@@ -12,7 +12,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Presentation;
 ///     We'll see if I come to regret this as well.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyPresentationNodeDefinition)]
-public sealed class DestinyPresentationNodeDefinition : IDestinyDefinition
+public sealed class DestinyPresentationNodeDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyPresentationNodeDefinition;
 

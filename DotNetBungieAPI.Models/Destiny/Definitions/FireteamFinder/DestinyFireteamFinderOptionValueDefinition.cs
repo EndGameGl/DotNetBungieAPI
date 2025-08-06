@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Models.Destiny.Definitions.FireteamFinder;
 
-public sealed class DestinyFireteamFinderOptionValueDefinition
+public sealed class DestinyFireteamFinderOptionValueDefinition : IDisplayProperties
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; init; }

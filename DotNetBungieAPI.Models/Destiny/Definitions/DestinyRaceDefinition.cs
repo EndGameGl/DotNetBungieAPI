@@ -4,7 +4,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions;
 ///     In Destiny, "Races" are really more like "Species". Sort of. I mean, are the Awoken a separate species from humans? I'm not sure. But either way, they're defined here. You'll see Exo, Awoken, and Human as examples of these Species. Players will choose one for their character.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyRaceDefinition)]
-public sealed class DestinyRaceDefinition : IDestinyDefinition
+public sealed class DestinyRaceDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyRaceDefinition;
 

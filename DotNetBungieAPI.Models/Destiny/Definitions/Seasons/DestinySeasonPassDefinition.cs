@@ -1,7 +1,7 @@
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Seasons;
 
 [DestinyDefinition(DefinitionsEnum.DestinySeasonPassDefinition)]
-public sealed class DestinySeasonPassDefinition : IDestinyDefinition
+public sealed class DestinySeasonPassDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinySeasonPassDefinition;
 

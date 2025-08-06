@@ -1,6 +1,6 @@
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 
-public sealed class DestinyActivitySkull
+public sealed class DestinyActivitySkull : IDisplayProperties
 {
     [JsonPropertyName("hash")]
     public uint Hash { get; init; }

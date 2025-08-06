@@ -4,7 +4,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Seasons;
 ///     Defines a canonical "Season" of Destiny: a range of a few months where the game highlights certain challenges, provides new loot, has new Clan-related rewards and celebrates various seasonal events.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinySeasonDefinition)]
-public sealed class DestinySeasonDefinition : IDestinyDefinition
+public sealed class DestinySeasonDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinySeasonDefinition;
 

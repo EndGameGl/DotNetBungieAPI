@@ -4,7 +4,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.ActivityModifiers;
 ///     Modifiers - in Destiny 1, these were referred to as "Skulls" - are changes that can be applied to an Activity.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyActivityModifierDefinition)]
-public sealed class DestinyActivityModifierDefinition : IDestinyDefinition
+public sealed class DestinyActivityModifierDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyActivityModifierDefinition;
 

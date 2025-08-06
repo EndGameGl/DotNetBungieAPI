@@ -8,7 +8,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions;
 ///     You cannot transfer an item to a bucket that is not its Default without going through a Vendor's "accepted items" (DestinyVendorDefinition.acceptedItems). This is how transfer functionality like the Vault is implemented, as a feature of a Vendor. See the vendor's acceptedItems property for more details.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyInventoryBucketDefinition)]
-public sealed class DestinyInventoryBucketDefinition : IDestinyDefinition
+public sealed class DestinyInventoryBucketDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyInventoryBucketDefinition;
 

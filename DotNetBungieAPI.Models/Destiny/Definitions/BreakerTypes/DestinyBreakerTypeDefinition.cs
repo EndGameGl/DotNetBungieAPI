@@ -1,7 +1,7 @@
 namespace DotNetBungieAPI.Models.Destiny.Definitions.BreakerTypes;
 
 [DestinyDefinition(DefinitionsEnum.DestinyBreakerTypeDefinition)]
-public sealed class DestinyBreakerTypeDefinition : IDestinyDefinition
+public sealed class DestinyBreakerTypeDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyBreakerTypeDefinition;
 

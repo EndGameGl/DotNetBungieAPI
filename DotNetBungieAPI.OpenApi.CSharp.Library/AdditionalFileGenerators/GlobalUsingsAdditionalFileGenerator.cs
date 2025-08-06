@@ -6,6 +6,7 @@ public class GlobalUsingsAdditionalFileGenerator : AdditionalFileGenerator
 {
     private const string GlobalUsingsText = """
         global using System.Text.Json.Serialization;
+        global using DotNetBungieAPI.Models.Attributes;
         """;
 
     public override string FileNameAndExtension => "GlobalUsings.cs";

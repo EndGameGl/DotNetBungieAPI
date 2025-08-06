@@ -1,7 +1,7 @@
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Loadouts;
 
 [DestinyDefinition(DefinitionsEnum.DestinyLoadoutConstantsDefinition)]
-public sealed class DestinyLoadoutConstantsDefinition : IDestinyDefinition
+public sealed class DestinyLoadoutConstantsDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyLoadoutConstantsDefinition;
 

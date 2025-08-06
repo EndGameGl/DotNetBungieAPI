@@ -121,19 +121,34 @@ public class CSharpExtendedClassGenerator : ModelGeneratorBase
             await WriteComment(false, schema.Description);
         }
 
-        if (MayBeDestinyDefinitionSchema(typeName, schema))
+        var hasDisplayProperties = HasDisplayProperties(schema);
+        var mayBeDestinyDefinitionSchema = MayBeDestinyDefinitionSchema(typeName, schema);
+
+        var inheritInterfaces = new List<string>();
+
+        if (mayBeDestinyDefinitionSchema)
+        {
+            inheritInterfaces.Add("IDestinyDefinition");
+        }
+
+        if (hasDisplayProperties)
+        {
+            inheritInterfaces.Add("IDisplayProperties");
+        }
+
+        if (mayBeDestinyDefinitionSchema)
         {
             await WriteLineAsync($"[DestinyDefinition(DefinitionsEnum.{typeName.Split('.').Last()})]");
-            await WriteLineAsync($"public sealed class {typeName.Split('.').Last()} : IDestinyDefinition");
+            await WriteLineAsync($"public sealed class {typeName.Split('.').Last()} : {string.Join(", ", inheritInterfaces)}");
         }
         else
         {
-            await WriteLineAsync($"public sealed class {typeName.Split('.').Last()}");
+            await WriteLineAsync($"public sealed class {typeName.Split('.').Last()}{(inheritInterfaces.Count > 0 ? $" : {string.Join(", ", inheritInterfaces)}" : string.Empty)}");
         }
 
         await WriteLineAsync('{');
 
-        if (MayBeDestinyDefinitionSchema(typeName, schema))
+        if (mayBeDestinyDefinitionSchema)
         {
             await WriteLineAsync($"{Indent}public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.{typeName.Split('.').Last()};\n");
         }
@@ -267,5 +282,14 @@ public class CSharpExtendedClassGenerator : ModelGeneratorBase
             .Select(x => x.MappedDefinition!.GetReferencedPath())
             .Distinct()
             .Contains(schemaName);
+    }
+
+    private bool HasDisplayProperties(OpenApiObjectComponentSchema schema)
+    {
+        return schema
+            .Properties
+            .Any(x =>
+                x is { Key: "displayProperties", Value: OpenApiComponentReference compRef } &&
+                compRef.GetReferencedPath() is "Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition");
     }
 }

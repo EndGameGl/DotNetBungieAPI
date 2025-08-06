@@ -1,7 +1,7 @@
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Records;
 
 [DestinyDefinition(DefinitionsEnum.DestinyRecordDefinition)]
-public sealed class DestinyRecordDefinition : IDestinyDefinition
+public sealed class DestinyRecordDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyRecordDefinition;
 

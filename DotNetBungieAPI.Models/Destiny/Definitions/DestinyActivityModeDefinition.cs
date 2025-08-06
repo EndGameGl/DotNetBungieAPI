@@ -6,7 +6,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions;
 ///     Activity modes are nested under each other in a hierarchy, so that if you ask for - for example - "AllPvP", you will get any PVP activities that the user has played, regardless of what specific PVP mode was being played.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyActivityModeDefinition)]
-public sealed class DestinyActivityModeDefinition : IDestinyDefinition
+public sealed class DestinyActivityModeDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyActivityModeDefinition;
 

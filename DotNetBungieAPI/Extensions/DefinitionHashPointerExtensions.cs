@@ -108,14 +108,9 @@ public static class DefinitionHashPointerExtensions
     private static string GetDebuggerDisplayString<TDefinition>(DefinitionHashPointer<TDefinition> pointer)
         where TDefinition : class, IDestinyDefinition
     {
-        if (pointer.TryGetDefinition(out var definition))
+        if (pointer.TryGetDefinition(out var definition) && definition is IDisplayProperties displayProperties)
         {
-            // if (definition is IDisplayProperties displayProperties)
-            // {
-            //     return $"{pointer.Hash} {displayProperties.DisplayProperties.Name}";
-            // }
-
-            return $"{pointer.Hash} {typeof(TDefinition).Name}";
+            return $"{pointer.Hash} {displayProperties.DisplayProperties.Name}";
         }
 
         return $"{pointer.Hash} {typeof(TDefinition).Name}";

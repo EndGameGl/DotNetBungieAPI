@@ -8,7 +8,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions;
 ///     An example in Destiny 1 of a Source would be "Nightfall". If an item has the "Nightfall" source associated with it, it's extremely likely that you can earn that item while playing Nightfall, either during play or as an after-completion reward.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyRewardSourceDefinition)]
-public sealed class DestinyRewardSourceDefinition : IDestinyDefinition
+public sealed class DestinyRewardSourceDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyRewardSourceDefinition;
 

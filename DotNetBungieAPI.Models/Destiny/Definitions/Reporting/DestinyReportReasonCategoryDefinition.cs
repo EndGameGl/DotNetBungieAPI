@@ -6,7 +6,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions.Reporting;
 ///     Note tha this means that, to refer to a Reason by reasonHash, you need a combination of the reasonHash *and* the associated ReasonCategory's hash: there are some reasons defined under multiple categories.
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyReportReasonCategoryDefinition)]
-public sealed class DestinyReportReasonCategoryDefinition : IDestinyDefinition
+public sealed class DestinyReportReasonCategoryDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyReportReasonCategoryDefinition;
 

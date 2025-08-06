@@ -1,7 +1,7 @@
 namespace DotNetBungieAPI.Models.Destiny.Definitions.GuardianRanks;
 
 [DestinyDefinition(DefinitionsEnum.DestinyGuardianRankDefinition)]
-public sealed class DestinyGuardianRankDefinition : IDestinyDefinition
+public sealed class DestinyGuardianRankDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyGuardianRankDefinition;
 

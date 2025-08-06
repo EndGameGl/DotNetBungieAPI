@@ -1,7 +1,7 @@
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Activities;
 
 [DestinyDefinition(DefinitionsEnum.DestinyActivitySkullCategoryDefinition)]
-public sealed class DestinyActivitySkullCategoryDefinition : IDestinyDefinition
+public sealed class DestinyActivitySkullCategoryDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyActivitySkullCategoryDefinition;
 

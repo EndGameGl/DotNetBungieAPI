@@ -69,7 +69,7 @@ public sealed class DefinitionHashPointerConverterFactory : JsonConverterFactory
         {
             Write(writer, value, options);
         }
-
+        
         public override DefinitionHashPointer<T> Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,

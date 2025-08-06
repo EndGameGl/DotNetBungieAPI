@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions;
 /// <para />
 ///     DEPRECATED - Just use bubbles.
 /// </summary>
-public sealed class DestinyDestinationBubbleSettingDefinition
+public sealed class DestinyDestinationBubbleSettingDefinition : IDisplayProperties
 {
     [JsonPropertyName("displayProperties")]
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; init; }

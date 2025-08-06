@@ -11,8 +11,8 @@ public sealed class DestinyItemFilterDefinition : IDestinyDefinition
     /// <summary>
     ///     The items in this set
     /// </summary>
-    [JsonPropertyName("setItems")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition>[]? SetItems { get; init; }
+    [JsonPropertyName("allowedItems")]
+    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition>[]? AllowedItems { get; init; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

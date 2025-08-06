@@ -6,7 +6,7 @@ namespace DotNetBungieAPI.Models.Destiny.Definitions;
 ///     Places are more on the planetary scale, like "Earth" and "Your Mom."
 /// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyPlaceDefinition)]
-public sealed class DestinyPlaceDefinition : IDestinyDefinition
+public sealed class DestinyPlaceDefinition : IDestinyDefinition, IDisplayProperties
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyPlaceDefinition;
 
