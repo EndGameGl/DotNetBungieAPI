@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Tokens;
+namespace DotNetBungieAPI.Models.Tokens;
 
-public sealed record PartnerOfferSkuHistoryResponse
+public sealed class PartnerOfferSkuHistoryResponse
 {
     [JsonPropertyName("SkuIdentifier")]
     public string SkuIdentifier { get; init; }
@@ -21,6 +21,5 @@ public sealed record PartnerOfferSkuHistoryResponse
     public string TransactionId { get; init; }
 
     [JsonPropertyName("SkuOffers")]
-    public ReadOnlyCollection<PartnerOfferHistoryResponse> SkuOffers { get; init; } =
-        ReadOnlyCollection<PartnerOfferHistoryResponse>.Empty;
+    public Tokens.PartnerOfferHistoryResponse[]? SkuOffers { get; init; }
 }

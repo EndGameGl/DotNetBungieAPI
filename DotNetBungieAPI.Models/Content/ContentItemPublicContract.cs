@@ -1,15 +1,12 @@
-﻿using DotNetBungieAPI.Models.User;
-
 namespace DotNetBungieAPI.Models.Content;
 
-public sealed record ContentItemPublicContract
+public sealed class ContentItemPublicContract
 {
     [JsonPropertyName("contentId")]
-    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public long ContentId { get; init; }
 
     [JsonPropertyName("cType")]
-    public string ContentType { get; init; }
+    public string CType { get; init; }
 
     [JsonPropertyName("cmsPath")]
     public string CmsPath { get; init; }
@@ -33,22 +30,28 @@ public sealed record ContentItemPublicContract
     public string RatingImagePath { get; init; }
 
     [JsonPropertyName("author")]
-    public GeneralUser Author { get; init; }
+    public User.GeneralUser? Author { get; init; }
 
     [JsonPropertyName("autoEnglishPropertyFallback")]
     public bool AutoEnglishPropertyFallback { get; init; }
 
+    /// <summary>
+    ///     Firehose content is really a collection of metadata and "properties", which are the potentially-but-not-strictly localizable data that comprises the meat of whatever content is being shown.
+    /// <para />
+    ///     As Cole Porter would have crooned, "Anything Goes" with Firehose properties. They are most often strings, but they can theoretically be anything. They are JSON encoded, and could be JSON structures, simple strings, numbers etc... The Content Type of the item (cType) will describe the properties, and thus how they ought to be deserialized.
+    /// </summary>
     [JsonPropertyName("properties")]
-    public ReadOnlyDictionary<string, object> Properties { get; init; } =
-        ReadOnlyDictionary<string, object>.Empty;
+    public Dictionary<string, object>? Properties { get; init; }
 
     [JsonPropertyName("representations")]
-    public ReadOnlyCollection<ContentRepresentation> Representations { get; init; } =
-        ReadOnlyCollection<ContentRepresentation>.Empty;
+    public Content.ContentRepresentation[]? Representations { get; init; }
 
+    /// <summary>
+    ///     NOTE: Tags will always be lower case.
+    /// </summary>
     [JsonPropertyName("tags")]
-    public ReadOnlyCollection<string> Tags { get; init; } = ReadOnlyCollection<string>.Empty;
+    public string[]? Tags { get; init; }
 
     [JsonPropertyName("commentSummary")]
-    public CommentSummary CommentSummary { get; init; }
+    public Content.CommentSummary? CommentSummary { get; init; }
 }

@@ -1,19 +1,15 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.Records;
-
 namespace DotNetBungieAPI.Models.Tokens;
 
-public sealed record RewardAvailabilityModel
+public sealed class RewardAvailabilityModel
 {
     [JsonPropertyName("HasExistingCode")]
     public bool HasExistingCode { get; init; }
 
     [JsonPropertyName("RecordDefinitions")]
-    public ReadOnlyCollection<DestinyRecordDefinition> RecordDefinitions { get; init; } =
-        ReadOnlyCollection<DestinyRecordDefinition>.Empty;
+    public Destiny.Definitions.Records.DestinyRecordDefinition[]? RecordDefinitions { get; init; }
 
     [JsonPropertyName("CollectibleDefinitions")]
-    public ReadOnlyCollection<CollectibleDefinitions> CollectibleDefinitions { get; init; } =
-        ReadOnlyCollection<CollectibleDefinitions>.Empty;
+    public Tokens.CollectibleDefinitions[]? CollectibleDefinitions { get; init; }
 
     [JsonPropertyName("IsOffer")]
     public bool IsOffer { get; init; }

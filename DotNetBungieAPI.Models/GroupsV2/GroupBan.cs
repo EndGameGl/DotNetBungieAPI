@@ -1,17 +1,15 @@
-﻿using DotNetBungieAPI.Models.User;
-
 namespace DotNetBungieAPI.Models.GroupsV2;
 
-public sealed record GroupBan
+public sealed class GroupBan
 {
     [JsonPropertyName("groupId")]
     public long GroupId { get; init; }
 
     [JsonPropertyName("lastModifiedBy")]
-    public UserInfoCard LastModifiedBy { get; init; }
+    public User.UserInfoCard? LastModifiedBy { get; init; }
 
     [JsonPropertyName("createdBy")]
-    public UserInfoCard CreatedBy { get; init; }
+    public User.UserInfoCard? CreatedBy { get; init; }
 
     [JsonPropertyName("dateBanned")]
     public DateTime DateBanned { get; init; }
@@ -23,8 +21,8 @@ public sealed record GroupBan
     public string Comment { get; init; }
 
     [JsonPropertyName("bungieNetUserInfo")]
-    public UserInfoCard BungieNetUserInfo { get; init; }
+    public User.UserInfoCard? BungieNetUserInfo { get; init; }
 
     [JsonPropertyName("destinyUserInfo")]
-    public GroupUserInfoCard DestinyUserInfo { get; init; }
+    public GroupsV2.GroupUserInfoCard? DestinyUserInfo { get; init; }
 }

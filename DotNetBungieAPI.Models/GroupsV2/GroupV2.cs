@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.GroupsV2;
+namespace DotNetBungieAPI.Models.GroupsV2;
 
-public sealed record GroupV2
+public sealed class GroupV2
 {
     [JsonPropertyName("groupId")]
     public long GroupId { get; init; }
@@ -9,7 +9,7 @@ public sealed record GroupV2
     public string Name { get; init; }
 
     [JsonPropertyName("groupType")]
-    public GroupType GroupType { get; init; }
+    public GroupsV2.GroupType GroupType { get; init; }
 
     [JsonPropertyName("membershipIdCreated")]
     public long MembershipIdCreated { get; init; }
@@ -24,7 +24,7 @@ public sealed record GroupV2
     public string About { get; init; }
 
     [JsonPropertyName("tags")]
-    public ReadOnlyCollection<string> Tags { get; init; } = ReadOnlyCollection<string>.Empty;
+    public string[]? Tags { get; init; }
 
     [JsonPropertyName("memberCount")]
     public int MemberCount { get; init; }
@@ -45,7 +45,7 @@ public sealed record GroupV2
     public bool IsDefaultPostPublic { get; init; }
 
     [JsonPropertyName("chatSecurity")]
-    public ChatSecuritySetting ChatSecurity { get; init; }
+    public GroupsV2.ChatSecuritySetting ChatSecurity { get; init; }
 
     [JsonPropertyName("locale")]
     public string Locale { get; init; }
@@ -54,13 +54,13 @@ public sealed record GroupV2
     public int AvatarImageIndex { get; init; }
 
     [JsonPropertyName("homepage")]
-    public GroupHomepage Homepage { get; init; }
+    public GroupsV2.GroupHomepage Homepage { get; init; }
 
     [JsonPropertyName("membershipOption")]
-    public MembershipOption MembershipOption { get; init; }
+    public GroupsV2.MembershipOption MembershipOption { get; init; }
 
     [JsonPropertyName("defaultPublicity")]
-    public GroupPostPublicity DefaultPublicity { get; init; }
+    public GroupsV2.GroupPostPublicity DefaultPublicity { get; init; }
 
     [JsonPropertyName("theme")]
     public string Theme { get; init; }
@@ -81,11 +81,11 @@ public sealed record GroupV2
     public DateTime? BanExpireDate { get; init; }
 
     [JsonPropertyName("features")]
-    public GroupFeatures Features { get; init; }
+    public GroupsV2.GroupFeatures? Features { get; init; }
 
     [JsonPropertyName("remoteGroupId")]
     public long? RemoteGroupId { get; init; }
 
     [JsonPropertyName("clanInfo")]
-    public GroupV2ClanInfoAndInvestment ClanInfo { get; init; }
+    public GroupsV2.GroupV2ClanInfoAndInvestment? ClanInfo { get; init; }
 }

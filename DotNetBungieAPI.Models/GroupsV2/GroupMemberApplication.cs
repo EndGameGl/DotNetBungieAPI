@@ -1,8 +1,6 @@
-﻿using DotNetBungieAPI.Models.User;
-
 namespace DotNetBungieAPI.Models.GroupsV2;
 
-public sealed record GroupMemberApplication
+public sealed class GroupMemberApplication
 {
     [JsonPropertyName("groupId")]
     public long GroupId { get; init; }
@@ -11,7 +9,7 @@ public sealed record GroupMemberApplication
     public DateTime CreationDate { get; init; }
 
     [JsonPropertyName("resolveState")]
-    public GroupApplicationResolveState ResolveState { get; init; }
+    public GroupsV2.GroupApplicationResolveState ResolveState { get; init; }
 
     [JsonPropertyName("resolveDate")]
     public DateTime? ResolveDate { get; init; }
@@ -26,8 +24,8 @@ public sealed record GroupMemberApplication
     public string ResolveMessage { get; init; }
 
     [JsonPropertyName("destinyUserInfo")]
-    public GroupUserInfoCard DestinyUserInfo { get; init; }
+    public GroupsV2.GroupUserInfoCard? DestinyUserInfo { get; init; }
 
     [JsonPropertyName("bungieNetUserInfo")]
-    public UserInfoCard BungieNetUserInfo { get; init; }
+    public User.UserInfoCard? BungieNetUserInfo { get; init; }
 }

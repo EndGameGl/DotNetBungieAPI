@@ -1,7 +1,8 @@
-﻿namespace DotNetBungieAPI.Models;
+namespace DotNetBungieAPI.Models;
 
-public enum GlobalAlertType
+public enum GlobalAlertType : int
 {
     GlobalAlert = 0,
+
     StreamingAlert = 1
 }

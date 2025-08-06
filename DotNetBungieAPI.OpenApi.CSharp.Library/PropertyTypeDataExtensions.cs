@@ -4,31 +4,22 @@ namespace DotNetBungieAPI.OpenApi.CSharp.Library;
 
 public static class PropertyTypeDataExtensions
 {
-    internal static string GetCSharpType(
-        this IOpenApiComponentSchema property,
-        string? namespaceName = null
-    )
+    internal static string GetCSharpType(this IOpenApiComponentSchema property, string? namespaceName = null)
     {
         return property switch
         {
-            OpenApiArrayComponentSchema arrayComponent
-                => GetArrayTypeFromSchema(arrayComponent, namespaceName),
-            OpenApiDictionaryComponentSchema dictionaryComponent
-                => GetDictionaryTypeFromSchema(dictionaryComponent, namespaceName),
+            OpenApiArrayComponentSchema arrayComponent => GetArrayTypeFromSchema(arrayComponent, namespaceName),
+            OpenApiDictionaryComponentSchema dictionaryComponent => GetDictionaryTypeFromSchema(dictionaryComponent, namespaceName),
             OpenApiEmptyObjectComponentSchema => "object",
-            OpenApiEnumReferenceComponentSchema enumReference
-                => $"{enumReference.EnumReference.GetCSharpType(namespaceName)}",
-            OpenApiIntegerComponentSchema integerComponent
-                => GetIntTypeFromSchema(integerComponent),
+            OpenApiEnumReferenceComponentSchema enumReference => $"{enumReference.EnumReference.GetCSharpType(namespaceName)}",
+            OpenApiIntegerComponentSchema integerComponent => GetIntTypeFromSchema(integerComponent),
             OpenApiStringComponentSchema { Format: "date-time" } => "DateTime",
             OpenApiStringComponentSchema { Format: "byte" } => "byte",
             OpenApiStringComponentSchema => "string",
             OpenApiNumberComponentSchema numberComponent => numberComponent.Format,
-            OpenApiObjectMultiTypeComponentSchema openApiObjectMultiTypeComponentSchema
-                => $"{openApiObjectMultiTypeComponentSchema.AllOf[0].GetCSharpType(namespaceName)}",
+            OpenApiObjectMultiTypeComponentSchema openApiObjectMultiTypeComponentSchema => $"{openApiObjectMultiTypeComponentSchema.AllOf[0].GetCSharpType(namespaceName)}",
             OpenApiBooleanComponentSchema => "bool",
-            OpenApiComponentReference openApiComponentReference
-                => GetSharpReferenceType(openApiComponentReference, namespaceName),
+            OpenApiComponentReference openApiComponentReference => GetSharpReferenceType(openApiComponentReference, namespaceName),
             _ => throw new NotImplementedException(),
         };
     }
@@ -48,23 +39,20 @@ public static class PropertyTypeDataExtensions
         return $"{Resources.TypeMappings[integerComponent.Format]}";
     }
 
-    private static string GetArrayTypeFromSchema(
-        OpenApiArrayComponentSchema arrayComponent,
-        string? namespaceName = null
-    )
+    private static string GetArrayTypeFromSchema(OpenApiArrayComponentSchema arrayComponent, string? namespaceName = null)
     {
         if (arrayComponent.MappedDefinition is { Reference: not null })
         {
-            return $"DefinitionHashPointer<{arrayComponent.MappedDefinition.GetReferencedPath()}>[]";
+            if (arrayComponent.Items is OpenApiIntegerComponentSchema)
+            {
+                return $"DefinitionHashPointer<{arrayComponent.MappedDefinition.GetReferencedPath()}>[]";
+            }
         }
 
         return $"{arrayComponent.Items.GetCSharpType(namespaceName)}[]";
     }
 
-    private static string GetDictionaryTypeFromSchema(
-        OpenApiDictionaryComponentSchema dictionaryComponent,
-        string? namespaceName = null
-    )
+    private static string GetDictionaryTypeFromSchema(OpenApiDictionaryComponentSchema dictionaryComponent, string? namespaceName = null)
     {
         if (dictionaryComponent.MappedDefinition is { Reference: not null })
         {
@@ -74,10 +62,7 @@ public static class PropertyTypeDataExtensions
         return $"Dictionary<{dictionaryComponent.DictionaryKey.GetCSharpType(namespaceName)}, {dictionaryComponent.AdditionalProperties.GetCSharpType(namespaceName)}>";
     }
 
-    private static string GetSharpReferenceType(
-        OpenApiComponentReference reference,
-        string? namespaceName = null
-    )
+    private static string GetSharpReferenceType(OpenApiComponentReference reference, string? namespaceName = null)
     {
         if (namespaceName is null)
         {

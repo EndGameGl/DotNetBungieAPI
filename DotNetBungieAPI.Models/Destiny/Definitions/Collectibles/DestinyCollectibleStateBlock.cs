@@ -1,18 +1,10 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
-
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Collectibles;
 
-public sealed record DestinyCollectibleStateBlock : IDeepEquatable<DestinyCollectibleStateBlock>
+public sealed class DestinyCollectibleStateBlock
 {
     [JsonPropertyName("obscuredOverrideItemHash")]
-    public DefinitionHashPointer<DestinyInventoryItemDefinition> ObscuredOverrideItem { get; init; } =
-        DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition>? ObscuredOverrideItemHash { get; init; }
 
     [JsonPropertyName("requirements")]
-    public DestinyPresentationNodeRequirementsBlock Requirements { get; init; }
-
-    public bool DeepEquals(DestinyCollectibleStateBlock other)
-    {
-        return other != null && Requirements.DeepEquals(other.Requirements);
-    }
+    public Destiny.Definitions.Presentation.DestinyPresentationNodeRequirementsBlock? Requirements { get; init; }
 }

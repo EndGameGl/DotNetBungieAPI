@@ -8,19 +8,21 @@ public static class CodeBuilderExtensions
     {
         await codeBuilder.BuildDefinitions(
             new CSharpExtendedClassGenerator(),
-            null,
-            new GlobalUsingsAdditionalFileGenerator(),
-            new DefinitionsEnumFileGenerator(),
-            new BungieResponseAdditionalFileGenerator(),
-            new IDestinyDefinitionInterfaceFileGenerator(),
-            new DefinitionHashPointerFileGenerator(),
-            new JsonSerializationContextAdditionalFileGenerator(),
-            new DefinitionHashPointerFileGenerator(),
-            new DefinitionHashPointerConverterFactoryFileGenerator(),
-            new DestinyDefinitionAttributeFileGenerator(),
-            new DefinitionsEnumExtensionsFileGenerator(),
-            new BungieLocaleExtensionsFileGenerator(),
-            new BungieLocaleFileGenerator()
+            [new CSharpExtendedMethodGroupGenerator(), new CSharpExtendedImplMethodGroupGenerator()],
+            [
+                new GlobalUsingsAdditionalFileGenerator(),
+                new DefinitionsEnumFileGenerator(),
+                new BungieResponseAdditionalFileGenerator(),
+                new IDestinyDefinitionInterfaceFileGenerator(),
+                new DefinitionHashPointerFileGenerator(),
+                new JsonSerializationContextAdditionalFileGenerator(),
+                new DefinitionHashPointerFileGenerator(),
+                new DefinitionHashPointerConverterFactoryFileGenerator(),
+                new DestinyDefinitionAttributeFileGenerator(),
+                new DefinitionsEnumExtensionsFileGenerator(),
+                new BungieLocaleExtensionsFileGenerator(),
+                new BungieLocaleFileGenerator(),
+            ]
         );
     }
 }

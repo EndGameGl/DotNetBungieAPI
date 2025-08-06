@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Trending;
+namespace DotNetBungieAPI.Models.Trending;
 
-public sealed record TrendingEntryCommunityCreation
+public sealed class TrendingEntryCommunityCreation
 {
     [JsonPropertyName("media")]
     public string Media { get; init; }

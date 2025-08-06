@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 using DotNetBungieAPI.Models.Destiny;
-using DotNetBungieAPI.Models.Destiny.Definitions.Objectives;
+using DotNetBungieAPI.Models.Destiny.Definitions;
 
 namespace DotNetBungieAPI.Extensions;
 
@@ -23,41 +23,28 @@ public static class Destiny2FormattingExtensions
     /// <param name="style">Style in which to format the value</param>
     /// <returns></returns>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
-    public static string FormatUIDisplayValue(
-        this int value,
-        DestinyObjectiveDefinition objectiveDefinition
-    )
+    public static string FormatUIDisplayValue(this int value, DestinyObjectiveDefinition objectiveDefinition)
     {
-        var formattingStyle = ObjectiveIsCompleted(value, objectiveDefinition)
-            ? objectiveDefinition.CompletedValueStyle
-            : objectiveDefinition.InProgressValueStyle;
+        var formattingStyle = ObjectiveIsCompleted(value, objectiveDefinition) ? objectiveDefinition.CompletedValueStyle : objectiveDefinition.InProgressValueStyle;
 
         return formattingStyle switch
         {
-            DestinyUnlockValueUiStyle.Automatic => $"{value}/{objectiveDefinition.CompletionValue}",
-            DestinyUnlockValueUiStyle.Fraction => $"{value}/{objectiveDefinition.CompletionValue}",
-            DestinyUnlockValueUiStyle.Checkbox => value == 1 ? SetCheckbox : UnsetCheckbox,
-            DestinyUnlockValueUiStyle.Percentage => $"{value}%",
-            DestinyUnlockValueUiStyle.DateTime => UnixBaseDate.AddSeconds(value).ToString("d"),
-            DestinyUnlockValueUiStyle.FractionFloat
-                => "Not implemented, file an issue if you find any",
-            DestinyUnlockValueUiStyle.Integer => value.ToString("N0", CultureInfo.InvariantCulture),
-            DestinyUnlockValueUiStyle.TimeDuration
-                => TimeSpan.FromMilliseconds(value).ToString("g"),
-            DestinyUnlockValueUiStyle.Hidden => string.Empty,
-            DestinyUnlockValueUiStyle.Multiplier
-                => "Not implemented, file an issue if you find any",
-            DestinyUnlockValueUiStyle.GreenPips => GetPipsString(GreenPip, value),
-            DestinyUnlockValueUiStyle.RedPips => GetPipsString(RedPip, value),
-            DestinyUnlockValueUiStyle.ExplicitPercentage => $"{value}%",
-            DestinyUnlockValueUiStyle.RawFloat => ((float)value / 100).ToString("F2"),
-            DestinyUnlockValueUiStyle.LevelAndReward => value.ToString(),
-            _
-                => throw new ArgumentOutOfRangeException(
-                    nameof(formattingStyle),
-                    formattingStyle,
-                    "Failed to format value"
-                )
+            DestinyUnlockValueUIStyle.Automatic => $"{value}/{objectiveDefinition.CompletionValue}",
+            DestinyUnlockValueUIStyle.Fraction => $"{value}/{objectiveDefinition.CompletionValue}",
+            DestinyUnlockValueUIStyle.Checkbox => value == 1 ? SetCheckbox : UnsetCheckbox,
+            DestinyUnlockValueUIStyle.Percentage => $"{value}%",
+            DestinyUnlockValueUIStyle.DateTime => UnixBaseDate.AddSeconds(value).ToString("d"),
+            DestinyUnlockValueUIStyle.FractionFloat => "Not implemented, file an issue if you find any",
+            DestinyUnlockValueUIStyle.Integer => value.ToString("N0", CultureInfo.InvariantCulture),
+            DestinyUnlockValueUIStyle.TimeDuration => TimeSpan.FromMilliseconds(value).ToString("g"),
+            DestinyUnlockValueUIStyle.Hidden => string.Empty,
+            DestinyUnlockValueUIStyle.Multiplier => "Not implemented, file an issue if you find any",
+            DestinyUnlockValueUIStyle.GreenPips => GetPipsString(GreenPip, value),
+            DestinyUnlockValueUIStyle.RedPips => GetPipsString(RedPip, value),
+            DestinyUnlockValueUIStyle.ExplicitPercentage => $"{value}%",
+            DestinyUnlockValueUIStyle.RawFloat => ((float)value / 100).ToString("F2"),
+            DestinyUnlockValueUIStyle.LevelAndReward => value.ToString(),
+            _ => throw new ArgumentOutOfRangeException(nameof(formattingStyle), formattingStyle, "Failed to format value"),
         };
     }
 
@@ -72,10 +59,7 @@ public static class Destiny2FormattingExtensions
         return string.Join(' ', array);
     }
 
-    private static bool ObjectiveIsCompleted(
-        int value,
-        DestinyObjectiveDefinition objectiveDefinition
-    )
+    private static bool ObjectiveIsCompleted(int value, DestinyObjectiveDefinition objectiveDefinition)
     {
         if (objectiveDefinition.IsCountingDownward)
         {

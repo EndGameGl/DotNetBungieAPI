@@ -1,10 +1,7 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.ActivityGraphs;
-
 namespace DotNetBungieAPI.Models.Destiny.Definitions.FireteamFinder;
 
-public sealed record DestinyActivityGraphReference
+public sealed class DestinyActivityGraphReference
 {
     [JsonPropertyName("activityGraphHash")]
-    public DefinitionHashPointer<DestinyActivityGraphDefinition> ActivityGraph { get; init; } =
-        DefinitionHashPointer<DestinyActivityGraphDefinition>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.Director.DestinyActivityGraphDefinition> ActivityGraphHash { get; init; }
 }

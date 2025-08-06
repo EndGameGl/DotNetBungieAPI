@@ -1,8 +1,6 @@
 ﻿using DotNetBungieAPI.Models;
-using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Config;
-using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
-using DotNetBungieAPI.Models.Destiny.Rendering;
+using DotNetBungieAPI.Models.Destiny.HistoricalStats.Definitions;
 
 namespace DotNetBungieAPI.Service.Abstractions;
 
@@ -18,8 +16,8 @@ public interface IDefinitionProvider : IDisposable, IAsyncDisposable
     /// <param name="hash">Definition hash</param>
     /// <param name="locale">Definition locale</param>
     /// <returns></returns>
-    ValueTask<T> LoadDefinition<T>(uint hash, BungieLocales locale)
-        where T : IDestinyDefinition;
+    Task<T?> LoadDefinition<T>(uint hash, BungieLocales locale)
+        where T : class, IDestinyDefinition;
 
     /// <summary>
     ///     Uses provider to load <see cref="DestinyHistoricalStatsDefinition" />
@@ -27,10 +25,7 @@ public interface IDefinitionProvider : IDisposable, IAsyncDisposable
     /// <param name="id">Definition id</param>
     /// <param name="locale">Definition locale</param>
     /// <returns></returns>
-    ValueTask<DestinyHistoricalStatsDefinition> LoadHistoricalStatsDefinition(
-        string id,
-        BungieLocales locale
-    );
+    Task<DestinyHistoricalStatsDefinition?> LoadHistoricalStatsDefinition(string id, BungieLocales locale);
 
     /// <summary>
     ///     Uses provider to load raw definition (JSON string)
@@ -39,7 +34,7 @@ public interface IDefinitionProvider : IDisposable, IAsyncDisposable
     /// <param name="hash">Definition hash</param>
     /// <param name="locale">Definition locale</param>
     /// <returns></returns>
-    ValueTask<string> ReadDefinitionRaw(DefinitionsEnum enumValue, uint hash, BungieLocales locale);
+    Task<string?> ReadDefinitionRaw(DefinitionsEnum enumValue, uint hash, BungieLocales locale);
 
     /// <summary>
     ///     Uses provider to load raw historical stat definition
@@ -47,7 +42,7 @@ public interface IDefinitionProvider : IDisposable, IAsyncDisposable
     /// <param name="id">Definition id</param>
     /// <param name="locale">Definition locale</param>
     /// <returns></returns>
-    ValueTask<string> ReadHistoricalStatsDefinitionRaw(string id, BungieLocales locale);
+    Task<string?> ReadHistoricalStatsDefinitionRaw(string id, BungieLocales locale);
 
     /// <summary>
     ///     Gets all available manifests for current provider
@@ -119,11 +114,4 @@ public interface IDefinitionProvider : IDisposable, IAsyncDisposable
     /// <param name="repository"></param>
     /// <returns></returns>
     ValueTask ReadToRepository(IDestiny2DefinitionRepository repository);
-
-    /// <summary>
-    ///     Gets gear asset definition
-    /// </summary>
-    /// <param name="itemHash"></param>
-    /// <returns></returns>
-    ValueTask<DestinyGearAssetDefinition> GetGearAssetDefinition(uint itemHash);
 }

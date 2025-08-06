@@ -12,10 +12,7 @@ public class CSharpMethodGroupGenerator : MethodGroupGeneratorBase
 
     private const string Indent = "    ";
 
-    public override async Task GenerateMethodGroupAsync(
-        string groupName,
-        (string ApiPath, OpenApiPath ApiPathInfo)[] methods
-    )
+    public override async Task GenerateMethodGroupAsync(string groupName, (string ApiPath, OpenApiPath ApiPathInfo)[] methods)
     {
         await WriteLineAsync("using DotNetBungieAPI.Generated.Models;");
         await WriteLineAsync();
@@ -31,12 +28,9 @@ public class CSharpMethodGroupGenerator : MethodGroupGeneratorBase
             var (method, type) = methodData.GetMethod();
 
             var responseTypeReference = (OpenApiComponentReference)method.Responses["200"];
-            var responseFullType = (OpenApiObjectComponentSchema)
-                Spec.Components.Responses[responseTypeReference.GetReferencedPath()].Schema;
+            var responseFullType = (OpenApiObjectComponentSchema)Spec.Components.Responses[responseTypeReference.GetReferencedPath()].Schema;
 
-            await WriteAsync(
-                $"{Indent}Task<ApiResponse<{responseFullType.Properties["Response"].GetCSharpType("Models")}>> {method.OperationId.Split('.').Last()}"
-            );
+            await WriteAsync($"{Indent}Task<ApiResponse<{responseFullType.Properties["Response"].GetCSharpType("Models")}>> {method.OperationId.Split('.').Last()}");
 
             if (method is { Parameters: [] } and { RequestBody: null } and { Security: null or [] })
             {
@@ -50,9 +44,7 @@ public class CSharpMethodGroupGenerator : MethodGroupGeneratorBase
 
                 foreach (var pathParam in method.GetPathParameters())
                 {
-                    parameters.Add(
-                        $"{Indent}{Indent}{pathParam.Schema.GetCSharpType("Models")} {pathParam.Name}"
-                    );
+                    parameters.Add($"{Indent}{Indent}{pathParam.Schema.GetCSharpType("Models")} {pathParam.Name}");
                 }
 
                 foreach (var queryParam in method.GetQueryParameters())
@@ -62,16 +54,12 @@ public class CSharpMethodGroupGenerator : MethodGroupGeneratorBase
                         continue;
                     }
 
-                    parameters.Add(
-                        $"{Indent}{Indent}{queryParam.Schema.GetCSharpType("Models")} {queryParam.Name}"
-                    );
+                    parameters.Add($"{Indent}{Indent}{queryParam.Schema.GetCSharpType("Models")} {queryParam.Name}");
                 }
 
                 if (method.RequestBody is not null)
                 {
-                    parameters.Add(
-                        $"{Indent}{Indent}{method.RequestBody.Content["application/json"].Schema.GetCSharpType("Models")} body"
-                    );
+                    parameters.Add($"{Indent}{Indent}{method.RequestBody.Content["application/json"].Schema.GetCSharpType("Models")} body");
                 }
 
                 if (method.Security is { Length: > 0 })

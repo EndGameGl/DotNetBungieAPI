@@ -1,9 +1,11 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
-[Flags]
-public enum FireteamFinderOptionValueFlags
+[System.Flags]
+public enum FireteamFinderOptionValueFlags : int
 {
     None = 0,
+
     CreateListingDefaultValue = 1,
+
     SearchFilterDefaultValue = 2
 }

@@ -1,10 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.Entities;
+namespace DotNetBungieAPI.Models.Entities;
 
-public sealed record EntityActionResult
+public sealed class EntityActionResult
 {
     [JsonPropertyName("entityId")]
     public long EntityId { get; init; }
 
     [JsonPropertyName("result")]
-    public int Result { get; init; }
+    public Exceptions.PlatformErrorCodes Result { get; init; }
 }

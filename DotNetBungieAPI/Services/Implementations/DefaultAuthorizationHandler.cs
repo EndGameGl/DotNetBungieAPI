@@ -121,10 +121,7 @@ internal sealed class DefaultAuthorizationHandler : IAuthorizationHandler
         }
         else
         {
-            keysToRemove = _authAwaiters
-                .Where(x => x.Value.DidExpire(timeout.Value))
-                .Select(x => x.Key)
-                .ToArray();
+            keysToRemove = _authAwaiters.Where(x => x.Value.DidExpire(timeout.Value)).Select(x => x.Key).ToArray();
         }
 
         foreach (var item in keysToRemove)

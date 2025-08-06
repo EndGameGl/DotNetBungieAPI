@@ -1,18 +1,16 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Threading;
-using DotNetBungieAPI.Models.Authorization;
-using DotNetBungieAPI.Models.Social;
+using DotNetBungieAPI.Models.Social.Friends;
 using DotNetBungieAPI.Service.Abstractions.ApiAccess;
 
 namespace DotNetBungieAPI.Extensions;
 
 public static class IAsyncEnumerableExtensions
 {
-    public static async IAsyncEnumerable<PlatformFriendResponse> GetPlatformFriendList(
-        this ISocialMethodsAccess socialMethodsAccess,
+    public static async IAsyncEnumerable<PlatformFriendResponse> GetPlatformFriendLists(
+        this ISocialApi socialMethodsAccess,
         int maxPages,
         PlatformFriendType friendPlatform,
-        AuthorizationTokenData authorizationToken,
         [EnumeratorCancellation] CancellationToken cancellationToken = default
     )
     {
@@ -20,12 +18,7 @@ public static class IAsyncEnumerableExtensions
         var hasMoreToGet = true;
         while (currentPage < maxPages && hasMoreToGet)
         {
-            var response = await socialMethodsAccess.GetPlatformFriendList(
-                friendPlatform,
-                authorizationToken,
-                currentPage,
-                cancellationToken
-            );
+            var response = await socialMethodsAccess.GetPlatformFriendList(friendPlatform, currentPage.ToString(), cancellationToken);
 
             if (!response.IsSuccessfulResponseCode || response.Response is null)
                 throw response.ToException();

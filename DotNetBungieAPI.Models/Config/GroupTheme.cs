@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Config;
+namespace DotNetBungieAPI.Models.Config;
 
-public sealed record GroupTheme
+public sealed class GroupTheme
 {
     [JsonPropertyName("name")]
     public string Name { get; init; }

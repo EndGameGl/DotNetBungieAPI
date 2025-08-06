@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 using DotNetBungieAPI.Models;
-using DotNetBungieAPI.Models.Destiny;
-using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
+using DotNetBungieAPI.Models.Destiny.HistoricalStats.Definitions;
 using DotNetBungieAPI.Service.Abstractions;
 
 namespace DotNetBungieAPI.Clients;
@@ -11,7 +11,8 @@ namespace DotNetBungieAPI.Clients;
 /// </summary>
 internal sealed class BungieClient : IBungieClient
 {
-    internal static IBungieClient Instance { get; set; }
+    internal static IBungieClient Instance { get; private set; } = null!;
+
     private readonly IBungieClientConfiguration _configuration;
 
     public BungieClient(
@@ -31,9 +32,9 @@ internal sealed class BungieClient : IBungieClient
         Repository = repository;
         ApiAccess = apiAccess;
         DefinitionProvider = definitionProvider;
-        Instance = this;
         ApiHttpClient = dotNetBungieApiHttpClient;
         Serializer = bungieNetJsonSerializer;
+        Instance = this;
     }
 
     /// <summary>
@@ -73,12 +74,8 @@ internal sealed class BungieClient : IBungieClient
     /// <param name="success"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public async ValueTask<bool> TryGetDefinitionAsync<T>(
-        uint hash,
-        Action<T> success,
-        BungieLocales locale = BungieLocales.EN
-    )
-        where T : IDestinyDefinition
+    public async ValueTask<bool> TryGetDefinitionAsync<T>(uint hash, Action<T> success, BungieLocales locale = BungieLocales.EN)
+        where T : class, IDestinyDefinition
     {
         if (Repository.TryGetDestinyDefinition<T>(hash, out var definition, locale))
         {
@@ -86,34 +83,28 @@ internal sealed class BungieClient : IBungieClient
             return true;
         }
 
-        if (_configuration.TryFetchDefinitionsFromProvider)
+        if (!_configuration.TryFetchDefinitionsFromProvider)
         {
-            definition = await DefinitionProvider.LoadDefinition<T>(hash, locale);
-            if (definition is null)
-                return false;
-            if (_configuration.CacheDefinitions)
-                Repository.AddDefinition(definition, locale);
-            success(definition);
+            return false;
         }
+        definition = await DefinitionProvider.LoadDefinition<T>(hash, locale);
+        if (definition is null)
+            return false;
+        if (_configuration.CacheDefinitions)
+            Repository.AddDefinition(definition, locale);
+        success(definition);
 
-        return false;
+        return true;
     }
 
-    public bool TryGetDefinition<T>(
-        uint hash,
-        out T definition,
-        BungieLocales locale = BungieLocales.EN
-    )
-        where T : IDestinyDefinition
+    public bool TryGetDefinition<T>(uint hash, [NotNullWhen(true)] out T? definition, BungieLocales locale = BungieLocales.EN)
+        where T : class, IDestinyDefinition
     {
         if (Repository.TryGetDestinyDefinition(hash, out definition, locale))
             return true;
         if (_configuration.TryFetchDefinitionsFromProvider)
         {
-            var defTask = DefinitionProvider.LoadDefinition<T>(hash, locale);
-            definition = defTask.GetAwaiter().GetResult();
-            if (!defTask.IsCompleted)
-                throw new Exception("ValueTask faulted to get result.");
+            definition = DefinitionProvider.LoadDefinition<T>(hash, locale).GetAwaiter().GetResult();
             if (definition is null)
                 return false;
             if (_configuration.CacheDefinitions)
@@ -124,11 +115,7 @@ internal sealed class BungieClient : IBungieClient
         return false;
     }
 
-    public async ValueTask<bool> TryGetHistoricalStatDefinitionAsync(
-        string key,
-        Action<DestinyHistoricalStatsDefinition> success,
-        BungieLocales locale = BungieLocales.EN
-    )
+    public async ValueTask<bool> TryGetHistoricalStatDefinitionAsync(string key, Action<DestinyHistoricalStatsDefinition> success, BungieLocales locale = BungieLocales.EN)
     {
         if (Repository.TryGetDestinyHistoricalDefinition(key, out var definition, locale))
         {
@@ -152,22 +139,14 @@ internal sealed class BungieClient : IBungieClient
         return false;
     }
 
-    public bool TryGetHistoricalStatDefinition(
-        string key,
-        out DestinyHistoricalStatsDefinition definition,
-        BungieLocales locale = BungieLocales.EN
-    )
+    public bool TryGetHistoricalStatDefinition(string key, [NotNullWhen(true)] out DestinyHistoricalStatsDefinition? definition, BungieLocales locale = BungieLocales.EN)
     {
         if (Repository.TryGetDestinyHistoricalDefinition(key, out definition, locale))
             return true;
 
         if (_configuration.TryFetchDefinitionsFromProvider)
         {
-            var getterTask = DefinitionProvider.LoadHistoricalStatsDefinition(key, locale);
-            definition = getterTask.GetAwaiter().GetResult();
-
-            if (!getterTask.IsCompleted)
-                throw new Exception("ValueTask faulted to get result.");
+            definition = DefinitionProvider.LoadHistoricalStatsDefinition(key, locale).GetAwaiter().GetResult();
 
             if (definition is null)
                 return false;

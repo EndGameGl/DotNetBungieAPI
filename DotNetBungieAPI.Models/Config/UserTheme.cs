@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Config;
+namespace DotNetBungieAPI.Models.Config;
 
-public sealed record UserTheme
+public sealed class UserTheme
 {
     [JsonPropertyName("userThemeId")]
     public int UserThemeId { get; init; }

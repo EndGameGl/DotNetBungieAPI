@@ -1,4 +1,4 @@
-﻿namespace DotNetBungieAPI.Models;
+namespace DotNetBungieAPI.Models;
 
 /// <summary>
 ///     Enumeration for available locales on bungie.net

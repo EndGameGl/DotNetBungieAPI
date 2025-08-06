@@ -38,18 +38,11 @@ public abstract class ModelGeneratorBase
         await Writer.WriteLineAsync(text);
     }
 
-    protected bool TryFindMatchingSchema(
-        OpenApiEnumComponentSchema property,
-        [NotNullWhen(true)] out string? enumSchemaName
-    )
+    protected bool TryFindMatchingSchema(OpenApiEnumComponentSchema property, [NotNullWhen(true)] out string? enumSchemaName)
     {
         enumSchemaName = null;
 
-        foreach (
-            var (schemaName, schema) in Spec.Components.Schemas.Where(x =>
-                x.Value is OpenApiEnumComponentSchema
-            )
-        )
+        foreach (var (schemaName, schema) in Spec.Components.Schemas.Where(x => x.Value is OpenApiEnumComponentSchema))
         {
             var openApiEnumComponentSchema = (OpenApiEnumComponentSchema)schema;
 

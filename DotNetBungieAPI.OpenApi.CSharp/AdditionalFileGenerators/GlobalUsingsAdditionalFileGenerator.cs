@@ -4,8 +4,7 @@ namespace DotNetBungieAPI.OpenApi.CSharp.AdditionalFileGenerators;
 
 public class GlobalUsingsAdditionalFileGenerator : AdditionalFileGenerator
 {
-    private const string GlobalUsingsText =
-        """
+    private const string GlobalUsingsText = """
         global using System.Text.Json.Serialization;
         """;
 

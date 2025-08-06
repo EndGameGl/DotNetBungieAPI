@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using DotNetBungieAPI.Models;
-using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
+using DotNetBungieAPI.Models.Destiny.Definitions;
 using DotNetBungieAPI.Tests.Fixtures;
 using Xunit;
 using Xunit.Priority;

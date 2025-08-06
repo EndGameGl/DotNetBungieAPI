@@ -1,10 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.Ignores;
+namespace DotNetBungieAPI.Models.Ignores;
 
-public sealed record IgnoreResponse
+public sealed class IgnoreResponse
 {
     [JsonPropertyName("isIgnored")]
     public bool IsIgnored { get; init; }
 
     [JsonPropertyName("ignoreFlags")]
-    public IgnoreStatus IgnoreFlags { get; init; }
+    public Ignores.IgnoreStatus IgnoreFlags { get; init; }
 }

@@ -36,10 +36,7 @@ public class CSharpClassGenerator : ModelGeneratorBase
 
     public override bool CanHandle(IOpenApiComponentSchema schema)
     {
-        return schema
-            is OpenApiObjectComponentSchema
-                or OpenApiEnumComponentSchema
-                or OpenApiEmptyObjectComponentSchema;
+        return schema is OpenApiObjectComponentSchema or OpenApiEnumComponentSchema or OpenApiEmptyObjectComponentSchema;
     }
 
     private async Task GenerateFromEnumSchema(string typeName, OpenApiEnumComponentSchema schema)
@@ -74,9 +71,7 @@ public class CSharpClassGenerator : ModelGeneratorBase
             await WriteLineAsync("[System.Flags]");
         }
 
-        await WriteLineAsync(
-            $"public enum {typeName.Split('.').Last()} : {Resources.TypeMappings[schema.Format ?? schema.Type]}"
-        );
+        await WriteLineAsync($"public enum {typeName.Split('.').Last()} : {Resources.TypeMappings[schema.Format ?? schema.Type]}");
 
         await WriteLineAsync('{');
 
@@ -90,9 +85,7 @@ public class CSharpClassGenerator : ModelGeneratorBase
                 await WriteComment(true, enumValueData.Description);
             }
 
-            await WriteLineAsync(
-                $"{Indent}{enumValueData.Identifier} = {enumValueData.NumericValue}{(i != amountCheckValue ? "," : string.Empty)}"
-            );
+            await WriteLineAsync($"{Indent}{enumValueData.Identifier} = {enumValueData.NumericValue}{(i != amountCheckValue ? "," : string.Empty)}");
             if (i != amountCheckValue)
             {
                 await WriteLineAsync();
@@ -102,10 +95,7 @@ public class CSharpClassGenerator : ModelGeneratorBase
         await WriteLineAsync('}');
     }
 
-    private async Task GenerateFromObjectSchema(
-        string typeName,
-        OpenApiObjectComponentSchema schema
-    )
+    private async Task GenerateFromObjectSchema(string typeName, OpenApiObjectComponentSchema schema)
     {
         if (typeName.Contains('.'))
         {
@@ -165,10 +155,7 @@ public class CSharpClassGenerator : ModelGeneratorBase
 
             string propertyType;
 
-            if (
-                propertySchema.AsEnumType(out var fullEnumShema)
-                && TryFindMatchingSchema(fullEnumShema, out var enumPropertySchema)
-            )
+            if (propertySchema.AsEnumType(out var fullEnumShema) && TryFindMatchingSchema(fullEnumShema, out var enumPropertySchema))
             {
                 propertyType = enumPropertySchema;
             }
@@ -180,12 +167,10 @@ public class CSharpClassGenerator : ModelGeneratorBase
             var nullableSymbol = propertySchema switch
             {
                 ICanBeNullable { Nullable: true } or not ICanBeNullable => "?",
-                _ => string.Empty
+                _ => string.Empty,
             };
 
-            await WriteLineAsync(
-                $"{Indent}public {propertyType}{nullableSymbol} {propertyName.GetCSharpPropertyName()} {{ get; set; }}"
-            );
+            await WriteLineAsync($"{Indent}public {propertyType}{nullableSymbol} {propertyName.GetCSharpPropertyName()} {{ get; set; }}");
 
             if (i != amountCheckValue)
             {
@@ -254,10 +239,7 @@ public class CSharpClassGenerator : ModelGeneratorBase
         await WriteLineAsync($"{(indent ? Indent : string.Empty)}/// </summary>");
     }
 
-    private bool MayBeDestinyDefinitionSchema(
-        string schemaName,
-        OpenApiObjectComponentSchema schema
-    )
+    private bool MayBeDestinyDefinitionSchema(string schemaName, OpenApiObjectComponentSchema schema)
     {
         if (schema.MobileManifestName is not null && schema.Properties.ContainsKey("hash"))
         {

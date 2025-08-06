@@ -1,37 +1,19 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.Genders;
-
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Records;
 
-public sealed record DestinyRecordTitleBlock : IDeepEquatable<DestinyRecordTitleBlock>
+public sealed class DestinyRecordTitleBlock
 {
     [JsonPropertyName("hasTitle")]
     public bool HasTitle { get; init; }
 
     [JsonPropertyName("titlesByGender")]
-    public ReadOnlyDictionary<DestinyGender, string> TitlesByGender { get; init; } =
-        ReadOnlyDictionary<DestinyGender, string>.Empty;
+    public Dictionary<Destiny.DestinyGender, string>? TitlesByGender { get; init; }
 
+    /// <summary>
+    ///     For those who prefer to use the definitions.
+    /// </summary>
     [JsonPropertyName("titlesByGenderHash")]
-    public ReadOnlyDictionary<
-        DefinitionHashPointer<DestinyGenderDefinition>,
-        string
-    > TitlesByGenderHash { get; init; } =
-        ReadOnlyDictionary<DefinitionHashPointer<DestinyGenderDefinition>, string>.Empty;
+    public Dictionary<DefinitionHashPointer<Destiny.Definitions.DestinyGenderDefinition>, string>? TitlesByGenderHash { get; init; }
 
     [JsonPropertyName("gildingTrackingRecordHash")]
-    public DefinitionHashPointer<DestinyRecordDefinition> GildingTrackingRecord { get; init; } =
-        DefinitionHashPointer<DestinyRecordDefinition>.Empty;
-
-    public bool DeepEquals(DestinyRecordTitleBlock other)
-    {
-        return other != null
-            && HasTitle == other.HasTitle
-            && TitlesByGender.DeepEqualsReadOnlyDictionaryWithSimpleKeyAndSimpleValue(
-                other.TitlesByGender
-            )
-            && TitlesByGenderHash.DeepEqualsReadOnlyDictionaryWithDefinitionKeyAndSimpleValue(
-                other.TitlesByGenderHash
-            )
-            && GildingTrackingRecord.DeepEquals(other.GildingTrackingRecord);
-    }
+    public DefinitionHashPointer<Destiny.Definitions.Records.DestinyRecordDefinition>? GildingTrackingRecordHash { get; init; }
 }

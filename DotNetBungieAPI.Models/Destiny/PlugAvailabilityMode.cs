@@ -1,24 +1,21 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
 /// <summary>
 ///     This enum determines whether the plug is available to be inserted.
+/// <para />
+///     - Normal means that all existing rules for plug insertion apply.
+/// <para />
+///     - UnavailableIfSocketContainsMatchingPlugCategory means that the plug is only available if the socket does NOT match the plug category.
+/// <para />
+///     - AvailableIfSocketContainsMatchingPlugCategory means that the plug is only available if the socket DOES match the plug category.
+/// <para />
+///     For category matching, use the plug's "plugCategoryIdentifier" property, comparing it to
 /// </summary>
-public enum PlugAvailabilityMode
+public enum PlugAvailabilityMode : int
 {
-    /// <summary>
-    ///     Normal means that all existing rules for plug insertion apply.
-    /// </summary>
     Normal = 0,
 
-    /// <summary>
-    ///     UnavailableIfSocketContainsMatchingPlugCategory means that the plug is only available if the socket does NOT match
-    ///     the plug category.
-    /// </summary>
     UnavailableIfSocketContainsMatchingPlugCategory = 1,
 
-    /// <summary>
-    ///     AvailableIfSocketContainsMatchingPlugCategory means that the plug is only available if the socket DOES match the
-    ///     plug category.
-    /// </summary>
     AvailableIfSocketContainsMatchingPlugCategory = 2
 }

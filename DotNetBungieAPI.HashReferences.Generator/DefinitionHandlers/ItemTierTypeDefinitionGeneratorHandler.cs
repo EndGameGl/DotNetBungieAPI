@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers.Interfaces;
-using DotNetBungieAPI.Models;
-using DotNetBungieAPI.Models.Destiny.Definitions.ItemTierTypes;
+using DotNetBungieAPI.Models.Destiny.Definitions.Items;
 using DotNetBungieAPI.Service.Abstractions;
 
 namespace DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers;

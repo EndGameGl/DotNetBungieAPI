@@ -1,15 +1,15 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.HistoricalStats;
+namespace DotNetBungieAPI.Models.Destiny.HistoricalStats;
 
-public sealed record DestinyHistoricalStatsValuePair
+public sealed class DestinyHistoricalStatsValuePair
 {
     /// <summary>
     ///     Raw value of the statistic
     /// </summary>
     [JsonPropertyName("value")]
-    public double Value { get; init; }
+    public double? Value { get; init; }
 
     /// <summary>
-    ///     Localized formatted version of the value.
+    ///     Localized formated version of the value.
     /// </summary>
     [JsonPropertyName("displayValue")]
     public string DisplayValue { get; init; }

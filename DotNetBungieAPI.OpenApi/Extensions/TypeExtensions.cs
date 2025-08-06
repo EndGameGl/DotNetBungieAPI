@@ -5,10 +5,7 @@ namespace DotNetBungieAPI.OpenApi.Extensions;
 
 public static class TypeExtensions
 {
-    internal static bool As<T>(
-        this IOpenApiComponentSchema schema,
-        [NotNullWhen(true)] out T? wantedSchema
-    )
+    internal static bool As<T>(this IOpenApiComponentSchema schema, [NotNullWhen(true)] out T? wantedSchema)
         where T : class, IOpenApiComponentSchema
     {
         wantedSchema = null;
@@ -22,34 +19,22 @@ public static class TypeExtensions
         return false;
     }
 
-    public static bool AsArray(
-        this IOpenApiComponentSchema schema,
-        [NotNullWhen(true)] out OpenApiArrayComponentSchema? componentSchema
-    )
+    public static bool AsArray(this IOpenApiComponentSchema schema, [NotNullWhen(true)] out OpenApiArrayComponentSchema? componentSchema)
     {
         return schema.As(out componentSchema);
     }
 
-    public static bool AsDictionary(
-        this IOpenApiComponentSchema schema,
-        [NotNullWhen(true)] out OpenApiDictionaryComponentSchema? componentSchema
-    )
+    public static bool AsDictionary(this IOpenApiComponentSchema schema, [NotNullWhen(true)] out OpenApiDictionaryComponentSchema? componentSchema)
     {
         return schema.As(out componentSchema);
     }
 
-    public static bool AsEnumType(
-        this IOpenApiComponentSchema schema,
-        [NotNullWhen(true)] out OpenApiEnumComponentSchema? componentSchema
-    )
+    public static bool AsEnumType(this IOpenApiComponentSchema schema, [NotNullWhen(true)] out OpenApiEnumComponentSchema? componentSchema)
     {
         return schema.As(out componentSchema);
     }
 
-    public static bool AsObjectType(
-        this IOpenApiComponentSchema schema,
-        [NotNullWhen(true)] out OpenApiObjectComponentSchema? componentSchema
-    )
+    public static bool AsObjectType(this IOpenApiComponentSchema schema, [NotNullWhen(true)] out OpenApiObjectComponentSchema? componentSchema)
     {
         return schema.As(out componentSchema);
     }

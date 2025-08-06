@@ -4,12 +4,11 @@ namespace DotNetBungieAPI.OpenApi.CSharp.Library.AdditionalFileGenerators;
 
 public class BungieLocaleExtensionsFileGenerator : AdditionalFileGenerator
 {
-    private const string Content =
-        """
+    private const string Content = """
         using System.Runtime.CompilerServices;
-        
+
         namespace DotNetBungieAPI.Models.Extensions;
-        
+
         /// <summary>
         ///     Extensions class for <see cref="BungieLocales"/>
         /// </summary>
@@ -42,7 +41,7 @@ public class BungieLocaleExtensionsFileGenerator : AdditionalFileGenerator
                     _ => throw new Exception("Wrong locale.")
                 };
             }
-        
+
             /// <summary>
             ///     Matches locale string with respective <see cref="BungieLocales"/>
             /// </summary>
@@ -72,9 +71,10 @@ public class BungieLocaleExtensionsFileGenerator : AdditionalFileGenerator
             }
         }
         """;
-    
+
     public override string FileNameAndExtension => "BungieLocaleExtensions.cs";
     public override string Location => "Models\\Extensions";
+
     public override async Task WriteFile(Models.OpenApi openApiModel)
     {
         await WriteAsync(Content);

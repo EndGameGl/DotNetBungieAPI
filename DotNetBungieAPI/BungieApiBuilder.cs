@@ -51,10 +51,7 @@ public static class BungieApiBuilder
     /// <param name="serviceCollection"></param>
     /// <param name="configure"></param>
     /// <returns></returns>
-    public static IServiceCollection UseBungieApiClient(
-        this IServiceCollection serviceCollection,
-        Action<IBungieClientBuilder> configure
-    )
+    public static IServiceCollection UseBungieApiClient(this IServiceCollection serviceCollection, Action<IBungieClientBuilder> configure)
     {
         var builder = new BungieClientBuilder(serviceCollection);
         configure.Invoke(builder);
@@ -65,10 +62,7 @@ public static class BungieApiBuilder
         return serviceCollection;
     }
 
-    private static void RegisterServices(
-        IServiceCollection serviceCollection,
-        IBungieClientBuilder bungieClientBuilder
-    )
+    private static void RegisterServices(IServiceCollection serviceCollection, IBungieClientBuilder bungieClientBuilder)
     {
         serviceCollection.AddSingleton(bungieClientBuilder.ClientConfiguration);
         serviceCollection.AddSingleton<IBungieClient, BungieClient>();
@@ -76,22 +70,17 @@ public static class BungieApiBuilder
 
         serviceCollection.AddSingleton<IBungieApiAccess, BungieApiAccess>();
 
-        serviceCollection.AddSingleton<IFireteamMethodsAccess, FireteamMethodsAccess>();
-        serviceCollection.AddSingleton<IContentMethodsAccess, ContentMethodsAccess>();
-        serviceCollection.AddSingleton<IAppMethodsAccess, AppMethodsAccess>();
-        serviceCollection.AddSingleton<IForumMethodsAccess, ForumMethodsAccess>();
-        serviceCollection.AddSingleton<IGroupV2MethodsAccess, GroupV2MethodsAccess>();
-        serviceCollection.AddSingleton<IUserMethodsAccess, UserMethodsAccess>();
-        serviceCollection.AddSingleton<ITokensMethodsAccess, TokensMethodsAccess>();
-        serviceCollection.AddSingleton<IDestiny2MethodsAccess, Destiny2MethodsAccess>();
-        serviceCollection.AddSingleton<
-            ICommunityContentMethodsAccess,
-            CommunityContentMethodsAccess
-        >();
-        serviceCollection.AddSingleton<ISocialMethodsAccess, SocialMethodsAccess>();
-        serviceCollection.AddSingleton<ITrendingMethodsAccess, TrendingMethodsAccess>();
-        serviceCollection.AddSingleton<IMiscMethodsAccess, MiscMethodsAccess>();
-        serviceCollection.AddSingleton<IRenderApiAccess, RenderApiAccess>();
-        serviceCollection.AddSingleton<IFireteamFinderMethodsAccess, FireteamFinderMethodsAccess>();
+        serviceCollection.AddSingleton<IFireteamApi, FireteamApi>();
+        serviceCollection.AddSingleton<IContentApi, ContentApi>();
+        serviceCollection.AddSingleton<IAppApi, AppApi>();
+        serviceCollection.AddSingleton<IForumApi, ForumApi>();
+        serviceCollection.AddSingleton<IGroupV2Api, GroupV2Api>();
+        serviceCollection.AddSingleton<IUserApi, UserApi>();
+        serviceCollection.AddSingleton<ITokensApi, TokensApi>();
+        serviceCollection.AddSingleton<IDestiny2Api, Destiny2Api>();
+        serviceCollection.AddSingleton<ICommunityContentApi, CommunityContentApi>();
+        serviceCollection.AddSingleton<ISocialApi, SocialApi>();
+        serviceCollection.AddSingleton<ITrendingApi, TrendingApi>();
+        serviceCollection.AddSingleton<IMiscApi, MiscApi>();
     }
 }

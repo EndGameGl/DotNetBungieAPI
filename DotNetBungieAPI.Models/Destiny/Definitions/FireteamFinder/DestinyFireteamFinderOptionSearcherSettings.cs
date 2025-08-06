@@ -1,10 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.FireteamFinder;
+namespace DotNetBungieAPI.Models.Destiny.Definitions.FireteamFinder;
 
-public sealed record DestinyFireteamFinderOptionSearcherSettings
+public sealed class DestinyFireteamFinderOptionSearcherSettings
 {
     [JsonPropertyName("control")]
-    public DestinyFireteamFinderOptionSettingsControl Control { get; init; }
+    public Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionSettingsControl? Control { get; init; }
 
     [JsonPropertyName("searchFilterType")]
-    public FireteamFinderOptionSearchFilterType SearchFilterType { get; init; }
+    public Destiny.FireteamFinderOptionSearchFilterType SearchFilterType { get; init; }
 }

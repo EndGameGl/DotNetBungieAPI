@@ -21,13 +21,10 @@ public static partial class StringVariableHelpers
     /// <param name="value"></param>
     /// <param name="hash"></param>
     /// <returns></returns>
-    public static bool TryGetStringVariableHash(
-        this string value,
-        out uint hash
-    )
+    public static bool TryGetStringVariableHash(this string value, out uint hash)
     {
         hash = 0;
-        
+
         if (string.IsNullOrEmpty(value))
             return false;
 
@@ -49,11 +46,7 @@ public static partial class StringVariableHelpers
     /// <param name="hashes"></param>
     /// <param name="formattedString"></param>
     /// <returns></returns>
-    public static bool TryGetStringVariableHashReplaced(
-        this string unformattedString,
-        IReadOnlyDictionary<uint, int> hashes,
-        out string? formattedString
-    )
+    public static bool TryGetStringVariableHashReplaced(this string unformattedString, IReadOnlyDictionary<uint, int> hashes, out string? formattedString)
     {
         formattedString = null;
         if (!unformattedString.TryGetStringVariableHash(out var hash))

@@ -13,9 +13,7 @@ internal static class InternalExtensions
     /// <param name="componentTypes"></param>
     /// <returns></returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal static string ComponentsToWordString(
-        this IEnumerable<DestinyComponentType> componentTypes
-    )
+    internal static string ComponentsToWordString(this IEnumerable<DestinyComponentType> componentTypes)
     {
         return string.Join(',', componentTypes);
     }
@@ -26,17 +24,13 @@ internal static class InternalExtensions
     /// <param name="componentTypes"></param>
     /// <returns></returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal static string ComponentsToIntString(
-        this IEnumerable<DestinyComponentType> componentTypes
-    )
+    internal static string ComponentsToIntString(this IEnumerable<DestinyComponentType> componentTypes)
     {
         return string.Join(',', componentTypes.Select(x => (int)x));
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal static async Task<(long, TResponse response)> MeasureAsync<TResponse>(
-        Func<Task<TResponse>> task
-    )
+    internal static async Task<(long, TResponse response)> MeasureAsync<TResponse>(Func<Task<TResponse>> task)
     {
         var start = Stopwatch.GetTimestamp();
         var result = await task();

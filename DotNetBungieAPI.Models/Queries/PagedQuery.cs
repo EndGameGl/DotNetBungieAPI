@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Queries;
+namespace DotNetBungieAPI.Models.Queries;
 
-public record PagedQuery
+public sealed class PagedQuery
 {
     [JsonPropertyName("itemsPerPage")]
     public int ItemsPerPage { get; init; }

@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Applications;
+namespace DotNetBungieAPI.Models.Applications;
 
-public sealed record Datapoint
+public sealed class Datapoint
 {
     /// <summary>
     ///     Timestamp for the related count.

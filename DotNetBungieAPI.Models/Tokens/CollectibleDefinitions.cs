@@ -1,13 +1,10 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.Collectibles;
-using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
-
 namespace DotNetBungieAPI.Models.Tokens;
 
-public sealed record CollectibleDefinitions
+public sealed class CollectibleDefinitions
 {
     [JsonPropertyName("CollectibleDefinition")]
-    public DestinyCollectibleDefinition CollectibleDefinition { get; init; }
+    public Destiny.Definitions.Collectibles.DestinyCollectibleDefinition? CollectibleDefinition { get; init; }
 
     [JsonPropertyName("DestinyInventoryItemDefinition")]
-    public DestinyInventoryItemDefinition DestinyInventoryItemDefinition { get; init; }
+    public Destiny.Definitions.DestinyInventoryItemDefinition? DestinyInventoryItemDefinition { get; init; }
 }

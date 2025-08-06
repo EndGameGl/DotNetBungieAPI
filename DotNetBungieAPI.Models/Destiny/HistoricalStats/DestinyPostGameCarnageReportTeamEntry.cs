@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.HistoricalStats;
+namespace DotNetBungieAPI.Models.Destiny.HistoricalStats;
 
-public sealed record DestinyPostGameCarnageReportTeamEntry
+public sealed class DestinyPostGameCarnageReportTeamEntry
 {
     /// <summary>
     ///     Integer ID for the team.
@@ -12,13 +12,13 @@ public sealed record DestinyPostGameCarnageReportTeamEntry
     ///     Team's standing relative to other teams.
     /// </summary>
     [JsonPropertyName("standing")]
-    public DestinyHistoricalStatsValue Standing { get; init; }
+    public Destiny.HistoricalStats.DestinyHistoricalStatsValue? Standing { get; init; }
 
     /// <summary>
     ///     Score earned by the team
     /// </summary>
     [JsonPropertyName("score")]
-    public DestinyHistoricalStatsValue Score { get; init; }
+    public Destiny.HistoricalStats.DestinyHistoricalStatsValue? Score { get; init; }
 
     /// <summary>
     ///     Alpha or Bravo

@@ -1,10 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
 /// <summary>
 ///     A Flags enumeration/bitmask where each bit represents a possible state that a Record/Triumph can be in.
 /// </summary>
-[Flags]
-public enum DestinyRecordState
+[System.Flags]
+public enum DestinyRecordState : int
 {
     /// <summary>
     ///     If there are no flags set, the record is in a state where it *could* be redeemed, but it has not been yet.
@@ -27,8 +27,7 @@ public enum DestinyRecordState
     ObjectiveNotCompleted = 4,
 
     /// <summary>
-    ///     If this is set, the game recommends that you replace the display text of this Record with
-    ///     DestinyRecordDefinition.stateInfo.obscuredDescription.
+    ///     If this is set, the game recommends that you replace the display text of this Record with DestinyRecordDefinition.stateInfo.obscuredDescription.
     /// </summary>
     Obscured = 8,
 

@@ -1,9 +1,8 @@
-﻿namespace DotNetBungieAPI.Models.User;
+namespace DotNetBungieAPI.Models.User;
 
-public sealed record GeneralUser
+public sealed class GeneralUser
 {
     [JsonPropertyName("membershipId")]
-    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public long MembershipId { get; init; }
 
     [JsonPropertyName("uniqueName")]
@@ -25,7 +24,6 @@ public sealed record GeneralUser
     public int UserTitle { get; init; }
 
     [JsonPropertyName("successMessageFlags")]
-    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public long SuccessMessageFlags { get; init; }
 
     [JsonPropertyName("isDeleted")]
@@ -44,7 +42,7 @@ public sealed record GeneralUser
     public long? LegacyPortalUID { get; init; }
 
     [JsonPropertyName("context")]
-    public UserToUserContext Context { get; init; }
+    public User.UserToUserContext? Context { get; init; }
 
     [JsonPropertyName("psnDisplayName")]
     public string PsnDisplayName { get; init; }
@@ -110,5 +108,5 @@ public sealed record GeneralUser
     public short? CachedBungieGlobalDisplayNameCode { get; init; }
 
     [JsonPropertyName("egsDisplayName")]
-    public string? EgsDisplayName { get; init; }
+    public string EgsDisplayName { get; init; }
 }

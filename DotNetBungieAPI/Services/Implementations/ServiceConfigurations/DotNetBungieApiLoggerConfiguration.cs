@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace DotNetBungieAPI.Services.Default.ServiceConfigurations;
+namespace DotNetBungieAPI.Services.Implementations.ServiceConfigurations;
 
 public sealed class DotNetBungieApiLoggerConfiguration
 {

@@ -1,10 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
 /// <summary>
 ///     A Flags enumeration representing the reasons why a person can't join this user's fireteam.
 /// </summary>
-[Flags]
-public enum DestinyJoinClosedReasons
+[System.Flags]
+public enum DestinyJoinClosedReasons : int
 {
     None = 0,
 
@@ -24,8 +24,7 @@ public enum DestinyJoinClosedReasons
     SoloMode = 4,
 
     /// <summary>
-    ///     The user can't be joined for one of a variety of internal reasons. Basically, the game can't let you join at this
-    ///     time, but for reasons that aren't under the control of this user.
+    ///     The user can't be joined for one of a variety of internal reasons. Basically, the game can't let you join at this time, but for reasons that aren't under the control of this user.
     /// </summary>
     InternalReasons = 8,
 

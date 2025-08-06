@@ -1,12 +1,9 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.Artifacts;
-
 namespace DotNetBungieAPI.Models.Destiny.Artifacts;
 
-public sealed record DestinyArtifactCharacterScoped
+public sealed class DestinyArtifactCharacterScoped
 {
     [JsonPropertyName("artifactHash")]
-    public DefinitionHashPointer<DestinyArtifactDefinition> Artifact { get; init; } =
-        DefinitionHashPointer<DestinyArtifactDefinition>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.Artifacts.DestinyArtifactDefinition> ArtifactHash { get; init; }
 
     [JsonPropertyName("pointsUsed")]
     public int PointsUsed { get; init; }
@@ -15,6 +12,5 @@ public sealed record DestinyArtifactCharacterScoped
     public int ResetCount { get; init; }
 
     [JsonPropertyName("tiers")]
-    public ReadOnlyCollection<DestinyArtifactTier> Tiers { get; init; } =
-        ReadOnlyCollection<DestinyArtifactTier>.Empty;
+    public Destiny.Artifacts.DestinyArtifactTier[]? Tiers { get; init; }
 }

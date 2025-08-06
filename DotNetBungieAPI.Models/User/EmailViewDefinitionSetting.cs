@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.User;
+namespace DotNetBungieAPI.Models.User;
 
-public sealed record EmailViewDefinitionSetting
+public sealed class EmailViewDefinitionSetting
 {
     /// <summary>
     ///     The identifier for this UI Setting, which can be used to relate it to custom strings or other data as desired.
@@ -12,26 +12,23 @@ public sealed record EmailViewDefinitionSetting
     ///     A dictionary of localized text for the EMail setting, keyed by the locale.
     /// </summary>
     [JsonPropertyName("localization")]
-    public ReadOnlyDictionary<string, EmailSettingLocalization> Localization { get; init; } =
-        ReadOnlyDictionary<string, EmailSettingLocalization>.Empty;
+    public Dictionary<string, User.EMailSettingLocalization>? Localization { get; init; }
 
     /// <summary>
     ///     If true, this setting should be set by default if the user hasn't chosen whether it's set or cleared yet.
     /// </summary>
     [JsonPropertyName("setByDefault")]
-    public bool IsSetByDefault { get; init; }
+    public bool SetByDefault { get; init; }
 
     /// <summary>
-    ///     The OptInFlags value to set or clear if this setting is set or cleared in the UI. It is the aggregate of all
-    ///     underlying opt-in flags related to this setting.
+    ///     The OptInFlags value to set or clear if this setting is set or cleared in the UI. It is the aggregate of all underlying opt-in flags related to this setting.
     /// </summary>
     [JsonPropertyName("optInAggregateValue")]
-    public OptInFlags OptInAggregateValue { get; init; }
+    public User.OptInFlags OptInAggregateValue { get; init; }
 
     /// <summary>
-    ///     The subscriptions to show as children of this setting, if any
+    ///     The subscriptions to show as children of this setting, if any.
     /// </summary>
     [JsonPropertyName("subscriptions")]
-    public ReadOnlyCollection<EmailSubscriptionDefinition> Subscriptions { get; init; } =
-        ReadOnlyCollection<EmailSubscriptionDefinition>.Empty;
+    public User.EmailSubscriptionDefinition[]? Subscriptions { get; init; }
 }

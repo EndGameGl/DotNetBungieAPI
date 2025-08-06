@@ -1,4 +1,4 @@
-﻿using DotNetBungieAPI.Models.Destiny;
+﻿using DotNetBungieAPI.Models;
 
 namespace DotNetBungieAPI.Services.Implementations.ServiceConfigurations;
 
@@ -6,8 +6,7 @@ public sealed class DefaultDestiny2DefinitionRepositoryConfiguration
 {
     private int _appConcurrencyLevel = Environment.ProcessorCount;
 
-    internal List<DefinitionsEnum> AllowedDefinitions { get; } =
-        Enum.GetValues<DefinitionsEnum>().ToList();
+    internal List<DefinitionsEnum> AllowedDefinitions { get; } = [.. Enum.GetValues<DefinitionsEnum>()];
 
     public int AppConcurrencyLevel
     {

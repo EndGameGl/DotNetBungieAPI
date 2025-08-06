@@ -12,7 +12,7 @@ public class OpenApiStringComponentSchema : IOpenApiComponentSchema, IHasDescrip
 
     [JsonPropertyName("format")]
     public string? Format { get; init; }
-    
+
     [JsonPropertyName("nullable")]
     public bool? Nullable { get; init; }
 }

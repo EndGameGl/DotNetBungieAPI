@@ -1,10 +1,9 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
 /// <summary>
-///     If you're showing an unlock value in the UI, this is the format in which it should be shown. You'll have to build
-///     your own algorithms on the client side to determine how best to render these options.
+///     If you're showing an unlock value in the UI, this is the format in which it should be shown. You'll have to build your own algorithms on the client side to determine how best to render these options.
 /// </summary>
-public enum DestinyUnlockValueUiStyle
+public enum DestinyUnlockValueUIStyle : int
 {
     /// <summary>
     ///     Generally, Automatic means "Just show the number"
@@ -12,8 +11,7 @@ public enum DestinyUnlockValueUiStyle
     Automatic = 0,
 
     /// <summary>
-    ///     Show the number as a fractional value. For this to make sense, the value being displayed should have a comparable
-    ///     upper bound, like the progress to the next level of a Progression.
+    ///     Show the number as a fractional value. For this to make sense, the value being displayed should have a comparable upper bound, like the progress to the next level of a Progression.
     /// </summary>
     Fraction = 1,
 
@@ -23,22 +21,17 @@ public enum DestinyUnlockValueUiStyle
     Checkbox = 2,
 
     /// <summary>
-    ///     Show the number as a percentage. For this to make sense, the value being displayed should have a comparable upper
-    ///     bound, like the progress to the next level of a Progression.
+    ///     Show the number as a percentage. For this to make sense, the value being displayed should have a comparable upper bound, like the progress to the next level of a Progression.
     /// </summary>
     Percentage = 3,
 
     /// <summary>
-    ///     Show the number as a date and time. The number will be the number of seconds since the Unix Epoch (January 1st,
-    ///     1970 at midnight UTC). It'll be up to you to convert this into a date and time format understandable to the user in
-    ///     their time zone.
+    ///     Show the number as a date and time. The number will be the number of seconds since the Unix Epoch (January 1st, 1970 at midnight UTC). It'll be up to you to convert this into a date and time format understandable to the user in their time zone.
     /// </summary>
     DateTime = 4,
 
     /// <summary>
-    ///     Show the number as a floating point value that represents a fraction, where 0 is min and 1 is max. For this to make
-    ///     sense, the value being displayed should have a comparable upper bound, like the progress to the next level of a
-    ///     Progression.
+    ///     Show the number as a floating point value that represents a fraction, where 0 is min and 1 is max. For this to make sense, the value being displayed should have a comparable upper bound, like the progress to the next level of a Progression.
     /// </summary>
     FractionFloat = 5,
 
@@ -78,8 +71,7 @@ public enum DestinyUnlockValueUiStyle
     ExplicitPercentage = 12,
 
     /// <summary>
-    ///     Show the value as a floating-point number. For example: "4.52" NOTE: Passed along from Investment as whole number
-    ///     with last two digits as decimal values (452 -> 4.52)
+    ///     Show the value as a floating-point number. For example: "4.52" NOTE: Passed along from Investment as whole number with last two digits as decimal values (452 -> 4.52)
     /// </summary>
     RawFloat = 13,
 

@@ -1,5 +1,7 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 using System.Threading;
+using DotNetBungieAPI.Models.Destiny;
 
 namespace DotNetBungieAPI;
 
@@ -75,10 +77,39 @@ internal class ExtendedStringBuilder
         return this;
     }
 
-    public ExtendedStringBuilder AddQueryParam(string key, string value)
+    public ExtendedStringBuilder AddQueryParam(string key, string? value)
     {
+        if (string.IsNullOrEmpty(value))
+            return this;
+
         _optionalUrlParams.Add(key, value);
         return this;
+    }
+
+    public ExtendedStringBuilder AddQueryParam(string key, bool value)
+    {
+        return AddQueryParam(key, value.ToString());
+    }
+
+    public ExtendedStringBuilder AddQueryParam(string key, int value)
+    {
+        return AddQueryParam(key, value.ToString());
+    }
+
+    public ExtendedStringBuilder AddQueryParam(string key, DateTime value)
+    {
+        return AddQueryParam(key, value.ToString("yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture));
+    }
+
+    public ExtendedStringBuilder AddQueryParam(string key, DestinyComponentType[] value)
+    {
+        return AddQueryParam(key, value.ComponentsToIntString());
+    }
+
+    public ExtendedStringBuilder AddQueryParam<T>(string key, T[] value)
+        where T : Enum
+    {
+        return AddQueryParam(key, string.Join(',', value.Select(x => x.ToString())));
     }
 
     public ExtendedStringBuilder AddQueryParam(string key, string value, Func<bool> predicate)

@@ -1,13 +1,20 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
-public enum DamageType
+public enum DamageType : int
 {
     None = 0,
+
     Kinetic = 1,
+
     Arc = 2,
-    Solar = 3,
+
+    Thermal = 3,
+
     Void = 4,
+
     Raid = 5,
+
     Stasis = 6,
+
     Strand = 7
 }

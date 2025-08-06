@@ -1,27 +1,13 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Records;
+namespace DotNetBungieAPI.Models.Destiny.Definitions.Records;
 
-public sealed record DestinyRecordIntervalBlock : IDeepEquatable<DestinyRecordIntervalBlock>
+public sealed class DestinyRecordIntervalBlock
 {
     [JsonPropertyName("intervalObjectives")]
-    public ReadOnlyCollection<DestinyRecordIntervalObjective> IntervalObjectives { get; init; } =
-        ReadOnlyCollection<DestinyRecordIntervalObjective>.Empty;
+    public Destiny.Definitions.Records.DestinyRecordIntervalObjective[]? IntervalObjectives { get; init; }
 
     [JsonPropertyName("intervalRewards")]
-    public ReadOnlyCollection<DestinyRecordIntervalRewards> IntervalRewards { get; init; } =
-        ReadOnlyCollection<DestinyRecordIntervalRewards>.Empty;
-
-    [JsonPropertyName("isIntervalVersionedFromNormalRecord")]
-    public bool IsIntervalVersionedFromNormalRecord { get; init; }
+    public Destiny.Definitions.Records.DestinyRecordIntervalRewards[]? IntervalRewards { get; init; }
 
     [JsonPropertyName("originalObjectiveArrayInsertionIndex")]
     public int OriginalObjectiveArrayInsertionIndex { get; init; }
-
-    public bool DeepEquals(DestinyRecordIntervalBlock other)
-    {
-        return other != null
-            && IntervalObjectives.DeepEqualsReadOnlyCollection(other.IntervalObjectives)
-            && IntervalRewards.DeepEqualsReadOnlyCollection(other.IntervalRewards)
-            && IsIntervalVersionedFromNormalRecord == other.IsIntervalVersionedFromNormalRecord
-            && OriginalObjectiveArrayInsertionIndex == other.OriginalObjectiveArrayInsertionIndex;
-    }
 }

@@ -6,13 +6,13 @@ public class OpenApiObjectMultiTypeComponentSchema : IOpenApiComponentSchema, IH
 {
     [JsonPropertyName("type")]
     public required string Type { get; init; }
-    
+
     [JsonPropertyName("allOf")]
     public required IOpenApiComponentSchema[] AllOf { get; init; }
-    
+
     [JsonPropertyName("description")]
     public string? Description { get; init; }
-    
+
     [JsonPropertyName("x-destiny-component-type-dependency")]
     public string? DestinyComponentTypeDependency { get; init; }
 }

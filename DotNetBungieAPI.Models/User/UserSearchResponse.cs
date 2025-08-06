@@ -1,10 +1,9 @@
-﻿namespace DotNetBungieAPI.Models.User;
+namespace DotNetBungieAPI.Models.User;
 
-public sealed record UserSearchResponse
+public sealed class UserSearchResponse
 {
     [JsonPropertyName("searchResults")]
-    public ReadOnlyCollection<UserSearchResponseDetail> SearchResults { get; init; } =
-        ReadOnlyCollection<UserSearchResponseDetail>.Empty;
+    public User.UserSearchResponseDetail[]? SearchResults { get; init; }
 
     [JsonPropertyName("page")]
     public int Page { get; init; }

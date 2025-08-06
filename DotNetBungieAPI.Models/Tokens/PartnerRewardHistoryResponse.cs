@@ -1,12 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.Tokens;
+namespace DotNetBungieAPI.Models.Tokens;
 
-public sealed record PartnerRewardHistoryResponse
+public sealed class PartnerRewardHistoryResponse
 {
     [JsonPropertyName("PartnerOffers")]
-    public ReadOnlyCollection<PartnerOfferSkuHistoryResponse> PartnerOffers { get; init; } =
-        ReadOnlyCollection<PartnerOfferSkuHistoryResponse>.Empty;
+    public Tokens.PartnerOfferSkuHistoryResponse[]? PartnerOffers { get; init; }
 
     [JsonPropertyName("TwitchDrops")]
-    public ReadOnlyCollection<TwitchDropHistoryResponse> TwitchDrops { get; init; } =
-        ReadOnlyCollection<TwitchDropHistoryResponse>.Empty;
+    public Tokens.TwitchDropHistoryResponse[]? TwitchDrops { get; init; }
 }

@@ -48,12 +48,7 @@ public class DefinitionsEnumExtensionsFileGenerator : AdditionalFileGenerator
             .ToArray();
 
         await WriteAsync($"{Indent}{Indent}{Indent}");
-        await WriteLineAsync(
-            string.Join(
-                $"\n{Indent}{Indent}{Indent}",
-                definitions.Select(x => $"DefinitionsEnum.{x} => nameof(DefinitionsEnum.{x}),")
-            )
-        );
+        await WriteLineAsync(string.Join($"\n{Indent}{Indent}{Indent}", definitions.Select(x => $"DefinitionsEnum.{x} => nameof(DefinitionsEnum.{x}),")));
         await WriteLineAsync($"{Indent}{Indent}{Indent}_ => throw new ArgumentOutOfRangeException(nameof(definitionsEnum), definitionsEnum, null)");
 
         await WriteLineAsync($"{Indent}{Indent}}};");

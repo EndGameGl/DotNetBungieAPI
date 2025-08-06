@@ -1,22 +1,15 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Models;
-using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
+using DotNetBungieAPI.Models.Destiny.HistoricalStats.Definitions;
 
 namespace DotNetBungieAPI.Extensions;
 
 public static class HistoricalStatDefinitionPointerExtensions
 {
-    public static bool TryGetDefinition(
-        [NotNullWhen(true)] out DestinyHistoricalStatsDefinition? definition,
-        BungieLocales locale = BungieLocales.EN
-    )
+    public static bool TryGetDefinition([NotNullWhen(true)] out DestinyHistoricalStatsDefinition? definition, BungieLocales locale = BungieLocales.EN)
     {
         definition = null;
-        return BungieClient.Instance.TryGetHistoricalStatDefinition(
-            definition!.StatId,
-            out definition,
-            locale
-        );
+        return BungieClient.Instance.TryGetHistoricalStatDefinition(definition!.StatId, out definition, locale);
     }
 }

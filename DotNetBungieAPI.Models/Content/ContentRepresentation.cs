@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Content;
+namespace DotNetBungieAPI.Models.Content;
 
-public sealed record ContentRepresentation
+public sealed class ContentRepresentation
 {
     [JsonPropertyName("name")]
     public string Name { get; init; }

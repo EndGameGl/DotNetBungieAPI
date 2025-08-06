@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Forum;
+namespace DotNetBungieAPI.Models.Forum;
 
-public sealed record PollResult
+public sealed class PollResult
 {
     [JsonPropertyName("answerText")]
     public string AnswerText { get; init; }

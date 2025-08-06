@@ -1,11 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
 /// <summary>
-///     The possible states of Destiny Profile Records. IMPORTANT: Any given item can theoretically have many of these
-///     states simultaneously: as a result, this was altered to be a flags enumeration/bitmask for v3.2.0.
+///     The possible states of Destiny Profile Records. IMPORTANT: Any given item can theoretically have many of these states simultaneously: as a result, this was altered to be a flags enumeration/bitmask for v3.2.0.
 /// </summary>
-[Flags]
-public enum DestinyVendorItemState
+[System.Flags]
+public enum DestinyVendorItemState : int
 {
     /// <summary>
     ///     There are no augments on the item.
@@ -13,8 +12,7 @@ public enum DestinyVendorItemState
     None = 0,
 
     /// <summary>
-    ///     Deprecated forever (probably). There was a time when Records were going to be implemented through Vendors, and this
-    ///     field was relevant. Now they're implemented through Presentation Nodes, and this field doesn't matter anymore.
+    ///     Deprecated forever (probably). There was a time when Records were going to be implemented through Vendors, and this field was relevant. Now they're implemented through Presentation Nodes, and this field doesn't matter anymore.
     /// </summary>
     Incomplete = 1,
 
@@ -59,8 +57,7 @@ public enum DestinyVendorItemState
     WideView = 256,
 
     /// <summary>
-    ///     This indicates that you should show some kind of attention-requesting indicator on the item, in a similar manner to
-    ///     items in the nexus that have such notifications.
+    ///     This indicates that you should show some kind of attention-requesting indicator on the item, in a similar manner to items in the nexus that have such notifications.
     /// </summary>
     NexusAttention = 512,
 

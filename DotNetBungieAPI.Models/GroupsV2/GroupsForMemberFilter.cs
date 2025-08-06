@@ -1,8 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.GroupsV2;
+namespace DotNetBungieAPI.Models.GroupsV2;
 
-public enum GroupsForMemberFilter
+public enum GroupsForMemberFilter : int
 {
     All = 0,
+
     Founded = 1,
+
     NonFounded = 2
 }

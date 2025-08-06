@@ -1,8 +1,6 @@
-﻿using DotNetBungieAPI.Models.Destiny.Milestones;
-
 namespace DotNetBungieAPI.Models.Trending;
 
-public sealed record TrendingEntryDestinyRitual
+public sealed class TrendingEntryDestinyRitual
 {
     [JsonPropertyName("image")]
     public string Image { get; init; }
@@ -22,9 +20,15 @@ public sealed record TrendingEntryDestinyRitual
     [JsonPropertyName("dateEnd")]
     public DateTime? DateEnd { get; init; }
 
+    /// <summary>
+    ///     A destiny event does not necessarily have a related Milestone, but if it does the details will be returned here.
+    /// </summary>
     [JsonPropertyName("milestoneDetails")]
-    public DestinyPublicMilestone MilestoneDetails { get; init; }
+    public Destiny.Milestones.DestinyPublicMilestone? MilestoneDetails { get; init; }
 
+    /// <summary>
+    ///     A destiny event will not necessarily have milestone "custom content", but if it does the details will be here.
+    /// </summary>
     [JsonPropertyName("eventContent")]
-    public DestinyMilestoneContent EventContent { get; init; }
+    public Destiny.Milestones.DestinyMilestoneContent? EventContent { get; init; }
 }

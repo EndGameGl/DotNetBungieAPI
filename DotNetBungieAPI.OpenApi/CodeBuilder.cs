@@ -8,8 +8,7 @@ namespace DotNetBungieAPI.OpenApi;
 
 public class CodeBuilder
 {
-    private const string OpenApiSpecLink =
-        "https://raw.githubusercontent.com/Bungie-net/api/master/openapi.json";
+    private const string OpenApiSpecLink = "https://raw.githubusercontent.com/Bungie-net/api/master/openapi.json";
 
     private readonly string _destinationFolder;
 
@@ -31,10 +30,7 @@ public class CodeBuilder
             var httpClient = new HttpClient();
             _spec = await httpClient.GetFromJsonAsync<Models.OpenApi>(
                 OpenApiSpecLink,
-                new JsonSerializerOptions()
-                {
-                    Converters = { new IOpenApiComponentSchemaSerializer() }
-                }
+                new JsonSerializerOptions() { Converters = { new IOpenApiComponentSchemaSerializer() } }
             );
 
             ArgumentNullException.ThrowIfNull(_spec);
@@ -50,14 +46,17 @@ public class CodeBuilder
 
     public async Task BuildDefinitions(
         ModelGeneratorBase modelGenerator,
-        MethodGroupGeneratorBase? methodGroupGenerator,
+        MethodGroupGeneratorBase[]? methodGroupGenerators,
         params AdditionalFileGenerator[] additionalFileGenerators
     )
     {
         modelGenerator.Spec = _spec;
-        if (methodGroupGenerator is not null)
+        if (methodGroupGenerators is { Length: > 0 })
         {
-            methodGroupGenerator.Spec = _spec;
+            foreach (var methodGroupGenerator in methodGroupGenerators)
+            {
+                methodGroupGenerator.Spec = _spec;
+            }
         }
 
         var typeTree = new TypeTree();
@@ -67,10 +66,7 @@ public class CodeBuilder
         {
             var filePath = Path.Combine(_destinationFolder, additionalFileGenerator.Location);
             Directory.CreateDirectory(filePath);
-            await using var streamWriter = new StreamWriter(
-                Path.Combine(filePath, additionalFileGenerator.FileNameAndExtension),
-                append: false
-            );
+            await using var streamWriter = new StreamWriter(Path.Combine(filePath, additionalFileGenerator.FileNameAndExtension), append: false);
             additionalFileGenerator.Writer = streamWriter;
             await additionalFileGenerator.WriteFile(_spec);
         }
@@ -78,19 +74,17 @@ public class CodeBuilder
         Directory.CreateDirectory(Path.Combine(_destinationFolder, "Models"));
         foreach (var treeNode in typeTree.Nodes.Values)
         {
-            await IterateThroughTypeTreeBare(
-                _spec,
-                treeNode,
-                Path.Combine(_destinationFolder, "Models"),
-                Path.Combine(_destinationFolder, "Models"),
-                modelGenerator
-            );
+            await IterateThroughTypeTreeBare(_spec, treeNode, Path.Combine(_destinationFolder, "Models"), Path.Combine(_destinationFolder, "Models"), modelGenerator);
         }
 
-        Directory.CreateDirectory(Path.Combine(_destinationFolder, "Methods"));
-        if (methodGroupGenerator is not null)
+        if (methodGroupGenerators is { Length: > 0 })
         {
-            await CreateApiInterfaces(_spec, methodGroupGenerator, Path.Combine(_destinationFolder, "Methods"));
+            foreach (var methodGroupGenerator in methodGroupGenerators)
+            {
+                var folder = Path.Combine(_destinationFolder, methodGroupGenerator.Location);
+                Directory.CreateDirectory(folder);
+                await CreateApiInterfaces(_spec, methodGroupGenerator, folder);
+            }
         }
     }
 
@@ -108,25 +102,14 @@ public class CodeBuilder
             Directory.CreateDirectory(currentFolder);
             foreach (var childNode in treeNode.Nodes.Values)
             {
-                await IterateThroughTypeTreeBare(
-                    openApiModel,
-                    childNode,
-                    initialDirectory,
-                    currentFolder,
-                    modelGenerator
-                );
+                await IterateThroughTypeTreeBare(openApiModel, childNode, initialDirectory, currentFolder, modelGenerator);
             }
         }
 
         if (treeNode.IsType)
         {
-            var currentFile = Path.Combine(
-                previousPath,
-                $"{treeNode.Name}.{modelGenerator.FileExtension}"
-            );
-            var fullTypeName = currentFile
-                .Replace(initialDirectory, string.Empty)
-                .Replace('\\', '.')[1..^3];
+            var currentFile = Path.Combine(previousPath, $"{treeNode.Name}.{modelGenerator.FileExtension}");
+            var fullTypeName = currentFile.Replace(initialDirectory, string.Empty).Replace('\\', '.')[1..^3];
 
             var typeSchema = openApiModel.Components.Schemas[fullTypeName];
 
@@ -146,11 +129,7 @@ public class CodeBuilder
         }
     }
 
-    private async Task CreateApiInterfaces(
-        Models.OpenApi openApiModel,
-        MethodGroupGeneratorBase methodGroupGenerator,
-        string path
-    )
+    private async Task CreateApiInterfaces(Models.OpenApi openApiModel, MethodGroupGeneratorBase methodGroupGenerator, string path)
     {
         var groups = openApiModel
             .Paths.GroupBy(x =>
@@ -172,17 +151,11 @@ public class CodeBuilder
         foreach (var (groupName, groupMethods) in groups)
         {
             var fixedGroupName = string.IsNullOrWhiteSpace(groupName) ? "Misc" : groupName;
-            var fileName = Path.Combine(
-                path,
-                $"{fixedGroupName}.ApiMethods.{methodGroupGenerator.FileExtension}"
-            );
+            var fileName = Path.Combine(path, $"{fixedGroupName}.ApiMethods.{methodGroupGenerator.FileExtension}");
             await using var streamWriter = new StreamWriter(fileName, append: false);
             methodGroupGenerator.Writer = streamWriter;
 
-            await methodGroupGenerator.GenerateMethodGroupAsync(
-                fixedGroupName,
-                groupMethods.Select(x => (x.Key, x.Value)).ToArray()
-            );
+            await methodGroupGenerator.GenerateMethodGroupAsync(fixedGroupName, groupMethods.Select(x => (x.Key, x.Value)).ToArray());
         }
     }
 }

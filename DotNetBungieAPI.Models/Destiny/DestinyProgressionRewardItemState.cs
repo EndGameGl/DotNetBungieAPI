@@ -1,10 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
 /// <summary>
 ///     Represents the different states a progression reward item can be in.
 /// </summary>
-[Flags]
-public enum DestinyProgressionRewardItemState
+[System.Flags]
+public enum DestinyProgressionRewardItemState : int
 {
     None = 0,
 
@@ -24,9 +24,7 @@ public enum DestinyProgressionRewardItemState
     Claimed = 4,
 
     /// <summary>
-    ///     If this is set, the reward is allowed to be claimed by this Character. An item can be earned but still can't be
-    ///     claimed in certain circumstances, like if it's only allowed for certain subclasses. It also might not be able to be
-    ///     claimed if you already claimed it!
+    ///     If this is set, the reward is allowed to be claimed by this Character. An item can be earned but still can't be claimed in certain circumstances, like if it's only allowed for certain subclasses. It also might not be able to be claimed if you already claimed it!
     /// </summary>
     ClaimAllowed = 8
 }

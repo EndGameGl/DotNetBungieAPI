@@ -1,8 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
-public enum FireteamFinderOptionControlType
+public enum FireteamFinderOptionControlType : int
 {
     None = 0,
+
     ValueCollection = 1,
+
     RadioButton = 2
 }

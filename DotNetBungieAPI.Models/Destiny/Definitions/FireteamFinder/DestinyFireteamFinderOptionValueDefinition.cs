@@ -1,15 +1,13 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.Common;
-
 namespace DotNetBungieAPI.Models.Destiny.Definitions.FireteamFinder;
 
-public sealed record DestinyFireteamFinderOptionValueDefinition
+public sealed class DestinyFireteamFinderOptionValueDefinition
 {
     [JsonPropertyName("displayProperties")]
-    public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; init; }
 
     [JsonPropertyName("value")]
     public uint Value { get; init; }
 
     [JsonPropertyName("flags")]
-    public FireteamFinderOptionValueFlags Flags { get; init; }
+    public Destiny.FireteamFinderOptionValueFlags Flags { get; init; }
 }

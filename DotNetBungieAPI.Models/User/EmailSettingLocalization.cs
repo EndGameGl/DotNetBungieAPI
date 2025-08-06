@@ -1,9 +1,9 @@
-﻿namespace DotNetBungieAPI.Models.User;
+namespace DotNetBungieAPI.Models.User;
 
 /// <summary>
-///     Localized text relevant to a given Email setting in a given localization.
+///     Localized text relevant to a given EMail setting in a given localization.
 /// </summary>
-public sealed record EmailSettingLocalization
+public sealed class EMailSettingLocalization
 {
     [JsonPropertyName("title")]
     public string Title { get; init; }

@@ -1,6 +1,6 @@
 ﻿using System.Text;
 using DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers.Interfaces;
-using DotNetBungieAPI.Models.Destiny.Definitions.MedalTiers;
+using DotNetBungieAPI.Models.Destiny.Definitions;
 using DotNetBungieAPI.Service.Abstractions;
 
 namespace DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers;

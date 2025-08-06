@@ -1,9 +1,9 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
 /// <summary>
 ///     An enumeration of the known UI interactions for Vendors.
 /// </summary>
-public enum VendorInteractionType
+public enum VendorInteractionType : int
 {
     Unknown = 0,
 
@@ -43,8 +43,7 @@ public enum VendorInteractionType
     QuestAccept = 7,
 
     /// <summary>
-    ///     Honestly, this doesn't seem consistent to me. It is used to give you choices in the Cryptarch as well as some
-    ///     reward prompts by the Eververse vendor. I'll have to look into that further at some point.
+    ///     Honestly, this doesn't seem consistent to me. It is used to give you choices in the Cryptarch as well as some reward prompts by the Eververse vendor. I'll have to look into that further at some point.
     /// </summary>
     ProgressTab = 8,
 

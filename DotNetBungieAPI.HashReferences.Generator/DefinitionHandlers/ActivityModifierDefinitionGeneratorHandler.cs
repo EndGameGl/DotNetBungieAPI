@@ -1,6 +1,5 @@
 ﻿using System.Text;
 using DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers.Interfaces;
-using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModifiers;
 using DotNetBungieAPI.Service.Abstractions;
 

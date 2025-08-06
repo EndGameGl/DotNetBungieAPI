@@ -1,14 +1,12 @@
-﻿using DotNetBungieAPI.Models.Ignores;
-
 namespace DotNetBungieAPI.Models.User;
 
-public sealed record UserToUserContext
+public sealed class UserToUserContext
 {
     [JsonPropertyName("isFollowing")]
     public bool IsFollowing { get; init; }
 
     [JsonPropertyName("ignoreStatus")]
-    public IgnoreResponse IgnoreStatus { get; init; }
+    public Ignores.IgnoreResponse? IgnoreStatus { get; init; }
 
     [JsonPropertyName("globalIgnoreEndDate")]
     public DateTime? GlobalIgnoreEndDate { get; init; }

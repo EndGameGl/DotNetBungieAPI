@@ -1,13 +1,13 @@
-﻿namespace DotNetBungieAPI.Models.Tokens;
+namespace DotNetBungieAPI.Models.Tokens;
 
-public sealed record BungieRewardDisplay
+public sealed class BungieRewardDisplay
 {
     [JsonPropertyName("UserRewardAvailabilityModel")]
-    public UserRewardAvailabilityModel UserRewardAvailabilityModel { get; init; }
+    public Tokens.UserRewardAvailabilityModel? UserRewardAvailabilityModel { get; init; }
 
     [JsonPropertyName("ObjectiveDisplayProperties")]
-    public RewardDisplayProperties ObjectiveDisplayProperties { get; init; }
+    public Tokens.RewardDisplayProperties? ObjectiveDisplayProperties { get; init; }
 
     [JsonPropertyName("RewardDisplayProperties")]
-    public RewardDisplayProperties RewardDisplayProperties { get; init; }
+    public Tokens.RewardDisplayProperties? RewardDisplayProperties { get; init; }
 }

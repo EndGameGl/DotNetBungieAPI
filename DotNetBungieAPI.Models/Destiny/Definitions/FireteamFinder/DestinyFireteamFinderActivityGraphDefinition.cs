@@ -1,88 +1,75 @@
-﻿using DotNetBungieAPI.Models.Attributes;
-using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
-using DotNetBungieAPI.Models.Destiny.Definitions.Common;
-using DotNetBungieAPI.Models.Destiny.Definitions.Locations;
-
 namespace DotNetBungieAPI.Models.Destiny.Definitions.FireteamFinder;
 
 [DestinyDefinition(DefinitionsEnum.DestinyFireteamFinderActivityGraphDefinition)]
-public sealed record DestinyFireteamFinderActivityGraphDefinition
-    : IDestinyDefinition,
-        IDisplayProperties
+public sealed class DestinyFireteamFinderActivityGraphDefinition : IDestinyDefinition
 {
+    public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyFireteamFinderActivityGraphDefinition;
+
     [JsonPropertyName("displayProperties")]
-    public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; init; }
 
     [JsonPropertyName("color")]
-    public DestinyColor Color { get; init; }
+    public Destiny.Misc.DestinyColor? Color { get; init; }
 
     [JsonPropertyName("isPlayerElectedDifficultyNode")]
     public bool IsPlayerElectedDifficultyNode { get; init; }
 
     [JsonPropertyName("parentHash")]
-    public DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition> Parent { get; init; } =
-        DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition>? ParentHash { get; init; }
 
     [JsonPropertyName("children")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
-    > Children { get; init; } =
-        ReadOnlyCollection<
-            DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
-        >.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition>[]? Children { get; init; }
 
     [JsonPropertyName("selfAndAllDescendantHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
-    > SelfAndAllDescendants { get; init; } =
-        ReadOnlyCollection<
-            DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
-        >.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition>[]? SelfAndAllDescendantHashes { get; init; }
 
     [JsonPropertyName("relatedActivitySetHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyFireteamFinderActivitySetDefinition>
-    > RelatedActivitySets { get; init; } =
-        ReadOnlyCollection<
-            DefinitionHashPointer<DestinyFireteamFinderActivitySetDefinition>
-        >.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivitySetDefinition>[]? RelatedActivitySetHashes { get; init; }
 
     [JsonPropertyName("specificActivitySetHash")]
-    public DefinitionHashPointer<DestinyFireteamFinderActivitySetDefinition> SpecificActivitySet { get; init; } =
-        DefinitionHashPointer<DestinyFireteamFinderActivitySetDefinition>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivitySetDefinition>? SpecificActivitySetHash { get; init; }
 
     [JsonPropertyName("relatedActivityHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyActivityDefinition>
-    > RelatedActivities { get; init; } =
-        ReadOnlyCollection<DefinitionHashPointer<DestinyActivityDefinition>>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.DestinyActivityDefinition>[]? RelatedActivityHashes { get; init; }
 
     [JsonPropertyName("relatedDirectorNodes")]
-    public ReadOnlyCollection<DestinyActivityGraphReference> RelatedDirectorNodes { get; init; } =
-        ReadOnlyCollection<DestinyActivityGraphReference>.Empty;
+    public Destiny.Definitions.FireteamFinder.DestinyActivityGraphReference[]? RelatedDirectorNodes { get; init; }
 
     [JsonPropertyName("relatedInteractableActivities")]
-    public ReadOnlyCollection<DestinyActivityInteractableReference> RelatedInteractableActivities { get; init; } =
-        ReadOnlyCollection<DestinyActivityInteractableReference>.Empty;
+    public Destiny.Definitions.FireteamFinder.DestinyActivityInteractableReference[]? RelatedInteractableActivities { get; init; }
 
     [JsonPropertyName("relatedLocationHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyLocationDefinition>
-    > RelatedLocations { get; init; } =
-        ReadOnlyCollection<DefinitionHashPointer<DestinyLocationDefinition>>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.DestinyLocationDefinition>[]? RelatedLocationHashes { get; init; }
 
-    public DefinitionsEnum DefinitionEnumValue =>
-        DefinitionsEnum.DestinyFireteamFinderActivityGraphDefinition;
+    [JsonPropertyName("sortMatchmadeActivitiesToFront")]
+    public bool SortMatchmadeActivitiesToFront { get; init; }
 
-    [JsonPropertyName("blacklisted")]
-    public bool Blacklisted { get; init; }
+    [JsonPropertyName("enabledOnTreeTypesListEnum")]
+    public Destiny.DestinyActivityTreeType[]? EnabledOnTreeTypesListEnum { get; init; }
 
+    [JsonPropertyName("activityTreeChildSortMode")]
+    public Destiny.DestinyActivityTreeChildSortMode ActivityTreeChildSortMode { get; init; }
+
+    [JsonPropertyName("sortPriority")]
+    public int? SortPriority { get; init; }
+
+    /// <summary>
+    ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
+    /// <para />
+    ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
+    /// </summary>
     [JsonPropertyName("hash")]
     public uint Hash { get; init; }
 
+    /// <summary>
+    ///     The index of the entity as it was found in the investment tables.
+    /// </summary>
     [JsonPropertyName("index")]
     public int Index { get; init; }
 
+    /// <summary>
+    ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
+    /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; init; }
 }

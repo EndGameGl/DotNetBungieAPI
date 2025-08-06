@@ -18,7 +18,7 @@ public class OpenApiPathMethodParameterInfo
 
     [JsonPropertyName("required")]
     public bool? Required { get; init; }
-    
+
     [JsonPropertyName("deprecated")]
     public bool? Deprecated { get; init; }
 

@@ -16,21 +16,13 @@ public sealed class DotNetBungieApiHttpClientConfiguration
     /// <summary>
     ///     Use this on SocketsHttpHandler to get IPv4 only
     /// </summary>
-    public static Func<
-        SocketsHttpConnectionContext,
-        CancellationToken,
-        ValueTask<Stream>
-    > DefaultConnectCallback { get; } =
+    public static Func<SocketsHttpConnectionContext, CancellationToken, ValueTask<Stream>> DefaultConnectCallback { get; } =
         async (context, cancellationToken) =>
         {
-            IPHostEntry ipHostEntry = await Dns.GetHostEntryAsync(
-                context.DnsEndPoint.Host,
-                cancellationToken
-            );
+            IPHostEntry ipHostEntry = await Dns.GetHostEntryAsync(context.DnsEndPoint.Host, cancellationToken);
             IPAddress? ipAddress =
-                ipHostEntry.AddressList.FirstOrDefault(i =>
-                    i.AddressFamily is AddressFamily.InterNetwork
-                ) ?? throw new Exception($"No IP4 address for {context.DnsEndPoint.Host}");
+                ipHostEntry.AddressList.FirstOrDefault(i => i.AddressFamily is AddressFamily.InterNetwork)
+                ?? throw new Exception($"No IP4 address for {context.DnsEndPoint.Host}");
             TcpClient tcp = new();
             await tcp.ConnectAsync(ipAddress, context.DnsEndPoint.Port, cancellationToken);
             return tcp.GetStream();

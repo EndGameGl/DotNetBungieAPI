@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Content;
+namespace DotNetBungieAPI.Models.Content;
 
-public sealed record CommentSummary
+public sealed class CommentSummary
 {
     [JsonPropertyName("topicId")]
     public long TopicId { get; init; }

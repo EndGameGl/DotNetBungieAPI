@@ -1,12 +1,17 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Definitions;
+namespace DotNetBungieAPI.Models.Destiny.Definitions;
 
-[Flags]
-public enum DestinyTalentNodeStepDamageTypes
+[System.Flags]
+public enum DestinyTalentNodeStepDamageTypes : int
 {
     None = 0,
+
     Kinetic = 1,
+
     Arc = 2,
+
     Solar = 4,
+
     Void = 8,
+
     All = 15
 }

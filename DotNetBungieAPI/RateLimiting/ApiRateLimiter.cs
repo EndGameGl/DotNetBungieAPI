@@ -24,29 +24,14 @@ internal sealed class ApiRateLimiter
     /// <param name="requestsLimitTimeFrame">Global requests limit time interval</param>
     /// <param name="perSecondMaxLimit">Limit per second for requests</param>
     /// <param name="maxConcurrentRequestsLimit">Maximum amount of concurrent requests</param>
-    internal ApiRateLimiter(
-        ILogger logger,
-        int requestsLimit,
-        TimeSpan requestsLimitTimeFrame,
-        int perSecondMaxLimit,
-        int maxConcurrentRequestsLimit
-    )
+    internal ApiRateLimiter(ILogger logger, int requestsLimit, TimeSpan requestsLimitTimeFrame, int perSecondMaxLimit, int maxConcurrentRequestsLimit)
     {
         _logger = logger;
-        _concurrentCallsSemaphore = new SemaphoreSlim(
-            maxConcurrentRequestsLimit,
-            maxConcurrentRequestsLimit
-        );
+        _concurrentCallsSemaphore = new SemaphoreSlim(maxConcurrentRequestsLimit, maxConcurrentRequestsLimit);
 
-        var localSecondConstraint = new CountByIntervalAwaitableConstraint(
-            perSecondMaxLimit,
-            TimeSpan.FromSeconds(1)
-        );
+        var localSecondConstraint = new CountByIntervalAwaitableConstraint(perSecondMaxLimit, TimeSpan.FromSeconds(1));
 
-        var globalRequestConstraint = new CountByIntervalAwaitableConstraint(
-            requestsLimit,
-            requestsLimitTimeFrame
-        );
+        var globalRequestConstraint = new CountByIntervalAwaitableConstraint(requestsLimit, requestsLimitTimeFrame);
 
         _rateLimiter = TimeLimiter.Compose(globalRequestConstraint, localSecondConstraint);
     }
@@ -58,10 +43,7 @@ internal sealed class ApiRateLimiter
     /// <param name="cancellationToken">Cancellation token</param>
     /// <typeparam name="T">Return type</typeparam>
     /// <returns></returns>
-    public async Task<T> WaitAndRunAsync<T>(
-        Func<CancellationToken, Task<T>> func,
-        CancellationToken cancellationToken
-    )
+    public async Task<T> WaitAndRunAsync<T>(Func<CancellationToken, Task<T>> func, CancellationToken cancellationToken)
     {
         await _concurrentCallsSemaphore.WaitAsync(cancellationToken);
         await _rateLimiter;
@@ -71,11 +53,7 @@ internal sealed class ApiRateLimiter
         }
         catch (Exception exception)
         {
-            _logger.LogError(
-                exception,
-                "Failed to execute task within rate limiter: {ErrorMessage}",
-                exception.Message
-            );
+            _logger.LogError(exception, "Failed to execute task within rate limiter: {ErrorMessage}", exception.Message);
             throw;
         }
         finally

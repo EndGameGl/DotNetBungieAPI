@@ -1,10 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using DotNetBungieAPI.Models.Destiny.Config;
 using DotNetBungieAPI.Models.Destiny.Definitions.Checklists;
-using DotNetBungieAPI.Serialization;
+using DotNetBungieAPI.Models.Serialization;
 using Xunit;
 using Xunit.Priority;
 
@@ -22,15 +21,7 @@ namespace DotNetBungieAPI.Tests
             {
                 NumberHandling = JsonNumberHandling.AllowReadingFromString,
                 WriteIndented = true,
-                Converters =
-                {
-                    new ReadOnlyCollectionConverterFactory(),
-                    new DefinitionHashPointerConverterFactory(),
-                    new ReadOnlyDictionaryConverterFactory(),
-                    new HistoricalStatDefinitionPointerConverter(),
-                    new DestinyResourceConverter(),
-                    new StringEnumConverterFactory()
-                }
+                TypeInfoResolver = DotNetBungieAPIJsonSerializationContext.Default
             };
             _manifestJson = File.ReadAllText("./JsonTestAssets/DestinyManifest.json");
             _destinyChecklistDefinition = File.ReadAllText(
@@ -56,7 +47,7 @@ namespace DotNetBungieAPI.Tests
                 manifest.MobileWorldContentPaths["en"]
             );
 
-            Assert.Equal(3, manifest.MobileGearAssetDataBases.Count);
+            Assert.Equal(3, manifest.MobileGearAssetDataBases.Length);
         }
 
         [Fact]
@@ -95,7 +86,7 @@ namespace DotNetBungieAPI.Tests
                 destinyChecklistDefinition.DisplayProperties.Description
             );
 
-            Assert.Equal(10, destinyChecklistDefinition.Entries.Count);
+            Assert.Equal(10, destinyChecklistDefinition.Entries.Length);
         }
     }
 }

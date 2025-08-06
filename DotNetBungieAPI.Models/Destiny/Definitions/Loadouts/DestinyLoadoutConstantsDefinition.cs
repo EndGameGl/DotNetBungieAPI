@@ -1,19 +1,12 @@
-﻿using DotNetBungieAPI.Models.Attributes;
-using DotNetBungieAPI.Models.Destiny.Definitions.Common;
-using DotNetBungieAPI.Models.Destiny.Definitions.SocketCategories;
-using DotNetBungieAPI.Models.Destiny.Definitions.SocketTypes;
-
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Loadouts;
 
 [DestinyDefinition(DefinitionsEnum.DestinyLoadoutConstantsDefinition)]
-public sealed record DestinyLoadoutConstantsDefinition
-    : IDestinyDefinition,
-        IDeepEquatable<DestinyLoadoutConstantsDefinition>
+public sealed class DestinyLoadoutConstantsDefinition : IDestinyDefinition
 {
     public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyLoadoutConstantsDefinition;
 
     [JsonPropertyName("displayProperties")]
-    public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; init; }
 
     /// <summary>
     ///     This is the same icon as the one in the display properties, offered here as well with a more descriptive name.
@@ -37,78 +30,49 @@ public sealed record DestinyLoadoutConstantsDefinition
     ///     A list of the socket category hashes to be filtered out of loadout item preview displays.
     /// </summary>
     [JsonPropertyName("loadoutPreviewFilterOutSocketCategoryHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinySocketCategoryDefinition>
-    > LoadoutPreviewFilterOutSocketCategories { get; init; } =
-        ReadOnlyCollection<DefinitionHashPointer<DestinySocketCategoryDefinition>>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.Sockets.DestinySocketCategoryDefinition>[]? LoadoutPreviewFilterOutSocketCategoryHashes { get; init; }
 
     /// <summary>
     ///     A list of the socket type hashes to be filtered out of loadout item preview displays.
     /// </summary>
     [JsonPropertyName("loadoutPreviewFilterOutSocketTypeHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinySocketTypeDefinition>
-    > LoadoutPreviewFilterOutSocketTypes { get; init; } =
-        ReadOnlyCollection<DefinitionHashPointer<DestinySocketTypeDefinition>>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.Sockets.DestinySocketTypeDefinition>[]? LoadoutPreviewFilterOutSocketTypeHashes { get; init; }
 
     /// <summary>
     ///     A list of the loadout name hashes in index order, for convenience.
     /// </summary>
     [JsonPropertyName("loadoutNameHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyLoadoutNameDefinition>
-    > LoadoutNames { get; init; } =
-        ReadOnlyCollection<DefinitionHashPointer<DestinyLoadoutNameDefinition>>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.Loadouts.DestinyLoadoutNameDefinition>[]? LoadoutNameHashes { get; init; }
 
     /// <summary>
     ///     A list of the loadout icon hashes in index order, for convenience.
     /// </summary>
     [JsonPropertyName("loadoutIconHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyLoadoutIconDefinition>
-    > LoadoutIcons { get; init; } =
-        ReadOnlyCollection<DefinitionHashPointer<DestinyLoadoutIconDefinition>>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.Loadouts.DestinyLoadoutIconDefinition>[]? LoadoutIconHashes { get; init; }
 
     /// <summary>
     ///     A list of the loadout color hashes in index order, for convenience.
     /// </summary>
     [JsonPropertyName("loadoutColorHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyLoadoutColorDefinition>
-    > LoadoutColors { get; init; } =
-        ReadOnlyCollection<DefinitionHashPointer<DestinyLoadoutColorDefinition>>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.Loadouts.DestinyLoadoutColorDefinition>[]? LoadoutColorHashes { get; init; }
 
-    [JsonPropertyName("blacklisted")]
-    public bool Blacklisted { get; init; }
-
+    /// <summary>
+    ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
+    /// <para />
+    ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
+    /// </summary>
     [JsonPropertyName("hash")]
     public uint Hash { get; init; }
 
+    /// <summary>
+    ///     The index of the entity as it was found in the investment tables.
+    /// </summary>
     [JsonPropertyName("index")]
     public int Index { get; init; }
 
+    /// <summary>
+    ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
+    /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; init; }
-
-    public bool DeepEquals(DestinyLoadoutConstantsDefinition other)
-    {
-        return other is not null
-            && DisplayProperties.DeepEquals(other.DisplayProperties)
-            && WhiteIconImagePath == other.WhiteIconImagePath
-            && BlackIconImagePath == other.BlackIconImagePath
-            && LoadoutCountPerCharacter == other.LoadoutCountPerCharacter
-            && LoadoutPreviewFilterOutSocketCategories.DeepEqualsReadOnlyCollection(
-                other.LoadoutPreviewFilterOutSocketCategories
-            )
-            && LoadoutPreviewFilterOutSocketTypes.DeepEqualsReadOnlyCollection(
-                other.LoadoutPreviewFilterOutSocketTypes
-            )
-            && LoadoutNames.DeepEqualsReadOnlyCollection(other.LoadoutNames)
-            && LoadoutIcons.DeepEqualsReadOnlyCollection(other.LoadoutIcons)
-            && LoadoutColors.DeepEqualsReadOnlyCollection(other.LoadoutColors)
-            && Blacklisted == other.Blacklisted
-            && Hash == other.Hash
-            && Index == other.Index
-            && Redacted == other.Redacted;
-    }
 }

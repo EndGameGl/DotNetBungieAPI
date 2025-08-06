@@ -1,27 +1,10 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.MaterialRequirementSets;
-using DotNetBungieAPI.Models.Destiny.Definitions.UnlockValues;
-
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Collectibles;
 
-public sealed record DestinyCollectibleAcquisitionBlock
-    : IDeepEquatable<DestinyCollectibleAcquisitionBlock>
+public sealed class DestinyCollectibleAcquisitionBlock
 {
-    [JsonPropertyName("runOnlyAcquisitionRewardSite")]
-    public bool RunOnlyAcquisitionRewardSite { get; init; }
-
     [JsonPropertyName("acquireMaterialRequirementHash")]
-    public DefinitionHashPointer<DestinyMaterialRequirementSetDefinition> AcquireMaterialRequirement { get; init; } =
-        DefinitionHashPointer<DestinyMaterialRequirementSetDefinition>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.DestinyMaterialRequirementSetDefinition>? AcquireMaterialRequirementHash { get; init; }
 
     [JsonPropertyName("acquireTimestampUnlockValueHash")]
-    public DefinitionHashPointer<DestinyUnlockValueDefinition> AcquireTimestampUnlockValue { get; init; } =
-        DefinitionHashPointer<DestinyUnlockValueDefinition>.Empty;
-
-    public bool DeepEquals(DestinyCollectibleAcquisitionBlock other)
-    {
-        return other != null
-            && RunOnlyAcquisitionRewardSite == other.RunOnlyAcquisitionRewardSite
-            && AcquireMaterialRequirement.DeepEquals(other.AcquireMaterialRequirement)
-            && AcquireTimestampUnlockValue.DeepEquals(other.AcquireTimestampUnlockValue);
-    }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyUnlockValueDefinition>? AcquireTimestampUnlockValueHash { get; init; }
 }

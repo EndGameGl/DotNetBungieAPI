@@ -1,8 +1,6 @@
-﻿using DotNetBungieAPI.Models.Ignores;
-
 namespace DotNetBungieAPI.Models.Forum;
 
-public sealed record PostResponse
+public sealed class PostResponse
 {
     [JsonPropertyName("lastReplyTimestamp")]
     public DateTime LastReplyTimestamp { get; init; }
@@ -11,13 +9,13 @@ public sealed record PostResponse
     public bool IsPinned { get; init; }
 
     [JsonPropertyName("urlMediaType")]
-    public ForumMediaType UrlMediaType { get; init; }
+    public Forum.ForumMediaType UrlMediaType { get; init; }
 
     [JsonPropertyName("thumbnail")]
     public string Thumbnail { get; init; }
 
     [JsonPropertyName("popularity")]
-    public ForumPostPopularity Popularity { get; init; }
+    public Forum.ForumPostPopularity Popularity { get; init; }
 
     [JsonPropertyName("isActive")]
     public bool IsActive { get; init; }
@@ -35,15 +33,13 @@ public sealed record PostResponse
     public bool UserHasMutedPost { get; init; }
 
     [JsonPropertyName("latestReplyPostId")]
-    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public long LatestReplyPostId { get; init; }
 
     [JsonPropertyName("latestReplyAuthorId")]
-    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public long LatestReplyAuthorId { get; init; }
 
     [JsonPropertyName("ignoreStatus")]
-    public IgnoreResponse IgnoreStatus { get; init; }
+    public Ignores.IgnoreResponse? IgnoreStatus { get; init; }
 
     [JsonPropertyName("locale")]
     public string Locale { get; init; }

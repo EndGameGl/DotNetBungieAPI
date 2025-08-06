@@ -1,4 +1,4 @@
-﻿using DotNetBungieAPI.Models.Destiny;
+using DotNetBungieAPI.Models.Destiny;
 
 namespace DotNetBungieAPI.Models.Attributes;
 

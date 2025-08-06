@@ -1,53 +1,42 @@
-﻿using System.Collections.ObjectModel;
-using DotNetBungieAPI.Models.Attributes;
-using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
-
 namespace DotNetBungieAPI.Models.Destiny.Definitions.FireteamFinder;
 
 [DestinyDefinition(DefinitionsEnum.DestinyFireteamFinderActivitySetDefinition)]
-public sealed record DestinyFireteamFinderActivitySetDefinition : IDestinyDefinition
+public sealed class DestinyFireteamFinderActivitySetDefinition : IDestinyDefinition
 {
+    public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyFireteamFinderActivitySetDefinition;
+
     [JsonPropertyName("maximumPartySize")]
     public int MaximumPartySize { get; init; }
 
     [JsonPropertyName("optionHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyFireteamFinderOptionDefinition>
-    > Options { get; init; } =
-        ReadOnlyCollection<DefinitionHashPointer<DestinyFireteamFinderOptionDefinition>>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionDefinition>[]? OptionHashes { get; init; }
 
     [JsonPropertyName("labelHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyFireteamFinderLabelDefinition>
-    > Labels { get; init; } =
-        ReadOnlyCollection<DefinitionHashPointer<DestinyFireteamFinderLabelDefinition>>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderLabelDefinition>[]? LabelHashes { get; init; }
 
     [JsonPropertyName("activityGraphHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
-    > ActivityGraphs { get; init; } =
-        ReadOnlyCollection<
-            DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
-        >.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition>[]? ActivityGraphHashes { get; init; }
 
     [JsonPropertyName("activityHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyActivityDefinition>
-    > Activities { get; init; } =
-        ReadOnlyCollection<DefinitionHashPointer<DestinyActivityDefinition>>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.DestinyActivityDefinition>[]? ActivityHashes { get; init; }
 
-    public DefinitionsEnum DefinitionEnumValue =>
-        DefinitionsEnum.DestinyFireteamFinderActivitySetDefinition;
-
-    [JsonPropertyName("blacklisted")]
-    public bool Blacklisted { get; init; }
-
+    /// <summary>
+    ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
+    /// <para />
+    ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
+    /// </summary>
     [JsonPropertyName("hash")]
     public uint Hash { get; init; }
 
+    /// <summary>
+    ///     The index of the entity as it was found in the investment tables.
+    /// </summary>
     [JsonPropertyName("index")]
     public int Index { get; init; }
 
+    /// <summary>
+    ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
+    /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; init; }
 }

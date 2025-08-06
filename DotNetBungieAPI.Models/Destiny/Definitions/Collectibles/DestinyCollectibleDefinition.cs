@@ -1,25 +1,21 @@
-﻿using DotNetBungieAPI.Models.Attributes;
-using DotNetBungieAPI.Models.Destiny.Definitions.Common;
-using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
-using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
-using DotNetBungieAPI.Models.Destiny.Definitions.Traits;
-
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Collectibles;
 
+/// <summary>
+///     Defines a
+/// </summary>
 [DestinyDefinition(DefinitionsEnum.DestinyCollectibleDefinition)]
-public sealed record DestinyCollectibleDefinition
-    : IDestinyDefinition,
-        IDisplayProperties,
-        IDeepEquatable<DestinyCollectibleDefinition>
+public sealed class DestinyCollectibleDefinition : IDestinyDefinition
 {
+    public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyCollectibleDefinition;
+
     [JsonPropertyName("displayProperties")]
-    public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; init; }
 
     /// <summary>
     ///     Indicates whether the state of this Collectible is determined on a per-character or on an account-wide basis.
     /// </summary>
     [JsonPropertyName("scope")]
-    public DestinyScope Scope { get; init; }
+    public Destiny.DestinyScope Scope { get; init; }
 
     /// <summary>
     ///     A human readable string for a hint about how to acquire the item.
@@ -28,81 +24,59 @@ public sealed record DestinyCollectibleDefinition
     public string SourceString { get; init; }
 
     /// <summary>
-    ///     This is a hash identifier we are building on the BNet side in an attempt to let people group collectibles by
-    ///     similar sources.
+    ///     This is a hash identifier we are building on the BNet side in an attempt to let people group collectibles by similar sources.
+    /// <para />
+    ///     I can't promise that it's going to be 100% accurate, but if the designers were consistent in assigning the same source strings to items with the same sources, it *ought to* be. No promises though.
+    /// <para />
+    ///     This hash also doesn't relate to an actual definition, just to note: we've got nothing useful other than the source string for this data.
     /// </summary>
     [JsonPropertyName("sourceHash")]
     public uint? SourceHash { get; init; }
 
     [JsonPropertyName("itemHash")]
-    public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; init; } =
-        DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition> ItemHash { get; init; }
 
     [JsonPropertyName("acquisitionInfo")]
-    public DestinyCollectibleAcquisitionBlock AcquisitionInfo { get; init; }
+    public Destiny.Definitions.Collectibles.DestinyCollectibleAcquisitionBlock? AcquisitionInfo { get; init; }
 
     [JsonPropertyName("stateInfo")]
-    public DestinyCollectibleStateBlock StateInfo { get; init; }
+    public Destiny.Definitions.Collectibles.DestinyCollectibleStateBlock? StateInfo { get; init; }
 
     [JsonPropertyName("presentationInfo")]
-    public DestinyPresentationChildBlock PresentationInfo { get; init; }
+    public Destiny.Definitions.Presentation.DestinyPresentationChildBlock? PresentationInfo { get; init; }
 
     [JsonPropertyName("presentationNodeType")]
-    public DestinyPresentationNodeType PresentationNodeType { get; init; }
+    public Destiny.DestinyPresentationNodeType PresentationNodeType { get; init; }
 
     [JsonPropertyName("traitIds")]
-    public ReadOnlyCollection<string> TraitIds { get; init; } = ReadOnlyCollection<string>.Empty;
+    public string[]? TraitIds { get; init; }
 
     [JsonPropertyName("traitHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; } =
-        ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.Traits.DestinyTraitDefinition>[]? TraitHashes { get; init; }
 
     /// <summary>
-    ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under
-    ///     multiple parents.
+    ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under multiple parents.
     /// </summary>
     [JsonPropertyName("parentNodeHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyPresentationNodeDefinition>
-    > ParentNodes { get; init; } =
-        ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>[]? ParentNodeHashes { get; init; }
 
-    public bool DeepEquals(DestinyCollectibleDefinition other)
-    {
-        return other != null
-            && AcquisitionInfo.DeepEquals(other.AcquisitionInfo)
-            && (
-                PresentationInfo != null
-                    ? PresentationInfo.DeepEquals(other.PresentationInfo)
-                    : other.PresentationInfo == null
-            )
-            && DisplayProperties.DeepEquals(other.DisplayProperties)
-            && Item.DeepEquals(other.Item)
-            && ParentNodes.DeepEqualsReadOnlyCollection(other.ParentNodes)
-            && PresentationNodeType == other.PresentationNodeType
-            && Scope == other.Scope
-            && SourceHash == other.SourceHash
-            && SourceString == other.SourceString
-            && StateInfo.DeepEquals(other.StateInfo)
-            && Traits.DeepEqualsReadOnlyCollection(other.Traits)
-            && TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds)
-            && Blacklisted == other.Blacklisted
-            && Hash == other.Hash
-            && Index == other.Index
-            && Redacted == other.Redacted;
-    }
-
-    public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyCollectibleDefinition;
-
-    [JsonPropertyName("blacklisted")]
-    public bool Blacklisted { get; init; }
-
+    /// <summary>
+    ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
+    /// <para />
+    ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
+    /// </summary>
     [JsonPropertyName("hash")]
     public uint Hash { get; init; }
 
+    /// <summary>
+    ///     The index of the entity as it was found in the investment tables.
+    /// </summary>
     [JsonPropertyName("index")]
     public int Index { get; init; }
 
+    /// <summary>
+    ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
+    /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; init; }
 }

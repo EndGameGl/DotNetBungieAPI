@@ -1,17 +1,14 @@
 ﻿using System.Threading.Tasks;
 using DotNetBungieAPI.Models;
-using DotNetBungieAPI.Models.Destiny;
 using DotNetBungieAPI.Models.Destiny.Config;
-using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
-using DotNetBungieAPI.Models.Destiny.Rendering;
+using DotNetBungieAPI.Models.Destiny.HistoricalStats.Definitions;
 using DotNetBungieAPI.Service.Abstractions;
 
 namespace DotNetBungieAPI.Services.Implementations;
 
 internal class NullDefinitionProvider : IDefinitionProvider
 {
-    private const string ErrorMessage =
-        "You're seeing this message if you tried to do something related to definitions and haven't specified any definition providers";
+    private const string ErrorMessage = "You're seeing this message if you tried to do something related to definitions and haven't specified any definition providers";
 
     public NullDefinitionProvider() { }
 
@@ -62,40 +59,28 @@ internal class NullDefinitionProvider : IDefinitionProvider
         throw new NotImplementedException(ErrorMessage);
     }
 
-    public ValueTask<DestinyGearAssetDefinition> GetGearAssetDefinition(uint itemHash)
-    {
-        throw new NotImplementedException(ErrorMessage);
-    }
-
     public Task Initialize()
     {
         throw new NotImplementedException(ErrorMessage);
     }
 
-    public ValueTask<T> LoadDefinition<T>(uint hash, BungieLocales locale)
-        where T : IDestinyDefinition
+    public Task<T?> LoadDefinition<T>(uint hash, BungieLocales locale)
+        where T : class, IDestinyDefinition
     {
         throw new NotImplementedException(ErrorMessage);
     }
 
-    public ValueTask<DestinyHistoricalStatsDefinition> LoadHistoricalStatsDefinition(
-        string id,
-        BungieLocales locale
-    )
+    public Task<DestinyHistoricalStatsDefinition?> LoadHistoricalStatsDefinition(string id, BungieLocales locale)
     {
         throw new NotImplementedException(ErrorMessage);
     }
 
-    public ValueTask<string> ReadDefinitionRaw(
-        DefinitionsEnum enumValue,
-        uint hash,
-        BungieLocales locale
-    )
+    public Task<string?> ReadDefinitionRaw(DefinitionsEnum enumValue, uint hash, BungieLocales locale)
     {
         throw new NotImplementedException(ErrorMessage);
     }
 
-    public ValueTask<string> ReadHistoricalStatsDefinitionRaw(string id, BungieLocales locale)
+    public Task<string?> ReadHistoricalStatsDefinitionRaw(string id, BungieLocales locale)
     {
         throw new NotImplementedException(ErrorMessage);
     }

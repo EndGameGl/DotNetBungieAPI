@@ -1,10 +1,9 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
+namespace DotNetBungieAPI.Models.Destiny.Definitions.Milestones;
 
 /// <summary>
-///     The type of milestone. Milestones can be Tutorials, one-time/triggered/non-repeating but not necessarily tutorials,
-///     or Repeating Milestones.
+///     The type of milestone. Milestones can be Tutorials, one-time/triggered/non-repeating but not necessarily tutorials, or Repeating Milestones.
 /// </summary>
-public enum DestinyMilestoneType
+public enum DestinyMilestoneType : int
 {
     Unknown = 0,
 
@@ -19,8 +18,7 @@ public enum DestinyMilestoneType
     OneTime = 2,
 
     /// <summary>
-    ///     Milestones that repeat/reset on a weekly basis. They need not all reset on the same day or time, but do need to
-    ///     reset weekly to qualify for this type.
+    ///     Milestones that repeat/reset on a weekly basis. They need not all reset on the same day or time, but do need to reset weekly to qualify for this type.
     /// </summary>
     Weekly = 3,
 
@@ -30,8 +28,7 @@ public enum DestinyMilestoneType
     Daily = 4,
 
     /// <summary>
-    ///     Special indicates that the event is not on a daily/weekly cadence, but does occur more than once. For instance,
-    ///     Iron Banner in Destiny 1 or the Dawning were examples of what could be termed "Special" events.
+    ///     Special indicates that the event is not on a daily/weekly cadence, but does occur more than once. For instance, Iron Banner in Destiny 1 or the Dawning were examples of what could be termed "Special" events.
     /// </summary>
     Special = 5
 }

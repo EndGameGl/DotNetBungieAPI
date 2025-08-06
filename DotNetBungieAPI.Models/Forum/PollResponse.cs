@@ -1,14 +1,12 @@
-﻿namespace DotNetBungieAPI.Models.Forum;
+namespace DotNetBungieAPI.Models.Forum;
 
-public sealed record PollResponse
+public sealed class PollResponse
 {
     [JsonPropertyName("topicId")]
-    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public long TopicId { get; init; }
 
     [JsonPropertyName("results")]
-    public ReadOnlyCollection<PollResult> Results { get; init; } =
-        ReadOnlyCollection<PollResult>.Empty;
+    public Forum.PollResult[]? Results { get; init; }
 
     [JsonPropertyName("totalVotes")]
     public int TotalVotes { get; init; }

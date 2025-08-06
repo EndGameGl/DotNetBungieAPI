@@ -1,50 +1,42 @@
-﻿using DotNetBungieAPI.Models.Attributes;
-using DotNetBungieAPI.Models.Destiny.Definitions.Activities;
-using DotNetBungieAPI.Models.Destiny.Definitions.Common;
-
 namespace DotNetBungieAPI.Models.Destiny.Definitions.FireteamFinder;
 
 [DestinyDefinition(DefinitionsEnum.DestinyFireteamFinderConstantsDefinition)]
-public sealed record DestinyFireteamFinderConstantsDefinition
-    : IDestinyDefinition,
-        IDisplayProperties
+public sealed class DestinyFireteamFinderConstantsDefinition : IDestinyDefinition
 {
+    public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyFireteamFinderConstantsDefinition;
+
     [JsonPropertyName("displayProperties")]
-    public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; init; }
 
     [JsonPropertyName("fireteamFinderActivityGraphRootCategoryHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
-    > FireteamFinderActivityGraphRootCategories { get; init; } =
-        ReadOnlyCollection<
-            DefinitionHashPointer<DestinyFireteamFinderActivityGraphDefinition>
-        >.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition>[]? FireteamFinderActivityGraphRootCategoryHashes { get; init; }
 
     [JsonPropertyName("allFireteamFinderActivityHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyActivityDefinition>
-    > AllFireteamFinderActivities { get; init; } =
-        ReadOnlyCollection<DefinitionHashPointer<DestinyActivityDefinition>>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.DestinyActivityDefinition>[]? AllFireteamFinderActivityHashes { get; init; }
 
     [JsonPropertyName("guardianOathDisplayProperties")]
-    public DestinyDisplayPropertiesDefinition? GuardianOathDisplayProperties { get; init; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? GuardianOathDisplayProperties { get; init; }
 
     [JsonPropertyName("guardianOathTenets")]
-    public ReadOnlyCollection<DestinyDisplayPropertiesDefinition> GuardianOathTenets { get; init; } =
-        ReadOnlyCollection<DestinyDisplayPropertiesDefinition>.Empty;
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition[]? GuardianOathTenets { get; init; }
 
-    public DefinitionsEnum DefinitionEnumValue =>
-        DefinitionsEnum.DestinyFireteamFinderConstantsDefinition;
-
-    [JsonPropertyName("blacklisted")]
-    public bool Blacklisted { get; init; }
-
+    /// <summary>
+    ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
+    /// <para />
+    ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
+    /// </summary>
     [JsonPropertyName("hash")]
     public uint Hash { get; init; }
 
+    /// <summary>
+    ///     The index of the entity as it was found in the investment tables.
+    /// </summary>
     [JsonPropertyName("index")]
     public int Index { get; init; }
 
+    /// <summary>
+    ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
+    /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; init; }
 }

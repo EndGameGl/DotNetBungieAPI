@@ -1,11 +1,7 @@
-﻿namespace DotNetBungieAPI.Models.Content;
+namespace DotNetBungieAPI.Models.Content;
 
-public sealed record NewsArticleRssResponse
+public sealed class NewsArticleRssResponse
 {
-    [JsonPropertyName("NewsArticles")]
-    public ReadOnlyCollection<NewsArticleRssItem> NewsArticles { get; init; } =
-        ReadOnlyCollection<NewsArticleRssItem>.Empty;
-
     [JsonPropertyName("CurrentPaginationToken")]
     public int CurrentPaginationToken { get; init; }
 
@@ -15,8 +11,11 @@ public sealed record NewsArticleRssResponse
     [JsonPropertyName("ResultCountThisPage")]
     public int ResultCountThisPage { get; init; }
 
+    [JsonPropertyName("NewsArticles")]
+    public Content.NewsArticleRssItem[]? NewsArticles { get; init; }
+
     [JsonPropertyName("CategoryFilter")]
-    public string? CategoryFilter { get; init; }
+    public string CategoryFilter { get; init; }
 
     [JsonPropertyName("PagerAction")]
     public string PagerAction { get; init; }

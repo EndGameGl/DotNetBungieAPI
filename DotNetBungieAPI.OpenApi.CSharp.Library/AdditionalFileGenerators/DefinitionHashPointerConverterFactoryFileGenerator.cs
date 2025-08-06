@@ -4,21 +4,19 @@ namespace DotNetBungieAPI.OpenApi.CSharp.Library.AdditionalFileGenerators;
 
 public class DefinitionHashPointerConverterFactoryFileGenerator : AdditionalFileGenerator
 {
-    private const string Content =
-        """
+    private const string Content = """
         using System.Reflection;
-        using DotNetBungieAPI.Models;
-        using DotNetBungieAPI.Models.Destiny;
-        
+        using System.Text.Json;
+
         namespace DotNetBungieAPI.Models.Serialization;
-        
+
         /// <summary>
         ///     Definition hash pointer converter factory
         /// </summary>
         public sealed class DefinitionHashPointerConverterFactory : JsonConverterFactory
         {
             private readonly Type _definitionHashPointerType = typeof(DefinitionHashPointer<>);
-        
+
             /// <summary>
             ///     <inheritdoc cref="JsonConverterFactory.CanConvert" />
             /// </summary>
@@ -28,12 +26,12 @@ public class DefinitionHashPointerConverterFactoryFileGenerator : AdditionalFile
             {
                 if (!typeToConvert.IsGenericType)
                     return false;
-        
+
                 var genericTypeDef = typeToConvert.GetGenericTypeDefinition();
-        
+
                 return genericTypeDef == _definitionHashPointerType;
             }
-        
+
             /// <summary>
             ///     <inheritdoc cref="JsonConverterFactory.CreateConverter" />
             /// </summary>
@@ -43,7 +41,7 @@ public class DefinitionHashPointerConverterFactoryFileGenerator : AdditionalFile
             public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
             {
                 var definitionType = typeToConvert.GetGenericArguments()[0];
-        
+
                 var converter = (JsonConverter)
                     Activator.CreateInstance(
                         typeof(DefinitionHashPointerConverter<>).MakeGenericType(definitionType),
@@ -52,15 +50,15 @@ public class DefinitionHashPointerConverterFactoryFileGenerator : AdditionalFile
                         [],
                         null
                     )!;
-        
+
                 return converter;
             }
-        
+
             private class DefinitionHashPointerConverter<T> : JsonConverter<DefinitionHashPointer<T>>
                 where T : IDestinyDefinition
             {
                 public override bool HandleNull => true;
-        
+
                 public override DefinitionHashPointer<T> Read(
                     ref Utf8JsonReader reader,
                     Type typeToConvert,
@@ -69,12 +67,13 @@ public class DefinitionHashPointerConverterFactoryFileGenerator : AdditionalFile
                 {
                     return reader.TokenType switch
                     {
-                        JsonTokenType.String => new DefinitionHashPointer<T>(uint.Parse(reader.GetString()!)),
+                        JsonTokenType.String
+                            => new DefinitionHashPointer<T>(uint.Parse(reader.GetString()!)),
                         JsonTokenType.Null => DefinitionHashPointer<T>.Empty,
                         _ => new DefinitionHashPointer<T>(reader.GetUInt32())
                     };
                 }
-        
+
                 public override void Write(
                     Utf8JsonWriter writer,
                     DefinitionHashPointer<T> value,
@@ -85,10 +84,12 @@ public class DefinitionHashPointerConverterFactoryFileGenerator : AdditionalFile
                 }
             }
         }
+
         """;
-    
+
     public override string FileNameAndExtension => "DefinitionHashPointerConverterFactory.cs";
     public override string Location => "Models\\Serialization";
+
     public override async Task WriteFile(Models.OpenApi openApiModel)
     {
         await WriteAsync(Content);

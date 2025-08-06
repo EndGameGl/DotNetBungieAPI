@@ -1,27 +1,23 @@
-﻿using DotNetBungieAPI.Models.User;
-
 namespace DotNetBungieAPI.Models.Forum;
 
-public sealed record ForumRecruitmentDetail
+public sealed class ForumRecruitmentDetail
 {
     [JsonPropertyName("topicId")]
-    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public long TopicId { get; init; }
 
     [JsonPropertyName("microphoneRequired")]
     public bool MicrophoneRequired { get; init; }
 
     [JsonPropertyName("intensity")]
-    public ForumRecruitmentIntensityLabel Intensity { get; init; }
+    public Forum.ForumRecruitmentIntensityLabel Intensity { get; init; }
 
     [JsonPropertyName("tone")]
-    public ForumRecruitmentToneLabel Tone { get; init; }
+    public Forum.ForumRecruitmentToneLabel Tone { get; init; }
 
     [JsonPropertyName("approved")]
     public bool Approved { get; init; }
 
     [JsonPropertyName("conversationId")]
-    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public long? ConversationId { get; init; }
 
     [JsonPropertyName("playerSlotsTotal")]
@@ -31,8 +27,8 @@ public sealed record ForumRecruitmentDetail
     public int PlayerSlotsRemaining { get; init; }
 
     [JsonPropertyName("Fireteam")]
-    public ReadOnlyCollection<GeneralUser> Fireteam { get; init; }
+    public User.GeneralUser[]? Fireteam { get; init; }
 
     [JsonPropertyName("kickedPlayerIds")]
-    public ReadOnlyCollection<long> KickedPlayerIds { get; init; }
+    public long[]? KickedPlayerIds { get; init; }
 }

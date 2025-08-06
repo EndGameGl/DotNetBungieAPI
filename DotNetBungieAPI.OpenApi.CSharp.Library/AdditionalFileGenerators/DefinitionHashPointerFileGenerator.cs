@@ -6,7 +6,7 @@ public class DefinitionHashPointerFileGenerator : AdditionalFileGenerator
 {
     private const string Content = """
         using System.Diagnostics;
-        using DotNetBungieAPI.Models.Destiny;
+        using DotNetBungieAPI.Models.Extensions;
 
         namespace DotNetBungieAPI.Models;
 
@@ -18,8 +18,7 @@ public class DefinitionHashPointerFileGenerator : AdditionalFileGenerator
         [DebuggerDisplay("{DebuggerDisplay}")]
         #endif
         public readonly struct DefinitionHashPointer<TDefinition>
-            : IDeepEquatable<DefinitionHashPointer<TDefinition>>,
-                IEquatable<DefinitionHashPointer<TDefinition>>
+            : IEquatable<DefinitionHashPointer<TDefinition>>
             where TDefinition : IDestinyDefinition
         {
             /// <summary>
@@ -109,16 +108,6 @@ public class DefinitionHashPointerFileGenerator : AdditionalFileGenerator
             }
 
             /// <summary>
-            ///     <inheritdoc cref="IDeepEquatable{T}.DeepEquals" />
-            /// </summary>
-            /// <param name="other"></param>
-            /// <returns></returns>
-            public bool DeepEquals(DefinitionHashPointer<TDefinition> other)
-            {
-                return Hash == other.Hash && DefinitionEnumType == other.DefinitionEnumType;
-            }
-
-            /// <summary>
             ///     Overload for quick hash comparing
             /// </summary>
             /// <param name="a"></param>
@@ -171,6 +160,7 @@ public class DefinitionHashPointerFileGenerator : AdditionalFileGenerator
                     ? $"{DefinitionEnumType} - {Hash}"
                     : $"DefinitionHashPointer<{DefinitionEnumType}>.Empty";
         }
+         
         """;
 
     public override string FileNameAndExtension => "DefinitionHashPointer.cs";

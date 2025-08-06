@@ -1,10 +1,12 @@
-﻿namespace DotNetBungieAPI.Models;
+using DotNetBungieAPI.Models.Exceptions;
+
+namespace DotNetBungieAPI.Models;
 
 /// <summary>
 ///     Bungie.net API response
 /// </summary>
 /// <typeparam name="T">Response type</typeparam>
-public sealed record BungieResponse<T>
+public sealed class BungieResponse<T>
 {
     /// <summary>
     ///     Response data

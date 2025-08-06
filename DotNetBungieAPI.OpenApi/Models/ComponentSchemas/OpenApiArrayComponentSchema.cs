@@ -6,13 +6,13 @@ public class OpenApiArrayComponentSchema : IOpenApiComponentSchema, IHasDescript
 {
     [JsonPropertyName("type")]
     public required string Type { get; init; }
-    
+
     [JsonPropertyName("items")]
     public required IOpenApiComponentSchema Items { get; init; }
-    
+
     [JsonPropertyName("description")]
     public string? Description { get; init; }
-    
+
     [JsonPropertyName("x-mapped-definition")]
     public OpenApiComponentReference? MappedDefinition { get; init; }
 }

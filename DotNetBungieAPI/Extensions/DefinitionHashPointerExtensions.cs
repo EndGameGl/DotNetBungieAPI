@@ -4,22 +4,14 @@ using System.Threading.Tasks;
 using DotNetBungieAPI.Clients;
 using DotNetBungieAPI.Extensions;
 using DotNetBungieAPI.Models;
-using DotNetBungieAPI.Models.Destiny;
-using DotNetBungieAPI.Models.Destiny.Definitions;
 
-[assembly: DebuggerDisplay(
-    @"{DotNetBungieAPI.Extensions.DefinitionHashPointerExtensions.GetDebuggerDisplayString(this)}",
-    Target = typeof(DefinitionHashPointer<>)
-)]
-[assembly: DebuggerTypeProxy(
-    typeof(DefinitionHashPointerDebugView<>),
-    Target = typeof(DefinitionHashPointer<>)
-)]
+[assembly: DebuggerDisplay(@"{DotNetBungieAPI.Extensions.DefinitionHashPointerExtensions.GetDebuggerDisplayString(this)}", Target = typeof(DefinitionHashPointer<>))]
+[assembly: DebuggerTypeProxy(typeof(DefinitionHashPointerDebugView<>), Target = typeof(DefinitionHashPointer<>))]
 
 namespace DotNetBungieAPI.Extensions;
 
 internal class DefinitionHashPointerDebugView<TDefinition>
-    where TDefinition : IDestinyDefinition
+    where TDefinition : class, IDestinyDefinition
 {
     private readonly DefinitionHashPointer<TDefinition> _definition;
 
@@ -50,60 +42,37 @@ public static class DefinitionHashPointerExtensions
         [NotNullWhen(true)] out TDefinition? definition,
         BungieLocales locale = BungieLocales.EN
     )
-        where TDefinition : IDestinyDefinition
+        where TDefinition : class, IDestinyDefinition
     {
-        return BungieClient.Instance.TryGetDefinition(
-            pointer.Hash.GetValueOrDefault(),
-            out definition,
-            locale
-        );
+        return BungieClient.Instance.TryGetDefinition(pointer.Hash.GetValueOrDefault(), out definition, locale);
     }
 
     public static async ValueTask<bool> TryGetDefinitionAsync<TDefinition>(
         this DefinitionHashPointer<TDefinition> pointer,
-        Action<TDefinition?> onSuccess,
+        Action<TDefinition> onSuccess,
         BungieLocales locale = BungieLocales.EN
     )
-        where TDefinition : IDestinyDefinition
+        where TDefinition : class, IDestinyDefinition
     {
-        return await BungieClient.Instance.TryGetDefinitionAsync(
-            pointer.Hash.GetValueOrDefault(),
-            onSuccess,
-            locale
-        );
+        return await BungieClient.Instance.TryGetDefinitionAsync(pointer.Hash.GetValueOrDefault(), onSuccess, locale);
     }
 
-    public static TDefinition? GetValueOrNull<TDefinition>(
-        this DefinitionHashPointer<TDefinition> pointer,
-        BungieLocales locale = BungieLocales.EN
-    )
-        where TDefinition : IDestinyDefinition
+    public static TDefinition? GetValueOrNull<TDefinition>(this DefinitionHashPointer<TDefinition> pointer, BungieLocales locale = BungieLocales.EN)
+        where TDefinition : class, IDestinyDefinition
     {
-        return pointer.TryGetDefinition(out var definition, locale) ? definition : default;
+        return pointer.TryGetDefinition(out var definition, locale) ? definition : null;
     }
 
-    public static async ValueTask<TDefinition?> GetValueOrNullAsync<TDefinition>(
-        this DefinitionHashPointer<TDefinition> pointer,
-        BungieLocales locale = BungieLocales.EN
-    )
-        where TDefinition : IDestinyDefinition
+    public static async ValueTask<TDefinition?> GetValueOrNullAsync<TDefinition>(this DefinitionHashPointer<TDefinition> pointer, BungieLocales locale = BungieLocales.EN)
+        where TDefinition : class, IDestinyDefinition
     {
-        TDefinition? definition = default;
-
-        if (await pointer.TryGetDefinitionAsync(def => definition = def, locale))
-        {
-            return definition;
-        }
-
+        TDefinition? definition = null;
+        await pointer.TryGetDefinitionAsync(def => definition = def, locale);
         return definition;
     }
 
-    public static bool Is<TDefinition>(
-        this DefinitionHashPointer<TDefinition> pointer,
-        Func<TDefinition?, bool> predicate,
-        BungieLocales locale = BungieLocales.EN
-    )
-        where TDefinition : IDestinyDefinition
+    public static bool Is<TDefinition>(this DefinitionHashPointer<TDefinition> pointer, Func<TDefinition?, bool> predicate, BungieLocales locale = BungieLocales.EN)
+        where TDefinition : class, IDestinyDefinition
     {
         return pointer.TryGetDefinition(out var definition, locale) && predicate(definition);
     }
@@ -113,44 +82,38 @@ public static class DefinitionHashPointerExtensions
         Func<TDefinition, bool> predicate,
         BungieLocales locale = BungieLocales.EN
     )
-        where TDefinition : IDestinyDefinition
+        where TDefinition : class, IDestinyDefinition
     {
         var value = await pointer.GetValueOrNullAsync(locale);
         return value is not null && predicate(value);
     }
 
-    public static TValue Select<TDefinition, TValue>(
-        this DefinitionHashPointer<TDefinition> pointer,
-        Func<TDefinition, TValue> func,
-        BungieLocales locale = BungieLocales.EN
-    )
-        where TDefinition : IDestinyDefinition
+    public static TValue? Select<TDefinition, TValue>(this DefinitionHashPointer<TDefinition> pointer, Func<TDefinition, TValue> func, BungieLocales locale = BungieLocales.EN)
+        where TDefinition : class, IDestinyDefinition
     {
         return pointer.TryGetDefinition(out var definition, locale) ? func(definition) : default;
     }
 
-    public static async ValueTask<TValue> SelectAsync<TDefinition, TValue>(
+    public static async ValueTask<TValue?> SelectAsync<TDefinition, TValue>(
         this DefinitionHashPointer<TDefinition> pointer,
         Func<TDefinition, TValue> func,
         BungieLocales locale = BungieLocales.EN
     )
-        where TDefinition : IDestinyDefinition
+        where TDefinition : class, IDestinyDefinition
     {
         var definition = await pointer.GetValueOrNullAsync(locale);
         return definition is not null ? func(definition) : default;
     }
 
-    private static string GetDebuggerDisplayString<TDefinition>(
-        DefinitionHashPointer<TDefinition> pointer
-    )
-        where TDefinition : IDestinyDefinition
+    private static string GetDebuggerDisplayString<TDefinition>(DefinitionHashPointer<TDefinition> pointer)
+        where TDefinition : class, IDestinyDefinition
     {
         if (pointer.TryGetDefinition(out var definition))
         {
-            if (definition is IDisplayProperties displayProperties)
-            {
-                return $"{pointer.Hash} {displayProperties.DisplayProperties.Name}";
-            }
+            // if (definition is IDisplayProperties displayProperties)
+            // {
+            //     return $"{pointer.Hash} {displayProperties.DisplayProperties.Name}";
+            // }
 
             return $"{pointer.Hash} {typeof(TDefinition).Name}";
         }

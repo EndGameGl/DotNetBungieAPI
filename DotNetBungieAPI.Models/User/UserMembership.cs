@@ -1,9 +1,9 @@
-﻿namespace DotNetBungieAPI.Models.User;
+namespace DotNetBungieAPI.Models.User;
 
 /// <summary>
 ///     Very basic info about a user as returned by the Account server.
 /// </summary>
-public record UserMembership
+public sealed class UserMembership
 {
     /// <summary>
     ///     Type of the membership. Not necessarily the native type.
@@ -15,12 +15,10 @@ public record UserMembership
     ///     Membership ID as they user is known in the Accounts service
     /// </summary>
     [JsonPropertyName("membershipId")]
-    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
     public long MembershipId { get; init; }
 
     /// <summary>
-    ///     Display Name the player has chosen for themselves. The display name is optional when the data type is used as input
-    ///     to a platform API.
+    ///     Display Name the player has chosen for themselves. The display name is optional when the data type is used as input to a platform API.
     /// </summary>
     [JsonPropertyName("displayName")]
     public string DisplayName { get; init; }

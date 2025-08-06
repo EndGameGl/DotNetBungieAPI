@@ -1,12 +1,9 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.ActivityInteractables;
-
 namespace DotNetBungieAPI.Models.Destiny.Definitions.FireteamFinder;
 
-public sealed record DestinyActivityInteractableReference
+public sealed class DestinyActivityInteractableReference
 {
     [JsonPropertyName("activityInteractableHash")]
-    public DefinitionHashPointer<DestinyActivityInteractableDefinition> ActivityInteractable { get; init; } =
-        DefinitionHashPointer<DestinyActivityInteractableDefinition>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.Activities.DestinyActivityInteractableDefinition> ActivityInteractableHash { get; init; }
 
     [JsonPropertyName("activityInteractableElementIndex")]
     public int ActivityInteractableElementIndex { get; init; }

@@ -1,8 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.GroupsV2;
+namespace DotNetBungieAPI.Models.GroupsV2;
 
-public enum MembershipOption
+public enum MembershipOption : int
 {
     Reviewed = 0,
+
     Open = 1,
+
     Closed = 2
 }

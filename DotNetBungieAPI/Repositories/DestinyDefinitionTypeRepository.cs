@@ -1,7 +1,8 @@
 ﻿using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
-using DotNetBungieAPI.Models.Destiny;
+using DotNetBungieAPI.Models;
 
 namespace DotNetBungieAPI.Repositories;
 
@@ -16,10 +17,7 @@ public class DestinyDefinitionTypeRepository
     public DestinyDefinitionTypeRepository(Type storedType, int concurrencyLevel, int capacity = 31)
     {
         Type = storedType;
-        _definitions = new ConcurrentDictionary<uint, IDestinyDefinition>(
-            concurrencyLevel,
-            capacity
-        );
+        _definitions = new ConcurrentDictionary<uint, IDestinyDefinition>(concurrencyLevel, capacity);
     }
 
     public Type Type { get; }
@@ -46,15 +44,15 @@ public class DestinyDefinitionTypeRepository
         return _definitions.Select(x => x.Value);
     }
 
-    public bool TryGetDefinition(uint hash, out IDestinyDefinition definition)
+    public bool TryGetDefinition(uint hash, [NotNullWhen(true)] out IDestinyDefinition? definition)
     {
         return _definitions.TryGetValue(hash, out definition);
     }
 
-    public bool TryGetDefinition<T>(uint hash, out T definition)
-        where T : IDestinyDefinition
+    public bool TryGetDefinition<T>(uint hash, [NotNullWhen(true)] out T? definition)
+        where T : class, IDestinyDefinition
     {
-        definition = default;
+        definition = null;
         if (_definitions.TryGetValue(hash, out var item))
         {
             definition = Unsafe.As<IDestinyDefinition, T>(ref item);

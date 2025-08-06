@@ -1,31 +1,29 @@
-﻿namespace DotNetBungieAPI.Models.GroupsV2;
+namespace DotNetBungieAPI.Models.GroupsV2;
 
-public sealed record GroupFeatures
+public sealed class GroupFeatures
 {
     [JsonPropertyName("maximumMembers")]
     public int MaximumMembers { get; init; }
 
     /// <summary>
-    ///     Maximum number of groups of this type a typical membership may join. For example, a user may join about 50 General
-    ///     groups with their Bungie.net account. They may join one clan per Destiny membership.
+    ///     Maximum number of groups of this type a typical membership may join. For example, a user may join about 50 General groups with their Bungie.net account. They may join one clan per Destiny membership.
     /// </summary>
     [JsonPropertyName("maximumMembershipsOfGroupType")]
     public int MaximumMembershipsOfGroupType { get; init; }
 
     [JsonPropertyName("capabilities")]
-    public Capabilities Capabilities { get; init; }
+    public GroupsV2.Capabilities Capabilities { get; init; }
 
     [JsonPropertyName("membershipTypes")]
-    public ReadOnlyCollection<BungieMembershipType> MembershipTypes { get; init; } =
-        ReadOnlyCollection<BungieMembershipType>.Empty;
+    public BungieMembershipType[]? MembershipTypes { get; init; }
 
     /// <summary>
     ///     Minimum Member Level allowed to invite new members to group
-    ///     <para />
+    /// <para />
     ///     Always Allowed: Founder, Acting Founder
-    ///     <para />
+    /// <para />
     ///     True means admins have this power, false means they don't
-    ///     <para />
+    /// <para />
     ///     Default is false for clans, true for groups.
     /// </summary>
     [JsonPropertyName("invitePermissionOverride")]
@@ -33,11 +31,11 @@ public sealed record GroupFeatures
 
     /// <summary>
     ///     Minimum Member Level allowed to update group culture
-    ///     <para />
+    /// <para />
     ///     Always Allowed: Founder, Acting Founder
-    ///     <para />
+    /// <para />
     ///     True means admins have this power, false means they don't
-    ///     <para />
+    /// <para />
     ///     Default is false for clans, true for groups.
     /// </summary>
     [JsonPropertyName("updateCulturePermissionOverride")]
@@ -45,23 +43,23 @@ public sealed record GroupFeatures
 
     /// <summary>
     ///     Minimum Member Level allowed to host guided games
-    ///     <para />
+    /// <para />
     ///     Always Allowed: Founder, Acting Founder, Admin
-    ///     <para />
+    /// <para />
     ///     Allowed Overrides: None, Member, Beginner
-    ///     <para />
+    /// <para />
     ///     Default is Member for clans, None for groups, although this means nothing for groups.
     /// </summary>
     [JsonPropertyName("hostGuidedGamePermissionOverride")]
-    public HostGuidedGamesPermissionLevel HostGuidedGamePermissionOverride { get; init; }
+    public GroupsV2.HostGuidedGamesPermissionLevel HostGuidedGamePermissionOverride { get; init; }
 
     /// <summary>
     ///     Minimum Member Level allowed to update banner
-    ///     <para />
+    /// <para />
     ///     Always Allowed: Founder, Acting Founder
-    ///     <para />
+    /// <para />
     ///     True means admins have this power, false means they don't
-    ///     <para />
+    /// <para />
     ///     Default is false for clans, true for groups.
     /// </summary>
     [JsonPropertyName("updateBannerPermissionOverride")]
@@ -69,9 +67,9 @@ public sealed record GroupFeatures
 
     /// <summary>
     ///     Level to join a member at when accepting an invite, application, or joining an open clan
-    ///     <para />
+    /// <para />
     ///     Default is Beginner.
     /// </summary>
     [JsonPropertyName("joinLevel")]
-    public RuntimeGroupMemberType JoinLevel { get; init; }
+    public GroupsV2.RuntimeGroupMemberType JoinLevel { get; init; }
 }

@@ -14,9 +14,9 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <LangVersion>latest</LangVersion>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <PackageVersion>2.15.0</PackageVersion>
-        <AssemblyVersion>2.15.0</AssemblyVersion>
-        <FileVersion>2.15.0</FileVersion>
+        <PackageVersion>3.0.0</PackageVersion>
+        <AssemblyVersion>3.0.0</AssemblyVersion>
+        <FileVersion>3.0.0</FileVersion>
         <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -30,11 +30,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="2.15.0" />
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.1" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.1" />
         <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.1" />
         <PackageReference Include="RateLimiter" Version="2.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DotNetBungieAPI.Service.Abstractions\DotNetBungieAPI.Service.Abstractions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Services\ApiAccess\" />
     </ItemGroup>
 
 </Project>

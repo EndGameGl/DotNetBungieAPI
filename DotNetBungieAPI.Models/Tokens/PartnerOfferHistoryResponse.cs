@@ -1,13 +1,12 @@
-﻿namespace DotNetBungieAPI.Models.Tokens;
+namespace DotNetBungieAPI.Models.Tokens;
 
-public sealed record PartnerOfferHistoryResponse
+public sealed class PartnerOfferHistoryResponse
 {
     [JsonPropertyName("PartnerOfferKey")]
     public string PartnerOfferKey { get; init; }
 
     [JsonPropertyName("MembershipId")]
-    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-    public long MembershipId { get; init; }
+    public long? MembershipId { get; init; }
 
     [JsonPropertyName("MembershipType")]
     public BungieMembershipType? MembershipType { get; init; }

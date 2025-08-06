@@ -1,8 +1,7 @@
-﻿namespace DotNetBungieAPI.Models.Trending;
+namespace DotNetBungieAPI.Models.Trending;
 
-public sealed record TrendingCategories
+public sealed class TrendingCategories
 {
     [JsonPropertyName("categories")]
-    public ReadOnlyCollection<TrendingCategory> Categories { get; init; } =
-        ReadOnlyCollection<TrendingCategory>.Empty;
+    public Trending.TrendingCategory[]? Categories { get; init; }
 }

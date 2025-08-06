@@ -15,12 +15,7 @@ public class JsonSerializationContextAdditionalFileGenerator : AdditionalFileGen
 
         foreach (var (typeName, typeSchema) in openApiModel.Components.Schemas.OrderBy(x => x.Key))
         {
-            if (
-                typeSchema
-                is OpenApiObjectMultiTypeComponentSchema
-                    or OpenApiObjectComponentSchema
-                    or OpenApiEnumComponentSchema
-            )
+            if (typeSchema is OpenApiObjectMultiTypeComponentSchema or OpenApiObjectComponentSchema or OpenApiEnumComponentSchema)
             {
                 await WriteLineAsync($"[JsonSerializable(typeof({typeName}))]");
             }
@@ -31,7 +26,7 @@ public class JsonSerializationContextAdditionalFileGenerator : AdditionalFileGen
             var type = ((OpenApiObjectComponentSchema)responseType.Schema).Properties["Response"].GetCSharpType();
             await WriteLineAsync($"[JsonSerializable(typeof(ApiResponse<{type}>))]");
         }
-        
+
         await WriteLineAsync(
             """
             [JsonSourceGenerationOptions(
@@ -40,10 +35,9 @@ public class JsonSerializationContextAdditionalFileGenerator : AdditionalFileGen
                 DictionaryKeyPolicy = JsonKnownNamingPolicy.Unspecified,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
             )]
-            """);
-        
-        await WriteLineAsync(
-            "public partial class DotNetBungieAPIJsonSerializationContext : JsonSerializerContext { }"
+            """
         );
+
+        await WriteLineAsync("public partial class DotNetBungieAPIJsonSerializationContext : JsonSerializerContext { }");
     }
 }

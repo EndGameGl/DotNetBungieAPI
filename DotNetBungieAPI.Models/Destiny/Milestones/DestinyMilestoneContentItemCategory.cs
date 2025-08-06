@@ -1,19 +1,13 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
-
 namespace DotNetBungieAPI.Models.Destiny.Milestones;
 
 /// <summary>
-///     Part of our dynamic, localized Milestone content is arbitrary categories of items. These are built in our content
-///     management system, and thus aren't the same as programmatically generated rewards.
+///     Part of our dynamic, localized Milestone content is arbitrary categories of items. These are built in our content management system, and thus aren't the same as programmatically generated rewards.
 /// </summary>
-public sealed record DestinyMilestoneContentItemCategory
+public sealed class DestinyMilestoneContentItemCategory
 {
     [JsonPropertyName("title")]
     public string Title { get; init; }
 
     [JsonPropertyName("itemHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyInventoryItemDefinition>
-    > Items { get; init; } =
-        ReadOnlyCollection<DefinitionHashPointer<DestinyInventoryItemDefinition>>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition>[]? ItemHashes { get; init; }
 }

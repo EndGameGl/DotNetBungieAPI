@@ -6,10 +6,10 @@ public class OpenApiBooleanComponentSchema : IOpenApiComponentSchema, IHasDescri
 {
     [JsonPropertyName("type")]
     public required string Type { get; init; }
-    
+
     [JsonPropertyName("description")]
     public string? Description { get; init; }
-    
+
     [JsonPropertyName("nullable")]
     public bool? Nullable { get; init; }
 }

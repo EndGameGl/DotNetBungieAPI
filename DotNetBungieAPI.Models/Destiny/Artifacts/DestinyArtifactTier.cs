@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Artifacts;
+namespace DotNetBungieAPI.Models.Destiny.Artifacts;
 
-public sealed record DestinyArtifactTier
+public sealed class DestinyArtifactTier
 {
     [JsonPropertyName("tierHash")]
     public uint TierHash { get; init; }
@@ -12,6 +12,5 @@ public sealed record DestinyArtifactTier
     public int PointsToUnlock { get; init; }
 
     [JsonPropertyName("items")]
-    public ReadOnlyCollection<DestinyArtifactTierItem> Items { get; init; } =
-        ReadOnlyCollection<DestinyArtifactTierItem>.Empty;
+    public Destiny.Artifacts.DestinyArtifactTierItem[]? Items { get; init; }
 }

@@ -8,11 +8,13 @@ public static class CodeBuilderExtensions
     {
         await codeBuilder.BuildDefinitions(
             new CSharpClassGenerator(),
-            new CSharpMethodGroupGenerator(),
-            new GlobalUsingsAdditionalFileGenerator(),
-            new JsonSerializationContextAdditionalFileGenerator(),
-            new ApiResponseAdditionalFileGenerator(),
-            new IDestinyDefinitionInterfaceFileGenerator()
+            [new CSharpMethodGroupGenerator()],
+            [
+                new GlobalUsingsAdditionalFileGenerator(),
+                new JsonSerializationContextAdditionalFileGenerator(),
+                new ApiResponseAdditionalFileGenerator(),
+                new IDestinyDefinitionInterfaceFileGenerator(),
+            ]
         );
     }
 }

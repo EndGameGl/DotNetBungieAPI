@@ -1,6 +1,6 @@
-﻿using DotNetBungieAPI.Models;
-using DotNetBungieAPI.Models.Destiny;
-using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
+﻿using System.Diagnostics.CodeAnalysis;
+using DotNetBungieAPI.Models;
+using DotNetBungieAPI.Models.Destiny.HistoricalStats.Definitions;
 
 namespace DotNetBungieAPI.Service.Abstractions;
 
@@ -52,12 +52,8 @@ public interface IBungieClient : IDisposable, IAsyncDisposable
     /// <param name="success"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    ValueTask<bool> TryGetDefinitionAsync<T>(
-        uint hash,
-        Action<T> success,
-        BungieLocales locale = BungieLocales.EN
-    )
-        where T : IDestinyDefinition;
+    ValueTask<bool> TryGetDefinitionAsync<T>(uint hash, Action<T> success, BungieLocales locale = BungieLocales.EN)
+        where T : class, IDestinyDefinition;
 
     /// <summary>
     ///     Tries to get definition from all available sources
@@ -67,8 +63,8 @@ public interface IBungieClient : IDisposable, IAsyncDisposable
     /// <param name="definition"></param>
     /// <param name="locale"></param>
     /// <returns></returns>
-    bool TryGetDefinition<T>(uint hash, out T definition, BungieLocales locale = BungieLocales.EN)
-        where T : IDestinyDefinition;
+    bool TryGetDefinition<T>(uint hash, [NotNullWhen(true)] out T? definition, BungieLocales locale = BungieLocales.EN)
+        where T : class, IDestinyDefinition;
 
     /// <summary>
     ///     Tries to get DestinyHistoricalStatsDefinition from all available sources async
@@ -77,11 +73,7 @@ public interface IBungieClient : IDisposable, IAsyncDisposable
     /// <param name="locale"></param>
     /// <param name="success"></param>
     /// <returns></returns>
-    ValueTask<bool> TryGetHistoricalStatDefinitionAsync(
-        string key,
-        Action<DestinyHistoricalStatsDefinition> success,
-        BungieLocales locale = BungieLocales.EN
-    );
+    ValueTask<bool> TryGetHistoricalStatDefinitionAsync(string key, Action<DestinyHistoricalStatsDefinition> success, BungieLocales locale = BungieLocales.EN);
 
     /// <summary>
     ///     Tries to get DestinyHistoricalStatsDefinition from all available sources
@@ -90,9 +82,5 @@ public interface IBungieClient : IDisposable, IAsyncDisposable
     /// <param name="locale"></param>
     /// <param name="definition"></param>
     /// <returns></returns>
-    bool TryGetHistoricalStatDefinition(
-        string key,
-        out DestinyHistoricalStatsDefinition definition,
-        BungieLocales locale = BungieLocales.EN
-    );
+    bool TryGetHistoricalStatDefinition(string key, [NotNullWhen(true)] out DestinyHistoricalStatsDefinition? definition, BungieLocales locale = BungieLocales.EN);
 }

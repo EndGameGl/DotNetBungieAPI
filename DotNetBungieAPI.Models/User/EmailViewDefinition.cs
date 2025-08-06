@@ -1,10 +1,9 @@
-﻿namespace DotNetBungieAPI.Models.User;
+namespace DotNetBungieAPI.Models.User;
 
 /// <summary>
-///     Represents a data-driven view for Email settings. Web/Mobile UI can use this data to show new EMail settings
-///     consistently without further manual work.
+///     Represents a data-driven view for Email settings. Web/Mobile UI can use this data to show new EMail settings consistently without further manual work.
 /// </summary>
-public sealed record EmailViewDefinition
+public sealed class EmailViewDefinition
 {
     /// <summary>
     ///     The identifier for this view.
@@ -16,6 +15,5 @@ public sealed record EmailViewDefinition
     ///     The ordered list of settings to show in this view.
     /// </summary>
     [JsonPropertyName("viewSettings")]
-    public ReadOnlyCollection<EmailViewDefinitionSetting> ViewSettings { get; init; } =
-        ReadOnlyCollection<EmailViewDefinitionSetting>.Empty;
+    public User.EmailViewDefinitionSetting[]? ViewSettings { get; init; }
 }

@@ -1,7 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.GroupsV2;
+namespace DotNetBungieAPI.Models.GroupsV2;
 
-public sealed record GroupMembership : GroupMembershipBase
+public sealed class GroupMembership
 {
     [JsonPropertyName("member")]
-    public GroupMember Member { get; init; }
+    public GroupsV2.GroupMember? Member { get; init; }
+
+    [JsonPropertyName("group")]
+    public GroupsV2.GroupV2? Group { get; init; }
 }

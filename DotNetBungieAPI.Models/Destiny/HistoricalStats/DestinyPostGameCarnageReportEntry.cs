@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.HistoricalStats;
+namespace DotNetBungieAPI.Models.Destiny.HistoricalStats;
 
-public sealed record DestinyPostGameCarnageReportEntry
+public sealed class DestinyPostGameCarnageReportEntry
 {
     /// <summary>
     ///     Standing of the player
@@ -12,13 +12,13 @@ public sealed record DestinyPostGameCarnageReportEntry
     ///     Score of the player if available
     /// </summary>
     [JsonPropertyName("score")]
-    public DestinyHistoricalStatsValue Score { get; init; }
+    public Destiny.HistoricalStats.DestinyHistoricalStatsValue? Score { get; init; }
 
     /// <summary>
     ///     Identity details of the player
     /// </summary>
     [JsonPropertyName("player")]
-    public DestinyPlayer Player { get; init; }
+    public Destiny.HistoricalStats.DestinyPlayer? Player { get; init; }
 
     /// <summary>
     ///     ID of the player's character used in the activity.
@@ -30,12 +30,11 @@ public sealed record DestinyPostGameCarnageReportEntry
     ///     Collection of stats for the player in this activity.
     /// </summary>
     [JsonPropertyName("values")]
-    public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> Values { get; init; } =
-        ReadOnlyDictionary<string, DestinyHistoricalStatsValue>.Empty;
+    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue>? Values { get; init; }
 
     /// <summary>
     ///     Extended data extracted from the activity blob.
     /// </summary>
     [JsonPropertyName("extended")]
-    public DestinyPostGameCarnageReportExtendedData ExtendedData { get; init; }
+    public Destiny.HistoricalStats.DestinyPostGameCarnageReportExtendedData? Extended { get; init; }
 }

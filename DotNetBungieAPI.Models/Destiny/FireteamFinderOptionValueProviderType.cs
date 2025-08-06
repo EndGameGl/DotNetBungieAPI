@@ -1,10 +1,16 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
-public enum FireteamFinderOptionValueProviderType
+public enum FireteamFinderOptionValueProviderType : int
 {
     None = 0,
+
     Values = 1,
+
     PlayerCount = 2,
+
     FireteamFinderLabels = 3,
-    FireteamFinderActivityGraph = 4
+
+    FireteamFinderActivityGraph = 4,
+
+    FireteamFinderUIActivityTree = 5
 }

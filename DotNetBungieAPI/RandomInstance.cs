@@ -6,8 +6,7 @@ internal static class RandomInstance
 {
     private static readonly Random Rnd = new();
 
-    private static readonly char[] Symbols =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".ToCharArray();
+    private static readonly char[] Symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".ToCharArray();
 
     internal static string GetRandomString(int length = 10)
     {

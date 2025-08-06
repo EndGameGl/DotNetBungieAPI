@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers.Interfaces;
-using DotNetBungieAPI.Models;
-using DotNetBungieAPI.Models.Destiny.Definitions.ReportReasonCategories;
+using DotNetBungieAPI.Models.Destiny.Definitions.Reporting;
 using DotNetBungieAPI.Service.Abstractions;
 
 namespace DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers;

@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Applications;
+namespace DotNetBungieAPI.Models.Applications;
 
-[Flags]
+[System.Flags]
 public enum ApplicationScopes : long
 {
     /// <summary>
@@ -19,14 +19,12 @@ public enum ApplicationScopes : long
     WriteGroups = 4,
 
     /// <summary>
-    ///     Administer Group/Clan Forums, Wall, and Members for groups and clans that the user is a founder or an
-    ///     administrator.
+    ///     Administer Group/Clan Forums, Wall, and Members for groups and clans that the user is a founder or an administrator.
     /// </summary>
     AdminGroups = 8,
 
     /// <summary>
-    ///     Create new groups, clans, and forum posts, along with other actions that are reserved for Bungie.net elevated
-    ///     scope: not meant to be used by third party applications.
+    ///     Create new groups, clans, and forum posts, along with other actions that are reserved for Bungie.net elevated scope: not meant to be used by third party applications.
     /// </summary>
     BnetWrite = 16,
 
@@ -36,9 +34,7 @@ public enum ApplicationScopes : long
     MoveEquipDestinyItems = 32,
 
     /// <summary>
-    ///     Read Destiny 1 Inventory and Vault contents. For Destiny 2, this scope is needed to read anything regarded as
-    ///     private. This is the only scope a Destiny 2 app needs for read operations against Destiny 2 data such as inventory,
-    ///     vault, currency, vendors, milestones, progression, etc.
+    ///     Read Destiny 1 Inventory and Vault contents. For Destiny 2, this scope is needed to read anything regarded as private. This is the only scope a Destiny 2 app needs for read operations against Destiny 2 data such as inventory, vault, currency, vendors, milestones, progression, etc.
     /// </summary>
     ReadDestinyInventoryAndVault = 64,
 
@@ -53,9 +49,8 @@ public enum ApplicationScopes : long
     EditUserData = 256,
 
     /// <summary>
-    ///     Access vendor and advisor data specific to a user.
+    ///     Access vendor and advisor data specific to a user. OBSOLETE. This scope is only used on the Destiny 1 API.
     /// </summary>
-    [Obsolete("This scope is only used on the Destiny 1 API.")]
     ReadDestinyVendorsAndAdvisors = 512,
 
     /// <summary>

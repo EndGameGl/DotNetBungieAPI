@@ -1,10 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
 /// <summary>
 ///     Whether you can transfer an item, and why not if you can't.
 /// </summary>
-[Flags]
-public enum TransferStatuses
+[System.Flags]
+public enum TransferStatuses : int
 {
     /// <summary>
     ///     The item can be transferred.
@@ -22,8 +22,7 @@ public enum TransferStatuses
     NotTransferrable = 2,
 
     /// <summary>
-    ///     You could transfer the item, but the place you're trying to put it has run out of room! Check your remaining Vault
-    ///     and/or character space.
+    ///     You could transfer the item, but the place you're trying to put it has run out of room! Check your remaining Vault and/or character space.
     /// </summary>
     NoRoomInDestination = 4
 }

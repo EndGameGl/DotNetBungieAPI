@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers.Interfaces;
-using DotNetBungieAPI.Models;
-using DotNetBungieAPI.Models.Destiny.Definitions.SocketTypes;
+using DotNetBungieAPI.Models.Destiny.Definitions.Sockets;
 using DotNetBungieAPI.Service.Abstractions;
 
 namespace DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers;

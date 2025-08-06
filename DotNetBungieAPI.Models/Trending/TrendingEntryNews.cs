@@ -1,9 +1,7 @@
-﻿using DotNetBungieAPI.Models.Content;
-
 namespace DotNetBungieAPI.Models.Trending;
 
-public sealed record TrendingEntryNews
+public sealed class TrendingEntryNews
 {
     [JsonPropertyName("article")]
-    public ContentItemPublicContract Article { get; init; }
+    public Content.ContentItemPublicContract? Article { get; init; }
 }

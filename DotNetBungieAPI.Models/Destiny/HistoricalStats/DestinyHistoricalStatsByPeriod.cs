@@ -1,28 +1,22 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.HistoricalStats;
+namespace DotNetBungieAPI.Models.Destiny.HistoricalStats;
 
-public sealed record DestinyHistoricalStatsByPeriod
+public sealed class DestinyHistoricalStatsByPeriod
 {
     [JsonPropertyName("allTime")]
-    public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> AllTime { get; init; } =
-        ReadOnlyDictionary<string, DestinyHistoricalStatsValue>.Empty;
+    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue>? AllTime { get; init; }
 
     [JsonPropertyName("allTimeTier1")]
-    public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> AllTimeTier1 { get; init; } =
-        ReadOnlyDictionary<string, DestinyHistoricalStatsValue>.Empty;
+    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue>? AllTimeTier1 { get; init; }
 
     [JsonPropertyName("allTimeTier2")]
-    public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> AllTimeTier2 { get; init; } =
-        ReadOnlyDictionary<string, DestinyHistoricalStatsValue>.Empty;
+    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue>? AllTimeTier2 { get; init; }
 
     [JsonPropertyName("allTimeTier3")]
-    public ReadOnlyDictionary<string, DestinyHistoricalStatsValue> AllTimeTier3 { get; init; } =
-        ReadOnlyDictionary<string, DestinyHistoricalStatsValue>.Empty;
+    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue>? AllTimeTier3 { get; init; }
 
     [JsonPropertyName("daily")]
-    public ReadOnlyCollection<DestinyHistoricalStatsPeriodGroup> Daily { get; init; } =
-        ReadOnlyCollection<DestinyHistoricalStatsPeriodGroup>.Empty;
+    public Destiny.HistoricalStats.DestinyHistoricalStatsPeriodGroup[]? Daily { get; init; }
 
     [JsonPropertyName("monthly")]
-    public ReadOnlyCollection<DestinyHistoricalStatsPeriodGroup> Monthly { get; init; } =
-        ReadOnlyCollection<DestinyHistoricalStatsPeriodGroup>.Empty;
+    public Destiny.HistoricalStats.DestinyHistoricalStatsPeriodGroup[]? Monthly { get; init; }
 }

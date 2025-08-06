@@ -1,9 +1,9 @@
-﻿namespace DotNetBungieAPI.Models.Tokens;
+namespace DotNetBungieAPI.Models.Tokens;
 
-public sealed record UserRewardAvailabilityModel
+public sealed class UserRewardAvailabilityModel
 {
     [JsonPropertyName("AvailabilityModel")]
-    public RewardAvailabilityModel AvailabilityModel { get; init; }
+    public Tokens.RewardAvailabilityModel? AvailabilityModel { get; init; }
 
     [JsonPropertyName("IsAvailableForUser")]
     public bool IsAvailableForUser { get; init; }

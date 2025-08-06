@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models;
+namespace DotNetBungieAPI.Models;
 
-public sealed record GlobalAlert
+public sealed class GlobalAlert
 {
     [JsonPropertyName("AlertKey")]
     public string AlertKey { get; init; }
@@ -21,5 +21,5 @@ public sealed record GlobalAlert
     public GlobalAlertType AlertType { get; init; }
 
     [JsonPropertyName("StreamInfo")]
-    public StreamInfo StreamInfo { get; init; }
+    public StreamInfo? StreamInfo { get; init; }
 }

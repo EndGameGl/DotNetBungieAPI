@@ -1,142 +1,107 @@
-﻿using DotNetBungieAPI.Models.Attributes;
-using DotNetBungieAPI.Models.Destiny.Definitions.Common;
-using DotNetBungieAPI.Models.Destiny.Definitions.Lore;
-using DotNetBungieAPI.Models.Destiny.Definitions.Objectives;
-using DotNetBungieAPI.Models.Destiny.Definitions.PresentationNodes;
-using DotNetBungieAPI.Models.Destiny.Definitions.Traits;
-
 namespace DotNetBungieAPI.Models.Destiny.Definitions.Records;
 
 [DestinyDefinition(DefinitionsEnum.DestinyRecordDefinition)]
-public sealed record DestinyRecordDefinition
-    : IDestinyDefinition,
-        IDisplayProperties,
-        IDeepEquatable<DestinyRecordDefinition>
+public sealed class DestinyRecordDefinition : IDestinyDefinition
 {
+    public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyRecordDefinition;
+
     [JsonPropertyName("displayProperties")]
-    public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; init; }
 
     /// <summary>
     ///     Indicates whether this Record's state is determined on a per-character or on an account-wide basis.
     /// </summary>
     [JsonPropertyName("scope")]
-    public DestinyScope Scope { get; init; }
+    public Destiny.DestinyScope Scope { get; init; }
 
     [JsonPropertyName("presentationInfo")]
-    public DestinyPresentationChildBlock PresentationInfo { get; init; }
+    public Destiny.Definitions.Presentation.DestinyPresentationChildBlock? PresentationInfo { get; init; }
 
     [JsonPropertyName("loreHash")]
-    public DefinitionHashPointer<DestinyLoreDefinition> Lore { get; init; } =
-        DefinitionHashPointer<DestinyLoreDefinition>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.Lore.DestinyLoreDefinition>? LoreHash { get; init; }
 
     [JsonPropertyName("objectiveHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyObjectiveDefinition>
-    > Objectives { get; init; } =
-        ReadOnlyCollection<DefinitionHashPointer<DestinyObjectiveDefinition>>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.DestinyObjectiveDefinition>[]? ObjectiveHashes { get; init; }
 
     [JsonPropertyName("recordValueStyle")]
-    public DestinyRecordValueStyle RecordValueStyle { get; init; }
+    public Destiny.DestinyRecordValueStyle RecordValueStyle { get; init; }
 
     [JsonPropertyName("forTitleGilding")]
     public bool ForTitleGilding { get; init; }
 
+    /// <summary>
+    ///     A hint to show a large icon for a reward
+    /// </summary>
     [JsonPropertyName("shouldShowLargeIcons")]
     public bool ShouldShowLargeIcons { get; init; }
 
     [JsonPropertyName("titleInfo")]
-    public DestinyRecordTitleBlock TitleInfo { get; init; }
+    public Destiny.Definitions.Records.DestinyRecordTitleBlock? TitleInfo { get; init; }
 
     [JsonPropertyName("completionInfo")]
-    public DestinyRecordCompletionBlock CompletionInfo { get; init; }
+    public Destiny.Definitions.Records.DestinyRecordCompletionBlock? CompletionInfo { get; init; }
 
     [JsonPropertyName("stateInfo")]
-    public SchemaRecordStateBlock StateInfo { get; init; }
+    public Destiny.Definitions.Records.SchemaRecordStateBlock? StateInfo { get; init; }
 
     [JsonPropertyName("requirements")]
-    public DestinyPresentationNodeRequirementsBlock Requirements { get; init; }
+    public Destiny.Definitions.Presentation.DestinyPresentationNodeRequirementsBlock? Requirements { get; init; }
 
     [JsonPropertyName("expirationInfo")]
-    public DestinyRecordExpirationBlock ExpirationInfo { get; init; }
+    public Destiny.Definitions.Records.DestinyRecordExpirationBlock? ExpirationInfo { get; init; }
 
     /// <summary>
     ///     Some records have multiple 'interval' objectives, and the record may be claimed at each completed interval
     /// </summary>
     [JsonPropertyName("intervalInfo")]
-    public DestinyRecordIntervalBlock IntervalInfo { get; init; }
+    public Destiny.Definitions.Records.DestinyRecordIntervalBlock? IntervalInfo { get; init; }
 
     /// <summary>
-    ///     If there is any publicly available information about rewards earned for achieving this record, this is the list of
-    ///     those items.
-    ///     <para />
-    ///     However, note that some records intentionally have "hidden" rewards. These will not be returned in this list.
+    ///     If there is any publicly available information about rewards earned for achieving this record, this is the list of those items.
+    /// <para />
+    ///      However, note that some records intentionally have "hidden" rewards. These will not be returned in this list.
     /// </summary>
     [JsonPropertyName("rewardItems")]
-    public ReadOnlyCollection<DestinyItemQuantity> RewardItems { get; init; } =
-        ReadOnlyCollection<DestinyItemQuantity>.Empty;
+    public Destiny.DestinyItemQuantity[]? RewardItems { get; init; }
 
+    /// <summary>
+    ///     A display name for the type of record this is (Triumphs, Lore, Medals, Seasonal Challenge, etc.).
+    /// </summary>
     [JsonPropertyName("recordTypeName")]
     public string RecordTypeName { get; init; }
 
     [JsonPropertyName("presentationNodeType")]
-    public DestinyPresentationNodeType PresentationNodeType { get; init; }
+    public Destiny.DestinyPresentationNodeType PresentationNodeType { get; init; }
 
     [JsonPropertyName("traitIds")]
-    public ReadOnlyCollection<string> TraitIds { get; init; } = ReadOnlyCollection<string>.Empty;
+    public string[]? TraitIds { get; init; }
 
     [JsonPropertyName("traitHashes")]
-    public ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>> Traits { get; init; } =
-        ReadOnlyCollection<DefinitionHashPointer<DestinyTraitDefinition>>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.Traits.DestinyTraitDefinition>[]? TraitHashes { get; init; }
 
     /// <summary>
-    ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under
-    ///     multiple parents.
+    ///     A quick reference to presentation nodes that have this node as a child. Presentation nodes can be parented under multiple parents.
     /// </summary>
     [JsonPropertyName("parentNodeHashes")]
-    public ReadOnlyCollection<
-        DefinitionHashPointer<DestinyPresentationNodeDefinition>
-    > ParentNodes { get; init; } =
-        ReadOnlyCollection<DefinitionHashPointer<DestinyPresentationNodeDefinition>>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>[]? ParentNodeHashes { get; init; }
 
-    public bool DeepEquals(DestinyRecordDefinition other)
-    {
-        return other != null
-            && DisplayProperties.DeepEquals(other.DisplayProperties)
-            && CompletionInfo.DeepEquals(other.CompletionInfo)
-            && ExpirationInfo.DeepEquals(other.ExpirationInfo)
-            && IntervalInfo.DeepEquals(other.IntervalInfo)
-            && StateInfo.DeepEquals(other.StateInfo)
-            && TitleInfo.DeepEquals(other.TitleInfo)
-            && Objectives.DeepEqualsReadOnlyCollection(other.Objectives)
-            && ParentNodes.DeepEqualsReadOnlyCollection(other.ParentNodes)
-            && PresentationNodeType == other.PresentationNodeType
-            && RecordValueStyle == other.RecordValueStyle
-            && Requirements.DeepEquals(other.Requirements)
-            && RewardItems.DeepEqualsReadOnlyCollection(other.RewardItems)
-            && RecordTypeName == other.RecordTypeName
-            && Scope == other.Scope
-            && Traits.DeepEqualsReadOnlyCollection(other.Traits)
-            && TraitIds.DeepEqualsReadOnlySimpleCollection(other.TraitIds)
-            && Lore.DeepEquals(other.Lore)
-            && PresentationInfo.DeepEquals(other.PresentationInfo)
-            && ForTitleGilding == other.ForTitleGilding
-            && Blacklisted == other.Blacklisted
-            && Hash == other.Hash
-            && Index == other.Index
-            && Redacted == other.Redacted;
-    }
-
-    public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyRecordDefinition;
-
-    [JsonPropertyName("blacklisted")]
-    public bool Blacklisted { get; init; }
-
+    /// <summary>
+    ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
+    /// <para />
+    ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
+    /// </summary>
     [JsonPropertyName("hash")]
     public uint Hash { get; init; }
 
+    /// <summary>
+    ///     The index of the entity as it was found in the investment tables.
+    /// </summary>
     [JsonPropertyName("index")]
     public int Index { get; init; }
 
+    /// <summary>
+    ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
+    /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; init; }
 }

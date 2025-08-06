@@ -1,5 +1,5 @@
-﻿using System.Collections.ObjectModel;
-using DotNetBungieAPI.Models.Destiny;
+﻿using System.Collections.Frozen;
+using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Service.Abstractions.AssemblyData;
 
 namespace DotNetBungieAPI.Service.Abstractions;
@@ -12,10 +12,10 @@ public interface IDefinitionAssemblyData
     /// <summary>
     ///     Definition use rules, keyed by definition types
     /// </summary>
-    ReadOnlyDictionary<DefinitionsEnum, DefinitionUseRule> DefinitionsToTypeMapping { get; }
+    FrozenDictionary<DefinitionsEnum, DefinitionUseRule> DefinitionsToTypeMapping { get; }
 
     /// <summary>
     ///     Type to enum definitions mapping
     /// </summary>
-    ReadOnlyDictionary<Type, DefinitionsEnum> TypeToEnumMapping { get; }
+    FrozenDictionary<Type, DefinitionsEnum> TypeToEnumMapping { get; }
 }

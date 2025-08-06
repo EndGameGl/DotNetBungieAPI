@@ -1,9 +1,12 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
-public enum DestinyClass
+public enum DestinyClass : int
 {
     Titan = 0,
+
     Hunter = 1,
+
     Warlock = 2,
+
     Unknown = 3
 }

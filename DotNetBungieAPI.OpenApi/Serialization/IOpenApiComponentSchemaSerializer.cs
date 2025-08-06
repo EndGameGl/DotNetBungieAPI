@@ -12,21 +12,14 @@ public class IOpenApiComponentSchemaSerializer : JsonConverterFactory
         return typeToConvert == typeof(IOpenApiComponentSchema);
     }
 
-    public override JsonConverter? CreateConverter(
-        Type typeToConvert,
-        JsonSerializerOptions options
-    )
+    public override JsonConverter? CreateConverter(Type typeToConvert, JsonSerializerOptions options)
     {
         return new IOpenApiComponentSchemaJsonConverter();
     }
 
     private class IOpenApiComponentSchemaJsonConverter : JsonConverter<IOpenApiComponentSchema>
     {
-        public override IOpenApiComponentSchema? Read(
-            ref Utf8JsonReader reader,
-            Type typeToConvert,
-            JsonSerializerOptions options
-        )
+        public override IOpenApiComponentSchema? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             if (reader.TokenType is not JsonTokenType.StartObject)
             {
@@ -48,7 +41,7 @@ public class IOpenApiComponentSchemaSerializer : JsonConverterFactory
             if (parsedObject.TryGetPropertyValue("type", out var schemaTypeValue))
             {
                 var typeInfo = schemaTypeValue!.GetValue<string>();
-                
+
                 if (typeInfo is "object")
                 {
                     if (parsedObject.ContainsKey("x-dictionary-key"))
@@ -80,7 +73,7 @@ public class IOpenApiComponentSchemaSerializer : JsonConverterFactory
                     {
                         return parsedObject.Deserialize<OpenApiEnumReferenceComponentSchema>(options);
                     }
-                    
+
                     return parsedObject.Deserialize<OpenApiIntegerComponentSchema>(options);
                 }
 
@@ -103,11 +96,7 @@ public class IOpenApiComponentSchemaSerializer : JsonConverterFactory
             return null;
         }
 
-        public override void Write(
-            Utf8JsonWriter writer,
-            IOpenApiComponentSchema value,
-            JsonSerializerOptions options
-        )
+        public override void Write(Utf8JsonWriter writer, IOpenApiComponentSchema value, JsonSerializerOptions options)
         {
             throw new NotImplementedException();
         }

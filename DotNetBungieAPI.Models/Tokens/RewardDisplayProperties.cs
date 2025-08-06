@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Tokens;
+namespace DotNetBungieAPI.Models.Tokens;
 
-public class RewardDisplayProperties
+public sealed class RewardDisplayProperties
 {
     [JsonPropertyName("Name")]
     public string Name { get; init; }

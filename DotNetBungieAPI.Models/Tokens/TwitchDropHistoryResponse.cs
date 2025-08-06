@@ -1,8 +1,6 @@
-﻿using DotNetBungieAPI.Models.Streaming;
-
 namespace DotNetBungieAPI.Models.Tokens;
 
-public sealed record TwitchDropHistoryResponse
+public sealed class TwitchDropHistoryResponse
 {
     [JsonPropertyName("Title")]
     public string Title { get; init; }
@@ -14,5 +12,5 @@ public sealed record TwitchDropHistoryResponse
     public DateTime? CreatedAt { get; init; }
 
     [JsonPropertyName("ClaimState")]
-    public DropStateEnum? ClaimState { get; init; }
+    public Streaming.DropStateEnum? ClaimState { get; init; }
 }

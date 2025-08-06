@@ -1,11 +1,15 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
-[Flags]
-public enum FireteamFinderOptionAvailability
+[System.Flags]
+public enum FireteamFinderOptionAvailability : int
 {
     None = 0,
+
     CreateListingBuilder = 1,
+
     SearchListingBuilder = 2,
+
     ListingViewer = 4,
-    LobbyViewer = 8,
+
+    LobbyViewer = 8
 }

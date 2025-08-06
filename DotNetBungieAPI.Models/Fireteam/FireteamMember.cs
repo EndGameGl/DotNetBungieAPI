@@ -1,14 +1,12 @@
-﻿using DotNetBungieAPI.Models.User;
-
 namespace DotNetBungieAPI.Models.Fireteam;
 
-public sealed record FireteamMember
+public sealed class FireteamMember
 {
     [JsonPropertyName("destinyUserInfo")]
-    public FireteamUserInfoCard DestinyUserInfo { get; init; }
+    public Fireteam.FireteamUserInfoCard? DestinyUserInfo { get; init; }
 
     [JsonPropertyName("bungieNetUserInfo")]
-    public UserInfoCard BungieNetUserInfo { get; init; }
+    public User.UserInfoCard? BungieNetUserInfo { get; init; }
 
     [JsonPropertyName("characterId")]
     public long CharacterId { get; init; }
@@ -23,5 +21,5 @@ public sealed record FireteamMember
     public DateTime LastPlatformInviteAttemptDate { get; init; }
 
     [JsonPropertyName("lastPlatformInviteAttemptResult")]
-    public FireteamPlatformInviteResult LastPlatformInviteAttemptResult { get; init; }
+    public Fireteam.FireteamPlatformInviteResult LastPlatformInviteAttemptResult { get; init; }
 }

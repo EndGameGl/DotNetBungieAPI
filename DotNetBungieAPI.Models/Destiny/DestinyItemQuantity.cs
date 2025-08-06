@@ -1,23 +1,18 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
-
 namespace DotNetBungieAPI.Models.Destiny;
 
 /// <summary>
-///     Used in a number of Destiny contracts to return data about an item stack and its quantity. Can optionally return an
-///     itemInstanceId if the item is instanced - in which case, the quantity returned will be 1.
+///     Used in a number of Destiny contracts to return data about an item stack and its quantity. Can optionally return an itemInstanceId if the item is instanced - in which case, the quantity returned will be 1. If it's not... uh, let me know okay? Thanks.
 /// </summary>
-public record DestinyItemQuantity : IDeepEquatable<DestinyItemQuantity>
+public sealed class DestinyItemQuantity
 {
     /// <summary>
-    ///     Item in question.
+    ///     The hash identifier for the item in question. Use it to look up the item's DestinyInventoryItemDefinition.
     /// </summary>
     [JsonPropertyName("itemHash")]
-    public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; init; } =
-        DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition> ItemHash { get; init; }
 
     /// <summary>
-    ///     If this quantity is referring to a specific instance of an item, this will have the item's instance ID. Normally,
-    ///     this will be null.
+    ///     If this quantity is referring to a specific instance of an item, this will have the item's instance ID. Normally, this will be null.
     /// </summary>
     [JsonPropertyName("itemInstanceId")]
     public long? ItemInstanceId { get; init; }
@@ -29,18 +24,8 @@ public record DestinyItemQuantity : IDeepEquatable<DestinyItemQuantity>
     public int Quantity { get; init; }
 
     /// <summary>
-    ///     Indicates that this item quantity may be conditionally shown or hidden, based on various sources of state. For
-    ///     example: server flags, account state, or character progress.
+    ///     Indicates that this item quantity may be conditionally shown or hidden, based on various sources of state. For example: server flags, account state, or character progress.
     /// </summary>
     [JsonPropertyName("hasConditionalVisibility")]
     public bool HasConditionalVisibility { get; init; }
-
-    public bool DeepEquals(DestinyItemQuantity other)
-    {
-        return other is not null
-            && Item.DeepEquals(other.Item)
-            && Quantity == other.Quantity
-            && ItemInstanceId == other.ItemInstanceId
-            && HasConditionalVisibility == other.HasConditionalVisibility;
-    }
 }

@@ -1,54 +1,57 @@
-﻿using DotNetBungieAPI.Models.Attributes;
-using DotNetBungieAPI.Models.Destiny.Definitions.Common;
-
 namespace DotNetBungieAPI.Models.Destiny.Definitions.FireteamFinder;
 
 [DestinyDefinition(DefinitionsEnum.DestinyFireteamFinderOptionDefinition)]
-public sealed record DestinyFireteamFinderOptionDefinition : IDestinyDefinition, IDisplayProperties
+public sealed class DestinyFireteamFinderOptionDefinition : IDestinyDefinition
 {
+    public DefinitionsEnum DefinitionEnumValue => DefinitionsEnum.DestinyFireteamFinderOptionDefinition;
+
     [JsonPropertyName("displayProperties")]
-    public DestinyDisplayPropertiesDefinition DisplayProperties { get; init; }
+    public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; init; }
 
     [JsonPropertyName("descendingSortPriority")]
     public int DescendingSortPriority { get; init; }
 
     [JsonPropertyName("groupHash")]
-    public DefinitionHashPointer<DestinyFireteamFinderOptionGroupDefinition> Group { get; init; } =
-        DefinitionHashPointer<DestinyFireteamFinderOptionGroupDefinition>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionGroupDefinition> GroupHash { get; init; }
 
     [JsonPropertyName("codeOptionType")]
-    public FireteamFinderCodeOptionType CodeOptionType { get; init; }
+    public Destiny.FireteamFinderCodeOptionType CodeOptionType { get; init; }
 
     [JsonPropertyName("availability")]
-    public FireteamFinderOptionAvailability Availability { get; init; }
+    public Destiny.FireteamFinderOptionAvailability Availability { get; init; }
 
     [JsonPropertyName("visibility")]
-    public FireteamFinderOptionVisibility Visibility { get; init; }
+    public Destiny.FireteamFinderOptionVisibility Visibility { get; init; }
 
     [JsonPropertyName("uiDisplayStyle")]
     public string UiDisplayStyle { get; init; }
 
     [JsonPropertyName("creatorSettings")]
-    public DestinyFireteamFinderOptionCreatorSettings CreatorSettings { get; init; }
+    public Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionCreatorSettings? CreatorSettings { get; init; }
 
     [JsonPropertyName("searcherSettings")]
-    public DestinyFireteamFinderOptionSearcherSettings SearcherSettings { get; init; }
+    public Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionSearcherSettings? SearcherSettings { get; init; }
 
     [JsonPropertyName("values")]
-    public DestinyFireteamFinderOptionValues Values { get; init; }
+    public Destiny.Definitions.FireteamFinder.DestinyFireteamFinderOptionValues? Values { get; init; }
 
-    public DefinitionsEnum DefinitionEnumValue =>
-        DefinitionsEnum.DestinyFireteamFinderOptionDefinition;
-
-    [JsonPropertyName("blacklisted")]
-    public bool Blacklisted { get; init; }
-
+    /// <summary>
+    ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
+    /// <para />
+    ///     When entities refer to each other in Destiny content, it is this hash that they are referring to.
+    /// </summary>
     [JsonPropertyName("hash")]
     public uint Hash { get; init; }
 
+    /// <summary>
+    ///     The index of the entity as it was found in the investment tables.
+    /// </summary>
     [JsonPropertyName("index")]
     public int Index { get; init; }
 
+    /// <summary>
+    ///     If this is true, then there is an entity with this identifier/type combination, but BNet is not yet allowed to show it. Sorry!
+    /// </summary>
     [JsonPropertyName("redacted")]
     public bool Redacted { get; init; }
 }

@@ -4,14 +4,12 @@ namespace DotNetBungieAPI.OpenApi.CodeGeneration;
 
 public abstract class MethodGroupGeneratorBase
 {
-    public Models.OpenApi Spec { get; internal set; }
     public abstract string FileExtension { get; }
+    public virtual string Location => "Methods";
+    public Models.OpenApi Spec { get; internal set; }
     public StreamWriter Writer { get; internal set; }
 
-    public abstract Task GenerateMethodGroupAsync(
-        string groupName,
-        (string ApiPath, OpenApiPath ApiPathInfo)[] methods
-    );
+    public abstract Task GenerateMethodGroupAsync(string groupName, (string ApiPath, OpenApiPath ApiPathInfo)[] methods);
 
     protected async Task WriteAsync(string text)
     {

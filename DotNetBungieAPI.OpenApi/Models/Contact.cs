@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.OpenApi.Models;
 public class Contact
 {
     [JsonPropertyName("name")]
-    public required  string Name { get; init; }
+    public required string Name { get; init; }
 
     [JsonPropertyName("url")]
     public required string Url { get; init; }

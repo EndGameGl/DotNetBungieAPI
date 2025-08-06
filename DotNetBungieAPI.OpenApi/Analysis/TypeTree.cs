@@ -30,7 +30,7 @@ public class TypeTree
                 {
                     IsType = true,
                     Name = elements[0],
-                    IsFolder = false
+                    IsFolder = false,
                 }
             );
         }
@@ -43,7 +43,7 @@ public class TypeTree
                 {
                     IsType = false,
                     Name = elements[0],
-                    IsFolder = true
+                    IsFolder = true,
                 }
             );
             Nodes[elements[0]].AddKey(string.Join('.', leftovers));

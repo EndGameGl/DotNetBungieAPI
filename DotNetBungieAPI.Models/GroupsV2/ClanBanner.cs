@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.GroupsV2;
+namespace DotNetBungieAPI.Models.GroupsV2;
 
-public sealed record ClanBanner
+public sealed class ClanBanner
 {
     [JsonPropertyName("decalId")]
     public uint DecalId { get; init; }

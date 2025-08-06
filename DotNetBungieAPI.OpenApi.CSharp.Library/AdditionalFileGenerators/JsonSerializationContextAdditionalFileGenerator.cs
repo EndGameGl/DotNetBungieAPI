@@ -12,18 +12,13 @@ public class JsonSerializationContextAdditionalFileGenerator : AdditionalFileGen
     {
         await WriteLineAsync("using DotNetBungieAPI.Models;");
         await WriteLineAsync();
-        
+
         await WriteLineAsync("namespace DotNetBungieAPI.Models.Serialization;");
         await WriteLineAsync();
 
         foreach (var (typeName, typeSchema) in openApiModel.Components.Schemas.OrderBy(x => x.Key))
         {
-            if (
-                typeSchema
-                is OpenApiObjectMultiTypeComponentSchema
-                    or OpenApiObjectComponentSchema
-                    or OpenApiEnumComponentSchema
-            )
+            if (typeSchema is OpenApiObjectMultiTypeComponentSchema or OpenApiObjectComponentSchema or OpenApiEnumComponentSchema)
             {
                 await WriteLineAsync($"[JsonSerializable(typeof({typeName}))]");
             }
@@ -32,21 +27,21 @@ public class JsonSerializationContextAdditionalFileGenerator : AdditionalFileGen
         foreach (var (typeName, responseType) in openApiModel.Components.Responses)
         {
             var type = ((OpenApiObjectComponentSchema)responseType.Schema).Properties["Response"].GetCSharpType();
-            await WriteLineAsync($"[JsonSerializable(typeof(ApiResponse<{type}>))]");
+            await WriteLineAsync($"[JsonSerializable(typeof(BungieResponse<{type}>))]");
         }
-        
+
         await WriteLineAsync(
             """
             [JsonSourceGenerationOptions(
                 NumberHandling = JsonNumberHandling.AllowReadingFromString,
                 AllowTrailingCommas = false, 
                 DictionaryKeyPolicy = JsonKnownNamingPolicy.Unspecified,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                Converters = [typeof(DefinitionHashPointerConverterFactory)]
             )]
-            """);
-        
-        await WriteLineAsync(
-            "public partial class DotNetBungieAPIJsonSerializationContext : JsonSerializerContext { }"
+            """
         );
+
+        await WriteLineAsync("public partial class DotNetBungieAPIJsonSerializationContext : JsonSerializerContext { }");
     }
 }

@@ -1,10 +1,9 @@
 ﻿using System.Collections.Concurrent;
-using System.Runtime.CompilerServices;
+using System.Diagnostics.CodeAnalysis;
 using DotNetBungieAPI.Extensions;
 using DotNetBungieAPI.Models;
 using DotNetBungieAPI.Models.Attributes;
-using DotNetBungieAPI.Models.Destiny;
-using DotNetBungieAPI.Models.Destiny.Definitions.HistoricalStats;
+using DotNetBungieAPI.Models.Destiny.HistoricalStats.Definitions;
 using DotNetBungieAPI.Service.Abstractions;
 using DotNetBungieAPI.Services.Implementations.ServiceConfigurations;
 using Microsoft.Extensions.Logging;
@@ -17,16 +16,8 @@ namespace DotNetBungieAPI.Repositories;
 /// </summary>
 internal sealed class DestinyDefinitionsRepository
 {
-    private readonly IDefinitionAssemblyData _assemblyData;
-
-    private readonly ConcurrentDictionary<
-        DefinitionsEnum,
-        DestinyDefinitionTypeRepository
-    > _definitionRepositories;
-    private readonly ConcurrentDictionary<
-        string,
-        DestinyHistoricalStatsDefinition
-    > _historicalStatsDefinitions;
+    private readonly ConcurrentDictionary<DefinitionsEnum, DestinyDefinitionTypeRepository> _definitionRepositories;
+    private readonly ConcurrentDictionary<string, DestinyHistoricalStatsDefinition> _historicalStatsDefinitions;
     private readonly ILogger _logger;
 
     internal DestinyDefinitionsRepository(
@@ -36,7 +27,6 @@ internal sealed class DestinyDefinitionsRepository
         DefaultDestiny2DefinitionRepositoryConfiguration configuration
     )
     {
-        _assemblyData = assemblyData;
         _logger = logger;
         Locale = locale;
 
@@ -50,23 +40,14 @@ internal sealed class DestinyDefinitionsRepository
             definitionsLoaded
         );
 
-        _definitionRepositories = new ConcurrentDictionary<
-            DefinitionsEnum,
-            DestinyDefinitionTypeRepository
-        >(concurrencyLevel, definitionsLoaded);
+        _definitionRepositories = new ConcurrentDictionary<DefinitionsEnum, DestinyDefinitionTypeRepository>(concurrencyLevel, definitionsLoaded);
         foreach (var definition in configuration.AllowedDefinitions)
             _definitionRepositories.TryAdd(
                 definition,
-                new DestinyDefinitionTypeRepository(
-                    _assemblyData.DefinitionsToTypeMapping[definition].DefinitionType,
-                    concurrencyLevel
-                )
+                new DestinyDefinitionTypeRepository(assemblyData.DefinitionsToTypeMapping[definition].DefinitionType, concurrencyLevel)
             );
 
-        _historicalStatsDefinitions = new ConcurrentDictionary<
-            string,
-            DestinyHistoricalStatsDefinition
-        >(concurrencyLevel, 31);
+        _historicalStatsDefinitions = new ConcurrentDictionary<string, DestinyHistoricalStatsDefinition>(concurrencyLevel, 31);
     }
 
     /// <summary>
@@ -74,8 +55,7 @@ internal sealed class DestinyDefinitionsRepository
     /// </summary>
     public BungieLocales Locale { get; }
 
-    public IEnumerable<DestinyHistoricalStatsDefinition> GetAllHistoricalStats =>
-        _historicalStatsDefinitions.Select(x => x.Value);
+    public IEnumerable<DestinyHistoricalStatsDefinition> GetAllHistoricalStats => _historicalStatsDefinitions.Select(x => x.Value);
 
     /// <summary>
     ///     Adds definition from repository, if possible
@@ -84,10 +64,7 @@ internal sealed class DestinyDefinitionsRepository
     /// <returns></returns>
     public bool AddDefinition(IDestinyDefinition definition)
     {
-        return _definitionRepositories.TryGetValue(
-                definition.DefinitionEnumValue,
-                out var repository
-            ) && repository.Add(definition);
+        return _definitionRepositories.TryGetValue(definition.DefinitionEnumValue, out var repository) && repository.Add(definition);
     }
 
     public bool AddDestinyHistoricalStatsDefinition(DestinyHistoricalStatsDefinition definition)
@@ -103,14 +80,10 @@ internal sealed class DestinyDefinitionsRepository
     /// <returns></returns>
     public bool RemoveDefinition(DefinitionsEnum definitionType, uint hash)
     {
-        return _definitionRepositories.TryGetValue(definitionType, out var repository)
-            && repository.Remove(hash);
+        return _definitionRepositories.TryGetValue(definitionType, out var repository) && repository.Remove(hash);
     }
 
-    public bool TryGetHistoricalStatsDefinition(
-        string name,
-        out DestinyHistoricalStatsDefinition val
-    )
+    public bool TryGetHistoricalStatsDefinition(string name, out DestinyHistoricalStatsDefinition val)
     {
         return _historicalStatsDefinitions.TryGetValue(name, out val);
     }
@@ -122,27 +95,16 @@ internal sealed class DestinyDefinitionsRepository
     /// <param name="hash"></param>
     /// <param name="definition"></param>
     /// <returns></returns>
-    public bool TryGetDefinition<T>(uint hash, out T definition)
-        where T : IDestinyDefinition
+    public bool TryGetDefinition<T>(uint hash, [NotNullWhen(true)] out T? definition)
+        where T : class, IDestinyDefinition
     {
-        definition = default;
-        if (
-            _definitionRepositories.TryGetValue(
-                DefinitionHashPointer<T>.EnumValue,
-                out var repository
-            )
-        )
+        definition = null;
+        if (!_definitionRepositories.TryGetValue(DefinitionHashPointer<T>.EnumValue, out var repository))
         {
-            if (repository.TryGetDefinition<T>(hash, out var value))
-            {
-                definition = value;
-                return definition != null;
-            }
-
             return false;
         }
 
-        return false;
+        return repository.TryGetDefinition(hash, out definition);
     }
 
     /// <summary>
@@ -152,21 +114,14 @@ internal sealed class DestinyDefinitionsRepository
     /// <param name="hash"></param>
     /// <param name="definition"></param>
     /// <returns></returns>
-    public bool TryGetDefinition(
-        DefinitionsEnum definitionType,
-        uint hash,
-        out IDestinyDefinition? definition
-    )
+    public bool TryGetDefinition(DefinitionsEnum definitionType, uint hash, [NotNullWhen(true)] out IDestinyDefinition? definition)
     {
-        definition = default;
-        if (_definitionRepositories.TryGetValue(definitionType, out var repository))
+        definition = null;
+        if (!_definitionRepositories.TryGetValue(definitionType, out var repository))
         {
-            if (repository.TryGetDefinition(hash, out definition))
-                return definition != null;
             return false;
         }
-
-        return false;
+        return repository.TryGetDefinition(hash, out definition);
     }
 
     /// <summary>
@@ -176,25 +131,19 @@ internal sealed class DestinyDefinitionsRepository
     /// <param name="predicate"></param>
     /// <returns></returns>
     public IEnumerable<T> Search<T>(Func<T, bool> predicate)
-        where T : IDestinyDefinition
+        where T : class, IDestinyDefinition
     {
-        return _definitionRepositories.TryGetValue(
-            DefinitionHashPointer<T>.EnumValue,
-            out var repository
-        )
-            ? GetAll<T>().Where(predicate)
-            : Enumerable.Empty<T>();
+        return _definitionRepositories.TryGetValue(DefinitionHashPointer<T>.EnumValue, out var repository)
+            ? repository.EnumerateValues().UnsafeCast<IDestinyDefinition, T>().Where(predicate)
+            : [];
     }
 
     public IEnumerable<T> GetAll<T>()
-        where T : IDestinyDefinition
+        where T : class, IDestinyDefinition
     {
-        return _definitionRepositories.TryGetValue(
-            DefinitionHashPointer<T>.EnumValue,
-            out var repository
-        )
+        return _definitionRepositories.TryGetValue(DefinitionHashPointer<T>.EnumValue, out var repository)
             ? repository.EnumerateValues().UnsafeCast<IDestinyDefinition, T>()
-            : Enumerable.Empty<T>();
+            : [];
     }
 
     public void Clear()
@@ -204,14 +153,19 @@ internal sealed class DestinyDefinitionsRepository
         _historicalStatsDefinitions.Clear();
     }
 
-    public void Clear(DefinitionsEnum definitionType)
+    public void Clear(DefinitionsEnum? definitionType, bool? clearHistoricalDefinitions = null)
     {
-        foreach (var (type, repo) in _definitionRepositories.Where(x => x.Key == definitionType))
+        if (definitionType is not null)
         {
-            repo.Clear();
+            foreach (var (_, repo) in _definitionRepositories.Where(x => x.Key == definitionType))
+            {
+                repo.Clear();
+            }
         }
 
-        if (definitionType == DefinitionsEnum.DestinyHistoricalStatsDefinition)
+        if (clearHistoricalDefinitions.HasValue && clearHistoricalDefinitions.Value)
+        {
             _historicalStatsDefinitions.Clear();
+        }
     }
 }

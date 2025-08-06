@@ -1,16 +1,13 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
-
 namespace DotNetBungieAPI.Models.Destiny.Artifacts;
 
-public sealed record DestinyArtifactTierItem
+public sealed class DestinyArtifactTierItem
 {
     [JsonPropertyName("itemHash")]
-    public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; init; } =
-        DefinitionHashPointer<DestinyInventoryItemDefinition>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition> ItemHash { get; init; }
 
     [JsonPropertyName("isActive")]
     public bool IsActive { get; init; }
 
     [JsonPropertyName("isVisible")]
-    public bool IsVisible { get; set; }
+    public bool IsVisible { get; init; }
 }

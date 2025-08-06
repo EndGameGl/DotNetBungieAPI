@@ -1,8 +1,7 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
-using DotNetBungieAPI.Serialization;
+using DotNetBungieAPI.Models.Serialization;
 using DotNetBungieAPI.Service.Abstractions;
-using DotNetBungieAPI.Services.Default.ServiceConfigurations;
 using DotNetBungieAPI.Services.Implementations.ServiceConfigurations;
 
 namespace DotNetBungieAPI.Services.Implementations;
@@ -17,12 +16,8 @@ internal sealed class DefaultBungieNetJsonSerializer : IBungieNetJsonSerializer
     public DefaultBungieNetJsonSerializer(DotNetBungieApiJsonSerializerConfiguration configuration)
     {
         _serializerOptions = configuration.Options;
-        _serializerOptions.Converters.Add(new ReadOnlyCollectionConverterFactory());
+        _serializerOptions.TypeInfoResolver = DotNetBungieAPIJsonSerializationContext.Default;
         _serializerOptions.Converters.Add(new DefinitionHashPointerConverterFactory());
-        _serializerOptions.Converters.Add(new ReadOnlyDictionaryConverterFactory());
-        _serializerOptions.Converters.Add(new HistoricalStatDefinitionPointerConverter());
-        _serializerOptions.Converters.Add(new DestinyResourceConverter());
-        _serializerOptions.Converters.Add(new StringEnumConverterFactory());
     }
 
     public async ValueTask<object> DeserializeAsync(byte[] data, Type type)

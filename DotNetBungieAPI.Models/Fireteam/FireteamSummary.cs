@@ -1,9 +1,6 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModes;
-using DotNetBungieAPI.Models.Destiny.Definitions.GuardianRanks;
-
 namespace DotNetBungieAPI.Models.Fireteam;
 
-public sealed record FireteamSummary
+public sealed class FireteamSummary
 {
     [JsonPropertyName("fireteamId")]
     public long FireteamId { get; init; }
@@ -12,10 +9,10 @@ public sealed record FireteamSummary
     public long GroupId { get; init; }
 
     [JsonPropertyName("platform")]
-    public FireteamPlatform Platform { get; init; }
+    public Fireteam.FireteamPlatform Platform { get; init; }
 
     [JsonPropertyName("activityType")]
-    public DestinyActivityModeType ActivityType { get; init; }
+    public int ActivityType { get; init; }
 
     [JsonPropertyName("isImmediate")]
     public bool IsImmediate { get; init; }
@@ -63,12 +60,10 @@ public sealed record FireteamSummary
     public string TitleBeforeModeration { get; init; }
 
     [JsonPropertyName("ownerCurrentGuardianRankSnapshot")]
-    public DefinitionHashPointer<DestinyGuardianRankDefinition> OwnerCurrentGuardianRankSnapshot { get; init; } =
-        DefinitionHashPointer<DestinyGuardianRankDefinition>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition> OwnerCurrentGuardianRankSnapshot { get; init; }
 
     [JsonPropertyName("ownerHighestLifetimeGuardianRankSnapshot")]
-    public DefinitionHashPointer<DestinyGuardianRankDefinition> OwnerHighestLifetimeGuardianRankSnapshot { get; init; } =
-        DefinitionHashPointer<DestinyGuardianRankDefinition>.Empty;
+    public DefinitionHashPointer<Destiny.Definitions.GuardianRanks.DestinyGuardianRankDefinition> OwnerHighestLifetimeGuardianRankSnapshot { get; init; }
 
     [JsonPropertyName("ownerTotalCommendationScoreSnapshot")]
     public int OwnerTotalCommendationScoreSnapshot { get; init; }

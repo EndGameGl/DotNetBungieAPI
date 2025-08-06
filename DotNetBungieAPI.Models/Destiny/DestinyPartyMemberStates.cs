@@ -1,10 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
 /// <summary>
 ///     A flags enumeration that represents a Fireteam Member's status.
 /// </summary>
-[Flags]
-public enum DestinyPartyMemberStates
+[System.Flags]
+public enum DestinyPartyMemberStates : int
 {
     None = 0,
 
@@ -20,9 +20,8 @@ public enum DestinyPartyMemberStates
 
     /// <summary>
     ///     Nor do I understand the difference between them being in a 'Group' vs. a 'Fireteam'.
-    ///     <para />
-    ///     I'll update these docs once I get more info. If I get more info. If you're reading this, I never got more info.
-    ///     You're on your own, kid.
+    /// <para />
+    ///     I'll update these docs once I get more info. If I get more info. If you're reading this, I never got more info. You're on your own, kid.
     /// </summary>
     GroupMember = 4,
 

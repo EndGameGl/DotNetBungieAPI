@@ -1,9 +1,9 @@
-﻿namespace DotNetBungieAPI.Models.Destiny.Definitions.FireteamFinder;
+namespace DotNetBungieAPI.Models.Destiny.Definitions.FireteamFinder;
 
-public sealed record DestinyFireteamFinderOptionSettingsControl
+public sealed class DestinyFireteamFinderOptionSettingsControl
 {
     [JsonPropertyName("type")]
-    public FireteamFinderOptionControlType Type { get; init; }
+    public Destiny.FireteamFinderOptionControlType Type { get; init; }
 
     [JsonPropertyName("minSelectedItems")]
     public int MinSelectedItems { get; init; }

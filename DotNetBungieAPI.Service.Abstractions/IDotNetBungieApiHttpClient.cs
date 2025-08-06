@@ -53,11 +53,7 @@ public interface IDotNetBungieApiHttpClient
     /// <param name="token"></param>
     /// <param name="authToken"></param>
     /// <returns></returns>
-    Task<BungieResponse<T>> GetFromBungieNetPlatform<T>(
-        string query,
-        CancellationToken token,
-        string? authToken = null
-    );
+    Task<BungieResponse<T>> GetFromBungieNetPlatform<T>(string query, CancellationToken token, string? authToken = null);
 
     /// <summary>
     ///     Makes an HTTP POST request to https://www.bungie.net/Platform
@@ -68,12 +64,7 @@ public interface IDotNetBungieApiHttpClient
     /// <param name="content"></param>
     /// <param name="authToken"></param>
     /// <returns></returns>
-    Task<BungieResponse<T>> PostToBungieNetPlatform<T>(
-        string query,
-        CancellationToken token,
-        Stream? content = null,
-        string? authToken = null
-    );
+    Task<BungieResponse<T>> PostToBungieNetPlatform<T>(string query, CancellationToken token, Stream? content = null, string? authToken = null);
 
     /// <summary>
     ///     Makes an HTTP GET request to https://stats.bungie.net/Platform
@@ -83,11 +74,7 @@ public interface IDotNetBungieApiHttpClient
     /// <param name="token"></param>
     /// <param name="authToken"></param>
     /// <returns></returns>
-    Task<BungieResponse<T>> GetFromBungieNetStatsPlatform<T>(
-        string query,
-        CancellationToken token,
-        string? authToken = null
-    );
+    Task<BungieResponse<T>> GetFromBungieNetStatsPlatform<T>(string query, CancellationToken token, string? authToken = null);
 
     /// <summary>
     ///     Makes a request to certain path and returns response stream

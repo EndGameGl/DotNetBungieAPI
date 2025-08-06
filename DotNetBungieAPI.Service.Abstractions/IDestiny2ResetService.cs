@@ -51,10 +51,7 @@ public interface IDestiny2ResetService
     /// <param name="delay">Optional delay</param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task WaitForNextDailyReset(
-        TimeSpan delay = default,
-        CancellationToken cancellationToken = default
-    );
+    Task WaitForNextDailyReset(TimeSpan delay = default, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Gets a <see cref="Task"/> that will be completed on next weekly reset if awaited
@@ -63,11 +60,7 @@ public interface IDestiny2ResetService
     /// <param name="delay">Optional delay</param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task WaitForNextWeeklyReset(
-        int day,
-        TimeSpan delay = default,
-        CancellationToken cancellationToken = default
-    );
+    Task WaitForNextWeeklyReset(int day, TimeSpan delay = default, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Gets a <see cref="Task"/> that will be completed on next weekly reset if awaited
@@ -76,9 +69,5 @@ public interface IDestiny2ResetService
     /// <param name="delay">Optional delay</param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task WaitForNextWeeklyReset(
-        DayOfWeek day,
-        TimeSpan delay = default,
-        CancellationToken cancellationToken = default
-    );
+    Task WaitForNextWeeklyReset(DayOfWeek day, TimeSpan delay = default, CancellationToken cancellationToken = default);
 }

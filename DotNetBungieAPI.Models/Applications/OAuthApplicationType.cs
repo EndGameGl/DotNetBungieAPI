@@ -1,4 +1,4 @@
-﻿namespace DotNetBungieAPI.Models.Applications;
+namespace DotNetBungieAPI.Models.Applications;
 
 public enum OAuthApplicationType : int
 {

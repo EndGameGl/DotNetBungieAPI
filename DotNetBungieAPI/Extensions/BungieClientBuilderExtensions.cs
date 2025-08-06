@@ -14,10 +14,7 @@ public static class BungieClientBuilderExtensions
         Action<DefaultDestiny2DefinitionRepositoryConfiguration> configure
     )
     {
-        repositoryConfig.Use<
-            DefaultDestiny2DefinitionRepository,
-            DefaultDestiny2DefinitionRepositoryConfiguration
-        >(configure);
+        repositoryConfig.Use<DefaultDestiny2DefinitionRepository, DefaultDestiny2DefinitionRepositoryConfiguration>(configure);
     }
 
     public static void ConfigureDefaultJsonSerializer(
@@ -25,10 +22,7 @@ public static class BungieClientBuilderExtensions
         Action<DotNetBungieApiJsonSerializerConfiguration> configure
     )
     {
-        serviceConfigurator.Use<
-            DefaultBungieNetJsonSerializer,
-            DotNetBungieApiJsonSerializerConfiguration
-        >(configure);
+        serviceConfigurator.Use<DefaultBungieNetJsonSerializer, DotNetBungieApiJsonSerializerConfiguration>(configure);
     }
 
     public static void ConfigureDefaultHttpClient(
@@ -36,9 +30,6 @@ public static class BungieClientBuilderExtensions
         Action<DotNetBungieApiHttpClientConfiguration> configure
     )
     {
-        serviceConfigurator.Use<
-            DefaultDotNetBungieApiHttpClient,
-            DotNetBungieApiHttpClientConfiguration
-        >(configure);
+        serviceConfigurator.Use<DefaultDotNetBungieApiHttpClient, DotNetBungieApiHttpClientConfiguration>(configure);
     }
 }

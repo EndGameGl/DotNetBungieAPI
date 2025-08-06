@@ -1,9 +1,7 @@
-﻿using DotNetBungieAPI.Models.Destiny.Definitions.InventoryItems;
-
 namespace DotNetBungieAPI.Models.Trending;
 
-public class TrendingEntryDestinyItem
+public sealed class TrendingEntryDestinyItem
 {
     [JsonPropertyName("itemHash")]
-    public DefinitionHashPointer<DestinyInventoryItemDefinition> Item { get; init; }
+    public uint ItemHash { get; init; }
 }

@@ -1,10 +1,9 @@
-﻿namespace DotNetBungieAPI.Models.User;
+namespace DotNetBungieAPI.Models.User;
 
 /// <summary>
-///     Defines a single subscription: permission to send emails for a specific, focused subject (generally timeboxed, such
-///     as for a specific release of a product or feature).
+///     Defines a single subscription: permission to send emails for a specific, focused subject (generally timeboxed, such as for a specific release of a product or feature).
 /// </summary>
-public sealed record EmailSubscriptionDefinition
+public sealed class EmailSubscriptionDefinition
 {
     /// <summary>
     ///     The unique identifier for this subscription.
@@ -16,11 +15,7 @@ public sealed record EmailSubscriptionDefinition
     ///     A dictionary of localized text for the EMail Opt-in setting, keyed by the locale.
     /// </summary>
     [JsonPropertyName("localization")]
-    public ReadOnlyDictionary<
-        string,
-        EmailSettingSubscriptionLocalization
-    > Localization { get; init; } =
-        ReadOnlyDictionary<string, EmailSettingSubscriptionLocalization>.Empty;
+    public Dictionary<string, User.EMailSettingSubscriptionLocalization>? Localization { get; init; }
 
     /// <summary>
     ///     The bitflag value for this subscription. Should be a unique power of two value.

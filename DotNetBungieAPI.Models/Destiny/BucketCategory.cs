@@ -1,10 +1,14 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
-public enum BucketCategory
+public enum BucketCategory : int
 {
     Invisible = 0,
+
     Item = 1,
+
     Currency = 2,
+
     Equippable = 3,
+
     Ignored = 4
 }

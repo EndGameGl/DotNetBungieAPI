@@ -1,13 +1,12 @@
-﻿namespace DotNetBungieAPI.Models.Applications;
+namespace DotNetBungieAPI.Models.Applications;
 
-public sealed record Series
+public sealed class Series
 {
     /// <summary>
     ///     Collection of samples with time and value.
     /// </summary>
     [JsonPropertyName("datapoints")]
-    public ReadOnlyCollection<Datapoint> Datapoints { get; init; } =
-        ReadOnlyCollection<Datapoint>.Empty;
+    public Applications.Datapoint[]? Datapoints { get; init; }
 
     /// <summary>
     ///     Target to which to datapoints apply.

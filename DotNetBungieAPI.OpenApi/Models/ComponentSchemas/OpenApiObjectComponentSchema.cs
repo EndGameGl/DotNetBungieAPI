@@ -15,7 +15,7 @@ public class OpenApiObjectComponentSchema : IOpenApiComponentSchema, IHasDescrip
 
     [JsonPropertyName("x-destiny-component-type-dependency")]
     public string? DestinyComponentTypeDependency { get; init; }
-    
+
     [JsonPropertyName("x-mobile-manifest-name")]
     public string? MobileManifestName { get; init; }
 }

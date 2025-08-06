@@ -1,6 +1,9 @@
-﻿namespace DotNetBungieAPI.Models.GroupsV2;
+namespace DotNetBungieAPI.Models.GroupsV2;
 
-public record GroupV2Card
+/// <summary>
+///     A small infocard of group information, usually used for when a list of groups are returned
+/// </summary>
+public sealed class GroupV2Card
 {
     [JsonPropertyName("groupId")]
     public long GroupId { get; init; }
@@ -9,7 +12,7 @@ public record GroupV2Card
     public string Name { get; init; }
 
     [JsonPropertyName("groupType")]
-    public GroupType GroupType { get; init; }
+    public GroupsV2.GroupType GroupType { get; init; }
 
     [JsonPropertyName("creationDate")]
     public DateTime CreationDate { get; init; }
@@ -27,16 +30,16 @@ public record GroupV2Card
     public string Locale { get; init; }
 
     [JsonPropertyName("membershipOption")]
-    public MembershipOption MembershipOption { get; init; }
+    public GroupsV2.MembershipOption MembershipOption { get; init; }
 
     [JsonPropertyName("capabilities")]
-    public Capabilities Capabilities { get; init; }
+    public GroupsV2.Capabilities Capabilities { get; init; }
 
     [JsonPropertyName("remoteGroupId")]
-    public long? RemoteGroupId { get; set; }
+    public long? RemoteGroupId { get; init; }
 
     [JsonPropertyName("clanInfo")]
-    public GroupV2ClanInfo ClanInfo { get; init; }
+    public GroupsV2.GroupV2ClanInfo? ClanInfo { get; init; }
 
     [JsonPropertyName("avatarPath")]
     public string AvatarPath { get; init; }

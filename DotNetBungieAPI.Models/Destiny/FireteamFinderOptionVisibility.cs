@@ -1,7 +1,8 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
-public enum FireteamFinderOptionVisibility
+public enum FireteamFinderOptionVisibility : int
 {
     Always = 0,
+
     ShowWhenChangedFromDefault = 1
 }

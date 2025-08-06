@@ -1,6 +1,6 @@
-﻿namespace DotNetBungieAPI.Models.Content;
+namespace DotNetBungieAPI.Models.Content;
 
-public sealed record NewsArticleRssItem
+public sealed class NewsArticleRssItem
 {
     [JsonPropertyName("Title")]
     public string Title { get; init; }
@@ -18,11 +18,11 @@ public sealed record NewsArticleRssItem
     public string Description { get; init; }
 
     [JsonPropertyName("HtmlContent")]
-    public string? HtmlContent { get; init; }
+    public string HtmlContent { get; init; }
 
     [JsonPropertyName("ImagePath")]
-    public string? ImagePath { get; init; }
+    public string ImagePath { get; init; }
 
     [JsonPropertyName("OptionalMobileImagePath")]
-    public string? OptionalMobileImagePath { get; init; }
+    public string OptionalMobileImagePath { get; init; }
 }

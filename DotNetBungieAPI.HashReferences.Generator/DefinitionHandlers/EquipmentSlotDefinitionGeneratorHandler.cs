@@ -1,8 +1,6 @@
 ﻿using System.Text;
 using DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers.Interfaces;
-using DotNetBungieAPI.Models;
-using DotNetBungieAPI.Models.Destiny.Definitions.ActivityModifiers;
-using DotNetBungieAPI.Models.Destiny.Definitions.EquipmentSlots;
+using DotNetBungieAPI.Models.Destiny.Definitions;
 using DotNetBungieAPI.Service.Abstractions;
 
 namespace DotNetBungieAPI.HashReferences.Generator.DefinitionHandlers;

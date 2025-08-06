@@ -5,53 +5,45 @@ namespace DotNetBungieAPI.Services.Implementations;
 
 internal sealed class BungieApiAccess : IBungieApiAccess
 {
-    public IAppMethodsAccess App { get; }
-    public IUserMethodsAccess User { get; }
-    public IContentMethodsAccess Content { get; }
-    public IForumMethodsAccess Forum { get; }
-    public IGroupV2MethodsAccess GroupV2 { get; }
-    public ITokensMethodsAccess Tokens { get; }
-    public IDestiny2MethodsAccess Destiny2 { get; }
-    public ICommunityContentMethodsAccess Community { get; }
-    public ITrendingMethodsAccess Trending { get; }
-    public IFireteamMethodsAccess Fireteam { get; }
-    public IFireteamFinderMethodsAccess FireteamFinder { get; }
-    public ISocialMethodsAccess Social { get; }
-    public IMiscMethodsAccess Misc { get; }
-    public IRenderApiAccess RenderApi { get; }
-    
+    public IAppApi App { get; }
+    public IUserApi User { get; }
+    public IContentApi Content { get; }
+    public IForumApi Forum { get; }
+    public IGroupV2Api GroupV2 { get; }
+    public ITokensApi Tokens { get; }
+    public IDestiny2Api Destiny2 { get; }
+    public ICommunityContentApi Community { get; }
+    public ITrendingApi Trending { get; }
+    public IFireteamApi Fireteam { get; }
+    public ISocialApi Social { get; }
+    public IMiscApi Misc { get; }
+
     public BungieApiAccess(
-        IFireteamMethodsAccess fireteamMethodsAccess,
-        IContentMethodsAccess contentMethodsAccess,
-        IAppMethodsAccess appMethodsAccess,
-        IForumMethodsAccess forumMethodsAccess,
-        IUserMethodsAccess userMethodsAccess,
-        IGroupV2MethodsAccess groupV2MethodsAccess,
-        ITokensMethodsAccess tokenMethodsAccess,
-        IDestiny2MethodsAccess destiny2MethodsAccess,
-        ICommunityContentMethodsAccess communityContentMethodsAccess,
-        ITrendingMethodsAccess trendingMethodsAccess,
-        IMiscMethodsAccess miscMethodsAccess,
-        IFireteamFinderMethodsAccess fireteamFinderMethodsAccess,
-        ISocialMethodsAccess socialMethodsAccess,
-        IRenderApiAccess renderApiAccess
+        IAppApi app,
+        IUserApi user,
+        IContentApi content,
+        IForumApi forum,
+        IGroupV2Api groupV2,
+        ITokensApi tokens,
+        IDestiny2Api destiny2,
+        ICommunityContentApi community,
+        ITrendingApi trending,
+        IFireteamApi fireteam,
+        ISocialApi social,
+        IMiscApi misc
     )
     {
-        App = appMethodsAccess;
-        User = userMethodsAccess;
-        Content = contentMethodsAccess;
-        Forum = forumMethodsAccess;
-        GroupV2 = groupV2MethodsAccess;
-        Tokens = tokenMethodsAccess;
-        Destiny2 = destiny2MethodsAccess;
-        Community = communityContentMethodsAccess;
-        Trending = trendingMethodsAccess;
-        Fireteam = fireteamMethodsAccess;
-        FireteamFinder = fireteamFinderMethodsAccess;
-        Misc = miscMethodsAccess;
-        Social = socialMethodsAccess;
-        RenderApi = renderApiAccess;
+        App = app;
+        User = user;
+        Content = content;
+        Forum = forum;
+        GroupV2 = groupV2;
+        Tokens = tokens;
+        Destiny2 = destiny2;
+        Community = community;
+        Trending = trending;
+        Fireteam = fireteam;
+        Social = social;
+        Misc = misc;
     }
-
-    
 }

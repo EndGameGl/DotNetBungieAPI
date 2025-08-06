@@ -1,15 +1,10 @@
-﻿namespace DotNetBungieAPI.Models.Destiny;
+namespace DotNetBungieAPI.Models.Destiny;
 
-public sealed record DyeReference : IDeepEquatable<DyeReference>
+public sealed class DyeReference
 {
     [JsonPropertyName("channelHash")]
     public uint ChannelHash { get; init; }
 
     [JsonPropertyName("dyeHash")]
     public uint DyeHash { get; init; }
-
-    public bool DeepEquals(DyeReference other)
-    {
-        return other != null && ChannelHash == other.ChannelHash && DyeHash == other.DyeHash;
-    }
 }
