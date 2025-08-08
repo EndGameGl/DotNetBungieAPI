@@ -35,5 +35,5 @@ public sealed class DestinyProfileTransitoryComponent
     ///     The hash identifier for the DestinyDestinationDefinition of the last location you were orbiting when in orbit.
     /// </summary>
     [JsonPropertyName("lastOrbitedDestinationHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyDestinationDefinition>? LastOrbitedDestinationHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyDestinationDefinition> LastOrbitedDestinationHash { get; init; }
 }

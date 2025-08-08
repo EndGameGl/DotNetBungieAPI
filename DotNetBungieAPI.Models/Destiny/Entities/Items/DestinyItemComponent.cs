@@ -65,7 +65,7 @@ public sealed class DestinyItemComponent
     ///     If you don't do this, certain items whose styles are being overridden by socketed items - such as the "Recycle Shader" item - would show whatever their default icon/style is, and it wouldn't be pretty or look accurate.
     /// </summary>
     [JsonPropertyName("overrideStyleItemHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition>? OverrideStyleItemHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition> OverrideStyleItemHash { get; init; }
 
     /// <summary>
     ///     If the item can expire, this is the date at which it will/did expire.
@@ -91,7 +91,7 @@ public sealed class DestinyItemComponent
     ///     The identifier for the currently-selected metric definition, to be displayed on the emblem nameplate.
     /// </summary>
     [JsonPropertyName("metricHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Metrics.DestinyMetricDefinition>? MetricHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Metrics.DestinyMetricDefinition> MetricHash { get; init; }
 
     /// <summary>
     ///     The objective progress for the currently-selected metric definition, to be displayed on the emblem nameplate.

@@ -30,7 +30,7 @@ public sealed class DestinyProfileRecordsComponent
     ///     If this profile is tracking a record, this is the hash identifier of the record it is tracking.
     /// </summary>
     [JsonPropertyName("trackedRecordHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Records.DestinyRecordDefinition>? TrackedRecordHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Records.DestinyRecordDefinition> TrackedRecordHash { get; init; }
 
     [JsonPropertyName("records")]
     public Dictionary<uint, Destiny.Components.Records.DestinyRecordComponent>? Records { get; init; }

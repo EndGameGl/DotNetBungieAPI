@@ -93,10 +93,10 @@ public sealed class Destiny2CoreSettings
     public DefinitionHashPointer<Destiny.Definitions.DestinyVendorDefinition> CurrentSeasonalArtifactHash { get; init; }
 
     [JsonPropertyName("currentSeasonHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Seasons.DestinySeasonDefinition>? CurrentSeasonHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Seasons.DestinySeasonDefinition> CurrentSeasonHash { get; init; }
 
     [JsonPropertyName("seasonalChallengesPresentationNodeHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>? SeasonalChallengesPresentationNodeHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition> SeasonalChallengesPresentationNodeHash { get; init; }
 
     [JsonPropertyName("futureSeasonHashes")]
     public DefinitionHashPointer<Destiny.Definitions.Seasons.DestinySeasonDefinition>[]? FutureSeasonHashes { get; init; }

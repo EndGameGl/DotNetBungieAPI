@@ -23,7 +23,7 @@ public sealed class DestinyInventoryItemDefinition : IDestinyDefinition, IDispla
     ///     If this item has a collectible related to it, this is the hash identifier of that collectible entry.
     /// </summary>
     [JsonPropertyName("collectibleHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Collectibles.DestinyCollectibleDefinition>? CollectibleHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Collectibles.DestinyCollectibleDefinition> CollectibleHash { get; init; }
 
     /// <summary>
     ///     If available, this is the original 'active' release watermark overlay for the icon. If the item has different versions, this can be overridden by the 'display version watermark icon' from the 'quality' block. Alternatively, if there is no watermark for the version, and the item version has a power cap below the current season power cap, this can be overridden by the iconWatermarkShelved property.
@@ -260,7 +260,7 @@ public sealed class DestinyInventoryItemDefinition : IDestinyDefinition, IDispla
     ///     If the item has any related Lore (DestinyLoreDefinition), this will be the hash identifier you can use to look up the lore definition.
     /// </summary>
     [JsonPropertyName("loreHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Lore.DestinyLoreDefinition>? LoreHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Lore.DestinyLoreDefinition> LoreHash { get; init; }
 
     /// <summary>
     ///     There are times when the game will show you a "summary/vague" version of an item - such as a description of its type represented as a DestinyInventoryItemDefinition - rather than display the item itself.
@@ -268,7 +268,7 @@ public sealed class DestinyInventoryItemDefinition : IDestinyDefinition, IDispla
     ///     This happens sometimes when summarizing possible rewards in a tooltip. This is the item displayed instead, if it exists.
     /// </summary>
     [JsonPropertyName("summaryItemHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition>? SummaryItemHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition> SummaryItemHash { get; init; }
 
     /// <summary>
     ///     If any animations were extracted from game content for this item, these will be the definitions of those animations.
@@ -354,7 +354,7 @@ public sealed class DestinyInventoryItemDefinition : IDestinyDefinition, IDispla
     ///     Since we also have a breaker type definition, this is the hash for that breaker type for your convenience. Whether you use the enum or hash and look up the definition depends on what's cleanest for your code.
     /// </summary>
     [JsonPropertyName("breakerTypeHash")]
-    public DefinitionHashPointer<Destiny.Definitions.BreakerTypes.DestinyBreakerTypeDefinition>? BreakerTypeHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.BreakerTypes.DestinyBreakerTypeDefinition> BreakerTypeHash { get; init; }
 
     /// <summary>
     ///     If true, then you will be allowed to equip the item if you pass its other requirements.
@@ -398,13 +398,13 @@ public sealed class DestinyInventoryItemDefinition : IDestinyDefinition, IDispla
     ///     I will likely regret leaving in the enumeration versions of these properties, but for now they're very convenient.
     /// </summary>
     [JsonPropertyName("defaultDamageTypeHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyDamageTypeDefinition>? DefaultDamageTypeHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyDamageTypeDefinition> DefaultDamageTypeHash { get; init; }
 
     /// <summary>
     ///     If this item is related directly to a Season of Destiny, this is the hash identifier for that season.
     /// </summary>
     [JsonPropertyName("seasonHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Seasons.DestinySeasonDefinition>? SeasonHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Seasons.DestinySeasonDefinition> SeasonHash { get; init; }
 
     /// <summary>
     ///     If true, this is a dummy vendor-wrapped item template. Items purchased from Eververse will be "wrapped" by one of these items so that we can safely provide refund capabilities before the item is "unwrapped".

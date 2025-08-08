@@ -124,7 +124,7 @@ public sealed class DestinyActivityDefinition : IDestinyDefinition
     public Destiny.Definitions.DestinyActivityRequirementsBlock? Requirements { get; init; }
 
     [JsonPropertyName("difficultyTierCollectionHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Activities.DestinyActivityDifficultyTierCollectionDefinition>? DifficultyTierCollectionHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Activities.DestinyActivityDifficultyTierCollectionDefinition> DifficultyTierCollectionHash { get; init; }
 
     [JsonPropertyName("selectableSkullCollectionHashes")]
     public DefinitionHashPointer<Destiny.Definitions.Activities.DestinyActivitySelectableSkullCollectionDefinition>[]? SelectableSkullCollectionHashes { get; init; }
@@ -157,7 +157,7 @@ public sealed class DestinyActivityDefinition : IDestinyDefinition
     ///     If this activity had an activity mode directly defined on it, this will be the hash of that mode.
     /// </summary>
     [JsonPropertyName("directActivityModeHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyActivityModeDefinition>? DirectActivityModeHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyActivityModeDefinition> DirectActivityModeHash { get; init; }
 
     /// <summary>
     ///     If the activity had an activity mode directly defined on it, this will be the enum value of that mode.

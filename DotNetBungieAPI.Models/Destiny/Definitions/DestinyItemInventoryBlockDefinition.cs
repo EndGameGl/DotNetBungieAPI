@@ -78,5 +78,5 @@ public sealed class DestinyItemInventoryBlockDefinition
     ///     A reference to the associated crafting 'recipe' item definition, if this item can be crafted.
     /// </summary>
     [JsonPropertyName("recipeItemHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition>? RecipeItemHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition> RecipeItemHash { get; init; }
 }

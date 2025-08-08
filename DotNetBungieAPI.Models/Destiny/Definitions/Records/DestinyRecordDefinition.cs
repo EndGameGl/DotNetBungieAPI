@@ -18,7 +18,7 @@ public sealed class DestinyRecordDefinition : IDestinyDefinition, IDisplayProper
     public Destiny.Definitions.Presentation.DestinyPresentationChildBlock? PresentationInfo { get; init; }
 
     [JsonPropertyName("loreHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Lore.DestinyLoreDefinition>? LoreHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Lore.DestinyLoreDefinition> LoreHash { get; init; }
 
     [JsonPropertyName("objectiveHashes")]
     public DefinitionHashPointer<Destiny.Definitions.DestinyObjectiveDefinition>[]? ObjectiveHashes { get; init; }

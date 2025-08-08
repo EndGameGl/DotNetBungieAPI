@@ -24,7 +24,7 @@ public sealed class DestinyActivitySkull : IDisplayProperties
     public float? ModifierMultiplierContribution { get; init; }
 
     [JsonPropertyName("skullExclusionGroupHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Activities.DestinyActivitySelectableSkullExclusionGroupDefinition>? SkullExclusionGroupHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Activities.DestinyActivitySelectableSkullExclusionGroupDefinition> SkullExclusionGroupHash { get; init; }
 
     [JsonPropertyName("hasUi")]
     public bool HasUi { get; init; }

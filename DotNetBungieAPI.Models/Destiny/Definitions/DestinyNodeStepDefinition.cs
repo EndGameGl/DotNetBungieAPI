@@ -47,7 +47,7 @@ public sealed class DestinyNodeStepDefinition
     ///     If the step provides a damage type, this will be the hash identifier used to look up the damage type's DestinyDamageTypeDefinition.
     /// </summary>
     [JsonPropertyName("damageTypeHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyDamageTypeDefinition>? DamageTypeHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyDamageTypeDefinition> DamageTypeHash { get; init; }
 
     /// <summary>
     ///     If the step has requirements for activation (they almost always do, if nothing else than for the Talent Grid's Progression to have reached a certain level), they will be defined here.

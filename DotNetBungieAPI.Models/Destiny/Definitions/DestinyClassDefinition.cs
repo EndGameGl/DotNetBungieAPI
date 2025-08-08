@@ -30,7 +30,7 @@ public sealed class DestinyClassDefinition : IDestinyDefinition, IDisplayPropert
     ///     Mentors don't really mean anything anymore. Don't expect this to be populated.
     /// </summary>
     [JsonPropertyName("mentorVendorHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyVendorDefinition>? MentorVendorHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyVendorDefinition> MentorVendorHash { get; init; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

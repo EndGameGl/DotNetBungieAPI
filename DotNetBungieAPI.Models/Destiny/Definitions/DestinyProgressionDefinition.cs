@@ -61,7 +61,7 @@ public sealed class DestinyProgressionDefinition : IDestinyDefinition
     ///     This is purely for convenience, if you're looking at a progression and want to know if and who it's related to in terms of Faction Reputation.
     /// </summary>
     [JsonPropertyName("factionHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyFactionDefinition>? FactionHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyFactionDefinition> FactionHash { get; init; }
 
     /// <summary>
     ///     The #RGB string value for the color related to this progression, if there is one.

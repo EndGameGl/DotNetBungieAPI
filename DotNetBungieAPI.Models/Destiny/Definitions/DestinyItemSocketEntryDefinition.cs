@@ -51,7 +51,7 @@ public sealed class DestinyItemSocketEntryDefinition
     ///      As of Shadowkeep, these will come up much more frequently and be driven by game content rather than custom curation.
     /// </summary>
     [JsonPropertyName("reusablePlugSetHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Sockets.DestinyPlugSetDefinition>? ReusablePlugSetHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Sockets.DestinyPlugSetDefinition> ReusablePlugSetHash { get; init; }
 
     /// <summary>
     ///     This field replaces "randomizedPlugItems" as of Shadowkeep launch. If a socket has randomized plugs, this is a pointer to the set of plugs that could be used, as defined in DestinyPlugSetDefinition.
@@ -59,7 +59,7 @@ public sealed class DestinyItemSocketEntryDefinition
     ///      If null, the item has no randomized plugs.
     /// </summary>
     [JsonPropertyName("randomizedPlugSetHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Sockets.DestinyPlugSetDefinition>? RandomizedPlugSetHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Sockets.DestinyPlugSetDefinition> RandomizedPlugSetHash { get; init; }
 
     /// <summary>
     ///     If true, then this socket is visible in the item's "default" state. If you have an instance, you should always check the runtime state, as that can override this visibility setting: but if you're looking at the item on a conceptual level, this property can be useful for hiding data such as legacy sockets - which remain defined on items for infrastructure purposes, but can be confusing for users to see.

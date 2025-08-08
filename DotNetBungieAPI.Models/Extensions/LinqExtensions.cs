@@ -1,18 +1,17 @@
-﻿using DotNetBungieAPI.Models.Destiny;
-
-namespace DotNetBungieAPI.Models.Extensions;
+﻿namespace DotNetBungieAPI.Models.Extensions;
 
 public static class LinqExtensions
 {
-    public static TValue GetValueByHashFromDictionary<TKey, TValue>(
-        this IDictionary<DefinitionHashPointer<TKey>, TValue> dictionary,
-        uint hash
-    )
-        where TKey : IDestinyDefinition
+    public static TValue? GetValueByHashFromDictionary<TKey, TValue>(this IDictionary<DefinitionHashPointer<TKey>, TValue> dictionary, uint hash)
+        where TKey : class, IDestinyDefinition
     {
-        KeyValuePair<DefinitionHashPointer<TKey>, TValue>? searchResult = dictionary.FirstOrDefault(
-            x => x.Key == hash
-        );
-        return searchResult.HasValue ? searchResult.Value.Value : default;
+        var searchResult = dictionary.FirstOrDefault(x => x.Key == hash);
+
+        if (searchResult.Key == default)
+        {
+            return default;
+        }
+
+        return searchResult.Value;
     }
 }

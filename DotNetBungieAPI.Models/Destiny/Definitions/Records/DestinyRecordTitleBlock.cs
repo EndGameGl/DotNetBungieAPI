@@ -15,5 +15,5 @@ public sealed class DestinyRecordTitleBlock
     public Dictionary<DefinitionHashPointer<Destiny.Definitions.DestinyGenderDefinition>, string>? TitlesByGenderHash { get; init; }
 
     [JsonPropertyName("gildingTrackingRecordHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Records.DestinyRecordDefinition>? GildingTrackingRecordHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Records.DestinyRecordDefinition> GildingTrackingRecordHash { get; init; }
 }

@@ -57,7 +57,7 @@ public sealed class DestinyProfileComponent
     ///     If populated, this is a reference to the season that is currently active.
     /// </summary>
     [JsonPropertyName("currentSeasonHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Seasons.DestinySeasonDefinition>? CurrentSeasonHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Seasons.DestinySeasonDefinition> CurrentSeasonHash { get; init; }
 
     /// <summary>
     ///     If populated, this is the reward power cap for the current season.
@@ -69,7 +69,7 @@ public sealed class DestinyProfileComponent
     ///     If populated, this is a reference to the event card that is currently active.
     /// </summary>
     [JsonPropertyName("activeEventCardHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Seasons.DestinyEventCardDefinition>? ActiveEventCardHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Seasons.DestinyEventCardDefinition> ActiveEventCardHash { get; init; }
 
     /// <summary>
     ///     The 'current' Guardian Rank value, which starts at rank 1. This rank value will drop at the start of a new season to your 'renewed' rank from the previous season.

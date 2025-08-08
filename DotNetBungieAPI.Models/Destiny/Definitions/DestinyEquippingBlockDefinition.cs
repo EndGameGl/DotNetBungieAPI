@@ -9,7 +9,7 @@ public sealed class DestinyEquippingBlockDefinition
     ///     If the item is part of a gearset, this is a reference to that gearset item.
     /// </summary>
     [JsonPropertyName("gearsetItemHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition>? GearsetItemHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition> GearsetItemHash { get; init; }
 
     /// <summary>
     ///     If defined, this is the label used to check if the item has other items of matching types already equipped. 
@@ -55,5 +55,5 @@ public sealed class DestinyEquippingBlockDefinition
     ///     If this item is part of an item set with bonus perks, this will the hash of that set.
     /// </summary>
     [JsonPropertyName("equipableItemSetHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Items.DestinyEquipableItemSetDefinition>? EquipableItemSetHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Items.DestinyEquipableItemSetDefinition> EquipableItemSetHash { get; init; }
 }

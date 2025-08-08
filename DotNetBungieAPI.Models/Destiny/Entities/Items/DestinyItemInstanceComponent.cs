@@ -19,7 +19,7 @@ public sealed class DestinyItemInstanceComponent
     ///     The current damage type's hash, so you can look up localized info and icons for it.
     /// </summary>
     [JsonPropertyName("damageTypeHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyDamageTypeDefinition>? DamageTypeHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyDamageTypeDefinition> DamageTypeHash { get; init; }
 
     /// <summary>
     ///     The item stat that we consider to be "primary" for the item. For instance, this would be "Attack" for Weapons or "Defense" for armor.
@@ -81,7 +81,7 @@ public sealed class DestinyItemInstanceComponent
     ///     If populated, this is the hash identifier for the item's breaker type. See DestinyBreakerTypeDefinition for more details.
     /// </summary>
     [JsonPropertyName("breakerTypeHash")]
-    public DefinitionHashPointer<Destiny.Definitions.BreakerTypes.DestinyBreakerTypeDefinition>? BreakerTypeHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.BreakerTypes.DestinyBreakerTypeDefinition> BreakerTypeHash { get; init; }
 
     /// <summary>
     ///     IF populated, this item supports Energy mechanics (i.e. Armor 2.0), and these are the current details of its energy type and available capacity to spend energy points.

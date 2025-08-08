@@ -57,7 +57,7 @@ public sealed class DestinyCharacterActivitiesComponent
     ///     If the user is in a playlist, this is the hash identifier for the playlist that they chose.
     /// </summary>
     [JsonPropertyName("currentPlaylistActivityHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyActivityDefinition>? CurrentPlaylistActivityHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyActivityDefinition> CurrentPlaylistActivityHash { get; init; }
 
     /// <summary>
     ///     This will have the activity hash of the last completed story/campaign mission, in case you care about that.

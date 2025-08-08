@@ -18,7 +18,7 @@ public sealed class DestinyActivityDifficultyTierDefinition : IDisplayProperties
     public Destiny.DestinyActivityDifficultyTierType TierType { get; init; }
 
     [JsonPropertyName("optionalRequiredTrait")]
-    public DefinitionHashPointer<Destiny.Definitions.Traits.DestinyTraitDefinition>? OptionalRequiredTrait { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Traits.DestinyTraitDefinition> OptionalRequiredTrait { get; init; }
 
     [JsonPropertyName("activityLevel")]
     public int ActivityLevel { get; init; }

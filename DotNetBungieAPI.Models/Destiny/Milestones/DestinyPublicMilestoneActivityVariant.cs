@@ -15,7 +15,7 @@ public sealed class DestinyPublicMilestoneActivityVariant
     ///     The hash identifier of the most specific Activity Mode under which this activity is played. This is useful for situations where the activity in question is - for instance - a PVP map, but it's not clear what mode the PVP map is being played under. If it's a playlist, this will be less specific: but hopefully useful in some way.
     /// </summary>
     [JsonPropertyName("activityModeHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyActivityModeDefinition>? ActivityModeHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyActivityModeDefinition> ActivityModeHash { get; init; }
 
     /// <summary>
     ///     The enumeration equivalent of the most specific Activity Mode under which this activity is played.

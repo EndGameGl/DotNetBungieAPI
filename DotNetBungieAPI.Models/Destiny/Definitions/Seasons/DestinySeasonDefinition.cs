@@ -24,19 +24,19 @@ public sealed class DestinySeasonDefinition : IDestinyDefinition, IDisplayProper
     public DateTime? EndDate { get; init; }
 
     [JsonPropertyName("seasonPassHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Seasons.DestinySeasonPassDefinition>? SeasonPassHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Seasons.DestinySeasonPassDefinition> SeasonPassHash { get; init; }
 
     [JsonPropertyName("seasonPassList")]
     public Destiny.Definitions.Seasons.DestinySeasonPassReference[]? SeasonPassList { get; init; }
 
     [JsonPropertyName("seasonPassProgressionHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyProgressionDefinition>? SeasonPassProgressionHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyProgressionDefinition> SeasonPassProgressionHash { get; init; }
 
     [JsonPropertyName("artifactItemHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition>? ArtifactItemHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition> ArtifactItemHash { get; init; }
 
     [JsonPropertyName("sealPresentationNodeHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>? SealPresentationNodeHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition> SealPresentationNodeHash { get; init; }
 
     /// <summary>
     ///     A list of Acts for the Episode
@@ -45,7 +45,7 @@ public sealed class DestinySeasonDefinition : IDestinyDefinition, IDisplayProper
     public Destiny.Definitions.Seasons.DestinySeasonActDefinition[]? Acts { get; init; }
 
     [JsonPropertyName("seasonalChallengesPresentationNodeHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>? SeasonalChallengesPresentationNodeHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition> SeasonalChallengesPresentationNodeHash { get; init; }
 
     /// <summary>
     ///     Optional - Defines the promotional text, images, and links to preview this season.

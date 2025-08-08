@@ -143,5 +143,5 @@ public sealed class DestinyCharacterComponent
     ///     If this Character has a title assigned to it, this is the identifier of the DestinyRecordDefinition that has that title information.
     /// </summary>
     [JsonPropertyName("titleRecordHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Records.DestinyRecordDefinition>? TitleRecordHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Records.DestinyRecordDefinition> TitleRecordHash { get; init; }
 }

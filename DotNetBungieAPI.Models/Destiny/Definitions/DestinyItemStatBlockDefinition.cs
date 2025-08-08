@@ -23,7 +23,7 @@ public sealed class DestinyItemStatBlockDefinition
     ///     If you are using live data or precomputed stats data on the DestinyInventoryItemDefinition.stats.stats property, you don't have to worry about statGroupHash and how it alters stats: the already altered stats are provided to you. But if you want to see how the sausage gets made, or perform computations yourself, this is valuable information.
     /// </summary>
     [JsonPropertyName("statGroupHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyStatGroupDefinition>? StatGroupHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyStatGroupDefinition> StatGroupHash { get; init; }
 
     /// <summary>
     ///     If you are looking for precomputed values for the stats on a weapon, this is where they are stored. Technically these are the "Display" stat values. Please see DestinyStatsDefinition for what Display Stat Values means, it's a very long story... but essentially these are the closest values BNet can get to the item stats that you see in-game.

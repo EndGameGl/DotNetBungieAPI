@@ -6,7 +6,7 @@ public sealed class DestinyObjectiveDisplayProperties
     ///     The activity associated with this objective in the context of this item, if any.
     /// </summary>
     [JsonPropertyName("activityHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyActivityDefinition>? ActivityHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyActivityDefinition> ActivityHash { get; init; }
 
     /// <summary>
     ///     If true, the game shows this objective on item preview screens.

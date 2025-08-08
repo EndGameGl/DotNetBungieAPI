@@ -24,7 +24,7 @@ public sealed class DestinyItemCraftingBlockDefinition
     ///     A reference to the base material requirements for crafting with this recipe.
     /// </summary>
     [JsonPropertyName("baseMaterialRequirements")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyMaterialRequirementSetDefinition>? BaseMaterialRequirements { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyMaterialRequirementSetDefinition> BaseMaterialRequirements { get; init; }
 
     /// <summary>
     ///     A list of 'bonus' socket plugs that may be available if certain requirements are met.

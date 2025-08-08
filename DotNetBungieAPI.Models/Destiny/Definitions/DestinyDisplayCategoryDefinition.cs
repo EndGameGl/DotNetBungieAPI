@@ -32,7 +32,7 @@ public sealed class DestinyDisplayCategoryDefinition : IDisplayProperties
     ///     Specific categories can now have thier own distinct progression, apparently. So that's cool.
     /// </summary>
     [JsonPropertyName("progressionHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyProgressionDefinition>? ProgressionHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyProgressionDefinition> ProgressionHash { get; init; }
 
     /// <summary>
     ///     If this category sorts items in a nonstandard way, this will be the way we sort.

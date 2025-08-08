@@ -39,5 +39,5 @@ public sealed class DestinyMilestoneQuestDefinition
     ///     Sometimes, a Milestone's quest is related to an entire Destination rather than a specific activity. In that situation, this will be the hash of that Destination. Hotspots are currently the only Milestones that expose this data, but that does not preclude this data from being returned for other Milestones in the future.
     /// </summary>
     [JsonPropertyName("destinationHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyDestinationDefinition>? DestinationHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyDestinationDefinition> DestinationHash { get; init; }
 }

@@ -20,10 +20,10 @@ public sealed class DestinyChecklistEntryDefinition
     public Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition? DisplayProperties { get; init; }
 
     [JsonPropertyName("destinationHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyDestinationDefinition>? DestinationHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyDestinationDefinition> DestinationHash { get; init; }
 
     [JsonPropertyName("locationHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyLocationDefinition>? LocationHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyLocationDefinition> LocationHash { get; init; }
 
     /// <summary>
     ///     Note that a Bubble's hash doesn't uniquely identify a "top level" entity in Destiny. Only the combination of location and bubble can uniquely identify a place in the world of Destiny: so if bubbleHash is populated, locationHash must too be populated for it to have any meaning.
@@ -34,13 +34,13 @@ public sealed class DestinyChecklistEntryDefinition
     public uint? BubbleHash { get; init; }
 
     [JsonPropertyName("activityHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyActivityDefinition>? ActivityHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyActivityDefinition> ActivityHash { get; init; }
 
     [JsonPropertyName("itemHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition>? ItemHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition> ItemHash { get; init; }
 
     [JsonPropertyName("vendorHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyVendorDefinition>? VendorHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyVendorDefinition> VendorHash { get; init; }
 
     [JsonPropertyName("vendorInteractionIndex")]
     public int? VendorInteractionIndex { get; init; }

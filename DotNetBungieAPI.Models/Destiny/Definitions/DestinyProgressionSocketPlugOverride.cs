@@ -9,5 +9,5 @@ public sealed class DestinyProgressionSocketPlugOverride
     public uint SocketTypeHash { get; init; }
 
     [JsonPropertyName("overrideSingleItemHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition>? OverrideSingleItemHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition> OverrideSingleItemHash { get; init; }
 }

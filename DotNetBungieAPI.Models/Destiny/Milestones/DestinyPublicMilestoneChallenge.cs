@@ -15,5 +15,5 @@ public sealed class DestinyPublicMilestoneChallenge
     ///     IF the Objective is related to a specific Activity, this will be that activity's hash. Use it to look up the DestinyActivityDefinition for additional data to show.
     /// </summary>
     [JsonPropertyName("activityHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyActivityDefinition>? ActivityHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyActivityDefinition> ActivityHash { get; init; }
 }

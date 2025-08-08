@@ -15,7 +15,7 @@ public sealed class DestinyActivityPlaylistItemDefinition
     ///     If this playlist entry had an activity mode directly defined on it, this will be the hash of that mode.
     /// </summary>
     [JsonPropertyName("directActivityModeHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyActivityModeDefinition>? DirectActivityModeHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyActivityModeDefinition> DirectActivityModeHash { get; init; }
 
     /// <summary>
     ///     If the playlist entry had an activity mode directly defined on it, this will be the enum value of that mode.

@@ -143,7 +143,9 @@ public class CSharpExtendedClassGenerator : ModelGeneratorBase
         }
         else
         {
-            await WriteLineAsync($"public sealed class {typeName.Split('.').Last()}{(inheritInterfaces.Count > 0 ? $" : {string.Join(", ", inheritInterfaces)}" : string.Empty)}");
+            await WriteLineAsync(
+                $"public sealed class {typeName.Split('.').Last()}{(inheritInterfaces.Count > 0 ? $" : {string.Join(", ", inheritInterfaces)}" : string.Empty)}"
+            );
         }
 
         await WriteLineAsync('{');
@@ -179,6 +181,8 @@ public class CSharpExtendedClassGenerator : ModelGeneratorBase
 
             var nullableSymbol = propertySchema switch
             {
+                // DefinitionHashPointer already accounts for nullability
+                OpenApiIntegerComponentSchema { MappedDefinition: not null } => string.Empty,
                 ICanBeNullable { Nullable: true } or not ICanBeNullable => "?",
                 _ => string.Empty,
             };
@@ -286,10 +290,9 @@ public class CSharpExtendedClassGenerator : ModelGeneratorBase
 
     private bool HasDisplayProperties(OpenApiObjectComponentSchema schema)
     {
-        return schema
-            .Properties
-            .Any(x =>
-                x is { Key: "displayProperties", Value: OpenApiComponentReference compRef } &&
-                compRef.GetReferencedPath() is "Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition");
+        return schema.Properties.Any(x =>
+            x is { Key: "displayProperties", Value: OpenApiComponentReference compRef }
+            && compRef.GetReferencedPath() is "Destiny.Definitions.Common.DestinyDisplayPropertiesDefinition"
+        );
     }
 }

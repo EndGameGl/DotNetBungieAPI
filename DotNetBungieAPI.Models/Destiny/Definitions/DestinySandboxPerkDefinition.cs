@@ -50,7 +50,7 @@ public sealed class DestinySandboxPerkDefinition : IDestinyDefinition
     ///     This is preferred over using the damageType enumeration value, which has been left purely because it is occasionally convenient.
     /// </summary>
     [JsonPropertyName("damageTypeHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyDamageTypeDefinition>? DamageTypeHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyDamageTypeDefinition> DamageTypeHash { get; init; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

@@ -23,7 +23,7 @@ public sealed class DestinyItemPreviewBlockDefinition
     ///     If this item should show you Artifact information when you preview it, this is the hash identifier of the DestinyArtifactDefinition for the artifact whose data should be shown.
     /// </summary>
     [JsonPropertyName("artifactHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Artifacts.DestinyArtifactDefinition>? ArtifactHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Artifacts.DestinyArtifactDefinition> ArtifactHash { get; init; }
 
     /// <summary>
     ///     If the preview has an associated action (like "Open"), this will be the localized string for that action.

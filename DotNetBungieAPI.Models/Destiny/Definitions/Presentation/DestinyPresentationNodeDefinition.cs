@@ -50,13 +50,13 @@ public sealed class DestinyPresentationNodeDefinition : IDestinyDefinition, IDis
     ///     If this presentation node shows a related objective (for instance, if it tracks the progress of its children), the objective being tracked is indicated here.
     /// </summary>
     [JsonPropertyName("objectiveHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyObjectiveDefinition>? ObjectiveHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyObjectiveDefinition> ObjectiveHash { get; init; }
 
     /// <summary>
     ///     If this presentation node has an associated "Record" that you can accomplish for completing its children, this is the identifier of that Record.
     /// </summary>
     [JsonPropertyName("completionRecordHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Records.DestinyRecordDefinition>? CompletionRecordHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Records.DestinyRecordDefinition> CompletionRecordHash { get; init; }
 
     /// <summary>
     ///     The child entities contained by this presentation node.

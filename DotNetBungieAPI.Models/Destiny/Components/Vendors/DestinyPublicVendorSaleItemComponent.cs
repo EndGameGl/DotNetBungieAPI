@@ -27,7 +27,7 @@ public sealed class DestinyPublicVendorSaleItemComponent
     ///     If you don't do this, certain items whose styles are being overridden by socketed items - such as the "Recycle Shader" item - would show whatever their default icon/style is, and it wouldn't be pretty or look accurate.
     /// </summary>
     [JsonPropertyName("overrideStyleItemHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition>? OverrideStyleItemHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyInventoryItemDefinition> OverrideStyleItemHash { get; init; }
 
     /// <summary>
     ///     How much of the item you'll be getting.

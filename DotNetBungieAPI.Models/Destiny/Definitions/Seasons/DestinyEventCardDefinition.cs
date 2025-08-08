@@ -42,10 +42,10 @@ public sealed class DestinyEventCardDefinition : IDestinyDefinition, IDisplayPro
     public long EndTime { get; init; }
 
     [JsonPropertyName("rewardProgressionHash")]
-    public DefinitionHashPointer<Destiny.Definitions.DestinyProgressionDefinition>? RewardProgressionHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.DestinyProgressionDefinition> RewardProgressionHash { get; init; }
 
     [JsonPropertyName("weeklyChallengesPresentationNodeHash")]
-    public DefinitionHashPointer<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition>? WeeklyChallengesPresentationNodeHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition> WeeklyChallengesPresentationNodeHash { get; init; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

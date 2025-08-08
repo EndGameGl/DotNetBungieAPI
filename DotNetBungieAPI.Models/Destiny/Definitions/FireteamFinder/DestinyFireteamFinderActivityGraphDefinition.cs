@@ -15,7 +15,7 @@ public sealed class DestinyFireteamFinderActivityGraphDefinition : IDestinyDefin
     public bool IsPlayerElectedDifficultyNode { get; init; }
 
     [JsonPropertyName("parentHash")]
-    public DefinitionHashPointer<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition>? ParentHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition> ParentHash { get; init; }
 
     [JsonPropertyName("children")]
     public DefinitionHashPointer<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivityGraphDefinition>[]? Children { get; init; }
@@ -27,7 +27,7 @@ public sealed class DestinyFireteamFinderActivityGraphDefinition : IDestinyDefin
     public DefinitionHashPointer<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivitySetDefinition>[]? RelatedActivitySetHashes { get; init; }
 
     [JsonPropertyName("specificActivitySetHash")]
-    public DefinitionHashPointer<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivitySetDefinition>? SpecificActivitySetHash { get; init; }
+    public DefinitionHashPointer<Destiny.Definitions.FireteamFinder.DestinyFireteamFinderActivitySetDefinition> SpecificActivitySetHash { get; init; }
 
     [JsonPropertyName("relatedActivityHashes")]
     public DefinitionHashPointer<Destiny.Definitions.DestinyActivityDefinition>[]? RelatedActivityHashes { get; init; }
