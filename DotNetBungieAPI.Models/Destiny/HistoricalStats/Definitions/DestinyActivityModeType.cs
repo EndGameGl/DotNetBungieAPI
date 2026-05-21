@@ -176,5 +176,7 @@ public enum DestinyActivityModeType : int
 
     IronBannerZoneControl = 91,
 
-    Relic = 92
+    Relic = 92,
+
+    LawlessFrontier = 93
 }

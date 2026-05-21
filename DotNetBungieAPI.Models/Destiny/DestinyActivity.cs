@@ -95,4 +95,22 @@ public sealed class DestinyActivity
     /// </summary>
     [JsonPropertyName("visibleRewards")]
     public Destiny.Definitions.DestinyActivityRewardMapping[]? VisibleRewards { get; init; }
+
+    /// <summary>
+    ///     Whether or not this activity is currently in the "featured" carousel of the Portal
+    /// </summary>
+    [JsonPropertyName("isFocusedActivity")]
+    public bool IsFocusedActivity { get; init; }
+
+    /// <summary>
+    ///     Indexes of failure if this activity is inaccessible as a fireteam leader
+    /// </summary>
+    [JsonPropertyName("leaderRequirementFailureIndices")]
+    public int[]? LeaderRequirementFailureIndices { get; init; }
+
+    /// <summary>
+    ///     Indexes of failure if this activity is inaccessible as a fireteam member
+    /// </summary>
+    [JsonPropertyName("fireteamRequirementFailureIndices")]
+    public int[]? FireteamRequirementFailureIndices { get; init; }
 }

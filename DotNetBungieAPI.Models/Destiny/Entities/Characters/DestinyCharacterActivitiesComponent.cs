@@ -24,6 +24,18 @@ public sealed class DestinyCharacterActivitiesComponent
     public Destiny.Definitions.FireteamFinder.DestinyActivityInteractableReference[]? AvailableActivityInteractables { get; init; }
 
     /// <summary>
+    ///     The activity difficulty tier states for this character.
+    /// </summary>
+    [JsonPropertyName("difficultyTierCollections")]
+    public Dictionary<uint, Destiny.DestinyActivityDifficultyTierCollectionComponent>? DifficultyTierCollections { get; init; }
+
+    /// <summary>
+    ///     The selectable activity skulls states for this character.
+    /// </summary>
+    [JsonPropertyName("selectableSkullCollections")]
+    public Dictionary<uint, Destiny.DestinyActivitySelectableSkullCollectionComponent>? SelectableSkullCollections { get; init; }
+
+    /// <summary>
     ///     If the user is in an activity, this will be the hash of the Activity being played. Note that you must combine this info with currentActivityModeHash to get a real picture of what the user is doing right now. For instance, PVP "Activities" are just maps: it's the ActivityMode that determines what type of PVP game they're playing.
     /// </summary>
     [JsonPropertyName("currentActivityHash")]

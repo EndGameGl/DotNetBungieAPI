@@ -119,5 +119,7 @@ public enum DestinyVendorItemState : int
 
     Ineligible = 8388608,
 
-    ArtifactPerkBoosted = 16777216
+    ArtifactPerkBoosted = 16777216,
+
+    SeasonalArchiveFree = 33554432
 }

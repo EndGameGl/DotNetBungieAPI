@@ -44,6 +44,9 @@ public sealed class DestinyEventCardDefinition : IDestinyDefinition, IDisplayPro
     [JsonPropertyName("rewardProgressionHash")]
     public DefinitionHashPointer<Destiny.Definitions.DestinyProgressionDefinition> RewardProgressionHash { get; init; }
 
+    [JsonPropertyName("rewardProgressionHashList")]
+    public DefinitionHashPointer<Destiny.Definitions.DestinyProgressionDefinition>[]? RewardProgressionHashList { get; init; }
+
     [JsonPropertyName("weeklyChallengesPresentationNodeHash")]
     public DefinitionHashPointer<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition> WeeklyChallengesPresentationNodeHash { get; init; }
 

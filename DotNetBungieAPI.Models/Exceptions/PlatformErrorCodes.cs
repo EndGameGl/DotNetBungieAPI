@@ -1803,5 +1803,21 @@ public enum PlatformErrorCodes : int
 
     ErrorEgsJwtMalformedHeader = 4008,
 
-    ErrorEgsJwtMalformedPayload = 4009
+    ErrorEgsJwtMalformedPayload = 4009,
+
+    MarathonInternalError = 5000,
+
+    MarathonBabelConnectionTimeout = 5001,
+
+    MarathonServiceFailure = 5002,
+
+    MarathonInvalidRequest = 5003,
+
+    MarathonUnexpectedError = 5004,
+
+    MarathonAccountNotFound = 5005,
+
+    MarathonThrottledByGameServer = 5006,
+
+    MarathonErrorDeserializationFailure = 5007
 }

@@ -64,4 +64,10 @@ public sealed class DestinyCharacterProgressionComponent
     /// </summary>
     [JsonPropertyName("seasonalArtifact")]
     public Destiny.Artifacts.DestinyArtifactCharacterScoped? SeasonalArtifact { get; init; }
+
+    /// <summary>
+    ///     Unclaimed rewards earned by completing Orders.
+    /// </summary>
+    [JsonPropertyName("unclaimedOrderRewards")]
+    public Dictionary<uint, int>? UnclaimedOrderRewards { get; init; }
 }

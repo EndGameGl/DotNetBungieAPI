@@ -41,6 +41,9 @@ public sealed class Destiny2CoreSettings
     [JsonPropertyName("craftingRootNodeHash")]
     public DefinitionHashPointer<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition> CraftingRootNodeHash { get; init; }
 
+    [JsonPropertyName("globalConstantsHash")]
+    public DefinitionHashPointer<Destiny.Definitions.Common.DestinyGlobalConstantsDefinition> GlobalConstantsHash { get; init; }
+
     [JsonPropertyName("loadoutConstantsHash")]
     public DefinitionHashPointer<Destiny.Definitions.Loadouts.DestinyLoadoutConstantsDefinition> LoadoutConstantsHash { get; init; }
 
@@ -94,6 +97,9 @@ public sealed class Destiny2CoreSettings
 
     [JsonPropertyName("currentSeasonHash")]
     public DefinitionHashPointer<Destiny.Definitions.Seasons.DestinySeasonDefinition> CurrentSeasonHash { get; init; }
+
+    [JsonPropertyName("currentSeasonPassHash")]
+    public DefinitionHashPointer<Destiny.Definitions.Seasons.DestinySeasonPassDefinition> CurrentSeasonPassHash { get; init; }
 
     [JsonPropertyName("seasonalChallengesPresentationNodeHash")]
     public DefinitionHashPointer<Destiny.Definitions.Presentation.DestinyPresentationNodeDefinition> SeasonalChallengesPresentationNodeHash { get; init; }

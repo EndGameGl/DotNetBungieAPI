@@ -79,6 +79,11 @@ public class IOpenApiComponentSchemaSerializer : JsonConverterFactory
 
                 if (typeInfo is "string")
                 {
+                    if (parsedObject.ContainsKey("x-enum-reference"))
+                    {
+                        return parsedObject.Deserialize<OpenApiEnumReferenceComponentSchema>(options);
+                    }
+
                     return parsedObject.Deserialize<OpenApiStringComponentSchema>(options);
                 }
 

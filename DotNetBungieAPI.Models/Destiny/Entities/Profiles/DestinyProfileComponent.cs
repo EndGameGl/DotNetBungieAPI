@@ -60,6 +60,12 @@ public sealed class DestinyProfileComponent
     public DefinitionHashPointer<Destiny.Definitions.Seasons.DestinySeasonDefinition> CurrentSeasonHash { get; init; }
 
     /// <summary>
+    ///     If populated, this is a reference to the season pass that is currently active.
+    /// </summary>
+    [JsonPropertyName("currentSeasonPassHash")]
+    public DefinitionHashPointer<Destiny.Definitions.Seasons.DestinySeasonPassDefinition> CurrentSeasonPassHash { get; init; }
+
+    /// <summary>
     ///     If populated, this is the reward power cap for the current season.
     /// </summary>
     [JsonPropertyName("currentSeasonRewardPowerCap")]

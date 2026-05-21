@@ -62,6 +62,15 @@ public sealed class DestinyGlobalConstantsDefinition : IDestinyDefinition
     [JsonPropertyName("featuredItemsListHash")]
     public DefinitionHashPointer<Destiny.Definitions.Inventory.DestinyItemFilterDefinition> FeaturedItemsListHash { get; init; }
 
+    [JsonPropertyName("portalActivityGraphRootNodesWithIcons")]
+    public Dictionary<uint, string>? PortalActivityGraphRootNodesWithIcons { get; init; }
+
+    [JsonPropertyName("orderRewardsUnlockValueHashesToRewardItemHashes")]
+    public Dictionary<uint, uint>? OrderRewardsUnlockValueHashesToRewardItemHashes { get; init; }
+
+    [JsonPropertyName("questItemTraitToFeaturedQuestImagePath")]
+    public Dictionary<uint, string>? QuestItemTraitToFeaturedQuestImagePath { get; init; }
+
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
     /// <para />

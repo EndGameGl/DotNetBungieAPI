@@ -35,7 +35,4 @@
     <PackageReference Include="RateLimiter" Version="2.2.0" />
     <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="3.0.0-rc2" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\ApiAccess\" />
-  </ItemGroup>
 </Project>

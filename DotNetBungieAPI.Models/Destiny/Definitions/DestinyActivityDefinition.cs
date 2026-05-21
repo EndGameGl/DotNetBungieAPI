@@ -129,6 +129,9 @@ public sealed class DestinyActivityDefinition : IDestinyDefinition
     [JsonPropertyName("selectableSkullCollectionHashes")]
     public DefinitionHashPointer<Destiny.Definitions.Activities.DestinyActivitySelectableSkullCollectionDefinition>[]? SelectableSkullCollectionHashes { get; init; }
 
+    [JsonPropertyName("selectableSkullCollections")]
+    public Destiny.Definitions.DestinyActivitySelectableSkullCollections[]? SelectableSkullCollections { get; init; }
+
     /// <summary>
     ///     Represents all of the possible activities that could be played in the Playlist, along with information that we can use to determine if they are active at the present time.
     /// </summary>
@@ -200,6 +203,18 @@ public sealed class DestinyActivityDefinition : IDestinyDefinition
     /// </summary>
     [JsonPropertyName("activityLocationMappings")]
     public Destiny.Constants.DestinyEnvironmentLocationMapping[]? ActivityLocationMappings { get; init; }
+
+    /// <summary>
+    ///     Additional data used for display in the in-game Portal screen
+    /// </summary>
+    [JsonPropertyName("curatorBlockDefinition")]
+    public Destiny.Definitions.DestinyActivityCuratorBlockDefinition? CuratorBlockDefinition { get; init; }
+
+    /// <summary>
+    ///     Optional estimated duration, shown on the Portal tiles
+    /// </summary>
+    [JsonPropertyName("durationEstimate")]
+    public Destiny.Definitions.DestinyActivityDurationEstimate? DurationEstimate { get; init; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.

@@ -30,10 +30,28 @@ public sealed class DestinyInventoryItemConstantsDefinition : IDestinyDefinition
     public string FeaturedItemFlagPath { get; init; }
 
     /// <summary>
-    ///     Gold masterwork glow
+    ///     Gold masterwork glow for non-Exotic items
     /// </summary>
     [JsonPropertyName("masterworkOverlayPath")]
     public string MasterworkOverlayPath { get; init; }
+
+    /// <summary>
+    ///     Gold masterwork glow for Exotic items
+    /// </summary>
+    [JsonPropertyName("masterworkExoticOverlayPath")]
+    public string MasterworkExoticOverlayPath { get; init; }
+
+    /// <summary>
+    ///     Gold masterwork glow for non-Exotic Items, with a gold border
+    /// </summary>
+    [JsonPropertyName("masterworkBorderedOverlayPath")]
+    public string MasterworkBorderedOverlayPath { get; init; }
+
+    /// <summary>
+    ///     Gold masterwork glow for Exotic items, with a gold border
+    /// </summary>
+    [JsonPropertyName("masterworkExoticBorderedOverlayPath")]
+    public string MasterworkExoticBorderedOverlayPath { get; init; }
 
     /// <summary>
     ///     Crafted weapon overlay path
@@ -70,6 +88,18 @@ public sealed class DestinyInventoryItemConstantsDefinition : IDestinyDefinition
     /// </summary>
     [JsonPropertyName("universalOrnamentBackgroundOverlayPath")]
     public string UniversalOrnamentBackgroundOverlayPath { get; init; }
+
+    /// <summary>
+    ///     Layer between a legendary item and its color background to denote universal ornament status
+    /// </summary>
+    [JsonPropertyName("universalOrnamentLegendaryBackgroundOverlayPath")]
+    public string UniversalOrnamentLegendaryBackgroundOverlayPath { get; init; }
+
+    /// <summary>
+    ///     Layer between an exotic item and its color background to denote universal ornament status
+    /// </summary>
+    [JsonPropertyName("universalOrnamentExoticBackgroundOverlayPath")]
+    public string UniversalOrnamentExoticBackgroundOverlayPath { get; init; }
 
     /// <summary>
     ///     The unique identifier for this entity. Guaranteed to be unique for the type of entity, but not globally.
