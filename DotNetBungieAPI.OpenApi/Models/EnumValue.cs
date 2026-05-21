@@ -5,7 +5,7 @@ namespace DotNetBungieAPI.OpenApi.Models;
 public class EnumValue
 {
     [JsonPropertyName("numericValue")]
-    public required string NumericValue { get; init; }
+    public required long NumericValue { get; init; }
 
     [JsonPropertyName("identifier")]
     public required string Identifier { get; init; }

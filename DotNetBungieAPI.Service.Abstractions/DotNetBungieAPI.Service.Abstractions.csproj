@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Title>DotNetBungieAPI.Service.Abstractions</Title>
@@ -15,18 +14,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>DotNetBungieAPI.Service.Abstractions</RootNamespace>
-    <PackageVersion>3.0.0-rc1</PackageVersion>
+    <PackageVersion>3.0.0-rc2</PackageVersion>
     <AssemblyVersion>3.0.0</AssemblyVersion>
     <FileVersion>3.0.0</FileVersion>
-    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
-
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DocumentationFile>bin\Release\DotNetBungieAPI.Service.Abstractions.xml</DocumentationFile>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="DotNetBungieAPI.Models" Version="3.0.0-rc1" />
+    <PackageReference Include="DotNetBungieAPI.Models" Version="3.0.0-rc3" />
   </ItemGroup>
 </Project>

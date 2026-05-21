@@ -42,6 +42,7 @@ public class DefinitionsEnumExtensionsFileGenerator : AdditionalFileGenerator
             .OfType<IMappedDefinition>()
             .Where(x => x.MappedDefinition is not null)
             .Select(x => x.MappedDefinition!.GetReferencedPath())
+            .Concat(openApiModel.Components.Schemas.Where(x => x.Value is OpenApiObjectComponentSchema { MobileManifestName: not null }).Select(x => x.Key))
             .Distinct()
             .Select(x => x.Split('.').Last())
             .Order()

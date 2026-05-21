@@ -30,7 +30,7 @@ internal class DefinitionHashPointerDebugView<TDefinition>
 public static class DefinitionHashPointerExtensions
 {
     /// <summary>
-    ///     Tries to get definition from local cache/given provider
+    ///     Tries to get definition
     /// </summary>
     /// <param name="pointer"></param>
     /// <param name="definition"></param>
@@ -44,7 +44,13 @@ public static class DefinitionHashPointerExtensions
     )
         where TDefinition : class, IDestinyDefinition
     {
-        return BungieClient.Instance.TryGetDefinition(pointer.Hash.GetValueOrDefault(), out definition, locale);
+        return TryGetDefinition(pointer.Hash.GetValueOrDefault(), out definition, locale);
+    }
+
+    public static bool TryGetDefinition<TDefinition>(this uint pointer, [NotNullWhen(true)] out TDefinition? definition, BungieLocales locale = BungieLocales.EN)
+        where TDefinition : class, IDestinyDefinition
+    {
+        return BungieClient.Instance.TryGetDefinition(pointer, out definition, locale);
     }
 
     public static async ValueTask<bool> TryGetDefinitionAsync<TDefinition>(
@@ -54,27 +60,51 @@ public static class DefinitionHashPointerExtensions
     )
         where TDefinition : class, IDestinyDefinition
     {
-        return await BungieClient.Instance.TryGetDefinitionAsync(pointer.Hash.GetValueOrDefault(), onSuccess, locale);
+        return await TryGetDefinitionAsync(pointer.Hash.GetValueOrDefault(), onSuccess, locale);
+    }
+
+    public static async ValueTask<bool> TryGetDefinitionAsync<TDefinition>(this uint pointer, Action<TDefinition> onSuccess, BungieLocales locale = BungieLocales.EN)
+        where TDefinition : class, IDestinyDefinition
+    {
+        return await BungieClient.Instance.TryGetDefinitionAsync(pointer, onSuccess, locale);
     }
 
     public static TDefinition? GetValueOrNull<TDefinition>(this DefinitionHashPointer<TDefinition> pointer, BungieLocales locale = BungieLocales.EN)
         where TDefinition : class, IDestinyDefinition
     {
-        return pointer.TryGetDefinition(out var definition, locale) ? definition : null;
+        return GetValueOrNull<TDefinition>(pointer.Hash.GetValueOrDefault(), locale);
+    }
+
+    public static TDefinition? GetValueOrNull<TDefinition>(this uint pointer, BungieLocales locale = BungieLocales.EN)
+        where TDefinition : class, IDestinyDefinition
+    {
+        return pointer.TryGetDefinition<TDefinition>(out var definition, locale) ? definition : null;
     }
 
     public static async ValueTask<TDefinition?> GetValueOrNullAsync<TDefinition>(this DefinitionHashPointer<TDefinition> pointer, BungieLocales locale = BungieLocales.EN)
         where TDefinition : class, IDestinyDefinition
     {
+        return await GetValueOrNullAsync<TDefinition>(pointer.Hash.GetValueOrDefault(), locale);
+    }
+
+    public static async ValueTask<TDefinition?> GetValueOrNullAsync<TDefinition>(this uint pointer, BungieLocales locale = BungieLocales.EN)
+        where TDefinition : class, IDestinyDefinition
+    {
         TDefinition? definition = null;
-        await pointer.TryGetDefinitionAsync(def => definition = def, locale);
+        await pointer.TryGetDefinitionAsync<TDefinition>(def => definition = def, locale);
         return definition;
     }
 
     public static bool Is<TDefinition>(this DefinitionHashPointer<TDefinition> pointer, Func<TDefinition?, bool> predicate, BungieLocales locale = BungieLocales.EN)
         where TDefinition : class, IDestinyDefinition
     {
-        return pointer.TryGetDefinition(out var definition, locale) && predicate(definition);
+        return Is(pointer.Hash.GetValueOrDefault(), predicate, locale);
+    }
+
+    public static bool Is<TDefinition>(this uint pointer, Func<TDefinition?, bool> predicate, BungieLocales locale = BungieLocales.EN)
+        where TDefinition : class, IDestinyDefinition
+    {
+        return pointer.TryGetDefinition<TDefinition>(out var definition, locale) && predicate(definition);
     }
 
     public static async ValueTask<bool> IsAsync<TDefinition>(
@@ -84,25 +114,47 @@ public static class DefinitionHashPointerExtensions
     )
         where TDefinition : class, IDestinyDefinition
     {
-        var value = await pointer.GetValueOrNullAsync(locale);
+        return await IsAsync(pointer.Hash.GetValueOrDefault(), predicate, locale);
+    }
+
+    public static async ValueTask<bool> IsAsync<TDefinition>(this uint pointer, Func<TDefinition, bool> predicate, BungieLocales locale = BungieLocales.EN)
+        where TDefinition : class, IDestinyDefinition
+    {
+        var value = await pointer.GetValueOrNullAsync<TDefinition>(locale);
         return value is not null && predicate(value);
     }
 
-    public static TValue? Select<TDefinition, TValue>(this DefinitionHashPointer<TDefinition> pointer, Func<TDefinition, TValue> func, BungieLocales locale = BungieLocales.EN)
-        where TDefinition : class, IDestinyDefinition
-    {
-        return pointer.TryGetDefinition(out var definition, locale) ? func(definition) : default;
-    }
-
-    public static async ValueTask<TValue?> SelectAsync<TDefinition, TValue>(
+    public static TValue? Select<TDefinition, TValue>(
         this DefinitionHashPointer<TDefinition> pointer,
-        Func<TDefinition, TValue> func,
+        Func<TDefinition, TValue> selector,
         BungieLocales locale = BungieLocales.EN
     )
         where TDefinition : class, IDestinyDefinition
     {
-        var definition = await pointer.GetValueOrNullAsync(locale);
-        return definition is not null ? func(definition) : default;
+        return Select(pointer.Hash.GetValueOrDefault(), selector, locale);
+    }
+
+    public static TValue? Select<TDefinition, TValue>(this uint pointer, Func<TDefinition, TValue> selector, BungieLocales locale = BungieLocales.EN)
+        where TDefinition : class, IDestinyDefinition
+    {
+        return pointer.TryGetDefinition<TDefinition>(out var definition, locale) ? selector(definition) : default;
+    }
+
+    public static async ValueTask<TValue?> SelectAsync<TDefinition, TValue>(
+        this DefinitionHashPointer<TDefinition> pointer,
+        Func<TDefinition, TValue> selector,
+        BungieLocales locale = BungieLocales.EN
+    )
+        where TDefinition : class, IDestinyDefinition
+    {
+        return await SelectAsync(pointer.Hash.GetValueOrDefault(), selector, locale);
+    }
+
+    public static async ValueTask<TValue?> SelectAsync<TDefinition, TValue>(this uint pointer, Func<TDefinition, TValue> selector, BungieLocales locale = BungieLocales.EN)
+        where TDefinition : class, IDestinyDefinition
+    {
+        var definition = await pointer.GetValueOrNullAsync<TDefinition>(locale);
+        return definition is not null ? selector(definition) : default;
     }
 
     private static string GetDebuggerDisplayString<TDefinition>(DefinitionHashPointer<TDefinition> pointer)

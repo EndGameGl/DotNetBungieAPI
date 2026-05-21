@@ -1,0 +1,17 @@
+<Solution>
+  <Project Path="ConsoleTestApp/ConsoleTestApp.csproj" />
+  <Project Path="DotNetBungieAPI.AspNet.Security.OAuth.Providers/DotNetBungieAPI.AspNet.Security.OAuth.Providers.csproj" />
+  <Project Path="DotNetBungieAPI.Benchmark/DotNetBungieAPI.Benchmark.csproj" />
+  <Project Path="DotNetBungieAPI.DefinitionProvider.Sqlite/DotNetBungieAPI.DefinitionProvider.Sqlite.csproj" />
+  <Project Path="DotNetBungieAPI.Generated.Benchmark/DotNetBungieAPI.Generated.Benchmark.csproj" />
+  <Project Path="DotNetBungieAPI.Generated/DotNetBungieAPI.Generated.csproj" />
+  <Project Path="DotNetBungieAPI.HashReferences.Generator/DotNetBungieAPI.HashReferences.Generator.csproj" />
+  <Project Path="DotNetBungieAPI.HashReferences/DotNetBungieAPI.HashReferences.csproj" />
+  <Project Path="DotNetBungieAPI.Models/DotNetBungieAPI.Models.csproj" />
+  <Project Path="DotNetBungieAPI.OpenApi.CSharp.Library/DotNetBungieAPI.OpenApi.CSharp.Library.csproj" />
+  <Project Path="DotNetBungieAPI.OpenApi.CSharp/DotNetBungieAPI.OpenApi.CSharp.csproj" />
+  <Project Path="DotNetBungieAPI.OpenApi/DotNetBungieAPI.OpenApi.csproj" />
+  <Project Path="DotNetBungieAPI.Service.Abstractions/DotNetBungieAPI.Service.Abstractions.csproj" />
+  <Project Path="DotNetBungieAPI.Tests/DotNetBungieAPI.Tests.csproj" />
+  <Project Path="DotNetBungieAPI/DotNetBungieAPI.csproj" />
+</Solution>

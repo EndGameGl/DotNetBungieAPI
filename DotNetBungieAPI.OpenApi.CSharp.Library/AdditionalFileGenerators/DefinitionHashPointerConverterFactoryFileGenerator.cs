@@ -18,7 +18,7 @@ public class DefinitionHashPointerConverterFactoryFileGenerator : AdditionalFile
             private readonly Type _definitionHashPointerType = typeof(DefinitionHashPointer<>);
 
             /// <summary>
-            ///     <inheritdoc cref="JsonConverterFactory.CanConvert" />
+            ///     <inheritdoc cref="JsonConverter.CanConvert(Type)" />
             /// </summary>
             /// <param name="typeToConvert"></param>
             /// <returns></returns>
@@ -43,60 +43,38 @@ public class DefinitionHashPointerConverterFactoryFileGenerator : AdditionalFile
                 var definitionType = typeToConvert.GetGenericArguments()[0];
 
                 var converter = (JsonConverter)
-                    Activator.CreateInstance(
-                        typeof(DefinitionHashPointerConverter<>).MakeGenericType(definitionType),
-                        BindingFlags.Instance | BindingFlags.Public,
-                        null,
-                        [],
-                        null
-                    )!;
+                    Activator.CreateInstance(typeof(DefinitionHashPointerConverter<>).MakeGenericType(definitionType), BindingFlags.Instance | BindingFlags.Public, null, [], null)!;
 
                 return converter;
             }
 
             private class DefinitionHashPointerConverter<T> : JsonConverter<DefinitionHashPointer<T>>
-                where T : IDestinyDefinition
+                where T : class, IDestinyDefinition
             {
                 public override bool HandleNull => true;
 
-                public override DefinitionHashPointer<T> ReadAsPropertyName(
-                    ref Utf8JsonReader reader,
-                    Type typeToConvert,
-                    JsonSerializerOptions options
-                )
+                public override DefinitionHashPointer<T> ReadAsPropertyName(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
                 {
                     return Read(ref reader, typeToConvert, options);
                 }
-        
-                public override void WriteAsPropertyName(
-                    Utf8JsonWriter writer,
-                    DefinitionHashPointer<T> value,
-                    JsonSerializerOptions options
-                )
+
+                public override void WriteAsPropertyName(Utf8JsonWriter writer, DefinitionHashPointer<T> value, JsonSerializerOptions options)
                 {
                     Write(writer, value, options);
                 }
-                
-                public override DefinitionHashPointer<T> Read(
-                    ref Utf8JsonReader reader,
-                    Type typeToConvert,
-                    JsonSerializerOptions options
-                )
+
+                public override DefinitionHashPointer<T> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
                 {
                     return reader.TokenType switch
                     {
                         JsonTokenType.String => new DefinitionHashPointer<T>(uint.Parse(reader.GetString()!)),
                         JsonTokenType.Null => DefinitionHashPointer<T>.Empty,
                         JsonTokenType.PropertyName => new DefinitionHashPointer<T>(uint.Parse(reader.GetString()!)),
-                        _ => new DefinitionHashPointer<T>(reader.GetUInt32())
+                        _ => new DefinitionHashPointer<T>(reader.GetUInt32()),
                     };
                 }
 
-                public override void Write(
-                    Utf8JsonWriter writer,
-                    DefinitionHashPointer<T> value,
-                    JsonSerializerOptions options
-                )
+                public override void Write(Utf8JsonWriter writer, DefinitionHashPointer<T> value, JsonSerializerOptions options)
                 {
                     JsonSerializer.Serialize(writer, value.Hash, options);
                 }

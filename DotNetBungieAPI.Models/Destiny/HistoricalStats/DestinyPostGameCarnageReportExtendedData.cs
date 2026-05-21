@@ -13,4 +13,10 @@ public sealed class DestinyPostGameCarnageReportExtendedData
     /// </summary>
     [JsonPropertyName("values")]
     public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue>? Values { get; init; }
+
+    /// <summary>
+    ///     Collection of stats from the player scoreboard in this activity.
+    /// </summary>
+    [JsonPropertyName("scoreboardValues")]
+    public Dictionary<string, Destiny.HistoricalStats.DestinyHistoricalStatsValue>? ScoreboardValues { get; init; }
 }

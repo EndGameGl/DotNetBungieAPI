@@ -1,42 +1,34 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <Nullable>enable</Nullable>
-
-        <IsPackable>false</IsPackable>
-
-        <LangVersion>latest</LangVersion>
-
-        <TargetFramework>net9.0</TargetFramework>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
-        <PackageReference Include="xunit" Version="2.4.2" />
-        <PackageReference Include="Xunit.DependencyInjection" Version="8.6.1" />
-        <PackageReference Include="Xunit.Priority" Version="1.1.6" />
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-            <PrivateAssets>all</PrivateAssets>
-        </PackageReference>
-        <PackageReference Include="coverlet.collector" Version="3.2.0">
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-            <PrivateAssets>all</PrivateAssets>
-        </PackageReference>
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\DotNetBungieAPI.DefinitionProvider.Sqlite\DotNetBungieAPI.DefinitionProvider.Sqlite.csproj" />
-      <ProjectReference Include="..\DotNetBungieAPI\DotNetBungieAPI.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Update="JsonTestAssets\DestinyManifest.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-      <None Update="JsonTestAssets\DestinyChecklistDefinition_3373333905.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
-
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <LangVersion>latest</LangVersion>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.5.1" />
+    <PackageReference Include="xunit" Version="2.4.2" />
+    <PackageReference Include="Xunit.DependencyInjection" Version="8.6.1" />
+    <PackageReference Include="Xunit.Priority" Version="1.1.6" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="10.0.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DotNetBungieAPI.DefinitionProvider.Sqlite\DotNetBungieAPI.DefinitionProvider.Sqlite.csproj" />
+    <ProjectReference Include="..\DotNetBungieAPI\DotNetBungieAPI.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="JsonTestAssets\DestinyManifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="JsonTestAssets\DestinyChecklistDefinition_3373333905.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

@@ -641,7 +641,7 @@ public sealed class SqliteDefinitionProvider : IDefinitionProvider
         Expression<Func<TDefinition, TData>> selectClause,
         Expression<Func<TDefinition, bool>> whereClause
     )
-        where TDefinition : IDestinyDefinition
+        where TDefinition : class, IDestinyDefinition
     {
         var select = SqlValueConverter.ConvertExpression(selectClause);
         var where = SqlValueConverter.ConvertExpression(whereClause);

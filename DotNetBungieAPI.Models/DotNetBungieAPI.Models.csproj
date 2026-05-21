@@ -1,28 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Title>DotNetBungieAPI.Models</Title>
-        <RepositoryUrl>https://github.com/EndGameGl/DotNetBungieAPI</RepositoryUrl>
-        <PackageId>DotNetBungieAPI.Models</PackageId>
-        <Description>Bungie.net API models.</Description>
-        <Authors>MeGl</Authors>
-        <Copyright>Copyright (c) MeGl 2025</Copyright>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <IncludeSymbols>true</IncludeSymbols>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <PackageVersion>3.0.0-rc1</PackageVersion>
-        <AssemblyVersion>3.0.0</AssemblyVersion>
-        <FileVersion>3.0.0</FileVersion>
-        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
-        <LangVersion>latest</LangVersion>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-        <DocumentationFile>bin\Release\DotNetBungieAPI.Models.xml</DocumentationFile>
-    </PropertyGroup>
-
+  <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Title>DotNetBungieAPI.Models</Title>
+    <RepositoryUrl>https://github.com/EndGameGl/DotNetBungieAPI</RepositoryUrl>
+    <PackageId>DotNetBungieAPI.Models</PackageId>
+    <Description>Bungie.net API models.</Description>
+    <Authors>MeGl</Authors>
+    <Copyright>Copyright (c) MeGl 2025</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageVersion>3.0.0-rc3</PackageVersion>
+    <AssemblyVersion>3.0.0</AssemblyVersion>
+    <FileVersion>3.0.0</FileVersion>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DocumentationFile>bin\Release\DotNetBungieAPI.Models.xml</DocumentationFile>
+  </PropertyGroup>
 </Project>
