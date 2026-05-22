@@ -22,7 +22,7 @@ internal sealed class FireteamApi : IFireteamApi
         IBungieNetJsonSerializer serializer
     )
     {
-        _configuration = _configuration;
+        _configuration = configuration;
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _serializer = serializer;
     }
@@ -35,7 +35,7 @@ internal sealed class FireteamApi : IFireteamApi
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<int>> GetActivePrivateClanFireteamCount(
         long groupId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -73,7 +73,7 @@ internal sealed class FireteamApi : IFireteamApi
         Models.Fireteam.FireteamSlotSearch slotFilter,
         bool excludeImmediate,
         string langFilter,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -109,7 +109,7 @@ internal sealed class FireteamApi : IFireteamApi
         Models.Fireteam.FireteamSlotSearch slotFilter,
         bool excludeImmediate,
         string langFilter,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -143,7 +143,7 @@ internal sealed class FireteamApi : IFireteamApi
         Models.Fireteam.FireteamPlatform platform,
         bool groupFilter,
         string langFilter,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -169,7 +169,7 @@ internal sealed class FireteamApi : IFireteamApi
     public async Task<BungieResponse<Models.Fireteam.FireteamResponse>> GetClanFireteam(
         long fireteamId,
         long groupId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {

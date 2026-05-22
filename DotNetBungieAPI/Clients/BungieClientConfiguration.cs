@@ -52,7 +52,7 @@ public sealed class BungieClientConfiguration : IBungieClientConfiguration
     /// <summary>
     ///     Locales that'll be used in this app
     /// </summary>
-    public List<BungieLocales> UsedLocales { get; } = new();
+    public List<BungieLocales> UsedLocales { get; } = [];
 
     /// <summary>
     ///     Checks whether scope is available for this app
@@ -64,5 +64,8 @@ public sealed class BungieClientConfiguration : IBungieClientConfiguration
         return ApplicationScopes.HasFlag(applicationScope);
     }
 
+    /// <summary>
+    ///     <inheritdoc />
+    /// </summary>
     public bool TryFetchDefinitionsFromProvider { get; set; }
 }

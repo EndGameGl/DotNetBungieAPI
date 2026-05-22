@@ -7,6 +7,7 @@ public interface IContentApi
 {
     Task<BungieResponse<Models.Content.Models.ContentTypeDescription>> GetContentType(
         string type,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -14,6 +15,7 @@ public interface IContentApi
         long id,
         string locale,
         bool head,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -22,6 +24,7 @@ public interface IContentApi
         string tag,
         string type,
         bool head,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -33,6 +36,7 @@ public interface IContentApi
         string searchtext,
         string source,
         string tag,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -43,12 +47,14 @@ public interface IContentApi
         int currentpage,
         bool head,
         int itemsperpage,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<object>> SearchHelpArticles(
         string searchtext,
         string size,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -56,6 +62,7 @@ public interface IContentApi
         string pageToken,
         string categoryfilter,
         bool includebody,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 

@@ -22,7 +22,7 @@ internal sealed class TokensApi : ITokensApi
         IBungieNetJsonSerializer serializer
     )
     {
-        _configuration = _configuration;
+        _configuration = configuration;
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _serializer = serializer;
     }
@@ -33,7 +33,7 @@ internal sealed class TokensApi : ITokensApi
     /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<bool>> ForceDropsRepair(
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -51,7 +51,7 @@ internal sealed class TokensApi : ITokensApi
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<bool>> ClaimPartnerOffer(
         Models.Tokens.PartnerOfferClaimRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -75,7 +75,7 @@ internal sealed class TokensApi : ITokensApi
     public async Task<BungieResponse<bool>> ApplyMissingPartnerOffersWithoutClaim(
         int partnerApplicationId,
         long targetBnetMembershipId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -99,7 +99,7 @@ internal sealed class TokensApi : ITokensApi
     public async Task<BungieResponse<Models.Tokens.PartnerOfferSkuHistoryResponse[]>> GetPartnerOfferSkuHistory(
         int partnerApplicationId,
         long targetBnetMembershipId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -123,7 +123,7 @@ internal sealed class TokensApi : ITokensApi
     public async Task<BungieResponse<Models.Tokens.PartnerRewardHistoryResponse>> GetPartnerRewardHistory(
         int partnerApplicationId,
         long targetBnetMembershipId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -145,7 +145,7 @@ internal sealed class TokensApi : ITokensApi
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Dictionary<string, Models.Tokens.BungieRewardDisplay>>> GetBungieRewardsForUser(
         long membershipId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -169,7 +169,7 @@ internal sealed class TokensApi : ITokensApi
     public async Task<BungieResponse<Dictionary<string, Models.Tokens.BungieRewardDisplay>>> GetBungieRewardsForPlatformUser(
         long membershipId,
         Models.BungieMembershipType membershipType,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -186,10 +186,11 @@ internal sealed class TokensApi : ITokensApi
     /// <summary>
     ///     Returns a list of the current bungie rewards
     /// </summary>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
-    public async Task<BungieResponse<Dictionary<string, Models.Tokens.BungieRewardDisplay>>> GetBungieRewardsList(CancellationToken cancellationToken = default)
+    public async Task<BungieResponse<Dictionary<string, Models.Tokens.BungieRewardDisplay>>> GetBungieRewardsList(AuthorizationTokenData? authorizationToken = null, CancellationToken cancellationToken = default)
     {
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<string, Models.Tokens.BungieRewardDisplay>>("/Tokens/Rewards/BungieRewards/", cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<string, Models.Tokens.BungieRewardDisplay>>("/Tokens/Rewards/BungieRewards/", cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
 }

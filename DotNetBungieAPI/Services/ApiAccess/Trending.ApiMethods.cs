@@ -22,7 +22,7 @@ internal sealed class TrendingApi : ITrendingApi
         IBungieNetJsonSerializer serializer
     )
     {
-        _configuration = _configuration;
+        _configuration = configuration;
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _serializer = serializer;
     }
@@ -30,10 +30,11 @@ internal sealed class TrendingApi : ITrendingApi
     /// <summary>
     ///     Returns trending items for Bungie.net, collapsed into the first page of items per category. For pagination within a category, call GetTrendingCategory.
     /// </summary>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
-    public async Task<BungieResponse<Models.Trending.TrendingCategories>> GetTrendingCategories(CancellationToken cancellationToken = default)
+    public async Task<BungieResponse<Models.Trending.TrendingCategories>> GetTrendingCategories(AuthorizationTokenData? authorizationToken = null, CancellationToken cancellationToken = default)
     {
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Trending.TrendingCategories>("/Trending/Categories/", cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Trending.TrendingCategories>("/Trending/Categories/", cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -41,10 +42,12 @@ internal sealed class TrendingApi : ITrendingApi
     /// </summary>
     /// <param name="categoryId">The ID of the category for whom you want additional results.</param>
     /// <param name="pageNumber">The page # of results to return.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.SearchResultOfTrendingEntry>> GetTrendingCategory(
         string categoryId,
         int pageNumber,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -52,7 +55,7 @@ internal sealed class TrendingApi : ITrendingApi
             .GetBuilder(cancellationToken)
             .Append($"/Trending/Categories/{categoryId}/{pageNumber}/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.SearchResultOfTrendingEntry>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.SearchResultOfTrendingEntry>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -60,10 +63,12 @@ internal sealed class TrendingApi : ITrendingApi
     /// </summary>
     /// <param name="identifier">The identifier for the entity to be returned.</param>
     /// <param name="trendingEntryType">The type of entity to be returned.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Trending.TrendingDetail>> GetTrendingEntryDetail(
         string identifier,
         Models.Trending.TrendingEntryType trendingEntryType,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -71,7 +76,7 @@ internal sealed class TrendingApi : ITrendingApi
             .GetBuilder(cancellationToken)
             .Append($"/Trending/Details/{trendingEntryType}/{identifier}/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Trending.TrendingDetail>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Trending.TrendingDetail>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
 }

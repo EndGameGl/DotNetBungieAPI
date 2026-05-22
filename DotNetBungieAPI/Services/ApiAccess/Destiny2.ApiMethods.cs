@@ -22,7 +22,7 @@ internal sealed class Destiny2Api : IDestiny2Api
         IBungieNetJsonSerializer serializer
     )
     {
-        _configuration = _configuration;
+        _configuration = configuration;
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _serializer = serializer;
     }
@@ -30,10 +30,11 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <summary>
     ///     Returns the current version of the manifest as a json object.
     /// </summary>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
-    public async Task<BungieResponse<Models.Destiny.Config.DestinyManifest>> GetDestinyManifest(CancellationToken cancellationToken = default)
+    public async Task<BungieResponse<Models.Destiny.Config.DestinyManifest>> GetDestinyManifest(AuthorizationTokenData? authorizationToken = null, CancellationToken cancellationToken = default)
     {
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Config.DestinyManifest>("/Destiny2/Manifest/", cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Config.DestinyManifest>("/Destiny2/Manifest/", cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -41,10 +42,12 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// </summary>
     /// <param name="entityType">The type of entity for whom you would like results. These correspond to the entity's definition contract name. For instance, if you are looking for items, this property should be 'DestinyInventoryItemDefinition'. PREVIEW: This endpoint is still in beta, and may experience rough edges. The schema is tentatively in final form, but there may be bugs that prevent desirable operation.</param>
     /// <param name="hashIdentifier">The hash identifier for the specific Entity you want returned.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.Definitions.DestinyDefinition>> GetDestinyEntityDefinition(
         string entityType,
         uint hashIdentifier,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -52,7 +55,7 @@ internal sealed class Destiny2Api : IDestiny2Api
             .GetBuilder(cancellationToken)
             .Append($"/Destiny2/Manifest/{entityType}/{hashIdentifier}/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Definitions.DestinyDefinition>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Definitions.DestinyDefinition>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -60,10 +63,12 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// </summary>
     /// <param name="membershipType">A valid non-BungieNet membership type, or All. Indicates which memberships to return. You probably want this set to All.</param>
     /// <param name="requestBody">Request body</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.User.UserInfoCard[]>> SearchDestinyPlayerByBungieName(
         Models.BungieMembershipType membershipType,
         Models.User.ExactSearchRequest requestBody,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -75,7 +80,7 @@ internal sealed class Destiny2Api : IDestiny2Api
         await _serializer.SerializeAsync(stream, requestBody);
         stream.Position = 0;
 
-        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<Models.User.UserInfoCard[]>(url, cancellationToken, content: stream);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<Models.User.UserInfoCard[]>(url, cancellationToken, content: stream, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -84,11 +89,13 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="getAllMemberships">(optional) if set to 'true', all memberships regardless of whether they're obscured by overrides will be returned. Normal privacy restrictions on account linking will still apply no matter what.</param>
     /// <param name="membershipId">The ID of the membership whose linked Destiny accounts you want returned. Make sure your membership ID matches its Membership Type: don't pass us a PSN membership ID and the XBox membership type, it's not going to work!</param>
     /// <param name="membershipType">The type for the membership whose linked Destiny accounts you want returned.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.Responses.DestinyLinkedProfilesResponse>> GetLinkedProfiles(
         long membershipId,
         Models.BungieMembershipType membershipType,
         bool getAllMemberships,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -97,7 +104,7 @@ internal sealed class Destiny2Api : IDestiny2Api
             .Append($"/Destiny2/{membershipType}/Profile/{membershipId}/LinkedProfiles/")
             .AddQueryParam("getAllMemberships", getAllMemberships)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Responses.DestinyLinkedProfilesResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Responses.DestinyLinkedProfilesResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -106,11 +113,13 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="components">A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
     /// <param name="destinyMembershipId">Destiny membership ID.</param>
     /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.Responses.DestinyProfileResponse>> GetProfile(
         long destinyMembershipId,
         Models.BungieMembershipType membershipType,
         Models.Destiny.DestinyComponentType[] components,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -119,7 +128,7 @@ internal sealed class Destiny2Api : IDestiny2Api
             .Append($"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/")
             .AddQueryParam("components", components)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Responses.DestinyProfileResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Responses.DestinyProfileResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -129,12 +138,14 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="components">A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
     /// <param name="destinyMembershipId">Destiny membership ID.</param>
     /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.Responses.DestinyCharacterResponse>> GetCharacter(
         long characterId,
         long destinyMembershipId,
         Models.BungieMembershipType membershipType,
         Models.Destiny.DestinyComponentType[] components,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -143,16 +154,18 @@ internal sealed class Destiny2Api : IDestiny2Api
             .Append($"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/")
             .AddQueryParam("components", components)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Responses.DestinyCharacterResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Responses.DestinyCharacterResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
     ///     Returns information on the weekly clan rewards and if the clan has earned them or not. Note that this will always report rewards as not redeemed.
     /// </summary>
     /// <param name="groupId">A valid group id of clan.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.Milestones.DestinyMilestone>> GetClanWeeklyRewardState(
         long groupId,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -160,16 +173,17 @@ internal sealed class Destiny2Api : IDestiny2Api
             .GetBuilder(cancellationToken)
             .Append($"/Destiny2/Clan/{groupId}/WeeklyRewardState/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Milestones.DestinyMilestone>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Milestones.DestinyMilestone>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
     ///     Returns the dictionary of values for the Clan Banner
     /// </summary>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
-    public async Task<BungieResponse<Models.Config.ClanBanner.ClanBannerSource>> GetClanBannerSource(CancellationToken cancellationToken = default)
+    public async Task<BungieResponse<Models.Config.ClanBanner.ClanBannerSource>> GetClanBannerSource(AuthorizationTokenData? authorizationToken = null, CancellationToken cancellationToken = default)
     {
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Config.ClanBanner.ClanBannerSource>("/Destiny2/Clan/ClanBannerDictionary/", cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Config.ClanBanner.ClanBannerSource>("/Destiny2/Clan/ClanBannerDictionary/", cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -179,12 +193,14 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="destinyMembershipId">The membership ID of the destiny profile.</param>
     /// <param name="itemInstanceId">The Instance ID of the destiny item.</param>
     /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.Responses.DestinyItemResponse>> GetItem(
         long destinyMembershipId,
         long itemInstanceId,
         Models.BungieMembershipType membershipType,
         Models.Destiny.DestinyComponentType[] components,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -193,7 +209,7 @@ internal sealed class Destiny2Api : IDestiny2Api
             .Append($"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Item/{itemInstanceId}/")
             .AddQueryParam("components", components)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Responses.DestinyItemResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Responses.DestinyItemResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -204,6 +220,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="destinyMembershipId">Destiny membership ID of another user. You may be denied.</param>
     /// <param name="filter">The filter of what vendors and items to return, if any.</param>
     /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.Responses.DestinyVendorsResponse>> GetVendors(
         long characterId,
@@ -211,6 +228,7 @@ internal sealed class Destiny2Api : IDestiny2Api
         Models.BungieMembershipType membershipType,
         Models.Destiny.DestinyComponentType[] components,
         Models.Destiny.DestinyVendorFilter filter,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -220,7 +238,7 @@ internal sealed class Destiny2Api : IDestiny2Api
             .AddQueryParam("components", components)
             .AddQueryParam("filter", (int)filter)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Responses.DestinyVendorsResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Responses.DestinyVendorsResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -231,6 +249,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="destinyMembershipId">Destiny membership ID of another user. You may be denied.</param>
     /// <param name="membershipType">A valid non-BungieNet membership type.</param>
     /// <param name="vendorHash">The Hash identifier of the Vendor to be returned.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.Responses.DestinyVendorResponse>> GetVendor(
         long characterId,
@@ -238,6 +257,7 @@ internal sealed class Destiny2Api : IDestiny2Api
         Models.BungieMembershipType membershipType,
         uint vendorHash,
         Models.Destiny.DestinyComponentType[] components,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -246,16 +266,18 @@ internal sealed class Destiny2Api : IDestiny2Api
             .Append($"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Vendors/{vendorHash}/")
             .AddQueryParam("components", components)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Responses.DestinyVendorResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Responses.DestinyVendorResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
     ///     Get items available from vendors where the vendors have items for sale that are common for everyone. If any portion of the Vendor's available inventory is character or account specific, we will be unable to return their data from this endpoint due to the way that available inventory is computed. As I am often guilty of saying: 'It's a long story...'
     /// </summary>
     /// <param name="components">A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.Responses.DestinyPublicVendorsResponse>> GetPublicVendors(
         Models.Destiny.DestinyComponentType[] components,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -263,7 +285,7 @@ internal sealed class Destiny2Api : IDestiny2Api
             .GetBuilder(cancellationToken)
             .AddQueryParam("components", components)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Responses.DestinyPublicVendorsResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Responses.DestinyPublicVendorsResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -274,6 +296,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="components">A comma separated list of components to return (as strings or numeric values). See the DestinyComponentType enum for valid components to request. You must request at least one component to receive results.</param>
     /// <param name="destinyMembershipId">Destiny membership ID of another user. You may be denied.</param>
     /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.Responses.DestinyCollectibleNodeDetailResponse>> GetCollectibleNodeDetails(
         long characterId,
@@ -281,6 +304,7 @@ internal sealed class Destiny2Api : IDestiny2Api
         long destinyMembershipId,
         Models.BungieMembershipType membershipType,
         Models.Destiny.DestinyComponentType[] components,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -289,7 +313,7 @@ internal sealed class Destiny2Api : IDestiny2Api
             .Append($"/Destiny2/{membershipType}/Profile/{destinyMembershipId}/Character/{characterId}/Collectibles/{collectiblePresentationNodeHash}/")
             .AddQueryParam("components", components)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Responses.DestinyCollectibleNodeDetailResponse>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Responses.DestinyCollectibleNodeDetailResponse>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -300,7 +324,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<int>> TransferItem(
         Models.Destiny.Requests.DestinyItemTransferRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -322,7 +346,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<int>> PullFromPostmaster(
         Models.Destiny.Requests.Actions.DestinyPostmasterTransferRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -344,7 +368,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<int>> EquipItem(
         Models.Destiny.Requests.Actions.DestinyItemActionRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -366,7 +390,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.DestinyEquipItemResults>> EquipItems(
         Models.Destiny.Requests.Actions.DestinyItemSetActionRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -388,7 +412,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<int>> EquipLoadout(
         Models.Destiny.Requests.Actions.DestinyLoadoutActionRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -410,7 +434,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<int>> SnapshotLoadout(
         Models.Destiny.Requests.Actions.DestinyLoadoutUpdateActionRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -432,7 +456,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<int>> UpdateLoadoutIdentifiers(
         Models.Destiny.Requests.Actions.DestinyLoadoutUpdateActionRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -454,7 +478,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<int>> ClearLoadout(
         Models.Destiny.Requests.Actions.DestinyLoadoutActionRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -476,7 +500,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<int>> SetItemLockState(
         Models.Destiny.Requests.Actions.DestinyItemStateRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -498,7 +522,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<int>> SetQuestTrackedState(
         Models.Destiny.Requests.Actions.DestinyItemStateRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -520,7 +544,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.Responses.DestinyItemChangeResponse>> InsertSocketPlug(
         Models.Destiny.Requests.Actions.DestinyInsertPlugsActionRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -542,7 +566,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.Responses.DestinyItemChangeResponse>> InsertSocketPlugFree(
         Models.Destiny.Requests.Actions.DestinyInsertPlugsFreeActionRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -560,9 +584,11 @@ internal sealed class Destiny2Api : IDestiny2Api
     ///     Gets the available post game carnage report for the activity ID.
     /// </summary>
     /// <param name="activityId">The ID of the activity whose PGCR is requested.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.HistoricalStats.DestinyPostGameCarnageReportData>> GetPostGameCarnageReport(
         long activityId,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -570,7 +596,7 @@ internal sealed class Destiny2Api : IDestiny2Api
             .GetBuilder(cancellationToken)
             .Append($"/Destiny2/Stats/PostGameCarnageReport/{activityId}/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.HistoricalStats.DestinyPostGameCarnageReportData>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.HistoricalStats.DestinyPostGameCarnageReportData>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -583,7 +609,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     public async Task<BungieResponse<int>> ReportOffensivePostGameCarnageReportPlayer(
         long activityId,
         Models.Destiny.Reporting.Requests.DestinyReportOffensePgcrRequest requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -604,10 +630,11 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <summary>
     ///     Gets historical stats definitions.
     /// </summary>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
-    public async Task<BungieResponse<Dictionary<string, Models.Destiny.HistoricalStats.Definitions.DestinyHistoricalStatsDefinition>>> GetHistoricalStatsDefinition(CancellationToken cancellationToken = default)
+    public async Task<BungieResponse<Dictionary<string, Models.Destiny.HistoricalStats.Definitions.DestinyHistoricalStatsDefinition>>> GetHistoricalStatsDefinition(AuthorizationTokenData? authorizationToken = null, CancellationToken cancellationToken = default)
     {
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<string, Models.Destiny.HistoricalStats.Definitions.DestinyHistoricalStatsDefinition>>("/Destiny2/Stats/Definition/", cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<string, Models.Destiny.HistoricalStats.Definitions.DestinyHistoricalStatsDefinition>>("/Destiny2/Stats/Definition/", cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -617,12 +644,14 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="maxtop">Maximum number of top players to return. Use a large number to get entire leaderboard.</param>
     /// <param name="modes">List of game modes for which to get leaderboards. See the documentation for DestinyActivityModeType for valid values, and pass in string representation, comma delimited.</param>
     /// <param name="statid">ID of stat to return rather than returning all Leaderboard stats.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Dictionary<string, Dictionary<string, Models.Destiny.HistoricalStats.DestinyLeaderboard>>>> GetClanLeaderboards(
         long groupId,
         int maxtop,
         string modes,
         string statid,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -633,7 +662,7 @@ internal sealed class Destiny2Api : IDestiny2Api
             .AddQueryParam("modes", modes)
             .AddQueryParam("statid", statid)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<string, Dictionary<string, Models.Destiny.HistoricalStats.DestinyLeaderboard>>>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<string, Dictionary<string, Models.Destiny.HistoricalStats.DestinyLeaderboard>>>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -641,10 +670,12 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// </summary>
     /// <param name="groupId">Group ID of the clan whose leaderboards you wish to fetch.</param>
     /// <param name="modes">List of game modes for which to get leaderboards. See the documentation for DestinyActivityModeType for valid values, and pass in string representation, comma delimited.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.HistoricalStats.DestinyClanAggregateStat[]>> GetClanAggregateStats(
         long groupId,
         string modes,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -653,7 +684,7 @@ internal sealed class Destiny2Api : IDestiny2Api
             .Append($"/Destiny2/Stats/AggregateClanStats/{groupId}/")
             .AddQueryParam("modes", modes)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.HistoricalStats.DestinyClanAggregateStat[]>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.HistoricalStats.DestinyClanAggregateStat[]>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -664,6 +695,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="membershipType">A valid non-BungieNet membership type.</param>
     /// <param name="modes">List of game modes for which to get leaderboards. See the documentation for DestinyActivityModeType for valid values, and pass in string representation, comma delimited.</param>
     /// <param name="statid">ID of stat to return rather than returning all Leaderboard stats.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Dictionary<string, Dictionary<string, Models.Destiny.HistoricalStats.DestinyLeaderboard>>>> GetLeaderboards(
         long destinyMembershipId,
@@ -671,6 +703,7 @@ internal sealed class Destiny2Api : IDestiny2Api
         int maxtop,
         string modes,
         string statid,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -681,7 +714,7 @@ internal sealed class Destiny2Api : IDestiny2Api
             .AddQueryParam("modes", modes)
             .AddQueryParam("statid", statid)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<string, Dictionary<string, Models.Destiny.HistoricalStats.DestinyLeaderboard>>>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<string, Dictionary<string, Models.Destiny.HistoricalStats.DestinyLeaderboard>>>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -693,6 +726,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="membershipType">A valid non-BungieNet membership type.</param>
     /// <param name="modes">List of game modes for which to get leaderboards. See the documentation for DestinyActivityModeType for valid values, and pass in string representation, comma delimited.</param>
     /// <param name="statid">ID of stat to return rather than returning all Leaderboard stats.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Dictionary<string, Dictionary<string, Models.Destiny.HistoricalStats.DestinyLeaderboard>>>> GetLeaderboardsForCharacter(
         long characterId,
@@ -701,6 +735,7 @@ internal sealed class Destiny2Api : IDestiny2Api
         int maxtop,
         string modes,
         string statid,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -711,7 +746,7 @@ internal sealed class Destiny2Api : IDestiny2Api
             .AddQueryParam("modes", modes)
             .AddQueryParam("statid", statid)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<string, Dictionary<string, Models.Destiny.HistoricalStats.DestinyLeaderboard>>>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<string, Dictionary<string, Models.Destiny.HistoricalStats.DestinyLeaderboard>>>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -720,11 +755,13 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="page">Page number to return, starting with 0.</param>
     /// <param name="searchTerm">The string to use when searching for Destiny entities.</param>
     /// <param name="type">The type of entity for whom you would like results. These correspond to the entity's definition contract name. For instance, if you are looking for items, this property should be 'DestinyInventoryItemDefinition'.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.Definitions.DestinyEntitySearchResult>> SearchDestinyEntities(
         string searchTerm,
         string type,
         int page,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -733,7 +770,7 @@ internal sealed class Destiny2Api : IDestiny2Api
             .Append($"/Destiny2/Armory/Search/{type}/{searchTerm}/")
             .AddQueryParam("page", page)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Definitions.DestinyEntitySearchResult>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Definitions.DestinyEntitySearchResult>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -747,6 +784,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="membershipType">A valid non-BungieNet membership type.</param>
     /// <param name="modes">Game modes to return. See the documentation for DestinyActivityModeType for valid values, and pass in string representation, comma delimited.</param>
     /// <param name="periodType">Indicates a specific period type to return. Optional. May be: Daily, AllTime, or Activity</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Dictionary<string, Models.Destiny.HistoricalStats.DestinyHistoricalStatsByPeriod>>> GetHistoricalStats(
         long characterId,
@@ -757,6 +795,7 @@ internal sealed class Destiny2Api : IDestiny2Api
         Models.Destiny.HistoricalStats.Definitions.DestinyStatsGroupType[] groups,
         Models.Destiny.HistoricalStats.Definitions.DestinyActivityModeType[] modes,
         Models.Destiny.HistoricalStats.Definitions.PeriodType periodType,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -769,7 +808,7 @@ internal sealed class Destiny2Api : IDestiny2Api
             .AddQueryParam("modes", modes)
             .AddQueryParam("periodType", (int)periodType)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<string, Models.Destiny.HistoricalStats.DestinyHistoricalStatsByPeriod>>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<string, Models.Destiny.HistoricalStats.DestinyHistoricalStatsByPeriod>>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -778,11 +817,13 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="destinyMembershipId">The Destiny membershipId of the user to retrieve.</param>
     /// <param name="groups">Groups of stats to include, otherwise only general stats are returned. Comma separated list is allowed. Values: General, Weapons, Medals.</param>
     /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.HistoricalStats.DestinyHistoricalStatsAccountResult>> GetHistoricalStatsForAccount(
         long destinyMembershipId,
         Models.BungieMembershipType membershipType,
         Models.Destiny.HistoricalStats.Definitions.DestinyStatsGroupType[] groups,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -791,7 +832,7 @@ internal sealed class Destiny2Api : IDestiny2Api
             .Append($"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Stats/")
             .AddQueryParam("groups", groups)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.HistoricalStats.DestinyHistoricalStatsAccountResult>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.HistoricalStats.DestinyHistoricalStatsAccountResult>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -803,6 +844,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="membershipType">A valid non-BungieNet membership type.</param>
     /// <param name="mode">A filter for the activity mode to be returned. None returns all activities. See the documentation for DestinyActivityModeType for valid values, and pass in string representation.</param>
     /// <param name="page">Page number to return, starting with 0.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.HistoricalStats.DestinyActivityHistoryResults>> GetActivityHistory(
         long characterId,
@@ -811,6 +853,7 @@ internal sealed class Destiny2Api : IDestiny2Api
         int count,
         Models.Destiny.HistoricalStats.Definitions.DestinyActivityModeType mode,
         int page,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -821,7 +864,7 @@ internal sealed class Destiny2Api : IDestiny2Api
             .AddQueryParam("mode", (int)mode)
             .AddQueryParam("page", page)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.HistoricalStats.DestinyActivityHistoryResults>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.HistoricalStats.DestinyActivityHistoryResults>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -830,11 +873,13 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="characterId">The id of the character to retrieve.</param>
     /// <param name="destinyMembershipId">The Destiny membershipId of the user to retrieve.</param>
     /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.HistoricalStats.DestinyHistoricalWeaponStatsData>> GetUniqueWeaponHistory(
         long characterId,
         long destinyMembershipId,
         Models.BungieMembershipType membershipType,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -842,7 +887,7 @@ internal sealed class Destiny2Api : IDestiny2Api
             .GetBuilder(cancellationToken)
             .Append($"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/UniqueWeapons/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.HistoricalStats.DestinyHistoricalWeaponStatsData>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.HistoricalStats.DestinyHistoricalWeaponStatsData>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -851,11 +896,13 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="characterId">The specific character whose activities should be returned.</param>
     /// <param name="destinyMembershipId">The Destiny membershipId of the user to retrieve.</param>
     /// <param name="membershipType">A valid non-BungieNet membership type.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.HistoricalStats.DestinyAggregateActivityResults>> GetDestinyAggregateActivityStats(
         long characterId,
         long destinyMembershipId,
         Models.BungieMembershipType membershipType,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -863,16 +910,18 @@ internal sealed class Destiny2Api : IDestiny2Api
             .GetBuilder(cancellationToken)
             .Append($"/Destiny2/{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Stats/AggregateActivityStats/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.HistoricalStats.DestinyAggregateActivityResults>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.HistoricalStats.DestinyAggregateActivityResults>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
     ///     Gets custom localized content for the milestone of the given hash, if it exists.
     /// </summary>
     /// <param name="milestoneHash">The identifier for the milestone to be returned.</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.Milestones.DestinyMilestoneContent>> GetPublicMilestoneContent(
         uint milestoneHash,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -880,16 +929,17 @@ internal sealed class Destiny2Api : IDestiny2Api
             .GetBuilder(cancellationToken)
             .Append($"/Destiny2/Milestones/{milestoneHash}/Content/")
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Milestones.DestinyMilestoneContent>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Destiny.Milestones.DestinyMilestoneContent>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
     ///     Gets public information about currently available Milestones.
     /// </summary>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
-    public async Task<BungieResponse<Dictionary<uint, Models.Destiny.Milestones.DestinyPublicMilestone>>> GetPublicMilestones(CancellationToken cancellationToken = default)
+    public async Task<BungieResponse<Dictionary<uint, Models.Destiny.Milestones.DestinyPublicMilestone>>> GetPublicMilestones(AuthorizationTokenData? authorizationToken = null, CancellationToken cancellationToken = default)
     {
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<uint, Models.Destiny.Milestones.DestinyPublicMilestone>>("/Destiny2/Milestones/", cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<uint, Models.Destiny.Milestones.DestinyPublicMilestone>>("/Destiny2/Milestones/", cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -900,7 +950,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.Advanced.AwaInitializeResponse>> AwaInitializeRequest(
         Models.Destiny.Advanced.AwaPermissionRequested requestBody,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -918,9 +968,11 @@ internal sealed class Destiny2Api : IDestiny2Api
     ///     Provide the result of the user interaction. Called by the Bungie Destiny App to approve or reject a request.
     /// </summary>
     /// <param name="requestBody">Request body</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<int>> AwaProvideAuthorizationResult(
         Models.Destiny.Advanced.AwaUserResponse requestBody,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -928,7 +980,7 @@ internal sealed class Destiny2Api : IDestiny2Api
         await _serializer.SerializeAsync(stream, requestBody);
         stream.Position = 0;
 
-        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<int>("/Destiny2/Awa/AwaProvideAuthorizationResult/", cancellationToken, stream);
+        return await _dotNetBungieApiHttpClient.PostToBungieNetPlatform<int>("/Destiny2/Awa/AwaProvideAuthorizationResult/", cancellationToken, stream, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
@@ -939,7 +991,7 @@ internal sealed class Destiny2Api : IDestiny2Api
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.Destiny.Advanced.AwaAuthorizationResult>> AwaGetActionToken(
         string correlationId,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {

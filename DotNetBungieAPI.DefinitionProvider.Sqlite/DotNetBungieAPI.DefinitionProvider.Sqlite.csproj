@@ -13,7 +13,7 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageVersion>2.0.0-rc2</PackageVersion>
+    <PackageVersion>2.0.0-rc3</PackageVersion>
     <AssemblyVersion>2.0.0</AssemblyVersion>
     <FileVersion>2.0.0</FileVersion>
     <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
@@ -25,6 +25,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.8" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.8" />
-    <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="3.0.0-rc2" />
+    <PackageReference Include="DotNetBungieAPI.Service.Abstractions" Version="3.0.0-rc3" />
   </ItemGroup>
 </Project>

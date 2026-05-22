@@ -22,7 +22,7 @@ internal sealed class MiscApi : IMiscApi
         IBungieNetJsonSerializer serializer
     )
     {
-        _configuration = _configuration;
+        _configuration = configuration;
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _serializer = serializer;
     }
@@ -30,37 +30,42 @@ internal sealed class MiscApi : IMiscApi
     /// <summary>
     ///     List of available localization cultures
     /// </summary>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
-    public async Task<BungieResponse<Dictionary<string, string>>> GetAvailableLocales(CancellationToken cancellationToken = default)
+    public async Task<BungieResponse<Dictionary<string, string>>> GetAvailableLocales(AuthorizationTokenData? authorizationToken = null, CancellationToken cancellationToken = default)
     {
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<string, string>>("/GetAvailableLocales/", cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<string, string>>("/GetAvailableLocales/", cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
     ///     Get the common settings used by the Bungie.Net environment.
     /// </summary>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
-    public async Task<BungieResponse<Models.Common.Models.CoreSettingsConfiguration>> GetCommonSettings(CancellationToken cancellationToken = default)
+    public async Task<BungieResponse<Models.Common.Models.CoreSettingsConfiguration>> GetCommonSettings(AuthorizationTokenData? authorizationToken = null, CancellationToken cancellationToken = default)
     {
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Common.Models.CoreSettingsConfiguration>("/Settings/", cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Common.Models.CoreSettingsConfiguration>("/Settings/", cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
     ///     Get the user-specific system overrides that should be respected alongside common systems.
     /// </summary>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
-    public async Task<BungieResponse<Dictionary<string, Models.Common.Models.CoreSystem>>> GetUserSystemOverrides(CancellationToken cancellationToken = default)
+    public async Task<BungieResponse<Dictionary<string, Models.Common.Models.CoreSystem>>> GetUserSystemOverrides(AuthorizationTokenData? authorizationToken = null, CancellationToken cancellationToken = default)
     {
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<string, Models.Common.Models.CoreSystem>>("/UserSystemOverrides/", cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Dictionary<string, Models.Common.Models.CoreSystem>>("/UserSystemOverrides/", cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
     /// <summary>
     ///     Gets any active global alert for display in the forum banners, help pages, etc. Usually used for DOC alerts.
     /// </summary>
     /// <param name="includestreaming">Determines whether Streaming Alerts are included in results</param>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
     public async Task<BungieResponse<Models.GlobalAlert[]>> GetGlobalAlerts(
         bool includestreaming,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -68,7 +73,7 @@ internal sealed class MiscApi : IMiscApi
             .GetBuilder(cancellationToken)
             .AddQueryParam("includestreaming", includestreaming)
             .Build();
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.GlobalAlert[]>(url, cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.GlobalAlert[]>(url, cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
 }

@@ -22,7 +22,7 @@ internal sealed class AppApi : IAppApi
         IBungieNetJsonSerializer serializer
     )
     {
-        _configuration = _configuration;
+        _configuration = configuration;
         _dotNetBungieApiHttpClient = dotNetBungieApiHttpClient;
         _serializer = serializer;
     }
@@ -39,7 +39,7 @@ internal sealed class AppApi : IAppApi
         int applicationId,
         DateTime end,
         DateTime start,
-        AuthorizationTokenData authorizationToken,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     )
     {
@@ -58,10 +58,11 @@ internal sealed class AppApi : IAppApi
     /// <summary>
     ///     Get list of applications created by Bungie.
     /// </summary>
+    /// <param name="authorizationToken">Authorization information</param>
     /// <param name="cancellationToken">Method cancellation token</param>
-    public async Task<BungieResponse<Models.Applications.Application[]>> GetBungieApplications(CancellationToken cancellationToken = default)
+    public async Task<BungieResponse<Models.Applications.Application[]>> GetBungieApplications(AuthorizationTokenData? authorizationToken = null, CancellationToken cancellationToken = default)
     {
-        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Applications.Application[]>("/App/FirstParty/", cancellationToken);
+        return await _dotNetBungieApiHttpClient.GetFromBungieNetPlatform<Models.Applications.Application[]>("/App/FirstParty/", cancellationToken, authToken: authorizationToken?.AccessToken);
     }
 
 }

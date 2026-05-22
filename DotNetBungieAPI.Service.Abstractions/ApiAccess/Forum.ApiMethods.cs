@@ -14,6 +14,7 @@ public interface IForumApi
         Models.Forum.ForumTopicsSortEnum sort,
         string locales,
         string tagstring,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -23,6 +24,7 @@ public interface IForumApi
         Models.Forum.ForumTopicsQuickDateEnum quickDate,
         Models.Forum.ForumTopicsSortEnum sort,
         string locales,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -35,6 +37,7 @@ public interface IForumApi
         bool rootThreadMode,
         Models.Forum.ForumPostSortEnum sortMode,
         string showbanned,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
@@ -46,38 +49,45 @@ public interface IForumApi
         bool rootThreadMode,
         Models.Forum.ForumPostSortEnum sortMode,
         string showbanned,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.Forum.PostSearchResponse>> GetPostAndParent(
         long childPostId,
         string showbanned,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.Forum.PostSearchResponse>> GetPostAndParentAwaitingApproval(
         long childPostId,
         string showbanned,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<long>> GetTopicForContent(
         long contentId,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.Tags.Models.Contracts.TagResponse[]>> GetForumTagSuggestions(
         string partialtag,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.Forum.PostSearchResponse>> GetPoll(
         long topicId,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
     Task<BungieResponse<Models.Forum.ForumRecruitmentDetail[]>> GetRecruitmentThreadSummaries(
         long[] requestBody,
+        AuthorizationTokenData? authorizationToken = null,
         CancellationToken cancellationToken = default
     );
 
